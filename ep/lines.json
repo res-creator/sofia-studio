@@ -1,0 +1,170 @@
+{
+ "l01": {
+  "who": "sofia",
+  "text": "[excited] Hi! I'm Sofia! And this is my totally... normal... morning routine."
+ },
+ "l01b": {
+  "who": "sofia",
+  "text": "[deadpan] This is Gus. My best friend. He is a goose. [whispers] Don't ask."
+ },
+ "l02": {
+  "who": "sofia",
+  "text": "[cheerful] Every day, I wake up at seven o'clock."
+ },
+ "l03": {
+  "who": "sofia",
+  "text": "[sighs] In the fridge. [deadpan] Again."
+ },
+ "l04": {
+  "who": "sofia",
+  "text": "Wake up means... stop sleeping. Your eyes open!"
+ },
+ "l05": {
+  "who": "sofia",
+  "text": "[confident] Then, I get up!"
+ },
+ "l06": {
+  "who": "sofia",
+  "text": "[groans] ...Slowly."
+ },
+ "l07": {
+  "who": "sofia",
+  "text": "Wake up is your eyes. Get up... is your body!"
+ },
+ "l08": {
+  "who": "sofia",
+  "text": "[happy] Next, I brush my teeth."
+ },
+ "l09": {
+  "who": "sofia",
+  "text": "[suspicious] Hmm. This toothpaste tastes like... [disgusted] mayonnaise?!"
+ },
+ "l10": {
+  "who": "sofia",
+  "text": "One tooth. Two teeth. [laughs] Not tooths!"
+ },
+ "l11": {
+  "who": "sofia",
+  "text": "[happy] I take a shower. Every morning!"
+ },
+ "l12": {
+  "who": "sofia",
+  "text": "[flatly] ...Thank you, Gus."
+ },
+ "l13": {
+  "who": "sofia",
+  "text": "We say: take a shower. Not... make a shower!"
+ },
+ "q01": {
+  "who": "sofia",
+  "text": "[excited] Quick quiz! What do I do after the shower?"
+ },
+ "q02": {
+  "who": "sofia",
+  "text": "A: get dressed. Or B: make breakfast?"
+ },
+ "q03": {
+  "who": "sofia",
+  "text": "[happy] A! I get dressed. [laughs] Well... I try."
+ },
+ "l14": {
+  "who": "sofia",
+  "text": "[excited] Now I get dressed. Fast!"
+ },
+ "l15": {
+  "who": "sofia",
+  "text": "[proud] Perfect. I look amazing."
+ },
+ "l15b": {
+  "who": "sofia",
+  "text": "[nervous] ...Wait. Something is wrong."
+ },
+ "l16": {
+  "who": "sofia",
+  "text": "Get dressed means... put on your clothes. [laughs] Correctly."
+ },
+ "l17": {
+  "who": "sofia",
+  "text": "[excited] Then I make breakfast. Toast!"
+ },
+ "l18": {
+  "who": "sofia",
+  "text": "[confused] Breakfast is... on the ceiling."
+ },
+ "l19": {
+  "who": "sofia",
+  "text": "Remember! Make breakfast... but take a shower."
+ },
+ "l20": {
+  "who": "sofia",
+  "text": "[dreamy] I always drink coffee in the morning..."
+ },
+ "l21": {
+  "who": "sofia",
+  "text": "[shouting] Gus! That is MY coffee!"
+ },
+ "l22a": {
+  "who": "sofia",
+  "text": "[quickly] Bag. Keys. Phone. Gus. Okay!"
+ },
+ "l22": {
+  "who": "sofia",
+  "text": "[excited] At eight o'clock, I leave the house! I'm not late today!"
+ },
+ "g01": {
+  "who": "gus",
+  "text": "Sofia. It is Saturday."
+ },
+ "l23": {
+  "who": "sofia",
+  "text": "[surprised] ...It's Saturday?"
+ },
+ "l24": {
+  "who": "sofia",
+  "text": "[whispers] Okay. Good night."
+ },
+ "l25": {
+  "who": "sofia",
+  "text": "[cheerful] Let's repeat my morning. Say it with me!"
+ },
+ "r1": {
+  "who": "sofia",
+  "text": "I wake up."
+ },
+ "r2": {
+  "who": "sofia",
+  "text": "I get up."
+ },
+ "r3": {
+  "who": "sofia",
+  "text": "I brush my teeth."
+ },
+ "r4": {
+  "who": "sofia",
+  "text": "I take a shower."
+ },
+ "r5": {
+  "who": "sofia",
+  "text": "I get dressed."
+ },
+ "r6": {
+  "who": "sofia",
+  "text": "I make breakfast."
+ },
+ "r7": {
+  "who": "sofia",
+  "text": "I drink coffee."
+ },
+ "r8": {
+  "who": "sofia",
+  "text": "I leave the house."
+ },
+ "l26": {
+  "who": "sofia",
+  "text": "[curious] What do YOU do first in the morning? Write it in the comments!"
+ },
+ "l27": {
+  "who": "sofia",
+  "text": "[cheerful] See you next time. Bye!"
+ }
+}

@@ -1,0 +1,675 @@
+{
+ "SEQ": [
+  {
+   "id": "hook",
+   "items": [
+    {
+     "mark": "dark"
+    },
+    {
+     "wait": 0.9
+    },
+    {
+     "mark": "light"
+    },
+    {
+     "say": "l01",
+     "who": "sofia",
+     "text": "[excited] Hi! I'm Sofia! And this is my totally... normal... morning routine."
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "mark": "reveal"
+    },
+    {
+     "wait": 1.4
+    },
+    {
+     "mark": "gus"
+    },
+    {
+     "say": "l01b",
+     "who": "sofia",
+     "text": "[deadpan] This is Gus. My best friend. He is a goose. [whispers] Don't ask."
+    },
+    {
+     "wait": 0.6
+    }
+   ]
+  },
+  {
+   "id": "wake",
+   "items": [
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "honk"
+    },
+    {
+     "wait": 1.2
+    },
+    {
+     "say": "l02",
+     "who": "sofia",
+     "text": "[cheerful] Every day, I wake up at seven o'clock."
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "say": "l03",
+     "who": "sofia",
+     "text": "[sighs] In the fridge. [deadpan] Again."
+    },
+    {
+     "wait": 0.6
+    },
+    {
+     "mark": "card"
+    },
+    {
+     "say": "l04",
+     "who": "sofia",
+     "text": "Wake up means... stop sleeping. Your eyes open!"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "turn": "I wake up."
+    },
+    {
+     "wait": 0.2
+    }
+   ]
+  },
+  {
+   "id": "getup",
+   "items": [
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l05",
+     "who": "sofia",
+     "text": "[confident] Then, I get up!"
+    },
+    {
+     "mark": "slip"
+    },
+    {
+     "wait": 1.4
+    },
+    {
+     "say": "l06",
+     "who": "sofia",
+     "text": "[groans] ...Slowly."
+    },
+    {
+     "wait": 0.5
+    },
+    {
+     "mark": "card"
+    },
+    {
+     "say": "l07",
+     "who": "sofia",
+     "text": "Wake up is your eyes. Get up... is your body!"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "turn": "I get up."
+    },
+    {
+     "wait": 0.2
+    }
+   ]
+  },
+  {
+   "id": "teeth",
+   "items": [
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l08",
+     "who": "sofia",
+     "text": "[happy] Next, I brush my teeth."
+    },
+    {
+     "wait": 0.5
+    },
+    {
+     "mark": "taste"
+    },
+    {
+     "say": "l09",
+     "who": "sofia",
+     "text": "[suspicious] Hmm. This toothpaste tastes like... [disgusted] mayonnaise?!"
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "mark": "gus"
+    },
+    {
+     "wait": 1.3
+    },
+    {
+     "mark": "card"
+    },
+    {
+     "say": "l10",
+     "who": "sofia",
+     "text": "One tooth. Two teeth. [laughs] Not tooths!"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "turn": "I brush my teeth."
+    },
+    {
+     "wait": 0.2
+    }
+   ]
+  },
+  {
+   "id": "shower",
+   "items": [
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l11",
+     "who": "sofia",
+     "text": "[happy] I take a shower. Every morning!"
+    },
+    {
+     "mark": "sputter"
+    },
+    {
+     "wait": 1.2
+    },
+    {
+     "mark": "can"
+    },
+    {
+     "wait": 1
+    },
+    {
+     "say": "l12",
+     "who": "sofia",
+     "text": "[flatly] ...Thank you, Gus."
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "mark": "card"
+    },
+    {
+     "say": "l13",
+     "who": "sofia",
+     "text": "We say: take a shower. Not... make a shower!"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "turn": "I take a shower."
+    },
+    {
+     "wait": 0.2
+    }
+   ]
+  },
+  {
+   "id": "quiz",
+   "items": [
+    {
+     "say": "q01",
+     "who": "sofia",
+     "text": "[excited] Quick quiz! What do I do after the shower?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "mark": "opts"
+    },
+    {
+     "say": "q02",
+     "who": "sofia",
+     "text": "A: get dressed. Or B: make breakfast?"
+    },
+    {
+     "mark": "count"
+    },
+    {
+     "wait": 3.2
+    },
+    {
+     "mark": "answer"
+    },
+    {
+     "say": "q03",
+     "who": "sofia",
+     "text": "[happy] A! I get dressed. [laughs] Well... I try."
+    },
+    {
+     "wait": 0.5
+    }
+   ]
+  },
+  {
+   "id": "dress",
+   "items": [
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l14",
+     "who": "sofia",
+     "text": "[excited] Now I get dressed. Fast!"
+    },
+    {
+     "mark": "spin"
+    },
+    {
+     "wait": 1.6
+    },
+    {
+     "mark": "done"
+    },
+    {
+     "say": "l15",
+     "who": "sofia",
+     "text": "[proud] Perfect. I look amazing."
+    },
+    {
+     "wait": 0.8
+    },
+    {
+     "mark": "wrong"
+    },
+    {
+     "say": "l15b",
+     "who": "sofia",
+     "text": "[nervous] ...Wait. Something is wrong."
+    },
+    {
+     "wait": 1.2
+    },
+    {
+     "mark": "fix"
+    },
+    {
+     "wait": 0.8
+    },
+    {
+     "mark": "card"
+    },
+    {
+     "say": "l16",
+     "who": "sofia",
+     "text": "Get dressed means... put on your clothes. [laughs] Correctly."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "turn": "I get dressed."
+    },
+    {
+     "wait": 0.2
+    }
+   ]
+  },
+  {
+   "id": "toast",
+   "items": [
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l17",
+     "who": "sofia",
+     "text": "[excited] Then I make breakfast. Toast!"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "launch"
+    },
+    {
+     "wait": 1.3
+    },
+    {
+     "say": "l18",
+     "who": "sofia",
+     "text": "[confused] Breakfast is... on the ceiling."
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "mark": "drop"
+    },
+    {
+     "wait": 1.2
+    },
+    {
+     "mark": "card"
+    },
+    {
+     "say": "l19",
+     "who": "sofia",
+     "text": "Remember! Make breakfast... but take a shower."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "turn": "I make breakfast."
+    },
+    {
+     "wait": 0.2
+    }
+   ]
+  },
+  {
+   "id": "coffee",
+   "items": [
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l20",
+     "who": "sofia",
+     "text": "[dreamy] I always drink coffee in the morning..."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "steal"
+    },
+    {
+     "wait": 1.4
+    },
+    {
+     "say": "l21",
+     "who": "sofia",
+     "text": "[shouting] Gus! That is MY coffee!"
+    },
+    {
+     "mark": "honk"
+    },
+    {
+     "wait": 1.2
+    },
+    {
+     "mark": "card"
+    },
+    {
+     "turn": "I drink coffee."
+    },
+    {
+     "wait": 0.2
+    }
+   ]
+  },
+  {
+   "id": "leave",
+   "items": [
+    {
+     "wait": 0.2
+    },
+    {
+     "mark": "pack"
+    },
+    {
+     "say": "l22a",
+     "who": "sofia",
+     "text": "[quickly] Bag. Keys. Phone. Gus. Okay!"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "run"
+    },
+    {
+     "say": "l22",
+     "who": "sofia",
+     "text": "[excited] At eight o'clock, I leave the house! I'm not late today!"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "stop"
+    },
+    {
+     "say": "g01",
+     "who": "gus",
+     "text": "Sofia. It is Saturday."
+    },
+    {
+     "wait": 0.5
+    },
+    {
+     "mark": "freeze"
+    },
+    {
+     "say": "l23",
+     "who": "sofia",
+     "text": "[surprised] ...It's Saturday?"
+    },
+    {
+     "wait": 0.6
+    },
+    {
+     "mark": "back"
+    },
+    {
+     "say": "l24",
+     "who": "sofia",
+     "text": "[whispers] Okay. Good night."
+    },
+    {
+     "wait": 1
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "items": [
+    {
+     "say": "l25",
+     "who": "sofia",
+     "text": "[cheerful] Let's repeat my morning. Say it with me!"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "r0"
+    },
+    {
+     "say": "r1",
+     "who": "sofia",
+     "text": "I wake up."
+    },
+    {
+     "wait": 1.7
+    },
+    {
+     "mark": "r1"
+    },
+    {
+     "say": "r2",
+     "who": "sofia",
+     "text": "I get up."
+    },
+    {
+     "wait": 1.7
+    },
+    {
+     "mark": "r2"
+    },
+    {
+     "say": "r3",
+     "who": "sofia",
+     "text": "I brush my teeth."
+    },
+    {
+     "wait": 1.8
+    },
+    {
+     "mark": "r3"
+    },
+    {
+     "say": "r4",
+     "who": "sofia",
+     "text": "I take a shower."
+    },
+    {
+     "wait": 1.4
+    },
+    {
+     "mark": "r4"
+    },
+    {
+     "say": "r5",
+     "who": "sofia",
+     "text": "I get dressed."
+    },
+    {
+     "wait": 1.7
+    },
+    {
+     "mark": "r5"
+    },
+    {
+     "say": "r6",
+     "who": "sofia",
+     "text": "I make breakfast."
+    },
+    {
+     "wait": 1.8
+    },
+    {
+     "mark": "r6"
+    },
+    {
+     "say": "r7",
+     "who": "sofia",
+     "text": "I drink coffee."
+    },
+    {
+     "wait": 1.7
+    },
+    {
+     "mark": "r7"
+    },
+    {
+     "say": "r8",
+     "who": "sofia",
+     "text": "I leave the house."
+    },
+    {
+     "wait": 1.6
+    },
+    {
+     "mark": "r8"
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "items": [
+    {
+     "say": "l26",
+     "who": "sofia",
+     "text": "[curious] What do YOU do first in the morning? Write it in the comments!"
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "mark": "honk"
+    },
+    {
+     "wait": 0.8
+    },
+    {
+     "say": "l27",
+     "who": "sofia",
+     "text": "[cheerful] See you next time. Bye!"
+    },
+    {
+     "wait": 1.6
+    }
+   ]
+  }
+ ],
+ "CARDS": {
+  "wake": {
+   "en": "wake up",
+   "ipa": "/weɪk ʌp/",
+   "def": "stop sleeping",
+   "icon": "eye"
+  },
+  "getup": {
+   "en": "get up",
+   "ipa": "/ɡet ʌp/",
+   "def": "leave your bed",
+   "icon": "up",
+   "vs": [
+    "wake up = 👀",
+    "get up = 🧍"
+   ]
+  },
+  "teeth": {
+   "en": "brush my teeth",
+   "ipa": "/brʌʃ maɪ tiːθ/",
+   "def": "one tooth, two teeth",
+   "icon": "tooth",
+   "wrong": "tooths"
+  },
+  "shower": {
+   "en": "take a shower",
+   "ipa": "/teɪk ə ˈʃaʊər/",
+   "def": "wash your body",
+   "icon": "shower",
+   "wrong": "make a shower"
+  },
+  "dress": {
+   "en": "get dressed",
+   "ipa": "/ɡet drest/",
+   "def": "put on your clothes",
+   "icon": "shirt"
+  },
+  "toast": {
+   "en": "make breakfast",
+   "ipa": "/meɪk ˈbrekfəst/",
+   "def": "cook your morning food",
+   "icon": "toast"
+  },
+  "coffee": {
+   "en": "drink coffee",
+   "ipa": "/drɪŋk ˈkɒfi/",
+   "def": "drink — drank — drunk",
+   "icon": "cup"
+  }
+ }
+}

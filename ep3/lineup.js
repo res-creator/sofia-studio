@@ -1,0 +1,13 @@
+process.chdir('/home/claude/sofia_studio/sofia_studio');
+require('/home/claude/sofia_studio/sofia_studio/lib/fonts');
+const { createCanvas } = require('/home/claude/sofia_studio/sofia_studio/node_modules/@napi-rs/canvas');
+const { drawCrew } = require('/home/claude/sofia_studio/sofia_studio/lib/crew');
+const { drawDrMax } = require('/home/claude/sofia_studio/sofia_studio/lib/drmax');
+const c = createCanvas(1920, 1080), x = c.getContext('2d');
+x.fillStyle = '#EAF2FA'; x.fillRect(0, 0, 1920, 1080);
+const F = 1000, s = 0.95;
+drawCrew(x, 300, F - 280 * s, s, { mouth: { smile: 0.8, open: 0.2, w: 1 }, armR: [140, -150], handR: 'open' }, 'anna');
+drawCrew(x, 760, F - 280 * s, s, { mouth: { smile: 0.6 }, look: [-0.5, 0] }, 'annaFA');
+drawCrew(x, 1220, F - 280 * 1.0, 1.0, { browL: -0.6, browR: -0.6, mouth: { smile: -0.4 }, armL: [-60, -40], armR: [60, -40], armsFront: true }, 'bob');
+drawCrew(x, 1660, F - 280 * 0.95, 0.95, { mouth: { smile: 1, open: 0.3 }, armR: [150, -320], handR: 'open' }, 'maxVac');
+require('fs').writeFileSync(process.argv[2], c.toBuffer('image/png'));

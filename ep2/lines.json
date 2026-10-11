@@ -1,0 +1,154 @@
+{
+ "l01": {
+  "who": "sofia",
+  "text": "[worried] Gus? Are you okay?"
+ },
+ "l02": {
+  "who": "gus",
+  "text": "[groaning weakly] My stomach... [groans] hurts..."
+ },
+ "l03": {
+  "who": "sofia",
+  "text": "[shocked] Five burger wrappers?! [firmly] We are going to the doctor!"
+ },
+ "l04": {
+  "who": "gus",
+  "text": "[panicking] The doctor?! No no no!"
+ },
+ "l05": {
+  "who": "gus",
+  "text": "[nervous] Doctors have needles!"
+ },
+ "l06": {
+  "who": "sofia",
+  "text": "[calm, reassuring] Doctor Max is just going to examine you."
+ },
+ "l07": {
+  "who": "gus",
+  "text": "[suspicious] That is exactly what a doctor with needles would say!"
+ },
+ "l08": {
+  "who": "drmax",
+  "text": "[warm] Hello! I am Doctor Max. What is the problem?"
+ },
+ "l09": {
+  "who": "gus",
+  "text": "[dramatic] My stomach hurts!"
+ },
+ "l10": {
+  "who": "drmax",
+  "text": "[kindly] What did you eat today?"
+ },
+ "l11": {
+  "who": "gus",
+  "text": "[slowly, guilty] One burger... two... three... four... [quietly] five burgers."
+ },
+ "l12": {
+  "who": "sofia",
+  "text": "[deadpan] Five burgers. For breakfast."
+ },
+ "l13": {
+  "who": "gus",
+  "text": "[defensive] They were small burgers!"
+ },
+ "l14": {
+  "who": "drmax",
+  "text": "[politely] Open your mouth, please."
+ },
+ "l15": {
+  "who": "drmax",
+  "text": "[surprised] ...That is a very big mouth."
+ },
+ "l16": {
+  "who": "sofia",
+  "text": "[laughing] It is a beak!"
+ },
+ "l17": {
+  "who": "drmax",
+  "text": "[calmly] Now... does it hurt here?"
+ },
+ "l18": {
+  "who": "gus",
+  "text": "[screaming] AAAH! Yes! It hurts!"
+ },
+ "l19": {
+  "who": "drmax",
+  "text": "[deadpan] ...I did not touch you yet."
+ },
+ "l20": {
+  "who": "drmax",
+  "text": "[matter-of-fact] You ate too much. Five burgers is too much!"
+ },
+ "l21": {
+  "who": "gus",
+  "text": "[hopeful] No medicine?"
+ },
+ "l22": {
+  "who": "drmax",
+  "text": "[calmly] No. Drink some water and no more burgers today."
+ },
+ "l23": {
+  "who": "gus",
+  "text": "[horrified] That sounds worse than medicine!"
+ },
+ "l24": {
+  "who": "sofia",
+  "text": "[warmly] How do you feel?"
+ },
+ "l25": {
+  "who": "gus",
+  "text": "[happy] I feel better! Much better!"
+ },
+ "l26": {
+  "who": "gus",
+  "text": "[whispering] ...What about pizza?"
+ },
+ "l27": {
+  "who": "sofia",
+  "text": "[exasperated, shouting] GUS!"
+ },
+ "l28": {
+  "who": "sofia",
+  "text": "[cheerful] Let us practice! Say it with me!"
+ },
+ "r1": {
+  "who": "sofia",
+  "text": "What's the problem?"
+ },
+ "r2": {
+  "who": "sofia",
+  "text": "My stomach hurts."
+ },
+ "r3": {
+  "who": "sofia",
+  "text": "Does it hurt here?"
+ },
+ "r4": {
+  "who": "sofia",
+  "text": "I feel better!"
+ },
+ "q01": {
+  "who": "sofia",
+  "text": "[excited] Quick quiz! Why does Gus's stomach hurt?"
+ },
+ "q02": {
+  "who": "sofia",
+  "text": "A: He ate too much. Or B: He has a headache."
+ },
+ "q03": {
+  "who": "sofia",
+  "text": "[happy] A! He ate too much!"
+ },
+ "l29": {
+  "who": "sofia",
+  "text": "[curious] Now you try! My... blank... hurts. Write your answer in the comments!"
+ },
+ "l30": {
+  "who": "sofia",
+  "text": "[cheerful] See you next time! Bye!"
+ },
+ "l31": {
+  "who": "gus",
+  "text": "[deadpan] Bye bye!"
+ }
+}

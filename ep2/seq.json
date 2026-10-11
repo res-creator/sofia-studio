@@ -1,0 +1,530 @@
+{
+ "SEQ": [
+  {
+   "id": "hook",
+   "items": [
+    {
+     "mark": "dark"
+    },
+    {
+     "wait": 0.6
+    },
+    {
+     "mark": "light"
+    },
+    {
+     "wait": 1.1
+    },
+    {
+     "say": "l01",
+     "who": "sofia",
+     "text": "[worried] Gus? Are you okay?"
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "say": "l02",
+     "who": "gus",
+     "text": "[groaning weakly] My stomach... [groans] hurts..."
+    },
+    {
+     "wait": 0.6
+    },
+    {
+     "mark": "insert"
+    },
+    {
+     "wait": 1
+    },
+    {
+     "say": "l03",
+     "who": "sofia",
+     "text": "[shocked] Five burger wrappers?! [firmly] We are going to the doctor!"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l04",
+     "who": "gus",
+     "text": "[panicking] The doctor?! No no no!"
+    },
+    {
+     "wait": 0.45
+    }
+   ]
+  },
+  {
+   "id": "title",
+   "items": [
+    {
+     "mark": "slam"
+    },
+    {
+     "wait": 2.4
+    }
+   ]
+  },
+  {
+   "id": "wait",
+   "items": [
+    {
+     "wait": 1.3
+    },
+    {
+     "say": "l05",
+     "who": "gus",
+     "text": "[nervous] Doctors have needles!"
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "say": "l06",
+     "who": "sofia",
+     "text": "[calm, reassuring] Doctor Max is just going to examine you."
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "say": "l07",
+     "who": "gus",
+     "text": "[suspicious] That is exactly what a doctor with needles would say!"
+    },
+    {
+     "wait": 0.6
+    }
+   ]
+  },
+  {
+   "id": "exam",
+   "items": [
+    {
+     "wait": 0.5
+    },
+    {
+     "mark": "door"
+    },
+    {
+     "wait": 1.9
+    },
+    {
+     "say": "l08",
+     "who": "drmax",
+     "text": "[warm] Hello! I am Doctor Max. What is the problem?"
+    },
+    {
+     "wait": 0.35
+    },
+    {
+     "say": "l09",
+     "who": "gus",
+     "text": "[dramatic] My stomach hurts!"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l10",
+     "who": "drmax",
+     "text": "[kindly] What did you eat today?"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l11",
+     "who": "gus",
+     "text": "[slowly, guilty] One burger... two... three... four... [quietly] five burgers."
+    },
+    {
+     "wait": 0.8
+    },
+    {
+     "mark": "react"
+    },
+    {
+     "wait": 1.8
+    },
+    {
+     "say": "l12",
+     "who": "sofia",
+     "text": "[deadpan] Five burgers. For breakfast."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l13",
+     "who": "gus",
+     "text": "[defensive] They were small burgers!"
+    },
+    {
+     "wait": 0.45
+    },
+    {
+     "turn": "My stomach hurts.",
+     "dur": 4
+    },
+    {
+     "wait": 0.4
+    }
+   ]
+  },
+  {
+   "id": "exam2",
+   "items": [
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l14",
+     "who": "drmax",
+     "text": "[politely] Open your mouth, please."
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "mark": "mouth"
+    },
+    {
+     "wait": 1.5
+    },
+    {
+     "say": "l15",
+     "who": "drmax",
+     "text": "[surprised] ...That is a very big mouth."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l16",
+     "who": "sofia",
+     "text": "[laughing] It is a beak!"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l17",
+     "who": "drmax",
+     "text": "[calmly] Now... does it hurt here?"
+    },
+    {
+     "wait": 0.15
+    },
+    {
+     "mark": "poke"
+    },
+    {
+     "wait": 0.55
+    },
+    {
+     "say": "l18",
+     "who": "gus",
+     "text": "[screaming] AAAH! Yes! It hurts!"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "beat"
+    },
+    {
+     "wait": 1.5
+    },
+    {
+     "say": "l19",
+     "who": "drmax",
+     "text": "[deadpan] ...I did not touch you yet."
+    },
+    {
+     "wait": 0.5
+    },
+    {
+     "mark": "reaction"
+    },
+    {
+     "wait": 2
+    },
+    {
+     "turn": "Does it hurt here?",
+     "dur": 4
+    },
+    {
+     "wait": 0.3
+    }
+   ]
+  },
+  {
+   "id": "diag",
+   "items": [
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l20",
+     "who": "drmax",
+     "text": "[matter-of-fact] You ate too much. Five burgers is too much!"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l21",
+     "who": "gus",
+     "text": "[hopeful] No medicine?"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l22",
+     "who": "drmax",
+     "text": "[calmly] No. Drink some water and no more burgers today."
+    },
+    {
+     "wait": 0.35
+    },
+    {
+     "say": "l23",
+     "who": "gus",
+     "text": "[horrified] That sounds worse than medicine!"
+    },
+    {
+     "wait": 1.4
+    }
+   ]
+  },
+  {
+   "id": "outside",
+   "items": [
+    {
+     "wait": 1
+    },
+    {
+     "say": "l24",
+     "who": "sofia",
+     "text": "[warmly] How do you feel?"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l25",
+     "who": "gus",
+     "text": "[happy] I feel better! Much better!"
+    },
+    {
+     "wait": 1
+    },
+    {
+     "say": "l26",
+     "who": "gus",
+     "text": "[whispering] ...What about pizza?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "mark": "honk"
+    },
+    {
+     "wait": 0.6
+    },
+    {
+     "say": "l27",
+     "who": "sofia",
+     "text": "[exasperated, shouting] GUS!"
+    },
+    {
+     "wait": 1
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "items": [
+    {
+     "say": "l28",
+     "who": "sofia",
+     "text": "[cheerful] Let us practice! Say it with me!"
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "mark": "r0"
+    },
+    {
+     "say": "r1",
+     "who": "sofia",
+     "text": "What's the problem?"
+    },
+    {
+     "wait": 2.4
+    },
+    {
+     "mark": "r1"
+    },
+    {
+     "say": "r2",
+     "who": "sofia",
+     "text": "My stomach hurts."
+    },
+    {
+     "wait": 2.4
+    },
+    {
+     "mark": "r2"
+    },
+    {
+     "say": "r3",
+     "who": "sofia",
+     "text": "Does it hurt here?"
+    },
+    {
+     "wait": 2.4
+    },
+    {
+     "mark": "r3"
+    },
+    {
+     "say": "r4",
+     "who": "sofia",
+     "text": "I feel better!"
+    },
+    {
+     "wait": 2.2
+    },
+    {
+     "mark": "r4"
+    },
+    {
+     "wait": 0.6
+    }
+   ]
+  },
+  {
+   "id": "quiz",
+   "items": [
+    {
+     "say": "q01",
+     "who": "sofia",
+     "text": "[excited] Quick quiz! Why does Gus's stomach hurt?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "mark": "opts"
+    },
+    {
+     "say": "q02",
+     "who": "sofia",
+     "text": "A: He ate too much. Or B: He has a headache."
+    },
+    {
+     "mark": "count"
+    },
+    {
+     "wait": 3.2
+    },
+    {
+     "mark": "answer"
+    },
+    {
+     "say": "q03",
+     "who": "sofia",
+     "text": "[happy] A! He ate too much!"
+    },
+    {
+     "wait": 1.2
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "items": [
+    {
+     "say": "l29",
+     "who": "sofia",
+     "text": "[curious] Now you try! My... blank... hurts. Write your answer in the comments!"
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "mark": "honk"
+    },
+    {
+     "wait": 0.7
+    },
+    {
+     "say": "l30",
+     "who": "sofia",
+     "text": "[cheerful] See you next time! Bye!"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l31",
+     "who": "gus",
+     "text": "[deadpan] Bye bye!"
+    },
+    {
+     "wait": 1.2
+    },
+    {
+     "mark": "endscreen"
+    },
+    {
+     "wait": 20
+    }
+   ]
+  }
+ ],
+ "PHRASES": [
+  {
+   "en": "What's the problem?",
+   "ipa": "/wɒts ðə ˈprɒbləm/",
+   "icon": "question",
+   "line": "l08",
+   "word": 5,
+   "dur": 2.3,
+   "side": "right"
+  },
+  {
+   "en": "My stomach hurts.",
+   "ipa": "/maɪ ˈstʌmək hɜːts/",
+   "icon": "tummy",
+   "line": "l09",
+   "word": 1,
+   "dur": 2.6,
+   "side": "right"
+  },
+  {
+   "en": "Does it hurt here?",
+   "ipa": "/dʌz ɪt hɜːt hɪə/",
+   "icon": "point",
+   "line": "l17",
+   "word": 1,
+   "dur": 2.4,
+   "side": "right"
+  },
+  {
+   "en": "I feel better.",
+   "ipa": "/aɪ fiːl ˈbetə/",
+   "icon": "smile",
+   "line": "l25",
+   "word": 0,
+   "dur": 2.6,
+   "side": "right"
+  }
+ ]
+}
