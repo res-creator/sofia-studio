@@ -1,0 +1,26 @@
+// Episode 3 YouTube thumbnail 1280x720: Gus on the check-in scale, red "32 KG", burgers falling out of the bag, scared Anna, "TOO HEAVY?!".
+require('../lib/fonts');
+const { createCanvas } = require('@napi-rs/canvas');
+const { drawGus } = require('../lib/gus');
+const { drawCrew } = require('../lib/crew');
+const U = require('../lib/ui');
+const { paint, roundRect } = require('../lib/draw');
+const B3 = require('./bg3'); const PR = require('./props3');
+const W = 1280, H = 720, c = createCanvas(W, H), x = c.getContext('2d');
+x.save(); x.translate(W / 2 + 60, H / 2 + 40); x.scale(0.78, 0.78); x.translate(-1560, -1180);
+x.drawImage(B3.checkin(), 0, 0, B3.WW, B3.HH);
+drawCrew(x, 1900, 1436 - 280 * 0.78, 0.78, { turn: -0.3, look: [-0.8, 0.2], surprise: 1, browL: 1, browR: 1, wide: 0.7, mouth: { open: 0.7, smile: 0, w: 1.2 }, armL: [-110, -300], armR: [110, -300], handL: 'open', handR: 'open', armsFront: true }, 'anna');
+PR.suitcase(x, 1250, 1452, 0.85, { open: 1 }); PR.suitcaseLid(x, 1250, 1452, 0.85, 0.9);
+[[1250, 1000, -0.5], [1330, 880, 0.4], [1170, 1120, 0.9], [1390, 1130, -0.2], [1090, 1250, 0.6]].forEach(([bx, by, r]) => PR.burger(x, bx, by, 1.15, r));
+B3.desk(x, 32);
+drawGus(x, 1520, 1520, 1.05, { face: 1, lids: 0, neck: -0.25, honk: 0.5, wing: 0.7, look: 0.4, squash: 1.03 });
+x.restore();
+const lg = x.createLinearGradient(0, 0, 700, 0); lg.addColorStop(0, 'rgba(25,30,60,0.78)'); lg.addColorStop(1, 'rgba(25,30,60,0)'); x.fillStyle = lg; x.fillRect(0, 0, W, H);
+x.save(); x.translate(300, 190); x.rotate(-0.06);
+U.textOutlined(x, 'TOO', 0, -20, 110, '#FFFFFF', { olw: 22 });
+U.textOutlined(x, 'HEAVY?!', 0, 100, 128, '#FFD23F', { olw: 24 });
+x.restore();
+x.save(); x.translate(275, 470); x.rotate(-0.03); paint(x, q => roundRect(q, -215, -46, 430, 92, 24), '#2E6FD8', { lw: 7 }); U.textOutlined(x, 'AT THE AIRPORT', 0, 18, 48, '#FFFFFF', { olw: 9 }); x.restore();
+x.save(); x.translate(190, 580); paint(x, q => roundRect(q, -130, -38, 260, 76, 20), '#3DAA6E', { lw: 7 }); U.textOutlined(x, 'EASY ENGLISH', 0, 16, 38, '#FFFFFF', { olw: 7 }); x.restore();
+x.save(); x.translate(410, 580); paint(x, q => roundRect(q, -80, -38, 160, 76, 20), '#FF7A2F', { lw: 7 }); U.textOutlined(x, 'A1–A2', 0, 16, 42, '#FFFFFF', { olw: 8 }); x.restore();
+require('fs').writeFileSync(process.argv[2] || 'ep3/thumbnail.png', c.toBuffer('image/png'));

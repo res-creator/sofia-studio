@@ -1,0 +1,978 @@
+{
+ "SEQ": [
+  {
+   "id": "home",
+   "items": [
+    {
+     "wait": 0.6
+    },
+    {
+     "say": "l01",
+     "who": "sofia",
+     "text": "[excited] Gus! Our flight is at ten! Are you ready?"
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "say": "l02",
+     "who": "gus",
+     "text": "[proudly] I am ready. I packed my bag."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l03",
+     "who": "sofia",
+     "text": "[suspicious] Why is your bag... moving?"
+    },
+    {
+     "wait": 0.35
+    },
+    {
+     "mark": "burst"
+    },
+    {
+     "wait": 1.5
+    },
+    {
+     "say": "l04",
+     "who": "sofia",
+     "text": "[shocked] Burgers?! Gus, you packed twenty burgers!"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l05",
+     "who": "gus",
+     "text": "[calmly] It is my emergency food."
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "say": "l06",
+     "who": "sofia",
+     "text": "[firmly] We are going to Spain, not to the moon!"
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "say": "l07",
+     "who": "gus",
+     "text": "[deadpan] You never know."
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "say": "l08",
+     "who": "sofia",
+     "text": "[sighs] Okay. Let's go. Taxi!"
+    },
+    {
+     "wait": 0.5
+    }
+   ]
+  },
+  {
+   "id": "title",
+   "items": [
+    {
+     "mark": "slam"
+    },
+    {
+     "wait": 2.6
+    }
+   ]
+  },
+  {
+   "id": "checkin",
+   "items": [
+    {
+     "wait": 0.7
+    },
+    {
+     "say": "l09",
+     "who": "anna",
+     "text": "[friendly] Good morning! Can I see your passport, please?"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l10",
+     "who": "sofia",
+     "text": "[politely] Here you are."
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "say": "l11",
+     "who": "anna",
+     "text": "[warmly] Thank you. And the passport for your friend?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l12",
+     "who": "gus",
+     "text": "[proudly] Here."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "egg"
+    },
+    {
+     "wait": 1.7
+    },
+    {
+     "say": "l13",
+     "who": "anna",
+     "text": "[confused] Sir... this is a photo of an egg."
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l14",
+     "who": "gus",
+     "text": "[deadpan] It was a long time ago."
+    },
+    {
+     "wait": 0.35
+    },
+    {
+     "say": "l15",
+     "who": "anna",
+     "text": "[slowly] ...Okay. Please put your bag here."
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "mark": "weigh"
+    },
+    {
+     "wait": 1
+    },
+    {
+     "say": "l16",
+     "who": "anna",
+     "text": "[apologetic] Oh no. Your bag is too heavy. The limit is twenty-three kilos."
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "say": "l17",
+     "who": "sofia",
+     "text": "[embarrassed] Sorry! My bag is too heavy... because of HIS burgers."
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l18",
+     "who": "gus",
+     "text": "[determined] No problem. I can fix this."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "eat"
+    },
+    {
+     "wait": 3
+    },
+    {
+     "say": "l19",
+     "who": "anna",
+     "text": "[amazed] ...Twenty-three kilos. Perfect."
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l20",
+     "who": "gus",
+     "text": "[satisfied] You're welcome."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l21",
+     "who": "anna",
+     "text": "[cheerful] Here are your boarding passes. Gate twelve. Have a nice flight!"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l22",
+     "who": "sofia",
+     "text": "[happy] Thank you!"
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "turn": "Can I see your passport?",
+     "dur": 3.2
+    }
+   ]
+  },
+  {
+   "id": "security",
+   "items": [
+    {
+     "wait": 0.5
+    },
+    {
+     "say": "l23",
+     "who": "bob",
+     "text": "[strict] Next! Put your bag and your phone in the box, please."
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l24",
+     "who": "sofia",
+     "text": "[politely] Of course."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l25",
+     "who": "bob",
+     "text": "[strict] Please take off your shoes."
+    },
+    {
+     "wait": 0.15
+    },
+    {
+     "say": "l26",
+     "who": "gus",
+     "text": "[deadpan] I don't have shoes."
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "mark": "look"
+    },
+    {
+     "wait": 1.3
+    },
+    {
+     "say": "l27",
+     "who": "bob",
+     "text": "[flatly] ...Right. Please walk through."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "beep"
+    },
+    {
+     "wait": 1.3
+    },
+    {
+     "say": "l28",
+     "who": "bob",
+     "text": "[stern] Stop! Do you have any metal?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l29",
+     "who": "gus",
+     "text": "[innocent] No."
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "mark": "beep2"
+    },
+    {
+     "wait": 1.1
+    },
+    {
+     "say": "l30",
+     "who": "bob",
+     "text": "[suspicious] Are you sure?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l31",
+     "who": "gus",
+     "text": "[proudly] Only my golden tie clip. It was a gift from my grandma."
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "say": "l32",
+     "who": "bob",
+     "text": "[sighs] Please take it off."
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "mark": "tie"
+    },
+    {
+     "wait": 1.2
+    },
+    {
+     "say": "l33",
+     "who": "gus",
+     "text": "[embarrassed] I feel naked."
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l34",
+     "who": "sofia",
+     "text": "[whispering] Gus, everyone is looking!"
+    },
+    {
+     "wait": 0.5
+    }
+   ]
+  },
+  {
+   "id": "corridor",
+   "items": [
+    {
+     "wait": 0.4
+    },
+    {
+     "say": "l35",
+     "who": "sofia",
+     "text": "[worried] Our flight is in twenty minutes! Where is gate twelve?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l36",
+     "who": "gus",
+     "text": "[confident] This way!"
+    },
+    {
+     "wait": 1.5
+    }
+   ]
+  },
+  {
+   "id": "wc",
+   "items": [
+    {
+     "wait": 0.6
+    },
+    {
+     "say": "l37",
+     "who": "sofia",
+     "text": "[flatly] Gus. This is the toilet."
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l38",
+     "who": "gus",
+     "text": "[deadpan] I needed it anyway."
+    },
+    {
+     "wait": 0.35
+    },
+    {
+     "say": "l39",
+     "who": "sofia",
+     "text": "[politely] Excuse me, where is gate twelve?"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "turn"
+    },
+    {
+     "wait": 1.1
+    },
+    {
+     "say": "l40",
+     "who": "drmax",
+     "text": "[friendly] Gate twelve? Go straight and turn left."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l41",
+     "who": "sofia",
+     "text": "[surprised] Doctor Max?!"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l42",
+     "who": "drmax",
+     "text": "[smiling] Hello again! Gus, no burgers on the plane, okay?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l43",
+     "who": "gus",
+     "text": "[guilty] ...Okay."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l44",
+     "who": "sofia",
+     "text": "[shouting] Run!"
+    },
+    {
+     "wait": 1.6
+    }
+   ]
+  },
+  {
+   "id": "lounge",
+   "items": [
+    {
+     "wait": 0.5
+    },
+    {
+     "mark": "ding"
+    },
+    {
+     "wait": 0.7
+    },
+    {
+     "say": "l45",
+     "who": "announcer",
+     "text": "[PA voice] Attention, please. Flight two-oh-seven to Madrid is delayed. New departure time: twelve o'clock."
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "say": "l46",
+     "who": "sofia",
+     "text": "[disappointed] Oh no! Our flight is delayed. Two hours!"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l47",
+     "who": "gus",
+     "text": "[hopeful] Two hours... Do they sell burgers here?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l48",
+     "who": "sofia",
+     "text": "[firmly] No more burgers! You ate three at check-in!"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l49",
+     "who": "gus",
+     "text": "[sadly] They were emergency burgers."
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "say": "l50",
+     "who": "sofia",
+     "text": "[kindly] Let's just sit and wait."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "clock"
+    },
+    {
+     "wait": 3.2
+    },
+    {
+     "say": "l51",
+     "who": "gus",
+     "text": "[dreamy] Look, Sofia. Geese. They don't wait two hours."
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "say": "l52",
+     "who": "sofia",
+     "text": "[laughs] Lucky geese."
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "turn": "My flight is delayed.",
+     "dur": 3.2
+    }
+   ]
+  },
+  {
+   "id": "plane",
+   "items": [
+    {
+     "wait": 0.5
+    },
+    {
+     "say": "l53",
+     "who": "anna",
+     "text": "[cheerful] Welcome on board! Oh, hello again!"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l54",
+     "who": "sofia",
+     "text": "[surprised] Hello! Where are our seats?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l55",
+     "who": "anna",
+     "text": "[friendly] Row fourteen. Window or aisle seat?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l56",
+     "who": "gus",
+     "text": "[quickly] Window! I want to see my family."
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l57",
+     "who": "sofia",
+     "text": "[confused] Your family?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l58",
+     "who": "gus",
+     "text": "[proudly] My cousins fly at this height."
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "mark": "takeoff"
+    },
+    {
+     "wait": 2.2
+    },
+    {
+     "mark": "gary"
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "say": "l59",
+     "who": "gus",
+     "text": "[happy] Hi, Uncle Gary!"
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "say": "l60",
+     "who": "sofia",
+     "text": "[deadpan] ...Of course you have an Uncle Gary."
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "mark": "cart"
+    },
+    {
+     "wait": 1
+    },
+    {
+     "say": "l61",
+     "who": "anna",
+     "text": "[friendly] Would you like chicken or fish?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l62",
+     "who": "sofia",
+     "text": "[politely] Chicken, please."
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l63",
+     "who": "gus",
+     "text": "[hopeful] Do you have burgers?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l64",
+     "who": "anna",
+     "text": "[smiling] No burgers, sorry."
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l65",
+     "who": "gus",
+     "text": "[sighs] Then fish, please. A big one."
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "turn": "Window or aisle seat?",
+     "dur": 3.2
+    }
+   ]
+  },
+  {
+   "id": "baggage",
+   "items": [
+    {
+     "wait": 0.4
+    },
+    {
+     "say": "l66",
+     "who": "announcer",
+     "text": "[PA voice, cheerful] Ladies and gentlemen, welcome to Madrid! Have a nice day!"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l67",
+     "who": "sofia",
+     "text": "[excited] We are in Spain, Gus!"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "belt"
+    },
+    {
+     "wait": 2.4
+    },
+    {
+     "say": "l68",
+     "who": "gus",
+     "text": "[shocked] My emergency food!"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "open"
+    },
+    {
+     "wait": 0.8
+    },
+    {
+     "mark": "honk"
+    },
+    {
+     "wait": 1
+    },
+    {
+     "say": "l69",
+     "who": "gus",
+     "text": "[outraged] Uncle Gary! You ate my emergency food!"
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "say": "l70",
+     "who": "gary",
+     "text": "[lazy, happy] It was an emergency."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l71",
+     "who": "sofia",
+     "text": "[laughing] Welcome to Spain, Gus!"
+    },
+    {
+     "wait": 0.8
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "items": [
+    {
+     "say": "l72",
+     "who": "sofia",
+     "text": "[cheerful] Let's practice! Say it with me!"
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "mark": "r0"
+    },
+    {
+     "say": "r1",
+     "who": "sofia",
+     "text": "Can I see your passport?"
+    },
+    {
+     "wait": 2.3
+    },
+    {
+     "mark": "r1"
+    },
+    {
+     "say": "r2",
+     "who": "sofia",
+     "text": "My bag is too heavy."
+    },
+    {
+     "wait": 2.3
+    },
+    {
+     "mark": "r2"
+    },
+    {
+     "say": "r3",
+     "who": "sofia",
+     "text": "Where is gate twelve?"
+    },
+    {
+     "wait": 2.3
+    },
+    {
+     "mark": "r3"
+    },
+    {
+     "say": "r4",
+     "who": "sofia",
+     "text": "My flight is delayed."
+    },
+    {
+     "wait": 2.3
+    },
+    {
+     "mark": "r4"
+    },
+    {
+     "say": "r5",
+     "who": "sofia",
+     "text": "Window or aisle seat?"
+    },
+    {
+     "wait": 2.3
+    },
+    {
+     "mark": "r5"
+    },
+    {
+     "say": "r6",
+     "who": "sofia",
+     "text": "Have a nice flight!"
+    },
+    {
+     "wait": 2.3
+    },
+    {
+     "mark": "r6"
+    },
+    {
+     "wait": 0.4
+    }
+   ]
+  },
+  {
+   "id": "quiz",
+   "items": [
+    {
+     "say": "q01",
+     "who": "sofia",
+     "text": "[excited] Quick quiz! What did Gus pack in his bag?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "mark": "opts"
+    },
+    {
+     "say": "q02",
+     "who": "sofia",
+     "text": "A: Clothes. Or B: Burgers."
+    },
+    {
+     "mark": "count"
+    },
+    {
+     "wait": 3.2
+    },
+    {
+     "mark": "answer"
+    },
+    {
+     "say": "q03",
+     "who": "sofia",
+     "text": "[laughing] B! Twenty burgers!"
+    },
+    {
+     "wait": 1.3
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "items": [
+    {
+     "say": "l73",
+     "who": "sofia",
+     "text": "[curious] Where do YOU want to fly? Write the city in the comments!"
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "say": "l74",
+     "who": "sofia",
+     "text": "[cheerful] Have a nice flight! See you next time! Bye!"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "mark": "bye"
+    },
+    {
+     "say": "l75",
+     "who": "gus",
+     "text": "[deadpan] Bye bye. I'm flying home with Gary."
+    },
+    {
+     "wait": 1
+    },
+    {
+     "mark": "endscreen"
+    },
+    {
+     "wait": 20
+    }
+   ]
+  }
+ ],
+ "PHRASES": [
+  {
+   "en": "Can I see your passport?",
+   "ipa": "/kən aɪ siː jɔː ˈpɑːspɔːt/",
+   "icon": "passport",
+   "line": "l09",
+   "word": 2,
+   "dur": 2.6,
+   "side": "right"
+  },
+  {
+   "en": "My bag is too heavy.",
+   "ipa": "/maɪ bæɡ ɪz tuː ˈhevi/",
+   "icon": "bag",
+   "line": "l16",
+   "word": 2,
+   "dur": 2.6,
+   "side": "right"
+  },
+  {
+   "en": "Have a nice flight!",
+   "ipa": "/hæv ə naɪs flaɪt/",
+   "icon": "wave",
+   "line": "l21",
+   "word": 7,
+   "dur": 2.5,
+   "side": "right"
+  },
+  {
+   "en": "Where is gate 12?",
+   "ipa": "/weər ɪz ɡeɪt twelv/",
+   "icon": "gate",
+   "line": "l40",
+   "word": 0,
+   "dur": 2.5,
+   "side": "left"
+  },
+  {
+   "en": "My flight is delayed.",
+   "ipa": "/maɪ flaɪt ɪz dɪˈleɪd/",
+   "icon": "delay",
+   "line": "l45",
+   "word": 6,
+   "dur": 2.7,
+   "side": "right"
+  },
+  {
+   "en": "Window or aisle seat?",
+   "ipa": "/ˈwɪndəʊ ɔːr aɪl siːt/",
+   "icon": "seat",
+   "line": "l55",
+   "word": 2,
+   "dur": 2.7,
+   "side": "right"
+  }
+ ]
+}

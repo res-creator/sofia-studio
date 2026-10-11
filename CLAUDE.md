@@ -15,11 +15,10 @@ Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). Thi
 - Voices in `ep2/vo/*.mp3`. Dr. Max voice = Chris (premade). Output `ep2/sofia_ep2_gus_at_the_doctor.mp4`, thumbnail, SRT, `ep2/upload_kit.txt`.
 - Known rig bug: `drmax` `legs:'walk'` splays legs — use a step bounce instead.
 
-## Episode 3 "Gus at the Airport" — IN PROGRESS
-- Approved script (84 lines: l01–l75, r1–r6, q01–q03), target 6–7 min: Claude Doc https://claude.ai/code/artifact/537b0a61-9c6d-4773-8ff6-9cd7617b7b62
-- New cast approved by owner: `lib/crew.js` → `drawCrew(ctx, x, hipY, s, pose, who)`, who = `anna` (check-in), `annaFA` (flight attendant, hat), `bob` (security officer), `maxVac` (Dr. Max in Hawaiian shirt). Same pose API as Dr. Max (hip = floor − 280·s). Uncle Gary = `drawGus({tie:false, hold: gary})` (see `gary()` in `ep3/preview.js`).
-- Preview: `node ep3/preview.js video out.mp4 | still t1,t2 out.png | lineup out.png`; background `ep3/bg3.js` (check-in hall + `desk(ctx, kg)` foreground with scale display).
-- NEXT: 1) check network: `curl -sS -o /dev/null -w "%{http_code}" https://api.elevenlabs.io/v1/models` (must not be 000/403);
-  2) pick voices for Anna, Bob, Gary (send samples to owner); 3) generate all 84 lines (Sofia Jessica eleven_v3, Gus George, Max Chris), save as `ep3/vo/<id>.mp3`;
-  4) build ep3 pipeline by copying ep2 (script.js, timeline.py, scenes, render, audio) + remaining backgrounds: security gate, corridor+WC, gate lounge (window, GATE 12 DELAYED), plane cabin, Madrid baggage claim; 5) thumbnail + upload kit.
-- Why a new session: the previous session's network blocked api.elevenlabs.io and storage.googleapis.com, so generated audio could not be downloaded. The owner does NOT want to download/upload audio by hand.
+## Episode 3 "Gus at the Airport" — BUILT (needs owner review before publishing)
+- Script doc: https://claude.ai/code/artifact/537b0a61-9c6d-4773-8ff6-9cd7617b7b62 . Output: `ep3/sofia_ep3_gus_at_the_airport.mp4` (5:19 incl. 20 s end screen), `ep3/thumbnail.png`, `ep3/sofia_ep3_en.srt`, `ep3/upload_kit.txt`.
+- Voices: `python3 ep3/gen_vo.py` (ElevenLabs via proxy-injected key, no env key needed; skips existing mp3; saves `.align.json` used for exact word timing). Sofia Jessica, Gus George, Max Chris (all eleven_v3), Anna/announcer Matilda, Bob Adam, Gary Roger (my picks, owner has not heard samples yet — swap in `VOICES` and delete the mp3s to regenerate). Free tier: ~6200 chars left of 10000.
+- Build: `npm ci && pip install scipy`, then `sh ep3/build.sh out.mp4` (script.js → timeline.py → make_sfx.js → audio.py → render.js → mux, ~7 min). Stills: `node ep3/render.js still t1,t2 out.png`.
+- Files: scenes.js (all scenes), bg3.js (backgrounds), props3.js, ui3.js (6-phrase tracker/icons), trans.js, srt.py, thumb.js.
+- Possible polish: episode is ~5 min (owner target 6–7): add pauses/gags; sofia/crew "walk" legs; Anna looks smiling in the thumbnail.
+
