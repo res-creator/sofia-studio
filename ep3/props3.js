@@ -30,10 +30,11 @@ function suitcase(c, X, Y, s = 1, o = {}) {
   else { paint(c, q => roundRect(q, -w / 2 + 14, -h + 10, w - 28, 60, 18), '#3A2A24', { lw: 5 }); }
   c.restore();
 }
-function suitcaseLid(c, X, Y, s, k, col = '#E5484D') { // lid hinged at the back (right) top edge, opens upward
-  c.save(); c.translate(X + 160 * s, Y - 230 * s); c.rotate(k * 1.9); c.scale(s, s);
-  paint(c, q => roundRect(q, -320, -34, 320, 40, 16), col, { shade: '#B8323A', sx: 0, sy: -8, lw: 7 });
-  paint(c, q => roundRect(q, -330, -30, 24, 44, 8), '#3A3F4A', { lw: 5 });
+function suitcaseLid(c, X, Y, s, k, col = '#E5484D') { // open lid: an upright panel behind/above the case top (foreshortened), grows with k
+  const hh = 40 + k * 170, top = Y - 230 * s;
+  c.save(); c.translate(X, top); c.scale(s, s);
+  paint(c, q => roundRect(q, -150, -hh / s * 0 - hh, 300, hh + 6, 22), k > 0.5 ? '#B8323A' : col, { shade: '#8F2830', sx: 0, sy: -8, lw: 7 });
+  if (k > 0.5) { c.save(); c.globalAlpha = 0.5; paint(c, q => roundRect(q, -120, -hh + 24, 240, hh - 50, 14), '#8F2830', { lw: 0 }); c.restore(); }
   c.restore();
 }
 function passport(c, s = 1, rot = 0) {

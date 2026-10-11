@@ -220,12 +220,11 @@ const baggage = () => mk(x => {
   pill(x, 200, 880, 420, 100, '#2E6FD8', 'BAGGAGE  4', 48);
   tiles(x, '#E9C998', '#DDB982');
 });
-// carousel belt: back strip (bg) + moving slats and front rail in the scene
-function belt(x, t) {
-  paint(x, c => roundRect(c, 260, 1250, 2300, 170, 40), '#4A505C', { shade: '#353A44', sx: 0, sy: -14, lw: 8 });
-  x.save(); x.beginPath(); roundRect(x, 280, 1262, 2260, 80, 30); x.clip();
-  for (let i = -2; i < 50; i++) { const X = 280 + ((i * 70 + t * 160) % 3500); line(x, [[X, 1262], [X, 1342]], 5, '#2C3038'); } x.restore();
-  paint(x, c => roundRect(c, 240, 1340, 2340, 90, 20), '#8E96A3', { shade: '#6E7684', sx: 0, sy: -10, lw: 7 });
+// carousel belt: back strip with moving slats (beltBack) + front rail (beltFront, drawn over the bags' wheels). Slats move LEFT at 300 px/s like the bags.
+function beltBack(x, t) {
+  paint(x, c => roundRect(c, 200, 1250, 2600, 170, 40), '#4A505C', { shade: '#353A44', sx: 0, sy: -14, lw: 8 });
+  x.save(); x.beginPath(); roundRect(x, 220, 1262, 2560, 80, 30); x.clip();
+  for (let i = 0; i < 40; i++) { const X = 220 + (((i * 70 - t * 300) % 2800) + 2800) % 2800; line(x, [[X, 1262], [X, 1342]], 5, '#2C3038'); } x.restore();
 }
-
-module.exports = { checkin, desk, plane, security, lamp, corridor, lounge, boardGate, wallClock, seatFront, seatBlock, cabin, windowSky, baggage, belt, palm, cloud, sky, pill, plantPot, RES, WW, HH, FLOOR };
+function beltFront(x) { paint(x, c => roundRect(c, 180, 1340, 2640, 90, 20), '#8E96A3', { shade: '#6E7684', sx: 0, sy: -10, lw: 7 }); }
+module.exports = { checkin, desk, plane, security, lamp, corridor, lounge, boardGate, wallClock, seatFront, seatBlock, cabin, windowSky, baggage, beltBack, beltFront, palm, cloud, sky, pill, plantPot, RES, WW, HH, FLOOR };

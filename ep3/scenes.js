@@ -66,7 +66,7 @@ const home = (() => {
   const FL = 1520, CX = 1120, CS = 1.3, burst0 = () => m('burst');
   const NB = 20, bur = i => ({ vx: (hash(i * 7) - 0.5) * 900 - 120, vy: -(520 + hash(i * 3) * 520), land: FL - 20 + hash(i * 5) * 50, rot: hash(i) * 6, d: i * 0.035 });
   const burgerPos = (i, u) => {
-    const b = bur(i); u -= b.d; if (u < 0) return null; const g = 1900, y0 = FL - 280 * CS;
+    const b = bur(i); u -= b.d; if (u < 0) return null; const g = 1900, y0 = FL - 230 * CS;
     const tl = (-b.vy + Math.sqrt(b.vy * b.vy + 2 * g * (b.land - y0))) / g, uu = Math.min(u, tl);
     return { x: CX + b.vx * uu, y: y0 + b.vy * uu + 0.5 * g * uu * uu, rot: b.rot + uu * 5 };
   };
@@ -103,7 +103,7 @@ const home = (() => {
       // Gus sits on the case, then is thrown off
       const l04on = t >= m('l04'), off = burst;
       const air = burst ? clamp(u / 0.9) : 0, hop = burst ? Math.sin(Math.min(1, air) * Math.PI) * 180 : 0;
-      const gx = off ? lerp(CX, 880, ease.out(air)) : CX - 10, gy = off ? lerp(FL - 280 * CS, FL, ease.in(air)) - hop : FL - 285 * CS;
+      const gx = off ? lerp(CX, 880, ease.out(air)) : CX - 10, gy = off ? lerp(FL - 230 * CS, FL, ease.in(air)) - hop : FL - 230 * CS + 4;
       const proud = t >= m('l02') && t < m('l03'), calm = t >= m('l05');
       gus(ctx, gx, gy, 0.86, {
         face: -1, tie: true, lids: u > 0 && u < 0.7 ? 0.05 : proud ? 0.2 : calm ? 0.55 : 0.4,
@@ -117,8 +117,8 @@ const home = (() => {
         legs: 'stand', turn: taxi ? 0 : 0.38, look: taxi ? [0, -0.2] : [0.8, -0.2],
         brow: { l: 0.25, r: 0.25, worry: t > m('l03') && !burst ? 0.8 : 0, angry: firm ? 0.5 : 0 }, wide: shock * 0.9,
         mouth: { smile: t < m('l03') ? 0.7 : firm ? -0.1 : 0 }, sleepy: t >= m('l08') && t < l08w ? 0.5 : 0,
-        armL: firm ? [-180, -330] : taxi ? [-150 + Math.sin(t * 10) * 20, -480] : shock > 0.3 ? [-120, -330] : null, handL: shock > 0.3 || firm || taxi ? 'open' : 'mitten',
-        armR: firm ? [190, -150] : shock > 0.3 ? [150, -340] : null, handR: firm || shock > 0.3 ? 'open' : 'mitten', armsFront: firm || shock > 0.3 || taxi,
+        armL: firm ? [-190, -210] : taxi ? [-170 + Math.sin(t * 10) * 20, -430] : shock > 0.3 ? [-140, -210] : null, handL: shock > 0.3 || firm || taxi ? 'open' : 'mitten',
+        armR: firm ? [190, -150] : shock > 0.3 ? [160, -220] : null, handR: firm || shock > 0.3 ? 'open' : 'mitten', armsFront: firm || shock > 0.3 || taxi,
       }, t);
       ctx.restore();
       if (burst && u < 1.6) P.burst(ctx, 1420, 280, 'POP!', clamp(u / 1.0), '#FFD23F', 0.08, 0.9);
@@ -198,7 +198,7 @@ const checkin = (() => {
         turn: -0.3, look: sad ? [0.1, 0.6] : amazed ? [0, 0.7] : [-0.75, 0.05],
         browL: sad ? -0.35 : apol ? 0.6 : 0.3, browR: sad ? 0.25 : apol ? 0.6 : 0.3, surprise: amazed ? 0.8 : 0,
         mouth: { smile: sad ? -0.1 : apol ? -0.3 : 0.8, w: 1 },
-        armR: pass || give ? [70, -270] : t >= m('l15') && t < m('weigh') + 1 ? [-60, -240] : [120, -60], armL: [-120, -70], armsFront: pass || give,
+        armR: pass || give ? [115, -115] : t >= m('l15') && t < m('weigh') + 1 ? [-135, -130] : [120, -60], armL: [-120, -70], armsFront: pass || give,
         holdR: pass ? (c => PR.passport(c, 1.1, 0.2)) : give ? (c => PR.boardingPass(c, 1.2, 0.2)) : null,
       }, t, 'anna', 'anna', 4);
       // bag on the scale (drops in at 'weigh'); lid opens while Gus eats
@@ -225,7 +225,7 @@ const checkin = (() => {
       sofia(ctx, sx, standHip(1500, 0.72), 0.72, {
         legs: walking ? 'walk' : 'stand', walk: t * 1.9, turn: 0.35, look: palm ? [0.3, 0.4] : [0.8, -0.2],
         blink: palm ? 0.5 : 0, brow: { l: 0.2, r: 0.2, worry: palm ? 0.7 : 0 }, mouth: { smile: palm ? -0.2 : 0.55 },
-        armR: palm ? [40, -470] : here ? [230, -330] : null, handR: palm ? 'open' : 'mitten', armsFront: palm || here,
+        armR: palm ? [40, -470] : here ? [200, -180] : null, handR: palm ? 'open' : 'mitten', armsFront: palm || here,
         holdR: here ? (c => PR.passport(c, 1.0, 0.1)) : null,
       }, t, 1);
       B3.desk(ctx, kg);
@@ -283,7 +283,7 @@ const security = (() => {
       const looking = t >= m('look') && t < m('l27'), stern = t >= m('l28'), tie = t >= m('tie');
       crew(ctx, 1450, 1500, 0.7, {
         turn: -0.3, look: looking ? [-0.3, 0.8] : [-0.8, 0.05], browL: -0.5, browR: -0.5, mouth: { smile: -0.3 }, bob: 0,
-        armL: [-70, -50], armR: tie && t < m('l33') ? [110, -230] : [70, -50], armsFront: true,
+        armL: [-70, -50], armR: tie && t < m('l33') ? [100, -130] : [70, -50], armsFront: true,
         holdR: tie && t < m('l33') ? (c => { PR.tieClip(c, 0, 0, 1.1, 0.5); paint(c, q => { q.moveTo(-10, 4); q.lineTo(10, 4); q.lineTo(14, 56); q.lineTo(0, 70); q.lineTo(-14, 56); q.closePath(); }, '#2E6FD8', { lw: 4 }); }) : null,
         hop: 0,
       }, t, 'bob', 'bob', 3);
@@ -301,7 +301,7 @@ const security = (() => {
       const wh = t >= m('l34');
       sofia(ctx, 560 + (arch ? 0 : 0), standHip(1500, 0.74), 0.74, {
         turn: 0.3, look: wh ? [0.8, 0.1] : [0.8, -0.2], legs: 'stand', brow: { l: 0.2, r: 0.2, worry: wh ? 0.8 : 0 }, mouth: { smile: wh ? -0.1 : 0.55 }, sweat: wh ? 1 : 0,
-        armL: wh ? [-70, -420] : null, handL: wh ? 'open' : 'mitten', armsFront: wh,
+        armL: wh ? [-110, -230] : null, handL: wh ? 'open' : 'mitten', armsFront: wh,
       }, t, 2);
       ctx.restore();
       if (alarm && Math.floor(t * 6) % 2 === 0) P.burst(ctx, 1450, 270, 'BEEP BEEP!', clamp(((t - m('beep')) % 1.4) / 0.6), '#FF5A5A', -0.06, 0.8);
@@ -322,7 +322,7 @@ const corridor = (() => {
       const gx = lerp(1250, 2000, ease.in(go)), sx = lerp(850, 1560, ease.in(clamp((t - wordT('l36', 1) - 0.3) / 3)));
       gus(ctx, gx, 1500, 0.9, { face: 1, walking: go > 0, walk: t * 3, lids: t >= m('l36') ? 0.2 : 0.5, neck: t >= m('l36') ? -0.2 : 0, look: 0.6, wing: t >= m('l36') ? 0.6 : 0.1 }, t);
       const w = t < m('l35') + 1.0 ? 0 : 1;
-      sofia(ctx, sx, standHip(1500, 0.74), 0.74, { legs: go > 0.05 ? 'walk' : 'stand', walk: t * 2.4, turn: 0.3, look: [0.7, -0.2], brow: { l: 0.2, r: 0.2, worry: 0.9 }, mouth: { smile: -0.2 }, armL: t > m('l35') && t < m('l36') ? [-160, -300] : null, handL: 'open', armsFront: t > m('l35') && t < m('l36') }, t, 2);
+      sofia(ctx, sx, standHip(1500, 0.74), 0.74, { legs: go > 0.05 ? 'walk' : 'stand', walk: t * 2.4, turn: 0.3, look: [0.7, -0.2], brow: { l: 0.2, r: 0.2, worry: 0.9 }, mouth: { smile: -0.2 }, armL: t > m('l35') && t < m('l36') ? [-170, -200] : null, handL: 'open', armsFront: t > m('l35') && t < m('l36') }, t, 2);
       ctx.restore();
     },
   };
@@ -365,7 +365,7 @@ const wc = (() => {
       sofia(ctx, sx, standHip(1500, 0.74), 0.74, {
         legs: run > 0 ? 'walk' : 'stand', walk: t * 4, turn: run > 0 ? -0.4 : -0.35, look: run > 0 ? [-0.9, 0] : [-0.8, -0.1], wide: sur ? 0.9 : 0,
         brow: { l: 0.3, r: 0.3, angry: shout ? 0.5 : 0 }, mouth: { smile: shout ? 0.1 : t >= m('l37') && t < m('l38') ? -0.3 : 0.5 },
-        armL: shout && run < 0.05 ? [-200, -430] : null, handL: 'open', armsFront: shout && run < 0.05,
+        armL: shout && run < 0.05 ? [-190, -300] : null, handL: 'open', armsFront: shout && run < 0.05,
       }, t, 2);
       ctx.restore();
       if (t >= m('l44') && t < m('l44') + 1.4) P.burst(ctx, 1400, 270, 'RUN!', clamp((t - m('l44')) / 1.0), '#FFD23F', -0.08, 0.9);
@@ -489,7 +489,7 @@ const plane = (() => {
 // ==================================================================== 7. MADRID — baggage claim
 const baggage = (() => {
   const { m } = mk('baggage');
-  const CASEX = t => 1450 + 300 * (m('l68') - Math.min(t, m('l68'))), CS = 0.95, BY = 1312;
+  const CASEX = t => 1450 + 300 * (m('l68') - Math.min(t, m('l68'))), CS = 0.95, BY = 1330;
   return {
     sfx: [['belt', 0, 'belt'], ['l68', 0.0, 'thunk'], ['open', 0, 'boing'], ['honk', 0, 'honk'], ['l66', 0, 'dingdong']],
     draw(ctx, t) {
@@ -508,12 +508,12 @@ const baggage = (() => {
       const cam = shotCam(shots, t);
       ctx.save(); applyCam(ctx, cam, t);
       drawBg(ctx, 'baggage');
-      B3.belt(ctx, bt * 0.5);
-      // decor bags drifting on the belt
-      [['#5BB8F0', 300], ['#3DAA6E', 1100], ['#FFD23F', 1900]].forEach(([c, x0], i) => { const x = ((x0 - bt * 300) % 2300 + 2300) % 2300 + 260; PR.suitcase(ctx, x, BY, 0.55, { col: c, sh: '#00000044' }); });
+      B3.beltBack(ctx, bt);
+      // decor bags ride the belt at belt speed (belt spans x 260..2780; bags loop off-screen only)
+      [['#5BB8F0', 300], ['#3DAA6E', 1100], ['#FFD23F', 1900]].forEach(([c, x0]) => { const x = ((x0 - bt * 300 - 260) % 2500 + 2500) % 2500 + 260; if (x < 2700) PR.suitcase(ctx, x, BY, 0.55, { col: c, sh: '#00000044' }); });
       // Gus's case + Uncle Gary inside
       const cx = CASEX(t), opened = t >= m('open'), lid = opened ? ease.out(clamp((t - m('open')) / 0.35)) : 0, ru = t - m('open');
-      if (t >= m('belt') - 1.5) {
+      if (CASEX(t) < 2640) {
         PR.suitcase(ctx, cx, BY, CS, { open: opened ? 1 : 0 });
         if (opened) {
           ctx.save(); ctx.beginPath(); ctx.rect(cx - 400, 0, 800, BY - 230 * CS + 45); ctx.clip();
@@ -525,12 +525,13 @@ const baggage = (() => {
           if (!(t >= m('honk'))) P.zzz(ctx, cx + 20, BY - 230 * CS - 120, t);
         }
       }
+      B3.beltFront(ctx);
       // Sofia + Gus watch the belt (Gus freezes in shock)
       const arrive = t >= m('l66') + 0.2;
       gus(ctx, 1000, 1500, 0.9, { face: 1, lids: t >= m('l68') && t < m('l69') ? 0.02 : 0.5, neck: t >= m('l68') && t < m('l69') ? -0.4 : 0, look: 0.5, wing: t >= m('l69') && t < m('l70') ? 0.6 : 0.1, squash: t >= m('l68') && t < m('l69') ? 1.03 : 1 }, t);
       const ex = t >= m('l67') && t < m('belt'), lau = t >= m('l71');
       sofia(ctx, 640, standHip(1500, 0.74), 0.74, {
-        turn: 0.35, look: [0.8, -0.1], brow: { l: 0.4, r: 0.4 }, mouth: { smile: 0.9 }, armL: ex || lau ? [-160, -430] : null, handL: 'open', armsFront: ex || lau, wide: t >= m('open') && t < m('l69') ? 0.7 : 0,
+        turn: 0.35, look: [0.8, -0.1], brow: { l: 0.4, r: 0.4 }, mouth: { smile: 0.9 }, armL: ex || lau ? [-170, -300] : null, handL: 'open', armsFront: ex || lau, wide: t >= m('open') && t < m('l69') ? 0.7 : 0,
       }, t, 2);
       ctx.restore();
       if (t >= m('honk') && t < m('l69')) P.burst(ctx, 1500, 270, 'HONK!', clamp((t - m('honk')) / 1.0), '#FFD23F', -0.08, 0.9);
@@ -563,7 +564,7 @@ const recap = (() => {
         if (t > Ln.t1 && t < nextT - 0.7) { paint(ctx, c => roundRect(c, 215, -80, 190, 40, 20), U.GREEN, { lw: 4 }); ctx.font = '700 26px ' + F.EN; ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.fillText('YOUR TURN', 310, -51); }
         ctx.restore();
       });
-      sofia(ctx, 170, 1230, 0.72, { armR: [200, -380], handR: 'open', mouth: { smile: 0.9 }, look: [0.6, -0.5], turn: 0.2 }, t, 10);
+      sofia(ctx, 170, 1230, 0.72, { armR: [190, -290], handR: 'open', mouth: { smile: 0.9 }, look: [0.6, -0.5], turn: 0.2 }, t, 10);
       gus(ctx, 1780, 1110, 0.72, { face: -1, lids: 0.55, neck: Math.sin(t * 3) * 0.2, look: -0.6 }, t);
     },
   };
@@ -603,7 +604,7 @@ const quiz = (() => {
         paint(ctx, c => c.arc(0, 0, 90, 0, 7), '#FFFFFF', { lw: 8 }); U.textOutlined(ctx, String(Math.max(1, n)), 0, 38, 110, U.RED, { olw: 14 });
         ctx.restore();
       }
-      sofia(ctx, 230, 1230, 0.72, { armR: [200, -400], handR: 'open', armL: [-130, -80], mouth: { smile: 0.9 }, brow: { l: 0.5, r: 0.5 }, look: [0.8, -0.4], turn: 0.2 }, t, 5);
+      sofia(ctx, 230, 1230, 0.72, { armR: [190, -300], handR: 'open', armL: [-130, -80], mouth: { smile: 0.9 }, brow: { l: 0.5, r: 0.5 }, look: [0.8, -0.4], turn: 0.2 }, t, 5);
       const sad = ans ? clamp((t - m('answer') - 0.3) / 0.4) : 0;
       // Gus votes A (innocent face); a burger falls out from behind the sign when the truth is told
       gus(ctx, 1700, 1110, 0.75, { face: -1, lids: lerp(0.45, 0.8, sad), look: -0.5, neck: -sad * 0.6, hold: (c, face, H) => { c.translate(H.hx + 128, H.hy + 26); c.rotate(sad * 0.35 + Math.sin(t * 3) * 0.05); line(c, [[0, 0], [0, 40]], 5, OL); c.scale(face, 1); paint(c, q => roundRect(q, -66, 40, 132, 132, 14), '#FFFFFF', { lw: 6 }); U.textOutlined(c, 'A', 0, 140, 96, U.ORANGE, { olw: 12 }); } }, t);
@@ -623,13 +624,14 @@ const outro = (() => {
       const shots = [{ t: m('l73'), c: [1450, 1100, 1.25], to: [1440, 1100, 1.32], d: 8 }, { t: m('endscreen'), c: [1450, 1060, 1.0] }];
       ctx.save(); applyCam(ctx, shotCam(shots, t), t);
       drawBg(ctx, 'baggage');
-      B3.belt(ctx, 0);
-      PR.suitcase(ctx, 2150, 1312, 0.95, { open: 1 }); PR.suitcaseLid(ctx, 2150, 1312, 0.95, 1);
+      B3.beltBack(ctx, 0);
+      PR.suitcase(ctx, 2250, 1330, 0.95, { open: 1 }); PR.suitcaseLid(ctx, 2250, 1330, 0.95, 1);
+      B3.beltFront(ctx);
       const bye = t >= m('l74'), fly = clamp((t - m('bye') - 2.2) / 3.0), fe = ease.in(fly);
       // Uncle Gary stands up out of the case and joins Gus
-      garyRig(ctx, lerp(1980, 1500, ease.out(clamp((t - m('l73')) / 1.5))) + fe * 700, 1500 - fe * 1100, 0.9, { face: -1, wing: fly > 0 ? 0.5 + 0.5 * Math.sin(t * 14) : 0.1, lids: 0.7, look: -0.4 }, t);
+      garyRig(ctx, lerp(2000, 1700, ease.out(clamp((t - m('l73')) / 1.5))) + fe * 700, 1500 - fe * 1100, 0.9, { face: -1, wing: fly > 0 ? 0.5 + 0.5 * Math.sin(t * 14) : 0.1, lids: 0.7, look: -0.4 }, t);
       gus(ctx, 1120 + fe * 700, 1500 - fe * 1100, 0.92, { face: 1, lids: t >= m('bye') ? 0.55 : 0.55, look: t >= m('bye') ? 0.4 : 0.6, wing: fly > 0 ? 0.5 + 0.5 * Math.sin(t * 14) : t >= m('bye') ? 0.4 + 0.3 * Math.sin(t * 12) : 0.1 }, t);
-      sofia(ctx, 700, standHip(1500, 0.76), 0.76, { turn: bye ? 0.1 : 0.25, look: [0.4, -0.1], armR: bye ? [210 + Math.sin(t * 10) * 40, -420] : [160, -150], handR: 'open', armL: [-150, -80], mouth: { smile: 0.95 }, brow: { l: 0.4, r: 0.4 } }, t, 11);
+      sofia(ctx, 700, standHip(1500, 0.76), 0.76, { turn: bye ? 0.1 : 0.25, look: [0.4, -0.1], armR: bye ? [200 + Math.sin(t * 10) * 35, -340] : [160, -150], handR: 'open', armL: [-150, -80], mouth: { smile: 0.95 }, brow: { l: 0.4, r: 0.4 } }, t, 11);
       ctx.restore();
       if (end) { ctx.fillStyle = `rgba(255,246,230,${0.55 * clamp((t - m('endscreen')) / 0.5)})`; ctx.fillRect(0, 0, 1920, 1080); }
       const ck = ease.back(clamp((t - m('l73') - 0.3) / 0.4)) * (bye ? 1 - clamp((t - m('l74')) / 0.3) : 1);
