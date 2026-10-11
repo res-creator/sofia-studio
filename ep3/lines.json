@@ -1,0 +1,338 @@
+{
+ "l01": {
+  "who": "sofia",
+  "text": "[excited] Gus! Our flight is at ten! Are you ready?"
+ },
+ "l02": {
+  "who": "gus",
+  "text": "[proudly] I am ready. I packed my bag."
+ },
+ "l03": {
+  "who": "sofia",
+  "text": "[suspicious] Why is your bag... moving?"
+ },
+ "l04": {
+  "who": "sofia",
+  "text": "[shocked] Burgers?! Gus, you packed twenty burgers!"
+ },
+ "l05": {
+  "who": "gus",
+  "text": "[calmly] It is my emergency food."
+ },
+ "l06": {
+  "who": "sofia",
+  "text": "[firmly] We are going to Spain, not to the moon!"
+ },
+ "l07": {
+  "who": "gus",
+  "text": "[deadpan] You never know."
+ },
+ "l08": {
+  "who": "sofia",
+  "text": "[sighs] Okay. Let's go. Taxi!"
+ },
+ "l09": {
+  "who": "anna",
+  "text": "[friendly] Good morning! Can I see your passport, please?"
+ },
+ "l10": {
+  "who": "sofia",
+  "text": "[politely] Here you are."
+ },
+ "l11": {
+  "who": "anna",
+  "text": "[warmly] Thank you. And the passport for your friend?"
+ },
+ "l12": {
+  "who": "gus",
+  "text": "[proudly] Here."
+ },
+ "l13": {
+  "who": "anna",
+  "text": "[confused] Sir... this is a photo of an egg."
+ },
+ "l14": {
+  "who": "gus",
+  "text": "[deadpan] It was a long time ago."
+ },
+ "l15": {
+  "who": "anna",
+  "text": "[slowly] ...Okay. Please put your bag here."
+ },
+ "l16": {
+  "who": "anna",
+  "text": "[apologetic] Oh no. Your bag is too heavy. The limit is twenty-three kilos."
+ },
+ "l17": {
+  "who": "sofia",
+  "text": "[embarrassed] Sorry! My bag is too heavy... because of HIS burgers."
+ },
+ "l18": {
+  "who": "gus",
+  "text": "[determined] No problem. I can fix this."
+ },
+ "l19": {
+  "who": "anna",
+  "text": "[amazed] ...Twenty-three kilos. Perfect."
+ },
+ "l20": {
+  "who": "gus",
+  "text": "[satisfied] You're welcome."
+ },
+ "l21": {
+  "who": "anna",
+  "text": "[cheerful] Here are your boarding passes. Gate twelve. Have a nice flight!"
+ },
+ "l22": {
+  "who": "sofia",
+  "text": "[happy] Thank you!"
+ },
+ "l23": {
+  "who": "bob",
+  "text": "[strict] Next! Put your bag and your phone in the box, please."
+ },
+ "l24": {
+  "who": "sofia",
+  "text": "[politely] Of course."
+ },
+ "l25": {
+  "who": "bob",
+  "text": "[strict] Please take off your shoes."
+ },
+ "l26": {
+  "who": "gus",
+  "text": "[deadpan] I don't have shoes."
+ },
+ "l27": {
+  "who": "bob",
+  "text": "[flatly] ...Right. Please walk through."
+ },
+ "l28": {
+  "who": "bob",
+  "text": "[stern] Stop! Do you have any metal?"
+ },
+ "l29": {
+  "who": "gus",
+  "text": "[innocent] No."
+ },
+ "l30": {
+  "who": "bob",
+  "text": "[suspicious] Are you sure?"
+ },
+ "l31": {
+  "who": "gus",
+  "text": "[proudly] Only my golden tie clip. It was a gift from my grandma."
+ },
+ "l32": {
+  "who": "bob",
+  "text": "[sighs] Please take it off."
+ },
+ "l33": {
+  "who": "gus",
+  "text": "[embarrassed] I feel naked."
+ },
+ "l34": {
+  "who": "sofia",
+  "text": "[whispering] Gus, everyone is looking!"
+ },
+ "l35": {
+  "who": "sofia",
+  "text": "[worried] Our flight is in twenty minutes! Where is gate twelve?"
+ },
+ "l36": {
+  "who": "gus",
+  "text": "[confident] This way!"
+ },
+ "l37": {
+  "who": "sofia",
+  "text": "[flatly] Gus. This is the toilet."
+ },
+ "l38": {
+  "who": "gus",
+  "text": "[deadpan] I needed it anyway."
+ },
+ "l39": {
+  "who": "sofia",
+  "text": "[politely] Excuse me, where is gate twelve?"
+ },
+ "l40": {
+  "who": "drmax",
+  "text": "[friendly] Gate twelve? Go straight and turn left."
+ },
+ "l41": {
+  "who": "sofia",
+  "text": "[surprised] Doctor Max?!"
+ },
+ "l42": {
+  "who": "drmax",
+  "text": "[smiling] Hello again! Gus, no burgers on the plane, okay?"
+ },
+ "l43": {
+  "who": "gus",
+  "text": "[guilty] ...Okay."
+ },
+ "l44": {
+  "who": "sofia",
+  "text": "[shouting] Run!"
+ },
+ "l45": {
+  "who": "announcer",
+  "text": "[PA voice] Attention, please. Flight two-oh-seven to Madrid is delayed. New departure time: twelve o'clock."
+ },
+ "l46": {
+  "who": "sofia",
+  "text": "[disappointed] Oh no! Our flight is delayed. Two hours!"
+ },
+ "l47": {
+  "who": "gus",
+  "text": "[hopeful] Two hours... Do they sell burgers here?"
+ },
+ "l48": {
+  "who": "sofia",
+  "text": "[firmly] No more burgers! You ate three at check-in!"
+ },
+ "l49": {
+  "who": "gus",
+  "text": "[sadly] They were emergency burgers."
+ },
+ "l50": {
+  "who": "sofia",
+  "text": "[kindly] Let's just sit and wait."
+ },
+ "l51": {
+  "who": "gus",
+  "text": "[dreamy] Look, Sofia. Geese. They don't wait two hours."
+ },
+ "l52": {
+  "who": "sofia",
+  "text": "[laughs] Lucky geese."
+ },
+ "l53": {
+  "who": "anna",
+  "text": "[cheerful] Welcome on board! Oh, hello again!"
+ },
+ "l54": {
+  "who": "sofia",
+  "text": "[surprised] Hello! Where are our seats?"
+ },
+ "l55": {
+  "who": "anna",
+  "text": "[friendly] Row fourteen. Window or aisle seat?"
+ },
+ "l56": {
+  "who": "gus",
+  "text": "[quickly] Window! I want to see my family."
+ },
+ "l57": {
+  "who": "sofia",
+  "text": "[confused] Your family?"
+ },
+ "l58": {
+  "who": "gus",
+  "text": "[proudly] My cousins fly at this height."
+ },
+ "l59": {
+  "who": "gus",
+  "text": "[happy] Hi, Uncle Gary!"
+ },
+ "l60": {
+  "who": "sofia",
+  "text": "[deadpan] ...Of course you have an Uncle Gary."
+ },
+ "l61": {
+  "who": "anna",
+  "text": "[friendly] Would you like chicken or fish?"
+ },
+ "l62": {
+  "who": "sofia",
+  "text": "[politely] Chicken, please."
+ },
+ "l63": {
+  "who": "gus",
+  "text": "[hopeful] Do you have burgers?"
+ },
+ "l64": {
+  "who": "anna",
+  "text": "[smiling] No burgers, sorry."
+ },
+ "l65": {
+  "who": "gus",
+  "text": "[sighs] Then fish, please. A big one."
+ },
+ "l66": {
+  "who": "announcer",
+  "text": "[PA voice, cheerful] Ladies and gentlemen, welcome to Madrid! Have a nice day!"
+ },
+ "l67": {
+  "who": "sofia",
+  "text": "[excited] We are in Spain, Gus!"
+ },
+ "l68": {
+  "who": "gus",
+  "text": "[shocked] My emergency food!"
+ },
+ "l69": {
+  "who": "gus",
+  "text": "[outraged] Uncle Gary! You ate my emergency food!"
+ },
+ "l70": {
+  "who": "gary",
+  "text": "[lazy, happy] It was an emergency."
+ },
+ "l71": {
+  "who": "sofia",
+  "text": "[laughing] Welcome to Spain, Gus!"
+ },
+ "l72": {
+  "who": "sofia",
+  "text": "[cheerful] Let's practice! Say it with me!"
+ },
+ "r1": {
+  "who": "sofia",
+  "text": "Can I see your passport?"
+ },
+ "r2": {
+  "who": "sofia",
+  "text": "My bag is too heavy."
+ },
+ "r3": {
+  "who": "sofia",
+  "text": "Where is gate twelve?"
+ },
+ "r4": {
+  "who": "sofia",
+  "text": "My flight is delayed."
+ },
+ "r5": {
+  "who": "sofia",
+  "text": "Window or aisle seat?"
+ },
+ "r6": {
+  "who": "sofia",
+  "text": "Have a nice flight!"
+ },
+ "q01": {
+  "who": "sofia",
+  "text": "[excited] Quick quiz! What did Gus pack in his bag?"
+ },
+ "q02": {
+  "who": "sofia",
+  "text": "A: Clothes. Or B: Burgers."
+ },
+ "q03": {
+  "who": "sofia",
+  "text": "[laughing] B! Twenty burgers!"
+ },
+ "l73": {
+  "who": "sofia",
+  "text": "[curious] Where do YOU want to fly? Write the city in the comments!"
+ },
+ "l74": {
+  "who": "sofia",
+  "text": "[cheerful] Have a nice flight! See you next time! Bye!"
+ },
+ "l75": {
+  "who": "gus",
+  "text": "[deadpan] Bye bye. I'm flying home with Gary."
+ }
+}
