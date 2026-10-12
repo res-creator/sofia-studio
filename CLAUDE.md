@@ -22,3 +22,10 @@ Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). Thi
 - Files: scenes.js (all scenes), bg3.js (backgrounds), props3.js, ui3.js (6-phrase tracker/icons), trans.js, srt.py, thumb.js.
 - Possible polish: episode is ~5 min (owner target 6–7): add pauses/gags; sofia/crew "walk" legs; Anna looks smiling in the thumbnail.
 
+
+## Publishing (Ep3) — done via Metricool
+- YouTube channel `UCyaA-eJ_Ixi8_HOrHA_P0GA` is connected to Metricool brand 7375148 (timezone Europe/Chisinau). Metricool connector must be enabled in the chat.
+- Metricool needs a public HTTPS media URL. Public media repo: `res-creator/sofia-easy-english-media` (raw URLs `https://raw.githubusercontent.com/res-creator/sofia-easy-english-media/main/ep3/<file>`). New repos cannot be created by the integration (403) — the owner creates them, then `add_repo` with push access.
+- Scheduled: full Ep3 Tue 2026-10-20 16:00; Shorts 10-21, 10-22, 10-23, 10-26 at 16:00 (Chisinau). Best slots per Metricool benchmark: Tue–Thu ~16:00.
+- Subtitles (`sofia_ep3_en.srt`) are not uploaded by Metricool — add in YouTube Studio if wanted.
+- Drive connector cannot upload video (bytes must be pasted as base64 text).
