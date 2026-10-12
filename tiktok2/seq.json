@@ -1,0 +1,178 @@
+{
+ "SEQ": [
+  {
+   "id": "hook",
+   "items": [
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "n01",
+     "who": "nar",
+     "text": "[energetic] Как ты просишь счёт в кафе на английском? По одной фразе видно твой уровень. Проверим."
+    },
+    {
+     "wait": 0.5
+    }
+   ]
+  },
+  {
+   "id": "a1",
+   "items": [
+    {
+     "mark": "splash"
+    },
+    {
+     "say": "n02",
+     "who": "nar",
+     "text": "Уровень А один."
+    },
+    {
+     "wait": 0.45
+    },
+    {
+     "say": "l01",
+     "who": "lena",
+     "text": "[cheerful] Money, please!"
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "say": "c01",
+     "who": "cat",
+     "text": "[confused] Money? ...Oh! Okay. Here you go."
+    },
+    {
+     "mark": "cash"
+    },
+    {
+     "wait": 1.3
+    },
+    {
+     "say": "n03",
+     "who": "nar",
+     "text": "Официант решил, что ты просишь денег. И дал. Бывает."
+    },
+    {
+     "mark": "card"
+    },
+    {
+     "wait": 2.4
+    }
+   ]
+  },
+  {
+   "id": "b1",
+   "items": [
+    {
+     "mark": "splash"
+    },
+    {
+     "say": "n04",
+     "who": "nar",
+     "text": "Уровень Б один."
+    },
+    {
+     "wait": 0.45
+    },
+    {
+     "say": "l02",
+     "who": "lena",
+     "text": "[friendly] Could we have the bill, please?"
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "say": "c02",
+     "who": "cat",
+     "text": "[friendly] Of course! Here you are."
+    },
+    {
+     "mark": "bill"
+    },
+    {
+     "wait": 1
+    },
+    {
+     "say": "n05",
+     "who": "nar",
+     "text": "Просто и вежливо. Так говорят носители. Bill - это счёт."
+    },
+    {
+     "mark": "card"
+    },
+    {
+     "wait": 2.6
+    }
+   ]
+  },
+  {
+   "id": "c2",
+   "items": [
+    {
+     "mark": "splash"
+    },
+    {
+     "say": "n06",
+     "who": "nar",
+     "text": "Уровень С два."
+    },
+    {
+     "wait": 0.45
+    },
+    {
+     "say": "l03",
+     "who": "lena",
+     "text": "[pompous] I trust you shall forgive my impertinence, but might I trouble you for the remuneration?"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "c03",
+     "who": "cat",
+     "text": "[confused] ...Sorry? Do you want dessert?"
+    },
+    {
+     "mark": "cake"
+    },
+    {
+     "wait": 1.2
+    },
+    {
+     "say": "n07",
+     "who": "nar",
+     "text": "Официант не понял ни слова. И принёс десерт."
+    },
+    {
+     "mark": "card"
+    },
+    {
+     "wait": 2.4
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "items": [
+    {
+     "say": "n08",
+     "who": "nar",
+     "text": "Мораль: красиво не значит понятно. А как ты просишь счёт? Пиши в комментарии и подпишись."
+    },
+    {
+     "wait": 0.8
+    },
+    {
+     "mark": "end"
+    },
+    {
+     "wait": 2
+    }
+   ]
+  }
+ ],
+ "PHRASES": []
+}

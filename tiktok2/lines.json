@@ -1,0 +1,58 @@
+{
+ "n01": {
+  "who": "nar",
+  "text": "[energetic] Как ты просишь счёт в кафе на английском? По одной фразе видно твой уровень. Проверим."
+ },
+ "n02": {
+  "who": "nar",
+  "text": "Уровень А один."
+ },
+ "l01": {
+  "who": "lena",
+  "text": "[cheerful] Money, please!"
+ },
+ "c01": {
+  "who": "cat",
+  "text": "[confused] Money? ...Oh! Okay. Here you go."
+ },
+ "n03": {
+  "who": "nar",
+  "text": "Официант решил, что ты просишь денег. И дал. Бывает."
+ },
+ "n04": {
+  "who": "nar",
+  "text": "Уровень Б один."
+ },
+ "l02": {
+  "who": "lena",
+  "text": "[friendly] Could we have the bill, please?"
+ },
+ "c02": {
+  "who": "cat",
+  "text": "[friendly] Of course! Here you are."
+ },
+ "n05": {
+  "who": "nar",
+  "text": "Просто и вежливо. Так говорят носители. Bill - это счёт."
+ },
+ "n06": {
+  "who": "nar",
+  "text": "Уровень С два."
+ },
+ "l03": {
+  "who": "lena",
+  "text": "[pompous] I trust you shall forgive my impertinence, but might I trouble you for the remuneration?"
+ },
+ "c03": {
+  "who": "cat",
+  "text": "[confused] ...Sorry? Do you want dessert?"
+ },
+ "n07": {
+  "who": "nar",
+  "text": "Официант не понял ни слова. И принёс десерт."
+ },
+ "n08": {
+  "who": "nar",
+  "text": "Мораль: красиво не значит понятно. А как ты просишь счёт? Пиши в комментарии и подпишись."
+ }
+}

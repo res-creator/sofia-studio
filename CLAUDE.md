@@ -37,3 +37,7 @@ Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). Thi
 - TikTok audience (owner screenshots): RU 35%, KZ 30%, UA 12%, BY 7%; daily peak 17:00-19:00 (her phone time) -> post TikTok ~17:00 Chisinau.
 - `lib/anim/gestures.js` + `validate.js`: arm gesture library (no chicken-wing IK flips); use `GS.compose` for arms. Ep3 re-render with it not yet done.
 - 2nd channel (Russian/shorts kit): `tiktok/youtube_shorts_kit.txt`, owner uploads manually at 19:00 daily.
+
+## TikTok pilot (WIP, paused by owner) — `tiktok2/`
+- Format analysed from the owner's 12 videos (@speak_in_english): hook question + A1→C2 level ladder, funny misunderstanding per level, RU narrator + EN dialogue, lesson card (✖ strikethrough / ✔ correct), outro "Пиши в комменты" + subscribe button.
+- Pilot "Как попросить счёт в кафе" (A1/B1/C2) built as stills only; voices generated (~670 chars used, ~1,800 ElevenLabs chars left until Nov 9). Characters (Lena in `lib/crew.js` STYLES.lena, cat in `tiktok2/cat.js`) did NOT satisfy the owner — she will send reference images; redo characters from those before building the video.
