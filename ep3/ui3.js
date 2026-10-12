@@ -34,15 +34,22 @@ function icon(ctx, name, X, Y, s = 1) {
   } else U2.icon(ctx, name, 0, 0, 1);
   ctx.restore();
 }
-// phrase card: ep2 layout, ep3 icon set (monkey-patched icon for the shared draw routine)
-function phraseCard(ctx, cd, k, out, t, side) {
-  const orig = U2.icon; U2.icon = icon; // not used by ep2 phraseCard (it calls its local icon) → draw our own icon on top
-  U2.phraseCard(ctx, Object.assign({}, cd, { icon: '_none' }), k, out, t, side); U2.icon = orig;
+// NEW PHRASE card: ep2 layout; the phrase is auto-fitted to the card width, card sits in a top corner (away from faces)
+function phraseCard(ctx, cd, k, out, t, side = 'right') {
   if (k <= 0 || out >= 1) return;
-  const a = ease.back(clamp(k)), o = 1 - ease.in(clamp(out)), s = 0.58 * a * o + 0.0001;
-  const X = side === 'left' ? 450 : 1470, Y = 210;
+  const a = ease.back(clamp(k)), o = 1 - ease.in(clamp(out)), s = 0.5 * a * o + 0.0001;
+  const X = side === 'left' ? 310 : 1590, Y = 185;
   ctx.save(); ctx.translate(X + (1 - clamp(k * 1.4)) * (side === 'left' ? -260 : 260), Y); ctx.scale(s, s); ctx.rotate((side === 'left' ? 0.03 : -0.03) + Math.sin(t * 2) * 0.008);
-  icon(ctx, cd.icon, 370, -144, 0.85); ctx.restore();
+  ctx.save(); ctx.globalAlpha = 0.25; paint(ctx, c => roundRect(c, -440 + 14, -190 + 18, 880, 380, 46), '#000', { lw: 0 }); ctx.restore();
+  paint(ctx, c => roundRect(c, -440, -190, 880, 380, 46), '#FFFFFF', { lw: 8 });
+  ctx.save(); ctx.beginPath(); roundRect(ctx, -440, -190, 880, 380, 46); ctx.clip(); ctx.fillStyle = GREEN; ctx.fillRect(-440, -190, 880, 92); ctx.restore();
+  line(ctx, [[-440, -98], [440, -98]], 8, OL);
+  U.textOutlined(ctx, 'NEW PHRASE', -390, -125, 44, '#FFFFFF', { align: 'left', olw: 8 });
+  icon(ctx, cd.icon, 370, -144, 0.85);
+  ctx.font = `800 100px ${F.EN}`; const fs = Math.min(100, Math.floor(100 * 790 / Math.max(1, ctx.measureText(cd.en).width)));
+  U.textOutlined(ctx, cd.en, 0, 40, fs, ORANGE, { olw: Math.max(8, fs * 0.14) });
+  ctx.font = '42px DejaVu Sans'; ctx.fillStyle = '#8A6A5C'; ctx.textAlign = 'center'; ctx.fillText(cd.ipa, 0, 120);
+  ctx.restore();
 }
 const TRACK = ['passport', 'bag', 'wave', 'gate', 'delay', 'seat'];
 function tracker(ctx, done, t, alpha = 1) {
