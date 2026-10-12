@@ -8,6 +8,8 @@ for (const S of TL.scenes) {
   const tr = TRANS[S.id]; if (tr && tr !== 'cut' && tr !== 'fade') out.push({ t: S.t0 - 0.22, name: 'whoosh', g: 1 });
 }
 for (const p of TL.phrases) { const L = TL.lines.find(l => l.id === p.line); const w = L.words[Math.min(p.word, L.words.length - 1)]; out.push({ t: (w ? w.t0 : L.t0), name: 'card' }); }
+const VOC = require('./vocab').SPEC;
+for (const id of Object.keys(VOC)) { const L = TL.lines.find(l => l.id === id); VOC[id].forEach(cd => { const w = L.words[Math.min(cd.at, L.words.length - 1)]; out.push({ t: (w ? w.t0 : L.t0), name: 'pop' }); }); }
 for (const tr of TL.turns) out.push({ t: tr.t0, name: 'ding' });
 require('fs').writeFileSync(__dirname + '/sfx.json', JSON.stringify(out));
 console.log(out.length, 'sfx');

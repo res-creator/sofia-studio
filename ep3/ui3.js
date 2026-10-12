@@ -4,6 +4,7 @@ const F = require('../lib/fonts');
 const U = require('../lib/ui');
 const U2 = require('../ep2/ui2');
 const { ORANGE, GREEN, RED } = U;
+const STYLE = U2.STYLE;
 U2.STYLE.anna = { bg: '#2A3D73', on: '#FFD23F', past: '#FFFFFF', idle: '#FFFFFF' };
 U2.STYLE.announcer = U2.STYLE.anna;
 U2.STYLE.bob = { bg: '#5E6676', on: '#FFD23F', past: '#FFFFFF', idle: '#FFFFFF' };
@@ -34,21 +35,53 @@ function icon(ctx, name, X, Y, s = 1) {
   } else U2.icon(ctx, name, 0, 0, 1);
   ctx.restore();
 }
+function caption3(ctx, words, t, who = 'sofia', Y = 978, CX = 960) {
+  if (!words || !words.length) return;
+  const st = STYLE[who] || STYLE.sofia, FS = 62, GAP = 26, maxW = 1380, lh = 76;
+  ctx.save(); ctx.font = `800 ${FS}px ${F.EN}`;
+  const lines = [[]]; let w = 0;
+  for (const wd of words) { const ww = ctx.measureText(wd.w).width + GAP; if (w + ww > maxW && lines[lines.length - 1].length) { lines.push([]); w = 0; } lines[lines.length - 1].push({ ...wd, ww }); w += ww; }
+  let cur = 0; lines.forEach((ln, i) => { if (ln.length && t >= ln[0].t0 - 0.05) cur = i; });
+  const show = lines.length <= 2 ? lines : lines.slice(Math.min(cur, lines.length - 2), Math.min(cur, lines.length - 2) + 2);
+  const totalH = show.length * lh, pad = 30;
+  const bw = Math.max(...show.map(l => l.reduce((a, b) => a + b.ww, 0))) + pad * 2 - GAP;
+  const by = Y + 40 - totalH - 24;
+  ctx.globalAlpha = 0.95;
+  paint(ctx, c => roundRect(c, CX - bw / 2, by, bw, totalH + 24, 34), st.bg, { lw: 8 });
+  ctx.globalAlpha = 1;
+  show.forEach((ln, i) => {
+    const lw = ln.reduce((a, b) => a + b.ww, 0) - GAP; let x0 = CX - lw / 2; const y = by + 12 + lh * i + 58;
+    for (const wd of ln) {
+      const active = t >= wd.t0 && t < wd.t1 + 0.08, past = t >= wd.t1;
+      const k = active ? clamp((t - wd.t0) / 0.12) : 0;
+      ctx.save(); ctx.translate(x0 + (wd.ww - GAP) / 2, y - 26); const sc = 1 + 0.05 * Math.sin(k * Math.PI) + (active ? 0.02 : 0); ctx.scale(sc, sc);
+      ctx.textAlign = 'center';
+      if (who !== 'sofia') { ctx.lineWidth = 10; ctx.strokeStyle = 'rgba(30,20,15,0.35)'; ctx.lineJoin = 'round'; ctx.strokeText(wd.w, 0, 26); }
+      ctx.fillStyle = active ? st.on : past ? st.past : st.idle;
+      ctx.fillText(wd.w, 0, 26); ctx.restore();
+      x0 += wd.ww;
+    }
+  });
+  ctx.restore();
+}
+
+
 // NEW PHRASE card: ep2 layout; the phrase is auto-fitted to the card width, card sits in a top corner (away from faces)
 function phraseCard(ctx, cd, k, out, t, side = 'right') {
   if (k <= 0 || out >= 1) return;
   const a = ease.back(clamp(k)), o = 1 - ease.in(clamp(out)), s = 0.5 * a * o + 0.0001;
   const X = side === 'left' ? 310 : 1590, Y = 185;
   ctx.save(); ctx.translate(X + (1 - clamp(k * 1.4)) * (side === 'left' ? -260 : 260), Y); ctx.scale(s, s); ctx.rotate((side === 'left' ? 0.03 : -0.03) + Math.sin(t * 2) * 0.008);
-  ctx.save(); ctx.globalAlpha = 0.25; paint(ctx, c => roundRect(c, -440 + 14, -190 + 18, 880, 380, 46), '#000', { lw: 0 }); ctx.restore();
-  paint(ctx, c => roundRect(c, -440, -190, 880, 380, 46), '#FFFFFF', { lw: 8 });
-  ctx.save(); ctx.beginPath(); roundRect(ctx, -440, -190, 880, 380, 46); ctx.clip(); ctx.fillStyle = GREEN; ctx.fillRect(-440, -190, 880, 92); ctx.restore();
+  ctx.save(); ctx.globalAlpha = 0.25; paint(ctx, c => roundRect(c, -440 + 14, -190 + 18, 880, 430, 46), '#000', { lw: 0 }); ctx.restore();
+  paint(ctx, c => roundRect(c, -440, -190, 880, 430, 46), '#FFFFFF', { lw: 8 });
+  ctx.save(); ctx.beginPath(); roundRect(ctx, -440, -190, 880, 430, 46); ctx.clip(); ctx.fillStyle = GREEN; ctx.fillRect(-440, -190, 880, 92); ctx.restore();
   line(ctx, [[-440, -98], [440, -98]], 8, OL);
   U.textOutlined(ctx, 'NEW PHRASE', -390, -125, 44, '#FFFFFF', { align: 'left', olw: 8 });
   icon(ctx, cd.icon, 370, -144, 0.85);
   ctx.font = `800 100px ${F.EN}`; const fs = Math.min(100, Math.floor(100 * 790 / Math.max(1, ctx.measureText(cd.en).width)));
   U.textOutlined(ctx, cd.en, 0, 40, fs, ORANGE, { olw: Math.max(8, fs * 0.14) });
-  ctx.font = '42px DejaVu Sans'; ctx.fillStyle = '#8A6A5C'; ctx.textAlign = 'center'; ctx.fillText(cd.ipa, 0, 120);
+  ctx.font = '42px DejaVu Sans'; ctx.fillStyle = '#8A6A5C'; ctx.textAlign = 'center'; ctx.fillText(cd.ipa, 0, 115);
+  if (cd.mean) { ctx.font = `800 44px ${F.EN}`; ctx.fillStyle = OL; ctx.fillText(cd.mean, 0, 190); }
   ctx.restore();
 }
 const TRACK = ['passport', 'bag', 'wave', 'gate', 'delay', 'seat'];
@@ -81,4 +114,4 @@ function yourTurn(ctx, phrase, k, t) {
   U.icon(ctx, 'mic', 0, 2, 0.8 + 0.08 * Math.sin(t * 14));
   ctx.restore(); ctx.restore();
 }
-module.exports = { caption: U2.caption, phraseCard, tracker, icon, yourTurn, STYLE: U2.STYLE };
+module.exports = { caption: caption3, phraseCard, tracker, icon, yourTurn, STYLE: U2.STYLE };

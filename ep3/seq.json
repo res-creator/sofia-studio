@@ -101,6 +101,14 @@
      "text": "[friendly] Good morning! Can I see your passport, please?"
     },
     {
+     "wait": 0.35
+    },
+    {
+     "say": "e1",
+     "who": "sofia",
+     "text": "[friendly] A passport is your travel ID. You show it at check-in."
+    },
+    {
      "wait": 0.3
     },
     {
@@ -176,7 +184,15 @@
      "text": "[apologetic] Oh no. Your bag is too heavy. The limit is twenty-three kilos."
     },
     {
-     "wait": 0.25
+     "wait": 0.35
+    },
+    {
+     "say": "e2",
+     "who": "sofia",
+     "text": "[friendly] Heavy means a lot of weight. The opposite is light."
+    },
+    {
+     "wait": 0.3
     },
     {
      "say": "l17",
@@ -222,7 +238,15 @@
      "text": "[cheerful] Here are your boarding passes. Gate twelve. Have a nice flight!"
     },
     {
-     "wait": 0.2
+     "wait": 0.35
+    },
+    {
+     "say": "e6",
+     "who": "sofia",
+     "text": "[friendly] We say this to people who are travelling."
+    },
+    {
+     "wait": 0.3
     },
     {
      "say": "l22",
@@ -428,6 +452,14 @@
      "text": "[friendly] Gate twelve? Go straight and turn left."
     },
     {
+     "wait": 0.35
+    },
+    {
+     "say": "e3",
+     "who": "sofia",
+     "text": "[friendly] A gate is the door to your plane."
+    },
+    {
      "wait": 0.3
     },
     {
@@ -482,7 +514,15 @@
      "text": "[PA voice] Attention, please. Flight two-oh-seven to Madrid is delayed. New departure time: twelve o'clock."
     },
     {
-     "wait": 0.4
+     "wait": 0.35
+    },
+    {
+     "say": "e4",
+     "who": "sofia",
+     "text": "[friendly] Delayed means late. The plane is not on time."
+    },
+    {
+     "wait": 0.3
     },
     {
      "say": "l46",
@@ -581,6 +621,14 @@
      "say": "l55",
      "who": "anna",
      "text": "[friendly] Row fourteen. Window or aisle seat?"
+    },
+    {
+     "wait": 0.35
+    },
+    {
+     "say": "e5",
+     "who": "sofia",
+     "text": "[friendly] A window seat is next to the window. An aisle seat is next to the walkway."
     },
     {
      "wait": 0.3
@@ -931,6 +979,7 @@
  "PHRASES": [
   {
    "en": "Can I see your passport?",
+   "mean": "= asking for your travel ID",
    "ipa": "/kən aɪ siː jɔː ˈpɑːspɔːt/",
    "icon": "passport",
    "line": "l09",
@@ -940,6 +989,7 @@
   },
   {
    "en": "My bag is too heavy.",
+   "mean": "= it weighs a lot",
    "ipa": "/maɪ bæɡ ɪz tuː ˈhevi/",
    "icon": "bag",
    "line": "l16",
@@ -949,15 +999,17 @@
   },
   {
    "en": "Have a nice flight!",
+   "mean": "= said to a traveller",
    "ipa": "/hæv ə naɪs flaɪt/",
    "icon": "wave",
    "line": "l21",
    "word": 7,
-   "dur": 2.5,
+   "dur": 1.5,
    "side": "right"
   },
   {
    "en": "Where is gate 12?",
+   "mean": "= where is the door to the plane?",
    "ipa": "/weər ɪz ɡeɪt twelv/",
    "icon": "gate",
    "line": "l40",
@@ -967,6 +1019,7 @@
   },
   {
    "en": "My flight is delayed.",
+   "mean": "= the plane is late",
    "ipa": "/maɪ flaɪt ɪz dɪˈleɪd/",
    "icon": "delay",
    "line": "l45",
@@ -976,6 +1029,7 @@
   },
   {
    "en": "Window or aisle seat?",
+   "mean": "= by the window or the walkway?",
    "ipa": "/ˈwɪndəʊ ɔːr aɪl siːt/",
    "icon": "seat",
    "line": "l55",

@@ -334,5 +334,29 @@
  "l75": {
   "who": "gus",
   "text": "[deadpan] Bye bye. I'm flying home with Gary."
+ },
+ "e1": {
+  "who": "sofia",
+  "text": "[friendly] A passport is your travel ID. You show it at check-in."
+ },
+ "e2": {
+  "who": "sofia",
+  "text": "[friendly] Heavy means a lot of weight. The opposite is light."
+ },
+ "e3": {
+  "who": "sofia",
+  "text": "[friendly] A gate is the door to your plane."
+ },
+ "e4": {
+  "who": "sofia",
+  "text": "[friendly] Delayed means late. The plane is not on time."
+ },
+ "e5": {
+  "who": "sofia",
+  "text": "[friendly] A window seat is next to the window. An aisle seat is next to the walkway."
+ },
+ "e6": {
+  "who": "sofia",
+  "text": "[friendly] We say this to people who are travelling."
  }
 }

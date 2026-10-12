@@ -7,6 +7,7 @@ const { TL, lineAt, clamp, ease } = require('./engine');
 const SCN = require('./scenes');
 const U = require('../lib/ui');
 const U2 = require('./ui3');
+const VOC = require('./vocab');
 const W = 1920, H = 1080, FPS = TL.fps;
 
 // scene-to-scene transitions (ep1 style). 'cut' = straight cut (title slam lands on a cut)
@@ -58,6 +59,7 @@ function overlays(ctx, t, S) {
     const done = PH.filter(p => t >= p.t0 + 0.3).length;
     U2.tracker(ctx, done, t, clamp((t - ex.t0) / 0.4) * (ou ? clamp((ou.t1 - t) / 0.4) : 1));
   }
+  VOC.draw(ctx, t);
   for (const p of PH) if (t >= p.t0 - 0.01 && t < p.t0 + p.dur + 0.4) U2.phraseCard(ctx, p, (t - p.t0) / 0.35, (t - p.t0 - p.dur) / 0.3, t, p.side);
   for (const tr of TL.turns) if (t >= tr.t0 && t < tr.t1) U2.yourTurn(ctx, tr.phrase, (t - tr.t0) / (tr.t1 - tr.t0), t);
   const L = lineAt(t);
