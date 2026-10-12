@@ -1,0 +1,266 @@
+{
+ "l01": {
+  "who": "sofia",
+  "text": "[excited] We are in Madrid! And this is our hotel."
+ },
+ "l02": {
+  "who": "gus",
+  "text": "[deadpan] It has a spinning door. I like it."
+ },
+ "l03": {
+  "who": "sofia",
+  "text": "[laughing] Gus! Please stop spinning!"
+ },
+ "l04": {
+  "who": "gus",
+  "text": "[exhausted] I... cannot... stop."
+ },
+ "l05": {
+  "who": "carmen",
+  "text": "[warm] Good evening! Welcome to Hotel Pato Real. How can I help you?"
+ },
+ "l06": {
+  "who": "sofia",
+  "text": "[politely] Hello! I have a reservation."
+ },
+ "e1": {
+  "who": "sofia",
+  "text": "[friendly] A reservation means you booked a room before."
+ },
+ "l07": {
+  "who": "carmen",
+  "text": "[friendly] Of course. What is your name, please?"
+ },
+ "l08": {
+  "who": "sofia",
+  "text": "[cheerful] Sofia. And my friend is Gus."
+ },
+ "l09": {
+  "who": "carmen",
+  "text": "[thoughtful] ...Yes. A room for two nights. And... one goose?"
+ },
+ "l10": {
+  "who": "gus",
+  "text": "[proudly] That is me."
+ },
+ "l11": {
+  "who": "carmen",
+  "text": "[confused] The booking says: Gus Goose, plus twenty burgers."
+ },
+ "l12": {
+  "who": "sofia",
+  "text": "[embarrassed] He... travels with his food."
+ },
+ "l13": {
+  "who": "carmen",
+  "text": "[smiling] No problem! Welcome to Madrid."
+ },
+ "l14": {
+  "who": "sofia",
+  "text": "[politely] Can I have a key card, please?"
+ },
+ "e2": {
+  "who": "sofia",
+  "text": "[friendly] A key card opens the door of your room."
+ },
+ "l15": {
+  "who": "carmen",
+  "text": "[warm] Here you are. Two key cards. Room four-oh-four."
+ },
+ "l16": {
+  "who": "sofia",
+  "text": "[shocked] Gus! Did you eat the key card?!"
+ },
+ "l17": {
+  "who": "gus",
+  "text": "[deadpan] It was crunchy."
+ },
+ "l18": {
+  "who": "carmen",
+  "text": "[sighs] ...Here is another one."
+ },
+ "l19": {
+  "who": "sofia",
+  "text": "[curious] What time is breakfast?"
+ },
+ "e3": {
+  "who": "sofia",
+  "text": "[friendly] Breakfast is the first meal of the day."
+ },
+ "l20": {
+  "who": "carmen",
+  "text": "[cheerful] Breakfast is from seven to ten, in the restaurant."
+ },
+ "l21": {
+  "who": "gus",
+  "text": "[hopeful] Seven... in the morning?"
+ },
+ "l22": {
+  "who": "carmen",
+  "text": "[smiling] Yes. Seven in the morning."
+ },
+ "l23": {
+  "who": "gus",
+  "text": "[deadpan] I will be there at six."
+ },
+ "l24": {
+  "who": "pablo",
+  "text": "[friendly] Follow me, please! The lift is here."
+ },
+ "l25": {
+  "who": "gus",
+  "text": "[curious] A lift? Is it a flying machine?"
+ },
+ "l26": {
+  "who": "sofia",
+  "text": "[laughing] No, Gus. A lift is an elevator. It goes up."
+ },
+ "l27": {
+  "who": "sofia",
+  "text": "[happy] What a beautiful room!"
+ },
+ "l28": {
+  "who": "gus",
+  "text": "[flatly] It is very hot in here."
+ },
+ "l29": {
+  "who": "sofia",
+  "text": "[concerned] Oh no. The air conditioning doesn't work."
+ },
+ "e5": {
+  "who": "sofia",
+  "text": "[friendly] Air conditioning is the machine that makes the room cool."
+ },
+ "l30": {
+  "who": "gus",
+  "text": "[deadpan] I can fix it."
+ },
+ "l31": {
+  "who": "sofia",
+  "text": "[laughing] Gus is not an air conditioner!"
+ },
+ "l32": {
+  "who": "pablo",
+  "text": "[apologetic] Sorry, sorry! One minute... Done! Now it is cool."
+ },
+ "l33": {
+  "who": "sofia",
+  "text": "[curious] Thank you! What's the Wi-Fi password?"
+ },
+ "e4": {
+  "who": "sofia",
+  "text": "[friendly] A password is a secret word. You need it for the internet."
+ },
+ "l34": {
+  "who": "pablo",
+  "text": "[friendly] It is: burgers, one, two, three."
+ },
+ "l35": {
+  "who": "gus",
+  "text": "[innocent] That is my password too."
+ },
+ "l36": {
+  "who": "sofia",
+  "text": "[yawns] Gus... it is six o'clock. Breakfast is at seven."
+ },
+ "l37": {
+  "who": "gus",
+  "text": "[deadpan] I know. I am early."
+ },
+ "l38": {
+  "who": "sofia",
+  "text": "[shocked] Gus! You ate the whole buffet!"
+ },
+ "l39": {
+  "who": "carmen",
+  "text": "[exasperated] Sir... that was breakfast for fifty guests."
+ },
+ "l40": {
+  "who": "gus",
+  "text": "[satisfied] It was a good breakfast."
+ },
+ "l41": {
+  "who": "sofia",
+  "text": "[politely] Excuse me. What time is check-out?"
+ },
+ "e6": {
+  "who": "sofia",
+  "text": "[friendly] Check-out is when you leave the hotel and give back the key."
+ },
+ "l42": {
+  "who": "carmen",
+  "text": "[friendly] Check-out is at eleven o'clock."
+ },
+ "l43": {
+  "who": "gus",
+  "text": "[alarmed] Eleven? Today?"
+ },
+ "l44": {
+  "who": "sofia",
+  "text": "[laughing] Yes, Gus. Today."
+ },
+ "l45": {
+  "who": "gus",
+  "text": "[deadpan] Then I will live in the lobby."
+ },
+ "l46": {
+  "who": "carmen",
+  "text": "[smiling] Or you can pay the bill, sir."
+ },
+ "l47": {
+  "who": "gus",
+  "text": "[calmly] ...I will check out."
+ },
+ "l48": {
+  "who": "sofia",
+  "text": "[cheerful] Let's practice! Say it with me!"
+ },
+ "r1": {
+  "who": "sofia",
+  "text": "I have a reservation."
+ },
+ "r2": {
+  "who": "sofia",
+  "text": "Can I have a key card, please?"
+ },
+ "r3": {
+  "who": "sofia",
+  "text": "What time is breakfast?"
+ },
+ "r4": {
+  "who": "sofia",
+  "text": "The air conditioning doesn't work."
+ },
+ "r5": {
+  "who": "sofia",
+  "text": "What's the Wi-Fi password?"
+ },
+ "r6": {
+  "who": "sofia",
+  "text": "What time is check-out?"
+ },
+ "q01": {
+  "who": "sofia",
+  "text": "[excited] Quick quiz! What did Gus eat for breakfast?"
+ },
+ "q02": {
+  "who": "sofia",
+  "text": "A: One toast. Or B: The whole buffet."
+ },
+ "q03": {
+  "who": "sofia",
+  "text": "[laughing] B! The whole buffet!"
+ },
+ "l49": {
+  "who": "sofia",
+  "text": "[curious] Where do YOU want to stay? A hotel, a hostel, or a tent? Write it in the comments!"
+ },
+ "l50": {
+  "who": "sofia",
+  "text": "[cheerful] See you next time! Bye!"
+ },
+ "l51": {
+  "who": "gus",
+  "text": "[deadpan] Bye bye. I am not checking out."
+ }
+}

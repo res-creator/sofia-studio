@@ -30,9 +30,10 @@ Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). Thi
 - Subtitles (`sofia_ep3_en.srt`) are not uploaded by Metricool — add in YouTube Studio if wanted.
 - Drive connector cannot upload video (bytes must be pasted as base64 text).
 
-## Episode 4 "Gus at the Hotel" — script + concept only (no render yet)
+## Episode 4 "Gus at the Hotel" — BUILT (4:39 incl. 20 s end screen; owner review pending)
 - Script: `ep4/script_ep4.txt` / `.pdf` (6 scenes: revolving door, reception/Carmen, lift/Pablo, room 404 AC+Wi-Fi, breakfast, check-out; 6 phrases). Planned release Thu 2026-10-22 16:00 Chisinau.
 - New crew styles in `lib/crew.js`: `carmen` (receptionist), `pablo` (bellboy). Concept stills: `node ep4/concept.js ep4` -> ep4_cast/lobby/room.png.
-- TODO: owner approves script + picks voices for Carmen/Pablo (~3,500 chars of ElevenLabs needed), new backgrounds, copy ep3 pipeline.
+- Build: `sh ep4/build.sh out.mp4` (same pipeline as ep3, ~6 min). Voices `python3 ep4/gen_vo.py` (Carmen = Lily, Pablo = Liam, owner has not heard samples; ~2.8k chars used, ~2.5k ElevenLabs chars left). Files: bg4.js, scenes.js, vocab.js, ui3.js, thumb.js, upload_kit.txt, srt.py. Phrase order in episode: reservation, key card, breakfast, AC, Wi-Fi, check-out.
+- TikTok audience (owner screenshots): RU 35%, KZ 30%, UA 12%, BY 7%; daily peak 17:00-19:00 (her phone time) -> post TikTok ~17:00 Chisinau.
 - `lib/anim/gestures.js` + `validate.js`: arm gesture library (no chicken-wing IK flips); use `GS.compose` for arms. Ep3 re-render with it not yet done.
 - 2nd channel (Russian/shorts kit): `tiktok/youtube_shorts_kit.txt`, owner uploads manually at 19:00 daily.

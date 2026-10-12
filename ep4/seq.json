@@ -1,0 +1,793 @@
+{
+ "SEQ": [
+  {
+   "id": "door",
+   "items": [
+    {
+     "wait": 0.7
+    },
+    {
+     "say": "l01",
+     "who": "sofia",
+     "text": "[excited] We are in Madrid! And this is our hotel."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "spin"
+    },
+    {
+     "say": "l02",
+     "who": "gus",
+     "text": "[deadpan] It has a spinning door. I like it."
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l03",
+     "who": "sofia",
+     "text": "[laughing] Gus! Please stop spinning!"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l04",
+     "who": "gus",
+     "text": "[exhausted] I... cannot... stop."
+    },
+    {
+     "wait": 0.9
+    },
+    {
+     "mark": "stop"
+    },
+    {
+     "wait": 1
+    }
+   ]
+  },
+  {
+   "id": "title",
+   "items": [
+    {
+     "mark": "slam"
+    },
+    {
+     "wait": 2.6
+    }
+   ]
+  },
+  {
+   "id": "reception",
+   "items": [
+    {
+     "wait": 0.6
+    },
+    {
+     "say": "l05",
+     "who": "carmen",
+     "text": "[warm] Good evening! Welcome to Hotel Pato Real. How can I help you?"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l06",
+     "who": "sofia",
+     "text": "[politely] Hello! I have a reservation."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "e1",
+     "who": "sofia",
+     "text": "[friendly] A reservation means you booked a room before."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "turn": "I have a reservation.",
+     "dur": 3.2
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l07",
+     "who": "carmen",
+     "text": "[friendly] Of course. What is your name, please?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l08",
+     "who": "sofia",
+     "text": "[cheerful] Sofia. And my friend is Gus."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l09",
+     "who": "carmen",
+     "text": "[thoughtful] ...Yes. A room for two nights. And... one goose?"
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "say": "l10",
+     "who": "gus",
+     "text": "[proudly] That is me."
+    },
+    {
+     "wait": 0.5
+    },
+    {
+     "mark": "booking"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l11",
+     "who": "carmen",
+     "text": "[confused] The booking says: Gus Goose, plus twenty burgers."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l12",
+     "who": "sofia",
+     "text": "[embarrassed] He... travels with his food."
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l13",
+     "who": "carmen",
+     "text": "[smiling] No problem! Welcome to Madrid."
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "say": "l14",
+     "who": "sofia",
+     "text": "[politely] Can I have a key card, please?"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "e2",
+     "who": "sofia",
+     "text": "[friendly] A key card opens the door of your room."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l15",
+     "who": "carmen",
+     "text": "[warm] Here you are. Two key cards. Room four-oh-four."
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "mark": "eat"
+    },
+    {
+     "wait": 1.6
+    },
+    {
+     "say": "l16",
+     "who": "sofia",
+     "text": "[shocked] Gus! Did you eat the key card?!"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l17",
+     "who": "gus",
+     "text": "[deadpan] It was crunchy."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l18",
+     "who": "carmen",
+     "text": "[sighs] ...Here is another one."
+    },
+    {
+     "wait": 0.5
+    },
+    {
+     "say": "l19",
+     "who": "sofia",
+     "text": "[curious] What time is breakfast?"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "e3",
+     "who": "sofia",
+     "text": "[friendly] Breakfast is the first meal of the day."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l20",
+     "who": "carmen",
+     "text": "[cheerful] Breakfast is from seven to ten, in the restaurant."
+    },
+    {
+     "wait": 0.25
+    },
+    {
+     "say": "l21",
+     "who": "gus",
+     "text": "[hopeful] Seven... in the morning?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l22",
+     "who": "carmen",
+     "text": "[smiling] Yes. Seven in the morning."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l23",
+     "who": "gus",
+     "text": "[deadpan] I will be there at six."
+    },
+    {
+     "wait": 0.6
+    }
+   ]
+  },
+  {
+   "id": "lift",
+   "items": [
+    {
+     "wait": 0.4
+    },
+    {
+     "say": "l24",
+     "who": "pablo",
+     "text": "[friendly] Follow me, please! The lift is here."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "doors"
+    },
+    {
+     "wait": 1
+    },
+    {
+     "say": "l25",
+     "who": "gus",
+     "text": "[curious] A lift? Is it a flying machine?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l26",
+     "who": "sofia",
+     "text": "[laughing] No, Gus. A lift is an elevator. It goes up."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "up"
+    },
+    {
+     "wait": 2.2
+    },
+    {
+     "mark": "ding"
+    },
+    {
+     "wait": 1.4
+    }
+   ]
+  },
+  {
+   "id": "room",
+   "items": [
+    {
+     "wait": 0.5
+    },
+    {
+     "say": "l27",
+     "who": "sofia",
+     "text": "[happy] What a beautiful room!"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l28",
+     "who": "gus",
+     "text": "[flatly] It is very hot in here."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l29",
+     "who": "sofia",
+     "text": "[concerned] Oh no. The air conditioning doesn't work."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "e5",
+     "who": "sofia",
+     "text": "[friendly] Air conditioning is the machine that makes the room cool."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "turn": "The air conditioning doesn't work.",
+     "dur": 3.2
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l30",
+     "who": "gus",
+     "text": "[deadpan] I can fix it."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "fan"
+    },
+    {
+     "wait": 2.8
+    },
+    {
+     "say": "l31",
+     "who": "sofia",
+     "text": "[laughing] Gus is not an air conditioner!"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l32",
+     "who": "pablo",
+     "text": "[apologetic] Sorry, sorry! One minute... Done! Now it is cool."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l33",
+     "who": "sofia",
+     "text": "[curious] Thank you! What's the Wi-Fi password?"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "e4",
+     "who": "sofia",
+     "text": "[friendly] A password is a secret word. You need it for the internet."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l34",
+     "who": "pablo",
+     "text": "[friendly] It is: burgers, one, two, three."
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l35",
+     "who": "gus",
+     "text": "[innocent] That is my password too."
+    },
+    {
+     "wait": 0.8
+    }
+   ]
+  },
+  {
+   "id": "breakfast",
+   "items": [
+    {
+     "wait": 0.5
+    },
+    {
+     "say": "l36",
+     "who": "sofia",
+     "text": "[yawns] Gus... it is six o'clock. Breakfast is at seven."
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l37",
+     "who": "gus",
+     "text": "[deadpan] I know. I am early."
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "mark": "clock"
+    },
+    {
+     "wait": 3
+    },
+    {
+     "mark": "open"
+    },
+    {
+     "wait": 0.8
+    },
+    {
+     "mark": "buffet"
+    },
+    {
+     "wait": 2.6
+    },
+    {
+     "say": "l38",
+     "who": "sofia",
+     "text": "[shocked] Gus! You ate the whole buffet!"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l39",
+     "who": "carmen",
+     "text": "[exasperated] Sir... that was breakfast for fifty guests."
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l40",
+     "who": "gus",
+     "text": "[satisfied] It was a good breakfast."
+    },
+    {
+     "wait": 0.7
+    }
+   ]
+  },
+  {
+   "id": "checkout",
+   "items": [
+    {
+     "wait": 0.5
+    },
+    {
+     "say": "l41",
+     "who": "sofia",
+     "text": "[politely] Excuse me. What time is check-out?"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "e6",
+     "who": "sofia",
+     "text": "[friendly] Check-out is when you leave the hotel and give back the key."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l42",
+     "who": "carmen",
+     "text": "[friendly] Check-out is at eleven o'clock."
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l43",
+     "who": "gus",
+     "text": "[alarmed] Eleven? Today?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "say": "l44",
+     "who": "sofia",
+     "text": "[laughing] Yes, Gus. Today."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l45",
+     "who": "gus",
+     "text": "[deadpan] Then I will live in the lobby."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "mark": "bill"
+    },
+    {
+     "wait": 0.5
+    },
+    {
+     "say": "l46",
+     "who": "carmen",
+     "text": "[smiling] Or you can pay the bill, sir."
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "say": "l47",
+     "who": "gus",
+     "text": "[calmly] ...I will check out."
+    },
+    {
+     "wait": 0.8
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "items": [
+    {
+     "say": "l48",
+     "who": "sofia",
+     "text": "[cheerful] Let's practice! Say it with me!"
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "mark": "r0"
+    },
+    {
+     "say": "r1",
+     "who": "sofia",
+     "text": "I have a reservation."
+    },
+    {
+     "wait": 2.3
+    },
+    {
+     "mark": "r1"
+    },
+    {
+     "say": "r2",
+     "who": "sofia",
+     "text": "Can I have a key card, please?"
+    },
+    {
+     "wait": 2.3
+    },
+    {
+     "mark": "r2"
+    },
+    {
+     "say": "r3",
+     "who": "sofia",
+     "text": "What time is breakfast?"
+    },
+    {
+     "wait": 2.3
+    },
+    {
+     "mark": "r3"
+    },
+    {
+     "say": "r4",
+     "who": "sofia",
+     "text": "The air conditioning doesn't work."
+    },
+    {
+     "wait": 2.3
+    },
+    {
+     "mark": "r4"
+    },
+    {
+     "say": "r5",
+     "who": "sofia",
+     "text": "What's the Wi-Fi password?"
+    },
+    {
+     "wait": 2.3
+    },
+    {
+     "mark": "r5"
+    },
+    {
+     "say": "r6",
+     "who": "sofia",
+     "text": "What time is check-out?"
+    },
+    {
+     "wait": 2.3
+    },
+    {
+     "mark": "r6"
+    },
+    {
+     "wait": 0.4
+    }
+   ]
+  },
+  {
+   "id": "quiz",
+   "items": [
+    {
+     "say": "q01",
+     "who": "sofia",
+     "text": "[excited] Quick quiz! What did Gus eat for breakfast?"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "mark": "opts"
+    },
+    {
+     "say": "q02",
+     "who": "sofia",
+     "text": "A: One toast. Or B: The whole buffet."
+    },
+    {
+     "mark": "count"
+    },
+    {
+     "wait": 3.2
+    },
+    {
+     "mark": "answer"
+    },
+    {
+     "say": "q03",
+     "who": "sofia",
+     "text": "[laughing] B! The whole buffet!"
+    },
+    {
+     "wait": 1.3
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "items": [
+    {
+     "say": "l49",
+     "who": "sofia",
+     "text": "[curious] Where do YOU want to stay? A hotel, a hostel, or a tent? Write it in the comments!"
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "say": "l50",
+     "who": "sofia",
+     "text": "[cheerful] See you next time! Bye!"
+    },
+    {
+     "wait": 0.2
+    },
+    {
+     "mark": "bye"
+    },
+    {
+     "say": "l51",
+     "who": "gus",
+     "text": "[deadpan] Bye bye. I am not checking out."
+    },
+    {
+     "wait": 1
+    },
+    {
+     "mark": "endscreen"
+    },
+    {
+     "wait": 20
+    }
+   ]
+  }
+ ],
+ "PHRASES": [
+  {
+   "en": "I have a reservation.",
+   "mean": "= I booked a room before",
+   "ipa": "/aɪ hæv ə ˌrezəˈveɪʃn/",
+   "icon": "reserve",
+   "line": "l06",
+   "word": 3,
+   "dur": 2.6,
+   "side": "right"
+  },
+  {
+   "en": "Can I have a key card, please?",
+   "mean": "= asking for the room key",
+   "ipa": "/kæn aɪ hæv ə kiː kɑːd pliːz/",
+   "icon": "keycard",
+   "line": "l14",
+   "word": 0,
+   "dur": 2.8,
+   "side": "right"
+  },
+  {
+   "en": "What time is breakfast?",
+   "mean": "= when is the morning meal?",
+   "ipa": "/wɒt taɪm ɪz ˈbrekfəst/",
+   "icon": "toast",
+   "line": "l19",
+   "word": 0,
+   "dur": 2.5,
+   "side": "right"
+  },
+  {
+   "en": "The air conditioning doesn't work.",
+   "mean": "= it is hot, the machine is broken",
+   "ipa": "/ði eə ˌkɒndɪˈʃənɪŋ ˈdʌznt wɜːk/",
+   "icon": "snow",
+   "line": "l29",
+   "word": 3,
+   "dur": 2.9,
+   "side": "left"
+  },
+  {
+   "en": "What's the Wi-Fi password?",
+   "mean": "= the secret word for the internet",
+   "ipa": "/wɒts ðə ˈwaɪ faɪ ˈpɑːswɜːd/",
+   "icon": "wifi",
+   "line": "l33",
+   "word": 2,
+   "dur": 2.7,
+   "side": "right"
+  },
+  {
+   "en": "What time is check-out?",
+   "mean": "= when do we leave the hotel?",
+   "ipa": "/wɒt taɪm ɪz ˈtʃek aʊt/",
+   "icon": "exit",
+   "line": "l41",
+   "word": 3,
+   "dur": 2.6,
+   "side": "right"
+  }
+ ]
+}

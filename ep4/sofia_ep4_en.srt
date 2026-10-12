@@ -1,0 +1,288 @@
+1
+00:00:00,980 --> 00:00:04,770
+We are in Madrid! And this is our hotel.
+
+2
+00:00:05,040 --> 00:00:07,201
+It has a spinning door. I like it.
+
+3
+00:00:08,047 --> 00:00:10,637
+Gus! Please stop spinning!
+
+4
+00:00:11,266 --> 00:00:14,096
+I... cannot... stop.
+
+5
+00:00:19,215 --> 00:00:22,517
+Good evening! Welcome to Hotel Pato
+
+6
+00:00:22,463 --> 00:00:24,677
+Real. How can I help you?
+
+7
+00:00:25,269 --> 00:00:27,102
+Hello! I have a reservation.
+
+8
+00:00:27,435 --> 00:00:30,158
+A reservation means you booked a room before.
+
+9
+00:00:33,837 --> 00:00:36,387
+Of course. What is your name, please?
+
+10
+00:00:37,158 --> 00:00:39,575
+Sofia. And my friend is Gus.
+
+11
+00:00:40,029 --> 00:00:45,199
+...Yes. A room for two nights. And... one goose?
+
+12
+00:00:45,636 --> 00:00:46,778
+That is me.
+
+13
+00:00:48,154 --> 00:00:52,956
+The booking says: Gus Goose, plus twenty burgers.
+
+14
+00:00:53,460 --> 00:00:56,490
+He... travels with his food.
+
+15
+00:00:56,859 --> 00:00:59,289
+No problem! Welcome to Madrid.
+
+16
+00:00:59,701 --> 00:01:01,475
+Can I have a key card, please?
+
+17
+00:01:01,738 --> 00:01:03,978
+A key card opens the door of your room.
+
+18
+00:01:04,359 --> 00:01:08,552
+Here you are. Two key cards. Room four-oh-four.
+
+19
+00:01:11,464 --> 00:01:14,104
+Gus! Did you eat the key card?!
+
+20
+00:01:14,386 --> 00:01:16,669
+It was crunchy.
+
+21
+00:01:17,850 --> 00:01:19,400
+...Here is another one.
+
+22
+00:01:19,976 --> 00:01:21,609
+What time is breakfast?
+
+23
+00:01:22,175 --> 00:01:24,033
+Breakfast is the first meal of the day.
+
+24
+00:01:24,695 --> 00:01:27,329
+Breakfast is from seven to ten, in the restaurant.
+
+25
+00:01:27,870 --> 00:01:29,943
+Seven... in the morning?
+
+26
+00:01:30,704 --> 00:01:32,494
+Yes. Seven in the morning.
+
+27
+00:01:32,795 --> 00:01:35,385
+I will be there at six.
+
+28
+00:01:36,375 --> 00:01:38,651
+Follow me, please! The lift is here.
+
+29
+00:01:39,904 --> 00:01:42,704
+A lift? Is it a flying machine?
+
+30
+00:01:43,443 --> 00:01:45,593
+No, Gus. A lift is
+
+31
+00:01:45,496 --> 00:01:48,553
+an elevator. It goes up.
+
+32
+00:01:53,053 --> 00:01:55,155
+What a beautiful room!
+
+33
+00:01:55,309 --> 00:01:57,790
+It is very hot in here.
+
+34
+00:01:58,257 --> 00:02:01,479
+Oh no. The air conditioning doesn't work.
+
+35
+00:02:01,795 --> 00:02:03,495
+Air conditioning is the machine
+
+36
+00:02:03,409 --> 00:02:05,335
+that makes the room cool.
+
+37
+00:02:09,118 --> 00:02:11,148
+I can fix it.
+
+38
+00:02:15,323 --> 00:02:17,803
+Gus is not an air conditioner!
+
+39
+00:02:18,399 --> 00:02:22,616
+Sorry, sorry! One minute... Done! Now it is cool.
+
+40
+00:02:23,001 --> 00:02:25,035
+Thank you! What's the Wi-Fi password?
+
+41
+00:02:25,291 --> 00:02:27,531
+A password is a secret word.
+
+42
+00:02:27,501 --> 00:02:29,851
+You need it for the internet.
+
+43
+00:02:30,173 --> 00:02:33,390
+It is: burgers, one, two, three.
+
+44
+00:02:33,694 --> 00:02:35,230
+That is my password too.
+
+45
+00:02:38,830 --> 00:02:43,460
+Gus... it is six o'clock. Breakfast is at seven.
+
+46
+00:02:43,692 --> 00:02:46,418
+I know. I am early.
+
+47
+00:02:53,652 --> 00:02:55,987
+Gus! You ate the whole buffet!
+
+48
+00:02:56,642 --> 00:03:00,156
+Sir... that was breakfast for fifty guests.
+
+49
+00:03:00,363 --> 00:03:01,846
+It was a good breakfast.
+
+50
+00:03:03,149 --> 00:03:05,575
+Excuse me. What time is check-out?
+
+51
+00:03:05,943 --> 00:03:07,183
+Check-out is when you leave the
+
+52
+00:03:07,113 --> 00:03:08,863
+hotel and give back the key.
+
+53
+00:03:09,952 --> 00:03:12,152
+Check-out is at eleven o'clock.
+
+54
+00:03:12,692 --> 00:03:14,145
+Eleven? Today?
+
+55
+00:03:14,698 --> 00:03:16,548
+Yes, Gus. Today.
+
+56
+00:03:16,799 --> 00:03:18,802
+Then I will live in the lobby.
+
+57
+00:03:19,542 --> 00:03:22,044
+Or you can pay the bill, sir.
+
+58
+00:03:22,360 --> 00:03:23,650
+...I will check out.
+
+59
+00:03:24,467 --> 00:03:26,477
+Let's practice! Say it with me!
+
+60
+00:03:26,764 --> 00:03:28,114
+I have a reservation.
+
+61
+00:03:30,292 --> 00:03:31,882
+Can I have a key card, please?
+
+62
+00:03:34,081 --> 00:03:35,351
+What time is breakfast?
+
+63
+00:03:37,530 --> 00:03:39,920
+The air conditioning doesn't work.
+
+64
+00:03:42,103 --> 00:03:43,773
+What's the Wi-Fi password?
+
+65
+00:03:45,970 --> 00:03:47,400
+What time is check-out?
+
+66
+00:03:50,109 --> 00:03:53,086
+Quick quiz! What did Gus eat for breakfast?
+
+67
+00:03:53,180 --> 00:03:57,730
+A: One toast. Or B: The whole buffet.
+
+68
+00:04:01,661 --> 00:04:03,931
+B! The whole buffet!
+
+69
+00:04:05,325 --> 00:04:08,635
+Where do YOU want to stay? A hotel, a
+
+70
+00:04:08,565 --> 00:04:12,475
+hostel, or a tent? Write it in the comments!
+
+71
+00:04:12,909 --> 00:04:15,071
+See you next time! Bye!
+
+72
+00:04:15,360 --> 00:04:18,106
+Bye bye. I am not checking out.
+
