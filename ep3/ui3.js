@@ -66,4 +66,19 @@ function tracker(ctx, done, t, alpha = 1) {
   });
   ctx.restore();
 }
-module.exports = { caption: U2.caption, phraseCard, tracker, icon, STYLE: U2.STYLE };
+// YOUR TURN plate: mic ring + phrase, text auto-fitted so everything stays inside the plate
+function yourTurn(ctx, phrase, k, t) {
+  if (k <= 0 || k >= 1) return;
+  const inn = ease.back(clamp(k / 0.15)), out = 1 - ease.in(clamp((k - 0.9) / 0.1)), s = inn * out * 0.8;
+  ctx.save(); ctx.translate(960, 880); ctx.scale(s, s);
+  paint(ctx, c => roundRect(c, -520, -150, 1040, 300, 50), ORANGE, { lw: 8 });
+  U.textOutlined(ctx, 'YOUR TURN!', 90, -60, 64, '#FFFFFF', { olw: 12 });
+  ctx.font = `800 84px ${F.EN}`; const fs = Math.min(84, Math.floor(84 * 780 / Math.max(1, ctx.measureText(phrase).width)));
+  U.textOutlined(ctx, phrase, 90, 60, fs, '#FFFFFF', { olw: Math.max(8, fs * 0.155) });
+  ctx.save(); ctx.translate(-410, 0);
+  paint(ctx, c => c.arc(0, 0, 66, 0, 7), '#FFFFFF', { lw: 7 });
+  ctx.beginPath(); ctx.arc(0, 0, 54, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * clamp((k - 0.1) / 0.8)); ctx.lineWidth = 14; ctx.strokeStyle = GREEN; ctx.lineCap = 'round'; ctx.stroke();
+  U.icon(ctx, 'mic', 0, 2, 0.8 + 0.08 * Math.sin(t * 14));
+  ctx.restore(); ctx.restore();
+}
+module.exports = { caption: U2.caption, phraseCard, tracker, icon, yourTurn, STYLE: U2.STYLE };

@@ -422,7 +422,7 @@ const lounge = (() => {
       sofia(ctx, 1900, 1300, 0.74, {
         legs: 'stand', turn: -0.35, look: look ? [0.6, -0.4] : [0.8, 0], blink: nap ? 0.8 : 0, sleepy: nap ? 0.7 : 0,
         brow: { l: 0.2, r: 0.2, worry: sad ? 0.9 : 0, angry: firm ? 0.6 : 0 }, mouth: { smile: sad ? -0.4 : firm ? -0.1 : t >= m('l50') && !nap ? 0.5 : 0.1 },
-        tilt: nap ? 0.18 : 0, armL: sad ? [-60, -330] : null, handL: 'open', armsFront: sad,
+        tilt: nap ? 0.18 : 0, armL: sad ? A(-1, 50, 0.85) : null, handL: 'open', armsFront: sad,
       }, t, 2);
       B3.seatFront(ctx, 1620, 850);
       if (nap) P.zzz(ctx, 2250, 1000, t);
@@ -520,11 +520,11 @@ const baggage = (() => {
       if (CASEX(t) < 2640) {
         PR.suitcase(ctx, cx, BY, CS, { open: opened ? 1 : 0 });
         if (opened) {
+          PR.suitcaseLid(ctx, cx, BY, CS, lid); // lid stands BEHIND Uncle Gary
           ctx.save(); ctx.beginPath(); ctx.rect(cx - 400, 0, 800, BY - 230 * CS + 45); ctx.clip();
           const up = ease.out(clamp((t - m('honk') + 0.2) / 0.5)), sleepy = t < m('honk');
           garyRig(ctx, cx, BY - 230 * CS + 160 - (1 - up) * 150 + 40 * (sleepy ? 1 : 0), 0.62, { face: -1, neck: sleepy ? 0.5 : -0.2, lids: sleepy ? 0.95 : 0.5, wing: t >= m('honk') ? 0.8 : 0.1, honk: t >= m('honk') && t < m('l69') ? 0.5 : 0 }, t);
           ctx.restore();
-          PR.suitcaseLid(ctx, cx, BY, CS, lid);
           for (let i = 0; i < 5; i++) PR.wrapper(ctx, cx - 120 + i * 60, BY - 230 * CS + 52, 0.6, i, i + 1);
           if (!(t >= m('honk'))) P.zzz(ctx, cx + 20, BY - 230 * CS - 120, t);
         }

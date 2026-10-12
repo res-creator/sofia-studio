@@ -104,6 +104,13 @@
      "wait": 0.3
     },
     {
+     "turn": "Can I see your passport?",
+     "dur": 3.2
+    },
+    {
+     "wait": 0.2
+    },
+    {
      "say": "l10",
      "who": "sofia",
      "text": "[politely] Here you are."
@@ -223,11 +230,7 @@
      "text": "[happy] Thank you!"
     },
     {
-     "wait": 0.4
-    },
-    {
-     "turn": "Can I see your passport?",
-     "dur": 3.2
+     "wait": 0.5
     }
    ]
   },
@@ -487,6 +490,13 @@
      "text": "[disappointed] Oh no! Our flight is delayed. Two hours!"
     },
     {
+     "wait": 0.3
+    },
+    {
+     "turn": "My flight is delayed.",
+     "dur": 3.2
+    },
+    {
      "wait": 0.2
     },
     {
@@ -541,11 +551,7 @@
      "text": "[laughs] Lucky geese."
     },
     {
-     "wait": 0.4
-    },
-    {
-     "turn": "My flight is delayed.",
-     "dur": 3.2
+     "wait": 0.5
     }
    ]
   },
@@ -575,6 +581,13 @@
      "say": "l55",
      "who": "anna",
      "text": "[friendly] Row fourteen. Window or aisle seat?"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "turn": "Window or aisle seat?",
+     "dur": 3.2
     },
     {
      "wait": 0.2
@@ -675,11 +688,7 @@
      "text": "[sighs] Then fish, please. A big one."
     },
     {
-     "wait": 0.4
-    },
-    {
-     "turn": "Window or aisle seat?",
-     "dur": 3.2
+     "wait": 0.5
     }
    ]
   },
