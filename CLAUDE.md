@@ -29,3 +29,10 @@ Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). Thi
 - Scheduled: full Ep3 Tue 2026-10-20 16:00; Shorts 10-21, 10-22, 10-23, 10-26 at 16:00 (Chisinau). Best slots per Metricool benchmark: Tue–Thu ~16:00.
 - Subtitles (`sofia_ep3_en.srt`) are not uploaded by Metricool — add in YouTube Studio if wanted.
 - Drive connector cannot upload video (bytes must be pasted as base64 text).
+
+## Episode 4 "Gus at the Hotel" — script + concept only (no render yet)
+- Script: `ep4/script_ep4.txt` / `.pdf` (6 scenes: revolving door, reception/Carmen, lift/Pablo, room 404 AC+Wi-Fi, breakfast, check-out; 6 phrases). Planned release Thu 2026-10-22 16:00 Chisinau.
+- New crew styles in `lib/crew.js`: `carmen` (receptionist), `pablo` (bellboy). Concept stills: `node ep4/concept.js ep4` -> ep4_cast/lobby/room.png.
+- TODO: owner approves script + picks voices for Carmen/Pablo (~3,500 chars of ElevenLabs needed), new backgrounds, copy ep3 pipeline.
+- `lib/anim/gestures.js` + `validate.js`: arm gesture library (no chicken-wing IK flips); use `GS.compose` for arms. Ep3 re-render with it not yet done.
+- 2nd channel (Russian/shorts kit): `tiktok/youtube_shorts_kit.txt`, owner uploads manually at 19:00 daily.
