@@ -1,0 +1,125 @@
+# Episode 4 — Gus at the Hotel (V1)
+
+## Обзор
+Серия 4 продолжает историю из Мадрида: Sofia и Gus заселяются в отель. ~6:30, 6 фраз урока, объяснение каждой фразы с картинкой, 2 паузы YOUR TURN, повторение и викторина.
+Главная шутка: Gus — гусь, поэтому бронь у него записана как «Gus Goose + 20 burgers», он съедает ключ-карту и весь шведский стол, а выезжать не хочет.
+Формат: 16:9, 1920×1080, 30 fps, только английский, уровень A1–A2.
+
+## Фразы урока
+1. I have a reservation. /aɪ hæv ə ˌrezəˈveɪʃn/ = I booked a room before (YOUR TURN)
+2. Can I have a key card, please? /kæn aɪ hæv ə kiː kɑːd pliːz/ = asking for the room key
+3. What time is breakfast? /wɒt taɪm ɪz ˈbrekfəst/ = asking when the meal is
+4. What's the Wi-Fi password? /wɒts ðə ˈwaɪ faɪ ˈpɑːswɜːd/ = the secret word for the internet
+5. The air conditioning doesn't work. /ði eə ˌkɒndɪˈʃənɪŋ ˈdʌznt wɜːk/ = it is hot, the machine is broken (YOUR TURN)
+6. What time is check-out? /wɒt taɪm ɪz ˈtʃek aʊt/ = when you leave the hotel
+
+## Сценарий
+Реплики на английском, в [скобках] — теги эмоций ElevenLabs, курсивом (*...*) — что на экране. e1–e6 — объяснения Sofia с картинками.
+
+### 1. Приезд: вращающаяся дверь
+*У входа в Hotel Pato Real. Sofia с чемоданом, Gus входит во вращающуюся дверь.*
+l01 SOFIA [excited] We are in Madrid! And this is our hotel.
+l02 GUS [deadpan] It has a spinning door. I like it.
+*Гусь крутится в двери круг за кругом.*
+l03 SOFIA [laughing] Gus! Please stop spinning!
+l04 GUS [dizzy] I... cannot... stop.
+*Титр: GUS AT THE HOTEL.*
+
+### 2. Стойка регистрации
+*Лобби, стойка, за ней Carmen. На стойке колокольчик.*
+l05 CARMEN [warm] Good evening! Welcome to Hotel Pato Real. How can I help you?
+l06 SOFIA [politely] Hello! I have a reservation.   (карточка NEW PHRASE)
+e1 SOFIA [friendly] A reservation means you booked a room before.
+*Картинка RESERVATION. YOUR TURN 1: I have a reservation.*
+l07 CARMEN [friendly] Of course. What is your name, please?
+l08 SOFIA [cheerful] Sofia. And my friend is Gus.
+l09 CARMEN [typing] ...Yes. A room for two nights. And... one goose?
+l10 GUS [proudly] That is me.
+*Крупно: бронь «Gus Goose + 20 burgers».*
+l11 CARMEN [confused] The booking says: Gus Goose, plus twenty burgers.
+l12 SOFIA [embarrassed] He... travels with his food.
+l13 CARMEN [smiling] No problem! Welcome to Madrid.
+l14 SOFIA [politely] Can I have a key card, please?   (карточка NEW PHRASE)
+e2 SOFIA [friendly] A key card opens the door of your room.
+l15 CARMEN [warm] Here you are. Two key cards. Room four-oh-four.
+*Gus берёт карту клювом и проглатывает.*
+l16 SOFIA [shocked] Gus! Did you eat the key card?!
+l17 GUS [deadpan] It was crunchy.
+l18 CARMEN [sighs] ...Here is another one.
+l19 SOFIA [curious] What time is breakfast?   (карточка NEW PHRASE)
+e3 SOFIA [friendly] Breakfast is the first meal of the day.
+l20 CARMEN [cheerful] Breakfast is from seven to ten, in the restaurant.
+l21 GUS [hopeful] Seven... in the morning?
+l22 CARMEN [smiling] Yes. Seven in the morning.
+l23 GUS [deadpan] I will be there at six.
+
+### 3. Лифт и коридор
+*Лифт. Bellboy Pablo с тележкой везёт чемоданы. Gus с подозрением смотрит на кнопки.*
+l24 PABLO [friendly] Follow me, please! The lift is here.
+l25 GUS [curious] A lift? Is it a flying machine?
+l26 SOFIA [laughing] No, Gus. A lift is an elevator. It goes up.
+
+### 4. Номер: жара и Wi-Fi
+*Номер 404, вечер. Pablo ставит чемоданы. В номере жарко: термометр красный.*
+l27 SOFIA [happy] What a beautiful room!
+l28 GUS [flatly] It is very hot in here.
+l29 SOFIA [concerned] Oh no. The air conditioning doesn't work.   (карточка NEW PHRASE)
+e5 SOFIA [friendly] Air conditioning is the machine that makes the room cool.
+*Картинки HOT / COLD. YOUR TURN 2: The air conditioning doesn't work.*
+l30 GUS [deadpan] I can fix it.
+*Gus машет крыльями, как вентилятор. Термометр падает: 30 → 25.*
+l31 SOFIA [laughing] Gus is not an air conditioner!
+l32 PABLO [apologetic] Sorry, sorry! One minute... Done! Now it is cool.
+l33 SOFIA [curious] Thank you! What's the Wi-Fi password?   (карточка NEW PHRASE)
+e4 SOFIA [friendly] A password is a secret word. You need it for the internet.
+l34 PABLO [friendly] It is: burgers, one, two, three.
+l35 GUS [innocent] That is my password too.
+
+### 5. Завтрак
+*Утро, часы 6:00. Gus уже стоит перед закрытой дверью ресторана, Sofia сонная.*
+l36 SOFIA [yawns] Gus... it is six o'clock. Breakfast is at seven.
+l37 GUS [deadpan] I know. I am early.
+*Часы быстро крутятся до 7:00. Carmen открывает дверь. Gus проносится по шведскому столу, стол пустеет.*
+l38 SOFIA [shocked] Gus! You ate the whole buffet!
+l39 CARMEN [exasperated] Sir... that was breakfast for fifty guests.
+l40 GUS [satisfied] It was a good breakfast.
+
+### 6. Выезд
+*Стойка, день. Sofia с чемоданом, Gus сидит на диване в лобби.*
+l41 SOFIA [politely] Excuse me. What time is check-out?   (карточка NEW PHRASE)
+e6 SOFIA [friendly] Check-out is when you leave the hotel and give back the key.
+l42 CARMEN [friendly] Check-out is at eleven o'clock.
+l43 GUS [alarmed] Eleven? Today?
+l44 SOFIA [laughing] Yes, Gus. Today.
+l45 GUS [deadpan] Then I will live in the lobby.
+*Carmen даёт счёт: «1 key card, 50 breakfasts, 20 burgers».*
+l46 CARMEN [smiling] Or you can pay the bill, sir.
+l47 GUS [calmly] ...I will check out.
+
+### Повторение
+l48 SOFIA [cheerful] Let's practice! Say it with me!
+r1 I have a reservation.
+r2 Can I have a key card, please?
+r3 What time is breakfast?
+r4 What's the Wi-Fi password?
+r5 The air conditioning doesn't work.
+r6 What time is check-out?
+*После каждой фразы пауза 2,3 с с плашкой YOUR TURN.*
+
+### Викторина
+q01 SOFIA [excited] Quick quiz! What did Gus eat for breakfast?
+q02 SOFIA A: One toast. Or B: The whole buffet.
+*Отсчёт 3-2-1. Gus держит табличку «A» и делает невинное лицо, из-за неё выпадает кусочек булки.*
+q03 SOFIA [laughing] B! The whole buffet!
+
+### Концовка
+l49 SOFIA [curious] Where do YOU want to stay? A hotel, a hostel, or a tent? Write it in the comments!
+l50 SOFIA [cheerful] See you next time! Bye!
+l51 GUS [deadpan] Bye bye. I am not checking out.
+*Заставка YouTube 20 с: «NEXT EPISODE» + «SUBSCRIBE».*
+
+## Персонажи, фоны и голоса
+Новые: Carmen — администратор отеля (тёмные волосы, бордовая форма, бейдж); Pablo — беллбой (красная форма, круглая шапочка, тележка).
+Фоны: вход в отель (вращающаяся дверь), лобби со стойкой, лифт, номер 404, ресторан-буфет.
+Голоса: Sofia, Gus, Dr. Max — как раньше (Jessica, George, Chris); Carmen — новый тёплый женский; Pablo — молодой дружелюбный мужской (образцы предложу).
+Озвучка: около 3 500 символов. На бесплатном ElevenLabs осталось 5 319 из 10 000 (обновление 9 ноября) — хватит на одну серию без переделок.
