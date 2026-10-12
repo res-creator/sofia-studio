@@ -83,6 +83,7 @@ def rumble(d=2.8): t = t_(d); x = lp(noise(d), 220, 3) * (0.5 + 0.5 * np.sin(2 *
 def wheels(d=1.4): t = t_(d); return norm(bp(noise(d), 120, 700) * (0.6 + 0.4 * np.sign(np.sin(2 * np.pi * 9 * t))) * env(len(t), 0.1, 0.3), 0.35)
 def beltsfx(d=2.4): t = t_(d); return norm(lp(noise(d), 500, 2) * (0.7 + 0.3 * np.sin(2 * np.pi * 12 * t)) * env(len(t), 0.2, 0.4), 0.3)
 
+def cardswipe(): t = t_(0.35); return norm(bp(noise(0.35), 1500, 6000) * np.exp(-t * 7) * (0.5 + 0.5 * np.sin(2 * np.pi * 30 * t)), 0.5)
 LIB = {'honk': lambda: honk(0.55), 'boing': boing, 'pop': pop, 'whoosh': whoosh, 'slam': slam, 'fridge': fridge, 'waddle': waddle, 'tick': tick,
        'card': lambda: chime((880, 1318), 0.4, 0.07), 'ding': ding, 'slip': lambda: slide(400, 1600, 0.5), 'thud': thump, 'tweet': tweet,
        'squeeze': squelch, 'shudder': shudder, 'slide': lambda: slide(1400, 500, 0.45), 'shower': hiss, 'sputter': sputter, 'pour': pour,
@@ -147,7 +148,29 @@ gate[int(ts * SR):int(ct * SR)] = 0.0; ramp(ts + 0.6, ct, 0.0, 0.7); ramp(ct, ct
 venv = np.abs(voice); k = int(0.25 * SR); venv = np.convolve(venv, np.ones(k) / k, 'same'); duck = 1 - 0.68 * np.clip(venv * 8, 0, 1)
 music = music * gate * duck * 0.42
 
-mix = voice * 1.0 + fx * 0.8 + music
+
+# ---------- ambience beds per scene (quiet, ducked under voice): hall murmur, engine hum, room tone
+def _n(d): return int(d * SR)
+def murmur(d, lo=250, hi=1300):
+    n = _n(d); tt = np.arange(n) / SR
+    x = bp(rng.standard_normal(n), lo, hi) * (0.6 + 0.4 * np.sin(2 * np.pi * 0.23 * tt + 1.0) * np.sin(2 * np.pi * 0.11 * tt))
+    return x / (np.max(np.abs(x)) + 1e-9)
+def engine(d):
+    n = _n(d); tt = np.arange(n) / SR
+    x = lp(rng.standard_normal(n), 260, 3) * (0.7 + 0.3 * np.sin(2 * np.pi * 0.35 * tt)) + 0.5 * np.sin(2 * np.pi * 96 * tt) + 0.25 * np.sin(2 * np.pi * 192 * tt)
+    return x / (np.max(np.abs(x)) + 1e-9)
+def roomtone(d): x = lp(rng.standard_normal(_n(d)), 400, 2); return x / (np.max(np.abs(x)) + 1e-9)
+AMB = {'home': (roomtone, 0.010), 'checkin': (murmur, 0.040), 'security': (murmur, 0.040), 'corridor': (murmur, 0.028), 'wc': (murmur, 0.022),
+       'lounge': (murmur, 0.042), 'plane': (engine, 0.050), 'baggage': (murmur, 0.040)}
+amb = np.zeros(N)
+for sc_ in TL['scenes']:
+    if sc_['id'] not in AMB: continue
+    fn, g = AMB[sc_['id']]; a = int(sc_['t0'] * SR); b = min(N, int(sc_['t1'] * SR)); d = (b - a) / SR
+    seg = fn(d + 0.01)[:b - a] * g; f = min(len(seg) // 2, int(0.5 * SR)); seg[:f] *= np.linspace(0, 1, f); seg[-f:] *= np.linspace(1, 0, f)
+    amb[a:b] += seg
+amb = amb * (1 - 0.6 * np.clip(np.convolve(np.abs(voice), np.ones(int(0.25 * SR)) / int(0.25 * SR), 'same') * 8, 0, 1))
+
+mix = voice * 1.0 + fx * 0.8 + music + amb
 mix = mix / (np.max(np.abs(mix)) + 1e-9) * 0.95
 pcm = (np.clip(mix, -1, 1) * 32767).astype(np.int16)
 p = subprocess.Popen(['ffmpeg', '-y', '-v', 'error', '-f', 's16le', '-ar', str(SR), '-ac', '1', '-i', '-', '-af', 'loudnorm=I=-14:TP=-1.5:LRA=11', '-ar', '48000', '-ac', '2', f'{D}/mix.wav'], stdin=subprocess.PIPE)

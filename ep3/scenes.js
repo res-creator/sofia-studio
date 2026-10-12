@@ -40,12 +40,14 @@ function sofia(ctx, x, hipY, s, pose, t, seed = 1) {
   p.blink = Math.max(p.blink || 0, lf.blink); p.bob = (p.bob || 0) + lf.bob;
   p.mouth = pose.mouthLock ? pose.mouth : mouthFor(lvl, pose.mouth || {}, t);
   if (lvl > 0.05) p.tilt = (p.tilt || 0) + noise1(t * 1.7) * 0.05;
+  p.tilt = (p.tilt || 0) + Math.sin(t * 0.9 + seed * 1.7) * 0.012; // alive even when silent
   drawSofia(ctx, x, hipY, s, p);
 }
 const standHip = (floorY, s) => floorY - 262 * s;
 function gus(ctx, x, footY, s, p, t, who = 'gus') {
   const lvl = talk(who, t);
-  drawGus(ctx, x, footY, s, Object.assign({}, p, { honk: Math.max(p.honk || 0, lvl * 0.75) }));
+  const sq = (p.squash || 1) * (1 + Math.sin(t * 1.9) * 0.006) * (1 - 0.025 * Math.max(0, lvl - 0.6) / 0.4);
+  drawGus(ctx, x, footY, s, Object.assign({}, p, { honk: Math.max(p.honk || 0, lvl * 0.75), squash: sq }));
 }
 const garyRig = (ctx, x, footY, s, p, t) => gus(ctx, x, footY, s, Object.assign({ tie: false, lids: 0.7, hold: PR.gary }, p), t, 'gary');
 // crew: hip = floor − 280·s. talkKey = which voice drives the mouth. NOTE: legs:'walk' splays like Dr. Max — use stand + hop instead.
@@ -56,11 +58,14 @@ function crew(ctx, x, floorY, s, pose, t, who, talkKey, seed = 7) {
   if (lvl > 0.02) { m.open = Math.max(m.open, clamp(lvl * 0.62)); m.w = (m.w || 1) * (1 - 0.12 * Math.max(0, noise1(t * 9))); }
   p.mouth = m;
   if (lvl > 0.05) p.tilt = (p.tilt || 0) + noise1(t * 1.5 + 3) * 0.04;
+  p.tilt = (p.tilt || 0) + Math.sin(t * 0.8 + seed) * 0.01;
   drawCrew(ctx, x, floorY - 280 * s - (pose.hop || 0), s, p, who);
 }
 // natural arm target: side -1/+1, deg from hanging-down (0) via horizontal (90) to straight up (180), ext 0.75..0.95 of full arm length.
 // Near-straight arms avoid the 'chicken wing' (elbow up, hand down) that short IK reaches give. rig 'c' = crew (longer arms).
 const A = (side, deg, ext = 0.9, rig = 's') => { const sh = rig === 'c' ? [95, -250] : [90, -236], len = rig === 'c' ? 243 : 230, a = deg * Math.PI / 180; return [side * sh[0] + side * Math.sin(a) * len * ext, sh[1] + Math.cos(a) * len * ext]; };
+const GS = require('../lib/anim/gestures');
+const W2 = (t, a, b) => GS.win(t, a, b, 0.25);
 const sunset = (ctx, a) => { ctx.fillStyle = `rgba(10,8,20,${a})`; ctx.fillRect(0, 0, 1920, 1080); };
 
 // ==================================================================== 1. HOME — hallway, the suitcase that moves
@@ -120,8 +125,11 @@ const home = (() => {
         legs: 'stand', turn: taxi ? 0 : 0.38, look: taxi ? [0, -0.2] : [0.8, -0.2],
         brow: { l: 0.25, r: 0.25, worry: t > m('l03') && !burst ? 0.8 : 0, angry: firm ? 0.5 : 0 }, wide: shock * 0.9,
         mouth: { smile: t < m('l03') ? 0.7 : firm ? -0.1 : 0 }, sleepy: t >= m('l08') && t < l08w ? 0.5 : 0,
-        armL: firm ? A(-1, 65, 0.9) : taxi ? A(-1, 150 + Math.sin(t * 10) * 12, 0.92) : shock > 0.3 ? A(-1, 95, 0.85) : null, handL: shock > 0.3 || firm || taxi ? 'open' : 'mitten',
-        armR: firm ? A(1, 55, 0.9) : shock > 0.3 ? A(1, 95, 0.85) : null, handR: firm || shock > 0.3 ? 'open' : 'mitten', armsFront: firm || shock > 0.3 || taxi,
+        ...GS.compose(t, 2, 's', [
+          { k: W2(t, m('l04') + 0.1, m('l04') + 1.9), g: k => GS.openArms(t, k) },
+          { k: W2(t, m('l06'), m('l07')), g: k => GS.merge(GS.reachOut(-1, k, t), GS.reachOut(1, k, t)) },
+          { k: GS.smooth((t - l08w) / 0.3), g: k => GS.wave(t, -1, k) },
+        ]),
       }, t);
       ctx.restore();
       if (burst && u < 1.6) P.burst(ctx, 1420, 280, 'POP!', clamp(u / 1.0), '#FFD23F', 0.08, 0.9);
@@ -204,7 +212,11 @@ const checkin = (() => {
         turn: -0.3, look: sad ? [0.1, 0.6] : amazed ? [0, 0.7] : [-0.75, 0.05],
         browL: sad ? -0.35 : apol ? 0.6 : 0.3, browR: sad ? 0.25 : apol ? 0.6 : 0.3, surprise: amazed ? 0.8 : 0,
         mouth: { smile: sad ? -0.1 : apol ? -0.3 : 0.8, w: 1 },
-        armR: pass || give ? A(1, 40, 0.8, 'c') : t >= m('l15') && t < m('weigh') + 1 ? A(-1, 65, 0.9, 'c') : [120, -60], armL: [-120, -70], armsFront: pass || give,
+        ...GS.compose(t, 4, 'c', [
+          { k: W2(t, m('l12'), m('l15') + 1.0), g: k => GS.hold(1, k, t, 0, 'c') },
+          { k: W2(t, m('l21'), m('l22') + 1.2), g: k => GS.hold(1, k, t, 0, 'c') },
+          { k: W2(t, m('l15') + 0.1, m('weigh') + 1), g: k => GS.point(-1, k, t, 0, 'c') },
+        ], { L: [-120, -70], R: [120, -60] }),
         holdR: pass ? (c => PR.passport(c, 1.1, 0.2)) : give ? (c => PR.boardingPass(c, 1.2, 0.2)) : null,
       }, t, 'anna', 'anna', 4);
       // bag on the scale (drops in at 'weigh'); lid opens while Gus eats
@@ -231,7 +243,7 @@ const checkin = (() => {
       sofia(ctx, sx, standHip(1500, 0.72), 0.72, {
         legs: walking ? 'walk' : 'stand', walk: t * 1.9, turn: 0.35, look: palm ? [0.3, 0.4] : [0.8, -0.2],
         blink: palm ? 0.5 : 0, brow: { l: 0.2, r: 0.2, worry: palm ? 0.7 : 0 }, mouth: { smile: palm ? -0.2 : 0.55 },
-        armR: palm ? [40, -470] : here ? A(1, 60, 0.85) : null, handR: palm ? 'open' : 'mitten', armsFront: palm || here,
+        ...(palm ? { armR: [40, -470], handR: 'open', armsFront: true } : GS.compose(t, 1, 's', [{ k: W2(t, m('l10'), m('l11')), g: k => GS.reachOut(1, k, t) }])),
         holdR: here ? (c => PR.passport(c, 1.0, 0.1)) : null,
       }, t, 1);
       B3.desk(ctx, kg);
@@ -290,7 +302,7 @@ const security = (() => {
       const looking = t >= m('look') && t < m('l27'), stern = t >= m('l28'), tie = t >= m('tie');
       crew(ctx, 1450, 1500, 0.7, {
         turn: -0.3, look: looking ? [-0.3, 0.8] : [-0.8, 0.05], browL: -0.5, browR: -0.5, mouth: { smile: -0.3 }, bob: 0,
-        armL: [-70, -50], armR: tie && t < m('l33') ? A(1, 40, 0.8, 'c') : [70, -50], armsFront: true,
+        ...GS.compose(t, 3, 'c', [{ k: W2(t, m('tie') - 0.2, m('l33')), g: k => GS.hold(1, k, t, 0, 'c') }], { L: [-70, -50], R: [70, -50] }), armsFront: true,
         holdR: tie && t < m('l33') ? (c => { PR.tieClip(c, 0, 0, 1.1, 0.5); paint(c, q => { q.moveTo(-10, 4); q.lineTo(10, 4); q.lineTo(14, 56); q.lineTo(0, 70); q.lineTo(-14, 56); q.closePath(); }, '#2E6FD8', { lw: 4 }); }) : null,
         hop: 0,
       }, t, 'bob', 'bob', 3);
@@ -308,7 +320,7 @@ const security = (() => {
       const wh = t >= m('l34');
       sofia(ctx, 560 + (arch ? 0 : 0), standHip(1500, 0.74), 0.74, {
         turn: 0.3, look: wh ? [0.8, 0.1] : [0.8, -0.2], legs: 'stand', brow: { l: 0.2, r: 0.2, worry: wh ? 0.8 : 0 }, mouth: { smile: wh ? -0.1 : 0.55 }, sweat: wh ? 1 : 0,
-        armL: wh ? A(-1, 50, 0.85) : null, handL: wh ? 'open' : 'mitten', armsFront: wh,
+        ...GS.compose(t, 2, 's', [{ k: GS.smooth((t - m('l34')) / 0.3), g: k => GS.hold(-1, k, t) }]),
       }, t, 2);
       ctx.restore();
       if (alarm && Math.floor(t * 6) % 2 === 0) P.burst(ctx, 1450, 270, 'BEEP BEEP!', clamp(((t - m('beep')) % 1.4) / 0.6), '#FF5A5A', -0.06, 0.8);
@@ -329,7 +341,7 @@ const corridor = (() => {
       const gx = lerp(1250, 2000, ease.in(go)), sx = lerp(850, 1560, ease.in(clamp((t - wordT('l36', 1) - 0.3) / 3)));
       gus(ctx, gx, 1500, 0.9, { face: 1, walking: go > 0, walk: t * 3, lids: t >= m('l36') ? 0.2 : 0.5, neck: t >= m('l36') ? -0.2 : 0, look: 0.6, wing: t >= m('l36') ? 0.6 : 0.1 }, t);
       const w = t < m('l35') + 1.0 ? 0 : 1;
-      sofia(ctx, sx, standHip(1500, 0.74), 0.74, { legs: go > 0.05 ? 'walk' : 'stand', walk: t * 2.4, turn: 0.3, look: [0.7, -0.2], brow: { l: 0.2, r: 0.2, worry: 0.9 }, mouth: { smile: -0.2 }, armL: t > m('l35') && t < m('l36') ? A(-1, 100, 0.85) : null, handL: 'open', armsFront: t > m('l35') && t < m('l36') }, t, 2);
+      sofia(ctx, sx, standHip(1500, 0.74), 0.74, { legs: go > 0.05 ? 'walk' : 'stand', walk: t * 2.4, turn: 0.3, look: [0.7, -0.2], brow: { l: 0.2, r: 0.2, worry: 0.9 }, mouth: { smile: -0.2 }, ...GS.compose(t, 2, 's', [{ k: W2(t, m('l35') + 0.5, m('l36')), g: k => GS.reachOut(-1, k, t) }]) }, t, 2);
       ctx.restore();
     },
   };
@@ -364,7 +376,7 @@ const wc = (() => {
         const pt = t >= m('l40') && t < m('l41');
         crew(ctx, mx, 1500, 0.72, {
           turn: 0.15, look: [0.7, 0.05], browL: 0.4, browR: 0.4, mouth: { smile: 0.9, open: 0.2 }, hop: strolling ? Math.abs(Math.sin(t * 9)) * 12 : 0,
-          armL: pt ? A(-1, 95, 0.95, 'c') : [-90, -60], handL: pt ? 'open' : 'relax', armR: [70, -70], armsFront: pt,
+          ...GS.compose(t, 9, 'c', [{ k: W2(t, m('l40'), m('l41')), g: k => GS.point(-1, k, t, 0, 'c', 90) }], { L: [-90, -60], R: [70, -70] }),
         }, t, 'maxVac', 'drmax', 9);
       }
       const sx = 1500 - re * 1900, gx = 1760 - re * 1900;
@@ -373,7 +385,7 @@ const wc = (() => {
       sofia(ctx, sx, standHip(1500, 0.74), 0.74, {
         legs: run > 0 ? 'walk' : 'stand', walk: t * 4, turn: run > 0 ? -0.4 : -0.35, look: run > 0 ? [-0.9, 0] : [-0.8, -0.1], wide: sur ? 0.9 : 0,
         brow: { l: 0.3, r: 0.3, angry: shout ? 0.5 : 0 }, mouth: { smile: shout ? 0.1 : t >= m('l37') && t < m('l38') ? -0.3 : 0.5 },
-        armL: shout && run < 0.05 ? A(-1, 140, 0.9) : null, handL: 'open', armsFront: shout && run < 0.05,
+        ...(run < 0.05 ? GS.compose(t, 2, 's', [{ k: GS.smooth((t - m('l44')) / 0.25), g: k => GS.raise(-1, k, t) }]) : GS.compose(t, 2, 's', [])),
       }, t, 2);
       ctx.restore();
       if (t >= m('l44') && t < m('l44') + 1.4) P.burst(ctx, 1400, 270, 'RUN!', clamp((t - m('l44')) / 1.0), '#FFD23F', -0.08, 0.9);
@@ -427,7 +439,7 @@ const lounge = (() => {
       sofia(ctx, 1900, 1300, 0.74, {
         legs: 'stand', turn: -0.35, look: look ? [0.6, -0.4] : [0.8, 0], blink: nap ? 0.8 : 0, sleepy: nap ? 0.7 : 0,
         brow: { l: 0.2, r: 0.2, worry: sad ? 0.9 : 0, angry: firm ? 0.6 : 0 }, mouth: { smile: sad ? -0.4 : firm ? -0.1 : t >= m('l50') && !nap ? 0.5 : 0.1 },
-        tilt: nap ? 0.18 : 0, armL: sad ? A(-1, 50, 0.85) : null, handL: 'open', armsFront: sad,
+        tilt: nap ? 0.18 : 0, ...GS.compose(t, 2, 's', [{ k: W2(t, m('l46'), m('l47')), g: k => GS.hold(-1, k, t) }]),
       }, t, 2);
       B3.seatFront(ctx, 1620, 850);
       if (nap) P.zzz(ctx, 2250, 1000, t);
@@ -485,7 +497,7 @@ const plane = (() => {
       if (t >= m('cart') - 0.2) PR.trolley(ctx, cx, 1500, 1.0);
       const talkA = t >= m('l61') && t < m('l62'), dispens = t >= m('l61');
       crew(ctx, t >= m('cart') ? cx - 300 : 2150, 1500, 0.74, {
-        turn: -0.4, look: [-0.8, 0.05], browL: 0.35, browR: 0.35, mouth: { smile: 0.9 }, armR: dispens ? A(1, 40, 0.8, 'c') : [70, -60], armsFront: true, armL: [-60, -60],
+        turn: -0.4, look: [-0.8, 0.05], browL: 0.35, browR: 0.35, mouth: { smile: 0.9 }, ...GS.compose(t, 4, 'c', [{ k: GS.smooth((t - m('l61')) / 0.3), g: k => GS.hold(1, k, t, 0, 'c') }], { L: [-60, -60], R: [70, -60] }), armsFront: true,
         holdR: t >= m('l65') + 0.2 ? (c => PR.plate(c, 20, 10, 'fish')) : null,
       }, t, 'annaFA', 'anna', 4);
       if (t >= m('l65') + 0.6) { ctx.save(); ctx.translate(1000, 1330); ctx.scale(1.8, 1.8); PR.plate(ctx, 0, 0, 'fish'); ctx.restore(); }
@@ -541,7 +553,7 @@ const baggage = (() => {
       gus(ctx, 1000, 1500, 0.9, { face: 1, lids: t >= m('l68') && t < m('l69') ? 0.02 : 0.5, neck: t >= m('l68') && t < m('l69') ? -0.4 : 0, look: 0.5, wing: t >= m('l69') && t < m('l70') ? 0.6 : 0.1, squash: t >= m('l68') && t < m('l69') ? 1.03 : 1 }, t);
       const ex = t >= m('l67') && t < m('belt'), lau = t >= m('l71');
       sofia(ctx, 640, standHip(1500, 0.74), 0.74, {
-        turn: 0.35, look: [0.8, -0.1], brow: { l: 0.4, r: 0.4 }, mouth: { smile: 0.9 }, armL: ex || lau ? A(-1, 130, 0.9) : null, handL: 'open', armsFront: ex || lau, wide: t >= m('open') && t < m('l69') ? 0.7 : 0,
+        turn: 0.35, look: [0.8, -0.1], brow: { l: 0.4, r: 0.4 }, mouth: { smile: 0.9 }, ...GS.compose(t, 2, 's', [{ k: W2(t, m('l67'), m('belt')), g: k => GS.raise(-1, k, t, 0, 's', 130) }, { k: GS.smooth((t - m('l71')) / 0.3), g: k => GS.raise(-1, k, t, 0, 's', 130) }]), wide: t >= m('open') && t < m('l69') ? 0.7 : 0,
       }, t, 2);
       ctx.restore();
       if (t >= m('honk') && t < m('l69')) P.burst(ctx, 1500, 270, 'HONK!', clamp((t - m('honk')) / 1.0), '#FFD23F', -0.08, 0.9);
@@ -574,7 +586,7 @@ const recap = (() => {
         if (t > Ln.t1 && t < nextT - 0.7) { paint(ctx, c => roundRect(c, 215, -80, 190, 40, 20), U.GREEN, { lw: 4 }); ctx.font = '700 26px ' + F.EN; ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.fillText('YOUR TURN', 310, -51); }
         ctx.restore();
       });
-      sofia(ctx, 170, 1230, 0.72, { armR: A(1, 120, 0.9), handR: 'open', mouth: { smile: 0.9 }, look: [0.6, -0.5], turn: 0.2 }, t, 10);
+      sofia(ctx, 170, 1230, 0.72, { ...GS.compose(t, 10, 's', [{ k: 1, g: k => GS.raise(1, k, t, 0, 's', 120) }]), mouth: { smile: 0.9 }, look: [0.6, -0.5], turn: 0.2 }, t, 10);
       gus(ctx, 1780, 1110, 0.72, { face: -1, lids: 0.55, neck: Math.sin(t * 3) * 0.2, look: -0.6 }, t);
     },
   };
@@ -614,7 +626,7 @@ const quiz = (() => {
         paint(ctx, c => c.arc(0, 0, 90, 0, 7), '#FFFFFF', { lw: 8 }); U.textOutlined(ctx, String(Math.max(1, n)), 0, 38, 110, U.RED, { olw: 14 });
         ctx.restore();
       }
-      sofia(ctx, 230, 1230, 0.72, { armR: A(1, 115, 0.9), handR: 'open', armL: [-130, -80], mouth: { smile: 0.9 }, brow: { l: 0.5, r: 0.5 }, look: [0.8, -0.4], turn: 0.2 }, t, 5);
+      sofia(ctx, 230, 1230, 0.72, { ...GS.compose(t, 5, 's', [{ k: 1, g: k => GS.raise(1, k, t, 0, 's', 115) }]), mouth: { smile: 0.9 }, brow: { l: 0.5, r: 0.5 }, look: [0.8, -0.4], turn: 0.2 }, t, 5);
       const sad = ans ? clamp((t - m('answer') - 0.3) / 0.4) : 0;
       // Gus votes A (innocent face); a burger falls out from behind the sign when the truth is told
       gus(ctx, 1700, 1110, 0.75, { face: -1, lids: lerp(0.45, 0.8, sad), look: -0.5, neck: -sad * 0.6, hold: (c, face, H) => { c.translate(H.hx + 128, H.hy + 26); c.rotate(sad * 0.35 + Math.sin(t * 3) * 0.05); line(c, [[0, 0], [0, 40]], 5, OL); c.scale(face, 1); paint(c, q => roundRect(q, -66, 40, 132, 132, 14), '#FFFFFF', { lw: 6 }); U.textOutlined(c, 'A', 0, 140, 96, U.ORANGE, { olw: 12 }); } }, t);
@@ -641,7 +653,7 @@ const outro = (() => {
       // Uncle Gary stands up out of the case and joins Gus
       garyRig(ctx, lerp(2000, 1700, ease.out(clamp((t - m('l73')) / 1.5))) + fe * 700, 1500 - fe * 1100, 0.9, { face: -1, wing: fly > 0 ? 0.5 + 0.5 * Math.sin(t * 14) : 0.1, lids: 0.7, look: -0.4 }, t);
       gus(ctx, 1120 + fe * 700, 1500 - fe * 1100, 0.92, { face: 1, lids: t >= m('bye') ? 0.55 : 0.55, look: t >= m('bye') ? 0.4 : 0.6, wing: fly > 0 ? 0.5 + 0.5 * Math.sin(t * 14) : t >= m('bye') ? 0.4 + 0.3 * Math.sin(t * 12) : 0.1 }, t);
-      sofia(ctx, 700, standHip(1500, 0.76), 0.76, { turn: bye ? 0.1 : 0.25, look: [0.4, -0.1], armR: bye ? A(1, 150 + Math.sin(t * 10) * 15, 0.92) : A(1, 50, 0.9), handR: 'open', armL: [-150, -80], mouth: { smile: 0.95 }, brow: { l: 0.4, r: 0.4 } }, t, 11);
+      sofia(ctx, 700, standHip(1500, 0.76), 0.76, { turn: bye ? 0.1 : 0.25, look: [0.4, -0.1], ...GS.compose(t, 11, 's', [{ k: GS.smooth((t - m('l74')) / 0.3), g: k => GS.wave(t, 1, k) }, { k: 1 - GS.smooth((t - m('l74')) / 0.3), g: k => GS.hold(1, k, t) }]), mouth: { smile: 0.95 }, brow: { l: 0.4, r: 0.4 } }, t, 11);
       ctx.restore();
       if (end) { ctx.fillStyle = `rgba(255,246,230,${0.55 * clamp((t - m('endscreen')) / 0.5)})`; ctx.fillRect(0, 0, 1920, 1080); }
       const ck = ease.back(clamp((t - m('l73') - 0.3) / 0.4)) * (bye ? 1 - clamp((t - m('l74')) / 0.3) : 1);
