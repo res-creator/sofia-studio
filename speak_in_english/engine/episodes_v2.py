@@ -1,0 +1,427 @@
+# v2 episodes: many characters, detailed style. who: nar (RU, ElevenLabs Sarah), tip + characters (EN, Kokoro)
+# line: (id, who, text, ru)
+CAST = {
+    "her":   dict(voice="af_heart", speed=1.0, lang="en-us"),
+    "tip":   dict(voice="af_bella", speed=0.9, lang="en-us"),
+    "cat":   dict(voice="bm_george", speed=0.88, lang="en-gb"),
+    "mike":  dict(voice="am_onyx", speed=0.92, lang="en-us", pitch=-1.5),
+    "chloe": dict(voice="af_jessica", speed=1.0, lang="en-us"),
+    "joe":   dict(voice="bm_lewis", speed=0.86, lang="en-gb"),
+    "rose":  dict(voice="bf_isabella", speed=0.92, lang="en-gb", pitch=-1.0),
+    "agnes": dict(voice="bf_emma", speed=0.9, lang="en-gb", pitch=-1.2),
+    "dan":   dict(voice="am_puck", speed=1.0, lang="en-us"),
+    "mark":  dict(voice="am_michael", speed=0.98, lang="en-us"),
+    "priya": dict(voice="af_nova", speed=1.0, lang="en-us"),
+    "margot":dict(voice="bf_alice", speed=0.92, lang="en-gb"),
+    "leo":   dict(voice="af_sky", speed=1.0, lang="en-us", pitch=3.0),
+    "nana":  dict(voice="bf_lily", speed=0.9, lang="en-gb", pitch=-1.4),
+    "tom":   dict(voice="am_liam", speed=1.0, lang="en-us"),
+    "linda": dict(voice="af_sarah", speed=1.0, lang="en-us"),
+    "max":   dict(voice="am_echo", speed=1.02, lang="en-us", pitch=3.0),
+    "greg":  dict(voice="am_santa", speed=0.95, lang="en-us", pitch=-0.8),
+    "rita":  dict(voice="af_aoede", speed=1.05, lang="en-us"),
+    "doris": dict(voice="bf_emma", speed=0.9, lang="en-gb", pitch=-1.2),
+    "ben":   dict(voice="bm_daniel", speed=0.95, lang="en-gb"),
+    "rocky": dict(voice="am_onyx", speed=0.95, lang="en-us", pitch=-1.5),
+    "jay":   dict(voice="am_puck", speed=1.05, lang="en-us", pitch=1.2),
+    "tony":  dict(voice="am_fenrir", speed=1.0, lang="en-us"),
+    "albert": dict(voice="bm_lewis", speed=0.86, lang="en-gb", pitch=-1.2),
+    "kai":   dict(voice="bm_fable", speed=1.06, lang="en-gb"),
+    "oliver": dict(voice="bm_daniel", speed=1.02, lang="en-gb"),
+    "reggie": dict(voice="bm_george", speed=0.9, lang="en-gb", pitch=-1.0),
+    "del":   dict(voice="bm_lewis", speed=0.98, lang="en-gb", pitch=-0.5),
+    "barnaby": dict(voice="bm_fable", speed=0.94, lang="en-gb", pitch=-1.2),
+}
+EP = {}
+
+EP["gym"] = dict(
+    title="Прошу тренажёр в зале на каждом уровне",
+    hook_title=[["КАК ТЫ", "d"], ["СПРОСИШЬ", "d"], ["«ТЫ ЕЩЁ ДОЛГО?»", "p"], ["НА АНГЛИЙСКОМ?", "d"]],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=["HOW ARE YOU?", "что отвечать на каждом уровне"],
+    lines=[
+        ("hook", "nar", "Кто-то занял в зале твой тренажёр. Как ты спросишь, долго ли ещё, на английском? По одной фразе видно твой уровень. Проверим!", ""),
+        # A1 — Big Mike on the bench
+        ("a1_her", "her", "You. Finish. Now?", "Ты. Закончить. Сейчас?"),
+        ("a1_x", "mike", "Is this a robbery?", "Это ограбление?"),
+        ("a1_nar", "nar", "Уровень А-один. Понять можно, но Майк уже нервничает.", ""),
+        # A2 — Chloe filming on the treadmill
+        ("a2_her", "her", "You finish? I want this machine.", "Ты закончила? Я хочу этот тренажёр."),
+        ("a2_x", "chloe", "Wow. Rude.", "Ого. Грубо."),
+        ("a2_nar", "nar", "А-два. Звучит как приказ. Вежливее спросить вот так:", ""),
+        ("a2_tip", "tip", "Are you using this?", ""),
+        # B1 — Grandpa Joe sitting on the cable machine with a newspaper
+        ("b1_her", "her", "Excuse me, are you using this?", "Извините, вы этим пользуетесь?"),
+        ("b1_x", "joe", "Oh! It's all yours, dear.", "О! Он весь ваш, милая."),
+        ("b1_nar", "nar", "Би-один. Вежливо и просто. Так спрашивают в любом зале мира.", ""),
+        # B2 — Granny Rose squatting a lot
+        ("b2_her", "her", "Mind if I work in with you?", "Можно я позанимаюсь по очереди с вами?"),
+        ("b2_x", "rose", "Sure, sweetie! Just take off a few plates.", "Конечно, милая! Только сними пару блинов."),
+        ("b2_nar", "nar", "Би-два. Work in значит заниматься по очереди на одном тренажёре. Запоминай:", ""),
+        ("b2_tip", "tip", "Mind if I work in?", ""),
+        # C1 — back to Mike
+        ("c1_her", "her", "How many sets have you got left? No rush.", "Сколько у тебя ещё подходов? Не торопись."),
+        ("c1_x", "mike", "Last one. Then it's all yours.", "Последний. Потом он твой."),
+        ("c1_nar", "nar", "Си-один. No rush значит «не торопись». Вежливо, и никто не чувствует давления:", ""),
+        ("c1_tip", "tip", "No rush!", ""),
+        # C2 — the whole gym freezes
+        ("c2_her", "her", "I do hate to intrude, but might I prevail upon you to relinquish this apparatus at your earliest convenience?", "Неловко вторгаться, но не могли бы вы уступить этот снаряд при первой же возможности?"),
+        ("c2_x", "mike", "So... you want the bench?", "Так... тебе нужна скамья?"),
+        ("c2_her2", "her", "The bench.", "Скамья."),
+        ("c2_nar", "nar", "Си-два. Пока ты договорила, Майк успел сделать ещё три подхода. В зале говори проще!", ""),
+        ("outro", "nar", "А как ты спросишь про тренажёр? Пиши свою фразу в комментарии! И подпишись, впереди ещё много новых серий.", ""),
+    ],
+    cards=dict(
+        A1=dict(type="meter", label="ТРЕНАЖЁР", ok=False, note="Майк в шоке"),
+        A2=dict(type="swap", bad="I want this machine.", bad_note="звучит как приказ", good=["Are you using", "this?"]),
+        B1=dict(type="eq", en="Are you using this?", ru="= Вы этим пользуетесь?", note="работает в любом зале", stamp=["ФРАЗА", "№1 В ЗАЛЕ"]),
+        B2=dict(type="big", en="work in", ru="по очереди", ex=["Mind if I work in?", "можно я по очереди с вами?"], icon="dumbbell"),
+        C1=dict(type="eq", en="No rush!", ru="= Не торопись!", ex=["How many sets have you got left?", "= Сколько у тебя ещё подходов?"]),
+        C2=dict(type="c2", vocab=[["prevail upon", "= уговорить (книжн.)"], ["relinquish", "= уступить, отдать"]], moral=["В ЗАЛЕ", "ГОВОРИ", "ПРОЩЕ"], moral_at=0.42),
+    ),
+)
+
+EP["lift"] = dict(
+    title="Отвечаю на How are you на каждом уровне",
+    hook_title=[["ЧТО ТЫ", "d"], ["ОТВЕЧАЕШЬ НА", "d"], ["HOW ARE YOU?", "p"], ["ТОЛЬКО ЧЕСТНО", "d"]],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    lines=[
+        ("hook", "nar", "Тебя спросили: How are you? Если ты сразу подумал «I'm fine, thank you, and you?», у меня для тебя новости. Проверим!", ""),
+        # A1 — Granny Agnes with a pug
+        ("a1_x", "agnes", "Morning, dear! How are you?", "Доброе утро, милая! Как ты?"),
+        ("a1_her", "her", "Good. Yes. Elevator.", "Хорошо. Да. Лифт."),
+        ("a1_nar", "nar", "Уровень А-один. Три слова и паника в глазах. Но бабушка всё равно довольна.", ""),
+        # A2 — Dan the courier
+        ("a2_x", "dan", "Hey! How are you?", "Привет! Как дела?"),
+        ("a2_her", "her", "I am fine, thank you. And you?", "Я в порядке, спасибо. А вы?"),
+        ("a2_x2", "dan", "Uh... I'm also fine?", "Э... я тоже в порядке?"),
+        ("a2_nar", "nar", "А-два. Школьная классика! Правильно, но звучит как робот. Живее вот так:", ""),
+        ("a2_tip", "tip", "Good, thanks! You?", ""),
+        # B1 — Mark with coffee
+        ("b1_x", "mark", "Hey! How's it going?", "Привет! Как оно?"),
+        ("b1_her", "her", "Not bad! How about you?", "Неплохо! А у тебя?"),
+        ("b1_x2", "mark", "Can't complain.", "Грех жаловаться."),
+        ("b1_nar", "nar", "Би-один. Not bad, самый частый ответ у носителей. Просто и живо.", ""),
+        # B2 — Priya with a yoga mat
+        ("b2_x", "priya", "Hi! How are you doing?", "Привет! Как ты?"),
+        ("b2_her", "her", "Hanging in there. It's been a long week!", "Держусь. Неделька выдалась длинная!"),
+        ("b2_x2", "priya", "Tell me about it!", "И не говори!"),
+        ("b2_nar", "nar", "Би-два. Hanging in there значит «держусь». Честно, но без драмы. Запоминай:", ""),
+        ("b2_tip", "tip", "Hanging in there.", ""),
+        # C1 — Margot with a poodle
+        ("c1_x", "margot", "Darling! How have you been?", "Дорогая! Как поживаешь?"),
+        ("c1_her", "her", "Can't complain, actually. Things are looking up!", "Грех жаловаться. Всё налаживается!"),
+        ("c1_x2", "margot", "Marvellous!", "Чудесно!"),
+        ("c1_nar", "nar", "Си-один. Things are looking up значит «всё налаживается». Звучит уверенно и красиво:", ""),
+        ("c1_tip", "tip", "Things are looking up!", ""),
+        # C2 — little Leo with a balloon, elevator packed
+        ("c2_x", "leo", "Hi! How are you?", "Привет! Как дела?"),
+        ("c2_her", "her", "Well, since you ask, I've been grappling with a rather profound sense of existential ennui. Although, on the bright side, my sourdough starter is thriving.", "Ну, раз уж ты спросил, меня одолевает глубокая экзистенциальная тоска. Хотя, с другой стороны, моя закваска для хлеба процветает."),
+        ("c2_x2", "leo", "I just said hi.", "Я просто поздоровался."),
+        ("c2_her2", "her", "Good, thanks.", "Хорошо, спасибо."),
+        ("c2_nar", "nar", "Си-два. Запомни: How are you, это просто «привет». Не надо рассказывать лифту всю свою жизнь!", ""),
+        ("outro", "nar", "А что ты отвечаешь на How are you? Пиши в комментарии! И подпишись, впереди ещё много новых серий.", ""),
+    ],
+    cards=dict(
+        A1=dict(type="meter", label="РАЗГОВОР", ok=True, note="бабушка довольна"),
+        A2=dict(type="swap", bad="I am fine, thank you. And you?", bad_note="звучит как робот", good=["Good, thanks!", "You?"]),
+        B1=dict(type="eq", en="Not bad!", ru="= Неплохо!", note="самый частый ответ", stamp=["ТАК ГОВОРЯТ", "НОСИТЕЛИ"]),
+        B2=dict(type="big", en="hanging in there", ru="держусь", ex=["Hanging in there!", "держусь, потихоньку"], icon="rope"),
+        C1=dict(type="eq", en="Things are looking up!", ru="= Всё налаживается!", ex=["Can't complain. = Грех жаловаться.", "How have you been? = Как поживаешь?"]),
+        C2=dict(type="c2", vocab=[["grapple with", "= бороться с чем-то"], ["existential ennui", "= экзистенциальная тоска"]], moral=["HOW ARE YOU", "= ПРОСТО", "«ПРИВЕТ»"], moral_at=0.32),
+    ),
+)
+
+EP["dinner"] = dict(
+    title="Отказываюсь от добавки на каждом уровне",
+    hook_title=[["БАБУШКА", "d"], ["НЕСЁТ", "d"], ["ДОБАВКУ", "p"], ["КАК ОТКАЗАТЬСЯ?", "d"]],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    lines=[
+        ("hook", "nar", "Ужин у родителей парня. Бабушка несёт добавку. Как вежливо отказаться на английском? По одной фразе видно твой уровень. Проверим!", ""),
+        # A1 — potatoes
+        ("a1_x", "nana", "More potatoes, dear?", "Ещё картошечки, милая?"),
+        ("a1_her", "her", "No. Me full. Stop.", "Нет. Я полная. Стоп."),
+        ("a1_x2", "nana", "Full?! Look at you! Skin and bones!", "Полная?! Посмотри на себя! Кожа да кости!"),
+        ("a1_x3", "tom", "Never say no to Nana.", "Бабушке не отказывают."),
+        ("a1_nar", "nar", "Уровень А-один. Бабушка услышала только «no». А «no» для бабушки значит «положи поменьше».", ""),
+        # A2 — meatballs, false friend
+        ("a2_x", "nana", "Have some meatballs!", "Возьми фрикаделек!"),
+        ("a2_her", "her", "No, thank you. I'm fed up.", "Нет, спасибо. Вы меня достали."),
+        ("a2_x2", "linda", "Fed up? With us?!", "Достали? Мы?!"),
+        ("a2_x3", "nana", "You're grumpy because you're hungry. Eat!", "Ты злая, потому что голодная. Ешь!"),
+        ("a2_nar", "nar", "А-два. Ой! I'm fed up, это не «я сыта», а «вы меня достали». Скажи так:", ""),
+        ("a2_tip", "tip", "I'm full, thanks!", ""),
+        # B1 — pie, compliment backfires
+        ("b1_x", "nana", "A little pie?", "Кусочек пирога?"),
+        ("b1_her", "her", "I'm full, thank you. It was delicious!", "Я наелась, спасибо. Было очень вкусно!"),
+        ("b1_x2", "nana", "Delicious? Then have more!", "Вкусно? Тогда бери ещё!"),
+        ("b1_x3", "max", "Rookie mistake.", "Ошибка новичка."),
+        ("b1_nar", "nar", "Би-один. Всё правильно! Но ты похвалила еду, а для бабушки это просьба о добавке.", ""),
+        # B2 — stuffed / stuffing
+        ("b2_x", "nana", "You've barely touched your food!", "Ты же почти ничего не съела!"),
+        ("b2_her", "her", "Honestly, I'm stuffed. I couldn't eat another bite.", "Честно, я объелась. Больше ни кусочка не влезет."),
+        ("b2_x2", "nana", "Stuffed? Then you'll love my stuffing!", "Объелась? Тогда тебе понравится моя начинка!"),
+        ("b2_nar", "nar", "Би-два. I'm stuffed значит «я объелась», звучит как носитель! Но бабушка услышала только stuffing, начинку. Запоминай:", ""),
+        ("b2_tip", "tip", "I couldn't eat another bite.", ""),
+        # C1 — dessert
+        ("c1_x", "nana", "Just a tiny bit more?", "Ну ещё чуть-чуть?"),
+        ("c1_her", "her", "It was amazing, but I'm saving room for dessert.", "Всё было потрясающе, но я оставляю место для десерта."),
+        ("c1_x2", "nana", "Dessert! Why didn't you say so?", "Десерт! Что ж ты сразу не сказала?"),
+        ("c1_x3", "tom", "You said the D-word.", "Ты сказала слово на «Д»."),
+        ("c1_nar", "nar", "Си-один. «Оставляю место для десерта», изящный отказ. Но бабушка поняла его как заказ! Запоминай:", ""),
+        ("c1_tip", "tip", "I'm saving room for dessert.", ""),
+        # C2 — the speech, the turkey
+        ("c2_x", "nana", "And now... the turkey!", "А теперь... индейка!"),
+        ("c2_her", "her", "Nana, I must respectfully decline. Your hospitality is boundless, but my stomach, alas, is not.", "Бабушка, я вынуждена почтительно отказаться. Ваше гостеприимство безгранично, а мой желудок, увы, нет."),
+        ("c2_x2", "nana", "So... leg or wing?", "Так... ножку или крылышко?"),
+        ("c2_her2", "her", "Leg, please.", "Ножку, пожалуйста."),
+        ("c2_x3", "greg", "I'll take the wing!", "А мне крылышко!"),
+        ("c2_nar", "nar", "Си-два. Вывод: английский можно выучить в совершенстве. Но бабушку не победит никто!", ""),
+        ("outro", "nar", "А как бы ты отказался от добавки? Пиши свою фразу в комментарии! И подпишись, впереди ещё много новых серий.", ""),
+    ],
+    cards=dict(
+        A1=dict(type="meter", label="ОТКАЗ", ok=False, note="не засчитан"),
+        A2=dict(type="swap", bad="I'm fed up.", bad_note="= «вы меня достали»", good=["I'm full,", "thanks!"]),
+        B1=dict(type="eq", en="I'm full, thank you!", ru="= Я наелась, спасибо!", note="но не хвали еду бабушке!", stamp=["ВЕЖЛИВО", "И ПРАВИЛЬНО"]),
+        B2=dict(type="big", en="I'm stuffed", ru="я объелась", ex=["I couldn't eat another bite.", "больше ни кусочка не влезет"], icon="plate"),
+        C1=dict(type="eq", en="I'm saving room for dessert.", ru="= Оставляю место для десерта.", ex=["Could I take some home?", "= Можно взять с собой?"]),
+        C2=dict(type="c2", vocab=[["respectfully decline", "= вежливо отказаться"], ["boundless hospitality", "= безграничное гостеприимство"]], moral=["БАБУШКУ", "НЕ ПОБЕДИТЬ", "НА ЛЮБОМ УРОВНЕ"], moral_at=0.38),
+    ),
+)
+
+EP["salon"] = dict(
+    title="Прошу подстричь кончики на каждом уровне",
+    hook_title=[["КАК ПОДСТРИЧЬ", "d"], ["КОНЧИКИ", "d"], ["И НЕ ОБЛЫСЕТЬ?", "p"], ["НА АНГЛИЙСКОМ", "d"]],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    lines=[
+        ("hook", "nar", "Ты в салоне в Лондоне. Нужно просто подровнять кончики. Что ты скажешь мастеру? Ошибёшься в одном слове, и останешься без волос. Проверим!", ""),
+        # A1 — buzz cut
+        ("a1_x", "rita", "Hi, love! What are we doing today?", "Привет, дорогая! Что делаем сегодня?"),
+        ("a1_her", "her", "Hair. Short. Little.", "Волосы. Коротко. Маленько."),
+        ("a1_x2", "rita", "Short? Say no more!", "Коротко? Ни слова больше!"),
+        ("a1_her2", "her", "Little?! I said little!", "Маленько?! Я же сказала маленько!"),
+        ("a1_x3", "doris", "Ooh, very modern!", "О, очень современно!"),
+        ("a1_nar", "nar", "Уровень А-один. Мастер услышала главное слово: short. Остальное её уже не волновало.", ""),
+        # A2 — one hair, eighty pounds
+        ("a2_x", "rita", "What can I do for you, babe?", "Что для тебя сделать, зайка?"),
+        ("a2_her", "her", "I want cut my hair a little.", "Я хотеть стричь волосы немножко."),
+        ("a2_x2", "rita", "A little? Got it.", "Немножко? Поняла."),
+        ("a2_x3", "rita", "Voila! That's eighty pounds.", "Вуаля! С тебя восемьдесят фунтов."),
+        ("a2_her2", "her", "Eighty?!", "Восемьдесят?!"),
+        ("a2_nar", "nar", "А-два. A little, слишком размыто. Минус один волос, плюс восемьдесят фунтов. Скажи так:", ""),
+        ("a2_tip", "tip", "Just a trim, please.", ""),
+        # B1 — perfect trim
+        ("b1_x", "rita", "Right, what are we after?", "Так, чего хотим?"),
+        ("b1_her", "her", "Just a trim, please. Not too short.", "Просто подровнять, пожалуйста. Не слишком коротко."),
+        ("b1_x2", "rita", "Easy peasy!", "Проще простого!"),
+        ("b1_x3", "doris", "Oh, that's lovely!", "Ой, как мило!"),
+        ("b1_nar", "nar", "Би-один. Just a trim, «просто подровнять». Not too short, «не слишком коротко». Работает в любом салоне.", ""),
+        # B2 — an inch
+        ("b2_x", "rita", "So, how much are we taking off?", "Так, сколько срезаем?"),
+        ("b2_her", "her", "Could you take an inch off the ends?", "Можете срезать дюйм с кончиков?"),
+        ("b2_x2", "rita", "An inch? Like this?", "Дюйм? Вот столько?"),
+        ("b2_her2", "her", "Smaller.", "Меньше."),
+        ("b2_x3", "rita", "This?", "Столько?"),
+        ("b2_nar", "nar", "Би-два. Take an inch off, «срезать пару сантиметров». В Англии длину до сих пор меряют в дюймах. Запоминай:", ""),
+        ("b2_tip", "tip", "Take an inch off, please.", ""),
+        # C1 — keep the length
+        ("c1_x", "rita", "Any special requests today?", "Особые пожелания?"),
+        ("c1_her", "her", "Could you keep the length and just tidy up the ends?", "Можете оставить длину и просто подровнять кончики?"),
+        ("c1_x2", "rita", "A client who knows what she wants. I love it!", "Клиентка знает, чего хочет. Обожаю!"),
+        ("c1_x3", "ben", "I'll have what she's having.", "Мне то же самое."),
+        ("c1_nar", "nar", "Си-один. Keep the length, «оставить длину». Tidy up the ends, «подровнять кончики». Чётко и красиво. Запоминай:", ""),
+        ("c1_tip", "tip", "Just tidy up the ends.", ""),
+        # C2 — the poem
+        ("c2_x", "rita", "And what are we thinking today?", "И что у нас сегодня на уме?"),
+        ("c2_her", "her", "I'm envisioning something effortlessly dishevelled, evoking a windswept Parisian morning, yet with an air of understated sophistication.", "Я представляю нечто небрежно растрёпанное, напоминающее ветреное парижское утро, но с ноткой сдержанной изысканности."),
+        ("c2_x2", "rita", "So... just a bob?", "Так... просто каре?"),
+        ("c2_her2", "her", "A bob.", "Каре."),
+        ("c2_x3", "doris", "Oh, a bob! How Parisian!", "О, каре! Как по-парижски!"),
+        ("c2_nar", "nar", "Си-два. Мастер не читает мысли. Столько красивых слов, а в итоге просто каре!", ""),
+        ("outro", "nar", "А как ты объяснишь мастеру, что тебе нужно? Пиши в комментарии! И подпишись, впереди ещё много новых серий.", ""),
+    ],
+    cards=dict(
+        A1=dict(type="meter", label="ВОЛОСЫ", ok=False, note="минус все"),
+        A2=dict(type="swap", bad="I want cut my hair a little.", bad_note="мастер не поняла, сколько", good=["Just a trim,", "please."]),
+        B1=dict(type="eq", en="Just a trim, please.", ru="= Просто подровнять, пожалуйста.", note="not too short = не слишком коротко", stamp=["ФРАЗА", "№1 В САЛОНЕ"]),
+        B2=dict(type="big", en="an inch", ru="≈ 2,5 см", ex=["Take an inch off, please.", "срежьте пару сантиметров"], icon="scissors"),
+        C1=dict(type="eq", en="Keep the length, please.", ru="= Оставьте длину, пожалуйста.", ex=["Tidy up the ends = подровнять кончики", "Not too short = не слишком коротко"]),
+        C2=dict(type="c2", vocab=[["dishevelled", "= растрёпанный"], ["understated", "= сдержанный, неброский"]], moral=["МАСТЕР", "НЕ ЧИТАЕТ", "МЫСЛИ"], moral_at=0.42),
+    ),
+)
+
+
+EP["party"] = dict(
+    title="Прошу соседей сделать музыку потише на каждом уровне",
+    hook_title=[["ЧАС НОЧИ", "d"], ["У СОСЕДЕЙ", "d"], ["ВЕЧЕРИНКА", "p"], ["ЧТО СКАЖЕШЬ?", "d"]],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    lines=[
+        ("hook", "nar", "Час ночи. У соседей вечеринка. Как вежливо попросить сделать музыку потише на английском? По одной фразе видно твой уровень. Проверим!", ""),
+        # A1 — Rocky the rocker
+        ("a1_her", "her", "Music. No. Sleep!", "Музыка. Нет. Спать!"),
+        ("a1_x", "rocky", "No sleep? Party! Come in!", "Не спать? Вечеринка! Заходи!"),
+        ("a1_nar", "nar", "Уровень А-один. Сосед услышал только no sleep. И решил, что она пришла тусить.", ""),
+        # A2 — Jay the teen DJ
+        ("a2_her", "her", "Your music is very loud. Stop it!", "Ваша музыка очень громкая. Прекратите!"),
+        ("a2_x", "jay", "Wow. Who are you, the police?", "Ого. Ты кто, полиция?"),
+        ("a2_nar", "nar", "А-два. Stop it звучит как приказ. Так с соседями не говорят. Скажи вежливее:", ""),
+        ("a2_tip", "tip", "Could you turn it down, please?", ""),
+        # B1 — Nana with karaoke turns the knob the wrong way
+        ("b1_her", "her", "Excuse me, could you turn the music down, please?", "Извините, не могли бы вы сделать музыку потише?"),
+        ("b1_x", "nana", "Oh, sorry, dear! Turning it down!", "Ой, прости, милая! Делаю потише!"),
+        ("b1_her2", "her", "That's louder! You're turning it UP!", "Это громче! Вы делаете ГРОМЧЕ!"),
+        ("b1_nar", "nar", "Би-один. Turn it down значит «сделай потише». А бабушка сделала turn it up, погромче!", ""),
+        # B2 — Tony the drummer plays "quietly"
+        ("b2_her", "her", "Would you mind keeping it down a bit? It's one in the morning.", "Не могли бы вы немного потише? Уже час ночи."),
+        ("b2_x", "tony", "No problem! I'll play quietly.", "Без проблем! Буду играть тихонько."),
+        ("b2_nar", "nar", "Би-два. Keep it down значит «потише». Так говорят и про музыку, и про голос. Запоминай:", ""),
+        ("b2_tip", "tip", "Would you mind keeping it down?", ""),
+        # C1 — Margot's cocktail party
+        ("c1_her", "her", "Sorry to bother you, but could you tone it down a bit? Some of us have to be up early.", "Извините за беспокойство, но не могли бы вы чуть потише? Некоторым из нас рано вставать."),
+        ("c1_x", "margot", "Oh, darling, how rude of us! We'll wrap it up.", "Ой, дорогая, как невежливо с нашей стороны! Сейчас закруглимся."),
+        ("c1_nar", "nar", "Си-один. Sorry to bother you, «извините за беспокойство». А tone it down, «сбавьте обороты». Вежливо, и намёк все поняли. Запоминай:", ""),
+        ("c1_tip", "tip", "Sorry to bother you.", ""),
+        # C2 — back to Rocky, the whole party freezes
+        ("c2_her", "her", "I hate to be a killjoy, but the cacophony emanating from your abode is rendering slumber utterly unattainable.", "Не хочу портить веселье, но какофония из вашего жилища делает сон совершенно недостижимым."),
+        ("c2_x", "rocky", "Cool speech. So... wanna come in?", "Классная речь. Так... зайдёшь?"),
+        ("c2_her2", "her", "Is there pizza?", "А пицца есть?"),
+        ("c2_nar", "nar", "Си-два. Сосед не понял ни слова, зато позвал на вечеринку. Вывод: не можешь победить соседей, присоединяйся!", ""),
+        ("outro", "nar", "А как ты попросишь соседей сделать потише? Пиши свою фразу в комментарии! И подпишись, впереди ещё много новых серий.", ""),
+    ],
+    cards=dict(
+        A1=dict(type="meter", label="ТИШИНА", ok=False, note="зовут тусить"),
+        A2=dict(type="swap", bad="Stop it!", bad_note="звучит как приказ", good=["Could you turn", "it down, please?"]),
+        B1=dict(type="eq", en="Could you turn it down?", ru="= Не могли бы вы сделать потише?", note="turn it up = сделать громче!", stamp=["ГЛАВНАЯ", "ФРАЗА"]),
+        B2=dict(type="big", en="keep it down", ru="потише", ex=["Would you mind keeping it down?", "не могли бы вы потише?"], icon="speaker"),
+        C1=dict(type="eq", en="Sorry to bother you, but...", ru="= Извините за беспокойство, но...", ex=["tone it down = сбавить обороты", "Some of us have to be up early. = Некоторым рано вставать."]),
+        C2=dict(type="c2", vocab=[["killjoy", "= тот, кто портит всем веселье"], ["cacophony", "= какофония, жуткий шум"]], moral=["НЕ МОЖЕШЬ", "ПОБЕДИТЬ —", "ПРИСОЕДИНЯЙСЯ!"], moral_at=0.45),
+    ),
+)
+
+
+EP["london"] = dict(
+    title="Спрашиваю дорогу в Лондоне на каждом уровне",
+    hook_title=[["КАК СПРОСИТЬ", "d"], ["ДОРОГУ", "p"], ["В ЛОНДОНЕ?", "d"]],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    lines=[
+        ("hook", "nar", "Ты в Лондоне и не знаешь, куда идти. Как спросить дорогу на английском? По одной фразе видно твой уровень. Проверим!", ""),
+        # A1 — Albert, an old Londoner
+        ("a1_her", "her", "Station? Choo-choo?", "Вокзал? Чух-чух?"),
+        ("a1_x", "albert", "Ah, the station! Just round the corner.", "А, вокзал! Сразу за углом."),
+        ("a1_nar", "nar", "Уровень А-один. Грамматики ноль, зато поезд изобразила отлично. И это сработало!", ""),
+        # A2 — Kai the jogger
+        ("a2_her", "her", "Where is station? I need go.", "Где вокзал? Я надо идти."),
+        ("a2_x", "kai", "Which one, mate? London's got loads!", "Какой именно? В Лондоне их куча!"),
+        ("a2_nar", "nar", "А-два. В Лондоне больше десятка вокзалов. Называй, какой тебе нужен, и спрашивай вот так:", ""),
+        ("a2_tip", "tip", "How do I get to King's Cross?", ""),
+        # B1 — Agnes with her pug
+        ("b1_her", "her", "Excuse me, how do I get to King's Cross?", "Извините, как добраться до Кингс-Кросс?"),
+        ("b1_x", "agnes", "Go straight on, then turn left at the lights.", "Идите прямо, потом налево на светофоре."),
+        ("b1_nar", "nar", "Би-один. How do I get to, «как добраться до». А go straight on, «идите прямо». Самые нужные фразы в городе.", ""),
+        # B2 — Oliver the businessman points both ways
+        ("b2_her", "her", "Sorry, could you point me in the right direction? I'm looking for King's Cross.", "Простите, не подскажете, куда идти? Я ищу Кингс-Кросс."),
+        ("b2_x", "oliver", "Sure! Ten minutes that way. You can't miss it!", "Конечно! Минут десять в ту сторону. Не пропустишь!"),
+        ("b2_nar", "nar", "Би-два. Point me in the right direction, «подскажите, куда идти». А you can't miss it, «не пропустишь». Так говорят всегда, даже если пропустишь наверняка. Запоминай:", ""),
+        ("b2_tip", "tip", "Could you point me in the right direction?", ""),
+        # C1 — Reggie, a gentleman in a bowler hat
+        ("c1_her", "her", "Sorry to bother you, I'm a bit lost. Is King's Cross within walking distance?", "Простите за беспокойство, я немного заблудилась. До Кингс-Кросс можно дойти пешком?"),
+        ("c1_x", "reggie", "Absolutely. It's a five-minute walk. Let me show you the way.", "Конечно. Пять минут пешком. Давайте покажу дорогу."),
+        ("c1_nar", "nar", "Си-один. I'm a bit lost, «я немного заблудилась». А within walking distance, «можно дойти пешком». Вежливо и по делу. Запоминай:", ""),
+        ("c1_tip", "tip", "Is it within walking distance?", ""),
+        # C2 — little Leo
+        ("c2_her", "her", "Pardon the intrusion, but might you enlighten me as to the whereabouts of King's Cross? I appear to be hopelessly disorientated.", "Простите за вторжение, но не просветите ли меня, где находится Кингс-Кросс? Кажется, я совершенно потеряла ориентацию."),
+        ("c2_x", "leo", "It's behind you.", "Он у тебя за спиной."),
+        ("c2_her2", "her", "Thank you.", "Спасибо."),
+        ("c2_nar", "nar", "Си-два. Шикарный английский! Но иногда достаточно просто оглянуться.", ""),
+        ("outro", "nar", "А как ты спросишь дорогу? Пиши свою фразу в комментарии! И подпишись, впереди ещё много новых серий.", ""),
+    ],
+    cards=dict(
+        A1=dict(type="meter", label="ДОРОГА", ok=True, note="нашлась!"),
+        A2=dict(type="swap", bad="Where is station?", bad_note="а какой именно?", good=["How do I get", "to King's Cross?"]),
+        B1=dict(type="eq", en="How do I get to...?", ru="= Как добраться до...?", note="go straight on = идите прямо", stamp=["ФРАЗА", "ТУРИСТА №1"]),
+        B2=dict(type="big", en="can't miss it", ru="не пропустишь", ex=["Could you point me in the right direction?", "подскажите, куда идти?"], icon="sign"),
+        C1=dict(type="eq", en="Is it within walking distance?", ru="= Можно дойти пешком?", ex=["I'm a bit lost. = Я немного заблудилась.", "turn left at the lights = налево на светофоре"]),
+        C2=dict(type="c2", vocab=[["whereabouts", "= местонахождение"], ["disorientated", "= потерявший ориентацию"]], moral=["ИНОГДА", "ДОСТАТОЧНО", "ОГЛЯНУТЬСЯ!"], moral_at=0.4),
+    ),
+)
+
+
+EP["airport"] = dict(
+    title="Сдаю чемодан с перевесом на каждом уровне",
+    hook_title=[["ЧЕМОДАН", "d"], ["29 КГ", "p"], ["А МОЖНО 23", "d"], ["ЧТО СКАЖЕШЬ?", "d"]],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    lines=[
+        ("hook", "nar", "Аэропорт. Твой чемодан весит двадцать девять килограммов, а можно только двадцать три. Как договориться на английском? По одной фразе видно твой уровень. Проверим!", ""),
+        ("a1_her", "her", "Bag. Good. Twenty-three!", "Чемодан. Хорошо. Двадцать три!"),
+        ("a1_x", "tom", "Madam... your hand.", "Мадам... ваша рука."),
+        ("a1_nar", "nar", "Уровень А-один. Хитро! Но держать чемодан рукой не вариант, агент всё видит.", ""),
+        ("a2_her", "her", "Bag too heavy? How much I pay?", "Чемодан тяжёлый? Сколько я платить?"),
+        ("a2_x", "linda", "Seventy-five pounds, please.", "Семьдесят пять фунтов, пожалуйста."),
+        ("a2_nar", "nar", "А-два. Понять можно, но пропущено do. Правильно спросить так:", ""),
+        ("a2_tip", "tip", "How much do I have to pay?", ""),
+        ("b1_her", "her", "Excuse me, can I take some things out of my bag?", "Извините, можно я выну кое-что из чемодана?"),
+        ("b1_x", "mark", "Of course! Just put them over there.", "Конечно! Положите вон туда."),
+        ("b1_nar", "nar", "Би-один. Take out, «вынуть». Вежливо и полезно. Правда, арбуз жалко.", ""),
+        ("b2_her", "her", "Is there any way to avoid the excess baggage fee?", "А можно как-то избежать платы за перевес?"),
+        ("b2_x", "priya", "Sure. Pack less next time.", "Конечно. В следующий раз берите меньше."),
+        ("b2_nar", "nar", "Би-два. Excess baggage fee, «плата за перевес». Отличная фраза, но ответ тебе не понравится. Запоминай:", ""),
+        ("b2_tip", "tip", "Is there an excess baggage fee?", ""),
+        ("c1_her", "her", "I'm only a few kilos over. Is there any chance you could let it slide?", "У меня перевес всего несколько кило. Может, закроете на это глаза?"),
+        ("c1_x", "margot", "I'm afraid rules are rules, darling.", "Боюсь, правила есть правила, дорогая."),
+        ("c1_nar", "nar", "Си-один. Let it slide, «закрыть на что-то глаза». Звучит легко и вежливо. Но правила есть правила. Запоминай:", ""),
+        ("c1_tip", "tip", "Is there any chance you could let it slide?", ""),
+        ("c2_her", "her", "I implore you to exercise a modicum of discretion. Surely a marginal surplus of six kilograms shan't jeopardise the entire flight.", "Умоляю вас проявить хоть каплю снисхождения. Ведь шесть лишних килограммов не поставят под угрозу весь полёт."),
+        ("c2_x", "rocky", "Lovely speech. Still twenty-nine kilos.", "Красивая речь. Всё ещё двадцать девять кило."),
+        ("c2_x2", "rocky", "Twenty-three. Have a nice flight!", "Двадцать три. Приятного полёта!"),
+        ("c2_her2", "her", "Thank you!", "Спасибо!"),
+        ("c2_nar", "nar", "Си-два. Красноречие не сработало, зато сработали двенадцать свитеров. Не можешь доплатить, надень всё на себя!", ""),
+        ("outro", "nar", "А как ты договоришься про перевес? Пиши свою фразу в комментарии! И подпишись, впереди ещё много новых серий.", ""),
+    ],
+    cards=dict(
+        A1=dict(type="meter", label="ХИТРОСТЬ", ok=False, note="спалилась"),
+        A2=dict(type="swap", bad="How much I pay?", bad_note="пропущено do", good=["How much do", "I have to pay?"]),
+        B1=dict(type="eq", en="Can I take something out?", ru="= Можно что-нибудь вынуть?", note="take out = вынуть", stamp=["СПАСАЕТ", "КИЛОГРАММЫ"]),
+        B2=dict(type="big", en="excess baggage", ru="перевес", ex=["Is there an excess baggage fee?", "есть плата за перевес?"], icon="suitcase"),
+        C1=dict(type="eq", en="Could you let it slide?", ru="= Можете закрыть на это глаза?", ex=["I'm only a few kilos over. = Перевес всего несколько кило.", "Rules are rules. = Правила есть правила."]),
+        C2=dict(type="c2", vocab=[["implore", "= умолять"], ["a modicum of", "= хоть капля"]], moral=["НЕ МОЖЕШЬ", "ДОПЛАТИТЬ —", "НАДЕНЬ ВСЁ!"], moral_at=0.5),
+    ),
+)
+
+EP["market"] = dict(
+    title="Торгуюсь на блошином рынке на каждом уровне",
+    hook_title=[["КАК", "d"], ["ТОРГОВАТЬСЯ", "p"], ["НА АНГЛИЙСКОМ?", "d"]],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    lines=[
+        ("hook", "nar", "Блошиный рынок в Лондоне. Тебе понравилась вещь, но цена кусается. Как поторговаться на английском? По одной фразе видно твой уровень. Проверим!", ""),
+        ("a1_her", "her", "This. Cheap? Cheap?", "Это. Дёшево? Дёшево?"),
+        ("a1_x", "del", "Cheap? For you, love... double!", "Дёшево? Для тебя, дорогуша... вдвое дороже!"),
+        ("a1_nar", "nar", "Уровень А-один. Продавец сразу понял, что ты турист. Цена выросла вдвое.", ""),
+        ("a2_her", "her", "Twenty pounds? No! Five pounds!", "Двадцать фунтов? Нет! Пять фунтов!"),
+        ("a2_x", "nana", "Five? That's not haggling, dear, that's robbery!", "Пять? Это не торг, милая, это грабёж!"),
+        ("a2_nar", "nar", "А-два. Сразу резать цену вчетверо грубо. Предложи вежливо:", ""),
+        ("a2_tip", "tip", "Could you do it for fifteen?", ""),
+        ("b1_her", "her", "Excuse me, is that your best price?", "Извините, это ваша лучшая цена?"),
+        ("b1_x", "agnes", "For you, dear? Fifteen instead of twenty.", "Для вас, милая? Пятнадцать вместо двадцати."),
+        ("b1_nar", "nar", "Би-один. Is that your best price, «это ваша лучшая цена?». Самый простой способ сбить цену.", ""),
+        ("b2_her", "her", "I love it! Could you knock a bit off if I pay cash?", "Обожаю! Скинете немного, если заплачу наличными?"),
+        ("b2_x", "rocky", "Cash? Alright, thirty quid. Rock on!", "Наличными? Ладно, тридцать фунтов. Зажигай!"),
+        ("b2_nar", "nar", "Би-два. Knock a bit off, «скинуть немного». А слово quid значит «фунт». Запоминай:", ""),
+        ("b2_tip", "tip", "Could you knock a bit off?", ""),
+        ("c1_her", "her", "It's lovely, but it's a bit out of my price range. Would you take forty?", "Очень красиво, но мне это не совсем по карману. Отдадите за сорок?"),
+        ("c1_x", "reggie", "Forty? Oh, go on then. It's a deal.", "Сорок? Ну ладно. По рукам."),
+        ("c1_nar", "nar", "Си-один. Out of my price range, «мне не по карману». А would you take forty, «отдадите за сорок?». Звучит как профи. Запоминай:", ""),
+        ("c1_tip", "tip", "Would you take forty?", ""),
+        ("c2_her", "her", "Whilst the vase has a certain rustic charm, its provenance is dubious and its condition, frankly, deplorable. I couldn't possibly offer more than a pittance.", "Хотя у вазы есть некое деревенское очарование, её происхождение сомнительно, а состояние, откровенно говоря, плачевное. Больше жалких грошей не предложу."),
+        ("c2_x", "barnaby", "Fine! Take it! And here's a tenner for your trouble.", "Ладно! Забирайте! И вот вам десятка за беспокойство."),
+        ("c2_her2", "her", "Pleasure doing business.", "Приятно иметь с вами дело."),
+        ("c2_nar", "nar", "Си-два. Она так раскритиковала вазу, что продавец ещё и доплатил. Вот что значит Си-два!", ""),
+        ("outro", "nar", "А как ты торгуешься на рынке? Пиши свою фразу в комментарии! И подпишись, впереди ещё много новых серий.", ""),
+    ],
+    cards=dict(
+        A1=dict(type="meter", label="ЦЕНА", ok=False, note="выросла вдвое"),
+        A2=dict(type="swap", bad="Five pounds!", bad_note="звучит грубо", good=["Could you do it", "for fifteen?"]),
+        B1=dict(type="eq", en="Is that your best price?", ru="= Это ваша лучшая цена?", note="for you = специально для вас", stamp=["СБИВАЕТ", "ЦЕНУ"]),
+        B2=dict(type="big", en="knock a bit off", ru="скинуть", ex=["Could you knock a bit off?", "можете немного скинуть?"], icon="tag"),
+        C1=dict(type="eq", en="Would you take forty?", ru="= Отдадите за сорок?", ex=["out of my price range = мне не по карману", "It's a deal! = По рукам!"]),
+        C2=dict(type="c2", vocab=[["provenance", "= происхождение"], ["a pittance", "= гроши"]], moral=["C2 — ЭТО", "КОГДА ТЕБЕ", "ЕЩЁ ДОПЛАЧИВАЮТ"], moral_at=0.5),
+    ),
+)

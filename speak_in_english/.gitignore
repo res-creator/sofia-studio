@@ -1,0 +1,9 @@
+node_modules/
+models/
+out/
+preview2/
+__pycache__/
+*.wav
+engine/eps/*/part*.mp4
+engine/eps/*/render*.log
+engine/check.png
