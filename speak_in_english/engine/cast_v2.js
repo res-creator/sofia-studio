@@ -136,6 +136,10 @@ const CAST = {
     hair: { style: 'baldsides', col: '#E9E6E2' }, mustache: '#E9E6E2', brow: '#DAD6D0', browW: 12, glasses: { col: '#C9A85A' },
     build: { shoulder: 0.98, belly: 0.35 },
     top: { type: 'blazer', col: '#7A5A3A', shirt: '#F3EDDF', tie: '#2F5A48' }, bottom: { type: 'trousers', col: '#5A4632' }, shoes: { col: '#3A2A20', acc: null } },
+  her_restaurant: { kind: 'human', h: 1480, seed: 1, skin: '#F6D2B6', iris: '#5A3B26', lashes: true, blush: '#F07C8C', blushA: 0.5, eyeSize: 0.225,
+    hair: { style: 'bob', col: '#3A2820' }, lips: '#D9607A', earrings: '#F2C14E', necklace: true,
+    build: { shoulder: 0.84, hip: 1.0, arm: 0.95 },
+    top: { type: 'longsleeve', col: '#8A2A4A' }, bottom: { type: 'jeans', col: '#2B2F3A' }, shoes: { col: '#2B2F3A', acc: '#EE5E9A' } },
   coach: { kind: 'cat' },
 };
 module.exports = { CAST };

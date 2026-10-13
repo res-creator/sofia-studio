@@ -8,3 +8,4 @@ engine/eps/*/part*.mp4
 engine/eps/*/render*.log
 engine/check.png
 engine/eps/*/pass-*
+engine/sheet*.png

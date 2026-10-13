@@ -450,6 +450,23 @@ elif EPN == "airport":
             tt = T(0.05); put(music, hp(rng.standard_normal(len(tt)), 6000)*np.exp(-tt*70), t0 + j*b/4, 0.1 if j % 2 else 0.05)
         if (k // 4) % 2 == 1:
             for j, m in enumerate([ch[3] + 12, ch[2] + 12, ch[1] + 12]): put(music, pluck(note(m), 0.6, 1.2), t0 + (j*1.25 + 0.5)*b, 0.07)
+elif EPN == "restaurant":
+    # cosy bistro swing: brushed snare, walking bass, muted piano comping, glock hook
+    bpm = 120; b = 60/bpm; K = 0
+    def glock(f, d=0.8):
+        t = T(d); return (np.sin(2*np.pi*f*t) + 0.35*np.sin(2*np.pi*2.76*f*t)*np.exp(-t*6)) * np.exp(-t*4.5) * np.minimum(t*500, 1)
+    prog = [(41, [60, 64, 67, 71]), (38, [62, 65, 69, 72]), (43, [59, 62, 65, 67]), (36, [60, 64, 67, 71])]
+    walk = [0, 4, 7, 5]
+    mel = [79, None, 76, 74, 72, None, 76, None, 77, None, 74, 72, 71, None, 67, None]
+    for k in range(int(DUR / b) + 8):
+        bar = (k // 4) % 4; t0 = k * b; root, ch = prog[bar]
+        put(music, pluck(note(root + walk[k % 4]), b*0.9, 0.5), t0, 0.45)
+        tt = T(0.14); put(music, bp(rng.standard_normal(len(tt)), 3000, 8000)*np.exp(-tt*18), t0, 0.08)
+        if k % 2 == 1:
+            put(music, bp(rng.standard_normal(len(tt)), 3000, 8000)*np.exp(-tt*22), t0 + b*0.66, 0.07)
+            for m in ch: put(music, epiano(note(m), b*0.35), t0, 0.045)
+        m = mel[k % 16]
+        if m is not None and (k // 16) % 2 == 1: put(music, glock(note(m)), t0, 0.07)
 elif EPN == "market":
     # jaunty London market: honky-tonk oom-pah piano, accordion melody, tambourine
     bpm = 132; b = 60/bpm; K = 0
