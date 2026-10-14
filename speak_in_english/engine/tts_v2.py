@@ -13,7 +13,7 @@ for ep in sys.argv[1].split(","):
         c = CAST[who]
         x, sr = kok.create(text, voice=c["voice"], speed=c["speed"], lang=c["lang"])
         x = resample_poly(x, SR, sr).astype(np.float32)
-        if c.get("pitch"): x = librosa.effects.pitch_shift(x, sr=SR, n_steps=c["pitch"])
+        # NO artificial pitch shifting: it makes voices robotic. Pick a naturally suited Kokoro voice instead.
         thr = 0.004 * np.abs(x).max(); idx = np.where(np.abs(x) > thr)[0]
         x = x[max(0, idx[0] - 960): idx[-1] + 7200]; x = x / (np.abs(x).max() + 1e-9) * 0.89
         sf.write(f"{od}/{lid}.wav", x.astype(np.float32), SR); print(ep, lid, who, round(len(x) / SR, 2))
