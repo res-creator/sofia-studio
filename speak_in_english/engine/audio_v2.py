@@ -417,7 +417,7 @@ if EPN == "party":
         seg = (full*op + muff*(1 - op)) * g
         seg *= np.minimum(1, np.arange(n)/(0.03*SR)) * np.minimum(1, (n - np.arange(n))/(0.12*SR))
         put(music, seg, s0, 1.0)
-elif EPN in ("london", "sorry"):
+elif EPN in ("london", "sorry", "vendor"):
     # cheerful London stroll: pizzicato, walking bass, glockenspiel, brushes
     bpm = 116; b = 60/bpm; K = 0
     def pizz(f, d=0.35):
