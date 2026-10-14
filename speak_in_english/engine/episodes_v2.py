@@ -44,6 +44,7 @@ CAST = {
     "bigtony": dict(voice="am_onyx", speed=0.95, lang="en-gb", el="N2lVS1w4EtoT3dr4eOWO"),
     "tourist": dict(voice="am_santa", speed=0.95, lang="en-us", el="pqHfZKP75CvOlQylNhV4"),
     "barnaby": dict(voice="bm_fable", speed=0.94, lang="en-gb"),
+    "pam":   dict(voice="bf_lily", speed=0.92, lang="en-gb", el="Xb7hH8MSUJpSbSDYk0k2"),
 }
 EP = {}
 
@@ -612,5 +613,49 @@ EP["vendor"] = dict(
         B2=dict(type="big", en="I'll pass", ru="я пас", ex=["Thanks, but I'll pass.", "спасибо, но я пас."], icon="tag"),
         C1=dict(type="eq", en="I'm not interested.", ru="= Мне неинтересно.", ex=["That's kind of you = очень мило с вашей стороны", "thank you anyway = всё равно спасибо"]),
         C2=dict(type="c2", vocab=[["decline", "= отклонить"], ["trinkets", "= безделушки"]], moral=["НЕ МОЖЕШЬ", "ОТКАЗАТЬ —", "ПРОДАЙ САМА!"], moral_at=0.5),
+    ),
+)
+
+EP["gift"] = dict(
+    title="Ужасный подарок: как сказать, что не наденешь",
+    hook_title=[["ТЁТЯ СВЯЗАЛА", "d"], ["СВИТЕР", "p"], ["КАК НЕ НАДЕТЬ?", "d"]],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    lines=[
+        ("hook", "nar", "Тётя связала тебе свитер. Со своим лицом. Как сказать по-английски, что ты его не наденешь? Проверим!", ""),
+        ("a1_x", "pam", "Do you love it?", "Тебе нравится?"),
+        ("a1_her", "her", "Nice. Big.", "Красивый. Большой."),
+        ("a1_x2", "pam", "Big? Oh, it'll shrink! I'll make it bigger!", "Большой? Ой, он сядет! Сделаю побольше!"),
+        ("a1_nar", "nar", "Уровень А-один. Big — это «великоват». А тётя услышала: «маловат».", ""),
+        ("a2_her", "her", "I like very much it!", "Мне нравится очень он!"),
+        ("a2_x", "pam", "You like it very much? Then you need a matching hat!", "Очень нравится? Тогда нужна шапка в комплект!"),
+        ("a2_nar", "nar", "А-два. Сначала «it», потом «very much». Правильно так:", ""),
+        ("a2_tip", "tip", "I like it very much.", ""),
+        ("b1_her", "her", "Thank you, but it's not really my style.", "Спасибо, но это не совсем мой стиль."),
+        ("b1_x", "pam", "Then I'll change your style!", "Тогда поменяем твой стиль!"),
+        ("b1_x2", "pam", "You're welcome!", "Не за что!"),
+        ("b1_nar", "nar", "Би-один. Not really my style, «не совсем моё». Вежливо. А тётя услышала: «нужен новый гардероб».", ""),
+        ("b2_her", "her", "Oh, you shouldn't have!", "Ой, ну зачем же, не стоило!"),
+        ("b2_x", "pam", "You're right. I shouldn't have... made just one!", "Ты права. Не стоило... вязать только один!"),
+        ("b2_nar", "nar", "Би-два. You shouldn't have, это вежливое «ну зачем», а не совет. Запоминай:", ""),
+        ("b2_tip", "tip", "Oh, you shouldn't have!", ""),
+        ("c1_her", "her", "It's so thoughtful of you, but I don't think I'll wear it very often.", "Это так заботливо, но вряд ли я буду часто его носить."),
+        ("c1_x", "pam", "[sad] Oh...", "Ох..."),
+        ("c1_her2", "her", "I'm wearing it right now!", "Да я прямо сейчас его надену!"),
+        ("c1_x2", "pam", "Photo!", "Фото!"),
+        ("c1_nar", "nar", "Си-один. It's so thoughtful of you, «как это заботливо». Идеально. Но против слёз не работает. Запоминай:", ""),
+        ("c1_tip", "tip", "It's so thoughtful of you.", ""),
+        ("c2_her", "her", "Auntie Pam, words cannot express how deeply your boundless generosity has touched me. So I wanted to give you something equally... unforgettable.", "Тётя Пэм, словами не передать, как глубоко меня тронула твоя безграничная щедрость. Поэтому я хочу подарить тебе нечто столь же... незабываемое."),
+        ("c2_x", "pam", "Oh... You shouldn't have.", "Ох... Ну зачем, не стоило."),
+        ("c2_her2", "her", "I know.", "Я знаю."),
+        ("c2_nar", "nar", "Си-два. Тётя наконец поняла, что значит «не стоило».", ""),
+        ("outro", "nar", "А что ты делаешь с подарками, которые не нравятся? Пиши в комментарии! И подпишись, впереди ещё много новых серий.", ""),
+    ],
+    cards=dict(
+        A1=dict(type="meter", label="СВИТЕР", ok=False, note="теперь до пола"),
+        A2=dict(type="swap", bad="I like very much it!", bad_note="порядок слов", good=["I like it", "very much."]),
+        B1=dict(type="eq", en="It's not really my style.", ru="= Это не совсем моё.", note="вежливо, но тётю не остановит", stamp=["ВЕЖЛИВЫЙ", "НАМЁК"]),
+        B2=dict(type="big", en="You shouldn't have!", ru="ну зачем, не стоило!", ex=["Это вежливость,", "а не совет."], icon="gift"),
+        C1=dict(type="eq", en="It's so thoughtful of you.", ru="= Это так заботливо.", ex=["I don't think I'll wear it = вряд ли буду носить", "very often = очень часто"]),
+        C2=dict(type="c2", vocab=[["boundless", "= безграничный"], ["unforgettable", "= незабываемый"]], moral=["НЕ МОЖЕШЬ", "ОТКАЗАТЬСЯ —", "ПЕРЕДАРИ!"], moral_at=0.5),
     ),
 )
