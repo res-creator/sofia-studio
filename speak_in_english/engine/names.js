@@ -77,12 +77,12 @@ function guest(c, t, L, who, x, out) {
   let gx = x;
   if (who === 'tom') { if (L === 'A1') { if (SP.a1_her && t > SP.a1_her.t - 0.1 && t < SP.a1_x.t) { st.armL = reach(g, -1, -g.sw * 2.8, g.ySh + 20); st.armR = reach(g, 1, g.sw * 2.8, g.ySh + 20); st.laugh = true; }
       if (speaking('a1_x', t, 0.05, 0.1)) { st.armL = reach(g, -1, -g.sw * 2.8, g.ySh + 20); st.armR = reach(g, 1, g.sw * 2.8, g.ySh + 20); st.mood = 'happy'; st.laugh = true; }
-      if (ev.hug && t > ev.hug) { const k = eOut(P(t, ev.hug, ev.hug + 0.5)); gx = x + 150 * k; st.armL = reach(g, -1, g.sw * 1.2, g.ySh + 130); st.armR = reach(g, 1, g.sw * 2.0, g.ySh + 130); st.tilt = 0.06 * Math.sin(t * 8) * k; } } }
+      if (ev.hug && t > ev.hug) { const k = eOut(P(t, ev.hug, ev.hug + 0.5)); gx = x + 150 * k; st.armL = reach(g, -1, g.sw * 1.55, g.ySh + 150); st.armR = reach(g, 1, g.sw * 2.45, g.ySh + 110); st.tilt = 0.06 * Math.sin(t * 8) * k; } } }
   if (who === 'priya' && L === 'A2') { if (SP.a2_her && t > SP.a2_her.t + 0.9 && t < SP.a2_x.t) st.mood = 'skeptical'; if (speaking('a2_x', t, 0.2, 0.9)) { st.mood = 'smug'; st.armR = reach(g, 1, g.sw * 1.3, g.ySh + 300); st.armL = reach(g, -1, -g.sw * 1.3, g.ySh + 300); st.tilt = 0.05; } }
   if (who === 'greg' && L === 'B1') { if (speaking('b1_x', t, 0.05)) st.mood = 'happy'; if (ev.flex && t > ev.flex - 0.15 && t < ev.flex + 1.4) { const w = Math.sin(t * 14) * 14; st.armL = reach(g, -1, -g.sw * 2.0, g.ySh - 40 + w); st.armR = reach(g, 1, g.sw * 2.0, g.ySh - 40 - w); st.mood = 'smug'; st.laugh = true; } }
   if (who === 'ben' && L === 'B2') { if (SP.b2_her && t > SP.b2_her.t + 1.0 && t < SP.b2_x.t) st.mood = 'skeptical'; if (speaking('b2_x', t, 0.05, 0.1)) { st.mood = 'smug'; } if (ev.rim && t > ev.rim - 0.9 && t < ev.rim + 1.6) { st.items = { R: mirror() }; st.armR = reach(g, 1, g.sw * 1.0, g.headY + 130); st.mood = 'happy'; st.laugh = true; } }
   if (who === 'rita') { if (L === 'C1') { if (SP.c1_x && t > SP.c1_x.t - 0.2) st.mood = 'happy'; if (ev.tag && t > ev.tag) { const k = eBack(P(t, ev.tag, ev.tag + 0.3), 2.4); st.afterTorso = cc => nameTag(cc, g.sw * 0.1, g.ySh + 150, 0.38 * k, -0.08, 'Alex'); } } }
-  if (who === 'reggie') { st.afterTorso = cc => { const y = g.ySh + 40; cc.fillStyle = '#1E1E24'; cc.beginPath(); cc.moveTo(0, y); cc.lineTo(-34, y - 22); cc.lineTo(-34, y + 22); cc.closePath(); cc.fill(); cc.beginPath(); cc.moveTo(0, y); cc.lineTo(34, y - 22); cc.lineTo(34, y + 22); cc.closePath(); cc.fill(); cc.fillStyle = '#F7B6CF'; cc.beginPath(); cc.arc(g.sw * 0.5, y + 60, 16, 0, TAU); cc.fill(); }; st.mood = 'neutral';
+  if (who === 'reggie') { st.afterTorso = cc => { const y = g.ySh + 40; cc.fillStyle = '#1E1E24'; cc.beginPath(); cc.moveTo(0, y); cc.lineTo(-34, y - 22); cc.lineTo(-34, y + 22); cc.closePath(); cc.fill(); cc.beginPath(); cc.moveTo(0, y); cc.lineTo(34, y - 22); cc.lineTo(34, y + 22); cc.closePath(); cc.fill(); cc.fillStyle = '#F7B6CF'; cc.beginPath(); cc.arc(g.sw * 0.5, y + 60, 16, 0, TAU); cc.fill(); }; st.mood = 'neutral'; st.armL = reach(g, -1, -g.sw * 1.1, g.ySh + 430); st.armR = reach(g, 1, g.sw * 1.1, g.ySh + 430);
     if (L === 'C2') { const he = endOf('c2_her'); if (SP.c2_her && t > SP.c2_her.t + 2.0) st.mood = 'worried'; if (t > he - 0.2) { st.mood = 'worried'; st.look = 0.4; st.lookY = 0.6; }
       if (speaking('c2_x', t, 0.05, 0.4)) { const u = (t - SP.c2_x.t) / SP.c2_x.d; st.mood = u > 0.35 ? 'happy' : 'shock'; if (ev.ring && t > ev.ring - 0.6) st.armL = reach(g, -1, -g.sw * 1.5, g.ySh + 30); }
       if (ev.ring && t > ev.ring - 0.6 && t < ev.ring + 2.2) st.armL = reach(g, -1, -g.sw * 1.5, g.ySh + 30);
@@ -104,8 +104,8 @@ function herState(t, L) {
     if (speaking('c2_her', t, 0.1)) { st.mood = 'smug'; st.tilt = -0.04; st.armL = reach(g, -1, -g.sw * 1.6 + Math.sin(t * 2.4) * 40, g.ySh + 60 + Math.cos(t * 2.4) * 30); st.items = { L: items.wine(0.6) }; }
     if (t > endOf('c2_her') + 0.2) st.mood = 'neutral';
     if (SP.c2_x && t > SP.c2_x.t + 0.6) st.mood = 'shock';
-    if (ev.ring && t > ev.ring + 0.2) { st.mood = 'shock'; st.armL = reach(g, -1, -g.sw * 0.9, g.ySh + 20); }
-    if (SP.c2_her2 && t > SP.c2_her2.t - 0.2) { st.mood = 'smug'; st.armL = reach(g, -1, -g.sw * 0.9, g.ySh + 20); }
+    if (ev.ring && t > ev.ring + 0.2) { st.mood = 'shock'; st.armL = reach(g, -1, -g.sw * 2.1, g.ySh + 90); }
+    if (SP.c2_her2 && t > SP.c2_her2.t - 0.2) { st.mood = 'smug'; st.armL = reach(g, -1, -g.sw * 2.1, g.ySh + 90); }
   }
   if (L === 'outro') { st.mood = 'happy'; st.turn = 0; st.look = 0; st.armL = reach(g, -1, -g.sw * 1.5 + Math.sin(t * 8) * 40, g.headY - 220); st.armR = reach(g, 1, g.sw * 1.0, g.ySh + 300); }
   return st;
