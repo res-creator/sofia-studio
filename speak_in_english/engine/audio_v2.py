@@ -467,6 +467,21 @@ elif EPN == "restaurant":
             for m in ch: put(music, epiano(note(m), b*0.35), t0, 0.045)
         m = mel[k % 16]
         if m is not None and (k // 16) % 2 == 1: put(music, glock(note(m)), t0, 0.07)
+elif EPN == "names":
+    # warm wedding waltz: soft piano arpeggio, pizzicato bass, glockenspiel tune
+    bpm = 150; b = 60/bpm; K = 0
+    def glock(f, d=0.9):
+        t = T(d); return (np.sin(2*np.pi*f*t) + 0.35*np.sin(2*np.pi*2.76*f*t)*np.exp(-t*6)) * np.exp(-t*4) * np.minimum(t*500, 1)
+    prog = [(41, [60, 64, 67]), (43, [59, 62, 67]), (45, [60, 64, 69]), (38, [62, 65, 69]), (43, [59, 62, 67]), (36, [60, 64, 67])]
+    tune = [[76, 79, 84], [83, None, 79], [81, 77, 76], [74, 77, 81], [79, 83, 86], [84, None, None]]
+    for k in range(int(DUR / (3*b)) + 4):
+        root, ch = prog[k % 6]; t0 = k * 3 * b
+        put(music, pluck(note(root), b*1.1, 0.5), t0, 0.45)
+        for j in (1, 2):
+            for m in ch: put(music, epiano(note(m), b*0.45), t0 + j*b, 0.04)
+        if (k // 6) % 2 == 1:
+            for j, m in enumerate(tune[k % 6]):
+                if m is not None: put(music, glock(note(m)), t0 + j*b, 0.06)
 elif EPN == "market":
     # jaunty London market: honky-tonk oom-pah piano, accordion melody, tambourine
     bpm = 132; b = 60/bpm; K = 0

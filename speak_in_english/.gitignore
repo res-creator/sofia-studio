@@ -9,3 +9,4 @@ engine/eps/*/render*.log
 engine/check.png
 engine/eps/*/pass-*
 engine/sheet*.png
+engine/eps/names/timeline.json
