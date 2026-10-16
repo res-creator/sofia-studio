@@ -1,7 +1,6 @@
 // Episode 4 backgrounds, screen space 1920x1080 (rendered at K=1.1 so shots can push in slightly).
 //  wide()   — quiet city street: houses, book shop, tree + bench, BANK on the corner, park beyond.
-//  gusBG()  — reverse angle behind Gus: brick house, window boxes, door, lamp post.
-//  roseBG() — behind Mrs. Rose: the bank's columns + a park tree.
+//  One scene only: close-ups are camera crops of this same street (no per-shot backgrounds).
 const { createCanvas } = require('../node_modules/@napi-rs/canvas');
 const { OL, paint, line, curve, roundRect } = require('../lib/draw');
 const F = require('../lib/fonts');
@@ -82,7 +81,7 @@ function sign(x, X, Y, txt) {
 }
 
 const GW = 830; // ground line, wide shot
-const wide = () => mk(x => {
+function drawWide(x) {
   sky(x, GW);
   // far park trees behind the bank (right edge)
   tree(x, 1850, GW, 0.9); tree(x, 1760, GW, 0.7);
@@ -111,31 +110,7 @@ const wide = () => mk(x => {
   // curb at the bottom
   x.fillStyle = '#B8B0A2'; x.fillRect(0, 1040, W, 40); line(x, [[0, 1040], [W, 1040]], 4, OL);
   lamp(x, 1180, GW + 70, 1);
-});
+}
+const wide = () => mk(drawWide);
 
-const GG = 880;
-const gusBG = () => mk(x => {
-  sky(x, GG);
-  bricks(x, -20, 120, 1100, GG - 120, '#C8644A', '#A84E38');
-  paint(x, c => c.rect(-40, 90, 1160, 44), '#7A3A2C', { lw: 6 });
-  win(x, 120, 240, 220, 250, true); win(x, 560, 240, 220, 250, true);
-  door(x, 840, 540, 180, GG - 540, '#2E6FD8');
-  // drainpipe
-  paint(x, c => roundRect(c, 1060, 130, 24, GG - 130, 8), '#8E96A3', { lw: 4 });
-  // neighbour house (cream)
-  paint(x, c => c.rect(1084, 200, 900, GG - 200), '#F2DDB0', { shade: '#E0C894', sx: -14, sy: 0, lw: 6 });
-  win(x, 1200, 320, 220, 250, false); win(x, 1580, 320, 220, 250, true);
-  paint(x, c => c.rect(1084, 640, 900, 14), '#E0C894', { lw: 4 });
-  lamp(x, 1490, GG + 90, 1.35);
-  sidewalk(x, GG);
-});
-
-const GR = 900;
-const roseBG = () => mk(x => {
-  sky(x, GR);
-  tree(x, 1720, GR, 1.6);
-  bank(x, -140, 300, 1640, GR - 300, 5, true);
-  sidewalk(x, GR);
-});
-
-module.exports = { wide, gusBG, roseBG, K, W, H, GW, GG, GR };
+module.exports = { wide, drawWide, K, W, H, GW };

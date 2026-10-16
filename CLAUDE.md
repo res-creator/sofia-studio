@@ -23,3 +23,12 @@ Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). Thi
   2) pick voices for Anna, Bob, Gary (send samples to owner); 3) generate all 84 lines (Sofia Jessica eleven_v3, Gus George, Max Chris), save as `ep3/vo/<id>.mp3`;
   4) build ep3 pipeline by copying ep2 (script.js, timeline.py, scenes, render, audio) + remaining backgrounds: security gate, corridor+WC, gate lounge (window, GATE 12 DELAYED), plane cabin, Madrid baggage claim; 5) thumbnail + upload kit.
 - Why a new session: the previous session's network blocked api.elevenlabs.io and storage.googleapis.com, so generated audio could not be downloaded. The owner does NOT want to download/upload audio by hand.
+
+## Close-ups (owner's rule, see `CLOSEUP_RULE.md`)
+- A close-up is the SAME scene seen through a closer camera. Never draw a separate/enlarged background per shot.
+- Ep4 does it in `ep4/scene3.js`: one world (`ep4/bg4.js` drawWide), characters at fixed world positions, `CAM` = [cx, cy, zoom]; `bgFor(cam)` pre-renders the same street through each camera.
+
+## Episode 4 "Gus Gets Lost in the City" — style test DONE (branch `ep4-style-test`)
+- Script (Claude Doc): https://claude.ai/code/artifact/14c7b283-0d4a-4a44-963d-081897de9117
+- Scene 3 test approved style: static bg, one speaker per shot, held poses switched on words, mouth from voice envelope. `node ep4/scene3.js plan && python3 ep4/audio.py && node ep4/scene3.js video out.mp4` (run render with nohup).
+- New cast: `lib/rose.js` (Mrs. Rose on crew rig, Biscuit the dog). Voices are TEMPORARY Kokoro (`ep4/tts_kokoro.py`); network now allows api.elevenlabs.io, but `ELEVEN_API_KEYS` was not set in that session.

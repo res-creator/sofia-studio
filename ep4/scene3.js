@@ -211,42 +211,54 @@ function roseParams(q, base = 'rest', force = null) {
 }
 
 // ---------------- frame ----------------
+// ---------------- one scene, one camera ----------------
+// Everything lives in the wide street's coordinates. A close-up is only the camera moving closer:
+// the background geometry and every character position stay the same between shots.
+const GY = 965;                    // where feet touch the sidewalk (world)
+const POS = { gus: 760, rose: 1330, dog: 1480 };
+const S_ = { gus: 0.56, rose: 0.44, dog: 0.42 };
+const CAM = {                      // [centre x, centre y, zoom]
+  wide: [960, 540, 1],
+  gus: [871, 850, 2.6],            // Gus medium shot, look-room to the right (towards Mrs. Rose)
+  rose: [1226, 678, 3.0],          // Mrs. Rose waist-up, the bank behind her
+};
 let BG = {};
-function shotGus(ctx, q) {
-  ctx.drawImage(BG.gus, 0, 0, W, H);
-  const p = gusParams(q);
-  const L = L_('g03'), bk = q >= wt('g03', L.bubble) - 0.1 && q < L.t1 + 0.9 ? clamp((q - wt('g03', L.bubble) + 0.1) / 0.25) * (1 - clamp((q - L.t1 - 0.6) / 0.3)) : 0;
-  drawGus(ctx, 720, 1015, 1.52, p);
-  if (p._sweat > 0.5) sweat(ctx, 760, 260, q);
-  thought(ctx, 1220, 250, bk, q);
-  route(ctx, q, 'right');
+function bgFor(cam) { // pre-render the SAME street through this camera (outline width kept like the characters')
+  const [cx, cy, z] = cam, R = 1.1, c = createCanvas(Math.round(W * R), Math.round(H * R)), x = c.getContext('2d');
+  x.scale(R, R); x.translate(W / 2, H / 2); x.scale(z, z); x.translate(-cx, -cy);
+  const lk = z > 1 ? 1.4 / z : 1;
+  const px = new Proxy(x, { get: (t, k) => { const v = t[k]; return typeof v === 'function' ? v.bind(t) : v; }, set: (t, k, v) => { t[k] = k === 'lineWidth' ? v * lk : v; return true; } });
+  B.drawWide(px); return c;
 }
-function shotRose(ctx, q, sigh) {
-  ctx.drawImage(BG.rose, 0, 0, W, H);
-  drawRose(ctx, 1300, 942, 1.15, roseParams(q, 'rest', sigh ? ['sigh', OUT.sigh0 - 0.3] : null));
-  // Biscuit peeks in at the bottom right
-  const bark = sigh ? 0 : 0;
-  drawDog(ctx, 1800, 1150, 1.1, { face: -1, tail: q * 9, bark, look: -1 });
-  route(ctx, q, 'left');
-}
-function shotWide(ctx, q) {
-  ctx.drawImage(BG.wide, 0, 0, W, H);
-  const GY = 965;
-  // Mrs. Rose + Biscuit near the bank
-  const rp = roseParams(q, 'rest', q > OUT.walk1 ? ['clasp', OUT.walk1] : null); rp.turn = q > OUT.walk0 ? lerp(-0.3, 0.35, clamp((q - OUT.walk0 - 1.0) / 0.6)) : -0.3; rp.look = [rp.turn > 0 ? 0.7 : -0.6, 0];
-  drawRose(ctx, 1290, GY - 280 * 0.44, 0.44, rp);
-  const bk = [0, 0.32].map(o => clamp(1 - Math.abs(q - OUT.bark - o) / 0.12)).reduce((a, b) => Math.max(a, b));
-  drawDog(ctx, 1440, GY + 6, 0.42, { face: q > OUT.walk0 + 1.2 ? 1 : -1, tail: q * 9, bark: bk });
-  // Gus: walks in, (cut to talk), walks past to the corner, looks left/right, exits right
+function gusX(q) { // Gus position over the whole scene (world x), plus walking/facing
   let gx, walking = false, face = 1;
-  if (q < OUT.walk0) { const k = clamp(q / 2.6); gx = lerp(-160, 860, ease.out(k)); walking = k < 0.97; }
-  else if (q < OUT.walk1) { const k = clamp((q - OUT.walk0) / (OUT.walk1 - OUT.walk0)); gx = lerp(860, 1720, ease.inOut(k)); walking = k > 0.02 && k < 0.98; }
+  if (q < OUT.walk0) { const k = clamp(q / 2.6); gx = lerp(-160, POS.gus, ease.out(k)); walking = k < 0.97; }
+  else if (q < OUT.walk1) { const k = clamp((q - OUT.walk0) / (OUT.walk1 - OUT.walk0)); gx = lerp(POS.gus, 1720, ease.inOut(k)); walking = k > 0.02 && k < 0.98; }
   else if (q < OUT.exit0) { gx = 1720; if (q >= wt('g08', 4) - 0.1 && q < wt('g08', 6) - 0.1) face = -1; }
-  else { const k = clamp((q - OUT.exit0) / (OUT.exit1 - OUT.exit0)); gx = lerp(1720, 2200, ease.in(k)); walking = true; }
-  const gp = gusParams(q, { face, walking, walk: q * 2.2, lids: q >= G09.t0 ? 0.0 : 0.4 });
+  else { const k = clamp((q - OUT.exit0) / (OUT.exit1 - OUT.exit0)); gx = lerp(1720, 2300, ease.in(k)); walking = true; }
+  return { gx, walking, face };
+}
+function world(ctx, q, s) {
+  // Mrs. Rose + Biscuit
+  let force = null;
+  if (s.sigh) force = ['sigh', OUT.sigh0 - 0.3]; else if (q > OUT.walk1) force = ['clasp', OUT.walk1];
+  const rp = roseParams(q, 'rest', force);
+  if (q > OUT.walk0 && !s.sigh) { rp.turn = lerp(-0.3, 0.35, clamp((q - OUT.walk0 - 1.0) / 0.6)); rp.look = [rp.turn > 0 ? 0.7 : -0.6, 0]; }
+  drawRose(ctx, POS.rose, GY - 280 * S_.rose, S_.rose, rp);
+  const bk = [0, 0.32].map(o => clamp(1 - Math.abs(q - OUT.bark - o) / 0.12)).reduce((a, b) => Math.max(a, b));
+  drawDog(ctx, POS.dog, GY + 6, S_.dog, { face: q > OUT.walk0 + 1.2 ? 1 : -1, tail: q * 9, bark: bk });
+  // Gus
+  const g = gusX(q);
+  const gp = q < OUT.walk0 && !g.walking ? gusParams(q) : gusParams(q, { face: g.face, walking: g.walking, walk: q * 2.2, lids: q >= G09.t0 ? 0.0 : 0.4 });
   if (q >= G09.t0) { gp.neck = 0.35; gp.wing = 0.5; }
-  drawGus(ctx, gx, GY + 10, 0.56, gp);
-  if (bk > 0.3) U.textOutlined(ctx, 'WOOF!', 1500, 820, 64, '#FFD23F', { olw: 10 });
+  drawGus(ctx, g.gx, GY + 10, S_.gus, gp);
+  // gags attached to Gus (sized in his close-up layout, mapped into world space)
+  const L = L_('g03'), bkb = q >= wt('g03', L.bubble) - 0.1 && q < L.t1 + 0.9 ? clamp((q - wt('g03', L.bubble) + 0.1) / 0.25) * (1 - clamp((q - L.t1 - 0.6) / 0.3)) : 0;
+  ctx.save(); ctx.translate(g.gx, GY + 10); ctx.scale(S_.gus / 1.52, S_.gus / 1.52); ctx.translate(-720, -1015);
+  if (gp._sweat > 0.5) sweat(ctx, 760, 260, q);
+  thought(ctx, 1150, 250, bkb, q);
+  ctx.restore();
+  if (bk > 0.3) U.textOutlined(ctx, 'WOOF!', POS.dog + 60, 840, 64, '#FFD23F', { olw: 10 });
 }
 function endCard(ctx, q) {
   ctx.drawImage(BG.wide, 0, 0, W, H);
@@ -260,13 +272,17 @@ function endCard(ctx, q) {
 function frame(ctx, q) {
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   const s = shotAt(q);
-  const push = s.type === 'gus' || s.type === 'rose' ? 1 + 0.035 * ease.inOut(clamp((q - s.t) / Math.max(0.5, s.t1 - s.t))) : 1;
-  ctx.save(); ctx.translate(W / 2, H / 2); ctx.scale(push, push); ctx.translate(-W / 2, -H / 2);
-  if (s.type === 'gus') shotGus(ctx, q);
-  else if (s.type === 'rose') shotRose(ctx, q, s.sigh);
-  else if (s.type === 'end') endCard(ctx, q);
-  else shotWide(ctx, q);
-  ctx.restore();
+  if (s.type === 'end') endCard(ctx, q);
+  else {
+    const cam = CAM[s.type] || CAM.wide;
+    const push = s.type !== 'wide' ? 1 + 0.035 * ease.inOut(clamp((q - s.t) / Math.max(0.5, s.t1 - s.t))) : 1; // slow camera push-in
+    ctx.save(); ctx.translate(W / 2, H / 2); ctx.scale(push, push); ctx.translate(-W / 2, -H / 2);
+    ctx.drawImage(BG[s.type] || BG.wide, 0, 0, W, H);
+    ctx.save(); ctx.translate(W / 2, H / 2); ctx.scale(cam[2], cam[2]); ctx.translate(-cam[0], -cam[1]);
+    world(ctx, q, s);
+    ctx.restore(); ctx.restore();
+    if (s.type === 'gus') route(ctx, q, 'right'); else if (s.type === 'rose') route(ctx, q, 'left');
+  }
   const L = activeLine(q); if (L && s.type !== 'end') U2.caption(ctx, L.words, q, L.who);
   // corner tag: test + placeholder voices
   ctx.save(); ctx.globalAlpha = 0.8; paint(ctx, p => roundRect(p, 30, H - 74, 560, 48, 16), '#1E2433', { lw: 0 });
@@ -288,7 +304,7 @@ function plan() {
 async function main() {
   const [mode, a, b, c2] = process.argv.slice(2);
   if (mode === 'plan') return plan();
-  BG = { wide: B.wide(), gus: B.gusBG(), rose: B.roseBG() };
+  BG = { wide: bgFor(CAM.wide), gus: bgFor(CAM.gus), rose: bgFor(CAM.rose) };
   const cv = createCanvas(W, H), ctx = cv.getContext('2d');
   if (mode === 'still') {
     const ts = a.split(',').map(Number), sc = 0.5, S = createCanvas(W, H * sc * Math.ceil(ts.length / 2)), sx = S.getContext('2d');
