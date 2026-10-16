@@ -35,7 +35,7 @@ Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). Thi
 - Scene 3 test approved style: static bg, one speaker per shot, held poses switched on words, mouth from voice envelope. `node ep4/scene3.js plan && python3 ep4/audio.py && node ep4/scene3.js video out.mp4` (run render with nohup).
 - New cast: `lib/rose.js` (Mrs. Rose on crew rig, Biscuit the dog). Voices are TEMPORARY Kokoro (`ep4/tts_kokoro.py`); network now allows api.elevenlabs.io, but `ELEVEN_API_KEYS` was not set in that session.
 
-## Episode 4 FULL EPISODE — DONE v2, scheduled in Metricool for Thu 22 Oct 2026 16:00 (Chisinau), file ep4/sofia_ep4_youtube.mp4 (80 MB)
+## Episode 4 FULL EPISODE — DONE v2, scheduled in Metricool for Tue 20 Oct 2026 16:00 (Chisinau); owner wants 2 long episodes per week (Tue + Fri 16:00), file ep4/sofia_ep4_youtube.mp4 (80 MB)
 - Voices: REAL ElevenLabs for all 109 lines (`python3 ep4/voice_el.py` → `ep4/vo/<id>.mp3` + `.align.json` + trimmed `.wav`, `vo.json` with real word timings).
   Sofia = Jessica eleven_v3 (+ a few emotion tags, see TAGS), Gus = George multilingual_v2, Mrs. Rose = Lily, Tom = Will, Officer Dan = Brian, phone = Sarah (all eleven_v4_turbo).
   The script skips lines whose mp3 exists — delete an mp3 to regenerate only that line.
