@@ -33,19 +33,30 @@ const GP = { // Gus
   deadpan: { lids: 0.6, neck: 0.05, wing: 0.1, look: 0.4 },
   thanks: { lids: 0.25, neck: 0.15, wing: 0.7, look: 0.5, flap: 0.5 },
   walk: { lids: 0.4, neck: 0.1, wing: 0.1, look: 0.4 },
+  // listening / reactions
+  listen: { lids: 0.4, neck: 0.08, wing: 0.1, look: 0.5 },
+  followL: { lids: 0.25, neck: -0.15, wing: 0.1, look: 0.1 },     // eyes on her hand
+  followR: { lids: 0.15, neck: 0.35, wing: 0.1, look: 1.0, nod: 0.6 },
+  nodding: { lids: 0.3, neck: 0.1, wing: 0.15, look: 0.6, nod: 1 },
+  unimpressed: { lids: 0.72, neck: 0.0, wing: 0.05, look: 0.5 },
 };
 const RP = { // Mrs. Rose (crew rig units; she faces screen-left towards Gus)
   rest: { armL: [-110, -10], armR: [110, -10], handL: 'relax', handR: 'relax', armsFront: false, browL: 0.2, browR: 0.2, smile: 0.6, surprise: 0, lean: 0 },
   clasp: { armL: [-26, -150], armR: [26, -150], handL: 'relax', handR: 'relax', armsFront: true, browL: 0.35, browR: 0.35, smile: 0.85 },
   open: { armL: [-215, -175], armR: [215, -175], handL: 'open', handR: 'open', armsFront: true, browL: 0.7, browR: 0.7, smile: 0.4 },
   chin: { armL: [-30, -150], armR: [70, -235], handL: 'relax', handR: 'relax', armsFront: true, browL: 0.55, browR: 0.1, smile: 0.2 },
-  ah: { armL: [-110, -10], armR: [150, -420], handL: 'relax', handR: 'open', armsFront: true, browL: 0.9, browR: 0.9, smile: 0.9, surprise: 0.6 },
+  ah: { armL: [-30, -140], armR: [215, -225], handL: 'relax', handR: 'open', armsFront: true, browL: 0.9, browR: 0.9, smile: 0.9, surprise: 0.6 },
   happy: { armL: [-26, -150], armR: [26, -150], handL: 'relax', handR: 'relax', armsFront: true, browL: 0.5, browR: 0.5, smile: 1 },
   pointL: { armL: [-320, -255], armR: [60, -120], handL: 'open', handR: 'relax', armsFront: true, browL: 0.4, browR: 0.4, smile: 0.7 },
   pointLup: { armL: [-270, -400], armR: [60, -120], handL: 'open', handR: 'relax', armsFront: true, browL: 0.5, browR: 0.5, smile: 0.7 },
   pointR: { armL: [-60, -120], armR: [320, -265], handL: 'relax', handR: 'open', armsFront: true, browL: 0.4, browR: 0.4, smile: 0.75 },
   playful: { armL: [-26, -150], armR: [300, -300], handL: 'relax', handR: 'open', armsFront: true, browL: 0.7, browR: 0.3, smile: 1, lean: 0.05 },
   wave: { armL: [-26, -150], armR: [270, -470], handL: 'relax', handR: 'open', armsFront: true, browL: 0.5, browR: 0.5, smile: 1, waveHand: 1 },
+  listen: { armL: [-30, -140], armR: [30, -140], handL: 'relax', handR: 'relax', armsFront: true, browL: 0.3, browR: 0.3, smile: 0.65, surprise: 0, lean: 0 },
+  concern: { armL: [-30, -140], armR: [40, -190], handL: 'relax', handR: 'relax', armsFront: true, browL: 0.65, browR: 0.65, smile: 0.0, lean: -0.02 },
+  amused: { armL: [-30, -140], armR: [30, -140], handL: 'relax', handR: 'relax', armsFront: true, browL: 0.55, browR: 0.25, smile: 1, lean: -0.02 },
+  nodAlong: { armL: [-30, -140], armR: [30, -140], handL: 'relax', handR: 'relax', armsFront: true, browL: 0.45, browR: 0.45, smile: 0.9, nodRose: 1 },
+  laugh: { armL: [-30, -140], armR: [60, -230], handL: 'relax', handR: 'relax', armsFront: true, browL: 0.6, browR: 0.6, smile: 1, squint: 0.55, mouthOpen: 0.35, lean: 0.04, laughShake: 1 },
   sigh: { armL: [-26, -150], armR: [26, -150], handL: 'relax', handR: 'relax', armsFront: true, browL: -0.1, browR: -0.1, worry: 1, smile: -0.1, shake: 1 },
 };
 
@@ -55,20 +66,26 @@ const SCRIPT = [
   { id: 'g01', shot: 'gus', keys: [[0, 'polite']] },
   { id: 'r01', shot: 'rose', keys: [[0, 'clasp']] },
   { id: 'g02', shot: 'gus', keys: [[0, 'worried'], [4, 'worried2']] },
-  { id: 'r02', shot: 'rose', keys: [[0, 'open'], [3, 'clasp'], [10, 'chin']] },
+  { id: 'r02', shot: 'rose', keys: [[0, 'open'], [3, 'clasp'], [10, 'chin']], cuts: [[3, 'gus'], [10, 'rose']] },
   { id: 'g03', shot: 'gus', keys: [[0, 'shrug'], [3, 'dreamy']], bubble: 7 },
   { id: 'r03', shot: 'rose', keys: [[0, 'ah'], [3, 'happy']] },
   { id: 'g04', shot: 'gus', keys: [[0, 'excited'], [3, 'eager']] },
-  { id: 'r04', shot: 'rose', keys: [[0, 'clasp'], [2, 'pointL'], [5, 'pointLup']], cards: [[3, 0], [6, 1]] },
-  { id: 'r05', shot: 'rose', keys: [[0, 'pointL'], [5, 'pointR']], cards: [[2, 2], [10, 3]], gap: 0.25 },
-  { id: 'g05', shot: 'gus', keys: [[0, 'think']], hi: [[1, 0], [3, 1], [7, 2], [12, 3]] },
+  { id: 'r04', shot: 'two', keys: [[0, 'clasp'], [2, 'pointL'], [5, 'pointLup']], cards: [[3, 0], [6, 1]] },
+  { id: 'r05', shot: 'two', keys: [[0, 'pointL'], [5, 'pointR']], cards: [[2, 2], [10, 3]], gap: 0.25 },
+  { id: 'g05', shot: 'two', keys: [[0, 'think']], hi: [[1, 0], [3, 1], [7, 2], [12, 3]] },
   { id: 'r06', shot: 'rose', keys: [[0, 'happy'], [2, 'clasp']], nod: [0, 2] },
   { id: 'g06', shot: 'gus', keys: [[0, 'shock'], [2, 'feet']] },
-  { id: 'r07', shot: 'rose', keys: [[0, 'clasp'], [2, 'playful']] },
-  { id: 'g07', shot: 'gus', keys: [[0, 'deadpan'], [10, 'thanks']] },
+  { id: 'r07', shot: 'rose', keys: [[0, 'clasp'], [2, 'playful']], cuts: [[5, 'gus']] },
+  { id: 'g07', shot: 'gus', keys: [[0, 'deadpan'], [10, 'thanks']], cuts: [[8, 'rose'], [10, 'gus']] },
   { id: 'r08', shot: 'rose', keys: [[0, 'clasp'], [3, 'wave']] },
   { id: 'g08', shot: 'wide', keys: [[0, 'walk']], gap: 2.9 },
   { id: 'g09', shot: 'wide', keys: [[0, 'walk']], gap: 0.6 },
+];
+// listener reactions: [who reacts, during line, at word, pose]
+const REACT = [
+  ['rose', 'g02', 0, 'concern'], ['gus', 'r02', 3, 'worried2'], ['rose', 'g03', 7, 'amused'],
+  ['gus', 'r04', 0, 'listen'], ['gus', 'r04', 2, 'followL'], ['gus', 'r04', 6, 'nodding'], ['gus', 'r05', 0, 'followL'], ['gus', 'r05', 5, 'followR'],
+  ['rose', 'g05', 0, 'nodAlong'], ['gus', 'r07', 5, 'unimpressed'], ['rose', 'g07', 8, 'laugh'],
 ];
 const CARDS = [
   { label: 'GO STRAIGHT', icon: 'up' }, { label: 'TURN LEFT', icon: 'left' },
@@ -102,7 +119,10 @@ const T = OUT.T;
 
 // shots
 const SHOTS = [{ t: 0, type: 'wide' }];
-for (const L of LINES) { if (L.shot === 'wide') continue; const last = SHOTS[SHOTS.length - 1]; if (last.type !== L.shot) SHOTS.push({ t: L.t0 - 0.12, type: L.shot }); }
+{ const ev = [];
+  for (const L of LINES) { if (L.shot === 'wide') continue; ev.push({ t: L.t0 - 0.12, type: L.shot }); for (const [wi, ty] of L.cuts || []) ev.push({ t: L.words[wi].t0 - 0.05, type: ty }); }
+  ev.sort((a, b) => a.t - b.t);
+  for (const e of ev) if (SHOTS[SHOTS.length - 1].type !== e.type) SHOTS.push(e); }
 SHOTS.push({ t: OUT.walk0 - 0.1, type: 'wide' }, { t: OUT.sigh0, type: 'rose', sigh: true }, { t: OUT.end0, type: 'end' });
 const shotAt = q => { let s = SHOTS[0], i = 0; SHOTS.forEach((x, k) => { if (q >= x.t) { s = x; i = k; } }); return Object.assign({ t1: (SHOTS[i + 1] || { t: T }).t }, s); };
 
@@ -113,13 +133,26 @@ function blend(a, b, u) {
   return u < 0.5 ? (a !== undefined ? a : b) : (b !== undefined ? b : a);
 }
 function blendObj(A, Bo, u) { const o = {}; for (const k of new Set([...Object.keys(A), ...Object.keys(Bo)])) o[k] = blend(A[k] ?? Bo[k], Bo[k] ?? A[k], u); return o; }
-function poseFor(who, q, LIB, base) { // held pose of the latest key of this character's lines, eased over 0.16 s
-  const keys = [];
-  for (const L of LINES) if (L.who === who) for (const [wi, name] of L.keys) keys.push([wi === 0 ? L.t0 - 0.12 : L.words[Math.min(wi, L.words.length - 1)].t0 - 0.06, name]);
-  let cur = [-99, base], prev = [-99, base];
-  for (const k of keys) if (q >= k[0]) { prev = cur; cur = k; }
-  const u = ease.out(clamp((q - cur[0]) / 0.16));
-  return blendObj(LIB[prev[1]] || LIB[base], LIB[cur[1]] || LIB[base], u);
+const KEYS = {};
+function keysFor(who) { // pose keys: own lines + settle to 'listen' after speaking + reactions while the other talks
+  if (KEYS[who]) return KEYS[who];
+  const keys = [], own = LINES.filter(l => l.who === who);
+  own.forEach((L, i) => {
+    for (const [wi, name] of L.keys) keys.push([wi === 0 ? L.t0 - 0.25 : L.words[Math.min(wi, L.words.length - 1)].t0 - 0.18, name]); // gesture starts a bit before the word
+    const nx = own[i + 1]; if (!nx || nx.t0 - L.t1 > 1.0) keys.push([L.t1 + 0.45, 'listen']);
+  });
+  for (const [w, id, wi, name] of REACT) if (w === who) keys.push([wt(id, wi) - 0.1, name]);
+  return KEYS[who] = keys.sort((a, b) => a[0] - b[0]);
+}
+const easeSettle = x => { const c1 = 1.0, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); }; // small overshoot, then settles
+function poseFor(who, q, LIB, base) { // continuous: each new pose blends from wherever the body is now (0.32 s)
+  const keys = keysFor(who); let S = LIB[base];
+  for (let i = 0; i < keys.length; i++) {
+    const [t0, name] = keys[i]; if (t0 > q) break;
+    const tEnd = Math.min(q, i + 1 < keys.length ? keys[i + 1][0] : q);
+    S = blendObj(S, LIB[name] || LIB[base], easeSettle(clamp((tEnd - t0) / 0.32)));
+  }
+  return S;
 }
 function talkLevel(who, q) {
   for (const L of LINES) if (L.who === who && q >= L.t0 && q < L.t1) { const i = Math.floor((q - L.t0) * FPS); return clamp((L.env[i] || 0) * 1.25); }
@@ -164,7 +197,7 @@ function route(c, q, side) { // directions checklist panel
   for (const L of LINES) { for (const [wi, ci] of L.cards || []) if (q >= L.words[wi].t0) shown[ci] = L.words[wi].t0; for (const [wi, ci] of L.hi || []) if (q >= L.words[wi].t0 - 0.05) hi[ci] = L.words[wi].t0; }
   if (!shown.length) return;
   const g05 = L_('g05'), fade = 1 - clamp((q - g05.t1 - 0.6) / 0.35); if (fade <= 0) return;
-  const X = side === 'left' ? 50 : 1250, Y = 60, Wd = 620;
+  const X = side === 'left' ? 50 : side === 'center' ? 640 : 1250, Y = 60, Wd = 620;
   c.save(); c.globalAlpha = fade;
   const n = shown.filter(x => x !== undefined).length, h = 92 + n * 92;
   paint(c, p => roundRect(p, X, Y, Wd, h, 30), 'rgba(255,255,255,0.95)', { lw: 7 });
@@ -191,7 +224,7 @@ function gusParams(q, extra = {}) {
   const flap = (P.flap || 0) * Math.sin(q * 14) * 0.2, cnt = (P.count || 0) * Math.sin(q * 5) * 0.12;
   const bounce = (P.bounce || 0) * Math.abs(Math.sin(q * 7)) * 0.035;
   return Object.assign({
-    face: 1, lids: Math.max(P.lids, blink(q, 2) > 0.5 ? 0.95 : 0), neck: P.neck + tk * 0.06 * Math.sin(q * 9), look: P.look,
+    face: 1, lids: Math.max(P.lids, blink(q, 2) > 0.5 ? 0.95 : 0), neck: P.neck + tk * 0.06 * Math.sin(q * 9) + (P.nod || 0) * Math.max(0, Math.sin(q * 5)) * -0.12, look: P.look,
     wing: clamp(P.wing + flap + cnt), honk: tk * 0.95, squash: 1 + bounce + Math.sin(q * 2.4) * 0.006, _sweat: P.sweat || 0,
   }, extra);
 }
@@ -200,12 +233,12 @@ function roseParams(q, base = 'rest', force = null) {
   const tk = talkLevel('rose', q);
   const ln = LINES.find(l => l.who === 'rose' && l.nod && q >= l.words[l.nod[0]].t0 && q < l.words[l.nod[1]].t0);
   const nod = ln ? Math.sin((q - ln.words[ln.nod[0]].t0) * 12) * 0.05 : 0;
-  const shake = P.shake ? Math.sin(q * 9) * 0.07 : 0;
+  const shake = P.shake ? Math.sin(q * 9) * 0.07 : 0, nodA = (P.nodRose || 0) * Math.sin(q * 5.5) * 0.045, lau = (P.laughShake || 0) * Math.abs(Math.sin(q * 16)) * 0.025;
   const wav = P.waveHand ? Math.sin(q * 10) * 34 : 0;
   return {
-    turn: -0.32 + shake * 2, tilt: -0.04 + nod + tk * 0.025 * Math.sin(q * 7), lean: P.lean || 0, bob: Math.sin(q * 2.1) * 3 + (P.waveHand ? 0 : 0),
-    look: [-0.55, P.shake ? 0.35 : 0.05], blink: blink(q, 5), browL: P.browL, browR: P.browR, surprise: P.surprise || 0, wide: (P.surprise || 0) * 0.8,
-    mouth: { open: tk * 0.85, smile: P.smile, w: 1 - tk * 0.15 },
+    turn: -0.32 + shake * 2, tilt: -0.04 + nod + nodA - lau + tk * 0.025 * Math.sin(q * 7), lean: P.lean || 0, bob: Math.sin(q * 2.1) * 3 + (P.waveHand ? 0 : 0),
+    look: [-0.55, P.shake ? 0.35 : 0.05], blink: Math.max(blink(q, 5), P.squint || 0), browL: P.browL, browR: P.browR, surprise: P.surprise || 0, wide: (P.surprise || 0) * 0.8,
+    mouth: { open: Math.max(tk * 0.85, (P.mouthOpen || 0) * (0.7 + 0.3 * Math.abs(Math.sin(q * 16)))), smile: P.smile, w: 1 - tk * 0.15 },
     armL: P.armL, armR: [P.armR[0] + wav, P.armR[1]], handL: P.handL, handR: P.handR, armsFront: P.armsFront,
   };
 }
@@ -221,6 +254,7 @@ const CAM = {                      // [centre x, centre y, zoom]
   wide: [960, 540, 1],
   gus: [871, 850, 2.6],            // Gus medium shot, look-room to the right (towards Mrs. Rose)
   rose: [1226, 678, 3.0],          // Mrs. Rose waist-up, the bank behind her
+  two: [1045, 765, 1.95],           // both: Mrs. Rose explains the way, Gus listens
 };
 let BG = {};
 function bgFor(cam) { // pre-render the SAME street through this camera (outline width kept like the characters')
@@ -281,7 +315,7 @@ function frame(ctx, q) {
     ctx.save(); ctx.translate(W / 2, H / 2); ctx.scale(cam[2], cam[2]); ctx.translate(-cam[0], -cam[1]);
     world(ctx, q, s);
     ctx.restore(); ctx.restore();
-    if (s.type === 'gus') route(ctx, q, 'right'); else if (s.type === 'rose') route(ctx, q, 'left');
+    if (s.type === 'gus') route(ctx, q, 'right'); else if (s.type === 'rose') route(ctx, q, 'left'); else if (s.type === 'two') route(ctx, q, 'center');
   }
   const L = activeLine(q); if (L && s.type !== 'end') U2.caption(ctx, L.words, q, L.who);
   // corner tag: test + placeholder voices
@@ -304,7 +338,7 @@ function plan() {
 async function main() {
   const [mode, a, b, c2] = process.argv.slice(2);
   if (mode === 'plan') return plan();
-  BG = { wide: bgFor(CAM.wide), gus: bgFor(CAM.gus), rose: bgFor(CAM.rose) };
+  BG = { wide: bgFor(CAM.wide), gus: bgFor(CAM.gus), rose: bgFor(CAM.rose), two: bgFor(CAM.two) };
   const cv = createCanvas(W, H), ctx = cv.getContext('2d');
   if (mode === 'still') {
     const ts = a.split(',').map(Number), sc = 0.5, S = createCanvas(W, H * sc * Math.ceil(ts.length / 2)), sx = S.getContext('2d');
