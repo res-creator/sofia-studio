@@ -2,6 +2,8 @@
 
 Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). This file adds what happened after Episode 1.
 
+**Owner's production standards — follow them for every scene and episode:** `docs/SOP_animation_quality.md` (acting, shots, face, lip-sync, anatomy, listener reactions, QA before export), `docs/SOP_episode_rules.md` (scene plan first, format-specific staging, full-video review), `docs/CLOSEUP_RULE.md` (close-up = same scene, closer camera).
+
 ## Hard rules (from the channel owner)
 - Never write API keys into code, git, chat logs or memory. ElevenLabs keys only via env var `ELEVEN_API_KEYS`. Max 2 ElevenLabs requests at once (space calls ~3 s apart).
 - Don't change the approved designs/rigs of Sofia (`lib/sofia.js`), Gus (`lib/gus.js`), Dr. Max (`lib/drmax.js`). New characters go in new files.
@@ -24,7 +26,7 @@ Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). Thi
   4) build ep3 pipeline by copying ep2 (script.js, timeline.py, scenes, render, audio) + remaining backgrounds: security gate, corridor+WC, gate lounge (window, GATE 12 DELAYED), plane cabin, Madrid baggage claim; 5) thumbnail + upload kit.
 - Why a new session: the previous session's network blocked api.elevenlabs.io and storage.googleapis.com, so generated audio could not be downloaded. The owner does NOT want to download/upload audio by hand.
 
-## Close-ups (owner's rule, see `CLOSEUP_RULE.md`)
+## Close-ups (owner's rule, see `docs/CLOSEUP_RULE.md`)
 - A close-up is the SAME scene seen through a closer camera. Never draw a separate/enlarged background per shot.
 - Ep4 does it in `ep4/scene3.js`: one world (`ep4/bg4.js` drawWide), characters at fixed world positions, `CAM` = [cx, cy, zoom]; `bgFor(cam)` pre-renders the same street through each camera.
 
