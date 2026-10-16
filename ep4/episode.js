@@ -261,11 +261,11 @@ const P5 = { sofia: 900, sofia2: 960, dan: 1480 };
 S({
   id: 'street5', world: 'green', pre: 3.6, chip: 'MEANWHILE...',
   cams: { wide: [960, 540, 1.25], shop: [1120, 640, 1.4], sofiaA: camHum(P5.sofia, 1), two: camTwo(P5.sofia2, P5.dan), sofia: camHum(P5.sofia2, 1), dan: camHum(P5.dan, -1, 668),
-    sign: [1850, 330, 2.4], twoW: [1220, 600, 1.35] },
+    sign: [1850, 330, 2.4], twoW: [1220, 600, 1.35], call: 'call' },
   lines: [
     { id: 'e01', shot: 'shop', keys: [[0, 'excited'], [5, 'lookL'], [6, 'lookR']] },
     { id: 'e02', shot: 'sofiaA', keys: [[0, 'worried'], [3, 'upset']] },
-    { id: 'e03', shot: 'sofiaA', keys: [[0, 'phone']], gap: 2.2 },
+    { id: 'e03', shot: 'call', keys: [[0, 'phone']], gap: 3.0 },
     { id: 'e04', shot: 'sofiaA', keys: [[0, 'phoneSad'], [5, 'sigh']] },
     { id: 'e05', shot: 'two', keys: [[0, 'wave'], [3, 'worried']], gap: 2.0, card: [[3, 'helpme']] },
     { id: 'e06', shot: 'dan', keys: [[0, 'listen'], [2, 'open']], card: [[2, 'like']] },
@@ -316,7 +316,7 @@ const P7 = { sofia: 1760, gus: 2280 };
     lines.push({ id, shot: 'med', keys: [[0, 'teach']], gap: 3.4, practice: { n: i + 1, pass: 2 } });
   });
   lines.push({ id: 'p11', shot: 'quiz', keys: [[0, 'explain'], [13, 'teach']], gap: 1.4 });
-  lines.push({ id: 'o01', shot: 'two', keys: [[0, 'excited'], [2, 'explain']], gap: 1.2 });
+  lines.push({ id: 'o01', shot: 'two', keys: [[0, 'excited'], [2, 'explain']], gap: 3.0 });
   lines.push({ id: 'o02', shot: 'gus', keys: [[0, 'proud']] });
   lines.push({ id: 'o03', shot: 'med', keys: [[0, 'teach'], [5, 'hi']], gap: 0.4, sub: 0 });
   lines.push({ id: 'o04', shot: 'gus', keys: [[0, 'hello'], [1, 'lookL'], [2, 'lookR'], [3, 'worried2']], gap: 0.4 });
@@ -389,7 +389,7 @@ const BEAT = {};
 { // 5
   const s = SCN('street5');
   BEAT.out5 = [s.t0 + 0.5, s.t0 + 1.0]; BEAT.walk5 = [s.t0 + 1.0, s.t0 + 2.6];
-  BEAT.phone5 = [L_('e03').t0 - 1.8, L_('e04').t0 + 0.6];
+  BEAT.phone5 = [L_('e03').t0 - 3.0, L_('e04').t0 + 0.6]; BEAT.call0 = L_('e03').t0 - 2.4;
   BEAT.toDan = [L_('e04').t1 + 0.4, L_('e05').t0 - 0.1];
   BEAT.run5 = [L_('e17').t1 + 0.2, s.t1];
 }
@@ -592,7 +592,7 @@ function panel(c, q, kind, side, sc) {
     const pop = on ? 1 + 0.12 * Math.max(0, 1 - (q - hi[i]) / 0.3) : 1;
     c.save(); c.translate(X + 60, y); c.scale(k * pop, k * pop);
     arrowIcon(c, icon, 0, 0, 1);
-    U.textOutlined(c, label, 56, 17, label.length > 16 ? 40 : 46, on ? '#FF7A2F' : '#3a221d', { align: 'left', olw: on ? 8 : 0 });
+    U.textOutlined(c, label, 56, 17, label.length > 16 ? 40 : 46, on ? '#FF7A2F' : '#3a221d', on ? { align: 'left', olw: 8, w: 800 } : { align: 'left', ol: false, w: 800 });
     if (on) { paint(c, p => p.arc(Wd - 110, 0, 20, 0, 7), '#2F9466', { lw: 4 }); line(c, [[Wd - 120, 0], [Wd - 112, 9], [Wd - 98, -9]], 6, '#FFFFFF'); }
     c.restore();
   });
@@ -605,7 +605,7 @@ function chip(c, q, sc) { // "TEN MINUTES LATER..." sticker at the start of a sc
   c.save(); c.translate(960, 150); c.scale(k, k); c.rotate(-0.03);
   c.font = `800 64px ${F.EN}`; const w = c.measureText(sc.chip).width + 90;
   paint(c, p => roundRect(p, -w / 2, -58, w, 116, 30), '#FFD23F', { lw: 8 });
-  U.textOutlined(c, sc.chip, 0, 24, 64, '#3a221d', { olw: 0 });
+  U.textOutlined(c, sc.chip, 0, 22, 60, '#3a221d', { ol: false, w: 800 });
   c.restore();
 }
 function titleCard(c, q) {
@@ -699,41 +699,108 @@ function practiceCard(c, q) {
     c.save(); c.translate(1340, 330); c.scale(k, k); c.rotate(-0.015);
     paint(c, p => roundRect(p, -520, -130, 1040, 260, 40), '#FFFFFF', { lw: 8 });
     paint(c, p => p.arc(-450, -110, 52, 0, 7), '#2F9466', { lw: 7 });
-    U.textOutlined(c, String(L1.practice.n), -450, -90, 54, '#FFFFFF', { olw: 0 });
+    U.textOutlined(c, String(L1.practice.n), -450, -90, 54, '#FFFFFF', { ol: false, w: 800 });
     const txt = L1.text, fs = txt.length > 30 ? 56 : txt.length > 22 ? 66 : 80;
     U.textOutlined(c, txt, 0, 24, fs, '#E07B3C', { olw: 10 });
-    U.textOutlined(c, `${L1.practice.n} / ${PRACT.length}`, 430, 100, 32, '#9C8A82', { olw: 0 });
+    U.textOutlined(c, `${L1.practice.n} / ${PRACT.length}`, 430, 100, 32, '#8A6A5C', { ol: false, w: 800 });
     c.restore();
   }
   // YOUR TURN between pass 1 and pass 2
   const a = L1.t1 + 0.15, b = L2.t0 - 0.15;
   if (q > a && q < b) U.yourTurn(c, L1.text.length > 24 ? 'Say it!' : L1.text, (q - a) / (b - a), q);
 }
-function quizCard(c, q) {
-  const L = L_('p11'); if (q < L.t0 - 0.3 || q > L.t1 + 1.0) return;
-  const o = 1 - clamp((q - L.t1 - 0.6) / 0.4);
-  c.save(); c.globalAlpha = 0.55 * o; c.fillStyle = '#1E1828'; c.fillRect(0, 0, W, H); c.restore();
-  c.save(); c.globalAlpha = o;
-  const k = ease.back(clamp((q - L.t0 + 0.3) / 0.4)), k2 = ease.back(clamp((q - L.wt(6)) / 0.4)), k3 = clamp((q - L.wt(9)) / 0.3);
-  c.save(); c.translate(960, 300); c.scale(k, k); U.textOutlined(c, 'QUICK QUESTION!', 0, 0, 90, '#FFD23F', { olw: 14 }); c.restore();
-  c.save(); c.translate(960, 450); c.scale(k, k); U.textOutlined(c, 'At the bank, Gus turned RIGHT.', 0, 0, 76, '#FFFFFF', { olw: 12 }); c.restore();
-  c.save(); c.translate(960, 600); c.scale(k2, k2); U.textOutlined(c, 'Was that correct?', 0, 0, 110, '#FFD23F', { olw: 16 }); c.restore();
-  c.save(); c.globalAlpha = k3 * o; U.textOutlined(c, 'Write your answer in the comments!', 960, 740, 56, '#FFFFFF', { olw: 10 }); c.restore();
+function quizCard(c, q) { // big, clear quiz card; each part lights up when Sofia says it
+  const L = L_('p11'); if (q < L.t0 - 0.4 || q > L.t1 + 2.8) return;
+  const o = 1 - clamp((q - L.t1 - 2.4) / 0.4), k = ease.back(clamp((q - L.t0 + 0.4) / 0.4));
+  c.save(); c.globalAlpha = 0.62 * o * clamp((q - L.t0 + 0.4) / 0.3); c.fillStyle = '#1E1828'; c.fillRect(0, 0, W, H); c.restore();
+  c.save(); c.globalAlpha = o; c.translate(960, 520); c.scale(k, k);
+  const Wd = 1300, Hh = 760, X = -Wd / 2, Y = -Hh / 2;
+  c.save(); c.globalAlpha = 0.3 * o; paint(c, p => roundRect(p, X + 16, Y + 20, Wd, Hh, 50), '#000', { lw: 0 }); c.restore();
+  paint(c, p => roundRect(p, X, Y, Wd, Hh, 50), '#FFFFFF', { lw: 9 });
+  c.save(); c.beginPath(); roundRect(c, X, Y, Wd, Hh, 50); c.clip(); c.fillStyle = '#E07B3C'; c.fillRect(X, Y, Wd, 130); c.restore();
+  line(c, [[X, Y + 130], [X + Wd, Y + 130]], 8, OL);
+  const now = i => q >= L.wt(i) - 0.05;
+  const pulse = (a, b) => (q >= L.wt(a) - 0.05 && q < (b === undefined ? L.t1 : L.wt(b))) ? 1 + 0.04 * Math.sin(q * 9) : 1;
+  // 1. header
+  c.save(); c.translate(0, Y + 92); c.scale(pulse(0, 2), pulse(0, 2)); U.textOutlined(c, 'QUICK QUESTION!', 0, 0, 84, '#FFFFFF', { olw: 14, w: 800 }); c.restore();
+  // 2. the situation
+  if (now(2)) { const a = ease.back(clamp((q - L.wt(2)) / 0.3)); c.save(); c.translate(0, Y + 245); c.scale(a, a);
+    c.font = `800 66px ${F.EN}`; const t1 = 'At the bank, Gus turned ', t2 = 'RIGHT.', w1 = c.measureText(t1).width, w2 = c.measureText(t2).width, x0 = -(w1 + w2) / 2;
+    U.textOutlined(c, t1, x0, 0, 66, '#3a221d', { align: 'left', ol: false, w: 800 }); U.textOutlined(c, t2, x0 + w1, 0, 66, '#E5484D', { align: 'left', ol: false, w: 800 });
+    c.restore(); }
+  // 3. the question (largest)
+  if (now(8)) { const a = ease.back(clamp((q - L.wt(8)) / 0.35)) * pulse(8, 11); c.save(); c.translate(0, Y + 390); c.scale(a, a);
+    U.textOutlined(c, 'Was that correct?', 0, 0, 112, '#FF7A2F', { olw: 16, w: 800 }); c.restore(); }
+  // answer buttons
+  if (q >= L.wt(10) + 0.15) [['YES', '#2F9466', -230], ['NO', '#E5484D', 230]].forEach(([t, col, x], i) => {
+    const a = ease.back(clamp((q - L.wt(10) - 0.15 - i * 0.15) / 0.3)); c.save(); c.translate(x, Y + 520); c.scale(a, a);
+    paint(c, p => roundRect(p, -170, -55, 340, 110, 55), col, { lw: 8 }); U.textOutlined(c, t, 0, 24, 66, '#FFFFFF', { olw: 10, w: 800 }); c.restore(); });
+  // 4. call to action
+  if (now(11)) { const a = ease.back(clamp((q - L.wt(11)) / 0.3)) * pulse(11); c.save(); c.translate(0, Y + 668); c.scale(a, a);
+    paint(c, p => roundRect(p, -540, -48, 1080, 96, 48), '#2E6FD8', { lw: 7 });
+    c.translate(-36, 0); paint(c, p => { p.moveTo(-440, -24); p.lineTo(-376, -24); p.quadraticCurveTo(-364, -24, -364, -12); p.lineTo(-364, 10); p.quadraticCurveTo(-364, 22, -376, 22); p.lineTo(-412, 22); p.lineTo(-428, 36); p.lineTo(-428, 22); p.lineTo(-440, 22); p.quadraticCurveTo(-452, 22, -452, 10); p.lineTo(-452, -12); p.quadraticCurveTo(-452, -24, -440, -24); p.closePath(); }, '#FFFFFF', { lw: 4 });
+    U.textOutlined(c, 'Write your answer in the comments!', 86, 17, 50, '#FFFFFF', { olw: 9, w: 800 }); c.restore(); }
   c.restore();
 }
-function subscribe(c, q) {
-  const L = L_('o03'); const t0 = L.t0 - 0.2; if (q < t0 || q > L.t1 + 1.5) return;
-  const k = ease.back(clamp((q - t0) / 0.4)) * (1 - ease.in(clamp((q - L.t1 - 1.1) / 0.4))), click = L.wt(0) + 0.5, pressed = q >= click;
-  c.save(); c.translate(960, 190); c.scale(k, k);
-  const sq = pressed ? 1 - 0.08 * Math.max(0, 1 - (q - click) / 0.15) : 1; c.scale(sq, sq);
-  paint(c, p => roundRect(p, -260, -60, 520, 120, 30), pressed ? '#9C8A82' : '#E5484D', { lw: 8 });
-  U.textOutlined(c, pressed ? 'SUBSCRIBED' : 'SUBSCRIBE', 0, 22, 62, '#FFFFFF', { olw: 0 });
+const SUBCLICK = () => L_('o03').wt(0) + 0.35;
+function bellIcon(c, s, wig) {
+  c.save(); c.scale(s, s); c.rotate(wig);
+  paint(c, p => { p.moveTo(-30, 24); p.quadraticCurveTo(-26, -34, 0, -36); p.quadraticCurveTo(26, -34, 30, 24); p.lineTo(38, 32); p.lineTo(-38, 32); p.closePath(); }, '#FFD23F', { lw: 6 });
+  paint(c, p => p.arc(0, 40, 9, 0, 7), '#FFD23F', { lw: 5 }); paint(c, p => p.arc(0, -40, 6, 0, 7), '#FFD23F', { lw: 4 });
   c.restore();
+}
+function subscribe(c, q) { // big highlighted SUBSCRIBE: dim the street, button pops, cursor clicks, bell rings, sparkles
+  const L = L_('o03'); const t0 = L.t0 - 0.35, tEnd = L.t1 + 1.3; if (q < t0 || q > tEnd + 0.4) return;
+  const out = ease.in(clamp((q - tEnd) / 0.4)), k = ease.back(clamp((q - t0) / 0.45)) * (1 - out), click = SUBCLICK(), pressed = q >= click;
+  c.save(); c.globalAlpha = 0.45 * clamp((q - t0) / 0.3) * (1 - out); c.fillStyle = '#1E1828'; c.fillRect(0, 0, W, H); c.restore();
+  c.save(); c.translate(960, 330); c.scale(k, k);
+  const sq = pressed ? 1 - 0.1 * Math.max(0, 1 - (q - click) / 0.15) : 1 + 0.03 * Math.sin(q * 8); c.scale(sq, sq);
+  if (!pressed) { const r = (q * 1.2) % 1; c.save(); c.globalAlpha = 0.6 * (1 - r); paint(c, p => roundRect(p, -390 - r * 40, -95 - r * 40, 780 + r * 80, 190 + r * 80, 95 + r * 40), 'rgba(0,0,0,0)', { lw: 10, ol: '#FFD23F' }); c.restore(); }
+  c.save(); c.globalAlpha = 0.3; paint(c, p => roundRect(p, -370, -72, 760, 170, 85), '#000', { lw: 0 }); c.restore();
+  paint(c, p => roundRect(p, -380, -85, 760, 170, 85), pressed ? '#8A8A96' : '#E5484D', { lw: 9 });
+  const wig = pressed ? Math.sin((q - click) * 30) * 0.35 * Math.max(0, 1 - (q - click) / 1.0) : 0;
+  c.save(); c.translate(-270, 0); bellIcon(c, 1.25, wig); c.restore();
+  U.textOutlined(c, pressed ? 'SUBSCRIBED' : 'SUBSCRIBE', 50, 30, 84, '#FFFFFF', { olw: 12, w: 800 });
+  c.restore();
+  // sparkles on click
+  if (pressed && q < click + 0.8) { const u = (q - click) / 0.8; c.save(); c.translate(960, 330); c.globalAlpha = 1 - u;
+    for (let i = 0; i < 12; i++) { const a = i / 12 * Math.PI * 2, r0 = 420 * (0.55 + u * 0.6); const x = Math.cos(a) * r0, y = Math.sin(a) * r0 * 0.45;
+      line(c, [[x * 0.92, y * 0.92], [x, y]], 10, ['#FFD23F', '#FFFFFF', '#FF7A2F'][i % 3]); } c.restore(); }
   // cursor arrow glides in and clicks
-  const ck = ease.inOut(clamp((q - t0 - 0.1) / (click - t0 - 0.1)));
-  const cx = lerp(1500, 1040, ck), cy = lerp(620, 220, ck);
-  c.save(); c.translate(cx, cy); c.scale(1.4, 1.4); c.rotate(-0.35);
+  const ck = ease.inOut(clamp((q - t0 - 0.2) / (click - t0 - 0.2)));
+  const cx = lerp(1560, 1120, ck), cy = lerp(760, 360, ck) + (pressed ? 6 * Math.max(0, 1 - (q - click) / 0.15) : 0);
+  c.save(); c.globalAlpha = 1 - out; c.translate(cx, cy); c.scale(1.6, 1.6); c.rotate(-0.35);
   paint(c, p => { p.moveTo(0, 0); p.lineTo(0, 60); p.lineTo(15, 46); p.lineTo(26, 70); p.lineTo(36, 65); p.lineTo(25, 42); p.lineTo(44, 42); p.closePath(); }, '#FFFFFF', { lw: 5 });
+  c.restore();
+}
+function callInsert(c, q) { // full-frame insert: Sofia's phone calling Gus -> "not available"
+  const L = L_('e03'), fail = q >= L.t0 - 0.1;
+  c.fillStyle = '#F6B3C6'; c.fillRect(0, 0, W, H);
+  c.save(); c.globalAlpha = 0.25; c.fillStyle = '#FFFFFF'; for (let i = 0; i < 14; i++) { c.save(); c.translate(960, 520); c.rotate(i * Math.PI / 7 + q * 0.15); c.fillRect(0, -40, 1400, 80); c.restore(); } c.restore();
+  const shake = fail && q < L.t0 + 0.4 ? Math.sin(q * 60) * 6 : 0;
+  c.save(); c.translate(960 + shake, 540); c.rotate(-0.04);
+  // hand + sleeve holding the phone
+  paint(c, p => roundRect(p, -170, 330, 340, 300, 60), '#F4B63F', { shade: '#D8901C', sx: 14, sy: 0, lw: 8 });
+  paint(c, p => p.ellipse(0, 300, 210, 120, 0, 0, 7), '#FFDCC6', { shade: '#F4B79C', sx: 0, sy: -14, lw: 8 });
+  // phone
+  paint(c, p => roundRect(p, -210, -430, 420, 760, 50), '#2A2E3A', { lw: 9 });
+  paint(c, p => roundRect(p, -186, -400, 372, 680, 34), fail ? '#3A2430' : '#1E3A5A', { lw: 0 });
+  U.textOutlined(c, fail ? 'NOT AVAILABLE' : 'CALLING' + '...'.slice(0, 1 + Math.floor(q * 3) % 3), 0, -300, fail ? 46 : 50, fail ? '#FF8A8E' : '#FFFFFF', { ol: false, w: 800 });
+  // avatar: Gus, with ringing waves
+  if (!fail) for (let i = 0; i < 2; i++) { const r = ((q * 0.9 + i * 0.5) % 1); c.save(); c.globalAlpha = 0.7 * (1 - r); c.beginPath(); c.arc(0, -110, 110 + r * 90, 0, 7); c.lineWidth = 8; c.strokeStyle = '#9EE6B8'; c.stroke(); c.restore(); }
+  paint(c, p => p.arc(0, -110, 110, 0, 7), fail ? '#7A7A86' : '#8FD0F7', { lw: 7 });
+  c.save(); c.beginPath(); c.arc(0, -110, 106, 0, 7); c.clip();
+  if (fail) c.globalAlpha = 0.55;
+  paint(c, p => p.ellipse(-6, -96, 62, 58, 0, 0, 7), '#FFFFFF', { lw: 5 });
+  paint(c, p => { p.moveTo(40, -100); p.bezierCurveTo(70, -98, 100, -86, 112, -78); p.quadraticCurveTo(80, -70, 38, -78); p.closePath(); }, '#FF9A2E', { lw: 4 });
+  paint(c, p => p.ellipse(14, -112, 12, 14, 0, 0, 7), '#FFFFFF', { lw: 4 }); c.beginPath(); c.arc(18, -108, 6, 0, 7); c.fillStyle = '#1b1b1b'; c.fill();
+  line(c, [[-2, -124], [26, -122]], 5, '#FFFFFF'); line(c, [[0, -96 + 34], [0, -10]], 70, '#FFFFFF');
+  paint(c, p => { p.moveTo(-22, -40); p.lineTo(0, -28); p.lineTo(22, -40); p.lineTo(18, -18); p.lineTo(0, -26); p.lineTo(-18, -18); p.closePath(); }, '#2E6FD8', { lw: 4 });
+  c.restore();
+  U.textOutlined(c, 'GUS', 0, 70, 96, '#FFFFFF', { ol: false, w: 800 });
+  if (fail) { const a = ease.back(clamp((q - L.t0 + 0.1) / 0.3)); c.save(); c.translate(0, 170); c.scale(a, a); line(c, [[-40, -40], [40, 40]], 18, '#E5484D'); line(c, [[40, -40], [-40, 40]], 18, '#E5484D'); c.restore(); }
+  // hang-up / call button
+  if (!fail) { paint(c, p => p.arc(0, 200, 48, 0, 7), '#E5484D', { lw: 5 }); paint(c, p => roundRect(p, -26, 192, 52, 16, 8), '#FFFFFF', { lw: 0 }); }
   c.restore();
 }
 
@@ -855,9 +922,9 @@ for (const sc of SCENES) {
   if (sc.id === 'oak2') { add(BEAT.walk23[0], 'wide'); add(L_('b08').t1 + 0.3, 'wide'); }
   if (sc.id === 'rose3') { add(BEAT.rw0 - 0.1, 'wide'); add(BEAT.sigh0, 'rose'); }
   if (sc.id === 'shop4') { add(BEAT.out4[0] - 0.1, 'wide'); add(L_('d04').wt(4) + 0.6, 'tom'); }
-  if (sc.id === 'street5') { add(BEAT.toDan[0], 'twoW'); add(BEAT.run5[0], 'wide'); }
+  if (sc.id === 'street5') { add(BEAT.call0, 'call'); add(L_('e03').t1 + 0.35, 'sofiaA'); add(BEAT.toDan[0], 'twoW'); add(BEAT.run5[0], 'wide'); }
   if (sc.id === 'burger6') { add(BEAT.hug[0], 'two'); add(L_('f11').t1 + 0.4, 'two'); }
-  if (sc.id === 'practice7') { add(L_('p11').t1 + 0.2, 'two'); add(L_('o04').t1 + 0.3, 'two'); }
+  if (sc.id === 'practice7') { add(L_('p11').t1 + 2.8, 'two'); add(L_('o04').t1 + 0.3, 'two'); }
   ev.sort((a, b) => a.t - b.t);
   for (const e of ev) { const last = SHOTS[SHOTS.length - 1]; if (!last || last.sc !== e.sc || last.cam !== e.cam) SHOTS.push(e); }
 }
@@ -869,6 +936,7 @@ function frame(ctx, q) {
   const s = shotAt(q), sc = s.sc, cam0 = sc.cams[s.cam] || sc.cams.wide || sc.cams.med, camv = Array.isArray(cam0) ? fixCam(sc.world, cam0) : cam0;
   if (camv === 'phone') phoneInsert(ctx, q);
   else if (camv === 'map') mapInsert(ctx, q);
+  else if (camv === 'call') callInsert(ctx, q);
   else {
     const push = camv[2] > 1.2 ? 1 + 0.03 * ease.inOut(clamp((q - s.t) / Math.max(0.5, s.t1 - s.t))) : 1;
     ctx.save(); ctx.translate(W / 2, H / 2); ctx.scale(push, push); ctx.translate(-W / 2, -H / 2);
@@ -888,8 +956,7 @@ function frame(ctx, q) {
   phraseCards(ctx, q, camv === 'map' ? 'left' : Array.isArray(camv) && camv[2] < 2.2 ? 'top' : side2);
   if (sc.id === 'practice7') { practiceCard(ctx, q); quizCard(ctx, q); subscribe(ctx, q); }
   titleCard(ctx, q); chip(ctx, q, sc);
-  const L = activeLine(q); if (L && !(L.id === 'p11')) U2.caption(ctx, L.words, q, L.who);
-  else if (L) U2.caption(ctx, L.words, q, L.who, 1040);
+  const L = activeLine(q); if (L && L.id !== 'p11') U2.caption(ctx, L.words, q, L.who); // the quiz card itself carries the p11 text
   // scene transitions: quick dip to white, and fade to black at the very end
   for (const x of SCENES) { if (x === SCENES[0]) continue; const d = Math.abs(q - x.t0); if (d < TRANS) { ctx.save(); ctx.globalAlpha = 1 - d / TRANS; ctx.fillStyle = '#FFFFFF'; ctx.fillRect(0, 0, W, H); ctx.restore(); } }
   if (q < 0.5) { ctx.save(); ctx.globalAlpha = 1 - q / 0.5; ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H); ctx.restore(); }
@@ -908,10 +975,11 @@ function plan() {
   A(BEAT.enter[0] + 1.0, 'bell'); A(BEAT.out5[0], 'bell'); A(BEAT.in4[0], 'bell'); A(BEAT.out4[0] + 2.1, 'bell');
   A(BEAT.sniff, 'sniff'); A(BEAT.sniff + 0.5, 'sniff'); A(wt('a10', 0), 'ding');
   A(wt('b05', 3), 'sad'); A(BEAT.bark, 'bark'); A(BEAT.bark + 0.32, 'bark'); A(L_('b06').t0, 'boing');
-  A(BEAT.phone5[0] + 0.3, 'beeps'); A(L_('e03').t0 - 0.5, 'beeps');
+  A(BEAT.call0 - 0.1, 'whoosh'); A(BEAT.call0 + 0.25, 'click'); A(BEAT.call0 + 0.5, 'ring'); A(BEAT.call0 + 1.6, 'ring'); A(L_('e03').t0 - 0.25, 'beeps');
   A(BEAT.mapGive, 'pop'); A(BEAT.coupon[0], 'pop'); A(BEAT.phoneGive, 'pop'); A(BEAT.hug[0], 'pop');
   A(wt('g03', 7), 'pop'); A(wt('f09', 2), 'pop'); A(wt('d11', 3), 'boing');
-  A(BEAT.sub + 0.5, 'click'); A(wt('p11', 6), 'ding');
+  A(L_('o03').t0 - 0.45, 'whoosh'); A(L_('o03').t0 - 0.25, 'pop'); A(SUBCLICK(), 'click'); A(SUBCLICK() + 0.05, 'bellring'); A(SUBCLICK() + 0.1, 'sparkle');
+  A(L_('p11').t0 - 0.3, 'whoosh'); A(wt('p11', 8), 'ding'); A(wt('p11', 10) + 0.2, 'pop'); A(wt('p11', 10) + 0.35, 'pop'); A(wt('p11', 11), 'card');
   for (const L of LINES) {
     for (const [wi] of L.dir || []) A(L.wt(wi), 'card'); for (const [wi] of L.hi || []) A(L.wt(wi), 'tick');
     for (const [wi] of L.desc || []) A(L.wt(wi), 'card'); for (const [wi] of L.learn || []) A(L.wt(wi), 'card'); for (const [wi] of L.card || []) A(L.wt(wi) - 0.15, 'card');

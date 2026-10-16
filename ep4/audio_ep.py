@@ -41,9 +41,16 @@ def beeps():
     for i in range(3): t = t_(0.18); x = np.sin(2 * np.pi * 950 * t) * env(len(t), 0.005, 0.02); s = int(i * 0.4 * SR); out[s:s + len(x)] += x
     return norm(out, 0.35)
 def click(): d = 0.05; t = t_(d); return norm(bp(noise(d), 1500, 6000) * np.exp(-t * 120), 0.5)
-LIB = {'whoosh': whoosh, 'step': step, 'bell': bell, 'sniff': sniff, 'sad': sad, 'boing': boing, 'beeps': beeps, 'click': click,'waddle': waddle, 'bark': bark, 'pop': lambda: norm(sweep(500, 1400, 0.09) * env(int(0.09 * SR), 0.002, 0.05), 0.6),
+def ring():  # phone ringback tone (440 + 480 Hz)
+    d = 0.8; t = t_(d); return norm((np.sin(2 * np.pi * 440 * t) + np.sin(2 * np.pi * 480 * t)) * env(len(t), 0.02, 0.05), 0.35)
+def bellring():
+    out = np.zeros(int(1.2 * SR))
+    for i in range(6): x = chime((1760, 2349), 0.35, 0.03); s = int(i * 0.09 * SR); out[s:s + len(x)] += x * (1 - i * 0.12)
+    return norm(out, 0.5)
+def sparkle(): return chime((1568, 2093, 2637, 3136), 0.5, 0.06)
+LIB = {'ring': ring, 'bellring': bellring, 'sparkle': sparkle, 'whoosh': whoosh, 'step': step, 'bell': bell, 'sniff': sniff, 'sad': sad, 'boing': boing, 'beeps': beeps, 'click': click,'waddle': waddle, 'bark': bark, 'pop': lambda: norm(sweep(500, 1400, 0.09) * env(int(0.09 * SR), 0.002, 0.05), 0.6),
        'card': lambda: chime((880, 1318), 0.4, 0.07), 'tick': lambda: chime((1318, 1760), 0.3, 0.05), 'ding': lambda: chime((784, 1046, 1568), 0.45, 0.1)}
-GAIN = {'whoosh': 0.5, 'step': 0.35, 'bell': 0.5, 'sniff': 0.6, 'sad': 0.55, 'boing': 0.5, 'beeps': 0.45, 'click': 0.6, 'waddle': 0.7, 'bark': 0.8, 'pop': 0.5, 'card': 0.5, 'tick': 0.45, 'ding': 0.6}
+GAIN = {'ring': 0.5, 'bellring': 0.45, 'sparkle': 0.45, 'whoosh': 0.5, 'step': 0.35, 'bell': 0.5, 'sniff': 0.6, 'sad': 0.55, 'boing': 0.5, 'beeps': 0.45, 'click': 0.6, 'waddle': 0.7, 'bark': 0.8, 'pop': 0.5, 'card': 0.5, 'tick': 0.45, 'ding': 0.6}
 def load(f): return np.frombuffer(subprocess.check_output(['ffmpeg', '-v', 'error', '-i', f, '-ac', '1', '-ar', str(SR), '-f', 'f32le', '-']), np.float32).copy()
 voice = np.zeros(N); fx = np.zeros(N)
 def add(buf, x, t, g=1.0):
