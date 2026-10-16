@@ -253,7 +253,7 @@ function world(ctx, q, s) {
   if (q >= G09.t0) { gp.neck = 0.35; gp.wing = 0.5; }
   drawGus(ctx, g.gx, GY + 10, S_.gus, gp);
   // gags attached to Gus (sized in his close-up layout, mapped into world space)
-  const L = L_('g03'), bkb = q >= wt('g03', L.bubble) - 0.1 && q < L.t1 + 0.9 ? clamp((q - wt('g03', L.bubble) + 0.1) / 0.25) * (1 - clamp((q - L.t1 - 0.6) / 0.3)) : 0;
+  const L = L_('g03'), bkb = q >= wt('g03', L.bubble) - 0.1 && q < L.t1 + 0.3 ? clamp((q - wt('g03', L.bubble) + 0.1) / 0.25) * (1 - clamp((q - L.t1) / 0.25)) : 0;
   ctx.save(); ctx.translate(g.gx, GY + 10); ctx.scale(S_.gus / 1.52, S_.gus / 1.52); ctx.translate(-720, -1015);
   if (gp._sweat > 0.5) sweat(ctx, 760, 260, q);
   thought(ctx, 1150, 250, bkb, q);
