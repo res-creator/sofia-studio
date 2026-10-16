@@ -2,9 +2,10 @@
 # If a key runs out of credits or is rejected, the next key is tried automatically.
 import json, sys, base64, subprocess, os
 KEYS = [k.strip() for k in (os.environ.get('ELEVEN_API_KEYS') or os.environ.get('ELEVEN_API_KEY') or '').split(',') if k.strip()]
-if not KEYS: raise SystemExit('Set ELEVEN_API_KEYS="key1,key2,..." (never write keys into code or chat logs)')
+if not KEYS: KEYS = [None]  # no env key: the cloud environment's network secret adds xi-api-key at the proxy
 def _call(key, url, body):
-    r = subprocess.run(['curl', '-s', '-m', '180', '-X', 'POST', url, '-H', 'xi-api-key: ' + key, '-H', 'Content-Type: application/json', '--data-binary', '@-'], input=body.encode(), capture_output=True).stdout
+    hdr = ['-H', 'xi-api-key: ' + key] if key else []
+    r = subprocess.run(['curl', '-s', '-m', '180', '-X', 'POST', url, *hdr, '-H', 'Content-Type: application/json', '--data-binary', '@-'], input=body.encode(), capture_output=True).stdout
     return json.loads(r)
 def tts(voice, text, out, model='eleven_multilingual_v2', vs=None, speed=None):
     vs = dict(vs or {"stability": 0.45, "similarity_boost": 0.8, "style": 0.4, "use_speaker_boost": True})

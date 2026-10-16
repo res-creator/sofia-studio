@@ -113,4 +113,4 @@ function drawWide(x) {
 }
 const wide = () => mk(drawWide);
 
-module.exports = { wide, drawWide, K, W, H, GW };
+module.exports = { wide, drawWide, K, W, H, GW, sky, sidewalk, win, bricks, door, tree, lamp, bank, bench, sign, mk, vg };

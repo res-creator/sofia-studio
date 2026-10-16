@@ -1,14 +1,20 @@
+// Ep4 cast sheet: node ep4/lineup.js out.png
 require('../lib/fonts');
 const { createCanvas } = require('../node_modules/@napi-rs/canvas');
 const { drawGus } = require('../lib/gus');
+const { drawSofia } = require('../lib/sofia');
 const { drawRose, drawDog } = require('../lib/rose');
+const { drawTom, drawDan, mapProp, phoneProp } = require('../lib/town');
 const U = require('../lib/ui');
 const c = createCanvas(1920, 1080), x = c.getContext('2d');
 x.fillStyle = '#EAF2FA'; x.fillRect(0, 0, 1920, 1080);
-const F0 = 930;
-drawGus(x, 420, F0, 0.9, { face: 1, lids: 0.55, look: 0.3 });
-drawRose(x, 1000, F0 - 280 * 0.68, 0.68, { turn: -0.15, look: [-0.4, 0], mouth: { smile: 0.8, open: 0.15 }, armR: [110, -150], handR: 'open', browL: 0.3, browR: 0.3 });
-drawDog(x, 1450, F0, 0.95, { face: -1, tail: 1 });
-for (const [px, n] of [[420, 'GUS'], [1000, 'MRS. ROSE'], [1450, 'BISCUIT']]) U.textOutlined(x, n, px, 1010, 46, '#FFFFFF', { olw: 10 });
-U.textOutlined(x, 'Episode 4 · new cast', 960, 80, 58, '#FFD23F', { olw: 12 });
+const F0 = 930, s = 0.6;
+drawSofia(x, 200, F0 - 272 * s, s, { turn: 0.15, mouth: { smile: 0.8 }, armR: [150, -150], handR: 'open' });
+drawGus(x, 470, F0, 0.76, { face: 1, lids: 0.55, look: 0.3, hold: (c2, f, h) => { c2.translate(h.hx + 130, h.hy + 40); c2.rotate(0.2); mapProp(c2, 0.9); } });
+drawRose(x, 840, F0 - 280 * s, s, { turn: -0.1, mouth: { smile: 0.8 } });
+drawTom(x, 1180, F0 - 280 * s, s, { turn: -0.1, mouth: { smile: 0.8, open: 0.2 }, armR: [140, -200], handR: 'open', browL: 0.3, browR: 0.3 });
+drawDan(x, 1510, F0 - 280 * s, s, { turn: -0.1, mouth: { smile: 0.5 }, armL: [-60, -40], armR: [60, -40], armsFront: true, holdR: (c2) => phoneProp(c2, 1, 'empty') });
+drawDog(x, 1780, F0, 0.8, { face: -1, tail: 1 });
+for (const [px, n] of [[200, 'SOFIA'], [470, 'GUS'], [840, 'MRS. ROSE'], [1180, 'TOM'], [1510, 'OFFICER DAN'], [1780, 'BISCUIT']]) U.textOutlined(x, n, px, 1010, 44, '#FFFFFF', { olw: 10 });
+U.textOutlined(x, 'Episode 4 · Gus Gets Lost in the City · cast', 960, 80, 54, '#FFD23F', { olw: 12 });
 require('fs').writeFileSync(process.argv[2], c.toBuffer('image/png'));
