@@ -34,3 +34,24 @@ Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). Thi
 - Script (Claude Doc): https://claude.ai/code/artifact/14c7b283-0d4a-4a44-963d-081897de9117
 - Scene 3 test approved style: static bg, one speaker per shot, held poses switched on words, mouth from voice envelope. `node ep4/scene3.js plan && python3 ep4/audio.py && node ep4/scene3.js video out.mp4` (run render with nohup).
 - New cast: `lib/rose.js` (Mrs. Rose on crew rig, Biscuit the dog). Voices are TEMPORARY Kokoro (`ep4/tts_kokoro.py`); network now allows api.elevenlabs.io, but `ELEVEN_API_KEYS` was not set in that session.
+
+## Episode 4 FULL EPISODE — IN PROGRESS (continue here)
+Owner approved scene-3 style (v2) and asked for the full episode (~10–11 min) with REAL ElevenLabs voices.
+- ElevenLabs key is a **network secret** on the owner's **Default** cloud environment (host api.elevenlabs.io): the proxy adds the key, so
+  `el.py` works with NO env var. First check: `curl -sS https://api.elevenlabs.io/v1/user/subscription` must not say "unauthorized".
+- All 109 lines: `ep4/lines_all.json` (episode lines in `ep4/ep_lines.json` + scene-3 lines g01–g09, r01–r08). Who: sofia, gus, rose, tom, dan, phone.
+  Current `ep4/vo/*.wav` are TEMPORARY Kokoro voices (`ep4/tts_kokoro.py`). Next: generate real voices with el.py
+  (Sofia Jessica eleven_v3, Gus George, others: pick premade voices, send samples to owner first), write `ep4/vo/<id>.mp3` and rebuild `ep4/vo/vo.json`
+  (fields: who, text, dur, env = per-frame RMS at 30 fps normalised 0..1) — scene3.js reads vo.json; audio.py reads `vo/<id>.wav` (change to mp3 if needed).
+- Cast ready: Sofia, Gus, Mrs. Rose + Biscuit (`lib/rose.js`), Tom + Officer Dan + props map/phone/burger (`lib/town.js`). Sheet: `ep4/ep4_cast.png` (sent to owner).
+- Plan (one world per location; close-ups = cameras, see docs/):
+  1. intro i01–i06 + scene 1 a01–a12 — GREEN STREET world (to build, ~2880 wide): bus stop, FLOWERS shop (door ~820), tall pole sign "BIG BURGER 2 FOR 1 →" near x 1850,
+     Big Burger restaurant at x 2300–2850. Sofia enters flower shop, Gus smells burgers and walks off right.
+  2. scene 2 b01–b08 — OAK ST world (`ep4/bg4.js`, left part): Gus alone, lost; phone insert (battery empty). Then walks to Mrs. Rose →
+  3. scene 3 (DONE in `ep4/scene3.js`): drop its end card; keep Gus turning right + dog bark + Rose sigh.
+  4. scene 4 d01–d22 — CORNER SHOP interior (to build): Tom behind counter, map rack, Tom gives free map, phone gag.
+  5. scene 5 e01–e17 — GREEN STREET at flower shop: Sofia + Officer Dan (Dan points right to the Big Burger sign).
+  6. scene 6 f01–f11 — GREEN STREET at Big Burger (camera ~[1920,540,1]): Gus arrives with the map, reunion.
+  7. practice p00–p11 (say phrase, 3 s YOUR TURN, say again) + outro o01–o04 at Big Burger.
+- Engine: generalise `ep4/scene3.js` (poses, keysFor/REACT listener reactions, cuts, CAM per world, bgFor) into `ep4/episode.js`.
+  Only 2 CPUs: render in 2 parallel halves with nohup (~45–60 min for 11 min).
