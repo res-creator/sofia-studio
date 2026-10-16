@@ -1,0 +1,14 @@
+require('../lib/fonts');
+const { createCanvas } = require('../node_modules/@napi-rs/canvas');
+const { drawGus } = require('../lib/gus');
+const { drawRose, drawDog } = require('../lib/rose');
+const U = require('../lib/ui');
+const c = createCanvas(1920, 1080), x = c.getContext('2d');
+x.fillStyle = '#EAF2FA'; x.fillRect(0, 0, 1920, 1080);
+const F0 = 930;
+drawGus(x, 420, F0, 0.9, { face: 1, lids: 0.55, look: 0.3 });
+drawRose(x, 1000, F0 - 280 * 0.68, 0.68, { turn: -0.15, look: [-0.4, 0], mouth: { smile: 0.8, open: 0.15 }, armR: [110, -150], handR: 'open', browL: 0.3, browR: 0.3 });
+drawDog(x, 1450, F0, 0.95, { face: -1, tail: 1 });
+for (const [px, n] of [[420, 'GUS'], [1000, 'MRS. ROSE'], [1450, 'BISCUIT']]) U.textOutlined(x, n, px, 1010, 46, '#FFFFFF', { olw: 10 });
+U.textOutlined(x, 'Episode 4 · new cast', 960, 80, 58, '#FFD23F', { olw: 12 });
+require('fs').writeFileSync(process.argv[2], c.toBuffer('image/png'));

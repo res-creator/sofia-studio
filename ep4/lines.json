@@ -1,0 +1,19 @@
+[
+ ["g01","gus","Excuse me. Sorry to bother you."],
+ ["r01","rose","Yes, dear? Can I help you?"],
+ ["g02","gus","I think I'm lost. I'm looking for a flower shop."],
+ ["r02","rose","A flower shop? There are many flower shops in this city. What is the name of the street?"],
+ ["g03","gus","I don't know. It's next to a big burger place."],
+ ["r03","rose","Ah! Big Burger! It's on Green Street."],
+ ["g04","gus","Yes! That's it! How do I get there?"],
+ ["r04","rose","It's easy. Go straight. Then turn left at the bank."],
+ ["r05","rose","Then go past the park. Green Street is on your right."],
+ ["g05","gus","Go straight... turn left at the bank... past the park... on my right."],
+ ["r06","rose","That's right. It takes about ten minutes."],
+ ["g06","gus","Ten minutes? On foot?"],
+ ["r07","rose","On foot. Or five minutes if you fly."],
+ ["g07","gus","Ha! I'm a goose, but I don't fly. I walk. Thank you so much!"],
+ ["r08","rose","You're welcome, dear. Good luck!"],
+ ["g08","gus","Okay. The bank. Turn... left? Or right?"],
+ ["g09","gus","Right. Right is right!"]
+]

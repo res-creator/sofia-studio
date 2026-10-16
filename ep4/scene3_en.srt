@@ -1,0 +1,67 @@
+1
+00:00:03,750 --> 00:00:06,603
+Excuse me. Sorry to bother you.
+
+2
+00:00:06,803 --> 00:00:08,898
+Yes, dear? Can I help you?
+
+3
+00:00:09,098 --> 00:00:12,684
+I think I'm lost. I'm looking for a flower shop.
+
+4
+00:00:12,884 --> 00:00:18,253
+A flower shop? There are many flower shops in this city. What is the name of the street?
+
+5
+00:00:18,453 --> 00:00:21,873
+I don't know. It's next to a big burger place.
+
+6
+00:00:22,073 --> 00:00:24,724
+Ah! Big Burger! It's on Green Street.
+
+7
+00:00:24,924 --> 00:00:27,803
+Yes! That's it! How do I get there?
+
+8
+00:00:28,003 --> 00:00:31,451
+It's easy. Go straight. Then turn left at the bank.
+
+9
+00:00:31,401 --> 00:00:35,247
+Then go past the park. Green Street is on your right.
+
+10
+00:00:35,447 --> 00:00:40,504
+Go straight... turn left at the bank... past the park... on my right.
+
+11
+00:00:40,704 --> 00:00:43,493
+That's right. It takes about ten minutes.
+
+12
+00:00:43,693 --> 00:00:45,899
+Ten minutes? On foot?
+
+13
+00:00:46,099 --> 00:00:48,826
+On foot. Or five minutes if you fly.
+
+14
+00:00:49,026 --> 00:00:53,572
+Ha! I'm a goose, but I don't fly. I walk. Thank you so much!
+
+15
+00:00:53,772 --> 00:00:56,088
+You're welcome, dear. Good luck!
+
+16
+00:00:58,688 --> 00:01:01,997
+Okay. The bank. Turn... left? Or right?
+
+17
+00:01:02,297 --> 00:01:04,262
+Right. Right is right!
