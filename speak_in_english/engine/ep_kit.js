@@ -62,5 +62,11 @@ module.exports = function makeKit(TL, UI) {
   }
   // standard overlay stack drawn after the world for a level scene
   function hud(c, t, sc) { UI.card(c, t, sc); UI.captions(c, t); UI.sparkles(c, t); Hq.grain(c, W, HH, t, 0.04); UI.levelBar(c, t, sc, 1); UI.watermark(c); UI.levelIntro(c, t, sc); UI.levelIntroNext(c, t); }
-  return { talk, speaking, endOf, EV, wordT, put, titleRibbon, stamp, bubbles, pop, dots, outro, hud };
+  // smartphone in screen space; screen(c, w, h) draws inside the display (origin = display top-left)
+  function phone(c, x, y, s, screen, rot = 0) { c.save(); c.translate(x, y); c.rotate(rot); c.scale(s, s); c.fillStyle = 'rgba(0,0,0,.25)'; UI.rr(c, -230 + 12, -400 + 16, 460, 800, 56); c.fill(); c.fillStyle = '#2B2F3A'; UI.rr(c, -230, -400, 460, 800, 56); c.fill(); c.fillStyle = '#F4F1EC'; UI.rr(c, -208, -370, 416, 740, 34); c.fill(); c.save(); c.beginPath(); UI.rr(c, -208, -370, 416, 740, 34); c.clip(); c.translate(-208, -370); screen(c, 416, 740); c.restore(); c.fillStyle = '#2B2F3A'; UI.rr(c, -60, -392, 120, 26, 13); c.fill(); c.restore(); }
+  // video-call window in screen space; person(c) draws the caller with feet at (0,0) in a 1:1 world
+  function callWindow(c, x, y, w, h, name, col, k, person, bg = '#DCE6EE') { if (k <= 0) return; c.save(); c.translate(x + w / 2, y + h / 2); c.scale(k, k); c.translate(-w / 2, -h / 2); c.fillStyle = 'rgba(0,0,0,.25)'; UI.rr(c, 10, 14, w, h, 30); c.fill(); c.fillStyle = '#2B2F3A'; UI.rr(c, 0, 0, w, h, 30); c.fill(); c.save(); c.beginPath(); UI.rr(c, 12, 12, w - 24, h - 24, 22); c.clip(); c.fillStyle = bg; c.fillRect(0, 0, w, h); person(c, w, h); c.restore(); c.fillStyle = col; UI.rr(c, 24, h - 70, Math.min(w - 48, 30 + name.length * 22), 48, 24); c.fill(); UI.font(c, 'Unb9', 26); c.fillStyle = C.white; c.textAlign = 'left'; c.textBaseline = 'middle'; c.fillText(name, 42, h - 45); c.fillStyle = '#E0474C'; c.beginPath(); c.arc(w - 40, 40, 10 + Math.sin(Date.now ? 0 : 0) * 0, 0, 7); c.fill(); c.restore(); }
+  // strip ElevenLabs v3 delivery tags like "[sad] " from on-screen text
+  function stripTags() { for (const s of TL.speech) { s.text = s.text.replace(/\[[^\]]*\]\s*/g, ''); if (s.words) s.words = s.words.filter(w => !/^\[/.test(w[0])); } }
+  return { talk, speaking, endOf, EV, wordT, put, titleRibbon, stamp, bubbles, pop, dots, outro, hud, phone, callWindow, stripTags };
 };

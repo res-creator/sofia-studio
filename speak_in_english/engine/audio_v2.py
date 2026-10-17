@@ -417,7 +417,7 @@ if EPN == "party":
         seg = (full*op + muff*(1 - op)) * g
         seg *= np.minimum(1, np.arange(n)/(0.03*SR)) * np.minimum(1, (n - np.arange(n))/(0.12*SR))
         put(music, seg, s0, 1.0)
-elif EPN in ("london", "sorry", "vendor"):
+elif EPN in ("london", "sorry", "vendor", "courier"):
     # cheerful London stroll: pizzicato, walking bass, glockenspiel, brushes
     bpm = 116; b = 60/bpm; K = 0
     def pizz(f, d=0.35):
@@ -499,7 +499,7 @@ elif EPN == "market":
         tt = T(0.09); put(music, hp(rng.standard_normal(len(tt)), 4500)*np.exp(-tt*30), t0 + b*0.5, 0.12)
         m = mel[k % 16]
         if m is not None and (k // 16) % 2 == 1: put(music, accord(note(m), b*0.9), t0, 0.07)
-elif EPN == "gym":
+elif EPN in ("gym", "cancel"):
     bpm = 118; b = 60/bpm; K = 2
     chords = [[57, 60, 64], [53, 57, 60], [48, 52, 55], [55, 59, 62]]; roots = [33, 29, 36, 31]
     for k in range(int(DUR / b) + 8):
