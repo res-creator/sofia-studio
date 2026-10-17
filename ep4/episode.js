@@ -146,19 +146,17 @@ const S = (o) => SCENES.push(o);
 // ---- 1. intro + scene 1: GREEN STREET, bus stop -> flower shop ----
 const P1 = { sofia: 260, gus: 780, sofia2: 600, gus2: 1120 };
 S({
-  id: 'street1', world: 'green', pre: 4.2, chip: null,
+  id: 'street1', world: 'green', pre: 3.7, chip: 'A FEW MINUTES EARLIER...', chipDelay: 1.75,
   cams: {
     wide: [960, 540, 1.5], est: [960, 540, 1], two: camTwo(P1.sofia, P1.gus), sofia: camHum(P1.sofia, 1), gus: camGus(P1.gus, -1), med: [560, 680, 1.45],
     two2: camTwo(P1.sofia2, P1.gus2), sofia2: camHum(P1.sofia2, 1), gus2: camGus(P1.gus2, -1), shop: [860, 640, 1.55], gusR: camGus(P1.gus2, 1),
     sign: [1850, 330, 2.4], street: [1200, 600, 1.25],
   },
   lines: [
-    { id: 'i01', shot: 'med', keys: [[0, 'hi'], [5, 'present']], cuts: [] },
-    { id: 'i02', shot: 'gus', keys: [[0, 'hello']] },
-    { id: 'i03', shot: 'sofia', keys: [[0, 'explain'], [9, 'present'], [14, 'explain']] },
+    { id: 'i03', shot: 'med', keys: [[0, 'explain'], [9, 'present'], [14, 'explain']], cuts: [[8, 'sofia']] },
     { id: 'i04', shot: 'gus', keys: [[0, 'deadpan']], cuts: [] },
     { id: 'i05', shot: 'sofia', keys: [[0, 'deadpan']] },
-    { id: 'i06', shot: 'med', keys: [[0, 'teach'], [19, 'excited']], learn: [[7, 0], [10, 1], [15, 2]] },
+    { id: 'i07', shot: 'med', keys: [[0, 'teach'], [9, 'excited']], learn: [[6, 0], [10, 1]] },
     { id: 'a01', shot: 'sofia', keys: [[0, 'talk'], [7, 'stern']], gap: 0.9 },
     { id: 'a02', shot: 'gus', keys: [[0, 'polite']] },
     { id: 'a03', shot: 'sofia', keys: [[0, 'stern'], [3, 'hips']] },
@@ -172,7 +170,7 @@ S({
     { id: 'a11', shot: 'gusR', keys: [[0, 'eager'], [3, 'excited']] },
     { id: 'a12', shot: 'gusR', keys: [[0, 'dreamy'], [4, 'eager']] },
   ],
-  react: [['gus', 'i01', 0, 'listen'], ['sofia', 'i02', 0, 'listen'], ['gus', 'i03', 9, 'dreamy'], ['sofia', 'i04', 0, 'deadpan'], ['gus', 'i05', 0, 'unimpressed'],
+  react: [['gus', 'i03', 0, 'listen'], ['gus', 'i03', 9, 'dreamy'], ['sofia', 'i04', 0, 'deadpan'], ['gus', 'i05', 0, 'unimpressed'],
     ['gus', 'a01', 7, 'nodding'], ['sofia', 'a02', 0, 'hips'], ['sofia', 'a04', 4, 'sigh'], ['gus', 'a05', 0, 'unimpressed'], ['gus', 'a06', 2, 'lookL'], ['gus', 'a07', 0, 'listen']],
   post: 3.0,
 });
@@ -307,6 +305,7 @@ S({
   post: 2.4,
 });
 // ---- 7. practice + outro at Big Burger ----
+const THINK = 4.8; // seconds between the quiz question and the spoken answer
 const PRACT = ['p01', 'p02', 'p03', 'p04', 'p05', 'p06', 'p07', 'p08', 'p09', 'p10'];
 const P7 = { sofia: 1760, gus: 2280 };
 {
@@ -316,6 +315,7 @@ const P7 = { sofia: 1760, gus: 2280 };
     lines.push({ id, shot: 'med', keys: [[0, 'teach']], gap: 3.4, practice: { n: i + 1, pass: 2 } });
   });
   lines.push({ id: 'p11', shot: 'quiz', keys: [[0, 'explain'], [13, 'teach']], gap: 1.4 });
+  lines.push({ id: 'p12', shot: 'quiz', keys: [[0, 'teach']], gap: THINK }); // the answer, after ~4.5 s to think
   lines.push({ id: 'o01', shot: 'two', keys: [[0, 'excited'], [2, 'explain']], gap: 3.0 });
   lines.push({ id: 'o02', shot: 'gus', keys: [[0, 'proud']] });
   lines.push({ id: 'o03', shot: 'med', keys: [[0, 'teach'], [5, 'hi']], gap: 0.4, sub: 0 });
@@ -327,6 +327,17 @@ const P7 = { sofia: 1760, gus: 2280 };
     post: 3.2,
   });
 }
+
+// ---- 0. teaser (flash-forward): Gus lost on Oak St, phone dead — the SAME moment as in scene 2, shown first ----
+SCENES.unshift({
+  id: 'teaser', world: 'oak', pre: 1.7, chip: null,
+  cams: { lost: [760, 600, 1.3], gus: camGus(P2.gus, 1), insert: 'phone' },
+  lines: [
+    { id: 'b03', teaser: true, shot: 'gus', keys: [[0, 'worried']], gap: 0 },
+    { id: 'b05', teaser: true, shot: 'insert', keys: [[0, 'shock'], [3, 'panic']], cuts: [[3, 'gus']], gap: 0.45 },
+  ],
+  react: [], post: 1.0,
+});
 
 // ================= timeline =================
 const TRANS = 0.45; // dip-to-white between scenes
@@ -352,7 +363,7 @@ function wordTimes(text, env, t0) { // fallback: spread words over voiced frames
   const at = q => { let i = 0; while (i < cum.length - 1 && cum[i + 1] < q) i++; const f = (q - cum[i]) / (cum[i + 1] - cum[i] || 1); return t0 + (i + f) / FPS; };
   let acc = 0; return ws.map((w, i) => { const a = at(acc / Sm * tot); acc += syl[i]; const b = at(acc / Sm * tot); return { w, t0: a, t1: a + (b - a) * 0.92 }; });
 }
-const L_ = (id, pass) => LINES.find(l => l.id === id && (!pass || (l.practice && l.practice.pass === pass)));
+const L_ = (id, pass) => LINES.find(l => l.id === id && !l.teaser && (!pass || (l.practice && l.practice.pass === pass))); // story lines only (the teaser re-uses b03/b05)
 const wt = (id, i) => L_(id).wt(i);
 const SCN = id => SCENES.find(s => s.id === id);
 const sceneAt = q => SCENES.find(s => q >= s.t0 && q < s.t1) || SCENES[SCENES.length - 1];
@@ -361,7 +372,7 @@ const sceneAt = q => SCENES.find(s => q >= s.t0 && q < s.t1) || SCENES[SCENES.le
 const BEAT = {};
 { // 1
   const s = SCN('street1');
-  BEAT.title = [s.t0, s.t0 + s.pre - 0.3];
+  BEAT.title = [s.t0, s.t0 + 1.7]; // short title, then the "A FEW MINUTES EARLIER..." chip
   BEAT.walk1 = [L_('a05').t1 + 0.4, L_('a06').t0 - 0.3];
   BEAT.enter = [L_('a07').t1 + 0.1, L_('a07').t1 + 1.6]; // Sofia walks into the shop
   BEAT.sniff = L_('a09').t0 - 2.0;
@@ -418,6 +429,7 @@ function keysFor(who) {
   return KEYS[who] = keys.sort((a, b) => a[0] - b[0]);
 }
 const EXTRA_KEYS = [
+  ['gus', 0, 'lookL'], ['gus', 0.85, 'lookR'],
   ['sofia', SCN('street1').t0, 'cam'], ['gus', SCN('street1').t0, 'polite'],
   ['sofia', BEAT.walk1[0], 'listen'], ['gus', BEAT.walk1[0], 'walk'],
   ['gus', BEAT.sniff, 'sniff'], ['gus', BEAT.gone1[0], 'dreamy'],
@@ -468,6 +480,8 @@ function cast(sc, q) {
     if (q >= BEAT.gone1[0]) { gx = walkX(q, [BEAT.gone1[0], BEAT.gone1[0] + 2.8], P1.gus2, 1750, ease.in); gw = true; }
     if (salpha > 0) C.sofia = { x: sx, walking: sw, alpha: salpha, back: q >= BEAT.enter[0] + 0.7 };
     C.gus = { x: gx, face: gface, walking: gw };
+  } else if (sc.id === 'teaser') {
+    C.gus = { x: P2.gus, face: 1 };
   } else if (sc.id === 'oak2' || sc.id === 'rose3') {
     let gx, gw = false, face = 1;
     if (sc.id === 'oak2') {
@@ -567,8 +581,8 @@ function arrowIcon(c, kind, X, Y, s) {
 // checklist panel (directions in scenes 3 + 6, the goose description in scene 5, "you will learn" in the intro)
 const PANELS = {
   dir: { title: 'DIRECTIONS', col: '#2F9466', items: [['GO STRAIGHT', 'up'], ['TURN LEFT', 'left'], ['GO PAST THE PARK', 'tree'], ['ON YOUR RIGHT', 'right']] },
-  desc: { title: 'MY FRIEND...', col: '#1E2E5A', items: [['IS TALL', 'tall'], ['IS WHITE', '#FFFFFF'], ['HAS A LONG NECK', 'neck'], ['HAS AN ORANGE NOSE', '#FF9A2E'], ['WEARS A BLUE TIE', '#2E6FD8']] },
-  learn: { title: 'IN THIS STORY', col: '#E07B3C', items: [['ASK FOR DIRECTIONS', 'right'], ['SHOP', '#FFD23F'], ['ASK FOR HELP', 'up']] },
+  desc: { title: 'MY FRIEND...', col: '#1E2E5A', items: [['IS TALL', 'tall'], ['IS WHITE', '#FFFFFF'], ['HAS A LONG NECK', 'neck'], ['HAS AN ORANGE BEAK', '#FF9A2E'], ['WEARS A BLUE TIE', '#2E6FD8']] },
+  learn: { title: 'IN THIS STORY', col: '#E07B3C', items: [['ASK FOR DIRECTIONS', 'right'], ['ASK FOR HELP', 'up']] },
 };
 function panel(c, q, kind, side, sc) {
   const P = PANELS[kind], shown = [], hi = [];
@@ -576,7 +590,7 @@ function panel(c, q, kind, side, sc) {
   for (const L of sc.lines2) { for (const [wi, ci] of L[key] || []) if (q >= L.wt(wi)) shown[ci] = L.wt(wi); if (kind === 'dir') for (const [wi, ci] of L.hi || []) if (q >= L.wt(wi) - 0.05) hi[ci] = L.wt(wi); }
   if (kind === 'dir' && sc.id === 'burger6') P.items.forEach((_, i) => { if (shown[i] === undefined && hi[i] !== undefined) shown[i] = hi[i] - 0.3; });
   if (!shown.some(x => x !== undefined)) return;
-  const endL = kind === 'dir' ? sc.lines2.filter(l => l.hi).slice(-1)[0] : kind === 'desc' ? L_('e09') : L_('i06');
+  const endL = kind === 'dir' ? sc.lines2.filter(l => l.hi).slice(-1)[0] : kind === 'desc' ? L_('e09') : L_('i07');
   const fade = 1 - clamp((q - endL.t1 - 0.6) / 0.35); if (fade <= 0) return;
   const Wd = 660, X = side === 'left' ? 50 : side === 'center' ? 630 : 1210, Y = 60;
   c.save(); c.globalAlpha = fade;
@@ -599,7 +613,7 @@ function panel(c, q, kind, side, sc) {
   c.restore();
 }
 function chip(c, q, sc) { // "TEN MINUTES LATER..." sticker at the start of a scene
-  if (!sc.chip) return; const u = q - sc.t0; if (u > 3.4) return;
+  if (!sc.chip) return; const u = q - sc.t0 - (sc.chipDelay || 0); if (u < 0 || u > 3.4) return;
   const k = ease.back(clamp((u - 0.25) / 0.35)) * (1 - ease.in(clamp((u - 2.9) / 0.4)));
   if (k <= 0) return;
   c.save(); c.translate(960, 150); c.scale(k, k); c.rotate(-0.03);
@@ -610,7 +624,7 @@ function chip(c, q, sc) { // "TEN MINUTES LATER..." sticker at the start of a sc
 }
 function titleCard(c, q) {
   const [a, b] = BEAT.title; if (q < a || q > b + 0.4) return;
-  const k = ease.back(clamp((q - a - 0.3) / 0.45)), o = 1 - clamp((q - b) / 0.4), k2 = ease.back(clamp((q - a - 0.9) / 0.4));
+  const k = ease.back(clamp((q - a - 0.15) / 0.4)), o = 1 - clamp((q - b) / 0.3), k2 = ease.back(clamp((q - a - 0.45) / 0.35));
   c.save(); c.globalAlpha = o;
   c.save(); c.translate(960, 330); c.scale(k, k); c.rotate(-0.02);
   paint(c, p => roundRect(p, -720, -110, 1440, 220, 50), '#FFFFFF', { lw: 10 });
@@ -628,8 +642,8 @@ function phraseCards(c, q, side) {
     if (q >= t0 - 0.05 && q < t1 + 0.4) { c.save(); if (side === 'top') c.translate(960 - 1470, -70); U2.phraseCard(c, CARD[name], (q - t0) / 0.35, (q - t1) / 0.3, q, side === 'top' ? 'right' : side); c.restore(); }
   }
 }
-function phoneInsert(c, q) { // full-frame insert: Gus's phone, battery empty
-  const L = L_('b05');
+function phoneInsert(c, q, sc) { // full-frame insert: Gus's phone, battery empty (scene 2 and the teaser)
+  const L = sc.lines2.find(l => l.id === 'b05');
   c.fillStyle = '#8FD0F7'; c.fillRect(0, 0, W, H);
   c.save(); c.globalAlpha = 0.18; c.fillStyle = '#FFFFFF'; for (let i = 0; i < 14; i++) { c.save(); c.translate(960, 540); c.rotate(i * Math.PI / 7 + q * 0.2); c.fillRect(0, -40, 1400, 80); c.restore(); } c.restore();
   const shake = q < L.wt(3) + 0.4 ? Math.sin(q * 50) * 6 * clamp((q - L.t0) / 0.2) : 0;
@@ -641,38 +655,52 @@ function phoneInsert(c, q) { // full-frame insert: Gus's phone, battery empty
   c.save(); c.translate(1420, 300); c.scale(k, k); c.rotate(0.08);
   U.textOutlined(c, '0%', 0, 0, 150, '#E5484D', { olw: 16 }); c.restore();
 }
-function mapInsert(c, q) { // full-frame insert: the free map, Tom's finger shows "you are here" and the way
-  c.fillStyle = '#E9D9B4'; c.fillRect(0, 0, W, H);
-  c.save(); c.translate(960, 520); c.rotate(-0.02);
+// One town, one map (map units, origin = map centre). Gus walks EAST along Oak St to the bank corner.
+// Turn LEFT there = north, past the park to Green St and Big Burger (Mrs. Rose's way).
+// Turn RIGHT = south, down to the corner shop (what Gus did).
+const MAP = { oak: 200, cross: -120, green: -220, shop: [-90, 300], burger: [490, -335], bank: [-245, 100] };
+function drawTownMap(c) {
   paint(c, p => roundRect(p, -760, -430, 1520, 860, 18), '#FFF6DE', { shade: '#EADBB8', sx: 14, sy: 10, lw: 8 });
   for (const x of [-253, 253]) line(c, [[x, -430], [x, 430]], 4, '#D8C79E');
-  // streets
-  line(c, [[-700, 200], [700, 200]], 46, '#F2C744'); line(c, [[-120, 400], [-120, -400]], 46, '#F2C744'); line(c, [[-120, -220], [700, -220]], 46, '#F2C744');
+  line(c, [[-700, MAP.oak], [700, MAP.oak]], 46, '#F2C744'); line(c, [[MAP.cross, 400], [MAP.cross, -400]], 46, '#F2C744'); line(c, [[MAP.cross, MAP.green], [700, MAP.green]], 46, '#F2C744');
   c.fillStyle = '#8A6A2E'; c.font = `800 34px ${F.EN}`; c.textAlign = 'center';
-  c.fillText('OAK ST', 420, 270); c.fillText('GREEN ST', 420, -260);
-  // park + bank + Big Burger + shop
+  c.fillText('OAK ST', -560, MAP.oak + 75); c.fillText('GREEN ST', 560, MAP.green + 75);
   paint(c, p => roundRect(p, 40, -150, 260, 300, 30), '#8ED28A', { lw: 5 }); for (const [x, y] of [[110, -60], [220, 20], [140, 80]]) paint(c, p => p.arc(x, y, 30, 0, 7), '#5DBB63', { lw: 4 });
   c.fillStyle = '#2F7A3A'; c.fillText('PARK', 170, -100);
-  paint(c, p => p.rect(-330, 240, 170, 120), '#EDE3CF', { lw: 5 }); c.fillStyle = '#8A6A2E'; c.fillText('BANK', -245, 312);
+  paint(c, p => p.rect(-330, 40, 170, 120), '#EDE3CF', { lw: 5 }); c.fillStyle = '#8A6A2E'; c.fillText('BANK', -245, 112);
   paint(c, p => p.rect(380, -400, 220, 130), '#E5484D', { lw: 5 }); c.fillStyle = '#FFFFFF'; c.font = `800 30px ${F.EN}`; c.fillText('BIG BURGER', 490, -325);
-  paint(c, p => p.rect(-560, 240, 180, 120), '#2F9466', { lw: 5 }); c.fillStyle = '#FFFFFF'; c.fillText('SHOP', -470, 312);
-  c.restore();
+  paint(c, p => p.rect(-80, 245, 180, 110), '#2F9466', { lw: 5 }); c.fillStyle = '#FFFFFF'; c.fillText('SHOP', 10, 312);
+}
+function arrowHead(c, a, b, col, s = 1) {
+  const ang = Math.atan2(b[1] - a[1], b[0] - a[0]);
+  c.save(); c.translate(b[0], b[1]); c.rotate(ang); c.scale(s, s);
+  paint(c, p => { p.moveTo(22, 0); p.lineTo(-22, -24); p.lineTo(-12, 0); p.lineTo(-22, 24); p.closePath(); }, col, { lw: 5 }); c.restore();
+}
+function goosePin(c, x, y) { // tiny Gus head marker
+  paint(c, p => p.arc(x, y, 34, 0, 7), '#FFFFFF', { lw: 5 });
+  paint(c, p => { p.moveTo(x + 16, y - 2); p.lineTo(x + 50, y + 6); p.lineTo(x + 16, y + 14); p.closePath(); }, '#FF9A2E', { lw: 4 });
+  c.beginPath(); c.arc(x + 8, y - 8, 5, 0, 7); c.fillStyle = OL; c.fill();
+}
+const WAY_LEFT = [[MAP.cross, MAP.oak], [MAP.cross, MAP.green], [MAP.burger[0] - 110, MAP.green]]; // from the bank corner
+const WAY_RIGHT = [[MAP.cross, MAP.oak], [MAP.cross, MAP.shop[1] - 60]];
+function mapInsert(c, q) { // full-frame insert: the free map — "you are here" (shop), Tom shows the right way
+  c.fillStyle = '#E9D9B4'; c.fillRect(0, 0, W, H);
+  c.save(); c.translate(960, 425); c.scale(0.86, 0.86); c.rotate(-0.02); // kept above the two-line caption
+  drawTownMap(c);
   const L16 = L_('d16'), L17 = L_('d17');
-  // you are here (pin at the shop)
-  if (q >= L16.wt(0) - 0.1) { const k = ease.back(clamp((q - L16.wt(0) + 0.1) / 0.3)); c.save(); c.translate(490, 700); c.scale(k, k);
+  if (q >= L16.wt(0) - 0.1) { const k = ease.back(clamp((q - L16.wt(0) + 0.1) / 0.3)); c.save(); c.translate(MAP.shop[0] + 260, MAP.shop[1] + 30); c.scale(k, k);
     paint(c, p => { p.moveTo(0, 0); p.bezierCurveTo(-40, -50, -40, -100, 0, -100); p.bezierCurveTo(40, -100, 40, -50, 0, 0); p.closePath(); }, '#E5484D', { lw: 6 }); paint(c, p => p.arc(0, -66, 14, 0, 7), '#FFFFFF', { lw: 4 });
-    U.textOutlined(c, 'YOU ARE HERE', 0, -120, 40, '#E5484D', { olw: 8 }); c.restore(); }
-  if (q >= L16.wt(4) - 0.1) { const k = ease.back(clamp((q - L16.wt(4) + 0.1) / 0.3)); c.save(); c.translate(1300, 230); c.scale(k, k);
-    paint(c, p => p.arc(0, 0, 40, 0, 7), 'rgba(255,255,255,0)', { lw: 8, ol: '#2E6FD8' }); c.restore();
-    c.save(); c.globalAlpha = k; c.beginPath(); c.ellipse(1380, 262, 210, 60, 0, 0, 7); c.lineWidth = 8; c.strokeStyle = '#2E6FD8'; c.stroke(); c.restore(); }
-  // the right way (dashed green) and Gus's way (red, crossed)
+    U.textOutlined(c, 'YOU ARE HERE', 50, -40, 40, '#E5484D', { olw: 8, align: 'left' }); c.restore(); }
+  if (q >= L16.wt(4) - 0.1) { const k = clamp((q - L16.wt(4) + 0.1) / 0.3); c.save(); c.globalAlpha = k; c.beginPath(); c.ellipse(420, MAP.green, 230, 56, 0, 0, 7); c.lineWidth = 8; c.strokeStyle = '#2E6FD8'; c.stroke(); c.restore(); }
+  // Gus's way (red, crossed): along Oak St, RIGHT at the bank, down to the shop. The right way (green): back up, LEFT at the bank.
   if (q >= L17.wt(4) - 0.1) {
-    const k = clamp((q - L17.wt(4) + 0.1) / 1.0);
-    const pts = [[490, 720], [840, 720], [840, 300], [1380, 300]];
-    drawPath(c, pts, k, '#2F9466');
-    const k2 = clamp((q - L17.wt(9)) / 0.6);
-    if (k2 > 0) { drawPath(c, [[840, 720], [1500, 720]], k2, '#E5484D'); if (k2 >= 1) { line(c, [[1460, 690], [1520, 750]], 12, '#E5484D'); line(c, [[1520, 690], [1460, 750]], 12, '#E5484D'); } }
+    const k2 = clamp((q - L17.wt(4) + 0.1) / 0.8);
+    drawPath(c, [[-650, MAP.oak], ...WAY_RIGHT], k2, '#E5484D');
+    if (k2 >= 1) { const [x, y] = [MAP.cross, MAP.oak + 100]; line(c, [[x - 26, y - 26], [x + 26, y + 26]], 12, '#E5484D'); line(c, [[x + 26, y - 26], [x - 26, y + 26]], 12, '#E5484D'); }
+    const k = clamp((q - L17.wt(6)) / 1.0);
+    if (k > 0) { drawPath(c, [[-650, MAP.oak], ...WAY_LEFT], k, '#2F9466'); if (k >= 1) arrowHead(c, WAY_LEFT[1], WAY_LEFT[2], '#2F9466'); }
   }
+  c.restore();
 }
 function drawPath(c, pts, k, col) {
   let total = 0; for (let i = 1; i < pts.length; i++) total += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
@@ -709,10 +737,13 @@ function practiceCard(c, q) {
   const a = L1.t1 + 0.15, b = L2.t0 - 0.15;
   if (q > a && q < b) U.yourTurn(c, L1.text.length > 24 ? 'Say it!' : L1.text, (q - a) / (b - a), q);
 }
-function quizCard(c, q) { // big, clear quiz card; each part lights up when Sofia says it
-  const L = L_('p11'); if (q < L.t0 - 0.4 || q > L.t1 + 2.8) return;
-  const o = 1 - clamp((q - L.t1 - 2.4) / 0.4), k = ease.back(clamp((q - L.t0 + 0.4) / 0.4));
-  c.save(); c.globalAlpha = 0.62 * o * clamp((q - L.t0 + 0.4) / 0.3); c.fillStyle = '#1E1828'; c.fillRect(0, 0, W, H); c.restore();
+const QUIZ = () => { const L = L_('p11'), A = L_('p12'); return { L, A, ans: A.t0 - 0.35, mapIn: A.wt(1), end: A.t1 + 2.5 }; };
+function quizCard(c, q) { // big, clear quiz card; each part lights up when Sofia says it; then ~4.5 s to think; then NO turns green
+  const { L, A, ans, mapIn, end } = QUIZ(); if (q < L.t0 - 0.4 || q > end + 0.4) return;
+  const dim = clamp((q - L.t0 + 0.4) / 0.3) * (1 - clamp((q - end) / 0.4));
+  c.save(); c.globalAlpha = 0.62 * dim; c.fillStyle = '#1E1828'; c.fillRect(0, 0, W, H); c.restore();
+  if (q > mapIn + 0.35) return; // the answer map takes over
+  const o = 1 - clamp((q - mapIn) / 0.35), k = ease.back(clamp((q - L.t0 + 0.4) / 0.4));
   c.save(); c.globalAlpha = o; c.translate(960, 520); c.scale(k, k);
   const Wd = 1300, Hh = 760, X = -Wd / 2, Y = -Hh / 2;
   c.save(); c.globalAlpha = 0.3 * o; paint(c, p => roundRect(p, X + 16, Y + 20, Wd, Hh, 50), '#000', { lw: 0 }); c.restore();
@@ -731,16 +762,49 @@ function quizCard(c, q) { // big, clear quiz card; each part lights up when Sofi
   // 3. the question (largest)
   if (now(8)) { const a = ease.back(clamp((q - L.wt(8)) / 0.35)) * pulse(8, 11); c.save(); c.translate(0, Y + 390); c.scale(a, a);
     U.textOutlined(c, 'Was that correct?', 0, 0, 112, '#FF7A2F', { olw: 16, w: 800 }); c.restore(); }
-  // answer buttons
-  if (q >= L.wt(10) + 0.15) [['YES', '#2F9466', -230], ['NO', '#E5484D', 230]].forEach(([t, col, x], i) => {
-    const a = ease.back(clamp((q - L.wt(10) - 0.15 - i * 0.15) / 0.3)); c.save(); c.translate(x, Y + 520); c.scale(a, a);
-    paint(c, p => roundRect(p, -170, -55, 340, 110, 55), col, { lw: 8 }); U.textOutlined(c, t, 0, 24, 66, '#FFFFFF', { olw: 10, w: 800 }); c.restore(); });
+  // answer buttons: both neutral blue while the viewer thinks; at the answer NO turns green (with a tick), YES greys out
+  const shown = q >= ans;
+  if (q >= L.wt(10) + 0.15) [['YES', -230], ['NO', 230]].forEach(([t, x], i) => {
+    const right = t === 'NO', a = ease.back(clamp((q - L.wt(10) - 0.15 - i * 0.15) / 0.3));
+    const pop = shown && right ? 1 + 0.14 * ease.back(clamp((q - ans) / 0.3)) : 1;
+    c.save(); c.translate(x, Y + 520); c.scale(a * pop, a * pop); if (shown && !right) c.globalAlpha *= 0.45;
+    paint(c, p => roundRect(p, -170, -55, 340, 110, 55), shown ? (right ? '#2F9466' : '#9C98A6') : '#2E6FD8', { lw: 8 });
+    U.textOutlined(c, t, shown && right ? -18 : 0, 24, 66, '#FFFFFF', { olw: 10, w: 800 });
+    if (shown && right) { paint(c, p => p.arc(110, 0, 30, 0, 7), '#FFFFFF', { lw: 5 }); line(c, [[96, 0], [106, 12], [126, -12]], 8, '#2F9466'); }
+    c.restore(); });
+  // thinking time: a countdown ring next to the buttons
+  if (q >= L.t1 && q < ans) { const u = (q - L.t1) / (ans - L.t1), left = Math.ceil((ans - q) - 0.05);
+    c.save(); c.translate(520, Y + 520); paint(c, p => p.arc(0, 0, 54, 0, 7), '#FFFFFF', { lw: 7 });
+    c.beginPath(); c.arc(0, 0, 44, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (1 - u)); c.lineWidth = 12; c.strokeStyle = '#FF7A2F'; c.lineCap = 'round'; c.stroke();
+    U.textOutlined(c, String(Math.max(1, left)), 0, 18, 52, '#3a221d', { ol: false, w: 800 }); c.restore(); }
   // 4. call to action
   if (now(11)) { const a = ease.back(clamp((q - L.wt(11)) / 0.3)) * pulse(11); c.save(); c.translate(0, Y + 668); c.scale(a, a);
     paint(c, p => roundRect(p, -540, -48, 1080, 96, 48), '#2E6FD8', { lw: 7 });
     c.translate(-36, 0); paint(c, p => { p.moveTo(-440, -24); p.lineTo(-376, -24); p.quadraticCurveTo(-364, -24, -364, -12); p.lineTo(-364, 10); p.quadraticCurveTo(-364, 22, -376, 22); p.lineTo(-412, 22); p.lineTo(-428, 36); p.lineTo(-428, 22); p.lineTo(-440, 22); p.quadraticCurveTo(-452, 22, -452, 10); p.lineTo(-452, -12); p.quadraticCurveTo(-452, -24, -440, -24); p.closePath(); }, '#FFFFFF', { lw: 4 });
     U.textOutlined(c, 'Write your answer in the comments!', 86, 17, 50, '#FFFFFF', { olw: 9, w: 800 }); c.restore(); }
   c.restore();
+}
+function quizMap(c, q) { // the answer: same town map, Gus's right turn crossed out, the LEFT turn drawn in green
+  const { A, mapIn, end } = QUIZ(); if (q < mapIn || q > end + 0.4) return;
+  const k = ease.back(clamp((q - mapIn) / 0.4)) * (1 - ease.in(clamp((q - end) / 0.4)));
+  c.save(); c.translate(960, 470); c.scale(k, k);
+  paint(c, p => roundRect(p, -700, -400, 1400, 790, 46), '#FFFFFF', { lw: 9 });
+  c.save(); c.beginPath(); roundRect(c, -700, -400, 1400, 790, 46); c.clip(); c.fillStyle = '#2F9466'; c.fillRect(-700, -400, 1400, 110); c.restore();
+  line(c, [[-700, -290], [700, -290]], 8, OL);
+  U.textOutlined(c, 'AT THE BANK: TURN LEFT', 0, -322, 70, '#FFFFFF', { olw: 12, w: 800 });
+  c.save(); c.translate(0, 55); c.scale(0.76, 0.76); drawTownMap(c);
+  // Gus's way: east on Oak St, RIGHT at the bank -> shop (red, crossed out)
+  const k1 = clamp((q - mapIn - 0.2) / 0.6);
+  c.save(); c.translate(-600, MAP.oak - 80); c.scale(1.5, 1.5); goosePin(c, 0, 0); c.restore();
+  drawPath(c, [[-650, MAP.oak], ...WAY_RIGHT], k1, '#E5484D');
+  if (k1 >= 1) { arrowHead(c, WAY_RIGHT[0], WAY_RIGHT[1], '#E5484D', 0.9); const [x, y] = [MAP.cross, MAP.oak + 100]; line(c, [[x - 30, y - 30], [x + 30, y + 30]], 14, '#E5484D'); line(c, [[x + 30, y - 30], [x - 30, y + 30]], 14, '#E5484D');
+    U.textOutlined(c, 'RIGHT', MAP.cross - 170, MAP.oak + 125, 58, '#E5484D', { olw: 9, w: 800 }); }
+  // the right way: LEFT at the bank -> past the park -> Green St -> Big Burger (green), drawn on "left"
+  const k2 = clamp((q - A.wt(5) + 0.1) / 1.1);
+  if (k2 > 0) { drawPath(c, WAY_LEFT, k2, '#2F9466'); if (k2 >= 1) arrowHead(c, WAY_LEFT[1], WAY_LEFT[2], '#2F9466', 1.1);
+    const a = ease.back(clamp((q - A.wt(5) + 0.1) / 0.35)); c.save(); c.translate(MAP.cross - 190, MAP.oak - 330); c.scale(a, a);
+    paint(c, p => roundRect(p, -120, -46, 240, 92, 46), '#2F9466', { lw: 7 }); U.textOutlined(c, 'LEFT', 0, 20, 60, '#FFFFFF', { olw: 9, w: 800 }); c.restore(); }
+  c.restore(); c.restore();
 }
 const SUBCLICK = () => L_('o03').wt(0) + 0.35;
 function bellIcon(c, s, wig) {
@@ -884,6 +948,7 @@ function drawCast(ctx, sc, q) {
     if (sc.id === 'rose3' && q >= L_('g09').t0) { gp.neck = 0.35; gp.wing = 0.5; gp.lids = 0; }
     // held props (in the beak)
     let hold = null;
+    if (sc.id === 'teaser') { const tb = sc.lines2[1]; hold = (c, f, h) => { c.translate(h.hx + 120, h.hy + 46); c.rotate(0.15); c.scale(f, 1); phoneProp(c, 0.9, q < tb.wt(3) ? 'dark' : 'empty'); }; }
     if (sc.id === 'oak2' && q >= BEAT.phone && q < BEAT.phoneOff) hold = (c, f, h) => { c.translate(h.hx + 120, h.hy + 46); c.rotate(0.15); c.scale(f, 1); phoneProp(c, 0.9, q < wt('b05', 3) ? 'dark' : 'empty'); };
     if (sc.id === 'shop4' && inB(q, BEAT.coupon)) hold = (c, f, h) => { c.translate(h.hx + 130, h.hy + 50); c.rotate(0.12); c.scale(f, 1); coupon(c); };
     if (sc.id === 'shop4' && q >= BEAT.mapTake && !(q >= BEAT.phoneTake && q < BEAT.phoneBack)) hold = (c, f, h) => { c.translate(h.hx + 140, h.hy + 60); c.rotate(0.18); c.scale(f, 1); mapProp(c, 0.8); };
@@ -913,7 +978,7 @@ function roseParamsFor(q) {
 const SHOTS = [];
 for (const sc of SCENES) {
   const ev = [];
-  const first = { street1: 'est', oak2: 'wide', rose3: 'wide', shop4: 'wide', street5: 'shop', burger6: 'wide', practice7: 'med' }[sc.id];
+  const first = { teaser: 'lost', street1: 'est', oak2: 'wide', rose3: 'wide', shop4: 'wide', street5: 'shop', burger6: 'wide', practice7: 'med' }[sc.id];
   ev.push({ t: sc.t0, cam: first, sc });
   for (const L of sc.lines2) { ev.push({ t: L.t0 - 0.12, cam: L.shot, sc }); for (const [wi, c2] of L.cuts || []) ev.push({ t: L.wt(wi) - 0.05, cam: c2, sc }); }
   // scene-specific held shots
@@ -924,7 +989,7 @@ for (const sc of SCENES) {
   if (sc.id === 'shop4') { add(BEAT.out4[0] - 0.1, 'wide'); add(L_('d04').wt(4) + 0.6, 'tom'); }
   if (sc.id === 'street5') { add(BEAT.call0, 'call'); add(L_('e03').t1 + 0.35, 'sofiaA'); add(BEAT.toDan[0], 'twoW'); add(BEAT.run5[0], 'wide'); }
   if (sc.id === 'burger6') { add(BEAT.hug[0], 'two'); add(L_('f11').t1 + 0.4, 'two'); }
-  if (sc.id === 'practice7') { add(L_('p11').t1 + 2.8, 'two'); add(L_('o04').t1 + 0.3, 'two'); }
+  if (sc.id === 'practice7') { add(L_('p12').t1 + 2.7, 'two'); add(L_('o04').t1 + 0.3, 'two'); }
   ev.sort((a, b) => a.t - b.t);
   for (const e of ev) { const last = SHOTS[SHOTS.length - 1]; if (!last || last.sc !== e.sc || last.cam !== e.cam) SHOTS.push(e); }
 }
@@ -934,7 +999,7 @@ const shotAt = q => { let s = SHOTS[0]; for (const x of SHOTS) { if (x.t <= q) s
 function frame(ctx, q) {
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   const s = shotAt(q), sc = s.sc, cam0 = sc.cams[s.cam] || sc.cams.wide || sc.cams.med, camv = Array.isArray(cam0) ? fixCam(sc.world, cam0) : cam0;
-  if (camv === 'phone') phoneInsert(ctx, q);
+  if (camv === 'phone') phoneInsert(ctx, q, sc);
   else if (camv === 'map') mapInsert(ctx, q);
   else if (camv === 'call') callInsert(ctx, q);
   else {
@@ -954,7 +1019,7 @@ function frame(ctx, q) {
   if (sc.id === 'street5') panel(ctx, q, 'desc', side2, sc);
   if (sc.id === 'street1') panel(ctx, q, 'learn', 'right', sc);
   phraseCards(ctx, q, camv === 'map' ? 'left' : Array.isArray(camv) && camv[2] < 2.2 ? 'top' : side2);
-  if (sc.id === 'practice7') { practiceCard(ctx, q); quizCard(ctx, q); subscribe(ctx, q); }
+  if (sc.id === 'practice7') { practiceCard(ctx, q); quizCard(ctx, q); quizMap(ctx, q); subscribe(ctx, q); }
   titleCard(ctx, q); chip(ctx, q, sc);
   const L = activeLine(q); if (L && L.id !== 'p11') U2.caption(ctx, L.words, q, L.who); // the quiz card itself carries the p11 text
   // scene transitions: quick dip to white, and fade to black at the very end
@@ -974,12 +1039,13 @@ function plan() {
   for (const [a, b] of [BEAT.walk5, BEAT.toDan, BEAT.sofIn6, [BEAT.run5[0], BEAT.run5[0] + 1.6]]) for (let x = a; x < b; x += 0.32) A(x, 'step');
   A(BEAT.enter[0] + 1.0, 'bell'); A(BEAT.out5[0], 'bell'); A(BEAT.in4[0], 'bell'); A(BEAT.out4[0] + 2.1, 'bell');
   A(BEAT.sniff, 'sniff'); A(BEAT.sniff + 0.5, 'sniff'); A(wt('a10', 0), 'ding');
-  A(wt('b05', 3), 'sad'); A(BEAT.bark, 'bark'); A(BEAT.bark + 0.32, 'bark'); A(L_('b06').t0, 'boing');
+  A(wt('b05', 3), 'sad'); A(SCN('teaser').lines2[1].wt(3), 'sad'); A(BEAT.bark, 'bark'); A(BEAT.bark + 0.32, 'bark'); A(L_('b06').t0, 'boing');
   A(BEAT.call0 - 0.1, 'whoosh'); A(BEAT.call0 + 0.25, 'click'); A(BEAT.call0 + 0.5, 'ring'); A(BEAT.call0 + 1.6, 'ring'); A(L_('e03').t0 - 0.25, 'beeps');
   A(BEAT.mapGive, 'pop'); A(BEAT.coupon[0], 'pop'); A(BEAT.phoneGive, 'pop'); A(BEAT.hug[0], 'pop');
   A(wt('g03', 7), 'pop'); A(wt('f09', 2), 'pop'); A(wt('d11', 3), 'boing');
   A(L_('o03').t0 - 0.45, 'whoosh'); A(L_('o03').t0 - 0.25, 'pop'); A(SUBCLICK(), 'click'); A(SUBCLICK() + 0.05, 'bellring'); A(SUBCLICK() + 0.1, 'sparkle');
-  A(L_('p11').t0 - 0.3, 'whoosh'); A(wt('p11', 8), 'ding'); A(wt('p11', 10) + 0.2, 'pop'); A(wt('p11', 10) + 0.35, 'pop'); A(wt('p11', 11), 'card');
+  A(L_('p11').t0 - 0.3, 'whoosh'); A(wt('p11', 8), 'card'); A(wt('p11', 10) + 0.2, 'pop'); A(wt('p11', 10) + 0.35, 'pop'); A(wt('p11', 11), 'card');
+  { const Q = QUIZ(); for (let x = Q.L.t1 + 0.4; x < Q.ans - 0.3; x += 1.0) A(x, 'tick'); A(Q.ans, 'ding'); A(Q.ans + 0.05, 'sparkle'); A(Q.mapIn, 'whoosh'); A(Q.A.wt(5), 'card'); }
   for (const L of LINES) {
     for (const [wi] of L.dir || []) A(L.wt(wi), 'card'); for (const [wi] of L.hi || []) A(L.wt(wi), 'tick');
     for (const [wi] of L.desc || []) A(L.wt(wi), 'card'); for (const [wi] of L.learn || []) A(L.wt(wi), 'card'); for (const [wi] of L.card || []) A(L.wt(wi) - 0.15, 'card');
@@ -989,7 +1055,7 @@ function plan() {
   const ts = x => { const h = Math.floor(x / 3600), m = Math.floor(x / 60) % 60, s = Math.floor(x) % 60, ms = Math.round((x % 1) * 1000); return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')},${String(ms).padStart(3, '0')}`; };
   fs.writeFileSync(__dirname + '/sofia_ep4_en.srt', LINES.map((l, i) => `${i + 1}\n${ts(l.t0)} --> ${ts(Math.min(l.t1 + 0.3, (LINES[i + 1] || { t0: 1e9 }).t0 - 0.02))}\n${l.text}\n`).join('\n'));
   const mmss = x => `${Math.floor(x / 60)}:${String(Math.floor(x % 60)).padStart(2, '0')}`;
-  const CH = [['Intro', 0], ['Gus smells burgers', L_('a01').t0 - 1], ['Lost in the city', SCN('oak2').t0], ['Asking for directions', SCN('rose3').t0], ['At the corner shop', SCN('shop4').t0],
+  const CH = [['Gus is lost!', 0], ['Gus smells burgers', L_('a01').t0 - 1], ['Lost in the city', SCN('oak2').t0], ['Asking for directions', SCN('rose3').t0], ['At the corner shop', SCN('shop4').t0],
     ['Sofia asks the police', SCN('street5').t0], ['Big Burger', SCN('burger6').t0], ['Practice: listen and repeat', SCN('practice7').t0], ['Quick question', L_('p11').t0 - 1]];
   fs.writeFileSync(__dirname + '/chapters.txt', CH.map(([n, x]) => `${mmss(x)} ${n}`).join('\n') + '\n');
   console.log('T =', T.toFixed(2), 's (' + mmss(T) + '),', LINES.length, 'lines,', SHOTS.length, 'shots');

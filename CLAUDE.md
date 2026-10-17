@@ -46,3 +46,10 @@ Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). Thi
   `node ep4/episode.js still t1,t2 out.png` for checks. Worlds: `ep4/bg_green.js` (Green Street 2880 wide), `ep4/bg4.js` (Oak St), `ep4/bg_shop.js` (corner shop + counter foreground).
 - Output: `ep4/sofia_ep4_gus_gets_lost.mp4` (7:55, 120 MB, NOT in git — over GitHub's 100 MB), `ep4/sofia_ep4_share.mp4` (31 MB), `ep4/thumbnail.png` (`node ep4/thumb.js`), `ep4/sofia_ep4_en.srt`, `ep4/chapters.txt`, `ep4/upload_kit.txt`.
 - Length is 7:55 (script is fixed by real voice durations); the plan said ~10–11 min. To go past 8 min (mid-roll ads) the cheapest option is a longer practice block (re-uses existing audio, no credits).
+- FINAL (owner's 3 fixes, 17 Oct): `ep4/sofia_ep4_youtube_final.mp4` (8:00, 1080p30, CRF 23, −13 LUFS) + `ep4/sofia_ep4_youtube_final_en.srt`.
+  1) cold open = scene `teaser` (re-uses b03 + b05 audio, flash-forward; `L_()` skips `teaser` lines), then 1.7 s title + "A FEW MINUTES EARLIER..." chip; i01/i02/i06 dropped, new i07.
+  2) e07/e08 re-voiced with "orange beak" (verified with ElevenLabs speech-to-text); panel label HAS AN ORANGE BEAK.
+  3) quiz: neutral YES/NO, 4.8 s countdown (THINK), NO turns green, new line p12 "No. He needed to turn left.", answer map `quizMap()`.
+  Shared town map `drawTownMap()`/`MAP`: Gus walks east on Oak St; LEFT at the bank = north to Green St/Big Burger, RIGHT = south to the corner shop (scene-4 map uses the same geography).
+  Metricool post for Tue 20 Oct still holds the OLD file (sofia_ep4_youtube.mp4) — replace it if the owner asks (repo must be public for Metricool to fetch).
+  ElevenLabs: ~170 chars left until ~12 Nov.
