@@ -110,6 +110,10 @@ function icon(ctx, name, x, y, s, label) {
     ctx.fillStyle = C.pink; rr(ctx, -80, -30, 160, 130, 10); ctx.fill(); ctx.stroke(); rr(ctx, -92, -66, 184, 44, 10); ctx.fill(); ctx.stroke();
     ctx.fillStyle = C.gold; ctx.fillRect(-14, -66, 28, 166); ctx.strokeRect(-14, -66, 28, 166);
     for (const s of [-1, 1]) { ctx.beginPath(); ctx.ellipse(s * 34, -88, 36, 20, s * 0.5, 0, 7); ctx.fill(); ctx.stroke(); }
+  } else if (name === 'folders') {
+    ctx.rotate(-0.1); ctx.strokeStyle = C.oliveD; ctx.lineWidth = 6;
+    for (let i = 0; i < 4; i++) { ctx.fillStyle = [C.gold, C.pink, '#8FB4D9', '#4CAF6A'][i]; rr(ctx, -80 + i * 6, 40 - i * 36, 160, 40, 8); ctx.fill(); ctx.stroke(); }
+    ctx.fillStyle = C.white; rr(ctx, -40, -150, 80, 50, 8); ctx.fill(); ctx.stroke(); font(ctx, 'Unb9', 26); ctx.fillStyle = C.oliveD; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('+1', 0, -124);
   } else if (name === 'clock') {
     ctx.fillStyle = C.white; ctx.strokeStyle = C.oliveD; ctx.lineWidth = 9; ctx.beginPath(); ctx.arc(0, 0, 70, 0, 7); ctx.fill(); ctx.stroke();
     ctx.lineCap = 'round'; ctx.lineWidth = 8; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, -46); ctx.moveTo(0, 0); ctx.lineTo(34, 12); ctx.stroke();
