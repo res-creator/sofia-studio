@@ -13,7 +13,7 @@ const HER = { ...BASE.her_london };
 const GRANT = { ...BASE.greg, top: { type: 'blazer', col: '#2B3A67', tie: '#F2C14E' }, bottom: { type: 'trousers', col: '#2B3A67' }, shoes: { col: '#1A1A1A', acc: null } };
 const WHIT = { ...BASE.margot, top: { type: 'blazer', col: '#1E1E24', tie: '#F5EBDD' } };
 const G = { her: geom(HER), grant: geom(GRANT), whit: geom(WHIT) };
-const FY = 60, HERX = -20, GX = 1000, DESK = { x0: 120, x1: 560, top: -500 }, UF = -1850, RISE_H = FY - UF, WX = 760, PLAT = { x0: -420, x1: 640 };
+const FY = 60, HERX = -20, GX = 830, DESK = { x0: 120, x1: 560, top: -500 }, UF = -1850, RISE_H = FY - UF, WX = 760, PLAT = { x0: -420, x1: 640 };
 const C2E = () => ({ rise: EV('rise'), ceil: EV('ceil') });
 function riseY(t) { const { rise, ceil } = C2E(); if (t < rise) return 0; const a = 330 * eIO(P(t, rise, ceil)); const b = (RISE_H - 330) * eBack(P(t, ceil, ceil + 0.7), 1.3); return -(a + b); }
 
@@ -119,7 +119,7 @@ function world(c, t, L) {
   calendar(c, 610, -900, t, L);
   clockFace(c, 610, -1180, (L === 'B1' && t > EV('snap')) || ['B2', 'C1', 'C2'].includes(L) ? 7 : 5);
   if (L === 'B2') heelsWalk(c, t, EV('heels'));
-  shredder(c, 690, -120, L === 'A2' ? P(t, EV('shred'), EV('shred') + 0.9) : 0);
+  if (L === 'A2') shredder(c, 640, -120, P(t, EV('shred'), EV('shred') + 0.9));
   // Whitmore upstairs (the owner's floor is only revealed in C2)
   if (L === 'C2' && t >= EV('ceil')) { heads.whitmore = put(c, WHIT, whitState(t), WX, UF);
   paint(c, q => { q.m(WX - 260, UF - 520); q.l(WX + 300, UF - 520); q.l(WX + 300, UF - 480); q.l(WX - 260, UF - 480); q.z(); }, '#7A4A2A', { sd: 4, hd: 2, lw: 3 }); c.fillStyle = '#5A3A2A'; c.fillRect(WX - 240, UF - 480, 40, 480); c.fillRect(WX + 240, UF - 480, 40, 480); c.fillStyle = '#F2C14E'; rr(c, WX - 120, UF - 590, 240, 70, 10); c.fill(); txt(c, 'OWNER', WX, UF - 555, 30, '#2B2F3A'); }
@@ -147,21 +147,22 @@ function world(c, t, L) {
 function shotFor(t) {
   const sc = sceneAt(t), L = sc.id;
   const herHY = FY + G.her.headY, gHY = FY + G.grant.headY;
-  const two = { x: 430, y: herHY + 420, z: 0.8, r: 0 };
+  const two = { x: 490, y: herHY + 140, z: 0.74, r: 0 };
   if (L === 'hook' || L === 'outro') return two;
   const u = t - sc.s; if (u < 1.15) return { ...two, z: 0.76, cut: u < 0.85 };
   const l = L.toLowerCase(), herC = { x: HERX + 260, y: herHY + 260, z: 1.05, r: 0.4 }, grC = { x: GX - 230, y: gHY + 240, z: 1.05, r: -0.4 };
   const nar = SP[l + '_nar'];
-  if (L === 'A1' && t > EV('coin') - 0.3 && t < nar.t - 0.1) return { x: 260, y: herHY + 520, z: 0.95, r: 0 };
-  if (L === 'A2' && t > EV('shred') - 0.2 && t < nar.t - 0.1) return { x: 640, y: herHY + 480, z: 0.82, r: 0 };
+  if (L === 'A1' && t > EV('coin') - 0.3 && t < nar.t - 0.1) return { x: 330, y: herHY + 130, z: 0.82, r: 0 };
+  if (L === 'A2' && t > EV('shred') - 0.2 && t < nar.t - 0.1) return { x: 560, y: herHY + 130, z: 0.76, r: 0 };
   if (L === 'B1' && inB1Dream(t)) return { x: 420, y: herHY + 380, z: 0.72, r: 0 };
-  if (L === 'B1' && t >= EV('snap') && t < nar.t - 0.1) return { x: 430, y: herHY + 330, z: 0.82, r: 0, cut: t < EV('snap') + 0.05 };
-  if (L === 'B2' && t > EV('dump') - 0.3 && t < EV('heels') - 0.1) return { x: 260, y: herHY + 480, z: 0.86, r: 0 };
+  if (L === 'B1' && t >= EV('snap') && t < nar.t - 0.1) return { x: 430, y: herHY + 130, z: 0.82, r: 0, cut: t < EV('snap') + 0.05 };
+  if (L === 'B2' && t > EV('dump') - 0.3 && t < EV('heels') - 0.1) return { x: 380, y: herHY + 130, z: 0.8, r: 0 };
   if (L === 'B2' && t > EV('heels') - 0.4 && t < nar.t + 0.2) return { x: -280, y: -900, z: 0.66, r: 0 };
-  if (L === 'C1' && t > EV('cactus') - 0.2 && t < nar.t - 0.1) return { x: 150, y: herHY + 500, z: 0.86, r: 0 };
+  if (L === 'C1' && t > EV('cactus') - 0.2 && t < nar.t - 0.1) return { x: 330, y: herHY + 130, z: 0.8, r: 0 };
   if (L === 'C2') { const ry = riseY(t); if (t < EV('rise') - 0.05) { if (speaking('c2_her', t, 0.2, 0.4)) return { ...herC, y: herHY - 40, z: lerp(0.9, 0.98, P(t, SP.c2_her.t, endOf('c2_her'))) }; return grC; }
+    if (t < EV('ceil')) return { x: 300, y: -1150, z: 0.62, r: 0 };
     if (t < EV('down') - 0.1) return { x: 300, y: herHY + 300 + ry * 0.98, z: t < EV('ceil') + 0.8 ? 0.7 : 0.78, r: 0 };
-    if (t < nar.t - 0.1) return { x: 300, y: gHY + 360, z: 0.82, r: 0, cut: t < EV('down') + 0.05 }; return { x: 300, y: gHY + 360, z: 0.78, r: 0 }; }
+    if (t < nar.t - 0.1) return { x: 300, y: gHY + 250, z: 0.82, r: 0, cut: t < EV('down') + 0.05 }; return { x: 300, y: gHY + 250, z: 0.78, r: 0 }; }
   if (nar && t >= nar.t - 0.15) return two;
   const cur = TL.speech.find(s => s.id.startsWith(l + '_') && s.who !== 'nar' && s.who !== 'tip' && t >= s.t - 0.3 && t < s.t + s.d + 0.2);
   if (cur) return cur.who === 'her' ? herC : grC;
