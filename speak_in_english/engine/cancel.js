@@ -16,7 +16,7 @@ const FY = 60, SOFA = { x0: -480, x1: 240 }, HERX = -110, BRX = 760, DOORX = -90
 function txt(c, s, x, y, size, col, font = 'Unb9', align = 'center') { c.font = `${size}px ${font}`; c.fillStyle = col; c.textAlign = align; c.textBaseline = 'middle'; c.fillText(s, x, y); }
 
 // ---------------- room (prerendered)
-const BX0 = -1700, BY0 = -2600, BW = 3800, BH = 3300, BS = 0.5;
+const BX0 = -1700, BY0 = -3400, BW = 3800, BH = 4100, BS = 0.5;
 function drawRoom(c) {
   c.fillStyle = '#CFE7DD'; c.fillRect(BX0, BY0, BW, BH); c.fillStyle = 'rgba(255,255,255,.3)'; for (let x = BX0; x < BX0 + BW; x += 180) c.fillRect(x, BY0, 70, BH);
   c.fillStyle = '#B9D6CB'; c.fillRect(BX0, -520, BW, 580);
