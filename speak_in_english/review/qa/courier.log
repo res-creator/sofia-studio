@@ -1,9 +1,0 @@
-{"ep":"courier","style":"v1","layout":"v1","samples":462,"issues":8,"critical":2,"major":1,"minor":5}
-  critical face_covered_by_card         71.00-80.25s listener
-  critical face_covered_by_card         25.75-32.00s listener
-  major    crop_feet_ankles             100.00-102.75s 
-  minor    bubble_too_long              81.75-94.50s 
-  minor    face_covered_by_card         55.00-62.25s listener
-  minor    face_covered_by_card         39.50-46.50s listener
-  minor    face_covered_by_card         102.50-107.50s listener
-  minor    face_covered_by_card         13.50-18.00s listener
