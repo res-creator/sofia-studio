@@ -6,7 +6,7 @@
 // Result is cached in eps/<ep>/camassist.json (keyed by the sources), so parallel render chunks reuse it.
 const fs = require('fs'), crypto = require('crypto');
 const W = 1080, H = 1920, STEP = 0.2, FPS = 30;
-const SAFE_TOP = 150, SAFE_BOTTOM = 1560, BUBBLE_MIN_Y = 360, FEET_LINE = 1575;
+const SAFE_TOP = 150, SAFE_BOTTOM = 1560, BUBBLE_MIN_Y = 360;
 const area = r => Math.max(0, r.w) * Math.max(0, r.h);
 const inter = (a, b) => { const x0 = Math.max(a.x, b.x), y0 = Math.max(a.y, b.y), x1 = Math.min(a.x + a.w, b.x + b.w), y1 = Math.min(a.y + a.h, b.y + b.h); return { x: x0, y: y0, w: x1 - x0, h: y1 - y0 }; };
 const inRect = (p, r) => p.x >= r.x && p.x <= r.x + r.w && p.y >= r.y && p.y <= r.y + r.h;
@@ -48,10 +48,7 @@ function cost(S, f, dx, dy) {
     for (const b of bubbles) { if (!b.anchor || Math.hypot(b.anchor.x - ch.hc.x, b.anchor.y - (ch.hc.y - ch.ry)) > ch.ry * 2.2) continue;
       const ay = T(b.anchor).y, top = Math.max(BUBBLE_MIN_Y, Math.min(SAFE_BOTTOM - b.h, ay - b.h - 60)), bot = top + b.h;
       if (b.x < face.x + face.w && b.x + b.w > face.x) c += Math.max(0, bot - face.y) * 3; if (bot > SAFE_BOTTOM) c += (bot - SAFE_BOTTOM) * 2; }
-    // body crops: never cut through the feet / ankles or right at the knees
-    if (ch.legs) { const hs = ch.hs * f, fl = T({ x: 0, y: ch.floor }).y, an = T({ x: 0, y: ch.ankle }).y, kn = T({ x: 0, y: ch.knee }).y;
-      if (fl > H + 2 && H > an - 0.08 * hs) c += 260; else if (fl > FEET_LINE && fl <= H + 2) c += 40;   // feet cut / feet under the platform caption
-      if (Math.abs(H - kn) < 0.05 * hs) c += 140; }
+    // body crops (feet / knees) are only reported by qa_frames.js for a manual look: moving the whole shot for them made framing worse
   }
   return c;
 }
@@ -59,7 +56,8 @@ function solve(S) {
   const base = cost(S, 1, 0, 0); if (base < 25) return { f: 1, dx: 0, dy: 0, base, best: base };
   let best = { f: 1, dx: 0, dy: 0, c: base };
   const dxs = [-160, -120, -80, -40, 0, 40, 80, 120, 160];
-  for (const f of [1, 0.96, 0.92, 0.88]) for (const dx of dxs) for (let dy = -360; dy <= 360; dy += 8) { const c = cost(S, f, dx, dy); if (c < best.c - 0.01) best = { f, dx, dy, c }; }
+  const zooms = S.ui.some(u => u.kind === 'card' && u.k > 0.02) ? [1, 0.96, 0.92] : [1];   // zoom out only to make room for a lesson card, never in plain dialogue
+  for (const f of zooms) for (const dx of dxs) for (let dy = -360; dy <= 360; dy += 8) { const c = cost(S, f, dx, dy); if (c < best.c - 0.01) best = { f, dx, dy, c }; }
   return best.c < base - 20 ? { ...best, base, best: best.c } : { f: 1, dx: 0, dy: 0, base, best: base };
 }
 
