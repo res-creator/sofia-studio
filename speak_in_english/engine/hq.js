@@ -293,6 +293,7 @@ function neck(ctx, cfg, g) {
 
 // --------- arm: angles from straight down; side -1 = screen-left
 function arm(ctx, cfg, st, side, sh, g) {
+  if (styleOf(cfg) === 'v2') return armV2(ctx, cfg, st, side, sh, g);
   const { h, B, skin } = g;
   const A = (side < 0 ? st.armL : st.armR) || { a: 0.16, b: 0.32 };
   const ua = h * 0.18 * (A.ul ?? 1), fa = h * 0.165 * (A.fl ?? 1), ur = h * 0.019 * B.arm * (1 + B.muscle * 0.35), fr = ur * (0.8 - B.muscle * 0.08);
@@ -321,6 +322,67 @@ function arm(ctx, cfg, st, side, sh, g) {
   if (itemFn && itemFn.under) { ctx.save(); ctx.translate(wr.x, wr.y); itemFn.under(ctx, ha, side); ctx.restore(); }
   hand(ctx, wr.x, wr.y, ha, Math.max(fr * 1.35, h * 0.022) * near, skin, side, A.fist);
   const ov = itemFn && (itemFn.over || (typeof itemFn === 'function' ? itemFn : null)); if (ov) { ctx.save(); ctx.translate(wr.x, wr.y); ov(ctx, ha, side); ctx.restore(); }
+}
+// v2 arm: same joints as v1 (shoulder/elbow/wrist), cleaner sleeves and a one-piece cartoon hand.
+function armV2(ctx, cfg, st, side, sh, g) {
+  const { h, B, skin } = g;
+  const A = (side < 0 ? st.armL : st.armR) || { a: 0.16, b: 0.32 };
+  const ua = h * 0.18 * (A.ul ?? 1), fa = h * 0.165 * (A.fl ?? 1), ur = h * 0.019 * B.arm * (1 + B.muscle * 0.35), fr = ur * (0.8 - B.muscle * 0.08);
+  const near = 1 + 0.35 * (1 - Math.min(1, A.fl ?? 1));
+  const a1 = A.a, a2 = A.a - A.b;
+  const el = { x: sh.x + Math.sin(a1) * ua * side, y: sh.y + Math.cos(a1) * ua };
+  const wr = { x: el.x + Math.sin(a2) * fa * side, y: el.y + Math.cos(a2) * fa };
+  const top = cfg.top || {};
+  const sleeve = top.sleeve || ({ tank: 'none', tee: 'short', polo: 'short', kidtee: 'short', longsleeve: 'long', sweater: 'long', hoodie: 'long', gymtop: 'long', tracksuit: 'long', blazer: 'long', coat: 'long', cardigan: 'long' })[top.type] || 'long';
+  const sCol = top.sleeveCol || top.col, mu = B.muscle;
+  const S0 = { x: sh.x, y: sh.y, r: ur * (1.05 + mu * 0.25) }, E = { x: el.x, y: el.y, r: ur * (0.82 - mu * 0.05) }, Wr = { x: wr.x, y: wr.y, r: fr * 0.82 };
+  const pts = [S0, midp(sh, el, 0.5, ur * (1.0 + mu * 0.35)), E, midp(el, wr, 0.4, fr * (1.08 + mu * 0.25) * near), { ...Wr, r: Wr.r * near }];
+  const box = [Math.min(sh.x, wr.x) - ur, sh.y, Math.max(sh.x, wr.x) + ur, Math.max(el.y, wr.y)];
+  const fdx = wr.x - el.x, fdy = wr.y - el.y, fl = Math.hypot(fdx, fdy) || 1, ux = fdx / fl, uy = fdy / fl;   // forearm direction
+  const bend = Math.abs(A.b || 0);
+  if (sleeve === 'long') { const sp = pts.map(p => ({ ...p, r: p.r * 1.1 })); paint(ctx, limb(sp), sCol, { box, sd: 13, hd: 6 }); }
+  else {
+    paint(ctx, limb(pts), skin, { box, sd: 12, hd: 6 });
+    if (mu > 0.5) { const ang = Math.atan2(el.y - sh.y, el.x - sh.x), mx = lerp(sh.x, el.x, 0.5), my = lerp(sh.y, el.y, 0.5); ctx.strokeStyle = rgba(dark(skin, .45), .4); ctx.lineWidth = 3.5; ctx.beginPath(); ctx.ellipse(mx, my, ur * 0.85, ur * 0.75, ang, side > 0 ? 0.2 : Math.PI + 0.2, side > 0 ? 2.4 : Math.PI + 2.4); ctx.stroke(); }
+    if (sleeve === 'short') paint(ctx, limb([{ ...S0, r: S0.r * 1.18 }, midp(sh, el, 0.55, ur * 1.15)]), sCol, { sd: 10, hd: 5 });
+  }
+  // one soft fold on the inside of the elbow, only when the arm is bent
+  if (sleeve === 'long' && bend > 0.45) { const k = clamp((bend - 0.45) / 0.8); ctx.strokeStyle = rgba(dark(sCol, .4), 0.18 + 0.17 * k); ctx.lineWidth = 3; ctx.lineCap = 'round'; const fx = lerp(sh.x, el.x, 0.9), fy = lerp(sh.y, el.y, 0.9); ctx.beginPath(); ctx.moveTo(fx - 12, fy - 2); ctx.quadraticCurveTo(fx, fy + 8, fx + 12, fy - 2); ctx.stroke(); }
+  // hand (one piece), then the cuff/wrist on top so there is no seam
+  const ha = Math.atan2(wr.y - el.y, wr.x - el.x);
+  const itemFn = (st.items || {})[side < 0 ? 'L' : 'R'];
+  if (itemFn && itemFn.under) { ctx.save(); ctx.translate(wr.x, wr.y); itemFn.under(ctx, ha, side); ctx.restore(); }
+  const hr = Math.max(fr * 1.32, h * 0.021) * near * (sleeve === 'long' ? 1.06 : 1);
+  handV2(ctx, wr.x, wr.y, ha, hr, skin, side, A.fist);
+  if (sleeve === 'long') { // flat cuff over the top of the hand (no round cap)
+    const cr = Wr.r * near * 1.14; ctx.save(); ctx.translate(wr.x, wr.y); ctx.rotate(ha - Math.PI / 2);
+    paint(ctx, q => { q.m(-cr * 0.92, -cr * 1.3); q.l(cr * 0.92, -cr * 1.3); q.l(cr, cr * 0.12); q.q(0, cr * 0.3, -cr, cr * 0.12); q.z(); }, sCol, { sd: 5, hd: 3, lw: 0 });
+    ctx.strokeStyle = lineOf(sCol); ctx.lineWidth = 4; ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(-cr * 0.95, -cr * 0.7); ctx.lineTo(-cr, cr * 0.12); ctx.quadraticCurveTo(0, cr * 0.3, cr, cr * 0.12); ctx.lineTo(cr * 0.95, -cr * 0.7); ctx.stroke();
+    ctx.strokeStyle = rgba(dark(sCol, .45), .3); ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(-cr * 0.9, -cr * 0.32); ctx.quadraticCurveTo(0, -cr * 0.18, cr * 0.9, -cr * 0.32); ctx.stroke();
+    ctx.restore();
+  } else { // bare wrist: cover the hand's top outline with skin so arm and hand read as one shape
+    ctx.save(); ctx.translate(wr.x, wr.y); ctx.rotate(ha - Math.PI / 2); ctx.fillStyle = skin; ctx.beginPath(); ctx.ellipse(0, -hr * 0.18, Wr.r * near * 0.82, hr * 0.32, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+  }
+  if (cfg.watch && side > 0) { // strap around the wrist + small face, above the cuff
+    const wc = Wr.r * near, d = sleeve === 'long' ? wc * 1.9 : wc * 0.9; ctx.save(); ctx.translate(wr.x - ux * d, wr.y - uy * d); ctx.rotate(ha - Math.PI / 2);
+    ctx.fillStyle = shade(cfg.watch, 0.7); rr(ctx, -wc * 1.05, -wc * 0.22, wc * 2.1, wc * 0.44, wc * 0.15); ctx.fill(); paint(ctx, q => q.e(0, 0, wc * 0.42, wc * 0.42), cfg.watch, { sd: 2, hd: 2, lw: 2.5 }); ctx.restore(); }
+  const ov = itemFn && (itemFn.over || (typeof itemFn === 'function' ? itemFn : null)); if (ov) { ctx.save(); ctx.translate(wr.x, wr.y); ov(ctx, ha, side); ctx.restore(); }
+}
+// v2 hand: mitten with the thumb as a soft bump of the same outline (no separate piece); r = hand radius
+function handV2(ctx, x, y, a, r, skin, side, fist) {
+  ctx.save(); ctx.translate(x, y); ctx.rotate(a - Math.PI / 2); ctx.scale(side < 0 ? -1 : 1, 1);   // local: +y = towards the fingertips, thumb on +x
+  ctx.strokeStyle = rgba(dark(skin, .3), .5); ctx.lineCap = 'round';
+  if (fist) {
+    paint(ctx, q => { q.m(-r * 0.62, -r * 0.4); q.b(-r * 0.9, r * 0.1, -r * 0.9, r * 0.85, -r * 0.45, r * 1.0); q.b(0, r * 1.12, r * 0.55, r * 1.05, r * 0.8, r * 0.75); q.b(r * 1.02, r * 0.5, r * 1.0, r * 0.1, r * 0.75, -r * 0.05); q.q(r * 0.68, -r * 0.25, r * 0.62, -r * 0.4); q.q(0, -r * 0.55, -r * 0.62, -r * 0.4); q.z(); }, skin, { sd: 7, hd: 4, lw: 3.5 });
+    ctx.lineWidth = 2.2; for (const fx of [-0.42, -0.08, 0.26]) { ctx.beginPath(); ctx.moveTo(fx * r, r * 0.86); ctx.quadraticCurveTo((fx + 0.08) * r, r * 0.98, (fx + 0.16) * r, r * 0.88); ctx.stroke(); }   // knuckles
+    ctx.beginPath(); ctx.moveTo(r * 0.72, r * 0.08); ctx.quadraticCurveTo(r * 0.38, r * 0.3, r * 0.2, r * 0.55); ctx.stroke();   // thumb folded over the fingers
+  } else {
+    paint(ctx, q => { q.m(-r * 0.62, -r * 0.4); q.b(-r * 0.85, r * 0.2, -r * 0.88, r * 0.9, -r * 0.6, r * 1.2); q.b(-r * 0.35, r * 1.45, r * 0.35, r * 1.45, r * 0.62, r * 1.15); q.q(r * 0.78, r * 0.95, r * 0.72, r * 0.72);
+      q.b(r * 0.95, r * 0.68, r * 1.08, r * 0.42, r * 0.95, r * 0.2); q.b(r * 0.85, 0, r * 0.7, -r * 0.2, r * 0.62, -r * 0.4); q.q(0, -r * 0.55, -r * 0.62, -r * 0.4); q.z(); }, skin, { sd: 7, hd: 4, lw: 3.5 });
+    ctx.lineWidth = 2.2; for (const fx of [-0.28, 0.14]) { ctx.beginPath(); ctx.moveTo(fx * r, r * 1.08); ctx.lineTo(fx * r * 1.05, r * 1.32); ctx.stroke(); }   // two short finger hints
+    ctx.beginPath(); ctx.moveTo(r * 0.72, r * 0.72); ctx.quadraticCurveTo(r * 0.55, r * 0.6, r * 0.5, r * 0.42); ctx.stroke();   // where the thumb meets the palm
+  }
+  ctx.restore();
 }
 function hand(ctx, x, y, a, r, skin, side, fist) {
   ctx.save(); ctx.translate(x, y); ctx.rotate(a - Math.PI / 2);
