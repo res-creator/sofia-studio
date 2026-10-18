@@ -417,7 +417,7 @@ if EPN == "party":
         seg = (full*op + muff*(1 - op)) * g
         seg *= np.minimum(1, np.arange(n)/(0.03*SR)) * np.minimum(1, (n - np.arange(n))/(0.12*SR))
         put(music, seg, s0, 1.0)
-elif EPN in ("london", "sorry", "vendor", "courier"):
+elif EPN in ("london", "sorry", "vendor", "courier", "lie"):
     # cheerful London stroll: pizzicato, walking bass, glockenspiel, brushes
     bpm = 116; b = 60/bpm; K = 0
     def pizz(f, d=0.35):
@@ -437,7 +437,7 @@ elif EPN in ("london", "sorry", "vendor", "courier"):
             m = mel[(k*2 + j) % 16]
             if m is not None and (k // 16) % 2 == 0: put(music, glock(note(m + 12)), t0 + j*b/2, 0.07)
             if m is not None and (k // 16) % 2 == 1: put(music, pizz(note(m), 0.4), t0 + j*b/2, 0.12)
-elif EPN in ("airport", "raise", "smell"):
+elif EPN in ("airport", "raise", "smell", "things"):
     # breezy airport lounge bossa: e-piano, nylon plucks, soft shaker, walking bass
     bpm = 120; b = 60/bpm; K = 0
     prog = [([62, 65, 69, 72], 38), ([61, 65, 67, 71], 43), ([60, 64, 67, 71], 36), ([57, 61, 64, 67], 45)]
@@ -531,7 +531,7 @@ elif EPN in ("dinner", "gift", "guest"):
         else:
             m = ch[(k) % 3] + 12; tt = T(3*b*0.9); trem = (0.55 + 0.45*np.sign(np.sin(2*np.pi*14*tt)))
             put(music, pluck(note(m), 3*b*0.9, 1.2) * trem * 0.0 + np.sin(2*np.pi*note(m)*tt)*np.exp(-tt*0.8)*trem*np.minimum(tt*80, 1), t0, 0.05)
-elif EPN == "salon":
+elif EPN in ("salon", "haircut"):
     # groovy salon radio: light disco beat, octave bass, e-piano stabs, marimba hook
     bpm = 112; b = 60/bpm; K = 2
     def marimba(f, d=0.35):
@@ -578,7 +578,7 @@ for s in TL["speech"]:
     if EPN == "airport" and s["id"] == "c2_her2": x = lp(lp(x, 650), 650) * 1.8
     l, r = PAN.get(s["who"], (0.84, 1.0)); g = 1.0 if s["who"] == "nar" else 0.95
     voice[i:j, 0] += x[:j-i]*l*g; voice[i:j, 1] += x[:j-i]*r*g; duck[max(0, i-2400):j+4800] = 1
-duck = lp(duck, 4); mus_g = gain * (1 - (0.74 if EPN == "party" else 0.7)*np.clip(duck, 0, 1)) * (0.30 if EPN == "gym" else 0.32 if EPN in ("dinner", "salon", "gift", "guest") else 0.44 if EPN == "party" else 0.34)
+duck = lp(duck, 4); mus_g = gain * (1 - (0.74 if EPN == "party" else 0.7)*np.clip(duck, 0, 1)) * (0.30 if EPN == "gym" else 0.32 if EPN in ("dinner", "salon", "gift", "guest", "haircut") else 0.44 if EPN == "party" else 0.34)
 fx = np.zeros((N, 2))
 for c in TL["sfx"]:
     x = SFX[c["n"]]; i = int(c["t"]*SR)
