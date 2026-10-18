@@ -1,0 +1,89 @@
+{
+  "title": "Zombie Outbreak: 30 Days Trapped on a Cruise Ship",
+  "voices": {
+    "N": "narrator — Brian (pilot voice), calm, low",
+    "CAP": "captain on the PA — older male, polite, filtered through ship speakers",
+    "CG": "Coast Guard radio — clipped male, band-passed + static",
+    "R": "Rosa Okafor, chief engineer — tired, sharp, warm underneath",
+    "B": "voice on the bridge — calm, unfamiliar male, filtered PA"
+  },
+  "note": "The hero is 'you' and never speaks. 'reuse' = existing approved Brian take from the pilot (survival/vo).",
+  "scenes": [
+    { "id": "s01", "title": "DAY 1 — The message", "lines": [
+      ["s01_1", "N", "Day one. You're a waiter on a cruise ship. Three thousand passengers. Seven days at sea.", "reuse:l01"],
+      ["s01_2", "N", "Then every phone on board buzzes at once. Stay in your cabins.", "reuse:l02"],
+      ["s01_3", "CAP", "Ladies and gentlemen, this is your captain. Please return to your cabins. We are changing course to the nearest—"],
+      ["s01_4", "N", "And the captain stops talking... mid-sentence.", "reuse:l03"]
+    ]},
+    { "id": "s02", "title": "Deck Five", "lines": [
+      ["s02_1", "N", "On Deck Five, people are walking strangely. Too slowly. And they're coming this way.", "reuse:l04"],
+      ["s02_2", "N", "You learn the most important thing on this ship in the next ten seconds."],
+      ["s02_3", "N", "They don't see you. They hear you."]
+    ]},
+    { "id": "s03", "title": "Rule number one", "lines": [
+      ["s03_1", "N", "Rule number one. Don't run to the lifeboats. Everyone else will.", "reuse:l05"],
+      ["s03_2", "N", "You go down. To the one place nobody thinks about. The galley.", "reuse:l06"]
+    ]},
+    { "id": "s04", "title": "The galley", "lines": [
+      ["s04_1", "N", "Food for three weeks. Water for nine days. And one steel door.", "reuse:l07"],
+      ["s04_2", "N", "You push a cart against the door... and you wait.", "reuse:l09"],
+      ["s04_3", "N", "Rule number two. Be quiet. They follow sound.", "reuse:l08"],
+      ["s04_4", "N", "That night, the engines stop. Nobody tells you why."]
+    ]},
+    { "id": "s05", "title": "DAYS 2–5 — The rhythm", "lines": [
+      ["s05_1", "N", "Day three. You learn the ship's new rhythm."],
+      ["s05_2", "N", "Footsteps above you at noon. Something dragging at midnight. And long, long silences in between."],
+      ["s05_3", "N", "Day five. Someone has been in the cold room."],
+      ["s05_4", "N", "Half your bread is gone. And the infected don't close doors behind them."]
+    ]},
+    { "id": "s06", "title": "DAY 7 — The night visitor", "lines": [
+      ["s06_1", "N", "Day seven. You wait in the dark to see who's stealing your food."],
+      ["s06_2", "N", "Whoever it is... knows this ship better than you do."]
+    ]},
+    { "id": "s07", "title": "DAY 9 — The last bottle", "lines": [
+      ["s07_1", "N", "Day nine. The last bottle of water."],
+      ["s07_2", "N", "The nearest water is the ice machine in the crew mess. Forty steps down a dark corridor."],
+      ["s07_3", "N", "Unfortunately, the ice machine is the loudest thing on this ship."],
+      ["s07_4", "CG", "This is the Coast Guard. All ports are closed. Any vessel carrying infected will not be allowed to reach the coast. We will use force."]
+    ]},
+    { "id": "s08", "title": "Night 10 — The speakers", "lines": [
+      ["s08_1", "N", "That night, the speakers in the ceiling click on."],
+      ["s08_2", "N", "Nobody speaks. Someone is just... listening. Then they click off."]
+    ]},
+    { "id": "s09", "title": "DAY 12 — The light", "lines": [
+      ["s09_1", "N", "Day twelve. Through the porthole... a light. A lighthouse. The ship has drifted toward land."],
+      ["s09_2", "N", "Then, deep below you... the engines start again."],
+      ["s09_3", "N", "And the ship turns away from land."],
+      ["s09_4", "N", "Someone else is alive on this ship. And they don't want to be rescued."]
+    ]},
+    { "id": "s10", "title": "The service tunnel", "lines": [
+      ["s10_1", "N", "You could stay in the galley. Safe. Fed. And blind."],
+      ["s10_2", "N", "Or you could find out who's driving."],
+      ["s10_3", "N", "Rule number two works both ways."]
+    ]},
+    { "id": "s11", "title": "Engine control", "lines": [
+      ["s11_1", "R", "Don't move. Hands where I can see them. Both of them."],
+      ["s11_2", "R", "Where did you get that?"],
+      ["s11_3", "R", "You're the waiter. The one who hums when he's scared."],
+      ["s11_4", "N", "Turns out you weren't as quiet as you thought."],
+      ["s11_5", "R", "Day one, the bridge ordered all stop. Then the line went dead. Nobody's opened that door since."],
+      ["s11_6", "R", "Then the Coast Guard started sinking ships. So every time we drift too close to land... I start the engines and take us back out."],
+      ["s11_7", "N", "So that's who's driving. Not a ghost. A very tired engineer."]
+    ]},
+    { "id": "s12", "title": "DAYS 13–29 — Two survivors", "lines": [
+      ["s12_1", "N", "Two survivors. One kitchen. One engine room."],
+      ["s12_2", "N", "She keeps the ship alive. You keep her fed."],
+      ["s12_3", "N", "Day twenty-nine. Fuel for one more day."],
+      ["s12_4", "R", "Tomorrow we pick a direction. And we don't come back."]
+    ]},
+    { "id": "s13", "title": "DAY 30 — The bridge", "lines": [
+      ["s13_1", "R", "That's not me."],
+      ["s13_2", "R", "Steering just switched to the bridge. Nobody's been up there in thirty days."],
+      ["s13_3", "B", "Engine room. This is the bridge."],
+      ["s13_4", "B", "Thank you for keeping us alive. I'll take it from here."],
+      ["s13_5", "R", "That's not the captain."],
+      ["s13_6", "N", "Thirty days. You survived the outbreak, the hunger and the sea."],
+      ["s13_7", "N", "You found out who was driving. Now you just have to find out where he's taking you."]
+    ]}
+  ]
+}
