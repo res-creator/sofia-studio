@@ -23,3 +23,9 @@ ok spray
 ok boing
 ok crash
 ok tick
+ok thud
+ok hit
+ok riser
+ok music3
+ok music4
+ok musicbox

@@ -107,9 +107,11 @@ function stamp(ctx, t, t0, txt, x, y, o = {}) {
   const u = (t - t0) / 0.22; if (u < 0 || (o.t1 && t > o.t1)) return;
   const col = o.col || '#d6413a', size = o.size || 74, k = 1 + (1 - back(u)) * 1.2, a = clamp(u * 2) * (o.t1 ? clamp((o.t1 - t) / 0.2) : 1);
   ctx.save(); ctx.translate(x, y); ctx.rotate(o.rot ?? -0.08); ctx.scale(k, k); ctx.globalAlpha = a;
-  ctx.font = `${size}px Anton`; const tw = ctx.measureText(txt).width + size * 0.7, th = size * 1.45;
+  ctx.font = `${size}px Anton`; const cw = o.check ? size * 0.9 : 0, tw = ctx.measureText(txt).width + size * 0.7 + cw, th = size * 1.45;
   ctx.fillStyle = o.bg || 'rgba(246,242,228,0.96)'; ctx.fillRect(-tw / 2, -th / 2, tw, th); ctx.lineWidth = size * 0.12; ctx.strokeStyle = col; ctx.strokeRect(-tw / 2 + 6, -th / 2 + 6, tw - 12, th - 12);
-  ctx.fillStyle = col; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(txt, 0, 3); ctx.restore();
+  ctx.fillStyle = col; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(txt, -cw / 2, 3);
+  if (o.check) { const x0 = tw / 2 - size * 0.35 - cw; ctx.lineWidth = size * 0.16; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = col; ctx.beginPath(); ctx.moveTo(x0, 0); ctx.lineTo(x0 + cw * 0.35, size * 0.32); ctx.lineTo(x0 + cw * 0.9, -size * 0.38); ctx.stroke(); }
+  ctx.restore();
 }
 // "DAY N" end card: black, big title slams in, sub line typed under it
 function dayCard(ctx, t, t0, t1, title, sub, o = {}) {
