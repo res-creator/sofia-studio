@@ -100,19 +100,21 @@ function hallway(ctx, S, t, flick) { // the other side of the door, seen through
 }
 
 // ---- characters at time t ----
-function heroAt(S, t) {
-  const sk = S.name, dk = sk === 'D';
+function heroAt(S0, t) {
+  const { S, C } = R.who(S0, 'hero'), v2 = S0.key === 'D2', sk = S0.key || S0.name, dk = S.name === 'D';
+  const legK = (S.thigh + S.shin) / 224, wfade = (a, b) => clamp((t - a) / 0.15) * clamp((b - t) / 0.15);
   if (t < SH.s2) { // shot 1: startled by the knock, then sneaks to the door with the bat ready
     const hop = t > 0.25 && t < 0.75 ? -Math.sin((t - 0.25) / 0.5 * Math.PI) * 34 : 0;
     const x = kf([[0, 1420], [0.85, 1420], [2.25, 1010]], t), walking = t > 0.85 && t < 2.25;
-    const pose = { x, ground: FLOOR, crouch: kf([[0, 0.05], [0.8, 0.45]], t), lean: kf([[0, 0.02], [0.8, 0.22]], t), hop, walk: { w: walking ? 1 : 0, u: (t - 0.85) / 0.75, stride: 120 } };
+    const pose = { x, ground: FLOOR, crouch: kf([[0, 0.05], [0.8, 0.45]], t), lean: kf([[0, 0.02], [0.8, 0.22]], t), hop, walk: v2 ? { w: 1, u: (1420 - x) / 102.5, stride: 102.5 } : { w: walking ? 1 : 0, u: (t - 0.85) / 0.75, stride: 120 } };
     const J0 = R.solve(S, pose);
     const b = P.bat([J0.shN[0] - 30, J0.shN[1] + (dk ? 70 : 110)], kf([[0, -1.9], [0.3, -2.25], [0.9, -2.05]], t) + Math.sin(t * 9) * 0.03, dk ? 250 : 300);
     const J = R.solveGrip(S, pose, { near: b.high, far: b.low }, `${sk} hero s1`);
     const scared = t > 0.25;
-    return { J, bat: b, batHeld: 'both', e: { eyes: scared ? 'wide' : 'open', brow: scared ? 'worried' : 'neutral', mouth: t > 0.25 && t < 0.9 ? 'o' : 'frown', look: [-0.8, -0.1], sweat: t > 0.6 } };
+    return { S, C, J, bat: b, batHeld: 'both', e: { eyes: scared ? 'wide' : 'open', brow: scared ? 'worried' : 'neutral', mouth: t > 0.25 && t < 0.9 ? 'o' : 'frown', look: [-0.8, -0.1], sweat: t > 0.6 } };
   }
   // shots 4-5: at the door
+  if (v2) return heroDoorV2(S, C, t, sk, dk);
   const x = kf([[SH.s4, 830], [15.0, 830], [15.5, 900]], t), walking = t > 15.0 && t < 15.5;
   const pose = { x, ground: FLOOR, crouch: kf([[SH.s4, 0.1], [13.4, 0.1], [13.6, 0.35], [14.6, 0.35], [15.0, 0.05]], t), lean: kf([[SH.s4, 0.05], [12.8, 0.18], [13.3, 0.18], [13.6, 0.3], [14.6, 0.3], [15.0, 0.02]], t),
     walk: { w: walking ? 1 : 0, u: (t - 13.55) / 0.7, stride: 70 }, tilt: t > 15.4 ? 0.12 : 0 };
@@ -129,28 +131,57 @@ function heroAt(S, t) {
   if (t < 12.6) e = Object.assign({ eyes: 'squint', brow: 'flat', mouth: 'flat', look: [0.15, 0] }, v || {});
   else if (t < 15.0) e = { eyes: 'open', brow: 'angry', mouth: 'flat', look: [-0.7, 0.2] };
   else e = { eyes: 'half', brow: 'skeptic', mouth: 'smirk', look: [0.5, 0.1] };
-  return { J, bat: b, batHeld: 'far', knob, chair: ch, e };
+  return { S, C, J, bat: b, batHeld: 'far', knob, chair: ch, e };
+}
+// v2 ending: proud winner -> second knock -> panic (fast)
+const G2 = { back: 14.7, proud: 15.05, knock: 15.85, react: 15.9, end: 17.0 };
+function heroDoorV2(S, C, t, sk, dk) {
+  const x = kf([[SH.s4, 830], [G2.back, 830], [G2.proud, 890]], t);
+  const hop = t > G2.react && t < G2.react + 0.32 ? -Math.sin((t - G2.react) / 0.32 * Math.PI) * 40 : 0;
+  const nod = t > 15.25 && t < 15.75 ? Math.sin((t - 15.25) * Math.PI * 4) * 0.07 : 0;
+  const pose = { x, ground: FLOOR, hop, crouch: kf([[SH.s4, 0.1], [13.4, 0.1], [13.6, 0.35], [14.6, 0.35], [15.0, 0.05], [G2.react, 0.05], [G2.react + 0.2, 0.3]], t),
+    lean: kf([[SH.s4, 0.05], [12.8, 0.2], [13.3, 0.3], [13.6, 0.3], [14.6, 0.3], [15.0, -0.04], [G2.react, -0.04], [G2.react + 0.15, -0.12]], t),
+    walk: { w: 1, u: (830 - x) / 60, stride: 60 }, tilt: nod };
+  const J0 = R.solve(S, pose);
+  // bat: hanging -> on the shoulder (proud) -> both hands, defensive (panic)
+  const hang = { K: [J0.shF[0] + 10, J0.shF[1] + S.ua + S.fa - 60], a: 1.62 }, shoulder = { K: [J0.shF[0] - 40, J0.shF[1] + 50], a: -0.8 }, guard = { K: [J0.shN[0] - 26, J0.shN[1] + 80], a: -2.15 };
+  const mixB = (p, q, u) => ({ K: A(p.K, q.K, u), a: lerp(p.a, q.a, u) });
+  let bs = hang; if (t > G2.proud) bs = mixB(hang, shoulder, back(clamp((t - G2.proud) / 0.25))); if (t > G2.react) bs = mixB(shoulder, guard, back(clamp((t - G2.react) / 0.18)));
+  const b = P.bat(bs.K, bs.a, dk ? 250 : 300), both = t > G2.react + 0.06;
+  let near = null, knob = kf([[SH.s4, [645, 469]], [12.85, [645, 469]], [13.3, [592, 469]]], t), ch = chairAt(t), bendNear;
+  if (t > 12.7 && t < 13.4) near = knob; else if (t >= 13.45 && t < 14.65) near = ch.rail;
+  else if (t > G2.proud + 0.1 && t < G2.react) { near = [J0.hip[0] - 40, J0.hip[1] - 30]; bendNear = 1; }   // hand on hip
+  else if (both) near = b.high;
+  const J = R.solveGrip(S, Object.assign(pose, { bendNear }), { near, far: b.low }, `${sk} hero s5`);
+  const v = viseme('d2d', t);
+  let e;
+  if (t < 12.6) e = Object.assign({ eyes: 'squint', brow: 'flat', mouth: 'flat', look: [0.15, 0] }, v || {});
+  else if (t < 15.0) e = { eyes: 'open', brow: 'angry', mouth: 'flat', look: [-0.7, 0.2] };
+  else if (t < G2.react) e = { eyes: t > 15.2 && t < 15.6 ? 'happy' : 'half', brow: Math.floor(t * 6) % 2 && t > 15.55 ? 'up' : 'skeptic', mouth: 'biggrin', look: [0.6, 0.1] };
+  else e = { eyes: 'tiny', brow: 'worried', mouth: 'wide', open: 1, look: [-0.9, 0], sweat: 1, hairUp: 1 };
+  const headScale = t > G2.react && t < G2.react + 0.3 ? 1 + 0.2 * (1 - (t - G2.react) / 0.3) : 1;
+  return { S, C, J, bat: b, batHeld: both ? 'both' : 'far', knob, chair: ch, e, headScale };
 }
 function chairAt(t) { const u = ease((t - 13.7) / 0.8); return P.chair(lerp(650, 596, u), FLOOR, lerp(0, -0.17, u)); }
-function garyAt(S, t) {
-  const sk = S.name, dk = sk === 'D';
+function garyAt(S0, t) {
+  const { S, C } = R.who(S0, 'gary'), sk = S0.key || S0.name, dk = S.name === 'D';
   const pose = { x: 990, ground: FLOOR, lean: 0.06, tilt: t > SH.s3 ? kf([[SH.s3, 0], [11.0, -0.16]], t) : Math.sin(t * 1.3) * 0.03 };
   const J0 = R.solve(S, pose);
   const up = clamp((t - 6.2) / 0.5);
   const m = P.mug(A([J0.shN[0] - 70, J0.shN[1] + (dk ? 180 : 210)], [J0.shN[0] - 120, J0.shN[1] + 20], ease(up)), dk ? 1.05 : 1);
   const waving = t < 5.0;
-  const reach = S.ua + S.fa, farT = waving ? [J0.shF[0] - reach * 0.5, J0.shF[1] - reach * 0.72 + Math.sin(t * 14) * 10] : [J0.shF[0] + 4, J0.shF[1] + S.ua + S.fa - 24];
+  const reach = S.ua + S.fa, farT = waving ? [J0.shF[0] - reach * (S0.key === 'D2' ? 0.86 : 0.5), J0.shF[1] - reach * (S0.key === 'D2' ? 0.3 : 0.72) + Math.sin(t * 14) * 10] : [J0.shF[0] + 4, J0.shF[1] + S.ua + S.fa - 24];
   const J = R.solveGrip(S, pose, { near: m.grip, far: waving ? farT : null }, `${sk} gary`);
   const v = viseme('d2b', t);
   const e = Object.assign({ eyes: t > SH.s3 ? 'wide' : 'open', brow: t > SH.s3 ? 'up' : 'up', mouth: 'grin', open: 0, look: [-0.2, 0.15], blood: 1, twitch: t > SH.s3 && (Math.floor(t * 7) % 5 === 0) }, v || {});
-  return { J, mug: m, waving, e };
+  return { S, C, J, mug: m, waving, e };
 }
 
 // ---- shots ----
-function drawHero(ctx, S, h, t) {
-  const C = R.CAST.hero[S.name];
-  if (h.batHeld === 'both') R.drawChar(ctx, S, C, h.J, h.e, { farFront: true, hold: c => P.drawBat(c, S, h.bat), t });
-  else R.drawChar(ctx, S, C, h.J, h.e, { underFar: c => P.drawBat(c, S, h.bat), t });
+function drawHero(ctx, S0, h, t) {
+  const S = h.S, C = h.C;
+  if (h.batHeld === 'both') R.drawChar(ctx, S, C, h.J, h.e, { farFront: true, hold: c => P.drawBat(c, S, h.bat), t, headScale: h.headScale });
+  else R.drawChar(ctx, S, C, h.J, h.e, { underFar: c => P.drawBat(c, S, h.bat), t, headScale: h.headScale });
 }
 function frame(ctx, S, t) {
   ctx.save(); ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
@@ -164,7 +195,7 @@ function frame(ctx, S, t) {
     const g = garyAt(S, t), hy = g.J.head[1], hx = g.J.head[0];
     shot(ctx, t, s3 ? [[SH.s3, hx - 10, hy + 40, 3.0], [SH.s3 + 0.9, hx - 20, hy + 10, 3.6, true]] : [[SH.s2, hx - 40, hy + 120, 1.85], [6.2, hx - 60, hy + 110, 2.3, true]], s3 ? 0.07 : 0);
     hallway(ctx, S, t, flick);
-    R.drawChar(ctx, S, R.CAST.gary[S.name], g.J, g.e, { farFront: !g.waving, farHand: g.waving ? 'wave' : 'fist', holdNear: c => P.drawMug(c, S, g.mug), t });
+    R.drawChar(ctx, g.S, g.C, g.J, g.e, { farFront: !g.waving, farHand: g.waving ? 'wave' : 'fist', holdNear: c => P.drawMug(c, g.S, g.mug), t });
     if (flick < 1) { ctx.fillStyle = 'rgba(0,0,0,0.55)'; ctx.fillRect(-500, -500, W + 1000, H + 1000); }
     ctx.restore();
     const vg = ctx.createRadialGradient(960, 540, 260, 960, 540, 500); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,0.92)'); ctx.fillStyle = vg; ctx.beginPath(); ctx.arc(960, 540, 501, 0, 7); ctx.fill();
@@ -173,10 +204,13 @@ function frame(ctx, S, t) {
     const h = heroAt(S, t);
     ctx.save();
     if (t < SH.s5) shot(ctx, t, [[SH.s4, h.J.head[0] + 30, h.J.head[1] + 30, 3.0], [11.75, h.J.head[0] + 25, h.J.head[1] + 15, 3.5, true]]);
+    else if (S.key === 'D2') { shot(ctx, t, [[SH.s5, 800, 570, 1.35], [13.45, 770, 590, 1.42, true], [15.0, 850, 560, 1.4, true], [G2.react - 0.02, h.J.head[0] + 30, h.J.head[1] + 70, 2.0, true]]);
+      if (t > G2.knock && t < G2.knock + 0.4) shake(ctx, t, 14); else if (t > G2.react + 0.3) shake(ctx, t, 3); }
     else shot(ctx, t, [[SH.s5, 800, 570, 1.35], [13.45, 770, 590, 1.42, true], [15.0, 840, 560, 1.4, true]]);
     room(ctx, S, t, { feet: true }); chain(ctx, S, h.knob); P.drawChair(ctx, S, h.chair); drawHero(ctx, S, h, t); night(ctx, S, t);
     ctx.restore();
   }
   ctx.restore();
 }
-module.exports = { frame, SH, VO, W, H };
+const endT = S => S.key === 'D2' ? G2.end : SH.end;
+module.exports = { frame, SH, VO, W, H, G2, endT };

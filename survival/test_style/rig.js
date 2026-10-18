@@ -26,12 +26,23 @@ const SKINS = {
     headR: 82, neck: 14, torso: 172, thigh: 116, shin: 108, ankle: 12, foot: 70, ua: 108, fa: 104, shW: 26, limbW: 1.12,
     eyeR: 0.36, eyeY: -0.08, eyeNear: -0.06, eyeFar: -0.66, glassR: 1.2, mouthX: -0.42, mouthY: 0.58, mouthW: 0.52, noseK: 1.6 },
 };
+SKINS.D2 = Object.assign({}, SKINS.D, { key: 'D2', soft: true });
 const CAST = {
   hero: { A: { skin: '#e9b98f', top: '#d9a02e', top2: '#b9821c', pants: '#34405a', shoe: '#ece8e0', sole: '#9a958c', hair: '#3a2a20', glasses: true, hood: true },
           D: { skin: '#f6c99c', top: '#f0aa22', top2: '#d38c10', pants: '#3f62b0', shoe: '#ffffff', sole: '#b9b4ab', hair: '#5a3418', glasses: true, hood: true } },
   gary: { A: { skin: '#b9c39d', top: '#e6e1d3', top2: '#c9c2ae', pants: '#6a5640', shoe: '#5a4a3a', sole: '#3a3028', hair: '#6d6250', bald: true, belly: 1, stain: true, arm: 'skin', wide: 1.3 },
           D: { skin: '#bccb8f', top: '#f2eee2', top2: '#d6cfba', pants: '#8a6a45', shoe: '#6a5236', sole: '#3a3028', hair: '#7a6a55', bald: true, belly: 1, stain: true, arm: 'skin', wide: 1.3 } },
 };
+// D2: per-character proportions (bone lengths / limb thickness) on the same skeleton code
+CAST.hero.D2 = Object.assign({}, CAST.hero.D, { prop: { headR: 86, neck: 12, torso: 170, thigh: 104, shin: 98, ua: 100, fa: 96, shW: 30, limbW: 1.28, foot: 80 } });
+const GARY2 = { headR: 84, neck: 4, torso: 156, ua: 94, fa: 90, shW: 30, limbW: 1.34, foot: 84 };
+CAST.gary.D2_10 = Object.assign({}, CAST.gary.D, { wide: 1.42, belly: 1.4, belt: true, prop: Object.assign({ thigh: 104, shin: 97 }, GARY2) });
+CAST.gary.D2_20 = Object.assign({}, CAST.gary.D, { wide: 1.42, belly: 1.4, belt: true, prop: Object.assign({ thigh: 93, shin: 86 }, GARY2) });
+// skin + cast entry for a character, with the character's own proportions merged in
+function who(S, name) {
+  const key = S.key || S.name, C = CAST[name][key + (name === 'gary' && S.garyVar ? '_' + S.garyVar : '')] || CAST[name][key] || CAST[name][S.name];
+  return { S: C.prop ? Object.assign({}, S, C.prop) : S, C };
+}
 function shade(c, k) { const v = [1, 3, 5].map(i => Math.round(parseInt(c.slice(i, i + 2), 16) * k)); return '#' + v.map(x => Math.min(255, x).toString(16).padStart(2, '0')).join(''); }
 
 // ---- pose -> joints ------------------------------------------------------------------------------
@@ -113,14 +124,15 @@ function face(ctx, S, C, R, e) {
   const ink = S.ink, D = S.name === 'D';
   const eye = (cx, sc, near) => {
     const ex = cx * R, ey = S.eyeY * R, rx = S.eyeR * R * sc, ry = S.eyeR * R * (D ? 1.08 : 1.15);
-    let open = { open: 1, wide: 1.25, squint: 0.35, closed: 0, half: 0.55 }[e.eyes || 'open'];
+    if (e.eyes === 'happy') { line(ctx, [[ex - rx, ey + ry * 0.2], [ex, ey - ry * 0.45], [ex + rx, ey + ry * 0.2]], S.lw * 1.2, ink); return [ex, ey, rx, ry]; }
+    let open = { open: 1, wide: 1.25, squint: 0.35, closed: 0, half: 0.55, tiny: 1.3 }[e.eyes || 'open'];
     if (e.twitch && near) open *= 0.55;
     const W = rx * (e.eyes === 'wide' ? 1.12 : 1), H = ry * (e.eyes === 'wide' ? 1.15 : 1);
     if (open > 0.02) {
       ctx.save(); ctx.beginPath(); ctx.ellipse(ex, ey, W, H, 0, 0, 7); ctx.fillStyle = '#fbfaf6'; ctx.fill(); ctx.lineWidth = S.lw * 0.9; ctx.strokeStyle = ink; ctx.stroke();
       ctx.clip();
       if (e.blood) { ctx.strokeStyle = '#d0453c'; ctx.lineWidth = 2; for (let i = 0; i < 5; i++) { const a = i * 1.3; ctx.beginPath(); ctx.moveTo(ex + Math.cos(a) * W, ey + Math.sin(a) * H); ctx.lineTo(ex + Math.cos(a) * W * 0.45, ey + Math.sin(a + 0.4) * H * 0.45); ctx.stroke(); } }
-      const lk = e.look || [-0.4, 0], pr = (D ? 0.36 : 0.5) * Math.min(W, H) * (e.eyes === 'wide' ? 0.7 : 1);
+      const lk = e.look || [-0.4, 0], pr = (D ? 0.36 : 0.5) * Math.min(W, H) * (e.eyes === 'wide' ? 0.7 : e.eyes === 'tiny' ? 0.32 : 1);
       ctx.beginPath(); ctx.arc(ex + lk[0] * W * 0.45, ey + lk[1] * H * 0.4, pr, 0, 7); ctx.fillStyle = ink; ctx.fill();
       ctx.beginPath(); ctx.arc(ex + lk[0] * W * 0.45 + pr * 0.35, ey + lk[1] * H * 0.4 - pr * 0.35, pr * 0.28, 0, 7); ctx.fillStyle = '#fff'; ctx.fill();
       // eyelids (skin) for squint/half
@@ -148,6 +160,9 @@ function face(ctx, S, C, R, e) {
     const oo = Math.max(o, { o: 0.6, wide: 0.9, small: 0.3 }[m] || 0), round = m === 'o';
     ctx.beginPath(); ctx.ellipse(mx, my + oo * R * 0.06, round ? mw * 0.3 : mw * (0.45 + oo * 0.15), R * (0.04 + oo * 0.16), 0, 0, 7); ctx.fillStyle = dark; ctx.fill(); ctx.stroke();
     ctx.save(); ctx.clip(); ctx.fillStyle = '#fff'; ctx.fillRect(mx - mw, my - R * 0.25, mw * 2, R * 0.08 + R * 0.12); ctx.fillStyle = '#d9686a'; ctx.beginPath(); ctx.ellipse(mx, my + R * (0.12 + oo * 0.1), mw * 0.3, R * 0.06, 0, 0, 7); ctx.fill(); ctx.restore();
+  } else if (m === 'biggrin') {
+    ctx.beginPath(); ctx.moveTo(mx - mw * 0.95, my - R * 0.14); ctx.quadraticCurveTo(mx - mw * 0.1, my + R * 0.42, mx + mw * 0.75, my - R * 0.18); ctx.quadraticCurveTo(mx, my + R * 0.04, mx - mw * 0.95, my - R * 0.14); ctx.fillStyle = '#fbfaf2'; ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(mx - mw * 0.8, my - R * 0.03); ctx.quadraticCurveTo(mx, my + R * 0.1, mx + mw * 0.62, my - R * 0.08); ctx.lineWidth = S.lw * 0.45; ctx.stroke();
   } else if (m === 'grin' || m === 'teeth') {
     ctx.beginPath(); ctx.moveTo(mx - mw * 0.75, my - R * 0.06); ctx.quadraticCurveTo(mx, my + R * 0.32, mx + mw * 0.6, my - R * 0.1); ctx.quadraticCurveTo(mx, my + R * 0.08, mx - mw * 0.75, my - R * 0.06); ctx.fillStyle = '#fbfaf2'; ctx.fill(); ctx.stroke();
     ctx.lineWidth = S.lw * 0.45; for (let i = -2; i <= 2; i++) { ctx.beginPath(); ctx.moveTo(mx + i * mw * 0.22, my); ctx.lineTo(mx + i * mw * 0.22, my + R * 0.14 - Math.abs(i) * R * 0.03); ctx.stroke(); }
@@ -162,7 +177,7 @@ function face(ctx, S, C, R, e) {
 }
 function head(ctx, S, C, at, tilt, e) {
   const R = S.headR, D = S.name === 'D';
-  ctx.save(); ctx.translate(...at); ctx.rotate(tilt);
+  ctx.save(); ctx.translate(...at); ctx.rotate(tilt); if (e.headScale) ctx.scale(1 / e.headScale, e.headScale);
   // ear
   paint(ctx, S, c => c.ellipse(R * 0.42, R * 0.06, R * 0.13, R * 0.2, 0, 0, 7), C.skin);
   // skull + jaw (3/4 left)
@@ -175,7 +190,8 @@ function head(ctx, S, C, at, tilt, e) {
   else {
     paint(ctx, S, c => { c.moveTo(-R * 0.92, -R * 0.22); c.quadraticCurveTo(-R * 1.02, -R * 1.18, R * 0.08, -R * 1.16); c.quadraticCurveTo(R * 1.06, -R * 1.12, R * 0.96, -R * 0.1); c.lineTo(R * 0.7, R * 0.04); c.lineTo(R * 0.62, -R * 0.4);
       c.quadraticCurveTo(R * 0.2, -R * 0.62, -R * 0.2, -R * 0.56); c.lineTo(-R * 0.34, -R * 0.74); c.lineTo(-R * 0.5, -R * 0.5); c.lineTo(-R * 0.7, -R * 0.62); c.closePath(); }, C.hair, { k: 0.7 });
-    paint(ctx, S, c => { c.moveTo(-R * 0.1, -R * 1.08); c.lineTo(R * 0.06, -R * 1.42); c.lineTo(R * 0.26, -R * 1.06); c.moveTo(R * 0.36, -R * 1.04); c.lineTo(R * 0.64, -R * 1.3); c.lineTo(R * 0.66, -R * 0.94); }, C.hair, { k: 0.7 });
+    { const hu = e.hairUp || 0; paint(ctx, S, c => { c.moveTo(-R * 0.1, -R * 1.08); c.lineTo(R * (0.06 - hu * 0.1), -R * (1.42 + hu * 0.45)); c.lineTo(R * 0.26, -R * 1.06); c.moveTo(R * 0.36, -R * 1.04); c.lineTo(R * (0.64 + hu * 0.05), -R * (1.3 + hu * 0.45)); c.lineTo(R * 0.66, -R * 0.94);
+      if (hu > 0) { c.moveTo(-R * 0.55, -R * 0.9); c.lineTo(-R * 0.7, -R * (1.1 + hu * 0.4)); c.lineTo(-R * 0.3, -R * 1.02); } }, C.hair, { k: 0.7 }); }
   }
   face(ctx, S, C, R, e);
   ctx.restore();
@@ -203,17 +219,27 @@ function drawChar(ctx, S, C, J, e, o = {}) {
   const B = (C.belly ? 1.25 : 1), T = tl, sw = (S.shW + 18) * (C.wide || 1);
   const torso = c => { c.moveTo(-sw * 1.25, -T + 8); c.quadraticCurveTo(0, -T - 22, sw * 1.25, -T + 4); c.quadraticCurveTo(sw * 1.5, -T * 0.55, sw * 1.15 * B, -T * 0.25); c.quadraticCurveTo(sw * 1.25 * B, 10, sw * 0.9, 16);
     c.lineTo(-sw * 0.9, 16); c.quadraticCurveTo(-sw * 1.35 * B, 6, -sw * 1.2 * B, -T * 0.3); c.quadraticCurveTo(-sw * 1.45, -T * 0.6, -sw * 1.25, -T + 8); c.closePath(); };
-  paint(ctx, S, torso, C.top);
-  ctx.save(); ctx.beginPath(); torso(ctx); ctx.clip();
+  const soft = c => { const b = C.belly || 1, bw = sw * (C.belly ? 1.0 : 0.95);
+    c.moveTo(-sw * 0.5, -T - 6); c.quadraticCurveTo(-sw * 1.2, -T - 4, -sw * 1.22, -T + 30);           // front shoulder
+    c.quadraticCurveTo(-sw * 1.18 * b, -T * 0.55, -sw * 1.22 * b, -T * 0.28);                             // chest -> belly (front)
+    c.quadraticCurveTo(-sw * 1.25 * b, 6, -bw * 0.95, 20);                                                 // belly -> hip front
+    c.quadraticCurveTo(0, 30, bw * 0.95, 18);                                                              // hem
+    c.quadraticCurveTo(sw * 1.12, -T * 0.25, sw * 1.05, -T * 0.6);                                       // back
+    c.quadraticCurveTo(sw * 1.2, -T - 2, sw * 0.4, -T - 8); c.quadraticCurveTo(0, -T - 12, -sw * 0.5, -T - 6); c.closePath()
+    if (C.belly > 1) { c.moveTo(-sw * 0.35 + sw * 1.2, -T * 0.42); c.ellipse(-sw * 0.35, -T * 0.42, sw * 1.2, T * 0.3, 0, 0, 7); } };
+  const body = S.soft ? soft : torso;
+  paint(ctx, S, body, C.top);
+  ctx.save(); ctx.beginPath(); body(ctx); ctx.clip();
   if (C.hood) { ctx.fillStyle = C.top2; ctx.fillRect(-sw * 2, -4, sw * 4, 30); line(ctx, [[-sw * 0.5, -T + 14], [-sw * 0.6, -T * 0.62]], 4, '#f4efe4'); line(ctx, [[-sw * 0.15, -T + 12], [-sw * 0.2, -T * 0.64]], 4, '#f4efe4');
     ctx.beginPath(); ctx.roundRect(-sw * 1.05, -T * 0.38, sw * 1.6, T * 0.26, 10); ctx.lineWidth = S.lw * 0.6; ctx.strokeStyle = S.ink; ctx.stroke(); }
+  if (C.belt) { ctx.fillStyle = C.pants; ctx.fillRect(-sw * 2, 2, sw * 4, 40); ctx.fillStyle = '#3a2a1e'; ctx.fillRect(-sw * 2, 0, sw * 4, 12); ctx.fillStyle = '#d9b860'; ctx.fillRect(-sw * 1.05, -1, 18, 14); }
   if (C.stain) { ctx.fillStyle = 'rgba(140,60,40,0.4)'; ctx.beginPath(); ctx.ellipse(-sw * 0.3, -T * 0.42, 22, 14, 0.4, 0, 7); ctx.fill(); ctx.beginPath(); ctx.ellipse(sw * 0.2, -T * 0.18, 12, 9, 0, 0, 7); ctx.fill(); }
   ctx.restore();
   if (C.hood) paint(ctx, S, c => { c.moveTo(-sw * 0.2, -T - 6); c.quadraticCurveTo(sw * 0.9, -T - 46, sw * 1.35, -T + 6); c.quadraticCurveTo(sw * 0.9, -T + 18, sw * 0.3, -T + 6); c.closePath(); }, C.top2);
   ctx.restore();
   // neck + head
   paint(ctx, S, c => cap(c, J.neck, add(J.neck, rot([0, -S.neck - 10], -J.ht)), 12 * k + (S.name === 'D' ? 2 : 0), 12 * k), C.skin);
-  head(ctx, S, C, J.head, -J.ht + (o.headRot || 0), Object.assign({ t: o.t }, e));
+  head(ctx, S, C, J.head, -J.ht + (o.headRot || 0), Object.assign({ t: o.t, headScale: o.headScale }, e));
   if (o.farFront) { limb(ctx, S, J.shF, J.eF, J.wF, armW * 1.1, armW, armW * 0.85, far.armCol); }
   if (o.hold) o.hold(ctx, 'mid');
   if (o.farFront) hand(ctx, S, far, J.eF, J.wF, o.farHand || 'fist', o.t);
@@ -230,4 +256,4 @@ function solveGrip(S, pose, grips = {}, tag) {
   for (const [k, sh] of [['near', J0.shN], ['far', J0.shF]]) if (grips[k]) { const g = grips[k], d = sub(g, sh), l = len(d) || 1; P[k] = [g[0] - d[0] / l * r, g[1] - d[1] / l * r]; }
   return solve(S, P, tag);
 }
-module.exports = { solveGrip, SKINS, CAST, solve, drawChar, paint, cap, line, shade, lerp, clamp, add, sub, rot, len, QA };
+module.exports = { who, solveGrip, SKINS, CAST, solve, drawChar, paint, cap, line, shade, lerp, clamp, add, sub, rot, len, QA };

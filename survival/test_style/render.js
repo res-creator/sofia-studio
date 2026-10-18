@@ -2,10 +2,10 @@
 const { createCanvas } = require('../node_modules/@napi-rs/canvas'); require('../lib');
 const { spawn } = require('child_process');
 const R = require('./rig'), SC = require('./scene');
-const { W, H, VO, SH } = SC, FPS = 30, T = SH.end;
-const S = R.SKINS[process.argv[2]];
+const { W, H, VO, SH } = SC, FPS = 30;
+const S = Object.assign({}, R.SKINS[process.argv[2]], { garyVar: process.env.GARY || '20' }), V2 = S.key === 'D2', T = SC.endT(S);
 // captions from the voice alignments (tags like [whispers] removed)
-const SPK = { d2b: '#c9a7ff', d2c: '#ffffff', d2d: '#ffd23f' };
+const SPK = { d2b: process.argv[2] === 'D2' ? '#d9c4ff' : '#c9a7ff', d2c: '#ffffff', d2d: '#ffd23f' };
 const CH = [];
 for (const id of Object.keys(VO)) {
   const a = require(`./vo/${id}.align.json`); let cur = '', ws = 0, we = 0, depth = 0; const words = [];
@@ -15,7 +15,36 @@ for (const id of Object.keys(VO)) {
   let g = []; words.forEach((w, i) => { g.push(w); if (/[.!?,]$/.test(w.w) || g.length === 3 || i === words.length - 1) { CH.push(Object.assign(g, { col: SPK[id] })); g = []; } });
 }
 CH.forEach((c, i) => { c.t0 = c[0].t0 - 0.05; c.t1 = i + 1 < CH.length ? Math.min(CH[i + 1][0].t0 - 0.05, c[c.length - 1].t1 + 0.6) : c[c.length - 1].t1 + 0.6; });
+// v2 captions: phrase-sized chunks (merged short sentences), up to two balanced lines, bigger text, kept away from the action
+const C2 = [];
+for (const id of Object.keys(VO)) {
+  const words = CH.filter(c => c.col === SPK[id]).flat(); let sent = [], groups = [];
+  words.forEach((w, i) => { sent.push(w); if (/([.!?]|\.\.\.)$/.test(w.w) || i === words.length - 1) { groups.push(sent); sent = []; } });
+  const out = []; for (const g of groups) { const last = out[out.length - 1], txt = a => a.map(w => w.w).join(' ');
+    if (last && (txt(last) + ' ' + txt(g)).length <= 30) last.push(...g); else out.push([...g]); }
+  for (const g of out) C2.push(Object.assign(g, { col: SPK[id] }));
+}
+C2.forEach((c, i) => { c.t0 = c[0].t0 - 0.05; c.t1 = i + 1 < C2.length ? Math.min(C2[i + 1][0].t0 - 0.05, c[c.length - 1].t1 + 0.7) : c[c.length - 1].t1 + 0.7;
+  const L = c.map(w => w.w).join(' ').length; let best = c.length, diff = 1e9;
+  if (L > 18) for (let k = 1; k < c.length; k++) { const a = c.slice(0, k).map(w => w.w).join(' ').length, d = Math.abs(a - (L - a - 1)) - (/[.!?,]$/.test(c[k - 1].w) ? 8 : 0); if (d < diff) { diff = d; best = k; } }
+  c.lines = best < c.length ? [c.slice(0, best), c.slice(best)] : [c]; });
+function captionV2(ctx, t) {
+  const c = C2.find(c => t >= c.t0 && t < c.t1); if (!c) return;
+  const top = t >= SH.s5, n = c.lines.length, lh = 112, size = 100;
+  const y0 = top ? 100 : 975 - (n - 1) * lh;
+  const pop = Math.min(1, 1.15 - 0.15 * R.clamp((t - c.t0) / 0.12));
+  ctx.save(); ctx.font = `${size}px Anton`; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+  c.lines.forEach((ln, li) => {
+    const words = ln.map(w => w.w.toUpperCase()), sp = 26, ws = words.map(w => ctx.measureText(w).width), tot = ws.reduce((a, b) => a + b, 0) + sp * (words.length - 1);
+    let x = W / 2 - tot / 2;
+    words.forEach((w, i) => { const on = t >= ln[i].t0 - 0.03; ctx.save(); ctx.translate(x + ws[i] / 2, y0 + li * lh); ctx.scale(pop, pop); ctx.textAlign = 'center';
+      ctx.shadowColor = 'rgba(0,0,0,0.65)'; ctx.shadowBlur = 16; ctx.shadowOffsetY = 5; ctx.lineWidth = 20; ctx.strokeStyle = '#0b0c0f'; ctx.strokeText(w, 0, 0);
+      ctx.shadowColor = 'transparent'; ctx.fillStyle = on ? c.col : 'rgba(235,235,235,0.9)'; ctx.fillText(w, 0, 0); ctx.restore(); x += ws[i] + sp; });
+  });
+  ctx.restore();
+}
 function caption(ctx, t) {
+  if (V2) return captionV2(ctx, t);
   const c = CH.find(c => t >= c.t0 && t < c.t1); if (!c) return;
   const words = c.map(w => w.w.toUpperCase());
   ctx.save(); ctx.font = '88px Anton'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
@@ -31,7 +60,8 @@ function frame(ctx, t) {
   const v = ctx.createRadialGradient(W / 2, H / 2, H * 0.45, W / 2, H / 2, H); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,0.45)'); ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
   ctx.drawImage(grain, -(Math.floor(t * 24) % 4) * 41, -(Math.floor(t * 24) % 3) * 29);
   // humour beat at the end
-  if (t > 15.2) { const u = R.clamp((t - 15.2) / 0.2), k = 1 + (1 - u) * 0.8; ctx.save(); ctx.translate(1500, 130); ctx.rotate(0.05); ctx.scale(k, k); ctx.globalAlpha = u;
+  const lt0 = V2 ? 15.3 : 15.2;
+  if (t > lt0 && (!V2 || t < SC.G2.knock)) { const u = R.clamp((t - lt0) / 0.2), k = 1 + (1 - u) * 0.8; ctx.save(); if (V2) ctx.translate(560, 150); else ctx.translate(1500, 130); ctx.rotate(V2 ? -0.05 : 0.05); ctx.scale(k, k); ctx.globalAlpha = u;
     ctx.font = '62px Anton'; const tw = ctx.measureText('HOME SECURITY: MAXIMUM').width + 50; ctx.lineWidth = 9; ctx.strokeStyle = '#3fae63'; ctx.strokeRect(-tw / 2, -52, tw, 100); ctx.fillStyle = '#3fae63'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('HOME SECURITY: MAXIMUM', 0, 2); ctx.restore(); }
   caption(ctx, t);
   if (t < 0.25) { ctx.fillStyle = `rgba(0,0,0,${1 - t / 0.25})`; ctx.fillRect(0, 0, W, H); }
