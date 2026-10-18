@@ -1,0 +1,27 @@
+{"ep":"london","style":"v1","layout":"v1","samples":578,"issues":26,"critical":1,"major":13,"minor":12}
+  critical face_covered_by_bubble       112.25-121.50s listener,speaker
+  major    crop_feet_ankles             50.00-58.25s 
+  major    crop_feet_ankles             50.00-58.25s 
+  major    crop_feet_ankles             16.75-23.25s 
+  major    crop_feet_ankles             16.75-23.25s 
+  major    face_covered_by_bubble       59.75-65.50s speaker,listener
+  major    face_covered_by_bubble       87.25-92.75s speaker
+  major    crop_feet_ankles             130.00-135.25s 
+  major    crop_feet_ankles             130.00-135.25s 
+  major    face_covered_by_bubble       121.50-122.50s listener
+  major    crop_feet_ankles             126.00-126.75s 
+  major    crop_feet_ankles             12.50-13.00s 
+  major    crop_feet_ankles             12.50-13.00s 
+  major    bubble_covered               16.75-17.25s 
+  minor    crop_knees                   65.50-85.75s 
+  minor    crop_knees                   65.50-85.75s 
+  minor    face_covered_by_card         69.75-85.50s listener
+  minor    crop_knees                   98.00-111.00s 
+  minor    crop_knees                   98.00-111.00s 
+  minor    face_covered_by_card         98.50-110.75s listener
+  minor    crop_knees                   30.50-40.75s 
+  minor    bubble_too_long              112.25-122.25s 
+  minor    face_covered_by_card         50.00-58.00s listener
+  minor    face_covered_by_card         16.75-23.00s listener
+  minor    face_covered_by_card         16.75-23.00s listener
+  minor    crop_knees                   121.50-126.50s 

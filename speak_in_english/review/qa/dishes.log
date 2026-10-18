@@ -1,0 +1,30 @@
+{"ep":"dishes","style":"v1","layout":"v1","samples":457,"issues":29,"critical":12,"major":14,"minor":3}
+  critical face_covered_by_bubble       80.75-94.00s speaker,listener
+  critical face_covered_by_card         70.00-79.25s listener
+  critical face_covered_by_card         70.00-79.25s listener
+  critical face_covered_by_card         24.25-32.00s listener
+  critical face_covered_by_card         24.25-32.00s listener
+  critical face_covered_by_card         53.25-60.75s listener
+  critical face_covered_by_card         53.25-60.75s listener
+  critical face_covered_by_card         12.25-17.50s listener
+  critical face_covered_by_card         12.25-17.50s listener
+  critical face_covered_by_card         40.25-45.50s listener
+  critical face_covered_by_card         40.25-45.50s listener
+  critical bubble_covered               12.25-12.75s 
+  major    crop_feet_ankles             80.75-93.75s 
+  major    crop_feet_ankles             80.75-93.75s 
+  major    crop_feet_ankles             62.25-69.25s 
+  major    crop_feet_ankles             62.25-69.25s 
+  major    crop_feet_ankles             33.50-39.75s 
+  major    crop_feet_ankles             33.50-39.75s 
+  major    crop_feet_ankles             47.00-52.50s 
+  major    crop_feet_ankles             47.00-52.50s 
+  major    crop_feet_ankles             6.75-12.00s 
+  major    crop_feet_ankles             6.75-12.00s 
+  major    crop_feet_ankles             18.75-23.75s 
+  major    crop_feet_ankles             18.75-23.75s 
+  major    crop_feet_ankles             95.75-97.50s 
+  major    crop_feet_ankles             95.75-97.50s 
+  minor    bubble_too_long              80.75-93.75s 
+  minor    face_covered_by_card         103.00-106.75s listener
+  minor    face_covered_by_card         103.00-106.75s listener

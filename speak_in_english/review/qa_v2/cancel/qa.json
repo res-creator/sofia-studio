@@ -1,0 +1,146 @@
+{
+ "summary": {
+  "ep": "cancel",
+  "style": "v2",
+  "layout": "v2",
+  "samples": 479,
+  "issues": 11,
+  "critical": 0,
+  "major": 6,
+  "minor": 5
+ },
+ "issues": [
+  {
+   "ep": "cancel",
+   "type": "face_covered_by_window",
+   "key": "1|1480|#F7B6CF",
+   "start": 41.25,
+   "end": 46.25,
+   "n": 21,
+   "sev": "major",
+   "max": 0.9381443298969072,
+   "info": "listener",
+   "dur": 5.25
+  },
+  {
+   "ep": "cancel",
+   "type": "face_covered_by_bubble",
+   "key": "1|1480|#F7B6CF",
+   "start": 10.25,
+   "end": 14.25,
+   "n": 17,
+   "sev": "major",
+   "max": 0.6185567010309279,
+   "info": "listener",
+   "dur": 4.25
+  },
+  {
+   "ep": "cancel",
+   "type": "face_covered_by_bubble",
+   "key": "1|1480|#F7B6CF",
+   "start": 36.25,
+   "end": 40,
+   "n": 16,
+   "sev": "major",
+   "max": 0.845360824742268,
+   "info": "listener",
+   "dur": 4
+  },
+  {
+   "ep": "cancel",
+   "type": "face_covered_by_bubble",
+   "key": "1|1480|#F7B6CF",
+   "start": 51,
+   "end": 53.75,
+   "n": 12,
+   "sev": "major",
+   "max": 0.6185567010309279,
+   "info": "listener",
+   "dur": 3
+  },
+  {
+   "ep": "cancel",
+   "type": "face_covered_by_bubble",
+   "key": "2|1720|#E0474C",
+   "start": 48,
+   "end": 50.5,
+   "n": 11,
+   "sev": "major",
+   "max": 0.5257731958762887,
+   "info": "listener",
+   "dur": 2.75
+  },
+  {
+   "ep": "cancel",
+   "type": "face_covered_by_bubble",
+   "key": "1|1480|#F7B6CF",
+   "start": 105,
+   "end": 105.5,
+   "n": 3,
+   "sev": "major",
+   "max": 0.8762886597938144,
+   "info": "listener",
+   "dur": 0.75
+  },
+  {
+   "ep": "cancel",
+   "type": "bubble_too_long",
+   "key": "c2_her",
+   "start": 84.75,
+   "end": 97.75,
+   "n": 53,
+   "sev": "minor",
+   "max": 12,
+   "info": "",
+   "dur": 13.25
+  },
+  {
+   "ep": "cancel",
+   "type": "face_covered_by_overlay",
+   "key": "2|1720|#E0474C",
+   "start": 107.5,
+   "end": 108,
+   "n": 3,
+   "sev": "minor",
+   "max": 0.30927835051546393,
+   "info": "listener",
+   "dur": 0.75
+  },
+  {
+   "ep": "cancel",
+   "type": "face_covered_by_bubble",
+   "key": "1|1480|#F7B6CF",
+   "start": 25.5,
+   "end": 25.75,
+   "n": 2,
+   "sev": "minor",
+   "max": 0.41237113402061853,
+   "info": "listener",
+   "dur": 0.5
+  },
+  {
+   "ep": "cancel",
+   "type": "crop_knees",
+   "key": "2|1720|#E0474C",
+   "start": 40.75,
+   "end": 41,
+   "n": 2,
+   "sev": "minor",
+   "max": -24.35188159942618,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "cancel",
+   "type": "face_covered_by_overlay",
+   "key": "1|1480|#F7B6CF",
+   "start": 108.5,
+   "end": 108.75,
+   "n": 2,
+   "sev": "minor",
+   "max": 0.26804123711340205,
+   "info": "listener",
+   "dur": 0.5
+  }
+ ]
+}

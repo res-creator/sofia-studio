@@ -1,0 +1,134 @@
+{
+ "summary": {
+  "ep": "things",
+  "style": "v1",
+  "layout": "v1",
+  "samples": 426,
+  "issues": 10,
+  "critical": 6,
+  "major": 2,
+  "minor": 2
+ },
+ "issues": [
+  {
+   "ep": "things",
+   "type": "face_covered_by_card",
+   "key": "22|1700|#C9A06A",
+   "start": 49.5,
+   "end": 57,
+   "n": 31,
+   "sev": "critical",
+   "max": 0.6804123711340206,
+   "info": "listener",
+   "dur": 7.75
+  },
+  {
+   "ep": "things",
+   "type": "face_covered_by_card",
+   "key": "22|1700|#C9A06A",
+   "start": 23.5,
+   "end": 30.5,
+   "n": 29,
+   "sev": "critical",
+   "max": 0.6494845360824743,
+   "info": "listener",
+   "dur": 7.25
+  },
+  {
+   "ep": "things",
+   "type": "face_covered_by_card",
+   "key": "22|1700|#C9A06A",
+   "start": 65.25,
+   "end": 72,
+   "n": 28,
+   "sev": "critical",
+   "max": 0.6494845360824743,
+   "info": "listener",
+   "dur": 7
+  },
+  {
+   "ep": "things",
+   "type": "face_covered_by_card",
+   "key": "22|1700|#C9A06A",
+   "start": 37,
+   "end": 41.5,
+   "n": 19,
+   "sev": "critical",
+   "max": 0.8556701030927835,
+   "info": "listener",
+   "dur": 4.75
+  },
+  {
+   "ep": "things",
+   "type": "face_covered_by_card",
+   "key": "22|1700|#C9A06A",
+   "start": 11,
+   "end": 15,
+   "n": 17,
+   "sev": "critical",
+   "max": 0.6494845360824743,
+   "info": "listener",
+   "dur": 4.25
+  },
+  {
+   "ep": "things",
+   "type": "face_covered_by_card",
+   "key": "22|1700|#C9A06A",
+   "start": 95,
+   "end": 98.5,
+   "n": 15,
+   "sev": "critical",
+   "max": 0.7216494845360825,
+   "info": "listener",
+   "dur": 3.75
+  },
+  {
+   "ep": "things",
+   "type": "face_covered_by_bubble",
+   "key": "22|1700|#C9A06A",
+   "start": 18.25,
+   "end": 23.25,
+   "n": 21,
+   "sev": "major",
+   "max": 0.6494845360824743,
+   "info": "speaker,listener",
+   "dur": 5.25
+  },
+  {
+   "ep": "things",
+   "type": "bubble_covered",
+   "key": "a1_x",
+   "start": 11,
+   "end": 11.25,
+   "n": 2,
+   "sev": "major",
+   "max": 0.3402777777777778,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "things",
+   "type": "bubble_too_long",
+   "key": "c2_her",
+   "start": 73.75,
+   "end": 87.75,
+   "n": 57,
+   "sev": "minor",
+   "max": 12,
+   "info": "",
+   "dur": 14.25
+  },
+  {
+   "ep": "things",
+   "type": "face_covered_by_card",
+   "key": "1|1480|#E57C9C",
+   "start": 37,
+   "end": 37.25,
+   "n": 2,
+   "sev": "minor",
+   "max": 0.26804123711340205,
+   "info": "listener",
+   "dur": 0.5
+  }
+ ]
+}
