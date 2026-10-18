@@ -48,4 +48,8 @@ function mug(ctx, m, mirror) {
   paint(ctx, S, c => c.roundRect(x - 40 * s, y - 50 * s, 80 * s, 100 * s, 12 * s), '#f2eee4');
   ctx.save(); ctx.translate(x, y); if (mirror) ctx.scale(-1, 1); ctx.fillStyle = '#d6413a'; ctx.font = `${Math.round(20 * s)}px Anton`; ctx.textAlign = 'center'; ctx.fillText('SUGAR?', mirror ? 9 * s : -9 * s, 9 * s); ctx.restore();
 }
-module.exports = { mug, walkPath, sitPose, packFloor, hero, gary, sarah, headCU, knockFx, tag };
+// serious day marker: small white type with a thin rule, lower-left, fades in and out
+function dayMark(ctx, t, t0, t1, txt, sub) { if (t < t0 || t > t1) return; const a = clamp((t - t0) / 0.5) * clamp((t1 - t) / 0.5);
+  ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = 'rgba(0,0,0,0.35)'; ctx.fillRect(70, 900, 420, sub ? 120 : 84); ctx.fillStyle = '#f4efe4'; ctx.font = '60px Anton'; ctx.textBaseline = 'middle'; ctx.fillText(txt, 96, 942);
+  ctx.fillStyle = '#d6413a'; ctx.fillRect(96, 978, 60, 4); if (sub) { ctx.font = '30px Anton'; ctx.fillStyle = '#c9c2b0'; ctx.fillText(sub, 96, 1002); } ctx.restore(); }
+module.exports = { dayMark, mug, walkPath, sitPose, packFloor, hero, gary, sarah, headCU, knockFx, tag };

@@ -3,7 +3,7 @@ const { createCanvas } = require('../node_modules/@napi-rs/canvas');
 const { spawn } = require('child_process');
 const C = require('./lib/core'), { TL } = require('./seq'), { R } = require('./lib/cast');
 const { W, H, FPS } = C, CAPS = C.makeCaptions(TL);
-const SC = {}; const scene = b => SC[b] || (SC[b] = require('./scenes/' + b));
+const SC = {}; const scene = b => SC[b] || (SC[b] = require('./scenes/index')[b]);
 function blockAt(t) { for (const b of Object.keys(TL.blocks)) if (t >= TL.blocks[b].t0 && t < TL.blocks[b].t1) return b; return 'final'; }
 function frame(ctx, t, b) {
   b = b || blockAt(t); const sc = scene(b);

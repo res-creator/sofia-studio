@@ -21,7 +21,7 @@ const win = (t, a, b) => t >= a && t < b;
 // ---------------------------------------------------------------- timeline
 // SEQ entries: ['l', id, gapAfter=0.35] voice line | ['b', name, dur] silent beat | ['m', name] zero-length mark
 const SCRIPT = JSON.parse(fs.readFileSync(path.join(ROOT, 'script.json')));
-const LINES = {}; SCRIPT.blocks.forEach(b => b.lines.forEach(L => { LINES[L[0]] = { id: L[0], who: L[1], text: L[2], src: L[3] && L[3].startsWith('@') ? L[3].slice(1) : L[0] }; }));
+const LINES = {}; (SCRIPT.blocks || SCRIPT.scenes).forEach(b => b.lines.forEach(L => { LINES[L[0]] = { id: L[0], who: L[1], text: L[2], src: L[3] && L[3].startsWith('@') ? L[3].slice(1) : L[0] }; }));
 function loadAlign(id) {
   const f = path.join(ROOT, 'vo', id + '.align.json'); if (!fs.existsSync(f)) return null;
   const a = JSON.parse(fs.readFileSync(f)); const words = []; let cur = '', ws = 0, we = 0, depth = 0;

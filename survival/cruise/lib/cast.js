@@ -148,7 +148,8 @@ function zombiePose(ch, x, ground, t, o = {}) {
   pose.near = arm(J0.shN, 0); pose.far = arm(J0.shF, 1.7);
   return pose;
 }
-const ZFACE = (t, seed = 0, o = {}) => ({ eyes: o.eyes || 'open', brow: 'angry', mouth: 'teeth', open: 0.3 + 0.3 * Math.max(0, Math.sin(t * 5 + seed)), look: o.look || [-0.6, 0.1], blood: 1 });
+// cruise: restrained infected faces (dead half-lidded eyes, slack open mouth) — no cartoon teeth grins
+const ZFACE = (t, seed = 0, o = {}) => ({ eyes: o.eyes === 'wide' ? 'open' : (o.eyes || 'half'), brow: 'flat', mouth: 'small', open: 0.25 + 0.2 * Math.max(0, Math.sin(t * 3 + seed)), look: o.look || [-0.6, 0.15], blood: 1 });
 
 // ---- animals (side view, facing left; ink + cel shade like the people) ----
 const CATC = { fur: '#e58f3c', dark: '#b8662a', belly: '#f6d2a6' };
