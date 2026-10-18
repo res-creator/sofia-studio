@@ -103,7 +103,7 @@
       ["d5_14", "N", "Now you've got a problem. Someone needs your help. But if that bite means what you think it means... you might be the most dangerous thing in this building."],
       ["d5_15", "H", "[shouting] Hey! Up here!"],
       ["d5_16", "N", "You need a distraction. Something loud. Something completely ridiculous."],
-      ["d5_17", "H", "I knew you'd come in handy."],
+      ["d5_17", "H", "[smug, slowly] I knew you'd come in handy."],
       ["d5_18", "N", "Unbelievable. The duck has now saved your life twice."]
     ]},
     { "id": "final", "lines": [
