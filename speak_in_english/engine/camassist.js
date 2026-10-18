@@ -29,7 +29,7 @@ function collect(TL, RF, Hq) {
 // cost of a framing correction (f = zoom about screen centre, dx/dy = screen shift) for one sampled moment
 function cost(S, f, dx, dy) {
   const T = p => ({ x: 540 + (p.x - 540) * f + dx, y: 960 + (p.y - 960) * f + dy });
-  const card = S.ui.find(u => u.kind === 'card' && u.k > 0.3), caps = S.ui.filter(u => u.kind === 'captions'), fixed = S.ui.filter(u => u.kind === 'insert' || u.kind === 'window');
+  const card = S.ui.find(u => u.kind === 'card' && u.k > 0.02), caps = S.ui.filter(u => u.kind === 'captions'), fixed = S.ui.filter(u => u.kind === 'insert' || u.kind === 'window');
   const bubbles = S.ui.filter(u => u.kind === 'bubble' && u.k > 0.3);
   let c = Math.abs(dy) * 0.12 + Math.abs(dx) * 0.12 + (1 - f) * 2200;
   for (const m of S.ui.filter(u => u.kind === 'mark')) { const p = T(m.dev); if (p.x < 40 || p.x > W - 40 || p.y < SAFE_TOP || p.y > SAFE_BOTTOM) c += 300; if (card && inRect(p, card)) c += 300; }
@@ -58,8 +58,7 @@ function cost(S, f, dx, dy) {
 function solve(S) {
   const base = cost(S, 1, 0, 0); if (base < 25) return { f: 1, dx: 0, dy: 0, base, best: base };
   let best = { f: 1, dx: 0, dy: 0, c: base };
-  const sideIssue = S.chars.some(ch => ch.hc.x < 70 || ch.hc.x > W - 70);
-  const dxs = sideIssue ? [-160, -120, -80, -40, 0, 40, 80, 120, 160] : [0];
+  const dxs = [-160, -120, -80, -40, 0, 40, 80, 120, 160];
   for (const f of [1, 0.96, 0.92, 0.88]) for (const dx of dxs) for (let dy = -360; dy <= 360; dy += 8) { const c = cost(S, f, dx, dy); if (c < best.c - 0.01) best = { f, dx, dy, c }; }
   return best.c < base - 20 ? { ...best, base, best: best.c } : { f: 1, dx: 0, dy: 0, base, best: base };
 }
@@ -76,10 +75,11 @@ module.exports = function assist(EPN, TL, CAM, RF, Hq) {
     const sol = samples.map(S => { const sc = sceneAt(S.t); return (!sc || sc.id === 'hook' || sc.id === 'outro') ? { f: 1, dx: 0, dy: 0 } : solve(S); });
     // camera cuts split the timeline into shots; corrections never smear across a cut
     const cut = CAM.map((c, i) => i > 0 && (Math.abs(c.x - CAM[i - 1].x) * c.z + Math.abs(c.y - CAM[i - 1].y) * c.z + Math.abs(c.z - CAM[i - 1].z) * 1000 > 60));
-    // per-frame targets: anticipate a needed correction slightly (hold the strongest need in [t-0.2, t+0.4])
+    // per-frame targets: anticipate a needed correction and hold it a little after the need ends (strongest need in [t-0.6, t+0.4]),
+    // so the camera never drifts back while a card or bubble is still fading out
     const n = CAM.length, tgt = [];
     for (let i = 0; i < n; i++) { const t = i / FPS; let pick = { f: 1, dx: 0, dy: 0 }, m = 0;
-      for (let j = Math.max(0, Math.floor((t - 0.2) / STEP)); j <= Math.min(sol.length - 1, Math.ceil((t + 0.4) / STEP)); j++) { const s = sol[j], mag = Math.abs(s.dy) + Math.abs(s.dx) + (1 - s.f) * 1500; if (mag > m) { m = mag; pick = s; } }
+      for (let j = Math.max(0, Math.floor((t - 0.6) / STEP)); j <= Math.min(sol.length - 1, Math.ceil((t + 0.4) / STEP)); j++) { const s = sol[j], gain = (s.base || 0) - (s.best || 0); if (gain > m) { m = gain; pick = s; } }   // the most important need wins, not the biggest move
       tgt.push(pick); }
     // zero-phase easing inside each shot (tau ~0.2 s), cut = hard reset
     corr = tgt.map(s => ({ f: s.f, dx: s.dx, dy: s.dy })); const a = 1 - Math.exp(-1 / (FPS * 0.2));
