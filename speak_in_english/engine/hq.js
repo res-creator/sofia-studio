@@ -29,6 +29,9 @@ const SHADOW = '#5B3C6E', WARM = '#FFF4DC', INK = '#2C1E24';
 const dark = (c, k = 0.24) => mix(shade(c, 0.86), SHADOW, k);
 const hiCol = (c, k = 0.3) => mix(c, WARM, k);
 const lineOf = c => mix(shade(c, 0.5), INK, 0.45);
+// Character drawing style: 'v1' (published look, default) or 'v2' (cleaner legs/shoes). Per character: cfg.style; globally: env CHAR_STYLE.
+const STYLE = process.env.CHAR_STYLE || 'v1';
+const styleOf = cfg => cfg.style || STYLE;
 
 // ---------- path builder with offset (for cel shading crescents)
 function pen(p, dx, dy) {
@@ -131,7 +134,7 @@ function legs(ctx, cfg, st, g) {
   const { h, hipW, yHip, yCrotch, drop, skin, B } = g;
   const pose = st.legPose || 'stand';
   const bottom = cfg.bottom || { type: 'trousers', col: '#38425A' };
-  const lr = hipW * 0.46 * B.leg, cr = lr * 0.62;
+  const lr = hipW * 0.46 * B.leg, cr = lr * 0.62, v2 = styleOf(cfg) === 'v2';
   const legDraw = (s) => {
     let hx = s * hipW * 0.5, hy = yHip + 20, kx, ky, ax, ay = -40;
     if (pose === 'stand') { kx = s * hipW * 0.5; ky = -h * 0.24; ax = s * hipW * 0.48; }
@@ -143,6 +146,7 @@ function legs(ctx, cfg, st, g) {
     const Hp = { x: hx, y: hy, r: lr }, K = { x: kx, y: ky, r: lr * 0.66 }, An = { x: ax, y: ay, r: cr * 0.72 };
     const pts = [Hp, midp(Hp, K, 0.45, lr * 0.9), K, midp(K, An, 0.35, lr * 0.72), An];
     const lbox = [hx - lr, hy, hx + lr, ay];
+    if (v2) { legV2(ctx, cfg, st, s, { pts, lbox, isPants, bottom, skin, hx, hy, kx, ky, ax, ay, lr, cr, An, K, Hp }); return; }
     if (isPants) { const flare = bottom.type === 'trousers' || bottom.type === 'jeans' ? 1.35 : bottom.type === 'joggers' ? 1.05 : 1.0; const pp = pts.map((p, i) => ({ ...p, r: i < 2 ? p.r * 1.05 : i === 4 ? p.r * flare * 1.1 : p.r * 1.06 }));
       paint(ctx, limb(pp), bottom.col, { box: lbox, sd: 12, hd: 6, inner: c => { c.strokeStyle = rgba(dark(bottom.col, .4), .35); c.lineWidth = 3.5; c.beginPath(); c.moveTo(kx - 18, ky - 10); c.quadraticCurveTo(kx, ky + 6, kx + 18, ky - 8); c.moveTo(kx - 12, ky + 14); c.quadraticCurveTo(kx, ky + 26, kx + 14, ky + 12); c.stroke(); if (bottom.dots) { c.fillStyle = bottom.dots; for (let i = 0; i < 40; i++) { const yy = lerp(hy, ay, (i % 10) / 10 + 0.04), xx = lerp(hx, ax, (i % 10) / 10) + ((Math.floor(i / 10) - 1.5) * lr * 0.55) + ((i % 2) * lr * 0.2); c.beginPath(); c.arc(xx, yy, 10, 0, 7); c.fill(); } } if (bottom.type === 'jeans') { c.strokeStyle = rgba('#F2C14E', .5); c.lineWidth = 2.5; c.setLineDash([6, 6]); c.beginPath(); c.moveTo(hx + s * lr * 0.7, hy); c.lineTo(ax + s * cr * 0.8, ay); c.stroke(); c.setLineDash([]); } } }); }
     else {
@@ -157,6 +161,48 @@ function legs(ctx, cfg, st, g) {
   if (bottom.type === 'skirt') paint(ctx, q => { q.m(-hipW * 1.02, yHip - 30); q.l(hipW * 1.02, yHip - 30); q.l(hipW * 1.25, -h * 0.27); q.q(0, -h * 0.25, -hipW * 1.25, -h * 0.27); q.z(); }, bottom.col, { box: [-hipW, yHip, hipW, -h * 0.27], sd: 18 });
   // hips/pelvis band
   if (bottom.type !== 'skirt') paint(ctx, q => { q.m(-hipW * 1.0, yHip - 40); q.l(hipW * 1.0, yHip - 40); q.q(hipW * 1.08, yHip + 30, hipW * 0.8, yCrotch + 40); q.q(0, yCrotch + 60, -hipW * 0.8, yCrotch + 40); q.q(-hipW * 1.08, yHip + 30, -hipW, yHip - 40); q.z(); }, bottom.col, { box: [-hipW, yHip, hipW, yCrotch], sd: 14, lw: bottom.type === 'shorts' ? 4.5 : 0 });
+}
+// v2 leg end: the shoe sits with its sole on the ankle's floor line (y = ay + 40), is scaled to the leg,
+// and trousers end in a straight hem that falls over the top of the shoe instead of a round cap under the floor.
+function legV2(ctx, cfg, st, s, L) {
+  const { pts, lbox, isPants, bottom, skin, hx, hy, kx, ky, ax, ay, lr, cr, An } = L;
+  const pantsFlare = isPants ? (bottom.type === 'trousers' || bottom.type === 'jeans' ? 1.12 : bottom.type === 'joggers' ? 1.0 : 0.95) : 0;
+  const hemR = isPants ? An.r * pantsFlare * 1.08 : An.r;
+  const fs = clamp(Math.max(lr / 58, hemR * 2 / 80), 1.0, 1.7);   // shoe scale: from leg thickness, never narrower than the trouser hem
+  const sole = ay + 40;                                  // floor contact (0 when standing)
+  const lift = clamp((-40 - ay) / 70);                   // walk: foot raised -> heel up a little
+  const sx = ax + s * 8 * fs;
+  const drawShoe = () => shoeV2(ctx, cfg, sx, sole, s, fs, lift);
+  if (isPants) {
+    const flare = pantsFlare;
+    const pp = pts.map((p, i) => ({ ...p, r: i < 2 ? p.r * 1.05 : i === 4 ? p.r * flare * 1.08 : p.r * 1.06 }));
+    pp[4] = { ...pp[4], y: pp[4].y + 30 };                // extend past the hem so the clip gives a straight edge
+    const hem = sole - 50 * fs;                          // hem rests on the top of the shoe; most of the shoe stays visible
+    drawShoe();
+    ctx.save(); ctx.beginPath(); ctx.rect(-1e4, -1e4, 2e4, hem + 1e4); ctx.clip();
+    paint(ctx, limb(pp), bottom.col, { box: lbox, sd: 12, hd: 6, inner: c => { c.strokeStyle = rgba(dark(bottom.col, .4), .35); c.lineWidth = 3.5; c.beginPath(); c.moveTo(kx - 18, ky - 10); c.quadraticCurveTo(kx, ky + 6, kx + 18, ky - 8); c.moveTo(kx - 12, ky + 14); c.quadraticCurveTo(kx, ky + 26, kx + 14, ky + 12); c.stroke(); if (bottom.dots) { c.fillStyle = bottom.dots; for (let i = 0; i < 40; i++) { const yy = lerp(hy, ay, (i % 10) / 10 + 0.04), xx = lerp(hx, ax, (i % 10) / 10) + ((Math.floor(i / 10) - 1.5) * lr * 0.55) + ((i % 2) * lr * 0.2); c.beginPath(); c.arc(xx, yy, 10, 0, 7); c.fill(); } } if (bottom.type === 'jeans') { c.strokeStyle = rgba('#F2C14E', .5); c.lineWidth = 2.5; c.setLineDash([6, 6]); c.beginPath(); c.moveTo(hx + s * lr * 0.7, hy); c.lineTo(ax + s * cr * 0.8, ay); c.stroke(); c.setLineDash([]); } } });
+    ctx.restore();
+    // hem: outline + soft fold shadow on the shoe
+    // leg centre and half-width where the hem cuts it (shin may be slanted in squat/sit)
+    const p3 = pp[3], p4 = { ...pts[4], r: pp[4].r }, u = clamp((hem - p3.y) / ((p4.y - p3.y) || 1)), hx2 = lerp(p3.x, p4.x, u), hr = lerp(p3.r, p4.r, u) * 0.96;
+    ctx.strokeStyle = lineOf(bottom.col); ctx.lineWidth = 4.5; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(hx2 - hr, hem); ctx.quadraticCurveTo(hx2, hem + 6, hx2 + hr, hem); ctx.stroke();
+    ctx.fillStyle = 'rgba(40,25,40,.16)'; ctx.beginPath(); ctx.ellipse(hx2, hem + 6, hr * 0.85, 7, 0, 0, Math.PI); ctx.fill();
+  } else {
+    paint(ctx, limb(pts), skin, { box: lbox, sd: 12, hd: 6 });
+    if (cfg.socks) paint(ctx, limb([midp(L.K, An, 0.4, lr * 0.74), { ...An, r: An.r * 1.12 }]), cfg.socks, { sd: 6, hd: 4, inner: c => { c.strokeStyle = cfg.sockStripe || '#E04848'; c.lineWidth = 8; const sy = lerp(ky, ay, 0.5); c.beginPath(); c.moveTo(ax - 60, sy); c.lineTo(ax + 60, sy); c.stroke(); } });
+    if (bottom.type === 'shorts') paint(ctx, limb([{ ...L.Hp, y: hy - 10, r: lr * 1.12 }, midp(L.Hp, L.K, 0.55, lr * 1.0)]), bottom.col, { sd: 10, hd: 5 });
+    drawShoe();
+  }
+}
+function shoeV2(ctx, cfg, x, sole, s, fs, lift = 0) {
+  const sh = cfg.shoes || { col: '#FFFFFF', acc: '#EE5E9A' };
+  ctx.save(); ctx.translate(x, sole);
+  if (lift > 0) { ctx.translate(-s * 30 * fs, 0); ctx.rotate(-s * 0.18 * lift); ctx.translate(s * 30 * fs, 0); }
+  ctx.scale(s * fs, fs);
+  if (lift < 0.05) { ctx.fillStyle = 'rgba(40,25,40,.30)'; ctx.beginPath(); ctx.ellipse(16, 0, 66, 9, 0, 0, Math.PI * 2); ctx.fill(); }   // contact shadow
+  paint(ctx, q => { q.m(-34, -30); q.b(-30, -60, 20, -62, 40, -38); q.b(70, -32, 78, -12, 70, -6); q.l(-38, -6); q.q(-46, -16, -34, -30); q.z(); }, sh.col, { box: [-40, -62, 70, -6], sd: 8, hd: 4, inner: c => { if (sh.acc) { c.strokeStyle = sh.acc; c.lineWidth = 9; c.beginPath(); c.moveTo(-14, -26); c.quadraticCurveTo(20, -16, 52, -32); c.stroke(); } } });
+  ctx.fillStyle = sh.sole || '#E8E2DA'; rr(ctx, -42, -12, 116, 12, 6); ctx.fill(); ctx.strokeStyle = lineOf(sh.col); ctx.lineWidth = 3 / fs; ctx.stroke();
+  ctx.restore();
 }
 function shoe(ctx, cfg, x, y, s) {
   const sh = cfg.shoes || { col: '#FFFFFF', acc: '#EE5E9A' };
@@ -643,4 +689,4 @@ function grain(ctx, W, H, t, a = 0.06) {
 }
 function vignette(ctx, W, H, a = 0.32, col = '30,18,30') { const g = ctx.createRadialGradient(W / 2, H * 0.47, H * 0.28, W / 2, H / 2, H * 0.68); g.addColorStop(0, `rgba(${col},0)`); g.addColorStop(1, `rgba(${col},${a})`); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); }
 
-module.exports = { clamp, lerp, P, eOut, eIn, eIO, eBack, hash, noise1, mix, shade, rgba, dark, hiCol, lineOf, INK, SHADOW, WARM, pen, mk, paint, rr, capsule, limb, softShadow, human, catChar, pug, poodle, hamster, items, box, grain, vignette, createCanvas, Path2D };
+module.exports = { STYLE, styleOf, clamp, lerp, P, eOut, eIn, eIO, eBack, hash, noise1, mix, shade, rgba, dark, hiCol, lineOf, INK, SHADOW, WARM, pen, mk, paint, rr, capsule, limb, softShadow, human, catChar, pug, poodle, hamster, items, box, grain, vignette, createCanvas, Path2D };
