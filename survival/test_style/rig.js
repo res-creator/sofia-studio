@@ -26,7 +26,8 @@ const SKINS = {
     headR: 82, neck: 14, torso: 172, thigh: 116, shin: 108, ankle: 12, foot: 70, ua: 108, fa: 104, shW: 26, limbW: 1.12,
     eyeR: 0.36, eyeY: -0.08, eyeNear: -0.06, eyeFar: -0.66, glassR: 1.2, mouthX: -0.42, mouthY: 0.58, mouthW: 0.52, noseK: 1.6 },
 };
-SKINS.D2 = Object.assign({}, SKINS.D, { key: 'D2', soft: true });
+SKINS.D2 = Object.assign({}, SKINS.D, { key: 'D2', soft: true, v2: true });
+SKINS.A2 = Object.assign({}, SKINS.A, { key: 'A2', v2: true });   // A+ unchanged, only the v2 scene
 const CAST = {
   hero: { A: { skin: '#e9b98f', top: '#d9a02e', top2: '#b9821c', pants: '#34405a', shoe: '#ece8e0', sole: '#9a958c', hair: '#3a2a20', glasses: true, hood: true },
           D: { skin: '#f6c99c', top: '#f0aa22', top2: '#d38c10', pants: '#3f62b0', shoe: '#ffffff', sole: '#b9b4ab', hair: '#5a3418', glasses: true, hood: true } },
@@ -135,6 +136,11 @@ function face(ctx, S, C, R, e) {
       const lk = e.look || [-0.4, 0], pr = (D ? 0.36 : 0.5) * Math.min(W, H) * (e.eyes === 'wide' ? 0.7 : e.eyes === 'tiny' ? 0.32 : 1);
       ctx.beginPath(); ctx.arc(ex + lk[0] * W * 0.45, ey + lk[1] * H * 0.4, pr, 0, 7); ctx.fillStyle = ink; ctx.fill();
       ctx.beginPath(); ctx.arc(ex + lk[0] * W * 0.45 + pr * 0.35, ey + lk[1] * H * 0.4 - pr * 0.35, pr * 0.28, 0, 7); ctx.fillStyle = '#fff'; ctx.fill();
+      // slanted lids: angry = low at the inner corner, worried = low at the outer corner (inner corner faces the other eye)
+      if (e.brow === 'angry' || e.brow === 'worried') { const inner = near ? -1 : 1, s0 = e.brow === 'angry' ? 1 : -0.6;
+        const yi = ey - H + H * (s0 > 0 ? 0.75 : 0.15), yo = ey - H + H * (s0 > 0 ? 0.1 : 0.55);
+        ctx.fillStyle = C.skin; ctx.beginPath(); ctx.moveTo(ex + inner * W * 1.1, ey - H - 4); ctx.lineTo(ex + inner * W * 1.1, yi); ctx.lineTo(ex - inner * W * 1.1, yo); ctx.lineTo(ex - inner * W * 1.1, ey - H - 4); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(ex + inner * W * 1.1, yi); ctx.lineTo(ex - inner * W * 1.1, yo); ctx.lineWidth = S.lw; ctx.strokeStyle = ink; ctx.stroke(); }
       // eyelids (skin) for squint/half
       if (open < 1) { ctx.fillStyle = C.skin; ctx.fillRect(ex - W - 2, ey - H - 2, W * 2 + 4, (H * 2 + 4) * (1 - open) * 0.62); ctx.beginPath(); ctx.moveTo(ex - W, ey - H + (H * 2) * (1 - open) * 0.62); ctx.lineTo(ex + W, ey - H + (H * 2) * (1 - open) * 0.62); ctx.lineWidth = S.lw; ctx.strokeStyle = ink; ctx.stroke(); }
       ctx.restore();
@@ -143,7 +149,8 @@ function face(ctx, S, C, R, e) {
     const by = ey - H - R * 0.1, b = e.brow || 'neutral';
     const tilt = { neutral: 0, up: 0, worried: -0.35, angry: 0.4, flat: 0, skeptic: near ? -0.3 : 0.25 }[b] * (near ? 1 : -1) * -1;
     const lift = { up: -R * 0.1, worried: -R * 0.04, skeptic: near ? -R * 0.1 : 0, flat: R * 0.03 }[b] || 0;
-    ctx.save(); ctx.translate(ex, by + lift); ctx.rotate(tilt); ctx.beginPath(); ctx.ellipse(0, 0, W * 1.05, R * (D ? 0.05 : 0.055), 0, 0, 7); ctx.fillStyle = C.bald ? shade(C.skin, 0.55) : C.hair; ctx.fill(); ctx.lineWidth = S.lw * 0.6; ctx.strokeStyle = ink; ctx.stroke(); ctx.restore();
+    const bw = S.soft && !near ? W * 0.8 : W * 1.05, bx = S.soft && !near ? W * 0.18 : 0;
+    ctx.save(); ctx.translate(ex + bx, by + lift); ctx.rotate(tilt); ctx.beginPath(); ctx.ellipse(0, 0, bw, R * (D ? (S.soft ? 0.065 : 0.05) : 0.055), 0, 0, 7); ctx.fillStyle = C.bald ? shade(C.skin, 0.55) : (S.soft ? shade(C.hair, 0.55) : C.hair); ctx.fill(); ctx.lineWidth = S.lw * (S.soft ? 0.9 : 0.6); ctx.strokeStyle = ink; ctx.stroke(); ctx.restore();
     return [ex, ey, W, H];
   };
   const eF = eye(S.eyeFar, 0.78, false), eN = eye(S.eyeNear, 1, true);
@@ -155,6 +162,7 @@ function face(ctx, S, C, R, e) {
   // mouth
   const mx = S.mouthX * R, my = S.mouthY * R, mw = S.mouthW * R, o = e.open || 0, m = e.mouth || 'flat';
   ctx.save(); ctx.lineWidth = S.lw * 0.9; ctx.strokeStyle = ink; ctx.lineCap = 'round';
+  if (S.soft && e._skull) { ctx.beginPath(); e._skull(ctx); ctx.clip(); }
   const dark = '#5b1f22';
   if (o > 0.08 || m === 'o' || m === 'wide' || m === 'small') {
     const oo = Math.max(o, { o: 0.6, wide: 0.9, small: 0.3 }[m] || 0), round = m === 'o';
@@ -163,6 +171,7 @@ function face(ctx, S, C, R, e) {
   } else if (m === 'biggrin') {
     ctx.beginPath(); ctx.moveTo(mx - mw * 0.95, my - R * 0.14); ctx.quadraticCurveTo(mx - mw * 0.1, my + R * 0.42, mx + mw * 0.75, my - R * 0.18); ctx.quadraticCurveTo(mx, my + R * 0.04, mx - mw * 0.95, my - R * 0.14); ctx.fillStyle = '#fbfaf2'; ctx.fill(); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(mx - mw * 0.8, my - R * 0.03); ctx.quadraticCurveTo(mx, my + R * 0.1, mx + mw * 0.62, my - R * 0.08); ctx.lineWidth = S.lw * 0.45; ctx.stroke();
+    ctx.lineWidth = S.lw * 0.7; for (const [cx, k] of [[mx - mw * 1.02, -1], [mx + mw * 0.82, 1]]) { ctx.beginPath(); ctx.arc(cx, my - R * 0.2, R * 0.1, k > 0 ? 0.4 : Math.PI - 1.2, k > 0 ? 1.6 : Math.PI - 0.1); ctx.stroke(); }
   } else if (m === 'grin' || m === 'teeth') {
     ctx.beginPath(); ctx.moveTo(mx - mw * 0.75, my - R * 0.06); ctx.quadraticCurveTo(mx, my + R * 0.32, mx + mw * 0.6, my - R * 0.1); ctx.quadraticCurveTo(mx, my + R * 0.08, mx - mw * 0.75, my - R * 0.06); ctx.fillStyle = '#fbfaf2'; ctx.fill(); ctx.stroke();
     ctx.lineWidth = S.lw * 0.45; for (let i = -2; i <= 2; i++) { ctx.beginPath(); ctx.moveTo(mx + i * mw * 0.22, my); ctx.lineTo(mx + i * mw * 0.22, my + R * 0.14 - Math.abs(i) * R * 0.03); ctx.stroke(); }
@@ -189,11 +198,12 @@ function head(ctx, S, C, at, tilt, e) {
   if (C.bald) { ctx.save(); ctx.strokeStyle = C.hair; ctx.lineWidth = D ? 6 : 4; for (let i = 0; i < 4; i++) { ctx.beginPath(); ctx.moveTo(R * 0.7, -R * (0.55 - i * 0.12)); ctx.quadraticCurveTo(R * 0.05, -R * (1.25 - i * 0.12), -R * 0.62, -R * (0.62 - i * 0.1)); ctx.stroke(); } ctx.restore(); }
   else {
     paint(ctx, S, c => { c.moveTo(-R * 0.92, -R * 0.22); c.quadraticCurveTo(-R * 1.02, -R * 1.18, R * 0.08, -R * 1.16); c.quadraticCurveTo(R * 1.06, -R * 1.12, R * 0.96, -R * 0.1); c.lineTo(R * 0.7, R * 0.04); c.lineTo(R * 0.62, -R * 0.4);
-      c.quadraticCurveTo(R * 0.2, -R * 0.62, -R * 0.2, -R * 0.56); c.lineTo(-R * 0.34, -R * 0.74); c.lineTo(-R * 0.5, -R * 0.5); c.lineTo(-R * 0.7, -R * 0.62); c.closePath(); }, C.hair, { k: 0.7 });
+      if (S.soft) { c.quadraticCurveTo(R * 0.2, -R * 0.74, -R * 0.2, -R * 0.7); c.lineTo(-R * 0.34, -R * 0.86); c.lineTo(-R * 0.5, -R * 0.68); c.lineTo(-R * 0.72, -R * 0.76); }
+      else { c.quadraticCurveTo(R * 0.2, -R * 0.62, -R * 0.2, -R * 0.56); c.lineTo(-R * 0.34, -R * 0.74); c.lineTo(-R * 0.5, -R * 0.5); c.lineTo(-R * 0.7, -R * 0.62); } c.closePath(); }, C.hair, { k: 0.7 });
     { const hu = e.hairUp || 0; paint(ctx, S, c => { c.moveTo(-R * 0.1, -R * 1.08); c.lineTo(R * (0.06 - hu * 0.1), -R * (1.42 + hu * 0.45)); c.lineTo(R * 0.26, -R * 1.06); c.moveTo(R * 0.36, -R * 1.04); c.lineTo(R * (0.64 + hu * 0.05), -R * (1.3 + hu * 0.45)); c.lineTo(R * 0.66, -R * 0.94);
       if (hu > 0) { c.moveTo(-R * 0.55, -R * 0.9); c.lineTo(-R * 0.7, -R * (1.1 + hu * 0.4)); c.lineTo(-R * 0.3, -R * 1.02); } }, C.hair, { k: 0.7 }); }
   }
-  face(ctx, S, C, R, e);
+  face(ctx, S, C, R, Object.assign({ _skull: skull }, e));
   ctx.restore();
 }
 
@@ -226,7 +236,7 @@ function drawChar(ctx, S, C, J, e, o = {}) {
     c.quadraticCurveTo(0, 30, bw * 0.95, 18);                                                              // hem
     c.quadraticCurveTo(sw * 1.12, -T * 0.25, sw * 1.05, -T * 0.6);                                       // back
     c.quadraticCurveTo(sw * 1.2, -T - 2, sw * 0.4, -T - 8); c.quadraticCurveTo(0, -T - 12, -sw * 0.5, -T - 6); c.closePath()
-    if (C.belly > 1) { c.moveTo(-sw * 0.35 + sw * 1.2, -T * 0.42); c.ellipse(-sw * 0.35, -T * 0.42, sw * 1.2, T * 0.3, 0, 0, 7); } };
+    if (C.belly > 1) { c.moveTo(-sw * 0.35 + sw * 1.2, -T * 0.42); c.ellipse(-sw * 0.35, -T * 0.42, sw * 1.2, T * 0.3, 0, 0, 7, true); } };
   const body = S.soft ? soft : torso;
   paint(ctx, S, body, C.top);
   ctx.save(); ctx.beginPath(); body(ctx); ctx.clip();
@@ -256,4 +266,4 @@ function solveGrip(S, pose, grips = {}, tag) {
   for (const [k, sh] of [['near', J0.shN], ['far', J0.shF]]) if (grips[k]) { const g = grips[k], d = sub(g, sh), l = len(d) || 1; P[k] = [g[0] - d[0] / l * r, g[1] - d[1] / l * r]; }
   return solve(S, P, tag);
 }
-module.exports = { who, solveGrip, SKINS, CAST, solve, drawChar, paint, cap, line, shade, lerp, clamp, add, sub, rot, len, QA };
+module.exports = { hand, shoe, limb, face, head, who, solveGrip, SKINS, CAST, solve, drawChar, paint, cap, line, shade, lerp, clamp, add, sub, rot, len, QA };

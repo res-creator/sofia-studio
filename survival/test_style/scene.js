@@ -32,6 +32,8 @@ function viseme(id, t) {
   return null;
 }
 
+// natural blinks (skipped for expressions where the eyes are part of the joke)
+function blink(e, t, seed) { if (!e || !['open', 'half', 'wide', undefined].includes(e.eyes)) return e; const p = (t + seed) % 3.4; return p < 0.11 ? Object.assign({}, e, { eyes: 'closed' }) : e; }
 // ---- camera ----
 function shot(ctx, t, list, dutch = 0) {
   let i = 0; list.forEach((f, j) => { if (t >= f[0]) i = j; });
@@ -65,14 +67,23 @@ function room(ctx, S, t, o = {}) {
   R.paint(ctx, S, c => c.roundRect(1430, 660, 300, 160, 30), C.sofa); R.paint(ctx, S, c => c.roundRect(1410, 740, 340, 150, 26), R.shade(C.sofa, 1.1));
   // door (we see its face), chain plate on the frame, light under the door
   R.paint(ctx, S, c => c.rect(230, 160, 470, FLOOR - 150), C.trim);
+  ctx.save(); ctx.translate(o.doorShake || 0, 0);
   R.paint(ctx, S, c => c.rect(260, 190, 410, FLOOR - 190), C.door);
   R.paint(ctx, S, c => { c.roundRect(300, 240, 330, 250, 8); c.roundRect(300, 540, 330, 300, 8); }, C.door2, { k: 0.95 });
   R.paint(ctx, S, c => c.ellipse(612, 560, 17, 17, 0, 0, 7), C.metal); R.paint(ctx, S, c => c.roundRect(560, 552, 52, 14, 6), C.metal);
   R.paint(ctx, S, c => c.ellipse(465, 360, 11, 11, 0, 0, 7), '#222');
   R.paint(ctx, S, c => c.roundRect(684, 455, 14, 34, 4), C.metal);   // chain plate on frame
   R.paint(ctx, S, c => c.roundRect(560, 462, 92, 14, 6), C.metal);   // chain track on the door
+  ctx.restore();
   ctx.fillStyle = '#ffd98a'; ctx.fillRect(262, FLOOR - 4, 406, 6);
   if (o.feet) { ctx.fillStyle = '#1a1410'; ctx.fillRect(380, FLOOR - 4, 56, 6); ctx.fillRect(500, FLOOR - 4, 56, 6); }
+}
+function knockFx(ctx, t, t0, x, y) {
+  const u = (t - t0) / 0.6; if (u < 0 || u > 1) return;
+  ctx.save(); ctx.translate(x, y); ctx.rotate(-0.12); const k = 0.6 + 0.5 * back(clamp(u / 0.3)); ctx.scale(k, k); ctx.globalAlpha = clamp((1 - u) / 0.25);
+  ctx.strokeStyle = '#111'; ctx.lineWidth = 8; for (let i = 0; i < 7; i++) { const a = i / 7 * Math.PI * 2; ctx.beginPath(); ctx.moveTo(Math.cos(a) * 190, Math.sin(a) * 110); ctx.lineTo(Math.cos(a) * 250, Math.sin(a) * 150); ctx.stroke(); }
+  ctx.font = '120px Anton'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round'; ctx.lineWidth = 22; ctx.strokeStyle = '#111'; ctx.strokeText('KNOCK KNOCK', 0, 0); ctx.fillStyle = '#ffd23f'; ctx.fillText('KNOCK KNOCK', 0, 0);
+  ctx.restore();
 }
 function chain(ctx, S, knob) { // chain from the frame plate to the knob in the track
   const a = [691, 470]; ctx.save(); ctx.strokeStyle = '#c9cfd6'; ctx.lineWidth = 6; ctx.setLineDash([10, 5]);
@@ -101,7 +112,7 @@ function hallway(ctx, S, t, flick) { // the other side of the door, seen through
 
 // ---- characters at time t ----
 function heroAt(S0, t) {
-  const { S, C } = R.who(S0, 'hero'), v2 = S0.key === 'D2', sk = S0.key || S0.name, dk = S.name === 'D';
+  const { S, C } = R.who(S0, 'hero'), v2 = !!S0.v2, sk = S0.key || S0.name, dk = S.name === 'D';
   const legK = (S.thigh + S.shin) / 224, wfade = (a, b) => clamp((t - a) / 0.15) * clamp((b - t) / 0.15);
   if (t < SH.s2) { // shot 1: startled by the knock, then sneaks to the door with the bat ready
     const hop = t > 0.25 && t < 0.75 ? -Math.sin((t - 0.25) / 0.5 * Math.PI) * 34 : 0;
@@ -165,6 +176,7 @@ function heroDoorV2(S, C, t, sk, dk) {
 function chairAt(t) { const u = ease((t - 13.7) / 0.8); return P.chair(lerp(650, 596, u), FLOOR, lerp(0, -0.17, u)); }
 function garyAt(S0, t) {
   const { S, C } = R.who(S0, 'gary'), sk = S0.key || S0.name, dk = S.name === 'D';
+  if (S0.v2) return garyV2(S, C, t, sk);
   const pose = { x: 990, ground: FLOOR, lean: 0.06, tilt: t > SH.s3 ? kf([[SH.s3, 0], [11.0, -0.16]], t) : Math.sin(t * 1.3) * 0.03 };
   const J0 = R.solve(S, pose);
   const up = clamp((t - 6.2) / 0.5);
@@ -177,25 +189,48 @@ function garyAt(S0, t) {
   return { S, C, J, mug: m, waving, e };
 }
 
+// v2 Gary: bouncy "Hiii!" wave next to his face, mug always in view, raised and shaken on "sugar"
+const GW = { end: 5.2, raise: 6.15, sugar: 7.94 };
+function garyV2(S, C, t, sk) {
+  const R0 = S.headR, waving = t < GW.end, wv = waving ? clamp((t - SH.s2) / 0.2) * clamp((GW.end - t) / 0.25) : 0;
+  const pose = { x: 1000, ground: FLOOR, lean: 0.1, crouch: 0.08 + wv * 0.07 * Math.sin(t * 13), tilt: (t > SH.s3 ? kf([[SH.s3, 0], [11.0, -0.16]], t) : 0) + wv * 0.1 * Math.sin(t * 6.5) };
+  const J0 = R.solve(S, pose), reach = S.ua + S.fa;
+  const ms = S.name === 'D' ? 1.35 : 1.05;   // mug size per style; raised mug sits beside the face, never over it
+  const low = [J0.shN[0] - reach * 0.6, J0.shN[1] + reach * 0.16], high = [J0.head[0] - R0 * 1.0 - 64 * ms, J0.head[1] + R0 * 0.62];
+  let M = A(low, high, back(clamp((t - GW.raise) / 0.35)));
+  if (t > GW.sugar && t < GW.sugar + 0.7) M = [M[0] + Math.sin(t * 30) * 7, M[1] + Math.cos(t * 30) * 3];   // shakes the mug at "sugar"
+  const m = P.mug(M, ms);
+  const wave = [J0.head[0] + R0 * 1.4 + Math.sin(t * 13) * R0 * 0.25, J0.head[1] - R0 * 0.85 + Math.abs(Math.cos(t * 13)) * R0 * 0.1];
+  const farT = A([J0.shF[0] + 6, J0.shF[1] + reach - 26], wave, wv);
+  const J = R.solveGrip(S, Object.assign(pose, { bendFar: -1 }), { near: m.grip, far: wv > 0.02 ? farT : null }, `${sk} gary`);
+  const v = viseme('d2b', t), s3 = t > SH.s3;
+  const e = Object.assign({ eyes: s3 ? 'wide' : 'open', brow: 'up', mouth: 'biggrin', open: 0, look: s3 ? [0, 0] : [-0.2, 0.15], blood: 1, twitch: s3 && (Math.floor(t * 7) % 5 === 0) }, v || {});
+  return { S, C, J, mug: m, waving: wv > 0.02, e };
+}
+
 // ---- shots ----
 function drawHero(ctx, S0, h, t) {
   const S = h.S, C = h.C;
-  if (h.batHeld === 'both') R.drawChar(ctx, S, C, h.J, h.e, { farFront: true, hold: c => P.drawBat(c, S, h.bat), t, headScale: h.headScale });
-  else R.drawChar(ctx, S, C, h.J, h.e, { underFar: c => P.drawBat(c, S, h.bat), t, headScale: h.headScale });
+  const ee = S0.v2 ? blink(h.e, t, 0) : h.e;
+  if (h.batHeld === 'both') R.drawChar(ctx, S, C, h.J, ee, { farFront: true, hold: c => P.drawBat(c, S, h.bat), t, headScale: h.headScale });
+  else R.drawChar(ctx, S, C, h.J, ee, { underFar: c => P.drawBat(c, S, h.bat), t, headScale: h.headScale });
 }
 function frame(ctx, S, t) {
   ctx.save(); ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
   if (t < SH.s2) {
     ctx.save(); shot(ctx, t, [[0, 1250, 560, 1.3], [0.25, 1400, 450, 1.75, true], [0.8, 1220, 560, 1.3]]); if (t > 0.1 && t < 0.6) shake(ctx, t, 10);
-    room(ctx, S, t, { feet: true }); chain(ctx, S, [645, 469]); P.drawChair(ctx, S, chairAt(0)); drawHero(ctx, S, heroAt(S, t), t); night(ctx, S, t); ctx.restore();
+    const rattle = S.v2 && t < 0.6 ? Math.sin(t * 90) * 5 : 0;
+    room(ctx, S, t, { feet: true, doorShake: rattle }); chain(ctx, S, [645, 469]); P.drawChair(ctx, S, chairAt(0)); drawHero(ctx, S, heroAt(S, t), t); night(ctx, S, t); ctx.restore(); if (S.v2) knockFx(ctx, t, 0.05, 330, 210);
   } else if (t < SH.s4) {
     // peephole POV
     const s3 = t >= SH.s3, flick = s3 ? (hash(Math.floor(t * 12)) > 0.75 ? 0.25 : 1) : 1;
     ctx.save(); ctx.beginPath(); ctx.arc(960, 540, 500, 0, 7); ctx.clip();
     const g = garyAt(S, t), hy = g.J.head[1], hx = g.J.head[0];
-    shot(ctx, t, s3 ? [[SH.s3, hx - 10, hy + 40, 3.0], [SH.s3 + 0.9, hx - 20, hy + 10, 3.6, true]] : [[SH.s2, hx - 40, hy + 120, 1.85], [6.2, hx - 60, hy + 110, 2.3, true]], s3 ? 0.07 : 0);
+    if (S.v2) { const mx = g.mug.M[0], Rg = g.S.headR, k = Math.pow(84 / Rg, 0.7);   // framing scales with Gary's head size
+      shot(ctx, t, s3 ? [[SH.s3, (hx + mx) / 2 + 10, hy + Rg * 0.48, 2.25 * k], [SH.s3 + 0.9, (hx + mx) / 2 + 5, hy + Rg * 0.36, 2.7 * k, true]] : [[SH.s2, hx - Rg * 0.24, hy + Rg * 1.07, 1.7 * k], [6.15, hx - Rg * 0.9, hy + Rg * 0.84, 2.05 * k, true]], s3 ? 0.07 : 0); }
+    else shot(ctx, t, s3 ? [[SH.s3, hx - 10, hy + 40, 3.0], [SH.s3 + 0.9, hx - 20, hy + 10, 3.6, true]] : [[SH.s2, hx - 40, hy + 120, 1.85], [6.2, hx - 60, hy + 110, 2.3, true]], s3 ? 0.07 : 0);
     hallway(ctx, S, t, flick);
-    R.drawChar(ctx, g.S, g.C, g.J, g.e, { farFront: !g.waving, farHand: g.waving ? 'wave' : 'fist', holdNear: c => P.drawMug(c, g.S, g.mug), t });
+    R.drawChar(ctx, g.S, g.C, g.J, blink(g.e, t, 1.3), { farFront: !g.waving, farHand: g.waving ? 'wave' : 'fist', holdNear: c => P.drawMug(c, g.S, g.mug), t });
     if (flick < 1) { ctx.fillStyle = 'rgba(0,0,0,0.55)'; ctx.fillRect(-500, -500, W + 1000, H + 1000); }
     ctx.restore();
     const vg = ctx.createRadialGradient(960, 540, 260, 960, 540, 500); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,0.92)'); ctx.fillStyle = vg; ctx.beginPath(); ctx.arc(960, 540, 501, 0, 7); ctx.fill();
@@ -204,13 +239,15 @@ function frame(ctx, S, t) {
     const h = heroAt(S, t);
     ctx.save();
     if (t < SH.s5) shot(ctx, t, [[SH.s4, h.J.head[0] + 30, h.J.head[1] + 30, 3.0], [11.75, h.J.head[0] + 25, h.J.head[1] + 15, 3.5, true]]);
-    else if (S.key === 'D2') { shot(ctx, t, [[SH.s5, 800, 570, 1.35], [13.45, 770, 590, 1.42, true], [15.0, 850, 560, 1.4, true], [G2.react - 0.02, h.J.head[0] + 30, h.J.head[1] + 70, 2.0, true]]);
+    else if (S.v2) { shot(ctx, t, [[SH.s5, 800, 570, 1.35], [13.45, 770, 590, 1.42, true], [15.0, 850, 560, 1.4, true], [G2.react - 0.02, h.J.head[0] + 30, h.J.head[1] + 70, 2.0, true]]);
       if (t > G2.knock && t < G2.knock + 0.4) shake(ctx, t, 14); else if (t > G2.react + 0.3) shake(ctx, t, 3); }
     else shot(ctx, t, [[SH.s5, 800, 570, 1.35], [13.45, 770, 590, 1.42, true], [15.0, 840, 560, 1.4, true]]);
-    room(ctx, S, t, { feet: true }); chain(ctx, S, h.knob); P.drawChair(ctx, S, h.chair); drawHero(ctx, S, h, t); night(ctx, S, t);
+    const kn = S.v2 && t > G2.knock && t < G2.knock + 0.55, r2 = kn ? Math.sin(t * 90) * 7 : 0;
+    room(ctx, S, t, { feet: true, doorShake: r2 }); chain(ctx, S, kn ? [h.knob[0] + r2, h.knob[1] + Math.abs(r2) * 0.6] : h.knob);
+    P.drawChair(ctx, S, kn ? P.chair(h.chair.x, FLOOR, h.chair.tilt + Math.sin(t * 70) * 0.02) : h.chair); drawHero(ctx, S, h, t); night(ctx, S, t); ctx.restore(); ctx.save(); if (S.v2) knockFx(ctx, t, G2.knock, 420, 200);
     ctx.restore();
   }
   ctx.restore();
 }
-const endT = S => S.key === 'D2' ? G2.end : SH.end;
-module.exports = { frame, SH, VO, W, H, G2, endT };
+const endT = S => S.v2 ? G2.end : SH.end;
+module.exports = { blink, frame, SH, VO, W, H, G2, endT };

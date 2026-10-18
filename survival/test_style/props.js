@@ -14,7 +14,7 @@ function drawMug(ctx, S, m) {
   ctx.save(); ctx.lineCap = 'round';
   ctx.beginPath(); ctx.arc(x + 40 * s, y, 22 * s, -Math.PI / 2, Math.PI / 2); ctx.lineWidth = 14 * s + S.lw * 2; ctx.strokeStyle = S.ink; ctx.stroke(); ctx.lineWidth = 14 * s; ctx.strokeStyle = '#f2eee4'; ctx.stroke(); ctx.restore();
   paint(ctx, S, c => c.roundRect(x - 40 * s, y - 50 * s, 80 * s, 100 * s, 12 * s), '#f2eee4');
-  ctx.save(); ctx.fillStyle = '#d6413a'; ctx.font = `${Math.round(22 * s)}px Anton`; ctx.textAlign = 'center'; ctx.fillText('SUGAR?', x, y + 10 * s); ctx.restore();
+  ctx.save(); ctx.fillStyle = '#d6413a'; ctx.font = `${Math.round(20 * s)}px Anton`; ctx.textAlign = 'center'; ctx.fillText('SUGAR?', x - 9 * s, y + 9 * s); ctx.restore();
 }
 // wooden chair, side view. base point = front-left foot on the floor; tilt rotates around the back legs
 function chair(x, ground, tilt = 0) { return { x, ground, tilt, rail: rotP([x + 80, ground - 330], [x + 80, ground], tilt) }; }

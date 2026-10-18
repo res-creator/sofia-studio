@@ -3,9 +3,9 @@ const { createCanvas } = require('../node_modules/@napi-rs/canvas'); require('..
 const { spawn } = require('child_process');
 const R = require('./rig'), SC = require('./scene');
 const { W, H, VO, SH } = SC, FPS = 30;
-const S = Object.assign({}, R.SKINS[process.argv[2]], { garyVar: process.env.GARY || '20' }), V2 = S.key === 'D2', T = SC.endT(S);
+const S = Object.assign({}, R.SKINS[process.argv[2]], { garyVar: process.env.GARY || '20' }), V2 = !!S.v2, T = SC.endT(S);
 // captions from the voice alignments (tags like [whispers] removed)
-const SPK = { d2b: process.argv[2] === 'D2' ? '#d9c4ff' : '#c9a7ff', d2c: '#ffffff', d2d: '#ffd23f' };
+const SPK = { d2b: ['D2', 'A2'].includes(process.argv[2]) ? '#d9c4ff' : '#c9a7ff', d2c: '#ffffff', d2d: '#ffd23f' };
 const CH = [];
 for (const id of Object.keys(VO)) {
   const a = require(`./vo/${id}.align.json`); let cur = '', ws = 0, we = 0, depth = 0; const words = [];
@@ -61,8 +61,8 @@ function frame(ctx, t) {
   ctx.drawImage(grain, -(Math.floor(t * 24) % 4) * 41, -(Math.floor(t * 24) % 3) * 29);
   // humour beat at the end
   const lt0 = V2 ? 15.3 : 15.2;
-  if (t > lt0 && (!V2 || t < SC.G2.knock)) { const u = R.clamp((t - lt0) / 0.2), k = 1 + (1 - u) * 0.8; ctx.save(); if (V2) ctx.translate(560, 150); else ctx.translate(1500, 130); ctx.rotate(V2 ? -0.05 : 0.05); ctx.scale(k, k); ctx.globalAlpha = u;
-    ctx.font = '62px Anton'; const tw = ctx.measureText('HOME SECURITY: MAXIMUM').width + 50; ctx.lineWidth = 9; ctx.strokeStyle = '#3fae63'; ctx.strokeRect(-tw / 2, -52, tw, 100); ctx.fillStyle = '#3fae63'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('HOME SECURITY: MAXIMUM', 0, 2); ctx.restore(); }
+  if (t > lt0 && (!V2 || t < SC.G2.knock)) { const u = R.clamp((t - lt0) / 0.2), k = 1 + (1 - u) * 0.8; ctx.save(); if (V2) ctx.translate(470, 420); else ctx.translate(1500, 130); ctx.rotate(V2 ? -0.05 : 0.05); ctx.scale(k, k); ctx.globalAlpha = u;
+    ctx.font = '62px Anton'; const tw = ctx.measureText('HOME SECURITY: MAXIMUM').width + 50; if (V2) { ctx.fillStyle = 'rgba(246,242,228,0.95)'; ctx.fillRect(-tw / 2, -52, tw, 100); } ctx.lineWidth = 9; ctx.strokeStyle = '#3fae63'; ctx.strokeRect(-tw / 2, -52, tw, 100); ctx.fillStyle = '#3fae63'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('HOME SECURITY: MAXIMUM', 0, 2); ctx.restore(); }
   caption(ctx, t);
   if (t < 0.25) { ctx.fillStyle = `rgba(0,0,0,${1 - t / 0.25})`; ctx.fillRect(0, 0, W, H); }
   if (t > T - 0.35) { ctx.fillStyle = `rgba(0,0,0,${R.clamp((t - (T - 0.35)) / 0.35)})`; ctx.fillRect(0, 0, W, H); }
