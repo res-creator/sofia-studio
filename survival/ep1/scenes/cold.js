@@ -29,7 +29,8 @@ function draw(ctx, t, TL) {
   if (fl) { flashShot(ctx, t, fl[1]); C.flash(ctx, 1 - (t - fl[0] + 0.05) / 0.12); return {}; }
   const bit = s('co07'), refl = s('co08');
   // camera plan
-  const keys = [[0, 1000, 520, 1.0], [s('co01'), 1000, 560, 1.05, 'm', 2.5], [s('co05'), HX - 70, 580, 1.55, 's'], [s('co06'), HX - 80, 600, 1.6, 'm', 1.6],
+  const hookEnd = s('co01') + 1.0;   // hook: open tight on the bite, whip out to the room
+  const keys = [[0, HX - 215, 655, 3.4], [hookEnd, 1000, 540, 1.05, 'w'], [hookEnd + 0.3, 1000, 560, 1.1, 'm', 2.5], [s('co05'), HX - 70, 580, 1.55, 's'], [s('co06'), HX - 80, 600, 1.6, 'm', 1.6],
     [bit, HX - 200, 640, 3.0, 's'], [refl, 950, 450, 2.1, 's'], [tKnock, 1530, 520, 1.25, 'w'], [s('co09'), 1530, 560, 1.45, 's'], [s('co10'), 1560, 600, 1.7, 'm', 2.2], [s('co11'), HX - 80, 600, 2.4, 's']];
   ctx.save(); const cm = cam(ctx, t, keys, { drift: 0.012 });
   if (win(t, tKnock, tKnock + 0.4)) shake(ctx, t, 12);
@@ -43,9 +44,9 @@ function draw(ctx, t, TL) {
     if (red > 0) { ctx.globalAlpha = red * 0.8; ctx.fillStyle = '#ff2a20'; const R0 = K.HERO.S.headR; ctx.beginPath(); ctx.arc(K.HERO.S.eyeNear * R0, py + ph * 0.55 + K.HERO.S.eyeY * R0, 7 + red * 4, 0, 7); ctx.fill(); }
     ctx.restore(); }
   // hero
-  const up = clamp((t - s('co05')) / 0.5), raise = t >= bit - 0.1 && t < refl ? back(clamp((t - bit + 0.1) / 0.3)) : 0;
+  const up = clamp((t - s('co05')) / 0.5), raise = Math.max(t < hookEnd ? 1 - ease(clamp((t - hookEnd + 0.35) / 0.35)) : 0, t >= bit - 0.1 && t < refl ? back(clamp((t - bit + 0.1) / 0.3)) : 0);
   const lookUp = t > s('co05') ? 1 : kf([[0, 0], [s('co01'), 0], [s('co04'), 0.4]], t);
-  let ex; if (t < s('co05')) ex = { eyes: 'half', brow: 'flat', mouth: 'flat', look: [0, 0.4] };
+  let ex; if (t < hookEnd) ex = { eyes: 'half', brow: 'worried', mouth: 'frown', look: [-0.7, 0.6] }; else if (t < s('co05')) ex = { eyes: 'half', brow: 'flat', mouth: 'flat', look: [0, 0.4] };
   else if (t < bit) ex = { eyes: 'half', brow: 'skeptic', mouth: 'flat', look: [0.9, 0] };   // deadpan to camera
   else if (t < refl) ex = { eyes: 'wide', brow: 'worried', mouth: 'frown', look: [-0.6, 0.5], sweat: 1 };
   else if (t < tKnock) ex = C.talk(TL, 'co08', t, { eyes: 'half', brow: 'worried', mouth: 'frown', look: [-0.8, -0.2] });
@@ -55,12 +56,12 @@ function draw(ctx, t, TL) {
   SE.techGrade(ctx, { col: '#b0b4c8' });
   ctx.restore();
   if (t > tKnock + 0.2) A.knockFx(ctx, t, tKnock + 0.2, 1350, 260);
-  A.tag(ctx, t, s('co01'), w('co02', 'riots') - 0.1, 'DAY 5 · 7:58 AM');
-  return { fade: t < s('co01') ? 1 - clamp((t - s('co01') + 0.6) / 1.4) * 0.999 : 0 };
+  A.tag(ctx, t, hookEnd + 0.2, w('co02', 'riots') - 0.1, 'DAY 5 · 7:58 AM');
+  return { fade: t < 0.25 ? 1 - t / 0.25 : 0 };
 }
 const capTop = (t, TL) => t > TL.s('co07') && t < TL.s('co08');
-const cues = TL => [['sfx/breath', 0.1, 0.6], ['sfx/heartbeat', TL.s('co06') - 0.5, 0.5], ['sfx/hit', TL.s('co07') - 0.05, 0.6], ['../ep01/sfx/whoosh', TL.w('co02', 'riots') - 0.1, 0.4],
+const cues = TL => [['sfx/breath', 0.0, 0.6], ['sfx/heartbeat', 0.0, 0.55], ['../ep01/sfx/whoosh', TL.s('co01') + 0.95, 0.45], ['sfx/heartbeat', TL.s('co06') - 0.5, 0.5], ['sfx/hit', TL.s('co07') - 0.05, 0.6], ['../ep01/sfx/whoosh', TL.w('co02', 'riots') - 0.1, 0.4],
   ['../ep01/sfx/whoosh', TL.w('co03', 'infected') - 0.1, 0.4], ['../ep01/sfx/whoosh', TL.w('co04', 'Gary') - 0.1, 0.4], ['sfx/growl', TL.w('co03', 'infected'), 0.4],
-  ['../sfx/drone', TL.s('co08'), 0.5], ['sfx/riser', TL.s('co08') + 0.6, 0.35], ['../ep01/sfx/knock', TL.s('co_knock'), 0.95], ['sfx/hit', TL.s('co12') - 0.05, 0.5], ['sfx/slamdoor', TL.s('co_card'), 0.6]];
+  ['../sfx/drone', TL.s('co08'), 0.3, 4.5], ['sfx/riser', TL.s('co08') + 0.6, 0.35], ['../ep01/sfx/knock', TL.s('co_knock'), 0.95], ['sfx/hit', TL.s('co12') - 0.05, 0.5], ['sfx/slamdoor', TL.s('co_card'), 0.6]];
 const music = TL => [['sfx/music3', TL.s('co01'), TL.s('co_knock'), 0.28]];
 module.exports = { draw, capTop, cues, music };

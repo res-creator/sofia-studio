@@ -147,7 +147,7 @@ function roofScene(ctx, t, TL) {
   return {};
 }
 const capTop = (t, TL) => (t > TL.w('d4_01', 'apartment') - 0.1 && t < TL.w('d4_01', 'streets') - 0.1) || (t > TL.s('d4_08') + 2.2 && t < TL.s('d4_09')) || (t > TL.s('d4_09') && t < TL.s('d4_10'));
-const cues = TL => { const s = TL.s, w = TL.w; return [['../sfx/drone', s('d4_01'), 0.2], ['../ep01/sfx/hiss', w('d4_01', 'cat'), 0.5], ['sfx/growl', w('d4_01', 'streets'), 0.45], ['sfx/spray', w('d4_01', 'building'), 0.5], ['sfx/sting', w('d4_01', 'Gary'), 0.3],
+const cues = TL => { const s = TL.s, w = TL.w; return [['../sfx/drone', s('d4_01'), 0.18, 8], ['../ep01/sfx/hiss', w('d4_01', 'cat'), 0.5], ['sfx/growl', w('d4_01', 'streets'), 0.45], ['sfx/spray', w('d4_01', 'building'), 0.5], ['sfx/sting', w('d4_01', 'Gary'), 0.3],
   ['sfx/clang', s('d4_clang'), 0.9], ['sfx/canroll', s('d4_clang') + 0.1, 0.8], ['sfx/riser', s('d4_04') - 0.2, 0.4], ['sfx/growl', s('d4_04') + 0.4, 0.8], ['sfx/growl', s('d4_lunge') + 0.1, 0.9],
   ['../ep01/sfx/whoosh', s('d4_lunge'), 0.5], ['sfx/crash', s('d4_lunge') + 0.45, 0.9], ['sfx/hit', s('d4_lunge') + 0.5, 0.6], ['../ep01/sfx/run', s('d4_05'), 0.6], ['sfx/growl', s('d4_06') + 0.2, 0.7], ['../ep01/sfx/run', s('d4_06') + 0.5, 0.5],
   ['sfx/metaldoor', s('d4_roofdoor') + 0.85, 0.9], ['sfx/breath', s('d4_roofdoor') + 0.9, 0.6], ['../sfx/bang', s('d4_roofdoor') + 1.5, 0.4], ['sfx/wind', s('d4_silence'), 0.5], ['sfx/wind', s('d4_silence') + 9.5, 0.5],

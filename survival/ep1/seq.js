@@ -1,7 +1,7 @@
 // Episode 1 edit decision list: voice lines, silent beats and marks per block. Times are computed from the real voice takes.
 // ['l', id, gapAfter]  ['b', name, seconds]  ['m', name]
 const SEQ = {
-  cold: [['b', 'co_black', 1.6], ['l', 'co01', 0.35], ['l', 'co02', 0.15], ['l', 'co03', 0.15], ['l', 'co04', 0.2], ['l', 'co05', 0.5], ['l', 'co06', 0.3], ['l', 'co07', 0.7], ['l', 'co08', 0.4],
+  cold: [['b', 'co_black', 0.4], ['l', 'co01', 0.35], ['l', 'co02', 0.15], ['l', 'co03', 0.15], ['l', 'co04', 0.2], ['l', 'co05', 0.5], ['l', 'co06', 0.3], ['l', 'co07', 0.7], ['l', 'co08', 0.4],
     ['b', 'co_knock', 0.9], ['l', 'co09', 0.45], ['l', 'co10', 0.2], ['l', 'co11', 0.5], ['l', 'co12', 0.3], ['b', 'co_card', 2.3]],
   day1: [['l', 'd1_01', 0.2], ['l', 'd1_02', 0.3], ['l', 'd1_03', 0.5], ['l', 'd1_04', 0.3], ['l', 'd1_05', 0.4], ['b', 'd1_fridge', 0.9], ['l', 'd1_06', 0.2], ['l', 'd1_07', 0.4], ['b', 'd1_grab', 1.5],
     ['l', 'd1_08', 0.3], ['l', 'd1_09', 0.4], ['l', 'd1_10', 0.3], ['l', 'd1_11', 0.2], ['l', 'd1_12', 0.2], ['b', 'd1_freeze', 1.4], ['l', 'd1_13', 0.4], ['l', 'd1_14', 0.5],

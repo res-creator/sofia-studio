@@ -52,7 +52,9 @@ function room(ctx, t, TL) {
   if (t >= tThrow) { const cx = kf([[tThrow, 1930], [tThrow + 0.75, 2950], [tLand, 2980]], t); Object.assign(cat, { x: cx, pose: t < tThrow + 0.75 ? 'run' : 'sit', flip: t < tLand - 0.1, o: { eye: '#ff3b30', glow: true, u: (cx - 1930) / 200, headTilt: t > tThrow + 0.8 ? 0.3 : 0 } }); }
   if (t >= t10 + 1.0) { const cx = kf([[t10 + 1.0, 2980], [t10 + 2.6, 900]], t); Object.assign(cat, { x: cx, pose: 'run', flip: false, o: { eye: '#ff3b30', glow: true, angry: true, mouth: 'hiss', u: (2980 - cx) / 200 } }); }
   // ---- expressions
-  if (t < s('d3_02')) ex = { eyes: 'half', brow: t > w('d3_01', 'neighbors') && t < w('d3_01', 'sugar', true) + 0.5 ? 'skeptic' : 'flat', mouth: 'flat', look: t > w('d3_01', 'neighbors') && t < w('d3_01', 'sugar', true) + 0.5 ? [-0.9, 0] : [0.6, 0.5] };
+  const wNb = w('d3_01', 'neighbors'), wSg = w('d3_01', 'sugar');
+  if (t < s('d3_02') && t >= wSg - 0.15 && t < wSg + 1.6) ex = { eyes: 'squint', brow: 'angry', mouth: 'frown', look: [0.9, 0.05] };   // the sugar memory
+  else if (t < s('d3_02')) ex = { eyes: 'half', brow: t > wNb && t < wSg ? 'skeptic' : 'flat', mouth: 'flat', look: t > wNb && t < wSg ? [0.9, 0] : [-0.6, 0.5] };
   else if (t < tMeow) ex = { eyes: 'open', brow: 'worried', mouth: 'frown', look: t > w('d3_03', 'Rats') ? [0.9, 0.3] : [-0.6, -0.8] };
   else if (t < t6) ex = C.talk(TL, ['d3_04', 'd3_05'], t, { eyes: 'open', brow: 'up', mouth: 'smile', look: [-0.9, 0] });
   else if (t < tPo) ex = { eyes: 'open', brow: 'worried', mouth: 'flat', look: [-0.9, 0.1], sweat: t > t7 };
@@ -63,7 +65,7 @@ function room(ctx, t, TL) {
   else ex = { eyes: 'wide', brow: 'worried', mouth: 'wide', open: 0.6, look: [-1, 0], sweat: 1 };
   // ---- camera
   const catHead = [cat.x - 80 * cat.s, cat.g - 200 * cat.s];
-  const keys = [[t0, 1700, 560, 1.0], [t0 + 0.5, 1650, 600, 1.25, 'm', 6], [s('d3_02'), 1500, 430, 1.4, 'm', 3.5], [w('d3_03', 'Rats') - 0.05, 1130, 820, 2.6, 's'], [w('d3_03', 'Pigeons') - 0.05, 1500, 400, 2.8, 's'],
+  const keys = [[t0, 1700, 560, 1.0], [t0 + 0.5, 1650, 600, 1.2, 'm', 2.5], [w('d3_01', 'neighbors') - 0.1, 470, 560, 1.75, 's'], [w('d3_01', 'never') - 0.05, 1600, 620, 1.6, 's'], [w('d3_01', 'sugar') - 0.15, 1610, 540, 3.0, 's'], [s('d3_02'), 1500, 430, 1.4, 'm', 3.5], [w('d3_03', 'Rats') - 0.05, 1130, 820, 2.6, 's'], [w('d3_03', 'Pigeons') - 0.05, 1500, 400, 2.8, 's'],
     [w('d3_03', 'adorable'), 1900, 560, 1.3, 'm', 1.2], [tMeow + 0.15, SOFA + 10, 600, 1.9, 'w'], [t4, 1700, 520, 1.6, 's'], [t5, 2350, 560, 1.3, 'm', 1.5], [t6, catHead[0] - 10, catHead[1] + 10, 3.2, 'm', 1.3], [t7, catHead[0], catHead[1], 3.6, 's'],
     [tPo, 2200, 560, 1.3, 's'], [t8 + 0.6, 1850, 600, 1.15, 'm', 0.6], [tSq, 1560, 820, 2.6, 's'], [tSq + 0.5, 1930, 780, 2.6, 'w'], [t9, 1700, 560, 2.0, 's'], [tTh, 2200, 520, 0.95, 's'], [tBounce, 2300, 520, 0.92, 'm', 0.8],
     [t10, 1500, 600, 1.5, 's'], [t10 + 1.0, 1300, 560, 1.15, 'm', 1.6]];
@@ -110,7 +112,7 @@ function hall(ctx, t, TL) {
   return {};
 }
 const capTop = (t, TL) => (t > TL.s('d3_squeak') - 0.2 && t < TL.s('d3_10')) || (t > TL.s('d3_squeak2') && t < TL.s('d3_card'));
-const cues = TL => { const s = TL.s, w = TL.w, tTh = s('d3_throw'); return [['../sfx/drone', s('d3_02'), 0.25], ['../ep01/sfx/pigeon', s('d3_02') + 1.0, 0.5], ['../ep01/sfx/rat', w('d3_03', 'Rats') - 0.2, 0.6],
+const cues = TL => { const s = TL.s, w = TL.w, tTh = s('d3_throw'); return [['../sfx/drone', s('d3_02'), 0.2, 8], ['../ep01/sfx/pigeon', s('d3_02') + 1.0, 0.5], ['../ep01/sfx/rat', w('d3_03', 'Rats') - 0.2, 0.6],
   ['sfx/meow', s('d3_meow') + 0.05, 0.9], ['sfx/riser', s('d3_06'), 0.4], ['../ep01/sfx/hiss', s('d3_07') + 0.1, 0.9], ['sfx/hit', s('d3_pounce') + 0.35, 0.6], ['../ep01/sfx/whoosh', s('d3_pounce'), 0.5],
   ['sfx/thud', s('d3_08') + 0.9, 0.6], ['../ep01/sfx/squeak', s('d3_squeak'), 0.95], ['../ep01/sfx/squeak', tTh + 0.1, 0.8], ['../ep01/sfx/whoosh', tTh + 0.35, 0.4], ['sfx/boing', tTh + 0.9, 0.8],
   ['../ep01/sfx/squeak', tTh + 1.75, 0.5], ['sfx/zip', s('d3_10') + 0.4, 0.6], ['../ep01/sfx/run', s('d3_10') + 1.0, 0.6], ['sfx/slamdoor', s('d3_11') - 0.3, 0.8], ['../ep01/sfx/hiss', s('d3_11') + 0.4, 0.4],

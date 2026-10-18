@@ -12,7 +12,7 @@ function room(ctx, t, TL) {
   const s = TL.s, e = TL.e, w = TL.w, t0 = TL.blocks.final.t0;
   const L = id => s(id), tK = L('f_knock'), tTurn = L('f_turn');
   // ---- Sarah: on the floor facing the hero; stands and backs away to the wall on "You were bitten?!"
-  const sUp = clamp((t - L('f_08')) / 0.5), sx = kf([[L('f_07') + 1.5, SX0], [L('f_07') + 4.5, SX0 - 120], [L('f_08'), SX0 - 120], [L('f_08') + 0.8, 120], [L('f_18') + 2, 120], [L('f_18') + 3.5, 60]], t);
+  const sUp = clamp((t - L('f_08')) / 0.5), sx = kf([[L('f_07') + 1.5, SX0], [L('f_07') + 4.5, SX0 - 120], [L('f_08'), SX0 - 120], [L('f_08') + 0.8, 120], [L('f_18') + 2, 120], [L('f_18') + 3.5, 60], [TL.w('f_23', 'Now'), 60], [TL.w('f_23', 'Now') + 0.8, 0]], t);
   const sPose = t < L('f_08') ? A.sitPose(sx, F, { lean: -0.05, footN: [sx - 175, F - 12], footF: [sx - 150, F - 12] })
     : { x: sx, ground: F, walk: { w: 1, u: (SX0 - sx) / 90, stride: 90 }, lean: -0.15, crouch: lerp(0.6, 0.1, sUp) };
   const sAt = t < tK ? [0.9, 0] : [0.95, -0.1];
@@ -30,7 +30,7 @@ function room(ctx, t, TL) {
     if (t > L('f_09') - 0.1 && t < L('f_knock')) grips = { near: [J0.head[0] - 130, J0.head[1] + 40], far: [J0.head[0] - 60, J0.head[1] + 20] };   // hands up
     else if (t > L('f_04') - 0.1 && t < L('f_04') + 0.6) grips = { near: [J0.shN[0] - 120, J0.shN[1] + 100], far: [J0.shN[0] - 90, J0.shN[1] + 110] }; }
   else if (t < tTurn) { hPose = { x: hx, ground: F, walk: { w: 1, u: (hx - HX0) / 100, stride: 100 }, lean: 0.05, crouch: t > hUp + 1.6 ? clamp((t - hUp - 1.6) / 0.4) * 0.45 : 0 }; hFlip = true; }
-  else { hPose = { x: 1500, ground: F, crouch: lerp(0.45, 0.0, clamp((t - tTurn) / 0.8)), lean: lerp(0.3, 0.0, clamp((t - tTurn) / 0.8)), tilt: 0 }; hFlip = t < L('f_23') + 1.5; }
+  else { hPose = { x: 1500, ground: F, crouch: lerp(0.45, 0.0, clamp((t - tTurn) / 0.8)), lean: lerp(0.3, 0.0, clamp((t - tTurn) / 0.8)), tilt: 0 }; hFlip = t < TL.w('f_23', 'Now'); }
   const look2door = t > tK ? [0.95, -0.1] : [-0.9, 0];
   if (t < L('f_02')) ex = { eyes: 'closed', brow: 'worried', mouth: 'wide', open: 0.3 + 0.2 * Math.sin(t * 8), sweat: 1 };
   else if (t < L('f_03')) ex = C.talk(TL, 'f_02', t, { eyes: 'half', brow: 'up', mouth: 'smile', look: [-0.9, 0] });
@@ -44,16 +44,18 @@ function room(ctx, t, TL) {
   else if (t < L('f_17')) ex = C.talk(TL, 'f_16', t, { eyes: 'wide', brow: 'up', mouth: 'flat', look: look2door });
   else if (t < hUp) ex = { eyes: 'tiny', brow: 'worried', mouth: 'frown', look: t < L('f_18') + 2 ? look2door : [-0.6, 0.7], sweat: 1 };
   else if (t < tTurn) ex = C.talk(TL, 'f_19', t, { eyes: 'open', brow: 'worried', mouth: 'flat', look: [-0.9, 0.2] });
-  else { const u = clamp((t - tTurn) / 2.0); ex = { eyes: u > 0.6 ? 'wide' : 'half', brow: u > 0.5 ? 'angry' : 'worried', mouth: u > 0.7 ? 'smirk' : 'flat', look: [0.9, 0], blood: u > 0.3 ? 1 : 0 }; }
-  const gray = t > tTurn ? 0.15 + clamp((t - tTurn) / 2.0) * 0.55 : 0.15, red = t > tTurn ? clamp((t - tTurn - 0.6) / 1.2) : 0;
+  else { const u = clamp((t - tTurn) / 3.5); ex = { eyes: u > 0.6 ? 'wide' : 'half', brow: u > 0.5 ? 'angry' : 'worried', mouth: u > 0.7 ? 'smirk' : 'flat', look: [0.9, 0], blood: u > 0.3 ? 1 : 0 }; }
+  const gray = t > tTurn ? 0.15 + clamp((t - tTurn) / 3.5) * 0.55 : 0.15, red = t > tTurn ? clamp((t - tTurn - 0.8) / 3.0) : 0;
   const sleeveDown = !(t > L('f_03') - 0.3 && t < L('f_04'));
   // ---- camera
+  const wNow = TL.w('f_23', 'Now'), wWhat = TL.w('f_23', 'whatever');
+  const sHead = z => { const J = R.solve(K.SARAH.S, sPose); return [2 * sPose.x - J.head[0] - 40, J.head[1] + 70, z]; };   // Sarah is drawn flipped
   const hc = (z, dx = 0, dy = 0) => { const J = R.solve(K.HERO.S, hPose); return [J.head[0] + dx, J.head[1] + dy, z]; };
   const keys = [[t0, 960, 620, 1.2], [t0 + 0.2, 960, 640, 1.35, 'm', 4], [L('f_02'), HX0 - 40, 640, 2.4, 's'], [L('f_03'), SX0 + 40, 620, 2.2, 's'], [L('f_03') + 1.2, HX0 - 160, 780, 2.6, 's'],
     [L('f_04'), HX0 - 40, 640, 2.6, 's'], [L('f_05'), SX0 + 40, 620, 2.6, 's'], [L('f_06'), HX0 - 30, 620, 3.0, 's'], [L('f_07'), 960, 620, 1.3, 's'], [L('f_08'), 700, 600, 1.15, 's'], [L('f_09'), HX0 - 40, 640, 2.3, 's'], [L('f_10'), 300, 560, 2.2, 'w'],
     [tK, 1300, 560, 1.15, 'w'], [tK + 0.2, 1540, 560, 1.4, 'm', 3.0], [L('f_12'), HX0 - 30, 630, 2.6, 's'], [L('f_13'), 250, 580, 2.2, 's'], [L('f_14'), HX0 - 30, 630, 2.6, 's'], [L('f_15'), 1540, 600, 1.6, 's'],
     [L('f_16'), HX0 - 30, 620, 3.4, 's'], [L('f_17'), 1540, 600, 1.7, 's'], [L('f_18'), 900, 600, 1.1, 's'], [L('f_18') + 0.3, 950, 620, 1.3, 'm', 5],
-    [hUp, 1300, 600, 1.3, 's'], [hUp + 1.7, 1580, 560, 1.9, 'm', 1.0], [tTurn, 1560, 420, 3.0, 'cut'], [tTurn + 0.2, 1560, 410, 3.6, 'm', 2.0], [L('f_23'), 820, 560, 0.95, 's'], [L('f_23') + 0.4, 840, 560, 1.02, 'm', 6], [L('f_24'), 1820, 820, 2.8, 's']];
+    [hUp, 1300, 600, 1.3, 's'], [hUp + 1.7, 1580, 560, 1.9, 'm', 1.0], [tTurn, ...hc(3.0, 0, 40), 'cut'], [tTurn + 0.2, ...hc(5.4, 0, 5), 'm', wNow - tTurn - 0.2], [wNow, ...sHead(2.8), 'cut'], [wWhat - 0.3, 760, 560, 0.98, 'cut'], [wWhat, 780, 560, 1.07, 'm', L('f_24') - wWhat], [L('f_24'), 1820, 820, 2.8, 's']];
   ctx.save(); cam(ctx, t, keys);
   const knocking = win(t, tK, tK + 0.6) || win(t, L('f_11') - 0.1, L('f_11') + 0.3), dsh = knocking ? Math.sin(t * 90) * 6 : 0;
   if (win(t, tK, tK + 0.4)) shake(ctx, t, 10);
@@ -104,7 +106,7 @@ function black(ctx, t, TL) {
 }
 const capTop = (t, TL) => t > TL.s('f_24') - 0.2;
 const cues = TL => { const s = TL.s; return [['sfx/breath', s('f_01'), 0.5], ['../ep01/sfx/pop', s('f_04'), 0.4], ['sfx/sting', s('f_06') + 0.1, 0.35], ['../sfx/boom', s('f_10'), 0.4],
-  ['../ep01/sfx/knock', s('f_knock'), 0.95], ['../sfx/drone', s('f_knock') + 0.3, 0.45], ['sfx/riser', s('f_16') - 0.2, 0.4], ['sfx/hit', s('f_17') + 1.1, 0.5], ['sfx/heartbeat', s('f_18') + 1, 0.4],
+  ['../ep01/sfx/knock', s('f_knock'), 0.95], ['../sfx/drone', s('f_knock') + 0.3, 0.28, 4.5], ['sfx/riser', s('f_16') - 0.2, 0.4], ['sfx/hit', s('f_17') + 1.1, 0.5], ['sfx/heartbeat', s('f_18') + 1, 0.4],
   ['sfx/creak', s('f_19') - 0.2, 0.5], ['sfx/riser', s('f_22'), 0.4], ['sfx/heartbeat', s('f_turn'), 0.7], ['sfx/growl', s('f_turn') + 1.2, 0.35], ['sfx/radio', s('f_24') - 0.3, 0.8],
   ['sfx/hit', s('f_black'), 0.7], ['sfx/stamp', s('f_black') + 0.5, 0.6], ['../ep01/sfx/squeak', s('f_black') + 2.4, 0.8]]; };
 const music = TL => [['../ep01/sfx/music', TL.s('f_02'), TL.s('f_knock'), 0.16], ['sfx/musicbox', TL.s('f_18'), TL.s('f_22'), 0.16], ['sfx/music3', TL.s('f_turn'), TL.s('f_black'), 0.3]];
