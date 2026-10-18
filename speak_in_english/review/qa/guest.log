@@ -1,0 +1,8 @@
+{"ep":"guest","style":"v1","layout":"v1","samples":436,"issues":7,"critical":2,"major":2,"minor":3}
+  critical face_covered_by_card         97.75-101.25s listener
+  critical speaker_offscreen            92.00-92.25s 
+  major    face_covered_by_bubble       93.25-95.75s listener
+  major    bubble_covered               11.00-11.50s 
+  minor    bubble_too_long              73.50-88.50s 
+  minor    face_under_platform_ui       93.25-95.50s 
+  minor    face_covered_by_bubble       45.50-46.25s listener

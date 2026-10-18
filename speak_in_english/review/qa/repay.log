@@ -1,0 +1,11 @@
+{"ep":"repay","style":"v1","layout":"v1","samples":453,"issues":10,"critical":7,"major":0,"minor":3}
+  critical face_covered_by_bubble       82.75-92.25s speaker,listener
+  critical face_covered_by_card         23.75-32.00s listener
+  critical face_covered_by_card         55.50-63.75s listener
+  critical face_covered_by_card         73.75-81.50s listener
+  critical face_covered_by_card         41.50-47.00s listener
+  critical face_covered_by_card         13.25-17.25s listener
+  critical face_covered_by_card         101.00-104.75s listener
+  minor    bubble_too_long              82.75-92.25s 
+  minor    face_covered_by_bubble       37.00-41.25s listener
+  minor    face_covered_by_bubble       9.50-13.25s listener

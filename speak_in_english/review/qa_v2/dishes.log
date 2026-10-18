@@ -1,0 +1,27 @@
+{"ep":"dishes","style":"v2","layout":"v2","samples":457,"issues":26,"critical":0,"major":14,"minor":12}
+  major    face_covered_by_overlay      52.25-56.50s listener
+  major    face_covered_by_overlay      52.50-56.50s listener
+  major    crop_feet_ankles             97.50-99.00s 
+  major    crop_feet_ankles             97.50-98.50s 
+  major    crop_feet_ankles             39.50-40.25s 
+  major    crop_feet_ankles             39.50-40.25s 
+  major    crop_feet_ankles             69.25-70.00s 
+  major    crop_feet_ankles             69.25-70.00s 
+  major    crop_feet_ankles             33.75-34.25s 
+  major    crop_feet_ankles             33.75-34.25s 
+  major    crop_feet_ankles             52.50-53.00s 
+  major    crop_feet_ankles             52.50-53.00s 
+  major    crop_feet_ankles             94.00-94.50s 
+  major    crop_feet_ankles             94.00-94.50s 
+  minor    bubble_too_long              80.75-93.75s 
+  minor    crop_knees                   23.00-23.75s 
+  minor    crop_knees                   23.00-23.75s 
+  minor    face_covered_by_insert       42.25-43.00s listener
+  minor    crop_knees                   51.75-52.50s 
+  minor    crop_knees                   62.25-63.00s 
+  minor    crop_knees                   62.25-63.00s 
+  minor    crop_knees                   11.50-12.00s 
+  minor    crop_knees                   11.50-12.00s 
+  minor    crop_knees                   47.25-47.75s 
+  minor    crop_knees                   52.00-52.50s 
+  minor    crop_knees                   97.00-97.50s 

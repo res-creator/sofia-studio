@@ -1,0 +1,158 @@
+{
+ "summary": {
+  "ep": "sorry",
+  "style": "v2",
+  "layout": "v2",
+  "samples": 504,
+  "issues": 12,
+  "critical": 0,
+  "major": 3,
+  "minor": 9
+ },
+ "issues": [
+  {
+   "ep": "sorry",
+   "type": "face_covered_by_bubble",
+   "key": "43|1720|#4A4F5C",
+   "start": 95,
+   "end": 95.75,
+   "n": 4,
+   "sev": "major",
+   "max": 0.5463917525773195,
+   "info": "listener",
+   "dur": 1
+  },
+  {
+   "ep": "sorry",
+   "type": "face_covered_by_bubble",
+   "key": "1|1480|#2E4A7A",
+   "start": 69.75,
+   "end": 70.25,
+   "n": 3,
+   "sev": "major",
+   "max": 0.32989690721649484,
+   "info": "speaker",
+   "dur": 0.75
+  },
+  {
+   "ep": "sorry",
+   "type": "face_covered_by_overlay",
+   "key": "6|1360|#B9A2D8",
+   "start": 107.75,
+   "end": 108,
+   "n": 2,
+   "sev": "major",
+   "max": 0.6597938144329897,
+   "info": "listener",
+   "dur": 0.5
+  },
+  {
+   "ep": "sorry",
+   "type": "bubble_too_long",
+   "key": "c2_her",
+   "start": 87.25,
+   "end": 95.5,
+   "n": 34,
+   "sev": "minor",
+   "max": 8,
+   "info": "",
+   "dur": 8.5
+  },
+  {
+   "ep": "sorry",
+   "type": "face_covered_by_overlay",
+   "key": "6|1360|#B9A2D8",
+   "start": 111.25,
+   "end": 115.75,
+   "n": 18,
+   "sev": "minor",
+   "max": 0.3917525773195876,
+   "info": "listener",
+   "dur": 4.75
+  },
+  {
+   "ep": "sorry",
+   "type": "face_covered_by_overlay",
+   "key": "6|1360|#B9A2D8",
+   "start": 109,
+   "end": 110.25,
+   "n": 6,
+   "sev": "minor",
+   "max": 0.31958762886597936,
+   "info": "listener",
+   "dur": 1.5
+  },
+  {
+   "ep": "sorry",
+   "type": "face_covered_by_overlay",
+   "key": "40|1500|#9A7E50",
+   "start": 111.25,
+   "end": 112.25,
+   "n": 4,
+   "sev": "minor",
+   "max": 0.20618556701030927,
+   "info": "listener",
+   "dur": 1.25
+  },
+  {
+   "ep": "sorry",
+   "type": "crop_knees",
+   "key": "2|1720|#3A3F4B",
+   "start": 17.75,
+   "end": 18.5,
+   "n": 4,
+   "sev": "minor",
+   "max": 75.8493946075439,
+   "info": "",
+   "dur": 1
+  },
+  {
+   "ep": "sorry",
+   "type": "crop_knees",
+   "key": "40|1500|#9A7E50",
+   "start": 58.75,
+   "end": 59.5,
+   "n": 4,
+   "sev": "minor",
+   "max": 15.79416799545288,
+   "info": "",
+   "dur": 1
+  },
+  {
+   "ep": "sorry",
+   "type": "crop_knees",
+   "key": "1|1480|#2E4A7A",
+   "start": 58.75,
+   "end": 59.5,
+   "n": 4,
+   "sev": "minor",
+   "max": 21.202810859680085,
+   "info": "",
+   "dur": 1
+  },
+  {
+   "ep": "sorry",
+   "type": "face_covered_by_overlay",
+   "key": "1|1480|#2E4A7A",
+   "start": 108.25,
+   "end": 108.75,
+   "n": 2,
+   "sev": "minor",
+   "max": 0.4020618556701031,
+   "info": "listener",
+   "dur": 0.75
+  },
+  {
+   "ep": "sorry",
+   "type": "face_covered_by_overlay",
+   "key": "42|1700|#2E5AA6",
+   "start": 108.25,
+   "end": 108.75,
+   "n": 2,
+   "sev": "minor",
+   "max": 0.36082474226804123,
+   "info": "listener",
+   "dur": 0.75
+  }
+ ]
+}

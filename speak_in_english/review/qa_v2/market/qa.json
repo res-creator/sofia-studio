@@ -1,0 +1,146 @@
+{
+ "summary": {
+  "ep": "market",
+  "style": "v2",
+  "layout": "v2",
+  "samples": 462,
+  "issues": 11,
+  "critical": 0,
+  "major": 2,
+  "minor": 9
+ },
+ "issues": [
+  {
+   "ep": "market",
+   "type": "face_covered_by_bubble",
+   "key": "51|1640|#7A5A3A",
+   "start": 92.5,
+   "end": 93.25,
+   "n": 4,
+   "sev": "major",
+   "max": 0.6082474226804123,
+   "info": "listener",
+   "dur": 1
+  },
+  {
+   "ep": "market",
+   "type": "face_covered_by_bubble",
+   "key": "1|1480|#E9B23B",
+   "start": 48,
+   "end": 48.25,
+   "n": 2,
+   "sev": "major",
+   "max": 0.21649484536082475,
+   "info": "speaker,listener",
+   "dur": 0.5
+  },
+  {
+   "ep": "market",
+   "type": "bubble_too_long",
+   "key": "c2_her",
+   "start": 83,
+   "end": 93,
+   "n": 41,
+   "sev": "minor",
+   "max": 11,
+   "info": "",
+   "dur": 10.25
+  },
+  {
+   "ep": "market",
+   "type": "crop_knees",
+   "key": "1|1480|#E9B23B",
+   "start": 39.25,
+   "end": 41,
+   "n": 7,
+   "sev": "minor",
+   "max": 63.834086608886764,
+   "info": "",
+   "dur": 2
+  },
+  {
+   "ep": "market",
+   "type": "crop_knees",
+   "key": "50|1700|#3C6FB4",
+   "start": 19.25,
+   "end": 20,
+   "n": 4,
+   "sev": "minor",
+   "max": 76.00362300872803,
+   "info": "",
+   "dur": 1
+  },
+  {
+   "ep": "market",
+   "type": "crop_knees",
+   "key": "50|1700|#3C6FB4",
+   "start": 14.5,
+   "end": 14.75,
+   "n": 2,
+   "sev": "minor",
+   "max": 67.59970664978027,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "market",
+   "type": "crop_knees",
+   "key": "6|1360|#B9A2D8",
+   "start": 40.75,
+   "end": 41,
+   "n": 2,
+   "sev": "minor",
+   "max": 26.7670955657959,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "market",
+   "type": "crop_knees",
+   "key": "51|1640|#7A5A3A",
+   "start": 96.5,
+   "end": 96.75,
+   "n": 2,
+   "sev": "minor",
+   "max": 64.52935791015625,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "market",
+   "type": "face_covered_by_overlay",
+   "key": "1|1480|#E9B23B",
+   "start": 101,
+   "end": 101.25,
+   "n": 2,
+   "sev": "minor",
+   "max": 0.24742268041237114,
+   "info": "listener",
+   "dur": 0.5
+  },
+  {
+   "ep": "market",
+   "type": "crop_knees",
+   "key": "51|1640|#7A5A3A",
+   "start": 101.25,
+   "end": 101.5,
+   "n": 2,
+   "sev": "minor",
+   "max": 69.29997310638419,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "market",
+   "type": "crop_knees",
+   "key": "51|1640|#7A5A3A",
+   "start": 106.75,
+   "end": 107,
+   "n": 2,
+   "sev": "minor",
+   "max": 68.13432655334464,
+   "info": "",
+   "dur": 0.5
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{"ep":"shoes","style":"v2","layout":"v2","samples":451,"issues":36,"critical":2,"major":11,"minor":23}
+  critical face_covered_by_overlay      98.00-104.25s speaker,listener
+  critical face_covered_by_overlay      7.25-7.75s speaker
+  major    face_covered_by_overlay      65.25-71.75s listener
+  major    face_covered_by_overlay      35.75-39.00s speaker,listener
+  major    face_covered_by_overlay      46.50-49.50s speaker,listener
+  major    face_covered_by_overlay      36.25-39.00s listener
+  major    face_covered_by_overlay      47.50-49.50s listener
+  major    face_covered_by_overlay      96.25-97.50s listener,speaker
+  major    crop_feet_ankles             99.00-99.75s 
+  major    face_covered_by_overlay      6.75-7.25s listener
+  major    crop_feet_ankles             22.50-23.00s 
+  major    crop_feet_ankles             22.50-23.00s 
+  major    crop_feet_ankles             99.00-99.50s 
+  minor    bubble_too_long              77.25-91.50s 
+  minor    face_covered_by_bubble       78.00-90.75s listener
+  minor    face_covered_by_overlay      99.75-104.00s listener
+  minor    crop_knees                   93.50-96.00s 
+  minor    crop_knees                   34.25-35.75s 
+  minor    crop_knees                   46.50-47.75s 
+  minor    crop_knees                   64.25-65.25s 
+  minor    crop_knees                   20.25-21.00s 
+  minor    crop_knees                   44.50-45.25s 
+  minor    crop_knees                   58.50-59.25s 
+  minor    crop_knees                   61.75-62.50s 
+  minor    crop_knees                   62.00-62.75s 
+  minor    crop_knees                   93.50-94.25s 
+  minor    crop_knees                   96.50-97.25s 
+  minor    crop_knees                   6.75-7.25s 
+  minor    crop_knees                   6.75-7.25s 
+  minor    crop_knees                   35.50-36.00s 
+  minor    crop_knees                   44.50-45.00s 
+  minor    crop_knees                   58.50-59.00s 
+  minor    crop_knees                   65.00-65.50s 
+  minor    crop_knees                   95.50-96.00s 
+  minor    crop_knees                   98.25-98.75s 
+  minor    crop_knees                   98.25-98.75s 
