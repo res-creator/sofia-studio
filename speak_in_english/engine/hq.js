@@ -29,8 +29,12 @@ const SHADOW = '#5B3C6E', WARM = '#FFF4DC', INK = '#2C1E24';
 const dark = (c, k = 0.24) => mix(shade(c, 0.86), SHADOW, k);
 const hiCol = (c, k = 0.3) => mix(c, WARM, k);
 const lineOf = c => mix(shade(c, 0.5), INK, 0.45);
-// Character drawing style: 'v1' (published look, default) or 'v2' (cleaner legs/shoes). Per character: cfg.style; globally: env CHAR_STYLE.
-const STYLE = process.env.CHAR_STYLE || 'v1';
+// Character drawing style: 'v2' (default for new episodes) or 'v1' (original look). Per character: cfg.style; per run: env CHAR_STYLE=v1|v2.
+// Episodes that already exist (published or finished) stay pinned to v1 so a re-render reproduces them exactly.
+// Every new episode renderer gets v2 automatically.
+const V1_EPISODES = new Set(['airport', 'cancel', 'cast_sheet', 'courier', 'date', 'dishes', 'gift', 'guest', 'haircut', 'kyle', 'lie', 'loan', 'london', 'market', 'marry', 'names', 'nosy', 'party', 'quit', 'raise', 'repay', 'restaurant', 'shoes', 'smell', 'sorry', 'things', 'vendor', 'weight']);
+const MAIN = require('path').basename(process.argv[1] || '', '.js');
+const STYLE = process.env.CHAR_STYLE || (V1_EPISODES.has(MAIN) ? 'v1' : 'v2');
 const styleOf = cfg => cfg.style || STYLE;
 
 // ---------- path builder with offset (for cel shading crescents)
