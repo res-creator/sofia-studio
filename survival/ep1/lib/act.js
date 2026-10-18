@@ -22,7 +22,10 @@ function packFloor(ctx, x, ground, o = {}) {
   ctx.restore();
 }
 // generic seated/standing hero with backpack defaults
-function hero(ctx, h) { return K.person(ctx, K.HERO, Object.assign({ e: {} }, h), h.tag || 'hero'); }
+function hero(ctx, h) {
+  if (h.bat === 'hang') { const J0 = R.solve(K.HERO.S, Object.assign({}, h.pose, { near: null, far: null })); const b = K.P.bat([J0.shF[0] - 30, J0.shF[1] + K.HERO.S.ua + K.HERO.S.fa - 70], 2.15, 250);
+    h = Object.assign({}, h, { grips: Object.assign({}, h.grips, { far: b.low }), underFar: c => K.P.drawBat(c, D2, b) }); }
+  return K.person(ctx, K.HERO, Object.assign({ e: {} }, h), h.tag || 'hero'); }
 function gary(ctx, h) { return K.person(ctx, K.GARY, Object.assign({ e: {}, neckBite: true }, h), h.tag || 'gary'); }
 function sarah(ctx, h) { return K.person(ctx, K.SARAH, Object.assign({ e: {} }, h), h.tag || 'sarah'); }
 // head-only close-up of a character (for inserts, reflections): draws the rig head at `at`

@@ -97,7 +97,7 @@ function zombiePose(ch, x, ground, t, o = {}) {
   const st = o.stride || 70, u = o.u ?? 0, seed = o.seed || 0, S = ch.S, reach = S.ua + S.fa;
   const pose = { x, ground, lean: 0.26 + Math.sin(t * 2 + seed) * 0.04, crouch: 0.12, tilt: 0.25 * Math.sin(t * 1.3 + seed) - 0.1, walk: o.still ? null : { w: 1, u, stride: st } };
   const J0 = R.solve(S, pose), lunge = o.lunge || 0;
-  const arm = (sh, k) => [sh[0] - reach * (0.82 + 0.15 * lunge) + Math.sin(t * 3 + k + seed) * 10, sh[1] + 18 - lunge * 30 + Math.cos(t * 2.4 + k + seed) * 12];
+  const arm = (sh, k) => [sh[0] - reach * (0.74 + 0.12 * lunge) + Math.sin(t * 3 + k + seed) * 10, sh[1] + 18 - lunge * 30 + Math.cos(t * 2.4 + k + seed) * 12];
   pose.near = arm(J0.shN, 0); pose.far = arm(J0.shF, 1.7);
   return pose;
 }

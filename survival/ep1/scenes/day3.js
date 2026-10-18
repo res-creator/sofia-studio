@@ -76,11 +76,11 @@ function room(ctx, t, TL) {
   // supplies on the floor + open backpack
   SE.ITEMS.can(ctx, 1830, F, 0.9); SE.ITEMS.water(ctx, 1900, F, 0.7); SE.ITEMS.battery(ctx, 1970, F, 0.6);
   A.packFloor(ctx, PACK, F, { open: t < t10 + 0.5, radio: false });
-  if (t < t10 + 1.0) P.drawBat(ctx, S, P.bat([2020, F - 10], -0.05, 240));
+  if (t < t10 + 0.9) P.drawBat(ctx, S, P.bat([1380, F - 10], -0.05, 240));
   // cat (drawn after the floor props)
   K.flip(ctx, cat.x, cat.flip, () => K.cat(ctx, cat.x, cat.g, cat.s, t, cat.pose, cat.o));
   // hero
-  A.hero(ctx, { pose, flip, grips, e: C.blink(ex, t, 0.2), t, pack: runOut, front: null });
+  A.hero(ctx, { pose, flip, grips, e: C.blink(ex, t, 0.2), t, pack: runOut, bat: runOut ? 'hang' : null });
   if (duckVis && t < tLand) K.duck(ctx, duckP[0], duckP[1], 0.62, duckRot, S, { squash: duckSq });
   ctx.restore();
   if (t > tSq && t < tSq + 0.7) C.sfxWord(ctx, t, tSq, 'SQUEAK!', 640, 300, { size: 120 });

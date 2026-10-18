@@ -170,7 +170,7 @@ function climbPose(ch, k, d, o = {}) {
   const foot = (off, base) => { const c = Math.floor(u + off), fu = u + off - c, sp = 2 * c + base;
     if (fu < 0.5) return stepPos(sp); const e = (fu - 0.5) / 0.5, q = e * e * (3 - 2 * e), A0 = stepPos(sp), B0 = stepPos(sp + 2);
     return [lerp(A0[0], B0[0], q), lerp(A0[1], B0[1], q) - Math.sin(e * Math.PI) * 34]; };
-  const fN = foot(0, 0), fF = foot(0.5, -1), flip = F.dir > 0;
+  const fN = foot(0, 0), fF = foot(0.5, -1), down = o.down; delete o.down; const flip = down ? F.dir < 0 : F.dir > 0;
   const loc = p => [flip ? 2 * bx - p[0] : p[0], p[1] - S0.ankle];
   const pose = Object.assign({ x: bx, ground: stairY(k, d) + rise * 0.6, lean: 0.18, crouch: 0.05, footN: loc(fN), footF: loc(fF) }, o);
   return { pose, flip, x: bx, y: stairY(k, d) };
@@ -215,32 +215,34 @@ function city(ctx, t, kind, o = {}) { // layered skyline with smoke columns and 
   layer(22, FLOOR - 40, 200, 520, kind === 'night' ? '#1c1a30' : '#5d6488', 9, 0.45);
   if (o.heli) { const hx = -800 + (t * 120) % 4000; ctx.fillStyle = '#222'; ctx.beginPath(); ctx.ellipse(hx, -200, 40, 18, 0, 0, 7); ctx.fill(); ctx.fillRect(hx + 30, -204, 60, 6); line(ctx, [[hx - 60, -222], [hx + 60, -222]], 3, '#222'); }
 }
+const EDGE = -250, STREET = FLOOR + 2500;
 function roof(ctx, t, kind = 'day', o = {}) {
   sky(ctx, kind, t); city(ctx, t, kind, o);
-  // parapet + roof deck
-  paint(ctx, S, c => c.rect(-2000, FLOOR - 70, 6000, 70), '#8c8a86'); paint(ctx, S, c => c.rect(-2000, FLOOR - 84, 6000, 18), '#a8a6a0');
-  paint(ctx, S, c => c.rect(-2000, FLOOR, 6000, 800), '#6f6d6a', { k: 0.92 }); ctx.fillStyle = 'rgba(0,0,0,0.1)'; for (let x = -2000; x < 4000; x += 200) ctx.fillRect(x, FLOOR, 4, 800);
-  // vent unit with duct (x 1500-1900)
+  facade(ctx, t, kind);
+  paint(ctx, S, c => c.rect(EDGE, FLOOR - 70, 6000, 70), '#8c8a86'); paint(ctx, S, c => c.rect(EDGE, FLOOR - 84, 6000, 18), '#a8a6a0');
+  paint(ctx, S, c => c.rect(EDGE, FLOOR, 6000, 46), '#6f6d6a', { k: 0.92 }); ctx.fillStyle = 'rgba(0,0,0,0.1)'; for (let x = EDGE; x < 4000; x += 200) ctx.fillRect(x, FLOOR, 4, 46);
+  paint(ctx, S, c => c.rect(EDGE - 24, FLOOR - 50, 30, 96), '#a8a6a0');
   rr(ctx, 1500, FLOOR - 300, 400, 300, 10, '#b7bec6'); for (let y = FLOOR - 270; y < FLOOR - 40; y += 30) line(ctx, [[1530, y], [1870, y]], 5, '#8d96a0');
+  ctx.save(); ctx.translate(o.ductShake || 0, 0);
   rr(ctx, 1560, FLOOR - 470, 120, 190, 6, '#a7aeb6'); paint(ctx, S, c => c.ellipse(1620, FLOOR - 470, 60, 18, 0, 0, 7), '#8d96a0');
-  if (o.ventGrill !== false) { rr(ctx, 1580, FLOOR - 430, 80, 70, 4, '#5d646c'); for (let i = 0; i < 4; i++) line(ctx, [[1588, FLOOR - 420 + i * 16], [1652, FLOOR - 420 + i * 16]], 4, '#3a3f45'); }
-  // stair-house (x 2300-2900) with the roof door at 2400-2620
+  rr(ctx, 1580, FLOOR - 430, 80, 70, 4, '#2a2e33');
+  if (o.ventEyes) { glow(ctx, 1620, FLOOR - 395, 140, `rgba(255,40,30,${0.9 * o.ventEyes})`); ctx.fillStyle = `rgba(255,70,50,${o.ventEyes})`; for (const ex of [1602, 1638]) { ctx.beginPath(); ctx.ellipse(ex, FLOOR - 395, 12, 8, 0, 0, 7); ctx.fill(); } }
+  for (let i = 0; i < 4; i++) line(ctx, [[1588, FLOOR - 420 + i * 16], [1652, FLOOR - 420 + i * 16]], 4, '#5d646c');
+  ctx.restore();
   rr(ctx, 2300, FLOOR - 560, 700, 560, 6, '#a39a8c'); paint(ctx, S, c => c.rect(2280, FLOOR - 590, 740, 40), '#7d766c');
-  paint(ctx, S, c => c.rect(2400, FLOOR - 420, 230, 420), '#6d7a86'); rr(ctx, 2590, FLOOR - 230, 22, 50, 6, PAL.metal);
-  if (o.pipe) line(ctx, [[2420, FLOOR - 240], [2620, FLOOR - 240]], 18, '#5a5d63');
-  if (o.barred) { paint(ctx, S, c => c.rect(2390, FLOOR - 250, 250, 26), '#8a6a45'); }
-  // water tank silhouette
-  rr(ctx, -600, FLOOR - 420, 260, 300, 20, '#7a6a5a'); for (const x of [-580, -380]) line(ctx, [[x, FLOOR - 120], [x, FLOOR]], 12, '#4a4038');
+  if (o.doorOpen) { ctx.fillStyle = '#1a1a20'; ctx.fillRect(2400, FLOOR - 420, 230, 420); paint(ctx, S, c => { c.moveTo(2400, FLOOR - 420); c.lineTo(2340, FLOOR - 440); c.lineTo(2340, FLOOR + 10); c.lineTo(2400, FLOOR); c.closePath(); }, '#6d7a86'); }
+  else { ctx.save(); ctx.translate(o.doorShake || 0, 0); paint(ctx, S, c => c.rect(2400, FLOOR - 420, 230, 420), '#6d7a86'); rr(ctx, 2590, FLOOR - 230, 22, 50, 6, PAL.metal); rr(ctx, 2420, FLOOR - 230, 22, 50, 6, PAL.metal);
+    const pr = o.pipeRattle || 0; if (o.pipe) { line(ctx, [[2380, FLOOR - 205 + pr], [2650, FLOOR - 205 - pr]], 20, S.ink); line(ctx, [[2380, FLOOR - 205 + pr], [2650, FLOOR - 205 - pr]], 13, '#7a7d84'); }
+    ctx.restore(); }
+  rr(ctx, 400, FLOOR - 420, 260, 300, 20, '#7a6a5a'); for (const x of [420, 620]) line(ctx, [[x, FLOOR - 120], [x, FLOOR]], 12, '#4a4038');
 }
-// facade below the roof edge for the tilt-down (y FLOOR .. FLOOR + 2600) with the street at the bottom
-const STREET = FLOOR + 2500;
-function facade(ctx, t) {
-  ctx.fillStyle = '#a07d62'; ctx.fillRect(-2000, FLOOR - 70, 6000, STREET - FLOOR + 70);
-  for (let y = FLOOR + 100; y < STREET - 300; y += 320) for (let x = -1800; x < 3800; x += 300) { paint(ctx, S, c => c.rect(x, y, 160, 200), '#3a4258'); paint(ctx, S, c => c.rect(x - 10, y + 200, 180, 16), '#d9c7a8'); }
-  paint(ctx, S, c => c.rect(-2000, STREET, 6000, 600), '#4a4a50'); ctx.fillStyle = '#d6d0a0'; for (let x = -2000; x < 4000; x += 260) ctx.fillRect(x, STREET + 140, 140, 14);
-  paint(ctx, S, c => c.rect(-2000, STREET - 30, 6000, 30), '#8d8a84');
-  // abandoned car
-  paint(ctx, S, c => c.roundRect(2100, STREET - 160, 420, 130, 30), '#d6413a'); paint(ctx, S, c => c.roundRect(2180, STREET - 230, 250, 90, 24), '#b8352f'); for (const w of [2190, 2430]) paint(ctx, S, c => c.arc(w, STREET - 30, 40, 0, 7), '#222');
+function facade(ctx, t, kind = 'day') {
+  ctx.fillStyle = kind === 'night' ? '#1c1a2a' : '#4a4660'; ctx.fillRect(-4000, FLOOR + 300, EDGE + 4000, STREET - FLOOR);
+  paint(ctx, S, c => c.rect(EDGE, FLOOR, 6000, STREET - FLOOR), '#a07d62');
+  for (let y = FLOOR + 140; y < STREET - 300; y += 320) for (let x = EDGE + 120; x < 3800; x += 300) { paint(ctx, S, c => c.rect(x, y, 160, 200), '#3a4258'); paint(ctx, S, c => c.rect(x - 10, y + 200, 180, 16), '#d9c7a8'); }
+  paint(ctx, S, c => c.rect(-4000, STREET, 8000, 600), '#4a4a50'); ctx.fillStyle = '#d6d0a0'; for (let x = -4000; x < 4000; x += 260) ctx.fillRect(x, STREET + 140, 140, 14);
+  paint(ctx, S, c => c.rect(-4000, STREET - 30, 8000, 30), '#8d8a84');
+  paint(ctx, S, c => c.roundRect(-1500, STREET - 160, 420, 130, 30), '#d6413a'); paint(ctx, S, c => c.roundRect(-1420, STREET - 230, 250, 90, 24), '#b8352f'); for (const w of [-1410, -1170]) paint(ctx, S, c => c.arc(w, STREET - 30, 40, 0, 7), '#222');
 }
 // ---------------------------------------------------------------- stair-house interior (tech room)
 // metal door to the roof at left (x 260-640), door to the stairs at right (x 1360-1700, with keyhole), metal panel (reflection) centre-left
@@ -293,4 +295,4 @@ function bandaid(ctx, x, y, s = 1, rot = 0) {
   for (const sx of [-80, -60, 60, 80]) for (const sy of [-12, 8]) { ctx.fillStyle = 'rgba(0,0,0,0.12)'; ctx.beginPath(); ctx.arc(sx, sy, 3, 0, 7); ctx.fill(); }
   ctx.restore();
 }
-module.exports = { FLOOR, PAL, APT, apartment, chain, tvNews, tvStatic, aptNight, fridgeInside, hallway, graffiti, market, shelf, crowd, cartDraw, ITEMS, ST, flight, stairY, climbPose, stairwell, sky, city, roof, facade, STREET, TR, techRoom, techGrade, aidKit, bandaid, rect, rr };
+module.exports = { FLOOR, PAL, APT, apartment, chain, tvNews, tvStatic, aptNight, fridgeInside, hallway, graffiti, market, shelf, crowd, cartDraw, ITEMS, ST, flight, stairY, climbPose, stairwell, sky, city, roof, facade, STREET, EDGE, TR, techRoom, techGrade, aidKit, bandaid, rect, rr };
