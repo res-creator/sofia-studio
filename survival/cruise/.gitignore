@@ -1,0 +1,11 @@
+out/blocks/
+out/*.wav
+out/*.f32
+out/list.txt
+out/*.log
+out/ep1_preview.mp4
+out/d*.png
+out/fa.png
+out/cold*.png
+out/thumb_full.png
+out/check_*.png

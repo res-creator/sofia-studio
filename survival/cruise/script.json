@@ -28,7 +28,7 @@
       ["s04_1", "N", "Food for three weeks. Water for nine days. And one steel door.", "reuse:l07"],
       ["s04_2", "N", "You push a cart against the door... and you wait.", "reuse:l09"],
       ["s04_3", "N", "Rule number two. Be quiet. They follow sound.", "reuse:l08"],
-      ["s04_4", "N", "That night, the engines stop. Nobody tells you why."]
+      ["s04_4", "N", "That night, the engines stop. The lights stay on. Nobody tells you why."]
     ]},
     { "id": "s05", "title": "DAYS 2–5 — The rhythm", "lines": [
       ["s05_1", "N", "Day three. You learn the ship's new rhythm."],
@@ -44,7 +44,7 @@
       ["s07_1", "N", "Day nine. The last bottle of water."],
       ["s07_2", "N", "The nearest water is the ice machine in the crew mess. Forty steps down a dark corridor."],
       ["s07_3", "N", "Unfortunately, the ice machine is the loudest thing on this ship."],
-      ["s07_4", "CG", "This is the Coast Guard. All ports are closed. Any vessel carrying infected will not be allowed to reach the coast. We will use force."]
+      ["s07_4", "CG", "This is the Coast Guard on channel sixteen. All ports are closed. Any vessel carrying infected will not be allowed to reach the coast. We will use force."]
     ]},
     { "id": "s08", "title": "Night 10 — The speakers", "lines": [
       ["s08_1", "N", "That night, the speakers in the ceiling click on."],

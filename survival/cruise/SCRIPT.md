@@ -112,10 +112,10 @@ danger (s01–s02) → decision (s03) → waiting (s04) → routine + mystery (s
 **S01** — N: Day one. You're a waiter on a cruise ship. Three thousand passengers. Seven days at sea. / N: Then every phone on board buzzes at once. Stay in your cabins. / CAPTAIN (PA): Ladies and gentlemen, this is your captain. Please return to your cabins. We are changing course to the nearest— / N: And the captain stops talking... mid-sentence.
 **S02** — N: On Deck Five, people are walking strangely. Too slowly. And they're coming this way. / N: You learn the most important thing on this ship in the next ten seconds. / N: They don't see you. They hear you.
 **S03** — N: Rule number one. Don't run to the lifeboats. Everyone else will. / N: You go down. To the one place nobody thinks about. The galley.
-**S04** — N: Food for three weeks. Water for nine days. And one steel door. / N: You push a cart against the door... and you wait. / N: Rule number two. Be quiet. They follow sound. / N: That night, the engines stop. Nobody tells you why.
+**S04** — N: Food for three weeks. Water for nine days. And one steel door. / N: You push a cart against the door... and you wait. / N: Rule number two. Be quiet. They follow sound. / N: That night, the engines stop. The lights stay on. Nobody tells you why.
 **S05** — N: Day three. You learn the ship's new rhythm. / N: Footsteps above you at noon. Something dragging at midnight. And long, long silences in between. / N: Day five. Someone has been in the cold room. / N: Half your bread is gone. And the infected don't close doors behind them.
 **S06** — N: Day seven. You wait in the dark to see who's stealing your food. / N: Whoever it is... knows this ship better than you do.
-**S07** — N: Day nine. The last bottle of water. / N: The nearest water is the ice machine in the crew mess. Forty steps down a dark corridor. / N: Unfortunately, the ice machine is the loudest thing on this ship. / COAST GUARD (radio): This is the Coast Guard. All ports are closed. Any vessel carrying infected will not be allowed to reach the coast. We will use force.
+**S07** — N: Day nine. The last bottle of water. / N: The nearest water is the ice machine in the crew mess. Forty steps down a dark corridor. / N: Unfortunately, the ice machine is the loudest thing on this ship. / COAST GUARD (radio): This is the Coast Guard on channel sixteen. All ports are closed. Any vessel carrying infected will not be allowed to reach the coast. We will use force.
 **S08** — N: That night, the speakers in the ceiling click on. / N: Nobody speaks. Someone is just... listening. Then they click off.
 **S09** — N: Day twelve. Through the porthole... a light. A lighthouse. The ship has drifted toward land. / N: Then, deep below you... the engines start again. / N: And the ship turns away from land. / N: Someone else is alive on this ship. And they don't want to be rescued.
 **S10** — N: You could stay in the galley. Safe. Fed. And blind. / N: Or you could find out who's driving. / N: Rule number two works both ways.
@@ -130,6 +130,12 @@ danger (s01–s02) → decision (s03) → waiting (s04) → routine + mystery (s
 - The timer nearly gave him away (s04) → he uses the same weakness as a weapon (s10).
 - The PA clicks (s08) → the same click introduces the bridge voice (s13): "thank you for keeping us alive" = he was listening the whole time.
 - Fuel lasted 30 days because the ship mostly drifted; Rosa ran the engines only near the coast (s11) → fuel for one day on day 29 (s12) → the bridge takes over exactly when the last fuel decides the destination (s13).
+
+## Technical plausibility (fixed in v1.1)
+- **Power vs. propulsion:** a cruise ship's diesel generators make electricity; the propulsion motors are separate. "All stop" stops the propellers, the lights, fridges and the crew-mess ice machine keep working (s04: "The lights stay on"). Potable water comes from the ship's tanks, which is why the ice machine still makes ice on day 9.
+- **Coast Guard information:** the hero takes a handheld **marine VHF radio** (from a lifeboat kit on the crew-mess wall); the Coast Guard broadcasts on **channel 16**, the international distress channel. Rosa hears the same broadcasts on the engine-control VHF.
+- **Why Rosa keeps away from land:** the broadcasts say infected vessels will be stopped by force, and she has no way to prove the ship is clean. She can't reach the bridge, so she steers with the **emergency (local) steering** in the steering-gear room and runs the engines only when the drift brings them close to the coast — that is also why the fuel lasts 30 days.
+- **Day 30:** the bridge can override local steering because the bridge console always has priority once someone takes command there.
 
 ## Removed in the review (weak or repetitive)
 - A second chase on the lifeboat deck (replaced by one wide reveal shot in s03).
