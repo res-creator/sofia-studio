@@ -103,7 +103,7 @@ function human(ctx, cfg, st = {}) {
   ctx.save();
   if (st.flip) ctx.scale(-1, 1);
   // shadow on floor
-  if (st.floorShadow !== false) softShadow(ctx, 0, 0, sw * 1.5, 34, 0.25);
+  if (st.floorShadow !== false) { if (styleOf(cfg) === 'v2') { softShadow(ctx, 0, 0, sw * 1.9, 40, 0.12); softShadow(ctx, 0, 0, sw * 1.15, 20, 0.3); } else softShadow(ctx, 0, 0, sw * 1.5, 34, 0.25); }
   const items = st.items || {};
   // ---- back hair (long hair behind body)
   const head = { x: lean * 40 + (st.headX || 0), y: -h + hh + drop + breathe * 0.4 + (st.headY || 0) };
@@ -157,7 +157,9 @@ function legs(ctx, cfg, st, g) {
     // shoe
     shoe(ctx, cfg, ax + s * 8, ay + 22, s);
   };
+  if (v2 && bottom.type !== 'skirt') hipsV2(ctx, bottom, h, hipW, yHip, yCrotch);   // under the legs: only the crotch area stays visible
   legDraw(-1); legDraw(1);
+  if (v2) { if (bottom.type === 'skirt') hipsV2(ctx, bottom, h, hipW, yHip, yCrotch); return; }
   if (bottom.type === 'skirt') paint(ctx, q => { q.m(-hipW * 1.02, yHip - 30); q.l(hipW * 1.02, yHip - 30); q.l(hipW * 1.25, -h * 0.27); q.q(0, -h * 0.25, -hipW * 1.25, -h * 0.27); q.z(); }, bottom.col, { box: [-hipW, yHip, hipW, -h * 0.27], sd: 18 });
   // hips/pelvis band
   if (bottom.type !== 'skirt') paint(ctx, q => { q.m(-hipW * 1.0, yHip - 40); q.l(hipW * 1.0, yHip - 40); q.q(hipW * 1.08, yHip + 30, hipW * 0.8, yCrotch + 40); q.q(0, yCrotch + 60, -hipW * 0.8, yCrotch + 40); q.q(-hipW * 1.08, yHip + 30, -hipW, yHip - 40); q.z(); }, bottom.col, { box: [-hipW, yHip, hipW, yCrotch], sd: 14, lw: bottom.type === 'shorts' ? 4.5 : 0 });
@@ -180,7 +182,7 @@ function legV2(ctx, cfg, st, s, L) {
     const hem = sole - 50 * fs;                          // hem rests on the top of the shoe; most of the shoe stays visible
     drawShoe();
     ctx.save(); ctx.beginPath(); ctx.rect(-1e4, -1e4, 2e4, hem + 1e4); ctx.clip();
-    paint(ctx, limb(pp), bottom.col, { box: lbox, sd: 12, hd: 6, inner: c => { c.strokeStyle = rgba(dark(bottom.col, .4), .35); c.lineWidth = 3.5; c.beginPath(); c.moveTo(kx - 18, ky - 10); c.quadraticCurveTo(kx, ky + 6, kx + 18, ky - 8); c.moveTo(kx - 12, ky + 14); c.quadraticCurveTo(kx, ky + 26, kx + 14, ky + 12); c.stroke(); if (bottom.dots) { c.fillStyle = bottom.dots; for (let i = 0; i < 40; i++) { const yy = lerp(hy, ay, (i % 10) / 10 + 0.04), xx = lerp(hx, ax, (i % 10) / 10) + ((Math.floor(i / 10) - 1.5) * lr * 0.55) + ((i % 2) * lr * 0.2); c.beginPath(); c.arc(xx, yy, 10, 0, 7); c.fill(); } } if (bottom.type === 'jeans') { c.strokeStyle = rgba('#F2C14E', .5); c.lineWidth = 2.5; c.setLineDash([6, 6]); c.beginPath(); c.moveTo(hx + s * lr * 0.7, hy); c.lineTo(ax + s * cr * 0.8, ay); c.stroke(); c.setLineDash([]); } } });
+    paint(ctx, limb(pp), bottom.col, { box: lbox, sd: 12, hd: 6, inner: c => { c.strokeStyle = rgba(dark(bottom.col, .4), .2); c.lineWidth = 3; c.beginPath(); c.moveTo(kx - 18, ky - 10); c.quadraticCurveTo(kx, ky + 6, kx + 18, ky - 8); c.moveTo(kx - 12, ky + 14); c.quadraticCurveTo(kx, ky + 26, kx + 14, ky + 12); c.stroke(); if (bottom.dots) { c.fillStyle = bottom.dots; for (let i = 0; i < 40; i++) { const yy = lerp(hy, ay, (i % 10) / 10 + 0.04), xx = lerp(hx, ax, (i % 10) / 10) + ((Math.floor(i / 10) - 1.5) * lr * 0.55) + ((i % 2) * lr * 0.2); c.beginPath(); c.arc(xx, yy, 10, 0, 7); c.fill(); } } if (bottom.type === 'jeans') { c.strokeStyle = rgba('#F2C14E', .5); c.lineWidth = 2.5; c.setLineDash([6, 6]); c.beginPath(); c.moveTo(hx + s * lr * 0.7, hy); c.lineTo(ax + s * cr * 0.8, ay); c.stroke(); c.setLineDash([]); } } });
     ctx.restore();
     // hem: outline + soft fold shadow on the shoe
     // leg centre and half-width where the hem cuts it (shin may be slanted in squat/sit)
@@ -212,6 +214,13 @@ function shoe(ctx, cfg, x, y, s) {
   ctx.restore();
 }
 
+// v2 hips: a straight-sided waistband that follows the legs (no bell flare), a soft centre seam on trousers,
+// and a calmer skirt gradient.
+function hipsV2(ctx, bottom, h, hipW, yHip, yCrotch) {
+  if (bottom.type === 'skirt') { paint(ctx, q => { q.m(-hipW * 1.02, yHip - 30); q.l(hipW * 1.02, yHip - 30); q.l(hipW * 1.25, -h * 0.27); q.q(0, -h * 0.25, -hipW * 1.25, -h * 0.27); q.z(); }, bottom.col, { box: [-hipW, yHip, hipW, -h * 0.27], sd: 11, hd: 5 });
+    ctx.strokeStyle = rgba(dark(bottom.col, .4), .22); ctx.lineWidth = 3; ctx.lineCap = 'round'; for (const k of [-0.45, 0.4]) { ctx.beginPath(); ctx.moveTo(hipW * k * 0.9, yHip + 40); ctx.quadraticCurveTo(hipW * k * 1.05, (yHip - h * 0.27) / 2, hipW * k * 1.15, -h * 0.27 - 10); ctx.stroke(); } return; }
+  paint(ctx, q => { q.m(-hipW * 0.98, yHip - 40); q.l(hipW * 0.98, yHip - 40); q.l(hipW * 0.97, yCrotch + 6); q.q(hipW * 0.55, yCrotch + 22, 0, yCrotch + 46); q.q(-hipW * 0.55, yCrotch + 22, -hipW * 0.97, yCrotch + 6); q.z(); }, bottom.col, { box: [-hipW, yHip, hipW, yCrotch], sd: 2, hd: 2, lw: 0 });
+}
 function torso(ctx, cfg, st, g) {
   const { h, sw, ww, hipW, yNeck, ySh, yWaist, yHip, hw, skin, B } = g;
   const top = cfg.top || { type: 'tee', col: '#7FA6D8' };
@@ -235,9 +244,10 @@ function torso(ctx, cfg, st, g) {
   } else {
     paint(ctx, body, top.col, { box, sd: 20, hd: 8 });
   }
-  if (B.belly > 0) paint(ctx, bellyFn, top.col, { sd: 16, hd: 10, lw: 0, sa: 0.5, ha: 0.35 });
+  if (B.belly > 0) paint(ctx, bellyFn, top.col, styleOf(cfg) === 'v2' ? { sd: 16, hd: 10, lw: 0, sa: 0.22, ha: 0.14 } : { sd: 16, hd: 10, lw: 0, sa: 0.5, ha: 0.35 });
   if (top.dots) { ctx.save(); ctx.clip(mk(body)); ctx.fillStyle = top.dots; for (let i = 0; i < 70; i++) { const x = -sw * 1.1 + (i % 7) * sw * 0.36 + ((Math.floor(i / 7) % 2) * sw * 0.18), y = ySh - 10 + Math.floor(i / 7) * 62; ctx.beginPath(); ctx.arc(x, y, 11, 0, 7); ctx.fill(); } ctx.restore(); ctx.strokeStyle = lineOf(top.col); ctx.lineWidth = 4.5; ctx.stroke(mk(body)); }
-  const fold = (pts, a = 0.35) => { ctx.strokeStyle = rgba(dark(top.col, 0.4), a); ctx.lineWidth = 4; ctx.beginPath(); pts.forEach(([x1, y1, cx, cy, x2, y2]) => { ctx.moveTo(x1, y1); ctx.quadraticCurveTo(cx, cy, x2, y2); }); ctx.stroke(); };
+  const v2 = styleOf(cfg) === 'v2';
+  const fold = (pts, a = 0.35) => { ctx.strokeStyle = rgba(dark(top.col, 0.4), v2 ? a * 0.55 : a); ctx.lineWidth = v2 ? 3 : 4; ctx.beginPath(); pts.forEach(([x1, y1, cx, cy, x2, y2]) => { ctx.moveTo(x1, y1); ctx.quadraticCurveTo(cx, cy, x2, y2); }); ctx.stroke(); };
   const T = top.type;
   if (T === 'tee' || T === 'longsleeve' || T === 'sweater' || T === 'polo' || T === 'tank' || T === 'kidtee') {
     // collar
@@ -249,7 +259,7 @@ function torso(ctx, cfg, st, g) {
   if (T === 'hoodie' || T === 'gymtop') {
     if (T === 'hoodie') paint(ctx, q => { q.m(-hw * 0.95, yNeck - 30); q.q(0, yNeck + 70, hw * 0.95, yNeck - 30); q.q(hw * 1.1, yNeck + 40, 0, yNeck + 80); q.q(-hw * 1.1, yNeck + 40, -hw * 0.95, yNeck - 30); q.z(); }, top.col, { sd: 10, hd: 6 });
     // zipper + stripes
-    ctx.strokeStyle = shade(top.col, 0.7); ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(0, yNeck + 40); ctx.lineTo(0, yHip); ctx.stroke();
+    ctx.strokeStyle = v2 ? rgba(shade(top.col, 0.7), 0.7) : shade(top.col, 0.7); ctx.lineWidth = v2 ? 4 : 6; ctx.beginPath(); ctx.moveTo(0, yNeck + 40); ctx.lineTo(0, yHip); ctx.stroke();
     ctx.fillStyle = '#D9D9D9'; rr(ctx, -8, yNeck + 44, 16, 30, 4); ctx.fill();
     if (T === 'gymtop') { ctx.save(); ctx.clip(mk(body)); ctx.fillStyle = top.col2 || '#FFFFFF'; ctx.fillRect(-sw * 1.3, ySh + 20, sw * 0.42, 16); ctx.fillRect(sw * 0.88, ySh + 20, sw * 0.42, 16); ctx.restore(); }
     fold([[-ww * 0.8, yWaist - 60, -ww * 0.4, yWaist - 20, -ww * 0.3, yWaist + 30], [ww * 0.7, yWaist - 90, ww * 0.4, yWaist - 50, ww * 0.25, yWaist]]);
@@ -266,7 +276,7 @@ function torso(ctx, cfg, st, g) {
       paint(ctx, q => { q.m(-16, yNeck + 26); q.l(16, yNeck + 26); q.l(24, ySh + 190); q.l(0, ySh + 220); q.l(-24, ySh + 190); q.z(); }, top.tie || '#C23C4A', { sd: 6, hd: 3 });
       paint(ctx, q => { q.m(-hw * 0.6, yNeck - 8); q.l(-hw * 0.18, ySh + 240); q.l(-hw * 0.5, ySh + 120); q.l(-hw * 0.95, ySh + 60); q.z(); }, shade(top.col, 1.08), { sd: 6, hd: 4 });
       paint(ctx, q => { q.m(hw * 0.6, yNeck - 8); q.l(hw * 0.18, ySh + 240); q.l(hw * 0.5, ySh + 120); q.l(hw * 0.95, ySh + 60); q.z(); }, shade(top.col, 1.08), { sd: 6, hd: 4 });
-      ctx.fillStyle = shade(top.col, 0.6); for (const y of [ySh + 290, ySh + 380]) { ctx.beginPath(); ctx.arc(hw * 0.12, y, 9, 0, 7); ctx.fill(); }
+      ctx.fillStyle = shade(top.col, 0.6); for (const y of [ySh + 290, ySh + 380]) { ctx.beginPath(); ctx.arc(v2 ? 0 : hw * 0.12, y, v2 ? 8 : 9, 0, 7); ctx.fill(); }
     } else {
       paint(ctx, q => { q.m(-hw * 1.2, yNeck - 30); q.b(-hw * 1.4, yNeck + 80, -hw * 0.6, ySh + 200, 0, ySh + 160); q.b(hw * 0.6, ySh + 200, hw * 1.4, yNeck + 80, hw * 1.2, yNeck - 30); q.q(0, yNeck + 40, -hw * 1.2, yNeck - 30); q.z(); }, top.col2 || '#F5EBDD', { sd: 10, hd: 8, inner: c => { c.strokeStyle = rgba('#B8A48A', .5); c.lineWidth = 3; for (let i = 0; i < 40; i++) { const a = hash(i) * 6.28, x = (hash(i * 3) - .5) * hw * 2.2, y = yNeck + hash(i * 7) * 200; c.beginPath(); c.moveTo(x, y); c.lineTo(x + Math.cos(a) * 14, y + Math.sin(a) * 14); c.stroke(); } } });
       ctx.fillStyle = '#FBF7EE'; for (let i = 0; i < 11; i++) { const a = Math.PI * (0.15 + i * 0.07); ctx.beginPath(); ctx.arc(Math.cos(a) * hw * 0.5, yNeck + 10 + Math.sin(a) * 60, 9, 0, 7); ctx.fill(); ctx.strokeStyle = '#C9BBA8'; ctx.lineWidth = 2; ctx.stroke(); }
