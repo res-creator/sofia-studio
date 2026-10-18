@@ -64,7 +64,7 @@ function poolDeck(ctx, t, o = {}) {
   for (const lx of [300, 650, 2350, 2700]) { paint(ctx, S, c => { c.moveTo(lx, FLOOR - 40); c.lineTo(lx + 220, FLOOR - 40); c.lineTo(lx + 260, FLOOR - 110); c.lineTo(lx + 240, FLOOR - 115); c.lineTo(lx + 210, FLOOR - 55); c.lineTo(lx, FLOOR - 55); c.closePath(); }, '#f2efe8'); line(ctx, [[lx + 20, FLOOR - 40], [lx + 20, FLOOR]], 6, '#9aa3ab'); line(ctx, [[lx + 200, FLOOR - 40], [lx + 200, FLOOR]], 6, '#9aa3ab'); }
   rr(ctx, 3050, 520, 420, 380, 10, '#6a4a32'); rect(ctx, 3030, 500, 460, 30, '#8a6a45'); for (let i = 0; i < 6; i++) paint(ctx, S, c => c.roundRect(3080 + i * 60, 440, 20, 60, 4), ['#3fae63', '#c8402e', '#f0aa22'][i % 3]);
   // stairway to the lower decks (left) with a doorway + the PA speaker on its wall
-  rr(ctx, -380, 260, 520, 640, 8, '#e3dfd6'); rect(ctx, -300, 420, 260, 480, '#1a1c22'); txt(ctx, 'DECK 5 ↓', -170, 380, 40, '#2a3a5a');
+  rr(ctx, -380, 260, 520, 640, 8, '#e3dfd6'); rect(ctx, -300, 420, 260, 480, '#1a1c22'); txt(ctx, 'DECK 5', -170, 380, 40, '#2a3a5a');
   paint(ctx, S, c => { c.moveTo(60, 300); c.lineTo(120, 280); c.lineTo(120, 360); c.lineTo(60, 340); c.closePath(); }, '#9aa3ab'); rr(ctx, 30, 296, 36, 48, 6, '#7a828a');   // PA horn speaker
   if (o.speakerGlow) glow(ctx, 100, 320, 160, `rgba(255,220,160,${0.3 * o.speakerGlow})`);
   // string lights
@@ -96,7 +96,7 @@ function lobby(ctx, t, o = {}) {
   for (let d = 0; d < 5; d++) line(ctx, [[440, 430 + d * 18], [1030, 430 + d * 18]], 2, '#9aa3ab'); ctx.fillStyle = '#c8402e'; ctx.fillRect(560, 486, 60, 14); ctx.fillStyle = '#3fae63'; ctx.fillRect(820, 422, 120, 10);
   txt(ctx, 'LIFEBOATS', 880, 400, 22, '#3fae63'); txt(ctx, 'GALLEY', 590, 545, 22, '#ff6a4a'); txt(ctx, 'YOU ARE HERE', 760, 620, 26, '#ffd23f'); paint(ctx, S, c => c.arc(760, 590, 9, 0, 7), '#ffd23f');
   // up stairs (crowd) right, CREW ONLY door left
-  rr(ctx, 1500, 160, 700, 740, 6, '#a89a84'); for (let i = 0; i < 10; i++) rect(ctx, 1520 + i * 60, FLOOR - (i + 1) * 60, 680 - i * 60, 18, '#8a7c66'); txt(ctx, 'LIFEBOATS ↑', 1850, 200, 44, '#2a6a3a');
+  rr(ctx, 1500, 160, 700, 740, 6, '#a89a84'); for (let i = 0; i < 10; i++) rect(ctx, 1520 + i * 60, FLOOR - (i + 1) * 60, 680 - i * 60, 18, '#8a7c66'); txt(ctx, 'TO LIFEBOATS', 1850, 200, 44, '#2a6a3a');
   rect(ctx, -120, 240, 300, FLOOR - 240, '#9aa3ab'); rect(ctx, -100, 260, 260, FLOOR - 260, o.crewOpen ? '#0c0d10' : '#6a7480'); rr(ctx, -90, 330, 240, 60, 6, '#d6413a'); txt(ctx, 'CREW ONLY', 30, 360, 38, '#fff');
 }
 // lifeboat deck seen from above-ish (wide)
@@ -168,7 +168,7 @@ function pov(ctx, t, z, kind, o = {}) {
   for (let i = 14; i >= 0; i--) { const d = i * step - off; if (d < -100) continue; const s = far(Math.max(d, 1)), hw = (tun ? 520 : 900) * s, hh = (tun ? 420 : 520) * s;
     const shadeK = clamp(1 - d / 2800); ctx.strokeStyle = tun ? `rgba(150,160,170,${shadeK})` : `rgba(200,170,120,${shadeK})`; ctx.lineWidth = Math.max(1, 14 * s); ctx.strokeRect(cx - hw, cy - hh, hw * 2, hh * 2);
     if (!tun && i % 2 === 0) { ctx.fillStyle = `rgba(110,70,50,${shadeK})`; ctx.fillRect(cx - hw + 8 * s, cy - hh * 0.6, 140 * s, hh * 1.6); ctx.fillRect(cx + hw - 148 * s, cy - hh * 0.6, 140 * s, hh * 1.6); }
-    if (tun) { ctx.fillStyle = `rgba(255,210,60,${shadeK * 0.7})`; if (i === 6) txt(ctx, 'ENGINE CONTROL →', cx + hw * 0.3, cy - hh * 0.6, 60 * s, `rgba(255,210,60,${shadeK})`); } }
+    if (tun) { ctx.fillStyle = `rgba(255,210,60,${shadeK * 0.7})`; if (i === 6) txt(ctx, 'TO ENGINE CONTROL', cx + hw * 0.3, cy - hh * 0.6, 60 * s, `rgba(255,210,60,${shadeK})`); } }
   // floor / ceiling lines to the vanishing point
   ctx.strokeStyle = 'rgba(0,0,0,0.5)'; ctx.lineWidth = 4; for (const [x, y] of [[0, 0], [W, 0], [0, H], [W, H]]) { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(cx, cy); ctx.stroke(); }
   if (o.things) o.things(ctx, (d) => ({ s: far(Math.max(1, d - z)), x: cx, y: cy, d: d - z }));
@@ -187,13 +187,13 @@ function engineRoom(ctx, t, o = {}) {
   rect(ctx, 1200, 700, 2400, 22, '#5a5e64'); for (let x = 1220; x < 3600; x += 90) line(ctx, [[x, 700], [x, 600]], 6, '#c9a030'); line(ctx, [[1200, 600], [3600, 600]], 8, '#c9a030');
   // control console (on the catwalk level)
   rr(ctx, 1760, 420, 620, 280, 10, '#2e3238'); rr(ctx, 1780, 440, 300, 100, 6, '#0e1a14');
-  const ovr = o.override; txt(ctx, 'STEERING', 1930, 462, 22, '#7ad0a0'); txt(ctx, ovr ? 'BRIDGE — OVERRIDE' : 'ENGINE CONTROL', 1930, 500, ovr ? 26 : 30, ovr ? (Math.floor(t * 4) % 2 ? '#ff5a3a' : '#ffb0a0') : '#9ff0c0');
+  const ovr = o.override; txt(ctx, 'STEERING', 1930, 462, 22, '#7ad0a0'); txt(ctx, ovr ? 'BRIDGE OVERRIDE' : 'ENGINE CONTROL', 1930, 500, ovr ? 26 : 30, ovr ? (Math.floor(t * 4) % 2 ? '#ff5a3a' : '#ffb0a0') : '#9ff0c0');
   // rudder indicator
   paint(ctx, S, c => c.arc(ENG.rudder[0], ENG.rudder[1] + 120, 54, Math.PI, 0), '#1a1e24'); line(ctx, [[ENG.rudder[0], ENG.rudder[1] + 120], [ENG.rudder[0] + Math.sin(o.rudder || 0) * 48, ENG.rudder[1] + 120 - Math.cos(o.rudder || 0) * 48]], 5, '#ffd23f'); txt(ctx, 'RUDDER', ENG.rudder[0], ENG.rudder[1] + 140, 18, '#9aa3ab');
   // fuel gauge
   paint(ctx, S, c => c.arc(ENG.fuel[0], ENG.fuel[1], 46, 0, 7), '#1a1e24'); const fa = -Math.PI * 0.75 + (o.fuel ?? 0.5) * Math.PI * 1.5; line(ctx, [[ENG.fuel[0], ENG.fuel[1]], [ENG.fuel[0] + Math.cos(fa - Math.PI / 2) * 38, ENG.fuel[1] + Math.sin(fa - Math.PI / 2) * 38]], 4, (o.fuel ?? 0.5) < 0.15 ? '#ff5a3a' : '#e8e2d0'); txt(ctx, 'FUEL', ENG.fuel[0], ENG.fuel[1] + 60, 18, '#9aa3ab');
   // CCTV monitor
-  rr(ctx, 2140, 280, 230, 160, 8, '#16181c'); ctx.save(); ctx.beginPath(); ctx.rect(2152, 292, 206, 136); ctx.clip(); (o.cctv || cctvStatic)(ctx, t, 2152, 292, 206, 136); ctx.restore(); txt(ctx, 'CAM 01 · BRIDGE', 2255, 455, 16, '#9aa3ab');
+  rr(ctx, 2140, 280, 230, 160, 8, '#16181c'); ctx.save(); ctx.beginPath(); ctx.rect(2152, 292, 206, 136); ctx.clip(); (o.cctv || cctvStatic)(ctx, t, 2152, 292, 206, 136); ctx.restore(); txt(ctx, 'CAM 01 - BRIDGE', 2255, 455, 16, '#9aa3ab');
   // VHF set + stove corner + tally on a pipe
   rr(ctx, 2420, 470, 90, 60, 6, '#f0c020'); if (o.stove) { rr(ctx, 3100, 830, 160, 60, 6, '#3a3d44'); glow(ctx, 3180, 820, 70, 'rgba(90,140,255,0.6)'); }
   if (o.tally) { rr(ctx, 2700, 380, 50, 260, 6, '#7a848c'); for (let i = 0; i < o.tally; i++) line(ctx, [[2708 + (i % 5) * 8, 400 + Math.floor(i / 5) * 40], [2708 + (i % 5) * 8, 430 + Math.floor(i / 5) * 40]], 3, '#e8e2d0'); }
@@ -212,6 +212,6 @@ function cctvBridge(ctx, t, x, y, w, h, o = {}) {
   ctx.fillStyle = '#e9e4dc'; ctx.fillRect(fx + 18 * k, fy - 46 * k, 9 * k, 9 * k);   // bandaged hand on the wheel
   ctx.strokeStyle = '#0a0e10'; ctx.lineWidth = 3 * k; ctx.beginPath(); ctx.arc(fx + 20 * k, fy - 42 * k, 16 * k, 0, 7); ctx.stroke();
   if (turn > 0.3) { ctx.fillStyle = `rgba(230,230,220,${(turn - 0.3) * 1.2})`; ctx.fillRect(fx + 8 * k, fy - 84 * k, 4 * k, 3 * k); }   // a glint as the face starts to turn
-  ctx.fillStyle = 'rgba(160,255,190,0.06)'; for (let i = 0; i < h; i += 3) ctx.fillRect(x, y + i, w, 1); txt(ctx, 'REC ●', x + w - 30, y + 12, 12 * k, '#ff4b3a');
+  ctx.fillStyle = 'rgba(160,255,190,0.06)'; for (let i = 0; i < h; i += 3) ctx.fillRect(x, y + i, w, 1); txt(ctx, 'REC', x + w - 34, y + 12, 12 * k, '#ff4b3a'); ctx.fillStyle = '#ff4b3a'; ctx.beginPath(); ctx.arc(x + w - 14, y + 8, 4 * k, 0, 7); ctx.fill();
 }
 module.exports = { FLOOR, rect, rr, txt, darkness, tint, sky, sea, liner, lighthouse, poolDeck, corridor, corridorLight, lobby, lifeboats, GAL, galley, crewMess, pov, ENG, engineRoom, cctvStatic, cctvBridge };
