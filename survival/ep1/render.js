@@ -11,7 +11,8 @@ function frame(ctx, t, b) {
   C.whipSmear(ctx, C.getWhip());
   if (!info.noFinish) C.finish(ctx, t, info.vig ?? 0.45);
   if (info.post) info.post(ctx);
-  if (!info.noCaps) C.caption(ctx, CAPS, t, sc.capTop ? sc.capTop(t, TL) : false);
+  // burned-in captions are off for the US upload (CAPTIONS=1 turns them back on for previews)
+  if (process.env.CAPTIONS === '1' && !info.noCaps) C.caption(ctx, CAPS, t, sc.capTop ? sc.capTop(t, TL) : false);
   if (info.fade) C.fade(ctx, info.fade);
 }
 const [mode, a1, a2, a3] = process.argv.slice(2);
