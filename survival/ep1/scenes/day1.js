@@ -76,7 +76,7 @@ function home(ctx, t, TL) {
   const pose = { x: wp.x, ground: F, walk: wp.walk, lean: run ? 0.32 : 0.05, crouch: run ? 0.15 : 0 };
   const J0 = R.solve(K.HERO.S, pose);
   const reachPack = t > tg && t < tg + 0.45 && wp.x < 1000 ? [775 + 20, 420] : null;
-  A.hero(ctx, { pose, grips: { near: reachPack || (t > s('d1_fridge') + 0.5 && t < tg ? [1080, 560] : null) }, e: run ? { eyes: 'wide', brow: 'angry', mouth: 'grin', look: [-1, 0] } : { eyes: 'half', brow: 'flat', mouth: 'flat' }, pack: grabbed, t });
+  A.hero(ctx, { pose, grips: { near: reachPack || (t > s('d1_fridge') + 0.85 && t < tg ? [1080, 560] : null) }, e: run ? { eyes: 'wide', brow: 'angry', mouth: 'grin', look: [-1, 0] } : { eyes: 'half', brow: 'flat', mouth: 'flat' }, pack: grabbed, t });
   ctx.restore();
   return {};
 }
@@ -112,7 +112,7 @@ function market(ctx, t, TL) {
   if (tt < turn) { SE.crowd(ctx, tt, -400, 3800, 10, 1, 0.5); }
   // absurd gags: TP tower runner, pickle-jar lady
   if (tt < turn) { const gx = 3600 - ((tt - t8) * 380) % 3400; const ph = tt * 10;
-    K.person(ctx, SHOPPER, { pose: { x: gx, ground: F, walk: { w: 1, u: (3600 - gx) / 150, stride: 150 }, lean: 0.2 }, grips: { near: null }, e: { eyes: 'wide', brow: 'worried', mouth: 'wide', open: 0.6 }, t: tt,
+    K.person(ctx, SHOPPER, { pose: { x: gx, ground: F, walk: { w: 1, u: (3600 - gx) / 130, stride: 130 }, lean: 0.2 }, grips: { near: null }, e: { eyes: 'wide', brow: 'worried', mouth: 'wide', open: 0.6 }, t: tt,
       front: (c, J) => { for (let i = 0; i < 5; i++) SE.ITEMS.tp(c, J.head[0] + 10, J.head[1] - 90 - i * 52, 0.9); } }, 'shopper');
     const lx = 600 + Math.sin(tt * 0.8) * 120; K.person(ctx, LADY, { pose: { x: lx, ground: F, lean: -0.08 }, grips: { near: [lx - 80, F - 240], far: [lx - 40, F - 260] }, e: { eyes: 'happy', mouth: 'biggrin' }, t: tt, hold: c => pickle(c, lx - 80, F - 160) }, 'lady'); }
   // Gary (appears for the turn)

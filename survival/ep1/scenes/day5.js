@@ -37,7 +37,7 @@ function roof(ctx, t, TL) {
   // after the bite: arm raised, looking at it; band-aid on it later
   const armUp = t >= tA && t < tSt + 1.4;
   if (armUp && t < t9 + 0.4 || (t > t11 && t < tSt + 1.4)) { grips.near = [J0.head[0] - 150, J0.head[1] + 140]; }
-  const kneel = t >= t9 + 0.4 && t < t11; if (kneel) { pose.crouch = 0.6; pose.lean = 0.35; const J1 = R.solve(K.HERO.S, pose); grips = { near: [J1.shN[0] - 140, F - 190], far: [J1.shN[0] - 110, F - 190] }; }
+  const kneel = t >= t9 + 0.4 && t < t11; if (kneel) { pose.crouch = 0.6; pose.lean = 0.35; const J1 = R.solve(K.HERO.S, pose); grips = { near: [J1.shN[0] - 130, F - 215], far: [J1.shN[0] - 100, F - 215] }; }
   const band = t > t11 + 1.2;
   // expressions
   if (t < t0 + 0.6) ex = { eyes: 'closed', mouth: 'o', open: 0.15 };
@@ -179,9 +179,9 @@ function tech(ctx, t, TL) {
   if (open) { ctx.fillStyle = '#16161a'; ctx.fillRect(1370, 200, 340, F - 200); }
   // Sarah then the hero run in from the stairwell door (moving left); the hero turns and slams it
   const sx = kf([[t18, 1560], [t18 + 1.0, 900], [t18 + 2.2, 760]], t), hx = kf([[t18 + 0.4, 1580], [t18 + 1.2, 1300], [t18 + 2.0, 1300], [t18 + 2.8, 1150]], t);
-  const sPose = lt < 2.2 ? { x: sx, ground: F, walk: { w: 1, u: (1560 - sx) / 150, stride: 150 }, lean: 0.3 } : A.sitPose(760, F, { lean: lerp(0.1, -0.1, clamp(lt - 2.2)), hop: lerp(60, 150, clamp((lt - 2.2) / 0.3)) });
+  const sPose = lt < 2.2 ? { x: sx, ground: F, walk: { w: 1, u: (1560 - sx) / 125, stride: 125 }, lean: 0.3 } : A.sitPose(760, F, { lean: lerp(0.1, -0.1, clamp(lt - 2.2)), hop: lerp(115, 150, clamp((lt - 2.2) / 0.3)) });
   K.person(ctx, K.SARAH, { pose: sPose, e: { eyes: lt > 2.4 ? 'closed' : 'wide', brow: 'worried', mouth: 'wide', open: 0.5, sweat: 1 }, t }, 'sarah tech');
-  if (lt > 0.4) { const slamming = lt > 1.2 && lt < 2.0; const hPose = lt < 2.8 ? { x: hx, ground: F, walk: { w: 1, u: Math.abs(1580 - hx) / 140, stride: 140 }, lean: slamming ? -0.1 : 0.3 } : A.sitPose(1150, F, { hop: lerp(60, 150, clamp((lt - 2.8) / 0.3)), lean: -0.1 });
+  if (lt > 0.4) { const slamming = lt > 1.2 && lt < 2.0; const hPose = lt < 2.8 ? { x: hx, ground: F, walk: { w: 1, u: Math.abs(1580 - hx) / 140, stride: 140 }, lean: slamming ? -0.1 : 0.3 } : A.sitPose(1150, F, { hop: lerp(115, 150, clamp((lt - 2.8) / 0.3)), lean: -0.1 });
     A.hero(ctx, { pose: hPose, flip: slamming, grips: slamming ? { near: [2 * hx - 1400, 560], far: [2 * hx - 1420, 640] } : {}, e: { eyes: lt > 3 ? 'closed' : 'wide', brow: 'worried', mouth: 'wide', open: 0.5, sweat: 1 }, t, pack: true, sleeve: true, bite: true, gray: GRAY(t, TL) }); }
   SE.techGrade(ctx, { col: '#c0c4d4' });
   ctx.restore();

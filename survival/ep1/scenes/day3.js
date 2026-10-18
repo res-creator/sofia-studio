@@ -78,7 +78,7 @@ function room(ctx, t, TL) {
   A.packFloor(ctx, PACK, F, { open: t < t10 + 0.5, radio: false });
   if (t < t10 + 0.9) P.drawBat(ctx, S, P.bat([1380, F - 10], -0.05, 240));
   // cat (drawn after the floor props)
-  K.flip(ctx, cat.x, cat.flip, () => K.cat(ctx, cat.x, cat.g, cat.s, t, cat.pose, cat.o));
+  if (t > tMeow - 0.1) K.flip(ctx, cat.x, cat.flip, () => K.cat(ctx, cat.x, cat.g, cat.s, t, cat.pose, cat.o));
   // hero
   A.hero(ctx, { pose, flip, grips, e: C.blink(ex, t, 0.2), t, pack: runOut, bat: runOut ? 'hang' : null });
   if (duckVis && t < tLand) K.duck(ctx, duckP[0], duckP[1], 0.62, duckRot, S, { squash: duckSq });
