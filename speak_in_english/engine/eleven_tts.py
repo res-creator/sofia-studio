@@ -9,6 +9,7 @@ hdr = {"Content-Type": "application/json", "Accept": "audio/mpeg"}
 if os.environ.get("ELEVENLABS_API_KEY"): hdr["xi-api-key"] = os.environ["ELEVENLABS_API_KEY"]
 for lid, who, text, ru in EP[ep]["lines"]:
     if who == "nar" or (only and lid not in only): continue
+    if os.environ.get("SKIP_EXISTING") and os.path.exists(f"{od}/{lid}.wav"): continue
     vid = CAST[who].get("el")
     if not vid: print("no ElevenLabs voice for", who, "- skipped", lid); continue
     body = {"text": text, "model_id": MODEL}
