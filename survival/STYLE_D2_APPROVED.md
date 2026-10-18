@@ -1,7 +1,6 @@
 # Approved visual style: D2 (survival YouTube project)
 
 Status: APPROVED by the owner (2026-10-18). Use for future episodes. Do not re-tune proportions, eyes or small details.
-Git tag: `style-d2-approved`.
 
 ## Where it lives (`survival/test_style/`)
 - `rig.js` — shared skeleton (2-bone IK arms/legs, distance-based walk, lean/crouch/hop), drawing, faces.
