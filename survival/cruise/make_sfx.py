@@ -27,6 +27,8 @@ SFX = {
  'gulls': ('seagulls and gentle ocean waves at sunset', 6),
  'scream': ('distant scream echoing from below deck', 2),
  'warm': ('quiet warm melancholic piano and soft strings, slow, hopeful, loopable', 22),
+ 'enginebed': ('steady low rumble of large ship diesel engines in an engine room, constant drone, seamless loop', 10),
+ 'hullbed': ('quiet empty ship interior at night, low electrical hum and distant metal hull creaks, seamless loop', 10),
 }
 os.makedirs(f'{D}/sfx', exist_ok=True)
 for k, (txt, dur) in SFX.items():

@@ -1,4 +1,4 @@
-# Ep1 mix: voices (+ radio band-pass), sfx, looped music beds ducked under dialogue -> out/mix.wav
+# Cruise mix: voices (level-matched per speaker; radio / PA filters), sfx, looped music beds ducked under dialogue -> out/mix.wav
 import json, subprocess, os, numpy as np
 D = os.path.dirname(os.path.abspath(__file__)); SR = 44100
 C = json.load(open(f'{D}/out/cues.json')); N = int((C['T'] + 0.5) * SR)
@@ -14,12 +14,16 @@ def put(buf, a, t, v):
     i = int(max(0, t) * SR); j = min(N, i + len(a))
     if j > i: buf[i:j] += a[:j - i] * v
 voice = np.zeros((N, 2), np.float32); fx = np.zeros((N, 2), np.float32); mus = np.zeros((N, 2), np.float32)
-GAIN = {'N': 1.7, 'H': 1.25, 'G': 0.78, 'S': 0.65}   # speaker balance: narrator +4.6 dB, hero +1.9 dB, Gary -2.2 dB, Sarah -3.7 dB
-RADIO = 'highpass=f=500,lowpass=f=2800,acrusher=bits=8:mix=0.25,volume=1.4'
+# each take is level-matched (RMS) to its speaker's target, so the voices stay balanced through the episode
+TARGET = {'N': 0.115, 'R': 0.092, 'CAP': 0.15, 'CG': 0.090, 'B': 0.11}
+RADIO = 'highpass=f=500,lowpass=f=2800,acrusher=bits=8:mix=0.25,volume=1.4'      # Coast Guard on the handheld VHF
+PA = 'highpass=f=300,lowpass=f=4000,aecho=0.8:0.6:45:0.25'                          # ship's PA (captain, bridge)
+FILT = {'CG': RADIO, 'CAP': PA, 'B': PA}
+def rms(a): x = a[np.abs(a).max(axis=1) > 0.01]; return float(np.sqrt((x ** 2).mean())) if len(x) else 1.0
 for v in C['voices']:
-    if v['who'] == 'R':
-        put(voice, load(v['file'], RADIO), v['t'], 0.9); put(fx, load('sfx/radio.mp3'), v['t'] - 0.05, 0.18)
-    else: put(voice, load(v['file']), v['t'], GAIN[v['who']])
+    a = load(v['file'], FILT.get(v['who'])); g = TARGET[v['who']] / max(rms(a), 1e-4)
+    put(voice, a, v['t'], g)
+    if v['who'] == 'CG': put(fx, load('../ep1/sfx/radio.mp3'), v['t'] - 0.05, 0.18)
 for s in C['sfx']:
     a = load(s['file'])
     if s.get('dur'):   # long beds (drone) trimmed to dur seconds with a soft fade-out

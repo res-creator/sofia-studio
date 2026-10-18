@@ -1,0 +1,626 @@
+1
+00:00:00,650 --> 00:00:01,683
+Day one.
+
+2
+00:00:01,683 --> 00:00:03,355
+You're a waiter
+on a cruise ship.
+
+3
+00:00:03,355 --> 00:00:04,911
+Three thousand
+passengers.
+
+4
+00:00:04,911 --> 00:00:06,919
+Seven days at sea.
+
+5
+00:00:07,669 --> 00:00:08,900
+Then every
+phone on board
+
+6
+00:00:08,900 --> 00:00:09,759
+buzzes at once.
+
+7
+00:00:09,759 --> 00:00:11,663
+Stay in
+your cabins.
+
+8
+00:00:12,013 --> 00:00:13,743
+Ladies and gentlemen,
+this is
+
+9
+00:00:13,743 --> 00:00:14,857
+your captain.
+
+10
+00:00:14,857 --> 00:00:16,947
+Please return
+to your cabins.
+
+11
+00:00:16,947 --> 00:00:18,468
+We are changing
+course to the
+
+12
+00:00:18,468 --> 00:00:19,861
+nearest—
+
+13
+00:00:21,211 --> 00:00:23,359
+And the captain
+stops talking...
+
+14
+00:00:23,359 --> 00:00:25,065
+mid-sentence.
+
+15
+00:00:26,515 --> 00:00:27,618
+On Deck Five,
+people are
+
+16
+00:00:27,618 --> 00:00:29,777
+walking strangely.
+Too slowly.
+
+17
+00:00:29,777 --> 00:00:31,948
+And they're
+coming this way.
+
+18
+00:00:33,498 --> 00:00:35,019
+You learn the
+most important
+
+19
+00:00:35,019 --> 00:00:36,470
+thing on this
+ship in the next
+
+20
+00:00:36,470 --> 00:00:38,188
+ten seconds.
+
+21
+00:00:40,538 --> 00:00:41,989
+They don't
+see you.
+
+22
+00:00:41,989 --> 00:00:43,742
+They hear you.
+
+23
+00:00:46,292 --> 00:00:47,592
+Rule number one.
+
+24
+00:00:47,592 --> 00:00:48,916
+Don't run to
+the lifeboats.
+
+25
+00:00:48,916 --> 00:00:50,750
+Everyone
+else will.
+
+26
+00:00:52,100 --> 00:00:53,215
+You go down.
+
+27
+00:00:53,215 --> 00:00:54,654
+To the one place
+nobody thinks
+
+28
+00:00:54,654 --> 00:00:56,883
+about. The galley.
+
+29
+00:00:57,733 --> 00:00:58,917
+Food for
+three weeks.
+
+30
+00:00:58,917 --> 00:01:00,299
+Water for
+nine days.
+
+31
+00:01:00,299 --> 00:01:01,880
+And one
+steel door.
+
+32
+00:01:01,880 --> 00:01:03,238
+You push a cart
+against the
+
+33
+00:01:03,238 --> 00:01:05,688
+door...
+and you wait.
+
+34
+00:01:11,038 --> 00:01:12,536
+Rule number two.
+Be quiet.
+
+35
+00:01:12,536 --> 00:01:14,335
+They follow sound.
+
+36
+00:01:14,985 --> 00:01:16,912
+That night,
+the engines stop.
+
+37
+00:01:16,912 --> 00:01:18,236
+The lights
+stay on.
+
+38
+00:01:18,236 --> 00:01:20,325
+Nobody tells
+you why.
+
+39
+00:01:21,775 --> 00:01:22,564
+Day three.
+
+40
+00:01:22,564 --> 00:01:24,436
+You learn the
+ship's new rhythm.
+
+41
+00:01:24,436 --> 00:01:26,537
+Footsteps above
+you at noon.
+
+42
+00:01:26,537 --> 00:01:28,407
+Something dragging
+at midnight.
+
+43
+00:01:28,407 --> 00:01:30,183
+And long,
+long silences in
+
+44
+00:01:30,183 --> 00:01:31,634
+between.
+
+45
+00:01:32,684 --> 00:01:33,381
+Day five.
+
+46
+00:01:33,381 --> 00:01:35,252
+Someone has been
+in the cold room.
+
+47
+00:01:35,252 --> 00:01:36,819
+Half your
+bread is gone.
+
+48
+00:01:36,819 --> 00:01:38,178
+And the infected
+don't close
+
+49
+00:01:38,178 --> 00:01:39,942
+doors behind them.
+
+50
+00:01:41,192 --> 00:01:42,179
+Day seven.
+
+51
+00:01:42,179 --> 00:01:43,293
+You wait in
+the dark to see
+
+52
+00:01:43,293 --> 00:01:45,232
+who's stealing
+your food.
+
+53
+00:01:55,882 --> 00:01:57,287
+Whoever it is...
+
+54
+00:01:57,287 --> 00:01:58,471
+knows this ship
+better than
+
+55
+00:01:58,471 --> 00:01:59,876
+you do.
+
+56
+00:02:01,326 --> 00:02:02,034
+Day nine.
+
+57
+00:02:02,034 --> 00:02:03,662
+The last bottle
+of water.
+
+58
+00:02:03,662 --> 00:02:04,986
+The nearest
+water is the ice
+
+59
+00:02:04,986 --> 00:02:06,495
+machine in
+the crew mess.
+
+60
+00:02:06,495 --> 00:02:09,095
+Forty steps down
+a dark corridor.
+
+61
+00:02:16,845 --> 00:02:18,180
+Unfortunately,
+the ice machine
+
+62
+00:02:18,180 --> 00:02:19,039
+is the loudest
+thing on this
+
+63
+00:02:19,039 --> 00:02:20,328
+ship.
+
+64
+00:02:24,378 --> 00:02:25,597
+This is the
+Coast Guard on
+
+65
+00:02:25,597 --> 00:02:26,897
+channel sixteen.
+
+66
+00:02:26,897 --> 00:02:28,523
+All ports
+are closed.
+
+67
+00:02:28,523 --> 00:02:30,032
+Any vessel
+carrying infected
+
+68
+00:02:30,032 --> 00:02:31,205
+will not be
+allowed to reach
+
+69
+00:02:31,205 --> 00:02:34,130
+the coast.
+We will use force.
+
+70
+00:02:35,280 --> 00:02:36,534
+That night,
+the speakers in
+
+71
+00:02:36,534 --> 00:02:38,577
+the ceiling
+click on.
+
+72
+00:02:41,327 --> 00:02:42,233
+Nobody speaks.
+
+73
+00:02:42,233 --> 00:02:44,276
+Someone is just...
+listening.
+
+74
+00:02:44,276 --> 00:02:46,203
+Then they
+click off.
+
+75
+00:02:46,353 --> 00:02:47,618
+Day twelve.
+
+76
+00:02:47,618 --> 00:02:49,267
+Through the
+porthole...
+
+77
+00:02:49,267 --> 00:02:51,763
+a light.
+A lighthouse.
+
+78
+00:02:51,763 --> 00:02:54,480
+The ship has
+drifted toward land.
+
+79
+00:02:56,130 --> 00:02:57,581
+Then, deep
+below you...
+
+80
+00:02:57,581 --> 00:02:59,566
+the engines
+start again.
+
+81
+00:03:01,416 --> 00:03:04,109
+And the ship turns
+away from land.
+
+82
+00:03:05,359 --> 00:03:06,648
+Someone else is
+alive on this
+
+83
+00:03:06,648 --> 00:03:07,333
+ship.
+
+84
+00:03:07,333 --> 00:03:09,767
+And they don't
+want to be rescued.
+
+85
+00:03:09,767 --> 00:03:11,044
+You could stay
+in the galley.
+
+86
+00:03:11,044 --> 00:03:13,264
+Safe. Fed.
+And blind.
+
+87
+00:03:13,264 --> 00:03:14,425
+Or you could
+find out who's
+
+88
+00:03:14,425 --> 00:03:15,818
+driving.
+
+89
+00:03:26,568 --> 00:03:29,168
+Rule number two
+works both ways.
+
+90
+00:03:30,418 --> 00:03:31,440
+Don't move.
+
+91
+00:03:31,440 --> 00:03:32,868
+Hands where I
+can see them.
+
+92
+00:03:32,868 --> 00:03:34,412
+Both of them.
+
+93
+00:03:35,162 --> 00:03:36,927
+Where did
+you get that?
+
+94
+00:03:38,077 --> 00:03:39,192
+You're the waiter.
+
+95
+00:03:39,192 --> 00:03:41,256
+The one who hums
+when he's scared.
+
+96
+00:03:41,256 --> 00:03:42,626
+Turns out you
+weren't as quiet
+
+97
+00:03:42,626 --> 00:03:43,892
+as you thought.
+
+98
+00:03:43,892 --> 00:03:45,181
+Day one,
+the bridge ordered
+
+99
+00:03:45,181 --> 00:03:46,063
+all stop.
+
+100
+00:03:46,063 --> 00:03:47,549
+Then the line
+went dead.
+
+101
+00:03:47,549 --> 00:03:49,672
+Nobody's opened
+that door since.
+
+102
+00:03:49,672 --> 00:03:50,996
+Then the Coast
+Guard started
+
+103
+00:03:50,996 --> 00:03:52,238
+sinking ships.
+
+104
+00:03:52,238 --> 00:03:53,503
+So every time
+we drift too
+
+105
+00:03:53,503 --> 00:03:54,769
+close to land...
+
+106
+00:03:54,769 --> 00:03:56,011
+I start the
+engines and take
+
+107
+00:03:56,011 --> 00:03:57,263
+us back out.
+
+108
+00:03:57,263 --> 00:03:58,633
+So that's
+who's driving.
+
+109
+00:03:58,633 --> 00:03:59,469
+Not a ghost.
+
+110
+00:03:59,469 --> 00:04:01,675
+A very tired
+engineer.
+
+111
+00:04:02,025 --> 00:04:03,697
+Two survivors.
+One kitchen.
+
+112
+00:04:03,697 --> 00:04:04,826
+One engine room.
+
+113
+00:04:04,826 --> 00:04:06,161
+She keeps the
+ship alive.
+
+114
+00:04:06,161 --> 00:04:08,077
+You keep her fed.
+
+115
+00:04:12,227 --> 00:04:13,376
+Day twenty-nine.
+
+116
+00:04:13,376 --> 00:04:15,328
+Fuel for one
+more day.
+
+117
+00:04:15,328 --> 00:04:17,278
+Tomorrow we pick
+a direction.
+
+118
+00:04:17,278 --> 00:04:19,229
+And we don't
+come back.
+
+119
+00:04:23,179 --> 00:04:24,547
+That's not me.
+
+120
+00:04:24,547 --> 00:04:25,766
+Steering just
+switched to the
+
+121
+00:04:25,766 --> 00:04:26,695
+bridge.
+
+122
+00:04:26,695 --> 00:04:27,693
+Nobody's been
+up there in
+
+123
+00:04:27,693 --> 00:04:29,423
+thirty days.
+
+124
+00:04:36,173 --> 00:04:37,032
+Engine room.
+
+125
+00:04:37,032 --> 00:04:38,770
+This is
+the bridge.
+
+126
+00:04:38,770 --> 00:04:40,477
+Thank you for
+keeping us alive.
+
+127
+00:04:40,477 --> 00:04:42,299
+I'll take it
+from here.
+
+128
+00:04:43,049 --> 00:04:44,999
+That's not
+the captain.
+
+129
+00:04:46,749 --> 00:04:47,504
+Thirty days.
+
+130
+00:04:47,504 --> 00:04:48,990
+You survived the
+outbreak, the
+
+131
+00:04:48,990 --> 00:04:50,625
+hunger and
+the sea.
+
+132
+00:04:50,625 --> 00:04:52,750
+You found out
+who was driving.
+
+133
+00:04:52,750 --> 00:04:54,038
+Now you just
+have to find out
+
+134
+00:04:54,038 --> 00:04:55,826
+where he's
+taking you.

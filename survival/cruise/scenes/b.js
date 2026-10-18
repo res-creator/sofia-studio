@@ -169,5 +169,5 @@ const cues = TL => { const s = TL.s, w = TL.w; const tB = s('s04_bang'), ring = 
     ['sfx/drip', s('s06_wait') + 0.8, 0.3], ['sfx/drip', s('s06_wait') + 2.9, 0.25], ['sfx/hatch', tV + 0.2, 0.6], ['sfx/steps', tV + 1.2, 0.3, 1.2], ['../ep1/sfx/heartbeat', tV + 2.4, 0.5],
     ['sfx/steps', tV + 4.6, 0.3, 1.0], ['sfx/hatch', tV + 6.0, 0.45]];
 };
-const music = TL => [['../ep1/sfx/music4', TL.s('s05_1'), TL.s('s05_3'), 0.14]];
+const music = TL => [['../ep1/sfx/music4', TL.s('s05_1'), TL.s('s05_3'), 0.14], ['sfx/hullbed', TL.blocks.s04.t0, TL.blocks.s06.t1, 0.3]];
 module.exports = { s04, s05, s06, cues, music };

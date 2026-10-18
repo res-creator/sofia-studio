@@ -123,5 +123,5 @@ const cues = TL => { const s = TL.s, w = TL.w, flip = s('s13_switch') + 0.25, cc
     ['sfx/paclick', s('s13_click') + 0.4, 0.9], ['sfx/pabreath', s('s13_click') + 0.6, 0.35, 0.9], ['sfx/paclick', s('s13_4') + 3.1, 0.7],
     ['sfx/enginestart', s('s13_engines') - 0.2, 1.0], ['../ep1/sfx/sting', s('s13_end') - 0.4, 0.5]];
 };
-const music = TL => [['sfx/warm', TL.blocks.s12.t0, TL.s('s12_3'), 0.2], ['../ep1/sfx/music4', TL.s('s13_6') - 0.2, TL.blocks.s13.t1, 0.2]];
+const music = TL => [['sfx/warm', TL.blocks.s12.t0, TL.s('s12_3'), 0.2], ['sfx/enginebed', TL.blocks.s12.t0, TL.s('s13_6') - 0.2, 0.32], ['../ep1/sfx/music4', TL.s('s13_6') - 0.2, TL.blocks.s13.t1, 0.2]];
 module.exports = { s12, s13, cues, music };

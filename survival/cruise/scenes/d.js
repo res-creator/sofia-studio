@@ -120,5 +120,5 @@ const cues = TL => { const s = TL.s, w = TL.w, tT = s('s10_timer');
     ['sfx/enginestart', s('s10_drop') - 0.1, 0.5], ['../ep1/sfx/thud', s('s10_drop') + 0.45, 0.8],
     ['sfx/beep', s('s11_5') + 0.2, 0.25], ['sfx/beep', w('s11_6', 'engines'), 0.4]];
 };
-const music = TL => [['sfx/warm', TL.s('s11_7') - 0.3, TL.blocks.s11.t1, 0.22]];
+const music = TL => [['sfx/warm', TL.s('s11_7') - 0.3, TL.blocks.s11.t1, 0.22], ['sfx/hullbed', TL.blocks.s10.t0, TL.s('s10_drop'), 0.3], ['sfx/enginebed', TL.s('s10_drop') + 0.3, TL.blocks.s11.t1, 0.35]];
 module.exports = { s10: s10main, s11, cues, music };

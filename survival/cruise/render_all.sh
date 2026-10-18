@@ -2,7 +2,7 @@
 # Renders blocks (default: all, 2 at a time) into out/blocks/<block>.mp4
 cd "$(dirname "$0")"
 mkdir -p out/blocks
-B="${*:-cold day1 day2 day3 day4 day5 final}"
+B="${*:-s01 s02 s03 s04 s05 s06 s07 s08 s09 s10 s11 s12 s13}"
 set -- $B
 while [ $# -gt 0 ]; do
   node render.js video $1 out/blocks/$1.mp4 > out/blocks/$1.log 2>&1 &

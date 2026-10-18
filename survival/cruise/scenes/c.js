@@ -19,7 +19,7 @@ function s07(ctx, t, TL) {
     ctx.save(); cam(ctx, t, [[t0, 2050, 620, 1.9], [t0 + 0.1, 2040, 610, 2.1, 'm', 2.4], [t2 + 0.6, 600, 560, 1.15, 'cut'], [t2 + 0.7, 560, 540, 1.3, 'm', tForty - t2]], { drift: 0.005 });
     SH.galley(ctx, t, { tally: 9, stock: 0.45, water: 0, cart: cartX });
     if (lastCU) { const pose = { x: 2160, ground: F, crouch: 0.55, lean: 0.3 }, J0 = R.solve(W8.S, pose), up = clamp((t - t0 - 0.3) / 0.5);
-      K.person(ctx, W8, { pose, grips: { near: [J0.shN[0] - 110, lerp(F - 60, J0.shN[1] + 40, up)] }, nearHand: 'fist', e: C.blink({ eyes: 'half', brow: 'worried', mouth: 'flat', look: [-0.8, 0.3] }, t, 0.2), t, holdNear: (c, J) => bottle(c, J.wN[0], J.wN[1] + 20, Math.sin(t * 6) * 0.15 * up, 0.15) }, 'waiter s07a'); }
+      K.person(ctx, W8, { pose, grips: { near: [J0.shN[0] - 110, lerp(F - 175, J0.shN[1] + 40, up)] }, nearHand: 'fist', e: C.blink({ eyes: 'half', brow: 'worried', mouth: 'flat', look: [-0.8, 0.3] }, t, 0.2), t, holdNear: (c, J) => bottle(c, J.wN[0], J.wN[1] + 20, Math.sin(t * 6) * 0.15 * up, 0.15) }, 'waiter s07a'); }
     else { const HX = cartX + 360, pose = { x: HX, ground: F, crouch: 0.3, lean: 0.25, walk: { w: 1, u: (cartX - 160) / 70, stride: 70 } };
       K.person(ctx, W8, { pose, flip: true, grips: { near: mir(HX, [cartX + 300, 650]), far: mir(HX, [cartX + 296, 660]) }, e: C.blink({ eyes: 'squint', brow: 'worried', mouth: 'closed', look: [-0.9, 0] }, t, 0.2), t }, 'waiter s07b'); }
     SH.darkness(ctx, 0.35, [{ x: 2000, y: 700, r: 600 }, { x: 300, y: 500, r: 700 }]);
@@ -52,8 +52,8 @@ function s07(ctx, t, TL) {
     SH.crewMess(ctx, t, { iceOn: roar && !run, radioTaken: grab && t > press + 1.4 });
     let pose, grips = {}, hold = null, flip = false, x = run ? lerp(1420, 300, clamp((t - press - 1.65) / 1.2)) : grab ? 1420 : roar ? HX : wp.x;
     if (!roar) { pose = { x, ground: F, walk: t < t3 - 0.2 ? wp.walk : null, lean: 0.08, crouch: 0.15 }; flip = true; const J0 = R.solve(W8.S, pose);
-      grips = t > t3 + 0.3 ? { near: mir(x, [1835 + Math.sin(t * 9) * 2, 700]) } : { near: mir(x, [J0.shN[0] - 60, J0.shN[1] + 120]) }; hold = (c, J) => bottle(c, J.wN[0], J.wN[1] + 40, 0, 0); }
-    else if (!grab) { pose = { x, ground: F, crouch: 0.2, lean: 0.12 }; flip = true; grips = { near: mir(x, [1810, 720]) }; hold = (c, J) => bottle(c, J.wN[0], J.wN[1] + 40, 0, clamp((t - press) / 1.0)); }
+      grips = t > t3 + 0.3 ? { near: mir(x, [1850 + Math.sin(t * 9) * 2, 690]) } : { near: mir(x, [J0.shN[0] - 60, J0.shN[1] + 120]) }; hold = (c, J) => bottle(c, J.wN[0], J.wN[1] + 40, 0, 0); }
+    else if (!grab) { pose = { x, ground: F, crouch: 0.2, lean: 0.12 }; flip = true; grips = { near: mir(x, [1840, 690]) }; hold = (c, J) => bottle(c, J.wN[0], J.wN[1] + 40, 0, clamp((t - press) / 1.0)); }
     else if (!run) { pose = { x, ground: F, lean: 0.05 }; grips = { near: [1285, 440] }; if (t > press + 1.4) hold = (c, J) => PR.drawVHF(c, J.wN[0], J.wN[1] + 30, 0.7); }
     else { pose = { x, ground: F, walk: { w: 1, u: (1420 - x) / 150, stride: 150 }, lean: 0.4, crouch: 0.12 }; const J0 = R.solve(W8.S, pose); grips = { near: [J0.shN[0] - 40, J0.shN[1] + 60] }; hold = (c, J) => PR.drawVHF(c, J.wN[0], J.wN[1] + 30, 0.7); }
     const ex = !roar ? { eyes: 'open', brow: 'worried', mouth: 'flat', look: [-0.9, 0.2] } : { eyes: 'wide', brow: 'worried', mouth: 'o', look: [-0.9, 0], sweat: 1 };
@@ -138,5 +138,5 @@ const cues = TL => { const s = TL.s, w = TL.w, press = s('s07_ice'), on = s('s08
     ['sfx/paclick', on, 0.8], ['sfx/pabreath', on + 0.4, 0.6, 3.6], ['sfx/paclick', w('s08_2', 'off') + 0.25, 0.8],
     ['sfx/enginestart', w('s09_2', 'engines') - 0.3, 0.9], ['../ep1/sfx/creak', s('s09_turn') + 0.2, 0.5]];
 };
-const music = TL => [['../ep1/sfx/music3', TL.s('s09_3'), TL.blocks.s09.t1, 0.16]];
+const music = TL => [['../ep1/sfx/music3', TL.s('s09_3'), TL.blocks.s09.t1, 0.16], ['sfx/hullbed', TL.blocks.s07.t0, TL.w('s09_2', 'engines'), 0.3], ['sfx/enginebed', TL.w('s09_2', 'engines') + 0.8, TL.s('s09_ship'), 0.3]];
 module.exports = { s07, s08, s09, cues, music };
