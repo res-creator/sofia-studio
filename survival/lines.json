@@ -1,0 +1,13 @@
+[
+ {"id":"l01","scene":"open","text":"Day one. You're a waiter on a cruise ship. Three thousand passengers. Seven days at sea."},
+ {"id":"l02","scene":"alert","text":"Then every phone on board buzzes at once. Stay in your cabins."},
+ {"id":"l03","scene":"alert","text":"And the captain stops talking... mid-sentence."},
+ {"id":"l04","scene":"deck","text":"On Deck Five, people are walking strangely. Too slowly. And they're coming this way."},
+ {"id":"l05","scene":"map","text":"Rule number one. Don't run to the lifeboats. Everyone else will."},
+ {"id":"l06","scene":"map","text":"You go down. To the one place nobody thinks about. The galley."},
+ {"id":"l07","scene":"galley","text":"Food for three weeks. Water for nine days. And one steel door."},
+ {"id":"l08","scene":"door","text":"Rule number two. Be quiet. They follow sound."},
+ {"id":"l09","scene":"door","text":"You push a cart against the door... and you wait."},
+ {"id":"l10","scene":"end","text":"Day twelve. The ship is silent. Then, deep below you... the engines start again."},
+ {"id":"l11","scene":"end","text":"Someone else is alive on this ship."}
+]
