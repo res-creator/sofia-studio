@@ -37,7 +37,7 @@ function roof(ctx, t, TL) {
   // after the bite: arm raised, looking at it; band-aid on it later
   const armUp = t >= tA && t < tSt + 1.4;
   if (armUp && t < t9 + 0.4 || (t > t11 && t < tSt + 1.4)) { grips.near = [J0.head[0] - 150, J0.head[1] + 140]; }
-  const kneel = t >= t9 + 0.4 && t < t11; if (kneel) { pose.crouch = 0.6; pose.lean = 0.35; const J1 = R.solve(K.HERO.S, pose); grips = { near: [J1.shN[0] - 150, F - 150], far: [J1.shN[0] - 120, F - 150] }; }
+  const kneel = t >= t9 + 0.4 && t < t11; if (kneel) { pose.crouch = 0.6; pose.lean = 0.35; const J1 = R.solve(K.HERO.S, pose); grips = { near: [J1.shN[0] - 140, F - 190], far: [J1.shN[0] - 110, F - 190] }; }
   const band = t > t11 + 1.2;
   // expressions
   if (t < t0 + 0.6) ex = { eyes: 'closed', mouth: 'o', open: 0.15 };
@@ -129,7 +129,7 @@ function well(ctx, t, TL) {
   if (pull && t > t14 + 6.5) sleeve = true;
   let waving = t > t15 && t < tR;
   if (waving) { grips = { near: [J0.shN[0] - 150, J0.shN[1] + 40], far: [J0.head[0] + 10 + Math.sin(t * 13) * 25, J0.head[1] - 110] }; farHand = 'wave'; }
-  if (t > t16 && t < t16 + 2.4) { pose.crouch = 0.55; pose.lean = 0.4; const J1 = R.solve(K.HERO.S, pose); grips = { near: [J1.shN[0] - 120 + Math.sin(t * 12) * 20, lvl(6) - 120], far: [J1.shN[0] - 90, lvl(6) - 120] }; }
+  if (t > t16 && t < t16 + 2.4) { pose.crouch = 0.55; pose.lean = 0.4; const J1 = R.solve(K.HERO.S, pose); grips = { near: [J1.shN[0] - 110 + Math.sin(t * 12) * 15, lvl(6) - 175], far: [J1.shN[0] - 90, lvl(6) - 175] }; }
   let duckHeld = null;
   if (t >= t16 + 2.4 && t < tThrow) { const up = back(clamp((t - t16 - 2.4) / 0.4)); const dp = t < tT ? [J0.head[0] - 150, lerp(lvl(6) - 150, J0.head[1] + 30, up)] : C.A([J0.head[0] - 150, J0.head[1] + 30], [J0.head[0] + 60, J0.head[1] - 120], ease((t - tT) / 0.45)); duckHeld = dp; grips.near = [dp[0] + 26, dp[1] + 36]; }
   if (t < t14) ex = { eyes: 'wide', brow: 'up', mouth: 'o', look: [-0.6, 0.8] };

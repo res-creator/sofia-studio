@@ -21,6 +21,10 @@ if (mode === 'still') {
   ts.forEach((t, k) => { frame(x, B.t0 + t, a1); ox.drawImage(c, (k % cols) * sw, Math.floor(k / cols) * sh, sw, sh); ox.fillStyle = '#ff0'; ox.font = '22px Nunito'; ox.fillText(t.toFixed(2), (k % cols) * sw + 8, Math.floor(k / cols) * sh + 24); });
   require('fs').writeFileSync(a3, out.toBuffer('image/png'));
   const qa = [...new Set(R.QA)]; console.log(qa.length ? 'QA:\n' + qa.slice(0, 30).join('\n') : 'QA ok');
+} else if (mode === 'qa') {   // reach errors with their times (block-relative), every 3rd frame
+  const B = TL.blocks[a1], c = createCanvas(W, H), x = c.getContext('2d'); let n = 0;
+  for (let f = Math.round(B.t0 * FPS); f < Math.round(B.t1 * FPS); f += 3) { frame(x, f / FPS, a1); const add = R.QA.slice(n); n = R.QA.length;
+    const bad = add.filter(q => +q.match(/(\d+)px/)[1] > 8); if (bad.length) console.log((f / FPS - B.t0).toFixed(2), bad.join(' | ')); }
 } else if (mode === 'one') {
   const c = createCanvas(W, H), x = c.getContext('2d'); frame(x, +a1); require('fs').writeFileSync(a2, c.toBuffer('image/png'));
 } else {

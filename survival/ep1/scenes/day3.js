@@ -15,7 +15,7 @@ function room(ctx, t, TL) {
   // ---- hero blocking: sits at 1600 (facing right) -> walks to the sofa crouched -> stumbles back and falls -> throws -> grabs pack, runs to the door
   let hx, pose, flip = true, ex, grips = {}, holdF = null, runOut = t > t10 + 1.0;
   const tWalk0 = t4 + 0.3, tWalk1 = t5 + 1.0;
-  const duckRest = [1520, F - 30];
+  const duckRest = [1730, F - 30];
   // duck flight: squeak in hand -> thrown right -> bounce off the far wall -> lands in the open backpack
   const tThrow = tTh + 0.35, tBounce = tThrow + 0.55, tLand = tBounce + 0.85;
   let duckP = duckRest, duckRot = 0, duckSq = 0, duckVis = true;
@@ -29,7 +29,7 @@ function room(ctx, t, TL) {
     if (t < tFall) pose = { x: hx, ground: F, walk: { w: 1, u: (hx - 2250) / 90, stride: 90 }, lean: -0.25, crouch: 0.2 };
     else pose = A.sitPose(hx, F, { lean: lerp(-0.25, 0.02, clamp((t - tFall) / 0.5)), hop: lerp(60, 150, ease(fall)) });
     if (runOut) { const wp = A.walkPath(t, [[t10 + 1.0, 1480], [t10 + 2.4, 520]], 190); hx = wp.x; pose = { x: hx, ground: F, walk: wp.walk, lean: 0.36, crouch: 0.18 }; flip = false; }
-    else if (t > t10 + 0.3) { hx = kf([[t10 + 0.3, 1650], [t10 + 0.6, 1480]], t); pose = { x: hx, ground: F, crouch: 0.35, lean: 0.3 }; flip = false; grips.near = [PACK + 60, F - 150]; }
+    else if (t > t10 + 0.3) { hx = kf([[t10 + 0.3, 1650], [t10 + 0.6, 1480]], t); pose = { x: hx, ground: F, crouch: 0.35, lean: 0.3 }; flip = false; if (t > t10 + 0.6) grips.near = [PACK + 60, F - 150]; }
   }
   const J0 = R.solve(K.HERO.S, pose);
   // hand on the duck (squeak), raise and throw

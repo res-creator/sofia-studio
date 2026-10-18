@@ -95,7 +95,7 @@ function roofScene(ctx, t, TL) {
   let hx, pose, flip = false, grips = {}, ex;
   const out = kf([[tRd, 2515], [tRd + 0.5, 2300]], t);
   if (t < t8 - 0.3) { hx = t < tRd + 1.0 ? out : kf([[tRd + 1.0, 2300], [tRd + 1.4, 2470]], t); pose = { x: hx, ground: F, walk: { w: 1, u: Math.abs(hx - 2515) / 110, stride: 110 }, lean: t < tRd + 0.5 ? 0.3 : 0.1 }; flip = t > tRd + 0.6 && t < tSi + 0.3;
-    if (t > tRd + 0.9 && t < tSi + 0.2) { grips = { near: [2 * hx - 2540, F - 210], far: [2 * hx - 2480, F - 200] }; } }
+    if (t > tRd + 1.35 && t < tSi + 0.2) { grips = { near: [2 * hx - 2540, F - 210], far: [2 * hx - 2480, F - 200] }; } }
   else if (t < t9) { const wp = A.walkPath(t, [[t8 - 0.3, 2470], [t8 + 1.2, -60], [t8 + 2.6, -60], [t8 + 3.0, 60]], 110); hx = wp.x; pose = { x: hx, ground: F, walk: wp.walk, lean: t > t8 + 2.4 ? -0.15 : 0.05 }; flip = t > t8 + 2.6; }
   else if (t < tN) { hx = 900; pose = { x: hx, ground: F, crouch: 0.55, lean: 0.35 }; if (t < tCr) { const J0 = R.solve(K.HERO.S, pose); grips = { near: [J0.shN[0] - 100, F - 160] }; } else { pose.crouch = 0.3; pose.lean = 0.0; pose.tilt = t > tCr && t < t12 + 4 ? 0.25 : 0; } }
   else { hx = 1440; pose = A.sitPose(hx, F, { lean: -0.12, tilt: 0.35 }); }

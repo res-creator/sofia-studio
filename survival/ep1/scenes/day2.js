@@ -31,7 +31,7 @@ function door(ctx, t, TL) {
   const s = TL.s, e = TL.e, w = TL.w;
   const t2 = s('d2_02'), tN = s('d2_06'), t7 = s('d2_07'), wChain = w('d2_07', 'locked'), wBat = w('d2_07', 'baseball'), wChair = w('d2_07', 'chair'), wPill = w('d2_07', 'three'), tPr = s('d2_proud'), t8 = s('d2_08'), t9 = s('d2_09'), tSc = s('d2_scratch'), t10 = s('d2_10'), tSt = s('d2_steps'), t11 = s('d2_11');
   // hero walks from the sofa to the door (low angle on the feet), stands at 830
-  const wp = A.walkPath(t, [[t2, 1900], [t2 + 3.0, 830], [s('d2_06') + 0.7, 830], [s('d2_06') + 1.1, 700], [w('d2_07', 'locked') + 0.5, 700], [w('d2_07', 'locked') + 0.9, 830]], 100);
+  const wp = A.walkPath(t, [[t2, 1900], [t2 + 3.0, 830], [s('d2_06') + 0.7, 830], [s('d2_06') + 1.1, 570], [w('d2_07', 'locked') + 0.5, 600], [w('d2_07', 'locked') + 0.9, 830]], 100);
   const proud = t > wPill + 0.4, back2 = t > tPr + 0.2;
   const x = t < wPill + 0.4 ? wp.x : kf([[wPill + 0.4, 830], [wPill + 0.9, 890]], t);
   const panic = t > t11 - 0.05, hop = win(t, t11, t11 + 0.32) ? -Math.sin((t - t11) / 0.32 * Math.PI) * 40 : 0;

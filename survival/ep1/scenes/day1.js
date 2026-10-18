@@ -75,7 +75,7 @@ function home(ctx, t, TL) {
   const run = t > tg;
   const pose = { x: wp.x, ground: F, walk: wp.walk, lean: run ? 0.32 : 0.05, crouch: run ? 0.15 : 0 };
   const J0 = R.solve(K.HERO.S, pose);
-  const reachPack = t > tg && t < tg + 0.45 ? [775 + 20, 420] : null;
+  const reachPack = t > tg && t < tg + 0.45 && wp.x < 1000 ? [775 + 20, 420] : null;
   A.hero(ctx, { pose, grips: { near: reachPack || (t > s('d1_fridge') + 0.5 && t < tg ? [1080, 560] : null) }, e: run ? { eyes: 'wide', brow: 'angry', mouth: 'grin', look: [-1, 0] } : { eyes: 'half', brow: 'flat', mouth: 'flat' }, pack: grabbed, t });
   ctx.restore();
   return {};
@@ -93,7 +93,7 @@ function market(ctx, t, TL) {
   const grabs = [['water', w('d1_09', 'Water')], ['can', w('d1_09', 'Canned')], ['battery', w('d1_09', 'Batteries')], ['bat', w('d1_09', 'defend')]];
   const items = []; let nearT = null, carry = null;
   const J0 = R.solve(K.HERO.S, { x: hx, ground: F, walk: wp.walk, lean: 0.12 });
-  grabs.forEach(([k, g], i) => { const u = (tt - g + 0.25) / 0.7; if (u >= 1) items.push(k); else if (u > 0) { const shelfP = [J0.shN[0] - 60, J0.shN[1] - 40], drop = [cartX + 60 - i * 40, F - 300];
+  grabs.forEach(([k, g], i) => { const u = (tt - g + 0.25) / 0.7; if (u >= 1) items.push(k); else if (u > 0) { const shelfP = [J0.shN[0] - 60, J0.shN[1] - 40], drop = [cartX + 170 - i * 25, F - 290];
     const p = u < 0.4 ? C.A([cartX + 196, F - 258], shelfP, ease(u / 0.4)) : C.A(shelfP, drop, ease((u - 0.4) / 0.6)); nearT = p; if (u > 0.35) carry = [k, p]; } });
   const duckIn = tt > s('d1_11') - 0.6 && tt < s('d1_13'), packDuck = tt > TL.s('d1_turn') - 1.0, pushing = tt < s('d1_13');
   const handle = [cartX + 196, F - 258];
