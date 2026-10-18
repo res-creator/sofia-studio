@@ -4,9 +4,9 @@
   "style": "v1",
   "layout": "v1",
   "samples": 454,
-  "issues": 36,
+  "issues": 23,
   "critical": 12,
-  "major": 21,
+  "major": 8,
   "minor": 3
  },
  "issues": [
@@ -114,7 +114,7 @@
    "end": 43.5,
    "n": 22,
    "sev": "critical",
-   "max": 0.7216494845360825,
+   "max": 0.7319587628865979,
    "info": "listener",
    "dur": 5.5
   },
@@ -192,30 +192,6 @@
   },
   {
    "ep": "date",
-   "type": "crop_feet_ankles",
-   "key": "1|1480|#7FB8E8",
-   "start": 78.25,
-   "end": 91.25,
-   "n": 53,
-   "sev": "major",
-   "max": 156.6044921875,
-   "info": "",
-   "dur": 13.25
-  },
-  {
-   "ep": "date",
-   "type": "crop_feet_ankles",
-   "key": "42|1700|#8A2440",
-   "start": 78.25,
-   "end": 91.25,
-   "n": 53,
-   "sev": "major",
-   "max": 156.6044921875,
-   "info": "",
-   "dur": 13.25
-  },
-  {
-   "ep": "date",
    "type": "face_covered_by_bubble",
    "key": "42|1700|#8A2440",
    "start": 19,
@@ -225,18 +201,6 @@
    "max": 0.9587628865979382,
    "info": "speaker,listener",
    "dur": 4.5
-  },
-  {
-   "ep": "date",
-   "type": "crop_feet_ankles",
-   "key": "42|1700|#8A2440",
-   "start": 45.25,
-   "end": 48.75,
-   "n": 15,
-   "sev": "major",
-   "max": 226.849853515625,
-   "info": "",
-   "dur": 3.75
   },
   {
    "ep": "date",
@@ -264,114 +228,6 @@
   },
   {
    "ep": "date",
-   "type": "crop_feet_ankles",
-   "key": "1|1480|#7FB8E8",
-   "start": 45.25,
-   "end": 48.5,
-   "n": 14,
-   "sev": "major",
-   "max": 183.6630859375,
-   "info": "",
-   "dur": 3.5
-  },
-  {
-   "ep": "date",
-   "type": "crop_feet_ankles",
-   "key": "40|1500|#1E1E24",
-   "start": 62.75,
-   "end": 65.75,
-   "n": 13,
-   "sev": "major",
-   "max": 128.578857421875,
-   "info": "",
-   "dur": 3.25
-  },
-  {
-   "ep": "date",
-   "type": "crop_feet_ankles",
-   "key": "1|1480|#7FB8E8",
-   "start": 62.75,
-   "end": 65.75,
-   "n": 13,
-   "sev": "major",
-   "max": 182.214111328125,
-   "info": "",
-   "dur": 3.25
-  },
-  {
-   "ep": "date",
-   "type": "crop_feet_ankles",
-   "key": "42|1700|#8A2440",
-   "start": 62.75,
-   "end": 65.75,
-   "n": 13,
-   "sev": "major",
-   "max": 185.51123046875,
-   "info": "",
-   "dur": 3.25
-  },
-  {
-   "ep": "date",
-   "type": "crop_feet_ankles",
-   "key": "42|1700|#8A2440",
-   "start": 31.5,
-   "end": 33.5,
-   "n": 9,
-   "sev": "major",
-   "max": 243.256103515625,
-   "info": "",
-   "dur": 2.25
-  },
-  {
-   "ep": "date",
-   "type": "crop_feet_ankles",
-   "key": "1|1480|#7FB8E8",
-   "start": 31.5,
-   "end": 33.25,
-   "n": 8,
-   "sev": "major",
-   "max": 198.21435546875,
-   "info": "",
-   "dur": 2
-  },
-  {
-   "ep": "date",
-   "type": "crop_feet_ankles",
-   "key": "42|1700|#8A2440",
-   "start": 7.75,
-   "end": 9.25,
-   "n": 7,
-   "sev": "major",
-   "max": 243.4443359375,
-   "info": "",
-   "dur": 1.75
-  },
-  {
-   "ep": "date",
-   "type": "crop_feet_ankles",
-   "key": "1|1480|#7FB8E8",
-   "start": 7.75,
-   "end": 9,
-   "n": 6,
-   "sev": "major",
-   "max": 203.83984375,
-   "info": "",
-   "dur": 1.5
-  },
-  {
-   "ep": "date",
-   "type": "crop_feet_ankles",
-   "key": "42|1700|#8A2440",
-   "start": 18,
-   "end": 19,
-   "n": 5,
-   "sev": "major",
-   "max": 227.736083984375,
-   "info": "",
-   "dur": 1.25
-  },
-  {
-   "ep": "date",
    "type": "face_covered_by_bubble",
    "key": "42|1700|#8A2440",
    "start": 12.5,
@@ -380,18 +236,6 @@
    "sev": "major",
    "max": 0.9690721649484536,
    "info": "listener",
-   "dur": 1
-  },
-  {
-   "ep": "date",
-   "type": "crop_feet_ankles",
-   "key": "1|1480|#7FB8E8",
-   "start": 18,
-   "end": 18.75,
-   "n": 4,
-   "sev": "major",
-   "max": 180.935546875,
-   "info": "",
    "dur": 1
   },
   {
@@ -426,7 +270,7 @@
    "end": 69.5,
    "n": 13,
    "sev": "minor",
-   "max": 0.31958762886597936,
+   "max": 0.32989690721649484,
    "info": "listener",
    "dur": 3.25
   },
