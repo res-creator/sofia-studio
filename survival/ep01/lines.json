@@ -1,0 +1,20 @@
+[
+ {"id":"c01","who":"N","scene":"open","text":"If the zombie apocalypse started today... you'd have five days to get it right."},
+ {"id":"c02","who":"H","scene":"open","text":"[mouth full] Five?"},
+ {"id":"d1a","who":"N","scene":"market","text":"Day one. Everyone panics. Which means the supermarket is now... a war zone."},
+ {"id":"d1b","who":"N","scene":"market","text":"Skip the toilet paper. Grab water, cans, and batteries."},
+ {"id":"d1c","who":"N","scene":"cart","text":"And... a rubber duck?"},
+ {"id":"d1d","who":"H","scene":"cart","text":"[defensive] He looked lonely."},
+ {"id":"d2a","who":"N","scene":"door","text":"Day two. You don't know who's infected yet. So treat everyone like they are."},
+ {"id":"d2b","who":"G","scene":"peep","text":"Hiii! It's Gary. From 4B. Can I borrow some... sugar?"},
+ {"id":"d2c","who":"N","scene":"peep","text":"Gary does not need sugar."},
+ {"id":"d2d","who":"H","scene":"peep","text":"[whispers] Nope."},
+ {"id":"d3a","who":"N","scene":"animals","text":"Day three. The animals turn too. Rats. Pigeons. And yes..."},
+ {"id":"d3b","who":"H","scene":"cat","text":"[nervous] Mister Whiskers?"},
+ {"id":"d3c","who":"N","scene":"cat","text":"Mister Whiskers has chosen violence."},
+ {"id":"d4a","who":"N","scene":"roof","text":"Day four. Move higher. One way in, no ground floor windows, and a door you can lock."},
+ {"id":"d5a","who":"N","scene":"bite","text":"Day five. Something bit you. And your entire first aid kit is... one unicorn band-aid."},
+ {"id":"d5b","who":"N","scene":"bite","text":"Rule number one: don't let the others find out."},
+ {"id":"d5c","who":"S","scene":"knock","text":"Hey! Are you okay in there?"},
+ {"id":"d5d","who":"H","scene":"knock","text":"[cheerfully] Totally fine! [growls]"}
+]

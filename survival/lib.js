@@ -27,7 +27,9 @@ const ZCOL = [
   { skin: '#a3b294', shirt: '#4f7d6c', shirt2: '#3c6354', pants: '#454036', hair: '#7a6a55' },
 ];
 // person(ctx, x, footY, s, o): o = colours + { dir (-1/1 facing), look (-1..1), walk (phase or null), arms, blink, scared, zombie, tilt }
+function mix(a, b, u) { const p = c => [1, 3, 5].map(i => parseInt(c.slice(i, i + 2), 16)); const A = p(a), B = p(b); return '#' + A.map((v, i) => Math.round(v + (B[i] - v) * u).toString(16).padStart(2, '0')).join(''); }
 function person(ctx, x, fy, s, o) {
+  if (o.green) o = Object.assign({}, o, { skin: mix(o.skin, '#a7b58f', o.green) });
   const dir = o.dir || 1, ph = o.walk, zb = o.zombie;
   ctx.save(); ctx.translate(x, fy); ctx.scale(s, s);
   const bob = ph != null ? -Math.abs(Math.sin(ph)) * 8 : 0;
@@ -46,7 +48,7 @@ function person(ctx, x, fy, s, o) {
   // back arm drawn first
   const SH = [[-44, -284], [44, -284]];
   let arms = armPose(o.arms || 'down', dir, ph, o.t || 0);
-  if (dir < 0 && /phone|shush/.test(o.arms)) arms = Object.assign([arms[1], arms[0]], { bend: -arms.bend });
+  if (dir < 0 && /phone|shush|peek|wave|spoon/.test(o.arms)) arms = Object.assign([arms[1], arms[0]], { bend: -arms.bend });
   const drawArm = (i) => {
     const [sx, sy] = SH[i], [hx, hy] = arms[i], ex = (sx + hx) / 2 + (arms.bend || 0) * (i ? 1 : -1), ey = (sy + hy) / 2 + 10;
     stroke(ctx, [[sx, sy], [ex, ey], [hx, hy]], 25, OL); stroke(ctx, [[sx, sy], [ex, ey], [hx, hy]], 18, o.shirt);
@@ -63,13 +65,15 @@ function person(ctx, x, fy, s, o) {
     fillR(ctx, dir * 14 - 11, -250, 22, 12, 2, '#f4f1e8'); }
   // neck + head
   ctx.fillStyle = o.skin; ctx.fillRect(-9, -312, 18, 18);
+  if (o.hoodie) { ctx.beginPath(); ctx.ellipse(0, -300, 62, 22, 0, 0, 7); ctx.fillStyle = o.shirt2; ctx.fill(); ctx.lineWidth = 4; ctx.strokeStyle = OL; ctx.stroke();
+    stroke(ctx, [[-14, -290], [-16, -240]], 4, '#f4f1e8'); stroke(ctx, [[14, -290], [16, -244]], 4, '#f4f1e8'); }
   const hx = dir * 4, hy = -362 + (zb ? 6 : 0);
   ctx.save(); ctx.translate(hx, hy); if (zb) ctx.rotate(dir * 0.18 + Math.sin((o.t || 0) * 1.7 + x) * 0.06);
   circle(ctx, 0, 0, 62, OL); circle(ctx, 0, 0, 58, o.skin);
   // hair
   ctx.save(); ctx.beginPath(); ctx.arc(0, 0, 58, 0, 7); ctx.clip(); ctx.fillStyle = o.hair;
   if (zb) { ctx.beginPath(); ctx.ellipse(-dir * 10, -52, 56, 26, 0, 0, 7); ctx.fill(); }
-  else { ctx.beginPath(); ctx.moveTo(-62, -8); ctx.quadraticCurveTo(-58, -66, 0, -64); ctx.quadraticCurveTo(58, -66, 62, -10); ctx.lineTo(40, -26); ctx.lineTo(30, -12); ctx.lineTo(14, -30); ctx.lineTo(-6, -16); ctx.lineTo(-20, -32); ctx.lineTo(-40, -18); ctx.closePath(); ctx.fill(); }
+  else { ctx.beginPath(); ctx.moveTo(-62, -18); ctx.quadraticCurveTo(-58, -66, 0, -64); ctx.quadraticCurveTo(58, -66, 62, -20); ctx.lineTo(40, -38); ctx.lineTo(30, -28); ctx.lineTo(14, -42); ctx.lineTo(-6, -30); ctx.lineTo(-20, -44); ctx.lineTo(-40, -32); ctx.closePath(); ctx.fill(); }
   ctx.restore();
   if (!zb) { ctx.fillStyle = o.hair; for (const [a, b] of [[-30, -60], [-8, -68], [16, -64]]) { ctx.beginPath(); ctx.moveTo(a, b + 10); ctx.quadraticCurveTo(a + 8, b - 16, a + 22, b - 6); ctx.lineTo(a + 16, b + 12); ctx.fill(); } }
   // face
@@ -80,12 +84,18 @@ function person(ctx, x, fy, s, o) {
     ctx.fillStyle = 'rgba(90,40,40,0.35)'; ctx.beginPath(); ctx.ellipse(lk + 28, 18, 9, 6, 0.4, 0, 7); ctx.fill();
   } else {
     const wide = o.scared ? 1.35 : 1;
+    if (o.brow) for (const k of [-1, 1]) { const by = ey - 23, tilt = { worried: -7, angry: 8, up: -2 }[o.brow] * k; stroke(ctx, [[lk + k * 20 - 11, by - tilt * 0.5 * -1], [lk + k * 20 + 11, by + tilt * 0.5 * -1]].map(p => [p[0], p[1] - (o.brow === 'up' ? 8 : 0)]), 5, OL); }
     for (const k of [-1, 1]) {
       if (o.blink) stroke(ctx, [[lk + k * 20 - 6, ey], [lk + k * 20 + 6, ey]], 4, OL);
+      else if (o.squint) stroke(ctx, [[lk + k * 20 - 7, ey + 1], [lk + k * 20 + 7, ey - 1]], 5, OL);
       else { circle(ctx, lk + k * 20, ey, 5.5 * wide, OL); if (o.scared) circle(ctx, lk + k * 20 + 1.5, ey - 1.5, 1.6, '#fff'); }
     }
     if (o.glasses) { ctx.lineWidth = 4.5; ctx.strokeStyle = OL; for (const k of [-1, 1]) { ctx.beginPath(); ctx.arc(lk + k * 20, ey, 15, 0, 7); ctx.stroke(); } stroke(ctx, [[lk - 5, ey - 2], [lk + 5, ey - 2]], 4, OL); }
-    if (o.scared) { ctx.beginPath(); ctx.ellipse(lk, 32, 7, 9, 0, 0, 7); ctx.fillStyle = OL; ctx.fill(); }
+    if (o.talk > 0.05) { ctx.beginPath(); ctx.ellipse(lk, 31, 9 + o.talk * 4, 2 + o.talk * 11, 0, 0, 7); ctx.fillStyle = '#5a1f1f'; ctx.fill(); ctx.lineWidth = 3.5; ctx.strokeStyle = OL; ctx.stroke(); }
+    else if (o.chew) { ctx.beginPath(); ctx.ellipse(lk + 2, 30, 11, 5 + Math.abs(Math.sin(o.t * 9)) * 4, 0, 0, 7); ctx.fillStyle = OL; ctx.fill(); ctx.beginPath(); ctx.ellipse(lk + 32, 18, 12, 9, 0, 0, 7); ctx.fillStyle = o.skin; ctx.fill(); }
+    else if (o.grin) { ctx.beginPath(); ctx.arc(lk, 22, 16, 0.25, Math.PI - 0.25); ctx.fillStyle = '#fff'; ctx.fill(); ctx.lineWidth = 4; ctx.strokeStyle = OL; ctx.stroke(); }
+    else if (o.flat) stroke(ctx, [[lk - 12, 31], [lk + 12, 31]], 4.5, OL);
+    else if (o.scared) { ctx.beginPath(); ctx.ellipse(lk, 32, 7, 9, 0, 0, 7); ctx.fillStyle = OL; ctx.fill(); }
     else if (o.shush) {} else stroke(ctx, [[lk - 10, 30], [lk + 10, 30]], 4, OL);
     if (o.sweat) { ctx.fillStyle = '#9fd3ff'; ctx.beginPath(); ctx.moveTo(-dir * 46, -30); ctx.quadraticCurveTo(-dir * 54, -12, -dir * 46, -8); ctx.quadraticCurveTo(-dir * 38, -12, -dir * 46, -30); ctx.fill(); }
   }
@@ -100,6 +110,10 @@ function armPose(p, dir, ph, t) {
   if (p === 'phone') return Object.assign([[-50, -160], [dir * 26, -268]], { bend: 30 });
   if (p === 'shush') return Object.assign([[-50, -160], [dir * 12, -332]], { bend: 34 });
   if (p === 'carry') return Object.assign([[dir * 60, -210], [dir * 70, -214]], { bend: 0 });
+  if (p === 'hold') return Object.assign([[dir * 40, -228], [dir * 48, -232]], { bend: 0 });
+  if (p === 'spoon') { const k = Math.max(0, Math.sin(t * 2.4)); return Object.assign([[dir * 40, -210], [dir * 30, -230 - k * 90]], { bend: 26 }); }
+  if (p === 'peek') return Object.assign([[-50, -160], [dir * 70, -330]], { bend: 30 });
+  if (p === 'wave') return Object.assign([[-50, -160], [dir * 90, -390 + Math.sin(t * 14) * 14]], { bend: 30 });
   if (p === 'scared') return Object.assign([[-40, -330], [40, -330]], { bend: 30 });
   return Object.assign([[-58 - sw * 0.3, -160 + Math.abs(sw) * 0.2], [58 + sw * 0.3, -160 + Math.abs(sw) * 0.2]], { bend: 0 });
 }
@@ -165,4 +179,4 @@ function caption(ctx, ch, t, W, y) {
   });
   ctx.restore();
 }
-module.exports = { clamp, lerp, ease, hash, OL, rrect, fillR, stroke, circle, person, hero, zombie, tape, pill, stat, cross, check, chunks, caption, HERO };
+module.exports = { mix, clamp, lerp, ease, hash, OL, rrect, fillR, stroke, circle, person, hero, zombie, tape, pill, stat, cross, check, chunks, caption, HERO };
