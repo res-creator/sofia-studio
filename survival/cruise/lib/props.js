@@ -40,7 +40,7 @@ function drawTimer(ctx, x, y, s = 1, ring = 0, t = 0) { ctx.save(); ctx.translat
   ctx.restore(); }
 // engineering wristband / key tag
 function drawWristband(ctx, x, y, s = 1, a = 0) { ctx.save(); ctx.translate(x, y); ctx.rotate(a); ctx.scale(s, s); paint(ctx, S, c => c.roundRect(-60, -12, 120, 24, 10), '#c8402e');
-  ctx.fillStyle = '#fff'; ctx.font = '13px Anton'; ctx.textAlign = 'center'; ctx.fillText('ENGINEERING · R. OKAFOR', 0, 5); paint(ctx, S, c => c.roundRect(52, -18, 26, 36, 5), '#c9cfd6'); ctx.restore(); }
+  ctx.fillStyle = '#fff'; ctx.font = '13px Anton'; ctx.textAlign = 'center'; ctx.fillText('ENGINEERING - R. OKAFOR', 0, 5); paint(ctx, S, c => c.roundRect(52, -18, 26, 36, 5), '#c9cfd6'); ctx.restore(); }
 function drawBread(ctx, x, y, s = 1, a = 0) { ctx.save(); ctx.translate(x, y); ctx.rotate(a); ctx.scale(s, s); paint(ctx, S, c => c.ellipse(0, 0, 70, 30, 0, 0, 7), '#d9a05a');
   ctx.strokeStyle = shade('#d9a05a', 0.7); ctx.lineWidth = 4; for (const k of [-30, 0, 30]) { ctx.beginPath(); ctx.moveTo(k - 10, -18); ctx.lineTo(k + 10, -6); ctx.stroke(); } ctx.restore(); }
 // handheld marine VHF radio

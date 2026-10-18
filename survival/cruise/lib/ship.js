@@ -141,7 +141,7 @@ function galley(ctx, t, o = {}) {
   // cold room
   rect(ctx, 2700, 200, 470, FLOOR - 190, '#c9d2d8'); txt(ctx, 'COLD ROOM', 2935, 240, 34, '#3a4256');
   if (o.coldOpen) { rect(ctx, 2730, 280, 410, FLOOR - 280, '#1c2a34'); rect(ctx, 2760, 420, 200, 14, '#7a848c'); for (let i = 0; i < Math.round(4 * (o.bread ?? 1)); i++) paint(ctx, S, c => c.ellipse(2790 + i * 45, 404, 22, 12, 0, 0, 7), '#d9a05a');
-    rect(ctx, 3000, FLOOR - 220, 120, 200, o.hatchOpen ? '#08090c' : '#5a646c'); txt(ctx, 'SVC → ENG', 3060, FLOOR - 240, 22, '#ffd23f'); }
+    rect(ctx, 3000, FLOOR - 220, 120, 200, o.hatchOpen ? '#08090c' : '#5a646c'); txt(ctx, 'ENG ACCESS', 3060, FLOOR - 240, 22, '#ffd23f'); }
   else { rect(ctx, 2730, 280, 410, FLOOR - 280, '#dde4e8'); rr(ctx, 3090, 520, 24, 90, 6, '#9aa3ab'); if (o.handprint) { ctx.save(); ctx.fillStyle = 'rgba(15,12,10,0.85)'; ctx.beginPath(); ctx.ellipse(3080, 560, 16, 20, 0.2, 0, 7); ctx.fill(); for (let i = 0; i < 4; i++) { ctx.beginPath(); ctx.ellipse(3068 + i * 9, 530, 4, 11, 0.1, 0, 7); ctx.fill(); } ctx.restore(); } }
   // the barricade cart (o.cart: x position)
   if (o.cart != null) { const cx = o.cart; rr(ctx, cx, 640, 300, 30, 6, '#c9cfd6'); rr(ctx, cx, 780, 300, 24, 6, '#c9cfd6'); for (const lx of [cx + 10, cx + 280]) line(ctx, [[lx, 640], [lx, FLOOR - 20]], 10, '#9aa3ab'); for (const wx of [cx + 20, cx + 280]) paint(ctx, S, c => c.arc(wx, FLOOR - 14, 14, 0, 7), '#333'); }
