@@ -82,6 +82,10 @@ function person(ctx, ch, h, tag) {
     if (h.neckBite) biteMark(c, J.neck[0] + 22, J.neck[1] - 6, 0.9, 0.4);
     if (h.bite) { const p = [lerp(J.eN[0], J.wN[0], 0.55), lerp(J.eN[1], J.wN[1], 0.55)]; if (h.sleeve) sleeve(c, ch, J); else biteMark(c, p[0], p[1], 0.8, h.biteFresh ?? 1); }
     if (z) onHead(c, ch, J, o, Rr => { c.fillStyle = 'rgba(120,20,25,0.7)'; c.beginPath(); c.ellipse(ch.S.mouthX * Rr + 6, ch.S.mouthY * Rr + 16, 16, 9, 0.2, 0, 7); c.fill(); });
+    if (h.redEyes) onHead(c, ch, J, o, Rr => { const lk = (h.e && h.e.look) || [-0.4, 0], a = h.redEyes;
+      for (const [ex, sc] of [[ch.S.eyeNear, 1], [ch.S.eyeFar, 0.78]]) { const x = ex * Rr + lk[0] * ch.S.eyeR * Rr * sc * 0.45, y = ch.S.eyeY * Rr + lk[1] * ch.S.eyeR * Rr * 0.4;
+        c.save(); c.globalCompositeOperation = 'lighter'; const g = c.createRadialGradient(x, y, 0, x, y, Rr * 0.3); g.addColorStop(0, `rgba(255,40,30,${0.8 * a})`); g.addColorStop(1, 'rgba(255,0,0,0)'); c.fillStyle = g; c.fillRect(x - Rr * 0.3, y - Rr * 0.3, Rr * 0.6, Rr * 0.6); c.restore();
+        c.fillStyle = `rgba(230,30,25,${a})`; c.beginPath(); c.arc(x, y, Rr * 0.075 * sc, 0, 7); c.fill(); } });
     if (h.front) h.front(c, J);
   };
   if (h.drawFirst) h.drawFirst(ctx, J);
