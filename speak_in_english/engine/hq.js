@@ -34,7 +34,10 @@ const lineOf = c => mix(shade(c, 0.5), INK, 0.45);
 // Every new episode renderer gets v2 automatically.
 const V1_EPISODES = new Set(['airport', 'cancel', 'cast_sheet', 'courier', 'date', 'dishes', 'gift', 'guest', 'haircut', 'kyle', 'lie', 'loan', 'london', 'market', 'marry', 'names', 'nosy', 'party', 'quit', 'raise', 'repay', 'restaurant', 'shoes', 'smell', 'sorry', 'things', 'vendor', 'weight']);
 const MAIN = require('path').basename(process.argv[1] || '', '.js');
-const STYLE = process.env.CHAR_STYLE || (V1_EPISODES.has(MAIN) ? 'v1' : 'v2');
+const PINNED = V1_EPISODES.has(MAIN);
+const STYLE = process.env.CHAR_STYLE || (PINNED ? 'v1' : 'v2');
+// Composition system (camera assist + adaptive lesson cards + UI layout): 'v2' for new episodes, 'v1' for existing ones; env LAYOUT overrides.
+const LAYOUT = process.env.LAYOUT || (PINNED ? 'v1' : 'v2');
 const styleOf = cfg => cfg.style || STYLE;
 
 // ---------- path builder with offset (for cel shading crescents)
@@ -131,6 +134,7 @@ function human(ctx, cfg, st = {}) {
   else { neck(ctx, cfg, { hw, yNeck, head, skin, B }); if (st.headFirst) { drawHead(); drawArms(); } else { drawArms(); drawHead(); } }
   if (st.front) st.front(ctx, { head, ySh, sw, h });
   ctx.restore();
+  if (global.__QA) global.__QA.human(ctx, cfg, st, { head, ySh, sw, h, hw, hh, drop });   // composition QA hook (no drawing)
   return { head, ySh, sw, h, hw, hh };
 }
 
@@ -763,6 +767,6 @@ function grain(ctx, W, H, t, a = 0.06) {
   if (!GRAIN) { GRAIN = []; for (let k = 0; k < 4; k++) { const c = createCanvas(360, 640), x = c.getContext('2d'); const id = x.createImageData(360, 640); for (let i = 0; i < id.data.length; i += 4) { const v = Math.random() * 255; id.data[i] = id.data[i + 1] = id.data[i + 2] = v; id.data[i + 3] = 255; } x.putImageData(id, 0, 0); GRAIN.push(c); } }
   ctx.save(); ctx.globalAlpha = a; ctx.globalCompositeOperation = 'overlay'; ctx.drawImage(GRAIN[Math.floor(t * 8) % 4], 0, 0, W, H); ctx.restore();
 }
-function vignette(ctx, W, H, a = 0.32, col = '30,18,30') { const g = ctx.createRadialGradient(W / 2, H * 0.47, H * 0.28, W / 2, H / 2, H * 0.68); g.addColorStop(0, `rgba(${col},0)`); g.addColorStop(1, `rgba(${col},${a})`); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); }
+function vignette(ctx, W, H, a = 0.32, col = '30,18,30') { const g = ctx.createRadialGradient(W / 2, H * 0.47, H * 0.28, W / 2, H / 2, H * 0.68); g.addColorStop(0, `rgba(${col},0)`); g.addColorStop(1, `rgba(${col},${a})`); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); if (global.__QA) global.__QA.worldDone(ctx); }
 
-module.exports = { STYLE, styleOf, clamp, lerp, P, eOut, eIn, eIO, eBack, hash, noise1, mix, shade, rgba, dark, hiCol, lineOf, INK, SHADOW, WARM, pen, mk, paint, rr, capsule, limb, softShadow, human, catChar, pug, poodle, hamster, items, box, grain, vignette, createCanvas, Path2D };
+module.exports = { STYLE, LAYOUT, PINNED, styleOf, clamp, lerp, P, eOut, eIn, eIO, eBack, hash, noise1, mix, shade, rgba, dark, hiCol, lineOf, INK, SHADOW, WARM, pen, mk, paint, rr, capsule, limb, softShadow, human, catChar, pug, poodle, hamster, items, box, grain, vignette, createCanvas, Path2D };

@@ -11,13 +11,18 @@ function simulateCamera(TL, target, opts = {}) {
     else { vx += (k * (g.x - x) - c * vx) * dt; vy += (k * (g.y - y) - c * vy) * dt; vz += (k * (g.z - z) - c * vz) * dt; vr += (k * ((g.r || 0) - r) - c * vr) * dt; x += vx * dt; y += vy * dt; z += vz * dt; r += vr * dt; }
     while (f / FPS <= t) { CAM[f] = { x, y, z, r }; f++; }
   }
+  LAST = { TL, CAM };
   return CAM;
 }
+let LAST = null, ASSISTED = false;
+// LAYOUT v2 (new episodes): let the camera assist nudge the directed camera before any frame is drawn
+function prepare(EPN, renderFrame) { if (ASSISTED || H.LAYOUT !== 'v2' || !LAST) return; ASSISTED = true; require('./camassist')(EPN, LAST.TL, LAST.CAM, renderFrame, H); }
 function makeShake(TL, names = ['impact', 'stamp', 'impact_soft', 'clank', 'drop']) {
   const imp = TL.sfx.filter(s => names.includes(s.n)).map(s => ({ t: s.t + 0.02, g: s.n === 'impact_soft' ? 0.4 : s.n === 'clank' ? 0.6 : 1 }));
   return t => { let a = 0; for (const im of imp) { const d = t - im.t; if (d >= 0 && d < 0.5) a += im.g * 20 * Math.exp(-d * 9); } return { x: H.noise1(t * 38) * a, y: H.noise1(t * 41 + 9) * a, r: H.noise1(t * 30 + 3) * a * 0.0015 }; };
 }
 function run(EPN, NF, renderFrame, W = 1080, Hh = 1920) {
+  prepare(EPN, renderFrame);
   const [a0, a1, out] = process.argv.slice(2);
   const canvas = H.createCanvas(W, Hh); const ctx = canvas.getContext('2d');
   if (out.startsWith('--png')) {
@@ -29,4 +34,4 @@ function run(EPN, NF, renderFrame, W = 1080, Hh = 1920) {
   let f = start; const t0 = Date.now();
   (function pump() { while (f < end) { renderFrame(ctx, f / 30, canvas); const buf = Buffer.from(ctx.getImageData(0, 0, W, Hh).data.buffer); f++; if (f % 150 === 0) console.error(`frame ${f}/${end} ${((Date.now() - t0) / 1000).toFixed(0)}s`); if (!ff.stdin.write(buf)) { ff.stdin.once('drain', pump); return; } } ff.stdin.end(); })();
 }
-module.exports = { simulateCamera, makeShake, run };
+module.exports = { simulateCamera, makeShake, run, prepare };

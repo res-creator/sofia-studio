@@ -6,6 +6,7 @@ const C = {
   pink: '#EE5E9A', pinkL: '#F7B6CF', pinkD: '#C23C76', white: '#FFFDF8', ink: '#2B2F1C',
   wood: '#C98B5A', woodD: '#9C6238', gold: '#F2C14E', red: '#E0474C', green: '#4CAF6A'
 };
+const LAYOUT = require('./hq').LAYOUT;   // 'v2' = composition system for new episodes
 const LV = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 const LVCOL = { A1: '#8CB369', A2: '#5E9E6E', B1: '#E9A23B', B2: '#E27D3C', C1: '#EE5E9A', C2: '#8E5BD6' };
 const LVNAME = { A1: 'BEGINNER', A2: 'ELEMENTARY', B1: 'INTERMEDIATE', B2: 'UPPER-INTERMEDIATE', C1: 'ADVANCED', C2: 'PROFICIENT' };
@@ -125,7 +126,8 @@ function icon(ctx, name, x, y, s, label) {
 // ---------- speech bubble (screen space)
 function bubble(ctx, sp, t, anchor, side, nameTag) {
   const u = t - sp.t;
-  const hold = sp.hold || 0.9;
+  let hold = sp.hold || 0.9;
+  if (LAYOUT === 'v2') { const nar = SP[sp.id.split('_')[0] + '_nar']; if (nar && nar.t > sp.t) hold = Math.max(0.05, Math.min(hold, nar.t - 0.35 - (sp.t + sp.d))); }   // gone before the lesson card arrives
   const out = P(t, sp.t + sp.d + hold, sp.t + sp.d + hold + 0.2);
   if (u < -0.05 || out >= 1) return;
   const k = eBack(P(u, -0.05, 0.25), 2.2) * (1 - eIn(out));
@@ -141,7 +143,7 @@ function bubble(ctx, sp, t, anchor, side, nameTag) {
   let bx = side === 'left' ? Math.max(50, Math.min(anchor.x - 120, W - 150 - tw)) : Math.min(W - 140 - tw, Math.max(50, anchor.x - tw + 140));
   bx = Math.max(40, bx);
   let by = anchor.y - bh - 60;
-  by = clamp(by, 360, 1250);
+  by = LAYOUT === 'v2' ? clamp(by, 360, Math.max(360, 1560 - bh)) : clamp(by, 360, 1250);   // v2: keep the bubble above the TikTok/Shorts caption area
   ctx.save();
   const ox = side === 'left' ? bx + 120 : bx + tw - 140, oy = by + bh;
   ctx.translate(ox, oy); ctx.scale(k, k); ctx.translate(-ox, -oy);
@@ -172,6 +174,7 @@ function bubble(ctx, sp, t, anchor, side, nameTag) {
     rl.forEach((l, i) => ctx.fillText(l, bx + 40, ry + 8 + i * 42));
   }
   ctx.restore();
+  if (global.__QA) global.__QA.ui(ctx, 'bubble', { x: bx, y: by, w: tw, h: bh, k, id: sp.id, who: sp.who, lines: lines.length + rl.length, anchor });
 }
 
 // ---------- captions for narrator (screen space, TikTok style)
@@ -202,6 +205,7 @@ function captions(ctx, t) {
     if (isTip) { // pill background for English phrase
       const tw = -x * 2 + 70; ctx.fillStyle = C.pink; rr(ctx, -tw / 2, -size * 0.85, tw, size * 1.7, size * 0.85); ctx.fill();
     }
+    if (global.__QA) global.__QA.ui(ctx, 'captions', { x: 540 + x * k - 20, y: y - size * 0.9 * k, w: -x * 2 * k + 40, h: size * 1.8 * k, k, id: sp.id });
     parts.forEach((p, i) => {
       const active = u >= ch[i][1] - 0.03;
       const col = isTip ? C.white : (active ? '#FFE15A' : C.white);
@@ -265,12 +269,22 @@ function levelIntro(ctx, t, sc) {
 }
 
 // ---------- lesson cards (screen space, during narrator)
+// v2 layout: the lesson card is only as tall as its content (v1 keeps the fixed 470 px)
+function cardHeight(cd) {
+  if (!cd) return 470; const ex = cd.ex ? cd.ex.length : 0;
+  if (cd.type === 'meter') return 380;
+  if (cd.type === 'swap') return cd.good && cd.good[1] ? 460 : 400;
+  if (cd.type === 'eq') { let b = 270; if (cd.note) b = Math.max(b, 336); if (ex) b = Math.max(b, 376 + (ex - 1) * 58); if (cd.stamp) b = Math.max(b, 446); return b + 20; }
+  if (cd.type === 'big') return 450;
+  if (cd.type === 'c2') return cd.moral_at < 1 ? 470 : 130 + ((cd.vocab || []).length - 1) * 170 + 110;
+  return 470;
+}
 function card(ctx, t, sc) {
   const l = sc.id.toLowerCase(); const nar = SP[l + '_nar']; if (!nar) return;
   const u = t - nar.t + 0.15; if (u < 0) return;
   const out = P(t, sc.e - 0.35, sc.e - 0.05);
   const k = eBack(P(u, 0, 0.35), 1.6);
-  const x = 90, w = 900, y = 330 + (1 - k) * -80 - eIn(out) * 900, h = 470;
+  const x = 90, w = 900, y = 330 + (1 - k) * -80 - eIn(out) * 900, h = LAYOUT === 'v2' ? cardHeight(CFG.cards[sc.id]) : 470;
   ctx.save(); ctx.globalAlpha = clamp(u / 0.15);
   ctx.translate(540, y + h / 2); ctx.rotate((1 - k) * -0.08); ctx.translate(-540, -(y + h / 2));
   ctx.fillStyle = 'rgba(62,71,30,.28)'; rr(ctx, x + 12, y + 18, w, h, 44); ctx.fill();
@@ -382,6 +396,7 @@ function card(ctx, t, sc) {
     }
   }
   ctx.restore();
+  if (global.__QA) global.__QA.ui(ctx, 'card', { x, y, w, h, k, id: sc.id });
 }
 
 function watermark(ctx) {
