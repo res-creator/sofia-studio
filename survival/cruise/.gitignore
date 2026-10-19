@@ -9,3 +9,4 @@ out/fa.png
 out/cold*.png
 out/thumb_full.png
 out/check_*.png
+__pycache__/

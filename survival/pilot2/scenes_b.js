@@ -91,11 +91,11 @@ S.visitor = { draw(ctx, t) {
       prop: (q, hn) => { tip = [hn[0], hn[1]]; L.flashlight(q, hn, t < out + 1.1 ? 0 : Math.PI, false); } }));
     ctx.restore(); }
   // hero behind the counter: feet behind it (farther back), head over the counter top
-  const hx = pick ? lerp(560, 920, sm((t - t2) / 1.4)) : 560, behind = !pick || t < t2 + 0.3;
+  const hx = pick ? lerp(560, 970, sm((t - t2) / 1.4)) : 560, behind = !pick || t < t2 + 0.3;
   if (behind) { hero(ctx, 560, 772, 1.1, { dir: 1, pose: 'crouch', crouch: duck ? 0.95 : 0.55, hands: { near: [70, -250] }, look: 0.8, brow: 'worried', scared: duck, sweat: duck, blink: !duck && blink(t), shut: !duck, t,
       prop: (q, hn) => L.pan(q, [hn[0], hn[1]], -1.35, 150) });
     fillR(ctx, 40, 600, 700, 40, 6, '#c9d1d8'); fillR(ctx, 60, 640, 660, 140, 4, '#a7b1ba'); ctx.fillStyle = 'rgba(255,255,255,0.25)'; ctx.fillRect(80, 660, 300, 8); }
-  else { const kneel = t > t2 + 1.4; hero(ctx, hx, FLOOR, HS, { dir: 1, walk: kneel ? null : (t - t2) * 7, pose: kneel ? 'crouch' : 'stand', crouch: 0.7, hands: kneel ? { near: [150, -150 + clamp((t - t2 - 1.6) / 0.6) * -90] } : {}, look: 0.6, brow: 'up', blink: blink(t), t,
+  else { const kneel = t > t2 + 1.4; hero(ctx, hx, FLOOR, HS, { dir: 1, walk: kneel ? null : (t - t2) * 7, pose: kneel ? 'crouch' : 'stand', crouch: 0.7, hands: kneel ? { near: [96, -150 + clamp((t - t2 - 1.6) / 0.6) * -90] } : {}, look: 0.6, brow: 'up', blink: blink(t), t,
       prop: kneel && t > t2 + 1.9 ? (q, hn) => L.band(q, hn[0] + 50, hn[1] + 4, 1.0, 0) : null }); }
   // light: total dark; the porthole, the headlamp, the flashlight cone
   const lights = [{ x: 1570, y: 330, r: 220, a: 0.7 }];
@@ -161,7 +161,7 @@ S.mess = { draw(ctx, t) {
   const hx = !grab ? (t < t3 + 1.5 ? lerp(900, 1420, sm((t - t3 + 0.3) / 1.8)) : 1420) : lerp(1420, 1300, sm((t - tA3e) / 1.2));
   const fill = roar ? clamp((t - press) / 3.4) : 0;
   let hands = {}, prop = null, dir = 1;
-  if (!grab && t >= t3 + 1.5) { hands = { near: [150, -240], far: [104, -318] }; prop = (q, hn) => L.bottle(q, [hn[0], hn[1] + 10], fill); }
+  if (!grab && t >= t3 + 1.5) { hands = { near: [150, -240], far: [96, -310] }; prop = (q, hn) => L.bottle(q, [hn[0], hn[1] + 10], fill); }
   else if (!grab) prop = null;
   else { dir = -1; const reachR = win(t, tRad - 0.5, tRad + 0.2);
     hands = { near: reachR ? [80, -384] : [70, -250], far: [60, -226] };
