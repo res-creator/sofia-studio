@@ -1,0 +1,590 @@
+{
+ "title": "Zombie Outbreak: 30 Days Trapped on a Cruise Ship (pilot, full)",
+ "note": "src: pilot:<id> = ../vo, cruise:<id> = ../cruise/vo, new = ./vo. gap = pause before the line (s).",
+ "lines": [
+  [
+   "l01",
+   "N",
+   "open",
+   "Day one. You're a waiter on a cruise ship. Three thousand passengers. Seven days at sea.",
+   "pilot",
+   0.45
+  ],
+  [
+   "l02",
+   "N",
+   "alert",
+   "Then every phone on board buzzes at once. Stay in your cabins.",
+   "pilot",
+   0.45
+  ],
+  [
+   "l03",
+   "N",
+   "alert",
+   "And the captain stops talking... mid-sentence.",
+   "pilot",
+   0.9
+  ],
+  [
+   "l04",
+   "N",
+   "deck",
+   "On Deck Five, people are walking strangely. Too slowly. And they're coming this way.",
+   "pilot",
+   0.6
+  ],
+  [
+   "l05",
+   "N",
+   "map",
+   "Rule number one. Don't run to the lifeboats. Everyone else will.",
+   "pilot",
+   0.8
+  ],
+  [
+   "l06",
+   "N",
+   "map",
+   "You go down. To the one place nobody thinks about. The galley.",
+   "pilot",
+   0.45
+  ],
+  [
+   "l07",
+   "N",
+   "galley",
+   "Food for three weeks. Water for nine days. And one steel door.",
+   "pilot",
+   0.7
+  ],
+  [
+   "l08",
+   "N",
+   "door",
+   "Rule number two. Be quiet. They follow sound.",
+   "pilot",
+   0.6
+  ],
+  [
+   "l09",
+   "N",
+   "door",
+   "You push a cart against the door... and you wait.",
+   "pilot",
+   0.5
+  ],
+  [
+   "s04_4",
+   "N",
+   "night1",
+   "That night, the engines stop. The lights stay on. Nobody tells you why.",
+   "cruise",
+   4.0
+  ],
+  [
+   "s05_1",
+   "N",
+   "rhythm",
+   "Day three. You learn the ship's new rhythm.",
+   "cruise",
+   1.4
+  ],
+  [
+   "s05_2",
+   "N",
+   "rhythm",
+   "Footsteps above you at noon. Something dragging at midnight. And long, long silences in between.",
+   "cruise",
+   0.4
+  ],
+  [
+   "a1",
+   "N",
+   "rhythm",
+   "You ration everything. One can a day. Half a bottle of water. And a mark on the wall for every day you're still here.",
+   "new",
+   0.8
+  ],
+  [
+   "s05_3",
+   "N",
+   "cold",
+   "Day five. Someone has been in the cold room.",
+   "cruise",
+   2.0
+  ],
+  [
+   "s05_4",
+   "N",
+   "cold",
+   "Half your bread is gone. And the infected don't close doors behind them.",
+   "cruise",
+   0.4
+  ],
+  [
+   "s06_1",
+   "N",
+   "visitor",
+   "Day seven. You wait in the dark to see who's stealing your food.",
+   "cruise",
+   1.6
+  ],
+  [
+   "a2",
+   "N",
+   "visitor",
+   "A flashlight. Orange coveralls. And on the floor... something they dropped.",
+   "new",
+   7.5
+  ],
+  [
+   "s06_2",
+   "N",
+   "visitor",
+   "Whoever it is... knows this ship better than you do.",
+   "cruise",
+   1.4
+  ],
+  [
+   "s07_1",
+   "N",
+   "water",
+   "Day nine. The last bottle of water.",
+   "cruise",
+   1.6
+  ],
+  [
+   "s07_2",
+   "N",
+   "water",
+   "The nearest water is the ice machine in the crew mess. Forty steps down a dark corridor.",
+   "cruise",
+   0.4
+  ],
+  [
+   "s07_3",
+   "N",
+   "mess",
+   "Unfortunately, the ice machine is the loudest thing on this ship.",
+   "cruise",
+   5.5
+  ],
+  [
+   "a3",
+   "N",
+   "mess",
+   "On the way out, you grab one more thing. The lifeboat radio.",
+   "new",
+   4.0
+  ],
+  [
+   "a4",
+   "N",
+   "run",
+   "Forty steps there. Forty steps back. The last twenty at a full sprint.",
+   "new",
+   0.3
+  ],
+  [
+   "s07_4",
+   "CG",
+   "radio",
+   "This is the Coast Guard on channel sixteen. All ports are closed. Any vessel carrying infected will not be allowed to reach the coast. We will use force.",
+   "cruise",
+   5.0
+  ],
+  [
+   "s08_1",
+   "N",
+   "speaker",
+   "That night, the speakers in the ceiling click on.",
+   "cruise",
+   1.6
+  ],
+  [
+   "s08_2",
+   "N",
+   "speaker",
+   "Nobody speaks. Someone is just... listening. Then they click off.",
+   "cruise",
+   3.6
+  ],
+  [
+   "s09_1",
+   "N",
+   "light",
+   "Day twelve. Through the porthole... a light. A lighthouse. The ship has drifted toward land.",
+   "cruise",
+   1.6
+  ],
+  [
+   "s09_2",
+   "N",
+   "light",
+   "Then, deep below you... the engines start again.",
+   "cruise",
+   3.0
+  ],
+  [
+   "s09_3",
+   "N",
+   "light",
+   "And the ship turns away from land.",
+   "cruise",
+   3.0
+  ],
+  [
+   "s09_4",
+   "N",
+   "light",
+   "Someone else is alive on this ship. And they don't want to be rescued.",
+   "cruise",
+   2.6
+  ],
+  [
+   "s10_1",
+   "N",
+   "choice",
+   "You could stay in the galley. Safe. Fed. And blind.",
+   "cruise",
+   2.4
+  ],
+  [
+   "s10_2",
+   "N",
+   "choice",
+   "Or you could find out who's driving.",
+   "cruise",
+   0.4
+  ],
+  [
+   "a5",
+   "N",
+   "tunnel",
+   "The hatch in the cold room opens onto a service tunnel. Two hundred feet of steel. No lights.",
+   "new",
+   2.5
+  ],
+  [
+   "a6",
+   "N",
+   "tunnel",
+   "Halfway down, you stop. Something behind you stops too.",
+   "new",
+   2.0
+  ],
+  [
+   "a7",
+   "N",
+   "tunnel",
+   "You wind the kitchen timer... and slide it into a side duct.",
+   "new",
+   3.5
+  ],
+  [
+   "s10_3",
+   "N",
+   "tunnel",
+   "Rule number two works both ways.",
+   "cruise",
+   4.5
+  ],
+  [
+   "s11_1",
+   "R",
+   "engine",
+   "Don't move. Hands where I can see them. Both of them.",
+   "cruise",
+   3.0
+  ],
+  [
+   "s11_2",
+   "R",
+   "engine",
+   "Where did you get that?",
+   "cruise",
+   1.4
+  ],
+  [
+   "s11_3",
+   "R",
+   "engine",
+   "You're the waiter. The one who hums when he's scared.",
+   "cruise",
+   1.8
+  ],
+  [
+   "s11_4",
+   "N",
+   "engine",
+   "Turns out you weren't as quiet as you thought.",
+   "cruise",
+   0.4
+  ],
+  [
+   "s11_5",
+   "R",
+   "engine",
+   "Day one, the bridge ordered all stop. Then the line went dead. Nobody's opened that door since.",
+   "cruise",
+   0.9
+  ],
+  [
+   "s11_6",
+   "R",
+   "engine",
+   "Then the Coast Guard started sinking ships. So every time we drift too close to land... I start the engines and take us back out.",
+   "cruise",
+   0.5
+  ],
+  [
+   "s11_7",
+   "N",
+   "engine",
+   "So that's who's driving. Not a ghost. A very tired engineer.",
+   "cruise",
+   1.0
+  ],
+  [
+   "e1",
+   "R",
+   "engine",
+   "My shift ended at eight a.m. on day one. I just never clocked out.",
+   "new",
+   0.6
+  ],
+  [
+   "b1",
+   "R",
+   "deal",
+   "I can keep us away from the coast. I can't keep us fed.",
+   "new",
+   2.4
+  ],
+  [
+   "s12_1",
+   "N",
+   "deal",
+   "Two survivors. One kitchen. One engine room.",
+   "cruise",
+   0.5
+  ],
+  [
+   "s12_2",
+   "N",
+   "deal",
+   "She keeps the ship alive. You keep her fed.",
+   "cruise",
+   0.4
+  ],
+  [
+   "f1",
+   "N",
+   "clue",
+   "Day seventeen. You finally ask her about the speakers. The click. The breathing.",
+   "new",
+   2.0
+  ],
+  [
+   "f2",
+   "R",
+   "clue",
+   "Only one place on this ship can open the PA. The bridge.",
+   "new",
+   0.8
+  ],
+  [
+   "f3",
+   "R",
+   "clue",
+   "It has its own water tank. The captain's pantry. Enough for one person... for a month.",
+   "new",
+   0.8
+  ],
+  [
+   "f4",
+   "N",
+   "clue",
+   "One person. Thirty days. You decide not to think about that.",
+   "new",
+   1.2
+  ],
+  [
+   "f5",
+   "R",
+   "clue",
+   "Good plan. Neither do I.",
+   "new",
+   0.5
+  ],
+  [
+   "c1",
+   "N",
+   "cutter",
+   "Day twenty. A gray ship on the horizon.",
+   "new",
+   2.4
+  ],
+  [
+   "c2",
+   "R",
+   "cutter",
+   "Coast Guard. Kill the lights. All of them.",
+   "new",
+   0.6
+  ],
+  [
+   "c3",
+   "CG",
+   "cutter",
+   "Unidentified vessel, you are inside a closed zone. Turn around, or we will open fire.",
+   "new",
+   4.0
+  ],
+  [
+   "c4",
+   "N",
+   "cutter",
+   "For one long hour, a ship the size of a small town pretends it isn't there.",
+   "new",
+   3.0
+  ],
+  [
+   "c5",
+   "N",
+   "cutter",
+   "Then Rosa turns it around. Again.",
+   "new",
+   2.5
+  ],
+  [
+   "d1",
+   "N",
+   "crawler",
+   "Day twenty-four. The timer in the duct stopped ringing a long time ago.",
+   "new",
+   2.2
+  ],
+  [
+   "d2",
+   "N",
+   "crawler",
+   "And the thing that followed it... just found the way out.",
+   "new",
+   0.6
+  ],
+  [
+   "d3",
+   "R",
+   "crawler",
+   "Don't. Move.",
+   "new",
+   3.0
+  ],
+  [
+   "d4",
+   "N",
+   "crawler",
+   "Sound brought it here. Sound can take it somewhere else.",
+   "new",
+   1.0
+  ],
+  [
+   "d5",
+   "N",
+   "crawler",
+   "One frying pan. One empty storeroom. One very loud dinner bell.",
+   "new",
+   0.6
+  ],
+  [
+   "d6",
+   "R",
+   "crawler",
+   "Not bad, waiter.",
+   "new",
+   7.0
+  ],
+  [
+   "e2",
+   "N",
+   "days",
+   "Day twenty-six. She teaches you the engines. You teach her that canned peaches count as dessert.",
+   "new",
+   2.0
+  ],
+  [
+   "s12_3",
+   "N",
+   "days",
+   "Day twenty-nine. Fuel for one more day.",
+   "cruise",
+   3.6
+  ],
+  [
+   "s12_4",
+   "R",
+   "days",
+   "Tomorrow we pick a direction. And we don't come back.",
+   "cruise",
+   0.5
+  ],
+  [
+   "s13_1",
+   "R",
+   "bridge",
+   "That's not me.",
+   "cruise",
+   4.5
+  ],
+  [
+   "s13_2",
+   "R",
+   "bridge",
+   "Steering just switched to the bridge. Nobody's been up there in thirty days.",
+   "cruise",
+   0.4
+  ],
+  [
+   "s13_3",
+   "B",
+   "bridge",
+   "Engine room. This is the bridge.",
+   "cruise",
+   8.0
+  ],
+  [
+   "s13_4",
+   "B",
+   "bridge",
+   "Thank you for keeping us alive. I'll take it from here.",
+   "cruise",
+   0.6
+  ],
+  [
+   "s13_5",
+   "R",
+   "bridge",
+   "That's not the captain.",
+   "cruise",
+   2.5
+  ],
+  [
+   "s13_6",
+   "N",
+   "outro",
+   "Thirty days. You survived the outbreak, the hunger and the sea.",
+   "cruise",
+   3.0
+  ],
+  [
+   "s13_7",
+   "N",
+   "outro",
+   "You found out who was driving. Now you just have to find out where he's taking you.",
+   "cruise",
+   0.3
+  ]
+ ]
+}
