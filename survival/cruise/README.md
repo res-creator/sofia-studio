@@ -2,6 +2,11 @@
 
 Как продолжить работу без Claude Code. Всё нужное лежит в этой папке.
 
+## Статус (19 октября)
+Эпизод собран: `out/zombie_outbreak_cruise.mp4` (5:00), лёгкая версия `out/zombie_outbreak_cruise_light.mp4`,
+субтитры `out/cruise.srt`, обложка `out/thumbnail.png`, тексты для YouTube `upload_kit.txt`, раскадровка `out/timeline_sheet.png`.
+Чтобы что-то поправить: изменить сцену в `scenes/*.js` → `node render.js video sNN out/blocks/sNN.mp4` → `SKIP_RENDER=1 sh build.sh`.
+
 ## Что уже готово
 - Сценарий: `SCRIPT.md` (сцены, логика, правдоподобность), текст реплик: `script.json`.
 - План производства: `PRODUCTION_PLAN.md`; правила канала: `../PRODUCTION_RULES.md`.
