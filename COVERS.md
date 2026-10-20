@@ -9,3 +9,4 @@
   (the McDonald's cover uses a "$" sign and "BURGERS" instead of the arches).
 
 Covers: mcd_ep1/how_mcdonalds_really_makes_money_cover.png · air_ep2/why_airlines_oversell_seats_final_cover.png · car_ep3/v2/your_car_was_reporting_on_you_v2_cover.png
+Extra (uploaded videos): covers_extra/card_trap_cover.png · covers_extra/gym_sponsor_cover.png (covers_extra/covers.js)
