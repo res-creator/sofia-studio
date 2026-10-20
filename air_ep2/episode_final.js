@@ -232,7 +232,7 @@ const ep = {
     { t0: 3.3, t1: 5.2, tr: 3.6, x: 930, y: 1150, k: 'cloud', s: 1.2, rot: 0, par: 1.9, blur: 6, a: 0.9 },
   ],
   subs: tidySubs(EN.subtitleGroups(V, Object.keys(ST), { max: 6 })),
-  subStyle: { y: 1350, size: 64, maxW: 800, highlight: ['confirmed', 'seat', 'legally', 'overbooking', 'everyone', 'volunteers', 'denied', 'involuntarily', 'cash', '$500'] },
+  subStyle: { y: 1425, size: 64, maxW: 800, highlight: ['confirmed', 'seat', 'legally', 'overbooking', 'everyone', 'volunteers', 'denied', 'involuntarily', 'cash', '$500'] },
   vo: Object.entries(ST),
   music: { b0: 0.32, impact: IMPACT, tear: TEAR, gamble: 11.32, overbooked: 15.32, reveal: 24.32, cash: 29.32, quiet: 32.32, last: 34.95, end: T },
   cues() {
