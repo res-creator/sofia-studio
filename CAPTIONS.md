@@ -27,3 +27,7 @@ $5,000 on your card can quietly cost you $12,700 💳 And card insiders have a n
 ## 7. Why Her Medical Bill Doubled (v3)
 A $3,000 estimate. A $6,000 bill. Same doctor, same procedure 🏥 The only thing that changed was the room — and who owned it. (Story: KFF Health News, Sept 2026)
 #healthcare #medicalbills #hospital #personalfinance #money #didyouknow
+
+## 8. Why Amazon Sometimes Pays You to Keep Your Order
+Refund approved… and KEEP the item? 📦 It's not a glitch — for some cheap items, sending them back can cost more than the item itself.
+#amazon #returns #onlineshopping #business #money #didyouknow
