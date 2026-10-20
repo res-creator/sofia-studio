@@ -3,7 +3,10 @@
 const K = require('../tests/mcd_collage/kit');
 const { C, F, clamp, lerp, E, hash, rr, cut, flat, lerpCol } = K;
 const R4 = { cream: C.paper, ink: C.ink, red: C.red, yellow: C.yellow, blue: '#4D8DFF', blueD: '#2F64C8', paper: '#FFFDF8', grey: '#8E95A6', line: '#C9C1B1' };
-const text = (ctx, s, x, y, size, col, font = F.black, align = 'left') => { ctx.font = `${size}px ${font}`; ctx.fillStyle = col; ctx.textAlign = align; ctx.fillText(s, x, y); };
+// text with an optional max width: the size shrinks so the words always stay inside their frame
+const text = (ctx, s, x, y, size, col, font = F.black, align = 'left', maxW = 0) => { ctx.font = `${size}px ${font}`;
+  if (maxW) { const tw = ctx.measureText(s).width; if (tw > maxW) ctx.font = `${Math.floor(size * maxW / tw)}px ${font}`; }
+  ctx.fillStyle = col; ctx.textAlign = align; ctx.fillText(s, x, y); };
 
 // ---------- apartment building: origin at the bottom centre of the front face ----------
 const STY = {
@@ -43,9 +46,11 @@ function building(ctx, o = {}) {
   // entrance + awning
   flat(ctx, () => rr(ctx, -46, -118, 92, 118, [10, 10, 0, 0]), o.style === 'C' ? '#171717' : '#2B2B2B', 3);
   flat(ctx, () => { ctx.beginPath(); ctx.moveTo(-74, -122); ctx.lineTo(74, -122); ctx.lineTo(88, -150); ctx.lineTo(-88, -150); ctx.closePath(); }, S.trim, 3);
-  if (o.label) { flat(ctx, () => rr(ctx, -w / 2 + 30, -196, w - 60, 52, 8), C.ink); text(ctx, o.label, 0, -158, 34, '#FFFFFF', F.black, 'center'); }
+  if (o.label) { flat(ctx, () => rr(ctx, -w / 2 + 30, -196, w - 60, 52, 8), C.ink); text(ctx, o.label, 0, -158, 34, '#FFFFFF', F.black, 'center', w - 100); }
   if (o.price && o.price.u > 0) { const u = o.price.u, kk = lerp(1.8, 1, E.out5(clamp(u))); ctx.save(); ctx.translate(0, -h * 0.5); ctx.scale(kk, kk); ctx.globalAlpha *= clamp(u * 3); ctx.rotate(-0.03 * side);
-    cut(ctx, () => rr(ctx, -150, -62, 300, 124, 14), o.price.bg || C.ink, { sb: 18, sy: 8, edgeW: 10, lw: 0 }); text(ctx, o.price.text, -8, 26, 74, '#FFFFFF', F.black, 'center'); text(ctx, '/mo', 112, 26, 26, 'rgba(255,255,255,0.7)', F.xb, 'center'); ctx.restore(); }
+    cut(ctx, () => rr(ctx, -150, -62, 300, 124, 14), o.price.bg || C.ink, { sb: 18, sy: 8, edgeW: 10, lw: 0 }); ctx.font = `74px ${F.black}`; let ms = 74, mw = ctx.measureText(o.price.text).width; ctx.font = `26px ${F.xb}`; const sw = ctx.measureText('/mo').width;
+    if (mw + sw + 8 > 260) { ms = Math.floor(74 * (260 - sw - 8) / mw); mw = mw * ms / 74; } const x0 = -(mw + sw + 8) / 2;
+    text(ctx, o.price.text, x0, 26, ms, '#FFFFFF', F.black, 'left'); text(ctx, '/mo', x0 + mw + 8, 26, 26, 'rgba(255,255,255,0.75)', F.xb, 'left'); ctx.restore(); }
   ctx.restore();
   ctx.restore();
 }
@@ -56,7 +61,7 @@ function roofSign(ctx, x, y, label, bg, fg, u, b = 0) { if (u <= 0) return; cons
   ctx.font = `60px ${F.black}`; const tw = ctx.measureText(label).width + 70; cut(ctx, () => rr(ctx, -tw / 2, -100, tw, 100, 12), bg, { sb: 18, sy: 8, lw: 4 }); text(ctx, label, 0, -28, 60, fg, F.black, 'center'); ctx.restore(); }
 
 // ---------- people ----------
-// tenant with a suitcase, feet at (0,0), ~330 tall. o.look -1..1 (head turn), o.up 0..1 (looks up), o.walk phase, o.pull -1..1 (tugged sideways)
+// tenant with a suitcase, feet at (0,0), ~330 tall. o.look -1..1 (head turn), o.up 0..1 (looks up), o.walk phase, o.pull -1..1 (tugged sideways), o.sad (frown)
 function tenant(ctx, x, y, s, o = {}) {
   const look = o.look || 0, up = o.up || 0, ph = o.walk || 0, bob = Math.abs(Math.sin(ph)) * 8;
   ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.rotate((o.pull || 0) * 0.12);
@@ -75,7 +80,7 @@ function tenant(ctx, x, y, s, o = {}) {
   cut(ctx, () => { ctx.beginPath(); ctx.arc(0, 0, 50, 0, 7); }, '#E0AC69', { sb: 10, sy: 5, lw: 3.5 });
   ctx.fillStyle = '#3B2A20'; ctx.beginPath(); ctx.arc(0, -8, 51, Math.PI * 1.02, Math.PI * 1.98); ctx.fill(); ctx.fillRect(-51, -12, 14, 18);
   const ex = look * 16, ey = -up * 12 + 4; ctx.fillStyle = C.ink; ctx.beginPath(); ctx.arc(-16 + ex, ey, 5.5, 0, 7); ctx.arc(16 + ex, ey, 5.5, 0, 7); ctx.fill();
-  ctx.lineWidth = 3.5; ctx.strokeStyle = C.ink; ctx.beginPath(); ctx.arc(ex * 0.8, 22 - up * 6, 12, 0.2 * Math.PI, 0.8 * Math.PI); ctx.stroke();
+  ctx.lineWidth = 3.5; ctx.strokeStyle = C.ink; ctx.beginPath(); if (o.sad) ctx.arc(ex * 0.8, 34 - up * 6, 12, 1.2 * Math.PI, 1.8 * Math.PI); else ctx.arc(ex * 0.8, 22 - up * 6, 12, 0.2 * Math.PI, 0.8 * Math.PI); ctx.stroke();
   ctx.restore(); ctx.restore();
 }
 // owner portrait badge (two clearly different landlords)
@@ -99,7 +104,7 @@ function dataChip(ctx, label, col) { // 330 x 120
   if (label === 'RENT') { text(ctx, '$', -105, 28, 70, '#FFFFFF', F.black, 'center'); }
   else if (label === 'VACANCY') { ctx.strokeRect(-128, -24, 46, 50); ctx.beginPath(); ctx.moveTo(-116, -10); ctx.lineTo(-94, 12); ctx.moveTo(-94, -10); ctx.lineTo(-116, 12); ctx.stroke(); }
   else { for (let i = 0; i < 3; i++) { ctx.beginPath(); ctx.moveTo(-128, -18 + i * 18); ctx.lineTo(-82, -18 + i * 18); ctx.stroke(); } }
-  ctx.lineCap = 'butt'; text(ctx, label, -40, 20, label.length > 5 ? 46 : 54, C.ink, F.black);
+  ctx.lineCap = 'butt'; text(ctx, label, -42, 20, 54, C.ink, F.black, 'left', 186);
 }
 // the pricing server: a black box with two inlets on top; on = 0..1, lights = number of LEDs lit
 function server(ctx, t, o = {}) { // ~420 x 300, centre origin
@@ -114,30 +119,30 @@ function server(ctx, t, o = {}) { // ~420 x 300, centre origin
   if (o.inside) { ctx.save(); rr(ctx, -166, -36, 332, 142, 12); ctx.clip(); o.inside(ctx); ctx.restore(); }
   else if (on > 0) { ctx.strokeStyle = 'rgba(77,141,255,0.6)'; ctx.lineWidth = 3; for (let i = 0; i < 5; i++) { ctx.beginPath(); ctx.moveTo(-150, 0 + i * 20); for (let x = -150; x <= 150; x += 20) ctx.lineTo(x, 0 + i * 20 + Math.sin(x * 0.05 + t * 8 + i) * 8 * on); ctx.stroke(); } }
   for (let i = 0; i < 6; i++) flat(ctx, () => rr(ctx, 130, -96 + i * 0, 0, 0, 0), '#000');
-  text(ctx, 'PRICING SOFTWARE', 0, 136, 22, on > 0.5 ? C.yellow : '#7A7F8E', F.xb, 'center');
+  text(ctx, 'PRICING SOFTWARE', 0, 134, 22, on > 0.5 ? C.yellow : '#7A7F8E', F.xb, 'center', 360);
 }
 // a price recommendation card: it SUGGESTS a price (illustrative "$$$", never a real figure)
 function recCard(ctx, o = {}) { // 280 x 170
   cut(ctx, () => rr(ctx, -140, -85, 280, 170, 16), C.yellow, { sb: 20, sy: 10, lw: 4 });
-  flat(ctx, () => rr(ctx, -140, -85, 280, 50, [16, 16, 0, 0]), C.ink); text(ctx, o.label || 'RECOMMENDED', 0, -50, 28, '#FFFFFF', F.black, 'center');
-  text(ctx, o.price || '$$$', 0, 58, 86, C.ink, F.black, 'center');
+  flat(ctx, () => rr(ctx, -140, -85, 280, 50, [16, 16, 0, 0]), C.ink); text(ctx, o.label || 'RECOMMENDED', 0, -50, 28, '#FFFFFF', F.black, 'center', 240);
+  text(ctx, o.price || '$$$', 0, 58, 86, C.ink, F.black, 'center', 240);
 }
 function realpageCard(ctx, o = {}) { // 700 x 280
   cut(ctx, () => rr(ctx, -350, -140, 700, 280, 26), R4.paper, { sb: 36, sy: 18, lw: 5 });
-  text(ctx, 'REALPAGE', 0, 22, 136, C.ink, F.black, 'center');
-  ctx.save(); ctx.translate(0, 82); ctx.rotate(-0.015); flat(ctx, () => rr(ctx, -210, -30, 420, 62, 8), C.red); text(ctx, 'PRICING SOFTWARE', 0, 16, 40, '#FFFFFF', F.black, 'center'); ctx.restore();
+  text(ctx, 'REALPAGE', 0, 22, 136, C.ink, F.black, 'center', 610);
+  ctx.save(); ctx.translate(0, 82); ctx.rotate(-0.015); flat(ctx, () => rr(ctx, -210, -30, 420, 62, 8), C.red); text(ctx, 'PRICING SOFTWARE', 0, 16, 40, '#FFFFFF', F.black, 'center', 380); ctx.restore();
   for (let i = 0; i < 4; i++) { ctx.fillStyle = (o.lit || 0) > i ? C.yellow : '#D9D2C3'; ctx.beginPath(); ctx.arc(-300 + i * 30, -104, 9, 0, 7); ctx.fill(); }
 }
 // stylised illustration of a lawsuit (no seal, no quotes, not a copy of the filing)
 function lawsuitDoc(ctx) { // 760 x 980
   cut(ctx, () => rr(ctx, -380, -490, 760, 980, 18), R4.paper, { sb: 40, sy: 20, lw: 4 });
   flat(ctx, () => rr(ctx, -380, -490, 760, 150, [18, 18, 0, 0]), C.ink);
-  text(ctx, 'U.S. DEPARTMENT', 0, -420, 54, '#FFFFFF', F.black, 'center'); text(ctx, 'OF JUSTICE', 0, -366, 54, C.yellow, F.black, 'center');
-  text(ctx, 'CIVIL ANTITRUST LAWSUIT', 0, -270, 30, '#7A7A7A', F.xb, 'center');
-  text(ctx, 'v.', 0, -190, 44, C.ink, F.xb, 'center'); text(ctx, 'REALPAGE', 0, -90, 120, C.ink, F.black, 'center');
+  text(ctx, 'U.S. DEPARTMENT', 0, -420, 54, '#FFFFFF', F.black, 'center', 680); text(ctx, 'OF JUSTICE', 0, -366, 54, C.yellow, F.black, 'center', 680);
+  text(ctx, 'CIVIL ANTITRUST LAWSUIT', 0, -270, 30, '#7A7A7A', F.xb, 'center', 660);
+  text(ctx, 'v.', 0, -212, 40, C.ink, F.xb, 'center'); text(ctx, 'REALPAGE', 0, -90, 120, C.ink, F.black, 'center', 660);
   flat(ctx, () => rr(ctx, -310, -50, 620, 6, 3), C.ink);
   for (let i = 0; i < 8; i++) flat(ctx, () => rr(ctx, -310, 0 + i * 50, 620 - (i % 4 === 3 ? 240 : hash(i * 5) * 120), 16, 8), '#D9D2C3');
-  flat(ctx, () => rr(ctx, 120, 400, 200, 52, 8), C.red); text(ctx, 'AUG 2024', 220, 438, 32, '#FFFFFF', F.black, 'center');
+  flat(ctx, () => rr(ctx, 120, 400, 200, 52, 8), C.red); text(ctx, 'AUG 2024', 220, 438, 32, '#FFFFFF', F.black, 'center', 176);
 }
 
 module.exports = { R4, STY, text, building, winPos, winRows, roofSign, tenant, owner, DATA_LABELS, dataChip, server, recCard, realpageCard, lawsuitDoc };
