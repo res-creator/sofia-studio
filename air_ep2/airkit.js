@@ -43,12 +43,12 @@ function ticket(ctx, o = {}) {
     for (const [y, r] of [[-260, -0.12], [120, 0.1]]) { ctx.save(); ctx.translate(0, y); ctx.rotate(r); ctx.fillRect(-60 * u, -170, 120 * u, 340); ctx.restore(); } ctx.restore(); }
 }
 // rubber stamp: thick red frame + heavy type, slams from big to 1
-function stamp(ctx, text, x, y, s, u, rot = -0.2) {
+function stamp(ctx, text, x, y, s, u, rot = -0.2, col = C.red) {
   if (u <= 0) return; const k = u < 1 ? lerp(2.4, 1, E.out5(clamp(u))) : 1;
   ctx.save(); ctx.translate(x, y); ctx.rotate(rot); ctx.scale(s * k, s * k); ctx.globalAlpha *= clamp(u * 4);
   ctx.font = `150px ${F.black}`; const w = ctx.measureText(text).width + 90, h = 210;
-  ctx.strokeStyle = C.red; ctx.lineWidth = 16; rr(ctx, -w / 2, -h / 2, w, h, 18); ctx.stroke(); ctx.lineWidth = 5; rr(ctx, -w / 2 + 18, -h / 2 + 18, w - 36, h - 36, 10); ctx.stroke();
-  ctx.fillStyle = C.red; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(text, 0, 8); ctx.textBaseline = 'alphabetic';
+  ctx.strokeStyle = col; ctx.lineWidth = 16; rr(ctx, -w / 2, -h / 2, w, h, 18); ctx.stroke(); ctx.lineWidth = 5; rr(ctx, -w / 2 + 18, -h / 2 + 18, w - 36, h - 36, 10); ctx.stroke();
+  ctx.fillStyle = col; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(text, 0, 8); ctx.textBaseline = 'alphabetic';
   ctx.fillStyle = 'rgba(255,253,248,0.55)'; for (let i = 0; i < 40; i++) { ctx.beginPath(); ctx.arc(-w / 2 + hash(i * 3) * w, -h / 2 + hash(i * 7) * h, 2 + hash(i) * 5, 0, 7); ctx.fill(); } // ink grain
   ctx.restore();
 }
@@ -164,4 +164,40 @@ function check(ctx, x, y, s, u) { if (u <= 0) return; const k = E.back(clamp(u),
   cut(ctx, () => { ctx.beginPath(); ctx.arc(0, 0, 90, 0, 7); }, C.ink, { sb: 18, sy: 10, lw: 0 });
   ctx.strokeStyle = C.yellow; ctx.lineWidth = 22; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.beginPath(); ctx.moveTo(-42, 2); ctx.lineTo(-10, 34); ctx.lineTo(46, -30); ctx.stroke(); ctx.restore(); }
 
-module.exports = { A2, SKIN, SHIRT, ticket, stamp, planeIcon, airliner, personTop, personFront, miniTicket, CAB, cabinShell, seatTop, SM, seatPos, planeTop, smallSeat, board, moneyStack, check };
+
+// ---------- added for the final cut (old functions unchanged) ----------
+// front-view airline seat, floor at (0,0); o.front: draw only the cushion front (to cover a seated passenger's legs)
+function seatFront(ctx, x, y, s = 1, o = {}) {
+  ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+  if (!o.front) {
+    cut(ctx, () => rr(ctx, -20, -70, 40, 70, 8), '#2D3142', { sb: 10, sy: 6 });
+    cut(ctx, () => rr(ctx, -118, -360, 236, 290, [60, 60, 20, 20]), A2.blue, { sb: 26, sy: 14, lw: 4 });
+    flat(ctx, () => rr(ctx, -84, -340, 168, 54, 22), '#E9EEF8', 3);
+    if (o.empty) { ctx.save(); ctx.globalAlpha *= o.empty; ctx.setLineDash([14, 10]); ctx.lineWidth = 6; ctx.strokeStyle = C.yellow; rr(ctx, -132, -374, 264, 384, 64); ctx.stroke(); ctx.restore(); }
+  } else {
+    cut(ctx, () => rr(ctx, -128, -120, 256, 70, 26), A2.blueD, { sb: 16, sy: 8, lw: 4 });
+    flat(ctx, () => rr(ctx, -150, -150, 30, 110, 12), '#1C2340', 3); flat(ctx, () => rr(ctx, 120, -150, 30, 110, 12), '#1C2340', 3);
+  }
+  ctx.restore();
+}
+// departures board with the overbooked flight and a later flight (row 2), 940 x 600
+function board2(ctx, t, o = {}) {
+  cut(ctx, () => rr(ctx, -470, -240, 940, 600, 26), '#121212', { sb: 40, sy: 20, lw: 4 });
+  flat(ctx, () => rr(ctx, -440, -210, 880, 70, 12), '#1E1E1E');
+  ctx.fillStyle = C.yellow; ctx.font = `34px ${F.xb}`; ctx.textAlign = 'left'; ctx.fillText('DEPARTURES', -410, -162); planeIcon(ctx, 390, -175, 0.9, C.yellow);
+  ctx.font = `64px ${F.black}`; ctx.fillStyle = '#FFFFFF'; ctx.fillText('247', -410, -60); ctx.fillText('LOS ANGELES', -200, -60);
+  const target = 'OVERBOOKED', before = 'ON TIME   ', cw = 80;
+  for (let i = 0; i < target.length; i++) {
+    const tl = (o.flip ?? -1) + i * 0.04, done = t > tl + 0.3, flipping = t > tl && !done;
+    const ch = done ? target[i] : flipping ? FLAP[Math.floor((t * 40 + i * 7) % FLAP.length)] : before[i], x = -410 + i * (cw + 6);
+    flat(ctx, () => rr(ctx, x, -10, cw, 112, 8), done ? C.red : '#2A2A2A'); ctx.fillStyle = 'rgba(0,0,0,0.45)'; ctx.fillRect(x, 44, cw, 4);
+    ctx.fillStyle = done ? '#FFFFFF' : C.yellow; ctx.font = `78px ${F.black}`; ctx.textAlign = 'center';
+    const sq = flipping ? Math.abs(Math.cos((t - tl) * 40)) : 1; ctx.save(); ctx.translate(x + cw / 2, 46); ctx.scale(1, Math.max(0.15, sq)); ctx.fillText(ch.trim() ? ch : '', 0, 28); ctx.restore();
+  }
+  ctx.textAlign = 'left'; flat(ctx, () => rr(ctx, -440, 140, 880, 4, 2), '#333333');
+  const hl = clamp(o.later || 0); if (hl > 0) { ctx.save(); ctx.globalAlpha = hl * 0.25; flat(ctx, () => rr(ctx, -450, 165, 900, 150, 14), C.yellow); ctx.restore(); }
+  ctx.font = `52px ${F.black}`; ctx.fillStyle = '#BDBDBD'; ctx.fillText('251', -410, 262); ctx.fillText('LOS ANGELES', -200, 262);
+  ctx.font = `40px ${F.black}`; ctx.fillStyle = C.yellow; ctx.textAlign = 'right'; ctx.fillText('LATER', 430, 262); ctx.textAlign = 'left';
+}
+
+module.exports = { seatFront, board2, A2, SKIN, SHIRT, ticket, stamp, planeIcon, airliner, personTop, personFront, miniTicket, CAB, cabinShell, seatTop, SM, seatPos, planeTop, smallSeat, board, moneyStack, check };
