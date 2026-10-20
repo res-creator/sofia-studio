@@ -48,15 +48,38 @@ function blob(ctx, pts) {
 }
 
 // ---------- the paper cutout ----------
+// One light from top-left. Shadow size follows the real on-screen scale and the plane's elevation
+// (LIGHT.elev: 0.4 far, 1 hero, 3 foreground) -> higher layers cast wider, softer, lighter shadows.
+const LIGHT = { elev: 1 };
+function shadowOn(ctx, o) {
+  const m = ctx.getTransform(), el = o.el ?? LIGHT.elev, sc = Math.hypot(m.a, m.b) * el;
+  ctx.shadowColor = o.sc || `rgba(60,40,20,${(0.22 / Math.sqrt(Math.max(1, el))).toFixed(3)})`;
+  ctx.shadowBlur = (o.sb ?? 22) * sc; ctx.shadowOffsetY = (o.sy ?? 10) * sc; ctx.shadowOffsetX = (o.sy ?? 10) * 0.45 * sc;
+}
 // soft lifted shadow + white paper rim + flat fill + neat ink outline
 function cut(ctx, build, fill, o = {}) {
   ctx.save();
-  if (o.shadow !== false) { ctx.shadowColor = o.sc || 'rgba(60,40,20,0.20)'; ctx.shadowBlur = o.sb ?? 22; ctx.shadowOffsetY = o.sy ?? 10; ctx.shadowOffsetX = o.sx ?? 3; }
+  if (o.shadow !== false) shadowOn(ctx, o);
   build(); ctx.fillStyle = C.rim; ctx.fill();
   if (o.edgeW !== 0) { ctx.lineWidth = o.edgeW ?? 13; ctx.strokeStyle = C.rim; ctx.lineJoin = 'round'; ctx.stroke(); }
   ctx.restore();
   build(); ctx.fillStyle = fill; ctx.fill();
   if (o.lw !== 0) { ctx.lineWidth = o.lw ?? 3.5; ctx.strokeStyle = o.stroke || C.ink; ctx.lineJoin = 'round'; ctx.stroke(); }
+}
+// soft contact shadow (ellipse) on the surface under an object
+function contact(ctx, x, y, w, h, a = 0.22) {
+  if (a <= 0.005 || w <= 1) return; ctx.save(); ctx.translate(x, y); ctx.scale(1, h / w);
+  const g = ctx.createRadialGradient(0, 0, 0, 0, 0, w); g.addColorStop(0, `rgba(50,30,15,${a})`); g.addColorStop(1, 'rgba(50,30,15,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, w, 0, 7); ctx.fill(); ctx.restore();
+}
+// cached sprite (optionally pre-blurred = depth of field) for foreground / background pieces
+const SPR = {};
+function sprite(key, w, h, draw, blur = 0, elev = 3) {
+  if (SPR[key]) return SPR[key];
+  const pad = 90, c = createCanvas(w + pad * 2, h + pad * 2), x = c.getContext('2d');
+  const e0 = LIGHT.elev; LIGHT.elev = elev; x.translate(pad + w / 2, pad + h / 2); draw(x); LIGHT.elev = e0;
+  let out = c; if (blur) { out = createCanvas(c.width, c.height); const y = out.getContext('2d'); y.filter = `blur(${blur}px)`; y.drawImage(c, 0, 0); }
+  return (SPR[key] = out);
 }
 function flat(ctx, build, fill, lw = 0) { build(); ctx.fillStyle = fill; ctx.fill(); if (lw) { ctx.lineWidth = lw; ctx.strokeStyle = C.ink; ctx.lineJoin = 'round'; ctx.stroke(); } }
 
@@ -85,7 +108,7 @@ function paperTexture(W, H, seed = 3) {
 // ---------- camera ----------
 // screen = anchor + (world - cam) * z, rotated by r
 function applyCam(ctx, cam, A, par = 1) {
-  const z = 1 + (cam.z - 1) * par;
+  const z = Math.pow(cam.z, par);
   ctx.translate(A[0] + (cam.shx || 0), A[1] + (cam.shy || 0)); ctx.rotate((cam.r || 0) * par); ctx.scale(z, z); ctx.translate(-cam.x * par, -cam.y * par);
 }
 
@@ -223,7 +246,7 @@ function coin(ctx, x, y, r, spin = 1, o = {}) {
   ctx.fillStyle = C.yellowD; ctx.beginPath(); ctx.arc(0, r * 0.12, r, 0, 7); ctx.fill();
   ctx.fillStyle = C.yellow; ctx.beginPath(); ctx.arc(0, 0, r, 0, 7); ctx.fill(); ctx.lineWidth = Math.max(1.5, r * 0.12); ctx.strokeStyle = C.ink; ctx.stroke();
   ctx.beginPath(); ctx.arc(0, 0, r * 0.66, 0, 7); ctx.strokeStyle = C.yellowD; ctx.lineWidth = r * 0.1; ctx.stroke();
-  ctx.fillStyle = C.ink; ctx.font = `${Math.round(r * 1.05)}px ${F.black}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('$', 0, r * 0.06);
+  ctx.fillStyle = o.markCol || C.ink; ctx.font = `${Math.round(r * 1.05)}px ${F.black}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('$', 0, r * 0.06);
   ctx.restore();
 }
 function bill(ctx, x, y, s, rot = 0) {
@@ -267,6 +290,40 @@ function hq(ctx, x, y, s, o = {}) {
   ctx.restore();
 }
 
+
+// fries carton (local ~170 x 260, base at y=100)
+function fries(ctx, s = 1) {
+  ctx.save(); ctx.scale(s, s);
+  for (let i = 0; i < 9; i++) { const x = -60 + i * 15, h = 95 + hash(i + 2) * 55; ctx.save(); ctx.translate(x, -20); ctx.rotate((hash(i + 5) - 0.5) * 0.35);
+    cut(ctx, () => rr(ctx, -8, -h, 16, h, 4), i % 2 ? C.yellow : '#FFD877', { sb: 8, sy: 4, edgeW: 5, lw: 2.5 }); ctx.restore(); }
+  cut(ctx, () => { ctx.beginPath(); ctx.moveTo(-86, -42); ctx.quadraticCurveTo(0, -8, 86, -42); ctx.lineTo(62, 100); ctx.lineTo(-62, 100); ctx.closePath(); }, C.red);
+  arches(ctx, 0, 38, 0.8, C.yellow, 12); ctx.restore();
+}
+// receipt strip (local 150 x 330)
+function receipt(ctx, s = 1) {
+  ctx.save(); ctx.scale(s, s);
+  cut(ctx, () => { ctx.beginPath(); ctx.moveTo(-75, -165); ctx.lineTo(75, -165); ctx.lineTo(75, 150); for (let i = 0; i <= 10; i++) ctx.lineTo(75 - i * 15, i % 2 ? 165 : 150); ctx.closePath(); }, '#FFFFFF', { lw: 2.5 });
+  ctx.fillStyle = 'rgba(23,23,23,0.55)'; for (let i = 0; i < 9; i++) { ctx.fillRect(-55, -130 + i * 26, 60 + hash(i) * 40, 7); ctx.fillRect(30, -130 + i * 26, 25, 7); }
+  ctx.fillStyle = C.ink; ctx.font = `30px ${F.black}`; ctx.textAlign = 'left'; ctx.fillText('TOTAL', -55, 125); ctx.fillStyle = C.red; ctx.fillRect(-55, 92, 110, 5);
+  ctx.restore();
+}
+function cloud(ctx, s = 1) {
+  ctx.save(); ctx.scale(s, s);
+  cut(ctx, () => { ctx.beginPath(); ctx.moveTo(-150, 40); ctx.arc(-95, 10, 55, Math.PI * 0.9, Math.PI * 1.6); ctx.arc(-10, -25, 75, Math.PI * 1.1, Math.PI * 1.9); ctx.arc(85, 5, 60, Math.PI * 1.3, Math.PI * 0.05); ctx.lineTo(150, 40); ctx.closePath(); }, '#FFFFFF', { lw: 3, sb: 26, sy: 14 });
+  ctx.restore();
+}
+// pale paper skyline (back plane). base at y=0, width ~1500
+function skyline(ctx, u = 1) {
+  const cols = ['#E7DFCD', '#DDE7E2', '#EBD8C6', '#E3DCCD'];
+  for (let i = 0; i < 11; i++) {
+    const w = 110 + hash(i * 3) * 90, h = (180 + hash(i * 7) * 330) * E.back(clamp(u * 1.6 - i * 0.05), 1.3), x = -760 + i * 140 + hash(i) * 30;
+    if (h <= 2) continue;
+    cut(ctx, () => rr(ctx, x, -h, w, h + 4, [6, 6, 0, 0]), cols[i % 4], { lw: 2.5, stroke: 'rgba(23,23,23,0.35)', sb: 16, sy: 6, edgeW: 7, el: 0.6 });
+    ctx.fillStyle = 'rgba(255,253,248,0.75)';
+    for (let r = 0; r < Math.floor((h - 40) / 44); r++) for (let c = 0; c < Math.floor((w - 24) / 34); c++) ctx.fillRect(x + 16 + c * 34, -h + 24 + r * 44, 16, 20);
+  }
+}
+
 // ---------- world map (lon/lat polygons, simplified) ----------
 const LAND = [
   [[-165, 65], [-140, 70], [-110, 72], [-80, 72], [-62, 60], [-55, 50], [-70, 44], [-76, 35], [-81, 25], [-90, 29], [-97, 26], [-97, 18], [-88, 15], [-83, 9], [-79, 8], [-92, 15], [-105, 20], [-112, 29], [-118, 34], [-124, 40], [-125, 49], [-133, 56], [-150, 59], [-165, 59]],
@@ -292,4 +349,4 @@ function continents(ctx, o = {}) { // o.shrink(i) -> scale 0..1
   });
 }
 
-module.exports = { C, F, clamp, lerp, seg, E, spring, hash, lerpCol, rr, blob, cut, flat, paperTexture, applyCam, tag, arches, restaurant, slab, burgerMoney, coin, bill, pin, sparkle, puff, hq, continents, ll, MAPW, MAPH };
+module.exports = { LIGHT, contact, sprite, fries, receipt, cloud, skyline, C, F, clamp, lerp, seg, E, spring, hash, lerpCol, rr, blob, cut, flat, paperTexture, applyCam, tag, arches, restaurant, slab, burgerMoney, coin, bill, pin, sparkle, puff, hq, continents, ll, MAPW, MAPH };

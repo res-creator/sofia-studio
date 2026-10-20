@@ -4,7 +4,7 @@ const { createCanvas } = require('@napi-rs/canvas');
 const { spawn } = require('child_process');
 const fs = require('fs');
 const K = require('./kit');
-const { C, F, clamp, lerp, seg, E, spring, hash, lerpCol, rr, cut, flat, applyCam, tag, restaurant, slab, burgerMoney, coin, bill, pin, sparkle, puff, hq, continents, ll } = K;
+const { LIGHT, contact, sprite, fries, receipt, cloud, skyline, C, F, clamp, lerp, seg, E, spring, hash, lerpCol, rr, cut, flat, applyCam, tag, restaurant, slab, burgerMoney, coin, bill, pin, sparkle, puff, hq, continents, ll } = K;
 const W = 1080, H = 1920, FPS = 30, T = 23.0, A = [510, 860]; // anchor keeps action clear of TikTok UI (right rail, bottom caption)
 
 // ---------- voice-over timing ----------
@@ -58,7 +58,10 @@ function camAt(t) {
   else c = key(P.hero, P.hero2, E.inOut(seg(t, 17.85, T)));
   c.r = t > 9.0 && t < 10.45 ? Math.sin(seg(t, 9.0, 10.45) * Math.PI) * 0.025 : 0;
   // impact shakes
-  let sh = 0; for (const [t0, a] of [[0.86, 22], [4.85, 8], [20.28, 14]]) if (t > t0 && t < t0 + 0.5) sh += a * Math.exp(-(t - t0) * 9) * Math.sin((t - t0) * 70);
+  let sh = 0; for (const [t0, a] of [[0.86, 22], [4.85, 8], [20.36, 14]]) if (t > t0 && t < t0 + 0.5) sh += a * Math.exp(-(t - t0) * 9) * Math.sin((t - t0) * 70);
+  // constant slow "breath" so the paper world never freezes; settles for the final read
+  const env = 1 - 0.75 * E.inOut(seg(t, 21.2, T));
+  c.x += Math.sin(t * 0.9) * 10 * env / c.z; c.y += Math.cos(t * 0.7 + 0.5) * 7 * env / c.z; c.r += Math.sin(t * 0.55 + 1) * 0.006 * env; c.z *= 1 + Math.sin(t * 0.8) * 0.012 * env;
   c.shx = sh * 0.4; c.shy = sh; return c;
 }
 
@@ -72,29 +75,80 @@ function torn(ctx, x, y, w, h, rot, seed, col) {
 function halftone(ctx, x, y, n, step, col) {
   ctx.fillStyle = col; for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) { const d = Math.hypot(i - n / 2, j - n / 2) / (n / 2), r = step * 0.38 * (1 - d); if (r > 0.6) { ctx.beginPath(); ctx.arc(x + i * step, y + j * step, r, 0, 7); ctx.fill(); } }
 }
+const farC = createCanvas(W / 2, H / 2), farX = farC.getContext('2d');
+const skyC = createCanvas(W / 2, H / 2), skyX = skyC.getContext('2d');
+const DP = 0.4, SP = 0.62; // parallax of the accent disc and of the skyline plane
 function background(ctx, t, cam) {
   ctx.fillStyle = C.paper; ctx.fillRect(0, 0, W, H);
-  // far layer: torn paper strips and halftone patches
-  ctx.save(); applyCam(ctx, cam, A, 0.25);
-  torn(ctx, -470, -820, 520, 90, -0.12, 1, '#EFE6D3'); torn(ctx, 520, 760, 560, 100, 0.09, 7, '#EAE2CF'); torn(ctx, 560, -420, 300, 70, 0.5, 13, '#F1E2C4');
-  torn(ctx, -560, 560, 360, 80, -0.4, 21, '#E3EEE9');
-  halftone(ctx, 260, -900, 12, 20, 'rgba(23,23,23,0.10)'); halftone(ctx, -640, 220, 11, 22, 'rgba(230,57,70,0.16)'); halftone(ctx, 380, 380, 10, 20, 'rgba(38,166,154,0.16)');
-  ctx.restore();
-  // accent disc behind the hero object: yellow (hook) -> teal ring (map) -> gone (diagram) -> yellow (finale)
-  ctx.save(); applyCam(ctx, cam, A, 0.6);
-  let r = 0, col = C.yellow;
-  if (t < 7.6) r = 400 * E.back(seg(t, 0.08, 0.5), 2) * (1 - E.in(seg(t, 7.35, 7.7)));
-  if (t >= 16.9) { r = 260 * E.back(seg(t, 17.9, 18.5), 2); }
+  // far plane (half-res, soft focus): torn paper strips and halftone patches
+  farX.setTransform(1, 0, 0, 1, 0, 0); farX.clearRect(0, 0, W / 2, H / 2); farX.scale(0.5, 0.5); LIGHT.elev = 0.4;
+  farX.save(); applyCam(farX, cam, A, 0.25);
+  torn(farX, -470, -820, 520, 90, -0.12, 1, '#EFE6D3'); torn(farX, 520, 760, 560, 100, 0.09, 7, '#EAE2CF'); torn(farX, 560, -420, 300, 70, 0.5, 13, '#F1E2C4');
+  torn(farX, -560, 560, 360, 80, -0.4, 21, '#E3EEE9'); torn(farX, -80, 1150, 700, 110, 0.05, 31, '#EFE3CC');
+  halftone(farX, 260, -900, 12, 20, 'rgba(23,23,23,0.10)'); halftone(farX, -640, 220, 11, 22, 'rgba(230,57,70,0.16)'); halftone(farX, 380, 380, 10, 20, 'rgba(38,166,154,0.16)');
+  farX.restore();
+  ctx.save(); ctx.filter = 'blur(2.5px)'; ctx.drawImage(farC, 0, 0, W, H); ctx.restore();
+  // back plane: accent disc behind the hero: yellow (hook) -> teal stage (map) -> gone (diagram) -> yellow (finale)
+  ctx.save(); applyCam(ctx, cam, A, DP);
+  let r = 0;
+  if (t < 7.6) r = 400 * E.back(seg(t, -0.15, 0.4), 2) * (1 - E.in(seg(t, 7.35, 7.7)));
+  if (t >= 16.9) r = 280 * E.back(seg(t, 17.9, 18.5), 2);
   if (r > 1) {
-    const cx = t < 10 ? 0 : R[0].x * 0.6 + 0, cy = t < 10 ? -300 : (R[0].sy - 160) * 0.6 + 0;
-    ctx.fillStyle = col; ctx.beginPath(); ctx.arc(cx, cy, r, 0, 7); ctx.fill();
+    const cx = t < 10 ? 0 : R[0].x * DP, cy = t < 10 ? -330 : (R[0].sy - 150) * DP - 60;
+    ctx.fillStyle = C.yellow; ctx.beginPath(); ctx.arc(cx, cy, r, 0, 7); ctx.fill();
     ctx.save(); ctx.beginPath(); ctx.arc(cx, cy, r, 0, 7); ctx.clip(); halftone(ctx, cx - r, cy + r * 0.1, 18, r / 9, 'rgba(233,169,58,0.55)'); ctx.restore();
   }
   if (t > 8.2 && t < 12.2) { // pale teal stage behind the map
     const u = E.out(seg(t, 8.2, 8.9)) * (1 - E.in(seg(t, 11.6, 12.2)));
-    ctx.fillStyle = 'rgba(38,166,154,0.10)'; ctx.beginPath(); ctx.arc(0, -150 * 0.6, 640 * u, 0, 7); ctx.fill();
+    ctx.fillStyle = 'rgba(38,166,154,0.10)'; ctx.beginPath(); ctx.arc(0, -80, 640 * u, 0, 7); ctx.fill();
   }
   ctx.restore();
+  // middle-back plane (light blur): paper skyline behind the restaurant (hook/real estate, then finale)
+  const s1 = t < 7.9 ? E.out(seg(t, -0.1, 0.8)) * (1 - E.in(seg(t, 7.35, 7.85))) : 0, s5 = t > 17.6 ? E.out(seg(t, 18.0, 18.9)) : 0;
+  if (s1 > 0 || s5 > 0) {
+    skyX.setTransform(1, 0, 0, 1, 0, 0); skyX.clearRect(0, 0, W / 2, H / 2); skyX.scale(0.5, 0.5); LIGHT.elev = 0.6;
+    skyX.save(); applyCam(skyX, cam, A, SP);
+    if (s1 > 0) { skyX.save(); skyX.translate(0, 94); skyline(skyX, s1); skyX.restore(); }
+    if (s5 > 0) { skyX.save(); skyX.translate(-155, -45); skyX.scale(0.62, 0.62); skyline(skyX, s5); skyX.restore(); }
+    skyX.restore();
+    ctx.save(); ctx.filter = 'blur(1.2px)'; ctx.drawImage(skyC, 0, 0, W, H); ctx.restore();
+  }
+  LIGHT.elev = 1;
+}
+
+// ---------- foreground plane (out of focus, closer to the lens) ----------
+// pos = anchor + (p - anchor) * zoomRatio^par + par * (hero-plane pan since tr) + own drift; fades in/out by window
+const FG = [
+  { t0: 0, t1: 1.25, tr: 0, x: 150, y: 1520, k: 'fries', s: 1.5, rot: -0.22, par: 1.7, blur: 7, in: [-1, 0.6] },
+  { t0: 0, t1: 1.25, tr: 0, x: 935, y: 300, k: 'coin', s: 2.6, rot: 0.3, par: 1.9, blur: 10, in: [1, -0.5] },
+  { t0: 1.3, t1: 3.6, tr: 2.4, x: 110, y: 1430, k: 'bill', s: 2.0, rot: -0.35, par: 1.6, blur: 8, in: [-1, 0.2] },
+  { t0: 1.3, t1: 3.6, tr: 2.4, x: 950, y: 1560, k: 'coin', s: 2.2, rot: 0.2, par: 1.8, blur: 9, in: [1, 0.3] },
+  { t0: 3.3, t1: 7.6, tr: 5.6, x: 930, y: 1560, k: 'bill', s: 2.2, rot: 0.4, par: 1.6, blur: 7 },
+  { t0: 3.3, t1: 7.6, tr: 5.6, x: 95, y: 400, k: 'receipt', s: 1.25, rot: -0.45, par: 1.8, blur: 8 },
+  { t0: 7.6, t1: 11.7, tr: 8.4, x: 115, y: 560, k: 'cloud', s: 1.05, rot: 0, par: 1.35, blur: 1.5, a: 0.95 },
+  { t0: 7.6, t1: 11.7, tr: 8.4, x: 905, y: 1240, k: 'cloud', s: 0.8, rot: 0, par: 1.5, blur: 3, a: 0.9 },
+  { t0: 7.6, t1: 11.7, tr: 8.4, x: 860, y: 430, k: 'cloud', s: 0.6, rot: 0, par: 1.22, blur: 0.8, a: 0.95 },
+  { t0: 12.0, t1: 17.5, tr: 14.5, x: 960, y: 1540, k: 'coin', s: 2.3, rot: 0.1, par: 1.7, blur: 8 },
+  { t0: 12.0, t1: 17.5, tr: 14.5, x: 75, y: 330, k: 'bill', s: 1.8, rot: -0.3, par: 1.8, blur: 8 },
+  { t0: 12.0, t1: 17.5, tr: 14.5, x: 900, y: 290, k: 'receipt', s: 0.9, rot: 0.5, par: 1.4, blur: 5 },
+  { t0: 17.7, t1: 99, tr: 21.5, x: 95, y: 1640, k: 'fries', s: 1.7, rot: 0.18, par: 1.5, blur: 9 },
+  { t0: 17.7, t1: 99, tr: 21.5, x: 990, y: 640, k: 'coin', s: 2.0, rot: -0.2, par: 1.6, blur: 9 },
+];
+const FGDRAW = { fries: x => fries(x, 1), coin: x => coin(x, 0, 0, 60, 0.15, { markCol: C.yellowD }), bill: x => bill(x, 0, 0, 1.6, 0), receipt: x => receipt(x, 1), cloud: x => cloud(x, 1) };
+const FGSIZE = { fries: [190, 300], coin: [140, 140], bill: [180, 100], receipt: [170, 350], cloud: [320, 180] };
+function foreground(ctx, t, cam) {
+  for (const f of FG) {
+    if (t < f.t0 || t > f.t1) continue;
+    const fade = seg(t, f.t0, f.t0 + 0.4) * (1 - seg(t, f.t1 - 0.4, f.t1)); if (fade <= 0) continue;
+    const ref = camAt(f.tr), zr = Math.pow(cam.z / ref.z, f.par), panX = (ref.x - cam.x) * cam.z * f.par, panY = (ref.y - cam.y) * cam.z * f.par;
+    const ent = f.in ? (1 - E.out(seg(t, f.t0, f.t0 + 0.6))) : 0;
+    const x = A[0] + (f.x - A[0]) * zr + panX + Math.sin(t * 0.6 + f.x) * 14 + (f.in ? f.in[0] * ent * 420 : 0), y = A[1] + (f.y - A[1]) * zr + panY + Math.cos(t * 0.5 + f.y) * 12 + (f.in ? f.in[1] * ent * 300 : 0);
+    const sz = FGSIZE[f.k], spr = sprite(f.k + f.blur, sz[0] * 2, sz[1] * 2, x2 => { x2.scale(2, 2); FGDRAW[f.k](x2); }, f.blur * 2, f.k === 'cloud' ? 2 : 3.2);
+    const sc = f.s * zr * 0.5;
+    if (x < -spr.width * sc || x > W + spr.width * sc || y < -spr.height * sc || y > H + spr.height * sc) continue;
+    ctx.save(); ctx.globalAlpha = fade * (f.a ?? 1); ctx.translate(x, y); ctx.rotate(f.rot + Math.sin(t * 0.7 + f.y) * 0.06 + (cam.r || 0) * (f.par - 1)); ctx.scale(sc, sc);
+    ctx.drawImage(spr, -spr.width / 2, -spr.height / 2); ctx.restore();
+  }
 }
 
 // ---------- scene content (world space) ----------
@@ -115,10 +169,11 @@ function world(ctx, t, cam) {
     }
     // building: pops in, rides the land, then flies into the first map pin
     if (t < 8.15) {
-      const pop = spring(t - 0.02, 2.0, 6.5), fly = E.inOut(p(7.35, 8.12));
+      const pop = spring(t + 0.1, 2.0, 6.5), fly = E.inOut(p(7.35, 8.12));
       let bx = 0, by = ground, bs = 1, rot = 0;
       if (t > 7.35) { const c = CITIES[0]; bx = lerp(0, c.x, fly); by = lerp(ground, c.y, fly) - Math.sin(fly * Math.PI) * 160; bs = lerp(1, 0.06, E.in(fly)); rot = Math.sin(fly * Math.PI) * 0.3; }
       const push = t > 4.6 && t < 5.3 ? 1 - spring(t - 4.75, 3, 6) : 0;
+      if (t < 7.4) contact(ctx, bx, by + 2, 250 * Math.min(1, pop), 18, 0.25);
       restaurant(ctx, bx, by, bs, { sy: Math.max(0.02, pop) * (1 + push * 0.1), sx: 1 + (1 - Math.min(1, pop)) * 0.25 - push * 0.06, rot, glow: t > 4.0 ? Math.exp(-(t - 4.02) * 3) : 0 });
       if (t > 4.0 && t < 4.9) for (let i = 0; i < 7; i++) { const a = i / 7 * 6.28 + 0.3, u = p(4.02, 4.7); sparkle(ctx, 176 + Math.cos(a) * (60 + u * 150), -440 + Math.sin(a) * (60 + u * 150), 22 * Math.sin(u * Math.PI)); }
     }
@@ -131,6 +186,7 @@ function world(ctx, t, cam) {
       const bob = mor >= 1 && t < 3.45 ? Math.sin((t - 2.45) * 5) * 6 : 0;
       if (t < 0.86) for (let g = 4; g >= 1; g--) { ctx.save(); ctx.globalAlpha = 0.12; burgerMoney(ctx, x, lerp(-1900, 30, E.in(clamp(fall - g * 0.05))), s, 0, { sx, sy }); ctx.restore(); }
       if (t > 3.45) for (let g = 3; g >= 1; g--) { const f2 = E.inOut(clamp(p(3.45, 4.05) - g * 0.05)); ctx.save(); ctx.globalAlpha = 0.14; burgerMoney(ctx, lerp(0, 176, f2), lerp(30, -400, f2) - Math.sin(f2 * Math.PI) * 240, lerp(1.3, 0.05, E.in(f2)), 1); ctx.restore(); }
+      if (t < 3.45) contact(ctx, 0, 34, 300 * (0.35 + 0.65 * E.in(fall)) * sx, 26, 0.3 * (0.3 + 0.7 * E.in(fall)));
       burgerMoney(ctx, x, y + bob, s, mor, { sx, sy });
       puff(ctx, -260, 30, p(0.86, 1.5), -1); puff(ctx, 260, 30, p(0.86, 1.5), 1);
       if (t > 2.4 && t < 3.4) for (let i = 0; i < 5; i++) { const u = p(2.42 + i * 0.08, 2.95 + i * 0.08); sparkle(ctx, [-290, 280, -240, 300, 30][i], [-380, -300, -120, -40, -520][i], 30 * Math.sin(u * Math.PI)); }
@@ -192,6 +248,7 @@ function diagram(ctx, t) {
     if (r.land === 'soil') slab(ctx, r.x, r.sy, k, { w: 640, depth: lift ? lift.depth : 240, top: 64, plot: lift ? lift.plot : 0, coins: lift ? lift.coins : 0 });
     else slab(ctx, r.x, r.sy, k, { w: 600, depth: 70, top: 64, topCol: C.grey, soilCol: C.greyD, soilD: '#A9A193', soilDD: '#A9A193', grassLip: false });
     if (lift && lift.L > 2) { ctx.fillStyle = `rgba(40,25,10,${0.22 * clamp(lift.L / 120)})`; ctx.beginPath(); ctx.ellipse(r.x, r.sy - GOFF * k * 1.1, 200 * k * (1 - lift.L / 900), 16 * k, 0, 0, 7); ctx.fill(); }
+    if (!lift || lift.L < 2) contact(ctx, r.x, r.sy - GOFF * k + 2, 245 * k, 18 * k, 0.25);
     restaurant(ctx, r.x, r.sy - GOFF * k, k, lift ? { lift: lift.L, rot: lift.rot, sx: lift.sx, sy: lift.sy } : {});
     ctx.restore();
   });
@@ -214,16 +271,16 @@ function diagram(ctx, t) {
 // hero restaurant state in the finale (lift, deeper land, plot, landing squash)
 function hero(t) {
   const p = (x0, x1) => seg(t, x0, x1);
-  let L = 0; if (t > 18.0 && t < 20.0) L = 300 * E.back(p(18.0, 18.6), 1.4); else if (t >= 20.0 && t < 20.28) L = 300 * (1 - E.in(p(20.0, 20.28)));
-  const d = t > 20.28 ? 1 - spring(t - 20.28, 2.6, 6) : 0;
+  let L = 0; if (t > 18.0 && t < 20.08) L = 300 * E.back(p(18.0, 18.6), 1.4); else if (t >= 20.08 && t < 20.36) L = 300 * (1 - E.in(p(20.08, 20.36)));
+  const d = t > 20.36 ? 1 - spring(t - 20.36, 2.6, 6) : 0;
   return { L, rot: L > 0 ? Math.sin(t * 2.2) * 0.025 * (L / 230) : 0, sy: 1 - d * 0.16, sx: 1 + d * 0.1, depth: lerp(240, 420, E.out(p(18.05, 18.75))), plot: p(18.35, 19.1) * (1 - 0.6 * p(20.3, 20.8)), coins: p(18.4, 19.3) };
 }
 
 function finale(ctx, t) {
   const p = (x0, x1) => seg(t, x0, x1), r = R[0], gy = r.sy;
-  puff(ctx, r.x - 105, gy - 6, p(20.28, 20.9), -1); puff(ctx, r.x + 105, gy - 6, p(20.28, 20.9), 1);
+  puff(ctx, r.x - 105, gy - 6, p(20.36, 20.9), -1); puff(ctx, r.x + 105, gy - 6, p(20.36, 20.9), 1);
   // foreground pieces slide in: burger (left) and the money it really stands for (right)
-  const bu = E.back(p(20.45, 20.95), 1.5), cu = E.back(p(20.6, 21.1), 1.5);
+  const bu = E.back(p(20.5, 21.0), 1.5), cu = E.back(p(20.62, 21.12), 1.5);
   if (bu > 0) { ctx.save(); ctx.translate(lerp(r.x - 520, r.x - 168, bu), gy + 72); ctx.rotate(lerp(-0.6, -0.08, bu)); burgerMoney(ctx, 0, 0, 0.2, 0); ctx.restore(); }
   if (cu > 0) { const cx = lerp(r.x + 520, r.x + 166, cu); bill(ctx, cx, gy + 66, 0.62, 0.06); for (let i = 0; i < 4; i++) coin(ctx, cx + 4, gy + 50 - i * 9, 19, 0.02, { flat: i > 0 }); }
   if (t > 20.9) for (let i = 0; i < 6; i++) { const ph = (t - 20.9 - i * 0.37) % 2.2; const u = ph / 1.1; if (ph > 0 && u < 1) sparkle(ctx, r.x + [-150, 140, -60, 170, -170, 60][i], gy - [220, 160, 250, 60, 90, 230][i], 13 * Math.sin(u * Math.PI)); }
@@ -256,6 +313,7 @@ function drawFrame(ctx, t) {
   const cam = camAt(t);
   background(ctx, t, cam);
   ctx.save(); applyCam(ctx, cam, A); world(ctx, t, cam); ctx.restore();
+  LIGHT.elev = 3; foreground(ctx, t, cam); LIGHT.elev = 1;
   overlay(ctx, t);
   ctx.save(); ctx.globalCompositeOperation = 'multiply'; ctx.globalAlpha = 0.6; ctx.drawImage(TEX, 0, 0); ctx.restore();
 }
@@ -271,11 +329,11 @@ function frame(ctx, t) { // camera motion blur: average sub-frames when the came
 function cues() {
   const c = [['pop', 0.02], ['whoosh', 0.1, 0.5], ['fall', 0.35], ['thump', 0.86, 1], ['zoom', 0.88], ['puff', 0.9]];
   for (let i = 0; i < 6; i++) c.push(['paper', 1.55 + i * 0.09]);
-  c.push(['kaching', 2.45], ['whoosh', 3.42, 0.8], ['coins', 4.0], ['rumble', 4.3], ['thump', 4.85, 0.6], ['tape', 5.15], ['scratch', 5.6], ['whoosh', 7.35, 0.7], ['unfold', 8.0], ['pop', 8.12]);
+  c.push(['kaching', 2.45], ['whoosh', 3.42, 0.8], ['coins', 4.0], ['rumble', 4.3], ['thump', 4.85, 0.6], ['tape', 5.15], ['scratch', 5.6], ['unfold', 7.4], ['scratch', 8.05], ['pop', 8.12]);
   CITIES.slice(1).forEach(x => c.push(['tick', x.t]));
-  c.push(['tag', Math.max(10.55, tFr)], ['whoosh', 11.45, 0.6], ['pop', 12.05], ['pop', 12.15], ['pop', 12.25], ['rise', 12.1], ['thump', 12.55, 0.5], ['scratch', 12.6]);
+  c.push(['tag', Math.max(10.55, tFr)], ['paper', 11.45], ['paper', 11.55], ['pop', 12.05], ['pop', 12.15], ['pop', 12.25], ['rise', 12.1], ['thump', 12.55, 0.5], ['scratch', 12.6]);
   COINS.forEach(x => c.push(['clink', x.t + TRAVEL])); BILLS.forEach(x => c.push(['flutter', x.t + 0.1]));
-  c.push(['tag', tRoy], ['tag', tRent - 0.1], ['zoom', 16.95], ['whoosh', 16.95, 0.9], ['rise', 18.0], ['coins', 18.5], ['tag', tMore], ['slam', tBurg + 0.05], ['fall', 20.0], ['thump', 20.28, 1], ['puff', 20.3],
+  c.push(['tag', tRoy], ['tag', tRent - 0.1], ['zoom', 16.95], ['whoosh', 16.95, 0.9], ['rise', 18.0], ['coins', 18.5], ['tag', tMore], ['slam', tBurg + 0.05], ['fall', 19.9], ['thump', 20.36, 1], ['puff', 20.3],
     ['whoosh', 20.45, 0.4], ['kaching', 20.7]);
   fs.writeFileSync(__dirname + '/cues.json', JSON.stringify({ T, vo: VO, sfx: c }));
   console.log(c.length, 'cues');
