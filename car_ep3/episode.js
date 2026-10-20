@@ -21,7 +21,7 @@ const w = { denied: at('c01', 'denied'), records: at('c02', 'records'), police: 
 const Q = V.end('c12') + 0.15; // the question appears when the voice ends
 
 // ---------- world regions ----------
-const DOC = [0, -40], FOLD = [5000, 180], BADGE = [10000, -80], CARP = [11800, 200], CS = 0.95, HUD = [15000, -330];
+const DOC = [0, -40], FOLD = [5000, 180], BADGE = [10000, -80], CARP = [11800, 200], CS = 0.95, HUD = [15000, -360];
 const CH = 20000, CH_CAR = -560, CH_REP = 0, CH_INS = 650, CH_RISK = 1180, FTC = 25000, BAN = 30000, END = 35000, END_CAR = 360, END_FILE = -210;
 const WIN = [CARP[0] + CAR_WIN[0] * CS, CARP[1] + CAR_WIN[1] * CS];
 
@@ -87,9 +87,9 @@ const EVT = [{ k: 0, label: 'HARD BRAKING', t: () => w.hard, v: 0.1 }, { k: 1, l
 function sHud(ctx, t) {
   let v = 0.36 + Math.sin(t * 3.1) * 0.015; for (const e of EVT) { const u = E.out5(p(t, e.t() - 0.05, e.t() + 0.35)); if (u > 0) v = lerp(v, e.v, u); }
   ctx.save(); ctx.translate(HUD[0], HUD[1]); ctx.scale(0.75, 0.75); gauge(ctx, v, { needle: v > 0.72 ? C.red : C.yellow }); ctx.restore();
-  ctx.save(); ctx.translate(HUD[0], -20); recChip(ctx, t); ctx.restore(); text(ctx, 'ONSTAR', HUD[0], 60, 30, P3.slateD, F.xb, 'center');
+  ctx.save(); ctx.translate(HUD[0], -50); recChip(ctx, t); ctx.restore(); text(ctx, 'ONSTAR', HUD[0], 22, 30, P3.slateD, F.xb, 'center');
   EVT.forEach((e, i) => { const u = E.back(p(t, e.t() - 0.05, e.t() + 0.3), 1.6), out = E.inOut(p(t, 14.2, 14.5)); if (u <= 0) return;
-    ctx.save(); ctx.translate(HUD[0] + (1 - u) * 900 + out * (i - 1) * 40, 130 + i * 120 + out * 700); ctx.scale(0.9, 0.9); ctx.globalAlpha = 1 - out; dataCard(ctx, e.k, e.label); ctx.restore(); });
+    ctx.save(); ctx.translate(HUD[0] + (1 - u) * 900 + out * (i - 1) * 40, 95 + i * 112 + out * 700); ctx.scale(0.85, 0.85); ctx.globalAlpha = 1 - out; dataCard(ctx, e.k, e.label); ctx.restore(); });
 }
 function sChain(ctx, t) {
   // car -> driving data -> report -> insurer, then the risk meter and "no tickets"
@@ -107,7 +107,7 @@ function sChain(ctx, t) {
 }
 const COPIES = [[-0.18, -150, -40], [0.14, 140, -60], [-0.08, -90, 80], [0.2, 170, 70], [-0.25, -200, 120]];
 function sFtc(ctx, t) {
-  const drop = E.back(p(t, 22.75, 23.15), 1.4), mult = E.out(p(t, w.one, w.one + 0.6)), merge = E.inOut(p(t, w.ftc - 0.25, w.ftc + 0.1));
+  const drop = E.back(p(t, 22.45, 22.85), 1.4), mult = E.out(p(t, w.one, w.one + 0.6)), merge = E.inOut(p(t, w.ftc - 0.25, w.ftc + 0.1));
   COPIES.forEach(([r, dx, dy], i) => { const k = clamp(mult * 1.6 - i * 0.12) * (1 - merge); if (k <= 0) return; ctx.save(); ctx.translate(FTC + dx * k, 60 + dy * k); ctx.rotate(r * k); ctx.scale(0.55, 0.55); legalDoc(ctx, 'COMPLAINT', { kicker: 'CONSUMER' }); ctx.restore(); });
   if (drop > 0) { const s = lerp(0.55, 0.64, merge); ctx.save(); ctx.translate(FTC, 60 - (1 - drop) * 700); ctx.scale(s, s);
     legalDoc(ctx, 'COMPLAINT', { kicker: merge > 0.5 ? 'FTC v. GM + ONSTAR' : 'CONSUMER', hi: p(t, w.collecting - 0.05, w.collecting + 0.9) });
@@ -154,7 +154,7 @@ function overlay(ctx, t) {
 }
 
 // subtitles: hand-made phrase groups (word counts per line) so no group splits a phrase or leaves a one-word tail
-const SPLIT = { c01: [5], c02: [3, 8], c03: [4], c04: [4], c05: [5, 6], c06: [7, 4], c07: [5, 4], c08: [6], c09: [7, 4, 6], c10: [4, 3, 5, 4], c11: [4], c12: [5, 7] };
+const SPLIT = { c01: [5], c02: [3, 8], c03: [4], c04: [4], c05: [5, 3, 3], c06: [7, 4], c07: [5, 4], c08: [6], c09: [7, 4, 6], c10: [4, 3, 5, 4], c11: [4], c12: [5, 7] };
 function manualSubs() {
   const G = []; const ids = Object.keys(ST);
   ids.forEach((id, li) => { const ws = V.words(id); let k = 0;
