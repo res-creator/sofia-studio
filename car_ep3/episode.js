@@ -115,10 +115,15 @@ function sFtc(ctx, t) {
   tag(ctx, 'GM + ONSTAR', FTC + 150, -330, { u: p(t, w.gm - 0.05, w.gm + 0.3), size: 52, bg: C.red, rot: 0.04 });
   tag(ctx, 'WITHOUT PROPER CONSENT', FTC, 420, { u: p(t, w.consent - 0.35, w.consent), size: 36, bg: P3.paper, fg: C.ink, tape: false, rot: -0.02 });
 }
+let DOCC = null;
 function sBan(ctx, t) {
   const drop = E.back(p(t, 32.05, 32.45), 1.4), back = E.inOut(p(t, w.five - 0.1, w.five + 0.35));
-  ctx.save(); ctx.translate(BAN, 40 - (1 - drop) * 800); const s = lerp(0.62, 0.5, back); ctx.scale(s, s); if (back > 0.05) ctx.filter = `blur(${(back * 7).toFixed(1)}px)`; ctx.globalAlpha = 1 - back * 0.55;
-  legalDoc(ctx, 'FINAL ORDER', { kicker: 'REGULATORY ORDER' }); stamp(ctx, '2026', 0, 140, 1.0, p(t, w.y2026 - 0.05, w.y2026 + 0.08), -0.14, C.ink); stamp(ctx, 'FINAL', 0, 330, 0.8, p(t, w.finalized, w.finalized + 0.12), 0.1, C.red);
+  const drawDoc = (x, u1, u2) => { legalDoc(x, 'FINAL ORDER', { kicker: 'REGULATORY ORDER' }); stamp(x, '2026', 0, 140, 1.0, u1, -0.14, C.ink); stamp(x, 'FINAL', 0, 330, 0.8, u2, 0.1, C.red); };
+  ctx.save(); ctx.translate(BAN, 40 - (1 - drop) * 800); const s = lerp(0.62, 0.5, back); ctx.scale(s, s); ctx.globalAlpha = 1 - back * 0.55;
+  if (back <= 0.05) drawDoc(ctx, p(t, w.y2026 - 0.05, w.y2026 + 0.08), p(t, w.finalized, w.finalized + 0.12));
+  else { // pushed back out of focus: blur one cached image instead of every draw call
+    if (!DOCC) { DOCC = createCanvas(900, 1200); const x = DOCC.getContext('2d'); x.translate(450, 600); drawDoc(x, 1, 1); }
+    ctx.filter = `blur(${(back * 7 * s).toFixed(1)}px)`; ctx.drawImage(DOCC, -450, -600); }
   ctx.restore();
 }
 function sEnd(ctx, t) {
