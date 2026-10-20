@@ -36,7 +36,7 @@ function officeWindows(ctx) { // two big street windows with blinds (doctor's of
 
 // ---------- the heroine (generic cartoon, feet at 0,0, ~360 tall) ----------
 // o: look -1..1, up 0..1, eyes 1..2 (surprise), mood 'smile'|'flat'|'o'|'frown', phone 0 none / 1 in front / 2 at ear, ring 0..1,
-//    walk phase, exhale 0..1 (relief puff), hold (fn drawing an item in her left hand)
+//    walk phase, exhale 0..1 (relief puff), hold (fn drawing an item in her left hand), brows (eyebrows that follow the mood)
 function heroine(ctx, x, y, s, o = {}) {
   const look = o.look || 0, up = o.up || 0, ph = o.walk || 0, bob = Math.abs(Math.sin(ph)) * 8, ex = clamp(o.exhale || 0), eyes = o.eyes || 1;
   ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
@@ -64,6 +64,9 @@ function heroine(ctx, x, y, s, o = {}) {
   const ey = -up * 12 + 4, exo = look * 15;
   for (const sx of [-17, 17]) { if (eyes > 1.15) { ctx.fillStyle = '#FFFFFF'; ctx.beginPath(); ctx.arc(sx + exo, ey, 7 * eyes, 0, 7); ctx.fill(); ctx.lineWidth = 2.5; ctx.strokeStyle = C.ink; ctx.stroke(); }
     ctx.fillStyle = C.ink; ctx.beginPath(); ctx.arc(sx + exo, ey, 5.5, 0, 7); ctx.fill(); }
+  if (o.brows) { const m0 = o.mood || 'smile', by = ey - 17 - (eyes - 1) * 12; ctx.lineWidth = 6; ctx.lineCap = 'round'; ctx.strokeStyle = '#2B1B14';
+    for (const sx of [-17, 17]) { const tl = m0 === 'frown' ? (sx < 0 ? 0.38 : -0.38) : m0 === 'o' ? (sx < 0 ? -0.18 : 0.18) : 0, cx0 = sx + exo, dx = Math.cos(tl) * 12, dy = Math.sin(tl) * 12;
+      ctx.beginPath(); ctx.moveTo(cx0 - dx, by - dy); ctx.lineTo(cx0 + dx, by + dy); ctx.stroke(); } ctx.lineCap = 'butt'; }
   if (o.blush) { ctx.fillStyle = 'rgba(230,57,70,0.35)'; ctx.beginPath(); ctx.arc(-30, 16, 9, 0, 7); ctx.arc(30, 16, 9, 0, 7); ctx.fill(); }
   ctx.lineWidth = 3.5; ctx.strokeStyle = C.ink; ctx.fillStyle = C.ink; const m = o.mood || 'smile', mx = exo * 0.8, my = 24 - up * 6;
   ctx.beginPath(); if (m === 'smile') { ctx.arc(mx, my - 10, 12, 0.2 * Math.PI, 0.8 * Math.PI); ctx.stroke(); } else if (m === 'frown') { ctx.arc(mx, my + 8, 11, 1.2 * Math.PI, 1.8 * Math.PI); ctx.stroke(); }
@@ -139,9 +142,9 @@ function giantHand(ctx, g = 0) {
   for (const [dx, len, a] of [[-90, 150, -0.5], [-35, 175, -0.2], [25, 170, 0.15], [80, 140, 0.45]]) { ctx.save(); ctx.translate(dx * 0.8, -40); ctx.rotate(a * sp); cut(ctx, () => rr(ctx, -24, 0, 48, len * lerp(1, 0.75, g), 24), '#F1C9A5', { sb: 10, sy: 6, lw: 4 }); ctx.restore(); }
 }
 // ownership line drawn on from (x0,y0) to (x1,y1), u 0..1
-function ownLine(ctx, x0, y0, x1, y1, u, t) { if (u <= 0) return; const x = lerp(x0, x1, u), y = lerp(y0, y1, u);
-  ctx.save(); ctx.lineCap = 'round'; ctx.strokeStyle = C.ink; ctx.lineWidth = 30; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x, y); ctx.stroke(); ctx.strokeStyle = C.red; ctx.lineWidth = 16; ctx.stroke();
-  if (u >= 1) { const ph = (t * 0.8) % 1; ctx.fillStyle = '#FFFFFF'; ctx.beginPath(); ctx.arc(lerp(x0, x1, ph), lerp(y0, y1, ph), 11, 0, 7); ctx.fill(); flat(ctx, () => { ctx.beginPath(); ctx.arc(x1, y1, 24, 0, 7); }, C.red, 5); }
+function ownLine(ctx, x0, y0, x1, y1, u, t, wf = 1) { if (u <= 0) return; const x = lerp(x0, x1, u), y = lerp(y0, y1, u);
+  ctx.save(); ctx.lineCap = 'round'; ctx.strokeStyle = C.ink; ctx.lineWidth = 30 * wf; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x, y); ctx.stroke(); ctx.strokeStyle = C.red; ctx.lineWidth = 16 * wf; ctx.stroke();
+  if (u >= 1) { const ph = (t * 0.8) % 1; ctx.fillStyle = '#FFFFFF'; ctx.beginPath(); ctx.arc(lerp(x0, x1, ph), lerp(y0, y1, ph), 11, 0, 7); ctx.fill(); flat(ctx, () => { ctx.beginPath(); ctx.arc(x1, y1, 24 * wf, 0, 7); }, C.red, 5); }
   ctx.restore(); }
 
 module.exports = { sign, place, officeWindows, heroine, doctor, billDoc, folded, procCard, phone, giantHand, ownLine };
