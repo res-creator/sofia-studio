@@ -44,14 +44,14 @@ for (let wv = 0; wv < 2; wv++) R.forEach((r, i) => RENT[i] && BILLS.push({ i, t:
 
 // ---------- camera ----------
 const KEYS = [
-  { t: 0, x: 0, y: -200, z: 0.95 }, { t: 0.4, x: 0, y: -200, z: 0.95 }, { t: 0.78, x: 0, y: -190, z: 1.35, e: 'out5' }, { t: 2.3, x: 0, y: -185, z: 1.42 },
-  { t: 3.05, x: 0, y: -230, z: 1.05 }, { t: 4.1, x: 40, y: -287, z: 0.8, e: 'inOut5' }, { t: 5.85, x: 55, y: -290, z: 0.84 },        // S1 hook -> S2 reveal (pull-back)
+  { t: 0, x: 0, y: -175, z: 1.3 }, { t: 0.38, x: 0, y: -180, z: 1.3 }, { t: 0.62, x: 0, y: -190, z: 1.55, e: 'out5' }, { t: 1.38, x: 0, y: -188, z: 1.5 }, { t: 1.88, x: 0, y: -200, z: 1.7, e: 'out5' }, { t: 2.35, x: 0, y: -195, z: 1.55 },
+  { t: 3.05, x: 0, y: -230, z: 1.05 }, { t: 4.1, x: 40, y: -330, z: 0.84, e: 'inOut5' }, { t: 5.85, x: 55, y: -333, z: 0.87 },        // S1 hook -> S2 reveal (pull-back)
   { t: 6.7, x: -40, y: -150, z: 0.98 }, { t: 9.9, x: 50, y: -150, z: 1.1, r: 0.015 },                                                     // S3 map, slow sharp pan
-  { t: 10.8, x: 0, y: 40, z: 1.0 }, { t: 17.6, x: -10, y: 36, z: 1.04 },                                                                    // S4 money diagram
+  { t: 10.8, x: 0, y: 80, z: 1.1 }, { t: 17.6, x: -8, y: 78, z: 1.12 },                                                                    // S4 money diagram
   { t: 18.4, x: HQP[0] - 20, y: 110, z: 1.8, e: 'inOut5' }, { t: 26.0, x: HQP[0] + 20, y: 120, z: 1.86 },                                  // S5 push-in to HQ, numbers
   { t: 26.6, x: 0, y: TW.sy - 150, z: 1.5, e: 'inOut5' }, { t: 27.6, x: 0, y: TW.sy - 160, z: 1.55 }, { t: 28.5, x: 0, y: TW.sy - 270, z: 0.8 }, { t: 31.2, x: 10, y: TW.sy - 275, z: 0.82 }, // S6 whip, close-up, pull-back
   { t: 32.3, x: 176, y: TW.sy - 470, z: 2.1 }, { t: 33.0, x: 0, y: TW.sy - 40, z: 1.45 }, { t: 34.4, x: 0, y: TW.sy - 45, z: 1.5 },         // S7 push to the arches, burger
-  { t: 35.9, x: 60, y: TW.sy - 210, z: 0.78 }, { t: T, x: 64, y: TW.sy - 214, z: 0.76, e: 'out' },                                       // S7 pull-back to the final composition
+  { t: 35.9, x: 60, y: TW.sy - 200, z: 0.86 }, { t: T, x: 62, y: TW.sy - 202, z: 0.84, e: 'out' },                                       // S7 pull-back to the final composition
 ];
 const cam = EN.camera(KEYS, {
   breath: t => (1 - 0.75 * E.inOut(seg(t, 37.2, T))) * (1 - 0.6 * seg(t, 11, 11.5) * (1 - seg(t, 17.2, 17.6))),
@@ -119,21 +119,27 @@ function trail(ctx, n, u, draw, gap = 0.025) { for (let g = n; g >= 0; g--) { ct
 // ================= SCENES =================
 // S1 HOOK — burger slams, camera punches in, burger morphs into bills, the restaurant rises and swallows the money
 const S1 = { t0: 0, t1: 3.4, draw(ctx, t) {
-  const land = 0.38, fall = p(t, 0, land), d = t > land ? 1 - spring(t - land, 2.4, 5.5) : 0, mor = p(t, w.money - 0.1, w.money + 0.7);
+  const land = 0.38, fall = p(t, 0, land), d = t > land ? 1 - spring(t - land, 2.4, 5.5) : 0, mor = p(t, 1.38, 1.88); // on the beat (1.38 -> 1.88), inside the word "money"
   // restaurant rises behind the money
   if (t < 3.0) slotRise(ctx, 0, 0, p(t, 2.1, 2.65), () => { contact(ctx, 0, 2, 250, 18, 0.25); restaurant(ctx, 0, 0, 1, { glow: t > 3.0 ? Math.exp(-(t - 3.0) * 3) : 0 }); });
   if (t > 2.95 && t < 3.6) for (let i = 0; i < 7; i++) { const a = i / 7 * 6.28 + 0.3, u = p(t, 3.0, 3.55); sparkle(ctx, 176 + Math.cos(a) * (60 + u * 150), -440 + Math.sin(a) * (60 + u * 150), 22 * Math.sin(u * Math.PI)); }
   if (t < 3.05) flat(ctx, () => rr(ctx, -340, 0, 680, 20, 10), C.grey, 3);
   if (t > 3.05) return;
-  const y0 = -700 * (1 - fall * fall), fly = E.inOut(p(t, 2.55, 3.0));
+  const y0 = -230 * (1 - fall * fall), fly = E.inOut(p(t, 2.55, 3.0));
   let x = 0, y = y0, s = 1.3, sx = 1 + d * 0.24, sy = 1 - d * 0.3;
   if (t < land) { sx = 0.9; sy = 1.14; }
   const flyPos = f => [lerp(0, 176, f), lerp(0, -400, f) - Math.sin(f * Math.PI) * 260, lerp(1.3, 0.05, E.in(f))];
   if (t > 2.55) [x, y, s] = flyPos(fly);
   if (t < 2.55) contact(ctx, 0, 6, 300 * (0.35 + 0.65 * fall * fall) * sx, 26, 0.3 * (0.3 + 0.7 * fall * fall));
-  if (t < land) for (let g = 4; g >= 1; g--) { ctx.save(); ctx.globalAlpha = 0.13; const f2 = clamp(fall - g * 0.07); burgerMoney(ctx, 0, -700 * (1 - f2 * f2), s, 0, { sx, sy }); ctx.restore(); }
+  if (t < land) for (let g = 4; g >= 1; g--) { ctx.save(); ctx.globalAlpha = 0.13; const f2 = clamp(fall - g * 0.07); burgerMoney(ctx, 0, -230 * (1 - f2 * f2), s, 0, { sx, sy }); ctx.restore(); }
   if (t > 2.55) for (let g = 3; g >= 1; g--) { const q = flyPos(E.inOut(clamp(p(t, 2.55, 3.0) - g * 0.05))); ctx.save(); ctx.globalAlpha = 0.14; burgerMoney(ctx, q[0], q[1], q[2], 1); ctx.restore(); }
-  burgerMoney(ctx, x, y, s, mor, { sx, sy });
+  const pop = t > 1.88 && t < 2.55 ? (1 - spring(t - 1.88, 3, 6)) * 0.14 : 0;
+  burgerMoney(ctx, x, y, s * (1 + pop), mor, { sx, sy });
+  if (t > 1.86 && t < 2.6) { // the morph lands: paper shockwave + a burst of bills
+    const u = p(t, 1.86, 2.5); ctx.save(); ctx.globalAlpha = 1 - u; ctx.strokeStyle = C.yellow; ctx.lineWidth = 16 * (1 - u) + 2; ctx.beginPath(); ctx.arc(0, -210, 150 + E.out(u) * 430, 0, 7); ctx.stroke(); ctx.restore();
+    for (let i = 0; i < 6; i++) { const a = -Math.PI / 2 + (i - 2.5) * 0.48, d = E.out(u) * (330 + hash(i) * 120);
+      ctx.save(); ctx.globalAlpha = 1 - u * u; bill(ctx, Math.cos(a) * d, -210 + Math.sin(a) * d + u * u * 260, 0.85, (i - 2.5) * 0.4 + u * (hash(i + 3) - 0.5) * 6); ctx.restore(); }
+  }
   puff(ctx, -260, 4, p(t, land, land + 0.65), -1); puff(ctx, 260, 4, p(t, land, land + 0.65), 1);
 } };
 
@@ -181,7 +187,7 @@ const S3 = { t0: 5.85, t1: 10.9, draw(ctx, t) {
   // pins: highlighted ones travel into the diagram as restaurants (S4)
   PINS.forEach(c => {
     const u = p(t, c.t, c.t + 0.6), s0 = c.n === 'Los Angeles' || c.n === 'Mexico City' || c.n === 'Sao Paulo' ? (t < 6.6 ? 0 : 1) : E.elastic(u);
-    let x = c.x, y = c.y - (1 - E.out(p(t, c.t, c.t + 0.25))) * 50 * (s0 < 1 ? 1 : 0), s = 0.85 * s0;
+    let x = c.x, y = c.y - (1 - E.out(p(t, c.t, c.t + 0.25))) * 50 * (s0 < 1 ? 1 : 0), s = 1.05 * s0;
     if (c.hi !== undefined) { const r = R[c.hi], mv = E.inOut(p(t, 10.15, 10.75)); x = lerp(c.x, r.x, mv); y = lerp(c.y, r.sy - 10, mv) - Math.sin(mv * Math.PI) * 120; s *= 1 - E.in(p(t, 10.5, 10.8));
       const ring = p(t, w.franchisees, w.franchisees + 0.5) * (1 - p(t, 10.0, 10.2)); if (ring > 0) { ctx.save(); ctx.globalAlpha = ring; ctx.strokeStyle = C.yellow; ctx.lineWidth = 6; ctx.beginPath(); ctx.arc(c.x, c.y - 42, 34 + Math.sin(t * 6) * 3, 0, 7); ctx.stroke(); ctx.restore(); } }
     else s *= 1 - E.in(p(t, 10.0, 10.3));
@@ -189,7 +195,7 @@ const S3 = { t0: 5.85, t1: 10.9, draw(ctx, t) {
   });
   // HQ marker at Chicago
   const hs = (t < 6.6 ? 0 : 1) * (1 - E.in(p(t, 10.2, 10.6)));
-  if (hs > 0.01) { ctx.save(); ctx.translate(HQCITY.x, HQCITY.y - 30); ctx.scale(hs, hs); cut(ctx, () => rr(ctx, -30, -30, 60, 60, 12), C.ink, { sb: 10, sy: 5, edgeW: 7, lw: 0 }); K.arches(ctx, 0, 2, 0.5, C.yellow, 12); ctx.restore();
+  if (hs > 0.01) { ctx.save(); ctx.translate(HQCITY.x, HQCITY.y - 34); ctx.scale(hs * 1.2, hs * 1.2); cut(ctx, () => rr(ctx, -30, -30, 60, 60, 12), C.ink, { sb: 10, sy: 5, edgeW: 7, lw: 0 }); K.arches(ctx, 0, 2, 0.5, C.yellow, 12); ctx.restore();
     tag(ctx, 'HQ', HQCITY.x, HQCITY.y - 92, { u: p(t, 6.7, 7.0) * hs, size: 30, bg: C.yellow, fg: C.ink, tape: false }); }
 } };
 
@@ -205,7 +211,7 @@ const S4 = { t0: 10.1, t1: 26.6, draw(ctx, t) {
   R.forEach((r, i) => {
     const s = E.back(p(t, 10.45 + i * 0.06, 10.9 + i * 0.06), 1.6); if (s <= 0.01) return;
     ctx.save(); ctx.translate(r.x, r.sy); ctx.scale(s, s); ctx.translate(-r.x, -r.sy);
-    if (r.land === 'soil') slab(ctx, r.x, r.sy, k, { w: 640, depth: 240, top: 64 });
+    if (r.land === 'soil') slab(ctx, r.x, r.sy, k, { w: 640, depth: 200, top: 64 });
     else slab(ctx, r.x, r.sy, k, { w: 600, depth: 70, top: 64, topCol: C.grey, soilCol: C.greyD, soilD: '#A9A193', soilDD: '#A9A193', grassLip: false });
     contact(ctx, r.x, r.sy - 29 * k + 2, 245 * k, 18 * k, 0.25); restaurant(ctx, r.x, r.sy - 29 * k, k);
     ctx.restore();
@@ -217,7 +223,7 @@ const S4 = { t0: 10.1, t1: 26.6, draw(ctx, t) {
   for (const c of COINS) { const u = (t - c.t) / TRAVEL; if (u <= 0 || u >= 1) continue; trail(ctx, 3, u, (uu, g) => { const q = bez(ROY[c.i], E.inOut(uu)); coin(ctx, q[0], q[1], 17 * (1 + Math.sin(u * Math.PI) * 0.3), (t - c.t) * 4, { flat: g > 0 }); }); }
   for (const b of BILLS) { const u = (t - b.t) / TRAVEL; if (u <= 0 || u >= 1) continue; trail(ctx, 2, u, uu => { const q = bez(RENT[b.i], E.inOut(uu)); bill(ctx, q[0], q[1], 0.6 * (1 + Math.sin(u * Math.PI) * 0.25), Math.sin((t - b.t) * 6) * 0.35); }, 0.03); }
   tag(ctx, 'ROYALTIES', 20, -345, { u: p(t, w.royalties, w.royalties + 0.4), size: 42, bg: C.ink, rot: -0.03 });
-  tag(ctx, 'RENT', 20, 420, { u: p(t, w.rent - 0.05, w.rent + 0.35), size: 42, bg: C.billD, rot: 0.03 });
+  tag(ctx, 'RENT', 20, 395, { u: p(t, w.rent - 0.05, w.rent + 0.35), size: 42, bg: C.billD, rot: 0.03 });
 } };
 
 // S5 THE NUMBERS — push into HQ, world goes soft (background blur), revenue stacks + figures stay sharp
@@ -254,7 +260,7 @@ const S6 = { t0: 26.0, t1: T, draw(ctx, t) {
   const g = TW.sy - 29, ex = E.back(p(t, 27.7, 28.4), 1.3) * (1 - E.inOut(p(t, 31.15, 31.5))), lift = 140 * ex;
   const em = E.inOut(p(t, 27.75, 28.4)) * (1 - E.inOut(p(t, 31.3, 31.85)));
   const d = t > 31.5 ? 1 - spring(t - 31.5, 2.6, 6) : 0;
-  slab(ctx, TW.x, TW.sy, 1, { w: 640, depth: 300, top: 64, plot: p(t, 28.1, 28.8) * (1 - p(t, 31.1, 31.4)) });
+  slab(ctx, TW.x, TW.sy, 1, { w: 640, depth: 260, top: 64, plot: p(t, 28.1, 28.8) * (1 - p(t, 31.1, 31.4)) });
   if (ex > 0.02) { ctx.save(); ctx.globalAlpha = clamp(ex); ctx.setLineDash([6, 10]); ctx.strokeStyle = 'rgba(23,23,23,0.4)'; ctx.lineWidth = 3;
     for (const gx of [-212, 212]) { ctx.beginPath(); ctx.moveTo(gx, g); ctx.lineTo(gx, g - lift); ctx.stroke(); } ctx.beginPath(); ctx.moveTo(-170, g - lift - 300); ctx.lineTo(-170, TW.sy - 760); ctx.stroke(); ctx.setLineDash([]); ctx.restore(); }
   contact(ctx, TW.x, g + 2, 250 * (1 - ex * 0.25), 18, 0.25 * (1 - ex * 0.5));
@@ -281,7 +287,7 @@ const S6 = { t0: 26.0, t1: T, draw(ctx, t) {
     burgerMoney(ctx, 0, y, 1.0, 0, t < land ? { sx: 0.9, sy: 1.14 } : { sx: 1 + dd * 0.22, sy: 1 - dd * 0.28 });
     puff(ctx, -230, by + 4, p(t, land, land + 0.65), -1); puff(ctx, 230, by + 4, p(t, land, land + 0.65), 1);
     // HQ + small money flows behind (assemble during the pull-back)
-    const hu = p(t, 34.95, 35.5), hx = 560, hy = TW.sy;
+    const hu = p(t, 34.95, 35.5), hx = 520, hy = TW.sy;
     if (hu > 0) { slotRise(ctx, hx, hy, hu, () => hq(ctx, hx, hy, 0.6, { lit: 0.6 + 0.4 * p(t, 35.5, 38) })); flat(ctx, () => rr(ctx, hx - 100, hy - 2, 200, 14, 7), C.grey, 3); }
     const P = [[200, TW.sy - 260], [320, TW.sy - 420], [440, TW.sy - 380], [hx - 70, TW.sy - 300]];
     dashPath(ctx, P, E.inOut(p(t, 35.3, 35.8)), 'rgba(23,23,23,0.3)', t);
@@ -326,12 +332,12 @@ const ep = {
     { t0: 35.0, t1: 99, tr: 37.5, x: 90, y: 1250, k: 'fries', s: 1.4, rot: 0.18, par: 1.45, blur: 8 },
   ],
   subs: EN.subtitleGroups(V, Object.keys(ST), { max: 5, replace: [[/ninety-five percent/i, '95%'], [/ten billion dollars/i, '$10 billion'], [/2025,/, '2025,']] }),
-  subStyle: { y: 1385, size: 62, maxW: 800, highlight: ['money', 'burgers', '95%', 'franchisees', 'royalties', 'rent', '$10', 'billion', 'billions', 'twist', 'business'] },
+  subStyle: { y: 1350, size: 62, maxW: 800, highlight: ['money', 'burgers', '95%', 'franchisees', 'royalties', 'rent', '$10', 'billion', 'billions', 'twist', 'business'] },
   vo: Object.entries(ST),
   music: { b0: 0.38, breakAt: 26.4, back: 32.4, hit: 34.4, end: T },
   cues() {
     const c = [['fall', 0.0, 0.6], ['thump', 0.38, 1], ['zoom', 0.42, 0.8], ['puff', 0.42]];
-    for (let i = 0; i < 3; i++) c.push(['paper', w.money - 0.1 + i * 0.12]);
+    c.push(['whoosh', 1.3, 0.45]); for (let i = 0; i < 3; i++) c.push(['paper', 1.38 + i * 0.12]); c.push(['kaching', 1.88]);
     c.push(['rise', 2.1], ['coins', 3.0], ['whoosh', 3.05, 0.7], ['tag', 3.3], ['tag', 3.45], ['rise', 3.85], ['tag', 4.4], ['scratch', 4.55], ['tag', 4.95]);
     c.push(['unfold', 5.9], ['scratch', 6.45], ['slam', w.ninety, 0.5]);
     PINS.forEach((x, i) => i % 2 || c.push(['tick', x.t])); c.push(['tag', w.franchisees], ['scratch', w.franchisees + 0.1]);
