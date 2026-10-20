@@ -24,6 +24,6 @@ $5,000 on your card can quietly cost you $12,700 💳 And card insiders have a n
 6,000 members. Room for 300. On purpose 🏋️ How many months have you paid without going? Be honest 👇
 #gym #fitness #gymtok #money #business #didyouknow
 
-## 7. Why Her Medical Bill Doubled
-Quoted $18,000. Found a doctor for about $3,000. Then the office called the day before 📞 Same doctor, same procedure — very different bill. (Story: KFF Health News, Sept 2026)
+## 7. Why Her Medical Bill Doubled (v3)
+A $3,000 estimate. A $6,000 bill. Same doctor, same procedure 🏥 The only thing that changed was the room — and who owned it. (Story: KFF Health News, Sept 2026)
 #healthcare #medicalbills #hospital #personalfinance #money #didyouknow
