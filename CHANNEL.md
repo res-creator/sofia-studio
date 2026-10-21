@@ -58,6 +58,11 @@ works with sound off; ironic, idea-changing last line; last frame echoes the fir
 3. STT of the final video = script. 4. Voice gaps > 0.2 s (measure real speech end with silencedetect, not alignment). 5. One final render.
 Lessons: draw buildings that stand behind the road BEFORE vehicles; give every framed text a max width; keep the box below the face in hands.
 
+## Finishing an episode (every time)
+Commit and push all files of the episode to your session branch, then open a pull request into `main` and give the owner the link
+(she clicks Merge pull request → Confirm merge). This keeps `main` complete, so the next session starts with every episode and tool.
+Also add the new episode to the table above and its caption to `CAPTIONS.md` before opening the pull request.
+
 ## How the owner briefs (short is fine)
 "New episode: <topic>. Script: <text or 'write one'>. Rules as usual (CHANNEL.md). Make video + cover + caption."
 Feedback: one message with all notes and timestamps / screenshots.
