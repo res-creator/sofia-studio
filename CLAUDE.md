@@ -1,5 +1,7 @@
 # Sofia Studio — notes for the next session
 
+> **English TikTok channel (money/business stories):** read `CHANNEL.md` first — it has the rules, pipeline, voice and checklist for those episodes. The notes below are for the Sofia kids' channel.
+
 Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). This file adds what happened after Episode 1.
 
 ## Hard rules (from the channel owner)

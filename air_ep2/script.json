@@ -1,0 +1,17 @@
+[
+ {"id": "a01", "text": "You paid for your plane ticket."},
+ {"id": "a02", "text": "You checked in."},
+ {"id": "a03", "text": "You reached the gate."},
+ {"id": "a04", "text": "And then..."},
+ {"id": "a05", "text": "Sorry. No seat."},
+ {"id": "a06", "text": "How is that possible?"},
+ {"id": "a07", "text": "Some airlines sell more tickets than the plane has seats."},
+ {"id": "a08", "text": "They're betting that a few passengers won't show up."},
+ {"id": "a09", "text": "Usually, it works."},
+ {"id": "a10", "text": "But sometimes, everyone arrives."},
+ {"id": "a11", "text": "First, airlines must ask for volunteers to take a later flight."},
+ {"id": "a12", "text": "If too few agree, some passengers can be denied boarding."},
+ {"id": "a13", "text": "And here's what you should know:"},
+ {"id": "a14", "text": "On qualifying flights departing the U.S., you may be owed cash compensation."},
+ {"id": "a15", "text": "So... how much would it take for you to give up your seat?"}
+]
