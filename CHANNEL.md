@@ -13,7 +13,7 @@ Concept: real, verifiable stories about money, business, famous companies and th
 | `rent_ep4/` | RealPage shared pricing software | `your_landlords_secret_algorithm_v2.mp4` |
 | `med_ep5/` | Medical bill $3,000 → $6,000 after the move to a surgery center | `medical_bill_doubled_v3.mp4` |
 | `amazon_ep6/` | Amazon returnless refunds ($5 item, $8–$12 shipping) | `amazon_keep_it_v2.mp4` |
-| `doordash_ep8/` | DoorDash old pay model 2017–2019: the tip replaced DoorDash's part of a $10 guarantee | `doordash_tip_final.mp4` |
+| `doordash_ep8/` | DoorDash old pay model 2017–2019: the tip replaced DoorDash's part of a $10 guarantee | `doordash_tip_v2.mp4` |
 Also: `covers_extra/` (credit card trap, gym no-shows — uploaded videos). Ideas backlog: `IDEAS.md`. Captions: `CAPTIONS.md`.
 
 ## Format
@@ -53,6 +53,21 @@ Illustrative numbers are labelled (EXAMPLE / "Say,"). Historical practices are s
 ## Retention (use sensibly)
 Hook in the first 1–2 s where picture + voice + on-screen text say the same thing; open loop (question answered at the end); new event every 2–4 s;
 works with sound off; ironic, idea-changing last line; last frame echoes the first so a re-watch loops. No "follow/like/comment", no forced questions.
+
+## US TikTok playbook (from the ep 8 review; apply to every new episode)
+Algorithm (not official, but every source agrees): watch time, completion and rewatches first, then shares and saves; likes count least.
+1. Frame 0 = the conflict in big words + numbers (e.g. "$9 TIP → DRIVER +$0") in the top area, plus a small date/"EXAMPLE" stamp so nobody calls it misleading. Most people watch muted.
+2. No smear in the first 2 s: slow, clean camera moves; the key card fully in frame.
+3. "You" + an everyday action (tipping, returns, subscriptions, rent). Self-relevance stops the thumb.
+4. Never reset to an empty/zero scene after the hook: transform the hook objects straight into the explanation. Explain the colour code once (legend).
+5. Repeated examples: one big readable line each (e.g. "$3 TIP → DOORDASH PAYS $7"), no small extra cards.
+6. Proof on screen: a regulator/court figure as a big stamp with a hit sound, on clean art, ~1.5 s. US viewers trust receipts.
+7. A little character humor that doesn't bend facts: the hero's deadpan look at the camera, a recurring "villain object" with a face (the DoorDash safe winks).
+8. Strong twist + last frame echoes the first (loop). Hold the final number a beat before the hard cut.
+9. Series identity for follows: same opener style and visual language every episode.
+10. Comments: hot-topic angle (tipping culture, hidden fees). The caption may end with a natural question; the video itself has no "comment/follow" asks.
+11. Saves: when the facts allow, one "what you can do" line (in the caption or pinned comment if not in the approved script).
+12. Before delivery: an independent review pass (a fresh reviewer scores hook / middle retention / sound-off clarity / twist / comments / shares / saves / follow / humor / cover).
 
 ## Quality checklist before reporting "done"
 1. Stills sheet at key moments + a dense sheet (every 0.5 s) of the final video — look for objects passing under/through each other (draw order!),

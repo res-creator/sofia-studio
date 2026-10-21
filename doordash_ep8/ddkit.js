@@ -82,6 +82,12 @@ function vault(ctx, o = {}) {
     ctx.save(); ctx.translate(ow / 2, oy + oh / 2); ctx.rotate(o.dial || 0); ctx.strokeStyle = C.ink; ctx.lineWidth = 7; for (let i = 0; i < 3; i++) { ctx.rotate(Math.PI * 2 / 3); ctx.beginPath(); ctx.moveTo(0, 18); ctx.lineTo(0, 44); ctx.stroke(); } ctx.restore();
     ctx.restore(); }
   for (const fx of [-w / 2 + 40, w / 2 - 40]) flat(ctx, () => rr(ctx, fx - 22, -8, 44, 22, 6), C.ink);
+  if (o.face && sx > 0.03) { ctx.save(); ctx.translate(ox, 0); ctx.scale(sx, 1);                                      // v2: the safe's face (o.wink 0..1, o.smug 0..1)
+    for (const [ex, right] of [[30, 0], [194, 1]]) { const ey = oy + 44, wk = right ? clamp(o.wink || 0) : 0;
+      if (wk > 0.5) { ctx.strokeStyle = C.ink; ctx.lineWidth = 6; ctx.lineCap = 'round'; ctx.beginPath(); ctx.arc(ex, ey + 4, 14, 1.15 * Math.PI, 1.85 * Math.PI); ctx.stroke(); ctx.lineCap = 'butt'; continue; }
+      flat(ctx, () => { ctx.beginPath(); ctx.arc(ex, ey, 17, 0, 7); }, '#FFFDF8', 3.5); flat(ctx, () => { ctx.beginPath(); ctx.arc(ex - 3, ey + 3, 7, 0, 7); }, C.ink);
+      const lid = clamp(o.smug || 0); if (lid > 0) flat(ctx, () => { ctx.beginPath(); ctx.arc(ex, ey, 18.5, Math.PI, Math.PI + Math.PI * lid); ctx.lineTo(ex, ey); ctx.closePath(); ctx.rect(ex - 19, ey - 19, 38, 19 * lid); }, '#D0323F'); }
+    ctx.restore(); }
 }
 
 // ---------- a card: coloured header + big amount (centre origin, w x h) ----------
@@ -103,7 +109,8 @@ function payCard(ctx, n, o = {}) {
 }
 
 // ---------- the driver (generic cartoon courier, blue jacket + cap, delivery bag), feet at 0,0, ~380 tall ----------
-// o: look -1..1, eyes 1..2, mood 'neutral'|'smile'|'grin'|'o'|'frown'|'flat'|'side', arms 'down'|'shrug'|'cheer'|'hips', sweat 0..1, bag, walk, tilt, squash
+// o: look -1..1, eyes 1..2, mood 'neutral'|'smile'|'grin'|'o'|'frown'|'flat'|'side', arms 'down'|'shrug'|'cheer'|'hips'|'phone', sweat 0..1, bag, walk, tilt, squash
+//    v2: lift 0..1 (cheer arms), phoneTxt + shake (arms 'phone'), down 0..1 (eyes look down)
 function driver(ctx, x, y, s, o = {}) {
   const look = o.look || 0, eyes = o.eyes || 1, arms = o.arms || 'down', ph = o.walk || 0, bob = Math.abs(Math.sin(ph)) * 8, sq = o.squash || 0;
   ctx.save(); ctx.translate(x, y); ctx.scale(s * (1 + sq * 0.06), s * (1 - sq * 0.06));
@@ -119,7 +126,11 @@ function driver(ctx, x, y, s, o = {}) {
     flat(ctx, () => { ctx.beginPath(); ctx.arc(0, len + 4, 19, 0, 7); }, SKIN, 3); ctx.restore(); };
   if (arms === 'shrug') { for (const g of [-1, 1]) { ctx.save(); ctx.translate(g * 74, -280); ctx.rotate(-g * 0.9); cut(ctx, () => rr(ctx, -16, 0, 32, 84, 16), BLUE, { sb: 8, sy: 4, lw: 3 }); ctx.translate(0, 80); ctx.rotate(g * 2.3);
       cut(ctx, () => rr(ctx, -15, 0, 30, 74, 15), BLUE, { sb: 8, sy: 4, lw: 3 }); flat(ctx, () => { ctx.beginPath(); ctx.arc(0, 80, 18, 0, 7); }, SKIN, 3); ctx.restore(); } }
-  else if (arms === 'cheer') { arm(-74, -284, 2.6, 150); arm(74, -284, -2.6, 150); }
+  else if (arms === 'cheer') { const l = o.lift ?? 1; arm(-80, -284, lerp(0.06, 2.6, l), 150); arm(80, -284, lerp(-0.06, -2.6, l), 150); }
+  else if (arms === 'phone') { arm(-80, -284, 0.06); ctx.save(); ctx.translate(74, -280); ctx.rotate(0.25); cut(ctx, () => rr(ctx, -16, 0, 32, 84, 16), BLUE, { sb: 8, sy: 4, lw: 3 }); ctx.translate(0, 80); ctx.rotate(2.5);
+      cut(ctx, () => rr(ctx, -15, 0, 30, 74, 15), BLUE, { sb: 8, sy: 4, lw: 3 }); ctx.translate(0, 84); ctx.rotate(-2.75 + (o.shake ? Math.sin(o.shake * 40) * 0.15 : 0));
+      cut(ctx, () => rr(ctx, -38, -66, 76, 128, 12), '#1B1D24', { sb: 8, sy: 4, lw: 3 }); flat(ctx, () => rr(ctx, -31, -58, 62, 112, 8), '#FFFDF8');
+      text(ctx, o.phoneTxt || '$10', 0, 12, 34, C.ink, F.black, 'center', 56); flat(ctx, () => { ctx.beginPath(); ctx.arc(-26, 40, 17, 0, 7); }, SKIN, 3); ctx.restore(); }
   else if (arms === 'hips') { for (const g of [-1, 1]) { ctx.save(); ctx.translate(g * 74, -280); ctx.rotate(-g * 0.5); cut(ctx, () => rr(ctx, -16, 0, 32, 80, 16), BLUE, { sb: 8, sy: 4, lw: 3 }); ctx.translate(0, 76); ctx.rotate(g * 1.4);
       cut(ctx, () => rr(ctx, -15, 0, 30, 70, 15), BLUE, { sb: 8, sy: 4, lw: 3 }); ctx.restore(); } }
   else { arm(-80, -284, 0.06); arm(80, -284, -0.06); }
@@ -131,7 +142,7 @@ function driver(ctx, x, y, s, o = {}) {
   // cap (blue, peak to his front-right)
   flat(ctx, () => { ctx.beginPath(); ctx.arc(0, -12, 54, Math.PI * 1.02, Math.PI * 1.98); ctx.closePath(); }, BLUE, 3.5);
   flat(ctx, () => rr(ctx, 6 + look * 6, -22, 72, 16, 8), BLUED, 3);
-  const ey = 8, exo = look * 15, m = o.mood || 'neutral';
+  const ey = 8 + (o.down || 0) * 7, exo = look * 15, m = o.mood || 'neutral';
   for (const sx of [-18, 18]) { if (eyes > 1.15) { ctx.fillStyle = '#FFFFFF'; ctx.beginPath(); ctx.arc(sx + exo, ey, 7 * eyes, 0, 7); ctx.fill(); ctx.lineWidth = 2.5; ctx.strokeStyle = C.ink; ctx.stroke(); }
     if (m === 'flat') { ctx.fillStyle = C.ink; ctx.fillRect(sx + exo - 9, ey - 2, 18, 6); } else { ctx.fillStyle = C.ink; ctx.beginPath(); ctx.arc(sx + exo, ey, 5.5, 0, 7); ctx.fill(); } }
   const by = ey - 18 - (eyes - 1) * 12; ctx.lineWidth = 6; ctx.lineCap = 'round'; ctx.strokeStyle = '#2B1A10';
