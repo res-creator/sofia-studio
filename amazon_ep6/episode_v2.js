@@ -113,12 +113,13 @@ function world(ctx, t, c) {
   const peek = t > 32.35;
   ctx.save(); ctx.translate(0, GY); house(ctx, { door: peek ? E.out(p(t, 32.35, 32.7)) : 0, inside: peek ? x => { boxShelves(x, 140, 250); x.translate(-30, 85); buyer(x, 30, 0, 0.82, { arms: 'box', box: HAND_BOX, boxW: 106, up: 1, look: 0.3, mood: 'side', eyes: 1.35, tilt: 0.1 }); } : null }); ctx.restore();
   // the conveyor and the truck exist only for the return journey
-  if (t < HOME_BACK) { conveyor(ctx, BELT0, BELT1, CY, t, t < BELT_T1 ? BSPD : 0, { leg: 160 }); flat(ctx, () => rr(ctx, BELT1 - 10, CY - 20, 30, 220, 6), '#5A6070', 3);
+  if (t < HOME_BACK) { // the warehouse stands behind the road, so it is drawn before the truck (the truck stops in front of it)
+    ctx.save(); ctx.translate(WX, GY); warehouse(ctx, { door: p(t, 12.3, 12.7) }); ctx.restore();
+    sign(ctx, WX, GY - 640 - 70, E.back(p(t, w.warehouse - 0.15, w.warehouse + 0.2), 2) * 1.5, 'WAREHOUSE', C.ink, '#FFFFFF');
+    conveyor(ctx, BELT0, BELT1, CY, t, t < BELT_T1 ? BSPD : 0, { leg: 160 }); flat(ctx, () => rr(ctx, BELT1 - 10, CY - 20, 30, 220, 6), '#5A6070', 3);
     const tx = truckX(t), door = p(t, 9.6, 9.9) * (1 - p(t, 10.5, 10.8)); ctx.save(); ctx.translate(tx, GY + 200); truck(ctx, { door, spin: t * (t > 10.85 && t < 12.15 ? 14 : 0) }); ctx.restore();
     if (t > 10.9 && t < 12.2) for (let i = 0; i < 5; i++) { const u = ((t * 2 + i / 5) % 1); ctx.save(); ctx.globalAlpha = 0.35 * (1 - u); ctx.fillStyle = '#BFB6A3'; ctx.beginPath(); ctx.arc(tx - 420 - u * 160, GY + 170 - u * 40, 20 + u * 30, 0, 7); ctx.fill(); ctx.restore(); }
-    // the warehouse it drives to
-    ctx.save(); ctx.translate(WX, GY); warehouse(ctx, { door: p(t, 12.3, 12.7) }); ctx.restore();
-    sign(ctx, WX, GY - 640 - 70, E.back(p(t, w.warehouse - 0.15, w.warehouse + 0.2), 2) * 1.5, 'WAREHOUSE', C.ink, '#FFFFFF'); }
+  }
   // the box (its own journey) and the buyer
   if (t > HOME_BACK && t < 26.9) { const tx = lerp(1700, 720, E.out(p(t, 23.95, 24.6))) + 1300 * E.in(p(t, w.without + 0.45, w.without + 1.25)), door = p(t, w.refund - 0.15, w.refund + 0.15) * (1 - p(t, w.without + 0.05, w.without + 0.35));
     ctx.save(); ctx.translate(tx, GY + 200); truck(ctx, { door, spin: t * 14 }); ctx.restore();
