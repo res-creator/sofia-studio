@@ -64,8 +64,8 @@ const KEYS = [
   { t: 7.0, x: 600, y: -60, z: 1.1 }, { t: 10.4, x: 1980, y: -40, z: 1.08 },                                                                                            // S3: belt (follow overrides)
   { t: 10.85, x: 2080, y: -60, z: 1.0 }, { t: 12.1, x: 3500, y: -160, z: 0.82, r: -0.025, e: 'inOut' }, { t: 12.55, x: WX - 60, y: -140, z: 0.95, r: 0 },                  // the truck -> the warehouse
   { t: 12.98, x: WX, y: GY - 150, z: 3.4, e: 'in' }, { t: 12.9801, x: INT - 330, y: -60, z: 1.7 },                                                                       // through the door
-  { t: 17.6, x: FORK + 420, y: CY2 + 60, z: 1.05 }, { t: 18.5, x: FORK + 380, y: CY2 + 40, z: 0.95 }, { t: 23.5, x: FORK + 300, y: CY2 + 20, z: 1.0 },
-  { t: 24.1, x: 430, y: -130, z: 0.8, e: 'inOut5' }, { t: 26.5, x: 410, y: -120, z: 0.84 },                                                                           // the return truck comes home
+  { t: 17.6, x: FORK + 420, y: CY2 + 60, z: 1.05 }, { t: 18.5, x: FORK + 380, y: CY2 + 40, z: 0.95 }, { t: HOME_BACK, x: FORK + 300, y: CY2 + 20, z: 1.0 },
+  { t: HOME_BACK + 0.0001, x: 760, y: -90, z: 1.0 }, { t: 24.5, x: 390, y: -60, z: 1.02, e: 'out5' }, { t: 26.5, x: 380, y: -55, z: 1.06 },                                                                           // the return truck comes home
   { t: 27.3, x: 70, y: -90, z: 1.22, e: 'inOut5' }, { t: 27.9, x: 80, y: -85, z: 1.28 },                                                                    // back home
   { t: 29.35, x: 450, y: -430, z: 0.5, e: 'inOut' }, { t: 30.6, x: 455, y: -440, z: 0.52 },                                                                              // house vs warehouse
   { t: 31.2, x: 0, y: -270, z: 1.12, e: 'inOut5' }, { t: 32.45, x: 0, y: -240, z: 1.15 }, { t: 33.1, x: 0, y: -200, z: 1.32, e: 'inOut' }, { t: T, x: 0, y: -195, z: 1.36 },                                                                                    // the cheapest return center
@@ -94,8 +94,8 @@ function outside(ctx, t, c) {
 }
 function fgLayer(ctx, c, t) { // foreground (closer than the hero plane, moves faster): fence posts + bushes along the street
   if (t > 12.95 && t < HOME_BACK) return;
-  layer(ctx, c, 1.55, () => { for (let i = 0; i < 26; i++) { const x = -1600 + i * 330; ctx.fillStyle = 'rgba(40,44,58,0.9)'; ctx.fillRect(x, GY + 470, 22, 300);
-    cut(ctx, () => { ctx.beginPath(); ctx.arc(x + 160, GY + 640, 70 + hash(i) * 30, 0, 7); }, '#1E7F75', { sb: 10, lw: 0 }); } });
+  layer(ctx, c, 1.55, () => { for (let i = 0; i < 26; i++) { const x = -1600 + i * 330; ctx.fillStyle = 'rgba(40,44,58,0.55)'; ctx.fillRect(x, GY + 640, 14, 200);
+    cut(ctx, () => { ctx.beginPath(); ctx.arc(x + 160, GY + 760, 40 + hash(i) * 18, 0, 7); }, '#1E7F75', { sb: 8, lw: 0 }); } });
 }
 
 // ---------- the world ----------
