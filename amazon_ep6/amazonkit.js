@@ -169,4 +169,37 @@ function house(ctx, o = {}) {
   flat(ctx, () => rr(ctx, -130, -6, 260, 26, 6), '#BFB6A3', 3);
 }
 
-module.exports = { BOX, box, buyer, phoneA, conveyor, truck, warehouse, interiorWall, scannerArch, pusher, valueCard, balance, HOUSE, house, sign };
+// ---------- v2 additions (v1 does not use them) ----------
+// a warehouse worker (generic): yellow safety vest, cap; o.scan (hand scanner beam 0..1), o.carry (box), o.walk
+function worker(ctx, x, y, s, o = {}) {
+  const ph = o.walk || 0, bob = Math.abs(Math.sin(ph)) * 7;
+  ctx.save(); ctx.translate(x, y); ctx.scale(s * (o.flip ? -1 : 1), s);
+  ctx.fillStyle = 'rgba(60,40,20,0.2)'; ctx.beginPath(); ctx.ellipse(0, 4, 90, 14, 0, 0, 7); ctx.fill();
+  for (const [dx, a] of [[-20, Math.sin(ph) * 0.25], [20, -Math.sin(ph) * 0.25]]) { ctx.save(); ctx.translate(dx, -130); ctx.rotate(a); cut(ctx, () => rr(ctx, -16, 0, 32, 130, 12), '#3A3F4F', { sb: 8, sy: 5, lw: 3 }); ctx.restore(); }
+  ctx.translate(0, -bob);
+  cut(ctx, () => rr(ctx, -62, -296, 124, 180, [40, 40, 12, 12]), R4.blue, { sb: 10, sy: 5, lw: 3.5 });
+  flat(ctx, () => rr(ctx, -62, -296, 124, 180, [40, 40, 12, 12]), 'rgba(255,200,87,0.0)');
+  flat(ctx, () => { ctx.beginPath(); ctx.moveTo(-62, -270); ctx.lineTo(-20, -296); ctx.lineTo(-20, -116); ctx.lineTo(-62, -116); ctx.closePath(); ctx.moveTo(62, -270); ctx.lineTo(20, -296); ctx.lineTo(20, -116); ctx.lineTo(62, -116); ctx.closePath(); }, C.yellow, 3);
+  flat(ctx, () => rr(ctx, -62, -190, 124, 14, 0), '#E8E1D2');
+  cut(ctx, () => rr(ctx, -90, -284, 30, 150, 15), R4.blue, { sb: 6, sy: 3, lw: 3 });
+  if (o.carry) { ctx.save(); ctx.translate(0, -140); ctx.scale(0.5, 0.5); box(ctx, { w: 300, h: 210 }); ctx.restore(); for (const g of [-1, 1]) flat(ctx, () => { ctx.beginPath(); ctx.arc(g * 78, -200, 17, 0, 7); }, '#C68642', 3); }
+  else { ctx.save(); ctx.translate(62, -280); ctx.rotate(-1.35); cut(ctx, () => rr(ctx, -15, 0, 30, 120, 15), R4.blue, { sb: 6, sy: 3, lw: 3 }); ctx.restore();
+    ctx.save(); ctx.translate(180, -300); flat(ctx, () => rr(ctx, -30, -18, 60, 36, 8), C.ink, 3); flat(ctx, () => rr(ctx, -12, 10, 22, 40, 6), C.ink, 3);
+    if ((o.scan || 0) > 0) { ctx.globalAlpha *= 0.7; ctx.fillStyle = 'rgba(230,57,70,0.35)'; ctx.beginPath(); ctx.moveTo(30, -10); ctx.lineTo(220, -80 + o.scan * 160); ctx.lineTo(220, -20 + o.scan * 160); ctx.closePath(); ctx.fill(); } ctx.restore(); }
+  ctx.save(); ctx.translate(0, -348);
+  cut(ctx, () => { ctx.beginPath(); ctx.arc(0, 0, 48, 0, 7); }, '#C68642', { sb: 8, sy: 4, lw: 3.5 });
+  flat(ctx, () => { ctx.beginPath(); ctx.arc(0, -10, 50, Math.PI, Math.PI * 2); ctx.closePath(); }, C.red, 3.5); flat(ctx, () => rr(ctx, 0, -16, 70, 14, 6), C.red, 3);
+  ctx.fillStyle = C.ink; ctx.beginPath(); ctx.arc(-6, 4, 5, 0, 7); ctx.arc(26, 4, 5, 0, 7); ctx.fill(); ctx.lineWidth = 3.5; ctx.strokeStyle = C.ink; ctx.beginPath(); ctx.moveTo(-2, 26); ctx.lineTo(22, 26); ctx.stroke();
+  ctx.restore(); ctx.restore();
+}
+// coins leaking out of the box at a cost stage: t0 start, (x, y) source
+function coinLeak(ctx, t, t0, x, y, n = 6) { const u = clamp((t - t0) / 0.9); if (u <= 0 || u >= 1) return;
+  for (let i = 0; i < n; i++) { const a = -Math.PI / 2 + (hash(i * 3 + t0) - 0.5) * 1.6, d = E.out(u) * (220 + hash(i) * 180); ctx.save(); ctx.globalAlpha = 1 - p2(u, 0.7, 1);
+    K.coin(ctx, x + Math.cos(a) * d, y + Math.sin(a) * d + u * u * 260, 26, u * 6 + i, {}); ctx.restore(); } }
+const p2 = (u, a, b) => clamp((u - a) / (b - a));
+// shelves of boxes (behind the open front door at the end)
+function boxShelves(ctx, w, h) { flat(ctx, () => rr(ctx, -w / 2, -h, w, h, 0), '#3A2F26');
+  for (let r = 0; r < 4; r++) { const y = -h + 30 + r * (h / 4); flat(ctx, () => rr(ctx, -w / 2, y + h / 4 - 26, w, 10, 0), '#7A5A3A');
+    for (let i = 0; i < 4; i++) { ctx.save(); ctx.translate(-w / 2 + 22 + i * (w / 4), y + h / 4 - 26); ctx.scale(0.16, 0.16); box(ctx, { w: 260, h: 190 }); ctx.restore(); } } }
+
+module.exports = { worker, coinLeak, boxShelves, BOX, box, buyer, phoneA, conveyor, truck, warehouse, interiorWall, scannerArch, pusher, valueCard, balance, HOUSE, house, sign };
