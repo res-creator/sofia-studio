@@ -13,6 +13,7 @@ Concept: real, verifiable stories about money, business, famous companies and th
 | `rent_ep4/` | RealPage shared pricing software | `your_landlords_secret_algorithm_v2.mp4` |
 | `med_ep5/` | Medical bill $3,000 → $6,000 after the move to a surgery center | `medical_bill_doubled_v3.mp4` |
 | `amazon_ep6/` | Amazon returnless refunds ($5 item, $8–$12 shipping) | `amazon_keep_it_v2.mp4` |
+| `doordash_ep8/` | DoorDash old pay model 2017–2019: the tip replaced DoorDash's part of a $10 guarantee | `doordash_tip_final.mp4` |
 Also: `covers_extra/` (credit card trap, gym no-shows — uploaded videos). Ideas backlog: `IDEAS.md`. Captions: `CAPTIONS.md`.
 
 ## Format
@@ -30,7 +31,8 @@ Approve the script BEFORE generating; generate each line once. Verify with speec
 - Engine: `mcd_ep1/engine.js` (camera keys, parallax fg, motion blur on fast moves, world blur, subtitles, CLI `video | still t1,t2 out.png | cues`).
 - Primitives: `tests/mcd_collage/kit.js` (cut, rr, tag, coin, bill, sprite, paper texture, palette, fonts).
 - Prop kits: `air_ep2/airkit.js`, `car_ep3/carkit.js`, `car_ep3/v2/car3d.js`, `rent_ep4/rentkit.js` (2.5D buildings, `text()` with max-width auto-fit),
-  `med_ep5/medkit.js` (heroine with brows, doctor, signs, bills, phone, giant hand), `amazon_ep6/amazonkit.js` (box, buyer, phone, conveyor, truck, warehouse, workers, coins, house).
+  `med_ep5/medkit.js` (heroine with brows, doctor, signs, bills, phone, giant hand), `amazon_ep6/amazonkit.js` (box, buyer, phone, conveyor, truck, warehouse, workers, coins, house),
+  `doordash_ep8/ddkit.js` ($1 bricks yellow/red, pay column, TIP phone, pointing hand, safe, cards, driver/courier).
 - Episode folder: `script.json`, `vo.py` → `vo/`, `episode.js`, `mix.py` (synth SFX + music, SFX kept quiet: fx×0.3, ducked under the voice), `build.sh`, `cover.js`.
 - Versions: `episode_v2.js`, `vo_v2/`, `mix_v2.py`, `build_v2.sh` → `*_v2.mp4`. Keep v1 files.
 - Build: `sh <folder>/build.sh` (cues → mix → render → mux, loudnorm -14). Render ≈ 1–2 min. Run it in the background.

@@ -31,3 +31,7 @@ A $3,000 estimate. A $6,000 bill. Same doctor, same procedure 🏥 The only thin
 ## 8. Why Amazon Sometimes Pays You to Keep Your Order
 Refund approved… and KEEP the item? 📦 It's not a glitch — for some cheap items, sending them back can cost more than the item itself.
 #amazon #returns #onlineshopping #business #money #didyouknow
+
+## 9. Your Tip Wasn't Extra (DoorDash, episode 8)
+You tipped $9… and your driver still made $10? 🛵 Under DoorDash's old pay system (2017–2019), your tip could replace money DoorDash would've paid. The $10 is an example — DoorDash changed the system in 2019.
+#doordash #tipping #gigeconomy #money #didyouknow
