@@ -35,3 +35,7 @@ Refund approved… and KEEP the item? 📦 It's not a glitch — for some cheap 
 ## 9. Your Tip Wasn't Extra (DoorDash, episode 8)
 You tipped $9… and your driver still made $10? 🛵 Under DoorDash's old pay system (2017–2019), your tip could replace money DoorDash would've paid. The $10 is an example — DoorDash changed the system in 2019.
 #doordash #tipping #gigeconomy #money #didyouknow
+
+## 10. Coca-Cola's Impossible Coin (episode 9)
+A Coke cost 5¢ for decades… so Coca-Cola reportedly asked for a brand-new 7½¢ coin 🪙 One coin, one Coke: old vending machines took one nickel, and a dime meant doubling the price. The coin was never minted. Would you have paid 7½¢?
+#cocacola #businesshistory #vendingmachine #coins #inflation

@@ -1,0 +1,19 @@
+EPISODE 9 — Coca-Cola's Impossible Coin
+UPLOAD v2 (after the independent review): coke_ep9/cokes_impossible_coin_v2.mp4 (1080x1920, 30 fps, 39.0 s) + cover coke_ep9/cokes_impossible_coin_cover.png
+(v1 kept: cokes_impossible_coin.mp4 — do NOT upload it: the pointing hand at 13.5–14.5 s reads like a rude gesture.) Caption and pinned comment are the same for v2.
+
+=== DESCRIPTION (TikTok caption) ===
+A Coke cost 5¢ for decades… so Coca-Cola reportedly asked for a brand-new 7½¢ coin 🪙 One coin, one Coke: old vending machines took one nickel, and a dime meant doubling the price. The coin was never minted. Would you have paid 7½¢?
+#cocacola #businesshistory #vendingmachine #coins #inflation
+
+=== PINNED COMMENT ===
+📌 Fact check: the 7½¢ coin was only a proposal — it was never made. Economists Daniel Levy & Andrew Young ("The Real Thing," Journal of Money, Credit and Banking, 2004) write that by 1950 Coca-Cola had about 400,000 vending machines, most of them nickel-only, and that in 1953 Robert Woodruff asked for a 7½¢ coin. The Eisenhower part comes from secondary accounts (Kahn 1969, Allen 1994); no letter has turned up in the archives, so treat it as "reportedly." Prices weren't 5¢ everywhere until the end — by 1955 a Coke cost 5¢, 6¢, 7¢ or even 10¢ depending on the area, and the nickel Coke was gone by 1959.
+
+=== SOURCES (for us) ===
+Levy, D. & Young, A. T. (2004). "The Real Thing": Nominal Price Rigidity of the Nickel Coke, 1886–1959. JMCB 36(4), 765–799.
+https://econ.biu.ac.il/sites/econ/files/shared/people/LevyDaniel/jmcb4.pdf
+  - p. 774 timeline: 1950 first 6¢ (NYC), 1953 Woodruff asks the Treasury for a 7.5¢ coin, 1955 5/6/7/10¢ by area, 1959 the last nickel Coke.
+  - pp. 783–786: ~400,000 Coca-Cola vending machines by 1950, mostly nickel-only; a dime = 100% increase, smaller increases = 2–5 coins;
+    Woodruff's 1953 request to Eisenhower, forwarded to Treasury officials "who did not like the idea" (per Kahn 1969 and Allen 1994).
+Coin World (Paul Gilkes): no copy of the request found in the Coca-Cola archives or the Eisenhower Library — hence "reportedly".
+NPR Planet Money, "Why Coke Cost a Nickel for 70 Years" (2012).
