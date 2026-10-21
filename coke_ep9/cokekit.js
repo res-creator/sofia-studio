@@ -155,23 +155,23 @@ function palm(ctx) {
 }
 
 // ---------- blueprint sheet (origin = centre); u 0..1 unroll from the top ----------
-function blueprint(ctx, w, h, u, t = 0) {
+function blueprint(ctx, w, h, u, t = 0, o = {}) {
   if (u <= 0) return; const hh = h * E.out(u);
   cut(ctx, () => rr(ctx, -w / 2, -h / 2, w, hh, 10), BLUED, { sb: 30, sy: 14, lw: 4 });
   ctx.save(); rr(ctx, -w / 2, -h / 2, w, hh, 10); ctx.clip();
   ctx.strokeStyle = 'rgba(255,255,255,0.13)'; ctx.lineWidth = 2; for (let x = -w / 2; x < w / 2; x += 50) { ctx.beginPath(); ctx.moveTo(x, -h / 2); ctx.lineTo(x, h / 2); ctx.stroke(); }
   for (let y = -h / 2; y < h / 2; y += 50) { ctx.beginPath(); ctx.moveTo(-w / 2, y); ctx.lineTo(w / 2, y); ctx.stroke(); }
   ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 4; rr(ctx, -w / 2 + 24, -h / 2 + 24, w - 48, h - 48, 4); ctx.stroke();
-  text(ctx, 'PROPOSAL: A NEW U.S. COIN', -w / 2 + 50, -h / 2 + 88, 40, '#FFFFFF', F.black, 'left', w - 100);
+  text(ctx, 'PROPOSAL: A NEW U.S. COIN', -w / 2 + 50, -h / 2 + 50 + (o.titleSize || 40) * 0.95, o.titleSize || 40, '#FFFFFF', F.black, 'left', w - 100);
   ctx.restore();
   if (u < 1) { ctx.save(); ctx.translate(0, -h / 2 + hh); cut(ctx, () => rr(ctx, -w / 2 - 10, -26, w + 20, 52, 26), '#5E8EE0', { sb: 12, sy: 6, lw: 4 }); ctx.restore(); }
 }
 // a dimension line with arrows + label (blueprint style)
-function dim(ctx, x0, y0, x1, y1, label, u = 1) {
+function dim(ctx, x0, y0, x1, y1, label, u = 1, size = 34) {
   if (u <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(u * 2); ctx.strokeStyle = '#FFFFFF'; ctx.fillStyle = '#FFFFFF'; ctx.lineWidth = 4;
   const x = lerp(x0, x1, E.out(u)), y = lerp(y0, y1, E.out(u)); ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x, y); ctx.stroke();
   const a = Math.atan2(y1 - y0, x1 - x0); for (const [px, py, aa] of [[x0, y0, a + Math.PI], [x, y, a]]) { ctx.save(); ctx.translate(px, py); ctx.rotate(aa); ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(-22, -11); ctx.lineTo(-22, 11); ctx.closePath(); ctx.fill(); ctx.restore(); }
-  if (label && u > 0.6) text(ctx, label, (x0 + x1) / 2, (y0 + y1) / 2 - 18, 34, '#FFFFFF', F.black, 'center');
+  if (label && u > 0.6) text(ctx, label, (x0 + x1) / 2, (y0 + y1) / 2 - 18, size, '#FFFFFF', F.black, 'center');
   ctx.restore();
 }
 
