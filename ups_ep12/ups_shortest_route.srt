@@ -1,0 +1,183 @@
+1
+00:00:00,100 --> 00:00:01,261
+This UPS driver just
+
+2
+00:00:01,261 --> 00:00:02,677
+made 3 right turns...
+
+3
+00:00:02,677 --> 00:00:04,113
+to avoid 1 left.
+
+4
+00:00:04,113 --> 00:00:05,433
+Sounds ridiculous, right?
+
+5
+00:00:05,433 --> 00:00:06,524
+But there's a reason.
+
+6
+00:00:06,524 --> 00:00:07,499
+Meet Mike.
+
+7
+00:00:07,499 --> 00:00:08,533
+He's got a truck full of
+
+8
+00:00:08,533 --> 00:00:10,517
+packages and a computer-planned route.
+
+9
+00:00:10,517 --> 00:00:11,717
+He spots a shortcut.
+
+10
+00:00:11,717 --> 00:00:12,739
+One left turn.
+
+11
+00:00:12,739 --> 00:00:14,237
+Straight to the next delivery.
+
+12
+00:00:14,237 --> 00:00:15,027
+Easy.
+
+13
+00:00:15,027 --> 00:00:16,014
+Except...
+
+14
+00:00:16,014 --> 00:00:17,271
+the traffic doesn't stop.
+
+15
+00:00:17,271 --> 00:00:18,331
+Cars keep coming.
+
+16
+00:00:18,331 --> 00:00:19,760
+His engine keeps running.
+
+17
+00:00:19,760 --> 00:00:20,851
+And Mike?
+
+18
+00:00:20,851 --> 00:00:22,148
+He's going nowhere.
+
+19
+00:00:22,148 --> 00:00:23,634
+That's why UPS factors
+
+20
+00:00:23,634 --> 00:00:26,127
+left turns into its route calculations.
+
+21
+00:00:26,127 --> 00:00:27,683
+An unnecessary left
+
+22
+00:00:27,683 --> 00:00:29,180
+can get a 20-second penalty
+
+23
+00:00:29,180 --> 00:00:30,761
+in UPS's route math.
+
+24
+00:00:30,761 --> 00:00:31,771
+Not for the driver.
+
+25
+00:00:31,771 --> 00:00:32,758
+For the route.
+
+26
+00:00:32,758 --> 00:00:33,524
+So sometimes,
+
+27
+00:00:33,524 --> 00:00:35,753
+3 right turns beat 1 left.
+
+28
+00:00:35,803 --> 00:00:37,102
+And here's the crazy part.
+
+29
+00:00:37,102 --> 00:00:38,588
+MythBusters actually tested this
+
+30
+00:00:38,588 --> 00:00:39,758
+with a delivery truck.
+
+31
+00:00:39,758 --> 00:00:41,539
+Their right-turn route was LONGER.
+
+32
+00:00:41,539 --> 00:00:43,049
+But it used less fuel.
+
+33
+00:00:43,049 --> 00:00:45,081
+And every mile counts.
+
+34
+00:00:45,081 --> 00:00:47,043
+UPS says cutting just 1 mile
+
+35
+00:00:47,043 --> 00:00:48,575
+per driver, per day,
+
+36
+00:00:48,575 --> 00:00:49,226
+can save up to
+
+37
+00:00:49,226 --> 00:00:51,186
+$50 million a year.
+
+38
+00:00:51,186 --> 00:00:53,255
+So UPS doesn't ban left turns.
+
+39
+00:00:53,255 --> 00:00:55,264
+If turning left makes more sense,
+
+40
+00:00:55,264 --> 00:00:56,814
+the system can choose it.
+
+41
+00:00:56,814 --> 00:00:57,871
+So Mike wasn't taking
+
+42
+00:00:57,871 --> 00:00:59,367
+the long way by mistake.
+
+43
+00:00:59,367 --> 00:01:01,077
+He was taking the smarter way.
+
+44
+00:01:01,077 --> 00:01:02,206
+Because in delivery...
+
+45
+00:01:02,206 --> 00:01:03,019
+The shortest route
+
+46
+00:01:03,019 --> 00:01:05,620
+isn't always the cheapest.
