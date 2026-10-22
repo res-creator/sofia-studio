@@ -155,7 +155,7 @@ function faceParams(f) {
   const lid = two(f.lid, 0.12).map(v => Math.max(v, clamp(f.blink || 0)));
   return { lid, low: two(f.low, 0), brow: two(f.brow, 0), bang: two(f.bang ?? f.browAng, 0), look: f.look || [0.4, 0], pupil: f.pupil ?? 1, happy: clamp(f.happy || 0), wide: f.wide || 0 };
 }
-function eye(ctx, ex, ey, rx, ry, lid, low, F, L, sk) {
+function eye(ctx, ex, ey, rx, ry, lid, low, F, L, sk, outer = 1) {
   if (F.happy > 0.5) { ctx.beginPath(); ctx.arc(ex, ey + ry * 0.35, rx * 1.05, Math.PI * 1.1, Math.PI * 1.9); ctx.lineWidth = Math.max(px(ctx, 5.5), ry * 0.28); ctx.strokeStyle = INK; ctx.lineCap = 'round'; ctx.stroke(); return; }
   ell(ctx, ex, ey, rx, ry); ctx.fillStyle = '#FFFFFF'; ctx.fill();
   ctx.save(); ell(ctx, ex, ey, rx, ry); ctx.clip();
@@ -173,9 +173,14 @@ function eye(ctx, ex, ey, rx, ry, lid, low, F, L, sk) {
   ctx.lineCap = 'round'; ctx.strokeStyle = INK;
   if (lid > 0.06) { ctx.lineWidth = px(ctx, 6.5); ctx.beginPath(); ctx.moveTo(ex - rx * 1.05, ly + ry * 0.02); ctx.quadraticCurveTo(ex, ly + ry * 0.22, ex + rx * 1.05, ly + ry * 0.02); ctx.stroke(); }
   if (low > 0.1) { ctx.lineWidth = px(ctx, 3.5); ctx.beginPath(); ctx.moveTo(ex - rx * 0.9, by); ctx.quadraticCurveTo(ex, by - ry * 0.22, ex + rx * 0.9, by); ctx.stroke(); }
+  if (L.lashes) { // two lash flicks at the outer corner, riding on the upper lid
+    const lyy = Math.max(ly, ey - ry) + ry * 0.05; ctx.lineWidth = Math.max(px(ctx, 3.5), rx * 0.16); ctx.beginPath();
+    ctx.moveTo(ex + outer * rx * 0.75, lyy + ry * 0.05); ctx.quadraticCurveTo(ex + outer * rx * 1.15, lyy - ry * 0.05, ex + outer * rx * 1.35, lyy - ry * 0.32);
+    ctx.moveTo(ex + outer * rx * 0.95, lyy + ry * 0.12); ctx.quadraticCurveTo(ex + outer * rx * 1.3, lyy + ry * 0.1, ex + outer * rx * 1.5, lyy - ry * 0.08); ctx.stroke();
+  }
 }
-function mouthShape(ctx, mx, my, R, m, tk, wk = 1) {
-  ctx.lineWidth = Math.max(px(ctx, 5), R * 0.055); ctx.strokeStyle = INK; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+function mouthShape(ctx, mx, my, R, m, tk, wk = 1, lips = null) {
+  ctx.lineWidth = Math.max(px(ctx, 5), R * 0.055); ctx.strokeStyle = lips || INK; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
   const w = R * 0.22 * wk;
   if ((m === 'smile' || m === 'smile0') && tk < 0.05) { const d = m === 'smile0' ? 0.07 : 0.16; ctx.beginPath(); ctx.moveTo(mx - w, my - R * 0.06); ctx.quadraticCurveTo(mx, my + R * d, mx + w, my - R * 0.08); ctx.stroke(); return; }
   if (m === 'flat') { ctx.beginPath(); ctx.moveTo(mx - w * 0.7, my); ctx.lineTo(mx + w * 0.7, my - R * 0.02); ctx.stroke(); return; }
@@ -195,12 +200,12 @@ function mouthShape(ctx, mx, my, R, m, tk, wk = 1) {
 // eyes [[x, y, k]...] left to right, mouth position [x, y]
 function features(ctx, R, L, f, eyes, mp, front) {
   const F = faceParams(f), sk = L.skin;
-  eyes.forEach(([ex, ey, k], i) => eye(ctx, ex, ey, R * (front ? 0.16 : 0.15) * k, R * 0.2 * (F.wide ? 1.12 : 1), F.lid[i], F.low[i], F, L, sk));
+  eyes.forEach(([ex, ey, k], i) => eye(ctx, ex, ey, R * (front ? 0.16 : 0.15) * k, R * 0.2 * (F.wide ? 1.12 : 1), F.lid[i], F.low[i], F, L, sk, front ? (i === 0 ? -1 : 1) : 1));
   ctx.strokeStyle = L.brow || shade(L.hair, -0.2); ctx.lineCap = 'round'; ctx.lineWidth = R * 0.09;
   eyes.forEach(([ex, ey, k], i) => { const inner = i === 0 ? 1 : -1, hw = R * 0.15 * k, by = ey - R * 0.37 - F.brow[i] * R * 0.12, ba = F.bang[i];
     const xi = ex + inner * hw, xo = ex - inner * hw, yi = by + ba * R * 0.09, yo = by - ba * R * 0.03;
     ctx.beginPath(); ctx.moveTo(xo, yo); ctx.quadraticCurveTo(ex, Math.min(yi, yo) - R * 0.06, xi, yi); ctx.stroke(); });
-  mouthShape(ctx, mp[0], mp[1], R, f.mouth || 'smile', clamp(f.talk || 0), front ? 1.1 : 1);
+  mouthShape(ctx, mp[0], mp[1], R, f.mouth || 'smile', clamp(f.talk || 0), front ? 1.1 : 1, L.lips);
 }
 
 // ---------- front-view head (close-ups) ----------
@@ -209,7 +214,10 @@ function headFront(ctx, cx, cy, R, L, f = {}) {
   ctx.save(); ctx.translate(cx, cy); ctx.rotate(f.tilt || 0);
   const sk = L.skin, hair = L.hair, tx = (f.turn || 0) * R * 0.16;
   if (L.hairStyle === 'bun') { ell(ctx, 0, -R * 1.08, R * 0.36, R * 0.3); fillStroke(ctx, hair); }
-  if (L.hairStyle === 'long') { ctx.beginPath(); ctx.moveTo(-R * 1.05, -R * 0.3); ctx.bezierCurveTo(-R * 1.3, R * 0.6, -R * 1.1, R * 1.2, -R * 0.6, R * 1.25); ctx.lineTo(R * 0.6, R * 1.25); ctx.bezierCurveTo(R * 1.1, R * 1.2, R * 1.3, R * 0.6, R * 1.05, -R * 0.3); ctx.closePath(); fillStroke(ctx, hair); }
+  if (L.hairStyle === 'long') { ctx.beginPath(); ctx.moveTo(-R * 1.02, -R * 0.35); ctx.bezierCurveTo(-R * 1.22, R * 0.45, -R * 1.18, R * 1.1, -R * 0.82, R * 1.42);
+    ctx.quadraticCurveTo(-R * 0.62, R * 1.2, -R * 0.5, R * 0.7); ctx.lineTo(R * 0.5, R * 0.7); ctx.quadraticCurveTo(R * 0.62, R * 1.2, R * 0.82, R * 1.42);
+    ctx.bezierCurveTo(R * 1.18, R * 1.1, R * 1.22, R * 0.45, R * 1.02, -R * 0.35); ctx.closePath(); fillStroke(ctx, hair);
+    ctx.strokeStyle = shade(hair, 0.18); ctx.lineWidth = R * 0.035; for (const sx of [-1, 1]) { ctx.beginPath(); ctx.moveTo(sx * R * 0.98, R * 0.2); ctx.quadraticCurveTo(sx * R * 1.08, R * 0.8, sx * R * 0.85, R * 1.25); ctx.stroke(); } }
   for (const sx of [-1, 1]) { ell(ctx, sx * R * 0.93 + tx * 0.3, R * 0.1, R * 0.16, R * 0.23); fillStroke(ctx, sk); ell(ctx, sx * R * 0.95 + tx * 0.3, R * 0.1, R * 0.07, R * 0.12); ctx.fillStyle = shade(sk, -0.2); ctx.fill(); }
   const face = () => { ctx.beginPath(); ctx.moveTo(-R * 0.92, -R * 0.1); ctx.bezierCurveTo(-R * 0.96, -R * 1.18, R * 0.96, -R * 1.18, R * 0.92, -R * 0.1);
     ctx.bezierCurveTo(R * 0.9, R * 0.55, R * 0.48, R * 0.98, 0, R * 1.0); ctx.bezierCurveTo(-R * 0.48, R * 0.98, -R * 0.9, R * 0.55, -R * 0.92, -R * 0.1); ctx.closePath(); };
@@ -240,6 +248,8 @@ function headFront(ctx, cx, cy, R, L, f = {}) {
     ctx.quadraticCurveTo(R * 0.85, -R * 0.45, R * 0.15, -R * 0.62); ctx.quadraticCurveTo(-R * 0.55, -R * 0.55, -R * 0.82, -R * 0.15); ctx.quadraticCurveTo(-R * 0.86, R * 0.05, -R * 0.98, R * sh); ctx.closePath(); fillStroke(ctx, hair);
     ctx.strokeStyle = shade(hair, 0.25); ctx.lineWidth = R * 0.05; ctx.beginPath(); ctx.moveTo(-R * 0.5, -R * 0.8); ctx.quadraticCurveTo(0, -R * 1.0, R * 0.55, -R * 0.82); ctx.stroke();
     if (L.hairStyle === 'bun') { ell(ctx, -R * 0.2, -R * 0.92, R * 0.18, R * 0.07, 0.2); fillStroke(ctx, C.red, 4); }
+    if (L.hairStyle === 'long') for (const sx of [-1, 1]) { ctx.beginPath(); ctx.moveTo(sx * R * 0.96, -R * 0.2); ctx.quadraticCurveTo(sx * R * 1.06, R * 0.45, sx * R * 0.86, R * 0.98);
+      ctx.quadraticCurveTo(sx * R * 0.8, R * 0.4, sx * R * 0.7, -R * 0.3); ctx.closePath(); fillStroke(ctx, hair); }
   }
   if (L.glasses) { ctx.lineWidth = px(ctx, 5); ctx.strokeStyle = INK; for (const [ex, ey] of eyes) { ell(ctx, ex, ey, R * 0.24, R * 0.22); ctx.stroke(); } ctx.beginPath(); ctx.moveTo(eyes[0][0] + R * 0.24, eyes[0][1]); ctx.lineTo(eyes[1][0] - R * 0.24, eyes[1][1]); ctx.stroke(); }
   ctx.restore();
