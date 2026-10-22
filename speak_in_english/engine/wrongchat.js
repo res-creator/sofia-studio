@@ -59,7 +59,7 @@ function drone(c, x, y, t, carry) { c.save(); c.translate(x, y + Math.sin(t * 9)
   paint(c, q => { q.m(-90, -24); q.l(90, -24); q.l(70, 26); q.l(-70, 26); q.z(); }, '#F7F9FC', { sd: 4, hd: 2, lw: 4 }); c.fillStyle = '#E0474C'; c.beginPath(); c.arc(0, 4, 10, 0, TAU); c.fill();
   for (const s of [-1, 1]) { c.fillStyle = '#2B2F3A'; c.fillRect(s * 130 - 6, -60, 12, 40); c.fillRect(s * 90, -30, s * 40, 10); const w = 70 * Math.abs(Math.sin(t * 40 + s)); c.fillStyle = 'rgba(43,47,58,.55)'; c.beginPath(); c.ellipse(s * 130, -62, w + 8, 8, 0, 0, TAU); c.fill(); }
   c.restore(); }
-function droneSign(c, x, y, k) { if (k <= 0) return; c.save(); c.translate(x, y); c.scale(k * 1.7, k * 1.7); c.strokeStyle = '#2B2F3A'; c.lineWidth = 4; c.beginPath(); c.moveTo(0, 0); c.lineTo(0, 60); c.stroke();
+function droneSign(c, x, y, k) { if (k <= 0) return; c.save(); c.translate(x, y); c.scale(k * 1.3, k * 1.3); c.strokeStyle = '#2B2F3A'; c.lineWidth = 4; c.beginPath(); c.moveTo(0, 0); c.lineTo(0, 60); c.stroke();
   c.fillStyle = '#FFFDF8'; rr(c, -190, 60, 380, 130, 16); c.fill(); c.strokeStyle = '#2B2F3A'; c.lineWidth = 5; rr(c, -190, 60, 380, 130, 16); c.stroke(); txt(c, 'RATE YOUR DELIVERY', 0, 98, 26, '#2B2F3A'); for (let i = 0; i < 5; i++) { c.fillStyle = C.gold; UI.star(c, -120 + i * 60, 150, 22); } c.restore(); }
 function deskShape(c, D, col) { paint(c, q => { q.m(D.x0, D.top); q.l(D.x1, D.top); q.l(D.x1, D.top + 34); q.l(D.x0, D.top + 34); q.z(); }, col, { sd: 4, hd: 2, lw: 3 }); c.fillStyle = mix(col, '#2B2F3A', 0.3); c.fillRect(D.x0 + 20, D.top + 34, 26, FY - D.top - 34); c.fillRect(D.x1 - 46, D.top + 34, 26, FY - D.top - 34); }
 function monitor(c, x, y, s = 1, glow = '#BFE3F7') { c.save(); c.translate(x, y); c.scale(s, s); c.fillStyle = '#3A3F4A'; c.fillRect(-14, -90, 28, 90); c.fillRect(-70, -8, 140, 12); paint(c, q => { q.m(-150, -300); q.l(150, -300); q.l(150, -80); q.l(-150, -80); q.z(); }, '#2B2F3A', { sd: 3, hd: 2, lw: 3 }); c.fillStyle = glow; c.fillRect(-136, -286, 272, 192); c.restore(); }
@@ -163,7 +163,7 @@ function world(c, t, L) {
   // drone (B2)
   if (L === 'B2' && t > ev('drone') - 0.1) { const d0 = ev('drone'), d1 = ev('drop'), k = eIO(P(t, d0, d1 - 0.2)); const x = lerp(250, -620, k), y = lerp(-2300, HDESK.top - 760, k), carry = t < d1;
     if (!carry && t < d1 + 0.3) { const f = eIn(P(t, d1, d1 + 0.3)); book(c, lerp(-620, -580, f), lerp(HDESK.top - 760 + 375, HDESK.top, f), lerp(0.9, 0.55, f)); }
-    const hx = carry ? x : lerp(-620, -60, eOut(P(t, d1 + 0.2, d1 + 1.0))), hy = carry ? y : lerp(HDESK.top - 760, -1560, eOut(P(t, d1 + 0.2, d1 + 1.0)));
+    const hx = carry ? x : lerp(-620, -650, eOut(P(t, d1 + 0.2, d1 + 1.0))), hy = carry ? y : lerp(HDESK.top - 760, -1620, eOut(P(t, d1 + 0.2, d1 + 1.0)));
     drone(c, hx, hy, t, carry); if (!carry) droneSign(c, hx, hy + 30, eBack(P(t, d1 + 0.9, d1 + 1.2), 2)); K.mark(c, 'drone', hx, hy, 160); }
   return heads;
 }
