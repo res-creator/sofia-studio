@@ -62,7 +62,10 @@ function cupIcon(ctx, x, y, s, label) {
 function icon(ctx, name, x, y, s, label) {
   if (name === 'cup') return cupIcon(ctx, x, y, s, label);
   ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
-  if (name === 'bell') {
+  if (name === 'book') {
+    ctx.rotate(-0.12); ctx.fillStyle = '#7A1C2E'; rr(ctx, -70, -95, 140, 190, 10); ctx.fill(); ctx.fillStyle = '#F2EBDD'; ctx.fillRect(66, -88, 12, 176);
+    ctx.fillStyle = C.gold; ctx.fillRect(-70, -70, 140, 6); ctx.fillRect(-70, 64, 140, 6); font(ctx, 'Unb9', 30); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('THE', 0, -30); ctx.fillText('IDIOT', 0, 14);
+  } else if (name === 'bell') {
     ctx.fillStyle = C.ink; rr(ctx, -80, 30, 160, 22, 8); ctx.fill();
     ctx.fillStyle = C.gold; ctx.beginPath(); ctx.arc(0, 30, 68, Math.PI, 0); ctx.fill();
     ctx.fillStyle = '#FFF3C4'; ctx.beginPath(); ctx.ellipse(-24, 0, 12, 24, 0.5, 0, 7); ctx.fill();
@@ -132,7 +135,7 @@ function bubble(ctx, sp, t, anchor, side, nameTag) {
   if (u < -0.05 || out >= 1) return;
   const k = eBack(P(u, -0.05, 0.25), 2.2) * (1 - eIn(out));
   const maxW = 820;
-  let fs = sp.text.length > 60 ? 46 : 58;
+  let fs = sp.fs || (sp.text.length > 60 ? 46 : 58);   // sp.fs: per-line override (new episodes only)
   font(ctx, 'Nun9', fs);
   const lines = wrap(ctx, sp.text, maxW - 80);
   font(ctx, 'Nun7', 34);
