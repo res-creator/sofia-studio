@@ -1,0 +1,8 @@
+{"ep":"courier","style":"v2","layout":"v2","samples":462,"issues":7,"critical":0,"major":3,"minor":4}
+  major    face_covered_by_insert       71.25-77.25s listener
+  major    face_covered_by_bubble       51.25-52.00s listener
+  major    crop_feet_ankles             8.00-8.50s 
+  minor    bubble_too_long              81.75-94.50s 
+  minor    crop_knees                   82.50-83.25s 
+  minor    crop_knees                   93.25-94.00s 
+  minor    face_covered_by_card         13.50-14.00s listener

@@ -1,0 +1,14 @@
+node_modules/
+models/
+out/
+preview2/
+__pycache__/
+*.wav
+engine/eps/*/part*.mp4
+engine/eps/*/render*.log
+engine/check.png
+engine/eps/*/pass-*
+engine/sheet*.png
+engine/eps/names/timeline.json
+engine/eps/*/build.log
+engine/eps/*/asr.txt

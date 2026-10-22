@@ -1,0 +1,10 @@
+{"ep":"marry","style":"v2","layout":"v2","samples":467,"issues":9,"critical":2,"major":2,"minor":5}
+  critical face_covered_by_overlay      50.75-55.00s speaker,listener
+  critical face_covered_by_overlay      14.25-17.00s speaker,listener
+  major    face_covered_by_overlay      23.75-29.75s listener
+  major    crop_feet_ankles             38.25-39.00s 
+  minor    bubble_too_long              84.25-97.75s 
+  minor    face_covered_by_overlay      24.25-29.75s listener
+  minor    face_covered_by_overlay      104.25-109.00s listener
+  minor    face_covered_by_overlay      52.00-55.00s listener
+  minor    face_covered_by_bubble       104.25-104.75s listener

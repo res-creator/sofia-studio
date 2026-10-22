@@ -1,0 +1,26 @@
+{
+ "summary": {
+  "ep": "things",
+  "style": "v2",
+  "layout": "v2",
+  "samples": 426,
+  "issues": 1,
+  "critical": 0,
+  "major": 0,
+  "minor": 1
+ },
+ "issues": [
+  {
+   "ep": "things",
+   "type": "bubble_too_long",
+   "key": "c2_her",
+   "start": 73.75,
+   "end": 87.75,
+   "n": 57,
+   "sev": "minor",
+   "max": 12,
+   "info": "",
+   "dur": 14.25
+  }
+ ]
+}

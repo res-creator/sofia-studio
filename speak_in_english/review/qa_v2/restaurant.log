@@ -1,0 +1,23 @@
+{"ep":"restaurant","style":"v2","layout":"v2","samples":529,"issues":22,"critical":0,"major":3,"minor":19}
+  major    face_covered_by_overlay      68.00-69.50s listener
+  major    face_covered_by_bubble       102.25-103.00s listener
+  major    crop_feet_ankles             111.75-112.25s 
+  minor    bubble_too_long              92.50-103.00s 
+  minor    crop_knees                   114.50-122.00s 
+  minor    bubble_too_long              71.00-77.00s 
+  minor    face_covered_by_overlay      35.00-38.50s listener
+  minor    face_covered_by_overlay      30.00-32.00s listener
+  minor    face_covered_by_overlay      65.75-67.25s listener
+  minor    face_covered_by_overlay      117.25-118.75s listener
+  minor    face_covered_by_overlay      51.50-52.75s listener
+  minor    face_covered_by_overlay      119.50-120.75s listener
+  minor    crop_knees                   16.75-17.75s 
+  minor    crop_knees                   24.00-25.00s 
+  minor    crop_knees                   46.00-47.00s 
+  minor    crop_knees                   61.25-62.25s 
+  minor    crop_knees                   80.00-81.00s 
+  minor    crop_knees                   106.25-107.25s 
+  minor    face_covered_by_overlay      49.00-49.75s listener
+  minor    crop_knees                   112.75-113.50s 
+  minor    face_covered_by_overlay      114.25-115.00s listener
+  minor    face_covered_by_bubble       111.75-112.25s listener

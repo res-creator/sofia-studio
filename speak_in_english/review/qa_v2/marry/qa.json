@@ -1,0 +1,122 @@
+{
+ "summary": {
+  "ep": "marry",
+  "style": "v2",
+  "layout": "v2",
+  "samples": 467,
+  "issues": 9,
+  "critical": 2,
+  "major": 2,
+  "minor": 5
+ },
+ "issues": [
+  {
+   "ep": "marry",
+   "type": "face_covered_by_overlay",
+   "key": "12|1300|#8FB4D9",
+   "start": 50.75,
+   "end": 54.75,
+   "n": 17,
+   "sev": "critical",
+   "max": 0.5979381443298969,
+   "info": "speaker,listener",
+   "dur": 4.25
+  },
+  {
+   "ep": "marry",
+   "type": "face_covered_by_overlay",
+   "key": "12|1300|#8FB4D9",
+   "start": 14.25,
+   "end": 16.75,
+   "n": 11,
+   "sev": "critical",
+   "max": 0.5876288659793815,
+   "info": "speaker,listener",
+   "dur": 2.75
+  },
+  {
+   "ep": "marry",
+   "type": "face_covered_by_overlay",
+   "key": "12|1300|#8FB4D9",
+   "start": 23.75,
+   "end": 29.5,
+   "n": 24,
+   "sev": "major",
+   "max": 0.6288659793814433,
+   "info": "listener",
+   "dur": 6
+  },
+  {
+   "ep": "marry",
+   "type": "crop_feet_ankles",
+   "key": "31|1560|#6A7A5A",
+   "start": 38.25,
+   "end": 38.75,
+   "n": 3,
+   "sev": "major",
+   "max": 125.599853515625,
+   "info": "",
+   "dur": 0.75
+  },
+  {
+   "ep": "marry",
+   "type": "bubble_too_long",
+   "key": "c2_her",
+   "start": 84.25,
+   "end": 97.5,
+   "n": 54,
+   "sev": "minor",
+   "max": 10,
+   "info": "",
+   "dur": 13.5
+  },
+  {
+   "ep": "marry",
+   "type": "face_covered_by_overlay",
+   "key": "1|1480|#D9443F",
+   "start": 24.25,
+   "end": 29.5,
+   "n": 22,
+   "sev": "minor",
+   "max": 0.20618556701030927,
+   "info": "listener",
+   "dur": 5.5
+  },
+  {
+   "ep": "marry",
+   "type": "face_covered_by_overlay",
+   "key": "12|1300|#8FB4D9",
+   "start": 104.25,
+   "end": 108.75,
+   "n": 19,
+   "sev": "minor",
+   "max": 0.38144329896907214,
+   "info": "listener",
+   "dur": 4.75
+  },
+  {
+   "ep": "marry",
+   "type": "face_covered_by_overlay",
+   "key": "1|1480|#D9443F",
+   "start": 52,
+   "end": 54.75,
+   "n": 12,
+   "sev": "minor",
+   "max": 0.3917525773195876,
+   "info": "listener",
+   "dur": 3
+  },
+  {
+   "ep": "marry",
+   "type": "face_covered_by_bubble",
+   "key": "1|1480|#D9443F",
+   "start": 104.25,
+   "end": 104.5,
+   "n": 2,
+   "sev": "minor",
+   "max": 0.32989690721649484,
+   "info": "listener",
+   "dur": 0.5
+  }
+ ]
+}

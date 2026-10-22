@@ -1,0 +1,182 @@
+{
+ "summary": {
+  "ep": "airport",
+  "style": "v2",
+  "layout": "v2",
+  "samples": 576,
+  "issues": 14,
+  "critical": 0,
+  "major": 4,
+  "minor": 10
+ },
+ "issues": [
+  {
+   "ep": "airport",
+   "type": "crop_feet_ankles",
+   "key": "21|1300|#7FB0D8",
+   "start": 65.5,
+   "end": 66.5,
+   "n": 4,
+   "sev": "major",
+   "max": 65.4586181640625,
+   "info": "",
+   "dur": 1.25
+  },
+  {
+   "ep": "airport",
+   "type": "face_covered_by_bubble",
+   "key": "30|1760|#1F3A6B",
+   "start": 110.25,
+   "end": 111,
+   "n": 4,
+   "sev": "major",
+   "max": 0.8144329896907216,
+   "info": "listener",
+   "dur": 1
+  },
+  {
+   "ep": "airport",
+   "type": "crop_feet_ankles",
+   "key": "21|1300|#7FB0D8",
+   "start": 32,
+   "end": 32.25,
+   "n": 2,
+   "sev": "major",
+   "max": 61.580322265625,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "airport",
+   "type": "crop_feet_ankles",
+   "key": "8|1660|#1F3A6B",
+   "start": 50.75,
+   "end": 51,
+   "n": 2,
+   "sev": "major",
+   "max": 115.0999755859375,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "airport",
+   "type": "bubble_too_long",
+   "key": "c2_her",
+   "start": 100.75,
+   "end": 110.75,
+   "n": 41,
+   "sev": "minor",
+   "max": 9,
+   "info": "",
+   "dur": 10.25
+  },
+  {
+   "ep": "airport",
+   "type": "face_under_platform_ui",
+   "key": "1|1480|#F28C82",
+   "start": 13.75,
+   "end": 15.5,
+   "n": 8,
+   "sev": "minor",
+   "max": 0,
+   "info": "",
+   "dur": 2
+  },
+  {
+   "ep": "airport",
+   "type": "crop_knees",
+   "key": "10|1580|#1F3A6B",
+   "start": 85.5,
+   "end": 86.25,
+   "n": 4,
+   "sev": "minor",
+   "max": 68.61333255767818,
+   "info": "",
+   "dur": 1
+  },
+  {
+   "ep": "airport",
+   "type": "crop_knees",
+   "key": "1|1480|#F28C82",
+   "start": 85.5,
+   "end": 86,
+   "n": 3,
+   "sev": "minor",
+   "max": 16.558277320861862,
+   "info": "",
+   "dur": 0.75
+  },
+  {
+   "ep": "airport",
+   "type": "face_covered_by_card",
+   "key": "30|1760|#1F3A6B",
+   "start": 133,
+   "end": 133.5,
+   "n": 3,
+   "sev": "minor",
+   "max": 0.422680412371134,
+   "info": "listener",
+   "dur": 0.75
+  },
+  {
+   "ep": "airport",
+   "type": "crop_knees",
+   "key": "13|1640|#1F3A6B",
+   "start": 24.75,
+   "end": 25,
+   "n": 2,
+   "sev": "minor",
+   "max": 4.207124137878509,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "airport",
+   "type": "crop_knees",
+   "key": "1|1480|#F28C82",
+   "start": 24.75,
+   "end": 25,
+   "n": 2,
+   "sev": "minor",
+   "max": 39.919124412536576,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "airport",
+   "type": "crop_knees",
+   "key": "14|1540|#1F3A6B",
+   "start": 31.5,
+   "end": 31.75,
+   "n": 2,
+   "sev": "minor",
+   "max": 44.47566242218022,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "airport",
+   "type": "crop_knees",
+   "key": "1|1480|#F28C82",
+   "start": 31.5,
+   "end": 31.75,
+   "n": 2,
+   "sev": "minor",
+   "max": 58.47493019104013,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "airport",
+   "type": "crop_knees",
+   "key": "10|1580|#1F3A6B",
+   "start": 87,
+   "end": 87.25,
+   "n": 2,
+   "sev": "minor",
+   "max": 76.76533203124995,
+   "info": "",
+   "dur": 0.5
+  }
+ ]
+}

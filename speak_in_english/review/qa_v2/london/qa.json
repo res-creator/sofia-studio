@@ -1,0 +1,158 @@
+{
+ "summary": {
+  "ep": "london",
+  "style": "v2",
+  "layout": "v2",
+  "samples": 578,
+  "issues": 12,
+  "critical": 0,
+  "major": 4,
+  "minor": 8
+ },
+ "issues": [
+  {
+   "ep": "london",
+   "type": "crop_feet_ankles",
+   "key": "1|1480|#F7B6CF",
+   "start": 129.75,
+   "end": 130.5,
+   "n": 4,
+   "sev": "major",
+   "max": 86.406005859375,
+   "info": "",
+   "dur": 1
+  },
+  {
+   "ep": "london",
+   "type": "crop_feet_ankles",
+   "key": "11|1020|#3C8FE0",
+   "start": 129.75,
+   "end": 130.25,
+   "n": 3,
+   "sev": "major",
+   "max": 61.7021484375,
+   "info": "",
+   "dur": 0.75
+  },
+  {
+   "ep": "london",
+   "type": "face_covered_by_bubble",
+   "key": "11|1020|#3C8FE0",
+   "start": 122,
+   "end": 122.25,
+   "n": 2,
+   "sev": "major",
+   "max": 0.6907216494845361,
+   "info": "listener",
+   "dur": 0.5
+  },
+  {
+   "ep": "london",
+   "type": "bubble_covered",
+   "key": "c2_x",
+   "start": 126.5,
+   "end": 126.75,
+   "n": 2,
+   "sev": "major",
+   "max": 0.16666666666666666,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "london",
+   "type": "bubble_too_long",
+   "key": "c2_her",
+   "start": 112.25,
+   "end": 122,
+   "n": 40,
+   "sev": "minor",
+   "max": 9,
+   "info": "",
+   "dur": 10
+  },
+  {
+   "ep": "london",
+   "type": "face_covered_by_overlay",
+   "key": "11|1020|#3C8FE0",
+   "start": 129.75,
+   "end": 134.75,
+   "n": 21,
+   "sev": "minor",
+   "max": 0.4639175257731959,
+   "info": "listener",
+   "dur": 5.25
+  },
+  {
+   "ep": "london",
+   "type": "crop_knees",
+   "key": "11|1020|#3C8FE0",
+   "start": 124,
+   "end": 126.25,
+   "n": 10,
+   "sev": "minor",
+   "max": 64.091674232483,
+   "info": "",
+   "dur": 2.5
+  },
+  {
+   "ep": "london",
+   "type": "crop_knees",
+   "key": "1|1480|#F7B6CF",
+   "start": 30.5,
+   "end": 32,
+   "n": 7,
+   "sev": "minor",
+   "max": 32.18388614654532,
+   "info": "",
+   "dur": 1.75
+  },
+  {
+   "ep": "london",
+   "type": "crop_knees",
+   "key": "1|1480|#F7B6CF",
+   "start": 39.75,
+   "end": 40.5,
+   "n": 4,
+   "sev": "minor",
+   "max": 5.720393943786576,
+   "info": "",
+   "dur": 1
+  },
+  {
+   "ep": "london",
+   "type": "crop_knees",
+   "key": "42|1700|#2F3E5C",
+   "start": 65.75,
+   "end": 66.25,
+   "n": 3,
+   "sev": "minor",
+   "max": 74.32383251190186,
+   "info": "",
+   "dur": 0.75
+  },
+  {
+   "ep": "london",
+   "type": "crop_knees",
+   "key": "42|1700|#2F3E5C",
+   "start": 68.75,
+   "end": 69.25,
+   "n": 3,
+   "sev": "minor",
+   "max": 74.00362300872803,
+   "info": "",
+   "dur": 0.75
+  },
+  {
+   "ep": "london",
+   "type": "crop_knees",
+   "key": "11|1020|#3C8FE0",
+   "start": 122.25,
+   "end": 122.5,
+   "n": 2,
+   "sev": "minor",
+   "max": -43.404175376892,
+   "info": "",
+   "dur": 0.5
+  }
+ ]
+}
