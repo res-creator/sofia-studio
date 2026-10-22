@@ -1,0 +1,135 @@
+1
+00:00:00,100 --> 00:00:01,157
+This $5 coffee
+
+2
+00:00:01,157 --> 00:00:03,226
+could end up costing $40.
+
+3
+00:00:03,226 --> 00:00:04,925
+Not because of the café.
+
+4
+00:00:04,925 --> 00:00:06,525
+Because of your bank.
+
+5
+00:00:06,525 --> 00:00:08,625
+Imagine you have $100.
+
+6
+00:00:08,625 --> 00:00:10,111
+You buy coffee for $5,
+
+7
+00:00:10,111 --> 00:00:11,377
+lunch for $12,
+
+8
+00:00:11,377 --> 00:00:12,956
+gas for $28,
+
+9
+00:00:12,956 --> 00:00:15,094
+and groceries for $90.
+
+10
+00:00:15,094 --> 00:00:16,476
+That’s $35 more
+
+11
+00:00:16,476 --> 00:00:18,080
+than you have.
+
+12
+00:00:18,080 --> 00:00:20,123
+Process those purchases in order,
+
+13
+00:00:20,123 --> 00:00:23,253
+and only the last one causes an overdraft.
+
+14
+00:00:23,253 --> 00:00:24,368
+But Wells Fargo used
+
+15
+00:00:24,368 --> 00:00:26,579
+to do something different.
+
+16
+00:00:26,579 --> 00:00:29,476
+It processed the biggest purchases first.
+
+17
+00:00:29,476 --> 00:00:31,361
+Groceries: $90.
+
+18
+00:00:31,361 --> 00:00:32,443
+$10 left.
+
+19
+00:00:32,443 --> 00:00:33,893
+Gas? Overdraft.
+
+20
+00:00:33,893 --> 00:00:35,583
+Lunch? Another.
+
+21
+00:00:35,583 --> 00:00:37,150
+And that $5 coffee?
+
+22
+00:00:37,150 --> 00:00:38,193
+One more.
+
+23
+00:00:38,193 --> 00:00:40,622
+But THREE overdraft fees instead of one.
+
+24
+00:00:40,622 --> 00:00:42,189
+At $35 per fee,
+
+25
+00:00:42,189 --> 00:00:45,148
+that’s $105 in charges.
+
+26
+00:00:45,148 --> 00:00:47,356
+$5 becomes $40.
+
+27
+00:00:47,356 --> 00:00:48,761
+One customer in the case:
+
+28
+00:00:48,761 --> 00:00:50,618
+$120 over…
+
+29
+00:00:50,618 --> 00:00:53,275
+$506 in fees.
+
+30
+00:00:53,275 --> 00:00:55,121
+After years of appeals,
+
+31
+00:00:55,121 --> 00:00:59,844
+a $203 million restitution award was upheld.
+
+32
+00:00:59,844 --> 00:01:02,323
+This was Wells Fargo’s old system.
+
+33
+00:01:02,323 --> 00:01:04,427
+The coffee was still $5.
+
+34
+00:01:04,427 --> 00:01:07,560
+The bank just made the order more expensive.

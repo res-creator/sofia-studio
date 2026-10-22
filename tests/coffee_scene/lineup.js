@@ -1,0 +1,10 @@
+const { createCanvas } = require('@napi-rs/canvas'); const fs = require('fs');
+const R = require('./rig'); const { C } = require('../mcd_collage/kit');
+const CUST = { skin: '#8D5A3B', hair: '#1E1612', hairStyle: 'curly', top: C.red, cuff: '#B82533', shirt: '#FFFDF8', zip: 1, pants: '#2E3A59', shoes: '#FFFDF8', sole: '#C9C1B1' };
+const BAR = { skin: '#F1C6A4', hair: '#B5482A', hairStyle: 'bun', top: '#2B2B2B', apron: C.yellow, pants: '#3A3A3A', shoes: '#5A3A22', iris: '#3D6E8C' };
+const cv = createCanvas(1600, 900), ctx = cv.getContext('2d'); ctx.fillStyle = '#F3E6CF'; ctx.fillRect(0, 0, 1600, 900);
+R.figure(ctx, 200, 820, 1.2, 1, CUST, { face: { mouth: 'talk', talk: 0.7, brow: 0.5 }, armN: { hand: [120, -380], grip: 'point', elbowUp: 0 } });
+R.figure(ctx, 600, 820, 1.2, 1, CUST, { lean: 0.1, face: { mouth: 'grin', happy: 1 }, armN: { hand: [150, -400], grip: 'pinch', itemOver: c => { c.save(); c.translate(36, -14); c.rotate(0.3); R.card(c, 0.8); c.restore(); } }, farFront: 1, armF: { hand: [80, -330], grip: 'hold', item: c => { c.save(); c.translate(0, 45); R.cup(c, 0.8); c.restore(); } } });
+const w = R.walk(1.2); R.figure(ctx, 1000, 820, 1.2, -1, CUST, { ...w, face: { mouth: 'smile', look: [1, 0] } });
+R.figure(ctx, 1350, 820, 1.2, -1, BAR, { lean: 0.2, face: { mouth: 'smile', brow: 0.3 }, armN: { hand: [180, -380], grip: 'open' } });
+fs.writeFileSync(process.argv[2], cv.toBuffer('image/png'));

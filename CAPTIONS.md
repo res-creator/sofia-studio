@@ -35,3 +35,7 @@ Refund approved… and KEEP the item? 📦 It's not a glitch — for some cheap 
 ## 9. Your Tip Wasn't Extra (DoorDash, episode 8)
 You tipped $9… and your driver still made $10? 🛵 Under DoorDash's old pay system (2017–2019), your tip could replace money DoorDash would've paid. The $10 is an example — DoorDash changed the system in 2019.
 #doordash #tipping #gigeconomy #money #didyouknow
+
+## 10. The $5 Coffee That Cost $40 (Wells Fargo, episode 10)
+Same $5 coffee. Same day. So how could it end up costing $40? ☕ Under Wells Fargo's old system in California (2000s), card purchases were processed biggest first — so one overdraft could turn into three fees. The $35 fee is an illustrative example. Did you know banks could pick the order?
+#overdraft #banking #wellsfargo #personalfinance #money #didyouknow
