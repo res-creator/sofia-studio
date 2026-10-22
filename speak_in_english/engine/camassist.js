@@ -52,27 +52,43 @@ function cost(S, f, dx, dy) {
   }
   return c;
 }
-function solve(S) {
+function solve(S, hard) {
   const base = cost(S, 1, 0, 0); if (base < 25) return { f: 1, dx: 0, dy: 0, base, best: base };
   let best = { f: 1, dx: 0, dy: 0, c: base };
   const dxs = [-160, -120, -80, -40, 0, 40, 80, 120, 160];
-  const zooms = S.ui.some(u => u.kind === 'card' && u.k > 0.02) ? [1, 0.96, 0.92] : [1];   // zoom out only to make room for a lesson card, never in plain dialogue
+  const zooms = !hard && S.ui.some(u => u.kind === 'card' && u.k > 0.02) ? [1, 0.96, 0.92] : [1];   // hard_cut: no automatic zoom-out at all   // zoom out only to make room for a lesson card, never in plain dialogue
   for (const f of zooms) for (const dx of dxs) for (let dy = -360; dy <= 360; dy += 8) { const c = cost(S, f, dx, dy); if (c < best.c - 0.01) best = { f, dx, dy, c }; }
   return best.c < base - 20 ? { ...best, base, best: best.c } : { f: 1, dx: 0, dy: 0, base, best: base };
 }
 
+// hard_cut: one fixed correction per shot (a shot = frames between camera cuts), chosen so the whole shot works:
+// candidates are each sampled moment's own best fix plus "no fix"; the one with the lowest total cost over the shot wins.
+// Nothing moves inside a shot, so the composition is decided once, like a cameraman framing a static shot.
+function shotConstant(samples, sol, cut) {
+  const n = cut.length, corr = new Array(n); let a = 0;
+  for (let i = 1; i <= n; i++) { if (i < n && !cut[i]) continue;
+    const ss = samples.filter(S => S.t * FPS >= a - 0.01 && S.t * FPS < i), cand = [{ f: 1, dx: 0, dy: 0 }];
+    for (const S of ss) { const j = samples.indexOf(S), s = sol[j]; if (s && (s.dx || s.dy || s.f !== 1)) cand.push(s); }
+    let best = cand[0], bc = Infinity;
+    for (const c of cand) { let tot = 0; for (const S of ss) tot += cost(S, c.f, c.dx, c.dy); if (tot < bc - 0.01) { bc = tot; best = c; } }
+    for (let f = a; f < i; f++) corr[f] = { f: best.f, dx: best.dx, dy: best.dy }; a = i; }
+  return corr;
+}
 module.exports = function assist(EPN, TL, CAM, RF, Hq) {
+  const hard = (process.env.CAMERA || (TL.cfg && TL.cfg.camera) || 'smooth') === 'hard_cut';
   const files = [`eps/${EPN}/timeline.json`, `${EPN}.js`, 'hq.js', 'ui_v2.js', 'ep_kit.js', 'camassist.js', 'cast_v2.js', 'episodes_v2.py'];
-  const hash = crypto.createHash('md5'); for (const f of files) if (fs.existsSync(f)) hash.update(fs.readFileSync(f)); hash.update(Hq.STYLE + '|' + Hq.LAYOUT);
+  const hash = crypto.createHash('md5'); for (const f of files) if (fs.existsSync(f)) hash.update(fs.readFileSync(f)); hash.update(Hq.STYLE + '|' + Hq.LAYOUT + (hard ? '|hard_cut' : ''));
   const key = hash.digest('hex'), cacheF = `eps/${EPN}/camassist.json`;
   let corr = null;
   if (fs.existsSync(cacheF)) { try { const c = JSON.parse(fs.readFileSync(cacheF, 'utf8')); if (c.key === key && c.n === CAM.length) corr = c.corr; } catch (e) {} }
   if (!corr) {
     const samples = collect(TL, RF, Hq);
     const sceneAt = t => TL.scenes.find(s => t >= s.s && t < s.e);
-    const sol = samples.map(S => { const sc = sceneAt(S.t); return (!sc || sc.id === 'hook' || sc.id === 'outro') ? { f: 1, dx: 0, dy: 0 } : solve(S); });
+    const sol = samples.map(S => { const sc = sceneAt(S.t); return (!sc || sc.id === 'hook' || sc.id === 'outro') ? { f: 1, dx: 0, dy: 0 } : solve(S, hard); });
     // camera cuts split the timeline into shots; corrections never smear across a cut
     const cut = CAM.map((c, i) => i > 0 && (Math.abs(c.x - CAM[i - 1].x) * c.z + Math.abs(c.y - CAM[i - 1].y) * c.z + Math.abs(c.z - CAM[i - 1].z) * 1000 > 60));
+    if (hard) corr = shotConstant(samples, sol, cut);
+    else {
     // per-frame targets: anticipate a needed correction and hold it a little after the need ends (strongest need in [t-0.6, t+0.4]),
     // so the camera never drifts back while a card or bubble is still fading out
     const n = CAM.length, tgt = [];
@@ -83,6 +99,7 @@ module.exports = function assist(EPN, TL, CAM, RF, Hq) {
     corr = tgt.map(s => ({ f: s.f, dx: s.dx, dy: s.dy })); const a = 1 - Math.exp(-1 / (FPS * 0.2));
     for (const k of ['f', 'dx', 'dy']) { for (let i = 1; i < n; i++) if (!cut[i]) corr[i][k] += (corr[i - 1][k] - corr[i][k]) * (1 - a);
       for (let i = n - 2; i >= 0; i--) if (!cut[i + 1]) corr[i][k] += (corr[i + 1][k] - corr[i][k]) * (1 - a); }
+    }
     corr = corr.map(c => ({ f: +c.f.toFixed(4), dx: +c.dx.toFixed(1), dy: +c.dy.toFixed(1) }));
     try { fs.writeFileSync(cacheF + '.tmp' + process.pid, JSON.stringify({ key, n: CAM.length, corr })); fs.renameSync(cacheF + '.tmp' + process.pid, cacheF); } catch (e) {}
   }

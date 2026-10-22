@@ -1346,6 +1346,12 @@ EP["wrongchat"] = dict(
     title='Отправила боссу, что он идиот',
     hook_title=[['НАПИСАЛА «БОСС — ИДИОТ»', 'd'], ['САМОМУ БОССУ', 'p'], ['КАК ВЫКРУТИТЬСЯ?', 'd']],
     stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut",   # camera rule for new episodes: hard cuts, still shots, card shots (see CAMERA.md)
+    chunks={'c2_her': [
+        ['Mr Grant, what occurred was a regrettable digital misunderstanding:', 'Мистер Грант, произошло досадное цифровое недоразумение:'],
+        ['a private remark, inadvertently misdirected, subsequently misinterpreted,', 'личная фраза, случайно отправленная не туда и неверно понятая,'],
+        ['and never intended to undermine our otherwise impeccable professional relationship.', 'и вовсе не призванная подорвать наши в остальном безупречные рабочие отношения.'],
+        ['I sincerely apologise for the misunderstanding.', 'Приношу искренние извинения за недоразумение.']]},
     lines=[
         ('hook', 'nar', 'Написала боссу, что он идиот. Случайно. Как объясниться по-английски? Проверим!', ''),
         ('a1_her', 'her', 'No, no! Not for you!', 'Нет-нет! Не тебе!'),

@@ -4,7 +4,7 @@ const Hq = require('./hq'); const { CAST: BASE } = require('./cast_v2'); const m
 const { geom, reach } = require('./pose');
 const { clamp, lerp, P, eOut, eIn, eIO, eBack, hash, mix, paint, rr, createCanvas } = Hq;
 const TL = JSON.parse(fs.readFileSync('eps/wrongchat/timeline.json', 'utf8'));
-const UI = makeUI(TL); const { SC, SP, sceneAt, C } = UI; const K = require('./ep_kit')(TL, UI); K.stripTags(); SP.c2_her.fs = 40;
+const UI = makeUI(TL); const { SC, SP, sceneAt, C } = UI; const K = require('./ep_kit')(TL, UI); K.stripTags(); if (E.cameraMode(TL) !== 'hard_cut') SP.c2_her.fs = 40;   // smooth camera: one long C2 bubble, smaller text
 const { talk, speaking, endOf, EV, put } = K;
 const W = 1080, HH = 1920, FPS = 30, NF = Math.ceil(TL.dur * FPS), TAU = Math.PI * 2, ev = k => EV(k);
 
@@ -169,7 +169,7 @@ function world(c, t, L) {
 }
 
 // ---------------- camera
-function shotFor(t) { const sc = sceneAt(t), L = sc.id, two = { x: 40, y: -1000, z: 0.72, r: 0 }; if (L === 'outro') return two;
+function shotSmooth(t) { const sc = sceneAt(t), L = sc.id, two = { x: 40, y: -1000, z: 0.72, r: 0 }; if (L === 'outro') return two;
   if (L === 'hook') { if (t < 2.45) return { x: HERX + 60, y: herHY + 140, z: 1.6, r: 0, cut: true }; return { x: 60, y: -1180, z: 0.76, r: 0, cut: t < 2.5 }; }
   const u = t - sc.s; if (u < 1.15) return { ...two, z: 0.7, cut: u < 0.85 };
   const l = L.toLowerCase(), nar = SP[l + '_nar'], herC = { x: HERX + 230, y: herHY + 230, z: 1.0, r: 0.3 }, grC = { x: GX - 230, y: gHY + 220, z: 0.98, r: -0.3 };
@@ -180,6 +180,31 @@ function shotFor(t) { const sc = sceneAt(t), L = sc.id, two = { x: 40, y: -1000,
   const cur = TL.speech.find(s => s.id.startsWith(l + '_') && s.who !== 'nar' && s.who !== 'tip' && t >= s.t - 0.3 && t < s.t + s.d + 0.2);
   if (cur) return cur.who === 'her' ? herC : grC;
   return two; }
+// hard_cut shot list: every shot is still; the cut happens when a line starts, a reaction matters, an object appears or a card needs room.
+// WIDE = both full-length (space, physical gags); CARD = medium two-shot with both faces under the lesson card (y > ~840);
+// HER / GRANT = singles for their own lines (face low enough for the bubble above); *_R = reaction singles; GDESK_S = Grant + his desk.
+const SH = { WIDE: { x: 40, y: -1000, z: 0.72, r: 0 }, CARD: { x: 40, y: -1475, z: 0.68, r: 0 },
+  HER: { x: HERX + 130, y: herHY + 230, z: 1.0, r: 0 }, GRANT: { x: GX - 130, y: gHY + 230, z: 0.98, r: 0 },
+  HER_R: { x: HERX + 60, y: herHY - 160, z: 1.05, r: 0 }, GRANT_R: { x: GX - 60, y: gHY - 150, z: 1.0, r: 0 },
+  GDESK_S: { x: 560, y: -1430, z: 0.7, r: 0 }, DRONE: { x: -200, y: -1250, z: 0.66, r: 0 }, FREEZE: { x: 40, y: -1560, z: 0.84, r: 0 } };
+function shotHard(t) { const sc = sceneAt(t), L = sc.id; if (L === 'outro') return SH.WIDE;
+  if (L === 'hook') return t < 2.45 ? { x: HERX + 60, y: herHY + 140, z: 1.6, r: 0 } : { x: 60, y: -1180, z: 0.76, r: 0, force: true };
+  const u = t - sc.s; if (u < 1.15) return { ...SH.WIDE, force: true };
+  const l = L.toLowerCase(), nar = SP[l + '_nar'], f = s => ({ ...s, force: true });
+  if (nar && t >= nar.t - 0.1) return f(SH.CARD);                                          // lesson card: faces under it
+  if (L === 'B2' && t > ev('drone') - 0.4 && t < SP.b2_her2.t - 0.1) return f(SH.DRONE);   // the drone gag needs the window and her desk
+  if (L === 'C1' && t > ev('hide') - 0.45 && t < ev('hide') + 0.7) return f(SH.HER_R);     // she hides the phone
+  if (L === 'C2') { const s0 = ev('sip'), fo = ev('folder');
+    if (speaking('c2_her', t, 0.1, 0.25)) { if (t > s0 - 0.2 && t < s0 + 2.0) return f(SH.GRANT_R); if (t > fo - 0.3 && t < fo + 1.8) return f(SH.GDESK_S); if (t > fo + 1.8) return f(SH.CARD); return f(SH.HER_R); }
+    if (t > ev('freeze')) return f(SH.FREEZE);
+    if (t > endOf('c2_her') && t < SP.c2_x.t - 0.1) return f(SH.CARD); }                 // the silence: both of them, still
+  const cur = TL.speech.find(s => s.id.startsWith(l + '_') && s.who !== 'nar' && s.who !== 'tip' && t >= s.t - 0.1 && t < s.t + s.d + 0.25);
+  if (cur) return f(cur.who === 'her' ? SH.HER : SH.GRANT);
+  const next = TL.speech.find(s => s.id.startsWith(l + '_') && s.who !== 'nar' && s.who !== 'tip' && t >= s.t - 0.6 && t < s.t);   // a gap too short for a wide shot: cut to the next speaker a beat early
+  const prevEnd = Math.max(0, ...TL.speech.filter(s => s.id.startsWith(l + '_') && s.t + s.d <= t).map(s => s.t + s.d));
+  if (next && t - prevEnd < 0.6) return f(next.who === 'her' ? SH.HER : SH.GRANT);
+  return SH.WIDE; }
+const shotFor = E.cameraMode(TL) === 'hard_cut' ? shotHard : shotSmooth;
 const CAM = E.simulateCamera(TL, shotFor, { k: 150, c: 20 });
 const shake = E.makeShake(TL, ['impact', 'stamp', 'impact_soft', 'thud']);
 function drawWorld(c, t, L, cam, sh = { x: 0, y: 0, r: 0 }, tw = t) { c.save(); c.translate(540 + sh.x, 960 + sh.y); c.rotate(cam.r * Math.PI / 180 + sh.r); c.scale(cam.z, cam.z); c.translate(-cam.x, -cam.y); const heads = world(c, tw, L); const M = c.getTransform(); c.restore(); return { heads, M }; }
@@ -191,7 +216,9 @@ function hookScreen(t) { const sent = t > 0.45; return (c, w, h) => chat(c, w, h
   msgs: [...GRANT_CHAT, ...(sent ? [{ me: true, text: 'My boss is an absolute idiot.', k: eOut(P(t, 0.42, 0.52)), status: t > 1.4 ? 'Read 11:02' : 'Delivered', statusCol: t > 1.4 ? '#3C8FE0' : null }] : [])] }); }
 function overlays(c, t, L) {
   if (L === 'A1') { const s = ev('shot'), k = win(t, s - 0.15, SP.a1_nar.t - 0.05, 0.2); insert(c, k, (cc, w, h) => chat(cc, w, h, { title: 'Marketing', sub: 'your team', av: '#2E8C86', msgs: [{ me: false, text: 'My boss is an absolute idiot.' }], flash: 1 - P(t, s, s + 0.4), toast: t > s + 0.1 ? 'Screenshot saved' : null })); }
-  if (L === 'A2') { const a = ev('chart'), k = win(t, a - 0.1, SP.a2_nar.t + 2.2); orgChart(c, k); }
+  if (L === 'A2') { const a = ev('chart'), hard = E.cameraMode(TL) === 'hard_cut', k = win(t, a - 0.1, hard ? SP.a2_nar.t - 0.1 : SP.a2_nar.t + 2.2);
+    if (hard && k > 0) { c.fillStyle = `rgba(28,24,40,${0.5 * clamp(k)})`; c.fillRect(0, 0, W, HH); }   // hard_cut: the chart is its own object shot, gone before the card shot
+    orgChart(c, k); }
   if (L === 'B1') { const s = ev('scroll'), k = win(t, s - 0.05, SP.b1_nar.t - 0.1); const sc = eIO(P(t, s + 0.3, s + 1.9)) * 1000;
     insert(c, k, (cc, w, h) => chat(cc, w, h, { title: 'Lucy', sub: 'best friend', av: '#F2C14E', scroll: sc, msgs: [...IDIOT_MSGS, ...IDIOT_MSGS.slice(0, 6)].map((m, i) => ({ me: i % 3 !== 2, text: i % 3 === 2 ? 'lol' : m, hi: true })) }));
     banner(c, k * eBack(P(t, ev('idiots'), ev('idiots') + 0.25), 2.2), 'IDIOT ×47', '#E0474C', 'слово «идиот» — 47 раз', 1515, false); }
@@ -236,7 +263,7 @@ function renderFrame(c, t) {
   if (sc.id === 'A1') K.pop(c, t, 'ХЕ-ХЕ…', SP.a1_nar.t - 0.05, SP.a1_nar.t + 1.6, 300, 1180, C.white, -0.08, 64);
   if (sc.id === 'B2') K.pop(c, t, 'БА-ДУМ-ТСС!', endOf('b2_x2') + 0.1, SP.b2_nar.t + 0.4, 540, 1250);
   if (sc.id === 'B1') K.pop(c, t, 'БА-ДУМ-ТСС!', endOf('b1_x2') + 0.1, SP.b1_nar.t + 0.4, 540, 1250);
-  if (sc.id === 'C2') { K.dots(c, t, endOf('c2_her') + 0.3, SP.c2_x.t - 0.1); if (t > SP.c2_her.t + 2 && t < endOf('c2_her')) K.pop(c, t, '+ 30 ЛЕТ', ev('folder') - 2.5, endOf('c2_her') - 0.3, 760, 1370, C.white, 0.06, 54); }
+  if (sc.id === 'C2') { K.dots(c, t, endOf('c2_her') + 0.3, SP.c2_x.t - 0.1); if (t > SP.c2_her.t + 2 && t < endOf('c2_her')) K.pop(c, t, '+ 30 ЛЕТ', E.cameraMode(TL) === 'hard_cut' ? ev('folder') + 1.8 : ev('folder') - 2.5, endOf('c2_her') - 0.3, E.cameraMode(TL) === 'hard_cut' ? 700 : 760, E.cameraMode(TL) === 'hard_cut' ? 1545 : 1370, C.white, 0.06, 54); }
   K.hud(c, t, sc);
 }
 E.run('wrongchat', NF, renderFrame);

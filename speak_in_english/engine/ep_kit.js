@@ -28,9 +28,21 @@ module.exports = function makeKit(TL, UI) {
     const l = sc.id.toLowerCase(), hero = o.heroine || 'her';
     const lineIds = TL.speech.filter(x => x.id.startsWith(l + '_') && x.who !== 'nar' && x.who !== 'tip');
     const holdFor = sp => { if (o.hold && o.hold[sp.id] !== undefined) return o.hold[sp.id]; const i = lineIds.indexOf(sp); const nx = lineIds[i + 1]; return nx ? Math.max(0.05, Math.min(0.9, nx.t - (sp.t + sp.d) - 0.25)) : 0.9; };
+    const hard = (process.env.CAMERA || TL.cfg.camera) === 'hard_cut';
     for (const sp of lineIds) { const hd = heads[sp.who]; if (!hd) continue;
-      if (sp.who === hero) UI.bubble(c, { ...sp, hold: holdFor(sp) }, t, proj({ x: hd.x - 30, y: hd.y - hd.hh * 1.25 }), 'left');
-      else UI.bubble(c, { ...sp, hold: holdFor(sp) }, t, proj({ x: hd.x + 30, y: hd.y - hd.hh * 1.25 }), 'right', (o.names || {})[sp.who]); }
+      const left = sp.who === hero; let an = proj({ x: hd.x + (left ? -30 : 30), y: hd.y - hd.hh * 1.25 });
+      if (hard && (an.x < 0 || an.x > W)) an = { x: an.x < 0 ? 40 : W - 40, y: 0 };   // hard_cut: speaker off screen (reaction shot) -> bubble at the top, tail to the edge
+      for (const part of chunks(sp, holdFor(sp))) UI.bubble(c, part, t, an, left ? 'left' : 'right', left ? undefined : (o.names || {})[sp.who]); }
+  }
+  // long lines shown as consecutive meaning chunks: cfg.chunks = { line_id: [[en, ru], ...] } (en parts joined = the full line).
+  // Each chunk gets its own bubble timed by the line's word timings; lines without chunks are returned unchanged.
+  function chunks(sp, hold) {
+    const ch = (TL.cfg.chunks || {})[sp.id]; if (!ch) return [{ ...sp, hold }];
+    const W8 = sp.words || [], cnt = ch.map(([en]) => en.trim().split(/\s+/).length), tot = cnt.reduce((a, b) => a + b, 0), chars = ch.map(([en]) => en.length), ctot = chars.reduce((a, b) => a + b, 0);
+    let wi = 0, ci = 0; return ch.map(([en, ru], i) => {
+      const a = W8.length === tot ? W8[wi][1] : sp.d * ci / ctot; wi += cnt[i]; ci += chars[i];
+      const b = i === ch.length - 1 ? sp.d : (W8.length === tot ? W8[wi][1] : sp.d * ci / ctot);
+      return { ...sp, text: en, ru, t: sp.t + a, d: Math.max(0.3, b - a), hold: i === ch.length - 1 ? hold : -0.18 }; });
   }
   // big pop-in caption (БА-ДУМ-ТСС!, +£15 ...)
   function pop(c, t, txt, t0, t1, x, y, col = C.gold, rot = -0.08, sz = 84) { const k = eBack(P(t, t0, t0 + 0.25), 2.4) * (1 - P(t, t1, t1 + 0.3)); if (k > 0) { c.save(); c.translate(x, y); c.rotate(rot); c.scale(k, k); UI.font(c, 'Unb9', sz); c.textAlign = 'center'; c.textBaseline = 'middle'; UI.strokeText(c, txt, 0, 0, col, C.oliveD, 16); c.restore(); } }

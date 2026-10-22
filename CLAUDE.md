@@ -2,6 +2,8 @@
 
 > **English TikTok channel (money/business stories):** read `CHANNEL.md` first — it has the rules, pipeline, voice and checklist for those episodes. The notes below are for the Sofia kids' channel.
 
+> **Speak in English channel** (`speak_in_english/`): read `speak_in_english/ГАЙД_как_делать_серии.md`, then `speak_in_english/CAMERA.md` — new episodes use the `hard_cut` camera.
+
 Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). This file adds what happened after Episode 1.
 
 ## Hard rules (from the channel owner)

@@ -414,6 +414,8 @@ for sp in speech:
             t0 = cc / tot * sp["d"]; cc += a; wt.append([w, round(t0, 3), round(cc / tot * sp["d"], 3)]); cc += p_
     sp["words"] = wt
 cfg = {k: E.get(k) for k in ["title", "hook_title", "stamp", "next", "cards"]}
+for k in ["camera", "chunks"]:   # new episodes only: camera mode ("hard_cut") and long lines split into meaning chunks
+    if E.get(k): cfg[k] = E[k]
 cfg["setting"] = EPN
 json.dump(dict(fps=FPS, dur=round(t, 3), ep=EPN, cfg=cfg, scenes=scenes, speech=speech, sfx=sfx), open(f"eps/{EPN}/timeline.json", "w"), ensure_ascii=False)
 print(f"{EPN} duration {t:.1f}s")
