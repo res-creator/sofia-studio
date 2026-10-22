@@ -102,7 +102,10 @@ function lock(c, w, h, o) { const g = c.createLinearGradient(0, 0, 0, h); g.addC
 // the phone in screen space + darkened world behind it
 const PH = { x: 540, y: 1125, s: 1.2 }, ZM = 1.3;
 const zoom = fn => (c, w, h) => { c.save(); c.scale(ZM, ZM); fn(c, w / ZM, h / ZM); c.restore(); };
-function insert(c, k, screen) { if (k <= 0) return; c.fillStyle = `rgba(28,24,40,${0.5 * clamp(k)})`; c.fillRect(0, 0, W, HH); const s = PH.s * lerp(0.6, 1, k); c.save(); c.globalAlpha = clamp(k * 2); K.phone(c, PH.x, PH.y + (1 - k) * 260, s, zoom(screen)); c.restore(); }
+// hard_cut: an insert is its own object shot — a solid backdrop replaces the room (no half-hidden faces around the phone)
+function backdrop(c, k) { if (E.cameraMode(TL) === 'hard_cut') { c.save(); c.globalAlpha = clamp(k * 4); const g = c.createLinearGradient(0, 0, 0, HH); g.addColorStop(0, '#3B3550'); g.addColorStop(1, '#1F1B2C'); c.fillStyle = g; c.fillRect(0, 0, W, HH); c.restore(); }
+  else { c.fillStyle = `rgba(28,24,40,${0.5 * clamp(k)})`; c.fillRect(0, 0, W, HH); } }
+function insert(c, k, screen) { if (k <= 0) return; backdrop(c, k); const s = PH.s * lerp(0.6, 1, k); c.save(); c.globalAlpha = clamp(k * 2); K.phone(c, PH.x, PH.y + (1 - k) * 260, s, zoom(screen)); c.restore(); }
 // big status banner under the phone
 function banner(c, k, en, col, ru, y = 1515, check = true) { if (k <= 0) return; c.save(); c.translate(540, y); c.rotate(-0.025); c.scale(k, k); const hh = ru ? 132 : 112;
   c.fillStyle = 'rgba(0,0,0,.25)'; rr(c, -480 + 8, -hh / 2 + 10, 960, hh, 26); c.fill(); c.fillStyle = col; rr(c, -480, -hh / 2, 960, hh, 26); c.fill(); c.strokeStyle = C.white; c.lineWidth = 6; rr(c, -480, -hh / 2, 960, hh, 26); c.stroke();
@@ -144,11 +147,13 @@ function grantState(t, L) { const g = G.grant, st = { t, talk: talk('grant', t),
   return st; }
 
 // ---------------- world
-function world(c, t, L) {
+// solo = 'her' | 'grant': a clean single — the other character is not drawn (only his/her head position is kept for an off-screen bubble)
+const headOf = (who, x) => ({ x, y: FY + G[who].headY, hh: G[who].hh });
+function world(c, t, L, solo) {
   c.drawImage(BGB, BX0, BY0, BW, BH); const heads = {};
   clock(c, 700, -2420, t, L);
   // Grant + his desk
-  heads.grant = put(c, grantCfg(t, L), grantState(t, L), GX, FY);
+  heads.grant = solo === 'her' ? headOf('grant', GX) : put(c, grantCfg(t, L), grantState(t, L), GX, FY);
   deskShape(c, GDESK, '#7A4E30'); monitor(c, 790, GDESK.top, 1, '#BFE3F7'); c.fillStyle = '#2B2F3A'; rr(c, 590, GDESK.top - 54, 170, 34, 6); c.fill(); txt(c, 'MR GRANT', 675, GDESK.top - 37, 20, '#F2C14E');
   if (!(L === 'C2' && t > ev('sip') - 0.3 && t < ev('sip') + 2.2)) { c.save(); c.translate(620, GDESK.top); mugItem(c); c.restore(); }
   if (L === 'C2') binder(c, 650, GDESK.top, eBack(P(t, ev('folder') + 0.45, ev('folder') + 0.75), 1.4) * (t > ev('folder') + 0.45 ? 1 : 0));
@@ -157,7 +162,7 @@ function world(c, t, L) {
   const bookOn = (L === 'B2' && t > ev('drop') && t < ev('drop') + 0.3) || ['C1', 'C2'].includes(L);
   if (bookOn) book(c, -580, HDESK.top, 0.55, 0);
   if (L === 'C1' && t < ev('hide') - 0.3) { c.save(); c.translate(-560, HDESK.top - 6); c.fillStyle = '#2B2F3A'; rr(c, -60, -18, 120, 18, 6); c.fill(); if (t > ev('lucy')) { const gk = 0.5 + 0.5 * Math.sin(t * 14); c.fillStyle = `rgba(255,230,120,${0.45 * gk})`; c.beginPath(); c.ellipse(0, -16, 110, 40, 0, 0, TAU); c.fill(); } c.restore(); }
-  heads.her = put(c, HER, herState(t, L), HERX, FY);
+  heads.her = solo === 'grant' ? headOf('her', HERX) : put(c, HER, herState(t, L), HERX, FY);
   // pocket glow when the voice message leaves
   if (L === 'C2' && t > ev('sent') - 0.3 && t < ev('freeze')) { const gk = 0.5 + 0.5 * Math.sin(t * 16); c.save(); c.globalAlpha = 0.7 * gk; c.fillStyle = '#7CF2FF'; c.beginPath(); c.arc(HERX - G.her.sw * 0.35, FY + G.her.ySh + 170, 70, 0, TAU); c.fill(); c.restore(); }
   // drone (B2)
@@ -183,19 +188,26 @@ function shotSmooth(t) { const sc = sceneAt(t), L = sc.id, two = { x: 40, y: -10
 // hard_cut shot list: every shot is still; the cut happens when a line starts, a reaction matters, an object appears or a card needs room.
 // WIDE = both full-length (space, physical gags); CARD = medium two-shot with both faces under the lesson card (y > ~840);
 // HER / GRANT = singles for their own lines (face low enough for the bubble above); *_R = reaction singles; GDESK_S = Grant + his desk.
-const SH = { WIDE: { x: 40, y: -1000, z: 0.72, r: 0 }, CARD: { x: 40, y: -1475, z: 0.68, r: 0 },
-  HER: { x: HERX + 130, y: herHY + 230, z: 1.0, r: 0 }, GRANT: { x: GX - 130, y: gHY + 230, z: 0.98, r: 0 },
-  HER_R: { x: HERX + 60, y: herHY - 160, z: 1.05, r: 0 }, GRANT_R: { x: GX - 60, y: gHY - 150, z: 1.0, r: 0 },
-  GDESK_S: { x: 560, y: -1430, z: 0.7, r: 0 }, DRONE: { x: -200, y: -1250, z: 0.66, r: 0 }, FREEZE: { x: 40, y: -1560, z: 0.84, r: 0 } };
+// Singles are clean (tag = who is drawn): the face sits at y ~900 so a two-line bubble fits above it with a gap.
+const SH = { WIDE: { x: 40, y: -1000, z: 0.72, r: 0 }, CARD: { x: 40, y: -1555, z: 0.66, r: 0 },
+  HER: { x: HERX + 120, y: herHY + 60, z: 1.0, r: 0, tag: 'her' }, GRANT: { x: GX - 120, y: gHY + 60, z: 0.98, r: 0, tag: 'grant' },
+  HER_R: { x: HERX + 60, y: herHY - 160, z: 1.05, r: 0, tag: 'her' }, GRANT_R: { x: GX - 60, y: gHY - 150, z: 1.0, r: 0, tag: 'grant' },
+  GDESK_S: { x: 560, y: -1430, z: 0.7, r: 0, tag: 'grant' }, DRONE: { x: -200, y: -1250, z: 0.66, r: 0 }, FREEZE: { x: 40, y: -1560, z: 0.84, r: 0 } };
+// start of the last C2 chunk ("I sincerely apologise..."), timed like ep_kit: by word count when word timings match
+const lastChunk = (() => { const ch = (TL.cfg.chunks || {}).c2_her, sp = SP.c2_her; if (!ch) return 1e9; const n = ch.slice(0, -1).reduce((a, [en]) => a + en.trim().split(/\s+/).length, 0);
+  return sp.words && sp.words.length === n + ch[ch.length - 1][0].trim().split(/\s+/).length ? sp.t + sp.words[n][1] : sp.t + sp.d * (1 - ch[ch.length - 1][0].length / sp.text.length); })();
 function shotHard(t) { const sc = sceneAt(t), L = sc.id; if (L === 'outro') return SH.WIDE;
   if (L === 'hook') return t < 2.45 ? { x: HERX + 60, y: herHY + 140, z: 1.6, r: 0 } : { x: 60, y: -1180, z: 0.76, r: 0, force: true };
   const u = t - sc.s; if (u < 1.15) return { ...SH.WIDE, force: true };
   const l = L.toLowerCase(), nar = SP[l + '_nar'], f = s => ({ ...s, force: true });
   if (nar && t >= nar.t - 0.1) return f(SH.CARD);                                          // lesson card: faces under it
   if (L === 'B2' && t > ev('drone') - 0.4 && t < SP.b2_her2.t - 0.1) return f(SH.DRONE);   // the drone gag needs the window and her desk
+  if (L === 'B2' && t > SP.b2_x2.t - 0.15) return f(SH.DRONE);                              // "The drone is still here": the drone must be in the shot
+  if (L === 'B2' && speaking('b2_x', t, 0.1, 0.25)) return f(SH.CARD);                       // "What book?" — both of them, she has to improvise
+  if (L === 'A1' && t > endOf('a1_x') + 0.2) return f(SH.HER_R);                             // after the screenshot: her frozen grin
   if (L === 'C1' && t > ev('hide') - 0.45 && t < ev('hide') + 0.7) return f(SH.HER_R);     // she hides the phone
   if (L === 'C2') { const s0 = ev('sip'), fo = ev('folder');
-    if (speaking('c2_her', t, 0.1, 0.25)) { if (t > s0 - 0.2 && t < s0 + 2.0) return f(SH.GRANT_R); if (t > fo - 0.3 && t < fo + 1.8) return f(SH.GDESK_S); if (t > fo + 1.8) return f(SH.CARD); return f(SH.HER_R); }
+    if (speaking('c2_her', t, 0.1, 0.25)) { if (t > s0 - 0.2 && t < s0 + 2.0) return f(SH.GRANT_R); if (t > fo - 0.3 && t < fo + 1.8) return f(SH.GDESK_S); if (t > fo + 1.8) return f(t < lastChunk ? SH.GRANT_R : SH.HER_R); return f(SH.HER_R); }   // aged Grant while she goes on, her again for the apology
     if (t > ev('freeze')) return f(SH.FREEZE);
     if (t > endOf('c2_her') && t < SP.c2_x.t - 0.1) return f(SH.CARD); }                 // the silence: both of them, still
   const cur = TL.speech.find(s => s.id.startsWith(l + '_') && s.who !== 'nar' && s.who !== 'tip' && t >= s.t - 0.1 && t < s.t + s.d + 0.25);
@@ -207,7 +219,7 @@ function shotHard(t) { const sc = sceneAt(t), L = sc.id; if (L === 'outro') retu
 const shotFor = E.cameraMode(TL) === 'hard_cut' ? shotHard : shotSmooth;
 const CAM = E.simulateCamera(TL, shotFor, { k: 150, c: 20 });
 const shake = E.makeShake(TL, ['impact', 'stamp', 'impact_soft', 'thud']);
-function drawWorld(c, t, L, cam, sh = { x: 0, y: 0, r: 0 }, tw = t) { c.save(); c.translate(540 + sh.x, 960 + sh.y); c.rotate(cam.r * Math.PI / 180 + sh.r); c.scale(cam.z, cam.z); c.translate(-cam.x, -cam.y); const heads = world(c, tw, L); const M = c.getTransform(); c.restore(); return { heads, M }; }
+function drawWorld(c, t, L, cam, sh = { x: 0, y: 0, r: 0 }, tw = t) { c.save(); c.translate(540 + sh.x, 960 + sh.y); c.rotate(cam.r * Math.PI / 180 + sh.r); c.scale(cam.z, cam.z); c.translate(-cam.x, -cam.y); const heads = world(c, tw, L, cam.tag); const M = c.getTransform(); c.restore(); return { heads, M }; }
 
 // ---------------- phone inserts per level
 const GRANT_CHAT = [{ me: false, text: 'Report by 5, please.' }, { me: true, text: 'Sure! On it.' }];
@@ -217,9 +229,10 @@ function hookScreen(t) { const sent = t > 0.45; return (c, w, h) => chat(c, w, h
 function overlays(c, t, L) {
   if (L === 'A1') { const s = ev('shot'), k = win(t, s - 0.15, SP.a1_nar.t - 0.05, 0.2); insert(c, k, (cc, w, h) => chat(cc, w, h, { title: 'Marketing', sub: 'your team', av: '#2E8C86', msgs: [{ me: false, text: 'My boss is an absolute idiot.' }], flash: 1 - P(t, s, s + 0.4), toast: t > s + 0.1 ? 'Screenshot saved' : null })); }
   if (L === 'A2') { const a = ev('chart'), hard = E.cameraMode(TL) === 'hard_cut', k = win(t, a - 0.1, hard ? SP.a2_nar.t - 0.1 : SP.a2_nar.t + 2.2);
-    if (hard && k > 0) { c.fillStyle = `rgba(28,24,40,${0.5 * clamp(k)})`; c.fillRect(0, 0, W, HH); }   // hard_cut: the chart is its own object shot, gone before the card shot
+    if (hard && k > 0) backdrop(c, k);   // hard_cut: the chart is its own object shot, gone before the card shot
     orgChart(c, k); }
-  if (L === 'B1') { const s = ev('scroll'), k = win(t, s - 0.05, SP.b1_nar.t - 0.1); const sc = eIO(P(t, s + 0.3, s + 1.9)) * 1000;
+  // hard_cut: the scroll insert closes early in Grant's dry line, so his face delivers it
+  if (L === 'B1') { const s = ev('scroll'), k = win(t, s - 0.05, E.cameraMode(TL) === 'hard_cut' ? SP.b1_x2.t + 0.7 : SP.b1_nar.t - 0.1); const sc = eIO(P(t, s + 0.3, s + 1.9)) * 1000;
     insert(c, k, (cc, w, h) => chat(cc, w, h, { title: 'Lucy', sub: 'best friend', av: '#F2C14E', scroll: sc, msgs: [...IDIOT_MSGS, ...IDIOT_MSGS.slice(0, 6)].map((m, i) => ({ me: i % 3 !== 2, text: i % 3 === 2 ? 'lol' : m, hi: true })) }));
     banner(c, k * eBack(P(t, ev('idiots'), ev('idiots') + 0.25), 2.2), 'IDIOT ×47', '#E0474C', 'слово «идиот» — 47 раз', 1515, false); }
   if (L === 'C1') { const a = ev('lucy'), k = win(t, a - 0.05, ev('hide') - 0.05); insert(c, k, (cc, w, h) => lock(cc, w, h, { k: P(t, a + 0.1, a + 0.45), text: "Did you tell him he's an idiot yet?" }));
@@ -257,13 +270,12 @@ function renderFrame(c, t) {
   const { heads, M } = drawWorld(c, t, sc.id, cam, sh, tw); c.filter = 'none'; Hq.vignette(c, W, HH, frozen ? 0.45 : 0.26);
   if (frozen) { const fl = 1 - P(t, ev('freeze'), ev('freeze') + 0.35); if (fl > 0) { c.fillStyle = `rgba(255,255,255,${fl * 0.85})`; c.fillRect(0, 0, W, HH); } }
   const proj = p => ({ x: M.a * p.x + M.c * p.y + M.e, y: M.b * p.x + M.d * p.y + M.f });
-  if (sc.id === 'A1' || sc.id === 'A2') sweat(c, { ...proj(heads.her), hh: heads.her.hh * cam.z }, sc.id === 'A1' ? clamp(P(t, SP.a1_x.t + 0.4, SP.a1_x.t + 0.8)) : clamp(P(t, SP.a2_x.t, SP.a2_x.t + 0.4)));
+  if ((sc.id === 'A1' || sc.id === 'A2') && cam.tag !== 'grant') sweat(c, { ...proj(heads.her), hh: heads.her.hh * cam.z }, sc.id === 'A1' ? clamp(P(t, SP.a1_x.t + 0.4, SP.a1_x.t + 0.8)) : clamp(P(t, SP.a2_x.t, SP.a2_x.t + 0.4)));
   overlays(c, t, sc.id);
   K.bubbles(c, t, sc, heads, proj, { names: { grant: ['MR GRANT', '#2B3A67'] }, hold: { c2_her: 0.25 } });
-  if (sc.id === 'A1') K.pop(c, t, 'ХЕ-ХЕ…', SP.a1_nar.t - 0.05, SP.a1_nar.t + 1.6, 300, 1180, C.white, -0.08, 64);
-  if (sc.id === 'B2') K.pop(c, t, 'БА-ДУМ-ТСС!', endOf('b2_x2') + 0.1, SP.b2_nar.t + 0.4, 540, 1250);
-  if (sc.id === 'B1') K.pop(c, t, 'БА-ДУМ-ТСС!', endOf('b1_x2') + 0.1, SP.b1_nar.t + 0.4, 540, 1250);
-  if (sc.id === 'C2') { K.dots(c, t, endOf('c2_her') + 0.3, SP.c2_x.t - 0.1); if (t > SP.c2_her.t + 2 && t < endOf('c2_her')) K.pop(c, t, '+ 30 ЛЕТ', E.cameraMode(TL) === 'hard_cut' ? ev('folder') + 1.8 : ev('folder') - 2.5, endOf('c2_her') - 0.3, E.cameraMode(TL) === 'hard_cut' ? 700 : 760, E.cameraMode(TL) === 'hard_cut' ? 1545 : 1370, C.white, 0.06, 54); }
+  if (sc.id === 'B2') K.pop(c, t, 'БА-ДУМ-ТСС!', endOf('b2_x2') + 0.1, SP.b2_nar.t - 0.15, 540, 1250);
+  if (sc.id === 'B1') K.pop(c, t, 'БА-ДУМ-ТСС!', endOf('b1_x2') + 0.1, SP.b1_nar.t - 0.15, 540, 1250);
+  if (sc.id === 'C2') { K.dots(c, t, endOf('c2_her') + 0.3, SP.c2_x.t - 0.1); if (t > SP.c2_her.t + 2 && t < endOf('c2_her') && cam.tag !== 'her') K.pop(c, t, '+ 30 ЛЕТ', E.cameraMode(TL) === 'hard_cut' ? ev('folder') + 1.8 : ev('folder') - 2.5, endOf('c2_her') - 0.3, E.cameraMode(TL) === 'hard_cut' ? 700 : 760, E.cameraMode(TL) === 'hard_cut' ? 1545 : 1370, C.white, 0.06, 54); }
   K.hud(c, t, sc);
 }
 E.run('wrongchat', NF, renderFrame);

@@ -29,7 +29,7 @@ function hardCutCamera(TL, target, opts = {}) {
     const t = f / FPS, g = target(t);
     if (g.move) { const dt = 1 / (FPS * 8); for (let i = 0; i < 8; i++) for (const q of ['x', 'y', 'z', 'r']) { v[q] += (k * ((g[q] || 0) - cur[q]) - c * v[q]) * dt; cur[q] += v[q] * dt; } shot = g; }
     else if (!same(g, shot) && (t - since >= minHold || g.force || f === 0)) { shot = g; since = t; cur = { x: g.x, y: g.y, z: g.z, r: g.r || 0 }; v = { x: 0, y: 0, z: 0, r: 0 }; }
-    CAM[f] = { ...cur };
+    CAM[f] = { ...cur, tag: shot.tag };   // tag: the director's label for the shot (e.g. who a single is on), passed to the renderer
   }
   LAST = { TL, CAM };
   return CAM;
