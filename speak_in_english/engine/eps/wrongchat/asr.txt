@@ -1,0 +1,29 @@
+# Listen-back check: ElevenLabs scribe_v1 (local Whisper unavailable in this environment). a2_nar and c1_nar re-checked one by one: 'нужен the', 'Люси' are correct.
+wrongchat/a1_her  | No, no, not for you
+wrongchat/a1_x    | My boss is an absolute idiot. I am your boss.
+wrongchat/a2_her  | Sorry, I sent it to wrong person.
+wrongchat/a2_x    | Wrong person? It says, "My boss". You have one?
+wrongchat/a2_tip  | I sent it to the wrong person.
+wrongchat/b1_her  | That's not what I meant. It was autocorrect.
+wrongchat/b1_x    | Autocorrect? Show me what you typed.
+wrongchat/b1_x2   | Autocorrect has been very busy.
+wrongchat/b2_her  | You've taken it out of context. I meant a book.
+wrongchat/b2_x    | What book?
+wrongchat/b2_her2 | The Idiot by Dostoevsky.
+wrongchat/b2_x2   | The drone is still here.
+wrongchat/b2_tip  | You've taken it out of context.
+wrongchat/c1_her  | That message wasn't meant for you, and it doesn't reflect how I really feel.
+wrongchat/c1_x    | Really? Well, that's actually quite sweet.
+wrongchat/c1_x2   | Yet?
+wrongchat/c2_her  | Mr. Grant, what occurred was a regrettable digital misunderstanding. A private remark inadvertently misdirected, subsequently misinterpreted, and never intended to undermine our otherwise impeccable professional relationship. I sincerely apologize for the misunderstanding.
+wrongchat/c2_x    | Actually, I agree.
+wrongchat/c2_x2   | My boss is an absolute idiot too.
+wrongchat/c2_her2 | Oh, thank God.
+wrongchat/hook    | Написала боссу, что он идиот. Случайно. Как объясниться по-английски? Проверим.
+wrongchat/a1_nar  | Уровень А1. Не тебе, понятно, но скриншот уже сделан.
+wrongchat/a2_nar  | А2. Нужен that to the wrong person. А босс и правда один.
+wrongchat/b1_nar  | B1. That's not what I meant. Я не это имел в виду. Сорок семь раз.
+wrongchat/b2_nar  | B2. Out of context. Вырвано из контекста. Контекст привез дрон.
+wrongchat/c1_nar  | C1. It doesn't reflect how I feel. Не отражает моего отношения. А люстра отражает.
+wrongchat/c2_nar  | C2. I sincerely apologize. Пригодится обоим.
+wrongchat/outro   | А ты писал не в тот чат? Пиши в комментарии и подпишись. Впереди еще много новых серий.
