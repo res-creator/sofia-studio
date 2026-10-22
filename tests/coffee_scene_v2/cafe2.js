@@ -307,15 +307,16 @@ function drawCafe(ctx, t, cam, pass, VW, VH, o = {}) {
     return;
   }
   if (pass === 'hero') {
-    const rim = o.flat ? null : { dir: KEY.dir, color: KEY.color, w: 5, a: 0.85 };
+    const sun = o.sun ?? 1, rim = o.flat ? null : { dir: KEY.dir, color: KEY.color, w: o.rimW ?? 5, a: 0.85 };
     layer(ctx, cam, 1, c => {
       // sunlight on the floor and the counter front (window shafts)
-      LT.shafts(c, [0, 1, 2].map(i => { const x0 = -1250 + i * 330; return [[x0, -1600], [x0 + 230, -1600], [x0 + 900, 420], [x0 + 520, 420]]; }), 'rgba(255,238,200,1)', 0.16, t);
+      LT.shafts(c, [0, 1, 2].map(i => { const x0 = -1250 + i * 330; return [[x0, -1600], [x0 + 230, -1600], [x0 + 900, 420], [x0 + 520, 420]]; }), 'rgba(255,238,200,1)', 0.16 * sun, t);
+      if (sun > 1) LT.shafts(c, [0, 1, 2].map(i => { const x0 = -1250 + i * 330; return [[x0 + 700, 0], [x0 + 930, 0], [x0 + 1060, 420], [x0 + 760, 420]]; }), 'rgba(255,240,205,1)', 0.22 * (sun - 1), t); // sun patches on the floor
       if (rim) LT.lit(c, cc => figure(cc, b.x, b.y, 1, b.f, BAR, b.P), { rim }); else figure(c, b.x, b.y, 1, b.f, BAR, b.P);
       frontCounter(c, t, S);
       if (!o.noCust) {
         const cs = custState(t), drawC = cc => figure(cc, cs.x, 0, 1, cs.f, CUST, { ...cs.P, noShadow: true });
-        if (!o.flat) LT.castShadow(c, drawC, { x: cs.x, floorY: 0, skew: 0.45, squash: 0.2, a: 0.2, blur: 3 });
+        if (!o.flat) LT.castShadow(c, drawC, { x: cs.x, floorY: 0, skew: 0.45, squash: 0.2, a: o.shadowA ?? 0.2, blur: 3 });
         if (rim) LT.lit(c, drawC, { rim }); else drawC(c);
       }
       LT.dust(c, t, -1300, -1700, 2400, 1900, 36);

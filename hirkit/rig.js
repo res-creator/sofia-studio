@@ -4,7 +4,7 @@
 // Local space: feet on y = 0, up is -y, the figure faces +x (flip with facing = -1). Height ≈ 600 units at s = 1.
 // Jointed arms and legs (2-bone IK), torso with lean, big head with eyes, lids, brows, mouth shapes, hands with fingers.
 const K = require('../tests/mcd_collage/kit');
-const { C, clamp, lerp } = K;
+const { C, clamp, lerp, rr } = K;
 const INK = '#171717';
 
 function shade(hex, k) { // k < 0 darker, k > 0 lighter
@@ -157,7 +157,7 @@ function faceParams(f) {
 }
 function eye(ctx, ex, ey, rx, ry, lid, low, F, L, sk) {
   if (F.happy > 0.5) { ctx.beginPath(); ctx.arc(ex, ey + ry * 0.35, rx * 1.05, Math.PI * 1.1, Math.PI * 1.9); ctx.lineWidth = Math.max(px(ctx, 5.5), ry * 0.28); ctx.strokeStyle = INK; ctx.lineCap = 'round'; ctx.stroke(); return; }
-  ell(ctx, ex, ey, rx, ry); fillStroke(ctx, '#FFFFFF', 3.5);
+  ell(ctx, ex, ey, rx, ry); ctx.fillStyle = '#FFFFFF'; ctx.fill();
   ctx.save(); ell(ctx, ex, ey, rx, ry); ctx.clip();
   const lk = F.look, pr = F.pupil, ppx = ex + lk[0] * rx * 0.45, ppy = ey + lk[1] * ry * 0.42 + ry * 0.06;
   ell(ctx, ppx, ppy, rx * 0.68 * pr, ry * 0.62 * pr); ctx.fillStyle = L.iris || '#5A3A22'; ctx.fill();
@@ -168,6 +168,8 @@ function eye(ctx, ex, ey, rx, ry, lid, low, F, L, sk) {
   ctx.beginPath(); ctx.moveTo(ex - rx * 1.4, ey - ry * 1.4); ctx.lineTo(ex + rx * 1.4, ey - ry * 1.4); ctx.lineTo(ex + rx * 1.4, ly); ctx.quadraticCurveTo(ex, ly + ry * 0.22, ex - rx * 1.4, ly); ctx.fill();
   ctx.fillStyle = sk; ctx.beginPath(); ctx.moveTo(ex - rx * 1.4, ey + ry * 1.4); ctx.lineTo(ex + rx * 1.4, ey + ry * 1.4); ctx.lineTo(ex + rx * 1.4, by); ctx.quadraticCurveTo(ex, by - ry * 0.25, ex - rx * 1.4, by); ctx.fill();
   ctx.restore();
+  // eye outline only where the eye is open (no ghost oval above a lowered lid)
+  ctx.save(); ctx.beginPath(); ctx.rect(ex - rx * 1.5, ly, rx * 3, Math.max(0, by - ly) + 1); ctx.clip(); ell(ctx, ex, ey, rx, ry); ctx.lineWidth = px(ctx, 3.5); ctx.strokeStyle = INK; ctx.stroke(); ctx.restore();
   ctx.lineCap = 'round'; ctx.strokeStyle = INK;
   if (lid > 0.06) { ctx.lineWidth = px(ctx, 6.5); ctx.beginPath(); ctx.moveTo(ex - rx * 1.05, ly + ry * 0.02); ctx.quadraticCurveTo(ex, ly + ry * 0.22, ex + rx * 1.05, ly + ry * 0.02); ctx.stroke(); }
   if (low > 0.1) { ctx.lineWidth = px(ctx, 3.5); ctx.beginPath(); ctx.moveTo(ex - rx * 0.9, by); ctx.quadraticCurveTo(ex, by - ry * 0.22, ex + rx * 0.9, by); ctx.stroke(); }
@@ -244,29 +246,66 @@ function headFront(ctx, cx, cy, R, L, f = {}) {
 }
 
 // ---------- front-view bust (close-ups): neck base at (x, y), shoulders below ----------
-// P: { face, hands: [{side: -1|1, hand: [x, y], grip, item, itemOver}], lean (rad), headTilt }
+// P: { face, hands: [{side: -1|1, hand: [x, y], grip, item, itemOver, size}], lean (rad), headTilt, light: -1|1 (key side) }
+// Sloped trapezius, round deltoids, collar, form shading and tapered arms with an elbow bend; arms in front cast a soft shadow on the chest.
+function capsule(ctx, a, b, ra, rb) { // tapered segment with round ends
+  const ang = Math.atan2(b[1] - a[1], b[0] - a[0]), n = ang + Math.PI / 2;
+  ctx.moveTo(a[0] + Math.cos(n) * ra, a[1] + Math.sin(n) * ra);
+  ctx.arc(a[0], a[1], ra, n, n + Math.PI);
+  ctx.lineTo(b[0] - Math.cos(n) * rb, b[1] - Math.sin(n) * rb);
+  ctx.arc(b[0], b[1], rb, n + Math.PI, n + Math.PI * 2);
+  ctx.closePath();
+}
+function limb(ctx, pts, radii, col, shadeCol) {
+  const path = (grow) => { ctx.beginPath(); for (let i = 0; i < pts.length - 1; i++) capsule(ctx, pts[i], pts[i + 1], radii[i] + grow, radii[i + 1] + grow); };
+  path(px(ctx, 5)); ctx.fillStyle = INK; ctx.fill();
+  path(0); ctx.fillStyle = col; ctx.fill();
+  if (shadeCol) { ctx.save(); path(0); ctx.clip(); ctx.strokeStyle = shadeCol; ctx.lineWidth = radii[0] * 0.7; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(pts[0][0] + radii[0] * 0.7, pts[0][1]); for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i][0] + radii[i] * 0.7, pts[i][1] + radii[i] * 0.3); ctx.stroke(); ctx.restore(); }
+}
 function bust(ctx, x, y, s, L, P = {}) {
   ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.rotate(P.lean || 0);
-  const top = L.top;
-  const torso = () => { ctx.beginPath(); ctx.moveTo(-175, 70); ctx.quadraticCurveTo(-168, 6, -92, -6); ctx.lineTo(92, -6); ctx.quadraticCurveTo(168, 6, 175, 70); ctx.lineTo(190, 460); ctx.lineTo(-190, 460); ctx.closePath(); };
+  const top = L.top, topD = shade(top, -0.25), side = P.face?.shadeSide ?? 1;
+  const torso = () => { ctx.beginPath(); ctx.moveTo(-34, -16);
+    ctx.bezierCurveTo(-72, -6, -112, 6, -140, 28); ctx.bezierCurveTo(-172, 50, -182, 96, -176, 160); ctx.lineTo(-184, 560); ctx.lineTo(184, 560); ctx.lineTo(176, 160);
+    ctx.bezierCurveTo(182, 96, 172, 50, 140, 28); ctx.bezierCurveTo(112, 6, 72, -6, 34, -16); ctx.closePath(); };
+  ctx.save(); ctx.scale(0.92, 1); // torso a touch narrower than the shoulder line of the old bust
   torso(); fillStroke(ctx, top);
-  ctx.save(); torso(); ctx.clip(); const side = P.face?.shadeSide ?? 1, g = ctx.createLinearGradient(side * 40, 0, side * 190, 0); g.addColorStop(0, 'rgba(40,20,20,0)'); g.addColorStop(1, 'rgba(40,20,20,0.22)'); ctx.fillStyle = g; ctx.fillRect(-200, -20, 400, 500);
-  if (L.shirt) { ctx.beginPath(); ctx.moveTo(-46, -8); ctx.lineTo(0, 92); ctx.lineTo(46, -8); ctx.closePath(); ctx.fillStyle = L.shirt; ctx.fill(); ctx.lineWidth = px(ctx, 4); ctx.strokeStyle = INK; ctx.stroke(); }
-  if (L.zip) { ctx.strokeStyle = shade(top, -0.4); ctx.lineWidth = px(ctx, 4); ctx.beginPath(); ctx.moveTo(0, 92); ctx.lineTo(0, 470); ctx.stroke(); }
-  if (L.apron) { ctx.beginPath(); ctx.moveTo(-80, 80); ctx.lineTo(80, 80); ctx.lineTo(92, 470); ctx.lineTo(-92, 470); ctx.closePath(); fillStroke(ctx, L.apron); ctx.lineWidth = 12; ctx.strokeStyle = L.apron; ctx.beginPath(); ctx.moveTo(-70, 80); ctx.lineTo(-60, -6); ctx.moveTo(70, 80); ctx.lineTo(60, -6); ctx.stroke(); }
+  ctx.save(); torso(); ctx.clip();
+  // form shade: the side away from the key, plus the far deltoid
+  let g = ctx.createLinearGradient(side * 30, 0, side * 185, 0); g.addColorStop(0, 'rgba(30,10,20,0)'); g.addColorStop(1, 'rgba(30,10,20,0.32)'); ctx.fillStyle = g; ctx.fillRect(-200, -30, 400, 600);
+  g = ctx.createLinearGradient(0, -20, 0, 90); g.addColorStop(0, 'rgba(255,255,255,0.16)'); g.addColorStop(1, 'rgba(255,255,255,0)'); ctx.fillStyle = g; ctx.fillRect(-200, -30, 400, 120); // top light on the shoulders
+  // armhole seams (the arms hang inside the sleeves)
+  ctx.strokeStyle = topD; ctx.lineWidth = px(ctx, 3.5); ctx.lineCap = 'round';
+  for (const sx of [-1, 1]) { ctx.beginPath(); ctx.moveTo(sx * 122, 34); ctx.bezierCurveTo(sx * 104, 120, sx * 112, 240, sx * 124, 560); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(sx * 128, 290); ctx.quadraticCurveTo(sx * 148, 300, sx * 168, 292); ctx.stroke(); } // sleeve fold
+  if (L.shirt) { ctx.beginPath(); ctx.moveTo(-40, -14); ctx.lineTo(0, 96); ctx.lineTo(40, -14); ctx.closePath(); ctx.fillStyle = L.shirt; ctx.fill(); ctx.lineWidth = px(ctx, 4); ctx.strokeStyle = INK; ctx.stroke();
+    ell(ctx, 0, 6, 46, 22); ctx.fillStyle = 'rgba(60,30,20,0.18)'; ctx.fill(); }
+  if (L.zip) { ctx.strokeStyle = shade(top, -0.45); ctx.lineWidth = px(ctx, 4.5); ctx.beginPath(); ctx.moveTo(0, 96); ctx.lineTo(0, 570); ctx.stroke();
+    rr(ctx, -9, 104, 18, 34, 5); fillStroke(ctx, '#D8D8DC', 3.5);
+    ctx.strokeStyle = topD; ctx.lineWidth = px(ctx, 3); for (const sx of [-1, 1]) { ctx.beginPath(); ctx.moveTo(sx * 20, 200); ctx.quadraticCurveTo(sx * 70, 214, sx * 98, 196); ctx.stroke(); } } // chest seams
+  ctx.restore(); ctx.restore(); ctx.save();
+  if (L.apron) { ctx.beginPath(); ctx.moveTo(-82, 90); ctx.lineTo(82, 90); ctx.lineTo(96, 570); ctx.lineTo(-96, 570); ctx.closePath(); fillStroke(ctx, L.apron); ctx.lineWidth = 12; ctx.strokeStyle = L.apron; ctx.beginPath(); ctx.moveTo(-72, 90); ctx.lineTo(-58, -8); ctx.moveTo(72, 90); ctx.lineTo(58, -8); ctx.stroke(); }
   ctx.restore();
-  // neck + collar + head
-  tube(ctx, [[0, 12], [0, -50]], 62, shade(L.skin, -0.12));
+  // neck with the jaw shadow, then the stand-up collar around it
+  tube(ctx, [[0, 14], [0, -46]], 60, L.skin);
+  ctx.save(); ctx.beginPath(); ctx.rect(-40, -60, 80, 80); ctx.clip(); ell(ctx, 0, -46, 36, 26); ctx.fillStyle = 'rgba(60,25,20,0.32)'; ctx.fill(); ctx.restore();
+  if (L.zip) for (const sx of [-1, 1]) { ctx.beginPath(); ctx.moveTo(sx * 28, -26); ctx.quadraticCurveTo(sx * 40, -34, sx * 56, -30); ctx.quadraticCurveTo(sx * 66, -8, sx * 64, 10); ctx.quadraticCurveTo(sx * 40, 16, sx * 8, 50); ctx.quadraticCurveTo(sx * 22, 0, sx * 28, -26); ctx.closePath(); fillStroke(ctx, sx === side ? topD : shade(top, -0.08)); }
   if (L.collar) { ell(ctx, 0, 0, 70, 20); fillStroke(ctx, L.collar); }
   headFront(ctx, 0, -112, 78, L, { ...(P.face || {}), tilt: P.headTilt || 0 });
   for (const h of P.hands || []) {
-    const sh = [h.side * 128, 52];
-    const [e, w] = ik(sh, h.hand, 104, 98, (j1, j2) => h.elbowOut ? (j1[0] * h.side > j2[0] * h.side ? j1 : j2) : (j1[1] > j2[1] ? j1 : j2));
-    tube(ctx, [sh, e, w], 42, top);
-    const a = Math.atan2(w[1] - e[1], w[0] - e[0]);
-    tube(ctx, [add(w, [-Math.cos(a) * 12, -Math.sin(a) * 12]), add(w, [-Math.cos(a) * 9, -Math.sin(a) * 9])], 46, L.cuff || top, 4);
-    if (h.item) { ctx.save(); ctx.translate(w[0] + Math.cos(a) * 18, w[1] + Math.sin(a) * 18); h.item(ctx); ctx.restore(); }
-    hand(ctx, add(w, [Math.cos(a) * 4, Math.sin(a) * 4]), a, L.skin, h.grip || 'relax', { over: h.itemOver, mirror: h.side < 0 && h.mirror !== false });
+    const sh = [h.side * 124, 74];
+    // h.elbow pins the elbow (e.g. below the frame for a hand-to-chin close-up); otherwise 2-bone IK
+    const [e, w] = h.elbow ? [h.elbow, h.hand] : ik(sh, h.hand, 192, 172, (j1, j2) => h.elbowOut ? (j1[0] * h.side > j2[0] * h.side ? j1 : j2) : (j1[1] > j2[1] ? j1 : j2));
+    const a = Math.atan2(w[1] - e[1], w[0] - e[0]), cuff = add(w, [-Math.cos(a) * 14, -Math.sin(a) * 14]);
+    // soft shadow of the arm on the chest
+    ctx.save(); ctx.translate(14, 16); ctx.beginPath(); capsule(ctx, sh, e, 28, 24); capsule(ctx, e, w, 24, 20); ctx.fillStyle = 'rgba(30,10,20,0.22)'; ctx.fill(); ctx.restore();
+    limb(ctx, [sh, e, cuff], [29, 24, 21], top, h.side === side ? 'rgba(30,10,20,0.2)' : null);
+    // elbow crease + cuff band
+    ctx.strokeStyle = topD; ctx.lineWidth = px(ctx, 3.5); ctx.beginPath(); ctx.arc(e[0], e[1], 15, a - 2.2, a - 1.2); ctx.stroke();
+    limb(ctx, [add(cuff, [-Math.cos(a) * 6, -Math.sin(a) * 6]), add(cuff, [Math.cos(a) * 4, Math.sin(a) * 4])], [23, 23], L.cuff || topD);
+    if (h.item) { ctx.save(); ctx.translate(w[0] + Math.cos(a) * 22, w[1] + Math.sin(a) * 22); h.item(ctx); ctx.restore(); }
+    hand(ctx, add(w, [Math.cos(a) * 2, Math.sin(a) * 2]), a + (h.twist || 0), L.skin, h.grip || 'relax', { over: h.itemOver, mirror: h.side < 0 && h.mirror !== false, size: h.size || 1.25 });
   }
   ctx.restore();
 }

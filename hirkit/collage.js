@@ -28,7 +28,7 @@ function cutout(ctx, build, fill, o = {}) {
   build(); ctx.fillStyle = '#FFFDF8'; ctx.fill(); if (o.edge !== 0) { ctx.lineJoin = 'round'; ctx.lineWidth = px(ctx, o.edge ?? 5) * 2.6; ctx.strokeStyle = '#FFFDF8'; ctx.stroke(); }
   ctx.restore();
   build(); ctx.fillStyle = fill; ctx.fill();
-  if (o.tex !== false) { ctx.save(); build(); ctx.clip(); ctx.globalCompositeOperation = 'multiply'; ctx.globalAlpha = o.tex ?? 0.55; ctx.fillStyle = texPattern(ctx); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height); ctx.restore(); }
+  if (o.tex !== false) { ctx.save(); build(); ctx.clip(); ctx.globalCompositeOperation = 'multiply'; ctx.globalAlpha = o.tex ?? 0.75; ctx.fillStyle = texPattern(ctx); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height); ctx.restore(); }
   if (o.lw !== 0) { build(); ctx.lineJoin = 'round'; ctx.lineWidth = px(ctx, o.lw ?? 5); ctx.strokeStyle = INK; ctx.stroke(); }
 }
 // jagged closed path around (cx, cy), radius r (deterministic)
