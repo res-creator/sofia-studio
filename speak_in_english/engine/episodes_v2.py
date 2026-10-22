@@ -1383,7 +1383,7 @@ EP["wrongchat"] = dict(
         ('outro', 'nar', 'А ты писал не в тот чат? Пиши в комментарии! И подпишись, впереди ещё много новых серий.', ''),
     ],
     cards={'A1': {'type': 'meter', 'label': 'ОПРАВДАНИЕ', 'ok': False, 'note': 'скриншот сохранён'},
-           'A2': {'type': 'swap', 'bad': 'Sorry, I sent it to wrong person!', 'bad_note': 'нужен the', 'good': ['I sent it to', 'the wrong person.']},
+           'A2': {'type': 'swap', 'bad': 'Sorry, I sent it to wrong person!', 'bad_note': 'нужен the', 'good': ['I sent it to', 'the wrong person.'], 'good_at': 1.0, 'mark': 'the'},
            'B1': {'type': 'eq', 'en': "That's not what I meant.", 'ru': '= Я не это имела в виду.', 'note': 'meant — прошедшее от mean (иметь в виду)', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
            'B2': {'type': 'eq', 'en': "You've taken it out of context.", 'ru': '= Ты вырвал это из контекста.', 'ex': ['out of context', '= вне контекста, вырвано из контекста']},
            'C1': {'type': 'eq', 'en': "It doesn't reflect how I feel.", 'ru': '= Это не отражает моего отношения.', 'ex': ["That wasn't meant for you", '= это было не для тебя']},

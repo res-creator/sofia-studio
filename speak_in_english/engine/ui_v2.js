@@ -327,12 +327,15 @@ function card(ctx, t, sc) {
     const st = eOut(P(n, 0.45, 0.8)); ctx.strokeStyle = C.red; ctx.lineWidth = 10; ctx.lineCap = 'round';
     if (st > 0) { ctx.beginPath(); ctx.moveTo(cx + 85, cy + 72); ctx.lineTo(cx + 85 + (bw + 10) * st, cy + 72); ctx.stroke(); }
     font(ctx, 'Nun8', 34); ctx.fillStyle = C.red; ctx.save(); ctx.globalAlpha *= clamp(P(n, .6, .9)); ctx.fillText(cd.bad_note, cx + 90, cy + 140); ctx.restore();
-    if (tipK > 0) {
+    const gK = cd.good_at !== undefined ? eBack(P(n, cd.good_at, cd.good_at + 0.3), 2) : tipK;   // good_at (new episodes): show the fix right after the strike, not only with the tip
+    if (gK > 0) { const tipK = gK;
       ctx.save(); ctx.translate(cx, cy + 270); ctx.scale(tipK, tipK);
       const s1 = textFit(ctx, 'Nun9', 62, cd.good[0], 680);
       ctx.fillStyle = 'rgba(238,94,154,.18)'; rr(ctx, 80, -46, ctx.measureText(cd.good[0]).width + 20, 92, 20); ctx.fill();
       ctx.fillStyle = C.ink; ctx.fillText(cd.good[0], 90, 0);
       if (cd.good[1]) { textFit(ctx, 'Nun9', s1, cd.good[1], 680); ctx.fillText(cd.good[1], 90, 72); }
+      if (cd.mark) { [0, 1].forEach(li => { const ln = cd.good[li] || '', i = (' ' + ln + ' ').search(new RegExp('\\s' + cd.mark + '\\s')); if (i < 0) return;   // mark (new episodes): underline the word that fixes the mistake
+        textFit(ctx, 'Nun9', s1, ln, 680); const x0 = 90 + ctx.measureText(ln.slice(0, i)).width, ww = ctx.measureText(cd.mark).width; ctx.fillStyle = C.pink; rr(ctx, x0 - 4, li * 72 + s1 * 0.42, ww + 8, 9, 4); ctx.fill(); }); }
       ctx.restore(); check(ctx, cx + 36, cy + 270, 34 * tipK);
     }
   }

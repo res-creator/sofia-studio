@@ -24,7 +24,7 @@ def word_times(lid):
 cue("impact", 0.05, 0.9); cue("whoosh", 0.0, 0.5)
 if EPN == "airport": cue("chime", 0.1, 0.55)
 if EPN == "wrongchat":  # phone hook: SEND -> SENT TO: MR GRANT -> READ -> her eyes -> his head turns
-    cue("send", 0.45, 0.8); cue("pop", 0.8, 0.7); cue("msg", 1.4, 0.8); cue("gasp", 1.9, 0.7); cue("creak", 2.45, 0.6)
+    cue("send", 0.3, 0.8); cue("pop", 0.45, 0.7); cue("msg", 0.95, 0.8); cue("whoosh", 1.3, 0.45); cue("gasp", 1.9, 0.7)
 for k in range(1, 4): cue("pop", 0.2 + 0.35 * k, 0.6)
 h0 = 0.35; e = say("hook", h0); hw = word_times("hook") or []
 def find(word):
@@ -262,7 +262,7 @@ elif EPN == "wrongchat":
         A2=[("a2_her", 0, []), ("a2_x", 0.3, [("CHART", ("e", -1.1), 0), ("pop", ("e", -1.1), 0.7)]), ("a2_nar", 0.7, [("buzz", 0.95, 0.5)]), ("a2_tip", 0.25, [("ding", 0.05, 0.6)])],
         B1=[("b1_her", 0, []), ("b1_x", 0.3, [("SCROLL", ("e", 0.15), 0), ("whoosh", ("e", 0.2), 0.5)] + [("tick", ("e", 0.4 + 0.12 * k), 0.4) for k in range(14)] + [("IDIOTS", ("e", 2.0), 0), ("stamp", ("e", 2.0), 0.8)]), ("b1_x2", 2.3, [("rimshot", ("e", 0.15), 0.9)]), ("b1_nar", 0.9, [])],
         B2=[("b2_her", 0, []), ("b2_x", 0.3, []), ("b2_her2", 2.3, [("DRONE", -2.2, 0), ("drone", -2.1, 0.7), ("DROP", -0.7, 0), ("thud", -0.65, 0.9)]), ("b2_x2", 0.35, [("rimshot", ("e", 0.15), 0.9)]), ("b2_nar", 1.0, []), ("b2_tip", 0.25, [("ding", 0.05, 0.6)])],
-        C1=[("c1_her", 0, []), ("c1_x", 0.3, [("sparkle", ("e", -0.6), 0.5)]), ("c1_x2", 1.7, [("LUCY", -1.5, 0), ("msg", -1.5, 0.9), ("msg", -1.1, 0.6), ("HIDE", ("e", 0.25), 0), ("zip", ("e", 0.25), 0.6)]), ("c1_nar", 1.0, [])],
+        C1=[("c1_her", 0, []), ("c1_x", 0.3, [("sparkle", ("e", -0.6), 0.5)]), ("c1_x2", 1.7, [("LUCY", -1.5, 0), ("msg", -1.5, 0.9), ("msg", -1.1, 0.6), ("HIDE", ("e", 0.25), 0), ("zip", ("e", 0.25), 0.6), ("blink", ("e", 0.55), 0.35)]), ("c1_nar", 1.0, [])],
         C2=[("c2_her", 0, [("SIP", 3.0, 0), ("gulp", 3.4, 0.5), ("FOLDER", 8.0, 0), ("thud", 8.6, 0.9)]), ("c2_x", 2.2, [("scratch", -2.1, 0.6)] + TICKS(2.0)), ("c2_x2", 2.5, [("BOSSMSG", -2.2, 0), ("msg", -2.1, 0.8)]), ("c2_her2", 0.35, []), ("c2_nar", 3.2, [("SENT", -2.9, 0), ("send", -2.9, 0.9), ("READ", -1.6, 0), ("msg", -1.6, 0.9), ("FREEZE", -1.2, 0), ("impact_soft", -1.2, 0.8)])],
     )
     INTRO = 1.15

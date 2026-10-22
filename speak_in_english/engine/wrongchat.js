@@ -118,7 +118,7 @@ function gest(st, g, who, t, side, base) { const sp = TL.speech.find(s => s.who 
 function herState(t, L) { const g = G.her, st = { t, talk: talk('her', t), mood: 'neutral', turn: 0.35, look: 0.8, armL: reach(g, -1, -g.sw * 0.5, g.ySh + 330), armR: reach(g, 1, g.sw * 0.6, g.ySh + 330) };
   gest(st, g, 'her', t, 1, 200);
   const phoneR = () => { st.armR = reach(g, 1, g.sw * 0.9, g.ySh + 170); st.items = { R: phoneItem() }; };
-  if (L === 'hook') { st.mood = t < 1.85 ? 'neutral' : 'shock'; phoneR(); st.lookY = t < 1.85 ? 0.5 : 0; if (t > 2.45) { st.mood = 'shock'; st.armR = reach(g, 1, g.sw * 0.3, g.ySh + 420); st.items = {}; st.armL = reach(g, -1, -g.sw * 1.0, g.ySh + 140); } }
+  if (L === 'hook') { st.mood = t < 1.9 ? 'neutral' : 'shock'; phoneR(); st.lookY = t < 1.9 ? 0.5 : 0; if (t > 2.5) { st.mood = 'shock'; st.armR = reach(g, 1, g.sw * 0.3, g.ySh + 420); st.items = {}; st.armL = reach(g, -1, -g.sw * 1.0, g.ySh + 140); } }
   if (L === 'A1') { st.mood = 'worried'; if (speaking('a1_her', t, 0.1)) { const u = t * 9; st.armL = reach(g, -1, -g.sw * 1.6 + Math.sin(u) * 30, g.ySh - 120); st.armR = reach(g, 1, g.sw * 1.6 - Math.sin(u) * 30, g.ySh - 120); } if (t > SP.a1_x.t + 0.4) { st.mood = 'happy'; } if (t > ev('shot')) st.mood = 'happy'; }
   if (L === 'A2') { st.mood = speaking('a2_her', t) ? 'happy' : 'worried'; if (t > ev('chart')) st.mood = 'shock'; }
   if (L === 'B1') { st.mood = speaking('b1_her', t, 0.1) ? 'smug' : 'neutral'; if (speaking('b1_her', t)) st.armR = reach(g, 1, g.sw * 1.2, g.ySh - 260); if (t > SP.b1_x.t) st.mood = 'worried';
@@ -133,7 +133,7 @@ function herState(t, L) { const g = G.her, st = { t, talk: talk('her', t), mood:
 function grantState(t, L) { const g = G.grant, st = { t, talk: talk('grant', t), mood: 'skeptical', turn: -0.35, look: -0.8, armL: reach(g, -1, -g.sw * 0.7, g.ySh + 330), armR: reach(g, 1, g.sw * 0.7, g.ySh + 330) };
   gest(st, g, 'grant', t, -1, 200);
   const showPhone = () => { st.armL = reach(g, -1, -g.sw * 2.3, g.ySh + 40); st.items = { L: phoneItem('#FFFFFF', 1.2) }; };
-  if (L === 'hook') { const k = eIO(P(t, 2.45, 3.6)); st.turn = lerp(0.55, -0.35, k); st.look = lerp(1, -0.9, k); st.lookY = lerp(0.45, 0, k); st.mood = 'neutral'; st.armR = reach(g, 1, g.sw * 0.9, g.ySh + 170); st.items = { R: phoneItem('#FFFFFF') }; if (t > 3.6) st.mood = 'skeptical'; }
+  if (L === 'hook') { const k = eOut(P(t, 1.3, 1.6)); st.turn = lerp(0.55, -0.35, k); st.look = lerp(1, -0.9, k); st.lookY = lerp(0.45, 0, k); st.mood = 'neutral'; st.armR = reach(g, 1, g.sw * 0.9, g.ySh + 170); st.items = { R: phoneItem('#FFFFFF') }; if (t > 1.55) { st.mood = 'skeptical'; st.lookY = 0; } }
   if (L === 'A1') { if (t > SP.a1_x.t - 0.2 && t < SP.a1_nar.t + 0.4) showPhone(); st.mood = t > ev('shot') ? 'smug' : 'skeptical'; }
   if (L === 'A2' && t > ev('chart') - 0.3) { st.armL = reach(g, -1, -g.sw * 2.3, g.ySh + 60); st.mood = 'smug'; }
   if (L === 'B1') { if (speaking('b1_x', t, 0.1, 0.4)) st.armL = reach(g, -1, -g.sw * 2.0, g.ySh + 150); if (t > ev('scroll')) { st.mood = 'skeptical'; st.lookY = 0.3; } if (t > SP.b1_x2.t) st.mood = 'smug'; }
@@ -149,6 +149,7 @@ function grantState(t, L) { const g = G.grant, st = { t, talk: talk('grant', t),
 // ---------------- world
 // solo = 'her' | 'grant': a clean single — the other character is not drawn (only his/her head position is kept for an off-screen bubble)
 const headOf = (who, x) => ({ x, y: FY + G[who].headY, hh: G[who].hh });
+const recClock = t => { const d = Math.max(0, Math.floor(t - EV('hide') - 0.25)); return Math.floor(d / 60) + ':' + String(d % 60).padStart(2, '0'); };
 function world(c, t, L, solo) {
   c.drawImage(BGB, BX0, BY0, BW, BH); const heads = {};
   clock(c, 700, -2420, t, L);
@@ -163,6 +164,11 @@ function world(c, t, L, solo) {
   if (bookOn) book(c, -580, HDESK.top, 0.55, 0);
   if (L === 'C1' && t < ev('hide') - 0.3) { c.save(); c.translate(-560, HDESK.top - 6); c.fillStyle = '#2B2F3A'; rr(c, -60, -18, 120, 18, 6); c.fill(); if (t > ev('lucy')) { const gk = 0.5 + 0.5 * Math.sin(t * 14); c.fillStyle = `rgba(255,230,120,${0.45 * gk})`; c.beginPath(); c.ellipse(0, -16, 110, 40, 0, 0, TAU); c.fill(); } c.restore(); }
   heads.her = solo === 'grant' ? headOf('her', HERX) : put(c, HER, herState(t, L), HERX, FY);
+  // the cause of the ending: after she pockets the phone in C1 it keeps recording a voice message (red REC on the pocket)
+  const recOn = (L === 'C1' && t > ev('hide') + 0.25) || (L === 'C2' && t < ev('sent'));
+  if (recOn && solo !== 'grant') { const k = L === 'C1' ? eBack(P(t, ev('hide') + 0.25, ev('hide') + 0.5), 2) : 1, px = HERX - G.her.sw * 0.42, py = FY + G.her.ySh + 175;
+    c.save(); c.translate(px, py); c.scale(k * 1.5, k * 1.5); c.fillStyle = 'rgba(20,20,28,.82)'; rr(c, -84, -26, 168, 52, 26); c.fill(); c.fillStyle = '#FF3B3B'; c.globalAlpha = 0.55 + 0.45 * Math.abs(Math.sin(t * 3.2)); c.beginPath(); c.arc(-56, 0, 12, 0, TAU); c.fill(); c.globalAlpha = 1;
+    txt(c, 'REC ' + recClock(t), 14, 2, 26, '#FFFFFF', 'Unb9'); c.restore(); }
   // pocket glow when the voice message leaves
   if (L === 'C2' && t > ev('sent') - 0.3 && t < ev('freeze')) { const gk = 0.5 + 0.5 * Math.sin(t * 16); c.save(); c.globalAlpha = 0.7 * gk; c.fillStyle = '#7CF2FF'; c.beginPath(); c.arc(HERX - G.her.sw * 0.35, FY + G.her.ySh + 170, 70, 0, TAU); c.fill(); c.restore(); }
   // drone (B2)
@@ -197,7 +203,10 @@ const SH = { WIDE: { x: 40, y: -1000, z: 0.72, r: 0 }, CARD: { x: 40, y: -1555, 
 const lastChunk = (() => { const ch = (TL.cfg.chunks || {}).c2_her, sp = SP.c2_her; if (!ch) return 1e9; const n = ch.slice(0, -1).reduce((a, [en]) => a + en.trim().split(/\s+/).length, 0);
   return sp.words && sp.words.length === n + ch[ch.length - 1][0].trim().split(/\s+/).length ? sp.t + sp.words[n][1] : sp.t + sp.d * (1 - ch[ch.length - 1][0].length / sp.text.length); })();
 function shotHard(t) { const sc = sceneAt(t), L = sc.id; if (L === 'outro') return SH.WIDE;
-  if (L === 'hook') return t < 2.45 ? { x: HERX + 60, y: herHY + 140, z: 1.6, r: 0 } : { x: 60, y: -1180, z: 0.76, r: 0, force: true };
+  if (L === 'hook') { if (t < 1.3) return { x: HERX + 60, y: herHY + 140, z: 1.6, r: 0, tag: 'her' };   // (under the phone insert)
+    if (t < 1.9) return { ...SH.GRANT, force: true };                                          // READ -> Grant snaps round
+    if (t < 2.5) return { x: HERX + 60, y: herHY + 140, z: 1.6, r: 0, tag: 'her', force: true }; // -> her panic
+    return { x: 60, y: -1180, z: 0.76, r: 0, force: true }; }
   const u = t - sc.s; if (u < 1.15) return { ...SH.WIDE, force: true };
   const l = L.toLowerCase(), nar = SP[l + '_nar'], f = s => ({ ...s, force: true });
   if (nar && t >= nar.t - 0.1) return f(SH.CARD);                                          // lesson card: faces under it
@@ -224,8 +233,8 @@ function drawWorld(c, t, L, cam, sh = { x: 0, y: 0, r: 0 }, tw = t) { c.save(); 
 // ---------------- phone inserts per level
 const GRANT_CHAT = [{ me: false, text: 'Report by 5, please.' }, { me: true, text: 'Sure! On it.' }];
 const IDIOT_MSGS = ['my boss is an idiot', 'IDIOT', 'he did it AGAIN', 'such an idiot', 'idiot alert', 'meeting with the idiot', 'idiot idiot idiot', 'guess who? the idiot', 'total idiot', 'the idiot wants a report', 'IDIOT.', 'why is he such an idiot', 'idiot update', 'still an idiot'];
-function hookScreen(t) { const sent = t > 0.45; return (c, w, h) => chat(c, w, h, { title: 'Mr Grant', sub: 'Manager', av: '#2B3A67', input: sent ? '' : 'My boss is an absolute idiot.', sendK: sent ? 0 : 0.5 + 0.5 * Math.sin(t * 9),
-  msgs: [...GRANT_CHAT, ...(sent ? [{ me: true, text: 'My boss is an absolute idiot.', k: eOut(P(t, 0.42, 0.52)), status: t > 1.4 ? 'Read 11:02' : 'Delivered', statusCol: t > 1.4 ? '#3C8FE0' : null }] : [])] }); }
+function hookScreen(t) { const sent = t > 0.3; return (c, w, h) => chat(c, w, h, { title: 'Mr Grant', sub: 'Manager', av: '#2B3A67', input: sent ? '' : 'My boss is an absolute idiot.', sendK: sent ? 0 : 0.5 + 0.5 * Math.sin(t * 9),
+  msgs: [...GRANT_CHAT, ...(sent ? [{ me: true, text: 'My boss is an absolute idiot.', k: eOut(P(t, 0.28, 0.38)), status: t > 0.95 ? 'Read 11:02' : 'Delivered', statusCol: t > 0.95 ? '#3C8FE0' : null }] : [])] }); }
 function overlays(c, t, L) {
   if (L === 'A1') { const s = ev('shot'), k = win(t, s - 0.15, SP.a1_nar.t - 0.05, 0.2); insert(c, k, (cc, w, h) => chat(cc, w, h, { title: 'Marketing', sub: 'your team', av: '#2E8C86', msgs: [{ me: false, text: 'My boss is an absolute idiot.' }], flash: 1 - P(t, s, s + 0.4), toast: t > s + 0.1 ? 'Screenshot saved' : null })); }
   if (L === 'A2') { const a = ev('chart'), hard = E.cameraMode(TL) === 'hard_cut', k = win(t, a - 0.1, hard ? SP.a2_nar.t - 0.1 : SP.a2_nar.t + 2.2);
@@ -241,7 +250,7 @@ function overlays(c, t, L) {
     insert(c, kb, (cc, w, h) => { chat(cc, w, h, { title: 'Ms Whitmore', sub: 'Owner', av: '#8A1C2E', msgs: [{ me: false, text: 'Grant. My cat needs a LinkedIn profile. By 5 pm.' }] }); catPic(cc, 30, 330); });
     banner(c, kb * eBack(P(t, b + 0.3, b + 0.6), 2), 'FROM: HIS BOSS', '#8A1C2E', '«Грант. Моему коту нужен профиль в LinkedIn. К 17:00.»', 1515, false);
     const s = ev('sent'), r = ev('read'), f = ev('freeze'), ks = win(t, s, f + 0.05, 0.25);
-    insert(c, ks, (cc, w, h) => chat(cc, w, h, { title: 'COMPANY GROUP CHAT', sub: '48 members', av: '#4CAF6A', msgs: [{ me: false, text: 'Cake in the kitchen!' }, { me: true, voice: '1:12', status: t > r ? 'Read by Ms Whitmore + 47' : 'Sending…', statusCol: t > r ? '#3C8FE0' : null }] }));
+    insert(c, ks, (cc, w, h) => chat(cc, w, h, { title: 'COMPANY GROUP CHAT', sub: '48 members', av: '#4CAF6A', msgs: [{ me: true, voice: recClock(s),  status: t > r ? 'Read by Ms Whitmore + 47' : 'Sending…', statusCol: t > r ? '#3C8FE0' : null }] }));
     const kb2 = eBack(P(t, s + 0.15, s + 0.4), 2); if (t < f) banner(c, kb2, t > r ? 'READ BY MS WHITMORE' : 'SENT TO: COMPANY GROUP CHAT', t > r ? '#3C8FE0' : '#2F9E58', t > r ? 'прочитала её начальница — и ещё 47' : 'голосовое из кармана — в общий чат', 1515);
   }
 }
@@ -255,10 +264,10 @@ function orgChart(c, k) { if (k <= 0) return; c.save(); c.translate(540, 1150); 
 
 // ---------------- hook & frame
 function drawHook(c, t) {
-  if (t < 1.85) { drawWorld(c, t, 'hook', { x: 60, y: -1000, z: 0.76, r: 0 }); c.fillStyle = 'rgba(28,24,40,.5)'; c.fillRect(0, 0, W, HH); K.phone(c, PH.x, PH.y, PH.s, zoom(hookScreen(t)));
-    if (t < 0.45) UI.tapCursor(c, PH.x + 208 * PH.s - 42 * ZM * PH.s + 20, PH.y + 370 * PH.s - 46 * ZM * PH.s + 30, 1, P(t, 0.3, 0.6));
-    if (t > 0.8) banner(c, eBack(P(t, 0.8, 1.05), 2.2), t > 1.4 ? 'READ' : 'SENT TO: MR GRANT', t > 1.4 ? '#3C8FE0' : '#2F9E58', t > 1.4 ? 'прочитано' : 'отправлено… начальнику', 1515);
-  } else { const cam = CAM[Math.min(CAM.length - 1, Math.round(t * FPS))]; const { heads, M } = drawWorld(c, t, 'hook', cam); if (t > 1.85 && t < 2.45) K.pop(c, t, 'О НЕТ…', 1.95, 2.35, 540, 1450, C.white, -0.06, 90); }
+  if (t < 1.3) { drawWorld(c, t, 'hook', { x: 60, y: -1000, z: 0.76, r: 0 }); c.fillStyle = 'rgba(28,24,40,.5)'; c.fillRect(0, 0, W, HH); K.phone(c, PH.x, PH.y, PH.s, zoom(hookScreen(t)));
+    if (t < 0.3) UI.tapCursor(c, PH.x + 208 * PH.s - 42 * ZM * PH.s + 20, PH.y + 370 * PH.s - 46 * ZM * PH.s + 30, 1, P(t, 0.15, 0.4));
+    if (t > 0.42) banner(c, eBack(P(t, 0.42, 0.6), 2.2), t > 0.95 ? 'READ' : 'SENT TO: MR GRANT', t > 0.95 ? '#3C8FE0' : '#2F9E58', t > 0.95 ? 'прочитано' : 'отправлено… начальнику', 1515);
+  } else { const cam = CAM[Math.min(CAM.length - 1, Math.round(t * FPS))]; const { heads, M } = drawWorld(c, t, 'hook', cam); if (t > 1.9 && t < 2.5) K.pop(c, t, 'О НЕТ…', 1.95, 2.4, 540, 1450, C.white, -0.06, 90); }
   Hq.vignette(c, W, HH, 0.3); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); }
 function renderFrame(c, t) {
   c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; const sc = sceneAt(t);
