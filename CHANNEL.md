@@ -1,8 +1,10 @@
 # English TikTok channel — rules & production guide (read this first in a new session)
 
 Owner speaks Russian: answer her in Russian, simply. On-screen text, voice and captions are American English.
-Concept: real, verifiable stories about money, business, famous companies and the hidden mechanics of everyday US spending.
+Concept: real, verifiable stories about money, business, famous companies and how familiar everyday things are actually run.
 "You use this every day, but you have no idea what's happening behind the scenes." Not finance advice, not news, no crypto/politics.
+Mix the topics: not only hidden fees and corporate scandals, but also unusual, curious true stories about how ordinary things work
+(logistics, design decisions, odd rules, clever systems). The episode should teach something and be fun to watch, not just make people angry.
 
 ## Episodes made (don't repeat these topics)
 | Folder | Topic | Final file |
@@ -18,9 +20,25 @@ Concept: real, verifiable stories about money, business, famous companies and th
 Also: `covers_extra/` (credit card trap, gym no-shows — uploaded videos). Ideas backlog: `IDEAS.md`. Captions: `CAPTIONS.md`.
 
 ## Format
-1080x1920, 30 fps, 30–50 s (natural pace beats a target length). Style: Bold Editorial Collage, 2D + 2.5D parallax, selective pseudo-3D,
+1080x1920, 30 fps. Length follows the story at the natural voice pace (never speed up the voice or pad scenes); episodes 10–11 ran 67–70 s. Style: Bold Editorial Collage, 2D + 2.5D parallax, selective pseudo-3D,
 paper cutouts (white rim, soft shadow, ink outline), paper texture. Palette: cream #F7F5F0, black #171717, red #E63946, yellow #FFC857, blue #4D8DFF.
-Story over effects: one visual journey, objects transform into the next scene, a new visual event every 2–4 s, readable without sound.
+Story over effects: one visual journey, objects transform into the next scene, something new to see every few seconds, readable without sound.
+
+## Story & animation (what worked in episodes 10–11, on hirkit)
+Guidelines, not quotas: pick what the story needs, and keep each episode different.
+- An animated mini-story, not an infographic: a real person (or a clearly labelled example) we follow through events. Facts arrive as things that happen to them,
+  not as static cards or long document shots. Numbers still appear big and readable, as objects in the scene (a receipt printing, a tag dropping, a coupon flipping).
+- Actions follow each other: one beat leads into the next (drive in → scan → phone buzzes → the bill prints → the offer → the dispute). The viewer always knows where we are.
+- Close-ups and emotion: front busts with expressions (`R.EXPR`: shocked, skeptical, squint, tired…), reactions on the key numbers, a deadpan look at the camera.
+  Mix the angles: extreme close-ups of objects, medium shots, wide establishing shots, POV of a phone in hand, side tracking shots, low angles.
+- Light and sets carry the mood: `hirkit/light.js` presets per scene (day, golden, evening, office, dark), rim light on characters, detailed sets
+  (airport outside and inside, garage, office) with blurred backgrounds behind close-ups.
+- Edit on meaning and on the voice: cut on the stressed word (`at(id, word)`), transitions through objects (dive into the phone screen, torn paper), hold a beat on the payoff.
+- Visual humor and a real twist: physical gags that don't bend facts (the help bot's cord too short for the HUMAN AGENT socket, the discount balloon popping on day 7),
+  and an ending that turns the story (Hertz's own definition of the fee). Objects can have personality, but don't paint a real company's equipment as a villain
+  unless the facts say so; show the company's position when it exists.
+- Keep it honest on screen: historical label (place · year) visible but small; possible deadlines shown as deadlines, not as events that happened.
+- Series identity: the How It's Run look (paper collage, palette, Chris's voice, frame-0 headline with a stamp, subtitle style). Characters and settings change with the story.
 
 ## Voice (ElevenLabs) — see `VOICE.md`
 Chris `iP95p4xoKVk53GoZ742B`, model `eleven_multilingual_v2`, settings for new episodes: stability 0.35, similarity 0.8, style 0.55, speaker boost, speed 0.95.
@@ -29,7 +47,10 @@ One request per line (short lines = control over pauses), with previous/next tex
 Approve the script BEFORE generating; generate each line once. Verify with speech-to-text (scribe_v1) — the full video must match the script.
 
 ## Code layout (copy the latest episode, never edit old episodes)
-- Engine: `mcd_ep1/engine.js` (camera keys, parallax fg, motion blur on fast moves, world blur, subtitles, CLI `video | still t1,t2 out.png | cues`).
+- New episodes are built on **hirkit** (`hirkit/`: `rig.js` characters, expressions, front busts; `light.js`; `collage.js`; `edit.js` shot list, cuts on words, tear transition).
+  Use it as is; extend it only in small, backwards-compatible steps. Latest reference episode: `scratch_ep11/` (`scankit.js` sets/props, `episode.js` shots,
+  `mix.py`, `speech.py` real speech start/end, `stt_check.py`, `cover.js`, `build.sh`). Put new sets and props in the episode's own kit file.
+- Engine: `mcd_ep1/engine.js` (read-only: new episodes use only its voice timings and subtitles) (camera keys, parallax fg, motion blur on fast moves, world blur, subtitles, CLI `video | still t1,t2 out.png | cues`).
 - Primitives: `tests/mcd_collage/kit.js` (cut, rr, tag, coin, bill, sprite, paper texture, palette, fonts).
 - Prop kits: `air_ep2/airkit.js`, `car_ep3/carkit.js`, `car_ep3/v2/car3d.js`, `rent_ep4/rentkit.js` (2.5D buildings, `text()` with max-width auto-fit),
   `med_ep5/medkit.js` (heroine with brows, doctor, signs, bills, phone, giant hand), `amazon_ep6/amazonkit.js` (box, buyer, phone, conveyor, truck, warehouse, workers, coins, house),
@@ -52,7 +73,7 @@ Primary sources only (court filings, regulators, company filings, solid journali
 Illustrative numbers are labelled (EXAMPLE / "Say,"). Historical practices are said to be historical. No invented numbers.
 
 ## Retention (use sensibly)
-Hook in the first 1–2 s where picture + voice + on-screen text say the same thing; open loop (question answered at the end); new event every 2–4 s;
+Hook in the first 1–2 s where picture + voice + on-screen text say the same thing; open loop (question answered at the end); keep something new happening;
 works with sound off; ironic, idea-changing last line; last frame echoes the first so a re-watch loops. No "follow/like/comment", no forced questions.
 
 ## US TikTok playbook (from the ep 8 review; apply to every new episode)
@@ -63,9 +84,9 @@ Algorithm (not official, but every source agrees): watch time, completion and re
 4. Never reset to an empty/zero scene after the hook: transform the hook objects straight into the explanation. Explain the colour code once (legend).
 5. Repeated examples: one big readable line each (e.g. "$3 TIP → DOORDASH PAYS $7"), no small extra cards.
 6. Proof on screen: a regulator/court figure as a big stamp with a hit sound, on clean art, ~1.5 s. US viewers trust receipts.
-7. A little character humor that doesn't bend facts: the hero's deadpan look at the camera, a recurring "villain object" with a face (the DoorDash safe winks).
+7. A little character humor that doesn't bend facts: the hero's deadpan look at the camera, a recurring object with personality (the DoorDash safe winks, the help bot in ep 11).
 8. Strong twist + last frame echoes the first (loop). Hold the final number a beat before the hard cut.
-9. Series identity for follows: same opener style and visual language every episode.
+9. Series identity for follows: same opener style and visual language every episode (the cast and settings can change).
 10. Comments: hot-topic angle (tipping culture, hidden fees). The caption may end with a natural question; the video itself has no "comment/follow" asks.
 11. Saves: when the facts allow, one "what you can do" line (in the caption or pinned comment if not in the approved script).
 12. Before delivery: an independent review pass (a fresh reviewer scores hook / middle retention / sound-off clarity / twist / comments / shares / saves / follow / humor / cover).
