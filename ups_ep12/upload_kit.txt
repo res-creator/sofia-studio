@@ -1,0 +1,20 @@
+EPISODE 12 — The Shortest Route Isn't Always the Cheapest (UPS left turns)
+Files: ups_shortest_route.mp4 · ups_shortest_route_cover.png · ups_shortest_route.srt
+
+TIKTOK CAPTION
+3 right turns… to avoid ONE left? 🚚 UPS's route software gives an unnecessary left turn a penalty in its math, because waiting for a gap in oncoming traffic costs time and fuel. It doesn't ban left turns: when a left makes more sense, the route can use it. (Mike is an illustrative example, not a real driver.) Loop or left — which would you take?
+#ups #delivery #driving #logistics #trucking #didyouknow
+
+PINNED COMMENT
+Sources: CNN (Feb 2017), quoting UPS's Jack Levis: "We will make left hand turns, but not ones that are unnecessary", and UPS's routing software "can give an undesirable left turn a penalty that adds 20 seconds to the estimated route time" (it's a cost in the calculation, not a penalty for the driver). UPS, ORION announcement (Nov 2013): one mile less per driver, per day, is worth up to $50 million a year — that's about total miles, not only left turns. MythBusters tested a delivery truck in San Francisco: the right-turn-only route was longer but used less fuel (one test, not a universal rule). These are historical figures (2013–2017); UPS's routing tools have changed since. Mike and his route are an illustration.
+
+YOUTUBE SHORTS
+Title: Why UPS Trucks Almost Never Turn Left
+Description: UPS drivers often take three right turns instead of one left. Why? UPS's route software treats an unnecessary left turn as a cost: waiting for a gap in oncoming traffic, with the engine running, costs time and fuel. In 2017 UPS said the software can add a 20-second penalty to the estimated route time for an undesirable left — a cost in the math, not a penalty for the driver. UPS doesn't ban left turns: when a left makes more sense, the system can choose it. MythBusters tested the idea with a delivery truck: the right-turn route was longer but used less fuel (one test). UPS has said that one mile less per driver, per day, is worth up to $50 million a year (2013 estimate, about total miles). Mike is a fictional example driver.
+Sources:
+- CNN via CBS58 (Feb 16, 2017), "Why UPS trucks (almost) never turn left": https://www.cbs58.com/news/why-ups-trucks-almost-never-turn-left
+- Transport Topics on UPS ORION (one mile per driver per day = up to $50M a year): https://www.ttnews.com/articles/ups-routing-program-orion-helps-drivers-trim-miles-reduce-costs
+- MythBusters delivery-truck test (episode summary): https://mythresults.com/waterslide-wipeout
+- EarthWise Radio (Nov 2012): https://earthwiseradio.org/2012/11/turn-right-to-protect-the-environment/
+- Time / Travel + Leisure (Apr 21, 2017): https://time.com/4727707/ups-no-left-turns/
+#ups #delivery #driving #logistics #didyouknow #shorts
