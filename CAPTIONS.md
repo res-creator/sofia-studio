@@ -39,3 +39,7 @@ You tipped $9… and your driver still made $10? 🛵 Under DoorDash's old pay s
 ## 10. The $5 Coffee That Cost $40 (Wells Fargo, episode 10)
 Same $5 coffee. Same day. So how could it end up costing $40? ☕ Under Wells Fargo's old system in California (2000s), card purchases were processed biggest first — so one overdraft could turn into three fees. The $35 fee is an illustrative example. Did you know banks could pick the order?
 #overdraft #banking #wellsfargo #personalfinance #money #didyouknow
+
+## 11. The $440 Scratch (Hertz / Thrifty AI scanner, episode 11)
+A 1-inch scuff on a wheel. A $440 bill 🚗 In 2025, a renter returned a Thrifty car (a Hertz brand) at the Atlanta airport, an AI scanner flagged the damage, and the bill came with a pay-fast discount — 7 days to take it, up to 10 days for an email reply. Hertz later said an agent reviewed the photos and confirmed the damage was new. Would you pay fast or dispute it?
+#rentalcar #hertz #travel #ai #hiddenfees #didyouknow
