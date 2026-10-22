@@ -1,7 +1,8 @@
-mix.wav
 _video.mp4
-cues.json
-mix_v2.wav
 _video_v2.mp4
 build.log
+cues.json
+cues_v2.json
+mix.wav
+mix_v2.wav
 vo.log
