@@ -1,0 +1,170 @@
+{
+ "summary": {
+  "ep": "party",
+  "style": "v2",
+  "layout": "v2",
+  "samples": 592,
+  "issues": 13,
+  "critical": 0,
+  "major": 3,
+  "minor": 10
+ },
+ "issues": [
+  {
+   "ep": "party",
+   "type": "crop_feet_ankles",
+   "key": "12|1300|#C2504A",
+   "start": 50.5,
+   "end": 51.75,
+   "n": 6,
+   "sev": "major",
+   "max": 136.703125,
+   "info": "",
+   "dur": 1.5
+  },
+  {
+   "ep": "party",
+   "type": "crop_feet_ankles",
+   "key": "1|1480|#F7B6CF",
+   "start": 25.25,
+   "end": 25.5,
+   "n": 2,
+   "sev": "major",
+   "max": 150.59814453125,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "party",
+   "type": "crop_feet_ankles",
+   "key": "1|1480|#F7B6CF",
+   "start": 51.5,
+   "end": 51.75,
+   "n": 2,
+   "sev": "major",
+   "max": 153.669921875,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "party",
+   "type": "bubble_too_long",
+   "key": "c2_her",
+   "start": 113,
+   "end": 120.75,
+   "n": 32,
+   "sev": "minor",
+   "max": 7,
+   "info": "",
+   "dur": 8
+  },
+  {
+   "ep": "party",
+   "type": "face_covered_by_overlay",
+   "key": "12|1300|#C2504A",
+   "start": 133.25,
+   "end": 136.75,
+   "n": 13,
+   "sev": "minor",
+   "max": 0.25773195876288657,
+   "info": "listener",
+   "dur": 3.75
+  },
+  {
+   "ep": "party",
+   "type": "crop_knees",
+   "key": "10|1580|#2B2733",
+   "start": 96.75,
+   "end": 98.25,
+   "n": 7,
+   "sev": "minor",
+   "max": 14.065027046203568,
+   "info": "",
+   "dur": 1.75
+  },
+  {
+   "ep": "party",
+   "type": "crop_knees",
+   "key": "1|1480|#F7B6CF",
+   "start": 96.75,
+   "end": 98.25,
+   "n": 7,
+   "sev": "minor",
+   "max": 65.13633232116695,
+   "info": "",
+   "dur": 1.75
+  },
+  {
+   "ep": "party",
+   "type": "crop_knees",
+   "key": "31|1560|#7A5BC6",
+   "start": 32.25,
+   "end": 33,
+   "n": 4,
+   "sev": "minor",
+   "max": 61.15784282684331,
+   "info": "",
+   "dur": 1
+  },
+  {
+   "ep": "party",
+   "type": "face_covered_by_overlay",
+   "key": "10|1580|#2B2733",
+   "start": 135,
+   "end": 135.75,
+   "n": 4,
+   "sev": "minor",
+   "max": 0.23711340206185566,
+   "info": "listener",
+   "dur": 1
+  },
+  {
+   "ep": "party",
+   "type": "crop_knees",
+   "key": "12|1300|#C2504A",
+   "start": 121.5,
+   "end": 122,
+   "n": 3,
+   "sev": "minor",
+   "max": 58.39100170135498,
+   "info": "",
+   "dur": 0.75
+  },
+  {
+   "ep": "party",
+   "type": "crop_knees",
+   "key": "10|1580|#2B2733",
+   "start": 126.5,
+   "end": 127,
+   "n": 3,
+   "sev": "minor",
+   "max": 35.42836961746207,
+   "info": "",
+   "dur": 0.75
+  },
+  {
+   "ep": "party",
+   "type": "crop_knees",
+   "key": "1|1480|#F7B6CF",
+   "start": 32.25,
+   "end": 32.5,
+   "n": 2,
+   "sev": "minor",
+   "max": 50.12616386413583,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "party",
+   "type": "crop_knees",
+   "key": "1|1480|#F7B6CF",
+   "start": 112.5,
+   "end": 112.75,
+   "n": 2,
+   "sev": "minor",
+   "max": -10.386558532714844,
+   "info": "",
+   "dur": 0.5
+  }
+ ]
+}

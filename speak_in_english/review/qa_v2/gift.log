@@ -1,0 +1,36 @@
+{"ep":"gift","style":"v2","layout":"v2","samples":466,"issues":35,"critical":3,"major":11,"minor":21}
+  critical speaker_offscreen            41.00-42.00s 
+  critical speaker_offscreen            13.75-14.50s 
+  critical speaker_offscreen            56.00-56.50s 
+  major    crop_feet_ankles             96.50-99.00s 
+  major    face_covered_by_overlay      74.75-77.00s listener
+  major    face_covered_by_overlay      85.25-86.25s listener
+  major    face_covered_by_overlay      85.25-86.25s listener
+  major    crop_feet_ankles             96.50-97.50s 
+  major    crop_feet_ankles             98.25-99.25s 
+  major    crop_feet_ankles             28.50-29.25s 
+  major    crop_feet_ankles             42.25-43.00s 
+  major    crop_feet_ankles             71.75-72.25s 
+  major    crop_feet_ankles             85.25-85.75s 
+  major    crop_feet_ankles             107.25-107.75s 
+  minor    bubble_too_long              86.50-96.75s 
+  minor    face_covered_by_bubble       40.00-42.50s listener
+  minor    face_covered_by_bubble       13.50-15.00s listener
+  minor    face_covered_by_bubble       56.00-57.50s listener
+  minor    crop_knees                   22.50-23.75s 
+  minor    crop_knees                   27.00-28.25s 
+  minor    crop_knees                   9.50-10.50s 
+  minor    crop_knees                   37.50-38.50s 
+  minor    crop_knees                   69.50-70.50s 
+  minor    crop_knees                   87.75-88.75s 
+  minor    crop_knees                   43.25-44.00s 
+  minor    crop_knees                   103.50-104.25s 
+  minor    crop_knees                   103.50-104.25s 
+  minor    crop_knees                   8.25-8.75s 
+  minor    crop_knees                   13.00-13.50s 
+  minor    crop_knees                   15.25-15.75s 
+  minor    crop_knees                   43.25-43.75s 
+  minor    crop_knees                   52.75-53.25s 
+  minor    crop_knees                   55.25-55.75s 
+  minor    crop_knees                   58.75-59.25s 
+  minor    crop_knees                   75.50-76.00s 

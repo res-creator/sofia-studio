@@ -1,0 +1,50 @@
+{
+ "summary": {
+  "ep": "trial",
+  "style": "v2",
+  "layout": "v2",
+  "samples": 781,
+  "issues": 3,
+  "critical": 0,
+  "major": 0,
+  "minor": 3
+ },
+ "issues": [
+  {
+   "ep": "trial",
+   "type": "crop_knees",
+   "key": "12|1300|#C2504A",
+   "start": 366.5,
+   "end": 368.5,
+   "n": 5,
+   "sev": "minor",
+   "max": 44.20000743865967,
+   "info": "",
+   "dur": 2.5
+  },
+  {
+   "ep": "trial",
+   "type": "crop_knees",
+   "key": "1|1480|#F7B6CF",
+   "start": 373,
+   "end": 374.5,
+   "n": 4,
+   "sev": "minor",
+   "max": 34.46399745941153,
+   "info": "",
+   "dur": 2
+  },
+  {
+   "ep": "trial",
+   "type": "face_covered_by_bubble",
+   "key": "43|1720|#1E1E26",
+   "start": 110.5,
+   "end": 110.5,
+   "n": 1,
+   "sev": "minor",
+   "max": 0.4536082474226804,
+   "info": "listener",
+   "dur": 0.5
+  }
+ ]
+}

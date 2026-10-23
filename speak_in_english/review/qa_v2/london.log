@@ -1,0 +1,13 @@
+{"ep":"london","style":"v2","layout":"v2","samples":578,"issues":12,"critical":0,"major":4,"minor":8}
+  major    crop_feet_ankles             129.75-130.75s 
+  major    crop_feet_ankles             129.75-130.50s 
+  major    face_covered_by_bubble       122.00-122.50s listener
+  major    bubble_covered               126.50-127.00s 
+  minor    bubble_too_long              112.25-122.25s 
+  minor    face_covered_by_overlay      129.75-135.00s listener
+  minor    crop_knees                   124.00-126.50s 
+  minor    crop_knees                   30.50-32.25s 
+  minor    crop_knees                   39.75-40.75s 
+  minor    crop_knees                   65.75-66.50s 
+  minor    crop_knees                   68.75-69.50s 
+  minor    crop_knees                   122.25-122.75s 

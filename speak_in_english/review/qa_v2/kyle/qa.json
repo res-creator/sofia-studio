@@ -1,0 +1,38 @@
+{
+ "summary": {
+  "ep": "kyle",
+  "style": "v2",
+  "layout": "v2",
+  "samples": 471,
+  "issues": 2,
+  "critical": 0,
+  "major": 1,
+  "minor": 1
+ },
+ "issues": [
+  {
+   "ep": "kyle",
+   "type": "face_covered_by_overlay",
+   "key": "3|1530|#F4B8C8",
+   "start": 41.5,
+   "end": 44.75,
+   "n": 14,
+   "sev": "major",
+   "max": 0.5463917525773195,
+   "info": "speaker,listener",
+   "dur": 3.5
+  },
+  {
+   "ep": "kyle",
+   "type": "bubble_too_long",
+   "key": "c2_her",
+   "start": 85.75,
+   "end": 96.5,
+   "n": 44,
+   "sev": "minor",
+   "max": 9,
+   "info": "",
+   "dur": 11
+  }
+ ]
+}

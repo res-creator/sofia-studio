@@ -1,0 +1,16 @@
+{"ep":"repay","style":"v2","layout":"v2","samples":453,"issues":15,"critical":0,"major":10,"minor":5}
+  major    crop_feet_ankles             20.25-21.25s 
+  major    crop_feet_ankles             69.00-70.00s 
+  major    crop_feet_ankles             9.25-10.00s 
+  major    crop_feet_ankles             23.00-23.75s 
+  major    crop_feet_ankles             40.75-41.50s 
+  major    crop_feet_ankles             54.75-55.50s 
+  major    crop_feet_ankles             73.25-74.00s 
+  major    crop_feet_ankles             100.25-101.00s 
+  major    crop_feet_ankles             12.75-13.25s 
+  major    crop_feet_ankles             92.75-93.25s 
+  minor    bubble_too_long              82.75-92.25s 
+  minor    face_covered_by_bubble       38.25-40.50s listener
+  minor    face_covered_by_bubble       10.25-12.25s listener
+  minor    crop_knees                   19.75-20.25s 
+  minor    crop_knees                   65.50-66.00s 
