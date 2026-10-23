@@ -1617,3 +1617,50 @@ EP["trial"] = dict(
             ('fn_x', 2.6, [('NIGHT', -2.5, 0), ('knock', -1.5, 0.9), ('knock', -1.28, 0.9), ('knock', -1.06, 0.9), ('creak', -0.6, 0.7)])], 1.3),
     ],
 )
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# ARE YOU MAD? — short test format (60-75 s, hard_cut): conflict in the first 2 s, one short narrator phrase per level.
+# Tom = Kokoro (as in "Бабушкина добавка"); her / tip / narrator = ElevenLabs (Jessica / tip / Sarah), as in WRONG CHAT.
+EP["mad"] = dict(
+    title='Ты что, обиделась?',
+    hook_title=[['ОН ЗАБЫЛ. СПРАШИВАЕТ:', 'd'], ['«ТЫ ОБИДЕЛАСЬ?»', 'p'], ['', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut",
+    chunks={'c2_her': [
+        ["I'd like to articulate, with the utmost composure,", 'Хочу заявить с предельным самообладанием,'],
+        ['that your persistent obliviousness regarding significant dates', 'что твоя упорная забывчивость насчёт важных дат'],
+        ['has rendered me profoundly, irrevocably...', 'сделала меня глубоко, бесповоротно…'],
+        ['fine.', '…в порядке.']]},
+    lines=[
+        ('hook_x', 'tom', 'Are you mad?', 'Ты что, обиделась?'),
+        ('hook_her', 'her', '[deadpan] No.', 'Нет.'),
+        ('hook', 'nar', 'Он забыл годовщину. Как ответить по-английски? Проверим!', ''),
+        ('a1_her', 'her', '[deadpan] No. Fine. Good.', 'Нет. Нормально. Хорошо.'),
+        ('a1_x', 'tom', 'Great! Pizza?', 'Отлично! Пиццу?'),
+        ('a1_nar', 'nar', 'Уровень А-один. Её «fine» значит: тебе конец.', ''),
+        ('a2_her', 'her', 'I am not angry on you.', 'Я не злюсь на тебя.'),
+        ('a2_x', 'tom', 'On me? Where?', 'На мне? Где?'),
+        ('a2_nar', 'nar', 'А-два. Злятся with, а не on.', ''),
+        ('a2_tip', 'tip', "I'm not angry with you.", ''),
+        ('b1_her', 'her', "It's not a big deal.", 'Ничего страшного.'),
+        ('b1_nar', 'nar', 'Би-один. Никогда не верь этой фразе.', ''),
+        ('b2_her', 'her', "I'm a bit upset, to be honest.", 'Честно говоря, я немного расстроена.'),
+        ('b2_nar', 'nar', 'Би-два. A bit upset — «немного расстроена».', ''),
+        ('b2_tip', 'tip', "I'm a bit upset.", ''),
+        ('c1_her', 'her', 'You forgot something important, and that hurt my feelings.', 'Ты забыл кое-что важное, и мне было обидно.'),
+        ('c1_x', 'tom', 'Wait... is it... your birthday?', 'Стоп… это… твой день рождения?'),
+        ('c1_nar', 'nar', 'Си-один. That hurt my feelings — «мне было обидно».', ''),
+        ('c2_her', 'her', "I'd like to articulate, with the utmost composure, that your persistent obliviousness regarding significant dates has rendered me profoundly, irrevocably... fine.", 'Хочу заявить с предельным самообладанием: твоя упорная забывчивость насчёт важных дат сделала меня глубоко, бесповоротно… в порядке.'),
+        ('c2_x', 'tom', "So... you're mad.", 'Так… ты злишься.'),
+        ('c2_her2', 'her', '[deadpan] Finally.', 'Наконец-то.'),
+        ('c2_nar', 'nar', 'Си-два. Fine — самое опасное слово в английском.', ''),
+        ('outro', 'nar', 'А ты отвечаешь «I\'m fine», когда злишься? Пиши честно!', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'ПОНЯЛ НАМЁК', 'ok': False, 'note': 'заказал пиццу'},
+           'A2': {'type': 'swap', 'bad': 'I am not angry on you.', 'bad_note': 'angry on — так не говорят', 'good': ["I'm not angry", 'with you.'], 'good_at': 1.0, 'mark': 'with'},
+           'B1': {'type': 'eq', 'en': "It's not a big deal.", 'ru': '= Ничего страшного.', 'note': 'на деле: это ОЧЕНЬ важно', 'stamp': ['НЕ', 'ВЕРЬ!']},
+           'B2': {'type': 'big', 'en': 'a bit upset', 'ru': 'немного расстроена', 'ex': ["I'm a bit upset, to be honest.", 'честно говоря, я расстроена.'], 'icon': 'gift'},
+           'C1': {'type': 'eq', 'en': 'That hurt my feelings.', 'ru': '= Мне было обидно.', 'ex': ['You forgot something important', '= ты забыл кое-что важное']},
+           'C2': {'type': 'c2', 'vocab': [['obliviousness', '= забывчивость'], ['irrevocably', '= бесповоротно']], 'moral': ['FINE', 'ЗНАЧИТ', 'ВСЁ ПЛОХО'], 'moral_at': 0.45}},
+)

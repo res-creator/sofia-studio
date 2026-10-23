@@ -25,8 +25,12 @@ cue("impact", 0.05, 0.9); cue("whoosh", 0.0, 0.5)
 if EPN == "airport": cue("chime", 0.1, 0.55)
 if EPN == "wrongchat":  # phone hook: SEND -> SENT TO: MR GRANT -> READ -> her eyes -> his head turns
     cue("send", 0.3, 0.8); cue("pop", 0.45, 0.7); cue("msg", 0.95, 0.8); cue("whoosh", 1.3, 0.45); cue("gasp", 1.9, 0.7)
-for k in range(1, 4): cue("pop", 0.2 + 0.35 * k, 0.6)
-h0 = 0.35; e = say("hook", h0); hw = word_times("hook") or []
+if EPN != "mad":
+    for k in range(1, 4): cue("pop", 0.2 + 0.35 * k, 0.6)
+h0 = 0.35
+if EPN == "mad":  # conflict from frame 0: "Are you mad?" -> "No." -> narrator
+    h0 = say("hook_x", 0.1); cue("impact_soft", h0 + 0.2, 0.6); h0 = say("hook_her", h0 + 0.2) + 0.2
+e = say("hook", h0); hw = word_times("hook") or []
 def find(word):
     for w, a, b in hw:
         if w.lower().strip("«»!?.,").startswith(word.lower()): return h0 + a
@@ -266,6 +270,16 @@ elif EPN == "wrongchat":
         C2=[("c2_her", 0, [("SIP", 3.0, 0), ("gulp", 3.4, 0.5), ("FOLDER", 8.0, 0), ("thud", 8.6, 0.9)]), ("c2_x", 2.2, [("scratch", -2.1, 0.6)] + TICKS(2.0)), ("c2_x2", 2.5, [("BOSSMSG", -2.2, 0), ("msg", -2.1, 0.8)]), ("c2_her2", 0.35, []), ("c2_nar", 3.2, [("SENT", -2.9, 0), ("send", -2.9, 0.9), ("READ", -1.6, 0), ("msg", -1.6, 0.9), ("FREEZE", -1.2, 0), ("impact_soft", -1.2, 0.8)])],
     )
     INTRO = 1.15
+elif EPN == "mad":
+    LV = dict(
+        A1=[("a1_her", 0, []), ("a1_x", 0.3, []), ("a1_nar", 1.05, [("BLOW", -1.0, 0), ("whoosh", -1.0, 0.7), ("DARK", -0.7, 0), ("powerdown", -0.7, 0.7)])],
+        A2=[("a2_her", 0, []), ("a2_x", 0.3, [("brow", 0.05, 0.5)]), ("a2_nar", 0.6, [("buzz", 0.95, 0.5)]), ("a2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        B1=[("b1_her", 0, []), ("b1_nar", 1.6, [("GAME", -1.5, 0), ("thud", -1.3, 0.6), ("pop", -0.95, 0.4), ("pop", -0.7, 0.4), ("pop", -0.45, 0.4), ("pop", -0.2, 0.4)])],
+        B2=[("b2_her", 0, []), ("b2_nar", 1.45, [("NOTICE", -1.35, 0), ("impact_soft", -1.0, 0.7), ("gasp", -0.95, 0.8)]), ("b2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C1=[("c1_her", 0, []), ("c1_x", 0.3, []), ("c1_nar", 0.95, [("FALL", -0.9, 0), ("whoosh", -0.85, 0.5), ("plop", -0.5, 1.0), ("thud", -0.5, 0.8)])],
+        C2=[("c2_her", 0, []), ("c2_x", 1.6, [("scratch", -1.5, 0.5)] + TICKS(1.4)), ("c2_her2", 0.3, []), ("c2_nar", 0.65, [("rimshot", -0.6, 0.8)])],
+    )
+    INTRO = 1.15
 elif EPN == "repay":
     LV = dict(
         A1=[("a1_her", 0, []), ("a1_x", 0.3, [("COCKTAIL", ("e", -1.0), 0), ("chime", ("e", -1.0), 0.6)]), ("a1_nar", 0.7, [])],
@@ -386,14 +400,14 @@ for L in ["A1", "A2", "B1", "B2", "C1", "C2"]:
             if n == "thud" and lid == "c2_x3": ev["plop"] = round(tt, 3)
             if n == "gulp" or n == "nope": ev["ins"] = round(c - 1.6, 3)
         ev[lid] = c; c = say(lid, c); prev_end = c
-    t = c + 0.55
+    t = c + (0.3 if EPN == "mad" else 0.55)
     if EPN == "lift": cue("doors", t - 0.45, 0.5)
     scenes.append(dict(id=L, s=round(s, 3), e=round(t, 3), ev={k: (round(v, 3) if not isinstance(v, list) else v) for k, v in ev.items()}))
 s = t
 cue("whoosh", s, 0.8); cue("impact", s + 0.3, 0.8)
 e = say("outro", s + 0.8)
 for k in range(6): cue("pop", s + 1.1 + 0.15 * k, 0.5)
-t = e + 1.3
+t = e + (1.0 if EPN == "mad" else 1.3)
 scenes.append(dict(id="outro", s=round(s, 3), e=round(t, 3)))
 
 for sp in speech:
