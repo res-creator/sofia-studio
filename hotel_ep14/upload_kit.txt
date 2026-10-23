@@ -2,6 +2,9 @@ EPISODE 14 — The $1,400 Hotel Room (Nassau, the Bahamas · reported by NBC Bay
 Files: the_1400_hotel_room_novoice.mp4 (no narration yet — see VOICE STATUS) · the_1400_hotel_room_cover.png · the_1400_hotel_room.srt
 Final (after the voice): the_1400_hotel_room.mp4 — built by `sh hotel_ep14/build.sh` once vo/ exists.
 
+STATUS
+Animation approved by the owner (no visual changes). NOT approved for publishing until the voice is added; voice method to be agreed first.
+
 VOICE STATUS
 The ElevenLabs account available to this session is on the FREE plan (no commercial licence), so the Chris narration was NOT generated.
 On a paid plan: `ELEVEN_API_KEYS=proxy python3 hotel_ep14/vo.py` -> `sh hotel_ep14/build.sh` (the shots re-time themselves to the real voice).
