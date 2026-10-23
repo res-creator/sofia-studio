@@ -1394,6 +1394,44 @@ EP["wrongchat"] = dict(
 )
 
 
+# Short TikTok test format (60-75 s): no narrator hook, conflict from frame 0, fast level intros, one narrator phrase per level.
+EP["phone"] = dict(
+    title='Он весь вечер в телефоне',
+    hook_title=[['СВИДАНИЕ.', 'd'], ['ОН ВЕСЬ ВЕЧЕР', 'p'], ['В ТЕЛЕФОНЕ', 'd']],
+    stamp="", stamp_word="", next=None, short=True,
+    camera="hard_cut",
+    chunks={'c2_her': [
+        ["I find it remarkable that you've travelled all this way", 'Поразительно: ты проделал весь этот путь,'],
+        ['merely to commune with a device', 'лишь бы пообщаться с устройством,'],
+        ['that has never once laughed at your jokes.', 'которое ни разу не посмеялось над твоими шутками.']]},
+    lines=[
+        ('a1_her', 'her', 'Phone. No!', 'Телефон. Нет!'),
+        ('a1_nar', 'nar', 'Он решил, что ты хочешь позвонить.', ''),
+        ('a2_her', 'her', 'You are always in phone.', 'Ты всегда в телефоне.'),
+        ('a2_x', 'tom', "In? I'm on the chair.", 'В телефоне? Я на стуле.'),
+        ('a2_nar', 'nar', 'Не in, а on. Запоминай:', ''),
+        ('a2_tip', 'tip', "You're always on your phone.", ''),
+        ('b1_her', 'her', 'Could you put your phone away, please?', 'Убери, пожалуйста, телефон.'),
+        ('b1_nar', 'nar', 'Убрал. И тут же достал второй.', ''),
+        ('b2_her', 'her', 'Am I boring you?', 'Тебе со мной скучно?'),
+        ('b2_x', 'tom', 'What? No, babe, totally.', 'Что? Нет, зай, конечно.'),
+        ('b2_nar', 'nar', '«Тебе со мной скучно?» Ему весело. С котиками.', ''),
+        ('c1_her', 'her', "I'd really appreciate it if you were actually here with me.", 'Мне было бы очень приятно, если бы ты правда был здесь, со мной.'),
+        ('c1_nar', 'nar', 'Вежливо и честно. Но телефон не сдаётся.', ''),
+        ('c2_her', 'her', "I find it remarkable that you've travelled all this way merely to commune with a device that has never once laughed at your jokes.", 'Поразительно: ты проделал весь этот путь, лишь бы пообщаться с устройством, которое ни разу не посмеялось над твоими шутками.'),
+        ('c2_x', 'tom', 'They love you.', 'Ты им нравишься.'),
+        ('c2_her2', 'her', 'Hi, chat.', 'Привет, чат.'),
+        ('c2_nar', 'nar', 'Свидание — мимо. Зато двенадцать тысяч фанатов.', ''),
+        ('outro', 'nar', 'Что хуже: телефон на свидании или стрим без спроса? Пиши в комментарии и подпишись!', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'ПОНЯЛ', 'ok': False, 'note': 'дал тебе телефон'},
+           'A2': {'type': 'swap', 'bad': 'You are always in phone.', 'bad_note': 'in phone → on your phone', 'good': ["You're always", 'on your phone.'], 'good_at': 1.0, 'mark': 'on'},
+           'B1': {'type': 'eq', 'en': 'Could you put your phone away?', 'ru': '= Убери, пожалуйста, телефон.', 'note': 'put away = убрать', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'eq', 'en': 'Am I boring you?', 'ru': '= Тебе со мной скучно?', 'note': 'bore = утомлять, наводить скуку'},
+           'C1': {'type': 'eq', 'en': "I'd appreciate it if...", 'ru': '= Я была бы признательна, если...', 'ex': ['you were actually here with me', '= ты правда был здесь, со мной']},
+           'C2': {'type': 'c2', 'vocab': [['remarkable', '= поразительный'], ['commune with', '= общаться, единяться (книжн.)']], 'moral': ['', '', ''], 'moral_at': 99}},
+)
+
 # ---------------------------------------------------------------------------------------------------------------
 # THE TRIAL — first long YouTube episode (16:9, ~9-11 min). Built by timeline_long.py from "seq", rendered by trial.js.
 # Scenes: hook, the six levels spread through the trial, plus story scenes between them (NM, EX, LOG, VD, FN).
