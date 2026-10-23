@@ -213,15 +213,16 @@ section(M['slang'], M['hit'], prog=MAJ, drums=1, arp=True, g=0.6)               
 cut = int(M['hit'] * SR); mus[cut:] *= 0                                                         # ... stops on the last beat
 put(pad([NOTE(n) for n in (48, 55, 60)], CU['T'] - M['hit'], 0.2), M['hit'], 0.1)                 # a held chord under the last image
 fade = np.ones(N); fs = int((CU['T'] - 0.12) * SR); fade[fs:] = np.linspace(1, 0, N - fs)
-fx = mix * 0.3   # owner's note: effects must sit clearly under the voice
+fx = mix * 0.18  # owner's note (ep 14): effects quieter (was 0.3) and they must never cover the voice
 vo = np.zeros(N)
 for vid, t in CU['vo']:
     if not os.path.exists(f'{D}/vo/{vid}.mp3'): continue  # draft layout without the voice
     raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', f'{D}/vo/{vid}.mp3', '-f', 's16le', '-ac', '1', '-ar', str(SR), '-'], capture_output=True).stdout
     a = np.frombuffer(raw, np.int16).astype(float) / 32768; s = int(t * SR); vo[s:s + len(a)] += a[: N - s]
-duck = np.convolve((np.abs(vo) > 0.02).astype(float), np.ones(4410) / 4410, 'same')
-dk = np.clip(duck * 3, 0, 1)
-out = (vo * 1.0 + fx * (1 - 0.6 * dk) + mus * 0.3 * (1 - 0.55 * dk)) * fade
+# ducking: 0.3 s window centred on the speech, so effects and music dip just before a line starts and come back after it ends
+duck = np.convolve((np.abs(vo) > 0.02).astype(float), np.ones(int(0.3 * SR)) / int(0.3 * SR), 'same')
+dk = np.clip(duck * 4, 0, 1)
+out = (vo * 1.0 + fx * (1 - 0.8 * dk) + mus * 0.3 * (1 - 0.6 * dk)) * fade   # under the voice: effects -14 dB, music -8 dB
 out = np.tanh(out * 1.1) * 0.9
 import wave
 w = wave.open(f'{D}/mix.wav', 'wb'); w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((out * 32767).astype(np.int16).tobytes()); w.close()
