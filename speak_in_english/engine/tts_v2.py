@@ -10,7 +10,7 @@ for ep in sys.argv[1].split(","):
     od = f"eps/{ep}/vo"; os.makedirs(od, exist_ok=True)
     for lid, who, text, ru in EP[ep]["lines"]:
         if who == "nar" or (only and lid not in only): continue
-        c = CAST[who]
+        c = CAST[who]; text = EP[ep].get("say", {}).get(lid, text)   # optional TTS-only wording
         x, sr = kok.create(text, voice=c["voice"], speed=c["speed"], lang=c["lang"])
         x = resample_poly(x, SR, sr).astype(np.float32)
         # NO artificial pitch shifting: it makes voices robotic. Pick a naturally suited Kokoro voice instead.

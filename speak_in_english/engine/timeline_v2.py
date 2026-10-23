@@ -25,8 +25,10 @@ cue("impact", 0.05, 0.9); cue("whoosh", 0.0, 0.5)
 if EPN == "airport": cue("chime", 0.1, 0.55)
 if EPN == "wrongchat":  # phone hook: SEND -> SENT TO: MR GRANT -> READ -> her eyes -> his head turns
     cue("send", 0.3, 0.8); cue("pop", 0.45, 0.7); cue("msg", 0.95, 0.8); cue("whoosh", 1.3, 0.45); cue("gasp", 1.9, 0.7)
+if EPN == "likeex":  # phone hook: the heart turns red (ding) -> Emma's notification -> cut to her face (gasp)
+    cue("ding", 0.5, 0.9); cue("pop", 0.52, 0.6); cue("msg", 0.95, 0.85); cue("gasp", 2.0, 0.7)
 for k in range(1, 4): cue("pop", 0.2 + 0.35 * k, 0.6)
-h0 = 0.35; e = say("hook", h0); hw = word_times("hook") or []
+h0 = E.get("hook_at", 0.35); e = say("hook", h0); hw = word_times("hook") or []
 def find(word):
     for w, a, b in hw:
         if w.lower().strip("«»!?.,").startswith(word.lower()): return h0 + a
@@ -356,6 +358,16 @@ elif EPN == "gift":
         C2=[("c2_her", 1.3, [("MONTH", -1.3, 0), ("chime", -1.25, 0.7)]), ("c2_x", 2.7, [("OPEN", -2.4, 0), ("pop", -2.4, 0.6), ("scratch", -1.7, 0.6)] + TICKS(1.6)), ("c2_her2", 0.6, [("WINK", ("e", 0.05), 0), ("rimshot", ("e", 0.15), 0.9)]), ("c2_nar", 1.2, [])],
     )
     INTRO = 1.15
+elif EPN == "likeex":
+    LV = dict(
+        A1=[("a1_her", 0, [("POINT", 0.9, 0)]), ("a1_x", 0.35, [("CHAT", -0.2, 0), ("msg", -0.15, 0.8)]), ("a1_nar", 0.35, [])],
+        A2=[("a2_her", 0, []), ("a2_x", 0.3, [("CHAT", -0.2, 0), ("msg", -0.15, 0.8), ("COUNT", ("e", -0.7), 0), ("ding", ("e", -0.7), 0.7), ("pop", ("e", -0.65), 0.6)]), ("a2_nar", 0.3, [("buzz", 0.9, 0.5)]), ("a2_tip", 0.1, [("ding", 0.05, 0.6)])],
+        B1=[("b1_her", 0, []), ("b1_x", 0.2, [("SCROLL", -0.2, 0), ("whoosh", -0.15, 0.5)] + [("ding", 0.25 + 0.4 * k, 0.35) for k in range(7)]), ("b1_nar", 0.3, [])],
+        B2=[("b2_her", 0, []), ("b2_x", 0.25, [("CHAT", -0.2, 0), ("msg", -0.15, 0.8)]), ("b2_nar", 1.3, [("SHOT", -1.05, 0), ("shutter", -1.0, 0.9)])],
+        C1=[("c1_her", 0, []), ("c1_nar", 2.2, [("TYPE", -2.1, 0)] + [("tick", -2.0 + 0.24 * k, 0.35) for k in range(8)])],
+        C2=[("c2_her", 0, []), ("c2_x", 1.5, [("scratch", -1.45, 0.5), ("CHAT", -0.2, 0), ("msg", -0.15, 0.85)] + TICKS(1.3)), ("c2_her2", 0.75, [("FREEZE", -0.75, 0)]), ("c2_nar", 0.3, [("rimshot", -0.25, 0.8)])],
+    )
+    INTRO = 0.85
 else:
     LV = dict(
         A1=[("a1_x", 0, []), ("a1_her", 0.3, []), ("a1_nar", 0.6, [("pop", 0.15, 0.5)])],
@@ -386,7 +398,7 @@ for L in ["A1", "A2", "B1", "B2", "C1", "C2"]:
             if n == "thud" and lid == "c2_x3": ev["plop"] = round(tt, 3)
             if n == "gulp" or n == "nope": ev["ins"] = round(c - 1.6, 3)
         ev[lid] = c; c = say(lid, c); prev_end = c
-    t = c + 0.55
+    t = c + (0.25 if E.get("short") else 0.55)
     if EPN == "lift": cue("doors", t - 0.45, 0.5)
     scenes.append(dict(id=L, s=round(s, 3), e=round(t, 3), ev={k: (round(v, 3) if not isinstance(v, list) else v) for k, v in ev.items()}))
 s = t
