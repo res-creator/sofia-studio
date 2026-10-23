@@ -167,6 +167,22 @@
 - **ROCKY:** *Then she had an accomplice! Someone at the party ordered for her! I call Margot!* — «Значит, у неё был сообщник! Кто-то на вечеринке заказал за неё! Вызываю Марго!»
 - Плашка £1,240 перестаёт дрожать, но остаётся красной.
 
+### После B1 · УЛИКА В: чек доставки (~33 с, утверждено)
+
+Rocky сразу после алиби предъявляет новую улику.
+- **ROCKY** (поднимает чек): *Nice alibi. Then explain this. Exhibit C.* — «Красивое алиби. Тогда объясните вот это. Улика В».
+- **INSERT, чек:** PIZZA ROMA · **40 × MARGHERITA** · **CUSTOMER: MS NO MUSIC** (подсвечено) · **TIME: 03:14** · мелко: *DELIVERY NOTE: EVERYONE LOOKS HUNGRY* (тихая подсказка к Нане, диктор о ней не говорит).
+- **JUDGE:** *"Customer: Ms No Music." That's you.* — «"Заказчик: мисс Без Музыки". Это вы».
+- **HER** (крупно): *That's not my name! There's been a mistake.* — «Это не моё имя! Произошла ошибка».
+- **HER:** *Your Honour, could you correct the record, please?* — «Ваша честь, не могли бы вы исправить запись?»
+- **JUDGE:** *Very well. Your real name?* — «Хорошо. Ваше настоящее имя?»
+- **HER:** *It's—* → короткий сигнал колонки, Homey мигает (кадр стола улик, полсекунды).
+- **JUDGE** (крупно): *The record stands.* — «Запись остаётся без изменений».
+- **ROCKY** (крупно, с чеком): *Her name. Her pizzas.* — «Её имя. Её пиццы».
+- **RU** (коротко, карточка «УЛИКА В»): There's been a mistake — «произошла ошибка». Could you correct the record — «исправьте запись».
+
+B2 начинается с ответа Rocky на это: *And if she was at the café, someone ordered for her! An accomplice! I call Margot!* — «А раз она была в кафе, значит, кто-то заказал за неё! Сообщник! Вызываю Марго!»
+
 ### 4:35–5:45 · B2 — возражение
 
 - Заставка B2.

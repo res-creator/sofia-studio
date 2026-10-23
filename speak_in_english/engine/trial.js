@@ -116,13 +116,14 @@ function homey(c, x, y, s, lit, bag, t, col = '#5BE0E6') { c.save(); c.translate
   if (bag) { c.fillStyle = 'rgba(220,235,245,.28)'; c.strokeStyle = 'rgba(255,255,255,.7)'; c.lineWidth = 5; c.beginPath(); c.moveTo(-120, 10); c.lineTo(-110, -300); c.lineTo(110, -310); c.lineTo(120, 10); c.closePath(); c.fill(); c.stroke();
     c.fillStyle = '#E0474C'; c.fillRect(-112, -320, 224, 24); c.save(); c.translate(120, -150); c.rotate(0.25); c.fillStyle = '#FFFDF8'; rr(c, 0, -40, 170, 80, 10); c.fill(); c.strokeStyle = '#2B2F3A'; c.lineWidth = 3; c.stroke(); txt(c, 'EXHIBIT', 85, -14, 26, '#2B2F3A'); txt(c, 'A', 85, 18, 30, '#E0474C'); c.restore(); }
   c.restore(); }
-function homeyLit(t) { return Math.max(talk('homey', t), TL.speech.some(s => s.who === 'homey' && t >= s.t - 0.2 && t < s.t + s.d + 0.25) ? 0.6 : 0); }
+function homeyLit(t) { const b = ev('RC', 'beep'); if (t > b && t < b + 0.5) return 1; return Math.max(talk('homey', t), TL.speech.some(s => s.who === 'homey' && t >= s.t - 0.2 && t < s.t + s.d + 0.25) ? 0.6 : 0); }
 const gavelItem = (ctx, a) => { ctx.rotate(a - Math.PI / 2 + Math.PI * 0.55); paint(ctx, q => { q.m(-8, -10); q.l(8, -10); q.l(6, 150); q.l(-6, 150); q.z(); }, '#7A4A2A', { sd: 2, hd: 2, lw: 2 }); paint(ctx, q => { q.m(-60, 130); q.l(60, 130); q.l(60, 190); q.l(-60, 190); q.z(); }, '#5A3420', { sd: 4, hd: 2, lw: 3 }); };
 const boxItem = (open) => (ctx) => { ctx.translate(0, -20); paint(ctx, q => { q.m(-80, -50); q.l(80, -50); q.l(74, 40); q.l(-74, 40); q.z(); }, '#F6EFE4', { sd: 6, hd: 3, lw: 3, inner: k => { k.fillStyle = '#E8B04A'; k.fillRect(-70, -40, 140, 30); k.fillStyle = '#C98B5A'; for (let i = 0; i < 4; i++) k.fillRect(-64 + i * 34, -36, 24, 18); } }); if (!open) { ctx.fillStyle = '#5BC0EB'; rr(ctx, -86, -66, 172, 22, 8); ctx.fill(); } };
 const plateItem = (ctx) => { ctx.translate(0, -10); paint(ctx, q => q.e(0, 0, 90, 24), '#FFFDF8', { sd: 4, hd: 2, lw: 3 }); ctx.fillStyle = '#C98B5A'; for (let i = 0; i < 3; i++) { rr(ctx, -60 + i * 40, -30, 34, 22, 8); ctx.fill(); } };
 const micItem = (ctx, a) => { ctx.rotate(a - Math.PI / 2 + Math.PI); paint(ctx, q => { q.m(-12, -10); q.l(12, -10); q.l(9, 110); q.l(-9, 110); q.z(); }, '#2B2F3A', { sd: 3, hd: 2, lw: 3 }); paint(ctx, q => q.a(0, -32, 30), '#C9CED6', { sd: 4, hd: 3, lw: 3 }); };
 const pillowItem = (ctx) => { ctx.rotate(0.25); paint(ctx, q => { q.m(-100, -64); q.q(0, -86, 100, -64); q.q(118, 0, 100, 64); q.q(0, 86, -100, 64); q.q(-118, 0, -100, -64); q.z(); }, '#FFFDF8', { sd: 8, hd: 5, lw: 3 }); };
 const pizzaTower = (n) => (ctx) => { for (let i = 0; i < n; i++) pizzaBox(ctx, 0, -i * 38, 0.55); };
+const receiptItem = (ctx, a) => { ctx.rotate(-0.15); ctx.fillStyle = '#FFFDF8'; ctx.fillRect(-40, -170, 80, 160); ctx.fillStyle = '#9A9488'; for (let i = 0; i < 7; i++) ctx.fillRect(-30, -155 + i * 20, 60 - (i % 3) * 12, 6); };
 const wigItem = (ctx, a) => { ctx.rotate(a - Math.PI / 2 + Math.PI); wigShape(ctx, 0, -60, 70, 70); };
 
 // court accessories drawn over the head (st.front gets the head position)
@@ -154,6 +155,7 @@ function herState(t, L) { const g = G.her, st = { t, talk: talkC('her', t), mood
   if (L === 'EX') { st.mood = 'worried'; if (t > ev('EX', 'flamingo')) st.mood = 'sad'; if (speaking('ex_her', t, 0.1)) st.mood = 'tired'; }
   if (L === 'LOG') { st.mood = 'neutral'; if (t > ev('LOG', 'look')) { st.mood = 'shock'; st.look = 0.2; } }
   if (L === 'A2') { st.mood = speaking('a2_her', t) ? 'neutral' : 'worried'; if (t > SP.a2_x2.t) st.mood = 'annoyed'; }
+  if (L === 'RC') { st.mood = 'worried'; if (speaking('rc_her', t, 0.1)) { st.mood = 'angry'; st.armL = reach(g, -1, -g.sw * 0.3, g.ySh + 120); st.armR = reach(g, 1, g.sw * 2.0, g.ySh - 40); } if (speaking('rc_her2', t, 0.1)) st.mood = 'neutral'; if (t > SP.rc_her3.t) st.mood = 'happy'; if (t > ev('RC', 'beep')) st.mood = 'shock'; if (t > SP.rc_j3.t + 0.6) st.mood = 'sad'; }
   if (L === 'B1') { st.mood = speaking('b1_her', t, 0.1) ? 'smug' : 'neutral'; if (t > ev('B1', 'kai')) { st.mood = 'happy'; st.look = 1; } if (t > endOf('b1_k2') - 0.3) { st.mood = 'shock'; } if (t > SP.b1_nar.t + 1) st.mood = 'worried'; }
   if (L === 'B2') { st.mood = 'annoyed'; st.look = 1; if (speaking('b2_her', t, 0.1)) { st.mood = 'angry'; st.armL = reach(g, -1, -g.sw * 0.3, g.ySh + 120); st.armR = reach(g, 1, g.sw * 2.1, g.ySh - 40); } if (t > SP.b2_m2.t + 0.6) st.mood = 'surprised'; if (t > SP.b2_x2.t) st.mood = 'skeptical'; }
   if (L === 'C1') { st.mood = speaking('c1_her', t, 0.1) ? 'happy' : 'neutral'; const w = ev('C1', 'whistle'); if (t > w) { st.mood = 'surprised'; st.lookY = -0.4; st.look = 0.4; st.armR = reach(g, 1, g.hw * 1.3, g.headY + 10); } if (t > SP.c1_nar.t + 0.5) { st.mood = 'smug'; st.lookY = 0; st.armR = reach(g, 1, g.sw * 1.6, g.ySh + 260); } }
@@ -172,6 +174,7 @@ function judgeState(t, L) { const g = G.reggie, st = { t, talk: talk('reggie', t
   if (L === 'NM' && t > SP.nm_x2.t) st.mood = 'smug';
   if (L === 'EX' && t > ev('EX', 'flamingo')) st.mood = 'skeptical';
   if (L === 'A2' && t > SP.a2_x3.t - 0.2) st.mood = 'annoyed';
+  if (L === 'RC') { if (t > ev('RC', 'beep')) st.mood = 'annoyed'; if (t > SP.rc_j3.t) st.mood = 'smug'; }
   if (L === 'C2') { if (speaking('c2_her', t)) { st.mood = 'surprised'; st.look = -0.8; } if (t > ev('C2', 'match')) { st.mood = 'shock'; st.look = -0.3; } if (t > SP.c2_x2.t - 0.1) st.mood = 'skeptical'; if (t > SP.c2_n3.t + 0.6) st.mood = 'surprised'; }
   if (L === 'VD') { st.mood = 'neutral'; if (t > ev('VD', 'eat')) { st.mood = 'happy'; st.armR = reach(g, 1, g.sw * 0.2, g.ySh + 60); st.items = { R: plateItem }; } if (speaking('vd_x4', t, 0.1, 0.5)) { st.armL = reach(g, -1, -g.sw * 1.8, g.ySh + 20); st.items = { L: plateItem }; } }
   if (L === 'FN') { st.mood = 'happy'; st.laugh = true; st.front = null; st.armR = reach(g, 1, g.sw * 0.6 + Math.cos(t * 9) * 50, g.ySh - 520 + Math.sin(t * 9) * 40); st.items = { R: wigItem }; }
@@ -180,6 +183,7 @@ function rockyState(t, L) { const g = G.rocky, st = { t, talk: talk('rocky', t),
   gest(st, g, 'rocky', t, 1, 200);
   if (speaking('a1_x', t, 0.1) || speaking('a2_x2', t, 0.1) || speaking('b2_x', t, 0.1) || (L === 'LOG' && speaking('log_x', t, 0.1))) { st.mood = L === 'A2' ? 'angry' : 'smug'; st.armL = reach(g, -1, -g.sw * 2.5, g.ySh - 40); }
   if (L === 'A2' && t > SP.a2_x3.t) st.mood = 'sad';
+  if (L === 'RC') { st.mood = 'smug'; if (speaking('rc_x', t, 0.1, 0.3) || speaking('rc_x2', t, 0.1, 0.4)) { st.armL = reach(g, -1, -g.sw * 1.6, g.ySh - 260); st.items = { L: receiptItem }; } }
   if (L === 'B1' && t > ev('B1', 'kai')) st.mood = 'worried'; if (L === 'B1' && t > endOf('b1_k2') - 0.3) st.mood = 'smug';
   if (L === 'C2') { st.mood = speaking('c2_her', t) ? 'worried' : 'neutral'; if (t > ev('C2', 'match')) st.mood = 'shock'; if (t > ev('C2', 'oops')) { st.mood = 'surprised'; st.look = -0.4; } }
   if (L === 'VD') st.mood = 'sad';
@@ -300,7 +304,7 @@ function world(c, t, L, solo) {
   // gallery (seated behind the bench back) + usher
   if (show('nana') && nW === 'gallery' && (!solo || solo === 'nana' || solo === 'gallery')) heads.nana = seated(c, NANA, nanaState(t, L), SEAT.nana); else if (nW === 'gallery') heads.nana = headW('nana', SEAT.nana, 0, DROP);
   if (show('margot') && wit !== 'margot' && (!solo || solo === 'gallery')) seated(c, MARGOT, galleryState('margot', t, L), SEAT.margot);
-  if (!solo || solo === 'gallery') { seated(c, BASE.jay, galleryState('jay', t, L), SEAT.jay); seated(c, BASE.tony, galleryState('tony', t, L), SEAT.tony); if (LEVELS.indexOf(L) > 2 || ['VD', 'FN'].includes(L)) seated(c, KAI, galleryState('kai', t, L), SEAT.kai); }
+  if (!solo || solo === 'gallery') { seated(c, BASE.jay, galleryState('jay', t, L), SEAT.jay); seated(c, BASE.tony, galleryState('tony', t, L), SEAT.tony); if (LEVELS.indexOf(L) > 2 || ['RC', 'VD', 'FN'].includes(L)) seated(c, KAI, galleryState('kai', t, L), SEAT.kai); }
   if (!(L === 'FN' && t > ev('FN', 'arrive'))) woodBox(c, GAL.x0, GAL.x1, GAL.top, 0, '#6E4528');
   if (!solo || solo === 'gallery') put(c, USHER, { t, mood: L === 'C2' && t > ev('C2', 'match') ? 'shock' : 'neutral', turn: -0.4, look: -0.8, armL: reach(G.usher, -1, -G.usher.sw * 0.6, G.usher.ySh + 360), armR: reach(G.usher, 1, G.usher.sw * 0.6, G.usher.ySh + 360), items: (t % 9) > 6.2 ? { R: boxItem(true) } : {} }, USHX, 0);
   // B1: Kai comes in through the door (then he is in the witness box)
@@ -371,6 +375,9 @@ const line = id => SP[id].t - 0.1;
   cut(SC.A2.s, 'WIDE_L'); cut(line('a2_x'), 'JUDGE'); cut(line('a2_her'), 'HER'); cut(line('a2_x2'), 'ROCKY_CU'); cut(line('a2_x3'), 'JUDGE_CU'); cut(SP.a2_nar.t - 0.1, 'CARD_HER');
   // B1
   cut(SC.B1.s, 'WIDE'); cut(line('b1_her'), 'HER'); cut(line('b1_x'), 'JUDGE'); cut(ev('B1', 'kai'), 'DOOR'); cut(line('b1_k'), 'KAI'); cut(ev('B1', 'coins'), 'INS_COINS'); cut(line('b1_k2'), 'KAI_CU'); cut(endOf('b1_k2') - 0.1, 'HER_R'); cut(SP.b1_nar.t - 0.1, 'CARD_HER');
+  // RC: exhibit C right after the alibi — receipt, her objection, a quick beep from the speaker, the record stands
+  cut(SC.RC.s, 'ROCKY'); cut(ev('RC', 'receipt'), 'INS_RECEIPT'); cut(line('rc_j') + 0.9, 'JUDGE'); cut(line('rc_her'), 'HER_CU'); cut(line('rc_her2'), 'HER'); cut(line('rc_j2'), 'JUDGE'); cut(line('rc_her3'), 'HER_CU');
+  cut(ev('RC', 'beep'), 'EVID'); cut(line('rc_j3'), 'JUDGE_CU'); cut(line('rc_x2'), 'ROCKY_CU'); cut(SP.rc_nar.t - 0.1, 'CARD_HER');
   // B2
   cut(SC.B2.s, 'WIDE_R'); cut(line('b2_x'), 'ROCKY'); cut(ev('B2', 'margot'), 'WIDE_R'); cut(line('b2_m'), 'MARGOT'); cut(line('b2_her'), 'HER'); cut(line('b2_m2'), 'MARGOT'); cut(line('b2_x2'), 'JUDGE'); cut(line('b2_m3'), 'MARGOT'); cut(ev('B2', 'nana'), 'NANA_G'); cut(SP.b2_nar.t - 0.1, 'CARD_MARGOT');
   // C1
@@ -379,7 +386,7 @@ const line = id => SP[id].t - 0.1;
   cut(SC.C2.s, 'WIDE'); const C2S = ['HER_CU', 'INS_LOG_BOX', 'JUDGE_R', 'INS_LOG_GRAM', 'ROCKY_R', 'GALLERY', 'NANA_R', 'HER', 'HER_CU'];
   C2S.forEach((s, i) => cut(chunkT('c2_her', i) - (i ? 0.05 : 0.1), s));
   cut(endOf('c2_her') + 0.25, 'WIDE'); cut(line('c2_x'), 'JUDGE'); cut(ev('C2', 'walk'), 'WIDE_L'); cut(ev('C2', 'whistle') - 0.2, 'EVID_N'); cut(ev('C2', 'match'), 'INS_MATCH');
-  cut(line('c2_n'), 'NANA_E'); cut(ev('C2', 'oops') - 0.05, 'EVID'); cut(endOf('c2_h') + 0.4, 'HER_R'); cut(line('c2_n2'), 'NANA_E'); cut(line('c2_x2'), 'JUDGE'); cut(line('c2_n3'), 'NANA_CU'); cut(endOf('c2_n3') + 0.1, 'GALLERY'); cut(line('c2_x3'), 'JUDGE'); cut(line('c2_n4'), 'NANA_CU'); cut(SP.c2_nar.t - 0.1, 'CARD_HER');
+  cut(line('c2_n'), 'NANA_E'); cut(ev('C2', 'oops') - 0.05, 'EVID_N');   // Homey answers with Nana beside it: her shocked face stays clear of its bubble cut(endOf('c2_h') + 0.4, 'HER_R'); cut(line('c2_n2'), 'NANA_E'); cut(line('c2_x2'), 'JUDGE'); cut(line('c2_n3'), 'NANA_CU'); cut(endOf('c2_n3') + 0.1, 'GALLERY'); cut(line('c2_x3'), 'JUDGE'); cut(line('c2_n4'), 'NANA_CU'); cut(SP.c2_nar.t - 0.1, 'CARD_HER');
   // VD
   cut(SC.VD.s, 'WIDE'); cut(line('vd_x'), 'JUDGE'); cut(ev('VD', 'bill'), 'INS_BILL'); cut(line('vd_x2'), 'JUDGE'); cut(line('vd_her'), 'HER_CU'); cut(line('vd_n'), 'NANA_B'); cut(line('vd_x3'), 'JUDGE'); cut(line('vd_n2'), 'NANA_B'); cut(ev('VD', 'eat'), 'JUDGE'); cut(SP.vd_rn.t - 0.1, 'TWO_JN');
   // FN
@@ -435,7 +442,15 @@ function insBill(c, t) { backdrop(c); const b = ev('VD', 'bill'), k = eOut(P(t, 
   txt(c, 'CLAIM', 0, -170, 54, '#2B2F3A'); txt(c, '£1,240', 0, -20, 130, k > 0 ? '#9A9488' : '#E0474C'); if (k > 0) { c.strokeStyle = '#E0474C'; c.lineWidth = 12; c.beginPath(); c.moveTo(-230, -20); c.lineTo(-230 + 460 * k, -20); c.stroke(); }
   const s = eBack(P(t, b + 0.7, b + 0.95), 2.4); if (s > 0) { c.save(); c.translate(150, 160); c.rotate(-0.08); c.scale(s, s); c.fillStyle = '#4CAF6A'; rr(c, -200, -70, 400, 140, 24); c.fill(); txt(c, '£60', 0, 4, 96, '#FFFFFF'); c.restore(); txt(c, 'flamingo only', 150, 250, 36, '#4CAF6A', 'Nun9'); }
   done(); }
-const INSERTS = { INS_INVOICE: insInvoice, INS_NOTE: insNote, INS_LOG: (c, t) => insLog(c, t, ''), INS_LOG_BOX: (c, t) => insLog(c, t, 'box'), INS_LOG_GRAM: (c, t) => insLog(c, t, 'gram'), INS_WAVE: insWave, INS_MATCH: insMatch, INS_COINS: insCoins, INS_BILL: insBill };
+function insReceipt(c, t) { backdrop(c); const a = ev('RC', 'receipt'); const done = paper(c, 640, 560, 640, 880, 0.035);   // left of centre: the judge's off-screen bubble sits top right
+  txt(c, 'PIZZA ROMA', 0, -360, 50, '#2B2F3A'); txt(c, 'DELIVERY RECEIPT', 0, -305, 28, '#7A8290', 'Nun9');
+  c.setLineDash([10, 10]); c.strokeStyle = '#9A9488'; c.lineWidth = 3; c.beginPath(); c.moveTo(-270, -260); c.lineTo(270, -260); c.stroke(); c.setLineDash([]);
+  const rows = [['40 × MARGHERITA', 46, '#2B2F3A'], ['CUSTOMER: MS NO MUSIC', 40, '#2B2F3A'], ['TIME: 03:14', 40, '#2B2F3A'], ['DELIVERY NOTE:', 26, '#7A8290'], ['EVERYONE LOOKS HUNGRY', 26, '#7A8290']];
+  rows.forEach(([s, sz, col], i) => { const k = eBack(P(t, a + 0.1 + i * 0.12, a + 0.3 + i * 0.12), 2); if (k <= 0) return; const y = -190 + i * 92 - (i > 3 ? 50 : 0);
+    if (i === 1 && t > a + 0.9) { const mk = eOut(P(t, a + 0.9, a + 1.25)); c.fillStyle = 'rgba(242,193,78,.55)'; c.font = `${sz}px Unb9`; const w = c.measureText(s).width; rr(c, -w / 2 - 12, y - 30, (w + 24) * mk, 60, 10); c.fill(); }
+    c.save(); c.translate(0, y); c.scale(k, k); fitTxt(c, s, 0, 0, sz, col, 560, i > 2 ? 'Nun9' : 'Unb9'); c.restore(); });
+  c.setLineDash([10, 10]); c.beginPath(); c.moveTo(-270, 300); c.lineTo(270, 300); c.stroke(); c.setLineDash([]); txt(c, 'TOTAL £520', 0, 350, 40, '#2B2F3A'); done(); }
+const INSERTS = { INS_RECEIPT: insReceipt, INS_INVOICE: insInvoice, INS_NOTE: insNote, INS_LOG: (c, t) => insLog(c, t, ''), INS_LOG_BOX: (c, t) => insLog(c, t, 'box'), INS_LOG_GRAM: (c, t) => insLog(c, t, 'gram'), INS_WAVE: insWave, INS_MATCH: insMatch, INS_COINS: insCoins, INS_BILL: insBill };
 
 // ---------------- HUD: the claim counter (top left), title in the hook
 function claim(c, t, sc) { if (sc.id === 'hook' && t < SP.hook_nar.t) return; const L = sc.id, after3 = TL.scenes.indexOf(sc) > TL.scenes.indexOf(SC.LOG) || (L === 'LOG' && t > ev('LOG', 'log') + 1.2);
@@ -470,10 +485,10 @@ function renderFrame(c, t) {
   if (!isInsert(n) && L === 'C2' && speaking('c2_her', t) && t > chunkT('c2_her', 4) && (n === 'ROCKY_R')) sweat(c, { ...proj(heads.rocky), hh: heads.rocky.hh * cam.z }, 1);
   // card side: the shot keeps the faces on the other side of the frame
   UI.setCardSide(n === 'CARD_ROCKY' || n === 'CARD_MARGOT' ? 'left' : 'right');
-  const cardOn = (LEVELSET.has(L) || L === 'EX') && n.startsWith('CARD');
+  const cardOn = (LEVELSET.has(L) || L === 'EX' || L === 'RC') && n.startsWith('CARD');
   // inserts: every speaker is off screen -> their bubble goes to the top of the frame (the recording itself has no bubble)
   if (isInsert(n)) for (const who of ['her', 'reggie', 'rocky', 'nana', 'margot', 'kai', 'homey']) heads[who] = { x: W + 9999, y: 0, hh: 0 };
-  K.bubbles(c, t, sc, heads, proj, { names: NAMES, hold: { c2_her: 0.25, log_x: 0.3, b2_x: 0.2, c2_x: 0.1, vd_x4: 0.2, nm_her: 0.05 } });   // short holds where the next shot is a wide one
+  K.bubbles(c, t, sc, heads, proj, { names: NAMES, hold: { c2_her: 0.25, log_x: 0.3, b2_x: 0.2, c2_x: 0.1, vd_x4: 0.2, nm_her: 0.05, rc_her3: 0.05 } });   // short holds where the next shot is a wide one
   if (L === 'hook') { hookTitle(c, t); K.stamp(c, t); }
   if (L === 'C2') K.dots(c, t, endOf('c2_her') + 0.3, SP.c2_x.t - 0.1);
   if (L === 'C2') K.pop(c, t, 'БА-ДУМ-ТСС!', endOf('c2_n3') + 0.15, SP.c2_x3.t - 0.2, 960, 820);
