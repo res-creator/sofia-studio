@@ -17,7 +17,7 @@
 | s04 | She explains. He asks again. Ten minutes in, she hands the phone to her husband, Ryan Block. | Она объясняет. Он спрашивает снова. Через десять минут она передаёт телефон мужу — Райану Блоку. | факт |
 | s05 | Ryan hits record. | Райан включает запись. | факт |
 | s06 | "Why is it that you're not wanting to have the number one rated internet service?" | «Почему вы не хотите пользоваться интернетом номер один по рейтингу?» | цитата сотрудника из записи |
-| s07 | Ryan: "This phone call is actually an amazing representative example of why I don't want to stay with Comcast." | Райан: «Этот звонок — на самом деле потрясающе наглядный пример того, почему я не хочу оставаться с Comcast». | цитата Райана из записи |
+| s07 | Ryan: "This phone call is a really, actually, amazing representative example of why I don't want to stay with Comcast." | Райан: «Этот звонок — это правда, на самом деле, потрясающе наглядный пример того, почему я не хочу оставаться с Comcast». | цитата Райана из записи (сверена с записью, см. ниже) |
 | s08 | Eighteen minutes in all. Finally... disconnected. | Всего восемнадцать минут. Наконец… отключено. | факт |
 | s09 | Veronica still went to a Comcast store to double-check. | Вероника всё равно сходила в офис Comcast — перепроверить. | факт (слова Блока: «went out to the store to double check») |
 | s10 | Ryan posted the recording. It went viral. | Райан выложил запись. Она разлетелась по сети. | факт |
@@ -38,8 +38,13 @@
 5. **Сотрудник не злодей:** без имени и лица, спокойная поза; Райан просит его не увольнять; в финале камера уходит от человека к системе.
 6. **Убрано:** FTC, Amazon, хронология суда — только история Comcast. Про сегодняшний статус — максимум в закреплённом комментарии, если захотите.
 
+### Сверка цитат с оригинальной записью (SoundCloud, 8 мин 15 с, расшифровка Whisper, дважды)
+- s06 — совпадает дословно (1:31–1:41 записи): «…why is it that you're not wanting to have the number one rated internet service, number one rated TV service available?» (мы берём первую часть).
+- s07 — **исправлено**: в записи «This phone call is a really, actually, amazing representative example of why I don't want to stay with Comcast» (2:09–2:14). В прессе (UPI) было «is actually an amazing…» — неточно. Изменена только эта цитата (+1 слово).
+- Сама запись в видео не используется (права не проверены); все реплики озвучивает рассказчик.
+
 ### Пометки на экране
-- С первого кадра, мелко: «REAL CALL · 2014 · re-enactment».
+- С первого кадра, мелко: «REAL STORY · JULY 2014 · RE-ENACTMENT».
 - На s06, s07: «from the recording». На s11: «Comcast statement, July 2014». На s14–s15: «Internal memo, July 21, 2014».
 
 ## Главные анимационные события
