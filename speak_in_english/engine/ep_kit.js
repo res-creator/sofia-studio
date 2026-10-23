@@ -42,7 +42,7 @@ module.exports = function makeKit(TL, UI) {
     let wi = 0, ci = 0; return ch.map(([en, ru], i) => {
       const a = W8.length === tot ? W8[wi][1] : sp.d * ci / ctot; wi += cnt[i]; ci += chars[i];
       const b = i === ch.length - 1 ? sp.d : (W8.length === tot ? W8[wi][1] : sp.d * ci / ctot);
-      return { ...sp, text: en, ru, t: sp.t + a, d: Math.max(0.3, b - a), hold: i === ch.length - 1 ? hold : (LAND ? -0.3 : -0.18) }; });   // landscape: the old chunk is gone before the next one pops in
+      return { ...sp, text: en, ru, t: sp.t + a, d: Math.max(0.3, b - a), hold: i === ch.length - 1 ? hold : (LAND ? -0.2 : -0.18) }; });   // landscape: the old chunk is gone before the next one pops in
   }
   // big pop-in caption (БА-ДУМ-ТСС!, +£15 ...)
   function pop(c, t, txt, t0, t1, x, y, col = C.gold, rot = -0.08, sz = 84) { const k = eBack(P(t, t0, t0 + 0.25), 2.4) * (1 - P(t, t1, t1 + 0.3)); if (k > 0) { c.save(); c.translate(x, y); c.rotate(rot); c.scale(k, k); UI.font(c, 'Unb9', sz); c.textAlign = 'center'; c.textBaseline = 'middle'; UI.strokeText(c, txt, 0, 0, col, C.oliveD, 16); c.restore(); } }

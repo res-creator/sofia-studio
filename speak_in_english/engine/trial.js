@@ -230,7 +230,7 @@ function flashAt(t) {
   if (inS(t, ev('EX', 'screen2'), ev('EX', 'back2') + 0.1)) return 'log2';
   if (inS(t, ev('C1', 'screen'), SP.c1_nar.t)) return 'nana';
   return null; }
-const FLOG = { pizza: ['EXHIBIT B', 'SAT · 01:06', 'FLAT 13'], log1: ['EXHIBIT A', 'SAT · 01:58', '"No music!"'], log2: ['EXHIBIT A', 'SAT · 02:04', '"Turn it down"'], nana: ['EXHIBIT A', 'SAT · 02:05', '"Turn it UP"'] };
+const FLOG = { pizza: ['EXHIBIT B', 'SAT · 01:06', 'FLAT 13'], log1: ['EXHIBIT A', 'SAT · 01:58', 'NEW USER: NO MUSIC'], log2: ['EXHIBIT A', 'SAT · 02:04', '"Turn it down"'], nana: ['EXHIBIT A', 'SAT · 02:05', '"Turn it UP"'] };
 // party room in Rocky's flat, drawn into the 540x960 flashback canvas (colours/props from the "Neighbours" episode)
 function drawFlash(kind, t) { const c = fbx; c.setTransform(1, 0, 0, 1, 0, 0);
   const g = c.createLinearGradient(0, 0, 0, FBH); g.addColorStop(0, '#3A1E4A'); g.addColorStop(1, '#120A1E'); c.fillStyle = g; c.fillRect(0, 0, FBW, FBH);
@@ -382,11 +382,12 @@ const line = id => SP[id].t - 0.1;
   cut(SC.B2.s, 'WIDE_R'); cut(line('b2_x'), 'ROCKY'); cut(ev('B2', 'margot'), 'WIDE_R'); cut(line('b2_m'), 'MARGOT'); cut(line('b2_her'), 'HER'); cut(line('b2_m2'), 'MARGOT'); cut(line('b2_x2'), 'JUDGE'); cut(line('b2_m3'), 'MARGOT'); cut(ev('B2', 'nana'), 'NANA_G'); cut(SP.b2_nar.t - 0.1, 'CARD_MARGOT');
   // C1
   cut(SC.C1.s, 'WIDE_L'); cut(line('c1_her'), 'HER'); cut(line('c1_x'), 'JUDGE'); cut(ev('C1', 'wave'), 'INS_WAVE'); cut(ev('C1', 'whistle') + 0.35, 'HER_R'); cut(ev('C1', 'screen'), 'SCREEN'); cut(SP.c1_nar.t - 0.1, 'CARD_HER');
+  // (C2 'Order confirmed': EVID_N — Homey answers with Nana beside it, her shocked face stays clear of its bubble)
   // C2: the speech in meaning chunks, each with its own picture; then the still silence, the whistle, the match, Nana
   cut(SC.C2.s, 'WIDE'); const C2S = ['HER_CU', 'INS_LOG_BOX', 'JUDGE_R', 'INS_LOG_GRAM', 'ROCKY_R', 'GALLERY', 'NANA_R', 'HER', 'HER_CU'];
   C2S.forEach((s, i) => cut(chunkT('c2_her', i) - (i ? 0.05 : 0.1), s));
   cut(endOf('c2_her') + 0.25, 'WIDE'); cut(line('c2_x'), 'JUDGE'); cut(ev('C2', 'walk'), 'WIDE_L'); cut(ev('C2', 'whistle') - 0.2, 'EVID_N'); cut(ev('C2', 'match'), 'INS_MATCH');
-  cut(line('c2_n'), 'NANA_E'); cut(ev('C2', 'oops') - 0.05, 'EVID_N');   // Homey answers with Nana beside it: her shocked face stays clear of its bubble cut(endOf('c2_h') + 0.4, 'HER_R'); cut(line('c2_n2'), 'NANA_E'); cut(line('c2_x2'), 'JUDGE'); cut(line('c2_n3'), 'NANA_CU'); cut(endOf('c2_n3') + 0.1, 'GALLERY'); cut(line('c2_x3'), 'JUDGE'); cut(line('c2_n4'), 'NANA_CU'); cut(SP.c2_nar.t - 0.1, 'CARD_HER');
+  cut(line('c2_n'), 'NANA_E'); cut(ev('C2', 'oops') - 0.05, 'EVID_N'); cut(endOf('c2_h') + 0.4, 'HER_R'); cut(line('c2_n2'), 'NANA_E'); cut(line('c2_x2'), 'JUDGE'); cut(line('c2_n3'), 'NANA_CU'); cut(endOf('c2_n3') + 0.1, 'GALLERY'); cut(line('c2_x3'), 'JUDGE'); cut(line('c2_n4'), 'NANA_CU'); cut(SP.c2_nar.t - 0.1, 'CARD_HER');
   // VD
   cut(SC.VD.s, 'WIDE'); cut(line('vd_x'), 'JUDGE'); cut(ev('VD', 'bill'), 'INS_BILL'); cut(line('vd_x2'), 'JUDGE'); cut(line('vd_her'), 'HER_CU'); cut(line('vd_n'), 'NANA_B'); cut(line('vd_x3'), 'JUDGE'); cut(line('vd_n2'), 'NANA_B'); cut(ev('VD', 'eat'), 'JUDGE'); cut(SP.vd_rn.t - 0.1, 'TWO_JN');
   // FN

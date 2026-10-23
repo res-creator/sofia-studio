@@ -1448,7 +1448,7 @@ EP["trial"] = dict(
         # EX — exhibit A: the speaker's log
         ('ex_x', 'rocky', 'Exhibit A. Homey, our smart speaker. It logs every command.', 'Улика А. Хоуми, наша умная колонка. Она записывает каждую команду.'),
         ('ex_f1', 'her', 'Homey! No music!', 'Хоуми! Никакой музыки!'),
-        ('ex_h1', 'homey', 'Playing "No Music". Ten-hour version.', 'Включаю «No Music». Версия на десять часов.'),
+        ('ex_h1', 'homey', 'New user saved: "No Music". Playing "No Music".', 'Новый пользователь сохранён: «No Music». Включаю «No Music».'),   # the speaker names her at the party -> the name on the 03:14 receipt
         ('ex_x2', 'reggie', 'Ah. That explains the name.', 'А. Вот откуда имя.'),
         ('ex_f2', 'her', 'Homey, could you turn it down, please?', 'Хоуми, можешь сделать потише?'),
         ('ex_h2', 'homey', 'Turning it down.', 'Делаю тише.'),

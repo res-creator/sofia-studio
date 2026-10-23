@@ -172,7 +172,7 @@ function bubble(ctx, sp, t, anchor, side, nameTag) {
   ctx.fillStyle = C.white; ctx.fillRect(ox - 27, oy - 12, 54, 12);
   if (nameTag) { font(ctx, 'Unb9', 26); const nw = ctx.measureText(nameTag[0]).width + 40; const nx = side === 'left' ? bx + 30 : bx + tw - 30 - nw; ctx.fillStyle = nameTag[1]; rr(ctx, nx, by - 24, nw, 46, 23); ctx.fill(); ctx.strokeStyle = C.oliveD; ctx.lineWidth = 5; ctx.stroke(); ctx.fillStyle = C.white; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(nameTag[0], nx + nw / 2, by + 1); }
   // text with typewriter reveal (by characters over speech duration)
-  const total = sp.text.length; const shown = Math.floor(clamp(u / Math.max(sp.d * 0.85, 0.3)) * total + 0.999);
+  const total = sp.text.length; const shown = Math.floor(clamp(u / Math.max(sp.d * (LAND ? 0.6 : 0.85), 0.3)) * total + 0.999);   // landscape: fully typed by 60% of the line
   let cnt = 0; ctx.textBaseline = 'top'; ctx.textAlign = 'left';
   lines.forEach((ln, i) => {
     font(ctx, 'Nun9', fs);
