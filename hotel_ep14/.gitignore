@@ -1,0 +1,5 @@
+mix.wav
+cues.json
+_*
+*.tmp.wav
+build.log

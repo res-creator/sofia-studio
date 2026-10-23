@@ -17,6 +17,7 @@ Mix the topics: not only hidden fees and corporate scandals, but also unusual, c
 | `amazon_ep6/` | Amazon returnless refunds ($5 item, $8–$12 shipping) | `amazon_keep_it_v2.mp4` |
 | `doordash_ep8/` | DoorDash old pay model 2017–2019: the tip replaced DoorDash's part of a $10 guarantee | `doordash_tip_v2.mp4` |
 | `scratch_ep11/` | Hertz/Thrifty AI damage scanner, Atlanta 2025: 1-inch scuff → $440, 7-day discount vs up-to-10-day reply (on hirkit) | `the_440_scratch.mp4` |
+| `hotel_ep14/` | Nassau family: prepaid room "sold out", $1,400 suite at midnight, Marriott agreed to repay; hotel slang "walked" (on hirkit). Animation approved; voice on the free ElevenLabs plan (owner's call) | `the_1400_hotel_room.mp4` |
 Also: `covers_extra/` (credit card trap, gym no-shows — uploaded videos). Ideas backlog: `IDEAS.md`. Captions: `CAPTIONS.md`.
 
 ## Format
@@ -34,6 +35,8 @@ Guidelines, not quotas: pick what the story needs, and keep each episode differe
 - Light and sets carry the mood: `hirkit/light.js` presets per scene (day, golden, evening, office, dark), rim light on characters, detailed sets
   (airport outside and inside, garage, office) with blurred backgrounds behind close-ups.
 - Edit on meaning and on the voice: cut on the stressed word (`at(id, word)`), transitions through objects (dive into the phone screen, torn paper), hold a beat on the payoff.
+- Owner's note after ep 14 (hotel): still too many diagrams, cards and explainer graphics. Tell more of the story through what the characters DO
+  (ep 14's best moments: the midnight search for a room with the suitcases, the reaction to the $1,400 price). Explanations get one short beat, then back to the people.
 - Visual humor and a real twist: physical gags that don't bend facts (the help bot's cord too short for the HUMAN AGENT socket, the discount balloon popping on day 7),
   and an ending that turns the story (Hertz's own definition of the fee). Objects can have personality, but don't paint a real company's equipment as a villain
   unless the facts say so; show the company's position when it exists.
