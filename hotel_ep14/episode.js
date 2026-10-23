@@ -423,7 +423,7 @@ SH.sort((a, b) => a.t0 - b.t0);
 const ED = makeEdit(SH, W, H);
 const SPLIT = { h01: [5], h02: [4, 3], h03: [3, 4, 3], s04: [3, 4, 2], s05: [6, 5], s06: [4, 4], s07: [5, 4], s08: [5, 5], s09: [3, 6], s10: [3, 4], s11: [3, 3], s12: [5], s13: [5], s14: [6],
   s15: [4, 5, 5], s16: [4, 5, 3], s17: [7, 3, 4], s18: [6, 6], s19: [6, 6, 2] };
-const REPL = [[/fourteen hundred dollars/i, '$1,400'], [/the fourteen hundred/i, 'the $1,400'], [/Fourteen hundred dollars/i, '$1,400'], [/eight-day/i, '8-day'], [/\bONE night/, '1 night']];
+const REPL = [[/fourteen hundred dollars/i, '$1,400'], [/the fourteen hundred/i, 'the $1,400'], [/Fourteen hundred dollars/i, '$1,400'], [/eight-day/i, '8-day'], [/\bONE night/, '1 night'], [/^We're sold out\.$/, '"We\'re sold out."']]; // h02 was voiced without quote marks (see vo.py)
 function subs() {
   const G = [];
   Object.keys(ST).forEach(id => { const ws = V.words(id); let k0 = 0; SPLIT[id].forEach(n => { G.push({ id, words: ws.slice(k0, k0 + n) }); k0 += n; }); if (k0 !== ws.length) throw new Error(`subtitle split ${id}: ${k0} vs ${ws.length}`); });

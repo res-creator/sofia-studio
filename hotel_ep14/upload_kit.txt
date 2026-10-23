@@ -1,13 +1,10 @@
 EPISODE 14 — The $1,400 Hotel Room (Nassau, the Bahamas · reported by NBC Bay Area, March 2026)
-Files: the_1400_hotel_room_novoice.mp4 (no narration yet — see VOICE STATUS) · the_1400_hotel_room_cover.png · the_1400_hotel_room.srt
-Final (after the voice): the_1400_hotel_room.mp4 — built by `sh hotel_ep14/build.sh` once vo/ exists.
+Files: the_1400_hotel_room.mp4 (final, 69.6 s, Chris voice-over) · the_1400_hotel_room_cover.png · the_1400_hotel_room.srt
+Earlier preview without narration: the_1400_hotel_room_novoice.mp4
 
 STATUS
-Animation approved by the owner (no visual changes). NOT approved for publishing until the voice is added; voice method to be agreed first.
-
-VOICE STATUS
-The ElevenLabs account available to this session is on the FREE plan (no commercial licence), so the Chris narration was NOT generated.
-On a paid plan: `ELEVEN_API_KEYS=proxy python3 hotel_ep14/vo.py` -> `sh hotel_ep14/build.sh` (the shots re-time themselves to the real voice).
+Animation approved by the owner. Voice-over generated on the owner's instruction with the connected ElevenLabs account (free plan);
+mix: effects quieter and ducked under the voice. Final cut waiting for the owner's approval.
 
 TIKTOK CAPTION
 They prepaid the room. The front desk said "sold out." Around midnight they were walking the streets of Nassau with their bags — and the last available room they found, a suite, cost $1,400 for one night 🧳 Marriott later agreed to pay them back, according to NBC Bay Area (March 2026). Ever been "walked" by a hotel?
@@ -20,6 +17,6 @@ If it happens to you: ask the hotel to "walk" you — book a nearby room, cover 
 YOUTUBE SHORTS
 Title: The $1,400 Hotel Room: prepaid, then "sold out"
 Description: A California family prepaid one night at a Courtyard by Marriott in Nassau, the Bahamas. At check-in they were told the hotel was sold out. Around midnight they walked the streets with their luggage and found one room left: a $1,400 suite at Margaritaville. After they contacted NBC Bay Area, Marriott agreed to repay the $1,400 plus the original stay. In hotel slang, being sent to another hotel is called getting "walked" — usually the hotel arranges it.
-Re-enactment with illustrated characters. Facts as reported by NBC Bay Area; the family's words are their account; the professor's statement is his view of usual practice, not a law.
+Re-enactment with illustrated characters. Voice: ElevenLabs (elevenlabs.io). Facts as reported by NBC Bay Area; the family's words are their account; the professor's statement is his view of usual practice, not a law.
 Source: NBC Bay Area (Mar 23, 2026): https://www.nbcbayarea.com/investigations/consumer/overbooked-hotel-cost/4056243/
 #hotel #travel #overbooking #shorts
