@@ -1,0 +1,11 @@
+{"ep":"names","style":"v2","layout":"v2","samples":410,"issues":10,"critical":1,"major":1,"minor":8}
+  critical speaker_offscreen            86.25-86.50s 
+  major    face_covered_by_bubble       81.00-81.75s listener
+  minor    bubble_too_long              73.50-81.75s 
+  minor    crop_knees                   12.25-13.50s 
+  minor    crop_knees                   66.00-67.00s 
+  minor    crop_knees                   14.50-15.25s 
+  minor    crop_knees                   50.00-50.75s 
+  minor    crop_knees                   12.50-13.00s 
+  minor    crop_knees                   14.75-15.25s 
+  minor    crop_knees                   34.25-34.75s 

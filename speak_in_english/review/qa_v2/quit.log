@@ -1,0 +1,32 @@
+{"ep":"quit","style":"v2","layout":"v2","samples":473,"issues":31,"critical":0,"major":9,"minor":22}
+  major    face_covered_by_overlay      23.00-27.00s speaker,listener
+  major    face_covered_by_overlay      52.00-55.25s listener
+  major    face_covered_by_overlay      51.50-53.25s listener
+  major    crop_feet_ankles             70.25-71.25s 
+  major    crop_feet_ankles             70.25-71.25s 
+  major    crop_feet_ankles             72.50-73.25s 
+  major    crop_feet_ankles             72.50-73.25s 
+  major    face_covered_by_overlay      36.75-37.25s speaker,listener
+  major    crop_feet_ankles             96.75-97.25s 
+  minor    bubble_too_long              82.75-96.25s 
+  minor    face_covered_by_overlay      24.00-27.00s listener
+  minor    face_covered_by_overlay      37.25-39.75s listener
+  minor    crop_knees                   18.25-19.75s 
+  minor    crop_knees                   18.25-19.50s 
+  minor    crop_knees                   102.50-103.50s 
+  minor    crop_knees                   6.75-7.50s 
+  minor    crop_knees                   6.75-7.50s 
+  minor    crop_knees                   23.00-23.75s 
+  minor    crop_knees                   34.00-34.75s 
+  minor    crop_knees                   45.25-46.00s 
+  minor    crop_knees                   61.50-62.25s 
+  minor    crop_knees                   73.25-74.00s 
+  minor    crop_knees                   8.50-9.00s 
+  minor    crop_knees                   8.50-9.00s 
+  minor    crop_knees                   34.00-34.50s 
+  minor    crop_knees                   45.75-46.25s 
+  minor    crop_knees                   47.75-48.25s 
+  minor    crop_knees                   48.00-48.50s 
+  minor    crop_knees                   64.50-65.00s 
+  minor    crop_knees                   64.75-65.25s 
+  minor    crop_knees                   103.00-103.50s 

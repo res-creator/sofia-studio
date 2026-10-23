@@ -1,0 +1,14 @@
+{"ep":"marry","style":"v1","layout":"v1","samples":467,"issues":13,"critical":3,"major":2,"minor":8}
+  critical face_covered_by_card         38.75-44.25s listener
+  critical face_covered_by_overlay      50.75-55.00s speaker,listener
+  critical face_covered_by_overlay      14.25-17.00s speaker,listener
+  major    face_covered_by_overlay      23.75-29.75s listener
+  major    face_covered_by_overlay      104.25-109.00s listener
+  minor    bubble_too_long              84.25-97.75s 
+  minor    face_covered_by_card         52.50-60.75s listener
+  minor    face_covered_by_card         24.50-31.75s listener
+  minor    face_covered_by_card         76.00-82.75s listener
+  minor    face_covered_by_card         105.00-109.00s listener
+  minor    face_covered_by_card         15.50-19.25s listener
+  minor    face_covered_by_bubble       24.25-25.00s listener
+  minor    face_covered_by_bubble       104.50-105.00s listener

@@ -1,0 +1,15 @@
+{"ep":"airport","style":"v2","layout":"v2","samples":576,"issues":14,"critical":0,"major":4,"minor":10}
+  major    crop_feet_ankles             65.50-66.75s 
+  major    face_covered_by_bubble       110.25-111.25s listener
+  major    crop_feet_ankles             32.00-32.50s 
+  major    crop_feet_ankles             50.75-51.25s 
+  minor    bubble_too_long              100.75-111.00s 
+  minor    face_under_platform_ui       13.75-15.75s 
+  minor    crop_knees                   85.50-86.50s 
+  minor    crop_knees                   85.50-86.25s 
+  minor    face_covered_by_card         133.00-133.75s listener
+  minor    crop_knees                   24.75-25.25s 
+  minor    crop_knees                   24.75-25.25s 
+  minor    crop_knees                   31.50-32.00s 
+  minor    crop_knees                   31.50-32.00s 
+  minor    crop_knees                   87.00-87.50s 

@@ -1,0 +1,98 @@
+{
+ "summary": {
+  "ep": "guest",
+  "style": "v1",
+  "layout": "v1",
+  "samples": 436,
+  "issues": 7,
+  "critical": 2,
+  "major": 2,
+  "minor": 3
+ },
+ "issues": [
+  {
+   "ep": "guest",
+   "type": "face_covered_by_card",
+   "key": "8|1660|#E9A23B",
+   "start": 97.75,
+   "end": 101,
+   "n": 14,
+   "sev": "critical",
+   "max": 0.7835051546391752,
+   "info": "listener",
+   "dur": 3.5
+  },
+  {
+   "ep": "guest",
+   "type": "speaker_offscreen",
+   "key": "8|1660|#E9A23B",
+   "start": 92,
+   "end": 92,
+   "n": 1,
+   "sev": "critical",
+   "max": 0.8762886597938144,
+   "info": "",
+   "dur": 0.25
+  },
+  {
+   "ep": "guest",
+   "type": "face_covered_by_bubble",
+   "key": "8|1660|#E9A23B",
+   "start": 93.25,
+   "end": 95.5,
+   "n": 10,
+   "sev": "major",
+   "max": 0.5567010309278351,
+   "info": "listener",
+   "dur": 2.5
+  },
+  {
+   "ep": "guest",
+   "type": "bubble_covered",
+   "key": "a1_x",
+   "start": 11,
+   "end": 11.25,
+   "n": 2,
+   "sev": "major",
+   "max": 0.19444444444444445,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "guest",
+   "type": "bubble_too_long",
+   "key": "c2_her",
+   "start": 73.5,
+   "end": 88.25,
+   "n": 60,
+   "sev": "minor",
+   "max": 12,
+   "info": "",
+   "dur": 15
+  },
+  {
+   "ep": "guest",
+   "type": "face_under_platform_ui",
+   "key": "32|1680|#F2C14E",
+   "start": 93.25,
+   "end": 95.25,
+   "n": 8,
+   "sev": "minor",
+   "max": 0,
+   "info": "",
+   "dur": 2.25
+  },
+  {
+   "ep": "guest",
+   "type": "face_covered_by_bubble",
+   "key": "1|1480|#B9A4E0",
+   "start": 45.5,
+   "end": 46,
+   "n": 3,
+   "sev": "minor",
+   "max": 0.38144329896907214,
+   "info": "listener",
+   "dur": 0.75
+  }
+ ]
+}
