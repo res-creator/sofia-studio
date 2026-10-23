@@ -72,6 +72,8 @@ CAST = {
     # THE TRIAL (long YouTube episode): the smart speaker and the 03:14 recording (Nana's voice through the speaker)
     "homey": dict(voice="bf_isabella", speed=1.0, lang="en-gb", fx="smart_speaker"),   # fx: light speaker colouring, applied at the sound stage
     "rec":   dict(voice="bf_lily", speed=0.9, lang="en-gb", fx="muffled_recording"),
+    # LIKED HIS EX (short TikTok test): Emma = Becky's look (repay), same Kokoro voice
+    "emma":  dict(voice="af_sarah", speed=1.05, lang="en-gb"),
 }
 EP = {}
 
@@ -1391,6 +1393,50 @@ EP["wrongchat"] = dict(
            'B2': {'type': 'eq', 'en': "You've taken it out of context.", 'ru': '= Ты вырвал это из контекста.', 'ex': ['out of context', '= вне контекста, вырвано из контекста']},
            'C1': {'type': 'eq', 'en': "It doesn't reflect how I feel.", 'ru': '= Это не отражает моего отношения.', 'ex': ["That wasn't meant for you", '= это было не для тебя']},
            'C2': {'type': 'c2', 'vocab': [['inadvertently', '= по неосторожности, нечаянно'], ['I sincerely apologise', '= приношу искренние извинения']], 'moral': ['', '', ''], 'moral_at': 99}},
+)
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# LIKED HIS EX'S PHOTO — short TikTok test format (60-75 s), hard_cut, phone inserts like wrongchat. Rendered by likeex.js.
+EP["likeex"] = dict(
+    title='Случайно лайкнула фото его бывшей',
+    hook_title=[['02:13. ЛИСТАЛА ЕГО БЫВШУЮ…', 'd'], ['И ЛАЙКНУЛА', 'p'], ['ФОТО 2017 ГОДА', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut", short=True, hook_at=1.2,   # short: INTRO 0.85 s, tighter gaps (timeline_v2)
+    say={'b1_x': 'Through twenty seventeen, twenty eighteen and twenty nineteen?', 'c2_x': "He's my brother!"},   # TTS-only wording (screen shows the text)
+    chunks={'c2_her': [
+        ['Permit me to clarify:', 'Позволь пояснить:'],
+        ['my nocturnal investigation was motivated not by jealousy,', 'моё ночное расследование было вызвано не ревностью,'],
+        ['but by a purely academic interest in the romantic history of the man I love.', 'а чисто научным интересом к любовному прошлому человека, которого я люблю.']]},
+    lines=[
+        ('hook', 'nar', 'Лайкнула фото его бывшей. Как выкрутиться? Проверим!', ''),
+        ('a1_her', 'her', '[panicked] No! Not me! Cat!', 'Нет! Не я! Кот!'),
+        ('a1_x', 'emma', 'Your cat is asleep in your profile picture.', 'Твой кот спит у тебя на аватарке.'),
+        ('a1_nar', 'nar', 'Уровень А-один. Алиби спит.', ''),
+        ('a2_her', 'her', '[nervous] Sorry, I not wanted to do it.', 'Прости, я не хотела это делать.'),
+        ('a2_x', 'emma', 'Do what? Like it… or the other 46?', 'Что делать? Лайкать его… или остальные 46?'),
+        ('a2_nar', 'nar', 'А-два. Правильно так:', ''),
+        ('a2_tip', 'tip', "I didn't mean to.", ''),
+        ('b1_her', 'her', 'It was an accident. My thumb slipped.', 'Это случайно. Палец соскользнул.'),
+        ('b1_x', 'emma', 'Through 2017, 2018 and 2019?', 'Через 2017, 2018 и 2019?'),
+        ('b1_nar', 'nar', 'Би-один. Палец соскользнул. На три года.', ''),
+        ('b2_her', 'her', 'This is so embarrassing. Can we pretend this never happened?', 'Как неловко. Давай сделаем вид, что этого не было?'),
+        ('b2_x', 'emma', 'Sure.', 'Конечно.'),
+        ('b2_nar', 'nar', 'Би-два. Вежливо. Но скриншот уже есть.', ''),
+        ('c1_her', 'her', "I'm really sorry. I got a little curious, and it got out of hand.", 'Мне правда жаль. Стало любопытно, и всё вышло из-под контроля.'),
+        ('c1_nar', 'nar', 'Си-один. Out of hand — «из-под контроля».', ''),
+        ('c2_her', 'her', 'Permit me to clarify: my nocturnal investigation was motivated not by jealousy, but by a purely academic interest in the romantic history of the man I love.', 'Позволь пояснить: моё ночное расследование было вызвано не ревностью, а чисто научным интересом к любовному прошлому человека, которого я люблю.'),
+        ('c2_x', 'emma', "He's my brother. 😂", 'Он мой брат. 😂'),
+        ('c2_her2', 'her', '[awkward] …Nice to meet you.', '…Приятно познакомиться.'),
+        ('c2_nar', 'nar', 'Си-два. Это был брат.', ''),
+        ('outro', 'nar', 'Признавайтесь: кто тоже случайно лайкал старое фото? Пишите в комментарии и подписывайтесь!', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'АЛИБИ', 'ok': False, 'note': 'кот спит на аватарке'},
+           'A2': {'type': 'swap', 'bad': 'I not wanted to do it.', 'bad_note': 'так не говорят', 'good': ["I didn't", 'mean to.'], 'good_at': 1.0},
+           'B1': {'type': 'eq', 'en': 'My thumb slipped.', 'ru': '= Палец соскользнул.', 'note': 'slip — соскользнуть', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'eq', 'en': 'Can we pretend this never happened?', 'ru': '= Давай сделаем вид, что этого не было?', 'ex': ['This is so embarrassing.', '= Как же неловко.']},
+           'C1': {'type': 'eq', 'en': 'It got out of hand.', 'ru': '= Всё вышло из-под контроля.', 'ex': ['I got a little curious', '= мне стало немного любопытно']},
+           'C2': {'type': 'c2', 'vocab': [['nocturnal', '= ночной'], ['purely academic interest', '= чисто научный интерес']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
 
 

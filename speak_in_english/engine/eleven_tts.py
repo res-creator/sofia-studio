@@ -12,6 +12,7 @@ for lid, who, text, ru in EP[ep]["lines"]:
     if os.environ.get("SKIP_EXISTING") and os.path.exists(f"{od}/{lid}.wav"): continue
     vid = CAST[who].get("el")
     if not vid: print("no ElevenLabs voice for", who, "- skipped", lid); continue
+    text = EP[ep].get("say", {}).get(lid, text)   # optional TTS-only wording
     body = {"text": text, "model_id": MODEL}
     req = urllib.request.Request(f"https://api.elevenlabs.io/v1/text-to-speech/{vid}?output_format=mp3_44100_128", data=json.dumps(body).encode(), headers=hdr)
     mp3 = urllib.request.urlopen(req, timeout=120).read()
