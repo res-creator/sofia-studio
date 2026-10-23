@@ -1,6 +1,6 @@
-# Ep 12 — "The $1,400 Hotel Room" — script package (DRAFT, awaiting owner approval)
+# Ep 14 — "The $1,400 Hotel Room" — first script package (DRAFT v1, superseded by SCRIPT_FINAL.md)
 
-Status: script only. No voice, render, cover yet.
+Status: first draft, approved by the owner as the base; edited into SCRIPT_FINAL.md.
 Main source: NBC Bay Area (NBC Bay Area Responds, Chris Chmura), 23 Mar 2026 —
 https://www.nbcbayarea.com/investigations/consumer/overbooked-hotel-cost/4056243/
 
