@@ -1417,7 +1417,7 @@ EP["trial"] = dict(
             ['and was convinced I was wasting away for want of sustenance.', 'и была уверена, что я таю на глазах без пропитания.']],
         'log_x': [
             ['Three fourteen. A woman\'s voice. Ordering pizza.', 'Три четырнадцать. Женский голос. Заказывает пиццу.'],
-            ['And the delivery man asked for "the hungry girl". Everybody pointed at her!', 'А курьер спросил «голодную девушку». И все показали на неё!']],
+            ['And the delivery man asked for "the hungry girl". Everybody pointed at her!', 'А курьер спросил „голодную девушку“. И все показали на неё!']],
         'b1_k': [
             ['Yeah, she was at my café. Twelve flat whites at three in the morning.', 'Ага, она была у меня в кафе. Двенадцать флэт уайтов в три ночи.'],
             ['Phone dead — she paid in coins.', 'Телефон сел — платила мелочью.']],
@@ -1444,10 +1444,10 @@ EP["trial"] = dict(
         ('nm_her', 'her', "It's—", 'Меня зовут…'),
         ('nm_h', 'homey', 'Playing "No Music". Ten-hour version!', 'Включаю «No Music». Версия на десять часов!'),
         ('nm_n', 'nana', 'Turn that box down!', 'Сделайте потише эту коробку!'),
-        ('nm_x2', 'reggie', 'Thank you, Ms... No Music.', 'Спасибо, мисс… «Без музыки».'),
+        ('nm_x2', 'reggie', 'Thank you, Ms... No Music.', 'Спасибо, мисс… Без Музыки.'),
         # EX — exhibit A: the speaker's log
         ('ex_x', 'rocky', 'Exhibit A. Homey, our smart speaker. It logs every command.', 'Улика А. Хоуми, наша умная колонка. Она записывает каждую команду.'),
-        ('ex_f1', 'her', 'Homey! No music!', 'Хоуми! Нет музыка!'),
+        ('ex_f1', 'her', 'Homey! No music!', 'Хоуми! Никакой музыки!'),
         ('ex_h1', 'homey', 'Playing "No Music". Ten-hour version.', 'Включаю «No Music». Версия на десять часов.'),
         ('ex_x2', 'reggie', 'Ah. That explains the name.', 'А. Вот откуда имя.'),
         ('ex_f2', 'her', 'Homey, could you turn it down, please?', 'Хоуми, можешь сделать потише?'),
@@ -1461,11 +1461,11 @@ EP["trial"] = dict(
         ('ex_nar', 'nar', 'Две фразы с той вечеринки. Turn it down — «сделай потише». И pump the brakes — «притормози». Колонка поняла буквально: pump — «накачать».', ''),
         # LOG — 03:14
         ('log_rec', 'rec', 'Box! Forty pizza! Girl hungry!', 'Коробка! Сорок пицца! Девочка голодная!'),
-        ('log_x', 'rocky', 'Three fourteen. A woman\'s voice. Ordering pizza. And the delivery man asked for "the hungry girl". Everybody pointed at her!', 'В 3:14. Женский голос. Заказывает пиццу. А курьер спросил «голодную девушку». И все показали на неё!'),
+        ('log_x', 'rocky', 'Three fourteen. A woman\'s voice. Ordering pizza. And the delivery man asked for "the hungry girl". Everybody pointed at her!', 'В 3:14. Женский голос. Заказывает пиццу. А курьер спросил „голодную девушку“. И все показали на неё!'),
         # A2 — when
         ('a2_x', 'reggie', 'Where were you at three fourteen?', 'Где вы были в 3:14?'),
         ('a2_her', 'her', 'I was buy coffee. For everybody.', 'Я покупать кофе. Для всех.'),
-        ('a2_x2', 'rocky', '"Buy"? Present tense! She\'s still buying, Your Honour!', '«Покупать»? Настоящее время! Она до сих пор покупает, ваша честь!'),
+        ('a2_x2', 'rocky', '"Buy"? Present tense! She\'s still buying, Your Honour!', '«Покупать»? Настоящее время! Значит, до сих пор покупает, ваша честь!'),
         ('a2_x3', 'reggie', 'Sit down, Mr... Rocky.', 'Сядьте, мистер… Рокки.'),
         ('a2_nar', 'nar', 'А-два. I was buy — так нельзя. Действие в процессе в прошлом: was плюс -ing. Правильно так:', ''),
         ('a2_tip', 'tip', 'I was buying coffee.', ''),
@@ -1477,7 +1477,7 @@ EP["trial"] = dict(
         ('b1_nar', 'nar', 'Би-один. I was buying coffee when… — «я как раз покупала кофе, когда…». Одна фраза — и у меня алиби.', ''),
         # B2 — objection
         ('b2_x', 'rocky', 'Then she had an accomplice! Someone at the party ordered for her! I call Margot!', 'Значит, у неё был сообщник! Кто-то на вечеринке заказал за неё! Вызываю Марго!'),
-        ('b2_m', 'margot', 'Oh, darling, she kept asking "Is there pizza?" all night. She was absolutely starving.', 'Ой, дорогая, она весь вечер спрашивала «А пицца есть?». Умирала с голоду.'),
+        ('b2_m', 'margot', 'Oh, darling, she kept asking "Is there pizza?" all night. She was absolutely starving.', 'Ой, дорогая, она весь вечер спрашивала: „А пицца есть?“ Умирала с голоду.'),
         ('b2_her', 'her', "I asked once! Once! You're putting words in my mouth.", 'Я спросила один раз! Один! Вы приписываете мне слова.'),
         ('b2_m2', 'margot', 'Darling, the only thing anyone put in your mouth was sausage rolls. Someone fed you all night.', 'Милая, тебе в рот клали только сосиски в тесте. Кто-то кормил тебя всю ночь.'),
         ('b2_x2', 'reggie', 'Who?', 'Кто?'),
@@ -1494,7 +1494,7 @@ EP["trial"] = dict(
         # C2 — the grammar evidence, the whistle, Nana gives herself away
         ('c2_her', 'her', 'Your Honour, allow me to deconstruct this recording. "Box." Not "Homey" — "Box." Whoever said this regards the device not as an assistant, but as an obstinate appliance. "Forty pizza. Girl hungry." No article, no plural, no verb. Not the grammar of a learner, but the telegraphic bellow of someone shouting at a machine she presumes is as hard of hearing as she is. And beneath it all, that whistle: the unmistakable feedback of a hearing aid. Only one guest that night could not hear the music, kept turning it up, and was convinced I was wasting away for want of sustenance.', 'Ваша честь, позвольте разобрать эту запись по косточкам…'),
         ('c2_x', 'reggie', 'Madam... would you step forward?', 'Мадам… подойдите, пожалуйста.'),
-        ('c2_n', 'nana', 'Me? Order pizza? I have never shouted "Box! Forty pizza!" in my life!', 'Я? Заказывала пиццу? Да я в жизни не кричала «Коробка! Сорок пицца!»!'),
+        ('c2_n', 'nana', 'Me? Order pizza? I have never shouted "Box! Forty pizza!" in my life!', 'Я? Заказывала пиццу? Да я в жизни не кричала: „Коробка! Сорок пицца!“'),
         ('c2_h', 'homey', 'Order confirmed. Forty pizzas.', 'Заказ принят. Сорок пицц.'),
         ('c2_n2', 'nana', 'Oh, bother. Well, I only ordered forty because everyone looked hungry!', 'Ой, батюшки. Ну, я заказала всего сорок, потому что все выглядели голодными!'),
         ('c2_x2', 'reggie', 'So you admit it?', 'Значит, вы признаёте?'),

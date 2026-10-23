@@ -342,15 +342,15 @@ const H_NG = headW('nana', SEAT.nana, 0, DROP), H_NE = headW('nana', EVX + 520, 
 const SH = {
   WIDE: { x: 450, y: -1600, z: 0.255, r: 0 }, WIDE_HOOK: { x: 450, y: -2050, z: 0.255, r: 0 },
   WIDE_L: { x: -1250, y: -1450, z: 0.42, r: 0 }, WIDE_R: { x: 2350, y: -1500, z: 0.31, r: 0 },
-  HER: single(H_HER, 700, 585, 0.95, 'her'), HER_R: single(H_HER, 760, 700, 0.9, 'her'), HER_CU: single(H_HER, 720, 640, 1.2, 'her'), CARD_HER: single(H_HER, 520, 600, 0.8, 'her'),
-  JUDGE: single(H_J, 1200, 470, 0.8, 'reggie'), JUDGE_R: single(H_J, 1000, 600, 0.78, 'reggie'), CARD_J: single(H_J, 560, 560, 0.72, 'reggie'),
-  ROCKY: single(H_R, 1220, 585, 0.86, 'rocky'), ROCKY_R: single(H_R, 1000, 720, 0.85, 'rocky'), CARD_ROCKY: single(H_R, 1380, 620, 0.78, 'rocky'),
-  KAI: single(H_WK, 1200, 585, 0.9, 'kai'), MARGOT: single(H_WM, 1200, 585, 0.92, 'margot'), CARD_MARGOT: single(H_WM, 1380, 620, 0.82, 'margot'),
-  NANA_G: single(H_NG, 1100, 660, 1.0, 'nana'), NANA_R: single(H_NG, 1000, 760, 1.05, 'nana'), NANA_E: single(H_NE, 1200, 600, 0.95, 'nana'),
+  HER: single(H_HER, 700, 600, 1.0, 'her'), HER_R: single(H_HER, 760, 700, 0.95, 'her'), HER_CU: single(H_HER, 720, 660, 1.3, 'her'), CARD_HER: single(H_HER, 540, 640, 0.95, 'her'),
+  JUDGE: single(H_J, 1200, 470, 0.8, 'reggie'), JUDGE_R: single(H_J, 1000, 600, 0.78, 'reggie'), CARD_J: single(H_J, 560, 560, 0.72, 'reggie'), JUDGE_CU: single(H_J, 1180, 640, 1.2, 'reggie'),
+  ROCKY: single(H_R, 1220, 585, 0.86, 'rocky'), ROCKY_R: single(H_R, 1000, 720, 0.85, 'rocky'), CARD_ROCKY: single(H_R, 1380, 620, 0.78, 'rocky'), ROCKY_CU: single(H_R, 1200, 660, 1.15, 'rocky'),
+  KAI: single(H_WK, 1200, 600, 0.95, 'kai'), KAI_CU: single(H_WK, 1180, 660, 1.25, 'kai'), MARGOT: single(H_WM, 1200, 600, 0.95, 'margot'), CARD_MARGOT: single(H_WM, 1380, 640, 0.95, 'margot'),
+  NANA_G: single(H_NG, 1100, 660, 1.0, 'nana'), NANA_R: single(H_NG, 1000, 760, 1.05, 'nana'), NANA_E: single(H_NE, 1200, 620, 1.05, 'nana'), NANA_CU: single(H_NE, 1180, 660, 1.35, 'nana'), NANA_B: single(headW('nana', NBX, 0), 1180, 640, 1.05, 'nana'),
   GALLERY: { x: 4150, y: -1230, z: 0.82, r: 0, tag: 'gallery' }, DOOR: { x: 5600, y: -1300, z: 0.5, r: 0 },
-  SCREEN: { x: SCR.x, y: SCR.y + 40, z: 1.3, r: 0 }, EVID: { x: EVX, y: -820, z: 1.15, r: 0 }, EVID_N: { x: EVX + 260, y: -1000, z: 0.72, r: 0 },
-  TWO_JN: { x: 420, y: -1450, z: 0.52, r: 0 },
-  N_WIDE: { x: NIGHTX + 150, y: -1250, z: 0.52, r: 0 }, N_DOOR: { x: NIGHTX + 500, y: -1500, z: 0.68, r: 0 },
+  SCREEN: { x: SCR.x, y: SCR.y + 40, z: 1.3, r: 0 }, EVID: { x: EVX, y: -820, z: 1.15, r: 0 }, EVID_N: { x: EVX + 280, y: -1020, z: 0.92, r: 0 },
+  TWO_JN: { x: 520, y: -1560, z: 0.66, r: 0 },
+  N_WIDE: { x: NIGHTX + 200, y: -1200, z: 0.68, r: 0 }, N_DOOR: single(headW('reggie', NIGHTX + 640, 0), 1180, 640, 1.05),
 };
 // cuts: [time, shot name]; the shot holds until the next cut. Built scene by scene from the timeline.
 const CUTS = []; const cut = (t, name) => { if (t < 1e8) CUTS.push([t, name]); };
@@ -360,17 +360,17 @@ const line = id => SP[id].t - 0.1;
   cut(0, 'INS_INVOICE'); cut(line('hook_x1'), 'JUDGE'); cut(line('hook_her'), 'HER_CU'); cut(line('hook_x2'), 'ROCKY'); cut(SP.hook_x2.t + SP.hook_x2.d * 0.42, 'EVID'); cut(line('hook_her2'), 'HER');
   cut(SP.hook_nar.t - 0.25, 'WIDE_HOOK'); cut(line('hook_x3'), 'JUDGE');
   // A1
-  cut(SC.A1.s, 'WIDE_L'); cut(line('a1_her'), 'HER'); cut(line('a1_x'), 'ROCKY'); cut(ev('A1', 'screen'), 'SCREEN'); cut(ev('A1', 'facepalm'), 'HER_R'); cut(line('a1_x2'), 'JUDGE'); cut(SP.a1_nar.t - 0.1, 'CARD_HER');
+  cut(SC.A1.s, 'WIDE_L'); cut(line('a1_her'), 'HER'); cut(line('a1_x'), 'ROCKY'); cut(ev('A1', 'screen'), 'SCREEN'); cut(ev('A1', 'facepalm'), 'HER_R'); cut(line('a1_x2'), 'JUDGE_CU'); cut(SP.a1_nar.t - 0.1, 'CARD_HER');
   // NM
   cut(SC.NM.s, 'WIDE_L'); cut(line('nm_x'), 'JUDGE'); cut(line('nm_her'), 'HER'); cut(line('nm_h'), 'EVID'); cut(line('nm_n'), 'NANA_G'); cut(ev('NM', 'note'), 'INS_NOTE');
   // EX
-  cut(SC.EX.s, 'WIDE_R'); cut(line('ex_x'), 'ROCKY'); cut(ev('EX', 'screen'), 'SCREEN'); cut(ev('EX', 'back1'), 'JUDGE'); cut(ev('EX', 'screen2'), 'SCREEN'); cut(ev('EX', 'back2'), 'JUDGE'); cut(line('ex_her'), 'HER'); cut(SP.ex_nar.t - 0.1, 'CARD_HER');
+  cut(SC.EX.s, 'WIDE_R'); cut(line('ex_x'), 'ROCKY'); cut(ev('EX', 'screen'), 'SCREEN'); cut(ev('EX', 'back1'), 'JUDGE'); cut(ev('EX', 'screen2'), 'SCREEN'); cut(ev('EX', 'back2'), 'JUDGE_CU'); cut(line('ex_her'), 'HER_CU'); cut(SP.ex_nar.t - 0.1, 'CARD_HER');
   // LOG
   cut(SC.LOG.s, 'WIDE'); cut(ev('LOG', 'log'), 'INS_LOG'); cut(line('log_x'), 'ROCKY'); cut(chunkT('log_x', 1) - 0.05, 'GALLERY'); cut(ev('LOG', 'look'), 'WIDE'); cut(ev('LOG', 'look') + 1.0, 'HER_R');
   // A2
-  cut(SC.A2.s, 'WIDE_L'); cut(line('a2_x'), 'JUDGE'); cut(line('a2_her'), 'HER'); cut(line('a2_x2'), 'ROCKY'); cut(line('a2_x3'), 'JUDGE'); cut(SP.a2_nar.t - 0.1, 'CARD_HER');
+  cut(SC.A2.s, 'WIDE_L'); cut(line('a2_x'), 'JUDGE'); cut(line('a2_her'), 'HER'); cut(line('a2_x2'), 'ROCKY_CU'); cut(line('a2_x3'), 'JUDGE_CU'); cut(SP.a2_nar.t - 0.1, 'CARD_HER');
   // B1
-  cut(SC.B1.s, 'WIDE'); cut(line('b1_her'), 'HER'); cut(line('b1_x'), 'JUDGE'); cut(ev('B1', 'kai'), 'DOOR'); cut(line('b1_k'), 'KAI'); cut(ev('B1', 'coins'), 'INS_COINS'); cut(line('b1_k2'), 'KAI'); cut(endOf('b1_k2') - 0.1, 'HER_R'); cut(SP.b1_nar.t - 0.1, 'CARD_HER');
+  cut(SC.B1.s, 'WIDE'); cut(line('b1_her'), 'HER'); cut(line('b1_x'), 'JUDGE'); cut(ev('B1', 'kai'), 'DOOR'); cut(line('b1_k'), 'KAI'); cut(ev('B1', 'coins'), 'INS_COINS'); cut(line('b1_k2'), 'KAI_CU'); cut(endOf('b1_k2') - 0.1, 'HER_R'); cut(SP.b1_nar.t - 0.1, 'CARD_HER');
   // B2
   cut(SC.B2.s, 'WIDE_R'); cut(line('b2_x'), 'ROCKY'); cut(ev('B2', 'margot'), 'WIDE_R'); cut(line('b2_m'), 'MARGOT'); cut(line('b2_her'), 'HER'); cut(line('b2_m2'), 'MARGOT'); cut(line('b2_x2'), 'JUDGE'); cut(line('b2_m3'), 'MARGOT'); cut(ev('B2', 'nana'), 'NANA_G'); cut(SP.b2_nar.t - 0.1, 'CARD_MARGOT');
   // C1
@@ -379,9 +379,9 @@ const line = id => SP[id].t - 0.1;
   cut(SC.C2.s, 'WIDE'); const C2S = ['HER_CU', 'INS_LOG_BOX', 'JUDGE_R', 'INS_LOG_GRAM', 'ROCKY_R', 'GALLERY', 'NANA_R', 'HER', 'HER_CU'];
   C2S.forEach((s, i) => cut(chunkT('c2_her', i) - (i ? 0.05 : 0.1), s));
   cut(endOf('c2_her') + 0.25, 'WIDE'); cut(line('c2_x'), 'JUDGE'); cut(ev('C2', 'walk'), 'WIDE_L'); cut(ev('C2', 'whistle') - 0.2, 'EVID_N'); cut(ev('C2', 'match'), 'INS_MATCH');
-  cut(line('c2_n'), 'NANA_E'); cut(ev('C2', 'oops') - 0.05, 'EVID'); cut(endOf('c2_h') + 0.4, 'HER_R'); cut(line('c2_n2'), 'NANA_E'); cut(line('c2_x2'), 'JUDGE'); cut(line('c2_n3'), 'NANA_E'); cut(endOf('c2_n3') + 0.1, 'GALLERY'); cut(line('c2_x3'), 'JUDGE'); cut(line('c2_n4'), 'NANA_E'); cut(SP.c2_nar.t - 0.1, 'CARD_HER');
+  cut(line('c2_n'), 'NANA_E'); cut(ev('C2', 'oops') - 0.05, 'EVID'); cut(endOf('c2_h') + 0.4, 'HER_R'); cut(line('c2_n2'), 'NANA_E'); cut(line('c2_x2'), 'JUDGE'); cut(line('c2_n3'), 'NANA_CU'); cut(endOf('c2_n3') + 0.1, 'GALLERY'); cut(line('c2_x3'), 'JUDGE'); cut(line('c2_n4'), 'NANA_CU'); cut(SP.c2_nar.t - 0.1, 'CARD_HER');
   // VD
-  cut(SC.VD.s, 'WIDE'); cut(line('vd_x'), 'JUDGE'); cut(ev('VD', 'bill'), 'INS_BILL'); cut(line('vd_x2'), 'JUDGE'); cut(line('vd_her'), 'HER'); cut(line('vd_n'), 'TWO_JN'); cut(line('vd_x3'), 'JUDGE'); cut(line('vd_n2'), 'TWO_JN'); cut(ev('VD', 'eat'), 'JUDGE'); cut(SP.vd_rn.t - 0.1, 'TWO_JN');
+  cut(SC.VD.s, 'WIDE'); cut(line('vd_x'), 'JUDGE'); cut(ev('VD', 'bill'), 'INS_BILL'); cut(line('vd_x2'), 'JUDGE'); cut(line('vd_her'), 'HER_CU'); cut(line('vd_n'), 'NANA_B'); cut(line('vd_x3'), 'JUDGE'); cut(line('vd_n2'), 'NANA_B'); cut(ev('VD', 'eat'), 'JUDGE'); cut(SP.vd_rn.t - 0.1, 'TWO_JN');
   // FN
   cut(SC.FN.s, 'EVID'); cut(ev('FN', 'arrive') - 0.1, 'DOOR'); cut(line('fn_r'), 'ROCKY'); cut(endOf('fn_r') + 0.2, 'WIDE'); cut(ev('FN', 'night'), 'N_WIDE'); cut(SP.fn_x.t - 0.6, 'N_DOOR');
   CUTS.sort((a, b) => a[0] - b[0]);

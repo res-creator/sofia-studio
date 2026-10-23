@@ -143,8 +143,8 @@ function bubble(ctx, sp, t, anchor, side, nameTag) {
   if (u < -0.05 || out >= 1) return;
   const k = eBack(P(u, -0.05, 0.25), 2.2) * (1 - eIn(out));
   const long = sp.text.length > 60, maxW = LAND ? (long ? 1000 : 860) : 820;
-  let fs = sp.fs || (LAND ? (long ? 42 : 50) : (long ? 46 : 58));   // sp.fs: per-line override (new episodes only)
-  const rfs = LAND ? 30 : 34, rlh = LAND ? 38 : 42;                    // Russian translation: font size, line height
+  let fs = sp.fs || (LAND ? (long ? 44 : 52) : (long ? 46 : 58));   // sp.fs: per-line override (new episodes only)
+  const rfs = LAND ? 32 : 34, rlh = LAND ? 40 : 42;                    // Russian translation: font size, line height
   font(ctx, 'Nun9', fs);
   const lines = wrap(ctx, sp.text, maxW - 80);
   font(ctx, 'Nun7', rfs);
