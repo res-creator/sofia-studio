@@ -61,6 +61,7 @@ function cake(c, x, y, s, rot, o) { c.save(); c.translate(x, y); c.rotate(rot); 
 function splat(c, x, y, k) { if (k <= 0) return; c.save(); c.translate(x, y); c.scale(1.6 * k, 1.6 * k); c.fillStyle = '#F7B6CF'; c.beginPath(); for (let i = 0; i < 14; i++) { const a = i / 14 * TAU, r = (i % 2 ? 120 : 175) + hash(i) * 30; c.lineTo(Math.cos(a) * r, Math.sin(a) * r * 0.3); } c.fill();
   c.fillStyle = '#FFFDF8'; c.beginPath(); c.ellipse(-20, -6, 80, 18, 0, 0, TAU); c.fill(); c.save(); c.translate(30, -10); c.rotate(0.5); c.fillStyle = '#F2C14E'; c.fillRect(-12, -90, 24, 90); c.restore(); c.restore(); }
 const phoneItem = ctx => { ctx.fillStyle = '#2B2F3A'; rr(ctx, -30, -118, 60, 112, 10); ctx.fill(); ctx.fillStyle = '#F2C14E'; rr(ctx, -24, -110, 48, 92, 6); ctx.fill(); txt(ctx, 'PIZZA', 0, -64, 12, '#C2405A'); };
+const searchPhone = ctx => { ctx.fillStyle = '#2B2F3A'; rr(ctx, -30, -118, 60, 112, 10); ctx.fill(); ctx.fillStyle = '#FFFFFF'; rr(ctx, -24, -110, 48, 92, 6); ctx.fill(); ctx.fillStyle = '#3C8FE0'; rr(ctx, -18, -96, 36, 10, 5); ctx.fill(); };
 const consoleItem = t => ctx => { ctx.save(); ctx.rotate(-0.08); ctx.fillStyle = '#E0474C'; rr(ctx, -150, -70, 50, 80, 22); ctx.fill(); ctx.fillStyle = '#3C8FE0'; rr(ctx, 100, -70, 50, 80, 22); ctx.fill();
   ctx.fillStyle = '#2B2F3A'; rr(ctx, -104, -70, 208, 80, 8); ctx.fill(); const g = 0.6 + 0.4 * Math.sin(t * 11); ctx.fillStyle = `rgba(124,242,154,${g})`; rr(ctx, -92, -62, 184, 64, 6); ctx.fill(); txt(ctx, 'GAME ON', 0, -30, 22, '#1E2A22'); ctx.restore(); };
 function beanbag(c, x) { paint(c, q => { q.m(x - 250, FY); q.q(x - 300, -330, x - 60, -470); q.q(x + 160, -500, x + 260, -280); q.q(x + 320, -60, x + 250, FY); q.z(); }, '#F2C14E', { sd: 6, hd: 3, lw: 4 }); }
@@ -76,7 +77,9 @@ function herState(t, L) { const g = G.her, st = { t, talk: talk('her', t), mood:
   if (L === 'A2') { st.mood = 'annoyed'; if (speaking('a2_her', t)) gest(st, g, 'her', t, 1, 180); if (t > SP.a2_x.t) st.mood = 'skeptical'; }
   if (L === 'B1') { st.mood = speaking('b1_her', t, 0.1) ? 'smug' : 'annoyed'; if (t > ev('game')) { st.mood = 'angry'; st.look = 1; } }
   if (L === 'B2') { st.mood = 'sad'; if (speaking('b2_her', t)) { st.armR = reach(g, 1, g.sw * 0.4, g.ySh + 240); } if (t > ev('notice')) { st.mood = 'skeptical'; crossed(st, g); } }
-  if (L === 'C1') { st.mood = 'sad'; if (speaking('c1_her', t)) { st.armL = reach(g, -1, g.sw * 0.1, g.ySh + 140); st.armR = reach(g, 1, g.sw * 0.6, g.ySh + 300); } if (t > SP.c1_x.t + 0.6) { st.mood = 'shock'; crossed(st, g); } if (t > ev('fall')) { st.mood = 'tired'; st.look = -0.8; st.turn = -0.2; } }
+  if (L === 'C1') { st.mood = 'sad'; if (speaking('c1_her', t)) { st.armL = reach(g, -1, g.sw * 0.1, g.ySh + 140); st.armR = reach(g, 1, g.sw * 0.6, g.ySh + 300); } if (t > SP.c1_x.t + 0.6) { st.mood = 'shock'; crossed(st, g); }
+    const sl = ev('slam'); if (t > sl - 0.4 && t < sl + 0.5) { st.mood = 'angry'; st.turn = -0.4; st.look = -0.9; const up = t < sl - 0.05; st.armL = reach(g, -1, TABLE.x1 - 40 - HERX, up ? -1150 : TABLE.top - FY - 8, { planar: true }); }
+    if (t > sl + 0.5) { st.mood = 'tired'; st.look = -0.8; st.turn = -0.2; } }
   if (L === 'C2') { const sp = speaking('c2_her', t); st.mood = sp ? 'smug' : 'bored'; if (sp) { const u = (t - SP.c2_her.t) * 3.2; st.armR = reach(g, 1, g.sw * (1.3 + Math.sin(u) * 0.15), g.ySh + 120 + Math.cos(u) * 25); } if (t > endOf('c2_her') - 0.6 && t < SP.c2_x.t) st.mood = 'neutral'; if (t > SP.c2_her2.t - 0.1) st.mood = 'bored'; if (t > SP.c2_nar.t) st.mood = 'annoyed'; }
   return st; }
 function tomState(t, L) { const g = G.tom, st = { t, talk: talk('tom', t), mood: 'neutral', turn: -0.35, look: -0.8, armL: reach(g, -1, -g.sw * 0.7, g.ySh + 330), armR: reach(g, 1, g.sw * 0.7, g.ySh + 330) };
@@ -88,23 +91,24 @@ function tomState(t, L) { const g = G.tom, st = { t, talk: talk('tom', t), mood:
   if (L === 'B1') { st.mood = 'happy'; if (t > ev('game') - 0.2) { const gs = G.tomSit; st.legPose = 'sit'; st.drop = SIT * eOut(P(t, ev('game') - 0.2, ev('game') + 0.15)); st.turn = 0.1; st.look = 0.1; st.lookY = 0.7; st.mood = 'happy';
       st.armL = reach(gs, -1, -gs.sw * 0.55, gs.ySh + 250); st.armR = reach(gs, 1, gs.sw * 0.55, gs.ySh + 250); st.items = { R: consoleItem(t) }; } }
   if (L === 'B2') { st.mood = 'happy'; if (t > ev('notice')) { st.mood = 'shock'; st.turn = -0.5; st.look = -1; st.armL = reach(g, -1, -g.sw * 1.35, g.ySh - 70); st.armR = reach(g, 1, g.sw * 1.35, g.ySh - 70); } if (t > SP.b2_nar.t + 0.4) { st.mood = 'worried'; st.armL = reach(g, -1, -g.sw * 0.7, g.ySh + 330); st.armR = reach(g, 1, g.sw * 0.95, g.ySh - 170); } }
-  if (L === 'C1') { st.mood = 'worried'; if (t > SP.c1_x.t - 0.2) { st.mood = 'surprised'; st.armR = reach(g, 1, g.sw * 0.35, g.ySh - 60); } if (t > ev('fall')) { st.mood = 'shock'; st.look = -1; st.turn = -0.5; } }
-  if (L === 'C2') { st.mood = 'surprised'; if (t > SP.c2_her.t + 4) st.mood = 'worried'; if (speaking('c2_x', t, 0.1, 0.3)) st.mood = 'surprised'; if (t > SP.c2_her2.t + 0.3) { st.mood = 'shock'; st.armL = reach(g, -1, -g.sw * 1.35, g.ySh - 70); st.armR = reach(g, 1, g.sw * 1.35, g.ySh - 70); } }
+  if (L === 'C1') { st.mood = 'worried'; if (t > SP.c1_x.t - 0.2) { st.mood = 'surprised'; st.armR = reach(g, 1, g.sw * 0.35, g.ySh - 60); st.armL = reach(g, -1, -g.sw * 2.3, g.ySh - 30); } if (t > ev('fall')) { st.mood = 'shock'; st.look = -1; st.turn = -0.5; } }
+  if (L === 'C2') { st.mood = 'surprised'; if (t > SP.c2_her.t + 4) st.mood = 'worried';
+    const ph = ev('phone'), rs = ev('result'); if (t > ph - 0.3 && t < rs + 2.3) { st.armR = reach(g, 1, g.sw * 0.35, g.ySh + 150); st.items = { R: searchPhone }; st.lookY = 0.6; st.look = 0.3; st.turn = 0; st.mood = t > rs ? 'shock' : 'worried'; } if (t > rs + 2.0 && t < SP.c2_x.t) st.mood = 'shock'; if (speaking('c2_x', t, 0.1, 0.3)) st.mood = 'surprised'; if (t > SP.c2_her2.t + 0.3) { st.mood = 'shock'; st.armL = reach(g, -1, -g.sw * 1.35, g.ySh - 70); st.armR = reach(g, 1, g.sw * 1.35, g.ySh - 70); } }
   return st; }
-const tomSweat = (t, L) => L === 'hook' ? 1 : L === 'C2' ? clamp(P(t, SP.c2_her.t + 4, SP.c2_her.t + 4.4)) : L === 'B2' && t > ev('notice') ? 1 : 0;
+const tomSweat = (t, L) => L === 'hook' ? 1 : L === 'C2' ? clamp(P(t, ev('result'), ev('result') + 0.3)) : L === 'B2' && t > ev('notice') ? 1 : 0;
 
 // ---------------- world
 const headOf = (who, x) => ({ x, y: FY + G[who].headY, hh: G[who].hh });
 function cakeState(t, L) { // {x, y, rot, s, lit, smoke, splat}
   const o = { x: CAKEX, y: TABLE.top, rot: 0, lit: true, smoke: 0, sp: 0 };
   if (L === 'A1' && t > ev('blow') + 0.15) { o.lit = false; o.smoke = P(t, ev('blow') + 0.15, ev('blow') + 2.0); }
-  if (L === 'C1' && t > ev('fall')) { const f = ev('fall'), k = eIn(P(t, f, f + 0.4)); o.rot = lerp(0, 1.5, k); o.x = lerp(CAKEX, CAKEX + 110, k); o.y = lerp(TABLE.top, FY - 40, k); if (t > f + 0.4) { o.gone = true; o.sp = eBack(P(t, f + 0.4, f + 0.6), 2); } }
+  if (L === 'C1' && t > ev('slam')) { const f = ev('slam'), h = Math.sin(Math.PI * clamp(P(t, f, f + 0.2))), k = eIn(P(t, f + 0.15, f + 0.45)); o.rot = lerp(0, 1.5, k) + 0.15 * h; o.x = lerp(CAKEX, CAKEX + 110, k); o.y = lerp(TABLE.top - 170 * h, FY - 40, k); if (t > f + 0.45) { o.gone = true; o.sp = eBack(P(t, f + 0.4, f + 0.6), 2); } }
   return o; }
 function world(c, t, L, solo) {
   c.drawImage(BGB, BX0, BY0, BW, BH); const heads = {};
   tableShape(c); const ck = cakeState(t, L);
-  if (!ck.gone) cake(c, ck.x, ck.y, 1, ck.rot, { lit: ck.lit, smoke: ck.smoke, t }); else splat(c, CAKEX + 110, FY + 10, ck.sp);
-  K.mark(c, 'cake', CAKEX, TABLE.top - 150, 160);
+  if (!ck.gone) cake(c, ck.x, ck.y, 1.35, ck.rot, { lit: ck.lit, smoke: ck.smoke, t }); else splat(c, CAKEX + 110, FY + 10, ck.sp);
+  K.mark(c, 'cake', CAKEX, TABLE.top - 200, 210);
   const drawTom = solo !== 'her' && solo !== 'none', drawHer = solo !== 'tom' && solo !== 'none';
   if (L === 'B1' && t > ev('game') - 0.2 && drawTom) beanbag(c, TX);
   heads.tom = drawTom ? put(c, TOM, tomState(t, L), TX, FY) : headOf('tom', TX);
@@ -115,9 +119,9 @@ function world(c, t, L, solo) {
 const SH = { WIDE: { x: 40, y: -1000, z: 0.72, r: 0 }, CARD: { x: 40, y: -1555, z: 0.66, r: 0 },
   HER: { x: HERX + 60, y: herHY + 60, z: 1.0, r: 0, tag: 'her' }, TOM: { x: TX - 120, y: tHY + 60, z: 0.98, r: 0, tag: 'tom' },
   HER_R: { x: HERX + 60, y: herHY - 160, z: 1.05, r: 0, tag: 'her' }, TOM_R: { x: TX - 60, y: tHY - 150, z: 1.0, r: 0, tag: 'tom' },
-  HOOK: { x: 20, y: -1480, z: 0.7, r: 0 }, HOOK_HER: { x: HERX + 60, y: herHY - 250, z: 1.05, r: 0, tag: 'her' },
+  HOOK: { x: -110, y: -1343, z: 0.62, r: 0 }, HOOK_HER: { x: HERX + 60, y: herHY - 250, z: 1.05, r: 0, tag: 'her' },
   FALL: { x: -200, y: -950, z: 0.72, r: 0 },
-  CAKE: { x: CAKEX + 20, y: TABLE.top - 190, z: 2.1, r: 0, tag: 'none' } };
+  CAKE: { x: CAKEX + 30, y: TABLE.top - 250, z: 1.65, r: 0, tag: 'none' }, SPLAT: { x: CAKEX + 120, y: -200, z: 1.3, r: 0, tag: 'none' } };
 // C2 chunk starts, timed like ep_kit (by word count over the estimated word timings)
 const chunkT = (() => { const ch = TL.cfg.chunks.c2_her, sp = SP.c2_her; let n = 0; return ch.map(([en]) => { const w = sp.words[n]; n += en.trim().split(/\s+/).length; return sp.t + (w ? w[1] : 0); }); })();
 function shotFor(t) { const sc = sceneAt(t), L = sc.id, f = s => ({ ...s, force: true }); if (L === 'outro') return SH.WIDE;
@@ -128,7 +132,7 @@ function shotFor(t) { const sc = sceneAt(t), L = sc.id, f = s => ({ ...s, force:
   if (L === 'A1' && t > ev('blow') - 0.35) return f(SH.WIDE);                         // candle -> the whole flat goes dark
   if (L === 'B1' && t > ev('game') - 0.3) return f(SH.WIDE);                          // he drops into the beanbag with the console
   if (L === 'B2' && t > ev('notice') - 0.05) return f(t < ev('notice') + 0.65 ? SH.CAKE : SH.TOM_R);   // the "1" on the cake -> his face
-  if (L === 'C1' && t > ev('fall') - 0.3) return f(SH.FALL);                          // the cake falls
+  if (L === 'C1' && t > ev('slam') - 0.45) return f(t < ev('slam') + 0.5 ? SH.FALL : SH.SPLAT);   // she slams the table -> the cake jumps and falls -> close-up of the splat                          // the cake falls
   if (L === 'C2') { if (speaking('c2_her', t, 0.1, 0.2)) return f(t < chunkT[1] ? SH.HER : t < chunkT[3] ? SH.TOM_R : SH.HER_R);
     if (t > endOf('c2_her') && t < SP.c2_x.t - 0.1) return f(SH.CARD); }               // the silence: both, still
   const cur = TL.speech.find(s => s.id.startsWith(l + '_') && s.who !== 'nar' && s.who !== 'tip' && t >= s.t - 0.1 && t < s.t + s.d + 0.25);
@@ -146,8 +150,21 @@ function darkness(c, t, heads, proj, cam) { const d = ev('dark'); if (t < d) ret
     if (angry) { c.rotate(s * 0.35); c.beginPath(); c.ellipse(0, 0, r * 0.17, r * 0.06, 0, 0, TAU); c.fill(); } else { const bl = Math.abs(Math.sin(t * 2.2)) < 0.08 ? 0.15 : 1; c.beginPath(); c.ellipse(0, 0, r * 0.13, r * 0.15 * bl, 0, 0, TAU); c.fill(); c.fillStyle = '#1E1A2A'; c.beginPath(); c.arc(-r * 0.06, 0, r * 0.05 * bl, 0, TAU); c.fill(); } c.restore(); } };
   if (k > 0.5) { if (cam.tag !== 'tom') eyes(heads.her, true); if (cam.tag !== 'her') eyes(heads.tom, false); } }
 
+// C2: Tom secretly googles the date (object shot on a solid backdrop, as in WRONG CHAT)
+const Q = 'when did we start dating';
+function searchScreen(t) { const ph = ev('phone'), rs = ev('result'); return (c, w, h) => { c.fillStyle = '#FFFFFF'; c.fillRect(0, 0, w, h);
+  txt(c, 'Search', w / 2, 70, 40, '#3C8FE0'); c.fillStyle = '#EEF1F5'; rr(c, 20, 120, w - 40, 70, 35); c.fill();
+  const n = Math.floor(clamp(P(t, ph + 0.8, ph + 2.7)) * Q.length), typed = Q.slice(0, n) + (t < rs && Math.floor(t * 4) % 2 ? '|' : '');
+  c.font = '26px Nun9'; c.fillStyle = '#2B2F3A'; c.textAlign = 'left'; c.textBaseline = 'middle'; c.fillText(typed, 44, 156);
+  if (t > rs) { const k = eBack(P(t, rs, rs + 0.3), 2); c.save(); c.translate(w / 2, 420); c.scale(k, k); c.fillStyle = '#FFF0F4'; rr(c, -180, -170, 360, 340, 28); c.fill(); c.strokeStyle = '#E0474C'; c.lineWidth = 6; rr(c, -180, -170, 360, 340, 28); c.stroke();
+    c.fillStyle = '#E0474C'; rr(c, -120, -140, 240, 60, 12); c.fill(); txt(c, 'OCT 23', 0, -110, 30, '#FFFFFF'); txt(c, '1 YEAR', 0, -10, 70, '#E0474C'); txt(c, 'TODAY!', 0, 80, 56, '#2B2F3A'); c.restore(); } }; }
+function searchInsert(c, t) { const ph = ev('phone'), rs = ev('result'), k = eBack(P(t, ph + 0.5, ph + 0.8), 1.6) * (1 - eIn(P(t, rs + 1.8, rs + 2.0))); if (k <= 0) return;
+  c.save(); c.globalAlpha = clamp(k * 4); const g = c.createLinearGradient(0, 0, 0, HH); g.addColorStop(0, '#3B3550'); g.addColorStop(1, '#1F1B2C'); c.fillStyle = g; c.fillRect(0, 0, W, HH); c.restore();
+  c.save(); c.globalAlpha = clamp(k * 2); K.phone(c, 540, 1180 + (1 - k) * 260, 1.2 * lerp(0.6, 1, k), searchScreen(t)); c.restore();
+  K.pop(c, t, 'ТОМ ГУГЛИТ…', ph + 0.8, rs - 0.1, 540, 1720, C.gold, -0.05, 64); if (t > rs) K.pop(c, t, 'ГОДОВЩИНА — СЕГОДНЯ', rs + 0.2, rs + 1.7, 540, 1720, C.white, -0.05, 56); }
+
 // two-line cover title (frame 0): «ОН ЗАБЫЛ. СПРАШИВАЕТ:» / «ТЫ ОБИДЕЛАСЬ?»
-function coverTitle(c, t) { const L = TL.cfg.hook_title, s = 1 + 0.012 * Math.sin(t * 5); c.save(); c.translate(540, 440); c.rotate(-0.04); c.scale(s, s);
+function coverTitle(c, t) { const L = TL.cfg.hook_title, s = 1 + 0.012 * Math.sin(t * 5); c.save(); c.translate(540, 420); c.rotate(-0.04); c.scale(s, s);
   c.fillStyle = 'rgba(0,0,0,.22)'; rr(c, -500 + 10, -120 + 14, 1000, 240, 30); c.fill(); c.fillStyle = C.cream; c.strokeStyle = C.oliveD; c.lineWidth = 9; rr(c, -500, -120, 1000, 240, 30); c.fill(); c.stroke();
   c.textAlign = 'center'; c.textBaseline = 'middle'; UI.textFit(c, 'Unb9', 62, L[0][0], 900); c.fillStyle = C.oliveD; c.fillText(L[0][0], 0, -52); UI.textFit(c, 'Unb9', 104, L[1][0], 930); UI.strokeText(c, L[1][0], 0, 40, C.pink, C.white, 12); c.restore(); }
 
@@ -160,10 +177,11 @@ function renderFrame(c, t) {
   const proj = p => ({ x: M.a * p.x + M.c * p.y + M.e, y: M.b * p.x + M.d * p.y + M.f });
   if (cam.tag !== 'her' && cam.tag !== 'none') sweat(c, { ...proj(heads.tom), hh: heads.tom.hh * cam.z }, tomSweat(t, sc.id));
   if (sc.id === 'A1') darkness(c, t, heads, proj, cam);
-  if (sc.id === 'hook') { coverTitle(c, t); K.bubbles(c, t, sc, heads, proj, { names: { tom: ['TOM', '#4E7FB8'] } }); UI.captions(c, t); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); Hq.grain(c, W, HH, t, 0.045); UI.sparkles(c, t); UI.levelIntroNext(c, t); return; }
+  if (sc.id === 'hook') { coverTitle(c, t); K.bubbles(c, t, sc, heads, proj, { names: { tom: ['TOM', '#4E7FB8'] }, hold: { hook_x: -0.1 } }); UI.captions(c, t); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); Hq.grain(c, W, HH, t, 0.045); UI.sparkles(c, t); UI.levelIntroNext(c, t); return; }
+  if (sc.id === 'C2') searchInsert(c, t);   // under the bubbles: her speech stays readable over the phone shot
   K.bubbles(c, t, sc, heads, proj, { names: { tom: ['TOM', '#4E7FB8'] }, hold: { c2_her: 0.25 } });
   if (sc.id === 'B2' && cam.tag === 'none') K.pop(c, t, '1 ГОД?!', ev('notice') + 0.1, ev('notice') + 0.5, 540, 1450, C.gold, -0.06, 110);
-  if (sc.id === 'C1') K.pop(c, t, 'ПЛЮХ!', SC.C1.ev.plop, SP.c1_nar.t - 0.3, 540, 1350, C.white, 0.06, 96);
+  if (sc.id === 'C1') if (cam.tag === 'none') K.pop(c, t, 'ПЛЮХ!', ev('slam') + 0.5, SP.c1_nar.t - 0.3, 540, 1450, C.white, 0.06, 110);
   if (sc.id === 'C2') K.dots(c, t, endOf('c2_her') + 0.25, SP.c2_x.t - 0.1);
   K.hud(c, t, sc);
 }
