@@ -463,7 +463,7 @@ elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "re
             tt = T(0.05); put(music, hp(rng.standard_normal(len(tt)), 6000)*np.exp(-tt*70), t0 + j*b/4, 0.1 if j % 2 else 0.05)
         if (k // 4) % 2 == 1:
             for j, m in enumerate([ch[3] + 12, ch[2] + 12, ch[1] + 12]): put(music, pluck(note(m), 0.6, 1.2), t0 + (j*1.25 + 0.5)*b, 0.07)
-elif EPN in ("restaurant", "loan", "date", "kyle"):
+elif EPN in ("restaurant", "loan", "date", "kyle", "mad"):
     # cosy bistro swing: brushed snare, walking bass, muted piano comping, glock hook
     bpm = 120; b = 60/bpm; K = 0
     def glock(f, d=0.8):
