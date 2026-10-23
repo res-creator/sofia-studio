@@ -1,0 +1,86 @@
+{
+ "summary": {
+  "ep": "trial",
+  "style": "v2",
+  "layout": "v2",
+  "samples": 779,
+  "issues": 6,
+  "critical": 0,
+  "major": 0,
+  "minor": 6
+ },
+ "issues": [
+  {
+   "ep": "trial",
+   "type": "crop_knees",
+   "key": "12|1300|#C2504A",
+   "start": 299,
+   "end": 301.5,
+   "n": 6,
+   "sev": "minor",
+   "max": 44.20000743865967,
+   "info": "",
+   "dur": 3
+  },
+  {
+   "ep": "trial",
+   "type": "crop_knees",
+   "key": "12|1300|#C2504A",
+   "start": 361,
+   "end": 363.5,
+   "n": 6,
+   "sev": "minor",
+   "max": 44.20000743865967,
+   "info": "",
+   "dur": 3
+  },
+  {
+   "ep": "trial",
+   "type": "crop_knees",
+   "key": "12|1300|#C2504A",
+   "start": 291,
+   "end": 291.5,
+   "n": 2,
+   "sev": "minor",
+   "max": -44.6400089263916,
+   "info": "",
+   "dur": 1
+  },
+  {
+   "ep": "trial",
+   "type": "face_covered_by_bubble",
+   "key": "43|1720|#1E1E26",
+   "start": 119,
+   "end": 119,
+   "n": 1,
+   "sev": "minor",
+   "max": 0.4536082474226804,
+   "info": "listener",
+   "dur": 0.5
+  },
+  {
+   "ep": "trial",
+   "type": "face_covered_by_overlay",
+   "key": "43|1720|#1E1E26",
+   "start": 340.5,
+   "end": 340.5,
+   "n": 1,
+   "sev": "minor",
+   "max": 0.21649484536082475,
+   "info": "listener",
+   "dur": 0.5
+  },
+  {
+   "ep": "trial",
+   "type": "face_covered_by_bubble",
+   "key": "43|1720|#1E1E26",
+   "start": 348.5,
+   "end": 348.5,
+   "n": 1,
+   "sev": "minor",
+   "max": 0.3711340206185567,
+   "info": "listener",
+   "dur": 0.5
+  }
+ ]
+}

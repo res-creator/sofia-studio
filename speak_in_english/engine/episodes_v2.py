@@ -69,6 +69,9 @@ CAST = {
     "hughes": dict(voice="bm_george", speed=1.0, lang="en-gb", el="CwhRBWXzGAHq8TQ4Fs17"),
     "becky": dict(voice="af_sarah", speed=1.05, lang="en-gb", el="FGY2WhTYpPnrIDTdsKH5"),
     "zoe":   dict(voice="bf_lily", speed=1.0, lang="en-gb", el="pFZP5JQG7iQjIQuC4Bku"),
+    # THE TRIAL (long YouTube episode): the smart speaker and the 03:14 recording (Nana's voice through the speaker)
+    "homey": dict(voice="bf_isabella", speed=1.0, lang="en-gb", fx="smart_speaker"),   # fx: light speaker colouring, applied at the sound stage
+    "rec":   dict(voice="bf_lily", speed=0.9, lang="en-gb", fx="muffled_recording"),
 }
 EP = {}
 
@@ -1388,4 +1391,210 @@ EP["wrongchat"] = dict(
            'B2': {'type': 'eq', 'en': "You've taken it out of context.", 'ru': '= Ты вырвал это из контекста.', 'ex': ['out of context', '= вне контекста, вырвано из контекста']},
            'C1': {'type': 'eq', 'en': "It doesn't reflect how I feel.", 'ru': '= Это не отражает моего отношения.', 'ex': ["That wasn't meant for you", '= это было не для тебя']},
            'C2': {'type': 'c2', 'vocab': [['inadvertently', '= по неосторожности, нечаянно'], ['I sincerely apologise', '= приношу искренние извинения']], 'moral': ['', '', ''], 'moral_at': 99}},
+)
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# THE TRIAL — first long YouTube episode (16:9, ~9-11 min). Built by timeline_long.py from "seq", rendered by trial.js.
+# Scenes: hook, the six levels spread through the trial, plus story scenes between them (NM, EX, LOG, VD, FN).
+# Line ids start with the scene id (lower case) so bubbles and cards find them.
+EP["trial"] = dict(
+    title='Суд: сорок пицц, фламинго и огнетушитель',
+    hook_title=[['МЕНЯ СУДЯТ', 'd'], ['ЗА 40 ПИЦЦ', 'p'], ['КАК ЗАЩИЩАТЬСЯ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    format="landscape",  # 1920x1080 YouTube (ui_v2 / ep_kit / qa_frames lay out for a wide frame)
+    camera="hard_cut",
+    chunks={
+        'c2_her': [
+            ['Your Honour, allow me to deconstruct this recording.', 'Ваша честь, позвольте разобрать эту запись по косточкам.'],
+            ['"Box." Not "Homey" — "Box."', '«Коробка». Не «Хоуми», а «коробка».'],
+            ['Whoever said this regards the device not as an assistant, but as an obstinate appliance.', 'Тот, кто это сказал, видит в колонке не помощника, а упрямую бытовую технику.'],
+            ['"Forty pizza. Girl hungry." No article, no plural, no verb.', '«Сорок пицца. Девочка голодная». Ни артикля, ни множественного числа, ни глагола.'],
+            ['Not the grammar of a learner, but the telegraphic bellow of someone shouting at a machine', 'Это не грамматика ученика, а телеграфный рёв человека, который кричит на машину,'],
+            ['she presumes is as hard of hearing as she is.', 'считая её такой же тугоухой, как она сама.'],
+            ['And beneath it all, that whistle: the unmistakable feedback of a hearing aid.', 'А под всем этим — свист. Ни с чем не спутать: так фонит слуховой аппарат.'],
+            ['Only one guest that night could not hear the music, kept turning it up,', 'Только одна гостья в ту ночь не слышала музыку и делала её громче,'],
+            ['and was convinced I was wasting away for want of sustenance.', 'и была уверена, что я таю на глазах без пропитания.']],
+        'log_x': [
+            ['Three fourteen. A woman\'s voice. Ordering pizza.', 'Три четырнадцать. Женский голос. Заказывает пиццу.'],
+            ['And the delivery man asked for "the hungry girl". Everybody pointed at her!', 'А курьер спросил «голодную девушку». И все показали на неё!']],
+        'b1_k': [
+            ['Yeah, she was at my café. Twelve flat whites at three in the morning.', 'Ага, она была у меня в кафе. Двенадцать флэт уайтов в три ночи.'],
+            ['Phone dead — she paid in coins.', 'Телефон сел — платила мелочью.']],
+        'b2_m2': [
+            ['Darling, the only thing anyone put in your mouth was sausage rolls.', 'Милая, тебе в рот клали только сосиски в тесте.'],
+            ['Someone fed you all night.', 'Кто-то кормил тебя всю ночь.']],
+    },
+    lines=[
+        # HOOK — the bill, the sum, her reaction, the charge
+        ('hook_x1', 'reggie', 'One thousand two hundred and forty pounds.', 'Тысяча двести сорок фунтов.'),
+        ('hook_her', 'her', 'For WHAT?!', 'За ЧТО?!'),
+        ('hook_x2', 'rocky', 'Forty pizzas. One giant flamingo. One fire extinguisher. All at three fourteen a.m.', 'Сорок пицц. Гигантский фламинго. Огнетушитель. И всё в 3:14 ночи.'),
+        ('hook_her2', 'her', "I don't even LIKE flamingos!", 'Я даже не люблю фламинго!'),
+        ('hook_nar', 'nar', 'Меня судят за сорок пицц, фламинго и огнетушитель. Как защищаться в суде на английском? По одной фразе видно твой уровень. Проверим!', ''),
+        ('hook_x3', 'reggie', 'How do you plead?', 'Признаёте ли вы вину?'),
+        # A1 — the plea
+        ('a1_her', 'her', 'Not me! No pizza!', 'Не я! Никакой пиццы!'),
+        ('a1_x', 'rocky', 'No pizza? Exhibit B, Your Honour.', 'Никакой пиццы? Улика Б, ваша честь.'),
+        ('a1_fb', 'her', 'Is there pizza?', 'А пицца есть?'),
+        ('a1_x2', 'reggie', 'Noted.', 'Принято к сведению.'),
+        ('a1_nar', 'nar', 'Уровень А-один. «Не я, никакой пиццы!» — а на видео я сама прошу пиццу. Сдала себя за две секунды.', ''),
+        # NM — her name
+        ('nm_x', 'reggie', 'The defendant will state her name for the record.', 'Подсудимая, назовите своё имя для протокола.'),
+        ('nm_her', 'her', "It's—", 'Меня зовут…'),
+        ('nm_h', 'homey', 'Playing "No Music". Ten-hour version!', 'Включаю «No Music». Версия на десять часов!'),
+        ('nm_n', 'nana', 'Turn that box down!', 'Сделайте потише эту коробку!'),
+        ('nm_x2', 'reggie', 'Thank you, Ms... No Music.', 'Спасибо, мисс… «Без музыки».'),
+        # EX — exhibit A: the speaker's log
+        ('ex_x', 'rocky', 'Exhibit A. Homey, our smart speaker. It logs every command.', 'Улика А. Хоуми, наша умная колонка. Она записывает каждую команду.'),
+        ('ex_f1', 'her', 'Homey! No music!', 'Хоуми! Нет музыка!'),
+        ('ex_h1', 'homey', 'Playing "No Music". Ten-hour version.', 'Включаю «No Music». Версия на десять часов.'),
+        ('ex_x2', 'reggie', 'Ah. That explains the name.', 'А. Вот откуда имя.'),
+        ('ex_f2', 'her', 'Homey, could you turn it down, please?', 'Хоуми, можешь сделать потише?'),
+        ('ex_h2', 'homey', 'Turning it down.', 'Делаю тише.'),
+        ('ex_n', 'nana', "Turn it UP, dear! I can't hear a thing!", 'Громче, милая! Ничего не слышу!'),
+        ('ex_h3', 'homey', 'Turning it up.', 'Делаю громче.'),
+        ('ex_f3', 'her', "Homey, let's pump the brakes on this party.", 'Хоуми, давай притормозим эту вечеринку.'),
+        ('ex_h4', 'homey', 'Pumping.', 'Накачиваю.'),
+        ('ex_x3', 'reggie', 'And that explains the flamingo.', 'А вот откуда фламинго.'),
+        ('ex_her', 'her', 'Okay. That one was me.', 'Ладно. Это была я.'),
+        ('ex_nar', 'nar', 'Две фразы с той вечеринки. Turn it down — «сделай потише». И pump the brakes — «притормози». Колонка поняла буквально: pump — «накачать».', ''),
+        # LOG — 03:14
+        ('log_rec', 'rec', 'Box! Forty pizza! Girl hungry!', 'Коробка! Сорок пицца! Девочка голодная!'),
+        ('log_x', 'rocky', 'Three fourteen. A woman\'s voice. Ordering pizza. And the delivery man asked for "the hungry girl". Everybody pointed at her!', 'В 3:14. Женский голос. Заказывает пиццу. А курьер спросил «голодную девушку». И все показали на неё!'),
+        # A2 — when
+        ('a2_x', 'reggie', 'Where were you at three fourteen?', 'Где вы были в 3:14?'),
+        ('a2_her', 'her', 'I was buy coffee. For everybody.', 'Я покупать кофе. Для всех.'),
+        ('a2_x2', 'rocky', '"Buy"? Present tense! She\'s still buying, Your Honour!', '«Покупать»? Настоящее время! Она до сих пор покупает, ваша честь!'),
+        ('a2_x3', 'reggie', 'Sit down, Mr... Rocky.', 'Сядьте, мистер… Рокки.'),
+        ('a2_nar', 'nar', 'А-два. I was buy — так нельзя. Действие в процессе в прошлом: was плюс -ing. Правильно так:', ''),
+        ('a2_tip', 'tip', 'I was buying coffee.', ''),
+        # B1 — the alibi
+        ('b1_her', 'her', 'I was buying coffee when my phone died.', 'Я как раз покупала кофе, когда у меня сел телефон.'),
+        ('b1_x', 'reggie', 'Can anyone confirm that?', 'Кто-нибудь может это подтвердить?'),
+        ('b1_k', 'kai', 'Yeah, she was at my café. Twelve flat whites at three in the morning. Phone dead — she paid in coins.', 'Ага, она была у меня в кафе. Двенадцать флэт уайтов в три ночи. Телефон сел — платила мелочью.'),
+        ('b1_k2', 'kai', 'Oh — and she asked if we did pizza.', 'А, и ещё спросила, есть ли у нас пицца.'),
+        ('b1_nar', 'nar', 'Би-один. I was buying coffee when… — «я как раз покупала кофе, когда…». Одна фраза — и у меня алиби.', ''),
+        # B2 — objection
+        ('b2_x', 'rocky', 'Then she had an accomplice! Someone at the party ordered for her! I call Margot!', 'Значит, у неё был сообщник! Кто-то на вечеринке заказал за неё! Вызываю Марго!'),
+        ('b2_m', 'margot', 'Oh, darling, she kept asking "Is there pizza?" all night. She was absolutely starving.', 'Ой, дорогая, она весь вечер спрашивала «А пицца есть?». Умирала с голоду.'),
+        ('b2_her', 'her', "I asked once! Once! You're putting words in my mouth.", 'Я спросила один раз! Один! Вы приписываете мне слова.'),
+        ('b2_m2', 'margot', 'Darling, the only thing anyone put in your mouth was sausage rolls. Someone fed you all night.', 'Милая, тебе в рот клали только сосиски в тесте. Кто-то кормил тебя всю ночь.'),
+        ('b2_x2', 'reggie', 'Who?', 'Кто?'),
+        ('b2_m3', 'margot', "Oh, I couldn't say. I was dancing.", 'Ой, не скажу. Я танцевала.'),
+        ('b2_nar', 'nar', 'Би-два. You’re putting words in my mouth — «вы приписываете мне слова». Так возражают, когда ваши слова переврали. Запоминай:', ''),
+        ('b2_tip', 'tip', "That's not what I said.", ''),
+        # C1 — a request to the court
+        ('c1_her', 'her', 'Your Honour, would it be possible to play the recording again — a little more slowly?', 'Ваша честь, нельзя ли ещё раз включить запись — чуть медленнее?'),
+        ('c1_x', 'reggie', 'Granted.', 'Разрешаю.'),
+        ('c1_rec', 'rec', 'Box... forty pizza... girl hungry...', 'Коробка… сорок пицца… девочка голодная…'),
+        ('c1_fb', 'nana', "I can't hear a thing!", 'Ничего не слышу!'),
+        ('c1_nar', 'nar', 'Си-один. Would it be possible to…? — очень вежливая просьба, судьи такое любят. А я услышала то, что пропустили все.', ''),
+        ('c1_tip', 'tip', 'Would it be possible to play it again?', ''),
+        # C2 — the grammar evidence, the whistle, Nana gives herself away
+        ('c2_her', 'her', 'Your Honour, allow me to deconstruct this recording. "Box." Not "Homey" — "Box." Whoever said this regards the device not as an assistant, but as an obstinate appliance. "Forty pizza. Girl hungry." No article, no plural, no verb. Not the grammar of a learner, but the telegraphic bellow of someone shouting at a machine she presumes is as hard of hearing as she is. And beneath it all, that whistle: the unmistakable feedback of a hearing aid. Only one guest that night could not hear the music, kept turning it up, and was convinced I was wasting away for want of sustenance.', 'Ваша честь, позвольте разобрать эту запись по косточкам…'),
+        ('c2_x', 'reggie', 'Madam... would you step forward?', 'Мадам… подойдите, пожалуйста.'),
+        ('c2_n', 'nana', 'Me? Order pizza? I have never shouted "Box! Forty pizza!" in my life!', 'Я? Заказывала пиццу? Да я в жизни не кричала «Коробка! Сорок пицца!»!'),
+        ('c2_h', 'homey', 'Order confirmed. Forty pizzas.', 'Заказ принят. Сорок пицц.'),
+        ('c2_n2', 'nana', 'Oh, bother. Well, I only ordered forty because everyone looked hungry!', 'Ой, батюшки. Ну, я заказала всего сорок, потому что все выглядели голодными!'),
+        ('c2_x2', 'reggie', 'So you admit it?', 'Значит, вы признаёте?'),
+        ('c2_n3', 'nana', "Of course, dear! But forty wasn't enough!", 'Конечно, милый! Но сорока не хватило!'),
+        ('c2_x3', 'reggie', 'And the fire extinguisher?', 'А огнетушитель?'),
+        ('c2_n4', 'nana', 'My sausage rolls. A tiny bit crispy.', 'Мои сосиски в тесте. Чуточку подрумянились.'),
+        ('c2_nar', 'nar', 'Си-два. Telegraphic — «телеграфный», без единого лишнего слова. Sustenance — «пропитание». Вывод: грамматика — тоже улика!', ''),
+        # VD — the verdict
+        ('vd_x', 'reggie', 'On the pizzas and the kitchen — not guilty.', 'По пиццам и кухне — невиновна.'),
+        ('vd_x2', 'reggie', 'On the flamingo... guilty. Sixty pounds.', 'По фламинго… виновна. Шестьдесят фунтов.'),
+        ('vd_her', 'her', '...Fair.', '…Справедливо.'),
+        ('vd_n', 'nana', "I'll pay the rest, Your Honour. In sausage rolls.", 'Остальное заплачу я, ваша честь. Сосисками в тесте.'),
+        ('vd_x3', 'reggie', "No, thank you, madam. I couldn't eat another bite.", 'Нет, спасибо, мадам. Я больше ни кусочка не съем.'),
+        ('vd_n2', 'nana', "Nonsense. You're skin and bones!", 'Глупости. Кожа да кости!'),
+        ('vd_x4', 'reggie', '...Is there more?', '…А ещё есть?'),
+        ('vd_rn', 'nar', 'От Наны ещё никто не уходил голодным. Даже суд.', ''),
+        # FN — the order arrives; the night after
+        ('fn_h', 'homey', 'Your order has arrived. Delivery: Courtroom Two.', 'Ваш заказ прибыл. Доставка: зал суда номер два.'),
+        ('fn_r', 'rocky', 'PARTY!', 'ВЕЧЕРИНКА!'),
+        ('fn_rn', 'nar', 'Кажется, я знаю, чем закончится эта ночь.', ''),
+        ('fn_x', 'reggie', 'Objection... overruled!', 'Возражение… отклонено!'),
+        ('outro', 'nar', 'А как бы ты защищался в суде? Пиши свою фразу в комментарии — лучших возьмём в присяжные следующего дела. И подпишись, впереди ещё много новых серий.', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'АЛИБИ', 'ok': False, 'note': 'сама себя сдала'},
+           'EX': {'type': 'eq', 'en': 'pump the brakes', 'ru': '= притормозить', 'note': 'turn it down = сделать потише', 'chip': 'УЛИКА А', 'chipCol': '#3A3F4B'},
+           'A2': {'type': 'swap', 'bad': 'I was buy coffee.', 'bad_note': 'нет -ing', 'good': ['I was buying coffee.'], 'good_at': 1.0, 'mark': 'buying'},
+           'B1': {'type': 'eq', 'en': 'I was …ing when …', 'ru': '= я как раз …, когда …', 'note': 'I was buying coffee when my phone died.', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'eq', 'en': "You're putting words in my mouth.", 'ru': '= Вы приписываете мне слова.', 'ex': ["That's not what I said.", '= Я такого не говорила.']},
+           'C1': {'type': 'eq', 'en': 'Would it be possible to…?', 'ru': '= Нельзя ли…?', 'ex': ['Would it be possible to change my seat?', 'Would it be possible to get a receipt?']},
+           'C2': {'type': 'c2', 'vocab': [['telegraphic', '= телеграфный, без лишних слов'], ['sustenance', '= пропитание']], 'moral': ['ГРАММАТИКА —', 'ТОЖЕ', 'УЛИКА!'], 'moral_at': 0.62}},
+    # montage: (scene, options, [(line_id, gap_before_s, [cues])]). A cue is (sfx, offset, gain); an UPPER-case name is a story
+    # event for the renderer (time only). offset is from the line start, or ("e", x) from the line end. level=True adds the
+    # level intro (1.15 s); done = levels already passed (for the level bar between levels).
+    seq=[
+        ('hook', {}, [
+            ('hook_x1', 1.9, [('INVOICE', -1.9, 0), ('register', -1.6, 0.7), ('register', -1.25, 0.7), ('register', -0.9, 0.7), ('stamp', -0.45, 0.9)]),
+            ('hook_her', 0.15, [('gasp', -0.12, 0.7)]),
+            ('hook_x2', 0.2, []),
+            ('hook_her2', 0.15, []),
+            ('hook_nar', 0.35, [('thud', -0.25, 0.9)]),
+            ('hook_x3', 0.3, [('thud', -0.22, 0.8)])], 0.3),
+        ('A1', {'level': True}, [
+            ('a1_her', 0, []), ('a1_x', 0.3, []),
+            ('a1_fb', 0.6, [('SCREEN', -0.5, 0), ('whoosh', -0.5, 0.5)]),
+            ('a1_x2', 0.6, [('FACEPALM', -0.55, 0)]),
+            ('a1_nar', 0.45, [])], 0.55),
+        ('NM', {'done': 1}, [
+            ('nm_x', 0.35, []), ('nm_her', 0.25, []),
+            ('nm_h', 0.1, [('scratch', -0.05, 0.6)]),
+            ('nm_n', 0.25, [('WHISTLE', ('e', 0.05), 0), ('squeak', ('e', 0.05), 0.45)]),
+            ('nm_x2', 0.9, [('NOTE', -0.85, 0), ('pop', -0.8, 0.5)])], 0.45),
+        ('EX', {'done': 1}, [
+            ('ex_x', 0.3, []),
+            ('ex_f1', 0.55, [('SCREEN', -0.5, 0), ('whoosh', -0.5, 0.5)]), ('ex_h1', 0.2, []),
+            ('ex_x2', 0.35, [('BACK1', -0.3, 0)]),
+            ('ex_f2', 0.45, [('SCREEN2', -0.4, 0)]), ('ex_h2', 0.15, []),
+            ('ex_n', 0.3, [('squeak', ('e', 0.0), 0.4)]), ('ex_h3', 0.15, [('boom', ('e', 0.0), 0.5)]),
+            ('ex_f3', 0.45, []), ('ex_h4', 0.15, [('FLAMINGO', ('e', 0.0), 0), ('strain', ('e', 0.05), 0.7)]),
+            ('ex_x3', 1.7, [('BACK2', -0.3, 0)]), ('ex_her', 0.25, []),
+            ('ex_nar', 0.5, [])], 0.55),
+        ('LOG', {'done': 1}, [
+            ('log_rec', 0.9, [('LOG', -0.75, 0), ('buzz', -0.7, 0.7)]),
+            ('log_x', 0.55, [('LOOK', ('e', 0.1), 0), ('gasp', ('e', 0.1), 0.7)])], 1.1),
+        ('A2', {'level': True}, [
+            ('a2_x', 0, []), ('a2_her', 0.3, []),
+            ('a2_x2', 0.3, [('POINT', -0.1, 0)]), ('a2_x3', 0.3, [('thud', -0.15, 0.7)]),
+            ('a2_nar', 0.5, [('buzz', 0.95, 0.5)]), ('a2_tip', 0.25, [('ding', 0.05, 0.6)])], 0.55),
+        ('B1', {'level': True}, [
+            ('b1_her', 0, []), ('b1_x', 0.3, []),
+            ('b1_k', 1.6, [('KAI', -1.5, 0), ('creak', -1.5, 0.6), ('COINS', ('e', -1.1), 0), ('register', ('e', -1.0), 0.6)]),
+            ('b1_k2', 0.35, [('gasp', ('e', 0.1), 0.6)]),
+            ('b1_nar', 0.7, [])], 0.55),
+        ('B2', {'level': True}, [
+            ('b2_x', 0, []), ('b2_m', 1.0, [('MARGOT', -0.95, 0)]), ('b2_her', 0.3, []),
+            ('b2_m2', 0.3, []), ('b2_x2', 0.3, []), ('b2_m3', 0.25, [('NANA', ('e', 0.15), 0)]),
+            ('b2_nar', 1.2, []), ('b2_tip', 0.25, [('ding', 0.05, 0.6)])], 0.55),
+        ('C1', {'level': True}, [
+            ('c1_her', 0, []), ('c1_x', 0.3, [('thud', -0.15, 0.6)]),
+            ('c1_rec', 0.6, [('WAVE', -0.5, 0), ('WHISTLE', ('e', -1.4), 0), ('squeak', ('e', -1.4), 0.35)]),
+            ('c1_fb', 0.6, [('SCREEN', -0.5, 0), ('squeak', 0.1, 0.35)]),
+            ('c1_nar', 0.6, []), ('c1_tip', 0.25, [('ding', 0.05, 0.6)])], 0.55),
+        ('C2', {'level': True}, [
+            ('c2_her', 0.2, []),
+            ('c2_x', 1.6, [('tick', -1.3, 0.5), ('tick', -0.7, 0.5)]),
+            ('c2_n', 3.6, [('WALK', -3.15, 0), ('WHISTLE', -2.4, 0), ('squeak', -2.4, 0.6), ('MATCH', -1.9, 0), ('stamp', -1.0, 0.8)]),
+            ('c2_h', 0.25, [('OOPS', -0.1, 0), ('ding', -0.1, 0.6)]),
+            ('c2_n2', 1.4, [('tick', -1.2, 0.5), ('tick', -0.6, 0.5)]),
+            ('c2_x2', 0.3, []), ('c2_n3', 0.3, [('rimshot', ('e', 0.15), 0.9)]),
+            ('c2_x3', 0.9, []), ('c2_n4', 0.3, []),
+            ('c2_nar', 0.9, [])], 0.6),
+        ('VD', {'done': 6}, [
+            ('vd_x', 0.45, [('thud', -0.35, 0.9), ('GAVEL', -0.35, 0), ('BILL', ('e', 0.15), 0), ('register', ('e', 0.2), 0.7)]),
+            ('vd_x2', 0.7, []), ('vd_her', 0.45, []),
+            ('vd_n', 0.45, []), ('vd_x3', 0.3, []), ('vd_n2', 0.3, []),
+            ('vd_x4', 1.5, [('EAT', -1.4, 0), ('gulp', -0.8, 0.6)]),
+            ('vd_rn', 0.5, [])], 0.5),
+        ('FN', {'done': 6}, [
+            ('fn_h', 0.5, [('ARRIVE', ('e', 0.15), 0), ('creak', ('e', 0.15), 0.6)]),
+            ('fn_r', 0.9, [('tada', -0.1, 0.7)]),
+            ('fn_rn', 0.6, []),
+            ('fn_x', 2.6, [('NIGHT', -2.5, 0), ('knock', -1.5, 0.9), ('knock', -1.28, 0.9), ('knock', -1.06, 0.9), ('creak', -0.6, 0.7)])], 1.3),
+    ],
 )

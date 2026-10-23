@@ -1,6 +1,14 @@
 // UI layer for v2 episodes (ported from v1 render.js, brand-consistent)
 module.exports = function makeUI(TL, opts = {}) {
-const W = 1080, H = 1920, FPS = TL.fps, CFG = TL.cfg;
+const FPS = TL.fps, CFG = TL.cfg;
+// Frame format per project: cfg.format = 'landscape' (YouTube 1920x1080) or portrait (TikTok 1080x1920, default).
+// Landscape draws the same brand elements, laid out for a wide frame; the portrait path is unchanged.
+const LAND = (CFG || {}).format === 'landscape';
+const W = LAND ? 1920 : 1080, H = LAND ? 1080 : 1920;
+const BAR_S = 0.7, BAR_Y = 52;                 // landscape: level bar scale and centre y
+const CARD_S = 0.84, CARD_TOP = 118;           // landscape: lesson card scale and top edge
+let cardSide = 'right';                        // landscape: which side the lesson card takes (the shot keeps faces on the other side)
+function setCardSide(s) { cardSide = s === 'left' ? 'left' : 'right'; }
 const C = {
   cream: '#F3EDDF', cream2: '#EAE1CB', olive: '#5E6B2F', oliveD: '#3E471E', oliveL: '#8C9A55',
   pink: '#EE5E9A', pinkL: '#F7B6CF', pinkD: '#C23C76', white: '#FFFDF8', ink: '#2B2F1C',
@@ -130,23 +138,25 @@ function icon(ctx, name, x, y, s, label) {
 function bubble(ctx, sp, t, anchor, side, nameTag) {
   const u = t - sp.t;
   let hold = sp.hold || 0.9;
-  if (LAYOUT === 'v2') { const nar = SP[sp.id.split('_')[0] + '_nar']; if (nar && nar.t > sp.t) hold = Math.max(0.05, Math.min(hold, nar.t - 0.35 - (sp.t + sp.d))); }   // gone before the lesson card arrives
+  if (LAYOUT === 'v2') { const nar = SP[sp.id.split('_')[0] + '_nar']; if (nar && nar.t > sp.t) hold = LAND && hold < 0 ? hold : Math.max(0.05, Math.min(hold, nar.t - 0.35 - (sp.t + sp.d))); }   // landscape: a negative hold (meaning chunk) is kept, so chunks never overlap   // gone before the lesson card arrives
   const out = P(t, sp.t + sp.d + hold, sp.t + sp.d + hold + 0.2);
   if (u < -0.05 || out >= 1) return;
   const k = eBack(P(u, -0.05, 0.25), 2.2) * (1 - eIn(out));
-  const maxW = 820;
-  let fs = sp.fs || (sp.text.length > 60 ? 46 : 58);   // sp.fs: per-line override (new episodes only)
+  const long = sp.text.length > 60, maxW = LAND ? (long ? 1000 : 860) : 820;
+  let fs = sp.fs || (LAND ? (long ? 42 : 50) : (long ? 46 : 58));   // sp.fs: per-line override (new episodes only)
+  const rfs = LAND ? 30 : 34, rlh = LAND ? 38 : 42;                    // Russian translation: font size, line height
   font(ctx, 'Nun9', fs);
   const lines = wrap(ctx, sp.text, maxW - 80);
-  font(ctx, 'Nun7', 34);
+  font(ctx, 'Nun7', rfs);
   const rl = sp.ru ? wrap(ctx, sp.ru, maxW - 80) : [];
   font(ctx, 'Nun9', fs);
-  const tw = Math.max(...lines.map(l => ctx.measureText(l).width), ...rl.map(l => { font(ctx, 'Nun7', 34); return ctx.measureText(l).width; })) + 80;
-  const bh = lines.length * fs * 1.12 + (rl.length ? rl.length * 42 + 22 : 0) + 56;
+  const tw = Math.max(...lines.map(l => ctx.measureText(l).width), ...rl.map(l => { font(ctx, 'Nun7', rfs); return ctx.measureText(l).width; })) + 80;
+  const bh = lines.length * fs * 1.12 + (rl.length ? rl.length * rlh + 22 : 0) + 56;
   let bx = side === 'left' ? Math.max(50, Math.min(anchor.x - 120, W - 150 - tw)) : Math.min(W - 140 - tw, Math.max(50, anchor.x - tw + 140));
   bx = Math.max(40, bx);
   let by = anchor.y - bh - 60;
-  by = LAYOUT === 'v2' ? clamp(by, 360, Math.max(360, 1560 - bh)) : clamp(by, 360, 1250);   // v2: keep the bubble above the TikTok/Shorts caption area
+  if (LAND) by = clamp(by, 112, Math.max(112, 905 - bh));   // landscape: under the level bar, above the narrator captions
+  else by = LAYOUT === 'v2' ? clamp(by, 360, Math.max(360, 1560 - bh)) : clamp(by, 360, 1250);   // v2: keep the bubble above the TikTok/Shorts caption area
   ctx.save();
   const ox = side === 'left' ? bx + 120 : bx + tw - 140, oy = by + bh;
   ctx.translate(ox, oy); ctx.scale(k, k); ctx.translate(-ox, -oy);
@@ -173,8 +183,8 @@ function bubble(ctx, sp, t, anchor, side, nameTag) {
     const ry = by + 30 + lines.length * fs * 1.12 + 14;
     ctx.globalAlpha = clamp(u / 0.4) * (1);
     ctx.strokeStyle = C.pinkL; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(bx + 40, ry - 6); ctx.lineTo(bx + tw - 40, ry - 6); ctx.stroke();
-    font(ctx, 'Nun7', 34); ctx.fillStyle = C.pinkD;
-    rl.forEach((l, i) => ctx.fillText(l, bx + 40, ry + 8 + i * 42));
+    font(ctx, 'Nun7', rfs); ctx.fillStyle = C.pinkD;
+    rl.forEach((l, i) => ctx.fillText(l, bx + 40, ry + 8 + i * rlh));
   }
   ctx.restore();
   if (global.__QA) global.__QA.ui(ctx, 'bubble', { x: bx, y: by, w: tw, h: bh, k, id: sp.id, who: sp.who, lines: lines.length + rl.length, anchor });
@@ -195,11 +205,11 @@ function captions(ctx, t) {
     const cs = ch[0][1];
     const k = eBack(P(u, cs - 0.02, cs + 0.14), 2.5);
     const isTip = sp.who === 'tip';
-    const fsz = isTip ? 74 : 66;
+    const fsz = LAND ? (isTip ? 62 : 56) : (isTip ? 74 : 66);
     const txt = ch.map(w => w[0]).join(' ');
-    const size = textFit(ctx, isTip ? 'Nun9' : 'Unb9', fsz, isTip ? txt : txt.toUpperCase(), 900);
-    const y = 1470;
-    ctx.save(); ctx.translate(540, y); ctx.scale(k, k); ctx.rotate(isTip ? 0 : -0.02);
+    const size = textFit(ctx, isTip ? 'Nun9' : 'Unb9', fsz, isTip ? txt : txt.toUpperCase(), LAND ? 1500 : 900);
+    const y = LAND ? 1000 : 1470, cx = W / 2;
+    ctx.save(); ctx.translate(cx, y); ctx.scale(k, k); ctx.rotate(isTip ? 0 : -0.02);
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     const parts = ch.map(w => isTip ? w[0] : w[0].toUpperCase());
     const sw = ctx.measureText(' ').width;
@@ -208,7 +218,7 @@ function captions(ctx, t) {
     if (isTip) { // pill background for English phrase
       const tw = -x * 2 + 70; ctx.fillStyle = C.pink; rr(ctx, -tw / 2, -size * 0.85, tw, size * 1.7, size * 0.85); ctx.fill();
     }
-    if (global.__QA) global.__QA.ui(ctx, 'captions', { x: 540 + x * k - 20, y: y - size * 0.9 * k, w: -x * 2 * k + 40, h: size * 1.8 * k, k, id: sp.id });
+    if (global.__QA) global.__QA.ui(ctx, 'captions', { x: cx + x * k - 20, y: y - size * 0.9 * k, w: -x * 2 * k + 40, h: size * 1.8 * k, k, id: sp.id });
     parts.forEach((p, i) => {
       const active = u >= ch[i][1] - 0.03;
       const col = isTip ? C.white : (active ? '#FFE15A' : C.white);
@@ -220,15 +230,22 @@ function captions(ctx, t) {
 }
 
 // ---------- top level progress bar (screen space)
+// landscape: the same bar, drawn in its portrait design space and scaled to the top centre of the wide frame
 function levelBar(ctx, t, sc, appear = 1) {
+  if (!LAND) return levelBarP(ctx, t, sc, appear);
+  ctx.save(); ctx.translate(W / 2 - 540 * BAR_S, BAR_Y - 253 * BAR_S); ctx.scale(BAR_S, BAR_S); levelBarP(ctx, t, sc, appear); ctx.restore();
+}
+// centre of level pill i on screen (where the level intro circle lands)
+function pillCenter(i) { const pw = 128, gap = 14, x = (1080 - (6 * pw + 5 * gap)) / 2 + i * (pw + gap) + pw / 2; return LAND ? { x: W / 2 - 540 * BAR_S + x * BAR_S, y: BAR_Y } : { x, y: 253 }; }
+function levelBarP(ctx, t, sc, appear = 1) {
   const cur = LV.indexOf(sc.id);
-  const pw = 128, ph = 62, gap = 14, x0 = (W - (6 * pw + 5 * gap)) / 2, y = 222;
+  const pw = 128, ph = 62, gap = 14, x0 = (1080 - (6 * pw + 5 * gap)) / 2, y = 222;
   if (sc.id !== 'hook') { ctx.fillStyle = 'rgba(243,237,223,.82)'; rr(ctx, x0 - 22, y - 16, 6 * pw + 5 * gap + 44, ph + 32, (ph + 32) / 2); ctx.fill(); }
   LV.forEach((L, i) => {
     const a = sc.id === 'hook' ? eBack(P(t, 2.55 + i * 0.12, 2.8 + i * 0.12)) : appear;
     if (a <= 0) return;
     const x = x0 + i * (pw + gap);
-    const isCur = i === cur, done = cur >= 0 ? i < cur : sc.id === 'outro';
+    const isCur = i === cur, done = sc.done !== undefined ? i < sc.done : cur >= 0 ? i < cur : sc.id === 'outro';   // sc.done: levels already passed (scenes between levels)
     const pulse = isCur ? 1.12 + 0.04 * Math.sin(t * 6) : 1;
     ctx.save(); ctx.translate(x + pw / 2, y + ph / 2); ctx.scale(a * pulse, a * pulse);
     ctx.fillStyle = 'rgba(0,0,0,.15)'; rr(ctx, -pw / 2 + 4, -ph / 2 + 6, pw, ph, ph / 2); ctx.fill();
@@ -245,11 +262,10 @@ function levelBar(ctx, t, sc, appear = 1) {
 function levelIntro(ctx, t, sc) {
   const u = t - sc.s; if (u > 1.2) return;
   const L = sc.id, col = LVCOL[L], i = LV.indexOf(L);
-  const pw = 128, gap = 14, x0 = (W - (6 * pw + 5 * gap)) / 2;
-  const px = x0 + i * (pw + gap) + pw / 2, py = 253;
+  const pc = pillCenter(i), px = pc.x, py = pc.y;
   const inK = eOut(P(u, 0, 0.3)), outK = eIO(P(u, 0.82, 1.15));
-  const cx = lerp(540, px, outK), cy = lerp(960, py, outK);
-  const R = lerp(0, 1300, inK) * (1 - outK) + 40 * outK;
+  const cx = lerp(W / 2, px, outK), cy = lerp(H / 2, py, outK);
+  const R = lerp(0, LAND ? 1250 : 1300, inK) * (1 - outK) + (LAND ? 40 * BAR_S : 40) * outK;
   if (R < 2) return;
   ctx.save();
   ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.clip();
@@ -260,7 +276,7 @@ function levelIntro(ctx, t, sc) {
   for (let k = 0; k < 18; k++) { ctx.rotate(Math.PI * 2 / 18); ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(1400, -60); ctx.lineTo(1400, 60); ctx.fill(); }
   ctx.restore();
   // text
-  const s = eBack(P(u, 0.12, 0.45), 2.2) * lerp(1, 0.18, outK);
+  const s = eBack(P(u, 0.12, 0.45), 2.2) * lerp(LAND ? 0.8 : 1, LAND ? 0.18 * BAR_S : 0.18, outK);
   ctx.translate(cx, cy); ctx.scale(s, s); ctx.rotate(lerp(-0.2, -0.05, eOut(P(u, .12, .5))));
   ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
   font(ctx, 'Unb9', 400); ctx.fillStyle = 'rgba(0,0,0,.18)'; ctx.fillText(L, 14, 24);
@@ -282,7 +298,13 @@ function cardHeight(cd) {
   if (cd.type === 'c2') return cd.moral_at < 1 ? 470 : 130 + ((cd.vocab || []).length - 1) * 170 + 110;
   return 470;
 }
+// landscape: the card keeps its portrait design and is scaled into a side panel (cardSide), faces stay on the other side
 function card(ctx, t, sc) {
+  if (!LAND) return cardP(ctx, t, sc);
+  const X = cardSide === 'left' ? 60 : W - 60 - 900 * CARD_S;
+  ctx.save(); ctx.translate(X - 90 * CARD_S, CARD_TOP - 330 * CARD_S); ctx.scale(CARD_S, CARD_S); cardP(ctx, t, sc); ctx.restore();
+}
+function cardP(ctx, t, sc) {
   const l = sc.id.toLowerCase(); const nar = SP[l + '_nar']; if (!nar) return;
   const u = t - nar.t + 0.15; if (u < 0) return;
   const out = P(t, sc.e - 0.35, sc.e - 0.05);
@@ -293,9 +315,10 @@ function card(ctx, t, sc) {
   ctx.fillStyle = 'rgba(62,71,30,.28)'; rr(ctx, x + 12, y + 18, w, h, 44); ctx.fill();
   ctx.fillStyle = C.white; ctx.strokeStyle = C.oliveD; ctx.lineWidth = 8; rr(ctx, x, y, w, h, 44); ctx.fill(); ctx.stroke();
   // header chip
-  ctx.fillStyle = LVCOL[sc.id]; rr(ctx, x + 40, y - 34, 230, 68, 34); ctx.fill(); ctx.stroke();
+  const cd0 = CFG.cards[sc.id] || {};   // cd.chip / cd.chipCol: header for a card outside the six levels (e.g. an exhibit)
+  ctx.fillStyle = cd0.chipCol || LVCOL[sc.id]; rr(ctx, x + 40, y - 34, 230, 68, 34); ctx.fill(); ctx.stroke();
   font(ctx, 'Unb9', 30); ctx.fillStyle = C.white; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  ctx.fillText(sc.id + ' • УРОК', x + 155, y + 2);
+  ctx.fillText(cd0.chip || sc.id + ' • УРОК', x + 155, y + 2);
   ctx.textAlign = 'left';
   const tip = SP[l + '_tip'];
   const n = t - nar.t;
@@ -406,6 +429,7 @@ function card(ctx, t, sc) {
 }
 
 function watermark(ctx) {
+  if (LAND) { ctx.save(); ctx.globalAlpha = 0.8; font(ctx, 'Nun9', 24); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = 'rgba(62,71,30,.7)'; rr(ctx, W - 300, H - 64, 270, 40, 20); ctx.fill(); ctx.fillStyle = C.white; ctx.fillText('@speak_in_english', W - 165, H - 44); ctx.restore(); return; }
   ctx.save(); ctx.globalAlpha = 0.85; font(ctx, 'Nun9', 30); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
   ctx.fillStyle = 'rgba(62,71,30,.7)'; rr(ctx, 540 - 170, 1612, 340, 50, 25); ctx.fill();
   ctx.fillStyle = C.white; ctx.fillText('@speak_in_english', 540, 1638); ctx.restore();
@@ -416,7 +440,7 @@ function sparkles(ctx, t) {
     ctx.fillStyle = C.gold;
     for (let i = 0; i < 12; i++) {
       const a = hash(i + c.t) * 6.28, r = 60 + 380 * eOut(u) * (0.5 + hash(i * 3 + c.t) * 0.6);
-      const cx = c.t < 7 ? 540 : 790, cy = c.t < 7 ? 900 : 600;
+      const cx = LAND ? (c.t < 7 ? 960 : 1400) : c.t < 7 ? 540 : 790, cy = LAND ? (c.t < 7 ? 520 : 380) : c.t < 7 ? 900 : 600;
       ctx.globalAlpha = 1 - u; star(ctx, cx + Math.cos(a) * r, cy + Math.sin(a) * r * 0.8, 18 * (1 - u) + 6, u * 4);
     }
     ctx.globalAlpha = 1;
@@ -427,12 +451,12 @@ function levelIntroNext(ctx, t) {
   const sc = sceneAt(t); const idx = TL.scenes.indexOf(sc); const nx = TL.scenes[idx + 1];
   if (!nx) return; const d = sc.e - t; if (d > 0.18) return;
   const col = LVCOL[nx.id] || C.pinkL; const k = eIn(1 - d / 0.18);
-  ctx.save(); ctx.fillStyle = col; ctx.beginPath(); ctx.arc(540, 960, 1300 * k * 0.25, 0, 7); ctx.fill(); ctx.restore();
+  ctx.save(); ctx.fillStyle = col; ctx.beginPath(); ctx.arc(W / 2, H / 2, 1300 * k * 0.25, 0, 7); ctx.fill(); ctx.restore();
 }
 function outroIntro(ctx, t) {
   const u = t - SC.outro.s; if (u > 0.5) return;
   const k = eOut(P(u, 0, 0.45));
-  ctx.save(); ctx.fillStyle = C.oliveD; ctx.beginPath(); ctx.rect(0, 0, W, H); ctx.moveTo(540 + 1300 * k, 960); ctx.arc(540, 960, 1300 * k, 0, Math.PI * 2, true); ctx.fill(); ctx.restore();
+  ctx.save(); ctx.fillStyle = C.oliveD; ctx.beginPath(); ctx.rect(0, 0, W, H); ctx.moveTo(W / 2 + 1300 * k, H / 2); ctx.arc(W / 2, H / 2, 1300 * k, 0, Math.PI * 2, true); ctx.fill(); ctx.restore();
 }
 
 
@@ -445,5 +469,5 @@ function tapCursor(ctx, x, y, s = 1, ripple = 0) {
   path(); ctx.fillStyle = C.white; ctx.fill(); ctx.lineJoin = 'round'; ctx.strokeStyle = C.ink; ctx.lineWidth = 7; ctx.stroke();
   ctx.restore();
 }
-return { C, LV, LVCOL, LVNAME, SC, SP, sceneAt, rr, font, textFit, wrap, strokeText, check, cross, star, icon, bubble, captions, levelBar, levelIntro, card, watermark, sparkles, levelIntroNext, outroIntro, tapCursor };
+return { W, H, LAND, setCardSide, pillCenter, C, LV, LVCOL, LVNAME, SC, SP, sceneAt, rr, font, textFit, wrap, strokeText, check, cross, star, icon, bubble, captions, levelBar, levelIntro, card, watermark, sparkles, levelIntroNext, outroIntro, tapCursor };
 };

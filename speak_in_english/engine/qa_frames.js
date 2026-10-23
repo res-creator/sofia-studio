@@ -12,9 +12,12 @@ const opt = Object.fromEntries(args.slice(1).filter(a => a.startsWith('--')).map
 const STEP = +(opt.step || 0.25), OUT = path.resolve(opt.out || '../review/qa');
 process.argv[1] = path.join(ENGINE, EP + '.js');           // style/layout pinning works exactly as in a real render
 const Hq = require('./hq'); const E = require('./engine_v2');
-const W = 1080, H = 1920;
-// platform overlays (1080x1920): status/search bar, right action rail, caption/username/music block
-const UNSAFE = { top: { x: 0, y: 0, w: W, h: 110 }, right: { x: 940, y: 700, w: 140, h: 820 }, bottom: { x: 0, y: 1590, w: W, h: 330 } };
+const LAND = ((JSON.parse(fs.readFileSync(`eps/${EP}/timeline.json`, 'utf8')).cfg || {}).format) === 'landscape';
+const W = LAND ? 1920 : 1080, H = LAND ? 1080 : 1920;
+// platform overlays. 1080x1920 (TikTok/Shorts): status/search bar, right action rail, caption/username/music block.
+// 1920x1080 (YouTube): only the player's progress bar / controls strip at the very bottom (shown on hover).
+const UNSAFE = LAND ? { top: { x: 0, y: 0, w: W, h: 0 }, right: { x: W, y: 0, w: 0, h: 0 }, bottom: { x: 0, y: 1046, w: W, h: 34 } }
+  : { top: { x: 0, y: 0, w: W, h: 110 }, right: { x: 940, y: 700, w: 140, h: 820 }, bottom: { x: 0, y: 1590, w: W, h: 330 } };
 const canvas = Hq.createCanvas(W, H), ctx = canvas.getContext('2d');
 
 let F = null;   // current frame record
@@ -115,7 +118,7 @@ for (const i of real.slice(0, opt.brief ? 8 : 40)) console.log(`  ${i.sev.padEnd
 // ---- contact sheet of the worst issues (frame + red boxes)
 if (opt.sheet && real.length) {
   const top = real.filter(i => i.sev !== 'minor').slice(0, 6); if (!top.length) top.push(...real.slice(0, 3));
-  const tw = 360, th = 640, sheet = Hq.createCanvas(tw * top.length, th + 70), sc2 = sheet.getContext('2d'); sc2.fillStyle = '#fff'; sc2.fillRect(0, 0, sheet.width, sheet.height);
+  const tw = LAND ? 640 : 360, th = LAND ? 360 : 640, sheet = Hq.createCanvas(tw * top.length, th + 70), sc2 = sheet.getContext('2d'); sc2.fillStyle = '#fff'; sc2.fillRect(0, 0, sheet.width, sheet.height);
   top.forEach((iss, n) => { const t = (iss.start + iss.end) / 2; F = { t, chars: [], ui: [], marks: [], worldDone: false }; ctx.setTransform(1, 0, 0, 1, 0, 0); RF(ctx, t, canvas);
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.lineWidth = 8; ctx.strokeStyle = '#FF2020';
     for (const ch of F.chars) { ctx.beginPath(); ctx.ellipse(ch.hc.x, ch.hc.y, ch.rx, ch.ry, 0, 0, 7); ctx.stroke(); }

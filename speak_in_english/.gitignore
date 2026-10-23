@@ -14,3 +14,6 @@ engine/eps/*/build.log
 engine/eps/*/asr.txt
 engine/eps/*/parts.txt
 engine/eps/*/parts.txt
+engine/eps/*/srender*.log
+engine/eps/*/spart*.mp4
+engine/eps/*/silent_parts.txt

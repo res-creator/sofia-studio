@@ -36,7 +36,8 @@ function hardCutCamera(TL, target, opts = {}) {
 }
 let LAST = null, ASSISTED = false;
 // LAYOUT v2 (new episodes): let the camera assist nudge the directed camera before any frame is drawn
-function prepare(EPN, renderFrame) { if (ASSISTED || H.LAYOUT !== 'v2' || !LAST) return; ASSISTED = true; require('./camassist')(EPN, LAST.TL, LAST.CAM, renderFrame, H); }
+// (landscape projects frame every hard_cut shot by hand and are checked with qa_frames.js; the assist is tuned for the 9:16 frame)
+function prepare(EPN, renderFrame) { if (ASSISTED || H.LAYOUT !== 'v2' || !LAST || (LAST.TL.cfg || {}).format === 'landscape') return; ASSISTED = true; require('./camassist')(EPN, LAST.TL, LAST.CAM, renderFrame, H); }
 function makeShake(TL, names = ['impact', 'stamp', 'impact_soft', 'clank', 'drop']) {
   const imp = TL.sfx.filter(s => names.includes(s.n)).map(s => ({ t: s.t + 0.02, g: s.n === 'impact_soft' ? 0.4 : s.n === 'clank' ? 0.6 : 1 }));
   return t => { let a = 0; for (const im of imp) { const d = t - im.t; if (d >= 0 && d < 0.5) a += im.g * 20 * Math.exp(-d * 9); } return { x: H.noise1(t * 38) * a, y: H.noise1(t * 41 + 9) * a, r: H.noise1(t * 30 + 3) * a * 0.0015 }; };
