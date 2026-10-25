@@ -59,12 +59,13 @@ for sid, opt, items, tail in E["seq"]:
     if "done" in opt: sc["done"] = opt["done"]
     if opt.get("level"): sc["level"] = True
     scenes.append(sc)
-# outro (standard channel ending)
-s = t; cue("whoosh", s, 0.8); cue("impact", s + 0.3, 0.8)
-e = say("outro", s + 0.8)
-for k in range(6): cue("pop", s + 1.1 + 0.15 * k, 0.5)
-t = e + 1.3
-scenes.append(dict(id="outro", s=round(s, 3), e=round(t, 3), ev={}))
+# outro (standard channel ending); a teaser (no_outro) ends on its own last scene
+if not E.get("no_outro"):
+    s = t; cue("whoosh", s, 0.8); cue("impact", s + 0.3, 0.8)
+    e = say("outro", s + 0.8)
+    for k in range(6): cue("pop", s + 1.1 + 0.15 * k, 0.5)
+    t = e + 1.3
+    scenes.append(dict(id="outro", s=round(s, 3), e=round(t, 3), ev={}))
 
 for sp in speech:
     p = f"{VO}/{sp['id']}.wav"
@@ -78,9 +79,9 @@ for sp in speech:
     sp["env"] = [round(float(v), 2) for v in env]
     sp["words"] = word_times(sp["id"]) or est_words(sp)
 # the hook stamp lands on the stamp word of the hook narration
-hk = next(x for x in speech if x["id"] == "hook_nar")
-sw = next((w for w in hk["words"] if w[0].lower().strip("«»!?.,").startswith(E["stamp_word"].lower())), None)
-scenes[0]["stamp_t"] = round(hk["t"] + (sw[1] if sw else hk["d"] - 1.0), 3)
+hk = next((x for x in speech if x["id"] == "hook_nar"), None)   # (a teaser without a narrated hook has no stamp)
+sw = next((w for w in hk["words"] if w[0].lower().strip("«»!?.,").startswith(E["stamp_word"].lower())), None) if hk else None
+scenes[0]["stamp_t"] = round(hk["t"] + (sw[1] if sw else hk["d"] - 1.0), 3) if hk else 99.0
 cfg = {k: E.get(k) for k in ["title", "hook_title", "stamp", "next", "cards"]}
 for k in ["camera", "chunks", "format"]:
     if E.get(k): cfg[k] = E[k]

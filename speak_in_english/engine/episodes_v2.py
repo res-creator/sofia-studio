@@ -1698,3 +1698,42 @@ EP["trial"] = dict(
             ('fn_x', 2.6, [('NIGHT', -2.5, 0), ('knock', -1.5, 0.9), ('knock', -1.28, 0.9), ('knock', -1.06, 0.9), ('creak', -0.6, 0.7)])], 1.3),
     ],
 )
+
+# WHO ORDERED 40 PIZZAS?! — vertical TikTok teaser for THE TRIAL (YouTube). An alternative cut of the trial itself:
+# the same line ids and texts (taken from EP["trial"] so they can't drift), two new lines (log_her, nn_her), no verdict.
+_TR = {l[0]: l for l in EP["trial"]["lines"]}
+EP["pizzas"] = dict(
+    title='WHO ORDERED 40 PIZZAS?! — тизер «Суда»',
+    hook_title=[['', 'd'], ['', 'p'], ['', 'd']], stamp="", stamp_word="", next=None,
+    camera="hard_cut", no_outro=True,
+    chunks={'log_x': EP["trial"]["chunks"]['log_x']},
+    lines=[_TR[k] for k in ['hook_x1', 'hook_her', 'hook_x2', 'ex_x', 'ex_f1', 'ex_h1', 'ex_f3', 'ex_h4', 'ex_x3', 'ex_her', 'log_rec', 'log_x']] + [
+        ('log_her', 'her', "That's not my voice!", 'Это не мой голос!'),
+        ('nn_her', 'her', 'Nana... did you order forty pizzas?', 'Нана… это ты заказала сорок пицц?'),
+        ('nn_n', 'nana', "I can't hear a thing!", 'Ничего не слышу!'),
+    ] + [_TR[k] for k in ['rc_j', 'rc_her', 'rc_j3', 'rc_x2']],
+    cards={},
+    seq=[
+        ('hook', {}, [('hook_x1', 0.35, [('thud', -0.3, 1.0), ('SUM', 0.45, 0), ('register', 0.5, 0.7), ('register', 0.85, 0.6), ('register', 1.2, 0.6), ('stamp', 2.6, 0.8)]),
+                      ('hook_her', 0.1, [('gasp', -0.1, 0.7)]),
+                      ('hook_x2', 0.15, [])], 0.35),
+        ('EX', {}, [('ex_x', 0.6, [('NIGHT', -0.6, 0), ('whoosh', -0.6, 0.5)]),
+                    ('ex_f1', 0.45, [('SCREEN', -0.45, 0), ('whoosh', -0.45, 0.5)]),
+                    ('ex_h1', 0.15, []),
+                    ('ex_f3', 0.4, [('SCREEN2', -0.4, 0)]),
+                    ('ex_h4', 0.1, [('FLAMINGO', ('e', 0.0), 0), ('strain', ('e', 0.05), 0.7), ('boing', ('e', 0.75), 0.6)]),
+                    ('ex_x3', 1.5, [('BACK2', -0.3, 0)]),
+                    ('ex_her', 0.2, [('rimshot', ('e', 0.15), 0.8)])], 0.6),
+        ('LOG', {}, [('log_rec', 0.7, [('LOG', -0.6, 0), ('buzz', -0.55, 0.6)]),
+                     ('log_x', 0.4, [('LOOK', ('e', 0.05), 0), ('gasp', ('e', 0.05), 0.6)]),
+                     ('log_her', 0.3, [])], 0.35),
+        ('NN', {}, [('nn_her', 0.3, []),
+                    ('nn_n', 1.5, [('FREEZE', -1.45, 0), ('AID', -0.6, 0), ('squeak', -0.55, 0.4)])], 0.0),
+        ('NN2', {}, [], 1.6),
+        ('RC', {}, [('rc_j', 1.7, [('RECEIPT', -1.65, 0), ('register', -1.5, 0.7)]),
+                    ('rc_her', 0.2, []),
+                    ('rc_j3', 0.4, [('thud', -0.25, 0.9)]),
+                    ('rc_x2', 0.25, [('STOP', ('e', 0.15), 0)])], 1.3),
+        ('END', {}, [], 6.0),
+    ],
+)
