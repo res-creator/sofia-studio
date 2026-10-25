@@ -433,15 +433,15 @@ function insReceipt(c, t) { backdrop(c); const a = sev('RC', 'receipt'); const d
     c.save(); c.translate(0, y); c.scale(k, k); fitTxt(c, s2, 0, 0, sz, col, 780, i > 2 ? 'Nun9' : 'Unb9'); c.restore(); });
   c.setLineDash([10, 10]); c.beginPath(); c.moveTo(-370, 360); c.lineTo(370, 360); c.stroke(); c.setLineDash([]); txt(c, 'TOTAL £520', 0, 420, 48, '#2B2F3A'); c.save(); c.translate(220, 270); c.rotate(-0.15); c.strokeStyle = '#E0474C'; c.lineWidth = 8; rr(c, -170, -46, 340, 92, 14); c.stroke(); txt(c, 'EXHIBIT C', 0, 3, 44, '#E0474C'); c.restore(); done(); }
 // the end: one question card, then the cover of THE TRIAL and where to watch
-function insEnd(c, t) { const a = SC.END.s, u = t - a; backdrop(c);
-  if (u < 2.4) { const k = eBack(P(u, 0.05, 0.4), 2.2); c.save(); c.translate(540, 920); c.rotate(-0.04); c.scale(k, k); UI.font(c, 'Unb9', 96); c.textAlign = 'center'; c.textBaseline = 'middle';
+function insEnd(c, t) { const a = SC.END.s, u = t - a, cv = (K.wordT('end_nar', 'узнай') || a + 2.4) - a - 0.25; backdrop(c);   // question card while the narrator asks, the cover from «Узнай…»
+  if (u < cv) { const k = eBack(P(u, 0.05, 0.4), 2.2); c.save(); c.translate(540, 920); c.rotate(-0.04); c.scale(k, k); UI.font(c, 'Unb9', 96); c.textAlign = 'center'; c.textBaseline = 'middle';
     UI.strokeText(c, 'НО КТО', 0, -170, C.white, C.oliveD, 16); UI.strokeText(c, 'ЗАКАЗАЛ', 0, -40, C.white, C.oliveD, 16); UI.font(c, 'Unb9', 140); UI.strokeText(c, '40 ПИЦЦ?!', 0, 120, C.pink, C.white, 16); c.restore(); return; }
-  const k = eBack(P(u, 2.4, 2.8), 1.8);
+  const k = eBack(P(u, cv, cv + 0.4), 1.8);
   c.save(); c.translate(540, 820); c.scale(k, k); c.rotate(-0.02); const cw = 960, ch = 540; c.fillStyle = 'rgba(0,0,0,.35)'; rr(c, -cw / 2 + 12, -ch / 2 + 16, cw, ch, 26); c.fill();
   if (COVER) { c.save(); rr(c, -cw / 2, -ch / 2, cw, ch, 26); c.clip(); c.drawImage(COVER, -cw / 2, -ch / 2, cw, ch); c.restore(); } c.strokeStyle = C.white; c.lineWidth = 8; rr(c, -cw / 2, -ch / 2, cw, ch, 26); c.stroke();
   c.fillStyle = '#FF0033'; rr(c, -70, -48, 140, 96, 28); c.fill(); c.fillStyle = '#FFFFFF'; c.beginPath(); c.moveTo(-18, -26); c.lineTo(30, 0); c.lineTo(-18, 26); c.closePath(); c.fill(); c.restore();
-  const k2 = eBack(P(u, 2.7, 3.05), 2.2); if (k2 > 0) { c.save(); c.translate(540, 1240); c.scale(k2, k2); UI.font(c, 'Unb9', 84); c.textAlign = 'center'; c.textBaseline = 'middle'; UI.strokeText(c, 'РАЗВЯЗКА', 0, -60, C.white, C.oliveD, 14); UI.strokeText(c, 'НА YOUTUBE', 0, 50, '#FF4D6A', C.white, 14); c.restore(); }
-  const k3 = eOut(P(u, 3.1, 3.4)); if (k3 > 0) { c.save(); c.globalAlpha = k3; txt(c, 'SPEAK IN ENGLISH', 540, 1450, 56, '#F2C14E'); txt(c, 'ссылка в профиле', 540, 1530, 40, '#FFFFFF', 'Nun9'); c.restore(); } }
+  const k2 = eBack(P(u, cv + 0.3, cv + 0.65), 2.2); if (k2 > 0) { c.save(); c.translate(540, 1240); c.scale(k2, k2); UI.font(c, 'Unb9', 84); c.textAlign = 'center'; c.textBaseline = 'middle'; UI.strokeText(c, 'РАЗВЯЗКА', 0, -60, C.white, C.oliveD, 14); UI.strokeText(c, 'НА YOUTUBE', 0, 50, '#FF4D6A', C.white, 14); c.restore(); }
+  const k3 = eOut(P(u, cv + 0.7, cv + 1.0)); if (k3 > 0) { c.save(); c.globalAlpha = k3; txt(c, 'SPEAK IN ENGLISH', 540, 1450, 56, '#F2C14E'); txt(c, 'ссылка в профиле', 540, 1530, 40, '#FFFFFF', 'Nun9'); c.restore(); } }
 const INSERTS = { INS_SUM: insSum, INS_PIZZA: (c, t) => insObj(c, t, 'INS_PIZZA'), INS_FLAMINGO: (c, t) => insObj(c, t, 'INS_FLAMINGO'), INS_EXT: (c, t) => insObj(c, t, 'INS_EXT'), INS_CLOCK: (c, t) => insObj(c, t, 'INS_CLOCK'), INS_NIGHT: insNight, INS_LOG: insLog, INS_RECEIPT: insReceipt, INS_END: insEnd };
 
 // the claim over the judge's opening line: counts up to £1,240 with the register, lands with a stamp

@@ -1711,7 +1711,7 @@ EP["pizzas"] = dict(
         ('log_her', 'her', "That's not my voice!", 'Это не мой голос!'),
         ('nn_her', 'her', 'Nana... did you order forty pizzas?', 'Нана… это ты заказала сорок пицц?'),
         ('nn_n', 'nana', "I can't hear a thing!", 'Ничего не слышу!'),
-    ] + [_TR[k] for k in ['rc_j', 'rc_her', 'rc_j3', 'rc_x2']],
+    ] + [_TR[k] for k in ['rc_j', 'rc_her', 'rc_j3', 'rc_x2']] + [('end_nar', 'nar', 'Но кто же на самом деле заказал сорок пицц? Узнай в полном выпуске на нашем YouTube-канале Speak in English!', '')],
     cards={},
     seq=[
         ('hook', {}, [('hook_x1', 0.35, [('thud', -0.3, 1.0), ('SUM', 0.45, 0), ('register', 0.5, 0.7), ('register', 0.85, 0.6), ('register', 1.2, 0.6), ('stamp', 2.6, 0.8)]),
@@ -1734,6 +1734,6 @@ EP["pizzas"] = dict(
                     ('rc_her', 0.2, []),
                     ('rc_j3', 0.4, [('thud', -0.25, 0.9)]),
                     ('rc_x2', 0.25, [('STOP', ('e', 0.15), 0)])], 1.3),
-        ('END', {}, [], 6.0),
+        ('END', {}, [('end_nar', 0.35, [])], 1.6),
     ],
 )
