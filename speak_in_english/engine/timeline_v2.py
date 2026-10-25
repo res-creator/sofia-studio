@@ -31,6 +31,7 @@ if E.get("short"):  # short format: a silent 2 s conflict hook (no narrator, no 
         cue("murmur", 0.0, 0.5)
     if EPN == "bill": cue("whoosh", 0.15, 0.6); cue("register", 0.75, 0.7)   # the receipt unrolls -> £1 240
     t = 2.0
+    if "hook" in LN: t = max(t, say("hook", 0.3) + 0.35)   # a voiced short hook: the narrator reads the title
     scenes.append(dict(id="hook", s=0.0, e=t, stamp_t=99.0))
 else:
   for k in range(1, 4): cue("pop", 0.2 + 0.35 * k, 0.6)

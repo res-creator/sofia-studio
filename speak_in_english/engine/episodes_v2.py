@@ -1443,6 +1443,7 @@ EP["bill"] = dict(
         ['I was merely an innocent bystander', 'Я была всего лишь невинным свидетелем'],
         ["at a gathering that spiralled far beyond anyone's jurisdiction.", 'на вечеринке, которая вышла из-под чьей-либо юрисдикции.']]},
     lines=[
+        ('hook', 'nar', 'Утро после вечеринки. Счёт — тысяча двести сорок фунтов!', ''),
         ('a1_her', 'her', 'Not me! I sleep!', 'Не я! Я спать!'),
         ('a1_x', 'rocky', 'Your flamingo is in my bath.', 'Твой фламинго — у меня в ванне.'),
         ('a1_nar', 'nar', 'Алиби уплыло.', ''),
