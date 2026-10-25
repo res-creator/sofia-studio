@@ -1394,6 +1394,87 @@ EP["wrongchat"] = dict(
 )
 
 
+# Short TikTok test format (60-75 s): no narrator hook, conflict from frame 0, fast level intros, one narrator phrase per level.
+EP["phone"] = dict(
+    title='Он весь вечер в телефоне',
+    hook_title=[['СВИДАНИЕ.', 'd'], ['ОН ВЕСЬ ВЕЧЕР', 'p'], ['В ТЕЛЕФОНЕ', 'd']],
+    stamp="", stamp_word="", next=None, short=True,
+    camera="hard_cut",
+    chunks={'c2_her': [
+        ["I find it remarkable that you've travelled all this way", 'Поразительно: ты проделал весь этот путь,'],
+        ['merely to commune with a device', 'лишь бы пообщаться с устройством,'],
+        ['that has never once laughed at your jokes.', 'которое ни разу не посмеялось над твоими шутками.']]},
+    lines=[
+        ('a1_her', 'her', 'Phone. No!', 'Телефон. Нет!'),
+        ('a1_nar', 'nar', 'Он решил, что ты хочешь позвонить.', ''),
+        ('a2_her', 'her', 'You are always in phone.', 'Ты всегда в телефоне.'),
+        ('a2_x', 'tom', "In? I'm on the chair.", 'В телефоне? Я на стуле.'),
+        ('a2_nar', 'nar', 'Не in, а on. Запоминай:', ''),
+        ('a2_tip', 'tip', "You're always on your phone.", ''),
+        ('b1_her', 'her', 'Could you put your phone away, please?', 'Убери, пожалуйста, телефон.'),
+        ('b1_nar', 'nar', 'Убрал. И тут же достал второй.', ''),
+        ('b2_her', 'her', 'Am I boring you?', 'Тебе со мной скучно?'),
+        ('b2_x', 'tom', 'What? No, babe, totally.', 'Что? Нет, зай, конечно.'),
+        ('b2_nar', 'nar', '«Тебе со мной скучно?» Ему весело. С котиками.', ''),
+        ('c1_her', 'her', "I'd really appreciate it if you were actually here with me.", 'Мне было бы очень приятно, если бы ты правда был здесь, со мной.'),
+        ('c1_nar', 'nar', 'Вежливо и честно. Но телефон не сдаётся.', ''),
+        ('c2_her', 'her', "I find it remarkable that you've travelled all this way merely to commune with a device that has never once laughed at your jokes.", 'Поразительно: ты проделал весь этот путь, лишь бы пообщаться с устройством, которое ни разу не посмеялось над твоими шутками.'),
+        ('c2_x', 'tom', 'They love you.', 'Ты им нравишься.'),
+        ('c2_her2', 'her', 'Hi, chat.', 'Привет, чат.'),
+        ('c2_nar', 'nar', 'Свидание — мимо. Зато двенадцать тысяч фанатов.', ''),
+        ('outro', 'nar', 'Что хуже: телефон на свидании или стрим без спроса? Пиши в комментарии и подпишись!', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'ПОНЯЛ', 'ok': False, 'note': 'дал тебе телефон'},
+           'A2': {'type': 'swap', 'bad': 'You are always in phone.', 'bad_note': 'in phone → on your phone', 'good': ["You're always", 'on your phone.'], 'good_at': 1.0, 'mark': 'on'},
+           'B1': {'type': 'eq', 'en': 'Could you put your phone away?', 'ru': '= Убери, пожалуйста, телефон.', 'note': 'put away = убрать', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'eq', 'en': 'Am I boring you?', 'ru': '= Тебе со мной скучно?', 'note': 'bore = утомлять, наводить скуку'},
+           'C1': {'type': 'eq', 'en': "I'd appreciate it if...", 'ru': '= Я была бы признательна, если...', 'ex': ['you were actually here with me', '= ты правда был здесь, со мной']},
+           'C2': {'type': 'c2', 'vocab': [['remarkable', '= поразительный'], ['commune with', '= общаться, единяться (книжн.)']], 'moral': ['', '', ''], 'moral_at': 99}},
+)
+
+# Short TikTok prequel to THE TRIAL (YouTube): the morning after the party, Rocky brings the bill. Ends with "full episode on YouTube".
+EP["bill"] = dict(
+    title='Утро после вечеринки: счёт £1 240',
+    hook_title=[['УТРО ПОСЛЕ ВЕЧЕРИНКИ.', 'd'], ['СЧЁТ: £1 240', 'p'], ['', 'd']],
+    stamp="", stamp_word="", next=None, short=True,
+    camera="hard_cut",
+    chunks={'c2_her': [
+        ['I categorically refute these allegations.', 'Я категорически отвергаю эти обвинения.'],
+        ['I was merely an innocent bystander', 'Я была всего лишь невинным свидетелем'],
+        ["at a gathering that spiralled far beyond anyone's jurisdiction.", 'на вечеринке, которая вышла из-под чьей-либо юрисдикции.']]},
+    lines=[
+        ('hook', 'nar', 'Вчера у соседей была вечеринка. А утром мне принесли счёт на тысячу двести сорок фунтов! Как отбиться на английском?', ''),
+        ('a1_her', 'her', 'Not me! I sleep!', 'Не я! Я спать!'),
+        ('a1_x', 'rocky', 'Your flamingo is in my bath.', 'Твой фламинго — у меня в ванне.'),
+        ('a1_nar', 'nar', 'Алиби уплыло.', ''),
+        ('a2_her', 'her', "I didn't ordered pizza!", 'Я не заказывала пиццу!'),
+        ('a2_x', 'rocky', 'Ordered? So you did order.', '«Заказала»? Значит, всё-таки заказала.'),
+        ('a2_nar', 'nar', 'После didn’t — без -ed. Запоминай:', ''),
+        ('a2_tip', 'tip', "I didn't order any pizza.", ''),
+        ('b1_her', 'her', "I think there's been a mistake.", 'Кажется, произошла ошибка.'),
+        ('b1_x', 'rocky', 'Customer: Ms No Music.', 'Заказчик: мисс Без Музыки.'),
+        ('b1_nar', 'nar', 'Ошибка есть. Но имя — твоё.', ''),
+        ('b2_her', 'her', "I'm not paying for something I didn't do.", 'Я не буду платить за то, чего не делала.'),
+        ('b2_x', 'rocky', 'Tell it to the judge.', 'Расскажи это судье.'),
+        ('b2_nar', 'nar', 'Tell it to the judge — «расскажи это судье».', ''),
+        ('c1_her', 'her', 'Could we sort this out between ourselves?', 'Может, решим это между собой?'),
+        ('c1_x', 'rocky', 'Sure. Monday. Ten a.m. Courtroom Two.', 'Конечно. В понедельник. В десять утра. Зал суда номер два.'),
+        ('c1_nar', 'nar', 'Sort this out — «решить по-хорошему». Не вышло.', ''),
+        ('c2_her', 'her', "I categorically refute these allegations. I was merely an innocent bystander at a gathering that spiralled far beyond anyone's jurisdiction.", 'Я категорически отвергаю эти обвинения. Я была всего лишь невинным свидетелем на вечеринке, которая вышла из-под чьей-либо юрисдикции.'),
+        ('c2_x', 'rocky', 'Lovely. Say it in court.', 'Прелестно. Скажешь это в суде.'),
+        ('c2_n', 'nana', 'Morning, dears! Pizza for breakfast?', 'Доброе утро, мои хорошие! Пиццу на завтрак?'),
+        ('c2_her2', 'her', '...Nana?', '…Нана?'),
+        ('c2_nar', 'nar', 'Кто заказал сорок пицц? Узнаешь в суде.', ''),
+        ('outro', 'nar', 'Чем закончился суд? Полная серия — на YouTube, ссылка в профиле. И подпишись!', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'АЛИБИ', 'ok': False, 'note': 'фламинго в ванне'},
+           'A2': {'type': 'swap', 'bad': "I didn't ordered pizza!", 'bad_note': "didn't + order", 'good': ["I didn't order", 'any pizza.'], 'good_at': 1.0, 'mark': 'order'},
+           'B1': {'type': 'eq', 'en': "There's been a mistake.", 'ru': '= Произошла ошибка.', 'note': 'вежливо и спокойно', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'eq', 'en': 'Tell it to the judge.', 'ru': '= Расскажи это судье.', 'note': 'т. е. «спорить будем в суде»'},
+           'C1': {'type': 'eq', 'en': 'Could we sort this out?', 'ru': '= Может, решим по-хорошему?', 'ex': ['between ourselves', '= между собой']},
+           'C2': {'type': 'c2', 'vocab': [['refute allegations', '= отвергать обвинения'], ['innocent bystander', '= невинный свидетель']], 'moral': ['', '', ''], 'moral_at': 99}},
+)
+
 # ---------------------------------------------------------------------------------------------------------------
 # THE TRIAL — first long YouTube episode (16:9, ~9-11 min). Built by timeline_long.py from "seq", rendered by trial.js.
 # Scenes: hook, the six levels spread through the trial, plus story scenes between them (NM, EX, LOG, VD, FN).
@@ -1615,5 +1696,44 @@ EP["trial"] = dict(
             ('fn_r', 0.9, [('tada', -0.1, 0.7)]),
             ('fn_rn', 0.6, []),
             ('fn_x', 2.6, [('NIGHT', -2.5, 0), ('knock', -1.5, 0.9), ('knock', -1.28, 0.9), ('knock', -1.06, 0.9), ('creak', -0.6, 0.7)])], 1.3),
+    ],
+)
+
+# WHO ORDERED 40 PIZZAS?! — vertical TikTok teaser for THE TRIAL (YouTube). An alternative cut of the trial itself:
+# the same line ids and texts (taken from EP["trial"] so they can't drift), two new lines (log_her, nn_her), no verdict.
+_TR = {l[0]: l for l in EP["trial"]["lines"]}
+EP["pizzas"] = dict(
+    title='WHO ORDERED 40 PIZZAS?! — тизер «Суда»',
+    hook_title=[['', 'd'], ['', 'p'], ['', 'd']], stamp="", stamp_word="", next=None,
+    camera="hard_cut", no_outro=True,
+    chunks={'log_x': EP["trial"]["chunks"]['log_x']},
+    lines=[_TR[k] for k in ['hook_x1', 'hook_her', 'hook_x2', 'ex_x', 'ex_f1', 'ex_h1', 'ex_f3', 'ex_h4', 'ex_x3', 'ex_her', 'log_rec', 'log_x']] + [
+        ('log_her', 'her', "That's not my voice!", 'Это не мой голос!'),
+        ('nn_her', 'her', 'Nana... did you order forty pizzas?', 'Нана… это ты заказала сорок пицц?'),
+        ('nn_n', 'nana', "I can't hear a thing!", 'Ничего не слышу!'),
+    ] + [_TR[k] for k in ['rc_j', 'rc_her', 'rc_j3', 'rc_x2']] + [('end_nar', 'nar', 'Но кто же на самом деле заказал сорок пицц? Узнай в полном выпуске на нашем YouTube-канале Speak in English!', '')],
+    cards={},
+    seq=[
+        ('hook', {}, [('hook_x1', 0.35, [('thud', -0.3, 1.0), ('SUM', 0.45, 0), ('register', 0.5, 0.7), ('register', 0.85, 0.6), ('register', 1.2, 0.6), ('stamp', 2.6, 0.8)]),
+                      ('hook_her', 0.1, [('gasp', -0.1, 0.7)]),
+                      ('hook_x2', 0.15, [])], 0.35),
+        ('EX', {}, [('ex_x', 0.6, [('NIGHT', -0.6, 0), ('whoosh', -0.6, 0.5)]),
+                    ('ex_f1', 0.45, [('SCREEN', -0.45, 0), ('whoosh', -0.45, 0.5)]),
+                    ('ex_h1', 0.15, []),
+                    ('ex_f3', 0.4, [('SCREEN2', -0.4, 0)]),
+                    ('ex_h4', 0.1, [('FLAMINGO', ('e', 0.0), 0), ('strain', ('e', 0.05), 0.7), ('boing', ('e', 0.75), 0.6)]),
+                    ('ex_x3', 1.5, [('BACK2', -0.3, 0)]),
+                    ('ex_her', 0.2, [('rimshot', ('e', 0.15), 0.8)])], 0.6),
+        ('LOG', {}, [('log_rec', 0.7, [('LOG', -0.6, 0), ('buzz', -0.55, 0.6)]),
+                     ('log_x', 0.4, [('LOOK', ('e', 0.05), 0), ('gasp', ('e', 0.05), 0.6)]),
+                     ('log_her', 0.3, [])], 0.35),
+        ('NN', {}, [('nn_her', 0.3, []),
+                    ('nn_n', 1.5, [('FREEZE', -1.45, 0), ('AID', -0.6, 0), ('squeak', -0.55, 0.4)])], 0.0),
+        ('NN2', {}, [], 1.6),
+        ('RC', {}, [('rc_j', 1.7, [('RECEIPT', -1.65, 0), ('register', -1.5, 0.7)]),
+                    ('rc_her', 0.2, []),
+                    ('rc_j3', 0.4, [('thud', -0.25, 0.9)]),
+                    ('rc_x2', 0.25, [('STOP', ('e', 0.15), 0)])], 1.3),
+        ('END', {}, [('end_nar', 0.35, [])], 1.6),
     ],
 )

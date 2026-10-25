@@ -321,6 +321,20 @@ if EPN == "wrongchat":  # phone sounds for this episode only (own rng, so other 
         t = T(1.6); f = 180 + 8*np.sin(2*np.pi*3*t); x = np.sign(np.sin(2*np.pi*np.cumsum(f)/SR))*0.4 + 0.3*bp(_r.standard_normal(len(t)), 300, 3000)
         return norm(lp(x, 2500) * np.minimum(t*3, 1) * np.minimum((1.6 - t)*3, 1), 0.5)
     SFX.update(send=_send(), msg=_msg(), shutter=_shutter(), drone=_drone())
+if EPN == "phone":  # date / phone sounds for this episode only (own rng, so other episodes mix exactly as before)
+    _r = np.random.default_rng(12)
+    def _msg():
+        t = T(0.5); a = np.sin(2*np.pi*1318*t)*np.exp(-t*9); b = np.sin(2*np.pi*1760*t)*np.exp(-np.maximum(t-0.12, 0)*9)*(t > 0.12)
+        return norm((a + b) * np.minimum(t*800, 1), 0.7)
+    def _swipe():
+        t = T(0.16); return norm(bp(_r.standard_normal(len(t)), 2500, 9000) * np.sin(np.pi * t / 0.16) ** 2, 0.35)
+    def _vibe():
+        t = T(1.0); on = ((t % 0.5) < 0.32).astype(float); x = np.sign(np.sin(2*np.pi*150*t)) * 0.5 + 0.5*np.sin(2*np.pi*75*t)
+        return norm(lp(x, 900) * on * np.minimum(t*200, 1), 0.75)
+    def _murmur():   # restaurant crowd murmur under the silent hook
+        t = T(2.2); x = bp(_r.standard_normal(len(t)), 250, 1400) * (0.6 + 0.4*np.abs(np.sin(2*np.pi*1.7*t))) * (0.7 + 0.3*np.sin(2*np.pi*0.9*t))
+        return norm(x * np.minimum(t*4, 1) * np.minimum((2.2 - t)*3, 1), 0.3)
+    SFX.update(msg=_msg(), swipe=_swipe(), vibe=_vibe(), murmur=_murmur())
 def note(m, key=0): return 440 * 2 ** ((m + key - 69) / 12)
 def pluck(f, d, bright=1.0):
     t = T(d); ph = 2*np.pi*f*t
@@ -430,7 +444,7 @@ if EPN == "party":
         seg = (full*op + muff*(1 - op)) * g
         seg *= np.minimum(1, np.arange(n)/(0.03*SR)) * np.minimum(1, (n - np.arange(n))/(0.12*SR))
         put(music, seg, s0, 1.0)
-elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "trial"):
+elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "trial", "bill", "pizzas"):
     # cheerful London stroll: pizzicato, walking bass, glockenspiel, brushes
     bpm = 116; b = 60/bpm; K = 0
     def pizz(f, d=0.35):
@@ -463,7 +477,7 @@ elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "re
             tt = T(0.05); put(music, hp(rng.standard_normal(len(tt)), 6000)*np.exp(-tt*70), t0 + j*b/4, 0.1 if j % 2 else 0.05)
         if (k // 4) % 2 == 1:
             for j, m in enumerate([ch[3] + 12, ch[2] + 12, ch[1] + 12]): put(music, pluck(note(m), 0.6, 1.2), t0 + (j*1.25 + 0.5)*b, 0.07)
-elif EPN in ("restaurant", "loan", "date", "kyle"):
+elif EPN in ("restaurant", "loan", "date", "kyle", "phone"):
     # cosy bistro swing: brushed snare, walking bass, muted piano comping, glock hook
     bpm = 120; b = 60/bpm; K = 0
     def glock(f, d=0.8):
@@ -580,8 +594,12 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-c2e = sp["c2_her"]["t"] + sp["c2_her"]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]
+if EPN == "pizzas":   # teaser: silence after "Her name. Her pizzas." until the end card
+    _sc = {s["id"]: s for s in TL["scenes"]}; c2e = _sc["RC"]["ev"]["stop"]; c2n = _sc["END"]["s"]
+else: c2e = sp["c2_her"]["t"] + sp["c2_her"]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
+if EPN == "phone": c2n = sp["c2_x"]["t"] - 0.4   # music back with the live-stream reveal
+if EPN == "bill": c2n = sp["c2_n"]["t"] - 0.3    # music back when Nana walks in
 if EPN == "trial": c2n = sp["c2_n"]["t"]   # THE TRIAL: silence from the end of the C2 speech through the whistle and MATCH, music back when Nana denies
 ramp(c2e - 0.08, c2e + 0.02, 1, 0); gain[int((c2e + 0.02)*SR):int((c2n - 0.05)*SR)] = 0; ramp(c2n - 0.05, c2n + 0.4, 0, 1)
 ramp(DUR - 1.6, DUR, 1, 0); gain[int(DUR*SR):] = 0

@@ -8,7 +8,7 @@ lines = [l[2] for l in EP[ep]["lines"] if l[1] == "nar"]
 text = ' <break time="2.0s" /> '.join(lines)
 req = urllib.request.Request("https://api.elevenlabs.io/v1/text-to-speech/EXAVITQu4vr4xnSDxMaL?output_format=mp3_44100_128",
     data=json.dumps({"text": text, "model_id": "eleven_multilingual_v2",
-                     "voice_settings": {"stability": 0.5, "similarity_boost": 0.75, "style": 0.0, "use_speaker_boost": True}}).encode(),
+                     "voice_settings": {"stability": 0.5, "similarity_boost": 0.75, "style": 0.0, "use_speaker_boost": True, **({"speed": float(os.environ["NAR_SPEED"])} if os.environ.get("NAR_SPEED") else {})}}).encode(),
     headers={**({"xi-api-key": os.environ["ELEVENLABS_API_KEY"]} if os.environ.get("ELEVENLABS_API_KEY") else {}), "Content-Type": "application/json", "Accept": "audio/mpeg"})
 os.makedirs(f"eps/{ep}", exist_ok=True)
 open(f"eps/{ep}/nar_all.mp3", "wb").write(urllib.request.urlopen(req).read())
