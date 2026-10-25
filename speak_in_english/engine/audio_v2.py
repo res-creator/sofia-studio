@@ -444,7 +444,7 @@ if EPN == "party":
         seg = (full*op + muff*(1 - op)) * g
         seg *= np.minimum(1, np.arange(n)/(0.03*SR)) * np.minimum(1, (n - np.arange(n))/(0.12*SR))
         put(music, seg, s0, 1.0)
-elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "trial", "bill"):
+elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "trial", "bill", "pizzas"):
     # cheerful London stroll: pizzicato, walking bass, glockenspiel, brushes
     bpm = 116; b = 60/bpm; K = 0
     def pizz(f, d=0.35):
@@ -594,7 +594,9 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-c2e = sp["c2_her"]["t"] + sp["c2_her"]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]
+if EPN == "pizzas":   # teaser: silence after "Her name. Her pizzas." until the end card
+    _sc = {s["id"]: s for s in TL["scenes"]}; c2e = _sc["RC"]["ev"]["stop"]; c2n = _sc["END"]["s"]
+else: c2e = sp["c2_her"]["t"] + sp["c2_her"]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "phone": c2n = sp["c2_x"]["t"] - 0.4   # music back with the live-stream reveal
 if EPN == "bill": c2n = sp["c2_n"]["t"] - 0.3    # music back when Nana walks in

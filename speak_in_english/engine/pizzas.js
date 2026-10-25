@@ -450,7 +450,7 @@ function sumStamp(c, t) { const a = sev('hook', 'sum'); if (t < a) return; const
   txt(c, 'CLAIM', 0, -72, 34, '#7A8290'); txt(c, '£' + (v >= 1000 ? Math.floor(v / 1000) + ',' + String(v % 1000).padStart(3, '0') : v), 0, 28, 150, '#E0474C'); c.restore(); }
 // ---------------- HUD: claim badge, the three English phrases (short plates, no narrator), watermark
 function claim(c, t, sc) { if (sc.id === 'END' || (sc.id === 'hook' && t < SP.hook_her.t)) return; c.save(); c.translate(36, 170); c.fillStyle = 'rgba(0,0,0,.18)'; rr(c, 6, 8, 300, 68, 34); c.fill(); c.fillStyle = '#E0474C'; rr(c, 0, 0, 300, 68, 34); c.fill(); c.strokeStyle = C.white; c.lineWidth = 4; c.stroke(); txt(c, 'ИСК', 62, 35, 26, '#FFFFFF', 'Unb9'); txt(c, '£1,240', 196, 36, 38, '#FFFFFF', 'Unb9'); c.restore(); }
-const PHRASES = [['B1', "That's not my voice!", '= Это не мой голос!', () => [SP.log_her.t + 0.2, SC.LOG.e + 0.05]], ['B2', "There's been a mistake.", '= Произошла ошибка.', () => [SP.rc_her.t + 1.0, SP.rc_j3.t - 0.15]], ['', 'pump the brakes', '= притормозить (а колонка «накачала»)', () => [SP.ex_x3.t + 0.1, SC.EX.e - 0.1]]];
+const PHRASES = [['B1', "That's not my voice!", '= Это не мой голос!', () => [endOf('log_her') + 0.15, SC.LOG.e + 0.05]], ['B2', "There's been a mistake.", '= Произошла ошибка.', () => [SP.rc_her.t + 1.0, SP.rc_j3.t - 0.15]], ['', 'pump the brakes', '= притормозить (а колонка «накачала»)', () => [SP.ex_x3.t + 0.1, SC.EX.e - 0.1]]];
 function phrase(c, t) { for (const [lv, en, ru, span] of PHRASES) { const [a, b] = span(); if (t < a || t > b) continue; const k = eBack(P(t, a, a + 0.25), 2) * (1 - eIn(P(t, b - 0.2, b)));
   c.save(); c.translate(540, 1470); c.scale(k, k); c.fillStyle = 'rgba(0,0,0,.2)'; rr(c, -470 + 8, -88 + 10, 940, 176, 30); c.fill(); c.fillStyle = C.white; rr(c, -470, -88, 940, 176, 30); c.fill(); c.strokeStyle = C.oliveD; c.lineWidth = 6; c.stroke();
   let x0 = -420; if (lv) { c.fillStyle = LVCOL[lv]; rr(c, x0, -34 - 22, 96, 68, 18); c.fill(); txt(c, lv, x0 + 48, -22, 34, '#FFFFFF'); x0 += 120; }
@@ -467,7 +467,7 @@ function renderFrame(c, t) {
   const proj = p => ({ x: M.a * p.x + M.c * p.y + M.e, y: M.b * p.x + M.d * p.y + M.f });
   if (isInsert(n) && n !== 'FLASH') for (const who of ['her', 'reggie', 'rocky', 'nana', 'homey']) heads[who] = { x: W + 9999, y: 0, hh: 0 };   // speakers off screen -> bubble at the top
   if (n === 'FLASH') for (const who of ['reggie', 'rocky']) heads[who] = { x: W + 9999, y: 0, hh: 0 };
-  if (L !== 'END') K.bubbles(c, t, sc, heads, proj, { names: NAMES, hold: { log_x: 0.3, rc_x2: 0.9, nn_n: 0.25 } });
+  if (L !== 'END') K.bubbles(c, t, sc, heads, proj, { names: NAMES, hold: { log_x: -0.15, rc_x2: 0.9, nn_n: 0.25 } });
   if (L === 'NN' && n === 'NANA_CU' && t > sev('NN', 'aid') && t < SP.nn_n.t + 0.3) K.pop(c, t, 'КЛИК', sev('NN', 'aid') + 0.05, SP.nn_n.t, 760, 620, C.white, 0.1, 60);
   if (L === 'NN2' && n === 'NANA_CU') K.pop(c, t, 'ЧАВК-ЧАВК', SC.NN2.s - 0.1, SC.NN2.s + 0.8, 540, 1500, C.gold, -0.06, 70);
   if (L === 'LOG' && n === 'GALLERY') K.pop(c, t, 'ЭТО ОНА!', sev('LOG', 'look') - 0.6, SP.log_her.t - 0.15, 540, 1500, '#E0474C', -0.06, 80);
