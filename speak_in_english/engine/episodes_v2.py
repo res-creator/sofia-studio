@@ -1432,6 +1432,48 @@ EP["phone"] = dict(
            'C2': {'type': 'c2', 'vocab': [['remarkable', '= поразительный'], ['commune with', '= общаться, единяться (книжн.)']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
 
+# Short TikTok prequel to THE TRIAL (YouTube): the morning after the party, Rocky brings the bill. Ends with "full episode on YouTube".
+EP["bill"] = dict(
+    title='Утро после вечеринки: счёт £1 240',
+    hook_title=[['УТРО ПОСЛЕ ВЕЧЕРИНКИ.', 'd'], ['СЧЁТ: £1 240', 'p'], ['', 'd']],
+    stamp="", stamp_word="", next=None, short=True,
+    camera="hard_cut",
+    chunks={'c2_her': [
+        ['I categorically refute these allegations.', 'Я категорически отвергаю эти обвинения.'],
+        ['I was merely an innocent bystander', 'Я была всего лишь невинным свидетелем'],
+        ["at a gathering that spiralled far beyond anyone's jurisdiction.", 'на вечеринке, которая вышла из-под чьей-либо юрисдикции.']]},
+    lines=[
+        ('a1_her', 'her', 'Not me! I sleep!', 'Не я! Я спать!'),
+        ('a1_x', 'rocky', 'Your flamingo is in my bath.', 'Твой фламинго — у меня в ванне.'),
+        ('a1_nar', 'nar', 'Алиби уплыло.', ''),
+        ('a2_her', 'her', "I didn't ordered pizza!", 'Я не заказывала пиццу!'),
+        ('a2_x', 'rocky', 'Ordered? So you did order.', '«Заказала»? Значит, всё-таки заказала.'),
+        ('a2_nar', 'nar', 'После didn’t — без -ed. Запоминай:', ''),
+        ('a2_tip', 'tip', "I didn't order any pizza.", ''),
+        ('b1_her', 'her', "I think there's been a mistake.", 'Кажется, произошла ошибка.'),
+        ('b1_x', 'rocky', 'Customer: Ms No Music.', 'Заказчик: мисс Без Музыки.'),
+        ('b1_nar', 'nar', 'Ошибка есть. Но имя — твоё.', ''),
+        ('b2_her', 'her', "I'm not paying for something I didn't do.", 'Я не буду платить за то, чего не делала.'),
+        ('b2_x', 'rocky', 'Tell it to the judge.', 'Расскажи это судье.'),
+        ('b2_nar', 'nar', 'Tell it to the judge — «расскажи это судье».', ''),
+        ('c1_her', 'her', 'Could we sort this out between ourselves?', 'Может, решим это между собой?'),
+        ('c1_x', 'rocky', 'Sure. Monday. Ten a.m. Courtroom Two.', 'Конечно. В понедельник. В десять утра. Зал суда номер два.'),
+        ('c1_nar', 'nar', 'Sort this out — «решить по-хорошему». Не вышло.', ''),
+        ('c2_her', 'her', "I categorically refute these allegations. I was merely an innocent bystander at a gathering that spiralled far beyond anyone's jurisdiction.", 'Я категорически отвергаю эти обвинения. Я была всего лишь невинным свидетелем на вечеринке, которая вышла из-под чьей-либо юрисдикции.'),
+        ('c2_x', 'rocky', 'Lovely. Say it in court.', 'Прелестно. Скажешь это в суде.'),
+        ('c2_n', 'nana', 'Morning, dears! Pizza for breakfast?', 'Доброе утро, мои хорошие! Пиццу на завтрак?'),
+        ('c2_her2', 'her', '...Nana?', '…Нана?'),
+        ('c2_nar', 'nar', 'Кто заказал сорок пицц? Узнаешь в суде.', ''),
+        ('outro', 'nar', 'Чем закончился суд? Полная серия — на YouTube, ссылка в профиле. И подпишись!', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'АЛИБИ', 'ok': False, 'note': 'фламинго в ванне'},
+           'A2': {'type': 'swap', 'bad': "I didn't ordered pizza!", 'bad_note': "didn't + order", 'good': ["I didn't order", 'any pizza.'], 'good_at': 1.0, 'mark': 'order'},
+           'B1': {'type': 'eq', 'en': "There's been a mistake.", 'ru': '= Произошла ошибка.', 'note': 'вежливо и спокойно', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'eq', 'en': 'Tell it to the judge.', 'ru': '= Расскажи это судье.', 'note': 'т. е. «спорить будем в суде»'},
+           'C1': {'type': 'eq', 'en': 'Could we sort this out?', 'ru': '= Может, решим по-хорошему?', 'ex': ['between ourselves', '= между собой']},
+           'C2': {'type': 'c2', 'vocab': [['refute allegations', '= отвергать обвинения'], ['innocent bystander', '= невинный свидетель']], 'moral': ['', '', ''], 'moral_at': 99}},
+)
+
 # ---------------------------------------------------------------------------------------------------------------
 # THE TRIAL — first long YouTube episode (16:9, ~9-11 min). Built by timeline_long.py from "seq", rendered by trial.js.
 # Scenes: hook, the six levels spread through the trial, plus story scenes between them (NM, EX, LOG, VD, FN).

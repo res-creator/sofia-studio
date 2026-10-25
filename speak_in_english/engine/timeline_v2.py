@@ -26,8 +26,10 @@ if EPN == "airport": cue("chime", 0.1, 0.55)
 if EPN == "wrongchat":  # phone hook: SEND -> SENT TO: MR GRANT -> READ -> her eyes -> his head turns
     cue("send", 0.3, 0.8); cue("pop", 0.45, 0.7); cue("msg", 0.95, 0.8); cue("whoosh", 1.3, 0.45); cue("gasp", 1.9, 0.7)
 if E.get("short"):  # short format: a silent 2 s conflict hook (no narrator, no stamp), straight into A1
-    for k in range(5): cue("swipe", 0.25 + 0.38 * k, 0.45)
-    cue("murmur", 0.0, 0.5)
+    if EPN == "phone":
+        for k in range(5): cue("swipe", 0.25 + 0.38 * k, 0.45)
+        cue("murmur", 0.0, 0.5)
+    if EPN == "bill": cue("whoosh", 0.15, 0.6); cue("register", 0.75, 0.7)   # the receipt unrolls -> £1 240
     t = 2.0
     scenes.append(dict(id="hook", s=0.0, e=t, stamp_t=99.0))
 else:
@@ -280,6 +282,16 @@ elif EPN == "phone":   # short format: fast 0.6 s level intros, one narrator phr
         B2=[("b2_her", 0, []), ("b2_x", 0.3, []), ("b2_nar", 2.7, [("CATS", -2.5, 0), ("boing", -1.5, 0.55), ("boing", -1.0, 0.5), ("boing", -0.5, 0.45)])],
         C1=[("c1_her", 0, []), ("c1_nar", 3.5, [("DOWN", -3.35, 0), ("thud", -3.2, 0.5), ("MELT", -2.5, 0), ("sparkle", -2.45, 0.6), ("VIBE", -1.25, 0), ("vibe", -1.25, 0.9)])],
         C2=[("c2_her", 0, []), ("c2_x", 2.0, [("scratch", -1.9, 0.5)] + TICKS(1.4) + [("TURN", -0.65, 0), ("whoosh", -0.6, 0.5), ("tada", -0.4, 0.6)]), ("c2_her2", 0.45, [("HAIR", -0.45, 0)]), ("c2_nar", 0.45, [])],
+    )
+    INTRO = 0.6
+elif EPN == "bill":   # short format, prequel to THE TRIAL
+    LV = dict(
+        A1=[("a1_her", 0, []), ("a1_x", 0.3, [("PHOTO", 0.35, 0), ("pop", 0.35, 0.6), ("squeak", 1.3, 0.5)]), ("a1_nar", 0.45, [])],
+        A2=[("a2_her", 0, []), ("a2_x", 0.15, []), ("a2_nar", 0.3, [("buzz", 0.75, 0.45)]), ("a2_tip", 0.1, [("ding", 0.05, 0.6)])],
+        B1=[("b1_her", 0, []), ("b1_x", 0.3, [("RECEIPT", -0.15, 0), ("whoosh", -0.15, 0.5)]), ("b1_nar", 0.6, [("ding", -0.5, 0.7)])],
+        B2=[("b2_her", 0, []), ("b2_x", 0.3, [("SLAP", ("e", 0.05), 0), ("thud", ("e", 0.05), 0.9)]), ("b2_nar", 0.8, [])],
+        C1=[("c1_her", 0, []), ("c1_x", 0.3, [("CAL", ("e", -0.6), 0), ("pop", ("e", -0.6), 0.6)]), ("c1_nar", 0.4, [("deflate", -0.35, 0.5)])],
+        C2=[("c2_her", 0, []), ("c2_x", 1.6, [("scratch", -1.5, 0.5)] + TICKS(1.2)), ("c2_n", 0.3, [("NANA", -0.35, 0)]), ("c2_her2", 0.35, [("TURN2", -0.3, 0)]), ("c2_nar", 0.5, [("rimshot", -0.4, 0.8)])],
     )
     INTRO = 0.6
 elif EPN == "repay":
