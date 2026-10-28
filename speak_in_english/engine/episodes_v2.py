@@ -70,6 +70,11 @@ CAST = {
     "hughes": dict(voice="bm_george", speed=1.0, lang="en-gb", el="CwhRBWXzGAHq8TQ4Fs17"),
     "becky": dict(voice="af_sarah", speed=1.05, lang="en-gb", el="FGY2WhTYpPnrIDTdsKH5"),
     "zoe":   dict(voice="bf_lily", speed=1.0, lang="en-gb", el="pFZP5JQG7iQjIQuC4Bku"),
+    "teacher": dict(voice="am_michael", speed=1.0, lang="en-us", el="iP95p4xoKVk53GoZ742B"),   # Chris
+    "stu":   dict(voice="am_echo", speed=1.0, lang="en-us", el="bIHbv24MWmeRgasZH58o"),        # Will (deadpan teen)
+    "stu2":  dict(voice="af_nicole", speed=1.0, lang="en-us", el="FGY2WhTYpPnrIDTdsKH5"),      # Laura
+    "prin":  dict(voice="bm_daniel", speed=1.0, lang="en-gb", el="onwK4e9ZLuTAKqWW03F9"),      # Daniel (principal)
+    "mom":   dict(voice="bf_lily", speed=0.95, lang="en-gb", el="pFZP5JQG7iQjIQuC4Bku"),       # Lily (teacher's mom, voice only)
 }
 EP = {}
 
@@ -1516,4 +1521,72 @@ EP["mic"] = dict(
            'B2': {'type': 'eq', 'en': 'I thought I was muted.', 'ru': '= Я думала, что мой микрофон выключен.', 'ex': [['muted', '= с выключенным микрофоном']]},
            'C1': {'type': 'eq', 'en': 'Unnecessarily detailed', 'ru': '= Излишне подробный.', 'ex': [["I wouldn't say boring", '= я бы не сказала «скучный»']]},
            'C2': {'type': 'c2', 'vocab': [['With all due respect…', '= При всём уважении…'], ['a spectacular contradiction', '= вопиющее противоречие']], 'moral': ['', '', ''], 'moral_at': 99}},
+)
+
+# When your teacher tries to be cool: a maths teacher in sunglasses talks slang, goes live and streams tomorrow's answer key; his mom comments.
+# Voices on ElevenLabs (eleven_v3, each line once): teacher = Chris, stu = Will, stu2 = Laura, prin = Daniel, mom = Lily, tip = Bella, narrator Sarah.
+EP["teacher"] = dict(
+    title='Когда учитель пытается быть крутым',
+    hook_title=[['WHEN YOUR TEACHER', 'd'], ['TRIES TO BE COOL', 'p'], ['ОТ A1 ДО C2', 'd']],
+    stamp="ОТ A1 ДО C2!", stamp_word="Си-два", next=None,
+    camera="hard_cut",
+    chunks={'hook_t': [['GOOD MORNING, CHAT!', 'ДОБРОЕ УТРО, ЧАТ!']],
+            'b1_t': [['If this video gets one hundred likes,', 'Если это видео наберёт сто лайков,'],
+                     ["I'll cancel tomorrow's test!", 'я отменю завтрашнюю контрольную!']],
+            'c1_t': [["I'm simply adapting my teaching methods", 'Я просто адаптирую методы преподавания,'],
+                     ['to connect with the younger generation.', 'чтобы наладить контакт с молодым поколением.']],
+            'c2_p': [['I appreciate your enthusiasm,', 'Я ценю ваш энтузиазм,'],
+                     ["but could you explain why you're livestreaming", 'но не могли бы вы объяснить, почему вы транслируете'],
+                     ["the answers to tomorrow's exam?", 'ответы на завтрашний экзамен?']],
+            'c2_t': [["I'm sorry… WHAT?!", 'Простите… ЧТО?!']],
+            'c2_t4': [["MOM! YOU'RE EMBARRASSING ME!", 'МАМА! ТЫ МЕНЯ ПОЗОРИШЬ!']]},
+    lines=[
+        ('hook_t', 'teacher', '[excited] Good morning, chat!', 'Доброе утро, чат!'),
+        ('hook_s', 'stu', '[deadpan] Sir... this is a classroom.', 'Сэр… это школьный класс.'),
+        ('hook_t2', 'teacher', '[smug] Not anymore.', 'Уже нет.'),
+        ('hook', 'nar', 'Учитель решил стать крутым. От А-один до Си-два!', ''),
+        ('a1_t', 'teacher', '[cheerful] Hey, besties!', 'Привет, друзья!'),
+        ('a1_s', 'stu', '[flatly] Please stop.', 'Пожалуйста, прекратите.'),
+        ('a1_t2', 'teacher', "[proudly] I'm cool!", 'Я крутой!'),
+        ('a1_s2', 'stu', '[deadpan] No.', 'Нет.'),
+        ('a1_nar', 'nar', 'А-один. I\'m cool — «я крутой». Но ученики не согласны.', ''),
+        ('a2_t', 'teacher', '[triumphantly] No homework today!', 'Сегодня без домашнего задания!'),
+        ('a2_s', 'stu', '[excited] Are you serious?', 'Вы серьёзно?'),
+        ('a2_t2', 'teacher', '[cheerful] Absolutely, fam!', 'Конечно, народ!'),
+        ('a2_s2', 'stu2', '[confused] Why does he talk like that?', 'Почему он так разговаривает?'),
+        ('a2_nar', 'nar', 'А-два. Are you serious? — «ты серьёзно?». Запоминай:', ''),
+        ('a2_tip', 'tip', 'Are you serious?', ''),
+        ('b1_t', 'teacher', "[excited] If this video gets one hundred likes, I'll cancel tomorrow's test!", 'Если это видео наберёт сто лайков, я отменю завтрашнюю контрольную!'),
+        ('b1_s', 'stu', "[skeptical] Who's going to like a math lesson?", 'Кто станет лайкать урок математики?'),
+        ('b1_t2', 'teacher', '[proudly] My mom already did!', 'Моя мама уже лайкнула!'),
+        ('b1_nar', 'nar', "Би-один. I'll cancel tomorrow's test — «я отменю завтрашнюю контрольную».", ''),
+        ('b2_s', 'stu', '[confused] What exactly are you doing?', 'Что именно вы делаете?'),
+        ('b2_t', 'teacher', "[enthusiastic] I'm trying to make learning more engaging!", 'Я пытаюсь сделать обучение более увлекательным!'),
+        ('b2_s2', 'stu', "[dryly] You're making it embarrassing.", 'Вы делаете это неловким.'),
+        ('b2_t2', 'teacher', "[cheerful] That's basically the same thing!", 'Да это практически одно и то же!'),
+        ('b2_nar', 'nar', 'Би-два. More engaging — «более увлекательным».', ''),
+        ('c1_p', 'prin', "[stern] Would you mind explaining what's going on here?", 'Не могли бы вы объяснить, что здесь происходит?'),
+        ('c1_t', 'teacher', "[nervously] I'm simply adapting my teaching methods to connect with the younger generation.", 'Я просто адаптирую методы преподавания, чтобы наладить контакт с молодым поколением.'),
+        ('c1_s', 'stu', '[innocently] He also promised to cancel our test.', 'А ещё он обещал отменить нашу контрольную.'),
+        ('c1_p2', 'prin', '[thoughtfully] Interesting.', 'Интересно.'),
+        ('c1_t2', 'teacher', '[relieved] So you understand?', 'Значит, вы понимаете?'),
+        ('c1_nar', 'nar', 'Си-один. Would you mind explaining? — «не могли бы вы объяснить?». Запоминай:', ''),
+        ('c1_tip', 'tip', 'Would you mind explaining?', ''),
+        ('c2_p', 'prin', "[calmly] I appreciate your enthusiasm, but could you explain why you're livestreaming the answers to tomorrow's exam?", 'Я ценю ваш энтузиазм, но не могли бы вы объяснить, почему вы транслируете ответы на завтрашний экзамен?'),
+        ('c2_t', 'teacher', "[shocked] I'm sorry... what?!", 'Простите… ЧТО?!'),
+        ('c2_t2', 'teacher', '[horrified, quietly] Oh no.', 'О нет.'),
+        ('c2_p2', 'prin', "[dryly] And that's not even the worst part.", 'И это ещё не самое худшее.'),
+        ('c2_t3', 'teacher', "[panicked] There's something worse?!", 'Есть что-то хуже?!'),
+        ('c2_mom', 'mom', "[sweetly] Sweetheart, you're not cool. Please come home.", 'Дорогой, ты не крутой. Пожалуйста, иди домой.'),
+        ('c2_t4', 'teacher', "[shouting, embarrassed] Mom! You're embarrassing me!", 'Мама! Ты меня позоришь!'),
+        ('c2_s', 'stu', '[deadpan] Now you know how we feel.', 'Теперь вы знаете, что чувствуем мы.'),
+        ('c2_nar', 'nar', 'Си-два. I appreciate your enthusiasm, but… — вежливый способ начать возражение.', ''),
+        ('outro', 'nar', 'У тебя был такой учитель? Расскажи в комментариях! И подпишись!', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': "I'M COOL!", 'ok': False, 'note': 'класс против', 'bars': [['УВЕРЕННОСТЬ УЧИТЕЛЯ', 100], ['ОДОБРЕНИЕ КЛАССА', 0]]},
+           'A2': {'type': 'eq', 'en': 'Are you serious?', 'ru': '= Ты серьёзно?'},
+           'B1': {'type': 'eq', 'en': "I'll cancel tomorrow's test.", 'ru': '= Я отменю завтрашнюю контрольную.', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'eq', 'en': 'Make learning more engaging.', 'ru': '= Сделать обучение увлекательнее.', 'ex': [['engaging', '= увлекательный']]},
+           'C1': {'type': 'eq', 'en': 'Would you mind explaining?', 'ru': '= Не могли бы вы объяснить?'},
+           'C2': {'type': 'c2', 'vocab': [['I appreciate your enthusiasm, but…', '= Я ценю ваш энтузиазм, но…'], ['livestreaming', '= прямая трансляция']], 'moral': ['', '', ''], 'moral_at': 99}},
 )

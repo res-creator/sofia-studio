@@ -31,6 +31,9 @@ if EPN == "checkout":  # conflict first: UNEXPECTED ITEM! on the screen + error 
     cue("err", 0.05, 0.8); h0 = say("hook_her", 0.6) + 0.25
 if EPN == "mic":  # cover = the meeting; her line; hard cut to the MICROPHONE ON button, then the narrator
     h0 = say("hook_her", 0.6) + 0.15; cue("blink", h0, 0.8); cue("ding", h0 + 0.1, 0.5); h0 += 0.5
+if EPN == "teacher":  # cover = teacher in sunglasses; GOOD MORNING, CHAT! -> student -> Not anymore (phone out) -> narrator
+    cue("riff", 0.15, 0.35); h0 = say("hook_t", 0.45) + 0.3; h0 = say("hook_s", h0) + 0.3; cue("zip", h0 + 0.1, 0.5); h0 = say("hook_t2", h0)
+    hev = dict(phone=round(h0 - 0.2, 3)); cue("pop", h0 - 0.15, 0.6); h0 += 0.4
 e = say("hook", h0); hw = word_times("hook") or []
 def find(word):
     for w, a, b in hw:
@@ -38,7 +41,7 @@ def find(word):
     return None
 stamp_t = find(E["stamp_word"]) or (e - 1.0); cue("stamp", stamp_t, 0.8)
 t = e + 0.45
-scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3)))
+scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN == "teacher" else {})))
 
 TICKS = lambda back: [("tick", -back + 0.15 + 0.6 * k, 0.6) for k in range(int(back / 0.6))]
 if EPN == "gym":
@@ -307,6 +310,30 @@ elif EPN == "mic":
             ("c2_x4", 2.9, [("SHARE", -2.75, 0), ("click", -2.5, 0.7), ("TAB", -2.25, 0), ("whoosh", -2.25, 0.5), ("STOPCLAP", -0.75, 0), ("scratch", -0.75, 0.6)]),
             ("c2_x5", 1.8, [("FREEZE", -1.7, 0), ("EXCELLENT", -0.9, 0), ("ding", -0.9, 0.6)]),
             ("c2_nar", 1.25, [("rimshot", -0.95, 0.9)])],
+    )
+    INTRO = 1.15
+elif EPN == "teacher":
+    LV = dict(
+        A1=[("a1_t", 0.35, [("STRUT", -0.35, 0)]), ("a1_s", 0.45, [("LIFT", -0.45, 0)]), ("a1_t2", 0.3, []), ("a1_s2", 0.3, []),
+            ("a1_nar", 1.35, [("OFF", -1.2, 0), ("whoosh", -1.15, 0.3), ("cricket", -0.9, 0.5)])],
+        A2=[("a2_t", 1.05, [("ERASE", -1.0, 0), ("squeak", -0.95, 0.35), ("squeak", -0.6, 0.35), ("squeak", -0.3, 0.3)]),
+            ("a2_s", 0.45, [("CHEER", -0.45, 0), ("tada", -0.4, 0.5), ("clapclap", -0.3, 0.5)]), ("a2_t2", 0.3, []), ("a2_s2", 0.35, []),
+            ("a2_nar", 0.95, [("THUMBS", -0.9, 0), ("boing", -0.85, 0.5)]), ("a2_tip", 0.25, [("ding", 0.05, 0.6)])],
+        B1=[("b1_t", 1.05, [("PHONE", -1.05, 0), ("plop", -0.95, 0.5), ("LIVE", -0.5, 0), ("blink", -0.5, 0.6)]),
+            ("b1_s", 0.45, [("BUZZ", -0.45, 0)]), ("b1_t2", 0.3, []),
+            ("b1_nar", 2.35, [("LIKE", -2.3, 0), ("ding", -2.2, 0.7), ("COMMENT", -1.55, 0), ("pop", -1.5, 0.6), ("STARE", -0.85, 0), ("cricket", -0.8, 0.45)])],
+        B2=[("b2_s", 1.5, [("MUSIC", -1.5, 0), ("click", -1.5, 0.6), ("DANCE", -1.15, 0)]), ("b2_t", 0.3, []),
+            ("b2_s2", 1.45, [("HIT", -1.3, 0), ("thud", -1.25, 0.8), ("whoosh", -1.2, 0.6), ("plop", -0.75, 0.5), ("plop", -0.5, 0.5), ("plop", -0.3, 0.4)]),
+            ("b2_t2", 0.3, []), ("b2_nar", 1.35, [("DOOR", -1.25, 0), ("creak", -1.2, 0.6)])],
+        C1=[("c1_p", 0.6, [("STOP", -0.6, 0), ("scratch", -0.6, 0.7)]), ("c1_t", 0.4, [("STRAIGHT", -0.4, 0)]), ("c1_s", 0.35, [("HAND", -0.35, 0)]),
+            ("c1_p2", 1.3, [("SCARED", -1.25, 0), ("PPHONE", -0.6, 0), ("pop", -0.55, 0.4)]), ("c1_t2", 0.35, []),
+            ("c1_nar", 1.45, [("FADE", -1.35, 0)] + TICKS(1.2)), ("c1_tip", 0.25, [("ding", 0.05, 0.6)])],
+        C2=[("c2_p", 0.35, [("SHOW", -0.35, 0)]), ("c2_t", 0.45, [("FREEZE", -0.4, 0), ("impact_soft", -0.35, 0.6)]),
+            ("c2_t2", 2.7, [("LIVE2", -2.6, 0), ("blink", -2.6, 0.6), ("TURN", -1.15, 0), ("whoosh", -1.1, 0.35)]),
+            ("c2_p2", 0.45, []), ("c2_t3", 0.3, []),
+            ("c2_mom", 0.95, [("COMMENTS", -0.9, 0), ("pop", -0.85, 0.6)]),
+            ("c2_t4", 1.2, [("FACE", -0.95, 0), ("deflate", -0.9, 0.45)]), ("c2_s", 0.45, []),
+            ("c2_nar", 2.5, [("SLIDE", -2.1, 0), ("BLACK", -0.95, 0)])],
     )
     INTRO = 1.15
 elif EPN == "repay":

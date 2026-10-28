@@ -275,7 +275,7 @@ function levelIntro(ctx, t, sc) {
 // v2 layout: the lesson card is only as tall as its content (v1 keeps the fixed 470 px)
 function cardHeight(cd) {
   if (!cd) return 470; const ex = cd.ex ? cd.ex.length : 0;
-  if (cd.type === 'meter') return 380;
+  if (cd.type === 'meter') return cd.bars ? 410 : 380;
   if (cd.type === 'swap') return cd.good && cd.good[1] ? 460 : 400;
   if (cd.type === 'eq') { let b = 270; if (cd.note) b = Math.max(b, 336); if (ex) b = Math.max(b, 376 + (ex - 1) * 58); if (cd.stamp) b = Math.max(b, 446); return b + 20; }
   if (cd.type === 'big') return 450;
@@ -304,7 +304,14 @@ function card(ctx, t, sc) {
   const cd = CFG.cards[sc.id];
   const tipK = tip ? eBack(P(t, tip.t - 0.1, tip.t + 0.25), 2) : 0;
   ctx.textBaseline = 'middle';
-  if (cd.type === 'meter') {
+  if (cd.type === 'meter' && cd.bars) {   // two labelled bars (new episodes): label on top, each bar fills to its value
+    const q0 = pop(0.1); ctx.save(); ctx.translate(cx, cy + 40); ctx.scale(q0, q0); textFit(ctx, 'Unb9', 54, cd.label, 780); ctx.fillStyle = C.pink; ctx.fillText(cd.label, 0, 0); ctx.restore();
+    cd.bars.forEach(([lab, v], i) => { const y0 = cy + 120 + i * 120, g = v / 100 * eIO(P(n, 0.5 + i * 0.9, 1.2 + i * 0.9));
+      textFit(ctx, 'Unb9', 32, lab, 560); ctx.fillStyle = C.oliveD; ctx.fillText(lab, cx, y0);
+      font(ctx, 'Unb9', 34); ctx.textAlign = 'right'; ctx.fillStyle = v > 50 ? C.green : C.red; ctx.fillText(Math.round(g * 100) + '%', cx + 780, y0); ctx.textAlign = 'left';
+      ctx.fillStyle = C.cream2; rr(ctx, cx, y0 + 34, 780, 48, 24); ctx.fill(); if (P(n, 0.5 + i * 0.9, 9) > 0) { ctx.fillStyle = v > 50 ? C.green : C.red; rr(ctx, cx, y0 + 34, Math.max(48, 780 * g), 48, 24); ctx.fill(); } });
+  }
+  if (cd.type === 'meter' && !cd.bars) {
     font(ctx, 'Unb9', 40); ctx.fillStyle = C.oliveD; ctx.fillText('ГРАММАТИКА', cx, cy + 40);
     const g = 1 - eIO(P(n, 0.9, 1.9));
     ctx.fillStyle = C.cream2; rr(ctx, cx, cy + 100, 780, 60, 30); ctx.fill();
