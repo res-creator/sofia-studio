@@ -154,3 +154,15 @@
 ## 8. Тест «без звука» и «без английского»
 - Без звука: сейф и мигалка, три лица, 12:00 против 12:15, падает швабра, «I know» с улыбкой, штекер, деньги в сумке, наручники, CASE CLOSED. История читается.
 - Без английского: все реплики переведены в пузырях, цифры и улики видны на вставках.
+
+## 9. Сборка (из `speak_in_english/engine`)
+```
+python3 detective_tts.py detective1        # ElevenLabs с таймингами слов; готовые файлы не перегенерирует
+python3 detective_fit.py detective1        # паузы и темп (+7 % без смены высоты), эхо для сцены улики
+python3 timeline_long.py detective1        # монтажный лист → eps/detective1/timeline.json
+python3 audio_v2.py detective1 && ffmpeg -y -i eps/detective1/mix_raw.wav -af loudnorm=I=-14:TP=-1.5 -ar 48000 eps/detective1/mix.wav
+bash render.sh detective1                  # → out/detective1.mp4
+node qa_frames.js detective1 --step=0.5    # проверка композиции (0 замечаний)
+python3 srt_long.py detective1 ../releases/detective1/detective1.srt   # затем убрать теги [..]
+```
+Исходники голосов: `eps/detective1/vo/*.mp3` + `vo/raw/*.words.json` (wav не хранятся в git, восстанавливаются из mp3).

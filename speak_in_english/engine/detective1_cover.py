@@ -8,12 +8,12 @@ fr = Image.open(src).convert("RGB")
 im = Image.new("RGB", (1080, 1920), "#1E1A26"); im.paste(fr, (0, 260))
 # dark band behind the title, fading into the line-up
 band = Image.new("L", (1080, 1920), 0); d = ImageDraw.Draw(band)
-for y in range(0, 900): d.line([(0, y), (1080, y)], fill=int(235 * min(1, max(0, (900 - y) / 300))))
+for y in range(0, 900): d.line([(0, y), (1080, y)], fill=int(255 * min(1, max(0, (900 - y) / 320))))
 im = Image.composite(Image.new("RGB", (1080, 1920), "#1E1A26"), im, band)
 d = ImageDraw.Draw(im)
-def text(s, y, size, fill, stroke="#2B1A12", sw=10, x=540):
+def text(s, y, size, fill, stroke="#2B1A12", sw=10, x=540, maxw=1000):
     f = ImageFont.truetype(UNB, size)
-    while d.textlength(s, font=f) > 1000: size -= 4; f = ImageFont.truetype(UNB, size)
+    while d.textlength(s, font=f) > maxw: size -= 4; f = ImageFont.truetype(UNB, size)
     d.text((x, y), s, font=f, fill=fill, anchor="mm", stroke_width=sw, stroke_fill=stroke)
 # chip
 f = ImageFont.truetype(UNB, 40); w = d.textlength("ENGLISH DETECTIVE #1", font=f) + 80
@@ -23,5 +23,5 @@ text("КТО УКРАЛ", 480, 110, "#FFFFFF")
 text("МИЛЛИОН?!", 615, 150, "#F2C14E")
 # bottom plate
 d.rounded_rectangle([80, 1480, 1000, 1610], radius=28, fill="#E0474C", outline="#FFFFFF", width=7)
-text("CAN YOU FIND THE THIEF?", 1547, 58, "#FFFFFF", "#7A1E22", 0)
+text("CAN YOU FIND THE THIEF?", 1547, 58, "#FFFFFF", "#7A1E22", 0, maxw=840)
 im.save(out, quality=92); print(out)
