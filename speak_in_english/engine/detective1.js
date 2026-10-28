@@ -40,8 +40,8 @@ const headW = (who, x, fy = 0) => ({ x, y: fy + G[who].headY, hh: G[who].hh });
 const roomOf = x => ['V', 'S', 'I', 'O', 'L'][clamp(Math.round(x / 10000), 0, 4)];
 
 // ---------------- room backgrounds (prerendered once at half size, softly blurred)
-const BX0 = -2000, BY0 = -4200, BW = 4000, BH = 5000, BS = 0.5;
-function floor(c, col1, col2, lines = 'rgba(0,0,0,.14)') { const fg = c.createLinearGradient(0, 0, 0, 800); fg.addColorStop(0, col1); fg.addColorStop(1, col2); c.fillStyle = fg; c.fillRect(BX0, 0, BW, 800); c.strokeStyle = lines; c.lineWidth = 4; for (let x = BX0; x < BX0 + BW; x += 200) { c.beginPath(); c.moveTo(x, 0); c.lineTo(x * 1.25, 800); c.stroke(); } c.fillStyle = 'rgba(0,0,0,.25)'; c.fillRect(BX0, -36, BW, 36); }
+const BX0 = -2000, BY0 = -4200, BW = 4000, BH = 5700, BS = 0.5;
+function floor(c, col1, col2, lines = 'rgba(0,0,0,.14)') { const fg = c.createLinearGradient(0, 0, 0, 1500); fg.addColorStop(0, col1); fg.addColorStop(1, col2); c.fillStyle = fg; c.fillRect(BX0, 0, BW, 1500); c.strokeStyle = lines; c.lineWidth = 4; for (let x = BX0; x < BX0 + BW; x += 200) { c.beginPath(); c.moveTo(x, 0); c.lineTo(x * 1.25, 1500); c.stroke(); } c.fillStyle = 'rgba(0,0,0,.25)'; c.fillRect(BX0, -36, BW, 36); }
 function wall(c, top, bot) { const g = c.createLinearGradient(0, BY0, 0, 0); g.addColorStop(0, top); g.addColorStop(1, bot); c.fillStyle = g; c.fillRect(BX0, BY0, BW, -BY0); }
 function drawRoom(c, k) {
   if (k === 'V') {   // vault: steel wall, rivets, the big round door swung open, empty shelves inside
@@ -132,6 +132,7 @@ const L_ = sc => sc.id;
 function detState(t, L, room) { const g = G.her, st = { t, talk: talk('her', t), mood: 'skeptical', turn: 0.35, look: 0.8, front: fedora(g),
     armL: reach(g, -1, -g.sw * 0.2, g.ySh + 300), armR: reach(g, 1, g.sw * 0.9, g.ySh + 400), items: { L: noteItem } };
   gest(st, g, 'her', t, 1, 200);
+  if (['S', 'I', 'O'].includes(room) && writing(t)) { st.armR = reach(g, 1, -g.sw * 0.05 + Math.sin(t * 13) * 14, g.ySh + 290 + Math.cos(t * 9) * 8); st.lookY = 0.55; st.look = 0.1; }
   if (room === 'V') { const tu = ev('hook', 'turn'); st.mood = t < tu ? 'worried' : 'angry'; st.turn = t < tu ? -0.9 : 0; st.look = t < tu ? -1 : 0; if (t < tu) st.armR = reach(g, 1, g.sw * 0.9, g.ySh + 400); }
   if (L === 'R1' && speaking('r1_d1', t, 0.1, 0.4)) { st.mood = 'angry'; st.armR = reach(g, 1, g.sw * 3.2, g.ySh + 60); }
   if (L === 'R1' && speaking('r1_d2', t, 0.1, 0.3)) st.mood = 'angry';
@@ -143,14 +144,14 @@ function detState(t, L, room) { const g = G.her, st = { t, talk: talk('her', t),
 function guardState(t, L, room) { const g = G.guard, st = { t, talk: talk('guard', t), mood: 'neutral', turn: -0.35, look: -0.7,
     armL: reach(g, -1, -g.sw * 1.0, g.ySh + 420), armR: reach(g, 1, g.sw * 0.8, g.ySh + 300), items: {} };
   if (room === 'S') { st.items = { R: donutItem }; const b = endOf('ga_g2') + 0.05; if (inS(t, b, b + 0.6)) { st.armR = reach(g, 1, g.hw * 0.35, g.headY + g.hh * 0.7); st.talk = 0.3 + 0.3 * Math.abs(Math.sin(t * 14)); st.mood = 'happy'; st.squint = true; } else if (!lineOf('guard', t)) st.mood = 'bored'; }
-  if (room === 'L') { st.turn = 0; st.look = 0; st.armR = reach(g, 1, g.sw * 1.0, g.ySh + 420); if (L === 'R2' && t > ev('R2', 'bag')) st.mood = 'shock'; }
+  if (room === 'L') { st.turn = 0; st.look = L === 'Q' ? Math.sin(t * 0.9) * 0.6 : 0; st.armR = reach(g, 1, g.sw * 1.0, g.ySh + 420); if (L === 'R2' && t > ev('R2', 'bag')) st.mood = 'shock'; }
   if (L === 'END') { st.mood = 'angry'; st.turn = 0.4; st.look = 0.8; st.armL = reach(g, -1, g.sw * 0.6, g.ySh + 380); st.armR = reach(g, 1, 400, G.manager.ySh + 470 - (G.manager.h - g.h) * 0); st.items = {}; }
   return st; }
 function cleanerState(t, L, room) { const g = G.cleaner, st = { t, talk: talk('cleaner', t), mood: 'worried', turn: -0.3, look: -0.7, afterTorso: overalls(g),
     armL: reach(g, -1, -g.sw * 0.9, g.ySh + 420), armR: reach(g, 1, g.sw * 1.1, g.ySh + 260), items: { R: mopItem(0) } };
   if (room === 'I' && speaking('cl_c1', t, 0, 0.3)) { const u = Math.sin(t * 11); st.armR = reach(g, 1, g.sw * (1.1 + u * 0.25), g.ySh + 260); }
   if (room === 'I' && t > SP.cl_c2.t) st.mood = speaking('cl_c2', t) ? 'worried' : 'shock';
-  if (room === 'L') { st.turn = 0; st.look = 0; }
+  if (room === 'L') { st.turn = 0; st.look = Math.sin(t * 2.1) * 0.8; }   // nervous glances in the line-up
   if (L === 'R1') { st.turn = -0.3; st.look = -0.8; st.mood = t < SP.r1_c1.t ? 'shock' : 'worried';
     if (t >= SP.r1_c1.t - 0.1) { st.mood = 'shock'; st.armL = reach(g, -1, -g.sw * 1.3, g.headY - 40); st.armR = reach(g, 1, g.sw * 1.3, g.headY - 40); if (t > ev('R1', 'drop') - 0.05) st.items = {}; } }
   if (L === 'R2') { st.mood = 'surprised'; st.items = {}; st.turn = 0.2; st.look = 0.8; }
@@ -161,7 +162,8 @@ function managerState(t, L, room) { const g = G.manager, st = { t, talk: talk('m
   if (room === 'O') { st.legs = false; st.armL = reach(g, -1, -g.sw * 1.1, g.ySh + 330);
     if (speaking('mg_m2', t, 0, 0) && t > SP.mg_m2.t + 1.2) st.armR = reach(g, 1, g.hw * 1.1, g.headY + g.hh * 0.9);   // taps the headphones
     const s = ev('MG', 'sip'); if (inS(t, s, s + 1.3)) { st.armR = reach(g, 1, g.hw * 0.4, g.headY + g.hh * 0.85); st.squint = true; st.mood = 'happy'; st.headFirst = true; } }
-  if (room === 'L') { st.turn = 0; st.look = 0; st.items = { R: mugItem, L: L === 'R2' && t > ev('R2', 'plug') ? null : bagItem }; }
+  if (room === 'L') { st.turn = 0; st.look = 0; st.items = { R: mugItem, L: L === 'R2' && t > ev('R2', 'plug') ? null : bagItem };
+    const q = ev('Q', 'cd') + 0.4; if (L === 'Q' && inS(t, q, q + 1.4)) { st.armR = reach(g, 1, g.hw * 0.4, g.headY + g.hh * 0.85); st.squint = true; st.mood = 'happy'; st.headFirst = true; } }   // a calm sip during the countdown
   if (L === 'R2') { const f = ev('R2', 'freeze'); st.look = -0.8; st.turn = -0.3;
     if (t > f) { st.mood = 'surprised'; st.armR = reach(g, 1, g.hw * 0.4, g.headY + g.hh * 0.85); st.headFirst = true; }
     if (t > SP.r2_m1.t - 0.1) { st.mood = 'worried'; st.armR = reach(g, 1, g.sw * 0.9, g.ySh + 260); }
@@ -169,8 +171,15 @@ function managerState(t, L, room) { const g = G.manager, st = { t, talk: talk('m
   if (L === 'END') { st.mood = 'sad'; st.turn = 0; st.look = 0.3; st.items = {}; st.armL = reach(g, -1, -g.sw * 0.12, g.ySh + 450); st.armR = reach(g, 1, g.sw * 0.12, g.ySh + 450); }
   return st; }
 
+// ---------------- life in the pauses (A0–A2 pacing): a slow head sway and drifting gaze while not talking — small, never a new gag
+const SEED = { her: 0, guard: 1.7, cleaner: 3.1, manager: 4.6 };
+function alive(st, who) { const t = st.t, s = SEED[who]; if (st.tilt === undefined) st.tilt = 0.025 * Math.sin(t * 1.1 + s);
+  if ((st.talk || 0) < 0.05 && st.lookY === undefined) st.lookY = 0.18 * Math.sin(t * 0.7 + s * 2); return st; }
+// the detective notes each answer in her notebook while the suspect's words sink in
+const ANSWERS = TL.speech.filter(x => ['guard', 'cleaner', 'manager'].includes(x.who) && /^(ga|cl|mg)_/.test(x.id));
+function writing(t) { return ANSWERS.some(a => { const nx = TL.speech.find(x => x.t > a.t + a.d - 0.01 && x.id !== a.id); return t > a.t + a.d + 0.15 && t < Math.min(nx ? nx.t - 0.25 : 1e9, a.t + a.d + 2.5); }); }
 // ---------------- world
-function put(c, cfg, st, x, y = 0) { c.save(); c.translate(x, y); const r = human(c, cfg, st); c.restore(); return { x: x + r.head.x, y: y + r.head.y, hh: r.hh }; }
+function put(c, cfg, st, x, y = 0) { const who = Object.keys(CFG).find(k => CFG[k] === cfg); if (who) alive(st, who); c.save(); c.translate(x, y); const r = human(c, cfg, st); c.restore(); return { x: x + r.head.x, y: y + r.head.y, hh: r.hh }; }
 function world(c, t, L, room, solo) { const heads = {}, show = who => !solo || solo === who, p = POS[room];
   c.drawImage(BG[room], (room === 'V' ? XV : room === 'S' ? XS : room === 'I' ? XI : room === 'O' ? XO : XL) + BX0, BY0, BW, BH);
   const X = { V: XV, S: XS, I: XI, O: XO, L: XL }[room];
@@ -331,7 +340,7 @@ const OFF = { x: W + 9999, y: 0, hh: 0 };
 // reading time for A0–A2 viewers: a bubble stays until shortly before the next line starts (max 2.5 s)
 const HOLD = (() => { const Ls = TL.speech.filter(s => s.who !== 'nar').slice().sort((a, b) => a.t - b.t), h = {}; Ls.forEach((s, i) => { const nx = Ls[i + 1]; h[s.id] = nx ? Math.max(0.3, Math.min(2.5, nx.t - (s.t + s.d) - 0.2)) : 1.5; }); h.q_d1 = 0.05; return h; })();
 function renderFrame(c, t) {
-  c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; const sc = sceneAt(t), L = sc.id;
+  c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; c.fillStyle = '#1E1A26'; c.fillRect(0, 0, W, HH); const sc = sceneAt(t), L = sc.id;
   const n = shotName(t), f = Math.min(CAM.length - 1, Math.round(t * FPS)), cam = CAM[f], sh = shake(t);
   let heads = {}, M = { a: 1, b: 0, c: 0, d: 1, e: 0, f: 0 }, room = null;
   if (isInsert(n)) { INSERTS[n](c, t); for (const who of ['her', 'guard', 'cleaner', 'manager']) heads[who] = OFF; if (n === 'INS_SAFE' || (n === 'INS_NOTE' ? false : L === 'CLUE')) heads.cleaner = null; }
