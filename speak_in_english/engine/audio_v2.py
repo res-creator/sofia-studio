@@ -335,6 +335,28 @@ if EPN == "phone":  # date / phone sounds for this episode only (own rng, so oth
         t = T(2.2); x = bp(_r.standard_normal(len(t)), 250, 1400) * (0.6 + 0.4*np.abs(np.sin(2*np.pi*1.7*t))) * (0.7 + 0.3*np.sin(2*np.pi*0.9*t))
         return norm(x * np.minimum(t*4, 1) * np.minimum((2.2 - t)*3, 1), 0.3)
     SFX.update(msg=_msg(), swipe=_swipe(), vibe=_vibe(), murmur=_murmur())
+if EPN == "detective1":  # English Detective sounds for this episode only (own rng, so other episodes mix exactly as before)
+    _r = np.random.default_rng(13)
+    def _siren():   # two-tone alarm, 1.8 s
+        t = T(1.8); f = np.where((t % 0.6) < 0.3, 960, 720); x = np.sign(np.sin(2*np.pi*np.cumsum(f)/SR))*0.6 + 0.4*np.sin(2*np.pi*np.cumsum(f)/SR)
+        return norm(lp(x, 3000) * np.minimum(t*20, 1) * np.minimum((1.8 - t)*4, 1), 0.6)
+    def _click():   # lamp switch
+        t = T(0.08); return norm(bp(_r.standard_normal(len(t)), 1500, 6000)*np.exp(-t*120) + 0.5*np.sin(2*np.pi*2200*t)*np.exp(-t*90), 0.7)
+    def _alarmbeep():   # log screen: three short beeps
+        y = np.zeros(int(0.9*SR))
+        for k in range(3): t = T(0.16); put(y, np.sign(np.sin(2*np.pi*1250*t))*0.5*np.minimum(t*300, 1)*np.minimum((0.16 - t)*300, 1), k*0.27, 1.0)
+        return norm(lp(y, 4000), 0.5)
+    def _beep():   # countdown
+        t = T(0.25); return norm(np.sin(2*np.pi*880*t)*np.minimum(t*400, 1)*np.exp(-t*6), 0.6)
+    def _slurp():   # coffee
+        t = T(0.55); x = bp(_r.standard_normal(len(t)), 600, 2600) * (0.5 + 0.5*np.abs(np.sin(2*np.pi*14*t))) * np.sin(np.pi*t/0.55)**2
+        return norm(x, 0.5)
+    def _cuff():   # handcuffs: ratchet + click
+        y = np.zeros(int(0.7*SR))
+        for k in range(6): t = T(0.03); put(y, bp(_r.standard_normal(len(t)), 2500, 9000)*np.exp(-t*150), 0.02 + k*0.045, 0.6)
+        t = T(0.3); put(y, (np.sin(2*np.pi*3100*t) + 0.6*np.sin(2*np.pi*4700*t))*np.exp(-t*25), 0.33, 0.8)
+        return norm(y, 0.7)
+    SFX.update(siren=_siren(), click=_click(), alarmbeep=_alarmbeep(), beep=_beep(), slurp=_slurp(), cuff=_cuff(), paper=paper(), marker=marker())
 def note(m, key=0): return 440 * 2 ** ((m + key - 69) / 12)
 def pluck(f, d, bright=1.0):
     t = T(d); ph = 2*np.pi*f*t
@@ -577,6 +599,25 @@ elif EPN in ("salon", "haircut"):
         if (k // 16) % 2 == 1:
             for i, m in enumerate(hook[(k % 2) * 4:(k % 2) * 4 + 4]):
                 if m is not None: put(music, marimba(note(m, K)), t0 + i * b / 4, 0.07)
+elif EPN == "detective1":
+    # noir mystery: walking pizzicato bass in D minor, brushed swing, muted vibraphone motif, low string pad
+    bpm = 100; b = 60/bpm
+    def vib(f, d=1.2):
+        t = T(d); return np.sin(2*np.pi*f*t) * np.exp(-t*2.8) * (1 + 0.25*np.sin(2*np.pi*5.5*t)) * np.minimum(t*400, 1)
+    def bass(f, d):
+        t = T(d); return lp((np.sin(2*np.pi*f*t) + 0.35*np.sin(4*np.pi*f*t)*np.exp(-t*8)) * np.exp(-t*4.5) * np.minimum(t*600, 1), 900)
+    prog = [(50, [62, 65, 69]), (46, [62, 65, 70]), (43, [62, 67, 70]), (45, [61, 64, 69])]   # Dm  Bb  Gm  A
+    walk = [0, 3, 7, 6]
+    motif = [74, None, 72, 74, 77, None, 76, 72, 74, None, None, 69, 70, None, 69, None]
+    for k in range(int(DUR / b) + 8):
+        bar = (k // 4) % 4; t0 = k * b; root, ch = prog[bar]
+        put(music, bass(note(root - 12 + walk[k % 4]), b*0.95), t0, 0.55)
+        sw = b * 0.66; tt = T(0.18)
+        put(music, bp(rng.standard_normal(len(tt)), 2500, 8000)*np.exp(-tt*18), t0, 0.07); put(music, bp(rng.standard_normal(len(tt)), 2500, 8000)*np.exp(-tt*28), t0 + sw, 0.05)
+        if k % 4 == 0:
+            tp = T(b*4); pad = sum(np.sin(2*np.pi*note(m - 12)*tp) for m in ch) * np.minimum(tp*2, 1) * np.minimum((b*4 - tp)*2, 1); put(music, lp(pad, 1200), t0, 0.05)
+        m = motif[k % 16]
+        if m is not None and (k // 16) % 2 == 1: put(music, vib(note(m)), t0, 0.1)
 else:
     bpm = 104; b = 60/bpm; K = 0
     prog = [([62, 65, 69, 72], 38), ([60, 64, 67, 71], 43), ([62, 65, 69, 72], 38), ([59, 62, 65, 69], 43)]
@@ -596,6 +637,8 @@ def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
 if EPN == "pizzas":   # teaser: silence after "Her name. Her pizzas." until the end card
     _sc = {s["id"]: s for s in TL["scenes"]}; c2e = _sc["RC"]["ev"]["stop"]; c2n = _sc["END"]["s"]
+elif EPN == "detective1":   # music stops at the detective's "I know." and comes back with the money in the bag
+    _sc = {s["id"]: s for s in TL["scenes"]}; c2e = sp["r2_d1"]["t"] - 0.05; c2n = _sc["R2"]["ev"]["bag"] + 0.1
 else: c2e = sp["c2_her"]["t"] + sp["c2_her"]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "phone": c2n = sp["c2_x"]["t"] - 0.4   # music back with the live-stream reveal
@@ -603,6 +646,10 @@ if EPN == "bill": c2n = sp["c2_n"]["t"] - 0.3    # music back when Nana walks in
 if EPN == "trial": c2n = sp["c2_n"]["t"]   # THE TRIAL: silence from the end of the C2 speech through the whistle and MATCH, music back when Nana denies
 ramp(c2e - 0.08, c2e + 0.02, 1, 0); gain[int((c2e + 0.02)*SR):int((c2n - 0.05)*SR)] = 0; ramp(c2n - 0.05, c2n + 0.4, 0, 1)
 ramp(DUR - 1.6, DUR, 1, 0); gain[int(DUR*SR):] = 0
+if EPN == "detective1":   # the clue: music dips under the ticking; the countdown: silence on "1"
+    _sc = {s["id"]: s for s in TL["scenes"]}; _cl = _sc["CLUE"]; _q = _sc["Q"]
+    ramp(_cl["s"], _cl["s"] + 0.3, 1, 0.3); gain[int((_cl["s"] + 0.3)*SR):int((_cl["e"] - 0.4)*SR)] = 0.3; ramp(_cl["e"] - 0.4, _cl["e"], 0.3, 1)
+    _one = _q["ev"]["cd"] + 1.6; ramp(_one - 0.05, _one + 0.05, 1, 0); gain[int((_one + 0.05)*SR):int(_q["e"]*SR)] = 0; ramp(_q["e"], _q["e"] + 0.3, 0, 1)
 voice = np.zeros((N, 2)); duck = np.zeros(N)
 PAN = dict(nar=(1, 1), tip=(1, 1), her=(1.0, 0.84))
 for s in TL["speech"]:
