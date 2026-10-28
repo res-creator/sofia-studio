@@ -26,7 +26,10 @@ if EPN == "airport": cue("chime", 0.1, 0.55)
 if EPN == "wrongchat":  # phone hook: SEND -> SENT TO: MR GRANT -> READ -> her eyes -> his head turns
     cue("send", 0.3, 0.8); cue("pop", 0.45, 0.7); cue("msg", 0.95, 0.8); cue("whoosh", 1.3, 0.45); cue("gasp", 1.9, 0.7)
 for k in range(1, 4): cue("pop", 0.2 + 0.35 * k, 0.6)
-h0 = 0.35; e = say("hook", h0); hw = word_times("hook") or []
+h0 = 0.35
+if EPN == "checkout":  # conflict first: UNEXPECTED ITEM! on the screen + error buzz, her line, then the short narrator line
+    cue("err", 0.05, 0.8); h0 = say("hook_her", 0.6) + 0.25
+e = say("hook", h0); hw = word_times("hook") or []
 def find(word):
     for w, a, b in hw:
         if w.lower().strip("«»!?.,").startswith(word.lower()): return h0 + a
@@ -264,6 +267,22 @@ elif EPN == "wrongchat":
         B2=[("b2_her", 0, []), ("b2_x", 0.3, []), ("b2_her2", 2.3, [("DRONE", -2.2, 0), ("drone", -2.1, 0.7), ("DROP", -0.7, 0), ("thud", -0.65, 0.9)]), ("b2_x2", 0.35, [("rimshot", ("e", 0.15), 0.9)]), ("b2_nar", 1.0, []), ("b2_tip", 0.25, [("ding", 0.05, 0.6)])],
         C1=[("c1_her", 0, []), ("c1_x", 0.3, [("sparkle", ("e", -0.6), 0.5)]), ("c1_x2", 1.7, [("LUCY", -1.5, 0), ("msg", -1.5, 0.9), ("msg", -1.1, 0.6), ("HIDE", ("e", 0.25), 0), ("zip", ("e", 0.25), 0.6), ("blink", ("e", 0.55), 0.35)]), ("c1_nar", 1.0, [])],
         C2=[("c2_her", 0, [("SIP", 3.0, 0), ("gulp", 3.4, 0.5), ("FOLDER", 8.0, 0), ("thud", 8.6, 0.9)]), ("c2_x", 2.2, [("scratch", -2.1, 0.6)] + TICKS(2.0)), ("c2_x2", 2.5, [("BOSSMSG", -2.2, 0), ("msg", -2.1, 0.8)]), ("c2_her2", 0.35, []), ("c2_nar", 3.2, [("SENT", -2.9, 0), ("send", -2.9, 0.9), ("READ", -1.6, 0), ("msg", -1.6, 0.9), ("FREEZE", -1.2, 0), ("impact_soft", -1.2, 0.8)])],
+    )
+    INTRO = 1.15
+elif EPN == "checkout":
+    LV = dict(
+        A1=[("a1_x", 0.3, []), ("a1_her", 0.9, [("SCAN", -0.9, 0), ("beep", -0.85, 0.7)]), ("a1_x2", 0.6, [("PLACE", -0.6, 0), ("plop", -0.5, 0.5), ("err", -0.05, 0.7)]), ("a1_her2", 0.2, []), ("a1_nar", 0.3, [])],
+        A2=[("a2_her", 0.15, []), ("a2_x", 0.2, []), ("a2_x2", 0.55, [("REMOVE", -0.55, 0)]), ("a2_x3", 0.55, [("BACK", -0.55, 0), ("plop", -0.45, 0.5), ("err", -0.05, 0.7)]),
+            ("a2_her2", 0.5, [("LOOK", -0.5, 0)]), ("a2_nar", 0.3, []), ("a2_tip", 0.25, [("ding", 0.05, 0.6)])],
+        B1=[("b1_her", 0.1, []), ("b1_d", 1.0, [("WALK", -1.0, 0)]), ("b1_her2", 0.2, []), ("b1_d2", 0.5, [("PRESS", -0.5, 0), ("beep", -0.4, 0.6)]), ("b1_x", 0.25, [("err", -0.1, 0.6)]),
+            ("b1_d3", 0.7, [("STARE", -0.7, 0), ("rimshot", ("e", 0.1), 0.9)]), ("b1_nar", 0.75, [])],
+        B2=[("b2_x", 0.35, [("ALARM", -0.35, 0), ("alarm", -0.35, 0.5)]), ("b2_her", 0.2, []), ("b2_d", 0.2, []), ("b2_her2", 0.2, []),
+            ("b2_nar", 2.7, [("CAM", -2.45, 0), ("servo", -2.45, 0.6), ("ZOOM", -1.5, 0), ("blink", -1.5, 0.5), ("squeak", -1.1, 0.35)])],
+        C1=[("c1_her", 0.1, []), ("c1_x", 0.2, []), ("c1_her2", 0.5, [("FREEZE", -0.5, 0)]), ("c1_x2", 0.2, []),
+            ("c1_nar", 1.15, [("RATING", -1.0, 0), ("pop", -1.0, 0.6)]), ("c1_tip", 0.15, [("ding", 0.05, 0.6)])],
+        C2=[("c2_her", 0.8, [("FIX", -0.8, 0)]), ("c2_x", 1.7, [("scratch", -1.6, 0.6)] + TICKS(1.5) + [("GREEN", -0.2, 0), ("register", -0.15, 0.7)]), ("c2_her2", 0.2, []),
+            ("c2_x2", 0.4, [("TAKE", -0.4, 0)]), ("c2_her3", 0.6, [("TURN", -0.6, 0)]), ("c2_x3", 0.3, []),
+            ("c2_nar", 1.7, [("SHOCK", -1.6, 0), ("impact_soft", -1.6, 0.8), ("rimshot", -1.0, 0.9)])],
     )
     INTRO = 1.15
 elif EPN == "repay":

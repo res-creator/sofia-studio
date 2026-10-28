@@ -308,6 +308,22 @@ def chime():
     return norm(y, 0.6)
 SFX = dict(gasp=gasp(), zip=zipfx(), rimshot=rimshot(), squeak=squeak(), dressup=dressup(), chime=chime(), strain=creak(), coo=coo(), choo=choo(), bark=bark(), umbrella=umbrella_fx(), tada=tada(), knock=knock(), creak=creak(), riff=riff(), knob=knob(), boom=boom(), feather=feather(), clapclap=clapclap(), powerdown=powerdown(), snip=snip1(), snips=snips(), clipper=clipper(), hairdryer=hairdryer(), spin=spin(), register=register(), plop=plop(), thud=thud(), gulp=gulp(), boing=boing(), nope=nope(), cuckoo=cuckoo(), whoosh=whoosh(), impact=impact(), impact_soft=impact(True), pop=pop(), stamp=stamp(), sparkle=sparkle(), blink=blink(), brow=brow(), buzz=buzz(), ding=ding(),
            cricket=cricket(), tick=tick(), deflate=deflate(), riser_short=riser_short(), clank=clank(), scratch=scratch(), drop=drop(), bell=bell(), lift_ding=lift_ding(), doors=doors(), hum=hum())
+if EPN == "checkout":  # self-checkout sounds for this episode only (own rng, so other episodes mix exactly as before)
+    _r = np.random.default_rng(12)
+    def _beep():
+        t = T(0.16); return norm(np.sign(np.sin(2*np.pi*2350*t)) * 0.5 * np.minimum(t*900, 1) * np.minimum((0.16 - t)*300, 1), 0.45)
+    def _err():
+        out = np.zeros(int(0.7*SR))
+        for k in range(2):
+            t = T(0.26); x = (sg_saw(220*t) + 0.5*sg_saw(330*t)) * np.minimum(t*300, 1) * np.minimum((0.26 - t)*200, 1); i = int(k*0.32*SR); out[i:i + len(x)] += x
+        return norm(lp(out, 2500), 0.6)
+    def _alarm():
+        d = 1.6; t = T(d); f = 700 + 300*np.sin(2*np.pi*2.5*t); return norm(np.sin(2*np.pi*np.cumsum(f)/SR) * np.minimum(t*20, 1) * np.minimum((d - t)*4, 1), 0.45)
+    def _servo():
+        d = 1.0; t = T(d); f = 140 + 60*t; x = np.sign(np.sin(2*np.pi*np.cumsum(f)/SR))*0.3 + 0.2*bp(_r.standard_normal(len(t)), 400, 2500)
+        return norm(lp(x, 1800) * np.minimum(t*8, 1) * np.minimum((d - t)*8, 1), 0.4)
+    sg_saw = lambda ph: 2*((ph) % 1) - 1
+    SFX.update(beep=_beep(), err=_err(), alarm=_alarm(), servo=_servo())
 if EPN == "wrongchat":  # phone sounds for this episode only (own rng, so other episodes mix exactly as before)
     _r = np.random.default_rng(11)
     def _send():
@@ -450,7 +466,7 @@ elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes"):
             m = mel[(k*2 + j) % 16]
             if m is not None and (k // 16) % 2 == 0: put(music, glock(note(m + 12)), t0 + j*b/2, 0.07)
             if m is not None and (k // 16) % 2 == 1: put(music, pizz(note(m), 0.4), t0 + j*b/2, 0.12)
-elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "repay", "wrongchat"):
+elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "repay", "wrongchat", "checkout"):
     # breezy airport lounge bossa: e-piano, nylon plucks, soft shaker, walking bass
     bpm = 120; b = 60/bpm; K = 0
     prog = [([62, 65, 69, 72], 38), ([61, 65, 67, 71], 43), ([60, 64, 67, 71], 36), ([57, 61, 64, 67], 45)]
@@ -582,6 +598,7 @@ def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
 c2e = sp["c2_her"]["t"] + sp["c2_her"]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
+if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 ramp(c2e - 0.08, c2e + 0.02, 1, 0); gain[int((c2e + 0.02)*SR):int((c2n - 0.05)*SR)] = 0; ramp(c2n - 0.05, c2n + 0.4, 0, 1)
 ramp(DUR - 1.6, DUR, 1, 0); gain[int(DUR*SR):] = 0
 voice = np.zeros((N, 2)); duck = np.zeros(N)
