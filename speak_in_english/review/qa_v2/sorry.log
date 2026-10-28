@@ -1,0 +1,13 @@
+{"ep":"sorry","style":"v2","layout":"v2","samples":504,"issues":12,"critical":0,"major":3,"minor":9}
+  major    face_covered_by_bubble       95.00-96.00s listener
+  major    face_covered_by_bubble       69.75-70.50s speaker
+  major    face_covered_by_overlay      107.75-108.25s listener
+  minor    bubble_too_long              87.25-95.75s 
+  minor    face_covered_by_overlay      111.25-116.00s listener
+  minor    face_covered_by_overlay      109.00-110.50s listener
+  minor    face_covered_by_overlay      111.25-112.50s listener
+  minor    crop_knees                   17.75-18.75s 
+  minor    crop_knees                   58.75-59.75s 
+  minor    crop_knees                   58.75-59.75s 
+  minor    face_covered_by_overlay      108.25-109.00s listener
+  minor    face_covered_by_overlay      108.25-109.00s listener

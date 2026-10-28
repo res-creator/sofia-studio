@@ -1,0 +1,14 @@
+{"ep":"cancel","style":"v2","layout":"v2","samples":479,"issues":13,"critical":0,"major":10,"minor":3}
+  major    face_covered_by_bubble       10.25-14.50s listener
+  major    face_covered_by_bubble       36.25-40.25s listener
+  major    face_covered_by_bubble       51.00-54.00s listener
+  major    face_covered_by_bubble       48.00-50.75s listener
+  major    crop_feet_ankles             55.75-56.75s 
+  major    crop_feet_ankles             105.75-106.75s 
+  major    face_covered_by_bubble       105.00-105.75s listener
+  major    face_covered_by_window       41.25-41.75s listener
+  major    face_covered_by_bubble       54.75-55.25s listener
+  major    crop_feet_ankles             56.25-56.75s 
+  minor    bubble_too_long              84.75-98.00s 
+  minor    face_covered_by_bubble       25.50-26.00s listener
+  minor    crop_knees                   41.00-41.50s 

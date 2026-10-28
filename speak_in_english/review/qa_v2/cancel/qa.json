@@ -1,0 +1,170 @@
+{
+ "summary": {
+  "ep": "cancel",
+  "style": "v2",
+  "layout": "v2",
+  "samples": 479,
+  "issues": 13,
+  "critical": 0,
+  "major": 10,
+  "minor": 3
+ },
+ "issues": [
+  {
+   "ep": "cancel",
+   "type": "face_covered_by_bubble",
+   "key": "1|1480|#F7B6CF",
+   "start": 10.25,
+   "end": 14.25,
+   "n": 17,
+   "sev": "major",
+   "max": 0.6185567010309279,
+   "info": "listener",
+   "dur": 4.25
+  },
+  {
+   "ep": "cancel",
+   "type": "face_covered_by_bubble",
+   "key": "1|1480|#F7B6CF",
+   "start": 36.25,
+   "end": 40,
+   "n": 16,
+   "sev": "major",
+   "max": 0.845360824742268,
+   "info": "listener",
+   "dur": 4
+  },
+  {
+   "ep": "cancel",
+   "type": "face_covered_by_bubble",
+   "key": "1|1480|#F7B6CF",
+   "start": 51,
+   "end": 53.75,
+   "n": 12,
+   "sev": "major",
+   "max": 0.6185567010309279,
+   "info": "listener",
+   "dur": 3
+  },
+  {
+   "ep": "cancel",
+   "type": "face_covered_by_bubble",
+   "key": "2|1720|#E0474C",
+   "start": 48,
+   "end": 50.5,
+   "n": 11,
+   "sev": "major",
+   "max": 0.5154639175257731,
+   "info": "listener",
+   "dur": 2.75
+  },
+  {
+   "ep": "cancel",
+   "type": "crop_feet_ankles",
+   "key": "1|1480|#F7B6CF",
+   "start": 55.75,
+   "end": 56.5,
+   "n": 4,
+   "sev": "major",
+   "max": 15.2899169921875,
+   "info": "",
+   "dur": 1
+  },
+  {
+   "ep": "cancel",
+   "type": "crop_feet_ankles",
+   "key": "2|1720|#E0474C",
+   "start": 105.75,
+   "end": 106.5,
+   "n": 3,
+   "sev": "major",
+   "max": 132.989013671875,
+   "info": "",
+   "dur": 1
+  },
+  {
+   "ep": "cancel",
+   "type": "face_covered_by_bubble",
+   "key": "1|1480|#F7B6CF",
+   "start": 105,
+   "end": 105.5,
+   "n": 3,
+   "sev": "major",
+   "max": 0.8762886597938144,
+   "info": "listener",
+   "dur": 0.75
+  },
+  {
+   "ep": "cancel",
+   "type": "face_covered_by_window",
+   "key": "1|1480|#F7B6CF",
+   "start": 41.25,
+   "end": 41.5,
+   "n": 2,
+   "sev": "major",
+   "max": 0.6597938144329897,
+   "info": "listener",
+   "dur": 0.5
+  },
+  {
+   "ep": "cancel",
+   "type": "face_covered_by_bubble",
+   "key": "1|1480|#F7B6CF",
+   "start": 54.75,
+   "end": 55,
+   "n": 2,
+   "sev": "major",
+   "max": 0.8350515463917526,
+   "info": "listener",
+   "dur": 0.5
+  },
+  {
+   "ep": "cancel",
+   "type": "crop_feet_ankles",
+   "key": "2|1720|#E0474C",
+   "start": 56.25,
+   "end": 56.5,
+   "n": 2,
+   "sev": "major",
+   "max": 8.69384765625,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "cancel",
+   "type": "bubble_too_long",
+   "key": "c2_her",
+   "start": 84.75,
+   "end": 97.75,
+   "n": 53,
+   "sev": "minor",
+   "max": 12,
+   "info": "",
+   "dur": 13.25
+  },
+  {
+   "ep": "cancel",
+   "type": "face_covered_by_bubble",
+   "key": "1|1480|#F7B6CF",
+   "start": 25.5,
+   "end": 25.75,
+   "n": 2,
+   "sev": "minor",
+   "max": 0.41237113402061853,
+   "info": "listener",
+   "dur": 0.5
+  },
+  {
+   "ep": "cancel",
+   "type": "crop_knees",
+   "key": "2|1720|#E0474C",
+   "start": 41,
+   "end": 41.25,
+   "n": 2,
+   "sev": "minor",
+   "max": -45.83963890075688,
+   "info": "",
+   "dur": 0.5
+  }
+ ]
+}

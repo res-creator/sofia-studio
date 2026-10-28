@@ -1,0 +1,134 @@
+{
+ "summary": {
+  "ep": "names",
+  "style": "v2",
+  "layout": "v2",
+  "samples": 410,
+  "issues": 10,
+  "critical": 1,
+  "major": 1,
+  "minor": 8
+ },
+ "issues": [
+  {
+   "ep": "names",
+   "type": "speaker_offscreen",
+   "key": "1|1480|#E86A9A",
+   "start": 86.25,
+   "end": 86.25,
+   "n": 1,
+   "sev": "critical",
+   "max": 0.9484536082474226,
+   "info": "",
+   "dur": 0.25
+  },
+  {
+   "ep": "names",
+   "type": "face_covered_by_bubble",
+   "key": "43|1720|#1E1E24",
+   "start": 81,
+   "end": 81.5,
+   "n": 3,
+   "sev": "major",
+   "max": 0.5051546391752577,
+   "info": "listener",
+   "dur": 0.75
+  },
+  {
+   "ep": "names",
+   "type": "bubble_too_long",
+   "key": "c2_her",
+   "start": 73.5,
+   "end": 81.5,
+   "n": 33,
+   "sev": "minor",
+   "max": 7,
+   "info": "",
+   "dur": 8.25
+  },
+  {
+   "ep": "names",
+   "type": "crop_knees",
+   "key": "13|1640|#2E4A7A",
+   "start": 12.25,
+   "end": 13.25,
+   "n": 5,
+   "sev": "minor",
+   "max": 70.04288406372075,
+   "info": "",
+   "dur": 1.25
+  },
+  {
+   "ep": "names",
+   "type": "crop_knees",
+   "key": "20|1650|#8E5BD6",
+   "start": 66,
+   "end": 66.75,
+   "n": 4,
+   "sev": "minor",
+   "max": 73.3364953994751,
+   "info": "",
+   "dur": 1
+  },
+  {
+   "ep": "names",
+   "type": "crop_knees",
+   "key": "13|1640|#2E4A7A",
+   "start": 14.5,
+   "end": 15,
+   "n": 3,
+   "sev": "minor",
+   "max": 62.74218711853018,
+   "info": "",
+   "dur": 0.75
+  },
+  {
+   "ep": "names",
+   "type": "crop_knees",
+   "key": "22|1700|#5A5F6C",
+   "start": 50,
+   "end": 50.5,
+   "n": 3,
+   "sev": "minor",
+   "max": 74.915114402771,
+   "info": "",
+   "dur": 0.75
+  },
+  {
+   "ep": "names",
+   "type": "crop_knees",
+   "key": "1|1480|#E86A9A",
+   "start": 12.5,
+   "end": 12.75,
+   "n": 2,
+   "sev": "minor",
+   "max": 65.73206405639644,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "names",
+   "type": "crop_knees",
+   "key": "1|1480|#E86A9A",
+   "start": 14.75,
+   "end": 15,
+   "n": 2,
+   "sev": "minor",
+   "max": 52.202332687377975,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "names",
+   "type": "crop_knees",
+   "key": "15|1720|#7A1C2E",
+   "start": 34.25,
+   "end": 34.5,
+   "n": 2,
+   "sev": "minor",
+   "max": 79.56019439697275,
+   "info": "",
+   "dur": 0.5
+  }
+ ]
+}

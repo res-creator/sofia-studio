@@ -1,0 +1,98 @@
+{
+ "summary": {
+  "ep": "courier",
+  "style": "v2",
+  "layout": "v2",
+  "samples": 462,
+  "issues": 7,
+  "critical": 0,
+  "major": 3,
+  "minor": 4
+ },
+ "issues": [
+  {
+   "ep": "courier",
+   "type": "face_covered_by_insert",
+   "key": "12|1300|#C27AE0",
+   "start": 71.25,
+   "end": 77,
+   "n": 24,
+   "sev": "major",
+   "max": 0.8144329896907216,
+   "info": "listener",
+   "dur": 6
+  },
+  {
+   "ep": "courier",
+   "type": "face_covered_by_bubble",
+   "key": "1|1480|#F7B6CF",
+   "start": 51.25,
+   "end": 51.75,
+   "n": 3,
+   "sev": "major",
+   "max": 0.979381443298969,
+   "info": "listener",
+   "dur": 0.75
+  },
+  {
+   "ep": "courier",
+   "type": "crop_feet_ankles",
+   "key": "1|1480|#F7B6CF",
+   "start": 8,
+   "end": 8.25,
+   "n": 2,
+   "sev": "major",
+   "max": 75.2930908203125,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "courier",
+   "type": "bubble_too_long",
+   "key": "c2_her",
+   "start": 81.75,
+   "end": 94.25,
+   "n": 51,
+   "sev": "minor",
+   "max": 11,
+   "info": "",
+   "dur": 12.75
+  },
+  {
+   "ep": "courier",
+   "type": "crop_knees",
+   "key": "1|1480|#F7B6CF",
+   "start": 82.5,
+   "end": 83,
+   "n": 3,
+   "sev": "minor",
+   "max": -0.19288997650141937,
+   "info": "",
+   "dur": 0.75
+  },
+  {
+   "ep": "courier",
+   "type": "crop_knees",
+   "key": "1|1480|#F7B6CF",
+   "start": 93.25,
+   "end": 93.75,
+   "n": 3,
+   "sev": "minor",
+   "max": 2.4440101623536066,
+   "info": "",
+   "dur": 0.75
+  },
+  {
+   "ep": "courier",
+   "type": "face_covered_by_card",
+   "key": "1|1480|#F7B6CF",
+   "start": 13.5,
+   "end": 13.75,
+   "n": 2,
+   "sev": "minor",
+   "max": 0.36082474226804123,
+   "info": "listener",
+   "dur": 0.5
+  }
+ ]
+}
