@@ -337,7 +337,7 @@ if EPN == "wrongchat":  # phone sounds for this episode only (own rng, so other 
         t = T(1.6); f = 180 + 8*np.sin(2*np.pi*3*t); x = np.sign(np.sin(2*np.pi*np.cumsum(f)/SR))*0.4 + 0.3*bp(_r.standard_normal(len(t)), 300, 3000)
         return norm(lp(x, 2500) * np.minimum(t*3, 1) * np.minimum((1.6 - t)*3, 1), 0.5)
     SFX.update(send=_send(), msg=_msg(), shutter=_shutter(), drone=_drone())
-if EPN in ("mic", "teacher"):  # video-call sounds for this episode only (own rng, so other episodes mix exactly as before)
+if EPN in ("mic", "teacher", "resume"):  # video-call sounds for this episode only (own rng, so other episodes mix exactly as before)
     _r = np.random.default_rng(13)
     def _click():
         t = T(0.06); return norm(bp(_r.standard_normal(len(t)), 1800, 7000) * np.exp(-t*160) + 0.4*np.sin(2*np.pi*2400*t)*np.exp(-t*220), 0.55)
@@ -356,6 +356,10 @@ if EPN in ("mic", "teacher"):  # video-call sounds for this episode only (own rn
     def _clap():
         t = T(0.12); return norm(bp(_r.standard_normal(len(t)), 900, 6000) * (np.exp(-t*60) + 0.3*np.exp(-np.maximum(t - 0.01, 0)*40)), 0.6)
     SFX.update(click=_click(), keys=_keys(), vol=_vol(), msg=_msg(), cough=_cough(), clap=_clap())
+    if EPN == "resume":   # pencil on paper: a dry scratchy scribble
+        def _scribble():
+            t = T(0.38); f = 1 + 0.5*np.sin(2*np.pi*11*t); return norm(bp(_r.standard_normal(len(t)), 2500, 9000) * np.abs(np.sin(2*np.pi*7*t*f)) * np.minimum(t*40, 1) * np.minimum((0.38 - t)*30, 1), 0.45)
+        SFX.update(scribble=_scribble())
 def note(m, key=0): return 440 * 2 ** ((m + key - 69) / 12)
 def pluck(f, d, bright=1.0):
     t = T(d); ph = 2*np.pi*f*t
@@ -485,7 +489,7 @@ elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", 
             m = mel[(k*2 + j) % 16]
             if m is not None and (k // 16) % 2 == 0: put(music, glock(note(m + 12)), t0 + j*b/2, 0.07)
             if m is not None and (k // 16) % 2 == 1: put(music, pizz(note(m), 0.4), t0 + j*b/2, 0.12)
-elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "repay", "wrongchat", "checkout", "mic"):
+elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "repay", "wrongchat", "checkout", "mic", "resume"):
     # breezy airport lounge bossa: e-piano, nylon plucks, soft shaker, walking bass
     bpm = 120; b = 60/bpm; K = 0
     prog = [([62, 65, 69, 72], 38), ([61, 65, 67, 71], 43), ([60, 64, 67, 71], 36), ([57, 61, 64, 67], 45)]
@@ -623,8 +627,11 @@ c2e = sp["c2_p" if EPN == "teacher" else "c2_her"]["t"] + sp["c2_p" if EPN == "t
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause
+if EPN == "resume": c2n = sp["c2_x2"]["t"]   # silence after her speech through the posting close-up; music back on "Well..."
 ramp(c2e - 0.08, c2e + 0.02, 1, 0); gain[int((c2e + 0.02)*SR):int((c2n - 0.05)*SR)] = 0; ramp(c2n - 0.05, c2n + 0.4, 0, 1)
 ramp(DUR - 1.6, DUR, 1, 0); gain[int(DUR*SR):] = 0
+if EPN == "resume":   # the last gag (15 YEARS) plays in silence: music out from his look at the posting to the end of C2
+    ev_ = next(x for x in TL["scenes"] if x["id"] == "C2"); l0, l1 = ev_["ev"]["look"], ev_["e"]; ramp(l0 - 0.3, l0, 1, 0); gain[int(l0*SR):int(l1*SR)] = 0; ramp(l1, l1 + 0.3, 0, 1)
 voice = np.zeros((N, 2)); duck = np.zeros(N)
 PAN = dict(nar=(1, 1), tip=(1, 1), her=(1.0, 0.84))
 for s in TL["speech"]:
