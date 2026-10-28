@@ -150,6 +150,7 @@ function legs(ctx, cfg, st, g) {
     if (pose === 'squat') { const d = clamp(drop / (h * 0.3)); kx = s * hipW * (0.62 + d * 0.75); ky = lerp(-h * 0.24, (yHip - 40) * 0.5, d * 0.8); ax = s * hipW * 0.72; }
     if (pose === 'sit') { kx = s * hipW * 0.78; ky = yHip + 90; ax = s * hipW * 0.74; ay = -40; hy = yHip + 10; }
     if (pose === 'walk') { const ph = Math.sin((st.t || 0) * 8 + (s > 0 ? Math.PI : 0)); kx = s * hipW * 0.5; ky = -h * 0.24 - Math.max(0, ph) * 40; ax = s * hipW * 0.48; ay = -40 - Math.max(0, ph) * 70; }
+    if (st.legFn) ({ kx, ky, ax, ay } = st.legFn(s, { hx, hy, h, hipW }));   // external leg control (act.js walk / foot actions); unset = unchanged
     const isPants = ['trousers', 'leggings', 'joggers', 'jeans'].includes(bottom.type);
     const Hp = { x: hx, y: hy, r: lr }, K = { x: kx, y: ky, r: lr * 0.66 }, An = { x: ax, y: ay, r: cr * 0.72 };
     const pts = [Hp, midp(Hp, K, 0.45, lr * 0.9), K, midp(K, An, 0.35, lr * 0.72), An];
@@ -181,8 +182,9 @@ function legV2(ctx, cfg, st, s, L) {
   const fs = clamp(Math.max(lr / 58, hemR * 2 / 80), 1.0, 1.7);   // shoe scale: from leg thickness, never narrower than the trouser hem
   const sole = ay + 40;                                  // floor contact (0 when standing)
   const lift = clamp((-40 - ay) / 70);                   // walk: foot raised -> heel up a little
-  const sx = ax + s * 8 * fs;
-  const drawShoe = () => shoeV2(ctx, cfg, sx, sole, s, fs, lift);
+  const sd = st.shoeDir || s;                            // shoeDir: both shoes point one way while walking (unset = outward, as before)
+  const sx = ax + sd * 8 * fs;
+  const drawShoe = () => shoeV2(ctx, cfg, sx, sole, sd, fs, lift);
   if (isPants) {
     const flare = pantsFlare;
     const pp = pts.map((p, i) => ({ ...p, r: i < 2 ? p.r * 1.05 : i === 4 ? p.r * flare * 1.08 : p.r * 1.06 }));
@@ -468,6 +470,8 @@ function eyes(ctx, cfg, st, hw, hh, turn, mood, t, skin) {
     const far = (turn * s < 0) ? 1 - Math.abs(turn) * 0.18 : 1;
     const ex = s * hw * 0.42 + turn * hw * 0.2, rx = er * far, ry = er * (cfg.eyeShape === 'almond' ? 0.95 : 1.12);
     let open = 1 - blink; let topCut = 0, botCut = 0, big = 1;
+    if (st.eyeOpen) open = Math.min(open, st.eyeOpen[s < 0 ? 0 : 1]);   // per-eye lids (wink); unset = unchanged
+    if (st.eyeBig) big *= st.eyeBig;
     if (mood === 'bored' || mood === 'tired') topCut = 0.45;
     if (mood === 'annoyed' || mood === 'skeptical' && s > 0) { topCut = 0.35; botCut = 0.15; }
     if (mood === 'shock') big = 1.18;
@@ -483,7 +487,7 @@ function eyes(ctx, cfg, st, hw, hh, turn, mood, t, skin) {
     ctx.fillStyle = '#FFFDF8'; ctx.fill(eyeP);
     ctx.save(); ctx.clip(eyeP);
     // iris
-    const ir = er * (mood === 'shock' ? 0.5 : 0.68), ix = lookX * rx * 0.32, iy = lookY * ry * 0.25 + ry * 0.05;
+    const ir = er * (mood === 'shock' ? 0.5 : 0.68) * (st.iris ?? 1), ix = lookX * rx * 0.32, iy = lookY * ry * 0.25 + ry * 0.05;
     const ig = ctx.createRadialGradient(ix, iy - ir * 0.3, ir * 0.1, ix, iy, ir); const ic = cfg.iris || '#5A3B26';
     ig.addColorStop(0, hiCol(ic, 0.25)); ig.addColorStop(0.7, ic); ig.addColorStop(1, shade(ic, 0.55));
     ctx.fillStyle = ig; ctx.beginPath(); ctx.arc(ix, iy, ir, 0, 7); ctx.fill();
@@ -519,6 +523,7 @@ function eyes(ctx, cfg, st, hw, hh, turn, mood, t, skin) {
     if (mood === 'skeptical') { inner = s > 0 ? -16 : 8; outer = s > 0 ? -12 : 4; }
     if (mood === 'happy') { inner = -4; outer = -4; }
     if (st.browUp) { inner -= st.browUp * 14; outer -= st.browUp * 12; }
+    if (st.brows) { const b = st.brows[s < 0 ? 0 : 1]; inner += b[0]; outer += b[1]; }   // per-brow offsets [inner, outer], +down
     const w = hw * 0.32, th = cfg.browW || 7;
     ctx.save(); ctx.translate(bx, by);
     paint(ctx, q => { q.m(-s * w * 0.15, inner + 2); q.q(s * w * 0.35, Math.min(inner, outer) - 12, s * w * 0.98, outer + 2); q.q(s * w * 1.02, outer + th * 0.6, s * w * 0.9, outer + th * 0.7); q.q(s * w * 0.35, Math.min(inner, outer) - 12 + th, -s * w * 0.12, inner + th + 2); q.q(-s * w * 0.25, inner + th * 0.5, -s * w * 0.15, inner + 2); q.z(); }, bcol, { sd: 0, hd: 0, lw: 2 });
@@ -540,6 +545,7 @@ function mouth(ctx, cfg, st, hw, hh, turn, mood, skin) {
   const smile = mood === 'happy' || mood === 'smug' ? 1 : (mood === 'sad' || mood === 'worried' || mood === 'annoyed') ? -1 : (mood === 'angry' ? -0.6 : 0.25);
   const lipCol = cfg.lips || mix(skin, '#C8505E', 0.45);
   ctx.save(); ctx.translate(mx, my);
+  if (st.mouthFn) { st.mouthFn(ctx, { w, hw, hh, turn, mood, skin, lipCol, open, smile, cfg, st }); ctx.restore(); return; }   // custom mouth (faces_plus.js); unset = unchanged
   if (open < 4) {
     ctx.strokeStyle = mix(lipCol, INK, 0.45); ctx.lineWidth = 5; ctx.lineCap = 'round'; ctx.beginPath();
     if (mood === 'smug') { ctx.moveTo(-w * 0.8, 2); ctx.quadraticCurveTo(0, 10, w * 0.9, -14); }
