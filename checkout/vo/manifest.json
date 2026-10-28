@@ -1,0 +1,422 @@
+{
+ "s00": {
+  "file": "s00.mp3",
+  "align": "s00.align.json",
+  "role": "her",
+  "voice": "Jessica",
+  "voice_id": "cgSgspJ2msm6clMCkdW9",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[shouting, exasperated] IT'S JUST A BANANA!",
+  "dur": 2.35
+ },
+ "m01": {
+  "file": "m01.mp3",
+  "align": "m01.align.json",
+  "role": "machine",
+  "voice": "Matilda",
+  "voice_id": "XrExE9yKIg1WjnnlVkGX",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[polite, cheerful] Please scan your item.",
+  "dur": 2.43
+ },
+ "s02": {
+  "file": "s02.mp3",
+  "align": "s02.align.json",
+  "role": "her",
+  "voice": "Jessica",
+  "voice_id": "cgSgspJ2msm6clMCkdW9",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[happy] Great! Easy!",
+  "dur": 1.72
+ },
+ "m02": {
+  "file": "m02.mp3",
+  "align": "m02.align.json",
+  "role": "machine",
+  "voice": "Matilda",
+  "voice_id": "XrExE9yKIg1WjnnlVkGX",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[loud, firm] Unexpected item!",
+  "dur": 1.23
+ },
+ "s03": {
+  "file": "s03.mp3",
+  "align": "s03.align.json",
+  "role": "her",
+  "voice": "Jessica",
+  "voice_id": "cgSgspJ2msm6clMCkdW9",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[confused] What?!",
+  "dur": 0.68
+ },
+ "s04": {
+  "file": "s04.mp3",
+  "align": "s04.align.json",
+  "role": "her",
+  "voice": "Jessica",
+  "voice_id": "cgSgspJ2msm6clMCkdW9",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[indignant] It's a banana!",
+  "dur": 1.57
+ },
+ "m03": {
+  "file": "m03.mp3",
+  "align": "m03.align.json",
+  "role": "machine",
+  "voice": "Matilda",
+  "voice_id": "XrExE9yKIg1WjnnlVkGX",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[polite] Please remove the item.",
+  "dur": 1.41
+ },
+ "m04": {
+  "file": "m04.mp3",
+  "align": "m04.align.json",
+  "role": "machine",
+  "voice": "Matilda",
+  "voice_id": "XrExE9yKIg1WjnnlVkGX",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[polite] Please put the item back.",
+  "dur": 1.41
+ },
+ "m05": {
+  "file": "m05.mp3",
+  "align": "m05.align.json",
+  "role": "machine",
+  "voice": "Matilda",
+  "voice_id": "XrExE9yKIg1WjnnlVkGX",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[loud, firm] Unexpected item!",
+  "dur": 1.31
+ },
+ "s05": {
+  "file": "s05.mp3",
+  "align": "s05.align.json",
+  "role": "her",
+  "voice": "Jessica",
+  "voice_id": "cgSgspJ2msm6clMCkdW9",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[flatly, done with this] Are you kidding me?",
+  "dur": 1.8
+ },
+ "s06": {
+  "file": "s06.mp3",
+  "align": "s06.align.json",
+  "role": "her",
+  "voice": "Jessica",
+  "voice_id": "cgSgspJ2msm6clMCkdW9",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[calling out loudly] Excuse me! This machine isn't working!",
+  "dur": 3.4
+ },
+ "c01": {
+  "file": "c01.mp3",
+  "align": "c01.align.json",
+  "role": "clerk",
+  "voice": "Will",
+  "voice_id": "bIHbv24MWmeRgasZH58o",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[friendly, relaxed] What's the problem?",
+  "dur": 1.72
+ },
+ "s07": {
+  "file": "s07.mp3",
+  "align": "s07.align.json",
+  "role": "her",
+  "voice": "Jessica",
+  "voice_id": "cgSgspJ2msm6clMCkdW9",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[tired] I'm trying to buy one banana.",
+  "dur": 3.16
+ },
+ "c02": {
+  "file": "c02.mp3",
+  "align": "c02.align.json",
+  "role": "clerk",
+  "voice": "Will",
+  "voice_id": "bIHbv24MWmeRgasZH58o",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[confident] There. Fixed.",
+  "dur": 2.51
+ },
+ "m06": {
+  "file": "m06.mp3",
+  "align": "m06.align.json",
+  "role": "machine",
+  "voice": "Matilda",
+  "voice_id": "XrExE9yKIg1WjnnlVkGX",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[polite] Employee assistance required.",
+  "dur": 1.72
+ },
+ "c03": {
+  "file": "c03.mp3",
+  "align": "c03.align.json",
+  "role": "clerk",
+  "voice": "Will",
+  "voice_id": "bIHbv24MWmeRgasZH58o",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[slowly, deadpan] ...I'm the employee.",
+  "dur": 1.49
+ },
+ "m07": {
+  "file": "m07.mp3",
+  "align": "m07.align.json",
+  "role": "machine",
+  "voice": "Matilda",
+  "voice_id": "XrExE9yKIg1WjnnlVkGX",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[alarmed, robotic] Suspicious activity detected.",
+  "dur": 1.96
+ },
+ "s08": {
+  "file": "s08.mp3",
+  "align": "s08.align.json",
+  "role": "her",
+  "voice": "Jessica",
+  "voice_id": "cgSgspJ2msm6clMCkdW9",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[outraged] Suspicious?! I haven't done anything!",
+  "dur": 3.0
+ },
+ "c04": {
+  "file": "c04.mp3",
+  "align": "c04.align.json",
+  "role": "clerk",
+  "voice": "Will",
+  "voice_id": "bIHbv24MWmeRgasZH58o",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[nervous] Ma'am, please stay calm.",
+  "dur": 1.88
+ },
+ "s09": {
+  "file": "s09.mp3",
+  "align": "s09.align.json",
+  "role": "her",
+  "voice": "Jessica",
+  "voice_id": "cgSgspJ2msm6clMCkdW9",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[shouting] DOES THIS LOOK DANGEROUS TO YOU?!",
+  "dur": 2.19
+ },
+ "s10": {
+  "file": "s10.mp3",
+  "align": "s10.align.json",
+  "role": "her",
+  "voice": "Jessica",
+  "voice_id": "cgSgspJ2msm6clMCkdW9",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[ranting, fast] This is ridiculous! I've scanned the banana, followed every instruction, and asked for help!",
+  "dur": 6.53
+ },
+ "m08": {
+  "file": "m08.mp3",
+  "align": "m08.align.json",
+  "role": "machine",
+  "voice": "Matilda",
+  "voice_id": "XrExE9yKIg1WjnnlVkGX",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[calm, condescending] Please stop arguing with the machine.",
+  "dur": 2.04
+ },
+ "s11": {
+  "file": "s11.mp3",
+  "align": "s11.align.json",
+  "role": "her",
+  "voice": "Jessica",
+  "voice_id": "cgSgspJ2msm6clMCkdW9",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[shouting] YOU STARTED IT!",
+  "dur": 1.8
+ },
+ "m09": {
+  "file": "m09.mp3",
+  "align": "m09.align.json",
+  "role": "machine",
+  "voice": "Matilda",
+  "voice_id": "XrExE9yKIg1WjnnlVkGX",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[flatly] Rude customer detected.",
+  "dur": 1.72
+ },
+ "s12": {
+  "file": "s12.mp3",
+  "align": "s12.align.json",
+  "role": "her",
+  "voice": "Jessica",
+  "voice_id": "cgSgspJ2msm6clMCkdW9",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[dramatic, formal, like a courtroom speech] I refuse to be publicly humiliated... by a glorified calculator that can't distinguish a banana from a criminal!",
+  "dur": 9.48
+ },
+ "m10": {
+  "file": "m10.mp3",
+  "align": "m10.align.json",
+  "role": "machine",
+  "voice": "Matilda",
+  "voice_id": "XrExE9yKIg1WjnnlVkGX",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[cheerful] Payment accepted.",
+  "dur": 1.41
+ },
+ "s13": {
+  "file": "s13.mp3",
+  "align": "s13.align.json",
+  "role": "her",
+  "voice": "Jessica",
+  "voice_id": "cgSgspJ2msm6clMCkdW9",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[relieved sigh] Finally!",
+  "dur": 1.96
+ },
+ "m11": {
+  "file": "m11.mp3",
+  "align": "m11.align.json",
+  "role": "machine",
+  "voice": "Matilda",
+  "voice_id": "XrExE9yKIg1WjnnlVkGX",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[sweetly] Would you like to leave a tip?",
+  "dur": 1.31
+ },
+ "s14": {
+  "file": "s14.mp3",
+  "align": "s14.align.json",
+  "role": "her",
+  "voice": "Jessica",
+  "voice_id": "cgSgspJ2msm6clMCkdW9",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[outraged, shouting] A TIP?! FOR WHO?!",
+  "dur": 2.43
+ },
+ "m12": {
+  "file": "m12.mp3",
+  "align": "m12.align.json",
+  "role": "machine",
+  "voice": "Matilda",
+  "voice_id": "XrExE9yKIg1WjnnlVkGX",
+  "model": "eleven_v3",
+  "settings": {
+   "stability": 0.5,
+   "similarity_boost": 0.8
+  },
+  "text": "[deadpan, sassy] For me. I had to deal with you.",
+  "dur": 2.19
+ }
+}
