@@ -1,0 +1,13 @@
+{
+ "summary": {
+  "ep": "detective1",
+  "style": "v2",
+  "layout": "v2",
+  "samples": 201,
+  "issues": 0,
+  "critical": 0,
+  "major": 0,
+  "minor": 0
+ },
+ "issues": []
+}
