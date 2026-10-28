@@ -308,7 +308,7 @@ def chime():
     return norm(y, 0.6)
 SFX = dict(gasp=gasp(), zip=zipfx(), rimshot=rimshot(), squeak=squeak(), dressup=dressup(), chime=chime(), strain=creak(), coo=coo(), choo=choo(), bark=bark(), umbrella=umbrella_fx(), tada=tada(), knock=knock(), creak=creak(), riff=riff(), knob=knob(), boom=boom(), feather=feather(), clapclap=clapclap(), powerdown=powerdown(), snip=snip1(), snips=snips(), clipper=clipper(), hairdryer=hairdryer(), spin=spin(), register=register(), plop=plop(), thud=thud(), gulp=gulp(), boing=boing(), nope=nope(), cuckoo=cuckoo(), whoosh=whoosh(), impact=impact(), impact_soft=impact(True), pop=pop(), stamp=stamp(), sparkle=sparkle(), blink=blink(), brow=brow(), buzz=buzz(), ding=ding(),
            cricket=cricket(), tick=tick(), deflate=deflate(), riser_short=riser_short(), clank=clank(), scratch=scratch(), drop=drop(), bell=bell(), lift_ding=lift_ding(), doors=doors(), hum=hum())
-if EPN == "checkout":  # self-checkout sounds for this episode only (own rng, so other episodes mix exactly as before)
+if EPN in ("checkout", "password"):  # self-checkout sounds for this episode only (own rng, so other episodes mix exactly as before)
     _r = np.random.default_rng(12)
     def _beep():
         t = T(0.16); return norm(np.sign(np.sin(2*np.pi*2350*t)) * 0.5 * np.minimum(t*900, 1) * np.minimum((0.16 - t)*300, 1), 0.45)
@@ -324,7 +324,7 @@ if EPN == "checkout":  # self-checkout sounds for this episode only (own rng, so
         return norm(lp(x, 1800) * np.minimum(t*8, 1) * np.minimum((d - t)*8, 1), 0.4)
     sg_saw = lambda ph: 2*((ph) % 1) - 1
     SFX.update(beep=_beep(), err=_err(), alarm=_alarm(), servo=_servo())
-if EPN == "wrongchat":  # phone sounds for this episode only (own rng, so other episodes mix exactly as before)
+if EPN in ("wrongchat", "pretend", "password", "cantsayno"):  # phone sounds for this episode only (own rng, so other episodes mix exactly as before)
     _r = np.random.default_rng(11)
     def _send():
         t = T(0.28); return norm(chirp(500, 1400, 0.28, 0.6) * np.exp(-t*7) * np.minimum(t*400, 1) + 0.3*bp(_r.standard_normal(len(t)), 2000, 8000)*np.exp(-t*14), 0.7)
@@ -337,7 +337,7 @@ if EPN == "wrongchat":  # phone sounds for this episode only (own rng, so other 
         t = T(1.6); f = 180 + 8*np.sin(2*np.pi*3*t); x = np.sign(np.sin(2*np.pi*np.cumsum(f)/SR))*0.4 + 0.3*bp(_r.standard_normal(len(t)), 300, 3000)
         return norm(lp(x, 2500) * np.minimum(t*3, 1) * np.minimum((1.6 - t)*3, 1), 0.5)
     SFX.update(send=_send(), msg=_msg(), shutter=_shutter(), drone=_drone())
-if EPN in ("mic", "teacher"):  # video-call sounds for this episode only (own rng, so other episodes mix exactly as before)
+if EPN in ("mic", "teacher", "password"):  # video-call sounds for this episode only (own rng, so other episodes mix exactly as before)
     _r = np.random.default_rng(13)
     def _click():
         t = T(0.06); return norm(bp(_r.standard_normal(len(t)), 1800, 7000) * np.exp(-t*160) + 0.4*np.sin(2*np.pi*2400*t)*np.exp(-t*220), 0.55)
