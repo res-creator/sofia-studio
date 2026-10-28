@@ -337,7 +337,7 @@ if EPN == "wrongchat":  # phone sounds for this episode only (own rng, so other 
         t = T(1.6); f = 180 + 8*np.sin(2*np.pi*3*t); x = np.sign(np.sin(2*np.pi*np.cumsum(f)/SR))*0.4 + 0.3*bp(_r.standard_normal(len(t)), 300, 3000)
         return norm(lp(x, 2500) * np.minimum(t*3, 1) * np.minimum((1.6 - t)*3, 1), 0.5)
     SFX.update(send=_send(), msg=_msg(), shutter=_shutter(), drone=_drone())
-if EPN == "mic":  # video-call sounds for this episode only (own rng, so other episodes mix exactly as before)
+if EPN in ("mic", "teacher"):  # video-call sounds for this episode only (own rng, so other episodes mix exactly as before)
     _r = np.random.default_rng(13)
     def _click():
         t = T(0.06); return norm(bp(_r.standard_normal(len(t)), 1800, 7000) * np.exp(-t*160) + 0.4*np.sin(2*np.pi*2400*t)*np.exp(-t*220), 0.55)
@@ -465,7 +465,7 @@ if EPN == "party":
         seg = (full*op + muff*(1 - op)) * g
         seg *= np.minimum(1, np.arange(n)/(0.03*SR)) * np.minimum(1, (n - np.arange(n))/(0.12*SR))
         put(music, seg, s0, 1.0)
-elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes"):
+elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "teacher"):
     # cheerful London stroll: pizzicato, walking bass, glockenspiel, brushes
     bpm = 116; b = 60/bpm; K = 0
     def pizz(f, d=0.35):
@@ -611,11 +611,15 @@ else:
         for off in [0, 0.75, 1.5, 2.5, 3.0]:
             tt = T(0.03); put(music, bp(rng.standard_normal(len(tt)), 1500, 4000)*np.exp(-tt*120), t0 + off*b, 0.18)
 music = norm(music, 0.9) if EPN != "party" else music / (np.abs(music).max() + 1e-9) * 0.9
+if EPN == "teacher":  # B2: the teacher's dance track from MUSIC until the record scratch at C1 STOP; then silence until the C1 narrator
+    ev_ = {x["id"]: x.get("ev", {}) for x in TL["scenes"]}; m0, m1 = ev_["B2"]["music"], ev_["C1"]["stop"]; m2 = next(x["t"] for x in TL["speech"] if x["id"] == "c1_nar")
+    music[int(m0*SR):int(m2*SR)] = 0; y = norm(track_edm(m1 - m0 + 0.2), 0.9) * 1.25; y = y[:int((m1 - m0)*SR)] * np.minimum(1, np.arange(int((m1 - m0)*SR))/(0.02*SR))
+    put(music, y, m0, 1.0)
 sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-c2e = sp["c2_her"]["t"] + sp["c2_her"]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]
+c2e = sp["c2_p" if EPN == "teacher" else "c2_her"]["t"] + sp["c2_p" if EPN == "teacher" else "c2_her"]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause
