@@ -337,6 +337,25 @@ if EPN == "wrongchat":  # phone sounds for this episode only (own rng, so other 
         t = T(1.6); f = 180 + 8*np.sin(2*np.pi*3*t); x = np.sign(np.sin(2*np.pi*np.cumsum(f)/SR))*0.4 + 0.3*bp(_r.standard_normal(len(t)), 300, 3000)
         return norm(lp(x, 2500) * np.minimum(t*3, 1) * np.minimum((1.6 - t)*3, 1), 0.5)
     SFX.update(send=_send(), msg=_msg(), shutter=_shutter(), drone=_drone())
+if EPN == "mic":  # video-call sounds for this episode only (own rng, so other episodes mix exactly as before)
+    _r = np.random.default_rng(13)
+    def _click():
+        t = T(0.06); return norm(bp(_r.standard_normal(len(t)), 1800, 7000) * np.exp(-t*160) + 0.4*np.sin(2*np.pi*2400*t)*np.exp(-t*220), 0.55)
+    def _keys():
+        t = T(0.07); return norm(bp(_r.standard_normal(len(t)), 900, 5000) * np.exp(-t*110), 0.5)
+    def _vol():
+        t = T(0.08); return norm(np.sin(2*np.pi*1500*t) * np.minimum(t*600, 1) * np.minimum((0.08 - t)*300, 1), 0.4)
+    def _msg():
+        t = T(0.5); a = np.sin(2*np.pi*1318*t)*np.exp(-t*9); b = np.sin(2*np.pi*1760*t)*np.exp(-np.maximum(t-0.12, 0)*9)*(t > 0.12)
+        return norm((a + b) * np.minimum(t*800, 1), 0.7)
+    def _cough():
+        y = np.zeros(int(0.75*SR))
+        for k, g in [(0, 1.0), (0.26, 0.8), (0.46, 0.6)]:
+            t = T(0.2); x = bp(_r.standard_normal(len(t)), 250, 2200) * np.minimum(t*80, 1) * np.exp(-t*16); put(y, x, k, g)
+        return norm(y, 0.6)
+    def _clap():
+        t = T(0.12); return norm(bp(_r.standard_normal(len(t)), 900, 6000) * (np.exp(-t*60) + 0.3*np.exp(-np.maximum(t - 0.01, 0)*40)), 0.6)
+    SFX.update(click=_click(), keys=_keys(), vol=_vol(), msg=_msg(), cough=_cough(), clap=_clap())
 def note(m, key=0): return 440 * 2 ** ((m + key - 69) / 12)
 def pluck(f, d, bright=1.0):
     t = T(d); ph = 2*np.pi*f*t
@@ -466,7 +485,7 @@ elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes"):
             m = mel[(k*2 + j) % 16]
             if m is not None and (k // 16) % 2 == 0: put(music, glock(note(m + 12)), t0 + j*b/2, 0.07)
             if m is not None and (k // 16) % 2 == 1: put(music, pizz(note(m), 0.4), t0 + j*b/2, 0.12)
-elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "repay", "wrongchat", "checkout"):
+elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "repay", "wrongchat", "checkout", "mic"):
     # breezy airport lounge bossa: e-piano, nylon plucks, soft shaker, walking bass
     bpm = 120; b = 60/bpm; K = 0
     prog = [([62, 65, 69, 72], 38), ([61, 65, 67, 71], 43), ([60, 64, 67, 71], 36), ([57, 61, 64, 67], 45)]
@@ -599,6 +618,7 @@ def ramp(t0, t1, g0, g1):
 c2e = sp["c2_her"]["t"] + sp["c2_her"]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
+if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause
 ramp(c2e - 0.08, c2e + 0.02, 1, 0); gain[int((c2e + 0.02)*SR):int((c2n - 0.05)*SR)] = 0; ramp(c2n - 0.05, c2n + 0.4, 0, 1)
 ramp(DUR - 1.6, DUR, 1, 0); gain[int(DUR*SR):] = 0
 voice = np.zeros((N, 2)); duck = np.zeros(N)

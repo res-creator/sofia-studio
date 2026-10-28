@@ -29,6 +29,8 @@ for k in range(1, 4): cue("pop", 0.2 + 0.35 * k, 0.6)
 h0 = 0.35
 if EPN == "checkout":  # conflict first: UNEXPECTED ITEM! on the screen + error buzz, her line, then the short narrator line
     cue("err", 0.05, 0.8); h0 = say("hook_her", 0.6) + 0.25
+if EPN == "mic":  # cover = the meeting; her line; hard cut to the MICROPHONE ON button, then the narrator
+    h0 = say("hook_her", 0.6) + 0.15; cue("blink", h0, 0.8); cue("ding", h0 + 0.1, 0.5); h0 += 0.5
 e = say("hook", h0); hw = word_times("hook") or []
 def find(word):
     for w, a, b in hw:
@@ -285,6 +287,28 @@ elif EPN == "checkout":
             ("c2_nar", 1.7, [("SHOCK", -1.6, 0), ("impact_soft", -1.6, 0.8), ("rimshot", -1.0, 0.9)])],
     )
     INTRO = 1.15
+elif EPN == "mic":
+    LV = dict(
+        A1=[("a1_x", 0.2, []), ("a1_her", 0.35, []), ("a1_her2", 0.75, [("CLICK1", -0.7, 0), ("click", -0.7, 0.6)]),
+            ("a1_nar", 1.45, [("STARE", -1.4, 0), ("SIP", -0.7, 0), ("gulp", -0.5, 0.5), ("BROW", 0.35, 0), ("brow", 0.35, 0.7)])],
+        A2=[("a2_her", 1.1, [("SLIDE2", -1.1, 0), ("click", -1.1, 0.6), ("NOTICE", -0.55, 0), ("pop", -0.6, 0.5)]), ("a2_x", 0.35, []),
+            ("a2_her2", 0.5, [("SHRUG", -0.45, 0)]), ("a2_nar", 0.55, []), ("a2_tip", 0.25, [("ding", 0.05, 0.6)])],
+        B1=[("b1_her", 0.85, [("SLIDE12", -0.85, 0), ("click", -0.85, 0.6)]), ("b1_x", 1.35, [("CHOKE", -1.3, 0), ("cough", -1.2, 0.8), ("GLASSES", -0.5, 0)]),
+            ("b1_her2", 0.35, []), ("b1_nar", 1.15, [("POINT", -1.1, 0), ("squeak", -0.95, 0.35), ("squeak", -0.6, 0.35)])],
+        B2=[("b2_her", 1.75, [("MSG", -1.65, 0), ("msg", -1.65, 0.9), ("LOOKMIC", -0.85, 0), ("blink", -0.8, 0.6)]), ("b2_x", 0.4, []), ("b2_her2", 0.35, []),
+            ("b2_x2", 1.45, [("MASH", -1.4, 0)] + [("keys", -1.35 + 0.12 * k, 0.55) for k in range(6)] + [("VOL", -0.6, 0)] + [("vol", -0.6 + 0.09 * k, 0.5) for k in range(5)] + [("impact", 0.0, 0.9)]),
+            ("b2_nar", 0.6, [])],
+        C1=[("c1_her", 1.0, [("FIX", -1.0, 0), ("sparkle", -0.4, 0.5)]), ("c1_x", 0.35, []), ("c1_her2", 0.35, []),
+            ("c1_x2", 1.3, [("LOOK47", -1.25, 0)] + TICKS(1.2)), ("c1_nar", 2.1, [("NOD", -2.05, 0), ("DEL", -1.45, 0), ("click", -1.45, 0.6), ("pop", -1.2, 0.6), ("AWK", -0.65, 0)]),
+            ("c1_tip", 0.25, [("ding", 0.05, 0.6)])],
+        C2=[("c2_x", 0.3, [("LEAN", -0.3, 0)]), ("c2_her", 0.6, [("CALM", -0.6, 0)]),
+            ("c2_x2", 3.0, [("CLAP", -2.5, 0)] + [("clap", -2.4 + 0.5 * k, 0.6) for k in range(2)] + [("TOM", -1.35, 0)] + [("clap", -1.35 + 0.19 * k, 0.5 + 0.05 * (k % 2)) for k in range(7)]),
+            ("c2_x3", 0.3, []), ("c2_her2", 0.3, []),
+            ("c2_x4", 2.9, [("SHARE", -2.75, 0), ("click", -2.5, 0.7), ("TAB", -2.25, 0), ("whoosh", -2.25, 0.5), ("STOPCLAP", -0.75, 0), ("scratch", -0.75, 0.6)]),
+            ("c2_x5", 1.8, [("FREEZE", -1.7, 0), ("EXCELLENT", -0.9, 0), ("ding", -0.9, 0.6)]),
+            ("c2_nar", 1.25, [("rimshot", -0.95, 0.9)])],
+    )
+    INTRO = 1.15
 elif EPN == "repay":
     LV = dict(
         A1=[("a1_her", 0, []), ("a1_x", 0.3, [("COCKTAIL", ("e", -1.0), 0), ("chime", ("e", -1.0), 0.6)]), ("a1_nar", 0.7, [])],
@@ -405,7 +429,7 @@ for L in ["A1", "A2", "B1", "B2", "C1", "C2"]:
             if n == "thud" and lid == "c2_x3": ev["plop"] = round(tt, 3)
             if n == "gulp" or n == "nope": ev["ins"] = round(c - 1.6, 3)
         ev[lid] = c; c = say(lid, c); prev_end = c
-    t = c + 0.55
+    t = c + (0.42 if EPN == "mic" else 0.55)
     if EPN == "lift": cue("doors", t - 0.45, 0.5)
     scenes.append(dict(id=L, s=round(s, 3), e=round(t, 3), ev={k: (round(v, 3) if not isinstance(v, list) else v) for k, v in ev.items()}))
 s = t
