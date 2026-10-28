@@ -1,0 +1,10 @@
+{"ep":"nosy","style":"v2","layout":"v2","samples":441,"issues":9,"critical":3,"major":0,"minor":6}
+  critical speaker_offscreen            6.50-7.75s 
+  critical speaker_offscreen            11.00-11.75s 
+  critical speaker_offscreen            10.00-10.50s 
+  minor    bubble_too_long              76.50-87.25s 
+  minor    face_covered_by_bubble       44.50-48.00s listener
+  minor    face_covered_by_bubble       61.50-64.25s listener
+  minor    face_covered_by_bubble       31.75-34.00s listener
+  minor    face_under_platform_ui       89.75-91.25s 
+  minor    face_under_platform_ui       95.50-96.25s 

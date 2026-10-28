@@ -3,3 +3,7 @@ ep2/mix.wav
 tiktok/mix.wav
 ep/mix.wav
 __pycache__/
+speak_in_english/engine/eps/*/finish.log
+speak_in_english/engine/queue.log
+speak_in_english/engine/queue2.log
+speak_in_english/engine/eps/*/camassist.json

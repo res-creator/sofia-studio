@@ -1,0 +1,16 @@
+{"ep":"guest","style":"v2","layout":"v2","samples":436,"issues":15,"critical":1,"major":10,"minor":4}
+  critical speaker_offscreen            92.00-92.25s 
+  major    face_covered_by_bubble       93.00-95.75s listener
+  major    crop_feet_ankles             9.25-10.00s 
+  major    crop_feet_ankles             17.75-18.50s 
+  major    crop_feet_ankles             31.00-31.75s 
+  major    crop_feet_ankles             10.75-11.25s 
+  major    crop_feet_ankles             32.75-33.25s 
+  major    face_covered_by_bubble       93.25-93.75s speaker
+  major    crop_feet_ankles             94.25-94.75s 
+  major    crop_feet_ankles             94.25-94.75s 
+  major    crop_feet_ankles             94.25-94.75s 
+  minor    bubble_too_long              73.50-88.50s 
+  minor    face_under_platform_ui       94.00-95.50s 
+  minor    crop_knees                   42.25-42.75s 
+  minor    crop_knees                   60.00-60.50s 

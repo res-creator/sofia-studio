@@ -1,0 +1,12 @@
+{"ep":"market","style":"v2","layout":"v2","samples":462,"issues":11,"critical":0,"major":2,"minor":9}
+  major    face_covered_by_bubble       92.50-93.50s listener
+  major    face_covered_by_bubble       48.00-48.50s speaker,listener
+  minor    bubble_too_long              83.00-93.25s 
+  minor    crop_knees                   39.25-41.25s 
+  minor    crop_knees                   19.25-20.25s 
+  minor    crop_knees                   14.50-15.00s 
+  minor    crop_knees                   40.75-41.25s 
+  minor    crop_knees                   96.50-97.00s 
+  minor    face_covered_by_overlay      101.00-101.50s listener
+  minor    crop_knees                   101.25-101.75s 
+  minor    crop_knees                   106.75-107.25s 

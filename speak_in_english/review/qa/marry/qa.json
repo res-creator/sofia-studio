@@ -1,0 +1,170 @@
+{
+ "summary": {
+  "ep": "marry",
+  "style": "v1",
+  "layout": "v1",
+  "samples": 467,
+  "issues": 13,
+  "critical": 3,
+  "major": 2,
+  "minor": 8
+ },
+ "issues": [
+  {
+   "ep": "marry",
+   "type": "face_covered_by_card",
+   "key": "31|1560|#6A7A5A",
+   "start": 38.75,
+   "end": 44,
+   "n": 22,
+   "sev": "critical",
+   "max": 0.9278350515463918,
+   "info": "listener",
+   "dur": 5.5
+  },
+  {
+   "ep": "marry",
+   "type": "face_covered_by_overlay",
+   "key": "12|1300|#8FB4D9",
+   "start": 50.75,
+   "end": 54.75,
+   "n": 17,
+   "sev": "critical",
+   "max": 0.7835051546391752,
+   "info": "speaker,listener",
+   "dur": 4.25
+  },
+  {
+   "ep": "marry",
+   "type": "face_covered_by_overlay",
+   "key": "12|1300|#8FB4D9",
+   "start": 14.25,
+   "end": 16.75,
+   "n": 11,
+   "sev": "critical",
+   "max": 0.7628865979381443,
+   "info": "speaker,listener",
+   "dur": 2.75
+  },
+  {
+   "ep": "marry",
+   "type": "face_covered_by_overlay",
+   "key": "12|1300|#8FB4D9",
+   "start": 23.75,
+   "end": 29.5,
+   "n": 24,
+   "sev": "major",
+   "max": 0.7216494845360825,
+   "info": "listener",
+   "dur": 6
+  },
+  {
+   "ep": "marry",
+   "type": "face_covered_by_overlay",
+   "key": "12|1300|#8FB4D9",
+   "start": 104.25,
+   "end": 108.75,
+   "n": 19,
+   "sev": "major",
+   "max": 0.5567010309278351,
+   "info": "listener",
+   "dur": 4.75
+  },
+  {
+   "ep": "marry",
+   "type": "bubble_too_long",
+   "key": "c2_her",
+   "start": 84.25,
+   "end": 97.5,
+   "n": 54,
+   "sev": "minor",
+   "max": 10,
+   "info": "",
+   "dur": 13.5
+  },
+  {
+   "ep": "marry",
+   "type": "face_covered_by_card",
+   "key": "1|1480|#D9443F",
+   "start": 52.5,
+   "end": 60.5,
+   "n": 33,
+   "sev": "minor",
+   "max": 0.4639175257731959,
+   "info": "listener",
+   "dur": 8.25
+  },
+  {
+   "ep": "marry",
+   "type": "face_covered_by_card",
+   "key": "1|1480|#D9443F",
+   "start": 24.5,
+   "end": 31.5,
+   "n": 28,
+   "sev": "minor",
+   "max": 0.4536082474226804,
+   "info": "listener",
+   "dur": 7.25
+  },
+  {
+   "ep": "marry",
+   "type": "face_covered_by_card",
+   "key": "1|1480|#D9443F",
+   "start": 76,
+   "end": 82.5,
+   "n": 27,
+   "sev": "minor",
+   "max": 0.44329896907216493,
+   "info": "listener",
+   "dur": 6.75
+  },
+  {
+   "ep": "marry",
+   "type": "face_covered_by_card",
+   "key": "1|1480|#D9443F",
+   "start": 105,
+   "end": 108.75,
+   "n": 16,
+   "sev": "minor",
+   "max": 0.44329896907216493,
+   "info": "listener",
+   "dur": 4
+  },
+  {
+   "ep": "marry",
+   "type": "face_covered_by_card",
+   "key": "1|1480|#D9443F",
+   "start": 15.5,
+   "end": 19,
+   "n": 15,
+   "sev": "minor",
+   "max": 0.4742268041237113,
+   "info": "listener",
+   "dur": 3.75
+  },
+  {
+   "ep": "marry",
+   "type": "face_covered_by_bubble",
+   "key": "1|1480|#D9443F",
+   "start": 24.25,
+   "end": 24.75,
+   "n": 2,
+   "sev": "minor",
+   "max": 0.41237113402061853,
+   "info": "listener",
+   "dur": 0.75
+  },
+  {
+   "ep": "marry",
+   "type": "face_covered_by_bubble",
+   "key": "1|1480|#D9443F",
+   "start": 104.5,
+   "end": 104.75,
+   "n": 2,
+   "sev": "minor",
+   "max": 0.25773195876288657,
+   "info": "listener",
+   "dur": 0.5
+  }
+ ]
+}

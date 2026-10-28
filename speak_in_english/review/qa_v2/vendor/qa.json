@@ -1,0 +1,170 @@
+{
+ "summary": {
+  "ep": "vendor",
+  "style": "v2",
+  "layout": "v2",
+  "samples": 513,
+  "issues": 13,
+  "critical": 0,
+  "major": 1,
+  "minor": 12
+ },
+ "issues": [
+  {
+   "ep": "vendor",
+   "type": "face_covered_by_bubble",
+   "key": "15|1720|#1E1E24",
+   "start": 105.5,
+   "end": 106.25,
+   "n": 4,
+   "sev": "major",
+   "max": 0.5360824742268041,
+   "info": "listener",
+   "dur": 1
+  },
+  {
+   "ep": "vendor",
+   "type": "bubble_too_long",
+   "key": "c2_her",
+   "start": 96.5,
+   "end": 106,
+   "n": 39,
+   "sev": "minor",
+   "max": 8,
+   "info": "",
+   "dur": 9.75
+  },
+  {
+   "ep": "vendor",
+   "type": "crop_knees",
+   "key": "1|1480|#F7B6CF",
+   "start": 11.25,
+   "end": 12,
+   "n": 4,
+   "sev": "minor",
+   "max": 89.76234741210942,
+   "info": "",
+   "dur": 1
+  },
+  {
+   "ep": "vendor",
+   "type": "crop_knees",
+   "key": "12|1300|#C2504A",
+   "start": 25.75,
+   "end": 26.5,
+   "n": 4,
+   "sev": "minor",
+   "max": 70.83152770996094,
+   "info": "",
+   "dur": 1
+  },
+  {
+   "ep": "vendor",
+   "type": "crop_knees",
+   "key": "12|1300|#C2504A",
+   "start": 22.25,
+   "end": 22.75,
+   "n": 3,
+   "sev": "minor",
+   "max": -33.506290435791016,
+   "info": "",
+   "dur": 0.75
+  },
+  {
+   "ep": "vendor",
+   "type": "crop_knees",
+   "key": "1|1480|#F7B6CF",
+   "start": 106.75,
+   "end": 107.25,
+   "n": 3,
+   "sev": "minor",
+   "max": 68.44071273803706,
+   "info": "",
+   "dur": 0.75
+  },
+  {
+   "ep": "vendor",
+   "type": "crop_knees",
+   "key": "40|1500|#EE5E9A",
+   "start": 107,
+   "end": 107.5,
+   "n": 3,
+   "sev": "minor",
+   "max": 81.7556676864624,
+   "info": "",
+   "dur": 0.75
+  },
+  {
+   "ep": "vendor",
+   "type": "crop_knees",
+   "key": "1|1480|#F7B6CF",
+   "start": 114.5,
+   "end": 115,
+   "n": 3,
+   "sev": "minor",
+   "max": 54.257497978210495,
+   "info": "",
+   "dur": 0.75
+  },
+  {
+   "ep": "vendor",
+   "type": "crop_knees",
+   "key": "12|1300|#C2504A",
+   "start": 23.5,
+   "end": 23.75,
+   "n": 2,
+   "sev": "minor",
+   "max": -14.771987915039062,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "vendor",
+   "type": "crop_knees",
+   "key": "1|1480|#F7B6CF",
+   "start": 110.75,
+   "end": 111,
+   "n": 2,
+   "sev": "minor",
+   "max": 13.959652328491302,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "vendor",
+   "type": "crop_knees",
+   "key": "40|1500|#EE5E9A",
+   "start": 110.75,
+   "end": 111,
+   "n": 2,
+   "sev": "minor",
+   "max": 8.880101203918457,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "vendor",
+   "type": "crop_knees",
+   "key": "1|1480|#F7B6CF",
+   "start": 112.5,
+   "end": 112.75,
+   "n": 2,
+   "sev": "minor",
+   "max": 5.743302917480378,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "vendor",
+   "type": "crop_knees",
+   "key": "15|1720|#1E1E24",
+   "start": 114.75,
+   "end": 115,
+   "n": 2,
+   "sev": "minor",
+   "max": 1.2654970169066928,
+   "info": "",
+   "dur": 0.5
+  }
+ ]
+}

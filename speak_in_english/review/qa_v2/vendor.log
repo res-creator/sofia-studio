@@ -1,0 +1,14 @@
+{"ep":"vendor","style":"v2","layout":"v2","samples":513,"issues":13,"critical":0,"major":1,"minor":12}
+  major    face_covered_by_bubble       105.50-106.50s listener
+  minor    bubble_too_long              96.50-106.25s 
+  minor    crop_knees                   11.25-12.25s 
+  minor    crop_knees                   25.75-26.75s 
+  minor    crop_knees                   22.25-23.00s 
+  minor    crop_knees                   106.75-107.50s 
+  minor    crop_knees                   107.00-107.75s 
+  minor    crop_knees                   114.50-115.25s 
+  minor    crop_knees                   23.50-24.00s 
+  minor    crop_knees                   110.75-111.25s 
+  minor    crop_knees                   110.75-111.25s 
+  minor    crop_knees                   112.50-113.00s 
+  minor    crop_knees                   114.75-115.25s 

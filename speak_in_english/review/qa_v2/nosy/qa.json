@@ -1,0 +1,122 @@
+{
+ "summary": {
+  "ep": "nosy",
+  "style": "v2",
+  "layout": "v2",
+  "samples": 441,
+  "issues": 9,
+  "critical": 3,
+  "major": 0,
+  "minor": 6
+ },
+ "issues": [
+  {
+   "ep": "nosy",
+   "type": "speaker_offscreen",
+   "key": "20|1650|#F2C14E",
+   "start": 6.5,
+   "end": 7.5,
+   "n": 4,
+   "sev": "critical",
+   "max": 0.6701030927835052,
+   "info": "",
+   "dur": 1.25
+  },
+  {
+   "ep": "nosy",
+   "type": "speaker_offscreen",
+   "key": "20|1650|#F2C14E",
+   "start": 11,
+   "end": 11.5,
+   "n": 3,
+   "sev": "critical",
+   "max": 0.6701030927835052,
+   "info": "",
+   "dur": 0.75
+  },
+  {
+   "ep": "nosy",
+   "type": "speaker_offscreen",
+   "key": "20|1650|#F2C14E",
+   "start": 10,
+   "end": 10.25,
+   "n": 2,
+   "sev": "critical",
+   "max": 0.6701030927835052,
+   "info": "",
+   "dur": 0.5
+  },
+  {
+   "ep": "nosy",
+   "type": "bubble_too_long",
+   "key": "c2_her",
+   "start": 76.5,
+   "end": 87,
+   "n": 43,
+   "sev": "minor",
+   "max": 9,
+   "info": "",
+   "dur": 10.75
+  },
+  {
+   "ep": "nosy",
+   "type": "face_covered_by_bubble",
+   "key": "20|1650|#F2C14E",
+   "start": 44.5,
+   "end": 47.75,
+   "n": 14,
+   "sev": "minor",
+   "max": 0.21649484536082475,
+   "info": "listener",
+   "dur": 3.5
+  },
+  {
+   "ep": "nosy",
+   "type": "face_covered_by_bubble",
+   "key": "20|1650|#F2C14E",
+   "start": 61.5,
+   "end": 64,
+   "n": 11,
+   "sev": "minor",
+   "max": 0.21649484536082475,
+   "info": "listener",
+   "dur": 2.75
+  },
+  {
+   "ep": "nosy",
+   "type": "face_covered_by_bubble",
+   "key": "20|1650|#F2C14E",
+   "start": 31.75,
+   "end": 33.75,
+   "n": 9,
+   "sev": "minor",
+   "max": 0.21649484536082475,
+   "info": "listener",
+   "dur": 2.25
+  },
+  {
+   "ep": "nosy",
+   "type": "face_under_platform_ui",
+   "key": "20|1650|#F2C14E",
+   "start": 89.75,
+   "end": 91,
+   "n": 5,
+   "sev": "minor",
+   "max": 0,
+   "info": "",
+   "dur": 1.5
+  },
+  {
+   "ep": "nosy",
+   "type": "face_under_platform_ui",
+   "key": "20|1650|#F2C14E",
+   "start": 95.5,
+   "end": 96,
+   "n": 3,
+   "sev": "minor",
+   "max": 0,
+   "info": "",
+   "dur": 0.75
+  }
+ ]
+}

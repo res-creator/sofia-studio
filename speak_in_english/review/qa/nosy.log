@@ -1,0 +1,14 @@
+{"ep":"nosy","style":"v1","layout":"v1","samples":441,"issues":13,"critical":7,"major":0,"minor":6}
+  critical face_covered_by_card         51.25-60.00s listener
+  critical face_covered_by_card         23.50-30.25s listener
+  critical face_covered_by_card         37.25-43.00s listener
+  critical face_covered_by_card         12.75-17.25s listener
+  critical speaker_offscreen            6.25-7.75s 
+  critical speaker_offscreen            11.00-11.75s 
+  critical speaker_offscreen            10.00-10.50s 
+  minor    bubble_too_long              76.50-87.25s 
+  minor    face_covered_by_bubble       44.50-48.00s listener
+  minor    face_covered_by_bubble       61.50-64.25s listener
+  minor    face_covered_by_bubble       31.75-34.00s listener
+  minor    face_under_platform_ui       89.75-91.25s 
+  minor    face_under_platform_ui       95.50-96.25s 
