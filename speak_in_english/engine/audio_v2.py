@@ -649,7 +649,7 @@ ramp(DUR - 1.6, DUR, 1, 0); gain[int(DUR*SR):] = 0
 if EPN == "detective1":   # the clue: music dips under the ticking; the countdown: silence on "1"
     _sc = {s["id"]: s for s in TL["scenes"]}; _cl = _sc["CLUE"]; _q = _sc["Q"]
     ramp(_cl["s"], _cl["s"] + 0.3, 1, 0.3); gain[int((_cl["s"] + 0.3)*SR):int((_cl["e"] - 0.4)*SR)] = 0.3; ramp(_cl["e"] - 0.4, _cl["e"], 0.3, 1)
-    _one = _q["ev"]["cd"] + 1.6; ramp(_one - 0.05, _one + 0.05, 1, 0); gain[int((_one + 0.05)*SR):int(_q["e"]*SR)] = 0; ramp(_q["e"], _q["e"] + 0.3, 0, 1)
+    _one = _q["ev"]["cd"] + 2.0; ramp(_one - 0.05, _one + 0.05, 1, 0); gain[int((_one + 0.05)*SR):int(_q["e"]*SR)] = 0; ramp(_q["e"], _q["e"] + 0.3, 0, 1)
 voice = np.zeros((N, 2)); duck = np.zeros(N)
 PAN = dict(nar=(1, 1), tip=(1, 1), her=(1.0, 0.84))
 for s in TL["speech"]:

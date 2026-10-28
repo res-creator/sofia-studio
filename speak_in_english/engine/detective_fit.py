@@ -9,7 +9,7 @@ import json, os, shutil, subprocess, sys
 import numpy as np, soundfile as sf
 from scipy.signal import butter, sosfilt
 from episodes_v2 import EP
-SR = 48000; TEMPO = 1.07; PMAX = 0.42; TAIL = 0.12
+SR = 48000; TEMPO = 1.0; PMAX = 0.75; TAIL = 0.12
 ep = sys.argv[1]; vo = f"eps/{ep}/vo"; raw = f"{vo}/raw"; os.makedirs(raw, exist_ok=True)
 L = {l[0]: l for l in EP[ep]["lines"]}
 

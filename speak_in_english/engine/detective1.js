@@ -322,12 +322,14 @@ function lineupHud(c, t, sc) { // hook: CAN YOU FIND THE THIEF? · Q: WHO STOLE 
   roles.forEach(([r, x], i) => { const k = eBack(P(t, e + 0.05 + i * 0.15, e + 0.3 + i * 0.15), 2.4); if (k <= 0) return; c.save(); c.translate(sx(XL + x), 1405); c.scale(k, k); c.fillStyle = '#2B2F3A'; rr(c, -150, -34, 300, 68, 34); c.fill(); fitTxt(c, r, 0, 2, 32, C.gold, 270); c.restore(); });
   const k = eBack(P(t, e + 0.05, e + 0.35), 2.2); if (k > 0) { c.save(); c.translate(540, 1500); c.rotate(-0.02); c.scale(k, k); c.fillStyle = '#E0474C'; rr(c, -470, -66, 940, 132, 28); c.fill(); c.strokeStyle = C.white; c.lineWidth = 7; rr(c, -470, -66, 940, 132, 28); c.stroke(); fitTxt(c, 'WHO STOLE THE MONEY?', 0, 0, 60, '#FFFFFF', 880); c.restore();
     c.save(); c.globalAlpha = clamp(k); txt(c, 'пиши A, B или C', 540, 1585, 36, '#FFFFFF', 'Nun9'); c.restore(); }
-  const cd = ev('Q', 'cd'); for (let i = 0; i < 3; i++) { const a = cd + i * 0.8, u = t - a; if (u < 0 || u > 0.8) continue; const kk = eBack(P(u, 0, 0.2), 2.6) * (1 - eIn(P(u, 0.6, 0.8))); c.save(); c.translate(540, 300); c.scale(kk, kk); c.fillStyle = 'rgba(0,0,0,.35)'; c.beginPath(); c.arc(8, 12, 120, 0, TAU); c.fill(); c.fillStyle = i === 2 ? '#E0474C' : C.gold; c.beginPath(); c.arc(0, 0, 120, 0, TAU); c.fill(); c.strokeStyle = C.white; c.lineWidth = 10; c.stroke(); txt(c, String(3 - i), 0, 8, 150, '#FFFFFF'); c.restore(); } }
+  const cd = ev('Q', 'cd'); for (let i = 0; i < 3; i++) { const a = cd + i * 1.0, u = t - a; if (u < 0 || u > 1.0) continue; const kk = eBack(P(u, 0, 0.2), 2.6) * (1 - eIn(P(u, 0.8, 1.0))); c.save(); c.translate(540, 300); c.scale(kk, kk); c.fillStyle = 'rgba(0,0,0,.35)'; c.beginPath(); c.arc(8, 12, 120, 0, TAU); c.fill(); c.fillStyle = i === 2 ? '#E0474C' : C.gold; c.beginPath(); c.arc(0, 0, 120, 0, TAU); c.fill(); c.strokeStyle = C.white; c.lineWidth = 10; c.stroke(); txt(c, String(3 - i), 0, 8, 150, '#FFFFFF'); c.restore(); } }
 function stampCase(c, t) { const a = ev('END', 'stamp'), sk = P(t, a - 0.02, a + 0.15); if (sk <= 0) return; const s2 = lerp(2.6, 1, eOut(sk)); c.save(); c.translate(540, 470); c.rotate(-0.1); c.scale(s2, s2); c.globalAlpha = clamp(sk * 3); c.fillStyle = 'rgba(255,253,248,.94)'; rr(c, -400, -100, 800, 200, 26); c.fill(); c.strokeStyle = '#E0474C'; c.lineWidth = 16; rr(c, -400, -100, 800, 200, 26); c.stroke(); fitTxt(c, 'CASE CLOSED', 0, 6, 110, '#E0474C', 720); c.restore(); }
 function endCta(c, t) { const sp = SP.end_nar, a = (K.wordT('end_nar', 'пиши') || sp.t + 4.2) - 0.1, k = eBack(P(t, a, a + 0.3), 2.2); if (k <= 0) return; c.save(); c.translate(540, 1300 + Math.sin(t * 7) * 6); c.scale(k, k); c.fillStyle = C.pink; rr(c, -360, -56, 720, 112, 56); c.fill(); c.strokeStyle = C.white; c.lineWidth = 6; c.stroke(); txt(c, 'ПИШИ В КОММЕНТЫ', 0, 4, 46, '#FFFFFF'); c.fillStyle = C.white; c.beginPath(); c.moveTo(-30, 70); c.lineTo(30, 70); c.lineTo(0, 110); c.fill(); c.restore(); }
 
 // ---------------- frame
 const OFF = { x: W + 9999, y: 0, hh: 0 };
+// reading time for A0–A2 viewers: a bubble stays until shortly before the next line starts (max 2.5 s)
+const HOLD = (() => { const Ls = TL.speech.filter(s => s.who !== 'nar').slice().sort((a, b) => a.t - b.t), h = {}; Ls.forEach((s, i) => { const nx = Ls[i + 1]; h[s.id] = nx ? Math.max(0.3, Math.min(2.5, nx.t - (s.t + s.d) - 0.2)) : 1.5; }); h.q_d1 = 0.05; return h; })();
 function renderFrame(c, t) {
   c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; const sc = sceneAt(t), L = sc.id;
   const n = shotName(t), f = Math.min(CAM.length - 1, Math.round(t * FPS)), cam = CAM[f], sh = shake(t);
@@ -343,7 +345,7 @@ function renderFrame(c, t) {
   if (n === 'CLEANER_L' && t > ev('R1', 'drop')) K.pop(c, t, 'БАХ!', ev('R1', 'drop') + 0.25, ev('R1', 'drop') + 0.9, 820, 1500, C.gold, 0.1, 70);
   if (n === 'MGR_LCU' && t > endOf('r2_m2')) K.pop(c, t, 'БА-ДУМ-ТСС!', endOf('r2_m2') + 0.15, SC.R2.e + 0.1, 540, 1500, C.gold, -0.06, 70);
   if (n === 'FINAL') { const cl = heads.cleaner && proj(heads.cleaner); if (cl) K.pop(c, t, 'Zzz', SC.END.s + 0.6, SC.END.e + 1, cl.x + 110, cl.y - 10, C.white, 0.12, 52); }
-  K.bubbles(c, t, sc, heads, proj, { names: NAMES, hold: { q_d1: 0.05, hook_d2: 0.35, r2_d1: 0.2, mg_m2: 0.4, cl_c2: 0.2, r1_c2: 0.4 } });
+  K.bubbles(c, t, sc, heads, proj, { names: NAMES, hold: HOLD });
   if (n === 'WIDE_S') chip(c, t, sc, 'A', 'GUARD'); if (n === 'WIDE_I') chip(c, t, sc, 'B', 'CLEANER'); if (n === 'WIDE_O') chip(c, t, sc, 'C', 'MANAGER');
   if (n === 'LINEUP') lineupHud(c, t, sc);
   phrase(c, t);
