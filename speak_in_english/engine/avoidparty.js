@@ -265,7 +265,7 @@ function renderFrame(c, t) {
   if (L === 'C1' && t > e('bell') && t < narT - 0.1) K.pop(c, t, 'ДИНЬ-ДОН!', e('bell') + 0.05, narT - 0.2, 540, 1300, C.gold, -0.08, 100);
   if (L === 'C2') { if (t > e('open') && t < SP.c2_p.t - 0.1) K.pop(c, t, 'SURPRISE!', e('open') + 0.2, SP.c2_p.t - 0.2, 540, 1300, C.gold, -0.08, 120);
     if (t > e('oks') && t < SP.c2_h4.t - 0.1) checklist(c, t, e('oks')); }
-  K.bubbles(c, t, sc, heads, proj, { cleanChunks: true, names, hold: { a2_p3: 0.05, a1_h3: 0.4, a2_h2: 0.05, b1_p2: 0.05, b2_p3: 0.3, c1_h3: 0.05, c2_h: 0.3, c2_g: 0.05, c2_p3: 0.05, c2_h4: 0.5 } });
+  K.bubbles(c, t, sc, heads, proj, { cleanChunks: true, names, hold: { a2_p3: 0.05, a1_h3: 0.4, a2_h2: 0.05, b1_p2: 0.05, b2_p3: 0.05, c1_h3: 0.05, c2_h: 0.3, c2_g: 0.05, c2_p3: 0.05, c2_h4: 0.5 } });
   K.hud(c, t, sc);
 }
 E.run('avoidparty', NF, renderFrame);

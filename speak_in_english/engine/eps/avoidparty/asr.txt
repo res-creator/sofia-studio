@@ -1,0 +1,40 @@
+avoidparty/hook_p  | Are you coming to my party tonight?
+avoidparty/hook_h  | Actually, I'm not feeling very well.
+avoidparty/hook_p2 | Don't worry, I have a solution.
+avoidparty/hook_all| Surprise!
+avoidparty/a1_p    | Come to my party!
+avoidparty/a1_h    | I can't.
+avoidparty/a1_p2   | Why?
+avoidparty/a1_h2   | I'm tired.
+avoidparty/a1_p3   | Just one hour.
+avoidparty/a1_h3   | No thanks.
+avoidparty/a2_p    | Are you sure you can't come?
+avoidparty/a2_h    | I don't have anything to wear.
+avoidparty/a2_p2   | That's okay, wear your pajamas.
+avoidparty/a2_h2   | Seriously?
+avoidparty/a2_p3   | Of course!
+avoidparty/a2_tip  | I don't have anything to wear.
+avoidparty/b1_h    | I'd love to come, but I have a lot of work to finish.
+avoidparty/b1_p    | No problem, bring your laptop.
+avoidparty/b1_h2   | to a party?
+avoidparty/b1_p2   | We'll set up a quiet corner for you.
+avoidparty/b2_h    | Unfortunately, I'm feeling a little under the weather.
+avoidparty/b2_p    | Oh no, what's wrong?
+avoidparty/b2_h2   | I think I need to stay home and rest.
+avoidparty/b2_p2   | Don't worry, I'll bring you some soup.
+avoidparty/b2_h3   | to the party?
+avoidparty/b2_p3   | No, to your house.
+avoidparty/c1_h    | I really appreciate the invitation, but I'd rather spend a quiet evening by myself.
+avoidparty/c1_p    | That's completely understandable.
+avoidparty/c1_h2   | Thank you for understanding.
+avoidparty/c1_p2   | You're going to love what I've planned.
+avoidparty/c1_h3   | What exactly have you planned?
+avoidparty/c1_tip  | I'd rather spend the evening by myself.
+avoidparty/c2_p    | Since you were clearly uncomfortable with the idea of leaving your house, I decided to bring the entire celebration to you.
+avoidparty/c2_h    | Under no circumstances did I agree to host a party in my own home.
+avoidparty/c2_p2   | Exactly, that's why it's a surprise.
+avoidparty/c2_h2   | I just wanted one peaceful evening.
+avoidparty/c2_g    | Could you sign here please?
+avoidparty/c2_h3   | Why am I paying for this?
+avoidparty/c2_p3   | Because you're the host.
+avoidparty/c2_h4   | I live here.
