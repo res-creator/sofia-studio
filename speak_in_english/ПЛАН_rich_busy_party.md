@@ -1,4 +1,4 @@
-# Партия из трёх TikTok-серий: rich / busy / avoidparty (ветка `claude/tiktok-batch-rich-busy-party`)
+# Партия из трёх TikTok-серий: rich / busy / avoidparty (ветка `claude/lucid-davinci-6wnkv7`)
 
 | № | Серия | slug | Итоговый файл |
 |---|---|---|---|
