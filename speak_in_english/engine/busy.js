@@ -193,7 +193,7 @@ function shotHard(t) { const sc = sceneAt(t), L = sc.id, f = s => ({ ...s, force
   if (nar && t >= nar.t - 0.1) return f(stageAt(t, L) ? SH.ST_TWO : SH.CARD);
   if (L === 'A1' && t > e('nod') - 0.05) return f(t < e('shuffle') - 0.05 ? SH.B_R : SH.W_DESK);
   if (L === 'A2') { if (t > e('back') - 0.6 && t < SP.a2_b.t - 0.1) return f(SH.WIDE); if (t > e('leave') - 0.05 && t < e('sigh') - 0.05) return f(SH.WIDE); if (t > e('sigh') - 0.05 && t < e('flip') - 0.05) return f(SH.W); if (t > e('flip') - 0.05) return f(SH.GLASS); }
-  if (L === 'B1') { if (t > e('pile') - 0.05 && t < SP.b1_w.t - 0.1) return f(SH.WIDE); if (t > e('hug') - 0.05 && t < e('todo') - 0.05) return f(SH.WIDE); if (t > e('todo') - 0.05 && t < e('notice') - 0.05) return f(SH.TODO); if (t > e('notice') - 0.05) return f(SH.B_R); }
+  if (L === 'B1') { if (t > e('pile') - 0.05 && t < SP.b1_w.t - 0.1) return f(SH.WIDE); if (t > endOf('b1_w2') + 0.1 && t < e('todo') - 0.05) return f(SH.WIDE); if (t > e('todo') - 0.05 && t < e('notice') - 0.05) return f(SH.TODO); if (t > e('notice') - 0.05) return f(SH.B_R); }
   if (L === 'B2') { if (t > e('open') - 0.05 && t < SP.b2_w2.t - 0.1) return f(t < e('report') - 0.05 ? SH.W_DESK : sp('b2_b2') ? SH.B_CU : SH.MON); if (t > e('mouse') - 0.05) return f(t < e('sweat') - 0.05 ? SH.WIDE : SH.W_CU); }
   if (L === 'C1') { if (t > e('scroll') - 0.05 && t < SP.c1_b.t - 0.1) return f(SH.MON); if (t > e('stare') - 0.05) return f(SH.B_CU); }
   if (L === 'C2') { if (stageAt(t, L)) { if (t < SP.c2_b5.t - 0.1) return f(SH.ST_WIDE); if (sp('c2_b5')) return f(SH.ST_B); if (t < SP.c2_w3.t - 0.1) return f(SH.ST_WIDE); return f(SH.ST_W); }
@@ -225,7 +225,9 @@ function glassView(c, t) { backdrop(c, 'glass'); const a = ev('A2', 'flip'); c.s
   const k = eBack(P(t, a + 0.15, a + 0.45), 2); if (k > 0) { c.save(); c.translate(540, 1300); c.rotate(-0.04); c.scale(k, k); c.fillStyle = '#4CAF6A'; rr(c, -330, -70, 660, 140, 30); c.fill(); fitTxt(c, 'BREAK TIME', 0, 4, 76, '#FFFFFF', 600); c.restore(); }
   caption(c, '«ВРЕМЯ ПЕРЕРЫВА»', clamp(P(t, a + 0.4, a + 0.6)), 1500); }
 
-// ---------------- frame
+// ---------------- cover badge + frame
+function coverBadge(c, t) { const p = 1 + 0.04 * Math.sin(t * 8); c.save(); c.translate(540, 1620); c.scale(p, p); c.rotate(-0.03); c.fillStyle = 'rgba(0,0,0,.25)'; rr(c, -330 + 6, -62 + 10, 660, 124, 62); c.fill(); c.fillStyle = '#FFE15A'; rr(c, -330, -62, 660, 124, 62); c.fill(); c.strokeStyle = C.oliveD; c.lineWidth = 6; rr(c, -330, -62, 660, 124, 62); c.stroke();
+  fitTxt(c, 'VERY BUSY!', 0, 4, 62, '#E0474C', 600); c.restore(); }
 function renderFrame(c, t) {
   c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; const sc = sceneAt(t), L = sc.id;
   if (L === 'outro') { K.outro(c, t, { q: ['А ТЫ ДЕЛАЛ(А) ВИД,', 'ЧТО ЗАНЯТ(А)?'], rows: [['A2', 'I have a lot to do.'], ['B1', "They're not quite ready yet."], ['C1', 'Would you care to explain?'], ['C2', 'I would argue that…']], cta: ['ОТПРАВЬ КОЛЛЕГЕ', 'С ОТЧЁТОМ'], heroX: 190, heroS: 0.42,
@@ -241,7 +243,7 @@ function renderFrame(c, t) {
   else { const r = drawWorld(c, t, L, cam, tag, sh); heads = r.heads; const M = r.M; proj = p => ({ x: M.a * p.x + M.c * p.y + M.e, y: M.b * p.x + M.d * p.y + M.f }); Hq.vignette(c, W, HH, 0.26); }
   const hp = who => heads[who] && Math.abs(heads[who].x) < 1e4 ? { ...proj(heads[who]), hh: heads[who].hh * cam.z } : null;
   const names = { boss: ['BOSS', '#2F3E5C'] };
-  if (L === 'hook') { if (t > 0.3 && t < hev('close')) K.pop(c, t, 'ТОП-ТОП-ТОП', 0.35, hev('close') - 0.1, 540, 1250, C.gold, -0.06, 80);
+  if (L === 'hook') { if (tag === 'cover') coverBadge(c, t); if (t > 0.3 && t < hev('close')) K.pop(c, t, 'ТОП-ТОП-ТОП', 0.35, hev('close') - 0.1, 540, 1250, C.gold, -0.06, 80);
     const hookProj = p => { const q = proj(p); return q.x < 0 || q.x > W ? { x: q.x < 0 ? 60 : W - 60, y: 1050 } : q; };
     K.bubbles(c, t, { id: 'hook' }, heads, hookProj, { heroine: 'worker', names, hold: { hook_b: 0.2, hook_w: 0.05 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
     Hq.grain(c, W, HH, t, 0.045); UI.sparkles(c, t); UI.levelIntroNext(c, t); return; }
