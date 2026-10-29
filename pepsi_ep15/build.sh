@@ -1,6 +1,6 @@
 #!/bin/sh
 # sh pepsi_ep15/build.sh -> pepsi_ep15/the_pepsi_fighter_jet.mp4 (1080x1920, 30 fps) + subtitles .srt
-# Needs the real voice in vo/ (s01..s17 .mp3 + .align.json); vo_draft/ is for layout only and is never built.
+# Needs the real voice in vo/ (s01..s19 .mp3 + .align.json); vo_draft/ is for layout only and is never built.
 set -e; cd "$(dirname "$0")"
 for i in $(seq -w 1 19); do [ -f vo/s$i.mp3 ] || { echo "missing vo/s$i.mp3 (real voice) - not building"; exit 1; }; done
 python3 speech.py > /dev/null
