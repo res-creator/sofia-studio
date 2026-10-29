@@ -1,0 +1,50 @@
+tour/hook_t  | Excuse me, are you a tour guide?
+tour/hook_h  | No, I'm just...
+tour/hook_h2 | Why is everyone following me?
+tour/hook    | Когда просто хотела помочь, но случайно стала экскурсоводом от А1 до С2.
+tour/a1_t    | Where is the museum?
+tour/a1_h    | I don't know.
+tour/a1_t2   | Can you help me?
+tour/a1_h2   | Maybe this way.
+tour/a1_t3   | Great, I'll follow you.
+tour/a1_nar  | А один. Maybe this way может быть туда, так говорят, когда не уверен.
+tour/a2_t    | Is this the city tour?
+tour/a2_t2   | Yes, she's our guide.
+tour/a2_h    | Wait, that's not.
+tour/a2_t3   | Wonderful! Can we join?
+tour/a2_h2   | I guess so.
+tour/a2_nar  | А2 – Can we join? Можно присоединиться. Запоминай.
+tour/a2_tip  | Can we join
+tour/b1_t    | Can you tell us something about this building?
+tour/b1_h    | This building is very old.
+tour/b1_t2   | How old?
+tour/b1_h2   | Older than me.
+tour/b1_t3   | Fascinating!
+tour/b1_h3   | I have no idea what I'm doing.
+tour/b1_nar  | Би один, I have no idea, понятия не имею. Честное и полезно
+tour/b2_t    | Could you explain why this place is so historically significant?
+tour/b2_h    | Well, it has played an important role in the city's history.
+tour/b2_t2   | In what way?
+tour/b2_h2   | People have been reading books here for a very long time.
+tour/b2_nar  | B2 – historically significant исторически значимый, звучит умно, даже если сказать нечего.
+tour/c1_t    | I must say, your knowledge of the city is remarkably impressive.
+tour/c1_h    | I appreciate that, but I should probably clarify something.
+tour/c1_t2   | Of course!
+tour/c1_h2   | I'm not actually qualified to lead a tour.
+tour/c1_t3   | How humble.
+tour/c1_t4   | Everyone, she's so humble.
+tour/c1_nar  | C1. I should probably clarify something. Мне, пожалуй, стоит кое-что прояснить. Запоминай.
+tour/c1_tip  | I should probably clarify something.
+tour/c2_h    | Before this misunderstanding gets completely out of hand, I need to make something perfectly clear. I am not a tour guide. In fact, I've never even been to this city before.
+tour/c2_g    | Excuse me, I've been looking for you.
+tour/c2_h2   | Oh, thank goodness. Are these your tourists?
+tour/c2_g2   | Yes, they're supposed to be with me.
+tour/c2_h3   | Perfect! You can take over!
+tour/c2_g3   | Actually, would you mind covering my shift?
+tour/c2_h4   | What?
+tour/c2_g4   | They seem to like you more.
+tour/c2_c    | Best Tour Ever!
+tour/c2_t    | Where are we going next?
+tour/c2_h5   | Away from you!
+tour/c2_nar  | Си-2. Get out of hand. Выйти из-под контроля. Make something clear. Всё прояснить.
+tour/outro   | А ты пошёл бы за таким гидом? Пиши в комментариях и подпишись

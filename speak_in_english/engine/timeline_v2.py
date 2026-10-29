@@ -57,6 +57,19 @@ if EPN == "avoidparty":  # cover = her on the sofa under a blanket, phone ringin
     cue("ring", 0.2, 0.6); h0 = say("hook_p", 0.5) + 0.25; h0 = say("hook_h", h0) + 0.25; h0 = say("hook_p2", h0) + 0.3
     hev = dict(cut=round(h0 - 0.05, 3)); cue("creak", h0, 0.7); h0 = say("hook_all", h0 + 0.45); cue("cheer", h0 - 0.5, 0.6); cue("tada", h0 - 0.4, 0.5)
     hev["horror"] = round(h0 + 0.05, 3); cue("gasp", h0 + 0.1, 0.6); h0 += 0.7
+if EPN == "tour":  # cover = her in the tourist square, the tourist asks "tour guide?"; HARD CUT: a big group is following her
+    h0 = say("hook_t", 0.45) + 0.25; h0 = say("hook_h", h0) + 0.35
+    hev = dict(cut=round(h0 - 0.05, 3)); cue("impact", h0 - 0.05, 0.8); cue("whoosh", h0 - 0.1, 0.5); cue("cheer", h0 + 0.05, 0.4)
+    h0 = say("hook_h2", h0 + 0.4); hev["horror"] = round(h0 + 0.05, 3); cue("gasp", h0 + 0.1, 0.6); h0 += 0.6
+if EPN == "splitbill":  # cover = four-seat table, huge bill; let's split -> BILL insert $300 -> why three hundred?! -> somebody is lying!
+    h0 = say("hook_f", 0.5) + 0.3
+    hev = dict(bill=round(h0 - 0.05, 3)); cue("register", h0, 0.7); cue("pop", h0 + 0.1, 0.5)
+    h0 = say("hook_h", h0 + 0.7) + 0.2; hev["lie"] = round(h0 - 0.1, 3); h0 = say("hook_h2", h0) ; cue("gasp", h0 - 0.2, 0.5); h0 += 0.5
+if EPN == "photo":  # cover = her posing by the fountain, friend with phone; ONE good picture? -> HARD CUT to the phone: PHOTOS TAKEN counts up to 847
+    h0 = say("hook_h", 0.45) + 0.25; h0 = say("hook_f", h0) + 0.3
+    hev = dict(cut=round(h0 - 0.05, 3)); cue("impact", h0 - 0.05, 0.7)
+    for k in range(8): cue("shutter", h0 + 0.05 + 0.1 * k, 0.5)
+    h0 = say("hook_h2", h0 + 1.1); hev["count"] = round(hev["cut"] + 0.1, 3); h0 += 0.5
 e = say("hook", h0); hw = word_times("hook") or []
 def find(word):
     for w, a, b in hw:
@@ -64,7 +77,7 @@ def find(word):
     return None
 stamp_t = find(E["stamp_word"]) or (e - 1.0); cue("stamp", stamp_t, 0.8)
 t = e + 0.45
-scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty") else {})))
+scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo") else {})))
 
 TICKS = lambda back: [("tick", -back + 0.15 + 0.6 * k, 0.6) for k in range(int(back / 0.6))]
 if EPN == "gym":
@@ -493,6 +506,62 @@ elif EPN == "avoidparty":   # her living room (sofa, blanket, phone) + the frien
             ("c2_g", 0.4, [("PAPER", -0.35, 0)]), ("c2_h3", 2.9, [("DOC", -2.85, 0), ("pop", -2.8, 0.6)]), ("c2_p3", 0.22, []),
             ("c2_h4", 2.7, [("CLOSE", -2.65, 0), ("thud", -2.0, 0.8), ("OUTSIDE", -1.7, 0), ("OKS", -1.1, 0), ("ding", -1.05, 0.5), ("ding", -0.75, 0.5)]),
             ("c2_nar", 1.0, [("BLACK", -0.9, 0)])],
+    )
+    INTRO = 1.15
+elif EPN == "tour":   # tourist square (hook, A1, A2, C2) -> old library with a statue (B1, B2) -> street (C1). Plans: WIDE / CARD / HER / TST / ... + MAP, BLACK inserts
+    LV = dict(
+        A1=[("a1_t", 0.5, []), ("a1_h", 0.25, []), ("a1_t2", 0.25, []), ("a1_h2", 2.4, [("MAP", -2.35, 0), ("pop", -2.3, 0.5), ("TURN", -0.7, 0), ("whoosh", -0.7, 0.4)]),
+            ("a1_t3", 0.25, [("FOLLOW", ("e", -0.1), 0)]), ("a1_nar", 0.9, [])],
+        A2=[("a2_t", 0.7, [("ARRIVE", -0.65, 0), ("whoosh", -0.6, 0.3)]), ("a2_t2", 0.25, []), ("a2_h", 0.2, []), ("a2_t3", 0.2, []), ("a2_h2", 0.3, []),
+            ("a2_nar", 1.4, [("GROW", -1.35, 0), ("pop", -1.3, 0.5), ("pop", -1.0, 0.5), ("pop", -0.7, 0.5)]), ("a2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        B1=[("b1_t", 0.8, [("LIB", -0.75, 0), ("thud", -0.7, 0.4), ("thud", -0.4, 0.4)]), ("b1_h", 0.25, []), ("b1_t2", 0.2, []), ("b1_h2", 0.25, [("NOTES", ("e", 0.0), 0), ("click", ("e", 0.1), 0.5), ("click", ("e", 0.3), 0.5), ("click", ("e", 0.5), 0.5)]),
+            ("b1_t3", 0.9, []), ("b1_h3", 0.35, [("SWEAT", 0.3, 0)]), ("b1_nar", 0.8, [])],
+        B2=[("b2_t", 0.8, [("STATUE", -0.75, 0)]), ("b2_h", 0.25, []), ("b2_t2", 0.2, []), ("b2_h2", 1.2, [("LOOK", -1.15, 0), ("brow", -1.1, 0.5), ("sparkle", -0.55, 0.5)]),
+            ("b2_nar", 1.3, [("CLAP", -1.25, 0), ("clapclap", -1.25, 0.8), ("cheer", -1.2, 0.4)])],
+        C1=[("c1_t", 0.8, [("STREET", -0.75, 0)]), ("c1_h", 0.25, []), ("c1_t2", 0.2, []), ("c1_h2", 0.25, []), ("c1_t3", 0.2, []), ("c1_t4", 0.35, [("TURN", -0.3, 0)]),
+            ("c1_nar", 1.5, [("CLAP", -1.45, 0), ("clapclap", -1.45, 0.8), ("cheer", -1.4, 0.5)]), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C2=[("c2_h", 1.0, [("BACK", -0.95, 0)]), ("c2_g", 2.6, [("QUIET", -2.55, 0)] + TICKS(1.8) + [("GUIDE", -0.7, 0), ("whoosh", -0.7, 0.4)]), ("c2_h2", 0.25, []), ("c2_g2", 0.25, []), ("c2_h3", 0.2, []), ("c2_g3", 0.35, []),
+            ("c2_h4", 0.2, [("impact_soft", 0.0, 0.7)]), ("c2_g4", 0.3, [("BADGE", ("e", 0.15), 0), ("pop", ("e", 0.15), 0.6)]),
+            ("c2_c", 0.7, [("cheer", -0.1, 0.8)]), ("c2_t", 0.8, [("RUN", -0.75, 0), ("whoosh", -0.7, 0.5), ("thud", -0.4, 0.5), ("thud", -0.1, 0.5)]), ("c2_h5", 0.2, []),
+            ("c2_nar", 1.4, [("BLACK", -1.3, 0)])],
+    )
+    INTRO = 1.15
+elif EPN == "splitbill":   # restaurant table for four (the 4th seat has the lobster plate from the start). Plans: WIDE / CARD / singles + BILL, CALC, FLASH, RECEIPT inserts
+    LV = dict(
+        A1=[("a1_w", 0.6, [("BILLIN", -0.55, 0), ("pop", -0.5, 0.5)]), ("a1_f", 0.25, []), ("a1_h", 0.2, []), ("a1_f2", 0.2, []), ("a1_h2", 0.2, []),
+            ("a1_h3", 1.5, [("TOTAL", -1.45, 0), ("register", -1.4, 0.7)]), ("a1_nar", 0.5, [])],
+        A2=[("a2_h", 0.6, []), ("a2_f", 0.2, [("P2", 0.0, 0), ("pop", 0.1, 0.4)]), ("a2_f2", 0.2, [("P3", 0.0, 0), ("pop", 0.1, 0.4)]), ("a2_h2", 0.2, [("P4", -0.1, 0)]), ("a2_f3", 0.2, []),
+            ("a2_nar", 0.6, []), ("a2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        B1=[("b1_f", 0.6, []), ("b1_h", 0.2, []), ("b1_f2", 0.2, []), ("b1_h2", 0.2, []),
+            ("b1_f3", 2.4, [("CALC", -2.35, 0), ("click", -2.3, 0.5), ("click", -2.0, 0.5), ("click", -1.7, 0.5), ("click", -1.4, 0.5), ("click", -1.1, 0.5), ("ding", -0.6, 0.5), ("LOOKS", ("e", 0.0), 0), ("brow", ("e", 0.1), 0.6)]),
+            ("b1_nar", 1.7, [])],
+        B2=[("b2_w", 0.9, [("WAITER", -0.85, 0), ("thud", -0.8, 0.3), ("thud", -0.5, 0.3)]), ("b2_h", 0.25, []), ("b2_w2", 0.2, []), ("b2_all", 0.2, []), ("b2_w3", 0.3, []), ("b2_h2", 0.2, []), ("b2_w4", 0.2, []),
+            ("b2_h3", 0.2, []), ("b2_nar", 1.2, [("FREEZE", -1.15, 0), ("impact_soft", -1.1, 0.5)] + TICKS(0.6))],
+        C1=[("c1_h", 0.5, []), ("c1_w", 3.2, [("FLASH", -3.15, 0), ("whoosh", -3.1, 0.5), ("chime", -3.05, 0.5), ("SIT", -1.2, 0), ("pop", -1.2, 0.5), ("BACK", -0.15, 0), ("whoosh", -0.15, 0.4)]),
+            ("c1_f", 0.2, []), ("c1_h2", 0.2, []), ("c1_w2", 0.25, []), ("c1_h3", 0.2, []), ("c1_nar", 0.8, []), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C2=[("c2_h", 0.6, [("impact_soft", -0.3, 0.4)]), ("c2_w", 0.5, []), ("c2_h2", 0.2, []), ("c2_w2", 0.5, []), ("c2_h3", 0.3, []),
+            ("c2_w3", 1.3, [("scratch", -1.25, 0.5)] + TICKS(1.2)), ("c2_h4", 1.9, [("LOB", -1.85, 0), ("register", -1.8, 0.8), ("gasp", -1.4, 0.5)]),
+            ("c2_w4", 0.25, []), ("c2_h5", 0.2, []), ("c2_w5", 0.3, [("APRON", 1.1, 0), ("zip", 1.1, 0.5)]),
+            ("c2_w6", 0.5, [("SIT", -0.45, 0), ("thud", -0.4, 0.6)]), ("c2_all", 0.25, [("impact_soft", -0.05, 0.7)]), ("c2_nar", 1.2, [])],
+    )
+    INTRO = 1.15
+elif EPN == "photo":   # city park with a fountain; her + friend with the phone + THE pigeon. Photos are full-screen close-ups. Plans: WIDE / CARD / singles + PHOTO, PHONE inserts
+    LV = dict(
+        A1=[("a1_f", 0.6, []), ("a1_h", 0.2, [("POSE", 0.3, 0)]), ("a1_f2", 0.2, []), ("a1_h2", 1.7, [("SNAP", -1.65, 0), ("shutter", -1.6, 0.9), ("PHOTO", -1.15, 0)]),
+            ("a1_f3", 0.4, []), ("a1_nar", 0.8, [])],
+        A2=[("a2_h", 0.6, []), ("a2_f", 0.2, [("MV1", ("e", 0.3), 0)]), ("a2_f2", 0.9, [("MV2", ("e", 0.3), 0)]), ("a2_f3", 0.9, []),
+            ("a2_h2", 1.8, [("SNAP", -1.75, 0), ("shutter", -1.7, 0.9), ("PHOTO", -1.3, 0)]), ("a2_f4", 0.3, []), ("a2_nar", 0.8, []), ("a2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        B1=[("b1_h", 0.6, []), ("b1_f", 0.2, []), ("b1_h2", 2.9, [("BELOW", -2.85, 0), ("shutter", -2.6, 0.6), ("ABOVE", -1.95, 0), ("shutter", -1.7, 0.6), ("LIE", -1.0, 0), ("thud", -1.0, 0.6)]), ("b1_f2", 0.2, []),
+            ("b1_h3", 1.7, [("SNAP", -1.65, 0), ("shutter", -1.6, 0.9), ("PHOTO", -1.2, 0)]), ("b1_nar", 0.8, [])],
+        B2=[("b2_f", 0.6, []), ("b2_h", 0.2, []), ("b2_f2", 0.2, [("POSE", ("e", 0.1), 0), ("sparkle", ("e", 0.3), 0.5)]),
+            ("b2_h2", 2.3, [("PIGEON", -2.25, 0), ("coo", -2.2, 0.8), ("feather", -1.9, 0.6), ("SNAP", -1.6, 0), ("shutter", -1.55, 0.9), ("PHOTO", -1.15, 0)]), ("b2_f3", 0.25, []), ("b2_nar", 0.8, [])],
+        C1=[("c1_h", 0.6, []), ("c1_f", 0.2, []), ("c1_h2", 0.2, []), ("c1_f2", 0.3, [("LOOKPH", ("e", 0.0), 0)]),
+            ("c1_h3", 2.2, [("LIKES", -2.15, 0), ("msg", -2.1, 0.7), ("pop", -1.4, 0.5), ("pop", -1.0, 0.5)]), ("c1_f3", 0.25, []), ("c1_nar", 0.8, []), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C2=[("c2_f", 0.5, [("VIEWS", -0.45, 0), ("msg", -0.4, 0.6)]), ("c2_h", 0.2, []), ("c2_f2", 0.2, []),
+            ("c2_h2", 2.2, [("FAMOUS", -2.15, 0), ("msg", -2.1, 0.7), ("pop", -1.4, 0.5)]), ("c2_f3", 0.25, []), ("c2_h3", 1.7, [("STRUT", -1.65, 0), ("coo", -1.6, 0.6)]),
+            ("c2_m", 0.4, [("MAN", -0.35, 0)]), ("c2_f4", 0.2, []), ("c2_m2", 0.2, []), ("c2_h4", 0.2, []),
+            ("c2_h5", 2.6, [("GLASSES", -2.55, 0), ("pop", -2.5, 0.6), ("shutter", -2.2, 0.6), ("shutter", -1.95, 0.6), ("shutter", -1.7, 0.6), ("shutter", -1.5, 0.6), ("YEAR", -1.5, 0), ("tada", -1.5, 0.5)]),
+            ("c2_f5", 0.5, []), ("c2_nar", 2.2, [("LOOK", -2.15, 0), ("scratch", -1.4, 0.5), ("BLACK", -0.9, 0)])],
     )
     INTRO = 1.15
 elif EPN == "repay":
