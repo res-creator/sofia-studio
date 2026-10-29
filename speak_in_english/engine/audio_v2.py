@@ -465,7 +465,7 @@ if EPN == "party":
         seg = (full*op + muff*(1 - op)) * g
         seg *= np.minimum(1, np.arange(n)/(0.03*SR)) * np.minimum(1, (n - np.arange(n))/(0.12*SR))
         put(music, seg, s0, 1.0)
-elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "teacher"):
+elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "teacher", "pretend"):
     # cheerful London stroll: pizzicato, walking bass, glockenspiel, brushes
     bpm = 116; b = 60/bpm; K = 0
     def pizz(f, d=0.35):
@@ -485,7 +485,7 @@ elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", 
             m = mel[(k*2 + j) % 16]
             if m is not None and (k // 16) % 2 == 0: put(music, glock(note(m + 12)), t0 + j*b/2, 0.07)
             if m is not None and (k // 16) % 2 == 1: put(music, pizz(note(m), 0.4), t0 + j*b/2, 0.12)
-elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "repay", "wrongchat", "checkout", "mic"):
+elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "repay", "wrongchat", "checkout", "mic", "password"):
     # breezy airport lounge bossa: e-piano, nylon plucks, soft shaker, walking bass
     bpm = 120; b = 60/bpm; K = 0
     prog = [([62, 65, 69, 72], 38), ([61, 65, 67, 71], 43), ([60, 64, 67, 71], 36), ([57, 61, 64, 67], 45)]
@@ -498,7 +498,7 @@ elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "re
             tt = T(0.05); put(music, hp(rng.standard_normal(len(tt)), 6000)*np.exp(-tt*70), t0 + j*b/4, 0.1 if j % 2 else 0.05)
         if (k // 4) % 2 == 1:
             for j, m in enumerate([ch[3] + 12, ch[2] + 12, ch[1] + 12]): put(music, pluck(note(m), 0.6, 1.2), t0 + (j*1.25 + 0.5)*b, 0.07)
-elif EPN in ("restaurant", "loan", "date", "kyle"):
+elif EPN in ("restaurant", "loan", "date", "kyle", "cantsayno"):
     # cosy bistro swing: brushed snare, walking bass, muted piano comping, glock hook
     bpm = 120; b = 60/bpm; K = 0
     def glock(f, d=0.8):
@@ -623,6 +623,9 @@ c2e = sp["c2_p" if EPN == "teacher" else "c2_her"]["t"] + sp["c2_p" if EPN == "t
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause
+if EPN == "pretend": c2n = sp["c2_m"]["t"]   # silence after her speech until "Thank God! Me neither!"
+if EPN == "password": c2n = sp["c2_x3"]["t"]   # silence through "Caps Lock was on."; music back on "rate your experience"
+if EPN == "cantsayno": c2n = sp["c2_m3"]["t"]   # silence after her speech until "You're now the general manager!"
 ramp(c2e - 0.08, c2e + 0.02, 1, 0); gain[int((c2e + 0.02)*SR):int((c2n - 0.05)*SR)] = 0; ramp(c2n - 0.05, c2n + 0.4, 0, 1)
 ramp(DUR - 1.6, DUR, 1, 0); gain[int(DUR*SR):] = 0
 voice = np.zeros((N, 2)); duck = np.zeros(N)
