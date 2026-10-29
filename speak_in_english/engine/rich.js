@@ -177,14 +177,14 @@ const fy = (who, z, sy = 900) => HY(who) + (960 - sy) / z;
 const U = (name, i) => ({ x: 50000 + i * 1000, y: 0, z: 1, r: 0, tag: 'ui:' + name });
 const SH = { COVER: S(-200, -1000, 0.56, 'cover'), WIDE: S(0, -900, 0.6, 'wide'), FAR: S(700, -1000, 0.42, 'wide'), CARD: S(0, fy('owner', 0.72, 1000), 0.72, 'card'),
   TWO: S(0, fy('owner', 0.8, 800), 0.8, 'two'), TWO_LOW: S(0, fy('owner', 0.8, 1150), 0.8, 'two'), END: S(420, fy('rich', 0.62, 1000), 0.62, 'wide'),
-  R: S(RX, fy('rich', 1.0), 1.0, 'rich'), R_R: S(RX, fy('rich', 1.0, 1120), 1.0, 'rich'), R_CU: S(RX, fy('rich', 1.7, 960), 1.7, 'rich'),
+  R: S(RX, fy('rich', 1.0), 1.0, 'rich'), R_LOW: S(RX, fy('rich', 1.0, 1230), 1.0, 'rich'), O_LOW: S(OX, fy('owner', 1.0, 1230), 1.0, 'owner'), R_R: S(RX, fy('rich', 1.0, 1120), 1.0, 'rich'), R_CU: S(RX, fy('rich', 1.7, 960), 1.7, 'rich'),
   O: S(OX, fy('owner', 1.0), 1.0, 'owner'), O_R: S(OX, fy('owner', 1.0, 1120), 1.0, 'owner'), O_CU: S(OX, fy('owner', 1.6, 960), 1.6, 'owner'),
   P: S(PX, fy('passer', 1.0), 1.0, 'passer'),
   KEY: U('key', 1), WATCH: U('watch', 2), PHONE: U('phone', 3), PLATE: U('plate', 4), DOC: U('doc', 5), BLACK: U('black', 6) };
 function shotHard(t) { const sc = sceneAt(t), L = sc.id, f = s => ({ ...s, force: true }), e = k => ev(L, k); if (L === 'outro') return SH.WIDE;
   const sp = id => speaking(id, t, 0.1, 0.15);
-  if (L === 'hook') { if (t < SP.hook_m.t - 0.1) return SH.COVER; if (t < SP.hook_f.t - 0.1) return f(SH.R); if (t < SP.hook_m2.t - 0.1) return f(SH.O_R);
-    if (t < hev('key') - 0.05) return f(SH.R); if (t < hev('hide') + 0.6) return f(SH.KEY); return f(SH.TWO_LOW); }
+  if (L === 'hook') { if (t < SP.hook_m.t - 0.1) return SH.COVER; if (t < SP.hook_f.t - 0.1) return f(SH.R_LOW); if (t < SP.hook_m2.t - 0.1) return f(SH.O_LOW);
+    if (t < hev('key') - 0.05) return f(SH.R_LOW); if (t < hev('hide') + 0.6) return f(SH.KEY); return f(SH.TWO_LOW); }
   const u = t - sc.s, l = L.toLowerCase(), nar = SP[l + '_nar'];
   if (u < 1.15) return f(L === 'C2' ? SH.O : SH.WIDE);
   if (L === 'C2' && t > e('black') - 0.03 && t < nar.t + 0.05) return f(SH.BLACK);
@@ -276,7 +276,7 @@ function renderFrame(c, t) {
   const names = { owner: ['STEVE', '#3E7A4A'], passer: ['STRANGER', '#8C9A5A'], mom: ['MOM', '#EE5E9A'] };
   if (L === 'hook') { if (tag === 'cover') coverBadge(c, t);
     const hookProj = p => { const q = proj(p); return q.x < 0 || q.x > W ? { x: q.x < 0 ? 60 : W - 60, y: 1050 } : q; };
-    K.bubbles(c, t, { id: 'hook' }, heads, hookProj, { heroine: 'rich', names, hold: { hook_m: 0.2, hook_f: 0.2, hook_m2: 0.05 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
+    K.bubbles(c, t, { id: 'hook' }, heads, hookProj, { cleanChunks: true, heroine: 'rich', names, hold: { hook_m: 0.2, hook_f: 0.2, hook_m2: 0.05 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
     Hq.grain(c, W, HH, t, 0.045); UI.sparkles(c, t); UI.levelIntroNext(c, t); return; }
   const e = k => ev(L, k), narT = (SP[L.toLowerCase() + '_nar'] || { t: 1e9 }).t;
   if (L === 'A1' && t > e('alarm') && t < e('hide') - 0.05) K.pop(c, t, 'УИ-У! УИ-У!', e('alarm') + 0.05, e('hide') - 0.3, 700, 1250, C.gold, -0.08, 80);
@@ -287,7 +287,7 @@ function renderFrame(c, t) {
     if (t > e('hand') && t < SP.c2_f5.t - 0.05) K.dots(c, t, e('hand') + 0.05, SP.c2_f5.t - 0.05, 1450);
     if (t > e('drive') && t < e('pass') - 0.9) K.pop(c, t, 'ВЖУХ!', e('drive') + 0.3, e('pass') - 1.1, 420, 1250, C.gold, -0.1, 110);
     if (t > e('fob') && t < e('black') - 0.05) K.pop(c, t, 'пи-пи…', e('fob') + 0.15, e('black') - 0.1, 760, 1250, C.white, -0.06, 80); }
-  K.bubbles(c, t, sc, heads, proj, { heroine: 'rich', names, hold: { b1_m2: 0.05, c1_f3: 0.05, c2_f3: 0.05, a2_m2: 0.05, b2_m2: 0.05, a1_m2: 0.4, a2_m3: 0.5, b1_m3: 0.6, b2_m3: 0.5, c2_m2: 0.4, c2_m4: 0.5, c2_m5: 0.4 } });
+  K.bubbles(c, t, sc, heads, proj, { cleanChunks: true, heroine: 'rich', names, hold: { b1_m2: 0.05, c1_f3: 0.05, c2_f3: 0.05, a2_m2: 0.05, b2_m2: 0.05, a1_m2: 0.4, a2_m3: 0.5, b1_m3: 0.6, b2_m3: 0.5, c2_m2: 0.4, c2_m4: 0.5, c2_m5: 0.4 } });
   K.hud(c, t, sc);
 }
 E.run('rich', NF, renderFrame);

@@ -12,12 +12,13 @@
 
 | Серия | Длительность | Громкость | Файлы |
 |---|---|---|---|
-| rich | 2:45 | −14.2 LUFS | `releases/look_rich.mp4`, `releases/look_rich_cover.png`, `releases/look_rich_tiktok.md` |
-| busy | 2:33 | −14.4 LUFS | `releases/pretend_busy.mp4`, `releases/pretend_busy_cover.png`, `releases/pretend_busy_tiktok.md` |
+| rich | 2:52 | −14.2 LUFS | `releases/look_rich.mp4`, `releases/look_rich_cover.png`, `releases/look_rich_tiktok.md` |
+| busy | 2:38 | −14.4 LUFS | `releases/pretend_busy.mp4`, `releases/pretend_busy_cover.png`, `releases/pretend_busy_tiktok.md` |
 | avoidparty | — | — | всё готово, кроме озвучки: `bash finish_batch_rbp.sh avoidparty` |
 
 - По просьбе владелицы озвучены первые две серии. ElevenLabs: счётчик 4 268 → 8 425 из 10 000, потрачено **4 157** символов (меньше оценки: теги v3 вроде `[smug]` не тарифицируются). Осталось **1 575**.
 - На avoidparty нужно ≈2 330 символов (по факту без тегов ≈2 050). Не хватает ≈500–800; лимит обновится 25.11.2026.
+- Правки после просмотра владелицей: вставки с текстом (TO-DO, номер, бронь, часы, телефон, BREAK TIME, монитор) держатся 2–3 с, чтобы успеть прочитать; длинные реплики-части больше не накладываются друг на друга (`ep_kit` → `bubbles(..., { cleanChunks: true })`, по умолчанию выключено, старые серии не меняются); в хуке rich пузыри ниже заголовка. Перерендер без новой озвучки.
 - Whisper распознал все английские реплики правильно (`eps/rich/asr.txt`, `eps/busy/asr.txt`). Каждая реплика сгенерирована один раз.
 
 ## 1. Основа и зависимость веток

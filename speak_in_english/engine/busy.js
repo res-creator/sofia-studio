@@ -245,7 +245,7 @@ function renderFrame(c, t) {
   const names = { boss: ['BOSS', '#2F3E5C'] };
   if (L === 'hook') { if (tag === 'cover') coverBadge(c, t); if (t > 0.3 && t < hev('close')) K.pop(c, t, 'ТОП-ТОП-ТОП', 0.35, hev('close') - 0.1, 540, 1250, C.gold, -0.06, 80);
     const hookProj = p => { const q = proj(p); return q.x < 0 || q.x > W ? { x: q.x < 0 ? 60 : W - 60, y: 1050 } : q; };
-    K.bubbles(c, t, { id: 'hook' }, heads, hookProj, { heroine: 'worker', names, hold: { hook_b: 0.2, hook_w: 0.05 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
+    K.bubbles(c, t, { id: 'hook' }, heads, hookProj, { cleanChunks: true, heroine: 'worker', names, hold: { hook_b: 0.2, hook_w: 0.05 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
     Hq.grain(c, W, HH, t, 0.045); UI.sparkles(c, t); UI.levelIntroNext(c, t); return; }
   const e = k => ev(L, k), narT = (SP[L.toLowerCase() + '_nar'] || { t: 1e9 }).t;
   if (L === 'A1' && t > e('shuffle')) K.pop(c, t, 'ШУРШ-ШУРШ', e('shuffle') + 0.1, narT - 0.3, 540, 1300, C.white, -0.06, 70);
@@ -253,7 +253,7 @@ function renderFrame(c, t) {
   if (L === 'C1' && t > e('stare') && t < narT - 0.05) K.dots(c, t, e('stare') + 0.05, narT - 0.05, 1450);
   if (L === 'C2') { if (t > e('think') && t < SP.c2_b2.t - 0.05) K.dots(c, t, e('think') + 0.05, SP.c2_b2.t - 0.05, 1450);
     if (t > e('clap') && t < e('silent')) K.pop(c, t, 'АПЛОДИСМЕНТЫ!', e('clap') + 0.05, e('silent') - 0.1, 540, 1250, C.gold, -0.06, 76); }
-  K.bubbles(c, t, sc, heads, proj, { heroine: 'worker', names, hold: { a1_w2: 0.4, b2_w: 0.05, b1_w2: 0.05, b2_b2: 0.3, b2_w2: 0.05, c1_w2: 0.5, c2_b4: 0.05, c2_w3: 0.5 } });
+  K.bubbles(c, t, sc, heads, proj, { cleanChunks: true, heroine: 'worker', names, hold: { a1_w2: 0.4, b2_w: 0.05, b1_w2: 0.05, b2_b2: 0.3, b2_w2: 0.05, c1_w2: 0.5, c2_b4: 0.05, c2_w3: 0.5 } });
   K.hud(c, t, sc);
 }
 E.run('busy', NF, renderFrame);

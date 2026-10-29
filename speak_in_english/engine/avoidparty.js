@@ -257,7 +257,7 @@ function renderFrame(c, t) {
   const names = { pal: ['KATE', '#8E5BD6'], pguest: ['GUEST', '#2F3E5C'], friends: ['EVERYONE', '#EE5E9A'] };
   if (L === 'hook') { if (tag === 'room' && t < SP.hook_p.t) coverBadge(c, t); if (t > hev('cut')) K.pop(c, t, 'SURPRISE!', SP.hook_all.t, SP.hook.t - 0.2, 540, 1300, C.gold, -0.08, 120);
     const hookProj = p => { const q = proj(p); return q.x < 0 || q.x > W ? { x: q.x < 0 ? 60 : W - 60, y: 1050 } : q; };
-    K.bubbles(c, t, { id: 'hook' }, heads, hookProj, { names, hold: { hook_p: 0.2, hook_h: 0.2, hook_p2: 0.05, hook_all: 0.05 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
+    K.bubbles(c, t, { id: 'hook' }, heads, hookProj, { cleanChunks: true, names, hold: { hook_p: 0.2, hook_h: 0.2, hook_p2: 0.05, hook_all: 0.05 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
     Hq.grain(c, W, HH, t, 0.045); UI.sparkles(c, t); UI.levelIntroNext(c, t); return; }
   const e = k => ev(L, k), narT = (SP[L.toLowerCase() + '_nar'] || { t: 1e9 }).t;
   if (L === 'A1' && t > e('bed') && t < SP.a1_h3.t - 0.1) K.pop(c, t, 'УЮТНО…', e('bed') + 0.1, SP.a1_h3.t - 0.2, 540, 1300, C.pinkL, -0.06, 90);
@@ -265,7 +265,7 @@ function renderFrame(c, t) {
   if (L === 'C1' && t > e('bell') && t < narT - 0.1) K.pop(c, t, 'ДИНЬ-ДОН!', e('bell') + 0.05, narT - 0.2, 540, 1300, C.gold, -0.08, 100);
   if (L === 'C2') { if (t > e('open') && t < SP.c2_p.t - 0.1) K.pop(c, t, 'SURPRISE!', e('open') + 0.2, SP.c2_p.t - 0.2, 540, 1300, C.gold, -0.08, 120);
     if (t > e('oks') && t < SP.c2_h4.t - 0.1) checklist(c, t, e('oks')); }
-  K.bubbles(c, t, sc, heads, proj, { names, hold: { a2_p3: 0.05, a1_h3: 0.4, a2_h2: 0.05, b1_p2: 0.05, b2_p3: 0.3, c1_h3: 0.05, c2_h: 0.3, c2_g: 0.05, c2_p3: 0.05, c2_h4: 0.5 } });
+  K.bubbles(c, t, sc, heads, proj, { cleanChunks: true, names, hold: { a2_p3: 0.05, a1_h3: 0.4, a2_h2: 0.05, b1_p2: 0.05, b2_p3: 0.3, c1_h3: 0.05, c2_h: 0.3, c2_g: 0.05, c2_p3: 0.05, c2_h4: 0.5 } });
   K.hud(c, t, sc);
 }
 E.run('avoidparty', NF, renderFrame);

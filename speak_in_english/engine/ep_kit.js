@@ -32,17 +32,21 @@ module.exports = function makeKit(TL, UI) {
     for (const sp of lineIds) { const hd = heads[sp.who]; if (!hd) continue;
       const left = sp.who === hero; let an = proj({ x: hd.x + (left ? -30 : 30), y: hd.y - hd.hh * 1.25 });
       if (hard && (an.x < 0 || an.x > W)) an = { x: an.x < 0 ? 40 : W - 40, y: 0 };   // hard_cut: speaker off screen (reaction shot) -> bubble at the top, tail to the edge
-      for (const part of chunks(sp, holdFor(sp))) UI.bubble(c, part, t, an, left ? 'left' : 'right', left ? undefined : (o.names || {})[sp.who]); }
+      for (const part of chunks(sp, holdFor(sp), o.cleanChunks)) UI.bubble(c, part, t, an, left ? 'left' : 'right', left ? undefined : (o.names || {})[sp.who]); }
   }
   // long lines shown as consecutive meaning chunks: cfg.chunks = { line_id: [[en, ru], ...] } (en parts joined = the full line).
   // Each chunk gets its own bubble timed by the line's word timings; lines without chunks are returned unchanged.
-  function chunks(sp, hold) {
+  // clean (o.cleanChunks, new episodes): a chunk is fully gone before the next one pops in (no stacked bubbles).
+  function chunks(sp, hold, clean) {
     const ch = (TL.cfg.chunks || {})[sp.id]; if (!ch) return [{ ...sp, hold }];
     const W8 = sp.words || [], cnt = ch.map(([en]) => en.trim().split(/\s+/).length), tot = cnt.reduce((a, b) => a + b, 0), chars = ch.map(([en]) => en.length), ctot = chars.reduce((a, b) => a + b, 0);
     let wi = 0, ci = 0; return ch.map(([en, ru], i) => {
       const a = W8.length === tot ? W8[wi][1] : sp.d * ci / ctot; wi += cnt[i]; ci += chars[i];
       const b = i === ch.length - 1 ? sp.d : (W8.length === tot ? W8[wi][1] : sp.d * ci / ctot);
-      return { ...sp, text: en, ru, t: sp.t + a, d: Math.max(0.3, b - a), hold: i === ch.length - 1 ? hold : -0.18 }; });
+      const last = i === ch.length - 1, d = Math.max(0.3, b - a);
+      if (!clean) return { ...sp, text: en, ru, t: sp.t + a, d, hold: last ? hold : -0.18 };
+      const t0 = sp.t + a + (i > 0 ? 0.06 : 0), d0 = last ? Math.max(0.3, d - (i > 0 ? 0.06 : 0)) : Math.max(0.25, d - (i > 0 ? 0.06 : 0) - 0.33);   // out (0.05 hold + 0.2 fade) ends before the next chunk pops
+      return { ...sp, text: en, ru, t: t0, d: d0, hold: last ? hold : 0.05 }; });
   }
   // big pop-in caption (БА-ДУМ-ТСС!, +£15 ...)
   function pop(c, t, txt, t0, t1, x, y, col = C.gold, rot = -0.08, sz = 84) { const k = eBack(P(t, t0, t0 + 0.25), 2.4) * (1 - P(t, t1, t1 + 0.3)); if (k > 0) { c.save(); c.translate(x, y); c.rotate(rot); c.scale(k, k); UI.font(c, 'Unb9', sz); c.textAlign = 'center'; c.textBaseline = 'middle'; UI.strokeText(c, txt, 0, 0, col, C.oliveD, 16); c.restore(); } }
