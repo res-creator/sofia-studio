@@ -1,0 +1,26 @@
+// Cover for episode 16: "MONOPOLY / INSIDE JOB" — a gold game piece with a RIGGED stamp. COVERS.md: inside the 3:4 crop, clear of the caption area and buttons, no logos.
+const { createCanvas } = require('@napi-rs/canvas');
+const fs = require('fs');
+const K = require('../tests/mcd_collage/kit');
+const LT = require('../hirkit/light');
+const CL = require('../hirkit/collage');
+const CK = require('../subscription_ep13/callkit');
+const P = require('./pepsikit');
+const M = require('./monkit');
+const { C, F, rr } = K;
+const { W, H, txt, fitTxt, layer } = CK;
+const cv = createCanvas(W, H), ctx = cv.getContext('2d');
+ctx.fillStyle = '#E8D9A8'; ctx.fillRect(0, 0, W, H);
+const half = createCanvas(W / 2, H / 2), hx = half.getContext('2d'); hx.scale(0.5, 0.5);
+layer(hx, { x: 200, y: -500, z: 0.9 }, 1, w => M.counter(w, 0)); ctx.filter = 'blur(12px)'; ctx.drawImage(half, 0, 0, W, H); ctx.filter = 'none';
+LT.glow(ctx, 540, 1000, 900, 'rgba(255,240,170,1)', 0.35);
+ctx.save(); ctx.translate(540, 1030); ctx.rotate(-0.05); ctx.scale(3.0, 3.0); M.gamePiece(ctx, 1, { gold: true, text: 'WINNER', t: 0.3 }); ctx.restore();
+ctx.save(); ctx.translate(560, 1090); ctx.rotate(-0.14); P.mark(ctx, 'RIGGED', { size: 170, rot: 0 }); ctx.restore();
+ctx.save(); ctx.translate(W / 2, 430); ctx.rotate(-0.02);
+CL.cutout(ctx, () => rr(ctx, -440, -112, 880, 160, 18), '#FFFDF8', { elev: 1.8 }); fitTxt(ctx, 'MONOPOLY', 0, 14, 124, '#171717', 820);
+ctx.translate(0, 175); CL.cutout(ctx, () => rr(ctx, -440, -92, 880, 150, 18), C.red, { elev: 1.8 }); fitTxt(ctx, 'INSIDE JOB', 0, 20, 112, '#FFFDF8', 820); ctx.restore();
+ctx.save(); ctx.translate(W / 2, 278); ctx.font = `30px ${F.black}`; const s = 'REAL STORY · RE-ENACTMENT', sw = ctx.measureText(s).width + 50;
+CL.cutout(ctx, () => rr(ctx, -sw / 2, -30, sw, 56, 10), '#171717', { elev: 0.8, tex: 0 }); txt(ctx, s, 0, 11, 30, C.yellow); ctx.restore();
+LT.grade(ctx, 'day', { vignette: 0.2 });
+ctx.save(); ctx.globalCompositeOperation = 'multiply'; ctx.globalAlpha = 0.26; ctx.drawImage(K.paperTexture(W, H), 0, 0); ctx.restore();
+fs.writeFileSync(`${__dirname}/the_monopoly_inside_man_cover.png`, cv.toBuffer('image/png')); console.log('cover ok');
