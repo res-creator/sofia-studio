@@ -243,7 +243,7 @@ const S = (x, y, z, tag) => ({ x, y, z, r: 0, tag });
 const HY = who => G[who].headY;
 const fy = (who, z, sy = 900) => HY(who) + (960 - sy) / z;
 const U = (name, i) => ({ x: 50000 + i * 1000, y: 0, z: 1, r: 0, tag: 'ui:' + name });
-const SH = { S_WIDE: S(0, -900, 0.6, 'wide'), S_TWO: S(0, fy('favor', 0.8, 800), 0.8, 'two'), S_CARD: S(0, fy('favor', 0.72, 1000), 0.72, 'card'), S_HOTEL: S(700, -1150, 0.45, 'hotel'),
+const SH = { S_WIDE: S(0, -900, 0.6, 'wide'), S_TWO: S(0, fy('favor', 0.8, 800), 0.8, 'two'), S_CARD: S(0, fy('favor', 0.72, 1000), 0.72, 'card'), S_TWO_LOW: S(0, fy('favor', 0.8, 1150), 0.8, 'two'), S_HOTEL: S(700, -1150, 0.45, 'hotel'),
   S_HER: S(SHX, fy('her', 1.0), 1.0, 'her'), S_HER_R: S(SHX, fy('her', 1.0, 1120), 1.0, 'her'), S_HER_CU: S(SHX, fy('her', 1.6, 960), 1.6, 'her'),
   S_MAN: S(SMX, fy('favor', 1.0), 1.0, 'favor'),
   L_COVER: S(-20, fy('her', 0.6, 1000), 0.6, 'wide'), L_WIDE: S(150, -1000, 0.52, 'wide'), L_TWO: S(-120, fy('favor', 0.78, 820), 0.78, 'two'), L_CARD: S(-120, fy('favor', 0.7, 1010), 0.7, 'card'),
@@ -253,7 +253,7 @@ const SH = { S_WIDE: S(0, -900, 0.6, 'wide'), S_TWO: S(0, fy('favor', 0.8, 800),
   DOLLAR: U('dollar', 1), BLACK: U('black', 2) };
 function shotHard(t) { const sc = sceneAt(t), L = sc.id, f = s => ({ ...s, force: true }); if (L === 'outro') return SH.L_WIDE;
   const sp = id => speaking(id, t, 0.1, 0.15);
-  if (L === 'hook') { if (t < 0.45) return SH.L_COVER; if (t < SP.hook_her.t - 0.1) return f(SH.S_TWO); if (t < hev('cut') - 0.05) return f(SH.S_HER); if (t < SP.hook_her2.t - 0.1) return f(SH.L_WIDE); if (sp('hook_her2')) return f(SH.L_HER_R); return f(SH.L_WIDE); }
+  if (L === 'hook') { if (t < 0.45) return SH.L_COVER; if (t < SP.hook_her.t - 0.1) return f(SH.S_TWO_LOW); if (t < hev('cut') - 0.05) return f(SH.S_HER_R); if (t < SP.hook_her2.t - 0.1) return f(SH.L_WIDE); if (sp('hook_her2')) return f(SH.L_HER_R); return f(SH.L_WIDE); }
   const u = t - sc.s, l = L.toLowerCase(), nar = SP[l + '_nar'], lob = lobbyAt(t, L);
   if (u < 1.15) return f({ A1: SH.S_WIDE, A2: SH.S_TWO, B1: SH.S_WIDE, B2: SH.L_WIDE, C1: SH.L_WIDE, C2: SH.L_HER }[L]);
   if (L === 'C2' && t > ev('black') - 0.03 && t < nar.t + 0.05) return f(SH.BLACK);

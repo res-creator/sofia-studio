@@ -170,14 +170,14 @@ function world(c, t, L, tag) { c.drawImage(BGB, BX0, BY0, BW, BH); const who = D
 const S = (x, y, z, tag) => ({ x, y, z, r: 0, tag });
 const fy = (who, z, sy = 900) => HY(who) + (960 - sy) / z;
 const U = (name, i) => ({ x: 50000 + i * 1000, y: 0, z: 1, r: 0, tag: 'ui:' + name });
-const SH = { COVER: S(0, fy('stranger', 0.74, 820), 0.74, 'wide'), WIDE: S(0, -900, 0.6, 'wide'), FAR: S(0, -1000, 0.42, 'wide'), CARD: S(0, fy('stranger', 0.72, 1000), 0.72, 'card'), TWO: S(0, fy('stranger', 0.8, 800), 0.8, 'two'),
+const SH = { COVER: S(0, fy('stranger', 0.74, 820), 0.74, 'wide'), WIDE: S(0, -900, 0.6, 'wide'), FAR: S(0, -1000, 0.42, 'wide'), CARD: S(0, fy('stranger', 0.72, 1000), 0.72, 'card'), TWO: S(0, fy('stranger', 0.8, 800), 0.8, 'two'), TWO_LOW: S(0, fy('stranger', 0.8, 1150), 0.8, 'two'),
   HER: S(HERX, fy('her', 1.0), 1.0, 'her'), HER_R: S(HERX, fy('her', 1.0, 1120), 1.0, 'her'), HER_CU: S(HERX, fy('her', 1.7, 960), 1.7, 'her'),
   MAN: S(MX, fy('stranger', 1.0), 1.0, 'stranger'), MAN_R: S(MX, fy('stranger', 1.0, 1120), 1.0, 'stranger'), MAN_CU: S(MX, fy('stranger', 1.6, 960), 1.6, 'stranger'),
   PHONE: U('phone', 1), BLACK: U('black', 2) };
 const selfieWin = () => [ev('type'), SP.b2_her2.t - 0.1];
 function shotHard(t) { const sc = sceneAt(t), L = sc.id, f = s => ({ ...s, force: true }); if (L === 'outro') return SH.WIDE;
   const sp = id => speaking(id, t, 0.1, 0.15);
-  if (L === 'hook') { if (t < SP.hook_her.t - 0.1) return SH.COVER; if (t < SP.hook_m2.t - 0.1) return f(SH.HER_R); if (t < hev('scared') - 0.05) return f(SH.MAN_R); return f(SH.HER_CU); }
+  if (L === 'hook') { if (t < SP.hook_m.t - 0.1) return SH.COVER; if (t < SP.hook_her.t - 0.1) return f(SH.TWO_LOW); if (t < SP.hook_m2.t - 0.1) return f(SH.HER_R); if (t < hev('scared') - 0.05) return f(SH.MAN_R); return f(SH.HER_CU); }
   const u = t - sc.s, l = L.toLowerCase(), nar = SP[l + '_nar'];
   if (u < 1.15) return f(L === 'C2' ? SH.HER : SH.WIDE);
   if (L === 'C2' && t > ev('black') - 0.03 && t < nar.t + 0.05) return f(SH.BLACK);
@@ -248,7 +248,8 @@ function renderFrame(c, t) {
   const hp = who => heads[who] && Math.abs(heads[who].x) < 1e4 ? { ...proj(heads[who]), hh: heads[who].hh * cam.z } : null;
   if (L === 'hook') { if (tag !== 'her') nameBadge(c, t);
     const k = eBack(P(t, hev('scared'), hev('scared') + 0.3), 2); banner(c, k, 'WHO IS THIS GUY?!', '#E0474C', 'КТО ЭТО ВООБЩЕ?!', 1250);
-    K.bubbles(c, t, { id: 'hook' }, heads, proj, { names: { stranger: ['???', '#3C6FB4'] }, hold: { hook_m: 0.2, hook_her: 0.2, hook_m2: 0.3 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
+  const hookProj = p => { const q = proj(p); return q.x < 0 || q.x > W ? { x: q.x < 0 ? 60 : W - 60, y: 1050 } : q; };   // hook: off-screen speaker -> bubble below the title ribbon
+    K.bubbles(c, t, { id: 'hook' }, heads, hookProj, { names: { stranger: ['???', '#3C6FB4'] }, hold: { hook_m: 0.2, hook_her: 0.2, hook_m2: 0.3 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
     Hq.grain(c, W, HH, t, 0.045); UI.sparkles(c, t); UI.levelIntroNext(c, t); return; }
   // A1: empty name field over her frozen head
   if (L === 'A1' && tag === 'her' && t > ev('namebox') && t < SP.a1_her3.t - 0.1) { const h = hp('her'); if (h) noteBox(c, h.x + 40, h.y - h.hh * 2.0, eBack(P(t, ev('namebox'), ev('namebox') + 0.3), 2), [['NAME:', C.oliveD, 54], ['???', '#E0474C', 86]], '#FFE15A', 420); }
