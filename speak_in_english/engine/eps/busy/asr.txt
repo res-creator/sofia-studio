@@ -1,0 +1,32 @@
+busy/hook_b  | working hard.
+busy/hook_w  | Extremely hard.
+busy/a1_b    | Are you busy?
+busy/a1_w    | Yes, very busy.
+busy/a1_b2   | doing what?
+busy/a1_w2   | Work!
+busy/a2_b    | Can you help me with something?
+busy/a2_w    | Sorry, I have a lot to do.
+busy/a2_b2   | Is it urgent?
+busy/a2_w2   | Very urgent.
+busy/a2_tip  | I have a lot to do.
+busy/b1_b    | you seem to have an enormous amount of paperwork.
+busy/b1_w    | I have been working on these reports all morning.
+busy/b1_b2   | Can I see one?
+busy/b1_w2   | They're not quite ready yet.
+busy/b2_b    | Could you show me what you've accomplished so far?
+busy/b2_w    | Absolutely. I've made tremendous progress.
+busy/b2_b2   | 200 pages.
+busy/b2_w2   | productivity is my greatest strength.
+busy/c1_b    | Would you care to explain why every single page says the exact same thing?
+busy/c1_w    | I've been experimenting with a highly repetitive productivity framework.
+busy/c1_b2   | you're just typing "I am working" over and over.
+busy/c1_w2   | Consistency is essential to professional success.
+busy/c1_tip  | Would you care to explain?
+busy/c2_b    | So you've spent the entire day pretending to be productive.
+busy/c2_w    | I would argue that maintaining the appearance of productivity requires an extraordinary degree of commitment, concentration, and creative problem solving.
+busy/c2_b2   | That's actually quite impressive.
+busy/c2_b3   | In fact, I think I found the perfect position for you.
+busy/c2_w2   | A promotion.
+busy/c2_b4   | even better.
+busy/c2_b5   | Please welcome our new productivity expert.
+busy/c2_w3   | I should have just done my work.

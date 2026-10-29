@@ -1,0 +1,41 @@
+rich/hook_m  | Yeah, that's my car.
+rich/hook_f  | Really?
+rich/hook_m2 | Of course, I'm rich.
+rich/a1_f    | Nice car!
+rich/a1_m    | Thank you.
+rich/a1_f2   | Is it yours?
+rich/a1_m2   | Yes, my car.
+rich/a2_f    | Wow, are those expensive?
+rich/a2_m    | Very expensive.
+rich/a2_f2   | How much did they cost?
+rich/a2_m2   | a lot of money.
+rich/a2_m3   | They're very modern.
+rich/a2_tip  | How much did they cost?
+rich/b1_f    | So what do you do for a living
+rich/b1_m    | I own several successful businesses.
+rich/b1_f2   | Really, what kind?
+rich/b1_m2   | mostly international investments.
+rich/b1_mom  | Did you remember to take out the trash?
+rich/b1_m3   | Mom, I'm in a business meeting.
+rich/b2_f    | That's impressive. How long have you owned it?
+rich/b2_m    | I've had it for quite some time.
+rich/b2_f2   | Can we go for a drive?
+rich/b2_m2   | Unfortunately, I'm expecting an important business call.
+rich/b2_f3   | Everything okay?
+rich/b2_m3   | Absolutely.
+rich/c1_f    | you're acting rather strangely for someone who supposedly owns this car.
+rich/c1_m    | I simply prefer to keep my financial arrangements private.
+rich/c1_f2   | Fair enough.
+rich/c1_f3   | By the way, I think I recognize the license plate.
+rich/c1_tip  | I'd prefer to keep it private.
+rich/c2_f    | There's something rather interesting about your extraordinary financial success.
+rich/c2_m    | and what might that be?
+rich/c2_f2   | That car belongs to me.
+rich/c2_m2   | Excuse me?
+rich/c2_f3   | I own the rental company. In fact, I personally approved your booking this morning.
+rich/c2_m3   | Well, technically, I never said I bought it.
+rich/c2_f4   | You said it was yours.
+rich/c2_m4   | for three hours it was.
+rich/c2_f5   | Your rental ended five minutes ago. Keys, please.
+rich/c2_p    | Nice car!
+rich/c2_m5   | Thanks. That one's actually mine.

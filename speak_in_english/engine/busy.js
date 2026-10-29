@@ -253,7 +253,7 @@ function renderFrame(c, t) {
   if (L === 'C1' && t > e('stare') && t < narT - 0.05) K.dots(c, t, e('stare') + 0.05, narT - 0.05, 1450);
   if (L === 'C2') { if (t > e('think') && t < SP.c2_b2.t - 0.05) K.dots(c, t, e('think') + 0.05, SP.c2_b2.t - 0.05, 1450);
     if (t > e('clap') && t < e('silent')) K.pop(c, t, 'АПЛОДИСМЕНТЫ!', e('clap') + 0.05, e('silent') - 0.1, 540, 1250, C.gold, -0.06, 76); }
-  K.bubbles(c, t, sc, heads, proj, { heroine: 'worker', names, hold: { a1_w2: 0.4, b1_w2: 0.05, b2_b2: 0.3, b2_w2: 0.05, c1_w2: 0.5, c2_b4: 0.05, c2_w3: 0.5 } });
+  K.bubbles(c, t, sc, heads, proj, { heroine: 'worker', names, hold: { a1_w2: 0.4, b2_w: 0.05, b1_w2: 0.05, b2_b2: 0.3, b2_w2: 0.05, c1_w2: 0.5, c2_b4: 0.05, c2_w3: 0.5 } });
   K.hud(c, t, sc);
 }
 E.run('busy', NF, renderFrame);
