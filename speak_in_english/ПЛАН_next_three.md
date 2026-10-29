@@ -8,6 +8,21 @@
 | 2 | WHEN YOU FORGET YOUR PASSWORD | `password` | `releases/forgot_password.mp4` |
 | 3 | WHEN YOU CAN'T SAY NO | `cantsayno` | `releases/cant_say_no.mp4` |
 
+## Итог (29.10.2026): все три видео готовы
+
+| Серия | Длительность | Громкость | Файлы |
+|---|---|---|---|
+| pretend | 2:34 | −14.2 LUFS | `releases/pretend_to_know.mp4`, `releases/pretend_to_know_cover.png`, `releases/pretend_to_know_tiktok.md` |
+| password | 2:34 | −14.4 LUFS | `releases/forgot_password.mp4`, `releases/forgot_password_cover.png`, `releases/forgot_password_tiktok.md` |
+| cantsayno | 2:49 | −14.0 LUFS | `releases/cant_say_no.mp4`, `releases/cant_say_no_cover.png`, `releases/cant_say_no_tiktok.md` |
+
+- Владелица пополнила ElevenLabs (10 000 символов) и попросила не сокращать текст, поэтому видео длиннее 2:10.
+- ElevenLabs: счётчик аккаунта вырос с 0 до 4 268 из 10 000; осталось 5 732.
+- Рендеры: `engine/pretend.js`, `engine/password.js`, `engine/cantsayno.js` (камера hard_cut). Озвучка: `engine/eps/<slug>/vo`, `nar_all.mp3`, `timeline.json`.
+- Whisper всё распознал. Две реплики он записал с ошибкой из-за созвучия, но звучат они правильно: «too weak» → «2-Week», британское «why are you» → «wire you».
+
+Ниже — исходный план (28.10), до озвучки.
+
 ## 1. Почему остановились: баланс ElevenLabs (28.10.2026)
 
 `GET /v1/user/subscription`: тариф **free**, использовано 9 368 из 10 000, **осталось 632 символа**. Лимит обновится **25.11.2026**. Докупить символы на бесплатном тарифе нельзя (`can_extend_character_limit: false`), нужен платный тариф.
