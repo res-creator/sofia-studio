@@ -43,6 +43,20 @@ if EPN == "password":  # cover = laptop INCORRECT PASSWORD; her yell; screen bli
 if EPN == "cantsayno":  # street: tiny favor? -> Sure! -> HARD CUT to the hotel desk, HOTEL MANAGER badge, huge queue -> HOW DID THIS HAPPEN?!
     h0 = say("hook_m", 0.4) + 0.2; h0 = say("hook_her", h0) + 0.35
     hev = dict(cut=round(h0 - 0.1, 3)); cue("impact", h0 - 0.1, 0.8); cue("hum", h0, 0.5); h0 = say("hook_her2", h0 + 0.45) + 0.3
+if EPN == "rich":  # cover = the shiny car + him in sunglasses; that's my car -> Really? -> I'm rich -> KEY insert: RENTAL tag, he hides it
+    h0 = say("hook_m", 0.45) + 0.25; h0 = say("hook_f", h0) + 0.25; h0 = say("hook_m2", h0)
+    hev = dict(key=round(h0 + 0.1, 3), hide=round(h0 + 1.9, 3)); cue("pop", h0 + 0.15, 0.6); cue("zip", h0 + 1.9, 0.6); h0 += 2.6
+if EPN == "busy":  # cover = game on his monitor; boss footsteps -> game closed -> frantic typing -> Working hard? -> Extremely hard! -> monitor: I AM WORKING
+    for k in range(3): cue("thud", 0.3 + 0.32 * k, 0.35)
+    hev = dict(close=1.2, type=1.35); cue("click", 1.2, 0.7)
+    for k in range(10): cue("keys", 1.35 + 0.09 * k, 0.5)
+    h0 = say("hook_b", 1.75) + 0.25; h0 = say("hook_w", h0); hev["mon"] = round(h0 + 0.1, 3)
+    for k in range(6): cue("keys", h0 + 0.15 + 0.12 * k, 0.45)
+    h0 += 2.2
+if EPN == "avoidparty":  # cover = her on the sofa under a blanket, phone ringing; party? -> not well -> solution! -> HARD CUT: door, crowd, SURPRISE!
+    cue("ring", 0.2, 0.6); h0 = say("hook_p", 0.5) + 0.25; h0 = say("hook_h", h0) + 0.25; h0 = say("hook_p2", h0) + 0.3
+    hev = dict(cut=round(h0 - 0.05, 3)); cue("creak", h0, 0.7); h0 = say("hook_all", h0 + 0.45); cue("cheer", h0 - 0.5, 0.6); cue("tada", h0 - 0.4, 0.5)
+    hev["horror"] = round(h0 + 0.05, 3); cue("gasp", h0 + 0.1, 0.6); h0 += 0.7
 e = say("hook", h0); hw = word_times("hook") or []
 def find(word):
     for w, a, b in hw:
@@ -50,7 +64,7 @@ def find(word):
     return None
 stamp_t = find(E["stamp_word"]) or (e - 1.0); cue("stamp", stamp_t, 0.8)
 t = e + 0.45
-scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno") else {})))
+scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty") else {})))
 
 TICKS = lambda back: [("tick", -back + 0.15 + 0.6 * k, 0.6) for k in range(int(back / 0.6))]
 if EPN == "gym":
@@ -420,6 +434,65 @@ elif EPN == "cantsayno":   # street -> hotel entrance -> reception desk. Plans: 
             ("c2_m6", 0.4, []), ("c2_her4", 0.3, []),
             ("c2_m5", 0.8, [("RESPECT", -0.75, 0), ("CEO", 1.2, 0), ("tada", 1.2, 0.6)]),
             ("c2_her5", 0.4, []), ("c2_nar", 0.8, [("BLACK", -0.75, 0)])],
+    )
+    INTRO = 1.15
+elif EPN == "rich":   # parking outside a cafe; him (sunglasses) + his friend, the rental car behind them. Plans: WIDE / CARD / RICH / OWNER / reactions / KEY, WATCH, PHONE, PLATE, DOC inserts
+    LV = dict(
+        A1=[("a1_f", 0.22, []), ("a1_m", 0.2, []), ("a1_f2", 0.22, []), ("a1_m2", 0.2, []),
+            ("a1_nar", 2.1, [("PRESS", -2.05, 0), ("click", -2.0, 0.6), ("ALARM", -1.85, 0), ("alarm", -1.85, 0.5), ("HIDE", -0.75, 0), ("zip", -0.7, 0.4)])],
+        A2=[("a2_f", 0.5, [("WATCH", -0.45, 0)]), ("a2_m", 0.2, []), ("a2_f2", 0.22, []), ("a2_m2", 0.2, []),
+            ("a2_m3", 4.3, [("CLOSE", -4.25, 0), ("blink", -4.1, 0.6), ("BT", -2.9, 0), ("err", -2.85, 0.5), ("TOY", -1.6, 0), ("toy", -1.55, 0.7)]),
+            ("a2_nar", 0.5, []), ("a2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        B1=[("b1_f", 0.22, []), ("b1_m", 0.2, []), ("b1_f2", 0.22, []), ("b1_m2", 0.2, []),
+            ("b1_mom", 2.4, [("RING", -2.35, 0), ("ring", -2.3, 0.7), ("ANSWER", -0.6, 0)]), ("b1_m3", 0.2, []),
+            ("b1_nar", 0.9, [("STARE", -0.85, 0)])],
+        B2=[("b2_f", 0.22, []), ("b2_m", 0.2, []), ("b2_f2", 0.22, []), ("b2_m2", 0.22, []),
+            ("b2_f3", 3.2, [("NOTIF", -3.15, 0), ("msg", -3.1, 0.8), ("SWIPE", -0.6, 0), ("zip", -0.55, 0.5)]), ("b2_m3", 0.2, []),
+            ("b2_nar", 0.6, [])],
+        C1=[("c1_f", 0.4, [("SQUINT", -0.35, 0)]), ("c1_m", 0.22, [("STRAIGHT", -0.3, 0)]), ("c1_f2", 0.22, []), ("c1_f3", 0.8, [("RELIEF", -0.75, 0), ("PHONE", -0.3, 0)]),
+            ("c1_nar", 3.1, [("PLATE", -3.05, 0), ("pop", -3.0, 0.6), ("FREEZE", -0.75, 0), ("impact_soft", -0.7, 0.5)] + TICKS(0.6)), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C2=[("c2_f", 0.4, [("TURN", -0.35, 0)]), ("c2_m", 0.22, []), ("c2_f2", 0.8, [("PAUSE", -0.75, 0)] + TICKS(0.6)), ("c2_m2", 0.6, [("FREEZE", -0.55, 0), ("impact_soft", -0.5, 0.6)]),
+            ("c2_f3", 0.22, []), ("c2_m3", 3.7, [("DOC", -3.65, 0), ("pop", -3.6, 0.6), ("SHADES", -0.55, 0)]), ("c2_f4", 0.22, []), ("c2_m4", 0.22, []),
+            ("c2_f5", 1.0, [("HAND", -0.5, 0)] + TICKS(0.6)),
+            ("c2_p", 3.3, [("KEYS", -3.25, 0), ("clank", -3.2, 0.6), ("DRIVE", -2.5, 0), ("vroom", -2.5, 0.8), ("PASS", -1.0, 0)]),
+            ("c2_m5", 0.45, [("LOOK", -0.45, 0)]), ("c2_nar", 1.7, [("FOB", -1.6, 0), ("click", -1.55, 0.6), ("chirp", -1.4, 0.7), ("BLACK", -0.6, 0)])],
+    )
+    INTRO = 1.15
+elif EPN == "busy":   # open-plan office; him at his desk (monitor, paper piles, hourglass), the boss standing. Plans: WIDE / CARD / WORKER / BOSS / MONITOR, TODO, GLASS inserts; C2 ends on a seminar stage
+    LV = dict(
+        A1=[("a1_b", 0.22, []), ("a1_w", 0.2, []), ("a1_b2", 0.22, []), ("a1_w2", 0.2, []),
+            ("a1_nar", 1.7, [("NOD", -1.65, 0), ("SHUFFLE", -1.2, 0)] + [("feather", -1.15 + 0.3 * k, 0.45) for k in range(4)])],
+        A2=[("a2_b", 0.6, [("BACK", -0.55, 0)]), ("a2_w", 0.2, []), ("a2_b2", 0.22, []), ("a2_w2", 0.2, []),
+            ("a2_nar", 3.1, [("LEAVE", -3.05, 0), ("SIGH", -2.4, 0), ("FLIP", -1.85, 0), ("pop", -1.8, 0.6)]), ("a2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        B1=[("b1_b", 0.5, [("PILE", -0.45, 0)]), ("b1_w", 0.2, []), ("b1_b2", 0.22, []), ("b1_w2", 0.2, [("HUG", -0.2, 0)]),
+            ("b1_nar", 4.4, [("DROP", -4.35, 0), ("feather", -4.3, 0.6), ("TODO", -3.75, 0), ("pop", -3.7, 0.6), ("NOTICE", -0.5, 0)])],
+        B2=[("b2_b", 0.4, []), ("b2_w", 0.2, []), ("b2_b2", 2.6, [("OPEN", -2.55, 0), ("click", -2.5, 0.6), ("REPORT", -2.15, 0), ("pop", -2.1, 0.6)]), ("b2_w2", 0.22, []),
+            ("b2_nar", 1.3, [("MOUSE", -1.25, 0), ("SWEAT", -0.6, 0)])],
+        C1=[("c1_b", 2.8, [("SCROLL", -2.75, 0)] + [("click", -2.7 + 0.45 * k, 0.4) for k in range(5)]), ("c1_w", 0.22, []), ("c1_b2", 0.22, []), ("c1_w2", 0.22, []),
+            ("c1_nar", 1.3, [("STARE", -1.25, 0)] + TICKS(1.2)), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C2=[("c2_b", 0.4, [("ARMS", -0.35, 0)]), ("c2_w", 0.5, [("STAND", -0.45, 0)]), ("c2_b2", 1.6, [("THINK", -1.55, 0)] + TICKS(1.2)), ("c2_b3", 0.22, []),
+            ("c2_w2", 0.22, [("HOPE", -0.25, 0)]), ("c2_b4", 0.22, []),
+            ("c2_b5", 1.5, [("STAGE", -1.45, 0), ("whoosh", -1.4, 0.6), ("impact", -1.3, 0.6)]),
+            ("c2_w3", 1.8, [("CLAP", -1.75, 0), ("clapclap", -1.7, 0.7), ("clapclap", -1.1, 0.6), ("SILENT", -0.35, 0)]), ("c2_nar", 1.0, [("BLACK", -0.9, 0)])],
+    )
+    INTRO = 1.15
+elif EPN == "avoidparty":   # her living room (sofa, blanket, phone) + the friend at her party (phone call), then her front door. Plans: WIDE / CARD / HER / PAL / DOOR / PHONE, IMAGINE, DOC inserts
+    LV = dict(
+        A1=[("a1_p", 0.7, [("RING", -0.65, 0), ("ring", -0.6, 0.6)]), ("a1_h", 0.2, []), ("a1_p2", 0.22, []), ("a1_h2", 0.22, [("YAWN", -0.25, 0)]), ("a1_p3", 0.22, []),
+            ("a1_h3", 1.3, [("BED", -1.25, 0), ("sparkle", -1.2, 0.6)]), ("a1_nar", 0.6, [])],
+        A2=[("a2_p", 0.7, [("RING", -0.65, 0), ("ring", -0.6, 0.6)]), ("a2_h", 0.2, []), ("a2_p2", 0.22, []), ("a2_h2", 0.9, [("LOOKDOWN", -0.85, 0)]), ("a2_p3", 0.22, []),
+            ("a2_nar", 2.9, [("DRESS", -2.85, 0), ("msg", -2.8, 0.8), ("EYES", -0.6, 0)]), ("a2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        B1=[("b1_h", 0.22, []), ("b1_p", 0.22, []), ("b1_h2", 0.22, []), ("b1_p2", 0.22, []),
+            ("b1_nar", 2.8, [("IMAGINE", -2.75, 0), ("whoosh", -2.7, 0.5)])],
+        B2=[("b2_h", 0.5, [("cough", -0.45, 0.6)]), ("b2_p", 0.22, []), ("b2_h2", 0.22, []), ("b2_p2", 0.22, []), ("b2_h3", 0.22, []), ("b2_p3", 0.22, []),
+            ("b2_nar", 1.1, [("FREEZE", -1.05, 0), ("impact_soft", -1.0, 0.5)] + TICKS(0.6))],
+        C1=[("c1_h", 0.22, []), ("c1_p", 0.22, []), ("c1_h2", 0.22, [("SMILE", -0.25, 0)]), ("c1_p2", 0.22, []), ("c1_h3", 0.22, [("TENSE", -0.3, 0)]),
+            ("c1_nar", 2.7, [("ENDED", -2.65, 0), ("blink", -2.6, 0.6), ("BELL", -1.0, 0), ("doorbell", -1.0, 0.8)]), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C2=[("c2_p", 1.5, [("OPEN", -1.45, 0), ("creak", -1.4, 0.7), ("cheer", -1.0, 0.5)]), ("c2_h", 0.22, []), ("c2_p2", 0.22, []),
+            ("c2_h2", 1.9, [("GUESTS", -1.85, 0), ("whoosh", -1.8, 0.4), ("thud", -1.3, 0.5), ("pop", -0.9, 0.5)]),
+            ("c2_g", 0.4, [("PAPER", -0.35, 0)]), ("c2_h3", 2.9, [("DOC", -2.85, 0), ("pop", -2.8, 0.6)]), ("c2_p3", 0.22, []),
+            ("c2_h4", 2.7, [("CLOSE", -2.65, 0), ("thud", -2.0, 0.8), ("OUTSIDE", -1.7, 0), ("OKS", -1.1, 0), ("ding", -1.05, 0.5), ("ding", -0.75, 0.5)]),
+            ("c2_nar", 1.0, [("BLACK", -0.9, 0)])],
     )
     INTRO = 1.15
 elif EPN == "repay":
