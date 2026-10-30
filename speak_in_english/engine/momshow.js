@@ -85,7 +85,7 @@ const BG = mkBG(drawRoom);
 const FORK = g => ({ x: g.sw * 1.05, y: TT - SEAT - 40 });          // Mom's right fist on the table edge (local coords)
 function lenaState(t, L) { const g = G.lena, st = { t, talk: talk('lena', t), mood: 'happy', turn: 0.3, look: 0.5, armL: hang(g, -1), armR: hang(g, 1), items: {} };
   gest(st, g, 'lena', t, 1, 120);
-  if (L === 'hook') { st.mood = t < UP ? 'happy' : 'shock'; if (t > SPOT + 0.4) st.mood = 'worried'; st.look = 0; st.turn = 0.1; }
+  if (L === 'hook') { st.mood = t < UP ? 'happy' : t < UP + 0.6 ? 'shock' : 'worried'; st.look = t < UP + 0.6 ? 0 : 0.7; st.turn = 0.1; if (t > UP + 0.6 && t < SPOT) st.armL = chest(g, -1, 0.3); }
   if (L === 'S1') { st.mood = 'worried'; st.armL = chest(g, -1, 0.3); }
   if (L === 'S2' || L === 'S3') { st.mood = 'smug'; if (speaking('s2_l', t, 0, 0) || speaking('s3_l2', t)) st.mood = 'happy'; st.look = 0.6; }
   if (L === 'S4') { st.mood = 'smug';
@@ -165,7 +165,7 @@ const SH = { WIDE: S(270, -1000, 0.5, 'wide'), COVER: S(-130, fy(hy('tanya'), 0.
   TANYA: S(X.tanya + 20, fy(hy('tanya'), 0.95, 860), 0.95, 'tanya'), VERA: S(X.vera - 40, fy(hy('vera'), 1.0), 1.0, 'vera'), NIGEL: S(X.nigel - 30, fy(hy('nigel'), 1.0), 1.0, 'nigel') };
 const LINE = { hook_v: 'VERA', s1_l: 'LENA', s1_m: 'TANYA', s2_l: 'TWO', s2_v: 'VERA', s2_m: 'TANYA', s3_l: 'TWO', s3_n: 'NIGEL', s3_l2: 'TWO', s3_m: 'TANYA', s3_l3: 'TWO', s4_v: 'VERA', s4_m: 'TANYA', s4_l: 'LENA_CU', s4_m2: 'TANYA', s4_n: 'NIGEL' };
 function shotHard(t) { const sc = sceneAt(t), L = sc.id, f = s => ({ ...s, force: true });
-  if (L === 'hook') { if (t < SPOT) return f(SH.COVER); if (t < SP.hook_v.t - 0.1) return f(SH.LENA_H); return f(SH.VERA_H); }
+  if (L === 'hook') { if (t < SP.hook_m.t - 0.1) return f(SH.COVER); if (t < SPOT) return f(SH.TWO); if (t < SP.hook_v.t - 0.1) return f(SH.LENA_H); return f(SH.VERA_H); }
   if (L === 'S2' && t >= ev('S2', 'push') - 0.2 && t < SP.s2_m.t - 0.1) return f(SH.VERA);
   if (L === 'S4') { if (t >= ev('S4', 'cut') && t < SP.s4_m.t) return f(SH.TANYA); if (t >= WALK - 0.1 && t < SP.s4_n.t - 0.5) return f(SH.WIDE); if (t >= ev('S4', 'clink') + 0.3) return f(SH.WIDE); }
   const cur = TL.speech.find(s => t >= s.t - 0.1 && t < s.t + s.d + 0.3); if (cur && LINE[cur.id]) return f(SH[LINE[cur.id]]);
@@ -192,7 +192,7 @@ function sticker(c, t, t0, en, ru, y) { const k = eBack(P(t, t0, t0 + 0.3), 2.2)
 function recap(c, t) { const r0 = ev('S4', 'recap'); if (t < r0 - 0.2) return; const k = P(t, r0 - 0.2, r0 + 0.2);
   c.save(); c.globalAlpha = 0.45 * k; c.fillStyle = '#1A1420'; c.fillRect(0, 0, W, HH); c.restore();
   sticker(c, t, r0, 'PUT SOMEONE ON THE SPOT', 'поставить в неловкое положение', 560); sticker(c, t, r0 + 0.55, 'BETWEEN YOU AND ME', 'между нами', 760); sticker(c, t, r0 + 1.1, 'SHOW OFF', 'хвастаться', 960);
-  const q = eBack(P(t, r0 + 1.8, r0 + 2.1), 2); if (q > 0) { c.save(); c.translate(540, 1200); c.scale(q, q); UI.font(c, 'Unb9', 50); c.textAlign = 'center'; c.textBaseline = 'middle'; UI.strokeText(c, 'А ТЕБЯ ПРОСИЛИ', 0, -40, C.white, C.oliveD, 12); UI.strokeText(c, '«СКАЖИ ПО-АНГЛИЙСКИ»?', 0, 36, C.gold, C.oliveD, 12); UI.font(c, 'Unb9', 40); UI.strokeText(c, 'ПИШИ В КОММЕНТЫ!', 0, 120, C.white, C.oliveD, 10); c.restore(); } }
+  const qa = ev('S4', 'ask') - 0.1, q = eBack(P(t, qa, qa + 0.3), 2); if (q > 0) { c.save(); c.translate(540, 1200); c.scale(q, q); UI.font(c, 'Unb9', 50); c.textAlign = 'center'; c.textBaseline = 'middle'; UI.strokeText(c, 'А ТЕБЯ ПРОСИЛИ', 0, -40, C.white, C.oliveD, 12); UI.strokeText(c, '«СКАЖИ ПО-АНГЛИЙСКИ»?', 0, 36, C.gold, C.oliveD, 12); UI.font(c, 'Unb9', 40); UI.strokeText(c, 'ПИШИ В КОММЕНТЫ!', 0, 120, C.white, C.oliveD, 10); c.restore(); } }
 
 function renderFrame(c, t) {
   c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; const sc = sceneAt(t), L = sc.id;
@@ -203,7 +203,7 @@ function renderFrame(c, t) {
   const names = { tanya: ['МАМА', '#C2504A'], vera: ['ТЁТЯ ВЕРА', '#6A3A6A'], nigel: ['ДЯДЯ НАЙДЖЕЛ', '#4A4F5C'] };
   streakPhone(c, t);
   if (L === 'hook') { coverBadge(c, t); const hookProj = p => { const q = proj(p); return q.x < 0 || q.x > W ? { x: q.x < 0 ? 60 : W - 60, y: 1050 } : q; };
-    K.bubbles(c, t, sc, heads, hookProj, { heroine: 'lena', cleanChunks: true, names, hold: { hook_m: 0.05, hook_v: 0.3 } }); K.titleRibbon(c, t, 540, 455); UI.watermark(c); Hq.grain(c, W, HH, t, 0.045); return; }
+    K.bubbles(c, t, sc, heads, hookProj, { heroine: 'lena', cleanChunks: true, names, hold: { hook_m: 0.05, hook_v: 0.3 } }); const rk = 1 - P(t, SP.hook_m.t - 0.35, SP.hook_m.t - 0.05); if (rk > 0) { c.save(); c.globalAlpha = rk; K.titleRibbon(c, t, 540, 455); c.restore(); } UI.watermark(c); Hq.grain(c, W, HH, t, 0.045); return; }
   if (L === 'S4' && t > SP.s4_m.t + 0.3 && t < endOf('s4_m') + 0.2) K.pop(c, t, 'ОНА ВСЁ ПОНЯЛА!', SP.s4_m.t + 0.4, endOf('s4_m') + 0.1, 540, 1730, C.gold, -0.04, 70);
   K.bubbles(c, t, sc, heads, proj, { heroine: 'lena', cleanChunks: true, names, hold: { s2_v: 0.3, s3_n: 0.3, s3_l3: 0.9, s4_v: 0.6, s4_l: 0.3, s4_n: 0.3 } });
   recap(c, t);

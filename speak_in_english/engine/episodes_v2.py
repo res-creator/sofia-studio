@@ -2512,6 +2512,7 @@ EP["momshow"] = dict(
     hook_title=[['КОГДА МАМА', 'd'], ['ХВАСТАЕТСЯ', 'p'], ['ТВОИМ АНГЛИЙСКИМ', 'd']],
     stamp="", stamp_word="", next=None, camera="hard_cut",
     lines=[
+        ('intro', 'nar', 'Мама решила похвастаться английским дочери. И зря!', ''),
         ('hook_m', 'tanya', '[proudly, loudly] Lena! Stand up! Say something in English for Aunt Vera!', 'Лена! Встань! Скажи что-нибудь по-английски для тёти Веры!'),
         ('hook_v', 'vera', '[posh, amused] Go on, darling. Impress me.', 'Давай, дорогая. Удиви меня.'),
         ('s1_l', 'lena', '[nervously] Mom... you\'re putting me on the spot.', 'Мам… ты ставишь меня в неловкое положение.'),
@@ -2529,6 +2530,17 @@ EP["momshow"] = dict(
         ('s4_l', 'lena', '[tiny voice] ...Oh no.', '…О нет.'),
         ('s4_m2', 'tanya', '[sweetly, firmly] Lena. Kitchen. Now. And bring the store salad.', 'Лена. На кухню. Живо. И неси магазинный салат.'),
         ('s4_n', 'nigel', '[deadpan, raising his glass] Best dinner ever.', 'Лучший ужин в моей жизни.'),
+        ('outro', 'nar', 'А тебя тоже просили сказать что-нибудь на английском перед гостями?', ''),
     ],
+    chunks={   # long lines: short synced bubbles so the Russian line stays big on a phone
+        'hook_m': [['Lena! Stand up!', 'Лена! Встань!'], ['Say something in English for Aunt Vera!', 'Скажи что-нибудь по-английски для тёти Веры!']],
+        's2_l': [['Between you and me, Aunt Vera...', 'Между нами, тётя Вера…'], ['the salad is from the store.', '…салат из магазина.']],
+        's3_l': [["And Dad didn't go out for bread.", 'А папа не за хлебом ушёл.'], ["He's hiding in the garage till you leave.", 'Он прячется в гараже, пока вы не уедете.']],
+        's3_l2': [['And Mom is just showing off.', 'А мама просто хвастается.'], ['She does this every time you visit.', 'Каждый раз, когда вы приезжаете.']],
+        's3_l3': [['Mom thinks I study English every night.', 'Мама думает, что я каждый вечер учу английский.'], ['I actually watch Netflix.', 'А на самом деле смотрю Netflix.']],
+        's4_v': [['Tanya, darling...', 'Таня, дорогая…'], ['do you know what she just said?', '…а ты знаешь, что она сейчас сказала?']],
+        's4_m': [['Every single word, Vera.', 'Каждое слово, Вера.'], ["I've been learning English for a year.", 'Я уже год учу английский.']],
+        's4_m2': [['Lena. Kitchen. Now.', 'Лена. На кухню. Живо.'], ['And bring the store salad.', 'И неси магазинный салат.']],
+    },
     cards={},
 )

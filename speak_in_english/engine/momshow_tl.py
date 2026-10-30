@@ -11,8 +11,9 @@ def scene(i, s, e, **ev): scenes.append(dict(id=i, s=round(s, 3), e=round(e, 3),
 def st(lid): return next(x["t"] for x in speech if x["id"] == lid)
 
 # ---- hook: Mom yanks Lena up from her chair, a spotlight lands on her, Aunt Vera waits with her teacup
-cue("whoosh", 0.0, 0.4)
-t = say("hook_m", 0.35); up = 0.35 + D["hook_m"] * 0.28; cue("boing", up, 0.45); spot = t + 0.05; cue("impact_soft", spot, 0.6)
+# Sarah's Russian intro plays over the action (Mom lifts Lena up in front of the guests); nothing else sounds on her voice
+t = say("intro", 0.3); up = 0.3 + D["intro"] * 0.3
+t = say("hook_m", t + 0.3); spot = t + 0.05; cue("impact_soft", spot, 0.6)
 t = say("hook_v", spot + 0.85); cue("sparkle", spot + 0.3, 0.35); scene("hook", 0, t + 0.3, up=up, spot=spot); s = t + 0.3
 # ---- S1: put on the spot
 cue("gulp", s + 0.05, 0.5); t = say("s1_l", s + 0.55); t = say("s1_m", t + 0.3); scene("S1", s, t + 0.3); s = t + 0.3
@@ -28,10 +29,11 @@ t = say("s4_m", down + 0.45); ph = st("s4_m") + D["s4_m"] * 0.55; cue("ding", ph
 t = say("s4_l", t + 0.95); cue("gulp", t + 0.05, 0.6)
 t = say("s4_m2", t + 0.5); walk = t + 0.15; cue("whoosh", walk + 0.2, 0.4)
 t = say("s4_n", walk + 1.8); clink = t + 0.1; cue("ding", clink, 0.6)
-# ---- recap: the three phrases pop in over the wide shot while Nigel sips, then the question to the viewer
+# ---- recap: the three phrases pop in over the wide shot, then Sarah asks the viewer (after Nigel and the pops, never on top of them)
 r0 = clink + 0.5
 for k in range(3): cue("pop", r0 + 0.55 * k, 0.5)
-end = r0 + 4.3; scene("S4", s, end, cut=cut, down=down, phone=ph, walk=walk, clink=clink, recap=r0); t = end
+ask = r0 + 1.1 + 0.55; t = say("outro", ask)
+end = t + 1.3; scene("S4", s, end, cut=cut, down=down, phone=ph, walk=walk, clink=clink, recap=r0, ask=ask); t = end
 
 for sp in speech:
     x, sr = sf.read(f"{VO}/{sp['id']}.wav"); hop = sr // FPS; n = int(np.ceil(len(x) / hop))
@@ -42,6 +44,6 @@ for sp in speech:
     tot = sum(wts) + sum(pz[:-1]); cc = 0; wt = []
     for w, a, p_ in zip(words, wts, pz): t0 = cc / tot * sp["d"]; cc += a; wt.append([w, round(t0, 3), round(cc / tot * sp["d"], 3)]); cc += p_
     sp["words"] = wt
-cfg = {k: E.get(k) for k in ["title", "hook_title", "stamp", "next", "cards", "camera"]}; cfg["setting"] = EPN
+cfg = {k: E.get(k) for k in ["title", "hook_title", "stamp", "next", "cards", "camera", "chunks"]}; cfg["setting"] = EPN
 json.dump(dict(fps=FPS, dur=round(t, 3), ep=EPN, cfg=cfg, scenes=scenes, speech=speech, sfx=sfx), open(f"eps/{EPN}/timeline.json", "w"), ensure_ascii=False)
 print(f"{EPN} duration {t:.1f}s")
