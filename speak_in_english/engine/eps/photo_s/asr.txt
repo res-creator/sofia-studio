@@ -1,0 +1,35 @@
+hook_h2    0.25  2.49 | Why do I look like that?
+hook_h     3.24  2.62 | Can you take one good picture of me?
+hook_f     6.02  1.20 | Of course!
+a1_f       9.07  0.64 | Smile!
+a1_h2     11.31  2.09 | My eyes are closed.
+a1_nar    13.79  3.14 | А один. My eyes are closed. У меня закрыта глаза.
+a2_h      18.25  1.55 | Can you take another one?
+a2_f      19.94  1.88 | Sure, move a little to the left.
+a2_h2     23.91  1.19 | Where am I?
+a2_f4     25.25  1.94 | The background looks amazing.
+a2_nar    27.58  4.24 | А2. Can you take another one? Можешь сделать ещё одну? Запоминай.
+a2_tip    31.96  1.07 | Can you take another one?
+b1_h2     36.63  1.67 | Why are you lying on the ground?
+b1_f2     38.44  2.24 | I'm looking for the perfect angle.
+b1_h3     42.28  2.61 | That is not my good angle.
+b1_nar    45.29  2.82 | Be Odin - The Perfect Angle - идеальный ракурс.
+b2_h      49.43  1.94 | Just make sure nothing blocks my face.
+b2_h2     53.37  3.11 | You took a picture of a pigeon!
+b2_f3     56.62  1.89 | Technically, you're in it too.
+b2_nar    58.91  3.10 | Bye 2. Block my face. Закрывать мое лицо.
+c1_h      63.06  5.84 | I've been standing here for half an hour, and we still haven't taken a single decent photo.
+c1_f2     69.04  0.87 | Wait a second.
+c1_h3     71.91  2.48 | But why are people liking that picture?
+c1_f3     74.53  1.68 | I posted it as a joke.
+c1_nar    76.61  5.28 | C1 - a single decent photo, хоть одна приличная фотография. Запоминай!
+c1_tip    82.03  1.58 | A single decent photo.
+c2_f      85.31  1.57 | You're not going to believe this.
+c2_h2     88.88  5.09 | After everything we've been through, you're telling me the pigeon became famous?
+c2_f3     94.12  2.77 | Apparently people find him incredibly photogenic.
+c2_m2     97.87  2.56 | We'd love to offer him a modeling contract.
+c2_h4    100.57  2.32 | A modeling contract?
+c2_h5    104.89  3.77 | Can we please take one normal photo of me now?
+c2_f5    108.81  2.20 | Sure, just move a little to the left.
+c2_nar   113.01  4.62 | Си-два. After everything we've been through, после всего, через что мы прошли.
+outro    118.36  2.30 | Пиши в комментариях и подпишись!

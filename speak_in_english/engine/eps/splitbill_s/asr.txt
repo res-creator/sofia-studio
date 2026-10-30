@@ -1,0 +1,35 @@
+hook_h     0.55  2.61 | Why is it $300?
+hook_h2    3.31  2.37 | Somebody is lying.
+a1_f       8.03  0.86 | Let's split it.
+a1_h3     10.39  1.74 | 100 each.
+a1_nar    12.53  3.10 | А1. Let's split the bill. Давайте разделим счёт.
+a2_h      16.88  2.17 | But I only had a salad.
+a2_f2     19.35  0.98 | I had the steak.
+a2_h2     20.53  3.25 | Your stake was $80.
+a2_nar    24.18  3.95 | А два. I only had a salad. Я съела только салат. Запоминай.
+a2_tip    28.27  1.18 | I only had a salad.
+b1_f      30.50  2.00 | Why don't we just pay for what we ordered?
+b1_f3     34.82  2.59 | Who ate the last mozzarella stick?
+b1_nar    38.80  3.82 | Pay for what we ordered, заплатить за то, что заказали.
+b2_w      44.65  1.31 | Is everything alright over here?
+b2_h      46.10  3.36 | we're having a slight disagreement about how to divide the bill.
+b2_w3     49.60  2.01 | By the way, should I include the dessert?
+b2_w4     51.75  1.96 | The cheesecake we all shared earlier.
+b2_h3     53.86  2.44 | Wait, we all shared?
+b2_nar    57.50  2.14 | Бидва - a slight disagreement.
+c1_h      60.69  4.29 | Hold on. I seem to recall you joining us for dessert.
+c1_h2     66.44  2.13 | Yes, for one bite.
+c1_w2     68.71  2.17 | Well, the cheesecake was delicious.
+c1_nar    71.28  4.12 | C1. I seem to recall. Кажется, я припоминаю. Запоминай.
+c1_tip    75.54  1.18 | I seemed to recall.
+c2_h      78.35  5.37 | Considering that you've effectively become part of our dinner party, perhaps you should contribute to the bill.
+c2_w2     83.86  2.86 | In that case, I should probably mention something.
+c2_h3     86.86  0.72 | What?
+c2_w3     88.58  1.15 | I ordered the lobster.
+c2_h4     91.33  1.86 | You ordered what?
+c2_h5     93.33  2.30 | You're supposed to be our waiter!
+c2_w5     95.77  2.87 | Not anymore. My shift ended 20 minutes ago.
+c2_w6     99.14  2.13 | So shall we split at four ways?
+c2_all   101.47  0.98 | No!
+c2_nar   102.85  2.81 | Сидва, considering that, учитывая что?
+outro    106.39  2.20 | Пиши в комментариях и подпишись!

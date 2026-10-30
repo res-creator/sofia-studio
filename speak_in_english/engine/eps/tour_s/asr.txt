@@ -1,0 +1,31 @@
+hook_h2    0.05  1.90 | Why is everyone following me?
+hook_t     2.45  2.58 | Excuse me, are you a tour guide?
+hook_h     5.23  1.53 | No, I'm just...
+a1_t       8.62  1.39 | Where is the museum?
+a1_h2     11.71  2.43 | Maybe this way.
+a1_nar    14.54  2.90 | А1. Может быть, это путь туда.
+a2_t2     18.85  2.03 | Yes, she's our guide.
+a2_t3     21.02  1.88 | Wonderful! Can we join?
+a2_nar    24.30  3.72 | А2 – Can we join? Можно присоединиться. Запоминай.
+a2_tip    28.16  0.61 | Can we join
+b1_t      30.76  2.67 | Can you tell us something about this building?
+b1_h      33.57  2.69 | This building is very old.
+b1_h3     37.25  2.56 | I have no idea what I'm doing.
+b1_nar    40.21  2.52 | Бедин, I have no idea, понятия не имею
+b2_t      44.06  4.87 | Could you explain why this place is so historically significant?
+b2_h2     50.13  3.82 | People have been reading books here for a very long time.
+b2_nar    55.25  3.34 | B2 – historically significant исторически значимый.
+c1_t      59.92  4.62 | I must say, your knowledge of the city is remarkably impressive.
+c1_h      64.68  3.83 | I appreciate that, but I should probably clarify something.
+c1_t4     68.95  2.74 | Everyone, she's so humble.
+c1_nar    73.20  5.51 | C1. I should probably clarify something. Мне, пожалуй, стоит кое-что прояснить. Запоминай.
+c1_tip    78.85  1.82 | I should probably clarify something.
+c2_h      82.35  7.63 | Before this misunderstanding gets completely out of hand, I need to make something perfectly clear. I am not a tour guide.
+c2_g      91.98  2.26 | Excuse me, I've been looking for you.
+c2_g3     94.38  2.46 | Actually, would you mind covering my shift?
+c2_h4     96.99  0.74 | What?
+c2_g4     97.87  1.53 | They seem to like you more.
+c2_c     100.10  2.50 | Best tour ever!
+c2_h5    103.42  1.74 | away from you!
+c2_nar   106.36  3.92 | C2 Get out of hand Выйти из подконтроля
+outro    111.01  1.99 | Пиши в комментариях и подпишись
