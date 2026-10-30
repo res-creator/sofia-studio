@@ -1,0 +1,24 @@
+// Cast & props lineup for QC: node lineup.js cast.png props.png
+const { createCanvas } = require('@napi-rs/canvas'); const fs = require('fs');
+const S = require('./emukit'); const R = require('../hirkit/rig');
+const cv = createCanvas(1080, 1920), c = cv.getContext('2d');
+S.land(c, 0, { hy: 700, windmill: { x: 850 }, house: { x: 200 }, fence: {}, eaten: 0.3, dam: { x: 540, y: 820, w: 500 } });
+c.save(); c.translate(200, 1000); c.scale(0.6, 0.6); S.emu(c, { lid: 0.4 }); c.restore();
+c.save(); c.translate(500, 1000); c.scale(0.6, 0.6); S.emu(c, { phase: 1, stride: 1 }); c.restore();
+c.save(); c.translate(820, 1000); c.scale(0.6, 0.6); S.emu(c, { peck: 1, eat: 1 }); c.restore();
+S.person(c, 150, 1500, 1.1, 1, S.SOL, { face: R.expr('smug') }, S.HAT_ARMY);
+S.person(c, 380, 1500, 1.1, 1, S.MAJOR, { face: R.expr('neutral') }, S.HAT_ARMY);
+S.person(c, 600, 1500, 1.1, -1, S.FARMER, { face: R.expr('worried') }, S.HAT_FARM);
+c.save(); c.translate(800, 1300); c.scale(0.5, 0.5); S.lewisGun(c, { bipod: 170, flash: 1, smoke: 0.4 }); c.restore();
+c.save(); c.translate(540, 1850); c.scale(0.5, 0.5); S.truck(c, {}); c.restore();
+c.save(); c.translate(900, 1700); c.scale(0.7,0.7); S.emuFace(c, { lid: 0.45 }); c.restore();
+S.personBust(c, 200, 1780, 0.8, S.MAJOR, { face: R.expr('smug') }, S.HAT_ARMY);
+fs.writeFileSync(process.argv[2], cv.toBuffer('image/png'));
+const cv2 = createCanvas(1080, 1920), d = cv2.getContext('2d'); d.fillStyle = '#E9E2D2'; d.fillRect(0,0,1080,1920);
+d.save(); d.translate(540, 400); S.ausMap(d, 1); S.pin(d, S.CAMPION[0], S.CAMPION[1], 1); d.restore();
+d.save(); d.translate(250, 950); S.calCard(d, 'NOV 1932', 'DAY 3'); d.restore();
+d.save(); d.translate(780, 950); S.crate(d, 0.6, '10,000 ROUNDS'); d.restore();
+d.save(); d.translate(540, 1500); d.scale(0.6,0.6); S.report(d, [['EMUS KILLED', '986', 1], ['ROUNDS USED', '9,860', 1]], { note: '(his count)' }); d.restore();
+d.save(); d.translate(200, 1300); S.pound(d, 0.7); d.restore(); d.save(); d.translate(880, 1350); S.payEnv(d, 0.6); d.restore();
+d.save(); d.translate(880, 1700); d.scale(0.4,0.4); S.poster(d); d.restore(); d.save(); d.translate(200, 1700); S.slip(d, 0.8); d.restore();
+fs.writeFileSync(process.argv[3], cv2.toBuffer('image/png'));
