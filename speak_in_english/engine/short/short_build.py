@@ -18,7 +18,7 @@ SP = {s["id"]: s for s in TL["speech"]}; SCN = {s["id"]: s for s in TL["scenes"]
 DROP = set(PLAN.get("drop", [])); KEEP = PLAN.get("keep", {})
 PMAX, PKEEP, TAIL, HEAD = PLAN.get("pmax", 0.42), PLAN.get("pkeep", 0.3), 0.07, 0.04
 DGAP, LEAD, GAP_NAR, SCENE_END = PLAN.get("dgap", 0.14), PLAN.get("lead", 0.2), PLAN.get("gap_nar", 0.4), PLAN.get("scene_end", 0.35)
-INTRO_FULL = 1.15; INTRO = PLAN.get("intro", 0.85); OUTRO_LEAD = PLAN.get("outro_lead", 0.5)   # the level-intro overlay is started 0.3 s late by the renderer (SHORT), so only 0.85 s of the 1.15 s remain
+INTRO_FULL = 1.15; INTRO = PLAN.get("intro", 1.15); OUTRO_LEAD = PLAN.get("outro_lead", 0.5)   # the level-intro overlay is started 0.3 s late by the renderer (SHORT), so only 0.85 s of the 1.15 s remain
 LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"]
 
 
@@ -66,13 +66,14 @@ def edit_clip(cid):
 
 # ---------------------------------------------------------------- 1. clip edits and the removal intervals they imply
 KEPT = [s["id"] for s in TL["speech"] if s["id"] not in DROP]
-HOOK_IDS = [i for i, _ in PLAN["hook"]["items"]]
+CLASSIC = PLAN["hook"].get("mode") == "orig"
+HOOK_IDS = [s["id"] for s in TL["speech"] if s["id"].startswith("hook")] if CLASSIC else [i for i, _ in PLAN["hook"]["items"]]
 CLIP = {}; REM = []          # REM = removed intervals in ORIGINAL global time
 for cid in KEPT:
     if cid.startswith("hook") and cid not in HOOK_IDS: continue
     y, segs, nt = edit_clip(cid); CLIP[cid] = dict(y=y, segs=segs, nt=nt)
     t0 = SP[cid]["t"]; end = t0 + SP[cid]["d"]; prev = 0.0
-    if not cid.startswith("hook"):
+    if CLASSIC or not cid.startswith("hook"):
         for a, b in segs:
             if a > prev + 1e-3: REM.append((t0 + prev, t0 + a))
             prev = b
@@ -107,12 +108,12 @@ def markers(s):   # cue times that must keep their distance to the neighbouring 
     return m
 
 
-for L in LEVELS + ["outro"]:
+for L in (["hook"] if CLASSIC else []) + LEVELS + ["outro"]:
     sc = SCN[L]; items = [s for s in TL["speech"] if sc["s"] <= s["t"] < sc["e"] and s["id"] not in DROP]
-    p0 = sc["s"] + (OUTRO_LEAD if L == "outro" else INTRO); mk = markers(L); prev_end = p0
+    p0 = sc["s"] + (OUTRO_LEAD if L == "outro" else 0.0 if L == "hook" else INTRO); mk = markers(L); prev_end = p0
     for k, s in enumerate(items):
         cid = s["id"]; segs = CLIP[cid]["segs"]; ts = s["t"] + segs[0][0]
-        g = PLAN.get("gap", {}).get(cid, LEAD if k == 0 else GAP_NAR if s["who"] == "nar" else DGAP)
+        g = PLAN.get("gap", {}).get(cid, (0.45 if L == "hook" else LEAD) if k == 0 else GAP_NAR if s["who"] == "nar" else DGAP)
         G = (prev_end, ts); silent = subtract(G[0], G[1], REM)
         total = sum(b - a for a, b in silent); prot = merge([(m - 0.12, m + 0.4) for m in mk if G[0] - 0.05 <= m <= G[1] + 0.05])
         keep_zones = merge([(max(a, G[0]), min(b, G[1])) for a, b in prot]); mand = 0.0
@@ -129,7 +130,7 @@ for L in LEVELS + ["outro"]:
                 if cut <= 0.0: continue
                 m_ = (a + b) / 2; REM.append((m_ - cut / 2, m_ + cut / 2)); need -= cut
         prev_end = s["t"] + segs[-1][1]
-    tail = (prev_end + (PLAN.get("outro_tail", 1.0) if L == "outro" else SCENE_END), sc["e"])
+    tail = (prev_end + (PLAN.get("outro_tail", 1.0) if L == "outro" else PLAN.get("hook_end", 0.45) if L == "hook" else SCENE_END), sc["e"])
     if tail[1] > tail[0] + 1e-3: REM.append(tail)
 
 for L in LEVELS: REM.append((SCN[L]["s"] + INTRO, SCN[L]["s"] + INTRO_FULL))
@@ -149,11 +150,14 @@ def warp(t, drop_inside=False):
 # ---------------------------------------------------------------- 3. hook (explicit spec) + shortened levels
 H = PLAN["hook"]; hook_t = {}; t = H.get("lead", 0.0)
 hook_speech = []
-for cid, gap in H["items"]:
-    t += gap; hook_t[cid] = t; y = CLIP[cid]["y"]; d = len(y) / SR; hook_speech.append((cid, t, d)); t += d
-hook_end = t + H.get("end_gap", 0.5)
-base = warp(SCN["A1"]["s"]); T_H = hook_end
-mapt = lambda tt: T_H + warp(tt) - base
+if CLASSIC:   # the original hook (cover -> lines -> cut -> narrator) with only its dead air trimmed: mapped through the same warp as the levels
+    hook_end = warp(SCN["A1"]["s"]); mapt = warp
+else:
+    for cid, gap in H["items"]:
+        t += gap; hook_t[cid] = t; y = CLIP[cid]["y"]; d = len(y) / SR; hook_speech.append((cid, t, d)); t += d
+    hook_end = t + H.get("end_gap", 0.5)
+    base = warp(SCN["A1"]["s"]); T_H = hook_end
+    mapt = lambda tt: T_H + warp(tt) - base
 
 
 def env_of(y):
@@ -175,7 +179,7 @@ for cid, t0, d in hook_speech:
 removed = {}
 for s in TL["speech"]:
     cid = s["id"]
-    if cid.startswith("hook"): continue
+    if cid.startswith("hook") and not CLASSIC: continue
     if cid in DROP: removed[cid] = round(mapt(s["t"]), 3); continue
     sp = dict(s); y = CLIP[cid]["y"]; sp.update(t=round(mapt(s["t"] + CLIP[cid]["segs"][0][0]), 3), d=round(len(y) / SR, 3), env=env_of(y), words=new_words(cid, s)); speech.append(sp)
 for cid in [c for c in SP if c.startswith("hook") and c not in HOOK_IDS]: removed[cid] = 0.0
@@ -187,21 +191,24 @@ sfx = []
 for c in H.get("sfx", []):
     ref, off = c[1], c[2]; sfx.append(dict(n=c[0], t=round((hook_t[ref] if ref in hook_t else (hook_end if ref == "END" else 0.0 if ref == "START" else float(ref))) + off, 3), g=c[3]))
 for c in TL["sfx"]:
-    if c["t"] < SCN["A1"]["s"] - 0.001: continue
+    if c["t"] < SCN["A1"]["s"] - 0.001 and not CLASSIC: continue
     w = warp(c["t"], drop_inside=True)
     if w is not None: sfx.append(dict(n=c["n"], t=round(mapt(c["t"]), 3), g=c["g"]))
 sfx.sort(key=lambda c: c["t"])
 
 scenes = []
-hev = {k: round((hook_t[v[0]] if v[0] in hook_t else 0.0 if v[0] == "START" else hook_end) + v[1], 3) for k, v in H.get("ev", {}).items()}
-st = H.get("stamp", ["END", -0.3]); stamp_t = (hook_t[st[0]] if st[0] in hook_t else 0.0 if st[0] == "START" else hook_end) + st[1]
+if CLASSIC:
+    hev = {k: round(mapt(v), 3) for k, v in SCN["hook"].get("ev", {}).items()}; stamp_t = mapt(SCN["hook"]["stamp_t"])
+else:
+    hev = {k: round((hook_t[v[0]] if v[0] in hook_t else 0.0 if v[0] == "START" else hook_end) + v[1], 3) for k, v in H.get("ev", {}).items()}
+    st = H.get("stamp", ["END", -0.3]); stamp_t = (hook_t[st[0]] if st[0] in hook_t else 0.0 if st[0] == "START" else hook_end) + st[1]
 scenes.append(dict(id="hook", s=0.0, e=round(hook_end, 3), stamp_t=round(stamp_t, 3), ev=hev))
 for L in LEVELS + ["outro"]:
     sc = SCN[L]; s2 = dict(id=L, s=round(mapt(sc["s"]) if L != "A1" else hook_end, 3), e=round(mapt(sc["e"]), 3))
     if "ev" in sc: s2["ev"] = {k: (round(mapt(v), 3) if not isinstance(v, list) else [round(mapt(q), 3) for q in v]) for k, v in sc["ev"].items()}
     scenes.append(s2)
 dur = scenes[-1]["e"]
-cfg = dict(TL["cfg"]); cfg["short"] = True
+cfg = dict(TL["cfg"]); cfg["short"] = True; cfg["classic_hook"] = CLASSIC; cfg["intro_u"] = INTRO
 if cfg.get("chunks"):   # long lines shown as meaning chunks: keep only the chunks whose words are still in the (trimmed) clip
     cfg["chunks"] = dict(cfg["chunks"]); kept_n = {sp["id"]: len(sp["words"]) for sp in speech}
     for cid, ch in list(cfg["chunks"].items()):

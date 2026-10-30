@@ -10,8 +10,8 @@ const TL = JSON.parse(fs.readFileSync(`eps/${SLUG}/timeline.json`, 'utf8'));
 const UI = makeUI(TL); const { SP, SC, sceneAt, C } = UI; const K = require('./ep_kit')(TL, UI); K.stripTags();
 const { talk, speaking, endOf } = K;
 if (TL.removed) for (const [id, tt] of Object.entries(TL.removed)) if (!SP[id]) SP[id] = { id, t: tt, d: 0.001, who: '', words: [], text: '', env: [0] };   // lines cut from the short version: keep the lookups the scene logic does by id
-if (SHORT) { const li = UI.levelIntro; UI.levelIntro = (c, t, sc) => li(c, t + 0.3, sc); }   // level intro starts 0.3 s in (0.85 s instead of 1.15 s)
-const INTRO_U = SHORT ? 0.85 : 1.15;
+if (SHORT) { const li = UI.levelIntro; UI.levelIntro = (c, t, sc) => li(c, t + (1.15 - (TL.cfg.intro_u || 1.15)), sc); }   // level intro starts 0.3 s in (0.85 s instead of 1.15 s)
+const INTRO_U = SHORT ? (TL.cfg.intro_u || 1.15) : 1.15, HOOKFX = SHORT && !TL.cfg.classic_hook;   // HOOKFX: the new flash-forward hook (off = the original hook)
 const W = 1080, HH = 1920, FPS = 30, NF = Math.ceil(TL.dur * FPS), TAU = Math.PI * 2;
 const ev = (L, k) => ((SC[L] || {}).ev || {})[k] ?? 1e9;
 const hev = k => SC.hook.ev[k];
@@ -164,7 +164,7 @@ const SH = { COVER: S(110, fy(dHY('her'), 0.64, 1190), 0.64, 'tbl'), WIDE: S(110
   RECEIPT: U('receipt', 1), CALC: U('calc', 2) };
 function shotHard(t) { const sc = sceneAt(t), L = sc.id, f = s => ({ ...s, force: true }), e = k => ev(L, k); if (L === 'outro') return SH.WIDE;
   const sp = id => speaking(id, t, 0.1, 0.15);
-  if (L === 'hook' && SHORT) { if (t < SP.hook_h.t - 0.05) return f(SH.RECEIPT); return f(SH.HER_CU_H); }
+  if (L === 'hook' && HOOKFX) { if (t < SP.hook_h.t - 0.05) return f(SH.RECEIPT); return f(SH.HER_CU_H); }
   if (L === 'hook') { if (t < hev('bill') - 0.05) return SH.COVER; if (t < SP.hook_h.t - 0.1) return f(SH.RECEIPT); return f(SH.HER_CU_H); }
   const u = t - sc.s, l = L.toLowerCase(), nar = SP[l + '_nar'];
   if (u < INTRO_U) return f(SH.WIDE);
@@ -190,7 +190,7 @@ function drawWorld(c, t, L, cam, tag, sh = { x: 0, y: 0, r: 0 }) { c.save(); c.t
 function backdrop(c, id) { const g = c.createLinearGradient(0, 0, 0, HH); g.addColorStop(0, '#2B3040'); g.addColorStop(1, '#171A24'); c.fillStyle = g; c.fillRect(0, 0, W, HH); if (global.__QA) global.__QA.ui(c, 'insert', { x: 0, y: 0, w: W, h: HH, k: 1, id }); }
 function caption(c, s, k = 1, y = 1530, col = C.pinkL) { if (k <= 0) return; c.save(); c.globalAlpha = k; UI.textFit(c, 'Nun9', 46, s, 960); c.textAlign = 'center'; c.textBaseline = 'middle'; UI.strokeText(c, s, 540, y, col, C.oliveD, 10); c.restore(); }
 const ROWS = [['SALAD', 15], ['BURGER', 25], ['STEAK', 80], ['APPETIZERS', 30], ['CHEESECAKE', 30], ['LOBSTER', 120]];
-function receiptView(c, t, L) { backdrop(c, 'receipt'); const a = L === 'hook' ? hev('bill') - (SHORT ? 0.25 : 0) : L === 'A1' ? ev('A1', 'total') : ev('C2', 'lob'), full = L === 'C2', k = eBack(P(t, a, a + 0.3), 1.6);
+function receiptView(c, t, L) { backdrop(c, 'receipt'); const a = L === 'hook' ? hev('bill') - (HOOKFX ? 0.25 : 0) : L === 'A1' ? ev('A1', 'total') : ev('C2', 'lob'), full = L === 'C2', k = eBack(P(t, a, a + 0.3), 1.6);
   const dy = L === 'hook' ? 270 : 0; c.save(); c.translate(540, 900 + dy); c.rotate(-0.02); c.scale(k, k); const h = full ? 1100 : 760;
   c.fillStyle = '#FFFDF8'; c.beginPath(); c.moveTo(-380, -h / 2); for (let i = 0; i <= 19; i++) c.lineTo(-380 + i * 40, -h / 2 + (i % 2 ? 22 : 0)); c.lineTo(380, h / 2); for (let i = 19; i >= 0; i--) c.lineTo(-380 + i * 40, h / 2 - (i % 2 ? 22 : 0)); c.closePath(); c.fill();
   fitTxt(c, 'THE GOLDEN FORK', 0, -h / 2 + 90, 54, '#2B2F3A', 640); fitTxt(c, 'TABLE 7  •  4 SEATS', 0, -h / 2 + 150, 32, '#8A8480', 640);
@@ -227,7 +227,7 @@ function renderFrame(c, t) {
   const names = { fr1: ['FRIEND', '#E27D3C'], fr2: ['FRIEND 2', '#3C6FB4'], wtr: ['WAITER', '#2F3E5C'], friends: ['ALL', '#EE5E9A'] };
   if (L === 'hook') { if (tag === 'tbl' && t < hev('bill') - 0.02) coverBadge(c, t);
     const hookProj = p => { const q = proj(p); return q.x < 0 || q.x > W ? { x: q.x < 0 ? 60 : W - 60, y: 1050 } : q; };
-    if (!tag.startsWith('ui:')) K.bubbles(c, t, { id: 'hook' }, heads, hookProj, { cleanChunks: true, names, hold: { hook_f: -0.2, hook_h: 0.1, hook_h2: SHORT ? 0 : 0.6 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
+    if (!tag.startsWith('ui:')) K.bubbles(c, t, { id: 'hook' }, heads, hookProj, { cleanChunks: true, names, hold: { hook_f: -0.2, hook_h: 0.1, hook_h2: HOOKFX ? 0 : 0.6 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
     Hq.grain(c, W, HH, t, 0.045); UI.sparkles(c, t); UI.levelIntroNext(c, t); return; }
   const e = k => ev(L, k), narT = (SP[L.toLowerCase() + '_nar'] || { t: 1e9 }).t;
   if (tag === 'flash') { caption(c, '*ЧАС НАЗАД: друг угощает официанта чизкейком*', clamp(P(t, e('flash') + 0.1, e('flash') + 0.3)) * (1 - clamp(P(t, e('sit') + 0.9, e('sit') + 1.1))), 1740, C.white); K.pop(c, t, 'ЧИЗКЕЙК!', e('flash') + 0.4, e('sit') - 0.3, 540, 1330, C.gold, -0.06, 80); }

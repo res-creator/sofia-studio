@@ -10,12 +10,12 @@ const TL = JSON.parse(fs.readFileSync(`eps/${SLUG}/timeline.json`, 'utf8'));
 const UI = makeUI(TL); const { SP, SC, sceneAt, C } = UI; const K = require('./ep_kit')(TL, UI); K.stripTags();
 const { talk, speaking, endOf } = K;
 if (TL.removed) for (const [id, tt] of Object.entries(TL.removed)) if (!SP[id]) SP[id] = { id, t: tt, d: 0.001, who: '', words: [], text: '', env: [0] };   // lines cut from the short version: keep the lookups the scene logic does by id
-if (SHORT) { const li = UI.levelIntro; UI.levelIntro = (c, t, sc) => li(c, t + 0.3, sc); }   // level intro starts 0.3 s in (0.85 s instead of 1.15 s)
-const INTRO_U = SHORT ? 0.85 : 1.15;
+if (SHORT) { const li = UI.levelIntro; UI.levelIntro = (c, t, sc) => li(c, t + (1.15 - (TL.cfg.intro_u || 1.15)), sc); }   // level intro starts 0.3 s in (0.85 s instead of 1.15 s)
+const INTRO_U = SHORT ? (TL.cfg.intro_u || 1.15) : 1.15, HOOKFX = SHORT && !TL.cfg.classic_hook;   // HOOKFX: the new flash-forward hook (off = the original hook)
 const W = 1080, HH = 1920, FPS = 30, NF = Math.ceil(TL.dur * FPS), TAU = Math.PI * 2;
 const ev = (L, k) => ((SC[L] || {}).ev || {})[k] ?? 1e9;
 const hev = k => SC.hook.ev[k];
-const hookFF = t => SHORT ? t < hev('back') - 0.05 : t > hev('cut') - 0.1;                // hook: the "847 photos" phase (short cut: flash-forward at the very start)
+const hookFF = t => HOOKFX ? t < hev('back') - 0.05 : t > hev('cut') - 0.1;                // hook: the "847 photos" phase (short cut: flash-forward at the very start)
 
 // ---------------- cast
 const HER = { ...BASE.her_market };
@@ -148,7 +148,7 @@ const SH = { COVER: S(250, fy(hUp, 0.6, 1210), 0.6, 'park'), WIDE: S(300, -900, 
   PHOTO: U('photo', 1), PHONE: U('phone', 2), FEED: U('feed', 3), VIEWS: U('views', 4), FAMOUS: U('famous', 5), BLACK: U('black', 6) };
 function shotHard(t) { const sc = sceneAt(t), L = sc.id, f = s => ({ ...s, force: true }), e = k => ev(L, k); if (L === 'outro') return SH.WIDE;
   const sp = id => speaking(id, t, 0.1, 0.15);
-  if (L === 'hook' && SHORT) { if (t < 1.0) return f(SH.PHONE); if (t < hev('back') - 0.02) return f(SH.HER_CU_H); return f(SH.COVER); }
+  if (L === 'hook' && HOOKFX) { if (t < 1.0) return f(SH.PHONE); if (t < hev('back') - 0.02) return f(SH.HER_CU_H); return f(SH.COVER); }
   if (L === 'hook') { if (t < hev('cut') - 0.05) return SH.COVER; if (t < SP.hook_h2.t - 0.1) return f(SH.PHONE); return f(SH.HER_CU_H); }
   const u = t - sc.s, l = L.toLowerCase(), nar = SP[l + '_nar'];
   if (u < INTRO_U) return f(SH.WIDE);
@@ -196,9 +196,9 @@ function photoView(c, t, L) { backdrop(c, 'photo'); const [kind, lab, ang] = PH[
   const f = flashAmt(t); if (f > 0) { c.fillStyle = `rgba(255,255,255,${f * 0.8})`; c.fillRect(0, 0, W, HH); } }
 function gridThumbs(c, t, a) { const kinds = ['eyes', 'fountain', 'foot', 'pigeon', 'eyes', 'fountain', 'foot', 'pigeon', 'eyes']; kinds.forEach((kd, i) => { const col = i % 3, row = Math.floor(i / 3), k = eBack(P(t, a + 0.1 + i * 0.07, a + 0.4 + i * 0.07), 1.8); if (k <= 0) return;
   c.save(); c.translate(260 + col * 280, 1250 + row * 190); c.scale(k, k); c.beginPath(); c.rect(-120, -85, 240, 170); c.clip(); c.fillStyle = '#FFFDF8'; c.fillRect(-120, -85, 240, 170); c.save(); c.translate(0, 4); c.scale(0.19, 0.19); photoContent(c, kd, t); c.restore(); c.restore(); }); }
-function phoneView(c, t) { backdrop(c, 'phone'); const a = SHORT ? -0.25 : hev('cut'), k = eBack(P(t, a, a + 0.25), 1.6), n = Math.round(1 + 846 * eOut(P(t, a + 0.1, a + 1.1)));
+function phoneView(c, t) { backdrop(c, 'phone'); const a = HOOKFX ? -0.25 : hev('cut'), k = eBack(P(t, a, a + 0.25), 1.6), n = Math.round(1 + 846 * eOut(P(t, a + 0.1, a + 1.1)));
   c.save(); c.translate(540, 840); c.scale(k, k); c.fillStyle = '#FFFDF8'; c.strokeStyle = C.oliveD; c.lineWidth = 8; rr(c, -440, -150, 880, 300, 40); c.fill(); c.stroke(); fitTxt(c, 'PHOTOS TAKEN:', 0, -70, 56, '#3E471E', 780); fitTxt(c, String(n), 0, 45, 150, '#E0474C', 780); c.restore();
-  c.save(); c.fillStyle = '#12141A'; rr(c, 80, 1130, 920, 640, 36); c.fill(); c.restore(); gridThumbs(c, t, SHORT ? -0.8 : a + 0.2);
+  c.save(); c.fillStyle = '#12141A'; rr(c, 80, 1130, 920, 640, 36); c.fill(); c.restore(); gridThumbs(c, t, HOOKFX ? -0.8 : a + 0.2);
   caption(c, '*847 фотографий… и ни одной хорошей*', clamp(P(t, a + 1.0, a + 1.2)), 1045, C.white);
   const f = flashAmt(t); if (f > 0) { c.fillStyle = `rgba(255,255,255,${f * 0.6})`; c.fillRect(0, 0, W, HH); } }
 const fmt = n => Math.round(n).toLocaleString('en-US');
@@ -233,9 +233,9 @@ function renderFrame(c, t) {
   if (tag.startsWith('ui:')) { c.save(); c.translate(sh.x, sh.y); const v = tag.slice(3); if (v === 'photo') photoView(c, t, L); else if (v === 'phone') phoneView(c, t); else if (v === 'feed') feedView(c, t); else if (v === 'views') viewsView(c, t); else if (v === 'famous') famousView(c, t); c.restore(); heads = { her: OFFL, pfr: OFF, agent: OFF }; proj = p => p; }
   else { const r = drawWorld(c, t, L, cam, tag, sh); heads = r.heads; const M = r.M; proj = p => ({ x: M.a * p.x + M.c * p.y + M.e, y: M.b * p.x + M.d * p.y + M.f }); Hq.vignette(c, W, HH, 0.26); const f = flashAmt(t); if (f > 0) { c.fillStyle = `rgba(255,255,255,${f * 0.75})`; c.fillRect(0, 0, W, HH); } }
   const names = { pfr: ['FRIEND', '#3C8FE0'], agent: ['AGENCY', '#2F3E5C'] };
-  if (L === 'hook') { if (tag === 'park' && (SHORT ? t < SP.hook_f.t + SP.hook_f.d : t < SP.hook_h.t + 0.1)) coverBadge(c, t); if (SHORT && t >= hev('back') && t < hev('back') + 1.1) K.pop(c, t, '*ЧУТЬ РАНЬШЕ…*', hev('back') + 0.05, hev('back') + 1.0, 540, 1610, C.white, -0.04, 60);
+  if (L === 'hook') { if (tag === 'park' && (HOOKFX ? t < SP.hook_f.t + SP.hook_f.d : t < SP.hook_h.t + 0.1)) coverBadge(c, t); if (HOOKFX && t >= hev('back') && t < hev('back') + 1.1) K.pop(c, t, '*ЧУТЬ РАНЬШЕ…*', hev('back') + 0.05, hev('back') + 1.0, 540, 1610, C.white, -0.04, 60);
     const hookProj = p => { const q = proj(p); return q.x < 0 || q.x > W ? { x: q.x < 0 ? 60 : W - 60, y: 1050 } : q; };
-    if (!tag.startsWith('ui:')) K.bubbles(c, t, { id: 'hook' }, heads, hookProj, { cleanChunks: true, names, hold: { hook_h: -0.2, hook_f: -0.1, hook_h2: SHORT ? 0 : 0.6 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
+    if (!tag.startsWith('ui:')) K.bubbles(c, t, { id: 'hook' }, heads, hookProj, { cleanChunks: true, names, hold: { hook_h: -0.2, hook_f: -0.1, hook_h2: HOOKFX ? 0 : 0.6 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
     Hq.grain(c, W, HH, t, 0.045); UI.sparkles(c, t); UI.levelIntroNext(c, t); return; }
   const e = k => ev(L, k), narT = (SP[L.toLowerCase() + '_nar'] || { t: 1e9 }).t;
   if (L === 'A2' && t > e('mv1') && t < e('photo') - 0.1 && tag !== 'ui:photo') { K.pop(c, t, '← ЧУТЬ-ЧУТЬ →', e('mv1') + 0.05, e('photo') - 0.2, 540, 1330, C.pinkL, -0.05, 64); }

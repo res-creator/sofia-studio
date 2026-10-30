@@ -10,13 +10,13 @@ const TL = JSON.parse(fs.readFileSync(`eps/${SLUG}/timeline.json`, 'utf8'));
 const UI = makeUI(TL); const { SP, SC, sceneAt, C } = UI; const K = require('./ep_kit')(TL, UI); K.stripTags();
 const { talk, speaking, endOf } = K;
 if (TL.removed) for (const [id, tt] of Object.entries(TL.removed)) if (!SP[id]) SP[id] = { id, t: tt, d: 0.001, who: '', words: [], text: '', env: [0] };   // lines cut from the short version: keep the lookups the scene logic does by id
-if (SHORT) { const li = UI.levelIntro; UI.levelIntro = (c, t, sc) => li(c, t + 0.3, sc); }   // level intro starts 0.3 s in (0.85 s instead of 1.15 s)
-const INTRO_U = SHORT ? 0.85 : 1.15;
+if (SHORT) { const li = UI.levelIntro; UI.levelIntro = (c, t, sc) => li(c, t + (1.15 - (TL.cfg.intro_u || 1.15)), sc); }   // level intro starts 0.3 s in (0.85 s instead of 1.15 s)
+const INTRO_U = SHORT ? (TL.cfg.intro_u || 1.15) : 1.15, HOOKFX = SHORT && !TL.cfg.classic_hook;   // HOOKFX: the new flash-forward hook (off = the original hook)
 const W = 1080, HH = 1920, FPS = 30, NF = Math.ceil(TL.dur * FPS), TAU = Math.PI * 2;
 const ev = (L, k) => ((SC[L] || {}).ev || {})[k] ?? 1e9;
 const hev = k => SC.hook.ev[k];
-const hookFF = t => SHORT ? t < hev('back') : t > hev('cut');                       // hook: the crowd-follows-her phase (short cut: flash-forward at the very start)
-const hookHorror = t => SHORT ? t < hev('back') : t > hev('horror') - 0.1;
+const hookFF = t => HOOKFX ? t < hev('back') : t > hev('cut');                       // hook: the crowd-follows-her phase (short cut: flash-forward at the very start)
+const hookHorror = t => HOOKFX ? t < hev('back') : t > hev('horror') - 0.1;
 
 // ---------------- cast
 const HER = { ...BASE.her_london };
@@ -179,7 +179,7 @@ function chunkStarts(id) { const sp = SP[id], ch = (TL.cfg.chunks || {})[id]; if
   return ch.map(([en], i) => { const a = W8.length === tot ? W8[wi][1] : sp.d * i / ch.length; wi += cnt[i]; return sp.t + a; }); }
 function shotHard(t) { const sc = sceneAt(t), L = sc.id, f = s => ({ ...s, force: true }), e = k => ev(L, k); if (L === 'outro') return SH.WIDE;
   const sp = id => speaking(id, t, 0.1, 0.15);
-  if (L === 'hook') { if (SHORT) { if (t < hev('ff2')) return f(SH.WIDE_H); if (t < hev('back') - 0.02) return f(SH.HER_CU_H); return f(SH.COVER); } if (t < hev('cut') - 0.05) return SH.COVER; if (t < hev('horror') - 0.05) return f(SH.WIDE_H); return f(SH.HER_CU_H); }
+  if (L === 'hook') { if (HOOKFX) { if (t < hev('ff2')) return f(SH.WIDE_H); if (t < hev('back') - 0.02) return f(SH.HER_CU_H); return f(SH.COVER); } if (t < hev('cut') - 0.05) return SH.COVER; if (t < hev('horror') - 0.05) return f(SH.WIDE_H); return f(SH.HER_CU_H); }
   const u = t - sc.s, l = L.toLowerCase(), nar = SP[l + '_nar'], W_ = L === 'B1' || L === 'B2' ? SH.WIDE_LIB : L === 'C1' ? SH.WIDE_ST : L === 'C2' ? SH.WIDE_C2 : SH.WIDE;
   if (u < INTRO_U) return f(W_);
   if (L === 'C2' && t > e('black') - 0.03) return f(SH.BLACK);
@@ -233,9 +233,9 @@ function renderFrame(c, t) {
   heads.tguide = heads.guide || OFF;
   const names = { tst: ['TOURIST', '#E27D3C'], tst2: ['TOURIST 2', '#5E9E6E'], tguide: ['GUIDE', '#3C6FB4'], friends: ['CROWD', '#EE5E9A'] };
   const hp = proj;
-  if (L === 'hook') { if (tag === 'cover' && t < (SHORT ? SP.hook_h.t : SP.hook_t.t + 0.1)) coverBadge(c, t); if (SHORT && t < hev('back')) K.pop(c, t, 'СЛЕДУЮТ ЗА НЕЙ!', 0.1, hev('back') - 0.1, 540, 1610, C.gold, -0.06, 70); if (SHORT && t >= hev('back') && t < hev('back') + 1.1) K.pop(c, t, '*ЧУТЬ РАНЬШЕ…*', hev('back') + 0.05, hev('back') + 1.0, 540, 1610, C.white, -0.04, 60); if (t > hev('cut') + 0.1 && t < hev('horror')) K.pop(c, t, 'СЛЕДУЮТ ЗА НЕЙ!', hev('cut') + 0.1, hev('horror') - 0.1, 540, 1600, C.gold, -0.06, 70);
+  if (L === 'hook') { if (tag === 'cover' && t < (HOOKFX ? SP.hook_h.t : SP.hook_t.t + 0.1)) coverBadge(c, t); if (HOOKFX && t < hev('back')) K.pop(c, t, 'СЛЕДУЮТ ЗА НЕЙ!', 0.1, hev('back') - 0.1, 540, 1610, C.gold, -0.06, 70); if (HOOKFX && t >= hev('back') && t < hev('back') + 1.1) K.pop(c, t, '*ЧУТЬ РАНЬШЕ…*', hev('back') + 0.05, hev('back') + 1.0, 540, 1610, C.white, -0.04, 60); if (t > hev('cut') + 0.1 && t < hev('horror')) K.pop(c, t, 'СЛЕДУЮТ ЗА НЕЙ!', hev('cut') + 0.1, hev('horror') - 0.1, 540, 1600, C.gold, -0.06, 70);
     const hookProj = p => { const q = proj(p); return q.x < 0 || q.x > W ? { x: q.x < 0 ? 60 : W - 60, y: 1050 } : q; };
-    if (!tag.startsWith('ui:')) K.bubbles(c, t, { id: 'hook' }, heads, hookProj, { cleanChunks: true, names, hold: { hook_t: -0.2, hook_h: 0.1, hook_h2: SHORT ? 0 : 0.6 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
+    if (!tag.startsWith('ui:')) K.bubbles(c, t, { id: 'hook' }, heads, hookProj, { cleanChunks: true, names, hold: { hook_t: -0.2, hook_h: 0.1, hook_h2: HOOKFX ? 0 : 0.6 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
     Hq.grain(c, W, HH, t, 0.045); UI.sparkles(c, t); UI.levelIntroNext(c, t); return; }
   const e = k => ev(L, k), narT = (SP[L.toLowerCase() + '_nar'] || { t: 1e9 }).t;
   if (L === 'A1' && t > e('follow') - 0.05 && t < narT - 0.1) K.pop(c, t, 'ИДУТ ЗА НЕЙ!', e('follow'), narT - 0.2, 540, 1330, C.gold, -0.06, 80);
