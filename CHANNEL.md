@@ -17,6 +17,7 @@ Mix the topics: not only hidden fees and corporate scandals, but also unusual, c
 | `amazon_ep6/` | Amazon returnless refunds ($5 item, $8–$12 shipping) | `amazon_keep_it_v2.mp4` |
 | `doordash_ep8/` | DoorDash old pay model 2017–2019: the tip replaced DoorDash's part of a $10 guarantee | `doordash_tip_v2.mp4` |
 | `scratch_ep11/` | Hertz/Thrifty AI damage scanner, Atlanta 2025: 1-inch scuff → $440, 7-day discount vs up-to-10-day reply (on hirkit) | `the_440_scratch.mp4` |
+| `tp_ep12/` | Toilet Paper Panic of 1973: congressman's "may face" warning → Carson's joke without the "may" → empty shelves; twist: everyone's smart move WAS the shortage (on hirkit, `tpkit.js`) | `toilet_paper_panic_1973.mp4` |
 Also: `covers_extra/` (credit card trap, gym no-shows — uploaded videos). Ideas backlog: `IDEAS.md`. Captions: `CAPTIONS.md`.
 
 ## Format
