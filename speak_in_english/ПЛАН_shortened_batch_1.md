@@ -14,7 +14,7 @@
 
 ## Что изменено относительно версии 1
 - **Начало как у хитов:** вернула оригинальный хук (плашка-заголовок на русском → реплики → переход → Sarah → «ОТ A1 ДО C2!»), без flash-forward; убрала только пустые паузы (хук 12,8–13,4 с вместо 13,4–14,0 с, видимой разницы нет).
-- **Смысл:** вернула реплики, без которых терялась причинно-следственная связь (tour: «Is this the city tour?», «Older than me.», «I'm not actually qualified…», «Oh, thank goodness! Are these your tourists?» и др.; splitbill: «Three ways?», «Is everything alright…», «I can split it by item…» и др.; photo: «Move a little to the left… A little more», «Why are you lying…», «Wait a second…» и др.). Вырезаны только реплики, которые повторяют уже понятное.
+- **Смысл:** вернула реплики, которых не хватало в версии 1. tour: «Is this the city tour?», «How old?» / «Older than me.», «Great! I'll follow you!». splitbill: «Let's split the bill!» (хук), «Here's your bill.», «Three ways?», «But we shared the appetizers!». photo: «Like this?», «Perfect!», «A little more.», «Please make sure I'm actually in the picture.». Удалены (14–15 реплик на ролик) только реплики, которые повторяют уже понятное; полные списки в `short/plan_<slug>.json` (`drop`). Монолог героини в tour по-прежнему обрезан до «…I am not a tour guide.».
 - **Монтаж без рывков:** заставки уровней снова полной длины (1,15 с), паузы между репликами естественные (0,22 с, перед Sarah 0,5 с), паузы-гэги сжаты не более чем на ≈15 %, сохраняется расстояние до каждого звука и события; вторая фраза Sarah в C2 и пояснения после перевода убраны только там, где фраза остаётся на карточке.
 
 ## Длительность
