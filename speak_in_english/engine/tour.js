@@ -164,8 +164,8 @@ const S = (x, y, z, tag) => ({ x, y, z, r: 0, tag });
 const hUp = G.her.headY, tHY = G.tst.headY, t2HY = G.tst2.headY, gHY = G.guide.headY;
 const fy = (hy, z, sy = 900) => hy + (960 - sy) / z;
 const U = (name, i) => ({ x: 50000 + i * 1000, y: 0, z: 1, r: 0, tag: 'ui:' + name });
-const SH = { COVER: S(165, fy(hUp, 0.78, 880), 0.78, 'cover'), WIDE: S(560, -900, 0.42, 'sq'), WIDE_C2: S(760, -900, 0.42, 'sq'), WIDE_L: S(-100, -900, 0.5, 'lib'), WIDE_LIB: S(500, -900, 0.42, 'lib'), WIDE_ST: S(560, -900, 0.42, 'street'),
-  WIDE_H: S(480, -820, 0.46, 'sq'), CARD: S(165, fy(hUp, 0.78, 1180), 0.78, 'sq'), CARD_L: S(165, fy(hUp, 0.78, 1180), 0.78, 'lib'), CARD_ST: S(165, fy(hUp, 0.78, 1180), 0.78, 'street'), CARD_C2: S(300, fy(hUp, 0.62, 1180), 0.62, 'sq'),
+const SH = { COVER: S(165, fy(hUp, 0.78, 1200), 0.78, 'cover'), WIDE: S(560, -900, 0.42, 'sq'), WIDE_C2: S(760, -900, 0.42, 'sq'), WIDE_L: S(-100, -900, 0.5, 'lib'), WIDE_LIB: S(500, -900, 0.42, 'lib'), WIDE_ST: S(560, -900, 0.42, 'street'),
+  WIDE_H: S(480, -1750, 0.46, 'sq'), HER_CU_H: S(0, fy(hUp, 1.5, 1300), 1.5, 'her'), CARD: S(165, fy(hUp, 0.78, 1180), 0.78, 'sq'), CARD_L: S(165, fy(hUp, 0.78, 1180), 0.78, 'lib'), CARD_ST: S(165, fy(hUp, 0.78, 1180), 0.78, 'street'), CARD_C2: S(300, fy(hUp, 0.62, 1180), 0.62, 'sq'),
   HER: S(0, fy(hUp, 1.0), 1.0, 'her'), HER_R: S(0, fy(hUp, 1.0, 1120), 1.0, 'her'), HER_CU: S(0, fy(hUp, 1.6, 960), 1.6, 'her'), HER_X: S(0, fy(hUp, 0.8, 1000), 0.8, 'herc'),
   TST: S(330, fy(tHY, 1.0), 1.0, 'tst'), TST_R: S(330, fy(tHY, 1.0, 1120), 1.0, 'tst'), T2: S(600, fy(t2HY, 1.0), 1.0, 'tst2'), GU: S(330, fy(gHY, 1.0), 1.0, 'guide'),
   CROWD: S(700, fy(tHY, 0.62, 1000), 0.62, 'crowd'), STATUE: S(-520, -800, 0.62, 'lib'), RUN: S(-300, -900, 0.42, 'sq'), MAP: U('map', 1), BLACK: U('black', 2) };
@@ -173,7 +173,7 @@ function chunkStarts(id) { const sp = SP[id], ch = (TL.cfg.chunks || {})[id]; if
   return ch.map(([en], i) => { const a = W8.length === tot ? W8[wi][1] : sp.d * i / ch.length; wi += cnt[i]; return sp.t + a; }); }
 function shotHard(t) { const sc = sceneAt(t), L = sc.id, f = s => ({ ...s, force: true }), e = k => ev(L, k); if (L === 'outro') return SH.WIDE;
   const sp = id => speaking(id, t, 0.1, 0.15);
-  if (L === 'hook') { if (t < hev('cut') - 0.05) return SH.COVER; if (t < hev('horror') - 0.05) return f(SH.WIDE_H); return f(SH.HER_CU); }
+  if (L === 'hook') { if (t < hev('cut') - 0.05) return SH.COVER; if (t < hev('horror') - 0.05) return f(SH.WIDE_H); return f(SH.HER_CU_H); }
   const u = t - sc.s, l = L.toLowerCase(), nar = SP[l + '_nar'], W_ = L === 'B1' || L === 'B2' ? SH.WIDE_LIB : L === 'C1' ? SH.WIDE_ST : L === 'C2' ? SH.WIDE_C2 : SH.WIDE;
   if (u < 1.15) return f(W_);
   if (L === 'C2' && t > e('black') - 0.03) return f(SH.BLACK);
@@ -227,9 +227,9 @@ function renderFrame(c, t) {
   heads.tguide = heads.guide || OFF;
   const names = { tst: ['TOURIST', '#E27D3C'], tst2: ['TOURIST 2', '#5E9E6E'], tguide: ['GUIDE', '#3C6FB4'], friends: ['CROWD', '#EE5E9A'] };
   const hp = proj;
-  if (L === 'hook') { if (tag === 'cover' && t < SP.hook_t.t + 0.1) coverBadge(c, t); if (t > hev('cut') + 0.1 && t < hev('horror')) K.pop(c, t, 'СЛЕДУЮТ ЗА НЕЙ!', hev('cut') + 0.1, hev('horror') - 0.1, 540, 1330, C.gold, -0.06, 70);
+  if (L === 'hook') { if (tag === 'cover' && t < SP.hook_t.t + 0.1) coverBadge(c, t); if (t > hev('cut') + 0.1 && t < hev('horror')) K.pop(c, t, 'СЛЕДУЮТ ЗА НЕЙ!', hev('cut') + 0.1, hev('horror') - 0.1, 540, 1600, C.gold, -0.06, 70);
     const hookProj = p => { const q = proj(p); return q.x < 0 || q.x > W ? { x: q.x < 0 ? 60 : W - 60, y: 1050 } : q; };
-    K.bubbles(c, t, { id: 'hook' }, heads, hookProj, { cleanChunks: true, names, hold: { hook_t: 0.2, hook_h: 0.2, hook_h2: 0.6 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
+    if (!tag.startsWith('ui:')) K.bubbles(c, t, { id: 'hook' }, heads, hookProj, { cleanChunks: true, names, hold: { hook_t: -0.2, hook_h: 0.1, hook_h2: 0.6 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
     Hq.grain(c, W, HH, t, 0.045); UI.sparkles(c, t); UI.levelIntroNext(c, t); return; }
   const e = k => ev(L, k), narT = (SP[L.toLowerCase() + '_nar'] || { t: 1e9 }).t;
   if (L === 'A1' && t > e('follow') - 0.05 && t < narT - 0.1) K.pop(c, t, 'ИДУТ ЗА НЕЙ!', e('follow'), narT - 0.2, 540, 1330, C.gold, -0.06, 80);

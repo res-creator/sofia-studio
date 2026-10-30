@@ -15,4 +15,4 @@ C2: Get out of hand / Make something clear
 «Older than me» — лучшая историческая справка в мире 😂 А ты бы пошёл за таким гидом? 👇
 
 ## Обложка (кадр 0)
-`tour_guide_cover.png`: «WHEN YOU ACCIDENTALLY / BECOME A TOUR GUIDE / ОТ A1 ДО C2», героиня и турист под табличкой CITY TOUR — MEETING POINT; жёлтая плашка «ARE YOU A GUIDE?». Текст в зоне 3:4 (y 240–1680).
+`tour_guide_cover.png`: «КОГДА СЛУЧАЙНО / СТАЛ ЭКСКУРСОВОДОМ / ОТ A1 ДО C2», героиня и турист под табличкой CITY TOUR — MEETING POINT; жёлтая плашка «ARE YOU A GUIDE?». Текст в зоне 3:4 (y 240–1680).

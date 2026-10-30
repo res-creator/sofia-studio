@@ -137,13 +137,13 @@ const S = (x, y, z, tag) => ({ x, y, z, r: 0, tag });
 const hUp = G.her.headY, fHY = G.fri.headY, aHY = G.agent.headY;
 const fy = (hy, z, sy = 900) => hy + (960 - sy) / z;
 const U = (name, i) => ({ x: 50000 + i * 1000, y: 0, z: 1, r: 0, tag: 'ui:' + name });
-const SH = { COVER: S(250, fy(hUp, 0.6, 930), 0.6, 'park'), WIDE: S(300, -900, 0.5, 'park'), PIG_CU: S(1020, -230, 1.3, 'park'), WIDE_B: S(-100, -900, 0.5, 'park'), WIDE_F: S(300, fy(hUp, 0.55, 1000), 0.55, 'park'), CARD: S(260, fy(hUp, 0.62, 1180), 0.62, 'park'),
-  HER: S(HX, fy(hUp, 1.0), 1.0, 'her'), HER_R: S(HX, fy(hUp, 1.0, 1120), 1.0, 'her'), HER_CU: S(HX, fy(hUp, 1.6, 960), 1.6, 'her'), HER_A2: S(HX + 330, fy(hUp, 1.0), 1.0, 'her'),
+const SH = { COVER: S(250, fy(hUp, 0.6, 1210), 0.6, 'park'), WIDE: S(300, -900, 0.5, 'park'), PIG_CU: S(1020, -230, 1.3, 'park'), WIDE_B: S(-100, -900, 0.5, 'park'), WIDE_F: S(300, fy(hUp, 0.55, 1000), 0.55, 'park'), CARD: S(260, fy(hUp, 0.62, 1180), 0.62, 'park'),
+  HER: S(HX, fy(hUp, 1.0), 1.0, 'her'), HER_R: S(HX, fy(hUp, 1.0, 1120), 1.0, 'her'), HER_CU: S(HX, fy(hUp, 1.6, 960), 1.6, 'her'), HER_CU_H: S(HX, fy(hUp, 1.5, 1300), 1.5, 'her'), HER_A2: S(HX + 330, fy(hUp, 1.0), 1.0, 'her'),
   FRI: S(FX, fy(fHY, 1.0), 1.0, 'fri'), FRI_R: S(FX, fy(fHY, 1.0, 1120), 1.0, 'fri'), AGENT: S(640, fy(aHY, 1.0), 1.0, 'agent'),
   PHOTO: U('photo', 1), PHONE: U('phone', 2), FEED: U('feed', 3), VIEWS: U('views', 4), FAMOUS: U('famous', 5), BLACK: U('black', 6) };
 function shotHard(t) { const sc = sceneAt(t), L = sc.id, f = s => ({ ...s, force: true }), e = k => ev(L, k); if (L === 'outro') return SH.WIDE;
   const sp = id => speaking(id, t, 0.1, 0.15);
-  if (L === 'hook') { if (t < hev('cut') - 0.05) return SH.COVER; if (t < SP.hook_h2.t - 0.1) return f(SH.PHONE); return f(SH.HER_CU); }
+  if (L === 'hook') { if (t < hev('cut') - 0.05) return SH.COVER; if (t < SP.hook_h2.t - 0.1) return f(SH.PHONE); return f(SH.HER_CU_H); }
   const u = t - sc.s, l = L.toLowerCase(), nar = SP[l + '_nar'];
   if (u < 1.15) return f(SH.WIDE);
   if (L === 'C2' && t > e('black') - 0.03) return f(SH.BLACK);
@@ -188,12 +188,12 @@ const PH = { A1: ['eyes', 'ФОТО №1', -0.03], A2: ['fountain', 'ФОТО �
 function photoView(c, t, L) { backdrop(c, 'photo'); const [kind, lab, ang] = PH[L], a = ev(L, 'photo'), k = eBack(P(t, a, a + 0.3), 1.8); photoFrame(c, kind, t, k, ang, lab);
   const cap = { A1: '«У МЕНЯ ЗАКРЫТЫ ГЛАЗА!»', A2: '«ГДЕ Я? ТОЛЬКО ФОНТАН»', B1: '«ОГРОМНАЯ НОГА, КРОШЕЧНАЯ ГОЛОВА»', B2: '«ГОЛУБЬ ЗАКРЫЛ ВСЁ ЛИЦО»' }[L]; caption(c, cap, clamp(P(t, a + 0.3, a + 0.5)), 1580);
   const f = flashAmt(t); if (f > 0) { c.fillStyle = `rgba(255,255,255,${f * 0.8})`; c.fillRect(0, 0, W, HH); } }
-function gridThumbs(c, t, a) { const kinds = ['eyes', 'fountain', 'foot', 'pigeon', 'eyes', 'fountain', 'foot', 'pigeon', 'eyes', 'pigeon', 'foot', 'fountain']; kinds.forEach((kd, i) => { const col = i % 3, row = Math.floor(i / 3), k = eBack(P(t, a + 0.1 + i * 0.07, a + 0.4 + i * 0.07), 1.8); if (k <= 0) return;
-  c.save(); c.translate(250 + col * 290, 1000 + row * 245); c.scale(k, k); c.beginPath(); c.rect(-130, -105, 260, 210); c.clip(); c.fillStyle = '#FFFDF8'; c.fillRect(-130, -105, 260, 210); c.save(); c.translate(0, 4); c.scale(0.22, 0.22); photoContent(c, kd, t); c.restore(); c.restore(); }); }
+function gridThumbs(c, t, a) { const kinds = ['eyes', 'fountain', 'foot', 'pigeon', 'eyes', 'fountain', 'foot', 'pigeon', 'eyes']; kinds.forEach((kd, i) => { const col = i % 3, row = Math.floor(i / 3), k = eBack(P(t, a + 0.1 + i * 0.07, a + 0.4 + i * 0.07), 1.8); if (k <= 0) return;
+  c.save(); c.translate(260 + col * 280, 1250 + row * 190); c.scale(k, k); c.beginPath(); c.rect(-120, -85, 240, 170); c.clip(); c.fillStyle = '#FFFDF8'; c.fillRect(-120, -85, 240, 170); c.save(); c.translate(0, 4); c.scale(0.19, 0.19); photoContent(c, kd, t); c.restore(); c.restore(); }); }
 function phoneView(c, t) { backdrop(c, 'phone'); const a = hev('cut'), k = eBack(P(t, a, a + 0.25), 1.6), n = Math.round(1 + 846 * eOut(P(t, a + 0.1, a + 1.1)));
-  c.save(); c.translate(540, 480); c.scale(k, k); c.fillStyle = '#FFFDF8'; c.strokeStyle = C.oliveD; c.lineWidth = 8; rr(c, -440, -170, 880, 340, 40); c.fill(); c.stroke(); fitTxt(c, 'PHOTOS TAKEN:', 0, -80, 62, '#3E471E', 780); fitTxt(c, String(n), 0, 50, 170, '#E0474C', 780); c.restore();
-  c.save(); c.translate(540, 1210); c.fillStyle = '#12141A'; rr(c, -440 - 10, -270 - 10, 900, 1030, 40); c.fill(); c.restore(); gridThumbs(c, t, a + 0.2);
-  caption(c, '*847 фотографий… и ни одной хорошей*', clamp(P(t, a + 1.0, a + 1.2)), 1580, C.white);
+  c.save(); c.translate(540, 840); c.scale(k, k); c.fillStyle = '#FFFDF8'; c.strokeStyle = C.oliveD; c.lineWidth = 8; rr(c, -440, -150, 880, 300, 40); c.fill(); c.stroke(); fitTxt(c, 'PHOTOS TAKEN:', 0, -70, 56, '#3E471E', 780); fitTxt(c, String(n), 0, 45, 150, '#E0474C', 780); c.restore();
+  c.save(); c.fillStyle = '#12141A'; rr(c, 80, 1130, 920, 640, 36); c.fill(); c.restore(); gridThumbs(c, t, a + 0.2);
+  caption(c, '*847 фотографий… и ни одной хорошей*', clamp(P(t, a + 1.0, a + 1.2)), 1045, C.white);
   const f = flashAmt(t); if (f > 0) { c.fillStyle = `rgba(255,255,255,${f * 0.6})`; c.fillRect(0, 0, W, HH); } }
 const fmt = n => Math.round(n).toLocaleString('en-US');
 function feedView(c, t) { backdrop(c, 'feed'); const a = ev('C1', 'likes'), k = eBack(P(t, a, a + 0.3), 1.6), likes = 1200 * eOut(P(t, a + 0.5, a + 1.6));
@@ -229,7 +229,7 @@ function renderFrame(c, t) {
   const names = { pfr: ['FRIEND', '#3C8FE0'], agent: ['AGENCY', '#2F3E5C'] };
   if (L === 'hook') { if (tag === 'park' && t < SP.hook_h.t + 0.1) coverBadge(c, t);
     const hookProj = p => { const q = proj(p); return q.x < 0 || q.x > W ? { x: q.x < 0 ? 60 : W - 60, y: 1050 } : q; };
-    K.bubbles(c, t, { id: 'hook' }, heads, hookProj, { cleanChunks: true, names, hold: { hook_h: 0.2, hook_f: 0.2, hook_h2: 0.6 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
+    if (!tag.startsWith('ui:')) K.bubbles(c, t, { id: 'hook' }, heads, hookProj, { cleanChunks: true, names, hold: { hook_h: -0.2, hook_f: -0.1, hook_h2: 0.6 } }); K.titleRibbon(c, t, 540, 455); UI.levelBar(c, t, { id: 'hook' }); K.stamp(c, t); UI.captions(c, t);
     Hq.grain(c, W, HH, t, 0.045); UI.sparkles(c, t); UI.levelIntroNext(c, t); return; }
   const e = k => ev(L, k), narT = (SP[L.toLowerCase() + '_nar'] || { t: 1e9 }).t;
   if (L === 'A2' && t > e('mv1') && t < e('photo') - 0.1 && tag !== 'ui:photo') { K.pop(c, t, '← ЧУТЬ-ЧУТЬ →', e('mv1') + 0.05, e('photo') - 0.2, 540, 1330, C.pinkL, -0.05, 64); }

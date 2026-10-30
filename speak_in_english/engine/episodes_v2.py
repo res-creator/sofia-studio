@@ -2036,7 +2036,7 @@ CAST.update({
 
 EP["tour"] = dict(
     title='Когда случайно стал экскурсоводом',
-    hook_title=[["WHEN YOU ACCIDENTALLY", 'd'], ['BECOME A TOUR GUIDE', 'p'], ['ОТ A1 ДО C2', 'd']],
+    hook_title=[["КОГДА СЛУЧАЙНО", 'd'], ['СТАЛ ЭКСКУРСОВОДОМ', 'p'], ['ОТ A1 ДО C2', 'd']],
     stamp="ОТ A1 ДО C2!", stamp_word="От", next=None,
     camera="hard_cut",
     chunks={'b2_t': [['Could you explain', 'Не могли бы вы объяснить,'], ['why this place is so historically significant?', 'почему это место так исторически значимо?']],
@@ -2106,7 +2106,7 @@ EP["tour"] = dict(
 
 EP["splitbill"] = dict(
     title='Когда пытаешься разделить счёт',
-    hook_title=[["WHEN YOU TRY", 'd'], ['TO SPLIT THE BILL', 'p'], ['ОТ A1 ДО C2', 'd']],
+    hook_title=[["КОГДА ПЫТАЕШЬСЯ", 'd'], ['РАЗДЕЛИТЬ СЧЁТ', 'p'], ['ОТ A1 ДО C2', 'd']],
     stamp="ОТ A1 ДО C2!", stamp_word="Английский", next=None,
     camera="hard_cut",
     chunks={'b2_h': [["We're having a slight disagreement", 'У нас небольшое разногласие'], ['about how to divide the bill.', 'по поводу того, как разделить счёт.']],
@@ -2179,7 +2179,7 @@ EP["splitbill"] = dict(
 
 EP["photo"] = dict(
     title='Когда хочешь одну хорошую фотографию',
-    hook_title=[["WHEN YOU TRY TO TAKE", 'd'], ['ONE GOOD PHOTO', 'p'], ['ОТ A1 ДО C2', 'd']],
+    hook_title=[["КОГДА ХОЧЕШЬ", 'd'], ['ОДНО ХОРОШЕЕ ФОТО', 'p'], ['ОТ A1 ДО C2', 'd']],
     stamp="ОТ A1 ДО C2!", stamp_word="От", next=None,
     camera="hard_cut",
     chunks={'c1_h': [["I've been standing here for half an hour,", 'Я стою здесь уже полчаса,'], ["and we still haven't taken a single decent photo!", 'а у нас всё ещё нет ни одной приличной фотографии!']],
