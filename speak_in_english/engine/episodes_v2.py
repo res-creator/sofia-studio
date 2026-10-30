@@ -2474,3 +2474,23 @@ EP["saidheard"] = dict(
     ],
     cards={},
 )
+
+# ---------------- experiment "Answer in 3 seconds": a ball-launcher cannon fires a phrase, a real 3-second timer, then the natural answer. One voice only.
+CAST.update({
+    "cannon": dict(voice="am_onyx", speed=1.0, lang="en-us", el="SOYHLrjzK2X1ezoPC6cr"),   # Brick (gruff, funny for a cannon)
+})
+EP["pingpong"] = dict(
+    title='Ответь за 3 секунды',
+    hook_title=[['ОТВЕТЬ НА АНГЛИЙСКОМ', 'd'], ['ЗА 3 СЕКУНДЫ', 'p'], ['ИГРА: 3 ВОПРОСА', 'd']],
+    stamp="", stamp_word="", next=None, camera="hard_cut",
+    lines=[
+        ('q1_q', 'cannon', '[loudly] Thanks so much!', 'Огромное спасибо!'),
+        ('q1_a', 'cannon', '[cheerfully] No problem!', 'Без проблем!'),
+        ('q2_q', 'cannon', "[casually] What's up?", 'Как дела? / Что нового?'),
+        ('q2_a', 'cannon', '[shrugging] Not much. You?', 'Да ничего особенного. А ты?'),
+        ('q3_q', 'cannon', '[politely] Do you mind if I sit here?', 'Вы не против, если я тут сяду?'),
+        ('q3_a', 'cannon', '[warmly] Not at all!', 'Нисколько! (= садитесь)'),
+        ('fin', 'cannon', '[wheezing] Ouch.', 'Ай.'),
+    ],
+    cards={},
+)
