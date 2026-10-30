@@ -87,6 +87,7 @@ CAST = {
     "pguest": dict(voice="bm_lewis", speed=1.0, lang="en-gb", el="IKne3meq5aSn9XLyUdCD"),      # Charlie (avoidparty: guest with the contract)
     "coll":  dict(voice="am_adam", speed=1.0, lang="en-us", el="nPczCjzI2devNBz1zQrb"),        # Brian (lunch: the colleague who eats her lunch)
     "sitter": dict(voice="am_michael", speed=1.0, lang="en-us", el="iP95p4xoKVk53GoZ742B"),    # Chris (seat: the passenger in her seat)
+    "cutter": dict(voice="bm_george", speed=1.0, lang="en-gb", el="JBFqnCBsd6RMkjVDRZzb"),     # George (queue: the man who cuts in line)
     "barista": dict(voice="af_nova", speed=1.0, lang="en-us", el="pFZP5JQG7iQjIQuC4Bku"),      # Lily (togo: the barista)
 }
 EP = {}
@@ -2387,4 +2388,50 @@ EP["seat"] = dict(
            'B2': {'type': 'big', 'en': 'Would you mind…?', 'ru': 'вы не против…?', 'ex': ['Would you mind checking your boarding pass?', 'вы не могли бы проверить посадочный?'], 'icon': 'tag'},
            'C1': {'type': 'eq', 'en': 'Sorry to bother you, but…', 'ru': '= Простите за беспокойство, но…', 'ex': [['I believe', '= мне кажется, что']]},
            'C2': {'type': 'c2', 'vocab': [['I must kindly insist', '= я должна настоятельно попросить'], ['vacate the seat', '= освободить место']], 'moral': ['', '', ''], 'moral_at': 99}},
+)
+
+EP["queue"] = dict(
+    title='Влезли без очереди',
+    hook_title=[['КАК СКАЗАТЬ', 'd'], ['«Я ТУТ СТОЯЛА»', 'p'], ['НА АНГЛИЙСКОМ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut",
+    chunks={'b1_c': [["That's a line?", 'Это очередь?'], ['I thought it was a fan club.', 'Я думал, это фан-клуб.']],
+            'c1_h': [["I'd appreciate it if you could", 'Я была бы признательна, если бы вы'], ['go to the back of the line.', 'встали в конец очереди.']],
+            'c2_h': [['Sir, with the greatest respect,', 'Сэр, при всём уважении,'], ['I must point out that I have waited', 'я обязана заметить, что я ждала'], ['patiently for forty minutes,', 'терпеливо сорок минут,'], ['and I will not permit you to jump the queue.', 'и я не позволю вам влезть без очереди.']]},
+    lines=[
+        ('hook_c', 'cutter', '[breezily] Oh, nobody is here. Perfect!', 'О, никого нет. Отлично!'),
+        ('hook_h', 'her', '[stunned] I have been here for forty minutes.', 'Я стою здесь сорок минут.'),
+        ('hook', 'nar', 'Кто-то влез без очереди, а ты стоишь сорок минут. Как сказать ему об этом по-английски? Проверим — от А-один до Си-два!', ''),
+        ('a1_h', 'her', '[pointing back] Line! There!', 'Очередь! Там!'),
+        ('a1_c', 'cutter', "[cheerfully] Fine? Yes! I'm fine, thank you!", 'Хорошо? Да! У меня всё хорошо, спасибо!'),
+        ('a1_nar', 'nar', 'А-один. Line — «очередь», а он услышал fine — «хорошо». У него всё отлично.', ''),
+        ('a2_h', 'her', '[annoyed] I stand here first!', 'Я стою здесь первая!'),
+        ('a2_c', 'cutter', '[warmly] Great! Me too. We can stand together.', 'Отлично! Я тоже. Можем стоять вместе.'),
+        ('a2_nar', 'nar', 'А-два. Не «я стою», а «я была здесь первой»: I was here first. Запоминай:', ''),
+        ('a2_tip', 'tip', 'Excuse me, I was here first.', ''),
+        ('b1_h', 'her', '[politely] Excuse me, the line starts back there.', 'Простите, очередь начинается вон там.'),
+        ('b1_c', 'cutter', "[surprised] That's a line? I thought it was a fan club.", 'Это очередь? Я думал, это фан-клуб.'),
+        ('b1_h2', 'her', "[flatly] They are not fans. They are waiting.", 'Они не фанаты. Они ждут.'),
+        ('b1_nar', 'nar', 'Би-один. The line starts back there — «очередь начинается вон там». Вежливо и ясно.', ''),
+        ('b2_h', 'her', "[firmly] Excuse me, you just cut in line.", 'Простите, вы только что влезли без очереди.'),
+        ('b2_c', 'cutter', "[proudly] I didn't cut. It's called a shortcut.", 'Я не влезал. Это называется «короткий путь».'),
+        ('b2_nar', 'nar', 'Би-два. Cut in line — «влезть без очереди». Запоминай:', ''),
+        ('b2_tip', 'tip', 'Excuse me, you just cut in line.', ''),
+        ('c1_h', 'her', "[calmly] I'd appreciate it if you could go to the back of the line.", 'Я была бы признательна, если бы вы встали в конец очереди.'),
+        ('c1_c', 'cutter', "[warmly] But I've already chosen my popcorn.", 'Но я уже выбрал попкорн.'),
+        ('c1_nar', 'nar', 'Си-один. Go to the back of the line — «встать в конец очереди». Запоминай:', ''),
+        ('c1_tip', 'tip', "I'd appreciate it if you could go to the back of the line.", ''),
+        ('c2_h', 'her', '[formally] Sir, with the greatest respect, I must point out that I have waited patiently for forty minutes, and I will not permit you to jump the queue.', 'Сэр, при всём уважении, я обязана заметить, что я ждала терпеливо сорок минут, и я не позволю вам влезть без очереди.'),
+        ('c2_c', 'cutter', "[kindly] You're absolutely right. After you!", 'Вы совершенно правы. После вас!'),
+        ('c2_c2', 'cutter', '[sheepishly] Oh. I already bought the last ticket.', 'Ой. Я уже купил последний билет.'),
+        ('c2_h2', 'her', '[faintly] ...Forty minutes.', '…Сорок минут.'),
+        ('c2_nar', 'nar', 'Си-два. Jump the queue — «влезть без очереди». I must point out — «я обязана заметить». Иногда очередь — это всё, что у тебя есть.', ''),
+        ('outro', 'nar', 'А как бы ты сказал тому, кто влез без очереди? Пиши свою фразу в комментарии! И подпишись, впереди ещё много новых серий.', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'LINE! THERE!', 'ok': False, 'note': 'вежливость: 5%', 'bars': [['ВЕЖЛИВОСТЬ', 5]]},
+           'A2': {'type': 'swap', 'bad': 'I stand here first!', 'bad_note': 'нужно was', 'good': ['Excuse me, I was', 'here first.']},
+           'B1': {'type': 'eq', 'en': 'The line starts back there.', 'ru': '= Очередь начинается вон там.', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'Cut in line', 'ru': 'влезть без очереди', 'ex': ['Excuse me, you just cut in line.', 'вы только что влезли без очереди.'], 'icon': 'scissors'},
+           'C1': {'type': 'eq', 'en': 'Go to the back of the line.', 'ru': '= Встаньте в конец очереди.', 'ex': [["I'd appreciate it if", '= я была бы признательна, если']]},
+           'C2': {'type': 'c2', 'vocab': [['I must point out', '= я обязана заметить'], ['jump the queue', '= влезть без очереди']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
