@@ -2500,3 +2500,35 @@ EP["pingpong"] = dict(
     ],
     cards={},
 )
+
+# ---------------- experiment "When Mom shows off your English": family dinner, Lena spills secrets in English; Mom understood every word.
+CAST.update({
+    "lena":  dict(voice="af_heart", speed=1.0, lang="en-us", el="cgSgspJ2msm6clMCkdW9"),   # same voice as the heroine
+    "tanya": dict(voice="af_nicole", speed=1.0, lang="en-us", el="XrExE9yKIg1WjnnlVkGX"),  # Matilda (Mom)
+    "vera":  dict(voice="bf_lily", speed=1.0, lang="en-gb", el="pFZP5JQG7iQjIQuC4Bku"),    # Lily (Aunt Vera)
+})
+EP["momshow"] = dict(
+    title='Когда мама хвастается твоим английским',
+    hook_title=[['КОГДА МАМА', 'd'], ['ХВАСТАЕТСЯ', 'p'], ['ТВОИМ АНГЛИЙСКИМ', 'd']],
+    stamp="", stamp_word="", next=None, camera="hard_cut",
+    lines=[
+        ('hook_m', 'tanya', '[proudly, loudly] Lena! Stand up! Say something in English for Aunt Vera!', 'Лена! Встань! Скажи что-нибудь по-английски для тёти Веры!'),
+        ('hook_v', 'vera', '[posh, amused] Go on, darling. Impress me.', 'Давай, дорогая. Удиви меня.'),
+        ('s1_l', 'lena', '[nervously] Mom... you\'re putting me on the spot.', 'Мам… ты ставишь меня в неловкое положение.'),
+        ('s1_m', 'tanya', '[beaming] Yes! Spot! Very beautiful!', 'Да! «Спот»! Очень красиво!'),
+        ('s2_l', 'lena', '[sweetly, smiling] Between you and me, Aunt Vera... the salad is from the store.', 'Между нами, тётя Вера… салат из магазина.'),
+        ('s2_v', 'vera', '[delighted whisper] I knew it.', 'Я так и знала.'),
+        ('s2_m', 'tanya', '[proudly] Private teacher! Very expensive!', 'Частный репетитор! Очень дорого!'),
+        ('s3_l', 'lena', "[cheerfully] And Dad didn't go out for bread. He's hiding in the garage till you leave.", 'А папа не за хлебом ушёл. Он прячется в гараже, пока вы не уедете.'),
+        ('s3_n', 'nigel', '[flatly] Smart man.', 'Умный человек.'),
+        ('s3_l2', 'lena', '[smiling] And Mom is just showing off. She does this every time you visit.', 'А мама просто хвастается. Каждый раз, когда вы приезжаете.'),
+        ('s3_m', 'tanya', '[clapping, a little too loud] Bravo! Ten years of lessons!', 'Браво! Десять лет уроков!'),
+        ('s3_l3', 'lena', '[confidently] Mom thinks I study English every night. I actually watch Netflix.', 'Мама думает, что я каждый вечер учу английский. А я смотрю Netflix.'),
+        ('s4_v', 'vera', '[sweetly] Tanya, darling... do you know what she just said?', 'Таня, дорогая… а ты знаешь, что она сейчас сказала?'),
+        ('s4_m', 'tanya', "[calmly, in perfect English] Every single word, Vera. I've been learning English for a year.", 'Каждое слово, Вера. Я уже год учу английский.'),
+        ('s4_l', 'lena', '[tiny voice] ...Oh no.', '…О нет.'),
+        ('s4_m2', 'tanya', '[sweetly, firmly] Lena. Kitchen. Now. And bring the store salad.', 'Лена. На кухню. Живо. И неси магазинный салат.'),
+        ('s4_n', 'nigel', '[deadpan, raising his glass] Best dinner ever.', 'Лучший ужин в моей жизни.'),
+    ],
+    cards={},
+)
