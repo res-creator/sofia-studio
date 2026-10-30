@@ -77,7 +77,7 @@ const BGK = mkBG(drawKitchen);
 const gest = (st, g, who, t, side, base) => { const sp = TL.speech.find(s => s.who === who && t >= s.t && t < s.t + s.d); if (sp) { const u = (t - sp.t) * 4.5; st[side < 0 ? 'armL' : 'armR'] = reach(g, side, side * (g.sw * 1.5 + Math.sin(u) * 20), g.ySh + base + Math.cos(u) * 20); } };
 const hang = (g, s) => reach(g, s, s * g.sw * 0.8, g.ySh + 330);
 const chest = (g, s, k = 0.6) => reach(g, s, s * g.sw * k, g.ySh + 230);
-const mouth = (g, s) => reach(g, s, s * g.hw * 0.7, g.headY + g.hh * 0.9);
+const mouth = (g, s) => reach(g, s, s * g.hw * 1.35, g.headY + g.hh * 1.7);
 const mugTaken = t => t > ev('B2', 'mug') + 0.35 && !(t < ev('B2', 'mug'));
 function herState(t, L) { const g = G.her, e = k => ev(L, k), st = { t, talk: talk('her', t), mood: 'neutral', turn: 0.3, look: 0.7, armL: hang(g, -1), armR: hang(g, 1), items: {} };
   if (L === 'hook') { st.mood = 'neutral'; if (t > hev('shock') - 0.05) { st.mood = 'shock'; st.blink = 0; st.armL = chest(g, -1); st.armR = chest(g, 1); } }
@@ -126,7 +126,7 @@ const S = (x, y, z, tag) => ({ x, y, z, r: 0, tag });
 const hHY = G.her.headY, dHY = G.coll.headY;
 const fy = (hy, z, sy = 900) => hy + (960 - sy) / z;
 const U = (name, i) => ({ x: 50000 + i * 1000, y: 0, z: 1, r: 0, tag: 'ui:' + name });
-const SH = { COVER: S(30, fy((hHY + dHY) / 2, 0.85, 1120), 0.85, 'cover'), WIDE: S(20, -1000, 0.5, 'wide'), CARD: S(30, fy(dHY, 0.66, 980), 0.66, 'card'), TWO: S(30, fy(dHY, 0.75, 820), 0.75, 'two'),
+const SH = { COVER: S(150, fy((hHY + dHY) / 2, 0.78, 1120), 0.78, 'cover'), WIDE: S(20, -1000, 0.5, 'wide'), CARD: S(30, fy(dHY, 0.66, 980), 0.66, 'card'), TWO: S(30, fy(dHY, 0.75, 820), 0.75, 'two'),
   HER: S(HX + 40, fy(hHY, 1.0), 1.0, 'her'), HER_R: S(HX + 40, fy(hHY, 1.0, 1120), 1.0, 'her'), HER_CU: S(HX + 30, fy(hHY, 1.6, 960), 1.6, 'her'),
   DAN: S(DX - 40, fy(dHY, 1.0), 1.0, 'coll'), DAN_H: S(DX - 40, fy(dHY, 1.0, 1230), 1.0, 'coll'), HER_H: S(HX + 40, fy(hHY, 1.35, 1280), 1.35, 'her'), DAN_R: S(DX - 40, fy(dHY, 1.0, 1120), 1.0, 'coll'), DAN_CU: S(DX - 30, fy(dHY, 1.6, 960), 1.6, 'coll'),
   LABEL: U('label', 1), BLACK: U('black', 2) };
