@@ -85,6 +85,7 @@ CAST = {
     "boss":  dict(voice="am_echo", speed=1.0, lang="en-us", el="cjVigY5qzO86Huf0OWal"),        # Eric (busy: the boss)
     "pal":   dict(voice="af_nicole", speed=1.0, lang="en-us", el="FGY2WhTYpPnrIDTdsKH5"),      # Laura (avoidparty: the friend who throws the party)
     "pguest": dict(voice="bm_lewis", speed=1.0, lang="en-gb", el="IKne3meq5aSn9XLyUdCD"),      # Charlie (avoidparty: guest with the contract)
+    "coll":  dict(voice="am_adam", speed=1.0, lang="en-us", el="nPczCjzI2devNBz1zQrb"),        # Brian (lunch: the colleague who eats her lunch)
 }
 EP = {}
 
@@ -2244,4 +2245,51 @@ EP["photo"] = dict(
            'B2': {'type': 'eq', 'en': 'Block my face', 'ru': '= Закрывать моё лицо', 'ex': [['Nothing blocks my face.', '= Ничто не закрывает моё лицо.']]},
            'C1': {'type': 'eq', 'en': 'A single decent photo', 'ru': '= Хоть одна приличная фотография'},
            'C2': {'type': 'c2', 'vocab': [["after everything we've been through…", '= после всего, через что мы прошли…'], ['incredibly photogenic', '= невероятно фотогеничный']], 'moral': ['', '', ''], 'moral_at': 99}},
+)
+
+EP["lunch"] = dict(
+    title='Коллега ест твой обед',
+    hook_title=[['КАК СКАЗАТЬ', 'd'], ['«ЭТО МОЙ ОБЕД»', 'p'], ['НА АНГЛИЙСКОМ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut",
+    chunks={'b2_h': [['Please don\'t help yourself', 'Пожалуйста, не бери'], ['to my food.', 'мою еду без спроса.']],
+            'c1_h': [["I'd appreciate it if you could", 'Я была бы признательна, если бы ты'], ['ask before taking my food.', 'спрашивал, прежде чем брать мою еду.']],
+            'c2_h': [['Dan, I must express', 'Дэн, я должна выразить'], ['my profound disappointment', 'своё глубокое разочарование'], ['that my lunch, which I prepared', 'тем, что мой обед, который я приготовила'], ['with considerable care,', 'с большой заботой,'], ['was consumed without my permission.', 'съели без моего разрешения.']]},
+    lines=[
+        ('hook_c', 'coll', '[mouth full, happy] Mmm! Whose lasagna is this? It is amazing!', 'Ммм! Чья это лазанья? Она потрясающая!'),
+        ('hook_h', 'her', "[stunned] That's... my lunch.", 'Это… мой обед.'),
+        ('hook', 'nar', 'Коллега ест твой обед из общего холодильника. Как сказать ему об этом по-английски? Проверим — от А-один до Си-два!', ''),
+        ('a1_h', 'her', '[sternly] My food! No eat!', 'Моя еда! Не есть!'),
+        ('a1_c', 'coll', '[surprised, friendly] Your food? Oh! Want some?', 'Твоя еда? О! Хочешь немного?'),
+        ('a1_nar', 'nar', 'А-один. My food — «моя еда». Понятно, но звучит как команда собаке.', ''),
+        ('a2_h', 'her', '[angry] Why you eat my lunch?', 'Почему ты есть мой обед?'),
+        ('a2_c', 'coll', '[calmly] Because it was in the fridge.', 'Потому что он был в холодильнике.'),
+        ('a2_nar', 'nar', 'А-два. Пропущено did: why DID you eat. Запоминай:', ''),
+        ('a2_tip', 'tip', 'Why did you eat my lunch?', ''),
+        ('b1_h', 'her', "[politely] Excuse me, I think that's my lunch.", 'Простите, кажется, это мой обед.'),
+        ('b1_c', 'coll', '[thoughtfully] Really? It did not say your name.', 'Правда? Там не было твоего имени.'),
+        ('b1_h2', 'her', "[flatly] It says ANNA. In big letters.", 'Там написано АННА. Большими буквами.'),
+        ('b1_c2', 'coll', '[brightly] I thought that was the recipe!', 'Я думал, это название рецепта!'),
+        ('b1_nar', 'nar', 'Би-один. I think that\'s my lunch — «кажется, это мой обед». Вежливо, но ясно.', ''),
+        ('b2_h', 'her', "[firmly] Please don't help yourself to my food.", 'Пожалуйста, не бери мою еду без спроса.'),
+        ('b2_c', 'coll', '[cheerfully] Okay! Can I help myself to your coffee instead?', 'Хорошо! А можно тогда взять твой кофе?'),
+        ('b2_nar', 'nar', 'Би-два. Help yourself to — «брать без спроса». Запоминай:', ''),
+        ('b2_tip', 'tip', "Please don't help yourself to my food.", ''),
+        ('c1_h', 'her', "[calmly] I'd appreciate it if you could ask before taking my food.", 'Я была бы признательна, если бы ты спрашивал, прежде чем брать мою еду.'),
+        ('c1_c', 'coll', '[innocently] I did ask. The lasagna did not say no.', 'Я спросил. Лазанья не возражала.'),
+        ('c1_nar', 'nar', 'Си-один. I\'d appreciate it if you could — «я была бы признательна, если бы ты». Запоминай:', ''),
+        ('c1_tip', 'tip', "I'd appreciate it if you could ask first.", ''),
+        ('c2_h', 'her', '[formally] Dan, I must express my profound disappointment that my lunch, which I prepared with considerable care, was consumed without my permission.', 'Дэн, я должна выразить своё глубокое разочарование тем, что мой обед, который я приготовила с большой заботой, съели без моего разрешения.'),
+        ('c2_c', 'coll', "[sincerely] You're right. I'm sorry. Here, take mine.", 'Ты права. Прости. Вот, возьми мой.'),
+        ('c2_h2', 'her', '[hopeful] Thank you.', 'Спасибо.'),
+        ('c2_h3', 'her', '[faintly] ...Keep eating mine.', '…Ешь уж мой.'),
+        ('c2_nar', 'nar', 'Си-два. Express my profound disappointment — «выразить глубокое разочарование». Without my permission — «без моего разрешения». Иногда лучше отдать свой обед, чем получить чужой.', ''),
+        ('outro', 'nar', 'А как бы ты сказал коллеге? Пиши свою фразу в комментарии! И подпишись, впереди ещё много новых серий.', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'MY FOOD! NO EAT!', 'ok': False, 'note': 'вежливость: 0%', 'bars': [['ВЕЖЛИВОСТЬ', 0]]},
+           'A2': {'type': 'swap', 'bad': 'Why you eat my lunch?', 'bad_note': 'нет did', 'good': ['Why did you', 'eat my lunch?']},
+           'B1': {'type': 'eq', 'en': "I think that's my lunch.", 'ru': '= Кажется, это мой обед.', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'Help yourself to', 'ru': 'брать без спроса', 'ex': ["Please don't help yourself to my food.", 'не бери мою еду без спроса.'], 'icon': 'plate'},
+           'C1': {'type': 'eq', 'en': "I'd appreciate it if you could ask first.", 'ru': '= Буду признательна, если ты сначала спросишь.'},
+           'C2': {'type': 'c2', 'vocab': [['profound disappointment', '= глубокое разочарование'], ['without my permission', '= без моего разрешения']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
