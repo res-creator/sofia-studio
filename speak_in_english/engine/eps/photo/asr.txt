@@ -1,0 +1,52 @@
+photo/hook_h  | Can you take one good picture of me?
+photo/hook_f  | Of course!
+photo/hook_h2 | Why do I look like that?
+photo/hook    | когда попросила всего одну красивую фотографию от А1 до С2.
+photo/a1_f    | Smile!
+photo/a1_h    | like this
+photo/a1_f2   | Perfect!
+photo/a1_h2   | My eyes are closed.
+photo/a1_f3   | Oh.
+photo/a1_nar  | А один. My eyes are closed. У меня закрыта глаза.
+photo/a2_h    | Can you take another one?
+photo/a2_f    | Sure! Move a little to the left.
+photo/a2_f2   | a little more.
+photo/a2_f3   | Perfect.
+photo/a2_h2   | Where am I?
+photo/a2_f4   | The background looks amazing.
+photo/a2_nar  | А2. Can you take another one? Можешь сделать ещё одну? Запоминай.
+photo/a2_tip  | Can you take another one?
+photo/b1_h    | Please make sure I'm actually in the picture.
+photo/b1_f    | Don't worry. I know what I'm doing.
+photo/b1_h2   | Why are you lying on the ground?
+photo/b1_f2   | I'm looking for the perfect angle.
+photo/b1_h3   | That is not my good angle.
+photo/b1_nar  | Be Odin - The Perfect Angle - идеальный ракурс.
+photo/b2_f    | Wait, I think I found the perfect composition.
+photo/b2_h    | Just make sure nothing blocks my face.
+photo/b2_f2   | Trust me, this is going to look incredible.
+photo/b2_h2   | You took a picture of a pigeon.
+photo/b2_f3   | Technically, you're in it too.
+photo/b2_nar  | Бай два. Блок my face. Закрывать мое лицо. Блок - загораживать.
+photo/c1_h    | I've been standing here for half an hour, and we still haven't taken a single decent photo.
+photo/c1_f    | You're being a little dramatic.
+photo/c1_h2   | I simply wanted a picture that actually looks like me.
+photo/c1_f2   | Wait a second.
+photo/c1_h3   | But why are people liking that picture?
+photo/c1_f3   | I posted it as a joke.
+photo/c1_nar  | C1 - A single decent photo, хоть одна приличная фотография. Запоминай.
+photo/c1_tip  | a single decent photo.
+photo/c2_f    | You're not going to believe this.
+photo/c2_h    | Did someone finally notice me?
+photo/c2_f2   | Not exactly.
+photo/c2_h2   | After everything we've been through, you're telling me the pigeon became famous?
+photo/c2_f3   | Apparently people find him incredibly photogenic.
+photo/c2_h3   | This is absolutely ridiculous.
+photo/c2_m    | Excuse me, is that the famous pigeon?
+photo/c2_f4   | Yes!
+photo/c2_m2   | We'd love to offer him a modeling contract.
+photo/c2_h4   | A modeling contract?
+photo/c2_h5   | Can we please take one normal photo of me now?
+photo/c2_f5   | Sure, just move a little to the left.
+photo/c2_nar  | Сидва. После всего, что мы уже прошли, после всего, через что мы прошли. Инкредibly фотоженник. Невероятно фотогеничный.
+photo/outro   | Сколько снимков ты делаешь, прежде чем получится один хороший? Пиши в комментариях и подпишись!

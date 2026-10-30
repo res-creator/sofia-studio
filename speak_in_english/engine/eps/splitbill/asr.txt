@@ -1,0 +1,55 @@
+splitbill/hook_f  | Let's split the bill.
+splitbill/hook_h  | Why is it $300?
+splitbill/hook_h2 | Somebody is lying.
+splitbill/hook    | когда друзья решили разделить счёт. Английский от A1 до C2.
+splitbill/a1_w    | is your bill.
+splitbill/a1_f    | Let's split it.
+splitbill/a1_h    | Okay.
+splitbill/a1_f2   | Three ways.
+splitbill/a1_h2   | Yes!
+splitbill/a1_h3   | 100 each.
+splitbill/a1_nar  | А1. Let's split the bill. Давайте разделим счёт.
+splitbill/a2_h    | But I only had a salad.
+splitbill/a2_f    | And I had a burger.
+splitbill/a2_f2   | I had the steak.
+splitbill/a2_h2   | Your stake was $80.
+splitbill/a2_f3   | It was very good.
+splitbill/a2_nar  | А два. I only had a salad. Я съела только салат. Запоминай.
+splitbill/a2_tip  | I only had a salad.
+splitbill/b1_f    | Why don't we just pay for what we ordered?
+splitbill/b1_h    | That's what I've been saying.
+splitbill/b1_f2   | but we share the appetizers.
+splitbill/b1_h2   | then we'll split those.
+splitbill/b1_f3   | Who ate the last mozzarella stick?
+splitbill/b1_nar  | Pay for what we ordered, заплатить за то, что заказали.
+splitbill/b2_w    | Is everything alright over here?
+splitbill/b2_h    | we're having a slight disagreement about how to divide the bill.
+splitbill/b2_w2   | I can split it by item if you'd prefer.
+splitbill/b2_all  | Yes!
+splitbill/b2_w3   | By the way, should I include the dessert?
+splitbill/b2_h2   | What dessert?
+splitbill/b2_w4   | the cheesecake we all shared earlier.
+splitbill/b2_h3   | Wait, we all shared?
+splitbill/b2_nar  | Бидва. A slight disagreement. Небольшое разногласие. Вежливый способ сказать «мы спорим».
+splitbill/c1_h    | Hold on. I seem to recall you joining us for dessert.
+splitbill/c1_w    | That's correct.
+splitbill/c1_f    | We invited him.
+splitbill/c1_h2   | Yes, for one bite.
+splitbill/c1_w2   | Well, the cheesecake was delicious.
+splitbill/c1_h3   | That's not the point.
+splitbill/c1_nar  | C1. I seem to recall. Кажется, я припоминаю. Запоминай.
+splitbill/c1_tip  | I seemed to recall.
+splitbill/c2_h    | Considering that you've effectively become part of our dinner party, perhaps you should contribute to the bill.
+splitbill/c2_w    | That's a perfectly reasonable suggestion.
+splitbill/c2_h2   | Great!
+splitbill/c2_w2   | In that case, I should probably mention something.
+splitbill/c2_h3   | What?
+splitbill/c2_w3   | I ordered the lobster.
+splitbill/c2_h4   | You ordered what?
+splitbill/c2_w4   | I thought we were all sharing.
+splitbill/c2_h5   | You're supposed to be our waiter!
+splitbill/c2_w5   | Not anymore. My shift ended twenty minutes ago.
+splitbill/c2_w6   | So shall we split at four ways?
+splitbill/c2_all  | No!
+splitbill/c2_nar  | Сидва. Considering that, учитывая что, contribute to the bill, внести свою часть в счет.
+splitbill/outro   | А ты делишь счет поровну или платишь отдельно? Пиши в комментариях и подпишись!
