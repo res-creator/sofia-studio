@@ -1,0 +1,38 @@
+hook_h     0.45  2.62 | Can you take one good picture of me?
+hook_f     3.29  1.20 | Of course!
+hook_h2    5.79  2.49 | Why do I look like that?
+hook       8.79  4.17 | когда попросила всего одну красивую фотографию от А1 до С2.
+a1_f      14.83  0.64 | Smile!
+a1_h      15.67  0.80 | like this.
+a1_f2     16.67  0.60 | Perfect!
+a1_h2     18.97  2.09 | My eyes are closed.
+a1_nar    21.55  3.32 | А один. У меня закрыта глаза.
+a2_h      26.79  1.55 | Can you take another one?
+a2_f      28.55  2.09 | Sure! Move a little to the left.
+a2_f2     31.22  1.09 | a little more.
+a2_h2     34.11  1.19 | Where am I?
+a2_f4     35.52  1.94 | The background looks amazing.
+a2_nar    37.95  4.37 | А2, can you take another one? Можешь сделать ещё одну? Запоминай.
+a2_tip    42.52  1.07 | Can you take another one?
+b1_h      45.59  2.69 | Please make sure I'm actually in the picture.
+b1_f2     50.42  2.24 | I'm looking for the perfect angle.
+b1_h3     54.36  2.61 | That is not my good angle.
+b1_nar    57.47  2.82 | Be Odin - The Perfect Angle - идеальный ракурс.
+b2_h      62.21  1.94 | Just make sure nothing blocks my face.
+b2_h2     66.35  3.11 | You took a picture of a pigeon!
+b2_f3     69.68  1.89 | Technically, you're in it too.
+b2_nar    72.07  3.10 | Bye 2. Block my face. Закрывать мое лицо.
+c1_h      76.67  6.00 | I've been standing here for half an hour, and we still haven't taken a single decent photo.
+c1_h3     84.87  2.48 | But why are people liking that picture?
+c1_f3     87.57  1.68 | I posted it as a joke.
+c1_nar    89.75  5.51 | C1 - A single decent photo, хоть одна приличная фотография. Запоминай.
+c1_tip    95.46  1.58 | A single decent photo.
+c2_f      99.19  1.57 | You're not going to believe this.
+c2_h2    102.96  5.25 | After everything we've been through, you're telling me the pigeon became famous?
+c2_f3    108.42  2.77 | Apparently people find him incredibly photogenic.
+c2_m2    112.18  2.56 | We'd love to offer him a modeling contract.
+c2_h4    114.94  2.32 | A modeling contract?
+c2_h5    119.66  3.77 | Can we please take one normal photo of me now?
+c2_f5    123.66  2.20 | Sure, just move a little to the left.
+c2_nar   128.06  4.77 | Си-два. После всего, что мы пройдем, после всего, через что мы прошли.
+outro    133.63  6.10 | Сколько снимков ты делаешь, прежде чем получится один хороший? Пиши в комментариях и подпишись!

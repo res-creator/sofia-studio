@@ -1,0 +1,40 @@
+hook_f     0.50  1.41 | Let's split the bill.
+hook_h     2.64  2.61 | Why is it $300?
+hook_h2    5.45  2.37 | Somebody is lying.
+hook       8.32  4.11 | когда друзья решили разделить счёт. Английский от A1 до C2.
+a1_w      14.47  0.77 | is your bill.
+a1_f      15.46  0.86 | Let's split it.
+a1_f2     16.54  1.03 | Three ways.
+a1_h3     18.96  1.74 | 100 each.
+a1_nar    21.20  3.10 | А1. Let's split the bill. Давайте разделим счёт.
+a2_h      26.16  2.17 | But I only had a salad.
+a2_f2     28.63  0.98 | I had the steak.
+a2_h2     29.81  3.25 | Your stake was $80.
+a2_nar    33.55  3.95 | А два. I only had a salad. Я съела только салат. Запоминай.
+a2_tip    37.70  1.18 | I only had a salad.
+b1_f      40.48  2.00 | Why don't we just pay for what we ordered?
+b1_f2     42.70  1.92 | but we share the appetizers.
+b1_f3     46.88  2.59 | Who ate the last mozzarella stick?
+b1_nar    50.97  4.00 | Pay for what we ordered, заплатить за то, что заказали.
+b2_w      57.44  1.31 | Is everything alright over here?
+b2_h      58.97  3.36 | we're having a slight disagreement about how to divide the bill.
+b2_w3     62.55  2.17 | By the way, should I include the dessert?
+b2_w4     64.95  1.96 | The cheesecake we all shared earlier.
+b2_h3     67.11  2.59 | Wait, we all shared?
+b2_nar    70.90  2.29 | Бидва - a slight disagreement.
+c1_h      74.69  4.64 | Hold on. I seem to recall you joining us for dessert.
+c1_h2     80.79  2.13 | Yes, for one bite.
+c1_w2     83.14  2.51 | Well, the cheesecake was delicious.
+c1_nar    86.15  4.12 | C1. I seem to recall. Кажется, я припоминаю. Запоминай.
+c1_tip    90.47  1.18 | I seemed to recall.
+c2_h      93.73  5.65 | Considering that you've effectively become part of our dinner party, perhaps you should contribute to the bill.
+c2_w2     99.60  3.01 | In that case, I should probably mention something.
+c2_h3    102.83  0.72 | What?
+c2_w3    104.85  1.15 | I ordered the lobster.
+c2_h4    107.70  1.86 | You ordered what?
+c2_h5    109.78  2.30 | You're supposed to be our waiter!
+c2_w5    112.30  3.02 | Not anymore. My shift ended 20 minutes ago.
+c2_w6    115.82  2.28 | So shall we split at four ways?
+c2_all   118.32  0.98 | No!
+c2_nar   119.80  2.96 | СИДВА, considering that, учитывая что?
+outro    123.56  5.24 | А ты делишь счет поровну или платишь отдельно? Пиши в комментариях и подпишись!
