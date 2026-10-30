@@ -86,6 +86,7 @@ CAST = {
     "pal":   dict(voice="af_nicole", speed=1.0, lang="en-us", el="FGY2WhTYpPnrIDTdsKH5"),      # Laura (avoidparty: the friend who throws the party)
     "pguest": dict(voice="bm_lewis", speed=1.0, lang="en-gb", el="IKne3meq5aSn9XLyUdCD"),      # Charlie (avoidparty: guest with the contract)
     "coll":  dict(voice="am_adam", speed=1.0, lang="en-us", el="nPczCjzI2devNBz1zQrb"),        # Brian (lunch: the colleague who eats her lunch)
+    "sitter": dict(voice="am_michael", speed=1.0, lang="en-us", el="iP95p4xoKVk53GoZ742B"),    # Chris (seat: the passenger in her seat)
     "barista": dict(voice="af_nova", speed=1.0, lang="en-us", el="pFZP5JQG7iQjIQuC4Bku"),      # Lily (togo: the barista)
 }
 EP = {}
@@ -2341,4 +2342,49 @@ EP["togo"] = dict(
            'B2': {'type': 'big', 'en': 'Make that…', 'ru': 'сделайте вместо этого…', 'ex': ['Actually, can you make that an oat milk latte?', 'можете сделать это латте на овсяном?'], 'icon': 'cup'},
            'C1': {'type': 'eq', 'en': "I've changed my mind.", 'ru': '= Я передумала.', 'ex': [['swap it for', '= заменить на']]},
            'C2': {'type': 'c2', 'vocab': [['cancel my previous orders', '= отменить прошлые заказы'], ['I do apologise for the confusion', '= приношу извинения за путаницу']], 'moral': ['', '', ''], 'moral_at': 99}},
+)
+
+EP["seat"] = dict(
+    title='Мне заняли место 14C',
+    hook_title=[['КАК СКАЗАТЬ ЧЕЛОВЕКУ', 'd'], ['«ЭТО МОЁ МЕСТО»', 'p'], ['НА АНГЛИЙСКОМ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut",
+    chunks={'c1_h': [['Sorry to bother you,', 'Простите за беспокойство,'], ['but I believe this is my seat.', 'но, кажется, это моё место.']],
+            'c2_h': [['Sir, I do apologise', 'Сэр, приношу извинения'], ['for the disturbance, but I must', 'за беспокойство, но я должна'], ['kindly insist that you vacate', 'настоятельно попросить вас освободить'], ['seat fourteen C, as it was assigned to me.', 'место четырнадцать Си, оно закреплено за мной.']]},
+    lines=[
+        ('hook_s', 'sitter', "[smugly] Best seat on the plane. I'm never leaving.", 'Лучшее место в самолёте. Я отсюда никуда.'),
+        ('hook_h', 'her', "[stunned] That's... fourteen C. My seat.", 'Это… четырнадцать Си. Моё место.'),
+        ('hook', 'nar', 'Ты нашла своё место в самолёте, а там уже сидит чужой человек. Как попросить его пересесть по-английски? Проверим — от А-один до Си-два!', ''),
+        ('a1_h', 'her', '[firmly] Seat. Mine!', 'Место. Моё!'),
+        ('a1_s', 'sitter', "[cheerfully] Nice to meet you, Mine! I'm Tom.", 'Приятно познакомиться, Майн! Я Том.'),
+        ('a1_nar', 'nar', 'А-один. Mine — «моё», а Том услышал имя. Здравствуй, Майн.', ''),
+        ('a2_h', 'her', '[annoyed] You sit in my seat!', 'Ты сидишь в моём месте!'),
+        ('a2_s', 'sitter', "[relaxed] Yes. It's very comfortable.", 'Да. Оно очень удобное.'),
+        ('a2_nar', 'nar', 'А-два. По-английски не «ты сидишь», а «ты в моём месте». Запоминай:', ''),
+        ('a2_tip', 'tip', "Excuse me, you're in my seat.", ''),
+        ('b1_h', 'her', '[politely] Excuse me, I think this is my seat. Fourteen C.', 'Простите, кажется, это моё место. Четырнадцать Си.'),
+        ('b1_s', 'sitter', '[checking his ticket] Mine says forty-one C.', 'У меня написано сорок один Си.'),
+        ('b1_h2', 'her', "[flatly] It's upside down.", 'Он перевёрнут.'),
+        ('b1_nar', 'nar', 'Би-один. I think this is my seat — «кажется, это моё место». Вежливо, но ясно.', ''),
+        ('b2_h', 'her', '[politely] Would you mind checking your boarding pass?', 'Вы не могли бы проверить свой посадочный?'),
+        ('b2_s', 'sitter', "[proudly] I don't need to. I have a good feeling about this seat.", 'Не нужно. У меня хорошее предчувствие насчёт этого места.'),
+        ('b2_nar', 'nar', 'Би-два. Would you mind…? — «вы не против…?». Так вежливо просят. Запоминай:', ''),
+        ('b2_tip', 'tip', 'Would you mind checking your boarding pass?', ''),
+        ('c1_h', 'her', '[gently] Sorry to bother you, but I believe this is my seat.', 'Простите за беспокойство, но, кажется, это моё место.'),
+        ('c1_s', 'sitter', "[warmly] I know. But we've already bonded.", 'Знаю. Но мы уже сроднились.'),
+        ('c1_nar', 'nar', 'Си-один. Sorry to bother you, but — «простите за беспокойство, но». Запоминай:', ''),
+        ('c1_tip', 'tip', 'Sorry to bother you, but I believe this is my seat.', ''),
+        ('c2_h', 'her', '[formally] Sir, I do apologise for the disturbance, but I must kindly insist that you vacate seat fourteen C, as it was assigned to me.', 'Сэр, приношу извинения за беспокойство, но я должна настоятельно попросить вас освободить место четырнадцать Си, оно закреплено за мной.'),
+        ('c2_s', 'sitter', '[kindly] Of course. Just so you know, this is the flight to Madrid.', 'Конечно. Просто чтобы вы знали: это рейс в Мадрид.'),
+        ('c2_h2', 'her', "[faintly] ...I'm going to Paris.", '…Я лечу в Париж.'),
+        ('c2_s2', 'sitter', '[shrugging] Madrid is nice too.', 'Мадрид тоже хороший.'),
+        ('c2_nar', 'nar', 'Си-два. I must kindly insist — «я должна настоятельно попросить». Vacate the seat — «освободить место». Иногда проще сменить маршрут.', ''),
+        ('outro', 'nar', 'А как бы ты попросил освободить место? Пиши свою фразу в комментарии! И подпишись, впереди ещё много новых серий.', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'SEAT. MINE!', 'ok': False, 'note': 'вежливость: 5%', 'bars': [['ВЕЖЛИВОСТЬ', 5]]},
+           'A2': {'type': 'swap', 'bad': 'You sit in my seat!', 'bad_note': 'не sit, а be in', 'good': ["Excuse me, you're", 'in my seat.']},
+           'B1': {'type': 'eq', 'en': 'I think this is my seat.', 'ru': '= Кажется, это моё место.', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'Would you mind…?', 'ru': 'вы не против…?', 'ex': ['Would you mind checking your boarding pass?', 'вы не могли бы проверить посадочный?'], 'icon': 'tag'},
+           'C1': {'type': 'eq', 'en': 'Sorry to bother you, but…', 'ru': '= Простите за беспокойство, но…', 'ex': [['I believe', '= мне кажется, что']]},
+           'C2': {'type': 'c2', 'vocab': [['I must kindly insist', '= я должна настоятельно попросить'], ['vacate the seat', '= освободить место']], 'moral': ['', '', ''], 'moral_at': 99}},
 )

@@ -59,6 +59,9 @@ if EPN == "lunch":  # cover = him at the open fridge with her lasagna, her at th
 if EPN == "togo":  # cover = café counter, barista smiling, her at the front; For here or to go? -> her panic: ...Yes! -> narrator
     h0 = say("hook_b", 0.5) + 0.25
     hev = dict(panic=round(h0 - 0.05, 3)); cue("pop", h0, 0.5); cue("gasp", h0 + 0.1, 0.5); h0 = say("hook_h", h0 + 0.1) + 0.35
+if EPN == "seat":  # cover = plane cabin, him relaxed in her seat 14C, her in the aisle; Best seat on the plane -> her stunned face: That's fourteen C. My seat.
+    h0 = say("hook_s", 0.5) + 0.25
+    hev = dict(panic=round(h0 - 0.05, 3)); cue("gasp", h0, 0.5); h0 = say("hook_h", h0 + 0.1) + 0.35
 if EPN == "avoidparty":  # cover = her on the sofa under a blanket, phone ringing; party? -> not well -> solution! -> HARD CUT: door, crowd, SURPRISE!
     cue("ring", 0.2, 0.6); h0 = say("hook_p", 0.5) + 0.25; h0 = say("hook_h", h0) + 0.25; h0 = say("hook_p2", h0) + 0.3
     hev = dict(cut=round(h0 - 0.05, 3)); cue("creak", h0, 0.7); h0 = say("hook_all", h0 + 0.45); cue("cheer", h0 - 0.5, 0.6); cue("tada", h0 - 0.4, 0.5)
@@ -83,7 +86,7 @@ def find(word):
     return None
 stamp_t = find(E["stamp_word"]) or (e - 1.0); cue("stamp", stamp_t, 0.8)
 t = e + 0.45
-scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo") else {})))
+scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat") else {})))
 
 TICKS = lambda back: [("tick", -back + 0.15 + 0.6 * k, 0.6) for k in range(int(back / 0.6))]
 if EPN == "gym":
@@ -515,6 +518,17 @@ elif EPN == "togo":   # coffee shop: counter with the espresso machine, barista 
         C1=[("c1_h", 0.22, []), ("c1_b", 0.22, [("CUPS", 1.0, 0), ("plop", 1.05, 0.7)]), ("c1_h2", 0.2, []), ("c1_nar", 1.2, []), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
         C2=[("c2_h", 0.4, []), ("c2_b", 2.6, [("THINK", -2.55, 0)] + TICKS(2.4) + [("TRAY", 0.6, 0), ("clank", 0.65, 0.8)]), ("c2_b2", 0.3, []),
             ("c2_h2", 1.3, [("STARE", -1.25, 0), ("rimshot", ("e", 0.35), 0.9)]), ("c2_nar", 1.2, [("BLACK", -1.1, 0)])],
+    )
+    INTRO = 1.15
+elif EPN == "seat":   # plane cabin: him in seat 14C (profile), her in the aisle. Plans: WIDE / CARD / HER / TOM, TICKET + MAP inserts; C2 ends on a black card
+    LV = dict(
+        A1=[("a1_h", 0.22, []), ("a1_s", 0.22, [("NAME", 1.2, 0), ("pop", 1.25, 0.5)]), ("a1_nar", 1.0, [])],
+        A2=[("a2_h", 0.22, []), ("a2_s", 0.22, [("COMFY", 0.4, 0)]), ("a2_nar", 1.0, [("buzz", 0.95, 0.5)]), ("a2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        B1=[("b1_h", 0.22, []), ("b1_s", 0.22, [("TICKET", 0.0, 0), ("pop", 0.05, 0.6)]), ("b1_h2", 0.3, [("FLIP", -0.05, 0), ("whoosh", -0.05, 0.4)]), ("b1_nar", 1.4, [])],
+        B2=[("b2_h", 0.22, []), ("b2_s", 0.22, [("FEEL", 1.5, 0), ("pop", 1.55, 0.5)]), ("b2_nar", 1.0, []), ("b2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C1=[("c1_h", 0.22, []), ("c1_s", 0.22, [("PAT", 0.8, 0), ("sparkle", 0.85, 0.6)]), ("c1_nar", 1.4, [("STARE", -1.35, 0)] + TICKS(1.2)), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C2=[("c2_h", 0.4, []), ("c2_s", 2.6, [("THINK", -2.55, 0)] + TICKS(2.4) + [("MAP", 1.9, 0), ("pop", 1.95, 0.6)]), ("c2_h2", 0.5, []),
+            ("c2_s2", 0.6, [("rimshot", ("e", 0.35), 0.9)]), ("c2_nar", 1.2, [("BLACK", -1.1, 0)])],
     )
     INTRO = 1.15
 elif EPN == "avoidparty":   # her living room (sofa, blanket, phone) + the friend at her party (phone call), then her front door. Plans: WIDE / CARD / HER / PAL / DOOR / PHONE, IMAGINE, DOC inserts
