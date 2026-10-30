@@ -86,6 +86,7 @@ CAST = {
     "pal":   dict(voice="af_nicole", speed=1.0, lang="en-us", el="FGY2WhTYpPnrIDTdsKH5"),      # Laura (avoidparty: the friend who throws the party)
     "pguest": dict(voice="bm_lewis", speed=1.0, lang="en-gb", el="IKne3meq5aSn9XLyUdCD"),      # Charlie (avoidparty: guest with the contract)
     "coll":  dict(voice="am_adam", speed=1.0, lang="en-us", el="nPczCjzI2devNBz1zQrb"),        # Brian (lunch: the colleague who eats her lunch)
+    "barista": dict(voice="af_nova", speed=1.0, lang="en-us", el="pFZP5JQG7iQjIQuC4Bku"),      # Lily (togo: the barista)
 }
 EP = {}
 
@@ -2292,4 +2293,52 @@ EP["lunch"] = dict(
            'B2': {'type': 'big', 'en': 'Help yourself to', 'ru': 'брать без спроса', 'ex': ["Please don't help yourself to my food.", 'не бери мою еду без спроса.'], 'icon': 'plate'},
            'C1': {'type': 'eq', 'en': "I'd appreciate it if you could ask first.", 'ru': '= Буду признательна, если ты сначала спросишь.'},
            'C2': {'type': 'c2', 'vocab': [['profound disappointment', '= глубокое разочарование'], ['without my permission', '= без моего разрешения']], 'moral': ['', '', ''], 'moral_at': 99}},
+)
+
+EP["togo"] = dict(
+    title='Кофе с собой и поменять заказ',
+    hook_title=[['КАК ЗАКАЗАТЬ КОФЕ', 'd'], ['С СОБОЙ', 'p'], ['И ПОМЕНЯТЬ ЗАКАЗ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut",
+    chunks={'b2_h': [['Actually, can you make that', 'Вообще-то, можете сделать'], ['an oat milk latte instead?', 'вместо этого латте на овсяном молоке?']],
+            'c1_h': [["Sorry, I've changed my mind.", 'Простите, я передумала.'], ['Could I swap it for a cappuccino?', 'Можно заменить на капучино?']],
+            'c2_h': [['Excuse me, I do apologise', 'Простите, приношу извинения'], ['for the confusion, but I would like', 'за путаницу, но я хотела бы'], ['to cancel all my previous orders', 'отменить все мои прошлые заказы'], ['and have a single flat white, to go.', 'и взять один флэт уайт с собой.']]},
+    lines=[
+        ('hook_b', 'barista', '[cheerful] Hi! For here or to go?', 'Привет! Здесь или с собой?'),
+        ('hook_h', 'her', '[panicked] ...Yes!', '…Да!'),
+        ('hook', 'nar', 'Заказываешь кофе, а тебя спрашивают: здесь или с собой? Как ответить по-английски и поменять заказ? Проверим — от А-один до Си-два!', ''),
+        ('a1_h', 'her', '[confidently] Coffee. Go. Go!', 'Кофе. Идти. Идти!'),
+        ('a1_b', 'barista', '[puzzled, polite] Go? Okay... Goodbye!', 'Идти? Ладно… До свидания!'),
+        ('a1_nar', 'nar', 'А-один. Go — «идти», а не «с собой». Кофе ты не получила, зато тебя проводили.', ''),
+        ('a2_h', 'her', '[sweetly] Coffee with me, please.', 'Кофе со мной, пожалуйста.'),
+        ('a2_b', 'barista', "[deadpan] I'm flattered, but I'm working.", 'Мне приятно, но я на работе.'),
+        ('a2_nar', 'nar', 'А-два. «С собой» — это не with me. Запоминай:', ''),
+        ('a2_tip', 'tip', 'Can I get it to go?', ''),
+        ('b1_h', 'her', '[politely] Could I have a latte to go, please?', 'Можно латте с собой, пожалуйста?'),
+        ('b1_b', 'barista', '[brightly] Sure! Name for the cup?', 'Конечно! Имя для стаканчика?'),
+        ('b1_h2', 'her', '[clearly] Anna.', 'Анна.'),
+        ('b1_nar', 'nar', 'Би-один. A latte to go — «латте с собой». Напиток называем первым, to go в конце.', ''),
+        ('b2_h', 'her', '[casually] Actually, can you make that an oat milk latte instead?', 'Вообще-то, можете сделать вместо этого латте на овсяном молоке?'),
+        ('b2_b', 'barista', "[cheerfully] Sure! That's fifty pence extra.", 'Конечно! Это плюс пятьдесят пенсов.'),
+        ('b2_h2', 'her', '[shocked] Fifty? For milk from a plant?', 'Пятьдесят? За молоко из растения?'),
+        ('b2_nar', 'nar', 'Би-два. Make that — «сделайте это». Так меняют заказ на ходу. Запоминай:', ''),
+        ('b2_tip', 'tip', 'Actually, can you make that an oat milk latte?', ''),
+        ('c1_h', 'her', "[sincerely] Sorry, I've changed my mind. Could I swap it for a cappuccino?", 'Простите, я передумала. Можно заменить на капучино?'),
+        ('c1_b', 'barista', "[evenly] Sure. That's your fourth change.", 'Конечно. Это уже четвёртое изменение.'),
+        ('c1_h2', 'her', '[innocently] Is there a limit?', 'Есть лимит?'),
+        ('c1_nar', 'nar', 'Си-один. I\'ve changed my mind — «я передумала». Swap it for — «заменить на». Запоминай:', ''),
+        ('c1_tip', 'tip', "Sorry, I've changed my mind.", ''),
+        ('c2_h', 'her', '[politely] Excuse me, I do apologise for the confusion, but I would like to cancel all my previous orders and have a single flat white, to go.', 'Простите, приношу извинения за путаницу, но я хотела бы отменить все мои прошлые заказы и взять один флэт уайт с собой.'),
+        ('c2_b', 'barista', '[brightly] Of course! Here you go.', 'Конечно! Держите.'),
+        ('c2_b2', 'barista', "[innocently] And your latte, oat latte and cappuccino. You never cancelled them.", 'И ваши латте, овсяное латте и капучино. Вы их не отменяли.'),
+        ('c2_h2', 'her', '[faintly] ...I need a bigger bag.', '…Мне нужна сумка побольше.'),
+        ('c2_nar', 'nar', 'Си-два. Cancel my previous orders — «отменить прошлые заказы». I do apologise for the confusion — «приношу извинения за путаницу». Иногда проще купить все четыре кофе.', ''),
+        ('outro', 'nar', 'А как бы ты попросил кофе с собой? Пиши свою фразу в комментарии! И подпишись, впереди ещё много новых серий.', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'COFFEE. GO. GO!', 'ok': False, 'note': 'кофе: 0 чашек', 'bars': [['КОФЕ', 0]]},
+           'A2': {'type': 'swap', 'bad': 'Coffee with me, please.', 'bad_note': 'with me ≠ с собой', 'good': ['Can I get it', 'to go?']},
+           'B1': {'type': 'eq', 'en': 'A latte to go, please.', 'ru': '= Латте с собой, пожалуйста.', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'Make that…', 'ru': 'сделайте вместо этого…', 'ex': ['Actually, can you make that an oat milk latte?', 'можете сделать это латте на овсяном?'], 'icon': 'cup'},
+           'C1': {'type': 'eq', 'en': "I've changed my mind.", 'ru': '= Я передумала.', 'ex': [['swap it for', '= заменить на']]},
+           'C2': {'type': 'c2', 'vocab': [['cancel my previous orders', '= отменить прошлые заказы'], ['I do apologise for the confusion', '= приношу извинения за путаницу']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
