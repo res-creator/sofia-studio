@@ -56,6 +56,9 @@ if EPN == "busy":  # cover = game on his monitor; boss footsteps -> game closed 
 if EPN == "lunch":  # cover = him at the open fridge with her lasagna, her at the door; he chews: Whose lasagna? -> her shocked face: That's my lunch
     cue("gulp", 0.35, 0.5); h0 = say("hook_c", 0.5) + 0.3
     hev = dict(shock=round(h0 - 0.05, 3)); cue("gasp", h0, 0.6); h0 = say("hook_h", h0 + 0.1) + 0.35
+if EPN == "togo":  # cover = café counter, barista smiling, her at the front; For here or to go? -> her panic: ...Yes! -> narrator
+    h0 = say("hook_b", 0.5) + 0.25
+    hev = dict(panic=round(h0 - 0.05, 3)); cue("pop", h0, 0.5); cue("gasp", h0 + 0.1, 0.5); h0 = say("hook_h", h0 + 0.1) + 0.35
 if EPN == "avoidparty":  # cover = her on the sofa under a blanket, phone ringing; party? -> not well -> solution! -> HARD CUT: door, crowd, SURPRISE!
     cue("ring", 0.2, 0.6); h0 = say("hook_p", 0.5) + 0.25; h0 = say("hook_h", h0) + 0.25; h0 = say("hook_p2", h0) + 0.3
     hev = dict(cut=round(h0 - 0.05, 3)); cue("creak", h0, 0.7); h0 = say("hook_all", h0 + 0.45); cue("cheer", h0 - 0.5, 0.6); cue("tada", h0 - 0.4, 0.5)
@@ -80,7 +83,7 @@ def find(word):
     return None
 stamp_t = find(E["stamp_word"]) or (e - 1.0); cue("stamp", stamp_t, 0.8)
 t = e + 0.45
-scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch") else {})))
+scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo") else {})))
 
 TICKS = lambda back: [("tick", -back + 0.15 + 0.6 * k, 0.6) for k in range(int(back / 0.6))]
 if EPN == "gym":
@@ -501,6 +504,17 @@ elif EPN == "lunch":   # office kitchenette: the fridge (open), her lunch box wi
         C1=[("c1_h", 0.22, []), ("c1_c", 0.22, []), ("c1_nar", 1.4, [("STARE", -1.35, 0)] + TICKS(1.2)), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
         C2=[("c2_h", 0.4, []), ("c2_c", 2.6, [("THINK", -2.55, 0)] + TICKS(2.4) + [("OPEN", 2.0, 0), ("creak", 2.05, 0.6)]),
             ("c2_h2", 0.5, []), ("c2_h3", 1.5, [("STINK", -1.45, 0), ("deflate", -1.4, 0.6), ("rimshot", ("e", 0.35), 0.9)]), ("c2_nar", 1.2, [("BLACK", -1.1, 0)])],
+    )
+    INTRO = 1.15
+elif EPN == "togo":   # coffee shop: counter with the espresso machine, barista behind it, her in front. Plans: WIDE / CARD / HER / BAR, CUP insert; C2 ends on a black card
+    LV = dict(
+        A1=[("a1_h", 0.22, []), ("a1_b", 0.22, [("SHOO", 1.6, 0), ("whoosh", 1.65, 0.5)]), ("a1_nar", 1.0, [])],
+        A2=[("a2_h", 0.22, []), ("a2_b", 0.22, [("FLATTER", 0.9, 0), ("pop", 0.95, 0.5)]), ("a2_nar", 1.0, [("buzz", 0.95, 0.5)]), ("a2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        B1=[("b1_h", 0.22, []), ("b1_b", 0.22, []), ("b1_h2", 0.4, [("CUP", ("e", 0.15), 0), ("pop", ("e", 0.15), 0.6)]), ("b1_nar", 1.8, [])],
+        B2=[("b2_h", 0.22, []), ("b2_b", 0.22, [("PRICE", 1.4, 0), ("register", 1.45, 0.7)]), ("b2_h2", 0.3, []), ("b2_nar", 1.0, []), ("b2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C1=[("c1_h", 0.22, []), ("c1_b", 0.22, [("CUPS", 1.0, 0), ("plop", 1.05, 0.7)]), ("c1_h2", 0.2, []), ("c1_nar", 1.2, []), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C2=[("c2_h", 0.4, []), ("c2_b", 2.6, [("THINK", -2.55, 0)] + TICKS(2.4) + [("TRAY", 0.6, 0), ("clank", 0.65, 0.8)]), ("c2_b2", 0.3, []),
+            ("c2_h2", 1.3, [("STARE", -1.25, 0), ("rimshot", ("e", 0.35), 0.9)]), ("c2_nar", 1.2, [("BLACK", -1.1, 0)])],
     )
     INTRO = 1.15
 elif EPN == "avoidparty":   # her living room (sofa, blanket, phone) + the friend at her party (phone call), then her front door. Plans: WIDE / CARD / HER / PAL / DOOR / PHONE, IMAGINE, DOC inserts
