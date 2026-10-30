@@ -2435,3 +2435,42 @@ EP["queue"] = dict(
            'C1': {'type': 'eq', 'en': 'Go to the back of the line.', 'ru': '= Встаньте в конец очереди.', 'ex': [["I'd appreciate it if", '= я была бы признательна, если']]},
            'C2': {'type': 'c2', 'vocab': [['I must point out', '= я обязана заметить'], ['jump the queue', '= влезть без очереди']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- experiment "Said / Heard": dinner with his parents (hard_cut). No narrator; voices = ElevenLabs voices already on the channel.
+CAST.update({
+    "dasha": dict(voice="af_heart", speed=1.0, lang="en-us", el="cgSgspJ2msm6clMCkdW9"),   # same voice as the heroine
+    "frank": dict(voice="am_michael", speed=1.0, lang="en-us", el="iP95p4xoKVk53GoZ742B"),  # Chris
+    "mom":   dict(voice="af_sarah", speed=1.0, lang="en-us", el="FGY2WhTYpPnrIDTdsKH5"),    # Laura
+    "son":   dict(voice="am_liam", speed=1.0, lang="en-us", el="TX3LPaxmHKxFdv7VOQHJ"),     # Liam
+})
+EP["saidheard"] = dict(
+    title='Сказал / Услышал: ужин с родителями',
+    hook_title=[['УЖИН С РОДИТЕЛЯМИ', 'd'], ['СКАЗАЛ / УСЛЫШАЛ', 'p'], ['ФАБРИКА ≠ FABRIC', 'd']],
+    stamp="", stamp_word="", next=None, camera="hard_cut",
+    lines=[
+        ('hook_d', 'dasha', "[brightly] I'm a manager at a fabric!", 'Я менеджер на «ткани»! (хотела: на фабрике)'),
+        ('hook_f', 'frank', '[flatly] ...A fabric?', '…Ткань?'),
+        ('s1_l', 'mom', '[politely] Oh, how interesting! So you make... curtains?', 'Как интересно! То есть вы шьёте… шторы?'),
+        ('s1_d', 'dasha', '[proudly] Everybody loves it! The whole country!', 'Все это любят! Вся страна!'),
+        ('s2_f', 'frank', '[making small talk] So... do you get along with your boss?', 'А с начальником вы ладите?'),
+        ('s2_d', 'dasha', "[fondly] Oh, my chef? He's crazy! When he's angry, he throws his hat!", 'Мой «шеф-повар»? Он безумный! Когда злится, швыряет шапку!'),
+        ('s2_l', 'mom', '[whispering] Frank. A chef. At a curtain factory.', 'Фрэнк. Повар. На фабрике штор.'),
+        ('s2_m', 'son', '[from the kitchen] Everything okay out there?!', 'У вас там всё хорошо?!'),
+        ('s2_l2', 'mom', "[too brightly] We're great!", 'Всё отлично!'),
+        ('s3_d', 'dasha', "[warmly] Please, don't be scared. I really sympathize with you both.", 'Не бойтесь. Я вам очень симпатизирую. (они слышат: сочувствую)'),
+        ('s3_l', 'mom', "[tearfully] Is it the house? It's the house, isn't it?", 'Это дом? Это из-за дома, да?'),
+        ('s4_m', 'son', '[cheerfully] Okay, who wants dessert? Whoa. What did I miss?', 'Кто хочет десерт? Ого. Что я пропустил?'),
+        ('s4_m2', 'son', '[quickly] Mom, Dad! Fabric is cloth. She means factory.', 'Fabric — это ткань. Она имеет в виду factory — фабрику.'),
+        ('s4_m3', 'son', '[quickly] Chef is a cook. She means boss.', 'Chef — это повар. Она имеет в виду boss — начальника.'),
+        ('s4_m4', 'son', "[warmly] And she doesn't feel sorry for you. She likes you!", 'И ей вас не жалко. Вы ей нравитесь!'),
+        ('s5_f', 'frank', '[warming up] Okay, so... what do you make at the factory?', 'Так что вы делаете на фабрике?'),
+        ('s5_d', 'dasha', '[proudly] Chocolate.', 'Шоколад.'),
+        ('s5_l', 'mom', '[amazed] Oh my gosh. He really does look like a chef.', 'Боже. Он правда похож на повара.'),
+        ('s5_d2', 'dasha', "[smiling] I know! But he's my boss.", 'Знаю! Но он мой босс.'),
+        ('s6_f', 'frank', '[happily, mouth full] To the fabric!', 'За ткань-фабрику!'),
+        ('s6_l', 'mom', '[cheerfully] And the angry chef!', 'И сердитого повара!'),
+        ('s6_d', 'dasha', '[deadpan] Factory. Boss.', 'Фабрика. Босс.'),
+        ('s6_m', 'son', '[groaning] Please stop.', 'Пожалуйста, хватит.'),
+    ],
+    cards={},
+)
