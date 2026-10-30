@@ -138,11 +138,12 @@ function bubble(ctx, sp, t, anchor, side, nameTag) {
   let fs = sp.fs || (sp.text.length > 60 ? 46 : 58);   // sp.fs: per-line override (new episodes only)
   font(ctx, 'Nun9', fs);
   const lines = wrap(ctx, sp.text, maxW - 80);
-  font(ctx, 'Nun7', 34);
+  const rfs = sp.rfs || 34, rlh = Math.round(rfs * 1.24);   // sp.rfs: bigger Russian line (new episodes only)
+  font(ctx, 'Nun7', rfs);
   const rl = sp.ru ? wrap(ctx, sp.ru, maxW - 80) : [];
   font(ctx, 'Nun9', fs);
-  const tw = Math.max(...lines.map(l => ctx.measureText(l).width), ...rl.map(l => { font(ctx, 'Nun7', 34); return ctx.measureText(l).width; })) + 80;
-  const bh = lines.length * fs * 1.12 + (rl.length ? rl.length * 42 + 22 : 0) + 56;
+  const tw = Math.max(...lines.map(l => ctx.measureText(l).width), ...rl.map(l => { font(ctx, 'Nun7', rfs); return ctx.measureText(l).width; })) + 80;
+  const bh = lines.length * fs * 1.12 + (rl.length ? rl.length * rlh + 22 : 0) + 56;
   let bx = side === 'left' ? Math.max(50, Math.min(anchor.x - 120, W - 150 - tw)) : Math.min(W - 140 - tw, Math.max(50, anchor.x - tw + 140));
   bx = Math.max(40, bx);
   let by = anchor.y - bh - 60;
@@ -173,8 +174,8 @@ function bubble(ctx, sp, t, anchor, side, nameTag) {
     const ry = by + 30 + lines.length * fs * 1.12 + 14;
     ctx.globalAlpha = clamp(u / 0.4) * (1);
     ctx.strokeStyle = C.pinkL; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(bx + 40, ry - 6); ctx.lineTo(bx + tw - 40, ry - 6); ctx.stroke();
-    font(ctx, 'Nun7', 34); ctx.fillStyle = C.pinkD;
-    rl.forEach((l, i) => ctx.fillText(l, bx + 40, ry + 8 + i * 42));
+    font(ctx, 'Nun7', rfs); ctx.fillStyle = C.pinkD;
+    rl.forEach((l, i) => ctx.fillText(l, bx + 40, ry + 8 + i * rlh));
   }
   ctx.restore();
   if (global.__QA) global.__QA.ui(ctx, 'bubble', { x: bx, y: by, w: tw, h: bh, k, id: sp.id, who: sp.who, lines: lines.length + rl.length, anchor });

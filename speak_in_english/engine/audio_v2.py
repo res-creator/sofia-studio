@@ -589,7 +589,7 @@ elif EPN in ("gym", "cancel"):
         if k % 4 == 0:
             for m in chords[bar]: put(music, pluck(note(m + 12, K), b*1.8, 0.6), t0, 0.12)
         if k % 2 == 0: put(music, pluck(note(chords[bar][(k//2) % 3] + 24, K), 0.3, 1.2), t0 + b*0.5, 0.06)
-elif EPN in ("dinner", "gift", "guest", "marry"):
+elif EPN in ("dinner", "gift", "guest", "marry", "momshow"):
     # cosy family waltz: oom-pah-pah + accordion-ish melody + mandolin tremolo
     bpm = 168; b = 60/bpm; K = 0
     def accord(f, d):
@@ -651,6 +651,7 @@ def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
 if EPN == "pingpong": sp["c2_her"] = dict(t=next(x["ev"]["fold"] for x in TL["scenes"] if x["id"] == "FIN") - 0.4, d=0.0); sp["c2_nar"] = sp["fin"]   # music drops while the cannon sits down and the stool folds
 if EPN == "saidheard": sp["c2_her"] = sp["s6_d"]; sp["c2_nar"] = sp["s6_m"]   # music drops for the deadpan beat before "Please stop."
+if EPN == "momshow": sp["c2_her"] = sp["s4_v"]; sp["c2_nar"] = sp["s4_m2"]   # music stops after "do you know what she just said?", back on "Kitchen. Now."
 C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
@@ -677,7 +678,7 @@ for s in TL["speech"]:
     if EPN == "airport" and s["id"] == "c2_her2": x = lp(lp(x, 650), 650) * 1.8
     l, r = PAN.get(s["who"], (0.84, 1.0)); g = 1.0 if s["who"] == "nar" else 0.95
     voice[i:j, 0] += x[:j-i]*l*g; voice[i:j, 1] += x[:j-i]*r*g; duck[max(0, i-2400):j+4800] = 1
-duck = lp(duck, 4); mus_g = gain * (1 - (0.74 if EPN == "party" else 0.7)*np.clip(duck, 0, 1)) * (0.30 if EPN == "gym" else 0.32 if EPN in ("dinner", "salon", "gift", "guest", "haircut", "marry") else 0.44 if EPN == "party" else 0.34)
+duck = lp(duck, 4); mus_g = gain * (1 - (0.74 if EPN == "party" else 0.7)*np.clip(duck, 0, 1)) * (0.30 if EPN == "gym" else 0.32 if EPN in ("dinner", "salon", "gift", "guest", "haircut", "marry", "momshow") else 0.44 if EPN == "party" else 0.34)
 fx = np.zeros((N, 2))
 for c in TL["sfx"]:
     x = SFX[c["n"]]; i = int(c["t"]*SR)
