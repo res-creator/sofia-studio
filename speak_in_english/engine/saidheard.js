@@ -220,7 +220,7 @@ function sticker(c, t, t0, bad, badRu, good, goodRu, y) { const k = eBack(P(t, t
   fitTxt(c, bad, -250, -14, 66, '#E0474C', 360); const w = c.measureText(bad).width; c.strokeStyle = '#E0474C'; c.lineWidth = 8; c.beginPath(); c.moveTo(-250 - w / 2 - 6, -14); c.lineTo(-250 + w / 2 + 6, -14); c.stroke(); fitTxt(c, badRu, -250, 36, 34, '#8A8A8A', 360, 'Nun9');
   c.fillStyle = C.oliveD; c.beginPath(); c.moveTo(-60, -40); c.lineTo(10, -14); c.lineTo(-60, 12); c.closePath(); c.fill();
   fitTxt(c, good, 230, -14, 66, '#2E9E5A', 400); fitTxt(c, goodRu, 230, 36, 34, '#6A6A6A', 400, 'Nun9'); c.restore(); }
-function coverBadge(c, t) { const p = 1 + 0.04 * Math.sin(t * 8); c.save(); c.translate(540, 1640); c.scale(p, p); c.rotate(-0.03); c.fillStyle = 'rgba(0,0,0,.25)'; rr(c, -360 + 6, -62 + 10, 720, 124, 62); c.fill(); c.fillStyle = '#FFE15A'; rr(c, -360, -62, 720, 124, 62); c.fill(); c.strokeStyle = C.oliveD; c.lineWidth = 6; rr(c, -360, -62, 720, 124, 62); c.stroke();
+function coverBadge(c, t) { const p = 1 + 0.04 * Math.sin(t * 8); c.save(); c.translate(540, 1490); c.scale(p, p); c.rotate(-0.03); c.fillStyle = 'rgba(0,0,0,.25)'; rr(c, -360 + 6, -62 + 10, 720, 124, 62); c.fill(); c.fillStyle = '#FFE15A'; rr(c, -360, -62, 720, 124, 62); c.fill(); c.strokeStyle = C.oliveD; c.lineWidth = 6; rr(c, -360, -62, 720, 124, 62); c.stroke();
   fitTxt(c, 'I MANAGE A FABRIC!', 0, 4, 54, '#E0474C', 660); c.restore(); }
 
 function renderFrame(c, t) {
