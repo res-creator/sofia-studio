@@ -13,6 +13,7 @@ for lid, who, text, ru in EP[ep]["lines"]:
     vid = CAST[who].get("el")
     if not vid: print("no ElevenLabs voice for", who, "- skipped", lid); continue
     body = {"text": text, "model_id": MODEL}
+    if os.environ.get("EL_STAB"): body["voice_settings"] = {"stability": float(os.environ["EL_STAB"])}   # v3: 0.0 creative / 0.5 natural / 1.0 robust (optional, more expressive takes)
     req = urllib.request.Request(f"https://api.elevenlabs.io/v1/text-to-speech/{vid}?output_format=mp3_44100_128", data=json.dumps(body).encode(), headers=hdr)
     mp3 = urllib.request.urlopen(req, timeout=120).read()
     raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", "-", "-ac", "1", "-ar", str(SR), "-f", "f32le", "-"], input=mp3, capture_output=True).stdout
