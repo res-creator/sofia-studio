@@ -2530,3 +2530,52 @@ EP["wifi"] = dict(
            'C1': {'type': 'eq', 'en': "I'd be really grateful if you could…", 'ru': '= Буду очень признательна, если вы сможете…', 'ex': [["I'd be grateful if…", '= буду признательна, если…']]},
            'C2': {'type': 'c2', 'vocab': [['would you be so kind as to', '= не будете ли вы так любезны'], ['wireless network', '= беспроводная сеть']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- batch "passport control" (TikTok, hard_cut). ElevenLabs only; narrator Sarah, heroine = Jessica, officer = Daniel (nigel's voice, already on the channel).
+CAST.update({
+    "officer": dict(voice="bm_daniel", speed=0.98, lang="en-gb", el="onwK4e9ZLuTAKqWW03F9"),   # passport officer (same voice as nigel)
+})
+EP["passport"] = dict(
+    title='Паспортный контроль',
+    hook_title=[['КАК ОТВЕТИТЬ', 'd'], ['«ЦЕЛЬ ВИЗИТА?»', 'p'], ['НА АНГЛИЙСКОМ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut",
+    chunks={'c2_h': [['Good afternoon, officer.', 'Добрый день, офицер.'], ["I'm here for a ten-day holiday,", 'я приехала в отпуск на десять дней,'], ["staying at the Grand Hotel,", 'остановлюсь в отеле «Гранд»,'], ['and I have a return ticket and sufficient funds.', 'у меня есть обратный билет и достаточно средств.']]},
+    lines=[
+        ('hook_o', 'officer', '[sternly] Good afternoon. Purpose of your visit?', 'Добрый день. Цель вашего визита?'),
+        ('hook_h', 'her', '[nervously] ...Is this a quiz?', '…Это викторина?'),
+        ('hook', 'nar', 'Паспортный контроль, а офицер спрашивает: цель визита? Как ответить по-английски? Проверим — от А-один до Си-два!', ''),
+        ('a1_h', 'her', '[eagerly] I want look! Look, look, look!', 'Я хочу смотреть! Смотреть, смотреть!'),
+        ('a1_o', 'officer', '[deadpan] Look at the camera, please.', 'Смотрите в камеру, пожалуйста.'),
+        ('a1_nar', 'nar', 'А-один. I want look — без to. Зато «смотрите» он понял: в камеру.', ''),
+        ('a2_h', 'her', '[sweetly] I came for a rest.', 'Я приехала на отдых.'),
+        ('a2_o', 'officer', '[kindly] A rest? Take a pillow. Sleep well.', 'Отдых? Возьмите подушку. Спите спокойно.'),
+        ('a2_nar', 'nar', 'А-два. For a rest — это отдых после болезни. В отпуск говорят on holiday. Запоминай:', ''),
+        ('a2_tip', 'tip', "I'm here on holiday.", ''),
+        ('b1_h', 'her', "[politely] I'm here on holiday for a week.", 'Я здесь в отпуске на неделю.'),
+        ('b1_o', 'officer', '[warmly] Lovely! Welcome.', 'Прекрасно! Добро пожаловать.'),
+        ('b1_h2', 'her', '[happily] Thank you! Finally!', 'Спасибо! Наконец-то!'),
+        ('b1_nar', 'nar', "Би-один. I'm here on holiday for a week — «я здесь в отпуске на неделю». Главная фраза.", ''),
+        ('b2_o', 'officer', '[curious] Business or pleasure?', 'Работа или отдых?'),
+        ('b2_h', 'her', '[casually] A bit of both, really.', 'И то и другое понемногу.'),
+        ('b2_o2', 'officer', '[curious] Which bag is the fun?', 'Какая сумка — отдых?'),
+        ('b2_nar', 'nar', 'Би-два. A bit of both — «и то и другое понемногу». Запоминай:', ''),
+        ('b2_tip', 'tip', "I'm here for a bit of both.", ''),
+        ('c1_h', 'her', "[calmly] I'm here to visit friends, and I'll be staying for ten days.", 'Я приехала навестить друзей и пробуду здесь десять дней.'),
+        ('c1_o', 'officer', '[evenly] Do you have a return ticket?', 'У вас есть обратный билет?'),
+        ('c1_h2', 'her', '[brightly] Yes! Right here.', 'Да! Вот он.'),
+        ('c1_nar', 'nar', "Си-один. I'll be staying for ten days — «я пробуду десять дней». Запоминай:", ''),
+        ('c1_tip', 'tip', "I'm here to visit friends, and I'll be staying for ten days.", ''),
+        ('c2_h', 'her', "[formally] Good afternoon, officer. I'm here for a ten-day holiday, staying at the Grand Hotel, and I have a return ticket and sufficient funds.", 'Добрый день, офицер. Я приехала в отпуск на десять дней, остановлюсь в отеле «Гранд», у меня есть обратный билет и достаточно средств.'),
+        ('c2_o', 'officer', '[warmly] Perfect answer! Passport, please.', 'Идеальный ответ! Паспорт, пожалуйста.'),
+        ('c2_h2', 'her', "[faintly] ...It's in my suitcase.", '…Он в чемодане.'),
+        ('c2_nar', 'nar', 'Си-два. Sufficient funds — «достаточно средств». Return ticket — «обратный билет». А паспорт лучше держать в кармане.', ''),
+        ('outro', 'nar', 'А как бы ты ответил на «цель визита»? Пиши свою фразу в комментарии! И подпишись, впереди ещё много новых серий.', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'I WANT LOOK!', 'ok': False, 'note': 'вежливость: 5%', 'bars': [['ВЕЖЛИВОСТЬ', 5]]},
+           'A2': {'type': 'swap', 'bad': 'I came for a rest.', 'bad_note': 'это отдых после болезни', 'good': ["I'm here", 'on holiday.']},
+           'B1': {'type': 'eq', 'en': "I'm here on holiday for a week.", 'ru': '= Я здесь в отпуске на неделю.', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'A bit of both', 'ru': 'и то и другое понемногу', 'ex': ['Business or pleasure? A bit of both.', 'работа или отдых? И то и другое.'], 'icon': 'bell'},
+           'C1': {'type': 'eq', 'en': "I'm here to visit friends.", 'ru': '= Я приехала навестить друзей.', 'ex': [["I'll be staying for…", '= я пробуду…']]},
+           'C2': {'type': 'c2', 'vocab': [['sufficient funds', '= достаточно средств'], ['a return ticket', '= обратный билет']], 'moral': ['', '', ''], 'moral_at': 99}},
+)
