@@ -2579,3 +2579,49 @@ EP["passport"] = dict(
            'C1': {'type': 'eq', 'en': "I'm here to visit friends.", 'ru': '= Я приехала навестить друзей.', 'ex': [["I'll be staying for…", '= я пробуду…']]},
            'C2': {'type': 'c2', 'vocab': [['sufficient funds', '= достаточно средств'], ['a return ticket', '= обратный билет']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- batch "new hair" (TikTok, hard_cut). ElevenLabs only; narrator Sarah, heroine = Jessica, friend = Laura (same voice as pal).
+CAST.update({
+    "friend": dict(voice="af_nicole", speed=1.0, lang="en-us", el="FGY2WhTYpPnrIDTdsKH5"),      # Laura (newhair: the friend with the new hair)
+})
+EP["newhair"] = dict(
+    title='Новая причёска',
+    hook_title=[['КАК СКАЗАТЬ ПОДРУГЕ,', 'd'], ['ЧТО ПРИЧЁСКА', 'p'], ['НЕ НРАВИТСЯ, ПО-АНГЛИЙСКИ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut",
+    chunks={'c2_h': [["Honestly, I can see how much thought you put into it,", 'Честно, я вижу, сколько мыслей ты в неё вложила,'], ['and I really admire your confidence.', 'и я правда восхищаюсь твоей смелостью.'], ["It's a bold change, and it suits your personality.", 'Это смелая перемена, и она подходит твоему характеру.'], ["It's just not quite for me, but you love it, and that's what matters.", 'Просто она не совсем для меня, но ты в ней счастлива, а это главное.']]},
+    lines=[
+        ('hook_f', 'friend', '[proudly] So? What do you think of my new hair?', 'Ну? Как тебе моя новая причёска?'),
+        ('hook_h', 'her', '[nervously] ...It is, um... definitely hair.', '…Она, э-э… определённо причёска.'),
+        ('hook', 'nar', 'Подруга показывает новую причёску, а тебе она не нравится. Как сказать честно, но не обидеть? Проверим — от А-один до Си-два!', ''),
+        ('a1_h', 'her', '[bluntly] Bad! Hair bad!', 'Плохо! Причёска плохая!'),
+        ('a1_f', 'friend', '[wounded] Bad?! I paid a hundred dollars!', 'Плохая?! Я заплатила сто долларов!'),
+        ('a1_nar', 'nar', 'А-один. Hair bad — без is, и без капли такта. Подруга уже под дождём.', ''),
+        ('a2_h', 'her', '[cheerfully] Wow! Your hair is so funny!', 'Ого! Какая у тебя смешная причёска!'),
+        ('a2_f', 'friend', '[offended] Funny?! Like a clown?!', 'Смешная?! Как у клоуна?!'),
+        ('a2_nar', 'nar', 'А-два. Funny — это «смешная», как в цирке. Хочешь мягко — скажи так:', ''),
+        ('a2_tip', 'tip', "It's a bold look!", ''),
+        ('b1_h', 'her', "[kindly] It's lovely on you, but honestly, it's not really my style.", 'Тебе красиво, но, честно, это не совсем мой стиль.'),
+        ('b1_f', 'friend', '[relieved] Aw, thanks for being honest!', 'Ой, спасибо, что честно!'),
+        ('b1_nar', 'nar', "Би-один. It's not really my style — «это не совсем мой стиль». Главная фраза.", ''),
+        ('b2_h', 'her', "[casually] It's just not my cup of tea.", 'Это просто не моя чашка чая.'),
+        ('b2_f', 'friend', '[confused] Tea? I thought you wanted coffee.', 'Чай? Я думала, ты хочешь кофе.'),
+        ('b2_nar', 'nar', 'Би-два. Not my cup of tea — «не моё». Запоминай:', ''),
+        ('b2_tip', 'tip', "It's not my cup of tea.", ''),
+        ('c1_h', 'her', '[gently] It really suits you, though I could never pull it off myself.', 'Тебе правда идёт, хотя я бы такое не потянула.'),
+        ('c1_f', 'friend', '[touched] Aww! You think it suits me?', 'Ой! Думаешь, мне идёт?'),
+        ('c1_nar', 'nar', "Си-один. It suits you, but I couldn't pull it off — «тебе идёт, а я бы не потянула». Запоминай:", ''),
+        ('c1_tip', 'tip', "It suits you, but I couldn't pull it off.", ''),
+        ('c2_h', 'her', "[warmly] Honestly, I can see how much thought you put into it, and I really admire your confidence. It's a bold change, and it suits your personality. It's just not quite for me, but you love it, and that's what matters.", 'Честно, я вижу, сколько мыслей ты в неё вложила, и я правда восхищаюсь твоей смелостью. Это смелая перемена, и она подходит твоему характеру. Просто она не совсем для меня, но ты в ней счастлива, а это главное.'),
+        ('c2_f', 'friend', "[brightly] Perfect! Because it's a wig. And I hate it too.", 'Отлично! Потому что это парик. И я его тоже ненавижу.'),
+        ('c2_h2', 'her', '[faintly] ...Then why did you ask me?', '…Тогда зачем ты спрашивала?'),
+        ('c2_nar', 'nar', 'Си-два. I admire your confidence — «я восхищаюсь твоей смелостью». С этой фразой не обидишь ни одну подругу. Даже с париком.', ''),
+        ('outro', 'nar', 'А как бы ты сказал подруге, что причёска не нравится? Пиши свою фразу в комментарии! И подпишись, впереди ещё много новых серий.', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'HAIR BAD!', 'ok': False, 'note': 'такт: 5%', 'bars': [['ТАКТ', 5]]},
+           'A2': {'type': 'swap', 'bad': 'Your hair is funny!', 'bad_note': 'funny = смешная', 'good': ["It's a", 'bold look!']},
+           'B1': {'type': 'eq', 'en': "It's not really my style.", 'ru': '= Это не совсем мой стиль.', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'Not my cup of tea', 'ru': 'не моё', 'ex': ["Sushi's not my cup of tea.", 'суши — не моё.'], 'icon': 'bell'},
+           'C1': {'type': 'eq', 'en': "It suits you, but I couldn't pull it off.", 'ru': '= Тебе идёт, а я бы не потянула.', 'ex': [["It suits you.", '= тебе идёт.']]},
+           'C2': {'type': 'c2', 'vocab': [['I admire your confidence', '= я восхищаюсь твоей смелостью'], ['a bold change', '= смелая перемена']], 'moral': ['', '', ''], 'moral_at': 99}},
+)
