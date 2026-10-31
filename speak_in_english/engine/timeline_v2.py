@@ -74,6 +74,9 @@ if EPN == "wifi":  # cover = café counter, barista smiling, her at the front; W
 if EPN == "passport":  # cover = passport booth, officer behind the desk, her in front; Purpose of your visit? -> her nervous: Is this a quiz?
     h0 = say("hook_o", 0.5) + 0.25
     hev = dict(panic=round(h0 - 0.05, 3)); cue("pop", h0, 0.5); h0 = say("hook_h", h0 + 0.1) + 0.35
+if EPN == "late":  # cover = cafe table with a tower of glasses, her waiting, Emma bursting in; Sorry x5 -> her deadpan: It's been an hour
+    cue("bell", 0.1, 0.5); cue("whoosh", 0.2, 0.4); h0 = say("hook_e", 0.45) + 0.2
+    hev = dict(panic=round(h0 - 0.05, 3)); cue("clank", h0, 0.5); h0 = say("hook_h", h0 + 0.1) + 0.3
 if EPN == "avoidparty":  # cover = her on the sofa under a blanket, phone ringing; party? -> not well -> solution! -> HARD CUT: door, crowd, SURPRISE!
     cue("ring", 0.2, 0.6); h0 = say("hook_p", 0.5) + 0.25; h0 = say("hook_h", h0) + 0.25; h0 = say("hook_p2", h0) + 0.3
     hev = dict(cut=round(h0 - 0.05, 3)); cue("creak", h0, 0.7); h0 = say("hook_all", h0 + 0.45); cue("cheer", h0 - 0.5, 0.6); cue("tada", h0 - 0.4, 0.5)
@@ -98,7 +101,7 @@ def find(word):
     return None
 stamp_t = find(E["stamp_word"]) or (e - 1.0); cue("stamp", stamp_t, 0.8)
 t = e + 0.45
-scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport") else {})))
+scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "late") else {})))
 
 TICKS = lambda back: [("tick", -back + 0.15 + 0.6 * k, 0.6) for k in range(int(back / 0.6))]
 if EPN == "gym":
@@ -554,6 +557,28 @@ elif EPN == "passport":   # passport booth (togo layout). Plans: WIDE / CARD / H
             ("c2_h2", 0.6, [("PAT", -0.55, 0), ("STARE", -0.1, 0), ("rimshot", ("e", 0.35), 0.9)]), ("c2_nar", 1.2, [("BLACK", -1.1, 0)])],
     )
     INTRO = 1.15
+elif EPN == "late":   # cafe: her at the table (tower of glasses grows each level, wall clock spins), Emma on the right. Events: OUTFIT/DRESS/CAT/HONK/CUP/PHONE props, REACT = close-up on her before the punchline, CRASH = tower falls
+    def SW(lid, w, d=0.5):
+        try: ws = json.load(open(f"{VO}/{lid}.scribe.json"))["words"]
+        except Exception: return d
+        for x in ws:
+            if x.get("type") == "word" and x["text"].lower().strip('.,?!"').startswith(w): return x["start"]
+        return d
+    LV = dict(
+        A1=[("a1_h", 0.22, []), ("a1_e", 0.25, [("OUTFIT", SW("a1_e", "outfit"), 0), ("sparkle", SW("a1_e", "outfit") + 0.05, 0.7)]),
+            ("a1_nar", 0.8, [("REACT", -0.7, 0), ("brow", -0.55, 0.6)])],
+        A2=[("a2_h", 0.22, []), ("a2_e", 0.25, [("DRESS", SW("a2_e", "dress"), 0), ("gasp", 0.05, 0.5), ("pop", SW("a2_e", "dress"), 0.5)]),
+            ("a2_h2", 0.5, [("REACT", -0.45, 0), ("blink", -0.4, 0.5)]), ("a2_nar", 0.7, [("buzz", 0.9, 0.5)]), ("a2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        B1=[("b1_h", 0.22, []), ("b1_e", 0.25, [("CAT", SW("b1_e", "cat"), 0), ("meow", SW("b1_e", "cat") + 0.02, 0.8)]),
+            ("b1_h2", 0.5, [("REACT", -0.45, 0), ("brow", -0.4, 0.6), ("SEVEN", SW("b1_h2", "seven"), 0), ("ding", SW("b1_h2", "seven"), 0.7)]), ("b1_nar", 0.8, [])],
+        B2=[("b2_h", 0.22, []), ("b2_e", 0.15, [("HONK", SW("b2_e", "traffic"), 0), ("honk", SW("b2_e", "traffic") + 0.0, 0.7), ("honk", SW("b2_e", "buses") + 0.1, 0.5)]),
+            ("b2_h2", 0.5, [("REACT", -0.45, 0), ("scratch", -0.45, 0.45), ("rimshot", ("e", 0.3), 0.7)]), ("b2_nar", 0.7, []), ("b2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C1=[("c1_h", 0.22, []), ("c1_e", 0.25, [("CUP", SW("c1_e", "coffee"), 0), ("plop", SW("c1_e", "coffee"), 0.7)]),
+            ("c1_h2", 0.5, [("REACT", -0.45, 0), ("BRENDA", SW("c1_h2", "brenda"), 0), ("sparkle", SW("c1_h2", "brenda"), 0.5)]), ("c1_nar", 0.7, []), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C2=[("c2_h", 0.4, []), ("c2_e", 1.5, [("THINK", -1.45, 0)] + TICKS(1.3)), ("c2_e2", 0.8, [("REACT", -0.75, 0), ("blink", -0.6, 0.5), ("PHONE", SW("c2_e2", "king"), 0), ("pop", SW("c2_e2", "king"), 0.6)]),
+            ("c2_h3", 0.55, [("REACT", -0.5, 0), ("gasp", -0.45, 0.5), ("CRASH", 1.75, 0), ("crash", 1.75, 1.0), ("rimshot", ("e", 0.45), 0.8)]), ("c2_nar", 0.9, [])],
+    )
+    INTRO = 1.15
 elif EPN == "seat":   # plane cabin: him in seat 14C (profile), her in the aisle. Plans: WIDE / CARD / HER / TOM, TICKET + MAP inserts; C2 ends on a black card
     LV = dict(
         A1=[("a1_h", 0.22, []), ("a1_s", 0.22, [("NAME", 1.2, 0), ("pop", 1.25, 0.5)]), ("a1_nar", 1.0, [])],
@@ -768,6 +793,7 @@ for L in ["A1", "A2", "B1", "B2", "C1", "C2"]:
     cue("whoosh", s, 0.8); cue("impact", s + 0.32, 0.9); cue("riser_short", s - 0.35, 0.35)
     if EPN == "lift": cue("doors", s + 0.95, 0.6); cue("lift_ding", s + 0.9, 0.7)
     c = s + INTRO; ev = {}; prev_end = c
+    if EPN == "late": ev["glass"] = round(s + INTRO - 0.2, 3); cue("clank", s + INTRO - 0.2, 0.7)
     if EPN == "party":
         for k in range(3): cue("knock", s + 1.12 + 0.22 * k, 0.9)
         cue("creak", s + 1.82, 0.7); ev["knock"] = round(s + 1.12, 3); ev["open"] = round(s + 1.85, 3)
@@ -782,14 +808,14 @@ for L in ["A1", "A2", "B1", "B2", "C1", "C2"]:
             if n == "thud" and lid == "c2_x3": ev["plop"] = round(tt, 3)
             if n == "gulp" or n == "nope": ev["ins"] = round(c - 1.6, 3)
         ev[lid] = c; c = say(lid, c); prev_end = c
-    t = c + (0.42 if EPN == "mic" else 0.55)
+    t = c + (0.42 if EPN == "mic" else 0.4 if EPN == "late" else 0.55)
     if EPN == "lift": cue("doors", t - 0.45, 0.5)
     scenes.append(dict(id=L, s=round(s, 3), e=round(t, 3), ev={k: (round(v, 3) if not isinstance(v, list) else v) for k, v in ev.items()}))
 s = t
 cue("whoosh", s, 0.8); cue("impact", s + 0.3, 0.8)
 e = say("outro", s + 0.8)
 for k in range(6): cue("pop", s + 1.1 + 0.15 * k, 0.5)
-t = e + 1.3
+t = e + (0.9 if EPN == "late" else 1.3)
 scenes.append(dict(id="outro", s=round(s, 3), e=round(t, 3)))
 
 for sp in speech:
