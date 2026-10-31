@@ -77,6 +77,10 @@ if EPN == "passport":  # cover = passport booth, officer behind the desk, her in
 if EPN == "newhair":  # cover = café table, friend with a huge pink hairdo, her next to it; So? What do you think of my new hair? -> her nervous: It is, um... definitely hair.
     h0 = say("hook_f", 0.5) + 0.25
     hev = dict(panic=round(h0 - 0.05, 3)); cue("pop", h0, 0.5); h0 = say("hook_h", h0 + 0.1) + 0.35
+if EPN == "idea":  # cover = meeting room, Ryan at the screen, boss applauding at the table, her at the left; ...how I came up with it! -> Bravo! -> her stunned face: You what?
+    h0 = say("hook_r", 0.5) + 0.12
+    cue("clapclap", h0 - 0.05, 0.7); h0 = say("hook_b", h0 + 0.05) + 0.25
+    hev = dict(panic=round(h0 - 0.05, 3)); cue("scratch", h0 - 0.1, 0.5); cue("gasp", h0 + 0.05, 0.5); h0 = say("hook_h", h0 + 0.1) + 0.35
 if EPN == "avoidparty":  # cover = her on the sofa under a blanket, phone ringing; party? -> not well -> solution! -> HARD CUT: door, crowd, SURPRISE!
     cue("ring", 0.2, 0.6); h0 = say("hook_p", 0.5) + 0.25; h0 = say("hook_h", h0) + 0.25; h0 = say("hook_p2", h0) + 0.3
     hev = dict(cut=round(h0 - 0.05, 3)); cue("creak", h0, 0.7); h0 = say("hook_all", h0 + 0.45); cue("cheer", h0 - 0.5, 0.6); cue("tada", h0 - 0.4, 0.5)
@@ -101,7 +105,7 @@ def find(word):
     return None
 stamp_t = find(E["stamp_word"]) or (e - 1.0); cue("stamp", stamp_t, 0.8)
 t = e + 0.45
-scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "newhair") else {})))
+scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "newhair", "idea") else {})))
 
 TICKS = lambda back: [("tick", -back + 0.15 + 0.6 * k, 0.6) for k in range(int(back / 0.6))]
 if EPN == "gym":
@@ -566,6 +570,17 @@ elif EPN == "newhair":   # café table (passport layout). Plans: WIDE / CARD / H
         C1=[("c1_h", 0.22, []), ("c1_f", 0.22, [("MODEL", ("e", 0.05), 0), ("sparkle", ("e", 0.1), 0.7)]), ("c1_nar", 1.3, []), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
         C2=[("c2_h", 0.4, []), ("c2_f", 2.6, [("THINK", -2.55, 0)] + TICKS(2.4) + [("WIG", 2.3, 0), ("whoosh", 2.3, 0.5), ("pop", 2.35, 0.7)]),
             ("c2_h2", 0.9, [("STARE", -0.85, 0), ("rimshot", ("e", 0.35), 0.9)]), ("c2_nar", 1.2, [])],
+    )
+    INTRO = 1.15
+elif EPN == "idea":   # meeting room (newhair layout): Her / Boss (seated) / Ryan. Plans: WIDE / CARD / HER / RYAN / BOSS. Running gag: the boss gives Ryan gold stars (1,2,3,4,5...). NO black card before the C2 outro
+    LV = dict(
+        A1=[("a1_h", 0.22, []), ("a1_b", 0.18, [("clapclap", 0.2, 0.6), ("STAR", ("e", -1.0), 0), ("ding", ("e", -0.4), 0.7)]), ("a1_h2", 0.25, [("deflate", ("e", -0.3), 0.5)]), ("a1_nar", 1.0, [])],
+        A2=[("a2_h", 0.22, []), ("a2_r", 0.18, [("CLOCK", ("e", -0.9), 0), ("pop", ("e", -0.9), 0.6)]), ("a2_h2", 0.2, [("squeak", 0.0, 0.7)]), ("a2_b", -0.3, [("clapclap", 0.1, 0.5), ("STAR", ("e", -0.9), 0), ("ding", ("e", -0.3), 0.7)]), ("a2_nar", 1.0, [("buzz", 0.95, 0.5)]), ("a2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        B1=[("b1_h", 0.22, []), ("b1_r", 0.2, [("MARK", ("e", -1.1), 0), ("squeak", ("e", -1.1), 0.7), ("squeak", ("e", -0.85), 0.7), ("squeak", ("e", -0.6), 0.7)]), ("b1_h2", 0.35, [("gasp", 0.0, 0.5), ("STAR", 0.05, 0), ("clapclap", 0.1, 0.4), ("ding", 0.7, 0.7)]), ("b1_nar", 1.0, [])],
+        B2=[("b2_h", 0.22, []), ("b2_r", 0.18, [("HEART", ("e", -0.7), 0), ("sparkle", ("e", -0.7), 0.6)]), ("b2_b", 0.15, [("clapclap", 0.1, 0.5), ("STAR", ("e", -0.9), 0), ("ding", ("e", -0.3), 0.7)]), ("b2_h2", 0.2, [("boing", 0.0, 0.5)]), ("b2_nar", 1.0, []), ("b2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C1=[("c1_h", 0.22, []), ("c1_r", 0.18, [("BULBS", 0.9, 0), ("whoosh", 0.9, 0.4)]), ("c1_b", 0.15, [("clapclap", 0.1, 0.5), ("STAR", ("e", -0.9), 0), ("ding", ("e", -0.3), 0.7)]), ("c1_h2", 0.4, [("cricket", -0.3, 0.6)]), ("c1_nar", 1.0, []), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C2=[("c2_h", 0.4, []), ("c2_b", 1.6, [("THINK", -1.55, 0)] + TICKS(1.4) + [("MAIL", 0.35, 0), ("ding", 0.35, 0.7)]),
+            ("c2_r", 0.55, [("gasp", -0.45, 0.6), ("FALL", -0.4, 0), ("thud", 0.0, 0.5), ("BOX", 0.4, 0)]), ("c2_h2", 0.85, [("STARE", -0.8, 0), ("rimshot", ("e", 0.35), 0.9), ("RAIN", 0.8, 0), ("tada", 0.85, 0.6)]), ("c2_nar", 1.2, [])],
     )
     INTRO = 1.15
 elif EPN == "seat":   # plane cabin: him in seat 14C (profile), her in the aisle. Plans: WIDE / CARD / HER / TOM, TICKET + MAP inserts; C2 ends on a black card
