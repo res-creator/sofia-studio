@@ -2435,3 +2435,51 @@ EP["queue"] = dict(
            'C1': {'type': 'eq', 'en': 'Go to the back of the line.', 'ru': '= Встаньте в конец очереди.', 'ex': [["I'd appreciate it if", '= я была бы признательна, если']]},
            'C2': {'type': 'c2', 'vocab': [['I must point out', '= я обязана заметить'], ['jump the queue', '= влезть без очереди']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- batch "just looking" (TikTok, hard_cut). ElevenLabs only; narrator Sarah, heroine = Jessica, clerk = Brian (already used on the channel).
+CAST.update({
+    "clerk": dict(voice="am_adam", speed=1.0, lang="en-us", el="nPczCjzI2devNBz1zQrb"),        # Brian (justlooking: the shop assistant who follows her)
+})
+EP["justlooking"] = dict(
+    title='Консультант не отстаёт',
+    hook_title=[['КАК СКАЗАТЬ', 'd'], ['«Я ПРОСТО СМОТРЮ»', 'p'], ['НА АНГЛИЙСКОМ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut",
+    chunks={'c2_h': [['Sir, with the greatest respect,', 'Сэр, при всём уважении,'], ['I genuinely appreciate your enthusiasm,', 'я искренне ценю ваш энтузиазм,'], ['but I would much prefer to browse in peace,', 'но я бы предпочла спокойно осмотреться,'], ['and should I require assistance,', 'а если мне понадобится помощь,'], ['I shall not hesitate to ask.', 'я непременно попрошу.']]},
+    lines=[
+        ('hook_c', 'clerk', '[brightly] Hi there! Can I help you find anything?', 'Здравствуйте! Вам что-нибудь подсказать?'),
+        ('hook_h', 'her', '[stunned] I walked in ten seconds ago.', 'Я вошла десять секунд назад.'),
+        ('hook', 'nar', 'Консультант ходит за тобой по пятам. Как сказать «я просто смотрю» по-английски? Проверим — от А-один до Си-два!', ''),
+        ('a1_h', 'her', '[quickly] Look! Only look!', 'Смотрю! Только смотрю!'),
+        ('a1_c', 'clerk', '[excited] Look? Great! Look at this! And this! And this!', 'Смотреть? Отлично! Смотри на это! И на это! И на это!'),
+        ('a1_nar', 'nar', 'А-один. Look — «смотреть», а он услышал «смотри на мои товары».', ''),
+        ('a2_h', 'her', "[politely] I'm only watching, thank you.", 'Я только «наблюдаю», спасибо.'),
+        ('a2_c', 'clerk', '[puzzled] Watching? We have a TV in the back. Would you like to watch it?', 'Наблюдаете? У нас сзади есть телевизор. Хотите посмотреть?'),
+        ('a2_nar', 'nar', 'А-два. Watch — смотреть телевизор. В магазине говорят look. Запоминай:', ''),
+        ('a2_tip', 'tip', "I'm just looking, thanks.", ''),
+        ('b1_h', 'her', "[politely] I'm just looking, thanks. I'll let you know if I need help.", 'Я просто смотрю, спасибо. Скажу, если понадобится помощь.'),
+        ('b1_c', 'clerk', '[cheerfully] Of course! Take your time.', 'Конечно! Не торопитесь.'),
+        ('b1_c2', 'clerk', '[brightly] ...Still looking?', '…Всё ещё смотрите?'),
+        ('b1_nar', 'nar', 'Би-один. I\'m just looking, thanks — главная фраза.', ''),
+        ('b2_h', 'her', "[smoothly] I'm just browsing, thanks.", 'Я просто осматриваюсь, спасибо.'),
+        ('b2_c', 'clerk', '[delighted] Browse away! Thirty percent off this rack!', 'Осматривайтесь! На этой вешалке скидка тридцать процентов!'),
+        ('b2_nar', 'nar', 'Би-два. Browse — «осматриваться». Запоминай:', ''),
+        ('b2_tip', 'tip', "I'm just browsing, thanks.", ''),
+        ('c1_h', 'her', "[calmly] Thank you, but I'd prefer to look around on my own for now.", 'Спасибо, но пока я бы предпочла посмотреть сама.'),
+        ('c1_c', 'clerk', "[hurt] On your own? I practiced my sales pitch all morning.", 'Сама? Я всё утро репетировал свою речь.'),
+        ('c1_nar', 'nar', 'Си-один. I\'d prefer to look around on my own — «я бы предпочла посмотреть сама». Запоминай:', ''),
+        ('c1_tip', 'tip', "I'd prefer to look around on my own for now.", ''),
+        ('c2_h', 'her', '[formally] Sir, with the greatest respect, I genuinely appreciate your enthusiasm, but I would much prefer to browse in peace, and should I require assistance, I shall not hesitate to ask.', 'Сэр, при всём уважении, я искренне ценю ваш энтузиазм, но я бы предпочла спокойно осмотреться, а если мне понадобится помощь, я непременно попрошу.'),
+        ('c2_c', 'clerk', '[whispering] ...Are you the inspector?', '…Вы инспектор?'),
+        ('c2_c2', 'clerk', "[panicking] Fifty percent off! Don't tell head office!", 'Скидка пятьдесят процентов! Только не говорите головному офису!'),
+        ('c2_h2', 'her', "[deadpan] ...I'm just looking.", '…Я просто смотрю.'),
+        ('c2_nar', 'nar', 'Си-два. With the greatest respect — «при всём уважении». С такой речью тебя примут за проверяющего.', ''),
+        ('outro', 'nar', 'А как бы ты сказал консультанту? Пиши свою фразу в комментарии! И подпишись, впереди ещё много новых серий.', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'LOOK! ONLY!', 'ok': False, 'note': 'вежливость: 5%', 'bars': [['ВЕЖЛИВОСТЬ', 5]]},
+           'A2': {'type': 'swap', 'bad': "I'm only watching.", 'bad_note': 'watch = телевизор', 'good': ["I'm just", 'looking, thanks.']},
+           'B1': {'type': 'eq', 'en': "I'm just looking, thanks.", 'ru': '= Я просто смотрю, спасибо.', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'Browse', 'ru': 'осматриваться', 'ex': ["I'm just browsing, thanks.", 'я просто осматриваюсь.'], 'icon': 'bell'},
+           'C1': {'type': 'eq', 'en': 'I\'d prefer to look around on my own.', 'ru': '= Я бы предпочла посмотреть сама.', 'ex': [["I'd prefer to…", '= я бы предпочла…']]},
+           'C2': {'type': 'c2', 'vocab': [['with the greatest respect', '= при всём уважении'], ['I shall not hesitate to ask', '= я непременно попрошу']], 'moral': ['', '', ''], 'moral_at': 99}},
+)
