@@ -1,0 +1,12 @@
+const {createCanvas,loadImage}=require('/home/user/sofia-studio/node_modules/@napi-rs/canvas');const fs=require('fs');
+(async()=>{const W=1280,H=720,c=createCanvas(W,H),x=c.getContext('2d');const im=await loadImage(__dirname+'/photos/wreckage_elevated_tracks.jpg');
+const sc=Math.max(W/im.width,H/im.height)*1.15;x.drawImage(im,(W-im.width*sc)/2-60,(H-im.height*sc)/2+20,im.width*sc,im.height*sc);
+x.globalCompositeOperation='multiply';x.fillStyle='#d9b684';x.fillRect(0,0,W,H);x.globalCompositeOperation='source-over';
+let g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'rgba(8,5,2,.82)');g.addColorStop(.45,'rgba(8,5,2,.25)');g.addColorStop(1,'rgba(8,5,2,.9)');x.fillStyle=g;x.fillRect(0,0,W,H);
+g=x.createRadialGradient(W/2,H/2,H*.35,W/2,H/2,H);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(0,0,0,.7)');x.fillStyle=g;x.fillRect(0,0,W,H);
+x.textAlign='left';const f=(s,px,w='800')=>x.font=`${w} ${px}px "Inter Display","Inter",sans-serif`;
+x.shadowColor='#000';x.shadowBlur=30;x.shadowOffsetY=6;
+f('',88);x.fillStyle='#e3d4ae';x.fillText('21 DIED.',60,130);x.fillText('NOT FROM WATER.',60,225);
+f('',150);x.fillStyle='#d98f2b';x.fillText('MOLASSES.',56,640);
+x.shadowBlur=14;x.font='700 34px "JetBrains Mono",monospace';x.fillStyle='#e3d4ae';x.textAlign='right';x.fillText('BOSTON · 1919',W-50,H-40);
+fs.writeFileSync('thumbnail.png',c.toBuffer('image/png'));})();
