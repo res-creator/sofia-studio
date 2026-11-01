@@ -1,0 +1,10 @@
+const {createCanvas,loadImage}=require('/home/user/sofia-studio/node_modules/@napi-rs/canvas');const fs=require('fs');
+(async()=>{const W=1280,H=720,c=createCanvas(W,H),x=c.getContext('2d');const im=await loadImage(__dirname+'/../molasses_full/photos/boston_molasses_disaster.jpg');
+const sc=Math.max(W/im.width,H/im.height)*1.05;x.drawImage(im,(W-im.width*sc)/2,(H-im.height*sc)/2-20,im.width*sc,im.height*sc);
+x.globalCompositeOperation='multiply';x.fillStyle='#d9cdb8';x.fillRect(0,0,W,H);x.globalCompositeOperation='source-over';
+let g=x.createLinearGradient(0,H-300,0,H);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(0,0,0,.85)');x.fillStyle=g;x.fillRect(0,H-300,W,300);
+g=x.createRadialGradient(W/2,H/2,H*.4,W/2,H/2,H);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(0,0,0,.55)');x.fillStyle=g;x.fillRect(0,0,W,H);
+x.shadowColor='#000';x.shadowBlur=24;x.fillStyle='#efe6d2';x.textAlign='left';
+x.font='700 92px "Inter Display","Inter",sans-serif';x.fillText('The Great Molasses Flood',56,H-90);
+x.font='500 40px "Inter Display","Inter",sans-serif';x.fillStyle='#b9ab8c';x.fillText('Boston, January 15, 1919',60,H-40);
+fs.writeFileSync('thumbnail.png',c.toBuffer('image/png'));})();
