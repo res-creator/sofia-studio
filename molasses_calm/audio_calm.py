@@ -12,7 +12,6 @@ for ci in range(int(D//seg)+2):
         for det in (-.4,0,.4):
             mix+=np.sin(2*np.pi*(f+det)*t+k)*w*(.5+.5*np.sin(2*np.pi*t/(13+k*3)+k))*0.018
 mix+=np.sin(2*np.pi*55*t)*0.045*(.7+.3*np.sin(2*np.pi*t/19))
-air=lp(rng.standard_normal(N),350)*(.5+.5*np.sin(2*np.pi*t/14+2)); mix+=air*.10
 # sparse soft bell notes (A minor pentatonic), ~every 8-13 s
 scale=[220,261.6,293.7,329.6,392,440,523.3]; k=6.0
 while k<D-6:
