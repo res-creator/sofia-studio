@@ -213,12 +213,16 @@ export const FlowCard: React.FC<SP & { kicker?: string; steps: { text: string; s
 };
 
 // ---------- kinetic words (calm: each phrase fades in on its word)
-export const WordsCard: React.FC<SP & { words: { text: string; at: number; amber?: boolean }[]; size?: number; wash?: WashT }> = (p) => {
+export const WordsCard: React.FC<SP & { words: { text: string; at: number; amber?: boolean }[]; size?: number; wash?: WashT; slam?: boolean }> = (p) => {
   const a = A(p);
   return (
     <Light wash={p.wash} p={p}>
       <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'row', flexWrap: 'wrap', gap: '0 34px', padding: '0 160px', transform: push(p) }}>
-        {p.words.map((w, i) => { const at = early(w.at, p, i), k = pe(a, at, 0.5, back); return <div key={i} style={{ fontSize: p.size ?? 110, fontWeight: 800, letterSpacing: -2, color: w.amber ? C.amber : C.text, opacity: Math.min(1, k * 1.5), transform: `translateY(${(1 - k) * 50}px) scale(${0.8 + 0.2 * k})` }}>{w.text}</div>; })}
+        {p.words.map((w, i) => {
+          const at = early(w.at, p, i);
+          if (p.slam) { const k = pe(a, at, 0.22, Easing.bezier(0.5, 0, 0.75, 0)); return <div key={i} style={{ fontSize: p.size ?? 110, fontWeight: 800, letterSpacing: -2, color: w.amber ? C.amber : C.text, opacity: Math.min(1, k * 3), transform: `scale(${2.2 - 1.2 * k})`, filter: k < 0.999 ? `blur(${(1 - k) * 10}px)` : undefined }}>{w.text}</div>; }
+          const k = pe(a, at, 0.5, back); return <div key={i} style={{ fontSize: p.size ?? 110, fontWeight: 800, letterSpacing: -2, color: w.amber ? C.amber : C.text, opacity: Math.min(1, k * 1.5), transform: `translateY(${(1 - k) * 50}px) scale(${0.8 + 0.2 * k})` }}>{w.text}</div>;
+        })}
       </AbsoluteFill>
     </Light>
   );
@@ -250,7 +254,8 @@ const kbPt = (px: number, py: number, kb: KB, q: number) => {
   const s = kb.s0 + (kb.s1 - kb.s0) * q, x = kb.x0 + (kb.x1 - kb.x0) * q, y = kb.y0 + (kb.y1 - kb.y0) * q;
   return [960 + (px - 960) * s + (x * 1920) / 100, 540 + (py - 540) * s + (y * 1080) / 100];
 };
-export const PhotoShot: React.FC<SP & { src: string; kb: KB; text?: string; source: string; arrows?: { px: number; py: number; dx: number; dy: number; at: number; label?: string }[]; tag?: string; intro?: 'wipe' | 'iris' | 'zoom' | 'none' }> = (p) => {
+export const PhotoShot: React.FC<SP & { src: string; kb: KB; text?: string; source: string; arrows?: { px: number; py: number; dx: number; dy: number; at: number; label?: string }[]; tag?: string; intro?: 'wipe' | 'iris' | 'zoom' | 'none' | '3d' }> = (p) => {
+  if (p.intro === '3d') return <Photo3D {...p} />;
   // camera: Ken Burns with an ease-in-out curve (feels like a real camera move, not linear)
   const q = interpolate(p.t, [0, p.dur], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.bezier(0.4, 0, 0.3, 1) });
   const s = p.kb.s0 + (p.kb.s1 - p.kb.s0) * q, x = p.kb.x0 + (p.kb.x1 - p.kb.x0) * q, y = p.kb.y0 + (p.kb.y1 - p.kb.y0) * q;
@@ -421,5 +426,50 @@ export const HeightsCard: React.FC<SP & { bars: { ft: number; label: string; sub
       </svg>
       <Tag t={p.t}>Diagram · to scale</Tag>
     </Light>
+  );
+};
+
+// ---------- photo as a 3D layer: the print floats in space, camera dollies and orbits slightly (AE 3D layer + camera)
+const Photo3D: React.FC<SP & { src: string; text?: string; source: string; tag?: string }> = (p) => {
+  const q = interpolate(p.t, [0, p.dur], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.bezier(0.25, 0, 0.3, 1) });
+  const k = pe(p.t, 0, 0.9);
+  const ry = -24 + 16 * q + (1 - k) * -20, rx = 8 - 5 * q, tz = -380 + 300 * q + (1 - k) * -400;
+  return (
+    <Light p={p} wash={{ src: p.src, o: 0.28, x: 1 }}>
+      <AbsoluteFill style={{ perspective: 1700, perspectiveOrigin: '50% 45%' }}>
+        <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ width: 1360, height: 860, transformStyle: 'preserve-3d', transform: `translateZ(${tz}px) rotateY(${ry}deg) rotateX(${rx}deg)`, boxShadow: '30px 40px 80px rgba(28,27,25,0.35)', border: '12px solid #FFFFFF', opacity: Math.min(1, k * 1.4), overflow: 'hidden' }}>
+            <Img src={staticFile('img/' + p.src)} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(1) contrast(1.06)', transform: `scale(${1.06 + 0.06 * q}) translateX(${-2 * q}%)` }} />
+          </div>
+        </AbsoluteFill>
+      </AbsoluteFill>
+      {p.text && <Caption t={p.t} at={0.4} text={p.text} source={p.source} />}
+      {p.tag && <Tag t={p.t}>{p.tag}</Tag>}
+    </Light>
+  );
+};
+
+// ---------- collage: panels slide in from alternate sides (masked), each with its own Ken Burns, then the last expands
+export const CollageShot: React.FC<SP & { panels: { src: string; at: number; px?: number }[]; text?: string; source: string; expand?: number }> = (p) => {
+  const a = A(p); const n = p.panels.length; const gap = 10;
+  const ex2 = p.expand !== undefined ? pe(a, p.expand, 0.8, Easing.bezier(0.76, 0, 0.24, 1)) : 0;
+  return (
+    <AbsoluteFill style={{ background: C.bg, overflow: 'hidden' }}>
+      {p.panels.map((pp, i) => {
+        const k = pe(a, early(pp.at, p, i), 0.6);
+        const last = i === n - 1;
+        const w0 = (1920 - gap * (n - 1)) / n, x0 = i * (w0 + gap);
+        const w = last ? w0 + (1920 - w0) * ex2 : w0, x = last ? x0 * (1 - ex2) : x0;
+        const from = i % 2 ? -1 : 1;
+        const q = Math.min(1, p.t / Math.max(1, p.dur));
+        return (
+          <div key={i} style={{ position: 'absolute', left: x, top: 0, width: w, height: 1080, overflow: 'hidden', clipPath: `inset(${from > 0 ? (1 - k) * 100 : 0}% 0 ${from < 0 ? (1 - k) * 100 : 0}% 0)`, zIndex: last ? 2 : 1 }}>
+            <Img src={staticFile('img/' + pp.src)} style={{ position: 'absolute', left: '50%', top: '50%', height: 1080 * 1.12, minWidth: '100%', objectFit: 'cover', transform: `translate(-50%, -50%) translate(${(pp.px ?? 0) + (i % 2 ? -1 : 1) * 30 * q}px, ${from * (1 - k) * -80}px) scale(${1.04 + 0.06 * q})`, filter: 'grayscale(1) contrast(1.06)' }} />
+          </div>
+        );
+      })}
+      {p.text && <div style={{ position: 'absolute', inset: 0, zIndex: 5 }}><Caption t={p.t} at={0.9} text={p.text} source={p.source} /></div>}
+      <Grain o={0.06} />
+    </AbsoluteFill>
   );
 };

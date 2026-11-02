@@ -5,6 +5,7 @@ import TL from '../data/timeline.json';
 import T from '../data/full.json';
 import { C } from '../lib';
 import { Main } from '../Main';
+import { CollageShot } from './kit';
 import { SP, ChapterCard, TextCard, NumberCard, ChipsCard, TimelineCard, FlowCard, WordsCard, NamesCard, PhotoShot, PrintShot, MapShot, GraphCard, HeightsCard, TANK } from './kit';
 import { TankDiagram, SteelCard, RivetCrack, RadarCard, ModelCard, CrestCard } from './tank';
 
@@ -112,20 +113,20 @@ const SHOTS: Shot[] = [
   // ===================== CHAPTER 4 — TWELVE THIRTY
   s(first('c4'), (p) => <NumberCard {...p} kicker="January 15, 1919" value="12:30" unit="p.m." sub="Commercial Street" subAt={W('c4_01', 'Commercial')} />),
   ph(L('c4_02'), (p) => <PhotoShot {...p} src="cba_052.jpg" kb={kb(960, 560, 1.05, 1.12)} text="The tracks of the elevated railway, bent by the flood" source={SRC.cba} />),
-  s(L('c4_03'), (p) => <WordsCard {...p} words={[{ text: 'A crash.', at: W('c4_03', 'crash') }, { text: 'A growl.', at: W('c4_03', 'growl') }, { text: 'A bang like thunder.', at: W('c4_03', 'bang'), amber: true }]} size={100} />),
+  s(L('c4_03'), (p) => <WordsCard {...p} words={[{ text: 'A crash.', at: W('c4_03', 'crash') }, { text: 'A growl.', at: W('c4_03', 'growl') }, { text: 'A bang like thunder.', at: W('c4_03', 'bang'), amber: true }]} size={100} slam />),
   s(L('c4_04'), (p) => <TankDiagram {...p} mode="rivets" at={W('c4_04', 'popping')} title="Rivets shooting out of the steel" titleAt={W('c4_04', 'rivets')} tag="Illustration" />),
   s(L('c4_05'), (p) => <TankDiagram {...p} mode="burst" at={L('c4_05')} at2={W('c4_05', 'came')} level={0.9} title="More than two million gallons, at once" titleAt={W('c4_05', 'more')} tag="Illustration" />),
   s(L('c4_06'), (p) => <HeightsCard {...p} bars={[{ ft: 25, label: '~25 ft', sub: 'most cited', at: W('c4_06', 'twenty'), hi: true }, { ft: 15, label: '15 ft', sub: 'some accounts', at: W('c4_06', 'fifteen') }, { ft: 40, label: '40 ft', sub: 'memorial plaque', at: W('c4_06', 'forty') }]} />),
   s(L('c4_07'), (p) => <NumberCard {...p} kicker="Speed of the wave · estimate" value="~35" unit="mph" />),
   ph(L('c4_08'), (p) => <PhotoShot {...p} src="el_structure.jpg" kb={kb(700, 500, 1.04, 1.12)} text="The elevated railway on Atlantic Avenue: its steel frame bent and torn." source={SRC.el} arrows={[{ px: 330, py: 420, dx: 170, dy: 150, at: W('c4_08', 'structure'), label: 'Bent girder' }]} />),
   ph(L('c4_09'), (p) => <PhotoShot {...p} src="cba_031.jpg" kb={kb(700, 520, 1.05, 1.11)} text="A streetcar under the elevated tracks, after the flood" source={SRC.cba} arrows={[{ px: 240, py: 470, dx: 160, dy: -150, at: L('c4_09') + 0.3, label: 'Streetcar' }]} />),
-  ph(L('c4_10'), (p) => <PhotoShot {...p} src="panorama.jpg" kb={kb(1300, 260, 1.25, 1.36)} text="Buildings off their foundations, wreckage across the site" source={SRC.pano} />),
+  ph(L('c4_10'), (p) => <CollageShot {...p} panels={[{ src: 'panorama.jpg', at: L('c4_10') - 0.2 }, { src: 'cba_051.jpg', at: L('c4_10') + 0.1 }, { src: 'redcross.jpg', at: L('c4_10') + 0.4 }]} expand={W('c4_10', 'truck')} text="Buildings off their foundations, wreckage across the site, January 1919" source="Photos: Boston Public Library; City of Boston Archives; American Red Cross / Library of Congress · Public domain" />),
   ph(L('c4_11'), (p) => <MapShot {...p} keys={[[0, TANK.lon + 0.0004, TANK.lat - 0.0012, 2.0], [p.dur, TANK.lon + 0.0004, TANK.lat - 0.0012, 1.8]]} wave={{ at: L('c4_11') - 1.0, d: 0.1, r: 0.36 }} note={{ text: 'Several blocks flooded 2–3 feet deep', at: W('c4_11', 'flooded') }} tag="Reconstruction · illustrative extent" />),
   s(L('c4_12'), (p) => <TextCard {...p} kicker="Walking home from school" lines={[{ text: 'Anthony di Stasio', at: W('c4_12', 'Anthony') }]} />),
   s(L('c4_13'), (p) => <CrestCard {...p} at={W('c4_13', 'picked')} under={W('c4_13', 'rolled')} survived={L('c4_14')} />),
   s(L('c4_15'), (p) => <TextCard {...p} lines={[{ text: 'What made it so deadly', at: W('c4_15', 'deadly') }]} wash={wash('under_el.jpg', 1, 0, 0.22)} />),
   s(L('c4_16'), (p) => <GraphCard {...p} kicker="As it cooled, it thickened · illustrative" xl="time after the burst →" yl="thickness" pts={[[0, 0.15], [0.2, 0.22], [0.4, 0.38], [0.6, 0.58], [0.8, 0.78], [1, 0.9]]} at={L('c4_16')} d={2.6} tag="Illustration" />),
-  ph(L('c4_17'), (p) => <PhotoShot {...p} src="under_el.jpg" kb={kb(900, 640, 1.06, 1.14)} text="Rescuers in the molasses under the elevated tracks" source={SRC.under} />),
+  ph(L('c4_17'), (p) => <PhotoShot {...p} src="under_el.jpg" intro="3d" kb={kb(900, 640, 1.06, 1.14)} text="Rescuers in the molasses under the elevated tracks" source={SRC.under} />),
   s(L('c4_18'), (p) => <TextCard {...p} lines={[{ text: 'Molasses on a cold morning', at: L('c4_18') + 0.2 }]} wash={wash('cba_023.jpg', -1, 0, 0.2)} />),
   s(L('c4_19'), (p) => <WordsCard {...p} words={[{ text: 'Thick.', at: L('c4_19') }, { text: 'Slow.', at: W('c4_19', 'Slow') }, { text: 'Almost solid.', at: W('c4_19', 'Almost'), amber: true }]} />),
   ph(L('c4_20'), (p) => <MapShot {...p} keys={[[0, TANK.lon + 0.0004, TANK.lat - 0.0012, 2.1], [p.dur, TANK.lon + 0.0004, TANK.lat - 0.0012, 1.9]]} wave={{ at: L('c4_20'), d: 3.5, r: 0.36 }} note={{ text: 'Warm and fast out of the tank', at: W('c4_20', 'warm') }} tag="Reconstruction · illustrative extent" />),
@@ -189,7 +190,7 @@ const SHOTS: Shot[] = [
   s(L('c7_18'), (p) => <TextCard {...p} lines={[{ text: 'Not an attack.', at: W('c7_18', 'attack') }, { text: 'A tank that should never have been trusted.', at: W('c7_18', 'tank'), size: 72, weight: 800, color: C.amber }]} wash={wash('cba_051.jpg', 1, 0, 0.2)} />),
 
   // ===================== CHAPTER 8 — WHAT THE STEEL SAID
-  ph(first('c8'), (p) => <PhotoShot {...p} src="cba_054.jpg" kb={kb(1100, 600, 1.06, 1.14)} text="Steel under the elevated structure, January 1919" source={SRC.cba} />),
+  ph(first('c8'), (p) => <PhotoShot {...p} src="cba_054.jpg" intro="3d" kb={kb(1100, 600, 1.06, 1.14)} text="Steel under the elevated structure, January 1919" source={SRC.cba} />),
   s(L('c8_02'), (p) => <SteelCard {...p} at={W('c8_02', 'steel')} at2={W('c8_02', 'half')} />),
   s(L('c8_03'), (p) => <TextCard {...p} kicker="The steel also" lines={[{ text: 'lacked manganese', at: W('c8_03', 'manganese') }, { text: '→ more brittle', at: W('c8_03', 'brittle'), size: 72, weight: 800, color: C.amber }]} />),
   s(L('c8_04'), (p) => <RivetCrack {...p} at={W('c8_04', 'cracks')} />),
@@ -214,7 +215,7 @@ const SHOTS: Shot[] = [
   s(L('c9_10'), (p) => <TextCard {...p} lines={[{ text: 'Not a freak of nature.', at: W('c9_10', 'not') }, { text: 'A warning nobody wanted to hear.', at: W('c9_11', 'warning'), size: 72, weight: 800, color: C.amber }]} wash={wash('tank_before.jpg', 0, -1, 0.2)} />),
   s(L('c9_12'), (p) => <ChipsCard {...p} chips={[{ text: '21 people', at: L('c9_12') }, { text: '~150 injured', at: W('c9_12', 'hundred') }, { text: 'a neighborhood buried in molasses', at: W('c9_12', 'neighborhood') }]} wash={wash('panorama.jpg', -1, 0, 0.2)} />),
   s(L('c9_13'), (p) => <TextCard {...p} lines={[{ text: 'Not because nobody knew.', at: L('c9_13') }, { text: 'The people who knew decided it could wait.', at: W('c9_13', 'Because'), size: 64, weight: 800, color: C.amber }]} wash={wash('redcross.jpg', 1, 0, 0.2)} />),
-  ph(L('c9_14'), (p) => <PhotoShot {...p} src="cba_051.jpg" kb={kb(960, 560, 1.04, 1.1)} text="Wreckage beside the elevated tracks, January 1919" source={SRC.cba} />),
+  ph(L('c9_14'), (p) => <PhotoShot {...p} src="cba_051.jpg" intro="3d" kb={kb(960, 560, 1.04, 1.1)} text="Wreckage beside the elevated tracks, January 1919" source={SRC.cba} />),
   s(L('c9_15'), (p) => <TankDiagram {...p} mode="paint" at={W('c9_15', 'brown')} title="Remember the streaks." titleAt={W('c9_15', 'streaks')} tag="Illustration" />),
 ];
 
@@ -223,36 +224,91 @@ const ChapterCardEnd: React.FC<SP> = (p) => (
   <TextCard {...p} kicker="Boston · January 15, 1919" lines={[{ text: 'THE GREAT MOLASSES FLOOD', at: p.start + 0.2 }, { text: 'In memory of the 21 people who died', at: p.start + 0.9 }]} />
 );
 
-// ---- transitions ("After Effects" style push): the outgoing shot lifts away BEFORE the incoming one settles,
-// so two layers of text are never on screen at once. Photo -> photo / map -> map keeps a soft crossfade.
-const IN = 0.42, OUT = 0.22;
-const ex = Easing.bezier(0.16, 1, 0.3, 1), ei = Easing.bezier(0.7, 0, 0.84, 0);
-const Seq: React.FC<{ shot: Item; end: number; prev?: Item; next?: Item }> = ({ shot, end, prev, next }) => {
-  const xfadeOut = !!(next && next.full && shot.full);
-  const tail = xfadeOut ? IN : 0.04;
+// ---- transitions, After-Effects style. Each item gets an incoming transition type:
+//  push  : outgoing lifts away first, incoming rises in with a short blur (cards; no double text)
+//  whip  : whip-pan — both shots slide sideways together with horizontal motion blur (photo -> photo)
+//  zoom  : zoom-through — outgoing flies into the lens, incoming pulls back from close (photo/map -> photo/map)
+//  slide : card -> card lateral slide with motion blur
+type Trans = 'push' | 'whip' | 'zoom' | 'slide';
+const IN = 0.42, OUT = 0.22, TW = 0.42;
+const ex = Easing.bezier(0.16, 1, 0.3, 1), ei = Easing.bezier(0.7, 0, 0.84, 0), eio = Easing.bezier(0.76, 0, 0.24, 1);
+const clamp = (t: number, a: number, b: number, e = eio) => interpolate(t, [a, b], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: e });
+// motion-blur strength for a 0..1 eased move: velocity peaks mid-way
+const mb = (k: number, max = 8) => Math.round(max * Math.sin(Math.PI * Math.min(1, Math.max(0, k))));
+const MB_DEFS = (
+  <svg width={0} height={0} style={{ position: 'absolute' }}>
+    <defs>
+      {Array.from({ length: 9 }).map((_, n) => (
+        <filter key={n} id={`mb${n}`} x="-20%" y="0%" width="140%" height="100%"><feGaussianBlur stdDeviation={`${n * 9} 0`} /></filter>
+      ))}
+    </defs>
+  </svg>
+);
+const Seq: React.FC<{ shot: Item; end: number; next?: Item }> = ({ shot, end, next }) => {
+  const outT: Trans = next?.trans ?? 'push';
+  const tail = outT === 'push' ? 0.04 : TW;
   const from = Math.round(shot.at * FPS);
   const to = Math.round((end + tail) * FPS);
   return (
     <Sequence from={from} durationInFrames={Math.max(1, to - from)}>
-      <Fader el={shot.el} start={shot.at} dur={end - shot.at} xin={!!(prev && prev.full && shot.full)} xout={xfadeOut} first={false} />
+      <Fader el={shot.el} start={shot.at} dur={end - shot.at} inT={shot.trans ?? 'push'} outT={outT} dir={shot.dir ?? 1} ndir={next?.dir ?? 1} />
     </Sequence>
   );
 };
-const Fader: React.FC<{ el: Shot['el']; start: number; dur: number; xin: boolean; xout: boolean; first: boolean }> = ({ el, start, dur, xin, xout, first }) => {
+const Fader: React.FC<{ el: Shot['el']; start: number; dur: number; inT: Trans; outT: Trans; dir: number; ndir: number }> = ({ el, start, dur, inT, outT, dir, ndir }) => {
   const f = useCurrentFrame(); const t = f / FPS;
-  const k = interpolate(t, [0, IN], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: ex });
-  const o = xout ? 0 : interpolate(t, [dur - OUT, dur + 0.04], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: ei });
-  let style: React.CSSProperties;
-  if (xin) style = { opacity: k };
-  else style = { opacity: Math.min(1, k * 1.25) * (1 - o), transform: `translateY(${(1 - k) * 44 - o * 30}px) scale(${1.04 - 0.04 * k + 0.035 * o})`, filter: k < 0.999 ? `blur(${(1 - k) * 6}px)` : undefined };
-  if (!xin && xout) style = { opacity: Math.min(1, k * 1.25), transform: `translateY(${(1 - k) * 44}px) scale(${1.04 - 0.04 * k})`, filter: k < 0.999 ? `blur(${(1 - k) * 6}px)` : undefined };
-  if (xin && !xout) style = { opacity: k * (1 - o), transform: `scale(${1 + 0.035 * o})` };
-  if (first) style = { ...style, opacity: 1 - o };
-  return <AbsoluteFill style={style}>{el({ t, start, dur })}</AbsoluteFill>;
+  let op = 1, tx = 0, ty = 0, sc = 1, blur = 0, mbN = 0;
+  // incoming
+  if (inT === 'push') { const k = clamp(t, 0, IN, ex); op *= Math.min(1, k * 1.25); ty += (1 - k) * 44; sc *= 1.04 - 0.04 * k; blur += (1 - k) * 6; }
+  if (inT === 'whip' || inT === 'slide') { const k = clamp(t, 0, TW); tx += dir * 1920 * (1 - k); mbN = Math.max(mbN, mb(k)); }
+  if (inT === 'zoom') { const k = clamp(t, 0, TW); sc *= 0.72 + 0.28 * k; op *= Math.min(1, k * 1.6); blur += (1 - k) * 10; }
+  // outgoing
+  if (outT === 'push') { const o = clamp(t, dur - OUT, dur + 0.04, ei); op *= 1 - o; ty -= o * 30; sc *= 1 + 0.035 * o; }
+  if (outT === 'whip' || outT === 'slide') { const k = clamp(t, dur, dur + TW); tx -= ndir * 1920 * k; mbN = Math.max(mbN, mb(k)); }
+  if (outT === 'zoom') { const k = clamp(t, dur, dur + TW, ei); sc *= 1 + 1.4 * k; op *= 1 - k; blur += k * 12; }
+  const filt = [mbN ? `url(#mb${mbN})` : '', blur > 0.05 ? `blur(${blur.toFixed(1)}px)` : ''].join(' ').trim();
+  return <AbsoluteFill style={{ opacity: op, transform: `translate(${tx}px, ${ty}px) scale(${sc})`, filter: filt || undefined }}>{el({ t, start, dur })}</AbsoluteFill>;
+};
+
+// ---- camera shake + flashes on impact moments (bang, rivets, the split)
+const SHAKES = [
+  { at: W('c4_02', 'deep'), amp: 4, d: 2.2, hz: 9 },
+  { at: W('c4_03', 'crash'), amp: 10, d: 0.6, hz: 14 },
+  { at: W('c4_03', 'bang'), amp: 22, d: 0.9, hz: 13 },
+  { at: W('c4_04', 'popping'), amp: 7, d: 1.6, hz: 26 },
+  { at: W('c4_05', 'split'), amp: 30, d: 1.3, hz: 11 },
+  { at: W('c4_08', 'thrown'), amp: 9, d: 0.6, hz: 14 },
+];
+const FLASHES = [{ at: W('c4_03', 'bang'), o: 0.55 }, { at: W('c4_05', 'split'), o: 0.75 }];
+const IMPACTS = [W('c4_03', 'bang'), W('c4_05', 'split')];
+const nz = (x: number) => Math.sin(x * 1.7) * 0.5 + Math.sin(x * 3.1 + 1.3) * 0.3 + Math.sin(x * 5.3 + 2.1) * 0.2;
+const Camera: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const t = useCurrentFrame() / FPS;
+  let x = 0, y = 0, r = 0, z = 0;
+  for (const s of SHAKES) {
+    if (t < s.at || t > s.at + s.d) continue;
+    const e = Math.exp(-(t - s.at) / (s.d / 3));
+    x += s.amp * e * nz(t * s.hz); y += s.amp * 0.7 * e * nz(t * s.hz + 7); r += 0.04 * s.amp * e * nz(t * s.hz + 3); z = Math.max(z, 0.02 * (s.amp / 10) * e);
+  }
+  let fl = 0;
+  for (const q of FLASHES) if (t >= q.at && t < q.at + 0.6) fl = Math.max(fl, q.o * Math.exp(-(t - q.at) / 0.13));
+  return (
+    <AbsoluteFill>
+      <AbsoluteFill style={{ transform: `translate(${x}px, ${y}px) rotate(${r}deg) scale(${1 + z + (x || y ? 0.03 : 0)})` }}>{children}</AbsoluteFill>
+      {fl > 0.01 && <AbsoluteFill style={{ background: '#FFFDF8', opacity: fl }} />}
+    </AbsoluteFill>
+  );
+};
+// light leak sweep over chapter cards (warm, subtle, light palette)
+const Leak: React.FC<{ at: number }> = ({ at }) => {
+  const t = useCurrentFrame() / FPS - at;
+  if (t < -0.1 || t > 1.6) return null;
+  const k = clamp(t, 0, 1.5, Easing.bezier(0.3, 0, 0.3, 1));
+  return <AbsoluteFill style={{ pointerEvents: 'none', mixBlendMode: 'multiply', opacity: 0.55 * Math.sin(Math.PI * k), background: `radial-gradient(ellipse 60% 90% at ${-20 + 140 * k}% 40%, rgba(199,122,26,0.55) 0%, rgba(232,170,90,0.25) 40%, rgba(255,255,255,0) 70%)` }} />;
 };
 
 // build the full sequence list: chapter cards + shots, each shot ends where the next begins
-type Item = Shot & { key: string };
+type Item = Shot & { key: string; trans?: Trans; dir?: number };
 // cold open hook: open on the strongest photograph, then hand over to the approved opening map
 const HOOK_END = (TL as any).words.find((w: any) => /^it/i.test(w.w) && w.s > 2).s - 0.15;
 const items: Item[] = [];
@@ -268,6 +324,17 @@ const OutAt: React.FC<{ end: number; children: React.ReactNode }> = ({ end, chil
   return <AbsoluteFill style={{ opacity: 1 - o, transform: `translateY(${-o * 30}px) scale(${1 + 0.035 * o})` }}>{children}</AbsoluteFill>;
 };
 items.sort((a, b) => a.at - b.at);
+// assign transitions: picture -> picture alternates whip / zoom-through, every third card -> card slides
+items.forEach((it, i) => {
+  const pv = items[i - 1];
+  if (!pv) { it.trans = 'push'; return; }
+  if (it.key.startsWith('card-') || it.key === 'end') it.trans = 'zoom';
+  else if (pv.full && it.full) it.trans = i % 2 ? 'whip' : 'zoom';
+  else if (!pv.full && !it.full && !pv.key.startsWith('card-') && i % 3 === 0) it.trans = 'slide';
+  else it.trans = 'push';
+  it.dir = i % 4 === 1 ? -1 : 1;
+});
+const SWOOSH = items.filter((it) => it.trans === 'whip' || it.trans === 'slide' || it.trans === 'zoom').map((it) => ({ at: it.at, v: it.trans === 'slide' ? 0.1 : 0.16 }));
 
 // the hook photo needs the real local time for its Ken Burns move, then dissolves into the map
 const HookFade: React.FC<{ end: number; children: React.ReactElement }> = ({ end, children }) => {
@@ -286,8 +353,14 @@ export const Full: React.FC = () => (
         <PhotoShot t={0} start={0} dur={HOOK_END} src="redcross.jpg" kb={kb(1100, 420, 1.16, 1.3, -2, 0)} text="Commercial Street, Boston · January 15, 1919" source={SRC.rc} />
       </HookFade>
     </Sequence>
-    {items.map((it, i) => <Seq key={it.key} shot={it} end={i + 1 < items.length ? items[i + 1].at : T.duration} prev={i > 0 ? items[i - 1] : undefined} next={items[i + 1]} />)}
+    {MB_DEFS}
+    <Camera>
+      {items.map((it, i) => <Seq key={it.key} shot={it} end={i + 1 < items.length ? items[i + 1].at : T.duration} next={items[i + 1]} />)}
+    </Camera>
+    {(T.chapters as any[]).map((c) => <Leak key={c.id} at={c.card} />)}
     <Audio src={staticFile('audio/full_mix.wav')} />
+    {SWOOSH.map((w, i) => <Sequence key={'w' + i} from={Math.max(0, Math.round((w.at - 0.28) * FPS))} durationInFrames={20}><Audio src={staticFile('audio/whoosh.wav')} volume={w.v} /></Sequence>)}
+    {IMPACTS.map((a, i) => <Sequence key={'i' + i} from={Math.round((a - 0.02) * FPS)} durationInFrames={36}><Audio src={staticFile('audio/impact.wav')} volume={0.22} /></Sequence>)}
   </AbsoluteFill>
 );
 export const SHOT_COUNT = items.length;
