@@ -96,7 +96,7 @@ export const Stamp: React.FC<{ t: number; at: number; time: string; sub?: string
     <div style={{ position: 'absolute', left: 90, bottom: 96, opacity: k, transform: `translateX(${(1 - k) * -30}px)` }}>
       <div style={{ width: 70 * k, height: 4, background: C.red, marginBottom: 14 }} />
       <div style={{ fontFamily: DISPLAY, fontSize: 120, letterSpacing: 3, color: C.ink, lineHeight: 0.9, textShadow: '0 4px 24px rgba(0,0,0,0.7)' }}>{time}</div>
-      {sub && <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: 30, letterSpacing: 5, color: C.dim, marginTop: 10, textTransform: 'uppercase' }}>{sub}</div>}
+      {sub && <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: 40, letterSpacing: 4, color: C.ink, marginTop: 10, textTransform: 'uppercase' }}>{sub}</div>}
     </div>
   );
 };
@@ -107,16 +107,16 @@ export const Count: React.FC<{ t: number; at: number; to: number; d?: number; si
   return (
     <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', transform: `translateY(${y}px)` }}>
       <div style={{ fontFamily: DISPLAY, fontSize: size, color, lineHeight: 0.85, letterSpacing: 2, fontVariantNumeric: 'tabular-nums', textShadow: '0 6px 40px rgba(0,0,0,0.7)', opacity: Math.min(1, pe(t, at, 0.2) * 1.2) }}>{fmt(to * k)}{suffix}</div>
-      {label && <div style={{ fontFamily: SANS, fontWeight: 700, fontSize: 38, letterSpacing: 9, color: C.ink, marginTop: 18, textTransform: 'uppercase', opacity: pe(t, at + 0.3, 0.5), textShadow: '0 2px 16px rgba(0,0,0,0.8)' }}>{label}</div>}
+      {label && <div style={{ fontFamily: SANS, fontWeight: 700, fontSize: 44, letterSpacing: 8, color: C.ink, marginTop: 18, textTransform: 'uppercase', opacity: pe(t, at + 0.3, 0.5), textShadow: '0 2px 16px rgba(0,0,0,0.8)' }}>{label}</div>}
     </AbsoluteFill>
   );
 };
 // small source / honesty labels
 export const Credit: React.FC<{ text: string }> = ({ text }) => (
-  <div style={{ position: 'absolute', right: 40, bottom: 30, fontFamily: SANS, fontSize: 18, color: 'rgba(243,238,230,0.55)', letterSpacing: 0.5 }}>{text}</div>
+  <div style={{ position: 'absolute', right: 40, bottom: 30, fontFamily: SANS, fontSize: 22, color: 'rgba(243,238,230,0.6)', letterSpacing: 0.5 }}>{text}</div>
 );
 export const Tag: React.FC<{ text: string }> = ({ text }) => (
-  <div style={{ position: 'absolute', right: 56, top: 50, fontFamily: SANS, fontWeight: 700, fontSize: 20, letterSpacing: 4, color: C.ink, padding: '8px 14px', border: `1.5px solid ${C.red}`, background: 'rgba(7,9,11,0.6)', textTransform: 'uppercase' }}>{text}</div>
+  <div style={{ position: 'absolute', right: 56, top: 50, fontFamily: SANS, fontWeight: 700, fontSize: 28, letterSpacing: 4, color: C.ink, padding: '10px 16px', border: `1.5px solid ${C.red}`, background: 'rgba(7,9,11,0.6)', textTransform: 'uppercase' }}>{text}</div>
 );
 
 // ---- quick photo burst: 3-4 frames popping in one after another ("chik-chik-chik")

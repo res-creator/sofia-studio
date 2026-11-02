@@ -1,16 +1,58 @@
 [
- {"id":"h01","text":"August eighth, 2023. Lahaina, Maui."},
- {"id":"h02","text":"At 6:37 in the morning, a downed power line sparks a brush fire on the edge of town."},
- {"id":"h03","text":"By nine, firefighters declare it contained."},
- {"id":"h04","text":"At 3:30 in the afternoon, it comes back."},
- {"id":"h05","text":"That day, the wind is gusting at more than eighty miles an hour."},
- {"id":"h06","text":"At 4:46, the fire crosses the highway, and enters Lahaina."},
- {"id":"h07","text":"Maui has more than eighty outdoor warning sirens. They exist for moments exactly like this."},
- {"id":"h08","text":"That afternoon, not one of them sounded."},
- {"id":"h09","text":"By 5:45, the fire has reached the ocean. People are jumping into the water to escape it. The Coast Guard will pull seventeen of them out of the sea."},
- {"id":"h10","text":"When it is over, more than two thousand buildings are gone. One hundred and two people are dead."},
- {"id":"h11","text":"It is the deadliest wildfire in the United States in more than a hundred years."},
- {"id":"h12","text":"And the questions start almost immediately."},
- {"id":"h13","text":"Why did the sirens stay silent? Why did the hydrants fail? And how did a fire that was declared contained at nine in the morning come back, and destroy an entire town?"},
- {"id":"h14","text":"This is the story of the day Lahaina burned."}
+ {
+  "id": "h01",
+  "text": "August eighth, 2023. Lahaina, Maui."
+ },
+ {
+  "id": "h02",
+  "text": "At 6:37 in the morning, a downed power line sparks a brush fire on the edge of town."
+ },
+ {
+  "id": "h03",
+  "text": "By nine, firefighters declare it contained."
+ },
+ {
+  "id": "h04",
+  "text": "By 3:30 in the afternoon, it is back."
+ },
+ {
+  "id": "h05",
+  "text": "That day, the wind is gusting at more than eighty miles an hour."
+ },
+ {
+  "id": "h06",
+  "text": "At 4:46, the fire crosses the highway, and enters Lahaina."
+ },
+ {
+  "id": "h07",
+  "text": "Maui has eighty outdoor warning sirens. They exist for moments exactly like this."
+ },
+ {
+  "id": "h08",
+  "text": "That afternoon, not one of them sounded."
+ },
+ {
+  "id": "h09",
+  "text": "By 5:45, the fire has reached the ocean. People are jumping into the water to escape it. The Coast Guard will pull seventeen of them out of the sea."
+ },
+ {
+  "id": "h10",
+  "text": "When it is over, more than two thousand buildings are gone. One hundred and two people are dead."
+ },
+ {
+  "id": "h11",
+  "text": "It is the deadliest wildfire in the United States in more than a hundred years."
+ },
+ {
+  "id": "h12",
+  "text": "And the questions start almost immediately."
+ },
+ {
+  "id": "h13",
+  "text": "Why did the sirens stay silent? Why did the hydrants fail? And how did a fire that was declared contained at nine in the morning come back, and destroy an entire town?"
+ },
+ {
+  "id": "h14",
+  "text": "This is the story of the day Lahaina burned."
+ }
 ]
