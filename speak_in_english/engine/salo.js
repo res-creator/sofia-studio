@@ -118,7 +118,7 @@ function scaleDraw(c, x, kg) { c.fillStyle = '#C9CFD8'; rr(c, x - 160, CT - 40, 
 function table(c, t, L) {
   // suitcase lid (behind the base)
   paint(c, q => { q.m(-30, CT - 120); q.l(400, CT - 120); q.l(440, CT - 360); q.l(-20, CT - 360); q.z(); }, '#5E9E6E', { sd: 10, hd: 4, lw: 4 });
-  c.fillStyle = '#F7B6CF'; c.beginPath(); c.arc(80, CT - 245, 45, 0, TAU); c.fill(); c.fillStyle = '#FFE15A'; rr(c, 220, CT - 285, 140, 80, 12); c.fill(); fitTxt(c, 'MUM', 290, CT - 245, 34, '#C23C4A', 120); fitTxt(c, '♥', 80, CT - 245, 40, '#C23C4A', 80, 'Nun9');
+  c.fillStyle = '#F7B6CF'; c.beginPath(); c.arc(80, CT - 245, 45, 0, TAU); c.fill(); c.fillStyle = '#FFE15A'; rr(c, 220, CT - 285, 140, 80, 12); c.fill(); fitTxt(c, 'MUM', 290, CT - 245, 34, '#C23C4A', 120); c.fillStyle = '#C23C4A'; c.beginPath(); c.moveTo(80, CT - 228); c.bezierCurveTo(50, CT - 250, 58, CT - 278, 80, CT - 262); c.bezierCurveTo(102, CT - 278, 110, CT - 250, 80, CT - 228); c.fill();   // heart drawn by hand (no ♥ glyph in the font)
   // table top + front
   paint(c, q => { q.m(TX0, CT); q.l(TX1, CT); q.l(TX1, CT + 60); q.l(TX0, CT + 60); q.z(); }, '#D9DEE6', { sd: 6, hd: 3, lw: 4 });
   paint(c, q => { q.m(TX0 + 20, CT + 60); q.l(TX1 - 20, CT + 60); q.l(TX1 - 20, 0); q.l(TX0 + 20, 0); q.z(); }, '#56627A', { sd: 10, hd: 4, lw: 4 });
