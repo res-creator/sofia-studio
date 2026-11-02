@@ -1,5 +1,6 @@
 # English TikTok channel — rules & production guide (read this first in a new session)
 
+Step-by-step working order + lessons learned: the project skill `.claude/skills/how-its-run/SKILL.md` (loads automatically in new sessions).
 Owner speaks Russian: answer her in Russian, simply. On-screen text, voice and captions are American English.
 Concept: real, verifiable stories about money, business, famous companies and how familiar everyday things are actually run.
 "You use this every day, but you have no idea what's happening behind the scenes." Not finance advice, not news, no crypto/politics.
