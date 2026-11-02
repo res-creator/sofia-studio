@@ -99,7 +99,7 @@ function signBody(c, t, L) { const on = reached(t, L, 'C2', 'sign'), u = t - ev(
 // ---------------- counter: belt with her groceries, the gift pile, the till, her bag with the sticker
 function giftsAt(t, L) { return { choc1: reached(t, L, 'A1', 'gift'), tissue: reached(t, L, 'A1', 'gift') && (L !== 'A1' || t > ev('A1', 'gift') + 0.25), choc2: reached(t, L, 'A2', 'choc'), flower: reached(t, L, 'B1', 'flower') }; }
 const popK = (t, at) => t < at + 0.3 ? eBack(clamp((t - at) / 0.3), 2) : 1;
-function counter(c, t, L) {
+function counter(c, t, L) { return; /* owner: no corner counter/icons in the video */
   // top slab + belt
   paint(c, q => { q.m(TX0, CT - 40); q.l(TX1, CT - 40); q.l(TX1, CT + 30); q.l(TX0, CT + 30); q.z(); }, '#C9CFD6', { sd: 6, hd: 3, lw: 4 });
   c.fillStyle = '#2B2F3A'; rr(c, TX0 + 20, CT - 56, 640, 30, 12); c.fill(); c.strokeStyle = 'rgba(255,255,255,.12)'; c.lineWidth = 4; for (let x = TX0 + 40; x < TX0 + 650; x += 46) { const xx = x + ((t * 60) % 46) * (L === 'hook' ? 1 : 0); c.beginPath(); c.moveTo(xx, CT - 54); c.lineTo(xx, CT - 28); c.stroke(); }
@@ -277,8 +277,8 @@ function giftCounter(c, t, sc, tag) { const L = sc.id; if (L === 'outro' || L ==
 function renderFrame(c, t) {
   c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; const sc = sceneAt(t), L = sc.id;
   if (L === 'outro') { const rows = [['A1', 'I okay! Normal face!'], ['A2', "I'm not sad, this is just my face."], ['B2', "I'm on cloud nine."], ['C1', "Where I'm from, people save their smiles for friends."]];
-    K.outro(c, t, { q: ['А ТЕБЕ ГОВОРИЛИ', '"УЛЫБНИСЬ"?'], rows, cta: ['ОТПРАВЬ ТОМУ, У КОГО', 'ТОЖЕ СЕРЬЁЗНОЕ ЛИЦО'], heroX: 190, heroS: 0.42,
-      hero: (cc, tt) => { const g = G.her, gd = G.cashier; K.put(cc, LIN, { t: tt, mood: 'happy', laugh: true, turn: -0.2, look: -0.4, armL: reach(gd, -1, -gd.sw * 2.0, gd.ySh - 330 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(gd, 1), items: {}, afterTorso: cc2 => badge(cc2, gd) }, 1500, 60);
+    K.outro(c, t, { q: ['А ТЕБЕ ГОВОРИЛИ', '"УЛЫБНИСЬ"?'], rows, cta: ['ОТПРАВЬ ТОМУ, У КОГО', 'ТОЖЕ СЕРЬЁЗНОЕ ЛИЦО'], heroX: 95, heroS: 0.34, heroY: [2350, 1985], ctaFit: true,
+      hero: (cc, tt) => { const g = G.her, gd = G.cashier; K.put(cc, LIN, { t: tt, mood: 'happy', laugh: true, turn: -0.2, look: -0.4, armL: reach(gd, -1, -gd.sw * 2.0, gd.ySh - 330 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(gd, 1), items: {}, afterTorso: cc2 => badge(cc2, gd) }, 640, 60);
         K.put(cc, HER, { t: tt, mood: 'happy', laugh: true, turn: 0, look: 0, armL: reach(g, -1, -g.sw * 2.0, g.ySh - 260 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(g, 1), items: {} }, 0, 0); } });
     // A1 phrase greyed out and struck through
     const u = t - SC.outro.s, kk = P(u, 1.35, 1.7); if (kk > 0) { const bh = 140 + rows.length * 115, y = 740 - bh / 2 + 150; UI.textFit(c, 'Nun9', 46, rows[0][1], 740); const wd = c.measureText(rows[0][1]).width;
