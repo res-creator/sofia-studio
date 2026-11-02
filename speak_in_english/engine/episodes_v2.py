@@ -2630,3 +2630,34 @@ EP["late"] = dict(
            'C1': {'type': 'eq', 'en': "I'd appreciate a heads-up.", 'ru': '= Буду благодарна, если предупредишь.', 'ex': [["next time", '= в следующий раз']]},
            'C2': {'type': 'c2', 'vocab': [['running late', '= задерживаюсь'], ['my time matters too', '= моё время тоже важно']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---- «Подруга и долг 5000» (owner's week-1 script + «Правки сценариев недели 1–2»): A1 / B1 / C1 only, no narrator tips
+#      (lesson cards pop over the running scene for 3 s), Sarah speaks only the outro; cast: heroine + Emma (late) + the splitbill waiter (no lines)
+EP["debt"] = dict(
+    title='Подруга не возвращает долг',
+    hook_title=[['ПОДРУГА НЕ ВОЗВРАЩАЕТ', 'd'], ['ДОЛГ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    stamp="", stamp_word="", next=None, camera="hard_cut",
+    lines=[
+        ('a1_h', 'her', '[sharply, slapping the table] Give me my money!', 'Верни мои деньги!'),
+        ('a1_e', 'emma', '[gasps, then sobbing loudly] Wow. After everything I did for you?', 'Ого. После всего, что я для тебя сделала?'),
+        ('a1_e2', 'emma', '[sniffling, mouth full] ...This cake is really good.', '…Торт очень вкусный.'),
+        ('b1_h', 'her', '[politely, calmly] Could you pay me back this week? I really need the money.', 'Ты можешь вернуть мне деньги на этой неделе? Они мне правда нужны.'),
+        ('b1_e', 'emma', "[cheerfully] Of course! This week! I promise. I'll write it down.", 'Конечно! На этой неделе! Обещаю. Я запишу.'),
+        ('b1_e2', 'emma', '[proudly] See? Official.', 'Видишь? Всё официально.'),
+        ('c1_h', 'her', "[calm, looking her in the eye] I don't want to make this awkward, but I need that money back. Can we agree on a date?", 'Не хочу, чтобы было неловко, но мне нужны эти деньги. Давай договоримся о дате?'),
+        ('c1_e', 'emma', "[nervously] Oh... honestly, I'm completely broke right now.", 'Ох… честно, у меня сейчас совсем нет денег.'),
+        ('c1_h2', 'her', "[sweetly] That's a lovely bag. How much was it?", 'Красивая сумка. Сколько она стоила?'),
+        ('pay_e', 'emma', '[small voice] ...Even the cake?', '…Даже торт?'),
+        ('pay_h', 'her', '[smiling] Especially the cake.', 'Особенно торт.'),
+        ('outro', 'nar', 'Какой вариант твой? Пиши в комменты. Сохрани и отправь подруге, которая вечно «забывает» вернуть долг.', ''),
+    ],
+    chunks={
+        'b1_h': [['Could you pay me back this week?', 'Ты можешь вернуть мне деньги на этой неделе?'], ['I really need the money.', 'Они мне правда нужны.']],
+        'b1_e': [['Of course! This week!', 'Конечно! На этой неделе!'], ["I promise. I'll write it down.", 'Обещаю. Я запишу.']],
+        'c1_h': [["I don't want to make this awkward,", 'Не хочу, чтобы было неловко,'], ['but I need that money back.', 'но мне нужны эти деньги.'], ['Can we agree on a date?', 'Давай договоримся о дате?']],
+        'c1_h2': [["That's a lovely bag.", 'Красивая сумка.'], ['How much was it?', 'Сколько она стоила?']],
+    },
+    cards={'A1': dict(en='Give me my money!', ru='= Верни мои деньги!', note='звучит как приказ'),
+           'B1': dict(en='pay me back', ru='= вернуть долг', note='Could you pay me back?'),
+           'C1': dict(en='Can we agree on a date?', ru='= Давай договоримся о дате?', note="I don't want to make this awkward, but…")},
+)
