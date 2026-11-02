@@ -1,0 +1,5 @@
+node_modules
+out/
+public/vid/*.mp4
+public/audio/*.wav
+assets/raw/
