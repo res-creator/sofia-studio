@@ -226,7 +226,7 @@ shot('H edna', Z.s08 - 0.12, Z.s09 - 0.12, (ctx, t, lt) => {
   ST.grade(ctx, 'office', 0.2);
 });
 // I (s09 "In seven years, revenue reportedly jumped from $115,000 to over $8 million."): two bars; the right one shoots up
-const tSeven = at('s09', 'seven'), tRev = at('s09', 'revenue'), tRep = at('s09', 'reportedly'), t115 = at('s09', '$115'), tTo = at('s09', 'to'), t8 = at('s09', '$8'), tMil = at('s09', 'million');
+const tSeven = at('s09', 'seven'), tRev = at('s09', 'revenue'), tRep = at('s09', 'reportedly'), t115 = at('s09', '115'), tTo = at('s09', 'to'), t8 = at('s09', '8'), tMil = at('s09', 'million');
 shot('I revenue', Z.s09 - 0.12, Z.s10 - 0.12, (ctx, t, lt) => {
   ST.bg(ctx, PAL.paper); ctx.fillStyle = 'rgba(77,141,255,0.12)'; for (let i = 0; i < 30; i++) ctx.fillRect(0, i * 70, W, 3);
   const base = 1300;

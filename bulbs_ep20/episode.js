@@ -161,7 +161,7 @@ shot('F1 bench', Z.s06 - 0.12, tThe6 - 0.12, (ctx, t, lt) => {
   const on = [0, 1, 2, 3].map(i => t > Z.s06 + 0.15 + i * 0.22 ? -1 : 1).concat([1]);
   S.testRack(ctx, on, [['1,000 h'], ['1,000 h'], ['1,000 h'], ['1,000 h'], ['STILL ON', C.red, PAL.cream]]); ctx.restore();
   ctx.save(); ctx.translate(250, 600); S.stopwatch(ctx, 1.3, t * 5); ctx.restore();
-  label(ctx, 'TOO LONG?', 680, 600, pop(t, at('s06', 'too') - 0.05), { size: 70, col: C.yellow, rot: 0.04, arrow: 1, arrowX: 120 });
+  label(ctx, 'TOO LONG?', 640, 600, pop(t, at('s06', 'too') - 0.05), { size: 70, col: C.yellow, rot: 0.04, arrow: 1, arrowX: 120 });
   ST.grade(ctx, 'office', 0.18);
 });
 // F2 (s06 "The factory paid a fine."): the factory owner hands over the money, FINED stamp
@@ -188,7 +188,7 @@ const tTwist = at('s08', 'twist'), tCheap = at('s08', 'cheaper'), tPrices = at('
 shot('H1 twist', Z.s08 - 0.12, Z.s09 - 0.12, (ctx, t, lt) => {
   ST.bg(ctx, PAL.paper); ctx.fillStyle = 'rgba(77,141,255,0.12)'; for (let i = 0; i < 30; i++) ctx.fillRect(0, i * 70, W, 3);
   const base = 1330, hc = lerp(560, 240, E.inOut(seg(t, tCheap - 0.1, tCheap + 0.5))), hp = 560 + Math.sin(t * 9) * 4 * seg(t, tPrices, tPrices + 0.3);
-  const tB8 = at('s08', 'bulbs'), cu = pop(t, tB8 - 0.1), pu = pop(t, tB8 + 0.15);
+  const cu = pop(t, Z.s08 - 0.05), pu = pop(t, Z.s08 + 0.15);
   if (cu > 0) { ctx.save(); ctx.translate(200, base); CL.cutout(ctx, () => rr(ctx, -110, -hc * cu, 220, hc * cu, 12), PAL.blue, { elev: 1.4 }); ctx.restore(); label(ctx, 'COST', 200, base - hc - 60, cu, { size: 54 });
     if (t > tCheap) { ctx.save(); ctx.translate(200, base - hc - 170); ctx.globalAlpha = seg(t, tCheap, tCheap + 0.2); ctx.fillStyle = C.red; ctx.beginPath(); ctx.moveTo(-36, -50); ctx.lineTo(36, -50); ctx.lineTo(36, 0); ctx.lineTo(70, 0); ctx.lineTo(0, 70); ctx.lineTo(-70, 0); ctx.lineTo(-36, 0); ctx.closePath(); ctx.fill(); ctx.lineWidth = 5; ctx.strokeStyle = R.INK; ctx.stroke(); ctx.restore(); } }
   if (pu > 0) { ctx.save(); ctx.translate(820, base); CL.cutout(ctx, () => rr(ctx, -110, -hp * pu, 220, hp * pu, 12), C.red, { elev: 1.4 }); ctx.restore(); label(ctx, 'PRICE', 820, base - hp - 60, pu, { size: 54 }); }
@@ -271,7 +271,7 @@ function cues() {
   c.push(['cut', Z.s06 - 0.12, 0.35]); for (let i = 0; i < 4; i++) c.push(['click', Z.s06 + 0.15 + i * 0.22, 0.7]); c.push(['pop', at('s06', 'too') - 0.05, 0.5]);
   c.push(['cut', tThe6 - 0.12, 0.35], ['paper', tPaid - 0.2, 0.5], ['paper', tPaid, 0.5], ['paper', tPaid + 0.25, 0.5], ['stamp', tFine + 0.05, 1.0]);
   c.push(['cut', Z.s07 - 0.12, 0.35], ['pop', tWorked - 0.1, 0.5], ['fall', tReal, 0.5], ['stamp', tThird + 0.05, 0.8]);
-  c.push(['cut', Z.s08 - 0.12, 0.35], ['pop', tTwist - 0.15, 0.5], ['fall', tCheap, 0.5], ['pop', tPrices - 0.15, 0.4], ['coins', tMoved, 0.7], ['kaching', tMoved + 0.2, 0.5]);
+  c.push(['cut', Z.s08 - 0.12, 0.35], ['pop', Z.s08, 0.4], ['pop', tTwist - 0.15, 0.5], ['fall', tCheap, 0.5], ['coins', tMoved, 0.7], ['kaching', tMoved + 0.2, 0.5]);
   c.push(['cut', Z.s09 - 0.12, 0.35]); for (const x of tBuy) c.push(['kaching', x + 0.15, 0.45]); c.push(['pop', tAgain - 0.1, 0.45]);
   c.push(['cut', Z.s10 - 0.12, 0.35], ['pop', t1940 - 0.1, 0.6], ['boom', tTore - 0.3, 0.5], ['tear', tTore, 0.9]);
   c.push(['cut', tYour - 0.12, 0.35], ['buzz', tBurn - 0.3, 0.4], ['balloonpop', tBurn + 0.05, 0.6], ['cut', tIt2 - 0.12, 0.3], ['stamp', tSched + 0.05, 1.0]);
@@ -307,4 +307,4 @@ else if (mode === 'video') (async () => {
     if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r)); if (f % 150 === 0) process.stderr.write(`${f}/${N} ${((Date.now() - T0) / 1000).toFixed(0)}s\n`); }
   ff.stdin.end(); await new Promise(r => ff.on('close', r));
 })();
-module.exports = { T, ST: Z, SH };
+module.exports = { T, ST: Z, SH, handshake };

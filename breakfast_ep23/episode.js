@@ -112,7 +112,7 @@ shot('D1 handshake', Z.s04 - 0.12, Z.s05 - 0.12, (ctx, t, lt) => {
   const c = cam([[0, 0, -500, 0.92], [4.5, 0, -500, 1.0]], lt);
   const hs = seg(t, tHired - 0.3, tHired), sh = Math.sin(t * 14) * 14 * (t > tHired ? 1 : 0);
   layer(ctx, c, 1, w => {
-    S.office(w, t, { frame: { x: 0, y: -1060, draw: g => fitTxt(g, 'EST. 1891', 0, 10, 40, '#6A4024', 220, 'center', ST.FONT.type) } });
+    S.office(w, t, { frame: { x: 0, y: -1060, draw: g => S.baconStrip(g, 0, 0, 0.8, -0.1) } });
     const arm = { hand: [lerp(40, 168, hs), lerp(-150, -315 + sh, hs)], grip: hs > 0.9 ? 'fist' : 'relax' };
     P.person(w, -180, 0, 1.0, 1, PACKER, { face: FACE(t > tHired ? 'grin' : 'smile', [1, 0], t), armN: arm }, ACC.PACKER);
     P.person(w, 180, 0, 1.0, -1, PRMAN, { face: FACE('smug', [1, 0], t, 1), armN: arm }, ACC.PRMAN);
@@ -159,10 +159,11 @@ const tFive = at('s06', 'five'), tPhys = at('s06', 'physicians');
 shot('F1 mail', Z.s06 - 0.12, Z.s07 - 0.12, (ctx, t, lt) => {
   const c = cam([[0, 0, -520, 0.95], [2.6, 0, -540, 1.02]], lt);
   layer(ctx, c, 1, w => { S.office(w, t, { wall: '#E8E2D0', window: -800 });
-    P.seated(w, -420, 0, 0.95, 1, DOCTOR, { face: FACE('smile', [1, 0.2], t), armN: { hand: [140, -300], grip: 'pinch', item: g => R.tube(g, [[0, 0], [10, -60]], 8, '#2A2A30', 3) } }, ACC.DOCTOR);
     w.save(); w.translate(120, 0); S.mailSack(w, 1.15, seg(t, tFive - 0.2, tFive)); w.restore();
     for (let i = 0; i < 40; i++) { const t0 = tFive - 0.1 + i * 0.035; if (t < t0) break; const f = clamp((t - t0) / 1.1), a = -Math.PI / 2 + (hash(i) - 0.5) * 2.4, v = 900 + hash(i + 7) * 700;
-      const x = 120 + Math.cos(a) * v * f, y = -470 + Math.sin(a) * v * f + 900 * f * f; w.save(); w.translate(x, y); w.rotate(f * 6 * (hash(i + 2) - 0.5)); S.envelope(w, 0.7, i); w.restore(); } });
+      const x = 120 + Math.cos(a) * v * f, y = -470 + Math.sin(a) * v * f + 900 * f * f; w.save(); w.translate(x, y); w.rotate(f * 6 * (hash(i + 2) - 0.5)); S.envelope(w, 0.7, i); w.restore(); }
+    P.seated(w, -420, 0, 0.95, 1, DOCTOR, { face: FACE('smile', [1, 0.2], t), armN: { hand: [140, -300], grip: 'pinch', item: g => R.tube(g, [[0, 0], [10, -60]], 8, '#2A2A30', 3) } }, ACC.DOCTOR);
+  });
   const u = pop(t, tFive - 0.08, 0.35); if (u > 0) { ctx.save(); ctx.translate(540 + shake(t, tFive + 0.2, 8), 480); ctx.scale(u, u); CL.cutout(ctx, () => rr(ctx, -270, -95, 540, 170, 20), C.red, { elev: 2 }); txt(ctx, '5,000', 0, 34, 120, PAL.cream); ctx.restore(); }
   label(ctx, 'LETTERS TO PHYSICIANS', 540, 650, pop(t, tPhys - 0.05), { size: 50 });
   ST.grade(ctx, 'office', 0.2);
@@ -246,10 +247,10 @@ shot('J1 slogan', Z.s10 - 0.12, tEnd, (ctx, t, lt) => {
   ST.bg(ctx, '#CFE8DC'); ctx.fillStyle = 'rgba(255,255,255,0.35)'; for (let y = 0; y < 1100; y += 60) ctx.fillRect(0, y, W, 4);
   ctx.fillStyle = '#E9474F'; ctx.fillRect(0, 1100, W, 820); ctx.fillStyle = '#C9CED6'; ctx.fillRect(0, 1100, W, 14);
   ctx.save(); ctx.translate(540, 1240); S.plate(ctx, 1.3); S.baconStrip(ctx, -70, -40, 0.9, -0.1, 0); S.baconStrip(ctx, -50, 6, 0.9, 0.05, 1); S.egg(ctx, 110, -20, 0.8); ctx.restore();
-  label(ctx, 'EAT IT', 250, 1410, pop(t, Z.s10), { size: 60, col: PAL.green, fg: PAL.cream, rot: -0.05 });
-  label(ctx, 'SKIP IT', 800, 1410, pop(t, tSkip - 0.05), { size: 60, col: PAL.navy, fg: PAL.cream, rot: 0.05 });
+  label(ctx, 'EAT IT', 230, 1365, pop(t, Z.s10), { size: 60, col: PAL.green, fg: PAL.cream, rot: -0.05 });
+  label(ctx, 'SKIP IT', 830, 1365, pop(t, tSkip - 0.05), { size: 60, col: PAL.navy, fg: PAL.cream, rot: 0.05 });
   const u = pop(t, tJust - 0.1, 0.35); if (u > 0) { ctx.save(); ctx.translate(540, 580); ctx.rotate(-0.02); ctx.scale(u, u); S.sampler(ctx, ['BREAKFAST IS THE MOST', 'IMPORTANT', 'MEAL OF THE DAY'], 900, 400, { hl: 1 });
-    const v = seg(t, tWrote - 0.15, tWrote + 0.2); if (v > 0) { ctx.save(); ctx.strokeStyle = C.red; ctx.lineWidth = 8; ctx.beginPath(); ctx.ellipse(0, 22, 190, 52, -0.03, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * clamp(v * 1.4)); ctx.stroke(); ctx.restore();
+    const v = seg(t, tWrote - 0.15, tWrote + 0.2); if (v > 0) { ctx.save(); ctx.strokeStyle = C.red; ctx.lineWidth = 8; ctx.beginPath(); ctx.ellipse(0, 20, 215, 58, -0.03, -Math.PI / 2, -Math.PI / 2 + 6.27 * clamp(v * 1.4)); ctx.stroke(); ctx.restore();
       ctx.save(); ctx.translate(0, 196); ctx.scale(E.back(v, 2), E.back(v, 2)); S.priceTag(ctx, 'WHO PAID?', Math.sin((t - tWrote) * 5) * 0.12 * Math.exp(-(t - tWrote) * 1.5)); ctx.restore(); } ctx.restore(); }
   ST.grade(ctx, 'day', 0.18);
 });

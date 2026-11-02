@@ -162,7 +162,7 @@ shot('G1 journal', Z.s07 - 0.12, Z.s08 - 0.12, (ctx, t, lt) => {
   desk(ctx); const u = E.inOut(seg(t, tThey7 - 0.1, tThey7 + 0.45)), s = 0.88 + lt * 0.015;
   ctx.save(); ctx.translate(lerp(540 - 260 * s, 540, u), 1000); ctx.scale(s, s); S.journal(ctx, { open: u, bills: seg(t, tMoney7 - 0.2, tMoney7 + 0.5), title: 'MEDICAL JOURNAL' }); ctx.restore();
   label(ctx, 'MEDICAL JOURNALS?', 540, 480, pop(t, Z.s07), { size: 64, col: C.yellow });
-  ctx.save(); ctx.translate(540, 640); ST.stampWord(ctx, 'AD REVENUE', 76, seg(t, tMoney7 - 0.05, tMoney7 + 0.25), C.red, -0.08); ctx.restore();
+  ctx.save(); ctx.translate(540, 1400); ST.stampWord(ctx, 'AD REVENUE', 76, seg(t, tMoney7 - 0.05, tMoney7 + 0.25), C.red, -0.08); ctx.restore();
   ST.grade(ctx, 'office', 0.2);
 });
 // H1 (s08 "Even JAMA, the doctors' own journal, only stopped in 1953."): JAMA open on the ad, then it closes; NO MORE ADS · 1953
@@ -170,6 +170,7 @@ const tJama = at('s08', 'jama'), tOwn8 = at('s08', 'own'), tStopped = at('s08', 
 shot('H1 jama', Z.s08 - 0.12, Z.s09 - 0.12, (ctx, t, lt) => {
   desk(ctx); const u = 1 - E.inOut(seg(t, tStopped - 0.15, tStopped + 0.35)), s = 0.88;
   ctx.save(); ctx.translate(lerp(540 - 260 * s, 540, u), 1000); ctx.scale(s, s); S.journal(ctx, { open: u, title: 'JAMA', sub: 'JOURNAL OF THE AMERICAN MEDICAL ASSN.', col: '#7A2E3A', cover2: 'NO CIGARETTE ADS' }); ctx.restore();
+  label(ctx, 'JAMA', 540, 480, pop(t, tJama - 0.05) * (1 - seg(t, tOwn8 - 0.25, tOwn8 - 0.1)), { size: 90, col: '#7A2E3A', fg: PAL.cream });
   label(ctx, "THE DOCTORS' OWN JOURNAL", 540, 480, pop(t, tOwn8 - 0.1), { size: 52, col: C.yellow });
   const d = pop(t, t1953 - 0.05, 0.3); if (d > 0) { ctx.save(); ctx.translate(800, 640); ctx.rotate(0.06); ctx.scale(d * 0.62, d * 0.62); ST.calCard(ctx, 'ADS STOPPED', '1953'); ctx.restore(); }
   ST.grade(ctx, 'office', 0.2);
@@ -219,7 +220,7 @@ function cues() {
   c.push(['cut', Z.s05 - 0.12, 0.35], ['whoosh', tHanded - 0.05, 0.4], ['stamp', tFree, 0.9]);
   c.push(['cut', Z.s06 - 0.12, 0.35], ['pop', tSo - 0.05, 0.4], ['pop', tWhich - 0.05, 0.45], ['boop', tSmoke6 - 0.05, 0.6], ['snip', tSmoke6 + 0.3, 0.4]);
   c.push(['cut', Z.s07 - 0.12, 0.35], ['pop', Z.s07, 0.4], ['flip', tThey7 - 0.1, 0.8], ['kaching', tMoney7, 0.5], ['stamp', tMoney7 + 0.05, 0.7]);
-  c.push(['cut', Z.s08 - 0.12, 0.35], ['pop', tOwn8 - 0.1, 0.4], ['thump', tStopped + 0.25, 0.7], ['stamp', t1953, 0.9]);
+  c.push(['cut', Z.s08 - 0.12, 0.35], ['pop', tJama - 0.05, 0.45], ['pop', tOwn8 - 0.1, 0.4], ['thump', tStopped + 0.25, 0.7], ['stamp', t1953, 0.9]);
   c.push(['cut', Z.s09 - 0.12, 0.35], ['pop', Z.s09 + 0.05, 0.35], ['coins', tMoney9, 0.5], ['slam', tMoney9 + 0.02, 0.5], ['cut', tEnd, 0.4], ['pop', tEnd + 0.05, 0.6], ['blip', tEnd + 0.4, 0.4]);
   return c;
 }

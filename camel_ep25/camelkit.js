@@ -125,7 +125,7 @@ function journal(ctx, o = {}) {
   const adPage = () => { rr(ctx, 0, -h / 2, w, h, 6); fillStroke(ctx, '#FBF6EA', 4); rr(ctx, 30, -h / 2 + 30, w - 60, h - 60, 4); fillStroke(ctx, '#F3D9A0', 3);
     fitTxt(ctx, 'ADVERTISEMENT', w / 2, -h / 2 + 80, 30, '#6A5A40', w - 100, 'center', ST.FONT.type);
     ctx.save(); ctx.translate(w / 2, -20); for (let i = 0; i < 3; i++) { ctx.save(); ctx.translate((i - 1) * 110, 0); CS.pack(ctx, 1.5, (i - 1) * 0.1); ctx.restore(); } ctx.restore();
-    fitTxt(ctx, 'DOCTORS PREFER...', w / 2, h / 2 - 140, 40, INK, w - 100); fitTxt(ctx, 'CIGARETTE AD', w / 2, h / 2 - 80, 30, C.red, w - 100, 'center', ST.FONT.type); };
+    fitTxt(ctx, 'CIGARETTE AD', w / 2, h / 2 - 110, 44, C.red, w - 100); };
   if (u < 0.5) { adPage(); ctx.save(); ctx.scale(1 - 2 * u, 1); cover(); ctx.restore(); }
   else { adPage(); ctx.save(); ctx.scale(2 * u - 1, 1); spreadL(); ctx.restore(); }
   if (o.bills > 0) for (let i = 0; i < 5; i++) { const b = clamp(o.bills * 1.6 - i * 0.15); if (b <= 0) continue; ctx.save(); ctx.translate(lerp(0, 40 + (i % 3) * 30, b), -h / 2 + 120 + i * 120); ctx.rotate(-0.5 + i * 0.22 + (1 - b) * 0.2); ctx.translate(lerp(0, 160, E.out(b)), 0); CL.bill(ctx, 0.6, { elev: 1 }); ctx.restore(); }
