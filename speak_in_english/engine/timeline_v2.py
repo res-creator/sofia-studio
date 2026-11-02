@@ -588,11 +588,11 @@ elif EPN == "idea":   # meeting room (newhair layout): Her / Boss (seated) / Rya
     INTRO = 1.15
 elif EPN == "salo":   # customs table (passport layout): her left, officer behind the table right, open suitcase between, pug on the floor. Plans: WIDE / CARD / HER / OFC + ROOM (C2 twist). NO black card
     LV = dict(
-        A1=[("a1_h", 0.22, [("PIG", 0.0, 0)]), ("a1_o", 0.22, [("RADIO", 0.25, 0), ("radio", 0.3, 0.6), ("DOG", ("e", 0.1), 0), ("whoosh", ("e", 0.1), 0.5), ("bark", ("e", 0.45), 0.7), ("STAR", ("e", 0.9), 0), ("ding", ("e", 0.9), 0.5)]), ("a1_nar", 1.4, [])],
+        A1=[("a1_h", 0.22, [("PIG", 0.0, 0)]), ("a1_o", 0.22, [("RADIO", 0.25, 0), ("radio", 0.3, 0.6), ("DOG", ("e", 0.3), 0), ("whoosh", ("e", 0.3), 0.5), ("bark", ("e", 0.65), 0.7), ("STAR", ("e", 0.9), 0), ("ding", ("e", 0.9), 0.5)]), ("a1_nar", 1.4, [])],
         A2=[("a2_h", 0.22, []), ("a2_o", 0.22, [("WRITE", 0.0, 0), ("SUSP", ("e", 0.1), 0), ("stamp", ("e", 0.12), 0.9), ("STAR", ("e", 0.15), 0), ("JAR", ("e", 0.75), 0), ("clank", ("e", 0.8), 0.6)]), ("a2_nar", 1.3, [("buzz", 0.95, 0.5)]), ("a2_tip", 0.2, [("ding", 0.05, 0.6)])],
         B1=[("b1_h", 0.22, []), ("b1_o", 0.22, [("SNIFF", ("e", 0.05), 0), ("sniff", ("e", 0.05), 0.7), ("HOWL", ("e", 0.6), 0), ("howl", ("e", 0.6), 0.6)]), ("b1_o2", 1.5, [("SCALE", -0.75, 0), ("thud", -0.7, 0.6), ("ding", -0.4, 0.6)]), ("b1_nar", 0.9, [])],
         B2=[("b2_h", 0.22, []), ("b2_o", 0.3, [("EARS", -0.3, 0), ("STAR", ("e", 0.2), 0), ("ding", ("e", 0.2), 0.5)]), ("b2_nar", 1.0, []), ("b2_tip", 0.2, [("ding", 0.05, 0.6)])],
-        C1=[("c1_h", 0.22, []), ("c1_o", 0.22, [("FORM", 0.0, 0), ("pop", 0.05, 0.5), ("SIT", ("e", 0.05), 0), ("STAR", ("e", 0.3), 0), ("deflate", ("e", 0.3), 0.4)]), ("c1_nar", 1.0, []), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C1=[("c1_h", 0.22, []), ("c1_o", 0.22, [("FORM", 0.0, 0), ("pop", 0.05, 0.5), ("SIT", ("e", 0.3), 0), ("STAR", ("e", 0.5), 0), ("deflate", ("e", 0.5), 0.4)]), ("c1_nar", 1.0, []), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
         C2=[("c2_h", 0.4, []), ("c2_o", 2.3, [("THINK", -2.25, 0)] + TICKS(2.2) + [("LOOK", -0.9, 0)]),
             ("c2_h2", 0.45, [("BREAD", -0.4, 0), ("pop", -0.35, 0.6), ("ROOM", ("e", 0.35), 0), ("whoosh", ("e", 0.3), 0.5), ("tada", ("e", 0.4), 0.6), ("munch", ("e", 0.85), 0.7), ("STAR", ("e", 0.35), 0)]), ("c2_nar", 1.65, [])],
     )
@@ -825,14 +825,14 @@ for L in ["A1", "A2", "B1", "B2", "C1", "C2"]:
             if n == "thud" and lid == "c2_x3": ev["plop"] = round(tt, 3)
             if n == "gulp" or n == "nope": ev["ins"] = round(c - 1.6, 3)
         ev[lid] = c; c = say(lid, c); prev_end = c
-    t = c + (0.42 if EPN == "mic" else 0.55)
+    t = c + (0.42 if EPN == "mic" else 1.55 if (EPN == "salo" and L == "C2") else 0.55)
     if EPN == "lift": cue("doors", t - 0.45, 0.5)
     scenes.append(dict(id=L, s=round(s, 3), e=round(t, 3), ev={k: (round(v, 3) if not isinstance(v, list) else v) for k, v in ev.items()}))
 s = t
 cue("whoosh", s, 0.8); cue("impact", s + 0.3, 0.8)
 e = say("outro", s + 0.8)
 for k in range(6): cue("pop", s + 1.1 + 0.15 * k, 0.5)
-t = e + 1.3
+t = e + (0.3 if EPN == "salo" else 1.3)
 scenes.append(dict(id="outro", s=round(s, 3), e=round(t, 3)))
 
 for sp in speech:
@@ -853,7 +853,7 @@ for sp in speech:
             t0 = cc / tot * sp["d"]; cc += a; wt.append([w, round(t0, 3), round(cc / tot * sp["d"], 3)]); cc += p_
     sp["words"] = wt
 cfg = {k: E.get(k) for k in ["title", "hook_title", "stamp", "next", "cards"]}
-for k in ["camera", "chunks"]:   # new episodes only: camera mode ("hard_cut") and long lines split into meaning chunks
+for k in ["camera", "chunks", "card_fade"]:   # new episodes only: camera mode ("hard_cut") and long lines split into meaning chunks
     if E.get(k): cfg[k] = E[k]
 cfg["setting"] = EPN
 json.dump(dict(fps=FPS, dur=round(t, 3), ep=EPN, cfg=cfg, scenes=scenes, speech=speech, sfx=sfx), open(f"eps/{EPN}/timeline.json", "w"), ensure_ascii=False)

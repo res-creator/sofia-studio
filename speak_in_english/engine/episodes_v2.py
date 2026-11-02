@@ -2690,7 +2690,7 @@ EP["salo"] = dict(
     title='Таможня нашла сало',
     hook_title=[['ТАМОЖНЯ НАШЛА', 'd'], ['САЛО', 'p'], ['КАК ОБЪЯСНИТЬ?', 'd']],
     stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
-    camera="hard_cut",
+    camera="hard_cut", card_fade=True,
     chunks={'c2_h': [['Officer, this humble delicacy', 'Офицер, этот скромный деликатес'], ['has sustained generations of my family', 'кормил поколения моей семьи'], ['through winters you cannot imagine.', 'в такие зимы, которые вам и не снились.'], ['To confiscate it would be a culinary tragedy.', 'Конфисковать его — кулинарная трагедия.']]},
     lines=[
         ('hook_o', 'customs', '[suspiciously] Madam... what IS this?', 'Мадам… что ЭТО такое?'),
@@ -2721,7 +2721,7 @@ EP["salo"] = dict(
         ('outro', 'nar', 'А как бы ты объяснил иностранцу, что такое сало? Пиши в комментарии! И подпишись, впереди ещё много новых серий.', ''),
     ],
     cards={'A1': {'type': 'meter', 'label': 'FOOD! PIG! GOOD!', 'ok': False, 'note': 'СВИНЬЯ ✗ подозревается', 'bars': [['ГРАММАТИКА', 0]]},
-           'A2': {'type': 'swap', 'bad': 'My mum make it.', 'bad_note': 'прошлое: make → made', 'good': ['My mum', 'made it.']},
+           'A2': {'type': 'swap', 'bad': 'My mum make it.', 'bad_note': 'в прошлом — made', 'good': ['My mum', 'made it.']},
            'B1': {'type': 'eq', 'en': "It's like…, but…", 'ru': '= Это как…, только…', 'note': "It's like bacon, but saltier.", 'stamp': ['ГЛАВНЫЙ', 'ПРИЁМ']},
            'B2': {'type': 'big', 'en': 'swear by', 'ru': 'очень доверять', 'ex': ['My mum swears by it.', 'мама в это свято верит.'], 'icon': 'bell'},
            'C1': {'type': 'eq', 'en': 'Would it help if I declared it?', 'ru': '= Поможет, если я задекларирую?', 'ex': [['I completely understand the rules.', '= я полностью понимаю правила.']]},

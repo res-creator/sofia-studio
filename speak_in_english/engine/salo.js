@@ -122,12 +122,12 @@ function table(c, t, L) {
   // table top + front
   paint(c, q => { q.m(TX0, CT); q.l(TX1, CT); q.l(TX1, CT + 60); q.l(TX0, CT + 60); q.z(); }, '#D9DEE6', { sd: 6, hd: 3, lw: 4 });
   paint(c, q => { q.m(TX0 + 20, CT + 60); q.l(TX1 - 20, CT + 60); q.l(TX1 - 20, 0); q.l(TX0 + 20, 0); q.z(); }, '#56627A', { sd: 10, hd: 4, lw: 4 });
-  c.fillStyle = '#F2C14E'; rr(c, 170, CT + 130, 260, 70, 10); c.fill(); fitTxt(c, 'CUSTOMS', 300, CT + 166, 36, '#1F2A44', 240);
+  c.fillStyle = '#F2C14E'; rr(c, -190, CT + 110, 260, 70, 10); c.fill(); fitTxt(c, 'CUSTOMS', -60, CT + 146, 36, '#1F2A44', 240);
   // suitcase base with clothes (black bread + garlic hidden inside until C2)
   paint(c, q => { q.m(-40, CT - 130); q.l(410, CT - 130); q.l(400, CT); q.l(-30, CT); q.z(); }, '#4E8A5E', { sd: 8, hd: 4, lw: 4 });
   for (const [x, col] of [[20, '#EF7FAA'], [120, '#F2C14E'], [230, '#7FB0D8'], [320, '#FFFDF8']]) { c.fillStyle = col; c.beginPath(); c.ellipse(x + 30, CT - 132, 60, 26, 0, Math.PI, TAU); c.fill(); }
   // evidence pile
-  if (!before(L, 'B1')) scaleDraw(c, PILEX, onScale(t, L) ? (L === 'B1' && t < ev('B1', 'scale') + 0.35 ? (Math.min(1, (t - ev('B1', 'scale')) / 0.35) * 1.0).toFixed(1) + ' KG' : '1.0 KG') : '0.0 KG');
+  if (onScale(t, L)) { const k = L === 'B1' ? eBack(clamp((t - ev('B1', 'scale')) / 0.25), 2) : 1; c.save(); c.translate(PILEX, CT); c.scale(k, k); c.translate(-PILEX, -CT); scaleDraw(c, PILEX, '1.0 KG'); c.restore(); }
   else if (L === 'A2' || L === 'A1') {}
   if (saloOnTable(t, L) && !(L === 'C2' && t > ev('C2', 'room'))) { c.save(); c.translate(PILEX, CT - (onScale(t, L) ? 70 : 0) - 34); saloDraw(c, 0.75); c.restore(); }
   if (!before(L, 'A2') && (L !== 'A2' || t > ev('A2', 'jar'))) { const k = L === 'A2' ? eBack(clamp((t - ev('A2', 'jar')) / 0.3), 2) : 1; c.save(); c.translate(JARX, CT); c.scale(k, k); jarDraw(c, 0.95); c.restore(); }
@@ -149,10 +149,10 @@ function drawDog(c, t, L) { const st = dogState(t, L); if (!st) return;
 const gest = (st, g, who, t, side, base) => { const sp = TL.speech.find(s => s.who === who && t >= s.t && t < s.t + s.d); if (sp) { const u = (t - sp.t) * 4.5; st[side < 0 ? 'armL' : 'armR'] = reach(g, side, side * (g.sw * 1.5 + Math.sin(u) * 20), g.ySh + base + Math.cos(u) * 20); } };
 const hang = (g, s) => reach(g, s, s * g.sw * 0.8, g.ySh + 330);
 const chest = (g, s, k = 0.6) => reach(g, s, s * g.sw * k, g.ySh + 230);
-const cheeks = (st, g) => { st.headFirst = true; st.armL = reach(g, -1, -g.hw * 0.75, g.headY + g.hh * 0.7); st.armR = reach(g, 1, g.hw * 0.75, g.headY + g.hh * 0.7); };
+const cheeks = (st, g) => { st.armL = reach(g, -1, -g.sw * 1.7, g.ySh + 90, { planar: true }); st.armR = reach(g, 1, g.sw * 1.7, g.ySh + 90, { planar: true }); };
 function herState(t, L) { const g = G.her, e = k => ev(L, k), st = { t, talk: talk('her', t), mood: 'neutral', turn: 0.3, look: 0.7, armL: hang(g, -1), armR: hang(g, 1), items: {} };
   if (L === 'hook') { st.mood = 'shock'; st.blink = 0; cheeks(st, g); }
-  if (L === 'A1') { st.mood = 'happy'; if (speaking('a1_h', t, 0.05, 0.3)) { const w = Math.sin(t * 12) * 10; st.headFirst = true; st.armR = reach(g, 1, g.hw * 0.15, g.headY + g.hh * 0.42, { fist: true }); st.armL = reach(g, -1, -g.hw * 1.25, g.headY - g.hh * 0.45 + w * 3); }   // piggy snout with both fists
+  if (L === 'A1') { st.mood = 'happy'; if (speaking('a1_h', t, 0.05, 0.3)) { const w = Math.sin(t * 12) * 10; st.headFirst = true; st.armR = reach(g, 1, g.hw * 0.15, g.headY + g.hh * 0.42 + w * 0.3, { fist: true }); st.armL = reach(g, -1, -g.sw * 1.5, g.ySh + 200 + w * 2); }   // piggy snout with both fists
     if (t > SP.a1_o.t + 0.3) { st.mood = 'worried'; st.blink = 0; st.armL = chest(g, -1); st.armR = chest(g, 1); } }
   if (L === 'A2') { st.mood = 'happy'; if (speaking('a2_h', t, 0.05, 0.3)) gest(st, g, 'her', t, -1, 160); if (t > e('susp') - 0.05) { st.mood = 'worried'; st.blink = 0; } }
   if (L === 'B1') { st.mood = 'neutral'; if (speaking('b1_h', t, 0.05, 0.3)) { st.mood = 'happy'; gest(st, g, 'her', t, -1, 160); } if (t > e('sniff') - 0.05) { st.mood = 'skeptical'; } if (t > e('scale')) st.mood = 'worried'; }
@@ -167,7 +167,7 @@ function ofcState(t, L) { const g = G.customs, e = k => ev(L, k), st = { t, talk
   const holdOut = () => { st.armL = reach(g, -1, -g.sw * 1.8, g.ySh + 20); st.items.L = saloHand(1.2); };
   if (L === 'hook') { st.mood = 'skeptical'; holdOut(); st.lookY = 0; }
   if (L === 'A1') { st.mood = 'skeptical'; if (!saloOnTable(t, L)) holdOut(); if (t > SP.a1_o.t - 0.05) st.mood = 'shock';
-    if (t > e('radio') - 0.05) { st.items.R = radioItem; st.armR = reach(g, 1, g.hw * 1.0, g.headY + g.hh * 0.55); } if (t > e('dog')) st.mood = 'skeptical'; }
+    if (t > e('radio') - 0.05) { st.items.R = radioItem; st.armR = reach(g, 1, g.sw * 0.45, g.ySh + 120); st.lookY = 0.35; } if (t > e('dog')) st.mood = 'skeptical'; }
   if (L === 'A2') { st.mood = 'skeptical'; st.lookY = 0.35; st.items = { L: clipItem(t, t > e('susp')) }; st.armL = reach(g, -1, -g.sw * 0.4, g.ySh + 240);
     st.armR = reach(g, 1, g.sw * 0.1 + Math.sin(t * 16) * 18, g.ySh + 190 + (t > e('susp') - 0.15 && t < e('susp') + 0.1 ? -120 : 0));
     if (t > e('jar') - 0.25) { st.items = {}; st.armL = hang(g, -1); st.armR = reach(g, 1, JARX - BX, CT - 40); st.lookY = 0.3; } if (t > e('jar') + 0.3) st.armR = hang(g, 1); }
@@ -217,12 +217,13 @@ const fy = (hy, z, sy = 900) => hy + (960 - sy) / z;
 const SH = { COVER: S(160, fy((hHY + dHY) / 2, 0.66, 1160), 0.66, 'cover'), WIDE: S(250, -1000, 0.5, 'wide'), CARD: S(230, fy(dHY, 0.66, 980), 0.66, 'card'), TWO: S(230, fy(dHY, 0.72, 860), 0.72, 'two'),
   HER: S(HX + 40, fy(hHY, 1.0), 1.0, 'her'), HER_H: S(HX + 40, fy(hHY, 1.35, 1180), 1.35, 'her'),
   OFC: S(BX - 20, fy(dHY, 1.0), 1.0, 'customs'), OFC_CU: S(BX - 20, fy(dHY, 1.6, 960), 1.6, 'customs'), OFC_SALO: S(BX - 240, fy(dHY, 1.05, 930), 1.05, 'customs'),
-  OFC_DOG: S(BX + 180, fy(dHY, 0.85, 860), 0.85, 'customs'), DOG_CU: S(DOGX - 40, CT - 220, 1.5, 'customs'), PILE: S(PILEX + 60, CT - 260, 1.25, 'customs'),
+  OFC_DOG: S(BX + 180, fy(dHY, 0.85, 860), 0.85, 'customs'), DOG_CU: S(DOGX - 40, CT - 220, 1.5, 'customs'), PILE: S(PILEX + 60, CT - 260, 1.25, 'customs'), SUITCASE: S(190, CT - 330, 1.45, 'customs'),
   ROOM: S(RX - 20, fy(dHY, 0.9, 1000), 0.9, 'room'), ROOM_CARD: S(RX - 20, fy(dHY, 0.82, 1130), 0.82, 'room') };
 const C2Z = [1.0, 1.2, 1.4, 1.6].map(z => S(HX + 40, fy(hHY, z, 940), z, 'her'));   // "slow push-in" during the C2 speech: one closer shot per chunk
 function shotHard(t) { const sc = sceneAt(t), L = sc.id, f = s => ({ ...s, force: true }), e = k => ev(L, k); if (L === 'outro') return SH.WIDE;
   const sp = id => speaking(id, t, 0.1, 0.15);
-  if (L === 'hook') { if (t < hev('cu')) return SH.COVER; if (t < hev('shock')) return f(SH.OFC_SALO); if (t < hev('dog')) return f(SH.HER_H); if (t < hev('cover')) return f(SH.DOG_CU); return f(SH.COVER); }
+  if (L === 'hook') { if (t < hev('cu')) return SH.COVER; if (t < hev('shock')) return f(SH.OFC_SALO); if (t < hev('dog')) return f(SH.HER_H); if (t < hev('cover')) return f(SH.DOG_CU);
+    const h = t - hev('cover'); if (h < 2.2) return f(SH.COVER); if (h < 3.7) return f(SH.SUITCASE); if (h < 5.8) return f(SH.COVER); if (h < 7.0) return f(SH.DOG_CU); if (h < 8.4) return f(SH.OFC_SALO); return f(SH.COVER); }
   const u = t - sc.s, l = L.toLowerCase(), nar = SP[l + '_nar'];
   if (u < 1.15) return f(SH.WIDE);
   if (L === 'C2' && t > e('room') - 0.03) return f(t >= nar.t - 0.1 ? SH.ROOM_CARD : SH.ROOM);
@@ -276,12 +277,12 @@ function meter(c, t, sc) { const L = sc.id; if (L === 'hook' || L === 'outro') r
   c.restore(); }
 function renderFrame(c, t) {
   c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; const sc = sceneAt(t), L = sc.id;
-  if (L === 'outro') { const rows = [['A1', 'Food! Pig! Good!'], ['B1', "It's like bacon, but saltier."], ['B2', 'My mum swears by it.'], ['C1', 'Would it help if I declared it?']];
-    K.outro(c, t, { q: ['А КАК БЫ ТЫ ОБЪЯСНИЛ,', 'ЧТО ТАКОЕ САЛО?'], rows, cta: ['ОТПРАВЬ ТОМУ, КТО ВЕЗЁТ', 'САЛО ЧЕРЕЗ ГРАНИЦУ'], heroX: 190, heroS: 0.42,
+  if (L === 'outro') { const rows = [['A1', 'Food! Pig! Good!'], ['A2', 'My mum made it.'], ['B1', "It's like bacon, but saltier."], ['B2', 'My mum swears by it.'], ['C1', 'Would it help if I declared it?'], ['C2', 'delicacy, sustain']];
+    K.outro(c, t, { q: ['А КАК БЫ ТЫ ОБЪЯСНИЛ,', 'ЧТО ТАКОЕ САЛО?'], rows, cta: ['ОТПРАВЬ ТОМУ, КТО ВЕЗЁТ', 'САЛО ЧЕРЕЗ ГРАНИЦУ'], heroX: 190, heroS: 0.42, rowH: 95, boxY: 790,
       hero: (cc, tt) => { const g = G.her, gd = G.customs; K.put(cc, OFC, { t: tt, mood: 'happy', laugh: true, turn: -0.2, look: -0.4, armL: reach(gd, -1, -gd.sw * 2.0, gd.ySh - 330 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(gd, 1), items: { R: sandItem }, afterTorso: cc2 => vest(cc2, gd), front: (cc2, a) => capOn(cc2, a, gd) }, 1500, 60);
         K.put(cc, HER, { t: tt, mood: 'happy', laugh: true, turn: 0, look: 0, armL: reach(g, -1, -g.sw * 2.0, g.ySh - 260 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(g, 1), items: {} }, 0, 0); } });
     // A1 phrase greyed out and struck through
-    const u = t - SC.outro.s, kk = P(u, 1.35, 1.7); if (kk > 0) { const bh = 140 + rows.length * 115, y = 740 - bh / 2 + 150; UI.textFit(c, 'Nun9', 46, rows[0][1], 740); const wd = c.measureText(rows[0][1]).width;
+    const u = t - SC.outro.s, kk = P(u, 1.35, 1.7); if (kk > 0) { const bh = 140 + rows.length * 95, y = 790 - bh / 2 + 150; UI.textFit(c, 'Nun9', 46, rows[0][1], 740); const wd = c.measureText(rows[0][1]).width;
       c.save(); c.globalAlpha = 0.55 * kk; c.fillStyle = C.white; c.fillRect(214, y - 34, wd + 16, 68); c.restore(); c.strokeStyle = C.red; c.lineWidth = 8; c.lineCap = 'round'; c.beginPath(); c.moveTo(212, y + 2); c.lineTo(212 + (wd + 16) * eOut(kk), y + 2); c.stroke(); }
     Hq.grain(c, W, HH, t, 0.05); UI.outroIntro(c, t); return; }
   const fr = Math.min(CAM.length - 1, Math.round(t * FPS)), cam = CAM[fr], sh = shake(t), tag = cam.tag || 'wide';
