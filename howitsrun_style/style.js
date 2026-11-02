@@ -106,13 +106,15 @@ function report(ctx, title, sub, lines, o = {}) {
   if (o.note) fitTxt(ctx, o.note, 0, h / 2 - 50, 30, '#6A6A68', w - 80, 'center', FONT.type);
   ctx.restore();
 }
-// the end-of-video question card (held >= 2 s, no voice): lines = [line1, line2(on red strip)], u = pop 0..1
+// the end-of-video question card (held >= 2 s, no voice): l1 = line or [lines], l2 on the red strip, u = pop 0..1, o.arrow: drawn arrow instead of the emoji
 function questionCard(ctx, t, l1, l2, u, o = {}) {
   if (u <= 0) return; ctx.save(); ctx.translate(W / 2, o.y ?? 520); ctx.rotate(-0.02); ctx.scale(u, u);
   CL.cutout(ctx, () => rr(ctx, -470, -230, 940, 460, 30), PAL.cream, { elev: 2.2 });
   const ls = Array.isArray(l1) ? l1 : [l1]; ls.forEach((s, i) => fitTxt(ctx, s, 0, -120 + i * 86, 74, INK, 860));
   ctx.save(); ctx.translate(0, -120 + ls.length * 86 + 20); ctx.rotate(0.02); CL.cutout(ctx, () => rr(ctx, -410, -70, 820, 120, 16), C.red, { elev: 1.4 }); fitTxt(ctx, l2, 0, 22, 76, PAL.cream, 760); ctx.restore();
-  ctx.font = `110px ${FONT.emoji}`; ctx.textAlign = 'center'; ctx.fillText('👇', 0, 215 + Math.sin(t * 7) * 10);
+  const b = Math.sin(t * 7) * 10;
+  if (o.arrow) { ctx.save(); ctx.translate(0, 190 + b); CL.cutout(ctx, () => { ctx.beginPath(); ctx.moveTo(-34, -60); ctx.lineTo(34, -60); ctx.lineTo(34, 0); ctx.lineTo(80, 0); ctx.lineTo(0, 80); ctx.lineTo(-80, 0); ctx.lineTo(-34, 0); ctx.closePath(); }, C.yellow, { elev: 1.4 }); ctx.restore(); }   // a drawn paper arrow pointing at the comments
+  else { ctx.font = `110px ${FONT.emoji}`; ctx.textAlign = 'center'; ctx.fillText('👇', 0, 215 + b); }
   ctx.restore();
 }
 // paper texture over the whole frame (both reference episodes): multiply, alpha 0.26
