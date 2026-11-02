@@ -2681,3 +2681,50 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "orderforme" (TikTok, hard_cut). ElevenLabs only; narrator Sarah, heroine = Jessica, Mark = Will (CAST kevin, am_michael), waiter Reggie = George (CAST cutter/customs), tip = Bella.
+CAST.update({
+    "date": dict(voice="am_michael", speed=1.0, lang="en-gb", el="bIHbv24MWmeRgasZH58o"),     # orderforme: Mark, her date (Will)
+    "waiter": dict(voice="bm_george", speed=0.95, lang="en-gb", el="JBFqnCBsd6RMkjVDRZzb"),   # orderforme: Reggie the waiter (George)
+})
+EP["orderforme"] = dict(
+    title='Он заказал за тебя',
+    hook_title=[['ОН ЗАКАЗАЛ', 'd'], ['ЗА ТЕБЯ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut", card_fade=True,
+    chunks={'c2_h': [["I'll have your most magnificent burger", 'Мне ваш самый великолепный бургер'], ['with an indulgent amount of cheese.', 'с сыром от души.'], ['And the gentleman will have the salad, no dressing,', 'А джентльмену салат, без заправки,'], ['as he so wisely recommended.', 'как он так мудро посоветовал.']]},
+    lines=[
+        ('hook_m', 'date', "[confidently] She'll have the salad. No dressing.", 'Ей салат. Без заправки.'),
+        ('hook', 'nar', 'Первое свидание. Ты выбрала бургер, а он уже заказал тебе салат. Как сказать ему на английском? По одной фразе видно твой уровень. Проверим!', ''),
+        ('a1_h', 'her', '[urgently] No! Burger! Me!', 'Нет! Бургер! Я!'),
+        ('a1_w', 'waiter', '[politely] A burger... for you, sir?', 'Бургер… для вас, сэр?'),
+        ('a1_nar', 'nar', 'Три слова — и бургер уехал к нему.', ''),
+        ('a2_h', 'her', '[insistently] I want choose myself.', 'Я хочу выбирать сама.'),
+        ('a2_m', 'date', '[generously] Of course! Choose: salad or small salad?', 'Конечно! Выбирай: салат или маленький салат?'),
+        ('a2_nar', 'nar', 'Нужно «to»: want to choose. Правильно так:', ''),
+        ('a2_tip', 'tip', "I'd like to choose myself.", ''),
+        ('b1_h', 'her', "[politely] Actually, I'd like to order for myself, if that's okay.", 'Вообще-то, я бы хотела заказать сама, если можно.'),
+        ('b1_w', 'waiter', '[warmly] Of course, madam.', 'Конечно, мадам.'),
+        ('b1_m', 'date', "[laughing] She's joking.", 'Она шутит.'),
+        ('b1_nar', 'nar', 'Вежливо. Но он решил, что ты шутишь.', ''),
+        ('b2_h', 'her', "[firmly] Please don't put words in my mouth.", 'Пожалуйста, не говори за меня.'),
+        ('b2_m', 'date', '[cheerfully] Here, try this.', 'Вот, попробуй.'),
+        ('b2_nar', 'nar', 'Don\'t put words in my mouth — «не говори за меня». А он положил ей в рот хлебную палочку. Запоминай:', ''),
+        ('b2_tip', 'tip', "Don't put words in my mouth.", ''),
+        ('c1_h', 'her', "[calmly] I know you're trying to be nice, but I'd rather choose my own food.", 'Я знаю, ты хочешь как лучше, но я бы предпочла выбрать еду сама.'),
+        ('c1_m', 'date', '[sheepishly] ...Fair enough. Sorry.', '…Справедливо. Прости.'),
+        ('c1_nar', 'nar', 'Приём: признай добрые намерения и скажи, чего хочешь ты. Запоминай:', ''),
+        ('c1_tip', 'tip', "I'd rather choose my own food.", ''),
+        ('c2_h', 'her', "[grandly] I'll have your most magnificent burger with an indulgent amount of cheese. And the gentleman will have the salad, no dressing, as he so wisely recommended.", 'Мне ваш самый великолепный бургер с сыром от души. А джентльмену салат, без заправки, как он так мудро посоветовал.'),
+        ('c2_m', 'date', '[quietly] ...Can I have half?', '…Можно половинку?'),
+        ('c2_h2', 'her', '[sweetly] No.', 'Нет.'),
+        ('c2_nar', 'nar', 'Мораль: заказываешь за других — получишь их заказ.', ''),
+        ('outro', 'nar', 'Когда парень заказывает за тебя — это мило или нет? Пиши в комментарии! И подпишись, впереди ещё много новых серий.', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'БУРГЕР', 'ok': False, 'note': 'у него'},
+           'A2': {'type': 'swap', 'bad': 'I want choose myself.', 'bad_note': 'после want нужно to', 'good': ["I'd like to", 'choose myself.']},
+           'B1': {'type': 'eq', 'en': "I'd like to order for myself.", 'ru': '= Я сама сделаю заказ.', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': "Don't put words in my mouth", 'ru': 'не говори за меня', 'ex': ["Don't put words in my mouth.", 'не говори за меня.'], 'icon': 'bell'},
+           'C1': {'type': 'eq', 'en': "I'd rather choose my own food.", 'ru': '= Я бы предпочла выбрать сама.', 'ex': [["I know you're trying to be nice, but…", '= знаю, ты хочешь как лучше, но…']]},
+           'C2': {'type': 'c2', 'vocab': [['magnificent', '= великолепный'], ['indulgent', '= щедрый, «от души»']], 'moral': ['ЗАКАЗЫВАЕШЬ ЗА ДРУГИХ —', 'ПОЛУЧИШЬ', 'ИХ ЗАКАЗ'], 'moral_at': 0.35}},
+)
