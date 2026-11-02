@@ -2681,3 +2681,49 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "gymcoach" (TikTok, hard_cut). ElevenLabs only; narrator Sarah, heroine = Jessica, Mike = Sam (CAST brick/runner, am_onyx), Chloe = Matilda (CAST jess), tip = Bella.
+CAST.update({
+    "lifter": dict(voice="am_onyx", speed=1.0, lang="en-gb", el="SOYHLrjzK2X1ezoPC6cr"),      # gymcoach: Mike (BEAST MODE)
+    "coach": dict(voice="af_jessica", speed=1.0, lang="en-gb", el="XrExE9yKIg1WjnnlVkGX"),    # gymcoach: Chloe the trainer (Matilda; Jessica is the heroine)
+})
+EP["gymcoach"] = dict(
+    title='Незнакомец учит качаться',
+    hook_title=[['НЕЗНАКОМЕЦ УЧИТ', 'd'], ['КАЧАТЬСЯ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut", card_fade=True,
+    chunks={'c2_c': [["Mike... she's the head coach.", 'Майк… она главный тренер.'], ["She's running your class in five minutes.", 'Через пять минут она ведёт твою группу.']]},
+    lines=[
+        ('hook_m', 'lifter', "[smugly] Sweetheart, you're doing it all wrong. Let me show you.", 'Милая, ты всё делаешь неправильно. Дай покажу.'),
+        ('hook', 'nar', 'Ты спокойно тренируешься, а незнакомец решил, что ты всё делаешь не так. Как ответить на английском? По одной фразе видно твой уровень. Проверим!', ''),
+        ('a1_h', 'her', '[annoyed] No! I know!', 'Нет! Я знаю!'),
+        ('a1_m', 'lifter', '[smugly] You know? Then why only one plate?', 'Знаешь? Тогда почему один блин?'),
+        ('a1_nar', 'nar', 'Два слова — и он решил, что тебе нужно больше веса.', ''),
+        ('a2_h', 'her', '[irritated] I am do this five years.', 'Я есть делать это пять лет.'),
+        ('a2_m', 'lifter', '[shocked] Five years? And still doing it wrong?', 'Пять лет? И всё ещё неправильно?'),
+        ('a2_nar', 'nar', 'Не «I am do», а «I\'ve been doing». Правильно так:', ''),
+        ('a2_tip', 'tip', "I've been doing this for five years.", ''),
+        ('b1_h', 'her', "[firmly] Thanks, but I'm fine. I didn't ask for help.", 'Спасибо, но я справляюсь. Я не просила помощи.'),
+        ('b1_m', 'lifter', "[proudly] That's why I'm helping for free!", 'Поэтому и помогаю бесплатно!'),
+        ('b1_nar', 'nar', 'Вежливо и чётко. Но у него уже презентация.', ''),
+        ('b2_h', 'her', '[coolly] Thanks, but I know the ropes.', 'Спасибо, но я знаю, что делаю.'),
+        ('b2_m', 'lifter', '[excited] Ropes? Great cardio!', 'Канаты? Отличное кардио!'),
+        ('b2_nar', 'nar', 'Know the ropes — «знаю, что делаю». А он принёс канаты. Запоминай:', ''),
+        ('b2_tip', 'tip', 'I know the ropes.', ''),
+        ('c1_h', 'her', "[calmly] I appreciate the advice, but I'd prefer to focus on my own workout.", 'Ценю совет, но я бы предпочла сосредоточиться на своей тренировке.'),
+        ('c1_m', 'lifter', '[raising his hands] Fair enough. Respect.', 'Справедливо. Уважаю.'),
+        ('c1_nar', 'nar', 'Приём: спасибо плюс граница. Без ссоры. Запоминай:', ''),
+        ('c1_tip', 'tip', "I'd prefer to focus on my own workout.", ''),
+        ('c2_m', 'lifter', "[indignant] Chloe, tell her she's doing it wrong!", 'Хлоя, скажи ей, что она всё делает неправильно!'),
+        ('c2_c', 'coach', "[deadpan] Mike... she's the head coach. She's running your class in five minutes.", 'Майк… она главный тренер. Через пять минут она ведёт твою группу.'),
+        ('c2_h', 'her', '[commanding] Mike. Fifty burpees. Form check.', 'Майк. Пятьдесят бёрпи. Проверка техники.'),
+        ('c2_nar', 'nar', 'Мораль: прежде чем учить — проверь бейдж.', ''),
+        ('outro', 'nar', 'А тебя учили в зале без спроса? Пиши в комментарии! И подпишись, впереди ещё много новых серий.', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'ВЕС', 'ok': False, 'note': '+20 кг'},
+           'A2': {'type': 'swap', 'bad': 'I am do this five years.', 'bad_note': 'нужно: have been doing', 'good': ["I've been doing this", 'for five years.']},
+           'B1': {'type': 'eq', 'en': "I didn't ask for help.", 'ru': '= Я не просила помощи.', 'note': "Thanks, but I'm fine.", 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'know the ropes', 'ru': 'знать, что делаешь', 'ex': ['I know the ropes.', 'я знаю, что делаю.'], 'icon': 'bell'},
+           'C1': {'type': 'eq', 'en': "I'd prefer to focus on my own workout.", 'ru': '= Я бы предпочла заниматься своей тренировкой.', 'ex': [['I appreciate the advice, but…', '= ценю совет, но…']]},
+           'C2': {'type': 'c2', 'vocab': [['head coach', '= главный тренер'], ['form check', '= проверка техники']], 'moral': ['ПРЕЖДЕ ЧЕМ УЧИТЬ —', 'ПРОВЕРЬ', 'БЕЙДЖ'], 'moral_at': 0.35}},
+)
