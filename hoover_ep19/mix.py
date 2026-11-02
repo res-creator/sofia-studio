@@ -156,17 +156,20 @@ def bar(t0, k, prog=MAJ, drums=2, arp=True, lead=False, g=1.0):
     if lead:
         for i, n in enumerate([72, None, 74, 76, None, 74, 72, None]):
             if n: put(marimba(NOTE(n)), t0 + i * BEAT / 2, 0.13 * g)
-def section(t0, t1, **kw):
-    k = 0; t = t0
-    while t < t1 - 0.01: bar(t, k, **kw); t += BAR; k += 1
+# ONE bar grid for the whole video (fix: sections used to restart their own bars off the grid, so the last bar of one section
+# overlapped the first bar of the next — two tunes at once). Each 2 s bar takes the settings of the section it starts in.
 M = MU
-section(B0, M['deal'], prog=MAJ, drums=2, arp=True, g=0.6)                                        # hook: buy a vacuum, fly for free
-section(M['deal'], M['math'], prog=MAJ, drums=2, arp=True, lead=True, g=0.62)                      # the offer, New York, Orlando
-section(M['math'], M['chaos'], prog=MAJ, drums=1, arp=True, g=0.58)                                # £119 vs the tickets, 200,000 claims
-section(M['chaos'], M['fallout'], prog=MIN, drums=2, arp=True, g=0.6)                              # agents swamped, Iowa
-section(M['fallout'], M['twist'], prog=MIN, drums=1, arp=True, g=0.58)                             # charters, firings, $60m, sold
-section(M['twist'], M['hit'], prog=MAJ, drums=1, arp=True, lead=True, g=0.58)                      # the twist
-section(M['hit'], M['end'], prog=MAJ, drums=0, arp=True, g=0.4)                                    # the question card
+SECTIONS = [(B0, dict(prog=MAJ, drums=2, arp=True, g=0.6)),                    # hook: buy a vacuum, fly for free
+            (M['deal'], dict(prog=MAJ, drums=2, arp=True, lead=True, g=0.62)),  # the offer, New York, Orlando
+            (M['math'], dict(prog=MAJ, drums=1, arp=True, g=0.58)),             # £119 vs the tickets, 200,000 claims
+            (M['chaos'], dict(prog=MIN, drums=2, arp=True, g=0.6)),             # agents swamped, Iowa
+            (M['fallout'], dict(prog=MIN, drums=1, arp=True, g=0.58)),          # charters, firings, $60m, sold
+            (M['twist'], dict(prog=MAJ, drums=1, arp=True, lead=True, g=0.58)), # the twist
+            (M['hit'], dict(prog=MAJ, drums=0, arp=True, g=0.4))]               # the question card
+k = 0; tb = B0
+while tb < M['end'] - 0.01:
+    kw = [s for s in SECTIONS if s[0] <= tb + 0.25][-1][1]   # a section boundary within a quarter bar snaps to that bar
+    bar(tb, k, **kw); tb += BAR; k += 1
 fade = np.ones(N); fs = int((CU['T'] - 0.12) * SR); fade[fs:] = np.linspace(1, 0, N - fs)
 fx = mix * 0.3   # owner's note: effects must sit clearly under the voice
 vo = np.zeros(N)

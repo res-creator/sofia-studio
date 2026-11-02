@@ -214,12 +214,12 @@ function frame(ctx, t, o = {}) {
 
 // ---------- sound cues (for mix.py) ----------
 function cues() {
-  const c = [['jet', 0.0, 2.2], ['slam', 0.0, 2.0], ['pop', 0.1, 1.2], ['pop', tAmerica - 0.1, 0.5]];
+  const c = [['slam', 0.0, 2.0], ['ding', 0.02, 1.4], ['pop', 0.1, 1.2], ['pop', tAmerica - 0.1, 0.5]];
   c.push(['cut', Z.s02 - 0.12, 0.35], ['pop', tSpend - 0.05, 0.5], ['pop', tFlights2 - 0.05, 0.4], ['flip', tNY - 0.15, 0.6], ['pop', tNY - 0.05, 0.45], ['pop', tOrl - 0.05, 0.45]);
   c.push(['cut', Z.s03 - 0.12, 0.35], ['tag', t119 - 0.05, 0.5], ['whoosh', tTickets - 0.2, 0.4], ['thump', tLot + 0.1, 0.7], ['clink', tLot + 0.15, 0.5]);
   c.push(['cut', Z.s04 - 0.12, 0.35], ['kaching', Z.s04 + 0.2, 0.5], ['cut', tBy - 0.12, 0.35]); for (let i = 0; i < 14; i++) c.push(['paper', tBy + i * 0.15, 0.4]); c.push(['stamp', t200 + 0.15, 0.8]);
-  c.push(['cut', Z.s05 - 0.12, 0.35], ['ring', Z.s05, 0.5], ['ring', Z.s05 + 0.9, 0.4], ['cut', tOne - 0.12, 0.35], ['applause', tOne, 0.25], ['jet', tIowa - 0.2, 0.4], ['pop', tConf, 0.4]);
-  c.push(['cut', Z.s06 - 0.12, 0.35], ['jet', Z.s06, 0.5], ['cut', tFired - 0.12, 0.35]); for (let i = 0; i < 3; i++) c.push(['scratch', tFired + i * 0.28, 0.5]); c.push(['steps', tFired + 0.2, 0.5]);
+  c.push(['cut', Z.s05 - 0.12, 0.35], ['ring', Z.s05, 0.5], ['ring', Z.s05 + 0.9, 0.4], ['cut', tOne - 0.12, 0.35], ['applause', tOne, 0.25], ['whoosh', tIowa - 0.2, 0.3], ['pop', tConf, 0.4]);
+  c.push(['cut', Z.s06 - 0.12, 0.35], ['rise', Z.s06, 0.4], ['cut', tFired - 0.12, 0.35]); for (let i = 0; i < 3; i++) c.push(['scratch', tFired + i * 0.28, 0.5]); c.push(['steps', tFired + 0.2, 0.5]);
   c.push(['cut', tAnd6 - 0.12, 0.35], ['stamp', tAnd6 + 0.1, 0.6], ['stamp', t60 + 0.1, 0.9]);
   c.push(['cut', Z.s07 - 0.12, 0.35], ['slam', tSold + 0.1, 0.6], ['cut', Z.s08 - 0.12, 0.35], ['pop', Z.s08, 0.4]);
   c.push(['cut', Z.s09 - 0.12, 0.35], ['whoosh', tVac9 - 0.1, 0.5], ['sparkle', tGet9, 0.5], ['cut', tEnd, 0.4], ['pop', tEnd + 0.05, 0.6], ['blip', tEnd + 0.4, 0.4]);

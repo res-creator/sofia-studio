@@ -112,6 +112,11 @@ curl -sS -X POST https://api.elevenlabs.io/v1/sound-generation -H "xi-api-key: p
 ```
 then STT the clip alone to confirm it reads as intended (e.g. "[laughs]").
 
+**Music: one bar grid for the whole video** (copy `hoover_ep19/mix.py`: a `SECTIONS` list, every 2 s bar takes the settings of the section
+it starts in). The older `section(t0, t1)` loop in tp_ep12 / icecream_ep13 / pudding_ep18 restarts bars off the grid at each section, so the
+last bar of one part overlaps the next — it sounds like two tunes at once (owner noticed it in ep 19 at 7 s). **No noise-based SFX at 0.0 s**
+(`jet`, `rumble`, `tvon` hiss): start with a clean hit (`slam`, `ding`, `pop`).
+
 ## 7. Build (background) and QC — all must pass before "done"
 ```bash
 sh <folder>/build.sh > <folder>/build.log 2>&1          # run_in_background; ~2–4 min
