@@ -128,7 +128,7 @@ sh <folder>/build.sh > <folder>/build.log 2>&1          # run_in_background; ~2�
 2. The 8 rules: story spine with the money twist, frame 0 = absurd picture + 3–5 word conflict, line 1 = the strangest fact,
    sound at 0.0 s (`ffmpeg -i out.mp4 -t 0.3 -af volumedetect -f null -` shows a non-silent max), motion in the first 0.5 s,
    length 35–60 s, the question card held ≥ 2 s with no voice at the end, 6 carousel PNGs.
-3. `ffprobe` (1080x1920, 30 fps, length), `blackdetect` = 0, loudness via `ebur128` (episodes sit at ≈ −16 LUFS after the build's loudnorm).
+3. `ffprobe` (1080x1920, 30 fps, length), `blackdetect` = 0, loudness via `ebur128` = **−14 LUFS** (owner's rule): build.sh must end with `sh ../howitsrun_style/master.sh mix.wav _video.mp4 <out>.mp4 "$T"` (compressor + limiter + two-pass loudnorm; loudnorm alone lands at ≈ −16).
 4. `ELEVEN_API_KEYS=proxy python3 stt_check.py out.mp4` — the transcript must equal the script, with no extra words from SFX.
 5. Gaps between voice lines from `cues.json` + `vo/speech.json` (no gap > ~0.5 s).
 6. If only the audio changed, remux instead of re-rendering: copy the video stream to `_video.mp4` and run the mux part of `build.sh`.
