@@ -2,6 +2,7 @@ import React from 'react';
 import { AbsoluteFill, interpolate } from 'remotion';
 import map from '../data/map.json';
 import { C, FONT, appear, prog, Tag, Grain, Vignette, ws } from '../lib';
+import { toOld } from '../lib';
 
 // Same projection as tools/build_map.py (Web Mercator, km, origin = Boston)
 const R = 6378.137;
@@ -20,18 +21,21 @@ const roadW: Record<number, number> = { 3: 3.2, 2: 1.8, 1: 0.9 };
 const NELayer = React.memo(({ hiMA }: { hiMA: number }) => (
   <g>
     {map.states.map((s: any) => (
-      <path key={s.name} d={s.d} fill={s.name === 'Massachusetts' && hiMA > 0.01 ? `rgba(199,122,26,${0.22 * hiMA})` : s.country === 'CAN' ? '#141517' : '#1B1C1F'}
-        stroke={s.name === 'Massachusetts' ? `rgba(199,122,26,${0.25 + 0.75 * hiMA})` : '#4A4B50'} strokeWidth={s.name === 'Massachusetts' ? 2 : 1.1} vectorEffect="non-scaling-stroke" />
+      <path key={s.name} d={s.d} fill={s.name === 'Massachusetts' ? `rgb(${242 - 8 * hiMA},${235 - 34 * hiMA},${221 - 64 * hiMA})` : s.country === 'CAN' ? '#ECE6DA' : '#F2EBDD'}
+        stroke={s.name === 'Massachusetts' ? `rgba(199,122,26,${0.25 + 0.75 * hiMA})` : '#B8AC97'} strokeWidth={s.name === 'Massachusetts' ? 2 : 1.1} vectorEffect="non-scaling-stroke" />
     ))}
   </g>
 ));
 const OSMLayer = React.memo(() => (
   <g>
-    <path d={map.ne_land} fill="#18191C" />
-    {map.ne_parks.map((p: any, i: number) => <path key={i} d={p.d} fill="#1C201D" />)}
-    <path d={map.ne_buildings} fill="#25262A" stroke="#2E2F34" strokeWidth={0.4} vectorEffect="non-scaling-stroke" />
+    <path d={map.ne_land} fill="#F2EBDD" />
+    {map.ne_parks.map((p: any, i: number) => <path key={i} d={p.d} fill="#D7E5C8" />)}
+    <path d={map.ne_buildings} fill="#E3D8C4" stroke="#D2C4AC" strokeWidth={0.5} vectorEffect="non-scaling-stroke" />
     {map.ne_roads.map((r: any, i: number) => (
-      <path key={i} d={r.d} fill="none" stroke={r.k === 3 ? '#4A4B51' : '#393A3F'} strokeWidth={roadW[r.k]} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+      <path key={'c' + i} d={r.d} fill="none" stroke="#CBBEA8" strokeWidth={roadW[r.k] + 1.6} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+    ))}
+    {map.ne_roads.map((r: any, i: number) => (
+      <path key={i} d={r.d} fill="none" stroke="#FFFFFF" strokeWidth={roadW[r.k]} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
     ))}
   </g>
 ));
@@ -39,7 +43,7 @@ const OSMLayer = React.memo(() => (
 const BaseMap: React.FC<{ cam: Cam; neO: number; osmO: number; hiMA?: number; children?: React.ReactNode }> = ({ cam, neO, osmO, hiMA = 0, children }) => {
   const k = 1920 / cam.w;
   return (
-    <svg width="1920" height="1080" style={{ position: 'absolute', inset: 0, background: '#0B0D10' }}>
+    <svg width="1920" height="1080" style={{ position: 'absolute', inset: 0, background: '#BCD8EA' }}>
       <g transform={`translate(960,540) scale(${k}) translate(${-cam.cx},${-cam.cy})`}>
         {neO > 0.001 && <g opacity={neO}><NELayer hiMA={hiMA} /></g>}
         {osmO > 0.001 && <g opacity={osmO}><OSMLayer /></g>}
@@ -51,7 +55,7 @@ const BaseMap: React.FC<{ cam: Cam; neO: number; osmO: number; hiMA?: number; ch
 
 const Label: React.FC<{ x: number; y: number; text: string; o: number; size?: number; color?: string; weight?: number; spacing?: number; anchor?: string }> = ({ x, y, text, o, size = 24, color = C.dim, weight = 600, spacing = 4, anchor = 'middle' }) => (
   <text x={x} y={y} textAnchor={anchor as any} fill={color} opacity={o} fontFamily={FONT} fontWeight={weight} fontSize={size} letterSpacing={spacing}
-    style={{ paintOrder: 'stroke', stroke: 'rgba(8,9,11,0.85)', strokeWidth: 6 } as any}>{text}</text>
+    style={{ paintOrder: 'stroke', stroke: 'rgba(255,255,255,0.92)', strokeWidth: 7 } as any}>{text}</text>
 );
 
 const lerp = (a: number, b: number, p: number) => a + (b - a) * p;
@@ -79,8 +83,8 @@ const Attribution: React.FC<{ extra?: string }> = ({ extra }) => (
 );
 
 // ---------------- Shot 1–3: date plate over the Northeast, zoom to Boston, then the North End
-export const MapIntro: React.FC<{ t: number; start: number }> = ({ t, start }) => {
-  const a = t + start;
+export const MapIntro: React.FC<{ t: number; start: number }> = ({ t, start: start0 }) => {
+  const start = toOld(start0); const a = toOld(t + start0);
   const keys: K[] = [
     [0, -71.6, 42.9, 1500],
     [6.2, -71.4, 42.7, 1250],
@@ -107,7 +111,7 @@ export const MapIntro: React.FC<{ t: number; start: number }> = ({ t, start }) =
   const [lx, ly] = toScreen(cam, cs[Math.floor(cs.length * 0.62)][0], cs[Math.floor(cs.length * 0.62)][1]);
   const tankP = appear(a, ws(28), 0.5);
   return (
-    <AbsoluteFill style={{ background: '#0B0D10' }}>
+    <AbsoluteFill style={{ background: '#BCD8EA' }}>
       <AbsoluteFill style={{ opacity: dimPlate }}>
         <BaseMap cam={cam} neO={neO} osmO={osmO} hiMA={hiMA} />
         <svg width="1920" height="1080" style={{ position: 'absolute', inset: 0 }}>
@@ -149,7 +153,7 @@ const DatePlate: React.FC<{ t: number }> = ({ t }) => {
   const parts = ['January 15, 1919', '12:30 p.m.', 'Boston, Massachusetts'];
   return (
     <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', opacity: o }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 30, fontFamily: FONT, color: C.text, padding: '30px 54px', background: 'rgba(10,10,11,0.78)', borderTop: `2px solid ${C.amber}`, borderBottom: `2px solid ${C.amber}` }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 30, fontFamily: FONT, color: C.text, padding: '30px 54px', background: 'rgba(255,255,255,0.95)', boxShadow: '0 8px 30px rgba(28,27,25,0.15)', borderTop: `2px solid ${C.amber}`, borderBottom: `2px solid ${C.amber}` }}>
         {parts.map((p, i) => (
           <React.Fragment key={p}>
             {i > 0 && <span style={{ color: C.amber, fontSize: 40, opacity: appear(t, 0.9 + i * 0.6) }}>·</span>}
@@ -162,8 +166,8 @@ const DatePlate: React.FC<{ t: number }> = ({ t }) => {
 };
 
 // ---------------- Shot 11: the wave spreading over the North End
-export const WaveMap: React.FC<{ t: number; start: number }> = ({ t, start }) => {
-  const a = t + start;
+export const WaveMap: React.FC<{ t: number; start: number }> = ({ t, start: start0 }) => {
+  const start = toOld(start0); const a = toOld(t + start0);
   const keys: K[] = [[start, TANK.lon + 0.0004, TANK.lat - 0.0014, 2.2], [start + 7, TANK.lon + 0.0004, TANK.lat - 0.0012, 1.85]];
   const cam = camAt(keys, a);
   const [tx, ty] = P(TANK.lon, TANK.lat);
@@ -173,7 +177,7 @@ export const WaveMap: React.FC<{ t: number; start: number }> = ({ t, start }) =>
   const k = 1920 / cam.w;
   const n25 = appear(a, ws(82), 0.5), n35 = appear(a, ws(92), 0.5);
   return (
-    <AbsoluteFill style={{ background: '#0B0D10' }}>
+    <AbsoluteFill style={{ background: '#BCD8EA' }}>
       <BaseMap cam={cam} neO={0} osmO={1}>
         <defs>
           <clipPath id="land" clipPathUnits="userSpaceOnUse"><path d={map.ne_land} /></clipPath>

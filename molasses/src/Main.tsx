@@ -1,7 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame, interpolate } from 'remotion';
 import tl from './data/timeline.json';
-import { C, Grain } from './lib';
+import { C, Grain, toNew } from './lib';
 import { MapIntro, WaveMap } from './shots/MapShots';
 import { BlueprintShot, PaintShot, SplitShot } from './shots/Blueprint';
 import { TankLeak, ArchivePhoto, PostClip, PD } from './shots/PhotoShots';
@@ -42,15 +42,15 @@ export const SHOTS: Shot[] = [
   { id: '16 casualties', from: 54.95, to: 59.9, fade: 0.35, el: (p) => <Casualties {...p} /> },
   { id: '17 owner', from: 59.9, to: 62.15, fade: 0.35, el: (p) => <OwnerCard {...p} /> },
   { id: '18 blame', from: 62.15, to: 65.3, fade: 0.3, el: (p) => <BlameCard {...p} /> },
-  { id: '19 title', from: 65.3, to: tl.duration, fade: 0.6, el: (p) => <TitleCard {...p} /> },
+  { id: '19 title', from: 65.3, to: 76.278, fade: 0.6, el: (p) => <TitleCard {...p} /> },
 ];
 
 const ShotSeq: React.FC<{ s: Shot }> = ({ s }) => {
   const f = useCurrentFrame();
   const fadeF = Math.round((s.fade ?? 0) * FPS);
   const o = fadeF ? interpolate(f, [0, fadeF], [0, 1], { extrapolateRight: 'clamp' }) : 1;
-  const dur = s.to - s.from;
-  return <AbsoluteFill style={{ opacity: o }}>{s.el({ t: f / FPS, start: s.from, dur })}</AbsoluteFill>;
+  const dur = toNew(s.to) - toNew(s.from);
+  return <AbsoluteFill style={{ opacity: o }}>{s.el({ t: f / FPS, start: toNew(s.from), dur })}</AbsoluteFill>;
 };
 
 export const Main: React.FC<{ audio?: string }> = ({ audio = 'audio/mix.wav' }) => (
@@ -58,8 +58,8 @@ export const Main: React.FC<{ audio?: string }> = ({ audio = 'audio/mix.wav' }) 
     {SHOTS.map((s, i) => {
       const next = SHOTS[i + 1];
       const tail = next ? (next.fade ?? 0) : 0; // keep this shot alive under the next one's crossfade
-      const from = Math.round(s.from * FPS);
-      const to = Math.round((s.to + tail) * FPS);
+      const from = Math.round(toNew(s.from) * FPS);
+      const to = Math.min(Math.round(tl.duration * FPS), Math.round((toNew(s.to) + tail) * FPS));
       return (
         <Sequence key={s.id} from={from} durationInFrames={Math.max(1, to - from)} name={s.id}>
           <ShotSeq s={s} />

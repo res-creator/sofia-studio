@@ -1,10 +1,10 @@
 # Inserts breathing pauses between sentences (text unchanged), writes vo/narration_timed.wav + src/data/timeline.json
 import json, subprocess
-LEAD = 1.0; TAIL = 5.0
-CUTS = [(4.5, .5), (11.5, .7), (14.55, .2), (21.7, .5), (28.85, .7), (32.36, 1.3), (40.1, .2), (49.1, .8), (53.62, .6), (55.3, .3), (57.55, 1.0)]
-words = json.load(open('vo/words.json'))
+LEAD = 0.6; TAIL = 4.5
+CUTS = [(29.197, 0.5), (50.678, 0.3), (52.697, 0.4)]  # v2: no inserted pauses (owner: lively pace, no dramatic pauses)
+words = json.load(open('vo/words_fast.json'))
 def nt(t): return t + LEAD + sum(e for c, e in CUTS if c <= t)
-src = 'vo/narration.mp3'
+src = 'vo/narration_fast.wav'
 dur = float(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', src]))
 edges = [0] + [c for c, _ in CUTS] + [dur]
 fc = []; parts = []

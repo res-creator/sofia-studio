@@ -1,13 +1,13 @@
-THE GREAT MOLASSES FLOOD — test segment (final.mp4, 1920x1080, 30 fps, 76 s)
+THE GREAT MOLASSES FLOOD — test segment (final.mp4, 1920x1080, 30 fps, 64.5 s — v2: new voice + light palette)
 Sources of every image, map, sound and fact used.
 
 =====================================================================
 ARCHIVAL PHOTOS (all from Wikimedia Commons, all marked public domain)
 =====================================================================
-In the video every photo is shown in black and white, with a slow Ken Burns move, a caption and (on 3 of them) an amber arrow.
+In the video every photo is shown in pure black and white (no vignette or darkening), with a slow Ken Burns move, a caption and (on 3 of them) an amber arrow.
 Nothing was added to the photos themselves. Overlays are graphics drawn on top and are labelled.
 
-1) public/img/panorama.jpg   (shot 12 at 45-47 s; background of the title card at 65-76 s)
+1) public/img/panorama.jpg   (shot 12; also framed on the title card)
    File:BostonMolassesDisaster.jpg
    https://commons.wikimedia.org/wiki/File:BostonMolassesDisaster.jpg
    Original: https://upload.wikimedia.org/wikipedia/commons/7/70/BostonMolassesDisaster.jpg (3000x2388)
@@ -18,28 +18,28 @@ Nothing was added to the photos themselves. Overlays are graphics drawn on top a
    but this is not confirmed. The Boston Public Library itself published it as Globe Newspaper Co. with
    "No known restrictions", so it was used. If you want to stay fully on the safe side, replace it.
 
-2) public/img/el_structure.jpg   (shot 13 at 47-49 s)
+2) public/img/el_structure.jpg   (shot 13)
    File:Boston_1919_molasses_disaster_-_el_train_structure.jpg
    https://commons.wikimedia.org/wiki/File:Boston_1919_molasses_disaster_-_el_train_structure.jpg
    Original: https://upload.wikimedia.org/wikipedia/commons/7/71/Boston_1919_molasses_disaster_-_el_train_structure.jpg (1024x767)
    Elevated train structure damaged in the disaster, 1919. Author unknown.
    License on Commons: Public domain (PD-1923 / PD-US-expired, published before 1931).
 
-3) public/img/cba_031.jpg   (shot 14 at 49-52 s)
+3) public/img/cba_031.jpg   (shot 14)
    File:Boston Elevated Railway after the Molasses Flood, January 1919, from the City of Boston Archives - 9800-018-031.jpg
    https://commons.wikimedia.org/wiki/File:Boston_Elevated_Railway_after_the_Molasses_Flood,_January_1919,_from_the_City_of_Boston_Archives_-_9800-018-031.jpg
    Original: https://upload.wikimedia.org/wikipedia/commons/4/48/Boston_Elevated_Railway_after_the_Molasses_Flood%2C_January_1919%2C_from_the_City_of_Boston_Archives_-_9800-018-031.jpg (3439x2113)
    Author: Boston Elevated Railway Company, January 1919. Holding: City of Boston Archives.
    License on Commons: Public domain (PD-1923 / PD-US-expired).
 
-4) public/img/under_el.jpg   (shot 15 at 52-55 s)
+4) public/img/under_el.jpg   (shot 15)
    File:GreatMolassesFlood 1919-Wreckage under the elevated tracks.jpg
    https://commons.wikimedia.org/wiki/File:GreatMolassesFlood_1919-Wreckage_under_the_elevated_tracks.jpg
    Downloaded: 1920px version of https://upload.wikimedia.org/wikipedia/commons/1/10/GreatMolassesFlood_1919-Wreckage_under_the_elevated_tracks.jpg (original 2709x1684)
    Wreckage under the elevated tracks, North End, 1919. Author unknown.
    License on Commons: Public domain (PD-US).
 
-5) public/img/tank_before.jpg   (shot 6 at 25-28 s)
+5) public/img/tank_before.jpg   (shot 6)
    File:North End molasses tank.jpg
    https://commons.wikimedia.org/wiki/File:North_End_molasses_tank.jpg
    Original: https://upload.wikimedia.org/wikipedia/commons/5/59/North_End_molasses_tank.jpg (417x327, low resolution)
@@ -48,7 +48,7 @@ Nothing was added to the photos themselves. Overlays are graphics drawn on top a
    Shown smaller, as a "print" on a blurred background, because the file is low resolution.
    The amber streaks on it are an animated graphic overlay, labelled "Streaks: graphic overlay" on screen.
 
-6) public/img/boston_post.jpg   (shot 10 at 36-39 s; only the masthead and main headline are shown)
+6) public/img/boston_post.jpg   (shot 10; only the masthead and main headline are shown)
    File:Boston post-January 16, 1919,.jpg
    https://commons.wikimedia.org/wiki/File:Boston_post-January_16,_1919,.jpg
    Original: https://upload.wikimedia.org/wikipedia/commons/0/0a/Boston_post-January_16%2C_1919%2C.jpg (1127x1435)
@@ -88,8 +88,10 @@ MAP DATA
 =====================================================================
 AUDIO
 =====================================================================
-- Narration: ElevenLabs, voice "Z - Deep, Dark, Velvety" (4MQev7xxYPuQHlUvk604), model eleven_v4,
-  the script read word for word (vo/script.txt). Only silences between sentences were lengthened (tools/timeline.py).
+- Narration (v2): ElevenLabs, voice "Bryan" (bPMKpgEe88vKSwusXTMU, added to the account from the Voice Library), model eleven_v4,
+  the script read word for word (vo/script.txt). eleven_v4 ignored the speed setting, so the recording was sped up
+  to 1.12x with rubberband (pitch and formants preserved). Short 0.3–0.5 s beats after "splits apart", "owned the tank?"
+  and "anarchists." (tools/timeline.py). v1 voice "Z" kept in vo/v1_z/.
 - Music and all sound effects (wind, metal creaks, splitting steel, low rumble, crowd murmur) were
   synthesised by code in tools/sound.py. No samples or third-party recordings → no copyright claims.
 

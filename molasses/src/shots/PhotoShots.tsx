@@ -1,6 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, Img, staticFile } from 'remotion';
 import { C, FONT, appear, prog, Tag, Caption, Arrow, Photo, KB, Vignette, Grain, ws } from '../lib';
+import { toOld } from '../lib';
 
 // map a point given in "cover-fitted, untransformed" screen px through the Ken Burns transform
 const kbPt = (px: number, py: number, kb: KB, p: number) => {
@@ -12,17 +13,16 @@ type PS = { t: number; start: number; dur: number };
 const PD = 'Public domain';
 
 // Shot 6: the tank before 1919, "LEAKING SINCE 1915", graphic streaks
-export const TankLeak: React.FC<PS> = ({ t, start, dur }) => {
-  const a = t + start;
+export const TankLeak: React.FC<PS> = ({ t, start: start0, dur }) => {
+  const start = toOld(start0); const a = toOld(t + start0);
   const s = 1 + 0.035 * (t / dur);
   const L = 460, T = 70, Wd = 1000, Hd = 784;
   const tx0 = L + 0.55 * Wd, tx1 = L + 0.95 * Wd, ty = T + 0.305 * Hd;
   const leak = appear(a, ws(52) - 0.1, 0.5);
   return (
     <AbsoluteFill style={{ background: C.bg }}>
-      <Img src={staticFile('img/tank_before.jpg')} style={{ position: 'absolute', inset: -60, width: 2040, height: 1200, objectFit: 'cover', filter: 'grayscale(1) blur(28px) brightness(0.35)' }} />
-      <div style={{ position: 'absolute', left: L, top: T, width: Wd, height: Hd, transform: `scale(${s})`, transformOrigin: '70% 40%', boxShadow: '0 20px 60px rgba(0,0,0,0.7)', outline: '1px solid rgba(255,255,255,0.12)' }}>
-        <Img src={staticFile('img/tank_before.jpg')} style={{ width: '100%', height: '100%', filter: 'grayscale(1) sepia(0.25) contrast(1.05) brightness(0.95)' }} />
+      <div style={{ position: 'absolute', left: L, top: T, width: Wd, height: Hd, transform: `scale(${s})`, transformOrigin: '70% 40%', boxShadow: '0 14px 40px rgba(28,27,25,0.22)', border: '10px solid #FFFFFF' }}>
+        <Img src={staticFile('img/tank_before.jpg')} style={{ width: '100%', height: '100%', filter: 'grayscale(1) contrast(1.05)' }} />
         <svg width={Wd} height={Hd} style={{ position: 'absolute', inset: 0 }}>
           {Array.from({ length: 9 }).map((_, i) => {
             const x = tx0 - L + ((tx1 - tx0) * (i + 0.5)) / 9 + (i % 2) * 6;
@@ -35,7 +35,7 @@ export const TankLeak: React.FC<PS> = ({ t, start, dur }) => {
       <div style={{ position: 'absolute', left: 80, top: 330, fontFamily: FONT, color: C.text, opacity: leak, transform: `translateY(${(1 - leak) * 10}px)` }}>
         <div style={{ fontSize: 22, letterSpacing: 5, fontWeight: 600, color: C.amberHi }}>LEAKING</div>
         <div style={{ fontSize: 22, letterSpacing: 5, fontWeight: 600, color: C.amberHi }}>SINCE</div>
-        <div style={{ fontSize: 118, fontWeight: 800, letterSpacing: -3, lineHeight: 1, textShadow: '0 4px 30px rgba(0,0,0,0.8)' }}>1915</div>
+        <div style={{ fontSize: 118, fontWeight: 800, letterSpacing: -3, lineHeight: 1 }}>1915</div>
       </div>
       <Caption t={t} at={0.3} text="The molasses tank on Commercial Street, before 1919 (exact date unknown)" source={`Photo: The Bostonian Society, via Wikimedia Commons · ${PD}`} maxW={980} />
       <Tag t={t} at={ws(52) - start}>Streaks: graphic overlay</Tag>
@@ -57,7 +57,6 @@ export const ArchivePhoto: React.FC<PS & { src: string; kb: KB; text: string; so
     <AbsoluteFill>
       <Photo src={src} t={t} dur={dur} kb={kb} />
       <Vignette o={0.7} />
-      <AbsoluteFill style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0) 35%)' }} />
       {ar}
       <Caption t={t} at={capAt} text={text} source={source} />
       <Grain o={0.06} />
@@ -71,8 +70,8 @@ export const PostClip: React.FC<PS> = ({ t, dur }) => {
   return (
     <AbsoluteFill style={{ background: C.card }}>
       <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ width: 1500, height: 408, overflow: 'hidden', transform: `scale(${s}) rotate(-0.8deg)`, boxShadow: '0 30px 80px rgba(0,0,0,0.8)', marginTop: -80 }}>
-          <Img src={staticFile('img/boston_post.jpg')} style={{ width: 1500, display: 'block', filter: 'grayscale(1) sepia(0.35) contrast(1.1) brightness(0.95)' }} />
+        <div style={{ width: 1500, height: 408, overflow: 'hidden', transform: `scale(${s}) rotate(-0.8deg)`, boxShadow: '0 18px 50px rgba(28,27,25,0.22)', marginTop: -80 }}>
+          <Img src={staticFile('img/boston_post.jpg')} style={{ width: 1500, display: 'block', filter: 'grayscale(1) contrast(1.08)' }} />
         </div>
       </AbsoluteFill>
       <Caption t={t} at={0.2} text="The Boston Post, January 16, 1919" source={`Via Wikimedia Commons · ${PD}`} />

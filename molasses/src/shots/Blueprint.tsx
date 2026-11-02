@@ -1,17 +1,18 @@
 import React from 'react';
 import { AbsoluteFill, interpolate } from 'remotion';
 import { C, FONT, appear, prog, Tag, Grain, Vignette, ws, fmt } from '../lib';
+import { toOld } from '../lib';
 
 // Tank drawn to scale: 90 ft wide x 50 ft tall, 10 px per ft
 const X0 = 510, X1 = 1410, YB = 840, YT = 340, ROOF = 34;
 const W = X1 - X0, H = YB - YT;
 const COURSES = 7;
 const BlueBG: React.FC<{ t: number }> = ({ t }) => (
-  <AbsoluteFill style={{ background: '#0A0F15' }}>
+  <AbsoluteFill style={{ background: '#F4F7FA' }}>
     <svg width="1920" height="1080">
       <defs>
-        <pattern id="g1" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(143,180,214,0.06)" strokeWidth="1" /></pattern>
-        <pattern id="g2" width="200" height="200" patternUnits="userSpaceOnUse"><path d="M200 0H0V200" fill="none" stroke="rgba(143,180,214,0.12)" strokeWidth="1" /></pattern>
+        <pattern id="g1" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(47,93,134,0.08)" strokeWidth="1" /></pattern>
+        <pattern id="g2" width="200" height="200" patternUnits="userSpaceOnUse"><path d="M200 0H0V200" fill="none" stroke="rgba(47,93,134,0.16)" strokeWidth="1" /></pattern>
       </defs>
       <g transform={`translate(${-t * 6},0)`}>
         <rect x="-200" width="2400" height="1080" fill="url(#g1)" />
@@ -56,8 +57,8 @@ const Dim: React.FC<{ x1: number; y1: number; x2: number; y2: number; label: str
 };
 
 // ---------------- Shot 5: blueprint with dimensions and a gallons counter
-export const BlueprintShot: React.FC<{ t: number; start: number }> = ({ t, start }) => {
-  const a = t + start;
+export const BlueprintShot: React.FC<{ t: number; start: number }> = ({ t, start: start0 }) => {
+  const start = toOld(start0); const a = toOld(t + start0);
   const draw = prog(a, start, start + 1.0);
   const seams = prog(a, start + 0.5, start + 2.2);
   const h50 = prog(a, ws(32) - 0.05, ws(32) + 0.6);
@@ -82,7 +83,7 @@ export const BlueprintShot: React.FC<{ t: number; start: number }> = ({ t, start
           <Dim x1={X0} y1={YB + 70} x2={X1} y2={YB + 70} label="90 ft" p={w90} lx={(X0 + X1) / 2} ly={YB + 140} />
         </svg>
         <div style={{ position: 'absolute', left: X0, width: W, top: 450, textAlign: 'center', fontFamily: FONT, color: C.text, opacity: appear(a, ws(42) - 0.1) }}>
-          <div style={{ fontSize: 96, fontWeight: 800, letterSpacing: -1, textShadow: '0 3px 20px rgba(0,0,0,0.6)', fontVariantNumeric: 'tabular-nums' }}>{fmt(2300000 * cnt)}</div>
+          <div style={{ fontSize: 96, fontWeight: 800, letterSpacing: -1, fontVariantNumeric: 'tabular-nums' }}>{fmt(2300000 * cnt)}</div>
           <div style={{ fontSize: 34, fontWeight: 600, letterSpacing: 6, textTransform: 'uppercase', color: C.text, opacity: 0.9 }}>gallons of molasses</div>
         </div>
       </AbsoluteFill>
@@ -98,8 +99,8 @@ export const BlueprintShot: React.FC<{ t: number; start: number }> = ({ t, start
 
 // ---------------- Shot 7: streaks, then the tank is painted brown
 const STREAKS = [0.08, 0.17, 0.26, 0.33, 0.44, 0.52, 0.61, 0.7, 0.79, 0.88, 0.94].map((f, i) => ({ x: X0 + W * f, y0: YB - (H * ((i * 37) % 6 + 1)) / COURSES, len: 90 + ((i * 53) % 5) * 45, w: 5 + (i % 3) * 3 }));
-export const PaintShot: React.FC<{ t: number; start: number }> = ({ t, start }) => {
-  const a = t + start;
+export const PaintShot: React.FC<{ t: number; start: number }> = ({ t, start: start0 }) => {
+  const start = toOld(start0); const a = toOld(t + start0);
   const paint = prog(a, ws(60) - 0.1, ws(62) + 0.9);
   const hide = prog(a, ws(64) - 0.2, ws(66) + 0.4);
   const yP = YB - (H + ROOF + 4) * paint;
@@ -110,7 +111,7 @@ export const PaintShot: React.FC<{ t: number; start: number }> = ({ t, start }) 
       <svg width="1920" height="1080" style={{ position: 'absolute', inset: 0, transform: `scale(${push})`, transformOrigin: '50% 60%' }}>
         <defs><clipPath id="tk2"><path d={outlinePath} /></clipPath></defs>
         <g clipPath="url(#tk2)">
-          <rect x={X0} y={YT - ROOF} width={W} height={H + ROOF} fill="#12171D" />
+          <rect x={X0} y={YT - ROOF} width={W} height={H + ROOF} fill="#FFFFFF" />
           {STREAKS.map((s, i) => {
             const g = 0.45 + 0.55 * prog(a, start + i * 0.06, start + 0.9 + i * 0.06);
             return <path key={i} d={`M${s.x},${s.y0} q 4,${s.len * 0.5 * g} 0,${s.len * g}`} stroke="#8A5418" strokeWidth={s.w} strokeLinecap="round" fill="none" opacity={0.95 * (1 - 0.85 * hide)} />;
@@ -118,7 +119,7 @@ export const PaintShot: React.FC<{ t: number; start: number }> = ({ t, start }) 
           <rect x={X0} y={yP} width={W} height={YB - yP + 2} fill={C.brown} opacity={0.97} />
           <line x1={X0} y1={yP} x2={X1} y2={yP} stroke={C.amberHi} strokeWidth={3} opacity={paint > 0 && paint < 1 ? 0.9 : 0} />
         </g>
-        <Tank draw={1} seams={1} stroke="rgba(143,180,214,0.8)" />
+        <Tank draw={1} seams={1} stroke="rgba(47,93,134,0.9)" />
       </svg>
       <div style={{ position: 'absolute', left: 0, right: 0, top: 150, textAlign: 'center', fontFamily: FONT, fontWeight: 800, fontSize: 56, color: C.text, letterSpacing: -0.5, opacity: appear(a, ws(60)) }}>
         Painted brown <span style={{ color: C.amberHi }}>to hide the streaks</span>
@@ -131,8 +132,8 @@ export const PaintShot: React.FC<{ t: number; start: number }> = ({ t, start }) 
 };
 
 // ---------------- Shot 9: the steel splits apart (schematic)
-export const SplitShot: React.FC<{ t: number; start: number }> = ({ t, start }) => {
-  const a = t + start;
+export const SplitShot: React.FC<{ t: number; start: number }> = ({ t, start: start0 }) => {
+  const start = toOld(start0); const a = toOld(t + start0);
   const crack = prog(a, ws(73) - 0.15, ws(74) + 0.45);
   const sep = prog(a, ws(74) + 0.2, ws(74) + 2.0);
   const cx = X0 + W * 0.46;
@@ -143,7 +144,7 @@ export const SplitShot: React.FC<{ t: number; start: number }> = ({ t, start }) 
   const leftClip = 'M0,0 L' + pts.map((p) => p.join(',')).reverse().join(' L') + ` L${pts[0][0]},1080 L0,1080Z`;
   const fade = 1 - 0.6 * prog(a, ws(74) + 1.2, ws(74) + 2.2);
   return (
-    <AbsoluteFill style={{ background: '#0A0F15' }}>
+    <AbsoluteFill style={{ background: '#F4F7FA' }}>
       <BlueBG t={t + 20} />
       <svg width="1920" height="1080" style={{ position: 'absolute', inset: 0, opacity: fade }}>
         <defs>
@@ -152,11 +153,11 @@ export const SplitShot: React.FC<{ t: number; start: number }> = ({ t, start }) 
         </defs>
         <g clipPath="url(#L)" transform={`translate(${-22 * sep},${4 * sep}) rotate(${-1.4 * sep} ${X0} ${YB})`}>
           <rect x={X0} y={YT} width={W} height={H} fill={C.brown} opacity={0.9} />
-          <Tank draw={1} seams={1} stroke="rgba(143,180,214,0.85)" />
+          <Tank draw={1} seams={1} stroke="rgba(47,93,134,0.9)" />
         </g>
         <g clipPath="url(#Rr)" transform={`translate(${22 * sep},${4 * sep}) rotate(${1.4 * sep} ${X1} ${YB})`}>
           <rect x={X0} y={YT} width={W} height={H} fill={C.brown} opacity={0.9} />
-          <Tank draw={1} seams={1} stroke="rgba(143,180,214,0.85)" />
+          <Tank draw={1} seams={1} stroke="rgba(47,93,134,0.9)" />
         </g>
         {sep > 0 && <rect x={cx - 40} y={YT - 10} width={80} height={H + 10} fill={C.amber} opacity={0.0} />}
         <path d={cd} fill="none" stroke={C.amberHi} strokeWidth={5} strokeLinejoin="round" strokeLinecap="round" opacity={1 - sep * 0.6} />

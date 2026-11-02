@@ -1,17 +1,21 @@
 import React from 'react';
 import { AbsoluteFill, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig, Easing, continueRender, delayRender } from 'remotion';
 import tl from './data/timeline.json';
+import tl1 from './data/timeline_v1.json';
 
 export const C = {
-  bg: '#0A0A0B',
-  card: '#0E0E10',
-  text: '#F4F1EA',
-  dim: 'rgba(244,241,234,0.62)',
-  faint: 'rgba(244,241,234,0.28)',
+  // v2: light infographic palette (owner: no dark/brown backgrounds; B&W only for real archival photos)
+  bg: '#F5F1E9',
+  card: '#F7F4EE',
+  paper: '#FFFFFF',
+  text: '#1C1B19',
+  dim: 'rgba(28,27,25,0.64)',
+  faint: 'rgba(28,27,25,0.42)',
+  line: 'rgba(28,27,25,0.14)',
   amber: '#C77A1A',
-  amberHi: '#E0952F',
-  brown: '#5A3410',
-  blue: '#8FB4D6',
+  amberHi: '#C77A1A',
+  brown: '#7A4A1C',
+  blue: '#2F5D86',
 };
 export const FONT = 'Inter, sans-serif';
 
@@ -19,8 +23,21 @@ export const FONT = 'Inter, sans-serif';
 import './fonts.css';
 
 // ---- timing: word start/end (seconds) by index in timeline.json
-export const ws = (i: number) => tl.words[i].s;
-export const we = (i: number) => tl.words[i].e;
+// v2 voice: the shots were designed on timeline_v1 (first voice). Shot code keeps working in "v1 seconds";
+// toOld/toNew map between the two timelines word by word (piecewise linear), so every cut and
+// animation stays locked to the same word as before, only faster.
+const OLDK: number[] = [0], NEWK: number[] = [0];
+tl1.words.forEach((w: any, i: number) => { OLDK.push(w.s, w.e); NEWK.push(tl.words[i].s, tl.words[i].e); });
+OLDK.push(tl1.duration); NEWK.push(tl.duration);
+const pl = (xs: number[], ys: number[], v: number) => {
+  if (v <= xs[0]) return ys[0];
+  for (let i = 1; i < xs.length; i++) if (v <= xs[i]) { const d = xs[i] - xs[i - 1]; return d <= 1e-6 ? ys[i] : ys[i - 1] + ((v - xs[i - 1]) / d) * (ys[i] - ys[i - 1]); }
+  return ys[ys.length - 1] + (v - xs[xs.length - 1]);
+};
+export const toNew = (tOld: number) => pl(OLDK, NEWK, tOld);
+export const toOld = (tNew: number) => pl(NEWK, OLDK, tNew);
+export const ws = (i: number) => tl1.words[i].s; // v1 seconds (shot code)
+export const we = (i: number) => tl1.words[i].e;
 export const useT = () => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -41,7 +58,8 @@ export const useShotT = () => {
 };
 
 // ---- film grain + vignette (very subtle, keeps frames "alive")
-export const Grain: React.FC<{ o?: number }> = ({ o = 0.07 }) => {
+export const Grain: React.FC<{ o?: number }> = ({ o: o0 = 0.07 }) => {
+  const o = o0 * 0.5;
   const f = useCurrentFrame();
   const seed = f % 8;
   return (
@@ -57,7 +75,7 @@ export const Grain: React.FC<{ o?: number }> = ({ o = 0.07 }) => {
   );
 };
 export const Vignette: React.FC<{ o?: number }> = ({ o = 0.75 }) => (
-  <AbsoluteFill style={{ pointerEvents: 'none', background: `radial-gradient(ellipse at center, rgba(0,0,0,0) 45%, rgba(0,0,0,${o}) 100%)` }} />
+  null /* v2: no dark vignette */
 );
 
 // ---- labels
@@ -66,7 +84,7 @@ export const Tag: React.FC<{ children: React.ReactNode; t: number; at?: number; 
     style={{
       position: 'absolute', top: 54, [pos === 'tr' ? 'right' : 'left']: 64, fontFamily: FONT, fontWeight: 600, fontSize: 20,
       letterSpacing: 3, textTransform: 'uppercase', color: C.text, padding: '9px 16px', border: `1.5px solid ${C.amber}`,
-      background: 'rgba(10,10,11,0.72)', opacity: appear(t, at), borderRadius: 3,
+      background: 'rgba(255,255,255,0.94)', opacity: appear(t, at), borderRadius: 3,
     } as any}
   >
     {children}
@@ -76,17 +94,16 @@ export const Tag: React.FC<{ children: React.ReactNode; t: number; at?: number; 
 export const Caption: React.FC<{ text: string; source?: string; t: number; at?: number; maxW?: number }> = ({ text, source, t, at = 0.25, maxW = 1150 }) => {
   const p = appear(t, at, 0.5);
   return (
-    <div style={{ position: 'absolute', left: 72, bottom: 70, maxWidth: maxW, opacity: p, transform: `translateY(${(1 - p) * 10}px)` }}>
+    <div style={{ position: 'absolute', left: 64, bottom: 60, maxWidth: maxW, opacity: p, transform: `translateY(${(1 - p) * 10}px)`, background: 'rgba(255,255,255,0.95)', padding: '20px 28px 20px 22px', borderRadius: 4, boxShadow: '0 6px 24px rgba(28,27,25,0.12)' }}>
       <div style={{ display: 'flex', alignItems: 'stretch', gap: 18 }}>
         <div style={{ width: 4, background: C.amber, borderRadius: 2 }} />
         <div>
-          <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 34, lineHeight: 1.28, color: C.text, textShadow: '0 2px 14px rgba(0,0,0,0.9)' }}>{text}</div>
+          <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 34, lineHeight: 1.28, color: C.text }}>{text}</div>
           {source && (
-            <div style={{ fontFamily: FONT, fontWeight: 400, fontSize: 19, marginTop: 10, color: C.dim, letterSpacing: 0.3, textShadow: '0 1px 8px rgba(0,0,0,0.9)' }}>{source}</div>
+            <div style={{ fontFamily: FONT, fontWeight: 400, fontSize: 19, marginTop: 10, color: C.dim, letterSpacing: 0.3 }}>{source}</div>
           )}
         </div>
       </div>
-      <div style={{ position: 'absolute', inset: '-40px -60px -40px -72px', zIndex: -1, background: 'radial-gradient(ellipse at 30% 60%, rgba(0,0,0,0.55), rgba(0,0,0,0) 70%)' }} />
     </div>
   );
 };
@@ -103,7 +120,7 @@ export const Arrow: React.FC<{ x1: number; y1: number; x2: number; y2: number; t
       <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={C.amber} strokeWidth={4} strokeLinecap="round" strokeDasharray={len} strokeDashoffset={len * (1 - p)} />
       <path d={`M${hx + 22 * Math.cos(a1)},${hy + 22 * Math.sin(a1)} L${hx},${hy} L${hx + 22 * Math.cos(a2)},${hy + 22 * Math.sin(a2)}`} fill="none" stroke={C.amber} strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" opacity={prog(t, at + 0.45, at + 0.7)} />
       {label && (
-        <text x={lx ?? x1} y={ly ?? y1 - 16} textAnchor={anchor as any} fill={C.text} fontFamily={FONT} fontWeight={600} fontSize={26} opacity={appear(t, at + 0.3)} style={{ paintOrder: 'stroke', stroke: 'rgba(0,0,0,0.75)', strokeWidth: 6 } as any}>
+        <text x={lx ?? x1} y={ly ?? y1 - 16} textAnchor={anchor as any} fill={C.text} fontFamily={FONT} fontWeight={600} fontSize={26} opacity={appear(t, at + 0.3)} style={{ paintOrder: 'stroke', stroke: 'rgba(255,255,255,0.95)', strokeWidth: 8 } as any}>
           {label}
         </text>
       )}
@@ -113,7 +130,7 @@ export const Arrow: React.FC<{ x1: number; y1: number; x2: number; y2: number; t
 
 // ---- archival photo with slow Ken Burns move and a restrained grade
 export type KB = { s0: number; s1: number; x0: number; x1: number; y0: number; y1: number }; // scale & offset (% of frame)
-export const Photo: React.FC<{ src: string; t: number; dur: number; kb: KB; sepia?: number; bright?: number; fit?: 'cover' | 'contain' }> = ({ src, t, dur, kb, sepia = 0.25, bright = 0.92, fit = 'cover' }) => {
+export const Photo: React.FC<{ src: string; t: number; dur: number; kb: KB; sepia?: number; bright?: number; fit?: 'cover' | 'contain' }> = ({ src, t, dur, kb, sepia = 0, bright = 1.0, fit = 'cover' }) => {
   const p = interpolate(t, [0, dur], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
   const s = kb.s0 + (kb.s1 - kb.s0) * p;
   const x = kb.x0 + (kb.x1 - kb.x0) * p;
