@@ -183,7 +183,7 @@ for vid, t in CU['vo']:
     vo[s:s + len(a)] += a[: N - s]
 duck = np.convolve((np.abs(vo) > 0.02).astype(float), np.ones(4410) / 4410, 'same')
 dk = np.clip(duck * 3, 0, 1)
-out = (vo * 1.0 + fx * (1 - 0.6 * dk) + mus * 0.3 * (1 - 0.55 * dk)) * fade
+out = (vo * 1.0 + fx * (1 - 0.6 * dk) + mus * 0.1 * (1 - 0.7 * dk)) * fade   # owner: background music much quieter (was mus * 0.3, ducking 0.55)
 out = np.tanh(out * 1.1) * 0.9
 import wave
 w = wave.open(f'{D}/mix.wav', 'wb'); w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((out * 32767).astype(np.int16).tobytes()); w.close()
