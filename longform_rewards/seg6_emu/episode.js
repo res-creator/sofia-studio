@@ -18,6 +18,7 @@ const X = require('./emuwide');
 const S = X.S;
 const { C, F, clamp, lerp, seg, E, rr, hash } = K;
 const { W, H, FPS, PAL, shake, pop, blink, label, txt, fitTxt } = ST;
+const INK = R.INK;
 
 // ---------- voice timeline: chapter card 0–3 s, first line at 3.0 s, 0.7 s between lines, end = last voice end + 0.6 s ----------
 const LINES = JSON.parse(fs.readFileSync(`${__dirname}/script.json`));
@@ -167,16 +168,15 @@ shot('F2 jam', tAnd - 0.05, tThey - 0.12, (ctx, t, lt) => {
 shot('G truck chase', tThey - 0.12, tMajor - 0.3, (ctx, t, lt) => {
   const pan = lt * 520, bump = Math.abs(Math.sin(lt * 9)) * 12 + Math.sin(lt * 23) * 3, rock = Math.sin(lt * 9) * 0.02;
   X.landW(ctx, t, { hy: 480, windmill: { x: 1200, s: 0.4 }, fence: { dy: 50 }, rows: 6, wheatDy: 300, px: pan * 2 });
-  ctx.save(); ctx.fillStyle = '#C9A06E'; ctx.fillRect(0, 700, W, 200); ctx.fillStyle = 'rgba(120,80,40,0.25)'; for (let i = 0; i < 20; i++) { const x = ((i * 160 - pan * 2.2) % 2240 + 2240) % 2240 - 160; R.ell(ctx, x, 740 + (i % 3) * 50, 40, 10); ctx.fill(); } ctx.restore();
-  const em = X.crowd(7, 33, 0, 1, 0, 1, 0, 1).map(e => { const tt = t - tEmusOut + 0.4 - e.x * 0.25; return { x: -300 + Math.max(0, tt) * 1100, y: 720 + e.y * 140, s: 0.3 + e.y * 0.08, face: 1, phase: lt * 16 + e.ph, stride: 1, lid: 0.45 }; });
-  S.emuCrowd(ctx, em.filter(e => e.y < 790));
-  for (let i = 0; i < 6; i++) { const p = (lt * 2.4 + i / 6) % 1; ctx.save(); ctx.globalAlpha = (1 - p) * 0.55; R.ell(ctx, 640 - p * 300, 850 - p * 80, 40 + p * 90, 30 + p * 50); ctx.fillStyle = '#E4CFA6'; ctx.fill(); ctx.restore(); }
-  ctx.save(); ctx.translate(1000, 875 - bump); ctx.rotate(rock); ctx.scale(0.62, 0.62);
+  ctx.save(); ctx.fillStyle = '#C9A06E'; ctx.fillRect(0, 620, W, 300); ctx.fillStyle = 'rgba(120,80,40,0.25)'; for (let i = 0; i < 20; i++) { const x = ((i * 160 - pan * 2.2) % 2240 + 2240) % 2240 - 160; R.ell(ctx, x, 660 + (i % 3) * 80, 40, 10); ctx.fill(); } ctx.restore();
+  const em = X.crowd(7, 33, 0, 1, 0, 1, 0, 1).map(e => { const tt = t - tEmusOut + 0.4 - e.x * 0.25; return { x: -300 + Math.max(0, tt) * 1100, y: 868 + e.y * 30, s: 0.4 + e.y * 0.05, face: 1, phase: lt * 16 + e.ph, stride: 1, lid: 0.45 }; });
+    for (let i = 0; i < 6; i++) { const p = (lt * 2.4 + i / 6) % 1; ctx.save(); ctx.globalAlpha = (1 - p) * 0.55; R.ell(ctx, 600 - p * 300, 770 - p * 80, 40 + p * 90, 30 + p * 50); ctx.fillStyle = '#E4CFA6'; ctx.fill(); ctx.restore(); }
+  ctx.save(); ctx.translate(980, 790 - bump); ctx.rotate(rock); ctx.scale(0.66, 0.66);
   LT.lit(ctx, c => S.truck(c, { rot: lt * 9, bed: b => { b.save(); b.translate(-60, -150); b.rotate(-0.12 + Math.sin(lt * 11) * 0.12); b.scale(0.6, 0.6); S.lewisGun(b, { bipod: 250, flash: t > tTruck && t < tOutran && Math.floor(t * 14) % 2 ? 0.7 : 0 }); b.restore();
     S.person(b, -200, 0, 0.6, 1, S.SOL, { hip: [-6, -176], lean: 0.25, legN: { foot: [96, 0] }, legF: { foot: [-118, 0] }, armN: { hand: [150, -250], grip: 'fist' }, armF: { hand: [-80, -200], grip: 'fist' }, face: R.expr(t > tOutran ? 'shocked' : 'squint', { look: [1, 0] }) }, S.HAT_ARMY); },
     driver: d => S.person(d, 120, -100, 0.42, 1, S.SOL2, { face: R.expr(t > tOutran ? 'worried' : 'neutral', { look: [1, 0] }) }, S.HAT_ARMY) }), { rim: RIM });
   ctx.restore();
-  S.emuCrowd(ctx, em.filter(e => e.y >= 790));
+  S.emuCrowd(ctx, em);
   label(ctx, 'GUN ON A TRUCK', 960, 170, pop(t, tTruck - 0.1) * (1 - seg(t, tOutran - 0.15, tOutran)), { size: 64 });
   label(ctx, 'TOO SLOW', 960, 170, pop(t, tOutran), { size: 90, col: C.red, fg: PAL.cream });
   ST.grade(ctx, 'golden', 0.2);
@@ -213,9 +213,9 @@ shot('I1 request', S1('s03') - 0.12, tWhat - 0.12, (ctx, t, lt) => {
 shot('J1 bounty notice', tWhat - 0.12, tPaid - 0.12, (ctx, t, lt) => {
   ctx.save(); zoomAt(ctx, 960, 700, 1 + lt * 0.02);
   X.landW(ctx, t, { hy: 520, windmill: { x: 1500, s: 0.45 }, house: { x: 1750, s: 0.45 }, fence: { dy: 60 }, rows: 7, wheatDy: 300 });
-  ctx.save(); ctx.translate(960, 980); rr(ctx, -20, -900, 40, 900, 4); R.fillStroke(ctx, '#8A6440', 5); ctx.translate(0, -560); ctx.rotate(-0.03); const pu = pop(t, tCash - 0.4, 0.35); ctx.scale(0.62 * pu, 0.62 * pu); if (pu > 0) S.poster(ctx); ctx.restore();
+  ctx.save(); ctx.translate(960, 980); rr(ctx, -20, -900, 40, 900, 4); R.fillStroke(ctx, '#8A6440', 5); ctx.translate(0, -560); ctx.rotate(-0.03); const pu = pop(t, tWhat + 0.3, 0.35); ctx.scale(0.62 * pu, 0.62 * pu); if (pu > 0) S.poster(ctx); ctx.restore();
   ctx.restore();
-  label(ctx, 'WHAT WORKED?', 960, 170, pop(t, tWhat - 0.05) * (1 - seg(t, tCash - 0.5, tCash - 0.4)), { size: 60 });
+  label(ctx, 'CASH BOUNTY', 1500, 480, pop(t, tBounty - 0.1), { size: 72, col: C.red, fg: PAL.cream });
   label(ctx, 'OLDER', 420, 300, pop(t, tOlder - 0.05), { size: 72 });
   label(ctx, 'CHEAPER', 1500, 300, pop(t, tCheaper - 0.05), { size: 72, col: C.yellow, rot: 0.03 });
   ST.grade(ctx, 'golden', 0.18);
@@ -240,8 +240,8 @@ shot('K claims', tIn3 - 0.12, Z.s04 - 0.12, (ctx, t, lt) => {
   const k = Math.min(5, Math.floor(6 * seg(t, tSix - 0.1, t1934b + 0.9))), u = pop(t, tIn3 - 0.1, 0.3);
   ctx.save(); ctx.translate(380, 440); ctx.rotate(-0.03); ctx.scale(u * 0.95, u * 0.95); if (u > 0) ST.calCard(ctx, '1934', MON[k]); ctx.restore();
   label(ctx, `${k + 1} OF 6 MONTHS`, 380, 760, pop(t, tSix), { size: 50, col: C.yellow });
-  const p = E.out(seg(t, tFiled - 0.3, t57 + 0.9)), n = Math.floor(lerp(0, 66, p));
-  for (let i = 0; i < n; i++) { const col = i % 4, row = Math.floor(i / 4); ctx.save(); ctx.translate(900 + col * 250 + (hash(i) - 0.5) * 50, 860 - row * 22); S.slip(ctx, 0.72, (hash(i + 4) - 0.5) * 0.3, i); ctx.restore(); }
+  const p = E.out(seg(t, tSix - 0.1, t57 + 0.9)), n = Math.floor(lerp(0, 66, p));
+  for (let i = 0; i < n; i++) { const col = i % 4, row = Math.floor(i / 4); ctx.save(); ctx.translate(900 + col * 250 + (hash(i) - 0.5) * 50, 800 - row * 22); S.slip(ctx, 0.72, (hash(i + 4) - 0.5) * 0.3, i); ctx.restore(); }
   const cnt = Math.round(57000 * E.out(seg(t, tFiled, t57 + 0.4)) / 100) * 100, cu = pop(t, tFiled - 0.1, 0.3);
   if (cu > 0) { ctx.save(); ctx.translate(1270, 180); ctx.scale(cu, cu); ctx.rotate(-0.03); ctx.font = `120px ${F.black}`; const s = cnt.toLocaleString('en-US') + (t > t57 + 0.4 ? '+' : ''), w = ctx.measureText('57,000+').width + 80;
     CL.cutout(ctx, () => rr(ctx, -w / 2, -100, w, 150, 18), C.red, { elev: 1.8 }); txt(ctx, s, 0, 40, 120, PAL.cream); ctx.restore(); }
@@ -259,7 +259,7 @@ shot('L1 the emu', Z.s04 - 0.12, tNot4 - 0.12, (ctx, t, lt) => {
   ctx.save(); ctx.translate(1250, 860); ctx.scale(-0.72, 0.72); LT.lit(ctx, c => S.emu(c, { phase: lt * 3, stride: 0, peck: t > tEmu4 - 0.2 ? 0 : 0.5 + 0.5 * Math.sin(lt * 4), eat: t < tEmu4 - 0.2, look: [1, 0], blink: bl(t, 2.7) }), { rim: RIM }); ctx.restore();
   X.litP(ctx, c => S.person(c, 480, 900, 1.0, 1, S.FARMER, { face: R.expr('squint', { look: [1, 0], blink: bl(t, 3.1) }), armN: { hand: [150, -360], grip: 'point' } }, S.HAT_FARM));
   // the red circle around the emu (marked, no crosshair)
-  const cu = seg(t, tGone - 0.1, tGone + 0.5); if (cu > 0) { ctx.save(); ctx.translate(1250, 650); ctx.strokeStyle = C.red; ctx.lineWidth = 12; ctx.lineCap = 'round'; ctx.beginPath(); ctx.ellipse(0, 0, 300, 290, -0.1, -1.6, -1.6 + 6.4 * E.out(cu)); ctx.stroke(); ctx.restore(); }
+  const cu = seg(t, tGone - 0.1, tGone + 0.5); if (cu > 0) { ctx.save(); ctx.translate(1250, 630); ctx.strokeStyle = C.red; ctx.lineWidth = 12; ctx.lineCap = 'round'; ctx.beginPath(); ctx.ellipse(0, 0, 280, 250, -0.1, -1.6, -1.6 + 6.27 * E.out(cu)); ctx.stroke(); ctx.restore(); }
   ctx.restore();
   label(ctx, 'THE DIFFERENCE?', 960, 160, pop(t, tDiff - 0.1) * (1 - seg(t, tBounty4 - 0.2, tBounty4 - 0.1)), { size: 66 });
   label(ctx, 'THE BOUNTY PAID FOR…', 760, 160, pop(t, tBounty4 - 0.1), { size: 58 });
@@ -312,9 +312,9 @@ function cues() {
   c.push(['cut', tThey - 0.12, 0.35], ['engine', tThey, 0.6], ['pop', tTruck - 0.1, 0.4], ['steps', tEmusOut - 0.2, 0.6], ['whoosh', tOutran - 0.1, 0.5], ['buzzer', tOutran + 0.05, 0.5]);
   c.push(['cut', tMajor - 0.3, 0.35], ['pop', tMajor - 0.05, 0.4], ['paper', tRep - 0.15, 0.7], ['type', t986 - 0.1, 0.7], ['stamp', t986 + 0.1, 0.6], ['type', t9860 - 0.1, 0.7], ['stamp', t9860 + 0.1, 0.6], ['stamp', tOwn + 0.05, 0.9]);
   c.push(['cut', S1('s03') - 0.12, 0.35], ['paper', S1('s03'), 0.6], ['flip', t1934a - 0.1, 0.4], ['stamp', tNo3 + 0.05, 1.0]);
-  c.push(['cut', tWhat - 0.12, 0.35], ['pop', tWhat - 0.05, 0.4], ['pop', tOlder - 0.05, 0.4], ['pop', tCheaper - 0.05, 0.4], ['paper', tCash - 0.4, 0.6], ['thump', tCash - 0.1, 0.6]);
+  c.push(['cut', tWhat - 0.12, 0.35], ['pop', tWhat - 0.05, 0.4], ['pop', tOlder - 0.05, 0.4], ['pop', tCheaper - 0.05, 0.4], ['paper', tWhat + 0.3, 0.6], ['stamp', tBounty - 0.05, 0.6]);
   c.push(['cut', tPaid - 0.12, 0.35], ['paper', tPaid + 0.2, 0.6], ['kaching', tFarmersGot(), 0.6], ['pop', tEach - 0.1, 0.5]);
-  c.push(['cut', tIn3 - 0.12, 0.35]); for (let i = 0; i < 6; i++) c.push(['flip', tSix - 0.1 + i * (t1934b + 1.0 - tSix) / 6, 0.4]); for (let i = 0; i < 14; i++) c.push(['paper', tFiled - 0.3 + i * 0.12, 0.3]); c.push(['stamp', t57 + 0.4, 0.8], ['pop', tClaims - 0.25, 0.4]);
+  c.push(['cut', tIn3 - 0.12, 0.35]); for (let i = 0; i < 6; i++) c.push(['flip', tSix - 0.1 + i * (t1934b + 1.0 - tSix) / 6, 0.4]); for (let i = 0; i < 18; i++) c.push(['paper', tSix + i * 0.2, 0.3]); c.push(['stamp', t57 + 0.4, 0.8], ['pop', tClaims - 0.25, 0.4]);
   c.push(['cut', Z.s04 - 0.12, 0.35], ['pop', tDiff - 0.1, 0.5], ['pop', tBounty4 - 0.1, 0.4], ['scratch', tGone - 0.1, 0.6], ['pop', tEmu4 - 0.1, 0.6], ['boop', tEmu4 + 0.2, 0.4]);
   c.push(['cut', tNot4 - 0.12, 0.35]); for (const [, , ok, tt] of PL) { c.push(['pop', tt - 0.35, 0.5]); c.push(ok ? ['sparkle', tt + 0.05, 0.8] : ['buzzer', tt + 0.05, 0.35]); }
   c.push(['ding', tReal + 0.1, 0.6], ['pop', tResult - 0.15, 0.6]);

@@ -77,7 +77,7 @@ shot('P2 rules', tWhat - 0.12, Z.s02 - 0.12, (ctx, t, lt) => {
   });
   label(ctx, 'THE COMPANY', 420, 200, pop(t, tWhat), { size: 48 });
   label(ctx, 'THE OTHER SIDE', 1500, 200, pop(t, tOther - 0.05), { size: 48, col: C.yellow });
-  label(ctx, 'READS THE RULES BETTER', 1460, 860, pop(t, tBetter - 0.05), { size: 50, col: C.red, fg: PAL.cream, rot: 0.03 });
+  label(ctx, 'READS THE RULES BETTER', 1460, 790, pop(t, tBetter - 0.05), { size: 50, col: C.red, fg: PAL.cream, rot: 0.03 });
   ST.grade(ctx, 'office', 0.18);
 });
 
@@ -90,7 +90,7 @@ shot('P3 store 1999', Z.s02 - 0.12, tHealthy - 0.12, (ctx, t, lt) => {
   world(ctx, [[0, 100, -470, 0.86], [2, 140, -470, 0.9]], lt, w => { SE.sky(w, t, { clouds: 3 }); SE.ground(w, 'road'); SE.houses(w, -2700, 3);
     SE.shopFront(w, 300, 1300, 'GROCERY', { awn: PAL.blue, signCol: PAL.navy });
     P.person(w, -400, 0, 0.95, 1, SHOPPER, { ...R.walk(t * 6), face: FACE('smile', [1, 0], t), armN: { hand: [110, -200], grip: 'hold', item: g => { g.save(); g.translate(0, 40); rr(g, -60, -100, 120, 110, 10); R.fillStroke(g, '#C9A06A', 4); g.restore(); } } }); });
-  const u = pop(t, t1999 - 0.08, 0.35); if (u > 0) { ctx.save(); ctx.translate(380, 420); ctx.rotate(-0.04); ctx.scale(u, u); ST.calCard(ctx, 'USA', '1999', { w: 420, h: 380 }); ctx.restore(); }
+  const u = pop(t, t1999 - 0.08, 0.35); if (u > 0) { ctx.save(); ctx.translate(1560, 540); ctx.rotate(0.04); ctx.scale(u, u); ST.calCard(ctx, 'USA', '1999', { w: 420, h: 380 }); ctx.restore(); }
   ST.grade(ctx, 'day', 0.18);
 });
 // P4: the flyer: HEALTHY CHOICE — mail in barcodes, get airline miles
@@ -143,7 +143,7 @@ const tTwelve = at('s03', 'twelve'), tHad = at('s03', 'had'), tSalv = at('s03', 
 shot('P8 12000', Z.s03 - 0.12, tHad - 0.12, (ctx, t, lt) => {
   world(ctx, [[0, 100, -470, 0.82], [2.2, 160, -470, 0.86]], lt, w => { store(w, t);
     w.save(); w.translate(860, 0); rr(w, -260, -300, 520, 300, 8); R.fillStroke(w, '#5A606B', 5); rr(w, -280, -320, 560, 30, 8); R.fillStroke(w, '#8E959E', 5); fitTxt(w, 'CHECKOUT', 0, -360, 50, INK, 400); w.restore();
-    for (let i = 0; i < 4; i++) { w.save(); w.translate(-1150 + i * 40, 0); PK.handTruck(w, 3 + (i % 2), 0.85); w.restore(); }
+    for (let i = 0; i < 4; i++) { w.save(); w.translate(-900 + i * 40, 0); PK.handTruck(w, 3 + (i % 2), 0.85); w.restore(); }
     P.person(w, -250, 0, 1.05, 1, DAVID, { face: FACE('grin', [1, 0], t), armN: { hand: [150, -330], grip: 'fist' }, armF: { hand: [130, -335], grip: 'fist' }, lean: 0.08 });
     w.save(); w.translate(220, 0); X.cart(w, 0.9, { load: 1 }); w.save(); w.translate(40, -440); X.cupPile(w, 3, 0.62); w.restore(); w.restore(); });
   bigPlate(ctx, '12,000+ CUPS', 960, 230, pop(t, tTwelve - 0.05), 96, C.red, PAL.cream);
@@ -172,7 +172,7 @@ shot('P10 donation', tAnd3 - 0.12, tAbout - 0.12, (ctx, t, lt) => {
 // P11: about $3,000 turned into over a million miles
 shot('P11 miles', tAbout - 0.12, tThe3 - 0.12, (ctx, t, lt) => {
   ST.bg(ctx, '#DCE6EE'); ctx.fillStyle = 'rgba(46,58,89,0.06)'; for (let i = 0; i < 12; i++) ctx.fillRect(i * 170, 0, 6, H);
-  const u1 = pop(t, tThree - 0.1, 0.35); if (u1 > 0) { ctx.save(); ctx.translate(480, 300); ctx.scale(0.8 * u1, 0.8 * u1); ctx.rotate(-0.03); PK.check(ctx, '≈ $3,000'); ctx.restore(); }
+  const u1 = pop(t, tThree - 0.1, 0.35); if (u1 > 0) { ctx.save(); ctx.translate(500, 320); ctx.scale(0.95 * u1, 0.95 * u1); ctx.rotate(-0.03); PK.check(ctx, '≈ $3,000'); ctx.restore(); }
   const u2 = pop(t, tTurned - 0.1, 0.35); if (u2 > 0) { ctx.save(); ctx.translate(960, 300); ctx.scale(u2, u2); ctx.fillStyle = C.red; ctx.beginPath(); ctx.moveTo(-60, -30); ctx.lineTo(20, -30); ctx.lineTo(20, -70); ctx.lineTo(90, 0); ctx.lineTo(20, 70); ctx.lineTo(20, 30); ctx.lineTo(-60, 30); ctx.closePath(); ctx.fill(); ctx.lineWidth = 5; ctx.strokeStyle = K.C.ink; ctx.stroke(); ctx.restore(); }
   const v = Math.round(lerp(0, 1253000, E.out(seg(t, tTurned, tMillion + 0.3)))); const u3 = pop(t, tTurned - 0.05, 0.35);
   if (u3 > 0) { ctx.save(); ctx.translate(1440, 320); ctx.scale(0.9 * u3, 0.9 * u3); PK.milesCounter(ctx, v); ctx.restore(); }
@@ -193,10 +193,10 @@ shot('P13 movie', tAnd3b - 0.12, Z.s04 - 0.12, (ctx, t, lt) => {
   world(ctx, [[0, 100, -560, 0.86], [3.8, 160, -560, 0.92]], lt, w => {
     const g = w.createLinearGradient(0, -2000, 0, 0); g.addColorStop(0, '#2E3A59'); g.addColorStop(1, '#6A6A9A'); w.fillStyle = g; w.fillRect(-4000, -2400, 8000, 2400); SE.ground(w, 'road');
     rr(w, -300, -1200, 1300, 1200, 8); R.fillStroke(w, '#8A3A3A', 5); rr(w, 150, -420, 400, 420, 8); R.fillStroke(w, '#3A2418', 5);
-    w.save(); w.translate(350, -820); w.scale(1.05, 1.05); PK.marquee(w, t, [['NOW SHOWING', 48, '#4A4A48'], ['PUNCH-DRUNK LOVE', 72, C.red], ['ADAM SANDLER · 2002', 50]]); w.restore();
+    w.save(); w.translate(350, -700); w.scale(1.05, 1.05); PK.marquee(w, t, [['NOW SHOWING', 48, '#4A4A48'], ['PUNCH-DRUNK LOVE', 72, C.red], ['ADAM SANDLER · 2002', 50]]); w.restore();
     P.person(w, -700, 0, 1.05, 1, DAVID, { face: FACE(t > tPlan ? 'grin' : 'surprised', [0.8, -0.8], t), headTilt: -0.08, armN: { hand: [150, -440], grip: 'point' } }); });
   label(ctx, 'HOLLYWOOD', 400, 190, pop(t, tHolly - 0.05), { size: 60, col: C.yellow });
-  label(ctx, 'BORROWED HIS PUDDING PLAN', 560, 860, pop(t, tPlan - 0.05), { size: 50 });
+  label(ctx, 'BORROWED HIS PUDDING PLAN', 1380, 780, pop(t, tPlan - 0.05), { size: 46 });
   ST.grade(ctx, 'evening', 0.2);
 });
 
@@ -210,7 +210,7 @@ shot('P14 no cheat', Z.s04 - 0.12, tThe4 - 0.12, (ctx, t, lt) => {
     P.person(w, -620, 0, 1.08, 1, DAVID, { face: FACE(t > tExactly ? 'smug' : 'neutral', [-0.3, -0.1], t), armN: { hand: [60, -250], grip: 'relax' }, headTilt: 0.04 }); });
   ctx.save(); ctx.translate(1180, 480); ctx.scale(0.86, 0.86); ctx.rotate(0.02); X.flyer(ctx, { ticks: [[0, seg(t, tExactly - 0.05, tExactly + 0.25)], [0, seg(t, tRules - 0.05, tRules + 0.25)], [0, seg(t, tPaid1 - 0.05, tPaid1 + 0.25)]] }); ctx.restore();
   ctx.save(); ctx.translate(560, 220); ST.stampWord(ctx, 'NOT CHEATING', 76, seg(t, tCheat - 0.05, tCheat + 0.25), '#1F8A5A', -0.08); ctx.restore();
-  label(ctx, 'EXACTLY WHAT THE RULES PAID FOR', 1180, 880, pop(t, tPaid1 - 0.05), { size: 44, col: C.yellow });
+  label(ctx, 'EXACTLY WHAT THE RULES PAID FOR', 1180, 820, pop(t, tPaid1 - 0.05), { size: 44, col: C.yellow });
   ST.grade(ctx, 'office', 0.18);
 });
 // P15: the company wanted customers — it paid for barcodes
@@ -225,7 +225,7 @@ shot('P15 wanted/paid', tThe4 - 0.12, tAnd4 - 0.12, (ctx, t, lt) => {
 shot('P16 just barcode', tAnd4 - 0.12, tPhil - 0.12, (ctx, t, lt) => {
   paperBg(ctx);
   const u = E.out(seg(t, tAnd4, tJust)), z = 1 + lt * 0.02;
-  ctx.save(); ctx.translate(560, 640); ctx.scale(1.6, 1.6); X.cup(ctx, 1, { peeled: true }); ctx.restore();
+  ctx.save(); ctx.translate(520, 700); ctx.scale(2.3, 2.3); X.cup(ctx, 1, { peeled: true }); ctx.restore();
   ctx.save(); ctx.translate(lerp(640, 1280, u), lerp(560, 430, u)); ctx.rotate(lerp(0, -0.06, u)); ctx.scale(lerp(0.4, 2.0, u) * z, lerp(0.4, 2.0, u) * z); PK.barcode(ctx, 280, 150); ctx.restore();
   label(ctx, 'A BARCODE IS JUST A BARCODE', W / 2, 180, pop(t, tJust - 0.1), { size: 64, col: C.yellow });
   ST.grade(ctx, 'day', 0.12);
@@ -233,8 +233,8 @@ shot('P16 just barcode', tAnd4 - 0.12, tPhil - 0.12, (ctx, t, lt) => {
 // P17: Phillips later put it simply — the quote (hold to the segment end)
 shot('P17 quote', tPhil - 0.12, T + 0.01, (ctx, t, lt) => {
   world(ctx, [[0, -500, -470, 0.92], [5, -480, -470, 0.95]], lt, w => { SE.sky(w, t, { clouds: 3 }); SE.ground(w, 'road'); SE.houses(w, -2600, 4);
-    P.person(w, -820, 0, 1.08, 1, DAVID, { face: FACE(t > tComp + 1 ? 'smile' : 'neutral', [-0.4, -0.1], t), armN: { hand: [150, -340], grip: 'open' }, headTilt: 0.03 }); });
-  ctx.save(); ctx.translate(1180, 470); X.quoteCard(ctx, ['Companies still make', 'mistakes like this', 'all the time.'], '— DAVID PHILLIPS', seg(t, tComp - 0.1, tComp + 0.3)); ctx.restore();
+    P.person(w, -1100, 0, 1.08, 1, DAVID, { face: FACE(t > tComp + 1 ? 'smile' : 'neutral', [-0.4, -0.1], t), armN: { hand: [150, -340], grip: 'open' }, headTilt: 0.03 }); });
+  ctx.save(); ctx.translate(1250, 470); X.quoteCard(ctx, ['Companies still make', 'mistakes like this', 'all the time.'], '— DAVID PHILLIPS', seg(t, tComp - 0.1, tComp + 0.3)); ctx.restore();
   label(ctx, 'PHILLIPS, LATER:', 1000, 170, pop(t, tPhil - 0.05), { size: 46 });
   ST.grade(ctx, 'day', 0.18);
 });

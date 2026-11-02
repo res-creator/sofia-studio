@@ -132,15 +132,15 @@ shot('D1 work', Z.s04 - 0.12, tSo4 - 0.12, (ctx, t, lt) => {
 // D2 ("So some families bought a second car — with a different last digit."): the used-car lot; the family by an old car; plates …3 / …8
 shot('D2 car lot', tSo4 - 0.12, tOften - 0.12, (ctx, t, lt) => {
   const c = cam(keysAt([[0, 60, 0.88, 690], [4, 120, 0.92, 680]]), lt);
-  layer(ctx, c, 1, w => { S.carLot(w, t, { office: 1100 });
+  layer(ctx, c, 1, w => { S.carLot(w, t, { office: 760 });
     w.save(); w.translate(450, 180); S.car(w, { col: '#4F8A8B', kind: 'old', plate: 'RTV 478', tag: t > tSecond ? 'SOLD' : 'CHEAP', tagCol: t > tSecond ? C.red : C.yellow }); w.restore();
     S.person(w, -650, 180, 1.0, 1, S.LK.dad, { face: FACE(t > tDifferent ? 'smile' : 'thinking', [1, 0], t), armN: { hand: [150, -330], grip: 'point' } }, { stache: '#241A14' });
     S.person(w, -330, 180, 0.95, 1, S.LK.mom, { face: FACE('smile', [1, -0.1], t, 1), armN: { hand: [60, -240], grip: 'relax' } });
     S.person(w, -110, 180, 0.62, 1, S.LK.kid, { face: FACE('grin', [1, -0.4], t, 2), armN: { hand: [110, -380], grip: 'open' } }); });
   label(ctx, 'A SECOND CAR', 470, 150, pop(t, tSecond - 0.08), { size: 64, col: C.yellow });
   const u1 = pop(t, tDifferent - 0.1, 0.35), u2 = pop(t, tLast4 - 0.1, 0.35);
-  if (u1 > 0) { ctx.save(); ctx.translate(1000, 330); ctx.scale(u1 * 0.8, u1 * 0.8); S.plate(ctx, '…3', 1, { top: 'CAR 1', rot: -0.04 }); ctx.restore(); }
-  if (u2 > 0) { ctx.save(); ctx.translate(1380, 330); ctx.scale(u2 * 0.8, u2 * 0.8); S.plate(ctx, '…8', 1, { top: 'CAR 2', rot: 0.04, hl: seg(t, tLast4 + 0.2, tLast4 + 0.6) }); ctx.restore(); }
+  if (u1 > 0) { ctx.save(); ctx.translate(1000, 400); ctx.scale(u1 * 0.8, u1 * 0.8); S.plate(ctx, '…3', 1, { top: 'CAR 1', rot: -0.04 }); ctx.restore(); }
+  if (u2 > 0) { ctx.save(); ctx.translate(1380, 400); ctx.scale(u2 * 0.8, u2 * 0.8); S.plate(ctx, '…8', 1, { top: 'CAR 2', rot: 0.04, hl: seg(t, tLast4 + 0.2, tLast4 + 0.6) }); ctx.restore(); }
   ST.grade(ctx, 'golden', 0.16);
 });
 // D3 ("Often an older, cheaper one that polluted more."): close on the old car idling; cartoon grey puffs; OLDER · CHEAPER · MORE SMOKE

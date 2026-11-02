@@ -36,7 +36,7 @@ function plate(ctx, s, sc = 1, o = {}) {
   ctx.font = `76px ${F.black}`; const tw = ctx.measureText(s).width, k = Math.min(1, (w - 40) / tw), size = 76 * k;
   txt(ctx, s, 0, 46, size, INK, 'center', F.black);
   if (o.hl > 0) { ctx.font = `${size}px ${F.black}`; const full = ctx.measureText(s).width, last = ctx.measureText(s.slice(-1)).width, cx = full / 2 - last / 2;
-    ctx.save(); ctx.translate(cx, 18); ctx.strokeStyle = C.red; ctx.lineWidth = 9; ctx.lineCap = 'round'; ctx.beginPath(); ctx.ellipse(0, 0, last * 0.9, size * 0.62, -0.1, -Math.PI * 0.5, -Math.PI * 0.5 + Math.PI * 2 * E.out(clamp(o.hl))); ctx.stroke(); ctx.restore(); }
+    ctx.save(); ctx.translate(cx, 18); ctx.strokeStyle = C.red; ctx.lineWidth = 9; ctx.lineCap = 'round'; ctx.beginPath(); ctx.ellipse(0, 0, last * 0.9, size * 0.62, -0.1, -Math.PI * 0.5, -Math.PI * 0.5 + 6.27 * E.out(clamp(o.hl))); ctx.stroke(); ctx.restore(); }
   ctx.restore();
 }
 
