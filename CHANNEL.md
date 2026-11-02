@@ -23,15 +23,15 @@ If the topic (or the same story with another angle) is here, say so and take the
 | `wellsfargo_ep10/` | main | Wells Fargo overdraft: the $5 coffee that cost $40 | `the_5_coffee_that_cost_40_v2.mp4` | 67.6 s |
 | `scratch_ep11/` | main | Hertz/Thrifty AI damage scanner: 1-inch scuff → $440 | `the_440_scratch.mp4` | 70.2 s |
 | `tp_ep12/` | main | Toilet Paper Panic of 1973 (Carson's joke) | `toilet_paper_panic_1973.mp4` | 60.0 s |
-| `emu_ep12/` | `claude/vibrant-hopper-rwobhr` | The Great Emu War, Australia 1932 (**format reference**) | `the_great_emu_war.mp4` | 65.2 s |
+| `emu_ep12/` | main (via PR #44) | The Great Emu War, Australia 1932 (**format + style reference**) | `the_great_emu_war.mp4` | 65.2 s |
 | `ups_ep12/` | `claude/zen-lamport-5i4rua` | UPS avoids left turns: the shortest route isn't the cheapest | `ups_shortest_route.mp4` | 65.6 s |
-| `icecream_ep13/` | `claude/sweet-brahmagupta-7uiuaz` | Why the McDonald's ice cream machine is "always broken" (old explainer format) | `mcflurry_machine_broken.mp4` | 34.1 s |
+| `icecream_ep13/` | main (via PR #42) | Why the McDonald's ice cream machine is "always broken" (old explainer format) | `mcflurry_machine_broken.mp4` | 34.1 s |
 | `subscription_ep13/` | `claude/ep16-monopoly-script` | The Comcast cancellation call that wouldn't end (Ryan Block, 2014) | `the_comcast_call_that_wouldnt_end.mp4` | 63.1 s |
 | `hotel_ep14/` | `claude/stoic-einstein-g61524` | The $1,400 hotel room (Nassau, 2026) | `the_1400_hotel_room.mp4` | 69.6 s |
 | `pepsi_ep15/` | `claude/friendly-clarke-mo1xcl` | Pepsi Harrier jet, John Leonard 1996 (**published — don't remake**) | `the_pepsi_fighter_jet.mp4` | 41.7 s |
 | `monopoly_ep16/` | `claude/ep16-monopoly-script` | McDonald's Monopoly game fraud ("the inside man") | `the_monopoly_inside_man.mp4` | 40.4 s |
-| `lawnchair_ep17/` | `claude/friendly-gauss-qry8ah` | Larry Walters' lawn-chair balloon flight, 1982 (**format reference**) | `the_man_who_flew_in_a_lawn_chair.mp4` | 36.3 s |
-| `pudding_ep18/` | `claude/sweet-brahmagupta-7uiuaz` | The Pudding Guy: David Phillips, 12,000+ pudding cups → 1,253,000 airline miles (1999), new format | `the_pudding_guy.mp4` | 57.3 s |
+| `lawnchair_ep17/` | main (via PR #44) | Larry Walters' lawn-chair balloon flight, 1982 (**format + style reference**) | `the_man_who_flew_in_a_lawn_chair.mp4` | 36.3 s |
+| `pudding_ep18/` | main (via PR #42) | The Pudding Guy: David Phillips, 12,000+ pudding cups → 1,253,000 airline miles (1999), new format | `the_pudding_guy.mp4` | 57.3 s |
 Also: `covers_extra/` (covers only: credit card trap, gym no-shows — uploaded videos); `molasses_full/`, `molasses_calm/` (Boston Molasses Flood 1919,
 5.7 min long-form, branch `claude/vibrant-dijkstra-gnvqpv`). Not this channel: `survival/`, `whatif/`, `speak_*`, Sofia `ep/`–`ep3/`.
 Next topics in the owner's queue: Hoover free flights (UK, 1992) → Hanoi rat bounty (1902).
