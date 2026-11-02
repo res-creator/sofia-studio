@@ -2681,3 +2681,49 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "chipin" (TikTok, hard_cut). ElevenLabs only; narrator Sarah, heroine = Jessica, Priya = Lily (CAST barista, af_nova), Chloe = Matilda (CAST jess), tip = Bella.
+CAST.update({
+    "organiser": dict(voice="af_nova", speed=1.0, lang="en-gb", el="pFZP5JQG7iQjIQuC4Bku"),    # chipin: Priya, collecting money (Lily)
+    "colleague": dict(voice="af_jessica", speed=1.0, lang="en-gb", el="XrExE9yKIg1WjnnlVkGX"),  # chipin: Chloe, the colleague (Matilda; Jessica is the heroine)
+})
+EP["chipin"] = dict(
+    title='Скинься £50 на подарок',
+    hook_title=[['КОЛЛЕГИ СОБИРАЮТ', 'd'], ['£50 НА ПОДАРОК', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut", card_fade=True,
+    chunks={'c2_h': [['Priya, I wholeheartedly support', 'Прия, я от всего сердца за то,'], ['celebrating colleagues,', 'чтобы поздравлять коллег,'], ['but I must question a system where I fund', 'но я не могу не усомниться в системе, где я оплачиваю'], ["the happiness of someone I've barely met.", 'счастье человека, которого едва знаю.']]},
+    lines=[
+        ('hook_h', 'her', "[confused] ...Who's Chloe?", '…А кто такая Хлоя?'),
+        ('hook', 'nar', 'Рабочий чат: скидываемся по пятьдесят фунтов на подарок Хлое. Ты эту Хлою видела один раз. Как отказаться на английском? По одной фразе видно твой уровень. Проверим!', ''),
+        ('a1_h', 'her', '[awkwardly] No money! Sorry!', 'Нет денег! Извини!'),
+        ('a1_p', 'organiser', "[gasps] No money? Oh no! We'll collect for YOU next!", 'Нет денег? О нет! Тогда соберём на ТЕБЯ!'),
+        ('a1_nar', 'nar', 'Два слова — и сбор уже в твою пользу.', ''),
+        ('a2_h', 'her', "[shrugging] I don't know who is Chloe.", 'Я не знаю, кто есть Хлоя.'),
+        ('a2_p', 'organiser', '[surprised] She sits next to you!', 'Она сидит рядом с тобой!'),
+        ('a2_nar', 'nar', 'Не «who is Chloe», а «who Chloe is». И повернуться всё-таки стоило. Правильно так:', ''),
+        ('a2_tip', 'tip', "I don't know who Chloe is.", ''),
+        ('b1_h', 'her', '[politely] Could I give a bit less? Fifty is a lot for me.', 'Можно я дам поменьше? Пятьдесят для меня много.'),
+        ('b1_p', 'organiser', '[cheerfully] Of course! Just write why in the card.', 'Конечно! Просто напиши в открытке почему.'),
+        ('b1_nar', 'nar', 'Вежливо. Но теперь это написано в открытке.', ''),
+        ('b2_h', 'her', '[firmly] Count me out this time.', 'В этот раз без меня.'),
+        ('b2_p', 'organiser', '[counting] One, two, three... out? Oh, you!', 'Раз, два, три… без? Ой, ты шутница!'),
+        ('b2_nar', 'nar', 'Count me out — «без меня». А её посчитали два раза. Запоминай:', ''),
+        ('b2_tip', 'tip', 'Count me out this time.', ''),
+        ('c1_h', 'her', "[warmly] I'd love to sign the card, but I'll skip the money this time. It's a bit over my budget.", 'Я с радостью подпишу открытку, но деньги в этот раз пропущу. Это немного выше моего бюджета.'),
+        ('c1_p', 'organiser', '[warmly] Totally fine. Honestly, thank you for saying it.', 'Всё в порядке. Честно, спасибо, что сказала.'),
+        ('c1_nar', 'nar', 'Приём: участвуй, но назови свой лимит. Запоминай:', ''),
+        ('c1_tip', 'tip', "It's a bit over my budget.", ''),
+        ('c2_h', 'her', "[grandly] Priya, I wholeheartedly support celebrating colleagues, but I must question a system where I fund the happiness of someone I've barely met.", 'Прия, я от всего сердца за то, чтобы поздравлять коллег, но я не могу не усомниться в системе, где я оплачиваю счастье человека, которого едва знаю.'),
+        ('c2_c', 'colleague', '[awkwardly] ...Guys, my birthday was in March.', '…Ребята, мой день рождения был в марте.'),
+        ('c2_p', 'organiser', "[sheepishly] ...Okay. It's mine. Surprise?", '…Ладно. Это мой. Сюрприз?'),
+        ('c2_nar', 'nar', 'Мораль: прежде чем скидываться — проверь, чей день рождения.', ''),
+        ('outro', 'nar', 'А ты скидываешься на подарки коллегам? Пиши в комментарии! И подпишись, впереди ещё много новых серий.', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'РЕПУТАЦИЯ', 'ok': False, 'note': 'бедняжка'},
+           'A2': {'type': 'swap', 'bad': "I don't know who is Chloe.", 'bad_note': 'после who — прямой порядок слов', 'good': ["I don't know", 'who Chloe is.']},
+           'B1': {'type': 'eq', 'en': 'Could I give a bit less?', 'ru': '= Можно я дам поменьше?', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'count me out', 'ru': 'без меня', 'ex': ['Count me out this time.', 'в этот раз без меня.'], 'icon': 'bell'},
+           'C1': {'type': 'eq', 'en': "It's a bit over my budget.", 'ru': '= Это немного выше моего бюджета.', 'ex': [["I'd love to sign the card, but…", '= с радостью подпишу открытку, но…']]},
+           'C2': {'type': 'c2', 'vocab': [['wholeheartedly', '= от всего сердца'], ['barely', '= едва']], 'moral': ['ПРЕЖДЕ ЧЕМ СКИДЫВАТЬСЯ,', 'ПРОВЕРЬ, ЧЕЙ', 'ДЕНЬ РОЖДЕНИЯ'], 'moral_at': 0.35}},
+)
