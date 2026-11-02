@@ -324,6 +324,14 @@ if EPN in ("checkout", "password", "rich", "busy"):  # self-checkout sounds for 
         return norm(lp(x, 1800) * np.minimum(t*8, 1) * np.minimum((d - t)*8, 1), 0.4)
     sg_saw = lambda ph: 2*((ph) % 1) - 1
     SFX.update(beep=_beep(), err=_err(), alarm=_alarm(), servo=_servo())
+if EPN == "gymcoach":  # gym sounds for this episode only (own rng, so other episodes mix exactly as before)
+    _r = np.random.default_rng(41)
+    def _whistle():
+        d = 0.75; t = T(d); f = 2900 + 180*np.sign(np.sin(2*np.pi*28*t)); x = np.sin(2*np.pi*np.cumsum(f)/SR) + 0.25*bp(_r.standard_normal(len(t)), 2500, 4500)
+        return norm(x * np.minimum(t*60, 1) * np.minimum((d - t)*12, 1), 0.55)
+    def _rope():
+        t = T(0.3); return norm(lp(_r.standard_normal(len(t)), 900) * np.exp(-t*18) + 0.5*np.sin(2*np.pi*70*t)*np.exp(-t*20), 0.6)
+    SFX.update(whistle=_whistle(), rope=_rope())
 if EPN in ("wrongchat", "pretend", "password", "cantsayno", "rich", "avoidparty", "tour", "splitbill", "photo", "passport", "newhair", "idea"):  # phone sounds for this episode only (own rng, so other episodes mix exactly as before)
     _r = np.random.default_rng(11)
     def _send():
@@ -577,7 +585,7 @@ elif EPN == "market":
         tt = T(0.09); put(music, hp(rng.standard_normal(len(tt)), 4500)*np.exp(-tt*30), t0 + b*0.5, 0.12)
         m = mel[k % 16]
         if m is not None and (k // 16) % 2 == 1: put(music, accord(note(m), b*0.9), t0, 0.07)
-elif EPN in ("gym", "cancel"):
+elif EPN in ("gym", "cancel", "gymcoach"):
     bpm = 118; b = 60/bpm; K = 2
     chords = [[57, 60, 64], [53, 57, 60], [48, 52, 55], [55, 59, 62]]; roots = [33, 29, 36, 31]
     for k in range(int(DUR / b) + 8):
@@ -649,7 +657,7 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h", gymcoach="c2_c").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause
@@ -661,6 +669,7 @@ if EPN == "busy": c2n = sp["c2_b3"]["t"]   # silence after his speech through "T
 if EPN == "lunch": c2n = sp["c2_c"]["t"]   # silence after her speech until "You're right. I'm sorry."
 if EPN in ("togo", "wifi"): c2n = sp["c2_b"]["t"]
 if EPN == "idea": c2n = sp["c2_b"]["t"]   # silence after her speech until the boss: "That email's been in my inbox since Tuesday" (no black card)
+if EPN == "gymcoach": c2n = next(x for x in TL["scenes"] if x["id"] == "C2")["ev"]["towel"]   # silence after Chloe's line until the towel comes off (HEAD COACH badge)
 if EPN == "newhair": c2n = sp["c2_f"]["t"]   # silence after her speech until the friend's answer (no black card)
 if EPN == "passport": c2n = sp["c2_o"]["t"]   # silence after her speech until "Perfect answer! Passport, please."   # silence after her speech until "Of course! Here you go."
 if EPN == "seat": c2n = sp["c2_s"]["t"]   # silence after her speech until "Of course. Just so you know..."
