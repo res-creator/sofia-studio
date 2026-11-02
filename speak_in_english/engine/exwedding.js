@@ -272,7 +272,7 @@ function title(c, t) { const lines = TL.cfg.hook_title, rk2 = 1 + 0.012 * Math.s
 function coverBadge(c, t) { const p = 1 + 0.04 * Math.sin(t * 8); c.save(); c.translate(540, 1745); c.scale(p, p); c.rotate(-0.03); c.fillStyle = 'rgba(0,0,0,.25)'; rr(c, -340 + 6, -60 + 10, 680, 120, 60); c.fill(); c.fillStyle = '#FFE15A'; rr(c, -340, -60, 680, 120, 60); c.fill(); c.strokeStyle = C.oliveD; c.lineWidth = 6; rr(c, -340, -60, 680, 120, 60); c.stroke();
   fitTxt(c, 'SO... ARE YOU COMING?', 0, 4, 56, '#E0474C', 620); c.restore(); }
 function roomWindow(c, t, L, win) { const [x, y, w, h] = win; K.callWindow(c, x, y, w, h, 'MARK', '#2F3E5C', 1, (cc, ww, hh) => { callScene(cc, ww, hh, t, L); }, '#E7DCCB'); }
-function widget(c, t, sc, tag) { const L = sc.id; if (L === 'hook' || L === 'outro' || tag.startsWith('ui:') || tag === 'ship') return; const nar = SP[L.toLowerCase() + '_nar'], u = t - sc.s;
+function widget(c, t, sc, tag) { return; /* owner: no corner counter/icons in the video */ const L = sc.id; if (L === 'hook' || L === 'outro' || tag.startsWith('ui:') || tag === 'ship') return; const nar = SP[L.toLowerCase() + '_nar'], u = t - sc.s;
   if (u < 1.2 || (nar && t > nar.t - 0.2)) return;
   const chg = [[ev('A1', 'stamp') + 0.6, 'ПЛЮС ОДИН'], [ev('A2', 'date') + 0.6, 'ДАТА: 14 ИЮНЯ'], [ev('B2', 'shipc') + 0.8, 'НА КОРАБЛЕ']].filter(q => t >= q[0]); const last = chg[chg.length - 1];
   const since = last ? t - last[0] : 9, bubble = TL.speech.some(s => s.who !== 'nar' && s.who !== 'tip' && t >= s.t - 0.1 && t < s.t + s.d + 0.4);
@@ -288,9 +288,9 @@ function widget(c, t, sc, tag) { const L = sc.id; if (L === 'hook' || L === 'out
 function renderFrame(c, t) {
   c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; const sc = sceneAt(t), L = sc.id;
   if (L === 'outro') { const rows = [['A1', 'No. Never. Bye!'], ['B1', "I don't think I can make it."], ['B2', 'That ship has sailed.'], ['C1', "I think it's best if I sit this one out."]];
-    K.outro(c, t, { q: ['А ТЫ БЫ ПОШЛА', 'НА СВАДЬБУ БЫВШЕГО?'], rows, cta: ['ОТПРАВЬ ПОДРУГЕ, У КОТОРОЙ', 'БЫВШИЙ ЖЕНИТСЯ'], heroX: 190, heroS: 0.42,
+    K.outro(c, t, { q: ['А ТЫ БЫ ПОШЛА', 'НА СВАДЬБУ БЫВШЕГО?'], rows, cta: ['ОТПРАВЬ ПОДРУГЕ, У КОТОРОЙ', 'БЫВШИЙ ЖЕНИТСЯ'], heroX: 95, heroS: 0.34, heroY: [2350, 1985], ctaFit: true,
       hero: (cc, tt) => { const g = G.her, gp = G.bride;
-        K.put(cc, PRI_W, { t: tt, mood: 'happy', laugh: true, turn: -0.2, look: -0.4, armL: reach(gp, -1, -gp.sw * 2.0, gp.ySh - 330 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(gp, 1), items: {}, afterTorso: (c2, a) => lace(c2, a, gp), front: (c2, a) => flowerCrown(c2, a, gp) }, 1500, 330);
+        K.put(cc, PRI_W, { t: tt, mood: 'happy', laugh: true, turn: -0.2, look: -0.4, armL: reach(gp, -1, -gp.sw * 2.0, gp.ySh - 330 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(gp, 1), items: {}, afterTorso: (c2, a) => lace(c2, a, gp), front: (c2, a) => flowerCrown(c2, a, gp) }, 640, 330);
         K.put(cc, HER_D, { t: tt, mood: 'happy', laugh: true, turn: 0, look: 0, armL: reach(g, -1, -g.sw * 2.0, g.ySh - 260 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(g, 1), items: {} }, 0, 0); } });
     const u = t - SC.outro.s, kk = P(u, 1.35, 1.7); if (kk > 0) { const bh = 140 + rows.length * 115, y = 740 - bh / 2 + 150; UI.textFit(c, 'Nun9', 46, rows[0][1], 740); const wd = c.measureText(rows[0][1]).width;
       c.save(); c.globalAlpha = 0.55 * kk; c.fillStyle = C.white; c.fillRect(214, y - 34, wd + 16, 68); c.restore(); c.strokeStyle = C.red; c.lineWidth = 8; c.lineCap = 'round'; c.beginPath(); c.moveTo(212, y + 2); c.lineTo(212 + (wd + 16) * eOut(kk), y + 2); c.stroke(); }
