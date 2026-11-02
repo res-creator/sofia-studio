@@ -17,6 +17,8 @@ Mix the topics: not only hidden fees and corporate scandals, but also unusual, c
 | `amazon_ep6/` | Amazon returnless refunds ($5 item, $8–$12 shipping) | `amazon_keep_it_v2.mp4` |
 | `doordash_ep8/` | DoorDash old pay model 2017–2019: the tip replaced DoorDash's part of a $10 guarantee | `doordash_tip_v2.mp4` |
 | `scratch_ep11/` | Hertz/Thrifty AI damage scanner, Atlanta 2025: 1-inch scuff → $440, 7-day discount vs up-to-10-day reply (on hirkit) | `the_440_scratch.mp4` |
+| `tp_ep12/` | The Toilet Paper Panic of 1973: a TV joke without the "may" emptied shelves | `toilet_paper_panic_1973.mp4` |
+| `icecream_ep13/` | McDonald's ice cream machine "always broken": ~4 h nightly heat cycle, cycle fails, error codes, technician wait, 2024 DMCA repair exemption (first episode with the new first-seconds rules; + 6-frame carousel) | `mcflurry_machine_broken.mp4` |
 | `tp_ep12/` | Toilet Paper Panic of 1973: congressman's "may face" warning → Carson's joke without the "may" → empty shelves; twist: everyone's smart move WAS the shortage (on hirkit, `tpkit.js`) | `toilet_paper_panic_1973.mp4` |
 Also: `covers_extra/` (credit card trap, gym no-shows — uploaded videos). Ideas backlog: `IDEAS.md`. Captions: `CAPTIONS.md`.
 
@@ -49,7 +51,7 @@ Approve the script BEFORE generating; generate each line once. Verify with speec
 
 ## Code layout (copy the latest episode, never edit old episodes)
 - New episodes are built on **hirkit** (`hirkit/`: `rig.js` characters, expressions, front busts; `light.js`; `collage.js`; `edit.js` shot list, cuts on words, tear transition).
-  Use it as is; extend it only in small, backwards-compatible steps. Latest reference episode: `scratch_ep11/` (`scankit.js` sets/props, `episode.js` shots,
+  Use it as is; extend it only in small, backwards-compatible steps. Latest reference episode: `icecream_ep13/` (`mcfkit.js` sets/props, `episode.js` shots + `carousel` mode, end card; before it `scratch_ep11/`, `tp_ep12/`) (`scankit.js` sets/props, `episode.js` shots,
   `mix.py`, `speech.py` real speech start/end, `stt_check.py`, `cover.js`, `build.sh`). Put new sets and props in the episode's own kit file.
 - Engine: `mcd_ep1/engine.js` (read-only: new episodes use only its voice timings and subtitles) (camera keys, parallax fg, motion blur on fast moves, world blur, subtitles, CLI `video | still t1,t2 out.png | cues`).
 - Primitives: `tests/mcd_collage/kit.js` (cut, rr, tag, coin, bill, sprite, paper texture, palette, fonts).
@@ -75,11 +77,12 @@ Illustrative numbers are labelled (EXAMPLE / "Say,"). Historical practices are s
 
 ## Retention (use sensibly)
 Hook in the first 1–2 s where picture + voice + on-screen text say the same thing; open loop (question answered at the end); keep something new happening;
-works with sound off; ironic, idea-changing last line; last frame echoes the first so a re-watch loops. No "follow/like/comment", no forced questions.
+works with sound off; ironic, idea-changing last line; last frame echoes the first so a re-watch loops. No "follow/like" asks.
+The only allowed ask is the end-card question to the viewer (see "First seconds & last frame" below).
 
 ## US TikTok playbook (from the ep 8 review; apply to every new episode)
 Algorithm (not official, but every source agrees): watch time, completion and rewatches first, then shares and saves; likes count least.
-1. Frame 0 = the conflict in big words + numbers (e.g. "$9 TIP → DRIVER +$0") in the top area, plus a small date/"EXAMPLE" stamp so nobody calls it misleading. Most people watch muted.
+1. Frame 0 = the conflict in big words + numbers (e.g. "$9 TIP → DRIVER +$0") in the top area, plus a small "EXAMPLE"/place stamp so nobody calls it misleading (no date as the opening image — see "First seconds" below). Most people watch muted.
 2. No smear in the first 2 s: slow, clean camera moves; the key card fully in frame.
 3. "You" + an everyday action (tipping, returns, subscriptions, rent). Self-relevance stops the thumb.
 4. Never reset to an empty/zero scene after the hook: transform the hook objects straight into the explanation. Explain the colour code once (legend).
@@ -88,9 +91,20 @@ Algorithm (not official, but every source agrees): watch time, completion and re
 7. A little character humor that doesn't bend facts: the hero's deadpan look at the camera, a recurring object with personality (the DoorDash safe winks, the help bot in ep 11).
 8. Strong twist + last frame echoes the first (loop). Hold the final number a beat before the hard cut.
 9. Series identity for follows: same opener style and visual language every episode (the cast and settings can change).
-10. Comments: hot-topic angle (tipping culture, hidden fees). The caption may end with a natural question; the video itself has no "comment/follow" asks.
+10. Comments: hot-topic angle (tipping culture, hidden fees). The caption may end with a natural question; the video ends on the end-card question (rule below), no "follow/like" asks.
 11. Saves: when the facts allow, one "what you can do" line (in the caption or pinned comment if not in the approved script).
 12. Before delivery: an independent review pass (a fresh reviewer scores hook / middle retention / sound-off clarity / twist / comments / shares / saves / follow / humor / cover).
+
+## First seconds & last frame (owner's rules from episode 13 — stats show viewers leave in the 1st second; these override older notes)
+1. Frame 0.0 s: a character's face with a strong emotion (`ANGRY`/shocked bust, anger mark) + a big headline or number already readable. No date, calendar,
+   landscape, slow intro, and no "?" in place of a number. A historical/place label may stay small, but never as the opening image.
+2. The first line is about the viewer, with "you" + an everyday action (e.g. "You want a McFlurry. 'Sorry, the machine is broken.' AGAIN.").
+3. Sound from 0.0 s: an error beep, hit or notification under the first word (louder than the usual fx×0.3). Never silence at the start.
+4. Something moves from the first frame: camera push-in, text popping/settling, the character reacting.
+5. Last frame: a question to the viewer that invites comments (e.g. "Is the machine broken at YOUR McDonald's? 👇"), held ≥ 2 s, over an echo of frame 0.
+   Subtitles end before it. Emoji on canvas: register `/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf`.
+6. Also deliver 6 key frames as PNG 1080x1920 without subtitles for a TikTok photo carousel (`node episode.js carousel <dir>`): hook, 3–4 key facts/numbers, the question.
+7. Hashtags in the upload kit: lowercase only.
 
 ## Quality checklist before reporting "done"
 1. Stills sheet at key moments + a dense sheet (every 0.5 s) of the final video — look for objects passing under/through each other (draw order!),
