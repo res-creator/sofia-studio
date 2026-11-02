@@ -200,8 +200,9 @@ function levelIntroFast(c, t, sc) { const L = sc.id, i = LVS.indexOf(L); if (i <
   const col = LVCOL[L], pw = 128, gap = 14, x0 = (W - (6 * pw + 5 * gap)) / 2, px = x0 + i * (pw + gap) + pw / 2, py = 253;
   const inK = eOut(P(u, 0, 0.3)), outK = eIO(P(u, 0.82, 1.15)), cx = lerp(540, px, outK), cy = lerp(960, py, outK), R = lerp(0, 1300, inK) * (1 - outK) + 40 * outK; if (R < 2) return;
   c.save(); c.beginPath(); c.arc(cx, cy, R, 0, TAU); c.clip(); c.fillStyle = col; c.fillRect(0, 0, W, HH);
-  const s = eBack(P(u, 0.12, 0.45), 2.2) * lerp(1, 0.18, outK); c.translate(cx, cy); c.scale(s, s); c.rotate(-0.08); c.textAlign = 'center'; c.textBaseline = 'middle';
-  UI.font(c, 'Unb9', 400); c.fillStyle = 'rgba(0,0,0,.18)'; c.fillText(L, 14, 24); UI.strokeText(c, L, 0, 0, C.white, C.oliveD, 22); UI.font(c, 'Unb7', 54); c.fillStyle = C.white; c.fillText(LVNAME[L], 0, 250); c.restore(); }
+  c.save(); c.translate(cx, cy); c.rotate(u * 0.6); c.fillStyle = 'rgba(255,255,255,.13)'; for (let k = 0; k < 18; k++) { c.rotate(TAU / 18); c.beginPath(); c.moveTo(0, 0); c.lineTo(1400, -60); c.lineTo(1400, 60); c.fill(); } c.restore();   // radial speed lines (same as UI.levelIntro)
+  const s = eBack(P(u, 0.12, 0.45), 2.2) * lerp(1, 0.18, outK); c.translate(cx, cy); c.scale(s, s); c.rotate(lerp(-0.2, -0.05, eOut(P(u, .12, .5)))); c.textAlign = 'center'; c.textBaseline = 'middle';
+  UI.font(c, 'Unb9', 400); c.fillStyle = 'rgba(0,0,0,.18)'; c.fillText(L, 14, 24); UI.strokeText(c, L, 0, 0, C.white, C.oliveD, 22); c.globalAlpha = clamp(P(u, .3, .5)); UI.font(c, 'Unb7', 54); c.fillStyle = C.white; c.fillText(LVNAME[L], 0, 250); UI.font(c, 'Nun9', 44); c.fillText('уровень', 0, -250); c.restore(); }
 function holeHud(c, t) { const n = holeCount(t), last = [ev('A1', 'tip'), ev('B1', 'hole')].filter(x => x < 1e8).reduce((a, q) => Math.max(a, 1 - clamp(Math.abs(t - q - 0.15) / 0.35)), 0);
   c.save(); c.translate(200, 1555); c.scale(1 + 0.15 * last, 1 + 0.15 * last); c.rotate(-0.04); c.fillStyle = 'rgba(0,0,0,.2)'; rr(c, -150 + 6, -38 + 8, 300, 76, 38); c.fill(); c.fillStyle = C.red; rr(c, -150, -38, 300, 76, 38); c.fill(); c.strokeStyle = C.oliveD; c.lineWidth = 6; c.stroke(); fitTxt(c, 'ДЫРКИ: ' + n, 0, 3, 38, C.white, 270); c.restore(); }
 function phoneInsert(c, t) { const a = ev('C1', 'phone'), b = ev('C1', 'gulp') - 0.1; if (t < a || t > b) return; const k = eBack(P(t, a, a + 0.3), 1.8) * (1 - eIn(P(t, b - 0.25, b))); if (k <= 0) return;
@@ -213,9 +214,8 @@ function hud(c, t, sc) { UI.card(c, t, sc); UI.captions(c, t); UI.sparkles(c, t)
 
 function renderFrame(c, t) {
   c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; const sc = sceneAt(t), L = sc.id;
-  if (L === 'outro') { K.outro(c, t, { q: ['А ЧТО БЫ ТЫ СКАЗАЛ', 'СОСЕДУ?'], rows: [['A2', "You're making a lot of noise."], ['B1', 'Could you stop drilling, please?'], ['B2', "I'm at the end of my rope."], ['C1', 'I appreciate the effort, but…'], ['C2', 'I must insist…']], cta: ['ОТПРАВЬ', 'ДРУГУ'], heroX: 190, heroS: 0.42,
-    hero: (cc, tt) => { const g = G.her, gr = G.rocky; K.put(cc, RCK, { t: tt, mood: 'happy', laugh: true, turn: -0.2, look: -0.4, armL: reach(gr, -1, -gr.sw * 2.0, gr.ySh - 330 + Math.sin(tt * 8) * 30, { planar: true }), armR: reach(gr, 1, gr.sw * 1.6, gr.ySh + 40), items: { R: drillItem(0) }, front: headlamp(true) }, 1500, 60);
-      K.put(cc, HER, { t: tt, mood: 'happy', laugh: true, turn: 0, look: 0, armL: reach(g, -1, -g.sw * 2.0, g.ySh - 260 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(g, 1), items: {} }, 0, 0); } });
+  if (L === 'outro') { K.outro(c, t, { q: ['А ЧТО БЫ ТЫ СКАЗАЛ', 'СОСЕДУ?'], rows: [['A2', "You're making a lot of noise."], ['B1', 'Could you stop drilling, please?'], ['B2', "I'm at the end of my rope."], ['C1', 'I appreciate the effort, but…']], cta: ['ОТПРАВЬ ТОМУ, У КОГО', 'СОСЕД-РЕМОНТНИК'], heroX: 190, heroS: 0.42,
+    hero: (cc, tt) => { const g = G.her; K.put(cc, HER, { t: tt, mood: 'happy', laugh: true, turn: 0, look: 0, armL: reach(g, -1, -g.sw * 2.0, g.ySh - 260 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(g, 1), items: {} }, 0, 0); } });
     Hq.grain(c, W, HH, t, 0.05); UI.outroIntro(c, t); return; }
   const fr = Math.min(CAM.length - 1, Math.round(t * FPS)), cam = CAM[fr], sh = shake(t), tag = cam.tag || 'wide';
   const r = drawWorld(c, t, L, cam, tag, sh), heads = r.heads, M = r.M, proj = p => ({ x: M.a * p.x + M.c * p.y + M.e, y: M.b * p.x + M.d * p.y + M.f }); Hq.vignette(c, W, HH, 0.22);
