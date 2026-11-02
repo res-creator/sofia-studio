@@ -213,8 +213,9 @@ function cues() {
   const c = [['slam', 0.0, 2.0], ['ding', 0.02, 1.4], ['pop', 0.1, 1.2], ['pop', Math.max(0.15, t1946 - 0.05), 0.6]];
   c.push(['cut', tMore - 0.12, 0.35], ['paper', tMore - 0.1, 0.8], ['pop', tAmerica - 0.05, 0.5], ['pop', tMore - 0.1, 0.45], ['pop', tSmoke1 - 0.15, 0.45], ['pop', tThan - 0.1, 0.45], ['pop', tThan + 0.25, 0.4]);
   c.push(['cut', Z.s02 - 0.12, 0.35], ['pop', Z.s02, 0.5], ['whoosh', Z.s02 + 0.1, 0.4], ['cut', tSurvey - 0.12, 0.35], ['stamp', tSurvey + 0.05, 0.7]);
-  for (let k = 0; k < 28; k++) c.push(['tick', tSurvey + 0.1 + k * 0.1, 0.5]);
-  c.push(['rise', tNum, 0.3], ['stamp', tDoctors2, 0.9]);
+  // counter ticks only after the spoken number (they masked "five hundred" for STT and viewers)
+  for (let k = 0; k < 8; k++) c.push(['tick', end('s02') + 0.05 + k * 0.08, 0.25]);
+  c.push(['stamp', end('s02') + 0.1, 0.6]);
   c.push(['cut', Z.s03 - 0.12, 0.35], ['pop', Z.s03, 0.45], ['stamp', tWho, 0.6], ['buzzer', tNot, 0.5], ['whoosh', tCig3 - 0.3, 0.5], ['steps', tOwn3 - 0.2, 0.5], ['pop', tAgency - 0.1, 0.5]);
   c.push(['cut', Z.s04 - 0.12, 0.35], ['steps', Z.s04, 0.5], ['applause', Z.s04 + 0.2, 0.15], ['cut', tDocs4 - 0.12, 0.35], ['tap', tDocs4 + 0.25, 0.8], ['tap', tDocs4 + 0.42, 0.8], ['tap', tDocs4 + 0.6, 0.8], ['pop', tDocs4 + 0.05, 0.4]);
   c.push(['cut', Z.s05 - 0.12, 0.35], ['whoosh', tHanded - 0.05, 0.4], ['stamp', tFree, 0.9]);

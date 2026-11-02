@@ -80,7 +80,7 @@ shot('B1 not doctor', Z.s02 - 0.12, tA2 - 0.12, (ctx, t, lt) => {
 shot('B2 magazine', tA2 - 0.12, Z.s03 - 0.12, (ctx, t, lt) => {
   const land = tHealth, u = E.in(seg(t, land - 0.35, land));
   ctx.save(); ctx.translate(shake(t, land, 8), shake(t, land + 0.02, 10)); S.deskTop(ctx, 0);
-  ctx.save(); ctx.translate(560, lerp(-500, 990, u)); ctx.rotate(lerp(0.3, -0.04, u)); const z = lerp(1.4, 1.08, u) * (1 + seg(t, land, land + 3) * 0.04); ctx.scale(z, z); S.magazine(ctx, 1); ctx.restore(); ctx.restore();
+  ctx.save(); ctx.translate(560, lerp(700, 990, u)); ctx.rotate(lerp(0.25, -0.04, u)); const z = lerp(1.6, 1.08, u) * (1 + seg(t, land, land + 3) * 0.04); ctx.scale(z, z); S.magazine(ctx, 1); ctx.restore(); ctx.restore();
   ctx.save(); ctx.translate(840, 450); ctx.rotate(0.08); const k = pop(t, t1917 - 0.08, 0.35); if (k > 0) { ctx.scale(k, k); ST.calCard(ctx, 'PRINTED IN', '1917', { w: 330, h: 300 }); } ctx.restore();
   label(ctx, 'A HEALTH MAGAZINE', 360, 440, pop(t, at('s02', 'magazine') - 0.05), { size: 48, rot: -0.05 });
   ST.grade(ctx, 'office', 0.18);
@@ -204,7 +204,7 @@ shot('H1 newspapers', Z.s08 - 0.12, tAnd8 - 0.12, (ctx, t, lt) => {
 shot('H2 pan', tAnd8 - 0.12, Z.s09 - 0.12, (ctx, t, lt) => {
   ST.bg(ctx, '#E7D9BE'); ctx.fillStyle = 'rgba(255,255,255,0.25)'; for (let y = 0; y < 900; y += 80) ctx.fillRect(0, y, W, 4);
   ctx.fillStyle = '#3A3A40'; ctx.fillRect(0, 900, W, 1020); ctx.fillStyle = '#55555C'; ctx.fillRect(0, 900, W, 30);
-  const z = lerp(0.95, 1.65, E.out(seg(t, tBacon8 - 0.1, tBacon8 + 0.4))) * (1 + lt * 0.02);
+  const z = lerp(1.25, 1.75, E.out(seg(t, tBacon8 - 0.1, tBacon8 + 0.4))) * (1 + lt * 0.02);
   ctx.save(); ctx.translate(500 + shake(t, tBacon8 + 0.1, 6), lerp(1060, 1000, seg(t, tBacon8 - 0.1, tBacon8 + 0.4))); ctx.scale(z, z); S.pan(ctx, 1, t); ctx.restore();
   label(ctx, 'THE HEARTIEST BREAKFAST?', 540, 470, pop(t, tHeartiest - 0.05), { size: 56 });
   label(ctx, 'BACON & EGGS', 540, 1370, pop(t, tBacon8 - 0.02), { size: 84, col: C.yellow, rot: 0.03 });
@@ -249,7 +249,7 @@ shot('J1 slogan', Z.s10 - 0.12, tEnd, (ctx, t, lt) => {
   ctx.save(); ctx.translate(540, 1240); S.plate(ctx, 1.3); S.baconStrip(ctx, -70, -40, 0.9, -0.1, 0); S.baconStrip(ctx, -50, 6, 0.9, 0.05, 1); S.egg(ctx, 110, -20, 0.8); ctx.restore();
   label(ctx, 'EAT IT', 230, 1365, pop(t, Z.s10), { size: 60, col: PAL.green, fg: PAL.cream, rot: -0.05 });
   label(ctx, 'SKIP IT', 830, 1365, pop(t, tSkip - 0.05), { size: 60, col: PAL.navy, fg: PAL.cream, rot: 0.05 });
-  const u = pop(t, tJust - 0.1, 0.35); if (u > 0) { ctx.save(); ctx.translate(540, 580); ctx.rotate(-0.02); ctx.scale(u, u); S.sampler(ctx, ['BREAKFAST IS THE MOST', 'IMPORTANT', 'MEAL OF THE DAY'], 900, 400, { hl: 1 });
+  const u = pop(t, Z.s10, 0.35); if (u > 0) { ctx.save(); ctx.translate(540, 580); ctx.rotate(-0.02); ctx.scale(u, u); S.sampler(ctx, ['BREAKFAST IS THE MOST', 'IMPORTANT', 'MEAL OF THE DAY'], 900, 400, { hl: 1 });
     const v = seg(t, tWrote - 0.15, tWrote + 0.2); if (v > 0) { ctx.save(); ctx.strokeStyle = C.red; ctx.lineWidth = 8; ctx.beginPath(); ctx.ellipse(0, 20, 215, 58, -0.03, -Math.PI / 2, -Math.PI / 2 + 6.27 * clamp(v * 1.4)); ctx.stroke(); ctx.restore();
       ctx.save(); ctx.translate(0, 196); ctx.scale(E.back(v, 2), E.back(v, 2)); S.priceTag(ctx, 'WHO PAID?', Math.sin((t - tWrote) * 5) * 0.12 * Math.exp(-(t - tWrote) * 1.5)); ctx.restore(); } ctx.restore(); }
   ST.grade(ctx, 'day', 0.18);
@@ -302,7 +302,7 @@ function cues() {
   c.push(['cut', Z.s08 - 0.12, 0.35], ['flip', Z.s08 + 0.1, 0.6], ['cut', tAnd8 - 0.12, 0.35], ['sizzle', tAnd8, 1.0], ['pop', tHeartiest - 0.05, 0.4], ['zoom', tBacon8 - 0.15, 0.6], ['thump', tBacon8 + 0.1, 0.6]);
   c.push(['cut', Z.s09 - 0.12, 0.35], ['pop', Z.s09 + 0.05, 0.4], ['cut', tThe2 - 0.12, 0.35], ['scratch', tSeller - 0.3, 0.7], ['scratch', tSeller + 0.2, 0.7], ['pop', tSeller - 0.05, 0.4]);
   c.push(['cut', tAnd9 - 0.12, 0.35], ['tag', tSaid - 0.05, 0.4], ['kaching', tSales, 0.7], ['rise', tSales + 0.1, 0.5], ['stamp', tUp, 0.8]);
-  c.push(['cut', Z.s10 - 0.12, 0.35], ['pop', Z.s10, 0.4], ['pop', tSkip - 0.05, 0.4], ['whoosh', tJust - 0.15, 0.4], ['tag', tWrote, 0.6]);
+  c.push(['cut', Z.s10 - 0.12, 0.35], ['pop', Z.s10, 0.4], ['pop', tSkip - 0.05, 0.4], ['whoosh', Z.s10 + 0.05, 0.3], ['tag', tWrote, 0.6]);
   c.push(['cut', tEnd, 0.4], ['shutter', tEnd + 0.02, 0.6], ['pop', tEnd + 0.05, 0.6], ['blip', tEnd + 0.4, 0.4]);
   return c;
 }

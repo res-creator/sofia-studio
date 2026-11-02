@@ -294,7 +294,7 @@ else if (mode === 'still') {
   fs.writeFileSync(a2, sheet.toBuffer('image/png'));
 } else if (mode === 'frame') { const cv = createCanvas(W, H), ctx = cv.getContext('2d'); frame(ctx, +a1, { nosubs: a3 === 'nosubs' }); fs.writeFileSync(a2, cv.toBuffer('image/png')); }
 else if (mode === 'carousel') {
-  const KEY = [['01_hook', 0.8], ['02_2000_hours', tHours + 0.5], ['03_1000_max', tMax + 0.4], ['04_fined', tFine + 0.4], ['05_twist_profit', tMoved + 0.6], ['06_question', tEnd + 1.0]];
+  const KEY = [['01_hook', 0.8], ['02_2000_hours', tHours + 0.5], ['03_1000_max', tMax + 0.4], ['04_fined', tFine + 0.4], ['05_twist_profit', Z.s09 - 0.25], ['06_question', tEnd + 1.0]];
   fs.mkdirSync(a1, { recursive: true }); const cv = createCanvas(W, H), ctx = cv.getContext('2d');
   for (const [n, t] of KEY) { frame(ctx, t, { nosubs: true }); fs.writeFileSync(`${a1}/${n}.png`, cv.toBuffer('image/png')); } console.log('carousel ok', KEY.map(k => k[1].toFixed(2)).join(' '));
 }

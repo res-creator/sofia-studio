@@ -75,17 +75,21 @@ Not her looks.
 Her breath.
 
 20
-00:00:30,686 --> 00:00:33,054
+00:00:30,686 --> 00:00:33,739
 In seven years, revenue reportedly jumped
 
 21
-00:00:33,054 --> 00:00:36,646
-from $115,000 to over $8 million.
+00:00:33,739 --> 00:00:36,398
+from $115,000
 
 22
-00:00:36,646 --> 00:00:37,819
-They didn't sell a cure.
+00:00:36,398 --> 00:00:38,238
+to over $8 million.
 
 23
-00:00:37,819 --> 00:00:38,970
+00:00:38,238 --> 00:00:39,411
+They didn't sell a cure.
+
+24
+00:00:39,411 --> 00:00:40,570
 They sold the fear.

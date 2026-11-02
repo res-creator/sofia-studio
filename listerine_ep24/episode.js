@@ -226,15 +226,15 @@ shot('H edna', Z.s08 - 0.12, Z.s09 - 0.12, (ctx, t, lt) => {
   ST.grade(ctx, 'office', 0.2);
 });
 // I (s09 "In seven years, revenue reportedly jumped from $115,000 to over $8 million."): two bars; the right one shoots up
-const tSeven = at('s09', 'seven'), tRev = at('s09', 'revenue'), tRep = at('s09', 'reportedly'), t115 = at('s09', '115'), tTo = at('s09', 'to'), t8 = at('s09', '8'), tMil = at('s09', 'million');
+const tSeven = at('s09', 'seven'), tRev = at('s09', 'revenue'), tRep = at('s09', 'reportedly'), t115 = at('s09', 'one'), tTo = at('s09', 'to'), t8 = at('s09', 'eight'), tMil = at('s09', 'million');
 shot('I revenue', Z.s09 - 0.12, Z.s10 - 0.12, (ctx, t, lt) => {
   ST.bg(ctx, PAL.paper); ctx.fillStyle = 'rgba(77,141,255,0.12)'; for (let i = 0; i < 30; i++) ctx.fillRect(0, i * 70, W, 3);
   const base = 1300;
   ctx.strokeStyle = PAL.ink; ctx.lineWidth = 8; ctx.beginPath(); ctx.moveTo(110, base); ctx.lineTo(970, base); ctx.stroke();
-  const u1 = E.back(seg(t, t115 - 0.1, t115 + 0.3), 1.6), hb = 24 * u1; if (u1 > 0) { CL.cutout(ctx, () => rr(ctx, 210, base - hb, 180, hb, 6), C.yellow, { elev: 1 }); }
+  const u1 = E.back(seg(t, tRev - 0.1, tRev + 0.3), 1.6), hb = 24 * u1; if (u1 > 0) { CL.cutout(ctx, () => rr(ctx, 210, base - hb, 180, hb, 6), C.yellow, { elev: 1 }); }
   const g = E.out(seg(t, tTo, tMil + 0.5)), h2 = lerp(24, 500, g); if (t > tTo - 0.05) { CL.cutout(ctx, () => rr(ctx, 620, base - h2, 220, h2, 8), '#2FA37E', { elev: 1.4 });
     for (let i = 0; i < Math.floor(h2 / 120); i++) { ctx.save(); ctx.translate(730, base - 40 - i * 120); ctx.globalAlpha = 0.9; txt(ctx, '$', 0, 30, 80, 'rgba(255,253,248,0.6)'); ctx.restore(); } }
-  label(ctx, '$115,000', 300, base - hb - 80, pop(t, t115 - 0.05), { size: 64, col: C.yellow });
+  label(ctx, '$115,000', 300, base - hb - 80, pop(t, tRev - 0.05), { size: 64, col: C.yellow });
   if (t > tTo - 0.05) { const v = t < t8 ? lerp(115000, 8000000, E.inOut(seg(t, tTo, t8))) : 8000000; const s = '$' + Math.round(v / 1000).toLocaleString('en-US') + ',000' + (t > tMil - 0.1 ? '+' : '');
     label(ctx, s, 680, base - h2 - 80, 1, { size: 64, col: C.red, fg: PAL.cream, rot: 0.03, maxW: 600 }); }
   label(ctx, 'REVENUE', 300, 520, pop(t, tRev - 0.05), { size: 64 });
@@ -263,8 +263,8 @@ shot('K end', tEnd, T + 0.01, (ctx, t, lt) => { hookScene(ctx, t, lt + 1, 1.14, 
 // ---------- edit, overlays, subtitles ----------
 SH.sort((a, b) => a.t0 - b.t0);
 const ED = makeEdit(SH, W, H);
-const SPLIT = { s01: [3, 4], s02: [5, 5], s03: [3, 3], s04: [4, 3, 5], s05: [4, 5], s06: [6, 4, 7], s07: [3, 6], s08: [2, 3, 2], s09: [6, 6], s10: [5, 4] };
-const REPL = [];
+const SPLIT = { s01: [3, 4], s02: [5, 5], s03: [3, 3], s04: [4, 3, 5], s05: [4, 5], s06: [6, 4, 7], s07: [3, 6], s08: [2, 3, 2], s09: [6, 6, 4], s10: [5, 4] };
+const REPL = [[/one hundred fifteen thousand dollars/, '$115,000'], [/eight million/, '$8 million']];
 function subs() {
   const G = [];
   Object.keys(Z).forEach(id => { const ws = V.words(id); let k0 = 0; SPLIT[id].forEach(n => { G.push({ id, words: ws.slice(k0, k0 + n) }); k0 += n; }); if (k0 !== ws.length) throw new Error(`subtitle split ${id}: ${k0} vs ${ws.length}`); });
@@ -278,7 +278,7 @@ function frame(ctx, t, o = {}) {
   ED.frame(ctx, t);
   ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); overlays(ctx, t); ctx.restore();
   ST.paper(ctx);
-  if (!o.nosubs) EN.drawSubtitles(ctx, t, SUBS, { ...ST.SUBS, highlight: ['floors', 'wounds', 'barely', '1921', 'halitosis', 'condition', 'never', 'edna', 'breath', '$115000', '$8', 'million', 'fear'] });
+  if (!o.nosubs) EN.drawSubtitles(ctx, t, SUBS, { ...ST.SUBS, highlight: ['floors', 'wounds', 'barely', '1921', 'halitosis', 'condition', 'never', 'edna', 'breath', '$115,000', '$8', 'million.', 'fear'] });
 }
 
 // ---------- sound cues (for mix.py) ----------
@@ -294,7 +294,7 @@ function cues() {
   c.push(['cut', tAnd6 - 0.12, 0.35], ['whoosh', at('s06', 'friends') - 0.1, 0.4], ['pop', tNever6 - 0.1, 0.5]);
   c.push(['cut', Z.s07 - 0.12, 0.35], ['ding', Z.s07 + 0.1, 0.4], ['pop', tEdna - 0.05, 0.5], ['flip', tOften - 0.1, 0.6], ['wah', tNeverB + 0.3, 0.5]);
   c.push(['cut', Z.s08 - 0.12, 0.35], ['pop', Z.s08, 0.4], ['sparkle', tLooks - 0.05, 0.4], ['puff', tBreath, 0.8], ['buzzer', tBreath + 0.1, 0.5]);
-  c.push(['cut', Z.s09 - 0.12, 0.35], ['pop', tRev - 0.05, 0.4], ['pop', tSeven - 0.05, 0.4], ['tag', t115 - 0.05, 0.5], ['rise', tTo, 0.6], ['kaching', tMil, 0.7], ['coins', tMil + 0.1, 0.6]);
+  c.push(['cut', Z.s09 - 0.12, 0.35], ['pop', tRev - 0.05, 0.4], ['pop', tSeven - 0.05, 0.4], ['tag', t115 - 0.25, 0.25], ['rise', tTo, 0.3], ['kaching', end('s09') + 0.05, 0.6], ['coins', end('s09') + 0.15, 0.5]);
   c.push(['cut', Z.s10 - 0.12, 0.35], ['pop', Z.s10 + 0.1, 0.4], ['snap', tCure, 0.6], ['coins', tSold, 0.5], ['stamp', tFear + 0.1, 1.0]);
   c.push(['cut', tEnd, 0.4], ['pop', tEnd + 0.05, 0.6], ['blip', tEnd + 0.4, 0.4]);
   return c;

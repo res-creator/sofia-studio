@@ -32,10 +32,17 @@ If the topic (or the same story with another angle) is here, say so and take the
 | `monopoly_ep16/` | `claude/ep16-monopoly-script` | McDonald's Monopoly game fraud ("the inside man") | `the_monopoly_inside_man.mp4` | 40.4 s |
 | `lawnchair_ep17/` | main (via PR #44) | Larry Walters' lawn-chair balloon flight, 1982 (**format + style reference**) | `the_man_who_flew_in_a_lawn_chair.mp4` | 36.3 s |
 | `pudding_ep18/` | main (via PR #42) | The Pudding Guy: David Phillips, 12,000+ pudding cups → 1,253,000 airline miles (1999), new format | `the_pudding_guy.mp4` | 57.3 s |
-| `hoover_ep19/` | main (via PR #42) | Hoover free flights, UK 1992: spend £100 → 2 free flights; £119 vacuum; ~200,000 claims; $60m charges; Hoover Europe sold — first episode in `howitsrun_style/` | `hoover_free_flights.mp4` | 50.5 s |
+| `hoover_ep19/` | main | Hoover free flights, UK 1992: spend £100 → 2 free flights; £119 vacuum; ~200,000 claims; $60m charges; Hoover Europe sold — first episode in `howitsrun_style/` | `hoover_free_flights.mp4` | 50.5 s |
+| `bulbs_ep20/` | main | The Phoebus lightbulb cartel, 1924 (1,000-hour rule, fines) | `the_lightbulb_cartel.mp4` | 49.2 s |
+| `sugar_ep21/` | main | Sugar industry paid Harvard scientists (1965–67, revealed 2016), $6,500 | `sugar_paid_scientists.mp4` | 45.1 s |
+| `diamond_ep22/` | main | De Beers / N.W. Ayer: the diamond ring as an ad campaign, "A Diamond Is Forever" | `your_ring_is_an_ad.mp4` | 44.0 s |
+| `breakfast_ep23/` | main | "Breakfast is the most important meal": 1917 Good Health + Bernays' bacon-and-eggs survey | `who_said_breakfast_matters.mp4` | 45.2 s |
+| `listerine_ep24/` | main | Listerine: floor cleaner → mouthwash, the "halitosis" ads of the 1920s | `floor_cleaner_to_mouthwash.mp4` | 42.8 s |
+| `camel_ep25/` | main | "More Doctors Smoke Camels" (1946) and the rigged doctors' survey | `more_doctors_smoke.mp4` | 39.4 s |
+| `rats_ep26/` | main | The Great Hanoi Rat Hunt, 1902: paid per rat tail | `paid_per_rat_tail.mp4` | 46.9 s |
 Also: `covers_extra/` (covers only: credit card trap, gym no-shows — uploaded videos); `molasses_full/`, `molasses_calm/` (Boston Molasses Flood 1919,
 5.7 min long-form, branch `claude/vibrant-dijkstra-gnvqpv`). Not this channel: `survival/`, `whatif/`, `speak_*`, Sofia `ep/`–`ep3/`.
-Next topics in the owner's queue: Hanoi rat bounty (1902).
+Carousels made: `carousels_nov/` K1–K6 (supermarket tricks, .99 prices, free apps, casinos, free trials, flight prices). Spare topics (owner's plan): Pizza for 10,000 bitcoin (2010), McDonald's Monopoly fraud (already done as monopoly_ep16), the man who sold the Eiffel Tower (1925), Blockbuster vs Netflix (2000), Toilet Paper Panic v2.
 Ideas backlog: `IDEAS.md`. Captions: `CAPTIONS.md`.
 
 ## Style reference (owner, Nov 2026) — read before drawing anything
