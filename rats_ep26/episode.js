@@ -46,7 +46,7 @@ function exchange(ctx, t, lt, keys, o = {}) {
     CS.cast(w, -820, 0, 0.95, 1, 'woman', { ...R.walk(t * 4), face: FACE('smile', [1, 0], t, 1), armN: { hand: [110, -230], grip: 'hold', item: g => S.basket(g, 0.55, 8, 3) }, armF: { hand: [90, -225], grip: 'hold' } });
     CS.cast(w, 300, 0, 1.15, -1, 'official', { face: FACE(o.offFace || 'smile', [1, -0.1], t, 0.7), lean: 0.05, armN: { hand: [150, -330], grip: 'pinch', item: coinItem(t) } });
     S.bountyTable(w, 40);
-    w.save(); w.translate(560, 0); w.scale(-1, 1); S.rat(w, { s: 0.85, mood: 'shock', look: [0.6, -0.4], up: 0.25 }); w.restore();
+    w.save(); w.translate(90, 60); w.scale(-1, 1); S.rat(w, { s: 1.0, mood: 'shock', look: [0.6, -0.4], up: 0.25 }); w.restore();
     CS.cast(w, -300, 0, 1.15, 1, 'hunter', { face: FACE(o.huntFace || 'grin', [1, -0.2], t), armN: { hand: [150, -400], grip: 'pinch', item: tailItem(t) }, lean: 0.04 });
   });
   return c;
@@ -298,7 +298,7 @@ else if (mode === 'still') {
   fs.writeFileSync(a2, sheet.toBuffer('image/png'));
 } else if (mode === 'frame') { const cv = createCanvas(W, H), ctx = cv.getContext('2d'); frame(ctx, +a1, { nosubs: a3 === 'nosubs' }); fs.writeFileSync(a2, cv.toBuffer('image/png')); }
 else if (mode === 'carousel') {
-  const KEY = [['01_hook', 1.0], ['02_toilet_sewers', tToilets + 0.5], ['03_1_cent_bounty', tEvery + 0.3], ['04_20000_a_day', tSingle + 0.4], ['05_cut_free_breed', tMore + 0.7], ['06_question', tEnd + 1.0]];
+  const KEY = [['01_hook', 1.0], ['02_1_cent_bounty', tEvery + 0.3], ['03_20000_a_day', tSingle + 0.4], ['04_cut_free_breed', tMore + 0.7], ['05_pay_for_tails_get_tails', tNot + 0.5], ['06_question', tEnd + 1.0]];
   fs.mkdirSync(a1, { recursive: true }); const cv = createCanvas(W, H), ctx = cv.getContext('2d');
   for (const [n, t] of KEY) { frame(ctx, t, { nosubs: true }); fs.writeFileSync(`${a1}/${n}.png`, cv.toBuffer('image/png')); } console.log('carousel ok', KEY.map(k => k[1].toFixed(2)).join(' '));
 }

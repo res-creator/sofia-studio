@@ -80,9 +80,9 @@ shot('B1 not doctor', Z.s02 - 0.12, tA2 - 0.12, (ctx, t, lt) => {
 shot('B2 magazine', tA2 - 0.12, Z.s03 - 0.12, (ctx, t, lt) => {
   const land = tHealth, u = E.in(seg(t, land - 0.35, land));
   ctx.save(); ctx.translate(shake(t, land, 8), shake(t, land + 0.02, 10)); S.deskTop(ctx, 0);
-  ctx.save(); ctx.translate(560, lerp(-500, 930, u)); ctx.rotate(lerp(0.3, -0.04, u)); const z = lerp(1.4, 1.08, u) * (1 + seg(t, land, land + 3) * 0.04); ctx.scale(z, z); S.magazine(ctx, 1); ctx.restore(); ctx.restore();
-  ctx.save(); ctx.translate(820, 470); ctx.rotate(0.08); const k = pop(t, t1917 - 0.08, 0.35); if (k > 0) { ctx.scale(k, k); ST.calCard(ctx, 'PRINTED IN', '1917', { w: 330, h: 300 }); } ctx.restore();
-  label(ctx, 'A HEALTH MAGAZINE', 380, 420, pop(t, at('s02', 'magazine') - 0.05), { size: 48, rot: -0.05 });
+  ctx.save(); ctx.translate(560, lerp(-500, 990, u)); ctx.rotate(lerp(0.3, -0.04, u)); const z = lerp(1.4, 1.08, u) * (1 + seg(t, land, land + 3) * 0.04); ctx.scale(z, z); S.magazine(ctx, 1); ctx.restore(); ctx.restore();
+  ctx.save(); ctx.translate(840, 450); ctx.rotate(0.08); const k = pop(t, t1917 - 0.08, 0.35); if (k > 0) { ctx.scale(k, k); ST.calCard(ctx, 'PRINTED IN', '1917', { w: 330, h: 300 }); } ctx.restore();
+  label(ctx, 'A HEALTH MAGAZINE', 360, 440, pop(t, at('s02', 'magazine') - 0.05), { size: 48, rot: -0.05 });
   ST.grade(ctx, 'office', 0.18);
 });
 
@@ -140,17 +140,17 @@ shot('E1 no ads', Z.s05 - 0.12, tHe2 - 0.12, (ctx, t, lt) => {
 function tubeEasel(w, x) { R.tube(w, [[x - 150, 0], [x - 70, -700]], 14, '#8A5A34', 4); R.tube(w, [[x + 150, 0], [x + 70, -700]], 14, '#8A5A34', 4); }
 // E2 (s05 "He asked one doctor: light breakfast, or heavy? 'Heavy.'"): toast vs the heavy mountain; the doctor points: HEAVY
 shot('E2 light or heavy', tHe2 - 0.12, Z.s06 - 0.12, (ctx, t, lt) => {
-  const c = cam([[0, -40, -520, 0.9], [3.7, -40, -540, 0.96]], lt);
+  const c = cam([[0, -80, -470, 1.08], [3.7, -80, -480, 1.14]], lt);
   layer(ctx, c, 1, w => { S.office(w, t, { wall: '#DCE6EE', window: 300 });
-    P.person(w, -500, 0, 1.0, 1, PRMAN, { face: FACE(t > tHeavy2 ? 'smug' : 'neutral', [1, 0], t), armN: { hand: [120, -330], grip: 'open' } }, ACC.PRMAN);
-    P.seated(w, 300, 0, 1.0, -1, DOCTOR, { face: FACE(t > tHeavy2 ? 'grin' : 'thinking', [1, 0.3], t), ...(t > tHeavy2 - 0.1 ? { armN: { hand: [160, -330], grip: 'point' } } : {}) }, ACC.DOCTOR);
-    SE.desk(w, 0, 640, -300, '#8A5A34');
-    w.save(); w.translate(-150, -300); S.lightPlate(w, 0.8); w.restore();
-    w.save(); w.translate(140, -300); S.mountain(w, 0.55, t < tHeavy - 0.1 ? 0.25 : seg(t, tHeavy - 0.1, tHeavy + 0.25) * 0.75 + 0.25); w.restore(); });
-  label(ctx, 'ONE DOCTOR', 540, 470, pop(t, tOne - 0.05), { size: 60 });
-  label(ctx, 'LIGHT?', 330, 700, pop(t, tLight - 0.05), { size: 56, col: PAL.cream, rot: -0.05 });
-  label(ctx, 'HEAVY?', 740, 700, pop(t, tHeavy - 0.05), { size: 56, col: C.yellow, rot: 0.04 });
-  ctx.save(); ctx.translate(560, 600); ST.stampWord(ctx, 'HEAVY', 110, seg(t, tHeavy2 - 0.05, tHeavy2 + 0.3)); ctx.restore();
+    P.person(w, -480, 0, 1.0, 1, PRMAN, { face: FACE(t > tHeavy2 ? 'smug' : 'neutral', [1, 0], t), armN: { hand: [120, -330], grip: 'open' } }, ACC.PRMAN);
+    P.seated(w, 230, 0, 1.0, -1, DOCTOR, { face: FACE(t > tHeavy2 ? 'grin' : 'thinking', [1, 0.3], t), ...(t > tHeavy2 - 0.1 ? { armN: { hand: [160, -330], grip: 'point' } } : {}) }, ACC.DOCTOR);
+    SE.desk(w, -60, 600, -300, '#8A5A34');
+    w.save(); w.translate(-220, -300); S.lightPlate(w, 0.8); w.restore();
+    w.save(); w.translate(60, -300); S.mountain(w, 0.55, t < tHeavy - 0.1 ? 0.25 : seg(t, tHeavy - 0.1, tHeavy + 0.25) * 0.75 + 0.25); w.restore(); });
+  if (t < tHeavy2 - 0.05) label(ctx, 'ONE DOCTOR', 540, 470, pop(t, tOne - 0.05), { size: 60 });
+  label(ctx, 'LIGHT?', 300, 690, pop(t, tLight - 0.05), { size: 56, col: PAL.cream, rot: -0.05 });
+  label(ctx, 'HEAVY?', 700, 690, pop(t, tHeavy - 0.05), { size: 56, col: C.yellow, rot: 0.04 });
+  ctx.save(); ctx.translate(540, 490); ST.stampWord(ctx, 'HEAVY', 110, seg(t, tHeavy2 - 0.05, tHeavy2 + 0.3)); ctx.restore();
   ST.grade(ctx, 'office', 0.2);
 });
 
@@ -159,10 +159,10 @@ const tFive = at('s06', 'five'), tPhys = at('s06', 'physicians');
 shot('F1 mail', Z.s06 - 0.12, Z.s07 - 0.12, (ctx, t, lt) => {
   const c = cam([[0, 0, -520, 0.95], [2.6, 0, -540, 1.02]], lt);
   layer(ctx, c, 1, w => { S.office(w, t, { wall: '#E8E2D0', window: -800 });
-    P.seated(w, -560, 0, 0.95, 1, DOCTOR, { face: FACE('smile', [1, 0.2], t), armN: { hand: [140, -300], grip: 'pinch', item: g => R.tube(g, [[0, 0], [10, -60]], 8, '#2A2A30', 3) } }, ACC.DOCTOR);
-    S.mailSack(w, 1.15, seg(t, tFive - 0.2, tFive));
+    P.seated(w, -420, 0, 0.95, 1, DOCTOR, { face: FACE('smile', [1, 0.2], t), armN: { hand: [140, -300], grip: 'pinch', item: g => R.tube(g, [[0, 0], [10, -60]], 8, '#2A2A30', 3) } }, ACC.DOCTOR);
+    w.save(); w.translate(120, 0); S.mailSack(w, 1.15, seg(t, tFive - 0.2, tFive)); w.restore();
     for (let i = 0; i < 40; i++) { const t0 = tFive - 0.1 + i * 0.035; if (t < t0) break; const f = clamp((t - t0) / 1.1), a = -Math.PI / 2 + (hash(i) - 0.5) * 2.4, v = 900 + hash(i + 7) * 700;
-      const x = Math.cos(a) * v * f, y = -470 + Math.sin(a) * v * f + 900 * f * f; w.save(); w.translate(x, y); w.rotate(f * 6 * (hash(i + 2) - 0.5)); S.envelope(w, 0.7, i); w.restore(); } });
+      const x = 120 + Math.cos(a) * v * f, y = -470 + Math.sin(a) * v * f + 900 * f * f; w.save(); w.translate(x, y); w.rotate(f * 6 * (hash(i + 2) - 0.5)); S.envelope(w, 0.7, i); w.restore(); } });
   const u = pop(t, tFive - 0.08, 0.35); if (u > 0) { ctx.save(); ctx.translate(540 + shake(t, tFive + 0.2, 8), 480); ctx.scale(u, u); CL.cutout(ctx, () => rr(ctx, -270, -95, 540, 170, 20), C.red, { elev: 2 }); txt(ctx, '5,000', 0, 34, 120, PAL.cream); ctx.restore(); }
   label(ctx, 'LETTERS TO PHYSICIANS', 540, 650, pop(t, tPhys - 0.05), { size: 50 });
   ST.grade(ctx, 'office', 0.2);
@@ -212,10 +212,10 @@ shot('H2 pan', tAnd8 - 0.12, Z.s09 - 0.12, (ctx, t, lt) => {
 
 // I1 (s09 "The doctors never picked the menu."): the empty menu board; the doctor shrugs
 const tThe2 = at('s09', 'the', 2), tSeller = at('s09', 'seller'), tDid = at('s09', 'did'), tAnd9 = at('s09', 'and'), tSaid = at('s09', 'said'), tSales = at('s09', 'sales'), tUp = at('s09', 'up');
-function menuSet(w, t, items) { S.office(w, t, { wall: '#E8DCC4', window: -1100 }); w.save(); w.translate(170, -760); w.scale(0.8, 0.8); S.menuBoard(w, items); w.restore(); }
+function menuSet(w, t, items) { S.office(w, t, { wall: '#E8DCC4', window: -1100 }); w.save(); w.translate(110, -760); w.scale(0.74, 0.74); S.menuBoard(w, items); w.restore(); }
 shot('I1 menu', Z.s09 - 0.12, tThe2 - 0.12, (ctx, t, lt) => {
   const c = cam([[0, 0, -580, 0.95], [1.8, 0, -580, 1.0]], lt);
-  layer(ctx, c, 1, w => { menuSet(w, t, [['', 0], ['', 0], ['', 0]]); P.person(w, -420, 0, 1.05, 1, DOCTOR, { ...P.POSE.shrug(FACE('worried', [1, -0.3], t)) }, ACC.DOCTOR); });
+  layer(ctx, c, 1, w => { menuSet(w, t, [['', 0], ['', 0], ['', 0]]); P.person(w, -340, 0, 1.05, 1, DOCTOR, { ...P.POSE.shrug(FACE('worried', [1, -0.3], t)) }, ACC.DOCTOR); });
   label(ctx, 'DOCTORS: "HEAVY." THAT\'S ALL.', 540, 440, pop(t, Z.s09 + 0.05), { size: 50 });
   ST.grade(ctx, 'office', 0.2);
 });
@@ -224,7 +224,7 @@ shot('I2 seller writes', tThe2 - 0.12, tAnd9 - 0.12, (ctx, t, lt) => {
   const c = cam([[0, 0, -580, 1.0], [2.2, 30, -580, 1.05]], lt);
   const wr = seg(t, tSeller - 0.3, tDid + 0.3);
   layer(ctx, c, 1, w => { menuSet(w, t, [['BACON & EGGS', wr], ['', 0], ['', 0]]);
-    P.person(w, -360, 0, 1.05, 1, PACKER, { face: FACE(wr > 0.9 ? 'smug' : 'smile', wr > 0.9 ? [-0.3, 0] : [1, -0.4], t), armN: { hand: [lerp(160, 200, wr) + Math.sin(t * 20) * 6 * (wr > 0 && wr < 1), -440], grip: 'pinch', item: S.chalk } }, ACC.PACKER); });
+    P.person(w, -330, 0, 1.05, 1, PACKER, { face: FACE(wr > 0.9 ? 'smug' : 'smile', wr > 0.9 ? [-0.3, 0] : [1, -0.4], t), armN: { hand: [lerp(160, 200, wr) + Math.sin(t * 20) * 6 * (wr > 0 && wr < 1), -440], grip: 'pinch', item: S.chalk } }, ACC.PACKER); });
   label(ctx, 'MENU BY: THE BACON SELLER', 540, 440, pop(t, tSeller - 0.05), { size: 50, col: C.yellow });
   ST.grade(ctx, 'office', 0.2);
 });
@@ -236,7 +236,7 @@ shot('I3 sales', tAnd9 - 0.12, Z.s10 - 0.12, (ctx, t, lt) => {
   ctx.save(); ctx.translate(300, 1440); S.register(ctx, 0.7, seg(t, tSales - 0.05, tSales + 0.3)); ctx.restore();
   P.person(ctx, 800, 1450, 0.95, -1, PACKER, { face: FACE(t > tSales ? 'grin' : 'smile', [1, -0.3], t), armN: { hand: [140, -380], grip: 'point' } }, ACC.PACKER);
   label(ctx, '(HE SAID)', 330, 1010, pop(t, tSaid - 0.05), { size: 46, col: PAL.navy, fg: PAL.cream, rot: -0.04 });
-  ctx.save(); ctx.translate(560, 380); ST.stampWord(ctx, 'SOLD', 90, seg(t, tUp - 0.05, tUp + 0.3)); ctx.restore();
+  ctx.save(); ctx.translate(310, 1230); ST.stampWord(ctx, 'SOLD', 90, seg(t, tUp - 0.05, tUp + 0.3)); ctx.restore();
   ST.grade(ctx, 'office', 0.18);
 });
 
@@ -246,10 +246,11 @@ shot('J1 slogan', Z.s10 - 0.12, tEnd, (ctx, t, lt) => {
   ST.bg(ctx, '#CFE8DC'); ctx.fillStyle = 'rgba(255,255,255,0.35)'; for (let y = 0; y < 1100; y += 60) ctx.fillRect(0, y, W, 4);
   ctx.fillStyle = '#E9474F'; ctx.fillRect(0, 1100, W, 820); ctx.fillStyle = '#C9CED6'; ctx.fillRect(0, 1100, W, 14);
   ctx.save(); ctx.translate(540, 1240); S.plate(ctx, 1.3); S.baconStrip(ctx, -70, -40, 0.9, -0.1, 0); S.baconStrip(ctx, -50, 6, 0.9, 0.05, 1); S.egg(ctx, 110, -20, 0.8); ctx.restore();
-  label(ctx, 'EAT IT', 250, 1000, pop(t, Z.s10), { size: 60, col: PAL.green, fg: PAL.cream, rot: -0.05 });
-  label(ctx, 'SKIP IT', 800, 1000, pop(t, tSkip - 0.05), { size: 60, col: PAL.navy, fg: PAL.cream, rot: 0.05 });
+  label(ctx, 'EAT IT', 250, 1410, pop(t, Z.s10), { size: 60, col: PAL.green, fg: PAL.cream, rot: -0.05 });
+  label(ctx, 'SKIP IT', 800, 1410, pop(t, tSkip - 0.05), { size: 60, col: PAL.navy, fg: PAL.cream, rot: 0.05 });
   const u = pop(t, tJust - 0.1, 0.35); if (u > 0) { ctx.save(); ctx.translate(540, 580); ctx.rotate(-0.02); ctx.scale(u, u); S.sampler(ctx, ['BREAKFAST IS THE MOST', 'IMPORTANT', 'MEAL OF THE DAY'], 900, 400, { hl: 1 });
-    const v = seg(t, tWrote - 0.15, tWrote + 0.2); if (v > 0) { ctx.save(); ctx.translate(250, 10); ctx.scale(E.back(v, 2), E.back(v, 2)); S.priceTag(ctx, 'WHO PAID?', Math.sin((t - tWrote) * 5) * 0.12 * Math.exp(-(t - tWrote) * 1.5)); ctx.restore(); } ctx.restore(); }
+    const v = seg(t, tWrote - 0.15, tWrote + 0.2); if (v > 0) { ctx.save(); ctx.strokeStyle = C.red; ctx.lineWidth = 8; ctx.beginPath(); ctx.ellipse(0, 22, 190, 52, -0.03, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * clamp(v * 1.4)); ctx.stroke(); ctx.restore();
+      ctx.save(); ctx.translate(0, 196); ctx.scale(E.back(v, 2), E.back(v, 2)); S.priceTag(ctx, 'WHO PAID?', Math.sin((t - tWrote) * 5) * 0.12 * Math.exp(-(t - tWrote) * 1.5)); ctx.restore(); } ctx.restore(); }
   ST.grade(ctx, 'day', 0.18);
 });
 // K (end card, 2 s+): the cereal box at the podium again (echo of frame 0) + the question
@@ -257,8 +258,8 @@ shot('K end', tEnd, T + 0.01, (ctx, t, lt) => { podiumScene(ctx, t, lt + 2.5, { 
 
 // ---------- overlays ----------
 function overlays(ctx, t) {
-  const hu = pop(t, 0, 0.3, 1.6) * (1 - seg(t, tGuess - 0.3, tGuess - 0.12));
-  if (hu > 0) { ctx.save(); ctx.translate(540, 480); ctx.scale(Math.max(0.01, pop(t, 0, 0.3, 1.6)), Math.max(0.01, pop(t, 0, 0.3, 1.6))); ctx.translate(-540, -480); ST.headline2(ctx, 'WHO SAID', 'BREAKFAST MATTERS?', 1 - seg(t, tGuess - 0.3, tGuess - 0.12), 420); ctx.restore(); }
+  const hk = lerp(0.82, 1, E.back(seg(t, 0, 0.3), 2.2)), hu = 1 - seg(t, tGuess - 0.3, tGuess - 0.12);
+  if (hu > 0) { ctx.save(); ctx.translate(540, 480); ctx.scale(hk, hk); ctx.translate(-540, -480); ST.headline2(ctx, 'WHO SAID', 'BREAKFAST MATTERS?', 1 - seg(t, tGuess - 0.3, tGuess - 0.12), 420); ctx.restore(); }
   if (t < tGuess - 0.12) label(ctx, 'USA · 1917 / 1920s', W / 2, 676, 1, { size: 38, col: '#171717', fg: C.yellow, rot: 0.02 });
   ST.stampLabel(ctx);
   if (t >= tEnd) ST.questionCard(ctx, t, ['DO YOU EAT BREAKFAST'], '— OR SKIP IT?', E.back(seg(t, tEnd, tEnd + 0.35), 2), { arrow: true, y: 560 });

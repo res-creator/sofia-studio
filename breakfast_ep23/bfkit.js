@@ -187,7 +187,7 @@ function menuBoard(ctx, items, o = {}) {
   fitTxt(ctx, o.title || 'BREAKFAST MENU', 0, -h / 2 + 90, 60, '#FFFDF8', w - 60);
   ctx.strokeStyle = 'rgba(255,255,255,0.5)'; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(-w / 2 + 60, -h / 2 + 125); ctx.lineTo(w / 2 - 60, -h / 2 + 125); ctx.stroke();
   items.forEach(([s, u], i) => { const y = -h / 2 + 230 + i * 130; if (u <= 0) { fitTxt(ctx, '. . . . . . . .', 0, y, 50, 'rgba(255,255,255,0.35)', w - 80); return; }
-    ctx.save(); ctx.beginPath(); ctx.rect(-w / 2, y - 70, w * clamp(u), 100); ctx.clip(); fitTxt(ctx, s, 0, y, 64, i === 0 ? C.yellow : '#FFFDF8', w - 80, 'center', ST.FONT.type); ctx.restore(); });
+    ctx.save(); ctx.beginPath(); ctx.rect(-w / 2, y - 70, w * clamp(u), 100); ctx.clip(); fitTxt(ctx, s, 0, y, 76, i === 0 ? C.yellow : '#FFFDF8', w - 80); ctx.restore(); });
 }
 const chalk = g => { rr(g, -8, -40, 16, 60, 4); fillStroke(g, '#FFFDF8', 3); };
 // ---------- cash register (base at 0), u = drawer open 0..1, sale flag ----------
