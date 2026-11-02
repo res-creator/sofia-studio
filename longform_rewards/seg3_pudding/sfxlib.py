@@ -1,0 +1,120 @@
+# Synthesized SFX for the long-form segment stems (copied from rats_ep26/mix.py, SFX part only; the laugh sample is not used here).
+import os, subprocess, numpy as np, scipy.signal as sg
+D = os.path.dirname(os.path.abspath(__file__)); SR = 44100
+rng = np.random.default_rng(11)
+def t_(d): return np.arange(int(d * SR)) / SR
+def noise(d): return rng.standard_normal(int(d * SR))
+def norm(x, p=0.8): return x / (np.max(np.abs(x)) + 1e-9) * p
+def bp(x, lo, hi, o=2): b, a = sg.butter(o, [lo / (SR / 2), min(hi / (SR / 2), 0.99)], 'band'); return sg.lfilter(b, a, x)
+def lp(x, f): b, a = sg.butter(2, f / (SR / 2), 'low'); return sg.lfilter(b, a, x)
+def hp(x, f): b, a = sg.butter(2, f / (SR / 2), 'high'); return sg.lfilter(b, a, x)
+def fsweep(f0, f1, d): f = np.geomspace(f0, f1, int(d * SR)); return np.sin(2 * np.pi * np.cumsum(f) / SR)
+def whoosh(d=0.5, up=True):
+    x = noise(d); n = len(x); out = np.zeros(n); seg = 1024
+    for i in range(0, n, seg):
+        u = i / n; fc = 400 + 3000 * (u if up else 1 - u); out[i:i + seg] = bp(x[i:i + seg + 2048], fc * 0.6, fc * 1.5)[:len(out[i:i + seg])]
+    return norm(out * np.sin(np.linspace(0, np.pi, n)) ** 1.6, 0.5)
+def thump(f=65, d=0.45): t = t_(d); return norm(np.sin(2 * np.pi * np.cumsum(f * np.exp(-t * 7) + 38) / SR) * np.exp(-t * 8) + 0.35 * lp(noise(d), 500) * np.exp(-t * 25), 0.95)
+def pop(f0=420, f1=1300): d = 0.08; return norm(fsweep(f0, f1, d) * np.exp(-t_(d) * 30), 0.5)
+def tick(): f = rng.uniform(900, 1500); d = 0.06; return norm(np.sin(2 * np.pi * f * t_(d)) * np.exp(-t_(d) * 60) + 0.3 * hp(noise(d), 3000) * np.exp(-t_(d) * 90), 0.3)
+def paper(): d = 0.12; return norm(bp(noise(d), 1500, 7000) * np.exp(-t_(d) * 28), 0.35)
+def clink():
+    f = rng.uniform(2400, 3400); d = 0.25; t = t_(d); x = sum(np.sin(2 * np.pi * f * m * t) / (i + 1) for i, m in enumerate([1, 2.76, 5.4])) * np.exp(-t * 18)
+    return norm(x, 0.16)
+def kaching():
+    d = 0.9; t = t_(d); bell = (np.sin(2 * np.pi * 2093 * t) + 0.6 * np.sin(2 * np.pi * 3136 * t) + 0.3 * np.sin(2 * np.pi * 4186 * t)) * np.exp(-t * 5)
+    x = 0.5 * bell; x[: int(0.07 * SR)] += 0.6 * hp(noise(0.07), 2500) * np.exp(-t_(0.07) * 40); return norm(x, 0.5)
+def fall(): d = 0.5; return norm(fsweep(1800, 500, d) * np.linspace(0.2, 1, int(d * SR)) * 0.6 + 0.4 * whoosh(d), 0.35)
+def rumble(): d = 0.6; t = t_(d); return norm(lp(noise(d), 160) * np.sin(np.linspace(0, np.pi, len(t))) + 0.3 * fsweep(50, 90, d), 0.55)
+def rise(): d = 0.5; return norm(fsweep(300, 900, d) * np.sin(np.linspace(0, np.pi, int(d * SR))) * 0.5 + whoosh(d), 0.35)
+def tape(): d = 0.18; return norm(bp(noise(d), 800, 5000) * (1 - t_(d) / d) * (0.6 + 0.4 * np.sin(2 * np.pi * 70 * t_(d))), 0.35)
+def scratch(): d = 0.5; t = t_(d); return norm(bp(noise(d), 2500, 8000) * (0.5 + 0.5 * np.sin(2 * np.pi * 9 * t)) ** 2 * np.sin(np.linspace(0, np.pi, len(t))), 0.18)
+def flutter(): d = 0.35; t = t_(d); return norm(bp(noise(d), 1000, 4000) * (0.5 + 0.5 * np.sin(2 * np.pi * 24 * t)) * np.exp(-t * 6), 0.12)
+def slam(): return norm(thump(55, 0.5) + 0.4 * hp(noise(0.5), 2000) * np.exp(-t_(0.5) * 14), 0.7)
+def puff(): d = 0.4; return norm(lp(noise(d), 900) * np.exp(-t_(d) * 9), 0.3)
+def coinburst():
+    o = np.zeros(int(0.7 * SR))
+    for i in range(7): s = int(rng.uniform(0, 0.4) * SR); c = clink(); o[s:s + len(c)] += c[: len(o) - s] * 2
+    return norm(o, 0.35)
+def snap(): d = 0.09; t = t_(d); return norm(hp(noise(d), 2500) * np.exp(-t * 60) + 0.5 * np.sin(2 * np.pi * 1800 * t) * np.exp(-t * 90), 0.45)
+def stamp(): d = 0.4; t = t_(d); return norm(thump(85, 0.4) * 0.9 + 0.6 * bp(noise(d), 300, 2500) * np.exp(-t * 35) + 0.3 * hp(noise(d), 4000) * np.exp(-t * 60), 0.9)
+def tear():
+    d = 0.6; t = t_(d); crack = (rng.random(len(t)) < 0.02).astype(float); crack = np.convolve(crack, np.exp(-np.arange(200) / 30), 'same')
+    x = bp(noise(d), 1200, 7000) * (0.4 + 0.6 * crack) * np.sin(np.linspace(0, np.pi, len(t))) ** 0.7; return norm(x, 0.55)
+def boom(): d = 1.4; t = t_(d); x = np.sin(2 * np.pi * np.cumsum(38 + 40 * np.exp(-t * 6)) / SR) * np.exp(-t * 2.2) + 0.25 * lp(noise(d), 200) * np.exp(-t * 5); return norm(x, 0.95)
+def flap():
+    d = 0.9; o = np.zeros(int(d * SR)); k = t_(0.012); c = hp(noise(0.012), 2000) * np.exp(-k * 400)
+    for i in range(int(d * 32)): s = int((i / 32 + rng.uniform(0, 0.01)) * SR); o[s:s + len(c)] += c[: len(o) - s] * rng.uniform(0.5, 1)
+    return norm(o, 0.35)
+def wah():
+    o = np.zeros(int(1.5 * SR))
+    for i, (f, dd) in enumerate([(196, 0.3), (185, 0.3), (175, 0.3), (165, 0.6)]):
+        t = t_(dd); fr = f * (1 + 0.02 * np.sin(2 * np.pi * 6 * t)); x = lp(sg.sawtooth(2 * np.pi * np.cumsum(fr) / SR), 1400) * np.minimum(1, t / 0.03) * np.minimum(1, (dd - t) / 0.08)
+        s = int(i * 0.3 * SR); o[s:s + len(x)] += x[: len(o) - s]
+    return norm(o, 0.32)
+def blip(): d = 0.16; t = t_(d); x = np.sin(2 * np.pi * 1760 * t) * (t < 0.06) + np.sin(2 * np.pi * 2350 * t) * (t > 0.08) * (t < 0.14); return norm(x * np.exp(-t * 8), 0.28)
+def cutfx(): d = 0.22; t = t_(d); return norm(whoosh(d, up=False) * 0.6 + 0.6 * hp(noise(d), 3000) * np.exp(-t * 25), 0.45)
+def pulse():
+    o = np.zeros(int(0.6 * SR))
+    for i in range(4): t = t_(0.08); x = np.sin(2 * np.pi * (600 + i * 220) * t) * np.exp(-t * 30); s = int(i * 0.1 * SR); o[s:s + len(x)] += x
+    return norm(o + 0.5 * whoosh(0.6), 0.35)
+def brake():
+    d = 0.7; t = t_(d); f = np.linspace(2600, 1500, len(t)); x = np.sin(2 * np.pi * np.cumsum(f) / SR) * 0.4 + bp(noise(d), 1500, 4000) * 0.6
+    return norm(x * np.minimum(1, t / 0.03) * np.exp(-t * 2.5), 0.4)
+def rev():
+    d = 0.9; t = t_(d); f = 55 + 120 * (t / d) ** 1.5; ph = 2 * np.pi * np.cumsum(f) / SR; x = lp(sg.sawtooth(ph) + 0.5 * sg.sawtooth(ph * 2.02), 900)
+    return norm(x * np.minimum(1, t / 0.08) * np.minimum(1, (d - t) / 0.2), 0.45)
+def ring():  # classic two-tone phone ring burst (440 + 480 Hz, 20 Hz warble)
+    d = 0.8; t = t_(d); x = (np.sin(2 * np.pi * 440 * t) + np.sin(2 * np.pi * 480 * t)) * (0.5 + 0.5 * np.sign(np.sin(2 * np.pi * 20 * t)))
+    return norm(x * np.minimum(1, t / 0.02) * np.minimum(1, (d - t) / 0.05), 0.35)
+def scanfx(): d = 0.7; t = t_(d); return norm(np.sin(2 * np.pi * np.cumsum(900 + 700 * np.sin(np.pi * t / d)) / SR) * 0.4 * np.sin(np.pi * t / d) + 0.3 * bp(noise(d), 3000, 8000) * np.sin(np.pi * t / d), 0.3)
+def lockfx():
+    o = np.zeros(int(0.3 * SR))
+    for i in range(2): x = np.sin(2 * np.pi * 2400 * t_(0.05)) * np.exp(-t_(0.05) * 50); s = int(i * 0.09 * SR); o[s:s + len(x)] += x
+    return norm(o, 0.35)
+def hum(): d = 2.4; t = t_(d); return norm((np.sin(2 * np.pi * 110 * t) + 0.4 * np.sin(2 * np.pi * 220 * t)) * np.minimum(1, t / 0.4) * np.minimum(1, (d - t) / 0.6), 0.12)
+def servo(): d = 0.35; t = t_(d); return norm(sg.sawtooth(2 * np.pi * np.cumsum(300 + 500 * t / d) / SR) * np.sin(np.pi * t / d), 0.18)
+def jet(): d = 2.6; t = t_(d); return norm(lp(noise(d), 1200) * np.sin(np.pi * t / d) ** 0.8 + 0.2 * bp(noise(d), 3000, 6000) * np.sin(np.pi * t / d), 0.3)
+def engine(): d = 1.6; t = t_(d); ph = 2 * np.pi * np.cumsum(38 + 6 * np.sin(t * 3)) / SR; return norm(lp(sg.sawtooth(ph) + 0.5 * sg.sawtooth(ph * 2.01), 500) * np.minimum(1, t / 0.2) * np.minimum(1, (d - t) / 0.5), 0.22)
+def shutter(): d = 0.12; t = t_(d); x = hp(noise(d), 2000) * (np.exp(-t * 80) + 0.7 * np.exp(-np.maximum(0, t - 0.05) * 90) * (t > 0.05)); return norm(x, 0.4)
+def power(): d = 0.6; t = t_(d); return norm(fsweep(80, 400, d) * np.exp(-t * 3) * 0.5 + 0.6 * np.pad(thump(70, 0.4), (0, int(d * SR) - int(0.4 * SR))), 0.6)
+def steps():
+    o = np.zeros(int(1.8 * SR))
+    for i in range(6): x = lp(noise(0.06), 900) * np.exp(-t_(0.06) * 60); s = int(i * 0.28 * SR); o[s:s + len(x)] += x
+    return norm(o, 0.25)
+def buzz(): d = 0.4; t = t_(d); return norm(lp(sg.square(2 * np.pi * 150 * t), 600) * (0.5 + 0.5 * np.sign(np.sin(2 * np.pi * 8 * t))), 0.35)
+def printfx():
+    d = 0.6; t = t_(d); x = bp(noise(d), 1500, 5000) * (0.5 + 0.5 * np.sign(np.sin(2 * np.pi * 28 * t))) * np.minimum(1, t / 0.02) * np.minimum(1, (d - t) / 0.05)
+    return norm(x + 0.3 * np.sin(2 * np.pi * 180 * t) * np.sign(np.sin(2 * np.pi * 28 * t)), 0.3)
+def sparkle():
+    o = np.zeros(int(0.7 * SR))
+    for i, f in enumerate([1568, 2093, 2637, 3136]): x = np.sin(2 * np.pi * f * t_(0.3)) * np.exp(-t_(0.3) * 12); s = int(i * 0.07 * SR); o[s:s + len(x)] += x
+    return norm(o, 0.3)
+def flip(): d = 0.25; t = t_(d); return norm(bp(noise(d), 800, 5000) * np.sin(np.pi * t / d) * (0.6 + 0.4 * np.sin(2 * np.pi * 30 * t)), 0.3)
+def tap(): d = 0.05; t = t_(d); return norm(lp(noise(d), 3000) * np.exp(-t * 120) + 0.4 * np.sin(2 * np.pi * 900 * t) * np.exp(-t * 90), 0.35)
+def boop(): d = 0.25; t = t_(d); return norm(np.sin(2 * np.pi * np.cumsum(600 + 500 * (t / d)) / SR) * np.exp(-t * 8), 0.3)
+def twang(): d = 0.6; t = t_(d); return norm(np.sin(2 * np.pi * 110 * t * (1 + 0.05 * np.sin(2 * np.pi * 9 * t))) * np.exp(-t * 5) + 0.3 * np.sin(2 * np.pi * 220 * t) * np.exp(-t * 7), 0.4)
+def buzzer(): d = 0.35; t = t_(d); return norm(lp(sg.square(2 * np.pi * 140 * t), 1500) * np.minimum(1, (d - t) / 0.05), 0.25)
+def click(): d = 0.03; t = t_(d); return norm(hp(noise(d), 2500) * np.exp(-t * 200), 0.3)
+def balloonpop(): d = 0.3; t = t_(d); return norm(hp(noise(d), 600) * np.exp(-t * 40) + 0.6 * thump(90, 0.3)[: int(d * SR)], 0.8)
+def tvon(): d = 0.5; t = t_(d); return norm(np.sin(2 * np.pi * 15734 / 4 * t) * np.exp(-t * 6) * 0.3 + hp(noise(d), 3000) * np.exp(-t * 12) * 0.5 + thump(60, 0.5)[: len(t)] * 0.3, 0.4)
+def laugh():  # studio audience laugh (ElevenLabs sound effect, generated once: sfx/laugh.mp3)
+    raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', f'{D}/sfx/laugh.mp3', '-f', 's16le', '-ac', '1', '-ar', str(SR), '-'], capture_output=True).stdout
+    x = np.frombuffer(raw, np.int16).astype(float) / 32768; return norm(x, 0.6)
+def applause(): d = 1.2; t = t_(d); x = bp(noise(d), 800, 6000) * (0.6 + 0.4 * (rng.random(len(t)) < 0.05)); return norm(x * np.minimum(1, t / 0.1) * np.minimum(1, (d - t) / 0.6), 0.3)
+def typefx(): d = 0.07; t = t_(d); return norm(hp(noise(d), 1500) * np.exp(-t * 90) + 0.5 * np.sin(2 * np.pi * 300 * t) * np.exp(-t * 70), 0.45)
+def ding(): d = 0.8; t = t_(d); return norm((np.sin(2 * np.pi * 1568 * t) + 0.4 * np.sin(2 * np.pi * 3136 * t)) * np.exp(-t * 5), 0.4)
+def snip(): d = 0.12; t = t_(d); return norm(hp(noise(d), 3500) * np.exp(-t * 50) + 0.6 * np.sin(2 * np.pi * 2600 * t) * np.exp(-t * 80), 0.4)
+def horn(): d = 0.45; t = t_(d); return norm(lp(sg.square(2 * np.pi * 330 * t) + sg.square(2 * np.pi * 415 * t), 1800) * np.minimum(1, t / 0.02) * np.minimum(1, (d - t) / 0.05), 0.3)
+def error():  # the 'machine is broken' error beep, three descending square-wave tones, starts at 0.0 s
+    d = 0.75; t = t_(d); f = np.where(t < 0.22, 880, np.where(t < 0.44, 660, 440)); g = ((t % 0.22) < 0.17).astype(float)
+    return norm(lp(sg.square(2 * np.pi * np.cumsum(f) / SR), 3000) * g * np.minimum(1, (d - t) / 0.05), 0.5)
+def squeak():  # tiny cartoon rat squeak: two short high chirps (pure tones, no voice-like noise)
+    o = np.zeros(int(0.22 * SR))
+    for i, (f0, f1) in enumerate([(2400, 3300), (2700, 3600)]): d = 0.07; t = t_(d); x = fsweep(f0, f1, d) * np.sin(np.pi * t / d); s = int(i * 0.1 * SR); o[s:s + len(x)] += x
+    return norm(o, 0.22)
+def splash(): d = 0.4; t = t_(d); return norm(bp(noise(d), 600, 4000) * np.exp(-t * 9) * (0.6 + 0.4 * np.sin(2 * np.pi * 14 * t)), 0.3)
+def machine(): d = 1.8; t = t_(d); return norm((lp(noise(d), 300) * 0.6 + 0.4 * np.sign(np.sin(2 * np.pi * 6 * t)) * bp(noise(d), 500, 1500)) * np.minimum(1, t / 0.2) * np.minimum(1, (d - t) / 0.4), 0.4)
+SFX = {'scan': scanfx, 'lock': lockfx, 'hum': hum, 'servo': servo, 'jet': jet, 'engine': engine, 'shutter': shutter, 'power': power, 'steps': steps, 'buzz': buzz, 'print': printfx,
+       'sparkle': sparkle, 'flip': flip, 'tap': tap, 'boop': boop, 'twang': twang, 'buzzer': buzzer, 'click': click, 'balloonpop': balloonpop, 'ring': ring, 'brake': brake, 'rev': rev, 'blip': blip, 'cut': cutfx, 'pulse': pulse, 'snap': snap, 'stamp': stamp, 'tear': tear, 'boom': boom, 'flap': flap, 'wah': wah, 'pop': pop, 'whoosh': whoosh, 'fall': fall, 'thump': thump, 'zoom': lambda: whoosh(0.35), 'puff': puff, 'paper': paper, 'kaching': kaching, 'coins': coinburst,
+       'rumble': rumble, 'tape': tape, 'scratch': scratch, 'unfold': lambda: norm(paper() + 0, 0.3), 'tick': tick, 'tag': lambda: pop(300, 900), 'rise': rise, 'clink': clink, 'flutter': flutter, 'slam': slam, 'tvon': tvon, 'laugh': laugh, 'applause': applause, 'type': typefx, 'ding': ding, 'snip': snip, 'horn': horn, 'machine': machine, 'error': error, 'squeak': squeak, 'splash': splash}

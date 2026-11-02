@@ -1,0 +1,35 @@
+1
+00:00:02,950 --> 00:00:04,924
+Economists have a name for all of this.
+
+2
+00:00:04,924 --> 00:00:06,375
+Goodhart's law:
+
+3
+00:00:06,375 --> 00:00:08,058
+when a measure becomes a target,
+
+4
+00:00:08,058 --> 00:00:10,099
+it stops being a good measure.
+
+5
+00:00:10,349 --> 00:00:12,567
+So next time someone offers you a reward,
+
+6
+00:00:12,567 --> 00:00:14,772
+ask what it's really paying for.
+
+7
+00:00:14,772 --> 00:00:16,177
+And if you're the one paying —
+
+8
+00:00:16,177 --> 00:00:17,419
+pay for the result.
+
+9
+00:00:17,419 --> 00:00:18,627
+Not the number.
