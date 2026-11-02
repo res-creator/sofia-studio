@@ -40,6 +40,7 @@ If the topic (or the same story with another angle) is here, say so and take the
 | `listerine_ep24/` | main | Listerine: floor cleaner → mouthwash, the "halitosis" ads of the 1920s | `floor_cleaner_to_mouthwash.mp4` | 42.8 s |
 | `camel_ep25/` | main | "More Doctors Smoke Camels" (1946) and the rigged doctors' survey | `more_doctors_smoke.mp4` | 39.4 s |
 | `rats_ep26/` | main | The Great Hanoi Rat Hunt, 1902: paid per rat tail | `paid_per_rat_tail.mp4` | 46.9 s |
+| `longform_rewards/` | main | LONG-FORM YouTube 16:9 "When Paying People Backfired": Hanoi rats, Hoover flights, pudding guy, Wells Fargo fake accounts, Mexico City Hoy No Circula, emu bounty, Goodhart's law | `when_paying_people_backfired.mp4` | 8:13 |
 Also: `covers_extra/` (covers only: credit card trap, gym no-shows — uploaded videos); `molasses_full/`, `molasses_calm/` (Boston Molasses Flood 1919,
 5.7 min long-form, branch `claude/vibrant-dijkstra-gnvqpv`). Not this channel: `survival/`, `whatif/`, `speak_*`, Sofia `ep/`–`ep3/`.
 Carousels made: `carousels_nov/` K1–K6 (supermarket tricks, .99 prices, free apps, casinos, free trials, flight prices). Spare topics (owner's plan): Pizza for 10,000 bitcoin (2010), McDonald's Monopoly fraud (already done as monopoly_ep16), the man who sold the Eiffel Tower (1925), Blockbuster vs Netflix (2000), Toilet Paper Panic v2.

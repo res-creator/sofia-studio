@@ -81,7 +81,10 @@ w = wave.open(f'{D}/mix.wav', 'wb'); w.setnchannels(1); w.setsampwidth(2); w.set
 tmp = tempfile.mkdtemp(prefix='lf_')
 open(f'{tmp}/list.txt', 'w').write(''.join(f"file '{D}/{s}/seg_video.mp4'\n" for s in SEGS))
 subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', f'{tmp}/list.txt', '-c', 'copy', f'{tmp}/video.mp4'], check=True)
-subprocess.run(['sh', '../howitsrun_style/master.sh', 'mix.wav', f'{tmp}/video.mp4', f'{OUT}.mp4', f'{TT:.3f}'], cwd=D, check=True)
+subprocess.run(['sh', '../howitsrun_style/master.sh', 'mix.wav', f'{tmp}/video.mp4', f'{tmp}/m.mp4', f'{TT:.3f}'], cwd=D, check=True)
+# an 8-min film with pauses lands ~0.6 LU under the target after master.sh: +0.7 dB with a -2 dBFS limiter -> about -14.1 LUFS
+subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', f'{tmp}/m.mp4', '-c:v', 'copy', '-af', 'volume=0.7dB,alimiter=limit=0.8:attack=1:release=40:level=false',
+                '-ar', '44100', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', f'{D}/{OUT}.mp4'], check=True)
 # --- subtitles: merge with offsets ---
 def ts(x): x = max(0, x); h = int(x // 3600); m = int(x % 3600 // 60); s = x % 60; return f'{h:02d}:{m:02d}:{int(s):02d},{int(round((s % 1) * 1000)) % 1000:03d}'
 def pt(s): h, m, r = s.split(':'); sec, ms = r.split(','); return int(h) * 3600 + int(m) * 60 + int(sec) + int(ms) / 1000
