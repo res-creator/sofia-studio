@@ -1,5 +1,5 @@
 LONG-FORM (YouTube, 16:9) — When Paying People Backfired: rats, vacuums, pudding, a bank, a city's traffic... and the one time it worked
-Files: when_paying_people_backfired.mp4 (1920x1080, 30 fps, 8:13, -14 LUFS) · when_paying_people_backfired_thumbnail.png (1280x720) · when_paying_people_backfired.srt (upload as English subtitles)
+Files: when_paying_people_backfired.mp4 (1920x1080, 30 fps, 8:13, -14 LUFS, 84 MB — video re-encoded at ~1.15 Mbit/s to fit GitHub; assemble.py gives the full-quality master) · when_paying_people_backfired_thumbnail.png (1280x720) · when_paying_people_backfired.srt (upload as English subtitles)
 Length 8:13 → over 8 minutes, so YouTube allows mid-roll ads (place them at chapter starts: 1:45, 3:16, 4:19, 5:48, 6:38).
 
 TITLE (pick one)
