@@ -98,6 +98,9 @@ if EPN == "photo":  # cover = her posing by the fountain, friend with phone; ONE
     hev = dict(cut=round(h0 - 0.05, 3)); cue("impact", h0 - 0.05, 0.7)
     for k in range(8): cue("shutter", h0 + 0.05 + 0.1 * k, 0.5)
     h0 = say("hook_h2", h0 + 1.1); hev["count"] = round(hev["cut"] + 0.1, 3); h0 += 0.5
+if EPN == "kitchen":  # cover = her kitchen, every drawer labelled; Rose close-up with the label printer: Surprise! -> the empty drawer insert (SPOONS -> LEFT CUPBOARD) -> cuts during the narrator
+    hev = dict(cu=0.42); cue("pop", 0.45, 0.5); h0 = say("hook_r", 0.5) + 0.12
+    hev["drawer"] = round(h0 - 0.05, 3); cue("slide", h0 - 0.02, 0.7); cue("boing", h0 + 0.55, 0.45); hev["cover"] = round(h0 + 1.7, 3); h0 += 0.05
 e = say("hook", h0); hw = word_times("hook") or []
 def find(word):
     for w, a, b in hw:
@@ -105,7 +108,7 @@ def find(word):
     return None
 stamp_t = find(E["stamp_word"]) or (e - 1.0); cue("stamp", stamp_t, 0.8)
 t = e + 0.45
-scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "newhair", "idea") else {})))
+scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "newhair", "idea", "kitchen") else {})))
 
 TICKS = lambda back: [("tick", -back + 0.15 + 0.6 * k, 0.6) for k in range(int(back / 0.6))]
 if EPN == "gym":
@@ -583,6 +586,18 @@ elif EPN == "idea":   # meeting room (newhair layout): Her / Boss (seated) / Rya
             ("c2_r", 0.55, [("gasp", -0.45, 0.6), ("FALL", -0.4, 0), ("thud", 0.0, 0.5), ("BOX", 0.4, 0)]), ("c2_h2", 0.85, [("STARE", -0.8, 0), ("rimshot", ("e", 0.35), 0.9), ("RAIN", 0.8, 0), ("tada", 0.85, 0.6)]), ("c2_nar", 1.2, [])],
     )
     INTRO = 1.15
+elif EPN == "kitchen":   # her kitchen: door left, labelled cupboards + drawers, hob with the soup pot right; Rose with the label printer. Plans: WIDE / CARD / HER / ROSE + DRAWER insert, CUPBOARD / POT close-ups; C2 twist = the GARAGE full of labels (Tom). Label counter. NO black card
+    ZZ = lambda o: [("zzzt", o, 0.6)]
+    LV = dict(
+        A1=[("a1_h", 0.22, []), ("a1_r", 0.2, [("PUSH", ("e", 0.1), 0), ("whoosh", ("e", 0.1), 0.45), ("thud", ("e", 0.35), 0.5), ("thud", ("e", 0.55), 0.45), ("thud", ("e", 0.75), 0.4), ("REACH", ("e", 1.25), 0), ("strain", ("e", 1.35), 0.4)]), ("a1_nar", 2.7, [])],
+        A2=[("a2_h", 0.22, []), ("a2_r", 0.2, [("PRINT", ("e", 0.1), 0)] + ZZ(("e", 0.1)) + [("pop", ("e", 0.55 + 0.12 * k), 0.45) for k in range(5)]), ("a2_nar", 1.75, [("buzz", 0.95, 0.5)]), ("a2_tip", 0.4, [("ding", 0.05, 0.6)])],
+        B1=[("b1_h", 0.22, []), ("b1_r", 0.2, [("STICK", ("e", 0.1), 0)] + ZZ(("e", 0.1)) + [("pop", ("e", 0.75), 0.6)]), ("b1_nar", 1.5, [])],
+        B2=[("b2_h", 0.22, []), ("b2_r", 0.2, [("SALT", ("e", 0.1), 0), ("salt", ("e", 0.15), 0.6), ("SOUPL", ("e", 1.45), 0)] + ZZ(("e", 1.45)) + [("pop", ("e", 1.9), 0.6)]), ("b2_nar", 2.3, []), ("b2_tip", 0.4, [("ding", 0.05, 0.6)])],
+        C1=[("c1_h", 0.22, []), ("c1_r", 0.25, [("TOUCH", 0.0, 0), ("sparkle", 0.3, 0.5)]), ("c1_nar", 1.0, []), ("c1_tip", 0.4, [("ding", 0.05, 0.6)])],
+        C2=[("c2_h", 0.4, []), ("c2_t", 3.3, [("MARCH", -2.95, 0)] + [("tick", -2.8 + 0.4 * k, 0.6) for k in range(4)] + [("thud", -1.3, 0.6), ("GARAGE", -1.2, 0), ("impact", -1.2, 0.7)] + ZZ(-1.0) + ZZ(-0.75) + [("tada", -0.9, 0.5)]),
+            ("c2_nar", 1.2, [])],
+    )
+    INTRO = 1.15
 elif EPN == "seat":   # plane cabin: him in seat 14C (profile), her in the aisle. Plans: WIDE / CARD / HER / TOM, TICKET + MAP inserts; C2 ends on a black card
     LV = dict(
         A1=[("a1_h", 0.22, []), ("a1_s", 0.22, [("NAME", 1.2, 0), ("pop", 1.25, 0.5)]), ("a1_nar", 1.0, [])],
@@ -818,7 +833,7 @@ s = t
 cue("whoosh", s, 0.8); cue("impact", s + 0.3, 0.8)
 e = say("outro", s + 0.8)
 for k in range(6): cue("pop", s + 1.1 + 0.15 * k, 0.5)
-t = e + 1.3
+t = e + (0.3 if EPN in ("kitchen",) else 1.3)
 scenes.append(dict(id="outro", s=round(s, 3), e=round(t, 3)))
 
 for sp in speech:
@@ -839,7 +854,7 @@ for sp in speech:
             t0 = cc / tot * sp["d"]; cc += a; wt.append([w, round(t0, 3), round(cc / tot * sp["d"], 3)]); cc += p_
     sp["words"] = wt
 cfg = {k: E.get(k) for k in ["title", "hook_title", "stamp", "next", "cards"]}
-for k in ["camera", "chunks"]:   # new episodes only: camera mode ("hard_cut") and long lines split into meaning chunks
+for k in ["camera", "chunks", "card_fade"]:   # new episodes only: camera mode ("hard_cut") and long lines split into meaning chunks
     if E.get(k): cfg[k] = E[k]
 cfg["setting"] = EPN
 json.dump(dict(fps=FPS, dur=round(t, 3), ep=EPN, cfg=cfg, scenes=scenes, speech=speech, sfx=sfx), open(f"eps/{EPN}/timeline.json", "w"), ensure_ascii=False)

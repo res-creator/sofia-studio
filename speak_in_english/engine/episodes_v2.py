@@ -2681,3 +2681,48 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "kitchen" (TikTok, hard_cut). ElevenLabs only; narrator Sarah, heroine = Jessica, Rose = the elderly-lady voice (CAST granny/pam), Tom = Liam (CAST jake), tip = Bella.
+CAST.update({
+    "mil": dict(voice="bf_isabella", speed=0.92, lang="en-gb", el="Xb7hH8MSUJpSbSDYk0k2"),   # kitchen: Rose, the mother-in-law (voice of CAST granny/pam)
+    "son": dict(voice="am_liam", speed=1.0, lang="en-gb", el="TX3LPaxmHKxFdv7VOQHJ"),        # kitchen: Tom, her husband (Liam, CAST jake)
+})
+EP["kitchen"] = dict(
+    title='Свекровь переставила кухню',
+    hook_title=[['СВЕКРОВЬ', 'd'], ['ПЕРЕСТАВИЛА', 'p'], ['ТВОЮ КУХНЮ', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut", card_fade=True,
+    chunks={'c2_h': [['Rose, your talent for organisation is extraordinary —', 'Роуз, твой талант к порядку невероятен —'], ['and completely wasted on my tiny kitchen.', 'и совершенно пропадает на моей крошечной кухне.'], ["Your son's garage, however,", 'А вот гараж твоего сына'], ['is in desperate need.', 'очень в нём нуждается.']]},
+    lines=[
+        ('hook_r', 'mil', '[proudly] Surprise! I organised your kitchen!', 'Сюрприз! Я навела порядок на твоей кухне!'),
+        ('hook', 'nar', 'Ты пришла с работы, а свекровь переставила всю кухню. Как сказать ей об этом на английском? По одной фразе видно твой уровень. Проверим!', ''),
+        ('a1_h', 'her', '[shocked] No! My kitchen! Back!', 'Нет! Моя кухня! Назад!'),
+        ('a1_r', 'mil', '[delighted] Back? Good idea!', 'Назад? Отличная идея!'),
+        ('a1_nar', 'nar', 'Одно слово «back» — и всё уехало вглубь шкафов.', ''),
+        ('a2_h', 'her', '[frustrated] Where you put my spoons?', 'Куда ты положить мои ложки?'),
+        ('a2_r', 'mil', '[sweetly] Where I put? Somewhere logical, dear.', 'Куда я положить? Куда-то логично, дорогая.'),
+        ('a2_nar', 'nar', 'Без «did» вопрос не работает. Правильно так:', ''),
+        ('a2_tip', 'tip', 'Where did you put my spoons?', ''),
+        ('b1_h', 'her', "[politely] Thank you, but I'd like to keep things where they were.", 'Спасибо, но я бы хотела, чтобы всё лежало как раньше.'),
+        ('b1_r', 'mil', "[sweetly] Of course. I'll put them back... next visit.", 'Конечно. Я всё верну… в следующий приезд.'),
+        ('b1_nar', 'nar', 'Вежливо. Но у свекрови свой календарь.', ''),
+        ('b2_h', 'her', '[patiently] I know you mean well, but too many cooks spoil the broth.', 'Я знаю, ты хочешь как лучше, но у семи нянек дитя без глазу.'),
+        ('b2_r', 'mil', '[eagerly] Broth? Let me fix it!', 'Бульон? Сейчас поправлю!'),
+        ('b2_nar', 'nar', 'Too many cooks — «у семи нянек дитя без глазу». Она услышала только «суп». Запоминай:', ''),
+        ('b2_tip', 'tip', 'Too many cooks spoil the broth.', ''),
+        ('c1_h', 'her', '[warmly] I really appreciate the help, but this is my space. Can we decide together next time?', 'Я правда ценю помощь, но это моё пространство. Давай в следующий раз решать вместе?'),
+        ('c1_r', 'mil', '[touched] Together... I like that.', 'Вместе… Мне нравится.'),
+        ('c1_nar', 'nar', 'Приём: спасибо, граница и общее решение. Запоминай:', ''),
+        ('c1_tip', 'tip', 'Can we decide together next time?', ''),
+        ('c2_h', 'her', "[grandly] Rose, your talent for organisation is extraordinary — and completely wasted on my tiny kitchen. Your son's garage, however, is in desperate need.", 'Роуз, твой талант к порядку невероятен — и совершенно пропадает на моей крошечной кухне. А вот гараж твоего сына очень в нём нуждается.'),
+        ('c2_t', 'son', '[weakly] ...Thanks, honey.', '…Спасибо, дорогая.'),
+        ('c2_nar', 'nar', 'Мораль: энергию свекрови не останавливают — её перенаправляют.', ''),
+        ('outro', 'nar', 'А свекровь переставляла что-то у тебя дома? Пиши в комментарии! И подпишись, впереди ещё много новых серий.', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'ЛОЖКИ', 'ok': False, 'note': 'пропали'},
+           'A2': {'type': 'swap', 'bad': 'Where you put my spoons?', 'bad_note': 'в вопросе нужен did', 'good': ['Where did you put', 'my spoons?']},
+           'B1': {'type': 'eq', 'en': "I'd like to keep things where they were.", 'ru': '= Хочу, чтобы всё лежало как раньше.', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'Too many cooks…', 'ru': 'у семи нянек…', 'ex': ['Too many cooks spoil the broth.', 'у семи нянек дитя без глазу.'], 'icon': 'bell'},
+           'C1': {'type': 'eq', 'en': 'Can we decide together next time?', 'ru': '= Давай в следующий раз решать вместе?', 'ex': [['I really appreciate the help, but…', '= я правда ценю помощь, но…']]},
+           'C2': {'type': 'c2', 'vocab': [['extraordinary', '= невероятный'], ['in desperate need', '= очень нуждается']], 'moral': ['ЭНЕРГИЮ СВЕКРОВИ', 'НЕ ОСТАНАВЛИВАЮТ —', 'ПЕРЕНАПРАВЛЯЮТ'], 'moral_at': 0.35}},
+)
