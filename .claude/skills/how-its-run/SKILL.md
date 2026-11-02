@@ -112,6 +112,7 @@ curl -sS -X POST https://api.elevenlabs.io/v1/sound-generation -H "xi-api-key: p
 ```
 then STT the clip alone to confirm it reads as intended (e.g. "[laughs]").
 
+**Music level (owner, Nov 2026): quiet background** — in `mix.py` use `mus * 0.1 * (1 - 0.7 * dk)` (not 0.3 / 0.55).
 **Music: one bar grid for the whole video** (copy `hoover_ep19/mix.py`: a `SECTIONS` list, every 2 s bar takes the settings of the section
 it starts in). The older `section(t0, t1)` loop in tp_ep12 / icecream_ep13 / pudding_ep18 restarts bars off the grid at each section, so the
 last bar of one part overlaps the next — it sounds like two tunes at once (owner noticed it in ep 19 at 7 s). **No noise-based SFX at 0.0 s**
