@@ -2681,3 +2681,47 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "shoeson" (TikTok, hard_cut). ElevenLabs only; narrator Sarah, heroine = Jessica, Margot = Lily (the ElevenLabs voice of bf_alice characters zora/whitmore), tip = Bella.
+CAST.update({
+    "hostess": dict(voice="bf_alice", speed=0.92, lang="en-gb", el="pFZP5JQG7iQjIQuC4Bku"),   # Lily (shoeson: Margot, the London hostess)
+})
+EP["shoeson"] = dict(
+    title='В гостях в обуви',
+    hook_title=[['В ГОСТЯХ', 'd'], ['В ОБУВИ?!', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut", card_fade=True,
+    chunks={'c2_h': [["Margot, where I'm from,", 'Марго, там, откуда я родом,'], ['walking indoors in outdoor shoes', 'ходить дома в уличной обуви —'], ['is practically a declaration of war.', 'это практически объявление войны.'], ['So, with the utmost respect, I shall remain in socks.', 'Поэтому, с величайшим уважением, я останусь в носках.']]},
+    lines=[
+        ('hook_m', 'hostess', '[cheerfully] Oh darling, keep your shoes on!', 'Ой, дорогая, не разувайся!'),
+        ('hook', 'nar', 'Лондон, гости, белоснежный ковёр. А хозяйка говорит: проходи в обуви! Как объяснить на английском, что ты так не можешь? По одной фразе видно твой уровень. Проверим!', ''),
+        ('a1_h', 'her', '[panicked] No! Shoes! Off! Dirty!', 'Нет! Обувь! Снять! Грязно!'),
+        ('a1_m', 'hostess', "[delighted] Dirty? Oh, you'd like to clean? How lovely!", 'Грязно? О, ты хочешь убраться? Как мило!'),
+        ('a1_nar', 'nar', 'Четыре слова — и тебя наняли уборщицей.', ''),
+        ('a2_h', 'her', '[earnestly] In my country we take off shoes always.', 'В моей стране мы снимаем обувь всегда.'),
+        ('a2_m', 'hostess', '[curious] Always? Even at the office?', 'Всегда? Даже в офисе?'),
+        ('a2_nar', 'nar', 'Почти. «Always» ставим раньше. Правильно так:', ''),
+        ('a2_tip', 'tip', 'In my country, we always take off our shoes.', ''),
+        ('b1_h', 'her', '[politely] Do you mind if I take my shoes off? I feel more comfortable.', 'Ничего, если я разуюсь? Мне так удобнее.'),
+        ('b1_m', 'hostess', '[warmly] Of course! ...Oh.', 'Конечно! …Ой.'),
+        ('b1_nar', 'nar', 'Вежливо. Но носок решил всё по-своему.', ''),
+        ('b2_h', 'her', '[resigned] Well... when in Rome, do as the Romans do.', 'Ну… в Риме живи как римлянин.'),
+        ('b2_m', 'hostess', "[puzzled] Rome? We're in Croydon, darling.", 'В Риме? Мы в Кройдоне, дорогая.'),
+        ('b2_nar', 'nar', 'When in Rome — «в чужой монастырь со своим уставом не ходят». Она поняла буквально. Запоминай:', ''),
+        ('b2_tip', 'tip', 'When in Rome, do as the Romans do.', ''),
+        ('c1_h', 'her', "[gently] It's just a habit from home. Would you mind if I left them by the door?", 'Это просто привычка из дома. Ничего, если я оставлю их у двери?'),
+        ('c1_m', 'hostess', '[relaxed] Not at all. I rather like it, actually.', 'Вовсе нет. Мне, пожалуй, даже нравится.'),
+        ('c1_nar', 'nar', 'Приём: объясни, что это привычка, а не упрёк. Запоминай:', ''),
+        ('c1_tip', 'tip', "It's just a habit from home.", ''),
+        ('c2_h', 'her', "[grandly] Margot, where I'm from, walking indoors in outdoor shoes is practically a declaration of war. So, with the utmost respect, I shall remain in socks.", 'Марго, там, откуда я родом, ходить дома в уличной обуви — это практически объявление войны. Поэтому, с величайшим уважением, я останусь в носках.'),
+        ('c2_m', 'hostess', "[relieved sigh] Thank God. I've been too polite to ask for ten years.", 'Слава богу. Я десять лет была слишком вежливой, чтобы попросить.'),
+        ('c2_nar', 'nar', 'Мораль: иногда все просто ждут, кто разуется первым.', ''),
+        ('outro', 'nar', 'А ты разуваешься в гостях, даже если хозяева говорят «не надо»? Пиши в комментарии! И подпишись, впереди ещё много новых серий.', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'ГОСТЬЯ', 'ok': False, 'note': 'стала уборщицей'},
+           'A2': {'type': 'swap', 'bad': 'We take off shoes always.', 'bad_note': 'always — перед глаголом', 'good': ['We always take off', 'our shoes.']},
+           'B1': {'type': 'eq', 'en': 'Do you mind if I…?', 'ru': '= Ничего, если я…?', 'note': 'Do you mind if I take my shoes off?', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'When in Rome…', 'ru': 'в чужой монастырь…', 'ex': ['When in Rome, do as the Romans do.', 'со своим уставом не ходят.'], 'icon': 'bell'},
+           'C1': {'type': 'eq', 'en': "It's just a habit from home.", 'ru': '= Это просто привычка из дома.', 'ex': [['Would you mind if I left them by the door?', '= Ничего, если я оставлю их у двери?']]},
+           'C2': {'type': 'c2', 'vocab': [['utmost', '= величайший'], ['declaration of war', '= объявление войны']], 'moral': ['ИНОГДА ВСЕ ЖДУТ,', 'КТО РАЗУЕТСЯ', 'ПЕРВЫМ'], 'moral_at': 0.35}},
+)
