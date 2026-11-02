@@ -1,4 +1,6 @@
-THE GREAT MOLASSES FLOOD — test segment (final.mp4, 1920x1080, 30 fps, 64.5 s — v2: new voice + light palette)
+THE GREAT MOLASSES FLOOD — test segment, two voice variants for comparison (1920x1080, 30 fps, light palette):
+  final.mp4       — voice Bryan, 64.5 s (voice sped 1.12x)
+  final_todd.mp4  — voice Todd, 67.6 s (natural speed, not sped up)
 Sources of every image, map, sound and fact used.
 
 =====================================================================
@@ -92,6 +94,10 @@ AUDIO
   the script read word for word (vo/script.txt). eleven_v4 ignored the speed setting, so the recording was sped up
   to 1.12x with rubberband (pitch and formants preserved). Short 0.3–0.5 s beats after "splits apart", "owned the tank?"
   and "anarchists." (tools/timeline.py). v1 voice "Z" kept in vo/v1_z/.
+- Narration (final_todd.mp4): ElevenLabs, voice "Todd - Clear, Engaging and Educational" (g14YnDYCsy3k7XLlcKlO,
+  added to the account from the Voice Library), model eleven_v4, same script word for word, natural speed:
+  no time-stretch. One 0.8 s beat after "splits apart." (Todd's own pauses between sentences are up to 0.88 s).
+  Files and settings: vo/todd/ (config.json).
 - Music and all sound effects (wind, metal creaks, splitting steel, low rumble, crowd murmur) were
   synthesised by code in tools/sound.py. No samples or third-party recordings → no copyright claims.
 

@@ -2,16 +2,15 @@
 
 Deliverables: `final.mp4` (1920x1080, 30 fps, H.264/AAC), `contact_sheet.jpg` (a frame every 2 s), `sources.txt` (every photo + license, map data, audio, facts).
 
-Rebuild:
+Two voice variants: `final.mp4` (Bryan, vo/bryan) and `final_todd.mp4` (Todd, vo/todd). Each folder has config.json, words, timeline.
+
+Rebuild a variant (VARIANT = bryan | todd):
 ```
 npm i
-python3 tools/build_map.py assets/map src/data/map.json   # needs Natural Earth + OSM extracts in assets/map (see sources.txt)
-python3 tools/timeline.py     # vo/narration.mp3 -> pauses between sentences -> src/data/timeline.json + vo/narration_timed.wav
-cp vo/narration_timed.wav public/audio/
-python3 tools/sound.py        # synthesised music + sfx, ducked under the voice, mix -> public/audio/mix.wav
-node tools/frames.mjs out/cs 0,2,4,...   # stills for a contact sheet
-npx remotion render src/index.ts Main final.mp4 --codec=h264 --audio-codec=aac
+python3 tools/tts_words.py VOICE_ID vo/VARIANT      # only for a new recording (costs ElevenLabs credits)
+python3 tools/timeline.py vo/VARIANT                # lead/tail/beats from config.json -> timeline.json + narration_timed.wav
+python3 tools/sound.py vo/VARIANT                   # synthesised music + sfx, ducked under the voice -> mix.wav
+tools/render_variant.sh VARIANT out.mp4             # copies timeline + mix into the Remotion project and renders
 ```
-Replace the voice: put a new `vo/narration.mp3` + `vo/narration.align.json` (ElevenLabs with-timestamps), regenerate
-`vo/words.json` (see the conversion in the session notes), adjust CUTS in `tools/timeline.py`, then run the steps above.
-Shot list with timings: `src/Main.tsx` (SHOTS).
+Shots are authored on the first voice's timeline (src/data/timeline_v1.json); `toNew/toOld` in src/lib.tsx keep every cut
+locked to the same word in any new recording. Shot list: `src/Main.tsx` (SHOTS). Map data build: tools/build_map.py.

@@ -1,10 +1,12 @@
 # Procedural score + sound design (everything synthesised here -> no third-party copyright).
-# Writes public/audio/music.wav, sfx.wav and mix.wav (narration + ducked music + sfx, loudness-normalised).
-import json, subprocess, wave
+# usage: python3 tools/sound.py VARIANT_DIR
+# Writes VARIANT_DIR/music.wav, sfx.wav and mix.wav (narration + ducked music + sfx, loudness-normalised).
+import json, subprocess, wave, sys
 import numpy as np
 
 SR = 44100
-tl = json.load(open('src/data/timeline.json'))
+D = sys.argv[1]
+tl = json.load(open(f'{D}/timeline.json'))
 DUR = tl['duration']
 N = int(DUR * SR)
 t = np.arange(N) / SR
@@ -125,7 +127,7 @@ add(band(crowd, 200, 2500) * env(tn(45.0), 1.2, tn(52.5) - tn(45.0), 2.5), -0.15
 add(band(noise(), 40, 160) * env(ws(146) - 1.0, 2.5, 2.0, 4.0), 0, 0.06)
 
 # ---------------- mix
-vo = read_wav('vo/narration_timed.wav')
+vo = read_wav(f'{D}/narration_timed.wav')
 venv = smooth(np.abs(vo), 0.25); venv = np.clip(venv / (np.percentile(venv[venv > 0.003], 60) + 1e-9), 0, 1)
 venv = smooth(venv, 0.35)
 duck = 1 - 0.55 * venv  # music about -7 dB under the voice
@@ -133,8 +135,8 @@ music_st = np.stack([music, np.roll(music, 220)]) * 0.16
 mus_d = music_st * duck
 sfx_d = sfx * (1 - 0.35 * venv)
 mix = np.stack([vo, vo]) * 0.92 + mus_d + sfx_d
-write_wav('public/audio/music.wav', music_st)
-write_wav('public/audio/sfx.wav', sfx)
-write_wav('vo/mix_raw.wav', mix / (np.abs(mix).max() + 1e-9) * 0.9)
-subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', 'vo/mix_raw.wav', '-af', 'loudnorm=I=-14:TP=-1.5:LRA=11', '-ar', '44100', 'public/audio/mix.wav'], check=True)
+write_wav(f'{D}/music.wav', music_st)
+write_wav(f'{D}/sfx.wav', sfx)
+write_wav(f'{D}/mix_raw.wav', mix / (np.abs(mix).max() + 1e-9) * 0.9)
+subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', f'{D}/mix_raw.wav', '-af', 'loudnorm=I=-14:TP=-1.5:LRA=11', '-ar', '44100', f'{D}/mix.wav'], check=True)
 print('ok', DUR)

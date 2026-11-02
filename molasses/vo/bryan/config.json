@@ -1,0 +1,3 @@
+{"voice": "Bryan bPMKpgEe88vKSwusXTMU (eleven_v4)", "audio": "narration_fast.wav", "words": "words_fast.json", "lead": 0.6, "tail": 4.5,
+ "cuts": [[29.197, 0.5], [50.678, 0.3], [52.697, 0.4]],
+ "note": "v2: narration.mp3 sped 1.12x with rubberband -> narration_fast.wav"}

@@ -4,3 +4,4 @@ assets/map/
 assets/raw/
 public/audio/*.wav
 vo/*.wav
+vo/**/*.wav
