@@ -243,7 +243,7 @@ function title(c, t) { const lines = TL.cfg.hook_title, rk2 = 1 + 0.012 * Math.s
 function coverBadge(c, t) { const p = 1 + 0.04 * Math.sin(t * 8); c.save(); c.translate(540, 1745); c.scale(p, p); c.rotate(-0.03); c.fillStyle = 'rgba(0,0,0,.25)'; rr(c, -320 + 6, -60 + 10, 640, 120, 60); c.fill(); c.fillStyle = '#FFE15A'; rr(c, -320, -60, 640, 120, 60); c.fill(); c.strokeStyle = C.oliveD; c.lineWidth = 6; rr(c, -320, -60, 640, 120, 60); c.stroke();
   fitTxt(c, 'LET ME SHOW YOU.', 0, 4, 56, '#E0474C', 580); c.restore(); }
 function barIcon(c, x, y, s) { c.save(); c.translate(x, y); c.scale(s, s); c.fillStyle = '#596070'; c.fillRect(-26, -3, 52, 6); c.fillStyle = '#2B2F3A'; for (const sx of [-1, 1]) { rr(c, sx * 14 - 5, -15, 10, 30, 3); c.fill(); rr(c, sx * 21 - 4, -11, 8, 22, 3); c.fill(); } c.restore(); }
-function counter(c, t, sc) { const L = sc.id; if (L === 'outro') return; const nar = SP[L.toLowerCase() + '_nar'], u = t - sc.s;
+function counter(c, t, sc) { return; /* owner: no corner counter/icons in the video */ const L = sc.id; if (L === 'outro') return; const nar = SP[L.toLowerCase() + '_nar'], u = t - sc.s;
   if (L !== 'hook' && (u < 1.2 || (nar && t > nar.t - 0.2))) return; if (L === 'hook' && CUR_TAG !== 'cover') return;
   const n = kg(t, L), ch = plateT() + 0.35, since = L === 'A1' ? t - ch : -1, bump = since > 0 && since < 0.4 ? 1 + 0.3 * Math.sin(since / 0.4 * Math.PI) : 1;
   const bubble = TL.speech.some(s => s.who !== 'nar' && s.who !== 'tip' && t >= s.t - 0.1 && t < s.t + s.d + 0.3);
@@ -258,8 +258,8 @@ let CUR_TAG = 'wide';
 function renderFrame(c, t) {
   c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; const sc = sceneAt(t), L = sc.id;
   if (L === 'outro') { const rows = [['A1', 'No! I know!'], ['A2', "I've been doing this for five years."], ['B2', 'I know the ropes.'], ['C1', "I'd prefer to focus on my own workout."]];
-    K.outro(c, t, { q: ['А ТЕБЯ УЧИЛИ В ЗАЛЕ', 'БЕЗ СПРОСА?'], rows, cta: ['ОТПРАВЬ ПОДРУГЕ', 'ИЗ ЗАЛА'], heroX: 190, heroS: 0.42,
-      hero: (cc, tt) => { const g = G.her, gd = G.coach; K.put(cc, CHLOE, { t: tt, mood: 'happy', laugh: true, turn: -0.2, look: -0.4, armL: reach(gd, -1, -gd.sw * 2.0, gd.ySh - 330 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(gd, 1), items: {}, afterTorso: c3 => whistleDraw(c3, 0, gd.ySh + 160, 0.9) }, 1500, 60);
+    K.outro(c, t, { q: ['А ТЕБЯ УЧИЛИ В ЗАЛЕ', 'БЕЗ СПРОСА?'], rows, cta: ['ОТПРАВЬ ПОДРУГЕ', 'ИЗ ЗАЛА'], heroX: 95, heroS: 0.34, heroY: [2350, 1985], ctaFit: true,
+      hero: (cc, tt) => { const g = G.her, gd = G.coach; K.put(cc, CHLOE, { t: tt, mood: 'happy', laugh: true, turn: -0.2, look: -0.4, armL: reach(gd, -1, -gd.sw * 2.0, gd.ySh - 330 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(gd, 1), items: {}, afterTorso: c3 => whistleDraw(c3, 0, gd.ySh + 160, 0.9) }, 640, 60);
         K.put(cc, HER, { t: tt, mood: 'happy', laugh: true, turn: 0, look: 0, armL: reach(g, -1, -g.sw * 2.0, g.ySh - 260 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(g, 1), items: {}, afterTorso: herTorso(tt, 'outro') }, 0, 0); } });
     const u = t - SC.outro.s, kk = P(u, 1.35, 1.7); if (kk > 0) { const bh = 140 + rows.length * 115, y = 740 - bh / 2 + 150; UI.textFit(c, 'Nun9', 46, rows[0][1], 740); const wd = c.measureText(rows[0][1]).width;
       c.save(); c.globalAlpha = 0.55 * kk; c.fillStyle = C.white; c.fillRect(214, y - 34, wd + 16, 68); c.restore(); c.strokeStyle = C.red; c.lineWidth = 8; c.lineCap = 'round'; c.beginPath(); c.moveTo(212, y + 2); c.lineTo(212 + (wd + 16) * eOut(kk), y + 2); c.stroke(); }
