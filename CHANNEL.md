@@ -2,44 +2,68 @@
 
 Step-by-step working order + lessons learned: the project skill `.claude/skills/how-its-run/SKILL.md` (loads automatically in new sessions).
 Owner speaks Russian: answer her in Russian, simply. On-screen text, voice and captions are American English.
-Concept: real, verifiable stories about money, business, famous companies and how familiar everyday things are actually run.
-"You use this every day, but you have no idea what's happening behind the scenes." Not finance advice, not news, no crypto/politics.
-Mix the topics: not only hidden fees and corporate scandals, but also unusual, curious true stories about how ordinary things work
-(logistics, design decisions, odd rules, clever systems). The episode should teach something and be fun to watch, not just make people angry.
+**Concept (since ep 18, owner, Nov 2026): incredible TRUE stories where, in the end, MONEY decided everything.**
+A real hero, a real problem, a failure or a surprise, and a final twist about money ("Not soldiers. Money." — the emu episode).
+Best examples: `emu_ep12/` (Army vs. 20,000 emus) and `lawnchair_ep17/` (Larry Walters' lawn-chair flight).
+**No more hero-less explainers** (like `icecream_ep13/`, "why the McDonald's machine is always broken"). Not finance advice, not news, no crypto/politics.
 
-## Episodes made (don't repeat these topics)
-| Folder | Topic | Final file |
-|---|---|---|
-| `mcd_ep1/` | McDonald's makes money on real estate | `how_mcdonalds_really_makes_money_final.mp4` |
-| `air_ep2/` | Airlines oversell seats | `why_airlines_oversell_seats_final.mp4` |
-| `car_ep3/v2/` | Car (GM/OnStar) shared driving data | `your_car_was_reporting_on_you_v2.mp4` |
-| `rent_ep4/` | RealPage shared pricing software | `your_landlords_secret_algorithm_v2.mp4` |
-| `med_ep5/` | Medical bill $3,000 → $6,000 after the move to a surgery center | `medical_bill_doubled_v3.mp4` |
-| `amazon_ep6/` | Amazon returnless refunds ($5 item, $8–$12 shipping) | `amazon_keep_it_v2.mp4` |
-| `doordash_ep8/` | DoorDash old pay model 2017–2019: the tip replaced DoorDash's part of a $10 guarantee | `doordash_tip_v2.mp4` |
-| `scratch_ep11/` | Hertz/Thrifty AI damage scanner, Atlanta 2025: 1-inch scuff → $440, 7-day discount vs up-to-10-day reply (on hirkit) | `the_440_scratch.mp4` |
-| `tp_ep12/` | Toilet Paper Panic of 1973: congressman's "may face" warning → Carson's joke without the "may" → empty shelves; twist: everyone's smart move WAS the shortage (on hirkit, `tpkit.js`) | `toilet_paper_panic_1973.mp4` |
-Also: `covers_extra/` (credit card trap, gym no-shows — uploaded videos). Ideas backlog: `IDEAS.md`. Captions: `CAPTIONS.md`.
+## Уже сделано — не повторять (all How It's Run episodes in all branches, checked Nov 2026)
+Before every new topic: check this table AND `git fetch origin && git branch -r` for newer episode folders (the skill does this).
+If the topic (or the same story with another angle) is here, say so and take the next topic.
+| Folder | Branch | Topic | Final file | Length |
+|---|---|---|---|---|
+| `mcd_ep1/` | main | McDonald's makes money on real estate | `how_mcdonalds_really_makes_money_final.mp4` | 39.6 s |
+| `air_ep2/` | main | Airlines oversell seats | `why_airlines_oversell_seats_final.mp4` | 37.8 s |
+| `car_ep3/v2/` | main | GM/OnStar shared drivers' data | `your_car_was_reporting_on_you_v2.mp4` | 45.6 s |
+| `rent_ep4/` | main | RealPage rent-pricing algorithm | `your_landlords_secret_algorithm_v2.mp4` | 46.8 s |
+| `med_ep5/` | main | Medical bill $3,000 → $6,000 after the move to a surgery center | `medical_bill_doubled_v3.mp4` | 35.0 s |
+| `amazon_ep6/` | main | Amazon returnless refunds | `amazon_keep_it_v2.mp4` | 35.0 s |
+| `doordash_ep8/` | main | DoorDash old pay model: the tip replaced DoorDash's part | `doordash_tip_v2.mp4` | 37.4 s |
+| `coke_ep9/` | `claude/sharp-newton-t9y414` | Coca-Cola's 5-cent price ("impossible coin") | `cokes_impossible_coin_v2.mp4` | 39.0 s |
+| `wellsfargo_ep10/` | main | Wells Fargo overdraft: the $5 coffee that cost $40 | `the_5_coffee_that_cost_40_v2.mp4` | 67.6 s |
+| `scratch_ep11/` | main | Hertz/Thrifty AI damage scanner: 1-inch scuff → $440 | `the_440_scratch.mp4` | 70.2 s |
+| `tp_ep12/` | main | Toilet Paper Panic of 1973 (Carson's joke) | `toilet_paper_panic_1973.mp4` | 60.0 s |
+| `emu_ep12/` | main (via PR #44) | The Great Emu War, Australia 1932 (**format + style reference**) | `the_great_emu_war.mp4` | 65.2 s |
+| `ups_ep12/` | `claude/zen-lamport-5i4rua` | UPS avoids left turns: the shortest route isn't the cheapest | `ups_shortest_route.mp4` | 65.6 s |
+| `icecream_ep13/` | main (via PR #42) | Why the McDonald's ice cream machine is "always broken" (old explainer format) | `mcflurry_machine_broken.mp4` | 34.1 s |
+| `subscription_ep13/` | `claude/ep16-monopoly-script` | The Comcast cancellation call that wouldn't end (Ryan Block, 2014) | `the_comcast_call_that_wouldnt_end.mp4` | 63.1 s |
+| `hotel_ep14/` | `claude/stoic-einstein-g61524` | The $1,400 hotel room (Nassau, 2026) | `the_1400_hotel_room.mp4` | 69.6 s |
+| `pepsi_ep15/` | `claude/friendly-clarke-mo1xcl` | Pepsi Harrier jet, John Leonard 1996 (**published — don't remake**) | `the_pepsi_fighter_jet.mp4` | 41.7 s |
+| `monopoly_ep16/` | `claude/ep16-monopoly-script` | McDonald's Monopoly game fraud ("the inside man") | `the_monopoly_inside_man.mp4` | 40.4 s |
+| `lawnchair_ep17/` | main (via PR #44) | Larry Walters' lawn-chair balloon flight, 1982 (**format + style reference**) | `the_man_who_flew_in_a_lawn_chair.mp4` | 36.3 s |
+| `pudding_ep18/` | main (via PR #42) | The Pudding Guy: David Phillips, 12,000+ pudding cups → 1,253,000 airline miles (1999), new format | `the_pudding_guy.mp4` | 57.3 s |
+| `hoover_ep19/` | main (via PR #42) | Hoover free flights, UK 1992: spend £100 → 2 free flights; £119 vacuum; ~200,000 claims; $60m charges; Hoover Europe sold — first episode in `howitsrun_style/` | `hoover_free_flights.mp4` | 50.5 s |
+Also: `covers_extra/` (covers only: credit card trap, gym no-shows — uploaded videos); `molasses_full/`, `molasses_calm/` (Boston Molasses Flood 1919,
+5.7 min long-form, branch `claude/vibrant-dijkstra-gnvqpv`). Not this channel: `survival/`, `whatif/`, `speak_*`, Sofia `ep/`–`ep3/`.
+Next topics in the owner's queue: Hanoi rat bounty (1902).
+Ideas backlog: `IDEAS.md`. Captions: `CAPTIONS.md`.
+
+## Style reference (owner, Nov 2026) — read before drawing anything
+**Эталон стиля — `lawnchair_ep17` и `emu_ep12`. Персонажей брать только из `howitsrun_style/`. Стиль `tp_ep12`, `icecream_ep13` и pudding guy (`pudding_ep18`) НЕ использовать.**
+(Style reference = lawnchair_ep17 and emu_ep12. Characters only from `howitsrun_style/` — see its README: full-body profile people in real places,
+one accessory each, flat paper backgrounds, stamp/headline plates. Do NOT use the look of tp_ep12, icecream_ep13 or pudding_ep18: big front busts, crowded collage.)
+Before animating a new episode: show the owner a character sheet in this style and wait for approval.
 
 ## Format
-1080x1920, 30 fps. Length: **30–40 s for now** (until the account is monetized; later back to 61+ s), at the natural voice pace (never speed up the voice or pad scenes); episodes 10–11 ran 67–70 s, ep 12 ran 60 s. Style: Bold Editorial Collage, 2D + 2.5D parallax, selective pseudo-3D,
+1080x1920, 30 fps. Length: **35–60 s, as long as the story needs**, at the natural voice pace (never speed up the voice or pad scenes); episodes 10–11 ran 67–70 s, ep 12 ran 60 s. Style: Bold Editorial Collage, 2D + 2.5D parallax, selective pseudo-3D,
 paper cutouts (white rim, soft shadow, ink outline), paper texture. Palette: cream #F7F5F0, black #171717, red #E63946, yellow #FFC857, blue #4D8DFF.
 Story over effects: one visual journey, objects transform into the next scene, something new to see every few seconds, readable without sound.
 
-## First second & last frame (owner's rules from TikTok stats, Nov 2026 — most viewers leave in the 1st second, 0 comments)
-These override anything below that disagrees.
-1. **Frame 0 (0.0 s): a character's FACE with a strong emotion** (shocked, furious, disbelief) **+ a big word/number** on screen.
-   The "CONFLICT → RESULT" card may stay, but the face must be in the very first frame. Not allowed in frame 0: a full-screen date,
-   a calendar, a landscape/establishing shot, "?" in place of the number. (The small date/EXAMPLE stamp is still fine.)
-2. **The first line talks to the viewer with "you"**: "You return a rental car...", "You want a McFlurry...".
-3. **Sound from 0.0 s** (an error beep, a hit, a notification). No silence at the start.
-4. **Motion from the first frame**: camera push-in, text pops in, the character reacts. No static opening frame.
-5. **Length 30–40 s** (see Format).
-6. **Last frame: a direct question to the viewer for comments, held 2 s with no voice**, e.g. "Is the machine broken at YOUR McDonald's? 👇".
-   Big, readable, inside the 3:4 crop, above the caption area; it can sit over a picture that echoes frame 0 (loop).
-   Asking for comments in the video is now allowed; asking to follow/like is still not.
-7. **Carousel**: for every episode export 6 key frames as PNG 1080x1920 into `<episode>/carousel/` (01.png … 06.png) for TikTok carousels:
-   the hook face, 3–4 story beats with the key numbers, the twist, the question card. No subtitles burned over faces.
+## Story shape + first second & last frame (owner, Nov 2026 — stats: most viewers leave in the 1st second). These override anything below.
+1. **Story spine (mandatory): a real hero → a problem → a failure / surprise → the final twist about money** ("Not soldiers. Money.").
+   The money twist is the payoff: who paid, what it cost, how a price/paycheck/bounty decided the outcome — not a moral.
+2. **Frame 0 (0.0 s): an ABSURD picture + the conflict in 3–5 big words** (like "ARMY vs. 20,000 EMUS", "SODA POINTS vs. FIGHTER JET").
+   A face with a strong emotion is welcome, but the absurdity comes first. Not allowed in frame 0: a full-screen date, a calendar,
+   a landscape/establishing shot, a slow intro, "?" in place of a number. (A small date/place stamp is fine.)
+3. **The first line = the strangest fact of the story** ("In 1932, Australia's army went to war... against BIRDS."). "You" openers are no longer required.
+4. **Sound from 0.0 s** (a hit, a beep, a notification). No silence at the start.
+5. **Motion from the first frame**: camera push-in, text pops in, the character reacts. No static opening frame.
+6. **Length 35–60 s**, whatever the story needs (see Format).
+7. **Last frame: a direct question to the viewer for comments, held ≥ 2 s with no voice** (e.g. "Would YOU have mailed the check? 👇").
+   Big, inside the 3:4 crop, above the caption area, over a picture that echoes frame 0 (loop). Asking for comments is allowed; follow/like asks are not.
+   Colour emoji on canvas: register `/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf` (see `icecream_ep13/episode.js`).
+8. **Carousel**: 6 key frames, PNG 1080x1920, no subtitles, in `<episode>/carousel/`: the absurd hook, 3–4 story beats with the key numbers,
+   the money twist, the question card (`node episode.js carousel <dir>` in `icecream_ep13/episode.js` shows how).
 
 ## Story & animation (what worked in episodes 10–11, on hirkit)
 Guidelines, not quotas: pick what the story needs, and keep each episode different.
@@ -65,7 +89,7 @@ Approve the script BEFORE generating; generate each line once. Verify with speec
 
 ## Code layout (copy the latest episode, never edit old episodes)
 - New episodes are built on **hirkit** (`hirkit/`: `rig.js` characters, expressions, front busts; `light.js`; `collage.js`; `edit.js` shot list, cuts on words, tear transition).
-  Use it as is; extend it only in small, backwards-compatible steps. Latest reference episode: `scratch_ep11/` (`scankit.js` sets/props, `episode.js` shots,
+  Use it as is; extend it only in small, backwards-compatible steps. Latest reference episode: `icecream_ep13/` (`mcfkit.js` sets/props, `episode.js` shots + `carousel` mode, end card; before it `scratch_ep11/`, `tp_ep12/`) (`scankit.js` sets/props, `episode.js` shots,
   `mix.py`, `speech.py` real speech start/end, `stt_check.py`, `cover.js`, `build.sh`). Put new sets and props in the episode's own kit file.
 - Engine: `mcd_ep1/engine.js` (read-only: new episodes use only its voice timings and subtitles) (camera keys, parallax fg, motion blur on fast moves, world blur, subtitles, CLI `video | still t1,t2 out.png | cues`).
 - Primitives: `tests/mcd_collage/kit.js` (cut, rr, tag, coin, bill, sprite, paper texture, palette, fonts).
@@ -95,9 +119,9 @@ works with sound off; ironic, idea-changing last line; then the 2 s question car
 
 ## US TikTok playbook (from the ep 8 review; apply to every new episode)
 Algorithm (not official, but every source agrees): watch time, completion and rewatches first, then shares and saves; likes count least.
-1. Frame 0 = a character's face with a strong emotion + the conflict in big words + numbers (e.g. "$9 TIP → DRIVER +$0") in the top area, plus a small date/"EXAMPLE" stamp so nobody calls it misleading. Sound and motion from 0.0 s. Most people watch muted.
+1. Frame 0 = an absurd picture + the conflict in 3–5 big words/numbers (e.g. "ARMY vs. 20,000 EMUS") in the top area, plus a small date/place stamp so nobody calls it misleading. Sound and motion from 0.0 s. Most people watch muted.
 2. No smear in the first 2 s: slow, clean camera moves; the key card fully in frame.
-3. "You" + an everyday action (tipping, returns, subscriptions, rent). Self-relevance stops the thumb.
+3. The first line is the strangest true fact; a real hero we follow. (Older episodes opened with "you" + an everyday action — no longer required.)
 4. Never reset to an empty/zero scene after the hook: transform the hook objects straight into the explanation. Explain the colour code once (legend).
 5. Repeated examples: one big readable line each (e.g. "$3 TIP → DOORDASH PAYS $7"), no small extra cards.
 6. Proof on screen: a regulator/court figure as a big stamp with a hit sound, on clean art, ~1.5 s. US viewers trust receipts.
@@ -111,7 +135,7 @@ Algorithm (not official, but every source agrees): watch time, completion and re
 ## Quality checklist before reporting "done"
 1. Stills sheet at key moments + a dense sheet (every 0.5 s) of the final video — look for objects passing under/through each other (draw order!),
    cut text, empty frames, faces covered, subtitles over numbers. 2. ffprobe format/length, blackdetect = 0, loudness (ebur128).
-3. STT of the final video = script. 4. Voice gaps > 0.2 s (measure real speech end with silencedetect, not alignment). 5. One final render. 6. Frame 0 check (face + big number + motion), sound at 0.0 s, length 30–40 s, the 2 s question card at the end. 7. `carousel/` has 6 PNGs 1080x1920.
+3. STT of the final video = script. 4. Voice gaps > 0.2 s (measure real speech end with silencedetect, not alignment). 5. One final render. 6. Story spine check (hero → problem → failure/surprise → money twist), frame 0 check (absurd picture + 3–5 word conflict + motion), sound at 0.0 s, length 35–60 s, the ≥ 2 s question card at the end. 7. `carousel/` has 6 PNGs 1080x1920.
 Lessons: draw buildings that stand behind the road BEFORE vehicles; give every framed text a max width; keep the box below the face in hands.
 
 ## How the owner briefs (short is fine)

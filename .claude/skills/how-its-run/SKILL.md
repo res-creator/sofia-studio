@@ -1,6 +1,6 @@
 ---
 name: how-its-run
-description: Make a How It's Run episode (English TikTok / YouTube Shorts channel about money, business and how everyday things are run) from a topic to the final MP4, cover, SRT, carousel PNGs and upload kit. Use when the owner asks for a new How It's Run video ("сделай видео для канала How It's Run", "new episode: <topic>"), for fixes to an existing episode (v2), or for a cover / caption / upload kit for one. Not for the Sofia kids' channel.
+description: Make a How It's Run episode (English TikTok / YouTube Shorts channel: incredible true stories where, in the end, money decided everything) from a topic to the final MP4, cover, SRT, carousel PNGs and upload kit. Use when the owner asks for a new How It's Run video ("сделай видео для канала How It's Run", "new episode: <topic>"), for fixes to an existing episode (v2), or for a cover / caption / upload kit for one. Not for the Sofia kids' channel.
 ---
 
 # How It's Run — episode from topic to upload kit
@@ -9,17 +9,29 @@ The channel rules live in `CHANNEL.md` (format, palette, voice, subtitles, safe 
 **Read both first, every time** — this skill is the working order and the lessons learned; CHANNEL.md wins if they disagree.
 Owner speaks Russian: answer her in Russian, simply. Everything on screen and in audio is American English. Hashtags lowercase.
 
-## The 7 retention rules (owner, from TikTok stats: most viewers leave in the 1st second, 0 comments) — check every episode against them
-1. **Frame 0 (0.0 s) = a character's FACE with a strong emotion + a big word/number.** The "CONFLICT → RESULT" card may stay, but the face
-   is in the very first frame. Never in frame 0: a full-screen date, a calendar, a landscape/establishing shot, "?" instead of the number.
-2. **The first line talks to the viewer with "you"** ("You return a rental car...", "You want a McFlurry...").
-3. **Sound from 0.0 s** (error beep, hit, notification). No silence at the start.
-4. **Motion from the first frame** (camera push-in, text pops in, the character reacts).
-5. **Length 30–40 s** for now (until the account is monetized; later back to 61+ s).
-6. **Last frame: a direct question to the viewer, held 2 s with no voice** ("Is the machine broken at YOUR McDonald's? 👇"). Asking for
-   comments is allowed; asking to follow/like is not.
-7. **Carousel:** export 6 key frames, PNG 1080x1920, into `<folder>/carousel/` for TikTok carousels.
-Note: `tp_ep12/` (60 s, calendar/TV opening, no question card) predates these rules — copy its code, not its format.
+## The channel format (owner, Nov 2026 — overrides older episodes)
+**Incredible TRUE stories where, in the end, MONEY decided everything.** Best references: `emu_ep12/` (Army vs. 20,000 emus, branch
+`claude/vibrant-hopper-rwobhr`) and `lawnchair_ep17/` (Larry Walters' lawn-chair flight, branch `claude/friendly-gauss-qry8ah`).
+No more hero-less explainers (`icecream_ep13/` "why the McDonald's machine is always broken" is the last of that kind — copy its code, not its format).
+
+## Style (owner, Nov 2026) — mandatory
+**Эталон стиля — `lawnchair_ep17` и `emu_ep12`. Персонажей брать только из `howitsrun_style/`. Стиль `tp_ep12`, `icecream_ep13` и pudding guy НЕ использовать.**
+- Read `howitsrun_style/README.md`; build the episode kit on `howitsrun_style/style.js`, `people.js`, `sets.js` (episode-specific props go in the episode's own kit file).
+- People: `P.person()` full body in profile in a real place (s 0.9–1.5), one accessory each; `personBust` only for a short punch-line.
+- After the script is approved and BEFORE any animation: render a character sheet (like `hoover_ep19/charsheet.js`) and wait for the owner's OK.
+
+## The 8 rules — check every episode against them
+1. **Story spine: a real hero → a problem → a failure / surprise → the final twist about money** ("Not soldiers. Money."). The money
+   twist is the payoff (who paid, what it cost, how a price / bounty / paycheck decided it) — not a moral.
+2. **Frame 0 (0.0 s) = an ABSURD picture + the conflict in 3–5 big words** ("ARMY vs. 20,000 EMUS"). A face with a strong emotion is
+   welcome, but the absurdity comes first. Never in frame 0: a full-screen date, a calendar, a landscape, a slow intro, "?" instead of a number.
+3. **The first line = the strangest fact of the story** ("In 1932, Australia's army went to war... against BIRDS."). "You" openers are not required.
+4. **Sound from 0.0 s** (hit, beep, notification). No silence at the start.
+5. **Motion from the first frame** (camera push-in, text pops in, the character reacts).
+6. **Length 35–60 s**, whatever the story needs, at the natural voice pace.
+7. **Last frame: a direct question to the viewer, held ≥ 2 s with no voice** ("Would YOU have mailed the check? 👇"). Comments asks
+   are allowed; follow/like asks are not.
+8. **Carousel:** 6 key frames, PNG 1080x1920, no subtitles, into `<folder>/carousel/`.
 
 ## 0. Setup (cloud container)
 ```bash
@@ -29,6 +41,14 @@ curl -sS -o /dev/null -w "%{http_code}\n" https://api.elevenlabs.io/v1/models   
 ElevenLabs: keys only via env `ELEVEN_API_KEYS` (in this cloud env the proxy injects auth: `ELEVEN_API_KEYS=proxy`, header `xi-api-key: proxy`).
 Never write a key into code, git, chat or memory. Max 2 requests at once, ~3 s apart.
 
+## 0.5 Topic check (before ANY research)
+Read the table «Уже сделано — не повторять» in CHANNEL.md, then look for newer episodes in other branches:
+```bash
+git fetch -q origin && for b in $(git branch -r | grep -v HEAD); do git ls-tree --name-only $b | grep -E "_ep[0-9]+$" | sed "s#^#$b #"; done | sort -k2 -u
+```
+If the topic (or the same story) is already made — even in an unmerged branch — tell the owner and take the next topic from her queue.
+When an episode is finished, add its row (folder, branch, topic, final file, length) to that table.
+
 ## 1. Facts first (stop and show the owner)
 - Search the web; open the pages (WebFetch) — don't trust search snippets for numbers or quotes.
 - Give a short table: fact → source link. Only URLs you actually opened. Mark disputed details ("accounts differ", "reportedly").
@@ -36,23 +56,23 @@ Never write a key into code, git, chat or memory. Max 2 requests at once, ~3 s a
 - Real people: name them in text/voice, but draw a generic character (no likeness) and say so in the upload kit.
 
 ## 2. Script (stop and wait for approval)
-- **30–40 s total** = ~28–38 s of voice + the 2 s silent question card. At Chris's pace that is **≈ 70–90 words in 6–10 short lines**
-  (one line = one ElevenLabs request = one beat). Cut the story to its spine; one example, one twist.
-- **Line 1 starts with "you"** and is the hook (picture + voice + frame-0 text say the same thing) → story beats → a real twist
-  (why it happened, not "people are dumb") → one clear last spoken line.
+- **35–60 s total** = voice + the ≥ 2 s silent question card. At Chris's pace that is **≈ 85–145 words in 10–16 short lines**
+  (one line = one ElevenLabs request = one beat). Cut the story to its spine.
+- **Line 1 = the strangest fact** and is the hook (picture + voice + frame-0 text say the same thing) → the hero and the problem →
+  the failure / surprise → **the money twist** → one clear last spoken line.
 - **Write the question card** (on screen only, not voiced): a direct, easy-to-answer question to the viewer, with "YOUR"/"you" and 👇,
   tied to their own experience ("Has this happened at YOUR store? 👇"). It goes into the script table as the last row.
 - Show the script as a table: line / voice text / what's on screen. Offer an improved hook. Ask only real questions.
 - **Do not generate audio or render anything before the owner approves.**
 
 ## 3. Episode folder (copy the latest episode, never edit old ones)
-Latest reference: `tp_ep12/` (also `scratch_ep11/`). New folder `<topic>_ep<N>/`:
+Latest code reference: `icecream_ep13/` (end card with colour emoji, `carousel` mode, louder 0.0 s hit); story references: `emu_ep12/`, `lawnchair_ep17/` (other branches: `git show <branch>:<file>`). New folder `<topic>_ep<N>/`:
 | File | Copy from | Change |
 |---|---|---|
 | `script.json` | — | approved lines `[{id: "s01", text}]` |
 | `vo.py`, `speech.py`, `.gitignore` | tp_ep12 | header comment only |
 | `stt_check.py` | tp_ep12 | the `NUM` list (number words ↔ digits of this script) |
-| `<kit>.js` | new | this episode's sets, props, cast (on hirkit + `tests/mcd_collage/kit.js`) |
+| `<kit>.js` | new | this episode's props and cast, built on `howitsrun_style/` (people, sets, plates) |
 | `episode.js` | tp_ep12 | GAP, shots, SPLIT, REPL, highlight words, headline, stamp, cues, MUSIC |
 | `mix.py` | tp_ep12 | SFX additions, music sections |
 | `build.sh`, `cover.js`, `upload_kit.txt` | tp_ep12 | names, cover art, texts |
@@ -70,14 +90,14 @@ with previous/next text. Each line generated once. CAPS = emphasis, "..." = a be
 - Draw the props first and check them on one lineup still (a scratch script drawing every prop on a sheet) before writing shots.
 - One visual journey: objects transform into the next scene; something new every 1–2 s; a character we follow, with expressions
   (`R.expr`: worried, skeptical, smug, grin, shocked…), one deadpan look at the camera, big numbers as objects (tags, cards, stamps).
-- **Frame 0**: the character's face (front bust, `R.expr('shocked' | 'surprised' | 'worried' …)`, filling the middle of the 3:4 crop)
-  + the big word/number as an object or card + the small black date/place stamp. Already moving at t = 0: camera push-in, the card
+- **Frame 0**: the absurd picture (the soldier aiming at an emu, the man in a lawn chair at 16,000 ft) + the 3–5 word conflict card
+  ("ARMY vs. 20,000 EMUS") + the small black date/place stamp; a face with a strong emotion if it fits. Already moving at t = 0: camera push-in, the card
   pops (`E.back`), the face reacts (blink/brow/look change). Check `node episode.js frame 0 f0.png` — it must work as a thumbnail.
   Never reset to an empty scene after the hook.
 - **Last shot**: the question card (big, inside y 240–1500, x < 940) over a picture that echoes frame 0, ≥ 2 s, no voice, music/laugh
   bed only; the subtitles are empty there.
-  The canvas fonts have no colour emoji: draw the 👇 as a pointing hand (`R.hand(..., 'point')`) or a paper arrow cutout
-  that bounces down toward the comments; the real emoji goes in the TikTok caption.
+  Colour emoji work on canvas after `GlobalFonts.registerFromPath('/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf', 'Emoji')`
+  and `ctx.font = '120px Emoji'` (see `icecream_ep13/episode.js` endCard).
 - Proof moment: a big stamp with a hit sound (`stampMark`). Show the company's / other side's position if it exists.
 - Subtitles: `SPLIT[id]` must sum to the line's word count (the build throws otherwise); numbers as digits via `REPL`.
 - Useful commands: `node episode.js shots` (shot list) · `node episode.js still t1,t2,... out.png` (contact sheet) · `node episode.js frame t out.png`.
@@ -92,23 +112,29 @@ curl -sS -X POST https://api.elevenlabs.io/v1/sound-generation -H "xi-api-key: p
 ```
 then STT the clip alone to confirm it reads as intended (e.g. "[laughs]").
 
+**Music: one bar grid for the whole video** (copy `hoover_ep19/mix.py`: a `SECTIONS` list, every 2 s bar takes the settings of the section
+it starts in). The older `section(t0, t1)` loop in tp_ep12 / icecream_ep13 / pudding_ep18 restarts bars off the grid at each section, so the
+last bar of one part overlaps the next — it sounds like two tunes at once (owner noticed it in ep 19 at 7 s). **No noise-based SFX at 0.0 s**
+(`jet`, `rumble`, `tvon` hiss): start with a clean hit (`slam`, `ding`, `pop`).
+
 ## 7. Build (background) and QC — all must pass before "done"
 ```bash
-sh <folder>/build.sh > <folder>/build.log 2>&1          # run_in_background; ~4 min for 60 s
+sh <folder>/build.sh > <folder>/build.log 2>&1          # run_in_background; ~2–4 min
 ```
 1. Dense sheet of the FINAL MP4, every 0.5 s:
    `ffmpeg -i out.mp4 -vf "fps=2,scale=180:320,drawtext=text='%{pts\:hms}':x=4:y=4:fontsize=14:fontcolor=red,tile=12x5" -frames:v 2 sheet_%d.png`
    Look for: text cut at the frame edge (fit every headline/label to a max width), subtitles over faces or key numbers,
    cue cards/labels covering faces, props cut at the edges, empty frames, draw-order mistakes.
-2. The 7 retention rules: frame 0 = face + big number, first word "you", sound at 0.0 s (`ffmpeg -i out.mp4 -t 0.3 -af volumedetect -f null -` shows a non-silent max),
-   motion in the first 0.5 s, length 30–40 s, the question card held ≥ 2 s with no voice at the end.
+2. The 8 rules: story spine with the money twist, frame 0 = absurd picture + 3–5 word conflict, line 1 = the strangest fact,
+   sound at 0.0 s (`ffmpeg -i out.mp4 -t 0.3 -af volumedetect -f null -` shows a non-silent max), motion in the first 0.5 s,
+   length 35–60 s, the question card held ≥ 2 s with no voice at the end, 6 carousel PNGs.
 3. `ffprobe` (1080x1920, 30 fps, length), `blackdetect` = 0, loudness via `ebur128` (episodes sit at ≈ −16 LUFS after the build's loudnorm).
 4. `ELEVEN_API_KEYS=proxy python3 stt_check.py out.mp4` — the transcript must equal the script, with no extra words from SFX.
 5. Gaps between voice lines from `cues.json` + `vo/speech.json` (no gap > ~0.5 s).
 6. If only the audio changed, remux instead of re-rendering: copy the video stream to `_video.mp4` and run the mux part of `build.sh`.
 
 ## 8. Cover, carousel, upload kit
-- **Carousel** (`<folder>/carousel/01.png … 06.png`, 1080x1920): 01 the hook face, 02–04 story beats with the key numbers, 05 the twist,
+- **Carousel** (`<folder>/carousel/01.png … 06.png`, 1080x1920): 01 the absurd hook, 02–04 story beats with the key numbers, 05 the money twist,
   06 the question card. Pick times between cuts and render with the episode itself (same look, no subtitles over faces):
   ```bash
   mkdir -p carousel; i=1; for t in <t1> <t2> <t3> <t4> <t5> <t6>; do node episode.js frame $t carousel/0$i.png; i=$((i+1)); done

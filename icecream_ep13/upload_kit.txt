@@ -1,0 +1,21 @@
+EPISODE 13 — Why the McDonald's ice cream machine is "always broken" (the nightly heat-cleaning cycle, cryptic error codes, the wait for a technician, and the 2024 U.S. repair exemption)
+Files: mcflurry_machine_broken.mp4 · mcflurry_machine_broken_cover.png · mcflurry_machine_broken.srt · carousel/01_hook.png … carousel/06_question.png (TikTok photo carousel)
+
+TIKTOK CAPTION
+"Sorry, the machine is broken." Again. 🍦 Most of the time it's running a heat-cleaning cycle that takes about 4 hours. If one step runs too long, the cycle fails, the screen shows a cryptic code, and the store waits for an authorized technician. In 2024 the U.S. made it legal to unlock these machines for repair. Is the machine broken at YOUR McDonald's? 👇
+#mcdonalds #mcflurry #icecream #righttorepair #didyouknow #howitsrun
+
+PINNED COMMENT
+Sources: CBS News on the Kytch / Taylor dispute (the daily pasteurizing cycle takes about four hours; if a step runs past its time limit the cycle fails and has to start over; the on-air example error "R BRL > 41F after SL"; Taylor says it doesn't make money from servicing its machines and repairs are handled by independent distributors). The machine heats the mix to about 151°F to kill bacteria, then cools it (reported by Inc. and Wired). On Oct. 28, 2024 a U.S. Copyright Office (Librarian of Congress) DMCA exemption took effect allowing owners to bypass software locks to diagnose and repair retail-level commercial food preparation equipment, including soft-serve machines. Limits: it doesn't allow selling bypass tools, and these exemptions are reviewed every 3 years. "Can take days" is typical reporting, not a fixed rule; some reports say weeks. The machine and the people in the video are generic drawings.
+Want ice cream tonight? Fans track machine status in real time on mcbroken.com (an unofficial site that checks McDonald's online ordering).
+
+YOUTUBE SHORTS
+Title: Why the McDonald's ice cream machine is ALWAYS broken
+Description: It's usually not broken: it's cleaning itself. Every night the soft-serve machine heats the mix (to about 151°F) to kill bacteria, then cools it back down, which takes about four hours. If one step runs too long, the whole cycle fails, the screen shows a hard-to-read error code, and staff often have to wait for an authorized technician. In October 2024 the U.S. Copyright Office granted a DMCA exemption that makes it legal to bypass software locks to repair retail food-prep equipment like these machines. The problem wasn't the ice cream. It was who's allowed to fix the machine. (Illustrated; generic machine and characters.)
+Sources:
+- CBS News, Kytch and McDonald's soft-serve machines: https://www.cbsnews.com/news/kytch-mcdonalds-soft-serve-ice-cream-machines
+- Wikipedia, McDonald's ice cream machine (citing Inc., Wired, NPR): https://en.wikipedia.org/wiki/McDonald%27s_ice_cream_machine
+- Public Knowledge, "Public Knowledge, iFixit Free the McFlurry, Win Copyright Office DMCA Exemption for Ice Cream Machines" (Oct. 2024): https://publicknowledge.org/?p=37415
+- Fight to Repair, on the exemption and its limits: https://fighttorepair.substack.com/p/mcfixed-copyright-office-says-owners
+- WIFR (Rockton, Ill.), Oct. 30, 2024: https://www.wifr.com/2024/10/30/copyright-change-removes-exclusive-mcdonalds-ice-cream-machine-control-rockton-company/
+#mcdonalds #mcflurry #righttorepair #shorts

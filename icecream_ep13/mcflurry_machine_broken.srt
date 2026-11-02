@@ -1,0 +1,75 @@
+1
+00:00:00,000 --> 00:00:01,382
+You want a McFlurry.
+
+2
+00:00:01,382 --> 00:00:03,762
+“Sorry, the machine is broken.”
+
+3
+00:00:03,762 --> 00:00:05,370
+AGAIN.
+
+4
+00:00:05,370 --> 00:00:06,786
+Usually, it's not broken.
+
+5
+00:00:06,786 --> 00:00:08,208
+It's cleaning itself.
+
+6
+00:00:08,208 --> 00:00:10,542
+Every night it heats up to kill bacteria,
+
+7
+00:00:10,542 --> 00:00:12,213
+then cools down.
+
+8
+00:00:12,213 --> 00:00:13,640
+About FOUR hours.
+
+9
+00:00:13,890 --> 00:00:15,597
+If one step runs too long...
+
+10
+00:00:15,597 --> 00:00:17,338
+the cycle fails.
+
+11
+00:00:17,338 --> 00:00:19,570
+Error codes like this.
+
+12
+00:00:19,570 --> 00:00:21,161
+Staff often can't fix it.
+
+13
+00:00:21,161 --> 00:00:22,136
+They wait for a technician.
+
+14
+00:00:22,136 --> 00:00:23,431
+That can take days.
+
+15
+00:00:23,431 --> 00:00:25,602
+Then in 2024, the U.S. made it
+
+16
+00:00:25,602 --> 00:00:27,921
+legal to unlock these machines for repair.
+
+17
+00:00:27,921 --> 00:00:29,245
+The problem wasn't the ice cream.
+
+18
+00:00:29,245 --> 00:00:30,823
+It was who's ALLOWED
+
+19
+00:00:30,823 --> 00:00:31,890
+to fix the machine.
