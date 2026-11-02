@@ -98,6 +98,9 @@ if EPN == "photo":  # cover = her posing by the fountain, friend with phone; ONE
     hev = dict(cut=round(h0 - 0.05, 3)); cue("impact", h0 - 0.05, 0.7)
     for k in range(8): cue("shutter", h0 + 0.05 + 0.1 * k, 0.5)
     h0 = say("hook_h2", h0 + 1.1); hev["count"] = round(hev["cut"] + 0.1, 3); h0 += 0.5
+if EPN == "drill":  # NEW opener: her bedroom at 03:15 (clock), the wall shakes, the plant crawls to the shelf edge; "Just one more hole!" through the wall -> cut to the landing (cover)
+    hev = dict(shake=0.15); cue("drill", 0.15, 0.7); h0 = say("hook_r", 0.55) + 0.1
+    hev["plant"] = round(h0 - 0.3, 3); cue("thud", h0 - 0.1, 0.6); hev["cut"] = round(h0 + 0.05, 3); cue("whoosh", h0, 0.4); h0 += 0.35
 e = say("hook", h0); hw = word_times("hook") or []
 def find(word):
     for w, a, b in hw:
@@ -105,7 +108,7 @@ def find(word):
     return None
 stamp_t = find(E["stamp_word"]) or (e - 1.0); cue("stamp", stamp_t, 0.8)
 t = e + 0.45
-scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "newhair", "idea") else {})))
+scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "newhair", "idea", "drill") else {})))
 
 TICKS = lambda back: [("tick", -back + 0.15 + 0.6 * k, 0.6) for k in range(int(back / 0.6))]
 if EPN == "gym":
@@ -572,6 +575,18 @@ elif EPN == "newhair":   # café table (passport layout). Plans: WIDE / CARD / H
             ("c2_h2", 0.9, [("STARE", -0.85, 0), ("rimshot", ("e", 0.35), 0.9)]), ("c2_nar", 1.2, [])],
     )
     INTRO = 1.15
+elif EPN == "drill":   # landing: the neighbour in the doorway of flat 13, her on the right; bedroom zone for the drill-tip gags. Plans: WIDE / CARD / HER / NBR / BED inserts. NO black card before the C2 outro
+    LV = dict(
+        A1=[("a1_h", 0.15, []), ("a1_r", 0.25, []), ("a1_nar", 1.6, [("DRILL", -1.5, 0), ("drill", -1.5, 0.7), ("TIP", -0.95, 0), ("pop", -0.9, 0.5), ("REACT", -0.35, 0)])],
+        A2=[("a2_h", 0.15, []), ("a2_r", 0.25, [("BOW", 0.3, 0), ("sparkle", 0.35, 0.4)]), ("a2_nar", 0.6, [("REACT", -0.5, 0), ("buzz", 0.95, 0.5)]), ("a2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        B1=[("b1_h", 0.15, []), ("b1_r", 0.25, [("GIFT", 0.55, 0), ("pop", 0.6, 0.5), ("COOKIE", 1.6, 0), ("pop", 1.65, 0.45)]),
+            ("b1_nar", 1.8, [("CLOSE", -1.7, 0), ("thud", -1.65, 0.8), ("DRILL", -1.1, 0), ("drill", -1.1, 0.65), ("HOLE", -0.7, 0), ("pop", -0.65, 0.5)])],
+        B2=[("b2_h", 0.15, []), ("b2_r", 0.2, [("ROPE", 0.05, 0), ("whoosh", 0.05, 0.4)]), ("b2_nar", 0.8, [("REACT", -0.7, 0), ("rimshot", -0.65, 0.7)]), ("b2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C1=[("c1_h", 0.15, [("PHONE", 0.5, 0), ("pop", 0.5, 0.4)]), ("c1_r", 0.5, [("GULP", -0.45, 0), ("gulp", -0.4, 0.5)]), ("c1_nar", 1.5, [("TIPTOE", -1.4, 0), ("creak", -0.4, 0.4)]), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C2=[("c2_h", 0.3, []), ("c2_r", 1.6, [("THINK", -1.5, 0)] + TICKS(1.4)), ("c2_h2", 0.45, [("REACT", -0.4, 0)]),
+            ("c2_nar", 2.6, [("MORNING", -2.45, 0), ("whoosh", -2.45, 0.5), ("chime", -2.25, 0.5), ("GIRAFFE", -1.65, 0), ("boing", -1.6, 0.6), ("rimshot", -0.65, 0.6)])],
+    )
+    INTRO = 0.6
 elif EPN == "idea":   # meeting room (newhair layout): Her / Boss (seated) / Ryan. Plans: WIDE / CARD / HER / RYAN / BOSS. Running gag: the boss gives Ryan gold stars (1,2,3,4,5...). NO black card before the C2 outro
     LV = dict(
         A1=[("a1_h", 0.22, []), ("a1_b", 0.18, [("clapclap", 0.2, 0.6), ("STAR", ("e", -1.0), 0), ("ding", ("e", -0.4), 0.7)]), ("a1_h2", 0.25, [("deflate", ("e", -0.3), 0.5)]), ("a1_nar", 1.0, [])],
