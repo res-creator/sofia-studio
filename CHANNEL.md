@@ -7,23 +7,34 @@ A real hero, a real problem, a failure or a surprise, and a final twist about mo
 Best examples: `emu_ep12/` (Army vs. 20,000 emus) and `lawnchair_ep17/` (Larry Walters' lawn-chair flight).
 **No more hero-less explainers** (like `icecream_ep13/`, "why the McDonald's machine is always broken"). Not finance advice, not news, no crypto/politics.
 
-## Episodes made (don't repeat these topics)
-| Folder | Topic | Final file |
-|---|---|---|
-| `mcd_ep1/` | McDonald's makes money on real estate | `how_mcdonalds_really_makes_money_final.mp4` |
-| `air_ep2/` | Airlines oversell seats | `why_airlines_oversell_seats_final.mp4` |
-| `car_ep3/v2/` | Car (GM/OnStar) shared driving data | `your_car_was_reporting_on_you_v2.mp4` |
-| `rent_ep4/` | RealPage shared pricing software | `your_landlords_secret_algorithm_v2.mp4` |
-| `med_ep5/` | Medical bill $3,000 → $6,000 after the move to a surgery center | `medical_bill_doubled_v3.mp4` |
-| `amazon_ep6/` | Amazon returnless refunds ($5 item, $8–$12 shipping) | `amazon_keep_it_v2.mp4` |
-| `doordash_ep8/` | DoorDash old pay model 2017–2019: the tip replaced DoorDash's part of a $10 guarantee | `doordash_tip_v2.mp4` |
-| `scratch_ep11/` | Hertz/Thrifty AI damage scanner, Atlanta 2025: 1-inch scuff → $440, 7-day discount vs up-to-10-day reply (on hirkit) | `the_440_scratch.mp4` |
-| `icecream_ep13/` | McDonald's ice cream machine "always broken": ~4 h nightly heat cycle, cycle fails, error codes, technician wait, 2024 DMCA repair exemption (first episode with the new first-seconds rules; + 6-frame carousel) | `mcflurry_machine_broken.mp4` |
-| `tp_ep12/` | Toilet Paper Panic of 1973: congressman's "may face" warning → Carson's joke without the "may" → empty shelves; twist: everyone's smart move WAS the shortage (on hirkit, `tpkit.js`) | `toilet_paper_panic_1973.mp4` |
-Also made in other branches (not yet in main): `emu_ep12/` Great Emu War 1932 (`claude/vibrant-hopper-rwobhr`), `ups_ep12/`, `coke_ep9/`,
-`subscription_ep13/`, `hotel_ep14/`, `pepsi_ep15/` Pepsi Harrier jet, old format (`claude/friendly-clarke-mo1xcl`), `monopoly_ep16/`,
-`lawnchair_ep17/` Larry Walters' lawn chair 1982 (`claude/friendly-gauss-qry8ah`). Check `git branch -r` before picking a topic.
-Also: `covers_extra/` (credit card trap, gym no-shows — uploaded videos). Ideas backlog: `IDEAS.md`. Captions: `CAPTIONS.md`.
+## Уже сделано — не повторять (all How It's Run episodes in all branches, checked Nov 2026)
+Before every new topic: check this table AND `git fetch origin && git branch -r` for newer episode folders (the skill does this).
+If the topic (or the same story with another angle) is here, say so and take the next topic.
+| Folder | Branch | Topic | Final file | Length |
+|---|---|---|---|---|
+| `mcd_ep1/` | main | McDonald's makes money on real estate | `how_mcdonalds_really_makes_money_final.mp4` | 39.6 s |
+| `air_ep2/` | main | Airlines oversell seats | `why_airlines_oversell_seats_final.mp4` | 37.8 s |
+| `car_ep3/v2/` | main | GM/OnStar shared drivers' data | `your_car_was_reporting_on_you_v2.mp4` | 45.6 s |
+| `rent_ep4/` | main | RealPage rent-pricing algorithm | `your_landlords_secret_algorithm_v2.mp4` | 46.8 s |
+| `med_ep5/` | main | Medical bill $3,000 → $6,000 after the move to a surgery center | `medical_bill_doubled_v3.mp4` | 35.0 s |
+| `amazon_ep6/` | main | Amazon returnless refunds | `amazon_keep_it_v2.mp4` | 35.0 s |
+| `doordash_ep8/` | main | DoorDash old pay model: the tip replaced DoorDash's part | `doordash_tip_v2.mp4` | 37.4 s |
+| `coke_ep9/` | `claude/sharp-newton-t9y414` | Coca-Cola's 5-cent price ("impossible coin") | `cokes_impossible_coin_v2.mp4` | 39.0 s |
+| `wellsfargo_ep10/` | main | Wells Fargo overdraft: the $5 coffee that cost $40 | `the_5_coffee_that_cost_40_v2.mp4` | 67.6 s |
+| `scratch_ep11/` | main | Hertz/Thrifty AI damage scanner: 1-inch scuff → $440 | `the_440_scratch.mp4` | 70.2 s |
+| `tp_ep12/` | main | Toilet Paper Panic of 1973 (Carson's joke) | `toilet_paper_panic_1973.mp4` | 60.0 s |
+| `emu_ep12/` | `claude/vibrant-hopper-rwobhr` | The Great Emu War, Australia 1932 (**format reference**) | `the_great_emu_war.mp4` | 65.2 s |
+| `ups_ep12/` | `claude/zen-lamport-5i4rua` | UPS avoids left turns: the shortest route isn't the cheapest | `ups_shortest_route.mp4` | 65.6 s |
+| `icecream_ep13/` | `claude/sweet-brahmagupta-7uiuaz` | Why the McDonald's ice cream machine is "always broken" (old explainer format) | `mcflurry_machine_broken.mp4` | 34.1 s |
+| `subscription_ep13/` | `claude/ep16-monopoly-script` | The Comcast cancellation call that wouldn't end (Ryan Block, 2014) | `the_comcast_call_that_wouldnt_end.mp4` | 63.1 s |
+| `hotel_ep14/` | `claude/stoic-einstein-g61524` | The $1,400 hotel room (Nassau, 2026) | `the_1400_hotel_room.mp4` | 69.6 s |
+| `pepsi_ep15/` | `claude/friendly-clarke-mo1xcl` | Pepsi Harrier jet, John Leonard 1996 (**published — don't remake**) | `the_pepsi_fighter_jet.mp4` | 41.7 s |
+| `monopoly_ep16/` | `claude/ep16-monopoly-script` | McDonald's Monopoly game fraud ("the inside man") | `the_monopoly_inside_man.mp4` | 40.4 s |
+| `lawnchair_ep17/` | `claude/friendly-gauss-qry8ah` | Larry Walters' lawn-chair balloon flight, 1982 (**format reference**) | `the_man_who_flew_in_a_lawn_chair.mp4` | 36.3 s |
+Also: `covers_extra/` (covers only: credit card trap, gym no-shows — uploaded videos); `molasses_full/`, `molasses_calm/` (Boston Molasses Flood 1919,
+5.7 min long-form, branch `claude/vibrant-dijkstra-gnvqpv`). Not this channel: `survival/`, `whatif/`, `speak_*`, Sofia `ep/`–`ep3/`.
+Next topics in the owner's queue: The pudding guy (David Phillips, 1999) → Hoover free flights (UK, 1992) → Hanoi rat bounty (1902).
+Ideas backlog: `IDEAS.md`. Captions: `CAPTIONS.md`.
 
 ## Format
 1080x1920, 30 fps. Length: **35–60 s, as long as the story needs**, at the natural voice pace (never speed up the voice or pad scenes); episodes 10–11 ran 67–70 s, ep 12 ran 60 s. Style: Bold Editorial Collage, 2D + 2.5D parallax, selective pseudo-3D,

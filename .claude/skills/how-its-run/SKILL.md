@@ -35,6 +35,14 @@ curl -sS -o /dev/null -w "%{http_code}\n" https://api.elevenlabs.io/v1/models   
 ElevenLabs: keys only via env `ELEVEN_API_KEYS` (in this cloud env the proxy injects auth: `ELEVEN_API_KEYS=proxy`, header `xi-api-key: proxy`).
 Never write a key into code, git, chat or memory. Max 2 requests at once, ~3 s apart.
 
+## 0.5 Topic check (before ANY research)
+Read the table «Уже сделано — не повторять» in CHANNEL.md, then look for newer episodes in other branches:
+```bash
+git fetch -q origin && for b in $(git branch -r | grep -v HEAD); do git ls-tree --name-only $b | grep -E "_ep[0-9]+$" | sed "s#^#$b #"; done | sort -k2 -u
+```
+If the topic (or the same story) is already made — even in an unmerged branch — tell the owner and take the next topic from her queue.
+When an episode is finished, add its row (folder, branch, topic, final file, length) to that table.
+
 ## 1. Facts first (stop and show the owner)
 - Search the web; open the pages (WebFetch) — don't trust search snippets for numbers or quotes.
 - Give a short table: fact → source link. Only URLs you actually opened. Mark disputed details ("accounts differ", "reportedly").
