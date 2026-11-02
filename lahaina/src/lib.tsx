@@ -141,3 +141,58 @@ export const Burst: React.FC<SP & { srcs: string[]; step?: number; caption?: str
     </AbsoluteFill>
   );
 };
+
+// ---- quote card: optional portrait (or silhouette), name, role, and the quote typed out with bold keywords (**word**)
+export const Quote: React.FC<SP & { text: string; who: string; role?: string; photo?: string; bg?: string; at?: number }> = (p) => {
+  const at = p.at ?? 0.2;
+  const parts = p.text.split(/(\*\*[^*]+\*\*)/).filter(Boolean);
+  const words: { w: string; b: boolean }[] = [];
+  parts.forEach((s) => { const b = s.startsWith('**'); s.replace(/\*\*/g, '').split(' ').filter(Boolean).forEach((w) => words.push({ w, b })); });
+  return (
+    <AbsoluteFill style={{ background: C.bg, overflow: 'hidden' }}>
+      {p.bg && <AbsoluteFill style={{ opacity: 0.35 }}><Still t={p.t} dur={p.dur} src={p.bg} cam={{ s0: 1.15, s1: 1.25 }} /></AbsoluteFill>}
+      <AbsoluteFill style={{ background: 'linear-gradient(90deg, rgba(7,9,11,0.92) 0%, rgba(7,9,11,0.75) 55%, rgba(7,9,11,0.55) 100%)' }} />
+      <div style={{ position: 'absolute', left: 150, top: 230, width: 420, height: 540, border: `3px solid ${C.ink}`, overflow: 'hidden', background: '#15191C', opacity: pe(p.t, 0, 0.5), transform: `translateY(${(1 - pe(p.t, 0, 0.6)) * 30}px)` }}>
+        {p.photo ? <Img src={staticFile('img/' + p.photo)} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(1) contrast(1.1)' }} /> : (
+          <svg width="420" height="540" viewBox="0 0 420 540"><circle cx="210" cy="200" r="95" fill="#2A3035" /><path d="M40,540 C60,370 140,320 210,320 C280,320 360,370 380,540 Z" fill="#2A3035" /></svg>
+        )}
+      </div>
+      <div style={{ position: 'absolute', left: 150, top: 790, width: 560, opacity: pe(p.t, 0.3, 0.5) }}>
+        <div style={{ fontFamily: SANS, fontWeight: 800, fontSize: 36, color: C.ink, letterSpacing: 1 }}>{p.who}</div>
+        {p.role && <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 26, color: C.dim, marginTop: 6 }}>{p.role}</div>}
+      </div>
+      <div style={{ position: 'absolute', left: 680, top: 240, width: 1100, fontFamily: SANS, fontSize: 56, lineHeight: 1.32, color: C.ink }}>
+        <span style={{ fontFamily: DISPLAY, fontSize: 140, color: C.red, lineHeight: 0, position: 'relative', top: 52, marginRight: 10, opacity: pe(p.t, at, 0.3) }}>“</span>
+        {words.map((x, i) => { const k = pe(p.t, at + i * 0.07, 0.25); return <span key={i} style={{ opacity: 0.15 + 0.85 * k, fontWeight: x.b ? 800 : 400, color: x.b ? C.ember : C.ink }}>{x.w} </span>; })}
+      </div>
+    </AbsoluteFill>
+  );
+};
+// ---- lower third for a real person speaking on archival video
+export const Lower: React.FC<{ t: number; at?: number; name: string; role?: string }> = ({ t, at = 0.3, name, role }) => {
+  const k = pe(t, at, 0.6);
+  return (
+    <div style={{ position: 'absolute', left: 90, bottom: 120, opacity: k, transform: `translateX(${(1 - k) * -40}px)` }}>
+      <div style={{ width: 80 * k, height: 4, background: C.red, marginBottom: 12 }} />
+      <div style={{ fontFamily: SANS, fontWeight: 800, fontSize: 40, color: C.ink, textShadow: '0 2px 16px rgba(0,0,0,0.8)' }}>{name}</div>
+      {role && <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 28, color: C.ink, opacity: 0.8, marginTop: 4, textShadow: '0 2px 16px rgba(0,0,0,0.8)' }}>{role}</div>}
+    </div>
+  );
+};
+// ---- burned-in subtitle for archival speech
+export const Sub: React.FC<{ text: string }> = ({ text }) => (
+  <div style={{ position: 'absolute', left: 0, right: 0, bottom: 60, textAlign: 'center' }}>
+    <span style={{ fontFamily: SANS, fontWeight: 700, fontSize: 42, color: '#FFF', background: 'rgba(0,0,0,0.7)', padding: '8px 20px', lineHeight: 1.5, boxDecorationBreak: 'clone' } as any}>{text}</span>
+  </div>
+);
+// ---- chapter title over footage (part number + title, 2 s)
+export const Part: React.FC<{ t: number; n: number; title: string }> = ({ t, n, title }) => {
+  const k = pe(t, 0.1, 0.6), out = 1 - pe(t, 2.2, 0.5);
+  return (
+    <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', opacity: Math.min(k, out) }}>
+      <div style={{ fontFamily: SANS, fontWeight: 700, fontSize: 30, letterSpacing: 14, color: C.red }}>PART {n}</div>
+      <div style={{ width: 90 * k, height: 3, background: C.ink, margin: '18px 0' }} />
+      <div style={{ fontFamily: DISPLAY, fontSize: 150, letterSpacing: 8 + 10 * (1 - k), color: C.ink, textShadow: '0 6px 40px rgba(0,0,0,0.8)' }}>{title}</div>
+    </AbsoluteFill>
+  );
+};
