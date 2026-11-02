@@ -289,7 +289,7 @@ function countAt(t) { let n = 47, ch = -1; for (const [a, v] of STP) if (t >= a)
   return { s: String(n), ch, big: false }; }
 const bubbleOn = t => TL.speech.some(s => s.who !== 'nar' && s.who !== 'tip' && t > s.t - 0.15 && t < s.t + s.d + 0.4);
 const narOn = t => TL.speech.some(s => (s.who === 'nar' || s.who === 'tip') && t > s.t - 0.2 && t < s.t + s.d + 0.3);
-function counter(c, t, sc) { const L = sc.id; if (L === 'outro') return; const nar = SP[L.toLowerCase() + '_nar'], u = t - sc.s;
+function counter(c, t, sc) { return; /* owner: no corner counter/icons in the video */ const L = sc.id; if (L === 'outro') return; const nar = SP[L.toLowerCase() + '_nar'], u = t - sc.s;
   if (L !== 'hook' && (u < 1.2 || (nar && t > nar.t - 0.2))) return; if (L === 'hook' && (CUR_TAG !== 'cover' || narOn(t))) return; if (narOn(t)) return;
   const { s, ch, big } = countAt(t);
   const since = t - ch, bump = since > 0 && since < 0.4 ? 1 + 0.3 * Math.sin(since / 0.4 * Math.PI) : 1, showLab = since > 0.1 && since < 2.1 && L !== 'hook' && !bubbleOn(t);
@@ -303,8 +303,8 @@ let CUR_TAG = 'wide';
 function renderFrame(c, t) {
   c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; const sc = sceneAt(t), L = sc.id;
   if (L === 'outro') { const rows = [['A1', 'No! My kitchen! Back!'], ['A2', 'Where did you put my spoons?'], ['B2', 'Too many cooks spoil the broth.'], ['C1', 'Can we decide together next time?']];
-    K.outro(c, t, { q: ['А СВЕКРОВЬ ПЕРЕСТАВЛЯЛА', 'ЧТО-ТО У ТЕБЯ?'], rows, cta: ['ОТПРАВЬ ПОДРУГЕ', 'СО СВЕКРОВЬЮ'], heroX: 190, heroS: 0.42,
-      hero: (cc, tt) => { const g = G.her, gd = G.mil; K.put(cc, ROSE, { t: tt, mood: 'happy', laugh: true, turn: -0.2, look: -0.4, armL: reach(gd, -1, -gd.sw * 2.0, gd.ySh - 330 + Math.sin(tt * 8) * 30, { planar: true }), armR: chest(gd, 1, 0.7), items: { R: printerItem(0.5, 'LABEL') }, afterTorso: apron(gd) }, 1500, 60);
+    K.outro(c, t, { q: ['А СВЕКРОВЬ ПЕРЕСТАВЛЯЛА', 'ЧТО-ТО У ТЕБЯ?'], rows, cta: ['ОТПРАВЬ ПОДРУГЕ', 'СО СВЕКРОВЬЮ'], heroX: 95, heroS: 0.34, heroY: [2350, 1985], ctaFit: true,
+      hero: (cc, tt) => { const g = G.her, gd = G.mil; K.put(cc, ROSE, { t: tt, mood: 'happy', laugh: true, turn: -0.2, look: -0.4, armL: reach(gd, -1, -gd.sw * 2.0, gd.ySh - 330 + Math.sin(tt * 8) * 30, { planar: true }), armR: chest(gd, 1, 0.7), items: { R: printerItem(0.5, 'LABEL') }, afterTorso: apron(gd) }, 640, 60);
         K.put(cc, HER, { t: tt, mood: 'happy', laugh: true, turn: 0, look: 0, armL: reach(g, -1, -g.sw * 2.0, g.ySh - 260 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(g, 1), items: {}, afterTorso: bag }, 0, 0); } });
     const u = t - SC.outro.s, kk = P(u, 1.35, 1.7); if (kk > 0) { const bh = 140 + rows.length * 115, y = 740 - bh / 2 + 150; UI.textFit(c, 'Nun9', 46, rows[0][1], 740); const wd = c.measureText(rows[0][1]).width;
       c.save(); c.globalAlpha = 0.55 * kk; c.fillStyle = C.white; c.fillRect(214, y - 34, wd + 16, 68); c.restore(); c.strokeStyle = C.red; c.lineWidth = 8; c.lineCap = 'round'; c.beginPath(); c.moveTo(212, y + 2); c.lineTo(212 + (wd + 16) * eOut(kk), y + 2); c.stroke(); }
