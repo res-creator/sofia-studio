@@ -66,7 +66,7 @@ chB = pad([Bb2, F3, D3], 0.22) * np.clip((t - tn(30)) / 4, 0, 1) * np.clip(1 - (
 chC = pad([C3, E3 * 0.5 * 2, A2], 0.2) * np.clip((t - tn(54)) / 4, 0, 1)
 music += chA + chB + chC
 air = band(rng.standard_normal(N).astype(np.float32), 2500, 7000) * 0.012 * (0.5 + 0.5 * np.sin(2 * np.pi * t / 17))
-music = band(music, 40, 2200) + air
+music = band(music, 40, 2200)  # v3: no 'air' hiss layer (owner: no wind/hiss beds)
 music *= np.clip(t / 3.0, 0, 1) * np.clip((DUR - t) / 3.5, 0, 1)
 # tension dip: music thins out in the silence after "splits apart", then returns
 music *= 1 - 0.65 * env(ws(73), 0.4, 1.4, 1.6)
@@ -80,7 +80,8 @@ def add(x, pan=0.0, g=1.0):
 # wind over the harbour, a mild winter day (0 .. ~24 s), slow gusts
 gust = smooth(np.abs(band(noise(), 0.05, 0.4)), 0.5); gust /= gust.max() + 1e-9
 wind = band(noise(), 180, 900) * (0.35 + 0.65 * gust) * env(0.0, 2.5, 19.0, 5.0)
-add(wind, -0.2, 0.08); add(band(noise(), 250, 1100) * (0.3 + 0.7 * gust[::-1]) * env(0.0, 2.5, 19.0, 5.0), 0.3, 0.065)
+# v3: wind removed (owner)
+# add(wind, -0.2, 0.08); add(band(noise(), 250, 1100) * (0.3 + 0.7 * gust[::-1]) * env(0.0, 2.5, 19.0, 5.0), 0.3, 0.065)
 
 # metal creaks: tank strain on "leaking" and before the rupture
 def creak(t0, dur, f0=95, g=0.06, pan=0.0):
@@ -110,7 +111,7 @@ for k in range(9):
 rum = band(noise(), 30, 220) * (0.7 + 0.3 * smooth(np.abs(band(noise(), 0.5, 3)), 0.2) / 0.05)
 rum = rum / (np.abs(rum).max() + 1e-9)
 add(rum * env(ws(75) - 0.6, 3.0, 3.6, 3.2), 0, 0.22)
-add(band(noise(), 300, 1800) * env(ws(76), 3.0, 3.0, 3.0), 0.25, 0.018)  # slosh / spray
+# v3: slosh/spray noise removed (owner)
 
 # crowd murmur under the aftermath photos: many band-limited "voices" with syllabic modulation
 crowd = np.zeros(N, np.float32)
@@ -120,7 +121,8 @@ for v in range(14):
     fc = rng.uniform(350, 900)
     crowd += band(noise(), fc * 0.7, fc * 1.6) * syl
 crowd = crowd / (np.abs(crowd).max() + 1e-9)
-add(band(crowd, 200, 2500) * env(tn(45.0), 1.2, tn(52.5) - tn(45.0), 2.5), -0.15, 0.09)
+# v3: noise-based crowd murmur removed (owner)
+# add(band(crowd, 200, 2500) * env(tn(45.0), 1.2, tn(52.5) - tn(45.0), 2.5), -0.15, 0.09)
 # distant bell of a fire engine? not used: no invented details. Only general ambience.
 
 # title: low swell, very gentle
