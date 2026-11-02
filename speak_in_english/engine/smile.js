@@ -221,7 +221,8 @@ const fy = (hy, z, sy = 900) => hy + (960 - sy) / z;
 const SH = { COVER: S(-170, -1250, 0.6, 'cover'), WIDE: S(40, -1070, 0.42, 'wide'), CARD: S(60, -1400, 0.62, 'card'), TWO: S(60, -1300, 0.66, 'two'), GIFT: S(-200, -1150, 0.6, 'wide'),
   HER: S(HX + 40, fy(hHY, 1.0), 1.0, 'her'), HER_H: S(HX + 60, fy(hHY, 1.1, 720), 1.1, 'her'), STICK: S(HX + 110, fy(hHY, 1.15, 600), 1.15, 'her'),
   LIN: S(LX - 20, fy(lHY, 1.0), 1.0, 'cashier'), LIN_CU: S(LX - 60, fy(lHY, 1.35, 1000), 1.35, 'cashier'),
-  QUEUE: S(-935, fy(QUEUE[1].g.headY * QS, 0.72, 980), 0.72, 'queue'), STAFF: S(880, fy((lHY + gHY) / 2, 0.72, 1150), 0.72, 'staff'), SIGN: S(560, -1820, 0.8, 'cashier'), ALL: S(0, -960, 0.5, 'all'),
+  QUEUE: S(-935, fy(QUEUE[1].g.headY * QS, 0.72, 980), 0.72, 'queue'), STAFF: S(880, fy((lHY + gHY) / 2, 0.72, 1150), 0.72, 'staff'), SIGN: S(560, -1820, 0.8, 'cashier'), LIN_SIGN: S(525, -1440, 0.75, 'cashier'),   // Linda single under the lit sign: sign top ~310 px, below the level bar and above her bubble
+  ALL: S(0, -1000, 0.5, 'all'),
   PHONE: U('phone', 1) };
 const C2Z = [1.0, 1.2, 1.4].map(z => S(HX + 40, fy(hHY, z, 940), z, 'her'));
 function shotHard(t) { const sc = sceneAt(t), L = sc.id, f = s => ({ ...s, force: true }), e = k => ev(L, k); if (L === 'outro') return SH.WIDE;
@@ -241,6 +242,7 @@ function shotHard(t) { const sc = sceneAt(t), L = sc.id, f = s => ({ ...s, force
     if (t > endOf('c2_l') + 0.25 && t < e('sign') - 0.05) return f(SH.HER);
     if (t >= e('sign') - 0.05 && t < e('smile') - 0.05) return f(SH.SIGN);
     if (t >= e('smile') - 0.05 && t < SP.c2_l2.t - 0.1) return f(SH.ALL);
+    if (t >= SP.c2_l2.t - 0.1 && t <= endOf('c2_l2') + 0.25) return f(SH.LIN_SIGN);
     if (t > endOf('c2_l2') + 0.25) return f(SH.ALL); }
   const cur = TL.speech.find(s => s.id.startsWith(l + '_') && s.who !== 'nar' && s.who !== 'tip' && t >= s.t - 0.1 && t < s.t + s.d + 0.25);
   const single = who => who === 'her' ? SH.HER : SH.LIN;
