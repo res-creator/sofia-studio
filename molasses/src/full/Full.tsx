@@ -5,7 +5,7 @@ import TL from '../data/timeline.json';
 import T from '../data/full.json';
 import { C } from '../lib';
 import { Main } from '../Main';
-import { CollageShot } from './kit';
+import { CollageShot, DefaultWash } from './kit';
 import { SP, ChapterCard, TextCard, NumberCard, ChipsCard, TimelineCard, FlowCard, WordsCard, NamesCard, PhotoShot, PrintShot, MapShot, GraphCard, HeightsCard, TANK } from './kit';
 import { TankDiagram, SteelCard, RivetCrack, RadarCard, ModelCard, CrestCard } from './tank';
 
@@ -70,7 +70,7 @@ const SHOTS: Shot[] = [
   s(L('c1_07'), (p) => <TextCard {...p} kicker="The First World War" lines={[{ text: 'Munitions were very good business.', at: W('c1_07', 'munitions') }]} wash={wash('east_boston.jpg')} />),
   s(L('c1_08'), (p) => <TimelineCard {...p} items={[{ top: '1915', label: 'Purity Distilling builds the tank', at: L('c1_08') + 0.1 }, { top: '1917', label: 'Bought by United States Industrial Alcohol (USIA)', at: W('c1_08', '1917'), hi: true }]} />),
   s(L('c1_09'), (p) => <TextCard {...p} kicker="The owner" lines={[{ text: 'United States Industrial Alcohol', at: L('c1_09') + 0.1 }, { text: 'The Commercial Street tank: part of a national operation', at: W('c1_09', 'national') }]} wash={wash('waterfront.jpg', 1)} />),
-  s(L('c1_10'), (p) => <TextCard {...p} kicker="The man responsible" lines={[{ text: 'Not an engineer.', at: W('c1_10', 'not') }]} wash={wash('tank_before.jpg', 0, -1, 0.16)} />),
+  s(L('c1_10'), (p) => <TextCard {...p} kicker="The man responsible" lines={[{ text: 'Not an engineer.', at: W('c1_10', 'not') }]} wash={wash('east_boston.jpg', 0, -1)} />),
   ph(L('c1_11'), (p) => <MapShot {...p} keys={[[0, TANK.lon + 0.003, TANK.lat - 0.001, 3.0], [p.dur, TANK.lon + 0.002, TANK.lat - 0.0005, 2.4]]} texts={[{ lon: TANK.lon + 0.0045, lat: TANK.lat + 0.0012, text: 'harbor & piers', at: W('c1_11', 'harbor'), size: 30 }]} commercial={W('c1_11', 'Picture')} markers={[{ lon: TANK.lon, lat: TANK.lat, label: 'Tank', at: L('c1_11') + 0.3 }]} />),
   s(W('c1_11', 'Overhead'), (p) => <PrintShot {...p} {...TANKP} w={1060} text="Commercial Street before 1919: the elevated railway on the left, the molasses tank on the right." source={SRC.tank} />),
   s(L('c1_12'), (p) => <PrintShot {...p} {...POST} crop={[300, 430, 520, 300]} w={1500} text="Labels from the Boston Post, Jan. 16, 1919: the elevated structure, where the tank stood, the Engine 31 firehouse." source={SRC.post} />),
@@ -90,7 +90,7 @@ const SHOTS: Shot[] = [
   s(L('c2_13'), (p) => <TextCard {...p} lines={[{ text: 'Brown, like molasses.', at: L('c2_13') }, { text: 'So the streaks would be harder to see.', at: W('c2_13', 'So') }]} />),
   s(L('c2_14'), (p) => <TankDiagram {...p} mode="noise" at={W('c2_14', 'noises')} title="Other warnings: noises" labels={[{ text: 'groaning', at: W('c2_14', 'Groaning') }, { text: 'rumbling', at: W('c2_14', 'rumbling') }]} tag="Illustration" />),
   s(L('c2_15'), (p) => <WordsCard {...p} words={[{ text: 'Warnings', at: L('c2_15') }, { text: 'ignored.', at: W('c2_15', 'ignored'), amber: true }]} />),
-  s(L('c2_16'), (p) => <TextCard {...p} lines={[{ text: 'Jell heard about the noises.', at: L('c2_16') }, { text: 'The tank stayed in service.', at: W('c2_16', 'tank'), size: 84, weight: 800, color: C.amber }]} wash={wash('tank_before.jpg', 1, 0, 0.16)} />),
+  s(L('c2_16'), (p) => <TextCard {...p} lines={[{ text: 'Jell heard about the noises.', at: L('c2_16') }, { text: 'The tank stayed in service.', at: W('c2_16', 'tank'), size: 84, weight: 800, color: C.amber }]} wash={wash('east_boston.jpg', 1, 0)} />),
   s(L('c2_17'), (p) => <TankDiagram {...p} mode="fill" level={0.9} at={L('c2_17') - 1} at2={L('c2_17')} title="Pressure to keep it full" />),
   s(L('c2_18'), (p) => <PrintShot {...p} {...GLOBE} crop={[10, 1545, 550, 400]} w={1050} pan={[0, 10]} text="The Boston Daily Globe, January 16, 1919: “One more state to make country dry”" source={SRC.globe} />),
   s(W('c2_18', 'ratified') - 0.3, (p) => <TimelineCard {...p} kicker="Prohibition is coming" items={[{ top: 'Jan 15, 1919', label: 'the disaster', at: W('c2_18', 'ratified') - 0.2 }, { top: 'Jan 16, 1919', label: 'the amendment banning alcohol is ratified', at: W('c2_18', 'sixteenth'), hi: true }]} />),
@@ -156,7 +156,7 @@ const SHOTS: Shot[] = [
   s(L('c5b_05'), (p) => <NamesCard {...p} names={[{ name: 'Flaminio Gallerani', age: '37', at: L('c5b_05') }, { name: 'Eric Laird', age: '17', at: L('c5b_06') }, { name: 'Peter Shaughnessy', age: '18', at: L('c5b_07') }, { name: 'Ralph Martin', age: '21', at: L('c5b_08') }]} wash={wash('redcross.jpg', 1, 0, 0.2)} />),
   s(L('c5b_09'), (p) => <NamesCard {...p} names={[{ name: 'Michael Sinnott', age: '78', at: L('c5b_09') }, { name: 'Maria Di Stasio', age: '10', at: L('c5b_10') }, { name: 'Pasquale Iantosca', age: '10', at: W('c5b_10', 'Pasquale') }]} wash={wash('cba_051.jpg', -1, 0, 0.2)} />),
   ph(L('c5b_11'), (p) => <PhotoShot {...p} src="cba_035.jpg" intro="wipe" kb={kb(960, 540, 1.05, 1.16, -2, 0)} text="Along the elevated railway after the flood, January 1919" source={SRC.cba} />),
-  s(L('c5b_12'), (p) => <TextCard {...p} lines={[{ text: 'None of them had any say', at: L('c5b_12') }, { text: 'in how that tank was built.', at: W('c5b_12', 'how'), size: 64, weight: 800, color: C.amber }]} wash={wash('tank_before.jpg', 0, -1, 0.2)} />),
+  s(L('c5b_12'), (p) => <TextCard {...p} lines={[{ text: 'None of them had any say', at: L('c5b_12') }, { text: 'in how that tank was built.', at: W('c5b_12', 'how'), size: 64, weight: 800, color: C.amber }]} wash={wash('east_boston.jpg', 0, -1)} />),
 
   // ===================== CHAPTER 6 — A STICKY CITY
   ph(first('c6'), (p) => <PhotoShot {...p} src="cba_023.jpg" intro="zoom" kb={kb(800, 520, 1.06, 1.16, 2, 0)} text="A street flooded with molasses beside the elevated railway, January 1919" source={SRC.cba} />),
@@ -178,12 +178,12 @@ const SHOTS: Shot[] = [
   s(L('c7_07'), (p) => <NumberCard {...p} kicker="Took USIA to court, together" count={{ to: 119, at: L('c7_07') + 0.1, d: 1.3 }} label="residents" wash={wash('panorama.jpg', -1, 0, 0.18)} />),
   s(L('c7_08'), (p) => <TextCard {...p} kicker="Class action" lines={[{ text: 'One of the first in Massachusetts', at: W('c7_08', 'first') }]} wash={wash('cba_035.jpg', 0, 1, 0.18)} />),
   s(L('c7_09'), (p) => <TextCard {...p} kicker="Today" lines={[{ text: 'A milestone in corporate regulation', at: W('c7_09', 'milestone') }]} wash={wash('waterfront.jpg', 1, 0, 0.2)} />),
-  s(L('c7_10'), (p) => <ChipsCard {...p} kicker="USIA had to answer, in detail" chips={[{ text: 'how it built the tank', at: W('c7_10', 'built') }, { text: 'how it ran it', at: W('c7_10', 'ran') }]} wash={wash('tank_before.jpg', 1, 0, 0.18)} />),
+  s(L('c7_10'), (p) => <ChipsCard {...p} kicker="USIA had to answer, in detail" chips={[{ text: 'how it built the tank', at: W('c7_10', 'built') }, { text: 'how it ran it', at: W('c7_10', 'ran') }]} wash={wash('east_boston.jpg', 1, 0)} />),
   s(L('c7_11'), (p) => <NamesCard {...p} kicker="Court-appointed auditor" names={[{ name: 'Hugh W. Ogden', at: W('c7_11', 'Hugh') }]} wash={wash('el_structure.jpg', 0, -1, 0.16)} />),
   s(L('c7_12'), (p) => <NumberCard {...p} kicker="Hearings" value="3" unit="years" ticks={{ n: 3, at: W('c7_12', 'three') }} wash={wash('cba_052.jpg', 0, 1, 0.16)} />),
   ph(L('c7_13'), (p) => <PhotoShot {...p} src="cba_054.jpg" intro="zoom" kb={kb(1000, 560, 1.08, 1.2, -2, 0)} text="The evidence: torn steel under the elevated structure, January 1919" source={SRC.cba} />),
   s(W('c7_13', 'leaks') - 0.3, (p) => <ChipsCard {...p} kicker="The anarchist theory vs. the evidence" chips={[{ text: 'the leaks', at: W('c7_13', 'leaks') }, { text: 'the warnings', at: W('c7_13', 'warnings') }, { text: 'the steel', at: W('c7_13', 'steel') }]} wash={wash('cba_054.jpg', -1, 0, 0.2)} />),
-  s(L('c7_14'), (p) => <TextCard {...p} kicker="The auditor’s finding" lines={[{ text: 'USIA was responsible.', at: W('c7_14', 'USIA') }]} wash={wash('tank_before.jpg', 0, 1, 0.18)} />),
+  s(L('c7_14'), (p) => <TextCard {...p} kicker="The auditor’s finding" lines={[{ text: 'USIA was responsible.', at: W('c7_14', 'USIA') }]} wash={wash('east_boston.jpg', 0, 1)} />),
   s(L('c7_15'), (p) => <NumberCard {...p} kicker="Damages paid by USIA" count={{ to: 628000, prefix: '$', at: W('c7_15', 'six') - 0.1, d: 0.9 }} wash={wash('under_el.jpg', 0, -1, 0.16)} />),
   s(L('c7_16'), (p) => <NumberCard {...p} prev="$628,000 in damages in total" kicker="Per victim’s family, reportedly" value="~$7,000" />),
   s(L('c7_17'), (p) => <ChipsCard {...p} chips={[{ text: 'criminal conviction', at: W('c7_17', 'criminal'), x: true }, { text: 'prison sentence', at: W('c7_17', 'prison'), x: true }, { text: 'A bill.', at: W('c7_17', 'bill') - 0.2 }]} />),
@@ -201,7 +201,7 @@ const SHOTS: Shot[] = [
   s(L('c8_09'), (p) => <TextCard {...p} lines={[{ text: 'The rules changed.', at: W('c8_09', 'changed') }, { text: 'construction laws, after the flood', at: L('c8_10') }]} wash={wash('waterfront.jpg', 1, 0, 0.2)} />),
   s(L('c8_11'), (p) => <TankDiagram {...p} mode="check" at={W('c8_11', 'licensed')} labels={[{ text: '', at: W('c8_11', 'architect') }, { text: '', at: W('c8_11', 'civil') }]} title="Overseen by" titleAt={L('c8_11')} />),
   s(L('c8_12'), (p) => <TankDiagram {...p} mode="outline" at={L('c8_12')} title="Designed and checked by people trained to do it" titleAt={W('c8_12', 'designed')} />),
-  s(L('c8_13'), (p) => <TextCard {...p} kicker="1915 · Commercial Street" lines={[{ text: 'Nobody had required that.', at: W('c8_13', 'nobody') }]} wash={wash('tank_before.jpg', 0, 1, 0.22)} />),
+  s(L('c8_13'), (p) => <TextCard {...p} kicker="1915 · Commercial Street" lines={[{ text: 'Nobody had required that.', at: W('c8_13', 'nobody') }]} wash={wash('east_boston.jpg', 0, 1)} />),
 
   // ===================== CHAPTER 9 — THE PARK ON COMMERCIAL STREET
   ph(first('c9'), (p) => <PhotoShot {...p} src="redcross.jpg" intro="zoom" kb={kb(1300, 400, 1.2, 1.32, -2, 0)} text="Where the tank stood: wreckage on Commercial Street, January 1919" source={SRC.rc} />),
@@ -212,7 +212,7 @@ const SHOTS: Shot[] = [
   s(L('c9_07'), (p) => <TextCard {...p} kicker="A North End legend" lines={[{ text: 'On hot summer days, the smell of molasses', at: W('c9_07', 'hot') }]} wash={wash('east_boston.jpg', 1, 0, 0.22)} />),
   s(L('c9_08'), (p) => <TankDiagram {...p} mode="noise" at={W('c9_08', 'groaned')} title="It leaked for years. It groaned." tag="Illustration" />),
   s(L('c9_09'), (p) => <TankDiagram {...p} mode="paint" at={W('c9_09', 'coat')} title="A coat of brown paint" tag="Illustration" />),
-  s(L('c9_10'), (p) => <TextCard {...p} lines={[{ text: 'Not a freak of nature.', at: W('c9_10', 'not') }, { text: 'A warning nobody wanted to hear.', at: W('c9_11', 'warning'), size: 72, weight: 800, color: C.amber }]} wash={wash('tank_before.jpg', 0, -1, 0.2)} />),
+  s(L('c9_10'), (p) => <TextCard {...p} lines={[{ text: 'Not a freak of nature.', at: W('c9_10', 'not') }, { text: 'A warning nobody wanted to hear.', at: W('c9_11', 'warning'), size: 72, weight: 800, color: C.amber }]} wash={wash('east_boston.jpg', 0, -1)} />),
   s(L('c9_12'), (p) => <ChipsCard {...p} chips={[{ text: '21 people', at: L('c9_12') }, { text: '~150 injured', at: W('c9_12', 'hundred') }, { text: 'a neighborhood buried in molasses', at: W('c9_12', 'neighborhood') }]} wash={wash('panorama.jpg', -1, 0, 0.2)} />),
   s(L('c9_13'), (p) => <TextCard {...p} lines={[{ text: 'Not because nobody knew.', at: L('c9_13') }, { text: 'The people who knew decided it could wait.', at: W('c9_13', 'Because'), size: 64, weight: 800, color: C.amber }]} wash={wash('redcross.jpg', 1, 0, 0.2)} />),
   ph(L('c9_14'), (p) => <PhotoShot {...p} src="cba_051.jpg" intro="3d" kb={kb(960, 560, 1.04, 1.1)} text="Wreckage beside the elevated tracks, January 1919" source={SRC.cba} />),
@@ -229,7 +229,7 @@ const ChapterCardEnd: React.FC<SP> = (p) => (
 //  whip  : whip-pan — both shots slide sideways together with horizontal motion blur (photo -> photo)
 //  zoom  : zoom-through — outgoing flies into the lens, incoming pulls back from close (photo/map -> photo/map)
 //  slide : card -> card lateral slide with motion blur
-type Trans = 'push' | 'whip' | 'zoom' | 'slide';
+type Trans = 'push' | 'panels' | 'zoom';
 const IN = 0.42, OUT = 0.22, TW = 0.42;
 const ex = Easing.bezier(0.16, 1, 0.3, 1), ei = Easing.bezier(0.7, 0, 0.84, 0), eio = Easing.bezier(0.76, 0, 0.24, 1);
 const clamp = (t: number, a: number, b: number, e = eio) => interpolate(t, [a, b], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: e });
@@ -246,7 +246,7 @@ const MB_DEFS = (
 );
 const Seq: React.FC<{ shot: Item; end: number; next?: Item }> = ({ shot, end, next }) => {
   const outT: Trans = next?.trans ?? 'push';
-  const tail = outT === 'push' ? 0.04 : TW;
+  const tail = outT === 'push' ? 0.04 : outT === 'panels' ? 0.72 : TW;
   const from = Math.round(shot.at * FPS);
   const to = Math.round((end + tail) * FPS);
   return (
@@ -260,14 +260,19 @@ const Fader: React.FC<{ el: Shot['el']; start: number; dur: number; inT: Trans; 
   let op = 1, tx = 0, ty = 0, sc = 1, blur = 0, mbN = 0;
   // incoming
   if (inT === 'push') { const k = clamp(t, 0, IN, ex); op *= Math.min(1, k * 1.25); ty += (1 - k) * 44; sc *= 1.04 - 0.04 * k; blur += (1 - k) * 6; }
-  if (inT === 'whip' || inT === 'slide') { const k = clamp(t, 0, TW); tx += dir * 1920 * (1 - k); mbN = Math.max(mbN, mb(k)); }
+  let clip: string | undefined;
+  if (inT === 'panels') {
+    // three vertical strips wipe in, alternating from top and bottom, staggered (like the collage)
+    const parts = [0, 1, 2].map((i) => { const k = clamp(t, i * 0.09, i * 0.09 + 0.5, ex); const h = 1080 * k; const x0 = i * 640, x1 = x0 + 640 + (i < 2 ? 1 : 0); const y0 = i % 2 ? 1080 - h : 0; return `M${x0},${y0} H${x1} V${y0 + h} H${x0} Z`; });
+    if (t < 0.7) clip = `path('${parts.join(' ')}')`;
+  }
   if (inT === 'zoom') { const k = clamp(t, 0, TW); sc *= 0.72 + 0.28 * k; op *= Math.min(1, k * 1.6); blur += (1 - k) * 10; }
   // outgoing
   if (outT === 'push') { const o = clamp(t, dur - OUT, dur + 0.04, ei); op *= 1 - o; ty -= o * 30; sc *= 1 + 0.035 * o; }
-  if (outT === 'whip' || outT === 'slide') { const k = clamp(t, dur, dur + TW); tx -= ndir * 1920 * k; mbN = Math.max(mbN, mb(k)); }
+
   if (outT === 'zoom') { const k = clamp(t, dur, dur + TW, ei); sc *= 1 + 1.4 * k; op *= 1 - k; blur += k * 12; }
   const filt = [mbN ? `url(#mb${mbN})` : '', blur > 0.05 ? `blur(${blur.toFixed(1)}px)` : ''].join(' ').trim();
-  return <AbsoluteFill style={{ opacity: op, transform: `translate(${tx}px, ${ty}px) scale(${sc})`, filter: filt || undefined }}>{el({ t, start, dur })}</AbsoluteFill>;
+  return <AbsoluteFill style={{ opacity: op, transform: `translate(${tx}px, ${ty}px) scale(${sc})`, filter: filt || undefined, clipPath: clip }}>{el({ t, start, dur })}</AbsoluteFill>;
 };
 
 // ---- camera shake + flashes on impact moments (bang, rivets, the split)
@@ -329,12 +334,25 @@ items.forEach((it, i) => {
   const pv = items[i - 1];
   if (!pv) { it.trans = 'push'; return; }
   if (it.key.startsWith('card-') || it.key === 'end') it.trans = 'zoom';
-  else if (pv.full && it.full) it.trans = i % 2 ? 'whip' : 'zoom';
-  else if (!pv.full && !it.full && !pv.key.startsWith('card-') && i % 3 === 0) it.trans = 'slide';
+  else if (it.full || pv.full) it.trans = i % 3 === 0 ? 'zoom' : 'panels';
   else it.trans = 'push';
   it.dir = i % 4 === 1 ? -1 : 1;
 });
-const SWOOSH = items.filter((it) => it.trans === 'whip' || it.trans === 'slide' || it.trans === 'zoom').map((it) => ({ at: it.at, v: it.trans === 'slide' ? 0.07 : 0.11 }));
+// every text card stands on a real, moving 1919 photo (owner: "not like a PowerPoint"); pool per chapter
+const POOL: Record<string, string[]> = {
+  c1: ['waterfront.jpg', 'east_boston.jpg'],
+  c2: ['east_boston.jpg', 'waterfront.jpg'],
+  c3: ['waterfront.jpg', 'east_boston.jpg'],
+  c4: ['cba_052.jpg', 'under_el.jpg', 'cba_031.jpg', 'cba_023.jpg'],
+  c5: ['redcross.jpg', 'cba_023.jpg', 'under_el.jpg', 'cba_054.jpg', 'panorama.jpg'],
+  c5b: ['panorama.jpg', 'redcross.jpg', 'cba_051.jpg', 'cba_035.jpg'],
+  c6: ['cba_023.jpg', 'cba_031.jpg', 'redcross.jpg'],
+  c7: ['redcross.jpg', 'cba_035.jpg', 'cba_051.jpg', 'el_structure.jpg', 'panorama.jpg', 'cba_052.jpg'],
+  c8: ['cba_054.jpg', 'el_structure.jpg', 'cba_052.jpg'],
+  c9: ['waterfront.jpg', 'panorama.jpg', 'redcross.jpg', 'east_boston.jpg'],
+};
+const chapterOf = (at: number) => ((T.chapters as any[]).filter((c) => c.card <= at + 0.01).pop() || T.chapters[0]).id as string;
+const defWash = (it: Item, i: number) => { const pool = POOL[chapterOf(it.at)] ?? POOL.c1; return { src: pool[i % pool.length], x: i % 2 ? 1 : -1, y: i % 3 === 0 ? 1 : 0 }; };
 
 // the hook photo needs the real local time for its Ken Burns move, then dissolves into the map
 const HookFade: React.FC<{ end: number; children: React.ReactElement }> = ({ end, children }) => {
@@ -355,11 +373,10 @@ export const Full: React.FC = () => (
     </Sequence>
     {MB_DEFS}
     <Camera>
-      {items.map((it, i) => <Seq key={it.key} shot={it} end={i + 1 < items.length ? items[i + 1].at : T.duration} next={items[i + 1]} />)}
+      {items.map((it, i) => <DefaultWash.Provider key={it.key} value={it.key.startsWith('card-') || it.key === 'end' ? null : defWash(it, i)}><Seq shot={it} end={i + 1 < items.length ? items[i + 1].at : T.duration} next={items[i + 1]} /></DefaultWash.Provider>)}
     </Camera>
     {(T.chapters as any[]).map((c) => <Leak key={c.id} at={c.card} />)}
     <Audio src={staticFile('audio/full_mix.wav')} />
-    {SWOOSH.map((w, i) => <Sequence key={'w' + i} from={Math.max(0, Math.round((w.at - 0.28) * FPS))} durationInFrames={20}><Audio src={staticFile('audio/whoosh.wav')} volume={w.v} /></Sequence>)}
     {IMPACTS.map((a, i) => <Sequence key={'i' + i} from={Math.round((a - 0.02) * FPS)} durationInFrames={36}><Audio src={staticFile('audio/impact.wav')} volume={0.13} /></Sequence>)}
   </AbsoluteFill>
 );

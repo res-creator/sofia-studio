@@ -35,22 +35,26 @@ export const Kinetic: React.FC<{ text: React.ReactNode; t: number; at: number; s
 };
 // faint archival photo behind a card, drifting slowly (keeps text cards moving)
 export type WashT = { src: string; x?: number; y?: number; o?: number };
+// v4: the photo is a real, moving scene (not a faint wash); a light band in the middle carries the text
+export const DefaultWash = React.createContext<WashT | null>(null);
 const Wash: React.FC<{ w: WashT; p: SP }> = ({ w, p }) => {
-  const q = Math.min(1, Math.max(0, p.t / Math.max(1, p.dur)));
-  const s = 1.12 + 0.1 * q, dx = (w.x ?? -1) * 3 * q, dy = (w.y ?? 0) * 2 * q;
+  const q = interpolate(p.t, [0, Math.max(1, p.dur)], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.bezier(0.33, 0, 0.3, 1) });
+  const s = 1.1 + 0.14 * q, dx = (w.x ?? -1) * 4 * q, dy = (w.y ?? 0) * 3 * q;
   return (
     <AbsoluteFill style={{ overflow: 'hidden' }}>
-      <Img src={staticFile('img/' + w.src)} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: `translate(${dx}%, ${dy}%) scale(${s})`, filter: 'grayscale(1) contrast(0.9)', opacity: (w.o ?? 0.2) * pe(p.t, 0, 0.8) }} />
-      <AbsoluteFill style={{ background: `radial-gradient(ellipse at 50% 46%, rgba(255,255,255,0.86) 0%, rgba(247,244,238,0.7) 55%, rgba(237,231,219,0.45) 100%)` }} />
+      <Img src={staticFile('img/' + w.src)} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: `translate(${dx}%, ${dy}%) scale(${s})`, filter: 'grayscale(1) contrast(1.04)' }} />
+      <AbsoluteFill style={{ background: 'linear-gradient(180deg, rgba(247,244,238,0.05) 0%, rgba(247,244,238,0.82) 27%, rgba(247,244,238,0.9) 50%, rgba(247,244,238,0.82) 73%, rgba(247,244,238,0.05) 100%)' }} />
     </AbsoluteFill>
   );
 };
 // accent rule that draws on under a kicker
 const Rule: React.FC<{ t: number; at?: number; w?: number }> = ({ t, at = 0.1, w = 120 }) => <div style={{ width: w * pe(t, at, 0.7), height: 3, background: C.amber, margin: '18px auto 0', borderRadius: 2 }} />;
 const BG = `radial-gradient(ellipse at 50% 42%, #FFFFFF 0%, ${C.card} 60%, #EDE7DB 100%)`;
-export const Light: React.FC<{ children: React.ReactNode; bg?: string; wash?: WashT; p?: SP }> = ({ children, bg = BG, wash, p }) => (
-  <AbsoluteFill style={{ background: bg, fontFamily: FONT, color: C.text }}>{wash && p && <Wash w={wash} p={p} />}{children}<Grain o={0.05} /></AbsoluteFill>
-);
+export const Light: React.FC<{ children: React.ReactNode; bg?: string; wash?: WashT | null; p?: SP }> = ({ children, bg = BG, wash, p }) => {
+  const def = React.useContext(DefaultWash);
+  const w = wash === null ? null : wash ?? def;
+  return <AbsoluteFill style={{ background: bg, fontFamily: FONT, color: C.text }}>{w && p && <Wash w={w} p={p} />}{children}<Grain o={0.05} /></AbsoluteFill>;
+};
 const push = (p: SP, k = 0.05) => { const q = Math.min(1, p.t / Math.max(1, p.dur)); return `translateX(${-14 * q}px) scale(${1 + k * q})`; };
 const rise = (o: number, d = 14) => ({ opacity: o, transform: `translateY(${(1 - o) * d}px)` });
 const Kicker: React.FC<{ o: number; children: React.ReactNode; color?: string }> = ({ o, children, color = C.amber }) => (
@@ -256,18 +260,19 @@ const kbPt = (px: number, py: number, kb: KB, q: number) => {
 };
 export const PhotoShot: React.FC<SP & { src: string; kb: KB; text?: string; source: string; arrows?: { px: number; py: number; dx: number; dy: number; at: number; label?: string }[]; tag?: string; intro?: 'wipe' | 'iris' | 'zoom' | 'none' | '3d' }> = (p) => {
   if (p.intro === '3d') return <Photo3D {...p} />;
+  const intro = p.intro === 'wipe' || p.intro === 'iris' ? 'none' : p.intro; // shot transitions already reveal the photo
   // camera: Ken Burns with an ease-in-out curve (feels like a real camera move, not linear)
   const q = interpolate(p.t, [0, p.dur], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.bezier(0.4, 0, 0.3, 1) });
   const s = p.kb.s0 + (p.kb.s1 - p.kb.s0) * q, x = p.kb.x0 + (p.kb.x1 - p.kb.x0) * q, y = p.kb.y0 + (p.kb.y1 - p.kb.y0) * q;
   const k = pe(p.t, 0, 0.75);
-  const clip = p.intro === 'wipe' ? `inset(0 ${(1 - k) * 100}% 0 0)` : p.intro === 'iris' ? `circle(${12 + 88 * k}% at 50% 50%)` : undefined;
-  const zs = p.intro === 'zoom' ? 1 + 0.12 * (1 - k) : 1;
+  const clip = undefined;
+  const zs = intro === 'zoom' ? 1 + 0.12 * (1 - k) : 1;
   return (
     <AbsoluteFill style={{ overflow: 'hidden', background: C.bg }}>
       <AbsoluteFill style={{ clipPath: clip, transform: `scale(${zs})` }}>
         <Img src={staticFile('img/' + p.src)} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: `translate(${x}%, ${y}%) scale(${s})`, filter: 'grayscale(1) contrast(1.06)' }} />
       </AbsoluteFill>
-      {p.intro === 'wipe' && k < 0.999 && <div style={{ position: 'absolute', top: 0, bottom: 0, left: `${k * 100}%`, width: 6, background: C.amber, opacity: 0.9 }} />}
+      
       {(p.arrows ?? []).map((ar, i) => {
         const [x2, y2] = kbPt(ar.px, ar.py, p.kb, q);
         return <Arrow key={i} x1={x2 + ar.dx} y1={y2 + ar.dy} x2={x2} y2={y2} t={A(p)} at={ar.at} label={ar.label} lx={x2 + ar.dx + 8} ly={y2 + ar.dy + (ar.dy > 0 ? 34 : -14)} anchor={ar.dx < 0 ? 'end' : 'start'} />;
@@ -290,7 +295,7 @@ export const PrintShot: React.FC<SP & { src: string; crop?: [number, number, num
   const f = pe(p.t, 0, 0.8, back);
   const r0 = (p.rot ?? 0) + (1 - f) * -3;
   return (
-    <Light wash={p.wash} p={p}>
+    <Light wash={p.wash ?? null} p={p}>
       <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ width: p.w, height: h, overflow: 'hidden', position: 'relative', border: '10px solid #FFFFFF', boxShadow: `0 ${14 + 30 * (1 - f)}px ${40 + 40 * (1 - f)}px rgba(28,27,25,0.2)`, marginTop: -70, opacity: Math.min(1, f * 1.6), transform: `translateY(${(1 - f) * 90}px) scale(${z * (0.94 + 0.06 * f)}) rotate(${r0}deg)` }}>
           <Img src={staticFile('img/' + p.src)} style={{ position: 'absolute', left: -cx * k, top: -cy * k, width: p.srcW * k, height: p.srcH * k, filter: 'grayscale(1) contrast(1.06)' }} />
