@@ -2681,3 +2681,47 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "smile" (TikTok, hard_cut). ElevenLabs only; narrator Sarah, heroine = Jessica, Linda = Laura (CAST linda), tip = Bella.
+CAST.update({
+    "cashier": dict(voice="af_sarah", speed=1.0, lang="en-gb", el="FGY2WhTYpPnrIDTdsKH5"),   # Laura (smile: Linda the cashier, same voice as CAST linda)
+})
+EP["smile"] = dict(
+    title='Кассирша: улыбнись!',
+    hook_title=[['КАССИРША:', 'd'], ['УЛЫБНИСЬ!', 'p'], ['А ТЫ НЕ ГРУСТНАЯ', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut", card_fade=True,
+    chunks={'c2_h': [['Linda, my composure is not sadness.', 'Линда, моя невозмутимость — не грусть.'], ['It is the dignified calm of people', 'Это достойное спокойствие людей,'], ['who save their joy for things that truly deserve it.', 'которые берегут радость для того, что правда её заслуживает.']]},
+    lines=[
+        ('hook_l', 'cashier', '[cheerfully] Cheer up, love! Why so serious?', 'Выше нос, милая! Чего такая серьёзная?'),
+        ('hook', 'nar', 'Ты просто стоишь на кассе с обычным лицом. А кассирша решила, что у тебя горе. Как объяснить на английском, что всё хорошо? По одной фразе видно твой уровень. Проверим!', ''),
+        ('a1_h', 'her', '[flatly] I okay! Normal face!', 'Я окей! Нормальное лицо!'),
+        ('a1_l', 'cashier', '[sympathetically] Oh dear...', 'Ох, бедняжка…'),
+        ('a1_nar', 'nar', 'Три слова — и тебя жалеет весь магазин.', ''),
+        ('a2_h', 'her', '[flatly] I am not sadly, this is my face.', 'Я не грустно, это моё лицо.'),
+        ('a2_l', 'cashier', '[tenderly] Your face is sad? Poor face!', 'Твоё лицо грустит? Бедное лицо!'),
+        ('a2_nar', 'nar', 'Не «sadly», а «sad». Правильно так:', ''),
+        ('a2_tip', 'tip', "I'm not sad, this is just my face.", ''),
+        ('b1_h', 'her', "[politely] I'm fine, thanks. I just don't smile at strangers.", 'Всё хорошо, спасибо. Я просто не улыбаюсь незнакомым.'),
+        ('b1_l', 'cashier', "[brightly] Strangers? I'm Linda!", 'Незнакомым? Я Линда!'),
+        ('b1_nar', 'nar', 'Вежливо. Но теперь вы с Линдой лучшие подруги.', ''),
+        ('b2_h', 'her', "[calmly] Honestly, I'm on cloud nine. This is just my resting face.", 'Честно, я на седьмом небе. Это просто моё обычное лицо.'),
+        ('b2_nar', 'nar', 'On cloud nine — «на седьмом небе». А охрана ищет облака. Запоминай:', ''),
+        ('b2_tip', 'tip', "I'm on cloud nine.", ''),
+        ('c1_h', 'her', "[kindly] That's kind of you, but where I'm from, people save their smiles for friends.", 'Это мило, но там, откуда я, улыбки берегут для друзей.'),
+        ('c1_l', 'cashier', '[hopefully] So if you smile at me... we\'re friends?', 'Значит, если улыбнёшься мне… мы подруги?'),
+        ('c1_nar', 'nar', 'Приём: объясни культуру, а не оправдывайся. Запоминай:', ''),
+        ('c1_tip', 'tip', "Where I'm from, people save their smiles for friends.", ''),
+        ('c2_h', 'her', '[grandly] Linda, my composure is not sadness. It is the dignified calm of people who save their joy for things that truly deserve it.', 'Линда, моя невозмутимость — не грусть. Это достойное спокойствие людей, которые берегут радость для того, что правда её заслуживает.'),
+        ('c2_l', 'cashier', '[curious] Like what?', 'Например?'),
+        ('c2_l2', 'cashier', '[dryly] ...Fair enough.', '…Справедливо.'),
+        ('c2_nar', 'nar', 'Мораль: мы улыбаемся. Просто по делу.', ''),
+        ('outro', 'nar', 'А тебе говорили «улыбнись»? Пиши в комментарии! И подпишись, впереди ещё много новых серий.', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'ЖАЛОСТЬ', 'ok': False, 'note': '100%'},
+           'A2': {'type': 'swap', 'bad': 'I am not sadly.', 'bad_note': 'sadly — это «грустно» (наречие)', 'good': ["I'm not sad, this is", 'just my face.']},
+           'B1': {'type': 'eq', 'en': "I'm fine, thanks.", 'ru': '= Всё хорошо, спасибо.', 'note': "I just don't smile at strangers.", 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'on cloud nine', 'ru': 'на седьмом небе', 'ex': ["I'm on cloud nine.", 'я на седьмом небе.'], 'icon': 'bell'},
+           'C1': {'type': 'eq', 'en': "Where I'm from…", 'ru': '= Там, откуда я…', 'ex': [['…people save their smiles for friends.', '= улыбки берегут для друзей.']]},
+           'C2': {'type': 'c2', 'vocab': [['composure', '= невозмутимость'], ['dignified', '= достойный']], 'moral': ['МЫ УЛЫБАЕМСЯ.', 'ПРОСТО', 'ПО ДЕЛУ'], 'moral_at': 0.35}},
+)
