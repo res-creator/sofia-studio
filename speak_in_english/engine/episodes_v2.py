@@ -2681,3 +2681,50 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "exwedding" (TikTok, hard_cut). ElevenLabs only; narrator Sarah, heroine = Jessica, Mark = Will (CAST kevin, am_michael), Priya = Lily (CAST barista, af_nova), tip = Bella.
+CAST.update({
+    "ex": dict(voice="am_michael", speed=1.0, lang="en-gb", el="bIHbv24MWmeRgasZH58o"),      # exwedding: Mark, her ex (Will)
+    "bride": dict(voice="af_nova", speed=1.0, lang="en-gb", el="pFZP5JQG7iQjIQuC4Bku"),      # exwedding: Priya, the bride (Lily)
+})
+EP["exwedding"] = dict(
+    title='Бывший зовёт на свадьбу',
+    hook_title=[['БЫВШИЙ ЗОВЁТ', 'd'], ['НА СВАДЬБУ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut", card_fade=True,
+    chunks={'c2_h': [['Mark, I sincerely wish you every happiness,', 'Марк, я искренне желаю тебе счастья,'], ['but attending would be, shall we say,', 'но прийти было бы, скажем так,'], ['emotionally ambitious.', 'эмоционально рискованно.']],
+            'c2_b': [["Hi! I'm Priya. Please come.", 'Привет! Я Прия. Пожалуйста, приходи.'], ["You're the only one who can tell me all his bad habits.", 'Только ты расскажешь мне все его вредные привычки.']]},
+    lines=[
+        ('hook_m', 'ex', '[awkwardly] So... are you coming?', 'Ну… ты придёшь?'),
+        ('hook', 'nar', 'Тебе пришло приглашение. На свадьбу. Бывшего. Как ответить на английском? По одной фразе видно твой уровень. Проверим!', ''),
+        ('a1_h', 'her', '[flatly] No. Never. Bye!', 'Нет. Никогда. Пока!'),
+        ('a1_m', 'ex', "[hopefully] So... that's a maybe?", 'Значит… это «может быть»?'),
+        ('a1_nar', 'nar', 'Три слова — и он записал тебя с плюс-один.', ''),
+        ('a2_h', 'her', "[hesitantly] I can't come, I am busy in this day.", 'Я не могу прийти, я занята в этом дне.'),
+        ('a2_m', 'ex', "[confused] Which day? I didn't tell you the date.", 'Какой день? Я не говорил тебе дату.'),
+        ('a2_nar', 'nar', 'Не «in this day», а «that day». И дату сначала узнай. Правильно так:', ''),
+        ('a2_tip', 'tip', "I'm busy that day.", ''),
+        ('b1_h', 'her', "[politely] Thanks for the invitation, but I don't think I can make it.", 'Спасибо за приглашение, но боюсь, не получится прийти.'),
+        ('b1_m', 'ex', '[pleading] Priya really wants you there.', 'Прия очень хочет, чтобы ты пришла.'),
+        ('b1_nar', 'nar', 'Can\'t make it — вежливо. Но у невесты другие планы.', ''),
+        ('b2_h', 'her', '[dryly] That ship has sailed.', 'Поезд ушёл.'),
+        ('b2_m', 'ex', '[excited] Ship? The wedding IS on a ship! You remember?!', 'Корабль? Свадьба и есть на корабле! Ты помнишь?!'),
+        ('b2_nar', 'nar', 'That ship has sailed — «поезд ушёл». А у них свадьба на корабле. Запоминай:', ''),
+        ('b2_tip', 'tip', 'That ship has sailed.', ''),
+        ('c1_h', 'her', "[gently] I'm genuinely happy for you both, but I think it's best if I sit this one out.", 'Я искренне рада за вас обоих, но, думаю, лучше мне это пропустить.'),
+        ('c1_m', 'ex', "[surprised] That's... very mature.", 'Это… очень по-взрослому.'),
+        ('c1_nar', 'nar', 'Приём: порадуйся за них и вежливо откажись. Запоминай:', ''),
+        ('c1_tip', 'tip', "I think it's best if I sit this one out.", ''),
+        ('c2_h', 'her', '[grandly] Mark, I sincerely wish you every happiness, but attending would be, shall we say, emotionally ambitious.', 'Марк, я искренне желаю тебе счастья, но прийти было бы, скажем так, эмоционально рискованно.'),
+        ('c2_b', 'bride', "[cheerfully] Hi! I'm Priya. Please come. You're the only one who can tell me all his bad habits.", 'Привет! Я Прия. Пожалуйста, приходи. Только ты расскажешь мне все его вредные привычки.'),
+        ('c2_h2', 'her', "[slowly] ...I'll bring a list.", '…Принесу список.'),
+        ('c2_nar', 'nar', 'Мораль: бывший — это не враг, а инструкция по применению.', ''),
+        ('outro', 'nar', 'А ты бы пошла на свадьбу бывшего? Пиши в комментарии! И подпишись, впереди ещё много новых серий.', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'ОТКАЗ', 'ok': False, 'note': 'не засчитан'},
+           'A2': {'type': 'swap', 'bad': 'I am busy in this day.', 'bad_note': 'не in this day, а that day', 'good': ["I'm busy", 'that day.']},
+           'B1': {'type': 'eq', 'en': "I don't think I can make it.", 'ru': '= Боюсь, не получится прийти.', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'That ship has sailed', 'ru': 'поезд ушёл', 'ex': ['That ship has sailed.', 'поезд ушёл.'], 'icon': 'bell'},
+           'C1': {'type': 'eq', 'en': "I think it's best if I sit this one out.", 'ru': '= Думаю, лучше мне пропустить.', 'ex': [["I'm genuinely happy for you both.", '= я искренне рада за вас обоих.']]},
+           'C2': {'type': 'c2', 'vocab': [['sincerely', '= искренне'], ['emotionally ambitious', '= эмоционально рискованно']], 'moral': ['БЫВШИЙ — НЕ ВРАГ,', 'А ИНСТРУКЦИЯ', 'ПО ПРИМЕНЕНИЮ'], 'moral_at': 0.35}},
+)
