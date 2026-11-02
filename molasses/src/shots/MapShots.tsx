@@ -13,7 +13,7 @@ export const P = (lon: number, lat: number) => {
   return [x - O[0], y - O[1]];
 };
 type Cam = { cx: number; cy: number; w: number };
-const toScreen = (c: Cam, x: number, y: number) => [((x - c.cx) / c.w) * 1920 + 960, ((y - c.cy) / c.w) * 1920 + 540];
+export const toScreen = (c: Cam, x: number, y: number) => [((x - c.cx) / c.w) * 1920 + 960, ((y - c.cy) / c.w) * 1920 + 540];
 
 const roadW: Record<number, number> = { 3: 3.2, 2: 1.8, 1: 0.9 };
 
@@ -40,10 +40,10 @@ const OSMLayer = React.memo(() => (
   </g>
 ));
 
-const BaseMap: React.FC<{ cam: Cam; neO: number; osmO: number; hiMA?: number; children?: React.ReactNode }> = ({ cam, neO, osmO, hiMA = 0, children }) => {
+export const BaseMap: React.FC<{ cam: Cam; neO: number; osmO: number; hiMA?: number; water?: string; children?: React.ReactNode }> = ({ cam, neO, osmO, hiMA = 0, water = '#BCD8EA', children }) => {
   const k = 1920 / cam.w;
   return (
-    <svg width="1920" height="1080" style={{ position: 'absolute', inset: 0, background: '#BCD8EA' }}>
+    <svg width="1920" height="1080" style={{ position: 'absolute', inset: 0, background: water }}>
       <g transform={`translate(960,540) scale(${k}) translate(${-cam.cx},${-cam.cy})`}>
         {neO > 0.001 && <g opacity={neO}><NELayer hiMA={hiMA} /></g>}
         {osmO > 0.001 && <g opacity={osmO}><OSMLayer /></g>}
@@ -53,15 +53,15 @@ const BaseMap: React.FC<{ cam: Cam; neO: number; osmO: number; hiMA?: number; ch
   );
 };
 
-const Label: React.FC<{ x: number; y: number; text: string; o: number; size?: number; color?: string; weight?: number; spacing?: number; anchor?: string }> = ({ x, y, text, o, size = 24, color = C.dim, weight = 600, spacing = 4, anchor = 'middle' }) => (
+export const Label: React.FC<{ x: number; y: number; text: string; o: number; size?: number; color?: string; weight?: number; spacing?: number; anchor?: string }> = ({ x, y, text, o, size = 24, color = C.dim, weight = 600, spacing = 4, anchor = 'middle' }) => (
   <text x={x} y={y} textAnchor={anchor as any} fill={color} opacity={o} fontFamily={FONT} fontWeight={weight} fontSize={size} letterSpacing={spacing}
     style={{ paintOrder: 'stroke', stroke: 'rgba(255,255,255,0.92)', strokeWidth: 7 } as any}>{text}</text>
 );
 
 const lerp = (a: number, b: number, p: number) => a + (b - a) * p;
 // camera keyframes: [absTime, lon, lat, width_km]
-type K = [number, number, number, number];
-const camAt = (keys: K[], t: number): Cam => {
+export type K = [number, number, number, number];
+export const camAt = (keys: K[], t: number): Cam => {
   let i = 0;
   while (i < keys.length - 2 && t > keys[i + 1][0]) i++;
   const [t0, lo0, la0, w0] = keys[i];
@@ -75,8 +75,8 @@ const camAt = (keys: K[], t: number): Cam => {
   return { cx: lerp(x0, x1, zp), cy: lerp(y0, y1, zp), w: Math.exp(lw) };
 };
 
-const TANK = { lon: -(71 + 3 / 60 + 25 / 3600), lat: 42 + 22 / 60 + 5 / 3600 }; // Wikipedia coordinates of the site
-const Attribution: React.FC<{ extra?: string }> = ({ extra }) => (
+export const TANK = { lon: -(71 + 3 / 60 + 25 / 3600), lat: 42 + 22 / 60 + 5 / 3600 }; // Wikipedia coordinates of the site
+export const Attribution: React.FC<{ extra?: string }> = ({ extra }) => (
   <div style={{ position: 'absolute', right: 64, bottom: 40, fontFamily: FONT, fontSize: 17, color: C.faint, letterSpacing: 0.3 }}>
     {extra ? extra + ' · ' : ''}Map data: Natural Earth; © OpenStreetMap contributors
   </div>

@@ -5,3 +5,4 @@ assets/raw/
 public/audio/*.wav
 vo/*.wav
 vo/**/*.wav
+full/vo/*.wav

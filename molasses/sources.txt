@@ -109,3 +109,35 @@ FACT SOURCES (script and on-screen numbers; no new numbers added)
 On screen: January 15, 1919 · 12:30 p.m. · Boston, Massachusetts; Commercial Street, North End; Purity Distilling Co.
 (owned since 1917 by United States Industrial Alcohol, USIA); 50 ft; 90 ft; 2,300,000 gallons; leaking since 1915;
 painted brown; ~25 ft high (estimates vary); ~35 mph; 21 dead; ~150 injured; Atlantic Avenue elevated railway; USIA blamed anarchists.
+
+=====================================================================
+FULL EPISODE — full_episode.mp4 (1920x1080, 30 fps, ~12:52)
+=====================================================================
+Script: full/script_draft.md (approved by the channel owner). Facts: Wikipedia "Great Molasses Flood"
+(https://en.wikipedia.org/wiki/Great_Molasses_Flood). The cold open is the approved Todd test segment, unchanged.
+Voice: ElevenLabs Todd (g14YnDYCsy3k7XLlcKlO), eleven_v4, natural speed, one request per chapter (full/vo/).
+Every chapter was transcribed back with ElevenLabs speech-to-text and compared with the script word by word:
+no missing or wrong words (only spelling differences such as "16th" for "sixteenth").
+
+Extra archival photos used in the chapters (Wikimedia Commons, all public domain, PD-1923 / PD-US-expired):
+7) public/img/cba_023.jpg - File:Boston Elevated Railway after the Molasses Flood, January 1919, from the City of Boston Archives - 9800-018-023.jpg
+   Author: Boston Elevated Railway Company, January 1919 (negative dated "Jan. 15. 19"). City of Boston Archives. PD-1923.
+8) public/img/cba_035.jpg - same series, 9800-018-035.jpg. Boston Elevated Railway Company, January 1919. City of Boston Archives. PD-1923.
+9) public/img/cba_051.jpg - same series, 9800-018-051.jpg. Boston Elevated Railway Company (James P. Teed Collection), January 1919. PD-1923.
+10) public/img/cba_052.jpg - same series, 9800-018-052.jpg. Boston Elevated Railway Company (James P. Teed Collection), January 1919. PD-1923.
+11) public/img/cba_054.jpg - same series, 9800-018-054.jpg. Boston Elevated Railway Company (James P. Teed Collection), January 1919. PD-1923.
+   (downloaded as 1920 px thumbnails from upload.wikimedia.org)
+Also used: two more crops of the Boston Post front page (6): the annotated site photo with the paper's own labels
+("Where tank stood", "Engine 31 Fire Dept. House", "Where elevated structure was demolished") and the "Known dead" list
+(shown as the paper's first, incomplete list).
+Not obtained (Wikimedia rate limit): the Boston Daily Globe front page of Jan 16, 1919, and the Library of Congress
+Red Cross negative. They are not in the video.
+
+Graphics in the chapters are labelled on screen: "Diagram" (to scale or factual), "Schematic" (shape only, no exact data),
+"Illustration" (explains an idea), "Reconstruction - illustrative extent" (the wave / flooded area on the map).
+The temperature graphs show only the two values from the facts (about 2 F, above 40 F); the thickness/cooling curves have no numbers.
+Wave-height bars are to scale (15 / 25 / 40 ft) next to a 6-ft person.
+The pipe to Cambridge is a dashed arrow without a route ("route not shown"); the position of USS Nantucket is not marked.
+
+Sound: music and the few SFX are synthesised (tools/sound_full.py). No wind, hiss or crowd noise. Cold-open SFX are the
+approved segment's. Mix -14.5 LUFS, true peak -1.5 dBFS.

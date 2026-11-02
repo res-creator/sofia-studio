@@ -53,7 +53,7 @@ const ShotSeq: React.FC<{ s: Shot }> = ({ s }) => {
   return <AbsoluteFill style={{ opacity: o }}>{s.el({ t: f / FPS, start: toNew(s.from), dur })}</AbsoluteFill>;
 };
 
-export const Main: React.FC<{ audio?: string }> = ({ audio = 'audio/mix.wav' }) => (
+export const Main: React.FC<{ audio?: string; noAudio?: boolean }> = ({ audio = 'audio/mix.wav', noAudio = false }) => (
   <AbsoluteFill style={{ background: C.bg }}>
     {SHOTS.map((s, i) => {
       const next = SHOTS[i + 1];
@@ -67,6 +67,6 @@ export const Main: React.FC<{ audio?: string }> = ({ audio = 'audio/mix.wav' }) 
       );
     })}
     <Grain o={0.035} />
-    <Audio src={staticFile(audio)} />
+    {!noAudio && <Audio src={staticFile(audio)} />}
   </AbsoluteFill>
 );

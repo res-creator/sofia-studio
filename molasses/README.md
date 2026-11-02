@@ -14,3 +14,15 @@ tools/render_variant.sh VARIANT out.mp4             # copies timeline + mix into
 ```
 Shots are authored on the first voice's timeline (src/data/timeline_v1.json); `toNew/toOld` in src/lib.tsx keep every cut
 locked to the same word in any new recording. Shot list: `src/Main.tsx` (SHOTS). Map data build: tools/build_map.py.
+
+## Full episode (full/full_episode.mp4, ~12:52)
+```
+python3 tools/parse_script.py          # full/script_draft.md -> full/chapters.json (chapters 1..9, cold open reused)
+python3 tools/tts_chapters.py          # Todd, eleven_v4, natural speed, one request per chapter -> full/vo/<id>.mp3 + words
+python3 tools/full_timeline.py         # cold open + chapter cards + chapters -> full/timeline_full.json + full_narration.wav
+cp full/timeline_full.json src/data/full.json && cp vo/todd/timeline.json src/data/timeline.json
+python3 tools/sound_full.py            # music + short SFX (no noise beds) -> public/audio/full_mix.wav
+COMP=Full node tools/frames.mjs out/full_cs 0,2,4,...    # contact sheet frames
+npx remotion render src/index.ts Full full/full_episode.mp4 --codec=h264 --audio-codec=aac
+```
+Shot list: src/full/Full.tsx (each shot is tied to a script line / word). Components: src/full/kit.tsx, src/full/tank.tsx.
