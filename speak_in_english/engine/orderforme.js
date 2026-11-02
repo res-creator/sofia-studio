@@ -244,7 +244,7 @@ function burgerIcon(c, x, y, s) { c.save(); c.translate(x, y + 30); burgerDraw(c
 function saladCount(t, L) { let n = 0, ch = -1; const add = (lv, k, d) => { const a = ev(lv, k); if (idx(L) > idx(lv) || (L === lv && t >= a)) { n += d; if (L === lv && t >= a) ch = a; } };
   add('A1', 'swap', 1); add('A2', 'salads', 1); add('A2', 'small', 1); return { n, ch }; }
 const bubbleOn = t => TL.speech.some(s => s.who !== 'nar' && s.who !== 'tip' && t >= s.t - 0.1 && t < s.t + s.d + 0.35);
-function counter(c, t, sc) { const L = sc.id; if (L === 'outro' || L === 'hook') return; const nar = SP[L.toLowerCase() + '_nar'], u = t - sc.s;
+function counter(c, t, sc) { return; /* owner: no corner counter/icons in the video */ const L = sc.id; if (L === 'outro' || L === 'hook') return; const nar = SP[L.toLowerCase() + '_nar'], u = t - sc.s;
   if (u < 1.2 || (nar && t > nar.t - 0.2)) return;
   const burger = L === 'C2' && t > ev('C2', 'plates'); const { n, ch: ch0 } = saladCount(t, L), ch = burger ? ev('C2', 'plates') : ch0;
   const since = t - ch, bump = since > 0 && since < 0.4 ? 1 + 0.3 * Math.sin(since / 0.4 * Math.PI) : 1, label = since > 0.1 && since < 2.2 && !bubbleOn(t);
@@ -259,8 +259,8 @@ function counter(c, t, sc) { const L = sc.id; if (L === 'outro' || L === 'hook')
 function renderFrame(c, t) {
   c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; const sc = sceneAt(t), L = sc.id;
   if (L === 'outro') { const rows = [['A1', 'No! Burger! Me!'], ['B1', "I'd like to order for myself."], ['B2', "Don't put words in my mouth."], ['C1', "I'd rather choose my own food."]];
-    K.outro(c, t, { q: ['ОН ЗАКАЗЫВАЕТ ЗА ТЕБЯ:', 'МИЛО ИЛИ НЕТ?'], qSize: 50, rows, cta: ['ОТПРАВЬ ПОДРУГЕ', 'ПЕРЕД СВИДАНИЕМ'], heroX: 190, heroS: 0.42,
-      hero: (cc, tt) => { const g = G.her, gd = G.date; K.put(cc, MARK, { t: tt, mood: 'sad', turn: -0.2, look: -0.4, talk: 0.25 + 0.25 * Math.abs(Math.sin(tt * 9)), headFirst: true, armL: reach(gd, -1, -gd.hw * 0.35, gd.headY + gd.hh * 1.25, { planar: true }), armR: hang(gd, 1), items: { L: ctx => { ctx.save(); ctx.rotate(-0.3); paint(ctx, q => q.e(30, -40, 46, 22), '#6DBE6A', { sd: 3, hd: 2, lw: 3 }); ctx.restore(); } } }, 1500, 60);
+    K.outro(c, t, { q: ['ОН ЗАКАЗЫВАЕТ ЗА ТЕБЯ:', 'МИЛО ИЛИ НЕТ?'], qSize: 50, rows, cta: ['ОТПРАВЬ ПОДРУГЕ', 'ПЕРЕД СВИДАНИЕМ'], heroX: 95, heroS: 0.34, heroY: [2350, 1985], ctaFit: true,
+      hero: (cc, tt) => { const g = G.her, gd = G.date; K.put(cc, MARK, { t: tt, mood: 'sad', turn: -0.2, look: -0.4, talk: 0.25 + 0.25 * Math.abs(Math.sin(tt * 9)), headFirst: true, armL: reach(gd, -1, -gd.hw * 0.35, gd.headY + gd.hh * 1.25, { planar: true }), armR: hang(gd, 1), items: { L: ctx => { ctx.save(); ctx.rotate(-0.3); paint(ctx, q => q.e(30, -40, 46, 22), '#6DBE6A', { sd: 3, hd: 2, lw: 3 }); ctx.restore(); } } }, 640, 60);
         K.put(cc, HER, { t: tt, mood: 'happy', laugh: true, turn: 0, look: 0, armL: reach(g, -1, -g.sw * 2.0, g.ySh - 260 + Math.sin(tt * 8) * 30, { planar: true }), armR: reach(g, 1, g.sw * 1.4, g.ySh + 150, { planar: true }), items: { R: ctx => { ctx.save(); ctx.translate(40, 0); burgerDraw(ctx, 0.9); ctx.restore(); } } }, 0, 0); } });
     const u = t - SC.outro.s, kk = P(u, 1.35, 1.7); if (kk > 0) { const bh = 140 + rows.length * 115, y = 740 - bh / 2 + 150; UI.textFit(c, 'Nun9', 46, rows[0][1], 740); const wd = c.measureText(rows[0][1]).width;
       c.save(); c.globalAlpha = 0.55 * kk; c.fillStyle = C.white; c.fillRect(214, y - 34, wd + 16, 68); c.restore(); c.strokeStyle = C.red; c.lineWidth = 8; c.lineCap = 'round'; c.beginPath(); c.moveTo(212, y + 2); c.lineTo(212 + (wd + 16) * eOut(kk), y + 2); c.stroke(); }
