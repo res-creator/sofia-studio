@@ -14,6 +14,12 @@ Owner speaks Russian: answer her in Russian, simply. Everything on screen and in
 `claude/vibrant-hopper-rwobhr`) and `lawnchair_ep17/` (Larry Walters' lawn-chair flight, branch `claude/friendly-gauss-qry8ah`).
 No more hero-less explainers (`icecream_ep13/` "why the McDonald's machine is always broken" is the last of that kind — copy its code, not its format).
 
+## Style (owner, Nov 2026) — mandatory
+**Эталон стиля — `lawnchair_ep17` и `emu_ep12`. Персонажей брать только из `howitsrun_style/`. Стиль `tp_ep12`, `icecream_ep13` и pudding guy НЕ использовать.**
+- Read `howitsrun_style/README.md`; build the episode kit on `howitsrun_style/style.js`, `people.js`, `sets.js` (episode-specific props go in the episode's own kit file).
+- People: `P.person()` full body in profile in a real place (s 0.9–1.5), one accessory each; `personBust` only for a short punch-line.
+- After the script is approved and BEFORE any animation: render a character sheet (like `hoover_ep19/charsheet.js`) and wait for the owner's OK.
+
 ## The 8 rules — check every episode against them
 1. **Story spine: a real hero → a problem → a failure / surprise → the final twist about money** ("Not soldiers. Money."). The money
    twist is the payoff (who paid, what it cost, how a price / bounty / paycheck decided it) — not a moral.
@@ -66,7 +72,7 @@ Latest code reference: `icecream_ep13/` (end card with colour emoji, `carousel` 
 | `script.json` | — | approved lines `[{id: "s01", text}]` |
 | `vo.py`, `speech.py`, `.gitignore` | tp_ep12 | header comment only |
 | `stt_check.py` | tp_ep12 | the `NUM` list (number words ↔ digits of this script) |
-| `<kit>.js` | new | this episode's sets, props, cast (on hirkit + `tests/mcd_collage/kit.js`) |
+| `<kit>.js` | new | this episode's props and cast, built on `howitsrun_style/` (people, sets, plates) |
 | `episode.js` | tp_ep12 | GAP, shots, SPLIT, REPL, highlight words, headline, stamp, cues, MUSIC |
 | `mix.py` | tp_ep12 | SFX additions, music sections |
 | `build.sh`, `cover.js`, `upload_kit.txt` | tp_ep12 | names, cover art, texts |

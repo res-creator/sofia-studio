@@ -37,6 +37,12 @@ Also: `covers_extra/` (covers only: credit card trap, gym no-shows — uploaded 
 Next topics in the owner's queue: Hoover free flights (UK, 1992) → Hanoi rat bounty (1902).
 Ideas backlog: `IDEAS.md`. Captions: `CAPTIONS.md`.
 
+## Style reference (owner, Nov 2026) — read before drawing anything
+**Эталон стиля — `lawnchair_ep17` и `emu_ep12`. Персонажей брать только из `howitsrun_style/`. Стиль `tp_ep12`, `icecream_ep13` и pudding guy (`pudding_ep18`) НЕ использовать.**
+(Style reference = lawnchair_ep17 and emu_ep12. Characters only from `howitsrun_style/` — see its README: full-body profile people in real places,
+one accessory each, flat paper backgrounds, stamp/headline plates. Do NOT use the look of tp_ep12, icecream_ep13 or pudding_ep18: big front busts, crowded collage.)
+Before animating a new episode: show the owner a character sheet in this style and wait for approval.
+
 ## Format
 1080x1920, 30 fps. Length: **35–60 s, as long as the story needs**, at the natural voice pace (never speed up the voice or pad scenes); episodes 10–11 ran 67–70 s, ep 12 ran 60 s. Style: Bold Editorial Collage, 2D + 2.5D parallax, selective pseudo-3D,
 paper cutouts (white rim, soft shadow, ink outline), paper texture. Palette: cream #F7F5F0, black #171717, red #E63946, yellow #FFC857, blue #4D8DFF.
