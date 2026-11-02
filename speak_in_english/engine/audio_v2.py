@@ -324,6 +324,17 @@ if EPN in ("checkout", "password", "rich", "busy"):  # self-checkout sounds for 
         return norm(lp(x, 1800) * np.minimum(t*8, 1) * np.minimum((d - t)*8, 1), 0.4)
     sg_saw = lambda ph: 2*((ph) % 1) - 1
     SFX.update(beep=_beep(), err=_err(), alarm=_alarm(), servo=_servo())
+if EPN == "orderforme":  # restaurant sounds for this episode only (own rng, so other episodes mix exactly as before)
+    _r = np.random.default_rng(41)
+    def _crunch():
+        out = np.zeros(int(0.45*SR))
+        for k in range(4):
+            t = T(0.07); put(out, bp(_r.standard_normal(len(t)), 1200, 7000) * np.exp(-t*60), k*0.1 + 0.01*_r.standard_normal(), 1.0 - k*0.15)
+        return norm(out, 0.7)
+    def _scribble():
+        d = 0.7; t = T(d); x = bp(_r.standard_normal(len(t)), 2500, 7000) * (0.5 + 0.5*np.abs(np.sin(2*np.pi*7*t)))
+        return norm(x * np.minimum(t*30, 1) * np.minimum((d - t)*20, 1), 0.35)
+    SFX.update(crunch=_crunch(), scribble=_scribble())
 if EPN in ("wrongchat", "pretend", "password", "cantsayno", "rich", "avoidparty", "tour", "splitbill", "photo", "passport", "newhair", "idea"):  # phone sounds for this episode only (own rng, so other episodes mix exactly as before)
     _r = np.random.default_rng(11)
     def _send():
@@ -528,7 +539,7 @@ elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "re
             tt = T(0.05); put(music, hp(rng.standard_normal(len(tt)), 6000)*np.exp(-tt*70), t0 + j*b/4, 0.1 if j % 2 else 0.05)
         if (k // 4) % 2 == 1:
             for j, m in enumerate([ch[3] + 12, ch[2] + 12, ch[1] + 12]): put(music, pluck(note(m), 0.6, 1.2), t0 + (j*1.25 + 0.5)*b, 0.07)
-elif EPN in ("restaurant", "loan", "date", "kyle", "cantsayno", "rich", "splitbill"):
+elif EPN in ("restaurant", "loan", "date", "kyle", "cantsayno", "rich", "splitbill", "orderforme"):
     # cosy bistro swing: brushed snare, walking bass, muted piano comping, glock hook
     bpm = 120; b = 60/bpm; K = 0
     def glock(f, d=0.8):
@@ -649,7 +660,7 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h", orderforme="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause
@@ -668,6 +679,7 @@ if EPN in ("queue", "justlooking"): c2n = sp["c2_c"]["t"]   # silence after her 
 if EPN == "tour": c2n = sp["c2_g"]["t"]   # silence after her speech until the guide appears
 if EPN == "splitbill": c2n = sp["c2_w3"]["t"]   # silence from "What?" until "I ordered the lobster."
 if EPN == "photo": c2n = sp["c2_f5"]["t"]   # silence after "one normal photo of me now?" until his answer
+if EPN == "orderforme": c2n = next(x for x in TL["scenes"] if x["id"] == "C2")["ev"]["plates"]   # silence after her speech to the waiter until the huge burger lands
 if EPN == "avoidparty": c2n = sp["c2_p2"]["t"]   # silence after her outburst until "Exactly! That's why it's a surprise!"   # silence after her speech until "You're now the general manager!"
 ramp(c2e - 0.08, c2e + 0.02, 1, 0); gain[int((c2e + 0.02)*SR):int((c2n - 0.05)*SR)] = 0; ramp(c2n - 0.05, c2n + 0.4, 0, 1)
 ramp(DUR - 1.6, DUR, 1, 0); gain[int(DUR*SR):] = 0
