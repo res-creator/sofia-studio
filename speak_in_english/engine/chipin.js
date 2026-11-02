@@ -292,7 +292,7 @@ function coverBadge(c, t) { const p = 1 + 0.04 * Math.sin(t * 8); c.save(); c.tr
   fitTxt(c, '£50 EACH?!', 0, 4, 60, '#E0474C', 500); c.restore(); }
 // her contribution: £50 -> £20 (B1, gave less) -> £100 (B2, counted twice) -> £0 (C1, over budget)
 const STEPS = () => [[-1, 50], [ev('B1', 'card') + 0.6, 20], [ev('B2', 'list') + 1.45, 100], [ev('C1', 'sign') + 0.3, 0]];
-function counter(c, t, sc) { const L = sc.id; if (L === 'outro' || L === 'hook') return; const nar = SP[L.toLowerCase() + '_nar'], u = t - sc.s;
+function counter(c, t, sc) { return; /* owner: no corner counter/icons in the video */ const L = sc.id; if (L === 'outro' || L === 'hook') return; const nar = SP[L.toLowerCase() + '_nar'], u = t - sc.s;
   if (u < 1.2 || (nar && t > nar.t - 0.2)) return; if (L === 'C2') return;
   let n = 50, ch = -1; for (const [a, v] of STEPS()) if (t >= a) { n = v; ch = a; }
   const bubble = TL.speech.some(s => s.who !== 'nar' && s.who !== 'tip' && t >= s.t - 0.1 && t < s.t + s.d + 0.35);
@@ -306,8 +306,8 @@ function counter(c, t, sc) { const L = sc.id; if (L === 'outro' || L === 'hook')
 function renderFrame(c, t) {
   c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; const sc = sceneAt(t), L = sc.id;
   if (L === 'outro') { const rows = [['A1', 'No money! Sorry!'], ['B1', 'Could I give a bit less?'], ['B2', 'Count me out this time.'], ['C1', "It's a bit over my budget."]];
-    K.outro(c, t, { q: ['А ТЫ СКИДЫВАЕШЬСЯ', 'НА ПОДАРКИ КОЛЛЕГАМ?'], rows, cta: ['ОТПРАВЬ КОЛЛЕГЕ, КОТОРАЯ', 'СОБИРАЕТ ДЕНЬГИ'], heroX: 190, heroS: 0.42,
-      hero: (cc, tt) => { const g = G.her, gd = G.organiser; K.put(cc, PRI, { t: tt, mood: 'happy', laugh: true, turn: -0.2, look: -0.4, armL: reach(gd, -1, -gd.sw * 2.0, gd.ySh - 330 + Math.sin(tt * 8) * 30, { planar: true }), armR: chest(gd, 1, 0.7), items: { R: envItem } }, 1500, 60);
+    K.outro(c, t, { q: ['А ТЫ СКИДЫВАЕШЬСЯ', 'НА ПОДАРКИ КОЛЛЕГАМ?'], rows, cta: ['ОТПРАВЬ КОЛЛЕГЕ, КОТОРАЯ', 'СОБИРАЕТ ДЕНЬГИ'], heroX: 95, heroS: 0.34, heroY: [2350, 1985], ctaFit: true,
+      hero: (cc, tt) => { const g = G.her, gd = G.organiser; K.put(cc, PRI, { t: tt, mood: 'happy', laugh: true, turn: -0.2, look: -0.4, armL: reach(gd, -1, -gd.sw * 2.0, gd.ySh - 330 + Math.sin(tt * 8) * 30, { planar: true }), armR: chest(gd, 1, 0.7), items: { R: envItem } }, 640, 60);
         K.put(cc, HER, { t: tt, mood: 'happy', laugh: true, turn: 0, look: 0, armL: reach(g, -1, -g.sw * 2.0, g.ySh - 260 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(g, 1), items: {} }, 0, 0); } });
     // A1 phrase greyed out and struck through
     const u = t - SC.outro.s, kk = P(u, 1.35, 1.7); if (kk > 0) { const bh = 140 + rows.length * 115, y = 740 - bh / 2 + 150; UI.textFit(c, 'Nun9', 46, rows[0][1], 740); const wd = c.measureText(rows[0][1]).width;
