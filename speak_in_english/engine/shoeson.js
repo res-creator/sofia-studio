@@ -236,7 +236,7 @@ function title(c, t) { const lines = TL.cfg.hook_title, rk2 = 1 + 0.012 * Math.s
 function coverBadge(c, t) { const p = 1 + 0.04 * Math.sin(t * 8); c.save(); c.translate(540, 1745); c.scale(p, p); c.rotate(-0.03); c.fillStyle = 'rgba(0,0,0,.25)'; rr(c, -280 + 6, -60 + 10, 560, 120, 60); c.fill(); c.fillStyle = '#FFE15A'; rr(c, -280, -60, 560, 120, 60); c.fill(); c.strokeStyle = C.oliveD; c.lineWidth = 6; rr(c, -280, -60, 560, 120, 60); c.stroke();
   fitTxt(c, 'SHOES ON?!', 0, 4, 60, '#E0474C', 500); c.restore(); }
 function footIcon(c, x, y, s) { c.save(); c.translate(x, y); c.scale(s, s); c.fillStyle = '#7A5A3A'; c.beginPath(); c.ellipse(0, 4, 13, 20, 0.2, 0, TAU); c.fill(); for (let k = 0; k < 4; k++) { c.beginPath(); c.arc(-8 + k * 6, -20 - (k === 0 ? 2 : 0), 4.5 - k * 0.4, 0, TAU); c.fill(); } c.restore(); }
-function counter(c, t, sc) { const L = sc.id; if (L === 'outro') return; const nar = SP[L.toLowerCase() + '_nar'], u = t - sc.s;
+function counter(c, t, sc) { return; /* owner: no corner counter/icons in the video */ const L = sc.id; if (L === 'outro') return; const nar = SP[L.toLowerCase() + '_nar'], u = t - sc.s;
   if (L !== 'hook' && (u < 1.2 || (nar && t > nar.t - 0.2))) return; if (L === 'hook' && sceneTag(t) !== 'cover') return;
   const n = count(t); let ch = -1; for (const p of PRINTS) if (t >= p.t && p.t > ch) ch = p.t; const rz = ev('C2', 'robot') + 1.5; if (L === 'C2' && t > rz) ch = rz;
   const since = t - ch, bump = since > 0 && since < 0.4 ? 1 + 0.3 * Math.sin(since / 0.4 * Math.PI) : 1, label = since > 0.1 && since < 2.0 && L !== 'hook';
@@ -250,8 +250,8 @@ let CUR_TAG = 'wide'; const sceneTag = () => CUR_TAG;
 function renderFrame(c, t) {
   c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; const sc = sceneAt(t), L = sc.id;
   if (L === 'outro') { const rows = [['A1', 'No! Shoes! Off! Dirty!'], ['B1', 'Do you mind if I take my shoes off?'], ['B2', 'When in Rome, do as the Romans do.'], ['C1', "It's just a habit from home."]];
-    K.outro(c, t, { q: ['А ТЫ РАЗУВАЕШЬСЯ', 'В ГОСТЯХ?'], rows, cta: ['ОТПРАВЬ ТОМУ, КТО', 'ВСЕГДА РАЗУВАЕТСЯ'], heroX: 190, heroS: 0.42,
-      hero: (cc, tt) => { const g = G.her, gd = G.hostess; K.put(cc, MAR, { t: tt, mood: 'happy', laugh: true, turn: -0.2, look: -0.4, armL: reach(gd, -1, -gd.sw * 2.0, gd.ySh - 330 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(gd, 1), items: {} }, 1500, 60);
+    K.outro(c, t, { q: ['А ТЫ РАЗУВАЕШЬСЯ', 'В ГОСТЯХ?'], rows, cta: ['ОТПРАВЬ ТОМУ, КТО', 'ВСЕГДА РАЗУВАЕТСЯ'], heroX: 95, heroS: 0.34, heroY: [2350, 1985], ctaFit: true,
+      hero: (cc, tt) => { const g = G.her, gd = G.hostess; K.put(cc, MAR, { t: tt, mood: 'happy', laugh: true, turn: -0.2, look: -0.4, armL: reach(gd, -1, -gd.sw * 2.0, gd.ySh - 330 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(gd, 1), items: {} }, 640, 60);
         K.put(cc, HER_S, { t: tt, mood: 'happy', laugh: true, turn: 0, look: 0, armL: reach(g, -1, -g.sw * 2.0, g.ySh - 260 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(g, 1), items: {} }, 0, 0); } });
     const u = t - SC.outro.s, kk = P(u, 1.35, 1.7); if (kk > 0) { const bh = 140 + rows.length * 115, y = 740 - bh / 2 + 150; UI.textFit(c, 'Nun9', 46, rows[0][1], 740); const wd = c.measureText(rows[0][1]).width;
       c.save(); c.globalAlpha = 0.55 * kk; c.fillStyle = C.white; c.fillRect(214, y - 34, wd + 16, 68); c.restore(); c.strokeStyle = C.red; c.lineWidth = 8; c.lineCap = 'round'; c.beginPath(); c.moveTo(212, y + 2); c.lineTo(212 + (wd + 16) * eOut(kk), y + 2); c.stroke(); }
