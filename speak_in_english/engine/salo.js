@@ -263,7 +263,7 @@ const STARS = { A1: 2, A2: 3, B2: 4, C1: 2 };
 function starsAt(t, L) { const o = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']; let n = 1, ch = -1;
   for (const l of o) { if (o.indexOf(l) > o.indexOf(L)) break; const st = ev(l, 'star'); if (STARS[l] && t >= st) { n = STARS[l]; ch = st; } else if (STARS[l] && l !== L) n = STARS[l]; }
   return { n, ch }; }
-function meter(c, t, sc) { const L = sc.id; if (L === 'hook' || L === 'outro') return; const nar = SP[L.toLowerCase() + '_nar'], u = t - sc.s;
+function meter(c, t, sc) { return; /* owner: no corner counter/icons in the video */ const L = sc.id; if (L === 'hook' || L === 'outro') return; const nar = SP[L.toLowerCase() + '_nar'], u = t - sc.s;
   if (u < 1.2 || (nar && t > nar.t - 0.2)) return;
   const app = L === 'C2' && t > ev('C2', 'room'); const { n, ch } = starsAt(t, L); const chg = app ? ev('C2', 'room') : ch, since = t - chg, bump = since > 0 && since < 0.45 ? 1 + 0.25 * Math.sin(since / 0.45 * Math.PI) : 1;
   const label = app || (since > 0.2 && since < 2.2); const k = eBack(P(u, 1.2, 1.5), 1.6) * bump;
@@ -278,8 +278,8 @@ function meter(c, t, sc) { const L = sc.id; if (L === 'hook' || L === 'outro') r
 function renderFrame(c, t) {
   c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; const sc = sceneAt(t), L = sc.id;
   if (L === 'outro') { const rows = [['A1', 'Food! Pig! Good!'], ['A2', 'My mum made it.'], ['B1', "It's like bacon, but saltier."], ['B2', 'My mum swears by it.'], ['C1', 'Would it help if I declared it?'], ['C2', 'delicacy, sustain']];
-    K.outro(c, t, { q: ['А КАК БЫ ТЫ ОБЪЯСНИЛ,', 'ЧТО ТАКОЕ САЛО?'], rows, cta: ['ОТПРАВЬ ТОМУ, КТО ВЕЗЁТ', 'САЛО ЧЕРЕЗ ГРАНИЦУ'], heroX: 190, heroS: 0.42, rowH: 95, boxY: 790,
-      hero: (cc, tt) => { const g = G.her, gd = G.customs; K.put(cc, OFC, { t: tt, mood: 'happy', laugh: true, turn: -0.2, look: -0.4, armL: reach(gd, -1, -gd.sw * 2.0, gd.ySh - 330 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(gd, 1), items: { R: sandItem }, afterTorso: cc2 => vest(cc2, gd), front: (cc2, a) => capOn(cc2, a, gd) }, 1500, 60);
+    K.outro(c, t, { q: ['А КАК БЫ ТЫ ОБЪЯСНИЛ,', 'ЧТО ТАКОЕ САЛО?'], rows, cta: ['ОТПРАВЬ ТОМУ, КТО ВЕЗЁТ', 'САЛО ЧЕРЕЗ ГРАНИЦУ'], heroX: 80, heroS: 0.32, heroY: [2400, 2075], ctaFit: true, rowH: 95, boxY: 790,
+      hero: (cc, tt) => { const g = G.her, gd = G.customs; K.put(cc, OFC, { t: tt, mood: 'happy', laugh: true, turn: -0.2, look: -0.4, armL: reach(gd, -1, -gd.sw * 2.0, gd.ySh - 330 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(gd, 1), items: { R: sandItem }, afterTorso: cc2 => vest(cc2, gd), front: (cc2, a) => capOn(cc2, a, gd) }, 640, 60);
         K.put(cc, HER, { t: tt, mood: 'happy', laugh: true, turn: 0, look: 0, armL: reach(g, -1, -g.sw * 2.0, g.ySh - 260 + Math.sin(tt * 8) * 30, { planar: true }), armR: hang(g, 1), items: {} }, 0, 0); } });
     // A1 phrase greyed out and struck through
     const u = t - SC.outro.s, kk = P(u, 1.35, 1.7); if (kk > 0) { const bh = 140 + rows.length * 95, y = 790 - bh / 2 + 150; UI.textFit(c, 'Nun9', 46, rows[0][1], 740); const wd = c.measureText(rows[0][1]).width;

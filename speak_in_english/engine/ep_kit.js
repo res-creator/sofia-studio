@@ -68,7 +68,7 @@ module.exports = function makeKit(TL, UI) {
       c.restore(); }
     const by = BY + bh / 2 + 140, bk = eBack(P(u, 2.4, 2.8), 2.2);
     if (bk > 0) { c.save(); c.translate(540, by); c.scale(bk, bk); c.fillStyle = C.gold; R(c, -450, -50, 420, 100, 50); c.fill(); c.strokeStyle = C.oliveD; c.lineWidth = 6; c.stroke(); font(c, 'Unb9', 34); c.fillStyle = C.oliveD; c.textAlign = 'center'; c.fillText('СОХРАНИ', -240, 3);
-      c.fillStyle = '#4CAF6A'; R(c, 10, -50, 440, 100, 50); c.fill(); c.strokeStyle = C.oliveD; c.stroke(); c.fillStyle = C.white; font(c, 'Unb9', 24); c.fillText(o.cta[0], 230, -12); c.fillText(o.cta[1], 230, 20); c.restore(); }
+      c.fillStyle = '#4CAF6A'; R(c, 10, -50, 440, 100, 50); c.fill(); c.strokeStyle = C.oliveD; c.stroke(); c.fillStyle = C.white; if (o.ctaFit) { textFit(c, 'Unb9', 26, o.cta[0], 390); c.fillText(o.cta[0], 230, -12); textFit(c, 'Unb9', 26, o.cta[1], 390); c.fillText(o.cta[1], 230, 20); } else { font(c, 'Unb9', 24); c.fillText(o.cta[0], 230, -12); c.fillText(o.cta[1], 230, 20); } c.restore(); }
     const ak = eOut(P(t, sp.t + 1.3, sp.t + 1.6));
     if (ak > 0) { c.save(); c.globalAlpha = ak; c.translate(600, by + 140 + Math.sin(t * 7) * 8); font(c, 'Unb9', 40); c.fillStyle = C.oliveD; c.textAlign = 'center'; c.fillText('ПИШИ В КОММЕНТЫ', 0, 0); c.fillStyle = C.pink; c.beginPath(); c.moveTo(-34, 40); c.lineTo(34, 40); c.lineTo(0, 84); c.fill(); c.restore(); }
     const subT = (wordT('outro', 'подпиш') || sp.t + 4.0) - 0.35, sy = by + 380;
