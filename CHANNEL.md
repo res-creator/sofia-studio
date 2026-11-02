@@ -19,6 +19,8 @@ Mix the topics: not only hidden fees and corporate scandals, but also unusual, c
 | `doordash_ep8/` | DoorDash old pay model 2017–2019: the tip replaced DoorDash's part of a $10 guarantee | `doordash_tip_v2.mp4` |
 | `scratch_ep11/` | Hertz/Thrifty AI damage scanner, Atlanta 2025: 1-inch scuff → $440, 7-day discount vs up-to-10-day reply (on hirkit) | `the_440_scratch.mp4` |
 | `tp_ep12/` | Toilet Paper Panic of 1973: congressman's "may face" warning → Carson's joke without the "may" → empty shelves; twist: everyone's smart move WAS the shortage (on hirkit, `tpkit.js`) | `toilet_paper_panic_1973.mp4` |
+| `emu_ep12/` | The Great Emu War, Western Australia 1932: 2 Lewis guns, the jam, the truck, 986 kills / 9,860 rounds (Major's claim); the 1934 bounty worked better (on hirkit) — **style reference** | `the_great_emu_war.mp4` |
+| `lawnchair_ep17/` | Larry Walters' lawn-chair balloon flight, 1982: 16,000 ft, FAA fine, the chair in the Smithsonian (on hirkit) — **style reference** | `the_man_who_flew_in_a_lawn_chair.mp4` |
 Also: `covers_extra/` (credit card trap, gym no-shows — uploaded videos). Ideas backlog: `IDEAS.md`. Captions: `CAPTIONS.md`.
 
 ## Format
