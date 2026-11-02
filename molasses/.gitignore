@@ -1,0 +1,6 @@
+node_modules/
+out/
+assets/map/
+assets/raw/
+public/audio/*.wav
+vo/*.wav

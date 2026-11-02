@@ -1,0 +1,103 @@
+THE GREAT MOLASSES FLOOD — test segment (final.mp4, 1920x1080, 30 fps, 76 s)
+Sources of every image, map, sound and fact used.
+
+=====================================================================
+ARCHIVAL PHOTOS (all from Wikimedia Commons, all marked public domain)
+=====================================================================
+In the video every photo is shown in black and white, with a slow Ken Burns move, a caption and (on 3 of them) an amber arrow.
+Nothing was added to the photos themselves. Overlays are graphics drawn on top and are labelled.
+
+1) public/img/panorama.jpg   (shot 12 at 45-47 s; background of the title card at 65-76 s)
+   File:BostonMolassesDisaster.jpg
+   https://commons.wikimedia.org/wiki/File:BostonMolassesDisaster.jpg
+   Original: https://upload.wikimedia.org/wikipedia/commons/7/70/BostonMolassesDisaster.jpg (3000x2388)
+   Title: "Panorama of the Molasses Disaster site", 15 January 1919. Creator: Globe Newspaper Co.
+   Holding: Boston Public Library, Print Department (BPL Flickr 4901555337). Rights field: "No known restrictions".
+   License on Commons: Public domain (PD-US-expired: published before 1 January 1931).
+   Note on the Leslie Jones rule: an uploader comment says the photographer "seems to be Leslie Jones",
+   but this is not confirmed. The Boston Public Library itself published it as Globe Newspaper Co. with
+   "No known restrictions", so it was used. If you want to stay fully on the safe side, replace it.
+
+2) public/img/el_structure.jpg   (shot 13 at 47-49 s)
+   File:Boston_1919_molasses_disaster_-_el_train_structure.jpg
+   https://commons.wikimedia.org/wiki/File:Boston_1919_molasses_disaster_-_el_train_structure.jpg
+   Original: https://upload.wikimedia.org/wikipedia/commons/7/71/Boston_1919_molasses_disaster_-_el_train_structure.jpg (1024x767)
+   Elevated train structure damaged in the disaster, 1919. Author unknown.
+   License on Commons: Public domain (PD-1923 / PD-US-expired, published before 1931).
+
+3) public/img/cba_031.jpg   (shot 14 at 49-52 s)
+   File:Boston Elevated Railway after the Molasses Flood, January 1919, from the City of Boston Archives - 9800-018-031.jpg
+   https://commons.wikimedia.org/wiki/File:Boston_Elevated_Railway_after_the_Molasses_Flood,_January_1919,_from_the_City_of_Boston_Archives_-_9800-018-031.jpg
+   Original: https://upload.wikimedia.org/wikipedia/commons/4/48/Boston_Elevated_Railway_after_the_Molasses_Flood%2C_January_1919%2C_from_the_City_of_Boston_Archives_-_9800-018-031.jpg (3439x2113)
+   Author: Boston Elevated Railway Company, January 1919. Holding: City of Boston Archives.
+   License on Commons: Public domain (PD-1923 / PD-US-expired).
+
+4) public/img/under_el.jpg   (shot 15 at 52-55 s)
+   File:GreatMolassesFlood 1919-Wreckage under the elevated tracks.jpg
+   https://commons.wikimedia.org/wiki/File:GreatMolassesFlood_1919-Wreckage_under_the_elevated_tracks.jpg
+   Downloaded: 1920px version of https://upload.wikimedia.org/wikipedia/commons/1/10/GreatMolassesFlood_1919-Wreckage_under_the_elevated_tracks.jpg (original 2709x1684)
+   Wreckage under the elevated tracks, North End, 1919. Author unknown.
+   License on Commons: Public domain (PD-US).
+
+5) public/img/tank_before.jpg   (shot 6 at 25-28 s)
+   File:North End molasses tank.jpg
+   https://commons.wikimedia.org/wiki/File:North_End_molasses_tank.jpg
+   Original: https://upload.wikimedia.org/wikipedia/commons/5/59/North_End_molasses_tank.jpg (417x327, low resolution)
+   The molasses tank before the 1919 rupture, exact date unknown. Credited to The Bostonian Society.
+   License on Commons: Public domain (PD-US).
+   Shown smaller, as a "print" on a blurred background, because the file is low resolution.
+   The amber streaks on it are an animated graphic overlay, labelled "Streaks: graphic overlay" on screen.
+
+6) public/img/boston_post.jpg   (shot 10 at 36-39 s; only the masthead and main headline are shown)
+   File:Boston post-January 16, 1919,.jpg
+   https://commons.wikimedia.org/wiki/File:Boston_post-January_16,_1919,.jpg
+   Original: https://upload.wikimedia.org/wikipedia/commons/0/0a/Boston_post-January_16%2C_1919%2C.jpg (1127x1435)
+   The Boston Post front page, 16 January 1919.
+   License on Commons: Public domain (PD-US).
+   Note: the headline is the paper's early report ("11 dead, 50 hurt"). The sub-headline ("50 feet high")
+   is cropped out so it does not contradict the numbers in the script.
+
+NOT USED
+- No Leslie Jones photo from the Boston Public Library / Digital Commonwealth collections was used.
+- Firehouse 31 (storyboard item 7): no public-domain photo that is clearly identified as Engine 31's
+  firehouse was found on Commons, so it was skipped rather than mislabelled. The Library of Congress
+  photo "Boston, Mass. Boston molasses explosion" (American Red Cross, loc.gov item 2017679979) could
+  not be downloaded (rate limits) and its contents are not described, so it was not used either.
+- No stock video. No AI-generated images.
+
+=====================================================================
+GRAPHICS / RECONSTRUCTIONS (made for this video, labelled on screen)
+=====================================================================
+- Tank blueprint (shot 5): to-scale diagram, 50 ft tall x 90 ft wide, counter to 2,300,000 gallons. Label "Diagram · to scale".
+- Tank painted brown (shot 7) and the steel splitting (shot 9): schematic drawings. Label "Illustration".
+- Wave on the map (shot 11): schematic spread from the tank site. Label "Reconstruction · illustrative extent".
+  It is not real flood-boundary data.
+
+=====================================================================
+MAP DATA
+=====================================================================
+- Natural Earth, 1:10m Admin-1 States/Provinces (with lakes) — public domain. https://www.naturalearthdata.com
+  (downloaded from https://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_1_states_provinces_lakes.zip)
+- OpenStreetMap, North End / downtown Boston extract (buildings, streets, parks, piers) via the OSM API
+  (api.openstreetmap.org, bbox lon -71.0795..-71.0345, lat 42.353..42.383). © OpenStreetMap contributors, ODbL 1.0.
+  https://www.openstreetmap.org/copyright — the credit is shown on screen in every map shot.
+  The streets are present-day streets (noted on screen as "Present-day streets").
+  The land/water shape is derived from the OSM buildings, streets and parks (tools/build_map.py).
+- Tank marker: the coordinates of the site given in the Wikipedia article (42°22′05″N 71°03′25″W).
+
+=====================================================================
+AUDIO
+=====================================================================
+- Narration: ElevenLabs, voice "Z - Deep, Dark, Velvety" (4MQev7xxYPuQHlUvk604), model eleven_v4,
+  the script read word for word (vo/script.txt). Only silences between sentences were lengthened (tools/timeline.py).
+- Music and all sound effects (wind, metal creaks, splitting steel, low rumble, crowd murmur) were
+  synthesised by code in tools/sound.py. No samples or third-party recordings → no copyright claims.
+
+=====================================================================
+FACT SOURCES (script and on-screen numbers; no new numbers added)
+=====================================================================
+- https://en.wikipedia.org/wiki/Great_Molasses_Flood
+- https://www.britannica.com/topic/Great-Molasses-Flood
+On screen: January 15, 1919 · 12:30 p.m. · Boston, Massachusetts; Commercial Street, North End; Purity Distilling Co.
+(owned since 1917 by United States Industrial Alcohol, USIA); 50 ft; 90 ft; 2,300,000 gallons; leaking since 1915;
+painted brown; ~25 ft high (estimates vary); ~35 mph; 21 dead; ~150 injured; Atlantic Avenue elevated railway; USIA blamed anarchists.
