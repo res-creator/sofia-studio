@@ -1,10 +1,11 @@
 # English TikTok channel — rules & production guide (read this first in a new session)
 
+Step-by-step working order + lessons learned: the project skill `.claude/skills/how-its-run/SKILL.md` (loads automatically in new sessions).
 Owner speaks Russian: answer her in Russian, simply. On-screen text, voice and captions are American English.
-Concept: real, verifiable stories about money, business, famous companies and how familiar everyday things are actually run.
-"You use this every day, but you have no idea what's happening behind the scenes." Not finance advice, not news, no crypto/politics.
-Mix the topics: not only hidden fees and corporate scandals, but also unusual, curious true stories about how ordinary things work
-(logistics, design decisions, odd rules, clever systems). The episode should teach something and be fun to watch, not just make people angry.
+**Concept (since ep 18, owner, Nov 2026): incredible TRUE stories where, in the end, MONEY decided everything.**
+A real hero, a real problem, a failure or a surprise, and a final twist about money ("Not soldiers. Money." — the emu episode).
+Best examples: `emu_ep12/` (Army vs. 20,000 emus) and `lawnchair_ep17/` (Larry Walters' lawn-chair flight).
+**No more hero-less explainers** (like `icecream_ep13/`, "why the McDonald's machine is always broken"). Not finance advice, not news, no crypto/politics.
 
 ## Episodes made (don't repeat these topics)
 | Folder | Topic | Final file |
@@ -17,15 +18,33 @@ Mix the topics: not only hidden fees and corporate scandals, but also unusual, c
 | `amazon_ep6/` | Amazon returnless refunds ($5 item, $8–$12 shipping) | `amazon_keep_it_v2.mp4` |
 | `doordash_ep8/` | DoorDash old pay model 2017–2019: the tip replaced DoorDash's part of a $10 guarantee | `doordash_tip_v2.mp4` |
 | `scratch_ep11/` | Hertz/Thrifty AI damage scanner, Atlanta 2025: 1-inch scuff → $440, 7-day discount vs up-to-10-day reply (on hirkit) | `the_440_scratch.mp4` |
-| `tp_ep12/` | The Toilet Paper Panic of 1973: a TV joke without the "may" emptied shelves | `toilet_paper_panic_1973.mp4` |
 | `icecream_ep13/` | McDonald's ice cream machine "always broken": ~4 h nightly heat cycle, cycle fails, error codes, technician wait, 2024 DMCA repair exemption (first episode with the new first-seconds rules; + 6-frame carousel) | `mcflurry_machine_broken.mp4` |
 | `tp_ep12/` | Toilet Paper Panic of 1973: congressman's "may face" warning → Carson's joke without the "may" → empty shelves; twist: everyone's smart move WAS the shortage (on hirkit, `tpkit.js`) | `toilet_paper_panic_1973.mp4` |
+Also made in other branches (not yet in main): `emu_ep12/` Great Emu War 1932 (`claude/vibrant-hopper-rwobhr`), `ups_ep12/`, `coke_ep9/`,
+`subscription_ep13/`, `hotel_ep14/`, `pepsi_ep15/` Pepsi Harrier jet, old format (`claude/friendly-clarke-mo1xcl`), `monopoly_ep16/`,
+`lawnchair_ep17/` Larry Walters' lawn chair 1982 (`claude/friendly-gauss-qry8ah`). Check `git branch -r` before picking a topic.
 Also: `covers_extra/` (credit card trap, gym no-shows — uploaded videos). Ideas backlog: `IDEAS.md`. Captions: `CAPTIONS.md`.
 
 ## Format
-1080x1920, 30 fps. Length follows the story at the natural voice pace (never speed up the voice or pad scenes); episodes 10–11 ran 67–70 s. Style: Bold Editorial Collage, 2D + 2.5D parallax, selective pseudo-3D,
+1080x1920, 30 fps. Length: **35–60 s, as long as the story needs**, at the natural voice pace (never speed up the voice or pad scenes); episodes 10–11 ran 67–70 s, ep 12 ran 60 s. Style: Bold Editorial Collage, 2D + 2.5D parallax, selective pseudo-3D,
 paper cutouts (white rim, soft shadow, ink outline), paper texture. Palette: cream #F7F5F0, black #171717, red #E63946, yellow #FFC857, blue #4D8DFF.
 Story over effects: one visual journey, objects transform into the next scene, something new to see every few seconds, readable without sound.
+
+## Story shape + first second & last frame (owner, Nov 2026 — stats: most viewers leave in the 1st second). These override anything below.
+1. **Story spine (mandatory): a real hero → a problem → a failure / surprise → the final twist about money** ("Not soldiers. Money.").
+   The money twist is the payoff: who paid, what it cost, how a price/paycheck/bounty decided the outcome — not a moral.
+2. **Frame 0 (0.0 s): an ABSURD picture + the conflict in 3–5 big words** (like "ARMY vs. 20,000 EMUS", "SODA POINTS vs. FIGHTER JET").
+   A face with a strong emotion is welcome, but the absurdity comes first. Not allowed in frame 0: a full-screen date, a calendar,
+   a landscape/establishing shot, a slow intro, "?" in place of a number. (A small date/place stamp is fine.)
+3. **The first line = the strangest fact of the story** ("In 1932, Australia's army went to war... against BIRDS."). "You" openers are no longer required.
+4. **Sound from 0.0 s** (a hit, a beep, a notification). No silence at the start.
+5. **Motion from the first frame**: camera push-in, text pops in, the character reacts. No static opening frame.
+6. **Length 35–60 s**, whatever the story needs (see Format).
+7. **Last frame: a direct question to the viewer for comments, held ≥ 2 s with no voice** (e.g. "Would YOU have mailed the check? 👇").
+   Big, inside the 3:4 crop, above the caption area, over a picture that echoes frame 0 (loop). Asking for comments is allowed; follow/like asks are not.
+   Colour emoji on canvas: register `/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf` (see `icecream_ep13/episode.js`).
+8. **Carousel**: 6 key frames, PNG 1080x1920, no subtitles, in `<episode>/carousel/`: the absurd hook, 3–4 story beats with the key numbers,
+   the money twist, the question card (`node episode.js carousel <dir>` in `icecream_ep13/episode.js` shows how).
 
 ## Story & animation (what worked in episodes 10–11, on hirkit)
 Guidelines, not quotas: pick what the story needs, and keep each episode different.
@@ -77,39 +96,27 @@ Illustrative numbers are labelled (EXAMPLE / "Say,"). Historical practices are s
 
 ## Retention (use sensibly)
 Hook in the first 1–2 s where picture + voice + on-screen text say the same thing; open loop (question answered at the end); keep something new happening;
-works with sound off; ironic, idea-changing last line; last frame echoes the first so a re-watch loops. No "follow/like" asks.
-The only allowed ask is the end-card question to the viewer (see "First seconds & last frame" below).
+works with sound off; ironic, idea-changing last line; then the 2 s question card (no voice) over a picture that echoes the first frame, so a re-watch loops. No "follow/like" asks.
 
 ## US TikTok playbook (from the ep 8 review; apply to every new episode)
 Algorithm (not official, but every source agrees): watch time, completion and rewatches first, then shares and saves; likes count least.
-1. Frame 0 = the conflict in big words + numbers (e.g. "$9 TIP → DRIVER +$0") in the top area, plus a small "EXAMPLE"/place stamp so nobody calls it misleading (no date as the opening image — see "First seconds" below). Most people watch muted.
+1. Frame 0 = an absurd picture + the conflict in 3–5 big words/numbers (e.g. "ARMY vs. 20,000 EMUS") in the top area, plus a small date/place stamp so nobody calls it misleading. Sound and motion from 0.0 s. Most people watch muted.
 2. No smear in the first 2 s: slow, clean camera moves; the key card fully in frame.
-3. "You" + an everyday action (tipping, returns, subscriptions, rent). Self-relevance stops the thumb.
+3. The first line is the strangest true fact; a real hero we follow. (Older episodes opened with "you" + an everyday action — no longer required.)
 4. Never reset to an empty/zero scene after the hook: transform the hook objects straight into the explanation. Explain the colour code once (legend).
 5. Repeated examples: one big readable line each (e.g. "$3 TIP → DOORDASH PAYS $7"), no small extra cards.
 6. Proof on screen: a regulator/court figure as a big stamp with a hit sound, on clean art, ~1.5 s. US viewers trust receipts.
 7. A little character humor that doesn't bend facts: the hero's deadpan look at the camera, a recurring object with personality (the DoorDash safe winks, the help bot in ep 11).
-8. Strong twist + last frame echoes the first (loop). Hold the final number a beat before the hard cut.
+8. Strong twist, then the 2 s question card (no voice) over a picture that echoes the first frame (loop).
 9. Series identity for follows: same opener style and visual language every episode (the cast and settings can change).
-10. Comments: hot-topic angle (tipping culture, hidden fees). The caption may end with a natural question; the video ends on the end-card question (rule below), no "follow/like" asks.
+10. Comments: hot-topic angle (tipping culture, hidden fees). The video ends on a direct question to the viewer (last 2 s, no voice); the caption can repeat it. Still no "follow/like" asks.
 11. Saves: when the facts allow, one "what you can do" line (in the caption or pinned comment if not in the approved script).
 12. Before delivery: an independent review pass (a fresh reviewer scores hook / middle retention / sound-off clarity / twist / comments / shares / saves / follow / humor / cover).
-
-## First seconds & last frame (owner's rules from episode 13 — stats show viewers leave in the 1st second; these override older notes)
-1. Frame 0.0 s: a character's face with a strong emotion (`ANGRY`/shocked bust, anger mark) + a big headline or number already readable. No date, calendar,
-   landscape, slow intro, and no "?" in place of a number. A historical/place label may stay small, but never as the opening image.
-2. The first line is about the viewer, with "you" + an everyday action (e.g. "You want a McFlurry. 'Sorry, the machine is broken.' AGAIN.").
-3. Sound from 0.0 s: an error beep, hit or notification under the first word (louder than the usual fx×0.3). Never silence at the start.
-4. Something moves from the first frame: camera push-in, text popping/settling, the character reacting.
-5. Last frame: a question to the viewer that invites comments (e.g. "Is the machine broken at YOUR McDonald's? 👇"), held ≥ 2 s, over an echo of frame 0.
-   Subtitles end before it. Emoji on canvas: register `/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf`.
-6. Also deliver 6 key frames as PNG 1080x1920 without subtitles for a TikTok photo carousel (`node episode.js carousel <dir>`): hook, 3–4 key facts/numbers, the question.
-7. Hashtags in the upload kit: lowercase only.
 
 ## Quality checklist before reporting "done"
 1. Stills sheet at key moments + a dense sheet (every 0.5 s) of the final video — look for objects passing under/through each other (draw order!),
    cut text, empty frames, faces covered, subtitles over numbers. 2. ffprobe format/length, blackdetect = 0, loudness (ebur128).
-3. STT of the final video = script. 4. Voice gaps > 0.2 s (measure real speech end with silencedetect, not alignment). 5. One final render.
+3. STT of the final video = script. 4. Voice gaps > 0.2 s (measure real speech end with silencedetect, not alignment). 5. One final render. 6. Story spine check (hero → problem → failure/surprise → money twist), frame 0 check (absurd picture + 3–5 word conflict + motion), sound at 0.0 s, length 35–60 s, the ≥ 2 s question card at the end. 7. `carousel/` has 6 PNGs 1080x1920.
 Lessons: draw buildings that stand behind the road BEFORE vehicles; give every framed text a max width; keep the box below the face in hands.
 
 ## How the owner briefs (short is fine)
