@@ -82,7 +82,7 @@ export const Vignette: React.FC<{ o?: number }> = ({ o = 0.75 }) => (
 export const Tag: React.FC<{ children: React.ReactNode; t: number; at?: number; pos?: 'tr' | 'tl' }> = ({ children, t, at = 0.2, pos = 'tr' }) => (
   <div
     style={{
-      position: 'absolute', top: 54, [pos === 'tr' ? 'right' : 'left']: 64, fontFamily: FONT, fontWeight: 600, fontSize: 20,
+      position: 'absolute', top: 54, [pos === 'tr' ? 'right' : 'left']: 64, fontFamily: FONT, fontWeight: 600, fontSize: 24,
       letterSpacing: 3, textTransform: 'uppercase', color: C.text, padding: '9px 16px', border: `1.5px solid ${C.amber}`,
       background: 'rgba(255,255,255,0.94)', opacity: appear(t, at), borderRadius: 3,
     } as any}

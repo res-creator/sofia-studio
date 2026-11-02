@@ -1,7 +1,8 @@
 // Generic, light-palette shot components for the full episode. All cue times are ABSOLUTE seconds
 // on the full timeline (full/timeline_full.json); each component gets {t (local), start (abs), dur}.
 import React from 'react';
-import { AbsoluteFill, Img, staticFile, interpolate } from 'remotion';
+import { AbsoluteFill, Img, staticFile, interpolate, Easing } from 'remotion';
+import '../fonts_names.css';
 import { C, FONT, appear, prog, Tag, Caption, Arrow, Grain, fmt, KB } from '../lib';
 import { BaseMap, Label, camAt, K, P, toScreen, TANK, Attribution } from '../shots/MapShots';
 import map from '../data/map.json';
@@ -9,15 +10,51 @@ import map from '../data/map.json';
 export type SP = { t: number; start: number; dur: number };
 const A = (p: SP) => p.t + p.start;
 // the first element of a card never waits more than 0.6 s (no empty cards)
-const early = (at: number, p: SP, i: number) => (i === 0 ? Math.min(at, p.start + 0.6) : at);
+const early = (at: number, p: SP, i: number) => (i === 0 ? Math.min(at, p.start + 0.25) : at);
+// ---- motion helpers ("After Effects" style, but calm)
+const expo = Easing.bezier(0.16, 1, 0.3, 1); // ease-out-expo
+const back = Easing.bezier(0.34, 1.45, 0.64, 1); // gentle overshoot
+const pe = (t: number, t0: number, d: number, e = expo) => interpolate(t, [t0, t0 + d], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: e });
+// kinetic type: each word slides up out of its own mask, staggered
+export const Kinetic: React.FC<{ text: React.ReactNode; t: number; at: number; stagger?: number; d?: number }> = ({ text, t, at, stagger = 0.045, d = 0.55 }) => {
+  if (typeof text !== 'string') { const o = pe(t, at, d); return <span style={{ display: 'inline-block', opacity: o, transform: `translateY(${(1 - o) * 30}px)` }}>{text}</span>; }
+  const words = text.split(' ');
+  return (
+    <>
+      {words.map((w, i) => {
+        const k = pe(t, at + i * stagger, d);
+        return (
+          <span key={i} style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'bottom', padding: '0 0.04em 0.12em', margin: '0 -0.04em -0.12em' }}>
+            <span style={{ display: 'inline-block', transform: `translateY(${(1 - k) * 105}%) rotate(${(1 - k) * 4}deg)`, transformOrigin: '0 100%', opacity: Math.min(1, k * 1.6) }}>{w}</span>
+            {i < words.length - 1 ? '\u00A0' : ''}
+          </span>
+        );
+      })}
+    </>
+  );
+};
+// faint archival photo behind a card, drifting slowly (keeps text cards moving)
+export type WashT = { src: string; x?: number; y?: number; o?: number };
+const Wash: React.FC<{ w: WashT; p: SP }> = ({ w, p }) => {
+  const q = Math.min(1, Math.max(0, p.t / Math.max(1, p.dur)));
+  const s = 1.12 + 0.1 * q, dx = (w.x ?? -1) * 3 * q, dy = (w.y ?? 0) * 2 * q;
+  return (
+    <AbsoluteFill style={{ overflow: 'hidden' }}>
+      <Img src={staticFile('img/' + w.src)} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: `translate(${dx}%, ${dy}%) scale(${s})`, filter: 'grayscale(1) contrast(0.9)', opacity: (w.o ?? 0.2) * pe(p.t, 0, 0.8) }} />
+      <AbsoluteFill style={{ background: `radial-gradient(ellipse at 50% 46%, rgba(255,255,255,0.86) 0%, rgba(247,244,238,0.7) 55%, rgba(237,231,219,0.45) 100%)` }} />
+    </AbsoluteFill>
+  );
+};
+// accent rule that draws on under a kicker
+const Rule: React.FC<{ t: number; at?: number; w?: number }> = ({ t, at = 0.1, w = 120 }) => <div style={{ width: w * pe(t, at, 0.7), height: 3, background: C.amber, margin: '18px auto 0', borderRadius: 2 }} />;
 const BG = `radial-gradient(ellipse at 50% 42%, #FFFFFF 0%, ${C.card} 60%, #EDE7DB 100%)`;
-export const Light: React.FC<{ children: React.ReactNode; bg?: string }> = ({ children, bg = BG }) => (
-  <AbsoluteFill style={{ background: bg, fontFamily: FONT, color: C.text }}>{children}<Grain o={0.05} /></AbsoluteFill>
+export const Light: React.FC<{ children: React.ReactNode; bg?: string; wash?: WashT; p?: SP }> = ({ children, bg = BG, wash, p }) => (
+  <AbsoluteFill style={{ background: bg, fontFamily: FONT, color: C.text }}>{wash && p && <Wash w={wash} p={p} />}{children}<Grain o={0.05} /></AbsoluteFill>
 );
-const push = (p: SP, k = 0.03) => `scale(${1 + k * Math.min(1, p.t / Math.max(1, p.dur))})`;
+const push = (p: SP, k = 0.05) => { const q = Math.min(1, p.t / Math.max(1, p.dur)); return `translateX(${-14 * q}px) scale(${1 + k * q})`; };
 const rise = (o: number, d = 14) => ({ opacity: o, transform: `translateY(${(1 - o) * d}px)` });
 const Kicker: React.FC<{ o: number; children: React.ReactNode; color?: string }> = ({ o, children, color = C.amber }) => (
-  <div style={{ fontSize: 24, letterSpacing: 6, fontWeight: 600, color, textTransform: 'uppercase', opacity: o }}>{children}</div>
+  <div style={{ fontSize: 28, letterSpacing: 6 + 8 * (1 - o), fontWeight: 600, color, textTransform: 'uppercase', opacity: o }}>{children}</div>
 );
 
 // ---------- chapter card
@@ -28,25 +65,27 @@ export const ChapterCard: React.FC<SP & { num: number; title: string }> = (p) =>
       <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', textAlign: 'center', transform: push(p, 0.025) }}>
         <Kicker o={o}>Chapter {p.num}</Kicker>
         <div style={{ width: 80 + 220 * r, height: 4, background: C.amber, margin: '30px 0 34px' }} />
-        <div style={{ fontSize: 104, fontWeight: 800, letterSpacing: 4, ...rise(appear(p.t, 0.35, 0.7)) }}>{p.title}</div>
+        <div style={{ fontSize: 104, fontWeight: 800, letterSpacing: 4, lineHeight: 1.1, maxWidth: 1600 }}><Kinetic text={p.title} t={p.t} at={0.3} stagger={0.07} d={0.7} /></div>
       </AbsoluteFill>
+      <div style={{ position: 'absolute', right: 110 + 60 * Math.min(1, p.t / Math.max(1, p.dur)), bottom: -80, fontSize: 560, fontWeight: 800, letterSpacing: -20, color: 'transparent', WebkitTextStroke: `3px rgba(199,122,26,${0.28 * pe(p.t, 0, 1)})`, lineHeight: 1 } as any}>{String(p.num).padStart(2, '0')}</div>
     </Light>
   );
 };
 
 // ---------- text card: kicker + title (+ sub). lines may appear on cues
 export type TLine = { text: React.ReactNode; at?: number; size?: number; weight?: number; color?: string };
-export const TextCard: React.FC<SP & { kicker?: string; lines: TLine[]; align?: 'center' | 'left'; tag?: string; quote?: boolean }> = (p) => {
+export const TextCard: React.FC<SP & { kicker?: string; lines: TLine[]; align?: 'center' | 'left'; tag?: string; quote?: boolean; wash?: WashT }> = (p) => {
   const a = A(p);
   const left = p.align === 'left';
   return (
-    <Light>
+    <Light wash={p.wash} p={p}>
       <AbsoluteFill style={{ alignItems: left ? 'flex-start' : 'center', justifyContent: 'center', textAlign: left ? 'left' : 'center', padding: left ? '0 200px' : '0 160px', transform: push(p) }}>
         {p.kicker && <Kicker o={appear(p.t, 0.05)}>{p.kicker}</Kicker>}
+        {p.kicker && <Rule t={p.t} />}
         {p.quote && <div style={{ fontSize: 200, lineHeight: 0.6, color: C.amber, fontWeight: 800, height: 90, opacity: appear(p.t, 0.1) }}>“</div>}
         {p.lines.map((l, i) => {
-          const o = appear(a, early(l.at ?? p.start + 0.15 + i * 0.25, p, i), 0.45);
-          return <div key={i} style={{ fontSize: l.size ?? (i === 0 ? 84 : 44), fontWeight: l.weight ?? (i === 0 ? 800 : 400), color: l.color ?? (i === 0 ? C.text : C.dim), letterSpacing: i === 0 ? -1 : 0, lineHeight: 1.18, marginTop: i === 0 ? 22 : 18, maxWidth: 1500, ...rise(o) }}>{l.text}</div>;
+          const at = early(l.at ?? p.start + 0.15 + i * 0.25, p, i);
+          return <div key={i} style={{ fontSize: l.size ?? (i === 0 ? 84 : 44), fontWeight: l.weight ?? (i === 0 ? 800 : 400), color: l.color ?? (i === 0 ? C.text : C.dim), letterSpacing: i === 0 ? -1 : 0, lineHeight: 1.18, marginTop: i === 0 ? 22 : 18, maxWidth: 1500 }}><Kinetic text={l.text} t={a} at={at} stagger={i === 0 ? 0.05 : 0.03} /></div>;
         })}
       </AbsoluteFill>
       {p.tag && <Tag t={p.t}>{p.tag}</Tag>}
@@ -55,15 +94,18 @@ export const TextCard: React.FC<SP & { kicker?: string; lines: TLine[]; align?: 
 };
 
 // ---------- big number (optionally counting)
-export const NumberCard: React.FC<SP & { kicker?: string; value?: string; count?: { to: number; prefix?: string; suffix?: string; at: number; d?: number }; unit?: string; label?: string; sub?: string; subAt?: number; ticks?: { n: number; at: number } }> = (p) => {
+export const NumberCard: React.FC<SP & { kicker?: string; value?: string; count?: { to: number; prefix?: string; suffix?: string; at: number; d?: number }; unit?: string; label?: string; sub?: string; subAt?: number; ticks?: { n: number; at: number }; prev?: string; wash?: WashT }> = (p) => {
   const a = A(p);
   let v = p.value ?? '';
-  if (p.count) { const k = prog(a, p.count.at, p.count.at + (p.count.d ?? 1.0)); v = (p.count.prefix ?? '') + fmt(p.count.to * k) + (p.count.suffix ?? ''); }
+  let land = p.start + 0.1;
+  if (p.count) { const k = prog(a, p.count.at, p.count.at + (p.count.d ?? 1.0)); v = (p.count.prefix ?? '') + fmt(p.count.to * k) + (p.count.suffix ?? ''); land = p.count.at + (p.count.d ?? 1.0); }
+  const pop = pe(p.t, 0.05, 0.6, back), punch = 1 + 0.05 * Math.max(0, 1 - Math.abs(a - land) / 0.25) * (a > land - 0.05 ? 1 : 0);
   return (
-    <Light>
+    <Light wash={p.wash} p={p}>
       <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', textAlign: 'center', transform: push(p) }}>
+        {p.prev && <div style={{ fontSize: 40, fontWeight: 600, color: C.dim, marginBottom: 26, opacity: 0.9 }}>{p.prev}</div>}
         {p.kicker && <Kicker o={appear(p.t, 0.05)}>{p.kicker}</Kicker>}
-        <div style={{ fontSize: 230, fontWeight: 800, letterSpacing: -8, lineHeight: 1, marginTop: 14, fontVariantNumeric: 'tabular-nums', ...rise(appear(p.t, 0.1, 0.4)) }}>
+        <div style={{ fontSize: 230, fontWeight: 800, letterSpacing: -8, lineHeight: 1, marginTop: 14, fontVariantNumeric: 'tabular-nums', opacity: Math.min(1, pop * 1.5), transform: `translateY(${(1 - pop) * 40}px) scale(${(0.9 + 0.1 * pop) * punch})` }}>
           {v}{p.unit && <span style={{ fontSize: 100, letterSpacing: -2, color: C.amber, marginLeft: 18 }}>{p.unit}</span>}
         </div>
         {p.ticks && (
@@ -71,6 +113,7 @@ export const NumberCard: React.FC<SP & { kicker?: string; value?: string; count?
             {Array.from({ length: p.ticks.n }).map((_, i) => <div key={i} style={{ width: 46, height: 46, borderRadius: 23, border: `4px solid ${C.amber}`, background: appear(a, p.ticks!.at + i * 0.18, 0.2) > 0.5 ? C.amber : 'transparent' }} />)}
           </div>
         )}
+        <div style={{ width: 360 * pe(a, land - 0.1, 0.8), height: 5, background: C.amber, marginTop: 18, borderRadius: 3 }} />
         {p.label && <div style={{ fontSize: 48, fontWeight: 600, letterSpacing: 8, textTransform: 'uppercase', color: C.dim, marginTop: 26, ...rise(appear(p.t, 0.35)) }}>{p.label}</div>}
         {p.sub && <div style={{ fontSize: 38, color: C.dim, marginTop: 20, ...rise(appear(a, p.subAt ?? p.start + 0.7)) }}>{p.sub}</div>}
       </AbsoluteFill>
@@ -79,17 +122,22 @@ export const NumberCard: React.FC<SP & { kicker?: string; value?: string; count?
 };
 
 // ---------- chips that appear one by one
-export const ChipsCard: React.FC<SP & { kicker?: string; title?: string; chips: { text: string; at: number; x?: boolean }[]; tag?: string }> = (p) => {
+export const ChipsCard: React.FC<SP & { kicker?: string; title?: string; chips: { text: string; at: number; x?: boolean }[]; tag?: string; wash?: WashT }> = (p) => {
   const a = A(p);
   return (
-    <Light>
+    <Light wash={p.wash} p={p}>
       <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', textAlign: 'center', transform: push(p) }}>
         {p.kicker && <Kicker o={appear(p.t, 0.05)}>{p.kicker}</Kicker>}
         {p.title && <div style={{ fontSize: 72, fontWeight: 800, marginTop: 18, letterSpacing: -1, ...rise(appear(p.t, 0.1)) }}>{p.title}</div>}
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 24, marginTop: 50, maxWidth: 1600 }}>
           {p.chips.map((c, i) => {
-            const o = appear(a, early(c.at, p, p.title ? 1 : i), 0.35);
-            return <div key={i} style={{ fontSize: 44, fontWeight: 600, padding: '22px 36px', background: '#FFFFFF', borderRadius: 8, border: `2px solid ${c.x ? C.line : C.amber}`, boxShadow: '0 6px 20px rgba(28,27,25,0.08)', color: c.x ? C.dim : C.text, textDecoration: c.x ? 'line-through' : 'none', ...rise(o, 18) }}>{c.text}</div>;
+            const at = early(c.at, p, p.title ? 1 : i), o = pe(a, at, 0.55, back), x = pe(a, at + 0.35, 0.4);
+            return (
+              <div key={i} style={{ position: 'relative', fontSize: 44, fontWeight: 600, padding: '22px 36px', background: '#FFFFFF', borderRadius: 8, border: `2px solid ${c.x ? C.line : C.amber}`, boxShadow: '0 6px 20px rgba(28,27,25,0.08)', color: c.x ? C.dim : C.text, opacity: Math.min(1, o * 1.4), transform: `translateY(${(1 - o) * 26}px) scale(${0.86 + 0.14 * o})` }}>
+                {c.text}
+                {c.x && <div style={{ position: 'absolute', left: 28, top: '52%', height: 4, width: `calc((100% - 56px) * ${x})`, background: C.amber, borderRadius: 2 }} />}
+              </div>
+            );
           })}
         </div>
       </AbsoluteFill>
@@ -150,12 +198,12 @@ export const FlowCard: React.FC<SP & { kicker?: string; steps: { text: string; s
         })}
       </svg>
       {p.steps.map((s, i) => {
-        const o = appear(a, early(s.at, p, i), 0.4);
+        const at = early(s.at, p, i), o = pe(a, at, 0.5, back), g = pe(p.t, 0.05 + i * 0.08, 0.5);
         const [x, y] = pos[i];
         return (
-          <div key={i} style={{ position: 'absolute', left: x - 180, top: y - 90, width: 360, height: 180, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', background: '#FFFFFF', borderRadius: 10, border: `2px solid ${i === 0 ? C.text : C.amber}`, boxShadow: '0 8px 24px rgba(28,27,25,0.08)', ...rise(o) }}>
-            <div style={{ fontSize: 40, fontWeight: 800, lineHeight: 1.1 }}>{s.text}</div>
-            {s.sub && <div style={{ fontSize: 24, color: C.dim, marginTop: 10, lineHeight: 1.2, padding: '0 14px' }}>{s.sub}</div>}
+          <div key={i} style={{ position: 'absolute', left: x - 180, top: y - 90, width: 360, height: 180, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', background: o > 0.02 ? '#FFFFFF' : 'rgba(255,255,255,0.35)', borderRadius: 10, border: `2px ${o > 0.02 ? 'solid' : 'dashed'} ${i === 0 ? C.text : C.amber}`, boxShadow: o > 0.02 ? '0 8px 24px rgba(28,27,25,0.08)' : 'none', opacity: Math.max(0.35 * g, Math.min(1, o * 1.3)), transform: `scale(${0.92 + 0.08 * Math.max(g, o)})` }}>
+            <div style={{ fontSize: 40, fontWeight: 800, lineHeight: 1.1, opacity: Math.min(1, o * 1.3), transform: `translateY(${(1 - o) * 16}px)` }}>{s.text}</div>
+            {s.sub && <div style={{ fontSize: 24, color: C.dim, marginTop: 10, lineHeight: 1.2, padding: '0 14px', opacity: o }}>{s.sub}</div>}
           </div>
         );
       })}
@@ -165,29 +213,29 @@ export const FlowCard: React.FC<SP & { kicker?: string; steps: { text: string; s
 };
 
 // ---------- kinetic words (calm: each phrase fades in on its word)
-export const WordsCard: React.FC<SP & { words: { text: string; at: number; amber?: boolean }[]; size?: number }> = (p) => {
+export const WordsCard: React.FC<SP & { words: { text: string; at: number; amber?: boolean }[]; size?: number; wash?: WashT }> = (p) => {
   const a = A(p);
   return (
-    <Light>
+    <Light wash={p.wash} p={p}>
       <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'row', flexWrap: 'wrap', gap: '0 34px', padding: '0 160px', transform: push(p) }}>
-        {p.words.map((w, i) => <div key={i} style={{ fontSize: p.size ?? 110, fontWeight: 800, letterSpacing: -2, color: w.amber ? C.amber : C.text, ...rise(appear(a, early(w.at, p, i), 0.35), 18) }}>{w.text}</div>)}
+        {p.words.map((w, i) => { const at = early(w.at, p, i), k = pe(a, at, 0.5, back); return <div key={i} style={{ fontSize: p.size ?? 110, fontWeight: 800, letterSpacing: -2, color: w.amber ? C.amber : C.text, opacity: Math.min(1, k * 1.5), transform: `translateY(${(1 - k) * 50}px) scale(${0.8 + 0.2 * k})` }}>{w.text}</div>; })}
       </AbsoluteFill>
     </Light>
   );
 };
 
 // ---------- names (memorial list)
-export const NamesCard: React.FC<SP & { kicker?: string; names: { name: string; age?: string; at: number }[]; cols?: number; size?: number }> = (p) => {
+export const NamesCard: React.FC<SP & { kicker?: string; names: { name: string; age?: string; at: number }[]; cols?: number; size?: number; wash?: WashT }> = (p) => {
   const a = A(p);
   const cols = p.cols ?? 1;
   return (
-    <Light>
+    <Light wash={p.wash} p={p}>
       <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', transform: push(p, 0.02) }}>
         {p.kicker && <Kicker o={appear(p.t, 0.05)}>{p.kicker}</Kicker>}
         <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, auto)`, gap: cols > 1 ? '14px 80px' : '22px', marginTop: 40 }}>
           {p.names.map((n, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'baseline', gap: 26, ...rise(appear(a, early(n.at, p, i), 0.5), 10) }}>
-              <div style={{ fontSize: p.size ?? 74, fontWeight: 600, letterSpacing: -0.5 }}>{n.name}</div>
+            <div key={i} style={{ display: 'flex', alignItems: 'baseline', gap: 26, opacity: pe(a, early(n.at, p, i), 0.7), transform: `translateX(${(1 - pe(a, early(n.at, p, i), 0.7)) * -40}px)` }}>
+              <div style={{ fontSize: p.size ?? 74, fontWeight: 600, letterSpacing: -0.5, fontFamily: "'InterNames', Inter, sans-serif", fontFeatureSettings: '"cv08" 1' }}>{n.name}</div>
               {n.age && <div style={{ fontSize: (p.size ?? 74) * 0.6, fontWeight: 400, color: C.amber }}>{n.age}</div>}
             </div>
           ))}
@@ -202,12 +250,19 @@ const kbPt = (px: number, py: number, kb: KB, q: number) => {
   const s = kb.s0 + (kb.s1 - kb.s0) * q, x = kb.x0 + (kb.x1 - kb.x0) * q, y = kb.y0 + (kb.y1 - kb.y0) * q;
   return [960 + (px - 960) * s + (x * 1920) / 100, 540 + (py - 540) * s + (y * 1080) / 100];
 };
-export const PhotoShot: React.FC<SP & { src: string; kb: KB; text?: string; source: string; arrows?: { px: number; py: number; dx: number; dy: number; at: number; label?: string }[]; tag?: string }> = (p) => {
-  const q = Math.min(1, Math.max(0, p.t / p.dur));
+export const PhotoShot: React.FC<SP & { src: string; kb: KB; text?: string; source: string; arrows?: { px: number; py: number; dx: number; dy: number; at: number; label?: string }[]; tag?: string; intro?: 'wipe' | 'iris' | 'zoom' | 'none' }> = (p) => {
+  // camera: Ken Burns with an ease-in-out curve (feels like a real camera move, not linear)
+  const q = interpolate(p.t, [0, p.dur], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.bezier(0.4, 0, 0.3, 1) });
   const s = p.kb.s0 + (p.kb.s1 - p.kb.s0) * q, x = p.kb.x0 + (p.kb.x1 - p.kb.x0) * q, y = p.kb.y0 + (p.kb.y1 - p.kb.y0) * q;
+  const k = pe(p.t, 0, 0.75);
+  const clip = p.intro === 'wipe' ? `inset(0 ${(1 - k) * 100}% 0 0)` : p.intro === 'iris' ? `circle(${12 + 88 * k}% at 50% 50%)` : undefined;
+  const zs = p.intro === 'zoom' ? 1 + 0.12 * (1 - k) : 1;
   return (
     <AbsoluteFill style={{ overflow: 'hidden', background: C.bg }}>
-      <Img src={staticFile('img/' + p.src)} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: `translate(${x}%, ${y}%) scale(${s})`, filter: 'grayscale(1) contrast(1.06)' }} />
+      <AbsoluteFill style={{ clipPath: clip, transform: `scale(${zs})` }}>
+        <Img src={staticFile('img/' + p.src)} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: `translate(${x}%, ${y}%) scale(${s})`, filter: 'grayscale(1) contrast(1.06)' }} />
+      </AbsoluteFill>
+      {p.intro === 'wipe' && k < 0.999 && <div style={{ position: 'absolute', top: 0, bottom: 0, left: `${k * 100}%`, width: 6, background: C.amber, opacity: 0.9 }} />}
       {(p.arrows ?? []).map((ar, i) => {
         const [x2, y2] = kbPt(ar.px, ar.py, p.kb, q);
         return <Arrow key={i} x1={x2 + ar.dx} y1={y2 + ar.dy} x2={x2} y2={y2} t={A(p)} at={ar.at} label={ar.label} lx={x2 + ar.dx + 8} ly={y2 + ar.dy + (ar.dy > 0 ? 34 : -14)} anchor={ar.dx < 0 ? 'end' : 'start'} />;
@@ -221,14 +276,18 @@ export const PhotoShot: React.FC<SP & { src: string; kb: KB; text?: string; sour
 };
 
 // framed print on light background (for small/low-res files and newspaper crops)
-export const PrintShot: React.FC<SP & { src: string; crop?: [number, number, number, number]; srcW: number; srcH: number; w: number; text: string; source: string; rot?: number; overlay?: React.ReactNode; tag?: string; zoom?: number }> = (p) => {
-  const [cx, cy, cw, ch] = p.crop ?? [0, 0, p.srcW, p.srcH];
+export const PrintShot: React.FC<SP & { src: string; crop?: [number, number, number, number]; srcW: number; srcH: number; w: number; text: string; source: string; rot?: number; overlay?: React.ReactNode; tag?: string; zoom?: number; pan?: [number, number]; wash?: WashT }> = (p) => {
+  const [cx0, cy0, cw, ch] = p.crop ?? [0, 0, p.srcW, p.srcH];
+  const qq = interpolate(p.t, [0, p.dur], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.bezier(0.4, 0, 0.3, 1) });
+  const cx = cx0 + (p.pan ? p.pan[0] * qq : 0), cy = cy0 + (p.pan ? p.pan[1] * qq : 0);
   const k = p.w / cw, h = ch * k;
-  const z = 1 + (p.zoom ?? 0.04) * Math.min(1, p.t / p.dur);
+  const z = 1 + (p.zoom ?? 0.05) * qq;
+  const f = pe(p.t, 0, 0.8, back);
+  const r0 = (p.rot ?? 0) + (1 - f) * -3;
   return (
-    <Light>
+    <Light wash={p.wash} p={p}>
       <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ width: p.w, height: h, overflow: 'hidden', position: 'relative', border: '10px solid #FFFFFF', boxShadow: '0 14px 40px rgba(28,27,25,0.2)', marginTop: -70, transform: `scale(${z}) rotate(${p.rot ?? 0}deg)`, ...rise(appear(p.t, 0.0, 0.5), 10) }}>
+        <div style={{ width: p.w, height: h, overflow: 'hidden', position: 'relative', border: '10px solid #FFFFFF', boxShadow: `0 ${14 + 30 * (1 - f)}px ${40 + 40 * (1 - f)}px rgba(28,27,25,0.2)`, marginTop: -70, opacity: Math.min(1, f * 1.6), transform: `translateY(${(1 - f) * 90}px) scale(${z * (0.94 + 0.06 * f)}) rotate(${r0}deg)` }}>
           <Img src={staticFile('img/' + p.src)} style={{ position: 'absolute', left: -cx * k, top: -cy * k, width: p.srcW * k, height: p.srcH * k, filter: 'grayscale(1) contrast(1.06)' }} />
           {p.overlay}
         </div>
@@ -257,7 +316,7 @@ export const MapShot: React.FC<SP & { keys: K[]; markers?: { lon: number; lat: n
   const wv = p.wave ? prog(a, p.wave.at, p.wave.at + p.wave.d, false) : 0;
   return (
     <AbsoluteFill style={{ background: '#BCD8EA' }}>
-      <BaseMap cam={cam} neO={neO} osmO={osmO} water={p.water !== undefined ? mixC('#BCD8EA', '#C8B48E', prog(a, p.water, p.water + 1.4)) : undefined}>
+      <BaseMap cam={cam} neO={neO} osmO={osmO} water={p.water !== undefined ? mixC('#BCD8EA', '#D9CCAE', prog(a, p.water, p.water + 1.4)) : undefined}>
         {p.park !== undefined && LANGONE && <path d={LANGONE.d} fill={C.amber} opacity={0.55 * prog(a, p.park, p.park + 0.6)} stroke={C.amber} strokeWidth={2} vectorEffect="non-scaling-stroke" />}
         {p.wave && (
           <g clipPath="url(#landF)">

@@ -202,7 +202,7 @@ export const RadarCard: React.FC<SP & { at: number; at2: number }> = (p) => {
       <Title o={appear(p.t, 0.1)} text="Under the ballfield, Langone Park" sub="2019 · ground-penetrating radar · schematic" />
       <svg width="1920" height="1080" style={{ position: 'absolute', inset: 0 }}>
         <rect x={0} y={520} width={1920} height={40} fill="#8DBF6A" />
-        <rect x={0} y={560} width={1920} height={520} fill="#D9C7A6" />
+        <rect x={0} y={560} width={1920} height={520} fill="#EAE0CC" />
         <rect x={560} y={690} width={800} height={60} fill="#B9B4AA" stroke="#7B766C" strokeWidth={3} opacity={0.25 + 0.75 * found} />
         <text x={960} y={800} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={36} fill={C.text} opacity={found}>The tank’s concrete base</text>
         <g opacity={found}>
@@ -253,7 +253,7 @@ export const CrestCard: React.FC<SP & { at: number; under: number; survived: num
   const under = prog(a, p.under, p.under + 0.8);
   return (
     <Light2>
-      <Title o={appear(p.t, 0.1)} text="Carried on the crest" sub="schematic" />
+      <Title o={appear(p.t, 0.1)} text="Carried on the crest" />
       <svg width="1920" height="1080" style={{ position: 'absolute', inset: 0 }}>
         <path d={d} fill={C.amber} opacity={0.6} />
         <circle cx={xs} cy={crest(xs) - 14 + under * 70} r={14} fill={C.text} />

@@ -84,7 +84,7 @@ export const BlueprintShot: React.FC<{ t: number; start: number }> = ({ t, start
         </svg>
         <div style={{ position: 'absolute', left: X0, width: W, top: 450, textAlign: 'center', fontFamily: FONT, color: C.text, opacity: appear(a, ws(42) - 0.1) }}>
           <div style={{ fontSize: 96, fontWeight: 800, letterSpacing: -1, fontVariantNumeric: 'tabular-nums' }}>{fmt(2300000 * cnt)}</div>
-          <div style={{ fontSize: 34, fontWeight: 600, letterSpacing: 6, textTransform: 'uppercase', color: C.text, opacity: 0.9 }}>gallons of molasses</div>
+          <div style={{ fontSize: 34, fontWeight: 600, letterSpacing: 6, textTransform: 'uppercase', color: C.text, opacity: 0.9 }}>gallons · full capacity</div>
         </div>
       </AbsoluteFill>
       <div style={{ position: 'absolute', left: 72, top: 60, fontFamily: FONT, color: C.blue, fontSize: 21, letterSpacing: 3, fontWeight: 600, opacity: appear(t, 0.3) }}>

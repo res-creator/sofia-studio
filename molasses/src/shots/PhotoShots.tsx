@@ -74,7 +74,7 @@ export const PostClip: React.FC<PS> = ({ t, dur }) => {
           <Img src={staticFile('img/boston_post.jpg')} style={{ width: 1500, display: 'block', filter: 'grayscale(1) contrast(1.08)' }} />
         </div>
       </AbsoluteFill>
-      <Caption t={t} at={0.2} text="The Boston Post, January 16, 1919" source={`Via Wikimedia Commons · ${PD}`} />
+      <Caption t={t} at={0.2} text="The Boston Post, January 16, 1919: an early, incomplete count" source={`Via Wikimedia Commons · ${PD}`} />
       <Vignette o={0.6} />
       <Grain o={0.06} />
     </AbsoluteFill>

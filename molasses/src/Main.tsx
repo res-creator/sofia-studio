@@ -45,12 +45,14 @@ export const SHOTS: Shot[] = [
   { id: '19 title', from: 65.3, to: 76.278, fade: 0.6, el: (p) => <TitleCard {...p} /> },
 ];
 
-const ShotSeq: React.FC<{ s: Shot }> = ({ s }) => {
+// outgoing shot fades out just before a faded cut (so two layers of text never overlap); hard cuts unchanged
+const ShotSeq: React.FC<{ s: Shot; outFade: number }> = ({ s, outFade }) => {
   const f = useCurrentFrame();
   const fadeF = Math.round((s.fade ?? 0) * FPS);
-  const o = fadeF ? interpolate(f, [0, fadeF], [0, 1], { extrapolateRight: 'clamp' }) : 1;
   const dur = toNew(s.to) - toNew(s.from);
-  return <AbsoluteFill style={{ opacity: o }}>{s.el({ t: f / FPS, start: toNew(s.from), dur })}</AbsoluteFill>;
+  const o = fadeF ? interpolate(f, [0, fadeF], [0, 1], { extrapolateRight: 'clamp' }) : 1;
+  const oo = outFade ? interpolate(f / FPS, [dur - 0.18, dur + 0.06], [1, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }) : 1;
+  return <AbsoluteFill style={{ opacity: o * oo }}>{s.el({ t: f / FPS, start: toNew(s.from), dur })}</AbsoluteFill>;
 };
 
 export const Main: React.FC<{ audio?: string; noAudio?: boolean }> = ({ audio = 'audio/mix.wav', noAudio = false }) => (
@@ -62,7 +64,7 @@ export const Main: React.FC<{ audio?: string; noAudio?: boolean }> = ({ audio = 
       const to = Math.min(Math.round(tl.duration * FPS), Math.round((toNew(s.to) + tail) * FPS));
       return (
         <Sequence key={s.id} from={from} durationInFrames={Math.max(1, to - from)} name={s.id}>
-          <ShotSeq s={s} />
+          <ShotSeq s={s} outFade={tail} />
         </Sequence>
       );
     })}

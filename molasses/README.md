@@ -26,3 +26,9 @@ COMP=Full node tools/frames.mjs out/full_cs 0,2,4,...    # contact sheet frames
 npx remotion render src/index.ts Full full/full_episode.mp4 --codec=h264 --audio-codec=aac
 ```
 Shot list: src/full/Full.tsx (each shot is tied to a script line / word). Components: src/full/kit.tsx, src/full/tank.tsx.
+
+## Version 2 (after the review)
+- `python3 tools/full_timeline.py` now places every chapter voice at its exact sample offset (fixes up to 0.4 s drift) and adds an 18 s end card.
+- `python3 tools/sound_full.py` → `public/audio/full_mix.wav`.
+- Motion: push transitions without overlapping text, kinetic type, drifting photo backgrounds, photo wipes/zooms (src/full/kit.tsx, src/full/Full.tsx).
+- `python3 tools/make_srt.py` → `full/full_episode.srt`; `npx remotion still src/index.ts Thumb full/thumbnail.jpg` → thumbnail; `full/upload_kit.txt`.

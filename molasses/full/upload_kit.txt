@@ -1,0 +1,53 @@
+THE GREAT MOLASSES FLOOD — YouTube upload kit
+=============================================
+
+FILES
+- Video:      full/full_episode.mp4  (1920x1080, 30 fps, H.264 + AAC, about 13:04)
+- Thumbnail:  full/thumbnail.jpg     (1280x720)
+- Subtitles:  full/full_episode.srt  (English)
+
+TITLE (pick one; first is recommended)
+1) The Deadly Wave of Molasses That Hit Boston in 1919
+2) The Great Molasses Flood: Boston's Strangest Disaster Wasn't an Accident
+3) 2 Million Gallons of Molasses: The Boston Disaster of 1919
+
+DESCRIPTION
+On January 15, 1919, a steel tank on Boston's Commercial Street split open. More than two million gallons of molasses poured into the North End in a wave that killed 21 people and injured about 150.
+
+It sounds like a strange story. It was a warning that nobody wanted to hear. The tank had leaked for years. It groaned. The company painted it brown.
+
+This documentary follows the whole story: how the tank was built, why it failed, the rescue, the names of the dead, the court case that followed, and what modern researchers found.
+
+CHAPTERS
+0:00 January 15, 1919
+1:07 Chapter 1: A Tank by the Harbor
+2:27 Chapter 2: Built in a Hurry
+4:12 Chapter 3: The Warm Day
+5:06 Chapter 4: Twelve Thirty
+6:46 Chapter 5: The Rescue
+7:53 Chapter 6: The Names
+8:34 Chapter 7: A Sticky City
+9:08 Chapter 8: "Anarchists"
+10:32 Chapter 9: What the Steel Said
+11:34 Chapter 10: The Park on Commercial Street
+
+In memory of the 21 people who died:
+Patrick Breen, William Brogan, John Callahan, Bridget Clougherty, Stephen Clougherty, Maria Di Stasio, William Duffy, Peter Francis, Flaminio Gallerani, Pasquale Iantosca, James J. Kenneally, Eric Laird, George Layhe, James Lennon, Ralph Martin, James McMullen, Cesar Nicolo, Thomas Noonan, John M. Seiberlich, Peter Shaughnessy, Michael Sinnott.
+
+SOURCES & IMAGE CREDITS
+Historical photos are in the public domain: City of Boston Archives (Boston Elevated Railway Co., 1919), Boston Public Library, American Red Cross collection at the Library of Congress, Detroit Publishing Co. at the Library of Congress, and Wikimedia Commons. Newspapers: The Boston Post, The Boston Daily Globe and The New York Times, January 16, 1919 (public domain).
+Maps: OpenStreetMap contributors (ODbL), Natural Earth.
+Facts: Wikipedia, "Great Molasses Flood"; Encyclopaedia Britannica. Full list: sources.txt in the project folder.
+Diagrams and maps marked "Illustration", "Schematic" or "Reconstruction" are explanatory, not exact.
+Narration: AI voice (ElevenLabs).
+
+#molassesflood #boston #history #documentary #1919 #disaster #northend
+
+TAGS (comma-separated, for the YouTube tags field)
+great molasses flood, boston molasses disaster, molasses flood 1919, boston history, north end boston, history documentary, 1919, industrial disaster, prohibition, commercial street, usia, purity distilling company, strange history
+
+SETTINGS CHECKLIST
+- Language: English. Captions: upload full/full_episode.srt as English.
+- Altered or synthetic content: the narration is an AI voice. Follow YouTube's current disclosure rules when you upload.
+- End screen: the last 18 seconds (12:46-13:04) are a quiet title card. Put the end screen elements there.
+- Category: Education. Audience: not made for kids.

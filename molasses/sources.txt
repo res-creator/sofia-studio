@@ -130,8 +130,23 @@ Extra archival photos used in the chapters (Wikimedia Commons, all public domain
 Also used: two more crops of the Boston Post front page (6): the annotated site photo with the paper's own labels
 ("Where tank stood", "Engine 31 Fire Dept. House", "Where elevated structure was demolished") and the "Known dead" list
 (shown as the paper's first, incomplete list).
-Not obtained (Wikimedia rate limit): the Boston Daily Globe front page of Jan 16, 1919, and the Library of Congress
-Red Cross negative. They are not in the video.
+Added in version 2 (after the review), all public domain:
+12) public/img/redcross.jpg - File:Boston, Mass. Boston molasses explosion 14968a.jpg (Wikimedia Commons).
+    American Red Cross, c. January 15, 1919. Library of Congress, American National Red Cross photograph collection
+    (LC-A6197-RC-12029, https://www.loc.gov/pictures/item/2017679979/). "No known restrictions on publication."
+    Cropped to remove the glass-negative border.
+13) public/img/ambulance.jpg - File:1919 MolassesFlood Boston.png (Wikimedia Commons). Unknown author, 1919. PD-1923.
+14) public/img/globe.jpg - File:TheBostonDailyGlobe-frontpage-1919-1-16.jpg (Wikimedia Commons). The Boston Daily Globe,
+    January 16, 1919. PD-US. Used: the "One more state to make country dry" headline (Prohibition) on the same front page.
+15) public/img/nyt.jpg - File:Boston-molasses-disaster-nyt-article.jpg (Wikimedia Commons). The New York Times,
+    January 16, 1919 ("12 killed when tank of molasses explodes"). PD-US. Shown as an early report.
+16) public/img/waterfront.jpg - "Bird's-eye view of waterfront, Boston, Mass.", Detroit Publishing Co., c. 1906.
+    Library of Congress, https://www.loc.gov/item/2025164915/ (LC-D4-..., no known restrictions). Captioned "c. 1906".
+17) public/img/east_boston.jpg - "[Boston from East Boston, Boston, Mass.]", Detroit Publishing Co., 1906.
+    Library of Congress, https://www.loc.gov/item/2016809704/ (no known restrictions). Captioned "c. 1906".
+    Photos 16-17 show the harbor before the flood and are captioned with their own dates, not as 1919.
+Faint, drifting copies of these photos are used as backgrounds behind some text cards.
+No film or newsreel footage of the 1919 flood is known; the video uses photographs only.
 
 Graphics in the chapters are labelled on screen: "Diagram" (to scale or factual), "Schematic" (shape only, no exact data),
 "Illustration" (explains an idea), "Reconstruction - illustrative extent" (the wave / flooded area on the map).
@@ -140,4 +155,5 @@ Wave-height bars are to scale (15 / 25 / 40 ft) next to a 6-ft person.
 The pipe to Cambridge is a dashed arrow without a route ("route not shown"); the position of USS Nantucket is not marked.
 
 Sound: music and the few SFX are synthesised (tools/sound_full.py). No wind, hiss or crowd noise. Cold-open SFX are the
-approved segment's. Mix -14.5 LUFS, true peak -1.5 dBFS.
+approved segment's. Mix -14.6 LUFS, true peak -1.5 dBFS.
+Names on screen use Inter with the serifed capital I (cv08), so "Iantosca" cannot be misread as "lantosca".
