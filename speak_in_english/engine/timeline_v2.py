@@ -94,6 +94,11 @@ if EPN == "photo":  # cover = her posing by the fountain, friend with phone; ONE
     hev = dict(cut=round(h0 - 0.05, 3)); cue("impact", h0 - 0.05, 0.7)
     for k in range(8): cue("shutter", h0 + 0.05 + 0.1 * k, 0.5)
     h0 = say("hook_h2", h0 + 1.1); hev["count"] = round(hev["cut"] + 0.1, 3); h0 += 0.5
+if EPN == "drill":  # cover = landing at 03:15: her in pyjamas at door 13, Rocky in a robe + headlamp with the drill; "Just one more hole!" -> DRILL burst -> cut to her bedroom (wall shakes, plant slides off) during the narrator
+    h0 = say("hook_r", 0.45) + 0.1
+    hev = dict(drill=round(h0, 3)); cue("drill", h0, 0.75); hev["bed"] = round(h0 + 0.9, 3); hev["plant"] = round(h0 + 2.2, 3); cue("thud", h0 + 2.6, 0.7); h0 += 0.35
+if EPN == "borsch":  # cover = pink striped card with a giant bowl of borscht; Margot (small, bottom right) tastes: "Hmm. Interesting..."
+    cue("ding", 0.3, 0.3); h0 = say("hook_m", 0.5) + 0.35; hev = dict(taste=0.35)
 e = say("hook", h0); hw = word_times("hook") or []
 def find(word):
     for w, a, b in hw:
@@ -101,7 +106,7 @@ def find(word):
     return None
 stamp_t = find(E["stamp_word"]) or (e - 1.0); cue("stamp", stamp_t, 0.8)
 t = e + 0.45
-scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "late") else {})))
+scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "late", "drill", "borsch") else {})))
 
 TICKS = lambda back: [("tick", -back + 0.15 + 0.6 * k, 0.6) for k in range(int(back / 0.6))]
 if EPN == "gym":
@@ -557,6 +562,28 @@ elif EPN == "passport":   # passport booth (togo layout). Plans: WIDE / CARD / H
             ("c2_h2", 0.6, [("PAT", -0.55, 0), ("STARE", -0.1, 0), ("rimshot", ("e", 0.35), 0.9)]), ("c2_nar", 1.2, [("BLACK", -1.1, 0)])],
     )
     INTRO = 1.15
+elif EPN == "borsch":   # dining room: her standing with the pot on the left, Margot at the table, the husband eating in the background (plates pile up). Events: POUR/SPILL, PLATE (husband +1), SALT, TWITCH, TEABAG, SPOON2/3, FREEZE, THINK, JAR, REACT
+    LV = dict(
+        A1=[("a1_h", 0.15, [("POUR", 0.3, 0), ("plop", 0.5, 0.5)]), ("a1_m", 0.7, [("SPILL", -0.6, 0), ("plop", -0.55, 0.6)]), ("a1_nar", 0.8, [("REACT", -0.7, 0), ("brow", -0.6, 0.5)])],
+        A2=[("a2_h", 0.15, []), ("a2_m", 0.3, [("PLATE", ("e", 0.2), 0), ("clank", ("e", 0.25), 0.5)]), ("a2_nar", 0.8, [("REACT", -0.5, 0), ("buzz", 0.95, 0.5)]), ("a2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        B1=[("b1_h", 0.15, []), ("b1_m", 0.3, [("SALT", ("e", 0.15), 0), ("snips", ("e", 0.2), 0.4)]), ("b1_nar", 1.7, [("TWITCH", -1.2, 0), ("blink", -1.15, 0.6), ("PLATE", -0.6, 0), ("clank", -0.55, 0.5)])],
+        B2=[("b2_h", 0.15, []), ("b2_m", 0.3, [("TEABAG", ("e", 0.1), 0), ("plop", ("e", 0.15), 0.6)]), ("b2_nar", 0.9, [("REACT", -0.6, 0), ("rimshot", -0.55, 0.7)]), ("b2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C1=[("c1_h", 0.15, []), ("c1_m", 1.0, [("SPOON2", -0.9, 0), ("ding", -0.85, 0.4), ("SPOON3", -0.45, 0), ("ding", -0.4, 0.45)]), ("c1_nar", 1.0, [("FREEZE", -0.9, 0), ("PLATE", -0.9, 0), ("scratch", -0.85, 0.5)]), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C2=[("c2_h", 0.3, []), ("c2_m", 1.6, [("THINK", -1.5, 0)] + TICKS(1.4) + [("JAR", 1.1, 0), ("thud", 1.15, 0.8)]), ("c2_h2", 0.8, [("REACT", -0.7, 0), ("blink", -0.6, 0.5)]), ("c2_nar", 0.8, [("rimshot", -0.6, 0.6)])],
+    )
+    INTRO = 0.5
+elif EPN == "drill":   # landing: Rocky (flat 13) in the doorway, her on the right; bedroom zone for the drill-tip gags. Events: DRILL bursts, TIP / HOLE (counter), BOW, GIFT, CLOSE, ROPE, PHONE, TIPTOE, THINK, MORNING, GIRAFFE
+    LV = dict(
+        A1=[("a1_h", 0.15, []), ("a1_r", 0.3, []), ("a1_nar", 1.7, [("DRILL", -1.6, 0), ("drill", -1.6, 0.7), ("TIP", -1.0, 0), ("pop", -0.95, 0.5), ("REACT", -0.35, 0)])],
+        A2=[("a2_h", 0.15, []), ("a2_r", 0.3, [("BOW", 0.4, 0), ("sparkle", 0.45, 0.4)]), ("a2_nar", 0.7, [("REACT", -0.6, 0), ("buzz", 0.95, 0.5)]), ("a2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        B1=[("b1_h", 0.15, []), ("b1_r", 0.3, [("GIFT", 0.55, 0), ("pop", 0.6, 0.5), ("COOKIE", 1.4, 0), ("pop", 1.45, 0.45)]),
+            ("b1_nar", 1.9, [("CLOSE", -1.8, 0), ("thud", -1.75, 0.8), ("DRILL", -1.15, 0), ("drill", -1.15, 0.65), ("HOLE", -0.75, 0), ("pop", -0.7, 0.5)])],
+        B2=[("b2_h", 0.15, []), ("b2_r", 0.25, [("ROPE", 0.05, 0), ("whoosh", 0.05, 0.4)]), ("b2_nar", 0.9, [("REACT", -0.8, 0), ("rimshot", -0.75, 0.7)]), ("b2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C1=[("c1_h", 0.15, [("PHONE", 0.5, 0), ("pop", 0.5, 0.4)]), ("c1_r", 0.6, [("GULP", -0.5, 0), ("gulp", -0.45, 0.5)]), ("c1_nar", 1.6, [("TIPTOE", -1.5, 0), ("creak", -0.4, 0.4)]), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C2=[("c2_h", 0.3, []), ("c2_r", 1.6, [("THINK", -1.5, 0)] + TICKS(1.4)), ("c2_h2", 0.45, [("REACT", -0.4, 0)]),
+            ("c2_nar", 2.7, [("MORNING", -2.5, 0), ("whoosh", -2.5, 0.5), ("chime", -2.3, 0.5), ("GIRAFFE", -1.7, 0), ("boing", -1.65, 0.6), ("rimshot", -0.7, 0.6)])],
+    )
+    INTRO = 0.5
 elif EPN == "late":   # cafe: her at the table (tower of glasses grows each level, wall clock spins), Emma on the right. Events: OUTFIT/DRESS/CAT/HONK/CUP/PHONE props, REACT = close-up on her before the punchline, CRASH = tower falls
     def SW(lid, w, d=0.5):
         try: ws = json.load(open(f"{VO}/{lid}.scribe.json"))["words"]
