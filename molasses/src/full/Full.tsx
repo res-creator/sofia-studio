@@ -229,7 +229,7 @@ const ChapterCardEnd: React.FC<SP> = (p) => (
 //  whip  : whip-pan — both shots slide sideways together with horizontal motion blur (photo -> photo)
 //  zoom  : zoom-through — outgoing flies into the lens, incoming pulls back from close (photo/map -> photo/map)
 //  slide : card -> card lateral slide with motion blur
-type Trans = 'push' | 'panels' | 'zoom';
+type Trans = 'push' | 'panels' | 'zoom' | 'whip';
 const IN = 0.42, OUT = 0.22, TW = 0.42;
 const ex = Easing.bezier(0.16, 1, 0.3, 1), ei = Easing.bezier(0.7, 0, 0.84, 0), eio = Easing.bezier(0.76, 0, 0.24, 1);
 const clamp = (t: number, a: number, b: number, e = eio) => interpolate(t, [a, b], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: e });
@@ -246,7 +246,7 @@ const MB_DEFS = (
 );
 const Seq: React.FC<{ shot: Item; end: number; next?: Item }> = ({ shot, end, next }) => {
   const outT: Trans = next?.trans ?? 'push';
-  const tail = outT === 'push' ? 0.04 : outT === 'panels' ? 0.72 : TW;
+  const tail = outT === 'push' ? 0.04 : outT === 'panels' ? 0.72 : TW + 0.02;
   const from = Math.round(shot.at * FPS);
   const to = Math.round((end + tail) * FPS);
   return (
@@ -261,6 +261,7 @@ const Fader: React.FC<{ el: Shot['el']; start: number; dur: number; inT: Trans; 
   // incoming
   if (inT === 'push') { const k = clamp(t, 0, IN, ex); op *= Math.min(1, k * 1.25); ty += (1 - k) * 44; sc *= 1.04 - 0.04 * k; blur += (1 - k) * 6; }
   let clip: string | undefined;
+  if (inT === 'whip') { const k = clamp(t, 0, TW); tx += dir * 1920 * (1 - k); mbN = Math.max(mbN, mb(k, 6)); }
   if (inT === 'panels') {
     // three vertical strips wipe in, alternating from top and bottom, staggered (like the collage)
     const parts = [0, 1, 2].map((i) => { const k = clamp(t, i * 0.09, i * 0.09 + 0.5, ex); const h = 1080 * k; const x0 = i * 640, x1 = x0 + 640 + (i < 2 ? 1 : 0); const y0 = i % 2 ? 1080 - h : 0; return `M${x0},${y0} H${x1} V${y0 + h} H${x0} Z`; });
@@ -270,21 +271,19 @@ const Fader: React.FC<{ el: Shot['el']; start: number; dur: number; inT: Trans; 
   // outgoing
   if (outT === 'push') { const o = clamp(t, dur - OUT, dur + 0.04, ei); op *= 1 - o; ty -= o * 30; sc *= 1 + 0.035 * o; }
 
+  if (outT === 'whip') { const k = clamp(t, dur, dur + TW); tx -= ndir * 1920 * k; mbN = Math.max(mbN, mb(k, 6)); }
   if (outT === 'zoom') { const k = clamp(t, dur, dur + TW, ei); sc *= 1 + 1.4 * k; op *= 1 - k; blur += k * 12; }
   const filt = [mbN ? `url(#mb${mbN})` : '', blur > 0.05 ? `blur(${blur.toFixed(1)}px)` : ''].join(' ').trim();
   return <AbsoluteFill style={{ opacity: op, transform: `translate(${tx}px, ${ty}px) scale(${sc})`, filter: filt || undefined, clipPath: clip }}>{el({ t, start, dur })}</AbsoluteFill>;
 };
 
 // ---- camera shake + flashes on impact moments (bang, rivets, the split)
+// gentle: a soft bump and sway, never a jitter (owner: no harsh shaking)
 const SHAKES = [
-  { at: W('c4_02', 'deep'), amp: 4, d: 2.2, hz: 9 },
-  { at: W('c4_03', 'crash'), amp: 10, d: 0.6, hz: 14 },
-  { at: W('c4_03', 'bang'), amp: 22, d: 0.9, hz: 13 },
-  { at: W('c4_04', 'popping'), amp: 7, d: 1.6, hz: 26 },
-  { at: W('c4_05', 'split'), amp: 30, d: 1.3, hz: 11 },
-  { at: W('c4_08', 'thrown'), amp: 9, d: 0.6, hz: 14 },
+  { at: W('c4_03', 'bang'), amp: 6, d: 0.8, hz: 5 },
+  { at: W('c4_05', 'split'), amp: 9, d: 1.1, hz: 4 },
 ];
-const FLASHES = [{ at: W('c4_03', 'bang'), o: 0.55 }, { at: W('c4_05', 'split'), o: 0.75 }];
+const FLASHES = [{ at: W('c4_03', 'bang'), o: 0.35 }, { at: W('c4_05', 'split'), o: 0.45 }];
 const IMPACTS = [W('c4_03', 'bang'), W('c4_05', 'split')];
 const nz = (x: number) => Math.sin(x * 1.7) * 0.5 + Math.sin(x * 3.1 + 1.3) * 0.3 + Math.sin(x * 5.3 + 2.1) * 0.2;
 const Camera: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -293,13 +292,13 @@ const Camera: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   for (const s of SHAKES) {
     if (t < s.at || t > s.at + s.d) continue;
     const e = Math.exp(-(t - s.at) / (s.d / 3));
-    x += s.amp * e * nz(t * s.hz); y += s.amp * 0.7 * e * nz(t * s.hz + 7); r += 0.04 * s.amp * e * nz(t * s.hz + 3); z = Math.max(z, 0.02 * (s.amp / 10) * e);
+    x += s.amp * e * nz(t * s.hz); y += s.amp * 0.7 * e * nz(t * s.hz + 7); r += 0.015 * s.amp * e * nz(t * s.hz + 3); z = Math.max(z, 0.012 * (s.amp / 10) * e);
   }
   let fl = 0;
   for (const q of FLASHES) if (t >= q.at && t < q.at + 0.6) fl = Math.max(fl, q.o * Math.exp(-(t - q.at) / 0.13));
   return (
     <AbsoluteFill>
-      <AbsoluteFill style={{ transform: `translate(${x}px, ${y}px) rotate(${r}deg) scale(${1 + z + (x || y ? 0.03 : 0)})` }}>{children}</AbsoluteFill>
+      <AbsoluteFill style={{ transform: `translate(${x}px, ${y}px) rotate(${r}deg) scale(${1 + z + (x || y ? 0.012 : 0)})` }}>{children}</AbsoluteFill>
       {fl > 0.01 && <AbsoluteFill style={{ background: '#FFFDF8', opacity: fl }} />}
     </AbsoluteFill>
   );
@@ -334,7 +333,8 @@ items.forEach((it, i) => {
   const pv = items[i - 1];
   if (!pv) { it.trans = 'push'; return; }
   if (it.key.startsWith('card-') || it.key === 'end') it.trans = 'zoom';
-  else if (it.full || pv.full) it.trans = i % 3 === 0 ? 'zoom' : 'panels';
+  else if (it.full && pv.full) it.trans = (['panels', 'whip', 'zoom'] as Trans[])[i % 3];
+  else if (it.full || pv.full) it.trans = i % 2 ? 'panels' : 'whip';
   else it.trans = 'push';
   it.dir = i % 4 === 1 ? -1 : 1;
 });
