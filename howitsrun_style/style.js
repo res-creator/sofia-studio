@@ -12,7 +12,9 @@ const { INK, px } = R;
 try { GlobalFonts.registerFromPath('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 'TypeW'); } catch (e) {}
 try { GlobalFonts.registerFromPath('/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf', 'Emoji'); } catch (e) {}
 
-const W = 1080, H = 1920, FPS = 30;
+// WIDE mode (YouTube long-form, 16:9): run with HIR_WIDE=1 → 1920x1080; default is the vertical 1080x1920 for Shorts/TikTok.
+const WIDE = process.env.HIR_WIDE === '1';
+const W = WIDE ? 1920 : 1080, H = WIDE ? 1080 : 1920, FPS = 30;
 // ---------- palette (channel colours + the scene colours used in the two reference episodes) ----------
 const PAL = {
   cream: '#FFFDF8', paper: '#F7F5F0', ink: INK, red: C.red, yellow: C.yellow, blue: '#4D8DFF', navy: '#2E3A59', green: '#2FA37E',
@@ -53,12 +55,12 @@ function label(ctx, s, x, y, u, o = {}) {
   ctx.restore();
 }
 // honesty / place stamp: small black plate with yellow text at the top of the 3:4 crop (always on). e.g. 'REAL STORY · RE-ENACTMENT', 'UK · 1992'
-function stampLabel(ctx, s = 'REAL STORY · RE-ENACTMENT', y = 262) {
+function stampLabel(ctx, s = 'REAL STORY · RE-ENACTMENT', y = WIDE ? 56 : 262) {
   ctx.save(); ctx.translate(W / 2, y); ctx.font = `28px ${F.black}`; const w = ctx.measureText(s).width + 40;
   CL.cutout(ctx, () => rr(ctx, -w / 2, -26, w, 50, 10), '#171717', { elev: 0.8, tex: 0 }); txt(ctx, s, 0, 10, 28, C.yellow); ctx.restore();
 }
 // frame-0 headline, "A vs. B" form (emu: ARMY vs. 20,000 EMUS): B sits on a red strip. a = alpha
-function headlineVs(ctx, A, B, a = 1, y = 420) {
+function headlineVs(ctx, A, B, a = 1, y = WIDE ? 200 : 420) {
   if (a <= 0) return; ctx.save(); ctx.globalAlpha *= a; ctx.translate(W / 2, y); ctx.rotate(-0.02);
   let HS = 80; ctx.font = `${HS}px ${F.black}`; let wa = ctx.measureText(A).width, wv = ctx.measureText(' vs. ').width, we = ctx.measureText(B).width + 28;
   const k = Math.min(1, 960 / (wa + wv + we + 70)); ctx.scale(k, k);
@@ -69,7 +71,7 @@ function headlineVs(ctx, A, B, a = 1, y = 420) {
   ctx.restore();
 }
 // frame-0 headline, two-line form (lawnchair: THE MAN WHO FLEW / IN A LAWN CHAIR): line 2 on a red strip
-function headline2(ctx, l1, l2, a = 1, y = 400) {
+function headline2(ctx, l1, l2, a = 1, y = WIDE ? 170 : 400) {
   if (a <= 0) return; ctx.save(); ctx.globalAlpha *= a; ctx.translate(W / 2, y);
   CL.cutout(ctx, () => rr(ctx, -440, -70, 880, 118, 16), PAL.cream, { elev: 1.4 }); fitTxt(ctx, l1, 0, 14, 70, INK, 820);
   ctx.translate(0, 124); ctx.rotate(0.025); CL.cutout(ctx, () => rr(ctx, -400, -62, 800, 110, 14), C.red, { elev: 1.2 }); fitTxt(ctx, l2, 0, 24, 78, PAL.cream, 740);
@@ -121,8 +123,8 @@ function questionCard(ctx, t, l1, l2, u, o = {}) {
 let TEX = null;
 function paper(ctx) { if (!TEX) TEX = K.paperTexture(W, H); ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalCompositeOperation = 'multiply'; ctx.globalAlpha = 0.26; ctx.drawImage(TEX, 0, 0); ctx.restore(); }
 // subtitles: mcd_ep1/engine.js drawSubtitles with these options (+ highlight words per episode)
-const SUBS = { y: 1565, size: 62, maxW: 820, x: 540 };
+const SUBS = WIDE ? { y: 985, size: 52, maxW: 1400, x: 960 } : { y: 1565, size: 62, maxW: 820, x: 540 };
 // colour grade presets used: 'day' (sky scenes), 'golden' (warm outdoor), 'office' (interiors); vignette 0.15–0.26
 const grade = (ctx, preset = 'day', v = 0.2) => LT.grade(ctx, preset, { vignette: v });
 
-module.exports = { W, H, FPS, PAL, FONT, RIM, txt, fitTxt, layer, cam, shake, pop, blink, bg, label, stampLabel, headlineVs, headline2, stampWord, bigX, calCard, report, questionCard, paper, SUBS, grade };
+module.exports = { WIDE, W, H, FPS, PAL, FONT, RIM, txt, fitTxt, layer, cam, shake, pop, blink, bg, label, stampLabel, headlineVs, headline2, stampWord, bigX, calCard, report, questionCard, paper, SUBS, grade };
