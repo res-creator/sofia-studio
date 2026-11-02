@@ -31,9 +31,10 @@ If the topic (or the same story with another angle) is here, say so and take the
 | `pepsi_ep15/` | `claude/friendly-clarke-mo1xcl` | Pepsi Harrier jet, John Leonard 1996 (**published — don't remake**) | `the_pepsi_fighter_jet.mp4` | 41.7 s |
 | `monopoly_ep16/` | `claude/ep16-monopoly-script` | McDonald's Monopoly game fraud ("the inside man") | `the_monopoly_inside_man.mp4` | 40.4 s |
 | `lawnchair_ep17/` | `claude/friendly-gauss-qry8ah` | Larry Walters' lawn-chair balloon flight, 1982 (**format reference**) | `the_man_who_flew_in_a_lawn_chair.mp4` | 36.3 s |
+| `pudding_ep18/` | `claude/sweet-brahmagupta-7uiuaz` | The Pudding Guy: David Phillips, 12,000+ pudding cups → 1,253,000 airline miles (1999), new format | `the_pudding_guy.mp4` | 57.3 s |
 Also: `covers_extra/` (covers only: credit card trap, gym no-shows — uploaded videos); `molasses_full/`, `molasses_calm/` (Boston Molasses Flood 1919,
 5.7 min long-form, branch `claude/vibrant-dijkstra-gnvqpv`). Not this channel: `survival/`, `whatif/`, `speak_*`, Sofia `ep/`–`ep3/`.
-Next topics in the owner's queue: The pudding guy (David Phillips, 1999) → Hoover free flights (UK, 1992) → Hanoi rat bounty (1902).
+Next topics in the owner's queue: Hoover free flights (UK, 1992) → Hanoi rat bounty (1902).
 Ideas backlog: `IDEAS.md`. Captions: `CAPTIONS.md`.
 
 ## Format
