@@ -334,7 +334,7 @@ items.forEach((it, i) => {
   else it.trans = 'push';
   it.dir = i % 4 === 1 ? -1 : 1;
 });
-const SWOOSH = items.filter((it) => it.trans === 'whip' || it.trans === 'slide' || it.trans === 'zoom').map((it) => ({ at: it.at, v: it.trans === 'slide' ? 0.1 : 0.16 }));
+const SWOOSH = items.filter((it) => it.trans === 'whip' || it.trans === 'slide' || it.trans === 'zoom').map((it) => ({ at: it.at, v: it.trans === 'slide' ? 0.07 : 0.11 }));
 
 // the hook photo needs the real local time for its Ken Burns move, then dissolves into the map
 const HookFade: React.FC<{ end: number; children: React.ReactElement }> = ({ end, children }) => {
@@ -360,7 +360,7 @@ export const Full: React.FC = () => (
     {(T.chapters as any[]).map((c) => <Leak key={c.id} at={c.card} />)}
     <Audio src={staticFile('audio/full_mix.wav')} />
     {SWOOSH.map((w, i) => <Sequence key={'w' + i} from={Math.max(0, Math.round((w.at - 0.28) * FPS))} durationInFrames={20}><Audio src={staticFile('audio/whoosh.wav')} volume={w.v} /></Sequence>)}
-    {IMPACTS.map((a, i) => <Sequence key={'i' + i} from={Math.round((a - 0.02) * FPS)} durationInFrames={36}><Audio src={staticFile('audio/impact.wav')} volume={0.22} /></Sequence>)}
+    {IMPACTS.map((a, i) => <Sequence key={'i' + i} from={Math.round((a - 0.02) * FPS)} durationInFrames={36}><Audio src={staticFile('audio/impact.wav')} volume={0.13} /></Sequence>)}
   </AbsoluteFill>
 );
 export const SHOT_COUNT = items.length;
