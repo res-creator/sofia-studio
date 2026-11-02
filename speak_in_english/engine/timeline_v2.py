@@ -98,6 +98,9 @@ if EPN == "photo":  # cover = her posing by the fountain, friend with phone; ONE
     hev = dict(cut=round(h0 - 0.05, 3)); cue("impact", h0 - 0.05, 0.7)
     for k in range(8): cue("shutter", h0 + 0.05 + 0.1 * k, 0.5)
     h0 = say("hook_h2", h0 + 1.1); hev["count"] = round(hev["cut"] + 0.1, 3); h0 += 0.5
+if EPN == "salo":  # cover = customs table: officer holds the newspaper brick at arm's length, her shocked, pug licking; cut to officer+salo close-up -> her shock -> pug licking -> cover
+    hev = dict(cu=0.42); h0 = say("hook_o", 0.5) + 0.2
+    hev["shock"] = round(h0 - 0.05, 3); cue("gasp", h0, 0.6); hev["dog"] = round(h0 + 0.8, 3); cue("slurp", h0 + 0.85, 0.6); hev["cover"] = round(h0 + 1.6, 3); h0 += 0.05
 e = say("hook", h0); hw = word_times("hook") or []
 def find(word):
     for w, a, b in hw:
@@ -105,7 +108,7 @@ def find(word):
     return None
 stamp_t = find(E["stamp_word"]) or (e - 1.0); cue("stamp", stamp_t, 0.8)
 t = e + 0.45
-scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "newhair", "idea") else {})))
+scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "newhair", "idea", "salo") else {})))
 
 TICKS = lambda back: [("tick", -back + 0.15 + 0.6 * k, 0.6) for k in range(int(back / 0.6))]
 if EPN == "gym":
@@ -581,6 +584,17 @@ elif EPN == "idea":   # meeting room (newhair layout): Her / Boss (seated) / Rya
         C1=[("c1_h", 0.22, []), ("c1_r", 0.18, [("BULBS", 0.9, 0), ("whoosh", 0.9, 0.4)]), ("c1_b", 0.15, [("clapclap", 0.1, 0.5), ("STAR", ("e", -0.9), 0), ("ding", ("e", -0.3), 0.7)]), ("c1_h2", 0.4, [("cricket", -0.3, 0.6)]), ("c1_nar", 1.0, []), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
         C2=[("c2_h", 0.4, []), ("c2_b", 1.6, [("THINK", -1.55, 0)] + TICKS(1.4) + [("MAIL", 0.35, 0), ("ding", 0.35, 0.7)]),
             ("c2_r", 0.55, [("gasp", -0.45, 0.6), ("FALL", -0.4, 0), ("thud", 0.0, 0.5), ("BOX", 0.4, 0)]), ("c2_h2", 0.85, [("STARE", -0.8, 0), ("rimshot", ("e", 0.35), 0.9), ("RAIN", 0.8, 0), ("tada", 0.85, 0.6)]), ("c2_nar", 1.2, [])],
+    )
+    INTRO = 1.15
+elif EPN == "salo":   # customs table (passport layout): her left, officer behind the table right, open suitcase between, pug on the floor. Plans: WIDE / CARD / HER / OFC + ROOM (C2 twist). NO black card
+    LV = dict(
+        A1=[("a1_h", 0.22, [("PIG", 0.0, 0)]), ("a1_o", 0.22, [("RADIO", 0.25, 0), ("radio", 0.3, 0.6), ("DOG", ("e", 0.1), 0), ("whoosh", ("e", 0.1), 0.5), ("bark", ("e", 0.45), 0.7), ("STAR", ("e", 0.9), 0), ("ding", ("e", 0.9), 0.5)]), ("a1_nar", 1.4, [])],
+        A2=[("a2_h", 0.22, []), ("a2_o", 0.22, [("WRITE", 0.0, 0), ("SUSP", ("e", 0.1), 0), ("stamp", ("e", 0.12), 0.9), ("STAR", ("e", 0.15), 0), ("JAR", ("e", 0.75), 0), ("clank", ("e", 0.8), 0.6)]), ("a2_nar", 1.3, [("buzz", 0.95, 0.5)]), ("a2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        B1=[("b1_h", 0.22, []), ("b1_o", 0.22, [("SNIFF", ("e", 0.05), 0), ("sniff", ("e", 0.05), 0.7), ("HOWL", ("e", 0.6), 0), ("howl", ("e", 0.6), 0.6)]), ("b1_o2", 1.5, [("SCALE", -0.75, 0), ("thud", -0.7, 0.6), ("ding", -0.4, 0.6)]), ("b1_nar", 0.9, [])],
+        B2=[("b2_h", 0.22, []), ("b2_o", 0.3, [("EARS", -0.3, 0), ("STAR", ("e", 0.2), 0), ("ding", ("e", 0.2), 0.5)]), ("b2_nar", 1.0, []), ("b2_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C1=[("c1_h", 0.22, []), ("c1_o", 0.22, [("FORM", 0.0, 0), ("pop", 0.05, 0.5), ("SIT", ("e", 0.05), 0), ("STAR", ("e", 0.3), 0), ("deflate", ("e", 0.3), 0.4)]), ("c1_nar", 1.0, []), ("c1_tip", 0.2, [("ding", 0.05, 0.6)])],
+        C2=[("c2_h", 0.4, []), ("c2_o", 2.3, [("THINK", -2.25, 0)] + TICKS(2.2) + [("LOOK", -0.9, 0)]),
+            ("c2_h2", 0.45, [("BREAD", -0.4, 0), ("pop", -0.35, 0.6), ("ROOM", ("e", 0.35), 0), ("whoosh", ("e", 0.3), 0.5), ("tada", ("e", 0.4), 0.6), ("munch", ("e", 0.85), 0.7), ("STAR", ("e", 0.35), 0)]), ("c2_nar", 1.65, [])],
     )
     INTRO = 1.15
 elif EPN == "seat":   # plane cabin: him in seat 14C (profile), her in the aisle. Plans: WIDE / CARD / HER / TOM, TICKET + MAP inserts; C2 ends on a black card
