@@ -7,7 +7,7 @@ i=0; a=0
 while [ $a -lt $TOTAL ]; do
   b=$((a+899)); [ $b -ge $TOTAL ] && b=$((TOTAL-1))
   f=out/parts/p$(printf %02d $i).mp4
-  if [ ! -s $f ]; then npx remotion render src/index.ts Film $f.tmp.mp4 --frames=$a-$b --muted --codec=h264 --crf=17 --concurrency=4 --log=error && mv $f.tmp.mp4 $f; fi
+  if [ ! -s $f ]; then npx remotion render src/index.ts Film $f.tmp.mp4 --frames=$a-$b --muted --codec=h264 --crf=17 --concurrency=4 --log=error && mv $f.tmp.mp4 $f; rm -rf /tmp/remotion-webpack-bundle-*; fi
   i=$((i+1)); a=$((b+1))
 done
 ls out/parts/p*.mp4 | sort | sed "s|out/parts/|file '|;s|$|'|" > out/parts/list.txt
