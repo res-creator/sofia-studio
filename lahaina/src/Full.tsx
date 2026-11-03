@@ -98,7 +98,7 @@ title('p1', (p) => <Sat {...p} keys={[{ t: 0, lon: -156.40, lat: 20.82, w: 50 },
 sh(L('p1_01'), (p) => <Sat {...p} keys={[{ t: 0, lon: -156.62, lat: 20.90, w: 30 }, { t: p.dur, lon: LAH.lon + 0.006, lat: LAH.lat, w: 5.5 }]} labels={[{ lon: LAH.lon - 0.004, lat: LAH.lat + 0.006, text: 'LAHAINA', at: 2.2, size: 40 }]} />);
 sh(L('p1_02'), stock('ancient_map', <><Stamp t={0} at={0} time="1820–1845" sub="Royal capital of the Kingdom of Hawaiʻi" /></>));
 sh(W('p1_02', 'royal'), stock('tropical_view'));
-sh(L('p1_03'), fema('f143'));
+sh(L('p1_03'), stock('waves_crash'));
 sh(W('p1_03', 'tiny') - 0.2, (p) => <Sat {...p} keys={[{ t: 0, lon: MOK.lon, lat: MOK.lat, w: 3.2 }, { t: p.dur, lon: MOK.lon, lat: MOK.lat, w: 2.2 }]} overlay={(sc, k, t) => { const [x, y] = sc(MOK.lon, MOK.lat); return <Marker x={x} y={y} t={t} at={0.6} label="MOKUʻULA" color={C.ember} />; }} tag="Site of the royal island · today a park" />);
 sh(L('p1_04'), stock('stream'));
 sh(W('p1_04', 'through'), stock('island_relief'));
@@ -222,8 +222,8 @@ sh(L('p6_01b'), stock('phone_dark', <>{dark(0.45)}<Sms t={0} at={0.3} from="TEXT
 sh(L('p6_02'), (p) => <Sat {...p} keys={[{ t: 0, lon: -156.34, lat: 20.81, w: 52 }, { t: p.dur, lon: -156.34, lat: 20.81, w: 48 }]} dim={0.35} />);
 sh(W('p6_02', 'eighty') - 0.4, (p) => (<><Sat {...p} keys={[{ t: 0, lon: -156.34, lat: 20.81, w: 48 }, { t: p.dur, lon: -156.34, lat: 20.81, w: 45 }]} dim={0.55} /><Count t={p.t} at={0.2} to={80} d={0.9} label="sirens on Maui" size={280} /></>));
 sh(L('p6_03'), (p) => (<><Sat {...p} keys={[{ t: 0, lon: -156.34, lat: 20.81, w: 45 }, { t: p.dur, lon: -156.34, lat: 20.81, w: 43 }]} dim={0.8} /><Slam t={p.t} at={loc(p, W('p6_03', 'not'))} text="0" size={520} color={C.red} glow /><Slam t={p.t} at={loc(p, W('p6_03', 'sounded'))} text="SOUNDED" size={120} y={310} /></>));
-sh(L('p6_04'), (p) => <Quote {...p} at={loc(p, W('p6_04', 'answered')) + 0.3} text="I **do not.**" who="Herman Andaya" role="Maui Emergency Management Administrator · Aug. 16, 2023 · asked if he regretted it" bg="stock/storm_ocean.mp4" />);
-sh(L('p6_05'), (p) => <Quote {...p} at={loc(p, W('p6_05', 'We')) - 0.1} text="We just **don't use sirens for fires.**" who="Herman Andaya" role="Aug. 16, 2023" bg="stock/clouds_thick.mp4" />);
+sh(L('p6_04'), (p) => <Quote {...p} at={loc(p, W('p6_04', 'answered')) + 0.3} text="I **do not.**" who="Herman Andaya" role="Maui Emergency Management Administrator · Aug. 16, 2023 · asked if he regretted it" bg="stock/tropical_view.mp4" />);
+sh(L('p6_05'), (p) => <Quote {...p} at={loc(p, W('p6_05', 'We')) - 0.1} text="We just **don't use sirens for fires.**" who="Herman Andaya" role="Aug. 16, 2023" bg="stock/clouds_fast.mp4" />);
 sh(L('p6_06'), (p) => <Quote {...p} text="Had we sounded the siren that night, we were afraid that people would have gone **mauka**… And if that's the case then they would have gone **into the fire.**" who="Herman Andaya" role="Aug. 16, 2023" bg="stock/flames6.mp4" />);
 sh(L('p6_07'), stock('window_sad', <>{dark(0.3)}<Stamp t={0} at={0.1} time="AUG 17" sub="Andaya resigns" /></>));
 sh(L('p6_08'), stock('sad_woman'));
@@ -307,7 +307,7 @@ sh(W('p9_08', 'The'), fema('f217', <Slam t={0} at={0.6} text="GROWING BACK" size
 // ================= P10 — ENDING (no title)
 sh(PART.p10.title_at, stock('storm_ocean'));
 sh(W('p10_01', 'freak') - 0.2, stock('clouds_fast'));
-sh(L('p10_02'), stock('hourglass_dark'));
+sh(L('p10_02'), stock('hourglass'));
 sh(L('p10_03'), stock('tall_dry_grass'));
 sh(W('p10_03', '2018') - 0.15, stock('flames2', <Stamp t={0} at={0} time="2018" />));
 sh(W('p10_03', 'wind') - 0.15, stock('clouds_thick'));
