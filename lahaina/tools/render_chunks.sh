@@ -5,10 +5,10 @@ mkdir -p out/parts
 TOTAL=$(python3 -c "import json,math;print(math.ceil(json.load(open('src/data/full.json'))['duration']*30))")
 i=0; a=0
 while [ $a -lt $TOTAL ]; do
-  b=$((a+1999)); [ $b -ge $TOTAL ] && b=$((TOTAL-1))
+  b=$((a+599)); [ $b -ge $TOTAL ] && b=$((TOTAL-1))
   f=out/parts/p$(printf %02d $i).mp4
   if [ ! -s $f ]; then
-    npx remotion render src/index.ts Full $f.tmp.mp4 --frames=$a-$b --muted --codec=h264 --crf=19 --concurrency=4 --log=error && mv $f.tmp.mp4 $f
+    npx remotion render src/index.ts Full $f.tmp.mp4 --frames=$a-$b --muted --codec=h264 --crf=19 --concurrency=2 --log=error && mv $f.tmp.mp4 $f
   fi
   i=$((i+1)); a=$((b+1))
 done
