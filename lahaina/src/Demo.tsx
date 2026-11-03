@@ -26,7 +26,7 @@ const USCG = 'Photo: U.S. Coast Guard · Public domain';
 const NASA = 'NASA Earth Observatory · Landsat 8 (USGS) · Aug. 8, 2023, 10:25 p.m. · Public domain';
 
 // rising embers over fire scenes
-const Embers: React.FC<{ t: number; n?: number; o?: number }> = ({ t, n = 46, o = 1 }) => (
+export const Embers: React.FC<{ t: number; n?: number; o?: number }> = ({ t, n = 46, o = 1 }) => (
   <AbsoluteFill style={{ pointerEvents: 'none', mixBlendMode: 'screen', opacity: o }}>
     <svg width="1920" height="1080">
       {Array.from({ length: n }).map((_, i) => {
@@ -233,7 +233,7 @@ const PowerSpark: React.FC<{ x: number; y: number; k: number; t: number; at: num
     </g>
   );
 };
-const SirenIcon: React.FC<{ t: number; on: boolean }> = ({ t, on }) => {
+export const SirenIcon: React.FC<{ t: number; on: boolean }> = ({ t, on }) => {
   const k = pe(t, 0, 0.5);
   return (
     <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', opacity: k }}>
@@ -268,7 +268,7 @@ const Shot: React.FC<{ s: Shot; dur: number }> = ({ s, dur }) => {
   return <AbsoluteFill style={{ opacity: fadeIn, transform: `scale(${zoom})` }}>{s.el({ t, dur, a: s.at + t })}</AbsoluteFill>;
 };
 
-export const Demo: React.FC = () => (
+export const Demo: React.FC<{ noAudio?: boolean }> = ({ noAudio }) => (
   <AbsoluteFill style={{ background: C.bg }}>
     {SHOTS.map((s, i) => {
       const end = i + 1 < SHOTS.length ? SHOTS[i + 1].at : DEMO_DUR;
@@ -276,7 +276,7 @@ export const Demo: React.FC = () => (
       return <Sequence key={i} from={from} durationInFrames={Math.max(1, to - from)}><Shot s={s} dur={end - s.at} /></Sequence>;
     })}
     <Grain o={0.1} />
-    <Audio src={staticFile('audio/demo_mix.wav')} />
+    {!noAudio && <Audio src={staticFile('audio/demo_mix.wav')} />}
   </AbsoluteFill>
 );
 export const SHOT_TIMES = SHOTS.map((s) => s.at);

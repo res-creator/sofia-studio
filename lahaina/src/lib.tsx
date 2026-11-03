@@ -65,7 +65,7 @@ export const Still: React.FC<SP & { src: string; cam?: Cam; grade?: string }> = 
 );
 export const Clip: React.FC<SP & { src: string; from?: number; cam?: Cam; rate?: number }> = (p) => (
   <AbsoluteFill style={{ overflow: 'hidden', background: C.bg }}>
-    <OffthreadVideo src={staticFile('vid/' + p.src)} startFrom={Math.round((p.from ?? 0) * FPS)} playbackRate={p.rate ?? 1} muted style={{ width: '100%', height: '100%', objectFit: 'cover', filter: GRADE, ...camStyle(p, { s0: 1.06, s1: 1.12, ...p.cam }) }} />
+    <OffthreadVideo src={staticFile(p.src.includes('/') ? p.src : 'vid/' + p.src)} startFrom={Math.round((p.from ?? 0) * FPS)} playbackRate={p.rate ?? 1} muted style={{ width: '100%', height: '100%', objectFit: 'cover', filter: GRADE, ...camStyle(p, { s0: 1.06, s1: 1.12, ...p.cam }) }} />
     <Tint />
   </AbsoluteFill>
 );
