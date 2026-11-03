@@ -13,3 +13,26 @@
 | 6 | People and rescue (2:00) | How did 115 people get off? | General alarm; Fleytas's Mayday; lifeboats; jumping; the Bankston (Capt. Landry) took 115; first USCG helicopter at about 11:10–11:22; 11 missing; the search until 7 p.m. April 23 | DVIDS 315069 (basket hoist, night), 315068 (medevac at Air Station New Orleans), 315070 / 315074 (fireboats), 315076 (patrol boat search, Apr 21); JIT hearing photos of survivors | "the rig burned for 36 hours" |
 | 7 | Why the BOP didn't stop it (2:00) | What did the last line of defense do? | EDS pressed at about 9:52–9:56, with no disconnect; the AMF/deadman; buckled drill pipe off-centre, so the blind shear ram couldn't seal (CSB); miswired solenoid / low battery (contested); not one single cause | Schematic BOP close-up (own reconstruction); CSB animation (8:33, 9:01–10:13); photos of the recovered BOP on the Q4000, Sept 4, 2010 (DVIDS 1098142/7) | "the rig sank on April 22" |
 | 8 | Aftermath and the answer (2:00) | What followed, and what changed? | Sank April 22; 87 days of flow; capped July 15, sealed Sept 19; 4.9M bbl (gov) vs 3.19M (court); BP plea (11 counts of seaman's manslaughter); MMS split; 2016 Well Control Rule | Daytime fire Apr 21 (DVIDS 83700), sinking-day photos Apr 22, in-situ burns, NASA MODIS slick (May 2010), Q4000, Discoverer Inspiration; return to Williams's own words | end card |
+
+---
+
+# Materials coverage check before the final narration (Nov 3, after the owner accepted opening v2)
+
+Owner's instruction: do not stretch the film. Where a block has only repeated hearing-room, fire or graphics shots, it stays short. Status of material per block (all items are in `materials.md`; V = viewed):
+
+| # | Block | Real material (V) | Honest substitutes | Verdict / length |
+|---|---|---|---|---|
+| 0 | Opening | Williams's voice (JIT part 1), night fire (315074, 315070), day fire (83700), hearing room, Commission p. 109 | map, one test card | 1:55 (test cut to three points) |
+| 1 | Rig and well | No PD photo of the rig at work. DD-III at the same site (1095288, labelled as another rig); Morel email (Commission p. 2) | schematic first time; roster of the decision-makers (no PD photos of Kaluza, Vidrine, Anderson, Revette) | weak footage → ~1:00 |
+| 2 | Barriers | Commission p. 4 (cement log team sent home) | schematic, one new layer per idea | ~0:35 |
+| 3 | The test in detail | Commission pp. 107, 119 (×2), 124; court finding on the "bladder effect" | schematic with gauges; roster card | mechanism the owner asked for → ~1:40 |
+| 4 | Missed signs | Hearing photos: Chris Haire (1095923), Randy Ezell (1095928); Ezell's account of Anderson's words (Commission p. 7) | schematic data captions | ~1:10 |
+| 5 | Blowout | **Williams's own testimony** (parts 1–2: hiss, engines, explosion, CO2, crawling, "a blowout"); Sandell photo (1095937) + quote; Landry quote | night fire footage labelled "after 11 p.m."; stills of Williams from the hearing video; black screen under the explosion account | strongest block → ~2:50 |
+| 6 | Abandon ship and rescue | **Williams on camera, sync** (part 3, 8:54–9:28); testimony on the raft, the jump, the rescue boat, Andrea Fleytas; rescue hoist (315069), medevac (315068), search (315076) | night fireboats once | strong → ~2:50 |
+| 7 | Why the BOP didn't stop it | Chris Pleasant photo (1095905); recovered BOP on the Q4000, Sept 4, 2010 (1098147) | BOP close-up reconstruction (one schematic, three states) | ~1:25 |
+| 8 | Aftermath | Day fire Apr 21; debris Apr 22 (272213); NASA May 17; controlled burn May 7; Discoverer Inspiration Jul 10 | one text card for the legal and regulatory outcomes | ~1:00 |
+| 9 | Answer and names | Commission p. vii | schematic + BOP recap; names card (Commission dedication) | ~1:00 |
+
+Result: about 15 minutes in total. Blocks 1–4 (about 4:20) are mostly schematic, documents and hearing photos. They are kept because the owner asked for the test details to appear in the main film, once the viewer knows the rig, the well and the people. Each schematic return adds one new state; nothing is repeated without new information. The burning rig appears only in blocks 5–6 (three different Coast Guard shots, each used once in the main film, each labelled with its real time), and in block 8 by daylight.
+
+Not covered by any public-domain picture (left as narration over substitutes): the rig before the accident, the decision-makers who died or did not testify on camera, the moment of the explosions, the lifeboats, Andrea Fleytas, the Bankston, the capping stack on July 15.

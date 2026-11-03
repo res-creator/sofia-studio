@@ -1,0 +1,62 @@
+KNOWN IN ADVANCE — upload kit (NOT published; for the owner's review)
+
+FILE
+final/dwh_full_film.mp4 (1920x1080, about 15:18) · captions final/dwh_full_film.srt
+THUMBNAIL: not made yet (next step, after the owner reviews the film)
+
+TITLE (recommended)
+The Test They Called a Success: Deepwater Horizon
+
+ALTERNATIVE TITLES
+- Deepwater Horizon: The Readings Said No. They Called It a Success
+- 1,400 PSI: How the Deepwater Horizon Well Was Judged Safe
+- Deepwater Horizon 2010: Why the Blowout Preventer Didn't Stop It
+
+DESCRIPTION
+On the evening of April 20, 2010, the crew of the Deepwater Horizon ran a test to check whether the Macondo well was sealed. The readings contradicted each other. Around 8 p.m., the test was declared a success. Less than two hours later, the well blew out, the rig exploded, and eleven men were killed.
+
+This documentary follows the evening in order: the rig and the well, the three barriers, the negative pressure test, the missed signs, the blowout, the escape and rescue, why the blowout preventer did not stop the flow, and what followed. It is told through Coast Guard archive footage, official investigation reports, and the testimony of Mike Williams, the rig's chief electronics technician, at the joint investigation hearing in July 2010.
+
+What was known: the well had been difficult, the cement had not been independently evaluated, and the test readings did not agree.
+What investigators concluded later: the pressure data were not ambiguous, and the warning signs were missed.
+
+In memory of Jason Anderson, Aaron Dale Burkeen, Donald Clark, Stephen Curtis, Gordon Jones, Roy Wyatt Kemp, Karl Dale Kleppinger Jr., Blair Manuel, Dewey Revette, Shane Roshto and Adam Weise.
+
+CHAPTERS
+0:00 April 20, 2010
+1:55 The rig and the well
+2:54 Three barriers
+3:27 The test
+5:08 The signs
+6:17 The blowout
+9:06 Abandon ship
+11:55 The last line of defense
+13:21 After
+14:19 The answer
+
+SOURCES (facts)
+- National Commission on the BP Deepwater Horizon Oil Spill, "Deep Water", report to the President (2011): https://www.govinfo.gov/content/pkg/GPO-OILCOMMISSION/pdf/GPO-OILCOMMISSION.pdf
+- National Commission, Chief Counsel's Report (2011): https://www.govinfo.gov/content/pkg/GOVPUB-PR-PURL-gpo4390/pdf/GOVPUB-PR-PURL-gpo4390.pdf
+- U.S. Chemical Safety Board, Macondo investigation report (2014–2016): https://www.csb.gov/macondo-blowout-and-explosion/
+- USCG / BOEMRE Joint Investigation Team reports, Vol. I and II (2011): https://www.bsee.gov
+- U.S. District Court E.D. La., MDL 2179, Phase One findings (2014) and Phase Two findings (2015)
+- U.S. Department of Justice and U.S. EPA case records; Federal Register 81 FR 25888 (2016)
+
+ARCHIVE AND CREDITS (public domain)
+- U.S. Coast Guard (DVIDS): joint investigation hearing, July 23, 2010 (testimony of Mike Williams); night and day fire footage, April 20–21, 2010; rescue and medevac footage; hearing photos by PO2 Thomas Blue; photos by PO3 Patrick Kelley and PO1 Thomas M. Blue
+- U.S. Navy (DVIDS): controlled burn, May 7, 2010, MC1 Jeffery Tilghman Williams
+- NASA Earth Observatory, MODIS Rapid Response Team
+- Map data: Natural Earth
+- Music (Mixkit Stock Music Free License): "Silent Descent", "Opalescent", "Vertigo" by Eugenio Mininni
+- Narration: AI voice (ElevenLabs). Schematics are simplified reconstructions, labelled on screen.
+
+#deepwaterhorizon #documentary #oilspill #engineering #history #knowninadvance
+
+TAGS
+deepwater horizon, deepwater horizon documentary, macondo well, bp oil spill, gulf of mexico oil spill, negative pressure test, blowout preventer, 2010 oil spill, transocean, offshore drilling disaster, mike williams deepwater horizon, engineering disaster, industrial disaster documentary
+
+SETTINGS CHECKLIST
+- Schedule: Thursday or Saturday, 2–3 p.m. US Eastern (10–11 p.m. Moscow). Category: Education. Audience: not made for kids.
+- Language: English. Upload final/dwh_full_film.srt as English captions.
+- Altered or synthetic content: the narration is an AI voice; follow YouTube's current disclosure rules. Reconstructions are labelled on screen.
+- The film describes deaths and injuries (testimony, no graphic images). Consider the age-restriction guidance; no graphic footage is used.

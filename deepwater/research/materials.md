@@ -107,3 +107,19 @@ All the DVIDS photos 6.8–6.13 are at `raw/dvids_photos/dvids_img_<ID>.jpg` (20
 - The CSB animation: there is no rights statement on csb.gov, it was made by a contractor, and its open and close contain BP's ROV video. Keep it for the full film only if rights are confirmed; otherwise use our own schematic.
 - BP's ROV video: copyrighted.
 - Commercial pre-accident photos of the rig.
+
+---
+# Added and used in the main film (Nov 3; all V = downloaded and viewed)
+
+| Fragment | Source | Source timecode / ID | Content / date (how confirmed) | Rights | Job |
+|---|---|---|---|---|---|
+| Williams testimony, parts 2–3 | DVIDS 91191 (part 2), 91195 (part 3), USCG JIT hearing, July 23, 2010 | part 2: 0:04–0:13, 1:56–2:09, 5:06–5:20, 5:36–5:45; part 3: 2:41–2:52, 3:07–3:11, 3:32–3:38, 4:06–4:31, 5:08–5:20, 5:43–5:46, 5:59–6:15, 6:31–6:44, 8:54–9:02, 9:16–9:28 | STT with speakers: `research/jit_0723_91191_stt.json`, `jit_0723_91195_stt.json`; every cut re-checked (`research/stt_check_film.json`) | PD | Williams's own account of the explosion, escape and rescue |
+| `w_sync1`, `w_sync2` | DVIDS 91195 | 8:53.98–9:02.30, 9:16.33–9:28.45 | **The only shot with Williams on camera** (olive polo, blue ribbon; his attorney in the suit beside him). Sync sound. | PD | Williams answers about the general alarm |
+| `w_still*.jpg` | DVIDS 91195 | frames at 8:35, 8:40, 8:47, 9:08, 9:22 | Stills from that shot, labelled as stills | PD | Picture under his voice |
+| Hearing photos | DVIDS 1095905 (Chris Pleasant, sworn in), 1095923 (Chris Haire), 1095928 (Miles "Randy" Ezell, right), 1095937 (Micah Sandell, right, May 29) | — | Captions on DVIDS ("Oil Spill Hearing", Kenner, La., May 28–29, 2010, PO2 Thomas Blue, USCG) | PD | Introduce each person when their action matters |
+| `rescue_basket` | DVIDS 315069 | 0:04–0:29 | Survivor hoisted from a support vessel, night of Apr 20–21 (vessel not named) | PD | Rescue |
+| `medevac` | DVIDS 315068 | 0:03–0:28 | Air Station New Orleans, Apr 21 | PD | Injured flown to shore |
+| `search_cutter` | DVIDS 315076 | 0:04–0:20 | Patrol boat searching, Apr 21 | PD | The search for the eleven |
+| `burn_may7` | DVIDS 85187 | 0:36–0:51 | Controlled burn, May 7, 2010 (U.S. Navy) | PD | The spill |
+| Photos | DVIDS 1095288, 272213, 1096998, 1098147; NASA EO May 17, 2010 | — | as in sections 2, 1.10, 6.12, 4.5, 6.4 above | PD | Rig type, sinking, capping, BOP evidence, slick |
+| Commission pages | `public/doc/comm-009/018/020/123/135/135b/140.jpg` | pp. vii, 2, 4, 107, 119 (×2), 124 | rendered from the GPO PDF, boxes from `tools/docbox.py` | US government work | Short proof of each key statement |

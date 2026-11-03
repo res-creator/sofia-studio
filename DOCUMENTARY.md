@@ -61,3 +61,6 @@ Todd `g14YnDYCsy3k7XLlcKlO`, `eleven_v4`, stability 0.45, similarity 0.8, style 
 - Run speech-to-text on every testimony cut. It shows clipped first and last words (e.g. "Sperry [Sun]", "[anymore]").
 - When an official report states a hindsight judgement (e.g. "a key error"), present it as the investigators' conclusion, not as what people knew at the time.
 - Owner preference: an opening of about 2 minutes is fine when it is built from a person's own testimony.
+- When the only footage of a witness is one short shot, use his on-camera answer once with its sync sound, and stills from that shot (labelled "still") under his other testimony. Under an account of something nobody filmed (an explosion inside the rig, the water at night), black with a "Voice: …" label is more honest than repeating fire footage.
+- Give the deeper technical explanation only after the viewer knows the rig, the well and the people; keep the opening to the contradiction and the decision (owner, Deepwater Horizon).
+- Long films: build the mix with cumulative-sum envelopes (np.convolve over 15 minutes is far too slow), render in 900-frame chunks, and never `pkill -f` a pattern that also matches your own shell command.

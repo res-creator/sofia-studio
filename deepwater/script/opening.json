@@ -1,5 +1,5 @@
 {
- "note": "Opening v2 (after critic). bite = original testimony audio, DVIDS 91190 (USCG/BOEMRE Joint Investigation hearing, July 23, 2010, Mike Williams), segments in source seconds. Previous version: script/opening_v1.json, vo_v1/.",
+ "note": "Opening v2 (after critic). bite = original testimony audio, DVIDS 91190 (USCG/BOEMRE Joint Investigation hearing, July 23, 2010, Mike Williams), segments in source seconds. Previous version: script/opening_v1.json, vo_v1/. v3 (owner, Nov 3): test explanation cut to three points; c03-c05 rewritten and re-recorded; details moved to the main film.",
  "seq": [
   [
    "bite",
@@ -31,19 +31,19 @@
   [
    "vo",
    "c03",
-   "Earlier that evening, the crew had tested whether the bottom of the well was sealed. If it was, they would see no pressure, and no flow.",
+   "Earlier that evening, the crew had tested whether the well was sealed.",
    0.6
   ],
   [
    "vo",
    "c04",
-   "On one line, nothing flowed. But the drill pipe, open to the same well, held at fourteen hundred psi.",
+   "The readings contradicted each other. One line showed no flow. The drill pipe, open to the same well, showed fourteen hundred psi.",
    0.6
   ],
   [
    "vo",
    "c05",
-   "The rig crew and BP's well site leaders discussed the readings for about an hour and a half. According to witness accounts, an explanation was offered: a so-called bladder effect. Around eight o'clock, the test was declared a success.",
+   "Around eight o'clock, the test was declared a success.",
    0.6
   ],
   [

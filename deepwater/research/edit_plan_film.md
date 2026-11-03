@@ -1,0 +1,15 @@
+# Main film — edit plan (as built in `src/Film.tsx`)
+
+Principle: introduce the place, the well and the people first; explain one term at a time on the same schematic; then let Williams carry the night in his own words; then the BOP; then the consequences and the answer.
+
+| Ch | Narration thought | Picture | What the viewer learns / why here |
+|---|---|---|---|
+| 1 | What the rig was; the well below it; late and over budget; who decided | sister rig photo (labelled) → schematic built layer by layer (riser, BOP, depth) → Commission p. 2 → roster card | where everything is before anything happens; the decision-makers by name |
+| 2 | Three barriers; the plan to swap mud for seawater; the cement log skipped | schematic: mud, cement, BOP glow, seawater → Commission p. 4 | why the cement had to be proven |
+| 3 | The negative test; no standard; 1,400 psi; "bladder effect" (per the well site leaders); court finding; kill line; declared a success; the Commission's later judgment; North Sea near miss | schematic with gauges → p. 119 → gauges rise → roster → p. 107 → court quote → kill line → stamp → p. 119 → p. 124 | the contradiction in detail, now that the viewer knows the parts; hindsight labelled as hindsight |
+| 4 | 8:02 displacement (Haire told the test was good); 8:50 influx; 9:01, 9:08, 9:10 signs; missed; Ezell's call; 9:30 pressure difference; 9:40 mud | Haire photo → schematic with flow and rising gauge, one caption per time → Ezell photo + quote → schematic | how the well flowed while everyone believed it was sealed |
+| 5 | Gas above the BOP; mud-gas separator; Sandell; Landry; Williams in his shop: hiss, engines, explosion, CO2, crawling, the blowout, the bridge | schematic → Sandell photo + quote → quote card → Williams stills → black under the explosion → "about 9:49" → still → night fire (labelled after 11 p.m.) | the blowout through one survivor's account, with no invented pictures |
+| 6 | General alarm (Williams on camera, sync); Mayday; lifeboats; the raft; "stay here and die or jump"; the water; rescue boat from the Bankston; Andrea Fleytas; 115 survivors; helicopters; eleven missing | night shots → sync shot → fireboats → stills → black → hoist → medevac → patrol boat → silence | how 115 got off, and what the rescue footage actually shows |
+| 7 | EDS by Pleasant; blind shear ram; deadman; CSB vs DNV/JIT; pod faults; too late anyway; BOP recovered | Pleasant photo → BOP reconstruction (normal, pods, buckled pipe + blades, faults) → schematic → BOP photo Sept 4 | what the last barrier should have done, its state, and what stopped it: no single cause |
+| 8 | Burned 36 h, sank Apr 22; 87 days; 4.9M vs 3.19M bbl; capped Jul 15, sealed Sep 19; pleas, court, regulator, 2016 rule | day fire → debris → NASA → controlled burn → Inspiration → text card | a few consequences, sourced |
+| 9 | Why judged safe; why the BOP did not stop it; the Commission's conclusion | schematic recap → BOP recap → Commission p. vii → names of the eleven (silence + music) | the direct answer to the opening question, no moral |

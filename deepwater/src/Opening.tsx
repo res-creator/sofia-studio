@@ -49,7 +49,7 @@ sh(B.w_call[1].at + 4.0, (p) => (<><Film {...p} src="night_wide.mp4" /><Label t=
 sh(S('c01') - 0.1, (p) => (<><Film {...p} src="jit_sworn.mp4" /><Label t={p.t} at={0.3} text="Joint investigation hearing · July 23, 2010" credit={USCG} top /><Lower t={p.t} at={0.5} name="Mike Williams" role="Chief electronics technician, Deepwater Horizon · being sworn in" /></>));
 sh(S('c02') - 0.2, (p) => <GulfMap {...p} />, 0.3);
 const T0 = S('c03') - 0.2;
-sh(T0, (p) => <TestCard t={p.t} expectAt={W('c03', 'If') - T0} killAt={W('c04', 'nothing') - T0} pipeAt={W('c04', 'held') - T0} talkAt={W('c05', 'discussed') - T0} declAt={W('c05', 'declared') - T0} />, 0.3);
+sh(T0, (p) => <TestCard t={p.t} killAt={W('c04', 'One') - T0} pipeAt={W('c04', 'drill') - T0} declAt={W('c05', 'declared') - T0} />, 0.3);
 sh(S('c06') - 0.2, (p) => <Doc {...p} src="comm-125.jpg" aspect={0.7} box={[0.1071, 0.1228, 0.8531, 0.1926]} zoomAt={0.4} zoom={2.2} />);
 sh(S('c07') - 0.2, (p) => (<><Film {...p} src="jit_wide1.mp4" /><Label t={p.t} at={0.3} text="Voice: Mike Williams · the hearing room, July 23, 2010" credit={USCG} /></>));
 const F0 = S('c08') - 0.2;
