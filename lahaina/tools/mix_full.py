@@ -27,7 +27,7 @@ cache = {}
 for i, (a, b, trk, off, g) in enumerate(secs):
     if trk not in cache:
         m = read(f'assets/music/mk{trk}.mp3', mono=False)
-        rms = np.sqrt((m ** 2).mean() + 1e-12); cache[trk] = m / rms * 0.08  # level-match tracks
+        rms = np.sqrt((m ** 2).mean() + 1e-12); cache[trk] = m / rms * 0.045  # level-match tracks (quieter bed: well under the voice)
     m = cache[trk]; i0 = max(0, int((a - XF / 2) * SR)); i1 = min(N, int((b + XF / 2) * SR)); L = i1 - i0
     s0 = int(off * SR); seg = m[s0:s0 + L]
     if len(seg) < L: seg = np.concatenate([seg, m[:L - len(seg)]])  # loop if the track is short
@@ -59,7 +59,7 @@ booms = boom(cue('h08', 'sounded') + 0.15, 0.12) + boom(cue('h14', 'Lahaina') - 
 # ---- ducking: music dips under the voice, more under archival speech inserts
 env = np.convolve(np.abs(vo), np.ones(int(0.3 * SR)) / int(0.3 * SR), 'same')
 env = np.clip(env / (np.percentile(env[env > 0.003], 60) + 1e-9), 0, 1).astype(np.float32)
-duck = 1 - 0.55 * env
+duck = 1 - 0.65 * env
 for x in T['inserts']: duck *= 1 - 0.5 * env_between(x['at'] - 0.3, x['at'] + x['dur'] + 0.3, 0.3)
 # swell during part titles (no voice)
 for p in T['parts']:
