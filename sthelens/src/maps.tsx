@@ -38,13 +38,18 @@ export const RegionMap: React.FC<SP> = ({ t, dur }) => {
   );
 };
 // relief overlays: 'place' (summit, Coldwater II, 6 mi, Spirit Lake), 'flank' (north flank), 'blast' (schematic direction)
-export const ReliefMap: React.FC<SP & { a: Cam; b: Cam; show: ('place' | 'flank' | 'blast')[]; ats?: Record<string, number> }> = ({ t, dur, a, b, show, ats = {} }) => {
+export const ReliefMap: React.FC<SP & { a: Cam; b: Cam; show: ('place' | 'flank' | 'blast' | 'positions' | 'avalanche')[]; ats?: Record<string, number> }> = ({ t, dur, a, b, show, ats = {} }) => {
   const R = M.relief; const c = useCam(t, dur, a, b); const { f, s } = tx(c, R.w, R.h); const p = (q: number[]) => f(q[0], q[1]);
   const [hx, hy] = p(R.summit), [cx, cy] = p(R.coldwater2), [lx, ly] = p(R.spirit_lake), [nx, ny] = p(R.north_flank);
   const at = (k: string, d: number) => pe(t, ats[k] ?? 0.3, d);
   const kPlace = show.includes('place') ? at('place', 0.6) : 0, kLine = show.includes('place') ? pe(t, (ats.place ?? 0.3) + 0.5, 1.0) : 0;
   const kFlank = show.includes('flank') ? at('flank', 0.7) : 0, kBlast = show.includes('blast') ? at('blast', 1.4) : 0;
   const ex = hx + (cx - hx) * kLine, ey = hy + (cy - hy) * kLine;
+  const RR = R as any;
+  const kPos = show.includes('positions') ? at('positions', 0.6) : 0, kAv = show.includes('avalanche') ? at('avalanche', 2.2) : 0;
+  const [c1x, c1y] = p(RR.coldwater1), [mx, my] = p(RR.martin), [tx2, ty2] = p(RR.truman);
+  const av = (RR.avalanche as number[][]).map((q) => p(q));
+  const avN = Math.max(2, Math.ceil(av.length * kAv)); const avPts = av.slice(0, avN).map(([x, y]) => `${x},${y}`).join(' ');
   const rpx = 1.3 / R.km_per_px / R.w * R.w * s; // ~1.3 km radius in screen px (flank highlight)
   // blast fan: from the north flank toward the north, ~6 mi long (schematic)
   const L = Math.hypot(cx - hx, cy - hy) * 1.15 * kBlast; const ang0 = Math.atan2(cy - hy, cx - hx);
@@ -54,21 +59,26 @@ export const ReliefMap: React.FC<SP & { a: Cam; b: Cam; show: ('place' | 'flank'
       <Base src="relief_pre1980.jpg" iw={R.w} ih={R.h} c={c} />
       <svg width={1920} height={1080} style={{ position: 'absolute' }}>
         <defs><marker id="ah" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill={RED} /></marker></defs>
+        {kAv > 0 && <polyline points={avPts} fill="none" stroke="#B9A88A" strokeWidth={26} strokeLinecap="round" strokeLinejoin="round" opacity={0.75} />}
+        {kAv > 0.6 && <Txt x={av[4][0]} y={av[4][1] + 60} text="DEBRIS AVALANCHE · NORTH FORK TOUTLE (approx.)" o={pe(t, (ats.avalanche ?? 0.3) + 1.4, 0.6)} size={28} color="#E8DCC4" anchor="middle" />}
         {kBlast > 0 && fan.map(([x, y], i) => <line key={i} x1={hx} y1={hy} x2={x} y2={y} stroke={RED} strokeWidth={i === 2 ? 9 : 6} opacity={0.85} markerEnd="url(#ah)" />)}
         {kFlank > 0 && <ellipse cx={nx} cy={ny} rx={rpx * 1.1} ry={rpx * 0.75} fill="rgba(232,163,61,0.18)" stroke={ACC} strokeWidth={4} strokeDasharray="14 10" opacity={kFlank} />}
         {kFlank > 0 && <Txt x={nx + rpx * 1.25} y={ny + 10} text="NORTH FLANK" o={kFlank} size={36} color={ACC} />}
-        <Dot x={hx} y={hy} o={Math.max(kPlace, kFlank, kBlast)} r={9} color={INK} />
-        <Txt x={hx + 26} y={hy + 54} text={`SUMMIT · ${R.summit_ft.toLocaleString('en-US')} FT`} o={Math.max(kPlace, kFlank)} size={28} />
+        <Dot x={hx} y={hy} o={Math.max(kPlace, kFlank, kBlast, kPos, kAv)} r={9} color={INK} />
+        <Txt x={hx + 26} y={hy + 54} text="SUMMIT · 9,677 FT (before)" o={Math.max(kPlace, kFlank, kPos)} size={28} />
         {kPlace > 0 && <line x1={hx} y1={hy} x2={ex} y2={ey} stroke={INK} strokeWidth={3} strokeDasharray="10 8" opacity={0.9} />}
         {kPlace > 0 && <Txt x={(hx + cx) / 2 - 24} y={(hy + cy) / 2} text="≈ 6 MILES" o={kLine} size={30} anchor="end" />}
-        <Dot x={cx} y={cy} o={Math.max(kPlace, kBlast)} r={9} />
-        <Txt x={cx - 24} y={cy - 26} text="COLDWATER II · USGS POST" o={Math.max(kPlace, kBlast)} size={30} color={ACC} anchor="middle" />
+        <Dot x={cx} y={cy} o={Math.max(kPlace, kBlast, kPos)} r={9} />
+        <Txt x={cx - 24} y={cy - 26} text={kPos > 0 ? 'COLDWATER II · DAVID JOHNSTON' : 'COLDWATER II · USGS POST'} o={Math.max(kPlace, kBlast, kPos)} size={30} color={ACC} anchor="middle" />
+        {kPos > 0 && <><Dot x={c1x} y={c1y} o={kPos} r={8} /><Txt x={c1x} y={c1y + 46} text="COLDWATER I · REID BLACKBURN" o={kPos} size={26} color={ACC} anchor="middle" />
+          <Dot x={mx} y={my} o={pe(t, (ats.positions ?? 0.3) + 0.4, 0.5)} r={8} /><Txt x={mx + 22} y={my - 18} text="GERRY MARTIN" o={pe(t, (ats.positions ?? 0.3) + 0.4, 0.5)} size={26} color={ACC} />
+          <Dot x={tx2} y={ty2} o={pe(t, (ats.positions ?? 0.3) + 0.8, 0.5)} r={8} color={INK} /><Txt x={tx2 + 20} y={ty2 + 40} text="HARRY TRUMAN'S LODGE" o={pe(t, (ats.positions ?? 0.3) + 0.8, 0.5)} size={26} /></>}
         <Txt x={lx} y={ly + 8} text="SPIRIT LAKE" o={kPlace * 0.9} size={26} anchor="middle" weight={600} />
         {/* north arrow */}
         <g opacity={0.85} transform="translate(1810,120)"><path d="M0,-40 L14,10 L0,0 L-14,10 Z" fill={INK} /><Txt x={0} y={42} text="N" o={1} size={28} anchor="middle" /></g>
       </svg>
       {kBlast > 0 && <div style={{ position: 'absolute', left: 70, top: 64, fontFamily: SANS, fontWeight: 700, fontSize: 24, letterSpacing: 3, color: RED, opacity: kBlast, textShadow: '0 2px 8px #000' }}>SCHEMATIC · DIRECTION OF THE BLAST</div>}
-      <div style={{ position: 'absolute', left: 70, bottom: 56, fontFamily: SANS, fontWeight: 500, fontSize: 22, color: 'rgba(242,239,233,0.75)', textShadow: '0 2px 8px #000' }}>Terrain before 1980: USGS elevation model (doi:10.5066/P91W7C1L) · positions approximate</div>
+      <div style={{ position: 'absolute', left: 70, bottom: 56, fontFamily: SANS, fontWeight: 500, fontSize: 22, color: 'rgba(242,239,233,0.75)', textShadow: '0 2px 8px #000' }}>Terrain before 1980 (USGS) · positions approximate</div>
     </AbsoluteFill>
   );
 };

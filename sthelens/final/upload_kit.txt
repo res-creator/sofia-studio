@@ -1,0 +1,62 @@
+KNOWN IN ADVANCE — upload kit (not published; for the owner's review)
+
+TITLE
+The Morning Mount St. Helens Exploded Sideways
+
+ALTERNATIVE TITLES
+- Mount St. Helens 1980: The Mountain That Exploded Sideways
+- They Measured the Bulge Every Day. Then Mount St. Helens Exploded Sideways
+
+DESCRIPTION
+For two months in 1980, scientists watched the north side of Mount St. Helens swell outward, measuring it every few days. On the morning of May 18, the bulge gave way, and the eruption that followed blasted sideways across 230 square miles.
+
+This documentary follows the event in order: the first earthquakes, the 1978 hazard report, the bulge, the Red Zone, the last evening at Coldwater II, the collapse and lateral blast, the people caught in it, the rescues, and what changed afterward. It is told through USGS archive film, photographs, documents, and the voices of the USGS scientists who were there.
+
+What was known: the volcano was dangerous, and its north flank was unstable.
+What was not known: when it would fail, and how violent the sideways blast would be.
+
+CHAPTERS
+0:00 May 17, 1980
+1:30 The mountain wakes
+2:37 The 1978 warning
+3:17 The bulge
+4:40 Who could be near the mountain
+5:19 The last evening
+6:10 How a mountain explodes sideways
+8:17 Mud and ash
+8:50 The people
+10:29 What changed
+
+SOURCES (facts)
+- USGS Professional Paper 1249, "The First 100 Days of Mount St. Helens" (1981): https://pubs.usgs.gov/pp/1249/report.pdf
+- USGS Professional Paper 1250, "The 1980 Eruptions of Mount St. Helens, Washington" (1981): https://pubs.usgs.gov/pp/1250/report.pdf
+- Crandell & Mullineaux, USGS Bulletin 1383-C, "Potential hazards from future eruptions of Mount St. Helens" (1978): https://pubs.usgs.gov/bul/1383c/report.pdf
+- USGS Fact Sheet 036-00 and USGS Cascades Volcano Observatory pages on the 1980 eruption
+- USGS Fact Sheet 115-97, Mount Pinatubo
+- Full fact sheet with page references: sthelens/research/facts.md in the project folder
+
+ARCHIVE AND CREDITS (all public domain or CC0)
+- U.S. Geological Survey:
+  - historical 16 mm and Super 8 film of Mount St. Helens, 1980 (data release doi:10.5066/P94E623Y, CC0);
+  - film by Don Swanson, May 18, 1980;
+  - "Mount St. Helens: May 18, 1980" (USGS CoreCast, 2010), with interviews of Norm Banks, C. Dan Miller and Don Swanson;
+  - photographs by Harry Glicken, Robert Tilling, Austin Post, David Frank, Peter Lipman, Donald Swanson, Lyn Topinka and John Pallister;
+  - pre-1980 elevation model (doi:10.5066/P91W7C1L, CC0).
+- National Archives:
+  - U.S. Air Force photographs by MSgt Robert Leach (304th Aerospace Rescue and Recovery Squadron);
+  - U.S. Forest Service collection, including photographs by Walt Conner (FEMA) and the U.S. Army Corps of Engineers.
+- Map data: Natural Earth.
+- Music (Mixkit Stock Music Free License): "Silent Descent", "Vertigo", "Opalescent" and "Voxscape" by Eugenio Mininni; "Echoes" by Andrew Ev; "Ode to Loneliness" by Diego Nava; "Staring at the Night Sky" by Alejandro Magaña (A. M.).
+- Narration: AI voice (ElevenLabs).
+- The collapse sequence is a simplified reconstruction based on USGS descriptions, not archive footage. Map positions marked "approx." are approximate.
+
+#mountsthelens #volcano #documentary #history #1980 #knowninadvance
+
+TAGS
+mount st helens, mount st helens 1980, mount st helens eruption, lateral blast, david johnston, volcano documentary, usgs, 1980 eruption, coldwater ii, johnston ridge, spirit lake, harry truman, natural disaster documentary, volcanic eruption, washington state history
+
+SETTINGS CHECKLIST
+- Language: English. Upload final/msh_full_film.srt as English captions.
+- Altered or synthetic content: the narration is an AI voice; follow YouTube's current disclosure rules. The reconstruction is labelled on screen.
+- Category: Education. Audience: not made for kids.
+- If a Content ID claim appears on the music, dispute it with the Mixkit licence. The USGS film has its own quiet music bed under the interviews (credited "Alon Levitan" in the film; no separate licence is stated). This is a possible, low risk of a claim.

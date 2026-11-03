@@ -1,6 +1,6 @@
 # Sofia Studio — notes for the next session
 
-> **YouTube disaster documentaries (16:9, English):** read `DOCUMENTARY.md` first — editing principles (material first, every shot has a job, honest labels, original sound). Current project: `sthelens/` (Mount St. Helens 1980, opening test). Previous: `lahaina/` (published as is).
+> **YouTube channel KNOWN IN ADVANCE (disaster documentaries, 16:9, English):** read `DOCUMENTARY.md` first — editing principles (material first, every shot has a job, honest labels, original sound). Current project: `sthelens/` (Mount St. Helens 1980, full film: `src/Film.tsx`, `tools/build_film.py`, `tools/render_film.sh`). Previous: `lahaina/` (published as is).
 
 > **English TikTok channel (money/business stories):** read `CHANNEL.md` first — it has the rules, pipeline, voice and checklist for those episodes. The notes below are for the Sofia kids' channel.
 

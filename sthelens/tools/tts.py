@@ -2,7 +2,7 @@
 # -> vo/<id>.mp3 + vo/<id>.words.json (word timings). Prev/next text passed for natural continuity.
 import json, subprocess, base64, time, os, sys
 V = 'g14YnDYCsy3k7XLlcKlO'
-L = json.load(open('script/opening.json')); only = set(sys.argv[1:])
+L = [[it[1], it[2]] for it in json.load(open('script/film.json'))['seq'] if it[0] == 'vo']; only = set(sys.argv[1:])
 for k, (i, text) in enumerate(L):
     out = f'vo/{i}'
     if (only and i not in only) or (not only and os.path.exists(out + '.words.json')): continue

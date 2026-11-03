@@ -1,4 +1,6 @@
-# Disaster documentary channel (YouTube, 16:9) — editing principles
+# KNOWN IN ADVANCE — disaster documentary channel (YouTube, 16:9) — editing principles
+
+Channel name: **Known in Advance** (@KnownInAdvance). The name means the warning signs were there; it does NOT mean participants knew the exact outcome. Always keep apart what was observed at the time, what was forecast, and what became clear only afterward.
 
 These apply to every new documentary episode, starting with `sthelens/`. They are adopted from the owner's review of Lahaina and the reference "Katrina 2005" (Dark Horizon); see `sthelens/research/reference_analysis.md`. Owner talks Russian; films are in American English.
 

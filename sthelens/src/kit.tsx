@@ -56,3 +56,24 @@ export const Lower: React.FC<{ t: number; at?: number; name: string; role: strin
     </div>
   );
 };
+// Document: the real page in context first, then a slow move to the lines that matter; the rest dims.
+// box = [x0, y0, x1, y1] in page fractions (from pdftotext -bbox); zoomAt = local time when the move starts
+export const Doc: React.FC<SP & { src: string; aspect: number; box: number[]; zoomAt?: number; zoom?: number }> = (p) => {
+  const H = 1000, W = H * p.aspect; // page drawn 1000 px tall, centred
+  const zk = pe(p.t, p.zoomAt ?? 1.2, 1.6); const z = 1 + ((p.zoom ?? 2.3) - 1) * zk;
+  const [x0, y0, x1, y1] = p.box; const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+  const tx = (0.5 - cx) * W * zk, ty = (0.5 - cy) * H * zk;
+  const dim = 0.6 * pe(p.t, (p.zoomAt ?? 1.2) + 1.0, 0.6);
+  return (
+    <AbsoluteFill style={{ background: '#16171A', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', left: 960 - W / 2, top: 40, width: W, height: H, transform: `scale(${z}) translate(${tx}px, ${ty}px)`, transformOrigin: '50% 50%', boxShadow: '0 20px 60px rgba(0,0,0,0.6)' }}>
+        <Img src={staticFile('doc/' + p.src)} style={{ width: '100%', height: '100%' }} />
+        <svg width={W} height={H} style={{ position: 'absolute', left: 0, top: 0 }}>
+          <defs><mask id={'m' + p.src}><rect width={W} height={H} fill="white" /><rect x={x0 * W - 8} y={y0 * H - 6} width={(x1 - x0) * W + 16} height={(y1 - y0) * H + 12} fill="black" /></mask></defs>
+          <rect width={W} height={H} fill="black" opacity={dim} mask={`url(#m${p.src})`} />
+          <rect x={x0 * W - 8} y={y0 * H - 6} width={(x1 - x0) * W + 16} height={(y1 - y0) * H + 12} fill="none" stroke={ACC} strokeWidth={3 / z} opacity={pe(p.t, (p.zoomAt ?? 1.2) + 1.2, 0.5)} />
+        </svg>
+      </div>
+    </AbsoluteFill>
+  );
+};

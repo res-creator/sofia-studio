@@ -46,3 +46,63 @@
 ## Notes and checks
 - Banks says "about six feet a day". The USGS caption says "up to five feet (1.5 m) per day". The narration avoids the number and lets Banks speak; the full film should mention the USGS figure.
 - Coldwater II position: approximate (Johnston Ridge, ~6 mi from the summit). It is marked "positions approximate" on the map.
+
+---
+# Full film — additional materials used (all V = downloaded and viewed)
+
+**USGS film fragments** (data release doi:10.5066/P94E623Y, CC0; cut by `tools/prep_clips2.sh` with exact source timecodes):
+
+| Fragment | Source file · timecodes | Content / date (USGS CSV + viewing) | Used for |
+|---|---|---|---|
+| `m28_plume` | `1980_03_28_USGS_MSH_FW` 2:41–3:37 | Ash rising through the clouds, Mar 28, 1980 (aerial) | Block 1: the first eruptions |
+| `c7_flank`, `c7_hoblitt`, `c7_field` | `Date_Unk_Pre_1980_05_18_…_Clip_7` 0:14–0:51 / 1:48–1:57 / 1:56–2:20 | North flank with ash streaks from the plane; Rick Hoblitt (named in the CSV); field crew and vehicles on snow — before May 18 | Blocks 2–3 |
+| `c9_flank` | `…_Clip_9` 2:20–2:40 | Summit and fractured north flank, before May 18 | Block 3 |
+| `a24_*` | `1980_05_24-1980_05_26_Est_USGS_MSH_FW`: heli 0:12, blowdown 1:44, phreatic 4:43, steam 5:43, logs 6:20, forest 6:35, camera 7:00, lake 7:14 | After the eruption, est. May 24–26: helicopter staging area, blowdown, steam explosions, camera station, Spirit Lake | Blocks 6, 8, 9 |
+| `a28_*` | `1980_05_28_USGS_MSH_FW`: forest 0:09, heli 1:15, river 1:35, blowdown 2:05, lake 3:12, hummocks 4:03, scientists 4:32, stumps 5:00, blowdown2 6:10, logs 7:28, Toutle 8:10 | May 28: blast zone, Spirit Lake full of logs, avalanche hummocks, scientists by the helicopter, mudflow deposits of the North Fork Toutle | Blocks 6, 7, 9 |
+| `sw_col2`, `sw_col3` | Swanson film 13:56–14:22, 10:40–11:00 | May 18, ~9:30 a.m.–12:30 p.m.; labelled as later in the morning | Block 6 |
+| Removed | `c7_slush` | The timecode was outside the clip, so it was replaced by a David Frank photo | — |
+
+**USGS interview bites** (USGS CoreCast film, 2010, public domain), times in the source:
+
+| Bite | In–out | Speaker | Statement |
+|---|---|---|---|
+| `cc_swanson_local` | 56.3–65.0 | Don Swanson | Deformation only on the north side |
+| `cc_miller_crypto` | 65.1–93.6 | Dan Miller | Magma rising, the cryptodome, the north side pushed out (with the film's own USGS diagrams) |
+| `cc_miller_uncork` | 248.5–261.8 | Dan Miller | "a landslide basically uncorked this pressurized body of magma… the lateral blast" |
+| `cc_miller_scale` | 275.7–288.1 | Dan Miller | 230 sq mi in 5–9 minutes |
+| `cc_swanson_plane` | 231.5–241.1 | Don Swanson | "Dave just couldn't have survived this… ash headed in his direction" |
+| `cc_miller_dave` | 159.7–177.6 | Dan Miller | "pretty certain that something terrible had happened to Dave" |
+| `cc_miller_swarm` | 309.2–324.5 | Dan Miller | Scientists in the blast zone |
+| `cc_miller_forecast` | 367.2–382.1 | Dan Miller | Later eruptions forecast; evacuating the crews |
+| `cc_banks_learned` | 345.6–365.7 | Norm Banks | Lessons for working with civil defense, the public and the press |
+
+**Documents** (US government works):
+- B1383C pp. C2 and C25 (`public/doc/b1383c-09.jpg`, `-32.jpg`).
+- PP1249 pp. 35, 41 and the dedication (`public/doc/pp1249-047/053/007.jpg`). Highlighted lines are from `pdftotext -bbox`.
+- Pages that contain copyrighted photos are not shown in full. PP1249 p. 42 (Stoffel photo) and the B1383C frontispiece (Delano) are not used.
+
+**USGS photos** (usgs.gov media pages, "Public Domain"):
+- view NE, small phreatic eruption (D. Swanson);
+- graben and new crater (P. Lipman);
+- steam-blast eruption, Apr 6;
+- small phreatic eruption, spring;
+- eruption column, May 18 (A. Post);
+- Mount St. Helens soon after May 18 from Johnston's Ridge (H. Glicken), the same viewpoint as the May 17 photo;
+- Muddy River bridge (L. Topinka);
+- ash on a farm in Connell;
+- Spirit Lake and the devastated forest;
+- view of the first crater (D. Frank);
+- evening view from Johnston Ridge Observatory (J. Pallister);
+- Pinatubo eruption column, June 12, 1991 (`vhp_img157`; a sibling USGS page with the same caption says "Public Domain").
+
+**National Archives** (see `materials_people.md`, "Unrestricted"):
+- USAF photos by MSgt Robert Leach (304th ARRS): `DF-ST-82-04210/04212/04214`.
+- USFS collection: search landing, May 28 (`529556`); mudflow house, May 27, USACE (`529692`); Blackburn's car, June 11, Walt Conner/FEMA (`529683`); blown-down timber and logging equipment, Walt Conner (`529715`).
+  - The USFS prints show their typed captions. The search photo looks like a halftone print, so its origin is a medium-level risk; it is noted in the upload kit.
+
+**Not available (honest substitutes):**
+- The collapse itself: copyrighted Rosenquist/Ronnholm photos → labelled reconstruction.
+- Harry Truman and the lodge: no PD photo → text card with source.
+- Survivor pickups: no film or photo → USAF rescue-helicopter photos with captions.
+- The Moores' and Scymanky's own photos → text card / narration only.
+- TV news of 1980: copyrighted → not used.
