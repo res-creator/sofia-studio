@@ -38,13 +38,13 @@ sh(S('n07') - 0.1, (p) => (<><Photo {...p} src="mount-st-helens-may-17-1980-one-
 // 12 — the radio message (text only; no recording is used or imitated)
 sh(E.radio.at, (p) => (
   <AbsoluteFill style={{ background: BG, alignItems: 'center', justifyContent: 'center' }}>
-    <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: 84, color: INK, opacity: pe(p.t, 0.15, 0.5) }}>“Vancouver! Vancouver! This is it!”</div>
-    <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 30, color: 'rgba(242,239,233,0.75)', marginTop: 34, opacity: pe(p.t, 0.8, 0.5) }}>David Johnston’s last radio message, 8:32 a.m. — as reported by the USGS</div>
+    <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: 84, color: INK, opacity: pe(p.t, 0.0, 0.35) }}>“Vancouver! Vancouver! This is it!”</div>
+    <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 34, color: 'rgba(242,239,233,0.85)', marginTop: 34, opacity: pe(p.t, 0.5, 0.5) }}>David Johnston’s last radio message, 8:32 a.m. — as reported by the USGS</div>
   </AbsoluteFill>
 ));
 // 13–14 — two colleagues, in their own words
 sh(B.cc_miller.at, (p) => (<><Film {...p} src="cc_miller.mov" from={B.cc_miller.from} /><Lower t={p.t} at={0.3} name="Dan Miller, USGS geologist" role="Driving north on Interstate 5 that morning" /></>));
-sh(B.cc_swanson.at, (p) => (<><Film {...p} src="cc_swanson.mov" from={B.cc_swanson.from} /><Lower t={p.t} at={0.2} name="Don Swanson, USGS geologist" role="In Vancouver, Washington, at 8:32 a.m." /></>));
+sh(B.cc_swanson.at, (p) => (<><Film {...p} src="cc_swanson.mov" from={B.cc_swanson.from} /><Lower t={p.t} at={0.2} name="Voice: Don Swanson, USGS geologist" role="In Vancouver, Washington, at 8:32 a.m. · photo: David Johnston, May 17" /></>));
 // 15–16 — what Swanson filmed later that morning; then the direction of the blast (schematic)
 sh(S('n10') - 0.1, (p) => (<><Film {...p} src="sw_column.mp4" /><Label t={p.t} at={0.3} text="Filmed by Don Swanson from a USGS aircraft, about 9:30 a.m.–12:30 p.m., May 18" credit="USGS film, public domain" /></>));
 sh(W('n10', 'north') - 0.2, (p) => (<><Film {...p} src="sw_mountain.mp4" /><Label t={p.t} at={0.3} text="The volcano later that morning, its north side gone · Don Swanson, USGS" credit="USGS film, public domain" /></>));
