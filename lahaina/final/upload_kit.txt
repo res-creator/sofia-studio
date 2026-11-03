@@ -1,0 +1,74 @@
+LAHAINA 2023 — YouTube upload kit
+=================================
+
+FILES
+- Video (YouTube): final/lahaina_2023.mp4  (1920x1080, 30 fps, H.264 yuv420p + AAC, ~12:53)
+- Video (phone preview): final/lahaina_2023_phone.mp4 (720p)
+- Thumbnail: final/thumbnail.jpg (1280x720)
+- Subtitles: final/lahaina_2023.srt (English)
+
+TITLE (pick one; first recommended)
+1) The Fire That Silenced an Entire Town — Lahaina 2023
+2) 80 Sirens. Not One Sounded. — The Lahaina Fire 2023
+3) The Deadliest U.S. Wildfire in 100 Years — Maui 2023
+
+DESCRIPTION
+On August 8, 2023, a fire that had been declared contained came back and destroyed the historic town of Lahaina, Maui, in a single afternoon. 102 people died. More than 2,000 buildings were damaged or destroyed.
+
+Maui has 80 outdoor warning sirens. Not one of them sounded.
+
+This documentary follows the whole day, minute by minute: the dry grass, the warnings nobody put together, the morning fire, the rekindle, the gridlock, the people who ran into the ocean, the silent sirens, the hydrants that ran dry, and what the investigations found.
+
+CHAPTERS
+0:00 August 8, 2023
+1:11 Part 1: The Dry Town
+2:37 Part 2: The Warnings
+3:44 Part 3: The Morning
+4:43 Part 4: The Afternoon
+6:33 Part 5: The Ocean
+7:14 Part 6: The Silent Sirens
+8:25 Part 7: The Water
+9:05 Part 8: Who Is Responsible
+10:39 Part 9: What Was Lost
+11:56 What Lahaina Tells Us
+
+SOURCES
+- Hawaiʻi Attorney General / Fire Safety Research Institute, Lahaina Fire reports, Phases 1–3 (2024–2025)
+- Maui Fire Department / ATF origin and cause report (Oct. 2, 2024)
+- Wikipedia, "2023 Hawaii wildfires"; reporting by AP, Maui Now, Civil Beat, Hawaii News Now, NBC
+- Full fact sheet with links: research/facts.md in the project folder
+
+VISUAL AND AUDIO CREDITS
+- FEMA video and photos (public domain). Survivor interview: Tom Liu, FEMA.
+- U.S. Customs and Border Protection photos by Glenn Fawcett (public domain)
+- U.S. Coast Guard photos (public domain)
+- Photo: The National Guard (CC BY 2.0)
+- NASA Earth Observatory image by Lauren Dauphin, using Landsat data from the U.S. Geological Survey (public domain)
+- Contains modified Copernicus Sentinel-2 data (2023)
+- Map data: © OpenStreetMap contributors; Natural Earth
+- Stock footage: Mixkit (Mixkit Stock Video Free License)
+- Music (Mixkit Stock Music Free License):
+- "Silent Descent" by Eugenio Mininni (Mixkit, Mixkit Stock Music Free License)
+- "Echoes" by Andrew Ev (Mixkit, Mixkit Stock Music Free License)
+- "Vertigo" by Eugenio Mininni (Mixkit, Mixkit Stock Music Free License)
+- "Piano Horror" by Francisco Alvear (Mixkit, Mixkit Stock Music Free License)
+- "Epical Drums 04" by Grigoriy Nuzhny (Mixkit, Mixkit Stock Music Free License)
+- "Voxscape" by Eugenio Mininni (Mixkit, Mixkit Stock Music Free License)
+- "Red Lights Adhafera" by Eugenio Mininni (Mixkit, Mixkit Stock Music Free License)
+- "Opalescent" by Eugenio Mininni (Mixkit, Mixkit Stock Music Free License)
+- "Ode to Loneliness" by Diego Nava (Mixkit, Mixkit Stock Music Free License)
+- "Staring at the Night Sky" by Alejandro Magaña (A. M.) (Mixkit, Mixkit Stock Music Free License)
+- Narration: AI voice (ElevenLabs)
+Maps and graphics marked "illustrative" or "approximate" show positions or spread schematically.
+
+#lahaina #maui #hawaii #wildfire #documentary #disaster #history
+
+TAGS
+lahaina fire, maui wildfire, lahaina 2023, maui fire 2023, hawaii wildfire, lahaina sirens, deadliest wildfire, natural disaster documentary, disaster documentary, front street lahaina, hawaiian electric, maui fire explained
+
+SETTINGS CHECKLIST
+- Language: English. Upload final/lahaina_2023.srt as English captions.
+- Altered or synthetic content: the narration is an AI voice. Follow YouTube's current disclosure rules when you upload.
+- End screen: the last 15 seconds are a quiet title card. Place end screen elements there.
+- Category: Education. Audience: not made for kids.
+- If a Content ID claim appears on the music, dispute it with the Mixkit license page (track names above).
