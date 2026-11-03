@@ -10,9 +10,10 @@ export const k = (t: number, a: number, d = 0.6) => interpolate(t, [a, a + d], [
 export const WC = { sky: '#141A20', water: '#0E2A3C', water2: '#0A1F2E', rock: '#3A3026', rock2: '#2C251E', steel: '#9AA3A8', mud: '#B8743A', sea: '#7FC4E0', hc: '#E0533A', bop: '#D8A13A' };
 // geometry (px): x of the well axis, key depths
 const X = 960, SURF = 210, FLOOR = 640, TD = 1040;
-type Layer = 'rig' | 'labels' | 'riser' | 'bop' | 'well' | 'pipe' | 'kill' | 'gauges' | 'mud' | 'cement' | 'flow' | 'depth';
+type Layer = 'rig' | 'labels' | 'riser' | 'bop' | 'well' | 'pipe' | 'kill' | 'gauges' | 'mud' | 'cement' | 'flow' | 'depth' | 'seawater' | 'bopglow';
 export const Well: React.FC<{ t: number; show: Layer[]; at?: Partial<Record<Layer, number>>; dp?: number; kl?: number; caption?: [string, string]; capAt?: number; zoom?: { s: number; y: number } }> = ({ t, show, at = {}, dp = 1400, kl = 0, caption, capAt = 0.3, zoom }) => {
   const on = (l: Layer, d = 0.6) => (show.includes(l) ? k(t, at[l] ?? 0, d) : 0);
+  const seawater = on('seawater', 3.0), bopglow = on('bopglow', 0.8);
   const rig = on('rig'), riser = on('riser'), bop = on('bop'), well = on('well'), pipe = on('pipe'), kill = on('kill'), gauges = on('gauges'), mud = on('mud', 1.2), cement = on('cement'), flow = on('flow', 2.5), depth = on('depth'), labels = on('labels');
   const z = zoom ?? { s: 1, y: 540 };
   const lab = (x: number, y: number, s: string, o: number, color = INK, anchor: 'start' | 'end' | 'middle' = 'start', size = 26) => (
@@ -45,6 +46,7 @@ export const Well: React.FC<{ t: number; show: Layer[]; at?: Partial<Record<Laye
         <rect x={X - 16} y={SURF - 30} width={32} height={(FLOOR - SURF + 30) * riser} fill="none" stroke={WC.steel} strokeWidth={4} opacity={riser} />
         {/* kill line beside the riser */}
         {kill > 0 && <line x1={X + 34} y1={SURF - 30} x2={X + 34} y2={SURF - 30 + (FLOOR - SURF + 40) * kill} stroke={WC.sea} strokeWidth={5} opacity={0.9} />}
+        {bopglow > 0 && <circle cx={X} cy={FLOOR - 42} r={110} fill="none" stroke={WC.bop} strokeWidth={5} opacity={bopglow * (0.6 + 0.4 * Math.sin(t * 3))} />}
         {/* BOP on the seafloor */}
         <g opacity={bop}>
           <rect x={X - 60} y={FLOOR - 90} width={120} height={95} rx={6} fill={WC.bop} stroke="#000" strokeWidth={2} />
@@ -58,6 +60,8 @@ export const Well: React.FC<{ t: number; show: Layer[]; at?: Partial<Record<Laye
         </g>
         {/* mud column (primary barrier), shown as fill inside riser + well */}
         {mud > 0 && <rect x={X - 14} y={SURF - 28} width={28} height={(TD - SURF + 28) * mud} fill={WC.mud} opacity={0.85} />}
+        {/* seawater replacing mud from the top (displacement) */}
+        {seawater > 0 && <rect x={X - 14} y={SURF - 28} width={28} height={(FLOOR - SURF + 60) * seawater} fill={WC.sea} opacity={0.85} />}
         {/* cement at the bottom */}
         {cement > 0 && <rect x={X - 24} y={TD - 70} width={48} height={70} fill="#A9A9A2" opacity={cement} stroke="#000" strokeWidth={2} />}
         {/* drill pipe */}
@@ -82,7 +86,7 @@ export const Well: React.FC<{ t: number; show: Layer[]; at?: Partial<Record<Laye
           {lab(X + 100, FLOOR - 40, 'BLOWOUT PREVENTER', labels * bop, WC.bop)}
           {lab(X + 70, FLOOR + 160, 'MACONDO WELL', labels * well)}
           {cement > 0 && lab(X + 70, TD - 30, 'CEMENT', labels * cement)}
-          {mud > 0 && lab(X - 70, SURF + 90, 'HEAVY DRILLING MUD', labels * mud, WC.mud, 'end')}
+          {mud > 0 && lab(X - 70, SURF + 90, seawater > 0.3 ? 'SEAWATER REPLACING MUD' : 'HEAVY DRILLING MUD', labels * mud, seawater > 0.3 ? WC.sea : WC.mud, 'end')}
           {kill > 0 && lab(X + 60, SURF + 60, 'KILL LINE', labels * kill, WC.sea)}
           {pipe > 0 && lab(X - 70, SURF + 140, 'DRILL PIPE', labels * pipe, '#D9DDE0', 'end')}
         </>}
