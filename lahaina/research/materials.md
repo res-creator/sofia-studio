@@ -1,7 +1,7 @@
 # Lahaina, Aug 8 2023: source-material log
 
 Compiled 2026-11-03. The search was stopped early on the coordinator's instruction, so this log is incomplete.
-Downloads are in `lahaina/assets/raw/docs/` (gitignored, local only). Copies of the small key files are kept in git under `lahaina/research/sources/` (NWS texts, GOES-18/CIRA loops, FSRI Phase 3). Large files (USCG interviews, FEMA B-roll, FSRI Phase 1–2 PDFs) are not in git — re-download from the URLs below. Status: research stopped by the owner (current Lahaina cut kept as is); the new footage-first approach applies from the next video. All times are HST (UTC-10).
+Downloads are in `lahaina/assets/raw/docs/` (gitignored, local only). Copies of the small key files are kept in git under `lahaina/research/sources/` (NWS texts, GOES-18/CIRA loops, FSRI Phase 3). Large files (USCG interviews, FEMA B-roll, FSRI Phase 1–2 PDFs) are not in git — re-download from the URLs below (local copies were deleted on Nov 3 to free disk space). Status: research stopped by the owner (current Lahaina cut kept as is); the new footage-first approach applies from the next video. All times are HST (UTC-10).
 
 ## Network notes
 - **Wikimedia (commons.wikimedia.org API and upload.wikimedia.org):** every request returned HTTP 429. Wikimedia is rate-limiting this session's shared egress IP. Commons pages were read through WebFetch, but **no Commons file could be downloaded**.
