@@ -43,14 +43,14 @@ const GulfMap: React.FC<SP> = ({ t, dur }) => {
 // ===================== shots
 sh(0, (p) => (<><Film {...p} src="night_rig.mp4" /><Label t={p.t} at={0.8} text="Gulf of Mexico · night of April 20–21, 2010" credit={USCG} /></>));
 sh(S('n02') - 0.2, (p) => <GulfMap {...p} />, 0.4);
-sh(S('n03') - 0.1, (p) => (<><Film {...p} src="jit_sworn.mp4" /><Label t={p.t} at={0.4} text={HEAR} credit={USCG} />{p.t > W('n03', 'One') - S('n03') && <Lower t={p.t} at={W('n03', 'One') - S('n03') + 0.4} name="Mike Williams" role="Chief electronics technician, Deepwater Horizon · standing, being sworn in" />}</>));
+sh(S('n03') - 0.1, (p) => (<><Film {...p} src="jit_sworn.mp4" /><Label t={p.t} at={0.4} text={HEAR} credit={USCG} top />{p.t > W('n03', 'One') - S('n03') && <Lower t={p.t} at={W('n03', 'One') - S('n03') + 0.4} name="Mike Williams" role="Chief electronics technician, Deepwater Horizon · standing, being sworn in" />}</>));
 sh(B.w_tests[0].at - 0.3, (p) => (<><Film {...p} src="jit_wide1.mp4" /><Label t={p.t} at={0.2} text="Voice: Mike Williams · the hearing room, July 23, 2010" credit={USCG} /></>));
 // schematic: one idea per beat
 const W0 = S('n04') - 0.3;
 sh(W0, (p) => <Well t={p.t} show={['rig', 'riser', 'bop', 'well', 'mud', 'cement', 'labels']} at={{ rig: 0.1, riser: 0.4, bop: 0.8, well: 1.1, mud: 1.6, labels: 0.4, cement: W('n04', 'cement') - W0 }} caption={['THE WELL', 'The rig floats on the surface. A pipe called the riser runs down to the seafloor, to the blowout preventer and the well below.']} capAt={0.8} />, 0.4);
 sh(S('n05') - 0.2, (p) => <Well t={p.t + 5} show={[...ALL, 'pipe', 'kill']} at={{ pipe: 5.3, kill: 5.6 }} caption={['THE TEST', 'Sealed well: pressure in the drill pipe stays at zero.']} capAt={5.3} />);
 sh(S('n06') - 0.1, (p) => { const o = S('n06') - 0.1; return <Well t={p.t} show={[...ALL, 'pipe', 'kill', 'gauges']} at={{ gauges: W('n06', 'drill') - o }} dp={1400} kl={0} caption={['THE READINGS', 'Two lines into the same well. Two different answers.']} capAt={W('n06', 'second') - o} />; });
-sh(S('n07') - 0.1, (p) => <Doc {...p} src="comm-125.jpg" aspect={0.7727} box={[0.1071, 0.1228, 0.8531, 0.1774]} zoomAt={W('n07', 'Investigators') - S('n07') - 1.4} zoom={2.2} />);
+sh(S('n07') - 0.1, (p) => <Doc {...p} src="comm-125.jpg" aspect={0.7727} box={[0.1071, 0.1228, 0.8531, 0.1774]} zoomAt={0.9} zoom={2.2} />);
 sh(S('n08') - 0.1, (p) => <Well t={p.t + 5} show={[...ALL, 'pipe', 'seawater']} at={{ seawater: 5.2 }} caption={['8:02 P.M.', 'The heavy mud, the main barrier holding the well back, is replaced with lighter seawater.']} capAt={5.2} />);
 sh(W('n08', 'Around'), (p) => (<><Photo {...p} src="deck_plan_hearing.jpg" s0={1.0} s1={1.12} fx={0.45} fy={0.35} /><Label t={p.t} at={0.4} text="A deck plan of the Deepwater Horizon, used at the investigation hearings, May 2010 (the pin marks another crew member)" credit="Photo: U.S. Coast Guard (DVIDS)" /></>));
 sh(B.w_phone[1].at, (p) => (<><Film {...p} src="jit_wide2.mp4" /><Label t={p.t} at={0.2} text="Voice: Mike Williams · the hearing room, July 23, 2010" credit={USCG} /></>));
