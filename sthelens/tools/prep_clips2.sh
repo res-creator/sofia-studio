@@ -16,3 +16,5 @@ cut $B 9 13 a28_forest; cut $B 75 8 a28_heli; cut $B 95 11 a28_river; cut $B 125
 S=swanson_may18_broll.mp4                               # May 18, ~9:30 a.m.-12:30 p.m., Don Swanson from a USGS aircraft
 cut $S 1150 32 sw_flows; cut $S 836 26 sw_col2; cut $S 640 20 sw_col3
 echo CLIPS2_OK
+C4=Date_Unk_Pre_1980_05_18_USGS_MSH_FW_Clip_4.mp4     # before May 18: aerial, Spirit Lake (ice-covered) 1:36-1:47, north side 2:00-2:16
+cut $C4 96 11 c4_lake; cut $C4 120 16 c4_mtn

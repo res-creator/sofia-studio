@@ -71,8 +71,8 @@ export const ReliefMap: React.FC<SP & { a: Cam; b: Cam; show: ('place' | 'flank'
         <Dot x={cx} y={cy} o={Math.max(kPlace, kBlast, kPos)} r={9} />
         <Txt x={cx - 24} y={cy - 26} text={kPos > 0 ? 'COLDWATER II · DAVID JOHNSTON' : 'COLDWATER II · USGS POST'} o={Math.max(kPlace, kBlast, kPos)} size={30} color={ACC} anchor="middle" />
         {kPos > 0 && <><Dot x={c1x} y={c1y} o={kPos * at('cw1', 0.5)} r={8} /><Txt x={c1x} y={c1y + 46} text="COLDWATER I · REID BLACKBURN" o={kPos * at('cw1', 0.5)} size={26} color={ACC} anchor="middle" />
-          <Dot x={mx} y={my} o={at('martin', 0.5)} r={8} /><Txt x={mx + 22} y={my - 18} text="GERRY MARTIN" o={at('martin', 0.5)} size={26} color={ACC} />
-          <Dot x={tx2} y={ty2} o={at('truman', 0.5)} r={8} color={INK} /><Txt x={tx2 + 20} y={ty2 + 40} text="HARRY TRUMAN'S LODGE" o={at('truman', 0.5)} size={26} /></>}
+          <Dot x={mx} y={my} o={at('martin', 0.5)} r={8} /><Txt x={mx + 22} y={my + 44} text="GERRY MARTIN" o={at('martin', 0.5)} size={26} color={ACC} />
+          <Dot x={tx2} y={ty2} o={at('truman', 0.5)} r={8} color={INK} /><Txt x={tx2 - 18} y={ty2 + 40} anchor="end" text="HARRY TRUMAN'S LODGE (approx.)" o={at('truman', 0.5)} size={26} /></>}
         <Txt x={lx} y={ly + 8} text="SPIRIT LAKE" o={kPlace * 0.9} size={26} anchor="middle" weight={600} />
         {/* north arrow */}
         <g opacity={0.85} transform="translate(1810,120)"><path d="M0,-40 L14,10 L0,0 L-14,10 Z" fill={INK} /><Txt x={0} y={42} text="N" o={1} size={28} anchor="middle" /></g>

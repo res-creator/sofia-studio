@@ -19,7 +19,7 @@ const after = `M120,${G} L520,${G - 250} L760,${G - 470} L820,${G - 500} L860,${
 // the failing north part (bulge + summit) above a slip surface
 const slide = (bulge: number) => `M840,${G - 600} L960,${G - 600} C${1020 + 60 * bulge},${G - 520 - 10 * bulge} ${1110 + 90 * bulge},${G - 430} ${1200 + 40 * bulge},${G - 330} L1250,${G - 280} ` +
   `C1150,${G - 280} 1010,${G - 300} 900,${G - 420} Z`;
-export const Recon: React.FC<{ t: number; s: number[] }> = ({ t, s }) => {
+export const Recon: React.FC<{ t: number; s: number[]; voice?: string; voiceAt?: number }> = ({ t, s, voice, voiceAt = 0 }) => {
   // s = [start of stage1, stage2, stage3] (local seconds)
   const b = k(t, 0, 2.5);                       // bulge grows during stage 0
   const q1 = k(t, s[0] + 0.4, 2.6);             // slide motion
@@ -87,6 +87,7 @@ export const Recon: React.FC<{ t: number; s: number[] }> = ({ t, s }) => {
         <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 34, color: INK, marginTop: 10, lineHeight: 1.3 }}>{caps[stage][1]}</div>
       </div>
       <div style={{ position: 'absolute', right: 70, top: 76, fontFamily: SANS, fontWeight: 700, fontSize: 24, letterSpacing: 3, color: 'rgba(242,239,233,0.8)' }}>RECONSTRUCTION · SIMPLIFIED, NOT TO SCALE</div>
+      {voice && t > voiceAt && <div style={{ position: 'absolute', right: 70, top: 116, fontFamily: SANS, fontWeight: 600, fontSize: 26, color: INK, opacity: k(t, voiceAt, 0.4), textAlign: 'right' }}>{voice}</div>}
     </AbsoluteFill>
   );
 };

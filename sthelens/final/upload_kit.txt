@@ -21,11 +21,11 @@ CHAPTERS
 2:37 The 1978 warning
 3:17 The bulge
 4:40 Who could be near the mountain
-5:19 The last evening
-6:10 How a mountain explodes sideways
-8:17 Mud and ash
-8:50 The people
-10:29 What changed
+5:20 The last evening
+6:14 How a mountain explodes sideways
+8:21 Mud and ash
+8:54 The people
+10:33 What changed
 
 SOURCES (facts)
 - USGS Professional Paper 1249, "The First 100 Days of Mount St. Helens" (1981): https://pubs.usgs.gov/pp/1249/report.pdf
@@ -41,10 +41,15 @@ ARCHIVE AND CREDITS (all public domain or CC0)
   - film by Don Swanson, May 18, 1980;
   - "Mount St. Helens: May 18, 1980" (USGS CoreCast, 2010), with interviews of Norm Banks, C. Dan Miller and Don Swanson;
   - photographs by Harry Glicken, Robert Tilling, Austin Post, David Frank, Peter Lipman, Donald Swanson, Lyn Topinka and John Pallister;
-  - pre-1980 elevation model (doi:10.5066/P91W7C1L, CC0).
+  - pre-1980 elevation model (doi:10.5066/P91W7C1L, CC0);
+  - USGS/VDAP photograph of Armero, Colombia (December 9, 1985);
+  - Pinatubo eruption column, June 12, 1991.
 - National Archives:
   - U.S. Air Force photographs by MSgt Robert Leach (304th Aerospace Rescue and Recovery Squadron);
-  - U.S. Forest Service collection, including photographs by Walt Conner (FEMA) and the U.S. Army Corps of Engineers.
+  - USDA Forest Service collection:
+    - photographs by Walt Conner (including the photo of Governor Dixy Lee Ray, June 24, 1980);
+    - U.S. Army Corps of Engineers photographs;
+    - search photographs of May 28, 1980.
 - Map data: Natural Earth.
 - Music (Mixkit Stock Music Free License): "Silent Descent", "Vertigo", "Opalescent" and "Voxscape" by Eugenio Mininni; "Echoes" by Andrew Ev; "Ode to Loneliness" by Diego Nava; "Staring at the Night Sky" by Alejandro Magaña (A. M.).
 - Narration: AI voice (ElevenLabs).

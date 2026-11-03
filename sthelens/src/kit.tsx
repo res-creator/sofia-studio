@@ -33,9 +33,9 @@ export const Film: React.FC<SP & { src: string; from?: number; s0?: number; s1?:
 );
 const shadow = '0 2px 10px rgba(0,0,0,0.85), 0 0 2px rgba(0,0,0,0.9)';
 // source label: what it is · where/when, and the credit line
-export const Label: React.FC<{ t: number; at?: number; text: string; credit?: string; right?: boolean }> = ({ t, at = 0.3, text, credit, right }) => (<>
-  <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 230, background: 'linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0))', opacity: pe(t, at, 0.5) }} />
-  <div style={{ position: 'absolute', [right ? 'right' : 'left']: 70, bottom: 56, maxWidth: 1100, opacity: pe(t, at, 0.5), textAlign: right ? 'right' : 'left', textShadow: shadow }}>
+export const Label: React.FC<{ t: number; at?: number; text: string; credit?: string; right?: boolean; top?: boolean }> = ({ t, at = 0.3, text, credit, right, top }) => (<>
+  <div style={{ position: 'absolute', left: 0, right: 0, [top ? 'top' : 'bottom']: 0, height: 270, transform: top ? 'scaleY(-1)' : undefined, background: 'linear-gradient(0deg, rgba(0,0,0,0.74), rgba(0,0,0,0.35) 55%, rgba(0,0,0,0))', opacity: pe(t, at, 0.5) }} />
+  <div style={{ position: 'absolute', [right ? 'right' : 'left']: 70, [top ? 'top' : 'bottom']: top ? 50 : 56, maxWidth: 1100, opacity: pe(t, at, 0.5), textAlign: right ? 'right' : 'left', textShadow: shadow }}>
     <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: 34, color: INK, lineHeight: 1.25 }}>{text}</div>
     {credit && <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 25, color: 'rgba(242,239,233,0.78)', marginTop: 6 }}>{credit}</div>}
   </div>
