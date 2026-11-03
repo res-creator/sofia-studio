@@ -8,3 +8,5 @@ cut dvids/dvids315070_mh65_films_fire_sar.mp4 4 23 night_fireboats # DVIDS 31507
 J=jit/dvids91190_jit_2010-07-23_part1.mp4                          # DVIDS 91190, Joint Investigation hearing, July 23 2010 (Mike Williams)
 cut $J 0 22 jit_sworn; cut $J 24 10 jit_wide1; cut $J 34 22.5 jit_wide2   # the camera stays on panel member J. McCarroll after 0:56; only the wide shots show the room with the witness
 echo CLIPS_OK
+cut dvids/dvids315074_fire_boats_night.mp4 36 24 night_wide      # wider night view, rig burning on the horizon (after 11 p.m., Apr 20)
+cut dvids/dvids83700_daytime_fire.mp4 6 20 day_fire              # DVIDS 83700: daylight, i.e. Apr 21 (slate says Apr 20)

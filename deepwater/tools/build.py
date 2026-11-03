@@ -36,7 +36,7 @@ def track(n, a0, a1, off=0.0, fin=1.5, fout=1.5):
     out = np.zeros((N, 2), np.float32); i0 = int(a0 * SR); seg = m[int(off * SR):int(off * SR) + min(L, N - i0)]
     out[i0:i0 + len(seg)] = seg; env = np.clip((tt - a0) / fin, 0, 1) * np.clip((a1 - tt) / fout, 0, 1); return out * env[:, None]
 Ln = T['lines']; E = T['events']
-music = track('614', 0, Ln['n04']['s'] - 0.3, 0, 1.0, 1.5) + track('593', Ln['n04']['s'] - 1.2, Ln['n09']['s'] - 0.2, 60, 1.5, 0.8) + track('597', Ln['n09']['s'] - 0.4, DUR + 0.3, 6, 0.8, 2.0)
+music = track('614', 0, Ln['c03']['s'] - 0.3, 0, 1.5, 1.5) + track('593', Ln['c03']['s'] - 1.2, E['silence']['at'] + 0.2, 60, 1.5, 1.2) + track('597', Ln['c10']['s'] - 0.8, DUR + 0.3, 6, 1.5, 2.0)
 sm = lambda x, w: np.convolve(np.abs(x), np.ones(int(w * SR)) / int(w * SR), 'same')
 ev, eb = np.clip(sm(vo, 0.3) / 0.02, 0, 1), np.clip(sm(bite, 0.3) / 0.02, 0, 1)
 duck = (1 - 0.6 * ev) * (1 - 0.8 * eb)

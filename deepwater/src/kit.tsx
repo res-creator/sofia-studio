@@ -49,7 +49,7 @@ export const DateSuper: React.FC<{ t: number; at?: number; big: string; small: s
 export const Lower: React.FC<{ t: number; at?: number; name: string; role: string }> = ({ t, at = 0.2, name, role }) => {
   const k = pe(t, at, 0.5);
   return (
-    <div style={{ position: 'absolute', left: 110, bottom: 110, opacity: k, textShadow: shadow }}>
+    <div style={{ position: 'absolute', left: 80, bottom: 90, opacity: k, textShadow: shadow, background: 'rgba(8,9,10,0.72)', padding: '16px 30px 18px', borderRadius: 6 }}>
       <div style={{ width: 70 * k, height: 4, background: ACC, marginBottom: 12 }} />
       <div style={{ fontFamily: SANS, fontWeight: 700, fontSize: 40, color: INK }}>{name}</div>
       <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 26, color: 'rgba(242,239,233,0.85)', marginTop: 4 }}>{role}</div>
