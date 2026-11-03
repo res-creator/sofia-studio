@@ -1,21 +1,22 @@
-# Opening — edit plan (final test, 2:18.5)
+# Opening v2 — edit plan (2:09). Revised after the critic review and the owner's notes. v1 is kept in script/opening_v1.json and vo_v1/.
 
-The owner asked for about 2 minutes, so the 90-second cut was not used. Narration: Todd (eleven_v4, project settings). Testimony: Mike Williams, USCG/BOEMRE Joint Investigation hearing, July 23, 2010 (DVIDS 91190).
+| Time | Sound | Picture | Job |
+|---|---|---|---|
+| 0:01 | **Williams (testimony)**: the gas level announced on the phone call; his wife asks if he needs to go; "I told her no, it was just an indication…" | His voice starts about 1 s before the picture. USCG night footage of the burning rig (DVIDS 315074), labelled "filmed after 11 p.m." and "Voice: … testifying July 23, 2010" | Cold open on a person and an ordinary moment. It is marked as later testimony, not a recording of the call. |
+| 0:21 | c01: who he is, when the call was | Hearing room: Williams standing to be sworn in (DVIDS 91190 0:00–0:22), with a lower third on a dark backing | Introduces the person and the date |
+| 0:32 | c02: the rig, about 50 miles off Louisiana, 126 on board | Short Gulf map (about 8 s) | Where we are |
+| 0:39 | c03 to c05: what was tested and what a pass looks like → kill line "NO FLOW" / drill pipe "1,400 PSI" → about 1.5 h of discussion; the "bladder effect" offered (per witness accounts) → "≈ 8 P.M. · DECLARED A SUCCESS" | One large test card, readable on a phone, that develops step by step | The one contradiction, and how it was resolved at the time |
+| 1:12 | c06: the Commission's later finding (a leak; a "key error") | Commission p. 109, the full highlighted passage | Short proof, and the hindsight judgement kept separate |
+| 1:20 | c07 + **Williams**: "so frequently… immune… especially with this well…" | Hearing room wide shot (the only use) | The sign he noticed and how he read it then |
+| 1:35 | c08: the call around 9:30 (his account) → about 9:40 mud on the floor → minutes later the explosion | Schematic: the state is kept (seawater in the riser, gas rising), labelled reconstruction → night footage | Separates the three times |
+| 1:45 | (pause) c09 "Eleven men were killed." (hold about 4 s) | Fireboats at night (DVIDS 315070) | Time to take it in. No technical question laid on top. |
+| 1:56 | c10: the two questions the film will answer | Daylight, the next morning, April 21 (DVIDS 83700) | The question, with a new real image |
+| 2:05 | — | Title | |
 
-**Important finding.** The hearing camera stays on panel member J. McCarroll from 0:56 onward. Williams himself is visible only in the opening wide shots, standing to be sworn in. So his voice is used over the wide room shots and the deck plan, labelled "Voice: Mike Williams". Never over the close-ups.
-
-| Time | Item | Narration / sound | Picture | What the viewer learns, and why here |
-|---|---|---|---|---|
-| 0:00.6 | n01 | "A little after eleven… a Coast Guard helicopter reached a drilling rig on fire" | USCG night footage, DVIDS 315074 (src 0:07–0:31) | Place and moment; a short glimpse of the fire only. Real event footage first. |
-| 0:09.4 | n02 | "…the Deepwater Horizon, about fifty miles off Louisiana… a well called Macondo" | Gulf locator (Natural Earth), rig marker | Where we are; distance from shore. |
-| 0:19.8 | n03 | "126 people on board… Mike Williams… under oath" | Hearing wide shot, DVIDS 91190 0:00–0:22: Williams standing, being sworn in | Introduce the person before his story matters; real image of him. |
-| 0:31.5 | w_tests | WILLIAMS: "They had finished a cement job… running tests…" | Hearing room wide shot (src 0:24–0:34), labelled "Voice" | His words set the situation: an ordinary, slow day of tests. |
-| 0:39.9 | n04 | "…sealed with cement. One test would show whether that seal held." | Schematic, built one layer at a time: rig → riser → BOP → well → mud → cement | Explain only what the test needs, using the same schematic for the whole film. |
-| 0:49.8 | n05 | "If the well was sealed, the pressure… would stay at zero." | Schematic + drill pipe + kill line | One new idea: what a pass looks like. |
-| 0:54.7 | n06 | "…fourteen hundred psi… A second line… read zero." | Schematic gauges: DRILL PIPE 1,400 psi, KILL LINE 0 psi | The contradiction, shown as two readings on one well. |
-| 1:04.1 | n07 | "…declared the test a success. Investigators later called that conclusion a key error." | Commission report "Deep Water" (2011), p. 109: highlighted lines | A document as short proof. It separates the decision then from the investigators' later judgement. |
-| 1:18.1 | n08 | "…replacing the heavy mud… with seawater. Around nine thirty, Mike Williams… on the phone with his wife." | Schematic: seawater replaces mud → deck plan of the rig (DVIDS photo 1095904) | The barrier is being removed; we return to the person and his place on the rig. |
-| 1:27.4 | w_phone | WILLIAMS: gas level announced… "I told her no…"… "become somewhat immune to them" | Deck plan → hearing room wide shot (src 0:34–0:56), labelled "Voice" | What a person on board noticed and how he read it, in his own words. |
-| 1:53.7 | n09 | "Within twenty minutes, mud and gas were bursting onto the rig floor. Eleven men did not survive the night." | Schematic flow layer (reconstruction) → USCG night footage of fireboats, DVIDS 315070 | The mechanism first, then the reality, without retelling the whole disaster. |
-| 2:01.6 | n10 | "Why did they judge the well safe? And why didn't the blowout preventer… stop it?" | Schematic zooms in on the BOP | The two questions of the film, tied to the object the viewer now knows. |
-| 2:13.9 | title | — | DEEPWATER HORIZON · THE TEST THEY CALLED A SUCCESS | Working title. |
+**Moved to the full film:**
+- the full well schematic and the three barriers;
+- the BOP;
+- the details of the bleeds;
+- the 9:01–9:35 signals;
+- Williams's account of the explosion;
+- the deck plan (only if a specific action needs it).
