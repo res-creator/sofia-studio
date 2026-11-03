@@ -55,3 +55,9 @@ These apply to every new documentary episode, starting with `sthelens/`. They ar
 
 ## Voice
 Todd `g14YnDYCsy3k7XLlcKlO`, `eleven_v4`, stability 0.45, similarity 0.8, style 0.35, speaker boost. Use the proxy (`xi-api-key: dummy`). Max 2 requests at once, ~3 s apart.
+
+## Lessons added during Deepwater Horizon (`deepwater/`)
+- Check who is actually on screen in hearing and interview footage before labelling it. In DVIDS 91190 the camera stays on a panel member while the witness speaks. Use the witness's voice over honest picture, labelled "Voice: …", never over another person's face.
+- Run speech-to-text on every testimony cut. It shows clipped first and last words (e.g. "Sperry [Sun]", "[anymore]").
+- When an official report states a hindsight judgement (e.g. "a key error"), present it as the investigators' conclusion, not as what people knew at the time.
+- Owner preference: an opening of about 2 minutes is fine when it is built from a person's own testimony.
