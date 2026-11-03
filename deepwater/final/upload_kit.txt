@@ -1,7 +1,7 @@
 KNOWN IN ADVANCE — upload kit (NOT published; for the owner's review)
 
 FILE
-final/dwh_full_film.mp4 (1920x1080, about 15:18) · captions final/dwh_full_film.srt
+final/dwh_full_film.mp4 (1920x1080, about 15:14) · captions final/dwh_full_film.srt
 THUMBNAIL: not made yet (next step, after the owner reviews the film)
 
 TITLE (recommended)
@@ -17,7 +17,7 @@ On the evening of April 20, 2010, the crew of the Deepwater Horizon ran a test t
 
 This documentary follows the evening in order: the rig and the well, the three barriers, the negative pressure test, the missed signs, the blowout, the escape and rescue, why the blowout preventer did not stop the flow, and what followed. It is told through Coast Guard archive footage, official investigation reports, and the testimony of Mike Williams, the rig's chief electronics technician, at the joint investigation hearing in July 2010.
 
-What was known: the well had been difficult, the cement had not been independently evaluated, and the test readings did not agree.
+What was known: the well had been difficult, Halliburton's own lab tests had shown the cement mix unstable, the cement had not been independently evaluated, and the test readings did not agree.
 What investigators concluded later: the pressure data were not ambiguous, and the warning signs were missed.
 
 In memory of Jason Anderson, Aaron Dale Burkeen, Donald Clark, Stephen Curtis, Gordon Jones, Roy Wyatt Kemp, Karl Dale Kleppinger Jr., Blair Manuel, Dewey Revette, Shane Roshto and Adam Weise.
@@ -26,13 +26,13 @@ CHAPTERS
 0:00 April 20, 2010
 1:55 The rig and the well
 2:54 Three barriers
-3:27 The test
-5:08 The signs
-6:17 The blowout
-9:06 Abandon ship
-11:55 The last line of defense
-13:21 After
-14:19 The answer
+3:41 The test
+5:21 The signs
+6:34 The blowout
+9:07 Abandon ship
+11:43 The last line of defense
+13:15 After
+14:12 The answer
 
 SOURCES (facts)
 - National Commission on the BP Deepwater Horizon Oil Spill, "Deep Water", report to the President (2011): https://www.govinfo.gov/content/pkg/GPO-OILCOMMISSION/pdf/GPO-OILCOMMISSION.pdf

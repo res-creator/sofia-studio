@@ -3,7 +3,7 @@ import React from 'react';
 import { AbsoluteFill, Audio, Img, Sequence, staticFile, useCurrentFrame } from 'remotion';
 import T from './data/open.json';
 import M from './data/map.json';
-import { FPS, BG, INK, ACC, SANS, DISPLAY, pe, SP, Film, Photo, Label, Lower, Doc } from './kit';
+import { FPS, BG, INK, ACC, SANS, DISPLAY, pe, SP, Film, Photo, Label, Lower, Doc, Pull } from './kit';
 import { Well, WC } from './well';
 import { TestCard } from './testcard';
 const LN = T.lines as Record<string, { s: number; e: number; words: { w: string; s: number }[] }>;
@@ -50,7 +50,7 @@ sh(S('c01') - 0.1, (p) => (<><Film {...p} src="jit_sworn.mp4" /><Label t={p.t} a
 sh(S('c02') - 0.2, (p) => <GulfMap {...p} />, 0.3);
 const T0 = S('c03') - 0.2;
 sh(T0, (p) => <TestCard t={p.t} killAt={W('c04', 'One') - T0} pipeAt={W('c04', 'drill') - T0} declAt={W('c05', 'declared') - T0} />, 0.3);
-sh(S('c06') - 0.2, (p) => <Doc {...p} src="comm-125.jpg" aspect={0.7} box={[0.1071, 0.1228, 0.8531, 0.1926]} zoomAt={0.4} zoom={2.2} />);
+sh(S('c06') - 0.2, (p) => (<><Doc {...p} src="comm-125.jpg" aspect={0.7} box={[0.1071, 0.1228, 0.8531, 0.1926]} zoomAt={0.4} zoom={2.2} /><Label t={p.t} at={0.3} text="National Commission on the BP Deepwater Horizon Oil Spill, report to the President (2011), p. 109 · the investigators’ conclusion" top /><Pull t={p.t} at={1.4} text="“…at 8 p.m., BP Well Site Leaders, in consultation with the crew, made a key error…”" /></>));
 sh(S('c07') - 0.2, (p) => (<><Film {...p} src="jit_wide1.mp4" /><Label t={p.t} at={0.3} text="Voice: Mike Williams · the hearing room, July 23, 2010" credit={USCG} /></>));
 const F0 = S('c08') - 0.2;
 sh(F0, (p) => <Well t={p.t + 6} show={['rig', 'riser', 'bop', 'well', 'mud', 'seawater', 'flow', 'labels']} at={{ seawater: 0, flow: 6 + W('c08', 'mud') - F0 }} caption={['ABOUT 9:40 P.M.', 'Mud and gas surge up the riser and onto the rig floor. (The crew had replaced the mud in the riser with seawater after 8 p.m.)']} capAt={6 + W('c08', 'nine', 1) - F0} />, 0.3);

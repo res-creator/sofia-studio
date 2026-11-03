@@ -122,3 +122,9 @@ export const BigTime: React.FC<{ t: number; at?: number; text: string; sub?: str
     {sub && <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: 32, color: 'rgba(242,239,233,0.8)', letterSpacing: 3 }}>{sub}</div>}
   </AbsoluteFill>
 );
+// the key line of a document, pulled out in large type so it reads on a phone
+export const Pull: React.FC<{ t: number; at?: number; text: string }> = ({ t, at = 1.6, text }) => (
+  <div style={{ position: 'absolute', left: 140, right: 140, bottom: 70, opacity: pe(t, at, 0.5), background: 'rgba(8,9,10,0.9)', borderLeft: `6px solid ${ACC}`, padding: '22px 34px', borderRadius: 6 }}>
+    <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: 46, color: INK, lineHeight: 1.3 }}>{text}</div>
+  </div>
+);

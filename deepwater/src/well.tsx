@@ -93,12 +93,12 @@ export const Well: React.FC<{ t: number; show: Layer[]; at?: Partial<Record<Laye
         {/* gauges: the contradiction of the negative test */}
         {gauges > 0 && <>
           {gauge(X - 420, 95, 'DRILL PIPE', dp, gauges, dp > 0)}
-          {gauge(X + 420, 95, 'KILL LINE', kl, k(t, (at.gauges ?? 0) + 1.0), kl > 0)}
+          {kl >= 0 && gauge(X + 420, 95, 'KILL LINE', kl, k(t, (at.gauges ?? 0) + 1.0), kl > 0)}
           <line x1={X - 290} y1={95} x2={X - 10} y2={SURF - 70} stroke={WC.hc} strokeWidth={2} opacity={gauges * 0.7} />
-          <line x1={X + 290} y1={95} x2={X + 34} y2={SURF - 30} stroke={WC.sea} strokeWidth={2} opacity={k(t, (at.gauges ?? 0) + 1.0) * 0.7} />
+          {kl >= 0 && <line x1={X + 290} y1={95} x2={X + 34} y2={SURF - 30} stroke={WC.sea} strokeWidth={2} opacity={k(t, (at.gauges ?? 0) + 1.0) * 0.7} />}
         </>}
       </svg>
-      {caption && <div style={{ position: 'absolute', left: 80, bottom: 70, maxWidth: 860, opacity: k(t, capAt, 0.5) }}>
+      {caption && <div style={{ position: 'absolute', left: 80, bottom: 70, maxWidth: 760, opacity: k(t, capAt, 0.5) }}>
         <div style={{ fontFamily: SANS, fontWeight: 800, fontSize: 34, color: ACC, letterSpacing: 2 }}>{caption[0]}</div>
         <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 30, color: INK, marginTop: 8, lineHeight: 1.3 }}>{caption[1]}</div>
       </div>}
