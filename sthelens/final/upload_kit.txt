@@ -1,9 +1,14 @@
 KNOWN IN ADVANCE — upload kit (not published; for the owner's review)
 
-TITLE
-The Morning Mount St. Helens Exploded Sideways
+THUMBNAIL (chosen by the owner)
+final/thumbnail.jpg — "IT EXPLODED SIDEWAYS", May 17 / May 18 (USGS photos: Harry Glicken; Austin Post)
+
+TITLE (recommended with this thumbnail: don't repeat "sideways")
+They Watched Mount St. Helens for 2 Months. It Wasn't Enough
 
 ALTERNATIVE TITLES
+- The Last Night at Coldwater II
+- The Morning Mount St. Helens Exploded Sideways
 - Mount St. Helens 1980: The Mountain That Exploded Sideways
 - They Measured the Bulge Every Day. Then Mount St. Helens Exploded Sideways
 
@@ -61,6 +66,7 @@ TAGS
 mount st helens, mount st helens 1980, mount st helens eruption, lateral blast, david johnston, volcano documentary, usgs, 1980 eruption, coldwater ii, johnston ridge, spirit lake, harry truman, natural disaster documentary, volcanic eruption, washington state history
 
 SETTINGS CHECKLIST
+- Schedule: Thursday or Saturday, 2–3 p.m. US Eastern (10–11 p.m. Moscow). Upload in advance and schedule.
 - Language: English. Upload final/msh_full_film.srt as English captions.
 - Altered or synthetic content: the narration is an AI voice; follow YouTube's current disclosure rules. The reconstruction is labelled on screen.
 - Category: Education. Audience: not made for kids.
