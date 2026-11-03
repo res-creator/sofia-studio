@@ -24,6 +24,7 @@ sh(0, (p) => (<><Photo {...p} src="dvids_img_1095288.jpg" s1={1.06} /><Chapter t
 { const a = S('b02') - 0.2; sh(a, (p) => <Well t={p.t} show={[...BASE, 'depth']} at={{ rig: 0, labels: 0, riser: W('b02', 'riser') - a, bop: W('b02', 'blowout') - a, depth: W('b02', 'five') - a, well: W('b02', 'From') - a }} />, 0.4); }
 sh(S('b03') - 0.2, (p) => <DocL {...p} src="comm-018.jpg" box={[0.1429, 0.3579, 0.8634, 0.3912]} cap="BP engineer Brian Morel's email of April 14, 2010, as quoted by the presidential commission" />, 0.3);
 { const a = S('b04') - 0.2; sh(a, (p) => <Roster t={p.t} title="ABOARD: 126 PEOPLE FROM 13 COMPANIES" rows={[
+  { who: 'BP · Transocean · Halliburton', role: 'operator · rig owner and crew · cement', at: 0.6 },
   { who: 'Bob Kaluza', role: 'BP well site leader (day)', at: W('b04', 'Bob') - a },
   { who: 'Don Vidrine', role: 'BP well site leader (night)', at: W('b04', 'Don') - a },
   { who: 'Jason Anderson', role: 'Transocean toolpusher', at: W('b04', 'Jason') - a },
@@ -65,7 +66,7 @@ sh(S('b23') - 0.2, (p) => (<><Photo {...p} src="dvids_img_1095928.jpg" s0={1.25}
 sh(E.ch5.at, (p) => (<><Well t={p.t + 30} show={[...BASE, 'cement', 'pipe', 'seawater', 'flow', 'bopglow']} at={{ seawater: -9, flow: -9, bopglow: 30 + W('b25', 'closed') - E.ch5.at }} caption={['9:40–9:47 P.M.', 'Gas above the preventer rises up the riser. The flow goes to the rig’s mud-gas separator, not overboard. The preventer is closed.']} capAt={30 + 0.6} /><Chapter t={p.t} n={5} title="THE BLOWOUT" /></>), 0.3);
 sh(S('b26') - 0.2, (p) => (<><Photo {...p} src="dvids_img_1095937.jpg" s1={1.05} /><Lower t={p.t} at={0.4} name="Micah Sandell (right)" role="Crane operator, Transocean · at the hearing, May 29, 2010" /><Quote t={p.t} at={1.0} side text="“I seen mud shooting all the way up to the derrick… Then something exploded.”" src="Commission report, p. 9" /><Label t={p.t} at={0.4} text="" credit={HEARP('Kenner, La.')} top right /></>), 0.3);
 sh(S('b27') - 0.2, (p) => <AbsoluteFill style={{ background: BG }}><Quote t={p.t} at={0.3} text="“…mud falling on the back half of my boat, kind of like a black rain.”" src="Capt. Alwin Landry, supply vessel Damon B. Bankston, about 9:45 p.m. (Commission report, p. 12)" /></AbsoluteFill>, 0.3);
-const WST = (p: SP, s0: number, s1: number, f = 'w_still.jpg') => (<><Photo {...p} src={f} s0={s0} s1={s1} fx={0.62} fy={0.45} /><Label t={p.t} at={0.3} text="Voice: Mike Williams · testimony, July 23, 2010" right top /><Label t={p.t} at={0.3} text="Williams (right) at the hearing · still from the hearing video" credit={USCG} /></>);
+const WST = (p: SP, s0: number, s1: number, f = 'w_still.jpg') => (<><Photo {...p} src={f} s0={s0} s1={s1} fx={0.62} fy={0.45} /><Label t={p.t} at={0.3} text="Voice: Mike Williams · testimony, July 23, 2010" right top /><Label t={p.t} at={0.3} text="Williams (right) · hearing video still" credit={USCG} top /></>);
 sh(S('b28') - 0.2, (p) => (<>{WST(p, 1.0, 1.08)}<Lower t={p.t} at={1.0} name="Mike Williams" role="Chief electronics technician, Transocean" /></>), 0.3);
 sh(B.w_hiss[0].at - 0.1, (p) => WST(p, 1.35, 1.45, 'w_still_515.jpg'));
 sh(B.w_engine[3].at - 0.1, (p) => (<AbsoluteFill style={{ background: BG }}><Label t={p.t} at={0.3} text="Voice: Mike Williams · testimony, July 23, 2010" right top /></AbsoluteFill>), 0.6);
@@ -81,6 +82,7 @@ sh(S('b33') - 0.2, (p) => (<><Clip {...p} src="night_fireboats.mp4" /><Label t={
 sh(B.y_cook[0].at - 0.2, (p) => WST(p, 1.2, 1.3, 'w_still_548.jpg'), 0.4);
 sh(B.y_jump[0].at - 0.2, (p) => WST(p, 1.45, 1.55, 'w_still_562.jpg'), 0.4);
 sh(B.y_jump[2].at + 7.5, (p) => (<AbsoluteFill style={{ background: BG }}><Label t={p.t} at={0.3} text="Voice: Mike Williams · testimony, July 23, 2010" right top /></AbsoluteFill>), 0.8);
+sh(B.y_over[0].at - 0.2, (p) => WST(p, 1.0, 1.1, 'w_still.jpg'), 0.8);
 sh(S('b35') - 0.2, (p) => (<><Clip {...p} src="rescue_basket.mp4" /><Label t={p.t} at={0.5} text="A Coast Guard helicopter hoists a survivor from a support vessel · night of April 20–21 (the vessel is not named)" credit={USCG} /></>), 0.4);
 sh(S('b37') - 0.2, (p) => (<><Clip {...p} src="rescue_basket.mp4" from={8} /><Label t={p.t} at={0.3} text="Night of April 20–21, 2010" credit={USCG} /></>));
 sh(W('b37', 'Through') - 0.2, (p) => (<><Clip {...p} src="medevac.mp4" /><Label t={p.t} at={0.4} text="Injured crew arrive at Coast Guard Air Station New Orleans · April 21, 2010" credit={USCG} /></>), 0.3);

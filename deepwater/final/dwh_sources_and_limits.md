@@ -22,7 +22,7 @@ Not used on purpose: BP's ROV video (BP copyright), TV news, the 2016 feature fi
 
 ## How the file was checked (honestly)
 - Every narration line and every testimony cut: speech-to-text (scribe_v1) against the script (`research/stt_check_film.json`, `research/stt_check_opening.json`). Differences were only number formatting and the spelling of names. Testimony cuts start and end on whole words.
-- Stills of the rendered film: contact sheets every 10 s before the final render, and every 10 s of the final file (see the delivery notes).
+- Stills of the rendered film: contact sheets every 10 s before the final render and every 10 s of the final file. That check found and fixed: a caption overlapping the name plate on Williams, an empty roster card for 7 s, and 34 s of black in chapter 6 (now about 15 s).
 - Loudness and black-frame detection on the final file (ffmpeg ebur128 / blackdetect). The black passages are intentional (under Williams's account of the explosion and of the water).
 - This is not a full viewing or listening. Pacing, the voice transitions and the emotional weight of the testimony still need a human editorial review.
 
@@ -30,7 +30,8 @@ Not used on purpose: BP's ROV video (BP copyright), TV news, the 2016 feature fi
 - **No public-domain image of the Deepwater Horizon before April 20.** The film opens chapter 1 with a sister rig at the site (labelled), then the schematic.
 - **No pictures of the moment itself** (the explosions, the lifeboats, the jump). Williams's account plays over stills of him at the hearing and over black. The night fire footage was filmed after 11 p.m. and is labelled so.
 - **No public-domain photos** of Bob Kaluza, Don Vidrine, Jason Anderson, Dewey Revette, Andrea Fleytas, Capt. Alwin Landry or the Damon B. Bankston. They are named over a roster card or a quote card.
-- **The Williams stills** come from one 60-second shot of the hearing video (SD, 640×360), so they are soft. They are used five times with different crops.
+- **The Williams stills** come from one 60-second shot of the hearing video (SD, 640×360), so they are soft. In chapters 5–6 they carry about 2½ minutes of his testimony (five different frames and crops). This is the most repetitive picture in the film; the alternative would be more black screen or repeating the fire footage.
+- **Black screen, on purpose:** about 25 s under Williams's account of the engines and the explosion (about 7:50–8:15 in the file, ending on "about 9:49 p.m.") and about 15 s under his account of the water after the jump. No footage of either exists.
 - **Contested points are stated as contested or rounded:** the time of the decision (7:45 or 8 p.m. → "around eight"); the first explosion (9:48–9:50 → "about 9:49"); who proposed the "bladder effect" (the court questioned whether it came from Anderson); whether and when the deadman fired (CSB vs DNV/JIT, both given); the general alarm time ("minutes after the first gas alarms"); the volume (4.9 million barrels, government, vs 3.19 million discharged, court).
 - **The rescue boat that picked up Williams**: the film says it came from the Bankston, per the Commission (p. 12). Williams himself describes only "a small orange rescue craft".
 - **The survivor hoisted in DVIDS 315069** is from "a support vessel"; the Coast Guard does not name it (likely the Bankston). The label says so.
