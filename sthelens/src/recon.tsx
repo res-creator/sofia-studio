@@ -53,13 +53,15 @@ export const Recon: React.FC<{ t: number; s: number[] }> = ({ t, s }) => {
           {/* conduit + cryptodome */}
           <path d={`M880,${G + 120} C890,${G - 80} 930,${G - 220} 990,${G - 330}`} stroke="url(#mag)" strokeWidth={46} fill="none" opacity={0.9} />
           <ellipse cx={1040 + 30 * b} cy={G - 370} rx={95 + 25 * b} ry={70 + 10 * b} fill="url(#mag)" opacity={0.95 * (1 - q2 * 0.6)} />
+          {/* the north flank (bulge + summit) that confines the magma: drawn over it, semi-transparent so the magma shows inside */}
+          {t <= s[0] && <path d={slide(b)} fill="#86847D" opacity={0.78} stroke="#C9C6BE" strokeWidth={2} strokeDasharray="8 6" />}
           {/* sliding mass */}
-          {t > s[0] && <g transform={`translate(${slideX},${slideY}) rotate(${rot},1050,${G - 420})`} opacity={1 - lin(t, s[0] + 2.2, 1.2)}>
-            <path d={slide(1)} fill="#7A7872" stroke="#2B2A27" strokeWidth={3} />
-            <path d={`M900,${G - 500} L1150,${G - 380}`} stroke="#2B2A27" strokeWidth={3} />
+          {t > s[0] && <g transform={`translate(${slideX},${slideY}) rotate(${rot},1050,${G - 420})`} opacity={1 - lin(t, s[0] + 3.0, 1.0)}>
+            <path d={slide(1)} fill="#9A978F" stroke="#E8E4DA" strokeWidth={4} />
+            <path d={`M900,${G - 500} L1150,${G - 380} M960,${G - 560} L1100,${G - 330}`} stroke="#3A3935" strokeWidth={5} />
           </g>}
           {/* debris avalanche spread on the valley floor */}
-          {t > s[0] + 1.4 && <path d={`M1250,${G} Q1500,${G - 60 * lin(t, s[0] + 1.4, 1.6)} ${1300 + 560 * lin(t, s[0] + 1.4, 2)},${G} Z`} fill="#6D6A63" />}
+          {t > s[0] + 1.4 && <path d={`M1200,${G} Q1480,${G - 110 * lin(t, s[0] + 1.4, 1.6)} ${1260 + 640 * lin(t, s[0] + 1.4, 2.2)},${G} Z`} fill="#8C877C" stroke="#E8E4DA" strokeWidth={3} />}
           {/* lateral blast */}
           {q2 > 0 && [0, 1, 2, 3].map((i) => {
             const r = 60 + 520 * q2 * (1 - i * 0.12); const cx = 1060 + 560 * q2 * (1 - i * 0.1);
@@ -72,7 +74,7 @@ export const Recon: React.FC<{ t: number; s: number[] }> = ({ t, s }) => {
             {q3 > 0.5 && <ellipse cx={940} cy={G - 470 - 640 * q3} rx={260 * q3} ry={70 * q3} fill="#7D776F" opacity={0.85} />}
           </g>}
           {/* labels */}
-          {stage === 0 && <g opacity={k(t, 0.6, 0.5)}><line x1={1110} y1={G - 370} x2={1330} y2={G - 560} stroke={ACC} strokeWidth={3} /><text x={1340} y={G - 570} fill={ACC} fontFamily={SANS} fontWeight={700} fontSize={32}>CRYPTODOME</text>
+          {stage === 0 && <g opacity={k(t, 0.6, 0.5)}><line x1={1110} y1={G - 370} x2={1330} y2={G - 560} stroke={ACC} strokeWidth={3} /><text x={1340} y={G - 570} fill={ACC} fontFamily={SANS} fontWeight={700} fontSize={32}>MAGMA INSIDE THE FLANK</text>
             <text x={1140} y={G - 640} fill={INK} fontFamily={SANS} fontWeight={600} fontSize={28} opacity={0.8}>BULGE (dashed: original slope)</text></g>}
           {stage >= 2 && <text x={1700} y={G - 470 + 12} fill={RED} fontFamily={SANS} fontWeight={800} fontSize={34}>BLAST</text>}
           {stage === 1 && <text x={1500} y={G - 40} fill={INK} fontFamily={SANS} fontWeight={700} fontSize={30} opacity={k(t, s[0] + 1.6, 0.5)}>DEBRIS AVALANCHE</text>}

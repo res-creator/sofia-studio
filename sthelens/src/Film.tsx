@@ -25,7 +25,7 @@ const Card: React.FC<{ t: number; top?: string; quote?: string; src?: string; qa
     {src && <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 32, color: 'rgba(242,239,233,0.85)', marginTop: 30, textAlign: 'center', opacity: pe(t, qat + 0.6, 0.5) }}>{src}</div>}
   </AbsoluteFill>
 );
-const MAPA = { cx: 0.6, cy: 0.515, w: 0.8 }, MAPB = { cx: 0.62, cy: 0.52, w: 0.74 }, POSA = { cx: 0.6, cy: 0.45, w: 0.8 }, POSB = { cx: 0.61, cy: 0.45, w: 0.78 };
+const MAPA = { cx: 0.6, cy: 0.515, w: 0.8 }, MAPB = { cx: 0.62, cy: 0.52, w: 0.74 }, POSA = { cx: 0.6, cy: 0.47, w: 0.8 }, POSB = { cx: 0.61, cy: 0.47, w: 0.78 };
 
 // ===================== OPENING (approved; date and caption fixes)
 sh(0, (p) => (<><Photo {...p} src="mount-st-helens-may-17-1980-one-day-devastating-er.jpg" s0={1.0} s1={1.06} fy={0.45} /><DateSuper t={p.t} at={0.5} big="MAY 17, 1980" small="MOUNT ST. HELENS · WASHINGTON" /><Label t={p.t} at={1.2} text="View from the ridge six miles northwest of the volcano" credit={GL} /></>));
@@ -80,20 +80,19 @@ sh(S('b4_02') - 0.1, (p) => <Card t={p.t} top="HARRY R. TRUMAN, 83" quote="Owner
 sh(S('b4_03') - 0.2, (p) => <Doc {...p} src="pp1249-053.jpg" aspect={0.7694} box={[0.6382, 0.6756, 0.9138, 0.8082]} zoomAt={0.8} zoom={2.8} />);
 
 // ===================== 5 — THE LAST EVENING AND THE MORNING
-sh(S('b5_01') - 0.3, (p) => <ReliefMap {...p} a={POSA} b={POSB} show={['positions']} ats={{ positions: 0.3 }} />, 0.4);
+sh(S('b5_01') - 0.3, (p) => { const o = S('b5_01') - 0.3; return <ReliefMap {...p} a={POSA} b={POSB} show={['positions']} ats={{ positions: 0.3, cw1: W('b5_02', 'Coldwater') - o, martin: W('b5_02', 'Gerry') - o, truman: 0.3 }} />; }, 0.4);
 sh(S('b5_03') - 0.1, (p) => (<><Photo {...p} src="mount-st-helens-may-17-1980-one-day-devastating-er.jpg" s0={1.1} s1={1.16} fx={0.5} fy={0.4} /><Label t={p.t} at={0.3} text="The north face from Johnston's Ridge · photographed May 17, 1980" credit={GL} /></>));
 sh(S('b5_04') - 0.2, (p) => <Card t={p.t} top="8:32:11 A.M." quote="Magnitude 5.1 earthquake" qat={0.4} />);
 sh(S('b5_05') - 0.2, (p) => <Doc {...p} src="pp1249-007.jpg" aspect={0.7721} box={[0.3261, 0.7513, 0.9308, 0.8077]} zoomAt={0.6} zoom={2.3} />);
 
 // ===================== 6 — HOW A MOUNTAIN EXPLODES SIDEWAYS (reconstruction, then the record)
-const R0 = S('b6_02') - 0.3;
-sh(S('b6_01') - 0.2, (p) => (<><Film {...p} src="sw_col3.mp4" /><Label t={p.t} at={0.3} text="May 18, 1980, later in the morning · Don Swanson, USGS" credit={USGS} /></>));
-sh(R0, (p) => (<><Recon t={p.t} s={[0.6, W('b6_04', 'stripped') - R0, 999]} />{p.t > bite('cc_miller_uncork') - R0 && <Lower t={p.t} at={bite('cc_miller_uncork') - R0 + 0.2} name="Voice: Dan Miller, USGS geologist" role="USGS interview, 2010" />}</>), 0.4);
+const R0 = S('b6_01') - 0.2;
+sh(R0, (p) => (<><Recon t={p.t} s={[W('b6_02', 'broke') - R0, W('b6_04', 'stripped') - R0, 999]} />{p.t > bite('cc_miller_uncork') - R0 && <Lower t={p.t} at={bite('cc_miller_uncork') - R0 + 0.2} name="Voice: Dan Miller, USGS geologist" role="USGS interview, 2010" />}</>), 0.4);
 sh(S('b6_05') - 0.1, (p) => (<><Film {...p} src="a24_forest.mp4" /><Label t={p.t} at={0.3} text="Inside the blast zone, about a week later · May 24–26, 1980" credit={USGS} /></>));
 sh(W('b6_06', 'Farther'), (p) => (<><Film {...p} src="a28_blowdown.mp4" /><Label t={p.t} at={0.3} text="Trees flattened in the direction of the blast · May 28, 1980" credit={USGS} /></>));
 sh(W('b6_06', 'At'), (p) => (<><Film {...p} src="a28_forest.mp4" /><Label t={p.t} at={0.3} text="At the edge of the blast zone · May 28, 1980" credit={USGS} /></>));
 sh(bite('cc_miller_scale'), (p) => (<><Photo {...p} src="nara_logging_equipment.jpg" s0={1.02} s1={1.08} /><Lower t={p.t} at={0.2} name="Voice: Dan Miller, USGS geologist" role="USGS interview, 2010 · photo: blown-down timber, June 1980, Walt Conner, FEMA (National Archives)" /></>));
-sh(S('b6_07') - 0.2, (p) => <ReliefMap {...p} a={POSA} b={POSB} show={['positions', 'blast']} ats={{ positions: 0, blast: 0.4 }} />, 0.3);
+sh(S('b6_07') - 0.2, (p) => <ReliefMap {...p} a={POSA} b={POSB} show={['positions', 'blast']} ats={{ positions: 0, cw1: 0, martin: 0, truman: 0, blast: 0.4 }} />, 0.3);
 sh(S('b6_08') - 0.1, (p) => (<><Photo {...p} src="eruption-column-may-18-1980-mount-st-helens-eruption.jpg" s0={1.0} s1={1.06} fy={0.3} /><Label t={p.t} at={0.3} text="The eruption column, May 18, 1980" credit="Photo: Austin Post, USGS" /></>));
 sh(W('b6_08', 'It'), (p) => (<><Film {...p} src="sw_col2.mp4" /><Label t={p.t} at={0.3} text="The vertical eruption, filmed by Don Swanson · May 18, 1980" credit={USGS} /></>));
 sh(S('b6_09') - 0.1, (p) => (<><Photo {...p} src="mount-st-helens-may-17-1980-one-day-devastating-er.jpg" s0={1.0} s1={1.02} /><Label t={p.t} at={0.2} text="Before: May 17, 1980, from Johnston's Ridge" credit={GL} /></>));
@@ -110,7 +109,7 @@ sh(S('b7_03') - 0.1, (p) => (<><Photo {...p} src="ash-may-18-1980-eruption-mount
 
 // ===================== 8 — PEOPLE
 sh(S('b8_01') - 0.3, (p) => <Card t={p.t} top="57" quote="people died" qat={0.5} />);
-sh(S('b8_02') - 0.1, (p) => <ReliefMap {...p} a={POSA} b={POSB} show={['positions']} ats={{ positions: 0 }} />, 0.3);
+sh(S('b8_02') - 0.1, (p) => <ReliefMap {...p} a={POSA} b={POSB} show={['positions']} ats={{ positions: 0, cw1: 0, martin: 0, truman: 0 }} />, 0.3);
 sh(W('b8_02', 'Reid') - 0.1, (p) => (<><Photo {...p} src="nara_blackburn_car_0611.jpg" s0={1.0} s1={1.05} /><Label t={p.t} at={0.3} text="Reid Blackburn's car at Coldwater I, June 1980; Sandia Laboratory staff recover one of his remote cameras" credit="Photo: Walt Conner, FEMA (National Archives)" /></>));
 sh(W('b8_02', 'Harry') - 0.1, (p) => (<><Photo {...p} src="spirit-lake-and-devastated-forest-area-surrounding-mount-st-he.jpg" s0={1.0} s1={1.05} /><Label t={p.t} at={0.3} text="Spirit Lake after the eruption, covered with logs" credit="Photo: USGS" /></>));
 sh(bite('cc_swanson_plane'), (p) => (<><Film {...p} src="cc_swanson_plane.mov" from={PRE} /><Lower t={p.t} at={0.2} name="Voice: Don Swanson, USGS geologist" role="Flying near the volcano that morning · USGS interview, 2010 · USGS photos of May 18" /></>));
@@ -120,7 +119,8 @@ sh(S('b8_04') - 0.1, (p) => (<><Photo {...p} src="nara_heli_blowdown.jpg" s0={1.
 sh(S('b8_05') - 0.1, (p) => (<><Photo {...p} src="nara_heli_rescue_road.jpg" s0={1.0} s1={1.06} /><Label t={p.t} at={0.3} text="A 304th Rescue Squadron helicopter over a ruined road during rescue operations" credit="Photo: MSgt Robert Leach, U.S. Air Force (National Archives)" /></>));
 sh(W('b8_05', 'Air'), (p) => (<><Film {...p} src="a24_heli.mp4" /><Label t={p.t} at={0.2} text="Helicopters at a staging area near the volcano · May 1980" credit={USGS} /></>));
 sh(S('b8_06') - 0.1, (p) => (<><Photo {...p} src="nara_search_landing_0528.jpg" s0={1.0} s1={1.05} /><Label t={p.t} at={0.3} text="The search for the missing: a helicopter landing in the ash · May 28, 1980 (print with its original caption)" credit="U.S. Forest Service collection (National Archives)" /></>));
-sh(bite('cc_miller_dave'), (p) => (<><Film {...p} src="cc_miller_dave.mov" from={PRE} /><Lower t={p.t} at={0.3} name="Voice: Dan Miller, USGS geologist" role="USGS interview, 2010 · photos from the same USGS film" /></>));
+sh(bite('cc_miller_dave'), (p) => (<><Photo {...p} src="nara_search_pilot_0528.jpg" s0={1.0} s1={1.05} /><Lower t={p.t} at={0.3} name="Voice: Dan Miller, USGS geologist" role="USGS interview, 2010 · photo: Army search flight, May 28, 1980 (National Archives)" /></>));
+sh(bite('cc_miller_dave', 12.6), (p) => (<><Film {...p} src="cc_miller_dave.mov" from={PRE + 12.6} /></>));
 
 // ===================== 9 — AFTER
 sh(S('b9_01') - 0.3, (p) => (<><Film {...p} src="a28_sci.mp4" /><Label t={p.t} at={0.3} text="USGS scientists in the blast zone · May 28, 1980" credit={USGS} /></>));
@@ -132,7 +132,7 @@ sh(bite('cc_miller_forecast'), (p) => (<><Film {...p} src="cc_miller_forecast.mo
 sh(S('b9_04') - 0.1, (p) => (<><Photo {...p} src="nara_heli_crater.jpg" s0={1.0} s1={1.05} /><Label t={p.t} at={0.3} text="The new crater, days after May 18, 1980" credit="Photo: MSgt Robert Leach, U.S. Air Force (National Archives)" /></>));
 sh(S('b9_05') - 0.1, (p) => (<><Film {...p} src="a28_logs.mp4" /><Label t={p.t} at={0.3} text="Logs carried by the mudflows · May 28, 1980" credit={USGS} /></>));
 sh(S('b9_06') - 0.1, (p) => (<><Photo {...p} src="pinatubo_1991-06-12.jpg" s0={1.0} s1={1.06} /><Label t={p.t} at={0.3} text="Mount Pinatubo, Philippines · eruption column of June 12, 1991, seen from Clark Air Base" credit="Photo: USGS" /></>));
-sh(bite('cc_banks_learned'), (p) => (<><Film {...p} src="cc_banks_learned.mov" from={PRE} /><Lower t={p.t} at={0.3} name="Norm Banks, USGS" role="USGS interview, 2010" /></>));
+sh(bite('cc_banks_learned'), (p) => (<><Film {...p} src="cc_banks_learned.mov" from={PRE} /><Label t={p.t} at={0.3} text="Norm Banks, USGS · interview, 2010" right /></>));
 sh(S('b9_07') - 0.1, (p) => (<><Photo {...p} src="evening-view-mount-st-helens-johnston-ridge-observatory-jro.jpg" s0={1.0} s1={1.07} /><Label t={p.t} at={0.6} text="Mount St. Helens from the Johnston Ridge Observatory" credit="Photo: John Pallister, USGS" /></>));
 sh(W('b9_07', 'From') - 0.1, (p) => (<><Photo {...p} src="johnston_coldwater2_1980-05-17.jpg" s0={1.12} s1={1.2} fx={0.72} fy={0.4} /><Label t={p.t} at={0.4} text="David A. Johnston, Coldwater II, May 17, 1980" credit={GL} /></>), 0.6);
 sh(E.end.at, (p) => (<AbsoluteFill style={{ background: BG, alignItems: 'center', justifyContent: 'center' }}>
