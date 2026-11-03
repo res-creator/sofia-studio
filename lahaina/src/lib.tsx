@@ -150,18 +150,15 @@ export const Quote: React.FC<SP & { text: string; who: string; role?: string; ph
   parts.forEach((s) => { const b = s.startsWith('**'); s.replace(/\*\*/g, '').split(' ').filter(Boolean).forEach((w) => words.push({ w, b })); });
   return (
     <AbsoluteFill style={{ background: C.bg, overflow: 'hidden' }}>
-      {p.bg && <AbsoluteFill style={{ opacity: 0.35 }}><Still t={p.t} dur={p.dur} src={p.bg} cam={{ s0: 1.15, s1: 1.25 }} /></AbsoluteFill>}
-      <AbsoluteFill style={{ background: 'linear-gradient(90deg, rgba(7,9,11,0.92) 0%, rgba(7,9,11,0.75) 55%, rgba(7,9,11,0.55) 100%)' }} />
-      <div style={{ position: 'absolute', left: 150, top: 230, width: 420, height: 540, border: `3px solid ${C.ink}`, overflow: 'hidden', background: '#15191C', opacity: pe(p.t, 0, 0.5), transform: `translateY(${(1 - pe(p.t, 0, 0.6)) * 30}px)` }}>
-        {p.photo ? <Img src={staticFile('img/' + p.photo)} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(1) contrast(1.1)' }} /> : (
-          <svg width="420" height="540" viewBox="0 0 420 540"><circle cx="210" cy="200" r="95" fill="#2A3035" /><path d="M40,540 C60,370 140,320 210,320 C280,320 360,370 380,540 Z" fill="#2A3035" /></svg>
-        )}
+      {p.bg && (p.bg.endsWith('.mp4') ? <AbsoluteFill style={{ opacity: 0.62 }}><Clip t={p.t} dur={p.dur} src={p.bg} cam={{ s0: 1.1, s1: 1.22 }} /></AbsoluteFill> : <AbsoluteFill style={{ opacity: 0.42 }}><Still t={p.t} dur={p.dur} src={p.bg} cam={{ s0: 1.12, s1: 1.3, x0: -2, x1: 3 }} /></AbsoluteFill>)}
+      <AbsoluteFill style={{ background: p.bg?.endsWith('.mp4') ? 'linear-gradient(90deg, rgba(7,9,11,0.78) 0%, rgba(7,9,11,0.5) 60%, rgba(7,9,11,0.35) 100%)' : 'linear-gradient(90deg, rgba(7,9,11,0.92) 0%, rgba(7,9,11,0.75) 55%, rgba(7,9,11,0.55) 100%)' }} />
+      {p.photo && (<div style={{ position: 'absolute', left: 150, top: 230, width: 420, height: 540, border: `3px solid ${C.ink}`, overflow: 'hidden', background: '#15191C', opacity: pe(p.t, 0, 0.5) }}><Img src={staticFile('img/' + p.photo)} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(1) contrast(1.1)' }} /></div>)}
+      <div style={{ position: 'absolute', left: 150, bottom: 150, opacity: pe(p.t, 0.3, 0.5), transform: `translateX(${(1 - pe(p.t, 0.3, 0.6)) * -40}px)` }}>
+        <div style={{ width: 90, height: 5, background: C.red, marginBottom: 16 }} />
+        <div style={{ fontFamily: SANS, fontWeight: 800, fontSize: 40, color: C.ink, letterSpacing: 1 }}>{p.who}</div>
+        {p.role && <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 28, color: C.dim, marginTop: 6 }}>{p.role}</div>}
       </div>
-      <div style={{ position: 'absolute', left: 150, top: 790, width: 560, opacity: pe(p.t, 0.3, 0.5) }}>
-        <div style={{ fontFamily: SANS, fontWeight: 800, fontSize: 36, color: C.ink, letterSpacing: 1 }}>{p.who}</div>
-        {p.role && <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 26, color: C.dim, marginTop: 6 }}>{p.role}</div>}
-      </div>
-      <div style={{ position: 'absolute', left: 680, top: 240, width: 1100, fontFamily: SANS, fontSize: 56, lineHeight: 1.32, color: C.ink }}>
+      <div style={{ position: 'absolute', left: p.photo ? 680 : 150, top: p.photo ? 240 : 300, width: p.photo ? 1100 : 1560, fontFamily: SANS, fontSize: p.photo ? 56 : 66, lineHeight: 1.32, color: C.ink }}>
         <span style={{ fontFamily: DISPLAY, fontSize: 140, color: C.red, lineHeight: 0, position: 'relative', top: 52, marginRight: 10, opacity: pe(p.t, at, 0.3) }}>“</span>
         {words.map((x, i) => { const k = pe(p.t, at + i * 0.07, 0.25); return <span key={i} style={{ opacity: 0.15 + 0.85 * k, fontWeight: x.b ? 800 : 400, color: x.b ? C.ember : C.ink }}>{x.w} </span>; })}
       </div>
