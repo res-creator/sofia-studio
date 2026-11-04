@@ -2681,3 +2681,31 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "size" — rubric answers4 (60-70 s). heroine = Jessica, shop assistant = Laura
+CAST.update({
+    "clerk": dict(voice="af_sarah", speed=1.0, lang="en-gb", el="FGY2WhTYpPnrIDTdsKH5"),   # size: the shop assistant (Laura)
+})
+EP["size"] = dict(
+    title='Размер вам не подойдёт', rubric='answers4',
+    hook_title=[['ПРОДАВЕЦ:', 'd'], ['«ВАМ НЕ ПОДОЙДЁТ»', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    lines=[
+        ('hook_c', 'clerk', "[condescending] Oh... I don't think that size is for you.", 'Ой… вряд ли этот размер вам подойдёт.'),
+        ('hook', 'nar', 'Ты выбрала платье, а продавщица решила за тебя. Четыре ответа.', ''),
+        ('o1_h', 'her', '[angrily] You rude!', 'Вы грубая!'),
+        ('o1_c', 'clerk', "[smugly] Rude? I'm honest. Try the scarf.", 'Грубая? Я честная. Примерьте шарф.'),
+        ('o1_nar', 'nar', 'В лоб — и тебе предложили шарф.', ''),
+        ('o2_h', 'her', "[politely] I'd like to try it anyway.", 'Я всё равно хочу примерить.'),
+        ('o2_c', 'clerk', '[sweetly] Of course. The fitting room is for brave people.', 'Конечно. Примерочная — для смелых.'),
+        ('o2_nar', 'nar', 'Вежливо, но укол остался.', ''),
+        ('o3_h', 'her', "[calmly] Thanks, but I'll be the judge of that.", 'Спасибо, но это решу я.'),
+        ('o3_c', 'clerk', '[stiffly] ...Of course, madam.', '…Конечно, мадам.'),
+        ('o3_nar', 'nar', 'Как носитель: коротко и с достоинством. Запоминай:', ''),
+        ('o3_tip', 'tip', "I'll be the judge of that.", ''),
+        ('o4_h', 'her', '[sweetly] How kind of you to worry. Could I speak to the manager about your fashion advice?', 'Как мило, что вы волнуетесь. Можно поговорить с менеджером о ваших советах?'),
+        ('o4_c', 'clerk', '[nervously] The... manager?', 'С… менеджером?'),
+        ('end_h', 'her', "[smiling] Oh wait — I'm the new manager. I start on Monday.", 'Ой, подождите — новый менеджер — это я. Выхожу в понедельник.'),
+        ('moral', 'nar', 'Мораль: не суди по размеру — суди по бейджу.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши цифру и сохрани!', ''),
+    ],
+)
