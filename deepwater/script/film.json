@@ -64,7 +64,7 @@
   [
    "vo",
    "b09",
-   "There was a warning in the laboratory, too. Halliburton's own tests had shown the cement mix to be unstable. The commission found no sign that the last of those results was ever reported to BP.",
+   "There was a warning in the laboratory, too. Halliburton's own tests had shown the cement mix to be unstable.",
    0.7
   ],
   [
@@ -189,12 +189,6 @@
   ],
   [
    "vo",
-   "b27",
-   "On the supply vessel Damon B. Bankston, tied up alongside, Captain Alwin Landry saw mud falling on his deck, in his words, kind of like a black rain.",
-   0.6
-  ],
-  [
-   "vo",
    "b28",
    "Mike Williams was in his shop, below the rig floor.",
    0.6
@@ -223,14 +217,14 @@
    [
     [
      538.9,
-     554.7
-    ],
-    [
-     555.36,
-     564.5
+     546.96
     ],
     [
      570.36,
+     585.62
+    ],
+    [
+     589.22,
      592.3
     ]
    ],
@@ -248,18 +242,6 @@
    "b30",
    "It was about nine forty-nine.",
    0.1
-  ],
-  [
-   "bite",
-   "x_door",
-   [
-    [
-     3.94,
-     12.92
-    ]
-   ],
-   0.6,
-   "x"
   ],
   [
    "bite",
@@ -286,18 +268,6 @@
     [
      306.36,
      320.5
-    ]
-   ],
-   0.5,
-   "x"
-  ],
-  [
-   "bite",
-   "x_bridge",
-   [
-    [
-     336.4,
-     344.84
     ]
    ],
    0.5,
@@ -341,18 +311,6 @@
   ],
   [
    "bite",
-   "y_cook",
-   [
-    [
-     161.56,
-     171.9
-    ]
-   ],
-   0.5,
-   "y"
-  ],
-  [
-   "bite",
    "y_three",
    [
     [
@@ -376,10 +334,6 @@
      250.34
     ],
     [
-     253.18,
-     255.9
-    ],
-    [
      261.72,
      271.2
     ]
@@ -391,6 +345,10 @@
    "bite",
    "y_water",
    [
+    [
+     289.4,
+     299.64
+    ],
     [
      308.46,
      320.46
@@ -408,7 +366,7 @@
      346.4
     ],
     [
-     359.42,
+     364.02,
      375.1
     ]
    ],
@@ -427,6 +385,10 @@
    [
     [
      391.15,
+     393.95
+    ],
+    [
+     396.45,
      404.1
     ]
    ],
@@ -488,9 +450,15 @@
    0.6
   ],
   [
+   "card",
+   "pods",
+   6.0,
+   0.3
+  ],
+  [
    "vo",
    "b43",
-   "The control pods that run the deadman also had wiring faults. The commission, writing before the forensic tests, thought these faults had kept it from working. The Chemical Safety Board concluded that it fired anyway. And by the time the crew closed the preventer, the commission noted, the flow may already have been too strong to stop. Earlier detection would have improved the odds.",
+   "And by the time the crew closed the preventer, the commission noted, the flow may already have been too strong to stop. Earlier detection would have improved the odds.",
    0.6
   ],
   [

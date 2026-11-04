@@ -1,7 +1,7 @@
 KNOWN IN ADVANCE — upload kit (NOT published; for the owner's review)
 
 FILE
-final/dwh_full_film.mp4 (1920x1080, about 15:14) · captions final/dwh_full_film.srt
+final/dwh_full_film.mp4 (1920x1080, about 14:02) · captions final/dwh_full_film.srt
 THUMBNAIL: not made yet (next step, after the owner reviews the film)
 
 TITLE (recommended)
@@ -26,13 +26,13 @@ CHAPTERS
 0:00 April 20, 2010
 1:55 The rig and the well
 2:54 Three barriers
-3:41 The test
-5:21 The signs
-6:34 The blowout
-9:07 Abandon ship
-11:43 The last line of defense
-13:15 After
-14:12 The answer
+3:36 The test
+5:16 The signs
+6:29 The blowout
+8:12 Abandon ship
+10:38 The last line of defense
+12:04 After
+13:00 The answer
 
 SOURCES (facts)
 - National Commission on the BP Deepwater Horizon Oil Spill, "Deep Water", report to the President (2011): https://www.govinfo.gov/content/pkg/GPO-OILCOMMISSION/pdf/GPO-OILCOMMISSION.pdf

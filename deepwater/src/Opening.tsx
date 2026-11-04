@@ -55,7 +55,7 @@ sh(S('c07') - 0.2, (p) => (<><Film {...p} src="jit_wide1.mp4" /><Label t={p.t} a
 const F0 = S('c08') - 0.2;
 sh(F0, (p) => <Well t={p.t + 6} show={['rig', 'riser', 'bop', 'well', 'mud', 'seawater', 'flow', 'labels']} at={{ seawater: 0, flow: 6 + W('c08', 'mud') - F0 }} caption={['ABOUT 9:40 P.M.', 'Mud and gas surge up the riser and onto the rig floor. (The crew had replaced the mud in the riser with seawater after 8 p.m.)']} capAt={6 + W('c08', 'nine', 1) - F0} />, 0.3);
 sh(W('c08', 'exploded') - 0.6, (p) => (<><Film {...p} src="night_wide.mp4" from={10} /><Label t={p.t} at={0.4} text="The rig after the explosions, filmed by the Coast Guard after 11 p.m." credit={USCG} /></>), 0.3);
-sh(E.silence.at - 0.3, (p) => (<><Film {...p} src="night_fireboats.mp4" /><Label t={p.t} at={1.0} text="Fireboats spray the burning rig · night of April 20–21, 2010" credit={USCG} /></>), 0.5);
+sh(E.silence.at - 0.3, (p) => (<><Film {...p} src="night_fireboats.mp4" /><Label t={p.t} at={1.0} text="Fireboats spray the burning rig · after 11 p.m., April 20–21, 2010" credit={USCG} /></>), 0.5);
 sh(S('c10') - 0.3, (p) => (<><Film {...p} src="day_fire.mp4" /><Label t={p.t} at={0.4} text="The next morning, April 21, 2010" credit={USCG} /></>), 0.5);
 sh(E.title.at, (p) => (<AbsoluteFill style={{ background: BG, alignItems: 'center', justifyContent: 'center' }}>
   <div style={{ fontFamily: DISPLAY, fontSize: 124, color: INK, letterSpacing: 4, opacity: pe(p.t, 0.2, 0.7) }}>DEEPWATER HORIZON</div>

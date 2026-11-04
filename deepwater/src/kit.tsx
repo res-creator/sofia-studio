@@ -35,7 +35,7 @@ const shadow = '0 2px 10px rgba(0,0,0,0.85), 0 0 2px rgba(0,0,0,0.9)';
 // source label: what it is · where/when, and the credit line
 export const Label: React.FC<{ t: number; at?: number; text: string; credit?: string; right?: boolean; top?: boolean }> = ({ t, at = 0.3, text, credit, right, top }) => (<>
   <div style={{ position: 'absolute', left: 0, right: 0, [top ? 'top' : 'bottom']: 0, height: 270, transform: top ? 'scaleY(-1)' : undefined, background: 'linear-gradient(0deg, rgba(0,0,0,0.74), rgba(0,0,0,0.35) 55%, rgba(0,0,0,0))', opacity: pe(t, at, 0.5) }} />
-  <div style={{ position: 'absolute', [right ? 'right' : 'left']: 70, [top ? 'top' : 'bottom']: top ? 50 : 56, maxWidth: 1100, opacity: pe(t, at, 0.5), textAlign: right ? 'right' : 'left', textShadow: shadow }}>
+  <div style={{ position: 'absolute', [right ? 'right' : 'left']: 70, [top ? 'top' : 'bottom']: top ? 50 : 56, maxWidth: top && !right ? 1250 : 1100, opacity: pe(t, at, 0.5), textAlign: right ? 'right' : 'left', textShadow: shadow }}>
     <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: 34, color: INK, lineHeight: 1.25 }}>{text}</div>
     {credit && <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 25, color: 'rgba(242,239,233,0.78)', marginTop: 6 }}>{credit}</div>}
   </div>
@@ -85,8 +85,8 @@ export const Chapter: React.FC<{ t: number; n: number; title: string }> = ({ t, 
   </div>
 );
 // a documented quote over a photo or on its own (source always shown)
-export const Quote: React.FC<{ t: number; at?: number; text: string; src: string; side?: boolean }> = ({ t, at = 0.4, text, src, side }) => (
-  <div style={{ position: 'absolute', right: side ? 80 : 160, left: side ? 1060 : 160, top: side ? 200 : 300, opacity: pe(t, at, 0.5), background: side ? 'rgba(8,9,10,0.78)' : 'transparent', padding: side ? '26px 32px' : 0, borderRadius: 8, textAlign: side ? 'left' : 'center' }}>
+export const Quote: React.FC<{ t: number; at?: number; text: string; src: string; side?: boolean; left?: boolean }> = ({ t, at = 0.4, text, src, side, left }) => (
+  <div style={{ position: 'absolute', right: side ? (left ? 1100 : 80) : 160, left: side ? (left ? 70 : 1060) : 160, top: side ? (left ? 130 : 200) : 300, opacity: pe(t, at, 0.5), background: side ? 'rgba(8,9,10,0.78)' : 'transparent', padding: side ? '26px 32px' : 0, borderRadius: 8, textAlign: side ? 'left' : 'center' }}>
     <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: side ? 40 : 56, color: INK, lineHeight: 1.3 }}>{text}</div>
     <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: side ? 24 : 28, color: 'rgba(242,239,233,0.78)', marginTop: 18 }}>{src}</div>
   </div>
@@ -111,8 +111,8 @@ export const Roster: React.FC<{ t: number; title: string; rows: { who: string; r
 );
 export const TextCard: React.FC<{ t: number; title: string; lines: { s: string; at: number }[]; src?: string }> = ({ t, title, lines, src }) => (
   <AbsoluteFill style={{ background: BG }}>
-    <div style={{ position: 'absolute', left: 160, top: 150, fontFamily: SANS, fontWeight: 800, fontSize: 46, color: ACC, letterSpacing: 3, opacity: pe(t, 0.1) }}>{title}</div>
-    {lines.map((l, i) => <div key={i} style={{ position: 'absolute', left: 160, top: 270 + i * 130, width: 1600, fontFamily: SANS, fontWeight: 600, fontSize: 44, color: INK, lineHeight: 1.25, opacity: pe(t, l.at, 0.5) }}>{l.s}</div>)}
+    <div style={{ position: 'absolute', left: 160, top: 220, fontFamily: SANS, fontWeight: 800, fontSize: 46, color: ACC, letterSpacing: 3, opacity: pe(t, 0.1) }}>{title}</div>
+    {lines.map((l, i) => <div key={i} style={{ position: 'absolute', left: 160, top: 330 + i * 130, width: 1600, fontFamily: SANS, fontWeight: 600, fontSize: 44, color: INK, lineHeight: 1.25, opacity: pe(t, l.at, 0.5) }}>{l.s}</div>)}
     {src && <div style={{ position: 'absolute', left: 70, bottom: 40, fontFamily: SANS, fontSize: 22, color: 'rgba(242,239,233,0.7)' }}>{src}</div>}
   </AbsoluteFill>
 );

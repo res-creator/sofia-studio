@@ -123,5 +123,6 @@ All the DVIDS photos 6.8–6.13 are at `raw/dvids_photos/dvids_img_<ID>.jpg` (20
 | `burn_may7` | DVIDS 85187 | 0:36–0:51 | Controlled burn, May 7, 2010 (U.S. Navy) | PD | The spill |
 | Photos | DVIDS 1095288, 272213, 1096998, 1098147; NASA EO May 17, 2010 | — | as in sections 2, 1.10, 6.12, 4.5, 6.4 above | PD | Rig type, sinking, capping, BOP evidence, slick |
 | Commission pages | `public/doc/comm-009/018/020/123/135/135b/140.jpg` | pp. vii, 2, 4, 107, 119 (×2), 124 | rendered from the GPO PDF, boxes from `tools/docbox.py` | US government work | Short proof of each key statement |
-| `deck_plan_hearing.jpg` (crops) | DVIDS 1095904 | bottom-left and bottom-right crops (the "MURRAY" pin is outside both) | Rig deck plan used at the JIT hearings, May 2010 | PD | Honest stand-in under the evacuation (no footage of 9:52–10:30 p.m. exists) — added after the critic's review |
+| `deck_plan_hearing.jpg` (crops) | DVIDS 1095904 | — | Rig deck plan | PD | **Removed in fix pass 3** (it gave no information about the evacuation); replaced by a rescue schematic with confirmed points only |
+| `w_live.mp4` | DVIDS 91195 | 8:44–9:28 | Williams on camera, continuous (sync answer "Never" inside) | PD | Ch. 6 opening |
 | Commission p. 101 | `public/doc/comm-117.jpg` | — | Halliburton foam stability tests, April 2010 | US government work | The known risk in the cement |

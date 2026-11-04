@@ -20,3 +20,4 @@ Y=jit/dvids91195_jit_2010-07-23.mp4                                    # DVIDS 9
 [ -s public/vid/w_sync1.mp4 ] || ffmpeg -v error -y -i $R/$Y -ss 533.98 -t 8.32 -an -c:v libx264 -crf 16 -preset fast -pix_fmt yuv420p public/vid/w_sync1.mp4
 [ -s public/vid/w_sync2.mp4 ] || ffmpeg -v error -y -i $R/$Y -ss 556.33 -t 12.12 -an -c:v libx264 -crf 16 -preset fast -pix_fmt yuv420p public/vid/w_sync2.mp4
 echo FILM_CLIPS_OK
+[ -s public/vid/w_live.mp4 ] || ffmpeg -v error -y -i $R/$Y -ss 524 -t 44.4 -an -c:v libx264 -crf 16 -preset fast -pix_fmt yuv420p public/vid/w_live.mp4   # Williams on camera, continuous (8:44-9:28)

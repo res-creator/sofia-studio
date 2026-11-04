@@ -50,7 +50,7 @@ export const Bop: React.FC<{ t: number; buckle?: number; close?: number; pods?: 
               <rect x={(x as number) - 95} y={150} width={190} height={130} rx={10} fill="#15181B" stroke={col as string} strokeWidth={4} />
               <text x={x as number} y={200} fill={col as string} fontFamily={SANS} fontWeight={800} fontSize={26} textAnchor="middle">{n}</text>
               <text x={x as number} y={240} fill={INK} fontFamily={SANS} fontWeight={600} fontSize={20} textAnchor="middle">control pod</text>
-              <text x={x as number} y={315} fill={WC.hc} fontFamily={SANS} fontWeight={800} fontSize={22} textAnchor="middle" opacity={ft}>{f}</text>
+              <text x={x as number} y={318} fill={WC.hc} fontFamily={SANS} fontWeight={800} fontSize={26} textAnchor="middle" opacity={ft}>{(f as string).split(' ')[0]}</text><text x={x as number} y={348} fill={WC.hc} fontFamily={SANS} fontWeight={800} fontSize={26} textAnchor="middle" opacity={ft}>{(f as string).split(' ')[1]}</text>
               <line x1={x as number} y1={280} x2={X + 380} y2={300} stroke={col as string} strokeWidth={2} opacity={0.6} />
             </g>))}
           <text x={1570} y={120} fill={INK} fontFamily={SANS} fontWeight={700} fontSize={24} textAnchor="middle">“DEADMAN” (AUTOMATIC) RUNS THROUGH BOTH PODS</text>
@@ -60,7 +60,7 @@ export const Bop: React.FC<{ t: number; buckle?: number; close?: number; pods?: 
         <div style={{ fontFamily: SANS, fontWeight: 800, fontSize: 32, color: ACC, letterSpacing: 2 }}>{caption[0]}</div>
         <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 28, color: INK, marginTop: 8, lineHeight: 1.3 }}>{caption[1]}</div>
       </div>}
-      <div style={{ position: 'absolute', right: 60, bottom: 40, fontFamily: SANS, fontWeight: 700, fontSize: 20, letterSpacing: 3, color: 'rgba(242,239,233,0.75)' }}>BLOWOUT PREVENTER · RECONSTRUCTION · SIMPLIFIED, NOT TO SCALE</div>
+      <div style={{ position: 'absolute', right: 60, bottom: 36, textAlign: 'right', fontFamily: SANS, fontWeight: 700, fontSize: 20, letterSpacing: 3, color: 'rgba(242,239,233,0.75)', lineHeight: 1.5 }}>BLOWOUT PREVENTER<br />RECONSTRUCTION · SIMPLIFIED, NOT TO SCALE</div>
     </AbsoluteFill>
   );
 };

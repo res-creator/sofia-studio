@@ -11,7 +11,7 @@ export const WC = { sky: '#141A20', water: '#0E2A3C', water2: '#0A1F2E', rock: '
 // geometry (px): x of the well axis, key depths
 const X = 960, SURF = 210, FLOOR = 640, TD = 1040;
 type Layer = 'rig' | 'labels' | 'riser' | 'bop' | 'well' | 'pipe' | 'kill' | 'gauges' | 'mud' | 'cement' | 'flow' | 'depth' | 'seawater' | 'bopglow';
-export const Well: React.FC<{ t: number; show: Layer[]; at?: Partial<Record<Layer, number>>; dp?: number; kl?: number; caption?: [string, string]; capAt?: number; zoom?: { s: number; y: number } }> = ({ t, show, at = {}, dp = 1400, kl = 0, caption, capAt = 0.3, zoom }) => {
+export const Well: React.FC<{ t: number; show: Layer[]; at?: Partial<Record<Layer, number>>; dp?: number; kl?: number; caption?: [string, string]; capAt?: number; zoom?: { s: number; y: number }; gtag?: string }> = ({ t, show, at = {}, dp = 1400, kl = 0, caption, capAt = 0.3, zoom, gtag }) => {
   const on = (l: Layer, d = 0.6) => (show.includes(l) ? k(t, at[l] ?? 0, d) : 0);
   const seawater = on('seawater', 3.0), bopglow = on('bopglow', 0.8);
   const rig = on('rig'), riser = on('riser'), bop = on('bop'), well = on('well'), pipe = on('pipe'), kill = on('kill'), gauges = on('gauges'), mud = on('mud', 1.2), cement = on('cement'), flow = on('flow', 2.5), depth = on('depth'), labels = on('labels');
@@ -21,7 +21,7 @@ export const Well: React.FC<{ t: number; show: Layer[]; at?: Partial<Record<Laye
   );
   const gauge = (x: number, y: number, title: string, v: number, o: number, warn: boolean) => (
     <g opacity={o} transform={`translate(${x},${y})`}>
-      <rect x={-130} y={-48} width={260} height={96} rx={12} fill="#0B0C0D" stroke={warn ? WC.hc : WC.steel} strokeWidth={3} />
+      <rect x={-160} y={-48} width={320} height={96} rx={12} fill="#0B0C0D" stroke={warn ? WC.hc : WC.steel} strokeWidth={3} />
       <text x={0} y={-14} fill={INK} fontFamily={SANS} fontWeight={600} fontSize={20} textAnchor="middle" letterSpacing={1}>{title}</text>
       <text x={0} y={30} fill={warn ? WC.hc : WC.sea} fontFamily={SANS} fontWeight={800} fontSize={38} textAnchor="middle">{Math.round(v * o).toLocaleString('en-US')} psi</text>
     </g>
@@ -92,8 +92,8 @@ export const Well: React.FC<{ t: number; show: Layer[]; at?: Partial<Record<Laye
         </>}
         {/* gauges: the contradiction of the negative test */}
         {gauges > 0 && <>
-          {gauge(X - 420, 95, 'DRILL PIPE', dp, gauges, dp > 0)}
-          {kl >= 0 && gauge(X + 420, 95, 'KILL LINE', kl, k(t, (at.gauges ?? 0) + 1.0), kl > 0)}
+          {gauge(X - 420, 95, gtag ? `DRILL PIPE · ${gtag}` : 'DRILL PIPE', dp, gauges, dp > 0)}
+          {kl >= 0 && gauge(X + 420, 95, gtag ? `KILL LINE · ${gtag}` : 'KILL LINE', kl, k(t, (at.gauges ?? 0) + 1.0), kl > 0)}
           <line x1={X - 290} y1={95} x2={X - 10} y2={SURF - 70} stroke={WC.hc} strokeWidth={2} opacity={gauges * 0.7} />
           {kl >= 0 && <line x1={X + 290} y1={95} x2={X + 34} y2={SURF - 30} stroke={WC.sea} strokeWidth={2} opacity={k(t, (at.gauges ?? 0) + 1.0) * 0.7} />}
         </>}
