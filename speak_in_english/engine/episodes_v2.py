@@ -2681,3 +2681,25 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "uup" — NEW RUBRIC «Ответ на вопрос из комментариев» (~25-35 s). ElevenLabs only; narrator Sarah, heroine = Jessica, ex = Will, tip = Bella.
+CAST.update({
+    "ex2": dict(voice="am_michael", speed=1.0, lang="en-gb", el="bIHbv24MWmeRgasZH58o"),   # uup: her ex (Will)
+})
+EP["uup"] = dict(
+    title='Бывший: U up?', rubric='comment_reply',
+    hook_title=[['03:04. БЫВШИЙ:', 'd'], ['«U UP?»', 'p'], ['ЧТО ОТВЕТИШЬ?', 'd']],
+    lines=[
+        ('hook_e', 'ex2', '[softly] Hey... you up?', 'Эй… не спишь?'),
+        ('hook', 'nar', 'Вы спросили: что ответить бывшему, который пишет в три ночи? Три варианта.', ''),
+        ('o1_h', 'her', '[coldly] No.', 'Нет.'),
+        ('o1_nar', 'nar', 'Коротко. Но он видит, что ты не спишь.', ''),
+        ('o2_h', 'her', '[dryly] Yes. Still not interested.', 'Да. Всё так же неинтересно.'),
+        ('o2_nar', 'nar', 'С юмором. Можно спать спокойно.', ''),
+        ('o3_h', 'her', "[calmly] It's three a.m. Go to sleep — and lose my number.", 'Три часа ночи. Иди спать — и забудь мой номер.'),
+        ('o3_nar', 'nar', 'Lose my number — «забудь мой номер». Запоминай:', ''),
+        ('o3_tip', 'tip', 'Lose my number.', ''),
+        ('end_e', 'ex2', "[awkwardly] ...Sorry. Wrong chat. That was for my mum.", '…Прости. Не тот чат. Это было маме.'),
+        ('outro', 'nar', 'Какой ответ твой: один, два или три? И пиши, что разобрать следующим!', ''),
+    ],
+)
