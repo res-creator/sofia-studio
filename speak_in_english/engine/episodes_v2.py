@@ -2681,3 +2681,28 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "gained" — NEW RUBRIC «Как ответить, когда…» (scene, 3 answers, ~35-40 s, no levels). ElevenLabs only; narrator Sarah, heroine = Jessica, Rose = elderly-lady voice (CAST granny/pam), Tom = Liam, tip = Bella.
+CAST.update({
+    "mil2": dict(voice="bf_isabella", speed=0.92, lang="en-gb", el="Xb7hH8MSUJpSbSDYk0k2"),   # gained: Rose, the mother-in-law
+    "son2": dict(voice="am_liam", speed=1.0, lang="en-gb", el="TX3LPaxmHKxFdv7VOQHJ"),        # gained: Tom, her husband
+})
+EP["gained"] = dict(
+    title='Свекровь: ты поправилась?', rubric='answers3',
+    hook_title=[['СВЕКРОВЬ:', 'd'], ['«ТЫ ПОПРАВИЛАСЬ?»', 'p'], ['ЧТО ОТВЕТИШЬ?', 'd']],
+    lines=[
+        ('hook_r', 'mil2', '[sweetly] Oh, darling... have you put on a bit of weight?', 'Ой, дорогая… ты что, немного поправилась?'),
+        ('hook', 'nar', 'Семейный ужин, и свекровь при всех: «Ты поправилась?» Три ответа — от худшего к лучшему.', ''),
+        ('o1_h', 'her', '[angrily] And you got old!', 'А вы постарели!'),
+        ('o1_nar', 'nar', 'В лоб. Ужин окончен.', ''),
+        ('o2_h', 'her', "[politely] I'd rather not talk about my weight.", 'Я бы не хотела обсуждать свой вес.'),
+        ('o2_r', 'mil2', '[sweetly] Of course, dear. More cake?', 'Конечно, милая. Ещё тортика?'),
+        ('o2_nar', 'nar', 'Вежливо. Но торт уже едет к тебе.', ''),
+        ('o3_h', 'her', "[brightly] Thank you for noticing! I've just been so happy lately.", 'Спасибо, что заметили! Я просто в последнее время такая счастливая.'),
+        ('o3_r', 'mil2', '[deflated] ...Happy? Oh. Well... good for you.', '…Счастливая? А. Ну… рада за тебя.'),
+        ('o3_nar', 'nar', 'Как носитель: преврати укол в комплимент. Запоминай:', ''),
+        ('o3_tip', 'tip', "I've just been so happy lately.", ''),
+        ('end_t', 'son2', "[quietly] Mum... you've put on a bit too.", 'Мам… ты, кстати, тоже.'),
+        ('outro', 'nar', 'А ты бы ответила как: один, два или три? Пиши цифру и сохрани, пригодится на семейном ужине!', ''),
+    ],
+)

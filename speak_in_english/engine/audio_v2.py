@@ -308,6 +308,19 @@ def chime():
     return norm(y, 0.6)
 SFX = dict(gasp=gasp(), zip=zipfx(), rimshot=rimshot(), squeak=squeak(), dressup=dressup(), chime=chime(), strain=creak(), coo=coo(), choo=choo(), bark=bark(), umbrella=umbrella_fx(), tada=tada(), knock=knock(), creak=creak(), riff=riff(), knob=knob(), boom=boom(), feather=feather(), clapclap=clapclap(), powerdown=powerdown(), snip=snip1(), snips=snips(), clipper=clipper(), hairdryer=hairdryer(), spin=spin(), register=register(), plop=plop(), thud=thud(), gulp=gulp(), boing=boing(), nope=nope(), cuckoo=cuckoo(), whoosh=whoosh(), impact=impact(), impact_soft=impact(True), pop=pop(), stamp=stamp(), sparkle=sparkle(), blink=blink(), brow=brow(), buzz=buzz(), ding=ding(),
            cricket=cricket(), tick=tick(), deflate=deflate(), riser_short=riser_short(), clank=clank(), scratch=scratch(), drop=drop(), bell=bell(), lift_ding=lift_ding(), doors=doors(), hum=hum())
+if EPN == "gained":  # deflate "pfff" (air leaking out) + choke cough (own rng, so other episodes mix exactly as before)
+    _g = np.random.default_rng(31)
+    def _pfff():
+        t = T(0.75); n = _g.standard_normal(len(t)); f = 2600*np.exp(-t*2.2) + 500
+        y = np.zeros(len(t))
+        for a in range(0, len(t), 2400): b = min(len(t), a + 2400); y[a:b] = bp(n[a:b], max(200, f[a] * 0.6), f[a] * 1.4)
+        return norm(y * np.minimum(t*40, 1) * np.exp(-t*2.5) * (1 + 0.3*np.sin(2*np.pi*18*t)), 0.6)
+    def _cough():
+        y = np.zeros(int(0.9*SR))
+        for k_, (t0, g_) in enumerate([(0, 1), (0.22, 0.8), (0.42, 0.6)]):
+            tt = T(0.16); put(y, bp(_g.standard_normal(len(tt)), 350, 2600) * np.minimum(tt*200, 1) * np.exp(-tt*22), t0, g_)
+        return norm(y, 0.65)
+    SFX.update(pfff=_pfff(), cough=_cough())
 if EPN in ("checkout", "password", "rich", "busy"):  # self-checkout sounds for this episode only (own rng, so other episodes mix exactly as before)
     _r = np.random.default_rng(12)
     def _beep():
@@ -589,7 +602,7 @@ elif EPN in ("gym", "cancel"):
         if k % 4 == 0:
             for m in chords[bar]: put(music, pluck(note(m + 12, K), b*1.8, 0.6), t0, 0.12)
         if k % 2 == 0: put(music, pluck(note(chords[bar][(k//2) % 3] + 24, K), 0.3, 1.2), t0 + b*0.5, 0.06)
-elif EPN in ("dinner", "gift", "guest", "marry"):
+elif EPN in ("dinner", "gift", "guest", "marry", "gained"):
     # cosy family waltz: oom-pah-pah + accordion-ish melody + mandolin tremolo
     bpm = 168; b = 60/bpm; K = 0
     def accord(f, d):
@@ -649,7 +662,10 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+if EPN == "gained":  # answers3 rubric (no levels): music off from the end of the tip through the twist; back with the end screen
+    c2e = sp["o3_tip"]["t"] + sp["o3_tip"]["d"]; c2n = next(x["s"] for x in TL["scenes"] if x["id"] == "outro")
+else:
+    C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause
@@ -678,7 +694,7 @@ for s in TL["speech"]:
     if EPN == "airport" and s["id"] == "c2_her2": x = lp(lp(x, 650), 650) * 1.8
     l, r = PAN.get(s["who"], (0.84, 1.0)); g = 1.0 if s["who"] == "nar" else 0.95
     voice[i:j, 0] += x[:j-i]*l*g; voice[i:j, 1] += x[:j-i]*r*g; duck[max(0, i-2400):j+4800] = 1
-duck = lp(duck, 4); mus_g = gain * (1 - (0.74 if EPN == "party" else 0.7)*np.clip(duck, 0, 1)) * (0.30 if EPN == "gym" else 0.32 if EPN in ("dinner", "salon", "gift", "guest", "haircut", "marry") else 0.44 if EPN == "party" else 0.34)
+duck = lp(duck, 4); mus_g = gain * (1 - (0.74 if EPN == "party" else 0.7)*np.clip(duck, 0, 1)) * (0.30 if EPN == "gym" else 0.32 if EPN in ("dinner", "salon", "gift", "guest", "haircut", "marry", "gained") else 0.44 if EPN == "party" else 0.34)
 fx = np.zeros((N, 2))
 for c in TL["sfx"]:
     x = SFX[c["n"]]; i = int(c["t"]*SR)
