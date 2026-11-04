@@ -2,7 +2,8 @@ KNOWN IN ADVANCE — upload kit (NOT published; for the owner's review)
 
 FILE
 final/dwh_full_film.mp4 (1920x1080, about 14:02) · captions final/dwh_full_film.srt
-THUMBNAIL: not made yet (next step, after the owner reviews the film)
+THUMBNAIL
+final/thumbnail.jpg — "8 P.M. / DECLARED A SUCCESS" (recommended); alternative final/thumbnail_v2.jpg — "KILL LINE: NO FLOW / DRILL PIPE: 1,400 PSI / 'SUCCESS'". Photo: U.S. Coast Guard, April 21, 2010 (DVIDS 272214, public domain).
 
 TITLE (recommended)
 The Test They Called a Success: Deepwater Horizon
