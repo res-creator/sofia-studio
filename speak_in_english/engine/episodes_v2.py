@@ -2681,3 +2681,32 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "fish" — rubric answers4 (60-70 s). heroine = Jessica, colleague = Will, CEO = George
+CAST.update({
+    "coll2": dict(voice="am_michael", speed=1.0, lang="en-gb", el="bIHbv24MWmeRgasZH58o"),   # fish: Mark, the colleague with the salmon (Will)
+    "ceo": dict(voice="bm_george", speed=1.0, lang="en-gb", el="JBFqnCBsd6RMkjVDRZzb"),   # fish: the CEO (George)
+})
+EP["fish"] = dict(
+    title='Рыба в офисной микроволновке', rubric='answers4',
+    hook_title=[['КОЛЛЕГА ГРЕЕТ', 'd'], ['РЫБУ В ОФИСЕ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    lines=[
+        ('hook_c', 'coll2', '[happily] Ah, salmon Friday!', 'А, лососевая пятница!'),
+        ('hook', 'nar', 'Коллега греет рыбу в офисной микроволновке. Пахнет на весь этаж. Четыре ответа.', ''),
+        ('o1_h', 'her', '[disgusted] Stop! Stink!', 'Хватит! Вонь!'),
+        ('o1_c', 'coll2', "[proudly] Stink? It's Norwegian! Want some?", 'Вонь? Это норвежский! Хочешь кусочек?'),
+        ('o1_nar', 'nar', 'В лоб — и тебе предложили кусочек.', ''),
+        ('o2_h', 'her', '[politely] Could you not heat fish here?', 'Можешь не греть здесь рыбу?'),
+        ('o2_c', 'coll2', '[innocently] Where then? At your desk?', 'А где тогда? У тебя на столе?'),
+        ('o2_nar', 'nar', 'Вежливо, но без решения.', ''),
+        ('o3_h', 'her', '[calmly] Would you mind eating it in the kitchen? The smell carries.', 'Можешь есть на кухне? Запах расходится.'),
+        ('o3_c', 'coll2', "[sheepishly] Oh. Sorry, I didn't think.", 'Ой. Прости, не подумал.'),
+        ('o3_nar', 'nar', 'Как носитель: просьба плюс причина. Запоминай:', ''),
+        ('o3_tip', 'tip', 'The smell carries.', ''),
+        ('o4_h', 'her', '[grandly] Mark, your salmon has more presence than our CEO. Perhaps it could lead the meeting — outside?', 'Марк, у твоего лосося харизмы больше, чем у директора. Может, он проведёт совещание — на улице?'),
+        ('o4_c', 'coll2', '[offended] My salmon is a team player!', 'Мой лосось — командный игрок!'),
+        ('end_ceo', 'ceo', "[cheerfully] Who's cooking salmon? I'm starving!", 'Кто готовит лосося? Я умираю с голоду!'),
+        ('moral', 'nar', 'Мораль: не можешь победить рыбу — присоединяйся.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши цифру и сохрани!', ''),
+    ],
+)
