@@ -2681,3 +2681,31 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "badphoto" — rubric comment_reply4 (60-70 s). heroine = Jessica, friend = Matilda
+CAST.update({
+    "friend4": dict(voice="af_jessica", speed=1.0, lang="en-gb", el="XrExE9yKIg1WjnnlVkGX"),   # badphoto: the friend who posted the photo (Matilda)
+})
+EP["badphoto"] = dict(
+    title='Подруга выложила ужасное фото', rubric='comment_reply4',
+    hook_title=[['ПОДРУГА ВЫЛОЖИЛА', 'd'], ['ЭТО ФОТО', 'p'], ['ЧТО НАПИШЕШЬ?', 'd']],
+    lines=[
+        ('hook_f', 'friend4', '[excited] Best night ever! Posted!', 'Лучший вечер! Выложила!'),
+        ('hook', 'nar', 'Вопрос из комментариев: подруга выложила фото, где ты ужасно вышла. Что написать? Четыре ответа.', ''),
+        ('o1_h', 'her', '[coldly] Delete.', 'Удали.'),
+        ('o1_f', 'friend4', '[confused] But I look amazing in it!', 'Но я там шикарно выгляжу!'),
+        ('o1_nar', 'nar', 'Холодно. Она думает только о себе.', ''),
+        ('o2_h', 'her', "[dryly] Nice photo of you. Who's the potato next to you?", 'Красивое фото. А что за картошка рядом с тобой?'),
+        ('o2_f', 'friend4', "[laughing] That's you!", 'Это ты!'),
+        ('o2_nar', 'nar', 'С юмором. Но фото всё ещё висит.', ''),
+        ('o3_h', 'her', "[calmly] Could you take it down? I'm not comfortable with it.", 'Можешь удалить? Мне с ним некомфортно.'),
+        ('o3_f', 'friend4', '[apologetic] Oh! Sure, sorry.', 'Ой! Конечно, прости.'),
+        ('o3_nar', 'nar', 'Как носитель: просьба и твои чувства. Запоминай:', ''),
+        ('o3_tip', 'tip', 'Could you take it down?', ''),
+        ('o4_h', 'her', '[sweetly] You have one hour to delete it. After that, our school photos go public.', 'У тебя час, чтобы удалить. Потом в сеть уходят наши школьные фото.'),
+        ('o4_f', 'friend4', '[gasps] Not the school photos!', 'Только не школьные фото!'),
+        ('end_f', 'friend4', '[panicked] Deleted! ...But your mum already commented.', 'Удалила! …Но твоя мама уже прокомментировала.'),
+        ('moral', 'nar', 'Мораль: у подруги — одно фото, у тебя — целый архив.', ''),
+        ('outro', 'nar', 'Какой ответ твой: один, два, три или четыре? И пиши свою ситуацию — разберём!', ''),
+    ],
+)
