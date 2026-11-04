@@ -2681,3 +2681,32 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "snitch" — rubric answers4 (60-70 s). heroine = Jessica, Ryan = Daniel, boss = Eric
+CAST.update({
+    "ryan2": dict(voice="bm_daniel", speed=1.0, lang="en-gb", el="onwK4e9ZLuTAKqWW03F9"),   # snitch: Ryan, the colleague (Daniel)
+    "boss2": dict(voice="am_echo", speed=1.0, lang="en-gb", el="cjVigY5qzO86Huf0OWal"),   # snitch: the boss (Eric, CAST boss)
+})
+EP["snitch"] = dict(
+    title='Коллега настучал в общий чат', rubric='answers4',
+    hook_title=[['КОЛЛЕГА НАСТУЧАЛ', 'd'], ['В ОБЩИЙ ЧАТ', 'p'], ['ЧТО ОТВЕТИШЬ?', 'd']],
+    lines=[
+        ('hook_r', 'ryan2', '[sweetly] Friendly reminder: Anna, the report was due yesterday!', 'Дружеское напоминание: Анна, отчёт был нужен вчера!'),
+        ('hook', 'nar', 'Коллега написал это в общий чат. Босс всё видит. Четыре ответа.', ''),
+        ('o1_h', 'her', '[angrily] Shut up, snitch!', 'Заткнись, стукач!'),
+        ('o1_b', 'boss2', '[sternly] Anna. My office.', 'Анна. Ко мне в кабинет.'),
+        ('o1_nar', 'nar', 'В лоб. И сразу к боссу.', ''),
+        ('o2_h', 'her', "[nervously] Sorry, I'll send it today.", 'Извините, пришлю сегодня.'),
+        ('o2_r', 'ryan2', '[cheerfully] Great! Also, she was late on Monday.', 'Отлично! А ещё она в понедельник опоздала.'),
+        ('o2_nar', 'nar', 'Извинилась — и дала ему повод.', ''),
+        ('o3_h', 'her', "[calmly] Thanks for the reminder — it's with Sarah for approval, as agreed.", 'Спасибо за напоминание — отчёт у Сары на согласовании, как договаривались.'),
+        ('o3_b', 'boss2', '[nodding] Ah. Okay, thanks.', 'А. Хорошо, спасибо.'),
+        ('o3_nar', 'nar', 'Как носитель: спокойно и с фактами. Запоминай:', ''),
+        ('o3_tip', 'tip', "It's with Sarah, as agreed.", ''),
+        ('o4_h', 'her', "[sweetly] Thank you, Ryan! Since you're so on top of deadlines, could you share your quarterly report? It was due in March.", 'Спасибо, Райан! Раз ты так следишь за сроками, поделишься своим квартальным отчётом? Он был нужен в марте.'),
+        ('o4_r', 'ryan2', '[stammering] My... quarterly report?', 'Мой… квартальный отчёт?'),
+        ('end_b', 'boss2', '[sternly] Ryan. My office.', 'Райан. Ко мне в кабинет.'),
+        ('moral', 'nar', 'Мораль: кто ставит всех в копию — сам попадает в копию.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши цифру и сохрани!', ''),
+    ],
+)
