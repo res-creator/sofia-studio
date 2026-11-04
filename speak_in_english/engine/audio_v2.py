@@ -356,6 +356,19 @@ if EPN in ("mic", "teacher", "password", "rich", "busy", "avoidparty", "tour", "
     def _clap():
         t = T(0.12); return norm(bp(_r.standard_normal(len(t)), 900, 6000) * (np.exp(-t*60) + 0.3*np.exp(-np.maximum(t - 0.01, 0)*40)), 0.6)
     SFX.update(click=_click(), keys=_keys(), vol=_vol(), msg=_msg(), cough=_cough(), clap=_clap())
+if EPN == "dress":  # birthday party: camera shutter, door bell, crowd cheer (own rng, so other episodes mix exactly as before)
+    _d = np.random.default_rng(71)
+    def _shutter():
+        t = T(0.18); x = bp(_d.standard_normal(len(t)), 1500, 9000); return norm(x*(np.exp(-t*80) + 0.8*np.exp(-np.maximum(t-0.07, 0)*90)*(t > 0.07)), 0.8)
+    def _doorbell():
+        y = np.zeros(int(1.6*SR))
+        for k, f in enumerate([659, 523]):
+            t = T(1.1); put(y, (np.sin(2*np.pi*f*t) + 0.3*np.sin(4*np.pi*f*t)) * np.exp(-t*3.5) * np.minimum(t*600, 1), k*0.45, 0.6)
+        return norm(y, 0.7)
+    def _cheer():
+        d = 1.6; t = T(d); x = bp(_d.standard_normal(len(t)), 500, 3500) * (0.6 + 0.4*np.sin(2*np.pi*7*t)**2)
+        return norm(x * np.minimum(t*6, 1) * np.minimum((d - t)*2, 1), 0.5)
+    SFX.update(shutter=_shutter(), doorbell=_doorbell(), cheer=_cheer())
 if EPN in ("rich", "busy", "avoidparty", "tour", "splitbill", "photo"):  # batch rich/busy/avoidparty: phone ring, door bell, crowd cheer, car engine, car-lock chirp, toy jingle (own rng)
     _r = np.random.default_rng(14)
     def _ring():
@@ -609,7 +622,7 @@ elif EPN in ("dinner", "gift", "guest", "marry"):
         else:
             m = ch[(k) % 3] + 12; tt = T(3*b*0.9); trem = (0.55 + 0.45*np.sign(np.sin(2*np.pi*14*tt)))
             put(music, pluck(note(m), 3*b*0.9, 1.2) * trem * 0.0 + np.sin(2*np.pi*note(m)*tt)*np.exp(-tt*0.8)*trem*np.minimum(tt*80, 1), t0, 0.05)
-elif EPN in ("salon", "haircut"):
+elif EPN in ("salon", "haircut", "dress"):
     # groovy salon radio: light disco beat, octave bass, e-piano stabs, marimba hook
     bpm = 112; b = 60/bpm; K = 2
     def marimba(f, d=0.35):
@@ -649,7 +662,10 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+if EPN == "dress":  # answers4 rubric (no levels): music off from the end of the o4 narrator through the twist reveal; back with the laugh
+    c2e = sp["o4_nar"]["t"] + sp["o4_nar"]["d"]; c2n = next(x["ev"]["laugh"] for x in TL["scenes"] if x["id"] == "tw")
+else:
+    C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause
@@ -678,7 +694,7 @@ for s in TL["speech"]:
     if EPN == "airport" and s["id"] == "c2_her2": x = lp(lp(x, 650), 650) * 1.8
     l, r = PAN.get(s["who"], (0.84, 1.0)); g = 1.0 if s["who"] == "nar" else 0.95
     voice[i:j, 0] += x[:j-i]*l*g; voice[i:j, 1] += x[:j-i]*r*g; duck[max(0, i-2400):j+4800] = 1
-duck = lp(duck, 4); mus_g = gain * (1 - (0.74 if EPN == "party" else 0.7)*np.clip(duck, 0, 1)) * (0.30 if EPN == "gym" else 0.32 if EPN in ("dinner", "salon", "gift", "guest", "haircut", "marry") else 0.44 if EPN == "party" else 0.34)
+duck = lp(duck, 4); mus_g = gain * (1 - (0.74 if EPN == "party" else 0.7)*np.clip(duck, 0, 1)) * (0.30 if EPN == "gym" else 0.32 if EPN in ("dinner", "salon", "gift", "guest", "haircut", "marry", "dress") else 0.44 if EPN == "party" else 0.34)
 fx = np.zeros((N, 2))
 for c in TL["sfx"]:
     x = SFX[c["n"]]; i = int(c["t"]*SR)
