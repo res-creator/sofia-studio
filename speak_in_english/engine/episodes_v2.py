@@ -2681,3 +2681,47 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "halves" — RUBRIC «A1 vs C2» in the NEW compact form (60-75 s, hard_cut, short level intros). ElevenLabs only; narrator Sarah, heroine = Jessica, Mark = Will (CAST kevin), tip = Bella.
+CAST.update({
+    "date2": dict(voice="am_michael", speed=1.0, lang="en-gb", el="bIHbv24MWmeRgasZH58o"),   # halves: Mark, her first date (Will)
+})
+EP["halves"] = dict(
+    title='Давай пополам', rubric='levels_compact',
+    hook_title=[['ОН СЪЕЛ ЛОБСТЕРА', 'd'], ['«ДАВАЙ ПОПОЛАМ»', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut", card_fade=True,
+    chunks={'c2_h': [['Mark, I admire your passion for equality.', 'Марк, я восхищаюсь твоей страстью к равенству.'], ['In that spirit, the lobster is entirely yours —', 'Поэтому лобстер целиком твой —'], ['and so, regrettably, is the bill.', 'и, увы, счёт тоже.']]},
+    lines=[
+        ('hook_m', 'date2', "[cheerfully] So... fifty-fifty?", 'Ну что… пополам?'),
+        ('hook', 'nar', 'Первое свидание. Он съел лобстера, ты — салат. Проверим!', ''),
+        ('a1_h', 'her', '[shocked] No! Lobster you! Salad me!', 'Нет! Лобстер ты! Салат я!'),
+        ('a1_m', 'date2', '[nodding] Right. So you pay for the salad... and half the lobster.', 'Ага. Значит, ты платишь за салат… и половину лобстера.'),
+        ('a1_nar', 'nar', 'Три слова — и ты всё равно платишь за лобстера.', ''),
+        ('a2_h', 'her', '[indignant] Why I must pay for your lobster?', 'Почему я должна платить за твоего лобстера?'),
+        ('a2_m', 'date2', '[thoughtful] Good question. Waiter, dessert for me!', 'Хороший вопрос. Официант, мне десерт!'),
+        ('a2_nar', 'nar', 'Не «why I must», а «why should I». Правильно так:', ''),
+        ('a2_tip', 'tip', 'Why should I pay for your lobster?', ''),
+        ('b1_h', 'her', "[politely] Actually, I'd rather pay for what I ordered.", 'Вообще-то, я бы заплатила за то, что заказала.'),
+        ('b1_m', 'date2', '[cheerfully] Sure! Plus half the tip.', 'Конечно! Плюс половина чаевых.'),
+        ('b1_nar', 'nar', 'Вежливо. Но чаевые он тоже поделил.', ''),
+        ('b2_h', 'her', "[firmly] Let's go Dutch, then.", 'Тогда каждый платит за себя.'),
+        ('b2_m', 'date2', '[confused] Dutch? I booked Italian.', 'Голландский? Я бронировал итальянский.'),
+        ('b2_nar', 'nar', 'Go Dutch — каждый платит за себя. А он подумал про кухню. Запоминай:', ''),
+        ('b2_tip', 'tip', "Let's go Dutch.", ''),
+        ('c1_h', 'her', "[calmly] I'm happy to split things fairly — let's each pay for what we had.", 'Я за честный расчёт — давай каждый заплатит за своё.'),
+        ('c1_m', 'date2', '[sheepishly] ...Fair enough.', '…Справедливо.'),
+        ('c1_nar', 'nar', 'Приём: не «пополам», а «честно». Запоминай:', ''),
+        ('c1_tip', 'tip', "Let's each pay for what we had.", ''),
+        ('c2_h', 'her', '[grandly] Mark, I admire your passion for equality. In that spirit, the lobster is entirely yours — and so, regrettably, is the bill.', 'Марк, я восхищаюсь твоей страстью к равенству. Поэтому лобстер целиком твой — и, увы, счёт тоже.'),
+        ('c2_m', 'date2', '[weakly] ...Can I borrow ten pounds?', '…Можно занять десять фунтов?'),
+        ('c2_nar', 'nar', 'Мораль: делить — так честно.', ''),
+        ('outro', 'nar', 'Кто платит на первом свидании? Пиши: он, она или пополам!', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'ЛОБСТЕР', 'ok': False, 'note': 'всё равно платишь'},
+           'A2': {'type': 'swap', 'bad': 'Why I must pay?', 'bad_note': 'в вопросе: why should I', 'good': ['Why should I', 'pay for your lobster?']},
+           'B1': {'type': 'eq', 'en': "I'd rather pay for what I ordered.", 'ru': '= Я заплачу за то, что заказала.', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'go Dutch', 'ru': 'каждый платит за себя', 'ex': ["Let's go Dutch.", 'давай каждый за себя.'], 'icon': 'bell'},
+           'C1': {'type': 'eq', 'en': "Let's each pay for what we had.", 'ru': '= Давай каждый заплатит за своё.', 'ex': [["I'm happy to split things fairly.", '= я за честный расчёт.']]},
+           'C2': {'type': 'c2', 'vocab': [['regrettably', '= к сожалению'], ['entirely', '= целиком']], 'moral': ['ДЕЛИТЬ —', 'ТАК', 'ЧЕСТНО'], 'moral_at': 0.35}},
+)
