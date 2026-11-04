@@ -2681,3 +2681,19 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "boring" — NEW RUBRIC «Так говорят только русские» (one typical mistake, ~20-30 s). ElevenLabs only; narrator Sarah, heroine = Jessica, date = Liam (CAST jake/stranger), tip = Bella.
+CAST.update({
+    "date3": dict(voice="am_liam", speed=1.0, lang="en-gb", el="TX3LPaxmHKxFdv7VOQHJ"),   # boring: her date (Liam)
+})
+EP["boring"] = dict(
+    title='I am boring', rubric='mistake',
+    hook_title=[['ТАК ГОВОРЯТ', 'd'], ['ТОЛЬКО РУССКИЕ', 'p'], ['«I AM BORING»', 'd']],
+    lines=[
+        ('hook_h', 'her', "[sighing] I'm so boring...", 'Мне так скучно…'),
+        ('hook_d', 'date3', '[sincerely] Yeah. You kind of are.', 'Ага. Ты правда зануда.'),
+        ('n1', 'nar', 'Так говорят только русские. «I\'m boring» — это «я зануда». А «мне скучно» — вот так:', ''),
+        ('tip1', 'tip', "I'm bored.", ''),
+        ('n2', 'nar', 'Скучное что-то — boring. Скучно тебе — bored. Сохрани, чтобы не опозориться! Какую ошибку разобрать следующей?', ''),
+    ],
+)
