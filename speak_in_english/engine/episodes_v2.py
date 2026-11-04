@@ -2681,3 +2681,31 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "console" — rubric comment_reply4 (60-70 s). heroine = Jessica, boyfriend = Liam
+CAST.update({
+    "bf": dict(voice="am_liam", speed=1.0, lang="en-gb", el="TX3LPaxmHKxFdv7VOQHJ"),   # console: her boyfriend (Liam)
+})
+EP["console"] = dict(
+    title='Подарил приставку себе', rubric='comment_reply4',
+    hook_title=[['ПОДАРОК НА ДР —', 'd'], ['ПРИСТАВКА. ЕМУ', 'p'], ['ЧТО ОТВЕТИШЬ?', 'd']],
+    lines=[
+        ('hook_b', 'bf', "[proudly] Happy birthday! It's a PlayStation... for us.", 'С днём рождения! Это приставка… для нас.'),
+        ('hook', 'nar', 'Вопрос из комментариев: парень подарил на день рождения приставку. Себе. Что сказать? Четыре ответа.', ''),
+        ('o1_h', 'her', '[coldly] Thanks. Keep it.', 'Спасибо. Оставь себе.'),
+        ('o1_b', 'bf', '[delighted] Really? Best birthday ever!', 'Правда? Лучший день рождения!'),
+        ('o1_nar', 'nar', 'Холодно. Он только обрадовался.', ''),
+        ('o2_h', 'her', '[dryly] Great. Then your birthday present is a hair dryer.', 'Отлично. Тогда тебе на день рождения — фен.'),
+        ('o2_b', 'bf', '[pausing] ...Fair.', '…Справедливо.'),
+        ('o2_nar', 'nar', 'С юмором — и уже честно.', ''),
+        ('o3_h', 'her', "[sweetly] It's the thought that counts... but what were you thinking?", 'Главное — внимание… но о чём ты думал?'),
+        ('o3_b', 'bf', "[hopefully] That you'd watch me play?", 'Что ты будешь смотреть, как я играю?'),
+        ('o3_nar', 'nar', 'Как носитель: вежливо, но с намёком. Запоминай:', ''),
+        ('o3_tip', 'tip', "It's the thought that counts.", ''),
+        ('o4_h', 'her', "[grandly] Darling, I'm touched. I'll treasure it — especially the password I just changed.", 'Дорогой, я тронута. Буду беречь — особенно пароль, который я только что сменила.'),
+        ('o4_b', 'bf', '[gasps] You changed the password?!', 'Ты сменила пароль?!'),
+        ('end_b', 'bf', '[sadly] ...Can I at least watch?', '…Можно хотя бы посмотреть?'),
+        ('moral', 'nar', 'Мораль: подарок «для нас» — это подарок для неё.', ''),
+        ('outro', 'nar', 'Какой ответ твой: один, два, три или четыре? И пиши свою ситуацию — разберём!', ''),
+    ],
+)
