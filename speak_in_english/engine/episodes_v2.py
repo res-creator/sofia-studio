@@ -2681,3 +2681,31 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "dress" — rubric answers4 (60-70 s). heroine = Jessica, Chloe = Matilda; twist: her mum walks in in the same dress (silent)
+CAST.update({
+    "friend2": dict(voice="af_jessica", speed=1.0, lang="en-gb", el="XrExE9yKIg1WjnnlVkGX"),   # dress: Chloe, the friend in the same dress (Matilda)
+})
+EP["dress"] = dict(
+    title='Подруга в таком же платье', rubric='answers4',
+    hook_title=[['ТВОЙ ДЕНЬ РОЖДЕНИЯ.', 'd'], ['ОНА В ТВОЁМ ПЛАТЬЕ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    lines=[
+        ('hook_f', 'friend2', '[cheerfully] Surprise! ...Oh. Nice dress.', 'Сюрприз! …Ой. Милое платье.'),
+        ('hook', 'nar', 'Твой день рождения, а подруга пришла в таком же платье. Четыре ответа — от худшего к лучшему.', ''),
+        ('o1_h', 'her', '[angrily] Go home and change!', 'Иди домой и переоденься!'),
+        ('o1_f', 'friend2', "[offended] Fine. I'm taking the cake.", 'Ладно. Торт я забираю.'),
+        ('o1_nar', 'nar', 'В лоб. Минус подруга, минус торт.', ''),
+        ('o2_h', 'her', '[politely] Oh! We have the same taste.', 'О! У нас одинаковый вкус.'),
+        ('o2_f', 'friend2', '[sweetly] Yes. But mine fits better.', 'Да. Но на мне сидит лучше.'),
+        ('o2_nar', 'nar', 'Вежливо. А она — нет.', ''),
+        ('o3_h', 'her', '[laughing] Great minds think alike!', 'Великие умы мыслят одинаково!'),
+        ('o3_f', 'friend2', "[smiling] ...Okay, that's actually cute.", '…Ладно, это правда мило.'),
+        ('o3_nar', 'nar', 'Как носитель: обрати всё в шутку. Запоминай:', ''),
+        ('o3_tip', 'tip', 'Great minds think alike.', ''),
+        ('o4_h', 'her', "[grandly] Darling, it's not a coincidence — it's a dress code. Everyone, photo!", 'Дорогая, это не совпадение — это дресс-код. Все, фото!'),
+        ('o4_f', 'friend2', '[delighted] Oh! I love that! Twins!', 'О! Обожаю! Мы близняшки!'),
+        ('o4_nar', 'nar', 'Королевский ответ: теперь это идея, а не провал.', ''),
+        ('moral', 'nar', 'Мораль: одинаковое платье — это не провал, а фотосессия.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши цифру и сохрани!', ''),
+    ],
+)
