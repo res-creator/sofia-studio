@@ -308,6 +308,7 @@ def chime():
     return norm(y, 0.6)
 SFX = dict(gasp=gasp(), zip=zipfx(), rimshot=rimshot(), squeak=squeak(), dressup=dressup(), chime=chime(), strain=creak(), coo=coo(), choo=choo(), bark=bark(), umbrella=umbrella_fx(), tada=tada(), knock=knock(), creak=creak(), riff=riff(), knob=knob(), boom=boom(), feather=feather(), clapclap=clapclap(), powerdown=powerdown(), snip=snip1(), snips=snips(), clipper=clipper(), hairdryer=hairdryer(), spin=spin(), register=register(), plop=plop(), thud=thud(), gulp=gulp(), boing=boing(), nope=nope(), cuckoo=cuckoo(), whoosh=whoosh(), impact=impact(), impact_soft=impact(True), pop=pop(), stamp=stamp(), sparkle=sparkle(), blink=blink(), brow=brow(), buzz=buzz(), ding=ding(),
            cricket=cricket(), tick=tick(), deflate=deflate(), riser_short=riser_short(), clank=clank(), scratch=scratch(), drop=drop(), bell=bell(), lift_ding=lift_ding(), doors=doors(), hum=hum())
+if EPN == "spoiler": SFX.update(paper=paper())   # page flip (book insert)
 if EPN in ("checkout", "password", "rich", "busy"):  # self-checkout sounds for this episode only (own rng, so other episodes mix exactly as before)
     _r = np.random.default_rng(12)
     def _beep():
@@ -649,7 +650,10 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+if EPN == "spoiler":  # answers4 rubric (no levels): music off through the beat before the twist and the punchline; back with the moral
+    c2e = next(x["s"] for x in TL["scenes"] if x["id"] == "end") - 0.25; c2n = sp["moral"]["t"]
+else:
+    C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause

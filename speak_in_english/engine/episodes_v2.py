@@ -2681,3 +2681,31 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "spoiler" — rubric answers4 (60-70 s). heroine = Jessica, friend = Lily
+CAST.update({
+    "friend3": dict(voice="af_nova", speed=1.0, lang="en-gb", el="pFZP5JQG7iQjIQuC4Bku"),   # spoiler: Priya, the friend who spoils (Lily)
+})
+EP["spoiler"] = dict(
+    title='Подруга спойлерит', rubric='answers4',
+    hook_title=[['ПОДРУГА', 'd'], ['ЗАСПОЙЛЕРИЛА', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    lines=[
+        ('hook_f', 'friend3', "[excited] I can't believe he dies at the end!", 'Не могу поверить, что он в конце умирает!'),
+        ('hook', 'nar', 'Ты на третьей серии, а подруга уже рассказала финал. Четыре ответа.', ''),
+        ('o1_h', 'her', '[angrily] No! Shut up!', 'Нет! Замолчи!'),
+        ('o1_f', 'friend3', '[nodding] Okay. And then the dog dies too.', 'Хорошо. А потом ещё и собака умирает.'),
+        ('o1_nar', 'nar', 'В лоб — и ты узнала ещё больше.', ''),
+        ('o2_h', 'her', "[politely] Please don't spoil it.", 'Пожалуйста, не спойлери.'),
+        ('o2_f', 'friend3', "[reassuring] Don't worry, the wedding is fine. The funeral, though...", 'Не волнуйся, свадьба — нормально. А вот похороны…'),
+        ('o2_nar', 'nar', 'Вежливо, но она не услышала.', ''),
+        ('o3_h', 'her', "[firmly] No spoilers, please — I'm only on episode three.", 'Без спойлеров, пожалуйста — я только на третьей серии.'),
+        ('o3_f', 'friend3', '[guiltily] Oops. Forget everything.', 'Ой. Забудь всё.'),
+        ('o3_nar', 'nar', 'Как носитель: коротко и где ты сейчас. Запоминай:', ''),
+        ('o3_tip', 'tip', 'No spoilers, please.', ''),
+        ('o4_h', 'her', "[sweetly] One more word, darling, and I'll tell you how your book ends.", 'Ещё одно слово, дорогая, и я расскажу, чем кончается твоя книга.'),
+        ('o4_f', 'friend3', "[gasps] You wouldn't!", 'Ты не посмеешь!'),
+        ('end_f', 'friend3', '[confused] ...Wait. Which show are you watching? Oh, that one? The butler did it.', '…Стоп. А ты какой сериал смотришь? А, этот? Убийца — дворецкий.'),
+        ('moral', 'nar', 'Мораль: прежде чем злиться, уточни, какой сериал.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши цифру и сохрани!', ''),
+    ],
+)
