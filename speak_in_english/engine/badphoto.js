@@ -153,7 +153,7 @@ function frState(t) { const g = G.fr, L = sceneAt(t).id, e = k => ev(L, k);
   if (L === 'o2') { const u = t - e('laugh'); st.mood = 'happy'; st.laugh = true; st.blink = 1; st.headY = Math.sin(u * 22) * 7; st.tilt = 0.08; st.armL = reach(g, -1, -g.sw * 0.3, g.ySh + 330, { planar: true }); }
   if (L === 'o3') { st.mood = 'worried'; st.lookY = 0; st.look = 0.1; st.armL = reach(g, -1, -g.sw * 0.05, g.ySh + 110, { planar: true }); }   // hand on her chest: "sorry"
   if (L === 'o4') { st.mood = 'shock'; st.blink = 0; st.lookY = 0; st.breathe = 0; st.headFirst = true; st.items = {};
-    st.armL = reach(g, -1, -g.hw * 1.05, g.headY + g.hh * 0.45, { planar: true }); st.armR = reach(g, 1, g.hw * 1.05, g.headY + g.hh * 0.45, { planar: true }); }   // palms on her cheeks
+    const k = eBack(P(t, SP.o4_f.t - 0.1, SP.o4_f.t + 0.2), 1.6); st.headFirst = false; st.armL = reach(g, -1, -g.sw * lerp(0.6, 1.75, k), g.ySh + lerp(300, 110, k), { planar: true }); st.armR = reach(g, 1, g.sw * lerp(0.6, 1.75, k), g.ySh + lerp(300, 110, k), { planar: true }); }   // arms thrown out to the sides, open palms
   return st; }
 
 // ---------------- world
