@@ -1,0 +1,50 @@
+HOW IT'S RUN — LONG-FORM #1 — How Coca-Cola Took Over the World in 10 Minutes
+Files: how_coca_cola_took_over_the_world.mp4 (1920x1080, 30 fps, 9:21, -14 LUFS) · how_coca_cola_took_over_the_world_thumbnail_final.png (1280x720, FINAL — "9 COKES A DAY?!", illustration generated in Figma AI + our type; v1/v2 kept only as drafts) · how_coca_cola_took_over_the_world.srt (English subtitles — upload in YouTube Studio → Subtitles)
+NOTE: this build uses a temporary narrator voice (open-source Kokoro). For the channel voice Chris, see README.md (one command after the ElevenLabs quota is back).
+
+TITLE (main)
+How Coca-Cola Took Over the World in 10 Minutes
+Alternatives: From 9 Drinks a Day to 2.2 Billion: How Coca-Cola Took Over the World · The $1 Deal That Built Coca-Cola
+
+DESCRIPTION
+In 1886, a pharmacist in Atlanta sold about nine glasses a day of a new syrup drink. Today, people drink about 2.2 billion servings of the company's drinks every single day.
+So how did it happen? A wounded Civil War veteran and his kettle. A salesman who gave the drink away. A bottling deal sold for one dollar. A bottle you could recognize in the dark. A promise to every soldier in World War II. A rival that wouldn't quit — and New Coke, the 79 days America said no.
+Animated history by How It's Run. Illustrated re-enactment; historical figures drawn from period portraits, everyone else is generic. Not affiliated with or sponsored by The Coca-Cola Company or PepsiCo.
+
+CHAPTERS
+0:00 2.2 billion a day
+0:41 1886: the pharmacist and his syrup
+2:11 Asa Candler: give it away
+3:19 The one-dollar bottling deal
+4:37 Woodruff, Santa and World War II
+6:02 Pepsi strikes back
+7:07 New Coke: 79 days
+8:16 Coca-Cola today: what really made it big
+
+SOURCES
+- The Coca-Cola Company — history: https://www.coca-colacompany.com/about-us/history
+- The birth of a refreshing idea (1886): https://www.coca-colacompany.com/about-us/history/the-birth-of-a-refreshing-idea
+- New Georgia Encyclopedia — John Stith Pemberton: https://www.georgiaencyclopedia.org/articles/business-economy/john-stith-pemberton-1831-1888/
+- Wikipedia — Asa Griggs Candler: https://en.wikipedia.org/wiki/Asa_Griggs_Candler
+- Wikipedia — Benjamin Thomas ($1 bottling rights, 1899): https://en.wikipedia.org/wiki/Benjamin_Thomas_(industrialist)
+- Tennessee Encyclopedia — Coca-Cola Bottling Company: https://tennesseeencyclopedia.net/entries/coca-cola-bottling-company/
+- The history of the contour bottle (1915): https://www.coca-colacompany.com/about-us/history/the-history-of-the-coca-cola-contour-bottle
+- Live Science — did Coca-Cola contain cocaine?: https://www.livescience.com/41975-does-coca-cola-contain-cocaine.html
+- Wikipedia — Haddon Sundblom (Santa ads, 1931): https://en.wikipedia.org/wiki/Haddon_Sundblom
+- Coca-Cola Canada — Coca-Cola in World War II: https://www.coca-cola.ca/faqs/coca-cola-faqs-history/Was-coca-cola-consumed-by-soldiers-in-world-war-II
+- A symbol of friendship (64 wartime bottling plants): https://www.coca-colacompany.com/about-us/history/the-chronicle-of-coca-cola-a-symbol-of-friendship
+- Wikipedia — Pepsi: https://en.wikipedia.org/wiki/Pepsi · Pepsi Challenge: https://en.wikipedia.org/wiki/Pepsi_Challenge · Hilltop (1971): https://en.wikipedia.org/wiki/Hilltop_(commercial)
+- New Coke — the most memorable marketing blunder ever?: https://www.coca-colacompany.com/about-us/history/new-coke-the-most-memorable-marketing-blunder-ever
+- The Coca-Cola Company Form 10-K, fiscal 2024 (2.2 billion servings a day, 33.7 billion unit cases, 200+ countries): https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm
+Full fact check: sources.md in the project.
+
+TAGS (lowercase)
+coca cola history, how coca cola took over the world, coca-cola, coke, pepsi, new coke, pepsi challenge, john pemberton, asa candler, business history, animated history, history documentary, marketing, howitsrun
+
+HASHTAGS (first three show above the title)
+#history #business #cocacola
+
+PINNED COMMENT
+Coke or Pepsi? 👇 And which part surprised you most — the $1 bottling deal or the 79 days of New Coke? (Sources for every chapter are in the description.)
+
+END SCREEN (last 5 s, 9:16–9:21): subscribe button + one "best for viewer" video (e.g. the long-form "When Paying People Backfired").
