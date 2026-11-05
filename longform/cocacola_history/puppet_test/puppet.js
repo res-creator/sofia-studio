@@ -51,6 +51,17 @@ function splitArm(k) { if (SPLIT[k]) return SPLIT[k]; const im = A[k], w = im.wi
   const lo = createCanvas(w, h), lx = lo.getContext('2d'); lx.drawImage(im, 0, 0); lx.globalCompositeOperation = 'destination-in'; // forearm keeps the full elbow cap
   const g = lx.createLinearGradient(0, ey - 30, 0, ey - 10); g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(1, 'rgba(255,255,255,1)'); lx.fillStyle = g; lx.fillRect(0, 0, w, h);
   return (SPLIT[k] = { up: mk(true), lo }); }
+// "bendy bone": the WHOLE straight arm image is bent smoothly around the elbow — drawn as thin horizontal strips, each rotated by the
+// accumulated angle along the arm's spine, so the sleeve stays one continuous piece with a rounded elbow (no cut, no seam).
+const BEND_ZONE = 70;   // px of sleeve over which the elbow curve is spread
+function bendy(ctx, im, J, ey, th) { const w = im.width, h = im.height, cx = J[0], step = 2; let x = 0, y = 0, a = 0;
+  ctx.save(); ctx.translate(-0, 0);
+  for (let row = J[1]; row < h; row += step) { // from the sleeve top down; rows above J[1] (hidden in the jacket) drawn straight
+    const u = Math.max(0, Math.min(1, (row - (ey - BEND_ZONE / 2)) / BEND_ZONE)), aa = th * u * u * (3 - 2 * u);
+    ctx.save(); ctx.translate(x, y); ctx.rotate(aa); ctx.drawImage(im, 0, row, w, step + 2, -cx, 0, w, step + 2); ctx.restore();
+    x += -Math.sin(aa) * step; y += Math.cos(aa) * step; a = aa; }
+  ctx.drawImage(im, 0, 0, w, J[1] + 1, -cx, -J[1], w, J[1] + 1);
+  ctx.restore(); }
 const ssm = u => { u = clamp(u); return u * u * (3 - 2 * u); };
 function gesture(side, t) { // -> { g: 'down'|'palm'|'point', b: 0..1 bend, f: 0..1 cross-fade to the drawn gesture, r: upper-arm swing }
   const palm = ssm((t - (tFine - 0.4)) / 0.5);
@@ -62,8 +73,7 @@ function armV3(ctx, side, t, tor3) { const down = `arm_${side}_down`, G = gestur
   const idle = side === 'L' ? 0.03 * Math.sin(t * 1.3) : -0.03 * Math.sin(t * 1.1);
   const r = J3.off[down] * (1 - G.b) + G.r + idle * (1 - G.b), th = (BEND[side][G.g] || 0) * ssm(G.b);
   ctx.save(); ctx.translate(sk[0] - tor3.neck[0], sk[1] - tor3.neck[1]); ctx.rotate(r);
-  if (G.f < 1) { ctx.save(); ctx.globalAlpha *= 1 - G.f; ctx.drawImage(sp.up, -J[0], -J[1]);
-    ctx.translate(EL[down][0] - J[0], EL[down][1] - J[1]); ctx.rotate(th); ctx.drawImage(sp.lo, -EL[down][0], -EL[down][1]); ctx.restore(); }
+  if (G.f < 1) { ctx.save(); ctx.globalAlpha *= 1 - G.f; bendy(ctx, A[down], J, EL[down][1], th); ctx.restore(); }
   if (G.f > 0) { const k = `arm_${side}_${G.g}`; ctx.save(); ctx.globalAlpha *= G.f; ctx.rotate(J3.off[k] || 0); ctx.drawImage(A[k], -J3[k][0], -J3[k][1]); ctx.restore(); }
   ctx.restore(); }
 // ---------- drawing ----------
