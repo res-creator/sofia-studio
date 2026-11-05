@@ -23,8 +23,8 @@ const ringScene = (n, word, draw) => (ctx, t, lt, t0) => {
   K.roundCard(ctx, 960, 190, n, word, pop(lt, 0.15, 0.4));
 };
 const studioTable = (x, lt, o = {}) => { rr(x, -420, 40, 840, 50, 10); ink(x, '#F4F0E6', 6); rr(x, -380, 90, 760, 220, 6); ink(x, PB, 6); fitText(x, 'TASTE TEST', 0, 200, 60, '#FFFFFF', 640);
-  rr(x, -150, -160, 300, 200, 8); ink(x, '#C9CDD2', 6); if (o.reveal) { x.save(); x.translate(0, -o.reveal * 260); rr(x, -150, -160, 300, 200, 8); ink(x, '#C9CDD2', 6); x.restore(); }
-  const bob = o.reveal ? 1 : 0; if (o.reveal) { P.bottle(x, -70, 40, 0.7, { kind: 'pepsi' }); } };
+  if (o.screen === false) return; if (o.reveal) { P.bottle(x, 200, 40, 0.62, { kind: 'contour' }); P.bottle(x, 320, 40, 0.62, { kind: 'pepsi' }); }
+  x.save(); x.translate(0, -(o.reveal || 0) * 300); rr(x, 110, -170, 300, 210, 8); ink(x, '#C9CDD2', 6); fitText(x, '?', 260, -65, 90, '#8A8F96', 120); x.restore(); };
 
 const scenes = [
   { name: 'r1 a rival was growing (sprout)', t0: t1, era: 'sepia', out: { type: 'whip', dur: 0.3, dir: -1 }, draw(ctx, t, lt) {
@@ -93,10 +93,10 @@ const scenes = [
       L.plate(ctx, 'THE GREAT DEPRESSION', 960, 140, pop(lt, rel(t8, 'r3', 'Great') - 0.1), { size: 70, bg: '#C9C4BA' });
     } },
   { name: 'r3 a 12-ounce bottle for a nickel', t0: t9, era: 'jazz', out: { type: 'cut' }, draw(ctx, t, lt) {
-      const c = EN.cam([[0, 100, -200, 1.15], [2.5, 60, -230, 1.05]], lt), tw = rel(t9, 'r3', 'twelve-ounce'), tn = rel(t9, 'r3', 'nickel'), grow = E.back(clamp((lt - tw + 0.1) / 0.5), 2);
+      const c = EN.cam([[0, 100, -110, 1.1], [2.5, 60, -140, 1.02]], lt), tw = rel(t9, 'r3', 'twelve-ounce'), tn = rel(t9, 'r3', 'nickel'), grow = E.back(clamp((lt - tw + 0.1) / 0.5), 2);
       EN.layers(ctx, c, [[0.6, x => shopWall(x)], [1, x => { counterTop(x, 200);
           K.bottleGuy(x, 200, 190, 2.0, 'pepsi', 'grin', { t: lt, sy: lerp(1.0, 1.65, grow), arms: [0.4, 2.3] }); x.save(); x.translate(430, 120); x.rotate(0.1); rr(x, -70, -40, 140, 80, 8); ink(x, YELLOW, 5); fitText(x, '5¢', 0, 2, 52, INK, 120); x.restore();
-          toon(x, -440, 420, 1.15, LOOKS.shopper, lt > tw ? 'shock' : 'point', lt > tw ? 'shock' : 'happy', { t: lt });
+          toon(x, -440, 360, 1.05, LOOKS.shopper, lt > tw ? 'shock' : 'point', lt > tw ? 'shock' : 'happy', { t: lt });
           if (lt > tn - 0.3) { const u = clamp((lt - tn + 0.3) / 0.5); P.coin(x, lerp(-300, 380, u), 150 - Math.sin(u * Math.PI) * 220, 30, lt * 15); } }]]);
       L.plate(ctx, '12 OZ', 1500, 230, pop(lt, tw - 0.05), { size: 96, bg: PB, fg: '#FFFFFF' });
       L.plate(ctx, 'FOR A NICKEL', 1500, 380, pop(lt, tn - 0.1), { size: 54 });
@@ -127,18 +127,18 @@ const scenes = [
       L.plate(ctx, 'YOUNG PEOPLE FROM AROUND THE WORLD', 1100, 960, pop(lt, rel(t12, 'r3b', 'young') - 0.1), { size: 50 });
     } },
   { name: 'r3b ...on a hilltop in Italy', t0: t13, era: 'pop', out: { type: 'cut' }, draw(ctx, t, lt) {
-      const c = EN.cam([[0, 0, -330, 0.82], [2.0, 120, -300, 0.9]], lt);
+      const c = EN.cam([[0, 0, -40, 0.95], [2.0, 120, -60, 1.02]], lt);
       EN.layers(ctx, c, [[0.3, x => K.hills(x, lt)], [1, x => { K.hilltop(x, 220); K.YOUNG.concat(K.YOUNG.slice(0, 4)).forEach((lk, i) => toon(x, -1250 + i * 200, 250 + Math.abs(i - 6) * 9, 0.75, lk, i % 3 ? 'stand' : 'wave', 'happy', { t: lt + i, seed: i, itemR: i % 3 ? g => P.bottle(g, 0, 40, 0.3, { kind: 'contour' }) : null })); }]]);
       L.plate(ctx, 'ITALY', 960, 150, pop(lt, rel(t13, 'r3b', 'Italy') - 0.1), { size: 96, bg: '#2F8A6A', fg: CREAM });
     } },
   { name: 'r3b singing about buying the world a Coke', t0: t14, era: 'pop', out: { type: 'whip', dur: 0.3, dir: 1 }, draw(ctx, t, lt) {
-      const c = EN.cam([[0, 0, -200, 1.3], [2.9, 0, -240, 1.15]], lt), gl = E.back(clamp((lt - rel(t14, 'r3b', 'world', 1) + 0.2) / 0.5), 2);
+      const c = EN.cam([[0, 0, 40, 1.15], [2.9, 0, 0, 1.05]], lt), gl = E.back(clamp((lt - rel(t14, 'r3b', 'world', 1) + 0.2) / 0.5), 2);
       EN.layers(ctx, c, [[0.3, x => K.hills(x, lt)], [1, x => { K.hilltop(x, 260); K.YOUNG.slice(2, 7).forEach((lk, i) => toon(x, -560 + i * 280, 400 + Math.abs(i - 2) * 10, 1.0, lk, i % 2 ? 'hold' : 'stand', 'happy', { t: lt + i, seed: i, talk: 0.9, itemR: g => P.bottle(g, 0, 40, 0.36, { kind: 'contour' }) }));
-          K.notes(x, 0, 60, lt, 12, 1200); if (gl > 0) { x.save(); x.translate(0, -470); x.scale(gl, gl); L.cloud(x, 0, 0, 2.2, '#FFFFFF'); x.beginPath(); x.arc(-30, 10, 70, 0, 6.28); ink(x, '#3F8FD8', 5); ell(x, -50, -5, 30, 22); ink(x, '#7CC36A', 3); ell(x, -5, 30, 22, 18); ink(x, '#7CC36A', 3); P.bottle(x, 80, 80, 0.5, { kind: 'contour' }); x.restore(); } }]]);
+          K.notes(x, 0, 60, lt, 12, 1200); if (gl > 0) { x.save(); x.translate(0, -300); x.scale(gl, gl); L.cloud(x, 0, 0, 2.2, '#FFFFFF'); x.beginPath(); x.arc(-30, 10, 70, 0, 6.28); ink(x, '#3F8FD8', 5); ell(x, -50, -5, 30, 22); ink(x, '#7CC36A', 3); ell(x, -5, 30, 22, 18); ink(x, '#7CC36A', 3); P.bottle(x, 80, 80, 0.5, { kind: 'contour' }); x.restore(); } }]]);
       L.word(ctx, 'SINGING', 960, 130, pop(lt, 0.15), { size: 96, col: CREAM });
     } },
   { name: 'r3b a hit on the radio (1970s living room)', t0: t15, era: 'pop', out: { type: 'whip', dur: 0.3, dir: -1 }, draw(ctx, t, lt) {
-      const c = EN.cam([[0, 300, -160, 1.25], [3.3, 0, -140, 1.02]], lt), hit = rel(t15, 'r3b', 'hit');
+      const c = EN.cam([[0, 300, -40, 1.2], [3.3, 0, -20, 1.0]], lt), hit = rel(t15, 'r3b', 'hit');
       EN.layers(ctx, c, [[0.6, x => K.room70s(x, lt)], [1, x => { rr(x, 300, 0, 520, 240, 8); ink(x, '#8A5A33', 6); K.radio(x, 560, 0, 0.95, lt); K.notes(x, 560, -250, lt, 9, 400);
           K.sofa(x, -380, 300, 1.0); const d = lt > hit - 0.3; [[-640, LOOKS.woman], [-360, { ...LOOKS.exec80s, glasses: null, top: '#8A5A33', top2: '#F4E8C8', tie: null }], [-100, LOOKS.kid]].forEach(([px, lk], i) => toon(x, px, 400 + (d ? -Math.abs(Math.sin(lt * 6 + i)) * 26 : 0), i === 2 ? 0.8 : 1.05, lk, d ? (Math.floor(lt * 3 + i) % 2 ? 'cheer' : 'wave') : 'stand', d ? 'laugh' : 'happy', { t: lt + i, seed: i })); }]]);
       L.word(ctx, 'A HIT ON THE RADIO', 960, 940, pop(lt, hit - 0.1), { size: 90 });
@@ -148,9 +148,9 @@ const scenes = [
         K.bottleGuy(x, 460, 300, 2.1, 'contour', 'worried', { t: lt, gloves: true, flip: true, arms: [0.3, 0.3] }); })(ctx, t, lt);
     } },
   { name: 'r4 the Pepsi Challenge, 1975 (TV set)', t0: t17, era: 'pop', out: { type: 'cut' }, draw(ctx, t, lt) {
-      const c = EN.cam([[0, 0, -280, 0.9], [3.3, 80, -220, 1.05]], lt);
-      EN.layers(ctx, c, [[0.35, x => K.tvStudio(x, lt)], [0.7, x => { K.backdrop(x, lt); P.crowd(x, -1700, -1050, 280, 0.7, 4, lt, { seed: 4 }); P.crowd(x, 1050, 1700, 280, 0.7, 4, lt, { seed: 9 }); }],
-        [1, x => { x.fillStyle = '#3A3458'; x.fillRect(-2400, 260, 4800, 900); studioTable(x, lt); K.cup(x, -260, 40, 0.7, { mark: '?' }); K.cup(x, 260, 40, 0.7, { mark: '?' });
+      const c = EN.cam([[0, 0, -120, 0.92], [3.3, 80, -60, 1.04]], lt);
+      EN.layers(ctx, c, [[0.35, x => K.tvStudio(x, lt)], [0.7, x => { x.save(); x.translate(0, 230); K.backdrop(x, lt); x.restore(); P.crowd(x, -1700, -1050, 280, 0.7, 4, lt, { seed: 4 }); P.crowd(x, 1050, 1700, 280, 0.7, 4, lt, { seed: 9 }); }],
+        [1, x => { x.fillStyle = '#3A3458'; x.fillRect(-2400, 260, 4800, 900); studioTable(x, lt); K.cup(x, -330, 40, 0.7, { mark: '?' }); K.cup(x, -110, 40, 0.7, { mark: '?' });
           toon(x, -620, 380, 1.1, { skin: '#E8B58A', hair: { style: 'side', col: '#2B1E16' }, top: '#E07A3A', top2: '#F4E8C8', tie: '#8A5A33', pants: '#5A4A3A' }, 'present', 'grin', { t: lt, talk: 0.6, itemL: g => { rr(g, -8, -60, 16, 60, 6); ink(g, '#3A3438', 3); g.beginPath(); g.arc(0, -66, 14, 0, 6.28); ink(g, '#8A8F96', 3); } }); }],
         [1.25, x => K.tvCam(x, 1100 - lt * 60, 560, 1.1, lt)]]);
       L.dateCard(ctx, '1975', 300, 160, pop(lt, rel(t17, 'r4', '1975') - 0.05));
@@ -158,47 +158,47 @@ const scenes = [
     } },
   { name: 'r4 a sip from two unmarked cups', t0: t18, era: 'pop', out: { type: 'whip', dur: 0.3, dir: -1 }, draw(ctx, t, lt) {
       const c = EN.cam([[0, -60, -100, 1.35], [3.0, 60, -110, 1.45]], lt), side = lt < 1.5 ? -1 : 1, sip = Math.sin(clamp(((lt % 1.5) - 0.2) / 1.0) * Math.PI);
-      EN.layers(ctx, c, [[0.6, x => { K.tvStudio(x, lt); K.backdrop(x, lt); }],
-        [1, x => { x.fillStyle = '#3A3458'; x.fillRect(-2400, 260, 4800, 900); toon(x, side * 120, 180, 1.15, { skin: '#D39A6A', hair: { style: 'curly', col: '#151313' }, top: '#F7C548', pants: '#2F6DB5' }, sip > 0.2 ? 'drink' : 'stand', sip > 0.5 ? 'think' : 'happy', { t: lt, look: [side * 0.6, 0.2], itemR: sip > 0.2 ? g => { g.rotate(2.6); K.cup(g, 0, 60, 0.55); } : null });
-          studioTable(x, lt); K.cup(x, -260, 40, 0.7, { mark: '?', fill: side > 0 ? 0.6 : 0.8 }); if (!(side > 0 && sip > 0.2)) K.cup(x, 260, 40, 0.7, { mark: '?' }); if (side < 0 && sip > 0.2) { /* left cup lifted */ } }]]);
+      EN.layers(ctx, c, [[0.6, x => { K.tvStudio(x, lt); x.save(); x.translate(0, 230); K.backdrop(x, lt); x.restore(); }],
+        [1, x => { x.fillStyle = '#3A3458'; x.fillRect(-2400, 260, 4800, 900); toon(x, -220 + side * 80, 180, 1.15, { skin: '#D39A6A', hair: { style: 'curly', col: '#151313' }, top: '#F7C548', pants: '#2F6DB5' }, sip > 0.2 ? 'drink' : 'stand', sip > 0.5 ? 'think' : 'happy', { t: lt, look: [side * 0.6, 0.2], itemR: sip > 0.2 ? g => { g.rotate(2.6); K.cup(g, 0, 60, 0.55); } : null });
+          studioTable(x, lt); if (!(side < 0 && sip > 0.2)) K.cup(x, -330, 40, 0.7, { mark: '?', fill: 0.6 }); if (!(side > 0 && sip > 0.2)) K.cup(x, -110, 40, 0.7, { mark: '?' }); if (side < 0 && sip > 0.2) { /* left cup lifted */ } }]]);
       L.plate(ctx, 'TWO UNMARKED CUPS', 960, 960, pop(lt, rel(t18, 'r4', 'unmarked') - 0.1), { size: 64 });
       if (lt > 1.0) P.bubble(ctx, 1500, 260, 240, 100, 'HMM...', { size: 46, tail: -60 });
     } },
   { name: 'r4 on camera, a lot of them picked Pepsi', t0: t19, era: 'pop', out: { type: 'whip', dur: 0.3, dir: 1 }, draw(ctx, t, lt) {
-      const c = EN.cam([[0, 0, -200, 1.15], [3.0, 0, -200, 0.98]], lt), tp = rel(t19, 'r4', 'picked'), rv = E.out(seg(lt, tp - 0.1, tp + 0.4)), nB = Math.min(12, Math.floor(clamp((lt - 0.6) / 2.2) * 12));
-      EN.layers(ctx, c, [[0.35, x => K.tvStudio(x, lt)], [0.7, x => { K.backdrop(x, lt); P.crowd(x, -1700, -1050, 280, 0.7, 4, lt, { react: rv > 0.5 ? 'cheer' : null, seed: 4 }); P.crowd(x, 1050, 1700, 280, 0.7, 4, lt, { react: rv > 0.5 ? 'cheer' : null, seed: 9 }); }],
-        [1, x => { x.fillStyle = '#3A3458'; x.fillRect(-2400, 260, 4800, 900); toon(x, -150, 180, 1.1, { skin: '#D39A6A', hair: { style: 'curly', col: '#151313' }, top: '#F7C548', pants: '#2F6DB5' }, lt > 0.4 ? 'point' : 'think', rv > 0.5 ? 'laugh' : 'determined', { t: lt });
-          studioTable(x, lt, { reveal: rv }); K.cup(x, -260, 40, 0.7, { mark: '?' }); K.cup(x, 260, 40, 0.7, { mark: '?' }); if (rv > 0.3) P.sparkles(x, -70, -80, 160, lt, 8, '#BFE3FF');
-          K.tally(x, 1000, -260, 3, nB); }],
+      const c = EN.cam([[0, -60, -120, 1.05], [3.0, 60, -110, 1.22]], lt), tp = rel(t19, 'r4', 'picked'), rv = E.out(seg(lt, tp - 0.1, tp + 0.4)), nB = Math.min(12, Math.floor(clamp((lt - 0.6) / 2.2) * 12));
+      EN.layers(ctx, c, [[0.35, x => K.tvStudio(x, lt)], [0.7, x => { x.save(); x.translate(0, 230); K.backdrop(x, lt); x.restore(); P.crowd(x, -1700, -1050, 280, 0.7, 4, lt, { react: rv > 0.5 ? 'cheer' : null, seed: 4 }); P.crowd(x, 1050, 1700, 280, 0.7, 4, lt, { react: rv > 0.5 ? 'cheer' : null, seed: 9 }); }],
+        [1, x => { x.fillStyle = '#3A3458'; x.fillRect(-2400, 260, 4800, 900); toon(x, -220, 180, 1.1, { skin: '#D39A6A', hair: { style: 'curly', col: '#151313' }, top: '#F7C548', pants: '#2F6DB5' }, lt > 0.4 ? 'point' : 'think', rv > 0.5 ? 'laugh' : 'determined', { t: lt });
+          studioTable(x, lt, { reveal: rv }); K.cup(x, -330, 40, 0.7, { mark: '?' }); K.cup(x, -110, 40, 0.7, { mark: '?' }); if (rv > 0.3) P.sparkles(x, 320, -80, 120, lt, 8, '#BFE3FF');
+          K.tally(x, 600, -170, 3, nB); }],
         [1.25, x => K.tvCam(x, -1150 + lt * 50, 560, 1.1, lt, 'CAM 2')]]);
       if (Math.floor(lt * 2) % 2 === 0) { rr(ctx, 1600, 60, 240, 70, 12); ink(ctx, RED, 5); fitText(ctx, 'ON AIR', 1720, 96, 40, '#FFFFFF', 200); }
       L.plate(ctx, 'ON CAMERA', 330, 140, pop(lt, rel(t19, 'r4', 'camera') - 0.1), { size: 56, bg: YELLOW });
       L.plate(ctx, 'A LOT PICKED PEPSI', 960, 960, pop(lt, tp + 0.1), { size: 64, bg: PB, fg: '#FFFFFF' });
     } },
   { name: 'r5 still bigger, but losing ground (the race)', t0: t20, era: 'pop', out: { type: 'whip', dur: 0.3, dir: -1 }, draw(ctx, t, lt) {
-      const D = t21 - t20, u = clamp(lt / D), c = EN.cam([[0, 0, -230, 1.0], [D, 120, -230, 1.06]], lt), cokeX = 420 + Math.sin(lt * 1.3) * 20, pepX = lerp(-900, 140, E.inOut(u));
+      const D = t21 - t20, u = clamp(lt / D), c = EN.cam([[0, 0, 70, 0.95], [D, 120, 60, 1.0]], lt), cokeX = 420 + Math.sin(lt * 1.3) * 20, pepX = lerp(-900, 140, E.inOut(u));
       EN.layers(ctx, c, [[0.4, x => K.stands(x, lt)], [1, x => { K.track(x, lt); P.speedLines(x, -1400, -200, 2800, 900, lt, 1, 0.35);
-          K.bottleGuy(x, pepX, 560, 2.3, 'pepsi', 'determined', { t: lt, legs: lt * 16, arms: [0.9 + Math.sin(lt * 16) * 0.6, 0.9 - Math.sin(lt * 16) * 0.6] });
-          K.bottleGuy(x, cokeX, 360, 2.8, 'contour', lt > rel(t20, 'r5', 'losing') ? 'worried' : 'smug', { t: lt, legs: lt * 13, flip: lt > rel(t20, 'r5', 'losing'), arms: [0.9 - Math.sin(lt * 13) * 0.6, 0.9 + Math.sin(lt * 13) * 0.6] });
+          K.bottleGuy(x, pepX, 560, 2.2, 'pepsi', 'determined', { t: lt, legs: lt * 16, arms: [0.9 + Math.sin(lt * 16) * 0.6, 0.9 - Math.sin(lt * 16) * 0.6] });
+          K.bottleGuy(x, cokeX, 380, 2.6, 'contour', lt > rel(t20, 'r5', 'losing') ? 'worried' : 'smug', { t: lt, legs: lt * 13, flip: lt > rel(t20, 'r5', 'losing'), arms: [0.9 - Math.sin(lt * 13) * 0.6, 0.9 + Math.sin(lt * 13) * 0.6] });
           for (let i = 0; i < 3; i++) P.puff(x, pepX - 160 - i * 60, 540, ((lt * 2 + i / 3) % 1), 0.7, '#E9C9A6'); }]]);
       L.plate(ctx, 'STILL BIGGER', 1420, 150, pop(lt, rel(t20, 'r5', 'bigger') - 0.1), { size: 60, bg: RED, fg: CREAM });
       L.plate(ctx, 'LOSING GROUND', 520, 150, pop(lt, rel(t20, 'r5', 'losing') - 0.1), { size: 60, bg: YELLOW });
     } },
   { name: 'r5 inside the company: a dangerous question', t0: t21, era: 'tense', out: { type: 'cut' }, draw(ctx, t, lt) {
-      const c = EN.cam([[0, 0, -150, 1.0], [3.9, 0, -170, 1.15]], lt), fl = clamp(1 - Math.abs(lt - rel(t21, 'r5', 'dangerous') - 0.05) / 0.25), stand = lt > rel(t21, 'r5', 'someone') - 0.1;
-      EN.layers(ctx, c, [[0.6, x => { K.boardroom(x, lt, { wood: '#3A2A22' }); for (const wx of [-1300, 1300]) { rr(x, wx - 200, -820, 400, 700, 8); ink(x, '#3A2A22', 7); x.save(); rr(x, wx - 180, -800, 360, 660, 4); x.clip(); L.skyGrad(x, wx - 180, -800, 360, 660, ['#141A30', '#2E3A5A']); if (fl > 0) { x.fillStyle = `rgba(230,240,255,${fl * 0.8})`; x.fillRect(wx - 180, -800, 360, 660); K.lightning(x, wx, -800, 600, 3); } K.rainFx(x, wx - 180, -800, 360, 660, lt, 0.6); x.restore(); } }],
+      const c = EN.cam([[0, 0, -60, 1.25], [3.9, 0, -90, 1.42]], lt), fl = clamp(1 - Math.abs(lt - rel(t21, 'r5', 'dangerous') - 0.05) / 0.25), stand = lt > rel(t21, 'r5', 'someone') - 0.1;
+      EN.layers(ctx, c, [[0.6, x => { K.boardroom(x, lt, { wood: '#3A2A22' }); for (const wx of [-850, 850]) { rr(x, wx - 200, -820, 400, 700, 8); ink(x, '#3A2A22', 7); x.save(); rr(x, wx - 180, -800, 360, 660, 4); x.clip(); L.skyGrad(x, wx - 180, -800, 360, 660, ['#141A30', '#2E3A5A']); if (fl > 0) { x.fillStyle = `rgba(230,240,255,${fl * 0.8})`; x.fillRect(wx - 180, -800, 360, 660); K.lightning(x, wx, -800, 600, 3); } K.rainFx(x, wx - 180, -800, 360, 660, lt, 0.6); x.restore(); } }],
         [1, x => { [-620, -360, 360, 620].forEach((px, i) => toon(x, px, 180, 0.95, K.EXECS[i], 'arms', fl > 0.2 || stand ? 'worried' : 'neutral', { t: lt + i, seed: i, look: [px < 0 ? 0.7 : -0.7, 0] }));
           toon(x, 0, stand ? 260 : 180, 1.05, K.EXECS[0], stand ? 'wave' : 'think', stand ? 'determined' : 'think', { t: lt, talk: stand ? 0.6 : 0 }); K.longTable(x, 260, 1700); for (let i = 0; i < 5; i++) P.bottle(x, -600 + i * 300, 240, 0.4, { kind: 'contour' }); }]]);
       if (fl > 0) { ctx.save(); ctx.globalAlpha = fl * 0.35; ctx.fillStyle = '#E8F0FF'; ctx.fillRect(0, 0, W, H); ctx.restore(); }
       L.word(ctx, 'A DANGEROUS QUESTION', 960, 140, pop(lt, rel(t21, 'r5', 'dangerous') - 0.05), { size: 80, col: CREAM });
     } },
   { name: 'r5 "what if we change the taste?"', t0: t22, era: 'tense', out: { type: 'cut' }, draw(ctx, t, lt) {
-      const c = EN.cam([[0, 0, -260, 1.4], [2.4, 0, -230, 1.62]], lt), fl = Math.max(clamp(1 - Math.abs(lt - 0.1) / 0.2), clamp(1 - Math.abs(lt - 1.2) / 0.2)), tilt = E.in(seg(lt, 1.0, 1.9));
+      const c = EN.cam([[0, 0, -40, 1.4], [2.4, 0, -60, 1.55]], lt), fl = Math.max(clamp(1 - Math.abs(lt - 0.1) / 0.2), clamp(1 - Math.abs(lt - 1.2) / 0.2)), tilt = E.in(seg(lt, 1.0, 1.9));
       EN.layers(ctx, c, [[0.6, x => { K.boardroom(x, lt, { wood: '#3A2A22' }); x.save(); x.translate(-560, -520 + tilt * 120); x.rotate(tilt * 0.6); x.restore(); }],
-        [1, x => { toon(x, -380, 180, 0.95, K.EXECS[2], 'shock', 'shock', { t: lt, seed: 2 }); toon(x, 380, 180, 0.95, K.EXECS[3], 'shock', 'shock', { t: lt, seed: 3, flip: true }); toon(x, 0, 260, 1.05, K.EXECS[0], 'wave', 'determined', { t: lt, talk: 0.8 }); K.longTable(x, 260, 1700); }]]);
+        [1, x => { toon(x, -560, 180, 0.95, K.EXECS[2], 'shock', 'shock', { t: lt, seed: 2 }); toon(x, 560, 180, 0.95, K.EXECS[3], 'shock', 'shock', { t: lt, seed: 3, flip: true }); toon(x, 0, 260, 1.05, K.EXECS[0], 'wave', 'determined', { t: lt, talk: 0.8 }); K.longTable(x, 260, 1700); }]]);
       if (fl > 0) { ctx.save(); ctx.globalAlpha = fl * 0.5; ctx.fillStyle = '#E8F0FF'; ctx.fillRect(0, 0, W, H); ctx.restore(); }
-      L.word(ctx, 'WHAT IF WE CHANGE', 960, 820, pop(lt, rel(t22, 'r5', 'what') - 0.05), { size: 96, col: CREAM });
-      L.word(ctx, 'THE TASTE?', 960, 950, pop(lt, rel(t22, 'r5', 'taste') - 0.1), { size: 120, col: RED });
+      L.word(ctx, 'WHAT IF WE CHANGE', 960, 840, pop(lt, rel(t22, 'r5', 'what') - 0.05), { size: 96, col: CREAM });
+      L.word(ctx, 'THE TASTE?', 960, 975, pop(lt, rel(t22, 'r5', 'taste') - 0.1), { size: 120, col: RED });
     } },
 ];
 

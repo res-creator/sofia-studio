@@ -38,7 +38,7 @@ function vignette(ctx, k, t) { // inside card k: inner box 540 x 330 centred at 
     L.planks(ctx, -280, 110, 560, 80, '#7A5A3A'); toon(ctx, -110, 160, 0.42, LOOKS.candler, 'present', 'smug', { t }); toon(ctx, 110, 160, 0.42, LOOKS.lawyerA, 'present', 'happy', { t, flip: true });
     ctx.save(); ctx.translate(0, -40 + Math.sin(t * 3) * 10); ctx.rotate(Math.sin(t * 2) * 0.2); P.bills(ctx, 0, 0, 0.55, 1); ctx.restore(); }
   else if (k === 2) { ctx.fillStyle = '#121018'; ctx.fillRect(-280, -180, 560, 360); const bx = Math.sin(t * 0.9) * 140; ctx.save(); ctx.beginPath(); ctx.arc(bx, 0, 150, 0, 6.27); ctx.clip(); ctx.fillStyle = '#3A3050'; ctx.fillRect(-280, -180, 560, 360);
-    P.bottle(ctx, 0, 140, 1.05, { kind: 'contour', label: '' }); ctx.restore(); ctx.save(); ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.arc(bx, 0, 150, 0, 6.27); ctx.lineWidth = 4; ctx.strokeStyle = '#FFF4D6'; ctx.stroke(); ctx.restore();
+    P.bottle(ctx, 0, 110, 0.75, { kind: 'contour', label: '' }); ctx.restore(); ctx.save(); ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.arc(bx, 0, 150, 0, 6.27); ctx.lineWidth = 4; ctx.strokeStyle = '#FFF4D6'; ctx.stroke(); ctx.restore();
     ctx.save(); ctx.translate(-200 + Math.sin(t * 1.3) * 30, 120); ctx.rotate(-0.5); ell(ctx, 0, 0, 40, 34); ink(ctx, '#E8B58A', 5); for (let i = 0; i < 3; i++) { rr(ctx, -26 + i * 22, -60, 18, 40, 9); ink(ctx, '#E8B58A', 4); } ctx.restore(); }
   else if (k === 3) { L.skyGrad(ctx, -280, -180, 560, 360, ERA.war.sky); ctx.fillStyle = '#5E7C8E'; ctx.fillRect(-280, 60, 560, 140); for (let i = 0; i < 6; i++) { ctx.beginPath(); const xx = -260 + ((i * 100 + t * 30) % 540); ctx.moveTo(xx, 90 + (i % 2) * 40); ctx.lineTo(xx + 50, 90 + (i % 2) * 40); ctx.strokeStyle = '#8FB0C2'; ctx.lineWidth = 4; ctx.stroke(); }
     ctx.save(); ctx.translate(Math.sin(t) * 10, Math.sin(t * 1.6) * 5); poly(ctx, [[-260, 40], [240, 40], [190, 110], [-220, 110]]); ink(ctx, '#6E7650', 5); rr(ctx, -40, -40, 220, 80, 6); ink(ctx, '#C8954F', 4); fitText(ctx, 'BOTTLING PLANT', 70, 0, 22, '#7A2E1E', 200);
@@ -184,7 +184,7 @@ const scenes = [
       K.stamp(ctx, 'NEVER THE WHOLE SECRET', 960, 820, pop(lt, tn, 0.3), { size: 78 });
     } },
   ...CARDS.map((cd, k) => ({ name: `recap card ${k + 1}: ${cd.title}`, t0: [t9, t10, t11, t12, t13][k], era: 'sepia', out: { type: 'whip', dur: 0.3, dir: -1 }, draw(ctx, t, lt) {
-      const c = k < 4 ? EN.cam([[0, cd.x - 140, CY - 60, 1.9], [2.6, cd.x + 60, CY - 40, 2.05]], lt) : EN.cam([[0, cd.x, CY - 40, 2.0], [1.8, cd.x, CY - 40, 2.0], [3.6, 0, 0, 0.56]], lt);
+      const c = k < 4 ? EN.cam([[0, cd.x - 70, CY - 10, 1.68], [2.6, cd.x + 50, CY, 1.78]], lt) : EN.cam([[0, cd.x - 60, CY - 10, 1.68], [1.8, cd.x, CY, 1.75], [3.6, 0, -60, 0.56]], lt);
       EN.layers(ctx, c, [[0.4, x => { L.wallpaper(x, -2400, -1500, 4800, 3000, '#5E4A3A', '#6A5444'); }], [1, x => board(x, lt + [t9, t10, t11, t12, t13][k], checksAt(t), 0)]]);
     } })),
   { name: '1886: Pemberton and his nine glasses', t0: t14, era: 'gaslight', out: { type: 'cut' }, draw(ctx, t, lt) {
@@ -195,9 +195,9 @@ const scenes = [
     } },
   { name: 'he thought he had made a medicine', t0: t15, era: 'gaslight', out: { type: 'cut' }, draw(ctx, t, lt) {
       const c = EN.cam([[0, 100, -120, 1.5], [2, 60, -140, 1.65]], lt);
-      EN.layers(ctx, c, [[0.6, x => pharmacy(x, lt)], [1, x => { toon(x, 60, 200, 1.3, LOOKS.pemberton, 'hold', 'smug', { t: lt, itemR: g => { P.bottle(g, 0, 60, 0.6, { kind: 'straight', label: 'TONIC' }); } }); P.fountain(x, 0, 250, 0.7, { w: 1800, taps: 3 });
-          const u = pop(lt, 0.4, 0.4); if (u > 0) { x.save(); x.globalAlpha = u; for (let i = 0; i < 3; i++) { x.beginPath(); x.arc(220 + i * 40, -280 - i * 40, 10 + i * 5, 0, 6.27); ink(x, '#FFF', 4); } rr(x, 300, -560, 380, 240, 110); ink(x, '#FFF', 5);
-            x.save(); x.translate(490, -440); rr(x, -40, -70, 80, 120, 10); ink(x, '#8FB6D8', 4); rr(x, -26, -90, 52, 24, 4); ink(x, '#5A3420', 3); fitText(x, 'Rx', 0, -10, 40, RED, 70); x.restore(); x.restore(); } }]]);
+      EN.layers(ctx, c, [[0.6, x => pharmacy(x, lt)], [1, x => { toon(x, 60, 200, 1.3, LOOKS.pemberton, { la: [0.2, 0.1], ra: [0.9, -1.9] }, 'smug', { t: lt, itemR: g => { g.rotate(-1.0); P.bottle(g, 0, 40, 0.55, { kind: 'straight', label: 'TONIC' }); } }); P.fountain(x, 0, 250, 0.7, { w: 1800, taps: 3 });
+          const u = pop(lt, 0.4, 0.4); if (u > 0) { x.save(); x.globalAlpha = u; for (let i = 0; i < 3; i++) { x.beginPath(); x.arc(200 + i * 40, -200 - i * 30, 10 + i * 5, 0, 6.27); ink(x, '#FFF', 4); } rr(x, 300, -470, 380, 240, 110); ink(x, '#FFF', 5);
+            x.save(); x.translate(490, -330); rr(x, -40, -70, 80, 120, 10); ink(x, '#8FB6D8', 4); rr(x, -26, -90, 52, 24, 4); ink(x, '#5A3420', 3); fitText(x, 'Rx', 0, -10, 40, RED, 70); x.restore(); x.restore(); } }]]);
       L.word(ctx, 'MEDICINE?', 960, 160, pop(lt, L1('t4', 'medicine', t15) - 0.2), { size: 100, col: CREAM });
     } },
   { name: 'pull back: the counter becomes the whole world', t0: t16, era: 'modern', out: { type: 'cut' }, draw(ctx, t, lt) {
