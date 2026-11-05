@@ -4,3 +4,4 @@ chapters/*/vo.wav
 chapters/*/fx.wav
 chapters/*/mix.py
 mix.wav
+film/*.log
