@@ -253,6 +253,7 @@ function headBand(ctx, cx, cy, s) { ctx.save(); ctx.translate(cx, cy); ctx.scale
 function desat(ctx, a, W, H, tint = '#CFC6B4') { ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalCompositeOperation = 'saturation'; ctx.globalAlpha = a; ctx.fillStyle = '#808080'; ctx.fillRect(0, 0, W, H);
   ctx.globalCompositeOperation = 'multiply'; ctx.globalAlpha = a * 0.6; ctx.fillStyle = tint; ctx.fillRect(0, 0, W, H); ctx.restore(); }
 
-module.exports = { HEAD_Y, toonHead, sb, sprite, bottleWave, flyers, tower, skyline, shopRow, road, pavement, cafeTable, hydrant, bird, bigHand, opener, cap, bokeh, fizzSpray, subwayCar, pole,
+function sling(ctx, x, y, s) { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.beginPath(); ctx.moveTo(-40, -170); ctx.lineTo(48, -90); ctx.lineTo(30, -76); ctx.lineTo(-52, -156); ctx.closePath(); L.ink(ctx, '#F4F0E6', 4); ctx.restore(); }
+module.exports = { sling, HEAD_Y, toonHead, sb, sprite, bottleWave, flyers, tower, skyline, shopRow, road, pavement, cafeTable, hydrant, bird, bigHand, opener, cap, bokeh, fizzSpray, subwayCar, pole,
   topPerson, plazaTop, stars, planet, bottleRing, panel, jar, showGlobe, gasLamp, drugWall, counter, sodaTap, chalkTally, horseBuggy, oldSkyline, dollarBill, contract, deskTop, inkwell, pen, specs, pocketWatch,
   sign, markerPath, stamp, beaker, hq, factory, crane, warship, cargoShip, sea, plane, smoke, headBand, desat };

@@ -242,17 +242,17 @@ const scenes = [
     } },
   { name: '...take over the planet? a giant bottle lands on Earth', t0: t17, era: 'pop', out: { type: 'cut' }, draw(ctx, t, lt) {
       const kP = at('h4', 'planet') - t17, fall = clamp((lt - kP + 0.38) / 0.38), hit = lt > kP, sq = hit ? Math.exp(-(lt - kP) * 6) * Math.sin((lt - kP) * 22) * 0.07 : 0;
-      const c = shakeCam(EN.cam([[0, 0, -40, 1.18, 0.06], [kP, 0, -60, 1.0, 0.0], [1.8, 0, -60, 0.96, -0.02]], lt), lt, [kP], 26);
+      const c = shakeCam(EN.cam([[0, 0, 40, 1.15, 0.06], [kP, 0, -20, 0.95, 0.0], [1.8, 0, -20, 0.9, -0.02]], lt), lt, [kP], 26);
       EN.layers(ctx, c, [
         [0.2, x => { L.skyGrad(x, -2600, -1600, 5200, 3200, ['#0B1430', '#26346A']); K.stars(x, -2400, -1400, 4800, 2800, lt, 160); }],
-        [1, x => { x.save(); x.translate(0, 180); x.scale(1 + sq, 1 - sq); K.planet(x, 0, 0, 330, lt); x.restore();
-            if (hit) for (let i = 0; i < 18; i++) { const a = -Math.PI / 2 + (i - 8.5) * 0.17, u = E.back(clamp((lt - kP - 0.1 - Math.abs(i - 8.5) * 0.025) / 0.25), 2); if (u > 0) { x.save(); x.translate(Math.cos(a) * 330, 180 + Math.sin(a) * 330); x.rotate(a + Math.PI / 2); x.scale(u, u); P.bottle(x, 0, 6, 0.24, { label: '' }); x.restore(); } }
-            const by = lerp(-1500, 180 - 330 + 40, E.in(fall)); if (fall > 0) { x.save(); x.translate(0, by); x.rotate(hit ? 0 : 0.1 * (1 - fall)); P.bottle(x, 0, 0, 2.3, { kind: 'contour' }); x.restore(); }
+        [1, x => { x.save(); x.translate(0, 260); x.scale(1 + sq, 1 - sq); K.planet(x, 0, 0, 330, lt); x.restore();
+            if (hit) for (let i = 0; i < 18; i++) { const a = -Math.PI / 2 + (i - 8.5) * 0.17, u = E.back(clamp((lt - kP - 0.1 - Math.abs(i - 8.5) * 0.025) / 0.25), 2); if (u > 0) { x.save(); x.translate(Math.cos(a) * 330, 260 + Math.sin(a) * 330); x.rotate(a + Math.PI / 2); x.scale(u, u); P.bottle(x, 0, 6, 0.24, { label: '' }); x.restore(); } }
+            const by = lerp(-1500, 260 - 330 + 40, E.in(fall)); if (fall > 0) { x.save(); x.translate(0, by); x.rotate(hit ? 0 : 0.1 * (1 - fall)); P.bottle(x, 0, 0, 2.3, { kind: 'contour' }); x.restore(); }
             if (fall > 0 && !hit) P.speedLines(x, -200, by - 900, 400, 700, lt, 1, 0.5);
-            P.burst(x, 0, -110, 520, clamp((lt - kP) / 0.5), YELLOW);
-            if (hit) { const u = clamp((lt - kP) / 0.8); x.save(); x.globalAlpha = 1 - u; x.beginPath(); x.ellipse(0, -130, 200 + u * 700, 40 + u * 140, 0, 0, 6.28); x.lineWidth = 14; x.strokeStyle = CREAM; x.stroke(); x.restore(); } }]]);
-      L.word(ctx, 'THE PLANET?', 1480, 520, pop(t, at('h4', 'planet') + 0.25), { size: 110, col: YELLOW, rot: 0.06 });
-      L.word(ctx, '?', 420, 470, pop(t, at('h4', 'planet') + 0.45), { size: 300, col: YELLOW, rot: -0.12 });
+            P.burst(x, 0, -30, 420, clamp((lt - kP) / 0.5), YELLOW);
+            if (hit) { const u = clamp((lt - kP) / 0.8); x.save(); x.globalAlpha = 1 - u; x.beginPath(); x.ellipse(0, -50, 200 + u * 700, 40 + u * 140, 0, 0, 6.28); x.lineWidth = 14; x.strokeStyle = CREAM; x.stroke(); x.restore(); } }]]);
+      L.word(ctx, 'THE PLANET?', 1500, 300, pop(t, at('h4', 'planet') + 0.25), { size: 110, col: YELLOW, rot: 0.06 });
+      L.word(ctx, '?', 400, 420, pop(t, at('h4', 'planet') + 0.45), { size: 300, col: YELLOW, rot: -0.12 });
     } },
   { name: 'it starts with a wounded soldier (low angle, smoke, respectful)', t0: t18, era: 'sepia', out: { type: 'cut' }, draw(ctx, t, lt) {
       const kW = at('h4', 'wounded') - t18, kS = at('h4', 'soldier') - t18, hit = lt > kW;
@@ -262,7 +262,7 @@ const scenes = [
         [0.5, x => { x.fillStyle = '#7A7564'; x.fillRect(-2600, 200, 5200, 900); for (let i = 0; i < 7; i++) { const tx = -1800 + i * 600; poly(x, [[tx - 90, 210], [tx, 100], [tx + 90, 210]]); L.ink(x, '#B9B2A2', 3); } for (let i = 0; i < 3; i++) { rr(x, -1200 + i * 1100, -200, 10, 400, 3); L.ink(x, '#5A4A3A', 3); x.save(); x.translate(-1195 + i * 1100, -190); x.beginPath(); x.moveTo(0, 0); x.quadraticCurveTo(70, 20 + Math.sin(lt * 4 + i) * 12, 140, 0); x.lineTo(140, 70); x.quadraticCurveTo(70, 90 + Math.sin(lt * 4 + i) * 12, 0, 70); x.closePath(); L.ink(x, '#9A8E78', 3); x.restore(); } }],
         [0.75, x => K.smoke(x, lt, 9, '#A8A296', 0.7, 2)],
         [1, x => { K.toonHead(x, 80, -90, 2.4, PEM_WAR, hit ? { la: [0.3, 0.2], ra: [0.85, -2.1] } : 'stand', !hit ? 'determined' : lt < kW + 0.7 ? 'shock' : 'sad', { t: lt, look: hit ? [0.3, 0.4] : [0.6, -0.2] });
-            if (lt > kS) { x.save(); x.globalAlpha = clamp((lt - kS) / 0.3); K.headBand(x, 80, -90 - 18 * 2.4, 2.4); x.restore(); }
+            if (lt > kS) { x.save(); x.globalAlpha = clamp((lt - kS) / 0.3); K.sling(x, 80, -90 + 236 * 2.4, 2.4); x.restore(); }
             P.burst(x, 520, -200, 260, clamp((lt - kW) / 0.45), '#FFF7DA'); }],
         [1.35, x => K.smoke(x, lt * 1.6, 5, '#C9C3B6', 0.55, 7)]]);
       flash(ctx, clamp((lt - kW) / 0.35), '#FFFFFF', 0.6);
