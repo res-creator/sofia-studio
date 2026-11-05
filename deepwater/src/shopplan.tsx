@@ -21,7 +21,7 @@ export const ShopPlan: React.FC<{ t: number; above?: number; ecr?: number; gas?:
       <svg width={1920} height={1080} style={{ position: 'absolute', transform: `scale(${1 + 0.18 * push})`, transformOrigin: '30% 55%' }}>
         {/* the unknown rest of the rig: a faint field, no walls drawn */}
         <rect x={160} y={180} width={1600} height={760} fill="none" stroke="rgba(242,239,233,0.12)" strokeWidth={2} strokeDasharray="12 12" />
-        {box(S.x, S.y, S.w, S.h, 'ELECTRONICS\nSHOP', 1, 1)}
+        {box(S.x, S.y, S.w, S.h, 'ELECTRONICS SHOP', 1, 1)}
         {box(300, 470, 380, 220, 'ENGINE 3\n(PORT SIDE)', 1, eng3 > 0.5 ? 1 : 0, eng3 > 0.5 ? ACC : INK)}
         {box(1240, 470, 380, 220, 'ENGINE 4\n(STARBOARD)', 1)}
         {box(760, 240, 400, 170, 'ENGINE\nCONTROL ROOM', 1, ecr > 0.5 ? 1 : 0)}
@@ -29,7 +29,7 @@ export const ShopPlan: React.FC<{ t: number; above?: number; ecr?: number; gas?:
         {gas > 0 && [[490, 580], [1430, 580]].map(([x, y], i) => <ellipse key={i} cx={x} cy={y} rx={240 * gas} ry={150 * gas} fill={HC} opacity={0.22 * gas} />)}
         {/* riser skate / rig floor above the shop (side note, not a plan element) */}
         {above > 0 && <g opacity={above}>
-          <text x={960} y={S.y + S.h + 56} fill={INK} fontFamily={SANS} fontWeight={700} fontSize={30} textAnchor="middle">ONE LEVEL ABOVE THE SHOP: THE RISER SKATE AND THE RIG FLOOR</text>
+          <text x={960} y={S.y + S.h + 60} fill={INK} fontFamily={SANS} fontWeight={700} fontSize={30} textAnchor="middle">ONE LEVEL ABOVE THE SHOP: THE RISER SKATE AND THE RIG FLOOR</text>
         </g>}
         {/* the way out: shop → engine control room → outside (route itself unknown) */}
         {route > 0 && <g opacity={route}>
@@ -39,11 +39,11 @@ export const ShopPlan: React.FC<{ t: number; above?: number; ecr?: number; gas?:
           <text x={1340} y={300} fill={INK} fontFamily={SANS} fontWeight={600} fontSize={24} textAnchor="middle">route unknown</text>
         </g>}
         {/* Williams: only the places he named — his shop, then the engine control room. The path between is not drawn. */}
-        {[[S.x + 70, S.y + S.h - 30, inShop], [800, 395, inEcr]].map(([x, y, o], i) => (o as number) > 0 && (
+        {[[905, S.y + S.h - 10, inShop, 1], [780, 404, inEcr, 0]].map(([x, y, o, d], i) => (o as number) > 0 && (
           <g key={i} opacity={o as number}>
             <circle cx={x as number} cy={(y as number) - 58} r={15} fill={INK} />
             <path d={`M${(x as number) - 20},${(y as number) - 4} Q${x as number},${(y as number) - 54} ${(x as number) + 20},${(y as number) - 4} Z`} fill={INK} />
-            <text x={(x as number) + 30} y={(y as number) - 30} fill={INK} fontFamily={SANS} fontWeight={800} fontSize={26} style={{ paintOrder: 'stroke', stroke: '#000', strokeWidth: 5 }}>WILLIAMS</text>
+            {(d as number) !== 0 && <text x={(x as number) + 30 * (d as number)} y={(y as number) - 30} textAnchor={(d as number) > 0 ? 'start' : 'end'} fill={INK} fontFamily={SANS} fontWeight={800} fontSize={26} style={{ paintOrder: 'stroke', stroke: '#000', strokeWidth: 5 }}>WILLIAMS</text>}
           </g>))}
         <defs><marker id="ar" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill={ACC} /></marker></defs>
       </svg>
