@@ -14,9 +14,9 @@ const at = (w) => WD.b2.find(x => x.w.startsWith(w)).t;
 // v3 (default): new Figma body sheet art/candler_body2.png -> parts2/ (jacket with shoulders + sleeve stubs, arms without shoulder caps)
 const V3 = process.env.PUPPET_V !== '2';
 const PARTDIR = process.env.PUPPET_PARTS || (V3 ? `${__dirname}/parts2` : `${__dirname}/../hybrid/parts`);
-const J3 = { k: 0.84, torso: { neck: [327, 30], sL: [50, 296], sR: [592, 296] },
+const J3 = { k: 0.84, torso: { neck: [327, 30], sL: [100, 118], sR: [546, 118] },   // v6: pivots up under the shoulder caps (stubs removed)
   arm_L_down: [73, 14], arm_R_down: [67, 14], arm_L_palm: [401, 16], arm_R_palm: [65, 16], arm_R_point: [64, 157],
-  off: { arm_L_down: 0.12, arm_R_down: -0.12, arm_L_palm: 0.0, arm_R_palm: 0.0, arm_R_point: -0.05 } };
+  off: { arm_L_down: 0.16, arm_R_down: -0.16, arm_L_palm: 0.0, arm_R_palm: 0.0, arm_R_point: -0.05 } };
 const A = {}, PARTS = ['torso', 'arm_L_down', 'arm_R_down', 'arm_L_palm', 'arm_R_palm', 'arm_R_point', 'head_neutral', 'head_blink', 'head_smile', 'head_talk', 'head_surprised', 'head_skeptical'];
 // joints in each part's own pixels (measured on the keyed sheets)
 const J = { torso: { neck: [218, 34], sL: [38, 130], sR: [404, 130] }, head: [146, 404],
@@ -120,7 +120,7 @@ function frame(ctx, t) { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.fillStyle = '#1
 module.exports = { T, at };
 if (require.main === module) (async () => {
   const [mode, a1, a2] = process.argv.slice(2); if (mode === 'T') return console.log(T);
-  for (const p of PARTS) A[p] = await loadImage(`${p.startsWith("head") ? __dirname + "/parts" : PARTDIR}/${p}.png`); A.bg = await loadImage(`${__dirname}/../figma_pilot/hi/02_office_empty.png`);
+  for (const p of PARTS) A[p] = await loadImage(`${p.startsWith("head") ? __dirname + "/parts" : PARTDIR}/${p === "torso" && V3 ? "torso_nostub" : p}.png`); A.bg = await loadImage(`${__dirname}/../figma_pilot/hi/02_office_empty.png`);
   const cv = createCanvas(W, H), ctx = cv.getContext('2d');
   if (mode === 'still') { const ts = a1.split(',').map(Number), sh = createCanvas(960 * 2, 540 * Math.ceil(ts.length / 2)), sc = sh.getContext('2d');
     ts.forEach((t, i) => { tilt = 0; for (let k = 0; k < 20; k++) pose(t); frame(ctx, t); sc.drawImage(cv, (i % 2) * 960, Math.floor(i / 2) * 540, 960, 540); sc.fillStyle = '#E8322E'; sc.font = '26px sans-serif'; sc.fillText(t.toFixed(2), (i % 2) * 960 + 8, Math.floor(i / 2) * 540 + 30); });
