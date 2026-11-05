@@ -34,7 +34,7 @@ SCENES = [
  ]),
  dict(n='1', title='Three days of warning', when='Wed Aug 23 – Fri Aug 25', items=[
   V('a1', 'Five days earlier, Harvey had fallen apart over the Caribbean. On Wednesday, August twenty-third, it came back to life over the Gulf of Mexico, and grew fast.',
-    '**NOAA GOES-16 GeoColor loop**, Gulf, start of the loop', 'Satellite, Aug. 23–25, 2017 · NOAA/NESDIS/STAR, RAMMB/CIRA'),
+    '**NOAA GOES-16 GeoColor loop** 0:00–0:10 (the storm over the Gulf, hours before landfall)', 'Satellite, Aug. 25, 2017 · NOAA/NESDIS/STAR, RAMMB/CIRA'),
   V('a2', 'On Friday morning, the National Hurricane Center warned of catastrophic, life-threatening flooding. By the afternoon it gave numbers: fifteen to thirty inches of rain, in places forty.',
     'Advisory line on a dark map, large type: "catastrophic and life-threatening flooding" → "15 to 30 inches … isolated maximum amounts of 40 inches"', 'National Hurricane Center, Advisories 21 and 22, Aug. 25, 2017'),
   V('a3', 'The same afternoon, forecasters put greater Houston under their highest flood risk, three days ahead. Their own review later called it unprecedented. What the forecast could not show was which streets would flood.',
@@ -162,7 +162,7 @@ for sc in SCENES:
         elif it['k'] == 'bite': d = sum(b - a for a, b in it['segs']) + 0.35 * (len(it['segs']) - 1)
         else: d = it['secs']
         t += d; it['e'] = t
-        seq.append({k: v for k, v in it.items() if k in ('k', 'id', 'text', 'src', 'segs', 'secs', 'gap')})
+        seq.append({k: v for k, v in it.items() if k in ('k', 'id', 'text', 'src', 'segs', 'secs', 'gap', 'label', 'pic')})
     sc['end'] = t
 TOTAL = t
 vo_words = sum(words(i['text']) for s in SCENES for i in s['items'] if i['k'] == 'vo')

@@ -1,0 +1,624 @@
+{
+ "total": 655.22,
+ "items": [
+  {
+   "id": "o0",
+   "k": "nat",
+   "vs": 0.0,
+   "s": 0.0,
+   "e": 2.5,
+   "label": "Coast Guard rescue, greater Houston, Aug. 28, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "o1",
+   "k": "vo",
+   "vs": 2.5,
+   "s": 3.3,
+   "e": 15.34,
+   "label": "Brendan Kiley \u00b7 U.S. Coast Guard rescue swimmer",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "o2",
+   "k": "vo",
+   "vs": 15.34,
+   "s": 16.14,
+   "e": 23.547,
+   "label": "\u2014",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "o3",
+   "k": "vo",
+   "vs": 23.547,
+   "s": 24.347,
+   "e": 29.85,
+   "label": "\u2014",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "o4",
+   "k": "nat",
+   "vs": 29.85,
+   "s": 29.85,
+   "e": 31.05,
+   "label": "\u2014",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "o4b",
+   "k": "vo",
+   "vs": 31.05,
+   "s": 31.65,
+   "e": 38.198,
+   "label": "Coast Guard helicopter over Houston, Aug. 27, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "o5",
+   "k": "vo",
+   "vs": 38.198,
+   "s": 38.998,
+   "e": 48.762,
+   "label": "Coast Guard, Houston, Aug. 27, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "o6",
+   "k": "vo",
+   "vs": 48.762,
+   "s": 49.562,
+   "e": 55.982,
+   "label": "Texas National Guard, Houston, Aug. 27, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "o7",
+   "k": "nat",
+   "vs": 55.982,
+   "s": 55.982,
+   "e": 58.982,
+   "label": "**HARVEY \u00b7 HOUSTON, 2017**",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "a1",
+   "k": "vo",
+   "vs": 58.982,
+   "s": 59.782,
+   "e": 70.254,
+   "label": "Satellite, Aug. 25, 2017 \u00b7 NOAA/NESDIS/STAR, RAMMB/CIRA",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "a2",
+   "k": "vo",
+   "vs": 70.254,
+   "s": 71.054,
+   "e": 82.479,
+   "label": "National Hurricane Center, Advisories 21 and 22, Aug. 25, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "a3",
+   "k": "vo",
+   "vs": 82.479,
+   "s": 83.279,
+   "e": 95.167,
+   "label": "Flood risk outlook, Aug. 25 \u00b7 simplified from NWS/WPC",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "a4",
+   "k": "vo",
+   "vs": 95.167,
+   "s": 95.967,
+   "e": 108.065,
+   "label": "Lt. Cmdr. Simon Greene \u00b7 Coast Guard helicopter pilot",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "a5",
+   "k": "vo",
+   "vs": 108.065,
+   "s": 108.865,
+   "e": 119.488,
+   "label": "Evacuation orders, Aug. 24\u201325, 2017 \u00b7 simplified",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "a6",
+   "k": "vo",
+   "vs": 119.488,
+   "s": 120.288,
+   "e": 131.701,
+   "label": "\u2014",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "a7",
+   "k": "vo",
+   "vs": 131.701,
+   "s": 132.501,
+   "e": 147.454,
+   "label": "NTSB HAR-07/01",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "a8",
+   "k": "vo",
+   "vs": 147.454,
+   "s": 148.254,
+   "e": 155.743,
+   "label": "Landfall, Aug. 25, 2017, \u224810 p.m. \u00b7 track: NHC",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "b1",
+   "k": "vo",
+   "vs": 155.743,
+   "s": 156.543,
+   "e": 168.64,
+   "label": "Rainfall, Aug. 26\u201327 \u00b7 NWS data, simplified",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "b2",
+   "k": "vo",
+   "vs": 168.64,
+   "s": 169.44,
+   "e": 183.326,
+   "label": "\u2014",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "b3",
+   "k": "vo",
+   "vs": 183.326,
+   "s": 184.126,
+   "e": 191.405,
+   "label": "Dickinson, Texas \u00b7 filmed Sept. 4, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "b4",
+   "k": "bite",
+   "vs": 191.405,
+   "s": 192.305,
+   "e": 210.925,
+   "label": "CPO Matthew Dusek \u00b7 U.S. Coast Guard \u00b7 interview Sept. 4, 2017",
+   "segs": [
+    [
+     12.18,
+     30.8
+    ]
+   ],
+   "src": "551726"
+  },
+  {
+   "id": "b5",
+   "k": "vo",
+   "vs": 210.925,
+   "s": 211.725,
+   "e": 220.247,
+   "label": "\u2014",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "b6",
+   "k": "vo",
+   "vs": 220.247,
+   "s": 221.047,
+   "e": 230.242,
+   "label": "Houston, Sunday, Aug. 27, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "b7",
+   "k": "nat",
+   "vs": 230.242,
+   "s": 230.242,
+   "e": 233.742,
+   "label": "Quoted in NWS Service Assessment, p. 8",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "b8",
+   "k": "vo",
+   "vs": 233.742,
+   "s": 234.542,
+   "e": 252.526,
+   "label": "Sgt. Steve Perez \u00b7 Houston Police Department \u00b7 34 years of service",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "c1",
+   "k": "vo",
+   "vs": 252.526,
+   "s": 253.326,
+   "e": 262.196,
+   "label": "Coast Guard aircraft from Cape Cod, Aug. 27, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "c2",
+   "k": "vo",
+   "vs": 262.196,
+   "s": 262.996,
+   "e": 275.837,
+   "label": "Coast Guard, Houston, Aug. 27\u201329, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "c3",
+   "k": "nat",
+   "vs": 275.837,
+   "s": 275.837,
+   "e": 291.837,
+   "label": "Coast Guard hoist, Houston, Aug. 27, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "c4",
+   "k": "nat",
+   "vs": 291.837,
+   "s": 291.837,
+   "e": 295.837,
+   "label": "\u2014",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "c5",
+   "k": "vo",
+   "vs": 295.837,
+   "s": 296.637,
+   "e": 308.769,
+   "label": "Brendan Kiley \u00b7 rescue swimmer, Air Station Cape Cod",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "c6",
+   "k": "vo",
+   "vs": 308.769,
+   "s": 309.569,
+   "e": 320.935,
+   "label": "\u2014",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "c9",
+   "k": "nat",
+   "vs": 320.935,
+   "s": 320.935,
+   "e": 322.135,
+   "label": "\u2014",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "c10",
+   "k": "vo",
+   "vs": 322.135,
+   "s": 322.935,
+   "e": 334.65,
+   "label": "\u2014",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "c11",
+   "k": "vo",
+   "vs": 334.65,
+   "s": 335.45,
+   "e": 344.25,
+   "label": "Coast Guard helicopter over Houston, Aug. 27, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "c11b",
+   "k": "vo",
+   "vs": 344.25,
+   "s": 345.05,
+   "e": 349.125,
+   "label": "\u2014",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "c12",
+   "k": "vo",
+   "vs": 349.125,
+   "s": 349.925,
+   "e": 362.394,
+   "label": "Coast Guard rescue, greater Houston, Aug. 28, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "c13",
+   "k": "vo",
+   "vs": 362.394,
+   "s": 363.194,
+   "e": 373.829,
+   "label": "Texas National Guard, Houston, Aug. 27, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "c14",
+   "k": "vo",
+   "vs": 373.829,
+   "s": 374.629,
+   "e": 381.932,
+   "label": "Texas National Guard, Houston, Aug. 27, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "c15",
+   "k": "bite",
+   "vs": 381.932,
+   "s": 382.832,
+   "e": 411.412,
+   "label": "Sgt. Anthony Lara \u00b7 712th Military Police Co. \u00b7 interview Sept. 6, 2017",
+   "segs": [
+    [
+     4.3,
+     32.88
+    ]
+   ],
+   "src": "549208"
+  },
+  {
+   "id": "c16",
+   "k": "vo",
+   "vs": 411.412,
+   "s": 412.212,
+   "e": 417.227,
+   "label": "Texas National Guard, Houston, Aug. 27, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "c17",
+   "k": "bite",
+   "vs": 417.227,
+   "s": 418.127,
+   "e": 435.757,
+   "label": "Spc. Kyle Wampler \u00b7 712th Military Police Co. \u00b7 interview, Sept. 2017",
+   "segs": [
+    [
+     38.84,
+     56.47
+    ]
+   ],
+   "src": "549218"
+  },
+  {
+   "id": "d1",
+   "k": "vo",
+   "vs": 435.757,
+   "s": 436.557,
+   "e": 446.426,
+   "label": "Flooded houses, Harris County \u00b7 HCFCD 2018, simplified",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "d2",
+   "k": "vo",
+   "vs": 446.426,
+   "s": 447.226,
+   "e": 461.541,
+   "label": "Addicks and Barker reservoirs \u00b7 USACE",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "d3",
+   "k": "vo",
+   "vs": 461.541,
+   "s": 462.341,
+   "e": 472.894,
+   "label": "Inside the reservoirs, Aug. 30, 2017 \u00b7 USACE",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "d4",
+   "k": "vo",
+   "vs": 472.894,
+   "s": 473.694,
+   "e": 493.617,
+   "label": "Releases begin \u2248 midnight, Aug. 28 \u00b7 court record",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "d5",
+   "k": "vo",
+   "vs": 493.617,
+   "s": 494.417,
+   "e": 504.715,
+   "label": "Buffalo Bayou corridor, Aug. 30, 2017 \u00b7 USACE",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "d6",
+   "k": "vo",
+   "vs": 504.715,
+   "s": 505.515,
+   "e": 522.535,
+   "label": "Upstream ruling 2019, affirmed 2025 \u00b7 downstream ruling 2026",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "e1",
+   "k": "vo",
+   "vs": 522.535,
+   "s": 523.335,
+   "e": 532.112,
+   "label": "Track and rainfall \u00b7 NHC, simplified",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "e2",
+   "k": "nat",
+   "vs": 532.112,
+   "s": 532.112,
+   "e": 544.112,
+   "label": "Air Force Reserve rescue, Port Arthur, Aug. 30, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "e3",
+   "k": "vo",
+   "vs": 544.112,
+   "s": 544.912,
+   "e": 552.912,
+   "label": "Air Force Reserve, near Beaumont, Aug. 31, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "e4",
+   "k": "nat",
+   "vs": 552.912,
+   "s": 552.912,
+   "e": 558.912,
+   "label": "\u2014",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "e5",
+   "k": "vo",
+   "vs": 558.912,
+   "s": 559.712,
+   "e": 565.737,
+   "label": "Vidor, Texas, Aug. 31, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "e6",
+   "k": "bite",
+   "vs": 565.737,
+   "s": 566.637,
+   "e": 595.587,
+   "label": "Lt. Dan Warren \u00b7 212th Rescue Squadron, Alaska Air National Guard \u00b7 Vidor, Aug. 2017",
+   "segs": [
+    [
+     8.36,
+     19.16
+    ],
+    [
+     34.16,
+     51.96
+    ]
+   ],
+   "src": "547400"
+  },
+  {
+   "id": "f1",
+   "k": "vo",
+   "vs": 595.587,
+   "s": 596.387,
+   "e": 601.658,
+   "label": "Dickinson, Texas, Sept. 4, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "f2",
+   "k": "bite",
+   "vs": 601.658,
+   "s": 602.558,
+   "e": 612.758,
+   "label": "CPO Matthew Dusek \u00b7 U.S. Coast Guard",
+   "segs": [
+    [
+     35.84,
+     46.04
+    ]
+   ],
+   "src": "551726"
+  },
+  {
+   "id": "f3",
+   "k": "vo",
+   "vs": 612.758,
+   "s": 613.558,
+   "e": 627.687,
+   "label": "68 direct deaths \u00b7 36 in Harris County \u00b7 154,170 houses flooded in the county \u00b7 122,000+ rescued in Texas (NHC; HCFCD; Governor's Commission) \u00b7 photo: USGS",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "g1",
+   "k": "vo",
+   "vs": 627.687,
+   "s": 628.487,
+   "e": 640.295,
+   "label": "Houston, Aug. 27, 2017",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "g2",
+   "k": "vo",
+   "vs": 640.295,
+   "s": 641.295,
+   "e": 650.722,
+   "label": "Brendan Kiley \u00b7 U.S. Coast Guard rescue swimmer",
+   "segs": null,
+   "src": null
+  },
+  {
+   "id": "g6",
+   "k": "nat",
+   "vs": 650.722,
+   "s": 650.722,
+   "e": 654.722,
+   "label": "\u2014",
+   "segs": null,
+   "src": null
+  }
+ ]
+}
