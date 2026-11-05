@@ -29,7 +29,7 @@ function nightCity(ctx, t) { L.skyGrad(ctx, -1700, -1000, 3400, 1300, TN.sky); f
   for (let i = 0; i < 12; i++) { const x = -1700 + i * 300, h = 380 + hash(i * 5) * 420; rr(ctx, x, 260 - h, 260, h, 4); ink(ctx, ['#2E3654', '#3A3360', '#29304A'][i % 3], 4);
     for (let r = 0; r < h / 56 - 1; r++) for (let c = 0; c < 3; c++) if (hash(i * 31 + r * 7 + c) > 0.45) { rr(ctx, x + 26 + c * 76, 260 - h + 24 + r * 56, 46, 30, 3); ink(ctx, '#F7D27A', 0); } } }
 function pressRoom(ctx, t) { L.skyGrad(ctx, -1600, -1000, 3200, 1300, ['#1E2A44', '#2F3E66']); L.stripes(ctx, -1500, -900, 3000, 1100, '#2B3A5E', '#26345A', 60);
-  rr(ctx, -900, -720, 1800, 120, 10); ink(ctx, '#D93A35', 6); fitText(ctx, 'PRESS CONFERENCE · NEW YORK', 0, -660, 60, CREAM, 1700);
+  rr(ctx, -900, -720, 1800, 120, 10); ink(ctx, '#D93A35', 6); fitText(ctx, 'PRESS CONFERENCE', 0, -660, 60, CREAM, 1700);
   for (let i = 0; i < 2; i++) { rr(ctx, -1400 + i * 2300, -560, 400, 700, 10); ink(ctx, '#3A4A70', 5); } ctx.fillStyle = '#3A3F4D'; ctx.fillRect(-1600, 200, 3200, 800); }
 function chairs(ctx, x0, n, y, s = 1) { for (let i = 0; i < n; i++) { const x = x0 + i * 150 * s; rr(ctx, x - 40 * s, y - 150 * s, 80 * s, 90 * s, 8); ink(ctx, '#C9302C', 4); rr(ctx, x - 46 * s, y - 70 * s, 92 * s, 20 * s, 6); ink(ctx, '#A92420', 4); rr(ctx, x - 40 * s, y - 50 * s, 8 * s, 50 * s, 3); ink(ctx, '#3A3438', 3); rr(ctx, x + 32 * s, y - 50 * s, 8 * s, 50 * s, 3); ink(ctx, '#3A3438', 3); } }
 function tvCam(ctx, x, y, s = 1, t = 0) { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); for (const a of [-0.35, 0, 0.35]) { ctx.save(); ctx.rotate(a); rr(ctx, -6, -220, 12, 220, 4); ink(ctx, '#3A3438', 4); ctx.restore(); }
@@ -232,7 +232,7 @@ const scenes = [
   { name: 'newspaper spin: IT IS BACK', t0: t17, era: 'pop', out: { type: 'cut' }, draw(ctx, t, lt) {
       const c = EN.cam([[0, 0, 0, 1.0], [2.5, 0, 0, 1.08]], lt), sp = E.out(clamp(lt / 0.8));
       EN.layers(ctx, c, [[0.4, x => { for (let i = 0; i < 24; i++) { x.save(); x.rotate(i / 24 * 6.283 + lt * 0.3); poly(x, [[0, 0], [1800, -120], [1800, 120]]); x.fillStyle = i % 2 ? '#F7C548' : '#F2A65A'; x.fill(); x.restore(); } }],
-        [1, x => { x.save(); x.rotate((1 - sp) * 12); x.scale(sp, sp); rr(x, -520, -330, 1040, 660, 6); ink(x, '#F4F0E6', 7); fitText(x, 'THE DAILY NEWS', 0, -270, 54, INK, 900, { font: L.F.type }); x.beginPath(); x.moveTo(-480, -230); x.lineTo(480, -230); ink(x, null, 4);
+        [1, x => { x.save(); x.rotate((1 - sp) * 12); x.scale(sp, sp); rr(x, -520, -330, 1040, 660, 6); ink(x, '#F4F0E6', 7); fitText(x, 'THE MORNING PAPER', 0, -270, 54, INK, 900, { font: L.F.type }); x.beginPath(); x.moveTo(-480, -230); x.lineTo(480, -230); ink(x, null, 4);
             fitText(x, 'THE ORIGINAL IS BACK!', 0, -160, 92, INK, 960); P.bottle(x, -280, 260, 1.15, { kind: 'contour', label: 'CLASSIC' }); K.face(x, -280, 80, 1.2, 'happy');
             for (let i = 0; i < 9; i++) { rr(x, -40, -60 + i * 34, 460 - (i % 3) * 60, 14, 4); ink(x, '#C9C1B0', 0); } x.restore(); }]]);
       L.plate(ctx, 'IN 2 DAYS', 1560, 930, pop(lt, L1('n5', 'two', t17)), { size: 64, bg: CREAM });
