@@ -41,7 +41,6 @@ L.chapter(module, __dirname, ({ at, L: LS, T, fx, music }) => {
           const u = clamp((g - c1 - 0.8) / 2.2), dx = lerp(-120, 260, ease.inOut(u));
           place(c, 'toy_duck', 520 + dx, 640, 0.42, { look: 'workshop', depth: 0.9, r: Math.sin(t * 8) * 0.03 * (u > 0 && u < 1) });
           place(c, 'toy_truck', 1060, 655, 0.44, { look: 'workshop', depth: 0.9 });
-          place(c, 'toy_peg_figure', 1250, 640, 0.3, { look: 'workshop', depth: 0.9 });
           S.beams(c, t, 1500, 120, 2.6, 3, 0.07, 1200); S.dust(c, t, 300, 150, 1000, 500, 45); });
         S.grade(ctx, 0.08, 0.42); small(ctx, 'BILLUND, DENMARK · 1932', S.W / 2, 1000, ss((g - c1 - 0.3) / 0.4) * (1 - ss((g - dep_ - 0.8) / 0.4)), 34);
         stat(ctx, '"LEG GODT"', S.W / 2, 180, ss((g - leg) / 0.3), 110); small(ctx, '= PLAY WELL', S.W / 2, 290, ss((g - play) / 0.3), 54, '#F2C14E'); } },

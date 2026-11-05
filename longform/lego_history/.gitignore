@@ -1,1 +1,6 @@
 chapters/*/build.log
+chapters/*/seg_video.mp4
+chapters/*/vo.wav
+chapters/*/fx.wav
+chapters/*/mix.py
+mix.wav

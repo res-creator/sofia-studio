@@ -44,14 +44,27 @@ const prop = n => { if (!A.prop[n]) throw new Error('no prop ' + n); return A.pr
 const size = (im, s) => [im.width / im.pre * s, im.height / im.pre * s];
 
 // ---------- drawing ----------
-function plate(ctx, name, o = {}) { if (o.blur || o.filter) { ctx.save(); ctx.filter = `${o.filter || ''} ${o.blur ? `blur(${o.blur}px)` : ''}`; } S.plate(ctx, A.plate[name]); if (o.blur || o.filter) ctx.restore(); }
+// plates with a filter/blur are baked once per (plate, quantized filter) and re-used (a full-plate filter per frame is the render bottleneck)
+const PCACHE = new Map(); const { createCanvas } = require('@napi-rs/canvas');
+function plate(ctx, name, o = {}) {
+  if (!o.blur && !o.filter) return S.plate(ctx, A.plate[name]);
+  const f = `${(o.filter || '').replace(/(\d*\.\d+)/g, m => (Math.round(+m * 40) / 40).toFixed(3))} ${o.blur ? `blur(${Math.round(o.blur * 2) / 2}px)` : ''}`.trim(), key = name + '|' + f;
+  let cv = PCACHE.get(key);
+  if (!cv) { const im = A.plate[name]; cv = createCanvas(im.width, im.height); const c = cv.getContext('2d'); c.filter = f; c.drawImage(im, 0, 0);
+    if (PCACHE.size > 24) PCACHE.delete(PCACHE.keys().next().value); PCACHE.set(key, cv); }
+  ctx.drawImage(cv, 0, 0, S.PW, S.PH); }
 function place(ctx, n, x, y, s, o = {}) { const im = typeof n === 'string' ? (A.prop[n] || A.x[n]) : n; if (!im) throw new Error('no sprite ' + n); return I.place(ctx, im, x, y, s, o); }
 // puppet: (x, y) = neck point; s = scale in plate px per source px (same as the un-upscaled parts)
 function actor(ctx, who, x, y, s, st, t, o = {}) { const P = A.ch[who], L = I.LOOKS[o.look || 'table'];
   if (o.wall !== undefined) { ctx.save(); ctx.globalAlpha = o.wallA ?? 0.2; ctx.filter = `blur(${22 * s}px)`; ctx.fillStyle = '#140a04';
     ctx.beginPath(); ctx.ellipse(x - o.wall, y + 170 * s, 250 * s, 360 * s, 0, 0, 6.28); ctx.fill(); ctx.restore(); }
-  ctx.save(); ctx.globalAlpha *= o.a ?? 1; ctx.filter = `${L.filter} ${o.extra || ''}`; if (o.flip) { ctx.translate(x, 0); ctx.scale(-1, 1); ctx.translate(-x, 0); }
-  P.draw(ctx, x, y, s / P.K, st, t); ctx.restore(); }
+  // draw the puppet unfiltered into a screen-size layer (same transform), then colour-match the whole layer ONCE
+  // (a filter on the main context would be re-run for each of the ~200 strips of a bending arm)
+  ALAY = ALAY || createCanvas(S.W, S.H); const lc = ALAY.getContext('2d'); lc.setTransform(1, 0, 0, 1, 0, 0); lc.clearRect(0, 0, S.W, S.H);
+  lc.setTransform(ctx.getTransform()); if (o.flip) { lc.translate(x, 0); lc.scale(-1, 1); lc.translate(-x, 0); }
+  P.draw(lc, x, y, s / P.K, st, t);
+  ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha *= o.a ?? 1; ctx.filter = `${L.filter} ${o.extra || ''}`; ctx.drawImage(ALAY, 0, 0); ctx.restore(); }
+let ALAY = null;
 const rest = (o = {}) => Object.assign({ head: 'neutral', tilt: 0, nod: 0 }, o);
 
 // camera keys clamped to the plate (never show beyond the painted edge)

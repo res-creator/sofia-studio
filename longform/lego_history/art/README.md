@@ -104,3 +104,25 @@ The style matches the Coca-Cola plates and the v6 puppet: same model, same warm 
   - `olekirk_parts_sheet.jpg`: prepared parts with pivots.
 
 Generations so far: batch 1 = 5, Ole Kirk = 2, **total 7**.
+
+---
+
+# Full production (owner's go-ahead, 5 Nov 2026)
+Figma generations used in total: **34 of the 38 allowed** (no retries).
+
+| Batch | Generations |
+|---|---|
+| Batch 1 (look of the film) | 5 |
+| Ole Kirk | 2 |
+| Godtfred, Owner, Outsider (heads + body each) | 6 |
+| Plates P1, P2, P3, P4, P6, P7, P8, P10, P11, P12, P13, P14 | 12 |
+| Prop sheets K3 toys, K4 business, K5 things | 3 |
+| Secondary sheets S1–S4 | 4 |
+| Thumbnail art | 1 |
+| **Total** | **34** |
+
+Tools added in this folder (figmakit unchanged):
+- `key.py --holes`: removes key colour seen through wire and gaps.
+- `characters/make_puppet.py`: nostub + measures neck, shoulders and arm tops, writes `character.js`.
+- `prepare_chars.py`: ×1.6 puppet upscales for close shots.
+- `integrate.js`: bakes the lit sprite and its shadows once per size (cache), so rendering is about 10× faster.
