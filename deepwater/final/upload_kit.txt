@@ -5,16 +5,19 @@ final/dwh_full_film.mp4 (1920x1080, about 14:13) · captions final/dwh_full_film
 THUMBNAIL
 final/thumbnail.jpg — "8 P.M. / DECLARED A SUCCESS" (recommended); alternative final/thumbnail_v2.jpg — "KILL LINE: NO FLOW / DRILL PIPE: 1,400 PSI / 'SUCCESS'". Photo: U.S. Coast Guard, April 21, 2010 (DVIDS 272214, public domain).
 
-TITLE (recommended)
-The Test They Called a Success: Deepwater Horizon
+TITLE (recommended with final/thumbnail.jpg)
+Why Deepwater Horizon Exploded Two Hours After a "Successful" Test
 
 ALTERNATIVE TITLES
+- The Test They Called a Success: Deepwater Horizon
 - Deepwater Horizon: The Readings Said No. They Called It a Success
 - 1,400 PSI: How the Deepwater Horizon Well Was Judged Safe
 - Deepwater Horizon 2010: Why the Blowout Preventer Didn't Stop It
 
 DESCRIPTION
-On the evening of April 20, 2010, the crew of the Deepwater Horizon ran a test to check whether the Macondo well was sealed. The readings contradicted each other. Around 8 p.m., the test was declared a success. Less than two hours later, the well blew out, the rig exploded, and eleven men were killed.
+On April 20, 2010, the crew of the Deepwater Horizon tested whether the Macondo well was sealed. One line showed no flow. The drill pipe showed 1,400 psi. Around 8 p.m., the test was declared a success. Less than two hours later, the well blew out, the rig exploded, and eleven men were killed.
+
+Why was the well judged safe? And why didn't the blowout preventer on the seafloor stop it?
 
 This documentary follows the evening in order: the rig and the well, the three barriers, the negative pressure test, the missed signs, the blowout, the escape and rescue, why the blowout preventer did not stop the flow, and what followed. It is told through Coast Guard archive footage, official investigation reports, and the testimony of Mike Williams, the rig's chief electronics technician, at the joint investigation hearing in July 2010.
 
