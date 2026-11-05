@@ -3,7 +3,7 @@
 | File | What |
 |---|---|
 | `how_coca_cola_took_over_the_world.mp4` | the film |
-| `how_coca_cola_took_over_the_world_thumbnail_final.png` | FINAL YouTube thumbnail 1280x720 "9 COKES A DAY?!" (`node thumb_final.js`); v1/v2 are drafts |
+| `how_coca_cola_took_over_the_world_thumbnail_final.png` | FINAL YouTube thumbnail 1280x720 "9 COKES A DAY?!": illustration generated in Figma AI (`art/thumbnail_figma_base.png`, no text/logo) + our type (`node thumb_figma.js`); code-drawn `thumb_final.js`, v1, v2 are drafts |
 | `how_coca_cola_took_over_the_world.srt` | English subtitles (upload to YouTube) |
 | `script.md` / `script_ru.md` | full English script / Russian translation |
 | `sources.md` | fact check + sources for every claim |
