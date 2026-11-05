@@ -3,7 +3,7 @@
 | File | What |
 |---|---|
 | `how_coca_cola_took_over_the_world.mp4` | the film |
-| `how_coca_cola_took_over_the_world_thumbnail_v2.png` | YouTube thumbnail 1280x720, v2 after the critique (`node thumb_v2.js`); v1: `..._thumbnail.png` |
+| `how_coca_cola_took_over_the_world_thumbnail_final.png` | FINAL YouTube thumbnail 1280x720 "9 COKES A DAY?!" (`node thumb_final.js`); v1/v2 are drafts |
 | `how_coca_cola_took_over_the_world.srt` | English subtitles (upload to YouTube) |
 | `script.md` / `script_ru.md` | full English script / Russian translation |
 | `sources.md` | fact check + sources for every claim |
