@@ -1,5 +1,5 @@
 # Voice from Fish Audio (owner's choice, Nov 2026). Default voice: "Ethan" by Fish Official (educational / documentary narrator, male, American English).
-# Key ONLY via the environment variable FISH_API_KEY (never in code, git or chat). One request at a time, 3 s apart.
+# Key ONLY via the environment variable FISH_API_KEY or the cloud network secret for api.fish.audio (never in code, git or chat). One request at a time, 3 s apart.
 # Fish returns audio without word timings, so every line is force-aligned locally (faster-whisper word timestamps matched to the script words)
 # and saved as an ElevenLabs-style <id>.align.json — the animation engine re-times every scene from it.
 # Previous files are moved to vo_prev/. Then run: sh build_all.sh
@@ -11,8 +11,7 @@ args = sys.argv[1:]; voice = ETHAN; align_only = False
 if '--voice' in args: i = args.index('--voice'); voice = args[i + 1]; del args[i:i + 2]
 if '--align-only' in args: args.remove('--align-only'); align_only = True
 chs = args or sorted(os.listdir(f'{D}/chapters'))
-KEY = os.environ.get('FISH_API_KEY', '').strip()
-if not align_only and not KEY: raise SystemExit('Set FISH_API_KEY in the environment (cloud: environment settings -> secrets).')
+KEY = os.environ.get('FISH_API_KEY', '').strip() or 'proxy'   # cloud: the network secret for api.fish.audio injects 'Authorization: Bearer <key>'; locally set FISH_API_KEY
 
 def tts(text):
     body = json.dumps({'text': text, 'reference_id': voice, 'format': 'mp3', 'mp3_bitrate': 192, 'normalize': True, 'latency': 'normal',

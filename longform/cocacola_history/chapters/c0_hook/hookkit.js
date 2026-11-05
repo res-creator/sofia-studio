@@ -128,7 +128,7 @@ function planet(ctx, x, y, r, t, o = {}) { ctx.save(); ctx.translate(x, y); L.gl
 // ring of bottles: half = 'back' | 'front'
 function bottleRing(ctx, x, y, rx, ry, tilt, t, half, n = 64, spin = 0.25) { ctx.save(); ctx.translate(x, y); ctx.rotate(tilt);
   for (let i = 0; i < n; i++) { const a = i / n * 6.283 + t * spin, sn = Math.sin(a); if ((half === 'back') !== (sn < 0)) continue; const bx = Math.cos(a) * rx, by = sn * ry, k = 0.8 + sn * 0.22;
-    sb(ctx, bx, by, 0.34 * k * (1 + hash(i) * 0.25), -a + Math.PI / 2 + hash(i * 3) * 0.6, hash(i * 9) > 0.85 ? 'straight' : 'contour'); }
+    sb(ctx, bx, by, 0.5 * k * (1 + hash(i) * 0.2), -a + Math.PI / 2 + hash(i * 3) * 0.6, hash(i * 9) > 0.85 ? 'straight' : 'contour'); }
   ctx.restore(); }
 
 // ---------- panel grid ("and someone else") ----------

@@ -14,7 +14,7 @@ const PEM_WAR = { ...PEM, hair: { style: 'side', col: '#6B5A48' }, beardCol: '#7
 const CALM = { skin: L.SKIN[2], hair: { style: 'short', col: '#2B1E16' }, glasses: 'round', top: '#2F8A6A', top2: '#F4F0E6', pants: '#3A3A48' };
 const RIDER = { skin: L.SKIN[4], hair: { style: 'short', col: '#151313' }, top: '#E07A3A', pants: '#2F4A6A' };
 const SCI = { skin: '#F2C9A0', hair: { style: 'bald', col: '#8A8378' }, glasses: 'round', top: '#FFFFFF', top2: '#9CC3E0', tie: '#2F6DB5', pants: '#4A4F5C' };
-const YELL = { eyes: 'wide', brows: 'angry', mouth: 'open', red: 1 };
+const YELL = { eyes: 'open', brows: 'angry', mouth: 'flat', red: 1 };
 function shakeCam(c, lt, hits, amp = 16) { const s = EN.shake(lt, hits, amp); c.x += s.x / c.z; c.y += s.y / c.z; return c; }
 function flash(ctx, u, col = '#FFFFFF', a = 0.8) { if (u <= 0 || u >= 1) return; ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = (1 - u) * a; ctx.fillStyle = col; ctx.fillRect(0, 0, W, H); ctx.restore(); }
 const DRINK = { la: [0.18, 0.1], ra: [2.6, 1.83] }; // hand at the mouth (toon geometry), bottle tipped up
@@ -39,11 +39,12 @@ const scenes = [
             { sign: 'CAFÉ', col: '#F4EDE0', signCol: BLUE, awning: [BLUE, CREAM], w: 520 }, { sign: 'FLOWERS', col: '#E8B5C0', signCol: '#8A3A5A', awning: ['#8A3A5A', CREAM] }, { sign: 'SHOES', col: '#D9D2C2', signCol: '#2E3440' }]);
             x.fillStyle = '#D6CFC2'; x.fillRect(-2600, 110, 5200, 300); }],
         [1, x => { K.road(x, -2600, 120, 5200, 230); K.pavement(x, -2600, 340, 5200, 900);
-            K.bottleWave(x, wx, 345, 0.95, lt);
+            for (let i = 0; i < 4; i++) { const rx = 80 + i * 260 + lt * (300 + i * 40); toon(x, rx, 330 + (i % 2) * 20, 0.62, [LOOKS.woman, LOOKS.worker, LOOKS.kid, LOOKS.shopper][i], 'run', 'shock', { t: lt + i * 0.3, look: [-0.8, -0.3] }); }
+            K.bottleWave(x, wx, 345, 0.95, lt); K.flyers(x, wx, 345, 0.95, lt + 0.9, 7);
             for (let i = 0; i < 6; i++) { const ph = clamp((lt - 0.1 - i * 0.12) / 2.2); K.bird(x, 120 + i * 90 + ph * 900, -320 - i * 40 - ph * 420, 0.9, lt + i); } }],
-        [1.12, x => { K.cafeTable(x, 800, 660, 1.15, lt);
-            toon(x, 560, 660, 1.2, CALM, scared ? { la: [1.9, 1.2], ra: [1.9, 1.2], sit: 1, ll: [1.45, -1.45], rl: [1.45, -1.45] } : 'sit', scared ? 'shock' : 'sleepy', { t: lt, look: scared ? [-0.8, -0.7] : [0.6, 0.2], itemR: !scared ? g => { g.rotate(0.2); rr(g, -60, -70, 120, 90, 4); L.ink(g, '#F4F0E6', 4); for (let k = 0; k < 4; k++) { g.beginPath(); g.moveTo(-44, -50 + k * 18); g.lineTo(44, -50 + k * 18); L.ink(g, null, 3); } } : null });
-            if (scared) { x.save(); x.globalAlpha = clamp((lt - 0.85) / 0.2); fitText(x, '!', 640, 250, 110, RED, 90, { outline: 12 }); x.restore(); } }],
+        [1.12, x => { K.cafeTable(x, 800, 500, 1.15, lt);
+            toon(x, 560, 500, 1.2, CALM, scared ? { la: [1.9, 1.2], ra: [1.9, 1.2], sit: 1, ll: [1.45, -1.45], rl: [1.45, -1.45] } : 'sit', scared ? 'shock' : 'sleepy', { t: lt, look: scared ? [-0.8, -0.7] : [0.6, 0.2], itemR: !scared ? g => { g.rotate(0.2); rr(g, -60, -70, 120, 90, 4); L.ink(g, '#F4F0E6', 4); for (let k = 0; k < 4; k++) { g.beginPath(); g.moveTo(-44, -50 + k * 18); g.lineTo(44, -50 + k * 18); L.ink(g, null, 3); } } : null });
+            if (scared) { x.save(); x.globalAlpha = clamp((lt - 0.85) / 0.2); fitText(x, '!', 650, 60, 110, RED, 90, { outline: 12 }); x.restore(); } }],
         [1.35, x => { K.hydrant(x, 1300, 860, 1.7); P.lamppost(x, -1400, 1000, 1.8, false); }]]);
       L.word(ctx, 'RIGHT NOW', 1490, 150, pop(t, 0.22), { size: 96, col: CREAM });
     } },
@@ -87,7 +88,7 @@ const scenes = [
           for (let gy = -1450; gy <= 1450; gy += 84) for (let gx = -2250; gx <= 2250; gx += 92) { i++; const px = gx + (hash(i * 1.1) - 0.5) * 40 + ((gy / 84) % 2) * 40, py = gy + (hash(i * 2.2) - 0.5) * 30, d = Math.hypot(px, py);
             if (d < 290) continue; if (Math.abs(px) > 1350 && Math.abs(Math.abs(px) - 1500) < 200 && Math.abs(Math.abs(py) - 800) < 200) continue;
             K.topPerson(x, px, py, 0.95, i, lt, 0.25 + d / 1500); }
-          for (let b = 0; b < 5; b++) { const ph = (lt * 0.35 + b * 0.2) % 1; x.save(); x.translate(-1600 + ph * 3200, -600 + b * 300); x.rotate(0.2); K.bird(x, 0, 0, 1.2, lt + b); x.restore(); } }]]);
+          }]]);
       L.word(ctx, 'EVERY SINGLE DAY', 960, 150, pop(t, at('h1', 'Every')), { size: 92, col: YELLOW });
     } },
   { name: 'the planet with a ring of bottles: 2.2 BILLION A DAY lands on "two"', t0: t6, era: 'pop', out: { type: 'tear', dur: 0.5 }, draw(ctx, t, lt) {
@@ -95,9 +96,9 @@ const scenes = [
       const c = shakeCam(EN.cam([[0, 160, 70, 1.65, 0.16], [k2 + 0.55, 0, 30, 1.0, 0.0], [3.7, 0, 20, 0.93, -0.03]], lt), lt, [k2], 12);
       EN.layers(ctx, c, [
         [0.2, x => { L.skyGrad(x, -2600, -1600, 5200, 3200, ['#0B1430', '#1E2C5A']); K.stars(x, -2400, -1400, 4800, 2800, lt, 160); x.beginPath(); x.arc(-1050, -380, 70, 0, 6.27); L.ink(x, '#E9E3D6', 5); x.beginPath(); x.arc(-1070, -400, 14, 0, 6.27); L.ink(x, '#C9C1B0', 3); }],
-        [1, x => { K.bottleRing(x, 0, -40, 660, 160, -0.18, lt, 'back', 70, 0.3); K.planet(x, 0, -40, 285, lt); K.bottleRing(x, 0, -40, 660, 160, -0.18, lt, 'front', 70, 0.3); }],
+        [1, x => { K.bottleRing(x, 0, -40, 680, 170, -0.18, lt, 'back', 46, 0.3); K.planet(x, 0, -40, 285, lt); K.bottleRing(x, 0, -40, 680, 170, -0.18, lt, 'front', 46, 0.3); }],
         [1.5, x => { for (let i = 0; i < 4; i++) { const ph = (lt * 0.28 + i * 0.25) % 1; K.sb(x, -1500 + ph * 3000, -420 + i * 260, 1.3, ph * 5 + i); } }]]);
-      P.burst(ctx, 960, 850, 520, clamp((t - tTwo) / 0.5), YELLOW);
+      P.burst(ctx, 960, 850, 300, clamp((t - tTwo) / 0.4), YELLOW);
       L.plate(ctx, '2.2 BILLION A DAY', 960, 850, pop(t, tTwo, 0.3), { size: 116, bg: RED, fg: CREAM });
       L.plate(ctx, "SERVINGS OF THE COMPANY'S DRINKS", 960, 975, pop(t, at('h1', 'servings')), { size: 40, rot: 0.02 });
     } },
@@ -115,11 +116,11 @@ const scenes = [
     } },
   { name: "Pemberton behind Jacobs' counter: nine glasses a day", t0: t8, era: 'gaslight', out: { type: 'whip', dur: 0.3, dir: -1 }, draw(ctx, t, lt) {
       const kN = at('h2', 'nine') - t8, kD = at('h2', 'day') - t8, n = Math.min(9, Math.floor(clamp((lt - kN + 0.35) / (kD - kN + 0.3)) * 9 + (lt > kN - 0.35 ? 1 : 0)));
-      const c = EN.cam([[0, -300, -60, 1.12], [3.3, 140, -40, 1.2]], lt);
+      const c = EN.cam([[0, -180, -80, 1.25], [kN - 0.3, -60, -60, 1.18], [3.3, 200, -40, 1.14]], lt);
       EN.layers(ctx, c, [
         [0.6, x => { K.drugWall(x, lt, { seed: 3, signs: ['TINCTURES', 'PRESCRIPTIONS', "JACOBS' PHARMACY", 'SODA WATER', 'EXTRACTS'] }); }],
         [1, x => { K.chalkTally(x, 380, -420, 470, 250, n, 'GLASSES TODAY');
-            toon(x, -160, 330, 1.55, PEM_APRON, n >= 9 ? 'cheer' : n > 0 ? 'present' : 'wave', n >= 9 ? 'grin' : n > 0 ? 'happy' : 'neutral', { t: lt, look: n > 0 && n < 9 ? [0.7, 0.3] : [0, 0] });
+            toon(x, -160, 340, 1.75, PEM_APRON, n >= 9 ? 'cheer' : n > 0 ? 'present' : 'wave', n >= 9 ? 'grin' : n > 0 ? 'happy' : 'neutral', { t: lt, look: n > 0 && n < 9 ? [0.7, 0.3] : [0, 0] });
             K.counter(x, -2000, 200, 4000); K.sodaTap(x, -720, 202, 0.95, 0); K.sodaTap(x, -560, 202, 0.95, 0); K.showGlobe(x, -1100, 200, 0.9, '#2F8A6A', lt);
             for (let i = 0; i < 9; i++) { const u = E.back(clamp((n - i) * 1.0), 2.2); if (n > i) { x.save(); x.translate(100 + i * 92, 202); x.scale(1, u); P.glassCup(x, 0, 0, 0.72, { fill: 0.8, fizz: lt + i }); x.restore(); } } }],
         [1.18, x => { toon(x, 1250, 620, 1.45, { skin: '#E8B58A', hair: { style: 'short', col: '#5A3A22' }, stache: 1, top: '#4A5A3A', top2: '#F4F0E6', bow: RED, pants: '#3A3A30', hat: 'bowler', hatCol: '#3A2A24' }, DRINK, 'happy', { t: lt, flip: true, itemR: (g, ang) => { g.rotate(ang - 2.2); P.glassCup(g, 0, 60, 0.5, { fill: 0.5 }); } });
@@ -127,7 +128,7 @@ const scenes = [
       L.plate(ctx, '9 GLASSES A DAY', 960, 965, pop(t, at('h2', 'day')), { size: 70 });
     } },
   { name: 'pull-back: ...in a pharmacy (Jacobs\' at dusk)', t0: t9, era: 'gaslight', out: { type: 'whip', dur: 0.3, dir: 1 }, draw(ctx, t, lt) {
-      const c = EN.cam([[0, -170, 60, 2.5], [1.15, 0, -60, 0.95, 'out']], lt);
+      const c = EN.cam([[0, -170, 60, 2.5], [1.15, 0, -170, 0.95, 'out']], lt);
       EN.layers(ctx, c, [
         [0.3, x => { L.skyGrad(x, -2600, -1500, 5200, 1900, ['#2E2440', '#B8606A']); K.stars(x, -2400, -1400, 4800, 900, lt, 50); }],
         [0.6, x => K.oldSkyline(x)],
@@ -144,21 +145,22 @@ const scenes = [
   // h3 ------------------------------------------------------------------------------------------------
   { name: '1899: two lawyers bring Candler the bottling idea (it glows)', t0: t10, era: 'sepia', out: { type: 'cut' }, draw(ctx, t, lt) {
       const kV = at('h3', 'valuable') - t10, glow = clamp((lt - kV + 0.2) / 0.5), walk = clamp((lt - 0.1) / 1.4);
-      const c = EN.cam([[0, -120, -40, 1.0], [kV, -30, -50, 1.08], [4.3, 40, -60, 1.12]], lt);
+      const c = EN.cam([[0, -120, -90, 1.18], [kV, -40, -100, 1.26], [4.3, 20, -110, 1.3]], lt);
       EN.layers(ctx, c, [
         [0.6, x => { L.wallpaper(x, -2400, -1300, 4800, 1600, '#5E6B4E', '#6E7B5C', 50); rr(x, -2400, 120, 4800, 30, 0); L.ink(x, '#4A3420', 4);
             rr(x, 300, -560, 420, 420, 8); L.ink(x, '#5A3420', 8); x.save(); rr(x, 316, -544, 388, 388, 4); x.clip(); L.skyGrad(x, 316, -544, 388, 388, ['#F6E2B8', '#EAB979']); for (let i = 0; i < 5; i++) { rr(x, 320 + i * 80, -330 + hash(i) * 60, 70, 300, 2); L.ink(x, '#C9A07A', 3); } x.restore(); x.beginPath(); x.moveTo(510, -560); x.lineTo(510, -140); x.moveTo(300, -350); x.lineTo(720, -350); x.lineWidth = 10; x.strokeStyle = '#5A3420'; x.stroke();
             P.clock(x, -300, -460, 70, lt, { rim: '#6B4123' }); rr(x, -1200, -620, 520, 760, 6); L.ink(x, '#5A3420', 6); for (let r = 0; r < 4; r++) for (let b = 0; b < 9; b++) { rr(x, -1180 + b * 54, -600 + r * 185 + hash(r * 9 + b) * 40, 46, 140 - hash(r * 9 + b) * 40, 3); L.ink(x, ['#7A2E2E', '#2E4A6A', '#4A6A3A', '#8A6A3A'][(r + b) % 4], 3); } }],
         [1, x => { L.planks(x, -2400, 300, 4800, 900, '#7A5A3A', { pw: 44 });
-            toon(x, 320, 300, 1.45, LOOKS.candler, lt < kV ? 'arms' : 'shrug', lt < kV ? 'smug' : 'think', { t: lt, look: lt > kV ? [-0.8, 0.2] : [-0.3, 0] });
+            toon(x, 340, 310, 1.65, LOOKS.candler, lt < kV ? 'arms' : 'shrug', lt < kV ? 'smug' : 'think', { t: lt, look: lt > kV ? [-0.8, 0.2] : [-0.3, 0] });
             rr(x, -260, 150, 1160, 36, 8); L.ink(x, '#6B4123', 6); rr(x, -230, 186, 1100, 220, 6); L.ink(x, '#5A3420', 6); for (let i = 0; i < 3; i++) { rr(x, -200 + i * 360, 210, 320, 170, 8); L.ink(x, '#6B4123', 4); }
             P.bills(x, 760, 140, 0.5, 2); K.inkwell(x, 620, 140, 0.4); }],
-        [1.15, x => { const lx = lerp(-1500, -720, E.out(walk));
-            toon(x, lx - 380, 640, 1.85, LOOKS.lawyerB, walk < 1 ? 'walk' : 'point', 'happy', { t: lt });
-            toon(x, lx, 620, 1.9, LOOKS.lawyerA, walk < 1 ? 'walk' : 'present', lt > kV ? 'grin' : 'happy', { t: lt + 0.5, itemR: walk >= 1 ? g => K.contract(g, 60, -60, 0.32, -0.1, { glow }) : null });
-            if (glow > 0) P.sparkles(x, lx + 260, 70, 200, lt, 8); }]]);
-      L.dateCard(ctx, '1899', 1680, 160, pop(t, at('h3', 'owners')));
-      L.word(ctx, 'ONE OF THE MOST VALUABLE IDEAS', 860, 965, pop(t, at('h3', 'valuable')), { size: 70, col: CREAM });
+        [1.15, x => { const lx = lerp(-1400, -330, E.out(walk));
+            toon(x, lx - 400, 400, 1.75, LOOKS.lawyerB, walk < 1 ? 'walk' : 'point', 'happy', { t: lt });
+            const hA = toon(x, lx, 420, 1.8, LOOKS.lawyerA, walk < 1 ? 'walk' : 'present', lt > kV ? 'grin' : 'happy', { t: lt + 0.5 }).hand;
+            if (walk >= 1) { K.contract(x, hA[0] + 90, hA[1] - 70, 0.3 + glow * 0.04, 0.12, { glow }); x.beginPath(); x.arc(hA[0], hA[1], 14 * 1.8, 0, 6.27); L.ink(x, LOOKS.lawyerA.skin, 5); }
+            if (glow > 0) P.sparkles(x, hA[0] + 90, hA[1] - 70, 200, lt, 8); }]]);
+      L.dateCard(ctx, '1899', 300, 160, pop(t, at('h3', 'owners')));
+      L.word(ctx, 'ONE OF THE MOST VALUABLE IDEAS', 1120, 150, pop(t, at('h3', 'valuable')), { size: 64, col: CREAM, maxW: 1250 });
     } },
   { name: 'top-down desk: a $1 bill slaps onto the contract', t0: t11, era: 'sepia', out: { type: 'whip', dur: 0.3, dir: -1 }, draw(ctx, t, lt) {
       const ks = tOne - t11, inU = E.out(clamp((lt - 0.2) / (ks - 0.35))), lift = clamp((lt - ks - 0.25) / 0.5);
@@ -167,13 +169,12 @@ const scenes = [
           K.inkwell(x, -640, -330, 1.0); K.pocketWatch(x, 650, -330, 1.0, lt); K.specs(x, 640, 330, 1.0, 0.3); K.pen(x, -660, 300, 1.0, -0.6); P.bills(x, -620, 40, 0.9, 3);
           K.contract(x, 0, 40, 1.1, -0.05, { sign: clamp((lt - ks - 0.5) / 0.9) });
           // Candler's hands from below (dark suit, white cuffs)
-          K.bigHand(x, -330, 600, 0.95, -Math.PI / 2 + 0.25, { skin: LOOKS.candler.skin, sleeve: '#3A3F4A', cuff: '#F4F0E6' });
-          if (lt > ks + 0.4) { const sx = 160 + Math.sin(lt * 9) * 6; K.bigHand(x, sx + 40, 520, 0.9, -Math.PI / 2 - 0.25, { skin: LOOKS.candler.skin, sleeve: '#3A3F4A', cuff: '#F4F0E6' }); }
+          K.bigHand(x, -330, 430, 0.95, Math.PI / 2 - 0.25, { skin: LOOKS.candler.skin, sleeve: '#3A3F4A', cuff: '#F4F0E6' });
+          if (lt > ks + 0.4) { const sx = 160 + Math.sin(lt * 9) * 6; K.bigHand(x, sx + 60, 420, 0.9, Math.PI / 2 + 0.25, { skin: LOOKS.candler.skin, sleeve: '#3A3F4A', cuff: '#F4F0E6' }); }
           const by = lerp(-1100, -70, inU), bs = lt < ks ? lerp(1.35, 1.25, inU) : lerp(1.25, 1.0, E.out(clamp((lt - ks) / 0.12)));
-          K.dollarBill(x, 20, by, bs, -0.08);
-          if (lift < 1) K.bigHand(x, 40, by - 160 - lift * 900, 1.0 * bs, Math.PI / 2 + 0.1, { skin: LOOKS.lawyerA.skin, sleeve: '#4A4F5C', cuff: '#F4F0E6', fist: false });
-          P.burst(x, 20, -70, 480, clamp((lt - ks) / 0.45), YELLOW);
-          for (let i = 0; i < 6; i++) { const u = clamp((lt - ks) / 0.7); if (u > 0 && u < 1) P.coin(x, -100 + i * 60 + (i - 2.5) * u * 120, 160 - Math.sin(u * Math.PI) * 220, 30, lt * 9 + i, '¢'); } }]]);
+          P.burst(x, 20, -70, 300, clamp((lt - ks) / 0.4), YELLOW); K.dollarBill(x, 20, by, bs, -0.08); if (lt > ks) P.sparkles(x, 20, -70, 300, lt, 8, YELLOW);
+          if (lift < 1) K.bigHand(x, 30, by - 150 - lift * 900, 1.0 * bs, -Math.PI / 2 + 0.08, { skin: LOOKS.lawyerA.skin, sleeve: '#4A4F5C', cuff: '#F4F0E6', fist: false });
+          }]]);
       L.plate(ctx, '$1', 1600, 210, pop(t, tOne, 0.3), { size: 160, bg: YELLOW, rot: 0.05 });
     } },
   { name: '1985: the recipe gets crossed out, NEW stamped (scientist peeks)', t0: t12, era: 'tense', out: { type: 'cut' }, draw(ctx, t, lt) {
@@ -186,39 +187,42 @@ const scenes = [
             for (let i = 0; i < 10; i++) { x.beginPath(); x.moveTo(-300, -190 + i * 52); x.lineTo(300 - (i % 3) * 80, -190 + i * 52); x.lineWidth = 7; x.strokeStyle = '#A8987C'; x.stroke(); }
             const xu = clamp((lt - kC + 0.1) / 0.5); K.markerPath(x, Array.from({ length: 30 }, (_, k) => [-320 + k * 22, -230 + k * 20 + Math.sin(k) * 6]), xu, RED, 16); K.markerPath(x, Array.from({ length: 30 }, (_, k) => [320 - k * 22, -230 + k * 20 + Math.cos(k) * 6]), clamp(xu * 2 - 1), RED, 16);
             x.restore(); K.stamp(x, 'NEW!', -100, 260, clamp((lt - kR) / 0.3), { size: 130, rot: -0.12 });
-            K.toonHead(x, 760, -60, 2.2, SCI, 'hold', lt > kR ? 'grin' : 'smug', { t: lt, look: [-0.8, 0.3], itemR: g => { g.rotate(-0.6); rr(g, -14, -120, 28, 140, 8); L.ink(g, RED, 4); } }); }]]);
+            K.toonHead(x, 640, -40, 2.4, SCI, 'hold', lt > kR ? 'grin' : 'smug', { t: lt, look: [-0.8, 0.3], itemR: g => { g.rotate(-0.6); rr(g, -14, -120, 28, 140, 8); L.ink(g, RED, 4); } }); }]]);
       L.dateCard(ctx, '1985', 330, 160, pop(t, t12 + 0.1), { bg: RED });
     } },
   { name: 'yelled at by an entire country: a yelling face → pull back to a huge crowd', t0: t13, era: 'tense', out: { type: 'whip', dur: 0.3, dir: 1 }, draw(ctx, t, lt) {
-      const kE = at('h3', 'entire') - t13, hy = 600 - 236 * 1.35;
-      const c = shakeCam(EN.cam([[0, 0, hy, 3.2, 0.05], [kE - 0.15, 0, hy - 10, 2.7, 0.03], [kE + 0.6, 0, 60, 0.62, -0.02, 'out'], [3.0, 0, 40, 0.6, -0.03]], lt), lt, [0.3, 0.9], 10);
+      const kE = at('h3', 'entire') - t13, YS = 1.7, hy = 760 - 236 * YS;
+      const c = shakeCam(EN.cam([[0, 0, hy + 20, 2.7, 0.05], [kE - 0.15, 0, hy + 10, 2.4, 0.03], [kE + 0.6, 0, 60, 0.62, -0.02, 'out'], [3.0, 0, 40, 0.6, -0.03]], lt), lt, [0.3, 0.9], 10);
       EN.layers(ctx, c, [
         [0.5, x => { L.skyGrad(x, -3000, -1900, 6000, 2200, ['#2A3A64', '#8A5A7A']); K.skyline(x, -3200, 3200, 0, 7, true); K.hq(x, 0, 0, 560, 640); }],
         [1, x => { x.fillStyle = '#3A3F4D'; x.fillRect(-3200, -10, 6400, 1800);
             const SIGNS = ['BRING IT BACK!', 'WE WANT|THE OLD ONE', 'CHANGE IT|BACK!', 'NOT MY|COLA!', 'OLD TASTE|PLEASE'];
             for (let r = 0; r < 7; r++) { const y = 10 + r * 95, s = 0.3 + r * 0.16, n = 26 - r * 2, span = 2900 - r * 120;
-              P.crowd(x, -span, span, y, s, n, lt + r, { react: 'angry', seed: r * 13 + 1 });
-              for (let k = 0; k < 4; k++) { const sx = -span * 0.8 + k * span * 0.53 + (r % 2) * 120; if (r === 6 && Math.abs(sx) < 300) continue; K.sign(x, sx, y - 330 * s + Math.sin(lt * 8 + k + r) * 10 * s, 380 * s, 150 * s, SIGNS[(k + r) % SIGNS.length], { rot: Math.sin(lt * 5 + k * 2 + r) * 0.08, stick: 220 * s }); } }
-            const yl = 0.85 + Math.abs(Math.sin(lt * 9)) * 0.15; toon(x, 0, 700, 1.35, { skin: L.SKIN[0], hair: { style: 'curly', col: '#A4462A' }, top: '#2F6DB5', pants: '#3A3A48' }, 'fist', YELL, { t: lt, talk: 1, look: [0, -0.1] });
-            for (let k = 0; k < 3; k++) { const ph = (lt * 2.2 + k / 3) % 1; x.save(); x.globalAlpha = 1 - ph; x.beginPath(); x.arc(0, hy + 30, 90 + ph * 260, -1.15, -0.45); x.lineWidth = 10; x.strokeStyle = CREAM; x.lineCap = 'round'; x.stroke(); x.beginPath(); x.arc(0, hy + 30, 90 + ph * 260, Math.PI + 0.45, Math.PI + 1.15); x.stroke(); x.restore(); } }]]);
+              if (r < 5) P.crowd(x, -span, span, y, s, n, lt + r, { react: 'angry', seed: r * 13 + 1 });
+              else { P.crowd(x, -span, -440, y, s, Math.round(n / 2) - 1, lt + r, { react: 'angry', seed: r * 13 + 1 }); P.crowd(x, 440, span, y, s, Math.round(n / 2) - 1, lt + r, { react: 'angry', seed: r * 13 + 7 }); }
+              for (let k = 0; k < 4; k++) { const sx = -span * 0.8 + k * span * 0.53 + (r % 2) * 120; if (r >= 5 && Math.abs(sx) < 500) continue; K.sign(x, sx, y - 330 * s + Math.sin(lt * 8 + k + r) * 10 * s, 380 * s, 150 * s, SIGNS[(k + r) % SIGNS.length], { rot: Math.sin(lt * 5 + k * 2 + r) * 0.08, stick: 220 * s }); } }
+            toon(x, 0, 760, YS, { skin: L.SKIN[0], hair: { style: 'short', col: '#A4462A' }, top: '#2F6DB5', pants: '#3A3A48' }, { la: [0.3, 0.1], ra: [2.5, -1.2] }, YELL, { t: lt, blink: false, look: [0, -0.1] });
+            const yl = 0.8 + Math.abs(Math.sin(lt * 11)) * 0.25; x.save(); x.translate(0, hy + 30 * YS); x.scale(YS, YS * yl); rr(x, -26, -14, 52, 44, 18); L.ink(x, '#5A1A1A', 4.5); rr(x, -20, -12, 40, 9, 3); L.ink(x, '#FFFFFF', 0); ell(x, 0, 22, 14, 7); L.ink(x, '#D9606A', 0); x.restore();
+            for (let k = 0; k < 3; k++) { const ph = (lt * 2.2 + k / 3) % 1; x.save(); x.globalAlpha = 1 - ph; x.lineCap = 'round'; for (const [a0, a1] of [[-0.9, -0.2], [Math.PI + 0.2, Math.PI + 0.9]]) { x.beginPath(); x.arc(0, hy + 40, 160 + ph * 320, a0, a1); x.lineWidth = 22; x.strokeStyle = INK; x.stroke(); x.lineWidth = 12; x.strokeStyle = CREAM; x.stroke(); } x.restore(); } }]]);
       L.word(ctx, 'AN ENTIRE COUNTRY', 960, 150, pop(t, at('h3', 'entire')), { size: 96, col: CREAM });
     } },
   { name: 'a whole bottling plant on a crane → pan to the ship to the war', t0: t14, era: 'war', out: { type: 'cut' }, draw(ctx, t, lt) {
       const kW = at('h3', 'world') - t14, kP = at('h3', 'plants') - t14, lift = E.inOut(clamp((lt - 0.25) / 1.3)), sw = Math.sin(lt * 2.4) * 0.05 * lift;
-      const c = EN.cam([[0, -420, -160, 0.95, -0.06], [kW - 0.35, -330, -260, 0.92, -0.04], [kW + 0.3, 2550, -120, 0.95, 0.0], [3.4, 2650, -110, 0.98, 0.01]], lt);
-      const fy = 300 - lift * 640, fx = -60;
+      const c = EN.cam([[0, -200, -260, 0.86, -0.07], [kW - 0.35, -150, -330, 0.84, -0.05], [kW + 0.3, 2550, -140, 0.92, 0.0], [3.4, 2650, -130, 0.96, 0.01]], lt);
+      const fy = 300 - lift * 330, fx = 0;
       EN.layers(ctx, c, [
         [0.3, x => { L.skyGrad(x, -3000, -1800, 7000, 2200, ['#8FA3A8', '#D9CFB0']); L.cloud(x, -800, -700, 1.6, '#EDE9DC'); L.cloud(x, 900, -820, 1.2, '#EDE9DC'); L.cloud(x, 2200, -700, 1.5, '#EDE9DC');
             for (let i = 0; i < 3; i++) K.plane(x, 400 + ((lt * 260 + i * 700) % 2600), -620 + i * 90, 0.7); }],
         [0.7, x => { K.sea(x, -400, 200, 5200, 1000, lt); for (let i = 0; i < 4; i++) K.warship(x, 1100 + i * 700, 230, 0.55, lt + i, ['#7E868C', '#6E767C'][i % 2]); }],
         [1, x => { K.sea(x, 800, 330, 4400, 900, lt * 1.3, '#4F6E80');
             rr(x, -2600, 300, 3400, 900, 0); L.ink(x, '#9A958C', 0); for (let i = 0; i < 16; i++) { rr(x, -2600 + i * 212, 300, 210, 30, 2); L.ink(x, '#B5AFA4', 3); } rr(x, 780, 280, 40, 120, 6); L.ink(x, '#5A4A3A', 4);
-            K.crane(x, -900, 300, 1150, 1500, fx, fy - 0.62 * 820 - 20);
-            x.save(); x.translate(fx, fy - 250); x.rotate(sw); K.factory(x, 0, 250, 0.62, lt, { straps: true }); x.restore();
-            P.crowd(x, -620, 520, 330, 0.85, 5, lt, { react: 'shock', look: { top: '#6E7650', pants: '#5E6640', hat: 'army', hatCol: '#5E6640' }, seed: 8 });
+            K.crane(x, -1000, 300, 1260, 1600, fx, fy - 0.85 * 820 - 20);
+            x.save(); x.translate(fx, fy - 350); x.rotate(sw); K.factory(x, 0, 350, 0.85, lt, { straps: true }); x.restore();
+            P.crowd(x, -720, 620, 330, 0.85, 4, lt, { react: 'shock', look: { top: '#6E7650', pants: '#5E6640', hat: 'army', hatCol: '#5E6640' }, seed: 8 });
             // the ship at sea, already carrying a plant, soldiers on deck
-            K.cargoShip(x, 2650, 360, 1.0, lt); K.factory(x, 2350, 280, 0.42, lt); toon(x, 2780, 280, 0.6, LOOKS.soldier, 'wave', 'happy', { t: lt }); toon(x, 2930, 280, 0.6, LOOKS.soldier, 'cheer', 'grin', { t: lt + 1, itemR: g => P.bottle(g, 0, 10, 0.3, { open: true }) });
-            for (let i = 0; i < 12; i++) { const ph = (lt * 0.8 + i / 12) % 1; x.save(); x.globalAlpha = 1 - ph; x.beginPath(); x.arc(2000 - ph * 400, 380 + Math.sin(i) * 20, 18 + ph * 20, 0, 6.27); L.ink(x, '#E9EEF2', 3); x.restore(); } }]]);
+            K.cargoShip(x, 2650, 380, 1.3, lt); K.factory(x, 2380, 276, 0.6, lt); toon(x, 2830, 276, 0.8, LOOKS.soldier, 'wave', 'happy', { t: lt }); toon(x, 3010, 276, 0.8, LOOKS.soldier, 'cheer', 'grin', { t: lt + 1, itemR: g => P.bottle(g, 0, 10, 0.3, { open: true }) });
+            for (let i = 0; i < 12; i++) { const ph = (lt * 0.8 + i / 12) % 1; x.save(); x.globalAlpha = 1 - ph; x.beginPath(); x.arc(1860 - ph * 400, 380 + Math.sin(i) * 20, 18 + ph * 20, 0, 6.27); L.ink(x, '#E9EEF2', 3); x.restore(); } }],
+        [1.2, x => { toon(x, -620, 470, 1.7, { ...LOOKS.soldier, skin: L.SKIN[1] }, 'shock', 'shock', { t: lt, look: [0.4, -1] }); toon(x, 520, 490, 1.6, LOOKS.worker, { la: [0.3, 0.1], ra: [2.9, -0.3] }, 'shock', { t: lt + 1, look: [-0.3, -1] }); }]]);
       const pan = clamp((lt - kW + 0.35) / 0.65); if (pan > 0.05 && pan < 0.95) P.speedLines(ctx, 0, 0, W, H, lt, -1, 0.6 * Math.sin(pan * Math.PI));
       if (lt < kW - 0.3) L.word(ctx, 'WHOLE BOTTLING PLANTS', 960, 150, pop(t, at('h3', 'plants') - 0.1), { size: 84, col: CREAM });
       L.word(ctx, 'TO A WORLD WAR', 960, 150, pop(t, at('h3', 'world')), { size: 92, col: YELLOW });
@@ -232,7 +236,7 @@ const scenes = [
         [1, x => { K.toonHead(x, -430, -150, 2.2, PEM_APRON, 'stand', lt > kN ? 'happy' : 'think', { t: lt, look: [0.8, 0.5] });
             K.counter(x, -2000, 240, 4000);
             for (let i = 0; i < 9; i++) { const bump = lt > kN ? Math.max(0, Math.sin((lt - kN - i * 0.06) * 14)) * Math.exp(-(lt - kN - i * 0.06) * 4) * 30 : 0; P.glassCup(x, -40 + i * 112, 242 - bump, 1.0, { fill: 0.8, fizz: lt + i * 0.3 });
-              if (lt > kN + i * 0.06) fitText(x, String(i + 1), -40 + i * 112, 300, 34, CREAM, 60); }
+              if (lt > kN + i * 0.06) fitText(x, String(i + 1), -40 + i * 112, 310, 46, CREAM, 60, { outline: 8 }); }
             L.glow(x, 400, 60, 700, '#FFC870', 0.3); }]]);
       L.plate(ctx, '9 GLASSES A DAY', 960, 150, pop(t, at('h4', 'nine')), { size: 74 });
     } },
