@@ -7,7 +7,7 @@ import { AbsoluteFill } from 'remotion';
 import { SANS, INK, ACC, BG } from './kit';
 import { k, WC } from './well';
 const RIG = [720, 560], BK0 = [880, 560], BK1 = [1430, 640];
-export const Rescue: React.FC<{ t: number; lb?: number; frc?: number; caption?: [string, string] }> = ({ t, lb, frc, caption }) => {
+export const Rescue: React.FC<{ t: number; lb?: number; frc?: number; caption?: [string, string]; cam?: { x: number; y: number; s: number }; burn?: number; pickN?: number }> = ({ t, lb, frc, caption, cam = { x: 960, y: 560, s: 1 }, burn = 0, pickN = 1 }) => {
   const kb = k(t, 0.2, 2.5);
   const bx = BK0[0] + (BK1[0] - BK0[0]) * kb, by = BK0[1] + (BK1[1] - BK0[1]) * kb;
   const l = lb !== undefined ? k(t, lb, 4) : 0; const f = frc !== undefined ? (t - frc) : -1;
@@ -17,11 +17,14 @@ export const Rescue: React.FC<{ t: number; lb?: number; frc?: number; caption?: 
   const txt = (x: number, y: number, s: string, c = INK, size = 28, a: 'start' | 'middle' | 'end' = 'start', w = 700) => <text x={x} y={y} fill={c} fontFamily={SANS} fontWeight={w} fontSize={size} textAnchor={a} style={{ paintOrder: 'stroke', stroke: 'rgba(0,0,0,0.85)', strokeWidth: 5 }}>{s}</text>;
   return (
     <AbsoluteFill style={{ background: WC.water2 }}>
-      <svg width={1920} height={1080} style={{ position: 'absolute' }}>
+      <svg width={1920} height={1080} style={{ position: 'absolute', overflow: 'visible' }}><g transform={`translate(${960 - cam.x * cam.s},${540 - cam.y * cam.s}) scale(${cam.s})`}>
+        <rect x={-2000} y={-2000} width={6000} height={6000} fill={WC.water2} />
         <defs><radialGradient id="glow"><stop offset="0" stopColor="#FFB347" stopOpacity="0.9" /><stop offset="1" stopColor="#E0533A" stopOpacity="0" /></radialGradient></defs>
         <circle cx={RIG[0]} cy={RIG[1]} r={230 + 10 * Math.sin(t * 2)} fill="url(#glow)" opacity={0.55} />
         <rect x={RIG[0] - 90} y={RIG[1] - 70} width={180} height={140} fill="#2A2E31" stroke={WC.steel} strokeWidth={4} />
         <circle cx={RIG[0]} cy={RIG[1]} r={26} fill={WC.hc} opacity={0.9} />
+        {burn > 0 && [[600, 680, 90], [760, 700, 70], [650, 610, 60], [820, 640, 50]].map(([x, y, r], i) => <ellipse key={i} cx={x} cy={y} rx={r * burn} ry={r * 0.5 * burn} fill="#F07A1A" opacity={0.35 + 0.1 * Math.sin(t * 3 + i)} />)}
+        {burn > 0 && f < 0 && txt(470, 790, 'BURNING FUEL ON THE WATER', '#F7A35C', 26)}
         {txt(RIG[0], RIG[1] - 100, 'DEEPWATER HORIZON (ON FIRE)', INK, 30, 'middle')}
         {/* Bankston backing away */}
         <line x1={BK0[0]} y1={BK0[1]} x2={bx} y2={by} stroke={INK} strokeWidth={3} strokeDasharray="10 8" opacity={0.7} />
@@ -33,13 +36,13 @@ export const Rescue: React.FC<{ t: number; lb?: number; frc?: number; caption?: 
           return <g key={i}><ellipse cx={x} cy={y} rx={26} ry={12} fill={ACC} stroke="#000" strokeWidth={2} /></g>; })}
         {l > 0 && txt(RIG[0] + 260, RIG[1] - 200, 'TWO LIFEBOATS → TO THE BANKSTON', ACC, 26, 'start')}
         {/* people in the water and the fast rescue craft */}
-        {f >= 0 && dots.map(([x, y], i) => <circle key={i} cx={x} cy={y} r={7} fill={INK} opacity={i === 0 && f > 5 ? 0 : 0.95} />)}
-        {f >= 0 && txt(430, 830, 'PEOPLE IN THE WATER', INK, 26)}
+        {f >= 0 && dots.map(([x, y], i) => <circle key={i} cx={x} cy={y} r={9} fill={INK} opacity={i < pickN && f > 5 + i * 4 ? 0 : 0.95} />)}
+        {f >= 0 && txt(420, 770, 'PEOPLE IN THE WATER', INK, 26)}
         {f >= 0 && <g><path d={`M${fx - 22},${fy - 9} L${fx + 18},${fy - 9} L${fx + 28},${fy} L${fx + 18},${fy + 9} L${fx - 22},${fy + 9} Z`} fill="#F07A1A" stroke="#000" strokeWidth={2} />{txt(fx + 40, fy + 50, 'FAST RESCUE CRAFT (from the Bankston)', '#F7A35C', 24)}</g>}
-      </svg>
-      {caption && <div style={{ position: 'absolute', left: 70, top: 60, width: 820, background: 'rgba(8,9,10,0.8)', padding: '16px 22px', borderRadius: 6, opacity: k(t, 0.3, 0.5) }}>
-        <div style={{ fontFamily: SANS, fontWeight: 800, fontSize: 32, color: ACC, letterSpacing: 2 }}>{caption[0]}</div>
-        <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 28, color: INK, marginTop: 8, lineHeight: 1.3 }}>{caption[1]}</div>
+      </g></svg>
+      {caption && <div style={{ position: 'absolute', left: 70, bottom: 110, width: 900, background: 'rgba(8,9,10,0.8)', padding: '16px 24px', borderRadius: 6, opacity: k(t, 0.3, 0.5) }}>
+        <div style={{ fontFamily: SANS, fontWeight: 800, fontSize: 40, color: ACC, letterSpacing: 1.5 }}>{caption[0]}</div>
+        <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 31, color: INK, marginTop: 8, lineHeight: 1.3 }}>{caption[1]}</div>
       </div>}
       <div style={{ position: 'absolute', right: 60, bottom: 36, textAlign: 'right', fontFamily: SANS, fontWeight: 700, fontSize: 20, letterSpacing: 2, color: 'rgba(242,239,233,0.75)', lineHeight: 1.5 }}>RECONSTRUCTION · POSITIONS APPROXIMATE, NOT TO SCALE<br />Coast Guard investigation report (2011), App. H · Commission report, p. 12</div>
     </AbsoluteFill>

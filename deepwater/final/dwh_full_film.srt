@@ -808,222 +808,222 @@ The Coast Guard searched for three days.
 They were never found.
 
 174
-00:10:39,000 --> 00:10:43,550
+00:10:47,800 --> 00:10:52,350
 In the minutes after the explosions, subsea
 supervisor Chris Pleasant pressed the
 
 175
-00:10:43,600 --> 00:10:45,670
+00:10:52,400 --> 00:10:54,470
 emergency disconnect on the bridge.
 
 176
-00:10:45,720 --> 00:10:49,670
+00:10:54,520 --> 00:10:58,470
 It should have closed the blowout preventer's
 blind shear ram, the blades meant to
 
 177
-00:10:49,720 --> 00:10:54,230
+00:10:58,520 --> 00:11:03,030
 cut the drill pipe and seal the well, and
 freed the rig from the riser.
 
 178
-00:10:54,280 --> 00:10:56,230
+00:11:03,080 --> 00:11:05,030
 The lights on the panel changed.
 
 179
-00:10:56,280 --> 00:10:58,690
+00:11:05,080 --> 00:11:07,490
 The rig did not disconnect.
 
 180
-00:10:59,040 --> 00:11:03,870
+00:11:07,840 --> 00:11:12,670
 The preventer also had an automatic backup,
 called the deadman, meant to close the
 
 181
-00:11:03,920 --> 00:11:08,350
+00:11:12,720 --> 00:11:17,150
 blades on its own if power, communication, and
 hydraulic pressure from the rig were
 
 182
-00:11:08,400 --> 00:11:09,310
+00:11:17,200 --> 00:11:18,110
 lost.
 
 183
-00:11:09,360 --> 00:11:12,090
+00:11:18,160 --> 00:11:20,890
 After the explosions, they were.
 
 184
-00:11:12,440 --> 00:11:16,203
+00:11:21,240 --> 00:11:25,003
 Investigators did not fully agree
 on what happened next.
 
 185
-00:11:16,253 --> 00:11:20,530
+00:11:25,053 --> 00:11:29,330
 The Chemical Safety Board concluded that the
 deadman most likely did fire that
 
 186
-00:11:20,600 --> 00:11:24,870
+00:11:29,400 --> 00:11:33,670
 night, but that the drill pipe inside had
 buckled and been pushed off center.
 
 187
-00:11:24,920 --> 00:11:29,170
+00:11:33,720 --> 00:11:37,970
 The blades caught the pipe at its edge,
 and could not seal the well.
 
 188
-00:11:29,520 --> 00:11:34,170
+00:11:38,320 --> 00:11:42,970
 The forensic examination for the federal joint
 investigation also found the pipe off
 
 189
-00:11:34,280 --> 00:11:38,670
+00:11:43,080 --> 00:11:47,470
 center, but concluded that the blades most
 likely closed two days later, when an
 
 190
-00:11:38,720 --> 00:11:41,130
+00:11:47,520 --> 00:11:49,930
 underwater robot triggered them.
 
 191
-00:11:47,803 --> 00:11:51,940
+00:11:56,603 --> 00:12:00,740
 And by the time the crew closed the preventer,
 the commission noted, the flow may
 
 192
-00:11:51,990 --> 00:11:54,500
+00:12:00,790 --> 00:12:03,300
 already have been too strong to stop.
 
 193
-00:11:54,550 --> 00:11:57,680
+00:12:03,350 --> 00:12:06,480
 Earlier detection would have
 improved the odds.
 
 194
-00:11:58,130 --> 00:12:02,240
+00:12:06,930 --> 00:12:11,040
 The blowout preventer was raised from the
 seafloor in September twenty ten, and
 
 195
-00:12:02,290 --> 00:12:04,060
+00:12:11,090 --> 00:12:12,860
 taken as evidence.
 
 196
-00:12:04,910 --> 00:12:08,700
+00:12:13,710 --> 00:12:17,500
 The Deepwater Horizon burned
 for about 36 hours.
 
 197
-00:12:08,750 --> 00:12:12,120
+00:12:17,550 --> 00:12:20,920
 On the morning of April 22, it sank.
 
 198
-00:12:12,470 --> 00:12:15,807
+00:12:21,270 --> 00:12:24,607
 Oil flowed from the well for 87 days.
 
 199
-00:12:15,857 --> 00:12:20,100
+00:12:24,657 --> 00:12:28,900
 The government estimated that 4.9
 million barrels were released.
 
 200
-00:12:20,150 --> 00:12:24,240
+00:12:28,950 --> 00:12:33,040
 A federal court later put the amount at
 about four million barrels.
 
 201
-00:12:24,590 --> 00:12:28,140
+00:12:33,390 --> 00:12:36,940
 A capping stack stopped the
 flow on July 15.
 
 202
-00:12:28,190 --> 00:12:33,880
+00:12:36,990 --> 00:12:42,680
 On September 19, after a relief well, the well
 was declared permanently sealed.
 
 203
-00:12:34,230 --> 00:12:39,380
+00:12:43,030 --> 00:12:48,180
 BP pleaded guilty to fourteen criminal counts,
 including eleven counts of seaman's
 
 204
-00:12:39,430 --> 00:12:43,647
+00:12:48,230 --> 00:12:52,447
 manslaughter, and agreed to pay $4
 billion in that case.
 
 205
-00:12:43,697 --> 00:12:46,980
+00:12:52,497 --> 00:12:55,780
 A federal court later found it
 grossly negligent.
 
 206
-00:12:47,030 --> 00:12:50,960
+00:12:55,830 --> 00:12:59,760
 Transocean pleaded guilty to a
 Clean Water Act violation.
 
 207
-00:12:51,510 --> 00:12:55,700
+00:13:00,310 --> 00:13:04,500
 The federal agency that had overseen
 offshore drilling was broken up.
 
 208
-00:12:55,750 --> 00:13:00,560
+00:13:04,550 --> 00:13:09,360
 New rules for blowout preventers and well
 control followed in twenty sixteen.
 
 209
-00:13:01,410 --> 00:13:04,280
+00:13:10,210 --> 00:13:13,080
 So why was the well judged safe?
 
 210
-00:13:04,330 --> 00:13:08,800
+00:13:13,130 --> 00:13:17,600
 Because the test that should have caught the
 problem was read as a success, with no
 
 211
-00:13:08,850 --> 00:13:13,020
+00:13:17,650 --> 00:13:21,820
 standard for reading it, and with an
 explanation that was later found to have no
 
 212
-00:13:13,330 --> 00:13:13,947
+00:13:22,130 --> 00:13:22,747
 basis.
 
 213
-00:13:13,997 --> 00:13:18,940
+00:13:22,797 --> 00:13:27,740
 In fact, investigators concluded, the
 cement at the bottom had failed.
 
 214
-00:13:19,290 --> 00:13:21,987
+00:13:28,090 --> 00:13:30,787
 And why didn't the blowout
 preventer stop it?
 
 215
-00:13:22,037 --> 00:13:25,213
+00:13:30,837 --> 00:13:34,013
 The signs were missed until gas
 was already above it.
 
 216
-00:13:25,263 --> 00:13:29,160
+00:13:34,063 --> 00:13:37,960
 When its blades closed, the drill pipe was in
 the wrong place for them to seal the
 
 217
-00:13:29,210 --> 00:13:30,260
+00:13:38,010 --> 00:13:39,060
 well.
 
 218
-00:13:30,810 --> 00:13:35,800
+00:13:39,610 --> 00:13:44,600
 The commission traced the disaster to a series
 of mistakes by BP, Halliburton, and
 
 219
-00:13:35,850 --> 00:13:38,973
+00:13:44,650 --> 00:13:47,773
 Transocean, and to failures of management.
 
 220
-00:13:39,023 --> 00:13:43,700
+00:13:47,823 --> 00:13:52,500
 It also wrote that the exact part each
 mistake played may never be known.

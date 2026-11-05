@@ -59,6 +59,7 @@ V("b37","All a hundred and fifteen survivors ended up on the Bankston. The first
 V("b38","At the muster, eleven men were missing. The Coast Guard searched for three days. They were never found.",0.6),
 C("hold6",2.2,0.0),
 C("ch7",0.6,0.3),
+C("bopintro",8.8,0.0),
 V("b39","In the minutes after the explosions, subsea supervisor Chris Pleasant pressed the emergency disconnect on the bridge. It should have closed the blowout preventer's blind shear ram, the blades meant to cut the drill pipe and seal the well, and freed the rig from the riser. The lights on the panel changed. The rig did not disconnect.",0.2),
 V("b40","The preventer also had an automatic backup, called the deadman, meant to close the blades on its own if power, communication, and hydraulic pressure from the rig were lost. After the explosions, they were."),
 V("b41","Investigators did not fully agree on what happened next. The Chemical Safety Board concluded that the deadman most likely did fire that night, but that the drill pipe inside had buckled and been pushed off center. The blades caught the pipe at its edge, and could not seal the well."),

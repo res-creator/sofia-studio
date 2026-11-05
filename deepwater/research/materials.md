@@ -126,3 +126,4 @@ All the DVIDS photos 6.8–6.13 are at `raw/dvids_photos/dvids_img_<ID>.jpg` (20
 | `deck_plan_hearing.jpg` (crops) | DVIDS 1095904 | — | Rig deck plan | PD | **Removed in fix pass 3** (it gave no information about the evacuation); replaced by a rescue schematic with confirmed points only |
 | `w_live.mp4` | DVIDS 91195 | 8:44–9:28 | Williams on camera, continuous (sync answer "Never" inside) | PD | Ch. 6 opening |
 | Commission p. 101 | `public/doc/comm-117.jpg` | — | Halliburton foam stability tests, April 2010 | US government work | The known risk in the cement |
+| `bop_recovered_upright.jpg` | DVIDS 1098147 (PO1 Thomas M. Blue, USCG), Sept. 4, 2010 | — | The recovered BOP on the Q4000 deck; the DVIDS file is stored rotated 90°, shown upright (people for scale) | PD | Real object before the BOP schematic (ch. 7) and as evidence (b44) |

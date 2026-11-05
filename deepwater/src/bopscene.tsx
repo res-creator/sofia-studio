@@ -16,10 +16,10 @@ const txt = (x: number, y: number, s: string, o = 1, fill = INK, size = 30, anch
   <text x={x} y={y} opacity={o} fill={fill} fontFamily={SANS} fontWeight={w} fontSize={size} textAnchor={anchor} style={{ paintOrder: 'stroke', stroke: 'rgba(0,0,0,0.85)', strokeWidth: 6 }}>{s}</text>
 );
 // ---------------------------------------------------------------- headline (top-left) and mode badge
-export const Headline: React.FC<{ t: number; at: number; out?: number; big: string; small?: string; color?: string; bottom?: boolean }> = ({ t, at, out = 1e9, big, small, color = ACC, bottom }) => {
+export const Headline: React.FC<{ t: number; at: number; out?: number; big: string; small?: string; color?: string; bottom?: boolean; maxW?: number }> = ({ t, at, out = 1e9, big, small, color = ACC, bottom, maxW = 1000 }) => {
   const o = ease(t, at, 0.5) * (1 - ease(t, out, 0.4));
   return (
-    <div style={{ position: 'absolute', left: 80, [bottom ? 'bottom' : 'top']: bottom ? 90 : 64, maxWidth: 1000, opacity: o, background: bottom ? 'rgba(8,9,10,0.7)' : undefined, padding: bottom ? '16px 24px' : undefined, borderRadius: 6 }}>
+    <div style={{ position: 'absolute', left: 80, [bottom ? 'bottom' : 'top']: bottom ? 90 : 64, maxWidth: maxW, opacity: o, background: bottom ? 'rgba(8,9,10,0.7)' : undefined, padding: bottom ? '16px 24px' : undefined, borderRadius: 6 }}>
       <div style={{ fontFamily: SANS, fontWeight: 800, fontSize: 52, color, letterSpacing: 1.5, lineHeight: 1.1, textShadow: '0 3px 14px rgba(0,0,0,0.9)' }}>{big}</div>
       {small && <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 32, color: INK, marginTop: 10, textShadow: '0 2px 10px rgba(0,0,0,0.9)' }}>{small}</div>}
     </div>
@@ -43,7 +43,7 @@ const Flow: React.FC<{ t: number; o: number; x: (y: number) => number; w: number
   })}</g>;
 };
 // ---------------------------------------------------------------- 1. the whole system with a camera
-export const SystemView: React.FC<{ t: number; zoom: number; flow?: number; caption?: React.ReactNode }> = ({ t, zoom, flow = 0, caption }) => {
+export const SystemView: React.FC<{ t: number; zoom: number; flow?: number; caption?: React.ReactNode; after?: boolean; tags?: number }> = ({ t, zoom, flow = 0, caption, after, tags = 1 }) => {
   const X = 960, SURF = 170, FLOOR = 800;
   const s = 1 + 3.2 * zoom, fy = FLOOR - 40; // zoom target: the BOP
   const sx = interpolate(zoom, [0, 1], [X, 960]), sy = interpolate(zoom, [0, 1], [fy, 540]); const tx = sx - X * s, ty = sy - fy * s;
@@ -57,22 +57,25 @@ export const SystemView: React.FC<{ t: number; zoom: number; flow?: number; capt
           <rect x={-2000} y={FLOOR} width={6000} height={1200} fill={WC.rock} />
           <line x1={-2000} y1={SURF} x2={4000} y2={SURF} stroke={BLUE} strokeWidth={2} opacity={0.6} />
           {/* rig */}
-          <g opacity={dim}>
+          <g opacity={after ? 0 : dim}>
             <rect x={X - 230} y={SURF + 10} width={460} height={24} fill={WC.steel} opacity={0.7} />
             <rect x={X - 200} y={SURF - 30} width={40} height={60} fill={WC.steel} /><rect x={X + 160} y={SURF - 30} width={40} height={60} fill={WC.steel} />
             <rect x={X - 260} y={SURF - 70} width={520} height={40} fill={WC.steel} />
             <path d={`M${X - 30},${SURF - 70} L${X - 12},${SURF - 170} L${X + 12},${SURF - 170} L${X + 30},${SURF - 70} Z`} fill="none" stroke={WC.steel} strokeWidth={5} />
           </g>
           {/* riser and well */}
-          <rect x={X - 12} y={SURF - 30} width={24} height={FLOOR - 60 - SURF + 30} fill="none" stroke={WC.steel} strokeWidth={4} opacity={dim} />
+          <rect x={X - 12} y={SURF - 30} width={24} height={FLOOR - 60 - SURF + 30} fill="none" stroke={WC.steel} strokeWidth={4} opacity={after ? 0 : dim} />
           <rect x={X - 16} y={FLOOR} width={32} height={420} fill={WC.mud} opacity={0.35} />
           {/* BOP */}
           <rect x={X - 38} y={FLOOR - 75} width={76} height={80} rx={5} fill={AMB} stroke="#000" strokeWidth={2} />
           {[0, 1, 2].map((i) => <rect key={i} x={X - 50} y={FLOOR - 64 + i * 22} width={100} height={10} fill="#8C6418" />)}
-          <Flow t={t} o={flow} x={() => X} w={14} y0={FLOOR + 400} y1={SURF - 20} n={30} speed={300} r={6} />
+          {!after && <Flow t={t} o={flow} x={() => X} w={14} y0={FLOOR + 400} y1={SURF - 20} n={30} speed={300} r={6} />}
+          {after && <Flow t={t} o={flow} x={(y) => X + (FLOOR - y) * 0.35 * Math.sin(y / 60)} w={60 + 0} y0={FLOOR - 70} y1={SURF + 4} n={60} speed={110} r={7} />}
+          {after && <rect x={X - 360} y={SURF} width={720} height={10} fill={HC} opacity={0.5 * flow} />}
         </g>
-        {zoom < 0.15 && <g opacity={1 - zoom / 0.15}>
-          {txt(X + 290, SURF + 8, 'DEEPWATER HORIZON')}
+        {zoom < 0.15 && <g opacity={(1 - zoom / 0.15) * tags}>
+          {!after && txt(X + 290, SURF + 8, 'DEEPWATER HORIZON')}
+          {after && txt(X + 290, SURF - 20, 'THE RIG SANK ON APRIL 22', 1, INK, 28, 'start', 700)}
           {txt(X - 60, (SURF + FLOOR) / 2, 'ABOUT 5,000 FT OF WATER', 1, INK, 28, 'end', 600)}
           {txt(X + 70, FLOOR - 30, 'BLOWOUT PREVENTER', 1, AMB, 32, 'start', 800)}
           {txt(X + 50, FLOOR + 140, 'THE WELL', 1, INK, 28, 'start', 600)}
@@ -90,7 +93,7 @@ export const PhotoView: React.FC<{ t: number; outlineAt: number; o?: number }> =
   const k = lin(t, outlineAt, 0.9); const B = PHOTO_BOX; const per = 2 * (B.w + B.h);
   return (
     <AbsoluteFill style={{ background: BG, opacity: o }}>
-      <Img src={staticFile('img/bop_recovered_upright.jpg')} style={{ position: 'absolute', height: 1080, left: PHOTO_LEFT, top: 0 }} />
+      <Img src={staticFile('img/bop_recovered_upright.jpg')} style={{ position: 'absolute', height: 1080, left: PHOTO_LEFT, top: 0, transform: `scale(${1 + 0.035 * lin(t, 0, 12)})`, transformOrigin: '60% 70%' }} />
       <svg width={1920} height={1080} style={{ position: 'absolute' }}>
         <rect x={B.x} y={B.y + 6} width={B.w} height={B.h} fill="none" stroke={AMB} strokeWidth={6} strokeDasharray={per} strokeDashoffset={per * (1 - k)} />
       </svg>
@@ -109,12 +112,12 @@ export type StackState = {
   mode: 'should' | 'real'; hl: number; // hl: highlight of the blind shear ram (others dim)
   lift?: number; // 'should' mode: upper package and riser lifting away (0..1)
   pods?: number; lines?: [number, number, number]; cut?: number; signal?: number; // deadman: pods, three supply lines (appear), lines cut, pods→BSR signal
-  flow?: number; labels?: number;
+  flow?: number; labels?: number; secondary?: number;
 };
 export const StackView: React.FC<{ t: number; s: StackState; place?: { x: number; y: number; k: number }; body?: number }> = ({ t, s, place = { x: 1240, y: 560, k: 1.08 }, body = 1 }) => {
   const should = s.mode === 'should'; const line = should ? BLUE : STEEL;
   const lift = -150 * (s.lift ?? 0); const dimO = 1 - 0.6 * s.hl;
-  const pods = s.pods ?? 0, lines = s.lines ?? [0, 0, 0], cut = s.cut ?? 0, sig = s.signal ?? 0, lab = s.labels ?? 1;
+  const pods = s.pods ?? 0, lines = s.lines ?? [0, 0, 0], cut = s.cut ?? 0, sig = s.signal ?? 0, lab = s.labels ?? 1, sec = s.secondary ?? 0;
   const ram = (y: number, bsr?: boolean) => (
     <g opacity={bsr ? 1 : dimO}>
       <rect x={-170} y={y - 22} width={124} height={44} fill={bsr ? '#4A3A1A' : STEEL2} stroke={bsr ? AMB : line} strokeWidth={bsr ? 4 : 2} />
@@ -157,9 +160,9 @@ export const StackView: React.FC<{ t: number; s: StackState; place?: { x: number
         {/* labels */}
         <g opacity={lab}>
           {txt(-215, -40 + 12, 'BLIND SHEAR RAM', 0.35 + 0.65 * s.hl, AMB, 36, 'end', 800)}
-          {txt(-215, 60 + 10, 'CASING SHEAR RAM', 0.75 * dimO, INK, 28, 'end', 600)}
-          {txt(-215, 160 + 10, 'PIPE RAMS', 0.75 * dimO, INK, 28, 'end', 600)}
-          {txt(-215, -300 + lift, 'ANNULAR PREVENTERS', 0.75 * dimO * (1 - pods), INK, 28, 'end', 600)}
+          {txt(-215, 60 + 10, 'CASING SHEAR RAM', 0.75 * dimO * sec, INK, 28, 'end', 600)}
+          {txt(-215, 160 + 10, 'PIPE RAMS', 0.75 * dimO * sec, INK, 28, 'end', 600)}
+          {txt(-215, -300 + lift, 'ANNULAR PREVENTERS', 0.75 * dimO * (1 - pods) * sec, INK, 28, 'end', 600)}
           {txt(30, 430, 'DRILL PIPE', 0.8, '#D9DDE0', 28, 'start', 700)}
         </g>
       </g>
@@ -213,3 +216,70 @@ export const BsrClose: React.FC<{ t: number; mode: 'should' | 'real'; close: num
   );
 };
 const y0w = (should: boolean, close: number) => (should ? 220 * (1 - close) + 40 : 200);
+
+// ---------------------------------------------------------------- 5. the deadman, in close shots
+// Pods (CSB: two redundant control pods, yellow and blue) at the top of the stack; three supply lines from the rig;
+// after the explosions the lines are lost; per CSB the deadman most likely fired and sent the close command to the blind shear ram.
+export const PodsView: React.FC<{ t: number; lines: [number, number, number]; cut: number; signal: number; faults?: number; blades?: number; dimPods?: number }> = ({ t, lines, cut, signal, faults = 0, blades = 0, dimPods = 0 }) => {
+  const P = [[640, '#D9C03A', 'YELLOW POD'], [1280, '#4A8FD9', 'BLUE POD']] as const;
+  const names = ['POWER', 'COMMUNICATION', 'HYDRAULIC PRESSURE'];
+  return (
+    <AbsoluteFill style={{ background: BG }}>
+      <svg width={1920} height={1080} style={{ position: 'absolute' }}><g transform="translate(200,14) scale(0.84)">
+        {/* upper package outline, behind */}
+        <rect x={380} y={300} width={1160} height={360} rx={18} fill="#1A1E22" stroke={STEEL} strokeWidth={3} opacity={0.6} />
+        {/* supply lines from the rig (5,000 ft above) to both pods */}
+        {[0, 1, 2].map((i) => { const o = lines[i]; if (o <= 0) return null; const col = cut > 0.5 ? '#5A2A22' : [AMB, BLUE, INK][i];
+          return <g key={i} opacity={o}>
+            {P.map(([x]) => <path key={x} d={`M${960 + (i - 1) * 70},0 L${960 + (i - 1) * 70},${180 + i * 26} L${x},${180 + i * 26} L${x},360`} fill="none" stroke={col} strokeWidth={8} />)}
+            {txt(1090, 70 + i * 40, names[i], 1 - cut, [AMB, BLUE, INK][i], 30, 'start', 800)}
+            {cut > 0 && <g opacity={cut}><line x1={960 + (i - 1) * 70 - 26} y1={110} x2={960 + (i - 1) * 70 + 26} y2={140} stroke={HC} strokeWidth={10} /><line x1={960 + (i - 1) * 70 - 26} y1={140} x2={960 + (i - 1) * 70 + 26} y2={110} stroke={HC} strokeWidth={10} /></g>}
+          </g>; })}
+        {txt(860, 40, '↑ TO THE RIG, 5,000 FT ABOVE', 0.8 * Math.max(...lines), INK, 26, 'end', 700)}
+        {/* pods */}
+        {P.map(([x, c, n]) => (
+          <g key={n} opacity={1 - 0.6 * dimPods}>
+            <rect x={x - 150} y={360} width={300} height={250} rx={16} fill="#15181B" stroke={c} strokeWidth={7} />
+            {txt(x, 470, n.split(' ')[0], 1, c, 46, 'middle', 800)}
+            {txt(x, 525, 'CONTROL POD', 1, c, 30, 'middle', 700)}
+          </g>))}
+        {/* fault tags (attributed in the caption) */}
+        {faults > 0 && <g opacity={faults}>
+          {txt(640, 660, 'MISWIRED VALVE', 1, HC, 36, 'middle', 800)}
+          {txt(1280, 660, 'DRAINED BATTERY', 1, HC, 36, 'middle', 800)}
+        </g>}
+        {/* command to the blades */}
+        {signal > 0 && P.map(([x]) => <path key={x} d={`M${x},610 L${x},760 L960,760 L960,860`} fill="none" stroke={AMB} strokeWidth={9} strokeDasharray="1000" strokeDashoffset={1000 * (1 - signal)} />)}
+        <g opacity={Math.max(blades, ease(t, 0, 0.01) * (signal > 0.95 ? 1 : 0))}>
+          <rect x={560} y={860} width={360} height={70} fill={AMB} stroke="#000" strokeWidth={3} />
+          <rect x={1000} y={860} width={360} height={70} fill={AMB} stroke="#000" strokeWidth={3} />
+          {txt(960, 990, 'BLIND SHEAR RAM', 1, AMB, 34, 'middle', 800)}
+        </g>
+      </g></svg>
+      <Footer />
+    </AbsoluteFill>
+  );
+};
+// the robot on April 22 (JIT/DNV: the autoshear, triggered by an ROV, most likely closed the blind shear ram)
+export const RovView: React.FC<{ t: number; arrive: number }> = ({ t, arrive }) => {
+  const k = ease(t, arrive, 2.2); const rx = interpolate(k, [0, 1], [1900, 1290]);
+  return (
+    <AbsoluteFill style={{ background: BG }}>
+      <svg width={1920} height={1080} style={{ position: 'absolute' }}>
+        <rect x={0} y={0} width={1920} height={1080} fill={WC.water2} />
+        <rect x={0} y={900} width={1920} height={180} fill={WC.rock} />
+        <rect x={780} y={250} width={360} height={650} rx={14} fill="#20252A" stroke={STEEL} strokeWidth={4} />
+        <rect x={780} y={560} width={360} height={60} fill="#4A3A1A" stroke={AMB} strokeWidth={4} />
+        {txt(760, 600, 'BLIND SHEAR RAM', 1, AMB, 34, 'end', 800)}
+        <g transform={`translate(${rx},470)`}>
+          <rect x={0} y={0} width={240} height={150} rx={18} fill="#E8A33D" stroke="#000" strokeWidth={3} />
+          <rect x={20} y={30} width={60} height={50} rx={8} fill="#2B3036" />
+          <path d={`M0,90 L-90,90 L-120,120`} fill="none" stroke="#D9DDE0" strokeWidth={10} />
+          {txt(120, 210, 'UNDERWATER ROBOT (ROV)', 1, INK, 28, 'middle', 800)}
+        </g>
+        {txt(960, 200, 'APRIL 22, 2010', k, INK, 56, 'middle', 800)}
+      </svg>
+      <Footer />
+    </AbsoluteFill>
+  );
+};

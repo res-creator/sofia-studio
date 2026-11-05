@@ -138,36 +138,36 @@ Narrator: AI voice (ElevenLabs, "Todd"). Testimony: Mike Williams, chief electro
 
 ### 7 · The last line of defense (10:38)
 
-**10:39** · NARRATOR: In the minutes after the explosions, subsea supervisor Chris Pleasant pressed the emergency disconnect on the bridge. It should have closed the blowout preventer's blind shear ram, the blades meant to cut the drill pipe and seal the well, and freed the rig from the riser. The lights on the panel changed. The rig did not disconnect.
+**10:47** · NARRATOR: In the minutes after the explosions, subsea supervisor Chris Pleasant pressed the emergency disconnect on the bridge. It should have closed the blowout preventer's blind shear ram, the blades meant to cut the drill pipe and seal the well, and freed the rig from the riser. The lights on the panel changed. The rig did not disconnect.
 
-**10:59** · NARRATOR: The preventer also had an automatic backup, called the deadman, meant to close the blades on its own if power, communication, and hydraulic pressure from the rig were lost. After the explosions, they were.
+**11:07** · NARRATOR: The preventer also had an automatic backup, called the deadman, meant to close the blades on its own if power, communication, and hydraulic pressure from the rig were lost. After the explosions, they were.
 
-**11:12** · NARRATOR: Investigators did not fully agree on what happened next. The Chemical Safety Board concluded that the deadman most likely did fire that night, but that the drill pipe inside had buckled and been pushed off center. The blades caught the pipe at its edge, and could not seal the well.
+**11:21** · NARRATOR: Investigators did not fully agree on what happened next. The Chemical Safety Board concluded that the deadman most likely did fire that night, but that the drill pipe inside had buckled and been pushed off center. The blades caught the pipe at its edge, and could not seal the well.
 
-**11:29** · NARRATOR: The forensic examination for the federal joint investigation also found the pipe off center, but concluded that the blades most likely closed two days later, when an underwater robot triggered them.
+**11:38** · NARRATOR: The forensic examination for the federal joint investigation also found the pipe off center, but concluded that the blades most likely closed two days later, when an underwater robot triggered them.
 
-**11:47** · NARRATOR: And by the time the crew closed the preventer, the commission noted, the flow may already have been too strong to stop. Earlier detection would have improved the odds.
+**11:56** · NARRATOR: And by the time the crew closed the preventer, the commission noted, the flow may already have been too strong to stop. Earlier detection would have improved the odds.
 
-**11:58** · NARRATOR: The blowout preventer was raised from the seafloor in September twenty ten, and taken as evidence.
+**12:06** · NARRATOR: The blowout preventer was raised from the seafloor in September twenty ten, and taken as evidence.
 
-### 8 · After (12:04)
+### 8 · After (12:12)
 
-**12:04** · NARRATOR: The Deepwater Horizon burned for about thirty-six hours. On the morning of April twenty-second, it sank.
+**12:13** · NARRATOR: The Deepwater Horizon burned for about thirty-six hours. On the morning of April twenty-second, it sank.
 
-**12:12** · NARRATOR: Oil flowed from the well for eighty-seven days. The government estimated that four point nine million barrels were released. A federal court later put the amount at about four million barrels.
+**12:21** · NARRATOR: Oil flowed from the well for eighty-seven days. The government estimated that four point nine million barrels were released. A federal court later put the amount at about four million barrels.
 
-**12:24** · NARRATOR: A capping stack stopped the flow on July fifteenth. On September nineteenth, after a relief well, the well was declared permanently sealed.
+**12:33** · NARRATOR: A capping stack stopped the flow on July fifteenth. On September nineteenth, after a relief well, the well was declared permanently sealed.
 
-**12:34** · NARRATOR: BP pleaded guilty to fourteen criminal counts, including eleven counts of seaman's manslaughter, and agreed to pay four billion dollars in that case. A federal court later found it grossly negligent. Transocean pleaded guilty to a Clean Water Act violation.
+**12:43** · NARRATOR: BP pleaded guilty to fourteen criminal counts, including eleven counts of seaman's manslaughter, and agreed to pay four billion dollars in that case. A federal court later found it grossly negligent. Transocean pleaded guilty to a Clean Water Act violation.
 
-**12:51** · NARRATOR: The federal agency that had overseen offshore drilling was broken up. New rules for blowout preventers and well control followed in twenty sixteen.
+**13:00** · NARRATOR: The federal agency that had overseen offshore drilling was broken up. New rules for blowout preventers and well control followed in twenty sixteen.
 
-### 9 · The answer (13:00)
+### 9 · The answer (13:09)
 
-**13:01** · NARRATOR: So why was the well judged safe? Because the test that should have caught the problem was read as a success, with no standard for reading it, and with an explanation that was later found to have no basis. In fact, investigators concluded, the cement at the bottom had failed.
+**13:10** · NARRATOR: So why was the well judged safe? Because the test that should have caught the problem was read as a success, with no standard for reading it, and with an explanation that was later found to have no basis. In fact, investigators concluded, the cement at the bottom had failed.
 
-**13:19** · NARRATOR: And why didn't the blowout preventer stop it? The signs were missed until gas was already above it. When its blades closed, the drill pipe was in the wrong place for them to seal the well.
+**13:28** · NARRATOR: And why didn't the blowout preventer stop it? The signs were missed until gas was already above it. When its blades closed, the drill pipe was in the wrong place for them to seal the well.
 
-**13:30** · NARRATOR: The commission traced the disaster to a series of mistakes by BP, Halliburton, and Transocean, and to failures of management. It also wrote that the exact part each mistake played may never be known.
+**13:39** · NARRATOR: The commission traced the disaster to a series of mistakes by BP, Halliburton, and Transocean, and to failures of management. It also wrote that the exact part each mistake played may never be known.
 
-### Names of the eleven men (on screen, no narration) (13:44)
+### Names of the eleven men (on screen, no narration) (13:52)
