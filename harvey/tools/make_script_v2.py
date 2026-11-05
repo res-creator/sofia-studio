@@ -4,7 +4,7 @@
 # Run: python3 harvey/tools/make_script_v2.py
 import json, os, re
 
-RATE = 2.75
+RATE = 2.5   # unhurried documentary read (~150 wpm); not sped up to hit a length
 D = os.path.dirname(os.path.abspath(__file__)) + '/../script/'
 
 # item kinds:
@@ -12,8 +12,8 @@ D = os.path.dirname(os.path.abspath(__file__)) + '/../script/'
 #  B(id, who, src, [(in,out),...], words, picture, label)   interview bite, original sound
 #  N(id, secs, picture, sound, label)               natural sound / picture only
 #  M(id, secs-or-None, change, leads_to)            map beat (graphic built by us); runs under the next narration if secs is None
-def V(i, t, p, l='—', gap=0.5): return dict(k='vo', id=i, text=t, pic=p, label=l, gap=gap)
-def B(i, who, src, segs, words, p, l, gap=0.6): return dict(k='bite', id=i, who=who, src=src, segs=segs, text=words, pic=p, label=l, gap=gap)
+def V(i, t, p, l='—', gap=0.8): return dict(k='vo', id=i, text=t, pic=p, label=l, gap=gap)
+def B(i, who, src, segs, words, p, l, gap=0.9): return dict(k='bite', id=i, who=who, src=src, segs=segs, text=words, pic=p, label=l, gap=gap)
 def N(i, secs, p, snd, l='—', gap=0.0): return dict(k='nat', id=i, secs=secs, pic=p, sound=snd, label=l, gap=gap)
 
 SCENES = [
@@ -21,12 +21,13 @@ SCENES = [
   N('o0', 2.5, 'Black → **546526** 0:00–0:02 (hoist in heavy rain, out of focus, fades up at 1.5 s)', 'Rotor and rain, natural sound of 546526', 'Coast Guard rescue, greater Houston, Aug. 28, 2017'),
   V('o1', 'A rescue swimmer named Brendan Kiley reached a small, one-story house in the Houston area. Five people were waiting on the roof. Beside the house, the water was almost up to the top of a car.',
     '**Kiley portrait**: freeze of 620835 1:59.2 (no subtitle on this frame), slow push 100→108 %', 'Brendan Kiley · U.S. Coast Guard rescue swimmer'),
-  V('o2', 'A woman on the roof slid a big plastic bin toward him. He thought it was her luggage. The helicopter needed every seat for people, so he told her they could not take it.',
+  V('o2', 'A woman on the roof slid a big plastic bin toward him. He thought it was her luggage, and told her there was no room for it in the helicopter.',
     'Kiley portrait 2: freeze of 620835 0:42.1, cropped to his head and shoulders (crop removes the burned-in subtitle), slow push'),
-  V('o3', 'She pushed it at him again.', 'Hold on portrait 2'),
-  N('o4', 1.5, 'Hold, then cut to black on the beat', 'Rotor sound drops out; 1 s silence'),
+  V('o3', 'She pushed it at him again. Inside were her two children: a toddler, holding a newborn baby.', 'Portrait 3: freeze of 620835 0:34.6, tighter crop, push continues'),
+  N('o4', 1.2, 'Hold on portrait 3', 'Rotor room tone only'),
+  V('o4b', 'Now he had to get two small children and their mother off a flooded roof, and up into a helicopter hovering above them.', 'Photo **3709576** (Cape Cod Jayhawk cockpit over flooded Houston), slow push', 'Coast Guard helicopter over Houston, Aug. 27, 2017', gap=0.6),
   V('o5', 'His crew had flown in from Cape Cod, Massachusetts. Hurricane Harvey had come ashore in Texas and then stalled, dropping rain on Houston for days.',
-    'Photo **3709576** (flooded Houston through the cockpit window of a Cape Cod Jayhawk) slow push → **546164** 0:27–0:36 (flooded subdivision, motel car park)', 'Coast Guard helicopter over Houston, Aug. 27, 2017'),
+    '**546164** 0:27–0:36 (flooded subdivision, motel car park, from a Coast Guard helicopter)', 'Coast Guard, Houston, Aug. 27, 2017'),
   V('o6', 'Catastrophic flooding was forecast days in advance. Why did so many people still end up trapped?',
     '**546389** 0:42–0:51 (a column of people wading along a flooded freeway feeder)', 'Texas National Guard, Houston, Aug. 27, 2017'),
   N('o7', 3.0, 'Title on black', 'Rotor tail fades', '**HARVEY · HOUSTON, 2017**'),
@@ -52,7 +53,7 @@ SCENES = [
  dict(n='2', title='The night', when='Sat Aug 26 – Sun morning Aug 27', items=[
   V('b1', 'On Saturday night, the rain bands settled over Houston. One gauge recorded more than three inches in thirty minutes. At 9:27, the weather service issued its first flash flood emergency.',
     '**Map M4**: rain totals over Harris County building hour by hour from Sat evening to Sun morning; at 9:27 p.m. a stamp appears over west-central Harris County', 'Rainfall, Aug. 26–27 · NWS data, simplified'),
-  V('b2', 'In parts of the county, about twenty-five inches fell in two days. Most of it came in nine to twelve hours, much of it overnight, while people slept.',
+  V('b2', 'By Sunday morning, two-day totals in the Houston area were approaching twenty-five inches. Most of that rain had fallen in nine to twelve hours, late on Saturday night and early on Sunday. And the storm was not over.',
     'M4 completes; the darkest cells hold', '—'),
   V('b3', 'South-east of the city, in Dickinson, the house of a Coast Guard chief, Matthew Dusek, flooded that weekend.',
     '**551726** 0:03–0:12: Dickinson street, drywall and furniture at the kerb', 'Dickinson, Texas · filmed Sept. 4, 2017'),
@@ -63,8 +64,8 @@ SCENES = [
   V('b6', 'By Sunday morning, Harris County\'s 911 system had taken fifty-six thousand calls in fifteen hours. The county judge asked for help.',
     '**546166** (Coast Guard punt beside a submerged pickup, freeway overpass behind)', 'Houston, Sunday, Aug. 27, 2017'),
   N('b7', 3.5, 'Text card: "If you have a boat, we need your help." — Harris County Judge Ed Emmett, Aug. 27, 2017', 'Room tone of 546166', 'Quoted in NWS Service Assessment, p. 8'),
-  V('b8', 'Early on Sunday, a Houston police sergeant, Steve Perez, set out for work. According to the police chief, his wife had asked him not to go; he told her he had work to do. He drowned in his patrol car on a flooded road in north Houston.',
-    'Black; a small name card fades in and out', 'Sgt. Steve Perez · Houston Police Department · 34 years of service'),
+  V('b8', 'Early on Sunday, a Houston police sergeant, Steve Perez, left home for work in heavy rain. According to Police Chief Art Acevedo, Perez\'s wife had asked him not to go, and he answered that there was work to do. He drowned in his patrol car on a flooded road in north Houston.',
+    '**Map M4b**: the night-rain map of M4, dimmed; a small marker in north Houston near Hardy Toll Road and Beltway 8, where he was found on Aug. 29', 'Sgt. Steve Perez · Houston Police Department · 34 years of service'),
  ]),
  dict(n='3', title='Rescue', when='Sun Aug 27 – Tue Aug 29', items=[
   V('c1', 'That Sunday, Coast Guard aircraft from Cape Cod arrived over Houston. Kiley\'s helicopter crew came by way of Lafayette, Louisiana.',
@@ -73,17 +74,16 @@ SCENES = [
     '**546164** 0:27–0:36 aerial of flooded streets → **546836** 0:00–0:20 hook camera over a roof', 'Coast Guard, Houston, Aug. 27–29, 2017'),
   N('c3', 16.0, '**546164** 0:45–1:15: the flight mechanic works the hoist; the basket goes down over flooded trees; then 1:18–1:30 survivors pulled into the cabin', 'Natural sound only (rotor, wind, hoist)', 'Coast Guard hoist, Houston, Aug. 27, 2017'),
   N('c4', 4.0, '**546164** 1:48–1:54: survivors walk away from the helicopter on the ramp', 'Natural sound', '—'),
-  V('c5', 'It was his second day in Houston. Kiley had been lowered to that house, got onto the car, and climbed up to the five people on the roof. What worried him most was losing one of them off the edge.',
+  V('c5', 'The roof with the bin was on Kiley\'s second day in Houston. He had been lowered from the helicopter, got onto the car, and climbed up to the five people. What worried him most was losing one of them off the edge.',
     'Kiley portrait 1 (620835 1:59.2 freeze), slow push', 'Brendan Kiley · rescue swimmer, Air Station Cape Cod'),
-  V('c6', 'He had told the woman to take out whatever she needed, something she could hold. She pushed the bin back at him. He remembers her words: \'No, that\'s my babies in there.\'',
-    'Kiley portrait 3: freeze of 620835 0:34.6, tighter crop on the eyes', '—'),
-  V('c8', 'He opened the lid. Inside, keeping dry, were a toddler and a newborn baby.',
-    'Hold portrait 3; push continues', '—'),
-  N('c9', 1.5, 'Hold', 'Silence under the picture, rotor room tone very low', '—'),
-  V('c10', 'Kiley carried the bin down from the roof, helped the mother down after it, and put all three into the rescue basket for the hoist.',
+  V('c6', 'When he refused the bin, the mother told him: those are my babies. Kiley later said he was sure she had snapped the lid on as the helicopter came in, to keep the children out of the rain.',
+    'Kiley portrait 2 (0:42.1 freeze, cropped)', '—'),
+  N('c9', 1.2, 'Hold', 'Rotor room tone very low', '—'),
+  V('c10', 'He carried the bin down from the roof first, with the children inside. Then he helped their mother down, and settled all three in the rescue basket. The basket went up with the mother and both children together.',
     'Portrait 1 again, wider', '—'),
   V('c11', 'Afterwards, he said the bin had been a good call by their mother: inside it, the children were out of the rain and the wind, and they could not slide off the roof.',
-    'Photo **3709576** (his unit\'s Jayhawk cockpit over flooded Houston) — wide, slow pull back', 'Coast Guard helicopter over Houston, Aug. 27, 2017'),
+    'Photo **3709578** (flooded streets through the Jayhawk windscreen) — slow pull back', 'Coast Guard helicopter over Houston, Aug. 27, 2017'),
+  V('c11b', 'Over three days, Kiley\'s crew rescued a hundred and twelve people.', 'Photo 3709578 holds', '—'),
   V('c12', 'Rain was the other problem. When the heaviest bands came through, Greene said, the pilots could not see. They would set down in a ballpark or a car park, wait for the band to pass, and lift off again.',
     '**546526** 0:00–0:12 hoist in heavy rain → 0:33–0:45 landing zone in pouring rain', 'Coast Guard rescue, greater Houston, Aug. 28, 2017'),
   V('c13', 'On the ground, Harris County\'s firefighters and police recorded more than sixty-one thousand rescues. Nobody counted the people saved by neighbours in their own boats.',
@@ -128,21 +128,15 @@ SCENES = [
     '**551726** 1:40–1:47 (a "Yard of the Month" sign in front of a gutted house)', 'Dickinson, Texas, Sept. 4, 2017'),
   B('f2', 'Dusek', '551726', [(35.84, 46.04)], 'Just talked to the claims adjuster and it kinda sent me into a little spin, \'cause I don\'t have a house. I\'m homeless. I don\'t know.',
     'Dusek on camera (551726 0:39–0:46)', 'CPO Matthew Dusek · U.S. Coast Guard'),
-  V('f3', 'Harvey killed sixty-eight people directly, thirty-six of them in Harris County. In the county, about a hundred and fifty-four thousand houses flooded.',
-    'Black; the numbers appear one by one as they are spoken', '68 direct deaths · 36 in Harris County · 154,170 houses flooded in the county (NHC; HCFCD)'),
+  V('f3', 'Harvey killed sixty-eight people directly, thirty-six of them in Harris County. In the county, about a hundred and fifty-four thousand houses flooded. Across Texas, more than a hundred and twenty-two thousand people had to be rescued.',
+    'USGS photo **usgs_high_water_marks.jpg** (technicians flagging a high-water mark), dimmed; the numbers appear one by one as they are spoken', '68 direct deaths · 36 in Harris County · 154,170 houses flooded in the county · 122,000+ rescued in Texas (NHC; HCFCD; Governor\'s Commission) · photo: USGS'),
  ]),
  dict(n='7', title='The answer', when='', items=[
-  V('g1', 'So why were so many people trapped, after a warning that came days ahead?',
-    '**546164** 0:27–0:36 aerial, slowed to 70 %', 'Houston, Aug. 27, 2017'),
-  V('g2', 'The forecast was right about the scale, and about the area. It could not name the streets. Then most of the rain fell in a single night, and the roads flooded before morning.',
-    '**Map M4** final state (the night\'s rainfall) returns for 4 s → 546494 0:00–0:12 (night, boat over lit water)', 'Night evacuation, Houston area, Aug. 28, 2017'),
-  V('g3', 'There was no general order to leave Houston. The officials\' reasons were that nobody could say which neighbourhoods would flood, and that in Rita, the evacuation itself had killed people. That November, the county wrote that it would make the same decision again.',
-    '**Map M2** returns: Harris County outline, not shaded; quote appears small at the bottom', '"If we had to do it all over again, we would still not issue an evacuation order for Harris County based on flood threat." — Harris County, Nov. 2017'),
-  V('g4', 'By Sunday morning, the way out for many people was a boat, a truck or a helicopter, and the 911 system was overwhelmed. In west Houston, water held back flooded thousands of homes, and water let through flooded thousands more.',
-    '**546389** 3:09–3:30 (evacuees loaded into a truck bed) → **M5d** for 3 s', 'Texas National Guard, Houston, Aug. 27, 2017'),
-  V('g5', 'Across Texas, first responders rescued more than a hundred and twenty-two thousand people. The Coast Guard rescued more than eleven thousand. In three days, Brendan Kiley\'s crew rescued a hundred and twelve.',
-    '**546164** 0:45–1:15 (hoist operator at the door over flooded trees) → Kiley portrait 1, last 3 s', 'Coast Guard, Houston, Aug. 27, 2017'),
-  N('g6', 6.0, '**546526** 0:45–1:00: people walk away from the helicopter in the rain → black', 'Natural sound, rain; fades', 'Coast Guard landing zone, Aug. 28, 2017'),
+  V('g1', 'The flood was forecast. But no forecast could name the streets, and there was no general order to leave Houston. When the downpour hit Houston on Saturday night, many people could only wait to be rescued.',
+    '**546389** 3:09–3:30 (evacuees loaded into a truck bed) → **546164** 0:27–0:36 aerial, slowed to 70 %', 'Houston, Aug. 27, 2017'),
+  V('g2', 'On one of those roofs, a mother had already done what she could. She put her two children in a plastic bin and kept them dry, until Brendan Kiley reached them.',
+    'Kiley portrait 1, last slow push', 'Brendan Kiley · U.S. Coast Guard rescue swimmer', gap=1.0),
+  N('g6', 4.0, 'Hold on the portrait 1.5 s → fade to black', 'Rain, natural sound of 546526, fades out', '—'),
  ]),
 ]
 
@@ -151,6 +145,7 @@ MAPS = [
  ('M2', 'Coastal counties with evacuation orders shaded; Harris County outlined, not shaded', 'Shows who was told to leave and who was not → used again in the answer'),
  ('M3', 'Track reaches Rockport and loops in place for four days', 'Why the rain did not stop → leads to Saturday night'),
  ('M4', 'Rain totals over Harris County building hour by hour, Sat evening → Sun morning; 9:27 p.m. flash-flood stamp', 'How fast the water came at night → leads to Dusek\'s house and the 911 calls'),
+ ('M4b', 'M4 dimmed; one marker in north Houston near Hardy Toll Road and Beltway 8', 'Where Sgt. Perez was found (Aug. 29) — replaces a long black screen'),
  ('M5a–e', 'Countywide flooded houses (context) → two basins → gates closed → pools spread into neighbourhoods → bayou already high → release at ≈ midnight Aug. 28 → homes along the bayou → record pools Aug. 30', 'Separates rain flooding, flooding above the dams and the effect of releases below them → leads to the court passage'),
  ('M6', 'Track and rain shield move east; one marker: 60.58 in, Nederland', 'Where the rain went next → leads to the Port Arthur, Beaumont and Vidor rescues'),
 ]
@@ -243,18 +238,19 @@ L.append('## Facts behind the narration (all in `research/verification.md` or `r
 L.append('- Advisory 21 (10 a.m. Aug 25) first "catastrophic"; Advisory 22 (4 p.m.) "15 to 30 inches … 40 inches"; WPC Day-3 High Risk "unprecedented" (NWS SA p. 38).')
 L.append('- Greene: Friday flights cancelled, waiting to send a crew; "follow roads", 911 addresses, Google Maps on phones; landing in ballparks and car parks during bands (620838, his own words).')
 L.append('- Emmett\'s reasons: NPR transcript, Aug 28. Rita: NTSB HAR-07/01 (23 in the bus fire, Sept 23, 2005; landfall Sept 24); "dozens" instead of the secondary "73".')
-L.append('- Landfall ≈ 10 p.m. Aug 25 near Rockport, Category 4 (NHC TCR). First flash flood emergency 9:27 p.m. Aug 26 (SA p. 8). 3.08 in in 30 min (HGX discussion 10:17 p.m.). ~25 in in 48 h, most in 9–12 h (SA p. 7).')
-L.append('- Dusek: interview Sept 4, 2017; boat rescues per the DVIDS caption, hence "according to". 56,000 calls in 15 h and 61,064 rescues: Harris County fact sheet. Emmett\'s appeal: SA p. 8. Perez: news reports, the chief\'s account paraphrased.')
+L.append('- Landfall ≈ 10 p.m. Aug 25 near Rockport, Category 4 (NHC TCR). First flash flood emergency 9:27 p.m. Aug 26 (SA p. 8). 3.08 in in 30 min (HGX discussion 10:17 p.m.). SA p. 7, exact scope: "By Sunday morning, August 27, 48-hour rainfall amounts were approaching 25 inches in the Houston area, with most of that rain falling in a 9- to 12-hour time frame late Saturday night and early Sunday morning" — this is the first 48 h in the Houston area, not Harvey\'s total (Houston metro storm totals reached 36–48 in by Aug 30). The finale says only that the downpour hit Houston on Saturday night.')
+L.append('- Dusek: interview Sept 4, 2017; boat rescues per the DVIDS caption, hence "according to". 56,000 calls in 15 h and 61,064 rescues: Harris County fact sheet. Emmett\'s appeal: SA p. 8. Perez: ABC13 and Fox/AP, Aug 30, 2017 — left home in heavy rain; Chief Acevedo retold the widow\'s account; quote wording differs between outlets, so narration is indirect speech only, attributed to Acevedo; found Aug 29 near Hardy Toll Rd and Beltway 8.')
 L.append('- Kiley: AFRAS citation (Aug 27–29, CGNR 6026 from Lafayette, "climbed onto a roof", "rubber storage bin", "toddler and newborn baby trying to stay dry", "carry the bin down … helping the mother down and arranging all three in the basket for the hoist", 112 people); "second day in the city" (Notre Dame alumni article); five people, the car, "luggage", "can\'t take that", "my babies", the reflection — his interview.')
 L.append('- Reservoirs: >9,000 homes and businesses inside the pools (EYE p. 37); ≈4,000 homes downstream (EYE p. 17/20); releases ≈ midnight Aug 28 (CFC 2026 p. 6); 600,000 is the Corps\' estimate (CFC 2026 p. 7); "minimal" risk and "professionalism" (CFC 2026 pp. 40–41); record pools Aug 30 (HCFCD); 154,170 houses countywide (HCFCD 2018).')
 L.append('- 60.58 in at Nederland, 68 direct deaths / 36 in Harris County (NHC TCR). 122,000+ Texas rescues (EYE p. 4); 11,022 Coast Guard (EYE p. 62). County statement on evacuation: Harris County fact sheet, Annex E, Nov 13, 2017.')
 L.append('')
 L.append('## If clean interview masters arrive later (not part of this cut)')
-L.append('Only these swaps; nothing else changes. Narration o2–o3 → Kiley 0:35.2–0:42.0; last sentence of c6 → Kiley 1:05.98–1:15.34 (cut before "And I open up the top"); c11 → Kiley 1:19.5–1:26.6; c2 second sentence → Greene 0:22.7–0:46.3. Re-run this script to retime.')
+L.append('Only these swaps; nothing else changes. Narration o2–o3 → Kiley 0:35.2–0:42.0; o3 first sentence → Kiley 1:05.98–1:15.34; c11 → Kiley 1:19.5–1:26.6; c2 second sentence → Greene 0:22.7–0:46.3. Re-run this script to retime.')
 L.append('')
 L.append('## Still to do before narration')
 L.append('- Narration voice: needs a paid ElevenLabs plan (Todd, eleven_v4).')
-L.append('- Build maps M1–M6 and check them against the data listed.')
+L.append('- Build maps M1–M6 (and M4b) and check every value against the data listed before the final render.')
+L.append('- Rough cut on a temporary voice for pacing: `harvey/rough/` (see `harvey/tools/build_rough.py`). The temporary voice is not the film\'s voice.')
 open(D + 'script_v2.md', 'w').write('\n'.join(L) + '\n')
 json.dump({'rate_words_per_s': RATE, 'duration_est': round(TOTAL, 1), 'seq': seq}, open(D + 'film_v2.json', 'w'), indent=1)
 print('total', fmt(TOTAL), 'vo words', vo_words, 'bites', round(bite_secs, 1), 'nat', nat_secs)
