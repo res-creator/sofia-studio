@@ -29,3 +29,9 @@ Narration: existing recordings only (no text changes). One new silent hold: an 8
 - **Ch. 9:** the answer's second half uses the CSB close-up (pipe off center, gap).
 - **Photo orientation fixed:** DVIDS 1098147 was shown rotated 90°; now upright.
 - **Not changed (needs new narration to change well):** the opening's words. Its pictures already follow the brief (Williams's voice, the dated fire, the contradiction card, the decision, the two questions).
+
+## Fix pass (Nov 5, owner's notes)
+1. Rescue schematic: every label now fades out before it reaches a frame edge (on-screen extent computed per label); the "on deck" framing keeps the rig, the lifeboats and the Bankston in frame.
+2. Three barriers: one overview with the three parts outlined in turn (1 mud, 2 cement, 3 BOP) and a persistent numbered list, instead of three quick camera moves; 1.4 s more pause before the next line.
+3. Williams's plan: a person marker only at the two places he named — his shop, then the engine control room (the marker fades from one to the other; no path drawn; route to the outside still "unknown").
+4. Opening: the hearing-room wide shot under "Williams told investigators…" and his "immune" answer is replaced by the still of Williams at the witness table (same hearing video, labelled), so the viewer sees who is speaking. The swearing-in wide shot stays as his introduction.

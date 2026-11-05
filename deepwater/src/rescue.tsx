@@ -14,7 +14,14 @@ export const Rescue: React.FC<{ t: number; lb?: number; frc?: number; caption?: 
   const dots = [[640, 700], [600, 650], [790, 720], [560, 560], [700, 760]];
   const fx = f < 0 ? bx - 60 : f < 4 ? bx - 60 + (dots[0][0] + 40 - (bx - 60)) * k(f, 0, 4) : dots[0][0] + 40 + 30 * Math.sin(f * 0.6);
   const fy = f < 0 ? by + 30 : f < 4 ? by + 30 + (dots[0][1] - (by + 30)) * k(f, 0, 4) : dots[0][1] + 20 * Math.cos(f * 0.5);
-  const txt = (x: number, y: number, s: string, c = INK, size = 28, a: 'start' | 'middle' | 'end' = 'start', w = 700) => <text x={x} y={y} fill={c} fontFamily={SANS} fontWeight={w} fontSize={size} textAnchor={a} style={{ paintOrder: 'stroke', stroke: 'rgba(0,0,0,0.85)', strokeWidth: 5 }}>{s}</text>;
+  // labels must stay fully inside the frame: estimate the on-screen extent and fade the label out before it reaches an edge
+  const vis = (x: number, y: number, s: string, size: number, a: 'start' | 'middle' | 'end') => {
+    const w = s.length * size * 0.56 * cam.s; const sx = 960 + (x - cam.x) * cam.s, sy = 540 + (y - cam.y) * cam.s;
+    const x0 = a === 'start' ? sx : a === 'middle' ? sx - w / 2 : sx - w; const x1 = x0 + w;
+    const m = Math.min(x0 - 30, 1890 - x1, sy - size * cam.s - 20, 1060 - sy);
+    return Math.max(0, Math.min(1, m / 60));
+  };
+  const txt = (x: number, y: number, s: string, c = INK, size = 28, a: 'start' | 'middle' | 'end' = 'start', w = 700) => <text x={x} y={y} fill={c} opacity={vis(x, y, s, size, a)} fontFamily={SANS} fontWeight={w} fontSize={size} textAnchor={a} style={{ paintOrder: 'stroke', stroke: 'rgba(0,0,0,0.85)', strokeWidth: 5 }}>{s}</text>;
   return (
     <AbsoluteFill style={{ background: WC.water2 }}>
       <svg width={1920} height={1080} style={{ position: 'absolute', overflow: 'visible' }}><g transform={`translate(${960 - cam.x * cam.s},${540 - cam.y * cam.s}) scale(${cam.s})`}>

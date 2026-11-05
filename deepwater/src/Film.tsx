@@ -41,12 +41,24 @@ sh(S('b03') - 0.2, (p) => <DocL {...p} src="comm-018.jpg" box={[0.1429, 0.3579, 
 { const a = S('b05') - 0.2; const c1 = W('b05', 'cemented') - a; sh(a, (p) => <Well t={p.t + 3} show={[...BASE, 'cement', 'mud']} at={{ cement: 3 + c1 + 0.6 }} cam={camK(p.t, [[0, 960, 540, 1], [c1 - 0.6, 960, 930, 2.4]])} caption={['APRIL 20, 12:40 A.M.', 'Cement is pumped to the bottom of the well.']} capAt={3 + c1 + 0.4} />, 0.3); }
 // ===================== 2 · THREE BARRIERS — the camera visits each barrier as it is named
 { const a = E.ch2.at; const m = W('b06', 'mud') - a, c = W('b06', 'cement') - a, b = W('b06', 'blowout') - a;
-  sh(a, (p) => (<><Well t={p.t + 3} show={[...BASE, 'cement', 'mud', 'bopglow']} at={{ bopglow: 3 + b }} cam={camK(p.t, [[0, 960, 930, 2.4], [0.4, 960, 540, 1], [m - 0.5, 960, 420, 1.7], [c - 0.5, 960, 960, 2.4], [b - 0.5, 960, 600, 2.4]])} />
-    <Chapter t={p.t} n={2} title="THREE BARRIERS" />
-    <Headline t={p.t} at={m - 0.3} out={c - 0.4} bottom big="1 · HEAVY DRILLING MUD" small="Its weight holds back the oil and gas." />
-    <Headline t={p.t} at={c - 0.2} out={b - 0.4} bottom big="2 · CEMENT AT THE BOTTOM" />
-    <Headline t={p.t} at={b - 0.2} bottom big="3 · THE BLOWOUT PREVENTER" small="On the seafloor, on top of the well" /></>), 0.3); }
-{ const a = S('b07') - 0.2; sh(a, (p) => <Well t={p.t} show={[...BASE, 'cement', 'mud', 'seawater']} at={{ mud: -2, cement: -2, seawater: W('b07', 'seawater') - a }} cam={camK(p.t, [[0, 960, 600, 2.4], [0.3, 960, 430, 1.5]])} caption={['THE PLAN', 'Swap the mud in the riser for lighter seawater. Then the cement alone holds back the oil and gas.']} capAt={0.5} />, 0.3); }
+  const hl = (on: number, x: number, y: number, w: number, h: number, n: string, lx: number, ly: number) => (<g opacity={on}>
+    <rect x={x} y={y} width={w} height={h} rx={12} fill="none" stroke={ACC} strokeWidth={6} />
+    <text x={lx} y={ly} fill={ACC} fontFamily={SANS} fontWeight={800} fontSize={40} style={{ paintOrder: 'stroke', stroke: '#000', strokeWidth: 6 }}>{n}</text></g>);
+  sh(a, (p) => { const t = p.t; const o1 = ease(t, m - 0.3, 0.5), o2 = ease(t, c - 0.3, 0.5), o3 = ease(t, b - 0.3, 0.5);
+    return (<><Well t={t + 3} show={[...BASE, 'cement', 'mud']} at={{}} cam={camK(t, [[0, 960, 930, 2.4], [0.3, 960, 560, 1]])} />
+    <svg width={1920} height={1080} style={{ position: 'absolute' }} opacity={ease(t, 1.0, 0.3)}>
+      {hl(o1 * (1 - 0.45 * o2), 925, 160, 70, 870, '1', 860, 420)}
+      {hl(o2 * (1 - 0.45 * o3), 915, 955, 90, 100, '2', 860, 1020)}
+      {hl(o3, 880, 535, 160, 125, '3', 1060, 615)}
+    </svg>
+    <Chapter t={t} n={2} title="THREE BARRIERS" />
+    <div style={{ position: 'absolute', left: 70, top: 300, width: 640, background: 'rgba(8,9,10,0.82)', padding: '22px 28px', borderRadius: 8, opacity: o1 }}>
+      {[['1 · HEAVY DRILLING MUD', 'its weight holds back oil and gas', o1], ['2 · CEMENT AT THE BOTTOM', 'seals the bottom of the well', o2], ['3 · BLOWOUT PREVENTER', 'on the seafloor, on top of the well', o3]].map(([n, d, o]) => (
+        <div key={n as string} style={{ opacity: 0.25 + 0.75 * (o as number), marginBottom: 18 }}>
+          <div style={{ fontFamily: SANS, fontWeight: 800, fontSize: 38, color: ACC }}>{n as string}</div>
+          <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 28, color: INK }}>{d as string}</div></div>))}
+    </div></>); }, 0.3); }
+{ const a = S('b07') - 0.2; sh(a, (p) => <Well t={p.t} show={[...BASE, 'cement', 'mud', 'seawater']} at={{ mud: -2, cement: -2, seawater: W('b07', 'seawater') - a }} cam={camK(p.t, [[0, 960, 560, 1], [0.3, 960, 430, 1.5]])} caption={['THE PLAN', 'Swap the mud in the riser for lighter seawater. Then the cement alone holds back the oil and gas.']} capAt={0.5} />, 0.3); }
 { const a = S('b08') - 0.2; const cm = W('b08', 'commission') - a; sh(a, (p) => (<><Well t={p.t + 9} show={[...BASE, 'cement', 'mud', 'seawater']} at={{ mud: -2, cement: -2, seawater: -9 }} cam={camK(p.t, [[0, 960, 430, 1.5], [0.2, 960, 960, 2.6]])} />
   <Headline t={p.t} at={0.6} out={cm - 0.4} bottom big="THAT MORNING: NO CEMENT CHECK" small="The team that could have tested the cement left on the 11 a.m. helicopter. (Commission, p. 4)" />
   <Headline t={p.t} at={cm - 0.2} bottom big="LATER: “BP SHOULD HAVE RUN ONE”" small="Commission report, p. 117 · the investigators’ conclusion" /></>), 0.3); }
@@ -84,21 +96,21 @@ const WST = (p: SP, s0: number, s1: number, f = 'w_still.jpg') => (<><Photo {...
 const VOICE = (p: SP) => <Label t={p.t} at={0.3} text="Voice: Mike Williams · testimony, July 23, 2010" right top />;
 sh(S('b28') - 0.2, (p) => (<>{WST(p, 1.0, 1.08)}<Lower t={p.t} at={1.0} name="Mike Williams" role="Chief electronics technician, Transocean" /></>), 0.3);
 { const a = B.w_hiss[0].at - 0.2; const g = W('b29', 'Gas') - a, e0 = B.w_engine[0].at - a, e1 = B.w_engine[1].at - a;
-  sh(a, (p) => (<><ShopPlan t={p.t} above={ease(p.t, 0.3, 0.6)} ecr={p.t > S('b29') - a ? 1 : 0} gas={ease(p.t, g, 1.2)} eng3={p.t > e0 ? 1 : 0}
+  sh(a, (p) => (<><ShopPlan t={p.t} inShop={ease(p.t, 0.8, 0.5)} above={ease(p.t, 0.3, 0.6)} ecr={p.t > S('b29') - a ? 1 : 0} gas={ease(p.t, g, 1.2)} eng3={p.t > e0 ? 1 : 0}
     push={ease(p.t, 0, e1 + 12)} caption={p.t < S('b29') - a - 0.2 ? ['A HISS AND A THUMP', 'From above: the riser skate and the rig floor'] : p.t < e0 - 0.3 ? ['ALARMS NEXT DOOR', 'Then gas reached the engines.'] : p.t < e1 - 0.2 ? ['ENGINE 3 RACES', '“…way above what I’d ever heard it run before.” — Williams'] : ['HE REACHES FOR THE DOOR', 'The engine keeps speeding up. (his account)']} capAt={0.3} />{VOICE(p)}
     <AbsoluteFill style={{ background: BG, opacity: 0 * e1 }} /></>), 0.5); }
 sh(B.w_engine[2].at - 0.15, (p) => (<AbsoluteFill style={{ background: BG }}>{VOICE(p)}</AbsoluteFill>), 0.3);
 sh(S('b30') - 0.2, (p) => <BigTime t={p.t} text="ABOUT 9:49 P.M." sub="FIRST EXPLOSION · TIMES APPROXIMATE" />, 0.3);
-sh(B.x_crawl[0].at - 0.2, (p) => (<><ShopPlan t={p.t} route={ease(p.t, 0.6, 1.0)} ecr={1} caption={['OUT THROUGH THE ENGINE CONTROL ROOM', 'In the dark, on his hands and knees (Williams)']} capAt={0.4} />{VOICE(p)}</>), 0.5);
+sh(B.x_crawl[0].at - 0.2, (p) => (<><ShopPlan t={p.t} inShop={1 - ease(p.t, 1.2, 0.5)} inEcr={ease(p.t, 1.6, 0.5)} route={ease(p.t, 2.4, 1.0)} ecr={1} caption={['OUT THROUGH THE ENGINE CONTROL ROOM', 'In the dark, on his hands and knees (Williams)']} capAt={0.4} />{VOICE(p)}</>), 0.5);
 const LATER = (p: SP) => (<><Label t={p.t} at={0} text="Voice: Mike Williams · testimony, July 23, 2010" right top /><Label t={p.t} at={0} text="FILMED AFTER 11 P.M. · the rig more than an hour after the explosions" credit={USCG} /></>);
 sh(S('b31') - 0.3, (p) => (<><Clip {...p} src="night_rig.mp4" from={8} />{LATER(p)}</>), 0.4);
 // ===================== 6 · ABANDON SHIP
 { const a = E.ch6.at; const from = (533.98 - 524) - (B.y_alarm[0].at - a);
   sh(a, (p) => (<><Clip {...p} src="w_live.mp4" from={from} /><Chapter t={p.t} n={6} title="ABANDON SHIP" /><Label t={p.t} at={0.4} text="Mike Williams (right, olive shirt) · hearing, July 23, 2010" credit={USCG} /></>), 0.4); }
 { const a = S('b33') - 0.2; const th = B.y_three[0].at - a;
-  sh(a, (p) => <Rescue t={p.t} lb={0.8} cam={camK(p.t, [[0, 1000, 600, 1.2], [th - 0.5, 740, 570, 1.6]])} caption={p.t < th - 0.3 ? ['FROM ABOUT 9:52 P.M.', 'Alarm and Mayday. Two lifeboats head for the supply vessel Damon B. Bankston.'] : ['ON DECK', 'Williams and two others: no life raft, no lifeboat (his account)']} />, 0.4); }
+  sh(a, (p) => <Rescue t={p.t} lb={0.8} cam={camK(p.t, [[0, 1000, 600, 1.2], [th - 0.5, 900, 580, 1.3]])} caption={p.t < th - 0.3 ? ['FROM ABOUT 9:52 P.M.', 'Alarm and Mayday. Two lifeboats head for the supply vessel Damon B. Bankston.'] : ['ON DECK', 'Williams and two others: no life raft, no lifeboat (his account)']} />, 0.4); }
 sh(B.y_jump[0].at - 0.2, (p) => (<><Clip {...p} src="night_fireboats.mp4" />{LATER(p)}</>), 0.4);
-{ const a = B.y_water[0].at - 0.2; sh(a, (p) => (<><Rescue t={p.t + 6} lb={-20} burn={ease(p.t, 0.4, 1.0)} cam={camK(p.t, [[0, 700, 650, 1.6], [0.5, 690, 660, 2.0]])} caption={['IN THE WATER', 'Fuel burning on the surface around the rig (his account)']} />{VOICE(p)}</>), 0.5); }
+{ const a = B.y_water[0].at - 0.2; sh(a, (p) => (<><Rescue t={p.t + 6} lb={-20} burn={ease(p.t, 0.4, 1.0)} cam={camK(p.t, [[0, 900, 580, 1.3], [0.5, 690, 660, 2.0]])} caption={['IN THE WATER', 'Fuel burning on the surface around the rig (his account)']} />{VOICE(p)}</>), 0.5); }
 { const a = B.y_over[0].at - 0.2; sh(a, (p) => (<><Rescue t={p.t + 4} lb={-20} burn={1} frc={4 + 0.5} pickN={3} cam={camK(p.t, [[0, 690, 660, 2.0], [2, 820, 620, 1.45]])} caption={['ABOUT 10 P.M. · RECONSTRUCTION', 'The Bankston’s fast rescue craft pulls people from the water near the rig.']} />{p.t < S('b35') - a ? VOICE(p) : null}</>), 0.6); }
 sh(S('b37') - 0.2, (p) => (<><Clip {...p} src="rescue_basket.mp4" /><Label t={p.t} at={0.5} text="After midnight, April 21: a Coast Guard helicopter hoists an injured survivor from a support vessel (not named)" credit={USCG} /></>), 0.4);
 sh(W('b37', 'flown') - 0.2, (p) => (<><Clip {...p} src="medevac.mp4" from={2} /><Label t={p.t} at={0.4} text="Injured crew arrive at Coast Guard Air Station New Orleans · April 21, 2010" credit={USCG} /></>), 0.3);

@@ -1,7 +1,7 @@
 KNOWN IN ADVANCE — upload kit (NOT published; for the owner's review)
 
 FILE
-final/dwh_full_film.mp4 (1920x1080, about 14:11) · captions final/dwh_full_film.srt
+final/dwh_full_film.mp4 (1920x1080, about 14:13) · captions final/dwh_full_film.srt
 THUMBNAIL
 final/thumbnail.jpg — "8 P.M. / DECLARED A SUCCESS" (recommended); alternative final/thumbnail_v2.jpg — "KILL LINE: NO FLOW / DRILL PIPE: 1,400 PSI / 'SUCCESS'". Photo: U.S. Coast Guard, April 21, 2010 (DVIDS 272214, public domain).
 
@@ -27,13 +27,13 @@ CHAPTERS
 0:00 April 20, 2010
 1:55 The rig and the well
 2:54 Three barriers
-3:36 The test
-5:16 The signs
-6:29 The blowout
-8:12 Abandon ship
-10:38 The last line of defense
-12:12 After
-13:09 The answer
+3:37 The test
+5:17 The signs
+6:31 The blowout
+8:13 Abandon ship
+10:39 The last line of defense
+12:14 After
+13:10 The answer
 
 SOURCES (facts)
 - National Commission on the BP Deepwater Horizon Oil Spill, "Deep Water", report to the President (2011): https://www.govinfo.gov/content/pkg/GPO-OILCOMMISSION/pdf/GPO-OILCOMMISSION.pdf

@@ -14,7 +14,7 @@ const box = (x: number, y: number, w: number, h: number, label: string, o: numbe
     {label.split('\n').map((l, i, a) => <text key={i} x={x + w / 2} y={y + h / 2 + (i - (a.length - 1) / 2) * 40 + 12} fill={hl ? ACC : col} fontFamily={SANS} fontWeight={800} fontSize={34} textAnchor="middle">{l}</text>)}
   </g>
 );
-export const ShopPlan: React.FC<{ t: number; above?: number; ecr?: number; gas?: number; eng3?: number; route?: number; caption?: [string, string?]; capAt?: number; push?: number }> = ({ t, above = 0, ecr = 0, gas = 0, eng3 = 0, route = 0, caption, capAt = 0.3, push = 0 }) => {
+export const ShopPlan: React.FC<{ t: number; above?: number; ecr?: number; gas?: number; eng3?: number; route?: number; caption?: [string, string?]; capAt?: number; push?: number; inShop?: number; inEcr?: number }> = ({ t, above = 0, ecr = 0, gas = 0, eng3 = 0, route = 0, caption, capAt = 0.3, push = 0, inShop = 0, inEcr = 0 }) => {
   const S = { x: 760, y: 470, w: 400, h: 220 };
   return (
     <AbsoluteFill style={{ background: BG }}>
@@ -38,6 +38,13 @@ export const ShopPlan: React.FC<{ t: number; above?: number; ecr?: number; gas?:
           <text x={1540} y={335} fill={ACC} fontFamily={SANS} fontWeight={800} fontSize={34}>OUTSIDE</text>
           <text x={1340} y={300} fill={INK} fontFamily={SANS} fontWeight={600} fontSize={24} textAnchor="middle">route unknown</text>
         </g>}
+        {/* Williams: only the places he named — his shop, then the engine control room. The path between is not drawn. */}
+        {[[S.x + 70, S.y + S.h - 30, inShop], [800, 395, inEcr]].map(([x, y, o], i) => (o as number) > 0 && (
+          <g key={i} opacity={o as number}>
+            <circle cx={x as number} cy={(y as number) - 58} r={15} fill={INK} />
+            <path d={`M${(x as number) - 20},${(y as number) - 4} Q${x as number},${(y as number) - 54} ${(x as number) + 20},${(y as number) - 4} Z`} fill={INK} />
+            <text x={(x as number) + 30} y={(y as number) - 30} fill={INK} fontFamily={SANS} fontWeight={800} fontSize={26} style={{ paintOrder: 'stroke', stroke: '#000', strokeWidth: 5 }}>WILLIAMS</text>
+          </g>))}
         <defs><marker id="ar" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill={ACC} /></marker></defs>
       </svg>
       {caption && <Headline t={t} at={capAt} bottom big={caption[0]} small={caption[1]} />}

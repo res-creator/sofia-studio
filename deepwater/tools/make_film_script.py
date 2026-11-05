@@ -11,7 +11,7 @@ V("b04","A hundred and twenty-six people from thirteen companies were aboard. BP
 V("b05","Halliburton had cemented the bottom of the well just after midnight. The plan now was to seal it temporarily, and move the rig on.",1.5),
 C("ch2",0.6,0.3),
 V("b06","Three things stood between the oil and gas in the rock and the rig above: the heavy drilling mud that filled the well, the cement at the bottom, and the blowout preventer.",0.2),
-V("b07","To leave, the crew would replace the mud in the riser and the top of the well with much lighter seawater. After that, the cement at the bottom would have to hold back the reservoir on its own."),
+V("b07","To leave, the crew would replace the mud in the riser and the top of the well with much lighter seawater. After that, the cement at the bottom would have to hold back the reservoir on its own.",2.0),
 V("b08",'That morning, BP had sent home a team that could have checked the cement. Its decision plan said the check was not needed. The commission later concluded that BP should have run it.',0.5),
 V("b09","There was a warning in the laboratory, too. Halliburton's own tests had shown the cement mix to be unstable.",0.7),
 C("ch3",0.6,0.3),

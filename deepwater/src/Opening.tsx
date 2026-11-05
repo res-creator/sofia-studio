@@ -51,7 +51,7 @@ sh(S('c02') - 0.2, (p) => <GulfMap {...p} />, 0.3);
 const T0 = S('c03') - 0.2;
 sh(T0, (p) => <TestCard t={p.t} killAt={W('c04', 'One') - T0} pipeAt={W('c04', 'drill') - T0} declAt={W('c05', 'declared') - T0} />, 0.3);
 sh(S('c06') - 0.2, (p) => (<><Doc {...p} src="comm-125.jpg" aspect={0.7} box={[0.1071, 0.1228, 0.8531, 0.1926]} zoomAt={0.4} zoom={2.2} /><Label t={p.t} at={0.3} text="National Commission on the BP Deepwater Horizon Oil Spill, report to the President (2011), p. 109 · the investigators’ conclusion" top /><Pull t={p.t} at={1.4} text="“…at 8 p.m., BP Well Site Leaders, in consultation with the crew, made a key error…”" /></>));
-sh(S('c07') - 0.2, (p) => (<><Film {...p} src="jit_wide1.mp4" /><Label t={p.t} at={0.3} text="Voice: Mike Williams · the hearing room, July 23, 2010" credit={USCG} /></>));
+sh(S('c07') - 0.2, (p) => (<><Photo {...p} src="w_still.jpg" s0={1.0} s1={1.12} fx={0.62} fy={0.45} /><Label t={p.t} at={0.3} text="Voice: Mike Williams · testimony, July 23, 2010" right top /><Label t={p.t} at={0.3} text="Williams (right) at the hearing · still from the hearing video" credit={USCG} /></>), 0.4);
 const F0 = S('c08') - 0.2;
 sh(F0, (p) => <Well t={p.t + 6} show={['rig', 'riser', 'bop', 'well', 'mud', 'seawater', 'flow', 'labels']} at={{ seawater: 0, flow: 6 + W('c08', 'mud') - F0 }} caption={['ABOUT 9:40 P.M.', 'Mud and gas surge up the riser and onto the rig floor. (The crew had replaced the mud in the riser with seawater after 8 p.m.)']} capAt={6 + W('c08', 'nine', 1) - F0} />, 0.3);
 sh(W('c08', 'exploded') - 0.6, (p) => (<><Film {...p} src="night_wide.mp4" from={10} /><Label t={p.t} at={0.4} text="The rig after the explosions, filmed by the Coast Guard after 11 p.m." credit={USCG} /></>), 0.3);
