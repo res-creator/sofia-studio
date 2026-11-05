@@ -55,7 +55,7 @@ Estimated length: **≈ 10:36** (2.45 words/s, 0.6 s between lines, 3 s chapter 
 | c2 | ④ whip → P2 1947 factory: the injection machine towers over OK (surprised). ⑤ A price-tag bar outgrows a "1946 profit" bar (two drawn bars, no axes). ⑥ The machine thuds, and the first bricks (K1 1949 brick) drop out, OK talk |
 | c3 | ⑦ P3 1954 desk: GO neutral; a toy buyer (S3) shrugs, speech bubble with toys that don't connect. ⑧ GO thinking → smile, sketches; the drawing turns into P5 TT-clean (bricks fall onto studs). ⑨ A new box of the same bricks joins the first one and the town grows (TT-grow): "1955" (type) |
 | c4 | ⑩ macro: two 1949 bricks slide apart (comic soap slide). ⑪ X-ray: tubes appear under a brick (K1 underside), **click**. ⑫ R contract prop as the patent paper, stamp "1958", GO smile |
-| c5 | ⑬ black → P4 night: the wooden-toy warehouse with fire glow, smoke and embers (code FX), OK sad (rare beat). ⑭ morning: P1 bench, only bricks left on it |
+| c5 | ⑬ black → P4 night: the wooden-toy warehouse with fire glow, smoke and embers (code FX), GO worried (Ole Kirk died in 1958, so he is NOT in this 1960 scene). ⑭ morning: P1 bench, only bricks left on it |
 | c6 | ⑮ P5 TT-clean: the same six piece types light up one after another, set after set ("REUSED" tick marks). ⑯ An empty shelf next to the town, "DO LESS". Slow push, "40 YEARS LATER…" type → black |
 
 ### CH 2 · Too Successful (2:11–3:09) · card "1978–1998"
@@ -126,7 +126,7 @@ Each main puppet costs 2 generations: one heads sheet with 6 heads and one body 
 
 | Puppet | Look | Heads (besides neutral + blink) | Gestures | Lines |
 |---|---|---|---|---|
-| **OK** Ole Kirk, 1930s–40s | After period photos: slim, middle-aged, short dark hair, moustache, waistcoat and rolled sleeves (workshop) | smile · talk · surprised · sad | palm L/R (shrug) · R holding a plane tool | c1, c2, c5 |
+| **OK** Ole Kirk, 1930s–40s | After his 1957 portrait, drawn younger: greying hair combed back with a side parting, thick tortoiseshell glasses, clean-shaven, round kind face; white shirt, brown knitted tie, herringbone tweed waistcoat (made: `art/characters/olekirk/`) | smile · talk · worried · surprised | palm L/R (shrug) · R holding up a brick | c1, c2 (and c4 reaction) — not c5: he died in 1958 |
 | **GO** Godtfred, 1950s | Young man, dark side-parted hair, 1950s suit and tie | smile · talk · thinking (hand-to-chin head tilt) · surprised | palm R · R pointing up (idea) · R holding a pencil | c3, c4 |
 | **KJ** "The Owner", 1990s–2004 | Generic Danish executive in his 50s, grey suit, open friendly face (no likeness) | smile · talk · worried · sad | palm L/R · R offering (open hand forward) · arms-crossed alternative arm | g1, g4, b1, y4, y5, o1, o3 |
 | **JK** "The Outsider", 2001–2008 | Generic young executive about 35, short hair, open-collar shirt and jacket, no tie (no likeness) | smile · talk · serious/determined · skeptical | palm R · R point · R holding a notebook | h3 (back), b4, o1, o2, o4, o7, m3 |
