@@ -10,6 +10,8 @@ const CH = `${__dirname}/../chapters/c3_bottles`, CU = JSON.parse(fs.readFileSyn
 for (const [id, t0] of CU.vo) { const a = JSON.parse(fs.readFileSync(`${CH}/vo/${id}.align.json`)), s = a.characters.join(''), re = /\S+/g; let m; WD[id] = [];
   while ((m = re.exec(s))) WD[id].push({ w: m[0].toLowerCase().replace(/[^a-z']/g, ''), t: t0 + a.character_start_times_seconds[m.index] - OFF }); }
 const at = (w) => WD.b2.find(x => x.w.startsWith(w)).t;
+// v2: parts from ../hybrid/parts (shoulder sockets rebuilt from the suit fabric, no visible joints)
+const PARTDIR = process.env.PUPPET_PARTS || `${__dirname}/../hybrid/parts`;
 const A = {}, PARTS = ['torso', 'arm_L_down', 'arm_R_down', 'arm_L_palm', 'arm_R_palm', 'arm_R_point', 'head_neutral', 'head_blink', 'head_smile', 'head_talk', 'head_surprised', 'head_skeptical'];
 // joints in each part's own pixels (measured on the keyed sheets)
 const J = { torso: { neck: [218, 34], sL: [38, 130], sR: [404, 130] }, head: [146, 404],
@@ -29,11 +31,11 @@ function pose(t) { // arm sprites + angles (radians, + = clockwise) + body lift
   const shrug = Math.sin(clamp((t - (tFine - 0.15)) / 0.9) * Math.PI);
   const point = t > tMessy - 0.5 && t < tSoda - 0.2, palms = t > tFine - 0.2;
   const L1 = palms ? ['arm_L_palm', -0.15 * shrug] : ['arm_L_down', 0.04 + Math.sin(t * 1.3) * 0.03];
-  const R1 = palms ? ['arm_R_palm', 0.15 * shrug] : point ? ['arm_R_point', -0.1 + Math.sin((t - tMessy) * 9) * 0.12 * (t < tMessy + 1.2 ? 1 : 0.2)] : ['arm_R_down', -0.04 - Math.sin(t * 1.1) * 0.03];
+  const R1 = palms ? ['arm_R_palm', 0.15 * shrug] : point ? ['arm_R_point', 0.12 + Math.sin((t - tMessy) * 9) * 0.12 * (t < tMessy + 1.2 ? 1 : 0.2)] : ['arm_R_down', -0.04 - Math.sin(t * 1.1) * 0.03];
   return { L1, R1, lift: shrug * 16, headTilt: (t > tImp - 0.1 && t < tSoda ? -0.07 : t > tSoda && t < tBut ? 0.06 : t > tFine ? 0.05 * shrug : 0) };
 }
 // ---------- drawing ----------
-function part(ctx, k, x, y, s, r, jx, jy) { const im = A[k]; ctx.save(); ctx.translate(x, y); ctx.rotate(r); ctx.scale(s, s); ctx.drawImage(im, -jx, -jy); ctx.restore(); }
+function part(ctx, k, x, y, s, r, jx, jy, flip) { const im = A[k]; ctx.save(); ctx.translate(x, y); ctx.rotate(r); ctx.scale(flip ? -s : s, s); ctx.drawImage(im, -jx, -jy); ctx.restore(); }
 let tilt = 0;
 function candler(ctx, t, x, y, s) { // (x, y) = neck point in world; s = scale
   const P = pose(t), breath = Math.sin(t * 2.2) * 0.012, sway = Math.sin(t * 0.9) * 0.012;
@@ -45,7 +47,8 @@ function candler(ctx, t, x, y, s) { // (x, y) = neck point in world; s = scale
   // arms on the shoulders (drawn over the sockets)
   const [kl, rl] = P.L1, [kr, rr] = P.R1;
   part(ctx, kl, tor.sL[0] - tor.neck[0], tor.sL[1] - tor.neck[1], 1, rl, ...J[kl]);
-  part(ctx, kr, tor.sR[0] - tor.neck[0], tor.sR[1] - tor.neck[1], 1, rr, ...J[kr]);
+  // the pointing arm is mirrored so the hand rises on the outer side of the body (not across the chest)
+  part(ctx, kr, tor.sR[0] - tor.neck[0], tor.sR[1] - tor.neck[1], 1, rr, ...J[kr], kr === 'arm_R_point');
   // head on the neck: tilt, a slight nod, expression swap
   const nod = Math.sin(t * 1.7) * 0.015 + (t > tImp && t < tImp + 0.5 ? -0.05 * Math.sin((t - tImp) / 0.5 * Math.PI) : 0);
   part(ctx, expr(t), 0, 6, 0.74, tilt + nod, ...J.head);
@@ -69,7 +72,7 @@ function frame(ctx, t) { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.fillStyle = '#1
 module.exports = { T, at };
 if (require.main === module) (async () => {
   const [mode, a1, a2] = process.argv.slice(2); if (mode === 'T') return console.log(T);
-  for (const p of PARTS) A[p] = await loadImage(`${__dirname}/parts/${p}.png`); A.bg = await loadImage(`${__dirname}/../figma_pilot/hi/02_office_empty.png`);
+  for (const p of PARTS) A[p] = await loadImage(`${PARTDIR}/${p}.png`); A.bg = await loadImage(`${__dirname}/../figma_pilot/hi/02_office_empty.png`);
   const cv = createCanvas(W, H), ctx = cv.getContext('2d');
   if (mode === 'still') { const ts = a1.split(',').map(Number), sh = createCanvas(960 * 2, 540 * Math.ceil(ts.length / 2)), sc = sh.getContext('2d');
     ts.forEach((t, i) => { tilt = 0; for (let k = 0; k < 20; k++) pose(t); frame(ctx, t); sc.drawImage(cv, (i % 2) * 960, Math.floor(i / 2) * 540, 960, 540); sc.fillStyle = '#E8322E'; sc.font = '26px sans-serif'; sc.fillText(t.toFixed(2), (i % 2) * 960 + 8, Math.floor(i / 2) * 540 + 30); });
