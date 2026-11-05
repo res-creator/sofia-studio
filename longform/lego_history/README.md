@@ -10,3 +10,12 @@
 | `estimate.py` | Figma generation budget (≈ 40; lean ≈ 30) |
 
 Production standard: `../LONGFORM_STYLE.md`, `../figmakit/`. Nothing generated, voiced or rendered yet.
+
+## Script v2 (for approval)
+| File | What |
+|---|---|
+| `script_v2.md` | English script v2 (45 lines, 1,376 words, ≈ 10:20–10:30) |
+| `script_v2_ru.md` | Russian translation, line by line |
+| `plan_v2.md` | chapter plan with timecodes + visual storytelling |
+| `changes_v2.md` | three hooks compared, key changes vs v1, fact check |
+| `critique_v2.md` | critical analysis with scores |
