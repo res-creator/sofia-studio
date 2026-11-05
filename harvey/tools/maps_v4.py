@@ -861,6 +861,32 @@ SHOTS = {'where': F_where, 'forecast': F_forecast, 'evac': F_evac, 'stall': F_la
          'dickinson': F_dickinson, 'res_intro': lambda t, W, H, S: F_reservoirs(t, W, H, S, 'all'),
          'res_pools': lambda t, W, H, S: F_reservoirs(t, W, H, S, 'pools'), 'res_release': lambda t, W, H, S: F_reservoirs(t, W, H, S, 'release'),
          'east': F_east, 'observed': F_observed, 'brazos': F_brazos, 'kiley': F_kiley, 'rita': F_rita}
+
+# ---- night map for the sound test: clock driven by narration keyframes (env NIGHT_KEYS = [[sec, "YYYY-mm-dd HH:MM"], ...], NIGHT_DUR)
+def F_night_scene(t, W, H, S):
+    keys = json.loads(os.environ['NIGHT_KEYS']); dur = float(os.environ['NIGHT_DUR']); sec = t * dur
+    ks = [(k[0], dt.datetime.strptime(k[1], '%Y-%m-%d %H:%M')) for k in keys]
+    if sec <= ks[0][0]: now = ks[0][1]
+    elif sec >= ks[-1][0]: now = ks[-1][1]
+    else:
+        for (a, ta), (b, tb) in zip(ks, ks[1:]):
+            if a <= sec <= b: now = ta + (tb - ta) * ((sec - a) / (b - a)); break
+    cam = Cam(-95.02, 29.83, 185, W, H); im, d = base(cam, S, roadset=('I- 10', 'I- 45', 'I- 610'))
+    A = asos(); t0 = dt.datetime(2017, 8, 26, 18); tots = {}
+    for st in NIGHT_ST:
+        s = A[st]; tots[st] = sum(v for (tm, v) in s['obs'] if t0 <= tm <= now and tm.minute >= 50)
+        p = cam.ll(s['lon'], s['lat']); r = (9 + tots[st] * 2.2) * S
+        dot(d, p, r, rain_col(tots[st] * 2.2) + (235,), ring=(255, 255, 255, 255))
+        text(d, (p[0] + r + 8 * S, p[1]), f'{st} {tots[st]:.1f}"', 15 * S, bold=True, anchor='lm')
+    label_at(d, cam, -95.369, 29.760, 'Downtown', S, sz=15, mcol=(255, 255, 255))
+    clock = now.replace(minute=(now.minute // 10) * 10).strftime('%a, Aug %d · %-I:%M %p').replace('AM', 'a.m.').replace('PM', 'p.m.')
+    headline(d, S, clock, 'Inches of rain since 6 p.m. at 5 airport gauges — points, not a flood map')
+    if now >= dt.datetime(2017, 8, 26, 21, 27):
+        d.rounded_rectangle([40 * S, 140 * S, 600 * S, 196 * S], 10 * S, fill=(170, 30, 40, 235))
+        text(d, (60 * S, 168 * S), '9:27 p.m. · FLASH FLOOD EMERGENCY', 16 * S, bold=True, anchor='lm', halo=False)
+    credit(d, cam, 'NWS ASOS via Iowa Environmental Mesonet · NWS Service Assessment', S); return im
+SHOTS['night_scene'] = F_night_scene
+
 if __name__ == '__main__':
     shot, dur, out = sys.argv[1], float(sys.argv[2]), sys.argv[3]
     W, H = (int(sys.argv[4]), int(sys.argv[5])) if len(sys.argv) > 5 else (1280, 720)
