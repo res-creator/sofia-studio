@@ -1,5 +1,5 @@
 HOW IT'S RUN — LONG-FORM #1 — How Coca-Cola Took Over the World in 10 Minutes
-Files: how_coca_cola_took_over_the_world.mp4 (1920x1080, 30 fps, 9:21, -14 LUFS) · how_coca_cola_took_over_the_world_thumbnail.png (1280x720) · how_coca_cola_took_over_the_world.srt (English subtitles — upload in YouTube Studio → Subtitles)
+Files: how_coca_cola_took_over_the_world.mp4 (1920x1080, 30 fps, 9:21, -14 LUFS) · how_coca_cola_took_over_the_world_thumbnail_v2.png (1280x720; v1 kept as _thumbnail.png) · how_coca_cola_took_over_the_world.srt (English subtitles — upload in YouTube Studio → Subtitles)
 NOTE: this build uses a temporary narrator voice (open-source Kokoro). For the channel voice Chris, see README.md (one command after the ElevenLabs quota is back).
 
 TITLE (main)
