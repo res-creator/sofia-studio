@@ -4,6 +4,7 @@ FILE
 final/dwh_full_film.mp4 (1920x1080, about 14:13) · captions final/dwh_full_film.srt
 THUMBNAIL
 final/thumbnail.jpg — "8 P.M. / DECLARED A SUCCESS" (recommended); alternative final/thumbnail_v2.jpg — "KILL LINE: NO FLOW / DRILL PIPE: 1,400 PSI / 'SUCCESS'". Photo: U.S. Coast Guard, April 21, 2010 (DVIDS 272214, public domain).
+Alternative for an A/B test: final/thumbnail_v3.jpg — night frame of the burning rig (USCG video DVIDS 315074, night of April 20–21) + "DRILL PIPE 1,400 PSI" + "SUCCESS". Stands out from competitors, which nearly all use the same daytime fire photos.
 
 TITLE (recommended with final/thumbnail.jpg)
 Why Deepwater Horizon Exploded Two Hours After a "Successful" Test
