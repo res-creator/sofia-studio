@@ -11,7 +11,12 @@ for (const [id, t0] of CU.vo) { const a = JSON.parse(fs.readFileSync(`${CH}/vo/$
   while ((m = re.exec(s))) WD[id].push({ w: m[0].toLowerCase().replace(/[^a-z']/g, ''), t: t0 + a.character_start_times_seconds[m.index] - OFF }); }
 const at = (w) => WD.b2.find(x => x.w.startsWith(w)).t;
 // v2: parts from ../hybrid/parts (shoulder sockets rebuilt from the suit fabric, no visible joints)
-const PARTDIR = process.env.PUPPET_PARTS || `${__dirname}/../hybrid/parts`;
+// v3 (default): new Figma body sheet art/candler_body2.png -> parts2/ (jacket with shoulders + sleeve stubs, arms without shoulder caps)
+const V3 = process.env.PUPPET_V !== '2';
+const PARTDIR = process.env.PUPPET_PARTS || (V3 ? `${__dirname}/parts2` : `${__dirname}/../hybrid/parts`);
+const J3 = { k: 0.84, torso: { neck: [327, 30], sL: [50, 296], sR: [592, 296] },
+  arm_L_down: [73, 14], arm_R_down: [67, 14], arm_L_palm: [401, 16], arm_R_palm: [65, 16], arm_R_point: [64, 157],
+  off: { arm_L_down: 0.12, arm_R_down: -0.12, arm_L_palm: 0.0, arm_R_palm: 0.0, arm_R_point: -0.05 } };
 const A = {}, PARTS = ['torso', 'arm_L_down', 'arm_R_down', 'arm_L_palm', 'arm_R_palm', 'arm_R_point', 'head_neutral', 'head_blink', 'head_smile', 'head_talk', 'head_surprised', 'head_skeptical'];
 // joints in each part's own pixels (measured on the keyed sheets)
 const J = { torso: { neck: [218, 34], sL: [38, 130], sR: [404, 130] }, head: [146, 404],
@@ -42,13 +47,20 @@ function candler(ctx, t, x, y, s) { // (x, y) = neck point in world; s = scale
   tilt += (P.headTilt + Math.sin(t * 1.4) * 0.02 - tilt) * 0.18;
   const ny = y - P.lift; const tor = J.torso;
   ctx.save(); ctx.translate(x, ny); ctx.rotate(sway); ctx.scale(s, s * (1 + breath));
+  const [kl, rl] = P.L1, [kr, rr] = P.R1;
+  if (V3) { // v3: jacket with real shoulders and sleeve stubs; arms are drawn BEHIND it, their tops tucked into the sleeve openings
+    const k = J3.k, tor3 = J3.torso; ctx.save(); ctx.scale(k, k);
+    part(ctx, kl, tor3.sL[0] - tor3.neck[0], tor3.sL[1] - tor3.neck[1], 1, J3.off[kl] + rl, ...J3[kl]);
+    part(ctx, kr, tor3.sR[0] - tor3.neck[0], tor3.sR[1] - tor3.neck[1], 1, J3.off[kr] + rr, ...J3[kr]);
+    ctx.drawImage(A.torso, -tor3.neck[0], -tor3.neck[1]); ctx.restore();
+  } else {
   // torso
   ctx.drawImage(A.torso, -tor.neck[0], -tor.neck[1]);
   // arms on the shoulders (drawn over the sockets)
-  const [kl, rl] = P.L1, [kr, rr] = P.R1;
   part(ctx, kl, tor.sL[0] - tor.neck[0], tor.sL[1] - tor.neck[1], 1, rl, ...J[kl]);
   // the pointing arm is mirrored so the hand rises on the outer side of the body (not across the chest)
   part(ctx, kr, tor.sR[0] - tor.neck[0], tor.sR[1] - tor.neck[1], 1, rr, ...J[kr], kr === 'arm_R_point');
+  }
   // head on the neck: tilt, a slight nod, expression swap
   const nod = Math.sin(t * 1.7) * 0.015 + (t > tImp && t < tImp + 0.5 ? -0.05 * Math.sin((t - tImp) / 0.5 * Math.PI) : 0);
   part(ctx, expr(t), 0, 6, 0.74, tilt + nod, ...J.head);
@@ -72,7 +84,7 @@ function frame(ctx, t) { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.fillStyle = '#1
 module.exports = { T, at };
 if (require.main === module) (async () => {
   const [mode, a1, a2] = process.argv.slice(2); if (mode === 'T') return console.log(T);
-  for (const p of PARTS) A[p] = await loadImage(`${PARTDIR}/${p}.png`); A.bg = await loadImage(`${__dirname}/../figma_pilot/hi/02_office_empty.png`);
+  for (const p of PARTS) A[p] = await loadImage(`${p.startsWith("head") ? __dirname + "/parts" : PARTDIR}/${p}.png`); A.bg = await loadImage(`${__dirname}/../figma_pilot/hi/02_office_empty.png`);
   const cv = createCanvas(W, H), ctx = cv.getContext('2d');
   if (mode === 'still') { const ts = a1.split(',').map(Number), sh = createCanvas(960 * 2, 540 * Math.ceil(ts.length / 2)), sc = sh.getContext('2d');
     ts.forEach((t, i) => { tilt = 0; for (let k = 0; k < 20; k++) pose(t); frame(ctx, t); sc.drawImage(cv, (i % 2) * 960, Math.floor(i / 2) * 540, 960, 540); sc.fillStyle = '#E8322E'; sc.font = '26px sans-serif'; sc.fillText(t.toFixed(2), (i % 2) * 960 + 8, Math.floor(i / 2) * 540 + 30); });
