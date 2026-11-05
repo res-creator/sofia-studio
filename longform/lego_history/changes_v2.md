@@ -62,3 +62,13 @@ Points checked again for v2:
 | After 2008 | ~24 %/yr for five years; 2014 movie ≈ $468m; passed Mattel H1 2014; 2019 KIRKBI-led Merlin deal | #41–#43 | a2 says "buy Merlin, the company that runs the Legoland parks" (Merlin also runs other attractions; v1's "buy the parks back" was too loose). |
 
 Still **not used** (unverified, see research #31–#32): "losing $1m a day", debt figures, a bank stopping loans, the exact "burning platform" quote.
+
+## 4. v2.1: owner's spot fixes (final for voicing)
+| # | Fix | Lines |
+|---|---|---|
+| 1 | The central idea now keeps three things apart: **physical compatibility** (never lost), **reuse across sets** (lost, then regained), **cost of production and storage**. Removed "pieces that fit almost nowhere". | c3, c6, b7, a3, a4; header |
+| 2 | Adult fans kept. | o7 |
+| 3 | 2019 Merlin purchase removed. | a2 |
+| 4 | Final rebuilt: a5 "through all of it… one thing never changed. A LEGO brick made today still clicks onto one made in 1958" (LEGO's own compatibility claim, #9) + a6 "The bricks never stopped fitting together. For a few years, the company did." | a5, a6 |
+| 5 | Hook → turns → ending checked as one story: h1 (used once) → c3/c6 (reuse) → b6–b7 (still fit, but used once and costly) → y3 (cost) → o4–o5 (fewer, reused) → a4–a6 (reuse regained, compatibility never lost). | — |
+Result: 46 lines, 1,427 words, 8,092 characters, ≈ 10:36.

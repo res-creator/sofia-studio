@@ -1,11 +1,11 @@
-# Figma AI generation budget — How LEGO Almost Destroyed Itself (see production_plan.md §3).
+# Figma AI generation budget — How LEGO Almost Destroyed Itself (see production_v2.md §7 (script v2.1)).
 # Re-used assets (already in assets/) cost 0. Add ~15 % for retries (bad alignment, unwanted text in the image).
 FILM = {
     'main characters (new)':      (4, 2),   # (count, generations each): 1 heads sheet + 1 body sheet
-    'secondary pose sheets':      (5, 1),   # 2 characters x 2 poses per sheet
-    'locations / camera set-ups': (17, 1),  # empty plates; 1 per distinct place or framing
+    'secondary pose sheets':      (4, 1),   # 2 characters x 2 poses per sheet
+    'locations / camera set-ups': (14, 1),  # empty plates; 1 per distinct place or framing
     'establishing wides':         (0, 1),   # wide shots of a place with crowds drawn in
-    'prop sheets':                (4, 1),   # 6 props per sheet
+    'prop sheets':                (6, 1),   # 6 props per sheet
     'thumbnail':                  (1, 1),
 }
 total = 0
