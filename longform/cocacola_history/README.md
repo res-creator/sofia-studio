@@ -3,7 +3,7 @@
 | File | What |
 |---|---|
 | `how_coca_cola_took_over_the_world.mp4` | the film |
-| `how_coca_cola_took_over_the_world_thumbnail.png` | YouTube thumbnail 1280x720 (`node thumb.js`) |
+| `how_coca_cola_took_over_the_world_thumbnail_v2.png` | YouTube thumbnail 1280x720, v2 after the critique (`node thumb_v2.js`); v1: `..._thumbnail.png` |
 | `how_coca_cola_took_over_the_world.srt` | English subtitles (upload to YouTube) |
 | `script.md` / `script_ru.md` | full English script / Russian translation |
 | `sources.md` | fact check + sources for every claim |
@@ -23,6 +23,14 @@ cd longform/cocacola_history && ELEVEN_API_KEYS=proxy python3 vo_chris.py && sh 
 ```
 Every scene, sound cue and subtitle is cued from word timings, so the whole film re-times itself to the new voice (render ≈ 1–2 h on 4 CPUs).
 Licence note: the ElevenLabs plan on the account is **Starter**, which includes a commercial licence for generated audio; Kokoro is Apache-2.0 (commercial use allowed).
+
+### Fish Audio voice (owner's choice, Nov 2026)
+Voice: **Ethan** (Fish Official, documentary narrator; alternative Adrian). The key is read ONLY from the environment variable `FISH_API_KEY`
+(cloud: environment settings → secrets). Commercial use of Fish Audio voices needs a paid Fish Audio plan.
+```
+cd longform/cocacola_history && <venv-with-faster-whisper>/bin/python vo_fish.py && sh build_all.sh
+```
+Fish returns audio without word timings; `vo_fish.py` force-aligns every line locally (faster-whisper) so the animation re-times itself.
 
 ## Rebuild
 `python3 script_lines.py` (lines) → voice → `sh build_all.sh` (all chapters → `assemble.py`: one music bed, −14 LUFS, merged SRT, `chapters.txt`).

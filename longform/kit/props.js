@@ -8,7 +8,7 @@ const COLA = '#3B1F12', COLA2 = '#5A2E18', GLASS = 'rgba(190,230,215,0.55)', GLA
 // bottle(ctx, x, y(bottom), s, o): o.kind 'straight' (1890s-1910s) | 'contour' (curvy, 1916+) | 'pepsi' | 'modern' (plastic); o.fill 0..1 liquid; o.label text; o.open; o.rot
 function bottle(ctx, x, y, s = 1, o = {}) {
   const k = o.kind || 'contour', H0 = 230, fill = o.fill ?? 1; ctx.save(); ctx.translate(x, y); ctx.rotate(o.rot || 0); ctx.scale(s, s);
-  const glass = k === 'pepsi' ? 'rgba(200,225,240,0.6)' : k === 'modern' ? 'rgba(150,80,60,0.25)' : GLASS;
+  const glass = o.glass || (k === 'pepsi' ? 'rgba(200,225,240,0.6)' : k === 'modern' ? 'rgba(150,80,60,0.25)' : GLASS);
   const shape = () => { ctx.beginPath();
     if (k === 'straight') { ctx.moveTo(-32, 0); ctx.lineTo(-32, -130); ctx.bezierCurveTo(-32, -165, -14, -170, -12, -190); ctx.lineTo(-12, -222); ctx.lineTo(12, -222); ctx.lineTo(12, -190); ctx.bezierCurveTo(14, -170, 32, -165, 32, -130); ctx.lineTo(32, 0); }
     else if (k === 'contour') { ctx.moveTo(-30, 0); ctx.bezierCurveTo(-36, -30, -24, -50, -27, -75); ctx.bezierCurveTo(-30, -100, -40, -120, -34, -140); ctx.bezierCurveTo(-26, -168, -12, -175, -11, -200); ctx.lineTo(-11, -224); ctx.lineTo(11, -224); ctx.lineTo(11, -200); ctx.bezierCurveTo(12, -175, 26, -168, 34, -140); ctx.bezierCurveTo(40, -120, 30, -100, 27, -75); ctx.bezierCurveTo(24, -50, 36, -30, 30, 0); }
