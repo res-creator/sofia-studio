@@ -1,0 +1,19 @@
+film/render_all.sh: 9: jobs: Illegal option -r
+film/render_all.sh: 9: jobs: Illegal option -r
+film/render_all.sh: 9: jobs: Illegal option -r
+film/render_all.sh: 9: jobs: Illegal option -r
+film/render_all.sh: 9: jobs: Illegal option -r
+film/render_all.sh: 9: jobs: Illegal option -r
+film/render_all.sh: 9: jobs: Illegal option -r
+film/render_all.sh: 9: jobs: Illegal option -r
+Traceback (most recent call last):
+  File "/home/user/sofia-studio/longform/lego_history/chapters/c5_outsider/mix.py", line 2, in <module>
+    import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../../kit')); import sfx; sfx.stems(__file__)
+                                                                                                                              ~~~~~~~~~^^^^^^^^^^
+  File "/home/user/sofia-studio/longform/lego_history/chapters/c5_outsider/../../../kit/sfx.py", line 165, in stems
+    x = SFX[name]() * g; s = int(t * SR)
+        ~~~~~~~~~^^
+  File "/home/user/sofia-studio/longform/lego_history/chapters/c5_outsider/../../../kit/sfx.py", line 143, in gavel
+    def gavel(): return norm(thump(120, 0.3) + 0.5 * clank(), 0.6)
+                             ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+ValueError: operands could not be broadcast together with shapes (13230,) (15434,) 
