@@ -39,6 +39,33 @@ function pose(t) { // arm sprites + angles (radians, + = clockwise) + body lift
   const R1 = palms ? ['arm_R_palm', 0.15 * shrug] : point ? ['arm_R_point', 0.12 + Math.sin((t - tMessy) * 9) * 0.12 * (t < tMessy + 1.2 ? 1 : 0.2)] : ['arm_R_down', -0.04 - Math.sin(t * 1.1) * 0.03];
   return { L1, R1, lift: shrug * 16, headTilt: (t > tImp - 0.1 && t < tSoda ? -0.07 : t > tSoda && t < tBut ? 0.06 : t > tFine ? 0.05 * shrug : 0) };
 }
+// ---------- v4 elbows: the straight arm is split at the elbow (upper + forearm, feathered seam); the forearm really bends up,
+// and only when the bend reaches the drawn gesture does the hand cross-fade into the drawn palm / pointing hand ----------
+const EL = { arm_L_down: [70, 172], arm_R_down: [64, 172] };                    // elbow points on the straight arms (parts2 px)
+const BEND = { L: { palm: 1.70 }, R: { palm: -1.90, point: -2.46 } };          // forearm angle of each drawn gesture
+const SPLIT = {};
+function splitArm(k) { if (SPLIT[k]) return SPLIT[k]; const im = A[k], w = im.width, h = im.height, ey = EL[k][1];
+  const mk = upper => { const c = createCanvas(w, h), x = c.getContext('2d'); x.drawImage(im, 0, 0); x.globalCompositeOperation = 'destination-in';
+    const g = x.createLinearGradient(0, ey - 16, 0, ey + 16); g.addColorStop(0, upper ? 'rgba(255,255,255,1)' : 'rgba(255,255,255,0)'); g.addColorStop(1, upper ? 'rgba(255,255,255,0)' : 'rgba(255,255,255,1)');
+    x.fillStyle = g; x.fillRect(0, 0, w, h); return c; };
+  const lo = createCanvas(w, h), lx = lo.getContext('2d'); lx.drawImage(im, 0, 0); lx.globalCompositeOperation = 'destination-in'; // forearm keeps the full elbow cap
+  const g = lx.createLinearGradient(0, ey - 30, 0, ey - 10); g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(1, 'rgba(255,255,255,1)'); lx.fillStyle = g; lx.fillRect(0, 0, w, h);
+  return (SPLIT[k] = { up: mk(true), lo }); }
+const ssm = u => { u = clamp(u); return u * u * (3 - 2 * u); };
+function gesture(side, t) { // -> { g: 'down'|'palm'|'point', b: 0..1 bend, f: 0..1 cross-fade to the drawn gesture, r: upper-arm swing }
+  const palm = ssm((t - (tFine - 0.4)) / 0.5);
+  if (side === 'R') { const pin = ssm((t - (tMessy - 0.65)) / 0.45), pout = ssm((t - (tSoda - 0.55)) / 0.4), pt = pin * (1 - pout);
+    if (palm > 0) return { g: 'palm', b: palm, f: ssm((palm - 0.75) / 0.25), r: -0.12 * palm };
+    return { g: 'point', b: pt, f: ssm((pt - 0.78) / 0.22), r: -0.08 * pt + (pt > 0.95 ? Math.sin((t - tMessy) * 9) * 0.06 * (t < tMessy + 1.2 ? 1 : 0.3) : 0) }; }
+  return { g: 'palm', b: palm, f: ssm((palm - 0.75) / 0.25), r: 0.12 * palm }; }
+function armV3(ctx, side, t, tor3) { const down = `arm_${side}_down`, G = gesture(side, t), sp = splitArm(down), J = J3[down], sk = side === 'L' ? tor3.sL : tor3.sR;
+  const idle = side === 'L' ? 0.03 * Math.sin(t * 1.3) : -0.03 * Math.sin(t * 1.1);
+  const r = J3.off[down] * (1 - G.b) + G.r + idle * (1 - G.b), th = (BEND[side][G.g] || 0) * ssm(G.b);
+  ctx.save(); ctx.translate(sk[0] - tor3.neck[0], sk[1] - tor3.neck[1]); ctx.rotate(r);
+  if (G.f < 1) { ctx.save(); ctx.globalAlpha *= 1 - G.f; ctx.drawImage(sp.up, -J[0], -J[1]);
+    ctx.translate(EL[down][0] - J[0], EL[down][1] - J[1]); ctx.rotate(th); ctx.drawImage(sp.lo, -EL[down][0], -EL[down][1]); ctx.restore(); }
+  if (G.f > 0) { const k = `arm_${side}_${G.g}`; ctx.save(); ctx.globalAlpha *= G.f; ctx.rotate(J3.off[k] || 0); ctx.drawImage(A[k], -J3[k][0], -J3[k][1]); ctx.restore(); }
+  ctx.restore(); }
 // ---------- drawing ----------
 function part(ctx, k, x, y, s, r, jx, jy, flip) { const im = A[k]; ctx.save(); ctx.translate(x, y); ctx.rotate(r); ctx.scale(flip ? -s : s, s); ctx.drawImage(im, -jx, -jy); ctx.restore(); }
 let tilt = 0;
@@ -50,8 +77,7 @@ function candler(ctx, t, x, y, s) { // (x, y) = neck point in world; s = scale
   const [kl, rl] = P.L1, [kr, rr] = P.R1;
   if (V3) { // v3: jacket with real shoulders and sleeve stubs; arms are drawn BEHIND it, their tops tucked into the sleeve openings
     const k = J3.k, tor3 = J3.torso; ctx.save(); ctx.scale(k, k);
-    part(ctx, kl, tor3.sL[0] - tor3.neck[0], tor3.sL[1] - tor3.neck[1], 1, J3.off[kl] + rl, ...J3[kl]);
-    part(ctx, kr, tor3.sR[0] - tor3.neck[0], tor3.sR[1] - tor3.neck[1], 1, J3.off[kr] + rr, ...J3[kr]);
+    for (const side of ['L', 'R']) armV3(ctx, side, t, tor3);
     ctx.drawImage(A.torso, -tor3.neck[0], -tor3.neck[1]); ctx.restore();
   } else {
   // torso
