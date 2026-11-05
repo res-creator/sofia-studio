@@ -3,30 +3,28 @@ KNOWN IN ADVANCE — upload kit (NOT published; for the owner's review)
 FILE
 final/dwh_full_film.mp4 (1920x1080, about 14:13) · captions final/dwh_full_film.srt
 THUMBNAIL
-final/thumbnail.jpg — "8 P.M. / DECLARED A SUCCESS" (recommended); alternative final/thumbnail_v2.jpg — "KILL LINE: NO FLOW / DRILL PIPE: 1,400 PSI / 'SUCCESS'". Photo: U.S. Coast Guard, April 21, 2010 (DVIDS 272214, public domain).
-Recommended (owner's concept, rebuilt on a real USCG photo, DVIDS 272211, April 21, 2010): final/thumbnail_v4.jpg — "SHOULD BE ZERO / 1,400 PSI / 'SUCCESS'" (pass criterion 0 psi: Commission p. 107).
-Alternative for an A/B test: final/thumbnail_v3.jpg — night frame of the burning rig (USCG video DVIDS 315074, night of April 20–21) + "DRILL PIPE 1,400 PSI" + "SUCCESS". Stands out from competitors, which nearly all use the same daytime fire photos.
+Main: final/thumbnail_v4.jpg — "SHOULD BE ZERO / 1,400 PSI / 'SUCCESS'" on a real USCG photo (DVIDS 272211, April 21, 2010). Pass criterion of the test: 0 psi (Commission report, p. 107).
+A/B test (YouTube Studio → Test & Compare): final/thumbnail_v3.jpg — night frame of the burning rig (USCG video DVIDS 315074) + "DRILL PIPE 1,400 PSI / 'SUCCESS'".
+Not recommended: thumbnail_v5.jpg (pressure gauge) — in the feed it blends with two competitors that already use gauges (ASPECT STORY, Safetyology).
+Why (competitor review, Nov 5): the videos growing this year use one short striking statement or number ("8 MONTHS OF HELL", "$145,000,000,000", "JUNK SHOT"); most others repeat the same daytime fire photo with the video's name. A direct competitor on the same angle exists: ASPECT STORY, "The Test That Should Have Stopped Deepwater Horizon" (86K views, gauge + "BLADDER EFFECT?"), so our title and thumbnail avoid its wording and its gauge.
 
-TITLE (recommended with final/thumbnail.jpg)
-Why Deepwater Horizon Exploded Two Hours After a "Successful" Test
+TITLE (recommended with thumbnail_v4)
+Deepwater Horizon: The Reading That Should Have Been Zero
 
-ALTERNATIVE TITLES
-- The Test They Called a Success: Deepwater Horizon
-- Deepwater Horizon: The Readings Said No. They Called It a Success
-- 1,400 PSI: How the Deepwater Horizon Well Was Judged Safe
-- Deepwater Horizon 2010: Why the Blowout Preventer Didn't Stop It
+ALTERNATIVE TITLES (for later title tests)
+- Deepwater Horizon: 1,400 PSI and a Test Called a "Success"
+- Why Deepwater Horizon Exploded Two Hours After a "Successful" Test
+- The Night Deepwater Horizon Was Declared Safe
 
 DESCRIPTION
-On April 20, 2010, the crew of the Deepwater Horizon tested whether the Macondo well was sealed. One line showed no flow. The drill pipe showed 1,400 psi. Around 8 p.m., the test was declared a success. Less than two hours later, the well blew out, the rig exploded, and eleven men were killed.
+Two hours before Deepwater Horizon exploded, the crew ran a test to prove the Macondo well was sealed. If it was, the drill pipe should have read zero. It read 1,400 psi. The test was declared a success.
 
-Why was the well judged safe? And why didn't the blowout preventer on the seafloor stop it?
+What went wrong that evening, why the well was judged safe, and why the blowout preventer on the seafloor failed to stop the blowout, told through U.S. Coast Guard archive footage, the official investigation reports, and the testimony of survivor Mike Williams, the rig's chief electronics technician.
 
-This documentary follows the evening in order: the rig and the well, the three barriers, the negative pressure test, the missed signs, the blowout, the escape and rescue, why the blowout preventer did not stop the flow, and what followed. It is told through Coast Guard archive footage, official investigation reports, and the testimony of Mike Williams, the rig's chief electronics technician, at the joint investigation hearing in July 2010.
+What was known before: the well had been difficult, Halliburton's own lab tests had shown the cement mix unstable, the cement had not been independently evaluated, and the test readings did not agree.
+What investigators concluded later: the pressure data were not ambiguous, the warning signs were missed, and there was no single cause.
 
-What was known: the well had been difficult, Halliburton's own lab tests had shown the cement mix unstable, the cement had not been independently evaluated, and the test readings did not agree.
-What investigators concluded later: the pressure data were not ambiguous, and the warning signs were missed.
-
-In memory of Jason Anderson, Aaron Dale Burkeen, Donald Clark, Stephen Curtis, Gordon Jones, Roy Wyatt Kemp, Karl Dale Kleppinger Jr., Blair Manuel, Dewey Revette, Shane Roshto and Adam Weise.
+In memory of the eleven men who were killed on April 20, 2010: Jason Anderson, Aaron Dale Burkeen, Donald Clark, Stephen Curtis, Gordon Jones, Roy Wyatt Kemp, Karl Dale Kleppinger Jr., Blair Manuel, Dewey Revette, Shane Roshto and Adam Weise.
 
 CHAPTERS
 0:00 April 20, 2010
@@ -56,12 +54,13 @@ ARCHIVE AND CREDITS (public domain)
 - Music (Mixkit Stock Music Free License): "Silent Descent", "Opalescent", "Vertigo" by Eugenio Mininni
 - Narration: AI voice (ElevenLabs). Schematics are simplified reconstructions, labelled on screen.
 
-#deepwaterhorizon #documentary #oilspill #engineering #history #knowninadvance
+#deepwaterhorizon #documentary #engineeringdisaster #oilspill #knowninadvance
 
 TAGS
-deepwater horizon, deepwater horizon documentary, macondo well, bp oil spill, gulf of mexico oil spill, negative pressure test, blowout preventer, 2010 oil spill, transocean, offshore drilling disaster, mike williams deepwater horizon, engineering disaster, industrial disaster documentary
+deepwater horizon, deepwater horizon documentary, deepwater horizon explained, what went wrong deepwater horizon, negative pressure test deepwater horizon, bladder effect, 1400 psi, macondo well, bp oil spill, gulf of mexico oil spill, negative pressure test, blowout preventer, 2010 oil spill, transocean, offshore drilling disaster, mike williams deepwater horizon, engineering disaster, industrial disaster documentary
 
 SETTINGS CHECKLIST
+- Pinned comment (post right after publishing): "The drill pipe should have read zero. It read 1,400 psi. If you had been on the rig floor that evening, what would you have asked? Sources for every fact are listed in the description."
 - Schedule: Thursday or Saturday, 2–3 p.m. US Eastern (10–11 p.m. Moscow). Category: Education. Audience: not made for kids.
 - Language: English. Upload final/dwh_full_film.srt as English captions.
 - Altered or synthetic content: the narration is an AI voice; follow YouTube's current disclosure rules. Reconstructions are labelled on screen.
