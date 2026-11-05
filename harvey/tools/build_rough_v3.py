@@ -15,7 +15,6 @@ FONT = '/usr/share/fonts/opentype/inter/Inter-Medium.otf'; FONTB = '/usr/share/f
 BG = '0x101214'
 for d in ('vo', 'seg', 'maps'): os.makedirs(f'{TMP}/{d}', exist_ok=True)
 os.makedirs(OUT, exist_ok=True)
-sp = importlib.util.spec_from_file_location('maps_v3', ROOT + '/tools/maps_v3.py'); MAPS = importlib.util.module_from_spec(sp); sp.loader.exec_module(MAPS)
 
 def dv(i): return f'{RAW}/dvids/dvids_{i}.mp4'
 GOES = f'{RAW}/other/noaa_star_goes16_harvey_geocolor.mp4'
@@ -78,7 +77,7 @@ def shot(sh, d, lbl, out, item):
     elif k == 'black': run(['ffmpeg', '-v', 'error', '-y', '-f', 'lavfi', '-i', f'color=c=black:s={W}x{H}:r={FPS}:d={d}'] + ENC + [out])
     elif k == 'map':
         m = f"{TMP}/maps/{sh[1]}_{d:.2f}.mp4"
-        if not os.path.exists(m): MAPS.render(sh[1], d, m, W, H)
+        if not os.path.exists(m): run(['python3', ROOT + '/tools/maps_v3.py', sh[1], f'{d:.3f}', m, str(W), str(H)])
         vf = 'null' + label_vf(lbl) if lbl and not lbl.startswith('—') and sh[1] in () else 'null'
         run(['ffmpeg', '-v', 'error', '-y', '-i', m, '-vf', vf, '-t', f'{d:.3f}'] + ENC + [out])
     elif k == 'sync':
