@@ -10,10 +10,10 @@ def fmt(t): return f'{int(t // 60)}:{t % 60:04.1f}'
 _, shots, total = build()
 used, where = [], {}
 for sh in shots:
-    k = sh.get('m')
-    if not k: continue
-    if k not in used: used.append(k)
-    where.setdefault(k, []).append(fmt(sh['start']))
+    ks = ([sh['m']] if sh.get('m') else []) + [p['m'] for p in sh.get('split', [])] + ([sh['card']['m']] if sh.get('card') else [])
+    for k in ks:
+        if k not in used: used.append(k)
+        where.setdefault(k, []).append(fmt(sh['start']))
 
 L = ['# Источники пилота «Норвегия» v2', '',
      'Все кадры — с лицензиями, разрешающими коммерческое использование. Для CC BY и CC BY-SA обязательна подпись автора',

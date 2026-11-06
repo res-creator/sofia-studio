@@ -3,7 +3,7 @@
 import math, os, re, sys, subprocess
 from PIL import Image, ImageDraw, ImageFilter
 D = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, D); sys.path.insert(0, os.path.join(D, '..', 'lib'))
-import geo, media, look
+import geo, media, look, fx
 import numpy as np
 from timeline import build, FPS
 from maps import big_text, YEL
@@ -115,8 +115,23 @@ def overlay(img, sh, t, tg):
         q = Image.new('RGBA', (400, 400), (0, 0, 0, 0))
         geo.text_outlined(q, (200, 200), '?', sz, fill=look.ACCENT, sw=0, name='Caveat.ttf', weight=700)
         img.alpha_composite(q.rotate(a, resample=Image.BICUBIC), (int(W * 0.72), int(H * 0.18)))
+    # монтажные приёмы поверх кадра
+    if sh.get('circle'): fx.circle(img, t, dur, **sh['circle'])
+    if sh.get('locator'): fx.locator(img, t, dur, *sh['locator'])
+    if sh.get('badge'):
+        bt = sh['badge']; fx.badge(img, t, dur, bt[0], bt[1] if len(bt) > 1 else 'clock', bt[2] if len(bt) > 2 else (0.5, 0.82))
+    if sh.get('card'):
+        c = sh['card']
+        if '_pic' not in c: c['_pic'] = still(c['m'], c.get('ss', 0))
+        fx.card(img, t, dur, c['_pic'], c.get('caption'), c.get('side', 'r'), c.get('tilt', -4.0), c.get('polaroid', True), c.get('width', 560), c.get('y'))
     if sh.get('title'):   # заголовок поверх нарезки вступления
         look.title_card(img, 'НОРВЕГИЯ', tg, t0=TITLE_T0, size=160)
+
+def still(key, ss=0):
+    p = media.path(key, MEDIA[key])
+    if is_photo(p): return Image.open(p).convert('RGB')
+    raw = subprocess.run(['ffmpeg', '-v', 'error', '-ss', str(ss), '-i', p, '-frames:v', '1', '-vf', 'scale=1280:720', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-'], capture_output=True).stdout
+    return Image.frombytes('RGB', (1280, 720), raw)
 
 def source(sh):
     if 'm' in sh: return media.path(sh['m'], MEDIA[sh['m']]), sh.get('ss', 0)
@@ -130,10 +145,21 @@ def video(out_v):
                           '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', out_v], stdin=subprocess.PIPE)
     def frames_of(sh, pre):
         # pre кадров уходят на переход: план генерируется длиннее, чтобы общий хронометраж (и синхрон с голосом) не менялся
-        src, ss = source(sh)
         d = sh['dur'] + pre / FPS
-        gen = frames_photo(src, d, sh) if is_photo(src) else frames_video(src, max(0.0, ss - pre / FPS), d, sh)
-        need = any(sh.get(k) for k in ('txt', 'q', 'loc', 'title'))
+        if sh.get('split'):     # экран на части: каждая панель — свой исходник
+            subs = []
+            for pn in sh['split']:
+                sp = media.path(pn['m'], MEDIA[pn['m']])
+                subs.append(frames_photo(sp, d, pn) if is_photo(sp) else frames_video(sp, pn.get('ss', 0), d, pn))
+            def gen_split():
+                for i in range(round(d * FPS)):
+                    frs = [np.frombuffer(next(g), np.uint8).reshape(H, W, 3) for g in subs]
+                    yield fx.split(frs, max(0.0, (i - pre) / FPS), sh.get('labels')).convert('RGB').tobytes()
+            gen = gen_split()
+        else:
+            src, ss = source(sh)
+            gen = frames_photo(src, d, sh) if is_photo(src) else frames_video(src, max(0.0, ss - pre / FPS), d, sh)
+        need = any(sh.get(k) for k in ('txt', 'q', 'loc', 'title', 'circle', 'locator', 'badge', 'card'))
         for i, fr in enumerate(gen):
             a = np.frombuffer(fr, np.uint8).reshape(H, W, 3)
             if need:
@@ -143,6 +169,7 @@ def video(out_v):
     held = []                          # последние кадры предыдущего плана, ждущие перехода
     LIMIT = float(os.environ.get('LIMIT', '1e9'))
     shots = [x for x in shots if x['start'] < LIMIT]
+    if os.environ.get('KEYS'): shots = [x for x in shots if x['key'] in os.environ['KEYS'].split(',')]
     for n, sh in enumerate(shots):
         nxt = shots[n + 1] if n + 1 < len(shots) else None
         hold = TR_N.get(nxt.get('tr'), 0) if nxt else 0
