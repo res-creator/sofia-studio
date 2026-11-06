@@ -2,6 +2,8 @@
 
 > **English TikTok channel (money/business stories):** read `CHANNEL.md` first — it has the rules, pipeline, voice and checklist for those episodes. The notes below are for the Sofia kids' channel.
 
+> **Russian geography channel (style of GOLOVOLOM TV, long-form 16:9):** read `ru_geo/STYLE.md` — reference analysis, style rules and the pipeline (`ru_geo/norway_pilot/` = working example; big data via `sh ru_geo/fetch_data.sh`).
+
 Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). This file adds what happened after Episode 1.
 
 ## Hard rules (from the channel owner)
