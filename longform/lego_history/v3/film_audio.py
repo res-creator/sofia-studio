@@ -31,7 +31,7 @@ t = json.loads(subprocess.run(['node', f'{D}/opening2.js', 'times'], capture_out
 src = open(f'{D}/audio2.py').read(); blk = src[src.index('# --- SFX on picture events ---'): src.index('# --- score')]
 blk = blk.replace("F('thump', t['box'] + 0.3, 0.5); F('slidedown', t['box'] + 0.4, 0.4)", "F('thump', t['h4'] + 0.2, 0.5); F('slidedown', t['h4'] + 0.3, 0.4)")
 blk = blk.replace("t['name'] + 0.15 if i < 3", "t['name'] - 0.2 if i < 3")
-exec(blk)
+O1 = OFF[1]; exec(blk)
 # --- segment SFX ---
 for name, o in SEGS[1:]:
     for n, tt, g in json.load(open(f'{D}/{name}.sfx.json'))['sfx']: F(n, o + tt, g)

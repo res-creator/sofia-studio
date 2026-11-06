@@ -2,7 +2,7 @@
 
 **Файл:** `v3/how_lego_almost_destroyed_itself_v3.mp4`
 - Формат: 1920×1080, 30 fps, длина ≈ 10:04.
-- Звук: −14 LUFS, пик −1,5 dBTP.
+- Звук: −14 LUFS, пик −1,8 dBTP.
 - Голос временный (Fish Audio, «Conversational Narrator»). Кредиты ElevenLabs не тратились.
 
 ## Что сделано
