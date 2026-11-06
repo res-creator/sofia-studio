@@ -5,12 +5,14 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from script import PARAS
 VOICE = '48ec28a45588422b977a86460c11977f'   # «Энергичный Рассказчик» (Fish Audio, публичная модель; голос №1, выбран владелицей)
 MODEL = 's2.1-pro-free'
+SPEED = 0.8   # владелица: «слишком быстро» — замедляем (1.0 ≈ 185 слов/мин, 0.8 ≈ 150)
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'vo'); os.makedirs(OUT, exist_ok=True)
 only = sys.argv[1:]
 for name, raw in PARAS:
     if only and name not in only: continue
     text = re.sub(r'\[\[\w+\]\]', '', raw).strip()
-    body = json.dumps({"text": text, "reference_id": VOICE, "format": "mp3", "mp3_bitrate": 192, "normalize": True})
+    body = json.dumps({"text": text, "reference_id": VOICE, "format": "mp3", "mp3_bitrate": 192, "normalize": True,
+                       "prosody": {"speed": SPEED}})
     r = subprocess.run(['curl', '-sS', '-m', '300', '-X', 'POST', 'https://api.fish.audio/v1/tts',
                         '-H', 'Authorization: Bearer ' + os.environ.get('FISH_API_KEY', 'proxy'), '-H', 'model: ' + MODEL,
                         '-H', 'Content-Type: application/json', '--data-binary', '@-', '-o', f'{OUT}/{name}.mp3', '-w', '%{http_code}'],
