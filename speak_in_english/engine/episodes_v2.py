@@ -2681,3 +2681,46 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "taxi" — RUBRIC «A1 vs C2», compact form (as halves). heroine = Jessica, cabbie = George, narrator Sarah, tip Bella
+CAST.update({
+    "cabbie": dict(voice="bm_george", speed=1.0, lang="en-gb", el="JBFqnCBsd6RMkjVDRZzb"),   # taxi: London cabbie (George)
+})
+EP["taxi"] = dict(
+    title='Таксист возит кругами', rubric='levels_compact',
+    hook_title=[['ТАКСИ:', 'd'], ['£45 ЗА 10 МИНУТ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut", card_fade=True,
+    chunks={'c2_h': [["I've photographed the meter and your licence number.", 'Я сфотографировала счётчик и номер твоей лицензии.'], ['Shall we discuss the fare —', 'Обсудим цену —'], ['or shall I discuss it with your company?', 'или мне обсудить её с твоей компанией?']]},
+    lines=[
+        ('hook_d', 'cabbie', '[cheerfully] Here we are, love. Forty-five quid.', 'Приехали, дорогуша. Сорок пять фунтов.'),
+        ('hook', 'nar', 'Таксист возил тебя кругами, а отель — в двухстах метрах. Проверим!', ''),
+        ('a1_h', 'her', '[angrily] No! Hotel there! Close!', 'Нет! Отель там! Близко!'),
+        ('a1_d', 'cabbie', "[smugly] Close? Then it's walking distance... from here.", 'Близко? Значит, отсюда дойдёшь пешком.'),
+        ('a1_nar', 'nar', 'Три слова — и ты всё равно платишь.', ''),
+        ('a2_h', 'her', '[indignant] Why you drive so long way?', 'Почему ты ехать такой длинный дорога?'),
+        ('a2_d', 'cabbie', '[proudly] Scenic route, love. Big Ben — twice.', 'Живописный маршрут. Биг-Бен — дважды.'),
+        ('a2_nar', 'nar', 'Не «why you drive», а «why did you take». Правильно так:', ''),
+        ('a2_tip', 'tip', 'Why did you take the long way?', ''),
+        ('b1_h', 'her', "[politely] I'd like a receipt, please.", 'Мне нужен чек, пожалуйста.'),
+        ('b1_d', 'cabbie', "[cheerfully] Sure! That's two quid for the paper.", 'Конечно! Два фунта за бумагу.'),
+        ('b1_nar', 'nar', 'Вежливо. Но счётчик всё ещё крутится.', ''),
+        ('b2_h', 'her', '[suspicious] Are you taking me for a ride?', 'Ты меня разводишь?'),
+        ('b2_d', 'cabbie', "[happily] Yes, love. That's the job.", 'Да, дорогуша. Это моя работа.'),
+        ('b2_nar', 'nar', 'Take someone for a ride — обмануть. А он понял: прокатить. Запоминай:', ''),
+        ('b2_tip', 'tip', 'Are you taking me for a ride?', ''),
+        ('c1_h', 'her', "[calmly] The app says it's a ten-pound journey. Could we settle on that?", 'Приложение говорит, поездка стоит десять фунтов. Договоримся на этом?'),
+        ('c1_d', 'cabbie', '[sheepishly] ...Fair enough.', '…Справедливо.'),
+        ('c1_nar', 'nar', 'Приём: не спорь, а покажи цифру. Запоминай:', ''),
+        ('c1_tip', 'tip', 'Could we settle on that?', ''),
+        ('c2_h', 'her', "[coolly] I've photographed the meter and your licence number. Shall we discuss the fare — or shall I discuss it with your company?", 'Я сфотографировала счётчик и номер твоей лицензии. Обсудим цену — или мне обсудить её с твоей компанией?'),
+        ('c2_d', 'cabbie', "[nervously] ...It's free. Welcome to London!", '…Бесплатно. Добро пожаловать в Лондон!'),
+        ('c2_nar', 'nar', 'Мораль: спокойные факты сильнее крика.', ''),
+        ('outro', 'nar', 'Тебя обманывал таксист? Пиши: да или нет — и сохрани!', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'СЧЁТЧИК', 'ok': False, 'note': 'всё равно платишь'},
+           'A2': {'type': 'swap', 'bad': 'Why you drive so long way?', 'bad_note': 'в прошлом: why did you', 'good': ['Why did you take', 'the long way?']},
+           'B1': {'type': 'eq', 'en': "I'd like a receipt, please.", 'ru': '= Мне нужен чек, пожалуйста.', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'take someone for a ride', 'ru': 'обмануть, развести', 'ex': ['Are you taking me for a ride?', 'ты меня разводишь?'], 'icon': 'bell'},
+           'C1': {'type': 'eq', 'en': 'Could we settle on that?', 'ru': '= Договоримся на этом?', 'ex': [["The app says it's ten pounds.", '= приложение говорит: десять фунтов.']]},
+           'C2': {'type': 'c2', 'vocab': [['fare', '= цена поездки'], ['licence number', '= номер лицензии']], 'moral': ['СПОКОЙНЫЕ', 'ФАКТЫ', 'СИЛЬНЕЕ КРИКА'], 'moral_at': 0.35}},
+)
