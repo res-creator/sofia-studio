@@ -262,7 +262,8 @@ function shotHard(t) { const sc = sceneAt(t), L = sc.id, f = s => ({ ...s, force
     if (t < SP.c2_d.t - 0.1) return f(SH.METER);
     if (t < endOf('c2_d') + 0.25) return f(SH.CAB_CU);
     return f(SH.TWO); }
-  const cur = TL.speech.find(s => s.id.startsWith(l + '_') && s.who !== 'nar' && s.who !== 'tip' && t >= s.t - 0.1 && t < s.t + s.d + 0.25);
+  // the latest line that has started wins: the cut to the next speaker comes 0.1 s before his line, never after (no off-screen bubble over the current shot)
+  const cur = TL.speech.filter(s => s.id.startsWith(l + '_') && s.who !== 'nar' && s.who !== 'tip' && t >= s.t - 0.1 && t < s.t + s.d + 0.25).pop();
   const single = who => who === 'her' ? SH.HER : SH.CAB;
   if (cur) return f(single(cur.who));
   const next = TL.speech.find(s => s.id.startsWith(l + '_') && s.who !== 'nar' && s.who !== 'tip' && t >= s.t - 0.6 && t < s.t);
