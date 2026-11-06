@@ -21,11 +21,12 @@ def word_times(lid):
         out.append([word, a, b])
     return out
 
-cue("impact", 0.05, 0.9); cue("whoosh", 0.0, 0.5)
+if EPN != "deposit": cue("impact", 0.05, 0.9); cue("whoosh", 0.0, 0.5)
 if EPN == "airport": cue("chime", 0.1, 0.55)
 if EPN == "wrongchat":  # phone hook: SEND -> SENT TO: MR GRANT -> READ -> her eyes -> his head turns
     cue("send", 0.3, 0.8); cue("pop", 0.45, 0.7); cue("msg", 0.95, 0.8); cue("whoosh", 1.3, 0.45); cue("gasp", 1.9, 0.7)
-for k in range(1, 4): cue("pop", 0.2 + 0.35 * k, 0.6)
+for k in range(1, 4):
+    if EPN != "deposit": cue("pop", 0.2 + 0.35 * k, 0.6)   # deposit: the title is on screen from frame 0 (no pop-in)
 h0 = 0.35
 if EPN == "checkout":  # conflict first: UNEXPECTED ITEM! on the screen + error buzz, her line, then the short narrator line
     cue("err", 0.05, 0.8); h0 = say("hook_her", 0.6) + 0.25
@@ -98,14 +99,20 @@ if EPN == "photo":  # cover = her posing by the fountain, friend with phone; ONE
     hev = dict(cut=round(h0 - 0.05, 3)); cue("impact", h0 - 0.05, 0.7)
     for k in range(8): cue("shutter", h0 + 0.05 + 0.1 * k, 0.5)
     h0 = say("hook_h2", h0 + 1.1); hev["count"] = round(hev["cut"] + 0.1, 3); h0 += 0.5
+if EPN == "deposit":  # second 0 = action: the landlord already peers at the wall scratch through a huge magnifying glass, "About your deposit..." at 0.15 s
+    cue("squeak", 0.05, 0.25); h0 = say("hook_l", 0.15) + 0.22
+    hev = dict(stun=round(h0 - 0.25, 3)); cue("gasp", h0 - 0.2, 0.55)
 e = say("hook", h0); hw = word_times("hook") or []
 def find(word):
     for w, a, b in hw:
         if w.lower().strip("«»!?.,").startswith(word.lower()): return h0 + a
     return None
 stamp_t = find(E["stamp_word"]) or (e - 1.0); cue("stamp", stamp_t, 0.8)
-t = e + 0.45
-scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "newhair", "idea") else {})))
+if EPN == "deposit":   # LENS close-up on "лупой", the DEPOSIT envelope close-up on "депозит", back to the two-shot for the stamp
+    hev["lens"] = round((find("лупой") or h0 + 1.1) - 0.08, 3); hev["dep"] = round((find("депозит") or h0 + 2.3) - 0.05, 3); hev["back"] = round(stamp_t - 0.15, 3)
+    cue("whoosh", hev["lens"], 0.3); cue("pop", hev["dep"] + 0.05, 0.45)
+t = e + (0.22 if EPN == "deposit" else 0.45)
+scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "newhair", "idea", "deposit") else {})))
 
 TICKS = lambda back: [("tick", -back + 0.15 + 0.6 * k, 0.6) for k in range(int(back / 0.6))]
 if EPN == "gym":
@@ -781,6 +788,16 @@ elif EPN == "gift":
         C2=[("c2_her", 1.3, [("MONTH", -1.3, 0), ("chime", -1.25, 0.7)]), ("c2_x", 2.7, [("OPEN", -2.4, 0), ("pop", -2.4, 0.6), ("scratch", -1.7, 0.6)] + TICKS(1.6)), ("c2_her2", 0.6, [("WINK", ("e", 0.05), 0), ("rimshot", ("e", 0.15), 0.9)]), ("c2_nar", 1.2, [])],
     )
     INTRO = 1.15
+elif EPN == "deposit":   # empty rented flat on move-out day: her left (moving boxes), the landlord right (huge magnifying glass + her DEPOSIT envelope), the "tiny scratch" on the wall. Compact: INTRO 0.6, tight gaps
+    LV = dict(
+        A1=[("a1_h", 0, []), ("a1_l", 0.12, [("PALM", 0.0, 0), ("SCR", ("e", -1.5), 0), ("pop", ("e", -1.45), 0.35), ("DEP", ("e", 0.05), 0), ("register", ("e", 0.3), 0.5)]), ("a1_nar", 0.9, [])],
+        A2=[("a2_h", 0, []), ("a2_l", 0.12, [("LENS", -0.1, 0), ("boing", 0.05, 0.4)]), ("a2_nar", 0.45, []), ("a2_tip", 0.35, [("ding", 0.05, 0.6)])],
+        B1=[("b1_h", 0, []), ("b1_l", 0.12, [("HAIR", ("e", -1.3), 0), ("snip", ("e", -1.25), 0.45), ("DEP", ("e", 0.05), 0), ("register", ("e", 0.3), 0.5)]), ("b1_nar", 0.9, [])],
+        B2=[("b2_h", 0, []), ("b2_l", 0.12, [("PROUD", 0.0, 0), ("sparkle", 0.45, 0.6)]), ("b2_nar", 0.3, []), ("b2_tip", 0.35, [("ding", 0.05, 0.6)])],
+        C1=[("c1_h", 0, [("PHONE", ("e", -2.0), 0), ("pop", ("e", -1.95), 0.5), ("CIRCLE", ("e", -0.9), 0), ("pop", ("e", -0.85), 0.35)]), ("c1_l", 0.45, [("deflate", 0.05, 0.4)]), ("c1_nar", 0.3, []), ("c1_tip", 0.35, [("ding", 0.05, 0.6)])],
+        C2=[("c2_h", 0, []), ("c2_l", 1.05, [("gulp", -0.85, 0.7), ("CASH", -0.35, 0), ("whoosh", -0.35, 0.4), ("register", -0.2, 0.6)]), ("c2_nar", 0.45, [("impact_soft", 0.0, 0.5)])],
+    )
+    INTRO = 0.6
 else:
     LV = dict(
         A1=[("a1_x", 0, []), ("a1_her", 0.3, []), ("a1_nar", 0.6, [("pop", 0.15, 0.5)])],
@@ -811,14 +828,14 @@ for L in ["A1", "A2", "B1", "B2", "C1", "C2"]:
             if n == "thud" and lid == "c2_x3": ev["plop"] = round(tt, 3)
             if n == "gulp" or n == "nope": ev["ins"] = round(c - 1.6, 3)
         ev[lid] = c; c = say(lid, c); prev_end = c
-    t = c + (0.42 if EPN == "mic" else 0.55)
+    t = c + (0.42 if EPN == "mic" else 0.2 if EPN == "deposit" else 0.55)
     if EPN == "lift": cue("doors", t - 0.45, 0.5)
     scenes.append(dict(id=L, s=round(s, 3), e=round(t, 3), ev={k: (round(v, 3) if not isinstance(v, list) else v) for k, v in ev.items()}))
 s = t
 cue("whoosh", s, 0.8); cue("impact", s + 0.3, 0.8)
-e = say("outro", s + 0.8)
+e = say("outro", s + (0.3 if EPN == "deposit" else 0.8))
 for k in range(6): cue("pop", s + 1.1 + 0.15 * k, 0.5)
-t = e + 1.3
+t = e + (1.45 if EPN == "deposit" else 1.3)   # deposit: the outro line is short (3.4 s); the tail lets the cursor click ПОДПИСАТЬСЯ (K.outro: +3.65 s .. +5.05 s)
 scenes.append(dict(id="outro", s=round(s, 3), e=round(t, 3)))
 
 for sp in speech:
@@ -839,7 +856,7 @@ for sp in speech:
             t0 = cc / tot * sp["d"]; cc += a; wt.append([w, round(t0, 3), round(cc / tot * sp["d"], 3)]); cc += p_
     sp["words"] = wt
 cfg = {k: E.get(k) for k in ["title", "hook_title", "stamp", "next", "cards"]}
-for k in ["camera", "chunks"]:   # new episodes only: camera mode ("hard_cut") and long lines split into meaning chunks
+for k in ["camera", "chunks", "card_fade"]:   # new episodes only: camera mode ("hard_cut") and long lines split into meaning chunks
     if E.get(k): cfg[k] = E[k]
 cfg["setting"] = EPN
 json.dump(dict(fps=FPS, dur=round(t, 3), ep=EPN, cfg=cfg, scenes=scenes, speech=speech, sfx=sfx), open(f"eps/{EPN}/timeline.json", "w"), ensure_ascii=False)
