@@ -52,7 +52,7 @@ Chain: decision → consequence → new problem → next decision.
 
 **b5** And inside, the plan was creating something nobody saw on the shelves. Designers were free to invent. And much of what they invented was new pieces. A special piece for this set. A new color for that one. [22]
 
-**b6** Every new piece needs its own steel mold. Its own bin in the warehouse. Its own line in the factory schedule. In the late nineties, LEGO made about six thousand different elements. Within a few years, it was more than twelve thousand. And roughly nine out of ten new pieces were used in just one set. [22,35]
+**b6** Every new piece needs its own steel mold. Its own bin in the warehouse. Its own line in the factory schedule. In the late nineties, LEGO made about six thousand different elements. Within a few years, it was more than twelve thousand. And roughly nine out of ten new pieces were used just once. [22,35]
 
 **b7** Every one of those new pieces still clicked onto the old bricks. That was never the problem. The problem was that most of them were needed just once, and each one still had to be molded, stored and tracked.
 
@@ -94,7 +94,7 @@ Chain: decision → consequence → new problem → next decision.
 
 ## CHAPTER 6 · The Fix That Broke — 2006–2009 (8:42–9:21)
 
-**m1** But a rescue can make mistakes too. To cut costs further, LEGO moved most of its brick production to a contract manufacturer, Flextronics, in Mexico, Hungary and the Czech Republic. [40]
+**m1** But a rescue can make mistakes too. To cut costs further, LEGO moved a large share of its production to a contract manufacturer, Flextronics, in Hungary, the Czech Republic and Mexico. [40]
 
 **m2** It did not go smoothly. Molds arrived before the factories were ready. Some parts ran short. [40]
 

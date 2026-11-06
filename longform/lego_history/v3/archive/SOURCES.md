@@ -59,3 +59,17 @@ Wikimedia's file server answered every download with HTTP 429 (rate limit) for t
 - Figures with sources on screen: 2003 sales DKK 11.4 bn → 8.4 bn, −26 % (LEGO Annual Report 2003); "destroying value since 1993" (CFO.com, quote attributed); "know your core competence" is marked PARAPHRASED.
 - Brand names are set in plain type; no logos are copied. Generic figures are used, not minifigure copies.
 - Music and all sound effects are synthesized in code (ours, no samples).
+
+## Fact check (v3.2): figures and their sources (on screen as "SOURCE: …")
+| Claim on screen | Source |
+|---|---|
+| 2003 sales DKK 11.4 bn → 8.4 bn, −26 % | LEGO Annual Report 2003 |
+| 2004 net loss DKK 1.93 bn; 2005 net profit DKK 505 m | LEGO 2005 results (Reuters via NBC News, 2006) |
+| ≈ 6,000 → 14,200 elements (1997–2004); ≈ 9 in 10 new elements used just once | Robertson & Breen, *Brick by Brick* (Crown, 2013) |
+| elements cut ≈ 14,000 → ≈ 7,000 (2004–2005) | Ingeniøren, 24 Feb 2006; Robertson (2013) |
+| Flextronics 2006–2008: moulding in Hungary and the Czech Republic (Kladno), packing in Mexico (Juárez); deal ended 2008 | LEGO Group history, "Outsourcing and insourcing" |
+| The LEGO Movie ≈ $470 M worldwide | Box Office Mojo |
+| LEGO passes Mattel by sales, first half of 2014 | Fortune, 4 Sep 2014 |
+
+Corrected after the check: "12,900" → about 14,000 (secondary source only); "$468 M" → ≈ $470 M (all releases); "most brick production … in Mexico" → "a large share of production", Mexico = packing.
+The temp voice still says "most of its brick production" in m1: the script (script_v2.md) is already corrected for the final voice (Chris).
