@@ -2,7 +2,8 @@
 import json, os, sys, subprocess
 D = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, D)
 from script import PARAS, GAP_AFTER, SHOTS
-PRE = 4.0    # вступление: 4 с только музыка и пролёт (у референса ~5 с)
+from media_list import INTRO, BEAT2
+PRE = round(len(INTRO) * BEAT2 * 30) / 30   # вступление: нарезка в такт музыке, без голоса
 TAIL = 3.5   # хвост после последнего слова
 FPS = 30
 
@@ -19,11 +20,13 @@ def build():
         for k, c in j['cuts'].items(): shots.append([k, t + max(0.0, c - trim)])
         t += end + GAP_AFTER[name]
     total = t + TAIL
-    shots[0][1] = 0.0
+    shots[0][1] = PRE
     # кадр меняется чуть раньше слова (на 2 кадра), как у монтажёра «под слово»
     out = []
+    for i, (k, sh) in enumerate(INTRO):
+        out.append(dict(key=k, start=round(i * BEAT2 * FPS) / FPS, **sh))
     for i, (k, s) in enumerate(shots):
-        s = 0.0 if i == 0 else round((s - 2 / FPS) * FPS) / FPS
+        s = PRE if i == 0 else round((s - 2 / FPS) * FPS) / FPS
         out.append(dict(key=k, start=s, **SHOTS[k]))
     for i, sh in enumerate(out):
         sh['dur'] = round(((out[i + 1]['start'] if i + 1 < len(out) else round(total * FPS) / FPS) - sh['start']) * FPS) / FPS

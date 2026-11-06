@@ -24,14 +24,14 @@ for k in used:
     L.append(f"| {', '.join(where[k])} | {m['what']} | {m['place']} | {m['author']} | {m['license']} | {m['page']} |")
 L += ['', '## Прочее', '',
       '- Карты: Natural Earth (NE1_HR рельеф, границы, береговые линии), public domain. Нарисованы скриптами `maps.py`, `../lib/geo.py`.',
-      '- Музыка: Mixkit «Echoes» (Andrew Ev), Mixkit Stock Music Free License.',
+      '- Музыка: Mixkit «Wind Leaves» (Eugenio Mininni), Mixkit Stock Music Free License.',
       '- Голос: Fish Audio, публичная модель «Энергичный Рассказчик» (`48ec28a45588422b977a86460c11977f`), модель s2.1-pro-free. См. ограничения в README.',
-      '- Шрифты: Montserrat, Caveat (Google Fonts, SIL OFL).', '',
+      '- Шрифты: Inter, Caveat (Google Fonts, SIL OFL).', '',
       '## Блок для описания YouTube', '', '```', 'Видео и фото:']
 for k in used:
     m = MEDIA[k]
     if m.get('source') == 'Mixkit': continue
     L.append(f"— {m['place']}: {m['author']}, {m['license']}, {m['page']}")
-L += ['— Остальные видео: Mixkit (mixkit.co).', 'Карты: Natural Earth. Музыка: Mixkit «Echoes».', '```']
+L += ['— Остальные видео: Mixkit (mixkit.co).', 'Карты: Natural Earth. Музыка: Mixkit «Wind Leaves» (Eugenio Mininni).', '```']
 open(f'{D}/CREDITS.md', 'w').write('\n'.join(L) + '\n')
 print('CREDITS.md', len(used), 'sources')

@@ -3,15 +3,20 @@
 import math, os, re, sys, subprocess
 from PIL import Image, ImageDraw, ImageFilter
 D = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, D); sys.path.insert(0, os.path.join(D, '..', 'lib'))
-import geo, media
+import geo, media, look
+import numpy as np
 from timeline import build, FPS
 from maps import big_text, YEL
 from script import MEDIA
 W, H = 1920, 1080
 DATA = os.path.join(D, '..', 'data')
-MUSIC = os.path.join(DATA, 'music', 'mixkit_188_echoes.mp3')   # Mixkit «Echoes» (Andrew Ev), Mixkit Stock Music Free License
-MUSIC_SS = 13.0   # у трека долгое тихое начало — берём с 13-й секунды
-MUSIC_END = 220.0 # к 220-й секунде трек затихает
+MUSIC = os.path.join(DATA, 'music', 'mixkit_617_wind_leaves.mp3')   # Mixkit «Wind Leaves» (Eugenio Mininni), Mixkit Stock Music Free License
+MUSIC_SS = 1.393  # первый удар трека: склейки вступления совпадают с ритмом
+MUSIC_END = 196.0 # к ~196-й секунде трек затихает
+G_INTRO, G_BED, G_OUT = 0.30, 0.085, 0.2   # громкость музыки: вступление / под голосом / финал (трек громкий, ~-10 LUFS)
+# чистка голоса: срез гула, шумоподавление, де-эссер, мягкий гейт на паузах (вдохи тише), компрессия, разборчивость
+VO_CLEAN = ('highpass=f=70,afftdn=nf=-42:tn=1,deesser=i=0.35,agate=threshold=0.02:ratio=2.5:attack=4:release=150:range=0.12,'
+            'acompressor=threshold=-20dB:ratio=2.5:attack=8:release=140:makeup=1.6,equalizer=f=3200:t=q:w=1.2:g=1.5')
 IMG_EXT = ('.jpg', '.jpeg', '.png', '.tif', '.tiff', '.webp')
 
 def is_photo(path):
@@ -58,49 +63,100 @@ def frames_photo(path, dur, sh):
         fr = big.crop((cx - cw / 2, cy - ch / 2, cx + cw / 2, cy + ch / 2)).resize((W, H), Image.BICUBIC)
         yield fr.tobytes()
 
-def tag(img, s, t):
-    """Плашка места в левом верхнем углу (как подписи у референса): «Лердальский тоннель · Вестланн»."""
-    if t < 0.15: return
-    a = min(1.0, (t - 0.15) / 0.3)
-    f = geo.font(34, 700); x, y = 60, 58
-    w = f.getbbox(s)[2] + 44
-    ov = Image.new('RGBA', img.size, (0, 0, 0, 0)); d = ImageDraw.Draw(ov)
-    d.rounded_rectangle((x, y, x + w, y + 58), 10, fill=(0, 0, 0, int(150 * a)))
-    d.rectangle((x, y, x + 7, y + 58), fill=YEL + (int(255 * a),))
-    d.text((x + 24, y + 29), s, font=f, fill=(255, 255, 255, int(255 * a)), anchor='lm')
-    img.alpha_composite(ov)
+TR_N = dict(fade=12, whip=8, zoom=8, slide=10, flash=8)
 
-def overlay(img, sh, t):
-    if sh.get('loc'): tag(img, sh['loc'], t)
+def _zoom(a, z, blur=0):
+    im = Image.fromarray(a)
+    if z != 1:
+        cw, ch = W / z, H / z
+        im = im.crop(((W - cw) / 2, (H - ch) / 2, (W + cw) / 2, (H + ch) / 2)).resize((W, H), Image.BILINEAR)
+    if blur > 0.5: im = im.filter(ImageFilter.GaussianBlur(blur))
+    return np.asarray(im)
+
+def _hblur(a, r):
+    """Горизонтальный «смаз» как у whip pan: среднее сдвинутых копий."""
+    r = int(r)
+    if r < 2: return a
+    acc = np.zeros(a.shape, np.float32); k = 0
+    for dx in range(-r, r + 1, max(1, r // 6)): acc += np.roll(a, dx, axis=1); k += 1
+    return (acc / k).astype(np.uint8)
+
+def transition(kind, A, B, w):
+    """A — уходящий кадр, B — новый, w 0..1 по ходу перехода. Переходы в духе After Effects."""
+    e = look.ease(w)
+    if kind == 'fade':
+        return (A.astype(np.float32) * (1 - e) + B.astype(np.float32) * e).astype(np.uint8)
+    if kind == 'flash':
+        m = (A.astype(np.float32) * (1 - e) + B.astype(np.float32) * e)
+        f = (1 - abs(2 * w - 1)) ** 1.5 * 0.85
+        warm = np.array([255, 238, 220], np.float32)
+        return np.clip(m * (1 - f) + warm * f, 0, 255).astype(np.uint8)
+    if kind == 'zoom':   # «удар» зумом: старый кадр влетает в камеру, новый выезжает из увеличения
+        if w < 0.5: return _zoom(A, 1 + 0.35 * look.ease(w * 2) ** 2, 10 * w * 2)
+        return _zoom(B, 1 + 0.35 * (1 - look.ease((w - 0.5) * 2)) ** 2, 10 * (1 - (w - 0.5) * 2))
+    if kind == 'whip':   # быстрая панорама со смазом
+        sh = int(W * 0.5 * e) if w < 0.5 else 0
+        if w < 0.5: return _hblur(np.roll(A, -int(W * 0.6 * look.ease(w * 2)), axis=1), 60 * w * 2)
+        return _hblur(np.roll(B, int(W * 0.6 * (1 - look.ease((w - 0.5) * 2))), axis=1), 60 * (1 - (w - 0.5) * 2))
+    if kind == 'slide':  # новый кадр «выталкивает» старый влево
+        x = int(W * e)
+        out = np.empty_like(A); out[:, :W - x] = A[:, x:]; out[:, W - x:] = B[:, :x]
+        return _hblur(out, 24 * (1 - abs(2 * w - 1)))
+    return B
+
+def overlay(img, sh, t, tg):
+    dur = sh['dur']
+    if sh.get('loc'): look.tag(img, sh['loc'], t, t_out=dur - 0.35)
     if sh.get('txt'):
-        y = H * (0.74 if sh.get('sub') else 0.8)
-        big_text(img, (W / 2, y), sh['txt'], sh.get('size', 104), t, sh.get('t_txt', 0.35))
-        if sh.get('sub') and t > sh.get('t_txt', 0.35) + 0.25:
-            geo.text_outlined(img, (W / 2, y + 92), sh['sub'], 40, fill=(255, 255, 255), weight=600, sw=3)
-    if sh.get('q'):   # жёлтый рукописный «?» как у референса
+        look.number(img, (120, H * 0.83), sh['txt'], sh.get('sub'), t, sh.get('t_txt', 0.3), sh.get('size', 104), 'l', t_out=dur - 0.35)
+    if sh.get('q'):   # рукописный «?» как у референса, теперь коралловый
         k = min(1.0, t / 0.3)
         sz = int(260 * (0.6 + 0.4 * k)); a = math.sin(t * 3) * 4
         q = Image.new('RGBA', (400, 400), (0, 0, 0, 0))
-        geo.text_outlined(q, (200, 200), '?', sz, fill=YEL, sw=6, name='Caveat.ttf', weight=700)
+        geo.text_outlined(q, (200, 200), '?', sz, fill=look.ACCENT, sw=0, name='Caveat.ttf', weight=700)
         img.alpha_composite(q.rotate(a, resample=Image.BICUBIC), (int(W * 0.72), int(H * 0.18)))
+    if sh.get('title'):   # заголовок поверх нарезки вступления
+        look.title_card(img, 'НОРВЕГИЯ', tg, t0=TITLE_T0, size=160)
 
 def source(sh):
     if 'm' in sh: return media.path(sh['m'], MEDIA[sh['m']]), sh.get('ss', 0)
     return f"{D}/cache/{sh.get('map') or sh.get('gfx')}.mp4", sh.get('ss', 0)
 
+TITLE_T0 = 2.85
+
 def video(out_v):
     _, shots, total = build()
     p = subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-',
                           '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', out_v], stdin=subprocess.PIPE)
-    for sh in shots:
+    def frames_of(sh, pre):
+        # pre кадров уходят на переход: план генерируется длиннее, чтобы общий хронометраж (и синхрон с голосом) не менялся
         src, ss = source(sh)
-        gen = frames_photo(src, sh['dur'], sh) if is_photo(src) else frames_video(src, ss, sh['dur'], sh)
-        need = any(sh.get(k) for k in ('txt', 'q', 'loc'))
+        d = sh['dur'] + pre / FPS
+        gen = frames_photo(src, d, sh) if is_photo(src) else frames_video(src, max(0.0, ss - pre / FPS), d, sh)
+        need = any(sh.get(k) for k in ('txt', 'q', 'loc', 'title'))
         for i, fr in enumerate(gen):
+            a = np.frombuffer(fr, np.uint8).reshape(H, W, 3)
             if need:
-                img = Image.frombytes('RGB', (W, H), fr).convert('RGBA'); overlay(img, sh, i / FPS); fr = img.convert('RGB').tobytes()
-            p.stdin.write(fr)
-        print(f"{sh['start']:7.2f} {sh['key']}", flush=True)
+                t = (i - pre) / FPS
+                img = Image.fromarray(a).convert('RGBA'); overlay(img, sh, max(0.0, t), sh['start'] + t); a = np.asarray(img.convert('RGB'))
+            yield a
+    held = []                          # последние кадры предыдущего плана, ждущие перехода
+    LIMIT = float(os.environ.get('LIMIT', '1e9'))
+    shots = [x for x in shots if x['start'] < LIMIT]
+    for n, sh in enumerate(shots):
+        nxt = shots[n + 1] if n + 1 < len(shots) else None
+        hold = TR_N.get(nxt.get('tr'), 0) if nxt else 0
+        hold = min(hold, int(sh['dur'] * FPS) // 2, int(nxt['dur'] * FPS) // 2) if nxt else 0
+        kind = sh.get('tr'); buf = []; N0 = len(held)
+        for i, a in enumerate(frames_of(sh, N0)):
+            if held:                   # первые кадры этого плана смешиваются с хвостом предыдущего
+                A = held.pop(0); w = (i + 0.5) / N0
+                p.stdin.write(transition(kind, A, a, w).tobytes()); continue
+            buf.append(a)
+            if len(buf) > hold: p.stdin.write(buf.pop(0).tobytes())
+        held = buf
+        print(f"{sh['start']:7.2f} {sh['key']} {sh.get('tr', '')}", flush=True)
+    for a in held: p.stdin.write(a.tobytes())
     p.stdin.close(); p.wait()
     return total
 
@@ -109,16 +165,16 @@ def audio(out_a, total):
     ins, flt = ['-i', MUSIC], []
     for i, pa in enumerate(paras):
         ins += ['-i', pa['file']]
-        flt.append(f"[{i+1}:a]atrim={pa['trim']:.3f}:{pa['trim'] + pa['len']:.3f},asetpts=PTS-STARTPTS,aresample=48000,adelay={int(pa['start']*1000)}|{int(pa['start']*1000)}[v{i}]")
+        flt.append(f"[{i+1}:a]atrim={pa['trim']:.3f}:{pa['trim'] + pa['len']:.3f},asetpts=PTS-STARTPTS,aresample=48000,{VO_CLEAN},adelay={int(pa['start']*1000)}|{int(pa['start']*1000)}[v{i}]")
     vo = ''.join(f'[v{i}]' for i in range(len(paras)))
     first, last_end = paras[0]['start'], paras[-1]['start'] + paras[-1]['len']
-    g = (f"if(lt(t,{first-0.6:.2f}),0.45,if(lt(t,{first+0.4:.2f}),0.45-0.25*(t-{first-0.6:.2f}),"
-         f"if(lt(t,{last_end+0.3:.2f}),0.20,0.20+0.12*min(1,(t-{last_end+0.3:.2f})/1.0))))")
+    g = (f"if(lt(t,{first-0.4:.2f}),{G_INTRO},if(lt(t,{first+0.4:.2f}),{G_INTRO}-{G_INTRO-G_BED}*(t-{first-0.4:.2f})/0.8,"
+         f"if(lt(t,{last_end+0.3:.2f}),{G_BED},{G_BED}+{G_OUT-G_BED}*min(1,(t-{last_end+0.3:.2f})/1.0))))")
     xf, endlen = 4.0, 40.0
     a_len = total - endlen + xf
     flt.append(f"[0:a]aresample=48000,asplit[ma][mb];[ma]atrim={MUSIC_SS}:{MUSIC_SS + a_len:.3f},asetpts=PTS-STARTPTS[mA];"
                f"[mb]atrim={MUSIC_END - endlen:.3f}:{MUSIC_END:.3f},asetpts=PTS-STARTPTS[mB];[mA][mB]acrossfade=d={xf}[mm]")
-    flt.append(f"[mm]atrim=0:{total:.3f},volume='{g}':eval=frame,afade=t=out:st={total-2.5:.2f}:d=2.5,afade=t=in:d=1.0[m]")
+    flt.append(f"[mm]atrim=0:{total:.3f},volume='{g}':eval=frame,afade=t=out:st={total-2.5:.2f}:d=2.5,afade=t=in:d=0.05[m]")
     flt.append(f"{vo}amix=inputs={len(paras)}:normalize=0,volume=1.0[vo]")
     flt.append("[vo][m]amix=inputs=2:normalize=0[out]")
     raw = out_a + '.raw.wav'

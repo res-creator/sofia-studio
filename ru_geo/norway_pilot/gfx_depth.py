@@ -5,9 +5,10 @@ import math, os, sys, subprocess
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 D = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(D, '..', 'lib'))
-import geo
+import geo, look
 W, H, FPS, K = 1920, 1080, 30, 2           # K — суперсэмплинг (рисуем в 2× и уменьшаем: гладкие края)
-YEL = (255, 214, 0)
+YEL = (255, 255, 255)
+ACC = look.ACCENT
 SURF, BED = 300, 960                       # уровень воды и самая глубокая точка (пиксели при 1080p)
 PPM = (BED - SURF) / 1308.0                # пикселей на метр — один масштаб для глубины и башни
 CX = 1010                                  # ось самой глубокой части
@@ -48,7 +49,7 @@ def burj(h, cx, base):
     return L + spire + R[::-1]
 
 def label(d, img, xy, s, size=40, fill=(255, 255, 255), anchor='lm', weight=700):
-    geo.text_outlined(img, xy, s, size, fill=fill, anchor=anchor, weight=weight, sw=max(2, size // 14))
+    look.text(img, xy, s, size, weight, fill, anchor)
 
 def build_bg():
     S = lambda v: v * K
@@ -122,8 +123,8 @@ def render(out, dur, t_burj):
             fd.line([(X - 18, yb), (CX, yb)], fill=YEL + (int(200 * min(1, u * 3)),), width=2)
             cur = int(round(1308 * u))
             label(fd, frame, (X + 24, yb + 34 if u < 1 else yb - 30), f'{cur:,} м'.replace(',', ' '), 58 if u >= 1 else 46, fill=YEL)
-        label(fd, frame, (60, 60), 'СОГНЕ-ФЬОРД · РАЗРЕЗ', 44, anchor='lm', weight=800)
-        label(fd, frame, (60, 112), 'самая глубокая точка — 1 308 м', 32, fill=(230, 236, 242), weight=600)
+        look.text(frame, (72, 52), 'СОГНЕ-ФЬОРД · РАЗРЕЗ', 30, 700, look.WHITE, 'la', track=4); ImageDraw.Draw(frame).rectangle((52, 52, 57, 110), fill=ACC + (255,))
+        look.text(frame, (72, 92), 'САМАЯ ГЛУБОКАЯ ТОЧКА — 1 308 М', 20, 500, look.SOFT, 'la', track=4)
         geo.text_outlined(frame, (W - 30, H - 26), 'вертикальный масштаб точный, ширина фьорда сжата', 22, fill=(200, 206, 214), anchor='rm', weight=500, sw=2, shadow=False)
         if t >= t_burj + 2.5:
             k = ease((t - t_burj - 2.5) / 0.5)
@@ -132,11 +133,11 @@ def render(out, dur, t_burj):
             # подпись башни и «вода над шпилем»
             label(fd, frame, (CX + 60, deepest_y - hb * 0.45), 'Бурдж-Халифа · 828 м', 40, fill=(255, 255, 255))
             bx = CX + 230
-            fd.line([(bx, SURF), (bx, top_y)], fill=(255, 90, 90, a), width=5)
-            fd.line([(bx - 16, SURF), (bx + 16, SURF)], fill=(255, 90, 90, a), width=5)
-            fd.line([(bx - 16, top_y), (bx + 16, top_y)], fill=(255, 90, 90, a), width=5)
-            fd.line([(CX + 6, top_y), (bx - 18, top_y)], fill=(255, 90, 90, int(a * 0.7)), width=2)
-            if k > 0.3: label(fd, frame, (bx + 28, (SURF + top_y) / 2), '480 м воды над шпилем', 46, fill=(255, 120, 120))
+            fd.line([(bx, SURF), (bx, top_y)], fill=ACC + (a,), width=5)
+            fd.line([(bx - 16, SURF), (bx + 16, SURF)], fill=ACC + (a,), width=5)
+            fd.line([(bx - 16, top_y), (bx + 16, top_y)], fill=ACC + (a,), width=5)
+            fd.line([(CX + 6, top_y), (bx - 18, top_y)], fill=ACC + (int(a * 0.7),), width=2)
+            if k > 0.3: label(fd, frame, (bx + 28, (SURF + top_y) / 2), '480 м воды над шпилем', 46, fill=ACC)
         p.stdin.write(frame.convert('RGB').tobytes())
     p.stdin.close(); p.wait()
 

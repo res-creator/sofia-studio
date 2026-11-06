@@ -4,10 +4,11 @@ import math, os, sys, subprocess
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 D = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(D, '..', 'lib'))
-import geo
+import geo, look
 from geo import ease, label, text_outlined, glow_line, polyline_partial
 W, H, FPS, SS = 1920, 1080, 30, 1.25
-YEL = (255, 214, 0)
+YEL = (255, 255, 255)          # было жёлтым; теперь белый (стиль A)
+ACC = look.ACCENT
 
 def writer(path):
     return subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-',
@@ -41,9 +42,7 @@ def pop(t, t0, d=0.35):
     return 1.12 * math.sin(u * math.pi / 2) if u < 0.7 else 1.12 - 0.12 * (u - 0.7) / 0.3
 
 def big_text(img, xy, s, size, t, t0, fill=YEL):
-    k = pop(t, t0)
-    if k <= 0: return
-    text_outlined(img, xy, s, max(8, int(size * k)), fill=fill, sw=max(3, size // 11))
+    look.number(img, (xy[0], xy[1] + size * 0.35), s, None, t, t0, size, align='m', count=False)
 
 LIND, NORDK, ROME = (57.98, 7.05), (71.17, 25.78), (41.90, 12.50)
 
@@ -82,7 +81,7 @@ def length(dur):
         u = ease((t - 0.6) / 3.0)
         if u > 0:
             pa, pb = T(a), T(b)
-            glow_line(img, [pa, (pa[0] + (pb[0] - pa[0]) * u, pa[1] + (pb[1] - pa[1]) * u)], (255, 45, 45), 7)
+            glow_line(img, [pa, (pa[0] + (pb[0] - pa[0]) * u, pa[1] + (pb[1] - pa[1]) * u)], ACC, 7)
         if t > 0.3: label(img, T(a), 'Линдеснес', 36, color=(255, 255, 255))
         if u >= 1: label(img, T(b), 'Нордкап', 36)
         m = T(((a[0] + b[0]) / 2, (a[1] + b[1]) / 2))
@@ -109,7 +108,7 @@ def rotate(dur):
             X = x * ca - y * sa; Y = x * sa + y * ca
             px, py = v.km_to_px(X, Y)
             pts = [T(p) for p in zip(px.tolist(), py.tolist())]
-            if len(pts) > 2: od.polygon(pts, fill=(255, 50, 50, 120), outline=(255, 90, 90, 255))
+            if len(pts) > 2: od.polygon(pts, fill=ACC + (110,), outline=ACC + (255,))
         img.alpha_composite(ov)
         label(img, T(cam.P(*ROME)), 'Рим', 40)
         label(img, T(cam.P(*LIND)), 'Линдеснес', 32)
@@ -166,7 +165,7 @@ def sogne(dur):
     pts = [cam.P(*p) for p in fj]
     def draw(img, T, t):
         u = ease((t - 0.5) / 3.2)
-        glow_line(img, polyline_partial([T(p) for p in pts], u), (255, 45, 45), 8)
+        glow_line(img, polyline_partial([T(p) for p in pts], u), ACC, 8)
         if t > 0.2: label(img, T(cam.P(60.39, 5.32)), 'Берген', 34)
         big_text(img, (W * 0.62, H * 0.2), 'СОГНЕ-ФЬОРД', 80, t, 0.6)
         big_text(img, (W * 0.62, H * 0.2 + 100), '205 км', 96, t, 3.8, fill=(255, 255, 255))
@@ -260,12 +259,10 @@ def depth(dur, name='depth', burj=False):
 
 # ---------------- версия 2: единый стиль «цифра + что это» ----------------
 def cap(img, xy, num, sub, t, t0, size=96, fill=YEL):
-    """Жёлтая цифра + белая подпись под ней: что это за число и откуда."""
-    big_text(img, xy, num, size, t, t0, fill=fill)
-    if sub and t > t0 + 0.25:
-        text_outlined(img, (xy[0], xy[1] + size * 0.82), sub, 38, fill=(255, 255, 255), weight=600, sw=3)
+    """Цифра + подпись (что это и откуда) в стиле канала."""
+    look.number(img, (xy[0], xy[1] + size * 0.35), num, sub, t, t0, size, align='m')
 
-def pulse(img, p, t, col=(255, 60, 60)):
+def pulse(img, p, t, col=look.ACCENT):
     d = ImageDraw.Draw(img)
     for k in range(3):
         ph = ((t * 0.8 + k / 3) % 1.0); r = 10 + ph * 60
@@ -279,7 +276,7 @@ def europe_line(dur):
         u = ease((t - 0.3) / 1.6)
         if u > 0:
             pa, pb = T(a), T(b)
-            glow_line(img, [pa, (pa[0] + (pb[0] - pa[0]) * u, pa[1] + (pb[1] - pa[1]) * u)], (255, 45, 45), 7)
+            glow_line(img, [pa, (pa[0] + (pb[0] - pa[0]) * u, pa[1] + (pb[1] - pa[1]) * u)], ACC, 7)
         cap(img, (W * 0.7, H * 0.3), '≈ 1 750 км', 'от мыса Линдеснес до Нордкапа, по прямой', t, 1.2)
     run('europe_line', dur, draw, cam)
 
@@ -290,7 +287,7 @@ def length(dur):
         u = ease((t - 0.2) / 2.0)
         if u > 0:
             pa, pb = T(a), T(b)
-            glow_line(img, [pa, (pa[0] + (pb[0] - pa[0]) * u, pa[1] + (pb[1] - pa[1]) * u)], (255, 45, 45), 7)
+            glow_line(img, [pa, (pa[0] + (pb[0] - pa[0]) * u, pa[1] + (pb[1] - pa[1]) * u)], ACC, 7)
         label(img, T(a), 'мыс Линдеснес', 36)
         label(img, T(b), 'Нордкап', 36)
         cap(img, (W * 0.72, H * 0.42), '≈ 1 750 км', 'по прямой', t, 1.8)
@@ -301,7 +298,7 @@ def pin(name, dur, P0, width, lbl, num=None, sub=None, center=None, zmax=1.15, l
     def draw(img, T, t):
         if line:
             u = ease((t - 0.3) / 1.4)
-            glow_line(img, polyline_partial([T(cam.P(*q)) for q in line], u), (255, 45, 45), 8)
+            glow_line(img, polyline_partial([T(cam.P(*q)) for q in line], u), ACC, 8)
         pulse(img, T(cam.P(*P0)), t)
         label(img, (T(cam.P(*P0))[0] + 18, T(cam.P(*P0))[1] - 48), lbl, 40, dot=False)
         if num: cap(img, (W * 0.5, H * 0.8 - 40), num, sub, t, t_num)
@@ -334,7 +331,7 @@ def sogne2(dur):
     pts = [cam.P(*p) for p in fj]
     def draw(img, T, t):
         u = ease((t - 0.2) / 2.4)
-        glow_line(img, polyline_partial([T(p) for p in pts], u), (255, 45, 45), 8)
+        glow_line(img, polyline_partial([T(p) for p in pts], u), ACC, 8)
         label(img, T(cam.P(60.39, 5.32)), 'Берген', 34)
         label(img, T(cam.P(61.50, 7.60)), 'Шолден', 30)
         cap(img, (W * 0.64, H * 0.16), '205 км', 'Согне-фьорд — от моря до вершины', t, 2.4)
@@ -358,7 +355,7 @@ def polar(dur, name='polar'):
 def ev_chart(dur):
     """Доля электромобилей среди НОВЫХ легковых машин, Норвегия (OFV): 2024 — 88,9 %, 2025 — 95,9 %."""
     bg = Image.new('RGBA', (W, H)); d = ImageDraw.Draw(bg)
-    for y in range(H): d.line([(0, y), (W, y)], fill=(12 + y // 60, 22 + y // 40, 44 + y // 30, 255))
+    for y in range(H): d.line([(0, y), (W, y)], fill=(14 + y // 90, 18 + y // 80, 26 + y // 60, 255))
     vals = [('2024', 88.9), ('2025', 95.9)]
     X0, Y0, BW, BH = 620, 900, 260, 600
     out = f'{D}/cache/ev_chart.mp4'; p = writer(out)
@@ -370,9 +367,9 @@ def ev_chart(dur):
         for k, (yr, v) in enumerate(vals):
             x = X0 + k * (BW + 200); u = ease((t - 0.3 - k * 0.6) / 1.2)
             h = BH * v / 100 * u
-            d.rectangle((x, Y0 - h, x + BW, Y0), fill=(255, 214, 0, 255) if k == 1 else (150, 170, 190, 255))
+            d.rounded_rectangle((x, Y0 - h, x + BW, Y0), 14, fill=ACC + (255,) if k == 1 else (120, 132, 148, 255))
             text_outlined(img, (x + BW / 2, Y0 + 50), yr, 46, fill=(255, 255, 255), weight=700, sw=3)
-            if u > 0.05: text_outlined(img, (x + BW / 2, Y0 - h - 50), f'{v * u:.1f} %'.replace('.', ','), 64, fill=(255, 214, 0) if k == 1 else (255, 255, 255), sw=4)
+            if u > 0.05: text_outlined(img, (x + BW / 2, Y0 - h - 50), f'{v * u:.1f} %'.replace('.', ','), 64, fill=(255, 255, 255) if k == 1 else (255, 255, 255), sw=4)
         p.stdin.write(img.convert('RGB').tobytes())
     p.stdin.close(); p.wait(); print('gfx ev_chart', dur)
 

@@ -141,18 +141,16 @@ def font(size, weight=800, name='Montserrat.ttf'):
     return f
 
 def text_outlined(img, xy, s, size, fill=(255, 255, 255), stroke=(0, 0, 0), sw=None, anchor='mm', weight=800, shadow=True, name='Montserrat.ttf'):
-    d = ImageDraw.Draw(img); f = font(size, weight, name); sw = sw if sw is not None else max(2, size // 12)
-    if shadow:
-        sh = Image.new('RGBA', img.size, (0, 0, 0, 0)); ImageDraw.Draw(sh).text((xy[0] + size * 0.05, xy[1] + size * 0.07), s, font=f, fill=(0, 0, 0, 170), anchor=anchor, stroke_width=sw, stroke_fill=(0, 0, 0, 170))
-        img.alpha_composite(sh.filter(ImageFilter.GaussianBlur(size / 14)))
-    d.text(xy, s, font=f, fill=fill, anchor=anchor, stroke_width=sw, stroke_fill=stroke)
+    """Совместимость со старым кодом: теперь текст в стиле канала (Inter, мягкая тень, без обводки)."""
+    import look
+    if name == 'Caveat.ttf':
+        d = ImageDraw.Draw(img); f = font(size, weight, name)
+        d.text(xy, s, font=f, fill=fill, anchor=anchor, stroke_width=sw or 0, stroke_fill=stroke); return
+    look.text(img, xy, s, size, min(weight, 800), fill, anchor, shadow=0.6 if shadow else 0)
 
 def label(img, xy, s, size=34, dot=True, color=(255, 255, 255)):
-    """Подпись города/места как в Google Earth: точка + белый текст с тенью."""
-    d = ImageDraw.Draw(img); x, y = xy
-    if dot:
-        r = size * 0.28; d.ellipse((x - r, y - r, x + r, y + r), fill=color + (255,), outline=(0, 0, 0, 255), width=2)
-    text_outlined(img, (x + size * 0.6, y), s, size, fill=color, anchor='lm', weight=700, sw=max(2, size // 14))
+    import look
+    look.map_label(img, xy, s, size, dot)
 
 def polyline_partial(pts, frac):
     """Первые frac (0..1) длины ломаной — для «рисующейся» линии."""
@@ -167,7 +165,7 @@ def polyline_partial(pts, frac):
             out.append((a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t)); break
     return out
 
-def glow_line(img, pts, color=(255, 40, 40), width=8, glow=True):
+def glow_line(img, pts, color=(255, 107, 74), width=8, glow=True):
     if len(pts) < 2: return
     W, H = img.size
     if glow:
