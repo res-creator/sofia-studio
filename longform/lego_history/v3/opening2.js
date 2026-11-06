@@ -7,7 +7,7 @@ const path = require('path'), fs = require('fs'), { spawn } = require('child_pro
 const D = path.join(__dirname, '..');
 const w0 = S.words(path.join(D, 'chapters/c0_hook'), 0), O1 = 36.52, w1 = S.words(path.join(D, 'chapters/c1_system'), -O1);
 const a = (id, w, n = 0) => (id[0] === 'h' ? w0 : w1)(id, w, n);
-const T = 68.6;
+const T = 67.58;
 // ---- word times ----
 const t = {
   y2004: a('h1', '2004'), lego: a('h1', 'LEGO'), thousands: a('h1', 'thousands'), most: a('h1', 'most'), exactly: a('h1', 'exactly'), set: a('h1', 'set'),
@@ -137,7 +137,7 @@ shot(t.man - 0.25, (ctx, g) => { const lt = g - t.man + 0.25;
   const y = 760, x0 = 160, x1 = 960, P = [[1968, 'BORN', x0, t.thirty - 0.3], [2001, 'JOINS LEGO · FROM McKINSEY', lerp(x0, x1, 0.62), t.joined], [2004, 'AGE 35', x1, t.consulting + 0.4]];
   const lu = ease.inOut(clamp((g - t.thirty + 0.4) / (t.consulting - t.thirty + 0.8))); ctx.save(); ctx.strokeStyle = 'rgba(244,239,230,0.85)'; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(lerp(x0, x1, lu), y); ctx.stroke(); ctx.restore();
   P.forEach(([yr, lab, x, tt]) => { const v = ease.back(clamp((g - tt) / 0.35)); if (v <= 0) return; ctx.save(); ctx.fillStyle = '#E3B341'; ctx.beginPath(); ctx.arc(x, y, 16 * v, 0, 6.283); ctx.fill(); ctx.restore();
-    E.type(ctx, String(yr), x, y - 50, g - tt, { size: 64, col: '#ffffff' }); plateText(ctx, lab, x, y + 70, ss((g - tt) / 0.3), { size: 34, align: 'center' }); });
+    E.type(ctx, String(yr), x, y - 50, g - tt, { size: 64, col: '#ffffff' }); plateText(ctx, lab, x, y + (yr === 2004 ? 130 : 70), ss((g - tt) / 0.3), { size: 34, align: 'center' }); });
   credit(ctx, CREDIT.knud + ' · photo date ≠ event date', ss((lt - 0.4) / 0.4));
 });
 // F · a box of bricks pours out -> the bricks build the word SYSTEM
@@ -150,12 +150,12 @@ shot(t.h4 - 0.15, (ctx, g) => {
   const cam = camera([lerp(-90, -50, rise), lerp(240, 80, rise), lerp(180, 600, rise)], [0, lerp(0, 24, rise), 0], lerp(40, 36, rise));
   const sc = new Scene();
   // the cardboard box tips over (until the word starts forming)
-  const tip = ease.out(clamp((g - t.box) / 0.9)); if (form < 0.6) { sc.box({ x: -40, y: 0, z: -30, roll: tip * 1.2 }, 60, 40, 50, [190, 150, 100], { a: 1 - form }); }
+  const TB = t.h4 - 0.15; const tip = ease.out(clamp((g - TB) / 0.5)); if (form < 0.6) { sc.box({ x: -40, y: 0, z: -30, roll: tip * 1.2 }, 60, 40, 50, [190, 150, 100], { a: 1 - form }); }
   WORD.forEach(p => { const h1 = hash(p.i * 2.3), h2 = hash(p.i * 7.1);
     // poured position on the floor
-    const pour = ease.out(clamp((g - t.box - 0.2 - h1 * 0.9) / 0.5)), fx = lerp(-10, -10 + (h1 - 0.3) * 260, pour), fz = lerp(-10, (h2 - 0.5) * 200, pour), fy = lerp(30, 0, pour);
+    const pour = ease.out(clamp((g - TB - 0.15 - h1 * 0.9) / 0.5)), fx = lerp(-10, -10 + (h1 - 0.3) * 260, pour), fz = lerp(-10, (h2 - 0.5) * 200, pour), fy = lerp(30, 0, pour);
     const u = ease.inOut(clamp(form * 1.6 - h1 * 0.6)), x = lerp(fx, p.x - WX, u), y = lerp(fy, p.y, u) + Math.sin(u * Math.PI) * 40, z = lerp(fz, 0, u);
-    if (g < t.box) return; brick(sc, { x, y, z, yaw: lerp(h2 * 6, 0, u) }, 2, 2, u > 0.98 ? C.red : PAL[p.i % 6], { seg: 8 }); sc.shadow(x, 0, z, 10, 0.35); });
+    brick(sc, { x, y, z, yaw: lerp(h2 * 6, 0, u) }, 2, 2, u > 0.98 ? C.red : PAL[p.i % 6], { seg: 8 }); sc.shadow(x, 0, z, 10, 0.35); });
   render(ctx, sc, cam, Object.assign({}, LIGHT, { fogNear: 700, fogFar: 3000, fogCol: [228, 218, 200] }));
   
   plateText(ctx, 'ONE WORD LEGO LIVED BY', W / 2, 150, ss((g - t.word) / 0.4) * (1 - ss((g - t.system) / 0.3)), { size: 46, align: 'center' });
@@ -185,28 +185,48 @@ shot(t.c1 - 0.3, (ctx, g) => { const lt = g - t.c1 + 0.3;
   plateText(ctx, "A CARPENTER'S WORKSHOP", W / 2 + 70, H / 2 + 20, ss((g - t.workshop) / 0.4), { size: 38 });
   E.type(ctx, '1932', 150, 230, g - t.y1932, { size: 150, align: 'left', col: '#2a2016' });
 }, { sepia: 0 }, { light: 1 });
-// H · wooden toys in the workshop light (during the Depression)
+// H · wooden toys in the workshop light (during the Depression): a carpenter's bench with hand-made pull-along toys,
+// a plane and curled shavings; a painted duck on wheels rolls in on its string (original illustration, not a specific museum piece)
+const WOOD = [214, 168, 108], WOODL = [232, 196, 140], WOODD = [150, 98, 52], PAINT = { red: [178, 52, 38], yel: [222, 176, 60], blue: [62, 104, 150], grn: [70, 120, 74] };
+function axleX(sc, x, y, z, r, len, col, o = {}) { sc.cyl({ x, y, z, roll: Math.PI / 2 }, 0, -len / 2, 0, r, len, col, 18, o); }        // cylinder along x
+function wheel(sc, x, y, z, r, col) { sc.cyl({ x, y, z, pitch: Math.PI / 2 }, 0, -2, 0, r, 4, col, 16); sc.cyl({ x, y, z, pitch: Math.PI / 2 }, 0, -2.6, 0, r * 0.35, 5.2, WOODD, 10); }   // along z
+function duck(sc, x, z, col) { for (const wz of [-11, 9]) for (const wx of [-11, 11]) wheel(sc, x + wx, 7, z + wz, 7, PAINT.red);
+  sc.box({ x: x - 16, y: 4, z: z - 6 }, 32, 4, 12, WOODD, {});                                                     // chassis board
+  // classic flat-cut profile: the duck's silhouette sawn from a plank, painted
+  const prof = [[-28, 26], [-20, 14], [-10, 10], [12, 10], [21, 15], [23, 23], [19, 30], [13, 33], [16, 42], [13, 50], [4, 51], [-1, 45], [1, 35], [-9, 31], [-20, 30]];
+  sc.prism({ x, y: 0, z: z + 6, pitch: Math.PI / 2 }, prof.map(([px, py]) => [px, -py]), 0, 12, col, { c: [x, 28, z] });
+  sc.prism({ x: x + 14, y: 0, z: z + 2, pitch: Math.PI / 2 }, [[0, -44], [10, -42], [0, -40]], 0, 4, [222, 120, 40], { c: [x + 18, 42, z] });   // beak
+  sc.prism({ x: x - 6, y: 0, z: z + 6.3, pitch: Math.PI / 2 }, [[-12, -20], [6, -18], [10, -24], [-6, -27]], 0, 0.3, [190, 120, 30], { c: [x - 6, 22, z + 7] });   // painted wing
+  for (const ez of [6.4, -6.4]) sc.cyl({ x: x + 9, y: 44, z: z + ez, pitch: Math.PI / 2 }, 0, 0, 0, 1.8, 0.3, [30, 24, 20], 8); }
+function truck(sc, x, z) { for (const wz of [-10, 10]) for (const wx of [-14, 16]) wheel(sc, x + wx, 7, z + wz, 7, PAINT.blue);
+  sc.box({ x: x - 24, y: 7, z: z - 9 }, 50, 8, 18, WOOD, {}); sc.box({ x: x + 6, y: 15, z: z - 9 }, 20, 16, 18, PAINT.red, {}); sc.box({ x: x + 14, y: 21, z: z - 9.2 }, 8, 7, 18.4, [70, 60, 50], {});
+  sc.box({ x: x - 22, y: 15, z: z - 8 }, 26, 10, 16, WOODL, {}); }
+function blocks(sc, x, z) { [[0, 0, 0, PAINT.red], [17, 0, 3, PAINT.blue], [8, 16, 1, PAINT.yel], [-14, 0, -8, PAINT.grn]].forEach(([dx, dy, dz, c], i) => sc.box({ x: x + dx - 8, y: dy, z: z + dz - 8, yaw: i * 0.3 - 0.4 }, 16, 16, 16, c, {})); }
+function yoyo(sc, x, z) { for (const o of [-4, 1]) sc.cyl({ x, y: 9, z: z + o, pitch: Math.PI / 2 }, 0, 0, 0, 9, 3, PAINT.grn, 18); sc.cyl({ x, y: 9, z: z - 1, pitch: Math.PI / 2 }, 0, 0, 0, 2.5, 2, WOODD, 8); }
+function plane(sc, x, z) { sc.box({ x: x - 22, y: 0, z: z - 7, yaw: 0.5 }, 44, 9, 14, WOODD, {}); sc.box({ x: x - 4, y: 9, z: z - 2, yaw: 0.5 }, 12, 10, 4, [110, 112, 116], {}); }
 shot(t.wooden - 0.15, (ctx, g) => { const lt = g - t.wooden + 0.15;
-  E.bg(ctx, '#d9b07a', '#7a5230');
-  const cam = camera([lerp(-80, -30, ss(lt / 2.6)), 46, 120], [lerp(-10, 20, ss(lt / 2.6)), 12, 0], 40);
-  const sc = new Scene();
-  sc.box({ x: -300, y: -20, z: -60 }, 600, 20, 140, C.wood, { edge: 0.5 });                       // workbench top
-  for (let i = 0; i < 12; i++) sc.line([-300, 0.1, -55 + i * 11 + Math.sin(i) * 3], [300, 0.1, -55 + i * 11 + Math.cos(i) * 3], 'rgba(90,55,25,0.5)', 1.2, 0.8);   // wood grain
-  // wooden duck on wheels, rolling
-  const dx = lerp(-120, 60, ease.out(clamp(lt / 2.4))), T0 = { x: dx, y: 0, z: 0 };
-  for (const wz of [-9, 9]) for (const wx of [-10, 10]) sc.cyl({ ...T0, pitch: Math.PI / 2 }, wx, wz - 2, -5, 5, 4, [170, 40, 30], 14);
-  sc.prism(T0, [[-18, -8], [16, -8], [20, 0], [16, 8], [-18, 8]], 6, 14, C.yellow, {});                          // body
-  sc.box({ ...T0, x: dx + 6, y: 20 }, 14, 16, 12, C.yellow, {}); sc.prism({ ...T0, x: dx + 20, y: 28 }, [[0, -3], [12, 0], [0, 3]], 0, 4, C.orange, {});   // head + beak
-  sc.shadow(dx, 0, 0, 30, 0.5);
-  // a second toy: a little wooden truck parked
-  sc.box({ x: 70, y: 6, z: -40 }, 40, 14, 22, [60, 110, 170], {}); sc.box({ x: 94, y: 20, z: -40 }, 16, 14, 22, [200, 60, 40], {}); sc.shadow(90, 0, -29, 30, 0.45);
-  render(ctx, sc, cam, { fogCol: [200, 160, 110], fogNear: 200, fogFar: 1000, warm: 0.08, amb: 0.5 });
-  // light beam + sawdust
-  ctx.save(); ctx.globalCompositeOperation = 'lighter'; const gb = ctx.createLinearGradient(W, 0, W * 0.3, H); gb.addColorStop(0, 'rgba(255,200,120,0.18)'); gb.addColorStop(1, 'rgba(255,200,120,0)');
-  ctx.fillStyle = gb; ctx.beginPath(); ctx.moveTo(W * 0.75, 0); ctx.lineTo(W, 0); ctx.lineTo(W * 0.6, H); ctx.lineTo(W * 0.2, H); ctx.fill();
+  E.bg(ctx, '#c79a62', '#5e3d1f');
+  // back wall: planks + pegboard tools (flat, out of focus)
+  ctx.save(); ctx.filter = 'blur(3px)'; for (let i = 0; i < 14; i++) { ctx.fillStyle = i % 2 ? 'rgba(90,58,28,0.28)' : 'rgba(120,80,40,0.22)'; ctx.fillRect(i * 140, 0, 136, 430); }
+  ctx.fillStyle = 'rgba(40,26,14,0.5)'; [[260, 120, 18, 200], [330, 140, 14, 170], [1300, 110, 20, 220], [1380, 150, 60, 14], [1500, 120, 16, 190]].forEach(([x, y, w, h]) => ctx.fillRect(x, y, w, h)); ctx.restore();
+  const k = ss(lt / 3.4), cam = camera([lerp(-150, -40, k), lerp(70, 52, k), lerp(210, 150, k)], [lerp(-40, 10, k), 16, 0], 38), sc = new Scene();
+  sc.box({ x: -400, y: -24, z: -90 }, 800, 24, 200, WOOD, { edge: 0.4, ground: 1 });                                  // workbench top
+  for (let i = 0; i < 14; i++) sc.line([-400, 0.1, -85 + i * 14 + Math.sin(i) * 3], [400, 0.1, -85 + i * 14 + Math.cos(i * 1.3) * 4], 'rgba(110,64,28,0.35)', 1.2, 0.8, { ground: 1, layer: 1 });
+  truck(sc, 95, -50); blocks(sc, -150, -60); yoyo(sc, 40, -70); plane(sc, 150, 30);
+  const dx = lerp(-200, -20, ease.out(clamp(lt / 2.6))); duck(sc, dx, 10, PAINT.yel); sc.shadow(dx, 0, 10, 34, 0.5);
+  [[95, -50, 42], [-150, -60, 34], [40, -70, 16], [150, 30, 34]].forEach(([x, z, r]) => sc.shadow(x, 0, z, r, 0.4));
+  // the pull string from the duck to the edge of frame
+  sc.line([dx + 16, 6, 10], [dx + 140, 0.5, 60], 'rgba(60,40,20,0.9)', 1.6, 1);
+  const P = render(ctx, sc, cam, { fogCol: [196, 150, 98], fogNear: 220, fogFar: 1100, warm: 0.1, amb: 0.48 });
+  // curled shavings next to the plane
+  for (let i = 0; i < 9; i++) { const p = P([170 + hash(i) * 50, 0.5, 45 + hash(i * 3) * 30]); ctx.strokeStyle = 'rgba(236,200,140,0.95)'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(p[0], p[1], 6 + hash(i * 7) * 8, 0, 4.5); ctx.stroke(); }
+  // window light + dust
+  ctx.save(); ctx.globalCompositeOperation = 'lighter'; const gb = ctx.createLinearGradient(W, 0, W * 0.3, H); gb.addColorStop(0, 'rgba(255,200,120,0.2)'); gb.addColorStop(1, 'rgba(255,200,120,0)');
+  ctx.fillStyle = gb; ctx.beginPath(); ctx.moveTo(W * 0.72, 0); ctx.lineTo(W, 0); ctx.lineTo(W * 0.62, H); ctx.lineTo(W * 0.22, H); ctx.fill();
   for (let i = 0; i < 70; i++) { const h = hash(i * 3.3), x = (h * W * 0.8 + g * 12 * (0.5 + h)) % W, y = (hash(i * 5.1) * H + g * 20 * (0.4 + h)) % H; ctx.fillStyle = `rgba(255,220,170,${0.35 * h})`; ctx.fillRect(x, y, 2 + h * 2, 2 + h * 2); } ctx.restore();
-  plateText(ctx, 'WOODEN TOYS', 140, 860, ss((lt - 0.3) / 0.4), { size: 56, bar: '#E3B341' }); plateText(ctx, 'DURING THE GREAT DEPRESSION', 140, 950, ss((g - t.depression + 0.2) / 0.4), { size: 38 });
-}, { sepia: 0.35 });
+  plateText(ctx, 'WOODEN TOYS', 140, 860, ss((lt - 0.2) / 0.4), { size: 56, bar: '#E3B341' }); plateText(ctx, 'DURING THE GREAT DEPRESSION', 140, 950, ss((g - t.depression + 0.2) / 0.4), { size: 38 });
+  plateText(ctx, 'ILLUSTRATION', W - 60, 1040, 1, { size: 20, align: 'right', bg: 'rgba(0,0,0,0)', col: 'rgba(255,240,220,0.7)' });
+}, { sepia: 0.25 });
 // I · "leg godt" -> play well -> LEGO (wooden letter blocks)
 shot(t.name - 0.2, (ctx, g) => { const lt = g - t.name + 0.2;
   { const gr = ctx.createLinearGradient(0, 0, 0, H); gr.addColorStop(0, '#efe6d6'); gr.addColorStop(1, '#cdbb9c'); ctx.fillStyle = gr; ctx.fillRect(0, 0, W, H); }
@@ -214,7 +234,7 @@ shot(t.name - 0.2, (ctx, g) => { const lt = g - t.name + 0.2;
   const L = ['L', 'E', 'G', 'G', 'O', 'D', 'T'], merge = ease.inOut(clamp((g - t.well) / 0.9));
   const pos = L.map((ch, i) => { const sx = i < 3 ? -100 + i * 30 : -10 + (i - 3) * 30 + 30; const fx = [-45, -15, 15, 999, 45, 999, 999][i]; return fx === 999 ? [sx, merge] : [lerp(sx, fx, merge), 0]; });
   const P = render.bind(null); const items = [];
-  L.forEach((ch, i) => { const drop = ease.out(clamp((g - (i < 3 ? t.name + 0.15 : t.godt - 0.4) - i * 0.08) / 0.4)); if (drop <= 0) return; const [x, gone] = pos[i];
+  L.forEach((ch, i) => { const drop = ease.out(clamp((g - (i < 3 ? t.name - 0.2 : t.godt - 0.4) - i * 0.08) / 0.4)); if (drop <= 0) return; const [x, gone] = pos[i];
     const y = lerp(120, 0, drop) - (L[i] && (i === 3 || i === 5 || i === 6) ? gone * 120 : 0), a = (i === 3 || i === 5 || i === 6) ? 1 - gone : 1; if (a <= 0) return;
     sc.box({ x: x - 12, y, z: -12, yaw: 0 }, 24, 24, 24, [196, 150, 98], { a }); sc.shadow(x, 0, 0, 16, 0.4 * a); items.push([ch, x, y + 12, 12, a]); });
   const proj = render(ctx, sc, cam, { fogCol: [220, 205, 180], fogNear: 300, fogFar: 1400, warm: 0.06, amb: 0.45 });
@@ -257,7 +277,6 @@ shot(t.by49 - 0.2, (ctx, g) => { const lt = g - t.by49 + 0.2;
   plateText(ctx, 'LITTLE PLASTIC BRICKS', 140, 180, ss((g - t.bricks) / 0.35), { size: 58, bar: '#C91A14' });
   plateText(ctx, 'AN EARLY LEGO SET · 1952', 140, 270, ss((g - t.bricks - 0.3) / 0.35), { size: 38 });
   credit(ctx, CREDIT.set700, ss((g - t.bricks) / 0.4));
-  const k = ss((g - (T - 0.9)) / 0.8); if (k > 0) { ctx.fillStyle = `rgba(0,0,0,${k})`; ctx.fillRect(0, 0, W, H); }
 });
 
 // ======================= EDIT / RENDER =======================

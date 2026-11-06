@@ -1,4 +1,4 @@
-# Archival material (v3.1 opening) — every licence checked on the file's own page
+# Archival material — full film v3.1 (every licence checked on the file's own page)
 
 **Note:** the photo date is not always the date of the event shown in the film. Each such case is labelled on screen.
 
@@ -23,3 +23,39 @@ Checked but not downloaded yet: Wikimedia rate-limited this session's IP (HTTP 4
 | "Lego Pick a Brick Wall - Arden Fair Mall…" (2011, wiredforlego) | CC BY-SA 2.0 |
 
 **Rejected:** "Ole Kirk Christiansen famille.png" (1922). The uploader marked it CC0, but the photo is not theirs, so the tag is unreliable.
+
+
+## Where each archive item is used in the full film (v3.1)
+
+| Item | Scene (time ≈) | On-screen credit |
+|---|---|---|
+| `lego_color_bricks.jpg` | opening, 0:00–0:05 | yes |
+| `knudstorp_2010.jpg` | opening 0:20–0:28; ch. 3 org chart; ch. 5 new CEO | yes, "photo date ≠ event date" |
+| `ole_kirk_1957_desk.jpg` | ch. 1 card + 1947 (≈ 0:36, 0:52) | yes, "photo 1957, event 1947" |
+| `injection_machine_1949.jpg` | 1947 machine (≈ 0:56) | yes, "not LEGO's machine" |
+| `lego_700_set_1952.jpg` | "by 1949… bricks" (≈ 1:05) | yes |
+| `patent_us3005282-1.png` | 1958 patent (ch. 1 patent scene; ch. 2 "patents expiring") | yes |
+| map (Natural Earth / world-atlas) | Billund 1932; Legoland parks (ch. 5); production moves (ch. 6) | — |
+
+## Not available in this session → original code illustrations used instead (nothing is presented as a photo)
+
+Wikimedia's file server answered every download with HTTP 429 (rate limit) for the whole session. The polite downloader (`fetch.py`, one request at a time, long back-off, honest User-Agent) did not get through. The licences below are checked. When the files arrive, the scenes switch to the photos automatically (`HAS()` checks) after a re-render.
+
+| Planned photo (licence checked) | Fallback in the film |
+|---|---|
+| Godtfred Kirk Christiansen, 1950 (PD-old-50 / Danish simple photo) | index card "LEGO · BILLUND 1954" |
+| 1958 bricks, Danmarks Tekniske Museum (Leif Jørgensen 2018, CC BY-SA 4.0) | code macro of a worn brick |
+| Pick-a-Brick wall (wiredforlego 2011, CC BY-SA 2.0) | code "bins" |
+| Kjeld Kirk Kristiansen 1996 (Universitätsarchiv St. Gallen, Regina Kühne, CC BY-SA 4.0) / 2018 (Legoland Billund Resort, CC BY 3.0) | family tree card; office-door nameplate |
+| LEGO RCX (Alexsh 2006, GFDL/CC BY-SA 3.0) | code robot brick, labelled ILLUSTRATION |
+| BIONICLE Exo-Toa (Heady Metal 2014, CC BY-SA 4.0) | code pieces |
+| Legoland Billund entrance (Leif Jørgensen 2026, CC BY-SA 4.0) | ticket "LEGOLAND BILLUND · 1968" (illustration) |
+| Mattel HQ aerial (Jelson25 2012, CC BY-SA 3.0) | dark studio |
+
+## Re-created / illustrative graphics (labelled on screen)
+- Charts without exact public numbers say **ILLUSTRATIVE** (catalogue sales vs costs, build-time bars, fixed-cost meter, 2006 timeline, growth index 2008–2013).
+- The January 2004 "business page" is a re-created page, labelled **ILLUSTRATION** (no real newspaper is copied).
+- The workshop toys (duck, truck, blocks) are original illustrations, labelled **ILLUSTRATION**, not copies of museum pieces.
+- Figures with sources on screen: 2003 sales DKK 11.4 bn → 8.4 bn, −26 % (LEGO Annual Report 2003); "destroying value since 1993" (CFO.com, quote attributed); "know your core competence" is marked PARAPHRASED.
+- Brand names are set in plain type; no logos are copied. Generic figures are used, not minifigure copies.
+- Music and all sound effects are synthesized in code (ours, no samples).
