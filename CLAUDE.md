@@ -2,7 +2,9 @@
 
 > **English TikTok channel (money/business stories):** read `CHANNEL.md` first — it has the rules, pipeline, voice and checklist for those episodes. The notes below are for the Sofia kids' channel.
 
-> **Russian geography channel (style of GOLOVOLOM TV, long-form 16:9):** read `ru_geo/STYLE.md` — reference analysis, style rules and the pipeline (`ru_geo/norway_pilot/` = working example; big data via `sh ru_geo/fetch_data.sh`).
+> **Russian geography channel (style of GOLOVOLOM TV, long-form 16:9):** read `ru_geo/STYLE.md` — reference analysis, style rules (1–26) and the pipeline (`ru_geo/norway_pilot/` = working pilot v4, 3:38, approved direction; big data via `sh ru_geo/fetch_data.sh` + `python3 ru_geo/norway_pilot/fetch_media.py`).
+> State (Nov 2026): look = white Inter + coral accent (`ru_geo/lib/look.py`), AE-style transitions + on-screen techniques (`ru_geo/lib/fx.py`: locator mini-map, polaroid card, marker circle, badges, split screen), beat-cut intro montage, music Mixkit «Wind Leaves», voice Fish Audio «Энергичный Рассказчик» speed 0.8 (temporary — owner will switch to ElevenLabs at the very end; don't spend EL credits before that), VO cleanup chain in render.py.
+> NEXT: full episode 20–25 min. Owner added **`PIXABAY_API_KEY`** (env var; Pixabay key goes in the URL `?key=`; never print it). Use Pixabay video search first for location-accurate footage (Wikimedia Commons is heavily rate-limited: use thumb.wikimedia.org for photos). GOLOVOLOM already has «Норвегия, в которую трудно поверить» (YKV4u5Ln6Ts, 42 min, same facts as our pilot) — for the full episode choose another country or a clearly different angle; owner may send that video file to study their techniques.
 
 Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). This file adds what happened after Episode 1.
 
