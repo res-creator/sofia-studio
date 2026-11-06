@@ -61,9 +61,9 @@ def text(img, xy, s, size, weight=700, fill=WHITE, anchor='la', alpha=1.0, track
 
 def _count(num, k):
     """«21 268 млрд крон» при k<1 показывает досчитывающее число (как счётчик в AE)."""
-    m = re.search(r'\d[\d\s]*(?:,\d+)?', num)
+    m = re.search(r'\d(?:[\d\s\u202f]*\d)?(?:,\d+)?', num)
     if not m or k >= 1: return num
-    raw = m.group(0); val = float(raw.replace(' ', '').replace(' ', '').replace(',', '.'))
+    raw = m.group(0); val = float(re.sub(r'[\s\u202f]', '', raw).replace(',', '.'))
     dec = len(raw.split(',')[1]) if ',' in raw else 0
     cur = val * ease_out(k)
     s = f'{cur:,.{dec}f}'.replace(',', ' ').replace('.', ',')
@@ -76,6 +76,13 @@ def number(img, xy, num, sub, t, t0=0.25, size=104, align='l', t_out=None, count
     a_out = 1.0 if t_out is None else max(0.0, 1 - (t - t_out) / 0.3) if t > t_out else 1.0
     x, y = xy
     anchor = {'l': 'ls', 'm': 'ms', 'r': 'rs'}[align]
+    # мягкая тёмная подложка под цифрой и подписью: читается и на светлом фоне (как размытая тень в AE)
+    fw = font(size, 800).getlength(num); sw_ = font(max(26, size * 0.32), 600).getlength(sub.upper()) + 3 * len(sub) if sub else 0
+    bw = max(fw, sw_) + size * 0.8; bx = x - size * 0.4 if align == 'l' else x - bw / 2 if align == 'm' else x - bw + size * 0.4
+    pad = Image.new('L', img.size, 0)
+    ImageDraw.Draw(pad).rounded_rectangle((bx, y - size * 1.15, bx + bw, y + (size * 0.95 if sub else size * 0.35)), int(size * 0.4), fill=int(110 * ease(u / 0.3) * a_out))
+    pad = pad.filter(ImageFilter.GaussianBlur(size * 0.45))
+    img.alpha_composite(Image.merge('RGBA', [Image.new('L', img.size, 0)] * 3 + [pad]))
     # акцентная линия над цифрой
     lw = 90 * ease_out(u / 0.35)
     d = ImageDraw.Draw(img)
