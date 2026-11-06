@@ -1,4 +1,4 @@
-# Harvey — FINAL CUT (picture, graphics, music, sound) with a temporary local voice (Piper, not the narrator).
+# Harvey — FINAL CUT (picture, graphics, music, sound) Narration: ElevenLabs voice Todd (VOICE=piper gives the old temporary voice).
 # The owner's choices from the demo reel: 1 satellite map zoom, 5 big numbers over footage, 6 real documents with the key
 # line marked, 7 chapter titles with grain and letter tracking, 8 whip / white-flash transitions, 9 photo push-in with a
 # highlight circle, 10 split screen. Narration: present tense, built only from facts in research/verification.md.
@@ -64,7 +64,7 @@ BEATS = [
  # ---------------- 02 THE NIGHT
  dict(id='n0', ch=2, shots=[dict(k='title', num='02', word='THE NIGHT', sub='SATURDAY, AUGUST 26, 2017', bg=('546494', 2.0))], hold=3.6, tin='flash'),
  dict(id='n1', ch=2, shots=[M('night_scene')], night=True, vo=[("Saturday night. Harvey's rain bands settle over Houston, and stay.", 0.6),
-      ("At 9:27, the weather service issues its first flash flood emergency.", 0.8), ("By two in the morning, five inches have fallen at Hobby Airport.", 0.6), ("By nine, more than eleven.", 0)], hold=1.6),
+      ("At nine twenty-seven, the weather service issues its first flash flood emergency.", 0.8), ("By two in the morning, five inches have fallen at Hobby Airport.", 0.6), ("By nine, more than eleven.", 0)], hold=1.6),
  dict(id='d1', ch=2, shots=[M('dickinson')], vo="South-east of the city, in Dickinson, the water is already inside Matthew Dusek's house. He is a Coast Guard chief.", hold=0.4),
  dict(id='d2', ch=2, shots=[C('551726', 12.0, push=0.05, label="Dusek's street in Dickinson, filmed Sept. 4, 2017 · voice: CPO Matthew Dusek, U.S. Coast Guard")],
       bite=('551726', 22.28, 25.80), hold=1.4),
@@ -164,7 +164,14 @@ MUSIC = [('188', 'o4', 'o7', 30.0, 3.0, 0.6, 0.050), ('678', 'o8', 'w0', 2.0, 0.
          ('520', 'A0', 'A6', 2.0, 2.0, 3.0, 0.042), ('546', 'E1', 'E3', 18.0, 3.0, 5.0, 0.045)]
 
 # ------------------------------------------------------------------ voice + timeline
+VOICE = os.environ.get('VOICE', 'todd')   # 'todd' = ElevenLabs narration in harvey/vo (tools/tts_final.py); 'piper' = temporary local voice
 def piper(text, out):
+    if VOICE == 'todd':
+        key = os.path.basename(out)[:-4]; mp = f'{ROOT}/vo/{key}.mp3'
+        if not (os.path.exists(mp) and open(mp[:-4] + '.txt').read() == text): raise SystemExit(f'missing narration {key}: run tools/tts_final.py')
+        if not (os.path.exists(out) and os.path.getmtime(out) > os.path.getmtime(mp)):
+            run(['ffmpeg', '-v', 'error', '-y', '-i', mp, '-af', 'silenceremove=start_periods=1:start_threshold=-50dB,areverse,silenceremove=start_periods=1:start_threshold=-50dB,areverse', '-ar', '48000', '-ac', '1', out])
+        return
     if os.path.exists(out) and os.path.exists(out + '.txt') and open(out + '.txt').read() == text: return
     run(['python3', '-m', 'piper', '-m', PIPER, '--length-scale', '1.08', '--sentence-silence', '0.42', '-f', out], input=text, text=True, capture_output=True)
     open(out + '.txt', 'w').write(text)
@@ -363,7 +370,7 @@ def sh_card(sp, n, dsec):
         lines = ['Archive footage and photos: DVIDS (U.S. Coast Guard, National Guard, Air Force Reserve, USACE, CBP) · NOAA',
                  'Data: NOAA/NHC, NWS, Iowa Environmental Mesonet, USGS 3DEP, U.S. Census TIGER · Documents: NHC, NWS, NTSB, U.S. Court of Federal Claims',
                  'Reconstruction based on the U.S. Coast Guard award citation · Every archive shot is labelled with its own place and date',
-                 'Music: Mixkit (Mixkit Stock Music Free License)', 'TEMPORARY VOICE — not the final narrator']
+                 'Music: Mixkit (Mixkit Stock Music Free License)', 'Narration: AI voice (ElevenLabs)']
         for k, s in enumerate(lines): d.text((W / 2, 520 + k * 62), s, font=F('m' if k < 4 else 'b', 27), fill=(205, 210, 216, a) if k < 4 else YEL + (a,), anchor='mm')
         return np.asarray(im)
     return f
@@ -485,7 +492,7 @@ if __name__ == '__main__':
     mix *= np.clip((TOTAL - tt) / 3.0, 0, 1)[:, None]; mix = mix / (np.abs(mix).max() + 1e-9) * 0.9
     with wave.open(TMP + '/mix.wav', 'w') as f:
         f.setnchannels(2); f.setsampwidth(2); f.setframerate(SR); f.writeframes((mix * 32767).astype(np.int16).tobytes())
-    os.makedirs(ROOT + '/final', exist_ok=True); out = ROOT + '/final/harvey_final_tempvoice.mp4'
+    os.makedirs(ROOT + '/final', exist_ok=True); out = ROOT + ('/final/harvey_final.mp4' if VOICE == 'todd' else '/final/harvey_final_tempvoice.mp4')
     run(['ffmpeg', '-v', 'error', '-y', '-i', TMP + '/video.mp4', '-i', TMP + '/mix.wav', '-filter_complex', '[1:a]loudnorm=I=-15:TP=-1.5:LRA=11[a]',
          '-map', '0:v', '-map', '[a]', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-shortest', '-movflags', '+faststart', out])
     json.dump([{k: v for k, v in x.items() if k not in ('shots',)} for x in TL], open(ROOT + '/final/timeline_final.json', 'w'), indent=1, default=str)
