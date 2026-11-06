@@ -24,14 +24,15 @@ def _inout(t, dur, t_in=0.25, d_in=0.45, d_out=0.35):
 
 # ---------- мини-карта ----------
 _MAPS = {}
-VARIANTS = {'main': ((64.5, 15.0), 1900), 'svalbard': ((71.5, 18.0), 2700), 'south': ((61.0, 9.0), 1100)}
+VARIANTS = {'main': ((64.5, 15.0), 1900), 'svalbard': ((71.5, 18.0), 2700), 'south': ((61.0, 9.0), 1100),
+            'isl': ((64.9, -18.6), 640, 'ISL')}   # третий элемент — подсвеченная страна (по умолчанию Норвегия)
 def _map(variant):
     if variant in _MAPS: return _MAPS[variant]
     p = os.path.join(CACHE, f'locator_{variant}.png')
-    c, wkm = VARIANTS[variant]; S = 420
+    c, wkm, *hl = VARIANTS[variant]; S = 420
     v = geo.View(c, c, wkm, S, S)
     if not os.path.exists(p):
-        geo.base_map(v, 'NOR').save(p)
+        geo.base_map(v, hl[0] if hl else 'NOR').save(p)
     _MAPS[variant] = (Image.open(p).convert('RGBA'), v); return _MAPS[variant]
 
 def locator(img, t, dur, lat, lon, name, variant='main', corner='br'):

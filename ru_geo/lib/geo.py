@@ -32,7 +32,7 @@ class Proj:
 
 # ---------- данные ----------
 _RAST = None
-RAST_BOX = (-30, 70, 30, 80)   # lon0, lon1, lat0, lat1 вырезки eur_hr.png (1/60° на пиксель)
+RAST_BOX = (-75, 70, 30, 84)   # lon0, lon1, lat0, lat1 вырезки eur_hr.png (1/60° на пиксель; с Гренландией для Исландии)
 def raster():
     global _RAST
     if _RAST is None: _RAST = np.asarray(Image.open(os.path.join(DATA, 'eur_hr.png')).convert('RGB')).astype(np.float32)

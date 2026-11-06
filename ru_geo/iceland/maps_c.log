@@ -1,0 +1,15 @@
+map bulgaria 5.03
+map hotspot 6.73
+gfx forest
+gfx livestock
+map ashcloud 8.83
+Traceback (most recent call last):
+  File "/home/user/sofia-studio/ru_geo/iceland/maps.py", line 503, in <module>
+    SCENES[k](dur + 0.3)
+    ~~~~~~~~~^^^^^^^^^^^
+  File "/home/user/sofia-studio/ru_geo/iceland/maps.py", line 331, in timeline
+    d.rounded_rectangle((x, Y - hh * kk, x + w, Y - 8), 6, fill=ACC + (255,))
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/PIL/ImageDraw.py", line 410, in rounded_rectangle
+    raise ValueError(msg)
+ValueError: y1 must be greater than or equal to y0
