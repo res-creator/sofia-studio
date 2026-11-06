@@ -1,7 +1,7 @@
 // Chapter 1, second half (c3–c6): 1954 "no system" -> the System of Play (1955) -> the clutch + 1958 patent -> 1960 fire -> the two ideas.
 const D = require('./doc.js'); const { E, W, H, clamp, lerp, ss, ease, hash, Scene, U, BH, brick, oddPiece, camera, render, C, PAL, IMG, HAS, cred, photo, print, credit, plate, LIGHT, DARK, studio, paper, fade, stamp, doc } = D;
 const toyCols = [C.yellow, C.red, C.blue, C.green];
-D.segment(module, { chapter: 'c1_system', from: 31.06, build: ({ at, L, T, fx }) => {
+D.segment(module, { chapter: 'c1_system', from: Object.fromEntries(JSON.parse(require('fs').readFileSync(require('path').join(__dirname, '../chapters/c1_system/cues.json'))).vo).c3 - 0.2, build: ({ at, L, T, fx }) => {
   const t = { y54: at('c3', '1954'), son: at('c3', 'son'), complain: at('c3', 'complain'), nothing: at('c3', 'Nothing'), so: at('c3', 'So', 1), town: at('c3', 'town'), every: at('c3', 'every'), adds: at('c3', 'adds'), launched: at('c3', 'launched'), year: at('c3', 'year'),
     problem: at('c4', 'problem'), hold: at('c4', 'hold'), tubes: at('c4', 'tubes'), y58: at('c4', '1958'), patent: at('c4', 'patent'), locked: at('c4', 'locked'),
     two: at('c5', 'Two'), fire: at('c5', 'fire'), wooden: at('c5', 'wooden'), rebuild: at('c5', 'rebuild'), focused: at('c5', 'focused'),

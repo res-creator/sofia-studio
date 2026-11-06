@@ -5,9 +5,10 @@ const E = require('./eng.js'); const { W, H, clamp, lerp, ss, ease, hash, key, S
 const S = require('../../figmakit/lib/scene.js');
 const path = require('path'), fs = require('fs'), { spawn } = require('child_process');
 const D = path.join(__dirname, '..');
-const w0 = S.words(path.join(D, 'chapters/c0_hook'), 0), O1 = 36.52, w1 = S.words(path.join(D, 'chapters/c1_system'), -O1);
+const w0 = S.words(path.join(D, 'chapters/c0_hook'), 0), O1 = JSON.parse(fs.readFileSync(path.join(D, 'chapters/c0_hook/cues.json'))).T, w1 = S.words(path.join(D, 'chapters/c1_system'), -O1);
 const a = (id, w, n = 0) => (id[0] === 'h' ? w0 : w1)(id, w, n);
-const T = 67.58;
+// the opening runs into chapter 1 and hands over to c1b.js just before line c3 (both read the same cue)
+const C1B = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(D, 'chapters/c1_system/cues.json'))).vo).c3 - 0.2, T = +(O1 + C1B).toFixed(2);
 // ---- word times ----
 const t = {
   y2004: a('h1', '2004'), lego: a('h1', 'LEGO'), thousands: a('h1', 'thousands'), most: a('h1', 'most'), exactly: a('h1', 'exactly'), set: a('h1', 'set'),

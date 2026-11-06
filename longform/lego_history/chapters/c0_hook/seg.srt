@@ -1,35 +1,35 @@
 1
-00:00:00,400 --> 00:00:04,990
+00:00:00,400 --> 00:00:04,310
 By 2004, LEGO had invented thousands of new pieces.
 
 2
-00:00:05,040 --> 00:00:07,730
+00:00:04,360 --> 00:00:07,790
 And most of them were used in exactly one set.
 
 3
-00:00:08,380 --> 00:00:14,790
+00:00:08,440 --> 00:00:14,450
 That same year, the company behind the world's most famous toy lost almost two billion Danish kroner.
 
 4
-00:00:14,840 --> 00:00:16,350
+00:00:14,500 --> 00:00:16,090
 About three hundred million dollars.
 
 5
-00:00:17,500 --> 00:00:19,490
+00:00:17,240 --> 00:00:19,050
 Those two facts are connected.
 
 6
-00:00:19,540 --> 00:00:25,530
+00:00:19,100 --> 00:00:25,150
 And the man who would have to untangle them was thirty-five years old, and had joined LEGO only three years earlier,
 
 7
-00:00:25,580 --> 00:00:27,130
+00:00:25,200 --> 00:00:26,750
 from a consulting firm.
 
 8
-00:00:27,980 --> 00:00:34,490
+00:00:27,600 --> 00:00:34,070
 To see how a box of bricks nearly sank its own maker, you have to start with one word that LEGO lived by.
 
 9
-00:00:34,540 --> 00:00:34,970
+00:00:34,120 --> 00:00:34,630
 System.

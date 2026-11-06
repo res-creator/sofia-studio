@@ -15,7 +15,8 @@ CU = [json.load(open(f'{R}/chapters/{c}/cues.json')) for c in CH]
 OFF = [0.0]
 for c in CU[:-1]: OFF.append(OFF[-1] + c['T'] + c.get('tail', 0))
 TT = OFF[-1] + CU[-1]['T'] + CU[-1].get('tail', 0); N = int(round(TT * SR)); print('total', round(TT, 2))
-SEGS = [('opening2', 0.0), ('c1b', OFF[1] + 31.06)] + [(f'c{i}', OFF[i]) for i in range(2, 8)]
+C1B = dict(CU[1]['vo'])['c3'] - 0.2
+SEGS = [('opening2', 0.0), ('c1b', OFF[1] + C1B)] + [(f'c{i}', OFF[i]) for i in range(2, 8)]
 OUT = f'{D}/how_lego_almost_destroyed_itself_v3'
 def readwav(p):
     a = np.frombuffer(subprocess.run(['ffmpeg', '-v', 'error', '-i', p, '-ac', '1', '-ar', str(SR), '-f', 'f32le', '-'], capture_output=True).stdout, np.float32).astype(float); return a
@@ -76,9 +77,10 @@ for k in ('lost', 'system'): put(mu, hit(), t[k], 0.5)
 put(mu, hit(), t['y1947'], 0.35)
 for o in OFF[1:]: put(mu, hit(), o + 0.3, 0.4)
 # --- mix: duck the music under the voice, short fade at the very end ---
-env = np.convolve((np.abs(vo) > 0.02).astype(float), np.ones(int(0.25 * SR)) / int(0.25 * SR), 'same'); dk = np.clip(env * 3, 0, 1)
+env = np.convolve((np.abs(vo) > 0.015).astype(float), np.ones(int(0.6 * SR)) / int(0.6 * SR), 'same'); dk = np.clip(env * 3, 0, 1)   # smooth duck: 0.6 s window
 fade = np.ones(N); fade[-int(1.5 * SR):] = np.linspace(1, 0, int(1.5 * SR))
-out = (vo * 1.0 + fx * 0.32 + mu * (1.0 - 0.55 * dk)) * fade; out = np.tanh(out * 1.1) * 0.9
+# music: about -5 dB overall and down to about -14 dB under the voice (owner: the music was covering the voice)
+out = (vo * 1.0 + fx * 0.28 + mu * 0.55 * (1.0 - 0.65 * dk)) * fade; out = np.tanh(out * 1.1) * 0.9
 w = wave.open(f'{D}/render/mix.wav', 'wb'); w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((out * 32767).astype(np.int16).tobytes()); w.close(); print('mix ok')
 # --- video concat + master ---
 lst = f'{D}/render/list.txt'; open(lst, 'w').write(''.join(f"file '{D}/render/{n}.mp4'\n" for n, _ in SEGS))

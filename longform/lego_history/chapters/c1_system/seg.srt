@@ -1,91 +1,91 @@
 1
-00:00:03,400 --> 00:00:10,450
+00:00:03,400 --> 00:00:11,310
 LEGO began in 1932 as a carpenter's workshop in Billund, Denmark, making wooden toys during the Depression.
 
 2
-00:00:10,500 --> 00:00:14,090
+00:00:11,360 --> 00:00:15,330
 The name came from two Danish words: "leg godt."
 
 3
-00:00:14,140 --> 00:00:15,490
+00:00:15,380 --> 00:00:16,450
 Play well.
 
 4
-00:00:16,040 --> 00:00:22,670
+00:00:17,000 --> 00:00:23,610
 In 1947, the carpenter, Ole Kirk Christiansen, bought a plastic injection-molding machine.
 
 5
-00:00:22,720 --> 00:00:27,090
+00:00:23,660 --> 00:00:28,350
 It reportedly cost more than twice what the company had earned the year before.
 
 6
-00:00:27,140 --> 00:00:30,410
+00:00:28,400 --> 00:00:31,710
 By 1949, it was making little plastic bricks.
 
 7
-00:00:31,260 --> 00:00:39,110
+00:00:32,560 --> 00:00:40,570
 According to LEGO's own history, in 1954 his son Godtfred heard a toy buyer complain that toys had no system.
 
 8
-00:00:39,160 --> 00:00:41,190
+00:00:40,620 --> 00:00:43,170
 Nothing connected to anything else.
 
 9
-00:00:41,240 --> 00:00:42,830
+00:00:43,220 --> 00:00:45,230
 So Godtfred built one.
 
 10
-00:00:42,880 --> 00:00:49,070
+00:00:45,280 --> 00:00:51,830
 A town to build, where every piece fits every other piece, and every new set adds to the ones you already have.
 
 11
-00:00:49,120 --> 00:00:50,890
+00:00:51,880 --> 00:00:53,870
 LEGO launched it the next year.
 
 12
-00:00:51,640 --> 00:00:53,410
+00:00:54,620 --> 00:00:56,270
 There was just one problem.
 
 13
-00:00:53,460 --> 00:00:55,470
+00:00:56,320 --> 00:00:58,450
 The bricks didn't hold together very well.
 
 14
-00:00:55,520 --> 00:00:58,470
+00:00:58,500 --> 00:01:01,390
 So Godtfred added tubes under each brick.
 
 15
-00:00:58,520 --> 00:01:01,550
+00:01:01,440 --> 00:01:04,410
 In 1958, LEGO filed the patent.
 
 16
-00:01:01,600 --> 00:01:03,030
+00:01:04,460 --> 00:01:05,890
 Now every brick locked.
 
 17
-00:01:04,180 --> 00:01:09,290
+00:01:07,040 --> 00:01:12,010
 Two years later, a fire destroyed the company's warehouse of wooden toys.
 
 18
-00:01:09,340 --> 00:01:11,030
+00:01:12,060 --> 00:01:13,870
 LEGO didn't rebuild that part.
 
 19
-00:01:11,080 --> 00:01:12,370
+00:01:13,920 --> 00:01:15,430
 It focused on the bricks.
 
 20
-00:01:13,420 --> 00:01:15,710
+00:01:16,480 --> 00:01:18,550
 Keep those two ideas in mind.
 
 21
-00:01:15,760 --> 00:01:19,510
+00:01:18,600 --> 00:01:22,550
 A system where the same pieces keep coming back, set after set.
 
 22
-00:01:19,560 --> 00:01:22,570
+00:01:22,600 --> 00:01:25,830
 And a company that grew stronger by doing less.
 
 23
-00:01:22,620 --> 00:01:25,430
+00:01:25,880 --> 00:01:28,530
 Four decades later, LEGO would forget both.

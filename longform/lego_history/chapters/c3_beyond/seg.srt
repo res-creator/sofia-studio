@@ -1,167 +1,167 @@
 1
-00:00:03,400 --> 00:00:07,210
+00:00:03,400 --> 00:00:07,130
 The family brought in a turnaround manager named Poul Plougmann.
 
 2
-00:00:07,260 --> 00:00:12,210
+00:00:07,180 --> 00:00:12,250
 The diagnosis sounded reasonable: children were changing faster than LEGO was.
 
 3
-00:00:12,260 --> 00:00:14,530
+00:00:12,300 --> 00:00:14,650
 Maybe a box of bricks wasn't enough anymore.
 
 4
-00:00:15,080 --> 00:00:18,650
+00:00:15,200 --> 00:00:18,650
 So LEGO set out to become more than a brick company.
 
 5
-00:00:18,700 --> 00:00:19,730
+00:00:18,700 --> 00:00:19,430
 Theme parks.
 
 6
-00:00:19,780 --> 00:00:20,710
+00:00:19,480 --> 00:00:19,950
 Clothing.
 
 7
-00:00:20,760 --> 00:00:21,690
+00:00:20,000 --> 00:00:20,970
 Video games.
 
 8
-00:00:21,740 --> 00:00:23,010
+00:00:21,020 --> 00:00:21,810
 Television.
 
 9
-00:00:23,060 --> 00:00:28,470
+00:00:21,860 --> 00:00:26,690
 And, for the first time, other people's worlds: Star Wars sets in 1999.
 
 10
-00:00:28,520 --> 00:00:30,030
+00:00:26,740 --> 00:00:28,550
 Harry Potter in 2001.
 
 11
-00:00:30,780 --> 00:00:32,810
+00:00:29,300 --> 00:00:31,370
 At first, it looked brilliant.
 
 12
-00:00:32,860 --> 00:00:35,270
+00:00:31,420 --> 00:00:34,230
 The Star Wars sets sold enormously.
 
 13
-00:00:35,320 --> 00:00:38,730
+00:00:34,280 --> 00:00:37,930
 A new line of buildable warriors called Bionicle became a hit.
 
 14
-00:00:39,680 --> 00:00:46,370
+00:00:38,880 --> 00:00:45,270
 In 2001, LEGO also hired a young economist from McKinsey into its strategy department.
 
 15
-00:00:46,420 --> 00:00:49,030
+00:00:45,320 --> 00:00:48,090
 His name was Jørgen Vig Knudstorp.
 
 16
-00:00:49,080 --> 00:00:52,230
+00:00:48,140 --> 00:00:51,430
 For now, he was one person watching the plan from the inside.
 
 17
-00:00:53,080 --> 00:00:57,330
+00:00:52,280 --> 00:00:56,710
 And inside, the plan was creating something nobody saw on the shelves.
 
 18
-00:00:57,380 --> 00:00:58,930
+00:00:56,760 --> 00:00:58,670
 Designers were free to invent.
 
 19
-00:00:58,980 --> 00:01:01,550
+00:00:58,720 --> 00:01:01,570
 And much of what they invented was new pieces.
 
 20
-00:01:01,600 --> 00:01:03,350
+00:01:01,620 --> 00:01:03,570
 A special piece for this set.
 
 21
-00:01:03,400 --> 00:01:04,810
+00:01:03,620 --> 00:01:05,310
 A new color for that one.
 
 22
-00:01:05,460 --> 00:01:08,370
+00:01:05,960 --> 00:01:08,810
 Every new piece needs its own steel mold.
 
 23
-00:01:08,420 --> 00:01:10,010
+00:01:08,860 --> 00:01:10,590
 Its own bin in the warehouse.
 
 24
-00:01:10,060 --> 00:01:12,310
+00:01:10,640 --> 00:01:13,250
 Its own line in the factory schedule.
 
 25
-00:01:12,360 --> 00:01:16,030
+00:01:13,300 --> 00:01:17,170
 In the late nineties, LEGO made about six thousand different elements.
 
 26
-00:01:16,080 --> 00:01:18,690
+00:01:17,220 --> 00:01:20,090
 Within a few years, it was more than twelve thousand.
 
 27
-00:01:18,740 --> 00:01:22,150
+00:01:20,140 --> 00:01:24,450
 And roughly nine out of ten new pieces were used just once.
 
 28
-00:01:23,200 --> 00:01:27,050
+00:01:25,500 --> 00:01:29,250
 Every one of those new pieces still clicked onto the old bricks.
 
 29
-00:01:27,100 --> 00:01:28,850
+00:01:29,300 --> 00:01:30,910
 That was never the problem.
 
 30
-00:01:28,900 --> 00:01:33,810
+00:01:30,960 --> 00:01:36,090
 The problem was that most of them were needed just once, and each one still had to be molded,
 
 31
-00:01:33,860 --> 00:01:34,990
+00:01:36,140 --> 00:01:37,390
 stored and tracked.
 
 32
-00:01:36,640 --> 00:01:40,110
+00:01:39,040 --> 00:01:42,430
 Some new toys hardly needed building at all.
 
 33
-00:01:40,160 --> 00:01:42,110
+00:01:42,480 --> 00:01:44,970
 Explore, a line for toddlers.
 
 34
-00:01:42,160 --> 00:01:45,870
+00:01:45,020 --> 00:01:49,010
 Jack Stone, with big chunky parts that snapped together in minutes.
 
 35
-00:01:45,920 --> 00:01:51,670
+00:01:49,060 --> 00:01:56,070
 And Galidor, a buildable action figure with its own TV show, video game and fast-food tie-in.
 
 36
-00:01:51,720 --> 00:01:52,630
+00:01:56,120 --> 00:01:57,110
 It flopped.
 
 37
-00:01:53,680 --> 00:01:55,590
+00:01:58,160 --> 00:02:00,690
 Why didn't the numbers scream?
 
 38
-00:01:55,640 --> 00:01:57,110
+00:02:00,740 --> 00:02:02,150
 Because of the movies.
 
 39
-00:01:57,160 --> 00:02:01,430
+00:02:02,200 --> 00:02:06,930
 New Star Wars films came out in 1999 and 2002.
 
 40
-00:02:01,480 --> 00:02:04,310
+00:02:06,980 --> 00:02:10,210
 Harry Potter in 2001 and 2002.
 
 41
-00:02:04,360 --> 00:02:05,970
+00:02:10,260 --> 00:02:12,190
 Each one sold boxes of LEGO.
 
 42
-00:02:06,020 --> 00:02:07,510
+00:02:12,240 --> 00:02:14,170
 And covered the cracks.
