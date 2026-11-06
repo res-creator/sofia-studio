@@ -106,6 +106,10 @@ def tag(img, title, t, sub=None, t_out=None):
     u = t - 0.1
     a_out = 1.0 if t_out is None or t < t_out else max(0.0, 1 - (t - t_out) / 0.3)
     x, y = 72, 62
+    tw = max(font(30, 700).getlength(title.upper()) + 4 * len(title), font(20, 500).getlength((sub or '').upper()) + 4 * len(sub or ''))
+    pad = Image.new('L', img.size, 0)
+    ImageDraw.Draw(pad).rounded_rectangle((x - 30, y - 26, x + tw + 70, y + (100 if sub else 78)), 26, fill=int(120 * ease(u / 0.3) * a_out))
+    img.alpha_composite(Image.merge('RGBA', [Image.new('L', img.size, 0)] * 3 + [pad.filter(ImageFilter.GaussianBlur(22))]))
     h = 58 * ease_out(u / 0.3)
     d = ImageDraw.Draw(img); d.rectangle((x, y, x + 5, y + h), fill=ACCENT + (int(255 * a_out),))
     k = ease_out((u - 0.15) / 0.45)
