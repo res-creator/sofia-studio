@@ -2681,3 +2681,30 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "petrol" — rubric answers4 (60-70 s). heroine = Jessica, friend = Charlie, narrator Sarah, tip Bella
+CAST.update({
+    "carmate": dict(voice="am_fenrir", speed=1.0, lang="en-gb", el="IKne3meq5aSn9XLyUdCD"),   # petrol: the friend who borrowed the car (Charlie)
+})
+EP["petrol"] = dict(
+    title='Друг вернул машину без бензина', rubric='answers4',
+    hook_title=[['«НА 5 МИНУТ»', 'd'], ['БАК ПУСТОЙ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    lines=[
+        ('hook_f', 'carmate', '[cheerfully] Here are your keys! Thanks!', 'Вот ключи! Спасибо!'),
+        ('hook', 'nar', 'Друг взял машину «на пять минут» и вернул с пустым баком. Четыре ответа.', ''),
+        ('o1_h', 'her', '[angrily] Where petrol?!', 'Где бензин?!'),
+        ('o1_f', 'carmate', '[puzzled] At the petrol station, obviously.', 'На заправке, очевидно.'),
+        ('o1_nar', 'nar', 'В лоб — и тебе объяснили, где бензин.', ''),
+        ('o2_h', 'her', '[politely] Next time, please fill up the tank.', 'В следующий раз, пожалуйста, заправь бак.'),
+        ('o2_f', 'carmate', '[delighted] Next time? Great — Saturday, then!', 'В следующий раз? Отлично — тогда в субботу!'),
+        ('o2_nar', 'nar', 'Вежливо — и машину уже заняли на субботу.', ''),
+        ('o3_h', 'her', '[calmly] Could you top it up? It was full when I lent it to you.', 'Можешь долить? Бак был полный, когда я дала тебе машину.'),
+        ('o3_f', 'carmate', '[sheepishly] Oh! Yes, sorry.', 'Ой! Да, прости.'),
+        ('o3_nar', 'nar', 'Как носитель: просьба плюс факт. Запоминай:', ''),
+        ('o3_tip', 'tip', 'Could you top it up?', ''),
+        ('o4_h', 'her', "[grandly] You returned my car with an empty tank, a parking ticket and someone's sunglasses. Shall I invoice you, or are you buying brunch?", 'Ты вернул машину с пустым баком, штрафом за парковку и чьими-то очками. Выставить тебе счёт — или ты угощаешь бранчем?'),
+        ('o4_f', 'carmate', '[nervously] Brunch. Definitely brunch.', 'Бранч. Однозначно бранч.'),
+        ('end_f', 'carmate', '[smugly] ...Those are your sunglasses. I found them in your car.', '…Это твои очки. Я нашёл их в твоей машине.'),
+        ('moral', 'nar', 'Мораль: прежде чем выставлять счёт — проверь бардачок.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши цифру и сохрани!', ''),
+    ],
+)
