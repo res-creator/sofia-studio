@@ -93,7 +93,7 @@ function render(ctx, sc, cam, R = {}) {
     const toCam = V.sub(cam.pos, p[0]); if (!fc.o.noCull && V.dot(n, toCam) <= 0) continue;
     const sp = p.map(P); if (sp.some(q => q[2] < 2)) continue; let z = 0, mx = 0; for (const q of sp) { z += q[2]; mx = Math.max(mx, q[2]); } z /= sp.length;
     if (sp.every(q => q[0] < -200 || q[0] > W + 200) || sp.every(q => q[1] < -200 || q[1] > H + 200)) continue;
-    list.push({ sp, z: z * 0.85 + mx * 0.15, n, d: Math.hypot(...toCam), fc }); }
+    list.push({ sp, z: fc.o.ground ? 1e9 - (fc.o.layer || 0) : z * 0.85 + mx * 0.15, n, d: Math.hypot(...toCam), fc }); }
   list.sort((a, b) => b.z - a.z);
   ctx.lineJoin = 'round';
   // soft contact shadows on the ground plane (y = R.groundY), before faces

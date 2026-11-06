@@ -8,3 +8,4 @@ film/*.log
 v3/node_modules/
 v3/opening_mix.wav
 v3/opening2_mix.wav
+v3/archive/fetch.log
