@@ -1,0 +1,1249 @@
+[
+ {
+  "id": "o1",
+  "ch": 0,
+  "hold": 6.6,
+  "nat": 1.6,
+  "s": 0.0,
+  "sp": 0.0,
+  "d": 6.6,
+  "parts": []
+ },
+ {
+  "id": "o2",
+  "ch": 0,
+  "hold": 2.6,
+  "nat": 1.6,
+  "s": 6.6,
+  "sp": 6.6,
+  "d": 2.6,
+  "parts": []
+ },
+ {
+  "id": "o3",
+  "ch": 0,
+  "hold": 5.0,
+  "nat": 1.6,
+  "tin": "whip",
+  "s": 9.2,
+  "sp": 9.2,
+  "d": 5.0,
+  "parts": []
+ },
+ {
+  "id": "o4",
+  "ch": 0,
+  "vo": "August 2017. For four days, a hurricane's rain falls on Houston, the fourth-largest city in America.",
+  "hold": 0.6,
+  "nat": 0.35,
+  "tin": "flash",
+  "s": 14.2,
+  "sp": 14.549999999999999,
+  "d": 8.452086,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/o4_0.wav",
+    7.502086,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "o5",
+  "ch": 0,
+  "vo": "Across Texas, more than a hundred and twenty-two thousand people will have to be rescued.",
+  "hold": 1.4,
+  "s": 22.652085999999997,
+  "sp": 23.002086,
+  "d": 6.486870999999999,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/o5_0.wav",
+    4.736871,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "o6",
+  "ch": 0,
+  "vo": "The flood was forecast, days in advance.",
+  "hold": 0.5,
+  "nat": 0.6,
+  "tin": "whip",
+  "s": 29.138956999999998,
+  "sp": 29.488957,
+  "d": 3.450635,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/o6_0.wav",
+    2.600635,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "o7",
+  "ch": 0,
+  "vo": "So why did so many people end up waiting on their roofs?",
+  "hold": 1.2,
+  "nat": 0.4,
+  "s": 32.589591999999996,
+  "sp": 32.939592,
+  "d": 4.359615,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/o7_0.wav",
+    2.809615,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "o8",
+  "ch": 0,
+  "hold": 5.2,
+  "tin": "flash",
+  "s": 36.949206999999994,
+  "sp": 36.949206999999994,
+  "d": 5.2,
+  "parts": []
+ },
+ {
+  "id": "w0",
+  "ch": 1,
+  "hold": 3.6,
+  "tin": "flash",
+  "s": 42.149207,
+  "sp": 42.149207,
+  "d": 3.6,
+  "parts": []
+ },
+ {
+  "id": "w1",
+  "ch": 1,
+  "vo": "Friday, August twenty-fifth. Two days ago, Harvey came back to life over the Gulf of Mexico. Now it is growing fast, and it is heading for Texas.",
+  "hold": 0.6,
+  "s": 45.749207,
+  "sp": 46.099207,
+  "d": 10.392992999999999,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/w1_0.wav",
+    9.442993,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "w2",
+  "ch": 1,
+  "vo": "At four in the afternoon, the National Hurricane Center warns of catastrophic, life-threatening flooding. Fifteen to thirty inches of rain. In places, forty.",
+  "hold": 1.0,
+  "tin": "whip",
+  "s": 56.142199999999995,
+  "sp": 56.4922,
+  "d": 11.361882,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/w2_0.wav",
+    10.011882,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "w3",
+  "ch": 1,
+  "vo": "The warning is clear. What no forecast can show is which streets will flood.",
+  "hold": 1.6,
+  "s": 67.504082,
+  "sp": 67.85408199999999,
+  "d": 6.503152,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/w3_0.wav",
+    4.553152,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "w4",
+  "ch": 1,
+  "vo": [
+   [
+    "Along the coast, counties order people to leave. Houston and Harris County do not.",
+    0.7
+   ],
+   [
+    "County Judge Ed Emmett explains why. With a storm surge, you know who lives in its path. With rain, you don't know which neighbourhoods will flood.",
+    0
+   ]
+  ],
+  "hold": 0.8,
+  "s": 74.007234,
+  "sp": 74.35723399999999,
+  "d": 15.776485,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/w4_0.wav",
+    5.145261,
+    0.7
+   ],
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/w4_1.wav",
+    8.781224,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "w5",
+  "ch": 1,
+  "vo": [
+   [
+    "And Houston remembers Rita.",
+    0.4
+   ],
+   [
+    "In 2005, millions tried to leave the city at once. Dozens of people died during that evacuation, twenty-three of them in one bus fire on the highway, the day before Rita came ashore.",
+    0
+   ]
+  ],
+  "hold": 1.0,
+  "s": 89.78371899999999,
+  "sp": 90.13371899999999,
+  "d": 14.639114999999999,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/w5_0.wav",
+    1.416417,
+    0.4
+   ],
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/w5_1.wav",
+    11.472698,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "w6",
+  "ch": 1,
+  "vo": [
+   [
+    "At about ten on Friday night, Harvey comes ashore near Rockport, a Category 4 hurricane.",
+    0.9
+   ],
+   [
+    "And then it stops.",
+    0
+   ]
+  ],
+  "hold": 2.6,
+  "pause": true,
+  "s": 104.422834,
+  "sp": 104.77283399999999,
+  "d": 10.815986,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/w6_0.wav",
+    5.990748,
+    0.9
+   ],
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/w6_1.wav",
+    0.975238,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "n0",
+  "ch": 2,
+  "hold": 3.6,
+  "tin": "flash",
+  "s": 115.23881999999999,
+  "sp": 115.23881999999999,
+  "d": 3.6,
+  "parts": []
+ },
+ {
+  "id": "n1",
+  "ch": 2,
+  "night": true,
+  "vo": [
+   [
+    "Saturday night. Harvey's rain bands settle over Houston, and stay.",
+    0.6
+   ],
+   [
+    "At 9:27, the weather service issues its first flash flood emergency.",
+    0.8
+   ],
+   [
+    "By two in the morning, five inches have fallen at Hobby Airport.",
+    0.6
+   ],
+   [
+    "By nine, more than eleven.",
+    0
+   ]
+  ],
+  "hold": 1.6,
+  "s": 118.83881999999998,
+  "sp": 119.18881999999998,
+  "d": 18.429683,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/n1_0.wav",
+    4.541542,
+    0.6
+   ],
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/n1_1.wav",
+    4.609161,
+    0.8
+   ],
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/n1_2.wav",
+    3.633923,
+    0.6
+   ],
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/n1_3.wav",
+    1.695057,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "d1",
+  "ch": 2,
+  "vo": "South-east of the city, in Dickinson, the water is already inside Matthew Dusek's house. He is a Coast Guard chief.",
+  "hold": 0.4,
+  "s": 137.26850299999998,
+  "sp": 137.61850299999998,
+  "d": 8.611995,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/d1_0.wav",
+    7.861995,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "d2",
+  "ch": 2,
+  "bite": [
+   "551726",
+   22.28,
+   25.8
+  ],
+  "hold": 1.4,
+  "s": 145.880498,
+  "sp": 146.23049799999998,
+  "d": 5.27,
+  "parts": []
+ },
+ {
+  "id": "m1",
+  "ch": 2,
+  "vo": "When daylight comes, the highways are rivers.",
+  "hold": 1.0,
+  "nat": 0.7,
+  "tin": "whip",
+  "s": 151.150498,
+  "sp": 151.500498,
+  "d": 3.8345350000000002,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/m1_0.wav",
+    2.484535,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "m2",
+  "ch": 2,
+  "vo": "Cars sit in water up to their windows.",
+  "hold": 0.8,
+  "nat": 0.7,
+  "s": 154.985033,
+  "sp": 155.33503299999998,
+  "d": 3.228186,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/m2_0.wav",
+    2.078186,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "m3",
+  "ch": 2,
+  "vo": "In fifteen hours, Harris County's 911 system takes fifty-six thousand calls.",
+  "hold": 1.6,
+  "nat": 0.5,
+  "s": 158.21321899999998,
+  "sp": 158.56321899999998,
+  "d": 7.824648999999999,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/m3_0.wav",
+    5.874649,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "m4",
+  "ch": 2,
+  "vo": "The county judge goes on the air with a request.",
+  "hold": 4.6,
+  "tin": "whip",
+  "s": 166.03786799999997,
+  "sp": 166.38786799999997,
+  "d": 7.341654999999999,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/m4_0.wav",
+    2.391655,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "p1",
+  "ch": 2,
+  "vo": [
+   [
+    "Early that Sunday, a Houston police sergeant, Steve Perez, sets off for work in the rain. His wife had asked him not to go, the police chief said later.",
+    0.6
+   ],
+   [
+    "He drowns in his patrol car on a flooded road in north Houston. He is not found for two days.",
+    0
+   ]
+  ],
+  "hold": 1.4,
+  "s": 173.37952299999998,
+  "sp": 173.72952299999997,
+  "d": 16.727234,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/p1_0.wav",
+    8.825624,
+    0.6
+   ],
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/p1_1.wav",
+    5.55161,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "r1",
+  "ch": 2,
+  "vo": "Those who cannot get out go up.",
+  "hold": 0.4,
+  "nat": 0.3,
+  "tin": "whip",
+  "s": 190.106757,
+  "sp": 190.45675699999998,
+  "d": 2.363787,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/r1_0.wav",
+    1.613787,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "r2",
+  "ch": 2,
+  "vo": "Onto their roofs. And wait.",
+  "hold": 4.4,
+  "pause": true,
+  "s": 192.470544,
+  "sp": 192.82054399999998,
+  "d": 6.714127,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/r2_0.wav",
+    1.964127,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "f0",
+  "ch": 3,
+  "hold": 3.4,
+  "tin": "flash",
+  "s": 199.18467099999998,
+  "sp": 199.18467099999998,
+  "d": 3.4,
+  "parts": []
+ },
+ {
+  "id": "f1",
+  "ch": 3,
+  "vo": "From as far away as Cape Cod, Massachusetts, Coast Guard helicopters are arriving over Houston.",
+  "hold": 1.2,
+  "s": 202.584671,
+  "sp": 202.93467099999998,
+  "d": 7.099569,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/f1_0.wav",
+    5.549569,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "f2",
+  "ch": 3,
+  "vo": "Most calls are just addresses from 911. One of the Cape Cod pilots, Simon Greene, said later that they followed the roads. The pilot who was not flying typed each address into a phone, and called out the turns.",
+  "hold": 0.6,
+  "nat": 0.5,
+  "tin": "whip",
+  "s": 209.68424,
+  "sp": 210.03423999999998,
+  "d": 13.725057,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/f2_0.wav",
+    12.775057,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "f3",
+  "ch": 3,
+  "hold": 21.5,
+  "music_up": true,
+  "s": 223.40929699999998,
+  "sp": 223.40929699999998,
+  "d": 21.5,
+  "parts": []
+ },
+ {
+  "id": "f4",
+  "ch": 3,
+  "hold": 5.4,
+  "nat": 0.6,
+  "s": 244.90929699999998,
+  "sp": 244.90929699999998,
+  "d": 5.4,
+  "parts": []
+ },
+ {
+  "id": "k1",
+  "ch": 3,
+  "vo": "One of the rescue swimmers flying those calls is Brendan Kiley.",
+  "hold": 0.8,
+  "tin": "flash",
+  "s": 250.309297,
+  "sp": 250.65929699999998,
+  "d": 4.667823,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/k1_0.wav",
+    3.517823,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "k2",
+  "ch": 3,
+  "vo": [
+   [
+    "On his second day in Houston, he is lowered to a one-story house. Five people are waiting on the roof. The water is almost over the top of a car beside it.",
+    0.6
+   ],
+   [
+    "A woman pushes a big plastic storage bin toward him. He thinks it is luggage, and tells her there is no room for it. She pushes it back.",
+    0.9
+   ],
+   [
+    "Inside are her two children. A toddler, holding a newborn baby.",
+    1.4
+   ],
+   [
+    "He carries the bin down first, with the children inside. Then he helps their mother down. The basket goes up with all three of them together.",
+    0
+   ]
+  ],
+  "hold": 1.2,
+  "s": 254.97711999999999,
+  "sp": 255.32711999999998,
+  "d": 34.464468000000004,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/k2_0.wav",
+    9.768073,
+    0.6
+   ],
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/k2_1.wav",
+    8.281995,
+    0.9
+   ],
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/k2_2.wav",
+    4.228073,
+    1.4
+   ],
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/k2_3.wav",
+    7.736327,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "k3",
+  "ch": 3,
+  "vo": [
+   [
+    "Over three days, Kiley's crew rescues a hundred and twelve people.",
+    0.6
+   ],
+   [
+    "When the heaviest rain bands come through, Greene said, the pilots cannot see. They set down in a ballpark or a parking lot, wait for the band to pass, and lift off again.",
+    0
+   ]
+  ],
+  "hold": 0.8,
+  "nat": 0.5,
+  "s": 289.44158799999997,
+  "sp": 289.791588,
+  "d": 15.579524,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/k3_0.wav",
+    3.680363,
+    0.6
+   ],
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/k3_1.wav",
+    10.149161,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "g1",
+  "ch": 3,
+  "vo": "On the ground, Harris County's firefighters and police record more than sixty-one thousand rescues. No one counts the people saved by neighbours in their own boats.",
+  "hold": 1.0,
+  "nat": 0.6,
+  "tin": "whip",
+  "s": 305.02111199999996,
+  "sp": 305.371112,
+  "d": 10.802562,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/g1_0.wav",
+    9.452562,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "l1",
+  "ch": 3,
+  "vo": "Army National Guard trucks drive into the water. Sergeant Anthony Lara's first mission is in Dickinson.",
+  "hold": 0.3,
+  "nat": 0.5,
+  "s": 315.823674,
+  "sp": 316.173674,
+  "d": 6.724059,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/l1_0.wav",
+    6.074059,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "l2",
+  "ch": 3,
+  "bite": [
+   "549208",
+   18.0,
+   26.15
+  ],
+  "hold": 0.6,
+  "lead": 0.0,
+  "s": 322.547733,
+  "sp": 322.547733,
+  "d": 8.749999999999998,
+  "parts": []
+ },
+ {
+  "id": "l3",
+  "ch": 3,
+  "vo": "In League City, Specialist Kyle Wampler's unit pulls out an elderly man who can barely walk.",
+  "hold": 0.3,
+  "nat": 0.5,
+  "s": 331.297733,
+  "sp": 331.647733,
+  "d": 6.222789,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/l3_0.wav",
+    5.572789,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "l4",
+  "ch": 3,
+  "bite": [
+   "549218",
+   51.0,
+   55.8
+  ],
+  "hold": 0.8,
+  "lead": 0.0,
+  "s": 337.52052199999997,
+  "sp": 337.52052199999997,
+  "d": 5.599999999999997,
+  "parts": []
+ },
+ {
+  "id": "y1",
+  "ch": 3,
+  "vo": "On Tuesday, a New York Air National Guard crew lifts a family out of a flooded neighbourhood.",
+  "hold": 1.0,
+  "nat": 0.5,
+  "tin": "whip",
+  "s": 343.120522,
+  "sp": 343.470522,
+  "d": 6.53966,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/y1_0.wav",
+    5.18966,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "y2",
+  "ch": 3,
+  "hold": 7.0,
+  "nat": 0.6,
+  "music_up": true,
+  "s": 349.660182,
+  "sp": 349.660182,
+  "d": 7.0,
+  "parts": []
+ },
+ {
+  "id": "D0",
+  "ch": 4,
+  "hold": 3.6,
+  "tin": "flash",
+  "s": 356.660182,
+  "sp": 356.660182,
+  "d": 3.6,
+  "parts": []
+ },
+ {
+  "id": "D1",
+  "ch": 4,
+  "vo": [
+   [
+    "West of downtown, a different danger is building, behind two dams.",
+    0.6
+   ],
+   [
+    "Addicks and Barker were built in the 1940s to hold floodwater back before it reaches the city. On August twenty-fifth, as planned, the Army Corps of Engineers closes their gates.",
+    0
+   ]
+  ],
+  "hold": 1.6,
+  "s": 360.26018200000004,
+  "sp": 360.61018200000007,
+  "d": 18.179071000000004,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/D1_0.wav",
+    4.318912,
+    0.6
+   ],
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/D1_1.wav",
+    11.310159,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "D2",
+  "ch": 4,
+  "vo": "The basins fill. And inside them, on private land, whole neighbourhoods have been built. More than nine thousand homes and businesses there flood, from water that is being held back.",
+  "hold": 1.0,
+  "s": 378.43925300000006,
+  "sp": 378.7892530000001,
+  "d": 11.872721,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/D2_0.wav",
+    10.522721,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "D3",
+  "ch": 4,
+  "vo": "Downstream, Buffalo Bayou is already running high. Around midnight on August twenty-eighth, with the pools still rising, the Corps starts releasing water.",
+  "hold": 1.2,
+  "s": 390.3119740000001,
+  "sp": 390.6619740000001,
+  "d": 10.689093,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/D3_0.wav",
+    9.139093,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "D4",
+  "ch": 4,
+  "vo": "The reason is the safety of the dams. The government had estimated that a dam failure would put six hundred thousand lives at stake.",
+  "hold": 1.6,
+  "tin": "whip",
+  "s": 401.0010670000001,
+  "sp": 401.3510670000001,
+  "d": 9.603016,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/D4_0.wav",
+    7.653016,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "D5",
+  "ch": 4,
+  "vo": "The releases flood about four thousand more homes along the bayou. On August thirtieth, both reservoirs reach their highest levels on record.",
+  "hold": 1.0,
+  "s": 410.6040830000001,
+  "sp": 410.95408300000014,
+  "d": 9.003016,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/D5_0.wav",
+    7.653016,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "D6",
+  "ch": 4,
+  "vo": [
+   [
+    "Years later, federal courts rule that by flooding these homes to protect others, the government took private property, and must pay for it.",
+    0.6
+   ],
+   [
+    "One court also praises the Corps' professionalism, and finds that at the levels the water actually reached, the risk of a dam failure was minimal.",
+    0
+   ]
+  ],
+  "hold": 1.4,
+  "s": 419.6070990000001,
+  "sp": 419.95709900000014,
+  "d": 17.593899999999998,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/D6_0.wav",
+    7.500045,
+    0.6
+   ],
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/D6_1.wav",
+    7.743855,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "R0",
+  "ch": 5,
+  "hold": 3.4,
+  "tin": "flash",
+  "s": 437.20099900000014,
+  "sp": 437.20099900000014,
+  "d": 3.4,
+  "parts": []
+ },
+ {
+  "id": "R1",
+  "ch": 5,
+  "vo": "Harvey finally drifts east. Its heaviest rain of all falls near Beaumont and Port Arthur. One gauge near Nederland records more than sixty inches.",
+  "hold": 1.4,
+  "s": 440.6009990000001,
+  "sp": 440.95099900000014,
+  "d": 10.728594,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/R1_0.wav",
+    8.978594,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "R2",
+  "ch": 5,
+  "hold": 6.0,
+  "nat": 0.7,
+  "tin": "whip",
+  "s": 451.3295930000001,
+  "sp": 451.3295930000001,
+  "d": 6.0,
+  "parts": []
+ },
+ {
+  "id": "R3",
+  "ch": 5,
+  "vo": "Near Beaumont, an Air Force Reserve crew lowers a pararescueman to a flooded house. He comes back up with an older woman in the basket.",
+  "hold": 1.2,
+  "nat": 0.5,
+  "s": 457.3295930000001,
+  "sp": 457.6795930000001,
+  "d": 9.470044999999999,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/R3_0.wav",
+    7.920045,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "R4",
+  "ch": 5,
+  "vo": "In Vidor, a pararescue team from the Alaska Air National Guard works the streets by boat.",
+  "hold": 0.3,
+  "nat": 0.5,
+  "tin": "whip",
+  "s": 466.7996380000001,
+  "sp": 467.1496380000001,
+  "d": 6.129909,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/R4_0.wav",
+    5.479909,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "R5",
+  "ch": 5,
+  "bite": [
+   "547400",
+   14.0,
+   18.95
+  ],
+  "hold": 0.8,
+  "lead": 0.0,
+  "s": 472.92954700000007,
+  "sp": 472.92954700000007,
+  "d": 5.749999999999999,
+  "parts": []
+ },
+ {
+  "id": "R6",
+  "ch": 5,
+  "vo": "In Orange, near the Louisiana line, people walk out along flooded roads.",
+  "hold": 1.0,
+  "nat": 0.6,
+  "s": 478.67954700000007,
+  "sp": 479.0295470000001,
+  "d": 5.8314509999999995,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/R6_0.wav",
+    4.481451,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "R7",
+  "ch": 5,
+  "vo": [
+   [
+    "West of Houston, the water is still rising after the rain has stopped.",
+    0.5
+   ],
+   [
+    "The Brazos River at Richmond crests on September first, more than ten feet above flood stage. More than two hundred thousand people are under an evacuation order.",
+    0
+   ]
+  ],
+  "hold": 1.2,
+  "s": 484.5109980000001,
+  "sp": 484.8609980000001,
+  "d": 15.380294999999998,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/R7_0.wav",
+    3.993832,
+    0.5
+   ],
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/R7_1.wav",
+    9.336463,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "R8",
+  "ch": 5,
+  "vo": "In Pecan Grove, Army National Guard trucks and a Texas search-and-rescue team take people out, with their children, their bags and their dogs.",
+  "hold": 0.8,
+  "nat": 0.5,
+  "tin": "whip",
+  "s": 499.8912930000001,
+  "sp": 500.2412930000001,
+  "d": 9.358254,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/R8_0.wav",
+    8.208254,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "R9",
+  "ch": 5,
+  "hold": 9.0,
+  "nat": 0.7,
+  "music_up": true,
+  "s": 509.24954700000006,
+  "sp": 509.24954700000006,
+  "d": 9.0,
+  "parts": []
+ },
+ {
+  "id": "A0",
+  "ch": 6,
+  "hold": 3.4,
+  "tin": "flash",
+  "s": 518.2495470000001,
+  "sp": 518.2495470000001,
+  "d": 3.4,
+  "parts": []
+ },
+ {
+  "id": "A1",
+  "ch": 6,
+  "vo": "When the water goes down, everything that was inside the houses comes out to the kerb.",
+  "hold": 1.2,
+  "nat": 0.5,
+  "s": 521.6495470000001,
+  "sp": 521.9995470000001,
+  "d": 5.9269609999999995,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/A1_0.wav",
+    4.376961,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "A2",
+  "ch": 6,
+  "vo": "In Dickinson, Matthew Dusek has just talked to his insurance adjuster.",
+  "hold": 0.3,
+  "nat": 0.0,
+  "s": 527.5765080000001,
+  "sp": 527.9265080000001,
+  "d": 4.5393419999999995,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/A2_0.wav",
+    3.889342,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "A3",
+  "ch": 6,
+  "bite": [
+   "551726",
+   35.84,
+   46.04
+  ],
+  "hold": 1.0,
+  "lead": 0.0,
+  "s": 532.1158500000001,
+  "sp": 532.1158500000001,
+  "d": 11.199999999999996,
+  "parts": []
+ },
+ {
+  "id": "A4",
+  "ch": 6,
+  "vo": "By the end, more than a hundred rain gauges have recorded forty inches or more: the very top of what was forecast.",
+  "hold": 1.4,
+  "tin": "whip",
+  "s": 543.3158500000002,
+  "sp": 543.6658500000002,
+  "d": 8.623107,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/A4_0.wav",
+    6.873107,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "A5",
+  "ch": 6,
+  "vo": [
+   [
+    "Harvey kills sixty-eight people directly, thirty-six of them in Harris County.",
+    0.8
+   ],
+   [
+    "In the county, more than a hundred and fifty thousand houses flood.",
+    0
+   ]
+  ],
+  "hold": 1.4,
+  "nat": 0.3,
+  "s": 551.9389570000002,
+  "sp": 552.2889570000002,
+  "d": 10.827914,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/A5_0.wav",
+    4.702041,
+    0.8
+   ],
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/A5_1.wav",
+    3.575873,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "A6",
+  "ch": 6,
+  "bite": [
+   "551726",
+   90.56,
+   97.52
+  ],
+  "hold": 1.4,
+  "lead": 0.3,
+  "s": 562.7668710000002,
+  "sp": 563.0668710000001,
+  "d": 8.659999999999993,
+  "parts": []
+ },
+ {
+  "id": "E1",
+  "ch": 7,
+  "vo": [
+   [
+    "The flood was forecast.",
+    0.5
+   ],
+   [
+    "But no forecast could name the streets, and there was no general order to leave Houston. When the downpour came on Saturday night, many people could only wait to be rescued.",
+    0
+   ]
+  ],
+  "hold": 1.4,
+  "nat": 0.4,
+  "tin": "fade",
+  "s": 571.4268710000001,
+  "sp": 571.7768710000001,
+  "d": 13.0261,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/E1_0.wav",
+    1.520907,
+    0.5
+   ],
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/E1_1.wav",
+    9.255193,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "E2",
+  "ch": 7,
+  "vo": [
+   [
+    "On one of those roofs, a mother had already done what she could.",
+    0.6
+   ],
+   [
+    "She put her two children in a plastic bin, and kept them dry, until Brendan Kiley reached them.",
+    0
+   ]
+  ],
+  "hold": 3.6,
+  "tin": "fade",
+  "s": 584.4529710000002,
+  "sp": 584.8029710000002,
+  "d": 13.083333,
+  "parts": [
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/E2_0.wav",
+    3.390113,
+    0.6
+   ],
+   [
+    "/tmp/claude-0/-home-user-sofia-studio/0b1fd057-7e0a-5874-a5e9-12098ed46dec/scratchpad/final/vo/E2_1.wav",
+    5.14322,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "E3",
+  "ch": 7,
+  "hold": 9.0,
+  "tin": "fade",
+  "s": 597.5363040000002,
+  "sp": 597.5363040000002,
+  "d": 9.0,
+  "parts": []
+ }
+]

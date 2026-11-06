@@ -4,3 +4,4 @@ sthelens/final/*.mp4 filter=lfs diff=lfs merge=lfs -text
 deepwater/final/*.mp4 filter=lfs diff=lfs merge=lfs -text
 harvey/rough/*.mp4 filter=lfs diff=lfs merge=lfs -text
 harvey/review/*.mp4 filter=lfs diff=lfs merge=lfs -text
+harvey/final/*.mp4 filter=lfs diff=lfs merge=lfs -text

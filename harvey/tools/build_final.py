@@ -144,7 +144,7 @@ BEATS = [
  dict(id='A5', ch=6, shots=[C('548574', 52.0, push=0.05, dim=0.55, nums=[dict(v=68, fmt='{:,}', cap='direct deaths · 36 in Harris County', src='NHC', t=0.0),
       dict(v=154170, fmt='{:,}', cap='houses flooded in Harris County', src='Harris County Flood Control District', t=0.5)])],
       vo=[("Harvey kills sixty-eight people directly, thirty-six of them in Harris County.", 0.8), ("In the county, more than a hundred and fifty thousand houses flood.", 0)], hold=1.4, nat=0.3),
- dict(id='A6', ch=6, shots=[C('551726', 90.26, label='CPO Matthew Dusek, U.S. Coast Guard · Dickinson, Sept. 4, 2017')], bite=('551726', 90.56, 97.52), hold=1.4, lead=0.3),
+ dict(id='A6', ch=6, shots=[C('551726', 90.26)], bite=('551726', 90.56, 97.52), hold=1.4, lead=0.3),
  # ---------------- ENDING: the answer, then one person
  dict(id='E1', ch=7, shots=[C('547686', 380.0, push=0.05, label='Pecan Grove, Sept. 1, 2017')],
       vo=[("The flood was forecast.", 0.5), ("But no forecast could name the streets, and there was no general order to leave Houston. When the downpour came on Saturday night, many people could only wait to be rescued.", 0)], hold=1.4, nat=0.4, tin='fade'),
