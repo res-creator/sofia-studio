@@ -13,9 +13,10 @@ def build():
     paras, shots, t = [], [], PRE
     for name, _ in PARAS:
         j = json.load(open(f'{D}/vo/{name}.json'))
-        end = j['speech_end'] + 0.12
-        paras.append(dict(name=name, start=t, file=f'{D}/vo/{name}.mp3', len=end))
-        for k, c in j['cuts'].items(): shots.append([k, t + c])
+        trim = max(0.0, j['speech_start'] - 0.06)          # тишину в начале файла озвучки отрезаем
+        end = j['speech_end'] + 0.12 - trim
+        paras.append(dict(name=name, start=t, file=f'{D}/vo/{name}.mp3', len=end, trim=trim))
+        for k, c in j['cuts'].items(): shots.append([k, t + max(0.0, c - trim)])
         t += end + GAP_AFTER[name]
     total = t + TAIL
     shots[0][1] = 0.0
@@ -26,6 +27,20 @@ def build():
         out.append(dict(key=k, start=s, **SHOTS[k]))
     for i, sh in enumerate(out):
         sh['dur'] = round(((out[i + 1]['start'] if i + 1 < len(out) else round(total * FPS) / FPS) - sh['start']) * FPS) / FPS
+    # непрерывная инфографика на несколько планов подряд (глубина фьорда, график): каждый следующий план продолжает анимацию
+    run_total, i = {}, 0
+    while i < len(out):
+        g = out[i].get('gfx')
+        if g and not out[i].get('tail'):
+            j, acc = i, 0.0
+            while j < len(out) and out[j].get('gfx') == g and not out[j].get('tail'):
+                out[j]['ss'] = round(acc, 3); acc += out[j]['dur']; j += 1
+            run_total[g] = dict(total=acc, first=out[i]['dur']); i = j
+        else: i += 1
+    for sh in out:
+        if sh.get('gfx'):
+            sh['gfx_total'] = run_total[sh['gfx']]['total']; sh['gfx_first'] = run_total[sh['gfx']]['first']
+            if sh.get('tail'): sh['ss'] = round(max(0.0, sh['gfx_total'] - sh['dur'] - 0.2), 3)
     return paras, out, round(total * FPS) / FPS
 
 if __name__ == '__main__':

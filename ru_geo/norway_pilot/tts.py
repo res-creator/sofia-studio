@@ -3,7 +3,7 @@
 import json, re, subprocess, os, sys, time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from script import PARAS
-VOICE = 'fa3e3b7d3c2a44d88d9f018bc45db1ce'
+VOICE = '48ec28a45588422b977a86460c11977f'   # «Энергичный Рассказчик» (Fish Audio, публичная модель; голос №1, выбран владелицей)
 MODEL = 's2.1-pro-free'
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'vo'); os.makedirs(OUT, exist_ok=True)
 only = sys.argv[1:]
