@@ -5,3 +5,5 @@ chapters/*/fx.wav
 chapters/*/mix.py
 mix.wav
 film/*.log
+v3/node_modules/
+v3/opening_mix.wav
