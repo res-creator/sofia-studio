@@ -2681,3 +2681,46 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "deposit" — RUBRIC «A1 vs C2», compact form (as halves). heroine = Jessica, landlord = Callum, narrator Sarah, tip Bella
+CAST.update({
+    "landlord": dict(voice="am_onyx", speed=1.0, lang="en-gb", el="N2lVS1w4EtoT3dr4eOWO"),   # deposit: the landlord with a magnifying glass (Callum)
+})
+EP["deposit"] = dict(
+    title='Хозяин не возвращает депозит', rubric='levels_compact',
+    hook_title=[['ХОЗЯИН:', 'd'], ['«ДЕПОЗИТ НЕ ВЕРНУ»', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut", card_fade=True,
+    chunks={'c2_h': [['Under the deposit protection scheme,', 'По закону о защите депозитов'], ['you must return it within ten days —', 'ты обязан вернуть его за десять дней —'], ["or I'll report it.", 'или я подам жалобу.']]},
+    lines=[
+        ('hook_l', 'landlord', "[sweetly] About your deposit... there's a tiny scratch.", 'Насчёт твоего депозита… тут крошечная царапина.'),
+        ('hook', 'nar', 'Ты съезжаешь, а хозяин с лупой ищет, за что не вернуть депозит. Проверим!', ''),
+        ('a1_h', 'her', '[angrily] No! My money! Give!', 'Нет! Мои деньги! Дай!'),
+        ('a1_l', 'landlord', '[smugly] Give? Yes — you give me fifty for the scratch.', 'Дай? Да — ты дашь мне пятьдесят за царапину.'),
+        ('a1_nar', 'nar', 'Три слова — и ты ещё должна.', ''),
+        ('a2_h', 'her', "[indignant] I didn't do nothing!", 'Я не делала ничего!'),
+        ('a2_l', 'landlord', "[triumphantly] Didn't do nothing? So you did something!", 'Не делала ничего? Значит, что-то делала!'),
+        ('a2_nar', 'nar', 'Двойное отрицание — и вышло «что-то сделала». Правильно так:', ''),
+        ('a2_tip', 'tip', "I didn't do anything.", ''),
+        ('b1_h', 'her', "[politely] I'd like my deposit back, please. The flat is in good condition.", 'Верните, пожалуйста, депозит. Квартира в хорошем состоянии.'),
+        ('b1_l', 'landlord', '[squinting] Good condition? I found a hair.', 'В хорошем? Я нашёл волос.'),
+        ('b1_nar', 'nar', 'Вежливо. Но у него уже пинцет.', ''),
+        ('b2_h', 'her', "[annoyed] You're nitpicking.", 'Ты придираешься.'),
+        ('b2_l', 'landlord', "[proudly] Exactly. I'm thorough.", 'Именно. Я очень тщательный.'),
+        ('b2_nar', 'nar', 'Nitpicking — придирки к мелочам. А он принял за комплимент. Запоминай:', ''),
+        ('b2_tip', 'tip', 'Stop nitpicking.', ''),
+        ('c1_h', 'her', '[calmly] I have photos from the day I moved in. The scratch was already there.', 'У меня есть фото со дня заезда. Царапина уже была.'),
+        ('c1_l', 'landlord', '[uneasy] ...Ah. Those photos.', '…А. Те самые фото.'),
+        ('c1_nar', 'nar', 'Приём: доказательства вместо эмоций. Запоминай:', ''),
+        ('c1_tip', 'tip', 'The scratch was already there.', ''),
+        ('c2_h', 'her', "[coolly] Under the deposit protection scheme, you must return it within ten days — or I'll report it.", 'По закону о защите депозитов ты обязан вернуть его за десять дней — или я подам жалобу.'),
+        ('c2_l', 'landlord', '[nervously] Ten days? How about ten minutes?', 'Десять дней? Может, десять минут?'),
+        ('c2_nar', 'nar', 'Мораль: знай свои права.', ''),
+        ('outro', 'nar', 'Тебе вернули депозит? Пиши: да или нет — и сохрани!', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'ДЕПОЗИТ', 'ok': False, 'note': 'ты ещё должна'},
+           'A2': {'type': 'swap', 'bad': "I didn't do nothing!", 'bad_note': 'два «не» = «что-то сделала»', 'good': ["I didn't do", 'anything.']},
+           'B1': {'type': 'eq', 'en': "I'd like my deposit back, please.", 'ru': '= Верните, пожалуйста, депозит.', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'nitpicking', 'ru': 'придирки к мелочам', 'ex': ['Stop nitpicking.', 'хватит придираться.'], 'icon': 'bell'},
+           'C1': {'type': 'eq', 'en': 'The scratch was already there.', 'ru': '= Царапина уже была.', 'ex': [['I have photos from the day I moved in.', '= у меня есть фото со дня заезда.']]},
+           'C2': {'type': 'c2', 'vocab': [['deposit protection scheme', '= защита депозита'], ['report', '= подать жалобу']], 'moral': ['ЗНАЙ', 'СВОИ', 'ПРАВА'], 'moral_at': 0.35}},
+)
