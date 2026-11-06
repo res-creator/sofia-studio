@@ -21,11 +21,12 @@ def word_times(lid):
         out.append([word, a, b])
     return out
 
-cue("impact", 0.05, 0.9); cue("whoosh", 0.0, 0.5)
+if EPN != "taxi": cue("impact", 0.05, 0.9); cue("whoosh", 0.0, 0.5)
 if EPN == "airport": cue("chime", 0.1, 0.55)
 if EPN == "wrongchat":  # phone hook: SEND -> SENT TO: MR GRANT -> READ -> her eyes -> his head turns
     cue("send", 0.3, 0.8); cue("pop", 0.45, 0.7); cue("msg", 0.95, 0.8); cue("whoosh", 1.3, 0.45); cue("gasp", 1.9, 0.7)
-for k in range(1, 4): cue("pop", 0.2 + 0.35 * k, 0.6)
+for k in range(1, 4):
+    if EPN != "taxi": cue("pop", 0.2 + 0.35 * k, 0.6)   # taxi: the title is on screen from frame 0 (no pop-in)
 h0 = 0.35
 if EPN == "checkout":  # conflict first: UNEXPECTED ITEM! on the screen + error buzz, her line, then the short narrator line
     cue("err", 0.05, 0.8); h0 = say("hook_her", 0.6) + 0.25
@@ -98,14 +99,20 @@ if EPN == "photo":  # cover = her posing by the fountain, friend with phone; ONE
     hev = dict(cut=round(h0 - 0.05, 3)); cue("impact", h0 - 0.05, 0.7)
     for k in range(8): cue("shutter", h0 + 0.05 + 0.1 * k, 0.5)
     h0 = say("hook_h2", h0 + 1.1); hev["count"] = round(hev["cut"] + 0.1, 3); h0 += 0.5
+if EPN == "taxi":  # second 0 = action: the cab has just pulled up, the meter ticks, "Here we are, love. Forty-five quid." at 0.15 s under the title overlay; her stunned face; METER close-up, then the HOTEL 200 m behind
+    cue("register", 0.02, 0.35); cue("tick", 0.6, 0.35); cue("tick", 1.8, 0.35); h0 = say("hook_d", 0.15) + 0.22
+    hev = dict(stun=round(h0 - 0.2, 3)); cue("gasp", h0 - 0.15, 0.55)
 e = say("hook", h0); hw = word_times("hook") or []
 def find(word):
     for w, a, b in hw:
         if w.lower().strip("«»!?.,").startswith(word.lower()): return h0 + a
     return None
 stamp_t = find(E["stamp_word"]) or (e - 1.0); cue("stamp", stamp_t, 0.8)
-t = e + 0.45
-scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "newhair", "idea") else {})))
+if EPN == "taxi":
+    hev["meter"] = round((find("круг") or h0 + 1.5) - 0.05, 3); hev["hotel"] = round((find("отел") or h0 + 2.3) - 0.05, 3); hev["back"] = round(stamp_t - 0.15, 3)
+    cue("register", hev["meter"] + 0.1, 0.4); cue("tick", hev["meter"] + 0.45, 0.4); cue("ding", hev["hotel"] + 0.1, 0.4)
+t = e + (0.22 if EPN == "taxi" else 0.45)
+scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "newhair", "idea", "taxi") else {})))
 
 TICKS = lambda back: [("tick", -back + 0.15 + 0.6 * k, 0.6) for k in range(int(back / 0.6))]
 if EPN == "gym":
@@ -781,6 +788,17 @@ elif EPN == "gift":
         C2=[("c2_her", 1.3, [("MONTH", -1.3, 0), ("chime", -1.25, 0.7)]), ("c2_x", 2.7, [("OPEN", -2.4, 0), ("pop", -2.4, 0.6), ("scratch", -1.7, 0.6)] + TICKS(1.6)), ("c2_her2", 0.6, [("WINK", ("e", 0.05), 0), ("rimshot", ("e", 0.15), 0.9)]), ("c2_nar", 1.2, [])],
     )
     INTRO = 1.15
+elif EPN == "taxi":   # London black cab at night at the kerb: her on the pavement (left), George the cabbie in the driver's seat behind the open window (right), the meter on the dashboard. Compact: INTRO 0.6, tight gaps
+    LV = dict(
+        A1=[("a1_h", 0, []), ("a1_d", 0.12, [("POINT", ("e", -1.5), 0), ("whoosh", ("e", -1.45), 0.3), ("METER", ("e", 0.05), 0), ("register", ("e", 0.15), 0.45), ("tick", ("e", 0.5), 0.4)]), ("a1_nar", 0.75, [])],
+        A2=[("a2_h", 0, []), ("a2_d", 0.12, [("BIGBEN", ("e", 0.05), 0), ("whoosh", ("e", 0.2), 0.45), ("bell", ("e", 0.35), 0.35), ("whoosh", ("e", 1.0), 0.45), ("bell", ("e", 1.15), 0.35)]),
+            ("a2_nar", 1.6, []), ("a2_tip", 0.35, [("ding", 0.05, 0.6)])],
+        B1=[("b1_h", 0, []), ("b1_d", 0.12, [("PRINT", ("e", -1.3), 0), ("zip", ("e", -1.25), 0.35), ("METER", ("e", 0.05), 0), ("register", ("e", 0.2), 0.5)]), ("b1_nar", 0.8, [])],
+        B2=[("b2_h", 0, []), ("b2_d", 0.12, [("PAT", ("e", -0.7), 0), ("tick", ("e", -0.6), 0.5), ("tick", ("e", -0.2), 0.5), ("register", ("e", 0.0), 0.4)]), ("b2_nar", 0.3, []), ("b2_tip", 0.35, [("ding", 0.05, 0.6)])],
+        C1=[("c1_h", 0, [("APP", 0.15, 0), ("msg", 0.2, 0.45)]), ("c1_d", 0.12, [("NOD", 0.0, 0), ("deflate", 0.1, 0.45), ("FLIP", ("e", 0.05), 0), ("register", ("e", 0.15), 0.45)]), ("c1_nar", 0.7, []), ("c1_tip", 0.35, [("ding", 0.05, 0.6)])],
+        C2=[("c2_h", 0, [("PHOTO", 0.1, 0), ("shutter", 0.2, 0.6)]), ("c2_d", 1.65, [("METER", -0.85, 0), ("gulp", -1.35, 0.5), ("FLIP", -0.45, 0), ("register", -0.4, 0.55), ("ding", -0.3, 0.45)]), ("c2_nar", 0.45, [("impact_soft", 0.0, 0.5)])],
+    )
+    INTRO = 0.6
 else:
     LV = dict(
         A1=[("a1_x", 0, []), ("a1_her", 0.3, []), ("a1_nar", 0.6, [("pop", 0.15, 0.5)])],
@@ -811,14 +829,14 @@ for L in ["A1", "A2", "B1", "B2", "C1", "C2"]:
             if n == "thud" and lid == "c2_x3": ev["plop"] = round(tt, 3)
             if n == "gulp" or n == "nope": ev["ins"] = round(c - 1.6, 3)
         ev[lid] = c; c = say(lid, c); prev_end = c
-    t = c + (0.42 if EPN == "mic" else 0.55)
+    t = c + (0.42 if EPN == "mic" else 0.2 if EPN == "taxi" else 0.55)
     if EPN == "lift": cue("doors", t - 0.45, 0.5)
     scenes.append(dict(id=L, s=round(s, 3), e=round(t, 3), ev={k: (round(v, 3) if not isinstance(v, list) else v) for k, v in ev.items()}))
 s = t
 cue("whoosh", s, 0.8); cue("impact", s + 0.3, 0.8)
-e = say("outro", s + 0.8)
+e = say("outro", s + (0.3 if EPN == "taxi" else 0.8))
 for k in range(6): cue("pop", s + 1.1 + 0.15 * k, 0.5)
-t = e + 1.3
+t = e + (0.9 if EPN == "taxi" else 1.3)
 scenes.append(dict(id="outro", s=round(s, 3), e=round(t, 3)))
 
 for sp in speech:
@@ -839,7 +857,7 @@ for sp in speech:
             t0 = cc / tot * sp["d"]; cc += a; wt.append([w, round(t0, 3), round(cc / tot * sp["d"], 3)]); cc += p_
     sp["words"] = wt
 cfg = {k: E.get(k) for k in ["title", "hook_title", "stamp", "next", "cards"]}
-for k in ["camera", "chunks"]:   # new episodes only: camera mode ("hard_cut") and long lines split into meaning chunks
+for k in ["camera", "chunks", "card_fade"]:   # new episodes only: camera mode ("hard_cut") and long lines split into meaning chunks
     if E.get(k): cfg[k] = E[k]
 cfg["setting"] = EPN
 json.dump(dict(fps=FPS, dur=round(t, 3), ep=EPN, cfg=cfg, scenes=scenes, speech=speech, sfx=sfx), open(f"eps/{EPN}/timeline.json", "w"), ensure_ascii=False)
