@@ -11,14 +11,14 @@ D.segment(module, { chapter: 'c6_outsourcing', build: ({ at, L, T, fx }) => {
   fx('brake', t.smoothly, 0.4); fx('clank', t.molds, 0.5); fx('tick', t.ready, 0.4); fx('error', t.short, 0.4);
   fx('rev', t.back - 0.3, 0.4); for (const x of [0, 0.3, 0.6]) fx('whoosh', t.back + x, 0.25); fx('ding', t.core, 0.4); fx('click', t.brick, 0.9);
   const S = [];
-  S.push({ t0: 0, fn: (ctx, g, lt) => card(ctx, lt, 6, 'The Fix That Broke', '2006 — 2008', { c0: '#3a2a12', c1: '#140e05', acc: '#E3B341' }) });
+  S.push({ t0: 0, card: 1, fn: (ctx, g, lt) => card(ctx, lt, 6, 'The Fix That Broke', '2006 — 2008', { c0: '#3a2a12', c1: '#140e05', acc: '#E3B341' }) });
   // 1 · map: production flows out of Billund
   S.push({ t0: L.m1 - 0.2, light: 1, fn: (ctx, g, lt) => { const to = map(ctx, -40, 38, 9.5, { Mexico: '#E3B341', Hungary: '#E3B341', Czechia: '#E3B341', Denmark: '#C91A14' }, { sea: '#c9dade', land: '#e8e0cc' });
     const [bx, by] = to(9.12, 55.73); pin(ctx, bx, by, 1); plate(ctx, 'BILLUND', bx + 22, by - 44, 1, { size: 24 });
-    const dest = [['MEXICO', -100.3, 25.7, t.mexico], ['HUNGARY', 21.7, 47.9, t.hungary], ['CZECH REPUBLIC', 14.1, 50.1, t.czech]];
+    const dest = [['MEXICO · PACKING', -100.3, 25.7, t.mexico], ['HUNGARY · MOLDING', 21.7, 47.9, t.hungary], ['CZECH REPUBLIC · MOLDING', 14.1, 50.1, t.czech]];
     dest.forEach(([n, lo, la, t0]) => { const [x, y] = to(lo, la), u = ease.inOut(clamp((g - t0 + 0.5) / 0.7)); arc(ctx, bx, by, x, y, Math.abs(x - bx) > 400 ? 260 : 80, u, '#C91A14', 6); if (u >= 1) { pin(ctx, x, y, clamp((g - t0 - 0.2) / 0.3), '#1f1f1f'); plate(ctx, n, x + 20, y + 30, 1, { size: 26, bg: 'rgba(20,20,22,0.88)' }); } });
     plate(ctx, 'A RESCUE CAN MAKE MISTAKES TOO', 120, 130, ss((g - t.mistakes) / 0.3) * (1 - ss((g - t.moved) / 0.3)), { size: 50 });
-    plate(ctx, '2006 · MOST BRICK PRODUCTION MOVES OUT', 120, 130, ss((g - t.moved) / 0.3), { size: 48, bar: '#C91A14' }); plate(ctx, 'TO A CONTRACT MANUFACTURER: FLEXTRONICS', 120, 220, ss((g - t.flex) / 0.3), { size: 36 }); } });
+    plate(ctx, '2006 · A LARGE SHARE OF PRODUCTION MOVES OUT', 120, 130, ss((g - t.moved) / 0.3), { size: 48, bar: '#C91A14' }); plate(ctx, 'SOURCE: LEGO GROUP HISTORY', 80, 1040, ss((g - t.flex) / 0.3), { size: 22, bg: 'rgba(0,0,0,0.5)' }); plate(ctx, 'TO A CONTRACT MANUFACTURER: FLEXTRONICS', 120, 220, ss((g - t.flex) / 0.3), { size: 36 }); } });
   // 2 · it didn't go smoothly: the timeline (molds arrive before the factory is ready); a box with a gap
   S.push({ t0: L.m2 - 0.2, light: 1, fn: (ctx, g, lt) => { paper(ctx, '#efe9de');
     const x0 = 320, x1 = 1640, rows = [['FACTORY READY', '#237841', 0.55, 1.0, L.m2], ['MOLDS ARRIVE', '#C91A14', 0.18, 0.45, t.molds]];
@@ -30,7 +30,7 @@ D.segment(module, { chapter: 'c6_outsourcing', build: ({ at, L, T, fx }) => {
       ctx.strokeStyle = '#C91A14'; ctx.lineWidth = 5; ctx.setLineDash([10, 8]); ctx.strokeRect(10, -90, 105, 160); ctx.restore(); plate(ctx, 'SOME PARTS RAN SHORT', 1380, 1030, b, { size: 36, align: 'center' }); }
     plate(ctx, 'IT DID NOT GO SMOOTHLY', 120, 130, ss((g - t.smoothly + 0.2) / 0.3), { size: 54, bar: '#C91A14' }); plate(ctx, 'ILLUSTRATIVE TIMELINE', 320, 290, 1, { size: 22, bg: 'none', col: '#5a4a30' }); } });
   // 3 · 2008: production comes back (arrows reverse) -> the lesson
-  S.push({ t0: L.m3 - 0.2, fn: (ctx, g, lt) => {
+  S.push({ t0: L.m3 - 0.2, beats: [t.lesson - 0.3], fn: (ctx, g, lt) => {
     if (g < t.lesson - 0.3) { const to = map(ctx, -40, 38, 9.5, { Denmark: '#C91A14' }, { sea: '#c9dade', land: '#e8e0cc' }); const [bx, by] = to(9.12, 55.73);
       [[-100.3, 25.7], [21.7, 47.9], [14.1, 50.1]].forEach(([lo, la], i) => { const [x, y] = to(lo, la), u = ease.inOut(clamp((g - t.back + 0.3 - i * 0.2) / 0.8)); arc(ctx, x, y, bx, by, Math.abs(x - bx) > 400 ? -260 : -80, u, '#237841', 6); });
       pin(ctx, bx, by, 1); plate(ctx, '2008 · DEAL ENDED, PRODUCTION BACK', 120, 130, ss((g - t.y08) / 0.3), { size: 50, bar: '#237841' }); return; }

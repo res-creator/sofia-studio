@@ -1,5 +1,5 @@
 // Chapter 5 · The Outsider (2004–2005): the CEO box changes hands (family line -> outsider, age 35) -> survival checklist -> Legoland sold (photo + map of
-// four parks, 70/30) -> elements cut 12,900 -> ~7,000 -> the same few pieces build police station, fire truck, race car -> retailers' calendar ->
+// four parks, 70/30) -> elements cut 14,000 -> ~7,000 -> the same few pieces build police station, fire truck, race car -> retailers' calendar ->
 // adult fans: the 1998 robot brick (photo), not sued, 2005 convention -> back in profit: three results 2003/2004/2005.
 const D = require('./doc.js'); const { E, W, H, clamp, lerp, ss, ease, hash, Scene, U, BH, brick, oddPiece, camera, render, C, PAL, IMG, HAS, cred, photo, print, credit, plate, LIGHT, DARK, studio, paper, fade, stamp, doc, map, pin, arc, card, house } = D;
 D.segment(module, { chapter: 'c5_outsider', build: ({ at, L, T, fx }) => {
@@ -21,7 +21,7 @@ D.segment(module, { chapter: 'c5_outsider', build: ({ at, L, T, fx }) => {
   fx('murmur', t.fans, 0.3); fx('shutter', t.robot - 0.2, 0.5); fx('stamp', t.sue + 0.2, 0.5); fx('applause', t.convention, 0.4);
   fx('rise', t.worked, 0.5); fx('kaching', t.profit, 0.6); fx('crowdcheer', t.five + 0.3, 0.2);
   const S = [];
-  S.push({ t0: 0, fn: (ctx, g, lt) => card(ctx, lt, 5, 'The Outsider', '2004 — 2005', { c0: '#1d3a2c', c1: '#08130d', acc: '#9EE09E' }) });
+  S.push({ t0: 0, card: 1, fn: (ctx, g, lt) => card(ctx, lt, 5, 'The Outsider', '2004 — 2005', { c0: '#1d3a2c', c1: '#08130d', acc: '#9EE09E' }) });
   // 1 · October 2004: the family line breaks — the CEO box goes to an outsider
   S.push({ t0: L.o1 - 0.2, fn: (ctx, g, lt) => { ctx.fillStyle = '#14202a'; ctx.fillRect(0, 0, W, H);
     const fam = [['OLE KIRK CHRISTIANSEN', 'FOUNDER'], ['GODTFRED KIRK CHRISTIANSEN', 'SON'], ['KJELD KIRK KRISTIANSEN', 'GRANDSON · CEO 1979–2004']];
@@ -42,7 +42,7 @@ D.segment(module, { chapter: 'c5_outsider', build: ({ at, L, T, fx }) => {
       else { ctx.strokeStyle = '#C91A14'; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(-250, y - 2); ctx.lineTo(80, y - 2); ctx.stroke(); } ctx.globalAlpha = 1; });
     ctx.restore(); plate(ctx, '3 YEARS STUDYING HOW LEGO MADE AND LOST MONEY', W / 2, 1030, ss((g - t.three) / 0.3), { size: 34, align: 'center' }); } });
   // 3 · the family backs him; Legoland is sold: photo -> four parks on a map, 70 % -> Blackstone, €375M
-  S.push({ t0: L.o3 - 0.2, fn: (ctx, g, lt) => {
+  S.push({ t0: L.o3 - 0.2, beats: [t.y05 - 0.2], fn: (ctx, g, lt) => {
     if (g < t.y05 - 0.2) { if (HAS('legoland')) { photo(ctx, IMG.legoland, lt / 9, { z0: 1.05, z1: 1.2 }); credit(ctx, cred('legoland') + ' · park opened 1968', 1); } else { paper(ctx, '#cfe0d4'); ctx.save(); ctx.translate(W / 2 + 200, H / 2 + 60); ctx.rotate(-0.05); ctx.fillStyle = '#fff8e8'; ctx.shadowColor = 'rgba(0,0,0,0.3)'; ctx.shadowBlur = 30; ctx.fillRect(-420, -200, 840, 400); ctx.shadowColor = 'transparent';
         ctx.strokeStyle = '#C91A14'; ctx.lineWidth = 6; ctx.setLineDash([16, 10]); ctx.beginPath(); ctx.moveTo(220, -200); ctx.lineTo(220, 200); ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle = '#C91A14'; ctx.font = `900 76px ${E.F}`; ctx.fillText('LEGOLAND', -380, -60);
         ctx.fillStyle = '#1f1f1f'; ctx.font = `800 40px ${E.F}`; ctx.fillText('BILLUND · DENMARK', -380, 10); ctx.font = `700 30px ${E.F}`; ctx.fillText('ADMIT ONE', -380, 120); ctx.save(); ctx.translate(320, 0); ctx.rotate(-Math.PI / 2); ctx.font = `900 40px ${E.F}`; ctx.fillText('1968', -50, 14); ctx.restore(); ctx.restore(); }
@@ -54,13 +54,13 @@ D.segment(module, { chapter: 'c5_outsider', build: ({ at, L, T, fx }) => {
       ctx.fillStyle = '#1f1f1f'; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, R, -Math.PI / 2, -Math.PI / 2 + 6.283 * 0.7 * p); ctx.fill(); ctx.fillStyle = '#C91A14'; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, R, -Math.PI / 2 + 6.283 * 0.7, -Math.PI / 2 + 6.283); ctx.fill(); ctx.restore();
       plate(ctx, '70% → BLACKSTONE', cx, cy - R - 60, p, { size: 40, align: 'center' }); plate(ctx, 'LEGO KEEPS 30%', cx, cy + R + 56, p, { size: 30, align: 'center', bg: 'rgba(201,26,20,0.95)' }); }
     plate(ctx, '2005 · FOUR LEGOLAND PARKS SOLD', 120, 140, ss((g - t.y05) / 0.3), { size: 50, bar: '#C91A14' }); plate(ctx, '€375 MILLION', 120, 240, ss((g - t.euros) / 0.3), { size: 70, bg: 'rgba(20,20,22,0.88)' }); } });
-  // 4 · the pieces: 12,900 -> about 7,000 (the tile field from chapter 3 halves)
+  // 4 · the pieces: about 14,000 -> about 7,000 (the tile field from chapter 3 halves)
   S.push({ t0: L.o4 - 0.2, light: 1, fn: (ctx, g, lt) => { paper(ctx, '#ece6da');
-    const u = ease.inOut(clamp((g - t.half + 0.3) / 1.6)), n = Math.round(lerp(12900, 7000, u)), cols = 160, cell = 11, x0 = 80, y0 = 260;
-    for (let i = 0; i < 12900; i++) { const c = i % cols, r = Math.floor(i / cols); if (r > 66) break; const keep = hash(i * 1.37) > 0.46 || i < 3000; const a = keep ? 1 : 1 - u;
+    const u = ease.inOut(clamp((g - t.half + 0.3) / 1.6)), n = Math.round(lerp(14000, 7000, u)), cols = 160, cell = 11, x0 = 80, y0 = 260;
+    for (let i = 0; i < 14000; i++) { const c = i % cols, r = Math.floor(i / cols); if (r > 66) break; const keep = hash(i * 1.37) > 0.46 || i < 3000; const a = keep ? 1 : 1 - u;
       if (a <= 0.02) continue; ctx.globalAlpha = a; ctx.fillStyle = keep ? '#237841' : '#C91A14'; ctx.fillRect(x0 + c * cell, y0 + r * cell, cell - 2, cell - 2); } ctx.globalAlpha = 1;
     plate(ctx, `${(Math.round(n / 100) * 100).toLocaleString('en-US')} DIFFERENT ELEMENTS`, 80, 140, 1, { size: 60, bar: '#237841' });
-    plate(ctx, 'DESIGNERS WORK WITH WHAT ALREADY EXISTS', 80, 220, ss((g - t.existed) / 0.3), { size: 36 }); plate(ctx, 'CUT ROUGHLY IN HALF', W - 80, 990, ss((g - t.half) / 0.3), { size: 50, align: 'right', bg: 'rgba(35,120,65,0.95)' }); } });
+    plate(ctx, 'DESIGNERS WORK WITH WHAT ALREADY EXISTS', 80, 220, ss((g - t.existed) / 0.3), { size: 36 }); plate(ctx, 'CUT ROUGHLY IN HALF', W - 80, 990, ss((g - t.half) / 0.3), { size: 50, align: 'right', bg: 'rgba(35,120,65,0.95)' }); plate(ctx, 'SOURCE: INGENIØREN (2006) · ROBERTSON, BRICK BY BRICK (2013)', 80, 1040, 1, { size: 22, bg: 'rgba(0,0,0,0.5)' }); } });
   // 5 · with fewer pieces: the same classic bricks build a police station, a fire truck, a race car
   S.push({ t0: L.o5 - 0.2, light: 1, fn: (ctx, g, lt) => { studio(ctx, '#eef3f6', '#e2e9ee', '#c6d1d8');
     const cam = camera([lerp(-60, 60, ss(lt / 7)), 150, 440], [-10, 16, 0], 38), sc = new Scene(); sc.box({ x: -300, y: -2, z: -140 }, 600, 2, 280, [200, 205, 210], { ground: 1, edge: 0 });
@@ -81,7 +81,7 @@ D.segment(module, { chapter: 'c5_outsider', build: ({ at, L, T, fx }) => {
     const x = ss((g - t.planned) / 0.4); if (x > 0) { ctx.save(); ctx.strokeStyle = '#C91A14'; ctx.lineWidth = 8; ctx.beginPath(); ctx.moveTo(190, 230); ctx.lineTo(190 + 900 * x, 230); ctx.stroke(); ctx.restore(); }
     plate(ctx, 'WHAT THE BIG RETAILERS SAID ABOUT LEGO', 120, 120, ss((g - t.retailers) / 0.3), { size: 40 }); plate(ctx, 'NOW THE YEAR IS PLANNED AROUND THEM', W - 140, 960, ss((g - t.planned) / 0.3), { size: 44, align: 'right', bg: 'rgba(0,87,168,0.95)' }); } });
   // 7 · adult fans: 1998 robot brick (photo, 2006), cracked open and published, not sued -> 2005 fan convention
-  S.push({ t0: L.o7 - 0.2, fn: (ctx, g, lt) => { ctx.fillStyle = '#121a22'; ctx.fillRect(0, 0, W, H);
+  S.push({ t0: L.o7 - 0.2, beats: [t.y2005 - 0.2], fn: (ctx, g, lt) => { ctx.fillStyle = '#121a22'; ctx.fillRect(0, 0, W, H);
     if (g < t.y2005 - 0.2) { if (HAS('rcx')) { photo(ctx, IMG.rcx, (g - L.o7) / 12, { rect: [W * 0.42, 0, W * 0.58, H], z0: 1.05, z1: 1.25 }); credit(ctx, cred('rcx') + ' · the robot brick, launched 1998', 1); }
       else { const cam = camera([60, 70, 150], [0, 14, 0], 36), sc = new Scene(); const X = 0; sc.box({ x: -36, y: 0, z: -24 }, 72, 30, 48, [200, 196, 60], {}); sc.box({ x: -30, y: 30, z: -20 }, 60, 6, 40, [70, 72, 78], {});
         sc.box({ x: -16, y: 36.2, z: -8 }, 32, 0.6, 16, [140, 170, 140], { emissive: 0.9 }); for (const [x, z] of [[-24, -16], [0, -16], [24, -16], [-24, 16], [0, 16], [24, 16]]) sc.box({ x: x - 6, y: 30, z: z - 3 }, 12, 6.5, 6, [60, 60, 66], {});

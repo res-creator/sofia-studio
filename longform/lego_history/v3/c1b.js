@@ -84,7 +84,7 @@ D.segment(module, { chapter: 'c1_system', from: 31.06, build: ({ at, L, T, fx })
     stamp(ctx, 'NOW EVERY BRICK LOCKS', W - 420, 700, ss((g - t.locked) / 0.25), -0.1, 46);
     credit(ctx, 'US Patent 3,005,282 (filed in the US 28 Jul 1958, granted 1961) · public domain', ss((lt - 0.3) / 0.4)); } });
   // 6 · 1960: fire in the wooden-toy warehouse (night) -> morning: only bricks remain
-  S.push({ t0: L.c5 - 0.25, light: 0, fn: (ctx, g, lt) => {
+  S.push({ t0: L.c5 - 0.25, beats: [t.rebuild - 0.2], light: 0, fn: (ctx, g, lt) => {
     if (g < t.rebuild - 0.2) { ctx.fillStyle = '#0b0d14'; ctx.fillRect(0, 0, W, H);
       const cam = camera([0, 60, 300], [0, 40, 0], 42), sc = new Scene(), burn = ss((g - t.fire + 0.3) / 1.5);
       // a shelf of wooden toys (the warehouse), consumed from the left

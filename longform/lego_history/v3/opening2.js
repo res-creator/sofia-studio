@@ -41,10 +41,13 @@ function photo(ctx, im, u, o = {}) { const r = o.rect || [0, 0, W, H], [rx, ry, 
 function print(ctx, im, cx, cy, w, rot, o = {}) { const h = w * im.height / im.width; ctx.save(); ctx.translate(cx, cy); ctx.rotate(rot);
   ctx.shadowColor = 'rgba(0,0,0,0.35)'; ctx.shadowBlur = 50; ctx.shadowOffsetY = 22; ctx.fillStyle = '#f6f1e6'; ctx.fillRect(-w / 2 - 20, -h / 2 - 20, w + 40, h + (o.foot ?? 70)); ctx.shadowColor = 'transparent';
   if (o.filter) ctx.filter = o.filter; ctx.drawImage(im, -w / 2, -h / 2, w, h); ctx.filter = 'none'; ctx.restore(); return h; }
-function credit(ctx, s, a = 1) { if (a <= 0) return; ctx.save(); ctx.globalAlpha = a * 0.85; ctx.font = `600 20px ${E.F}`; ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
+const M = require('./motion.js'), DOC = require('./doc.js');
+function credit(ctx, s, a = 1) { if (a <= 0) return; if (!M.overlay(c => credit0(c, s, a))) return; credit0(ctx, s, a); }
+function credit0(ctx, s, a) { ctx.save(); ctx.globalAlpha = a * 0.85; ctx.font = `600 20px ${E.F}`; ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
   const w = ctx.measureText(s).width; ctx.fillStyle = 'rgba(0,0,0,0.45)'; ctx.fillRect(W - w - 44, H - 52, w + 24, 34); ctx.fillStyle = '#f4efe6'; ctx.fillText(s, W - 32, H - 24); ctx.restore(); }
 // big caption with a plate (readable on phones)
-function plateText(ctx, s, x, y, a, o = {}) { if (a <= 0) return; const size = o.size || 52; ctx.save(); ctx.globalAlpha = a; ctx.font = `${o.weight || 800} ${size}px ${E.F}`; ctx.textBaseline = 'middle';
+const plateText = (ctx, s, x, y, a, o = {}) => DOC.plate(ctx, s, x, y, a, o);
+function plateText0(ctx, s, x, y, a, o = {}) { if (a <= 0) return; const size = o.size || 52; ctx.save(); ctx.globalAlpha = a; ctx.font = `${o.weight || 800} ${size}px ${E.F}`; ctx.textBaseline = 'middle';
   const w = ctx.measureText(s).width, al = o.align || 'left', x0 = al === 'center' ? x - w / 2 : al === 'right' ? x - w : x, pad = size * 0.35;
   ctx.fillStyle = o.bg || 'rgba(14,14,16,0.72)'; ctx.fillRect(x0 - pad, y - size * 0.72, w + 2 * pad, size * 1.44); if (o.bar) { ctx.fillStyle = o.bar; ctx.fillRect(x0 - pad, y - size * 0.72, 8, size * 1.44); }
   ctx.fillStyle = o.col || '#F4EFE6'; ctx.fillText(s, x0 + (o.bar ? 6 : 0), y + 2); ctx.restore(); }
@@ -165,7 +168,7 @@ shot(O1 - 0.1, (ctx, g) => { const lt = g - O1 + 0.1; photo(ctx, IMG.ole, lt / 3
   E.label(ctx, 'CHAPTER 1', W / 2, 380, ss((lt - 0.2) / 0.4), { size: 26, letter: 10, align: 'center', col: '#E3B341' });
   E.type(ctx, 'THE SYSTEM', W / 2, 540, lt - 0.35, { size: 150 });
   E.type(ctx, '1932 — 1960', W / 2, 640, lt - 0.9, { size: 48, weight: 600, col: 'rgba(244,239,230,0.75)' });
-  const k = ss((lt - 2.9) / 0.5); if (k > 0) { ctx.fillStyle = `rgba(232,224,206,${k})`; ctx.fillRect(0, 0, W, H); } }, { sepiaIn: 1 });
+  const k = ss((lt - 2.9) / 0.5); if (k > 0) { ctx.fillStyle = `rgba(232,224,206,${k})`; ctx.fillRect(0, 0, W, H); } }, { sepiaIn: 1, card: 1 });
 // G · map: Europe -> Denmark -> Billund, 1932
 const LON0 = 9.11, LAT0 = 55.73;
 function drawMap(ctx, cx, cy, sc, g) { const k = Math.cos(LAT0 * Math.PI / 180), X = lo => cx + (lo - LON0) * k * sc, Y = la => cy - (la - LAT0) * sc;
@@ -281,12 +284,10 @@ shot(t.by49 - 0.2, (ctx, g) => { const lt = g - t.by49 + 0.2;
 
 // ======================= EDIT / RENDER =======================
 shots.sort((p, q) => p.t0 - q.t0);
-function frame(ctx, g) { const i = shots.findLastIndex(s => g >= s.t0), s = shots[Math.max(0, i)], lt = g - s.t0;
-  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.filter = 'none'; s.fn(ctx, g);
-  if (s.sepia) E.sepia(ctx, s.sepia);
-  E.vignette(ctx, s.light ? 0.14 : 0.32); E.grain(ctx, g, s.light ? 0.035 : 0.05);
-  // cut accents: a 3-frame white flash on hard cuts into a new period, a quick fade on others
-  const f = 1 - clamp(lt / 0.22); if (i > 0 && f > 0) { ctx.fillStyle = s.sepiaIn ? `rgba(255,236,200,${f * 0.6})` : `rgba(0,0,0,${f * 0.5})`; ctx.fillRect(0, 0, W, H); } }
+const IMPACTS = [[t.exactly + 0.42, 0.6], [t.lost, 1.2], [t.kroner + 0.4, 1], [t.about - 0.1, 0.8], [t.connected + 0.6, 0.4], [t.h4 + 0.2, 0.6], [t.system, 1], [O1 + 0.4, 0.6], [t.billund, 0.3], [t.twice + 0.6, 0.8]];
+shots.find(s => s.t0 === t.by49 - 0.2).beats = [t.bricks - 0.1];
+const MO = { T, impacts: IMPACTS };
+function frame(ctx, g) { M.compose(ctx, shots, g, MO); }
 async function main() { const [mode, a1, a2] = process.argv.slice(2); await load(); const cv = E.createCanvas(W, H), ctx = cv.getContext('2d');
   if (mode === 'T') return console.log(T);
   if (mode === 'frame') { frame(ctx, +a1); return fs.writeFileSync(a2, cv.toBuffer('image/png')); }
@@ -296,6 +297,7 @@ async function main() { const [mode, a1, a2] = process.argv.slice(2); await load
   if (mode === 'video') { const ff = spawn('ffmpeg', ['-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', `${W}x${H}`, '-r', '30', '-i', '-', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '18', '-pix_fmt', 'yuv420p', a1], { stdio: ['pipe', 'inherit', 'inherit'] }, { light: 1 });
     const N = Math.round(T * 30); for (let f = 0; f < N; f++) { frame(ctx, f / 30); if (!ff.stdin.write(Buffer.from(ctx.getImageData(0, 0, W, H).data.buffer))) await new Promise(r => ff.stdin.once('drain', r)); if (f % 150 === 0) process.stderr.write(`${f}/${N}\n`); }
     ff.stdin.end(); await new Promise(r => ff.on('close', r)); return; }
-  if (mode === 'times') return console.log(JSON.stringify(t)); }
+  if (mode === 'times') return console.log(JSON.stringify(t));
+  if (mode === 'trans') return console.log(JSON.stringify(M.trans(shots, T))); }
 main();
 module.exports = { t, T };

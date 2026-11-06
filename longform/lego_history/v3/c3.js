@@ -32,7 +32,7 @@ D.segment(module, { chapter: 'c3_beyond', build: ({ at, L, T, fx }) => {
   fx('whoosh', L.b8 - 0.2, 0.4); fx('boing', t.explore, 0.4); fx('snap', t.minutes, 0.5); fx('tvon', t.show, 0.4); fx('blip', t.game, 0.4); fx('pop', t.fast, 0.4); fx('fall', t.flopped - 0.5, 0.5); fx('thump', t.flopped, 0.6);
   fx('rev', t.movies - 0.2, 0.4); for (const x of [t.y99, t.y02, t.hp2]) fx('kaching', x, 0.35); fx('rumble', t.cracks, 0.5);
   const S = [];
-  S.push({ t0: 0, fn: (ctx, g, lt) => card(ctx, lt, 3, 'Beyond the Brick', '1998 — 2002', { c0: '#3a1d2a', c1: '#140a10', acc: '#ff8a6a' }) });
+  S.push({ t0: 0, card: 1, fn: (ctx, g, lt) => card(ctx, lt, 3, 'Beyond the Brick', '1998 — 2002', { c0: '#3a1d2a', c1: '#140a10', acc: '#ff8a6a' }) });
   // 1 · the turnaround plan (binder pages flip): the diagnosis
   S.push({ t0: L.b1 - 0.2, light: 1, fn: (ctx, g, lt) => { paper(ctx, '#d8d2c6');
     const pages = [['THE PLAN · 1998', 'A TURNAROUND MANAGER: POUL PLOUGMANN', t.plougmann], ['DIAGNOSIS', 'CHILDREN ARE CHANGING FASTER THAN LEGO', t.diagnosis], ['QUESTION', 'IS A BOX OF BRICKS STILL ENOUGH?', t.maybe]];
@@ -54,7 +54,7 @@ D.segment(module, { chapter: 'c3_beyond', build: ({ at, L, T, fx }) => {
     plate(ctx, "OTHER PEOPLE'S WORLDS", W / 2, 200, ss((g - t.other) / 0.3), { size: 40, align: 'center', bg: 'rgba(201,26,20,0.92)' });
     if (HAS('legoland') && g > t.parks && g < t.clothing + 0.2) { const u = ss((g - t.parks) / 0.3); ctx.save(); ctx.globalAlpha = u; print(ctx, IMG.legoland, 520, 300, 360, -0.05, { foot: 20 }); ctx.restore(); credit(ctx, cred('legoland') + ' · Legoland Billund (opened 1968)', u); } } });
   // 3 · it looked brilliant: licensed sets fly off the shelves (sales bars) -> Bionicle (photo of a 2002 set)
-  S.push({ t0: L.b3 - 0.2, light: 1, fn: (ctx, g, lt) => { studio(ctx, '#f4efe6', '#e8e0d1', '#d1c4ac');
+  S.push({ t0: L.b3 - 0.2, beats: [t.bionicle - 0.2], light: 1, fn: (ctx, g, lt) => { studio(ctx, '#f4efe6', '#e8e0d1', '#d1c4ac');
     if (g < t.bionicle - 0.2) { // a store shelf of licensed sets empties out (no invented numbers)
       const cols = 8, rows = 4; for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) { const i = r * cols + c, gone = ss((g - t.sold + 0.2 - hash(i * 3.3) * 1.6) / 0.25), x = 260 + c * 180, y = 300 + r * 170;
         ctx.fillStyle = '#8a7a66'; ctx.fillRect(220, y + 70, 1480, 10);
@@ -88,7 +88,7 @@ D.segment(module, { chapter: 'c3_beyond', build: ({ at, L, T, fx }) => {
     plate(ctx, 'DESIGNERS WERE FREE TO INVENT', 120, 130, ss((g - t.free) / 0.3), { size: 50, bar: '#0057A8' }); plate(ctx, 'A SPECIAL PIECE FOR THIS SET…', 120, 220, ss((g - t.special) / 0.3), { size: 38 });
     plate(ctx, '…A NEW COLOR FOR THAT ONE', 1240, 520, ss((g - t.color) / 0.3), { size: 38 }); } });
   // 6 · the cost chain: piece -> steel mold -> bin -> schedule line; then 6,000 -> 12,000+ tiles; 9 in 10 used in one set
-  S.push({ t0: t.mold - 0.5, light: 1, fn: (ctx, g, lt) => { paper(ctx, '#ece6da');
+  S.push({ t0: t.mold - 0.5, beats: [t.six - 0.2], light: 1, fn: (ctx, g, lt) => { paper(ctx, '#ece6da');
     if (g < t.six - 0.2) { const steps = [['NEW PIECE', t.mold - 0.4], ['STEEL MOLD', t.mold], ['WAREHOUSE BIN', t.bin], ['FACTORY SCHEDULE', t.schedule]];
       steps.forEach(([s, t0], i) => { const u = ease.out(clamp((g - t0) / 0.4)); if (u <= 0) return; const x = 260 + i * 470, y = 520;
         ctx.save(); ctx.globalAlpha = u; ctx.fillStyle = '#fff'; ctx.shadowColor = 'rgba(0,0,0,0.2)'; ctx.shadowBlur = 24; ctx.fillRect(x - 170, y - 170, 340, 340); ctx.restore();
@@ -100,14 +100,14 @@ D.segment(module, { chapter: 'c3_beyond', build: ({ at, L, T, fx }) => {
         plate(ctx, s, x, y + 230, u, { size: 34, align: 'center' }); if (i) arc(ctx, x - 300, y, x - 180, y, 0, u, '#C91A14', 6); });
       return; }
     // the tile field: each tile = one different element type
-    const nTot = Math.floor(lerp(6000, 12400, ease.inOut(clamp((g - t.six - 0.4) / (t.twelve - t.six + 0.6)))));
+    const nTot = Math.floor(lerp(6000, 14200, ease.inOut(clamp((g - t.six - 0.4) / (t.twelve - t.six + 0.6)))));
     const cols = 160, cell = 11, x0 = 80, y0 = 260, show = Math.floor(nTot / 1.0); ctx.save();
     for (let i = 0; i < 12800; i += 1) { if (i >= show) break; const c = i % cols, r = Math.floor(i / cols); if (r > 66) break; const one = hash(i * 1.37) < 0.9 && i >= 3000;
       ctx.fillStyle = g > t.nine - 0.1 ? (one ? `rgba(201,26,20,${0.35 + 0.6 * ss((g - t.nine) / 0.8)})` : '#237841') : `hsl(${(i * 47) % 360},55%,55%)`; ctx.fillRect(x0 + c * cell, y0 + r * cell, cell - 2, cell - 2); }
     ctx.restore();
     plate(ctx, `${(Math.round(nTot / 100) * 100).toLocaleString('en-US')} DIFFERENT ELEMENTS`, 80, 140, 1, { size: 60, bar: '#C91A14' });
     plate(ctx, 'LATE 1990s: ≈ 6,000  →  A FEW YEARS LATER: 12,000+', 80, 220, ss((g - t.twelve) / 0.3), { size: 34 });
-    plate(ctx, '≈ 9 IN 10 NEW PIECES: USED IN ONE SET', W - 80, 990, ss((g - t.nine) / 0.3), { size: 44, align: 'right', bg: 'rgba(201,26,20,0.95)' }); } });
+    plate(ctx, '≈ 9 IN 10 NEW PIECES: USED JUST ONCE', W - 80, 990, ss((g - t.nine) / 0.3), { size: 44, align: 'right', bg: 'rgba(201,26,20,0.95)' }); plate(ctx, 'SOURCE: ROBERTSON, BRICK BY BRICK (2013)', 80, 1040, ss((g - t.nine) / 0.3), { size: 22, bg: 'rgba(0,0,0,0.5)' }); } });
   // 7 · it still fits (green check) — but each piece needs its own mold, bin and ledger line; repeated hundreds of times
   S.push({ t0: L.b7 - 0.2, light: 1, fn: (ctx, g, lt) => { studio(ctx);
     const pull = ss((g - t.once) / 2.4), cam = camera([lerp(60, 160, pull), lerp(36, 220, pull), lerp(110, 420, pull)], [lerp(0, 60, pull), lerp(10, 0, pull), 0], 38), sc = new Scene();
@@ -120,7 +120,7 @@ D.segment(module, { chapter: 'c3_beyond', build: ({ at, L, T, fx }) => {
     plate(ctx, 'BUT NEEDED JUST ONCE', 120, 140, ss((g - t.once) / 0.3), { size: 70, bg: 'rgba(201,26,20,0.95)' });
     [['MOLDED', t.molded], ['STORED', t.stored], ['TRACKED', t.tracked]].forEach(([s, t0], i) => plate(ctx, s, 120 + i * 300, 990, ss((g - t0) / 0.25), { size: 44 })); } });
   // 8 · toys that hardly needed building: build-time meter; Galidor's media web collapses
-  S.push({ t0: L.b8 - 0.2, light: 1, fn: (ctx, g, lt) => { paper(ctx, '#f2ece2');
+  S.push({ t0: L.b8 - 0.2, beats: [t.galidor - 0.2], light: 1, fn: (ctx, g, lt) => { paper(ctx, '#f2ece2');
     if (g < t.galidor - 0.2) { const rows = [['CLASSIC SET', 1.0, '#237841', L.b8], ['EXPLORE (TODDLERS)', 0.25, '#E4701C', t.explore], ['JACK STONE', 0.12, '#C91A14', t.jack]];
       plate(ctx, 'HOW MUCH BUILDING?', 120, 140, ss((lt - 0.1) / 0.3), { size: 54, bar: '#C91A14' });
       rows.forEach(([lab, v, col, t0], i) => { const u = ease.out(clamp((g - t0) / 0.6)); const y = 330 + i * 200; plate(ctx, lab, 120, y, ss((g - t0) / 0.3), { size: 40, bg: 'none', col: '#2a2016' });

@@ -17,7 +17,7 @@ D.segment(module, { chapter: 'c4_nomovie', build: ({ at, L, T, fx }) => {
   fx('paper', t.finance, 0.4); fx('flip', t.product, 0.3); fx('flip', t.product + 0.4, 0.3); fx('rise', t.sixty - 0.2, 0.5); fx('fall', t.everything, 0.5); fx('gasp', t.destroying, 0.25);
   fx('heartbeat', t.y04, 0.6); fx('heartbeat', t.real, 0.6); fx('wind', t.survive, 0.5);
   const S = [];
-  S.push({ t0: 0, fn: (ctx, g, lt) => card(ctx, lt, 4, 'The Year Without a Movie', '2003 — 2004', { c0: '#1a1a1a', c1: '#000', acc: '#ff6a55' }) });
+  S.push({ t0: 0, card: 1, fn: (ctx, g, lt) => card(ctx, lt, 4, 'The Year Without a Movie', '2003 — 2004', { c0: '#1a1a1a', c1: '#000', acc: '#ff6a55' }) });
   // 1 · the release calendar: films in 1999, 2001, 2002 … and an empty 2003
   S.push({ t0: L.y1 - 0.2, fn: (ctx, g, lt) => { ctx.fillStyle = '#101317'; ctx.fillRect(0, 0, W, H);
     const yrs = [1999, 2000, 2001, 2002, 2003, 2004], films = { 1999: ['STAR WARS'], 2001: ['HARRY POTTER'], 2002: ['STAR WARS', 'HARRY POTTER'], 2004: ['HARRY POTTER'] }, x0 = 170, cw = 270;
@@ -29,7 +29,7 @@ D.segment(module, { chapter: 'c4_nomovie', build: ({ at, L, T, fx }) => {
     ctx.restore(); E.glow(ctx, x0 + 4 * cw + 115 - pan * 90, 540, 500, 'rgba(255,90,60,1)', 0.12 * pan);
     plate(ctx, 'NEW LICENSED FILMS', 120, 150, ss((lt - 0.1) / 0.3), { size: 46 }); } });
   // 2 · the drop: 11.4 bn -> 8.4 bn (two bars), USA ≈ −35 %, more than half: movie sets; stores order less
-  S.push({ t0: L.y2 - 0.2, light: 1, fn: (ctx, g, lt) => { paper(ctx, '#f2ece2');
+  S.push({ t0: L.y2 - 0.2, beats: [t.stores - 0.2], light: 1, fn: (ctx, g, lt) => { paper(ctx, '#f2ece2');
     if (g < t.stores - 0.2) { const bx = 300, by = 880, sc = 52, a1 = ease.out(clamp(lt / 0.6)), a2 = ease.out(clamp((g - t.fell) / 0.7));
       ctx.fillStyle = '#9a8f80'; ctx.fillRect(bx, by - 11.4 * sc * a1, 240, 11.4 * sc * a1); ctx.fillStyle = '#C91A14'; ctx.fillRect(bx + 340, by - 8.4 * sc * a2, 240, 8.4 * sc * a2);
       // the slice lost from movie sets (hatched)
@@ -54,7 +54,7 @@ D.segment(module, { chapter: 'c4_nomovie', build: ({ at, L, T, fx }) => {
     plate(ctx, 'THE HIDDEN COST', 120, 140, ss((g - t.hidden) / 0.3), { size: 60, bar: '#ff6a55' }); plate(ctx, 'THOUSANDS OF MOLDS, BINS, PRODUCTION RUNS', 120, 230, ss((g - t.molds) / 0.3), { size: 38 });
     plate(ctx, 'PAID FOR — WHETHER A SET SOLD OR NOT', 120, 990, ss((g - t.whether) / 0.3), { size: 44, bg: 'rgba(201,26,20,0.95)' }); } });
   // 4 · January 2004: the business-page front page (generic masthead) -> the manager leaves -> Kjeld steps in (archive photo)
-  S.push({ t0: L.y4 - 0.2, light: 1, fn: (ctx, g, lt) => { paper(ctx, '#dcd5c8');
+  S.push({ t0: L.y4 - 0.2, beats: [t.kjeld - 0.2], light: 1, fn: (ctx, g, lt) => { paper(ctx, '#dcd5c8');
     if (g < t.kjeld - 0.2) { const z = lerp(1, 1.1, ss(lt / 8)); ctx.save(); ctx.translate(W / 2, H / 2); ctx.scale(z, z); ctx.rotate(-0.02); ctx.translate(-W / 2, -H / 2);
       ctx.fillStyle = '#f7f3ea'; ctx.shadowColor = 'rgba(0,0,0,0.3)'; ctx.shadowBlur = 40; ctx.fillRect(300, 70, 1320, 940); ctx.shadowColor = 'transparent'; ctx.fillStyle = '#1f1f1f'; ctx.font = `900 64px ${E.F}`; ctx.textAlign = 'center'; ctx.fillText('THE BUSINESS PAGE', W / 2, 160);
       ctx.fillRect(340, 185, 1240, 4); ctx.font = `700 24px ${E.F}`; ctx.fillText('JANUARY 2004', W / 2, 225); ctx.textAlign = 'left'; ctx.font = `900 92px ${E.F}`; const hl = ss((g - t.record + 0.2) / 0.4);

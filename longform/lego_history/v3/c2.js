@@ -15,7 +15,7 @@ D.segment(module, { chapter: 'c2_growth', build: ({ at, L, T, fx }) => {
   fx('whoosh', L.g3 - 0.2, 0.4); for (let i = 0; i < 24; i++) fx('flip', t.tripled - 0.4 + i * 0.07, 0.15); fx('slideup', t.costs, 0.5);
   fx('cut', L.g4 - 0.2, 0.4); fx('stamp', t.lost + 0.2, 0.7); fx('heartbeat', t.thousand, 0.5); fx('steps', t.looking, 0.3);
   const S = [];
-  S.push({ t0: 0, fn: (ctx, g, lt) => card(ctx, lt, 2, 'Too Successful', '1978 — 1998', { c0: '#24324a', c1: '#0e141f', acc: '#E3B341',
+  S.push({ t0: 0, card: 1, fn: (ctx, g, lt) => card(ctx, lt, 2, 'Too Successful', '1978 — 1998', { c0: '#24324a', c1: '#0e141f', acc: '#E3B341',
     deco: (c, l) => { c.save(); c.globalAlpha = 0.18; for (let i = 0; i < 12; i++) { c.fillStyle = ['#C91A14', '#F5C420', '#0057A8', '#ECEAE4'][i % 4]; c.fillRect(160 + i * 140, 820 - (i % 3) * 30 - Math.min(1, l) * 40, 110, 54); } c.restore(); } }) });
   // 1 · 1978: little figures move into the town — every set becomes a story
   S.push({ t0: L.g1 - 0.2, light: 1, fn: (ctx, g, lt) => { studio(ctx, '#e9f1f4', '#dce7ea', '#bccbd0');
@@ -94,7 +94,7 @@ D.segment(module, { chapter: 'c2_growth', build: ({ at, L, T, fx }) => {
       plate(ctx, 'SALES: FLAT', cx + cw - 10, cy - 270, u1, { size: 38, align: 'right', bg: 'rgba(35,120,65,0.92)' }); plate(ctx, 'COSTS: UP', cx + cw - 10, cy - 460, u2, { size: 38, align: 'right', bg: 'rgba(201,26,20,0.92)' });
       plate(ctx, '1993 → 1998 · ILLUSTRATIVE', cx, cy + 50, u1, { size: 24, bg: 'none', col: '#5a4a30' }); } } });
   // 8 · 1998: the first loss (annual report, dark) -> 1,000 jobs -> an empty chair
-  S.push({ t0: L.g4 - 0.2, fn: (ctx, g, lt) => { ctx.fillStyle = '#16181d'; ctx.fillRect(0, 0, W, H);
+  S.push({ t0: L.g4 - 0.2, beats: [t.thousand - 0.2], fn: (ctx, g, lt) => { ctx.fillStyle = '#16181d'; ctx.fillRect(0, 0, W, H);
     if (g < t.thousand - 0.2) { doc(ctx, 760, 560, 760, 900, -0.03, { title: 'ANNUAL REPORT 1998', tsize: 46, n: 16, seed: 5, draw: (c, w, h) => { c.fillStyle = '#1f1f1f'; c.font = `800 34px ${E.F}`; c.fillText('RESULT FOR THE YEAR', -w / 2 + 40, h / 2 - 170);
         c.fillStyle = '#C91A14'; c.font = `900 72px ${E.F}`; c.fillText('LOSS', -w / 2 + 40, h / 2 - 90); } });
       stamp(ctx, 'FIRST LOSS EVER', 1380, 620, ss((g - t.lost) / 0.25), -0.15, 64); E.type(ctx, '1998', W - 140, 250, g - t.y98, { size: 170, align: 'right', col: '#ff6a55' }); return; }

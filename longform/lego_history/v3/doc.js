@@ -2,6 +2,7 @@
 // A segment = one chapter (or part of one) in CHAPTER-LOCAL time, timed to the words of the voice (chapters/<ch>/vo/*.align.json).
 // node v3/<seg>.js still t1,t2.. out.png | frame t out.png | video out.mp4 | sfx (writes <seg>.sfx.json for the mixer)
 const E = require('./eng.js'); const { W, H, clamp, lerp, ss, ease, hash, Scene, U, BH, PL, brick, oddPiece, camera, render, C, PAL } = E;
+const M = require('./motion.js');
 const S = require('../../figmakit/lib/scene.js');
 const path = require('path'), fs = require('fs'), { spawn } = require('child_process');
 const R = path.join(__dirname, '..');
@@ -37,13 +38,25 @@ function photo(ctx, im, u, o = {}) { const r = o.rect || [0, 0, W, H], [rx, ry, 
 function print(ctx, im, cx, cy, w, rot, o = {}) { const h = w * im.height / im.width; ctx.save(); ctx.translate(cx, cy); ctx.rotate(rot); ctx.globalAlpha *= o.a ?? 1;
   ctx.shadowColor = 'rgba(0,0,0,0.35)'; ctx.shadowBlur = 50; ctx.shadowOffsetY = 22; ctx.fillStyle = '#f6f1e6'; ctx.fillRect(-w / 2 - 20, -h / 2 - 20, w + 40, h + (o.foot ?? 70)); ctx.shadowColor = 'transparent';
   if (o.filter) ctx.filter = o.filter; ctx.drawImage(im, -w / 2, -h / 2, w, h); ctx.filter = 'none'; ctx.restore(); return h; }
-function credit(ctx, s, a = 1) { if (a <= 0) return; ctx.save(); ctx.globalAlpha = a * 0.85; ctx.font = `600 22px ${E.F}`; ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
+function credit(ctx, s, a = 1) { if (a <= 0) return; if (!M.overlay(c => credit0(c, s, a))) return; credit0(ctx, s, a); }
+function credit0(ctx, s, a) { ctx.save(); ctx.globalAlpha = a * 0.85; ctx.font = `600 22px ${E.F}`; ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
   const w = ctx.measureText(s).width; ctx.fillStyle = 'rgba(0,0,0,0.5)'; ctx.fillRect(W - w - 44, H - 54, w + 24, 36); ctx.fillStyle = '#f4efe6'; ctx.fillText(s, W - 32, H - 24); ctx.restore(); }
-function plate(ctx, s, x, y, a, o = {}) { if (a <= 0) return; const size = o.size || 52; ctx.save(); ctx.globalAlpha = clamp(a); ctx.font = `${o.weight || 800} ${size}px ${E.F}`; ctx.textBaseline = 'middle';
-  const w = ctx.measureText(s).width, al = o.align || 'left', x0 = al === 'center' ? x - w / 2 : al === 'right' ? x - w : x, pad = size * 0.35;
-  if (o.bg !== 'none') { ctx.fillStyle = o.bg || 'rgba(14,14,16,0.74)'; ctx.fillRect(x0 - pad, y - size * 0.72, w + 2 * pad, size * 1.44); }
+// captions that only repeated the voice-over were removed (text diet); numbers, names, sources and ILLUSTRATIVE labels stay
+const DROP = new Set(["OLE KIRK'S SON", 'NOTHING CONNECTED TO ANYTHING ELSE', 'EVERY PIECE FITS EVERY OTHER PIECE', "THE BRICKS DIDN'T HOLD", "LEGO DIDN'T REBUILD THE WOODEN TOYS",
+  'LITTLE FIGURES ARRIVE', 'EVERY SET BECOMES A STORY', 'CHEAPER LOOK-ALIKES', 'KIDS TURN TO VIDEO GAMES EARLIER', 'LEGO STARTS LOOKING FOR SOMEONE TO CHANGE IT', "THE FOUNDER'S GRANDSON",
+  'MORE THAN A BRICK COMPANY', "OTHER PEOPLE'S WORLDS", 'INTO THE STRATEGY DEPARTMENT', 'WATCHING THE PLAN FROM THE INSIDE', 'DESIGNERS WERE FREE TO INVENT', 'A SPECIAL PIECE FOR THIS SET…',
+  '…A NEW COLOR FOR THAT ONE', 'SNAPS TOGETHER IN MINUTES', 'A BUILDABLE ACTION FIGURE', "WHY DIDN'T THE NUMBERS SCREAM?",
+  'STORES THAT STOCKED UP NOW ORDER LESS', 'THE TURNAROUND MANAGER LEAVES', 'TAKES OVER THE DAY-TO-DAY HIMSELF', 'EVERYTHING ELSE: LOSING MONEY', 'PRODUCT BY PRODUCT', 'EVEN WORSE THAN 2003',
+  'PAID FOR — WHETHER A SET SOLD OR NOT', '3 YEARS STUDYING HOW LEGO MADE AND LOST MONEY', 'THE FAMILY STAYS AS OWNER — AND BACKS HIM', 'OPENED BY THE FAMILY IN 1968',
+  'DESIGNERS WORK WITH WHAT ALREADY EXISTS', 'WHAT THE BIG RETAILERS SAID ABOUT LEGO', 'NOW THE YEAR IS PLANNED AROUND THEM', 'THE NEW CEO GOES HIMSELF', 'FASTER THAN ALMOST ANYONE EXPECTED',
+  'A RESCUE CAN MAKE MISTAKES TOO', 'SOME PARTS RAN SHORT', 'NOT ONE BAD DECISION — A CHAIN', 'REMEMBER THE 1955 TOWN PLAN?', 'THROUGH ALL OF IT', 'ONE THING NEVER CHANGED']);
+// motion-graphics caption: the plate wipes open from its bar side (masked), the text rises into place; the same in reverse on the way out
+function plate(ctx, s, x, y, a, o = {}) { if (a <= 0 || DROP.has(s)) return; const size = o.size || 52; ctx.save(); ctx.font = `${o.weight || 800} ${size}px ${E.F}`; ctx.textBaseline = 'middle';
+  const w = ctx.measureText(s).width, al = o.align || 'left', x0 = al === 'center' ? x - w / 2 : al === 'right' ? x - w : x, pad = size * 0.35, e = ease.out(clamp(a)), bw = w + 2 * pad;
+  ctx.globalAlpha = clamp(a * 2.2); ctx.beginPath(); const cw = bw * e; ctx.rect(al === 'center' ? x0 - pad + (bw - cw) / 2 : al === 'right' ? x0 - pad + bw - cw : x0 - pad, y - size, cw, size * 2); ctx.clip();
+  if (o.bg !== 'none') { ctx.fillStyle = o.bg || 'rgba(14,14,16,0.74)'; ctx.fillRect(x0 - pad, y - size * 0.72, bw, size * 1.44); }
   if (o.bar) { ctx.fillStyle = o.bar; ctx.fillRect(x0 - pad, y - size * 0.72, 8, size * 1.44); }
-  ctx.fillStyle = o.col || '#F4EFE6'; ctx.fillText(s, x0 + (o.bar ? 6 : 0), y + 2); ctx.restore(); return w; }
+  ctx.fillStyle = o.col || '#F4EFE6'; ctx.fillText(s, x0 + (o.bar ? 6 : 0), y + 2 + (1 - e) * size * 0.5); ctx.restore(); return w; }
 const LIGHT = { fogCol: [232, 226, 216], fogNear: 300, fogFar: 2600, amb: 0.42, key: 0.7 };
 const DARK = { fogCol: [10, 11, 15], fogNear: 120, fogFar: 1400 };
 function studio(ctx, top = '#f1ece4', mid = '#e6dfd4', bot = '#d3cabd') { const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, top); g.addColorStop(0.55, mid); g.addColorStop(1, bot); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); }
@@ -78,10 +91,15 @@ function card(ctx, lt, num, title, years, o = {}) {
   if (o.img) photo(ctx, o.img, lt / 3.4, { z0: 1.15, z1: 1.22, filter: o.filter || 'blur(10px) sepia(0.5) brightness(0.45)' });
   else { const g = ctx.createLinearGradient(0, 0, W, H); g.addColorStop(0, o.c0 || '#1d2a3a'); g.addColorStop(1, o.c1 || '#0c1118'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); }
   if (o.deco) o.deco(ctx, lt);
-  E.label(ctx, `CHAPTER ${num}`, W / 2, 380, ss((lt - 0.2) / 0.4), { size: 30, letter: 10, align: 'center', col: o.acc || '#E3B341' });
-  E.type(ctx, title.toUpperCase(), W / 2, 545, lt - 0.35, { size: title.length > 16 ? 120 : 150 });
-  E.type(ctx, years, W / 2, 650, lt - 0.9, { size: 52, weight: 600, col: 'rgba(244,239,230,0.8)' });
-  fade(ctx, ss((lt - 3.05) / 0.35)); }
+  const acc = o.acc || '#E3B341', k = ease.out(clamp(lt / 0.5)), z = lerp(1.12, 1, k);
+  // a big outlined chapter number drifting behind the title
+  ctx.save(); ctx.globalAlpha = 0.16; ctx.font = `900 520px ${E.F}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.strokeStyle = acc; ctx.lineWidth = 4; ctx.strokeText(String(num), W / 2 + lerp(80, -40, ss(lt / 3.4)), 540); ctx.restore();
+  // accent lines wipe in from the centre
+  ctx.fillStyle = acc; const lw = 420 * ease.out(clamp(lt / 0.6)); ctx.fillRect(W / 2 - lw, 420, lw * 2, 5); ctx.fillRect(W / 2 - lw * 0.6, 700, lw * 1.2, 3);
+  ctx.save(); ctx.translate(W / 2, 540); ctx.scale(z, z); ctx.translate(-W / 2, -540);
+  E.label(ctx, `CHAPTER ${num}`, W / 2, 380, clamp(lt / 0.15), { size: 34, letter: lerp(30, 12, k), align: 'center', col: acc });
+  E.type(ctx, title.toUpperCase(), W / 2, 545, lt + 0.15, { size: title.length > 16 ? 120 : 150 });
+  E.type(ctx, years, W / 2, 650, lt - 0.35, { size: 52, weight: 600, col: 'rgba(244,239,230,0.85)' }); ctx.restore(); }
 // a little brick-built house: walls (with brick courses), studded gable roof, door + windows. (x,z) = centre, y = base
 function house(sc, x, y, z, col, o = {}) { const w = o.w ?? 36, d = o.d ?? 28, hh = o.h ?? 2 * BH + 4, roof = o.roof || C.red;
   sc.box({ x: x - w / 2, y, z: z - d / 2 }, w, hh, d, col, {});
@@ -98,15 +116,12 @@ function segment(mod, o) { // o: { chapter, from, to, build({at, L, T}) -> {shot
   const from = o.from ?? 0, to = o.to ?? (CU.T + (CU.tail || 0)), sfx = [], music = [];
   const fx = (name, t, g = 1) => { if (t >= from && t < to) sfx.push([name, +(t - from).toFixed(3), g]); };
   const shots = o.build({ at, L, T: to, fx, music }).sort((p, q) => p.t0 - q.t0);
-  function frame(ctx, t) { const i = shots.findLastIndex(s => t >= s.t0), s = shots[Math.max(0, i)], lt = t - s.t0;
-    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.filter = 'none'; s.fn(ctx, t, lt);
-    if (s.sepia) E.sepia(ctx, s.sepia);
-    E.vignette(ctx, s.light ? 0.14 : 0.32); E.grain(ctx, t, s.light ? 0.035 : 0.05);
-    const f = 1 - clamp(lt / 0.2); if (i > 0 && f > 0 && s.cut !== 'hard') { ctx.fillStyle = s.light ? `rgba(255,250,240,${f * 0.5})` : `rgba(0,0,0,${f * 0.5})`; ctx.fillRect(0, 0, W, H); } }
+  const mo = { T: to, impacts: sfx.filter(([n]) => M.IMPACT[n]).map(([n, tt, gn]) => [tt + from, M.IMPACT[n] * Math.min(1, gn * 1.6)]) };
+  function frame(ctx, t) { M.compose(ctx, shots, t, mo); }
   if (require.main !== mod) return { frame, shots, sfx, from, to };
   (async () => { const [mode, a1, a2] = process.argv.slice(2); await loadArchive(); const cv = E.createCanvas(W, H), ctx = cv.getContext('2d');
     if (mode === 'T') return console.log(to - from);
-    if (mode === 'sfx') { fs.writeFileSync(mod.filename.replace(/\.js$/, '.sfx.json'), JSON.stringify({ chapter: o.chapter, from, to, sfx, music })); return console.log('sfx', sfx.length); }
+    if (mode === 'sfx') { fs.writeFileSync(mod.filename.replace(/\.js$/, '.sfx.json'), JSON.stringify({ chapter: o.chapter, from, to, sfx, music, trans: M.trans(shots, to).map(([tt, ty]) => [+(tt - from).toFixed(3), ty]) })); return console.log('sfx', sfx.length); }
     if (mode === 'frame') { frame(ctx, +a1); return fs.writeFileSync(a2, cv.toBuffer('image/png')); }
     if (mode === 'still') { const ts = a1.split(',').map(Number), cols = 3, sh = E.createCanvas(640 * cols, 360 * Math.ceil(ts.length / cols)), c2 = sh.getContext('2d');
       ts.forEach((tt, i) => { frame(ctx, tt); c2.drawImage(cv, (i % cols) * 640, Math.floor(i / cols) * 360, 640, 360); c2.fillStyle = '#ff2020'; c2.font = '22px sans-serif'; c2.fillText(tt.toFixed(1), (i % cols) * 640 + 8, Math.floor(i / cols) * 360 + 26); });

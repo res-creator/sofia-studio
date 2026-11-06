@@ -35,6 +35,14 @@ O1 = OFF[1]; exec(blk)
 # --- segment SFX ---
 for name, o in SEGS[1:]:
     for n, tt, g in json.load(open(f'{D}/{name}.sfx.json'))['sfx']: F(n, o + tt, g)
+# --- transition sounds (motion layer): every transition gets its own swoosh ---
+TS = {'zoom': [('whoosh', -0.12, 0.45), ('rise', -0.35, 0.18)], 'whip': [('whoosh', -0.1, 0.55)], 'push': [('whoosh', -0.1, 0.35)], 'leak': [('sparkle', 0.0, 0.25), ('whoosh', -0.1, 0.2)],
+      'iris': [('whoosh', -0.12, 0.3), ('pop', 0.15, 0.2)], 'glitch': [('buzz', 0.0, 0.25), ('scratch', 0.0, 0.2)]}
+tr = [(0.0, x) for x in json.loads(subprocess.run(['node', f'{D}/opening2.js', 'trans'], capture_output=True, text=True).stdout)]
+for name, o in SEGS[1:]: tr += [(o, x) for x in json.load(open(f'{D}/{name}.sfx.json')).get('trans', [])]
+for o, (tt, ty) in tr:
+    for n, dt, g in TS.get(ty, []): F(n, o + tt + dt, g)
+print('transitions', len(tr))
 # --- score: 92 BPM felt piano / pad / pulse bass / low hits; mood per chapter ---
 def t_(d): return np.arange(int(d * SR)) / SR
 def lp(x, f): b, a = sg.butter(2, f / (SR / 2), 'low'); return sg.lfilter(b, a, x)
