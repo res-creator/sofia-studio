@@ -2681,3 +2681,31 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "feet" — rubric answers4 (60-70 s). heroine = Jessica, passenger = Bill, granny = Alice
+CAST.update({
+    "socks": dict(voice="am_santa", speed=1.0, lang="en-us", el="pqHfZKP75CvOlQylNhV4"),   # feet: the passenger who takes his shoes off (Bill)
+    "gran2": dict(voice="bf_alice", speed=1.0, lang="en-gb", el="Xb7hH8MSUJpSbSDYk0k2"),   # feet: the granny in the seat in front (Alice)
+})
+EP["feet"] = dict(
+    title='Сосед в самолёте снял ботинки', rubric='answers4',
+    hook_title=[['ОН СНЯЛ', 'd'], ['БОТИНКИ', 'p'], ['В САМОЛЁТЕ', 'd']],
+    lines=[
+        ('hook_s', 'socks', "[relieved] Ahh, that's better. Long flight!", 'А-а, так-то лучше. Долгий полёт!'),
+        ('hook', 'nar', 'Сосед в самолёте снял ботинки и вытянул ноги. Лететь ещё шесть часов. Четыре ответа.', ''),
+        ('o1_h', 'her', '[angrily] Shoes on! Now!', 'Обуйся! Сейчас же!'),
+        ('o1_s', 'socks', "[calmly] Relax, they're clean socks. Mostly.", 'Расслабься, носки чистые. В основном.'),
+        ('o1_nar', 'nar', 'В лоб — и носки «в основном» чистые.', ''),
+        ('o2_h', 'her', '[politely] Excuse me, could you put your shoes back on?', 'Извините, не могли бы вы обуться?'),
+        ('o2_s', 'socks', '[wiggling toes] But my feet need to breathe.', 'Но моим ногам нужно дышать.'),
+        ('o2_nar', 'nar', 'Вежливо. Но ноги продолжают дышать.', ''),
+        ('o3_h', 'her', "[apologetically] Sorry, would you mind putting your shoes back on? It's a bit much in here.", 'Простите, не могли бы вы обуться? Тут немного тяжеловато.'),
+        ('o3_s', 'socks', '[embarrassed] Oh! Sorry, of course.', 'Ой! Простите, конечно.'),
+        ('o3_nar', 'nar', 'Как носитель: мягко и с причиной. Запоминай:', ''),
+        ('o3_tip', 'tip', "It's a bit much.", ''),
+        ('o4_h', 'her', '[grandly] Sir, your socks have more personality than the in-flight film. Shall I ask the crew to give them their own seat?', 'Сэр, у ваших носков больше характера, чем у фильма в самолёте. Попросить экипаж выделить им отдельное место?'),
+        ('o4_s', 'socks', '[grumbling] ...Okay, okay. Shoes on.', '…Ладно, ладно. Обуваюсь.'),
+        ('end_g', 'gran2', "[happily] Ahh, that's better!", 'А-а, так-то лучше!'),
+        ('moral', 'nar', 'Мораль: вежливость работает… до следующего пассажира.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши цифру и сохрани!', ''),
+    ],
+)

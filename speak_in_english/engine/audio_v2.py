@@ -474,6 +474,24 @@ def track_disco(d):
         for i, m in enumerate(hook[(k % 2) * 4:(k % 2) * 4 + 4]):
             if m is not None: put(y, marimba(note(m, K)), t0 + i * b / 4, 0.08)
     return y
+if EPN == "feet":  # plane cabin: fly buzz, sock breathing (inhale/exhale), soft shoe plunk, sniff (own rng, so other episodes mix exactly as before)
+    _f = np.random.default_rng(47)
+    def _fly():
+        d = 0.9; t = T(d); f = 220 + 25*np.sin(2*np.pi*7*t) + 15*np.sin(2*np.pi*13*t)
+        x = np.sign(np.sin(2*np.pi*np.cumsum(f)/SR)) * (0.6 + 0.4*np.sin(2*np.pi*3*t)) * np.minimum(t*30, 1) * np.minimum((d - t)*20, 1)
+        return norm(bp(x, 300, 3000), 0.35)
+    def _breath():
+        d = 0.55; t = T(d); x = bp(_f.standard_normal(len(t)), 400, 2500) * np.sin(np.pi*t/d)**2
+        return norm(x, 0.45)
+    def _plunk():
+        t = T(0.25); x = np.sin(2*np.pi*np.cumsum(110 + 90*np.exp(-t*30))/SR)*np.exp(-t*22) + 0.4*lp(_f.standard_normal(len(t)), 700)*np.exp(-t*35)
+        return norm(np.tanh(1.5*x), 0.7)
+    def _sniff():
+        y = np.zeros(int(0.6*SR))
+        for k in range(2):
+            tt = T(0.16); put(y, hp(_f.standard_normal(len(tt)), 2500)*np.sin(np.pi*tt/0.16), k*0.22, 0.6)
+        return norm(y, 0.45)
+    SFX.update(fly=_fly(), breath=_breath(), plunk=_plunk(), sniff=_sniff())
 if EPN == "party":
     STY = dict(hook="rock", A1="rock", A2="edm", B1="waltz", B2="drums", C1="disco", C2="rock", outro="rock")
     GEN = dict(rock=track_rock, edm=track_edm, waltz=track_waltz, drums=track_drums, disco=track_disco)
@@ -515,7 +533,7 @@ elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", 
             m = mel[(k*2 + j) % 16]
             if m is not None and (k // 16) % 2 == 0: put(music, glock(note(m + 12)), t0 + j*b/2, 0.07)
             if m is not None and (k // 16) % 2 == 1: put(music, pizz(note(m), 0.4), t0 + j*b/2, 0.12)
-elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "repay", "wrongchat", "checkout", "mic", "password", "busy", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "newhair", "idea"):
+elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "repay", "wrongchat", "checkout", "mic", "password", "busy", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "newhair", "idea", "feet"):
     # breezy airport lounge bossa: e-piano, nylon plucks, soft shaker, walking bass
     bpm = 120; b = 60/bpm; K = 0
     prog = [([62, 65, 69, 72], 38), ([61, 65, 67, 71], 43), ([60, 64, 67, 71], 36), ([57, 61, 64, 67], 45)]
@@ -649,7 +667,10 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+if EPN == "feet":  # answers4 rubric (no levels): music off from the end of "...Okay, okay. Shoes on." (beat before the twist) until the moral
+    c2e = sp["o4_s"]["t"] + sp["o4_s"]["d"]; c2n = sp["moral"]["t"]
+else:
+  C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause
