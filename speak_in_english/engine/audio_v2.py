@@ -386,6 +386,27 @@ if EPN in ("rich", "busy", "avoidparty", "tour", "splitbill", "photo"):  # batch
             t = T(0.13); f = 440 * 2 ** ((m - 69) / 12); put(y, np.sign(np.sin(2*np.pi*f*t)) * 0.35 * np.minimum((0.13 - t)*120, 1), k*0.13, 0.5)
         return norm(lp(y, 4000), 0.55)
     SFX.update(ring=_ring(), doorbell=_doorbell(), cheer=_cheer(), vroom=_vroom(), chirp=_chirp(), toy=_toy())
+if EPN == "cake":  # flat kitchen: munching, slurp, smoke-alarm chirps, cough (own rng, so other episodes mix exactly as before)
+    _c = np.random.default_rng(44)
+    def _munch():
+        y = np.zeros(int(1.2*SR))
+        for k_ in range(5):
+            tt = T(0.14); put(y, lp(bp(_c.standard_normal(len(tt)), 300, 2600), 1800)*np.sin(np.pi*tt/0.14)**2, k_*0.22 + _c.uniform(0, 0.04), 0.8 - 0.08*k_)
+        return norm(y, 0.6)
+    def _slurp():
+        tt = T(0.5); f = 300 + 900*(tt/0.5); x = np.sin(2*np.pi*np.cumsum(f)/SR)*0.3 + bp(_c.standard_normal(len(tt)), 600, 3000)*0.7
+        return norm(x*np.sin(np.pi*tt/0.5)**2, 0.5)
+    def _smokealarm():
+        y = np.zeros(int(0.9*SR))
+        for k_ in range(3):
+            tt = T(0.18); put(y, np.sign(np.sin(2*np.pi*3150*tt))*0.4*np.minimum(tt*600, 1)*np.minimum((0.18 - tt)*600, 1), k_*0.26, 0.5)
+        return norm(lp(y, 6000), 0.42)
+    def _cough():
+        y = np.zeros(int(0.9*SR))
+        for k_ in range(2):
+            tt = T(0.22); put(y, lp(bp(_c.standard_normal(len(tt)), 250, 2200), 1500)*np.exp(-tt*14)*np.minimum(tt*200, 1), k_*0.3, 0.8)
+        return norm(y, 0.55)
+    SFX.update(munch=_munch(), slurp=_slurp(), smokealarm=_smokealarm(), cough=_cough())
 def note(m, key=0): return 440 * 2 ** ((m + key - 69) / 12)
 def pluck(f, d, bright=1.0):
     t = T(d); ph = 2*np.pi*f*t
@@ -495,7 +516,7 @@ if EPN == "party":
         seg = (full*op + muff*(1 - op)) * g
         seg *= np.minimum(1, np.arange(n)/(0.03*SR)) * np.minimum(1, (n - np.arange(n))/(0.12*SR))
         put(music, seg, s0, 1.0)
-elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "teacher", "pretend", "avoidparty", "tour"):
+elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "teacher", "pretend", "avoidparty", "tour", "cake"):
     # cheerful London stroll: pizzicato, walking bass, glockenspiel, brushes
     bpm = 116; b = 60/bpm; K = 0
     def pizz(f, d=0.35):
@@ -649,7 +670,10 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+if EPN == "cake":  # answers4 rubric (no levels): music off from the end of "...I'll bake you a new one." (beat before the twist) until the moral
+    c2e = sp["o4_t"]["t"] + sp["o4_t"]["d"]; c2n = sp["moral"]["t"]
+else:
+    C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause

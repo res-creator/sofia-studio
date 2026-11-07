@@ -2681,3 +2681,30 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "cake" — rubric answers4 (60-70 s). heroine = Jessica, flatmate Tom = Liam
+CAST.update({
+    "flatmate": dict(voice="am_liam", speed=1.0, lang="en-gb", el="TX3LPaxmHKxFdv7VOQHJ"),   # cake: Tom, the flatmate who ate the cake (Liam)
+})
+EP["cake"] = dict(
+    title='Сосед по квартире съел мой торт', rubric='answers4',
+    hook_title=[['СОСЕД СЪЕЛ', 'd'], ['МОЙ ТОРТ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    lines=[
+        ('hook_t', 'flatmate', '[mouth full] Oh, was this yours? It was in the fridge.', 'Ой, это было твоё? Оно лежало в холодильнике.'),
+        ('hook', 'nar', 'Сосед по квартире съел твой торт. Весь. Четыре ответа.', ''),
+        ('o1_h', 'her', '[furious] My cake! You eat! Why?!', 'Мой торт! Ты есть! Почему?!'),
+        ('o1_t', 'flatmate', '[happily] Because it was delicious. Thank you!', 'Потому что он был вкусный. Спасибо!'),
+        ('o1_nar', 'nar', 'В лоб — и тебе сказали спасибо.', ''),
+        ('o2_h', 'her', "[politely] Please don't eat my food.", 'Пожалуйста, не ешь мою еду.'),
+        ('o2_t', 'flatmate', '[hopefully] Okay. Can I eat your pizza, then?', 'Ладно. Тогда можно твою пиццу?'),
+        ('o2_nar', 'nar', 'Вежливо. Теперь под угрозой пицца.', ''),
+        ('o3_h', 'her', "[calmly] Could you check before you eat something that isn't yours?", 'Можешь спрашивать, прежде чем есть чужое?'),
+        ('o3_t', 'flatmate', "[sheepishly] Fair. Sorry, I'll replace it.", 'Справедливо. Прости, куплю новый.'),
+        ('o3_nar', 'nar', 'Как носитель: просьба на будущее. Запоминай:', ''),
+        ('o3_tip', 'tip', 'Could you check before...?', ''),
+        ('o4_h', 'her', "[coolly] That was my birthday cake, Tom. For my birthday. Tomorrow. Enjoy the guilt — it's calorie-free.", 'Это был мой торт на день рождения, Том. На мой день рождения. Завтра. Наслаждайся чувством вины — в нём нет калорий.'),
+        ('o4_t', 'flatmate', "[guiltily] ...I'll bake you a new one.", '…Я испеку тебе новый.'),
+        ('end_t', 'flatmate', '[proudly] I used your flour. And your eggs. And your oven. Happy birthday!', 'Я взял твою муку. И твои яйца. И твою духовку. С днём рождения!'),
+        ('moral', 'nar', 'Мораль: подписывай еду в холодильнике.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши цифру и сохрани!', ''),
+    ],
+)
