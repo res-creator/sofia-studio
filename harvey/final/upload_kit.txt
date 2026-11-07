@@ -1,0 +1,70 @@
+KNOWN IN ADVANCE — upload kit: HARVEY (NOT published; for the owner's review)
+
+FILE
+final/harvey_final.mp4 (1920x1080, 25 fps, 10:13, loudness -15 LUFS) · captions final/harvey_final.srt (English)
+Narration: AI voice (ElevenLabs, "Todd"). Interview bites are the original sound of the archive clips.
+
+THUMBNAIL
+Main: final/thumbnail_a.jpg — "FORECAST: 15–30 INCHES / HOUSTON: NO ORDER TO LEAVE" over a Coast Guard aerial of a flooded Houston neighbourhood (DVIDS 546164, Aug 27, 2017).
+A/B test (YouTube Studio → Test & Compare): final/thumbnail_b.jpg — "FORECAST DAYS AHEAD. STILL ON THE ROOF" over the Coast Guard hoist camera above a roof with people waiting (DVIDS 546574, Aug 27–28, 2017).
+Both claims are in the film and sourced: NHC Advisory 22 (Aug 25, 4 p.m. CDT): "15 to 30 inches … isolated maximum amounts of 40 inches"; Houston and Harris County did not order an evacuation (Texas Tribune, Aug 25 and 27, 2017; NPR, Aug 28, 2017).
+
+TITLE (recommended)
+Hurricane Harvey: The Flood That Was Forecast
+
+ALTERNATIVE TITLES (for later title tests)
+- Hurricane Harvey: Forecast Days Ahead, 122,000 Rescues Later
+- Why Houston Waited on Its Roofs During Hurricane Harvey
+- Harvey: 15 to 30 Inches of Rain, and No Order to Leave
+
+DESCRIPTION
+On Friday, August 25, 2017, the National Hurricane Center warned of catastrophic, life-threatening flooding: 15 to 30 inches of rain, in places 40. Two days later, Houston's highways were rivers and people were waiting on their roofs. Across Texas, more than 122,000 people had to be rescued.
+
+This film follows the flood from the warning to the aftermath, through U.S. Coast Guard, National Guard and Air Force Reserve archive footage, the official reports, and the people who were there: Coast Guard rescue swimmer Brendan Kiley, Chief Petty Officer Matthew Dusek, whose own house in Dickinson flooded, and the soldiers and pararescuemen who worked the streets.
+
+What was known before: the rain forecast was clear and early. What no forecast could show was which streets would flood, and Houston, remembering the deadly Rita evacuation of 2005, did not order people to leave.
+What happened behind the Addicks and Barker dams in west Houston, and why federal courts later ruled that the government must pay for flooding homes there.
+
+In memory of everyone who lost their lives in Harvey's floods, among them Sgt. Steve Perez of the Houston Police Department.
+
+CHAPTERS
+0:00 August 2017
+0:42 The warning
+1:57 The night
+3:23 The roofs
+5:59 The dams
+7:21 The rivers
+8:42 After
+9:36 Ending
+
+SOURCES (facts)
+- NHC Tropical Cyclone Report, Hurricane Harvey (AL092017), Blake & Zelinsky, 2018, and rainfall supplement: https://www.nhc.noaa.gov/data/tcr/AL092017_Harvey.pdf
+- NHC public advisories, Harvey (Advisory 22, Aug 25, 2017): https://www.nhc.noaa.gov/archive/2017/HARVEY.shtml
+- NWS Service Assessment, "August–September 2017 Hurricane Harvey" (2018): https://www.weather.gov/media/publications/assessments/harvey6-18.pdf
+- "Eye of the Storm", Report of the Governor's Commission to Rebuild Texas (Nov 2018)
+- Harris County Flood Control District, Immediate Report #1 (Sept 5, 2017) and 2018 structure-flooding figures; Harris County Harvey Fact Sheet (Nov 2017)
+- U.S. Court of Federal Claims, In re Upstream Addicks & Barker (No. 17-9001L, 2019) and In re Downstream Addicks & Barker (No. 17-9002, 2026); U.S. Court of Appeals for the Federal Circuit, Ablan v. United States (2025)
+- NTSB Highway Accident Report HAR-07/01 (Wilmer, Texas bus fire, Sept 23, 2005)
+- U.S. Coast Guard news releases and award citation (Brendan Kiley); U.S. Coast Guard summary of Harvey response (Sept 7, 2017)
+- Texas Tribune (Aug 25 and Aug 27, 2017); NPR All Things Considered (Aug 28, 2017)
+- Rain gauge data: Iowa Environmental Mesonet; elevation: USGS 3DEP; maps: U.S. Census TIGER; aerial: NOAA NGS (Aug 30, 2017)
+
+ARCHIVE AND CREDITS (public domain)
+- DVIDS: U.S. Coast Guard (Air Station Cape Cod hoist and helicopter footage; interviews with Brendan Kiley and Matthew Dusek), Texas Army and Air National Guard, New York and Alaska Air National Guard, Air Force Reserve, U.S. Army Corps of Engineers, U.S. Customs and Border Protection (BORSTAR)
+- NOAA: GOES-16 satellite imagery; NGS emergency response aerial imagery
+- Every archive shot is labelled on screen with its own place and date. The Kiley rooftop scene is a simplified reconstruction based on his award citation, labelled on screen.
+- Music (Mixkit Stock Music Free License): "Echoes", "Vastness" by Andrew Ev; "Epical Drums 03", "Epical Drums 04" by Grigoriy Nuzhny; "Red Lights Adhafera", "Vertigo", "What it Takes", "Voxscape", "Silent Descent", "Opalescent", "The Farewell" by Eugenio Mininni; "Staring at the Night Sky" by Alejandro Magaña (A. M.); "Ode to Loneliness" by Diego Nava
+- Narration: AI voice (ElevenLabs).
+
+#hurricaneharvey #houstonflood #documentary #disasterdocumentary #knowninadvance
+
+TAGS
+hurricane harvey, hurricane harvey documentary, harvey 2017, houston flood 2017, hurricane harvey houston, harvey flooding, addicks and barker reservoirs, addicks dam, barker dam, coast guard rescue harvey, hurricane harvey rescue, houston flooding, texas flood, hurricane documentary, flood forecast, disaster documentary, natural disaster documentary, beaumont flood, port arthur flood
+
+SETTINGS CHECKLIST
+- Pinned comment (post right after publishing): "The forecast said 15 to 30 inches of rain, two days before the water reached Houston's roofs. If you had lived in Houston that week, would you have left? Sources for every fact are listed in the description."
+- Alternative pinned comment: "More than 122,000 people were rescued across Texas during Harvey. Were you or your family in Houston in August 2017?"
+- Schedule: Thursday or Saturday, 2–3 p.m. US Eastern (10–11 p.m. Moscow). Category: Education. Audience: not made for kids.
+- Language: English. Upload final/harvey_final.srt as English captions.
+- Altered or synthetic content: the narration is an AI voice; follow YouTube's current disclosure rules. The rooftop reconstruction and the maps are labelled on screen.
+- The film mentions deaths (no graphic images). No age restriction expected.
