@@ -1,4 +1,4 @@
-# «Исландия» — полный выпуск (≈ 20 минут)
+# «Исландия» — полный выпуск (≈ 22 минуты)
 
 Стиль канала: `../STYLE.md` (белый Inter + коралловый акцент, переходы в духе After Effects, мини-карта, карточки, обводки, значки,
 экран на части, вступление-нарезка под ритм музыки). Угол выпуска отличается от GOLOVOLOM («Жизнь в Исландии», 27 мин):
@@ -18,7 +18,7 @@
 | `sources.py` | реестр исходников (Pixabay / Wikimedia Commons), авторы и лицензии, скачивание |
 | `pool.py`, `photopool.py`, `wiki_pool.py`, `*.json` | отбор кадров: поиск, контактные листы, сведения о файлах |
 | `maps.py` | 34 карты и графика (Natural Earth, public domain) |
-| `tts.py`, `align.py`, `vo/` | озвучка по абзацам и тайминги склеек (faster-whisper) |
+| `tts_el.py`, `tags.py`, `align.py`, `vo/` | озвучка ElevenLabs v3 (голос Leonid Fomichev) с паузами и эмоциями из `tags.py`, тайминги склеек (faster-whisper); `tts.py` — старая тестовая озвучка Fish |
 | `timeline.py`, `render.py` | монтажный лист и сборка видео + звук |
 | `make_srt.py`, `make_credits.py`, `make_kit.py`, `cover.py` | субтитры, список источников, описание для YouTube, обложка |
 | `iceland.srt`, `CREDITS.md`, `upload_kit.txt`, `cover.jpg` | готовые материалы |
@@ -30,7 +30,7 @@ MP4 (≈ 20 мин, 1080p) в git не кладём: он больше лими�
 sh ru_geo/fetch_data.sh                      # Natural Earth (рельеф теперь с Гренландией), шрифты
 cd ru_geo/iceland
 python3 fetch_media.py                       # все исходники (нужен PIXABAY_API_KEY в окружении)
-python3 tts.py && WHISPER=medium python3 align.py    # озвучка (Fish Audio) и тайминги — уже лежат в vo/
+python3 tts_el.py && WHISPER=medium python3 align.py # озвучка (ElevenLabs v3, Leonid) и тайминги — уже лежат в vo/
 python3 maps.py                              # карты и графика → cache/
 python3 render.py cache/iceland.mp4          # видео + звук (≈ 1,5 часа на 4 ядрах)
 python3 make_srt.py && python3 make_credits.py && python3 make_kit.py && python3 cover.py
@@ -69,8 +69,8 @@ python3 make_srt.py && python3 make_credits.py && python3 make_kit.py && python3
 | Аскья, 1907: двое немецких учёных (фон Кнебель и Рудлофф) пропали на озере Эскьюватн | Википедия «Askja» |
 
 ## Ограничения
-- **Озвучка тестовая**: Fish Audio, публичная модель «Энергичный Рассказчик», бесплатный тариф s2.1-pro-free — по условиям Fish Audio только для
-  некоммерческого использования. Владелица решила переозвучить в ElevenLabs в самом конце: `tts.py` → новый голос, затем `align.py` и `render.py`.
+- **Озвучка**: ElevenLabs v3, голос Leonid Fomichev (выбран владелицей 7.11.2026 вместо тестового Fish). Паузы, усмешки и тон — теги в `tags.py`
+  (в субтитры не попадают). Переозвучить абзац: `python3 tts_el.py grin2 && WHISPER=medium python3 align.py grin2`, затем карты и `render.py`.
 - Часть исторических кадров (Хеймаэй 1973, Катла 1918) — старые фото невысокого разрешения.
 - Кадры с пометкой «иллюстрация» сняты не в Исландии и на экране не подписаны как Исландия (аэропорты, деньги, суды и т. п.).
 - Морская зона 200 миль нарисована упрощённо (буфер от берега, обрезанный срединной линией с Гренландией, Фарерами и Ян-Майеном).
