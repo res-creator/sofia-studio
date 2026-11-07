@@ -2681,3 +2681,30 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "lads" — rubric comment_reply4 (60-70 s). heroine = Jessica, husband = Brian
+CAST.update({
+    "husband": dict(voice="am_adam", speed=1.0, lang="en-us", el="nPczCjzI2devNBz1zQrb"),   # lads: the husband going on a lads' trip (Brian)
+})
+EP["lads"] = dict(
+    title='Муж хочет в отпуск с друзьями', rubric='comment_reply4',
+    hook_title=[['МУЖ ЕДЕТ В ОТПУСК', 'd'], ['БЕЗ МЕНЯ', 'p'], ['ЧТО ОТВЕТИШЬ?', 'd']],
+    lines=[
+        ('hook_m', 'husband', "[casually] The lads and I are going to Spain. Just a week. You don't mind, right?", 'Мы с парнями едем в Испанию. Всего на неделю. Ты же не против?'),
+        ('hook', 'nar', 'Вопрос из комментариев: муж собрался в отпуск с друзьями. Без меня. Что сказать? Четыре ответа.', ''),
+        ('o1_h', 'her', '[coldly] Fine. Go.', 'Хорошо. Езжай.'),
+        ('o1_m', 'husband', '[nervously] Really? ...Why does that sound scary?', 'Правда? …Почему это звучит страшно?'),
+        ('o1_nar', 'nar', 'Холодно — и ему уже страшно.', ''),
+        ('o2_h', 'her', "[cheerfully] Great! Then I'm going to Paris. With your credit card.", 'Отлично! Тогда я еду в Париж. С твоей кредиткой.'),
+        ('o2_m', 'husband', '[quickly] ...How about we all go to Spain?', '…А может, все вместе в Испанию?'),
+        ('o2_nar', 'nar', 'С юмором — и планы поменялись.', ''),
+        ('o3_h', 'her', '[calmly] Sure, as long as we plan a trip together, too.', 'Конечно, если мы спланируем и общую поездку.'),
+        ('o3_m', 'husband', '[relieved] Deal. Anywhere you want.', 'Договорились. Куда захочешь.'),
+        ('o3_nar', 'nar', 'Как носитель: да — но с условием. Запоминай:', ''),
+        ('o3_tip', 'tip', 'As long as...', ''),
+        ('o4_h', 'her', "[sweetly] Of course, darling. Have fun. I'll be at the spa — the five-star one. You're paying for both.", 'Конечно, дорогой. Отдыхай. А я буду в спа — в пятизвёздочном. Платишь за оба.'),
+        ('o4_m', 'husband', '[gulping] ...Both?', '…За оба?'),
+        ('end_m', 'husband', '[reading phone] Dave can\'t come. Mike can\'t come. Tom\'s wife said no... So, Paris?', 'Дэйв не едет. Майк не едет. Тому жена не разрешила… Так что, Париж?'),
+        ('moral', 'nar', 'Мораль: отпуск отдельно — нормально, если это честно для обоих.', ''),
+        ('outro', 'nar', 'Какой ответ твой: один, два, три или четыре? И пиши свою ситуацию — разберём!', ''),
+    ],
+)
