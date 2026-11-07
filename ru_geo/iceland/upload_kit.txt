@@ -1,0 +1,67 @@
+UPLOAD KIT — «Исландия» (полный выпуск, 21:53)
+
+НАЗВАНИЕ (до 100 знаков):
+Исландия: остров, который хочет вас выгнать. Вулканы, лёд и упрямые люди
+
+ВАРИАНТЫ НАЗВАНИЯ:
+— Исландия: как живут люди на острове, который их выгоняет
+— Почему Исландия не сдаётся вулканам? Лава, лёд и 400 тысяч упрямцев
+
+ОПИСАНИЕ:
+Как почти 400 тысяч человек живут на острове, который постоянно пытается их выгнать? Извержение, которое убило пятую часть страны. Город, который спас гавань, поливая лаву морской водой. Вулкан, закрывший небо над Европой. Стены против лавы в Гриндавике. Войны за треску, которые маленькая Исландия выиграла у Британии, крах банков 2008 года, похороны ледника и астронавты, которые готовились здесь к полёту на Луну.
+
+Таймкоды:
+0:00 Вступление
+1:22 Где находится Исландия
+2:34 Как здесь появились люди
+4:12 Лаки: извержение, которое изменило Европу
+5:58 Хеймаэй: как остановить лаву
+8:08 Эйяфьядлайёкюдль: вулкан, закрывший небо
+9:21 Гриндавик: город против вулкана
+11:48 Бесплатная печка: тепло и алюминий
+13:32 Тресковые войны
+15:50 Крах 2008 года
+17:48 Лёд и похороны ледника
+20:10 Астронавты в Исландии
+21:02 Финал
+
+Источники фактов:
+— Статистическое бюро Исландии (население на 1.01.2026): statice.is
+— Лаки, 1783: Thordarson & Self (1993, 2003); Википедия «Laki»
+— Хеймаэй, 1973: USGS «Lava-cooling operations during the 1973 eruption of Eldfell» (pubs.usgs.gov/of/1997/of97-724); Музей Эльдхеймар
+— Эйяфьядлайёкюдль, 2010: ICAO, IATA
+— Гриндавик и Сундхнукюр, 2023–2025: Метеослужба Исландии (vedur.is)
+— Геотермальное тепло: Orkustofnun (Национальное энергетическое управление Исландии)
+— Carbfix: Matter et al., Science, 2016
+— Тресковые войны: Imperial War Museums; Википедия «Cod Wars»
+— Крах 2008: доклад Специальной комиссии альтинга (2010); МВФ
+— Окйёкюдль: Rice University / Университет Исландии, табличка «A letter to the future» (2019)
+— Астронавты: Exploration Museum, Хусавик; NASA
+
+Фото Wikimedia Commons (автор — лицензия):
+Attribution: Halldór Björnsson / Icelandic Meteorological Office, Veðurstofa Íslands, Icelandic Meteorological Office, European Union, Copernicus Sentinel-2 imagery
+CC BY 2.0: Lydur Skulason from Iceland, James St. John
+CC BY 2.5: _大面
+CC BY 2.5 dk: Johannes Jansson
+CC BY 2.5, CC BY-SA 3.0: Laurent Deschodt
+CC BY 3.0: Boaworm
+CC BY 4.0: Steinninn
+CC BY-SA 2.0: Bruce McAdam, Flickr user:katjung, Roger Goodman, Chris Morgan, Colin Westley (Uploaded by User:PeterJewell ), Matt Riggott from Reykjavík, Iceland, peterhartree
+CC BY-SA 2.0 de: Christian Bickel (fingalo)
+CC BY-SA 2.5: Issac Newton, Hansueli Krapf ( User:Simisa )
+CC BY-SA 3.0: Chmee2 / Valtameri, Árni Friðriksson, user:Kjallakr, OddurBen, Wolfgang Sauber, Ivan Sabljak, Zinneke, en:User:Worldtraveller, bowlingbal, The original uploader was Kjallakr at English Wikipedia ., BIL, Roger McLassus, Chris 73, User Wolfgangbeyer on de.wikipedia
+CC BY-SA 4.0: Dominic Boyer, Andreas Tille, Diego Delso (delso.photo), Olga Ernst annotated by Prioryman, Smiley.toerist, Hyppolyte de Saint-Rambert, Berserkur, Icelandic Meteorological Office, Jakub Hałun, Steinninn, Sigrg, Bewapeningswerkplaatsen der Marine, Joschenbacher, Ykliu, Oddur Sigurðsson
+CC0: Gaggi96, Almannavarnadeild ríkislögreglustjóra, Jon Flobrant jonflobrant
+OGL v1.0: Royal Navy official photographer
+Public domain: Almannavarnadeild ríkislögreglustjóra, United States Geological Survey, NASA, Олаус Магнус (1555), Йохан Петер Раадсиг (1806–1882), Bragi Thór Josefsson, Жозеф Дюплесси (1778), неизвестный художник (XVIII век), Richard S. Williams, United States Geological Survey, NASA / MODIS Rapid Response team, Anthony Appleyard ( talk ), Camera Operator: MSgt. Michael E. Daniels, USAF, National Maritime Museum, неизвестный фотограф (1918), Michael Ryan
+Полный список со ссылками на каждый файл: https://github.com/res-creator/sofia-studio/blob/claude/cool-hypatia-ehnxdy/ru_geo/iceland/CREDITS.md
+Остальные видео и фото: Pixabay (Pixabay Content License). Карты: Natural Earth. Музыка: Mixkit (Eugenio Mininni, Michael Ramir C.).
+
+#исландия #вулканы #география #путешествия #гриндавик #страны #документальный
+
+ТЕГИ:
+исландия, вулкан, извержение, гриндавик, лава, эйяфьядлайёкюдль, лаки, хеймаэй, тресковые войны, крах банков 2008, ледник, география, страны мира, рейкьявик, документальный фильм
+
+ОБЛОЖКА: cover.jpg (1280×720)
+СУБТИТРЫ: iceland.srt (русский)
+КАТЕГОРИЯ: Образование / Путешествия
