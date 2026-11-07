@@ -2681,3 +2681,46 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "bazaar" — RUBRIC «A1 vs C2», compact form. heroine = Jessica, market seller = Callum
+CAST.update({
+    "seller": dict(voice="am_onyx", speed=1.0, lang="en-gb", el="N2lVS1w4EtoT3dr4eOWO"),   # bazaar: the seaside market seller with the scarf (Callum)
+})
+EP["bazaar"] = dict(
+    title='Рынок: «For you — special price»', rubric='levels_compact',
+    hook_title=[['«FOR YOU —', 'd'], ['SPECIAL PRICE»', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut", card_fade=True,
+    chunks={'c2_h': [["It's lovely, but my budget is strictly twenty.", 'Он прекрасен, но мой бюджет — строго двадцать.'], ['Feel free to keep the scarf —', 'Можете оставить шарф себе —'], ["I'll keep the euros.", 'а я оставлю себе евро.']]},
+    lines=[
+        ('hook_s', 'seller', '[warmly] For you, my friend — special price! Only eighty euros!', 'Для тебя, мой друг, — особая цена! Всего восемьдесят евро!'),
+        ('hook', 'nar', 'Рынок на море. Шарф за восемьдесят евро «по особой цене». Проверим!', ''),
+        ('a1_h', 'her', '[shocked] No! Expensive! Ten!', 'Нет! Дорого! Десять!'),
+        ('a1_s', 'seller', '[grinning] Ten? For ten I give you... the bag.', 'Десять? За десять я дам тебе… пакет.'),
+        ('a1_nar', 'nar', 'Три слова — и ты купила пакет.', ''),
+        ('a2_h', 'her', '[frowning] It is too much expensive.', 'Это слишком много дорого.'),
+        ('a2_s', 'seller', '[delighted] Too much expensive? Then it is good quality!', 'Слишком много дорого? Значит, хорошее качество!'),
+        ('a2_nar', 'nar', 'Не «too much expensive», а просто «too expensive». Правильно так:', ''),
+        ('a2_tip', 'tip', "It's too expensive.", ''),
+        ('b1_h', 'her', '[politely] Could you do it for thirty?', 'Отдадите за тридцать?'),
+        ('b1_s', 'seller', '[dramatically] Thirty? My children will cry. Seventy.', 'Тридцать? Мои дети будут плакать. Семьдесят.'),
+        ('b1_nar', 'nar', 'Вежливо. Минус десять евро.', ''),
+        ('b2_h', 'her', "[raising eyebrows] Come on, that's a rip-off.", 'Да ладно, это грабёж.'),
+        ('b2_s', 'seller', '[pulling the scarf] Rip? No, no — it is very strong!', 'Порвётся? Нет-нет, он очень прочный!'),
+        ('b2_nar', 'nar', 'Rip-off — грабёж, обдираловка. А он подумал: «порвётся». Запоминай:', ''),
+        ('b2_tip', 'tip', "That's a rip-off.", ''),
+        ('c1_h', 'her', '[casually] I saw the same one two stalls down for twenty-five. Shall I go and check?', 'Я видела такой же через две палатки за двадцать пять. Сходить проверить?'),
+        ('c1_s', 'seller', '[quickly] ...Wait! Twenty-five, and a free bracelet.', '…Стой! Двадцать пять и браслет в подарок.'),
+        ('c1_nar', 'nar', 'Приём: сравни цену и будь готова уйти. Запоминай:', ''),
+        ('c1_tip', 'tip', 'Shall I go and check?', ''),
+        ('c2_h', 'her', "[smiling] It's lovely, but my budget is strictly twenty. Feel free to keep the scarf — I'll keep the euros.", 'Он прекрасен, но мой бюджет — строго двадцать. Можете оставить шарф себе — а я оставлю себе евро.'),
+        ('c2_s', 'seller', '[calling after her] ...Twenty! Twenty! Special price!', '…Двадцать! Двадцать! Особая цена!'),
+        ('c2_nar', 'nar', 'Мораль: лучший аргумент на рынке — уйти.', ''),
+        ('outro', 'nar', 'Ты умеешь торговаться? Пиши: да или нет — и сохрани!', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'ЦЕНА', 'ok': False, 'note': 'купила пакет'},
+           'A2': {'type': 'swap', 'bad': 'It is too much expensive.', 'bad_note': 'без much', 'good': ["It's too", 'expensive.']},
+           'B1': {'type': 'eq', 'en': 'Could you do it for thirty?', 'ru': '= Отдадите за тридцать?', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'rip-off', 'ru': 'грабёж, обдираловка', 'ex': ["That's a rip-off.", 'это грабёж.'], 'icon': 'bell'},
+           'C1': {'type': 'eq', 'en': 'Shall I go and check?', 'ru': '= Сходить проверить?', 'ex': [['I saw the same one for twenty-five.', '= я видела такой же за 25.']]},
+           'C2': {'type': 'c2', 'vocab': [['strictly', '= строго'], ['feel free to', '= можете спокойно']], 'moral': ['ЛУЧШИЙ', 'АРГУМЕНТ —', 'УЙТИ'], 'moral_at': 0.35}},
+)
