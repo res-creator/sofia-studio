@@ -365,13 +365,9 @@ def sh_split(sp, n, dsec):
 def sh_card(sp, n, dsec):
     def f(i):
         u = i / max(1, n - 1); t = u * dsec; im = Image.new('RGB', (W, H), (8, 9, 11)); d = ImageDraw.Draw(im, 'RGBA'); a = int(255 * seg(t, 0.3, 1.2) * (1 - seg(t, dsec - 1.0, dsec)))
-        tracked(d, W / 2, 300, 'HARVEY', F('k', 120), 22, (255, 255, 255, a))
-        d.text((W / 2, 360), 'HOUSTON · AUGUST 2017', font=F('s', 32), fill=(255, 236, 190, a), anchor='mm')
-        lines = ['Archive footage and photos: DVIDS (U.S. Coast Guard, National Guard, Air Force Reserve, USACE, CBP) · NOAA',
-                 'Data: NOAA/NHC, NWS, Iowa Environmental Mesonet, USGS 3DEP, U.S. Census TIGER · Documents: NHC, NWS, NTSB, U.S. Court of Federal Claims',
-                 'Reconstruction based on the U.S. Coast Guard award citation · Every archive shot is labelled with its own place and date',
-                 'Music: Mixkit (Mixkit Stock Music Free License)', 'Narration: AI voice (ElevenLabs)']
-        for k, s in enumerate(lines): d.text((W / 2, 520 + k * 62), s, font=F('m' if k < 4 else 'b', 27), fill=(205, 210, 216, a) if k < 4 else YEL + (a,), anchor='mm')
+        tracked(d, W / 2, 500, 'HARVEY', F('k', 120), 22, (255, 255, 255, a))
+        d.text((W / 2, 560), 'HOUSTON · AUGUST 2017', font=F('s', 32), fill=(255, 236, 190, a), anchor='mm')
+        # credits live in the YouTube description; the end card is the title only (owner, Nov 7)
         return np.asarray(im)
     return f
 KIND = dict(clip=sh_clip, goes=sh_clip, map=sh_clip, still=sh_still, photo=sh_photo, doc=sh_doc, title=sh_title, split=sh_split, card=sh_card)
