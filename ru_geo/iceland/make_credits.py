@@ -24,7 +24,7 @@ for k in used:
 L += ['', '## Прочее', '',
       '- Карты: Natural Earth (рельеф NE1_HR, границы, береговые линии), public domain. Скрипты `maps.py`, `../lib/geo.py`.',
       '- Музыка: Mixkit — «Wind Leaves», «Your Breath», «Forest Walk» (Eugenio Mininni), «I\'m Going Home» (Michael Ramir C.); Mixkit Stock Music Free License.',
-      '- Голос: ElevenLabs (модель v3), голос Leonid Fomichev из Voice Library; платный тариф Creator — коммерческое использование разрешено.',
+      '- Голос: ElevenLabs (модель v3), голос Todd (Clear, Engaging and Educational) из Voice Library; платный тариф Creator — коммерческое использование разрешено.',
       '- Шрифты: Inter, Caveat (Google Fonts, SIL OFL).', '',
       '## Блок для описания YouTube', '', '```', 'Фото и видео:']
 seen = set()
