@@ -2681,3 +2681,46 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "service" — RUBRIC «A1 vs C2», compact form. heroine = Jessica, waiter = Daniel
+CAST.update({
+    "waiter2": dict(voice="bm_daniel", speed=1.0, lang="en-gb", el="onwK4e9ZLuTAKqWW03F9"),   # service: the posh waiter with the bill (Daniel)
+})
+EP["service"] = dict(
+    title='В счёт добавили 15% за обслуживание', rubric='levels_compact',
+    hook_title=[['СЧЁТ:', 'd'], ['+15% ЗА ЧТО?', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut", card_fade=True,
+    chunks={'c2_h': [["I'm happy to tip for good service.", 'Я с радостью оставлю чаевые за хорошее обслуживание.'], ['Tonight, sadly, the only thing that arrived on time', 'Сегодня, увы, единственное, что пришло вовремя,'], ['was the bill.', '— это счёт.']]},
+    lines=[
+        ('hook_w', 'waiter2', '[smoothly] Here is your bill, madam. Service is included... and also added.', 'Ваш счёт, мадам. Обслуживание включено… и ещё добавлено.'),
+        ('hook', 'nar', 'Суп холодный, ждали сорок минут, а в счёте плюс пятнадцать процентов. Проверим!', ''),
+        ('a1_h', 'her', '[shocked] What? Fifteen! No!', 'Что? Пятнадцать! Нет!'),
+        ('a1_w', 'waiter2', "[politely] Yes. Fifteen. You're welcome.", 'Да. Пятнадцать. Не за что.'),
+        ('a1_nar', 'nar', 'Три слова — и тебе сказали «не за что».', ''),
+        ('a2_h', 'her', '[confused] Why you put more money?', 'Почему ты положить больше денег?'),
+        ('a2_w', 'waiter2', '[smiling] Because more money is nice.', 'Потому что больше денег — это приятно.'),
+        ('a2_nar', 'nar', 'Не «why you put more money», а «why is there an extra charge». Правильно так:', ''),
+        ('a2_tip', 'tip', 'Why is there an extra charge?', ''),
+        ('b1_h', 'her', '[politely] Is the service charge optional?', 'Плата за обслуживание — по желанию?'),
+        ('b1_w', 'waiter2', '[dryly] Optional? Like breathing is optional.', 'По желанию? Как дышать — по желанию.'),
+        ('b1_nar', 'nar', 'Правильный вопрос. Но он не сдаётся.', ''),
+        ('b2_h', 'her', "[indignant] That's daylight robbery!", 'Это грабёж средь бела дня!'),
+        ('b2_w', 'waiter2', "[checking his watch] Robbery? No, madam — it's evening.", 'Грабёж? Нет, мадам, сейчас вечер.'),
+        ('b2_nar', 'nar', 'Daylight robbery — грабёж средь бела дня, то есть слишком дорого. А он посмотрел на часы. Запоминай:', ''),
+        ('b2_tip', 'tip', "That's daylight robbery!", ''),
+        ('c1_h', 'her', "[calmly] The service charge is optional, so I'd like it removed — the soup was cold and we waited forty minutes.", 'Плата за обслуживание — по желанию, так что уберите её: суп был холодный, а ждали мы сорок минут.'),
+        ('c1_w', 'waiter2', '[stiffly] ...Of course, madam. Removed.', '…Конечно, мадам. Убрано.'),
+        ('c1_nar', 'nar', 'Приём: правило плюс причина. Запоминай:', ''),
+        ('c1_tip', 'tip', "I'd like it removed.", ''),
+        ('c2_h', 'her', "[coolly] I'm happy to tip for good service. Tonight, sadly, the only thing that arrived on time was the bill.", 'Я с радостью оставлю чаевые за хорошее обслуживание. Сегодня, увы, единственное, что пришло вовремя, — это счёт.'),
+        ('c2_w', 'waiter2', '[defeated] ...Dessert is on the house?', '…Десерт за счёт заведения?'),
+        ('c2_nar', 'nar', 'Мораль: в Британии плата за обслуживание — по желанию.', ''),
+        ('outro', 'nar', 'Ты платишь за обслуживание, если всё было плохо? Пиши: да или нет — и сохрани!', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'СЧЁТ', 'ok': False, 'note': 'платишь 15%'},
+           'A2': {'type': 'swap', 'bad': 'Why you put more money?', 'bad_note': 'лишняя плата: extra charge', 'good': ['Why is there', 'an extra charge?']},
+           'B1': {'type': 'eq', 'en': 'Is the service charge optional?', 'ru': '= Плата за обслуживание — по желанию?', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'daylight robbery', 'ru': 'грабёж средь бела дня', 'ex': ["That's daylight robbery!", 'это грабёж!'], 'icon': 'bell'},
+           'C1': {'type': 'eq', 'en': "I'd like it removed.", 'ru': '= Уберите это, пожалуйста.', 'ex': [['The service charge is optional.', '= плата за обслуживание по желанию.']]},
+           'C2': {'type': 'c2', 'vocab': [['tip', '= чаевые'], ['on the house', '= за счёт заведения']], 'moral': ['SERVICE CHARGE —', 'ПО', 'ЖЕЛАНИЮ'], 'moral_at': 0.35}},
+)
