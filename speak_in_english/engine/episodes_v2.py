@@ -2681,3 +2681,30 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "movein" — rubric comment_reply4 (60-70 s). heroine = Jessica, boyfriend = Eric
+CAST.update({
+    "bf4": dict(voice="am_eric", speed=1.0, lang="en-us", el="cjVigY5qzO86Huf0OWal"),   # movein: the boyfriend with the suitcase (Eric)
+})
+EP["movein"] = dict(
+    title='Он предлагает съехаться через неделю', rubric='comment_reply4',
+    hook_title=[['НЕДЕЛЯ ВМЕСТЕ.', 'd'], ['«ДАВАЙ ЖИТЬ ВМЕСТЕ»', 'p'], ['ЧТО ОТВЕТИШЬ?', 'd']],
+    lines=[
+        ('hook_b', 'bf4', "[excited] Surprise! Let's move in together! It's been a whole week!", 'Сюрприз! Давай жить вместе! Прошла целая неделя!'),
+        ('hook', 'nar', 'Вопрос из комментариев: встречаемся неделю, а он уже с чемоданом. Что ответить? Четыре ответа.', ''),
+        ('o1_h', 'her', '[flatly] No.', 'Нет.'),
+        ('o1_b', 'bf4', '[hopefully] Okay. Can I leave my toothbrush, though?', 'Ладно. А зубную щётку можно оставить?'),
+        ('o1_nar', 'nar', 'Холодно. Но щётка уже здесь.', ''),
+        ('o2_h', 'her', "[teasing] A week? I haven't even seen you without a hat.", 'Неделя? Я тебя даже без шапки не видела.'),
+        ('o2_b', 'bf4', '[taking off hat] ...Now you have.', '…Теперь видела.'),
+        ('o2_nar', 'nar', 'С юмором — и сюрприз под шапкой.', ''),
+        ('o3_h', 'her', "[gently] That's sweet, but let's not rush things.", 'Это мило, но давай не будем торопиться.'),
+        ('o3_b', 'bf4', '[nodding] Right. Sure. Slow. I can do slow.', 'Ага. Конечно. Медленно. Я умею медленно.'),
+        ('o3_nar', 'nar', 'Как носитель: тепло, но с паузой. Запоминай:', ''),
+        ('o3_tip', 'tip', "Let's not rush things.", ''),
+        ('o4_h', 'her', "[sweetly] Darling, you're lovely. But my cat has to approve — and she's still deciding about my last boyfriend.", 'Дорогой, ты прелесть. Но тебя должна одобрить моя кошка — а она до сих пор думает насчёт моего прошлого парня.'),
+        ('o4_b', 'bf4', '[sadly] ...She hates me.', '…Она меня ненавидит.'),
+        ('end_b', 'bf4', '[sheepishly] Mum packed for a month.', 'Мама собрала на месяц.'),
+        ('moral', 'nar', 'Мораль: если чемодан собирала мама — не спеши.', ''),
+        ('outro', 'nar', 'Какой ответ твой: один, два, три или четыре? И пиши свою ситуацию — разберём!', ''),
+    ],
+)
