@@ -33,6 +33,7 @@ def probe(path):
 def frames_video(path, ss, dur, sh):
     """Кадры видео 1920×1080@30 с ss; если исходник короче — замедляем (не больше чем в 2 раза), crop — кадрирование (x,y,w,h в долях)."""
     total = probe(path)
+    if total and ss > total - min(dur, total) - 0.1: ss = max(0.0, total - min(dur, total) - 0.1)   # начало за концом клипа → чёрный кадр
     avail = max(0.3, total - ss - 0.05)
     slow = max(1.0, min(2.0, dur / avail)) * sh.get('slow', 1.0)
     vf = []

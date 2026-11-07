@@ -36,6 +36,7 @@ python3 render.py cache/iceland.mp4          # видео + звук (≈ 1,5 ч
 python3 make_srt.py && python3 make_credits.py && python3 make_kit.py && python3 cover.py
 ```
 Проверка куска: `LIMIT=80 python3 render.py out.mp4` (первые 80 с) или `KEYS=a01,a02 python3 render.py out.mp4`.
+Точечная правка готового видео: `python3 patch.py b08,u08` — перерендерит только эти планы и заново сведёт MP4 (минуты вместо часа).
 
 ## Факты и источники
 | Факт | Источник |
