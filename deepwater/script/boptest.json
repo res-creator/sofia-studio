@@ -1,0 +1,35 @@
+{
+ "note": "BOP visual test (Nov 5): existing recordings only (ElevenLabs on free tier). b39t = b39 from 'It should\u2026'. Test = 'should work' \u2192 deadman \u2192 CSB failure mechanism \u2192 pull back to the whole system (45\u201360 s). JIT/DNV, pod faults and b43 follow the same design in the full scene.",
+ "seq": [
+  [
+   "card",
+   "pre",
+   5.0,
+   0.0
+  ],
+  [
+   "vo",
+   "b39t",
+   "It should have closed the blowout preventer's blind shear ram, the blades meant to cut the drill pipe and seal the well, and freed the rig from the riser. The lights on the panel changed. The rig did not disconnect.",
+   0.0
+  ],
+  [
+   "vo",
+   "b40",
+   "The preventer also had an automatic backup, called the deadman, meant to close the blades on its own if power, communication, and hydraulic pressure from the rig were lost. After the explosions, they were.",
+   0.8
+  ],
+  [
+   "vo",
+   "b41",
+   "Investigators did not fully agree on what happened next. The Chemical Safety Board concluded that the deadman most likely did fire that night, but that the drill pipe inside had buckled and been pushed off center. The blades caught the pipe at its edge, and could not seal the well.",
+   0.8
+  ],
+  [
+   "card",
+   "tail",
+   4.5,
+   0.4
+  ]
+ ]
+}

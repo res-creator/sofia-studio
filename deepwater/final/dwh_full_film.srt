@@ -1,0 +1,1029 @@
+1
+00:00:00,910 --> 00:00:07,160
+[Williams] And during our phone conversation we
+heard a, a gas level being announced from
+
+2
+00:00:07,210 --> 00:00:08,120
+Sperry Sun.
+
+3
+00:00:08,170 --> 00:00:11,800
+My wife actually heard the announcement through
+the telephone, through the speaker,
+
+4
+00:00:11,850 --> 00:00:14,280
+and asked if I needed to get off the
+phone to go take care of it.
+
+5
+00:00:14,330 --> 00:00:16,180
+And I told her no, it was
+just an indication
+
+6
+00:00:16,770 --> 00:00:17,760
+that,
+
+7
+00:00:17,810 --> 00:00:20,120
+uh, to make everyone aware of what
+the gas levels are.
+
+8
+00:00:20,500 --> 00:00:25,050
+That was Mike Williams, the chief electronics
+technician on the Deepwater Horizon,
+
+9
+00:00:25,100 --> 00:00:27,250
+testifying three months later.
+
+10
+00:00:27,300 --> 00:00:31,310
+The call he described was on the night
+of April 20, twenty ten.
+
+11
+00:00:31,560 --> 00:00:36,390
+The rig was drilling in the Gulf of Mexico,
+about fifty miles off Louisiana.
+
+12
+00:00:36,440 --> 00:00:39,650
+126 people were on board.
+
+13
+00:00:40,000 --> 00:00:44,330
+Earlier that evening, the crew had tested
+whether the well was sealed.
+
+14
+00:00:44,680 --> 00:00:46,950
+The readings contradicted each other.
+
+15
+00:00:47,000 --> 00:00:49,110
+One line showed no flow.
+
+16
+00:00:49,160 --> 00:00:54,530
+The drill pipe, open to the same
+well, showed 1,400 psi.
+
+17
+00:00:54,880 --> 00:00:58,650
+Around eight o'clock, the test was
+declared a success.
+
+18
+00:00:59,000 --> 00:01:02,870
+The presidential commission later concluded that
+the pressure could only have come
+
+19
+00:01:02,920 --> 00:01:07,410
+from a leak into the well, and called
+the decision a key error.
+
+20
+00:01:07,860 --> 00:01:12,990
+Williams told investigators why the gas
+announcement that night did not alarm him.
+
+21
+00:01:13,160 --> 00:01:16,870
+[Williams] We had gotten them so frequently that I'd
+actually become somewhat immune to them.
+
+22
+00:01:17,360 --> 00:01:21,110
+I, I'd get to the point where I didn't even hear
+them anymore, uh, especially with
+
+23
+00:01:21,160 --> 00:01:23,470
+this well, because we were getting
+gas back continuously.
+
+24
+00:01:23,960 --> 00:01:26,990
+By his account, the call was around 9:30.
+
+25
+00:01:27,040 --> 00:01:31,510
+At about 9:40, mud and gas burst
+onto the rig floor.
+
+26
+00:01:31,560 --> 00:01:34,450
+Minutes later, the rig exploded.
+
+27
+00:01:35,800 --> 00:01:38,050
+Eleven men were killed.
+
+28
+00:01:42,400 --> 00:01:47,470
+Investigators would spend years asking how the
+well had been judged safe, and why
+
+29
+00:01:47,520 --> 00:01:50,970
+the blowout preventer on the
+seafloor did not stop it.
+
+30
+00:01:56,433 --> 00:02:01,183
+The Deepwater Horizon was a floating drilling
+rig, owned by Transocean and hired by
+
+31
+00:02:01,233 --> 00:02:02,233
+BP.
+
+32
+00:02:02,553 --> 00:02:05,970
+Below it lay about 5,000 feet of water.
+
+33
+00:02:06,020 --> 00:02:10,583
+A pipe called the riser ran down to the
+seafloor, to the blowout preventer: a
+
+34
+00:02:10,633 --> 00:02:15,490
+360-ton stack of valves and steel
+blades on top of the well.
+
+35
+00:02:15,540 --> 00:02:20,083
+From there, the well went down another two
+and a half miles into the rock.
+
+36
+00:02:20,433 --> 00:02:26,436
+The well was about 38 days behind schedule
+and some 58 million over budget.
+
+37
+00:02:26,486 --> 00:02:31,163
+In an email that April, a BP engineer
+called it a nightmare well.
+
+38
+00:02:31,513 --> 00:02:35,623
+126 people from thirteen
+companies were aboard.
+
+39
+00:02:35,673 --> 00:02:39,436
+BP's well site leaders were Bob
+Kaluza and Don Vidrine.
+
+40
+00:02:39,486 --> 00:02:43,543
+On the drill floor that evening were
+Transocean's toolpusher Jason Anderson and
+
+41
+00:02:43,593 --> 00:02:45,523
+driller Dewey Revette.
+
+42
+00:02:46,773 --> 00:02:50,643
+Halliburton had cemented the bottom of
+the well just after midnight.
+
+43
+00:02:50,693 --> 00:02:54,783
+The plan now was to seal it
+temporarily, and move the rig on.
+
+44
+00:02:55,633 --> 00:03:00,303
+Three things stood between the oil and gas in
+the rock and the rig above: the heavy
+
+45
+00:03:00,353 --> 00:03:04,383
+drilling mud that filled the well, the cement
+at the bottom, and the blowout
+
+46
+00:03:04,433 --> 00:03:05,563
+preventer.
+
+47
+00:03:07,313 --> 00:03:11,583
+To leave, the crew would replace the mud in the
+riser and the top of the well with
+
+48
+00:03:11,633 --> 00:03:13,423
+much lighter seawater.
+
+49
+00:03:13,473 --> 00:03:17,503
+After that, the cement at the bottom would have
+to hold back the reservoir on its
+
+50
+00:03:17,553 --> 00:03:18,683
+own.
+
+51
+00:03:18,933 --> 00:03:23,230
+That morning, BP had sent home a team that
+could have checked the cement.
+
+52
+00:03:23,280 --> 00:03:26,216
+Its decision plan said the
+check was not needed.
+
+53
+00:03:26,266 --> 00:03:29,903
+The commission later concluded that
+BP should have run it.
+
+54
+00:03:30,353 --> 00:03:32,863
+There was a warning in the
+laboratory, too.
+
+55
+00:03:32,913 --> 00:03:37,350
+Halliburton's own tests had shown the
+cement mix to be unstable.
+
+56
+00:03:38,200 --> 00:03:42,310
+The cement would be checked instead with a
+negative pressure test: lower the
+
+57
+00:03:42,360 --> 00:03:45,990
+pressure inside the well, as if the
+rig had already gone.
+
+58
+00:03:46,040 --> 00:03:51,010
+If the cement held, nothing would come
+back: no pressure, and no flow.
+
+59
+00:03:51,360 --> 00:03:55,177
+There was no standard procedure for
+running or reading this test.
+
+60
+00:03:55,227 --> 00:03:59,530
+And BP and Transocean had not formally
+trained their people to do it.
+
+61
+00:03:59,880 --> 00:04:04,443
+Starting around five p.m., the crew bled
+the pressure off the drill pipe.
+
+62
+00:04:04,493 --> 00:04:05,830
+It came back.
+
+63
+00:04:05,880 --> 00:04:10,290
+After repeated attempts, it
+built up to 1,400 psi.
+
+64
+00:04:10,640 --> 00:04:13,070
+They discussed the readings
+on the rig floor.
+
+65
+00:04:13,120 --> 00:04:16,830
+According to statements from both well site
+leaders, Jason Anderson said the
+
+66
+00:04:16,880 --> 00:04:21,790
+pressure came from a so-called bladder effect:
+heavy mud in the riser pressing down
+
+67
+00:04:21,840 --> 00:04:25,850
+on a closed preventer, and pushing
+pressure into the drill pipe.
+
+68
+00:04:26,200 --> 00:04:29,830
+Anderson died that night and never
+gave his own account.
+
+69
+00:04:29,880 --> 00:04:34,230
+A federal court later found that no such effect
+is known to exist in this kind of
+
+70
+00:04:34,280 --> 00:04:38,290
+test, and questioned whether the idea
+had come from him at all.
+
+71
+00:04:38,640 --> 00:04:43,390
+Don Vidrine insisted on repeating the test on
+the kill line, a narrow pipe from the
+
+72
+00:04:43,440 --> 00:04:45,690
+rig down to the blowout preventer.
+
+73
+00:04:45,760 --> 00:04:48,270
+Nothing flowed from it for 30 minutes.
+
+74
+00:04:48,320 --> 00:04:51,370
+The drill pipe still read
+fourteen hundred.
+
+75
+00:04:51,720 --> 00:04:55,650
+Around eight p.m., the test was
+declared a success.
+
+76
+00:04:56,000 --> 00:05:00,030
+The commission later wrote that the
+pressure data were not ambiguous.
+
+77
+00:05:00,080 --> 00:05:03,910
+In its view, the men had started from the
+assumption that the well could not be
+
+78
+00:05:03,960 --> 00:05:05,050
+flowing.
+
+79
+00:05:05,500 --> 00:05:10,250
+Four months earlier, a Transocean rig in the
+North Sea had a near miss after a
+
+80
+00:05:10,300 --> 00:05:12,710
+negative test was declared a success.
+
+81
+00:05:12,780 --> 00:05:17,430
+According to Transocean, the lessons never
+reached the Deepwater Horizon crew.
+
+82
+00:05:18,280 --> 00:05:22,790
+At 8:02, the crew began pumping the
+mud out and seawater in.
+
+83
+00:05:22,840 --> 00:05:27,070
+Halliburton cementer Chris Haire was told the
+test was good, and to get ready for
+
+84
+00:05:27,120 --> 00:05:29,090
+the final cement plug.
+
+85
+00:05:29,440 --> 00:05:34,270
+As the heavy mud left the well, so did the
+weight holding back the reservoir.
+
+86
+00:05:34,320 --> 00:05:38,990
+The cement at the bottom, investigators
+later concluded, was not holding.
+
+87
+00:05:39,040 --> 00:05:44,170
+According to later computer models, at about
+8:50, oil and gas began to enter the
+
+88
+00:05:44,280 --> 00:05:45,270
+well.
+
+89
+00:05:45,320 --> 00:05:50,550
+At 9:01, the drill pipe pressure began to
+rise while the pumps ran steadily.
+
+90
+00:05:50,600 --> 00:05:54,630
+Minutes later, with the pumps off,
+fluid kept flowing out.
+
+91
+00:05:54,680 --> 00:06:00,050
+At about 9:10, the returns were sent overboard,
+past the meters that measured them.
+
+92
+00:06:00,400 --> 00:06:03,950
+The crew was busy with other
+work at the same time.
+
+93
+00:06:04,000 --> 00:06:06,970
+Investigators concluded that the
+signs were missed.
+
+94
+00:06:07,320 --> 00:06:13,190
+Around 9:20, senior toolpusher Randy Ezell
+phoned Jason Anderson on the rig floor.
+
+95
+00:06:13,240 --> 00:06:17,430
+By Ezell's account, Anderson told him the test
+had gone fine: they had watched it
+
+96
+00:06:17,480 --> 00:06:20,130
+for 30 minutes, with no flow.
+
+97
+00:06:20,580 --> 00:06:25,250
+At about 9:30, driller Dewey Revette noticed a
+pressure difference, and the pumps
+
+98
+00:06:25,300 --> 00:06:26,610
+were shut down.
+
+99
+00:06:26,660 --> 00:06:31,070
+Ten minutes later, mud shot out of the
+riser onto the rig floor.
+
+100
+00:06:31,920 --> 00:06:37,230
+Gas was already above the blowout preventer,
+rising and expanding up the riser.
+
+101
+00:06:37,280 --> 00:06:41,950
+The crew sent the flow to a mud-gas separator on
+the rig, rather than overboard, and
+
+102
+00:06:42,000 --> 00:06:43,470
+closed the preventer.
+
+103
+00:06:43,520 --> 00:06:46,350
+The separator was not built for a blowout.
+
+104
+00:06:46,400 --> 00:06:48,730
+Gas spread over the rig.
+
+105
+00:06:49,080 --> 00:06:54,030
+Crane operator Micah Sandell saw mud shooting
+all the way up the derrick, and then
+
+106
+00:06:54,080 --> 00:06:55,650
+an explosion.
+
+107
+00:06:56,000 --> 00:06:59,610
+Mike Williams was in his shop,
+below the rig floor.
+
+108
+00:06:59,920 --> 00:07:02,490
+[Williams] What happened next was I
+heard a hissing noise
+
+109
+00:07:03,580 --> 00:07:04,910
+and a thump.
+
+110
+00:07:05,260 --> 00:07:09,210
+He heard alarms beeping from the
+engine control room next door.
+
+111
+00:07:09,260 --> 00:07:11,430
+Gas had reached the engines.
+
+112
+00:07:11,700 --> 00:07:16,230
+[Williams] I could hear engine number three start
+to rev up, and it's normal operating
+
+113
+00:07:16,920 --> 00:07:19,950
+RPMs to way above what I'd ever
+heard it run before.
+
+114
+00:07:20,130 --> 00:07:21,800
+I reach down to grab my door,
+
+115
+00:07:23,410 --> 00:07:26,000
+and at the simultaneously of
+grabbing the handle,
+
+116
+00:07:27,310 --> 00:07:29,860
+the engine goes to a level that is
+
+117
+00:07:31,770 --> 00:07:33,260
+higher than I can even describe it.
+
+118
+00:07:33,310 --> 00:07:38,950
+It's spinning so fast that it just stopped
+spinning, and there was a huge explosion.
+
+119
+00:07:40,480 --> 00:07:42,890
+It was about 9:49.
+
+120
+00:07:43,280 --> 00:07:47,770
+[Williams] As I'm crawling through the ECR, I crawl
+across the bodies of, of at least two men.
+
+121
+00:07:48,400 --> 00:07:49,490
+I don't know their condition.
+
+122
+00:07:49,540 --> 00:07:51,030
+I'm trying to get them to respond.
+
+123
+00:07:51,080 --> 00:07:51,870
+They're not responding.
+
+124
+00:07:51,920 --> 00:07:56,090
+I assume they're dead and keep moving, because
+I know that I'm in no condition to
+
+125
+00:07:56,140 --> 00:07:56,930
+help them.
+
+126
+00:07:56,980 --> 00:07:58,830
+He made it outside.
+
+127
+00:07:59,100 --> 00:08:02,330
+[Williams] the, the hissing noise has now
+turned into a full-blown roar,
+
+128
+00:08:03,380 --> 00:08:05,570
+and I look at the doghouse
+and the derrick.
+
+129
+00:08:05,840 --> 00:08:09,590
+The doghouse is on fire and about half of the
+derrick at this point is on fire.
+
+130
+00:08:11,440 --> 00:08:13,430
+It was then I realized we had a blowout.
+
+131
+00:08:14,720 --> 00:08:18,890
+Williams told investigators he never
+heard the general alarm.
+
+132
+00:08:19,172 --> 00:08:22,702
+[Investigator] Did you at any time
+hear any alarm, uh,
+
+133
+00:08:23,472 --> 00:08:26,982
+on the, that would indicate a
+general muster or-
+
+134
+00:08:27,072 --> 00:08:28,010
+[Williams] Never.
+
+135
+00:08:28,060 --> 00:08:33,397
+Investigators found that the general alarm came
+minutes after the first gas alarms.
+
+136
+00:08:33,447 --> 00:08:37,270
+Dynamic positioning officer Andrea
+Fleytas sent a Mayday.
+
+137
+00:08:37,620 --> 00:08:40,450
+Two lifeboats left from the
+front of the rig.
+
+138
+00:08:40,500 --> 00:08:44,770
+Others were cut off, and jumped 50 to
+70 feet into the water.
+
+139
+00:08:44,820 --> 00:08:48,430
+Williams stayed with a group trying
+to launch a life raft.
+
+140
+00:08:48,720 --> 00:08:53,070
+[Williams] So there we set, three of us with
+no life raft and no lifeboats.
+
+141
+00:08:53,290 --> 00:08:57,920
+it was at that point that I informed the other
+two individuals that we can stay here
+
+142
+00:08:57,970 --> 00:08:59,320
+and die or we can jump.
+
+143
+00:08:59,670 --> 00:09:03,380
+I remember telling a, a, a young woman that was
+beside me that we're gonna have to
+
+144
+00:09:03,430 --> 00:09:04,430
+run and jump.
+
+145
+00:09:04,580 --> 00:09:05,890
+I said, "He just did it.
+
+146
+00:09:06,400 --> 00:09:07,550
+You've got to do it."
+
+147
+00:09:09,380 --> 00:09:12,830
+She kept saying she couldn't do it, and I said,
+"Well, watch me then." And I took
+
+148
+00:09:12,880 --> 00:09:14,210
+off running, and I jumped.
+
+149
+00:09:14,660 --> 00:09:15,660
+I've got oil,
+
+150
+00:09:16,480 --> 00:09:20,090
+hydraulic fluid, gasoline, diesel, whatever it
+is that's floating on the water
+
+151
+00:09:20,640 --> 00:09:25,070
+is now burning my entire body, and I'm,
+I'm now covered in this sludge.
+
+152
+00:09:25,250 --> 00:09:29,380
+At that point, I started backstroking with the
+one arm and one leg that would work
+
+153
+00:09:30,230 --> 00:09:32,340
+until I remember feeling no pain.
+
+154
+00:09:32,390 --> 00:09:33,800
+I remember feeling no heat
+
+155
+00:09:34,890 --> 00:09:37,420
+and thinking that, uh, that
+was it, I had died.
+
+156
+00:09:37,750 --> 00:09:39,380
+And then I heard something
+in the distance.
+
+157
+00:09:39,430 --> 00:09:43,590
+I heard, "Over here, over here." I felt
+something start lifting me out of the water
+
+158
+00:09:45,092 --> 00:09:46,902
+Uh, a small orange
+
+159
+00:09:47,512 --> 00:09:52,562
+rescue craft, small boat had, had grabbed me
+and flipped me over into the boat.
+
+160
+00:09:52,880 --> 00:09:55,350
+The rescue boat had come
+from the Bankston.
+
+161
+00:09:55,400 --> 00:09:59,110
+Its crew had backed the vessel away from the
+rig and launched the boat to pull
+
+162
+00:09:59,160 --> 00:10:00,890
+people from the water.
+
+163
+00:10:01,182 --> 00:10:01,952
+[Williams] He said, "I can't leave.
+
+164
+00:10:02,002 --> 00:10:02,992
+There's more people in the water.
+
+165
+00:10:03,042 --> 00:10:07,581
+I see more lights." So we went to the next
+light that we saw in the water and
+
+166
+00:10:07,631 --> 00:10:12,162
+retrieved that person, who was, uh, Andrea,
+a dynamic position operator.
+
+167
+00:10:12,540 --> 00:10:16,150
+Andrea Fleytas, the officer who
+had sent the Mayday.
+
+168
+00:10:16,500 --> 00:10:20,557
+All 115 survivors ended up
+on the Bankston.
+
+169
+00:10:20,607 --> 00:10:25,170
+The first Coast Guard helicopter arrived a
+little after eleven p.m. Through the
+
+170
+00:10:25,220 --> 00:10:29,390
+night, the most badly injured were
+lifted off and flown to shore.
+
+171
+00:10:29,740 --> 00:10:32,837
+At the muster, eleven men were missing.
+
+172
+00:10:32,887 --> 00:10:35,530
+The Coast Guard searched for three days.
+
+173
+00:10:35,580 --> 00:10:37,350
+They were never found.
+
+174
+00:10:49,200 --> 00:10:53,750
+In the minutes after the explosions, subsea
+supervisor Chris Pleasant pressed the
+
+175
+00:10:53,800 --> 00:10:55,870
+emergency disconnect on the bridge.
+
+176
+00:10:55,920 --> 00:10:59,870
+It should have closed the blowout preventer's
+blind shear ram, the blades meant to
+
+177
+00:10:59,920 --> 00:11:04,430
+cut the drill pipe and seal the well, and
+freed the rig from the riser.
+
+178
+00:11:04,480 --> 00:11:06,430
+The lights on the panel changed.
+
+179
+00:11:06,480 --> 00:11:08,890
+The rig did not disconnect.
+
+180
+00:11:09,240 --> 00:11:14,070
+The preventer also had an automatic backup,
+called the deadman, meant to close the
+
+181
+00:11:14,120 --> 00:11:18,550
+blades on its own if power, communication, and
+hydraulic pressure from the rig were
+
+182
+00:11:18,600 --> 00:11:19,510
+lost.
+
+183
+00:11:19,560 --> 00:11:22,290
+After the explosions, they were.
+
+184
+00:11:22,640 --> 00:11:26,403
+Investigators did not fully agree
+on what happened next.
+
+185
+00:11:26,453 --> 00:11:30,730
+The Chemical Safety Board concluded that the
+deadman most likely did fire that
+
+186
+00:11:30,800 --> 00:11:35,070
+night, but that the drill pipe inside had
+buckled and been pushed off center.
+
+187
+00:11:35,120 --> 00:11:39,370
+The blades caught the pipe at its edge,
+and could not seal the well.
+
+188
+00:11:39,720 --> 00:11:44,370
+The forensic examination for the federal joint
+investigation also found the pipe off
+
+189
+00:11:44,480 --> 00:11:48,870
+center, but concluded that the blades most
+likely closed two days later, when an
+
+190
+00:11:48,920 --> 00:11:51,330
+underwater robot triggered them.
+
+191
+00:11:58,003 --> 00:12:02,140
+And by the time the crew closed the preventer,
+the commission noted, the flow may
+
+192
+00:12:02,190 --> 00:12:04,700
+already have been too strong to stop.
+
+193
+00:12:04,750 --> 00:12:07,880
+Earlier detection would have
+improved the odds.
+
+194
+00:12:08,330 --> 00:12:12,440
+The blowout preventer was raised from the
+seafloor in September twenty ten, and
+
+195
+00:12:12,490 --> 00:12:14,260
+taken as evidence.
+
+196
+00:12:15,110 --> 00:12:18,900
+The Deepwater Horizon burned
+for about 36 hours.
+
+197
+00:12:18,950 --> 00:12:22,320
+On the morning of April 22, it sank.
+
+198
+00:12:22,670 --> 00:12:26,007
+Oil flowed from the well for 87 days.
+
+199
+00:12:26,057 --> 00:12:30,300
+The government estimated that 4.9
+million barrels were released.
+
+200
+00:12:30,350 --> 00:12:34,440
+A federal court later put the amount at
+about four million barrels.
+
+201
+00:12:34,790 --> 00:12:38,340
+A capping stack stopped the
+flow on July 15.
+
+202
+00:12:38,390 --> 00:12:44,080
+On September 19, after a relief well, the well
+was declared permanently sealed.
+
+203
+00:12:44,430 --> 00:12:49,580
+BP pleaded guilty to fourteen criminal counts,
+including eleven counts of seaman's
+
+204
+00:12:49,630 --> 00:12:53,847
+manslaughter, and agreed to pay $4
+billion in that case.
+
+205
+00:12:53,897 --> 00:12:57,180
+A federal court later found it
+grossly negligent.
+
+206
+00:12:57,230 --> 00:13:01,160
+Transocean pleaded guilty to a
+Clean Water Act violation.
+
+207
+00:13:01,710 --> 00:13:05,900
+The federal agency that had overseen
+offshore drilling was broken up.
+
+208
+00:13:05,950 --> 00:13:10,760
+New rules for blowout preventers and well
+control followed in twenty sixteen.
+
+209
+00:13:11,610 --> 00:13:14,480
+So why was the well judged safe?
+
+210
+00:13:14,530 --> 00:13:19,000
+Because the test that should have caught the
+problem was read as a success, with no
+
+211
+00:13:19,050 --> 00:13:23,220
+standard for reading it, and with an
+explanation that was later found to have no
+
+212
+00:13:23,530 --> 00:13:24,147
+basis.
+
+213
+00:13:24,197 --> 00:13:29,140
+In fact, investigators concluded, the
+cement at the bottom had failed.
+
+214
+00:13:29,490 --> 00:13:32,187
+And why didn't the blowout
+preventer stop it?
+
+215
+00:13:32,237 --> 00:13:35,413
+The signs were missed until gas
+was already above it.
+
+216
+00:13:35,463 --> 00:13:39,360
+When its blades closed, the drill pipe was in
+the wrong place for them to seal the
+
+217
+00:13:39,410 --> 00:13:40,460
+well.
+
+218
+00:13:41,010 --> 00:13:46,000
+The commission traced the disaster to a series
+of mistakes by BP, Halliburton, and
+
+219
+00:13:46,050 --> 00:13:49,173
+Transocean, and to failures of management.
+
+220
+00:13:49,223 --> 00:13:53,900
+It also wrote that the exact part each
+mistake played may never be known.

@@ -1,0 +1,822 @@
+[
+ {
+  "id": "c1",
+  "label": "CHAPTER 1",
+  "title": "A TANK BY THE HARBOR",
+  "lines": [
+   {
+    "id": "c1_01",
+    "text": "To understand how this happened, we need to go back four years, to the edge of Boston Harbor.",
+    "para": 1
+   },
+   {
+    "id": "c1_02",
+    "text": "In 1915, the Purity Distilling Company built a storage tank at 529 Commercial Street, in the North End.",
+    "para": 2
+   },
+   {
+    "id": "c1_03",
+    "text": "The location made sense. Ships could tie up right next to it, unload their molasses, and pump it straight into the tank.",
+    "para": 2
+   },
+   {
+    "id": "c1_04",
+    "text": "From there, the molasses was sent by pipe to the company's plant in Cambridge, across the river.",
+    "para": 2
+   },
+   {
+    "id": "c1_05",
+    "text": "Why so much molasses? Because molasses can be fermented into ethanol.",
+    "para": 3
+   },
+   {
+    "id": "c1_06",
+    "text": "Ethanol goes into alcoholic drinks. But it is also a key ingredient in munitions.",
+    "para": 3
+   },
+   {
+    "id": "c1_07",
+    "text": "And in the years of the First World War, munitions were very good business.",
+    "para": 3
+   },
+   {
+    "id": "c1_08",
+    "text": "In 1917, Purity was bought by a much bigger company: United States Industrial Alcohol, or USIA.",
+    "para": 4
+   },
+   {
+    "id": "c1_09",
+    "text": "The tank on Commercial Street was now part of a national operation.",
+    "para": 4
+   },
+   {
+    "id": "c1_10",
+    "text": "And the man responsible for it was not an engineer.",
+    "para": 4
+   },
+   {
+    "id": "c1_11",
+    "text": "Picture the street. On one side, the harbor and the piers. Overhead, the steel frame of the elevated railway on Atlantic Avenue, with trains rattling past.",
+    "para": 5
+   },
+   {
+    "id": "c1_12",
+    "text": "Around it, warehouses, a firehouse, homes, horses and wagons, and people going about their day.",
+    "para": 5
+   },
+   {
+    "id": "c1_13",
+    "text": "And in the middle of it all, a fifty-foot wall of steel.",
+    "para": 5
+   }
+  ]
+ },
+ {
+  "id": "c2",
+  "label": "CHAPTER 2",
+  "title": "BUILT IN A HURRY",
+  "lines": [
+   {
+    "id": "c2_01",
+    "text": "His name was Arthur Jell. He was the company's treasurer.",
+    "para": 1
+   },
+   {
+    "id": "c2_02",
+    "text": "Jell oversaw the construction of the tank. He had no background in architecture or engineering.",
+    "para": 1
+   },
+   {
+    "id": "c2_03",
+    "text": "He was a financial man, placed in charge of a construction project that would hold millions of gallons of liquid.",
+    "para": 1
+   },
+   {
+    "id": "c2_04",
+    "text": "Investigators would later describe the tank as poorly built and not tested enough.",
+    "para": 1
+   },
+   {
+    "id": "c2_05",
+    "text": "Before a tank like this is filled with something heavy, the normal step is to test it.",
+    "para": 2
+   },
+   {
+    "id": "c2_06",
+    "text": "You fill it with water, and you watch for leaks.",
+    "para": 2
+   },
+   {
+    "id": "c2_07",
+    "text": "That test was never properly done.",
+    "para": 2
+   },
+   {
+    "id": "c2_08",
+    "text": "The tank may have started leaking the very first time it was filled, in 1915.",
+    "para": 3
+   },
+   {
+    "id": "c2_09",
+    "text": "And it kept leaking.",
+    "para": 3
+   },
+   {
+    "id": "c2_10",
+    "text": "Molasses seeped through the seams and ran down the sides in long, dark streaks.",
+    "para": 3
+   },
+   {
+    "id": "c2_11",
+    "text": "People in the neighborhood noticed. Some of them brought containers and collected the leaking molasses to take home.",
+    "para": 3
+   },
+   {
+    "id": "c2_12",
+    "text": "The company's answer was not to fix the tank. It was to paint it brown.",
+    "para": 4
+   },
+   {
+    "id": "c2_13",
+    "text": "Brown, like molasses. So the streaks would be harder to see.",
+    "para": 4
+   },
+   {
+    "id": "c2_14",
+    "text": "There were other warnings, too. The tank made noises. Groaning, rumbling sounds, as the steel took the load.",
+    "para": 5
+   },
+   {
+    "id": "c2_15",
+    "text": "Those warnings were ignored.",
+    "para": 5
+   },
+   {
+    "id": "c2_16",
+    "text": "Jell heard about the noises. The tank stayed in service.",
+    "para": 5
+   },
+   {
+    "id": "c2_17",
+    "text": "And there was pressure to keep the tank full.",
+    "para": 6
+   },
+   {
+    "id": "c2_18",
+    "text": "Prohibition was coming. The amendment that would ban alcohol across the country was ratified on January sixteenth, 1919, one day after the disaster.",
+    "para": 6
+   },
+   {
+    "id": "c2_19",
+    "text": "Several historians argue that the company was rushing to produce as much as it could before the law took effect.",
+    "para": 6
+   },
+   {
+    "id": "c2_20",
+    "text": "The ban itself would begin one year later. But the clock was already running.",
+    "para": 6
+   },
+   {
+    "id": "c2_21",
+    "text": "In its whole life, the tank was filled to capacity only eight times.",
+    "para": 7
+   },
+   {
+    "id": "c2_22",
+    "text": "And on January fifteenth, 1919, it was holding more than two million gallons.",
+    "para": 7
+   }
+  ]
+ },
+ {
+  "id": "c3",
+  "label": "CHAPTER 3",
+  "title": "THE WARM DAY",
+  "lines": [
+   {
+    "id": "c3_01",
+    "text": "That winter had been bitterly cold.",
+    "para": 1
+   },
+   {
+    "id": "c3_02",
+    "text": "In the days before the disaster, the temperature had been around two degrees Fahrenheit.",
+    "para": 1
+   },
+   {
+    "id": "c3_03",
+    "text": "Then the weather turned. By January fifteenth, it was above forty degrees.",
+    "para": 1
+   },
+   {
+    "id": "c3_04",
+    "text": "After weeks of freezing weather, it felt almost like spring.",
+    "para": 1
+   },
+   {
+    "id": "c3_05",
+    "text": "The day before, a ship had delivered a fresh load of molasses.",
+    "para": 2
+   },
+   {
+    "id": "c3_06",
+    "text": "That molasses had been warmed, so it would flow more easily.",
+    "para": 2
+   },
+   {
+    "id": "c3_07",
+    "text": "Warm molasses, poured into a tank full of colder molasses, on a day when the air was suddenly mild.",
+    "para": 2
+   },
+   {
+    "id": "c3_08",
+    "text": "Some researchers believe the expansion inside the tank added to the strain on the steel.",
+    "para": 2
+   },
+   {
+    "id": "c3_09",
+    "text": "Liquids take up more space when they warm. Not much more. But in a tank holding more than two million gallons, a little is a lot.",
+    "para": 2
+   },
+   {
+    "id": "c3_10",
+    "text": "And this was a tank that was already leaking, already groaning, built from steel that, as we'll see, was never strong enough.",
+    "para": 2
+   }
+  ]
+ },
+ {
+  "id": "c4",
+  "label": "CHAPTER 4",
+  "title": "TWELVE THIRTY",
+  "lines": [
+   {
+    "id": "c4_01",
+    "text": "At about twelve thirty, people on Commercial Street heard a sound they would never forget.",
+    "para": 1
+   },
+   {
+    "id": "c4_02",
+    "text": "Some said it was a deep roar, like an elevated train passing overhead.",
+    "para": 1
+   },
+   {
+    "id": "c4_03",
+    "text": "Others heard a crash. A growl. A bang like thunder.",
+    "para": 1
+   },
+   {
+    "id": "c4_04",
+    "text": "And a rapid popping, like a machine gun. That was the rivets, shooting out of the steel.",
+    "para": 1
+   },
+   {
+    "id": "c4_05",
+    "text": "The tank split open, and more than two million gallons of molasses came out at once.",
+    "para": 2
+   },
+   {
+    "id": "c4_06",
+    "text": "The wave reached about twenty-five feet at its peak. Some accounts say fifteen feet. The memorial plaque says forty.",
+    "para": 3
+   },
+   {
+    "id": "c4_07",
+    "text": "It moved at around thirty-five miles an hour.",
+    "para": 3
+   },
+   {
+    "id": "c4_08",
+    "text": "Pieces of the tank's steel were thrown into the structure of the elevated railway on Atlantic Avenue.",
+    "para": 4
+   },
+   {
+    "id": "c4_09",
+    "text": "A streetcar was briefly knocked off its tracks.",
+    "para": 4
+   },
+   {
+    "id": "c4_10",
+    "text": "Buildings were pushed off their foundations. A truck was hurled into the harbor.",
+    "para": 4
+   },
+   {
+    "id": "c4_11",
+    "text": "Several blocks were flooded two to three feet deep.",
+    "para": 4
+   },
+   {
+    "id": "c4_12",
+    "text": "A boy named Anthony di Stasio was walking home from school.",
+    "para": 5
+   },
+   {
+    "id": "c4_13",
+    "text": "The wave picked him up and carried him on its crest, then rolled him under as it slowed.",
+    "para": 5
+   },
+   {
+    "id": "c4_14",
+    "text": "Anthony survived.",
+    "para": 5
+   },
+   {
+    "id": "c4_15",
+    "text": "And this is what made the molasses so deadly.",
+    "para": 6
+   },
+   {
+    "id": "c4_16",
+    "text": "As it spread and cooled in the winter air, it thickened.",
+    "para": 6
+   },
+   {
+    "id": "c4_17",
+    "text": "People who were caught in it were trapped, unable to pull themselves free.",
+    "para": 6
+   },
+   {
+    "id": "c4_18",
+    "text": "Think about what molasses is like on a cold morning.",
+    "para": 7
+   },
+   {
+    "id": "c4_19",
+    "text": "Thick. Slow. Almost solid.",
+    "para": 7
+   },
+   {
+    "id": "c4_20",
+    "text": "On that mild afternoon, the molasses came out of the tank warm and fast.",
+    "para": 7
+   },
+   {
+    "id": "c4_21",
+    "text": "But the air was still January air. And as the wave spread out and lost its speed, it cooled.",
+    "para": 7
+   },
+   {
+    "id": "c4_22",
+    "text": "The cooler it got, the thicker it became.",
+    "para": 7
+   },
+   {
+    "id": "c4_23",
+    "text": "Within minutes, a fast-moving wave turned into something closer to wet cement.",
+    "para": 7
+   }
+  ]
+ },
+ {
+  "id": "c5",
+  "label": "CHAPTER 5",
+  "title": "THE RESCUE",
+  "lines": [
+   {
+    "id": "c5_01",
+    "text": "The first help came from the water.",
+    "para": 1
+   },
+   {
+    "id": "c5_02",
+    "text": "A training ship of the Massachusetts Nautical School, the USS Nantucket, was docked nearby.",
+    "para": 1
+   },
+   {
+    "id": "c5_03",
+    "text": "One hundred and sixteen cadets, led by Lieutenant Commander H. J. Copeland, ran to the scene.",
+    "para": 1
+   },
+   {
+    "id": "c5_04",
+    "text": "They waded straight into the molasses and began pulling people out.",
+    "para": 1
+   },
+   {
+    "id": "c5_05",
+    "text": "Boston police arrived. So did the Red Cross, and men from the Army and the Navy.",
+    "para": 2
+   },
+   {
+    "id": "c5_06",
+    "text": "Red Cross nurses waded into the molasses as well.",
+    "para": 2
+   },
+   {
+    "id": "c5_07",
+    "text": "A makeshift hospital was set up nearby.",
+    "para": 2
+   },
+   {
+    "id": "c5_08",
+    "text": "One of the most common problems doctors saw was coughing: people had breathed in the molasses.",
+    "para": 2
+   },
+   {
+    "id": "c5_09",
+    "text": "The search went on for four days.",
+    "para": 3
+   },
+   {
+    "id": "c5_10",
+    "text": "Many of the dead were so covered in molasses that they were hard to identify.",
+    "para": 3
+   },
+   {
+    "id": "c5_11",
+    "text": "Some victims had been swept into the harbor. They were not found for three to four months.",
+    "para": 3
+   },
+   {
+    "id": "c5_12",
+    "text": "Twenty-one people died.",
+    "para": 4
+   },
+   {
+    "id": "c5_13",
+    "text": "They were workers, drivers, firefighters, neighbors.",
+    "para": 4
+   },
+   {
+    "id": "c5_14",
+    "text": "The youngest were two ten-year-olds: Maria Di Stasio and Pasquale Iantosca.",
+    "para": 4
+   },
+   {
+    "id": "c5_15",
+    "text": "Among them was a firefighter, George Layhe.",
+    "para": 4
+   },
+   {
+    "id": "c5_16",
+    "text": "Several horses died too. And about a hundred and fifty people were injured.",
+    "para": 4
+   }
+  ]
+ },
+ {
+  "id": "c5b",
+  "label": "CHAPTER 5B",
+  "title": "THE NAMES",
+  "lines": [
+   {
+    "id": "c5b_01",
+    "text": "It's easy to lose people inside numbers. So here are some of them.",
+    "para": 1
+   },
+   {
+    "id": "c5b_02",
+    "text": "Patrick Breen, forty-four.",
+    "para": 1
+   },
+   {
+    "id": "c5b_03",
+    "text": "William Brogan, sixty-one.",
+    "para": 1
+   },
+   {
+    "id": "c5b_04",
+    "text": "Bridget Clougherty, sixty-five. And Stephen Clougherty, thirty-four.",
+    "para": 1
+   },
+   {
+    "id": "c5b_05",
+    "text": "Flaminio Gallerani, thirty-seven.",
+    "para": 1
+   },
+   {
+    "id": "c5b_06",
+    "text": "Eric Laird, seventeen.",
+    "para": 1
+   },
+   {
+    "id": "c5b_07",
+    "text": "Peter Shaughnessy, eighteen.",
+    "para": 1
+   },
+   {
+    "id": "c5b_08",
+    "text": "Ralph Martin, twenty-one.",
+    "para": 1
+   },
+   {
+    "id": "c5b_09",
+    "text": "Michael Sinnott, seventy-eight.",
+    "para": 1
+   },
+   {
+    "id": "c5b_10",
+    "text": "Maria Di Stasio, ten. Pasquale Iantosca, ten.",
+    "para": 1
+   },
+   {
+    "id": "c5b_11",
+    "text": "Some were working near the tank. Some lived beside it. Some were simply walking by at lunchtime.",
+    "para": 1
+   },
+   {
+    "id": "c5b_12",
+    "text": "None of them had any say in how that tank was built.",
+    "para": 1
+   }
+  ]
+ },
+ {
+  "id": "c6",
+  "label": "CHAPTER 6",
+  "title": "A STICKY CITY",
+  "lines": [
+   {
+    "id": "c6_01",
+    "text": "Then came the cleanup.",
+    "para": 1
+   },
+   {
+    "id": "c6_02",
+    "text": "Workers sprayed the streets with salt water from a fireboat, and spread sand to soak up the molasses.",
+    "para": 1
+   },
+   {
+    "id": "c6_03",
+    "text": "Several hundred people worked for weeks to clear the area.",
+    "para": 1
+   },
+   {
+    "id": "c6_04",
+    "text": "The molasses didn't stay in the North End.",
+    "para": 2
+   },
+   {
+    "id": "c6_05",
+    "text": "It was carried across the city on shoes and clothes.",
+    "para": 2
+   },
+   {
+    "id": "c6_06",
+    "text": "It turned up on subway platforms, on streetcar seats, on telephones, in homes.",
+    "para": 2
+   },
+   {
+    "id": "c6_07",
+    "text": "As one account put it: \"Everything that a Bostonian touched was sticky.\"",
+    "para": 2
+   },
+   {
+    "id": "c6_08",
+    "text": "The water of Boston Harbor stayed brown until the summer.",
+    "para": 2
+   }
+  ]
+ },
+ {
+  "id": "c7",
+  "label": "CHAPTER 7",
+  "title": "ANARCHISTS",
+  "lines": [
+   {
+    "id": "c7_01",
+    "text": "Now the question was: who was responsible?",
+    "para": 1
+   },
+   {
+    "id": "c7_02",
+    "text": "USIA had an answer ready. The tank, it said, had been blown up. By anarchists.",
+    "para": 2
+   },
+   {
+    "id": "c7_03",
+    "text": "It was not a random claim. Some of the alcohol made from that molasses was meant for munitions,",
+    "para": 2
+   },
+   {
+    "id": "c7_04",
+    "text": "and in 1919, fear of political bombings was real.",
+    "para": 2
+   },
+   {
+    "id": "c7_05",
+    "text": "If the tank had been attacked, the company would not be to blame.",
+    "para": 2
+   },
+   {
+    "id": "c7_06",
+    "text": "The families did not accept that.",
+    "para": 3
+   },
+   {
+    "id": "c7_07",
+    "text": "One hundred and nineteen residents took USIA to court, together.",
+    "para": 3
+   },
+   {
+    "id": "c7_08",
+    "text": "It became one of the first class-action lawsuits in Massachusetts.",
+    "para": 3
+   },
+   {
+    "id": "c7_09",
+    "text": "Today it's seen as a milestone in the history of corporate regulation.",
+    "para": 3
+   },
+   {
+    "id": "c7_10",
+    "text": "For the first time, a company like USIA had to answer, in detail, for how it built and ran its equipment.",
+    "para": 3
+   },
+   {
+    "id": "c7_11",
+    "text": "The court appointed an auditor to hear the case: Hugh W. Ogden.",
+    "para": 4
+   },
+   {
+    "id": "c7_12",
+    "text": "The hearings lasted three years.",
+    "para": 4
+   },
+   {
+    "id": "c7_13",
+    "text": "The anarchist theory was tested against the evidence: the leaks, the warnings, the steel.",
+    "para": 4
+   },
+   {
+    "id": "c7_14",
+    "text": "In the end, Ogden found that USIA was responsible.",
+    "para": 5
+   },
+   {
+    "id": "c7_15",
+    "text": "The company paid six hundred and twenty-eight thousand dollars in damages.",
+    "para": 5
+   },
+   {
+    "id": "c7_16",
+    "text": "The families of those who died reportedly received about seven thousand dollars each.",
+    "para": 5
+   },
+   {
+    "id": "c7_17",
+    "text": "Not a criminal conviction. Not a prison sentence. A bill.",
+    "para": 5
+   },
+   {
+    "id": "c7_18",
+    "text": "But it was an answer to the question the company had tried to avoid: this was not an attack. It was a tank that should never have been trusted.",
+    "para": 5
+   }
+  ]
+ },
+ {
+  "id": "c8",
+  "label": "CHAPTER 8",
+  "title": "WHAT THE STEEL SAID",
+  "lines": [
+   {
+    "id": "c8_01",
+    "text": "Almost a century later, researchers looked at the tank again.",
+    "para": 1
+   },
+   {
+    "id": "c8_02",
+    "text": "A 2014 investigation found that the steel was only about half as thick as it should have been, even by the standards of the time.",
+    "para": 1
+   },
+   {
+    "id": "c8_03",
+    "text": "The steel also lacked manganese, which made it more brittle.",
+    "para": 1
+   },
+   {
+    "id": "c8_04",
+    "text": "And the cracks started at badly made rivet holes.",
+    "para": 1
+   },
+   {
+    "id": "c8_05",
+    "text": "In 2016, a team at Harvard studied the flood using 1919 newspapers, maps and weather reports.",
+    "para": 2
+   },
+   {
+    "id": "c8_06",
+    "text": "They even poured cold corn syrup over a scale model of the neighborhood.",
+    "para": 2
+   },
+   {
+    "id": "c8_07",
+    "text": "Their conclusion: the speeds reported by witnesses were believable.",
+    "para": 2
+   },
+   {
+    "id": "c8_08",
+    "text": "And the cold made the molasses thicken quickly, which made rescue so hard.",
+    "para": 2
+   },
+   {
+    "id": "c8_09",
+    "text": "The disaster also changed the rules.",
+    "para": 3
+   },
+   {
+    "id": "c8_10",
+    "text": "After the flood, construction laws changed.",
+    "para": 3
+   },
+   {
+    "id": "c8_11",
+    "text": "Projects like this now needed to be overseen by a licensed architect and a civil engineer.",
+    "para": 3
+   },
+   {
+    "id": "c8_12",
+    "text": "It sounds obvious today. A structure that holds millions of gallons should be designed and checked by people trained to do it.",
+    "para": 3
+   },
+   {
+    "id": "c8_13",
+    "text": "In 1915, on Commercial Street, nobody had required that.",
+    "para": 3
+   }
+  ]
+ },
+ {
+  "id": "c9",
+  "label": "CHAPTER 9",
+  "title": "THE PARK ON COMMERCIAL STREET",
+  "lines": [
+   {
+    "id": "c9_01",
+    "text": "USIA never rebuilt the tank.",
+    "para": 1
+   },
+   {
+    "id": "c9_02",
+    "text": "Today, the site is Langone Park. There's a Little League baseball field, a playground, and bocce courts.",
+    "para": 1
+   },
+   {
+    "id": "c9_03",
+    "text": "A small plaque nearby remembers the disaster.",
+    "para": 1
+   },
+   {
+    "id": "c9_04",
+    "text": "On the hundredth anniversary, in 2019, researchers used ground-penetrating radar under the ballfield.",
+    "para": 2
+   },
+   {
+    "id": "c9_05",
+    "text": "About twenty inches down, they found the tank's concrete base.",
+    "para": 2
+   },
+   {
+    "id": "c9_06",
+    "text": "At a ceremony, the names of all twenty-one victims were read aloud.",
+    "para": 2
+   },
+   {
+    "id": "c9_07",
+    "text": "For decades, people in the North End said that on hot summer days, you could still smell molasses.",
+    "para": 3
+   },
+   {
+    "id": "c9_08",
+    "text": "The tank leaked for years. It groaned. People saw it, and heard it.",
+    "para": 4
+   },
+   {
+    "id": "c9_09",
+    "text": "And the answer was a coat of brown paint.",
+    "para": 4
+   },
+   {
+    "id": "c9_10",
+    "text": "The Great Molasses Flood was not a freak of nature.",
+    "para": 4
+   },
+   {
+    "id": "c9_11",
+    "text": "It was a warning... that nobody wanted to hear.",
+    "para": 4
+   },
+   {
+    "id": "c9_12",
+    "text": "Twenty-one people. A hundred and fifty injured. A neighborhood buried in molasses.",
+    "para": 5
+   },
+   {
+    "id": "c9_13",
+    "text": "Not because nobody knew. Because the people who knew decided it could wait.",
+    "para": 5
+   },
+   {
+    "id": "c9_14",
+    "text": "So the next time you hear the Great Molasses Flood told as a funny story...",
+    "para": 5
+   },
+   {
+    "id": "c9_15",
+    "text": "remember the streaks on the side of that tank. And the brown paint that covered them.",
+    "para": 5
+   }
+  ]
+ }
+]

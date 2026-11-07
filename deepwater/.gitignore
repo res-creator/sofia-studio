@@ -1,0 +1,6 @@
+node_modules
+out/
+assets/raw/
+assets/music/*.mp3
+public/vid/
+public/audio/*.wav

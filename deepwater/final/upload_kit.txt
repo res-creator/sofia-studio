@@ -1,0 +1,67 @@
+KNOWN IN ADVANCE — upload kit (NOT published; for the owner's review)
+
+FILE
+final/dwh_full_film.mp4 (1920x1080, about 14:13) · captions final/dwh_full_film.srt
+THUMBNAIL
+Main: final/thumbnail_v4.jpg — "SHOULD BE ZERO / 1,400 PSI / 'SUCCESS'" on a real USCG photo (DVIDS 272211, April 21, 2010). Pass criterion of the test: 0 psi (Commission report, p. 107).
+A/B test (YouTube Studio → Test & Compare): final/thumbnail_v3.jpg — night frame of the burning rig (USCG video DVIDS 315074) + "DRILL PIPE 1,400 PSI / 'SUCCESS'".
+Not recommended: thumbnail_v5.jpg (pressure gauge) — in the feed it blends with two competitors that already use gauges (ASPECT STORY, Safetyology).
+Why (competitor review, Nov 5): the videos growing this year use one short striking statement or number ("8 MONTHS OF HELL", "$145,000,000,000", "JUNK SHOT"); most others repeat the same daytime fire photo with the video's name. A direct competitor on the same angle exists: ASPECT STORY, "The Test That Should Have Stopped Deepwater Horizon" (86K views, gauge + "BLADDER EFFECT?"), so our title and thumbnail avoid its wording and its gauge.
+
+TITLE (recommended with thumbnail_v4)
+Deepwater Horizon: The Reading That Should Have Been Zero
+
+ALTERNATIVE TITLES (for later title tests)
+- Deepwater Horizon: 1,400 PSI and a Test Called a "Success"
+- Why Deepwater Horizon Exploded Two Hours After a "Successful" Test
+- The Night Deepwater Horizon Was Declared Safe
+
+DESCRIPTION
+Two hours before Deepwater Horizon exploded, the crew ran a test to prove the Macondo well was sealed. If it was, the drill pipe should have read zero. It read 1,400 psi. The test was declared a success.
+
+What went wrong that evening, why the well was judged safe, and why the blowout preventer on the seafloor failed to stop the blowout, told through U.S. Coast Guard archive footage, the official investigation reports, and the testimony of survivor Mike Williams, the rig's chief electronics technician.
+
+What was known before: the well had been difficult, Halliburton's own lab tests had shown the cement mix unstable, the cement had not been independently evaluated, and the test readings did not agree.
+What investigators concluded later: the pressure data were not ambiguous, the warning signs were missed, and there was no single cause.
+
+In memory of the eleven men who were killed on April 20, 2010: Jason Anderson, Aaron Dale Burkeen, Donald Clark, Stephen Curtis, Gordon Jones, Roy Wyatt Kemp, Karl Dale Kleppinger Jr., Blair Manuel, Dewey Revette, Shane Roshto and Adam Weise.
+
+CHAPTERS
+0:00 April 20, 2010
+1:55 The rig and the well
+2:54 Three barriers
+3:37 The test
+5:17 The signs
+6:31 The blowout
+8:13 Abandon ship
+10:39 The last line of defense
+12:14 After
+13:10 The answer
+
+SOURCES (facts)
+- National Commission on the BP Deepwater Horizon Oil Spill, "Deep Water", report to the President (2011): https://www.govinfo.gov/content/pkg/GPO-OILCOMMISSION/pdf/GPO-OILCOMMISSION.pdf
+- National Commission, Chief Counsel's Report (2011): https://www.govinfo.gov/content/pkg/GOVPUB-PR-PURL-gpo4390/pdf/GOVPUB-PR-PURL-gpo4390.pdf
+- U.S. Chemical Safety Board, Macondo investigation report (2014–2016): https://www.csb.gov/macondo-blowout-and-explosion/
+- USCG / BOEMRE Joint Investigation Team reports, Vol. I and II (2011): https://www.bsee.gov
+- U.S. District Court E.D. La., MDL 2179, Phase One findings (2014) and Phase Two findings (2015)
+- U.S. Department of Justice and U.S. EPA case records; Federal Register 81 FR 25888 (2016)
+
+ARCHIVE AND CREDITS (public domain)
+- U.S. Coast Guard (DVIDS): joint investigation hearing, July 23, 2010 (testimony of Mike Williams); night and day fire footage, April 20–21, 2010; rescue and medevac footage; hearing photos by PO2 Thomas Blue; photos by PO3 Patrick Kelley and PO1 Thomas M. Blue
+- U.S. Navy (DVIDS): controlled burn, May 7, 2010, MC1 Jeffery Tilghman Williams
+- NASA Earth Observatory, MODIS Rapid Response Team
+- Map data: Natural Earth
+- Music (Mixkit Stock Music Free License): "Silent Descent", "Opalescent", "Vertigo" by Eugenio Mininni
+- Narration: AI voice (ElevenLabs). Schematics are simplified reconstructions, labelled on screen.
+
+#deepwaterhorizon #documentary #engineeringdisaster #oilspill #knowninadvance
+
+TAGS
+deepwater horizon, deepwater horizon documentary, deepwater horizon explained, what went wrong deepwater horizon, negative pressure test deepwater horizon, bladder effect, 1400 psi, macondo well, bp oil spill, gulf of mexico oil spill, negative pressure test, blowout preventer, 2010 oil spill, transocean, offshore drilling disaster, mike williams deepwater horizon, engineering disaster, industrial disaster documentary
+
+SETTINGS CHECKLIST
+- Pinned comment (post right after publishing): "The drill pipe should have read zero. It read 1,400 psi. If you had been on the rig floor that evening, what would you have asked? Sources for every fact are listed in the description."
+- Schedule: Thursday or Saturday, 2–3 p.m. US Eastern (10–11 p.m. Moscow). Category: Education. Audience: not made for kids.
+- Language: English. Upload final/dwh_full_film.srt as English captions.
+- Altered or synthetic content: the narration is an AI voice; follow YouTube's current disclosure rules. Reconstructions are labelled on screen.
+- The film describes deaths and injuries (testimony, no graphic images). Consider the age-restriction guidance; no graphic footage is used.

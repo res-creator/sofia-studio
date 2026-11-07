@@ -1,0 +1,461 @@
+{
+ "note": "Full film sequence. vo = narration line (vo/<id>.mp3); bite = original USGS interview audio [clip, in, out] in seconds of corecast125_msh_1980.mp4; card = silent hold. gap = seconds before the item. Opening n01-n11 approved earlier.",
+ "seq": [
+  [
+   "vo",
+   "n01",
+   "Saturday, May seventeenth, nineteen eighty.",
+   0.6
+  ],
+  [
+   "vo",
+   "n02",
+   "Six miles north of Mount St. Helens, in southwest Washington, a trailer is parked on a ridge facing the volcano.",
+   0.5
+  ],
+  [
+   "vo",
+   "n03",
+   "The man outside it is David Johnston, a thirty-year-old volcanologist with the U.S. Geological Survey. Tonight, he is the one keeping watch.",
+   0.45
+  ],
+  [
+   "vo",
+   "n04",
+   "For two months, the mountain has been waking up. Earthquakes. Steam explosions. A new crater at the summit.",
+   0.6
+  ],
+  [
+   "vo",
+   "n05",
+   "But what worries the scientists most is on the north side.",
+   0.5
+  ],
+  [
+   "bite",
+   "cc_banks",
+   93.45,
+   103.0,
+   0.35
+  ],
+  [
+   "vo",
+   "n06",
+   "By that evening, part of the north flank had been pushed outward by more than four hundred and fifty feet.",
+   0.5
+  ],
+  [
+   "vo",
+   "n07",
+   "At eight thirty-two the next morning, Johnston's voice came over the radio.",
+   0.6
+  ],
+  [
+   "card",
+   "radio",
+   2.8,
+   0.25
+  ],
+  [
+   "bite",
+   "cc_miller",
+   118.9,
+   124.3,
+   0.0
+  ],
+  [
+   "bite",
+   "cc_swanson",
+   154.75,
+   159.3,
+   0.45
+  ],
+  [
+   "vo",
+   "n10",
+   "By the time Swanson's plane reached the volcano, the north side of Mount St. Helens was gone. The eruption had gone sideways... toward the ridge where Johnston had been keeping watch.",
+   0.55
+  ],
+  [
+   "vo",
+   "n11",
+   "To understand how, we have to go back two months... to the first earthquake.",
+   0.6
+  ],
+  [
+   "card",
+   "title",
+   3.6,
+   0.5
+  ],
+  [
+   "vo",
+   "b1_01",
+   "March twentieth, nineteen eighty. A little before four in the afternoon, seismographs at the University of Washington record a magnitude-four earthquake beneath Mount St. Helens.",
+   0.8
+  ],
+  [
+   "vo",
+   "b1_02",
+   "The volcano has not erupted since eighteen fifty-seven. Now the earthquakes don't stop. Within a week, about thirty a day are magnitude three or larger.",
+   0.5
+  ],
+  [
+   "vo",
+   "b1_03",
+   "On March twenty-seventh, just after noon, a loud boom is heard around the mountain. A steam explosion has blasted a crater through the ice at the summit.",
+   0.6
+  ],
+  [
+   "vo",
+   "b1_04",
+   "It is the first eruption in the lower forty-eight states since Lassen Peak, more than sixty years earlier.",
+   0.5
+  ],
+  [
+   "vo",
+   "b1_05",
+   "The explosions are driven by steam, not by fresh magma reaching the surface. But they keep coming, and within a week the crater is more than a thousand feet across.",
+   0.6
+  ],
+  [
+   "vo",
+   "b1_06",
+   "Geologists from the U.S. Geological Survey set up a base in Vancouver, Washington. One of them, Dwight Crandell, tells a reporter what worries him.",
+   0.5
+  ],
+  [
+   "card",
+   "crandell",
+   6.0,
+   0.3
+  ],
+  [
+   "vo",
+   "b2_01",
+   "Crandell knew this volcano better than almost anyone. Two years earlier, he and Donal Mullineaux had published a hazard report on Mount St. Helens.",
+   0.6
+  ],
+  [
+   "vo",
+   "b2_02",
+   "It called it an especially dangerous volcano, and it made a forecast. An eruption was more likely within the next hundred years... and perhaps even before the end of this century.",
+   0.5
+  ],
+  [
+   "vo",
+   "b2_03",
+   "The same page is just as clear about what could not be known.",
+   0.6
+  ],
+  [
+   "card",
+   "doc_unknown",
+   4.2,
+   0.2
+  ],
+  [
+   "vo",
+   "b2_04",
+   "The danger was known. The form it would take was not. And this spring, the clue was not at the summit. It was on the north side.",
+   0.4
+  ],
+  [
+   "bite",
+   "cc_swanson_local",
+   56.3,
+   65.0,
+   0.5
+  ],
+  [
+   "vo",
+   "b3_01",
+   "From the first day of the eruption, observers had noticed an uplift high on the north flank. By mid-April, it was impossible to miss.",
+   0.5
+  ],
+  [
+   "bite",
+   "cc_miller_crypto",
+   65.1,
+   93.6,
+   0.4
+  ],
+  [
+   "vo",
+   "b3_02",
+   "To follow it, the scientists put survey targets on the bulge and measured them every few days: angles by theodolite, distances by laser, from stations on the ridges to the north. One of those stations was Coldwater Two.",
+   0.5
+  ],
+  [
+   "vo",
+   "b3_03",
+   "The measurements told the same story day after day. The north flank was moving outward five to eight feet a day, at an almost steady rate.",
+   0.5
+  ],
+  [
+   "vo",
+   "b3_04",
+   "A landslide from that slope was recognized as a real hazard, one that could set off an eruption. What the scientists did not foresee, as they later wrote, was the scale of what would follow.",
+   0.5
+  ],
+  [
+   "vo",
+   "b4_01",
+   "There were also decisions to make about people. On April thirtieth, Governor Dixy Lee Ray closed a Red Zone around the peak, three to eight miles out, and a wider Blue Zone, where loggers and landowners could enter with permits during the day.",
+   0.8
+  ],
+  [
+   "vo",
+   "b4_02",
+   "Not everyone left. At Spirit Lake, five miles north of the summit, eighty-three-year-old Harry Truman refused to leave the lodge he had run for more than fifty years.",
+   0.5
+  ],
+  [
+   "vo",
+   "b4_03",
+   "Cabin owners pressed to get their belongings out. On Saturday, May seventeenth, law-enforcement officers escorted about fifty carloads of them into the Red Zone. A second caravan was set for ten o'clock the next morning.",
+   0.5
+  ],
+  [
+   "vo",
+   "b5_01",
+   "That afternoon, David Johnston took over the post at Coldwater Two from fellow geologist Harry Glicken. It stood five point seven miles from the summit.",
+   0.8
+  ],
+  [
+   "vo",
+   "b5_02",
+   "Eight miles northwest, at Coldwater One, photographer Reid Blackburn of The Columbian stayed overnight beside a camera station. On the next ridge north of Johnston, a volunteer radio operator, Gerry Martin, was also keeping watch.",
+   0.5
+  ],
+  [
+   "vo",
+   "b5_03",
+   "At six fifty-three on Sunday morning, Johnston radioed in his last survey readings. No sign that the slope was about to fail was recognized, then or in hindsight.",
+   0.6
+  ],
+  [
+   "vo",
+   "b5_04",
+   "At eight thirty-two and eleven seconds, a magnitude five-point-one earthquake struck beneath the volcano.",
+   0.6
+  ],
+  [
+   "vo",
+   "b5_05",
+   "Johnston's call to Vancouver was picked up on a private citizen's radio. A second message was too garbled to understand. Then, nothing.",
+   0.5
+  ],
+  [
+   "vo",
+   "b6_01",
+   "What happened in the next minutes has been reconstructed in detail, from photographs taken by survivors, and from what the eruption left behind.",
+   0.8
+  ],
+  [
+   "vo",
+   "b6_02",
+   "Within about twenty seconds of the earthquake, the bulge and the summit above it broke loose and slid north, in a series of enormous blocks.",
+   0.5
+  ],
+  [
+   "vo",
+   "b6_03",
+   "It was the largest landslide in recorded history: about two-thirds of a cubic mile of rock.",
+   0.5
+  ],
+  [
+   "vo",
+   "b6_04",
+   "And as it moved, it stripped away the rock that had been holding in the magma inside the north flank.",
+   0.5
+  ],
+  [
+   "bite",
+   "cc_miller_uncork",
+   248.5,
+   261.8,
+   0.3
+  ],
+  [
+   "vo",
+   "b6_05",
+   "The blast tore out of the side of the mountain toward the north, and quickly overtook the avalanche. Within about six miles, almost nothing was left standing.",
+   0.5
+  ],
+  [
+   "vo",
+   "b6_06",
+   "Farther out, entire forests were flattened, the trees all pointing the way the blast had moved. At its outer edge, the trees stayed upright, but were scorched dead.",
+   0.5
+  ],
+  [
+   "bite",
+   "cc_miller_scale",
+   275.7,
+   288.1,
+   0.4
+  ],
+  [
+   "vo",
+   "b6_07",
+   "Coldwater Two was inside that area. So was Gerry Martin's ridge. His last words on the radio described the blast covering the camper and the car to the south of him... and coming toward him.",
+   0.5
+  ],
+  [
+   "vo",
+   "b6_08",
+   "Then the eruption turned upward. Within fifteen minutes, a column of ash rose about fifteen miles into the sky. It kept erupting for nine hours.",
+   0.7
+  ],
+  [
+   "vo",
+   "b6_09",
+   "When it ended, the summit was thirteen hundred feet lower. In its place was a crater, open to the north... the direction the mountain had been bulging for weeks.",
+   0.6
+  ],
+  [
+   "vo",
+   "b6_10",
+   "The scientists later wrote that the landslide and the blast had greatly exceeded their expectations. The bulge had been measured every day. What it would do when it failed had not been foreseen.",
+   0.6
+  ],
+  [
+   "vo",
+   "b7_01",
+   "The avalanche buried the upper valley of the North Fork Toutle River for fourteen miles.",
+   0.8
+  ],
+  [
+   "vo",
+   "b7_02",
+   "Water from melting snow and ice, and from the avalanche itself, became mudflows that raced down the river valleys for the rest of the day. They destroyed bridges, and reached the Cowlitz River, about fifty miles downstream, around midnight.",
+   0.5
+  ],
+  [
+   "vo",
+   "b7_03",
+   "The ash drifted east. In Yakima, by mid-morning, it was as dark as night. In Spokane, two hundred and fifty miles away, day turned into complete darkness.",
+   0.5
+  ],
+  [
+   "vo",
+   "b8_01",
+   "Fifty-seven people died. Most of them were outside the restricted zones.",
+   0.9
+  ],
+  [
+   "vo",
+   "b8_02",
+   "David Johnston's body was never found. Reid Blackburn was found in his car at Coldwater One, buried in ash up to the windows. Harry Truman and his lodge lie under the avalanche at Spirit Lake.",
+   0.6
+  ],
+  [
+   "bite",
+   "cc_swanson_plane",
+   231.5,
+   241.1,
+   0.6
+  ],
+  [
+   "vo",
+   "b8_03",
+   "For those who lived, so much depended on where they happened to be. Mike and Lu Moore were camping with their two small daughters about thirteen miles north. They sheltered in a hunter's cabin, then walked out through the ash until a helicopter lifted them out.",
+   0.6
+  ],
+  [
+   "vo",
+   "b8_04",
+   "Jim Scymanky was working with a logging crew about twelve miles northwest when the blast cloud overran them. Of the four men burned there, he was the only one who survived. National Guard helicopters got him out.",
+   0.5
+  ],
+  [
+   "vo",
+   "b8_05",
+   "By dusk on May eighteenth, military and civilian helicopter crews had rescued or evacuated more than a hundred and thirty people. Air Force crews alone were credited with sixty-one rescues from life-threatening situations.",
+   0.5
+  ],
+  [
+   "vo",
+   "b8_06",
+   "In the days that followed, the search moved into the blast zone, for survivors, and then for the missing.",
+   0.5
+  ],
+  [
+   "bite",
+   "cc_miller_dave",
+   159.7,
+   177.6,
+   0.6
+  ],
+  [
+   "vo",
+   "b9_01",
+   "Within weeks, the scientists went back in.",
+   0.8
+  ],
+  [
+   "bite",
+   "cc_miller_swarm",
+   309.2,
+   324.5,
+   0.3
+  ],
+  [
+   "vo",
+   "b9_02",
+   "They found Spirit Lake about two hundred feet higher than before, its surface covered with thousands of logs from the forest around it. Where water reached the hot deposits, they were still exploding with steam.",
+   0.5
+  ],
+  [
+   "vo",
+   "b9_03",
+   "Mount St. Helens erupted again five more times that year. This time, the scientists were watching for the signs.",
+   0.6
+  ],
+  [
+   "bite",
+   "cc_miller_forecast",
+   367.2,
+   382.1,
+   0.3
+  ],
+  [
+   "vo",
+   "b9_04",
+   "In nineteen eighty-two, the Survey's base in Vancouver was dedicated as the Cascades Volcano Observatory, in David Johnston's memory.",
+   0.6
+  ],
+  [
+   "vo",
+   "b9_05",
+   "Four years later, after mudflows from a volcano in Colombia killed more than twenty thousand people, the Survey created a team to help other countries watch their volcanoes.",
+   0.5
+  ],
+  [
+   "vo",
+   "b9_06",
+   "In nineteen ninety-one, that team and Philippine scientists warned that Mount Pinatubo was about to erupt. Tens of thousands of people were moved out. The forecasts are estimated to have saved at least five thousand lives.",
+   0.5
+  ],
+  [
+   "bite",
+   "cc_banks_learned",
+   345.6,
+   365.7,
+   0.5
+  ],
+  [
+   "vo",
+   "b9_07",
+   "The ridge where David Johnston kept watch is now called Johnston Ridge. From the observatory there, you look straight into the crater that opened to the north on the morning of May eighteenth, nineteen eighty.",
+   0.7
+  ],
+  [
+   "card",
+   "end",
+   9.0,
+   0.8
+  ]
+ ]
+}

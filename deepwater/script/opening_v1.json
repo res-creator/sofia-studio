@@ -1,0 +1,97 @@
+{
+ "note": "Opening test. vo = narration (Todd). bite = original testimony audio from DVIDS 91190 (USCG/BOEMRE Joint Investigation hearing, July 23, 2010, Mike Williams), [clip, [[in,out],...]] in source seconds. card = silent hold.",
+ "seq": [
+  [
+   "vo",
+   "n01",
+   "A little after eleven on the night of April twentieth, twenty ten, a Coast Guard helicopter reached a drilling rig on fire in the Gulf of Mexico.",
+   0.6
+  ],
+  [
+   "vo",
+   "n02",
+   "It was the Deepwater Horizon, about fifty miles off the coast of Louisiana. Below it, under five thousand feet of water, was a well called Macondo.",
+   0.6
+  ],
+  [
+   "vo",
+   "n03",
+   "That evening, a hundred and twenty-six people were on board. One of them was Mike Williams, the rig's chief electronics technician. Three months later, he described that day under oath.",
+   0.6
+  ],
+  [
+   "bite",
+   "w_tests",
+   [
+    [
+     195.25,
+     203.05
+    ]
+   ],
+   0.4
+  ],
+  [
+   "vo",
+   "n04",
+   "The tests were the last steps before the rig could leave. The bottom of the well had just been sealed with cement. One test would show whether that seal held.",
+   0.6
+  ],
+  [
+   "vo",
+   "n05",
+   "If the well was sealed, the pressure in the drill pipe would stay at zero.",
+   0.5
+  ],
+  [
+   "vo",
+   "n06",
+   "It didn't. The drill pipe read fourteen hundred psi. A second line, connected to the same well, read zero.",
+   0.6
+  ],
+  [
+   "vo",
+   "n07",
+   "The rig crew and BP's well site leaders discussed the readings for more than an hour. They accepted an explanation for the pressure, and the test was declared a success. Investigators later called that conclusion a key error.",
+   0.6
+  ],
+  [
+   "vo",
+   "n08",
+   "The crew began replacing the heavy mud in the well with seawater. Around nine thirty, Mike Williams was in his workshop, on the phone with his wife.",
+   0.6
+  ],
+  [
+   "bite",
+   "w_phone",
+   [
+    [
+     316.75,
+     323.95
+    ],
+    [
+     331.45,
+     351.0
+    ]
+   ],
+   0.4
+  ],
+  [
+   "vo",
+   "n09",
+   "Within twenty minutes, mud and gas were bursting onto the rig floor. Eleven men did not survive the night.",
+   0.6
+  ],
+  [
+   "vo",
+   "n10",
+   "Investigators would spend years on two questions. Why was the well judged safe? And why didn't the blowout preventer, the last line of defense on the seafloor, stop what came up the well?",
+   0.7
+  ],
+  [
+   "card",
+   "title",
+   4.0,
+   0.6
+  ]
+ ]
+}

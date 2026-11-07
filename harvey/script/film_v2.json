@@ -1,0 +1,517 @@
+{
+ "rate_words_per_s": 2.5,
+ "duration_est": 717.1,
+ "seq": [
+  {
+   "k": "nat",
+   "id": "o0",
+   "secs": 2.5,
+   "pic": "Black \u2192 **546526** 0:00\u20130:02 (hoist in heavy rain, out of focus, fades up at 1.5 s)",
+   "label": "Coast Guard rescue, greater Houston, Aug. 28, 2017",
+   "gap": 0.0
+  },
+  {
+   "k": "vo",
+   "id": "o1",
+   "text": "A rescue swimmer named Brendan Kiley reached a small, one-story house in the Houston area. Five people were waiting on the roof. Beside the house, the water was almost up to the top of a car.",
+   "pic": "**Kiley portrait**: freeze of 620835 1:59.2 (no subtitle on this frame), slow push 100\u2192108 %",
+   "label": "Brendan Kiley \u00b7 U.S. Coast Guard rescue swimmer",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "o2",
+   "text": "A woman on the roof slid a big plastic bin toward him. He thought it was her luggage, and told her there was no room for it in the helicopter.",
+   "pic": "Kiley portrait 2: freeze of 620835 0:42.1, cropped to his head and shoulders (crop removes the burned-in subtitle), slow push",
+   "label": "\u2014",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "o3",
+   "text": "She pushed it at him again. Inside were her two children: a toddler, holding a newborn baby.",
+   "pic": "Portrait 3: freeze of 620835 0:34.6, tighter crop, push continues",
+   "label": "\u2014",
+   "gap": 0.8
+  },
+  {
+   "k": "nat",
+   "id": "o4",
+   "secs": 1.2,
+   "pic": "Hold on portrait 3",
+   "label": "\u2014",
+   "gap": 0.0
+  },
+  {
+   "k": "vo",
+   "id": "o4b",
+   "text": "Now he had to get two small children and their mother off a flooded roof, and up into a helicopter hovering above them.",
+   "pic": "Photo **3709576** (Cape Cod Jayhawk cockpit over flooded Houston), slow push",
+   "label": "Coast Guard helicopter over Houston, Aug. 27, 2017",
+   "gap": 0.6
+  },
+  {
+   "k": "vo",
+   "id": "o5",
+   "text": "His crew had flown in from Cape Cod, Massachusetts. Hurricane Harvey had come ashore in Texas and then stalled, dropping rain on Houston for days.",
+   "pic": "**546164** 0:27\u20130:36 (flooded subdivision, motel car park, from a Coast Guard helicopter)",
+   "label": "Coast Guard, Houston, Aug. 27, 2017",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "o6",
+   "text": "Catastrophic flooding was forecast days in advance. Why did so many people still end up trapped?",
+   "pic": "**546389** 0:42\u20130:51 (a column of people wading along a flooded freeway feeder)",
+   "label": "Texas National Guard, Houston, Aug. 27, 2017",
+   "gap": 0.8
+  },
+  {
+   "k": "nat",
+   "id": "o7",
+   "secs": 3.0,
+   "pic": "Title on black",
+   "label": "**HARVEY \u00b7 HOUSTON, 2017**",
+   "gap": 0.0
+  },
+  {
+   "k": "vo",
+   "id": "a1",
+   "text": "Five days earlier, Harvey had fallen apart over the Caribbean. On Wednesday, August twenty-third, it came back to life over the Gulf of Mexico, and grew fast.",
+   "pic": "**NOAA GOES-16 GeoColor loop** 0:00\u20130:10 (the storm over the Gulf, hours before landfall)",
+   "label": "Satellite, Aug. 25, 2017 \u00b7 NOAA/NESDIS/STAR, RAMMB/CIRA",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "a2",
+   "text": "On Friday morning, the National Hurricane Center warned of catastrophic, life-threatening flooding. By the afternoon it gave numbers: fifteen to thirty inches of rain, in places forty.",
+   "pic": "Advisory line on a dark map, large type: \"catastrophic and life-threatening flooding\" \u2192 \"15 to 30 inches \u2026 isolated maximum amounts of 40 inches\"",
+   "label": "National Hurricane Center, Advisories 21 and 22, Aug. 25, 2017",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "a3",
+   "text": "The same afternoon, forecasters put greater Houston under their highest flood risk, three days ahead. Their own review later called it unprecedented. What the forecast could not show was which streets would flood.",
+   "pic": "**Map M1** (see Maps): Texas coast; the Day-3 High Risk area appears over greater Houston; then a zoom toward the city grid stops at blurred blocks",
+   "label": "Flood risk outlook, Aug. 25 \u00b7 simplified from NWS/WPC",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "a4",
+   "text": "At Coast Guard Air Station Cape Cod, the pilot Simon Greene later recalled how fast it changed that Friday: their normal afternoon flights were cancelled, and they waited for the word to send a crew south.",
+   "pic": "**Greene portrait**: freeze of 620838 1:55.0, cropped above the burned-in subtitle",
+   "label": "Lt. Cmdr. Simon Greene \u00b7 Coast Guard helicopter pilot",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "a5",
+   "text": "In Houston, officials had a different decision to make. Several coastal counties ordered people out. For Houston and Harris County, there was no general evacuation order.",
+   "pic": "**Map M2**: coastal counties with evacuation orders shaded; Houston/Harris County outlined, not shaded",
+   "label": "Evacuation orders, Aug. 24\u201325, 2017 \u00b7 simplified",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "a6",
+   "text": "County Judge Ed Emmett explained why. When a storm surge comes in from the sea, you know who lives in its path. With rain, he said, you don't know which neighbourhoods are going to be affected.",
+   "pic": "M2 holds; Harris County line pulses once",
+   "label": "\u2014",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "a7",
+   "text": "And they remembered Hurricane Rita in 2005. As millions tried to leave the Houston area, dozens of people died during the evacuation, twenty-three of them in a single bus fire on the highway, before Rita came ashore.",
+   "pic": "Text card over dark map: \"Hurricane Rita, Sept. 2005 \u00b7 NTSB: 23 evacuees died in a bus fire on I-45, Sept. 23 \u2014 the day before landfall\"",
+   "label": "NTSB HAR-07/01",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "a8",
+   "text": "At about ten on Friday night, Harvey came ashore near Rockport as a Category 4 hurricane. Then it stopped moving.",
+   "pic": "GOES loop, the eye at night (\u22480:10\u20130:16) \u2192 **Map M3**: the track arrives at Rockport and loops in place for four days",
+   "label": "Landfall, Aug. 25, 2017, \u224810 p.m. \u00b7 track: NHC",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "b1",
+   "text": "On Saturday night, the rain bands settled over Houston. One gauge recorded more than three inches in thirty minutes. At 9:27, the weather service issued its first flash flood emergency.",
+   "pic": "**Map M4**: rain totals over Harris County building hour by hour from Sat evening to Sun morning; at 9:27 p.m. a stamp appears over west-central Harris County",
+   "label": "Rainfall, Aug. 26\u201327 \u00b7 NWS data, simplified",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "b2",
+   "text": "By Sunday morning, two-day totals in the Houston area were approaching twenty-five inches. Most of that rain had fallen in nine to twelve hours, late on Saturday night and early on Sunday. And the storm was not over.",
+   "pic": "M4 completes; the darkest cells hold",
+   "label": "\u2014",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "b3",
+   "text": "South-east of the city, in Dickinson, the house of a Coast Guard chief, Matthew Dusek, flooded that weekend.",
+   "pic": "**551726** 0:03\u20130:12: Dickinson street, drywall and furniture at the kerb",
+   "label": "Dickinson, Texas \u00b7 filmed Sept. 4, 2017",
+   "gap": 0.8
+  },
+  {
+   "k": "bite",
+   "id": "b4",
+   "src": "551726",
+   "segs": [
+    [
+     12.18,
+     30.8
+    ]
+   ],
+   "text": "We had sewage come up through our showers and our bathtubs. So pretty much the night that it was happening it was up to our box springs, and we were pretty much walking around in sewage water and whatever else.",
+   "pic": "551726 0:12\u20130:30 (gutted houses and furniture at the kerb, the b-roll that runs under his voice in the original report)",
+   "label": "CPO Matthew Dusek \u00b7 U.S. Coast Guard \u00b7 interview Sept. 4, 2017",
+   "gap": 0.9
+  },
+  {
+   "k": "vo",
+   "id": "b5",
+   "text": "According to an Air National Guard report, when the water started filling his house, he took his boat and spent the day pulling his neighbours out.",
+   "pic": "**551726** 0:30\u20130:36 (the same street, Sept. 4)",
+   "label": "\u2014",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "b6",
+   "text": "By Sunday morning, Harris County's 911 system had taken fifty-six thousand calls in fifteen hours. The county judge asked for help.",
+   "pic": "**546166** (Coast Guard punt beside a submerged pickup, freeway overpass behind)",
+   "label": "Houston, Sunday, Aug. 27, 2017",
+   "gap": 0.8
+  },
+  {
+   "k": "nat",
+   "id": "b7",
+   "secs": 3.5,
+   "pic": "Text card: \"If you have a boat, we need your help.\" \u2014 Harris County Judge Ed Emmett, Aug. 27, 2017",
+   "label": "Quoted in NWS Service Assessment, p. 8",
+   "gap": 0.0
+  },
+  {
+   "k": "vo",
+   "id": "b8",
+   "text": "Early on Sunday, a Houston police sergeant, Steve Perez, left home for work in heavy rain. According to Police Chief Art Acevedo, Perez's wife had asked him not to go, and he answered that there was work to do. He drowned in his patrol car on a flooded road in north Houston.",
+   "pic": "**Map M4b**: the night-rain map of M4, dimmed; a small marker in north Houston near Hardy Toll Road and Beltway 8, where he was found on Aug. 29",
+   "label": "Sgt. Steve Perez \u00b7 Houston Police Department \u00b7 34 years of service",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "c1",
+   "text": "That Sunday, Coast Guard aircraft from Cape Cod arrived over Houston. Kiley's helicopter crew came by way of Lafayette, Louisiana.",
+   "pic": "Photo **3710048** (Cape Cod HC-144 over clouds en route) \u2192 photo **3709578** (flooded streets through the Jayhawk windscreen)",
+   "label": "Coast Guard aircraft from Cape Cod, Aug. 27, 2017",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "c2",
+   "text": "Most of their calls were just addresses from 911. Greene said they were told to follow the roads. Whichever pilot was not flying typed each address into Google Maps on a phone and called out the turns, like a driver.",
+   "pic": "**546164** 0:27\u20130:36 aerial of flooded streets \u2192 **546836** 0:00\u20130:20 hook camera over a roof",
+   "label": "Coast Guard, Houston, Aug. 27\u201329, 2017",
+   "gap": 0.8
+  },
+  {
+   "k": "nat",
+   "id": "c3",
+   "secs": 16.0,
+   "pic": "**546164** 0:45\u20131:15: the flight mechanic works the hoist; the basket goes down over flooded trees; then 1:18\u20131:30 survivors pulled into the cabin",
+   "label": "Coast Guard hoist, Houston, Aug. 27, 2017",
+   "gap": 0.0
+  },
+  {
+   "k": "nat",
+   "id": "c4",
+   "secs": 4.0,
+   "pic": "**546164** 1:48\u20131:54: survivors walk away from the helicopter on the ramp",
+   "label": "\u2014",
+   "gap": 0.0
+  },
+  {
+   "k": "vo",
+   "id": "c5",
+   "text": "The roof with the bin was on Kiley's second day in Houston. He had been lowered from the helicopter, got onto the car, and climbed up to the five people. What worried him most was losing one of them off the edge.",
+   "pic": "Kiley portrait 1 (620835 1:59.2 freeze), slow push",
+   "label": "Brendan Kiley \u00b7 rescue swimmer, Air Station Cape Cod",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "c6",
+   "text": "When he refused the bin, the mother told him: those are my babies. Kiley later said he was sure she had snapped the lid on as the helicopter came in, to keep the children out of the rain.",
+   "pic": "Kiley portrait 2 (0:42.1 freeze, cropped)",
+   "label": "\u2014",
+   "gap": 0.8
+  },
+  {
+   "k": "nat",
+   "id": "c9",
+   "secs": 1.2,
+   "pic": "Hold",
+   "label": "\u2014",
+   "gap": 0.0
+  },
+  {
+   "k": "vo",
+   "id": "c10",
+   "text": "He carried the bin down from the roof first, with the children inside. Then he helped their mother down, and settled all three in the rescue basket. The basket went up with the mother and both children together.",
+   "pic": "Portrait 1 again, wider",
+   "label": "\u2014",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "c11",
+   "text": "Afterwards, he said the bin had been a good call by their mother: inside it, the children were out of the rain and the wind, and they could not slide off the roof.",
+   "pic": "Photo **3709578** (flooded streets through the Jayhawk windscreen) \u2014 slow pull back",
+   "label": "Coast Guard helicopter over Houston, Aug. 27, 2017",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "c11b",
+   "text": "Over three days, Kiley's crew rescued a hundred and twelve people.",
+   "pic": "Photo 3709578 holds",
+   "label": "\u2014",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "c12",
+   "text": "Rain was the other problem. When the heaviest bands came through, Greene said, the pilots could not see. They would set down in a ballpark or a car park, wait for the band to pass, and lift off again.",
+   "pic": "**546526** 0:00\u20130:12 hoist in heavy rain \u2192 0:33\u20130:45 landing zone in pouring rain",
+   "label": "Coast Guard rescue, greater Houston, Aug. 28, 2017",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "c13",
+   "text": "On the ground, Harris County's firefighters and police recorded more than sixty-one thousand rescues. Nobody counted the people saved by neighbours in their own boats.",
+   "pic": "**546389** 0:00\u20130:39 (soldiers walk a johnboat of evacuees down a flooded street; a civilian helps)",
+   "label": "Texas National Guard, Houston, Aug. 27, 2017",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "c14",
+   "text": "Military police units drove into the floodwater in trucks. Sergeant Anthony Lara's first mission was in Dickinson.",
+   "pic": "**546389** 1:48\u20132:05 (high-water trucks through deep water)",
+   "label": "Texas National Guard, Houston, Aug. 27, 2017",
+   "gap": 0.8
+  },
+  {
+   "k": "bite",
+   "id": "c15",
+   "src": "549208",
+   "segs": [
+    [
+     4.3,
+     32.88
+    ]
+   ],
+   "text": "When we first hit ground we did a mission with the Texas Search and Rescue team, and we went out to Dickinson. The water was probably, I'd say, maybe three feet deep. It got too deep to go in, but we were able to rescue some civilians that did come up to us with civilian boats that came up to our vehicles. We escorted them back, and then from there took them to shelters.",
+   "pic": "Lara on camera (549208, 640\u00d7360: windowboxed at 70 % on a dark blurred copy of itself, no upscale beyond 1.5\u00d7)",
+   "label": "Sgt. Anthony Lara \u00b7 712th Military Police Co. \u00b7 interview Sept. 6, 2017",
+   "gap": 0.9
+  },
+  {
+   "k": "vo",
+   "id": "c16",
+   "text": "In League City, Specialist Kyle Wampler's unit worked with the local police.",
+   "pic": "**546389** 1:00\u20131:15 (POV from a high-water truck moving through deep water)",
+   "label": "Texas National Guard, Houston, Aug. 27, 2017",
+   "gap": 0.8
+  },
+  {
+   "k": "bite",
+   "id": "c17",
+   "src": "549218",
+   "segs": [
+    [
+     38.84,
+     56.47
+    ]
+   ],
+   "text": "We got to go out and perform a rescue on a elderly house, and you know, pulling this guy out. And he can barely walk, and just having to help him, even into our trucks and stuff like that. It just really stood out to me, because I know that if we weren't there to help 'em, that, you know, I don't know who else would or could have.",
+   "pic": "Wampler on camera (549218, 640\u00d7360, same treatment as Lara)",
+   "label": "Spc. Kyle Wampler \u00b7 712th Military Police Co. \u00b7 interview, Sept. 2017",
+   "gap": 0.9
+  },
+  {
+   "k": "vo",
+   "id": "d1",
+   "text": "Almost everywhere in Houston, the water came from the rain and from overflowing bayous. But west of downtown, a different problem was building, behind two dams.",
+   "pic": "**Map M5a**: Harris County; ~154,000 flooded houses shown as a faint dot density over the whole county; the camera moves west to two empty basins",
+   "label": "Flooded houses, Harris County \u00b7 HCFCD 2018, simplified",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "d2",
+   "text": "Addicks and Barker are earthen dams built in the 1940s to catch floodwater before it reaches the city. On August twenty-fifth, as Harvey approached, the Army Corps of Engineers closed their gates, as planned.",
+   "pic": "M5b: dams highlighted; gates shown closed; creeks run into the basins",
+   "label": "Addicks and Barker reservoirs \u00b7 USACE",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "d3",
+   "text": "The basins filled. And inside them, on private land, whole neighbourhoods had been built. More than nine thousand homes and businesses there flooded, from water that was being held back.",
+   "pic": "M5c: the pools spread past the government-owned land onto streets \u2192 **547036** 2:05\u20132:25 (flooded subdivisions, water tower)",
+   "label": "Inside the reservoirs, Aug. 30, 2017 \u00b7 USACE",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "d4",
+   "text": "Downstream, Buffalo Bayou was already running high from rain on the city. Around midnight on August twenty-eighth, with the pools still rising, the Corps began releasing water through the gates. Its reason was the safety of the dams: it had estimated that a dam failure would put six hundred thousand lives at risk.",
+   "pic": "M5d: Buffalo Bayou already blue to its banks; at \"midnight\" the gates open and a second, brighter flow joins it \u2192 **547036** 1:25\u20131:40 (Barker outlet flow)",
+   "label": "Releases begin \u2248 midnight, Aug. 28 \u00b7 court record",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "d5",
+   "text": "According to the governor's commission, the releases flooded about four thousand homes along the bayou. On August thirtieth, both reservoirs reached their highest levels on record.",
+   "pic": "M5e: homes along the bayou marked \u2192 **547036** 0:50\u20131:05 (flooded office parks) \u2192 2:21\u20132:30",
+   "label": "Buffalo Bayou corridor, Aug. 30, 2017 \u00b7 USACE",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "d6",
+   "text": "Years later, federal courts ruled that by flooding these homes to protect others, the government had taken private property and owed compensation. One court praised the Corps' professionalism, and found that, at the levels the water actually reached, the risk of a dam failure had been minimal.",
+   "pic": "M5 final state, still",
+   "label": "Upstream ruling 2019, affirmed 2025 \u00b7 downstream ruling 2026",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "e1",
+   "text": "Harvey finally drifted east. Its heaviest rain of all fell near Beaumont and Port Arthur: more than sixty inches at Nederland.",
+   "pic": "**Map M6**: the track moves east; the rain shield follows; a single marker \"60.58 in \u00b7 Nederland\" appears",
+   "label": "Track and rainfall \u00b7 NHC, simplified",
+   "gap": 0.8
+  },
+  {
+   "k": "nat",
+   "id": "e2",
+   "secs": 12.0,
+   "pic": "**590199** 0:27\u20130:39: basket camera \u2014 a small child rising over flooded houses, the helicopter above",
+   "label": "Air Force Reserve rescue, Port Arthur, Aug. 30, 2017",
+   "gap": 0.0
+  },
+  {
+   "k": "vo",
+   "id": "e3",
+   "text": "Near Beaumont, an Air Force Reserve crew lowered a pararescueman to a flooded house. He came back up with an elderly woman in the basket.",
+   "pic": "**547337** 0:20\u20130:50 (over the hoist operator's shoulder, cable going down) \u2192 1:06\u20131:30 basket up with the woman and the pararescueman",
+   "label": "Air Force Reserve, near Beaumont, Aug. 31, 2017",
+   "gap": 0.8
+  },
+  {
+   "k": "nat",
+   "id": "e4",
+   "secs": 6.0,
+   "pic": "**547337** 1:33\u20131:45: she is settled in the cabin",
+   "label": "\u2014",
+   "gap": 0.0
+  },
+  {
+   "k": "vo",
+   "id": "e5",
+   "text": "In Vidor, a pararescue team from the Alaska Air National Guard worked the streets by boat.",
+   "pic": "**547430** convoy through water; boats unloaded",
+   "label": "Vidor, Texas, Aug. 31, 2017",
+   "gap": 0.8
+  },
+  {
+   "k": "bite",
+   "id": "e6",
+   "src": "547400",
+   "segs": [
+    [
+     8.36,
+     19.16
+    ],
+    [
+     34.16,
+     51.96
+    ]
+   ],
+   "text": "What we're doing here is providing boat teams in and out of these very flooded streets. Many times past the windows, we've seen cars completely submerged. These people need a way out. / Vidor's been fantastic. Everybody that we've come upon has helped us, either with boat trailers, because we've had a hard time accessing dry or wet land. They've helped us out with food, or just come up to us, shook our hands and thanked us. It's a pretty rewarding experience, seeing the best of America down here.",
+   "pic": "Warren on camera (547400), flooded Vidor street behind him; cut to 547430 boats during the second piece, back to his face for the last sentence",
+   "label": "Lt. Dan Warren \u00b7 212th Rescue Squadron, Alaska Air National Guard \u00b7 Vidor, Aug. 2017",
+   "gap": 0.9
+  },
+  {
+   "k": "vo",
+   "id": "f1",
+   "text": "When the water went down in Dickinson, Matthew Dusek spoke to his insurance adjuster.",
+   "pic": "**551726** 1:40\u20131:47 (a \"Yard of the Month\" sign in front of a gutted house)",
+   "label": "Dickinson, Texas, Sept. 4, 2017",
+   "gap": 0.8
+  },
+  {
+   "k": "bite",
+   "id": "f2",
+   "src": "551726",
+   "segs": [
+    [
+     35.84,
+     46.04
+    ]
+   ],
+   "text": "Just talked to the claims adjuster and it kinda sent me into a little spin, 'cause I don't have a house. I'm homeless. I don't know.",
+   "pic": "Dusek on camera (551726 0:39\u20130:46)",
+   "label": "CPO Matthew Dusek \u00b7 U.S. Coast Guard",
+   "gap": 0.9
+  },
+  {
+   "k": "vo",
+   "id": "f3",
+   "text": "Harvey killed sixty-eight people directly, thirty-six of them in Harris County. In the county, about a hundred and fifty-four thousand houses flooded. Across Texas, more than a hundred and twenty-two thousand people had to be rescued.",
+   "pic": "USGS photo **usgs_high_water_marks.jpg** (technicians flagging a high-water mark), dimmed; the numbers appear one by one as they are spoken",
+   "label": "68 direct deaths \u00b7 36 in Harris County \u00b7 154,170 houses flooded in the county \u00b7 122,000+ rescued in Texas (NHC; HCFCD; Governor's Commission) \u00b7 photo: USGS",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "g1",
+   "text": "The flood was forecast. But no forecast could name the streets, and there was no general order to leave Houston. When the downpour hit Houston on Saturday night, many people could only wait to be rescued.",
+   "pic": "**546389** 3:09\u20133:30 (evacuees loaded into a truck bed) \u2192 **546164** 0:27\u20130:36 aerial, slowed to 70 %",
+   "label": "Houston, Aug. 27, 2017",
+   "gap": 0.8
+  },
+  {
+   "k": "vo",
+   "id": "g2",
+   "text": "On one of those roofs, a mother had already done what she could. She put her two children in a plastic bin and kept them dry, until Brendan Kiley reached them.",
+   "pic": "Kiley portrait 1, last slow push",
+   "label": "Brendan Kiley \u00b7 U.S. Coast Guard rescue swimmer",
+   "gap": 1.0
+  },
+  {
+   "k": "nat",
+   "id": "g6",
+   "secs": 4.0,
+   "pic": "Hold on the portrait 1.5 s \u2192 fade to black",
+   "label": "\u2014",
+   "gap": 0.0
+  }
+ ]
+}

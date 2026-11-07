@@ -1,0 +1,109 @@
+{
+ "note": "Opening v2 (after critic). bite = original testimony audio, DVIDS 91190 (USCG/BOEMRE Joint Investigation hearing, July 23, 2010, Mike Williams), segments in source seconds. Previous version: script/opening_v1.json, vo_v1/. v3 (owner, Nov 3): test explanation cut to three points; c03-c05 rewritten and re-recorded; details moved to the main film.",
+ "seq": [
+  [
+   "bite",
+   "w_call",
+   [
+    [
+     316.75,
+     323.95
+    ],
+    [
+     331.45,
+     343.25
+    ]
+   ],
+   0.9
+  ],
+  [
+   "vo",
+   "c01",
+   "That was Mike Williams, the chief electronics technician on the Deepwater Horizon, testifying three months later. The call he described was on the night of April twentieth, twenty ten.",
+   0.6
+  ],
+  [
+   "vo",
+   "c02",
+   "The rig was drilling in the Gulf of Mexico, about fifty miles off Louisiana. A hundred and twenty-six people were on board.",
+   0.5
+  ],
+  [
+   "vo",
+   "c03",
+   "Earlier that evening, the crew had tested whether the well was sealed.",
+   0.6
+  ],
+  [
+   "vo",
+   "c04",
+   "The readings contradicted each other. One line showed no flow. The drill pipe, open to the same well, showed fourteen hundred psi.",
+   0.6
+  ],
+  [
+   "vo",
+   "c05",
+   "Around eight o'clock, the test was declared a success.",
+   0.6
+  ],
+  [
+   "vo",
+   "c06",
+   "The presidential commission later concluded that the pressure could only have come from a leak into the well, and called the decision a key error.",
+   0.6
+  ],
+  [
+   "vo",
+   "c07",
+   "Williams told investigators why the gas announcement that night did not alarm him.",
+   0.7
+  ],
+  [
+   "bite",
+   "w_immune",
+   [
+    [
+     344.6,
+     354.72
+    ]
+   ],
+   0.4
+  ],
+  [
+   "vo",
+   "c08",
+   "By his account, the call was around nine thirty. At about nine forty, mud and gas burst onto the rig floor. Minutes later, the rig exploded.",
+   0.7
+  ],
+  [
+   "card",
+   "silence",
+   1.2,
+   0.2
+  ],
+  [
+   "vo",
+   "c09",
+   "Eleven men were killed.",
+   0.2
+  ],
+  [
+   "card",
+   "hold",
+   4.0,
+   0.2
+  ],
+  [
+   "vo",
+   "c10",
+   "Investigators would spend years asking how the well had been judged safe, and why the blowout preventer on the seafloor did not stop it.",
+   0.4
+  ],
+  [
+   "card",
+   "title",
+   3.5,
+   0.6
+  ]
+ ]
+}

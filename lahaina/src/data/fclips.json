@@ -1,0 +1,597 @@
+{
+"f003": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 44.81,
+"cap": false,
+"dur": 4.46
+},
+"f004": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 49.77,
+"cap": false,
+"dur": 6.0
+},
+"f005": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 64.23,
+"cap": false,
+"dur": 6.0
+},
+"f014": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 174.86,
+"cap": false,
+"dur": 6.0
+},
+"f015": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 185.04,
+"cap": false,
+"dur": 6.0
+},
+"f016": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 200.47,
+"cap": false,
+"dur": 6.0
+},
+"f018": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 215.03,
+"cap": false,
+"dur": 6.0
+},
+"f027": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 311.08,
+"cap": false,
+"dur": 4.99
+},
+"f040": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 425.26,
+"cap": false,
+"dur": 6.0
+},
+"f042": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 436.35,
+"cap": false,
+"dur": 6.0
+},
+"f043": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 455.47,
+"cap": false,
+"dur": 4.42
+},
+"f044": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 460.39,
+"cap": false,
+"dur": 6.0
+},
+"f049": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 650.98,
+"cap": false,
+"dur": 6.0
+},
+"f050": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 658.64,
+"cap": false,
+"dur": 6.0
+},
+"f051": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 665.66,
+"cap": false,
+"dur": 6.0
+},
+"f052": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 673.27,
+"cap": false,
+"dur": 6.0
+},
+"f053": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 680.11,
+"cap": false,
+"dur": 6.0
+},
+"f054": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 697.3,
+"cap": false,
+"dur": 6.0
+},
+"f055": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 709.52,
+"cap": false,
+"dur": 5.23
+},
+"f056": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 715.25,
+"cap": false,
+"dur": 6.0
+},
+"f058": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 738.2,
+"cap": false,
+"dur": 5.34
+},
+"f060": {
+"tag": "ruins",
+"src": "XGiI3TeuEh8",
+"from": 749.98,
+"cap": false,
+"dur": 6.0
+},
+"f087": {
+"tag": "ruins",
+"src": "PQCjLkCRe6I",
+"from": 305.37,
+"cap": false,
+"dur": 6.0
+},
+"f088": {
+"tag": "ruins",
+"src": "PQCjLkCRe6I",
+"from": 339.59,
+"cap": false,
+"dur": 6.0
+},
+"f089": {
+"tag": "ruins",
+"src": "PQCjLkCRe6I",
+"from": 368.43,
+"cap": false,
+"dur": 6.0
+},
+"f101": {
+"tag": "ruins",
+"src": "PQCjLkCRe6I",
+"from": 472.06,
+"cap": false,
+"dur": 6.0
+},
+"f102": {
+"tag": "ruins",
+"src": "PQCjLkCRe6I",
+"from": 487.45,
+"cap": false,
+"dur": 4.28
+},
+"f103": {
+"tag": "ruins",
+"src": "PQCjLkCRe6I",
+"from": 492.23,
+"cap": false,
+"dur": 5.9
+},
+"f106": {
+"tag": "ruins",
+"src": "PQCjLkCRe6I",
+"from": 512.5,
+"cap": false,
+"dur": 6.0
+},
+"f107": {
+"tag": "ruins",
+"src": "PQCjLkCRe6I",
+"from": 522.6,
+"cap": false,
+"dur": 6.0
+},
+"f108": {
+"tag": "ruins",
+"src": "PQCjLkCRe6I",
+"from": 537.82,
+"cap": false,
+"dur": 6.0
+},
+"f109": {
+"tag": "ruins",
+"src": "PQCjLkCRe6I",
+"from": 547.31,
+"cap": false,
+"dur": 6.0
+},
+"f123": {
+"tag": "ruins",
+"src": "aU7FZlM4O9U",
+"from": 67.77,
+"cap": false,
+"dur": 6.0
+},
+"f125": {
+"tag": "ruins",
+"src": "aU7FZlM4O9U",
+"from": 82.62,
+"cap": false,
+"dur": 2.47
+},
+"f226": {
+"tag": "ruins",
+"src": "RdNnOABQhrQ",
+"from": 60.3,
+"cap": true,
+"dur": 6.0
+},
+"f006": {
+"tag": "cars",
+"src": "XGiI3TeuEh8",
+"from": 76.48,
+"cap": false,
+"dur": 4.7
+},
+"f008": {
+"tag": "cars",
+"src": "XGiI3TeuEh8",
+"from": 102.13,
+"cap": false,
+"dur": 2.53
+},
+"f019": {
+"tag": "cars",
+"src": "XGiI3TeuEh8",
+"from": 221.67,
+"cap": false,
+"dur": 6.0
+},
+"f020": {
+"tag": "cars",
+"src": "XGiI3TeuEh8",
+"from": 228.41,
+"cap": false,
+"dur": 6.0
+},
+"f022": {
+"tag": "cars",
+"src": "XGiI3TeuEh8",
+"from": 250.95,
+"cap": false,
+"dur": 4.11
+},
+"f023": {
+"tag": "cars",
+"src": "XGiI3TeuEh8",
+"from": 255.56,
+"cap": false,
+"dur": 6.0
+},
+"f041": {
+"tag": "cars",
+"src": "XGiI3TeuEh8",
+"from": 432.33,
+"cap": false,
+"dur": 3.52
+},
+"f045": {
+"tag": "cars",
+"src": "XGiI3TeuEh8",
+"from": 470.87,
+"cap": false,
+"dur": 2.87
+},
+"f082": {
+"tag": "cars",
+"src": "PQCjLkCRe6I",
+"from": 254.7,
+"cap": false,
+"dur": 6.0
+},
+"f100": {
+"tag": "cars",
+"src": "PQCjLkCRe6I",
+"from": 460.31,
+"cap": false,
+"dur": 6.0
+},
+"f079": {
+"tag": "search",
+"src": "PQCjLkCRe6I",
+"from": 186.14,
+"cap": false,
+"dur": 6.0
+},
+"f085": {
+"tag": "search",
+"src": "PQCjLkCRe6I",
+"from": 284.52,
+"cap": false,
+"dur": 6.0
+},
+"f092": {
+"tag": "search",
+"src": "PQCjLkCRe6I",
+"from": 390.26,
+"cap": false,
+"dur": 5.8
+},
+"f093": {
+"tag": "search",
+"src": "PQCjLkCRe6I",
+"from": 396.56,
+"cap": false,
+"dur": 6.0
+},
+"f094": {
+"tag": "search",
+"src": "PQCjLkCRe6I",
+"from": 405.29,
+"cap": false,
+"dur": 6.0
+},
+"f095": {
+"tag": "search",
+"src": "PQCjLkCRe6I",
+"from": 412.73,
+"cap": false,
+"dur": 6.0
+},
+"f096": {
+"tag": "search",
+"src": "PQCjLkCRe6I",
+"from": 428.93,
+"cap": false,
+"dur": 6.0
+},
+"f110": {
+"tag": "search",
+"src": "PQCjLkCRe6I",
+"from": 557.74,
+"cap": false,
+"dur": 6.0
+},
+"f115": {
+"tag": "search",
+"src": "aU7FZlM4O9U",
+"from": 17.45,
+"cap": false,
+"dur": 6.0
+},
+"f116": {
+"tag": "search",
+"src": "aU7FZlM4O9U",
+"from": 30.86,
+"cap": false,
+"dur": 4.34
+},
+"f122": {
+"tag": "search",
+"src": "aU7FZlM4O9U",
+"from": 56.49,
+"cap": false,
+"dur": 6.0
+},
+"f126": {
+"tag": "search",
+"src": "aU7FZlM4O9U",
+"from": 87.99,
+"cap": false,
+"dur": 2.87
+},
+"f081": {
+"tag": "heli",
+"src": "PQCjLkCRe6I",
+"from": 242.56,
+"cap": false,
+"dur": 6.0
+},
+"f036": {
+"tag": "trucks",
+"src": "XGiI3TeuEh8",
+"from": 389.39,
+"cap": false,
+"dur": 6.0
+},
+"f037": {
+"tag": "trucks",
+"src": "XGiI3TeuEh8",
+"from": 396.36,
+"cap": false,
+"dur": 6.0
+},
+"f038": {
+"tag": "trucks",
+"src": "XGiI3TeuEh8",
+"from": 404.3,
+"cap": false,
+"dur": 6.0
+},
+"f134": {
+"tag": "land",
+"src": "CIW5-fg2WtA",
+"from": 5.17,
+"cap": true,
+"dur": 6.0
+},
+"f141": {
+"tag": "land",
+"src": "CIW5-fg2WtA",
+"from": 54.49,
+"cap": true,
+"dur": 5.1
+},
+"f143": {
+"tag": "land",
+"src": "CIW5-fg2WtA",
+"from": 64.4,
+"cap": true,
+"dur": 4.9
+},
+"f144": {
+"tag": "land",
+"src": "CIW5-fg2WtA",
+"from": 69.8,
+"cap": true,
+"dur": 4.04
+},
+"f146": {
+"tag": "land",
+"src": "CIW5-fg2WtA",
+"from": 83.28,
+"cap": true,
+"dur": 3.11
+},
+"f147": {
+"tag": "land",
+"src": "CIW5-fg2WtA",
+"from": 86.89,
+"cap": true,
+"dur": 3.9
+},
+"f148": {
+"tag": "land",
+"src": "CIW5-fg2WtA",
+"from": 91.29,
+"cap": true,
+"dur": 4.81
+},
+"f213": {
+"tag": "land",
+"src": "oK6ryOMH6YQ",
+"from": 127.89,
+"cap": true,
+"dur": 3.91
+},
+"f222": {
+"tag": "land",
+"src": "RdNnOABQhrQ",
+"from": 0.3,
+"cap": true,
+"dur": 6.0
+},
+"f223": {
+"tag": "land",
+"src": "RdNnOABQhrQ",
+"from": 15.3,
+"cap": true,
+"dur": 6.0
+},
+"f227": {
+"tag": "land",
+"src": "RdNnOABQhrQ",
+"from": 75.3,
+"cap": true,
+"dur": 6.0
+},
+"f157": {
+"tag": "rebuild",
+"src": "CIW5-fg2WtA",
+"from": 143.64,
+"cap": true,
+"dur": 2.97
+},
+"f158": {
+"tag": "rebuild",
+"src": "CIW5-fg2WtA",
+"from": 147.11,
+"cap": true,
+"dur": 5.01
+},
+"f160": {
+"tag": "rebuild",
+"src": "CIW5-fg2WtA",
+"from": 155.49,
+"cap": true,
+"dur": 2.9
+},
+"f161": {
+"tag": "rebuild",
+"src": "CIW5-fg2WtA",
+"from": 158.89,
+"cap": true,
+"dur": 2.37
+},
+"f162": {
+"tag": "rebuild",
+"src": "CIW5-fg2WtA",
+"from": 161.76,
+"cap": true,
+"dur": 2.4
+},
+"f200": {
+"tag": "rebuild",
+"src": "oK6ryOMH6YQ",
+"from": 65.43,
+"cap": true,
+"dur": 2.57
+},
+"f201": {
+"tag": "rebuild",
+"src": "oK6ryOMH6YQ",
+"from": 68.5,
+"cap": true,
+"dur": 2.61
+},
+"f202": {
+"tag": "rebuild",
+"src": "oK6ryOMH6YQ",
+"from": 71.61,
+"cap": true,
+"dur": 2.5
+},
+"f204": {
+"tag": "rebuild",
+"src": "oK6ryOMH6YQ",
+"from": 80.21,
+"cap": true,
+"dur": 3.04
+},
+"f233": {
+"tag": "rebuild",
+"src": "UpXOyANDwaQ",
+"from": 0.3,
+"cap": true,
+"dur": 6.0
+},
+"f217": {
+"tag": "nature",
+"src": "oK6ryOMH6YQ",
+"from": 149.72,
+"cap": true,
+"dur": 5.14
+},
+"f218": {
+"tag": "nature",
+"src": "oK6ryOMH6YQ",
+"from": 155.36,
+"cap": true,
+"dur": 3.63
+},
+"f059": {
+"tag": "nature",
+"src": "XGiI3TeuEh8",
+"from": 744.04,
+"cap": false,
+"dur": 5.44
+}
+}

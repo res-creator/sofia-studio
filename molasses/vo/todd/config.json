@@ -1,0 +1,14 @@
+{
+ "voice": "Todd g14YnDYCsy3k7XLlcKlO (eleven_v4)",
+ "audio": "narration.mp3",
+ "words": "words.json",
+ "lead": 0.6,
+ "tail": 4.5,
+ "cuts": [
+  [
+   31.56,
+   0.8
+  ]
+ ],
+ "note": "natural speed, no time-stretch; one 0.8 s beat after 'splits apart.' (Todd's own sentence gaps are up to 0.88 s)"
+}
