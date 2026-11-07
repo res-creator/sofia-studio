@@ -2681,3 +2681,46 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "flood" — RUBRIC «A1 vs C2», compact form (as halves/taxi). heroine = Jessica, upstairs neighbour Gary = Roger
+CAST.update({
+    "upstairs": dict(voice="am_puck", speed=1.0, lang="en-us", el="CwhRBWXzGAHq8TQ4Fs17"),   # flood: Gary, the upstairs neighbour in a bathrobe (Roger)
+})
+EP["flood"] = dict(
+    title='Соседи сверху затопили', rubric='levels_compact',
+    hook_title=[['ПОТОП. СОСЕДИ:', 'd'], ['«ЭТО НЕ МЫ»', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut", card_fade=True,
+    chunks={'c2_h': [['A rubber duck has just floated out of my light fitting.', 'Из моего светильника только что выплыла резиновая уточка.'], ["Unless it's raining ducks,", 'Если только не идёт дождь из уточек,'], ['I suggest we call your insurer.', 'предлагаю позвонить вашей страховой.']]},
+    lines=[
+        ('hook_g', 'upstairs', '[innocently] Water? Not from us, love. Must be the rain.', 'Вода? Это не мы, дорогуша. Наверное, дождь.'),
+        ('hook', 'nar', 'С потолка льёт, а сосед сверху говорит: «Это не мы». Проверим!', ''),
+        ('a1_h', 'her', '[panicking] Water! You! Stop!', 'Вода! Ты! Стоп!'),
+        ('a1_g', 'upstairs', "[shrugging] Me? I'm not a tap.", 'Я? Я же не кран.'),
+        ('a1_nar', 'nar', 'Три слова — и он не кран.', ''),
+        ('a2_h', 'her', '[upset] Your bath is make water in my flat!', 'Твоя ванна делает воду в моей квартире!'),
+        ('a2_g', 'upstairs', "[confused] My bath doesn't make anything. It's a bath.", 'Моя ванна ничего не делает. Это ванна.'),
+        ('a2_nar', 'nar', 'Не «is make water», а «water is coming through». Правильно так:', ''),
+        ('a2_tip', 'tip', "Water's coming through my ceiling.", ''),
+        ('b1_h', 'her', "[politely] I think there's a leak in your bathroom.", 'Думаю, у вас в ванной протечка.'),
+        ('b1_g', 'upstairs', "[smugly] I think there's a leak in your imagination.", 'Думаю, протечка у тебя в воображении.'),
+        ('b1_nar', 'nar', 'Вежливо. А вода всё капает.', ''),
+        ('b2_h', 'her', "[firmly] Let's not beat about the bush — your bath overflowed.", 'Давай без хождений вокруг да около — у тебя перелилась ванна.'),
+        ('b2_g', 'upstairs', "[puzzled] What bush? I don't have a garden.", 'Какого куста? У меня нет сада.'),
+        ('b2_nar', 'nar', 'Beat about the bush — ходить вокруг да около. А он искал куст. Запоминай:', ''),
+        ('b2_tip', 'tip', "Let's not beat about the bush.", ''),
+        ('c1_h', 'her', "[calmly] Could you check your bathroom? I'll need your insurance details either way.", 'Можете проверить ванную? В любом случае мне нужны данные вашей страховки.'),
+        ('c1_g', 'upstairs', "[uneasy] ...I'll go and check.", '…Пойду проверю.'),
+        ('c1_nar', 'nar', 'Приём: просьба плюс следующий шаг. Запоминай:', ''),
+        ('c1_tip', 'tip', "I'll need your insurance details.", ''),
+        ('c2_h', 'her', "[coolly] A rubber duck has just floated out of my light fitting. Unless it's raining ducks, I suggest we call your insurer.", 'Из моего светильника только что выплыла резиновая уточка. Если только не идёт дождь из уточек, предлагаю позвонить вашей страховой.'),
+        ('c2_g', 'upstairs', "[sheepishly] ...That's Gerald. He's mine.", '…Это Джеральд. Он мой.'),
+        ('c2_nar', 'nar', 'Мораль: доказательства всплывают сами.', ''),
+        ('outro', 'nar', 'Тебя затапливали соседи? Пиши: да или нет — и сохрани!', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'ВОДА', 'ok': False, 'note': 'он не кран'},
+           'A2': {'type': 'swap', 'bad': 'Your bath is make water!', 'bad_note': 'вода «идёт»: is coming', 'good': ["Water's coming through", 'my ceiling.']},
+           'B1': {'type': 'eq', 'en': "I think there's a leak in your bathroom.", 'ru': '= Думаю, у вас в ванной протечка.', 'stamp': ['ГЛАВНАЯ', 'ФРАЗА']},
+           'B2': {'type': 'big', 'en': 'beat about the bush', 'ru': 'ходить вокруг да около', 'ex': ["Let's not beat about the bush.", 'давай прямо.'], 'icon': 'bell'},
+           'C1': {'type': 'eq', 'en': "I'll need your insurance details.", 'ru': '= Мне нужны данные вашей страховки.', 'ex': [['Could you check your bathroom?', '= проверьте, пожалуйста, ванную.']]},
+           'C2': {'type': 'c2', 'vocab': [['light fitting', '= светильник'], ['insurer', '= страховая компания']], 'moral': ['ДОКАЗАТЕЛЬСТВА', 'ВСПЛЫВАЮТ', 'САМИ'], 'moral_at': 0.35}},
+)

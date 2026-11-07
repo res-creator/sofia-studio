@@ -21,11 +21,12 @@ def word_times(lid):
         out.append([word, a, b])
     return out
 
-cue("impact", 0.05, 0.9); cue("whoosh", 0.0, 0.5)
+if EPN != "flood": cue("impact", 0.05, 0.9); cue("whoosh", 0.0, 0.5)
 if EPN == "airport": cue("chime", 0.1, 0.55)
 if EPN == "wrongchat":  # phone hook: SEND -> SENT TO: MR GRANT -> READ -> her eyes -> his head turns
     cue("send", 0.3, 0.8); cue("pop", 0.45, 0.7); cue("msg", 0.95, 0.8); cue("whoosh", 1.3, 0.45); cue("gasp", 1.9, 0.7)
-for k in range(1, 4): cue("pop", 0.2 + 0.35 * k, 0.6)
+for k in range(1, 4):
+    if EPN != "flood": cue("pop", 0.2 + 0.35 * k, 0.6)   # flood: the title is on screen from frame 0 (no pop-in)
 h0 = 0.35
 if EPN == "checkout":  # conflict first: UNEXPECTED ITEM! on the screen + error buzz, her line, then the short narrator line
     cue("err", 0.05, 0.8); h0 = say("hook_her", 0.6) + 0.25
@@ -98,14 +99,20 @@ if EPN == "photo":  # cover = her posing by the fountain, friend with phone; ONE
     hev = dict(cut=round(h0 - 0.05, 3)); cue("impact", h0 - 0.05, 0.7)
     for k in range(8): cue("shutter", h0 + 0.05 + 0.1 * k, 0.5)
     h0 = say("hook_h2", h0 + 1.1); hev["count"] = round(hev["cut"] + 0.1, 3); h0 += 0.5
+if EPN == "flood":  # second 0 = action: water drips from the light fitting into the bucket, Gary in a bathrobe at her door: "Water? Not from us, love." at 0.15 s under the title overlay
+    cue("drip", 0.35, 0.5); h0 = say("hook_g", 0.15) + 0.22
+    hev = dict(stun=round(h0 - 0.2, 3)); cue("gasp", h0 - 0.2, 0.45)
 e = say("hook", h0); hw = word_times("hook") or []
 def find(word):
     for w, a, b in hw:
         if w.lower().strip("«»!?.,").startswith(word.lower()): return h0 + a
     return None
 stamp_t = find(E["stamp_word"]) or (e - 1.0); cue("stamp", stamp_t, 0.8)
-t = e + 0.45
-scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "newhair", "idea") else {})))
+if EPN == "flood":
+    hev["drip"] = round((find("потолк") or h0) - 0.1, 3); hev["gary"] = round((find("сосед") or h0 + 1.1) - 0.05, 3); hev["sun"] = round((find("«это") or find("это") or h0 + 2.3) - 0.05, 3); hev["back"] = round(stamp_t - 0.15, 3)
+    cue("drip", hev["drip"] + 0.3, 0.6); cue("sip", hev["gary"] + 0.25, 0.5); cue("chirp", hev["sun"] + 0.15, 0.35)
+t = e + (0.22 if EPN == "flood" else 0.45)
+scenes.append(dict(id="hook", s=0.0, e=round(t, 3), stamp_t=round(stamp_t, 3), **({"ev": hev} if EPN in ("teacher", "pretend", "password", "cantsayno", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "newhair", "idea", "flood") else {})))
 
 TICKS = lambda back: [("tick", -back + 0.15 + 0.6 * k, 0.6) for k in range(int(back / 0.6))]
 if EPN == "gym":
@@ -781,6 +788,18 @@ elif EPN == "gift":
         C2=[("c2_her", 1.3, [("MONTH", -1.3, 0), ("chime", -1.25, 0.7)]), ("c2_x", 2.7, [("OPEN", -2.4, 0), ("pop", -2.4, 0.6), ("scratch", -1.7, 0.6)] + TICKS(1.6)), ("c2_her2", 0.6, [("WINK", ("e", 0.05), 0), ("rimshot", ("e", 0.15), 0.9)]), ("c2_nar", 1.2, [])],
     )
     INTRO = 1.15
+elif EPN == "flood":   # her flat: water drips from the ceiling light fitting into a bucket (it fills up level by level), Gary from upstairs in a bathrobe at her open door. Compact: INTRO 0.6, tight gaps
+    LV = dict(
+        A1=[("a1_h", 0, []), ("a1_g", 0.12, [("SHRUG", 0.1, 0), ("BUCKET", ("e", 0.08), 0), ("drip", ("e", 0.3), 0.7)]), ("a1_nar", 0.75, [])],
+        A2=[("a2_h", 0, []), ("a2_g", 0.12, [("HEAD", ("e", 0.08), 0), ("drip", ("e", 0.42), 0.8), ("squeak", ("e", 0.5), 0.5)]),
+            ("a2_nar", 0.8, []), ("a2_tip", 0.35, [("ding", 0.05, 0.6)])],
+        B1=[("b1_h", 0, []), ("b1_g", 0.12, [("TAP", 0.2, 0), ("STAIN", ("e", 0.08), 0), ("drip", ("e", 0.35), 0.6), ("drip", ("e", 0.7), 0.6)]), ("b1_nar", 0.8, [])],
+        B2=[("b2_h", 0, []), ("b2_g", 0.12, [("LOOK", 0.05, 0), ("PLANT", ("e", 0.08), 0), ("drip", ("e", 0.3), 0.6), ("boing", ("e", 0.45), 0.55)]), ("b2_nar", 1.05, []), ("b2_tip", 0.35, [("ding", 0.05, 0.6)])],
+        C1=[("c1_h", 0, [("FORM", 0.0, 0)]), ("c1_g", 0.12, [("NOD", 0.0, 0), ("deflate", 0.05, 0.4), ("LEAVE", ("e", 0.1), 0), ("squeak", ("e", 0.25), 0.35), ("squeak", ("e", 0.6), 0.35), ("squeak", ("e", 0.95), 0.3)]), ("c1_nar", 0.85, []), ("c1_tip", 0.35, [("ding", 0.05, 0.6)])],
+        C2=[("c2_h", 1.6, [("DUCK", -1.55, 0), ("creak", -1.5, 0.35), ("whoosh", -1.05, 0.35), ("PLOP", -0.8, 0), ("splash", -0.8, 0.9), ("squeak", -0.45, 0.45)]),
+            ("c2_g", 1.25, [("GULP", -1.0, 0), ("gulp", -0.95, 0.5)]), ("c2_nar", 0.45, [("impact_soft", 0.0, 0.5)])],
+    )
+    INTRO = 0.6
 else:
     LV = dict(
         A1=[("a1_x", 0, []), ("a1_her", 0.3, []), ("a1_nar", 0.6, [("pop", 0.15, 0.5)])],
@@ -811,15 +830,20 @@ for L in ["A1", "A2", "B1", "B2", "C1", "C2"]:
             if n == "thud" and lid == "c2_x3": ev["plop"] = round(tt, 3)
             if n == "gulp" or n == "nope": ev["ins"] = round(c - 1.6, 3)
         ev[lid] = c; c = say(lid, c); prev_end = c
-    t = c + (0.42 if EPN == "mic" else 0.55)
+    t = c + (0.42 if EPN == "mic" else 0.2 if EPN == "flood" else 0.55)
     if EPN == "lift": cue("doors", t - 0.45, 0.5)
     scenes.append(dict(id=L, s=round(s, 3), e=round(t, 3), ev={k: (round(v, 3) if not isinstance(v, list) else v) for k, v in ev.items()}))
 s = t
 cue("whoosh", s, 0.8); cue("impact", s + 0.3, 0.8)
-e = say("outro", s + 0.8)
+e = say("outro", s + (0.3 if EPN == "flood" else 0.8))
 for k in range(6): cue("pop", s + 1.1 + 0.15 * k, 0.5)
-t = e + 1.3
+t = e + (1.0 if EPN == "flood" else 1.3)
 scenes.append(dict(id="outro", s=round(s, 3), e=round(t, 3)))
+if EPN == "flood":   # the steady drip from the light fitting (quiet), every 1.3 s while the room is on screen (the gag drips above are louder)
+    _gag = [x["t"] for x in sfx if x["n"] == "drip"]
+    for k in range(int(scenes[-1]["s"] / 1.3)):
+        tt = 0.55 + 1.3 * k
+        if tt < scenes[-1]["s"] - 0.2 and all(abs(tt - g) > 0.45 for g in _gag): cue("drip", tt, 0.16)
 
 for sp in speech:
     p = f"{VO}/{sp['id']}.wav"
@@ -839,7 +863,7 @@ for sp in speech:
             t0 = cc / tot * sp["d"]; cc += a; wt.append([w, round(t0, 3), round(cc / tot * sp["d"], 3)]); cc += p_
     sp["words"] = wt
 cfg = {k: E.get(k) for k in ["title", "hook_title", "stamp", "next", "cards"]}
-for k in ["camera", "chunks"]:   # new episodes only: camera mode ("hard_cut") and long lines split into meaning chunks
+for k in ["camera", "chunks", "card_fade"]:   # new episodes only: camera mode ("hard_cut") and long lines split into meaning chunks
     if E.get(k): cfg[k] = E[k]
 cfg["setting"] = EPN
 json.dump(dict(fps=FPS, dur=round(t, 3), ep=EPN, cfg=cfg, scenes=scenes, speech=speech, sfx=sfx), open(f"eps/{EPN}/timeline.json", "w"), ensure_ascii=False)
