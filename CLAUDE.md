@@ -15,6 +15,7 @@ Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). Thi
 - Never use hand type `thumb`.
 - English only on screen and in audio. Hashtags in all lowercase.
 - Owner talks Russian; answer her in Russian, simply.
+- When the owner asks for voice options or voice links: send only links (free previews are fine). Do NOT generate test samples or spend ElevenLabs credits unless she explicitly asks for samples.
 - At the end of every task, always give the owner direct GitHub links: the Pull Request, the branch folder, and the final files (MP4, cover, SRT, upload kit).
 
 ## Episode 2 "Gus at the Doctor" — DONE (published material)
