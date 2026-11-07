@@ -1,4 +1,4 @@
-# Финальная озвучка: ElevenLabs v3, голос Leonid Fomichev (выбран владелицей 7.11.2026 вместо тестового Fish).
+# Финальная озвучка: ElevenLabs v3, голос Todd (выбран владелицей 7.11.2026; до этого Leonid Fomichev — копия в cache/vo_leonid).
 # Паузы/усмешки/эмоции — из tags.py (в сценарий и субтитры не попадают). Ключ не нужен: его подставляет прокси облачной сессии
 # (локально — переменная окружения ELEVEN_API_KEYS, первый ключ). Не больше 1 запроса за раз, пауза 3 с.
 #   python3 tts_el.py            — все абзацы;   python3 tts_el.py intro grin2   — только эти
@@ -7,9 +7,9 @@ import json, os, re, subprocess, sys, time
 D = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, D)
 from script import PARAS
 from tags import tagged
-VOICE = 'bg9LrEYQkRYwqkxA8VOy'          # Leonid Fomichev (ElevenLabs Voice Library, ru)
+VOICE = 'g14YnDYCsy3k7XLlcKlO'          # Todd - Clear, Engaging and Educational (ElevenLabs Voice Library)
 MODEL = 'eleven_v3'
-SETTINGS = dict(stability=0.5, similarity_boost=0.8)   # v3: stability 0.5 = «Natural»
+SETTINGS = dict(stability=0.0, similarity_boost=0.8)   # v3: stability 0.0 = «Creative» — живее (так понравилось владелице)
 KEY = (os.environ.get('ELEVEN_API_KEYS', '').split(',')[0].strip() or 'proxy')
 OUT = f'{D}/vo'; os.makedirs(OUT, exist_ok=True)
 
