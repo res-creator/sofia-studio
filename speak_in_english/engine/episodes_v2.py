@@ -2681,3 +2681,30 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "mlm" — rubric answers4 (60-70 s). heroine = Jessica, friend Mia = Laura
+CAST.update({
+    "mia": dict(voice="af_nicole", speed=1.0, lang="en-us", el="FGY2WhTYpPnrIDTdsKH5"),   # mlm: Mia, the friend with the "business" (Laura)
+})
+EP["mlm"] = dict(
+    title='Подруга зовёт в «бизнес»', rubric='answers4',
+    hook_title=[['ПОДРУГА ЗОВЁТ', 'd'], ['«В БИЗНЕС»', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    lines=[
+        ('hook_m', 'mia', '[excited] Babe! Do you want to be your own boss? Just three hundred to start!', 'Дорогая! Хочешь быть сама себе начальницей? Всего триста для старта!'),
+        ('hook', 'nar', 'Подруга зовёт в «бизнес». Нужно только вложить триста. Четыре ответа.', ''),
+        ('o1_h', 'her', "[bluntly] That's a pyramid scheme!", 'Это же пирамида!'),
+        ('o1_m', 'mia', "[offended] It's not a pyramid. It's a triangle of opportunity!", 'Это не пирамида. Это треугольник возможностей!'),
+        ('o1_nar', 'nar', 'В лоб — и пирамида стала треугольником.', ''),
+        ('o2_h', 'her', "[politely] Thanks, but I'm not interested.", 'Спасибо, но мне неинтересно.'),
+        ('o2_m', 'mia', "[dreamily] That's what I said! Now I drive a... well, I will drive a Tesla.", 'Я тоже так говорила! А теперь я езжу на… ну, буду ездить на Тесле.'),
+        ('o2_nar', 'nar', 'Вежливо, но разговор не закончен.', ''),
+        ('o3_h', 'her', "[warmly] I'll pass, but good luck with it!", 'Я пас, но удачи тебе!'),
+        ('o3_m', 'mia', '[deflated] Oh. Okay... can I at least add you to the group chat?', 'А. Ладно… можно хотя бы добавить тебя в чат?'),
+        ('o3_nar', 'nar', 'Как носитель: коротко и по-доброму. Запоминай:', ''),
+        ('o3_tip', 'tip', "I'll pass.", ''),
+        ('o4_h', 'her', "[sweetly] I'd love to join — as soon as your upline buys me lunch. Shall I invite her?", 'С радостью вступлю — как только твоя наставница угостит меня обедом. Позвать её?'),
+        ('o4_m', 'mia', "[nervously] ...She doesn't buy lunch. She sells shakes.", '…Она не угощает обедами. Она продаёт коктейли.'),
+        ('end_m', 'mia', '[sheepishly] ...Do you want to buy some shakes?', '…Хочешь купить коктейли?'),
+        ('moral', 'nar', 'Мораль: если бизнес начинается со слов «вложи триста» — это не бизнес.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши цифру и сохрани!', ''),
+    ],
+)
