@@ -2681,3 +2681,30 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "baby" — rubric answers4 (60-70 s). heroine = Jessica, mother-in-law = Alice
+CAST.update({
+    "mil": dict(voice="bf_alice", speed=1.0, lang="en-gb", el="Xb7hH8MSUJpSbSDYk0k2"),   # baby: the mother-in-law with advice (Alice)
+})
+EP["baby"] = dict(
+    title='Свекровь учит воспитывать ребёнка', rubric='answers4',
+    hook_title=[['СВЕКРОВЬ:', 'd'], ['«ТЫ ДЕЛАЕШЬ НЕ ТАК»', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    lines=[
+        ('hook_m', 'mil', "[sweetly] That's not how you hold a baby, dear. In my day...", 'Ребёнка так не держат, дорогая. В моё время…'),
+        ('hook', 'nar', 'Свекровь учит, как воспитывать твоего ребёнка. Опять. Четыре ответа.', ''),
+        ('o1_h', 'her', '[firmly] My baby, my rules!', 'Мой ребёнок — мои правила!'),
+        ('o1_m', 'mil', '[smugly] Your baby, my grandson, my rules.', 'Твой ребёнок, мой внук — мои правила.'),
+        ('o1_nar', 'nar', 'В лоб — и правила уже её.', ''),
+        ('o2_h', 'her', "[politely] Thank you, but we're doing fine.", 'Спасибо, но мы справляемся.'),
+        ('o2_m', 'mil', "[horrified] Fine? He's wearing socks with sandals!", 'Справляетесь? Он в носках с сандалиями!'),
+        ('o2_nar', 'nar', 'Вежливо. Но советы продолжаются.', ''),
+        ('o3_h', 'her', "[warmly] I appreciate the advice, but we've got it covered.", 'Спасибо за совет, но мы со всем справляемся.'),
+        ('o3_m', 'mil', '[reluctantly] ...Well. If you say so.', '…Ну. Раз ты так говоришь.'),
+        ('o3_nar', 'nar', 'Как носитель: спасибо — и граница. Запоминай:', ''),
+        ('o3_tip', 'tip', "We've got it covered.", ''),
+        ('o4_h', 'her', '[sweetly] You raised a wonderful son — so clearly you know best. Would you like the night shift? He wakes at two, four and five.', 'Вы вырастили чудесного сына — значит, вам виднее. Возьмёте ночную смену? Он просыпается в два, в четыре и в пять.'),
+        ('o4_m', 'mil', "[nervously] ...Two, four AND five? I'm free on... Tuesdays.", '…В два, в четыре И в пять? Я свободна по… вторникам.'),
+        ('end_m', 'mil', '[quickly] Oh! He wants his mum!', 'Ой! Он хочет к маме!'),
+        ('moral', 'nar', 'Мораль: лучший ответ на советы — предложить ночную смену.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши цифру и сохрани!', ''),
+    ],
+)
