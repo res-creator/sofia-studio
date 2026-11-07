@@ -2681,3 +2681,32 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "wrongname" — rubric comment_reply4 (60-70 s). heroine Anna = Jessica, his mum = Lily, boyfriend = Will
+CAST.update({
+    "hismum": dict(voice="bf_lily", speed=1.0, lang="en-gb", el="pFZP5JQG7iQjIQuC4Bku"),   # wrongname: the boyfriend's mum (Lily)
+    "bf3": dict(voice="am_michael", speed=1.0, lang="en-gb", el="bIHbv24MWmeRgasZH58o"),   # wrongname: the boyfriend (Will)
+})
+EP["wrongname"] = dict(
+    title='Мама парня назвала тебя именем бывшей', rubric='comment_reply4',
+    hook_title=[['ЕГО МАМА:', 'd'], ['«ПРИВЕТ, КЭТИ!»', 'p'], ['А Я АННА', 'd']],
+    lines=[
+        ('hook_m', 'hismum', '[delighted] Katie! So lovely to see you again!', 'Кэти! Как приятно снова тебя видеть!'),
+        ('hook', 'nar', 'Вопрос из комментариев: мама парня при знакомстве назвала меня именем его бывшей. Что сказать? Четыре ответа.', ''),
+        ('o1_h', 'her', "[coldly] It's Anna.", 'Я Анна.'),
+        ('o1_m', 'hismum', '[unbothered] Of course, dear. Anna. Like Katie, but... shorter.', 'Конечно, дорогая. Анна. Как Кэти, только… короче.'),
+        ('o1_nar', 'nar', 'Холодно — и тебя всё равно сравнили.', ''),
+        ('o2_h', 'her', '[cheerfully] Katie? Great — then Katie can do the dishes.', 'Кэти? Отлично — значит, посуду моет Кэти.'),
+        ('o2_m', 'hismum', '[laughing] Ha! I like you, Katie.', 'Ха! Ты мне нравишься, Кэти.'),
+        ('o2_nar', 'nar', 'С юмором. Но ты всё ещё Кэти.', ''),
+        ('o3_h', 'her', "[lightly] Oh, it's Anna, actually — easy mix-up!", 'Ой, вообще-то я Анна — бывает, легко перепутать!'),
+        ('o3_m', 'hismum', "[embarrassed] Oh dear, I'm so sorry, Anna!", 'Ох, простите, Анна!'),
+        ('o3_nar', 'nar', 'Как носитель: поправить и снять неловкость. Запоминай:', ''),
+        ('o3_tip', 'tip', 'Easy mix-up!', ''),
+        ('o4_h', 'her', "[smiling] Lovely to meet you too. I'm Anna — the upgrade.", 'Мне тоже очень приятно. Я Анна — улучшенная версия.'),
+        ('o4_m', 'hismum', '[impressed] ...The upgrade. I like her.', '…Улучшенная версия. Она мне нравится.'),
+        ('end_b', 'bf3', '[walking in] Mum, this is Anna.', 'Мам, это Анна.'),
+        ('end_m', 'hismum', '[winking] I know, darling. I was testing her.', 'Я знаю, дорогой. Я её проверяла.'),
+        ('moral', 'nar', 'Мораль: на любой проверке главное — чувство юмора.', ''),
+        ('outro', 'nar', 'Какой ответ твой: один, два, три или четыре? И пиши свою ситуацию — разберём!', ''),
+    ],
+)
