@@ -1,4 +1,4 @@
-# The Match King — English script v1 (draft for the owner's approval)
+# The Match King — English script v1 — APPROVED by the owner (Nov 2026)
 
 Narrator: Bryan (ElevenLabs), as in the LEGO film. American English. [Brackets] are not read aloud; numbers in brackets = facts in `research.md`.
 Style: 2.5D parallax (approved test `tests/style_tests/test_parallax.mp4`) + archive photos and 1920s newspapers where they exist (free licences, see research.md [53]).
