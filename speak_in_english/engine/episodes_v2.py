@@ -2681,3 +2681,30 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "stories" — rubric comment_reply4 (60-70 s). heroine = Jessica, boyfriend = Will
+CAST.update({
+    "bf13": dict(voice="am_michael", speed=1.0, lang="en-gb", el="bIHbv24MWmeRgasZH58o"),   # stories: the boyfriend who posted their fight online (Will)
+})
+EP["stories"] = dict(
+    title='Он выложил вашу ссору в сторис', rubric='comment_reply4',
+    hook_title=[['НАШУ ССОРУ', 'd'], ['ВЫЛОЖИЛ В СТОРИС', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    lines=[
+        ('hook_b', 'bf13', "[laughing] Relax, it's funny! Eighty views already!", 'Расслабься, это смешно! Уже восемьдесят просмотров!'),
+        ('hook', 'nar', 'Вопрос из комментариев: мы поругались, а он выложил это в сторис с подписью «Женщины…». Как ответить? Четыре ответа.', ''),
+        ('o1_h', 'her', '[coldly] Delete. Now.', 'Удали. Сейчас же.'),
+        ('o1_b', 'bf13', "[smugly] Can't. Ninety views. I'm famous.", 'Не могу. Девяносто просмотров. Я знаменит.'),
+        ('o1_nar', 'nar', 'Холодно — а просмотры только растут.', ''),
+        ('o2_h', 'her', '[sarcastically] Great. Shall I post your man-flu video next?', 'Отлично. Может, тогда я выложу видео, как ты болел «мужским гриппом»?'),
+        ('o2_b', 'bf13', '[offended] That was real flu! I nearly died!', 'Это был настоящий грипп! Я чуть не умер!'),
+        ('o2_nar', 'nar', 'С юмором — а сторис всё ещё висит.', ''),
+        ('o3_h', 'her', '[firmly] Our fights stay between us. Take it down, please.', 'Наши ссоры остаются между нами. Удали это, пожалуйста.'),
+        ('o3_b', 'bf13', '[quietly] …Okay. Taking it down.', '…Хорошо. Удаляю.'),
+        ('o3_nar', 'nar', 'Как носитель: граница и просьба. Запоминай:', ''),
+        ('o3_tip', 'tip', 'Take it down.', ''),
+        ('o4_h', 'her', "[sweetly] Sweet. Next time you need content, just ask. I'll film you building the wardrobe — all four hours of it.", 'Мило. В следующий раз, когда нужен контент, просто попроси. Я сниму, как ты собираешь шкаф — все четыре часа.'),
+        ('o4_b', 'bf13', '[hastily] …Deleted. Archive too.', '…Удалил. И из архива тоже.'),
+        ('end_b', 'bf13', "[sheepishly] My mum says: 'She's right. Apologise.'", 'Мама пишет: «Она права. Извинись».'),
+        ('moral', 'nar', 'Мораль: сор из избы — прямиком к маме.', ''),
+        ('outro', 'nar', 'Какой ответ твой: один, два, три или четыре? И пиши свою ситуацию — разберём!', ''),
+    ],
+)
