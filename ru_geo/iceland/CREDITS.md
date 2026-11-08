@@ -221,7 +221,7 @@ Wikimedia Commons и Flickr (CC0 / public domain / CC BY / CC BY-SA / OGL / «At
 | 15:26 | рабочие на рыбозаводе HB Grandi, 2011 | Рейкьявик | Jabbi | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Grandi_fish_processing_two_workers_2011.jpg |
 | 15:33 | деловой квартал (иллюстрация) | без привязки к месту | gammeholton84 (Pixabay) | Pixabay Content License | https://pixabay.com/videos/id-110923/ |
 | 15:39 | пачки денег (иллюстрация) | без привязки к месту | Hassas_Arts (Pixabay) | Pixabay Content License | https://pixabay.com/videos/id-50628/ |
-| 15:41 | отделение исландского банка Kaupthing в Лондоне, 2007 | Лондон | Can Pac Swire (Flickr) | CC BY-SA 2.0 | https://www.flickr.com/photos/18378305@N00/2219158905/ |
+| 15:41 | интернет-банк на ноутбуке (иллюстрация) | без привязки к месту | Tumisu (Pixabay) | Pixabay Content License | https://pixabay.com/photos/online-banking-online-bank-banking-3559760/ |
 | 15:46 | торговый центр (иллюстрация) | без привязки к месту | AntiM_photography (Pixabay) | Pixabay Content License | https://pixabay.com/photos/shopping-mall-shopping-center-mall-7340181/ |
 | 15:46 | футбольный стадион (иллюстрация) | без привязки к месту | Pexels (Pixabay) | Pixabay Content License | https://pixabay.com/photos/bleachers-soccer-field-stadium-1867992/ |
 | 15:46 | самолёт (иллюстрация) | без привязки к месту | Stuck1 (Pixabay) | Pixabay Content License | https://pixabay.com/videos/id-32945/ |
@@ -397,7 +397,6 @@ Wikimedia Commons и Flickr (CC0 / public domain / CC BY / CC BY-SA / OGL / «At
 — Доковая башня Гримсби: Chris Morgan, CC BY-SA 2.0, https://commons.wikimedia.org/wiki/File:Grimsby_Dock_Tower_-_geograph.org.uk_-_5371822.jpg
 — доки Гримсби сверху: Colin Westley (Uploaded by User:PeterJewell ), CC BY-SA 2.0, https://commons.wikimedia.org/wiki/File:Grimsby_Dock_Tower_%28aerial_view%29.jpg
 — рабочие на рыбозаводе HB Grandi, 2011: Jabbi, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Grandi_fish_processing_two_workers_2011.jpg
-— отделение исландского банка Kaupthing в Лондоне, 2007: Can Pac Swire (Flickr), CC BY-SA 2.0, https://www.flickr.com/photos/18378305@N00/2219158905/
 — премьер-министр Гейр Хаарде: Johannes Jansson, CC BY 2.5 dk, https://commons.wikimedia.org/wiki/File:Islands_stasminister_Geir_H._Haarde_under_presskonferens_vid_globaliseringsmotet_i_Riksgransen_2008-04-09.jpg
 — индекс исландской биржи OMX Iceland 15, 1998 — октябрь 2008: Thalion77, Public domain, https://commons.wikimedia.org/wiki/File:OMXI15.jpg
 — курс евро к кроне, 2000–2009: BIL, CC BY-SA 3.0, GFDL, https://commons.wikimedia.org/wiki/File:EUR_against_ISK_2000-2009.png
