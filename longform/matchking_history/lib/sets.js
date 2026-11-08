@@ -64,7 +64,7 @@ function maproom(ctx, g, o = {}) { const cam = camAt(g, o.cam || [[0, 160, 0, 1.
   if (o.k) layer(ctx, cam, 0.85, x => K.kreuger(x, o.kx ?? 1500, o.ky ?? 420, o.ks ?? 1.4, o.k, g), { dof: 6 });
   layer(ctx, cam, 0.5, x => { // foreground desk: lamp, globe, papers
     fillShade(x, rect(-300, 930, 2600, 300), '#3d2617', { y0: 930, y1: 1200 }); fillShade(x, c => { c.beginPath(); c.arc(260, 840, 110, 0, 7); }, '#c9b07a', { line: LINE }); fillShade(x, rect(250, 950, 20, 40), '#2a1a10', {});
-    fillShade(x, poly([[1900, 760], [2100, 760], [2040, 660], [1960, 660]]), '#2f6a45', { line: LINE }); fillShade(x, rect(1990, 760, 20, 200), '#222', {}); glow(x, 2000, 780, 260, '255,210,140', 0.35);
+    fillShade(x, poly([[2700, 760], [2900, 760], [2840, 660], [2760, 660]]), '#2f6a45', { line: LINE }); fillShade(x, rect(2790, 760, 20, 200), '#222', {}); glow(x, 2800, 780, 260, '255,210,140', 0.35);
     fillShade(x, poly([[900, 980], [1240, 960], [1260, 1010], [910, 1030]]), '#efe6d2', { line: LINE }); });
   dust(ctx, g, 40); grade(ctx, 'warm', 0.6); vignette(ctx, 0.4); grain(ctx, g); }
 // ============ S1 · PARIS, MARCH 1932 (grey midday: a Haussmann façade, one window on the 3rd floor; the street below) ============
