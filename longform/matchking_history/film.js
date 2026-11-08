@@ -158,10 +158,18 @@ const CA = createCanvas(W, H), CB = createCanvas(W, H);
 function drawShot(cv, sh, g) { const x = cv.getContext('2d'); x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = 1; x.filter = 'none'; x.globalCompositeOperation = 'source-over';
   if (sh.set === 'end') { endCard(x, g - sh.t0); return; } const gl = g - sh.t0; S[sh.set](x, gl, sh.o(gl, g));
   for (const ov of sh.over) { if (g < ov.t0 - 0.05 || g > ov.t1 + 0.5) continue; const a = ss((g - ov.t0) / 0.35) * (1 - ss((g - ov.t1) / 0.35)); if (a > 0) ov.fn(x, g, a); } }
-function frame(ctx, g) { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.filter = 'none';
+// ---------------- energy layer: every shot slowly pushes in (alternating direction), handheld drift, a punch-in + shake on every number / stamp / big caption ----------------
+const OC = createCanvas(W, H), OX = OC.getContext('2d');
+const HITS = []; for (const sh of shots) for (const ov of sh.over) HITS.push(ov.t0); HITS.sort((a, b) => a - b);
+function frame(ctx, g) { frame0(OX, g); const i = shots.findLastIndex(s => g >= s.t0), sh = shots[Math.max(0, i)], nx = shots[i + 1] ? shots[i + 1].t0 : T, u = clamp((g - sh.t0) / Math.max(1, nx - sh.t0));
+  const inCard = cards.some(c => g >= c.t0 && g < c.t1); let sc = 1.015 + (i % 2 ? lerp(0.05, 0, u) : lerp(0, 0.05, u)), dx = Math.sin(g * 0.7) * 10 + Math.sin(g * 1.9) * 4, dy = Math.cos(g * 0.6) * 7 + Math.sin(g * 2.3) * 3;
+  for (const h of HITS) { const d = g - h; if (d >= 0 && d < 0.6) { const e = Math.exp(-d * 7); sc += 0.035 * e; dx += Math.sin(d * 70) * 10 * e; dy += Math.cos(d * 60) * 7 * e; } }
+  if (inCard) { sc = 1; dx = dy = 0; }
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.filter = 'none'; ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H); ctx.save(); ctx.translate(W / 2 + dx, H / 2 + dy); ctx.scale(sc, sc); ctx.drawImage(OC, -W / 2, -H / 2); ctx.restore(); }
+function frame0(ctx, g) { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.filter = 'none';
   const c = cards.find(c => g >= c.t0 && g < c.t1); if (c) { card(ctx, c, g - c.t0); const f = 1 - ss((c.t1 - g) / 0.3); if (f > 0) { ctx.fillStyle = `rgba(0,0,0,${0})`; } return; }
   let i = shots.findLastIndex(s => g >= s.t0); if (i < 0) i = 0; const sh = shots[i], lt = g - sh.t0; drawShot(CA, sh, g);
-  const TR = sh.tr === 'cut' ? 0 : sh.tr === 'whip' ? 0.35 : 0.55; const prevCard = cards.find(c => Math.abs(c.t1 - sh.t0) < 0.6);
+  const TR = sh.tr === 'cut' ? 0 : sh.tr === 'whip' ? 0.28 : 0.4; const prevCard = cards.find(c => Math.abs(c.t1 - sh.t0) < 0.6);
   if (i > 0 && lt < TR && !prevCard) { const pv = shots[i - 1]; drawShot(CB, pv, g); const p = ss(lt / TR);
     if (sh.tr === 'whip') { const d = i % 2 ? 1 : -1; for (let j = 0; j < 5; j++) { const sp = (j / 4 - 0.5) * 60 * Math.sin(p * Math.PI); ctx.globalAlpha = 0.3; ctx.drawImage(CB, -d * W * p + sp, 0); ctx.drawImage(CA, d * W * (1 - p) + sp, 0); } ctx.globalAlpha = 1; }
     else if (sh.tr === 'zoom') { ctx.drawImage(CB, 0, 0); ctx.save(); ctx.globalAlpha = p; const z = lerp(1.25, 1, p); ctx.translate(W / 2, H / 2); ctx.scale(z, z); ctx.translate(-W / 2, -H / 2); ctx.drawImage(CA, 0, 0); ctx.restore(); }
