@@ -215,7 +215,7 @@ def frame(t):
     if ca > 0:
         pad(img, (60, 760, 760, 1030), ca, k=140)
         clock(img, (165, 895), 74, hrs, ca)
-        look.text(img, (275, 850), f'{int(hrs + 0.5)} Ч', 64, 800, look.WHITE, 'lm', alpha=ca, shadow=0.9)
+        look.text(img, (275, 850), f'{int(hrs + 1e-6)} Ч', 64, 800, look.WHITE, 'lm', alpha=ca, shadow=0.9)
         n = int(round(5300 * k / 10) * 10)
         look.text(img, (275, 925), ('≈ ' if k >= 1 else '') + f'{n:,}'.replace(',', ' ') , 64, 800, CORAL, 'lm', alpha=ca, shadow=0.9)
         look.text(img, (278, 975), 'ЖИТЕЛЕЙ НА БОЛЬШОЙ ЗЕМЛЕ', 22, 600, look.SOFT, 'lm', alpha=ca, track=3, shadow=0.9)
