@@ -435,7 +435,7 @@ def _render(i): return frame(i / FPS).tobytes()
 
 def main():
     init()
-    out = os.path.join(ROOT, 'cache', 'anim_globe.mp4')
+    out = os.path.join(ROOT, 'cache', os.environ.get('OUT', 'anim_globe') + '.mp4')
     if len(sys.argv) > 3:
         os.makedirs(sys.argv[3], exist_ok=True)
         for tt in sys.argv[2].split(','):
