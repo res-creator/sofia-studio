@@ -29,6 +29,7 @@ Sources
 - Swedish Match company history; Sveriges Riksbank, "1932 – The Kreuger Crash"; Ericsson history
 - US Senate, Committee on Banking and Currency, "Stock Exchange Practices", Part 4: Kreuger & Toll (Jan 1933), via FRASER
 - Frank Partnoy, "The Match King" (2009); Philip Morris International, Form 10-K 2022
+Archive: Time magazine cover, 28 October 1929 (public domain in the US). Documents shown on screen are re-created illustrations.
 Sums are given in the dollars of their own year. Disputed points are told as such.
 Animation, music and sound effects: original, made for this film. Characters are drawn illustrations.
 
@@ -36,3 +37,10 @@ Animation, music and sound effects: original, made for this film. Characters are
 
 TAGS
 ivar kreuger, match king, kreuger crash, financial fraud history, biggest frauds, swedish match, 1929 crash, ponzi scheme history, business documentary, how its run, money history
+
+SETTINGS
+- Video file: the_match_king_youtube_master.mp4 (1920x1080, 30 fps, -14 LUFS)
+- Subtitles: the_match_king.srt (English)
+- Category: Education · Language: English · Audience: not made for kids
+- Altered or synthetic content: Yes — narration voice is AI-generated (ElevenLabs); animation is illustrated
+- Schedule: Friday or Saturday, 15:00 New York time (23:00 Moscow)
