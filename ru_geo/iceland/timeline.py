@@ -14,15 +14,15 @@ def build():
         trim = max(0.0, j['speech_start'] - 0.06)
         end = j['speech_end'] + 0.12 - trim
         paras.append(dict(name=name, start=t, file=f'{D}/vo/{name}.mp3', len=end, trim=trim))
-        for k, c in j['cuts'].items(): shots.append([k, t + max(0.0, c - trim)])
+        for k, c in j['cuts'].items(): shots.append([k, t + max(0.0, c - trim), name, c])
         t += end + GAP_AFTER[name]
     total = t + TAIL
     out = []
     for i, (k, sh) in enumerate(INTRO):
         out.append(dict(key=k, start=round(i * BEAT2 * FPS) / FPS, **sh))
-    for i, (k, s) in enumerate(shots):
+    for i, (k, s, pname, c) in enumerate(shots):
         s = PRE if i == 0 else round((s - 2 / FPS) * FPS) / FPS
-        out.append(dict(key=k, start=s, **SHOTS[k]))
+        out.append(dict(key=k, start=s, vo=(pname, c), **SHOTS[k]))
     for i, sh in enumerate(out):
         sh['dur'] = round(((out[i + 1]['start'] if i + 1 < len(out) else round(total * FPS) / FPS) - sh['start']) * FPS) / FPS
     # одна анимация (карта, график) на несколько планов подряд: каждый следующий план продолжает её с того же места

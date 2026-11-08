@@ -52,6 +52,9 @@ def frames_video(path, ss, dur, sh):
     p.stdout.close(); p.wait()
 
 def frames_photo(path, dur, sh):
+    if sh.get('motion'):  # живое движение по фото (../lib/motion.py): параллакс, 3D-наклон, рывок, фокус
+        import motion
+        yield from motion.frames(path, dur, sh['motion'], W=W, H=H, FPS=FPS, seed=sh.get('seed', 0), fit=bool(sh.get('fit'))); return
     """Фото с плавным наездом/панорамой (кен-бёрнс): kb = (zoom0, zoom1, (fx0, fy0), (fx1, fy1)) — центр в долях кадра."""
     im = Image.open(path).convert('RGB')
     if sh.get('fit'):   # архив/вертикаль/маленькое фото: целиком по центру на размытой затемнённой копии (без обрезки)
@@ -138,8 +141,19 @@ def overlay(img, sh, t, tg):
         c = sh['card']
         if '_pic' not in c: c['_pic'] = still(c['m'], c.get('ss', 0))
         fx.card(img, t, dur, c['_pic'], c.get('caption'), c.get('side', 'r'), c.get('tilt', -4.0), c.get('polaroid', True), c.get('width', 560), c.get('y'))
+    if sh.get('kt'):      # крупный текст диктора: слова появляются вместе с голосом (../lib/kt.py)
+        import kt
+        k = sh['kt']
+        if '_times' not in k: k['_times'] = list(k['at']) if k.get('at') else kt_times(sh)
+        kt.kinetic(img, t, dur, k['lines'], k['_times'], hl=k.get('hl', ()), dim=k.get('dim', 0.55), pos=k.get('pos', 'center'), size=k.get('size', 104))
     if sh.get('title'):   # заголовок поверх нарезки вступления
         look.title_card(img, 'ИСЛАНДИЯ', tg, t0=TITLE_T0, size=160)
+
+def kt_times(sh):
+    """время каждого слова диктора внутри плана (секунды от начала плана) — по разметке vo/<абзац>.json"""
+    import json
+    name, c = sh['vo']; j = json.load(open(f'{D}/vo/{name}.json'))
+    return [w[1] - c for w in j['words'] if c - 0.05 <= w[1] < c + sh['dur'] - 0.05]
 
 def still(key, ss=0):
     p = mpath(key)
@@ -172,10 +186,23 @@ def video(out_v):
                     frs = [np.frombuffer(next(g), np.uint8).reshape(H, W, 3) for g in subs]
                     yield fx.split(frs, max(0.0, (i - pre) / FPS), sh.get('labels')).convert('RGB').tobytes()
             gen = gen_split()
+        elif sh.get('seq'):     # несколько коротких кадров под одной фразой: доли длительности — 'w' (по умолчанию поровну)
+            parts = sh['seq']; ws = [pt.get('w', 1.0) for pt in parts]; n_all = round(d * FPS)
+            cuts = [0]
+            for wv in ws: cuts.append(cuts[-1] + wv)
+            cuts = [round(n_all * x / cuts[-1]) for x in cuts]
+            def gen_seq():
+                for q, pt in enumerate(parts):
+                    nq = cuts[q + 1] - cuts[q]
+                    if nq <= 0: continue
+                    sp, ssq = source(pt); dq = nq / FPS
+                    g = frames_photo(sp, dq, pt) if is_photo(sp) else frames_video(sp, ssq, dq, pt)
+                    for _ in range(nq): yield next(g)
+            gen = gen_seq()
         else:
             src, ss = source(sh)
             gen = frames_photo(src, d, sh) if is_photo(src) else frames_video(src, max(0.0, ss - pre / FPS), d, sh)
-        need = any(sh.get(k) for k in ('txt', 'q', 'loc', 'title', 'circle', 'locator', 'badge', 'card'))
+        need = any(sh.get(k) for k in ('txt', 'q', 'loc', 'title', 'circle', 'locator', 'badge', 'card', 'kt'))
         for i, fr in enumerate(gen):
             a = np.frombuffer(fr, np.uint8).reshape(H, W, 3)
             if need:
