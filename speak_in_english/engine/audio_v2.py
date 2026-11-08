@@ -386,6 +386,50 @@ if EPN in ("rich", "busy", "avoidparty", "tour", "splitbill", "photo"):  # batch
             t = T(0.13); f = 440 * 2 ** ((m - 69) / 12); put(y, np.sign(np.sin(2*np.pi*f*t)) * 0.35 * np.minimum((0.13 - t)*120, 1), k*0.13, 0.5)
         return norm(lp(y, 4000), 0.55)
     SFX.update(ring=_ring(), doorbell=_doorbell(), cheer=_cheer(), vroom=_vroom(), chirp=_chirp(), toy=_toy())
+if EPN == "snore":  # bedroom: snores (his, her tractor, his tiny strip whistle), tape playback, frame rattle, cat meow, coffee slurp, nose strip, birds (own rng)
+    _s = np.random.default_rng(77)
+    def _snore1(d=0.9, f0=70, rough=1.0):   # one inhale snore: low buzzing flutter with a nasal noise band
+        tt = T(d); env = np.sin(np.pi*tt/d)**1.5; fl = 1 + 0.9*np.sign(np.sin(2*np.pi*(26 + 6*tt)*tt))*rough
+        tone = np.sin(2*np.pi*np.cumsum(f0*(1 + 0.15*tt))/SR) + 0.5*np.sin(2*np.pi*np.cumsum(2*f0)/SR)
+        nz = bp(_s.standard_normal(len(tt)), 120, 900)*0.8
+        return lp((tone*0.6 + nz)*fl*env, 1400)
+    def _snore():
+        y = np.zeros(int(1.6*SR)); put(y, _snore1(0.9), 0, 1.0); tt = T(0.5); put(y, bp(_s.standard_normal(len(tt)), 300, 2500)*np.sin(np.pi*tt/0.5)**2*0.25, 1.0, 1.0)
+        return norm(y, 0.7)
+    def _bigsnore():   # the tractor: louder, rougher, with an engine-like putt
+        y = np.zeros(int(1.3*SR)); put(y, _snore1(1.1, 55, 1.3), 0, 1.0)
+        for k_ in range(9):
+            tt = T(0.08); put(y, np.sin(2*np.pi*48*tt)*np.exp(-tt*30), 0.05 + k_*0.11, 0.6)
+        return norm(np.tanh(y*1.8), 0.85)
+    def _tinysnore():  # quiet as a mouse: a thin whistle through the strip
+        tt = T(0.7); f = 1700 + 300*np.sin(np.pi*tt/0.7)
+        return norm(np.sin(2*np.pi*np.cumsum(f)/SR)*np.sin(np.pi*tt/0.7)**2 + bp(_s.standard_normal(len(tt)), 2000, 5000)*0.15*np.sin(np.pi*tt/0.7), 0.3)
+    def _tape():       # the recording through a phone speaker: band-limited snores
+        y = np.zeros(int(1.0*SR)); put(y, _snore1(0.85, 60, 1.2), 0.05, 1.0)
+        return norm(bp(np.tanh(y*2.5), 400, 3200), 0.6)
+    def _rattle():
+        y = np.zeros(int(1.1*SR))
+        for k_ in range(16):
+            tt = T(0.03); put(y, bp(_s.standard_normal(len(tt)), 1500, 6000)*np.exp(-tt*120), k_*0.065 + _s.uniform(0, 0.02), 0.8 - 0.03*k_)
+        return norm(y, 0.5)
+    def _meow():       # indignant cat: a rising-falling nasal "mrrAOW"
+        tt = T(0.6); f = 500 + 500*np.sin(np.pi*np.minimum(tt/0.45, 1))
+        ph = 2*np.pi*np.cumsum(f)/SR; x = sum(np.sin(k*ph)/k for k in range(1, 6)); x = bp(x, 400, 4000)*np.sin(np.pi*tt/0.6)**0.7
+        return norm(x, 0.55)
+    def _slurp():
+        tt = T(0.5); f = 300 + 900*(tt/0.5); x = np.sin(2*np.pi*np.cumsum(f)/SR)*0.3 + bp(_s.standard_normal(len(tt)), 600, 3000)*0.7
+        return norm(x*np.sin(np.pi*tt/0.5)**2, 0.45)
+    def _click():
+        tt = T(0.04); return norm(bp(_s.standard_normal(len(tt)), 2000, 7000)*np.exp(-tt*150), 0.5)
+    def _strip():      # peel + slap of the nose strip
+        y = np.zeros(int(0.5*SR)); tt = T(0.22); put(y, bp(_s.standard_normal(len(tt)), 2500, 8000)*np.linspace(0.2, 1, len(tt))*0.5, 0, 1)
+        tt = T(0.1); put(y, lp(_s.standard_normal(len(tt)), 2500)*np.exp(-tt*50), 0.25, 1.0); return norm(y, 0.55)
+    def _tweet():      # morning birds
+        y = np.zeros(int(1.0*SR))
+        for k_, st in enumerate([0.0, 0.16, 0.5]):
+            tt = T(0.12); f = 3200 + 1400*np.sin(np.pi*tt/0.12); put(y, np.sin(2*np.pi*np.cumsum(f)/SR)*np.sin(np.pi*tt/0.12), st, 0.8)
+        return norm(y, 0.35)
+    SFX.update(snore=_snore(), bigsnore=_bigsnore(), tinysnore=_tinysnore(), tape=_tape(), rattle=_rattle(), meow=_meow(), slurp=_slurp(), click=_click(), strip=_strip(), tweet=_tweet(), paper=paper(), deflate=deflate())
 def note(m, key=0): return 440 * 2 ** ((m + key - 69) / 12)
 def pluck(f, d, bright=1.0):
     t = T(d); ph = 2*np.pi*f*t
@@ -495,7 +539,7 @@ if EPN == "party":
         seg = (full*op + muff*(1 - op)) * g
         seg *= np.minimum(1, np.arange(n)/(0.03*SR)) * np.minimum(1, (n - np.arange(n))/(0.12*SR))
         put(music, seg, s0, 1.0)
-elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "teacher", "pretend", "avoidparty", "tour"):
+elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "teacher", "pretend", "avoidparty", "tour", "snore"):
     # cheerful London stroll: pizzicato, walking bass, glockenspiel, brushes
     bpm = 116; b = 60/bpm; K = 0
     def pizz(f, d=0.35):
@@ -649,7 +693,10 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+if EPN == "snore":  # answers4 rubric (no levels): music off from the end of "...I'll buy nose strips." (mirror + the night twist) until the moral
+    c2e = sp["o4_b"]["t"] + sp["o4_b"]["d"]; c2n = sp["moral"]["t"]
+else:
+    C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause

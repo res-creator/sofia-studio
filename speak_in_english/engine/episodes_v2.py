@@ -2681,3 +2681,30 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "snore" — rubric answers4 (60-70 s). heroine = Jessica, boyfriend = George
+CAST.update({
+    "bf12": dict(voice="bm_george", speed=1.0, lang="en-gb", el="JBFqnCBsd6RMkjVDRZzb"),   # snore: the boyfriend who snores and blames her (George)
+})
+EP["snore"] = dict(
+    title='Он храпит, а говорит, что храпишь ты', rubric='answers4',
+    hook_title=[['ОН ХРАПИТ,', 'd'], ['А ВИНОВАТА Я', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    lines=[
+        ('hook_b', 'bf12', '[cheerfully] Morning! You snored all night again. Like a tractor.', 'Доброе утро! Ты опять храпела всю ночь. Как трактор.'),
+        ('hook', 'nar', 'Он храпит всю ночь, а утром говорит, что храпела ты. Четыре ответа.', ''),
+        ('o1_h', 'her', '[angrily] Me no! You snore!', 'Я нет! Ты храпеть!'),
+        ('o1_b', 'bf12', "[confidently] Me? I was asleep. I'd know.", 'Я? Я же спал. Я бы знал.'),
+        ('o1_nar', 'nar', 'В лоб — а он спал и всё знает.', ''),
+        ('o2_h', 'her', "[politely] I'm not sure it was me, actually.", 'Вообще-то я не уверена, что это была я.'),
+        ('o2_b', 'bf12', '[smugly] Who else? The cat?', 'А кто ещё? Кот?'),
+        ('o2_nar', 'nar', 'Вежливо — и виноватым стал кот.', ''),
+        ('o3_h', 'her', "[calmly] Funny — I've got it on tape. Want to hear your tractor?", 'Забавно — у меня есть запись. Хочешь послушать свой трактор?'),
+        ('o3_b', 'bf12', "[stunned] …Okay. That's me. Wow.", '…Ладно. Это я. Ничего себе.'),
+        ('o3_nar', 'nar', 'Как носитель: не спорить, а показать. Запоминай:', ''),
+        ('o3_tip', 'tip', "I've got it on tape.", ''),
+        ('o4_h', 'her', '[sweetly] Last night the neighbours asked if we were building an extension. Shall I tell them it was me?', 'Вчера соседи спросили, не делаем ли мы пристройку. Сказать им, что это была я?'),
+        ('o4_b', 'bf12', "[sadly] …I'll buy nose strips.", '…Куплю полоски для носа.'),
+        ('end_b', 'bf12', '[smugly] Morning, tractor. Want to hear YOUR tape?', 'Доброе утро, трактор. Хочешь послушать ТВОЮ запись?'),
+        ('moral', 'nar', 'Мораль: кто первый записал — тот и прав.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши цифру и сохрани!', ''),
+    ],
+)
