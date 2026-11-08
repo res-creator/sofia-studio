@@ -6,6 +6,7 @@ import json, re
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 import look
+HL = (46, 214, 196)   # бирюзовый: выделение важных слов (владелица выбрала вместо кораллового, ноябрь 2026)
 
 W, H = 1920, 1080
 MAX_W = 1600
@@ -109,7 +110,7 @@ def kinetic(img, t, dur, lines, times, hl=(), dim=0.55, pos='center', size=104):
         u = t - tw
         if u < 0: continue
         acc = _norm(w) in hls
-        tile, gx, gy = _tile(w, sz, look.ACCENT if acc else look.WHITE)
+        tile, gx, gy = _tile(w, sz, HL if acc else look.WHITE)
         kb = look.ease_back(u / POP); ka = look.ease_out(u / (POP * 0.7))
         sc = 0.82 + 0.18 * kb
         alpha = ka * a_all
@@ -127,7 +128,7 @@ def kinetic(img, t, dur, lines, times, hl=(), dim=0.55, pos='center', size=104):
                 wtrim = f.getlength(core) if core else wl
                 th = max(4, int(sz * 0.045)); uy = y + sz * 0.27
                 ul = Image.new('RGBA', (int(wtrim) + 4, th + 2), (0, 0, 0, 0))
-                ImageDraw.Draw(ul).rounded_rectangle((0, 0, max(1, wtrim * k), th), th // 2, fill=look.ACCENT + (int(255 * a_all),))
+                ImageDraw.Draw(ul).rounded_rectangle((0, 0, max(1, wtrim * k), th), th // 2, fill=HL + (int(255 * a_all),))
                 img.alpha_composite(ul, (int(x), int(uy)))
         # масштаб от центра слова по базовой линии
         cx = x + wl / 2

@@ -542,3 +542,10 @@ SHOTS.update({
            loc='тросорез, Морской музей Рейкьявика'),
   'n05': M('anim_cutter', tr='zoom'), 'n06': M('anim_cutter'), 'n07': M('anim_cutter'),
 })
+
+# ================= ПОЛНАЯ ДИНАМИКА (ноябрь 2026): правки по главам лежат в rework/dyn_<часть>.py (функция apply(ns) дополняет SHOTS) =================
+import importlib.util as _ilu, os as _os
+for _part in ('A', 'B', 'C', 'D', 'E'):
+    _f = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), 'rework', f'dyn_{_part}.py')
+    if _os.path.exists(_f):
+        _spec = _ilu.spec_from_file_location(f'dyn_{_part}', _f); _mod = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_mod); _mod.apply(globals())
