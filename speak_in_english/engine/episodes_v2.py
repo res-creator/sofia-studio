@@ -2681,3 +2681,30 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "gymgift" — rubric comment_reply4 (60-70 s). heroine = Jessica, boyfriend = Will
+CAST.update({
+    "bf5": dict(voice="am_michael", speed=1.0, lang="en-gb", el="bIHbv24MWmeRgasZH58o"),   # gymgift: the boyfriend who gives a gym card (Will)
+})
+EP["gymgift"] = dict(
+    title='Парень подарил на годовщину абонемент в спортзал', rubric='comment_reply4',
+    hook_title=[['ЕГО ПОДАРОК:', 'd'], ['АБОНЕМЕНТ В ЗАЛ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    lines=[
+        ('hook_b', 'bf5', '[excitedly] Happy anniversary! Twelve months… of gym!', 'С годовщиной! Двенадцать месяцев… спортзала!'),
+        ('hook', 'nar', 'Вопрос из комментариев: парень подарил мне на годовщину абонемент в спортзал. Это намёк? Четыре ответа.', ''),
+        ('o1_h', 'her', '[coldly] Gym. For me. Why?', 'Спортзал. Мне. Зачем?'),
+        ('o1_b', 'bf5', '[proudly] For balance! I got myself a pizza voucher.', 'Для баланса! А себе я взял купон на пиццу.'),
+        ('o1_nar', 'nar', 'Холодно — а у него уже есть пицца.', ''),
+        ('o2_h', 'her', "[sarcastically] Wow, so romantic. Do they do couples' push-ups?", 'Вау, как романтично. А там есть отжимания для пар?'),
+        ('o2_b', 'bf5', '[thrilled] Yes! I booked us a trainer!', 'Да! Я записал нас к тренеру!'),
+        ('o2_nar', 'nar', 'С юмором — но намёк он не понял.', ''),
+        ('o3_h', 'her', "[gently] That's thoughtful, but it's not really an anniversary gift, is it?", 'Это заботливо, но это ведь не совсем подарок на годовщину, правда?'),
+        ('o3_b', 'bf5', '[sheepishly] …No. It was on sale. Sorry.', '…Нет. Он был со скидкой. Прости.'),
+        ('o3_nar', 'nar', 'Как носитель: мягко, но честно. Запоминай:', ''),
+        ('o3_tip', 'tip', "It's not really..., is it?", ''),
+        ('o4_h', 'her', "[sweetly] Thank you! I'll use it every day — to run away from men who give gym cards on anniversaries.", 'Спасибо! Буду ходить каждый день — чтобы убегать от мужчин, которые дарят абонементы на годовщину.'),
+        ('o4_b', 'bf5', "[panicking] …Wait, there's a second envelope!", '…Стой, там есть второй конверт!'),
+        ('end_b', 'bf5', "[embarrassed] Oh. That one's mine. Yours is the flowers in the car.", 'Ой. Этот мой. А твой подарок — цветы в машине.'),
+        ('moral', 'nar', 'Мораль: сначала дочитай конверт — потом обижайся.', ''),
+        ('outro', 'nar', 'Какой ответ твой: один, два, три или четыре? И пиши свою ситуацию — разберём!', ''),
+    ],
+)
