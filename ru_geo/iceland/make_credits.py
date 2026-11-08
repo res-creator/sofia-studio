@@ -9,7 +9,8 @@ def fmt(t): return f'{int(t // 60)}:{int(t % 60):02d}'
 _, shots, total = build()
 used, where = [], {}
 for sh in shots:
-    ks = ([sh['m']] if sh.get('m') else []) + [p['m'] for p in sh.get('split', [])] + ([sh['card']['m']] if sh.get('card') else [])
+    ks = ([sh['m']] if sh.get('m') else []) + [p['m'] for p in sh.get('split', []) + sh.get('seq', []) if p.get('m')] + ([sh['card']['m']] if sh.get('card') else []) + \
+         [p['card']['m'] for p in sh.get('seq', []) if p.get('card')]
     for k in ks:
         if k not in used: used.append(k)
         where.setdefault(k, []).append(fmt(sh['start']))
@@ -22,6 +23,7 @@ L = ['# Источники выпуска «Исландия»', '',
 for k in used:
     m = MEDIA[k]
     L.append(f"| {', '.join(where[k][:6])}{' …' if len(where[k]) > 6 else ''} | {m['what']} | {m['place']} | {m['author']} | {m['license']} | {m['page']} |")
+L += ['', '## Источники фактов', ''] + [x for x in ['— Статистическое бюро Исландии (население на 1.01.2026): statice.is', '— Лаки, 1783: Thordarson & Self (1993, 2003); Википедия «Laki»', '— Хеймаэй, 1973: USGS «Lava-cooling operations during the 1973 eruption of Eldfell» (pubs.usgs.gov/of/1997/of97-724); Музей Эльдхеймар', '— Эйяфьядлайёкюдль, 2010: ICAO, IATA', '— Гриндавик и Сундхнукюр, 2023–2025: Метеослужба Исландии (vedur.is)', '— Геотермальное тепло: Orkustofnun (Национальное энергетическое управление Исландии)', '— Carbfix: Matter et al., Science, 2016', '— Тресковые войны: Imperial War Museums; Википедия «Cod Wars»', '— Крах 2008: доклад Специальной комиссии альтинга (2010); МВФ', '— Окйёкюдль: Rice University / Университет Исландии, табличка «A letter to the future» (2019)', '— Астронавты: Exploration Museum, Хусавик; NASA']]
 L += ['', '## Прочее', '',
       '- Карты: Natural Earth (рельеф NE1_HR, границы, береговые линии), public domain. Скрипты `maps.py`, `../lib/geo.py`.',
       '- Музыка: Mixkit — «Wind Leaves», «Your Breath», «Forest Walk» (Eugenio Mininni), «I\'m Going Home» (Michael Ramir C.); Mixkit Stock Music Free License.',

@@ -7,15 +7,31 @@ paras, _, total = build()
 def tc(t): return f'{int(t // 60)}:{int(t % 60):02d}'
 chap = [('0:00', CHAPTERS['intro'])] + [(tc(p['start']), CHAPTERS[p['name']]) for p in paras if p['name'] in CHAPTERS and p['name'] != 'intro']
 from media_list import MEDIA
+_, _shots, _ = build()
+USED = set()
+for sh in _shots:
+    for q in [sh] + sh.get('split', []) + sh.get('seq', []):
+        if q.get('m'): USED.add(q['m'])
+        if q.get('card'): USED.add(q['card']['m'])
 by = {}
-for m in MEDIA.values():
+for k, m in MEDIA.items():
+    if k not in USED: continue
     if m['source'] not in ('Wikimedia Commons', 'Flickr'): continue
     lic = re.sub(r', GFDL.*', '', m['license']).replace('CC-BY-SA-2.0', 'CC BY-SA 2.0').replace('PDM, ', '')
     by.setdefault(lic, [])
     if m['author'] not in by[lic]: by[lic].append(m['author'])
-credits = 'Фото и видео Wikimedia Commons и Flickr (автор — лицензия):\n' + '\n'.join(f"{l}: {', '.join(a)}" for l, a in sorted(by.items())) + \
-          '\nПолный список со ссылками на каждый файл: https://github.com/res-creator/sofia-studio/blob/claude/cool-hypatia-ehnxdy/ru_geo/iceland/CREDITS.md' + \
-          '\nОстальные видео и фото: Pixabay (Pixabay Content License). Карты: Natural Earth. Музыка: Mixkit (Eugenio Mininni, Michael Ramir C.).'
+def _clean(a):
+    a = re.sub(r'\s*\((Flickr|Pixabay)\)$', '', a).strip(' .')
+    a = re.sub(r'^(Flickr user:|User |user:|en:User:)', '', a)
+    return a.replace('The original uploader was Kjallakr at English Wikipedia', 'Kjallakr')
+_names = []
+for l, a in sorted(by.items()):
+    for x in a:
+        x = _clean(x)
+        if x and x not in _names: _names.append(x)
+# YouTube: описание не больше 5000 знаков — авторы одной строкой, лицензии и ссылки на каждый файл в CREDITS.md
+credits = 'Фото и видео (Wikimedia Commons, Flickr; CC BY / CC BY-SA / CC0 / public domain): ' + ', '.join(_names) + '.' + \
+                    '\nОстальные видео и фото: Pixabay (Pixabay Content License). Карты: Natural Earth. Музыка: Mixkit (Eugenio Mininni, Michael Ramir C.).'
 SRC = '''Источники фактов:
 — Статистическое бюро Исландии (население на 1.01.2026): statice.is
 — Лаки, 1783: Thordarson & Self (1993, 2003); Википедия «Laki»
@@ -34,7 +50,7 @@ desc = f'''Как почти 400 тысяч человек живут на ос�
 Таймкоды:
 ''' + '\n'.join(f'{a} {b}' for a, b in chap) + f'''
 
-{SRC}
+Источники фактов и все лицензии: https://github.com/res-creator/sofia-studio/blob/claude/cool-hypatia-ehnxdy/ru_geo/iceland/CREDITS.md
 
 {credits}
 
@@ -60,4 +76,4 @@ kit = f'''UPLOAD KIT — «Исландия» (полный выпуск, {tc(to
 КАТЕГОРИЯ: Образование / Путешествия
 '''
 open(f'{D}/upload_kit.txt', 'w').write(kit)
-print(kit[:300]); print('description chars:', len(desc))
+print('description chars:', len(desc))
