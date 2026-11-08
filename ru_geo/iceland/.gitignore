@@ -3,3 +3,7 @@ rework/thumbs/
 rework/sheets/
 rework/qc/
 rework/motion_tests/
+*.lock
+rework/qc_*.mp4
+rework/qc_*.mp4.v.mp4
+rework/qc_*/
