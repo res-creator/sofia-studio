@@ -12,6 +12,8 @@ function person(x, px, py, s, col = '#2c2f38', o = {}) { x.save(); x.translate(p
   fillShade(x, c => { c.beginPath(); c.ellipse(0 + sway, -18, 32, 40, 0, 0, 7); }, o.skin || '#dcb393', { line: LINE });
   fillShade(x, c => { c.beginPath(); c.ellipse(0 + sway, -40, 33, 22, 0, Math.PI, 0); }, o.hair || '#3a3028', {});
   if (o.hat) { fillShade(x, c => { c.beginPath(); c.ellipse(sway, -50, 48, 9, 0, 0, 7); }, '#1d1d22', {}); fillShade(x, rect(-28 + sway, -86, 56, 38), '#1d1d22', { line: LINE }); }
+  if (!o.back) { x.fillStyle = '#2a2018'; for (const sd of [-1, 1]) { x.beginPath(); x.ellipse(sway + sd * 11, -20, 3.5, 3.5 * (1 - (o.blink || 0)) + 0.3, 0, 0, 7); x.fill(); x.fillRect(sway + sd * 11 - 8, -32, 16, 3); }
+    x.strokeStyle = 'rgba(90,40,30,0.8)'; x.lineWidth = 2.5; x.beginPath(); x.moveTo(sway - 9, 2); x.quadraticCurveTo(sway, 2 + (o.smile ? 5 : o.frown ? -4 : 1), sway + 9, 2); x.stroke(); x.strokeStyle = 'rgba(140,90,70,0.6)'; x.beginPath(); x.moveTo(sway, -14); x.lineTo(sway - 3, -4); x.stroke(); }
   if (o.glasses) { x.strokeStyle = '#1b1410'; x.lineWidth = 2.5; x.beginPath(); x.arc(-12 + sway, -20, 8, 0, 7); x.arc(12 + sway, -20, 8, 0, 7); x.stroke(); }
   if (o.legs) for (const sd of [-1, 1]) fillShade(x, rect(sd * 26 - 20, 296, 40, 260), col, { line: LINE });
   x.restore(); }

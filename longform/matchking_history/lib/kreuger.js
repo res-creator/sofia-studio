@@ -49,7 +49,7 @@ function torso(ctx, st) { const king = st.age !== 'young';
 const EXPR = { // brow lift L/R, brow angle, mouth curve, mouth width
   neutral: [0, 0, 0, 0, 1], smile: [2, 2, 0.05, 6, 1.05], serious: [-3, -3, -0.12, -2, 0.92], worried: [5, 5, 0.25, -5, 0.9], surprised: [10, 10, 0.05, 0, 0.85], cold: [-2, 1, -0.08, 1, 0.95] };
 function head(ctx, st, g) { const king = st.age !== 'young', E = EXPR[st.expr || 'neutral'], tn = st.turn || 0, fx = tn * 10, [lx, ly] = st.look || [0, 0];
-  ctx.save(); ctx.translate(0, -8); ctx.rotate(st.tilt || 0);
+  ctx.save(); ctx.translate(0, -8); ctx.rotate(st.tilt || 0); if (king) ctx.scale(1.07, 1);
   fillShade(ctx, c => { c.beginPath(); c.roundRect(-22, -40, 44, 50, 10); }, C.skinSh, { line: LINE });                                   // neck
   for (const s of [-1, 1]) fillShade(ctx, c => { c.beginPath(); c.ellipse(s * 58 - tn * 8, -104, 12, 22, 0, 0, 7); }, C.skin, { line: LINE }); // ears
   const face = c => { c.beginPath(); c.moveTo(-56, -120); c.bezierCurveTo(-60, -60, -48, -30, -14, -22); c.quadraticCurveTo(0, -18, 14, -22); c.bezierCurveTo(48, -30, 60, -60, 56, -120);
@@ -58,9 +58,9 @@ function head(ctx, st, g) { const king = st.age !== 'young', E = EXPR[st.expr ||
   ctx.save(); face(ctx); ctx.clip(); ctx.fillStyle = 'rgba(160,90,70,0.12)'; ctx.beginPath(); ctx.ellipse(-30 + fx, -78, 16, 10, 0, 0, 7); ctx.ellipse(30 + fx, -78, 16, 10, 0, 0, 7); ctx.fill();   // cheeks
   ctx.fillStyle = 'rgba(120,70,50,0.14)'; ctx.beginPath(); ctx.ellipse(-48 + tn * 20, -80, 16, 50, 0, 0, 7); ctx.fill(); ctx.restore();                                                 // side shade
   // hair: young = full, swept back; king = receding, swept back, grey temples
-  if (king) { fillShade(ctx, c => { c.beginPath(); c.moveTo(-58, -118); c.bezierCurveTo(-66, -196, -28, -214, 0, -213); c.bezierCurveTo(28, -214, 66, -196, 58, -118);
-      c.bezierCurveTo(54, -150, 46, -168, 34, -178); c.quadraticCurveTo(18, -170, 8, -186); c.quadraticCurveTo(0, -192, -8, -186); c.quadraticCurveTo(-18, -170, -34, -178); c.bezierCurveTo(-46, -168, -54, -150, -58, -118); c.closePath(); }, C.hair, { line: LINE, hi: 0.22, y0: -215, y1: -110 });
-    for (const sd of [-1, 1]) { ctx.save(); ctx.globalAlpha = 0.85; ctx.fillStyle = C.hairGrey; ctx.beginPath(); ctx.moveTo(sd * 57, -122); ctx.quadraticCurveTo(sd * 60, -150, sd * 50, -164); ctx.lineTo(sd * 46, -150); ctx.quadraticCurveTo(sd * 52, -136, sd * 51, -120); ctx.closePath(); ctx.fill(); ctx.restore(); } }
+  if (king) { // after the 1929 Time cover portrait: almost bald crown, a thin band of hair at the sides and back, combed back
+    for (const sd of [-1, 1]) fillShade(ctx, c => { c.beginPath(); c.moveTo(sd * 58, -108); c.bezierCurveTo(sd * 62, -132, sd * 60, -150, sd * 52, -162); c.quadraticCurveTo(sd * 52, -146, sd * 50, -132); c.quadraticCurveTo(sd * 50, -120, sd * 51, -108); c.closePath(); }, '#4a3a2e', { hi: 0.15 });
+    for (const sd of [-1, 1]) { ctx.save(); ctx.globalAlpha = 0.6; ctx.fillStyle = C.hairGrey; ctx.beginPath(); ctx.ellipse(sd * 55, -122, 4, 10, 0, 0, 7); ctx.fill(); ctx.restore(); } }
   else fillShade(ctx, c => { c.beginPath(); c.moveTo(-58, -116); c.bezierCurveTo(-68, -204, -20, -222, 6, -218); c.bezierCurveTo(44, -214, 68, -190, 58, -116); c.bezierCurveTo(52, -146, 44, -162, 26, -170);
       c.quadraticCurveTo(-10, -178, -28, -158); c.quadraticCurveTo(-46, -150, -58, -116); c.closePath(); }, C.hair, { line: LINE, hi: 0.22, y0: -220, y1: -110 });
   // eyes
