@@ -54,6 +54,16 @@ def frames_video(path, ss, dur, sh):
 def frames_photo(path, dur, sh):
     """Фото с плавным наездом/панорамой (кен-бёрнс): kb = (zoom0, zoom1, (fx0, fy0), (fx1, fy1)) — центр в долях кадра."""
     im = Image.open(path).convert('RGB')
+    if sh.get('fit'):   # архив/вертикаль/маленькое фото: целиком по центру на размытой затемнённой копии (без обрезки)
+        from PIL import ImageFilter, ImageEnhance
+        iw, ih = im.size; sc = max(W / iw, H / ih)
+        bg = im.resize((int(iw * sc) + 2, int(ih * sc) + 2), Image.BILINEAR)
+        bg = bg.crop(((bg.size[0] - W) // 2, (bg.size[1] - H) // 2, (bg.size[0] - W) // 2 + W, (bg.size[1] - H) // 2 + H))
+        bg = ImageEnhance.Brightness(bg.filter(ImageFilter.GaussianBlur(28))).enhance(0.45)
+        fs = min(W * 0.9 / iw, H * 0.86 / ih); fg = im.resize((int(iw * fs), int(ih * fs)), Image.LANCZOS)
+        sx, sy = (W - fg.size[0]) // 2, int((H - fg.size[1]) * 0.42)
+        sd = Image.new('RGBA', (W, H), (0, 0, 0, 0)); ImageDraw.Draw(sd).rectangle((sx + 6, sy + 10, sx + fg.size[0] + 6, sy + fg.size[1] + 10), fill=(0, 0, 0, 150))
+        bg = Image.alpha_composite(bg.convert('RGBA'), sd.filter(ImageFilter.GaussianBlur(12))).convert('RGB'); bg.paste(fg, (sx, sy)); im = bg
     z0, z1, f0, f1 = sh.get('kb', (1.0, 1.12, (0.5, 0.5), (0.5, 0.5)))
     iw, ih = im.size; base = max(W / iw, H / ih)
     big = im.resize((int(iw * base * z1 * 1.02) + 2, int(ih * base * z1 * 1.02) + 2), Image.LANCZOS)

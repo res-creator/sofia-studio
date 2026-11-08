@@ -411,3 +411,99 @@ SHOTS = {
   't11': P(7289524, 'дом на Вестманнаэйяр', 'Вестманнаэйяр', kb=KB),
   't12': M('final', tr='zoom'), 't13': M('final'),
 }
+
+# ================= ДОРАБОТКА (ноябрь 2026): люди, работа и жизнь страны вместо общих пейзажей и условных стоков =================
+# Озвучка и тайминги не менялись: подменяется только картинка под теми же склейками. Каждый новый исходник — с проверенными местом,
+# датой, автором и лицензией (rework/commons_db.json, rework/flickr_db.json; список замен — rework/REPLACEMENTS.md).
+# Архивные и маленькие фото (≤ 1000 px) показываем целиком на размытом фоне: fit=True (без обрезки и сильного увеличения).
+from sources import fl, cv
+def FL(pid, what, place, kb=None, **kw):
+    k = 'f' + str(pid)
+    if k not in MEDIA: MEDIA[k] = fl(pid, what, place)
+    return dict(m=k, kb=kb or KB, **kw)
+def CV(name, local, what, place, ss=0, **kw):
+    k = 'cv_' + local.split('.')[0]
+    if k not in MEDIA: MEDIA[k] = cv(name, local, what, place)
+    return dict(m=k, ss=ss, **kw)
+KS = (1.0, 1.06, (0.5, 0.5), (0.5, 0.5))      # очень медленный наезд для архивных фото
+HEIM_PUMP = 'The town of Vestmannaeyjar and the harbor during the eruption of Eldfell in 1973.jpg'
+SHOTS.update({
+  # --- «Это обычная жизнь» и столица: люди вместо очередного вида с дрона
+  'b08': W('The last snow of winter (8386633350).jpg', 'велосипедист на заснеженной улице Рейкьявика, январь 2013', 'Рейкьявик', KB, tr='whip', loc='Рейкьявик', locator=REY),
+  # --- Хеймаэй, 1973: флот, лава у гавани, насосы, шланги, спасённая гавань
+  'f05': W('Puerto de Vestmannaeyjar, Heimaey, Islas Vestman, Suðurland, Islandia, 2014-08-17, DD 007.JPG', 'рыболовная гавань Хеймаэя, 2014', 'Хеймаэй', KL, loc='гавань Хеймаэя'),
+  'f09': W(HEIM_PUMP, 'гавань и город во время извержения, май 1973 (USGS, Дж. Локвуд)', 'Хеймаэй', KS, fit=True, loc='Хеймаэй, май 1973'),
+  'g05': W('Vestmannaeyjar Vulkanasche 3.jpg', 'женщина на засыпанной пеплом улице, 1974', 'Хеймаэй', (1.0, 1.1, (0.35, 0.5), (0.4, 0.45)), loc='Хеймаэй, 1974'),
+  'g07': W('Lava flow advances down a Heimaey street.jpg', 'лава между рыбными заводами у гавани, 1973 (USGS)', 'Хеймаэй', KS, fit=True, loc='рыбные заводы у гавани, 1973'),
+  'g08': W('Building fired by lava from Eldfell eruption in 1973.jpg', 'дом горит от лавы, 1973 (семейный архив, Óskar Elías Björnsson)', 'Хеймаэй', KS, fit=True),
+  'g09': W('Vestmannaeyjar, trawler in the harbour.jpg', 'траулер в гавани Хеймаэя, 2014', 'Хеймаэй', KR),
+  'g10': W('Ship pumping seawater onto the forward margin of the Heimaey lava flow,.jpg', 'судно качает морскую воду на край лавового потока, март 1973 (USGS, фото Sigurgeir Jónasson)', 'Хеймаэй', KS, fit=True, loc='Хеймаэй, март 1973'),
+  'g12': W('The pump that saved Heimaey (3485386239).jpg', 'один из насосов 1973 года у края лавового поля (фото 2007)', 'Хеймаэй', KI, txt='32 насоса', sub='привезли из США', loc='насос 1973 года (снимок 2007 года)'),
+  'g13': W(HEIM_PUMP, 'насосы и трубы на краю лавы, май 1973 (USGS)', 'Хеймаэй', (1.25, 1.45, (0.5, 0.75), (0.45, 0.8)), fit=True),
+  'g14': W('Steam rising from water-cooled lava flows, Heimaey.jpg', 'пар над лавой, которую поливают морской водой, 1973 (USGS)', 'Хеймаэй', KS, fit=True),
+  'g17': W('Cooling Lava of Volcanic Eruption on Heimaey in Iceland - 1973-08-20 2233 - NASA Nighttime Aerial Thermograph.jpg', 'тепловой снимок остывающей лавы, 20 августа 1973 (NASA)', 'Хеймаэй', KS, fit=True,
+           txt='≈ 7 млн м³', sub='морской воды вылили на лаву (USGS)'),
+  'g18': W('Vestmannaeyjar, trawler in the harbour with the Eldfell in the background.jpg', 'траулер в гавани, за ним вулкан Эльдфедль, 2014', 'Хеймаэй', KL),
+  'g19': W('The town of Vestmannaeyjar and the harbor after the eruption. Eldfell in 1973.jpg', 'город и гавань после извержения, 30 июня 1973 (USGS)', 'Хеймаэй', KS, fit=True, loc='гавань Хеймаэя, июнь 1973'),
+  'g20': W('Vestmannaeyjar, old breakwater of the harbour reinforced by the eruption in 1973.jpg', 'вход в гавань: лавовый мыс 1973 года прикрывает старый мол (2014)', 'Хеймаэй', KL, loc='лавовый мыс у входа в гавань'),
+  'g21': W('Heimaey harbour in June 2024 19.jpg', 'гавань Хеймаэя, июнь 2024', 'Хеймаэй', KB, fit=True),
+  # --- 2010: настоящие табло и пассажиры апреля 2010 года
+  'h12': W('Helsinki-Vantaa departures board 2010-04-18.jpg', 'табло вылетов в Хельсинки: всё отменено, 18 апреля 2010', 'Хельсинки, Финляндия', KI, txt='≈ 100 000', sub='рейсов отменено за 8 дней',
+           loc='Хельсинки, 18 апреля 2010'),
+  'h13': W('Flights disrupted Charles de Gaulle airport Eyjafjoll volcano 2010.jpg', 'пассажиры у табло в аэропорту Шарль-де-Голль, 20 апреля 2010', 'Париж, Франция', KB, txt='≈ 10 млн', sub='пассажиров не смогли улететь (ICAO)',
+           loc='Париж, 20 апреля 2010'),
+  # --- Гриндавик: настоящие данные Метеослужбы вместо условных картинок
+  'i15': FL(53324778277, 'график: 3 273 землетрясения за двое суток, 10–11 ноября 2023 (Метеослужба Исландии)', 'Рейкьянес', KS, fit=True),
+  'i18': FL(53324681974, 'карта землетрясений и магматической дайки под Гриндавиком, 10–11 ноября 2023 (Метеослужба Исландии)', 'Рейкьянес', KS, fit=True, loc='10–11 ноября 2023'),
+  'i19': FL(53322484817, 'сейсмограмма станции Боргарфьордюр, 9–10 ноября 2023', 'Исландия', (1.0, 1.15, (0.5, 0.5), (0.5, 0.75)), fit=True),
+  'i01': CV('Grindavik Iceland.webm', 'swedrone_grindavik.webm', 'Гриндавик с дрона: гавань и рыбные склады, 2017 (Swedrone)', 'Гриндавик', ss=4, tr='flash', loc='Гриндавик, 2017', locator=GRI),
+  'i03': CV('Grindavik Iceland.webm', 'swedrone_grindavik.webm', 'Гриндавик с дрона: жилые улицы, 2017 (Swedrone)', 'Гриндавик', ss=54),
+  'i12': CV('Eruption of Fagradalsfjall volcano, 2021-03-24.webm', 'fagra_20210324.webm', 'люди у края лавового потока, Гельдингадалир, 24 марта 2021 (Mladen Stojanovic)', 'Фаградальсфьядль', ss=0),
+  'i13': CV('Eruption of Fagradalsfjall volcano, 2021-03-24.webm', 'fagra_20210324.webm', 'люди у края лавового потока, Гельдингадалир, 24 марта 2021', 'Фаградальсфьядль', ss=4.5),
+  # репортаж Kanal13 (CC BY 3.0): кордон на дороге в Гриндавик и жители, 16 ноября 2023. Логотип канала в правом верхнем углу обрезаем (crop).
+  'i20': CV("It's unreal says resident of evacuated Icelandic town of Grindavik.webm", 'kanal13_grindavik.webm', 'полиция перекрывает дорогу в эвакуированный Гриндавик, 16 ноября 2023 (Kanal13)', 'Гриндавик',
+            ss=0.5, crop=(0.0, 0.12, 0.88, 0.88), loc='дорога в Гриндавик закрыта, ноябрь 2023'),
+  'j01': CV("It's unreal says resident of evacuated Icelandic town of Grindavik.webm", 'kanal13_grindavik.webm', 'жители ждут у кордона, чтобы забрать вещи из дома, 16 ноября 2023 (Kanal13)', 'Гриндавик',
+            ss=47, crop=(0.0, 0.12, 0.88, 0.88), tr='fade', loc='жители у кордона, 16 ноября 2023'),
+  'j18': CV("It's unreal says resident of evacuated Icelandic town of Grindavik.webm", 'kanal13_grindavik.webm', 'житель Гриндавика у кордона, 16 ноября 2023 (Kanal13)', 'Гриндавик',
+            ss=152, crop=(0.0, 0.12, 0.88, 0.88), loc='житель Гриндавика, ноябрь 2023'),
+  'j03': W('Protective barrier at Grindavík.jpg', 'проект первой очереди защитных валов вокруг Гриндавика (правительство Исландии)', 'Гриндавик', KS, fit=True, txt='до 8 м', sub='высота защитных валов'),
+  'j09': W('Hraun við Grindavík.jpg', 'застывшая лава, накрывшая дома на краю Гриндавика (снимок ноября 2024)', 'Гриндавик', (1.0, 1.15, (0.45, 0.4), (0.4, 0.45)), txt='3 дома', sub='сгорели 14 января 2024 года',
+           loc='та же лава, ноябрь 2024'),
+  'j19': W('Grindavík 2024.jpg', 'Гриндавик, ноябрь 2024: спортзал, повреждённый землетрясением 2023 года', 'Гриндавик', KR, loc='Гриндавик, ноябрь 2024'),
+  # --- горячая вода: скважина → насосы → баки → улицы → люди
+  'k04': W('Reykjavikur-Iceland-20110523-19.jpg', 'павильон геотермальной скважины Orkuveita Reykjavíkur в городе', 'Рейкьявик', KI, loc='скважина в Рейкьявике'),
+  'k07': W('Reykjavikur-Iceland-20110523-10.jpg', 'насосы на скважине Orkuveita Reykjavíkur', 'Рейкьявик', KB, fit=True, txt='95 %', sub='жителей получают горячую воду из геотермальных сетей'),
+  'k09': W('Sunrise In Reykjavík (136704923).jpeg', 'улица Рейкьявика зимним утром, январь 2016', 'Рейкьявик', KL),
+  'k11': W('Reykjavík, 1910-1920.jpg', 'Рейкьявик в 1910-х годах (фото Магнуса Оулафссона)', 'Рейкьявик', KS, fit=True, loc='Рейкьявик, 1910-е'),
+  'k12': W('Þvóttalaugar in Laugardal.jpg', 'Твоттлаугар в Лаугардалуре: горячие источники, от которых в 1930 году пошло первое отопление', 'Рейкьявик', KI, badge=('1930', 'clock'), loc='Лаугардалур, Рейкьявик'),
+  'k13': FL(24844335584, 'баки с горячей водой на холме Эскьюхлид (Перлан)', 'Рейкьявик', KI, loc='баки Перлан, Рейкьявик'),
+  'k14': W('Geothermal Beach at Nauthólsvík (3554476791).jpg', 'тёплый пляж Наутхоульсвик: море подогревают геотермальной водой', 'Рейкьявик', KS, fit=True, loc='Наутхоульсвик, Рейкьявик'),
+  # --- рыба: люди, работа, улов
+  'm01': W('C-982 - An Icelandic trawler, coming into docks after spending a few days fishing. Reykjavik, Iceland. 30 March, 1943. (52294690610).jpg',
+           'исландский траулер возвращается в порт после нескольких дней лова, Рейкьявик, 30 марта 1943 (Signal Corps)', 'Рейкьявик', KO, tr='whip', loc='Рейкьявик, 1943'),
+  'm06': W('IJsland Vrouwen versjouwen stokvis op een berrie over een terrein waar stokvis , Bestanddeelnr 190-0439.jpg', 'женщины переносят сушёную треску на носилках, 1934 (Willem van de Poll)', 'Исландия', KB,
+           txt='≈ 90 %', sub='экспорта Исландии в середине XX века — рыба', loc='Исландия, 1934'),
+  'm07': W('CoventryAlbertWestfj.jpg', 'британский траулер Coventry City и исландский патрульный катер Albert у Западных фьордов, 1958', 'Западные фьорды', KS, fit=True, loc='первая тресковая война, 1958'),
+  'o01': W('Grandi fish processing two workers 2011.jpg', 'рабочие на рыбозаводе HB Grandi, 2011', 'Рейкьявик', KB, tr='fade', loc='рыбозавод, Рейкьявик'),
+  # --- тресковые войны: тросорез, корабли, тараны
+  'n04': W('Trawl wire cutter from the cod wars.jpg', 'настоящий тросорез времён тресковых войн', 'Морской музей Викин, Рейкьявик', KL, loc='тросорез, Морской музей Рейкьявика'),
+  'n05': W('ICGV Óðinn in the Víkin museum.jpg', 'сторожевой корабль «Óðinn», участник тресковых войн (сейчас музей)', 'Рейкьявик', KS, fit=True, loc='корабль «Óðinn»'),
+  'n10': W(50, 'столкновение фрегата HMS Scylla и корабля «Óðinn», третья тресковая война', 'Северная Атлантика', KO, loc='третья тресковая война, 1976'),
+  'n06': V(182082, 'траулер тянет сеть, вид сверху (иллюстрация)', ss=2),
+  'n08': W('HMS Yarmouth Fish Patrol November 1973.jpg', 'британский фрегат HMS Yarmouth в рыболовном патруле, ноябрь 1973', 'Северная Атлантика', KS, fit=True, loc='HMS Yarmouth, 1973'),
+  'n09': W('Scylla - Odinn scrap.jpg', 'HMS Scylla и «Óðinn» сталкиваются, 23 февраля 1976', 'Северная Атлантика', KS, fit=True, loc='23 февраля 1976'),
+  'n12': W('HMS Leopard, 1973 (IWM).jpg', 'британский фрегат HMS Leopard у Исландии, 1973 (IWM)', 'Северная Атлантика', KS, fit=True, txt='≈ 55', sub='таранов в третьей тресковой войне'),
+  # --- кризис 2008: люди на площади, МВФ, Icesave
+  'o05': FL(2219158905, 'отделение исландского банка Kaupthing в Лондоне, 2007', 'Лондон', KB, loc='Kaupthing в Лондоне, 2007'),
+  'o11': W('OMXI15.jpg', 'индекс исландской биржи OMX Iceland 15, 1998 — октябрь 2008', 'график', KS, fit=True),
+  'o16': W('W15 Protesters 1217.JPG', 'протест с кастрюлями у парламента, 20 января 2009', 'Рейкьявик', KB, loc='Рейкьявик, январь 2009'),
+  'o19': W('Althingi IMF protest.jpg', 'плакаты «IMF Sold» на балконе парламента', 'Рейкьявик', KS, fit=True),
+  'o20': W('W16 Protesters 2732.JPG', 'протестующие на площади Эйстюрвётлюр, 24 января 2009', 'Рейкьявик', KO, loc='Рейкьявик, январь 2009'),
+  'p03': FL(3973435031, 'плакат «Ekkert Icesave!» на протесте, 1 октября 2009', 'Рейкьявик', KS, fit=True, txt='93 %', sub='против на референдуме 6 марта 2010 года'),
+  # --- туризм, Ок, музей, финал
+  'p11': FL(14461810698, 'туристы на краю водопада Гюдльфосс, 2014', 'Гюдльфосс', KI, loc='Гюдльфосс'),
+  'r07': W('Katrín Jakobsdóttir (cropped).jpg', 'Катрин Якобсдоуттир, премьер-министр Исландии в 2017–2024 (портрет 2015)', 'портрет', KS, fit=True),
+  's12': W('The Exploration Museum interior.jpg', 'зал Музея исследований в Хусавике', 'Хусавик', KL, loc='Музей исследований, Хусавик', locator=(66.04, -17.34, 'Хусавик', ISL)),
+  't11': W('Climbing Eldfell.jpg', 'люди поднимаются на склон Эльдфедля, 2006', 'Хеймаэй', KR),
+})

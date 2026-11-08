@@ -15,7 +15,8 @@ for sh in shots:
         where.setdefault(k, []).append(fmt(sh['start']))
 L = ['# Источники выпуска «Исландия»', '',
      'Все кадры — с лицензиями, которые разрешают коммерческое использование: Pixabay Content License (подпись не обязательна, но мы её даём),',
-     'Wikimedia Commons (CC0 / public domain / CC BY / CC BY-SA / OGL / «Attribution» — подпись автора обязательна, она есть в блоке для YouTube ниже).',
+     'Wikimedia Commons и Flickr (CC0 / public domain / CC BY / CC BY-SA / OGL / «Attribution» — подпись автора обязательна, она есть в блоке для YouTube ниже).',
+     'Новостное видео Kanal13 (Гриндавик, 16.11.2023) опубликовано автором под CC BY 3.0 (лицензия подтверждена на Wikimedia Commons), логотип канала обрезан, автор указан.',
      'Кадры с пометкой «иллюстрация» сняты не в Исландии и на экране не подписаны как Исландия. Карты и инфографика нарисованы нами из данных Natural Earth (public domain).', '',
      '| Время в ролике | Что в кадре | Где снято | Автор | Лицензия | Ссылка |', '|---|---|---|---|---|---|']
 for k in used:
@@ -30,7 +31,7 @@ L += ['', '## Прочее', '',
 seen = set()
 for k in used:
     m = MEDIA[k]
-    if m['source'] != 'Wikimedia Commons' or m['page'] in seen: continue
+    if m['source'] not in ('Wikimedia Commons', 'Flickr') or m['page'] in seen: continue
     seen.add(m['page'])
     L.append(f"— {m['what']}: {m['author'] or 'автор не указан'}, {m['license']}, {m['page']}")
 L += ['— Остальные видео и фото: Pixabay (pixabay.com), Pixabay Content License.',
