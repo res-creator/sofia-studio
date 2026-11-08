@@ -2681,3 +2681,31 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "gamer" — rubric answers4 (60-70 s). heroine = Jessica, boyfriend = Liam
+CAST.update({
+    "bf6": dict(voice="am_liam", speed=1.0, lang="en-gb", el="TX3LPaxmHKxFdv7VOQHJ"),   # gamer: the boyfriend playing video games (Liam)
+})
+EP["gamer"] = dict(
+    title='Ты готова к свиданию, а он играет в приставку', rubric='answers4',
+    hook_title=[['Я ГОТОВА 2 ЧАСА,', 'd'], ['ОН — В ПРИСТАВКЕ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    lines=[
+        ('hook_b', 'bf6', '[distracted] Five more minutes, babe. Last level, I promise.', 'Ещё пять минут, малыш. Последний уровень, обещаю.'),
+        ('hook', 'nar', 'Ты два часа собиралась на свидание, а он третий час играет в приставку. Четыре ответа.', ''),
+        ('o1_h', 'her', '[angrily] Game off! Now! Go!', 'Игру выключить! Сейчас! Пошли!'),
+        ('o1_b', 'bf6', "[calmly] Can't pause online, babe. Twelve people need me.", 'Онлайн нельзя поставить на паузу, малыш. Я нужен двенадцати людям.'),
+        ('o1_nar', 'nar', 'В лоб — а он нужен двенадцати незнакомцам.', ''),
+        ('o2_h', 'her', '[politely] Maybe we could go soon?', 'Может, скоро пойдём?'),
+        ('o2_b', 'bf6', '[absently] Sure, soon. After the boss.', 'Конечно, скоро. После босса.'),
+        ('o2_nar', 'nar', 'Вежливо — а за боссом ещё один босс.', ''),
+        ('o3_h', 'her', "[firmly] I'm leaving in five minutes — with or without you.", 'Я ухожу через пять минут — с тобой или без тебя.'),
+        ('o3_b', 'bf6', '[panicking] …Saving! Saving! Where are my shoes?', '…Сохраняюсь! Сохраняюсь! Где мои ботинки?'),
+        ('o3_nar', 'nar', 'Как носитель: спокойно и со сроком. Запоминай:', ''),
+        ('o3_tip', 'tip', 'With or without you.', ''),
+        ('o4_h', 'her', "[sweetly] Take your time, love. The table's booked for two — I'm sure the waiter would love to be my player two.", 'Не торопись, любимый. Столик заказан на двоих — уверена, официант с радостью станет моим вторым игроком.'),
+        ('o4_b', 'bf6', '[shocked] The waiter?! Game over!', 'Официант?! Игра окончена!'),
+        ('end_h', 'her', "[focused] Shh. Five more minutes. I'm winning.", 'Тсс. Ещё пять минут. Я выигрываю.'),
+        ('end_b', 'bf6', "[horrified] …That's my save!", '…Это же моё сохранение!'),
+        ('moral', 'nar', 'Мораль: лучший способ понять игрока — обыграть его.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши цифру и сохрани!', ''),
+    ],
+)
