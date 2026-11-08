@@ -74,7 +74,8 @@ while tb < T - 2:
 # silence the music on the chapter cards except a low drone + let the strike breathe
 for c in cards: i0, i1 = int(c['t0'] * SR), int(c['t1'] * SR); mu[i0:i1] *= np.linspace(1, 0.25, i1 - i0) if False else 0.3
 # ---------------- mix ----------------
-env = np.convolve((np.abs(vo) > 0.015).astype(float), np.ones(int(0.6 * SR)) / int(0.6 * SR), 'same'); dk = np.clip(env * 3, 0, 1)
+act = (np.abs(vo) > 0.015).astype(float); k = int(0.6 * SR); cs = np.concatenate([[0], np.cumsum(act)]); env = np.zeros(N)   # moving average via cumulative sum (fast)
+lo = np.clip(np.arange(N) - k // 2, 0, N); hi = np.clip(np.arange(N) + k // 2, 0, N); env = (cs[hi] - cs[lo]) / k; dk = np.clip(env * 3, 0, 1)
 fade = np.ones(N); fade[int((T - 1.5) * SR):] = np.linspace(1, 0, N - int((T - 1.5) * SR))
 out = (vo + fx * 0.3 + mu * 0.55 * (1 - 0.65 * dk)) * fade; out = np.tanh(out * 1.1) * 0.9; out = out[:int(T * SR)]
 os.makedirs(f'{D}/render', exist_ok=True); w = wave.open(f'{D}/render/mix.wav', 'wb'); w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((out * 32767).astype(np.int16).tobytes()); w.close()
