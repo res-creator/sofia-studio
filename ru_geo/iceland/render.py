@@ -150,8 +150,30 @@ def overlay(img, sh, t, tg):
         k = sh['kt']
         if '_times' not in k: k['_times'] = list(k['at']) if k.get('at') else kt_times(sh)
         kt.kinetic(img, t, dur, k['lines'], k['_times'], hl=k.get('hl', ()), dim=k.get('dim', 0.55), pos=k.get('pos', 'center'), size=k.get('size', 104))
+    if sh.get('cine'):    # кинематографичное название: тонкие антиквенные буквы с широкой разрядкой (стиль больших док. каналов)
+        cine_title(img, sh['cine'].get('text', 'ИСЛАНДИЯ'), t, dur, sh['cine'].get('t0', 0.25), sh['cine'].get('size', 190))
     if sh.get('title'):   # заголовок поверх нарезки вступления
         look.title_card(img, 'ИСЛАНДИЯ', tg, t0=TITLE_T0, size=160)
+
+def cine_title(img, s, t, dur, t0=0.25, size=190):
+    from PIL import ImageFont
+    if t < t0: return
+    u = t - t0
+    f = ImageFont.truetype(os.path.join(sources.DATA, 'fonts', 'CormorantGaramond.ttf'), size); f.set_variation_by_name('Medium')
+    track = size * (0.55 - 0.25 * look.ease_out(min(1, u / 2.2)))     # буквы медленно сходятся
+    a = look.ease(min(1, u / 0.9)) * (1 - look.ease(max(0, (t - (dur - 0.45)) / 0.45)))
+    if a <= 0: return
+    ws = [f.getlength(c) for c in s]; tw = sum(ws) + track * (len(s) - 1)
+    lay = Image.new('RGBA', img.size, (0, 0, 0, 0)); d = ImageDraw.Draw(lay)
+    x = (W - tw) / 2; y = H * 0.5
+    for c, w in zip(s, ws):
+        d.text((x, y), c, font=f, fill=(246, 240, 228, int(255 * a)), anchor='lm'); x += w + track
+    sh = lay.split()[3].filter(ImageFilter.GaussianBlur(14)).point(lambda v: int(v * 0.55))
+    dark = Image.new('RGBA', img.size, (0, 0, 0, 0)); dark.putalpha(sh)
+    blur = max(0.0, 6 * (1 - u / 0.9))
+    if blur > 0.3: lay = lay.filter(ImageFilter.GaussianBlur(blur))
+    veil = Image.new('RGBA', img.size, (0, 0, 0, int(70 * a)))
+    img.alpha_composite(veil); img.alpha_composite(dark); img.alpha_composite(lay)
 
 def kt_times(sh):
     """время каждого слова диктора внутри плана (секунды от начала плана) — по разметке vo/<абзац>.json"""
@@ -172,11 +194,15 @@ def source(sh):
     return f"{D}/cache/{sh.get('map') or sh.get('gfx')}.mp4", sh.get('ss', 0)
 
 TITLE_T0 = 2.85
+# единый «киношный» цвет на весь фильм (GRADE=1): чуть больше контраста, холодные тени и тёплые света, лёгкая виньетка и зерно
+GRADE = ('eq=contrast=1.07:saturation=1.10:gamma=0.98,'
+         'colorbalance=rs=-0.05:gs=-0.01:bs=0.06:rm=-0.02:bm=0.02:rh=0.05:gh=0.01:bh=-0.05,'
+         'vignette=angle=PI/5:mode=forward,noise=alls=4:allf=t')
 
 def video(out_v):
     _, shots, total = build()
     p = subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-',
-                          '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', out_v], stdin=subprocess.PIPE)
+                          *(['-vf', GRADE] if os.environ.get('GRADE') else []), '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', out_v], stdin=subprocess.PIPE)
     def frames_of(sh, pre):
         # pre кадров уходят на переход: план генерируется длиннее, чтобы общий хронометраж (и синхрон с голосом) не менялся
         d = sh['dur'] + pre / FPS
