@@ -2681,3 +2681,30 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "nails" — rubric answers4 (60-70 s). heroine = Jessica, boyfriend = Brian
+CAST.update({
+    "bf9": dict(voice="am_adam", speed=1.0, lang="en-us", el="nPczCjzI2devNBz1zQrb"),   # nails: the boyfriend with the calculator (Brian)
+})
+EP["nails"] = dict(
+    title='Парень спрашивает, сколько стоил маникюр', rubric='answers4',
+    hook_title=[['ОН: СКОЛЬКО СТОИТ', 'd'], ['ТВОЙ МАНИКЮР?', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    lines=[
+        ('hook_b', 'bf9', '[suspiciously] Nice nails. How much did those cost?', 'Красивые ногти. Сколько это стоило?'),
+        ('hook', 'nar', 'Парень с калькулятором спрашивает, сколько ты потратила на маникюр. Четыре ответа.', ''),
+        ('o1_h', 'her', '[angrily] Not your money!', 'Не твои деньги!'),
+        ('o1_b', 'bf9', "[indignantly] It's OUR money! We have a spreadsheet!", 'Это НАШИ деньги! У нас есть таблица!'),
+        ('o1_nar', 'nar', 'В лоб — а у него таблица до пола.', ''),
+        ('o2_h', 'her', '[hesitantly] Um, not much, really.', 'Эм, не так уж много.'),
+        ('o2_b', 'bf9', "[strictly] 'Not much' isn't a number.", '«Не так уж много» — это не число.'),
+        ('o2_nar', 'nar', 'Вежливо — но калькулятору нужны цифры.', ''),
+        ('o3_h', 'her', "[confidently] Enough to make me happy. That's all you need to know.", 'Достаточно, чтобы я была счастлива. Больше тебе знать не нужно.'),
+        ('o3_b', 'bf9', '[softening] …Fair enough. They do look great.', '…Справедливо. Они правда классно выглядят.'),
+        ('o3_nar', 'nar', 'Как носитель: уверенно и без отчёта. Запоминай:', ''),
+        ('o3_tip', 'tip', "That's all you need to know.", ''),
+        ('o4_h', 'her', '[sweetly] Less than your new fishing rod. And unlike the rod, these actually catch something — compliments.', 'Меньше, чем твоя новая удочка. И в отличие от удочки, они хоть что-то ловят — комплименты.'),
+        ('o4_b', 'bf9', '[defensively] …The rod caught a boot once.', '…Удочка однажды поймала ботинок.'),
+        ('end_b', 'bf9', '[guiltily] …Okay. Same salon. Mine was more expensive.', '…Ладно. Тот же салон. Мой стоил дороже.'),
+        ('moral', 'nar', 'Мораль: кто считает чужие ногти — сам сидит у мастера.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши цифру и сохрани!', ''),
+    ],
+)
