@@ -7,3 +7,8 @@ rework/motion_tests/
 rework/qc_*.mp4
 rework/qc_*.mp4.v.mp4
 rework/qc_*/
+rework/cover/c_*.png
+rework/cover/cover_*.jpg
+rework/cover/f2*.png
+!rework/cover/f219_6.png
+!rework/cover/f234_11.png
