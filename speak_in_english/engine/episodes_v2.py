@@ -2681,3 +2681,31 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "mumcook" — rubric comment_reply4 (60-70 s). heroine = Jessica, boyfriend = Daniel, his mum = Alice
+CAST.update({
+    "bf10": dict(voice="bm_daniel", speed=1.0, lang="en-gb", el="onwK4e9ZLuTAKqWW03F9"),   # mumcook: the boyfriend who compares her cooking to his mum's (Daniel)
+    "hismum2": dict(voice="bf_alice", speed=1.0, lang="en-gb", el="Xb7hH8MSUJpSbSDYk0k2"),   # mumcook: his mum on speakerphone (Alice)
+})
+EP["mumcook"] = dict(
+    title='Он хочет, чтобы ты готовила как мама', rubric='comment_reply4',
+    hook_title=[['ОН: «А МАМА', 'd'], ['ГОТОВИТ ВКУСНЕЕ»', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    lines=[
+        ('hook_b', 'bf10', "[chewing] It's good… but my mum's is better.", 'Вкусно… но у мамы лучше.'),
+        ('hook', 'nar', 'Вопрос из комментариев: он всё время говорит «а у мамы вкуснее». Как ответить, чтобы перестал? Четыре ответа.', ''),
+        ('o1_h', 'her', '[coldly] Then go to mum.', 'Тогда иди к маме.'),
+        ('o1_b', 'bf10', "[delighted] Great idea! She's free on Sunday.", 'Отличная идея! Она свободна в воскресенье.'),
+        ('o1_nar', 'nar', 'Холодно — а он уже звонит маме.', ''),
+        ('o2_h', 'her', "[sarcastically] Shall I also iron your socks and call you 'my little sunshine'?", 'Может, мне ещё гладить тебе носки и звать тебя «моё солнышко»?'),
+        ('o2_b', 'bf10', '[happily] Yes, please! Ironed socks are the best.', 'Да, пожалуйста! Глаженые носки — лучшие.'),
+        ('o2_nar', 'nar', 'С юмором — а он и рад.', ''),
+        ('o3_h', 'her', "[calmly] Then you're welcome to cook tomorrow. I'll be the judge.", 'Тогда завтра готовишь ты. А я буду судить.'),
+        ('o3_b', 'bf10', '[nervously] …Toast counts as cooking, right?', '…Тост ведь считается готовкой, да?'),
+        ('o3_nar', 'nar', 'Как носитель: вежливо, но с подколкой. Запоминай:', ''),
+        ('o3_tip', 'tip', "You're welcome to...", ''),
+        ('o4_h', 'her', "[sweetly] Your mum's had thirty years of practice and one very loyal customer. I've had three months — and a critic.", 'У твоей мамы тридцать лет практики и один очень преданный клиент. У меня — три месяца и критик.'),
+        ('o4_b', 'bf10', '[hastily] …Your cutlets are lovely. Very lovely.', '…Твои котлеты чудесные. Очень чудесные.'),
+        ('end_m', 'hismum2', '[cheerfully] Darling, how was the cutlet? She used my recipe — I sent it this morning!', 'Дорогой, как котлета? Она готовила по моему рецепту — я утром отправила!'),
+        ('moral', 'nar', 'Мораль: против мамы и невестки вместе не устоит никто.', ''),
+        ('outro', 'nar', 'Какой ответ твой: один, два, три или четыре? И пиши свою ситуацию — разберём!', ''),
+    ],
+)
