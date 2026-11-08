@@ -2681,3 +2681,30 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "pause" — rubric comment_reply4 (60-70 s). heroine = Jessica, boyfriend = Callum
+CAST.update({
+    "bf11": dict(voice="am_onyx", speed=1.0, lang="en-gb", el="N2lVS1w4EtoT3dr4eOWO"),   # pause: the boyfriend who wants a break before her birthday (Callum)
+})
+EP["pause"] = dict(
+    title='Перед твоим днём рождения он предлагает паузу', rubric='comment_reply4',
+    hook_title=[['ПЕРЕД МОИМ ДР ОН:', 'd'], ['«ДАВАЙ ПАУЗУ»', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    lines=[
+        ('hook_b', 'bf11', '[awkwardly] I think we need a little break. Just a week or so.', 'Думаю, нам нужен небольшой перерыв. Всего на недельку.'),
+        ('hook', 'nar', 'Вопрос из комментариев: за неделю до моего дня рождения он предложил отдохнуть друг от друга. Это совпадение? Четыре ответа.', ''),
+        ('o1_h', 'her', '[coldly] Fine. Bye.', 'Хорошо. Пока.'),
+        ('o1_b', 'bf11', '[cheerfully] Great! See you on the fifteenth!', 'Отлично! Увидимся пятнадцатого!'),
+        ('o1_nar', 'nar', 'Холодно — а вернётся он ровно после праздника.', ''),
+        ('o2_h', 'her', '[teasing] A break? From what — buying presents?', 'Перерыв? От чего — от покупки подарков?'),
+        ('o2_b', 'bf11', '[nervously] No! …Partly. Mostly no.', 'Нет! …Отчасти. В основном нет.'),
+        ('o2_nar', 'nar', 'С юмором — и почти признание.', ''),
+        ('o3_h', 'her', "[calmly] Interesting timing. My birthday's on Friday — or is that a coincidence?", 'Интересно ты время выбрал. У меня день рождения в пятницу — или это совпадение?'),
+        ('o3_b', 'bf11', "[sheepishly] …Total coincidence. I'll stay.", '…Чистое совпадение. Я остаюсь.'),
+        ('o3_nar', 'nar', 'Как носитель: спокойно назвать очевидное. Запоминай:', ''),
+        ('o3_tip', 'tip', 'Interesting timing.', ''),
+        ('o4_h', 'her', "[sweetly] Of course, love. Take the whole week. I'll celebrate with the people who remembered — and you can read about it online.", 'Конечно, любимый. Бери всю неделю. Я отпраздную с теми, кто помнил, — а ты почитаешь об этом в интернете.'),
+        ('o4_b', 'bf11', '[quickly] …The break is cancelled. Totally cancelled.', '…Перерыв отменяется. Полностью отменяется.'),
+        ('end_b', 'bf11', "[sheepishly] …I needed a week to build that. It's a bookshelf.", '…Мне нужна была неделя, чтобы это собрать. Это книжный шкаф.'),
+        ('moral', 'nar', 'Мораль: не спеши ставить точку — может, это многоточие.', ''),
+        ('outro', 'nar', 'Какой ответ твой: один, два, три или четыре? И пиши свою ситуацию — разберём!', ''),
+    ],
+)
