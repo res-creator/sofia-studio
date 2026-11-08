@@ -44,12 +44,16 @@ def frames_video(path, ss, dur, sh):
     p = subprocess.Popen(['ffmpeg', '-v', 'error', '-ss', str(ss), '-i', path, '-an', '-vf', ','.join(vf), '-t', str(dur + 0.3),
                           '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-'], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
     last = None
-    for i in range(round(dur * FPS)):
-        b = p.stdout.read(W * H * 3)
-        if len(b) == W * H * 3: last = b
-        if last is None: last = bytes(W * H * 3)
-        yield last
-    p.stdout.close(); p.wait()
+    try:
+        for i in range(round(dur * FPS)):
+            b = p.stdout.read(W * H * 3)
+            if len(b) == W * H * 3: last = b
+            if last is None: last = bytes(W * H * 3)
+            yield last
+    finally:   # закрываем декодер всегда, даже если генератор бросили раньше (seq): иначе процессы ffmpeg копятся и съедают память
+        p.stdout.close()
+        if p.poll() is None: p.kill()
+        p.wait()
 
 def frames_photo(path, dur, sh):
     if sh.get('motion'):  # живое движение по фото (../lib/motion.py): параллакс, 3D-наклон, рывок, фокус
@@ -198,6 +202,7 @@ def video(out_v):
                     sp, ssq = source(pt); dq = nq / FPS
                     g = frames_photo(sp, dq, pt) if is_photo(sp) else frames_video(sp, ssq, dq, pt)
                     for _ in range(nq): yield next(g)
+                    g.close()
             gen = gen_seq()
         else:
             src, ss = source(sh)
