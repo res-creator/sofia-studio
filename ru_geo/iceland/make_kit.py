@@ -9,11 +9,11 @@ chap = [('0:00', CHAPTERS['intro'])] + [(tc(p['start']), CHAPTERS[p['name']]) fo
 from media_list import MEDIA
 by = {}
 for m in MEDIA.values():
-    if m['source'] != 'Wikimedia Commons': continue
+    if m['source'] not in ('Wikimedia Commons', 'Flickr'): continue
     lic = re.sub(r', GFDL.*', '', m['license']).replace('CC-BY-SA-2.0', 'CC BY-SA 2.0').replace('PDM, ', '')
     by.setdefault(lic, [])
     if m['author'] not in by[lic]: by[lic].append(m['author'])
-credits = 'Фото Wikimedia Commons (автор — лицензия):\n' + '\n'.join(f"{l}: {', '.join(a)}" for l, a in sorted(by.items())) + \
+credits = 'Фото и видео Wikimedia Commons и Flickr (автор — лицензия):\n' + '\n'.join(f"{l}: {', '.join(a)}" for l, a in sorted(by.items())) + \
           '\nПолный список со ссылками на каждый файл: https://github.com/res-creator/sofia-studio/blob/claude/cool-hypatia-ehnxdy/ru_geo/iceland/CREDITS.md' + \
           '\nОстальные видео и фото: Pixabay (Pixabay Content License). Карты: Natural Earth. Музыка: Mixkit (Eugenio Mininni, Michael Ramir C.).'
 SRC = '''Источники фактов:

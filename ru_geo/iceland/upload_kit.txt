@@ -38,22 +38,23 @@ UPLOAD KIT — «Исландия» (полный выпуск, 21:26)
 — Окйёкюдль: Rice University / Университет Исландии, табличка «A letter to the future» (2019)
 — Астронавты: Exploration Museum, Хусавик; NASA
 
-Фото Wikimedia Commons (автор — лицензия):
+Фото и видео Wikimedia Commons и Flickr (автор — лицензия):
 Attribution: Halldór Björnsson / Icelandic Meteorological Office, Veðurstofa Íslands, Icelandic Meteorological Office, European Union, Copernicus Sentinel-2 imagery
-CC BY 2.0: Lydur Skulason from Iceland, James St. John
+CC BY 2.0: Lydur Skulason from Iceland, James St. John, Óskar Elías Björnsson, Joi Ito from Inbamura, Japan, James St. John (Flickr), Tony Hisgett (Flickr), greenacre8, James Brooks (Flickr), Kim Wendt / NordForsk, Ville Miettinen
 CC BY 2.5: _大面
 CC BY 2.5 dk: Johannes Jansson
 CC BY 2.5, CC BY-SA 3.0: Laurent Deschodt
-CC BY 3.0: Boaworm
+CC BY 3.0: Boaworm, Swedrone, Mladen Stojanovic, Kanal13, Cameron Pickett
 CC BY 4.0: Steinninn
-CC BY-SA 2.0: Bruce McAdam, Flickr user:katjung, Roger Goodman, Chris Morgan, Colin Westley (Uploaded by User:PeterJewell ), Matt Riggott from Reykjavík, Iceland, peterhartree
-CC BY-SA 2.0 de: Christian Bickel (fingalo)
+CC BY-SA 2.0: Bruce McAdam, Flickr user:katjung, Roger Goodman, Chris Morgan, Colin Westley (Uploaded by User:PeterJewell ), Matt Riggott from Reykjavík, Iceland, peterhartree, Helgi Halldórsson from Reykjavík, Iceland, Thomas Quine, Can Pac Swire (Flickr), Helgi Halldórsson (Flickr)
+CC BY-SA 2.0 de: Christian Bickel (fingalo), Christian Bickel fingalo
 CC BY-SA 2.5: Issac Newton, Hansueli Krapf ( User:Simisa )
-CC BY-SA 3.0: Chmee2 / Valtameri, Árni Friðriksson, user:Kjallakr, OddurBen, Wolfgang Sauber, Ivan Sabljak, Zinneke, en:User:Worldtraveller, bowlingbal, The original uploader was Kjallakr at English Wikipedia ., BIL, Roger McLassus, Chris 73, User Wolfgangbeyer on de.wikipedia
-CC BY-SA 4.0: Dominic Boyer, Andreas Tille, Diego Delso (delso.photo), Olga Ernst annotated by Prioryman, Smiley.toerist, Hyppolyte de Saint-Rambert, Berserkur, Icelandic Meteorological Office, Jakub Hałun, Steinninn, Sigrg, Bewapeningswerkplaatsen der Marine, Joschenbacher, Ykliu, Oddur Sigurðsson
-CC0: Gaggi96, Almannavarnadeild ríkislögreglustjóra, Jon Flobrant jonflobrant
+CC BY-SA 3.0: Chmee2 / Valtameri, Árni Friðriksson, user:Kjallakr, OddurBen, Wolfgang Sauber, Ivan Sabljak, Zinneke, en:User:Worldtraveller, bowlingbal, The original uploader was Kjallakr at English Wikipedia ., BIL, Roger McLassus, Chris 73, User Wolfgangbeyer on de.wikipedia, MattiPaavola, Jabbi, Hnefill
+CC BY-SA 4.0: Dominic Boyer, Andreas Tille, Diego Delso (delso.photo), Olga Ernst annotated by Prioryman, Smiley.toerist, Hyppolyte de Saint-Rambert, Berserkur, Icelandic Meteorological Office, Jakub Hałun, Steinninn, Sigrg, Bewapeningswerkplaatsen der Marine, Joschenbacher, Ykliu, Oddur Sigurðsson, Hornstrandir1, Paul Gipe
+CC0: Gaggi96, Almannavarnadeild ríkislögreglustjóra, Jon Flobrant jonflobrant, Willem van de Poll
+No restrictions: Magnús Ólafsson
 OGL v1.0: Royal Navy official photographer
-Public domain: Almannavarnadeild ríkislögreglustjóra, United States Geological Survey, NASA, Олаус Магнус (1555), Йохан Петер Раадсиг (1806–1882), Bragi Thór Josefsson, Жозеф Дюплесси (1778), неизвестный художник (XVIII век), Richard S. Williams, United States Geological Survey, NASA / MODIS Rapid Response team, Anthony Appleyard ( talk ), Camera Operator: MSgt. Michael E. Daniels, USAF, National Maritime Museum, неизвестный фотограф (1918), Michael Ryan
+Public domain: Almannavarnadeild ríkislögreglustjóra, United States Geological Survey, NASA, Олаус Магнус (1555), Йохан Петер Раадсиг (1806–1882), Bragi Thór Josefsson, Жозеф Дюплесси (1778), неизвестный художник (XVIII век), Richard S. Williams, United States Geological Survey, NASA / MODIS Rapid Response team, Anthony Appleyard ( talk ), Camera Operator: MSgt. Michael E. Daniels, USAF, National Maritime Museum, неизвестный фотограф (1918), Michael Ryan, Photo by Jack Lockwood, 1973 (U.S. Geological Survey)., Szilas, Photograph courtesy of Sigurgeir Jónasson, USGS, Photograph by Robin Holcomb, U.S. Geological Survey., Government of Iceland, TommyBee, Signal Corps Archive from United States, неизвестный фотограф (1958), Royal Navy official photographer, Thalion77, Jabbi
 Полный список со ссылками на каждый файл: https://github.com/res-creator/sofia-studio/blob/claude/cool-hypatia-ehnxdy/ru_geo/iceland/CREDITS.md
 Остальные видео и фото: Pixabay (Pixabay Content License). Карты: Natural Earth. Музыка: Mixkit (Eugenio Mininni, Michael Ramir C.).
 

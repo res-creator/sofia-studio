@@ -20,6 +20,9 @@ L = ['# «Исландия»: доработка видеоряда (люди и
      'Колонка «Было» — прежний кадр, «Стало» — новый. Лицензии проверены по странице файла; авторство указано в CREDITS.md и в блоке для описания YouTube.', '',
      '| Время | Фраза диктора | Было | Стало | Автор, лицензия | Ссылка |', '|---|---|---|---|---|---|']
 for k in sorted(keys, key=lambda k: st[k]['start']):
-    m = NEW.MEDIA[NEW.SHOTS[k]['m']]
-    L.append(f"| {fmt(st[k]['start'])} | {txt.get(k, '')[:90]} | {what(OLD, k)} | {m['what']} | {m['author']}, {m['license']} | {m['page']} |")
+    sh = NEW.SHOTS[k]
+    if sh.get('m'):
+        m = NEW.MEDIA[sh['m']]; L.append(f"| {fmt(st[k]['start'])} | {txt.get(k, '')[:90]} | {what(OLD, k)} | {m['what']} | {m['author']}, {m['license']} | {m['page']} |")
+    else:
+        L.append(f"| {fmt(st[k]['start'])} | {txt.get(k, '')[:90]} | {what(OLD, k)} | карта 200-мильной зоны начинается раньше (вместо случайного берега) | наша графика, Natural Earth | — |")
 open(f'{D}/REPLACEMENTS.md', 'w').write('\n'.join(L) + '\n'); print(len(keys), 'rows')
