@@ -2681,3 +2681,30 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "tinder" — rubric comment_reply4 (60-70 s). heroine = Jessica, boyfriend = Eric
+CAST.update({
+    "bf8": dict(voice="am_eric", speed=1.0, lang="en-us", el="cjVigY5qzO86Huf0OWal"),   # tinder: the boyfriend with the dating app open (Eric)
+})
+EP["tinder"] = dict(
+    title='У него открыт Tinder: «Это реклама!»', rubric='comment_reply4',
+    hook_title=[['У НЕГО ЗНАКОМСТВА?', 'd'], ['«ЭТО РЕКЛАМА!»', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    lines=[
+        ('hook_b', 'bf8', "[panicking] It's an ad! It just popped up! Honest!", 'Это реклама! Она сама выскочила! Честно!'),
+        ('hook', 'nar', 'Вопрос из комментариев: увидела у него открытый Tinder, а он клянётся, что это реклама. Что ответить? Четыре ответа.', ''),
+        ('o1_h', 'her', '[coldly] Ad. Sure. Liar.', 'Реклама. Ага. Врун.'),
+        ('o1_b', 'bf8', "[insisting] It's true! Look, it even says 'match'!", 'Это правда! Смотри, там даже написано «совпадение»!'),
+        ('o1_nar', 'nar', 'Холодно — и реклама нашла ему пару.', ''),
+        ('o2_h', 'her', '[dryly] Wow, that ad really knows your type.', 'Ух ты, эта реклама прекрасно знает твой типаж.'),
+        ('o2_b', 'bf8', "[seriously] It's the algorithm! It's very clever.", 'Это алгоритм! Он очень умный.'),
+        ('o2_nar', 'nar', 'С юмором — а алгоритм, оказывается, умный.', ''),
+        ('o3_h', 'her', '[calmly] Funny — an ad with your photo and your bio. Want to try that again?', 'Забавно — реклама с твоим фото и твоим описанием. Попробуешь ещё раз?'),
+        ('o3_b', 'bf8', '[deflated] …Okay. I downloaded it. In March.', '…Ладно. Я его скачал. В марте.'),
+        ('o3_nar', 'nar', 'Как носитель: факты и шанс сказать правду. Запоминай:', ''),
+        ('o3_tip', 'tip', 'Want to try that again?', ''),
+        ('o4_h', 'her', "[sweetly] Sure. And the ad also wrote 'six foot, loves hiking'? You're five-nine and you get tired on stairs.", 'Конечно. И реклама тоже написала «рост метр восемьдесят, люблю походы»? Ты метр семьдесят пять и устаёшь на лестнице.'),
+        ('o4_b', 'bf8', "[quietly] …I'm deleting the ad.", '…Я удаляю рекламу.'),
+        ('end_b', 'bf8', '[suspiciously] Wait… why have YOU got a match with me?', 'Стоп… а почему у ТЕБЯ совпадение со мной?'),
+        ('moral', 'nar', 'Мораль: кто ищет — тот находит. Иногда друг друга.', ''),
+        ('outro', 'nar', 'Какой ответ твой: один, два, три или четыре? И пиши свою ситуацию — разберём!', ''),
+    ],
+)
