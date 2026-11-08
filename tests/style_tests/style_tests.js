@@ -179,8 +179,55 @@ function collage(ctx, g0) { const g = Math.floor(g0 * 12) / 12, jt = n => (hash(
     ctx.save(); ctx.strokeStyle = '#d62020'; ctx.lineWidth = 8; ctx.lineCap = 'round'; const u = clamp((g - tt) / 0.4); ctx.beginPath(); ctx.moveTo(900, 520); ctx.quadraticCurveTo(1150, y - 60, lerp(900, 1300, u), lerp(520, y, u)); ctx.stroke(); ctx.restore();
     cutText(ctx, n, 1330, y + 20, 70, '#111', '#f4ead2', (i - 1) * 0.04, a); coin(ctx, 1290, y, 1, { part(c, nn, p, col) { p(); c.fillStyle = col; c.fill(); c.strokeStyle = '#111'; c.lineWidth = 3; c.stroke(); } }); });
   cutText(ctx, 'LOANS TO GOVERNMENTS', 80, 120, 64, '#fff', '#111', -0.02, ss((g - t.lent) / 0.25)); }
+
+// ======================= STYLE 4 · 2.5D PARALLAX =======================
+// flat painted layers placed at depth z (1 = focus plane); a moving camera shifts each layer by 1/z, far layers are blurred (depth of field),
+// soft gradient shading, light beams, floating dust, smoke. One offscreen canvas per layer.
+const PAR = { part(ctx, n, path, col) { path(); const b = ctx.getTransform(); ctx.fillStyle = col; ctx.fill(); ctx.save(); ctx.clip(); const g = ctx.createLinearGradient(0, -200, 0, 240); g.addColorStop(0, 'rgba(255,240,210,0.16)'); g.addColorStop(1, 'rgba(0,0,0,0.22)'); ctx.fillStyle = g; ctx.fillRect(-400, -400, 800, 800); ctx.restore(); },
+  ink(ctx, path, mode, w) { ctx.fillStyle = '#1e1712'; ctx.strokeStyle = '#1e1712'; ctx.lineWidth = w || 3; ctx.lineCap = 'round'; path(); } };
+const LAY = createCanvas(W, H), LX = LAY.getContext('2d');
+function layer(ctx, cam, z, draw, focus = 1) { LX.setTransform(1, 0, 0, 1, 0, 0); LX.clearRect(0, 0, W, H); LX.save();
+  const k = cam.zoom / z * focus; LX.translate(W / 2, H / 2); LX.scale(1 + (cam.zoom - 1) / z, 1 + (cam.zoom - 1) / z); LX.translate(-W / 2 - cam.x / z, -H / 2 - cam.y / z); draw(LX); LX.restore();
+  const blur = Math.min(14, Math.abs(Math.log(z / cam.f)) * 9); ctx.save(); if (blur > 0.6) ctx.filter = `blur(${blur.toFixed(1)}px)`; ctx.drawImage(LAY, 0, 0); ctx.restore(); }
+function camAt(g, keys) { let i = keys.findLastIndex(k => g >= k[0]); if (i < 0) i = 0; const a = keys[i], b = keys[Math.min(keys.length - 1, i + 1)], u = b === a ? 0 : ss((g - a[0]) / (b[0] - a[0]));
+  return { x: lerp(a[1], b[1], u), y: lerp(a[2], b[2], u), zoom: lerp(a[3], b[3], u), f: lerp(a[4], b[4], u) }; }
+function beams(ctx, x, a) { ctx.save(); ctx.globalCompositeOperation = 'lighter'; for (let i = 0; i < 3; i++) { const g = ctx.createLinearGradient(x, 0, x - 500, H); g.addColorStop(0, `rgba(255,214,150,${0.16 * a})`); g.addColorStop(1, 'rgba(255,214,150,0)'); ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(x + i * 120, 0); ctx.lineTo(x + 70 + i * 120, 0); ctx.lineTo(x - 400 + i * 160, H); ctx.lineTo(x - 560 + i * 160, H); ctx.fill(); } ctx.restore(); }
+function dust(ctx, g, n = 60) { ctx.save(); for (let i = 0; i < n; i++) { const h = hash(i * 3.7), x = (h * W + g * 18 * (0.4 + h)) % W, y = (hash(i * 9.1) * H - g * 10 * (0.3 + h) + H) % H; ctx.fillStyle = `rgba(255,236,200,${0.25 + 0.4 * h})`; ctx.beginPath(); ctx.arc(x, y, 1 + h * 2.5, 0, 7); ctx.fill(); } ctx.restore(); }
+function smoke(ctx, x, y, g) { for (let i = 0; i < 8; i++) { const u = ((g * 0.25 + i / 8) % 1); ctx.fillStyle = `rgba(200,190,180,${0.35 * (1 - u)})`; ctx.beginPath(); ctx.arc(x + u * 120 + Math.sin(u * 6 + i) * 20, y - u * 300, 20 + u * 60, 0, 7); ctx.fill(); } }
+function parallax(ctx, g) {
+  if (g < B2) { // the 1920s factory town at dusk: sky, far hills, city, the match works with chimneys, a crate of matchboxes right in front of the lens
+    const cam = camAt(g, [[0, -260, 0, 1.0, 1.4], [B2, 260, -30, 1.18, 1.4]]);
+    const sky = ctx.createLinearGradient(0, 0, 0, H); sky.addColorStop(0, '#2b2340'); sky.addColorStop(0.55, '#c9653f'); sky.addColorStop(1, '#f2b25c'); ctx.fillStyle = sky; ctx.fillRect(0, 0, W, H);
+    layer(ctx, cam, 6, x => { x.fillStyle = '#f7d48a'; x.beginPath(); x.arc(1300, 520, 110, 0, 7); x.fill(); });
+    layer(ctx, cam, 4, x => { x.fillStyle = '#8a4a4a'; blob(x, 500, 760, 420, 2, 2.4); x.fill(); blob(x, 1500, 780, 380, 5, 2.6); x.fill(); });
+    layer(ctx, cam, 2.4, x => { for (let i = 0; i < 26; i++) { const bx = -300 + i * 100, bh = 160 + hash(i) * 220; x.fillStyle = '#4a2f3c'; x.fillRect(bx, 800 - bh, 84, bh + 300);
+      for (let w = 0; w < 10; w++) if (hash(i * 13 + w) > 0.55) { x.fillStyle = '#ffcf6a'; x.fillRect(bx + 12 + (w % 3) * 24, 820 - bh + Math.floor(w / 3) * 40, 12, 18); } } });
+    layer(ctx, cam, 1.3, x => { x.fillStyle = '#2a1b22'; x.fillRect(200, 560, 1500, 600); x.fillRect(420, 260, 70, 320); x.fillRect(1180, 220, 80, 360); smoke(x, 455, 260, g); smoke(x, 1220, 220, g + 2);
+      x.fillStyle = '#ffd27a'; for (let i = 0; i < 12; i++) x.fillRect(260 + i * 115, 640, 60, 80); x.fillStyle = '#f2e6c8'; x.font = `900 64px ${F}`; x.fillText('MATCH WORKS', 640, 610); }, 1);
+    layer(ctx, cam, 0.62, x => { x.fillStyle = '#5a3a22'; x.fillRect(-200, 820, 1300, 400); for (let i = 0; i < 9; i++) { const u = back((g - t.man - i * 0.15) / 0.3); if (u > 0.01) matchbox(x, -60 + (i % 5) * 230, 760 - Math.floor(i / 5) * 120 - (1 - u) * 200, 1.6, (hash(i) - 0.5) * 0.3, PAR); } });
+    beams(ctx, 1500, 0.8); dust(ctx, g);
+    plate4(ctx, 'THE 1920s', 120, 150, ss((g - t.y20 + 0.2) / 0.3), '#c9653f', 80); plate4(ctx, "MOST OF THE WORLD'S MATCHES", 120, 260, ss((g - t.matches + 0.5) / 0.3), '#1e1712', 52); return; }
+  // the office: city through the window (far, blurred), the man (focus), a lamp and matchbox in the near foreground (blurred); rack focus + push in
+  const cam = g < B3 ? camAt(g, [[B2, 120, 40, 1.0, 1.0], [B3, -40, 0, 1.22, 1.0]]) : camAt(g, [[B3, -40, 0, 1.22, 1.0], [T, 220, -20, 1.0, 2.0]]);
+  ctx.fillStyle = '#3b2a20'; ctx.fillRect(0, 0, W, H);
+  layer(ctx, cam, 3.2, x => { const sky = x.createLinearGradient(0, 0, 0, 800); sky.addColorStop(0, '#5a7fa0'); sky.addColorStop(1, '#d9b48a'); x.fillStyle = sky; x.fillRect(-200, -200, 2400, 1200);
+    for (let i = 0; i < 18; i++) { x.fillStyle = i % 2 ? '#6a7c8c' : '#56687a'; x.fillRect(-200 + i * 140, 420 + hash(i) * 200, 120, 600); } x.fillRect(560, 240, 40, 300); smoke(x, 580, 240, g); });
+  layer(ctx, cam, 1.6, x => { x.fillStyle = '#6b4a32'; x.fillRect(-300, -200, 2500, 1500); x.clearRect(1080, 120, 760, 560); x.fillStyle = '#4a3020'; x.fillRect(1060, 100, 800, 20); x.fillRect(1060, 680, 800, 20); x.fillRect(1440, 100, 20, 600);
+    if (g >= B3) { // map on the wall with country tags lighting up
+      x.fillStyle = '#e8dcc0'; x.fillRect(120, 140, 640, 440); x.fillStyle = '#9db36b'; blob(x, 300, 300, 90, 3, 1.4); x.fill(); blob(x, 520, 380, 110, 9, 1.2); x.fill(); blob(x, 620, 260, 70, 15, 1.3); x.fill();
+      COUNTRIES.forEach(([n, i]) => { const a = ss((g - t.money - i * 0.45) / 0.3); if (a > 0) { x.fillStyle = `rgba(201,26,20,${a})`; x.beginPath(); x.arc([260, 520, 640][i], [300, 390, 250][i], 16, 0, 7); x.fill(); } }); } });
+  layer(ctx, cam, 1.0, x => { man(x, 900, 360, 2.0, { m: mouth(g), blink: (g % 3.1) < 0.12 ? 1 : 0, arm: g > B3 ? -0.9 + Math.sin(g * 9) * 0.25 * (g < t.countries ? 1 : 0) : -0.2, tilt: Math.sin(g * 1.3) * 0.04, pen: g > B3 }, PAR);
+    x.fillStyle = '#7b4a2a'; x.fillRect(200, 760, 1520, 80); x.fillStyle = '#5e3820'; x.fillRect(240, 840, 1440, 400); x.fillStyle = '#f7f1e3'; x.fillRect(1020, 700, 280, 70);
+    COUNTRIES.forEach(([n, i]) => { const tt = t.money + i * 0.45, u = clamp((g - tt) / 0.7); if (u > 0 && u < 1) coin(x, lerp(1160, [260, 520, 640][i] + 100, u), lerp(700, 300, u) - Math.sin(u * Math.PI) * 200, 1.3, PAR); }); });
+  layer(ctx, cam, 0.55, x => { x.fillStyle = '#1d3a2a'; x.beginPath(); x.moveTo(1500, 520); x.lineTo(1840, 520); x.lineTo(1760, 380); x.lineTo(1580, 380); x.closePath(); x.fill(); x.fillStyle = '#222'; x.fillRect(1660, 520, 24, 500);
+    matchbox(x, 340, 900, 2.2, -0.15, PAR); match(x, 560, 860, 2, 1.1, PAR, ss((g - B2 - 0.4) / 0.3), g); });
+  beams(ctx, 1700, 0.6); dust(ctx, g, 40);
+  if (g < B3) { plate4(ctx, 'IVAR KREUGER', 120, 150, ss((g - t.ivar) / 0.3), '#c9653f', 84); plate4(ctx, 'THE MATCH KING', 120, 260, ss((g - t.ivar - 0.4) / 0.3), '#1e1712', 48); }
+  else { plate4(ctx, 'LOANS TO GOVERNMENTS', 120, 150, ss((g - t.lent) / 0.3), '#c9653f', 70); COUNTRIES.forEach(([n, i]) => plate4(ctx, n, 1300, 360 + i * 110, ss((g - t.money - i * 0.45 - 0.4) / 0.3), '#1e1712', 52)); } }
+function plate4(ctx, s, x, y, a, col, size) { if (a <= 0) return; ctx.save(); ctx.globalAlpha = clamp(a * 1.5); ctx.font = `900 ${size}px ${F}`; const w = ctx.measureText(s).width, e = eo(a);
+  ctx.beginPath(); ctx.rect(x - 20, y - size, (w + 40) * e, size * 1.5); ctx.clip(); ctx.fillStyle = col; ctx.fillRect(x - 20, y - size * 0.9, w + 40, size * 1.25); ctx.fillStyle = '#fff4e0'; ctx.fillText(s, x, y + size * 0.1 + (1 - e) * 20); ctx.restore(); }
 // ---------------- render ----------------
-const STY = { cutout, comic, collage };
+const STY = { cutout, comic, collage, parallax };
 function frame(ctx, style, g) { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; STY[style](ctx, g);
   const v = ctx.createRadialGradient(W / 2, H / 2, H * 0.5, W / 2, H / 2, H * 1.0); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,0.3)'); ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
   if (g > T - 0.5) { ctx.fillStyle = `rgba(0,0,0,${ss((g - T + 0.5) / 0.5)})`; ctx.fillRect(0, 0, W, H); } }
