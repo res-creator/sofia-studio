@@ -1,0 +1,7 @@
+chapters/*/seg_video.mp4
+chapters/*/vo.wav
+chapters/*/fx.wav
+chapters/*/*.png
+chapters/*/*.log
+mix.wav
+__pycache__/
