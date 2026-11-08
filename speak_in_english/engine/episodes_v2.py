@@ -2681,3 +2681,30 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "exphotos" — rubric comment_reply4 (60-70 s). heroine = Jessica, boyfriend = Charlie
+CAST.update({
+    "bf7": dict(voice="am_fenrir", speed=1.0, lang="en-gb", el="IKne3meq5aSn9XLyUdCD"),   # exphotos: the boyfriend with the ex's photos still up (Charlie)
+})
+EP["exphotos"] = dict(
+    title='Я на аватарке, а бывшая в ленте', rubric='comment_reply4',
+    hook_title=[['Я — НА АВАТАРКЕ,', 'd'], ['БЫВШАЯ — В ЛЕНТЕ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    lines=[
+        ('hook_b', 'bf7', "[proudly] Look! You're official now. Front page!", 'Смотри! Теперь ты официально. На главной!'),
+        ('hook', 'nar', 'Вопрос из комментариев: он поставил нашу фотку на аватарку, а фото с бывшей так и висят. Как сказать без истерики? Четыре ответа.', ''),
+        ('o1_h', 'her', '[coldly] And her? Delete.', 'А она? Удали.'),
+        ('o1_b', 'bf7', "[casually] Who, Kate? She's… part of the archive.", 'Кто, Кейт? Она… часть архива.'),
+        ('o1_nar', 'nar', 'Холодно — а Кейт теперь архив. Большой архив.', ''),
+        ('o2_h', 'her', '[teasing] Cute. Is your ex official too, or just a guest star?', 'Мило. Твоя бывшая тоже официально — или просто приглашённая звезда?'),
+        ('o2_b', 'bf7', "[proudly] Guest star! She's got fans, actually.", 'Приглашённая звезда! У неё, между прочим, есть фанаты.'),
+        ('o2_nar', 'nar', 'С юмором — а у бывшей фанаты.', ''),
+        ('o3_h', 'her', '[warmly] I love it. Now, are you going to clear out the old photos, or shall I?', 'Мне нравится. А теперь — ты сам уберёшь старые фото, или это сделать мне?'),
+        ('o3_b', 'bf7', '[quickly] …Doing it now. Bye, Kate.', '…Уже убираю. Пока, Кейт.'),
+        ('o3_nar', 'nar', 'Как носитель: тепло, но с выбором без выбора. Запоминай:', ''),
+        ('o3_tip', 'tip', 'Clear out.', ''),
+        ('o4_h', 'her', "[elegantly] Your profile is a museum, darling. Lovely new exhibit — but I don't share a gallery with the old collection.", 'Твой профиль — музей, дорогой. Чудесный новый экспонат — но я не делю галерею со старой коллекцией.'),
+        ('o4_b', 'bf7', '[frantically] Closing the museum! Everything must go!', 'Музей закрывается! Распродажа всего!'),
+        ('end_b', 'bf7', "[reading aloud] 'Finally someone took him! Good luck with his socks.'", '«Наконец-то его кто-то забрал! Удачи с его носками».'),
+        ('moral', 'nar', 'Мораль: новая глава не пишется поверх старой.', ''),
+        ('outro', 'nar', 'Какой ответ твой: один, два, три или четыре? И пиши свою ситуацию — разберём!', ''),
+    ],
+)
