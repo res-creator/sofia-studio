@@ -61,6 +61,13 @@ def cv(name, local, what, place, **kw):
     return dict(file=f'commons_vid/{local}', commons=name, what=what, place=place, author=clean_author(name, m.get('author', '?')), license=m.get('license', '?'),
                 page='https://commons.wikimedia.org/wiki/File:' + urllib.parse.quote(name.replace(' ', '_')), source='Wikimedia Commons', **kw)
 
+_MK = json.load(open(f'{D}/rework/mixkit_db.json'))['v'] if os.path.exists(f'{D}/rework/mixkit_db.json') else {}
+def mk(vid, what, place, **kw):
+    """Mixkit: тот же файл, что даёт кнопка Download; лицензия Mixkit Stock Video Free License (коммерчески, без подписи)"""
+    r = _MK[str(vid)]
+    return dict(file=f'mixkit/{vid}.mp4', url=r['mp4'], what=what, place=place, author='Mixkit', license=r['license'],
+                license_url=r['license_url'], page=r['page'], source='Mixkit', **kw)
+
 def _flickr_big(page):
     s = subprocess.run(['curl', '-sS', '-L', '-A', pixabay.UA, '--max-time', '90', page], capture_output=True, text=True).stdout
     for k in ('k', 'h', 'b', 'c'):
@@ -96,6 +103,8 @@ def fetch(media):
             for url in [cf.thumb_url(m['commons'], w) for w in (1920, 1280)] + [orig]:
                 r = subprocess.run(['curl', '-sS', '-A', cf.UA, '--max-time', '300', '-o', p, '-w', '%{http_code}', url], capture_output=True, text=True)
                 if r.stdout.strip() == '200' and os.path.getsize(p) > 5000: ok = True; break
+        elif m['source'] == 'Mixkit':
+            ok = pixabay.download(m['url'], p)
         elif m['source'] == 'Flickr':
             u = _flickr_big(m['page']); ok = bool(u) and pixabay.download(u, p); time.sleep(1.5)
         else: continue

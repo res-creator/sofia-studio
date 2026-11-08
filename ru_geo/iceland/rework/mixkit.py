@@ -15,7 +15,7 @@ def search(q):
         name, vid = m.group(1), m.group(2)
         if vid in ids: continue
         DB['v'].setdefault(vid, dict(id=vid, title=name.replace('-', ' '), page=f'https://mixkit.co/free-stock-video/{name}-{vid}/',
-                                     mp4=f'https://assets.mixkit.co/videos/{vid}/{vid}-1080.mp4',
+                                     mp4=f'https://assets.mixkit.co/videos/{vid}/{vid}-720.mp4',
                                      thumb=f'https://assets.mixkit.co/videos/{vid}/{vid}-thumb-360-0.jpg', license='Mixkit Stock Video Free License',
                                      license_url='https://mixkit.co/license/#videoFree'))
         ids.append(vid)

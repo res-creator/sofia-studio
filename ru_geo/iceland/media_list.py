@@ -421,6 +421,11 @@ def FL(pid, what, place, kb=None, **kw):
     k = 'f' + str(pid)
     if k not in MEDIA: MEDIA[k] = fl(pid, what, place)
     return dict(m=k, kb=kb or KB, **kw)
+from sources import mk
+def MK(vid, what, place='без привязки к месту', ss=0, **kw):
+    k = f'mk{vid}'
+    if k not in MEDIA: MEDIA[k] = mk(vid, what, place)
+    return dict(m=k, ss=ss, **kw)
 def CV(name, local, what, place, ss=0, **kw):
     k = 'cv_' + local.split('.')[0]
     if k not in MEDIA: MEDIA[k] = cv(name, local, what, place)
