@@ -308,7 +308,7 @@ def chime():
     return norm(y, 0.6)
 SFX = dict(gasp=gasp(), zip=zipfx(), rimshot=rimshot(), squeak=squeak(), dressup=dressup(), chime=chime(), strain=creak(), coo=coo(), choo=choo(), bark=bark(), umbrella=umbrella_fx(), tada=tada(), knock=knock(), creak=creak(), riff=riff(), knob=knob(), boom=boom(), feather=feather(), clapclap=clapclap(), powerdown=powerdown(), snip=snip1(), snips=snips(), clipper=clipper(), hairdryer=hairdryer(), spin=spin(), register=register(), plop=plop(), thud=thud(), gulp=gulp(), boing=boing(), nope=nope(), cuckoo=cuckoo(), whoosh=whoosh(), impact=impact(), impact_soft=impact(True), pop=pop(), stamp=stamp(), sparkle=sparkle(), blink=blink(), brow=brow(), buzz=buzz(), ding=ding(),
            cricket=cricket(), tick=tick(), deflate=deflate(), riser_short=riser_short(), clank=clank(), scratch=scratch(), drop=drop(), bell=bell(), lift_ding=lift_ding(), doors=doors(), hum=hum())
-if EPN in ("checkout", "password", "rich", "busy"):  # self-checkout sounds for this episode only (own rng, so other episodes mix exactly as before)
+if EPN in ("checkout", "password", "rich", "busy", "gamer"):  # self-checkout sounds for this episode only (own rng, so other episodes mix exactly as before)
     _r = np.random.default_rng(12)
     def _beep():
         t = T(0.16); return norm(np.sign(np.sin(2*np.pi*2350*t)) * 0.5 * np.minimum(t*900, 1) * np.minimum((0.16 - t)*300, 1), 0.45)
@@ -337,7 +337,7 @@ if EPN in ("wrongchat", "pretend", "password", "cantsayno", "rich", "avoidparty"
         t = T(1.6); f = 180 + 8*np.sin(2*np.pi*3*t); x = np.sign(np.sin(2*np.pi*np.cumsum(f)/SR))*0.4 + 0.3*bp(_r.standard_normal(len(t)), 300, 3000)
         return norm(lp(x, 2500) * np.minimum(t*3, 1) * np.minimum((1.6 - t)*3, 1), 0.5)
     SFX.update(send=_send(), msg=_msg(), shutter=_shutter(), drone=_drone())
-if EPN in ("mic", "teacher", "password", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "idea"):  # video-call sounds for this episode only (own rng, so other episodes mix exactly as before)
+if EPN in ("mic", "teacher", "password", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "idea", "gamer"):  # video-call sounds for this episode only (own rng, so other episodes mix exactly as before)
     _r = np.random.default_rng(13)
     def _click():
         t = T(0.06); return norm(bp(_r.standard_normal(len(t)), 1800, 7000) * np.exp(-t*160) + 0.4*np.sin(2*np.pi*2400*t)*np.exp(-t*220), 0.55)
@@ -356,7 +356,7 @@ if EPN in ("mic", "teacher", "password", "rich", "busy", "avoidparty", "tour", "
     def _clap():
         t = T(0.12); return norm(bp(_r.standard_normal(len(t)), 900, 6000) * (np.exp(-t*60) + 0.3*np.exp(-np.maximum(t - 0.01, 0)*40)), 0.6)
     SFX.update(click=_click(), keys=_keys(), vol=_vol(), msg=_msg(), cough=_cough(), clap=_clap())
-if EPN in ("rich", "busy", "avoidparty", "tour", "splitbill", "photo"):  # batch rich/busy/avoidparty: phone ring, door bell, crowd cheer, car engine, car-lock chirp, toy jingle (own rng)
+if EPN in ("rich", "busy", "avoidparty", "tour", "splitbill", "photo", "gamer"):  # batch rich/busy/avoidparty: phone ring, door bell, crowd cheer, car engine, car-lock chirp, toy jingle (own rng)
     _r = np.random.default_rng(14)
     def _ring():
         y = np.zeros(int(1.3*SR))
@@ -386,6 +386,14 @@ if EPN in ("rich", "busy", "avoidparty", "tour", "splitbill", "photo"):  # batch
             t = T(0.13); f = 440 * 2 ** ((m - 69) / 12); put(y, np.sign(np.sin(2*np.pi*f*t)) * 0.35 * np.minimum((0.13 - t)*120, 1), k*0.13, 0.5)
         return norm(lp(y, 4000), 0.55)
     SFX.update(ring=_ring(), doorbell=_doorbell(), cheer=_cheer(), vroom=_vroom(), chirp=_chirp(), toy=_toy())
+if EPN == "gamer":  # 8-bit game loop (bleeps + bass arpeggio, 2.6 s) for the TV gags (no rng, so other episodes mix exactly as before)
+    def _game():
+        y = np.zeros(int(2.6*SR))
+        for k, m in enumerate([72, 76, 79, 84, 79, 76, 74, 77, 81, 86, 81, 77, 72, 79, 84, 88]):
+            t = T(0.14); f = 440 * 2 ** ((m - 69) / 12); put(y, np.sign(np.sin(2*np.pi*f*t)) * 0.3 * np.minimum((0.14 - t)*90, 1), k*0.16, 0.5)
+            if k % 2 == 0: tb = T(0.3); put(y, np.sign(np.sin(2*np.pi*f/4*tb)) * 0.25 * np.exp(-tb*6), k*0.16, 0.5)
+        return norm(lp(y, 5000), 0.55)
+    SFX.update(game=_game())
 def note(m, key=0): return 440 * 2 ** ((m + key - 69) / 12)
 def pluck(f, d, bright=1.0):
     t = T(d); ph = 2*np.pi*f*t
@@ -609,7 +617,7 @@ elif EPN in ("dinner", "gift", "guest", "marry"):
         else:
             m = ch[(k) % 3] + 12; tt = T(3*b*0.9); trem = (0.55 + 0.45*np.sign(np.sin(2*np.pi*14*tt)))
             put(music, pluck(note(m), 3*b*0.9, 1.2) * trem * 0.0 + np.sin(2*np.pi*note(m)*tt)*np.exp(-tt*0.8)*trem*np.minimum(tt*80, 1), t0, 0.05)
-elif EPN in ("salon", "haircut"):
+elif EPN in ("salon", "haircut", "gamer"):
     # groovy salon radio: light disco beat, octave bass, e-piano stabs, marimba hook
     bpm = 112; b = 60/bpm; K = 2
     def marimba(f, d=0.35):
@@ -649,7 +657,10 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+if EPN == "gamer":  # answers4 rubric (no levels): the music dies with the TV when he yanks the plug (o4), silent through the twist, back with the moral
+    c2e = next(x["ev"]["yank"] for x in TL["scenes"] if x["id"] == "o4") + 0.4; c2n = sp["moral"]["t"]
+else:
+    C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause
