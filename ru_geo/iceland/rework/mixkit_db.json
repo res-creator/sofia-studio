@@ -155,6 +155,108 @@
 "8015",
 "8010",
 "8150"
+],
+"tokyo": [
+"4109",
+"4447",
+"28687",
+"4451",
+"4231",
+"4403",
+"30148",
+"4401",
+"20077",
+"30137",
+"4405",
+"4308",
+"20061",
+"30141",
+"46122",
+"4383",
+"42108",
+"4404",
+"4437",
+"4309",
+"4450",
+"4454",
+"4455",
+"4412"
+],
+"japan": [
+"4231",
+"30148",
+"4451",
+"4109",
+"4449",
+"28687",
+"4412",
+"42108",
+"4403",
+"4401",
+"4447",
+"30141",
+"4383",
+"4308",
+"36338",
+"4437",
+"4404",
+"4453",
+"4452",
+"45342",
+"4450",
+"4454",
+"4455",
+"4446"
+],
+"mount fuji": [
+"30148",
+"28665",
+"28631"
+],
+"kyoto": [
+"20168",
+"39431",
+"20076",
+"20169",
+"20164",
+"20170",
+"20161",
+"20072",
+"39428",
+"30026",
+"28640",
+"20167",
+"20165",
+"20163",
+"20162",
+"30050",
+"20166"
+],
+"japanese": [
+"4109",
+"4401",
+"48889",
+"48755",
+"51257",
+"48686",
+"45086",
+"46354",
+"46017",
+"36338",
+"51255",
+"51238",
+"51236",
+"49322",
+"51241",
+"44600",
+"51258",
+"48690",
+"46015",
+"33978",
+"51242",
+"49324",
+"42109",
+"49323"
 ]
 },
 "v": {
@@ -1325,6 +1427,636 @@
 "page": "https://mixkit.co/free-stock-video/glacial-melt-8150/",
 "mp4": "https://assets.mixkit.co/videos/8150/8150-720.mp4",
 "thumb": "https://assets.mixkit.co/videos/8150/8150-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4109": {
+"id": "4109",
+"title": "large paper lamp in the street",
+"page": "https://mixkit.co/free-stock-video/large-paper-lamp-in-the-street-4109/",
+"mp4": "https://assets.mixkit.co/videos/4109/4109-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4109/4109-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4447": {
+"id": "4447",
+"title": "neon signs with japanese letters",
+"page": "https://mixkit.co/free-stock-video/neon-signs-with-japanese-letters-4447/",
+"mp4": "https://assets.mixkit.co/videos/4447/4447-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4447/4447-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"28687": {
+"id": "28687",
+"title": "tokyo cityscape at night",
+"page": "https://mixkit.co/free-stock-video/tokyo-cityscape-at-night-28687/",
+"mp4": "https://assets.mixkit.co/videos/28687/28687-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/28687/28687-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4451": {
+"id": "4451",
+"title": "quiet tokyo street at night",
+"page": "https://mixkit.co/free-stock-video/quiet-tokyo-street-at-night-4451/",
+"mp4": "https://assets.mixkit.co/videos/4451/4451-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4451/4451-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4231": {
+"id": "4231",
+"title": "pedestrian walk in tokyo",
+"page": "https://mixkit.co/free-stock-video/pedestrian-walk-in-tokyo-4231/",
+"mp4": "https://assets.mixkit.co/videos/4231/4231-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4231/4231-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4403": {
+"id": "4403",
+"title": "sensoji shrine in tokyo japan",
+"page": "https://mixkit.co/free-stock-video/sensoji-shrine-in-tokyo-japan-4403/",
+"mp4": "https://assets.mixkit.co/videos/4403/4403-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4403/4403-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"30148": {
+"id": "30148",
+"title": "time lapse of a street and mount fuji",
+"page": "https://mixkit.co/free-stock-video/time-lapse-of-a-street-and-mount-fuji-30148/",
+"mp4": "https://assets.mixkit.co/videos/30148/30148-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/30148/30148-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4401": {
+"id": "4401",
+"title": "crowds of people cross a street junction",
+"page": "https://mixkit.co/free-stock-video/crowds-of-people-cross-a-street-junction-4401/",
+"mp4": "https://assets.mixkit.co/videos/4401/4401-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4401/4401-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"20077": {
+"id": "20077",
+"title": "tokyo night street with fast traffic and tower",
+"page": "https://mixkit.co/free-stock-video/tokyo-night-street-with-fast-traffic-and-tower-20077/",
+"mp4": "https://assets.mixkit.co/videos/20077/20077-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/20077/20077-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"30137": {
+"id": "30137",
+"title": "shibuya crosswalk time lapse",
+"page": "https://mixkit.co/free-stock-video/shibuya-crosswalk-time-lapse-30137/",
+"mp4": "https://assets.mixkit.co/videos/30137/30137-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/30137/30137-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4405": {
+"id": "4405",
+"title": "entrance to the senso ji shrine in tokyo japan from",
+"page": "https://mixkit.co/free-stock-video/entrance-to-the-senso-ji-shrine-in-tokyo-japan-from-4405/",
+"mp4": "https://assets.mixkit.co/videos/4405/4405-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4405/4405-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4308": {
+"id": "4308",
+"title": "aerial view of a city during the night",
+"page": "https://mixkit.co/free-stock-video/aerial-view-of-a-city-during-the-night-4308/",
+"mp4": "https://assets.mixkit.co/videos/4308/4308-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4308/4308-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"20061": {
+"id": "20061",
+"title": "tokyo cityscape at night with illuminated tower",
+"page": "https://mixkit.co/free-stock-video/tokyo-cityscape-at-night-with-illuminated-tower-20061/",
+"mp4": "https://assets.mixkit.co/videos/20061/20061-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/20061/20061-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"30141": {
+"id": "30141",
+"title": "cherry trees blooming by the river in tokyo",
+"page": "https://mixkit.co/free-stock-video/cherry-trees-blooming-by-the-river-in-tokyo-30141/",
+"mp4": "https://assets.mixkit.co/videos/30141/30141-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/30141/30141-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"46122": {
+"id": "46122",
+"title": "full shot of a train in tokyo night",
+"page": "https://mixkit.co/free-stock-video/full-shot-of-a-train-in-tokyo-night-46122/",
+"mp4": "https://assets.mixkit.co/videos/46122/46122-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/46122/46122-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4383": {
+"id": "4383",
+"title": "city of tokyo at night",
+"page": "https://mixkit.co/free-stock-video/city-of-tokyo-at-night-4383/",
+"mp4": "https://assets.mixkit.co/videos/4383/4383-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4383/4383-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"42108": {
+"id": "42108",
+"title": "flag of japan waving on a flagpole",
+"page": "https://mixkit.co/free-stock-video/flag-of-japan-waving-on-a-flagpole-42108/",
+"mp4": "https://assets.mixkit.co/videos/42108/42108-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/42108/42108-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4404": {
+"id": "4404",
+"title": "entrance of the senso ji shrine in tokyo",
+"page": "https://mixkit.co/free-stock-video/entrance-of-the-senso-ji-shrine-in-tokyo-4404/",
+"mp4": "https://assets.mixkit.co/videos/4404/4404-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4404/4404-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4437": {
+"id": "4437",
+"title": "people walking in the street in japan",
+"page": "https://mixkit.co/free-stock-video/people-walking-in-the-street-in-japan-4437/",
+"mp4": "https://assets.mixkit.co/videos/4437/4437-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4437/4437-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4309": {
+"id": "4309",
+"title": "tokyo aerial time lapse",
+"page": "https://mixkit.co/free-stock-video/tokyo-aerial-time-lapse-4309/",
+"mp4": "https://assets.mixkit.co/videos/4309/4309-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4309/4309-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4450": {
+"id": "4450",
+"title": "workers moving containers from a cargo ship",
+"page": "https://mixkit.co/free-stock-video/workers-moving-containers-from-a-cargo-ship-4450/",
+"mp4": "https://assets.mixkit.co/videos/4450/4450-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4450/4450-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4454": {
+"id": "4454",
+"title": "people in the subway hall in tokyo",
+"page": "https://mixkit.co/free-stock-video/people-in-the-subway-hall-in-tokyo-4454/",
+"mp4": "https://assets.mixkit.co/videos/4454/4454-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4454/4454-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4455": {
+"id": "4455",
+"title": "atop the city of tokyo at night",
+"page": "https://mixkit.co/free-stock-video/atop-the-city-of-tokyo-at-night-4455/",
+"mp4": "https://assets.mixkit.co/videos/4455/4455-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4455/4455-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4412": {
+"id": "4412",
+"title": "tower of the tree of heaven",
+"page": "https://mixkit.co/free-stock-video/tower-of-the-tree-of-heaven-4412/",
+"mp4": "https://assets.mixkit.co/videos/4412/4412-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4412/4412-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4449": {
+"id": "4449",
+"title": "fisheye lens shot of the subway arriving",
+"page": "https://mixkit.co/free-stock-video/fisheye-lens-shot-of-the-subway-arriving-4449/",
+"mp4": "https://assets.mixkit.co/videos/4449/4449-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4449/4449-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"36338": {
+"id": "36338",
+"title": "large japanese building sticking out from the trees",
+"page": "https://mixkit.co/free-stock-video/large-japanese-building-sticking-out-from-the-trees-36338/",
+"mp4": "https://assets.mixkit.co/videos/36338/36338-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/36338/36338-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4453": {
+"id": "4453",
+"title": "subway network in tokyo",
+"page": "https://mixkit.co/free-stock-video/subway-network-in-tokyo-4453/",
+"mp4": "https://assets.mixkit.co/videos/4453/4453-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4453/4453-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4452": {
+"id": "4452",
+"title": "tokyos busy outdoor market",
+"page": "https://mixkit.co/free-stock-video/tokyos-busy-outdoor-market-4452/",
+"mp4": "https://assets.mixkit.co/videos/4452/4452-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4452/4452-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"45342": {
+"id": "45342",
+"title": "spring blossom tree in the wind",
+"page": "https://mixkit.co/free-stock-video/spring-blossom-tree-in-the-wind-45342/",
+"mp4": "https://assets.mixkit.co/videos/45342/45342-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/45342/45342-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"4446": {
+"id": "4446",
+"title": "a luxury yacht during a dusk in a port",
+"page": "https://mixkit.co/free-stock-video/a-luxury-yacht-during-a-dusk-in-a-port-4446/",
+"mp4": "https://assets.mixkit.co/videos/4446/4446-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/4446/4446-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"28665": {
+"id": "28665",
+"title": "mount fuji and houses landscape",
+"page": "https://mixkit.co/free-stock-video/mount-fuji-and-houses-landscape-28665/",
+"mp4": "https://assets.mixkit.co/videos/28665/28665-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/28665/28665-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"28631": {
+"id": "28631",
+"title": "mount fuji and traffic road",
+"page": "https://mixkit.co/free-stock-video/mount-fuji-and-traffic-road-28631/",
+"mp4": "https://assets.mixkit.co/videos/28631/28631-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/28631/28631-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"20168": {
+"id": "20168",
+"title": "old temple in kyoto with tourist on the stairs",
+"page": "https://mixkit.co/free-stock-video/old-temple-in-kyoto-with-tourist-on-the-stairs-20168/",
+"mp4": "https://assets.mixkit.co/videos/20168/20168-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/20168/20168-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"39431": {
+"id": "39431",
+"title": "kyoto city in motion in a shot from above",
+"page": "https://mixkit.co/free-stock-video/kyoto-city-in-motion-in-a-shot-from-above-39431/",
+"mp4": "https://assets.mixkit.co/videos/39431/39431-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/39431/39431-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"20076": {
+"id": "20076",
+"title": "kyoto buddhist temple and tourism",
+"page": "https://mixkit.co/free-stock-video/kyoto-buddhist-temple-and-tourism-20076/",
+"mp4": "https://assets.mixkit.co/videos/20076/20076-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/20076/20076-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"20169": {
+"id": "20169",
+"title": "kyoto busy street with crosswalks time lapse",
+"page": "https://mixkit.co/free-stock-video/kyoto-busy-street-with-crosswalks-time-lapse-20169/",
+"mp4": "https://assets.mixkit.co/videos/20169/20169-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/20169/20169-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"20164": {
+"id": "20164",
+"title": "kyoto historic temple building",
+"page": "https://mixkit.co/free-stock-video/kyoto-historic-temple-building-20164/",
+"mp4": "https://assets.mixkit.co/videos/20164/20164-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/20164/20164-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"20170": {
+"id": "20170",
+"title": "kyoto busy train station time lapse",
+"page": "https://mixkit.co/free-stock-video/kyoto-busy-train-station-time-lapse-20170/",
+"mp4": "https://assets.mixkit.co/videos/20170/20170-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/20170/20170-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"20161": {
+"id": "20161",
+"title": "kyoto crossroad at night",
+"page": "https://mixkit.co/free-stock-video/kyoto-crossroad-at-night-20161/",
+"mp4": "https://assets.mixkit.co/videos/20161/20161-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/20161/20161-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"20072": {
+"id": "20072",
+"title": "kyoto historic temple with tourism",
+"page": "https://mixkit.co/free-stock-video/kyoto-historic-temple-with-tourism-20072/",
+"mp4": "https://assets.mixkit.co/videos/20072/20072-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/20072/20072-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"39428": {
+"id": "39428",
+"title": "kyoto bus station",
+"page": "https://mixkit.co/free-stock-video/kyoto-bus-station-39428/",
+"mp4": "https://assets.mixkit.co/videos/39428/39428-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/39428/39428-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"30026": {
+"id": "30026",
+"title": "city crossroad and traffic in kyoto",
+"page": "https://mixkit.co/free-stock-video/city-crossroad-and-traffic-in-kyoto-30026/",
+"mp4": "https://assets.mixkit.co/videos/30026/30026-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/30026/30026-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"28640": {
+"id": "28640",
+"title": "kyoto cityscape at daytime",
+"page": "https://mixkit.co/free-stock-video/kyoto-cityscape-at-daytime-28640/",
+"mp4": "https://assets.mixkit.co/videos/28640/28640-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/28640/28640-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"20167": {
+"id": "20167",
+"title": "kyoto industrial pier landscape",
+"page": "https://mixkit.co/free-stock-video/kyoto-industrial-pier-landscape-20167/",
+"mp4": "https://assets.mixkit.co/videos/20167/20167-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/20167/20167-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"20165": {
+"id": "20165",
+"title": "bus terminal in kyoto time lapse",
+"page": "https://mixkit.co/free-stock-video/bus-terminal-in-kyoto-time-lapse-20165/",
+"mp4": "https://assets.mixkit.co/videos/20165/20165-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/20165/20165-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"20163": {
+"id": "20163",
+"title": "kyoto crossroad timelapse",
+"page": "https://mixkit.co/free-stock-video/kyoto-crossroad-timelapse-20163/",
+"mp4": "https://assets.mixkit.co/videos/20163/20163-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/20163/20163-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"20162": {
+"id": "20162",
+"title": "kyoto railway terminal interior",
+"page": "https://mixkit.co/free-stock-video/kyoto-railway-terminal-interior-20162/",
+"mp4": "https://assets.mixkit.co/videos/20162/20162-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/20162/20162-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"30050": {
+"id": "30050",
+"title": "kyoto tower and the city scape",
+"page": "https://mixkit.co/free-stock-video/kyoto-tower-and-the-city-scape-30050/",
+"mp4": "https://assets.mixkit.co/videos/30050/30050-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/30050/30050-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"20166": {
+"id": "20166",
+"title": "kyoto crossroad with traffic time lapse",
+"page": "https://mixkit.co/free-stock-video/kyoto-crossroad-with-traffic-time-lapse-20166/",
+"mp4": "https://assets.mixkit.co/videos/20166/20166-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/20166/20166-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"48889": {
+"id": "48889",
+"title": "japanese cherry blossom in spring",
+"page": "https://mixkit.co/free-stock-video/japanese-cherry-blossom-in-spring-48889/",
+"mp4": "https://assets.mixkit.co/videos/48889/48889-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/48889/48889-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"48755": {
+"id": "48755",
+"title": "close up of beautiful pink cherry blossoms",
+"page": "https://mixkit.co/free-stock-video/close-up-of-beautiful-pink-cherry-blossoms-48755/",
+"mp4": "https://assets.mixkit.co/videos/48755/48755-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/48755/48755-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"51257": {
+"id": "51257",
+"title": "a young woman captured eating a delicious ramen and engaging",
+"page": "https://mixkit.co/free-stock-video/a-young-woman-captured-eating-a-delicious-ramen-and-engaging-51257/",
+"mp4": "https://assets.mixkit.co/videos/51257/51257-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/51257/51257-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"48686": {
+"id": "48686",
+"title": "woman pouring tea into a tea cup",
+"page": "https://mixkit.co/free-stock-video/woman-pouring-tea-into-a-tea-cup-48686/",
+"mp4": "https://assets.mixkit.co/videos/48686/48686-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/48686/48686-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"45086": {
+"id": "45086",
+"title": "cinemagraph of steaming cup of tea and sweats",
+"page": "https://mixkit.co/free-stock-video/cinemagraph-of-steaming-cup-of-tea-and-sweats-45086/",
+"mp4": "https://assets.mixkit.co/videos/45086/45086-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/45086/45086-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"46354": {
+"id": "46354",
+"title": "falling rice in slow motion",
+"page": "https://mixkit.co/free-stock-video/falling-rice-in-slow-motion-46354/",
+"mp4": "https://assets.mixkit.co/videos/46354/46354-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/46354/46354-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"46017": {
+"id": "46017",
+"title": "traditional japanese tea set being prepared",
+"page": "https://mixkit.co/free-stock-video/traditional-japanese-tea-set-being-prepared-46017/",
+"mp4": "https://assets.mixkit.co/videos/46017/46017-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/46017/46017-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"51255": {
+"id": "51255",
+"title": "a young brunette woman playfuly eats a delicious ramen noodles",
+"page": "https://mixkit.co/free-stock-video/a-young-brunette-woman-playfuly-eats-a-delicious-ramen-noodles-51255/",
+"mp4": "https://assets.mixkit.co/videos/51255/51255-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/51255/51255-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"51238": {
+"id": "51238",
+"title": "a couple of young girls savour a the the licious",
+"page": "https://mixkit.co/free-stock-video/a-couple-of-young-girls-savour-a-the-the-licious-51238/",
+"mp4": "https://assets.mixkit.co/videos/51238/51238-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/51238/51238-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"51236": {
+"id": "51236",
+"title": "a young woman poses to the mobile camera for a",
+"page": "https://mixkit.co/free-stock-video/a-young-woman-poses-to-the-mobile-camera-for-a-51236/",
+"mp4": "https://assets.mixkit.co/videos/51236/51236-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/51236/51236-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"49322": {
+"id": "49322",
+"title": "woman runs freely among tea plantations at sunset",
+"page": "https://mixkit.co/free-stock-video/woman-runs-freely-among-tea-plantations-at-sunset-49322/",
+"mp4": "https://assets.mixkit.co/videos/49322/49322-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/49322/49322-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"51241": {
+"id": "51241",
+"title": "a couple of young girls snap a selfie at the",
+"page": "https://mixkit.co/free-stock-video/a-couple-of-young-girls-snap-a-selfie-at-the-51241/",
+"mp4": "https://assets.mixkit.co/videos/51241/51241-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/51241/51241-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"44600": {
+"id": "44600",
+"title": "japanese fan watching a world cup match",
+"page": "https://mixkit.co/free-stock-video/japanese-fan-watching-a-world-cup-match-44600/",
+"mp4": "https://assets.mixkit.co/videos/44600/44600-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/44600/44600-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"51258": {
+"id": "51258",
+"title": "a couple of young teenager women take photos of their",
+"page": "https://mixkit.co/free-stock-video/a-couple-of-young-teenager-women-take-photos-of-their-51258/",
+"mp4": "https://assets.mixkit.co/videos/51258/51258-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/51258/51258-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"48690": {
+"id": "48690",
+"title": "mother helping her daughter with online homework",
+"page": "https://mixkit.co/free-stock-video/mother-helping-her-daughter-with-online-homework-48690/",
+"mp4": "https://assets.mixkit.co/videos/48690/48690-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/48690/48690-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"46015": {
+"id": "46015",
+"title": "close up of a expertly crafted teapot being overfilled with",
+"page": "https://mixkit.co/free-stock-video/close-up-of-a-expertly-crafted-teapot-being-overfilled-with-46015/",
+"mp4": "https://assets.mixkit.co/videos/46015/46015-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/46015/46015-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"33978": {
+"id": "33978",
+"title": "japanese pavilion in a snowy garden with a horse",
+"page": "https://mixkit.co/free-stock-video/japanese-pavilion-in-a-snowy-garden-with-a-horse-33978/",
+"mp4": "https://assets.mixkit.co/videos/33978/33978-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/33978/33978-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"51242": {
+"id": "51242",
+"title": "a couple of girls talking at the restaurant table suddenly",
+"page": "https://mixkit.co/free-stock-video/a-couple-of-girls-talking-at-the-restaurant-table-suddenly-51242/",
+"mp4": "https://assets.mixkit.co/videos/51242/51242-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/51242/51242-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"49324": {
+"id": "49324",
+"title": "woman walks and touches the tea plants in the field",
+"page": "https://mixkit.co/free-stock-video/woman-walks-and-touches-the-tea-plants-in-the-field-49324/",
+"mp4": "https://assets.mixkit.co/videos/49324/49324-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/49324/49324-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"42109": {
+"id": "42109",
+"title": "japanese flag waving high above",
+"page": "https://mixkit.co/free-stock-video/japanese-flag-waving-high-above-42109/",
+"mp4": "https://assets.mixkit.co/videos/42109/42109-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/42109/42109-thumb-360-0.jpg",
+"license": "Mixkit Stock Video Free License",
+"license_url": "https://mixkit.co/license/#videoFree"
+},
+"49323": {
+"id": "49323",
+"title": "aerial view of the lines formed in the tea plantations",
+"page": "https://mixkit.co/free-stock-video/aerial-view-of-the-lines-formed-in-the-tea-plantations-49323/",
+"mp4": "https://assets.mixkit.co/videos/49323/49323-720.mp4",
+"thumb": "https://assets.mixkit.co/videos/49323/49323-thumb-360-0.jpg",
 "license": "Mixkit Stock Video Free License",
 "license_url": "https://mixkit.co/license/#videoFree"
 }
