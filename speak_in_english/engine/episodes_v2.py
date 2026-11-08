@@ -2681,3 +2681,31 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "forgot" — rubric answers4 (60-70 s). heroine = Jessica, husband = Roger, granny = Alice
+CAST.update({
+    "hub2": dict(voice="am_puck", speed=1.0, lang="en-us", el="CwhRBWXzGAHq8TQ4Fs17"),   # forgot: the husband who left her at the petrol station (Roger)
+    "gran3": dict(voice="bf_alice", speed=1.0, lang="en-gb", el="Xb7hH8MSUJpSbSDYk0k2"),   # forgot: the granny in the back seat (Alice)
+})
+EP["forgot"] = dict(
+    title='Муж забыл тебя на заправке', rubric='answers4',
+    hook_title=[['МУЖ МЕНЯ', 'd'], ['ЗАБЫЛ НА ЗАПРАВКЕ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    lines=[
+        ('hook_m', 'hub2', "[surprised] Oh! You weren't in the back? I thought you were asleep!", 'Ой! Тебя не было сзади? Я думал, ты спишь!'),
+        ('hook', 'nar', 'Муж уехал с заправки без тебя и вернулся через двадцать минут. Четыре ответа.', ''),
+        ('o1_h', 'her', '[angrily] You! Forget! Me!', 'Ты! Забыть! Меня!'),
+        ('o1_m', 'hub2', "[shrugging] I didn't forget! I just… remembered later.", 'Я не забыл! Я просто… вспомнил попозже.'),
+        ('o1_nar', 'nar', 'В лоб — а он просто вспомнил попозже.', ''),
+        ('o2_h', 'her', '[softly] I was a bit worried, you know.', 'Я вообще-то немного волновалась.'),
+        ('o2_m', 'hub2', '[cheerfully] Me too! I thought, why is it so quiet?', 'Я тоже! Думаю: чего это так тихо?'),
+        ('o2_nar', 'nar', 'Вежливо — а ему было тихо и хорошо.', ''),
+        ('o3_h', 'her', "[firmly] You drove off without me. Twenty minutes, and you didn't notice?", 'Ты уехал без меня. Двадцать минут — и ты не заметил?'),
+        ('o3_m', 'hub2', "[apologetically] …I'm so sorry. Coffee's on me for a month.", '…Мне так жаль. Кофе за мой счёт целый месяц.'),
+        ('o3_nar', 'nar', 'Как носитель: просто факты, без крика. Запоминай:', ''),
+        ('o3_tip', 'tip', 'Drive off without someone.', ''),
+        ('o4_h', 'her', '[sweetly] Twenty minutes of silence and free refills. Honestly, darling, next time leave without me on purpose — I might not come back.', 'Двадцать минут тишины и бесплатный кофе. Честно, дорогой, в следующий раз уезжай без меня нарочно — я могу и не вернуться.'),
+        ('o4_m', 'hub2', "[pleading] …Please get in. I'll never stop here again.", '…Садись, пожалуйста. Я больше никогда здесь не остановлюсь.'),
+        ('end_g', 'gran3', '[sweetly] Hello, dear. He said I looked like you from behind.', 'Здравствуй, милая. Он сказал, что сзади я похожа на тебя.'),
+        ('moral', 'nar', 'Мораль: пересчитывай пассажиров перед стартом.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши цифру и сохрани!', ''),
+    ],
+)
