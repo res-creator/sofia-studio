@@ -40,6 +40,7 @@ If the topic (or the same story with another angle) is here, say so and take the
 | `listerine_ep24/` | main | Listerine: floor cleaner → mouthwash, the "halitosis" ads of the 1920s | `floor_cleaner_to_mouthwash.mp4` | 42.8 s |
 | `camel_ep25/` | main | "More Doctors Smoke Camels" (1946) and the rigged doctors' survey | `more_doctors_smoke.mp4` | 39.4 s |
 | `rats_ep26/` | main | The Great Hanoi Rat Hunt, 1902: paid per rat tail | `paid_per_rat_tail.mp4` | 46.9 s |
+| `pizza_ep27/` | claude/sweet-brahmagupta-7uiuaz | Bitcoin Pizza, 2010: Laszlo Hanyecz paid 10,000 BTC for two pizzas ($41 then, ~$1.26B at the 2025 peak) | `bitcoin_pizza.mp4` | 35.5 s |
 | `longform_rewards/` | main | LONG-FORM YouTube 16:9 "When Paying People Backfired": Hanoi rats, Hoover flights, pudding guy, Wells Fargo fake accounts, Mexico City Hoy No Circula, emu bounty, Goodhart's law | `when_paying_people_backfired.mp4` | 8:13 |
 | `longform/cocacola_history/` | main (after PR) | LONG-FORM YouTube 16:9 "How Coca-Cola Took Over the World in 10 Minutes": Pemberton 1886, Candler coupons, $1 bottling deal, contour bottle, Woodruff/WWII, Pepsi, New Coke, today | `how_coca_cola_took_over_the_world.mp4` | 9:21 |
 | `eiffel_ep28/` | claude/sweet-brahmagupta-7uiuaz | The man who sold the Eiffel Tower (Victor Lustig, 1925; per the 1961 memoir) — ADULT DOCUMENTARY style (archive photos, stamps), noir-jazz music | `the_man_who_sold_the_eiffel_tower.mp4` | 39.5 s |
