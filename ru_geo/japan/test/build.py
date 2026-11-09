@@ -7,16 +7,16 @@ D = os.path.dirname(os.path.abspath(__file__)); RG = os.path.join(D, '..', '..')
 sys.path.insert(0, os.path.join(RG, 'lib')); import look
 from script import LINES
 W, H, FPS = 1920, 1080, 30
-DATA = os.path.join(RG, 'data'); PX = json.load(open(f'{RG}/iceland/rework/pix_pool.json')); MK = json.load(open(f'{RG}/iceland/rework/mixkit_db.json'))['v']
+DATA = os.path.join(RG, 'data'); JP = json.load(open(f'{D}/../pool/pool.json')); PX = json.load(open(f'{RG}/iceland/rework/pix_pool.json')); MK = json.load(open(f'{RG}/iceland/rework/mixkit_db.json'))['v']
 UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36'
-V0 = 2.2                     # голос вступает после того, как напечаталась дата
+V0 = 1.0                     # голос вступает после того, как напечаталась дата
 GRADE = 'eq=contrast=1.05:saturation=1.18:gamma=1.0'
 
 def src(kind, i):
-    p = f'{DATA}/pixabay/v/{i}.mp4' if kind == 'px' else f'{DATA}/mixkit/{i}.mp4'
+    p = f'{DATA}/pixabay/v/{i}.mp4' if kind in ('px', 'jp') else f'{DATA}/mixkit/{i}.mp4'
     if not (os.path.exists(p) and os.path.getsize(p) > 50000):
         os.makedirs(os.path.dirname(p), exist_ok=True)
-        url = PX[str(i)]['url'] if kind == 'px' else MK[str(i)]['mp4']
+        url = JP[f'px{i}']['url'] if kind == 'jp' else (PX[str(i)]['url'] if kind == 'px' else MK[str(i)]['mp4'])
         subprocess.run(['curl', '-sS', '-L', '-A', UA, '-o', p, url], check=True)
     return p
 
@@ -67,7 +67,7 @@ def seis_amp(t):
 def overlay(img, t):
     d = ImageDraw.Draw(img); li = max(i for i in range(len(LINES)) if bounds[i] <= t)
     # дата печатается, как на телетайпе
-    stamp = LINES[0]['stamp']; n = int(min(len(stamp), max(0, (t - 0.4) / 0.07)))
+    stamp = LINES[0].get('stamp', ''); n = int(min(len(stamp), max(0, (t - 0.4) / 0.07)))
     a = 1.0 if t < starts[2] else max(0.0, 1 - (t - starts[2]) / 0.6)
     if a > 0 and n:
         f = look.font(84, 300); x = 120; y = H - 260
@@ -76,7 +76,7 @@ def overlay(img, t):
         if int(t * 2) % 2 == 0 or n < len(stamp): dl.rectangle((x + tw + 10, y - 40, x + tw + 16, y + 40), fill=look.ACCENT + (int(255 * a),))
         img.alpha_composite(lay)
     # линия сейсмографа по низу кадра: бежит справа налево, на толчке — всплеск
-    if t < starts[4]:
+    if any(l.get('seis') for l in LINES) and t < starts[4]:
         fa = min(1.0, t / 0.6) * (1.0 if t < starts[4] - 0.6 else max(0.0, (starts[4] - t) / 0.6))
         lay = Image.new('RGBA', img.size); dl = ImageDraw.Draw(lay); pts = []; base = H - 120
         for x in range(0, W, 4):
@@ -116,7 +116,7 @@ if '--audio-only' not in sys.argv:
     for si, s in enumerate(shots):
         n = round((s['t0'] + s['dur']) * FPS) - round(s['t0'] * FPS)
         shake = LINES[s['line']].get('shake', False)
-        dissolve = LINES[s['line']].get('title') and s['first']
+        dissolve = s['first'] and si > 0
         for k, fr in enumerate(frames(s['src'], s['ss'], n, shake)):
             t = (round(s['t0'] * FPS) + k) / FPS
             a = fr
@@ -130,11 +130,13 @@ if '--audio-only' not in sys.argv:
 
 # ---------- звук: голос, музыка Mixkit, гул землетрясения ----------
 tq = starts[2] + 0.8
-music = f'{DATA}/music/mixkit_188_echoes.mp3'
+music = f'{DATA}/music/mixkit_634_your_breath.mp3'
+RUMBLE = any(l.get('shake') for l in LINES)
 flt = (f"[1:a]adelay={int(V0*1000)}|{int(V0*1000)},asplit=2[vo][vk];"
        f"[2:a]atrim=0:{TOTAL:.2f},volume=0.16,afade=t=in:d=1.5,afade=t=out:st={TOTAL-2:.2f}:d=2[mu];"
-       f"anoisesrc=d=7:c=brown:a=0.9,lowpass=f=90,volume=2.2,afade=t=in:d=1.4,afade=t=out:st=3:d=4,adelay={int(tq*1000)}|{int(tq*1000)}[rb];"
-       f"[mu][rb]amix=inputs=2:normalize=0[bg];[bg][vk]sidechaincompress=threshold=0.05:ratio=4:attack=20:release=400[bgd];"
+       + (f"anoisesrc=d=7:c=brown:a=0.9,lowpass=f=90,volume=2.2,afade=t=in:d=1.4,afade=t=out:st=3:d=4,adelay={int(tq*1000)}|{int(tq*1000)}[rb];"
+          f"[mu][rb]amix=inputs=2:normalize=0[bg];" if RUMBLE else "[mu]anull[bg];") +
+       f"[bg][vk]sidechaincompress=threshold=0.05:ratio=4:attack=20:release=400[bgd];"
        f"[bgd][vo]amix=inputs=2:normalize=0,loudnorm=I=-16:TP=-1.5:LRA=11[a]")
 subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', out_v, '-i', f'{D}/vo/all.mp3', '-i', music, '-filter_complex', flt,
                 '-map', '0:v', '-map', '[a]', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-t', f'{TOTAL:.2f}', '-movflags', '+faststart', f'{D}/japan_test.mp4'], check=True)

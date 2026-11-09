@@ -7,7 +7,7 @@ from script import LINES
 VOICE = sys.argv[1] if len(sys.argv) > 1 else 'ru-RU-DmitryNeural'
 async def run():
     text = ' '.join(l['text'] for l in LINES)
-    c = edge_tts.Communicate(text, VOICE, rate='-6%'); sb = []
+    c = edge_tts.Communicate(text, VOICE, rate='-10%'); sb = []
     with open(f'{D}/vo/all.mp3', 'wb') as f:
         async for ch in c.stream():
             if ch['type'] == 'audio': f.write(ch['data'])
