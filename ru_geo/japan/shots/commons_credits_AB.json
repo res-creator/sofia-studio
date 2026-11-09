@@ -29,59 +29,17 @@
   "license": "CC BY-SA 4.0",
   "file": "Otsuka vending machines in Kita-ku, Osaka.jpg"
  },
- "jp/vending_beer_onsen.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3ABeer_vending_machines_at_an_onsen_in_Japan.jpg",
-  "author": "Sgroey",
-  "license": "CC BY-SA 4.0",
-  "file": "Beer vending machines at an onsen in Japan.jpg"
- },
- "jp/yakitori_counter.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3AOmoide_Yokocho_%2853136554958%29.jpg",
-  "author": "Dick Thomas Johnson from Tokyo, Japan",
-  "license": "CC BY 2.0",
-  "file": "Omoide Yokocho (53136554958).jpg"
- },
- "jp/yakitori_counter2.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3AOmoide_Yokocho_%2853149989529%29.jpg",
-  "author": "Dick Thomas Johnson from Tokyo, Japan",
-  "license": "CC BY 2.0",
-  "file": "Omoide Yokocho (53149989529).jpg"
- },
  "jp/yakitori_lanterns.jpg": {
   "page": "https://commons.wikimedia.org/wiki/File%3AYakitori_shop_lanterns_in_Omoide-Yokoch%C5%8D%2C_Shinjuku%2C_Tokyo%2C_Japan_2011_2_%287024865381%29.jpg",
   "author": "Yiannis Theologos Michellis",
   "license": "CC0",
   "file": "Yakitori shop lanterns in Omoide-Yokochō, Shinjuku, Tokyo, Japan 2011 2 (7024865381).jpg"
  },
- "jp/catcafe_moff.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3A%E7%8C%AB%E3%82%AB%E3%83%95%E3%82%A7_Cat_Cafe_MOFF_%E3%83%A8%E3%83%89%E3%83%90%E3%82%B7Akiba%E5%BA%97_%2855089976357%29.jpg",
-  "author": "nagi usano from Tokyo, Japan",
-  "license": "CC BY 4.0",
-  "file": "猫カフェ Cat Cafe MOFF ヨドバシAkiba店 (55089976357).jpg"
- },
- "jp/catcafe_jalala1.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3AJalala_Cat_Caf%C3%A9_%40_Akihabara_%289477016991%29.jpg",
-  "author": "Guilhem Vellut from Annecy, France",
-  "license": "CC BY 2.0",
-  "file": "Jalala Cat Café @ Akihabara (9477016991).jpg"
- },
- "jp/catcafe_jalala2.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3AJalala_Cat_Caf%C3%A9_%40_Akihabara_%289479821326%29.jpg",
-  "author": "Guilhem Vellut from Annecy, France",
-  "license": "CC BY 2.0",
-  "file": "Jalala Cat Café @ Akihabara (9479821326).jpg"
- },
  "jp/catcafe_nekorobi.jpg": {
   "page": "https://commons.wikimedia.org/wiki/File%3AA_shop_assistant_of_a_cat_cafe_%286887378772%29.jpg",
   "author": "Takashi Hososhima from Tokyo, Japan",
   "license": "CC BY-SA 2.0",
   "file": "A shop assistant of a cat cafe (6887378772).jpg"
- },
- "jp/kumamon_ramen.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3AKumamon_%2815078138381%29.jpg",
-  "author": "ayu oshimi",
-  "license": "CC BY-SA 2.0",
-  "file": "Kumamon (15078138381).jpg"
  },
  "jp/kumamon_wall.jpg": {
   "page": "https://commons.wikimedia.org/wiki/File%3AKumamon_on_the_wall_%2814987894668%29.jpg",
@@ -107,12 +65,6 @@
   "license": "CC BY 2.0",
   "file": "新発売 (8822182618).jpg"
  },
- "jp/onigiri_kyoto.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3A%E8%A1%8C%E6%A5%BD%E3%81%AE%E3%81%8A%E4%BE%9B%E3%81%AB%21%21_%283779490693%29.jpg",
-  "author": "Pawel Loj",
-  "license": "CC BY 2.0",
-  "file": "行楽のお供に!! (3779490693).jpg"
- },
  "jp/owlcafe.jpg": {
   "page": "https://commons.wikimedia.org/wiki/File%3AOwls_Looking_at_Me_%2821160358532%29.jpg",
   "author": "Kainoki Kaede",
@@ -125,12 +77,6 @@
   "license": "CC BY 4.0",
   "file": "GiGO Akihabara UFO Catcher Machines 15-09-2024 (1).jpg"
  },
- "jp/ufo_taito.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3ATaito_Station_Arcade.jpg",
-  "author": "ElCapitanBSC from Laurel, MD, USA",
-  "license": "CC BY-SA 2.0",
-  "file": "Taito Station Arcade.jpg"
- },
  "jp/tessei_crew.jpg": {
   "page": "https://commons.wikimedia.org/wiki/File%3AShinkansen_cleaning_crew_2017_%2833378268134%29.jpg",
   "author": "calamity_sal",
@@ -142,12 +88,6 @@
   "author": "City Foodsters",
   "license": "CC BY 2.0",
   "file": "Honkeohtako's takoyaki, Osaka; December 2013 (03).jpg"
- },
- "jp/takoyaki_cook2.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3AHonkeohtako%27s_takoyaki%2C_Osaka%3B_December_2013_%2802%29.jpg",
-  "author": "City Foodsters",
-  "license": "CC BY 2.0",
-  "file": "Honkeohtako's takoyaki, Osaka; December 2013 (02).jpg"
  },
  "jp/okonomiyaki_teppan.jpg": {
   "page": "https://commons.wikimedia.org/wiki/File%3AOkonomiyaki_cooking_on_teppan_Osaka.jpg",
@@ -167,12 +107,6 @@
   "license": "CC0",
   "file": "Ramen restaurant in Yuzawa 2.jpg"
  },
- "jp/ramen_tokyo_set.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3ARamen_Cooking_Tokyo_-_ramen_sushi_sake_set.jpg",
-  "author": "Junichiro Ozaki",
-  "license": "CC BY-SA 4.0",
-  "file": "Ramen Cooking Tokyo - ramen sushi sake set.jpg"
- },
  "jp/geiko_lanterns.jpg": {
   "page": "https://commons.wikimedia.org/wiki/File%3AGion_Higashi_Tsunemomo.jpg",
   "author": "Japanexperterna.se",
@@ -185,18 +119,6 @@
   "license": "CC BY-SA 2.0",
   "file": "Gion Tomitsuyu.jpg"
  },
- "jp/maiko_hinayu.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3AGion_Higashi_maiko_Hinay%C5%AB_in_Seirai-in_Temple_07.jpg",
-  "author": "Kumi Yasukawa",
-  "license": "CC BY-SA 2.0",
-  "file": "Gion Higashi maiko Hinayū in Seirai-in Temple 07.jpg"
- },
- "jp/gion_street.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3AGion_Kyoto.jpg",
-  "author": "Vldimir Pankratov",
-  "license": "CC BY-SA 4.0",
-  "file": "Gion Kyoto.jpg"
- },
  "jp/divercity_gundam.jpg": {
   "page": "https://commons.wikimedia.org/wiki/File%3ADiver_City_Tokyo_%2820873006931%29.jpg",
   "author": "ltsc1980",
@@ -205,7 +127,7 @@
  },
  "jp/divercity_gundam2.jpg": {
   "page": "https://commons.wikimedia.org/wiki/File%3ADiver_City_Tokyo_-01.jpg",
-  "author": "Aimaimyi Object location 35° 37′ 29.97″ N, 139° 46′ 30.1″ E View this and other nearby images on: OpenStreetMap 35.624992; 139.775029",
+  "author": "Aimaimyi",
   "license": "CC BY-SA 3.0, GFDL",
   "file": "Diver City Tokyo -01.jpg"
  },
@@ -215,21 +137,15 @@
   "license": "CC0",
   "file": "Ryōan-ji rock garden with silhouettes of tourists, Kyoto, 2016.jpg"
  },
- "jp/koban_sudocho.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3AKoban_%28police_box%29_from_Sudo-cho.jpg",
-  "author": "MichaelMaggs",
-  "license": "CC BY-SA 3.0",
-  "file": "Koban (police box) from Sudo-cho.jpg"
- },
  "jp/kaitenzushi_asakusa.jpg": {
   "page": "https://commons.wikimedia.org/wiki/File%3AKonveyer_belt_sushi_at_Asakusa_%286156191536%29.jpg",
-  "author": "Maarten Heerlien from Voorschoten, The Netherlands Flickr tags InfoField Flickr Tags: restaurants food sushi 寿司 すし konveyer belt sushi 回転寿司 Asakusa 浅草 Tokyo 東京 Japan .",
+  "author": "Maarten Heerlien from Voorschoten, The Netherlands",
   "license": "CC BY 2.0",
   "file": "Konveyer belt sushi at Asakusa (6156191536).jpg"
  },
  "jp/sushi_master_kyoto.jpg": {
   "page": "https://commons.wikimedia.org/wiki/File%3A010_Sushi_master_in_Kyoto%2C_Japan_-_sushi_chef_%E5%AF%BF%E5%8F%B8%E8%81%B7%E4%BA%BA.jpg",
-  "author": "Marek Ślusarczyk ( Tupungato ) Photo portfolio",
+  "author": "Marek Ślusarczyk (Tupungato)",
   "license": "CC BY 3.0",
   "file": "010 Sushi master in Kyoto, Japan - sushi chef 寿司職人.jpg"
  },
@@ -239,33 +155,21 @@
   "license": "CC BY-SA 2.0",
   "file": "TeamLab Borderless, Odaiba, Tokyo, Japan (49070134108).jpg"
  },
- "jp/teamlab_2.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3ATeamLab_Borderless%2C_Odaiba%2C_Tokyo%2C_Japan_%2849070859992%29.jpg",
-  "author": "Domenico Convertini from Zurich, Schweiz",
-  "license": "CC BY-SA 2.0",
-  "file": "TeamLab Borderless, Odaiba, Tokyo, Japan (49070859992).jpg"
- },
  "jp/teamlab_3.jpg": {
   "page": "https://commons.wikimedia.org/wiki/File%3ATeamLab_Borderless%2C_Odaiba%2C_Tokyo%2C_Japan_%2849070835722%29.jpg",
   "author": "Domenico Convertini from Zurich, Schweiz",
   "license": "CC BY-SA 2.0",
   "file": "TeamLab Borderless, Odaiba, Tokyo, Japan (49070835722).jpg"
  },
- "jp/teamlab_4.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3ATeamLab_Borderless%2C_Odaiba%2C_Tokyo%2C_Japan_%2849070853862%29.jpg",
-  "author": "Domenico Convertini from Zurich, Schweiz",
-  "license": "CC BY-SA 2.0",
-  "file": "TeamLab Borderless, Odaiba, Tokyo, Japan (49070853862).jpg"
- },
  "jp/hiroshige_sushi.jpg": {
   "page": "https://commons.wikimedia.org/wiki/File%3AHiroshige_Bowl_of_Sushi.jpg",
-  "author": "",
+  "author": "Utagawa Hiroshige (1797–1858)",
   "license": "PDM, Public domain",
   "file": "Hiroshige Bowl of Sushi.jpg"
  },
  "jp/met_sushi.jpg": {
   "page": "https://commons.wikimedia.org/wiki/File%3AMET_DP135724.jpg",
-  "author": "",
+  "author": "ukiyo-e print, The Metropolitan Museum of Art (DP135724)",
   "license": "CC0",
   "file": "MET DP135724.jpg"
  },
@@ -281,12 +185,6 @@
   "license": "CC BY-SA 4.0",
   "file": "Fushimi Inari Taisha lumière.jpg"
  },
- "jp/fushimi_senbon2.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3AFushimi_Inari_Senbon_Torii.jpg",
-  "author": "Yanajin33",
-  "license": "CC BY-SA 3.0",
-  "file": "Fushimi Inari Senbon Torii.jpg"
- },
  "jp/nara_feeding.jpg": {
   "page": "https://commons.wikimedia.org/wiki/File%3AFeeding_deer_%285074350231%29.jpg",
   "author": "Natasha Suslina from Tokyo, Japan",
@@ -298,18 +196,6 @@
   "author": "User:uniquex",
   "license": "CC BY-SA 3.0",
   "file": "A deer at Nara Park, Japan.jpeg"
- },
- "jp/lawson_fuji.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3ALawson_convenience_store%2C_Fujikawaguchiko%2C_Yamanashi_20130813_1.jpg",
-  "author": "DXR Personality rights Personality rights Personality rights warning Although this work is freely licensed or in the public domain , the person(s) shown may have rights that legally restrict certain r",
-  "license": "CC BY-SA 4.0",
-  "file": "Lawson convenience store, Fujikawaguchiko, Yamanashi 20130813 1.jpg"
- },
- "jp/lawson_osaka.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3ALawson_Store100_Joto-Imafuku_West.jpg",
-  "author": "Mr.ちゅらさん",
-  "license": "CC BY-SA 4.0",
-  "file": "Lawson Store100 Joto-Imafuku West.jpg"
  },
  "jp/n700_hiroshima.jpg": {
   "page": "https://commons.wikimedia.org/wiki/File%3AShinkansen_N700_at_HIroshima_Station_2_2025-03-27.jpg",
@@ -377,12 +263,6 @@
   "license": "CC BY 3.0",
   "file": "Tokyo metro at rush hour.png"
  },
- "jp/yakitori_shimbashi.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3AYakatori_bar_at_Shimbashi.jpg",
-  "author": "Andrew Peat. andrew.peat7@ntlworld.com",
-  "license": "CC BY-SA 4.0, GFDL",
-  "file": "Yakatori bar at Shimbashi.jpg"
- },
  "jp/seven_eleven.jpg": {
   "page": "https://commons.wikimedia.org/wiki/File%3ASeven-Eleven_in_Japan_2012_%2814884682980%29.jpg",
   "author": "Dick Thomas Johnson",
@@ -400,12 +280,6 @@
   "author": "Osamu Iwasaki",
   "license": "CC BY-SA 2.0",
   "file": "Garbage Boxes in Fuchu, Tokyo 01 - Feb 28, 2009.jpg"
- },
- "jp/street_shinjuku_res.jpg": {
-  "page": "https://commons.wikimedia.org/wiki/File%3AResidential_street_in_Shinjuku.jpg",
-  "author": "Real Estate Japan",
-  "license": "CC BY 2.0",
-  "file": "Residential street in Shinjuku.jpg"
  },
  "jp/street_yanaka.jpg": {
   "page": "https://commons.wikimedia.org/wiki/File%3ATokyo_-_Yanaka_141A.jpg",
@@ -436,5 +310,11 @@
   "author": "MaedaAkihiko",
   "license": "CC BY-SA 4.0",
   "file": "Series-N700a-Mt.Fuji.jpg"
+ },
+ "jp/n700_seats.jpg": {
+  "page": "https://commons.wikimedia.org/wiki/File%3AShinkansen_N700_series_Green_seat.JPG",
+  "author": "衛兵隊衛士",
+  "license": "CC BY-SA 3.0",
+  "file": "Shinkansen N700 series Green seat.JPG"
  }
 }
