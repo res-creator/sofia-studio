@@ -1,0 +1,131 @@
+{"reproductions":"<p>If an image is displaying, you can download it yourself. (Some images \ndisplay only as thumbnails outside the Library of Congress because of rights \nconsiderations, but you have access to larger size images on site.)\n</p>\n\n<p>  \nAlternatively, you can purchase copies of various types through Library \nof Congress Duplication Services</a>.\n</p>\n\n<p> \n<ol>\n<p>\n<li><strong>If a digital image is displaying:</strong> The qualities of the digital image \npartially depend on whether it was made from the original or an \nintermediate such as a copy negative or transparency. If the Reproduction \nNumber field above includes a reproduction number that starts with \nLC-DIG..., then there is a digital image that was made directly \nfrom the original and is of sufficient resolution for most publication\n purposes.\n</li> \n</p>\n\n<li><strong>If there is information listed in the Reproduction Number field above:</strong> \nYou can use the reproduction number to purchase a copy from Duplication \nServices.  It will be made from the source listed in the parentheses after\n the number.  \n<p> \nIf only black-and-white (&quot;b&w&quot;) sources are listed and you \n desire a copy showing color or tint (assuming the original has any), \n you can generally purchase a quality copy of the original in color by \n citing the Call Number listed above and including the catalog record \n (&quot;About This Item&quot;) with your request.\n </p>\n</li>\n\n<li><strong>If there is no information listed in the Reproduction Number field \nabove:</strong> You can generally purchase a quality copy through \nDuplication Services. Cite the Call Number listed above and include the catalog record (&quot;About This Item&quot;) with \n your request.\n</li>\n</ol>\n</p>\n\n<p> \nPrice lists, contact information, and order forms are available on the\n <a href=\"https://www.loc.gov/duplicationservices/\">Duplication Services Web site</a>.  \n</p>\n\n\n\n",
+"item":{
+    "source_created": "2019-08-13T00:00:00Z", 
+    "restriction": "", 
+    "other_number": "", 
+    "resource_links": [
+        "https://hdl.loc.gov/loc.pnp/stereo.1s23781"
+    ], 
+    "title": "Eiffel Tower, Paris, France", 
+    "related_items": [], 
+    "medium_brief": "1 photograph :", 
+    "service_medium": "https://cdn.loc.gov/service/pnp/stereo/1s20000/1s23000/1s23700/1s23781r.jpg", 
+    "collections": [
+        {
+            "code": "stereo", 
+            "link": "https://www.loc.gov/pictures/collection/stereo/", 
+            "title": "Stereograph Cards"
+        }
+    ], 
+    "part_of_group": null, 
+    "stmt_of_responsibility": "", 
+    "other_titles": "", 
+    "link": "https://www.loc.gov/pictures/item/2019641487/", 
+    "other_control_numbers": [
+        "21131581"
+    ], 
+    "notes": [
+        {
+            "note": "No. 24988.", 
+            "label": null
+        }, 
+        {
+            "note": "Title from item.", 
+            "label": null
+        }
+    ], 
+    "modified": "2019-09-17T16:58:05Z", 
+    "summary": "", 
+    "formats": [
+        {
+            "link": "https://www.loc.gov/pictures/related/?fi=format&q=Photographic%20prints--1920-1930.", 
+            "title": "Photographic prints--1920-1930."
+        }, 
+        {
+            "link": "https://www.loc.gov/pictures/related/?fi=format&q=Stereographs--1920-1930.", 
+            "title": "Stereographs--1920-1930."
+        }
+    ], 
+    "marc": "https://www.loc.gov/pictures/item/2019641487/marc/", 
+    "mediums": [
+        {
+            "medium": "1 photograph : print on card mount ; mount 9 x 18 cm (stereograph format)", 
+            "label": null
+        }
+    ], 
+    "group_has_items": false, 
+    "thumb_gallery": "https://cdn.loc.gov/service/pnp/stereo/1s20000/1s23000/1s23700/1s23781_150px.jpg", 
+    "rights_information": "Publication may be restricted.", 
+    "display_offsite": true, 
+    "related_names": [], 
+    "created_published": "[1927]", 
+    "title_translation": "", 
+    "id": "2019641487", 
+    "contents": "", 
+    "raw_collections": [
+        "diof", 
+        "pp", 
+        "stereo"
+    ], 
+    "call_number": "STEREO FOREIGN GEOG FILE - France--Paris--Eiffel Tower [item] [P&P]", 
+    "sort_date": "1927", 
+    "subjects": [
+        {
+            "link": "https://www.loc.gov/pictures/related/?fi=subject&q=France--1920-1930.", 
+            "title": "France--1920-1930."
+        }
+    ], 
+    "source_modified": "2019-08-13T18:12:45Z", 
+    "part_of": "", 
+    "terms": [], 
+    "reproduction_number": "LC-DIG-stereo-1s23781 (digital file from original)", 
+    "repository": "Library of Congress Prints and Photographs Division Washington, D.C. 20540 USA http://hdl.loc.gov/loc.pnp/pp.print", 
+    "service_low": "https://cdn.loc.gov/service/pnp/stereo/1s20000/1s23000/1s23700/1s23781_150px.jpg", 
+    "date": "[1927]", 
+    "created": "2019-09-17T16:58:05Z", 
+    "control_number": "2019641487", 
+    "place": [
+        {
+            "latitude": "", 
+            "link": "https://www.loc.gov/pictures/related/?fi=place&q=France", 
+            "longitude": "", 
+            "title": "France"
+        }
+    ], 
+    "creators": [], 
+    "created_published_date": "[1927]"
+},
+"thesaurus_entry":null,
+"resources":[
+    {
+        "note": "digital file from original", 
+        "medium": "https://cdn.loc.gov/service/pnp/stereo/1s20000/1s23000/1s23700/1s23781r.jpg", 
+        "largest": "https://memory.loc.gov/pp/notdig.gif", 
+        "largest_s": 0, 
+        "url": "https://hdl.loc.gov/loc.pnp/stereo.1s23781", 
+        "medium_s": 102865, 
+        "small_s": 78445, 
+        "large": "https://cdn.loc.gov/service/pnp/stereo/1s20000/1s23000/1s23700/1s23781v.jpg", 
+        "item": "1s23781", 
+        "larger_s": 53177749, 
+        "large_s": 282065, 
+        "external": null, 
+        "larger": "https://cdn.loc.gov/master/pnp/stereo/1s20000/1s23000/1s23700/1s23781u.tif", 
+        "aggregate": "stereo", 
+        "small": "https://cdn.loc.gov/service/pnp/stereo/1s20000/1s23000/1s23700/1s23781_150px.jpg", 
+        "id": "stereo.1s23781", 
+        "link": "https://www.loc.gov/pictures/resource/stereo.1s23781/"
+    }
+],
+"links":{
+    "json": "https://www.loc.gov/pictures/item/2019641487/?fo=json", 
+    "html": "https://www.loc.gov/pictures/item/2019641487/"
+},
+"related":{
+    "lot_link": null, 
+    "neighbors": "https://www.loc.gov/pictures/related/?&pk=2019641487&st=gallery&sb=call_number#focus", 
+    "survey_link": null, 
+    "group_record": null
+},
+"unrestricted":true,
+"collection":null}
