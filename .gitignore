@@ -11,3 +11,6 @@ ru_geo/japan/test3/japan_test_v4*.mp4
 ru_geo/japan/test3/japan_test_v5*.mp4
 ru_geo/japan/vo_full/gap.wav
 ru_geo/japan/vo_full/concat.txt
+ru_geo/japan/full/*.mp4
+ru_geo/japan/full/*.m4a
+ru_geo/japan/full/parts.txt
