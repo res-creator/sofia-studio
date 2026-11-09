@@ -89,9 +89,9 @@ def shake(t):
 # ---------- рендер куска ----------
 def render(job):
     k, i0, i1 = job; out = f'{D}/part_{TAG}_{k:02d}.mp4'
-    vf = f'vignette=angle=PI/5,noise=alls=7:allf=t,drawbox=x=0:y=0:w=iw:h={BAR}:color=black:t=fill,drawbox=x=0:y=ih-{BAR}:w=iw:h={BAR}:color=black:t=fill'
+    vf = f'vignette=angle=PI/5,noise=alls=5:allf=t,drawbox=x=0:y=0:w=iw:h={BAR}:color=black:t=fill,drawbox=x=0:y=ih-{BAR}:w=iw:h={BAR}:color=black:t=fill'
     enc = subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-', '-vf', vf,
-                            '-c:v', 'libx264', '-preset', 'medium', '-crf', '18' if W > 1920 else '17', '-pix_fmt', 'yuv420p', out], stdin=subprocess.PIPE)
+                            '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-maxrate', '40M' if W > 1920 else '14M', '-bufsize', '80M' if W > 1920 else '28M', '-pix_fmt', 'yuv420p', out], stdin=subprocess.PIPE)
     XF = 15; prev = None
     for si in range(i0, i1):
         s = SEGS[si]; f0 = round(s['t0'] * FPS); n = round((s['t0'] + s['dur']) * FPS) - f0
