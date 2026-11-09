@@ -12,8 +12,10 @@ CHAPTERS = {1: 'ТОКИО', 2: 'СТРАННАЯ ЯПОНИЯ', 3: 'ПОЕЗД�
             8: 'БЕСПОКОЙНАЯ ЗЕМЛЯ', 9: 'СОВЕТЫ ПУТЕШЕСТВЕННИКУ', 10: None}
 MUS = f'{RG}/data/music'
 # музыка по главам: глава → (файл, громкость). Меняется без переделки картинки.
-MUSIC = {0: ('do_you_shakuhachi.ogg', 0.24), 1: ('kml/cyborg_ninja.mp3', 0.16), 3: ('kml/ishikari_lore.mp3', 0.22),
-         5: ('kml/tea_roots.mp3', 0.20), 8: ('kml/ishikari_lore.mp3', 0.22), 10: ('do_you_shakuhachi.ogg', 0.24)}
+# музыка по главам: глава → (файл, громкость, с какой секунды начинать). Громкость подобрана по замеру (≈ −30 LUFS у всех треков до приглушения под голос).
+MUSIC = {0: ('do_you_shakuhachi.ogg', 0.24, 3.0), 1: ('kml/cyborg_ninja.mp3', 0.075, 0.0), 2: ('kml/eastern_thought.mp3', 0.31, 0.0),
+         3: ('kml/ishikari_lore.mp3', 0.42, 0.0), 5: ('kml/tea_roots.mp3', 0.25, 4.5), 8: ('kml/ishikari_lore.mp3', 0.42, 40.0),
+         10: ('do_you_shakuhachi.ogg', 0.24, 3.0)}
 V0, GAP_I, GAP, CARD, HOLD_TITLE, TAIL = 1.0, 0.55, 0.7, 2.6, 4.5, 4.0
 
 def dur(p): return float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', p], capture_output=True, text=True).stdout)
@@ -46,7 +48,7 @@ def build():
         z = (pstarts[k + 1][3] if pstarts[k + 1][2] else pstarts[k + 1][0] - 0.15) if k + 1 < len(pstarts) else END
         sh = SHOTS.get(it['id'], []); ws = [s[2] for s in sh] or [1]; acc = a
         for j, s in enumerate(sh):
-            dd = (z - a) * s[2] / sum(ws); segs.append(dict(id=s[0], ss=s[1], t0=acc, dur=dd, dis=first and j == 0, ch=int(it['id'][1:3]), what=s[3] if len(s) > 3 else '')); acc += dd
+            dd = (z - a) * s[2] / sum(ws); segs.append(dict(id=s[0], ss=s[1], t0=acc, dur=dd, dis=first and j == 0, ch=int(it['id'][1:3]), what=s[3] if len(s) > 3 else '', img=s[0] == 'img')); acc += dd
     return dict(voice=voice, segs=segs, cards=cards, t_title=t_title, intro_end=intro_end, END=END, chap_t=chap_t)
 
 if __name__ == '__main__':

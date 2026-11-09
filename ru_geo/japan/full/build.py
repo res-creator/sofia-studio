@@ -5,7 +5,7 @@ from concurrent.futures import ProcessPoolExecutor
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 D = os.path.dirname(os.path.abspath(__file__)); J = os.path.join(D, '..'); RG = os.path.join(J, '..')
-sys.path.insert(0, os.path.join(RG, 'lib')); import look
+sys.path.insert(0, os.path.join(RG, 'lib')); import look, motion
 import plan
 W, H, FPS = (3840, 2160, 30) if '--4k' in sys.argv else (1920, 1080, 30)
 K = W / 1920; TAG = '4k' if W > 1920 else '1080p'
@@ -27,6 +27,12 @@ def frames(path, n):
             yield np.frombuffer(last or bytes(W * H * 3), np.uint8).reshape(H, W, 3)
     finally:
         p.stdout.close(); p.kill(); p.wait()
+
+def photo_grade(a):
+    a = a.astype(np.float32); l = a.mean(axis=2, keepdims=True)
+    a = l + (a - l) * 1.15; a = (a - 128) * 1.06 + 124
+    a[..., 2] += np.where(l[..., 0] < 90, 6, -4); a[..., 0] += np.where(l[..., 0] > 160, 5, -3)
+    return np.clip(a, 0, 255).astype(np.uint8)
 
 # ---------- надписи ----------
 SERIF_PATH = os.path.join(DATA, 'fonts', 'CormorantGaramond.ttf')
@@ -71,11 +77,14 @@ def title(img, t):
     if u > 1.8:
         a2 = e(min(1.0, (u - 1.8) / 0.8)) * out
         lay = Image.new('RGBA', (W, H)); spaced(ImageDraw.Draw(lay), W / 2, H * 0.61, 'СКВОЗЬ СТРАНЫ', SUB, 14 * K, (250, 246, 238, int(210 * a2))); img.alpha_composite(lay)
+_dm = Image.new('L', (W // 4, H // 4), 0); ImageDraw.Draw(_dm).ellipse((W * 0.02, H * 0.055, W * 0.23, H * 0.195), fill=175)
+DIM = _dm.filter(ImageFilter.GaussianBlur(30 * K)).resize((W, H), Image.BILINEAR)
 def card(img, t):
     for c in P['cards']:
         u = t - c['t'] - 0.3; L = plan.CARD + 1.4
         if 0 <= u <= L:
             a = e(min(1.0, u / 0.8)) * e(min(1.0, (L - u) / 0.7))
+            dim = Image.new('RGBA', (W, H), (0, 0, 0, 0)); dim.putalpha(DIM.point(lambda p: int(p * a))); img.alpha_composite(dim)
             lay = Image.new('RGBA', (W, H)); d = ImageDraw.Draw(lay)
             spaced(d, W / 2, H * 0.40, f'ГЛАВА {c["ch"]}', SUB, 16 * K, (250, 246, 238, int(220 * a)))
             tr = (22 + 10 * (1 - look.ease_out(min(1.0, u / 2.0)))) * K
@@ -85,7 +94,7 @@ def card(img, t):
             hk = HANKO.resize((int(HANKO.size[0] * 0.28), int(HANKO.size[1] * 0.28)), Image.LANCZOS)
             hk.putalpha(hk.split()[3].point(lambda p: int(p * a)))
             if u > 0.5: lay.alpha_composite(hk, (int(W / 2 - hk.size[0] / 2), int(H * 0.60)))
-            img.alpha_composite(shadow(lay, 0.6))
+            img.alpha_composite(shadow(lay, 0.85))
 def shake(t):
     v = t - T0 - 1.25; return int(6 * K * np.sin(v * 60) * (1 - v / 0.25)) if 0 <= v < 0.25 else 0
 
@@ -98,7 +107,12 @@ def render(job):
     XF = 15; prev = None
     for si in range(i0, i1):
         s = SEGS[si]; f0 = round(s['t0'] * FPS); n = round((s['t0'] + s['dur']) * FPS) - f0
-        for j, fr in enumerate(frames(f'{SEG}/{s["id"]}_{s["ss"]}.mp4', n)):
+        if s.get('img'):   # фото Commons: плавное движение камеры + тот же цвет
+            src = (np.frombuffer(x, np.uint8).reshape(H, W, 3) for x in motion.frames(os.path.join(DATA, 'commons_img', s['ss']), n / FPS, mode='auto', W=W, H=H, FPS=FPS, seed=si, fit='auto'))
+            src = (photo_grade(x) for x in src)
+        else:
+            src = frames(f'{SEG}/{s["id"]}_{s["ss"]}.mp4', n)
+        for j, fr in enumerate(src):
             t = (f0 + j) / FPS; a = fr
             if s['dis'] and prev is not None and j < XF: a = (prev.astype(np.float32) * (1 - j / XF) + fr * (j / XF)).astype(np.uint8)
             if (T0 <= t <= P['intro_end'] + 0.1) or any(0 <= t - c['t'] - 0.3 <= plan.CARD + 1.4 for c in P['cards']):
@@ -134,9 +148,9 @@ if __name__ == '__main__':
     chs = sorted(plan.MUSIC); starts = {c: P['chap_t'][c] for c in chs}; mk = []
     for j, c in enumerate(chs):
         a = max(0.0, starts[c] - (1.5 if c else 0)); z = (starts[chs[j + 1]] + 1.5) if j + 1 < len(chs) else END
-        fn, g = plan.MUSIC[c]; idx = nv + j; ins += ['-stream_loop', '-1', '-i', f'{plan.MUS}/{fn}']; L = z - a; ms = int(a * 1000)
+        fn, g, off = plan.MUSIC[c]; idx = nv + j; ins += ['-stream_loop', '-1', '-ss', str(off), '-i', f'{plan.MUS}/{fn}']; L = z - a; ms = int(a * 1000)
         flt.append(f'[{idx}:a]aformat=sample_rates=44100:channel_layouts=stereo,atrim=0:{L:.2f},asetpts=PTS-STARTPTS,volume={g},'
-                   f'afade=t=in:d={0.8 if c == 0 else 3}:curve=qsin,afade=t=out:st={L-3:.2f}:d=3:curve=qsin,adelay={ms}|{ms}[m{j}]'); mk.append(f'[m{j}]')
+                   f'afade=t=in:d={0.8 if c == 0 else 2.5}:curve=qsin,afade=t=out:st={L-3.5:.2f}:d=3.5:curve=qsin,adelay={ms}|{ms}[m{j}]'); mk.append(f'[m{j}]')
     flt.append(''.join(mk) + f'amix=inputs={len(mk)}:normalize=0[mu]')
     flt.append('[mu][vk]sidechaincompress=threshold=0.05:ratio=4:attack=20:release=400[bgd]')
     flt.append(f'[bgd][vo]amix=inputs=2:normalize=0,atrim=0:{END:.2f},loudnorm=I=-15:TP=-1.5:LRA=11[a]')

@@ -8,6 +8,7 @@ SEG = os.path.join(RG, 'data', 'pixabay', 'seg'); os.makedirs(SEG, exist_ok=True
 META = f'{D}/sources.json'; meta = json.load(open(META)) if os.path.exists(META) else {}
 P = build(); need = {}
 for s in P['segs']:
+    if s.get('img'): continue
     k = (s['id'], s['ss']); need[k] = max(need.get(k, 0), s['dur'])
 def info(i):
     if str(i) in meta: return meta[str(i)]
