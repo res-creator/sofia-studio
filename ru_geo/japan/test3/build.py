@@ -1,5 +1,5 @@
-# Тест v3 «Япония»: вступление-обещание, быстрая нарезка 4K-оригиналов Pixabay, кинолук (цвет, зерно, виньетка, полосы),
-# название «ニッポン» → «ЯПОНИЯ». Голос Todd (vo_el/), музыка «Do you Shakuhachi» (Antti Luode, CC BY 3.0).
+# Тест v5 «Япония»: вступление-обещание, быстрая нарезка 4K-оригиналов Pixabay, кинолук (цвет, зерно, виньетка, полосы),
+# название «ЯПОНИЯ» с печатью-ханко 日本. Голос Todd (vo_el/), музыка «Do you Shakuhachi» (Antti Luode, CC BY 3.0).
 import json, os, subprocess, sys
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
@@ -60,40 +60,60 @@ def cine(fr, k):
     a[:BAR] = 0; a[H - BAR:] = 0
     return np.clip(a, 0, 255)
 
-# ---------- название: ニッポン → ЯПОНИЯ ----------
-JPF = ImageFont.truetype('/usr/share/fonts/opentype/ipafont-gothic/ipag.ttf', int(190 * K))
+# ---------- название: «ЯПОНИЯ» + красная печать-ханко 日本 ----------
 SERIF = ImageFont.truetype(os.path.join(DATA, 'fonts', 'CormorantGaramond.ttf'), int(230 * K)); SERIF.set_variation_by_name('Medium')
 SUB = look.font(int(30 * K), 500)
-def spaced(d, x, y, s, f, track, fill):
-    ws = [f.getlength(c) for c in s]; x -= (sum(ws) + track * (len(s) - 1)) / 2
+HF = ImageFont.truetype('/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc', int(98 * K))
+def spaced(d, x, y, s, f, track, fill, anchor='m'):
+    ws = [f.getlength(c) for c in s]; tw = sum(ws) + track * (len(s) - 1)
+    if anchor == 'm': x -= tw / 2
     for c, w in zip(s, ws): d.text((x, y), c, font=f, fill=fill, anchor='lm'); x += w + track
-def text_layer(s, f, track, alpha, blur, y):
-    lay = Image.new('RGBA', (W, H)); spaced(ImageDraw.Draw(lay), W / 2, y, s, f, track, (250, 246, 238, int(255 * alpha)))
-    if blur > 0.3: lay = lay.filter(ImageFilter.GaussianBlur(blur))
-    sh = lay.split()[3].filter(ImageFilter.GaussianBlur(20 * K)); dk = Image.new('RGBA', (W, H)); dk.putalpha(sh.point(lambda v: int(v * 0.55)))
+    return tw
+def shadow(lay, k=0.55):
+    sh = lay.split()[3].filter(ImageFilter.GaussianBlur(20 * K)); dk = Image.new('RGBA', (W, H)); dk.putalpha(sh.point(lambda v: int(v * k)))
     dk.alpha_composite(lay); return dk
-T0 = starts[-1] + durs[-1] - 0.2                 # после «Поехали»
+def make_hanko():
+    S = int(240 * K); im = Image.new('RGBA', (S, S)); d = ImageDraw.Draw(im)
+    d.rounded_rectangle((6 * K, 6 * K, S - 6 * K, S - 6 * K), radius=int(22 * K), fill=(196, 28, 36, 255))
+    d.rounded_rectangle((20 * K, 20 * K, S - 20 * K, S - 20 * K), radius=int(12 * K), outline=(255, 255, 255, 0), width=int(5 * K))
+    m = Image.new('L', (S, S), 255); dm = ImageDraw.Draw(m)          # вырезаем знаки и внутреннюю рамку — «белое на красном»
+    dm.rounded_rectangle((20 * K, 20 * K, S - 20 * K, S - 20 * K), radius=int(12 * K), outline=0, width=int(5 * K))
+    dm.text((S / 2, S * 0.30), '日', font=HF, fill=0, anchor='mm', stroke_width=int(4 * K), stroke_fill=0); dm.text((S / 2, S * 0.70), '本', font=HF, fill=0, anchor='mm', stroke_width=int(4 * K), stroke_fill=0)
+    a = np.asarray(im.split()[3], np.float32) * (np.asarray(m, np.float32) / 255)
+    rng2 = np.random.default_rng(11)                                 # неровная краска, как у настоящего оттиска
+    ink = np.clip(1.0 - np.maximum(0, rng2.normal(0, 0.25, (S // 6, S // 6))).repeat(6, 0).repeat(6, 1)[:S, :S] * 0.6, 0.35, 1)
+    im.putalpha(Image.fromarray((a * ink).astype(np.uint8))); return im.rotate(-4, resample=Image.BICUBIC, expand=True)
+HANKO = make_hanko()
+T0 = starts[-1] + 0.05                          # на слове «Япония»
 def title(img, t):
     u = t - T0
     if u < 0: return
-    out = max(0.0, min(1.0, (TOTAL - 0.3 - t) / 0.9))
-    e = look.ease
-    if u < 2.1:                                   # ニッポン проявляется из размытия
-        a = e(min(1.0, u / 0.7)) * (1 - e(max(0.0, (u - 1.5) / 0.6)))
-        bl = 14 * K * (1 - min(1.0, u / 0.7)) + 16 * K * e(max(0.0, (u - 1.5) / 0.6))
-        img.alpha_composite(text_layer('ニッポン', JPF, 34 * K + 40 * K * e(max(0.0, (u - 1.5) / 0.6)), a, bl, H * 0.47))
-    if u > 1.5:                                   # ЯПОНИЯ собирается из размытия
-        v = u - 1.5; a = e(min(1.0, v / 0.8)) * out
-        img.alpha_composite(text_layer('ЯПОНИЯ', SERIF, (70 - 38 * look.ease_out(min(1.0, v / 2.4))) * K, a, 14 * K * (1 - e(min(1.0, v / 0.8))), H * 0.46))
-        if v > 0.9:
-            a2 = e(min(1.0, (v - 0.9) / 0.8)) * out
-            lay = Image.new('RGBA', (W, H)); spaced(ImageDraw.Draw(lay), W / 2, H * 0.60, 'СКВОЗЬ СТРАНЫ', SUB, 14 * K, (250, 246, 238, int(210 * a2)))
-            img.alpha_composite(lay)
+    out = max(0.0, min(1.0, (TOTAL - 0.3 - t) / 0.9)); e = look.ease
+    a = e(min(1.0, u / 0.9)) * out
+    track = (64 - 34 * look.ease_out(min(1.0, u / 1.3))) * K
+    lay = Image.new('RGBA', (W, H)); d = ImageDraw.Draw(lay)
+    tw = sum(SERIF.getlength(c) for c in 'ЯПОНИЯ') + 30 * K * 5; hs = HANKO.size[0] * 0.80; gap = 40 * K
+    x0 = W / 2 - (tw + gap + hs) / 2                                   # центр всей группы «слово + печать»
+    spaced(d, x0 + (tw - (sum(SERIF.getlength(c) for c in 'ЯПОНИЯ') + track * 5)) / 2, H * 0.46, 'ЯПОНИЯ', SERIF, track, (250, 246, 238, int(255 * a)), anchor='l')
+    if u < 0.9: lay = lay.filter(ImageFilter.GaussianBlur(12 * K * (1 - e(u / 0.9))))
+    img.alpha_composite(shadow(lay))
+    v = u - 1.25                                                       # печать «шлёпается»
+    if v > 0:
+        sc = 0.80 * (1 + 0.7 * (1 - look.ease_out(min(1.0, v / 0.16)))); ha = min(1.0, v / 0.08) * out
+        hk = HANKO.resize((int(HANKO.size[0] * sc), int(HANKO.size[1] * sc)), Image.LANCZOS)
+        hk.putalpha(hk.split()[3].point(lambda p: int(p * ha)))
+        cx = x0 + tw + gap + hs / 2; cy = H * 0.46
+        img.alpha_composite(hk, (int(cx - hk.size[0] / 2), int(cy - hk.size[1] / 2)))
+    if u > 1.8:
+        a2 = e(min(1.0, (u - 1.8) / 0.8)) * out
+        lay = Image.new('RGBA', (W, H)); spaced(ImageDraw.Draw(lay), W / 2, H * 0.61, 'СКВОЗЬ СТРАНЫ', SUB, 14 * K, (250, 246, 238, int(210 * a2)))
+        img.alpha_composite(lay)
+SHAKE = lambda t: 0 <= t - T0 - 1.25 < 0.25   # лёгкий толчок кадра в момент удара печати
 
 out_v = f'{D}/v.mp4'
 enc = subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-',
                         '-c:v', 'libx264', '-preset', 'medium', '-crf', '17', '-pix_fmt', 'yuv420p', out_v], stdin=subprocess.PIPE)
-XF = 18; prev = None; gk = 0
+XF = 12; prev = None; gk = 0
 for si, s in enumerate(shots):
     n = round((s['t0'] + s['dur']) * FPS) - round(s['t0'] * FPS)
     dissolve = s is shots[-1]                     # мягкий переход только на кадр с названием
@@ -103,6 +123,8 @@ for si, s in enumerate(shots):
         if dissolve and prev is not None and k < XF: a = (prev.astype(np.float32) * (1 - k / XF) + fr * (k / XF)).astype(np.uint8)
         if t >= T0:
             img = Image.fromarray(a).convert('RGBA'); title(img, t); a = np.asarray(img.convert('RGB'))
+        if SHAKE(t):
+            dy = int(6 * K * np.sin((t - T0 - 1.25) * 60) * (1 - (t - T0 - 1.25) / 0.25)); a = np.roll(a, dy, axis=0)
         arr = cine(a, gk); gk += 1
         fade = max(0.0, min(1.0, t / 0.6, (TOTAL - t) / 1.0))
         enc.stdin.write((arr * fade).astype(np.uint8).tobytes())
@@ -113,7 +135,7 @@ music = f'{DATA}/music/do_you_shakuhachi.ogg'   # «Do you Shakuhachi», Antti L
 flt = (f"[1:a]asplit=2[vo][vk];[2:a]atrim=0:{TOTAL:.2f},volume=0.24,afade=t=in:d=1.0,afade=t=out:st={TOTAL-2.5:.2f}:d=2.5[mu];"
        f"[mu][vk]sidechaincompress=threshold=0.05:ratio=4:attack=20:release=400[bgd];"
        f"[bgd][vo]amix=inputs=2:normalize=0,loudnorm=I=-16:TP=-1.5:LRA=11[a]")
-name = 'japan_test_v4' + ('_4k' if W > 1920 else '') + '.mp4'
+name = 'japan_test_v5' + ('_4k' if W > 1920 else '') + '.mp4'
 subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', out_v, '-i', f'{D}/vo_el/all.wav', '-i', music, '-filter_complex', flt,
                 '-map', '0:v', '-map', '[a]', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-t', f'{TOTAL:.2f}', '-movflags', '+faststart', f'{D}/{name}'], check=True)
 print('done', name)
