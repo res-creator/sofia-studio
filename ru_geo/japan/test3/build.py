@@ -61,7 +61,7 @@ def cine(fr, k):
     return np.clip(a, 0, 255)
 
 # ---------- название: ニッポン → ЯПОНИЯ ----------
-JPF = ImageFont.truetype('/usr/share/fonts/opentype/ipafont-gothic/ipag.ttf', int(150 * K))
+JPF = ImageFont.truetype('/usr/share/fonts/opentype/ipafont-gothic/ipag.ttf', int(190 * K))
 SERIF = ImageFont.truetype(os.path.join(DATA, 'fonts', 'CormorantGaramond.ttf'), int(230 * K)); SERIF.set_variation_by_name('Medium')
 SUB = look.font(int(30 * K), 500)
 def spaced(d, x, y, s, f, track, fill):
@@ -81,7 +81,7 @@ def title(img, t):
     if u < 2.1:                                   # ニッポン проявляется из размытия
         a = e(min(1.0, u / 0.7)) * (1 - e(max(0.0, (u - 1.5) / 0.6)))
         bl = 14 * K * (1 - min(1.0, u / 0.7)) + 16 * K * e(max(0.0, (u - 1.5) / 0.6))
-        img.alpha_composite(text_layer('ニッポン', JPF, 60 * K + 40 * K * e(max(0.0, (u - 1.5) / 0.6)), a, bl, H * 0.47))
+        img.alpha_composite(text_layer('ニッポン', JPF, 34 * K + 40 * K * e(max(0.0, (u - 1.5) / 0.6)), a, bl, H * 0.47))
     if u > 1.5:                                   # ЯПОНИЯ собирается из размытия
         v = u - 1.5; a = e(min(1.0, v / 0.8)) * out
         img.alpha_composite(text_layer('ЯПОНИЯ', SERIF, (70 - 38 * look.ease_out(min(1.0, v / 2.4))) * K, a, 14 * K * (1 - e(min(1.0, v / 0.8))), H * 0.46))
