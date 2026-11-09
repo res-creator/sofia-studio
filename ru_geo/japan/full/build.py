@@ -78,7 +78,10 @@ def card(img, t):
             a = e(min(1.0, u / 0.8)) * e(min(1.0, (L - u) / 0.7))
             lay = Image.new('RGBA', (W, H)); d = ImageDraw.Draw(lay)
             spaced(d, W / 2, H * 0.40, f'ГЛАВА {c["ch"]}', SUB, 16 * K, (250, 246, 238, int(220 * a)))
-            spaced(d, W / 2, H * 0.50, c['name'], CARD_F, (22 + 10 * (1 - look.ease_out(min(1.0, u / 2.0)))) * K, (250, 246, 238, int(255 * a)))
+            tr = (22 + 10 * (1 - look.ease_out(min(1.0, u / 2.0)))) * K
+            fit = CARD_F; wd = sum(fit.getlength(ch) for ch in c['name']) + 32 * K * (len(c['name']) - 1)
+            if wd > W * 0.78: fit = serif(118 * W * 0.78 / wd); tr *= W * 0.78 / wd
+            spaced(d, W / 2, H * 0.50, c['name'], fit, tr, (250, 246, 238, int(255 * a)))
             hk = HANKO.resize((int(HANKO.size[0] * 0.28), int(HANKO.size[1] * 0.28)), Image.LANCZOS)
             hk.putalpha(hk.split()[3].point(lambda p: int(p * a)))
             if u > 0.5: lay.alpha_composite(hk, (int(W / 2 - hk.size[0] / 2), int(H * 0.60)))
@@ -91,7 +94,7 @@ def render(job):
     k, i0, i1 = job; out = f'{D}/part_{TAG}_{k:02d}.mp4'
     vf = f'vignette=angle=PI/5,noise=alls=5:allf=t,drawbox=x=0:y=0:w=iw:h={BAR}:color=black:t=fill,drawbox=x=0:y=ih-{BAR}:w=iw:h={BAR}:color=black:t=fill'
     enc = subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-', '-vf', vf,
-                            '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-maxrate', '40M' if W > 1920 else '14M', '-bufsize', '80M' if W > 1920 else '28M', '-pix_fmt', 'yuv420p', out], stdin=subprocess.PIPE)
+                            '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-maxrate', '19M' if W > 1920 else '14M', '-bufsize', '38M' if W > 1920 else '28M', '-pix_fmt', 'yuv420p', out], stdin=subprocess.PIPE)
     XF = 15; prev = None
     for si in range(i0, i1):
         s = SEGS[si]; f0 = round(s['t0'] * FPS); n = round((s['t0'] + s['dur']) * FPS) - f0

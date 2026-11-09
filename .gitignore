@@ -16,3 +16,4 @@ ru_geo/japan/full/*.m4a
 ru_geo/japan/full/parts.txt
 ru_geo/japan/full/fetch.log
 ru_geo/japan/full/build_*.log
+ru_geo/japan/full/qc/
