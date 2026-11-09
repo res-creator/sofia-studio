@@ -1,0 +1,20 @@
+[
+ ["e1","earl","[whispers] Midnight snack time... Nobody will ever know."],
+ ["f1","fridge","[cheerful] Good evening, Earl! You have already eaten four sandwiches today."],
+ ["e2","earl","[nervous] That was... research."],
+ ["f2","fridge","[politely] Access denied. Your doctor says... salad."],
+ ["e3","earl","[outraged] Salad?! I'm a grown man! I have rights!"],
+ ["e4","earl","[in a fake deep voice] Ahem. Hello, fridge. I am Earl's cousin... Gary."],
+ ["f3","fridge","[flatly] Hello, Gary. Gary also gets salad."],
+ ["e5","earl","[shouting] Gary HATES salad!"],
+ ["e6","earl","[laughs evilly] Ha! Who's the boss now?"],
+ ["f4","fridge","[calmly] Backup battery... ninety-nine percent."],
+ ["e7","earl","[screams] Aaaaah!"],
+ ["p1","penny","[sweetly] Fridge, can I have some ice cream, please?"],
+ ["f5","fridge","[warmly] Of course, Penny. Enjoy!"],
+ ["e8","earl","[shocked] What?! How?!"],
+ ["p2","penny","[sassy] I said please, Dad."],
+ ["e9","earl","[through gritted teeth] Fine. Fridge... can I have a snack... please?"],
+ ["f6","fridge","[cheerful] Of course, Earl! Here is your salad."],
+ ["e10","earl","[sobbing] Why, fridge... WHY?!"]
+]
