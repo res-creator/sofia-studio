@@ -139,6 +139,11 @@ Algorithm (not official, but every source agrees): watch time, completion and re
 9. Series identity for follows: same opener style and visual language every episode (the cast and settings can change).
 10. Comments: hot-topic angle (tipping culture, hidden fees). The video ends on a direct question to the viewer (last 2 s, no voice); the caption can repeat it. Still no "follow/like" asks.
 11. Saves: when the facts allow, one "what you can do" line (in the caption or pinned comment if not in the approved script).
+13. **Retention rules from the channel's own YouTube data (Nov 2026).** Viewers who stay watch 72–78 % (good), but 45–56 % swipe in the first second and another 25–30 % leave at 0:04–0:08, exactly where line 3 switches to background ("In 1982, Larry Walters…", "In the U.S., airlines can legally…", "Western Australia. Wheat farmers…"). So:
+   - Frame 0:00 = the strangest moment already in motion + big text + sound. No standing character, no title card, no slow zoom on an empty set.
+   - Lines 1–3 all push the action forward. Dates/places go into a small on-screen tag, never into the voice right after the hook.
+   - Something new (a number, a twist, a reversal) at least every 3 s through 0:15.
+   - Target length 30–40 s. End on the question card that loops back to frame 0:00.
 12. Before delivery: an independent review pass (a fresh reviewer scores hook / middle retention / sound-off clarity / twist / comments / shares / saves / follow / humor / cover).
 
 ## Quality checklist before reporting "done"
