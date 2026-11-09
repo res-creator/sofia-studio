@@ -22,9 +22,9 @@ def one(k):
     if os.path.exists(out) and os.path.getsize(out) > 20000: return f'{i} ok'
     tmp = f'{SEG}/_{i}_{ss}.src.mp4'
     if not pixabay.download(meta[str(i)]['url'], tmp): return f'{i} DOWNLOAD FAIL'
-    length = need[k] * 2.0 + 1.0           # запас: плеер может замедлить клип до 2×
+    length = need[k] * 1.1 + 1.0           # небольшой запас по длине
     r = subprocess.run(['ffmpeg', '-v', 'error', '-y', '-ss', str(ss), '-i', tmp, '-t', f'{length:.2f}', '-an', '-c:v', 'libx264', '-preset', 'fast',
-                        '-crf', '15', '-pix_fmt', 'yuv420p', out], capture_output=True, text=True)
+                        '-crf', '19', '-pix_fmt', 'yuv420p', out], capture_output=True, text=True)
     os.remove(tmp)
     return f'{i} {"cut" if r.returncode == 0 else "CUT FAIL " + r.stderr[-200:]}'
 with ThreadPoolExecutor(3) as ex:
