@@ -35,10 +35,21 @@ def frames(path, ss, n, shake=False):
     p.stdout.close(); p.kill(); p.wait()
 
 # ---------- тайминг: фразы по границам предложений голоса ----------
-sb = json.load(open(f'{D}/vo/sentences.json')); k = 0; starts = []
-for l in LINES:
-    starts.append(V0 + sb[k][0]); k += sum(l['text'].count(c) for c in '.?!')
-vo_end = V0 + sb[-1][0] + sb[-1][1]
+EL = os.path.exists(f'{D}/vo_el/durs.json') and '--free-voice' not in sys.argv   # голос канала (ElevenLabs, Todd), по одной фразе
+GAP = 0.55
+if EL:
+    durs = json.load(open(f'{D}/vo_el/durs.json')); starts = []; t = V0
+    for dd in durs: starts.append(t); t += dd + GAP
+    vo_end = t - GAP
+    ins = []; flt = []
+    for i in range(len(durs)): ins += ['-i', f'{D}/vo_el/{i:02d}.mp3']; flt.append(f'[{i}:a]adelay={int(starts[i]*1000)}|{int(starts[i]*1000)}[s{i}]')
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', *ins, '-filter_complex', ';'.join(flt) + ';' + ''.join(f'[s{i}]' for i in range(len(durs))) +
+                    f'amix=inputs={len(durs)}:normalize=0[o]', '-map', '[o]', '-ar', '44100', f'{D}/vo_el/all.wav'], check=True)
+else:
+    sb = json.load(open(f'{D}/vo/sentences.json')); k = 0; starts = []
+    for l in LINES:
+        starts.append(V0 + sb[k][0]); k += sum(l['text'].count(c) for c in '.?!')
+    vo_end = V0 + sb[-1][0] + sb[-1][1]
 TOTAL = vo_end + LINES[-1].get('hold', 1.0)
 bounds = [0.0] + starts[1:] + [TOTAL]
 shots = []
@@ -130,14 +141,14 @@ if '--audio-only' not in sys.argv:
 
 # ---------- звук: голос, музыка Mixkit, гул землетрясения ----------
 tq = starts[2] + 0.8
-music = f'{DATA}/music/mixkit_634_your_breath.mp3'
+music = f'{DATA}/music/do_you_shakuhachi.ogg'   # «Do you Shakuhachi», Antti Luode, CC BY 3.0 (Wikimedia Commons)
 RUMBLE = any(l.get('shake') for l in LINES)
-flt = (f"[1:a]adelay={int(V0*1000)}|{int(V0*1000)},asplit=2[vo][vk];"
-       f"[2:a]atrim=0:{TOTAL:.2f},volume=0.16,afade=t=in:d=1.5,afade=t=out:st={TOTAL-2:.2f}:d=2[mu];"
+flt = ((f"[1:a]anull,asplit=2[vo][vk];" if EL else f"[1:a]adelay={int(V0*1000)}|{int(V0*1000)},asplit=2[vo][vk];") +
+       f"[2:a]atrim=0:{TOTAL:.2f},volume=0.22,afade=t=in:d=1.5,afade=t=out:st={TOTAL-2:.2f}:d=2[mu];"
        + (f"anoisesrc=d=7:c=brown:a=0.9,lowpass=f=90,volume=2.2,afade=t=in:d=1.4,afade=t=out:st=3:d=4,adelay={int(tq*1000)}|{int(tq*1000)}[rb];"
           f"[mu][rb]amix=inputs=2:normalize=0[bg];" if RUMBLE else "[mu]anull[bg];") +
        f"[bg][vk]sidechaincompress=threshold=0.05:ratio=4:attack=20:release=400[bgd];"
        f"[bgd][vo]amix=inputs=2:normalize=0,loudnorm=I=-16:TP=-1.5:LRA=11[a]")
-subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', out_v, '-i', f'{D}/vo/all.mp3', '-i', music, '-filter_complex', flt,
+subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', out_v, '-i', (f'{D}/vo_el/all.wav' if EL else f'{D}/vo/all.mp3'), '-i', music, '-filter_complex', flt,
                 '-map', '0:v', '-map', '[a]', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-t', f'{TOTAL:.2f}', '-movflags', '+faststart', f'{D}/japan_test.mp4'], check=True)
 print('done', f'{D}/japan_test.mp4')
