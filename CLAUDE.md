@@ -6,6 +6,8 @@
 > State (Nov 2026): look = white Inter + coral accent (`ru_geo/lib/look.py`), AE-style transitions + on-screen techniques (`ru_geo/lib/fx.py`: locator mini-map, polaroid card, marker circle, badges, split screen), beat-cut intro montage, music Mixkit «Wind Leaves», voice Fish Audio «Энергичный Рассказчик» speed 0.8 (temporary — owner will switch to ElevenLabs at the very end; don't spend EL credits before that), VO cleanup chain in render.py.
 > DONE (Nov 2026): full episode **«Исландия» ≈ 21:26** in `ru_geo/iceland/` (README there: chapters, fact table, build steps). Pipeline = norway_pilot + `sources.py` (Pixabay `lib/pixabay.py` + Wikimedia Commons via en.wikipedia.org File: pages — commons/upload.wikimedia.org answer 429, thumb.wikimedia.org works), auto-numbered cuts `[[]]`, music chain of 4 Mixkit tracks, `fx.locator(..., 'isl')`. **Final voice chosen by owner: ElevenLabs v3, Todd (`g14YnDYCsy3k7XLlcKlO`, stability 0.0 «Creative»; Leonid sounded too news-like/robotic)** — `tts_el.py` + emotion/pause tags in `tags.py` ([pause], [chuckles], [softly]…; owner wants a natural narrator who can smirk/laugh a little). Use this voice for the next Russian geo episodes too. Spot fixes: `patch.py <keys>`. MP4 too big for git and for SendUserFile (400 MB) — send a 1080p crf21/2300k copy + 720p phone copy from `send/`. NEXT: next country.
 
+> **Channel «Сквозь страны» (ru_geo) process rules:** read `ru_geo/docs/RULES.md` (our adapted rules) and `ru_geo/docs/PROCESS_GUIDE.md` (partner guide, owner-provided Nov 2026: take process/quality, NOT their branding or phrases).
+
 Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). This file adds what happened after Episode 1.
 
 ## Hard rules (from the channel owner)

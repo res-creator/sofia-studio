@@ -12,6 +12,10 @@ K = W / 1920; TAG = '4k' if W > 1920 else '1080p'
 SEG = os.path.join(RG, 'data', 'pixabay', 'seg'); DATA = os.path.join(RG, 'data')
 GRADE = 'eq=contrast=1.10:saturation=1.22:gamma=0.96,colorbalance=rs=-0.05:bs=0.06:bm=-0.01:rh=0.05:gh=0.02:bh=-0.04'
 BAR = int(round(H * 0.095))
+# финал 4K: HEVC 10 бит ≈ 20 Мбит/с с тегом hvc1 (как рекомендует YouTube); черновик 1080p — H.264
+VENC = (['-c:v', 'libx265', '-preset', 'fast', '-crf', '20', '-x265-params', 'vbv-maxrate=20000:vbv-bufsize=40000:log-level=error',
+         '-pix_fmt', 'yuv420p10le', '-tag:v', 'hvc1'] if W > 1920 else
+        ['-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-maxrate', '14M', '-bufsize', '28M', '-pix_fmt', 'yuv420p'])
 P = plan.build(); SEGS = P['segs']; END = P['END']; T0 = P['t_title']
 
 def frames(path, n):
@@ -100,10 +104,11 @@ def shake(t):
 
 # ---------- рендер куска ----------
 def render(job):
-    k, i0, i1 = job; out = f'{D}/part_{TAG}_{k:02d}.mp4'
+    k, i0, i1 = job; out = f'{D}/part_{TAG}_{k:02d}.mp4'; tmp = out + '.tmp.mp4'
+    if os.path.exists(out): return out          # кусок уже готов (продолжение после перезапуска машины)
     vf = f'vignette=angle=PI/5,noise=alls=5:allf=t,drawbox=x=0:y=0:w=iw:h={BAR}:color=black:t=fill,drawbox=x=0:y=ih-{BAR}:w=iw:h={BAR}:color=black:t=fill'
     enc = subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-', '-vf', vf,
-                            '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-maxrate', '19M' if W > 1920 else '14M', '-bufsize', '38M' if W > 1920 else '28M', '-pix_fmt', 'yuv420p', out], stdin=subprocess.PIPE)
+                            *VENC, tmp], stdin=subprocess.PIPE)
     XF = 15; prev = None
     for si in range(i0, i1):
         s = SEGS[si]; f0 = round(s['t0'] * FPS); n = round((s['t0'] + s['dur']) * FPS) - f0
@@ -123,7 +128,7 @@ def render(job):
             if fade < 1: a = (a.astype(np.float32) * max(0.0, fade)).astype(np.uint8)
             enc.stdin.write(np.ascontiguousarray(a).tobytes())
         prev = fr if not s['dis'] or True else prev
-    enc.stdin.close(); enc.wait(); return out
+    enc.stdin.close(); enc.wait(); os.replace(tmp, out); return out
 
 if __name__ == '__main__':
     jobs = int(sys.argv[sys.argv.index('--jobs') + 1]) if '--jobs' in sys.argv else 4
@@ -153,8 +158,8 @@ if __name__ == '__main__':
                    f'afade=t=in:d={0.8 if c == 0 else 2.5}:curve=qsin,afade=t=out:st={L-3.5:.2f}:d=3.5:curve=qsin,adelay={ms}|{ms}[m{j}]'); mk.append(f'[m{j}]')
     flt.append(''.join(mk) + f'amix=inputs={len(mk)}:normalize=0[mu]')
     flt.append('[mu][vk]sidechaincompress=threshold=0.05:ratio=4:attack=20:release=400[bgd]')
-    flt.append(f'[bgd][vo]amix=inputs=2:normalize=0,atrim=0:{END:.2f},loudnorm=I=-15:TP=-1.5:LRA=11[a]')
-    subprocess.run(['ffmpeg', '-v', 'error', '-y', *ins, '-filter_complex', ';'.join(flt), '-map', '[a]', '-ar', '48000', '-c:a', 'aac', '-b:a', '256k', f'{D}/a.m4a'], check=True)
+    flt.append(f'[bgd][vo]amix=inputs=2:normalize=0,atrim=0:{END:.2f},loudnorm=I=-14:TP=-1.5:LRA=11[a]')
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', *ins, '-filter_complex', ';'.join(flt), '-map', '[a]', '-ar', '48000', '-c:a', 'aac', '-b:a', '320k', f'{D}/a.m4a'], check=True)
     out = f'{D}/japan_{TAG}.mp4'
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', f'{D}/v_{TAG}.mp4', '-i', f'{D}/a.m4a', '-map', '0:v', '-map', '1:a', '-c', 'copy', '-shortest',
                     '-movflags', '+faststart', out], check=True)
