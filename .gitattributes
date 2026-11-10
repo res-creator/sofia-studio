@@ -1,3 +1,4 @@
 ru_geo/iceland/video/iceland_1080p.mp4 filter=lfs diff=lfs merge=lfs -text
 ru_geo/japan/video/japan_preview_720p.mp4 filter=lfs diff=lfs merge=lfs -text
 ru_geo/japan/video/japan_newstyle_test.mp4 filter=lfs diff=lfs merge=lfs -text
+ru_geo/dubai/video/*.mp4 filter=lfs diff=lfs merge=lfs -text

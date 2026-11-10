@@ -175,6 +175,9 @@ def title2(fr, t):
     u = t - T_TITLE; a = fr.astype(np.float32)
     g = a.mean(axis=2, keepdims=True); col = e(min(1.0, max(0.0, (u - 0.4) / 2.2))); a = g + (a - g) * col
     sky = ((a[..., 2] - a[..., 0]) > 28 * (0.4 + 0.6 * col)) & (a[..., 2] > 80)
+    gy = fr.astype(np.float32).mean(axis=2); tex = np.abs(np.diff(gy, axis=1, prepend=gy[:, :1])) + np.abs(np.diff(gy, axis=0, prepend=gy[:1]))
+    tex = np.asarray(Image.fromarray(np.clip(tex * 8, 0, 255).astype(np.uint8)).filter(ImageFilter.BoxBlur(int(10 * K))), np.float32)
+    sky &= tex < 22                                  # небо гладкое, стекло и фасады — в линиях и бликах
     mk = Image.fromarray((sky * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(1.2 * K))
     img = Image.fromarray(np.clip(a, 0, 255).astype(np.uint8)).convert('RGBA')
     if u > 0.2:
