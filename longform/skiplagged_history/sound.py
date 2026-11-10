@@ -130,7 +130,7 @@ def chapter(ch):
     out = os.path.join(cd, 'mix.wav'); pcm = (mix * 32767).astype(np.int16)
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 's16le', '-ar', str(SR), '-ac', '2', '-i', '-', out], input=pcm.tobytes(), check=True); print('mix', ch, round(T, 2), 's')
 def preview(chs, out):
-    tmp = os.path.join(D, '_prev'); os.makedirs(tmp, exist_ok=True)
+    import tempfile; tmp = tempfile.mkdtemp(prefix='prev_', dir=D)   # unique: several agents may run previews at once
     with open(os.path.join(tmp, 'v.txt'), 'w') as f:
         for c in chs: f.write(f"file '{os.path.join(D, 'chapters', c, 'seg_video.mp4')}'\n")
     with open(os.path.join(tmp, 'a.txt'), 'w') as f:

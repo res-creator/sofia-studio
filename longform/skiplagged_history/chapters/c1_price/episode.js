@@ -16,7 +16,7 @@ const K = { blogger: at('p01', 'blogger'), jan: at('p01', 'january'), united: at
   bargain: at('p12', 'bargain'), cash: at('p12', 'cash'), both: at('p12', 'both'), mix: at('p13', 'mix'), money: at('p13', 'money'), only: at('p13', 'only'), actually: at('p13', 'actually'),
   skipl: at('p14', 'skip'), cheap: at('p14', 'cheap'), expensive: at('p14', 'expensive'), position: at('p15', 'position'), must: at('p15', 'must'), whether: at('p15', 'whether'), problem: at('p15', 'problem') };
 // scene starts
-const S = [0, st('p01') - 0.15, st('p02') - 0.15, st('p04') - 0.15, st('p05') - 0.12, K.walk - 0.1, st('p06') - 0.12, st('p07') - 0.12, st('p08b') - 0.12, st('p08') - 0.12, st('p09') - 0.12, st('p11') - 0.12, st('p12') - 0.12, K.only - 0.15, st('p14') - 0.12, st('p15') - 0.12];
+const S = [0, st('p01') - 0.15, st('p02') - 0.15, st('p04') - 0.15, st('p05') - 0.12, K.walk - 0.1, st('p06') - 0.12, st('p07') - 0.12, st('p08b') - 0.12, st('p08') - 0.12, st('p09') - 0.12, st('p11') - 0.12, st('p12') - 0.12, st('p13') - 0.12, st('p14') - 0.12, st('p15') - 0.12];
 const WHIPS = [S[4], S[6], S[7], S[10], S[12], S[14], S[15]];
 // ---- assets ----
 const A = {};
@@ -34,16 +34,17 @@ function board(ctx) { C.paperBg(ctx, 0, { board: true }); }
 function frame(ctx, t) { C.camReset(ctx); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; const s = scene(t); const t0 = S[s], t1 = s < S.length - 1 ? S[s + 1] : T, U = clamp((t - t0) / (t1 - t0));
   let mode = 'paper';
   if (s === 0) { // chapter card on paper
-    C.paperBg(ctx, t); C.cam(ctx, { z: lerp(1.04, 1.0, eo(t / 2)) }); C.camReset(ctx); C.chapterCard(ctx, t, 0.15, 'PART 1', 'THE PRICE THAT MAKES NO SENSE', { mode: 'paper' });
+    C.paperBg(ctx, t); C.cam(ctx, { z: lerp(1.04, 1.0, eo(t / 2)) }); C.camReset(ctx); C.chapterCard(ctx, t, 0.0, 'PART 1', 'THE PRICE THAT MAKES NO SENSE', { mode: 'paper', dur: S[1] + 0.1 });
   } else if (s === 1 || s === 2) { // the fare search: typing, source tag, results rows highlighted
     board(ctx); const z = s === 1 ? lerp(1.0, 1.08, ss(U)) : lerp(1.08, 1.18, ss(U)); C.cam(ctx, { z, x: W / 2 + (s === 2 ? lerp(0, 40, U) : 0), y: H / 2 + (s === 2 ? lerp(0, 70, U) : 0) });
     const w = 1300 * 1.02, h = 760 * 1.02; C.flat(ctx, A.search.c, W / 2, H * 0.5, w, -0.012, { blur: 30 });
     // query typing overlay
     const qx = W / 2 - w / 2, qy = H * 0.5 - h / 2;
     const rows = A.search.hl.map(r => [qx + r[0] * w, qy + r[1] * h, qx + r[2] * w, qy + r[3] * h]);
-    { const qy0 = qy + 160 * 1.02, qh = 96 * 1.02; const nq = Math.floor(clamp((t - S[1] - 0.4) * 12, 0, 19)); if (s === 1 && nq < 19) { ctx.save(); ctx.fillStyle = '#fff'; ctx.fillRect(qx + 64, qy0 + 4, w - 140, qh - 8); ctx.restore(); C.typed(ctx, 'LOS ANGELES (LAX)  →'.slice(0, nq), qx + 100, qy0 + 65 * 1.02, 0, 99, 45, '#111827', { font: C.F, weight: 700, cursor: true }); } }
+    { const qy0 = qy + 160 * 1.02, qh = 96 * 1.02; const nq = Math.floor(clamp((t - S[1] - 0.4) * 12, 0, 19)); if (s === 1) { ctx.save(); ctx.fillStyle = "#fff"; ctx.fillRect(qx + 64, qy0 + 4, w - 140, qh - 8); ctx.restore(); C.typed(ctx, 'LOS ANGELES (LAX)  →'.slice(0, nq), qx + 100, qy0 + 65 * 1.02, 0, 99, 45, '#111827', { font: C.F, weight: 700, cursor: true }); } }
     if (s === 1 && t > K.jan - 0.1) C.markerEllipse(ctx, qx + w * 0.3, qy + 40, 190, 40, (t - K.jan + 0.1) / 0.5, 6, C.RED, 6);
     ctx.save(); ctx.fillStyle = '#f4f5f7'; const hideA = t < K.five - 0.2, hideB = t < K.boston - 0.1; if (hideA) ctx.fillRect(rows[0][0], rows[0][1], rows[0][2] - rows[0][0], rows[0][3] - rows[0][1]); if (hideB) ctx.fillRect(rows[1][0], rows[1][1], rows[1][2] - rows[1][0], rows[1][3] - rows[1][1]); ctx.restore();
+    if (s === 1) { const hq = [qx + 60, qy + 160 * 1.02, qx + w - 60, qy + 256 * 1.02]; C.highlight(ctx, hq, S[1] + 1.9, t, { dim: 0.25, until: K.blogger + 0.3 }); if (t > S[1] + 0.4) for (let i = 0; i < 2; i++) { const yy = qy + (300 + i * 140) * 1.02; const sh = 0.5 + 0.5 * Math.sin(t * 4 - i); ctx.fillStyle = `rgba(210,214,220,${0.5 + 0.3 * sh})`; C.roundRect(ctx, qx + 60, yy, w - 120, 116, 14); ctx.fill(); } }
     if (s === 2) { C.highlight(ctx, rows[0], K.five - 0.1, t, { dim: 0, until: K.boston - 0.2 }); C.highlight(ctx, rows[1], K.two - 0.1, t, { dim: 0.25 }); if (t > K.same - 0.1) C.markerLine(ctx, C.curve([rows[1][0] + 360, rows[1][3] + 10], [rows[1][0] + 1000, rows[1][3] + 6], 0.03, 30, 1.5), (t - K.same + 0.1) / 0.5, C.RED, 7, false); }
     C.camReset(ctx);
     if (s === 1) { const sb = clamp((t - K.united) / 2.6); if (sb > 0) { ctx.save(); ctx.fillStyle = '#dfe3e8'; ctx.fillRect(qx + 60, qy + 300 * 1.02, (w - 120), 26); ctx.fillStyle = '#2f5d8a'; ctx.fillRect(qx + 60, qy + 300 * 1.02, (w - 120) * sb, 26); ctx.restore(); C.label(ctx, sb < 1 ? 'SEARCHING FARES…' : 'RESULTS', W / 2, qy + 380 * 1.02, { size: 54, col: '#6b7280' }); }
@@ -106,22 +107,32 @@ function frame(ctx, t) { C.camReset(ctx); ctx.globalAlpha = 1; ctx.globalComposi
     if (s === 10) { FEED.forEach((f, i) => { const k = (t - K.lots + 0.3 - i * 0.18) / 1.4; C.route(ctx, cam, [f, IAD], k, { col: 'rgba(36,28,20,0.55)', lw: 5, dot: k < 1 ? 'plane' : null, planeS: 0.38, bend: (i % 2 ? 0.1 : -0.1), dash: [4, 10] }); });
       C.cityDot(ctx, cam, ...IAD, 'WASHINGTON', { al: 'right', dy: 50, size: 54 }); C.markerEllipse(ctx, pD[0], pD[1], 110, 90, (t - K.hub) / 0.5, 2);
       if (t > K.hub) C.sticky(ctx, ['HUB'], pD[0] + 210, pD[1] - 170, 220, 0.06, (t - K.hub) / 0.3, { h: 140, size: 70 });
-      const k = clamp((t - K.premium + 0.4) / 0.8); if (t > K.lots) C.sticky(ctx, ['NONSTOP:', '$' + '$$$$'.slice(0, 1 + Math.floor(k * 2.99))], pD[0] - 360, pD[1] + 250, 330, -0.05, (t - K.lots) / 0.3, { h: 200, size: 60, col: '#f6c9bf', ink: '#8b1a12' });
+      const k = clamp((t - K.premium + 0.2) / 0.6); if (t > K.lots) C.sticky(ctx, ['NONSTOP TO DC:', '$$$'], pD[0] - 360, pD[1] + 250, 400, -0.05, (t - K.lots) / 0.3, { h: 200, size: 60, col: '#f6c9bf', ink: '#8b1a12' });
     } else { RIV.forEach((r, i) => { const k = (t - K.competes - i * 0.2) / 1.6; C.route(ctx, cam, [[r[0], r[1]], BOS], k, { col: 'rgba(36,28,20,0.45)', lw: 5, dot: k < 1 ? 'plane' : null, planeS: 0.42, bend: 0.12, dash: [4, 10] }); });
       const k0 = (t - t0 - 0.1) / 1.2; C.route(ctx, cam, [IAD, BOS], k0, { col: '#1f5f8b', lw: 8, dot: k0 < 1 ? 'plane' : null, planeS: 0.5, bend: 0.1, dash: [6, 12] });
       C.cityDot(ctx, cam, ...IAD, 'WASHINGTON', { al: 'right', dy: 50, size: 50 }); C.cityDot(ctx, cam, ...BOS, 'BOSTON', { dy: -40, size: 54 });
-      if (t > K.competes) C.sticky(ctx, ['EVERY RIVAL', 'NONSTOP'], W * 0.24, H * 0.25, 420, -0.05, (t - K.competes) / 0.3, { h: 200, size: 56 });
-      const drop = clamp((t - K.cuts) / 0.8); if (t > K.conn) C.sticky(ctx, ['VIA DC:', drop < 0.5 ? '$$$' : '$'], Math.min(W - 200, pB[0] + 160), pB[1] + 300, 300, 0.05, (t - K.conn) / 0.3, { h: 200, size: 66, col: '#cfe3f2', ink: '#13466b' });
+      if (t > K.conn) C.sticky(ctx, ['RIVAL NONSTOPS', 'TO BOSTON'], W * 0.24, H * 0.25, 420, -0.05, (t - K.competes) / 0.3, { h: 200, size: 56 });
+      if (t > K.conn + 0.2 && t < K.cuts - 0.1) C.label(ctx, 'COMPETITION →', W * 0.5, H * 0.9, { size: 64, col: '#241c14', alpha: clamp((t - K.conn - 0.2) / 0.3) });
+      if (t > K.cuts - 0.1) C.sticky(ctx, ['TO BOSTON', 'VIA DC: $'], Math.min(W - 230, pB[0] + 160), pB[1] + 300, 380, 0.05, (t - K.conn) / 0.3, { h: 200, size: 66, col: '#cfe3f2', ink: '#13466b' });
       if (t > K.cuts + 0.3) C.punch(ctx, 'PRICE CUT', W * 0.62, H * 0.86, K.cuts + 0.3, t, 96, '#1f5f8b', { strokeCol: '#f4ecd8' }); }
   } else if (s === 12 || s === 13) { // the plane cutaway: $ and $$$ on the same plane; hub money; only works if you go to Boston
     C.paperBg(ctx, t); C.cam(ctx, { z: lerp(1.0, 1.05, U), y: H / 2 + (s === 13 ? lerp(0, -30, U) : 0) }); const tags = ['$', '$$$', '$', '$$$', '$$$', '$', '$$$', '$', '$$$', '$'];
-    const rv = s === 12 ? clamp((t - t0) / 2.2) : 1; C.planeCut(ctx, W / 2 - 40, H * 0.52, 1.0, { tags, reveal: rv });
+    const rv = s === 12 ? clamp((t - t0) / 2.2) : 1;
+    // beats: glow the $ seats on "bargain", flip seats to $$$ on "cash machine", punch-in on two neighbours on "both", pan along the body in the hub-money part, a YOU seat on "actually"
+    const flip = {}, flipTo = {}; let glow = [];
+    if (s === 12) { if (t > K.bargain - 0.1 && t < K.cash - 0.2) glow = [0, 2, 5, 7, 9]; if (t > K.cash - 0.15) { [1, 3, 6, 8].forEach((i, j) => { flip[i] = clamp((t - K.cash + 0.15 - j * 0.12) / 0.3); flipTo[i] = '$$$'; tags[i] = '$'; }); if (t > K.cash + 0.4 && t < K.both - 0.2) glow = [1, 3, 4, 6, 8]; } }
+    else if (t > K.actually - 0.3) { flip[4] = clamp((t - K.actually + 0.3) / 0.35); flipTo[4] = 'you'; glow = [4]; }
+    let cz = 1, cxx = W / 2, cyy = H / 2; if (s === 12 && t > K.both - 0.1) { const k = eio((t - K.both + 0.1) / 0.5); cz = lerp(1.0, 1.9, k); cxx = lerp(W / 2, W * 0.36, k); cyy = lerp(H / 2, H * 0.55, k); }
+    if (s === 13) { const k = clamp((t - t0) / (K.actually - 0.3 - t0)); cz = lerp(1.35, 1.15, k); cxx = lerp(W * 0.3, W * 0.62, eio(k)); if (t > K.actually - 0.3) { const k2 = eio((t - K.actually + 0.3) / 0.5); cz = lerp(1.15, 1.6, k2); cxx = lerp(W * 0.62, W / 2 - 40 + (4 - 4.5) * 114 + 20, k2); } }
+    C.camReset(ctx); C.paperBg(ctx, t); C.cam(ctx, { z: cz, x: cxx, y: cyy });
+    C.planeCut(ctx, W / 2 - 40, H * 0.52, 1.0, { tags, reveal: rv, flip, flipTo, glow }, t);
     C.camReset(ctx);
     if (s === 12) { if (t > K.bargain - 0.1) C.sticky(ctx, ['$ = BARGAIN', 'HUNTER'], W * 0.22, H * 0.18, 420, -0.05, (t - K.bargain + 0.1) / 0.3, { h: 190, size: 56, col: '#cfe7d2', ink: '#1f5a33' });
       if (t > K.cash - 0.1) C.sticky(ctx, ['$$$ = CASH', 'MACHINE'], W * 0.74, H * 0.18, 420, 0.05, (t - K.cash + 0.1) / 0.3, { h: 190, size: 56, col: '#f6c9bf', ink: '#8b1a12' });
-      C.punch(ctx, 'SAME PLANE', W / 2, H * 0.86, K.both, t, 110, '#241c14', { strokeCol: '#f4ecd8' }); }
+      C.punch(ctx, 'SAME PLANE', W / 2, H * 0.86, K.both, t, 110, '#241c14', { strokeCol: '#f4ecd8' }); if (t > K.both + 0.3) { C.tag(ctx, '$  PAID LESS', W * 0.2, H * 0.3, { size: 40, bg: '#cfe7d2', col: '#1f5a33' }); C.tag(ctx, '$$$  PAID MORE', W * 0.52, H * 0.3, { size: 40, bg: '#f6c9bf', col: '#8b1a12' }); } }
     else { C.label(ctx, 'THAT MIX = HUB MONEY', W / 2, H * 0.16, { size: 76, col: '#f4ecd8', plate: 'rgba(36,28,20,0.85)' });
       for (let i = 0; i < 10; i++) { const u = ((t - t0) * 0.7 + i * 0.1) % 1; C.bill(ctx, lerp(W * 0.2 + i * 130, W / 2, u), lerp(H * 0.62, H * 0.92, u), 0.7, i * 0.3, 1 - u); }
+      if (t > K.actually + 0.2) C.label(ctx, 'YOU →  BOSTON', W * 0.5, H * 0.28, { size: 70, col: '#2f5d8a', plate: 'rgba(244,236,216,0.9)', alpha: clamp((t - K.actually - 0.2) / 0.3) });
       C.sticky(ctx, ['ONLY WORKS IF YOU', 'ACTUALLY GO TO BOSTON'], W / 2, H * 0.84, 860, -0.02, (t - K.actually + 0.3) / 0.3, { h: 200, size: 60 }); }
   } else if (s === 14) { // skip the last flight: scissors cut, equation
     board(ctx); C.cam(ctx, { z: lerp(1.0, 1.06, U) }); C.flat(ctx, A.passB.c, W / 2, H * 0.4, 1200, -0.015); const cutX = W / 2 - 600 + A.passB.pos[1] * 1200 / 1300 + 110;

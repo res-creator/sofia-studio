@@ -201,11 +201,34 @@ function label(ctx, s, x, y, o = {}) { const size = o.size || 64; ctx.save(); ct
   if (o.plate) { const w = ctx.measureText(s).width; const X = o.al === 'left' ? x : o.al === 'right' ? x - w : x - w / 2; ctx.fillStyle = o.plate; ctx.fillRect(X - 26, y - fs * 0.7, w + 52, fs * 1.4); }
   ctx.fillStyle = o.col || '#f3efe6'; ctx.fillText(s, x, y); ctx.restore(); }
 // chapter card: typed "PART n:" + title, on the current background
-function chapterCard(ctx, t, t0, part, title, o = {}) { if (t < t0) return; const dark = o.mode !== 'paper'; const u = t - t0; ctx.save();
-  ctx.fillStyle = dark ? 'rgba(0,0,0,0.55)' : 'rgba(232,221,196,0.0)'; ctx.fillRect(0, 0, W, H); const y = o.y || H * 0.46;
-  typed(ctx, part, W / 2, y - 70, t0, t, 40, dark ? '#f2d33b' : '#b3241a', { al: 'center', cps: 22, font: 'Typer', weight: 400, cursor: false });
-  if (u > 0.35) { const k = eo((u - 0.35) / 0.4); ctx.globalAlpha = k; label(ctx, title, W / 2, y + 30 + (1 - k) * 20, { size: o.size || 96, col: dark ? '#f3efe6' : '#241c14', maxW: 1700 });
-    ctx.fillStyle = dark ? '#f2d33b' : '#b3241a'; ctx.fillRect(W / 2 - 300 * k, y + 110, 600 * k, 6); } ctx.restore(); }
+function chapterCard(ctx, t, t0, part, title, o = {}) { if (t < t0) return; const dark = o.mode !== 'paper'; const u = t - t0; const dur = o.dur || 2.4;
+  // a big taped paper slip slides in with a tilt, the title is set huge, "PART n" is stamped on it; slow push + drift, slides out at the end
+  camReset(ctx); ctx.save(); if (dark) { ctx.fillStyle = `rgba(0,0,0,${0.6 * clamp(u / 0.3)})`; ctx.fillRect(0, 0, W, H); }
+  const kin = back(clamp(u / 0.5)), kout = o.out === false ? 0 : eio(clamp((u - (dur - 0.35)) / 0.35)); const z = 1 + 0.04 * clamp(u / dur);
+  const cw = 1560, chh = 640, cx = W / 2 + (1 - kin) * -W * 0.9 + kout * W * 1.1, cy = H * 0.5 + Math.sin(u * 1.3) * 6, rot = lerp(-0.12, -0.025, kin) + kout * 0.08;
+  ctx.translate(cx, cy); ctx.rotate(rot); ctx.scale(z, z);
+  ctx.shadowColor = 'rgba(0,0,0,0.5)'; ctx.shadowBlur = 50; ctx.shadowOffsetY = 26; ctx.fillStyle = dark ? '#ece4d4' : '#f6f0e1'; ctx.fillRect(-cw / 2, -chh / 2, cw, chh); ctx.shadowColor = 'transparent';
+  const r = rnd(31); for (let i = 0; i < 1400; i++) { ctx.fillStyle = `rgba(90,70,40,${0.03 + 0.05 * r()})`; ctx.fillRect((r() - 0.5) * cw, (r() - 0.5) * chh, 2, 2); }
+  ctx.strokeStyle = 'rgba(60,40,20,0.35)'; ctx.lineWidth = 3; ctx.strokeRect(-cw / 2 + 24, -chh / 2 + 24, cw - 48, chh - 48);
+  // PART n — small, typed, top-left; a red rule
+  ctx.font = `400 46px Typer`; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; ctx.fillStyle = '#b3241a'; const np = Math.floor(clamp((u - 0.25) * 18, 0, part.length)); ctx.fillText(part.slice(0, np), -cw / 2 + 90, -chh / 2 + 120);
+  ctx.fillStyle = '#b3241a'; ctx.fillRect(-cw / 2 + 90, -chh / 2 + 150, (cw - 180) * eo(clamp((u - 0.35) / 0.5)), 6);
+  // title — huge, wraps to 2 lines, each word pops in
+  const words_ = title.split(' '); let fs = o.size || 150; ctx.font = `900 ${fs}px ${F}`; let lines = [title];
+  const fit = () => { lines = []; let cur = ''; for (const w of words_) { const tr = cur ? cur + ' ' + w : w; if (ctx.measureText(tr).width > cw - 200 && cur) { lines.push(cur); cur = w; } else cur = tr; } lines.push(cur); };
+  fit(); while ((lines.length > 2 || lines.some(l => ctx.measureText(l).width > cw - 200)) && fs > 60) { fs -= 6; ctx.font = `900 ${fs}px ${F}`; fit(); }
+  let wi = 0; lines.forEach((l, li) => { const y = -chh / 2 + 300 + li * fs * 1.05 - (lines.length === 1 ? -fs * 0.4 : 0); let x = -cw / 2 + 90;
+    for (const w of l.split(' ')) { const k = clamp((u - 0.45 - wi * 0.07) / 0.18); if (k > 0) { ctx.save(); ctx.globalAlpha = k; ctx.translate(x, y + (1 - eo(k)) * 30); ctx.fillStyle = li === lines.length - 1 ? '#241c14' : '#241c14'; ctx.font = `900 ${fs}px ${F}`; ctx.fillText(w, 0, 0); ctx.restore(); }
+      x += ctx.measureText(w + ' ').width; wi++; } });
+  // marker underline under the last line
+  const ll = lines[lines.length - 1]; const lw = ctx.measureText(ll).width, ly = -chh / 2 + 300 + (lines.length - 1) * fs * 1.05 + 34 + (lines.length === 1 ? fs * 0.4 : 0);
+  markerLine(ctx, curve([-cw / 2 + 90, ly], [-cw / 2 + 90 + lw, ly - 6], 0.01, 30, 2), (u - 0.45 - wi * 0.07) / 0.5, '#b3241a', 10, false);
+  ctx.restore();
+  // tape on two corners + a "CASE FILE" stamp, in screen space following the slip
+  const tp = (dx, dy, rr) => { const c = Math.cos(rot), sn = Math.sin(rot); tape(ctx, cx + (dx * c - dy * sn) * z, cy + (dx * sn + dy * c) * z, 220, rot + rr); };
+  if (kin > 0.95) { tp(-cw / 2 + 40, -chh / 2 + 10, -0.6); tp(cw / 2 - 40, -chh / 2 + 10, 0.6); }
+  const c = Math.cos(rot), sn = Math.sin(rot), sx = cw / 2 - 230, sy = chh / 2 - 110; stamp(ctx, 'CASE FILE', cx + (sx * c - sy * sn) * z, cy + (sx * sn + sy * c) * z, t0 + 0.95, t, 54, '#b3241a', -0.12 + rot);
+}
 // ---------------- marks ----------------
 const RED = '#C9271C', INK = '#2A221A', YEL = '#f2d33b';
 function highlight(ctx, q, t0, t, o = {}) { if (t < t0 || (o.until && t > o.until)) return; const u = eo((t - t0) / 0.35); const [x0, y0, x1, y1] = q; const pad = o.pad ?? 10; const dim = (o.dim ?? 0.6) * clamp((t - t0) / 0.25) * (o.until ? clamp((o.until - t) / 0.2) : 1);
@@ -288,6 +311,8 @@ function planeCut(ctx, x, y, s = 1, o = {}, t = 0) { ctx.save(); ctx.translate(x
   ctx.lineTo(-L / 2 - 30, -Hh / 2 - 170); ctx.lineTo(-L / 2 - 100, -Hh / 2 - 170); ctx.lineTo(-L / 2 - 40, -Hh / 2 + 10); ctx.closePath(); ctx.fill(); ctx.strokeStyle = '#8a95a3'; ctx.lineWidth = 5; ctx.stroke();
   ctx.fillStyle = '#fbfaf6'; ctx.fillRect(-L / 2 + 60, -Hh / 2 + 40, L - 300, Hh - 80); const tags = o.tags || []; const n = tags.length, sw = (L - 360) / n;
   tags.forEach((g, i) => { const k = eo(clamp(((o.reveal ?? 1) * n - i))); if (k <= 0) return; const sx = -L / 2 + 90 + i * sw; ctx.save(); ctx.globalAlpha = k;
+    const fl = o.flip && o.flip[i] != null ? o.flip[i] : null; if (fl != null) { const cxs = sx + sw / 2; ctx.translate(cxs, 0); ctx.scale(Math.max(0.02, Math.abs(Math.cos(fl * Math.PI))), 1); ctx.translate(-cxs, 0); if (fl > 0.5 && o.flipTo) g = o.flipTo[i]; }
+    if (o.glow && o.glow.includes(i)) { ctx.save(); ctx.shadowColor = '#f2d33b'; ctx.shadowBlur = 40 + 20 * Math.sin(t * 8); ctx.fillStyle = 'rgba(242,211,59,0.9)'; roundRect(ctx, sx - 2, -52, sw, 114, 14); ctx.fill(); ctx.restore(); }
     const col = g === '$$$' ? '#c9271c' : g === '$' ? '#2f7d4f' : g === 'empty' ? '#c7cdd4' : '#2f5d8a'; ctx.fillStyle = col; roundRect(ctx, sx + 6, -40, sw - 16, 90, 10); ctx.fill(); ctx.fillRect(sx + 6, -70, 18, 120);
     if (g !== 'empty') { ctx.fillStyle = '#fff'; ctx.font = `900 ${g === '$$$' ? 34 : 40}px ${F}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(g === 'you' ? 'YOU' : g, sx + sw / 2 + 4, 6); } ctx.restore(); });
   for (let i = 0; i < 9; i++) { ctx.fillStyle = '#9fb3c8'; roundRect(ctx, -L / 2 + 110 + i * 130, -Hh / 2 + 12, 46, 22, 10); ctx.fill(); } ctx.restore(); }
