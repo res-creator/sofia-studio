@@ -1,0 +1,367 @@
+[
+ {
+  "id": "v2",
+  "part": null,
+  "text": "= v1 + retention review + fact-check + packaging review (see review_notes.md). House style \"Case File\" (CHANNEL.md rule 14)."
+ },
+ {
+  "id": "o01",
+  "part": "COLD OPEN",
+  "text": "In 2014, United Airlines sued a 22-year-old... for finding plane tickets that were too cheap."
+ },
+ {
+  "id": "o02",
+  "part": "COLD OPEN",
+  "text": "Ten years later, another airline won nine point four million dollars from his website."
+ },
+ {
+  "id": "o03",
+  "part": "COLD OPEN",
+  "text": "And a teenager got banned for three years, his dad says, for planning to get off a plane... in his own hometown."
+ },
+ {
+  "id": "o05",
+  "part": "COLD OPEN",
+  "text": "Here's why. Los Angeles to Washington: five hundred eighty-eight dollars. Los Angeles to Boston \u2014 through Washington: two hundred sixteen."
+ },
+ {
+  "id": "o06",
+  "part": "COLD OPEN",
+  "text": "By the end, you'll know if you can legally do this... and why it cost one website nine point four million dollars. Let's open the file."
+ },
+ {
+  "id": "p01",
+  "part": "PART 1",
+  "text": "This is a real one-way fare search an airline blogger published in January 2015, on United, from Los Angeles."
+ },
+ {
+  "id": "p02",
+  "part": "PART 1",
+  "text": "A ticket to Washington Dulles: five hundred eighty-eight dollars."
+ },
+ {
+  "id": "p03",
+  "part": "PART 1",
+  "text": "A ticket to Boston... that flies the exact same flight to Dulles on the way: two hundred sixteen."
+ },
+ {
+  "id": "p04",
+  "part": "PART 1",
+  "text": "Same plane to Dulles. Less than half the price. And a free extra flight you don't want."
+ },
+ {
+  "id": "p05",
+  "part": "PART 1",
+  "text": "So people figured out the obvious move: buy the Boston ticket... and walk out of the airport in Washington."
+ },
+ {
+  "id": "p06",
+  "part": "PART 1",
+  "text": "It's called hidden-city ticketing. Or, after the website we'll meet in a minute, \"skiplagging.\""
+ },
+ {
+  "id": "p07",
+  "part": "PART 1",
+  "text": "So why would the longer trip be cheaper? Because airlines don't price by distance. Or by cost."
+ },
+ {
+  "id": "p08b",
+  "part": "PART 1",
+  "text": "If they did, Boston would cost more. That's how math normally works."
+ },
+ {
+  "id": "p08",
+  "part": "PART 1",
+  "text": "They price by market: what people flying from A to B will pay."
+ },
+ {
+  "id": "p09",
+  "part": "PART 1",
+  "text": "Washington is a hub. Lots of people need to fly there nonstop, and they'll pay a premium for it."
+ },
+ {
+  "id": "p11",
+  "part": "PART 1",
+  "text": "Boston, through a connection? Now the airline competes with every other airline's nonstop to Boston. So it cuts the price to win you."
+ },
+ {
+  "id": "p12",
+  "part": "PART 1",
+  "text": "The connecting passenger is a bargain hunter. The nonstop passenger is a cash machine. And both are sitting on the same plane."
+ },
+ {
+  "id": "p13",
+  "part": "PART 1",
+  "text": "That mix is how hubs make money. Which means a cheap ticket to Boston only works for the airline if you actually go to Boston."
+ },
+ {
+  "id": "p14",
+  "part": "PART 1",
+  "text": "Skip the last flight, and you get the cheap price... on the expensive trip."
+ },
+ {
+  "id": "p15",
+  "part": "PART 1",
+  "text": "The airline's position: you must fly to Boston. Whether you want to be in Boston is not their problem."
+ },
+ {
+  "id": "k01",
+  "part": "PART 2",
+  "text": "So if this trick is so obvious... why wasn't everyone doing it?"
+ },
+ {
+  "id": "k01b",
+  "part": "PART 2",
+  "text": "Because you had to hunt for those fares by hand."
+ },
+ {
+  "id": "k02",
+  "part": "PART 2",
+  "text": "Then, in 2013, a 20-year-old in New York named Aktarer Zaman built a site that hunted for them automatically."
+ },
+ {
+  "id": "k03",
+  "part": "PART 2",
+  "text": "He called it Skiplagged. Type in where you want to go, and it shows you the flights that pass through it."
+ },
+ {
+  "id": "k04",
+  "part": "PART 2",
+  "text": "As he put it, the trick had been around for a while. It just wasn't very accessible."
+ },
+ {
+  "id": "k05",
+  "part": "PART 2",
+  "text": "In November 2014, it got accessible enough. United Airlines and the travel site Orbitz sued him, for seventy-five thousand dollars in lost revenue."
+ },
+ {
+  "id": "k07",
+  "part": "PART 2",
+  "text": "According to the lawsuit, United bans hidden-city tickets because of \"logistical and public safety concerns.\""
+ },
+ {
+  "id": "k08",
+  "part": "PART 2",
+  "text": "Zaman was 22. He asked the internet for help. \"As a 22-year-old with a startup being bullied by these large corporations, your support means so much to me,\" he wrote."
+ },
+ {
+  "id": "k09",
+  "part": "PART 2",
+  "text": "By the end of December, more than sixteen hundred strangers had chipped in thirty-three thousand dollars for his lawyers."
+ },
+ {
+  "id": "k10",
+  "part": "PART 2",
+  "text": "And the lawsuit did something United definitely didn't plan: it made Skiplagged famous."
+ },
+ {
+  "id": "k11",
+  "part": "PART 2",
+  "text": "A lot of people who'd never heard of hidden-city tickets now knew exactly where to find them."
+ },
+ {
+  "id": "k12",
+  "part": "PART 2",
+  "text": "In 2015, a federal judge threw United's case out. Not because Skiplagged was right \u2014 because United had sued in a court that had no say over him."
+ },
+ {
+  "id": "k13",
+  "part": "PART 2",
+  "text": "Orbitz had already settled. United didn't try again."
+ },
+ {
+  "id": "k14",
+  "part": "PART 2",
+  "text": "Round one: the kid."
+ },
+ {
+  "id": "a01",
+  "part": "PART 3",
+  "text": "If you can't stop the website... you can go after the people using it."
+ },
+ {
+  "id": "a02",
+  "part": "PART 3",
+  "text": "In 2018, a United passenger got a letter from the airline's Corporate Security department."
+ },
+ {
+  "id": "a03",
+  "part": "PART 3",
+  "text": "Subject: \"Notice of Claim... and Demand for Reimbursement.\""
+ },
+ {
+  "id": "a04",
+  "part": "PART 3",
+  "text": "United said it had found thirty-eight instances since January 2016 of the passenger not flying the whole ticket. It called that \"fraud.\""
+ },
+ {
+  "id": "a05",
+  "part": "PART 3",
+  "text": "The bill: three thousand, two hundred thirty-six dollars and seventy-six cents. Pay within ten business days, or United might send it to a collection agency, shut down the frequent-flyer account, and refuse to fly the passenger again."
+ },
+ {
+  "id": "a07",
+  "part": "PART 3",
+  "text": "A debt, for flights that were paid for and not taken. That's a strange kind of debt."
+ },
+ {
+  "id": "a08",
+  "part": "PART 3",
+  "text": "In Germany, Lufthansa went further. It took a passenger to court."
+ },
+ {
+  "id": "a10",
+  "part": "PART 3",
+  "text": "He'd booked a round trip from Oslo to Seattle through Frankfurt. On the way home, he got off in Frankfurt and flew to Berlin instead."
+ },
+ {
+  "id": "a11",
+  "part": "PART 3",
+  "text": "Lufthansa sued him for two thousand one hundred twelve euros: the fare difference, plus interest."
+ },
+ {
+  "id": "a12",
+  "part": "PART 3",
+  "text": "A Berlin court ruled against the airline. Lufthansa appealed... then quietly dropped the appeal."
+ },
+ {
+  "id": "a14",
+  "part": "PART 3",
+  "text": "And then, in July 2023, the story nobody at American Airlines wanted on the news."
+ },
+ {
+  "id": "a15",
+  "part": "PART 3",
+  "text": "A 17-year-old had a ticket from Gainesville, Florida, to New York \u2014 with a stop in Charlotte. Charlotte, where he lived."
+ },
+ {
+  "id": "a16",
+  "part": "PART 3",
+  "text": "At the airport in Gainesville, staff saw his North Carolina driver's license... and did the math."
+ },
+ {
+  "id": "a17",
+  "part": "PART 3",
+  "text": "The ticket was cancelled. His dad says the airline banned him for three years."
+ },
+ {
+  "id": "a18",
+  "part": "PART 3",
+  "text": "American's rule: you can't buy a ticket \"without intending to fly all flights to gain lower fares.\""
+ },
+ {
+  "id": "a19",
+  "part": "PART 3",
+  "text": "The skiplag ticket had cost a hundred and fifty dollars. The direct flight the family bought instead? Four hundred."
+ },
+ {
+  "id": "a20",
+  "part": "PART 3",
+  "text": "So the punishment for paying too little... was paying more. Somewhere, a pricing team called that a win."
+ },
+ {
+  "id": "a21",
+  "part": "PART 3",
+  "text": "So no, skiplagging isn't illegal. But it breaks the airline's rules. And even if you're not a teenager with the wrong driver's license, here's what can go wrong."
+ },
+ {
+  "id": "s02",
+  "part": "PART 3",
+  "text": "It only works one way. Skip a flight, and the airline usually cancels the rest of your trip, including your return."
+ },
+ {
+  "id": "s03",
+  "part": "PART 3",
+  "text": "No checked bags. Your suitcase is going to Boston, even if you're not."
+ },
+ {
+  "id": "s04",
+  "part": "PART 3",
+  "text": "If the flight gets rerouted through a different city, your plan goes with it."
+ },
+ {
+  "id": "s05",
+  "part": "PART 3",
+  "text": "Do it often, and you can lose your miles, your account, or \u2014 like that teenager \u2014 your airline."
+ },
+ {
+  "id": "v01",
+  "part": "PART 4",
+  "text": "So if the trick isn't illegal... how does a website end up owing nine point four million dollars?"
+ },
+ {
+  "id": "v02",
+  "part": "PART 4",
+  "text": "Southwest sued Skiplagged in 2021. That one settled."
+ },
+ {
+  "id": "v03",
+  "part": "PART 4",
+  "text": "In 2023, American Airlines sued. And this time, the case went all the way to a jury in Fort Worth, Texas."
+ },
+ {
+  "id": "v05",
+  "part": "PART 4",
+  "text": "In October 2024, the jury decided. Nine point four million dollars, for American."
+ },
+ {
+  "id": "v06",
+  "part": "PART 4",
+  "text": "Here's the part most headlines skipped. Look at what the money was actually for."
+ },
+ {
+  "id": "v07",
+  "part": "PART 4",
+  "text": "Four point seven million, for copyright. Not for the tickets. Not for flight data. For American's logo, treated as a piece of artwork, which Skiplagged had shown on its pages."
+ },
+ {
+  "id": "v08",
+  "part": "PART 4",
+  "text": "And four point seven million, taken from Skiplagged's own revenue."
+ },
+ {
+  "id": "v09",
+  "part": "PART 4",
+  "text": "American's trademark claims, the usual way to fight over a logo? The jury rejected them. Its breach-of-contract claims had already been thrown out before trial."
+ },
+ {
+  "id": "v10",
+  "part": "PART 4",
+  "text": "So the jury didn't say hidden-city tickets are illegal. The money was about a logo on a website... and the revenue that website made."
+ },
+ {
+  "id": "v11",
+  "part": "PART 4",
+  "text": "In 2025, the judgment was made final."
+ },
+ {
+  "id": "z00",
+  "part": "OUTRO",
+  "text": "Airline analysts like Brett Snyder, of the Cranky Flier blog, argue that if everyone did this, the result wouldn't be fairer prices. It'd be fewer flights, smaller planes, or routes cut altogether."
+ },
+ {
+  "id": "z00b",
+  "part": "OUTRO",
+  "text": "So the airlines aren't wrong that it costs them money. But look at what they're defending: a price that says the shorter trip is worth almost three times more."
+ },
+ {
+  "id": "z01",
+  "part": "OUTRO",
+  "text": "So, the verdict."
+ },
+ {
+  "id": "z01b",
+  "part": "OUTRO",
+  "text": "And the twist? A week after the verdict, the travel site Skift reported that Skiplagged was still selling American's flights. The trick survived. The logo was the expensive part."
+ },
+ {
+  "id": "z03",
+  "part": "OUTRO",
+  "text": "The airlines' real problem was never that you paid too little. It's that you saw what everyone else was paying for."
+ },
+ {
+  "id": "z04",
+  "part": "OUTRO",
+  "text": "So: a hundred and fifty dollars with the risk, or four hundred without it? Which ticket are you buying? Tell me in the comments."
+ }
+]

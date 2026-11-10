@@ -23,3 +23,10 @@
 
 ## Today's dollars (BLS CPI, approx.)
 $75,000 (2014) ≈ $105,000 · $3,236.76 (2018) ≈ $4,200 · $9.4M (2024) ≈ $9.8M · €2,112 (2019) ≈ $2,300 then
+
+## Added after the v2 scoring review (sources already opened)
+- Fortune 2014: Zaman = "a New York City computer whiz"; United says it prohibits hidden city ticketing over "logistical and public safety concerns" (per the suit).
+- Live and Let's Fly 2019: the €2,112 "included the fare difference plus interest".
+- Wikipedia: after the dismissal "United did not pursue further legal action".
+- Skift Oct 23 2024: Skiplagged "continues to offer the airline's tickets at steep discounts" (DC→Philadelphia one-way $162 incl. $35 fee).
+- plagiarismtoday.com 2024-10-17: copyright claim = American's "flight symbol" logo (registered 2016); jury rejected fair use; trademark claims → no damages.

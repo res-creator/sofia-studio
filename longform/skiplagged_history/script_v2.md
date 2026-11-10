@@ -8,7 +8,7 @@ o01 In 2014, United Airlines sued a 22-year-old... for finding plane tickets tha
   [RECEIPT 01: complaint slams onto the desk, stamp SUED, tag NOV 2014]
 o02 Ten years later, another airline won nine point four million dollars from his website.
   [counter $9,400,000 · ≈ $9.7M TODAY]
-o03 In between, a teenager got banned for three years — his dad says — for planning to get off a plane... in his own hometown.
+o03 And a teenager got banned for three years, his dad says, for planning to get off a plane... in his own hometown.
   [boarding pass GNV → CLT → NYC, red X on the last leg]
 o05 Here's why. Los Angeles to Washington: five hundred eighty-eight dollars. Los Angeles to Boston — through Washington: two hundred sixteen.
   [paper map, two routes, tags $588 / $216 pop; title stamped for 2 s over the moving map: FARTHER = CHEAPER]
@@ -82,7 +82,7 @@ a18 American's rule: you can't buy a ticket "without intending to fly all flight
 a19 The skiplag ticket had cost a hundred and fifty dollars. The direct flight the family bought instead? Four hundred.
   [two receipts: $150 vs $400]
 a20 So the punishment for paying too little... was paying more. Somewhere, a pricing team called that a win.
-a21 And even if you're not a teenager with the wrong driver's license, here's what can go wrong.
+a21 So no, skiplagging isn't illegal. But it breaks the airline's rules. And even if you're not a teenager with the wrong driver's license, here's what can go wrong.
 s02 It only works one way. Skip a flight, and the airline usually cancels the rest of your trip, including your return.
 s03 No checked bags. Your suitcase is going to Boston, even if you're not.
   [suitcase rides the plane alone, tiny wave]
@@ -98,10 +98,10 @@ v05 In October 2024, the jury decided. Nine point four million dollars, for Amer
   [counter $9,400,000]
 v06 Here's the part most headlines skipped. Look at what the money was actually for.
   [split bar: 4.7 / 4.7]
-v07 Four point seven million, for copyright. Not for the tickets. Not for flight data. For American's logo — which Skiplagged had shown on its pages.
+v07 Four point seven million, for copyright. Not for the tickets. Not for flight data. For American's logo, treated as a piece of artwork, which Skiplagged had shown on its pages.
   [highlight: COPYRIGHT → THE LOGO (generic plane-symbol placeholder, never the real logo)]
 v08 And four point seven million, taken from Skiplagged's own revenue.
-v09 American's trademark claims? The jury rejected them. Its breach-of-contract claims had already been thrown out before trial.
+v09 American's trademark claims, the usual way to fight over a logo? The jury rejected them. Its breach-of-contract claims had already been thrown out before trial.
 v10 So the jury didn't say hidden-city tickets are illegal. The money was about a logo on a website... and the revenue that website made.
   [highlight: NOT THE TRICK. THE LOGO.]
 v11 In 2025, the judgment was made final.
@@ -111,7 +111,7 @@ z00 Airline analysts like Brett Snyder, of the Cranky Flier blog, argue that if 
 z00b So the airlines aren't wrong that it costs them money. But look at what they're defending: a price that says the shorter trip is worth almost three times more.
 z01 So, the verdict.
   [VERDICT card: TRICK: LEGAL · RULES: BROKEN · LUFTHANSA: LOST · TEENAGER: BANNED (PER DAD) · WEBSITE: $9.4M — FOR A LOGO]
-z01b And the twist? A week after the verdict, Skiplagged was still selling American's flights. The trick survived. The logo was the expensive part.
-z03 The airlines' real problem was never that you paid too little. It's that you found out what the price was really for.
+z01b And the twist? A week after the verdict, the travel site Skift reported that Skiplagged was still selling American's flights. The trick survived. The logo was the expensive part.
+z03 The airlines' real problem was never that you paid too little. It's that you saw what everyone else was paying for.
 z04 So: a hundred and fifty dollars with the risk, or four hundred without it? Which ticket are you buying? Tell me in the comments.
   [end screen 20 s, music only]
