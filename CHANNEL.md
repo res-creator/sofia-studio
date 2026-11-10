@@ -148,6 +148,13 @@ Algorithm (not official, but every source agrees): watch time, completion and re
    - Lines 1–3 all push the action forward. Dates/places go into a small on-screen tag, never into the voice right after the hook.
    - Something new (a number, a twist, a reversal) at least every 3 s through 0:15.
    - Target length 30–40 s. End on the question card that loops back to frame 0:00.
+14. **House style "Case File" (owner + expert verdict, Nov 2026)** — base = dark investigation desk (evidence cards, highlight-zoom on real archive text, stamps, timeline, verdict card; see `tests/editing_styles/b_investigator/`) + hand-drawn paper maps/routes for geography (`a_map_doc/`) + one dry deadpan line per Short (`c_fast_deadpan/`, placed at 60–80 % of runtime). Own labels ("RECEIPT 01", our stamp + colours), never copy the reference channels' tags/branding.
+   - New visual or camera move at least every 2.5 s (4 s in long-form); nothing held still > 3 s.
+   - The payoff evidence card + stamp is on screen by 0:01; a second hook lands before 0:05; exposition only after 0:08.
+   - Vertical: text ≥ 60 px at 1080×1920, ≤ 5 words per line, nothing in the outer 15 %; no tiny mono labels, no red-string board (long-form only).
+   - Every money figure gets a "= $X today" tag within 1 s.
+   - At least one light paper-map section per video (≥ 20 % of long-form); long-form: 4–6 typed chapter cards, change visual mode every 60–90 s, a light joke ~every 90 s, recap verdict card before the final twist.
+   - Narration has a point of view ("you'd have bought this bond too") and some analysis — not just facts — so the channel is not "mass-produced".
 12. Before delivery: an independent review pass (a fresh reviewer scores hook / middle retention / sound-off clarity / twist / comments / shares / saves / follow / humor / cover).
 
 ## Quality checklist before reporting "done"
