@@ -3,3 +3,7 @@ cues.json
 mix.wav
 build.log
 _stt.mp3
+chapters/*/seg_video.mp4
+chapters/*/mix.wav
+chapters/*/render.log
+_prev/
