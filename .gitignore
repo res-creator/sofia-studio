@@ -24,3 +24,8 @@ ru_geo/japan/full2/*.log
 ru_geo/japan/full2/qc/
 ru_geo/dubai/vo_full/*.part
 ru_geo/dubai/vo_full/*.log
+ru_geo/dubai/full/*.mp4
+ru_geo/dubai/full/*.m4a
+ru_geo/dubai/full/parts.txt
+ru_geo/dubai/full/*.log
+ru_geo/dubai/full/qc/
