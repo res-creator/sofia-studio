@@ -29,7 +29,7 @@ Music: new — airport-lounge synth bossa that turns tense at the lawsuits.
 | k07 | Then a 17-year-old tried it. His dad says American banned him for three years. | map GNV → CLT → NYC, red X at check-in · BANNED · 3 YEARS (tag JULY 2023) |
 | k08 | His skip ticket cost a hundred and fifty dollars. The direct flight home: four hundred. | receipts $150 vs $400 — the deadpan beat (~65 %) |
 | k09 | Then American sued the website. A jury awarded it nine point four million. | verdict sheet, counter · $9.4M (tag OCT 2024) |
-| k10 | Half for copying American's flight schedules. Half from the site's own revenue. | split bar 4.7 / 4.7 · THE DATA / THE REVENUE |
+| k10 | (FIXED after long-form fact-check: the copyright half was for American's LOGO, not schedules — rewrite before production) Half for copying American's flight schedules. Half from the site's own revenue. | split bar 4.7 / 4.7 · THE DATA / THE REVENUE |
 | k11 | And skipping the last flight? Still not illegal. | rulebook highlight · NOT ILLEGAL. JUST "AGAINST THE RULES". |
 | k12 | The trick survived. The website got the bill. | VERDICT stamp over frame-0 sheet |
 | card | (silent ≥ 2.5 s) | Would YOU risk a 3-year ban to save $250? 👇 |
