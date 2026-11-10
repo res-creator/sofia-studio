@@ -107,6 +107,24 @@ def chapter(ch):
     def put(x, t, g=1.0):
         j = int(max(0, t) * SR); e = min(len(x), n - j)
         if e > 0: fx[j:j + e] += x[:e] * g
+    # Owner (Nov 2026): SFX were too many and too harsh. Keep only soft whooshes, stamps/hits and plane passes,
+    # at most one effect every 5 s (stamps/hits) / 4 s (whooshes), much quieter, low-passed; no paper, marker, typing,
+    # glitch, ding, counter or footsteps sounds.
+    def thin(ts, gap):
+        out, last = [], -1e9
+        for t in sorted(ts):
+            if t - last >= gap: out.append(t); last = t
+        return out
+    taken = []
+    def free(t, gap):
+        return all(abs(t - u) >= gap for u in taken)
+    for t in thin(CU.get('stamp', []) + CU.get('hit', []), 5.0):
+        if free(t, 2.0): put(sfx_stamp(), t, 0.5); taken.append(t)
+    for t in thin(CU.get('whoosh', []), 4.0):
+        if free(t, 1.5): put(sfx_whoosh(), t, 0.5); taken.append(t)
+    for t in thin(CU.get('plane', []), 8.0):
+        if free(t, 1.5): put(sfx_plane(), t, 0.35); taken.append(t)
+    CU = {k: v for k, v in CU.items() if k == 'mode'}
     for t in CU.get('whoosh', []): put(sfx_whoosh(), t, 0.9)
     for t in CU.get('stamp', []): put(sfx_stamp(), t)
     for t in CU.get('hit', []): put(sfx_hit(), t, 0.8)
@@ -123,7 +141,7 @@ def chapter(ch):
     mu = music(T, CU.get('mode', [[0, 'dark']]))
     vr = np.sqrt((vo[np.abs(vo) > 0.02] ** 2).mean()); mr = np.sqrt((mu ** 2).mean()) + 1e-9
     mu *= 0.14 * vr / mr * (1 - 0.7 * dk)[:, None]   # music rms ≈ 0.14 of voice rms between lines, ×0.3 under speech
-    fx *= (1 - 0.4 * dk) * 0.6
+    fx = lpf(fx, 3500) * (1 - 0.6 * dk) * 0.3   # quieter (≈ −6 dB vs before) and without the harsh top end
     fade = np.ones(n, np.float32); fl = int(0.4 * SR); fade[:fl] = np.linspace(0, 1, fl) if ch != 'c0_open' else 1; fade[-fl:] = np.linspace(1, 0, fl)
     mix = np.stack([vo + fx * 0.9, vo + fx * 1.0], 1) + mu * fade[:, None]
     mix /= max(1.0, np.abs(mix).max() / 0.89)
@@ -135,7 +153,7 @@ def preview(chs, out):
         for c in chs: f.write(f"file '{os.path.join(D, 'chapters', c, 'seg_video.mp4')}'\n")
     with open(os.path.join(tmp, 'a.txt'), 'w') as f:
         for c in chs: f.write(f"file '{os.path.join(D, 'chapters', c, 'mix.wav')}'\n")
-    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', os.path.join(tmp, 'v.txt'), '-c:v', 'libx264', '-preset', 'medium', '-crf', '27', '-pix_fmt', 'yuv420p', os.path.join(tmp, 'v.mp4')], check=True)
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', os.path.join(tmp, 'v.txt'), '-c:v', 'libx264', '-preset', 'medium', '-crf', os.environ.get('CRF', '27'), '-pix_fmt', 'yuv420p', os.path.join(tmp, 'v.mp4')], check=True)
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', os.path.join(tmp, 'a.txt'), os.path.join(tmp, 'a.wav')], check=True)
     T = sum(json.load(open(os.path.join(D, 'chapters', c, 'timeline.json')))['T'] for c in chs)
     subprocess.run(['sh', os.path.join(D, '../../howitsrun_style/master.sh'), os.path.join(tmp, 'a.wav'), os.path.join(tmp, 'v.mp4'), out, f'{T:.3f}'], check=True)
