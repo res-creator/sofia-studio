@@ -133,9 +133,10 @@ def render(job):
 if __name__ == '__main__':
     jobs = int(sys.argv[sys.argv.index('--jobs') + 1]) if '--jobs' in sys.argv else 4
     # границы кусков — только на кадрах без растворения
+    nparts = jobs * 4                              # мелкие куски: после перезапуска машины теряется меньше
     tot = sum(s['dur'] for s in SEGS); cuts = [0]; acc = 0
     for i, s in enumerate(SEGS):
-        if acc >= tot * len(cuts) / jobs and not s['dis'] and i > cuts[-1]: cuts.append(i)
+        if acc >= tot * len(cuts) / nparts and not s['dis'] and i > cuts[-1]: cuts.append(i)
         acc += s['dur']
     cuts.append(len(SEGS)); parts = [(k, cuts[k], cuts[k + 1]) for k in range(len(cuts) - 1)]
     print('parts', parts, flush=True)
