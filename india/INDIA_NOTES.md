@@ -23,3 +23,8 @@ Saved here: india/SCRIPT_EN.csv (columns id, chapter, start_s, max_duration_s, e
 ## Rules
 - Keys only via env var / proxy; max 2 ElevenLabs requests at once.
 - Answer the owner in Russian, simply.
+
+## Status (voice DONE in cloud)
+- india/voice/p001–p151.mp3: Kokoro am_puck 1.05, all fit max_duration_s at speed 1.05, mastered with dubtools/master_voice.py (-16 LUFS each).
+- onset_check flags p061 p075 p101 p143 even after a lead-in retake (dubtools/kokoro_takes.py --lead); listen to them in the final film.
+- NEXT (owner's computer, folder with PICTURE_EN_4K.mp4 + MUSIC_AND_EFFECTS.wav): copy india/voice/, india/SCRIPT_EN.csv, india/place_voice.py next to them, `python3 place_voice.py` → FINAL_EN_4K.mp4.
