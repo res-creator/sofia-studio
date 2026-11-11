@@ -14,6 +14,7 @@ Saved here: india/SCRIPT_EN.csv (columns id, chapter, start_s, max_duration_s, e
 
 ## Plan
 1. Voice: Kokoro am_puck, speed 1.05 (see ../ENGLISH_DUB.md). Sample of p001–p003: india/sample_p001-p003.mp3 (all fit max).
+   Mastered sample at real film timing 0:00–1:02 (p001–p006): india/sample_mastered_0-62s.mp3. Mastering script: dubtools/master_voice.py.
 2. One file per paragraph: voice/p001.mp3 ... p151.mp3. Each must be shorter than max_duration_s (speed up to 1.05–1.10 max, else shorten text; also edit subtitles).
 3. Listen to first 3 paragraphs before generating the rest.
 4. Mixing needs MUSIC_AND_EFFECTS.wav + picture, which the assistant cannot download (Drive tool returns text only). So the owner runs place_voice.py on her own computer with voice/ folder, SCRIPT_EN.csv, the wav and the mp4 in one folder (python3 + numpy + ffmpeg). Result: FINAL_EN_4K.mp4, target -14 LUFS, peak <= -1 dBTP.
