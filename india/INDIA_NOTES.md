@@ -28,3 +28,8 @@ Saved here: india/SCRIPT_EN.csv (columns id, chapter, start_s, max_duration_s, e
 - india/voice/p001–p151.mp3: Kokoro am_puck 1.05, all fit max_duration_s at speed 1.05, mastered with dubtools/master_voice.py (-16 LUFS each).
 - onset_check flags p061 p075 p101 p143 even after a lead-in retake (dubtools/kokoro_takes.py --lead); listen to them in the final film.
 - NEXT (owner's computer, folder with PICTURE_EN_4K.mp4 + MUSIC_AND_EFFECTS.wav): copy india/voice/, india/SCRIPT_EN.csv, india/place_voice.py next to them, `python3 place_voice.py` → FINAL_EN_4K.mp4.
+
+## Status 2026-11-11: FILM BUILT
+- Owner's computer: Desktop/India/FINAL_EN_4K.mp4 (7.8 GB, 53:07), mix -14.1 LUFS, TP -1.5 dBFS, all 151 fit.
+- Subtitles re-timed to the real voice: india/SUBTITLES_EN.srt (dubtools/make_srt.py). Upload kit: india/upload_kit.txt.
+- Left: owner watches the film (p061 p075 p101 p143 starts), uploads to YouTube. Intermediate WAVs in Desktop/India can be deleted after the check.
