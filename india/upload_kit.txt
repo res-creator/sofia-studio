@@ -3,8 +3,7 @@ INDIA — English version — YouTube upload kit
 
 VIDEO: FINAL_EN_4K.mp4 (on the owner's computer, Desktop/India, 7.8 GB, 53:07, -14.1 LUFS, TP -1.5 dBFS)
 SUBTITLES: india/SUBTITLES_EN.srt (timed to the final English voice; upload as English)
-COVER: COVER_EN.jpg (1920x1080), in the unpacked ИНДИЯ kit on Google Drive:
-       https://drive.google.com/file/d/1rpZVmbxw0bAMmAqES3Im-dCCXdplajJ-/view
+COVER: india/COVER_EN.jpg (1920x1080, 1 MB) — saved in the repo (the Drive copy was deleted)
 
 TITLE (choose one):
 1. The India You Won't See in the Ads (4K Travel Documentary)
