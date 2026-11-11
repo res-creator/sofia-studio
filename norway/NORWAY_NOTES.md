@@ -10,3 +10,7 @@ PICTURE_EN_4K.mp4 (4.8 GB) and MUSIC_AND_EFFECTS.wav (595 MB) are needed on the 
 - F020 voiced at speed 1.08, the rest 1.05. Lead-in retakes: F005 F032 F097 F105; onset_check still flags F032 F097 — listen.
 - Subtitles timed to the real voice: norway/SUBTITLES_EN.srt (549 cues). Cover: norway/COVER_EN.jpg. Upload kit: norway/upload_kit.txt.
 - NEXT (owner's computer): folder Norway with PICTURE_EN_4K.mp4 + MUSIC_AND_EFFECTS.wav + norway/voice/, SCRIPT_EN.csv, place_voice.py → `python3 place_voice.py`.
+
+## Status: FILM BUILT (owner's computer)
+- Desktop/Norway/FINAL_EN_4K.mp4, 5.2 GB, 36:05; mix -14.2 LUFS, TP -1.4 dBFS, LRA 10.6; all 140 fit.
+- Use norway/SUBTITLES_EN.srt from the repo (timed to our voice), NOT the kit's original SRT.
