@@ -6,6 +6,7 @@ The owner publishes ENGLISH versions on her channel. His team delivers a kit per
 ## Where the kits are (Google Drive, shared with the owner's connected account)
 - INDIA: unpacked from ИНДИЯ.zip, owner lulusfoxyshow@gmail.com. PICTURE_EN_4K.mp4 (7.3 GB) is NOT on Drive (no space).
 - НОРВЕГИЯ folder (owner wespeakengtogether@gmail.com): full kit except the picture (4.8 GB, 36:05, 140 paragraphs F001–F140).
+  Norway voice, subtitles, cover, upload kit DONE: see norway/NORWAY_NOTES.md.
 - VOICE_ADDON (1) folder: ALL_INSTRUCTIONS_FOR_YOUR_AI.md/.pdf (master instructions for all 3 films + full scripts),
   kokoro_voice.py, master_voice.py, onset_check.py, sample Kokoro_Puck_man_US.mp3.
 - ВЬЕТНАМ: described in ALL_INSTRUCTIONS (29:33, 109 paragraphs), folder not found on Drive yet.

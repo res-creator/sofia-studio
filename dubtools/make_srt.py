@@ -11,14 +11,18 @@ def dur(p):
 def cues(t, lim=84):
     out = []
     for s in re.split(r'(?<=[.!?…])\s+', t):
-        w = s.split(); cur = ''
+        w = s.split()
+        n = -(-len(s) // lim)  # parts needed
+        if n <= 1: out.append(s); continue
+        target = len(s) / n; cur = ''
         for x in w:
-            if len(cur) + len(x) + 1 > lim and cur: out.append(cur); cur = x
+            if cur and len(cur) + 1 + len(x) > target + 8 and len(out) >= 0 and n > 1:
+                out.append(cur); cur = x; n -= 1; rest = len(s) - sum(len(c) + 1 for c in out[-50:]); 
             else: cur = (cur + ' ' + x).strip()
         if cur: out.append(cur)
     merged = []
     for c in out:
-        if merged and len(merged[-1]) + len(c) + 1 <= lim and len(c) < 25: merged[-1] += ' ' + c
+        if merged and len(merged[-1]) + len(c) + 1 <= lim and (len(c) < 25 or len(merged[-1]) < 25): merged[-1] += ' ' + c
         else: merged.append(c)
     return merged
 def lines(c, lim=42):
