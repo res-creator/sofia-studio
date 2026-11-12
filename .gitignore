@@ -13,3 +13,6 @@ whyhow/*/v2/voice/*.wav
 whyhow/*/v2/*.log
 whyhow/*/v2/video_silent.mp4*
 whyhow/*/v2/mix.wav
+whyhow/*/v3/video_silent.mp4*
+whyhow/*/v3/mix.wav
+whyhow/*/v3/*.log

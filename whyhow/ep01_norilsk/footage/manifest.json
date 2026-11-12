@@ -558,5 +558,1274 @@
    "P032",
    "P034"
   ]
+ },
+ {
+  "key": "px_snowstorm_city_street",
+  "file": "px_snowstorm_city_street.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "107279",
+  "title": "nature, landscape, winter, city, snowstorm, sidewalk, building, snow, cars, trees, people, sleet, blizzard",
+  "page_url": "https://pixabay.com/videos/id-107279/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Heavy snow falls on a brownstone sidewalk with snow-covered cars and a few people walking away",
+  "tags": [
+   "blizzard in city with people",
+   "snowstorm in streets"
+  ],
+  "best_for": [
+   "P001",
+   "P005",
+   "P024"
+  ]
+ },
+ {
+  "key": "px_blizzard_street_parked_cars",
+  "file": "px_blizzard_street_parked_cars.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "33975",
+  "title": "storm, snow, winter, cold, blizzard, nature, flake, street",
+  "page_url": "https://pixabay.com/videos/id-33975/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Blizzard on a residential street, parked cars buried in fresh snow, poor visibility",
+  "tags": [
+   "blizzard in city",
+   "cars under snow"
+  ],
+  "best_for": [
+   "P005",
+   "P024"
+  ]
+ },
+ {
+  "key": "px_blizzard_car_buried_snow",
+  "file": "px_blizzard_car_buried_snow.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "32116",
+  "title": "storm, winter, white, snow, nature, cold, weather, wind, grey, fog, street, cloudy, city, clouds, blizzard",
+  "page_url": "https://pixabay.com/videos/id-32116/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Car almost buried under a snowdrift on a street during a snowstorm",
+  "tags": [
+   "blizzard in city",
+   "snowdrifts"
+  ],
+  "best_for": [
+   "P005",
+   "P024"
+  ]
+ },
+ {
+  "key": "px_night_snowfall_street_people",
+  "file": "px_night_snowfall_street_people.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "63969",
+  "title": "snow, cold, winter, dark, night, 4k, evening, snowing, city, urban, street, people, selfie, walking, hiking",
+  "page_url": "https://pixabay.com/videos/id-63969/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Snow falling at night over a lit town square with a few people and street lamps",
+  "tags": [
+   "polar night city lights",
+   "snowfall in city with people"
+  ],
+  "best_for": [
+   "P001",
+   "P005",
+   "P044B"
+  ]
+ },
+ {
+  "key": "px_moscow_people_walking_snowfall",
+  "file": "px_moscow_people_walking_snowfall.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "190961",
+  "title": "snow, people, walking, snowy forest, winter, cold, snowing, 4k, moscow, russia, nature, landscape",
+  "page_url": "https://pixabay.com/videos/id-190961/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Moscow, Russia",
+  "duration_s": 12.0,
+  "description": "People walking along a snowy forest-park path during snowfall",
+  "tags": [
+   "Russia winter",
+   "people in snow"
+  ],
+  "best_for": [
+   "P005",
+   "P042"
+  ]
+ },
+ {
+  "key": "px_night_snow_empty_shop_street",
+  "file": "px_night_snow_empty_shop_street.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "63970",
+  "title": "snow, cold, winter, dark, night, 4k, evening, snowing, city, urban, shops, street, empty, quiet, peaceful",
+  "page_url": "https://pixabay.com/videos/id-63970/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Empty pedestrian shopping street at night with falling snow and warm street lights",
+  "tags": [
+   "polar night city lights"
+  ],
+  "best_for": [
+   "P005",
+   "P044B"
+  ]
+ },
+ {
+  "key": "px_night_snow_streetlamp_houses",
+  "file": "px_night_snow_streetlamp_houses.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "63966",
+  "title": "snow, cold, winter, dark, night, 4k, evening, snowing, city, urban, shops, street, empty, quiet, peaceful",
+  "page_url": "https://pixabay.com/videos/id-63966/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Street lamp and houses with lit windows at night while snow falls",
+  "tags": [
+   "polar night city lights",
+   "warm lit windows at night"
+  ],
+  "best_for": [
+   "P001",
+   "P044B"
+  ]
+ },
+ {
+  "key": "px_town_night_lights_snow_aerial",
+  "file": "px_town_night_lights_snow_aerial.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "167115",
+  "title": "village, town, night lights, roads, snow, lights, winter",
+  "page_url": "https://pixabay.com/videos/id-167115/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Drone view at dusk of a snowy valley town with its street lights on",
+  "tags": [
+   "polar night city lights",
+   "Arctic town (generic)"
+  ],
+  "best_for": [
+   "P004",
+   "P005"
+  ]
+ },
+ {
+  "key": "px_tromso_winter_fjord_town",
+  "file": "px_tromso_winter_fjord_town.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "36084",
+  "title": "tromso, norway, landscape, scandinavia, winter, mountain, arctic, sky, europe, sea, travel, snow, northern lights, beautiful, fjord, scenic, norwegian, water, view, coast, storsteinen",
+  "page_url": "https://pixabay.com/videos/id-36084/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Troms\u00f8, Norway",
+  "duration_s": 12.0,
+  "description": "Aerial view of Troms\u00f8 on its island in a fjord, snowy mountains, town lights at blue hour",
+  "tags": [
+   "Arctic town",
+   "aurora over town"
+  ],
+  "best_for": [
+   "P004"
+  ]
+ },
+ {
+  "key": "px_aurora_alaska_night",
+  "file": "px_aurora_alaska_night.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "213425",
+  "title": "northern lights, aurora borealis, night, sky, lights, space, clouds, arctic, stars, winter, water, green, alaska, north, dark, storm, sea, lightning, nature, landscape",
+  "page_url": "https://pixabay.com/videos/id-213425/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Alaska, USA",
+  "duration_s": 10.1,
+  "description": "Green aurora curtains over a dark snowy mountain at night",
+  "tags": [
+   "aurora"
+  ],
+  "best_for": [
+   "P005",
+   "P039"
+  ]
+ },
+ {
+  "key": "px_steam_chimneys_snowing_suburb",
+  "file": "px_steam_chimneys_snowing_suburb.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "3156",
+  "title": "snowing, steam, winter, houses, suburbs, neighbors, neighborhood",
+  "page_url": "https://pixabay.com/videos/id-3156/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Snow falling on a suburban street of brick houses, steam rising from roofs",
+  "tags": [
+   "steam from heating",
+   "warm houses in winter"
+  ],
+  "best_for": [
+   "P013",
+   "P021"
+  ]
+ },
+ {
+  "key": "px_chimney_smoke_winter_roof",
+  "file": "px_chimney_smoke_winter_roof.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "7544",
+  "title": "chimney, winter, cold, smoke, building, roof, heat, city, environmental protection",
+  "page_url": "https://pixabay.com/videos/id-7544/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Brick chimney on a roof sending white smoke into a clear winter sky",
+  "tags": [
+   "steam/smoke from heating in winter"
+  ],
+  "best_for": [
+   "P013",
+   "P021"
+  ]
+ },
+ {
+  "key": "px_frost_steam_residential_coast",
+  "file": "px_frost_steam_residential_coast.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "255532",
+  "title": "snow, frost, frosty, winter, cold, frozen, nature, wintry, snowy, frost fog, frost steam, fishing ship, residential, house, home, property, architecture, neighborhood, building, housing, trees, fog, landscape",
+  "page_url": "https://pixabay.com/videos/id-255532/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Drone view of a frosted, snow-covered residential town at dawn in deep cold",
+  "tags": [
+   "frost steam",
+   "frozen air"
+  ],
+  "best_for": [
+   "P001",
+   "P005"
+  ]
+ },
+ {
+  "key": "px_power_plant_smoke_winter",
+  "file": "px_power_plant_smoke_winter.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "28444",
+  "title": "air pollution, industrial smoking pipes, power plants, beautiful blue sky, winter landscape",
+  "page_url": "https://pixabay.com/videos/id-28444/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 10.2,
+  "description": "Three cooling towers emitting thick plumes against a cold winter sky",
+  "tags": [
+   "factory smoke stacks in winter"
+  ],
+  "best_for": [
+   "P006",
+   "P031"
+  ]
+ },
+ {
+  "key": "px_thermal_power_plant_chimneys",
+  "file": "px_thermal_power_plant_chimneys.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "29080",
+  "title": "power plant, thermal power plant, coal-fired power station, chimney, industry, environmental pollution, factory, smoke, chimneys, landscape in lower austria, d\u00fcrnrohr",
+  "page_url": "https://pixabay.com/videos/id-29080/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Aerial view of a thermal power plant with a tall red-white chimney among fields",
+  "tags": [
+   "factory smoke stacks",
+   "power plant"
+  ],
+  "best_for": [
+   "P006",
+   "P031"
+  ]
+ },
+ {
+  "key": "px_industrial_chimney_white_smoke",
+  "file": "px_industrial_chimney_white_smoke.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "200191",
+  "title": "industrial chimney, white smoke, air pollution, environmental issue, smokestack, industrial pollution, emission, pollution, heavy industry, manufacturing, environmental impact, sky, toxic emissions, climate change, environmental concern, industrial landscape, smoke plume, factory, ecological footprint, carbon footprint, atmosphere, environmental damage, sustainability issues",
+  "page_url": "https://pixabay.com/videos/id-200191/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Single industrial smokestack with a long white plume under a grey sky",
+  "tags": [
+   "factory smoke stacks"
+  ],
+  "best_for": [
+   "P006"
+  ]
+ },
+ {
+  "key": "px_chimney_white_smoke_winter",
+  "file": "px_chimney_white_smoke_winter.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "7087",
+  "title": "smoke, chimney, smoking, winter, heat, environmental pollution, exhaust, environmental protection, steam, white smoke, sch\u00f6nthal monastery, schoenthal, swiss jura, switzerland",
+  "page_url": "https://pixabay.com/videos/id-7087/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Sch\u00f6ntal Monastery, Germany",
+  "duration_s": 12.0,
+  "description": "White smoke from a chimney drifting past frost-covered trees",
+  "tags": [
+   "smoke stacks in winter"
+  ],
+  "best_for": [
+   "P013",
+   "P021"
+  ]
+ },
+ {
+  "key": "px_concrete_pillars_construction",
+  "file": "px_concrete_pillars_construction.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "40298",
+  "title": "building, construction, concrete, pillars, floor, crane, Czechia, Fr\u00fddek-M\u00edstek, Moravian-Silesian Region",
+  "page_url": "https://pixabay.com/videos/id-40298/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Fr\u00fddek-M\u00edstek, Czechia",
+  "duration_s": 12.0,
+  "description": "Camera moves among rows of precast concrete columns on a building site",
+  "tags": [
+   "buildings on piles/pillars"
+  ],
+  "best_for": [
+   "P017",
+   "P018",
+   "P019"
+  ]
+ },
+ {
+  "key": "px_concrete_pillars_structure",
+  "file": "px_concrete_pillars_structure.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "41052",
+  "title": "construction, concrete, structure, building site, pillars",
+  "page_url": "https://pixabay.com/videos/id-41052/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Rows of standing concrete pillars and beams of an unfinished frame structure",
+  "tags": [
+   "buildings on piles/pillars"
+  ],
+  "best_for": [
+   "P018",
+   "P019"
+  ]
+ },
+ {
+  "key": "px_foundation_construction_site_cranes",
+  "file": "px_foundation_construction_site_cranes.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "52886",
+  "title": "construction, cranes, foundation, truck, concrete, excavator, Ostrava, Czechia, Moravian-Silesian Region",
+  "page_url": "https://pixabay.com/videos/id-52886/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Ostrava, Czechia",
+  "duration_s": 12.0,
+  "description": "Top-down drone view of a large foundation pit with cranes and machinery",
+  "tags": [
+   "foundation construction"
+  ],
+  "best_for": [
+   "P016",
+   "P018",
+   "P041"
+  ]
+ },
+ {
+  "key": "px_concrete_pump_basement_construction",
+  "file": "px_concrete_pump_basement_construction.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "41826",
+  "title": "construction, crane, truck, building, concrete pump, basements",
+  "page_url": "https://pixabay.com/videos/id-41826/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Aerial view of a concrete pump pouring a house foundation slab, workers on site",
+  "tags": [
+   "foundation construction",
+   "concrete"
+  ],
+  "best_for": [
+   "P018",
+   "P041"
+  ]
+ },
+ {
+  "key": "px_abandoned_building_decay",
+  "file": "px_abandoned_building_decay.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "63747",
+  "title": "abandoned, building, old, decay, architecture, destruction, ruins, barricaded, closed, empty, glass, broken",
+  "page_url": "https://pixabay.com/videos/id-63747/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Close view through a broken, cracked window pane of an abandoned building",
+  "tags": [
+   "cracked walls/facades",
+   "damaged buildings"
+  ],
+  "best_for": [
+   "P014",
+   "P015",
+   "P029"
+  ]
+ },
+ {
+  "key": "px_demolition_excavator_ruins",
+  "file": "px_demolition_excavator_ruins.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "213447",
+  "title": "demolition, destruction, ruins, excavator",
+  "page_url": "https://pixabay.com/videos/id-213447/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Demolition excavator tearing down a concrete building, dust rising over rubble",
+  "tags": [
+   "building demolition"
+  ],
+  "best_for": [
+   "P015",
+   "P041"
+  ]
+ },
+ {
+  "key": "px_demolition_excavator_dusk",
+  "file": "px_demolition_excavator_dusk.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "242290",
+  "title": "chimney, destruction, demolition, breakdown, construction, excavator, dusk",
+  "page_url": "https://pixabay.com/videos/id-242290/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Excavator on top of a structure demolishing it at dusk, silhouetted",
+  "tags": [
+   "building demolition"
+  ],
+  "best_for": [
+   "P041"
+  ]
+ },
+ {
+  "key": "px_cooling_tower_demolition",
+  "file": "px_cooling_tower_demolition.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "45462",
+  "title": "cooling tower, demolition, power station, yorkshire, demolished, exploded, change, end, event, flattened, mist, rail, winter",
+  "page_url": "https://pixabay.com/videos/id-45462/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Yorkshire, UK",
+  "duration_s": 12.0,
+  "description": "Power station cooling towers being demolished by explosion, dust cloud",
+  "tags": [
+   "demolition"
+  ],
+  "best_for": [
+   "P041"
+  ]
+ },
+ {
+  "key": "px_apartment_blocks_night_windows",
+  "file": "px_apartment_blocks_night_windows.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "9400",
+  "title": "night city, the light in the window, evening",
+  "page_url": "https://pixabay.com/videos/id-9400/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 9.7,
+  "description": "Panel-style apartment blocks at night with many lit windows above trees",
+  "tags": [
+   "panel apartment blocks",
+   "warm lit windows at night"
+  ],
+  "best_for": [
+   "P001",
+   "P013",
+   "P044B"
+  ]
+ },
+ {
+  "key": "px_residential_towers_apartments",
+  "file": "px_residential_towers_apartments.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "134311",
+  "title": "buildings, residential tower, apartment buildings, residential, high rise building, high rise, residential flats, apartment building, residential apartment, high rise apartment, flats",
+  "page_url": "https://pixabay.com/videos/id-134311/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 9.4,
+  "description": "Drone view of new residential apartment towers being built on a city edge",
+  "tags": [
+   "apartment blocks"
+  ],
+  "best_for": [
+   "P022",
+   "P041"
+  ]
+ },
+ {
+  "key": "px_moscow_tram_snow_street",
+  "file": "px_moscow_tram_snow_street.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "141740",
+  "title": "transportation, tram, train, transport, street, city, people, cars, snow, moscow, russia, winter",
+  "page_url": "https://pixabay.com/videos/id-141740/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Moscow, Russia",
+  "duration_s": 6.7,
+  "description": "Modern tram passing on a snowy street in front of an apartment block",
+  "tags": [
+   "Russia winter city"
+  ],
+  "best_for": [
+   "P005"
+  ]
+ },
+ {
+  "key": "px_oil_leak_water",
+  "file": "px_oil_leak_water.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "99384",
+  "title": "that, dirty, environment, disaster, oil, leak, unhealthy, toxic, sea, goal, river, diesel, ocean, nature, background, colour, view, the fish, swim, purification, sewage, ecology, pollution",
+  "page_url": "https://pixabay.com/videos/id-99384/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Murky water surface with oily sheen and swirls (generic oil pollution)",
+  "tags": [
+   "oil spill / oil on water"
+  ],
+  "best_for": [
+   "P002B",
+   "P031",
+   "P034"
+  ]
+ },
+ {
+  "key": "px_refinery_silhouette_pipelines",
+  "file": "px_refinery_silhouette_pipelines.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "67364",
+  "title": "oil refinery, gasoline, petroleum, industrial, petrol, pipeline, energy, fuel, pollution, environment, production, chemistry, petrochemical, oil, refinery, climate change, sustainability, clean energy, renewable energy, environmental",
+  "page_url": "https://pixabay.com/videos/id-67364/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Refinery towers and stacks silhouetted against a dramatic cloudy sky",
+  "tags": [
+   "fuel storage / refinery",
+   "pipeline"
+  ],
+  "best_for": [
+   "P031",
+   "P039"
+  ]
+ },
+ {
+  "key": "px_chemical_plant_night_aerial",
+  "file": "px_chemical_plant_night_aerial.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "141582",
+  "title": "industrial, chemical plants, night view chimney, emission",
+  "page_url": "https://pixabay.com/videos/id-141582/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Industrial plant at dusk with smokestacks and cooling tower steam, city lights",
+  "tags": [
+   "industrial site at night"
+  ],
+  "best_for": [
+   "P006",
+   "P031"
+  ]
+ },
+ {
+  "key": "px_tundra_stream_lichen",
+  "file": "px_tundra_stream_lichen.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "5737",
+  "title": "stream, tundra, nature, north, environment, polar, scenery, scenic, canada, peaceful, lichen, landscape, season, water",
+  "page_url": "https://pixabay.com/videos/id-5737/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Canada",
+  "duration_s": 12.0,
+  "description": "Rocky stream running through dry grass and lichen in northern landscape",
+  "tags": [
+   "tundra"
+  ],
+  "best_for": [
+   "P009",
+   "P010",
+   "P011"
+  ]
+ },
+ {
+  "key": "px_permafrost_snowfield_mountains",
+  "file": "px_permafrost_snowfield_mountains.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "234081",
+  "title": "mountains, snowfield, permafrost, wintertime, winter, texture, snow covered, snow patches, scenic, rugged terrain, pristine nature, polar region, polar ice, plateau, nordic, iceland, ice field, landscape",
+  "page_url": "https://pixabay.com/videos/id-234081/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Drone over a crevassed glacier/snowfield with mountains behind (page tags it permafrost)",
+  "tags": [
+   "permafrost landscape",
+   "tundra"
+  ],
+  "best_for": [
+   "P009",
+   "P010"
+  ]
+ },
+ {
+  "key": "px_greenland_muskox_tundra",
+  "file": "px_greenland_muskox_tundra.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "48188",
+  "title": "scoresby sund, greenland, ovibos moschatus, animal, bull, coat, ox, rural, wild animals, wool, hunting, meat, mammals, musk, nature, field, tundra, muskox, east greenland",
+  "page_url": "https://pixabay.com/videos/id-48188/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Scoresby Sund, Greenland",
+  "duration_s": 12.0,
+  "description": "Three musk oxen grazing on autumn tundra among rocks",
+  "tags": [
+   "tundra",
+   "Arctic"
+  ],
+  "best_for": [
+   "P004",
+   "P044"
+  ]
+ },
+ {
+  "key": "px_siberia_taiga_winter",
+  "file": "px_siberia_taiga_winter.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "43348",
+  "title": "nature, siberia, landscape, forest, travel, sky, taiga, winter, russia",
+  "page_url": "https://pixabay.com/videos/id-43348/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Siberia, Russia",
+  "duration_s": 12.0,
+  "description": "Aerial view over endless taiga forest and a frozen river valley",
+  "tags": [
+   "taiga",
+   "Siberia"
+  ],
+  "best_for": [
+   "P004",
+   "P010"
+  ]
+ },
+ {
+  "key": "px_snowy_forest_aerial_sunset",
+  "file": "px_snowy_forest_aerial_sunset.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "7328",
+  "title": "snowy trees, above, winter, landscape, forest, aerial, snow, revealing, nature, sunset, cold, natural, trees, environment, frost, sky, weather, white, scene, scenic, wilderness, outdoors, snowfall, aerial view",
+  "page_url": "https://pixabay.com/videos/id-7328/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Top-down drone shot of dense frost-covered conifers in cold blue light",
+  "tags": [
+   "taiga drone"
+  ],
+  "best_for": [
+   "P004",
+   "P044"
+  ]
+ },
+ {
+  "key": "px_krasnoyarsk_yenisei_bridge_winter",
+  "file": "px_krasnoyarsk_yenisei_bridge_winter.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "260365",
+  "title": "krasnoyarsk, siberia, yenisei, russia, winter, city, landscape, frost, bridge, snow, communal bridge, river, travel",
+  "page_url": "https://pixabay.com/videos/id-260365/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Krasnoyarsk, Russia",
+  "duration_s": 7.6,
+  "description": "Busy winter avenue with cars and buses, snowy hills behind",
+  "tags": [
+   "Siberia winter city"
+  ],
+  "best_for": [
+   "P002",
+   "P004"
+  ]
+ },
+ {
+  "key": "px_siberia_winter_forest_road",
+  "file": "px_siberia_winter_forest_road.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "4846",
+  "title": "siberia, winter, frost, forest, dogs, russia, landscape, silence, nature, trees, forest road, winter road, winter landscape, winter forest, snow winter nature",
+  "page_url": "https://pixabay.com/videos/id-4846/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Siberia, Russia",
+  "duration_s": 12.0,
+  "description": "Hoarfrost-covered trees by a frozen river, a dog walks in the snow",
+  "tags": [
+   "Siberia winter"
+  ],
+  "best_for": [
+   "P002",
+   "P004"
+  ]
+ },
+ {
+  "key": "px_siberia_river_ice_drift",
+  "file": "px_siberia_river_ice_drift.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "4306",
+  "title": "winter, river, siberia, ice drift, snow, white, landscape, nature, cold, trees, russia, ice",
+  "page_url": "https://pixabay.com/videos/id-4306/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Siberia, Russia",
+  "duration_s": 12.0,
+  "description": "Ice floes drifting on a river between snowy wooded banks",
+  "tags": [
+   "Siberia",
+   "ice"
+  ],
+  "best_for": [
+   "P004",
+   "P026"
+  ]
+ },
+ {
+  "key": "px_yenisei_divnogorsk_winter",
+  "file": "px_yenisei_divnogorsk_winter.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "262117",
+  "title": "river, yenisei, divnogorsk, mountains, landscape, forest, sky, snow, travel, panorama, winter, journey, russia, city, tourism, siberia",
+  "page_url": "https://pixabay.com/videos/id-262117/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Divnogorsk, Yenisei River, Russia",
+  "duration_s": 6.7,
+  "description": "Snowy forested mountain above the dark open water of a wide river",
+  "tags": [
+   "Siberia winter"
+  ],
+  "best_for": [
+   "P004"
+  ]
+ },
+ {
+  "key": "px_flateyri_iceland_town_aerial",
+  "file": "px_flateyri_iceland_town_aerial.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "47617",
+  "title": "flateyri, iceland, flyby, drone, town, houses, aerial, village",
+  "page_url": "https://pixabay.com/videos/id-47617/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Flateyri, Iceland",
+  "duration_s": 12.0,
+  "description": "Drone flyover of a small coastal village of colourful houses on a spit",
+  "tags": [
+   "Arctic/sub-Arctic town"
+  ],
+  "best_for": [
+   "P004",
+   "P044"
+  ]
+ },
+ {
+  "key": "px_lapland_reindeer_snow_drone",
+  "file": "px_lapland_reindeer_snow_drone.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "321568",
+  "title": "lapland, finland, reindeer, winter, snow, arctic, drone",
+  "page_url": "https://pixabay.com/videos/id-321568/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Lapland, Finland",
+  "duration_s": 12.0,
+  "description": "Top-down drone shot over snowy sparse forest",
+  "tags": [
+   "Arctic"
+  ],
+  "best_for": [
+   "P004",
+   "P044"
+  ]
+ },
+ {
+  "key": "px_ice_cracks_closeup",
+  "file": "px_ice_cracks_closeup.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "150938",
+  "title": "ice, ice cracks, frozen body of water, beautiful ice, frozen ice, thick ice",
+  "page_url": "https://pixabay.com/videos/id-150938/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Close-up of thick clear ice with long cracks",
+  "tags": [
+   "ice close-up"
+  ],
+  "best_for": [
+   "P009",
+   "P012"
+  ]
+ },
+ {
+  "key": "px_ice_bubbles_cracks",
+  "file": "px_ice_bubbles_cracks.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "150945",
+  "title": "ice, ice bubbles, beautiful ice, cracks in the ice, thick clear ice, very nice ice, ice on the pond, air under",
+  "page_url": "https://pixabay.com/videos/id-150945/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 9.9,
+  "description": "Close-up of frozen air bubbles and cracks inside lake ice",
+  "tags": [
+   "ice close-up"
+  ],
+  "best_for": [
+   "P009",
+   "P012"
+  ]
+ },
+ {
+  "key": "px_icicles_melting",
+  "file": "px_icicles_melting.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "3147",
+  "title": "icicles, frozen, melting, winter, ice, cold, frost, freeze, melt, spring",
+  "page_url": "https://pixabay.com/videos/id-3147/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Row of icicles hanging from a roof edge, dripping",
+  "tags": [
+   "melting ice / thaw"
+  ],
+  "best_for": [
+   "P023",
+   "P026",
+   "P027"
+  ]
+ },
+ {
+  "key": "px_icicle_dripping",
+  "file": "px_icicle_dripping.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "347561",
+  "title": "nature, dripping, icycle, frozen, ice, water, drops, melting, melt",
+  "page_url": "https://pixabay.com/videos/id-347561/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Single icicle dripping water above mossy logs",
+  "tags": [
+   "melting ice / thaw"
+  ],
+  "best_for": [
+   "P013",
+   "P026"
+  ]
+ },
+ {
+  "key": "px_glacier_meltwater",
+  "file": "px_glacier_meltwater.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "376",
+  "title": "glacier, melting, water, whooshing, snowmelt, melt water, snow water, melting water, thaw water, ice, frozen, mountains, flowing, nature, snow, cold, warming up, natural",
+  "page_url": "https://pixabay.com/videos/id-376/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Glacier ice with meltwater, sunny mountain sky",
+  "tags": [
+   "melting ice / thaw"
+  ],
+  "best_for": [
+   "P026",
+   "P044"
+  ]
+ },
+ {
+  "key": "px_icicle_drops_snowmelt",
+  "file": "px_icicle_drops_snowmelt.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "190370",
+  "title": "icicle, snow, cold, conifer, snow melt, drops, waterdrop, nature, winter",
+  "page_url": "https://pixabay.com/videos/id-190370/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Icicle hanging from snow on a spruce branch, melting drops",
+  "tags": [
+   "melting / thaw"
+  ],
+  "best_for": [
+   "P023",
+   "P026"
+  ]
+ },
+ {
+  "key": "px_snowplow_snow",
+  "file": "px_snowplow_snow.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "199487",
+  "title": "snowplow, snow, winter",
+  "page_url": "https://pixabay.com/videos/id-199487/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Drone view of a snow groomer clearing snow near a few people",
+  "tags": [
+   "snow plough"
+  ],
+  "best_for": [
+   "P024"
+  ]
+ },
+ {
+  "key": "px_heavy_snow_against_house",
+  "file": "px_heavy_snow_against_house.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "260384",
+  "title": "mountain village, heavy snowfall area, old wooden house, snow, icicle, snow removal, japan",
+  "page_url": "https://pixabay.com/videos/id-260384/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Japan",
+  "duration_s": 12.0,
+  "description": "Deep snow piled against an old wooden house with long icicles",
+  "tags": [
+   "snowdrifts against buildings",
+   "snow removal"
+  ],
+  "best_for": [
+   "P024"
+  ]
+ },
+ {
+  "key": "px_red_train_snow_aerial",
+  "file": "px_red_train_snow_aerial.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "106943",
+  "title": "train, bernina, switzerland, red, winter, snow, landscape, unesco, tourism, small, engadina, valley",
+  "page_url": "https://pixabay.com/videos/id-106943/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Bernina line, Switzerland",
+  "duration_s": 12.0,
+  "description": "Drone shot of a red train crossing a snow-white valley",
+  "tags": [
+   "train in snow"
+  ],
+  "best_for": [
+   "P002"
+  ]
+ },
+ {
+  "key": "px_train_snowy_landscape",
+  "file": "px_train_snowy_landscape.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "248891",
+  "title": "train, snow, trees, forest, snow landscape, rail, station, railway tracks, railway line, winter, mountains, cold",
+  "page_url": "https://pixabay.com/videos/id-248891/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Small train crossing a wide snowy landscape with forest in sunlight",
+  "tags": [
+   "train in snow"
+  ],
+  "best_for": [
+   "P002"
+  ]
+ },
+ {
+  "key": "px_steam_train_snow_aerial",
+  "file": "px_steam_train_snow_aerial.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "63892",
+  "title": "train, steam train, steam, engadin, switzerland, railway, locomotive, steampunk, rail, antique, historically, smoke, transportation, zuoz, snow, winter",
+  "page_url": "https://pixabay.com/videos/id-63892/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Zuoz, Engadin, Switzerland",
+  "duration_s": 12.0,
+  "description": "Top-down view of a train on tracks through deep snow",
+  "tags": [
+   "train in snow"
+  ],
+  "best_for": [
+   "P002"
+  ]
+ },
+ {
+  "key": "px_fireplace_warm_night",
+  "file": "px_fireplace_warm_night.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "7070",
+  "title": "fireplace, fire, wood, house, winter, heat, holiday cottage house bungalow, comfort, glow, campfire, flame, burn, shine, flames, hot, warm, red, night, relaxation, tree, darkness",
+  "page_url": "https://pixabay.com/videos/id-7070/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Wood fire burning in a dark fireplace",
+  "tags": [
+   "warm indoors in winter"
+  ],
+  "best_for": [
+   "P001",
+   "P013"
+  ]
+ },
+ {
+  "key": "px_steaming_mug_window",
+  "file": "px_steaming_mug_window.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "3595",
+  "title": "cup of coffee, hot, beverage, morning, aroma, steam, coffee, cup, drink, cafe, cappuccino, tea, espresso, mug, mocha, caffeine",
+  "page_url": "https://pixabay.com/videos/id-3595/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 12.0,
+  "description": "Steaming mug on a table by a window, indoors",
+  "tags": [
+   "warm indoors"
+  ],
+  "best_for": [
+   "P001",
+   "P044B"
+  ]
+ },
+ {
+  "key": "px_tea_mug_steam_window",
+  "file": "px_tea_mug_steam_window.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "368288",
+  "title": "coffee, tea, mug, steam, rain, rainy day, window, window sill, cozy, warm, drink, beverage, morning, relaxation, peaceful, autumn, winter, bokeh, garden, nature, green, drop, water drops, atmosphere",
+  "page_url": "https://pixabay.com/videos/id-368288/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "duration_s": 7.1,
+  "description": "Steaming mug on a window sill, blurred garden outside",
+  "tags": [
+   "warm indoors in winter"
+  ],
+  "best_for": [
+   "P001",
+   "P044B"
+  ]
+ },
+ {
+  "key": "px_greenland_ship_icebergs",
+  "file": "px_greenland_ship_icebergs.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "236893",
+  "title": "drone, landscape, green, greenland, iceberg, sea, arctic, ice, fjord, ship, polar, winter, cold, change, environment, earth",
+  "page_url": "https://pixabay.com/videos/id-236893/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_norilsk": false,
+  "place": "Greenland",
+  "duration_s": 12.0,
+  "description": "Small boat sailing across calm Arctic water towards icebergs",
+  "tags": [
+   "Arctic sea / ship in ice"
+  ],
+  "best_for": [
+   "P004"
+  ]
+ },
+ {
+  "key": "cm_norilsk_blue_blocks_summer",
+  "file": "cm_norilsk_blue_blocks_summer.jpg",
+  "type": "photo",
+  "source": "commons",
+  "source_id": "4Y1A9990 (28861038891).jpg",
+  "title": "4Y1A9990 (28861038891).jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:4Y1A9990_(28861038891).jpg",
+  "licence": "CC BY 2.0",
+  "attribution": "Ninara from Helsinki, Finland, CC BY 2.0, via Wikimedia Commons",
+  "is_norilsk": true,
+  "place": "Norilsk",
+  "duration_s": null,
+  "description": "Norilsk city centre, blue Stalin-era blocks, summer",
+  "tags": [],
+  "best_for": []
+ },
+ {
+  "key": "cm_norilsk_snow_on_porch_roof",
+  "file": "cm_norilsk_snow_on_porch_roof.jpg",
+  "type": "photo",
+  "source": "commons",
+  "source_id": "Snow cover on the roof.jpg",
+  "title": "Snow cover on the roof.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Snow_cover_on_the_roof.jpg",
+  "licence": "CC BY-SA 3.0",
+  "attribution": "Andrey Romanenko, CC BY-SA 3.0, via Wikimedia Commons",
+  "is_norilsk": true,
+  "place": "Norilsk",
+  "duration_s": null,
+  "description": "Huge snowdrift on a porch roof of an apartment block, Norilsk",
+  "tags": [],
+  "best_for": []
  }
 ]
