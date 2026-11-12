@@ -38,7 +38,7 @@ function depthRuler(ctx, p, t) {
 }
 function stoneHouse(ctx, t, p) {
   const thaw = v(p, 'thaw', t), sink = v(p, 'sink', t), crack = v(p, 'crack', t); const cx = 960, w = 560, h = 230;
-  if (thaw > 0) { const g = ctx.createRadialGradient(cx, G, 20, cx, G, 380 * thaw + 20); g.addColorStop(0, '#9B6B45'); g.addColorStop(0.7, hexA('#8A5E3D', 0.85)); g.addColorStop(1, hexA('#8A5E3D', 0));
+  if (thaw > 0.01) { const g = ctx.createRadialGradient(cx, G, 20, cx, G, 380 * thaw + 20); g.addColorStop(0, '#9B6B45'); g.addColorStop(0.7, hexA('#8A5E3D', 0.85)); g.addColorStop(1, hexA('#8A5E3D', 0));
     ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(cx, G, 420 * thaw + 20, 300 * thaw + 10, 0, 0, Math.PI); ctx.fill();
     ctx.fillStyle = hexA('#9CC3FF', 0.25 * thaw); for (let i = 0; i < 10; i++) { ctx.beginPath(); ctx.ellipse(cx - 300 * thaw + hash(i) * 600 * thaw, G + 40 + hash(i + 2) * 200 * thaw, 22, 6, 0, 0, 7); ctx.fill(); } }
   // heat arrows down
@@ -55,7 +55,7 @@ function block(ctx, t, p) {
   const cx = p.cx || 960, w = 700, floors = 5, fh = 70, gapA = v(p, 'gap', t, 1), gap = 60 + 30 * gapA, piles = v(p, 'piles', t, 1), frost = v(p, 'frost', t), drift = v(p, 'drift', t), leak = v(p, 'leak', t), talik = v(p, 'talik', t);
   const by = G - gap; const bodyH = floors * fh;
   // talik (warm pocket)
-  if (talik > 0) { const g = ctx.createRadialGradient(cx, G + 60, 10, cx, G + 60, 360 * talik); g.addColorStop(0, hexA(C.orange, 0.85)); g.addColorStop(0.6, hexA('#B5653A', 0.6)); g.addColorStop(1, hexA('#B5653A', 0));
+  if (talik > 0.02) { const g = ctx.createRadialGradient(cx, G + 60, 10, cx, G + 60, 360 * talik); g.addColorStop(0, hexA(C.orange, 0.85)); g.addColorStop(0.6, hexA('#B5653A', 0.6)); g.addColorStop(1, hexA('#B5653A', 0));
     ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(cx, G + 40, 380 * talik, 260 * talik, 0, 0, Math.PI); ctx.fill(); }
   // piles
   const n = 7, depth = 330; for (let i = 0; i < n; i++) { const x = cx - w / 2 + 40 + i * (w - 80) / (n - 1); const bottom = lerp(by, G + depth, E.out(piles));
@@ -85,7 +85,7 @@ function pipesAbove(ctx, t, a) { if (a <= 0) return; const y = G - 46; ctx.save(
 function siphons(ctx, t, p) {
   const a = v(p, 'siph', t); if (a <= 0) return; const cold = v(p, 'cold', t, a); const xs = [p.cx ? p.cx - 470 : 490, p.cx ? p.cx + 470 : 1430];
   for (const x of xs) {
-    const g = ctx.createRadialGradient(x, G + 230, 20, x, G + 230, 260 * cold); g.addColorStop(0, hexA('#0E2C66', 0.75)); g.addColorStop(1, hexA('#0E2C66', 0)); ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(x, G + 230, 180 * cold, 280 * cold, 0, 0, 7); ctx.fill();
+    const g = ctx.createRadialGradient(x, G + 230, 20, x, G + 230, Math.max(30, 260 * cold)); g.addColorStop(0, hexA('#0E2C66', 0.75)); g.addColorStop(1, hexA('#0E2C66', 0)); ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(x, G + 230, 180 * cold, 280 * cold, 0, 0, 7); ctx.fill();
     const top = G - 190, bot = lerp(G - 190, G + 420, E.out(a)); ctx.fillStyle = '#B9C3CF'; ctx.fillRect(x - 9, top, 18, bot - top);
     for (let k = 0; k < 7; k++) { ctx.fillStyle = '#E3E8EE'; ctx.fillRect(x - 32, top + 10 + k * 16, 64, 6); }
     for (let i = 0; i < 8; i++) { const ph = (t * 0.45 + i / 8) % 1; ctx.fillStyle = hexA(C.orange, 0.9 * a); ctx.beginPath(); ctx.arc(x - 3, lerp(bot - 10, top + 20, ph), 4, 0, 7); ctx.fill();

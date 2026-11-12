@@ -60,12 +60,13 @@ async function main() {
     fs.writeFileSync(out, sh.toBuffer('image/jpeg', 82)); return; }
   if (MODE === 'chunk') { const [f0, f1, out] = [+ARGS[0], +ARGS[1], ARGS[2]];
     const ff = spawn('ffmpeg', ['-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', `${K.W}x${K.H}`, '-r', String(K.FPS), '-i', '-', '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', out], { stdio: ['pipe', 'inherit', 'inherit'] });
+    process.on('unhandledRejection', e => { console.error(e); process.exit(2); });
     for (let f = f0; f < f1; f++) { await frame(ctx, f / K.FPS); const buf = Buffer.from(ctx.getImageData(0, 0, K.W, K.H).data.buffer); if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r)); }
     ff.stdin.end(); await new Promise(r => ff.on('close', r)); return; }
   if (MODE === 'video') { const out = ARGS[0], jobs = +(ARGS[1] || 4); const from = ARGS[2] ? Math.floor(+ARGS[2] * K.FPS) : 0, to = ARGS[3] ? Math.ceil(+ARGS[3] * K.FPS) : NF;
     const tmp = out + '_parts'; fs.mkdirSync(tmp, { recursive: true }); const per = Math.ceil((to - from) / jobs); const parts = [];
     await Promise.all(Array.from({ length: jobs }, (_, j) => { const a = from + j * per, b = Math.min(to, a + per); const o = path.join(tmp, `p${j}.mp4`); parts.push(o);
-      return new Promise(r => spawn('node', [__filename, EPD, 'chunk', a, b, o], { stdio: 'inherit' }).on('close', r)); }));
+      return new Promise((r, j) => spawn('node', [__filename, EPD, 'chunk', a, b, o], { stdio: 'inherit' }).on('close', c => c ? j(new Error('chunk ' + j + ' failed')) : r())); }));
     fs.writeFileSync(path.join(tmp, 'list.txt'), parts.map(p => `file '${path.resolve(p)}'`).join('\n'));
     execFileSync('ffmpeg', ['-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', path.join(tmp, 'list.txt'), '-c', 'copy', out]); fs.rmSync(tmp, { recursive: true });
     console.log('video', out, (to - from) / K.FPS, 's'); return; }
