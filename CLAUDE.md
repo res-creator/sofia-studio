@@ -2,6 +2,8 @@
 
 > **English TikTok channel (money/business stories):** read `CHANNEL.md` first — it has the rules, pipeline, voice and checklist for those episodes.
 
+> **English dubs of travel documentaries (India, Norway, Vietnam):** read `ENGLISH_DUB.md` first.
+
 > **Long-form How It's Run films (YouTube, animated):** Для создания длинных анимационных YouTube-фильмов How It’s Run обязательно сначала прочитай `longform/LONGFORM_STYLE.md` и используй утверждённую систему `longform/figmakit/`. Не разрабатывай новый стиль и анимационный движок с нуля без отдельного задания.
 
 ## Hard rules (from the owner)
