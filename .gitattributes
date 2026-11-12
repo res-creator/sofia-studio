@@ -1,1 +1,2 @@
 longform/matchking_history/*_youtube_master.mp4 filter=lfs diff=lfs merge=lfs -text
+whyhow/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
