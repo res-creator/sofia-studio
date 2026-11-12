@@ -26,6 +26,9 @@ const ep = require(path.join(EP, 'shots.js'));
 const shots = ep.build(T).sort((a, b) => a.t - b.t);
 shots.forEach((s, i) => { s.end = i + 1 < shots.length ? shots[i + 1].t : T.end; s.d = s.end - s.t; if (!SC[s.scene]) throw new Error('no scene ' + s.scene); });
 // auto-split long shots of photo/video/diagram into parts with a hard cut and a different framing (punch-in), time continues
+// usage check: each photo/clip at most 2 times, never back to back
+{ const cnt = {}; let last = null; for (const s of shots) { const k = s.p && (s.p.img || s.p.file); if (!k) { last = null; continue; } cnt[k] = (cnt[k] || 0) + 1; if (k === last) console.error('WARN back-to-back', k, s.t.toFixed(1)); last = k; }
+  for (const [k, n] of Object.entries(cnt)) if (n > 2) console.error('WARN used', n, 'times:', k); }
 if (ep.splitOver) { const SPL = ['photo', 'video', 'xsec', 'sat', 'siphon']; const res = [];
   for (const s of shots) { if (!SPL.includes(s.scene) || s.d <= ep.splitOver) { res.push(s); continue; }
     const n = Math.ceil(s.d / (ep.splitTo || 6)); const part = s.d / n;
