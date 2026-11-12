@@ -385,5 +385,178 @@
    "P006",
    "P022"
   ]
+ },
+ {
+  "key": "norillag_memorial_belfry_winter",
+  "file": "norillag_memorial_belfry_winter.jpg",
+  "type": "photo",
+  "source": "commons",
+  "source_id": "File:Memorial belfry in Norilsk.jpg",
+  "title": "Memorial belfry in Norilsk",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Memorial_belfry_in_Norilsk.jpg",
+  "licence": "CC BY-SA 3.0",
+  "attribution": "Andrey Romanenko, CC BY-SA 3.0, via Wikimedia Commons",
+  "is_norilsk": true,
+  "place": "Norilsk, 'Norilsk Golgotha' memorial to Norillag prisoners, Mount Schmidt",
+  "duration_s": null,
+  "description": "Wooden memorial belfry and crosses in deep snow below Mount Schmidt with old mine buildings",
+  "tags": [
+   "gulag history",
+   "Norilsk",
+   "winter"
+  ],
+  "best_for": [
+   "P007",
+   "P008"
+  ]
+ },
+ {
+  "key": "norilsk_first_house_winter",
+  "file": "norilsk_first_house_winter.jpg",
+  "type": "photo",
+  "source": "commons",
+  "source_id": "File:First house of Norisk in winter.jpg",
+  "title": "First house of Norilsk in winter",
+  "page_url": "https://commons.wikimedia.org/wiki/File:First_house_of_Norisk_in_winter.jpg",
+  "licence": "CC BY-SA 3.0",
+  "attribution": "Andrey Romanenko, CC BY-SA 3.0, via Wikimedia Commons",
+  "is_norilsk": true,
+  "place": "Norilsk (first house, 1921 log cabin museum)",
+  "duration_s": null,
+  "description": "Old log house half buried in snow in front of Stalin-era buildings",
+  "tags": [
+   "history",
+   "buildings",
+   "snowdrifts"
+  ],
+  "best_for": [
+   "P007",
+   "P008",
+   "P014"
+  ]
+ },
+ {
+  "key": "norilsk_leninsky_prospekt_street",
+  "file": "norilsk_leninsky_prospekt_street.jpg",
+  "type": "photo",
+  "source": "commons",
+  "source_id": "File:Norilsk 04.jpg",
+  "title": "Norilsk 04 (Leninsky Prospekt)",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Norilsk_04.jpg",
+  "licence": "CC BY 4.0",
+  "attribution": "Ninaras, CC BY 4.0, via Wikimedia Commons",
+  "is_norilsk": true,
+  "place": "Norilsk, Leninsky Prospekt",
+  "duration_s": null,
+  "description": "Summer street with pedestrians, cars and long rows of colourful apartment blocks",
+  "tags": [
+   "Norilsk city",
+   "panel blocks",
+   "streets"
+  ],
+  "best_for": [
+   "P001",
+   "P022",
+   "P041"
+  ]
+ },
+ {
+  "key": "norilsk_lenin_prospect_from_above",
+  "file": "norilsk_lenin_prospect_from_above.jpg",
+  "type": "photo",
+  "source": "commons",
+  "source_id": "File:Norilsk 2019.jpg",
+  "title": "Norilsk, Lenin Prospect",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Norilsk_2019.jpg",
+  "licence": "CC BY-SA 4.0",
+  "attribution": "Pikhtar Viktor Dmitrievich, CC BY-SA 4.0, via Wikimedia Commons",
+  "is_norilsk": true,
+  "place": "Norilsk, Leninsky Prospekt",
+  "duration_s": null,
+  "description": "High view of the main avenue with yellow-and-red Stalin-era buildings",
+  "tags": [
+   "Norilsk city",
+   "buildings",
+   "streets"
+  ],
+  "best_for": [
+   "P004",
+   "P016",
+   "P022"
+  ]
+ },
+ {
+  "key": "talnakh_panel_blocks_view",
+  "file": "talnakh_panel_blocks_view.jpg",
+  "type": "photo",
+  "source": "commons",
+  "source_id": "File:Talnakh.jpg",
+  "title": "Talnakh",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Talnakh.jpg",
+  "licence": "CC BY 4.0",
+  "attribution": "Ninaras, CC BY 4.0, via Wikimedia Commons",
+  "is_norilsk": true,
+  "place": "Talnakh (district of Norilsk)",
+  "duration_s": null,
+  "description": "Rows of panel apartment blocks with taiga and Putorana hills behind, smoke on horizon",
+  "tags": [
+   "Talnakh",
+   "panel blocks",
+   "Norilsk aerial"
+  ],
+  "best_for": [
+   "P010",
+   "P022",
+   "P029"
+  ]
+ },
+ {
+  "key": "talnakh_new_blocks_forest",
+  "file": "talnakh_new_blocks_forest.jpg",
+  "type": "photo",
+  "source": "commons",
+  "source_id": "File:Talnakh, Norilsk.jpg",
+  "title": "Talnakh, Norilsk",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Talnakh,_Norilsk.jpg",
+  "licence": "CC BY 4.0",
+  "attribution": "Ninaras, CC BY 4.0, via Wikimedia Commons",
+  "is_norilsk": true,
+  "place": "Talnakh (district of Norilsk)",
+  "duration_s": null,
+  "description": "Colourful newer apartment blocks seen across larch forest",
+  "tags": [
+   "Talnakh",
+   "new apartment construction",
+   "buildings"
+  ],
+  "best_for": [
+   "P041",
+   "P043"
+  ]
+ },
+ {
+  "key": "ambarnaya_river_diesel_spill_sentinel_2020",
+  "file": "ambarnaya_river_diesel_spill_sentinel_2020.jpg",
+  "type": "photo",
+  "source": "commons",
+  "source_id": "File:Leaked diesel fuel in the River Ambarnaya, near Norilsk, Siberia, Krasnoyarsk Krai, Russia, on May 31st and June 1st, 2020. (49982094662).jpg",
+  "title": "Leaked diesel fuel in the River Ambarnaya, near Norilsk (1 June 2020) - cropped",
+  "page_url": "https://commons.wikimedia.org/wiki/File:Leaked_diesel_fuel_in_the_River_Ambarnaya,_near_Norilsk,_Siberia,_Krasnoyarsk_Krai,_Russia,_on_May_31st_and_June_1st,_2020._(49982094662).jpg",
+  "licence": "CC BY 2.0",
+  "attribution": "Contains modified Copernicus Sentinel data [2020], processed by Pierre Markuse, CC BY 2.0, via Wikimedia Commons",
+  "is_norilsk": true,
+  "place": "Ambarnaya River near Norilsk",
+  "duration_s": null,
+  "description": "Satellite view of the red diesel-stained Ambarnaya River winding through tundra lakes",
+  "tags": [
+   "2020 spill",
+   "red/polluted river",
+   "satellite views"
+  ],
+  "best_for": [
+   "P031",
+   "P032",
+   "P034"
+  ]
  }
 ]
