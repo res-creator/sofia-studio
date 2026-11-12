@@ -19,7 +19,7 @@ Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). Thi
 
 ## Episode 2 "Gus at the Doctor" — DONE (published material)
 - Pipeline: `sh ep2/build.sh out.mp4` (script.js → timeline.py → make_sfx.js → audio.py → render.js → mux).
-- Voices in `ep2/vo/*.mp3`. Dr. Max voice = Chris (premade). Output `ep2/sofia_ep2_gus_at_the_doctor.mp4`, thumbnail, SRT, `ep2/upload_kit.txt`.
+- Voices in `ep2/vo/*.mp3`. Dr. Max voice = Chris (premade). Output MP4 was removed from the tree on the owner's request (see VIDEOS_REMOVED.md); thumbnail, SRT, `ep2/upload_kit.txt` remain.
 - Known rig bug: `drmax` `legs:'walk'` splays legs — use a step bounce instead.
 
 ## Episode 3 "Gus at the Airport" — IN PROGRESS

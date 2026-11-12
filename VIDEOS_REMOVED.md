@@ -65,3 +65,11 @@ Removed files:
 - tp_ep12/toilet_paper_panic_1973.mp4
 - wellsfargo_ep10/the_5_coffee_that_cost_40_final.mp4
 - wellsfargo_ep10/the_5_coffee_that_cost_40_v2.mp4
+
+## Second batch (same day, owner's request): Sofia videos
+Restore with: `git checkout e2a206dae612330fa05ff38d913b777959fa00f9 -- <path>`
+
+- ep2/sofia_ep2_gus_at_the_doctor.mp4 (published Episode 2 — still on YouTube; re-render with `sh ep2/build.sh out.mp4` or restore from history)
+- ep3/ep3_preview_checkin.mp4
+- test_scene.mp4
+- test_scene2.mp4
