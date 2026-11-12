@@ -10,3 +10,4 @@ PICTURE_EN_4K.mp4 (4.5 GB) and MUSIC_AND_EFFECTS.wav (487 MB) are needed on the 
 - Subtitles: vietnam/SUBTITLES_EN.srt (436 cues). Cover: vietnam/COVER_EN.jpg. Upload kit: vietnam/upload_kit.txt.
 - DECIDED: keep the Russia mentions (F003/F064/F068) as they are (owner, 2026-11-12).
 - Second thumbnail for A/B test: vietnam/thumbs/thumb_coffee_vs_home_4k.jpg ($1 coffee F003/F016/F098; 53 years of income for a home F056 + card 15:02). Planned release: 25 Nov, 22:00 Moldova (15:00 New York).
+- ChatGPT-made thumbnail (owner): vietnam/thumbs/thumb_coffee_vs_5m2_4k.jpg ($1 coffee vs 4 people in 5 m² — F004/F049). Recommended for the A/B test.
