@@ -187,6 +187,6 @@ Thumbnail text: **BUILT ON ICE** (photo of Norilsk blocks on top, blue cross-sec
 
 **P044** Norilsk isn't alone. Scientists estimate that by twenty fifty, nearly four million people and around seventy percent of the buildings, roads and pipelines in the Arctic's permafrost zone will sit in areas where the ground is likely to thaw. Norilsk is just where the problem shows up first. [26]
 
-**P045** So here's my question for you. Would you live in a city where the ground under your house has to be refrigerated to keep it standing? Tell me in the comments. This was How It's Run.
+**P045** So here's my question for you. Would you live in a city where the ground under your house has to be refrigerated to keep it standing? Tell me in the comments, and tell me which place on Earth we should explain next. This was How It's Run.
 
 *End card: question on screen 3 s, no voice; then 20-second end screen with two next videos.*
