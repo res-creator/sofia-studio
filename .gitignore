@@ -3,3 +3,7 @@ ep2/mix.wav
 tiktok/mix.wav
 ep/mix.wav
 __pycache__/
+whyhow/*/video_silent.mp4*
+whyhow/*/mix.wav
+whyhow/*/voice_raw/
+whyhow/*/voice/*.wav

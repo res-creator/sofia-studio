@@ -51,7 +51,7 @@ Thumbnail text: **BUILT ON ICE** (photo of Norilsk blocks on top, blue cross-sec
 
 **P009** Permafrost isn't a special kind of ice. It's a definition. Any ground that stays at or below zero degrees Celsius for at least two years in a row counts as permafrost. It can be rock, sand, clay or peat. What matters is the temperature. [7]
 
-**P010** Around Norilsk, the permafrost is continuous. That means it isn't patchy. It's everywhere, under every street, every factory and every apartment block. [8]
+**P010** The permafrost around Norilsk is continuous. That means it isn't patchy. It's everywhere, under every street, every factory and every apartment block. [8]
 
 **P011** But the very top of the ground behaves differently. Every summer, the upper layer thaws, and every winter it freezes again. Scientists call it the active layer. Near Norilsk, it is about one meter thick. Below it, the ground stays frozen all year round. [8][9]
 
@@ -125,7 +125,7 @@ Thumbnail text: **BUILT ON ICE** (photo of Norilsk blocks on top, blue cross-sec
 
 **P028** The same team modeled what comes next. By twenty twenty, they projected a drop of more than a third, larger than the safety margins most of those buildings were designed with. By twenty fifty, older foundations could lose around two thirds of their strength. These are model estimates with a wide range of uncertainty, but they all point the same way. [8]
 
-**P029** And the damage is not just on paper. By the mid twenty tens, around three hundred structures in Norilsk had significant deformations. More than a hundred residential buildings were in a state of structural failure, and about five thousand families were still living in them. Almost fifty five- and nine-storey buildings from the sixties to the eighties had already been taken apart. [8]
+**P029** And the damage is not just on paper. By the mid twenty tens, around three hundred structures in Norilsk had significant deformations. More than a hundred residential buildings were in a state of structural failure, and about five thousand families were still living in them. And almost fifty buildings, five and nine storeys tall, built from the sixties to the eighties, had already been taken apart. [8]
 
 *Commons photos of cracked façades; counter: 300 / 100+ / ~50.*
 

@@ -1,0 +1,79 @@
+{
+ "pano": {
+  "title": "File:4Y1A9968 Norilsk (28676523730).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:4Y1A9968_Norilsk_(28676523730).jpg",
+  "artist": "Ninara from Helsinki, Finland",
+  "license": "CC BY 2.0",
+  "short": "Photo: Ninara from Helsinki, Finland \u00b7 CC BY 2.0 \u00b7 Wikimedia Commons"
+ },
+ "house1": {
+  "title": "File:Typical house in Norilsk 01.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Typical_house_in_Norilsk_01.jpg",
+  "artist": "Igorevich",
+  "license": "CC BY-SA 3.0",
+  "short": "Photo: Igorevich \u00b7 CC BY-SA 3.0 \u00b7 Wikimedia Commons"
+ },
+ "house2": {
+  "title": "File:Typical house in Norilsk 02.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Typical_house_in_Norilsk_02.jpg",
+  "artist": "Igorevich",
+  "license": "CC BY-SA 3.0",
+  "short": "Photo: Igorevich \u00b7 CC BY-SA 3.0 \u00b7 Wikimedia Commons"
+ },
+ "house3": {
+  "title": "File:Typical house in Norilsk 03.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Typical_house_in_Norilsk_03.jpg",
+  "artist": "Igorevich",
+  "license": "CC BY-SA 3.0",
+  "short": "Photo: Igorevich \u00b7 CC BY-SA 3.0 \u00b7 Wikimedia Commons"
+ },
+ "car_snow": {
+  "title": "File:A car under snow in Norilsk.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:A_car_under_snow_in_Norilsk.jpg",
+  "artist": "Andrey Romanenko",
+  "license": "CC BY-SA 3.0",
+  "short": "Photo: Andrey Romanenko \u00b7 CC BY-SA 3.0 \u00b7 Wikimedia Commons"
+ },
+ "sat_2021": {
+  "title": "File:Thawing permafrost in Norilsk, Russia (Copernicus).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Thawing_permafrost_in_Norilsk,_Russia_(Copernicus).jpg",
+  "artist": "European Union, Copernicus Sentinel-2 imagery",
+  "license": "Attribution (ESA/Copernicus)",
+  "short": "Contains modified Copernicus Sentinel data \u00b7 Attribution (ESA/Copernicus) \u00b7 Wikimedia Commons"
+ },
+ "kirova": {
+  "title": "File:Norilsk Kirova St.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Norilsk_Kirova_St.jpg",
+  "artist": "Igorevich",
+  "license": "CC BY-SA 3.0",
+  "short": "Photo: Igorevich \u00b7 CC BY-SA 3.0 \u00b7 Wikimedia Commons"
+ },
+ "lomonosova": {
+  "title": "File:Norilsk Lomonosova St.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Norilsk_Lomonosova_St.jpg",
+  "artist": "Igorevich",
+  "license": "CC BY-SA 3.0",
+  "short": "Photo: Igorevich \u00b7 CC BY-SA 3.0 \u00b7 Wikimedia Commons"
+ },
+ "talnah_yard": {
+  "title": "File:Norilsk Talnah.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Norilsk_Talnah.jpg",
+  "artist": "Igorevich",
+  "license": "CC BY-SA 3.0",
+  "short": "Photo: Igorevich \u00b7 CC BY-SA 3.0 \u00b7 Wikimedia Commons"
+ },
+ "lenina": {
+  "title": "File:Norilsk Lenina Prospect 02.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Norilsk_Lenina_Prospect_02.jpg",
+  "artist": "Igorevich",
+  "license": "CC BY-SA 3.0",
+  "short": "Photo: Igorevich \u00b7 CC BY-SA 3.0 \u00b7 Wikimedia Commons"
+ },
+ "sevastopolskaya": {
+  "title": "File:Norilsk, Sevastopolskaya street, building 8.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Norilsk,_Sevastopolskaya_street,_building_8.JPG",
+  "artist": "Richard Shelton",
+  "license": "CC BY-SA 4.0",
+  "short": "Photo: Richard Shelton \u00b7 CC BY-SA 4.0 \u00b7 Wikimedia Commons"
+ }
+}

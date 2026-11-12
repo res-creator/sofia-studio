@@ -1,0 +1,62 @@
+// atlaskit renderer. Episode dir must contain shots.js exporting { assets: {name: path}, build(T) -> [{t, scene, p, trans}] } and timeline.json + words.json.
+// node render.js EPDIR stills t1,t2,... OUT_PREFIX   — PNG stills
+// node render.js EPDIR sheet STEP OUT.jpg           — contact sheet every STEP seconds
+// node render.js EPDIR video OUT.mp4 [JOBS] [FROM TO] — silent video, parallel chunks
+// node render.js EPDIR chunk F0 F1 OUT.mp4          — (internal) one chunk
+const path = require('path'), fs = require('fs'), { spawn, execFileSync } = require('child_process');
+const K = require('./core'); const S = require('./scenes'); const X = require('./xsec');
+const SC = { ...S, xsec: X.xsec, siphon: X.siphonCloseup, examples: X.examples };
+const [, , EPD, MODE, ...ARGS] = process.argv; const EP = path.resolve(EPD);
+const TL = JSON.parse(fs.readFileSync(path.join(EP, 'timeline.json'))); const WORDS = JSON.parse(fs.readFileSync(fs.existsSync(path.join(EP, 'words_script.json')) ? path.join(EP, 'words_script.json') : path.join(EP, 'words.json')));
+const norm = s => s.toLowerCase().replace(/[^a-z0-9']/g, '');
+// T: timing helpers for the episode
+const P = Object.fromEntries(TL.paras.map(p => [p.id, p]));
+const T = {
+  tl: TL, P,
+  s: id => P[id].start, e: id => P[id].start + P[id].dur,
+  // time of the n-th occurrence (n>=1) of a word in paragraph id; number = fraction of the paragraph
+  at(id, w, n = 1) { const p = P[id]; if (typeof w === 'number') return p.start + p.dur * w;
+    const ws = WORDS[id] || []; let k = 0; for (const x of ws) if (norm(x.w) === norm(w) && ++k === n) return p.start + x.s;
+    console.error('word not found', id, w); return p.start; },
+  end: TL.voiceEnd + TL.qcard + TL.endscreen,
+};
+const ep = require(path.join(EP, 'shots.js'));
+const shots = ep.build(T).sort((a, b) => a.t - b.t);
+shots.forEach((s, i) => { s.end = i + 1 < shots.length ? shots[i + 1].t : T.end; s.d = s.end - s.t; if (!SC[s.scene]) throw new Error('no scene ' + s.scene); });
+const DUR = T.end, NF = Math.ceil(DUR * K.FPS);
+const XF = 0.5; // crossfade seconds
+let cvA, cvB;
+function drawShot(ctx, s, time) { ctx.save(); SC[s.scene](ctx, time - s.t, s.d, s.p || {}); ctx.restore(); }
+function frame(ctx, time) {
+  let i = shots.findIndex(s => time >= s.t && time < s.end); if (i < 0) i = shots.length - 1; const s = shots[i];
+  drawShot(ctx, s, time);
+  const lt = time - s.t; if (i > 0 && lt < XF && s.trans !== 'cut') { // dissolve from previous shot
+    const pv = shots[i - 1]; if (!cvB) cvB = K.createCanvas(K.W, K.H); const b = cvB.getContext('2d'); drawShot(b, pv, time);
+    ctx.save(); ctx.globalAlpha = 1 - K.E.sine(lt / XF); ctx.drawImage(cvB, 0, 0); ctx.restore(); }
+  // global fade from black at start, to black at end
+  const fin = K.clamp(time / 0.6), fout = K.clamp((DUR - time) / 1.0); if (fin < 1 || fout < 1) { ctx.fillStyle = `rgba(0,0,0,${1 - Math.min(fin, fout)})`; ctx.fillRect(0, 0, K.W, K.H); }
+}
+async function main() {
+  if (MODE === 'cues') { fs.writeFileSync(ARGS[0], JSON.stringify({ dur: DUR, shots: shots.map(s => ({ t: +s.t.toFixed(3), scene: s.scene })) })); return; }
+  await K.preload(Object.fromEntries(Object.entries(ep.assets).map(([k, f]) => [k, path.resolve(EP, f)])));
+  const cv = K.createCanvas(K.W, K.H), ctx = cv.getContext('2d');
+  if (MODE === 'stills') { for (const ts of ARGS[0].split(',')) { frame(ctx, +ts); fs.writeFileSync(`${ARGS[1]}_${(+ts).toFixed(1)}.png`, cv.toBuffer('image/png')); } return; }
+  if (MODE === 'sheet') { const step = +ARGS[0], out = ARGS[1], cols = 6, tw = 320, th = 180; const n = Math.floor(DUR / step); const sh = K.createCanvas(cols * tw, Math.ceil(n / cols) * (th + 22)); const sc = sh.getContext('2d');
+    sc.fillStyle = '#000'; sc.fillRect(0, 0, sh.width, sh.height);
+    for (let i = 0; i < n; i++) { const ts = i * step + 0.01; frame(ctx, ts); sc.drawImage(cv, (i % cols) * tw, Math.floor(i / cols) * (th + 22), tw, th);
+      sc.fillStyle = '#fff'; sc.font = '16px JBMono'; sc.fillText(`${Math.floor(ts / 60)}:${String(Math.floor(ts % 60)).padStart(2, '0')}`, (i % cols) * tw + 4, Math.floor(i / cols) * (th + 22) + th + 17); }
+    fs.writeFileSync(out, sh.toBuffer('image/jpeg', 82)); return; }
+  if (MODE === 'chunk') { const [f0, f1, out] = [+ARGS[0], +ARGS[1], ARGS[2]];
+    const ff = spawn('ffmpeg', ['-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', `${K.W}x${K.H}`, '-r', String(K.FPS), '-i', '-', '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', out], { stdio: ['pipe', 'inherit', 'inherit'] });
+    for (let f = f0; f < f1; f++) { frame(ctx, f / K.FPS); const buf = Buffer.from(ctx.getImageData(0, 0, K.W, K.H).data.buffer); if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r)); }
+    ff.stdin.end(); await new Promise(r => ff.on('close', r)); return; }
+  if (MODE === 'video') { const out = ARGS[0], jobs = +(ARGS[1] || 4); const from = ARGS[2] ? Math.floor(+ARGS[2] * K.FPS) : 0, to = ARGS[3] ? Math.ceil(+ARGS[3] * K.FPS) : NF;
+    const tmp = out + '_parts'; fs.mkdirSync(tmp, { recursive: true }); const per = Math.ceil((to - from) / jobs); const parts = [];
+    await Promise.all(Array.from({ length: jobs }, (_, j) => { const a = from + j * per, b = Math.min(to, a + per); const o = path.join(tmp, `p${j}.mp4`); parts.push(o);
+      return new Promise(r => spawn('node', [__filename, EPD, 'chunk', a, b, o], { stdio: 'inherit' }).on('close', r)); }));
+    fs.writeFileSync(path.join(tmp, 'list.txt'), parts.map(p => `file '${path.resolve(p)}'`).join('\n'));
+    execFileSync('ffmpeg', ['-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', path.join(tmp, 'list.txt'), '-c', 'copy', out]); fs.rmSync(tmp, { recursive: true });
+    console.log('video', out, (to - from) / K.FPS, 's'); return; }
+}
+main().catch(e => { console.error(e); process.exit(1); });
+module.exports = { T };

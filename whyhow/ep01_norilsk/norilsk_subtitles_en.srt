@@ -1,0 +1,1206 @@
+1
+00:00:01,600 --> 00:00:04,530
+Three hundred kilometers
+north of the Arctic Circle,
+
+2
+00:00:04,620 --> 00:00:08,190
+there is a city of one hundred
+and seventy-four thousand people.
+
+3
+00:00:08,480 --> 00:00:09,950
+No road leads to it.
+
+4
+00:00:10,260 --> 00:00:12,810
+No railway connects it to
+the rest of the country.
+
+5
+00:00:13,200 --> 00:00:17,230
+And every single building in it
+stands on ground that is frozen solid.
+
+6
+00:00:18,548 --> 00:00:21,238
+Frozen ground sounds
+like a great foundation.
+
+7
+00:00:21,508 --> 00:00:22,918
+It's as hard as concrete.
+
+8
+00:00:22,988 --> 00:00:24,058
+But there's a catch.
+
+9
+00:00:24,608 --> 00:00:27,048
+The moment you build a
+warm house on top of it,
+
+10
+00:00:27,088 --> 00:00:28,898
+the ice underneath starts to melt.
+
+11
+00:00:29,048 --> 00:00:32,758
+And a house standing on melting
+ice does exactly what you'd expect.
+
+12
+00:00:32,968 --> 00:00:33,478
+It sinks.
+
+13
+00:00:33,668 --> 00:00:34,348
+It tilts.
+
+14
+00:00:34,388 --> 00:00:34,918
+It cracks.
+
+15
+00:00:36,189 --> 00:00:37,969
+So how does Norilsk do it?
+
+16
+00:00:38,009 --> 00:00:40,459
+How do you keep a whole
+city standing on ice?
+
+17
+00:00:40,669 --> 00:00:42,879
+And what happens when
+the ice starts losing?
+
+18
+00:00:43,109 --> 00:00:44,979
+To answer that, we need to go down.
+
+19
+00:00:45,289 --> 00:00:46,699
+About ten meters down.
+
+20
+00:00:55,502 --> 00:00:59,862
+Norilsk sits on the edge of the
+Taymyr Peninsula in Arctic Siberia,
+
+21
+00:00:59,902 --> 00:01:02,152
+at sixty-nine degrees north.
+
+22
+00:01:02,582 --> 00:01:05,692
+It is the largest city this
+far north on the planet.
+
+23
+00:01:06,262 --> 00:01:08,892
+Murmansk, in Russia's
+northwest, is bigger,
+
+24
+00:01:08,982 --> 00:01:10,592
+but it lies further south.
+
+25
+00:01:12,040 --> 00:01:13,210
+The climate is brutal.
+
+26
+00:01:13,500 --> 00:01:17,890
+The average temperature over a whole year
+is around minus eight degrees Celsius.
+
+27
+00:01:18,480 --> 00:01:21,450
+In January, the average is
+almost minus twenty-seven.
+
+28
+00:01:21,800 --> 00:01:24,050
+The record low is minus fifty-three.
+
+29
+00:01:24,380 --> 00:01:28,080
+And for about six weeks every winter, from
+the end of November until the middle of
+
+30
+00:01:28,120 --> 00:01:30,650
+January, the sun does not rise at all.
+
+31
+00:01:31,190 --> 00:01:33,460
+Nobody would build a
+city here for the view.
+
+32
+00:01:33,870 --> 00:01:36,660
+Norilsk exists because of
+what lies under the snow.
+
+33
+00:01:37,190 --> 00:01:40,220
+The ground here holds one of
+the richest deposits of nickel,
+
+34
+00:01:40,310 --> 00:01:42,120
+copper and palladium on Earth.
+
+35
+00:01:42,530 --> 00:01:44,950
+Today, the company that
+mines it, Nornickel,
+
+36
+00:01:44,990 --> 00:01:47,740
+produces more than forty percent
+of the world's palladium,
+
+37
+00:01:47,810 --> 00:01:50,260
+a metal used in car exhaust catalysts.
+
+38
+00:01:50,884 --> 00:01:52,554
+The city's beginnings are dark.
+
+39
+00:01:52,824 --> 00:01:56,024
+In nineteen thirty-five, the Soviet
+government opened a labor camp here called
+
+40
+00:01:56,064 --> 00:01:56,734
+Norillag.
+
+41
+00:01:57,204 --> 00:02:00,264
+Over the next twenty-one years, hundreds
+of thousands of prisoners were sent to dig
+
+42
+00:02:00,304 --> 00:02:02,714
+the mines and build the
+first factories and streets.
+
+43
+00:02:03,224 --> 00:02:06,594
+Historians estimate around four hundred
+thousand people passed through the camp.
+
+44
+00:02:07,144 --> 00:02:09,594
+Official records list more
+than sixteen thousand deaths,
+
+45
+00:02:09,744 --> 00:02:11,754
+and the real number is
+believed to be higher.
+
+46
+00:02:12,353 --> 00:02:16,683
+Those prisoners were the first to discover
+the problem we're talking about today.
+
+47
+00:02:16,933 --> 00:02:19,623
+Because when they built
+their first stone houses,
+
+48
+00:02:19,833 --> 00:02:22,983
+the ground underneath
+simply refused to cooperate.
+
+49
+00:02:27,777 --> 00:02:30,167
+Permafrost isn't a special kind of ice.
+
+50
+00:02:30,537 --> 00:02:31,367
+It's a definition.
+
+51
+00:02:31,857 --> 00:02:36,897
+Any ground that stays at or below zero
+degrees Celsius for at least two years in a
+
+52
+00:02:36,937 --> 00:02:38,787
+row counts as permafrost.
+
+53
+00:02:39,077 --> 00:02:42,027
+It can be rock, sand, clay or peat.
+
+54
+00:02:42,297 --> 00:02:43,827
+What matters is the temperature.
+
+55
+00:02:45,324 --> 00:02:48,394
+The permafrost around
+Norilsk is continuous.
+
+56
+00:02:48,764 --> 00:02:50,554
+That means it isn't patchy.
+
+57
+00:02:50,664 --> 00:02:54,954
+It's everywhere, under every street,
+every factory and every apartment block.
+
+58
+00:02:56,249 --> 00:02:58,899
+But the very top of the
+ground behaves differently.
+
+59
+00:02:59,209 --> 00:03:03,199
+Every summer, the upper layer thaws,
+and every winter it freezes again.
+
+60
+00:03:03,969 --> 00:03:05,639
+Scientists call it the active layer.
+
+61
+00:03:05,929 --> 00:03:08,659
+Near Norilsk, it is about one meter thick.
+
+62
+00:03:09,169 --> 00:03:11,819
+Below it, the ground stays
+frozen all year round.
+
+63
+00:03:13,132 --> 00:03:16,212
+Here's why that frozen
+layer matters so much.
+
+64
+00:03:16,252 --> 00:03:18,702
+In permafrost, ice works like glue.
+
+65
+00:03:19,072 --> 00:03:23,302
+It fills the gaps between grains of
+sand and clay and locks them together.
+
+66
+00:03:23,812 --> 00:03:26,042
+Frozen clay can carry enormous weight.
+
+67
+00:03:26,472 --> 00:03:30,282
+Thawed clay, full of melted water,
+turns into something closer to mud.
+
+68
+00:03:31,542 --> 00:03:33,362
+Now, put a building on top of it.
+
+69
+00:03:33,402 --> 00:03:36,822
+A heated building, in a place where it's
+minus thirty outside and plus twenty
+
+70
+00:03:36,862 --> 00:03:37,532
+inside.
+
+71
+00:03:37,962 --> 00:03:40,292
+Heat flows down through
+the floor, year after year.
+
+72
+00:03:40,422 --> 00:03:42,632
+The ground under the building
+warms, the ice melts,
+
+73
+00:03:42,702 --> 00:03:44,192
+and the soil loses its strength.
+
+74
+00:03:44,442 --> 00:03:46,412
+One side settles faster than the other.
+
+75
+00:03:46,562 --> 00:03:47,432
+The walls crack.
+
+76
+00:03:47,622 --> 00:03:51,192
+That is exactly what happened to
+the first stone houses of Norilsk.
+
+77
+00:03:54,862 --> 00:03:57,552
+Between nineteen thirty-seven
+and nineteen forty,
+
+78
+00:03:57,922 --> 00:04:02,632
+around thirty low stone houses were
+built in Norilsk on shallow foundations,
+
+79
+00:04:02,982 --> 00:04:05,392
+the way you'd build almost anywhere else.
+
+80
+00:04:06,022 --> 00:04:07,892
+According to Russian engineering studies,
+
+81
+00:04:07,982 --> 00:04:11,092
+about half of them began to
+deform almost immediately.
+
+82
+00:04:11,863 --> 00:04:14,433
+The ground was doing
+what frozen ground does.
+
+83
+00:04:14,623 --> 00:04:17,113
+As soon as it was warmed
+from above, it gave way.
+
+84
+00:04:17,503 --> 00:04:21,323
+For the next fifteen years or so, builders
+tried to solve this by digging down to
+
+85
+00:04:21,363 --> 00:04:24,853
+solid rock and standing buildings
+on columns that reached it.
+
+86
+00:04:24,943 --> 00:04:27,563
+That works, but only where
+rock is close to the surface,
+
+87
+00:04:27,603 --> 00:04:29,393
+and it's slow and expensive.
+
+88
+00:04:30,222 --> 00:04:33,412
+A city of tens of thousands
+couldn't grow like that.
+
+89
+00:04:33,742 --> 00:04:36,432
+Soviet engineers needed a different idea.
+
+90
+00:04:36,722 --> 00:04:39,952
+And the idea they settled
+on sounds almost backwards.
+
+91
+00:04:40,322 --> 00:04:43,792
+Instead of fighting the frozen
+ground, they decided to protect it.
+
+92
+00:04:48,297 --> 00:04:52,687
+Soviet building codes describe two
+ways of building on permafrost.
+
+93
+00:04:53,157 --> 00:04:57,307
+Principle Two accepts that the ground
+will thaw and tries to design for it.
+
+94
+00:04:57,637 --> 00:04:59,247
+Principle One does the opposite.
+
+95
+00:04:59,537 --> 00:05:03,187
+It says: keep the ground frozen
+for the whole life of the building.
+
+96
+00:05:03,657 --> 00:05:06,087
+Most of Norilsk was
+built on Principle One.
+
+97
+00:05:07,261 --> 00:05:08,491
+Here's how it works.
+
+98
+00:05:08,981 --> 00:05:13,011
+First, long piles are driven or
+drilled deep into the permafrost,
+
+99
+00:05:13,101 --> 00:05:14,671
+well below the active layer.
+
+100
+00:05:15,021 --> 00:05:19,071
+As the ground around them refreezes,
+the piles become frozen in place,
+
+101
+00:05:19,241 --> 00:05:21,351
+gripped by the ice along
+their whole length.
+
+102
+00:05:21,721 --> 00:05:24,491
+The building's weight is
+carried by that frozen grip.
+
+103
+00:05:25,688 --> 00:05:29,498
+Second, and this is the clever part,
+the building doesn't touch the ground.
+
+104
+00:05:29,888 --> 00:05:34,388
+It stands on those piles above an open,
+ventilated gap between the soil and the
+
+105
+00:05:34,428 --> 00:05:35,218
+first floor.
+
+106
+00:05:35,728 --> 00:05:38,488
+Look at almost any old
+apartment block in Norilsk,
+
+107
+00:05:38,528 --> 00:05:41,998
+and you'll see it: the whole building
+seems to hover above the snow.
+
+108
+00:05:43,254 --> 00:05:45,264
+That gap is the real foundation.
+
+109
+00:05:45,814 --> 00:05:49,574
+In winter, freezing air blows through
+it and pulls heat out of the ground,
+
+110
+00:05:49,614 --> 00:05:51,944
+so the permafrost gets even colder.
+
+111
+00:05:52,294 --> 00:05:55,544
+In summer, the building's shadow
+keeps the sun off the soil.
+
+112
+00:05:55,894 --> 00:05:59,604
+The heat from the apartments escapes
+into the air instead of into the ground.
+
+113
+00:06:00,916 --> 00:06:04,546
+It's the same reason you'll see
+something else everywhere in the city:
+
+114
+00:06:04,916 --> 00:06:06,466
+pipes running above ground.
+
+115
+00:06:06,856 --> 00:06:11,396
+Hot water and heating pipes buried in the
+soil would act like a giant heater under
+
+116
+00:06:11,436 --> 00:06:12,126
+the streets.
+
+117
+00:06:12,556 --> 00:06:16,066
+So they're lifted up, wrapped, and
+kept away from the frozen ground.
+
+118
+00:06:17,442 --> 00:06:19,432
+Put together, it's a simple deal.
+
+119
+00:06:19,902 --> 00:06:24,272
+The city keeps the ground frozen, and
+the frozen ground holds the city up.
+
+120
+00:06:24,662 --> 00:06:28,142
+It worked well enough that Norilsk
+grew into a city of panel blocks,
+
+121
+00:06:28,182 --> 00:06:32,612
+five and nine storeys high, most of
+them built before the nineteen eighties.
+
+122
+00:06:33,364 --> 00:06:35,294
+But this deal has a weak point.
+
+123
+00:06:35,524 --> 00:06:37,894
+It only works if the ground stays cold.
+
+124
+00:06:38,124 --> 00:06:40,864
+And in Norilsk, the ground
+has been getting warmer,
+
+125
+00:06:40,904 --> 00:06:42,714
+from two directions at once.
+
+126
+00:06:47,256 --> 00:06:49,326
+The first problem is the city itself.
+
+127
+00:06:49,616 --> 00:06:52,786
+That ventilated gap only works
+if air can move through it.
+
+128
+00:06:52,916 --> 00:06:56,676
+When snow piles up against the building,
+it acts like a blanket and keeps the ground
+
+129
+00:06:56,716 --> 00:06:57,286
+warm.
+
+130
+00:06:57,676 --> 00:07:01,796
+When the gap gets blocked, or when a
+leaking hot-water or sewage pipe floods the
+
+131
+00:07:01,836 --> 00:07:05,306
+space under a building, the ice
+below starts to melt from the top.
+
+132
+00:07:05,992 --> 00:07:09,272
+Researchers who measured ground temperatures
+in Norilsk found that at ten meters
+
+133
+00:07:09,312 --> 00:07:13,172
+deep, the permafrost used to be between
+minus seven and minus half a degree before
+
+134
+00:07:13,212 --> 00:07:14,522
+mass construction began.
+
+135
+00:07:14,912 --> 00:07:16,622
+By the two thousands,
+in parts of the city,
+
+136
+00:07:16,772 --> 00:07:19,122
+it was between minus two and
+a half and plus half a degree.
+
+137
+00:07:19,432 --> 00:07:22,632
+In some spots, the ground had warmed by
+three to five degrees compared with the
+
+138
+00:07:22,672 --> 00:07:23,722
+nineteen forties.
+
+139
+00:07:23,992 --> 00:07:26,022
+Some pockets weren't
+frozen at all anymore.
+
+140
+00:07:26,713 --> 00:07:28,443
+The second problem is the climate.
+
+141
+00:07:28,953 --> 00:07:31,173
+Between the nineteen
+seventies and the twenty tens,
+
+142
+00:07:31,213 --> 00:07:34,963
+the average air temperature in Norilsk
+rose by one point four degrees.
+
+143
+00:07:35,513 --> 00:07:39,203
+That's a lot for a place where the whole
+system depends on staying below zero.
+
+144
+00:07:39,673 --> 00:07:43,733
+And the Arctic as a whole has been warming
+almost four times faster than the rest of
+
+145
+00:07:43,773 --> 00:07:45,363
+the planet since nineteen seventy-nine.
+
+146
+00:07:46,250 --> 00:07:48,750
+When frozen ground warms,
+even before it melts,
+
+147
+00:07:48,790 --> 00:07:49,540
+it gets weaker.
+
+148
+00:07:49,830 --> 00:07:51,620
+The ice grip on the piles loosens.
+
+149
+00:07:52,090 --> 00:07:56,110
+A study by American and Russian scientists
+estimated that for Norilsk buildings from
+
+150
+00:07:56,150 --> 00:07:59,890
+the nineteen sixties, the ground's ability
+to carry their weight had already dropped
+
+151
+00:07:59,930 --> 00:08:02,060
+by about fifteen percent
+by twenty thirteen.
+
+152
+00:08:02,550 --> 00:08:04,610
+For buildings from the
+seventies and eighties,
+
+153
+00:08:04,650 --> 00:08:06,140
+by about twenty-one percent.
+
+154
+00:08:06,649 --> 00:08:09,059
+The same team modeled what comes next.
+
+155
+00:08:09,269 --> 00:08:12,279
+By twenty twenty, they projected
+a drop of more than a third,
+
+156
+00:08:12,709 --> 00:08:16,379
+larger than the safety margins most
+of those buildings were designed with.
+
+157
+00:08:16,669 --> 00:08:20,699
+By twenty fifty, older foundations could
+lose around two thirds of their strength.
+
+158
+00:08:21,009 --> 00:08:24,019
+These are model estimates with
+a wide range of uncertainty,
+
+159
+00:08:24,269 --> 00:08:25,819
+but they all point the same way.
+
+160
+00:08:26,350 --> 00:08:28,180
+And the damage is not just on paper.
+
+161
+00:08:28,590 --> 00:08:32,180
+By the mid twenty tens, around three hundred
+structures in Norilsk had significant
+
+162
+00:08:32,490 --> 00:08:33,080
+deformations.
+
+163
+00:08:33,450 --> 00:08:36,580
+More than a hundred residential buildings
+were in a state of structural failure,
+
+164
+00:08:36,670 --> 00:08:39,320
+and about five thousand families
+were still living in them.
+
+165
+00:08:41,270 --> 00:08:42,550
+And almost fifty buildings,
+five and nine storeys tall,
+
+166
+00:08:42,590 --> 00:08:45,520
+built from the sixties to the
+eighties, had already been taken apart.
+
+167
+00:08:46,105 --> 00:08:47,875
+You may have seen a scarier number online:
+
+168
+00:08:48,045 --> 00:08:50,695
+that sixty percent of the
+buildings in Norilsk are deformed.
+
+169
+00:08:51,045 --> 00:08:54,645
+That figure comes from a single statement
+by a regional emergency official in twenty
+
+170
+00:08:54,685 --> 00:08:57,095
+sixteen, and nobody
+published how it was counted.
+
+171
+00:08:57,505 --> 00:09:00,275
+Permafrost scientists who surveyed
+the city gave a lower figure:
+
+172
+00:09:00,485 --> 00:09:04,375
+around thirty-five percent of buildings in
+Norilsk and Talnakh showing deformation.
+
+173
+00:09:04,865 --> 00:09:06,655
+Lower, but still about one in three.
+
+174
+00:09:10,377 --> 00:09:12,367
+On the twenty-ninth of May, twenty twenty,
+
+175
+00:09:12,617 --> 00:09:16,147
+a huge fuel tank at a power
+plant in Norilsk failed.
+
+176
+00:09:16,677 --> 00:09:19,477
+About twenty-one thousand
+tons of diesel poured out,
+
+177
+00:09:19,517 --> 00:09:21,727
+into the soil and into local rivers.
+
+178
+00:09:22,277 --> 00:09:25,707
+It was one of the worst oil spills
+ever recorded in the Arctic.
+
+179
+00:09:27,098 --> 00:09:29,288
+At first, the company
+that owned the plant,
+
+180
+00:09:29,398 --> 00:09:32,648
+a subsidiary of Nornickel,
+pointed to the permafrost.
+
+181
+00:09:33,038 --> 00:09:37,228
+The supports under the tank, it said,
+had sunk because the ground had thawed.
+
+182
+00:09:37,578 --> 00:09:39,908
+That story made headlines
+around the world:
+
+183
+00:09:39,958 --> 00:09:43,228
+the first big disaster
+caused by melting permafrost.
+
+184
+00:09:44,128 --> 00:09:47,758
+But the investigations told
+a more complicated story.
+
+185
+00:09:48,108 --> 00:09:52,508
+An engineering review commissioned by
+Nornickel found that some of the tank's piles
+
+186
+00:09:52,548 --> 00:09:56,318
+were shorter than designed and had
+never been set into the bedrock.
+
+187
+00:09:57,288 --> 00:10:00,058
+Russia's industrial safety
+regulator went further.
+
+188
+00:10:01,088 --> 00:10:04,248
+It found no sign of thawed
+permafrost under the tank,
+
+189
+00:10:04,288 --> 00:10:08,158
+and blamed weak foundations and
+missing inspections instead.
+
+190
+00:10:08,548 --> 00:10:12,858
+The tank had been out of service for
+repairs and had gone back into use in twenty
+
+191
+00:10:12,898 --> 00:10:15,058
+nineteen without being properly checked.
+
+192
+00:10:16,423 --> 00:10:20,673
+In twenty twenty-one, a Russian court
+ordered Nornickel to pay one hundred and
+
+193
+00:10:20,713 --> 00:10:24,583
+forty-six billion rubles,
+nearly two billion US dollars,
+
+194
+00:10:24,623 --> 00:10:26,373
+for the environmental damage.
+
+195
+00:10:26,883 --> 00:10:29,133
+The company paid it in March of that year.
+
+196
+00:10:29,463 --> 00:10:32,993
+It was the largest environmental
+fine in Russia's history.
+
+197
+00:10:33,582 --> 00:10:36,312
+So was it the permafrost,
+or was it people?
+
+198
+00:10:36,622 --> 00:10:39,312
+The honest answer is that it
+doesn't really matter which.
+
+199
+00:10:39,802 --> 00:10:43,952
+A building on frozen ground only
+stands as long as two things hold:
+
+200
+00:10:44,222 --> 00:10:47,052
+the ground stays cold,
+and humans do their job.
+
+201
+00:10:47,322 --> 00:10:49,392
+In Norilsk, both are under pressure.
+
+202
+00:10:53,886 --> 00:10:56,476
+If the ground is getting
+too warm on its own,
+
+203
+00:10:56,526 --> 00:10:58,296
+the answer is to cool it down.
+
+204
+00:10:58,726 --> 00:11:01,446
+And engineers have a device
+that does exactly that,
+
+205
+00:11:01,486 --> 00:11:03,356
+with no electricity at all.
+
+206
+00:11:03,586 --> 00:11:07,606
+It's called a thermosiphon, and it's one
+of the smartest bits of engineering you've
+
+207
+00:11:07,646 --> 00:11:08,436
+never noticed.
+
+208
+00:11:09,810 --> 00:11:12,110
+It's a sealed metal pipe,
+pushed deep into the ground,
+
+209
+00:11:12,150 --> 00:11:15,540
+with a little liquid inside,
+often ammonia or carbon dioxide.
+
+210
+00:11:16,110 --> 00:11:18,400
+In winter, the top of the
+pipe is in freezing air.
+
+211
+00:11:18,670 --> 00:11:20,790
+The liquid at the bottom
+picks up heat from the soil,
+
+212
+00:11:20,830 --> 00:11:22,360
+turns into vapor and rises.
+
+213
+00:11:22,750 --> 00:11:25,330
+At the cold top, the vapor
+gives its heat away to the air,
+
+214
+00:11:25,370 --> 00:11:27,580
+turns back into liquid,
+and runs down again.
+
+215
+00:11:27,850 --> 00:11:29,440
+Over and over, all winter long.
+
+216
+00:11:30,023 --> 00:11:32,693
+In summer, when the air
+is warmer than the ground,
+
+217
+00:11:32,843 --> 00:11:34,273
+the cycle simply stops.
+
+218
+00:11:34,763 --> 00:11:37,693
+So the pipe only ever moves
+heat in one direction:
+
+219
+00:11:37,803 --> 00:11:38,593
+out of the ground.
+
+220
+00:11:38,863 --> 00:11:42,413
+Every winter, it stores up
+extra cold for the summer ahead.
+
+221
+00:11:43,792 --> 00:11:46,822
+You've probably seen
+thermosiphons without knowing it.
+
+222
+00:11:46,992 --> 00:11:51,232
+The Trans-Alaska Pipeline is held up by
+more than a hundred and twenty thousand of
+
+223
+00:11:51,272 --> 00:11:51,622
+them.
+
+224
+00:11:52,132 --> 00:11:56,832
+The Qinghai–Tibet railway, which crosses
+about five hundred and fifty kilometers of
+
+225
+00:11:56,872 --> 00:12:01,512
+permafrost, uses them together with
+embankments of crushed rock that let cold air
+
+226
+00:12:01,552 --> 00:12:01,942
+in.
+
+227
+00:12:02,492 --> 00:12:04,502
+Norilsk is now doing the same.
+
+228
+00:12:04,972 --> 00:12:08,782
+After pilot projects on two apartment
+buildings in twenty nineteen and twenty
+
+229
+00:12:08,822 --> 00:12:13,762
+twenty, the authorities began installing
+soil cooling systems under more homes.
+
+230
+00:12:14,212 --> 00:12:18,112
+In twenty twenty-four, Russia's ministry
+for the Far East and the Arctic said
+
+231
+00:12:18,152 --> 00:12:21,622
+hundreds of houses in Norilsk would
+get them by twenty thirty-five.
+
+232
+00:12:22,449 --> 00:12:25,119
+At the same time, the city
+is being partly rebuilt.
+
+233
+00:12:25,589 --> 00:12:28,849
+Under a renovation program agreed in twenty
+twenty-one between the government and
+
+234
+00:12:28,889 --> 00:12:32,389
+Nornickel, dozens of failing buildings
+are planned to be demolished and replaced
+
+235
+00:12:32,429 --> 00:12:33,759
+with new apartment blocks.
+
+236
+00:12:34,229 --> 00:12:37,689
+And Nornickel has put around a hundred and
+sixty-five buildings and structures under
+
+237
+00:12:37,729 --> 00:12:42,059
+monitoring, with sensors that track the
+ground temperature and every tiny movement.
+
+238
+00:12:45,873 --> 00:12:49,383
+So, why don't the houses in
+Norilsk sink into the permafrost?
+
+239
+00:12:49,713 --> 00:12:52,123
+Because the city was built
+on a promise to the ground:
+
+240
+00:12:52,233 --> 00:12:53,483
+we will keep you frozen.
+
+241
+00:12:54,173 --> 00:12:57,683
+Stilts lift the buildings into the
+wind, pipes stay above the surface,
+
+242
+00:12:57,893 --> 00:13:01,873
+and now, more and more, steel tubes quietly
+pump the heat out of the earth every
+
+243
+00:13:01,913 --> 00:13:02,343
+winter.
+
+244
+00:13:03,651 --> 00:13:04,841
+But here's the twist.
+
+245
+00:13:05,171 --> 00:13:07,821
+Norilsk doesn't really
+stand on frozen ground.
+
+246
+00:13:08,011 --> 00:13:10,021
+It stands on ground it keeps frozen.
+
+247
+00:13:10,471 --> 00:13:14,271
+The city works like a giant
+refrigerator turned upside down,
+
+248
+00:13:14,311 --> 00:13:16,381
+cooling the earth beneath its own feet.
+
+249
+00:13:16,711 --> 00:13:20,601
+And the warmer the Arctic gets, the
+harder that refrigerator has to work.
+
+250
+00:13:21,718 --> 00:13:23,188
+Norilsk isn't alone.
+
+251
+00:13:23,998 --> 00:13:25,708
+Scientists estimate that by twenty fifty,
+
+252
+00:13:25,978 --> 00:13:29,548
+nearly four million people and around
+seventy percent of the buildings,
+
+253
+00:13:29,818 --> 00:13:34,378
+roads and pipelines in the Arctic's
+permafrost zone will sit in areas where the
+
+254
+00:13:34,418 --> 00:13:35,968
+ground is likely to thaw.
+
+255
+00:13:36,458 --> 00:13:39,288
+Norilsk is just where the
+problem shows up first.
+
+256
+00:13:39,980 --> 00:13:41,990
+So here's my question for you.
+
+257
+00:13:42,140 --> 00:13:46,320
+Would you live in a city where the ground
+under your house has to be refrigerated to
+
+258
+00:13:46,360 --> 00:13:47,290
+keep it standing?
+
+259
+00:13:47,680 --> 00:13:51,790
+Tell me in the comments, and tell me which
+place on Earth we should explain next.
+
+260
+00:13:52,080 --> 00:13:53,390
+This was How It's Run.
