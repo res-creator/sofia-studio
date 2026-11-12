@@ -80,7 +80,7 @@ function cover(ctx, img, z = 1, fx = 0.5, fy = 0.5, box = [0, 0, W, H]) {
 // Ken Burns: kb = {z:[z0,z1], x:[fx0,fx1], y:[fy0,fy1]}
 function kenBurns(ctx, img, t, d, kb = {}, box) {
   const u = E.sine(clamp(t / Math.max(d, 0.01)));
-  const z = kb.z || [1.04, 1.14], x = kb.x || [0.5, 0.5], y = kb.y || [0.5, 0.5];
+  const z = kb.z || [1.04, 1.2], x = kb.x || [0.5, 0.5], y = kb.y || [0.5, 0.5];
   cover(ctx, img, lerp(z[0], z[1], u), lerp(x[0], x[1], u), lerp(y[0], y[1], u), box);
 }
 // ---------- grade ----------

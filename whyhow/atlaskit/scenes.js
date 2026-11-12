@@ -16,6 +16,21 @@ function photo(ctx, t, d, p) {
   overlays(ctx, t, d, p);
   if (p.credit) credit(ctx, p.credit);
 }
+// real footage clip (frames supplied by video.js into p._cv) with a gentle zoom, grade and overlays
+function video(ctx, t, d, p) {
+  if (p._cv) { const z = K.lerp(p.z0 || 1.0, p.z1 || 1.06, E.sine(clamp(t / Math.max(d, 0.1)))); ctx.save(); ctx.translate(W / 2, H / 2); ctx.scale(z, z); ctx.drawImage(p._cv, -W / 2, -H / 2); ctx.restore(); }
+  else { ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H); }
+  coldGrade(ctx, p.cold == null ? 0.06 : p.cold); if (p.dark) darken(ctx, p.dark); vignette(ctx, 0.4);
+  if (p.snow) snow(ctx, t, p.snow, 0.7); overlays(ctx, t, d, p); if (p.credit) credit(ctx, p.credit);
+}
+// lower-third fact tag
+function lower(ctx, t, o, a) {
+  const x = o.x || 80, y = o.y || 900, u = E.out(clamp(seg(t, o.at || 0, (o.at || 0) + 0.5)));
+  ctx.save(); ctx.globalAlpha = a; const w1 = K.measure(ctx, o.text, o.size || 58, F.head) + 60; const w2 = o.sub ? K.measure(ctx, o.sub, 30, F.bold) + 60 : 0; const w = Math.max(w1, w2) * u;
+  ctx.fillStyle = 'rgba(11,20,38,0.82)'; rr(ctx, x, y - (o.size || 58) - 18, w, (o.size || 58) + (o.sub ? 70 : 34), 6); ctx.fill(); ctx.fillStyle = C.yellow; ctx.fillRect(x, y - (o.size || 58) - 18, 10, (o.size || 58) + (o.sub ? 70 : 34));
+  ctx.beginPath(); ctx.rect(x, 0, w, H); ctx.clip(); text(ctx, o.text, x + 34, y, { size: o.size || 58, font: F.head, color: C.cream });
+  if (o.sub) text(ctx, o.sub, x + 34, y + 44, { size: 30, font: F.bold, color: C.yellow }); ctx.restore();
+}
 // shared overlays: headline, chips, counters, labels/arrows, coord tag
 function overlays(ctx, t, d, p) {
   for (const o of p.over || []) {
@@ -31,6 +46,7 @@ function overlays(ctx, t, d, p) {
     else if (o.type === 'label') { ctx.save(); ctx.globalAlpha = a; if (o.to) { const u = E.out(clamp(seg(t, at, at + 0.6))); arrow(ctx, o.x, o.y + 14, lerp(o.x, o.to[0], u), lerp(o.y + 14, o.to[1], u), { color: o.color || C.yellow, w: 5 }); }
       chip(ctx, o.text, o.x, o.y, { size: o.size || 38, align: o.align || 'center', bg: o.bg, color: o.color2 }); ctx.restore(); }
     else if (o.type === 'tag') coordTag(ctx, o.text, o.x, o.y, a);
+    else if (o.type === 'lower') lower(ctx, t, o, a);
     else if (o.type === 'note') text(ctx, o.text, o.x || 48, o.y || 60, { size: o.size || 24, font: F.monoB, color: o.color || C.cream, alpha: a * 0.9, shadow: 8, align: o.align });
     else if (o.type === 'ring') { const u = E.out(clamp(seg(t, at, at + 0.7))); ctx.save(); ctx.globalAlpha = a; ctx.strokeStyle = o.color || C.yellow; ctx.lineWidth = 6; ctx.beginPath(); ctx.ellipse(o.x, o.y, o.rx, o.ry, 0, -Math.PI / 2, -Math.PI / 2 + u * Math.PI * 2); ctx.stroke(); ctx.restore(); }
   }
@@ -199,4 +215,4 @@ function sat(ctx, t, d, p) {
   else kenBurns(ctx, img, t, d, p.kb); ctx.restore();
   if (p.dark) darken(ctx, p.dark); vignette(ctx, 0.45); overlays(ctx, t, d, p); if (p.credit) credit(ctx, p.credit);
 }
-module.exports = { photo, overlays, title, chapter, stats, calendar, split, bars, thermo, ratio, myth, versus, endq, endscreen, sat, globe, pop, fade, fadeOut };
+module.exports = { video, photo, overlays, title, chapter, stats, calendar, split, bars, thermo, ratio, myth, versus, endq, endscreen, sat, globe, pop, fade, fadeOut };

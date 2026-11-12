@@ -95,7 +95,7 @@ function probe(ctx, t, p) { const a = v(p, 'probe', t); if (a <= 0) return; cons
   ctx.strokeStyle = C.yellow; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(x, G - 30); ctx.lineTo(x, yb); ctx.stroke(); ctx.fillStyle = C.yellow; ctx.beginPath(); ctx.arc(x, yb, 10, 0, 7); ctx.fill();
   if (p.probeText && a > 0.9) chip(ctx, key(p.probeText, t), x - 20, yb - 24, { size: 40, align: 'right' }); }
 function xsec(ctx, t, d, p) {
-  const z = v(p, 'zoom', t, 1), fx = p.fx == null ? W / 2 : key(p.fx, t), fy = p.fy == null ? H / 2 : key(p.fy, t);
+  const drift = p.zoom == null ? 1 + 0.05 * E.sine(clamp(t / Math.max(d, 0.1))) : 1; const z = v(p, 'zoom', t, 1) * drift, fx = (p.fx == null ? W / 2 : key(p.fx, t)) + (p.zoom == null ? 30 * Math.sin(t * 0.25) : 0), fy = p.fy == null ? H / 2 : key(p.fy, t);
   ctx.save(); ctx.translate(W / 2, H / 2); ctx.scale(z, z); ctx.translate(-fx, -fy);
   sky(ctx, t, v(p, 'season', t)); ground(ctx, t, p); siphons(ctx, t, p);
   if (p.house === 'stone') stoneHouse(ctx, t, p); if (p.house === 'block') block(ctx, t, p);
