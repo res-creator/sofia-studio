@@ -10,3 +10,4 @@ whyhow/*/voice/*.wav
 whyhow/*/footage/*.mp4
 whyhow/*/v2/voice_raw/
 whyhow/*/v2/voice/*.wav
+whyhow/*/v2/*.log
