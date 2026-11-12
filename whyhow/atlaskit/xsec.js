@@ -95,7 +95,7 @@ function probe(ctx, t, p) { const a = v(p, 'probe', t); if (a <= 0) return; cons
   ctx.strokeStyle = C.yellow; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(x, G - 30); ctx.lineTo(x, yb); ctx.stroke(); ctx.fillStyle = C.yellow; ctx.beginPath(); ctx.arc(x, yb, 10, 0, 7); ctx.fill();
   if (p.probeText && a > 0.9) chip(ctx, key(p.probeText, t), x - 20, yb - 24, { size: 40, align: 'right' }); }
 function xsec(ctx, t, d, p) {
-  const drift = p.zoom == null ? 1 + 0.05 * E.sine(clamp(t / Math.max(d, 0.1))) : 1; const z = v(p, 'zoom', t, 1) * drift, fx = (p.fx == null ? W / 2 : key(p.fx, t)) + (p.zoom == null ? 30 * Math.sin(t * 0.25) : 0), fy = p.fy == null ? H / 2 : key(p.fy, t);
+  const drift = (p._punch || 1) * (p.zoom == null ? 1 : 1) * (p.zoom == null ? 1 + 0.05 * E.sine(clamp(t / Math.max(d, 0.1))) : 1); const z = v(p, 'zoom', t, 1) * drift, fx = (p.fx == null ? W / 2 : key(p.fx, t)) + (p.zoom == null ? 30 * Math.sin(t * 0.25) : 0), fy = p.fy == null ? H / 2 : key(p.fy, t);
   ctx.save(); ctx.translate(W / 2, H / 2); ctx.scale(z, z); ctx.translate(-fx, -fy);
   sky(ctx, t, v(p, 'season', t)); ground(ctx, t, p); siphons(ctx, t, p);
   if (p.house === 'stone') stoneHouse(ctx, t, p); if (p.house === 'block') block(ctx, t, p);
@@ -107,6 +107,7 @@ function xsec(ctx, t, d, p) {
 }
 // standalone thermosiphon close-up
 function siphonCloseup(ctx, t, d, p) {
+  ctx.save(); if ((p._punch || 1) !== 1) { const z = p._punch, fx = W * (p._fx || 0.5), fy = H * 0.55; ctx.translate(fx, fy); ctx.scale(z, z); ctx.translate(-fx, -fy); }
   const season = v(p, 'season', t); sky(ctx, t, season); ground(ctx, t, { season, warm: 0 }); const x = 960, top = 180, bot = 1000;
   const g = ctx.createRadialGradient(x, 820, 20, x, 820, 420); g.addColorStop(0, hexA('#0E2C66', 0.8 * (1 - season))); g.addColorStop(1, hexA('#0E2C66', 0)); ctx.fillStyle = g; ctx.fillRect(0, G, W, H);
   ctx.fillStyle = '#9FA9B6'; rr(ctx, x - 34, top, 68, bot - top, 30); ctx.fill(); ctx.fillStyle = '#C9D1DB'; rr(ctx, x - 26, top + 8, 52, bot - top - 16, 26); ctx.fill();
@@ -119,6 +120,7 @@ function siphonCloseup(ctx, t, d, p) {
   for (let i = 0; i < 6; i++) { const ph = (t * 0.6 + i / 6) % 1, side = i % 2 ? 1 : -1, y = 700 + (i % 3) * 90; ctx.save(); ctx.globalAlpha = run * Math.sin(ph * Math.PI);
     arrow(ctx, x + side * (300 - ph * 200), y, x + side * (200 - ph * 150), y, { color: C.orange, w: 5, head: 14 }); ctx.restore(); }
   for (let i = 0; i < 5; i++) { const ph = (t * 0.6 + i / 5) % 1; ctx.save(); ctx.globalAlpha = run * Math.sin(ph * Math.PI); arrow(ctx, x + 120, top + 80 + i * 40, x + 200 + ph * 120, top + 50 + i * 40 - ph * 40, { color: C.orange, w: 4, head: 12 }); ctx.restore(); }
+  ctx.restore();
   chip(ctx, season > 0.5 ? 'SUMMER: CYCLE STOPS' : 'WINTER: PUMPS HEAT OUT', 48, 82, { size: 36, bg: season > 0.5 ? C.yellow : C.iceL });
   require('./scenes').overlays(ctx, t, d, p);
   text(ctx, 'NOT TO SCALE', W - 40, H - 24, { size: 18, font: F.monoB, align: 'right', color: hexA(C.cream, 0.5) });

@@ -20,15 +20,23 @@ const T = {
     const ws = WORDS[id] || []; let k = 0; for (const x of ws) if (norm(x.w) === norm(w) && ++k === n) return p.start + x.s;
     console.error('word not found', id, w); return p.start; },
   end: TL.voiceEnd + TL.qcard + TL.endscreen,
+  words: id => (WORDS[id] || []).map(x => ({ w: x.w, s: P[id].start + x.s, e: P[id].start + x.e })),
 };
 const ep = require(path.join(EP, 'shots.js'));
 const shots = ep.build(T).sort((a, b) => a.t - b.t);
 shots.forEach((s, i) => { s.end = i + 1 < shots.length ? shots[i + 1].t : T.end; s.d = s.end - s.t; if (!SC[s.scene]) throw new Error('no scene ' + s.scene); });
+// auto-split long shots of photo/video/diagram into parts with a hard cut and a different framing (punch-in), time continues
+if (ep.splitOver) { const SPL = ['photo', 'video', 'xsec', 'sat', 'siphon']; const res = [];
+  for (const s of shots) { if (!SPL.includes(s.scene) || s.d <= ep.splitOver) { res.push(s); continue; }
+    const n = Math.ceil(s.d / (ep.splitTo || 6)); const part = s.d / n;
+    for (let k = 0; k < n; k++) { const pk = k % 2 ? { ...s.p, _punch: 1.22, _fx: 0.35 + 0.3 * (k % 4 === 1 ? 1 : 0), _fy: 0.45 } : { ...s.p, _punch: 1, _fx: 0.5, _fy: 0.5 };
+      res.push({ ...s, t: s.t + k * part, end: s.t + (k + 1) * part, d: part, p: pk, off: k * part, dd: s.d, trans: k ? 'cut' : s.trans, _parent: s }); } }
+  shots.length = 0; shots.push(...res); }
 const DUR = T.end, NF = Math.ceil(DUR * K.FPS);
 const XF = 0.5; // crossfade seconds
 shots.forEach(s => { if (!s.trans) s.trans = ep.defaultTrans || 'fade'; });
 let cvA, cvB;
-function drawShot(ctx, s, time) { ctx.save(); SC[s.scene](ctx, time - s.t, s.d, s.p || {}); ctx.restore(); }
+function drawShot(ctx, s, time) { ctx.save(); SC[s.scene](ctx, time - s.t + (s.off || 0), s.dd || s.d, s.p || {}); ctx.restore(); }
 async function frame(ctx, time) {
   let i = shots.findIndex(s => time >= s.t && time < s.end); if (i < 0) i = shots.length - 1; const s = shots[i];
   const lt0 = time - s.t, need = [s]; if (i > 0 && lt0 < XF && s.trans !== 'cut') need.push(shots[i - 1]);
@@ -41,7 +49,7 @@ async function frame(ctx, time) {
   const fin = K.clamp(time / 0.6), fout = K.clamp((DUR - time) / 1.0); if (fin < 1 || fout < 1) { ctx.fillStyle = `rgba(0,0,0,${1 - Math.min(fin, fout)})`; ctx.fillRect(0, 0, K.W, K.H); }
 }
 async function main() {
-  if (MODE === 'cues') { fs.writeFileSync(ARGS[0], JSON.stringify({ dur: DUR, shots: shots.map(s => ({ t: +s.t.toFixed(3), scene: s.scene })) })); return; }
+  if (MODE === 'cues') { fs.writeFileSync(ARGS[0], JSON.stringify({ dur: DUR, shots: shots.filter(s => !s.off).map(s => ({ t: +s.t.toFixed(3), scene: s.scene })), cuts: shots.map(s => +s.t.toFixed(3)) })); return; }
   await K.preload(Object.fromEntries(Object.entries(ep.assets).map(([k, f]) => [k, path.resolve(EP, f)])));
   const cv = K.createCanvas(K.W, K.H), ctx = cv.getContext('2d');
   if (MODE === 'stills') { for (const ts of ARGS[0].split(',')) { await frame(ctx, +ts); fs.writeFileSync(`${ARGS[1]}_${(+ts).toFixed(1)}.png`, cv.toBuffer('image/png')); } return; }

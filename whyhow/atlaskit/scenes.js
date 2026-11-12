@@ -10,15 +10,17 @@ const fadeOut = (t, d, dur = 0.35) => 1 - clamp(seg(t, d - dur, d));
 
 // ---------- photo with Ken Burns + overlays ----------
 function photo(ctx, t, d, p) {
-  const img = IMG[p.img]; ctx.save(); if (p.filter) ctx.filter = p.filter; kenBurns(ctx, img, t, d, p.kb); ctx.restore();
+  const img = IMG[p.img]; ctx.save(); if (p.filter) ctx.filter = p.filter; punch(ctx, p); kenBurns(ctx, img, t, d, p.kb); ctx.restore();
   coldGrade(ctx, p.cold == null ? 0.1 : p.cold); if (p.dark) darken(ctx, typeof p.dark === 'number' ? p.dark : key(p.dark, t)); vignette(ctx, 0.5);
   if (p.snow) snow(ctx, t, p.snow, 0.75);
   overlays(ctx, t, d, p);
   if (p.credit) credit(ctx, p.credit);
 }
+// punch-in for auto-split parts
+function punch(ctx, p) { const z = p._punch || 1; if (z === 1) return; const fx = (p._fx || 0.5) * W, fy = (p._fy || 0.5) * H; ctx.translate(fx, fy); ctx.scale(z, z); ctx.translate(-fx, -fy); }
 // real footage clip (frames supplied by video.js into p._cv) with a gentle zoom, grade and overlays
 function video(ctx, t, d, p) {
-  if (p._cv) { const z = K.lerp(p.z0 || 1.0, p.z1 || 1.06, E.sine(clamp(t / Math.max(d, 0.1)))); ctx.save(); ctx.translate(W / 2, H / 2); ctx.scale(z, z); ctx.drawImage(p._cv, -W / 2, -H / 2); ctx.restore(); }
+  if (p._cv) { const z = K.lerp(p.z0 || 1.0, p.z1 || 1.06, E.sine(clamp(t / Math.max(d, 0.1)))); ctx.save(); punch(ctx, p); ctx.translate(W / 2, H / 2); ctx.scale(z, z); ctx.drawImage(p._cv, -W / 2, -H / 2); ctx.restore(); }
   else { ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H); }
   coldGrade(ctx, p.cold == null ? 0.06 : p.cold); if (p.dark) darken(ctx, p.dark); vignette(ctx, 0.4);
   if (p.snow) snow(ctx, t, p.snow, 0.7); overlays(ctx, t, d, p); if (p.credit) credit(ctx, p.credit);
@@ -210,7 +212,7 @@ function endscreen(ctx, t, d, p) {
 }
 // ---------- satellite / labelled image ----------
 function sat(ctx, t, d, p) {
-  ctx.save(); const img = IMG[p.img]; if (p.crop) { const [sx, sy, sw, sh] = p.crop; const z = key(p.z || [[0, 1], [d, 1.08]], t);
+  ctx.save(); punch(ctx, p); const img = IMG[p.img]; if (p.crop) { const [sx, sy, sw, sh] = p.crop; const z = key(p.z || [[0, 1], [d, 1.08]], t);
     const s = Math.max(W / sw, H / sh) * z; const cx = sx + sw / 2, cy = sy + sh / 2; ctx.translate(W / 2, H / 2); ctx.scale(s, s); ctx.drawImage(img, -cx, -cy); }
   else kenBurns(ctx, img, t, d, p.kb); ctx.restore();
   if (p.dark) darken(ctx, p.dark); vignette(ctx, 0.45); overlays(ctx, t, d, p); if (p.credit) credit(ctx, p.credit);
