@@ -109,7 +109,7 @@ function build(T) {
 
   // ===== CH6 =====
   add(s('P031') - 3.2, 'chapter', { n: 6, title: 'May 29, 2020' });
-  { const im = pick('spill_ambarnaya', 'spill_esa'); if (im) add(s('P031'), 'photo', ph(im, { kb: { z: [1.0, 1.12] }, cold: 0, over: [{ type: 'count', from: 0, to: 21000, suf: ' T', label: 'OF DIESEL SPILLED', y: 560, at: L('P031', 'diesel') - 0.8 }, { type: 'note', text: 'SATELLITE VIEW · COPERNICUS SENTINEL-2 · 2020', at: 0.3 }] }));
+  { const im = pick('spill_esa'); if (im) add(s('P031'), 'sat', ph(im, { crop: [1320, 60, 1200, 675], z: [[0, 1.04], [12, 1.15]], dark: 0.1, over: [{ type: 'count', from: 0, to: 21000, suf: ' T', label: 'OF DIESEL SPILLED', y: 560, at: L('P031', 'diesel') - 0.8 }, { type: 'note', text: 'SATELLITE VIEW · COPERNICUS SENTINEL-2 · 2020', at: 0.3 }] }));
     else add(s('P031'), 'stats', { img: 'pano', credit: cr('pano'), head: '29 MAY 2020 · POWER PLANT FUEL TANK', items: [{ pre: '~', v: 21000, suf: ' T', label: 'OF DIESEL INTO SOIL AND RIVERS', at: L('P031', 'diesel') - 0.8, size: 190 }] }); }
   add(s('P032'), 'versus', { title: 'WHAT CAUSED IT?', cards: [{ who: 'THE COMPANY (FIRST)', text: '"The supports sank because the permafrost thawed."', color: C('orange'), at: 0.6, src: 'NTEK / Nornickel, 2020' }] });
   add(s('P033'), 'versus', { title: 'WHAT THE INVESTIGATIONS FOUND', cards: [

@@ -12,7 +12,7 @@ for k, x in sel.items():
     artist = latin(re.sub(r'\s+', ' ', x['artist']).strip()) or 'unknown'
     lic = x['lic'] if x['lic'] != 'Attribution' else 'Attribution (ESA/Copernicus)'
     cred[k] = dict(title=x['title'], page=x['page'], artist=artist, license=lic,
-                   short=f"Photo: {artist[:40]} · {lic} · Wikimedia Commons" if 'Copernicus' not in x['title'] and 'Sentinel' not in x['desc'] else f"Contains modified Copernicus Sentinel data · {lic} · Wikimedia Commons")
+                   short=f"Photo: {artist[:40]} · {lic} · Wikimedia Commons" if not any(s in x['title'] + x['desc'] + x['artist'] for s in ('Copernicus', 'Sentinel')) else f"Contains modified Copernicus Sentinel data · {lic} · Wikimedia Commons")
 json.dump(cred, open('assets/credits.json', 'w'), indent=1)
 lines = ['# EP01 credits (all free licences). Paste the list into the YouTube description.', '']
 for k, c in cred.items(): lines.append(f"- {c['title'][5:]} — {c['artist']} — {c['license']} — {c['page']}")

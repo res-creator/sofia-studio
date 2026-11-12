@@ -4,8 +4,10 @@
 - Typical house in Norilsk 01.jpg — Igorevich — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Typical_house_in_Norilsk_01.jpg
 - Typical house in Norilsk 02.jpg — Igorevich — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Typical_house_in_Norilsk_02.jpg
 - Typical house in Norilsk 03.jpg — Igorevich — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Typical_house_in_Norilsk_03.jpg
+- Snowdrifts in Norilsk.jpg — Andrey Romanenko — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Snowdrifts_in_Norilsk.jpg
 - A car under snow in Norilsk.jpg — Andrey Romanenko — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:A_car_under_snow_in_Norilsk.jpg
 - Thawing permafrost in Norilsk, Russia (Copernicus).jpg — European Union, Copernicus Sentinel-2 imagery — Attribution (ESA/Copernicus) — https://commons.wikimedia.org/wiki/File:Thawing_permafrost_in_Norilsk,_Russia_(Copernicus).jpg
+- Diesel oil spill in Arctic Circle.jpg — European Union , Copernicus Sentinel-2 imagery — Attribution (ESA/Copernicus) — https://commons.wikimedia.org/wiki/File:Diesel_oil_spill_in_Arctic_Circle.jpg
 - Norilsk Kirova St.jpg — Igorevich — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Norilsk_Kirova_St.jpg
 - Norilsk Lomonosova St.jpg — Igorevich — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Norilsk_Lomonosova_St.jpg
 - Norilsk Talnah.jpg — Igorevich — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Norilsk_Talnah.jpg

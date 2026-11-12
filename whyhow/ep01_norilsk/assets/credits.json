@@ -27,6 +27,13 @@
   "license": "CC BY-SA 3.0",
   "short": "Photo: Igorevich \u00b7 CC BY-SA 3.0 \u00b7 Wikimedia Commons"
  },
+ "snowdrifts": {
+  "title": "File:Snowdrifts in Norilsk.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Snowdrifts_in_Norilsk.jpg",
+  "artist": "Andrey Romanenko",
+  "license": "CC BY-SA 3.0",
+  "short": "Photo: Andrey Romanenko \u00b7 CC BY-SA 3.0 \u00b7 Wikimedia Commons"
+ },
  "car_snow": {
   "title": "File:A car under snow in Norilsk.jpg",
   "page": "https://commons.wikimedia.org/wiki/File:A_car_under_snow_in_Norilsk.jpg",
@@ -38,6 +45,13 @@
   "title": "File:Thawing permafrost in Norilsk, Russia (Copernicus).jpg",
   "page": "https://commons.wikimedia.org/wiki/File:Thawing_permafrost_in_Norilsk,_Russia_(Copernicus).jpg",
   "artist": "European Union, Copernicus Sentinel-2 imagery",
+  "license": "Attribution (ESA/Copernicus)",
+  "short": "Contains modified Copernicus Sentinel data \u00b7 Attribution (ESA/Copernicus) \u00b7 Wikimedia Commons"
+ },
+ "spill_esa": {
+  "title": "File:Diesel oil spill in Arctic Circle.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Diesel_oil_spill_in_Arctic_Circle.jpg",
+  "artist": "European Union , Copernicus Sentinel-2 imagery",
   "license": "Attribution (ESA/Copernicus)",
   "short": "Contains modified Copernicus Sentinel data \u00b7 Attribution (ESA/Copernicus) \u00b7 Wikimedia Commons"
  },
