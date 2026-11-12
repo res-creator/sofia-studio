@@ -1,4 +1,4 @@
-P001 0.947 replace: fifty -> 50 | replace: twenty -> 20
+P001 0.946 replace: fifty -> 50 | replace: twenty -> 20
 P002 0.784 replace: one hundred and seventy four thousand -> 174 000 | replace: three hundred -> 300
 P002B 0.882 replace: twenty twenty -> 2020 | replace: twenty one thousand -> 21 000
 P002C 1.000 
