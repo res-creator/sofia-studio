@@ -6,7 +6,8 @@
 const path = require('path'), fs = require('fs'), { spawn, execFileSync } = require('child_process');
 const K = require('./core'); const S = require('./scenes'); const X = require('./xsec');
 const V = require('./video');
-const SC = { ...S, xsec: X.xsec, siphon: X.siphonCloseup, examples: X.examples };
+const S2 = require('./scenes2');
+const SC = { ...S, ...S2, xsec: X.xsec, siphon: X.siphonCloseup, examples: X.examples };
 const [, , EPD, MODE, ...ARGS] = process.argv; const EP = path.resolve(EPD);
 const TL = JSON.parse(fs.readFileSync(path.join(EP, 'timeline.json'))); const WORDS = JSON.parse(fs.readFileSync(fs.existsSync(path.join(EP, 'words_script.json')) ? path.join(EP, 'words_script.json') : path.join(EP, 'words.json')));
 const norm = s => s.toLowerCase().replace(/[^a-z0-9']/g, '');

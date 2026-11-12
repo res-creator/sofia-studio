@@ -49,6 +49,12 @@ function overlays(ctx, t, d, p) {
       chip(ctx, o.text, o.x, o.y, { size: o.size || 38, align: o.align || 'center', bg: o.bg, color: o.color2 }); ctx.restore(); }
     else if (o.type === 'tag') coordTag(ctx, o.text, o.x, o.y, a);
     else if (o.type === 'lower') lower(ctx, t, o, a);
+    else if (o.type === 'timer') { const u = clamp(seg(t, at, at + (o.dur || 3))); const sec = lerp(o.from || 0, o.to, E.inOut(u)); const mm = Math.floor(sec / 60), ss = Math.floor(sec % 60);
+      ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = 'rgba(11,20,38,0.78)'; rr(ctx, W - 330, 40, 290, 86, 8); ctx.fill(); ctx.fillStyle = C.red; ctx.beginPath(); ctx.arc(W - 296, 83, 12 * (0.6 + 0.4 * Math.abs(Math.sin(t * 3))), 0, 7); ctx.fill();
+      text(ctx, String(mm).padStart(2, '0') + ':' + String(ss).padStart(2, '0'), W - 60, 104, { size: 60, font: F.monoB, align: 'right', color: C.cream }); ctx.restore(); }
+    else if (o.type === 'thermo') { const v = o.v; ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = 'rgba(11,20,38,0.78)'; rr(ctx, 40, 40, 250, 86, 8); ctx.fill();
+      ctx.fillStyle = C.cream; rr(ctx, 64, 54, 18, 58, 9); ctx.fill(); ctx.fillStyle = v < 0 ? C.ice : C.red; rr(ctx, 67, 54 + 58 * (v < 0 ? 0.65 : 0.2), 12, 58 * (v < 0 ? 0.35 : 0.8), 6); ctx.fill(); ctx.beginPath(); ctx.arc(73, 112, 14, 0, 7); ctx.fill();
+      text(ctx, (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(v) + '°C', 270, 104, { size: 54, font: F.head, align: 'right', color: C.cream }); ctx.restore(); }
     else if (o.type === 'note') text(ctx, o.text, o.x || 48, o.y || 60, { size: o.size || 24, font: F.monoB, color: o.color || C.cream, alpha: a * 0.9, shadow: 8, align: o.align });
     else if (o.type === 'ring') { const u = E.out(clamp(seg(t, at, at + 0.7))); ctx.save(); ctx.globalAlpha = a; ctx.strokeStyle = o.color || C.yellow; ctx.lineWidth = 6; ctx.beginPath(); ctx.ellipse(o.x, o.y, o.rx, o.ry, 0, -Math.PI / 2, -Math.PI / 2 + u * Math.PI * 2); ctx.stroke(); ctx.restore(); }
   }

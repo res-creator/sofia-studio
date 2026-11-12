@@ -16,3 +16,8 @@ whyhow/*/v2/mix.wav
 whyhow/*/v3/video_silent.mp4*
 whyhow/*/v3/mix.wav
 whyhow/*/v3/*.log
+whyhow/ep02_yakutsk/voice_raw/
+whyhow/ep02_yakutsk/voice/*.wav
+whyhow/ep02_yakutsk/*.log
+whyhow/ep02_yakutsk/video_silent.mp4*
+whyhow/ep02_yakutsk/mix.wav
