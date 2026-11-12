@@ -1,7 +1,7 @@
 # EP01 upload kit — How It's Run
 
 **File:** `v2/norilsk_built_on_ice_v2.mp4` (1920×1080, 30 fps, ~16:55, −14 LUFS)
-**Thumbnail:** `v2/norilsk_cover_v2.jpg` (night block, warm windows, thawing ground, −53°C) + `norilsk_cover_B.jpg` → YouTube "Test & compare"
+**Thumbnail:** `v2/norilsk_cover_final_1.jpg` (NORILSK · −53°C · BUILT ON ICE) + `v2/norilsk_cover_final_2.jpg` (NORILSK · −53°C · WHY DON'T THEY SINK?) → YouTube "Test & compare". Illustrations made with an AI image generator by the owner.
 **Subtitles:** `v2/norilsk_subtitles_en_v2.srt` (English)
 
 ## Title
