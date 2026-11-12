@@ -1,0 +1,48 @@
+P001 0.947 replace: fifty -> 50 | replace: twenty -> 20
+P002 0.784 replace: one hundred and seventy four thousand -> 174 000 | replace: three hundred -> 300
+P002B 0.882 replace: twenty twenty -> 2020 | replace: twenty one thousand -> 21 000
+P002C 1.000 
+P003 0.944 replace: norilsk -> norreelsk | replace: ten -> 10
+P004 0.935 replace: taymyr -> timur | replace: sixty nine -> 69
+P005 0.911 replace: eight -> 8 | replace: twenty seven -> 27 | replace: fifty three -> 53 | replace: six -> 6
+P006 0.973 replace: forty percent -> 40
+P007 0.870 replace: nineteen thirty five -> 1935 | replace: norillag -> norilog | replace: twenty one -> 21 | replace: four hundred thousand -> 400 000 | replace: sixteen thousand -> 16 000
+P008 1.000 
+P009 1.000 
+P010 1.000 
+P011 1.000 
+P012 1.000 
+P013 0.964 replace: thirty -> 30 | replace: twenty -> 20 | delete: stone -> 
+P014 0.883 replace: nineteen thirty seven -> 1937 | replace: nineteen forty -> 1940 | replace: thirty -> 30
+P015 0.984 replace: fifteen -> 15
+P016 1.000 
+P017 0.940 replace: two -> 2 | replace: one -> 1 | replace: one -> 1
+P018 1.000 
+P019 1.000 
+P020 1.000 
+P021 1.000 
+P022 0.945 replace: storeys -> stories | replace: nineteen eighties -> 1980s
+P023 1.000 
+P024 1.000 
+P025 0.947 replace: ten -> 10 | replace: two thousands -> 2000s | replace: nineteen forties -> 1940s
+P026 0.878 replace: nineteen seventies -> 1970s | replace: twenty tens -> 2010s | replace: one point four -> 1 4 | replace: nineteen seventy nine -> 1979
+P027 0.860 replace: nineteen sixties -> 1960s | replace: fifteen percent -> 15 | replace: twenty thirteen -> 2013 | replace: seventies -> 70s | replace: eighties -> 80s | replace: twenty one percent -> 21
+P028 0.950 replace: twenty twenty -> 2020 | replace: twenty fifty -> 2050
+P029 0.750 delete: and ->  | replace: twenty tens -> 2010s | replace: three hundred -> 300 | replace: a hundred -> 100 | replace: five thousand -> 5 000 | insert:  -> in almost 50 buildings 5 | replace: almost fifty buildings five and nine storeys -> 9 stories | replace: sixties -> 60s | replace: eighties -> 80s
+P030 0.887 replace: sixty percent -> 60 | replace: twenty sixteen -> 2016 | replace: thirty five percent -> 35 | replace: and talnakh -> until now | replace: twenty twenty -> 2020
+P031 0.882 replace: twenty ninth -> 29th | replace: twenty twenty -> 2020 | replace: twenty one thousand -> 21 000
+P032 0.978 replace: nornickel -> nornical
+P033 0.968 replace: nornickel -> nornikal | replace: twenty nineteen -> 2019
+P034 0.833 replace: twenty twenty one -> 2021 | replace: nornickel -> nornikol | replace: one hundred and forty six -> 146 | replace: two -> 2
+P035 1.000 
+P036 0.979 replace: thermosiphon -> thermocyphon
+P037 1.000 
+P038 1.000 
+P039 0.825 replace: thermosiphons -> thermocyphins | replace: a hundred and twenty thousand -> 120 000 | replace: qinghai -> king high | replace: five hundred and fifty -> 550
+P040 0.865 replace: twenty nineteen -> 2019 | replace: twenty twenty -> 2020 | replace: twenty twenty four -> 2024 | replace: twenty thirty five -> 2035
+P041 0.878 replace: twenty twenty one -> 2021 | replace: nornickel -> nornical | replace: and nornickel -> nornical | replace: a hundred and sixty five -> 165
+P042 1.000 
+P043 1.000 
+P044 0.915 replace: twenty fifty -> 2050 | replace: four -> 4 | replace: seventy percent -> 70
+P044B 0.914 replace: thirty -> 30 | replace: twenty -> 20 | replace: ten -> 10
+P045 1.000 

@@ -11,7 +11,7 @@ Thumbnail text: **BUILT ON ICE** (photo of Norilsk blocks on top, blue cross-sec
 
 *Black → wind sound → slow push-in on a Commons photo of Norilsk panel blocks in snow. Counter: −53°C.*
 
-**P001** It's the middle of winter. The sun hasn't risen for weeks. Outside, the air can drop to minus fifty. Inside the apartment blocks, it's plus twenty. And under every one of those blocks, the ground is frozen solid. [1][4]
+**P001** Winter in the Arctic. The sun hasn't risen for weeks. Outside, the air can drop to minus fifty. Inside the apartment blocks, it's plus twenty. And under every one of those blocks, the ground is frozen solid. [1][4]
 
 *Cut the ground open under the photo: ice-blue layer, piles appear.*
 
