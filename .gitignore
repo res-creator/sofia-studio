@@ -11,3 +11,5 @@ whyhow/*/footage/*.mp4
 whyhow/*/v2/voice_raw/
 whyhow/*/v2/voice/*.wav
 whyhow/*/v2/*.log
+whyhow/*/v2/video_silent.mp4*
+whyhow/*/v2/mix.wav
