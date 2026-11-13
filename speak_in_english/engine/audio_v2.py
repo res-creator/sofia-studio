@@ -386,6 +386,28 @@ if EPN in ("rich", "busy", "avoidparty", "tour", "splitbill", "photo"):  # batch
             t = T(0.13); f = 440 * 2 ** ((m - 69) / 12); put(y, np.sign(np.sin(2*np.pi*f*t)) * 0.35 * np.minimum((0.13 - t)*120, 1), k*0.13, 0.5)
         return norm(lp(y, 4000), 0.55)
     SFX.update(ring=_ring(), doorbell=_doorbell(), cheer=_cheer(), vroom=_vroom(), chirp=_chirp(), toy=_toy())
+if EPN == "accent":  # office kitchen: parrot squawk, foot stomp, letters cracking (own rng, so other episodes mix exactly as before)
+    _q = np.random.default_rng(44)
+    def _squawk():
+        tt = T(0.22); f = 1700 + 900*np.sin(np.pi*tt/0.22) + 300*np.sin(2*np.pi*38*tt); ph = 2*np.pi*np.cumsum(f)/SR
+        x = (np.sign(np.sin(ph))*0.4 + np.sin(2*ph)*0.4) + 0.25*bp(_q.standard_normal(len(tt)), 2000, 6000)
+        return norm(bp(x, 900, 7000)*np.sin(np.pi*tt/0.22)**0.6, 0.55)
+    def _stomp():
+        tt = T(0.3); x = np.sin(2*np.pi*np.cumsum(55 + 90*np.exp(-tt*30))/SR)*np.exp(-tt*16) + 0.5*lp(_q.standard_normal(len(tt)), 1500)*np.exp(-tt*40)
+        return norm(np.tanh(2*x), 0.8)
+    def _crack():
+        y = np.zeros(int(0.5*SR))
+        for k_ in range(9): tt = T(0.03); put(y, hp(_q.standard_normal(len(tt)), 1500)*np.exp(-tt*120), k_*0.045 + _q.uniform(0, 0.02), 0.5 + 0.5*_q.uniform())
+        tt = T(0.25); put(y, lp(_q.standard_normal(len(tt)), 800)*np.exp(-tt*25), 0.0, 0.5)
+        return norm(y, 0.6)
+    SFX.update(squawk=_squawk(), stomp=_stomp(), crack=_crack())
+    from scipy.signal import resample
+    _P = TL["cfg"]["pitch"]
+    for i_, e_ in enumerate(TL["cfg"]["parrot"]):   # the parrot repeats Hugo's last word: his own voice, sped up and pitched up
+        x_, _sr = sf.read(f"eps/{EPN}/vo/{e_['src']}.wav"); x_ = x_[int(e_["a"]*_sr):int(e_["b"]*_sr)]
+        x_ = resample(x_, int(len(x_)/_P)); x_ = bp(x_, 500, 9000); n_ = int(0.02*SR); x_[:n_] *= np.linspace(0, 1, n_); x_[-n_:] *= np.linspace(1, 0, n_)
+        SFX[f"parrot{i_}"] = norm(x_, 0.62)
+        TL["sfx"].append(dict(n=f"parrot{i_}", t=e_["t"], g=1.0))
 def note(m, key=0): return 440 * 2 ** ((m + key - 69) / 12)
 def pluck(f, d, bright=1.0):
     t = T(d); ph = 2*np.pi*f*t
@@ -495,7 +517,7 @@ if EPN == "party":
         seg = (full*op + muff*(1 - op)) * g
         seg *= np.minimum(1, np.arange(n)/(0.03*SR)) * np.minimum(1, (n - np.arange(n))/(0.12*SR))
         put(music, seg, s0, 1.0)
-elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "teacher", "pretend", "avoidparty", "tour"):
+elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "teacher", "pretend", "avoidparty", "tour", "accent"):
     # cheerful London stroll: pizzicato, walking bass, glockenspiel, brushes
     bpm = 116; b = 60/bpm; K = 0
     def pizz(f, d=0.35):
@@ -649,7 +671,10 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+if EPN == "accent":  # answers4 rubric (no levels): music off after the parrot's "MINUTE!" (the beat before the Russian twist) until the moral
+    c2e = [x for x in TL["scenes"] if x["id"] == "o4"][0]["e"] - 0.3; c2n = sp["moral"]["t"]
+else:
+    C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause
