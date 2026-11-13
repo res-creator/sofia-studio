@@ -6,8 +6,8 @@
 const path = require('path'), fs = require('fs'), { spawn, execFileSync } = require('child_process');
 const K = require('./core'); const S = require('./scenes'); const X = require('./xsec');
 const V = require('./video');
-const S2 = require('./scenes2');
-const SC = { ...S, ...S2, xsec: X.xsec, siphon: X.siphonCloseup, examples: X.examples };
+const S2 = require('./scenes2'); const S3 = require('./scenes3');
+const SC = { ...S, ...S2, ...S3, xsec: X.xsec, siphon: X.siphonCloseup, examples: X.examples };
 // scenes that do not draw overlays themselves get them drawn on top when p.over is set
 for (const n of ['stats', 'split', 'bars', 'ratio', 'calendar', 'thermo', 'countdown', 'mythq', 'compare', 'ring', 'river', 'district', 'shaft', 'frost', 'vapour']) if (SC[n]) { const f = SC[n]; SC[n] = (ctx, t, d, p) => { f(ctx, t, d, p); if (p.over) S.overlays(ctx, t, d, p); }; }
 const [, , EPD, MODE, ...ARGS] = process.argv; const EP = path.resolve(EPD);

@@ -1,0 +1,130 @@
+# EP03 credits — paste into the YouTube description / pinned comment.
+
+Photos (Wikimedia Commons):
+- Laguna di Venezia MOSE 001.JPG — Janericloebe, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Laguna_di_Venezia_MOSE_001.JPG
+- Mose Punta Sabbioni - Venice.jpg — Marrabbio2, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Mose_Punta_Sabbioni_-_Venice.jpg
+- MOSE Project Venice from the air.jpg — MOSE Project Venice from the air, CC BY-SA 3.0, via Wikimedia Commons (credit author named on file page) — https://commons.wikimedia.org/wiki/File:MOSE_Project_Venice_from_the_air.jpg
+- MOSE in operation in the Venice Lagoon.jpg — Contains modified Copernicus Sentinel data [2020] / European Union, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:MOSE_in_operation_in_the_Venice_Lagoon.jpg
+- MOSE project barge.jpg — Abxbay, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:MOSE_project_barge.jpg
+
+NASA imagery (public domain; no endorsement implied):
+- iss014e17346 — Image: NASA/JSC (ISS Expedition 14 crew) — https://images.nasa.gov/details/iss014e17346
+- Venice, Italy & the Alps from the Shuttle KidSat Camera — Image: NASA/JPL — https://images.nasa.gov/details/PIA00546
+- Venice, Italy — Image: NASA/GSFC/METI/ERSDAC/JAROS, and U.S./Japan ASTER Science Team — https://images.nasa.gov/details/PIA03860
+- Earth Observations taken by the Expedition 39 Crew — Image: NASA/JSC (Koichi Wakata, ISS Expedition 39) — https://images.nasa.gov/details/iss039e019482
+
+Stock video and photos (Pixabay Content License / Coverr license, free for commercial use):
+- Drone flight over the Riva degli Schiavoni and St Mark's with turquoise lagoon and boats — alp1989 — https://pixabay.com/videos/id-263281/
+- From a boat on green lagoon water toward the low Venice skyline — Kmeel_com — https://pixabay.com/videos/id-135426/
+- Water-level shot of choppy Grand Canal water, palazzo with red-awninged arches — JustSomeDutchDude — https://pixabay.com/videos/id-8076/
+- Tilt across statues and arches of the Doge's Palace courtyard facade — caelan — https://pixabay.com/videos/id-30123/
+- Long telephoto of the St Mark's waterfront, campanile and Doge's Palace with the Alps behind — detait — https://pixabay.com/videos/id-212268/
+- Low-angle move past an ornate street lamp toward the St Mark's campanile and Procuratie — Kmeel_com — https://pixabay.com/videos/id-86633/
+- Walking through a dense crowd into Piazza San Marco toward the basilica facade — caelan — https://pixabay.com/videos/id-28200/
+- Covered gondola tied between wooden poles next to a wooden pier — caelan — https://pixabay.com/videos/id-48682/
+- Heavy rain over the Grand Canal seen from under an arch with a lamp and mooring poles — Alexandra_Koch — https://pixabay.com/videos/id-50095/
+- Grand Canal from the Rialto with gondola, vaporetti and moored boats — Kmeel_com — https://pixabay.com/videos/id-87417/
+- Camera at water level on the fondamenta, waves of the Grand Canal lapping, palazzi opposite — caelan — https://pixabay.com/videos/id-51129/
+- Calm lagoon with small boats and wooden fishing huts on stilts — Kmeel_com — https://pixabay.com/videos/id-86008/
+- Dilapidated fishermen's house on stilts in the open lagoon — MarcelBM — https://pixabay.com/photos/ailing-house-water-house-decay-3626492/
+- Aerial flyover of lagoon fish farms and salt marsh banks — Kmeel_com — https://pixabay.com/videos/id-68518/
+- Red sunset over flat lagoon water with lone wooden channel markers — Kmeel_com — https://pixabay.com/videos/id-68741/
+- Canal in heavy fog, covered boats and arcaded houses reflected — Kmeel_com — https://pixabay.com/videos/id-114075/
+- Motorboat leaving a foaming wake on the lagoon, Venice skyline behind — Marjonhorn — https://pixabay.com/photos/boat-lake-venice-italy-city-6709211/
+- Camera moves from a dark archway to the ornate Renaissance facade of the Doge's Palace courtyard — caelan — https://pixabay.com/videos/id-30121/
+- Pan across the gilded pinnacles and statues of St Mark's Basilica facade — caelan — https://pixabay.com/videos/id-51126/
+- Painting attributed to Canaletto: Venetian canal with boats and palazzi (18th c., public domain artwork) — 12019 — https://pixabay.com/photos/giovanni-canaletto-landscape-art-84948/
+- Glassblower working molten glass in a flame, close-up — DistillVideos — https://pixabay.com/videos/id-45/
+- Gothic palazzi on the Grand Canal with gondolas moored — lenalindell20 — https://pixabay.com/photos/venice-italy-architecture-palace-2927570/
+- Wide calm canal by the Arsenale brick walls — jarmoluk — https://pixabay.com/photos/venice-channel-travel-architecture-2846068/
+- Rowers in a red regatta boat pull hard on a canal, palazzo behind — Javiki — https://pixabay.com/videos/id-44564/
+- Molino Stucky brick mill on Giudecca seen across the water — Sign_G — https://pixabay.com/videos/id-343155/
+- Bird's-eye view over dense terracotta rooftops of Venice — anncapictures — https://pixabay.com/photos/venice-houses-birds-eye-view-2928217/
+- People cross a small brick bridge over a side canal between old houses — caelan — https://pixabay.com/videos/id-51130/
+- Brick bridge over a side canal, gondola gliding under it, boat moored — imranshakir8089 — https://pixabay.com/videos/id-252638/
+- Panorama over red rooftops to the Giudecca canal with a boat passing — Kmeel_com — https://pixabay.com/videos/id-125350/
+- Canal lined with faded pink palazzi whose arcades stand right in the water, small boats moored — caelan — https://pixabay.com/videos/id-28488/
+- Lagoon at dusk with old wooden piles standing in calm water — joshemite — https://pixabay.com/videos/id-210375/
+- Tree being cut and falling in a snowy forest — max_bbb — https://pixabay.com/videos/id-15104/
+- Gondola among many wooden poles in green lagoon water, San Giorgio behind — JustSomeDutchDude — https://pixabay.com/videos/id-8074/
+- Golden larches on a mountain slope — adege — https://pixabay.com/videos/id-312255/
+- Static shot of stacked wood/timber piles in a storage warehouse —  — https://coverr.co/videos/woodpiles-in-storage-jioqzosyer
+- Row of gondolas rocking among tall wooden mooring poles, San Giorgio behind — Kmeel_com — https://pixabay.com/videos/id-86636/
+- Arcaded house with a restaurant right at the waterline of a canal — larahcv — https://pixabay.com/photos/italy-venice-europe-european-2420885/
+- POV from inside a gondola moving along a brick-walled canal toward a small bridge — spalla67 — https://pixabay.com/videos/id-41832/
+- Rialto bridge with people on top, mooring poles and boats — Kmeel_com — https://pixabay.com/videos/id-86739/
+- Wide view down the Grand Canal to the domes of Santa Maria della Salute — Stuchy — https://pixabay.com/videos/id-13566/
+- Rooftops with the domes of the Salute behind — Sign_G — https://pixabay.com/videos/id-351203/
+- Golden autumn larch forest above a rocky mountain stream — adege — https://pixabay.com/videos/id-328742/
+- Autumn larches swaying in wind against mountains — adege — https://pixabay.com/videos/id-311442/
+- Drone along a forest track lined with stacked cut logs — DrohnenpilotDeutschland — https://pixabay.com/videos/id-230494/
+- Gondolas bobbing at moorings on the Grand Canal, palazzi behind — Kmeel_com — https://pixabay.com/videos/id-87410/
+- Rain over the Grand Canal opposite Palazzo Cavalli-Franchetti, boats passing, gull on a pole — Alexandra_Koch — https://pixabay.com/videos/id-82917/
+- Sunset over the lagoon with silhouetted wooden markers, from Lido — charlemagne — https://pixabay.com/photos/lido-venice-clouds-in-the-evening-2636652/
+- Seagulls perched on rows of wooden mooring poles in thick fog, arcaded houses behind — Kmeel_com — https://pixabay.com/videos/id-137379/
+- Purple and orange sunset over the flat lagoon — Kmeel_com — https://pixabay.com/videos/id-68565/
+- Close tracking shot along a weathered wall of crumbling bricks and stone — Kmeel_com — https://pixabay.com/videos/id-86629/
+- Low-angle glide along a wall of irregular weathered stones and bricks — Kmeel_com — https://pixabay.com/videos/id-87419/
+- Wooden poles standing in the Grand Canal in front of white palazzi — TravelCoffeeBook — https://pixabay.com/photos/venice-boats-water-canal-europe-594614/
+- Grand Canal palazzo with clusters of wooden mooring piles and boats — DEZALB — https://pixabay.com/photos/italy-venice-grand-canal-palace-4586546/
+- Gondolas moored among wooden poles with the Rialto bridge behind — awsloley — https://pixabay.com/photos/venice-gondola-rialto-boat-water-4289726/
+- Walk through a shaded calle with a glimpse of the Rialto bridge at its end — caelan — https://pixabay.com/videos/id-28302/
+- Looking up between tall brick houses in a narrow calle — caelan — https://pixabay.com/videos/id-28489/
+- Tourists squeeze through a dark narrow calle — caelan — https://pixabay.com/videos/id-28208/
+- Vaporetto stop beside the arcaded Fabbriche Nuove at dusk, water taxi passing — 2427999 — https://pixabay.com/videos/id-10662/
+- Grand Canal from the Accademia bridge, water taxis and vaporetto toward the Salute — dirkcbsmith — https://pixabay.com/videos/id-186811/
+- Vaporetto and boats on the Grand Canal by the Salute — NeilMorrell — https://pixabay.com/photos/venice-grand-canal-italy-canal-5090764/
+- Speedboat carving a wake on the lagoon with the Venice skyline behind — Kmeel_com — https://pixabay.com/videos/id-135428/
+- Busy Grand Canal near Rialto with vaporetti and taxis — IdaT — https://pixabay.com/photos/venice-grand-canal-boats-italy-6653201/
+- Blue work barge moored before old weathered houses on Murano — gmello — https://pixabay.com/photos/barge-murano-italy-canal-2390805/
+- Old man resting on a working cargo boat, black and white — chezbeate — https://pixabay.com/photos/old-man-boat-venezia-worker-old-1075180/
+- Close-ups of fish, scallops and langoustines on ice at a seafood stall — vittoriobaroni — https://pixabay.com/videos/id-31272/
+- Side canal with small boats between weathered brick houses — caelan — https://pixabay.com/videos/id-28486/
+- Tilt up a narrow red-walled calle past a hanging trattoria sign — caelan — https://pixabay.com/videos/id-28205/
+- Water taxi speeding past the walls of San Michele cemetery island — travelspot — https://pixabay.com/photos/venice-cemetery-island-san-michele-4578432/
+- Gondolas and lamp in thick fog on a canal — cocoparisienne — https://pixabay.com/photos/gondola-canal-fog-mist-waterway-1035684/
+- Gondolier rowing on the Grand Canal past palazzi, other gondolas moored — libellule789 — https://pixabay.com/videos/id-172249/
+- Gondolas pass under a flower-decked bridge packed with tourists — caelan — https://pixabay.com/videos/id-28203/
+- Side canal with dark weathered facades and a footbridge — AlKalenski — https://pixabay.com/photos/canal-waterway-venice-buildings-9182536/
+- Old facades with peeling plaster, shutters and flower boxes — sontung57 — https://pixabay.com/photos/buildings-facade-windows-5941345/
+- Basin with boats and a construction crane by the water — user32212 — https://pixabay.com/photos/venice-lagoon-canal-grand-2274426/
+- Side canal with a yellow house, Italian flag and a gondola passing under a bridge — ghasoub — https://pixabay.com/videos/id-129015/
+- POV from a gondola bow gliding down a narrow canal between brick walls with a green waterline — spalla67 — https://pixabay.com/videos/id-41830/
+- Calle with graffiti-covered wall opening onto a canal, worn brick facades — wanderportraits — https://pixabay.com/videos/id-135346/
+- Brick archway into a backyard with crumbling brick facade — lenalindell20 — https://pixabay.com/photos/venice-heart-hearts-love-alley-2930442/
+- Sun rays through clouds over a calm sea and a breakwater at sunrise — edcangri — https://pixabay.com/videos/id-135776/
+- Piazza San Marco under acqua alta: the flooded square reflects the campanile and basilica — Peggychoucair — https://pixabay.com/photos/st-marks-square-st-marks-basilica-4755133/
+- Waves washing over the waterfront behind red-white barrier tape, San Giorgio silhouetted — PaulaKaspar — https://pixabay.com/photos/venice-floods-italy-flood-venetian-4647798/
+- Gondolas at sunrise in high water, San Giorgio Maggiore behind (tagged aqua alta) — Peggychoucair — https://pixabay.com/photos/gondolas-lagoon-venice-flood-4741067/
+- Near-empty Piazza San Marco with campanile and basilica, clouds racing — Septimiu — https://pixabay.com/videos/id-18190/
+- Flooded Piazzetta at dusk, columns of St Mark and St Theodore standing in water — mbcouto — https://pixabay.com/photos/venice-flooded-italia-2712848/
+- Doge's Palace facade mirrored in floodwater covering the pavement — Peggychoucair — https://pixabay.com/photos/facade-reflection-water-4727220/
+- Rotating shot down narrow stairs between damp, salt-stained walls — Kmeel_com — https://pixabay.com/videos/id-87412/
+- Close tracking along peeling pink plaster revealing rough wall underneath — Kmeel_com — https://pixabay.com/videos/id-114259/
+- Boarded-up blue house with chipped peeling paint (HDR processed) — 12019 — https://pixabay.com/photos/venice-italy-city-urban-old-1748643/
+- St Mark's waterfront and campanile from the water with a vaporetto — Eleatell — https://pixabay.com/photos/tower-lagoon-sea-venice-italy-7159842/
+- From a boat on choppy water toward the white Venice skyline with domes — Alexandra_Koch — https://pixabay.com/videos/id-50680/
+- Narrow street opening onto the white marble facade of St Mark's Basilica — caelan — https://pixabay.com/videos/id-28199/
+- Huge cruise ship looming behind moored gondolas — BarbeeAnne — https://pixabay.com/photos/venice-italy-cruise-ship-gondolas-2554244/
+- Passenger ferry and motorboat on the lagoon near Lido — garten-gg — https://pixabay.com/photos/to-travel-vacation-vacations-sea-4516152/
+- Crowded shopping calle with tourists, camera tilts up to old facades — caelan — https://pixabay.com/videos/id-28206/
+- Dense crowd of tourists walking through a narrow shopping street, hand-held — caelan — https://pixabay.com/videos/id-28303/
+- Tourists crowding the balustrade of the Rialto bridge — caelan — https://pixabay.com/videos/id-28299/
+- Laundry hanging across a dark narrow canal between tall houses — karlosiglesiasmontes — https://pixabay.com/photos/channel-venice-italy-4253498/
+- Colourful laundry hanging from windows on an old orange facade — lenalindell20 — https://pixabay.com/photos/laundry-window-clothesline-venice-2991652/
+- Narrow street of shops and posters, camera tilts up — caelan — https://pixabay.com/videos/id-28207/
+- Colourful Burano alley with laundry hanging and flowers — lenalindell20 — https://pixabay.com/photos/venice-italy-burano-island-2896591/
+- Pigeons and tourists in Piazza San Marco — StockSnap — https://pixabay.com/photos/st-mark%C3%A2-s-square-piazza-san-marco-2627501/
+- Tourists on a bridge photograph a side canal with a gondola — caelan — https://pixabay.com/videos/id-28487/
+- Gondolier rowing in golden mist, Salute silhouette behind — cocoparisienne — https://pixabay.com/photos/venice-italy-gondola-lagoon-1035632/
+- Grey gondolas between poles in dense fog — inanimalis — https://pixabay.com/photos/gondola-venezia-travel-italy-2242603/
+- Gondolas moored along the Riva in bright sun, stone pavement in foreground — Kmeel_com — https://pixabay.com/videos/id-124788/
+- Dark empty calle at night lit by a single wall lamp, slow walk forward — Kmeel_com — https://pixabay.com/videos/id-94978/
+- Foggy night passage under an arcade with glowing lamps — Kmeel_com — https://pixabay.com/videos/id-75100/
+- Grand Canal at blue hour with lit palazzi and reflections — xiSerge — https://pixabay.com/photos/grand-canal-buildings-houses-7469516/
+- Fireworks bursting over the lagoon, reflections on the water (Redentore festival) — Kmeel_com — https://pixabay.com/videos/id-125345/
+- Grand Canal near Rialto at sunset: two gondolas glide past moored boats and a crowded vaporetto crosses frame — GAPR86 — https://pixabay.com/videos/id-128984/
+- Night view with lamp, moored gondolas and the Salute across the water — SeanJang — https://pixabay.com/photos/venice-night-view-436932/
+
+Diagrams, maps, charts and animation: How It's Run (own work). Globe data: Natural Earth (public domain).
+Music and sound: own synthesis. Voice: synthetic (Kokoro TTS), script by How It's Run.

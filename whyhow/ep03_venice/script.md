@@ -26,7 +26,7 @@ Numbers in [brackets] point to SOURCES.md.
 
 **V007** Only locals knew where the safe channels were. To an invader, the lagoon was a maze. That made it the perfect place to hide, and later, the perfect place to trade. [1]
 
-**V007B** And it worked. For about eleven hundred years, Venice was an independent republic, ruled by an elected leader called the Doge. Its ships carried silk, spices, salt and glass between Europe and the East, and this city on mud became one of the richest places on Earth. [21]
+**V007B** It worked. For about eleven hundred years, Venice was an independent republic, ruled by an elected leader called the Doge. Its ships carried silk, spices, salt and glass between Europe and the East, and this city on mud became one of the richest places on Earth. [21]
 
 **V007C** Its shipyard, the Arsenal, was the biggest industrial site in Europe. At its peak, it is said to have employed around sixteen thousand people, and in wartime it could turn out close to one ship a day, centuries before the factory assembly line. [21]
 
@@ -130,7 +130,7 @@ Numbers in [brackets] point to SOURCES.md.
 
 **V036** When a big tide is coming, air is pumped in. The water is pushed out, the gates float up, and in about half an hour, a wall of steel separates the lagoon from the sea. [14]
 
-**V037** On the third of October, twenty twenty, the gates were raised for the first time to stop a real tide. And for the first time in centuries, the sea outside rose, and the city stayed dry. [14]
+**V037** On October the third, twenty twenty, the gates were raised for the first time to stop a real tide. And for the first time in centuries, the sea outside rose, and the city stayed dry. [14]
 
 **V038** By March twenty twenty-five, MOSE had been raised a hundred times. But it came very late, and very expensive: more than six billion euros, and every single raising costs hundreds of thousands more. [14][15]
 
