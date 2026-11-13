@@ -2681,3 +2681,30 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "kitchen3s" — rubric quick3s (~62 s). AMERICAN English (US kitchen). heroine = Jessica; answers spoken by the tip plate = Bella (us, 'tip')
+# rounds (Russian word drawn big + 3 s ticking timer, no voice; then the tip says the answer):
+#   01 ДУРШЛАГ → colander · 02 ТЁРКА → grater · 03 ПОЛОВНИК → ladle · 04 СКАЛКА → rolling pin
+#   05 ПРИХВАТКА → oven mitt · 06 СКОВОРОДКА → frying pan · БОНУС: КРЫШКА → lid
+EP["kitchen3s"] = dict(
+    title='Успей за 3 секунды: кухня', rubric='quick3s',
+    hook_title=[['6 ВЕЩЕЙ С КУХНИ', 'd'], ['ДУРШЛАГ', 'p'], ['УСПЕЕШЬ ЗА 3 СЕКУНДЫ?', 'd']],
+    cover_b='А ЗНАЕШЬ ПО-АНГЛИЙСКИ?',
+    absurd='На холодильнике кактус в поварском колпаке, который на каждом таймере всё сильнее потеет.',
+    comment_q='Сколько из шести успел?',
+    lines=[
+        ('hook_h', 'her', "[playfully] Quick! What's this in English?", 'Быстро! Как это по-английски?'),
+        ('hook', 'nar', 'Шесть вещей с кухни, три секунды на каждую. Считай баллы и пиши счёт в комменты.', ''),
+        ('t1_tip', 'tip', 'colander', ''),
+        ('t2_tip', 'tip', 'grater', ''),
+        ('t3_tip', 'tip', 'ladle', ''),
+        ('t4_tip', 'tip', 'rolling pin', ''),
+        ('t5_tip', 'tip', 'oven mitt', ''),
+        ('t6_tip', 'tip', 'frying pan', ''),
+        ('bonus', 'nar', 'Бонус: крышка, которую ищешь двадцать минут.', ''),
+        ('bonus_tip', 'tip', 'lid', ''),
+        ('end_h', 'her', "[sighing] Every lid... except the one I need.", 'Все крышки… кроме той, что нужна.'),
+        ('score', 'nar', 'Шесть из шести — шеф. Три — поварёнок. Ноль — заказываешь доставку.', ''),
+        ('outro', 'nar', 'Сохрани и проверь себя через неделю!', ''),
+        ('ask', 'nar', 'Сколько из шести успел? Пиши счёт в комменты!', ''),
+    ],
+)
