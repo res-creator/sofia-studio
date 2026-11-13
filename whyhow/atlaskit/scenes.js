@@ -213,7 +213,7 @@ function endscreen(ctx, t, d, p) {
   // YouTube end-screen element slots (left video 2 slots), channel name
   text(ctx, "HOW IT'S RUN", W / 2, 190, { size: 90, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.2) });
   text(ctx, 'Why the hardest places on Earth still work', W / 2, 250, { size: 36, font: F.bold, align: 'center', color: C.iceL, alpha: fade(t, 0.5) });
-  for (const [x, lab] of [[200, 'WATCH NEXT'], [1000, 'MORE FROM THE ARCTIC']]) { ctx.save(); ctx.globalAlpha = fade(t, 0.8); ctx.strokeStyle = hexA(C.iceL, 0.5); ctx.lineWidth = 3; ctx.setLineDash([10, 8]); rr(ctx, x, 380, 720, 405, 12); ctx.stroke(); ctx.restore();
+  for (const [x, lab] of [[200, 'WATCH NEXT'], [1000, p.right || 'MORE PLACES EXPLAINED']]) { ctx.save(); ctx.globalAlpha = fade(t, 0.8); ctx.strokeStyle = hexA(C.iceL, 0.5); ctx.lineWidth = 3; ctx.setLineDash([10, 8]); rr(ctx, x, 380, 720, 405, 12); ctx.stroke(); ctx.restore();
     text(ctx, lab, x + 360, 850, { size: 34, font: F.monoB, align: 'center', color: C.yellow, alpha: fade(t, 0.8) }); }
 }
 // ---------- satellite / labelled image ----------

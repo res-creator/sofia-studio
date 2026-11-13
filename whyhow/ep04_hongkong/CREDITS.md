@@ -1,0 +1,121 @@
+# EP04 credits — paste into the YouTube description / pinned comment.
+
+NASA imagery (public domain; no endorsement implied):
+- Earth observations taken by the STS-9 crew — Image: NASA (STS-9 crew) — https://images.nasa.gov/details/sts009-33-1276
+- Space Radar Image of Hong Kong, China — Image: NASA/JPL — https://images.nasa.gov/details/PIA01750
+
+Stock video and photos (Pixabay Content License, free for commercial use):
+- Low drone flight over densely packed Hong Kong Island towers toward the harbour and Kowloon — ImbaStock — https://pixabay.com/videos/id-246841/
+- Tilt-shift photo of a huge crowd on a pedestrian crossing among taxis — bluelightpictures — https://pixabay.com/photos/crowd-hong-kong-people-big-city-2612037/
+- Looking straight down a canyon of tightly packed towers onto a narrow road — blazejosh — https://pixabay.com/photos/skyline-cityscape-buildings-urban-4454108/
+- Slow drone rise over a wooded hillside revealing the Hong Kong Island skyline, Victoria Harbour and Kowloon — D-GM — https://pixabay.com/videos/id-192525/
+- Forest-covered rocky cliffs dropping into turquoise water — Simplyart4794 — https://pixabay.com/videos/id-78414/
+- Aerial of an empty white-sand beach under steep green hills — Simplyart4794 — https://pixabay.com/videos/id-86505/
+- From Lion Rock, a wall of Kowloon housing towers fills the plain below the forested slope — Simplyart4794 — https://pixabay.com/videos/id-84599/
+- Full-frame facade of hundreds of small balconies and windows — Paul_Henri — https://pixabay.com/photos/building-architecture-city-3677975/
+- Green mountain slope with a band of high-rises squeezed along the coast below — Simplyart4794 — https://pixabay.com/videos/id-80741/
+- Night view from a hill of a dense mass of lit residential towers — AndyLeungHK — https://pixabay.com/photos/hong-kong-cityscape-night-lights-6568224/
+- Drone over a bare granite ridge on Po Toi with sea and islands beyond — Simplyart4794 — https://pixabay.com/videos/id-83114/
+- Top-down view of a turquoise reservoir with wooded islets and a road dam — Simplyart4794 — https://pixabay.com/videos/id-79335/
+- Drone over a hiking trail winding along a green ridge to a white beach — Simplyart4794 — https://pixabay.com/videos/id-86503/
+- Aerial circling the Lion Rock head with hikers on top and city below — Simplyart4794 — https://pixabay.com/videos/id-84710/
+- Hikers on a hilltop looking out over hazy sea and islands — GormaKuma — https://pixabay.com/photos/hike-daylight-boats-active-4551148/
+- Drone over Deep Water Bay: a strip of apartment towers squeezed between the beach and a steep green mountain — D-GM — https://pixabay.com/videos/id-235365/
+- High-rises packed into a narrow coastal strip between hills and a bay — tee2tee — https://pixabay.com/photos/hong-kong-ocean-park-hong-kong-park-1432709/
+- Apartment towers lining the edge of forest above a sandy tidal bay — Simplyart4794 — https://pixabay.com/videos/id-76866/
+- Faded old tenement with enclosed balconies and painted signs — JimBear — https://pixabay.com/photos/hong-kong-old-hongkong-wall-3405877/
+- Selective-colour photo of a red-sailed junk with the grey skyline behind — moremilu — https://pixabay.com/photos/hong-kong-dragon-boat-asia-skyline-4339704/
+- Black-and-white grid of balconies and windows of old stacked flats — Paul_Henri — https://pixabay.com/photos/housewall-window-facade-building-3678938/
+- Narrow cluttered alley with old walk-up buildings and plants — Philippsaal — https://pixabay.com/photos/hong-kong-island-lamma-island-4093184/
+- Wide-angle upward view of a massive residential tower — teetasse — https://pixabay.com/photos/building-skyscraper-architecture-374442/
+- Drone above Central and Mid-Levels high-rises looking across Victoria Harbour to Kowloon — ImbaStock — https://pixabay.com/videos/id-246842/
+- Looking up past St John's Cathedral to the Cheung Kong Center and Bank of China Tower — Leung_Chung_Kwan — https://pixabay.com/videos/id-47469/
+- Timelapse of clouds over the CITIC Tower and neighbouring glass towers — RafterJr72 — https://pixabay.com/videos/id-34318/
+- Close drone pass along the facades of tightly spaced residential towers — Simplyart4794 — https://pixabay.com/videos/id-86719/
+- Low drone along a row of identical 40-storey housing towers above a road with a bus — Simplyart4794 — https://pixabay.com/videos/id-86717/
+- Facade of a residential tower as a dense grid of windows — Alexandra_Koch — https://pixabay.com/photos/apartment-china-big-city-skyscraper-583036/
+- Colour upward view of the stacked flats of the Monster Building around a sliver of sky — marsattacks — https://pixabay.com/photos/monster-building-monster-mansion-4486114/
+- Looking up between two walls of densely stacked flats with air conditioners — u_mba927emga — https://pixabay.com/photos/hongkong-city-building-sky-7994338/
+- Black-and-white upward view of the walls of the Monster Building courtyard — 12019 — https://pixabay.com/photos/hong-kong-city-urban-perspective-2568174/
+- Old flats with window air conditioners and laundry racks — nextvoyage — https://pixabay.com/photos/hong-kong-buildings-architecture-4736985/
+- Street in Central with tram tracks, scaffolded buildings and pedestrians — u_s0iw77zbfj — https://pixabay.com/videos/id-140072/
+- Tilt-shift timelapse of a large construction site with cranes and scaffolding — zbswdzh — https://pixabay.com/videos/id-73466/
+- Tilt-shift timelapse of tower cranes over a rising concrete structure — zbswdzh — https://pixabay.com/videos/id-73468/
+- Tilt-shift timelapse of a concrete pump boom over a construction pit — zbswdzh — https://pixabay.com/videos/id-73470/
+- Black-and-white looking up a tall residential tower facade — 12019 — https://pixabay.com/photos/hong-kong-china-apartment-102568/
+- Tilt-shift timelapse of trucks and cabins on a construction site — zbswdzh — https://pixabay.com/videos/id-73472/
+- Street canyon between two walls of old tenement flats — darkness_s — https://pixabay.com/photos/hongkong-apartment-city-urban-hk-5315479/
+- Low cloud rolling over the towers seen from above — AndyLeungHK — https://pixabay.com/photos/hong-kong-cloud-city-sky-4653432/
+- Rainy street with reflections and pedestrians under umbrellas — DesignOil — https://pixabay.com/photos/hongkong-street-rain-architecture-207240/
+- Empty rain-wet street glowing under streetlights at night — AndyLeungHK — https://pixabay.com/photos/hongkong-night-late-city-urban-2749655/
+- Elevated view over harbourfront construction and roads with the harbour behind — zbswdzh — https://pixabay.com/videos/id-51453/
+- Aerial along the High Island Reservoir sea dam armoured with concrete dolosse — Simplyart4794 — https://pixabay.com/videos/id-85910/
+- Traffic beside waterfront construction works and cranes, towers behind — zbswdzh — https://pixabay.com/videos/id-51454/
+- Dusk aerial over Central towers and the harbour as city lights come on — TungArt7 — https://pixabay.com/videos/id-191762/
+- Wide aerial over Victoria Harbour, a boat crossing toward the Hong Kong Island skyline under the Peak — ImbaStock — https://pixabay.com/videos/id-246840/
+- Aerial of a fast ferry cutting across Victoria Harbour with the Hong Kong Island skyline behind — ImbaStock — https://pixabay.com/videos/id-246838/
+- A Star Ferry crossing in front of the Wan Chai skyline and convention centre — AdamHillTravel — https://pixabay.com/photos/star-ferry-victoria-harbour-5403942/
+- A cargo barge crossing Victoria Harbour in front of the Hong Kong Island skyline — fifthplanett — https://pixabay.com/videos/id-205795/
+- A DHL cargo jet flying past a row of tall housing towers — AndyLeungHK — https://pixabay.com/photos/hongkong-airplane-travel-airport-2680861/
+- Crowded street of old tenements, signs and parked vans — teetasse — https://pixabay.com/photos/city-overfilled-closely-road-374416/
+- Elevated evening view of light-trail roads and buildings — GormaKuma — https://pixabay.com/photos/hong-kong-kowloon-city-evening-6603261/
+- A UPS jet about to land at the airport, towers in the background — AndyLeungHK — https://pixabay.com/photos/hongkong-airplane-travel-airport-2680864/
+- Night drone looking down between towers onto busy lit roads — TungArt7 — https://pixabay.com/videos/id-267744/
+- Airport aprons and parked planes on reclaimed land seen across the water — falco — https://pixabay.com/photos/hong-kong-airport-airport-china-1879477/
+- Symmetrical long corridor of the airport terminal — beludise — https://pixabay.com/photos/hongkong-airport-corridor-terminal-751596/
+- Ngong Ping 360 cable car cabin above the water with Tung Chung towers behind — tee2tee — https://pixabay.com/photos/hong-kong-lantau-island-hong-kong-1441383/
+- Aerial of a green island with a rocky sea stack in open sea — Simplyart4794 — https://pixabay.com/videos/id-85907/
+- Top-down aerial of a rocky islet with waves breaking around it — Simplyart4794 — https://pixabay.com/videos/id-86500/
+- High aerial over clusters of identical residential towers in a planned new town — Simplyart4794 — https://pixabay.com/videos/id-87194/
+- Drone over a dense block of residential and office towers, IFC and the harbour in the distance — ImbaStock — https://pixabay.com/videos/id-246845/
+- Cluster of slender residential towers on the Mid-Levels hillside — nextvoyage — https://pixabay.com/photos/city-the-skyscraper-architecture-3085516/
+- Old tenement building corner with stacked windows and signs — darkness_s — https://pixabay.com/photos/hong-kong-hk-hongkong-city-travel-5221804/
+- Looking up between old residential towers to a patch of blue sky — nextvoyage — https://pixabay.com/photos/architecture-outside-hong-kong-city-3251736/
+- Drone over rings of residential towers around podiums and roads — Simplyart4794 — https://pixabay.com/videos/id-87195/
+- Sloping old street with residents sitting by shopfronts — GormaKuma — https://pixabay.com/photos/street-hong-kong-city-life-china-6603351/
+- Black-and-white rows of tall estate towers — Gwen24 — https://pixabay.com/photos/hongkong-hk-building-2764438/
+- Aerial over Kowloon public housing towers packed beside a railway — bellergy — https://pixabay.com/videos/id-95227/
+- Aerial of a dense public-housing estate of identical slab towers beside a highway, hills behind — bellergy — https://pixabay.com/videos/id-2885/
+- A wall of identical estate towers rising behind a highway with a bus — DEZALB — https://pixabay.com/photos/china-hong-kong-skyscraper-1367554/
+- Aerial of a long row of identical tall residential towers in a new town — Simplyart4794 — https://pixabay.com/videos/id-86718/
+- Residential towers above a railway and station — blazejosh — https://pixabay.com/photos/apartment-hongkong-train-view-city-4478104/
+- Night crossing with crowds walking past double-decker buses — omarzahid — https://pixabay.com/videos/id-22207/
+- Daytime crossroads with pedestrians crossing below footbridges and shop signs — u_7bjg0hklgy — https://pixabay.com/videos/id-137017/
+- MTR platform with passengers walking beside a stopped train — u_s0iw77zbfj — https://pixabay.com/videos/id-140070/
+- MTR train speeding past a platform behind screen doors — u_s0iw77zbfj — https://pixabay.com/videos/id-140069/
+- Light Rail tram on a street with McDonald's and shop signs — AndyLeungHK — https://pixabay.com/photos/hongkong-railway-tram-hong-kong-2669874/
+- Busy street corner with crowds, a red minibus and big screens — omarzahid — https://pixabay.com/videos/id-21978/
+- MTR train at an elevated platform with screen doors — AndyLeungHK — https://pixabay.com/photos/hongkong-mtr-hong-kong-city-asian-2669871/
+- Blue double-decker tram passing old shop buildings — AndyLeungHK — https://pixabay.com/photos/hongkong-tram-asia-hong-kong-2677952/
+- Street with tram tracks, red taxis and pedestrians crossing between older shop buildings — MagicTV — https://pixabay.com/videos/id-116732/
+- Green-and-white Star Ferry at the pier — Manne1409 — https://pixabay.com/photos/hong-kong-ferry-ships-2440531/
+- Star Ferry crossing a harbour where the skyline is lost in fog — cegoh — https://pixabay.com/photos/victoria-harbour-ferry-waterfront-1273042/
+- Drone over Mid-Levels towers clinging to the hillside, harbour and outlying islands beyond — ImbaStock — https://pixabay.com/videos/id-246839/
+- People riding the covered Central–Mid-Levels outdoor escalator — parcogg — https://pixabay.com/photos/hongkong-city-the-public-4910239/
+- View from Victoria Peak down over packed Central and Mid-Levels towers to the harbour and Kowloon — DistillVideos — https://pixabay.com/videos/id-973/
+- Towers stacked up a green hillside beside the western harbour, ships at anchor — ImbaStock — https://pixabay.com/videos/id-246843/
+- Long-exposure night crowd blurring under Mong Kok neon — 10948287 — https://pixabay.com/photos/mong-kok-hong-kong-asia-street-3891202/
+- Mong Kok street with dense neon hotel and shop signs — 10948287 — https://pixabay.com/photos/mong-kok-hong-kong-hongkong-color-3876271/
+- Busy Mong Kok crossing at night under big billboards — 10948287 — https://pixabay.com/photos/mong-kok-hong-kong-kowloon-street-3866305/
+- Night street lit by vertical neon signs — maryaddison80 — https://pixabay.com/photos/hong-kong-neon-building-hong-kong-1748877/
+- Black-and-white photo of a scale model of the Kowloon Walled City's packed rooftops — GormaKuma — https://pixabay.com/photos/model-city-kowloon-city-kowloon-4554013/
+- High view over a dense spread of towers to the horizon — MrPrevedmedved — https://pixabay.com/photos/hong-kong-city-landscape-zdanie-4513149/
+- Top-down aerial photo of dense city blocks and rooftops — bellergy — https://pixabay.com/photos/city-landscape-buildings-street-4249180/
+- Crowd outside an old corner tenement building with shops — GormaKuma — https://pixabay.com/photos/afternoon-area-asia-asian-china-4551146/
+- Black-and-white market alley with a stallholder — GormaKuma — https://pixabay.com/photos/people-market-urban-stalls-5628637/
+- Market stall with hanging Chinese sausages and dried meats — darkness_s — https://pixabay.com/photos/hongkong-hk-salami-glossary-store-5300218/
+- Old Kowloon tenements with tailor shop signs and a 7-Eleven — falco — https://pixabay.com/photos/hong-kong-china-kowloon-1872927/
+- Aerial over a green reservoir with forested islands and a small dam bridge — Simplyart4794 — https://pixabay.com/videos/id-79505/
+- Timelapse of Victoria Harbour at dusk, the skyline lighting up — jeremy888 — https://pixabay.com/videos/id-17529/
+- Night drone over the Central waterfront and IFC with glowing roads — TungArt7 — https://pixabay.com/videos/id-267743/
+- Night hyperlapse over a container terminal with cranes, stacks and ships — bellergy — https://pixabay.com/videos/id-24255/
+- Double-decker tram on a neon-lit street at night — nextvoyage — https://pixabay.com/photos/hong-kong-night-city-cityscape-4046913/
+- Night aerial flight over lit streets and towers with traffic — bellergy — https://pixabay.com/videos/id-2860/
+- Drone over Lion Rock ridge with dense Kowloon high-rises spreading below — Simplyart4794 — https://pixabay.com/videos/id-84598/
+- Drone over a long green peninsula surrounded by sea — Simplyart4794 — https://pixabay.com/videos/id-78409/
+- Aerial of Repulse Bay beach with a steep wooded slope rising straight behind it — D-GM — https://pixabay.com/videos/id-235373/
+- Night view from above of skyscrapers poking through low cloud and fog — carloyuen — https://pixabay.com/photos/clouds-hong-kong-buildings-haze-2517653/
+- Two people silhouetted against a night sea of lit residential towers — Lau_wo — https://pixabay.com/photos/urban-moon-city-skyline-landscape-1580078/
+
+Diagrams, maps, charts and animation: How It's Run (own work). Globe data: Natural Earth (public domain).
+Music and sound: own synthesis. Voice: synthetic (Kokoro TTS), script by How It's Run.
