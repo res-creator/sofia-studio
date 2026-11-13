@@ -26,3 +26,8 @@ whyhow/ep03_venice/voice/*.wav
 whyhow/ep03_venice/*.log
 whyhow/ep03_venice/video_silent.mp4*
 whyhow/ep03_venice/mix.wav
+whyhow/ep04_hongkong/voice_raw/
+whyhow/ep04_hongkong/voice/*.wav
+whyhow/ep04_hongkong/*.log
+whyhow/ep04_hongkong/video_silent.mp4*
+whyhow/ep04_hongkong/mix.wav
