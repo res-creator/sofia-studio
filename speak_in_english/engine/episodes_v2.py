@@ -2681,3 +2681,35 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "lostbag" — rubric useful4 (60-70 s). heroine = Jessica, baggage desk agent Denise = Laura
+# option labels (drawn by renderer): 1 В лоб · 2 Вежливо · 3 Как носитель · 4 Королевский
+CAST.update({
+    "agent2": dict(voice="af_nicole", speed=1.0, lang="en-us", el="FGY2WhTYpPnrIDTdsKH5"),   # lostbag: baggage desk agent Denise (Laura)
+})
+EP["lostbag"] = dict(
+    title='Авиакомпания потеряла чемодан (а в нём сало)', rubric='useful4',
+    hook_title=[['ПОТЕРЯЛИ БАГАЖ', 'd'], ['ЧЕМОДАН С САЛОМ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    cover_b='ПОТРЕБУЕШЬ ПО-АНГЛИЙСКИ?',
+    absurd='По пустой ленте одиноко катается тромбон в вязаной шапочке с биркой «NOBODY\'S».',
+    comment_q='Что самое ценное в твоём чемодане?',
+    lines=[
+        ('hook_a', 'agent2', "[bored] No bag? Did you check the carousel properly?", 'Нет чемодана? Вы хорошо смотрели на ленте?'),
+        ('hook', 'nar', 'Чемодан потерян, а в нём — самое ценное. Как требовать, чтобы нашли?', ''),
+        ('o1_h', 'her', "[angrily] Bag lost! You find! Fast!", 'Чемодан потерян! Ты найти! Быстро!'),
+        ('o1_a', 'agent2', "[dryly] I'm not a sniffer dog, madam.", 'Я не служебная собака, мадам.'),
+        ('o1_nar', 'nar', 'В лоб — и она принюхивается.', ''),
+        ('o2_h', 'her', "[timidly] Sorry, I think maybe my bag is not here?", 'Извините, мне кажется, может, моего чемодана здесь нет?'),
+        ('o2_a', 'agent2', "[deadpan] Maybe it's just shy.", 'Может, он просто стесняется.'),
+        ('o2_nar', 'nar', 'Вежливо — и чемодан ищут под лентой.', ''),
+        ('o3_h', 'her', "[firmly] I'd like to report a missing bag. Can I get a reference number?", 'Я хочу заявить о пропаже багажа. Можно номер заявки?'),
+        ('o3_a', 'agent2', "[professionally] Of course. Fill this in — here's your number.", 'Конечно. Заполните это — вот ваш номер.'),
+        ('o3_nar', 'nar', 'Как носитель: заявление плюс номер. Без номера чемодана нет. Запоминай:', ''),
+        ('o3_tip', 'tip', 'Can I get a reference number?', ''),
+        ('o4_h', 'her', "[dramatically] Denise, somewhere out there my grandmother's salo is travelling alone. Find it before it starts a new life without me.", 'Дениз, где-то там бабушкино сало путешествует в одиночестве. Найдите его, пока оно не начало новую жизнь без меня.'),
+        ('o4_a', 'agent2', "[into the radio] ...Code red. Pork on the loose.", '…Код красный. Свинина на свободе.'),
+        ('end_a', 'agent2', "[surprised] Found it. It's in Lisbon. First class. It got an upgrade.", 'Нашла. Он в Лиссабоне. В первом классе. Ему повысили класс.'),
+        ('moral', 'nar', 'Мораль: чемодан можно потерять. Сало всегда найдёт дорогу домой.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши в комментариях!', ''),
+        ('ask', 'nar', 'Что самое ценное в твоём чемодане?', ''),
+    ],
+)
