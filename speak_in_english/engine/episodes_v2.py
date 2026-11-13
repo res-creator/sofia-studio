@@ -2681,3 +2681,35 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "wherehurt" — rubric useful4 (60-70 s). heroine = Jessica, Dr Fenwick = George
+# option labels (drawn by renderer): 1 В лоб · 2 Вежливо · 3 Как носитель · 4 Королевский
+CAST.update({
+    "doc1": dict(voice="bm_george", speed=1.0, lang="en-gb", el="JBFqnCBsd6RMkjVDRZzb"),   # wherehurt: London GP Dr Fenwick (George)
+})
+EP["wherehurt"] = dict(
+    title='Врач спрашивает: «Где болит?»', rubric='useful4',
+    hook_title=[['У ВРАЧА В ЛОНДОНЕ', 'd'], ['ГРЕЛКА НА СПИНЕ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    cover_b='А ТЫ ПО-АНГЛИЙСКИ?',
+    absurd='Учебный скелет в углу в шарфе и с градусником во рту.',
+    comment_q='Грелка или таблетка?',
+    lines=[
+        ('hook_d', 'doc1', "[kindly] So. Where does it hurt?", 'Итак. Где болит?'),
+        ('hook', 'nar', 'Главный вопрос у врача. Только не говори «back side» — сейчас поймёшь почему.', ''),
+        ('o1_h', 'her', "[groaning] Here. Everywhere. Big ouch.", 'Тут. Везде. Большой ой.'),
+        ('o1_d', 'doc1', "[curiously] Everywhere? Even your eyebrows?", 'Везде? Даже брови?'),
+        ('o1_nar', 'nar', 'В лоб — и доктор светит тебе в бровь.', ''),
+        ('o2_h', 'her', "[politely] I have a pain in my back side.", 'У меня боль в «бэк сайд».'),
+        ('o2_d', 'doc1', "[embarrassed] Your... backside?", 'В вашей… попе?'),
+        ('o2_nar', 'nar', 'Вежливо — но backside это попа. Доктор уже у стены.', ''),
+        ('o3_h', 'her', "[clearly] I've got a sharp pain in my lower back. It hurts when I bend down.", 'У меня острая боль в пояснице. Больно, когда наклоняюсь.'),
+        ('o3_d', 'doc1', "[satisfied] Right, that's helpful. Let's have a look.", 'Так, это полезно. Давайте посмотрим.'),
+        ('o3_nar', 'nar', 'Как носитель: где, какая и когда. Поясница — lower back. Запоминай:', ''),
+        ('o3_tip', 'tip', 'It hurts when I bend down.', ''),
+        ('o4_h', 'her', "[confidently] Lower back, doctor. Sharp when I bend, dull when I sit. I've got the spine of a granny and the patience of a saint.", 'Поясница, доктор. Остро, когда наклоняюсь, ноет, когда сижу. У меня спина бабушки и терпение святой.'),
+        ('o4_d', 'doc1', "[delighted] ...You've just written my notes for me.", '…Вы только что написали за меня карту.'),
+        ('end_d', 'doc1', "[wincing] Ah. Lower back. Sharp. Could I borrow your hot water bottle?", 'Ай. Поясница. Остро. Можно одолжить вашу грелку?'),
+        ('moral', 'nar', 'Мораль: боль надо описывать, а не изображать.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши в комментариях!', ''),
+        ('ask', 'nar', 'Грелка или таблетка?', ''),
+    ],
+)

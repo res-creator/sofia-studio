@@ -386,6 +386,31 @@ if EPN in ("rich", "busy", "avoidparty", "tour", "splitbill", "photo"):  # batch
             t = T(0.13); f = 440 * 2 ** ((m - 69) / 12); put(y, np.sign(np.sin(2*np.pi*f*t)) * 0.35 * np.minimum((0.13 - t)*120, 1), k*0.13, 0.5)
         return norm(lp(y, 4000), 0.55)
     SFX.update(ring=_ring(), doorbell=_doorbell(), cheer=_cheer(), vroom=_vroom(), chirp=_chirp(), toy=_toy())
+if EPN == "wherehurt":  # GP office: chair roll, zap of pain, glove snap, pen scribble, back crack, relieved sigh, click (own rng)
+    _w = np.random.default_rng(91)
+    def _roll():       # office chair rolling fast across the floor: rumbling castors
+        tt = T(0.55); x = lp(_w.standard_normal(len(tt)), 900) * (1 + 0.5*np.sin(2*np.pi*38*tt)); x += 0.3*np.sin(2*np.pi*np.cumsum(140 + 60*tt)/SR)
+        return norm(x * np.minimum(tt*30, 1) * np.minimum((0.55 - tt)*12, 1), 0.55)
+    def _zap():        # cartoon pain zap: a buzzing electric crackle
+        tt = T(0.32); x = np.sign(np.sin(2*np.pi*np.cumsum(900 - 500*tt/0.32)/SR)) * 0.5 + bp(_w.standard_normal(len(tt)), 2000, 7000) * 0.6
+        return norm(x * np.exp(-tt*7) * np.minimum(tt*300, 1), 0.5)
+    def _snap():       # latex glove snap
+        y = np.zeros(int(0.35*SR)); tt = T(0.12); put(y, bp(_w.standard_normal(len(tt)), 300, 3000)*np.linspace(0.1, 0.5, len(tt)), 0, 1)
+        tt = T(0.08); put(y, (lp(_w.standard_normal(len(tt)), 5000) + np.sin(2*np.pi*220*tt))*np.exp(-tt*70), 0.14, 1.2); return norm(y, 0.7)
+    def _scribble():   # fast pen scribble on paper
+        y = np.zeros(int(0.9*SR))
+        for k_ in range(9):
+            tt = T(0.08); put(y, bp(_w.standard_normal(len(tt)), 2500, 7500)*np.sin(np.pi*tt/0.08), k_*0.095 + _w.uniform(0, 0.02), 0.7)
+        return norm(y, 0.4)
+    def _crack():      # the back goes: a dry crack + a low thump
+        y = np.zeros(int(0.5*SR)); tt = T(0.03); put(y, bp(_w.standard_normal(len(tt)), 1500, 8000)*np.exp(-tt*150), 0, 1.0); put(y, bp(_w.standard_normal(len(tt)), 1500, 8000)*np.exp(-tt*150), 0.05, 0.7)
+        tt = T(0.3); put(y, np.sin(2*np.pi*np.cumsum(60 + 80*np.exp(-tt*30))/SR)*np.exp(-tt*12), 0.02, 0.8); return norm(np.tanh(y*2), 0.8)
+    def _sigh():       # relieved "aaah" (breathy, falling)
+        tt = T(0.9); f = 260 - 90*tt/0.9; ph = 2*np.pi*np.cumsum(f)/SR; x = sum(np.sin(k*ph)/k**1.5 for k in range(1, 6))*0.25 + bp(_w.standard_normal(len(tt)), 400, 3000)*0.6
+        return norm(lp(x, 2500)*np.sin(np.pi*tt/0.9)**1.5, 0.35)
+    def _click():
+        tt = T(0.04); return norm(bp(_w.standard_normal(len(tt)), 2000, 7000)*np.exp(-tt*150), 0.5)
+    SFX.update(roll=_roll(), zap=_zap(), snap=_snap(), scribble=_scribble(), crack=_crack(), sigh=_sigh(), click=_click(), paper=paper())
 def note(m, key=0): return 440 * 2 ** ((m + key - 69) / 12)
 def pluck(f, d, bright=1.0):
     t = T(d); ph = 2*np.pi*f*t
@@ -495,7 +520,7 @@ if EPN == "party":
         seg = (full*op + muff*(1 - op)) * g
         seg *= np.minimum(1, np.arange(n)/(0.03*SR)) * np.minimum(1, (n - np.arange(n))/(0.12*SR))
         put(music, seg, s0, 1.0)
-elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "teacher", "pretend", "avoidparty", "tour"):
+elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "teacher", "pretend", "avoidparty", "tour", "wherehurt"):
     # cheerful London stroll: pizzicato, walking bass, glockenspiel, brushes
     bpm = 116; b = 60/bpm; K = 0
     def pizz(f, d=0.35):
@@ -649,7 +674,10 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+if EPN == "wherehurt":  # useful4 rubric (no levels): music off from the pen falling off the desk (the beat before the twist) until the moral
+    c2e = [x for x in TL["scenes"] if x["id"] == "o4"][0]["ev"]["fall"]; c2n = sp["moral"]["t"]
+else:
+    C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause
