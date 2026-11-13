@@ -21,3 +21,8 @@ whyhow/ep02_yakutsk/voice/*.wav
 whyhow/ep02_yakutsk/*.log
 whyhow/ep02_yakutsk/video_silent.mp4*
 whyhow/ep02_yakutsk/mix.wav
+whyhow/ep03_venice/voice_raw/
+whyhow/ep03_venice/voice/*.wav
+whyhow/ep03_venice/*.log
+whyhow/ep03_venice/video_silent.mp4*
+whyhow/ep03_venice/mix.wav
