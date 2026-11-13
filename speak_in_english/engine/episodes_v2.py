@@ -2681,3 +2681,35 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "battery" — rubric useful4 (60-70 s). heroine = Jessica, barista = Lily
+# option labels (drawn by renderer): 1 В лоб · 2 Вежливо · 3 Как носитель · 4 Королевский
+CAST.update({
+    "barista2": dict(voice="bf_lily", speed=1.0, lang="en-gb", el="pFZP5JQG7iQjIQuC4Bku"),   # battery: the barista guarding the only socket (Lily)
+})
+EP["battery"] = dict(
+    title='1% батареи — как попросить зарядку в кафе', rubric='useful4',
+    hook_title=[['В КАФЕ, ТЕЛЕФОН:', 'd'], ['1% БАТАРЕИ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    cover_b='КАК ПО-АНГЛИЙСКИ?',
+    absurd='В углу кактус в горшке подключён к зарядке, на горшке табличка «100%».',
+    comment_q='Сколько процентов у тебя прямо сейчас?',
+    lines=[
+        ('hook_b', 'barista2', "[apologetically] Sorry, love, sockets are for staff only.", 'Извини, дорогая, розетки только для персонала.'),
+        ('hook', 'nar', 'Один процент и одна розетка. Как попросить, чтобы не отказали?', ''),
+        ('o1_h', 'her', "[demanding] Give charge! Now!", 'Дай заряд! Сейчас!'),
+        ('o1_b', 'barista2', "[brightly] Charge? That's four pounds fifty.", 'Счёт? С тебя четыре фунта пятьдесят.'),
+        ('o1_nar', 'nar', 'В лоб — и тебе выбили чек.', ''),
+        ('o2_h', 'her', "[hesitantly] Excuse me, is it possible to give me electricity?", 'Извините, можно ли дать мне электричества?'),
+        ('o2_b', 'barista2', "[puzzled] Electricity? We've only got oat milk.", 'Электричество? У нас только овсяное молоко.'),
+        ('o2_nar', 'nar', 'Вежливо — и вместо зарядки пакет молока.', ''),
+        ('o3_h', 'her', "[casually] I'm on one percent. Is there anywhere I can charge my phone?", 'У меня один процент. Тут можно где-нибудь зарядить телефон?'),
+        ('o3_b', 'barista2', "[warmly] Oh, go on then. Pass it here.", 'Ой, ладно уж. Давай сюда.'),
+        ('o3_nar', 'nar', 'Как носитель: проблема плюс простой вопрос. Запоминай:', ''),
+        ('o3_tip', 'tip', 'Is there anywhere I can charge my phone?', ''),
+        ('o4_h', 'her', "[dramatically] My phone's about to die, and then my mum will think I'm dead too. One plug, two lives saved.", 'Мой телефон сейчас умрёт, и тогда мама решит, что я тоже умерла. Одна розетка — две спасённые жизни.'),
+        ('o4_b', 'barista2', "[sighing] ...Fine. But I'm telling your mum it was me.", '…Ладно. Но маме скажу, что это была я.'),
+        ('end_b', 'barista2', "[determined] Coffee can wait. Her mum can't.", 'Кофе подождёт. Её мама — нет.'),
+        ('moral', 'nar', 'Мораль: один процент — это не батарея. Это характер.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши в комментариях!', ''),
+        ('ask', 'nar', 'Сколько процентов у тебя прямо сейчас?', ''),
+    ],
+)
