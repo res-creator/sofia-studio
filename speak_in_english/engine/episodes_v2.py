@@ -2681,3 +2681,35 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "bagofbags" — rubric nashe4 (60-70 s). heroine = Jessica, flatmate Oliver = Callum
+# option labels (drawn by renderer): 1 В ЛОБ · 2 ВЕЖЛИВО · 3 КАК НОСИТЕЛЬ · 4 КОРОЛЕВСКИЙ
+CAST.update({
+    "flat1": dict(voice="am_onyx", speed=1.0, lang="en-gb", el="N2lVS1w4EtoT3dr4eOWO"),   # bagofbags: British flatmate Oliver (Callum)
+})
+EP["bagofbags"] = dict(
+    title='Британец нашёл пакет с пакетами', rubric='nashe4',
+    hook_title=[['СОСЕД ПО КВАРТИРЕ', 'd'], ['ПАКЕТ С ПАКЕТАМИ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    cover_b='ЧТО ПО-АНГЛИЙСКИ?',
+    absurd='В пакете — пакет поменьше, в нём ещё меньше, как матрёшка; на самом крошечном написано «НЕ ТРОГАТЬ».',
+    comment_q='Где у вас живёт пакет с пакетами?',
+    lines=[
+        ('hook_f', 'flat1', "[baffled] Why is there a bag... full of bags?", 'Почему здесь пакет… полный пакетов?'),
+        ('hook', 'nar', 'Британец нашёл главное сокровище нашей кухни. Объясни ему — четыре способа.', ''),
+        ('o1_h', 'her', "[matter-of-factly] Bags. Inside bags. Normal.", 'Пакеты. Внутри пакетов. Нормально.'),
+        ('o1_f', 'flat1', "[startled] Normal? It's breathing!", 'Нормально? Он дышит!'),
+        ('o1_nar', 'nar', 'В лоб — а пакет уже живёт своей жизнью.', ''),
+        ('o2_h', 'her', "[hesitantly] It is for... future bags.", 'Это для… будущих пакетов.'),
+        ('o2_f', 'flat1', "[curious] Future bags? Do they come from the future?", 'Будущих пакетов? Они что, из будущего?'),
+        ('o2_nar', 'nar', 'Вежливо — и теперь это машина времени.', ''),
+        ('o3_h', 'her', "[wisely] We never throw them away. Waste not, want not.", 'Мы их никогда не выбрасываем. Не транжирь — и нужды не будет.'),
+        ('o3_f', 'flat1', "[impressed] Oh. That's actually quite clever.", 'О. А ведь это довольно умно.'),
+        ('o3_nar', 'nar', 'Как носитель: одна британская поговорка — и всё понятно. Запоминай:', ''),
+        ('o3_tip', 'tip', 'Waste not, want not.', ''),
+        ('o4_h', 'her', "[grandly] Oliver, that's not clutter. That's three generations of shopping, neatly folded. Some families pass down jewellery. We pass down bags.", 'Оливер, это не хлам. Это три поколения покупок, аккуратно сложенных. Одни семьи передают по наследству драгоценности. Мы — пакеты.'),
+        ('o4_f', 'flat1', "[moved] ...Can I be adopted?", '…А можно меня усыновить?'),
+        ('end_f', 'flat1', "[proudly] I've started my own. My mum's very worried.", 'Я завёл свой. Мама очень волнуется.'),
+        ('moral', 'nar', 'Мораль: пакет с пакетами — единственное наследство, которое растёт само.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши в комментариях!', ''),
+        ('ask', 'nar', 'Где у вас живёт пакет с пакетами?', ''),
+    ],
+)
