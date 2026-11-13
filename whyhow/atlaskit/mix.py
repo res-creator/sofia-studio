@@ -4,7 +4,7 @@ python3 mix.py EPDIR OUT.wav   (needs EPDIR/timeline.json, EPDIR/voice/<id>.wav,
 import json, sys, os, subprocess, numpy as np, soundfile as sf
 from scipy.signal import butter, sosfilt, resample_poly
 EP, OUT = sys.argv[1:3]; SR = 48000
-TL = json.load(open(os.path.join(EP, 'timeline.json'))); CU = json.load(open(os.path.join(EP, 'cues.json')))
+TL = json.load(open(os.path.join(EP, 'timeline.json'))); MT = json.load(open(os.path.join(EP, 'mix.json')))['tense'] if os.path.exists(os.path.join(EP, 'mix.json')) else ['P024', 'P036']; CU = json.load(open(os.path.join(EP, 'cues.json')))
 N = int((CU['dur'] + 0.5) * SR); voice = np.zeros(N); rng = np.random.default_rng(7)
 for p in TL['paras']:
     x, sr = sf.read(os.path.join(EP, 'voice', p['id'] + '.wav'), dtype='float64'); x = x if x.ndim == 1 else x.mean(1)
@@ -17,8 +17,8 @@ tense = [[45, 52, 57, 60], [46, 53, 58, 61], [43, 50, 55, 58], [45, 52, 56, 60]]
 bright = [[53, 60, 64, 69], [48, 55, 64, 67], [50, 57, 62, 69], [46, 53, 62, 65]]
 P = {p['id']: p for p in TL['paras']}
 def sect(t):
-    if P['P024']['start'] - 3 <= t < P['P036']['start'] - 3: return tense
-    if t >= P['P036']['start'] - 3: return bright
+    if P[MT[0]]['start'] - 3 <= t < P[MT[1]]['start'] - 3: return tense
+    if t >= P[MT[1]]['start'] - 3: return bright
     return calm
 t = np.arange(N) / SR; pad = np.zeros(N); CH = 9.0
 for k in range(int(N / SR / CH) + 2):

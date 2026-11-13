@@ -1,0 +1,975 @@
+[
+ {
+  "key": "cm_lena_late_autumn_bestyakh_shore",
+  "file": "cm_lena_late_autumn_bestyakh_shore.jpg",
+  "type": "photo",
+  "source": "commons",
+  "source_id": "(S.I.) Поздняя осень, бестяхский берег (1).jpg",
+  "title": "(S.I.) Поздняя осень, бестяхский берег (1).jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File%3A%28S.I.%29_%D0%9F%D0%BE%D0%B7%D0%B4%D0%BD%D1%8F%D1%8F_%D0%BE%D1%81%D0%B5%D0%BD%D1%8C%2C_%D0%B1%D0%B5%D1%81%D1%82%D1%8F%D1%85%D1%81%D0%BA%D0%B8%D0%B9_%D0%B1%D0%B5%D1%80%D0%B5%D0%B3_%281%29.jpg",
+  "licence": "CC BY 3.0",
+  "attribution": "Svetlana Ivanova, CC BY 3.0, via Wikimedia Commons",
+  "author": "Svetlana Ivanova",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Late autumn on the Lena at Nizhny Bestyakh: snowy bank, grey cold water, a few people and a car by small boats, low grey sky",
+  "tags": [
+   "lena river",
+   "late autumn",
+   "freeze-up season"
+  ],
+  "best_for": [
+   "Y026",
+   "Y026B"
+  ],
+  "place": "Nizhny Bestyakh bank of the Lena (opposite Yakutsk)"
+ },
+ {
+  "key": "cm_mammoth_skeleton_permafrost_institute",
+  "file": "cm_mammoth_skeleton_permafrost_institute.jpg",
+  "type": "photo",
+  "source": "commons",
+  "source_id": "The mammoth bones in the Museum of Institute of permafrost, SB RAS.jpg",
+  "title": "The mammoth bones in the Museum of Institute of permafrost, SB RAS.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File%3AThe_mammoth_bones_in_the_Museum_of_Institute_of_permafrost%2C_SB_RAS.jpg",
+  "licence": "CC BY 4.0",
+  "attribution": "Maria An-va, CC BY 4.0, via Wikimedia Commons",
+  "author": "Maria An-va",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Mammoth skeleton with tusks in a museum hall of the Permafrost Institute, display cases behind",
+  "tags": [
+   "mammoth skeleton",
+   "museum"
+  ],
+  "best_for": [
+   "Y010B",
+   "Y033"
+  ],
+  "place": "Museum of the Permafrost Institute SB RAS"
+ },
+ {
+  "key": "cm_melnikov_permafrost_institute",
+  "file": "cm_melnikov_permafrost_institute.jpg",
+  "type": "photo",
+  "source": "commons",
+  "source_id": "Melnikov Permafrost Institute.jpg",
+  "title": "Melnikov Permafrost Institute.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File%3AMelnikov_Permafrost_Institute.jpg",
+  "licence": "CC0",
+  "attribution": "",
+  "author": "Vasilii Martynov",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Melnikov Permafrost Institute building in summer with the mammoth sculpture in the round flowerbed in front",
+  "tags": [
+   "permafrost institute",
+   "yakutsk"
+  ],
+  "best_for": [
+   "Y031",
+   "Y033",
+   "Y037"
+  ],
+  "place": "Melnikov Permafrost Institute, Yakutsk"
+ },
+ {
+  "key": "cm_permafrost_kingdom_entrance_winter",
+  "file": "cm_permafrost_kingdom_entrance_winter.jpg",
+  "type": "photo",
+  "source": "commons",
+  "source_id": "Museum - Permafrost Kingdom (Yakutsk) 01.jpg",
+  "title": "Museum - Permafrost Kingdom (Yakutsk) 01.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File%3AMuseum_-_Permafrost_Kingdom_%28Yakutsk%29_01.jpg",
+  "licence": "CC BY-SA 4.0",
+  "attribution": "JukoFF, CC BY-SA 4.0, via Wikimedia Commons",
+  "author": "JukoFF",
+  "is_yakutsk": true,
+  "duration_s": null,
+  "description": "Entrance building of the Permafrost Kingdom attraction in winter: tall timber A-frame with the round attraction sign, snow and frosty haze around (portrait)",
+  "tags": [
+   "permafrost kingdom",
+   "yakutsk"
+  ],
+  "best_for": [
+   "Y010B"
+  ],
+  "place": "Permafrost Kingdom, Chochur Muran hill, Yakutsk"
+ },
+ {
+  "key": "cm_permafrost_kingdom_ice_sculpture_fish",
+  "file": "cm_permafrost_kingdom_ice_sculpture_fish.jpg",
+  "type": "photo",
+  "source": "commons",
+  "source_id": "Museum - Permafrost Kingdom (Yakutsk) 09.jpg",
+  "title": "Museum - Permafrost Kingdom (Yakutsk) 09.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File%3AMuseum_-_Permafrost_Kingdom_%28Yakutsk%29_09.jpg",
+  "licence": "CC BY-SA 4.0",
+  "attribution": "JukoFF, CC BY-SA 4.0, via Wikimedia Commons",
+  "author": "JukoFF",
+  "is_yakutsk": true,
+  "duration_s": null,
+  "description": "Inside the Permafrost Kingdom: clear ice sculpture of a figure holding a big fish, frozen tunnel wall behind (portrait)",
+  "tags": [
+   "permafrost kingdom",
+   "ice sculpture"
+  ],
+  "best_for": [
+   "Y010B"
+  ],
+  "place": "Permafrost Kingdom, Yakutsk"
+ },
+ {
+  "key": "cm_permafrost_kingdom_ice_throne",
+  "file": "cm_permafrost_kingdom_ice_throne.jpg",
+  "type": "photo",
+  "source": "commons",
+  "source_id": "Museum - Permafrost Kingdom (Yakutsk) 05.jpg",
+  "title": "Museum - Permafrost Kingdom (Yakutsk) 05.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File%3AMuseum_-_Permafrost_Kingdom_%28Yakutsk%29_05.jpg",
+  "licence": "CC BY-SA 4.0",
+  "attribution": "JukoFF, CC BY-SA 4.0, via Wikimedia Commons",
+  "author": "JukoFF",
+  "is_yakutsk": true,
+  "duration_s": null,
+  "description": "Inside the Permafrost Kingdom tunnel: carved ice throne with a fur draped on it, frosty walls lit green (portrait)",
+  "tags": [
+   "permafrost kingdom",
+   "ice gallery"
+  ],
+  "best_for": [
+   "Y010B"
+  ],
+  "place": "Permafrost Kingdom, Yakutsk"
+ },
+ {
+  "key": "cm_yakutsk_ferry_terminal_checkpoint",
+  "file": "cm_yakutsk_ferry_terminal_checkpoint.jpg",
+  "type": "photo",
+  "source": "commons",
+  "source_id": "Паромная переправа, Якутск 18.07.2026.jpg",
+  "title": "Паромная переправа, Якутск 18.07.2026.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File%3A%D0%9F%D0%B0%D1%80%D0%BE%D0%BC%D0%BD%D0%B0%D1%8F_%D0%BF%D0%B5%D1%80%D0%B5%D0%BF%D1%80%D0%B0%D0%B2%D0%B0%2C_%D0%AF%D0%BA%D1%83%D1%82%D1%81%D0%BA_18.07.2026.jpg",
+  "licence": "CC0",
+  "attribution": "",
+  "author": "SmallSonMarex",
+  "is_yakutsk": true,
+  "duration_s": null,
+  "description": "Summer view of the Yakutsk ferry crossing approach: barrier gates, traffic lights, a truck waiting, river and ferry far behind",
+  "tags": [
+   "lena ferry",
+   "yakutsk"
+  ],
+  "best_for": [
+   "Y025"
+  ],
+  "place": "Ferry crossing, Yakutsk"
+ },
+ {
+  "key": "cm_yakutsk_lena_ferry_deck_cars",
+  "file": "cm_yakutsk_lena_ferry_deck_cars.jpg",
+  "type": "photo",
+  "source": "commons",
+  "source_id": "Паром Якутск - Нижний Бестях (1).JPG",
+  "title": "Паром Якутск - Нижний Бестях (1).JPG",
+  "page_url": "https://commons.wikimedia.org/wiki/File%3A%D0%9F%D0%B0%D1%80%D0%BE%D0%BC_%D0%AF%D0%BA%D1%83%D1%82%D1%81%D0%BA_-_%D0%9D%D0%B8%D0%B6%D0%BD%D0%B8%D0%B9_%D0%91%D0%B5%D1%81%D1%82%D1%8F%D1%85_%281%29.JPG",
+  "licence": "CC BY-SA 4.0",
+  "attribution": "LxAndrew, CC BY-SA 4.0, via Wikimedia Commons",
+  "author": "LxAndrew",
+  "is_yakutsk": true,
+  "duration_s": null,
+  "description": "Deck of the Yakutsk - Nizhny Bestyakh ferry loaded with cars, vans and a truck, ferry bridge behind, wide Lena river",
+  "tags": [
+   "lena ferry",
+   "river crossing"
+  ],
+  "best_for": [
+   "Y025",
+   "Y026B"
+  ],
+  "place": "Yakutsk - Nizhny Bestyakh ferry (Parom-9), Lena river"
+ },
+ {
+  "key": "cm_yakutsk_street_frost_cars_exhaust",
+  "file": "cm_yakutsk_street_frost_cars_exhaust.jpg",
+  "type": "photo",
+  "source": "commons",
+  "source_id": "On the streets of Yakutsk - Flickr - Maarten Takens.jpg",
+  "title": "On the streets of Yakutsk - Flickr - Maarten Takens.jpg",
+  "page_url": "https://commons.wikimedia.org/wiki/File%3AOn_the_streets_of_Yakutsk_-_Flickr_-_Maarten_Takens.jpg",
+  "licence": "CC BY-SA 2.0",
+  "attribution": "Maarten Takens, CC BY-SA 2.0, via Wikimedia Commons",
+  "author": "Maarten Takens",
+  "is_yakutsk": true,
+  "duration_s": null,
+  "description": "Deep-frost street in central Yakutsk: frost-covered overhead wires and trees, cars with exhaust vapour, parked cars, UAZ van, haze (black frame cropped)",
+  "tags": [
+   "yakutsk winter",
+   "frost",
+   "car exhaust",
+   "ice fog"
+  ],
+  "best_for": [
+   "Y005",
+   "Y018",
+   "Y020",
+   "Y021"
+  ],
+  "place": "Yakutsk"
+ },
+ {
+  "key": "cv_snow_blizzard_apartments_dusk",
+  "file": "cv_snow_blizzard_apartments_dusk.mp4",
+  "type": "video",
+  "source": "coverr",
+  "source_id": "2lP31rjsLG",
+  "title": "Snow falling in a city at dusk",
+  "page_url": "https://coverr.co/videos/snow-falling-in-a-city-at-dusk-2lP31rjsLG",
+  "licence": "Coverr License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": 11.5,
+  "description": "Snow blizzard at dusk near an apartment building, white van and parked cars",
+  "tags": [
+   "night snow street"
+  ],
+  "best_for": [
+   "Y018",
+   "Y021"
+  ]
+ },
+ {
+  "key": "px_alaska_pipeline_on_supports_winter",
+  "file": "px_alaska_pipeline_on_supports_winter.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "681175",
+  "title": "winter, alaska, pipeline, oil, snow, structure, nature, landscape",
+  "page_url": "https://pixabay.com/photos/winter-alaska-pipeline-oil-snow-681175/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Trans-Alaska pipeline raised on vertical supports with heat-pipe radiators, running across snow at sunset (Alaska, oil pipeline)",
+  "tags": [
+   "pipe on supports",
+   "permafrost engineering"
+  ],
+  "best_for": [
+   "Y028",
+   "Y029"
+  ],
+  "place": "Alaska, USA"
+ },
+ {
+  "key": "px_alaska_pipeline_thermosyphons",
+  "file": "px_alaska_pipeline_thermosyphons.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "4691574",
+  "title": "pipeline, alaska, engineering, oil, alaska pipeline, trans-alaska pipeline, crude oil pipeline, prudhoe bay to valdez, permafrost, energy, pipeline, pipeline, pipeline, pipeline, pipeline",
+  "page_url": "https://pixabay.com/photos/pipeline-alaska-engineering-oil-4691574/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Trans-Alaska pipeline on elevated supports with thermosyphons in summer, Alaska",
+  "tags": [
+   "pipe on supports",
+   "permafrost engineering"
+  ],
+  "best_for": [
+   "Y029",
+   "Y035"
+  ],
+  "place": "Alaska, USA"
+ },
+ {
+  "key": "px_arch_bridge_danube_linz",
+  "file": "px_arch_bridge_danube_linz.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "92443",
+  "title": "bridge, railroad bridge, linz, flow, danube, light and shadow, new bridge, construction, transition, bridge construction, building, bridge elements, austria, steel construction, stole, timelapse",
+  "page_url": "https://pixabay.com/videos/id-92443/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": 15.0,
+  "description": "Finished modern arch/cable railway bridge over the Danube at Linz (not under construction; tagged construction on Pixabay)",
+  "tags": [
+   "bridge over big river"
+  ],
+  "best_for": [
+   "Y027"
+  ],
+  "place": "Linz, Austria"
+ },
+ {
+  "key": "px_boiling_water_throw_freeze",
+  "file": "px_boiling_water_throw_freeze.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "14584",
+  "title": "mpemba effect, experiment, water, freeze, cold, cloud of steam, evaporation, mpemba, water throw, water vapor, icy, winter, wintry, minus degrees, minus temperatures",
+  "page_url": "https://pixabay.com/videos/id-14584/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": 10.0,
+  "description": "Low-angle sky shot: a person throws hot water upward and it bursts into a white cloud of ice crystals and steam against blue sky (Mpemba-style experiment)",
+  "tags": [
+   "boiling water freeze",
+   "hot water snow"
+  ],
+  "best_for": [
+   "Y004",
+   "Y020"
+  ]
+ },
+ {
+  "key": "px_boiling_water_throw_wide",
+  "file": "px_boiling_water_throw_wide.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "14583",
+  "title": "mpemba effect, experiment, water, freeze, cold, cloud of steam, evaporation, mpemba, water throw, water vapor, icy, winter, wintry, minus degrees, minus temperatures",
+  "page_url": "https://pixabay.com/videos/id-14583/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": 19.0,
+  "description": "Wide shot in a park: man swings a pot and throws hot water into frosty air, it turns into a white vapour/ice cloud",
+  "tags": [
+   "boiling water freeze",
+   "hot water snow"
+  ],
+  "best_for": [
+   "Y004",
+   "Y020"
+  ]
+ },
+ {
+  "key": "px_cable_stayed_bridge_dusk",
+  "file": "px_cable_stayed_bridge_dusk.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "34427",
+  "title": "cable-stayed bridge, river, country, sun carpentry",
+  "page_url": "https://pixabay.com/videos/id-34427/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": 15.0,
+  "description": "Long cable-stayed bridge over a wide river at sunset (not Russia)",
+  "tags": [
+   "cable-stayed bridge"
+  ],
+  "best_for": [
+   "Y027"
+  ]
+ },
+ {
+  "key": "px_car_exhaust_snow",
+  "file": "px_car_exhaust_snow.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "6946383",
+  "title": "car, exhaust pipe, winter, snow, car wallpapers, nature, automobile",
+  "page_url": "https://pixabay.com/photos/car-exhaust-pipe-winter-snow-6946383/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Close-up of a car exhaust pipe above snow",
+  "tags": [
+   "car exhaust",
+   "engine running"
+  ],
+  "best_for": [
+   "Y018",
+   "Y019"
+  ]
+ },
+ {
+  "key": "px_car_on_baikal_ice_sunset",
+  "file": "px_car_on_baikal_ice_sunset.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "2118677",
+  "title": "baikal lake, automobile, ice cream, winter, cold, frost, wintry, frozen, icy, winter magic, smoothness, adventure, all terrain vehicle, all wheel drive, vehicle, expedition, ride, all-wheel, offroad, landscape, headlights, freedom, expanse, winter, offroad, offroad, offroad, offroad, offroad",
+  "page_url": "https://pixabay.com/photos/baikal-lake-automobile-ice-cream-2118677/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "SUV driving across snowy frozen Lake Baikal at sunset - like an ice road",
+  "tags": [
+   "ice road",
+   "frozen crossing"
+  ],
+  "best_for": [
+   "Y025"
+  ],
+  "place": "Lake Baikal, Russia"
+ },
+ {
+  "key": "px_frost_beard_man_fur_hat",
+  "file": "px_frost_beard_man_fur_hat.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "3951311",
+  "title": "face, it, frozen, white, cold, snow, frost, icy, snowy, ate, winter, glasses, landscape, hat, chin, look, frosty, the cold season, lapland, freeze, fur",
+  "page_url": "https://pixabay.com/photos/face-it-frozen-white-cold-snow-3951311/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Close-up of a man in a fur ushanka with glasses, his beard and moustache covered in white frost (cropped to face)",
+  "tags": [
+   "frost on beard",
+   "fur hat"
+  ],
+  "best_for": [
+   "Y002",
+   "Y003"
+  ]
+ },
+ {
+  "key": "px_hovercraft_baikal_ice_wide",
+  "file": "px_hovercraft_baikal_ice_wide.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "3231026",
+  "title": "irkutsk, lake baikal, frozen lake, hydrofoil, irkutsk, irkutsk, lake baikal, lake baikal, lake baikal, lake baikal, lake baikal, frozen lake, frozen lake",
+  "page_url": "https://pixabay.com/photos/irkutsk-lake-baikal-frozen-lake-3231026/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Small hovercraft travelling over snow-covered frozen Lake Baikal, mountains behind",
+  "tags": [
+   "hovercraft on ice"
+  ],
+  "best_for": [
+   "Y026"
+  ],
+  "place": "Lake Baikal (Irkutsk region), Russia"
+ },
+ {
+  "key": "px_hovercraft_on_lake_ice",
+  "file": "px_hovercraft_on_lake_ice.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "4881820",
+  "title": "baikal, russia, ice, cold, lake, hoover, bluesky, travel, nature, trip, natural, boat, taxi",
+  "page_url": "https://pixabay.com/photos/baikal-russia-ice-cold-lake-4881820/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Khivus-type hovercraft crossing clear ice of Lake Baikal (portrait photo)",
+  "tags": [
+   "hovercraft on ice"
+  ],
+  "best_for": [
+   "Y026"
+  ],
+  "place": "Lake Baikal, Russia"
+ },
+ {
+  "key": "px_krasnoyarsk_frost_fog_river",
+  "file": "px_krasnoyarsk_frost_fog_river.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "7013354",
+  "title": "fog, city, river, outdoors, siberia, russia, rekea, yenisei, krasnoyarsk",
+  "page_url": "https://pixabay.com/photos/fog-city-river-outdoors-siberia-7013354/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Krasnoyarsk: frost fog (steam) rising off the unfrozen Yenisei with city blocks behind at sunset",
+  "tags": [
+   "frost fog city",
+   "siberia"
+  ],
+  "best_for": [
+   "Y021"
+  ],
+  "place": "Krasnoyarsk, Yenisei river, Russia"
+ },
+ {
+  "key": "px_lena_river_yakutia_summer",
+  "file": "px_lena_river_yakutia_summer.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "3262849",
+  "title": "the lena river, nature, siberia, yakutia, cow, sunset",
+  "page_url": "https://pixabay.com/photos/the-lena-river-siberia-yakutia-cow-3262849/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "The Lena river in Yakutia in summer evening light, grassy bank in foreground (photo tagged Lena river, Yakutia)",
+  "tags": [
+   "lena river"
+  ],
+  "best_for": [
+   "Y024",
+   "Y042"
+  ],
+  "place": "Lena river, Yakutia"
+ },
+ {
+  "key": "px_mammoth_skeleton_museum",
+  "file": "px_mammoth_skeleton_museum.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "1257288",
+  "title": "mammoth, skeleton, museum, exhibit, mammal, tusks, pachyderm, elephant, ice age, primeval times, evolution, extinct, natural history museum, stuttgart, paleontology, stone age, science, biology, natural history, mammoth, mammoth, mammoth, mammoth, mammoth, ice age, ice age, ice age, ice age, ice age",
+  "page_url": "https://pixabay.com/photos/mammoth-skeleton-museum-exhibit-1257288/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Pale mammoth skeleton displayed in a modern museum hall",
+  "tags": [
+   "mammoth skeleton"
+  ],
+  "best_for": [
+   "Y010B"
+  ]
+ },
+ {
+  "key": "px_mammoth_skeleton_snow_display",
+  "file": "px_mammoth_skeleton_snow_display.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "2242551",
+  "title": "mammoth, skeleton, prehistoric, fossil, old, bone, extinct, mammoth, mammoth, mammoth, mammoth, mammoth",
+  "page_url": "https://pixabay.com/photos/mammoth-skeleton-prehistoric-fossil-2242551/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Dark mammoth skeleton with long curved tusks on a fake-snow display, blue light",
+  "tags": [
+   "mammoth skeleton"
+  ],
+  "best_for": [
+   "Y010B"
+  ]
+ },
+ {
+  "key": "px_man_frozen_breath_forest",
+  "file": "px_man_frozen_breath_forest.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "7112817",
+  "title": "man, portrait, forest, landscape, snow, smoking, winter, nature, smoke, jeans",
+  "page_url": "https://pixabay.com/photos/man-portrait-forest-landscape-snow-7112817/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Bearded man in beanie and denim jacket exhales a big cloud of breath in a snowy pine forest",
+  "tags": [
+   "frozen breath"
+  ],
+  "best_for": [
+   "Y002"
+  ]
+ },
+ {
+  "key": "px_night_city_traffic_snow_aerial",
+  "file": "px_night_city_traffic_snow_aerial.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "102768",
+  "title": "night city, city, cars, traffic, transport, traffic light, movement, snow, winter, volgodonsk, mavic3, djimavic3",
+  "page_url": "https://pixabay.com/videos/id-102768/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": 15.0,
+  "description": "Night drone shot over a Russian city (Volgodonsk) in winter: lit avenue, traffic, panel blocks",
+  "tags": [
+   "night city aerial",
+   "winter city"
+  ],
+  "best_for": [
+   "Y005",
+   "Y018"
+  ],
+  "place": "Volgodonsk, Russia"
+ },
+ {
+  "key": "px_night_snow_street_traffic",
+  "file": "px_night_snow_street_traffic.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "63972",
+  "title": "snow, cold, winter, dark, night, 4k, evening, snowing, city, urban, street, cars, traffic",
+  "page_url": "https://pixabay.com/videos/id-63972/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": 15.0,
+  "description": "Night snowfall on a street with lit blue fountains/ice lights, a van passing",
+  "tags": [
+   "night snow street"
+  ],
+  "best_for": [
+   "Y021",
+   "Y040"
+  ]
+ },
+ {
+  "key": "px_old_man_fur_hat_frost_window",
+  "file": "px_old_man_fur_hat_frost_window.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "431334",
+  "title": "man, person, contemplative, thinking, hat, face, beard, grey, hair, head, human, male, cold, winter, clothing, frost, window, glass, sky, nature, scarf, moustache",
+  "page_url": "https://pixabay.com/photos/man-person-contemplative-thinking-431334/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Elderly man with white beard in a fur hat next to a frost-patterned window",
+  "tags": [
+   "fur hat",
+   "frost window"
+  ],
+  "best_for": [
+   "Y009",
+   "Y016"
+  ]
+ },
+ {
+  "key": "px_people_walking_snowy_park",
+  "file": "px_people_walking_snowy_park.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "188778",
+  "title": "winter, snow, people, walk, to stroll, landscape, winter landscape, covered in snow, trees, nature",
+  "page_url": "https://pixabay.com/videos/id-188778/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": 15.0,
+  "description": "Two people walking away along a snowy path between snow-laden trees during snowfall",
+  "tags": [
+   "people in winter"
+  ],
+  "best_for": [
+   "Y023",
+   "Y040"
+  ]
+ },
+ {
+  "key": "px_power_plant_steam_winter",
+  "file": "px_power_plant_steam_winter.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "3265281",
+  "title": "winter, snow, steam, sky, smoke, industry, energy, factory, fireplace, ecology, air, technology, pipe, fuel, towers, nature, gas",
+  "page_url": "https://pixabay.com/photos/winter-snow-steam-sky-smoke-3265281/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Thermal power plant with red-white chimneys and cooling tower, white steam plumes over a snowy road (Russia-looking)",
+  "tags": [
+   "power plant winter",
+   "district heating"
+  ],
+  "best_for": [
+   "Y013",
+   "Y014"
+  ]
+ },
+ {
+  "key": "px_river_freeze_up_slush",
+  "file": "px_river_freeze_up_slush.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "140201",
+  "title": "river, ice, flow, sludge, freeze-up, autumn, nature",
+  "page_url": "https://pixabay.com/videos/id-140201/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": 15.0,
+  "description": "Autumn freeze-up: slush ice (sludge) floating down a dark river between snowy banks",
+  "tags": [
+   "freeze-up",
+   "thin ice"
+  ],
+  "best_for": [
+   "Y026"
+  ]
+ },
+ {
+  "key": "px_river_ice_drift_spring",
+  "file": "px_river_ice_drift_spring.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "158665",
+  "title": "ice drift, river, ice, flow, spring, melting, nature",
+  "page_url": "https://pixabay.com/videos/id-158665/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": 20.0,
+  "description": "River ice drift in spring: broken floes and slush moving past snowy banks",
+  "tags": [
+   "ice drift",
+   "river ice breakup"
+  ],
+  "best_for": [
+   "Y026",
+   "Y026B"
+  ]
+ },
+ {
+  "key": "px_river_ice_floes_breakup",
+  "file": "px_river_ice_floes_breakup.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "158662",
+  "title": "ice drift, river, ice floe, melting, spring, flow, nature, landscape",
+  "page_url": "https://pixabay.com/videos/id-158662/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": 15.0,
+  "description": "Close view of ice floes and open water during river break-up",
+  "tags": [
+   "ice drift",
+   "river ice breakup"
+  ],
+  "best_for": [
+   "Y026"
+  ]
+ },
+ {
+  "key": "px_siberia_omsk_city_blocks",
+  "file": "px_siberia_omsk_city_blocks.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "4227",
+  "title": "siberia, city, omsk, russia, architecture, building, cityscape, outside",
+  "page_url": "https://pixabay.com/videos/id-4227/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": 15.0,
+  "description": "Omsk (Siberia) in sunshine: panel apartment blocks along a road with traffic",
+  "tags": [
+   "siberian city",
+   "panel blocks"
+  ],
+  "best_for": [
+   "Y007C"
+  ],
+  "place": "Omsk, Russia"
+ },
+ {
+  "key": "px_siberia_winter_embankment_city",
+  "file": "px_siberia_winter_embankment_city.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "2042636",
+  "title": "siberia, winter, embankment, siberia, siberia, siberia, siberia, siberia",
+  "page_url": "https://pixabay.com/photos/siberia-winter-embankment-2042636/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Snowy river embankment path in a Siberian city, apartment blocks and smoking chimneys on the horizon",
+  "tags": [
+   "siberian city winter",
+   "chimney steam"
+  ],
+  "best_for": [
+   "Y005",
+   "Y013"
+  ]
+ },
+ {
+  "key": "px_snowy_cars_traffic_jam",
+  "file": "px_snowy_cars_traffic_jam.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "10881",
+  "title": "traffic, snow, winter, cars, traffic jam, traffic light, busy, road, cold, ice, street, frost, transportation, season, vehicle, transport, automobile",
+  "page_url": "https://pixabay.com/videos/id-10881/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": 20.0,
+  "description": "Snow-covered cars queued in winter traffic, exhaust vapour visible",
+  "tags": [
+   "cars in cold",
+   "exhaust"
+  ],
+  "best_for": [
+   "Y018",
+   "Y019",
+   "Y020"
+  ]
+ },
+ {
+  "key": "px_snowy_parking_lot_cars",
+  "file": "px_snowy_parking_lot_cars.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "30293",
+  "title": "highway, winter, snow, parking lot, parking, cars, trucks, traffic",
+  "page_url": "https://pixabay.com/videos/id-30293/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": 15.0,
+  "description": "Snowy open parking lot under grey sky (Edmonton), few cars",
+  "tags": [
+   "car park winter"
+  ],
+  "best_for": [
+   "Y018"
+  ],
+  "place": "Edmonton, Canada"
+ },
+ {
+  "key": "px_st_petersburg_white_night_bridge",
+  "file": "px_st_petersburg_white_night_bridge.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "770411",
+  "title": "bridge, st petersburg, night, white nights",
+  "page_url": "https://pixabay.com/photos/bridge-st-petersburg-night-770411/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "St Petersburg bridge over the Neva lit at dusk during white nights, bright sky",
+  "tags": [
+   "white nights"
+  ],
+  "best_for": [
+   "Y023B"
+  ],
+  "place": "St Petersburg, Russia"
+ },
+ {
+  "key": "px_steam_pipe_industrial",
+  "file": "px_steam_pipe_industrial.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "268",
+  "title": "pipe, steam, industry, exhaust fumes, water steam, heat, hot, factory, pressure",
+  "page_url": "https://pixabay.com/videos/id-268/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": 7.0,
+  "description": "Thick white steam venting from a pipe next to power lines against blue sky",
+  "tags": [
+   "steam",
+   "heating pipes"
+  ],
+  "best_for": [
+   "Y013",
+   "Y014B"
+  ]
+ },
+ {
+  "key": "px_thermometer_snow",
+  "file": "px_thermometer_snow.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "6994937",
+  "title": "thermometer, cold, snow, winter, temperature, outdoors, frost, closeup, thermometer, thermometer, thermometer, thermometer, thermometer, temperature, temperature, temperature",
+  "page_url": "https://pixabay.com/photos/thermometer-cold-snow-winter-6994937/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Round dial thermometer (C and F) capped with snow, needle below zero",
+  "tags": [
+   "thermometer cold"
+  ],
+  "best_for": [
+   "Y001",
+   "Y022"
+  ]
+ },
+ {
+  "key": "px_thermometer_wall_frost",
+  "file": "px_thermometer_wall_frost.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "751422",
+  "title": "thermometer, winter, frost, old, cold, norway, longyearbyen, spitsbergen, thermometer, thermometer, thermometer, thermometer, thermometer",
+  "page_url": "https://pixabay.com/photos/thermometer-winter-frost-old-cold-751422/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Old wall thermometer on a blue wooden wall in Longyearbyen, scale to -40",
+  "tags": [
+   "thermometer cold"
+  ],
+  "best_for": [
+   "Y001",
+   "Y022"
+  ],
+  "place": "Longyearbyen, Svalbard"
+ },
+ {
+  "key": "px_winter_street_people_frost",
+  "file": "px_winter_street_people_frost.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "146852",
+  "title": "road, street, walking, people, winter, snow, frost, cold",
+  "page_url": "https://pixabay.com/videos/id-146852/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": 7.0,
+  "description": "Grey frosty winter day on a wide post-Soviet avenue with lamp posts; a bundled-up pedestrian walks through frame",
+  "tags": [
+   "people in winter clothes",
+   "frosty street"
+  ],
+  "best_for": [
+   "Y009",
+   "Y023"
+  ]
+ },
+ {
+  "key": "px_worker_fur_hat_snow_valves",
+  "file": "px_worker_fur_hat_snow_valves.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "2530670",
+  "title": "oil workers, in the snow, valve, strength, oil workers, oil workers, oil workers, oil workers, oil workers, valve, valve, valve",
+  "page_url": "https://pixabay.com/photos/oil-workers-in-the-snow-valve-2530670/",
+  "licence": "Pixabay Content License",
+  "attribution": "",
+  "is_yakutsk": false,
+  "duration_s": null,
+  "description": "Worker in red overalls and fur ushanka turning valves of red pipework in snow",
+  "tags": [
+   "people in winter clothing",
+   "pipes in cold"
+  ],
+  "best_for": [
+   "Y014B",
+   "Y009"
+  ]
+ }
+]

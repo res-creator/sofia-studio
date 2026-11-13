@@ -1,0 +1,51 @@
+Y001 0.955 replace: fifty -> 50
+Y002 0.975 replace: ninety -> 90
+Y003 0.943 replace: two -> 2 | replace: five -> 5
+Y004 1.000 
+Y005 0.857 replace: three hundred and fifty five thousand -> 355 000 | replace: twenty -> 20
+Y006 0.919 replace: thirty seven -> 37 | replace: forty two -> 42
+Y007 0.976 replace: fifty -> 50
+Y007B 0.974 replace: ninety percent -> 90
+Y007C 0.892 replace: twenty ten -> 2010 | replace: twenty twenty one -> 2021
+Y008 1.000 
+Y009 1.000 
+Y010 0.962 replace: stroganina -> strogonina
+Y010B 0.961 replace: two thousand five -> 2005
+Y011 0.969 replace: thirty seven -> 37
+Y011B 0.810 replace: twenty twenty three -> 2023 | replace: sixty two point seven -> 62 7 | replace: fifty -> 50 | replace: sixty four point four -> 64 4 | replace: eighteen ninety one -> 1891
+Y011C 0.843 replace: seventy one -> 71 | replace: sixty seven point seven -> 67 7 | replace: nineteen thirty three -> 1933
+Y012 1.000 
+Y013 1.000 
+Y014 0.955 replace: twenty seventeen -> 2017
+Y014B 1.000 
+Y015 1.000 
+Y016 0.900 replace: twenty -> 20 | replace: fifty -> 50 | replace: twenty seventy -> 20 70
+Y017 0.972 replace: twenty seventeen -> 2017
+Y018 1.000 
+Y019 0.985 replace: fifty -> 50
+Y020 0.849 delete: remember the boiling water that turned to snow thousands of running ->  | replace: forty -> 40 | replace: two hundred -> 200
+Y021 1.000 
+Y022 0.940 replace: forty five -> 45 | replace: fifty -> 50
+Y023 0.882 replace: forty -> 40 | replace: forty two -> 42 | replace: forty four -> 44
+Y023B 0.972 replace: twenty -> 20
+Y024 0.972 replace: lena -> lina
+Y025 1.000 
+Y026 1.000 
+Y026B 0.959 replace: twenty twenty three -> 2023
+Y027 0.917 replace: fourteen -> 14 | replace: forty -> 40 | replace: twenty twenty eight -> 2028
+Y028 1.000 
+Y029 1.000 
+Y030 1.000 
+Y031 0.935 replace: eighteen twenty eight -> 1828
+Y032 0.857 replace: nine -> 9 | replace: eighteen thirty seven -> 1837 | replace: a hundred and sixteen -> 116
+Y033 0.945 replace: shergin's -> shergen's | replace: two hundred -> 200
+Y034 1.000 
+Y035 1.000 
+Y036 0.978 replace: yakutsk -> yakuts
+Y037 0.925 replace: shergin's -> sheregan's | replace: nineteen thirties -> 1930s
+Y038 0.954 replace: sixty one -> 61
+Y039 1.000 
+Y040 0.917 replace: fifty -> 50 | replace: past -> pass | replace: twenty -> 20
+Y041 1.000 
+Y042 0.848 replace: thirty eight -> 38 | replace: hottest -> hardest | replace: a hundred and three -> 103
+Y043 1.000 

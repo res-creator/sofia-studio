@@ -49,7 +49,7 @@ function overlays(ctx, t, d, p) {
       chip(ctx, o.text, o.x, o.y, { size: o.size || 38, align: o.align || 'center', bg: o.bg, color: o.color2 }); ctx.restore(); }
     else if (o.type === 'tag') coordTag(ctx, o.text, o.x, o.y, a);
     else if (o.type === 'lower') lower(ctx, t, o, a);
-    else if (o.type === 'timer') { const u = clamp(seg(t, at, at + (o.dur || 3))); const sec = lerp(o.from || 0, o.to, E.inOut(u)); const mm = Math.floor(sec / 60), ss = Math.floor(sec % 60);
+    else if (o.type === 'timer') { const u = clamp(seg(t, at, at + (o.dur || 3))); const sec = lerp(o.from || 0, o.to, o.lin ? u : E.inOut(u)); const mm = Math.floor(sec / 60), ss = Math.floor(sec % 60);
       ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = 'rgba(11,20,38,0.78)'; rr(ctx, W - 330, 40, 290, 86, 8); ctx.fill(); ctx.fillStyle = C.red; ctx.beginPath(); ctx.arc(W - 296, 83, 12 * (0.6 + 0.4 * Math.abs(Math.sin(t * 3))), 0, 7); ctx.fill();
       text(ctx, String(mm).padStart(2, '0') + ':' + String(ss).padStart(2, '0'), W - 60, 104, { size: 60, font: F.monoB, align: 'right', color: C.cream }); ctx.restore(); }
     else if (o.type === 'thermo') { const v = o.v; ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = 'rgba(11,20,38,0.78)'; rr(ctx, 40, 40, 250, 86, 8); ctx.fill();
