@@ -2681,3 +2681,38 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "mumtypes" — rubric types4 (~62 s). heroine = Jessica; mum = Alice (gb); tip plate = Lily (gb, 'tipgb')
+# chapter labels (drawn by renderer): 01 · SHOULD · 02 · MUST · 03 · HAVE TO · 04 · HAD BETTER
+# type labels: МАМА-СОВЕТНИЦА · МАМА-ГЕНЕРАЛ · МАМА-ЛОГИСТ · МАМА-ШПИОН
+CAST.update({
+    "tipgb": dict(voice="bf_alice", speed=1.0, lang="en-gb", el="pFZP5JQG7iQjIQuC4Bku"),   # British tip plate (Lily)
+    "mumt1": dict(voice="bf_alice", speed=1.0, lang="en-gb", el="Xb7hH8MSUJpSbSDYk0k2"),   # mumtypes: the mum (Alice)
+})
+EP["mumtypes"] = dict(
+    title='4 типа мам, когда ты не звонишь', rubric='types4',
+    hook_title=[['4 ТИПА МАМ', 'd'], ['27 ЗВОНКОВ', 'p'], ['КАКАЯ ТВОЯ?', 'd']],
+    cover_b='КАК ЭТО ПО-АНГЛИЙСКИ?',
+    absurd='Кот героини при каждом звонке сам подходит к телефону, кладёт на него лапу и вздыхает, как уставший секретарь.',
+    comment_q='Какая мама у тебя? Напиши номер: один, два, три или четыре.',
+    lines=[
+        ('hook_h', 'her', "[exhausted] Twenty-seven missed calls... Which mum is it today?", 'Двадцать семь пропущенных… Какая мама сегодня?'),
+        ('hook', 'nar', 'Четыре типа мам — четыре английских слова. Узнай свою и напиши номер в комментах.', ''),
+        ('t1_mum', 'mumt1', "[sweetly] Darling, you should call more often.", 'Солнышко, тебе бы почаще звонить.'),
+        ('t1_tip', 'tipgb', 'should', ''),
+        ('t1_nar', 'nar', 'Should — мягкий совет. Пока ещё мягкий.', ''),
+        ('t2_mum', 'mumt1', "[firmly] You must call me every Sunday. That's the rule.", 'Ты обязана звонить мне каждое воскресенье. Это правило.'),
+        ('t2_tip', 'tipgb', 'must', ''),
+        ('t2_nar', 'nar', 'Must — это правило. Обсуждению не подлежит.', ''),
+        ('t3_mum', 'mumt1', "[hurriedly] You have to call Aunt Lena. The wedding is on Saturday!", 'Тебе надо позвонить тёте Лене, свадьба в субботу!'),
+        ('t3_tip', 'tipgb', 'have to', ''),
+        ('t3_nar', 'nar', 'Have to — не мама придумала, так сложились обстоятельства. Свадьба же.', ''),
+        ('t4_mum', 'mumt1', "[ominously] You'd better call me. I can see you're online.", 'Лучше позвони. Я вижу, что ты в сети.'),
+        ('t4_tip', 'tipgb', 'had better', ''),
+        ('t4_nar', 'nar', 'Had better — предупреждение. Последнее.', ''),
+        ('end_h', 'her', "[brightly] Hi, Mum!", 'Привет, мам!'),
+        ('end_mum', 'mumt1', "[breathlessly] Can't talk now, darling. I'm at yoga. Call me later.", 'Не могу говорить, солнышко. Я на йоге. Позвони попозже.'),
+        ('moral', 'nar', 'Мораль: мама звонит двадцать семь раз, чтобы на двадцать восьмой не взять трубку.', ''),
+        ('outro', 'nar', 'Сохрани, чтобы не забыть все четыре слова!', ''),
+        ('ask', 'nar', 'Какая мама у тебя? Напиши номер: один, два, три или четыре.', ''),
+    ],
+)
