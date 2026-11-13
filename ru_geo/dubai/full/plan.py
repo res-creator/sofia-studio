@@ -6,6 +6,8 @@ ALL = json.load(open(f'{J}/vo_full/lines.json'))
 INTRO_LINES = [i for i in ALL if i['id'].startswith('c00_')]
 LINES = [i for i in ALL if not i['id'].startswith('c00_')]
 INTERS = json.load(open(f'{J}/vo_full/interludes.json'))
+# правило владелицы (13.11): паузы 4–8 с, сразу после названия паузы нет
+INTERS = [dict(x, sec=min(8, max(4, x['sec'] // 2))) for x in INTERS if not (x['after'] or '').startswith('c00_')]
 SHOTS = {}
 for part in 'ABCD':
     p = f'{J}/shots/{part}.json'
@@ -18,7 +20,7 @@ MUS = f'{RG}/data/music'
 # музыка по главам (выбор владелицы — сэмплер «Дубай»): восточные — старый Дубай и пустыня, тёплые — современный город и финал
 MUSIC = {0: ('kml/desert_city.mp3', 0.30, 0.0), 1: ('kml/mirage.mp3', 0.30, 0.0), 2: ('kml/tabuk.mp3', 0.28, 0.0), 3: ('kml/desert_city.mp3', 0.30, 60.0),
          4: ('kml/inspired.mp3', 0.26, 0.0), 5: ('kml/lasting_hope.mp3', 0.26, 0.0), 6: ('kml/atlantean_twilight.mp3', 0.28, 0.0), 7: ('kml/dreamer.mp3', 0.26, 0.0)}
-V0, GAP_I, GAP, CARD, HOLD_TITLE, TAIL = 0.6, 0.45, 0.7, 2.6, 5.0, 14.0
+V0, GAP_I, GAP, CARD, HOLD_TITLE, TAIL = 0.6, 0.45, 0.7, 2.6, 4.0, 14.0
 EXTRAS = {}      # (абзац, № кадра) → dict(loc='ДЕЙРА · ДУБАЙ', win=True)
 NOTES = []       # (абзац, сдвиг, длительность, текст, (x, y), (x2, y2))
 NUMCARDS = []    # (абзац, сдвиг, длительность, крупно, мелко)

@@ -38,6 +38,19 @@ def frames(path, n):
     finally:
         p.stdout.close(); p.kill(); p.wait()
 
+def still(path, n):
+    """Неподвижное фото: на весь кадр (обрезка по центру) или, если маленькое/вертикальное, — карточкой на размытом фоне."""
+    im = Image.open(path).convert('RGB'); iw, ih = im.size
+    if iw / ih < 1.15 or max(iw / W, ih / H) < 0.6:
+        bg = im.resize((W, H), Image.BILINEAR).filter(ImageFilter.GaussianBlur(40 * K)); bg = Image.eval(bg, lambda v: int(v * 0.55))
+        sc = min(W * 0.86 / iw, H * 0.80 / ih); fg = im.resize((int(iw * sc), int(ih * sc)), Image.LANCZOS)
+        bg.paste(fg, ((W - fg.width) // 2, (H - fg.height) // 2)); out = bg
+    else:
+        sc = max(W / iw, H / ih); im = im.resize((int(iw * sc + 0.5), int(ih * sc + 0.5)), Image.LANCZOS)
+        x, y = (im.width - W) // 2, (im.height - H) // 2; out = im.crop((x, y, x + W, y + H))
+    a = np.asarray(out)
+    for _ in range(n): yield a
+
 def photo_grade(a):
     a = a.astype(np.float32); l = a.mean(axis=2, keepdims=True)
     a = l + (a - l) * 1.15; a = (a - 128) * 1.06 + 124
@@ -212,7 +225,7 @@ def render(job):
     for si in range(i0, i1):
         s = SEGS[si]; f0 = round(s['t0'] * FPS); n = round((s['t0'] + s['dur']) * FPS) - f0
         if s.get('img'):   # фото Commons: плавное движение камеры + тот же цвет
-            src = (np.frombuffer(x, np.uint8).reshape(H, W, 3) for x in motion.frames(os.path.join(DATA, 'commons_img', s['ss']), n / FPS, mode='auto', W=W, H=H, FPS=FPS, seed=si, fit='auto'))
+            src = still(os.path.join(DATA, 'commons_img', s['ss']), n)   # фото неподвижно (правило владелицы)
             src = (photo_grade(x) for x in src)
         else:
             src = frames(f'{SEG}/{s["id"]}_{s["ss"]}.mp4', n)
