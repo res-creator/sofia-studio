@@ -2681,3 +2681,35 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "carpet" — rubric nashe4 (60-70 s). heroine = Jessica, British guest Rupert = Daniel
+# option labels (drawn by renderer): 1 В ЛОБ · 2 ВЕЖЛИВО · 3 КАК НОСИТЕЛЬ · 4 КОРОЛЕВСКИЙ
+CAST.update({
+    "guest2": dict(voice="bm_daniel", speed=1.0, lang="en-gb", el="onwK4e9ZLuTAKqWW03F9"),   # carpet: British guest Rupert staring at the wall carpet (Daniel)
+})
+EP["carpet"] = dict(
+    title='Британец: «Зачем ковёр на стене?»', rubric='nashe4',
+    hook_title=[['БРИТАНЕЦ В ГОСТЯХ', 'd'], ['КОВЁР НА СТЕНЕ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    cover_b='ОБЪЯСНИШЬ ПО-АНГЛИЙСКИ?',
+    absurd='В узоре ковра прячется лицо, которое моргает, когда Руперт отворачивается.',
+    comment_q='У вас был ковёр на стене?',
+    lines=[
+        ('hook_g', 'guest2', "[bewildered] Why is your carpet... on the wall?", 'Почему твой ковёр… на стене?'),
+        ('hook', 'nar', 'Британец впервые увидел ковёр на стене. Четыре объяснения — выбирай своё.', ''),
+        ('o1_h', 'her', "[flatly] Wall cold. Carpet warm. Done.", 'Стена холодная. Ковёр тёплый. Всё.'),
+        ('o1_g', 'guest2', "[amused] So your wall wears a jumper?", 'То есть твоя стена носит свитер?'),
+        ('o1_nar', 'nar', 'В лоб — и стена теперь в свитере.', ''),
+        ('o2_h', 'her', "[politely] It is decoration. It is normal.", 'Это украшение. Это нормально.'),
+        ('o2_g', 'guest2', "[sadly] Normal? My floor feels betrayed.", 'Нормально? Мой пол чувствует себя преданным.'),
+        ('o2_nar', 'nar', 'Вежливо — а пол обиделся.', ''),
+        ('o3_h', 'her', "[warmly] It's a family heirloom. It keeps the room warm and blocks out noise.", 'Это семейная реликвия. Он держит тепло и глушит шум.'),
+        ('o3_g', 'guest2', "[impressed] An heirloom! So it's basically art.", 'Реликвия! Так это, по сути, искусство.'),
+        ('o3_nar', 'nar', 'Как носитель: история плюс польза. Запоминай:', ''),
+        ('o3_tip', 'tip', "It's a family heirloom.", ''),
+        ('o4_h', 'her', "[tenderly] Rupert, whole generations of us fell asleep tracing those patterns. That carpet raised more children than any nursery.", 'Руперт, целые поколения засыпали, водя пальцем по этим узорам. Этот ковёр вырастил больше детей, чем любой детский сад.'),
+        ('o4_g', 'guest2', "[reverently] ...May I touch it? Respectfully?", '…Можно его потрогать? С уважением?'),
+        ('end_g', 'guest2', "[contentedly] Best thing I ever bought. The neighbours can't hear my drum kit.", 'Лучшая покупка в моей жизни. Соседи не слышат мою барабанную установку.'),
+        ('moral', 'nar', 'Мораль: ковёр на стене видел больше семейных тайн, чем любой психолог.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши в комментариях!', ''),
+        ('ask', 'nar', 'У вас был ковёр на стене?', ''),
+    ],
+)
