@@ -287,8 +287,8 @@ function card(ctx, t, sc) {
   const u = t - nar.t + 0.15; if (u < 0) return;
   const out = P(t, sc.e - 0.35, sc.e - 0.05);
   const k = eBack(P(u, 0, 0.35), 1.6);
-  const x = 90, w = 900, y = 330 + (1 - k) * -80 - eIn(out) * 900, h = LAYOUT === 'v2' ? cardHeight(CFG.cards[sc.id]) : 470;
-  ctx.save(); ctx.globalAlpha = clamp(u / 0.15);
+  const fade = !!CFG.card_fade, x = 90, w = 900, y = 330 + (1 - k) * -80 - (fade ? 0 : eIn(out) * 900), h = LAYOUT === 'v2' ? cardHeight(CFG.cards[sc.id]) : 470;
+  ctx.save(); ctx.globalAlpha = clamp(u / 0.15) * (fade ? 1 - out : 1);   // cfg.card_fade: the card fades out in place instead of flying up under the level bar
   ctx.translate(540, y + h / 2); ctx.rotate((1 - k) * -0.08); ctx.translate(-540, -(y + h / 2));
   ctx.fillStyle = 'rgba(62,71,30,.28)'; rr(ctx, x + 12, y + 18, w, h, 44); ctx.fill();
   ctx.fillStyle = C.white; ctx.strokeStyle = C.oliveD; ctx.lineWidth = 8; rr(ctx, x, y, w, h, 44); ctx.fill(); ctx.stroke();

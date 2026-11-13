@@ -2681,3 +2681,38 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "salo2" — rubric comment_reply4 (60-70 s). heroine = Jessica, party guest Nigel = Charlie, Nigel's granny = Alice
+# slug "salo" already exists in eps/, so this one is "salo2"
+# plate (comment): «Девочки, я на вечеринке в Лондоне, принесла сало — а как его вообще назвать?!»
+# option labels (drawn by renderer): 1 Холодно · 2 С юмором · 3 Как носитель · 4 Королевский
+CAST.update({
+    "party1": dict(voice="am_fenrir", speed=1.0, lang="en-gb", el="IKne3meq5aSn9XLyUdCD"),   # salo2: London party guest Nigel (Charlie)
+    "gran4": dict(voice="bf_alice", speed=1.0, lang="en-gb", el="Xb7hH8MSUJpSbSDYk0k2"),   # salo2: Nigel's granny with lardo in her handbag (Alice)
+})
+EP["salo2"] = dict(
+    title='Как будет «сало» по-английски?', rubric='comment_reply4',
+    hook_title=[['ВЫ СПРОСИЛИ:', 'd'], ['САЛО', 'p'], ['КАК НАЗВАТЬ?', 'd']],
+    cover_b='КАК ЭТО ПО-АНГЛИЙСКИ?',
+    absurd='Хозяйский кот на шкафу не сводит глаз с сала — и уже повязал себе салфетку.',
+    comment_q='Сало с чесноком или без?',
+    lines=[
+        ('hook_p', 'party1', "[curiously] Ooh, what's this? White cheese? Soap?", 'О, а это что? Белый сыр? Мыло?'),
+        ('hook', 'nar', 'Вы спрашивали — отвечаю. Как назвать сало, чтобы британец попросил добавки?', ''),
+        ('o1_h', 'her', "[bluntly] Fat. Pig. Eat.", 'Жир. Свинья. Ешь.'),
+        ('o1_p', 'party1', "[uneasily] ...I'll stick to crisps, thanks.", '…Я, пожалуй, лучше чипсы, спасибо.'),
+        ('o1_nar', 'nar', 'Холодно — и бутерброд вернулся на тарелку.', ''),
+        ('o2_h', 'her', "[playfully] It's like bacon, but it never went to the gym.", 'Это как бекон, только он ни разу не ходил в спортзал.'),
+        ('o2_p', 'party1', "[laughing] Lazy bacon! Love it. Still no idea what it is.", 'Ленивый бекон! Обожаю. Но всё ещё не понимаю, что это.'),
+        ('o2_nar', 'nar', 'С юмором — смешно, но есть всё равно страшно.', ''),
+        ('o3_h', 'her', "[warmly] It's salo — cured pork fat. Try it on rye bread with garlic.", 'Это сало — солёное свиное сало. Попробуй на ржаном хлебе с чесноком.'),
+        ('o3_p', 'party1', "[delighted] Cured pork fat... oh wow, that's gorgeous!", 'Солёное свиное сало… ого, это божественно!'),
+        ('o3_nar', 'nar', 'Как носитель: само слово salo говорим как есть, как sushi, и объясняем. Запоминай:', ''),
+        ('o3_tip', 'tip', 'cured pork fat', ''),
+        ('o4_h', 'her', "[grandly] Nigel, this is salo. It's crossed borders, fed generations of grandchildren and never needed a passport. Show some respect — take two.", 'Найджел, это сало. Оно пересекало границы, кормило поколения внуков, и ему ни разу не понадобился паспорт. Прояви уважение — возьми два.'),
+        ('o4_p', 'party1', "[nervously] Two? I'm frightened, but I'm hungry.", 'Два? Мне страшно, но я голодный.'),
+        ('end_g', 'gran4', "[sweetly] Salo? Darling, I've kept lardo in my handbag since 1962.", 'Сало? Дорогой, я ношу лардо в сумочке с 1962 года.'),
+        ('moral', 'nar', 'Мораль: сало не переводят. Сало дают попробовать.', ''),
+        ('outro', 'nar', 'Какой ответ твой: один, два, три или четыре? И пиши свою ситуацию — разберём!', ''),
+        ('ask', 'nar', 'Сало с чесноком или без?', ''),
+    ],
+)
