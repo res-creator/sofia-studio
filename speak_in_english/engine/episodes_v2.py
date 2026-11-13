@@ -2681,3 +2681,35 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "pickles" — rubric nashe4 (60-70 s). heroine = Jessica, customs officer Pike = Brian
+# option labels (drawn by renderer): 1 В ЛОБ · 2 ВЕЖЛИВО · 3 КАК НОСИТЕЛЬ · 4 КОРОЛЕВСКИЙ
+CAST.update({
+    "cust1": dict(voice="am_adam", speed=1.0, lang="en-us", el="nPczCjzI2devNBz1zQrb"),   # pickles: customs officer Pike (Brian)
+})
+EP["pickles"] = dict(
+    title='Таможня нашла банку огурцов', rubric='nashe4',
+    hook_title=[['ТАМОЖНЯ НАШЛА', 'd'], ['БАНКУ ОГУРЦОВ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    cover_b='А ПО-АНГЛИЙСКИ?',
+    absurd='На полке конфиската за офицером — садовый гном в солнечных очках с биркой «SUSPICIOUS».',
+    comment_q='Что везла твоя мама в ручной клади?',
+    lines=[
+        ('hook_c', 'cust1', "[suspiciously] Madam, what is this... floating thing?", 'Мадам, что это… плавает?'),
+        ('hook', 'nar', 'Таможня против бабушкиной банки. Какой ответ спасёт огурцы?', ''),
+        ('o1_h', 'her', "[defensively] Cucumber. Grandma. Mine!", 'Огурец. Бабушка. Моё!'),
+        ('o1_c', 'cust1', "[alarmed] Your grandma is in the jar?", 'Ваша бабушка — в банке?'),
+        ('o1_nar', 'nar', 'В лоб — и бабушка уже в розыске.', ''),
+        ('o2_h', 'her', "[nervously] It is a vegetable, I promise.", 'Это овощ, честное слово.'),
+        ('o2_c', 'cust1', "[doubtfully] Vegetables don't swim, madam.", 'Овощи не плавают, мадам.'),
+        ('o2_nar', 'nar', 'Вежливо — а огурец всё равно под подозрением.', ''),
+        ('o3_h', 'her', "[calmly] They're homemade pickles, for personal use. Just cucumbers, salt and dill.", 'Это домашние соленья, для себя. Просто огурцы, соль и укроп.'),
+        ('o3_c', 'cust1', "[relieved] Ah, pickles! Why didn't you say?", 'А, соленья! Что ж вы сразу не сказали?'),
+        ('o3_nar', 'nar', 'Как носитель: что это, из чего и для кого. Запоминай:', ''),
+        ('o3_tip', 'tip', "It's for personal use.", ''),
+        ('o4_h', 'her', "[proudly] Officer, that jar has survived three winters and two family weddings. Your scanner is the least scary thing it's ever met.", 'Офицер, эта банка пережила три зимы и две семейные свадьбы. Ваш сканер — самое нестрашное, что она видела.'),
+        ('o4_c', 'cust1', "[solemnly] ...The jar may proceed.", '…Банка может проходить.'),
+        ('end_c', 'cust1', "[crunching, impressed] Tell your grandma... we need a second sample.", 'Передайте бабушке… нам нужен второй образец.'),
+        ('moral', 'nar', 'Мораль: границы закрываются, а бабушкины банки — никогда.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши в комментариях!', ''),
+        ('ask', 'nar', 'Что везла твоя мама в ручной клади?', ''),
+    ],
+)
