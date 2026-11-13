@@ -386,6 +386,27 @@ if EPN in ("rich", "busy", "avoidparty", "tour", "splitbill", "photo"):  # batch
             t = T(0.13); f = 440 * 2 ** ((m - 69) / 12); put(y, np.sign(np.sin(2*np.pi*f*t)) * 0.35 * np.minimum((0.13 - t)*120, 1), k*0.13, 0.5)
         return norm(lp(y, 4000), 0.55)
     SFX.update(ring=_ring(), doorbell=_doorbell(), cheer=_cheer(), vroom=_vroom(), chirp=_chirp(), toy=_toy())
+if EPN == "mumtypes":  # phone sounds + the cat's tired sigh for this episode only (own rng, other episodes mix exactly as before)
+    _r = np.random.default_rng(21)
+    def _vibe():
+        d = 0.42; t = T(d); x = np.sin(2*np.pi*165*t) * (0.6 + 0.4*np.sign(np.sin(2*np.pi*24*t))) + 0.25*bp(_r.standard_normal(len(t)), 120, 900)
+        return norm(lp(x, 1200) * np.minimum(t*80, 1) * np.minimum((d - t)*30, 1), 0.5)
+    def _tap():
+        t = T(0.08); return norm(bp(_r.standard_normal(len(t)), 800, 4000) * np.exp(-t*90) + 0.5*np.sin(2*np.pi*900*t)*np.exp(-t*70), 0.5)
+    def _sigh():
+        d = 1.0; t = T(d); x = bp(_r.standard_normal(len(t)), 300, 2200) * np.sin(np.pi*np.minimum(t/d, 1))**1.5 * np.exp(-t*0.8)
+        x = 0.6*lp(x, 1400) + 0.4*lp(x, 700)*(1 - t/d); return norm(x, 0.45)
+    def _ring():
+        y = np.zeros(int(1.3*SR))
+        for k in range(2):
+            t = T(0.4); x = (np.sin(2*np.pi*425*t) + 0.6*np.sin(2*np.pi*450*t)) * np.minimum(t*200, 1) * np.minimum((0.4 - t)*60, 1); put(y, x, k*0.6, 0.5)
+        return norm(y, 0.5)
+    def _hangup():
+        y = np.zeros(int(1.0*SR))
+        for k in range(3):
+            t = T(0.18); put(y, np.sin(2*np.pi*620*t) * np.minimum(t*400, 1) * np.minimum((0.18 - t)*300, 1), k*0.3, 0.5)
+        return norm(y, 0.5)
+    SFX.update(vibe=_vibe(), tap=_tap(), sigh=_sigh(), ring=_ring(), hangup=_hangup(), paper=paper(), marker=marker())
 def note(m, key=0): return 440 * 2 ** ((m + key - 69) / 12)
 def pluck(f, d, bright=1.0):
     t = T(d); ph = 2*np.pi*f*t
@@ -589,7 +610,7 @@ elif EPN in ("gym", "cancel"):
         if k % 4 == 0:
             for m in chords[bar]: put(music, pluck(note(m + 12, K), b*1.8, 0.6), t0, 0.12)
         if k % 2 == 0: put(music, pluck(note(chords[bar][(k//2) % 3] + 24, K), 0.3, 1.2), t0 + b*0.5, 0.06)
-elif EPN in ("dinner", "gift", "guest", "marry"):
+elif EPN in ("dinner", "gift", "guest", "marry", "mumtypes"):
     # cosy family waltz: oom-pah-pah + accordion-ish melody + mandolin tremolo
     bpm = 168; b = 60/bpm; K = 0
     def accord(f, d):
@@ -649,7 +670,10 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+if EPN == "mumtypes":  # types4 rubric (no levels): music off from the end of the last chapter until mum answers from the yoga mat
+    c2e = sp["t4_nar"]["t"] + sp["t4_nar"]["d"]; c2n = sp["end_mum"]["t"]
+else:
+    C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause
