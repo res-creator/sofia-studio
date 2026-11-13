@@ -2681,3 +2681,40 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "saladguests" — rubric types4 (~60 s). heroine = Jessica; Theo = Callum, Priscilla = Alice, Greg = George, Mrs Higgins = Alice (slower); tip plate = Lily (gb, 'tipgb')
+# chapter labels (drawn by renderer): 01 · ANOTHER · 02 · ENOUGH · 03 · TOO MUCH · 04 · A LITTLE
+# type labels: ГОСТЬ «ЕЩЁ ОДНУ» · ГОСТЬ «ХВАТИТ» · ГОСТЬ «ПЕРЕБОР» · ГОСТЬ «ЧУТЬ-ЧУТЬ»
+CAST.update({
+    "tipgb": dict(voice="bf_alice", speed=1.0, lang="en-gb", el="pFZP5JQG7iQjIQuC4Bku"),    # British tip plate (Lily)
+    "theo3": dict(voice="bm_lewis", speed=1.0, lang="en-gb", el="N2lVS1w4EtoT3dr4eOWO"),    # saladguests: Theo (Callum)
+    "prisc1": dict(voice="bf_emma", speed=1.05, lang="en-gb", el="Xb7hH8MSUJpSbSDYk0k2"),   # saladguests: Priscilla (Alice, brisker)
+    "gregs1": dict(voice="bm_george", speed=1.0, lang="en-gb", el="JBFqnCBsd6RMkjVDRZzb"),  # saladguests: Greg (George)
+    "higg1": dict(voice="bf_alice", speed=0.92, lang="en-gb", el="Xb7hH8MSUJpSbSDYk0k2"),   # saladguests: Mrs Higgins (Alice, softer/slower)
+})
+EP["saladguests"] = dict(
+    title='4 типа гостей у таза салата', rubric='types4',
+    hook_title=[['4 ТИПА ГОСТЕЙ', 'd'], ['ТАЗИК САЛАТА', 'p'], ['КТО ТЫ?', 'd']],
+    cover_b='А ПО-АНГЛИЙСКИ СКАЖЕШЬ?',
+    absurd='У таза с салатом свой стул, салфетка на «шее» и праздничный бумажный колпак.',
+    comment_q='Какой ты гость? Один, два, три или четыре?',
+    lines=[
+        ('hook_h', 'her', "[cheerfully] Who wants more salad?", 'Кому ещё салата?'),
+        ('hook', 'nar', 'Четыре типа гостей у таза салата. Ты какой номер? Пиши в комменты.', ''),
+        ('t1_theo', 'theo3', "[hopefully] Can I have another plate?", 'Можно ещё одну тарелку?'),
+        ('t1_tip', 'tipgb', 'another', ''),
+        ('t1_nar', 'nar', 'Another — ещё одну. И ещё одну. И ещё.', ''),
+        ('t2_prisc', 'prisc1', "[politely] That's enough, thank you!", 'Достаточно, спасибо!'),
+        ('t2_tip', 'tipgb', 'enough', ''),
+        ('t2_nar', 'nar', 'Enough — достаточно. Хозяйка этого слова не слышит.', ''),
+        ('t3_greg', 'gregs1', "[groaning] This is too much... Oh, go on then, one more spoonful.", 'Это слишком много… Ну ладно, уговорили, ещё ложечку.'),
+        ('t3_tip', 'tipgb', 'too much', ''),
+        ('t3_nar', 'nar', 'Too much — слишком много. Но ложечку ещё можно.', ''),
+        ('t4_higg', 'higg1', "[shyly] Just a little, please.", 'Мне чуть-чуть, пожалуйста.'),
+        ('t4_tip', 'tipgb', 'a little', ''),
+        ('t4_nar', 'nar', 'A little — немножко. В переводе хозяйки — полтаза.', ''),
+        ('end_theo', 'theo3', "[whispering] Nobody saw anything.", 'Никто ничего не видел.'),
+        ('moral', 'nar', 'Мораль: салат на следующий день вкуснее, потому что его едят без свидетелей.', ''),
+        ('outro', 'nar', 'Сохрани, чтобы не забыть все четыре слова!', ''),
+        ('ask', 'nar', 'Какой ты гость? Один, два, три или четыре?', ''),
+    ],
+)
