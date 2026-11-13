@@ -386,6 +386,38 @@ if EPN in ("rich", "busy", "avoidparty", "tour", "splitbill", "photo"):  # batch
             t = T(0.13); f = 440 * 2 ** ((m - 69) / 12); put(y, np.sign(np.sin(2*np.pi*f*t)) * 0.35 * np.minimum((0.13 - t)*120, 1), k*0.13, 0.5)
         return norm(lp(y, 4000), 0.55)
     SFX.update(ring=_ring(), doorbell=_doorbell(), cheer=_cheer(), vroom=_vroom(), chirp=_chirp(), toy=_toy())
+if EPN == "taxi3s":  # quick3s pilot (New York cab): car door slam, engine roar, tyre screech, puddle splash, drips, seatbelt click, city traffic bed (own rng)
+    _r = np.random.default_rng(23)
+    def _slam():
+        t = T(0.5); x = np.sin(2*np.pi*np.cumsum(70 + 90*np.exp(-t*25))/SR)*np.exp(-t*12) + 0.6*lp(_r.standard_normal(len(t)), 1800)*np.exp(-t*30)
+        return norm(np.tanh(1.8*x), 0.8)
+    def _vroom2():
+        d = 1.5; t = T(d); f = 55 + 110*np.minimum(t/0.7, 1)**0.6 + 8*np.sin(2*np.pi*9*t)
+        x = np.sign(np.sin(2*np.pi*np.cumsum(f)/SR))*0.5 + 0.35*bp(_r.standard_normal(len(t)), 80, 1100)
+        return norm(lp(x, 1100) * np.minimum(t*12, 1) * np.minimum((d - t)*2.5, 1), 0.7)
+    def _screech():
+        d = 0.75; t = T(d); f = 1500 + 250*np.sin(2*np.pi*13*t) - 300*t
+        x = np.sin(2*np.pi*np.cumsum(f)/SR)*0.5 + 0.4*bp(_r.standard_normal(len(t)), 1500, 4500)
+        return norm(x * np.minimum(t*30, 1) * np.minimum((d - t)*6, 1), 0.55)
+    def _splash():
+        d = 0.9; t = T(d); x = bp(_r.standard_normal(len(t)), 300, 5000) * np.exp(-t*5) * np.minimum(t*80, 1)
+        y = np.zeros(int(1.2*SR)); put(y, x, 0, 1.0)
+        for k in range(6): put(y, plop(), 0.08 + k*0.09 + _r.uniform(0, 0.04), 0.25)
+        return norm(y, 0.75)
+    def _drip():
+        y = np.zeros(int(1.2*SR))
+        for k in range(3):
+            t = T(0.12); put(y, np.sin(2*np.pi*np.cumsum(900 + 900*t/0.12)/SR)*np.exp(-t*40), k*0.35, 0.6)
+        return norm(y, 0.5)
+    def _click():
+        y = np.zeros(int(0.3*SR))
+        for k, f in enumerate([2600, 1900]):
+            t = T(0.03); put(y, (np.sin(2*np.pi*f*t) + 0.6*hp(_r.standard_normal(len(t)), 3000))*np.exp(-t*180), k*0.07, 0.8)
+        return norm(y, 0.6)
+    def _traffic():
+        d = 7.5; t = T(d); x = lp(_r.standard_normal(len(t)), 500)*0.7 + 0.25*bp(_r.standard_normal(len(t)), 600, 2500)*(0.6 + 0.4*np.sin(2*np.pi*0.3*t))
+        return norm(x * np.minimum(t*2, 1) * np.minimum((d - t)*2, 1), 0.35)
+    SFX.update(slam=_slam(), vroom=_vroom2(), screech=_screech(), splash=_splash(), drip=_drip(), click=_click(), traffic=_traffic())
 def note(m, key=0): return 440 * 2 ** ((m + key - 69) / 12)
 def pluck(f, d, bright=1.0):
     t = T(d); ph = 2*np.pi*f*t
@@ -528,7 +560,7 @@ elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "re
             tt = T(0.05); put(music, hp(rng.standard_normal(len(tt)), 6000)*np.exp(-tt*70), t0 + j*b/4, 0.1 if j % 2 else 0.05)
         if (k // 4) % 2 == 1:
             for j, m in enumerate([ch[3] + 12, ch[2] + 12, ch[1] + 12]): put(music, pluck(note(m), 0.6, 1.2), t0 + (j*1.25 + 0.5)*b, 0.07)
-elif EPN in ("restaurant", "loan", "date", "kyle", "cantsayno", "rich", "splitbill"):
+elif EPN in ("restaurant", "loan", "date", "kyle", "cantsayno", "rich", "splitbill", "taxi3s"):
     # cosy bistro swing: brushed snare, walking bass, muted piano comping, glock hook
     bpm = 120; b = 60/bpm; K = 0
     def glock(f, d=0.8):
@@ -649,7 +681,10 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+if EPN == "taxi3s":  # quick3s pilot (no levels): music off from the twist (she runs to the locked office) until the score narrator
+    c2e = next(x for x in TL["scenes"] if x["id"] == "end")["s"] + 0.1; c2n = sp["score"]["t"] - 0.1
+else:
+    C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause
