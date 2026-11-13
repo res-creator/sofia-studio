@@ -2681,3 +2681,35 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "accent" — rubric answers4 (60-70 s). heroine = Jessica, colleague Hugo = Will
+# option labels (drawn by renderer): 1 В лоб · 2 Вежливо · 3 Как носитель · 4 Королевский
+CAST.update({
+    "coll3": dict(voice="am_michael", speed=1.0, lang="en-gb", el="bIHbv24MWmeRgasZH58o"),   # accent: colleague Hugo who mocks her accent (Will)
+})
+EP["accent"] = dict(
+    title='Носитель передразнил твой акцент', rubric='answers4',
+    hook_title=[['КОЛЛЕГА ДРАЗНИТ', 'd'], ['ТВОЁ «R-R-R»', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    cover_b='СКАЖЕШЬ ПО-АНГЛИЙСКИ?',
+    absurd='На кулере сидит попугай отдела в галстуке и повторяет за всеми только последнее слово.',
+    comment_q='Тебя дразнили за акцент — да или нет?',
+    lines=[
+        ('hook_c', 'coll3', "[mocking, rolling the R] Rrreally? Verrry interrresting!", 'Пррравда? Оченнннь интерррресно!'),
+        ('hook', 'nar', 'Тебя передразнили при всех. Четыре ответа — от обиды до нокаута.', ''),
+        ('o1_h', 'her', "[angrily] Stop! Not funny! You bad!", 'Хватит! Не смешно! Ты плохой!'),
+        ('o1_c', 'coll3', "[theatrically] Bad? It's a tribute!", 'Плохой? Это же дань уважения!'),
+        ('o1_nar', 'nar', 'В лоб — а он уже раскланивается.', ''),
+        ('o2_h', 'her', "[quietly] Please, don't do my accent.", 'Пожалуйста, не изображай мой акцент.'),
+        ('o2_c', 'coll3', "[innocently] What accent? I can't hear anything, rrreally.", 'Какой акцент? Ничего не слышу, пррравда.'),
+        ('o2_nar', 'nar', 'Вежливо — и ещё одна «R» в кофе.', ''),
+        ('o3_h', 'her', "[dryly] Was that meant to be me? Don't give up the day job.", 'Это должна была быть я? Не бросай основную работу.'),
+        ('o3_c', 'coll3', "[sheepishly] ...Fair. That was terrible.", '…Справедливо. Это было ужасно.'),
+        ('o3_nar', 'nar', 'Как носитель: сухой британский юмор. Запоминай:', ''),
+        ('o3_tip', 'tip', "Don't give up the day job.", ''),
+        ('o4_h', 'her', "[sweetly] Lovely. I speak two languages with an accent, Hugo. You speak one — and still can't say 'Worcestershire'.", 'Прелестно. Я говорю на двух языках с акцентом, Хьюго. Ты — на одном и до сих пор не можешь сказать «Вустершир».'),
+        ('o4_c', 'coll3', "[struggling] Wuss... Wor-sester... I need a minute.", 'Вус… Вор-сес… Мне нужна минутка.'),
+        ('end_c', 'coll3', "[defeated] Zdra... zdrast... Let's just go with hello.", 'Здра… здраст… Давай просто «привет».'),
+        ('moral', 'nar', 'Мораль: акцент — не ошибка. Это справка, что ты знаешь два языка.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши в комментариях!', ''),
+        ('ask', 'nar', 'Тебя дразнили за акцент — да или нет?', ''),
+    ],
+)
