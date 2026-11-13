@@ -308,6 +308,23 @@ def chime():
     return norm(y, 0.6)
 SFX = dict(gasp=gasp(), zip=zipfx(), rimshot=rimshot(), squeak=squeak(), dressup=dressup(), chime=chime(), strain=creak(), coo=coo(), choo=choo(), bark=bark(), umbrella=umbrella_fx(), tada=tada(), knock=knock(), creak=creak(), riff=riff(), knob=knob(), boom=boom(), feather=feather(), clapclap=clapclap(), powerdown=powerdown(), snip=snip1(), snips=snips(), clipper=clipper(), hairdryer=hairdryer(), spin=spin(), register=register(), plop=plop(), thud=thud(), gulp=gulp(), boing=boing(), nope=nope(), cuckoo=cuckoo(), whoosh=whoosh(), impact=impact(), impact_soft=impact(True), pop=pop(), stamp=stamp(), sparkle=sparkle(), blink=blink(), brow=brow(), buzz=buzz(), ding=ding(),
            cricket=cricket(), tick=tick(), deflate=deflate(), riser_short=riser_short(), clank=clank(), scratch=scratch(), drop=drop(), bell=bell(), lift_ding=lift_ding(), doors=doors(), hum=hum())
+if EPN == "octopus":  # water pour, splash, slurp, squelch for this episode only (own rng, so other episodes mix exactly as before)
+    _r = np.random.default_rng(23)
+    def _pour():
+        d = 1.2; t = T(d); x = bp(_r.standard_normal(len(t)), 500, 3500) * (0.6 + 0.4*np.sin(2*np.pi*9*t)**2)
+        for k in range(14):
+            tt = T(0.06); b = np.sin(2*np.pi*np.cumsum(500 + 900*_r.random() + 1500*tt/0.06)/SR)*np.exp(-tt*50); i = int(_r.uniform(0, d - 0.06)*SR); x[i:i+len(b)] += b*0.6
+        return norm(x * np.minimum(t*10, 1) * np.minimum((d - t)*6, 1), 0.5)
+    def _splash():
+        d = 0.6; t = T(d); x = bp(_r.standard_normal(len(t)), 700, 6000) * np.exp(-t*7) * np.minimum(t*200, 1)
+        return norm(x, 0.6)
+    def _slurp():
+        d = 0.9; t = T(d); f = 300 + 500*(t/d); x = bp(_r.standard_normal(len(t)), 600, 2600) * (0.5 + 0.5*np.sin(2*np.pi*np.cumsum(f/40)/SR*40)) + 0.3*np.sin(2*np.pi*np.cumsum(f)/SR)
+        return norm(x * np.minimum(t*12, 1) * np.minimum((d - t)*8, 1), 0.5)
+    def _squelch():
+        d = 0.35; t = T(d); x = np.sin(2*np.pi*np.cumsum(220 + 380*np.sin(np.pi*t/d))/SR) * np.sin(np.pi*t/d) + 0.4*bp(_r.standard_normal(len(t)), 300, 1500)*np.sin(np.pi*t/d)
+        return norm(lp(x, 2500), 0.55)
+    SFX.update(pour=_pour(), splash=_splash(), slurp=_slurp(), squelch=_squelch())
 if EPN in ("checkout", "password", "rich", "busy"):  # self-checkout sounds for this episode only (own rng, so other episodes mix exactly as before)
     _r = np.random.default_rng(12)
     def _beep():
@@ -528,7 +545,7 @@ elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "re
             tt = T(0.05); put(music, hp(rng.standard_normal(len(tt)), 6000)*np.exp(-tt*70), t0 + j*b/4, 0.1 if j % 2 else 0.05)
         if (k // 4) % 2 == 1:
             for j, m in enumerate([ch[3] + 12, ch[2] + 12, ch[1] + 12]): put(music, pluck(note(m), 0.6, 1.2), t0 + (j*1.25 + 0.5)*b, 0.07)
-elif EPN in ("restaurant", "loan", "date", "kyle", "cantsayno", "rich", "splitbill"):
+elif EPN in ("restaurant", "loan", "date", "kyle", "cantsayno", "rich", "splitbill", "octopus"):
     # cosy bistro swing: brushed snare, walking bass, muted piano comping, glock hook
     bpm = 120; b = 60/bpm; K = 0
     def glock(f, d=0.8):
@@ -649,7 +666,10 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+if EPN == "octopus":  # useful4 rubric (no levels): music off from the end of "...He likes me." (the beat before the taster twist) until the moral
+    c2e = sp["o4_w"]["t"] + sp["o4_w"]["d"]; c2n = sp["moral"]["t"]
+else:
+    C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause

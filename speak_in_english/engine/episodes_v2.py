@@ -2681,3 +2681,36 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "octopus" — rubric useful4 (60-70 s). heroine = Jessica, waiter Theo = Liam, the chef = Roger
+# option labels (drawn by renderer): 1 В лоб · 2 Вежливо · 3 Как носитель · 4 Королевский
+CAST.update({
+    "waiter3": dict(voice="am_liam", speed=1.0, lang="en-us", el="TX3LPaxmHKxFdv7VOQHJ"),   # octopus: waiter Theo who brought the octopus (Liam)
+    "chef1": dict(voice="am_puck", speed=1.0, lang="en-us", el="CwhRBWXzGAHq8TQ4Fs17"),   # octopus: the chef shouting from the kitchen (Roger)
+})
+EP["octopus"] = dict(
+    title='Заказала суп — принесли осьминога', rubric='useful4',
+    hook_title=[['ЗАКАЗАЛА СУП —', 'd'], ['ЦЕЛЫЙ ОСЬМИНОГ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    cover_b='ВЕРНЁШЬ ПО-АНГЛИЙСКИ?',
+    absurd='На стене фото «Сотрудник месяца» — и на нём этот же осьминог.',
+    comment_q='Ты бы съела или вернула?',
+    lines=[
+        ('hook_w', 'waiter3', "[cheerfully] Your soup, madam. Enjoy!", 'Ваш суп, мадам. Приятного аппетита!'),
+        ('hook', 'nar', 'Ждала суп, а пришёл осьминог. Как вернуть блюдо и не поссориться?', ''),
+        ('o1_h', 'her', "[shocked] No! This not soup! Take!", 'Нет! Это не суп! Забери!'),
+        ('o1_w', 'waiter3', "[helpfully] Not soup? He's swimming, isn't he?", 'Не суп? Он же плавает, разве нет?'),
+        ('o1_nar', 'nar', 'В лоб — и тебе долили воды.', ''),
+        ('o2_h', 'her', "[uncertainly] Excuse me, I'm not sure this is mine.", 'Извините, я не уверена, что это моё.'),
+        ('o2_w', 'waiter3', "[shrugging] Well, he's not mine either.", 'Ну, он и не мой.'),
+        ('o2_nar', 'nar', 'Вежливо — а осьминог уже держит твою вилку.', ''),
+        ('o3_h', 'her', "[calmly] I think there's been a mix-up. I ordered the tomato soup.", 'Кажется, произошла путаница. Я заказывала томатный суп.'),
+        ('o3_w', 'waiter3', "[apologetically] Oh no, table six! Swapping it now.", 'Ой нет, шестой столик! Сейчас поменяю.'),
+        ('o3_nar', 'nar', 'Как носитель: путаница, а не чья-то вина. Запоминай:', ''),
+        ('o3_tip', 'tip', "I think there's been a mix-up.", ''),
+        ('o4_h', 'her', "[charmingly] He's very handsome, Theo, but I ordered a lunch that doesn't hold my fork back.", 'Он очень симпатичный, Тео, но я заказывала обед, который не держит мою вилку.'),
+        ('o4_w', 'waiter3', "[fondly] ...I'll take him. He likes me.", '…Я его заберу. Я ему нравлюсь.'),
+        ('end_c', 'chef1', "[calling from the kitchen] Don't worry, he works here. He's our taster.", 'Не волнуйтесь, он здесь работает. Он наш дегустатор.'),
+        ('moral', 'nar', 'Мораль: если блюдо держит твою вилку — это уже не блюдо, а коллега.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши в комментариях!', ''),
+        ('ask', 'nar', 'Ты бы съела или вернула?', ''),
+    ],
+)
