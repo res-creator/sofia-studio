@@ -31,7 +31,7 @@ Numbers in [brackets] point to SOURCES.md.
 
 ## CH2 — The vertical city
 
-**H008** Up.
+**H008** So the city went up.
 
 **H009** Hong Kong has more skyscrapers than any other city on Earth. In early twenty twenty-five, it had six hundred and sixty-nine buildings at least a hundred and fifty meters tall. More than New York. More than Dubai. [4]
 
@@ -101,7 +101,7 @@ Numbers in [brackets] point to SOURCES.md.
 
 **H030** Then there are the old ways that never left. Double-decker trams have rattled along Hong Kong Island since nineteen oh four. The Star Ferry has been crossing Victoria Harbour since the eighteen eighties. [16]
 
-**H031** And because the city climbs straight up a mountain, it even has escalators instead of streets. The Central to Mid-Levels escalator runs about eight hundred meters up the hillside and climbs about a hundred and thirty-five meters. It opened in nineteen ninety-three, and it's one of the longest outdoor covered escalator systems in the world. [17]
+**H031** Because the city climbs straight up a mountain, it even has escalators instead of streets. The Central to Mid-Levels escalator runs about eight hundred meters up the hillside and climbs about a hundred and thirty-five meters. It opened in nineteen ninety-three, and it's one of the longest outdoor covered escalator systems in the world. [17]
 
 **H032** In the morning, it runs downhill, toward the offices. Later in the day, it switches direction, and carries people back up the mountain. [17]
 

@@ -1,0 +1,51 @@
+H001 1.000 
+H002 1.000 
+H003 1.000 
+H004 0.901 replace: eleven hundred -> 1 100 | replace: two hundred -> 200
+H005 1.000 
+H006 0.961 replace: forty percent -> 40
+H007 1.000 
+H007B 0.949 replace: nineteen forty nine -> 1949
+H008 1.000 
+H009 0.783 replace: twenty twenty five -> 2025 | replace: six hundred and sixty nine -> 669 | replace: a hundred and fifty -> 150
+H010 0.897 replace: forty fifty sixty -> 40 50 60
+H011 0.965 replace: nineteen seventies -> 1970s
+H012 1.000 
+H013 0.844 replace: twenty twenty five -> 2025 | replace: wang fuk -> wong foot | replace: a hundred and sixty eight -> 168
+H014 0.963 replace: sights -> sites
+H014B 1.000 
+H015 1.000 
+H016 1.000 
+H017 0.936 replace: seven percent -> 7 | replace: seven percent -> 7
+H017B 0.892 replace: harbour -> harbor | replace: nineteen ninety seven -> 1997 | replace: harbour -> harbor
+H018 0.960 replace: kai tak -> kaitak
+H019 0.943 replace: at -> out of | replace: racking -> wracking
+H020 0.857 replace: nineteen ninety eight kai tak -> 1998 kaitak | replace: nine -> 9
+H020B 1.000 
+H021 1.000 
+H022 0.951 replace: fifteen -> 15 | replace: fourteen -> 14
+H023 1.000 
+H024 0.851 replace: two hundred thousand -> 200 000 | replace: ten -> 10
+H024B 0.955 replace: sixteen -> 16
+H025 0.941 replace: spaces -> space is
+H025B 0.904 replace: nineteen fifty three -> 1953 | replace: mei -> may | replace: fifty thousand -> 50 000
+H026 0.929 replace: forty five percent -> 45
+H027 1.000 
+H028 1.000 
+H029 0.873 replace: ninety nine point nine percent -> 99 9
+H029B 0.946 replace: nineteen ninety seven -> 1997
+H030 0.862 replace: nineteen oh four -> 1904 | replace: harbour -> harbor | replace: eighteen eighties -> 1880s
+H031 0.879 replace: eight hundred -> 800 | replace: a hundred and thirty five -> 135 | replace: nineteen ninety three -> 1993
+H032 1.000 
+H033 1.000 
+H034 0.881 replace: a hundred and thirty thousand -> 130 000
+H035 1.000 
+H036 0.883 replace: nineteen eighty seven -> 1987 | replace: thirty three thousand -> 33 000
+H037 1.000 
+H037B 1.000 
+H038 0.857 replace: nineteen ninety three -> 1993
+H039 1.000 
+H040 1.000 
+H041 1.000 
+H042 1.000 
+H043 1.000 
