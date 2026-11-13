@@ -2681,3 +2681,33 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "taxi3s" — rubric quick3s (~62 s). New York yellow cab, AMERICAN English. heroine = Jessica; cabbie Ray = Callum (gb); answers spoken by the tip plate = Bella (us, 'tip')
+# rounds (Russian phrase drawn big + 3 s ticking timer, no voice; then the tip says the answer):
+#   01 Я ОПАЗДЫВАЮ → I'm running late. · 02 МОЖНО ОТКРЫТЬ ОКНО? → Can I open the window?
+#   03 ПРИСТЕГНИТЕСЬ → Buckle up. · 04 МОЖНО ПОБЫСТРЕЕ? → Could you go a bit faster?
+#   05 ОСТАНОВИТЕ ЗДЕСЬ → You can let me out here. · 06 СДАЧИ НЕ НАДО → Keep the change.
+CAST.update({
+    "rayd1": dict(voice="am_puck", speed=1.0, lang="en-us", el="CwhRBWXzGAHq8TQ4Fs17"),   # taxi3s: New York cab driver Ray (Roger)
+})
+EP["taxi3s"] = dict(
+    title='Успей за 3 секунды: такси', rubric='quick3s',
+    hook_title=[['6 ФРАЗ В ТАКСИ', 'd'], ['СДАЧИ НЕ НАДО', 'p'], ['УСПЕЕШЬ ЗА 3 СЕКУНДЫ?', 'd']],
+    cover_b='СКАЖЕШЬ ПО-АНГЛИЙСКИ?',
+    absurd='На приборной панели вместо кивающей собачки — кивающая фигурка бабушки с пирожком, которая на каждом таймере кивает быстрее.',
+    comment_q='Сколько из шести?',
+    lines=[
+        ('hook_r', 'rayd1', "[gruffly] So, miss... where to?", 'Итак, мисс… куда едем?'),
+        ('hook', 'nar', 'Шесть фраз для такси, три секунды на каждую. Считай баллы и пиши счёт.', ''),
+        ('t1_tip', 'tip', "I'm running late.", ''),
+        ('t2_tip', 'tip', 'Can I open the window?', ''),
+        ('t3_tip', 'tip', 'Buckle up.', ''),
+        ('t4_tip', 'tip', 'Could you go a bit faster?', ''),
+        ('t5_tip', 'tip', 'You can let me out here.', ''),
+        ('t6_tip', 'tip', 'Keep the change.', ''),
+        ('end_r', 'rayd1', "[gently] Miss... it's Saturday.", 'Мисс… сегодня суббота.'),
+        ('end_h', 'her', "[defeated] ...Can you drive me back?", '…Отвезёте меня обратно?'),
+        ('score', 'nar', 'Шесть из шести — пассажир года. Три — доедешь. Ноль — иди пешком.', ''),
+        ('outro', 'nar', 'Сохрани и проверь себя через неделю!', ''),
+        ('ask', 'nar', 'Сколько из шести? Пиши счёт в комменты!', ''),
+    ],
+)
