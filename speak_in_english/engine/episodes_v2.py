@@ -2681,3 +2681,37 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "eatmore" — rubric nashe4 (60-70 s). heroine = Jessica, foreign boyfriend Callum = Callum, his mum = Alice
+# her own mum does not speak (only acts on screen)
+# option labels (drawn by renderer): 1 В ЛОБ · 2 ВЕЖЛИВО · 3 КАК НОСИТЕЛЬ · 4 КОРОЛЕВСКИЙ
+CAST.update({
+    "bf14": dict(voice="am_onyx", speed=1.0, lang="en-gb", el="N2lVS1w4EtoT3dr4eOWO"),   # eatmore: foreign boyfriend Callum on his fifth plate (Callum)
+    "hismum3": dict(voice="bf_alice", speed=1.0, lang="en-gb", el="Xb7hH8MSUJpSbSDYk0k2"),   # eatmore: Callum's mum in the twist (Alice)
+})
+EP["eatmore"] = dict(
+    title='Мама кормит иностранного парня: «Ешь ещё!»', rubric='nashe4',
+    hook_title=[['МАМА И ИНОСТРАНЕЦ', 'd'], ['ПЯТАЯ ТАРЕЛКА', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    cover_b='ЧТО ЕМУ ПО-АНГЛИЙСКИ?',
+    absurd='Дедушка спит за столом, не выпуская вилку, и жуёт во сне.',
+    comment_q='Сколько тарелок насыпает твоя мама?',
+    lines=[
+        ('hook_b', 'bf14', "[whispering] Babe, help. That's my fifth plate.", 'Малыш, помоги. Это моя пятая тарелка.'),
+        ('hook', 'nar', 'Мама кормит иностранца. Научи его выжить — четыре способа.', ''),
+        ('o1_h', 'her', "[urgently] Eat. Or she cries.", 'Ешь. Или она заплачет.'),
+        ('o1_b', 'bf14', "[panicking] ...Pass the dumplings.", '…Передай пельмени.'),
+        ('o1_nar', 'nar', 'В лоб — и он ест двумя вилками.', ''),
+        ('o2_h', 'her', "[gently] Maybe say no, but politely?", 'Может, откажись, но вежливо?'),
+        ('o2_b', 'bf14', "[despairing] I did. She heard 'more, please'.", 'Я отказался. Она услышала «ещё, пожалуйста».'),
+        ('o2_nar', 'nar', 'Вежливо — а мама слышит «добавки».', ''),
+        ('o3_h', 'her', "[warmly] Feeding you is how she says she loves you. Tell her: 'I'm stuffed. That was delicious.'", 'Кормить тебя — это её способ сказать, что она тебя любит. Скажи ей: «Я объелся. Было очень вкусно».'),
+        ('o3_b', 'bf14', "[amazed] It worked! She's... packing me leftovers.", 'Сработало! Она… собирает мне еду с собой.'),
+        ('o3_nar', 'nar', 'Как носитель: сначала спасибо, потом «я всё». Запоминай:', ''),
+        ('o3_tip', 'tip', "I'm stuffed.", ''),
+        ('o4_h', 'her', "[seriously] Callum, in this house an empty plate means 'still hungry'. Leave one dumpling. It's a white flag.", 'Каллум, в этом доме пустая тарелка значит «ещё голоден». Оставь один пельмень. Это белый флаг.'),
+        ('o4_b', 'bf14', "[solemnly] ...One dumpling. For peace.", '…Один пельмень. Ради мира.'),
+        ('end_m', 'hismum3', "[worried] Callum, love... what have they done to you?", 'Каллум, милый… что они с тобой сделали?'),
+        ('moral', 'nar', 'Мораль: мама слышит «я наелся» как «я стесняюсь».', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши в комментариях!', ''),
+        ('ask', 'nar', 'Сколько тарелок насыпает твоя мама?', ''),
+    ],
+)
