@@ -1,0 +1,404 @@
+{
+ "about": "Архивные кадры для фильма «Что будет, если начнётся Третья мировая». Файлы — в ru_geo/data/ww3_archive/ (в git не идут). Время в good/avoid — секунды от начала файла.",
+ "rules": [
+  "испытания — только с плашкой «ИСПЫТАНИЕ, ГОД, МЕСТО» (шаблон archive, params.caption)",
+  "никаких жертв, людей крупно, городов в огне, ракет/оружия крупно",
+  "CC BY — автор и лицензия в описании ролика и в титрах",
+  "NASA — указать NASA, логотипы не использовать"
+ ],
+ "insert": "Шот в shots.json: {\"tpl\":\"archive\",\"params\":{\"clip\":\"<id>\",\"from\":<сек>,\"aspect\":\"16:9|4:3\",\"caption\":\"…\",\"credit\":\"…\"}}. Окно под клип (логические px 1920×1080): 16:9 → x 231, y 90, w 1458, h 820; 4:3 → x 413, y 90, w 1093, h 820. При сборке: ffmpeg overlay клипа (scale под окно, -ss from, -t длительность шота) поверх отрендеренного шота.",
+ "not_fetched": [
+  "Commons «Minuteman GT 245… 2023» и «342-usaf-11080 Hiroshima» (1080p), «Castle Bravo», «Duck and Cover» — 429 от upload.wikimedia.org, повторить с паузами",
+  "Кувейт 1991 (горящие скважины) — свободного клипа не нашлось (на archive.org только перезалив с музыкой); вариант — снимки NASA/NOAA или 2D",
+  "Шайенн-Маунтин / NORAD (DVIDS) и подводный кабель (NOAA) — не найдены за сессию; в фильме закрыты 2D-шаблонами cutaway(kind:mountain), seabedCable, cableVsHose"
+ ],
+ "clips": [
+  {
+   "id": "high_altitude_1962",
+   "file": "ru_geo/data/ww3_archive/commons_high_altitude_1962_480p.webm",
+   "res": "854x456",
+   "duration": 1286.7,
+   "source": "Wikimedia Commons",
+   "page": "https://commons.wikimedia.org/wiki/File:High_Altitude_Weapons_Effects_1962_AEC_DOMINIC_STARFISH_PRIME_CHECKMATE_BLUEGILL_KINGFISH_TIGHTROPE.webm",
+   "license": "Public domain (US AEC / DoD film)",
+   "author": "U.S. Atomic Energy Commission / Department of Defense",
+   "chapter": "Первый час — ЭМИ 1962",
+   "caption": "ИСПЫТАНИЕ, 1962, ТИХИЙ ОКЕАН",
+   "content": "Цветной фильм о высотных испытаниях 1962 (Джонстон): корабли, антенны радаров, схемы радиационных поясов, свечение в ночном небе. Есть английские титры и схемы с текстом — их не брать.",
+   "good": [
+    {
+     "from": 100,
+     "to": 120,
+     "what": "корабль в открытом море у острова Джонстон (общий план)"
+    },
+    {
+     "from": 255,
+     "to": 275,
+     "what": "схема: Земля и кольца радиационных поясов (без текста) — под «радиационный пояс»"
+    },
+    {
+     "from": 440,
+     "to": 465,
+     "what": "свечение в ночном небе после высотного испытания"
+    },
+    {
+     "from": 555,
+     "to": 575,
+     "what": "антенны-тарелки радаров"
+    },
+    {
+     "from": 655,
+     "to": 675,
+     "what": "светящийся шар высоко над горизонтом"
+    },
+    {
+     "from": 1220,
+     "to": 1235,
+     "what": "далёкое свечение в ночном небе"
+    }
+   ],
+   "avoid": "титры D.O.D. OBJECTIVES, ICBM, карты с английскими надписями, кадры ракет на старте (5:20), вспышки крупно",
+   "hires": "для финала можно взять 720p: тот же URL transcoded …webm.720p.vp9.webm (Commons отдаёт 429 на частые запросы — UA проекта, паузы 20–30 с)"
+  },
+  {
+   "id": "crossroads_1946",
+   "file": "ru_geo/data/ww3_archive/archiveorg_111-adc-7171_crossroads_1946.mp4",
+   "res": "1920x1080 (скан 4:3 в кадре 16:9)",
+   "duration": 642.8,
+   "source": "Internet Archive (копия NARA 111-ADC-7171)",
+   "page": "https://archive.org/details/111-adc-7171_HD_2Mbps",
+   "catalog": "https://catalog.archives.gov/id/20943",
+   "license": "Public domain (US Army Signal Corps, NARA)",
+   "author": "U.S. Army Signal Corps",
+   "chapter": "Десять лет — атолл Бикини",
+   "caption": "ИСПЫТАНИЕ, 1946, АТОЛЛ БИКИНИ",
+   "content": "Ч/б хроника «Перекрёстков» с борта кораблей: палубы, лабораторные животные в клетках (не брать), моряки, море, облако испытания вдали.",
+   "good": [
+    {
+     "from": 360,
+     "to": 395,
+     "what": "палуба корабля, море, люди спиной (общий план)"
+    },
+    {
+     "from": 400,
+     "to": 410,
+     "what": "море и горизонт с мачты"
+    },
+    {
+     "from": 490,
+     "to": 520,
+     "what": "мачты и надстройки корабля над морем"
+    },
+    {
+     "from": 240,
+     "to": 262,
+     "what": "ОПЦИОНАЛЬНО: облако испытания далеко над морем — только с подписью «ИСПЫТАНИЕ, 1946, АТОЛЛ БИКИНИ» и только если владелица одобрит"
+    }
+   ],
+   "avoid": "клетки с животными (1:20–2:30), лица крупно (9:40–10:40), «Kilroy» в начале"
+  },
+  {
+   "id": "hiroshima_1946",
+   "file": "ru_geo/data/ww3_archive/archiveorg_USAF-11075_hiroshima_1946.mp4",
+   "res": "640x360 (низкое — только короткие планы, можно мягкое увеличение)",
+   "duration": 882.0,
+   "source": "Internet Archive (NARA 342-USAF-11075)",
+   "page": "https://archive.org/details/USAF-11075",
+   "license": "Public domain (US Army Air Forces, NARA)",
+   "author": "U.S. Army Air Forces / USSBS (оператор Гарри Мимура)",
+   "chapter": "Десять лет — Хиросима 1946",
+   "caption": "ХИРОСИМА, ВЕСНА 1946",
+   "content": "Цветная съёмка весны 1946: панорамы города с горами, новые деревянные дома, трубы, руины зданий. Людей почти нет.",
+   "good": [
+    {
+     "from": 14,
+     "to": 40,
+     "what": "новые деревянные дома и трубы — город начинает жить"
+    },
+    {
+     "from": 70,
+     "to": 95,
+     "what": "панорама, вдали купол Гэмбаку"
+    },
+    {
+     "from": 210,
+     "to": 260,
+     "what": "общие панорамы с горами"
+    },
+    {
+     "from": 406,
+     "to": 480,
+     "what": "широкие панорамы города, горы"
+    }
+   ],
+   "avoid": "хлопушки (0:42, 5:50), искорёженные конструкции крупно (4:26–5:00, 10:16–11:40) — тяжело для зрителя",
+   "hires": "лучшее качество: Commons 342-usaf-11080 (1080p) — не скачалось из-за 429, повторить позже"
+  },
+  {
+   "id": "hiroshima_lanterns_2019",
+   "file": "ru_geo/data/ww3_archive/commons_hiroshima_lanterns_720p.webm",
+   "res": "1280x720",
+   "duration": 360.0,
+   "source": "Wikimedia Commons (DVIDS)",
+   "page": "https://commons.wikimedia.org/wiki/File:Hiroshima_Peace_Memorial_Ceremony_%26_Peace_Message_Lantern_Floating_Ceremony_(B-Roll)_DOD_107097600-5d50f879d663c.webm",
+   "license": "Public domain (US DoD)",
+   "author": "Petty Officer 2nd Class Debra Daco, U.S. Navy",
+   "chapter": "Почему не случилось — хибакуся, Нобелевская премия; финал «Хиросима сегодня»",
+   "caption": "ХИРОСИМА, 6 АВГУСТА 2019",
+   "content": "Церемония фонариков 6.08.2019: купол Гэмбаку днём, бумажные фонарики на реке, ночные фонарики с отражениями.",
+   "good": [
+    {
+     "from": 0,
+     "to": 12,
+     "what": "купол Гэмбаку (слева музыкант — кадрировать)"
+    },
+    {
+     "from": 145,
+     "to": 170,
+     "what": "фонарики на реке, за ними купол Гэмбаку"
+    },
+    {
+     "from": 220,
+     "to": 230,
+     "what": "купол Гэмбаку в сумерках с фонариками"
+    },
+    {
+     "from": 240,
+     "to": 352,
+     "what": "ночные фонарики на воде, блики — тихий финал"
+    }
+   ],
+   "avoid": "лица крупно (0:16–1:20)"
+  },
+  {
+   "id": "minuteman_test_2017",
+   "file": "ru_geo/data/ww3_archive/archiveorg_dvids_minuteman_test_2017.mp4",
+   "res": "1920x1080",
+   "duration": 63.8,
+   "source": "Internet Archive (DVIDS 104670452)",
+   "page": "https://archive.org/details/DOD1046704521920x10806221k",
+   "license": "Public domain (US Air Force)",
+   "author": "U.S. Air Force, 30th Space Wing Public Affairs",
+   "chapter": "Первый час — «около тридцати минут»",
+   "caption": "ИСПЫТАТЕЛЬНЫЙ ПУСК, 2017",
+   "content": "Ночной испытательный пуск с базы Ванденберг (2.08.2017): огонь на старте, затем светящаяся точка-след в небе.",
+   "good": [
+    {
+     "from": 18,
+     "to": 31,
+     "what": "светящийся след уходит вверх в ночном небе (ракеты не видно)"
+    },
+    {
+     "from": 39,
+     "to": 47,
+     "what": "далёкая светящаяся черта в небе"
+    }
+   ],
+   "avoid": "0:13–0:17 огонь у шахты крупно; титры в начале и конце",
+   "note": "в сценарии упомянут пуск 2023 (Commons, Minuteman GT 245) — тот файл не скачался из-за 429; 2017 — замена того же типа, подпись поменять на год клипа"
+  },
+  {
+   "id": "primed_for_defense",
+   "file": "ru_geo/data/ww3_archive/archiveorg_primed_for_defense.mp4",
+   "res": "854x480",
+   "duration": 1733.7,
+   "source": "Internet Archive",
+   "page": "https://archive.org/details/minuteman-primed-for-defense",
+   "license": "Public domain (USAF film, 1960-е)",
+   "author": "U.S. Air Force (реж. George Loftus)",
+   "chapter": "Первый час — «на каждом шаге стоят люди»; финал — «люди в цепочке»",
+   "caption": "ДЕЖУРНЫЕ НА ПУЛЬТЕ, 1960-е",
+   "content": "Цветной фильм ВВС о дежурстве: офицеры у пультов, телефоны, журналы, бронедверь, закат над снежной равниной.",
+   "good": [
+    {
+     "from": 460,
+     "to": 475,
+     "what": "офицер у стойки с приборами"
+    },
+    {
+     "from": 596,
+     "to": 630,
+     "what": "тяжёлая дверь и сейфовые замки"
+    },
+    {
+     "from": 665,
+     "to": 690,
+     "what": "офицер в гарнитуре говорит по телефону"
+    },
+    {
+     "from": 725,
+     "to": 820,
+     "what": "двое за пультами, телефон, записи"
+    },
+    {
+     "from": 835,
+     "to": 870,
+     "what": "телефон и журнал дежурства"
+    },
+    {
+     "from": 1650,
+     "to": 1665,
+     "what": "дежурные в зале управления"
+    },
+    {
+     "from": 1680,
+     "to": 1700,
+     "what": "закат над снежной равниной"
+    }
+   ],
+   "avoid": "ракета крупно (4:03), разрезы шахты (4:31–5:25), титр PRIMED FOR DEFENSE (флаговые цвета), финальный пуск"
+  },
+  {
+   "id": "chernobyl_antlers",
+   "file": "ru_geo/data/ww3_archive/commons_chernobyl_deer_480p.webm",
+   "res": "854x480",
+   "duration": 144.3,
+   "source": "Wikimedia Commons",
+   "page": "https://commons.wikimedia.org/wiki/File:Deer_antlers_shed_near_Chernobyl_Nuclear_Power_Plant.webm",
+   "license": "CC BY 3.0 (указать автора)",
+   "author": "Carl Willis",
+   "chapter": "Десять лет — Чернобыль («учёные считали зверей»)",
+   "caption": "ЗОНА ЧАЭС: ОЛЕНЬИ РОГА И ДОЗИМЕТР",
+   "content": "ВНИМАНИЕ: это не живые олени (в RESEARCH описано неточно) — сброшенные оленьи рога у ЧАЭС, их меряют дозиметром.",
+   "good": [
+    {
+     "from": 30,
+     "to": 55,
+     "what": "дозиметр и рога крупно, стрелка прибора"
+    },
+    {
+     "from": 90,
+     "to": 110,
+     "what": "рука с датчиком над рогом"
+    }
+   ],
+   "avoid": "для «лосей, косуль, оленей» лучше 2D-шаблон deadForest с силуэтами зверей"
+  },
+  {
+   "id": "grindavik_iceland",
+   "file": "ru_geo/data/ww3_archive/commons_grindavik_720p.webm",
+   "res": "1280x720",
+   "duration": 299.1,
+   "source": "Wikimedia Commons",
+   "page": "https://commons.wikimedia.org/wiki/File:Grindavik_Iceland.webm",
+   "license": "CC BY 3.0 (указать автора)",
+   "author": "Swedrone",
+   "chapter": "Год — Исландия («рыба и тепло прямо из-под земли»)",
+   "caption": "ИСЛАНДИЯ, ГРИНДАВИК",
+   "content": "Полёт дрона: рыбацкая гавань Гриндавика, посёлок, лавовые поля, пар геотермальной станции Сварценги, побережье.",
+   "good": [
+    {
+     "from": 0,
+     "to": 45,
+     "what": "гавань с рыболовными судами"
+    },
+    {
+     "from": 206,
+     "to": 236,
+     "what": "пар геотермальной станции над лавой"
+    },
+    {
+     "from": 270,
+     "to": 295,
+     "what": "побережье, дорога вдоль моря"
+    }
+   ],
+   "avoid": "—",
+   "note": "этот же клип был в нашем выпуске «Исландия» (CREDITS) — подходит под «кадры из нашего выпуска»"
+  },
+  {
+   "id": "aurora_alaska",
+   "file": "ru_geo/data/ww3_archive/commons_aurora_alaska_svs15077_1080p.webm",
+   "res": "1616x1080",
+   "duration": 24.3,
+   "source": "Wikimedia Commons (NASA SVS 15077)",
+   "page": "https://commons.wikimedia.org/wiki/File:Alaskan_Aurora_Time_Lapse_(SVS15077).webm",
+   "license": "Public domain (NASA)",
+   "author": "NASA's Scientific Visualization Studio / Mike Toillion",
+   "chapter": "Семь раз — № 7, 1995 (ракета для изучения сияния)",
+   "caption": "СЕВЕРНОЕ СИЯНИЕ (NASA)",
+   "content": "Таймлапс северного сияния над лесом, Аляска.",
+   "good": [
+    {
+     "from": 0,
+     "to": 24,
+     "what": "зелёные завесы сияния, весь клип"
+    }
+   ],
+   "avoid": "—"
+  },
+  {
+   "id": "black_marble",
+   "file": "ru_geo/data/ww3_archive/nasa_GSFC_20170412_Lights_m12573_EarthAtNight_large.mp4",
+   "res": "1920x1080",
+   "duration": 83.3,
+   "source": "NASA Image and Video Library",
+   "page": "https://images.nasa.gov/details/GSFC_20170412_Lights_m12573_EarthAtNight",
+   "license": "NASA media — свободно, с указанием NASA, без логотипа",
+   "author": "NASA Goddard Space Flight Center",
+   "chapter": "Старт (трейлер), «Семь раз» финальная пауза, финал фильма",
+   "caption": "ЗЕМЛЯ НОЧЬЮ (NASA)",
+   "content": "Black Marble: ночные огни Земли — глобус, Европа, Нил, США, Азия. Местами вшиты английские подписи.",
+   "good": [
+    {
+     "from": 22,
+     "to": 36,
+     "what": "огни Европы и Ближнего Востока"
+    },
+    {
+     "from": 37,
+     "to": 44,
+     "what": "Нил ночью"
+    },
+    {
+     "from": 44,
+     "to": 50,
+     "what": "огни Индии/Азии"
+    }
+   ],
+   "avoid": "0:00–0:12 и 0:51+ — вшитые английские подписи; финальная заставка NASA"
+  },
+  {
+   "id": "iss_earth_exp65",
+   "file": "ru_geo/data/ww3_archive/nasa_earth4k_exp65_part1.mp4",
+   "res": "1920x1012",
+   "duration": 240.1,
+   "source": "NASA Image and Video Library (фрагмент 1:00–5:00 ролика «Earth from Space in 4K – Expedition 65»)",
+   "page": "https://images.nasa.gov/details/jsc2022m000172_Earth_in_4K_Expedition_65_Edition",
+   "license": "NASA media — свободно, с указанием NASA",
+   "author": "NASA Johnson Space Center",
+   "chapter": "Музыкальные паузы: облака над океаном, рассвет над горизонтом, сияние с МКС",
+   "caption": "",
+   "content": "Съёмка с МКС: облака и океан днём, сияние, рассвет над краем Земли, ночная сторона.",
+   "good": [
+    {
+     "from": 0,
+     "to": 28,
+     "what": "облака над океаном сверху"
+    },
+    {
+     "from": 48,
+     "to": 56,
+     "what": "синий океан, отмели"
+    },
+    {
+     "from": 56,
+     "to": 78,
+     "what": "северное сияние с МКС"
+    },
+    {
+     "from": 96,
+     "to": 118,
+     "what": "полоска рассвета над краем Земли"
+    },
+    {
+     "from": 196,
+     "to": 220,
+     "what": "облачный фронт над океаном"
+    }
+   ],
+   "avoid": "кадры с элементами МКС на переднем плане можно, но не дольше 2 с",
+   "note": "полный ролик 50 мин; при нужде вырезать другие места: ffmpeg -ss N -i <~large.mp4 URL> -t D -c copy"
+  }
+ ]
+}
