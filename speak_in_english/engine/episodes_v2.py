@@ -2681,3 +2681,36 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "sitdown" — rubric nashe4 (60-70 s). heroine = Jessica, worried passenger = Roger, the captain (tannoy) = Brian
+# option labels (drawn by renderer): 1 В ЛОБ · 2 ВЕЖЛИВО · 3 КАК НОСИТЕЛЬ · 4 КОРОЛЕВСКИЙ
+CAST.update({
+    "pass1": dict(voice="am_puck", speed=1.0, lang="en-us", el="CwhRBWXzGAHq8TQ4Fs17"),   # sitdown: worried foreign passenger in the terminal (Roger)
+    "capt1": dict(voice="am_adam", speed=1.0, lang="en-us", el="nPczCjzI2devNBz1zQrb"),   # sitdown: the captain over the tannoy (Brian)
+})
+EP["sitdown"] = dict(
+    title='Присела на дорожку прямо в аэропорту', rubric='nashe4',
+    hook_title=[['АЭРОПОРТ. СЕЛА', 'd'], ['НА ЧЕМОДАН', 'p'], ['КАК ОБЪЯСНИШЬ?', 'd']],
+    cover_b='КАК ОБЪЯСНИТЬ ПО-АНГЛИЙСКИ?',
+    absurd='Рядом с ней точно так же «присел» робот-пылесос аэропорта — стоит и не едет.',
+    comment_q='А вы садитесь на дорожку?',
+    lines=[
+        ('hook_p', 'pass1', "[concerned] Are you okay? Do you need a medic?", 'Вы в порядке? Вам нужен врач?'),
+        ('hook', 'nar', 'Как объяснить иностранцу «посидеть на дорожку»? Четыре попытки.', ''),
+        ('o1_h', 'her', "[whispering] Shh. Sitting. Tradition.", 'Тсс. Сижу. Традиция.'),
+        ('o1_p', 'pass1', "[confused] Tradition of… blocking gate seven?", 'Традиция… перекрывать седьмой выход?'),
+        ('o1_nar', 'nar', 'В лоб — а за тобой уже очередь из тележек.', ''),
+        ('o2_h', 'her', "[politely] It's a custom. We sit before a trip.", 'Это обычай. Мы садимся перед поездкой.'),
+        ('o2_p', 'pass1', "[anxiously] Can you sit faster? Your flight's boarding.", 'А можно сидеть побыстрее? На ваш рейс уже посадка.'),
+        ('o2_nar', 'nar', 'Вежливо — а табло мигает: последний вызов.', ''),
+        ('o3_h', 'her', "[warmly] It's for luck. You pause before a big trip, so nothing goes wrong.", 'Это на удачу. Перед большой поездкой делаешь паузу, чтобы ничего не пошло не так.'),
+        ('o3_p', 'pass1', "[touched] Oh, that's actually lovely.", 'О, а ведь это очень мило.'),
+        ('o3_nar', 'nar', 'Как носитель: не «что», а «зачем». Запоминай:', ''),
+        ('o3_tip', 'tip', "It's for luck.", ''),
+        ('o4_h', 'her', "[mysteriously] Ancient technology. We sit, we breathe, and the passport we 'lost' always turns up in a pocket.", 'Древняя технология. Садимся, дышим — и «потерянный» паспорт всегда находится в кармане.'),
+        ('o4_p', 'pass1', "[stunned] …I need to sit down too.", '…Мне тоже надо присесть.'),
+        ('end_c', 'capt1', "[over the tannoy] This is your captain. We're running late. I'm… sitting for luck.", 'Говорит ваш капитан. Мы задерживаемся. Я… сижу на удачу.'),
+        ('moral', 'nar', 'Мораль: минута на чемодане экономит час поисков паспорта.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши в комментариях!', ''),
+        ('ask', 'nar', 'А вы садитесь на дорожку?', ''),
+    ],
+)
