@@ -2681,3 +2681,36 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "corner" — rubric nashe4 (60-70 s). heroine = Jessica, foreign friend = Laura
+# the handsome neighbour in the twist does not speak
+# option labels (drawn by renderer): 1 В ЛОБ · 2 ВЕЖЛИВО · 3 КАК НОСИТЕЛЬ · 4 КОРОЛЕВСКИЙ
+CAST.update({
+    "friend5": dict(voice="af_nicole", speed=1.0, lang="en-us", el="FGY2WhTYpPnrIDTdsKH5"),   # corner: foreign friend sitting on the table corner (Laura)
+})
+EP["corner"] = dict(
+    title='Подруга-иностранка села на угол стола', rubric='nashe4',
+    hook_title=[['ПОДРУГА СЕЛА', 'd'], ['НА УГОЛ СТОЛА', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    cover_b='КАК ОБЪЯСНИШЬ ПО-АНГЛИЙСКИ?',
+    absurd='На стене висит ковёр, а на ковре в рамочке — диплом кота.',
+    comment_q='А ты садишься на угол?',
+    lines=[
+        ('hook_f', 'friend5', "[cheerfully] Cake time! Don't mind me, I'll perch here.", 'Время торта! Не обращайте внимания, я тут примощусь.'),
+        ('hook', 'nar', 'Иностранка села на угол стола. Как объяснить ей про семь лет без свадьбы?', ''),
+        ('o1_h', 'her', "[alarmed] No! Corner! Never marry!", 'Нет! Угол! Не выйдешь замуж!'),
+        ('o1_f', 'friend5', "[amused] Never marry? Is that a threat or a promise?", 'Не выйду замуж? Это угроза или обещание?'),
+        ('o1_nar', 'nar', 'В лоб — а ей даже понравилось.', ''),
+        ('o2_h', 'her', "[awkwardly] Maybe take a chair? It's… a thing.", 'Может, возьмёшь стул? Это… так принято.'),
+        ('o2_f', 'friend5', "[settling in] But the corner has the best view of the cake.", 'Но с угла лучше всего видно торт.'),
+        ('o2_nar', 'nar', 'Вежливо — и она устроилась поудобнее.', ''),
+        ('o3_h', 'her', "[urgently] Careful! They say if you sit on a table corner, you won't get married for seven years.", 'Осторожно! Говорят, если сесть на угол стола, семь лет не выйдешь замуж.'),
+        ('o3_f', 'friend5', "[shocked] Seven YEARS?!", 'Семь ЛЕТ?!'),
+        ('o3_nar', 'nar', 'Как носитель: примету начинаем с «говорят». Запоминай:', ''),
+        ('o3_tip', 'tip', 'They say…', ''),
+        ('o4_h', 'her', "[sweetly] Sit there by all means. Seven peaceful years, no in-laws, and the whole cake to yourself.", 'Сиди, конечно. Семь спокойных лет, никакой свекрови и весь торт тебе.'),
+        ('o4_f', 'friend5', "[dreamily] …Honestly? That sounds like a dream.", '…Честно? Звучит как мечта.'),
+        ('end_f', 'friend5', "[hastily] Right. Chair. Definitely a chair.", 'Так. Стул. Определённо стул.'),
+        ('moral', 'nar', 'Мораль: угол стола — это не мебель. Это решение.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши в комментариях!', ''),
+        ('ask', 'nar', 'А ты садишься на угол?', ''),
+    ],
+)

@@ -356,7 +356,7 @@ if EPN in ("mic", "teacher", "password", "rich", "busy", "avoidparty", "tour", "
     def _clap():
         t = T(0.12); return norm(bp(_r.standard_normal(len(t)), 900, 6000) * (np.exp(-t*60) + 0.3*np.exp(-np.maximum(t - 0.01, 0)*40)), 0.6)
     SFX.update(click=_click(), keys=_keys(), vol=_vol(), msg=_msg(), cough=_cough(), clap=_clap())
-if EPN in ("rich", "busy", "avoidparty", "tour", "splitbill", "photo"):  # batch rich/busy/avoidparty: phone ring, door bell, crowd cheer, car engine, car-lock chirp, toy jingle (own rng)
+if EPN in ("rich", "busy", "avoidparty", "tour", "splitbill", "photo", "corner"):  # batch rich/busy/avoidparty: phone ring, door bell, crowd cheer, car engine, car-lock chirp, toy jingle (own rng)
     _r = np.random.default_rng(14)
     def _ring():
         y = np.zeros(int(1.3*SR))
@@ -589,7 +589,7 @@ elif EPN in ("gym", "cancel"):
         if k % 4 == 0:
             for m in chords[bar]: put(music, pluck(note(m + 12, K), b*1.8, 0.6), t0, 0.12)
         if k % 2 == 0: put(music, pluck(note(chords[bar][(k//2) % 3] + 24, K), 0.3, 1.2), t0 + b*0.5, 0.06)
-elif EPN in ("dinner", "gift", "guest", "marry"):
+elif EPN in ("dinner", "gift", "guest", "marry", "corner"):
     # cosy family waltz: oom-pah-pah + accordion-ish melody + mandolin tremolo
     bpm = 168; b = 60/bpm; K = 0
     def accord(f, d):
@@ -649,7 +649,10 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+if EPN == "corner":  # nashe4 rubric (no levels): music off from the end of option 4 (the beat before the twist: doorbell, the neighbour) until the moral
+    c2e = [x for x in TL["scenes"] if x["id"] == "end"][0]["s"] - 0.05; c2n = sp["moral"]["t"]
+else:
+    C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause
