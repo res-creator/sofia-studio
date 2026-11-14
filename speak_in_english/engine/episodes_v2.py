@@ -2681,3 +2681,36 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "dontpick" — rubric answers4 (60-70 s). heroine = Jessica, boyfriend = Eric
+# twist is one line by the heroine (end_h)
+# option labels (drawn by renderer): 1 В лоб · 2 Вежливо · 3 Как носитель · 4 Королевский
+CAST.update({
+    "bf15": dict(voice="am_eric", speed=1.0, lang="en-us", el="cjVigY5qzO86Huf0OWal"),   # dontpick: boyfriend who saved her as "Don't Answer" (Eric)
+})
+EP["dontpick"] = dict(
+    title='Он записал тебя в телефоне как «Не брать»', rubric='answers4',
+    hook_title=[['ОН ЗАПИСАЛ ТЕБЯ', 'd'], ['«НЕ БРАТЬ»', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    cover_b='А ПО-АНГЛИЙСКИ?',
+    absurd='В его списке контактов прямо под ней — «PIZZA GUY (FAMILY)».',
+    comment_q='Как ты записана у него в телефоне?',
+    lines=[
+        ('hook_b', 'bf15', "[nervously] Oh, that? That's just my dentist.", 'А, это? Это просто мой стоматолог.'),
+        ('hook', 'nar', 'Четыре ответа — от обиды до королевского. Какой твой?', ''),
+        ('o1_h', 'her', "[outraged] Who is 'Don't Answer'? Me?!", 'Кто такая «Не брать»? Я?!'),
+        ('o1_b', 'bf15', "[quickly] It's a reminder! To always answer!", 'Это напоминалка! Чтобы всегда брать!'),
+        ('o1_nar', 'nar', 'В лоб — а он по привычке опять сбросил.', ''),
+        ('o2_h', 'her', "[softly] I'm a bit hurt, to be honest.", 'Мне немного обидно, если честно.'),
+        ('o2_b', 'bf15', "[casually] It's just a name. Like 'Bob'.", 'Это просто имя. Как «Боб».'),
+        ('o2_nar', 'nar', 'Вежливо — а у него и Боб «скучный».', ''),
+        ('o3_h', 'her', "[coolly] Care to explain why I'm saved as 'Don't Answer'?", 'Не хочешь объяснить, почему я записана как «Не брать»?'),
+        ('o3_b', 'bf15', "[sheepishly] …Okay. Fair. I'm changing it right now.", '…Ладно. Справедливо. Прямо сейчас меняю.'),
+        ('o3_nar', 'nar', 'Как носитель: спокойный вопрос — и он краснеет. Запоминай:', ''),
+        ('o3_tip', 'tip', 'Care to explain…?', ''),
+        ('o4_h', 'her', "[sweetly] Funny. I've saved you as 'Always Answer'. One of us is about to update their contacts — and it won't be me.", 'Забавно. А я записала тебя как «Всегда брать». Кто-то из нас сейчас обновит контакты — и это буду не я.'),
+        ('o4_b', 'bf15', "[typing frantically] 'Always Answer, My Queen'. Happy now?", '«Всегда брать, моя королева». Довольна?'),
+        ('end_h', 'her', "[shocked] 'He'll wait'?! Since when?!", '«Подождёт»?! С каких это пор?!'),
+        ('moral', 'nar', 'Мораль: контакт в телефоне — это не имя. Это диагноз.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши в комментариях!', ''),
+        ('ask', 'nar', 'Как ты записана у него в телефоне?', ''),
+    ],
+)
