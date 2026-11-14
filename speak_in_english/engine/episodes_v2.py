@@ -2681,3 +2681,35 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "sickday" — rubric answers4 (60-70 s). heroine = Jessica, boss = Chris
+# option labels (drawn by renderer): 1 В лоб · 2 Вежливо · 3 Как носитель · 4 Королевский
+CAST.update({
+    "boss3": dict(voice="am_michael", speed=1.0, lang="en-us", el="iP95p4xoKVk53GoZ742B"),   # sickday: the boss who liked her beach photo (Chris)
+})
+EP["sickday"] = dict(
+    title='На больничном, а босс лайкнул фото с пляжа', rubric='answers4',
+    hook_title=[['НА БОЛЬНИЧНОМ', 'd'], ['ЛАЙК ОТ БОССА', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    cover_b='ЧТО ОТВЕТИШЬ ПО-АНГЛИЙСКИ?',
+    absurd='На её пляжном фото на заднем плане чайка уносит в клюве её градусник.',
+    comment_q='Лайкать было можно? Да или нет?',
+    lines=[
+        ('hook_b', 'boss3', "[dryly] Lovely tan. How's the fever?", 'Отличный загар. Как температура?'),
+        ('hook', 'nar', 'Босс всё видел. Какой из четырёх ответов тебя спасёт?', ''),
+        ('o1_h', 'her', "[panicking] Not me! Photoshop!", 'Это не я! Фотошоп!'),
+        ('o1_b', 'boss3', "[skeptically] Photoshop gave you a tan line?", 'Фотошоп оставил тебе след от купальника?'),
+        ('o1_nar', 'nar', 'В лоб — и босс разглядывает твоё плечо в лупу.', ''),
+        ('o2_h', 'her', "[weakly] I'm so sorry, I feel really bad.", 'Мне очень жаль, мне правда очень плохо.'),
+        ('o2_b', 'boss3', "[sarcastically] You look really great for 'really bad'.", 'Для «очень плохо» ты выглядишь очень хорошо.'),
+        ('o2_nar', 'nar', 'Вежливо — а коктейльный зонтик всё выдал.', ''),
+        ('o3_h', 'her', "[calmly] Doctor said fresh air and rest. I'm just following doctor's orders.", 'Врач сказал: свежий воздух и отдых. Я просто выполняю предписания врача.'),
+        ('o3_b', 'boss3', "[resigned] Fair enough. Get well soon.", 'Справедливо. Выздоравливай.'),
+        ('o3_nar', 'nar', 'Как носитель: с врачом не спорят. Запоминай:', ''),
+        ('o3_tip', 'tip', "doctor's orders", ''),
+        ('o4_h', 'her', "[breezily] Sea air, sunshine, vitamin D. I'm recovering so hard I'll be back twice as productive. You're welcome.", 'Морской воздух, солнце, витамин D. Я выздоравливаю так усердно, что вернусь вдвое продуктивнее. Не за что.'),
+        ('o4_b', 'boss3', "[after a long pause] …Send me the name of that clinic.", '…Пришли мне название этой клиники.'),
+        ('end_b', 'boss3', "[whispering] Don't post the next one. I'm in the background.", 'Следующее не выкладывай. Я там на заднем плане.'),
+        ('moral', 'nar', 'Мораль: больничный — это состояние души, а не геолокация.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши в комментариях!', ''),
+        ('ask', 'nar', 'Лайкать было можно? Да или нет?', ''),
+    ],
+)
