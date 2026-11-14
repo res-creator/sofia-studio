@@ -47,10 +47,10 @@ tpl('sevenRow', 'Seven silhouettes/icons in a row (the close calls). params: sta
     layer(g, cam, 1, (g) => { const w = E.W * V(0.84, 0.9), x0 = (E.W - w) / 2, y = E.H * (st === 'numbers' ? 0.46 : 0.5), step = w / 6;
       for (let i = 0; i < 7; i++) { const x = x0 + i * step; let a = 0.25;
         if (st === 'light') a = 0.25 + 0.75 * ease.out(prog(t, cue(info, 'l' + (i + 1), 0.1 + i * 0.11), cue(info, 'l' + (i + 1), 0.1 + i * 0.11) + 0.4));
-        if (st === 'first') a = i === 0 ? 0.3 + 0.7 * ease.out(prog(t, 0.2, 1)) : 0.2;
+        if (st === 'first') a = i === 0 ? 0.6 + 0.4 * ease.out(prog(t, 0.2, 1)) : 0.2;
         if (st === 'out') a = 1 - 0.75 * ease.out(prog(t, 0.15 * info.dur + i * info.dur * 0.1, 0.15 * info.dur + i * info.dur * 0.1 + 0.4));
         if (st === 'numbers') a = 1;
-        const col = mix('#2a2e44', i === 0 ? '#ffe6a8' : '#e8f0ff', clamp(a)); if (a > 0.5) glow(g, x, y, 120, i === 0 ? ui.gold : '#9fc8ff', 0.25 * a);
+        const col = mix('#2a2e44', i === 0 ? '#ffe6a8' : '#e8f0ff', clamp(a)); if (a > 0.5) glow(g, x, y, i === 0 && st === 'first' ? 200 : 120, i === 0 ? ui.gold : '#9fc8ff', (i === 0 && st === 'first' ? 0.5 : 0.25) * a);
         if (st === 'numbers') { rr(g, x - step * 0.42, y - V(180, 160), step * 0.84, V(360, 320), 18); g.fillStyle = 'rgba(14,20,36,.9)'; g.fill(); g.strokeStyle = alpha(ui.gold, 0.5); g.lineWidth = 2; g.stroke();
           T(g, String(i + 1), x, y - V(100, 90), { size: V(80, 70), color: ui.gold, glow: 20, glowColor: alpha(ui.gold, 0.5) }); }
         icon(g, SEVEN[i], x, y + (st === 'numbers' ? V(30, 20) : 0), V(1.1, 0.8), col);
@@ -174,8 +174,8 @@ tpl('thermo', 'Thermometer drops to a value (cue "drop"); optional pale comparis
       rr(g, x - 14, y, 28, top + h - y, 14); g.fillStyle = mix(ui.accent, COL.cold, k); g.fill(); circle(g, x, top + h + 30, 44, mix(ui.accent, COL.cold, k));
       seg(g, [[x - 60, zeroY], [x + 60, zeroY]], 3, alpha('#1a1622', 0.8)); T(g, '0°', x - 90, zeroY, { size: V(30, 30), align: 'right' });
       bigNum(g, info.label || `${Math.round(v)} °C`, x + V(260, 200), y, { size: V(110, 90), color: COL.cold, a: showAt(t, dc + 0.3, info.dur) });
-      if (info.compare) { const ca = showAt(t, cue(info, 'compare', 0.6), info.dur), cy = zeroY - info.compare.v * per; g.save(); g.globalAlpha *= ca * 0.7; g.setLineDash([10, 10]); seg(g, [[x - 70, cy], [x + 520, cy]], 3, alpha(ui.cream, 0.7)); g.setLineDash([]); g.restore();
-        T(g, info.compare.label || 'ЛЕДНИКОВЫЙ ПЕРИОД', x + V(560, 420), cy - 30, { size: V(26, 26), a: ca * 0.8, align: 'left' }); } });
+      if (info.compare) { const ca = showAt(t, cue(info, 'compare', 0.6), info.dur), cy = zeroY - info.compare.v * per; g.save(); g.globalAlpha *= ca * 0.7; g.setLineDash([10, 10]); seg(g, [[x - 70, cy], [x + V(640, 380), cy]], 3, alpha(ui.cream, 0.7)); g.setLineDash([]); g.restore();
+        T(g, info.compare.label || 'ЛЕДНИКОВЫЙ ПЕРИОД', x + 90, cy - 30, { size: V(26, 24), a: ca * 0.8, align: 'left' }); } });
     source(g, info.source, showAt(t, 0.6, info.dur));
   } });
 tpl('uvScale', 'UV index scale 0 → 11 «ЭКСТРЕМАЛЬНО» → needle runs past to 35 (cue "past"). params: max (35), source', {
@@ -200,13 +200,14 @@ tpl('slider', 'A scale from «ЯДЕРНАЯ ОСЕНЬ» to «ЯДЕРНАЯ З
 tpl('curves', 'Recovery curves returning to normal (light / temperature / ozone) with year ticks. params: lines [{label, back (years), color}], years (15)', {
   draw(g, t, info) {
     const cam = camOf(info, t, { move: 'push', z: 1, amt: 0.5 }); voidBg(g, t, cam); const ui = S().ui, Y = info.years ?? 15;
-    const lines = info.lines || [{ label: 'СВЕТ', back: 10, color: ui.gold }, { label: 'ТЕМПЕРАТУРА', back: 15, color: COL.cold }, { label: 'ОЗОН', back: 15, color: '#c08aff' }];
+    const lines = info.lines || [{ label: 'СВЕТ', back: 10, color: ui.gold }, { label: 'ТЕМПЕРАТУРА', back: 12.5, note: '10–15 ЛЕТ', color: COL.cold }, { label: 'ОЗОН', back: 15, note: '12–15 ЛЕТ', color: '#c08aff' }];
     layer(g, cam, 1, (g) => { const x0 = E.W * 0.12, w = E.W * 0.72, y0 = E.H * 0.2, h = E.H * 0.56, X = (yr) => x0 + (yr / Y) * w;
       seg(g, [[x0, y0], [x0, y0 + h], [x0 + w, y0 + h]], 3, alpha(ui.cream, 0.5)); g.setLineDash([8, 10]); seg(g, [[x0, y0 + h * 0.15], [x0 + w, y0 + h * 0.15]], 2, alpha(ui.cream, 0.4)); g.setLineDash([]);
       T(g, 'НОРМА', x0 + w + 20, y0 + h * 0.15, { size: V(24, 22), align: 'left' }); for (let yr = 0; yr <= Y; yr += 5) T(g, `${yr}`, X(yr), y0 + h + 40, { size: V(26, 24) }); T(g, 'ЛЕТ', x0 + w + 20, y0 + h + 40, { size: V(24, 22), align: 'left' });
       lines.forEach((l, i) => { const k = ease.inOut(prog(t, cue(info, 'c' + (i + 1), 0.1 + i * 0.25), cue(info, 'c' + (i + 1), 0.1 + i * 0.25) + 1.4)), pts = [];
         for (let s = 0; s <= 60 * k; s++) { const yr = (s / 60) * Y, d = clamp(1 - yr / l.back), v = 0.15 + 0.75 * d * d * (3 - 2 * d) * (yr < 0.5 ? yr * 2 : 1); pts.push([X(yr), y0 + v * h]); }
-        if (pts.length > 1) { seg(g, pts, 6, l.color || ui.gold); const e = pts[pts.length - 1]; circle(g, e[0], e[1], 9, l.color || ui.gold); T(g, l.label, e[0] + 18, e[1] - 26 - i * 4, { size: V(26, 24), color: l.color || ui.gold, align: 'left' }); } }); });
+        if (pts.length > 1) { seg(g, pts, 6, l.color || ui.gold); const e = pts[pts.length - 1]; circle(g, e[0], e[1], 9, l.color || ui.gold); }
+        const lx = x0 + V(40, 30), ly = y0 + h * 0.32 + i * V(54, 50); seg(g, [[lx, ly], [lx + 50, ly]], 8, l.color || ui.gold); T(g, `${l.label} · ${l.note || '≈ ' + l.back + ' ЛЕТ'}`, lx + 70, ly, { size: V(28, 24), color: l.color || ui.gold, align: 'left', a: clamp(k * 3) }); }); });
   } });
 tpl('quote', 'Serif quote on a dark background, words fade in phrase by phrase; author/years line. params: str, by («1985 / 2022»), split ("|" separates phrases; cues q1,q2…)', {
   draw(g, t, info) {

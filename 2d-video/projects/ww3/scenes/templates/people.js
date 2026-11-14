@@ -31,6 +31,7 @@ export function exprAt(info, t, spec, def = 'neutral') {
   if (!spec) return def; if (typeof spec === 'string') return spec;
   let e = def; for (const [f, ex, c] of spec) { const at = c ? cue(info, c, f) : f * info.dur; if (t >= at) e = ex; } return e;
 }
+const GROUNDSIT = { ...POSES.sit, hip: [0, -30], sh: [1, -104], head: [4, -138], eF: [16, -70], hF: [38, -44], eB: [10, -70], hB: [30, -44], kF: [44, -40], fF: [70, 0], kB: [40, -38], fB: [62, 0] };
 const blink = (t, p = 3.1, o = 0) => ((t + o) % p) > p - 0.1;
 const camOf = (info, t, def = {}) => camMove(t, info.dur, { ...def, ...(info.cam || {}) });
 const rimOf = (M, dir = [0.6, -0.8], extra = {}) => ({ color: M.rim, dir, w: 4, ...extra });
@@ -63,7 +64,7 @@ tpl('petrovDesk', 'Petrov in the command post. params: pose (sit|desk|stand|phon
     const PX = E.W / 2 - V(260, 200), s = 1.25;
     layer(g, cam, 1, (g) => {
       const rim = { color: mix(r.M.rim, r.red, alarm * 0.5), dir: [0.6, -0.8], w: 4 };
-      if (info.ghosts) { const ga = ease.out(prog(t, cue(info, 'ghosts', 0.3), cue(info, 'ghosts', 0.3) + 1.2)); info.ghosts.forEach((w, i) => { const gx = PX + V(-360, -220) + (i % 2 ? 1 : -1) * 0 - i * V(150, 90) + (i > 1 ? V(900, 600) : 0);
+      if (info.ghosts) { const ga = ease.out(prog(t, cue(info, 'ghosts', 0.3), cue(info, 'ghosts', 0.3) + 1.2)); const slots = [PX - V(330, 200), PX - V(520, 330), PX + V(820, 520), PX + V(1010, 650), PX + V(1200, 780)]; info.ghosts.forEach((w, i) => { const gx = slots[i % slots.length];
         g.save(); g.globalAlpha *= ga * 0.9; fig(g, w, { x: gx, y: r.GY - 20, s: 1.05, facing: i > 1 ? -1 : 1, pose: breathe(POSES.stand, t, 1, i + 4), expr: 'neutral', rim: { color: '#e8f0ff', dir: [0, -1], w: 5 }, dim: true }); g.restore(); }); }
       let pose = info.pose || 'sit'; if (Array.isArray(pose)) { const keys = pose.map(([f, p, c]) => [c ? cue(info, c, f) : f * info.dur, PPOSE[p] || POSES[p]]); pose = posesAt(t, keys); } else pose = breathe(PPOSE[pose] || POSES[pose], t, 1, 2);
       const standing = info.pose === 'stand';
@@ -99,7 +100,7 @@ const nod = (p, k) => ({ ...p, head: [p.head[0] + 4 * k, p.head[1] + 8 * k] });
 const shakeHead = (p, k) => ({ ...p, head: [p.head[0] + 6 * k, p.head[1]] });
 tpl('subCouncil', 'Б-59: commander, zampolit, Arkhipov at the table. params: heat 0..1, alarm 0..1, focus (all|arkhipov|commander), cues: yes1, yes2 (nods), no (Arkhipov shakes head), expr per person {subcmd, zampolit, arkhipov} specs', {
   draw(g, t, info) {
-    const foc = info.focus || 'all', z = foc === 'all' ? 1.05 : 1.65, cam = camOf(info, t, { move: 'push', z, x: foc === 'arkhipov' ? -330 : foc === 'commander' ? 330 : 0, y: foc === 'all' ? 0 : 220 });
+    const foc = info.focus || 'all', z = foc === 'all' ? 1.05 : 1.65, cam = camOf(info, t, { move: 'push', z, x: foc === 'arkhipov' ? 250 : foc === 'commander' ? -250 : 0, y: foc === 'all' ? 0 : 220 });
     const r = sub(g, t, cam, { heat: info.heat ?? 0.7, alarm: info.alarm ?? 0, thermo: info.thermo ?? null });
     const y1 = cue(info, 'yes1', 0.25), y2 = cue(info, 'yes2', 0.45), no = cue(info, 'no', 0.65);
     layer(g, cam, 1, (g) => {
@@ -140,8 +141,8 @@ tpl('cockpitCrew', 'Bomber cockpit from behind two pilots. params: warn 0..1 (or
     layer(g, cam, 1, (g) => r.seats.forEach((sx, i) => {
       const rim = { color: mix('#ffb84a', r.red, warn * 0.6), dir: [0, -1], w: 4 }, climbing = info.hatch && i === 0;
       const pose = climbing ? blendPose(POSES.sit, POSES.pointUp, up) : info.ground && t > cue(info, 'start', 0.5) ? { ...POSES.sit, eF: [30, -150], hF: [60, -170] } : POSES.sit;
-      fig(g, 'pilot', { x: sx + (climbing ? up * V(220, 140) : 0), y: r.panelY + V(260, 300) - up * V(420, 520), s: 1.2, facing: i ? -1 : 1, pose: breathe(pose, t, 1, i), expr: exprAt(info, t, info.expr, warn > 0.2 ? 'scared' : 'neutral'), rim, blink: blink(t, 3, i), shadow: false });
-      if (!climbing || up < 0.3) seatBack(g, sx, r.panelY + 40, 1.1); }));
+      fig(g, 'pilot', { x: sx + (climbing ? up * V(220, 140) : 0), y: r.panelY + V(80, 100) - (climbing ? up * V(420, 520) : 0), s: 1.45, facing: i ? -1 : 1, pose: breathe(pose, t, 1, i), expr: exprAt(info, t, info.expr, warn > 0.2 ? 'scared' : 'neutral'), rim, blink: blink(t, 3, i), shadow: false });
+      seatBack(g, sx, r.panelY + 150, 1.3); }));
     if (warn > 0) veil(g, r.red, 0.05 * r.pulse, 'lighter'); tag(g, t, info);
   } });
 tpl('bomberNight', 'Exterior night sky 1961: the jet, the tanker (tanker:true), the fuel plume growing over the shot (leak), breakup at cue "break", parachutes after it. params: tanker, leak (true), breakup (true), chutes n', {
@@ -219,8 +220,8 @@ tpl('santaCall', '1955 split screen: left — a kid at home with a phone (happy)
   draw(g, t, info) {
     const cam = camOf(info, t, { move: 'push', z: 1, amt: 0.5 }), W2 = E.W / 2;
     g.save(); g.beginPath(); g.rect(0, 0, W2 - 4, E.H); g.clip(); const rk = kitchen(g, t, { ...cam, x: -W2 * 0.45, z: 1.2 }, { lampOn: true, tv: { head: 'РОЖДЕСТВО' } });
-    layer(g, { ...cam, x: 0 }, 1, (g) => { fig(g, 'kid', { x: W2 * 0.5, y: rk.GY, s: 1.5, facing: 1, pose: breathe(POSES.phone, t, 1, 1), expr: exprAt(info, t, info.expr, 'happy'), rim: rimOf(rk.M, [0.4, -1]), blink: blink(t, 2.7), prop: { type: 'phone', glow: '#ffd59a' } });
-      FX.rings(g, W2 * 0.5 + 60, rk.GY - 300, t, { count: 2, r0: 30, r1: 120, color: '#fff1e6', a: 0.35 }); }); g.restore();
+    layer(g, { ...cam, x: 0 }, 1, (g) => { fig(g, 'kid', { x: W2 * 0.5, y: rk.GY + V(60, 40), s: 2.1, facing: 1, pose: breathe(POSES.phone, t, 1, 1), expr: exprAt(info, t, info.expr, 'happy'), rim: rimOf(rk.M, [0.4, -1]), blink: blink(t, 2.7), prop: { type: 'phone', glow: '#ffd59a' } });
+      FX.rings(g, W2 * 0.5 + 60, rk.GY - 280, t, { count: 2, r0: 30, r1: 120, color: '#fff1e6', a: 0.35 }); }); g.restore();
     g.save(); g.beginPath(); g.rect(W2 + 4, 0, W2, E.H); g.clip(); const rn = norad(g, t, { ...cam, x: W2 * 0.4, z: 1.25 }, { screen: 'santa', p: clamp(t / info.dur), crewExpr: 'smile' });
     layer(g, { ...cam, x: 0 }, 1, (g) => { fig(g, 'shoup', { x: W2 * 1.45, y: rn.GY + 40, s: 1.6, facing: -1, pose: breathe({ ...POSES.stand, eF: [20, -150], hF: [14, -190] }, t, 1, 2), expr: 'smile', rim: rimOf(rn.M, [0.6, -0.8]), blink: false }); }); g.restore();
     g.fillStyle = '#05060a'; g.fillRect(W2 - 4, 0, 8, E.H); tag(g, t, info);
@@ -279,7 +280,7 @@ tpl('atollGather', 'Bikini, Feb 1946: Sunday, people sitting on the grass by the
     const talk = info.focus === 'talk', cam = camOf(info, t, { move: 'push', z: talk ? 1.6 : 1, x: talk ? -60 : 0, y: talk ? 200 : 0 }), r = atoll(g, t, cam, {});
     const an = cue(info, 'answer', 0.55);
     layer(g, cam, 1, (g) => { const rim = rimOf(r.M, [0.7, -0.7]);
-      for (let i = 0; i < 12; i++) drawFigure(g, { x: r.CX - V(700, 420) + i * V(70, 46), y: r.GY + 30 + (i % 3) * 16, s: 0.62, facing: 1, outfit: WHO.crew.outfit, pose: breathe(POSES.sit, t, 1, i), expr: 'neutral', rim, dim: true, blink: blink(t, 3, i) });
+      for (let i = 0; i < 12; i++) drawFigure(g, { x: r.CX - V(700, 420) + i * V(70, 46), y: r.GY + 30 + (i % 3) * 16, s: 0.62, facing: 1, outfit: WHO.crew.outfit, pose: breathe(GROUNDSIT, t, 1, i), expr: 'neutral', rim, dim: true, blink: blink(t, 3, i) });
       const E2 = info.expr || {};
       fig(g, 'governor', { x: r.CX - V(40, 20), y: r.GY + 40, s: 1.1, facing: 1, pose: breathe(t < an ? POSES.explain : POSES.stand, t, 1, 1), expr: exprAt(info, t, E2.governor, 'neutral'), rim, blink: blink(t, 3.2) });
       const ch = { x: r.CX + V(250, 140), y: r.GY + 40, s: 1.05, facing: -1, pose: breathe(t > an ? { ...POSES.stand, head: [6, -200] } : POSES.stand, t, 1, 2), expr: exprAt(info, t, E2.chief, t > an ? 'sad' : 'thinking'), rim, blink: blink(t, 3.5) };
@@ -292,7 +293,7 @@ tpl('reef', 'Under water in the crater: corals, a fish school, sharks; plate opt
   draw(g, t, info) { const cam = camOf(info, t, { move: 'driftL', z: 1 }); ocean(g, t, cam, { mode: 'reef', fish: info.fish ?? 50, sharks: info.sharks ?? 1 }); tag(g, t, info); } });
 tpl('seabedCable', 'Seabed with a thin data cable glowing; optional garden-hose comparison inset at cue "hose". params: hose (bool)', {
   draw(g, t, info) {
-    const cam = camOf(info, t, { move: 'driftR', z: 1 }); ocean(g, t, cam, { mode: 'cable' });
+    const cam = camOf(info, t, { move: 'driftR', z: 1 }); ocean(g, t, cam, { mode: 'cable', ground: 0.7 });
     if (info.hose) { const a = showAt(t, cue(info, 'hose', 0.45), info.dur), x = E.W * 0.72, y = E.H * 0.3; if (a > 0) { g.save(); g.globalAlpha *= a;
       rr(g, x - 260, y - 150, 520, 300, 20); g.fillStyle = 'rgba(8,14,24,.8)'; g.fill(); g.strokeStyle = alpha(S().ui.cream, 0.4); g.lineWidth = 2; g.stroke();
       seg(g, [[x - 220, y - 40], [x + 220, y - 40]], 16, '#0b0c10'); seg(g, [[x - 220, y - 44], [x + 220, y - 44]], 3, alpha('#9fd8e8', 0.6)); seg(g, [[x - 220, y + 50], [x + 220, y + 50]], 18, '#3f8a4a');

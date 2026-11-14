@@ -7,7 +7,7 @@ import { subHull } from './sub.js';
 export const seaGround = () => E.H * V(0.86, 0.74);
 // o: { mode:'deep'|'cable'|'reef', ships:n, flashes:[t0,…] (seconds, x spread), sub:{x,y,s,tilt}, dawn 0..1 (lighter water), fish:n, sharks:n }
 export function ocean(g, t, cam, o = {}) {
-  const M = mood('night'), GY = seaGround(), CX = E.W / 2, mode = o.mode || 'deep', dawn = o.dawn ?? (mode === 'reef' ? 0.6 : 0);
+  const M = mood('night'), GY = o.ground ? E.H * o.ground : seaGround(), CX = E.W / 2, mode = o.mode || 'deep', dawn = o.dawn ?? (mode === 'reef' ? 0.6 : 0);
   const top = mix('#0f4a5e', '#3fa0b0', dawn), mid = mix('#062433', '#10506a', dawn), deep = mix('#020a12', '#06263a', dawn);
   const surfY = -E.H * 0.1 + V(0, -200);
   layer(g, cam, 0.15, (g) => {

@@ -42,9 +42,9 @@ tpl('chain', 'Chain of command: a row of line-art people, each with a padlock; t
   draw(g, t, info) {
     const cam = camOf(info, t, { move: 'driftL', z: 1, amt: 0.6 }); bp(g, t, cam); const n = info.n ?? 5, check = info.mode === 'check';
     layer(g, cam, 1, (g) => { const x0 = E.W * 0.12, w = E.W * 0.76, y = E.H * 0.5, step = w / (n - 1), p = clamp((t - 0.3) / (info.dur * 0.75)) * (n - 1);
-      seg(g, [[x0, y + 60], [x0 + w, y + 60]], 3, alpha(BP(), 0.5)); const dx = x0 + p * step; glow(g, dx, y + 60, 50, GOLD(), 0.8); circle(g, dx, y + 60, 9, GOLD());
-      for (let i = 0; i < n; i++) { const x = x0 + i * step, on = p >= i - 0.05; UI.lineFigure(g, { x, y: y + 30, s: 0.55, pose: POSES.stand, color: on ? '#e8f0ff' : alpha('#e8f0ff', 0.5) });
-        icon(g, 'lock', x + 50, y - 40, 0.8, on ? GOLD() : alpha(BP(), 0.6)); if (check && on) icon(g, 'check', x, y - 150, 0.9 * popAt(t, 0.3 + (i / (n - 1)) * info.dur * 0.75), '#3fb950'); }
+      seg(g, [[x0, y + 70], [x0 + w, y + 70]], 3, alpha(BP(), 0.5)); const dx = x0 + p * step; glow(g, dx, y + 70, 50, GOLD(), 0.8); circle(g, dx, y + 70, 9, GOLD());
+      for (let i = 0; i < n; i++) { const x = x0 + i * step, on = p >= i - 0.05; UI.lineFigure(g, { x, y: y + 50, s: 1.0, pose: POSES.stand, color: on ? '#e8f0ff' : alpha('#e8f0ff', 0.5) });
+        icon(g, 'lock', x + 70, y - 80, 1.0, on ? GOLD() : alpha(BP(), 0.6)); if (check && on) icon(g, 'check', x, y - 260, 0.9 * popAt(t, 0.3 + (i / (n - 1)) * info.dur * 0.75), '#3fb950'); }
       if (info.caption) T(g, info.caption, E.W / 2, E.H * 0.82, { size: V(40, 40), color: GOLD(), a: showAt(t, cue(info, 'caption', 0.5), info.dur) }); });
   } });
 tpl('briefcase', 'The "nuclear briefcase" is not a button: it opens (cue "open") — inside a phone, a folder of options, a card to prove identity; labels pop at cues phone, folder, card', {
@@ -52,9 +52,9 @@ tpl('briefcase', 'The "nuclear briefcase" is not a button: it opens (cue "open")
     const cam = camOf(info, t, { move: 'push', z: 1, amt: 0.6 }); bp(g, t, cam); const op = K(info, t, 'open', 0.15, 0.8);
     layer(g, cam, 1, (g) => { const cx = E.W / 2, cy = E.H * 0.58, w = V(760, 640), h = V(380, 330);
       g.strokeStyle = BP(); g.lineWidth = 5; rr(g, cx - w / 2, cy, w, h, 22); g.stroke(); rr(g, cx - 70, cy - 40, 140, 40, 14); g.stroke();
-      g.save(); g.translate(cx, cy); g.transform(1, 0, 0, Math.cos(op * 1.25), 0, 0); rr(g, -w / 2, -h, w, h, 22); g.fillStyle = alpha(S().ui.bpBg, 0.9); g.fill(); g.stroke(); g.restore();
-      if (op > 0.5) { const items = [['phone', 'ТЕЛЕФОН', -w * 0.3], ['tv', 'ПАПКА С ВАРИАНТАМИ', 0], ['lock', 'КОД ЛИЧНОСТИ', w * 0.3]];
-        items.forEach(([ic, lb, dx], i) => { const a = popAt(t, cue(info, ['phone', 'folder', 'card'][i], 0.35 + i * 0.18)); if (a <= 0) return; icon(g, ic === 'tv' ? 'screen' : ic, cx + dx, cy + h * 0.45, 1.1 * a, GOLD()); T(g, lb, cx + dx, cy + h * 0.85, { size: V(26, 22), a }); }); }
+      const lh = h * Math.cos(op * Math.PI * 0.5) * 0.98 + h * 0.02; rr(g, cx - w / 2, cy - lh, w, lh, 22); g.fillStyle = alpha(S().ui.bpBg, 0.9); g.fill(); g.stroke(); if (op > 0.6) { seg(g, [[cx - w / 2, cy], [cx - w / 2 - 30, cy - h * 0.8 * op], [cx + w / 2 - 30, cy - h * 0.8 * op], [cx + w / 2, cy]], 4, alpha(BP(), 0.6)); }
+      if (op > 0.5) { const items = [['phone', 'ТЕЛЕФОН', -w * 0.33], ['tv', 'ПАПКА', 0], ['lock', 'ПРОВЕРКА ЛИЧНОСТИ', w * 0.33]];
+        items.forEach(([ic, lb, dx], i) => { const a = popAt(t, cue(info, ['phone', 'folder', 'card'][i], 0.35 + i * 0.18)); if (a <= 0) return; icon(g, ic === 'tv' ? 'screen' : ic, cx + dx, cy + h * 0.42, 1.2 * a, GOLD()); T(g, lb, cx + dx, cy + h + V(50, 50), { size: V(30, 24), a, color: GOLD() }); }); }
       const nb = showAt(t, cue(info, 'nobutton', 0.05), info.dur * 0.35); if (nb > 0) { T(g, '«КРАСНОЙ КНОПКИ» НЕТ', cx, E.H * 0.18, { size: V(46, 40), color: S().ui.accent, a: nb }); } });
   } });
 tpl('smokeDiagram', 'Smoke rises above the clouds into the stratosphere (no rain there) and spreads as a thin dark film around the planet. params: cues rise, spread; labels', {
@@ -65,8 +65,8 @@ tpl('smokeDiagram', 'Smoke rises above the clouds into the stratosphere (no rain
       g.setLineDash([10, 12]); seg(g, [[-E.W, cy], [E.W * 2, cy]], 2, alpha(BP(), 0.5)); seg(g, [[-E.W, sy + 90], [E.W * 2, sy + 90]], 2, alpha(BP(), 0.5)); g.setLineDash([]);
       T(g, 'ОБЛАКА · ДОЖДЬ', E.W * 0.86, cy - 30, { size: V(24, 22) }); T(g, 'СТРАТОСФЕРА · ДОЖДЯ НЕТ', E.W * 0.82, sy + 60, { size: V(24, 22), color: GOLD() });
       for (let i = 0; i < 4; i++) { g.strokeStyle = alpha(BP(), 0.7); g.lineWidth = 3; g.beginPath(); g.ellipse(E.W * 0.1 + i * 160, cy + 20, 60, 20, 0, Math.PI, Math.PI * 2); g.stroke(); }
-      const top = lerp(gy - 60, sy + 40, kr), x = E.W * 0.45; for (let i = 0; i < 18; i++) { const u = i / 17, yy = lerp(gy - 60, top, u), wob = Math.sin(t * 1.2 + i) * 14; circle(g, x + wob + (u > 0.85 ? (u - 0.85) * 600 * ks : 0), yy, 30 + u * 30, alpha('#1a1614', 0.85)); }
-      if (ks > 0) { g.fillStyle = alpha('#1a1614', 0.8); g.fillRect(x - E.W * 0.6 * ks, sy + 10, E.W * 1.2 * ks, 50); T(g, 'ТОНКАЯ «ШТОРА» САЖИ', E.W / 2, sy - 30, { size: V(32, 30), color: '#e8f0ff', a: ks }); } });
+      const top = lerp(gy - 60, sy + 40, kr), x = E.W * 0.45; for (let i = 0; i < 18; i++) { const u = i / 17, yy = lerp(gy - 60, top, u), wob = Math.sin(t * 1.2 + i) * 14; circle(g, x + wob + (u > 0.85 ? (u - 0.85) * 600 * ks : 0), yy, 30 + u * 30, alpha('#6a6470', 0.9)); }
+      if (ks > 0) { g.fillStyle = alpha('#6a6470', 0.85); g.fillRect(x - E.W * 0.6 * ks, sy + 10, E.W * 1.2 * ks, 50); T(g, 'ТОНКАЯ «ШТОРА» САЖИ', E.W / 2, sy - 30, { size: V(32, 30), color: '#e8f0ff', a: ks }); } });
   } });
 tpl('cutaway', 'Cross-section diagrams. params: kind: "hotel" (Greenbrier: a grand hotel on a hill, a bunker underneath; cue "bunker" reveals it; tag «ГРИНБРАЙЕР, 1958–1961») | "mountain" (Cheyenne: granite mountain, buildings on giant springs, 25-ton doors; cues springs, doors)', {
   draw(g, t, info) {

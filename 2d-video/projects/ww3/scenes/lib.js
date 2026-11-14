@@ -268,7 +268,7 @@ export function bigHead(g, who, cx, cy, r, o = {}) {
     g.beginPath(); g.arc(0, 0, r * 1.06, 0, Math.PI * 2); g.arc((o.rimSide ?? -1) * r * 0.07, 0, r, 0, Math.PI * 2, true); g.fillStyle = o.rimColor || '#ffc68a'; g.fill('evenodd');
     circle(g, 0, 0, r, S().ink); g.restore();
   } else bigFace(g, cx, cy, r, { outfit: W.outfit, ...o });
-  if (W.hat === 'lei') lei(g, cx, cy + r * 0.95, r / 26 * 1.6);
+  if (W.hat === 'lei') lei(g, cx, cy + r * 0.78, r / 26 * 1.25);
   else if (W.hat !== 'none') hat(g, W.hat, cx, cy, r, 1, { front: true });
 }
 

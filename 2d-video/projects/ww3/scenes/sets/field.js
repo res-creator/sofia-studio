@@ -7,9 +7,9 @@ import { truck } from './port.js';
 export const fieldGround = () => E.H * V(0.8, 0.68);
 // o: { grey 0..1, frost 0..1, wind 0..1, elevator:true, tractor: x 0..1 | null, sun 0..1 (visible) }
 export function field(g, t, cam, o = {}) {
-  const Mg = mood('golden'), Ms = mood('storm'), k = o.grey ?? 0, GY = fieldGround(), CX = E.W / 2, fr = o.frost ?? 0, wind = o.wind ?? 0.6;
+  const Mg = mood('golden'), Ms = { ...mood('storm'), sky: ['#4a4e5a', '#6a6e78', '#8a8c92'], fog: '#9a9ca4' }, k = o.grey ?? 0, GY = fieldGround(), CX = E.W / 2, fr = o.frost ?? 0, wind = o.wind ?? 0.6;
   const sky = Mg.sky.map((c, i) => mix(c, Ms.sky[Math.min(i, Ms.sky.length - 1)], k));
-  const wheat = mix(mix('#d9a84a', '#7a7a6a', k), '#cfe4ff', fr * 0.6), stem = mix('#8a6a2a', '#4a4a44', k);
+  const wheat = mix(mix('#d9a84a', '#8a8470', k), '#dfeaf6', fr * 0.35), stem = mix('#8a6a2a', '#4a4a44', k);
   layer(g, cam, 0.1, (g) => {
     backdrop(g, sky);
     const sun = (o.sun ?? 1) * (1 - k * 0.85); if (sun > 0) { const sx = CX + V(520, 220), sy = GY - V(330, 520); FX.sun(g, sx, sy, 56, '#fff3dc', Mg.key, 5 * sun); FX.godRays(g, sx, sy, { count: 14, angle: Math.PI * 0.6, spread: 1.4, len: 1500, a: 0.06 * sun, t }); }
