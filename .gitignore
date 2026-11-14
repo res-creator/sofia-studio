@@ -36,3 +36,8 @@ whyhow/ep05_mexicocity/voice/*.wav
 whyhow/ep05_mexicocity/*.log
 whyhow/ep05_mexicocity/video_silent.mp4*
 whyhow/ep05_mexicocity/mix.wav
+whyhow/ep06_newyork/voice_raw/
+whyhow/ep06_newyork/voice/*.wav
+whyhow/ep06_newyork/*.log
+whyhow/ep06_newyork/video_silent.mp4*
+whyhow/ep06_newyork/mix.wav
