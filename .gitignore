@@ -30,3 +30,5 @@ ru_geo/dubai/full/parts.txt
 ru_geo/dubai/full/*.log
 ru_geo/dubai/full/qc/
 ru_geo/dubai/full/fetch.log
+2d-video/node_modules/
+2d-video/projects/*/build/
