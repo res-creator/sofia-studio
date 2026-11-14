@@ -386,6 +386,20 @@ if EPN in ("rich", "busy", "avoidparty", "tour", "splitbill", "photo"):  # batch
             t = T(0.13); f = 440 * 2 ** ((m - 69) / 12); put(y, np.sign(np.sin(2*np.pi*f*t)) * 0.35 * np.minimum((0.13 - t)*120, 1), k*0.13, 0.5)
         return norm(lp(y, 4000), 0.55)
     SFX.update(ring=_ring(), doorbell=_doorbell(), cheer=_cheer(), vroom=_vroom(), chirp=_chirp(), toy=_toy())
+if EPN == "whistle":  # office whistling: cheerful human whistle tunes (glide + vibrato + breath), a cut-off half note (own rng, so other episodes mix exactly as before)
+    _q = np.random.default_rng(15)
+    def _whistle(tune, step=0.17, cut=False):
+        d = len(tune) * step + 0.12; tt = T(d); f = np.zeros(len(tt))
+        for k_, m in enumerate(tune):
+            i0 = int(k_ * step * SR); f[i0:] = 440 * 2 ** ((m - 69) / 12)
+        f = lp(np.concatenate([np.full(2000, f[0]), f]), 18)[2000:] * (1 + 0.012 * np.sin(2 * np.pi * 5.6 * tt))
+        ph = 2 * np.pi * np.cumsum(f) / SR; amp = np.ones(len(tt))
+        for k_ in range(len(tune)): amp *= 1 - 0.55 * np.exp(-((tt - k_ * step) / 0.02) ** 2)
+        x = (np.sin(ph) + 0.06 * np.sin(2 * ph)) * amp + 0.05 * bp(_q.standard_normal(len(tt)), 1500, 4000)
+        x *= np.minimum(tt * 40, 1) * (np.minimum((d - tt) * 25, 1) if not cut else (tt < d - 0.14))
+        return norm(x, 0.5)
+    SFX.update(paper=paper(), whistle=_whistle([79, 83, 86, 84, 83, 79, 81, 83]), whistle_s=_whistle([84, 88, 86], 0.06), whistle_half=_whistle([79, 83, 86], 0.15, cut=True),
+               whistle_i=_whistle([76, 79, 83, 79, 81, 84, 83, 79, 76, 79, 83, 88], 0.15))
 def note(m, key=0): return 440 * 2 ** ((m + key - 69) / 12)
 def pluck(f, d, bright=1.0):
     t = T(d); ph = 2*np.pi*f*t
@@ -495,7 +509,7 @@ if EPN == "party":
         seg = (full*op + muff*(1 - op)) * g
         seg *= np.minimum(1, np.arange(n)/(0.03*SR)) * np.minimum(1, (n - np.arange(n))/(0.12*SR))
         put(music, seg, s0, 1.0)
-elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "teacher", "pretend", "avoidparty", "tour"):
+elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "teacher", "pretend", "avoidparty", "tour", "whistle"):
     # cheerful London stroll: pizzicato, walking bass, glockenspiel, brushes
     bpm = 116; b = 60/bpm; K = 0
     def pizz(f, d=0.35):
@@ -649,7 +663,10 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+if EPN == "whistle":  # nashe4 rubric (no levels): music off from the end of option 4 (the beat before the twist: the intern whistles) until the moral
+    c2e = [x for x in TL["scenes"] if x["id"] == "end"][0]["s"] - 0.05; c2n = sp["moral"]["t"]
+else:
+    C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause
