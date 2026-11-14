@@ -1,0 +1,289 @@
+{
+ "before": {
+  "lufs_range": 5.4,
+  "tone_dev_rms_db": 1.49
+ },
+ "after": {
+  "lufs_range": 0.9,
+  "tone_dev_rms_db": 0.74
+ },
+ "chain": "highpass=f=75:poles=2,afftdn=nr=8:nf=-42:tn=1,equalizer=f=300:t=q:w=1.1:g=-2.5,equalizer=f=4000:t=q:w=1.0:g=2.0,highshelf=f=11000:g=1.5,deesser=i=0.35:m=0.5:f=0.5:s=o,acompressor=threshold=-21dB:ratio=2.5:attack=12:release=180:knee=4:makeup=2,asoftclip=type=tanh:threshold=0.95:output=1,alimiter=limit=0.89:attack=5:release=60:level=false",
+ "takes": {
+  "M001": {
+   "lufs_before": -19.3,
+   "lufs_after": -16.0,
+   "centroid_before": 697,
+   "centroid_after": 1078
+  },
+  "M002": {
+   "lufs_before": -18.7,
+   "lufs_after": -16.0,
+   "centroid_before": 719,
+   "centroid_after": 1081
+  },
+  "M003": {
+   "lufs_before": -19.6,
+   "lufs_after": -16.0,
+   "centroid_before": 737,
+   "centroid_after": 1103
+  },
+  "M004": {
+   "lufs_before": -21.8,
+   "lufs_after": -16.0,
+   "centroid_before": 791,
+   "centroid_after": 1136
+  },
+  "M005": {
+   "lufs_before": -17.7,
+   "lufs_after": -16.9,
+   "centroid_before": 710,
+   "centroid_after": 1006
+  },
+  "M006": {
+   "lufs_before": -19.0,
+   "lufs_after": -16.1,
+   "centroid_before": 766,
+   "centroid_after": 944
+  },
+  "M007": {
+   "lufs_before": -18.7,
+   "lufs_after": -16.0,
+   "centroid_before": 734,
+   "centroid_after": 1023
+  },
+  "M007B": {
+   "lufs_before": -19.5,
+   "lufs_after": -16.0,
+   "centroid_before": 749,
+   "centroid_after": 1061
+  },
+  "M008": {
+   "lufs_before": -19.0,
+   "lufs_after": -16.0,
+   "centroid_before": 767,
+   "centroid_after": 908
+  },
+  "M009": {
+   "lufs_before": -20.1,
+   "lufs_after": -16.0,
+   "centroid_before": 740,
+   "centroid_after": 1120
+  },
+  "M009B": {
+   "lufs_before": -17.6,
+   "lufs_after": -16.0,
+   "centroid_before": 755,
+   "centroid_after": 934
+  },
+  "M010": {
+   "lufs_before": -19.7,
+   "lufs_after": -16.1,
+   "centroid_before": 797,
+   "centroid_after": 1055
+  },
+  "M011": {
+   "lufs_before": -20.5,
+   "lufs_after": -16.0,
+   "centroid_before": 774,
+   "centroid_after": 1095
+  },
+  "M012": {
+   "lufs_before": -19.0,
+   "lufs_after": -16.0,
+   "centroid_before": 747,
+   "centroid_after": 1064
+  },
+  "M013": {
+   "lufs_before": -19.2,
+   "lufs_after": -16.0,
+   "centroid_before": 765,
+   "centroid_after": 1106
+  },
+  "M014": {
+   "lufs_before": -19.1,
+   "lufs_after": -16.1,
+   "centroid_before": 788,
+   "centroid_after": 992
+  },
+  "M015": {
+   "lufs_before": -18.4,
+   "lufs_after": -16.0,
+   "centroid_before": 804,
+   "centroid_after": 932
+  },
+  "M016": {
+   "lufs_before": -18.6,
+   "lufs_after": -16.0,
+   "centroid_before": 743,
+   "centroid_after": 1152
+  },
+  "M016B": {
+   "lufs_before": -19.2,
+   "lufs_after": -16.0,
+   "centroid_before": 725,
+   "centroid_after": 1090
+  },
+  "M017": {
+   "lufs_before": -21.3,
+   "lufs_after": -16.0,
+   "centroid_before": 741,
+   "centroid_after": 1132
+  },
+  "M018": {
+   "lufs_before": -19.7,
+   "lufs_after": -16.0,
+   "centroid_before": 749,
+   "centroid_after": 1027
+  },
+  "M018B": {
+   "lufs_before": -18.6,
+   "lufs_after": -16.0,
+   "centroid_before": 754,
+   "centroid_after": 1008
+  },
+  "M019": {
+   "lufs_before": -19.7,
+   "lufs_after": -16.0,
+   "centroid_before": 848,
+   "centroid_after": 956
+  },
+  "M020": {
+   "lufs_before": -19.2,
+   "lufs_after": -16.0,
+   "centroid_before": 747,
+   "centroid_after": 1065
+  },
+  "M021": {
+   "lufs_before": -19.8,
+   "lufs_after": -16.0,
+   "centroid_before": 735,
+   "centroid_after": 1074
+  },
+  "M022": {
+   "lufs_before": -20.5,
+   "lufs_after": -16.0,
+   "centroid_before": 749,
+   "centroid_after": 1096
+  },
+  "M022B": {
+   "lufs_before": -19.9,
+   "lufs_after": -16.0,
+   "centroid_before": 717,
+   "centroid_after": 1151
+  },
+  "M022C": {
+   "lufs_before": -20.8,
+   "lufs_after": -16.0,
+   "centroid_before": 746,
+   "centroid_after": 947
+  },
+  "M023": {
+   "lufs_before": -16.8,
+   "lufs_after": -16.0,
+   "centroid_before": 763,
+   "centroid_after": 867
+  },
+  "M024": {
+   "lufs_before": -18.3,
+   "lufs_after": -16.0,
+   "centroid_before": 766,
+   "centroid_after": 988
+  },
+  "M025": {
+   "lufs_before": -18.4,
+   "lufs_after": -16.0,
+   "centroid_before": 709,
+   "centroid_after": 948
+  },
+  "M026": {
+   "lufs_before": -17.5,
+   "lufs_after": -16.0,
+   "centroid_before": 725,
+   "centroid_after": 798
+  },
+  "M026B": {
+   "lufs_before": -19.9,
+   "lufs_after": -16.0,
+   "centroid_before": 696,
+   "centroid_after": 1151
+  },
+  "M027": {
+   "lufs_before": -18.8,
+   "lufs_after": -16.0,
+   "centroid_before": 712,
+   "centroid_after": 1153
+  },
+  "M028": {
+   "lufs_before": -20.0,
+   "lufs_after": -16.0,
+   "centroid_before": 722,
+   "centroid_after": 1117
+  },
+  "M029": {
+   "lufs_before": -18.4,
+   "lufs_after": -16.0,
+   "centroid_before": 679,
+   "centroid_after": 1142
+  },
+  "M030": {
+   "lufs_before": -16.8,
+   "lufs_after": -16.5,
+   "centroid_before": 618,
+   "centroid_after": 1020
+  },
+  "M031": {
+   "lufs_before": -20.1,
+   "lufs_after": -16.0,
+   "centroid_before": 738,
+   "centroid_after": 1036
+  },
+  "M032": {
+   "lufs_before": -16.4,
+   "lufs_after": -16.0,
+   "centroid_before": 811,
+   "centroid_after": 914
+  },
+  "M033": {
+   "lufs_before": -19.9,
+   "lufs_after": -16.0,
+   "centroid_before": 753,
+   "centroid_after": 1106
+  },
+  "M033B": {
+   "lufs_before": -19.3,
+   "lufs_after": -16.1,
+   "centroid_before": 696,
+   "centroid_after": 1081
+  },
+  "M034": {
+   "lufs_before": -19.6,
+   "lufs_after": -16.0,
+   "centroid_before": 626,
+   "centroid_after": 1220
+  },
+  "M035": {
+   "lufs_before": -17.4,
+   "lufs_after": -16.0,
+   "centroid_before": 764,
+   "centroid_after": 913
+  },
+  "M036": {
+   "lufs_before": -18.0,
+   "lufs_after": -16.0,
+   "centroid_before": 751,
+   "centroid_after": 1115
+  },
+  "M037": {
+   "lufs_before": -18.2,
+   "lufs_after": -16.0,
+   "centroid_before": 704,
+   "centroid_after": 1164
+  },
+  "M038": {
+   "lufs_before": -18.8,
+   "lufs_after": -16.0,
+   "centroid_before": 699,
+   "centroid_after": 1141
+  }
+ }
+}

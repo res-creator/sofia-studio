@@ -99,7 +99,7 @@ Numbers in [brackets] point to SOURCES.md.
 
 ## CH5 — Can it be stopped?
 
-**M030** So, can Mexico City stop sinking?
+**M030** Is there any way to stop the sinking?
 
 **M031** Scientists studying the clay say the squeezing that has already started will keep going for a long time. One study estimated it could continue for around a hundred and fifty years, and add up to thirty meters more in the worst places. [2]
 

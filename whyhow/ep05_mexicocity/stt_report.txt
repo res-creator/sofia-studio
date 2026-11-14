@@ -1,0 +1,46 @@
+M001 0.943 replace: nineteen ten -> 1910
+M002 0.967 replace: fourteen -> 14
+M003 1.000 
+M004 0.970 replace: twenty -> 20
+M005 0.706 replace: starts seven hundred -> started 700
+M006 0.925 replace: thirteen twenties -> 1320s | replace: texcoco -> tescoco
+M007 1.000 
+M007B 0.942 replace: fifteen nineteen -> 1519 | replace: d az -> diaz
+M008 0.875 replace: fifteen twenty one -> 1521 | replace: tenochtitlan -> tainochtitlan
+M009 1.000 
+M009B 0.899 replace: sixteen twenty nine -> 1629 | replace: under water -> underwater | replace: parts -> partes
+M010 0.949 replace: lakebed -> lake bed
+M011 1.000 
+M012 0.964 replace: sixty percent -> 60
+M013 1.000 
+M014 1.000 
+M015 0.870 replace: parts -> partes | replace: twelve -> 12 | replace: storey -> story
+M016 0.900 replace: twenty twenty six -> 2026 | replace: two -> 2
+M016B 1.000 
+M017 0.879 replace: trouble starts -> troubled star taste | replace: starts -> star tastes
+M018 0.914 replace: z calo -> zocalo | replace: fifteen hundreds -> 1500s
+M018B 0.909 replace: mayor -> maior | replace: nineteen seventy eight -> 1978
+M019 0.954 replace: nineteen nineties -> 1990s
+M020 1.000 
+M021 0.900 replace: arts -> artes | replace: bellas -> beas | replace: nineteen oh four -> 1904
+M022 1.000 
+M022B 1.000 
+M022C 0.885 replace: nineteenth -> 19th | replace: nineteen eighty five -> 1985 | replace: three hundred -> 300 | replace: ten thousand -> 10 000
+M023 1.000 
+M024 0.967 replace: cutzamala -> kutsamala
+M025 0.931 replace: twenty twenty four -> 2024
+M026 1.000 
+M026B 0.958 replace: pipas -> pipa's
+M027 0.959 replace: forty percent -> 40
+M028 0.961 replace: five hundred -> 500
+M029 1.000 
+M030 1.000 
+M031 0.914 replace: a hundred and fifty -> 150 | replace: thirty -> 30
+M032 1.000 
+M033 1.000 
+M033B 0.925 replace: a unesco -> an un esco
+M034 1.000 
+M035 1.000 
+M036 0.581 delete: mexico city is a city that's running out of the water under it -> 
+M037 1.000 
+M038 1.000 
