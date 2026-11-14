@@ -2681,3 +2681,35 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "corrects" — rubric answers4 (60-70 s). heroine = Jessica, date with a red pen = Will
+# option labels (drawn by renderer): 1 В лоб · 2 Вежливо · 3 Как носитель · 4 Королевский
+CAST.update({
+    "date4": dict(voice="am_michael", speed=1.0, lang="en-us", el="bIHbv24MWmeRgasZH58o"),   # corrects: date who corrects her English (Will)
+})
+EP["corrects"] = dict(
+    title='На свидании он поправляет твой английский', rubric='answers4',
+    hook_title=[['НА СВИДАНИИ', 'd'], ['КРАСНАЯ РУЧКА', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    cover_b='ОТВЕТИШЬ ПО-АНГЛИЙСКИ?',
+    absurd='В нагрудном кармане у него ещё пять красных ручек, а на салфетке уже стоит оценка «B+».',
+    comment_q='Второе свидание — да или нет?',
+    lines=[
+        ('hook_d', 'date4', "[helpfully] Small thing: it's 'I've been', not 'I was'.", "Мелочь: правильно «I've been», а не «I was»."),
+        ('hook', 'nar', 'Он исправляет твой английский прямо на свидании. Какой ответ поставит его на место?', ''),
+        ('o1_h', 'her', "[irritated] Stop teach me!", 'Хватит учить меня!'),
+        ('o1_d', 'date4', "[pedantically] Stop teachING me.", 'Хватит учИТЬ меня.'),
+        ('o1_nar', 'nar', 'В лоб — и он исправил даже это.', ''),
+        ('o2_h', 'her', "[politely] Thank you, I'm still learning.", 'Спасибо, я ещё учусь.'),
+        ('o2_d', 'date4', "[cheerfully] No problem! And it's 'think', not 'sink'.", 'Не за что! И правильно «think», а не «sink».'),
+        ('o2_nar', 'nar', 'Вежливо — и урок продолжается.', ''),
+        ('o3_h', 'her', "[lightly] I appreciate it, but I'm off duty tonight. Let's just talk.", 'Я ценю это, но сегодня я не на уроке. Давай просто поговорим.'),
+        ('o3_d', 'date4', "[sheepishly] Fair. Sorry — teacher habit.", 'Справедливо. Прости — привычка учителя.'),
+        ('o3_nar', 'nar', 'Как носитель: спасибо — и мягкая граница. Запоминай:', ''),
+        ('o3_tip', 'tip', "I'm off duty tonight.", ''),
+        ('o4_h', 'her', "[sweetly] Your grammar's flawless, darling. Shame about the manners — shall I circle that for you?", 'Грамматика у тебя безупречная, дорогой. Жаль, что с манерами хуже — обвести тебе это?'),
+        ('o4_d', 'date4', "[humbled] …Is there extra credit?", '…А дополнительные баллы есть?'),
+        ('end_d', 'date4', "[shyly] No corrections. Just one question.", 'Без исправлений. Только один вопрос.'),
+        ('moral', 'nar', 'Мораль: ошибки в грамматике прощают. Ошибки в манерах — нет.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши в комментариях!', ''),
+        ('ask', 'nar', 'Второе свидание — да или нет?', ''),
+    ],
+)
