@@ -1,0 +1,45 @@
+N001 1.000 
+N002 1.000 
+N003 0.912 replace: a hundred and twenty five -> 125
+N004 1.000 
+N005 1.000 
+N006 0.943 replace: eighteen eighty two -> 1882
+N007 1.000 
+N008 0.877 replace: seventeen hundred -> 1 700 | replace: ninety sixth -> 96th
+N009 0.947 replace: four hundred -> 400
+N010 1.000 
+N011 0.875 replace: eighteenth -> 18th | replace: two thousand seven -> 2007
+N012 0.951 replace: nineteen twenty four -> 1924
+N012B 1.000 
+N012C 0.886 replace: eighteen thirty two -> 1832 | replace: thirty five hundred -> 3 500
+N012D 0.930 replace: forty -> 40 | replace: eighteen forty two -> 1842
+N013 1.000 
+N014 0.826 replace: nineteen -> 19 | replace: a hundred and twenty five -> 125
+N015 0.949 replace: ninety five percent -> 95
+N016 1.000 
+N016B 0.878 replace: sixty eight hundred -> 6 800 | replace: seventy five hundred -> 7 500
+N017 1.000 
+N018 1.000 
+N019 0.949 replace: ten thousand -> 10 000
+N020 0.904 replace: nineteen seventeen -> 1917 | replace: nineteen thirty six -> 1936
+N021 0.955 replace: nineteen seventy -> 1970
+N022 1.000 
+N023 0.945 replace: twenty thirteen -> 2013
+N024 0.889 replace: fifty -> 50 | replace: twenty thirties -> 2030s
+N025 1.000 
+N026 0.847 replace: twenty four -> 24 | replace: four hundred and seventy two -> 472
+N027 0.957 replace: thirteen -> 13 | replace: pumps -> pump
+N028 0.930 replace: twenty twelve -> 2012 | replace: salt water -> saltwater
+N029 0.949 replace: salt water -> saltwater
+N030 0.885 replace: nineteen oh four -> 1904 | replace: arched -> arch
+N031 0.942 replace: nineteen forty five -> 1945 | replace: six -> 6
+N032 1.000 
+N033 0.963 replace: manhattan -> manhattan's
+N034 1.000 
+N035 0.982 replace: and -> in
+N036 0.968 replace: eighteen seventies -> 1870s
+N037 0.904 replace: bends -> benz | replace: a hundred -> 100 | replace: roebling -> robling
+N038 1.000 
+N039 0.936 replace: a hundred and twenty five -> 125
+N040 1.000 
+N041 1.000 

@@ -1,0 +1,283 @@
+{
+ "before": {
+  "lufs_range": 4.1,
+  "tone_dev_rms_db": 1.35
+ },
+ "after": {
+  "lufs_range": 0.7,
+  "tone_dev_rms_db": 0.67
+ },
+ "chain": "highpass=f=75:poles=2,afftdn=nr=8:nf=-42:tn=1,equalizer=f=300:t=q:w=1.1:g=-2.5,equalizer=f=4000:t=q:w=1.0:g=2.0,highshelf=f=11000:g=1.5,deesser=i=0.35:m=0.5:f=0.5:s=o,acompressor=threshold=-21dB:ratio=2.5:attack=12:release=180:knee=4:makeup=2,asoftclip=type=tanh:threshold=0.95:output=1,alimiter=limit=0.89:attack=5:release=60:level=false",
+ "takes": {
+  "N001": {
+   "lufs_before": -19.4,
+   "lufs_after": -16.0,
+   "centroid_before": 742,
+   "centroid_after": 1029
+  },
+  "N002": {
+   "lufs_before": -18.7,
+   "lufs_after": -16.0,
+   "centroid_before": 747,
+   "centroid_after": 1021
+  },
+  "N003": {
+   "lufs_before": -19.4,
+   "lufs_after": -16.0,
+   "centroid_before": 745,
+   "centroid_after": 1130
+  },
+  "N004": {
+   "lufs_before": -19.3,
+   "lufs_after": -16.0,
+   "centroid_before": 690,
+   "centroid_after": 949
+  },
+  "N005": {
+   "lufs_before": -17.9,
+   "lufs_after": -16.7,
+   "centroid_before": 661,
+   "centroid_after": 1129
+  },
+  "N006": {
+   "lufs_before": -17.4,
+   "lufs_after": -16.1,
+   "centroid_before": 773,
+   "centroid_after": 950
+  },
+  "N007": {
+   "lufs_before": -19.8,
+   "lufs_after": -16.0,
+   "centroid_before": 716,
+   "centroid_after": 1132
+  },
+  "N008": {
+   "lufs_before": -18.9,
+   "lufs_after": -16.0,
+   "centroid_before": 683,
+   "centroid_after": 1125
+  },
+  "N009": {
+   "lufs_before": -18.2,
+   "lufs_after": -16.0,
+   "centroid_before": 754,
+   "centroid_after": 931
+  },
+  "N010": {
+   "lufs_before": -19.1,
+   "lufs_after": -16.0,
+   "centroid_before": 685,
+   "centroid_after": 1143
+  },
+  "N011": {
+   "lufs_before": -18.8,
+   "lufs_after": -16.0,
+   "centroid_before": 737,
+   "centroid_after": 1112
+  },
+  "N012": {
+   "lufs_before": -19.2,
+   "lufs_after": -16.0,
+   "centroid_before": 782,
+   "centroid_after": 932
+  },
+  "N012B": {
+   "lufs_before": -19.1,
+   "lufs_after": -16.0,
+   "centroid_before": 741,
+   "centroid_after": 958
+  },
+  "N012C": {
+   "lufs_before": -18.8,
+   "lufs_after": -16.1,
+   "centroid_before": 757,
+   "centroid_after": 851
+  },
+  "N012D": {
+   "lufs_before": -21.3,
+   "lufs_after": -16.0,
+   "centroid_before": 771,
+   "centroid_after": 1000
+  },
+  "N013": {
+   "lufs_before": -19.0,
+   "lufs_after": -16.0,
+   "centroid_before": 742,
+   "centroid_after": 931
+  },
+  "N014": {
+   "lufs_before": -17.5,
+   "lufs_after": -16.0,
+   "centroid_before": 702,
+   "centroid_after": 909
+  },
+  "N015": {
+   "lufs_before": -19.8,
+   "lufs_after": -16.0,
+   "centroid_before": 751,
+   "centroid_after": 1060
+  },
+  "N016": {
+   "lufs_before": -20.9,
+   "lufs_after": -16.0,
+   "centroid_before": 796,
+   "centroid_after": 1107
+  },
+  "N016B": {
+   "lufs_before": -20.0,
+   "lufs_after": -16.1,
+   "centroid_before": 725,
+   "centroid_after": 1117
+  },
+  "N017": {
+   "lufs_before": -20.8,
+   "lufs_after": -16.0,
+   "centroid_before": 748,
+   "centroid_after": 1118
+  },
+  "N018": {
+   "lufs_before": -18.6,
+   "lufs_after": -16.0,
+   "centroid_before": 772,
+   "centroid_after": 1020
+  },
+  "N019": {
+   "lufs_before": -19.5,
+   "lufs_after": -16.0,
+   "centroid_before": 804,
+   "centroid_after": 1018
+  },
+  "N020": {
+   "lufs_before": -19.7,
+   "lufs_after": -16.0,
+   "centroid_before": 722,
+   "centroid_after": 1007
+  },
+  "N021": {
+   "lufs_before": -19.1,
+   "lufs_after": -16.0,
+   "centroid_before": 775,
+   "centroid_after": 1026
+  },
+  "N022": {
+   "lufs_before": -20.9,
+   "lufs_after": -16.0,
+   "centroid_before": 768,
+   "centroid_after": 1053
+  },
+  "N023": {
+   "lufs_before": -18.7,
+   "lufs_after": -16.0,
+   "centroid_before": 734,
+   "centroid_after": 1028
+  },
+  "N024": {
+   "lufs_before": -19.5,
+   "lufs_after": -16.0,
+   "centroid_before": 709,
+   "centroid_after": 1030
+  },
+  "N025": {
+   "lufs_before": -21.2,
+   "lufs_after": -16.0,
+   "centroid_before": 714,
+   "centroid_after": 1132
+  },
+  "N026": {
+   "lufs_before": -18.7,
+   "lufs_after": -16.0,
+   "centroid_before": 724,
+   "centroid_after": 1039
+  },
+  "N027": {
+   "lufs_before": -19.4,
+   "lufs_after": -16.0,
+   "centroid_before": 834,
+   "centroid_after": 1025
+  },
+  "N028": {
+   "lufs_before": -19.0,
+   "lufs_after": -16.0,
+   "centroid_before": 783,
+   "centroid_after": 1074
+  },
+  "N029": {
+   "lufs_before": -19.5,
+   "lufs_after": -16.0,
+   "centroid_before": 711,
+   "centroid_after": 1128
+  },
+  "N030": {
+   "lufs_before": -18.4,
+   "lufs_after": -16.0,
+   "centroid_before": 728,
+   "centroid_after": 1098
+  },
+  "N031": {
+   "lufs_before": -19.5,
+   "lufs_after": -16.0,
+   "centroid_before": 709,
+   "centroid_after": 1076
+  },
+  "N032": {
+   "lufs_before": -17.2,
+   "lufs_after": -16.0,
+   "centroid_before": 762,
+   "centroid_after": 945
+  },
+  "N033": {
+   "lufs_before": -17.5,
+   "lufs_after": -16.0,
+   "centroid_before": 738,
+   "centroid_after": 1042
+  },
+  "N034": {
+   "lufs_before": -18.8,
+   "lufs_after": -16.0,
+   "centroid_before": 696,
+   "centroid_after": 1033
+  },
+  "N035": {
+   "lufs_before": -21.3,
+   "lufs_after": -16.0,
+   "centroid_before": 732,
+   "centroid_after": 1090
+  },
+  "N036": {
+   "lufs_before": -20.0,
+   "lufs_after": -16.0,
+   "centroid_before": 666,
+   "centroid_after": 1101
+  },
+  "N037": {
+   "lufs_before": -18.8,
+   "lufs_after": -16.0,
+   "centroid_before": 700,
+   "centroid_after": 900
+  },
+  "N038": {
+   "lufs_before": -17.9,
+   "lufs_after": -16.0,
+   "centroid_before": 637,
+   "centroid_after": 1009
+  },
+  "N039": {
+   "lufs_before": -19.4,
+   "lufs_after": -16.0,
+   "centroid_before": 721,
+   "centroid_after": 1085
+  },
+  "N040": {
+   "lufs_before": -19.8,
+   "lufs_after": -16.0,
+   "centroid_before": 751,
+   "centroid_after": 1094
+  },
+  "N041": {
+   "lufs_before": -18.5,
+   "lufs_after": -16.0,
+   "centroid_before": 688,
+   "centroid_after": 1118
+  }
+ }
+}
