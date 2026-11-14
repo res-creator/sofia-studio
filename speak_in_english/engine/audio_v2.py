@@ -386,6 +386,35 @@ if EPN in ("rich", "busy", "avoidparty", "tour", "splitbill", "photo"):  # batch
             t = T(0.13); f = 440 * 2 ** ((m - 69) / 12); put(y, np.sign(np.sin(2*np.pi*f*t)) * 0.35 * np.minimum((0.13 - t)*120, 1), k*0.13, 0.5)
         return norm(lp(y, 4000), 0.55)
     SFX.update(ring=_ring(), doorbell=_doorbell(), cheer=_cheer(), vroom=_vroom(), chirp=_chirp(), toy=_toy())
+if EPN == "sickday":  # beach: waves bed, seagull squawk, water spray, zoom, phone message, cough, paper (own rng, so other episodes mix exactly as before)
+    _q = np.random.default_rng(46)
+    def _waves():
+        d = 9.0; tt = T(d); x = lp(_q.standard_normal(len(tt)), 900) * (0.55 + 0.45*np.sin(2*np.pi*tt/4.5 - 1.2)**2)
+        return norm(x * np.minimum(tt*2, 1) * np.minimum((d - tt)*2, 1), 0.35)
+    def _squawk():
+        y = np.zeros(int(0.7*SR))
+        for k_, dd in [(0, 0.2), (0.26, 0.28)]:
+            tt = T(dd); f = 1300 + 700*np.sin(np.pi*tt/dd) + 200*np.sin(2*np.pi*30*tt); ph = 2*np.pi*np.cumsum(f)/SR
+            x = (np.sign(np.sin(ph))*0.3 + np.sin(2*ph)*0.5) + 0.2*bp(_q.standard_normal(len(tt)), 1500, 5000); put(y, bp(x, 700, 6000)*np.sin(np.pi*tt/dd)**0.6, k_, 0.8)
+        return norm(y, 0.5)
+    def _splash():
+        tt = T(0.5); return norm(bp(_q.standard_normal(len(tt)), 900, 7000) * np.exp(-tt*9) * np.minimum(tt*200, 1), 0.6)
+    def _zoom():
+        tt = T(0.45); return norm(chirp(300, 1400, 0.45, 1.5) * 0.4 * np.sin(np.pi*tt/0.45) + 0.3*bp(_q.standard_normal(len(tt)), 2000, 6000)*np.sin(np.pi*tt/0.45)**2, 0.5)
+    def _msg():
+        tt = T(0.5); a = np.sin(2*np.pi*1318*tt)*np.exp(-tt*9); b = np.sin(2*np.pi*1760*tt)*np.exp(-np.maximum(tt-0.12, 0)*9)*(tt > 0.12)
+        return norm((a + b) * np.minimum(tt*800, 1), 0.7)
+    def _cough():
+        y = np.zeros(int(0.75*SR))
+        for k_, g_ in [(0, 1.0), (0.26, 0.8), (0.46, 0.6)]:
+            tt = T(0.2); x = bp(_q.standard_normal(len(tt)), 250, 2200) * np.minimum(tt*80, 1) * np.exp(-tt*16); put(y, x, k_, g_)
+        return norm(y, 0.6)
+    def _paper():
+        tt = T(0.3); return norm(bp(_q.standard_normal(len(tt)), 2000, 8000) * (0.5 + 0.5*np.abs(np.sin(2*np.pi*14*tt))) * np.sin(np.pi*tt/0.3), 0.45)
+    SFX.update(waves=_waves(), squawk=_squawk(), splash=_splash(), zoom=_zoom(), msg=_msg(), cough=_cough(), paper=_paper())
+    for k_ in range(1, int(DUR / 8)):   # the sea keeps washing under the whole video (not on the end screen)
+        t_ = k_ * 8.0
+        if t_ < [x for x in TL["scenes"] if x["id"] == "outro"][0]["s"] - 2: TL["sfx"].append(dict(n="waves", t=t_, g=0.5))
 def note(m, key=0): return 440 * 2 ** ((m + key - 69) / 12)
 def pluck(f, d, bright=1.0):
     t = T(d); ph = 2*np.pi*f*t
@@ -515,7 +544,7 @@ elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", 
             m = mel[(k*2 + j) % 16]
             if m is not None and (k // 16) % 2 == 0: put(music, glock(note(m + 12)), t0 + j*b/2, 0.07)
             if m is not None and (k // 16) % 2 == 1: put(music, pizz(note(m), 0.4), t0 + j*b/2, 0.12)
-elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "repay", "wrongchat", "checkout", "mic", "password", "busy", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "newhair", "idea"):
+elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "repay", "wrongchat", "checkout", "mic", "password", "busy", "photo", "lunch", "togo", "seat", "queue", "justlooking", "wifi", "passport", "newhair", "idea", "sickday"):
     # breezy airport lounge bossa: e-piano, nylon plucks, soft shaker, walking bass
     bpm = 120; b = 60/bpm; K = 0
     prog = [([62, 65, 69, 72], 38), ([61, 65, 67, 71], 43), ([60, 64, 67, 71], 36), ([57, 61, 64, 67], 45)]
@@ -649,7 +678,10 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+if EPN == "sickday":  # answers4 rubric (no levels): music off from the end of o4 (the beat before the twist) until the moral
+    c2e = [x for x in TL["scenes"] if x["id"] == "o4"][0]["e"] - 0.3; c2n = sp["moral"]["t"]
+else:
+    C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause
