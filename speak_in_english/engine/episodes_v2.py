@@ -2681,3 +2681,44 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "didntget" — rubric answers4, own structure: SIX levels instead of four (60-70 s). heroine = Jessica, fast-talking courier = Callum
+# option labels (drawn by renderer): o1 A1 · o2 A2 · o3 B1 · o4 B2 · o5 C1 · o6 C2
+# running prop: box with her name — each level she fails, the courier carries it a step closer to the van; at C1 he brings it back
+# tips: o2 = correct form («Правильно»), o4 = idiom, o5 = native phrase (taken from the C1 line); C2 is the final line, no separate twist
+CAST.update({
+    "courier2": dict(voice="am_onyx", speed=1.05, lang="en-gb", el="N2lVS1w4EtoT3dr4eOWO"),   # didntget: fast-talking courier with her parcel (Callum)
+})
+EP["didntget"] = dict(
+    title='«Я не понял» — как сказать от A1 до C2', rubric='answers4',
+    hook_title=[['КУРЬЕР ТАРАТОРИТ', 'd'], ['ТВОЯ ПОСЫЛКА', 'p'], ['КАК ПЕРЕСПРОСИТЬ?', 'd']],
+    cover_b='КАК ПЕРЕСПРОСИТЬ ПО-АНГЛИЙСКИ?',
+    absurd='На фургоне надпись: «FAST DELIVERY. FASTER TALKING.»',
+    comment_q='Какой уровень твой — A1 или C2?',
+    lines=[
+        ('hook_c', 'courier2', "[rapidly, in one breath] Rightlove, sixquidcustoms, cardorcash, signhere, yeah?", 'Такдорогаяшестьфунтовпошлинакартойилиналичнымираспишитесьага?'),
+        ('hook', 'nar', 'Не поняла курьера? Шесть уровней — от «что?» до королевского.', ''),
+        ('o1_h', 'her', "[confused] What? Again? Slow!", 'Что? Ещё раз? Медленно!'),
+        ('o1_c', 'courier2', "[louder and faster] SIXQUIDCARDORCASH!", 'ШЕСТЬФУНТОВКАРТОЙИЛИНАЛИЧНЫМИ!'),
+        ('o1_nar', 'nar', 'A1 — и он просто стал громче.', ''),
+        ('o2_h', 'her', "[apologetically] Sorry, I not understand you.", 'Извините, я не понимать вас.'),
+        ('o2_c', 'courier2', "[cheerfully] No worries, I not understand you too.", 'Без проблем, я тоже не понимать вас.'),
+        ('o2_nar', 'nar', 'A2 — теперь не понимаете оба. Правильно так:', ''),
+        ('o2_tip', 'tip', "Sorry, I don't understand.", ''),
+        ('o3_h', 'her', "[politely] Can you repeat that, please?", 'Можете повторить, пожалуйста?'),
+        ('o3_c', 'courier2', "[at the same speed] Sure: sixquidcardorcash.", 'Конечно: шестьфунтовкартойилиналичными.'),
+        ('o3_nar', 'nar', 'B1 — повторил слово в слово. С той же скоростью.', ''),
+        ('o4_h', 'her', "[ruefully] Sorry, that went right over my head.", 'Простите, это прошло мимо меня.'),
+        ('o4_c', 'courier2', "[lifting the box] Over your head? Here, catch!", 'Над головой? Держи, лови!'),
+        ('o4_nar', 'nar', 'B2 — идиома, но он понял буквально. Запоминай:', ''),
+        ('o4_tip', 'tip', "go over someone's head", ''),
+        ('o5_h', 'her', "[calmly] I didn't quite catch that. Could you say it a bit more slowly?", 'Я не совсем расслышала. Можете сказать чуть медленнее?'),
+        ('o5_c', 'courier2', "[slowly] Six… pounds… customs. Card or cash?", 'Шесть… фунтов… пошлина. Картой или наличными?'),
+        ('o5_nar', 'nar', 'C1 — как носитель: и коробка вернулась. Запоминай:', ''),
+        ('o5_tip', 'tip', "I didn't quite catch that.", ''),
+        ('o6_h', 'her', "[sweetly] I'd love to pay, but at that speed I think I've just agreed to adopt your van. Once more, in slow motion?", 'Я бы с радостью заплатила, но на такой скорости, кажется, я только что согласилась усыновить ваш фургон. Ещё раз, в замедленной съёмке?'),
+        ('o6_c', 'courier2', "[sighing] …My mum says I talk like a microwave.", '…Мама говорит, что я разговариваю как микроволновка.'),
+        ('moral', 'nar', 'Мораль: не поняла — переспроси. Поняла — всё равно переспроси.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: A1, A2, B1, B2, C1 или C2? Пиши уровень в комментариях!', ''),
+        ('ask', 'nar', 'Какой уровень твой — A1 или C2?', ''),
+    ],
+)
