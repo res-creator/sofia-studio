@@ -2681,3 +2681,35 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "waiter" — rubric useful4 (60-70 s). heroine = Jessica, busy waiter = Charlie
+# option labels (drawn by renderer): 1 В ЛОБ · 2 ВЕЖЛИВО · 3 КАК НОСИТЕЛЬ · 4 КОРОЛЕВСКИЙ
+CAST.update({
+    "waiter4": dict(voice="am_fenrir", speed=1.0, lang="en-gb", el="IKne3meq5aSn9XLyUdCD"),   # waiter: the waiter who hasn't seen her for 20 minutes (Charlie)
+})
+EP["waiter"] = dict(
+    title='Официант не видит тебя 20 минут — как позвать', rubric='useful4',
+    hook_title=[['ОФИЦИАНТ НЕ ВИДИТ', 'd'], ['20 МИНУТ', 'p'], ['КАК ПОЗВАТЬ?', 'd']],
+    cover_b='КАК ПОЗВАТЬ ПО-АНГЛИЙСКИ?',
+    absurd='На её закрытом меню птичка успела свить гнездо и высидеть птенцов.',
+    comment_q='Сколько минут ты ждёшь, прежде чем позвать?',
+    lines=[
+        ('hook_w', 'waiter4', "[rushing past] Be right with you!", 'Сейчас подойду!'),
+        ('hook', 'nar', 'Двадцать минут без официанта. Четыре способа — от «эй!» до королевского.', ''),
+        ('o1_h', 'her', "[shouting] Hey! You! Food!", 'Эй! Ты! Еда!'),
+        ('o1_w', 'waiter4', "[coolly] Food is in the kitchen, madam.", 'Еда на кухне, мадам.'),
+        ('o1_nar', 'nar', 'В лоб — и он просто ушёл.', ''),
+        ('o2_h', 'her', "[timidly] Excuse me… sorry… when you have a moment…", 'Простите… извините… когда у вас будет минутка…'),
+        ('o2_w', 'waiter4', "[rushing past] Be right with you!", 'Сейчас подойду!'),
+        ('o2_nar', 'nar', 'Вежливо — но тебя не слышно за посудой.', ''),
+        ('o3_h', 'her', "[brightly] Hi! I'm ready to order whenever you are.", 'Здравствуйте! Я готова заказать, как только вам будет удобно.'),
+        ('o3_w', 'waiter4', "[apologetically] Of course! Sorry, it's mad today.", 'Конечно! Простите, сегодня сумасшедший день.'),
+        ('o3_nar', 'nar', 'Как носитель: поймать взгляд и сказать одну фразу. Запоминай:', ''),
+        ('o3_tip', 'tip', "I'm ready to order whenever you are.", ''),
+        ('o4_h', 'her', "[sweetly] Hi! I've been here so long the menu's gone out of season. Shall we order before spring?", 'Здравствуйте! Я сижу тут так долго, что меню уже не по сезону. Может, закажем до весны?'),
+        ('o4_w', 'waiter4', "[embarrassed] …Dessert's on the house, madam.", '…Десерт за счёт заведения, мадам.'),
+        ('end_w', 'waiter4', "[sheepishly] Ah… madam… you order at the counter.", 'Э… мадам… заказ делают на кассе.'),
+        ('moral', 'nar', 'Мораль: терпение — добродетель. Табличка — информация.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши в комментариях!', ''),
+        ('ask', 'nar', 'Сколько минут ты ждёшь, прежде чем позвать?', ''),
+    ],
+)
