@@ -33,3 +33,6 @@ ru_geo/dubai/full/fetch.log
 2d-video/node_modules/
 2d-video/projects/*/build/
 2d-video/projects/*/out/
+ru_geo/ww3/vo_full/parts/
+ru_geo/ww3/vo_full/*.log
+ru_geo/ww3/vo_full/concat.txt
