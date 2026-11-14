@@ -38,6 +38,7 @@ def info(title):
     t = title if title.startswith('File:') else 'File:' + title
     page = 'https://commons.wikimedia.org/wiki/' + urllib.parse.quote(t.replace(' ', '_'))
     h = _get(page).decode('utf-8', 'replace')
+    h = re.sub(r'<style.*?</style>', '', h, flags=re.S)  # Creator templates inline CSS that otherwise leaks into the author text
     U = r'(?:_|&#95;)'
     lic = re.search(r'class="licensetpl' + U + r'short"[^>]*>(.*?)</span>', h, re.S)
     attr = re.search(r'class="licensetpl' + U + r'attr"[^>]*>(.*?)</span>', h, re.S)
@@ -46,7 +47,8 @@ def info(title):
     else: lic_pd = ''
     desc = re.search(r'class="description[^"]*"[^>]*>(.*?)</div>', h, re.S)
     lic_s = _txt(lic.group(1)) if lic else lic_pd
-    author = _txt(attr.group(1)) if attr else _txt(auth.group(1))[:120] if auth else ''
+    cr = re.search(r'id="creator"[^>]*>(.*?)</', h, re.S)
+    author = _txt(attr.group(1)) if attr else _txt(cr.group(1)) if cr else _txt(auth.group(1)).split('  ')[0][:120] if auth else ''
     return {'title': t, 'page_url': page, 'licence': lic_s, 'author': author, 'description': _txt(desc.group(1))[:300] if desc else '',
             'attribution': f"{author}, {lic_s}, via Wikimedia Commons" if author else f"{lic_s}, via Wikimedia Commons"}
 def thumb_url(title, width=1920):

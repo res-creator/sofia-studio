@@ -58,6 +58,7 @@ async function main() {
   if (MODE === 'cues') { fs.writeFileSync(ARGS[0], JSON.stringify({ dur: DUR, shots: shots.filter(s => !s.off).map(s => ({ t: +s.t.toFixed(3), scene: s.scene })), cuts: shots.map(s => +s.t.toFixed(3)) })); return; }
   await K.preload(Object.fromEntries(Object.entries(ep.assets).map(([k, f]) => [k, path.resolve(EP, f)])));
   const cv = K.createCanvas(K.W, K.H), ctx = cv.getContext('2d');
+  if (MODE === 'shots') { fs.writeFileSync(ARGS[0], JSON.stringify(shots.filter(s => !s.off).map(s => ({ t: +s.t.toFixed(3), scene: s.scene, p: s.p })))); return; } // full shot list (for credits)
   if (MODE === 'stills') { for (const ts of ARGS[0].split(',')) { await frame(ctx, +ts); fs.writeFileSync(`${ARGS[1]}_${(+ts).toFixed(1)}.png`, cv.toBuffer('image/png')); } return; }
   if (MODE === 'sheet') { const step = +ARGS[0], out = ARGS[1], cols = 6, tw = 320, th = 180; const n = Math.floor(DUR / step); const sh = K.createCanvas(cols * tw, Math.ceil(n / cols) * (th + 22)); const sc = sh.getContext('2d');
     sc.fillStyle = '#000'; sc.fillRect(0, 0, sh.width, sh.height);

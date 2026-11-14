@@ -1,7 +1,7 @@
 {
  "before": {
   "lufs_range": 4.1,
-  "tone_dev_rms_db": 1.35
+  "tone_dev_rms_db": 1.33
  },
  "after": {
   "lufs_range": 0.7,
@@ -37,7 +37,7 @@
    "lufs_before": -17.9,
    "lufs_after": -16.7,
    "centroid_before": 661,
-   "centroid_after": 1129
+   "centroid_after": 1130
   },
   "N006": {
    "lufs_before": -17.4,
@@ -91,7 +91,7 @@
    "lufs_before": -18.8,
    "lufs_after": -16.1,
    "centroid_before": 757,
-   "centroid_after": 851
+   "centroid_after": 852
   },
   "N012D": {
    "lufs_before": -21.3,
@@ -100,16 +100,16 @@
    "centroid_after": 1000
   },
   "N013": {
-   "lufs_before": -19.0,
+   "lufs_before": -18.3,
    "lufs_after": -16.0,
-   "centroid_before": 742,
-   "centroid_after": 931
+   "centroid_before": 731,
+   "centroid_after": 938
   },
   "N014": {
-   "lufs_before": -17.5,
+   "lufs_before": -18.2,
    "lufs_after": -16.0,
-   "centroid_before": 702,
-   "centroid_after": 909
+   "centroid_before": 698,
+   "centroid_after": 919
   },
   "N015": {
    "lufs_before": -19.8,
@@ -271,7 +271,7 @@
    "lufs_before": -19.8,
    "lufs_after": -16.0,
    "centroid_before": 751,
-   "centroid_after": 1094
+   "centroid_after": 1093
   },
   "N041": {
    "lufs_before": -18.5,

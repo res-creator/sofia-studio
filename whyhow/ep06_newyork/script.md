@@ -45,9 +45,9 @@ Numbers in [brackets] point to SOURCES.md.
 
 **N012D** So the city did something enormous for its time. It built an aqueduct about forty miles long to bring clean water from the Croton River. In eighteen forty-two, the water arrived, flowing almost entirely by gravity, and the city threw a huge celebration. [12]
 
-**N013** Now, the water. New York uses about a billion gallons of water every day. And almost none of it comes from anywhere near the city. [2]
+**N013** New York uses about a billion gallons of water every day. And almost none of it comes from anywhere near the city. [2]
 
-**N014** It comes from nineteen reservoirs and lakes in the mountains to the north, some of them more than a hundred and twenty-five miles away. [2]
+**N014** It comes from nineteen reservoirs and three lakes in the mountains to the north, some of them more than a hundred and twenty-five miles away. [2]
 
 **N015** And here's the clever part. Those reservoirs sit higher than the city. So about ninety-five percent of New York's water travels all the way to your tap by gravity alone, through aqueducts and giant tunnels, without a single pump. [2]
 

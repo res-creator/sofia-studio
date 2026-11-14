@@ -28,10 +28,15 @@ function build(T) {
       for (const c of cand) if (c > ts[k - 1] + 1.8 && (best == null || Math.abs(c - target) < Math.abs(best - target))) best = c;
       if (best == null || Math.abs(best - target) > 1.5) { let bw = null; for (const w of ws) if (w.s > ts[k - 1] + 1.8 && (bw == null || Math.abs(w.s - target) < Math.abs(bw - target))) bw = w.s; best = bw != null ? bw - 0.08 : target; }
       ts.push(best); }
+    // number cards / key shots can ask to start right before their word (cutW)
+    list.forEach((sh, k) => { if (k > 0 && sh && sh.p.cutW) { const t = T.at(pid, sh.p.cutW) - 0.35; if (t > ts[k - 1] + 1.5 && (k + 1 >= ts.length || t < ts[k + 1] - 1.5)) ts[k] = t; delete sh.p.cutW; } else if (sh) delete sh.p.cutW; });
+    const durOf = k => (k + 1 < ts.length ? ts[k + 1] : end + 0.25) - ts[k];
+    // a label or number must appear early enough to be read before the cut
+    const cap = (v, k, keep) => Math.max(0.2, Math.min(v, durOf(k) - keep));
     const rel = (w, t0, nn) => Math.max(0.2, T.at(pid, w, nn || 1) - t0);
     list.forEach((sh, k) => { if (!sh) return; const t0 = ts[k];
-      for (const ov of (sh.p.over || [])) if (ov.w) { ov.at = rel(ov.w, t0, ov.n); delete ov.w; }
-      for (const it of (sh.p.items || [])) if (it.w) { it.at = rel(it.w, t0, it.n); delete it.w; }
+      for (const ov of (sh.p.over || [])) { if (ov.w) { ov.at = rel(ov.w, t0, ov.n); delete ov.w; } if (ov.at != null && ov.type !== 'note') ov.at = cap(ov.at, k, 2.4); }
+      for (const it of (sh.p.items || [])) { if (it.w) { it.at = rel(it.w, t0, it.n); delete it.w; } if (it.at != null) it.at = cap(it.at, k, 2.6); }
       for (const [kw, ka] of [['answerW', 'answerAt'], ['noteW', 'noteAt'], ['recW', 'recAt']]) if (sh.p[kw]) { sh.p[ka] = Math.max(0.5, T.at(pid, sh.p[kw]) - t0); delete sh.p[kw]; }
       if (sh.p.toneW) { sh.p.toneAt = sh.p.toneW.map(w => Math.max(0.3, T.at(pid, w) - t0)); delete sh.p.toneW; }
       add(t0, sh, 'cut'); });
@@ -53,7 +58,7 @@ function build(T) {
   beats('N003', [
     F('px_aerial_midtown_canyon', { over: [head('A SECOND CITY UNDERGROUND', 'second', 200, 90)] }),
     F('cm_open_manhole_2024', { over: [low('PIPES FULL OF STEAM', 'Pipes')] }),
-    F('cm_sandhogs_round_tunnel', { over: [low('TUNNELS CARRYING WATER FROM 125 MILES AWAY', 'Tunnels')] }),
+    F('cm_sandhogs_round_tunnel', { over: [low('TUNNELS DEEP IN THE ROCK', 'Tunnels')] }),
     F('px_subway_train_rushing', { over: [low('A SUBWAY THAT NEVER STOPS', 'subway')] }),
   ]);
   beats('N004', [
@@ -66,13 +71,13 @@ function build(T) {
   chapter('N005', 1, 'A city heated by steam');
   beats('N005', [F('cv_businessman_broadway_steam')]);
   beats('N006', [
-    F('cm_steam_felt_hats_39th_bw', { over: [low('1882 · LOWER MANHATTAN', 'eighteen')] }),
-    F('loc_steam_drills_excavation', { over: [low('COAL · BOILING WATER · STEAM IN PIPES', 'coal')] }),
+    F('cm_steam_felt_hats_39th_bw', { over: [low('1882: THE FIRST STEAM PIPES', 'eighteen'), { type: 'note', text: 'PHOTO: STEAM ON W 39TH ST, 1930s', x: 60, y: 70, at: 0.3 }] }),
+    F('cm_empire_state_from_east_river_station', { over: [low('COAL · BOILING WATER · STEAM IN PIPES', 'coal')] }),
     F('cm_23rd_street_1901_film', { over: [low('A FEW MILES OF PIPE AT FIRST', 'few'), { type: 'note', text: 'FILM, 1901', x: 60, y: 70, at: 0.3 }] }),
   ]);
   beats('N007', [
     F('cm_con_ed_east_river_station_skyline', { over: [low('TODAY: CON EDISON', 'Edison')] }),
-    S('stats', { head: 'THE LARGEST STEAM SYSTEM IN THE US', items: [{ pre: '>', v: 100, suf: ' MILES', label: 'OF STEAM PIPES UNDER MANHATTAN', at: 0.4, size: 240 }], source: 'Source: Con Edison' }),
+    S('stats', { cutW: 'hundred', head: 'THE LARGEST STEAM SYSTEM IN THE US', items: [{ pre: '>', v: 100, suf: ' MILES', label: 'OF STEAM PIPES UNDER MANHATTAN', at: 0.4, size: 240 }], source: 'Source: Con Edison' }),
   ]);
   beats('N008', [
     F('cm_aerial_chrysler_grand_central', { over: [low('~1,700 BUILDINGS', 'seventeen')] }),
@@ -81,7 +86,7 @@ function build(T) {
   ]);
   beats('N009', [
     F('cm_con_ed_plant_night', { over: [low('> 400°F WHEN IT LEAVES THE PLANT', 'four')] }),
-    F('px_night_towers_dark', { over: [low('HEAT · HOT WATER · EVEN AIR CONDITIONING', 'air')] }),
+    F('cm_con_ed_stacks_empire_state_twilight', { over: [low('HEAT · HOT WATER · EVEN AIR CONDITIONING', 'air')] }),
   ]);
   beats('N010', [
     F('cm_steam_e60_fifth_avenue', { over: [low('A LEAK — OR WATER ON A HOT PIPE', 'leaks')] }),
@@ -92,16 +97,16 @@ function build(T) {
   beats('N012', [
     F('cm_steam_explosion_2007_plume', { over: [low('HIGHER THAN THE NEARBY SKYSCRAPERS', 'higher')] }),
     F('cm_steam_explosion_2007_crowd4', { over: [low('A CRATER IN THE STREET', 'crater')] }),
-    F('cm_steam_explosion_2007_police_mask', { over: [low('THE PIPE WAS LAID IN 1924', 'pipe')] }),
+    F('cm_steam_explosion_2007_crowd2', { over: [low('THE PIPE WAS LAID IN 1924', 'pipe')] }),
   ]);
 
   // ===== CH2 =====
   chapter('N012B', 2, 'Water from 125 miles away');
   beats('N012B', [F('px_central_park_reservoir_photo', { over: [low('WHY TUNNELS 100 MILES LONG?', 'tunnels')] })]);
   beats('N012C', [
-    F('loc_hester_street_market', { over: [low('200 YEARS AGO: WELLS AND A FILTHY POND', 'wells')] }),
-    S('stats', { head: 'CHOLERA · 1832', items: [{ pre: '~', v: 3500, label: 'DEAD IN NEW YORK', at: 0.4, size: 240 }], source: 'Source: NYC DEP' }),
-    F('loc_nassau_street_crowd', { over: [low('DIRTY WATER HELPED IT SPREAD', 'Dirty')] }),
+    F('loc_hester_street_market', { over: [low('BEFORE CLEAN WATER: WELLS AND A FILTHY POND', 'wells'), { type: 'note', text: 'PHOTO: LOWER EAST SIDE, 1906', x: 60, y: 70, at: 0.3 }] }),
+    S('stats', { cutW: 'thirty-five', head: 'CHOLERA · 1832', items: [{ pre: '~', v: 3500, label: 'DEAD IN NEW YORK', at: 0.4, size: 240 }], source: 'Source: NYC DEP' }),
+    F('cm_croton_receiving_reservoir', { over: [low('DIRTY WATER HELPED IT SPREAD', 'Dirty')] }),
   ]);
   beats('N012D', [
     F('cm_old_croton_aqueduct_map', { over: [low('THE CROTON AQUEDUCT · ~40 MILES', 'aqueduct')] }),
@@ -110,17 +115,17 @@ function build(T) {
   ]);
   beats('N013', [
     F('cm_hydrant_spraying_brooklyn'),
-    S('stats', { head: 'NEW YORK USES EVERY DAY', items: [{ pre: '~', v: 1, suf: ' BILLION', label: 'GALLONS OF WATER', at: 0.4, size: 260 }], source: 'Source: NYC DEP' }),
+    S('stats', { cutW: 'billion', head: 'NEW YORK USES EVERY DAY', items: [{ pre: '~', v: 1, suf: ' BILLION', label: 'GALLONS OF WATER', at: 0.4, size: 260 }], source: 'Source: NYC DEP' }),
   ]);
   beats('N014', [
     F('cm_ashokan_from_mountain', { over: [low('ASHOKAN RESERVOIR · CATSKILL MOUNTAINS', 'reservoirs')] }),
-    F('cm_kensico_reservoir', { over: [low('19 RESERVOIRS AND LAKES', 'nineteen')] }),
+    F('cm_kensico_reservoir', { over: [low('19 RESERVOIRS AND 3 LAKES', 'nineteen')] }),
     F('px_catskills_winter_stream', { over: [low('UP TO 125 MILES FROM THE CITY', 'twenty-five')] }),
   ]);
   beats('N015', [
     F('cm_new_croton_dam_waterfall', { over: [low('THE RESERVOIRS SIT HIGHER THAN THE CITY', 'higher')] }),
     F('cm_catskill_aqueduct_map_1910', { over: [low('AQUEDUCTS AND GIANT TUNNELS', 'aqueducts')] }),
-    S('stats', { head: "NEW YORK'S WATER", items: [{ pre: '~', v: 95, suf: '%', label: 'ARRIVES BY GRAVITY ALONE — NO PUMPS', w: 'ninety-five', size: 260 }], source: 'Source: Columbia Climate School; US EPA' }),
+    S('stats', { cutW: 'ninety-five', head: "NEW YORK'S WATER", items: [{ pre: '~', v: 95, suf: '%', label: 'ARRIVES BY GRAVITY ALONE — NO PUMPS', w: 'ninety-five', size: 260 }], source: 'Source: Columbia Climate School; US EPA' }),
   ]);
   beats('N016', [F('cm_ashokan_reflections', { over: [low('SO CLEAN IT SKIPS FILTRATION', 'filtration')] }), F('cm_black_fire_hydrant_manhattan', { over: [low('DISINFECTED — BUT NOT FILTERED', 'disinfected')] })]);
   beats('N016B', [
@@ -158,22 +163,22 @@ function build(T) {
     F('cm_esa_workers_silhouettes'),
   ]);
   beats('N023', [
-    F('cm_esa_tbm_cutterhead', { over: [low('ONE OF THE BIGGEST PROJECTS IN CITY HISTORY', 'biggest')] }),
-    S('stats', { head: 'CITY WATER TUNNEL No. 3', items: [{ v: 24, label: 'WORKERS DIED', w: 'Twenty-four' }, { v: 2013, label: 'MANHATTAN SECTION SWITCHED ON', w: 'thirteen', size: 140 }], source: 'Source: NYC DEP; ENR' }),
+    F('cm_esa_tbm_cutterhead', { over: [low('ONE OF THE BIGGEST PROJECTS IN CITY HISTORY', 'biggest'), { type: 'note', text: 'PHOTO: ANOTHER NYC TUNNEL DIG (EAST SIDE ACCESS)', x: 60, y: 70, at: 0.3 }] }),
+    S('stats', { cutW: 'Twenty-four', head: 'CITY WATER TUNNEL No. 3 · MANHATTAN SECTION ON SINCE 2013', items: [{ v: 24, label: 'WORKERS DIED', at: 0.3, size: 260 }], source: 'Source: NYC DEP; ENR' }),
   ]);
-  beats('N024', [F('cm_esa_cavern_workers', { over: [low('STILL NOT FINISHED', 'finished')] }), F('cm_second_ave_tunnel_lit', { over: [chipC('1970 → 2030s', 'expected', 960, 70)] })]);
+  beats('N024', [F('cm_nyc_water_tunnel_map', { kb: { z: [1.35, 1.1], x: [0.4, 0.5] }, over: [low('STILL NOT FINISHED', 'finished')] }), F('cm_water_tunnel_3_shaft_26b', { kb: { z: [1.25, 1.05] }, over: [chipC('1970 → 2030s', 'expected', 960, 70)] })]);
 
   // ===== CH4 =====
   chapter('N025', 4, 'The subway that never sleeps');
   beats('N025', [F('cv_subway_green_sign'), F('cv_subway_turnstile_entering')]);
   beats('N026', [
     F('px_subway_train_doors', { over: [low('24 HOURS A DAY · 365 DAYS A YEAR', 'twenty-four')] }),
-    S('stats', { head: 'THE NEW YORK SUBWAY', items: [{ v: 472, label: 'STATIONS', at: 0.4, size: 260 }], source: 'Source: MTA' }),
+    S('stats', { cutW: 'four', head: 'THE NEW YORK SUBWAY', items: [{ v: 472, label: 'STATIONS', at: 0.4, size: 260 }], source: 'Source: MTA' }),
     F('cv_subway_platform_timelapse'),
   ]);
   beats('N027', [
     F('cm_53_street_tunnel_pumping', { over: [low('BELOW THE WATER TABLE', 'water')] }),
-    S('stats', { head: 'PUMPED OUT ON A DRY DAY', items: [{ pre: '~', v: 13, suf: ' MILLION', label: 'GALLONS OF WATER', at: 0.4, size: 260 }], source: 'Source: MTA via NY1' }),
+    S('stats', { cutW: 'thirteen', head: 'PUMPED OUT ON A DRY DAY', items: [{ pre: '~', v: 13, suf: ' MILLION', label: 'GALLONS OF WATER', at: 0.4, size: 260 }], source: 'Source: MTA via NY1' }),
     F('cm_pumping_water_cranberry_street', { over: [low('IF THE PUMPS STOPPED, IT WOULD FLOOD', 'stopped')] }),
   ]);
   beats('N028', [
@@ -183,7 +188,7 @@ function build(T) {
     F('cm_south_ferry_platform_flooded', { over: [low('SOUTH FERRY: TRACKS TO CEILING', 'Ferry')] }),
   ]);
   beats('N029', [
-    F('cm_sandy_con_ed_explosion_video', { over: [low('"THE WORST DISASTER IN THE SUBWAY\'S HISTORY"', 'worst')] }),
+    F('cm_mta_flooded_tunnel_portal', { over: [low('"THE WORST DISASTER IN THE SUBWAY\'S HISTORY"', 'worst')] }),
     F('cm_pumping_out_south_ferry', { over: [low('SALT WATER ATE SIGNALS AND CABLES', 'signals')] }),
     F('cm_clark_street_tube_repair', { over: [low('REPAIRS TOOK YEARS', 'years')] }),
   ]);
@@ -193,8 +198,8 @@ function build(T) {
   ]);
   beats('N031', [
     F('cm_city_hall_habs_skylight', { over: [low('CLOSED 1945 · PLATFORM TOO SHORT', 'closed')] }),
-    F('cm_city_hall_6_train_passing', { over: [low('STAY ON THE 6 TRAIN AFTER THE LAST STOP…', 'stay')] }),
-    F('loc_city_hall_subway_station_1904', { over: [low('…AND YOU CAN STILL SEE IT', 'see')] }),
+    F('cm_city_hall_6_train_passing', { over: [low('STAY ON THE 6 TRAIN…', 'stay'), low('…AND YOU CAN STILL SEE IT', 'see')] }),
+    F('loc_city_hall_subway_station_1904', { over: [low('CITY HALL STATION, 1904', null)] }),
   ]);
 
   // ===== CH5 =====
@@ -207,21 +212,21 @@ function build(T) {
   ]);
   beats('N034', [F('px_midtown_aerial_panorama', { over: [low('TWO CLUSTERS: MIDTOWN AND DOWNTOWN', 'clusters')] }), F('cm_nyc_geology_map', { over: [low('"WHERE THE ROCK IS CLOSE TO THE SURFACE"', 'rock')] })]);
   beats('N035', [
-    F('cm_manhattan_aerial_1931', { over: [low("THE ROCK BETWEEN ISN'T MUCH DEEPER", 'deeper')] }),
+    F('cm_aerial_billionaires_row_central_park', { over: [low("THE ROCK BETWEEN ISN'T MUCH DEEPER", 'deeper')] }),
     F('cv_nyse_flags_facade', { over: [low('TOWERS WENT WHERE THE MONEY WAS', 'money')] }),
-    F('loc_grand_central_park_avenue_view', { over: [low('…AROUND THE GREAT TRAIN STATIONS', 'stations')] }),
-    F('loc_skyscraper_foundations', { over: [low('ENGINEERS JUST DUG DEEPER', 'dug')] }),
+    F('cm_aerial_chrysler_grand_central', { in: 8, over: [low('…AROUND THE GREAT TRAIN STATIONS', 'stations')] }),
+    F('loc_skyscraper_foundations', { kb: { z: [1.9, 1.75], x: [0.26, 0.27] }, over: [low('ENGINEERS JUST DUG DEEPER', 'dug')] }),
   ]);
   beats('N036', [
-    F('cm_brooklyn_bridge_tower_construction', { over: [low('BROOKLYN BRIDGE · 1870s', 'Brooklyn')] }),
+    F('cm_brooklyn_bridge_tower_construction', { kb: { z: [1.9, 1.75], x: [0.26, 0.27] }, over: [low('BROOKLYN BRIDGE · 1870s', 'Brooklyn')] }),
     F('cm_brooklyn_bridge_caisson_exterior', { over: [low('GIANT WOODEN BOXES OF COMPRESSED AIR', 'wooden')] }),
-    F('cm_brooklyn_bridge_caisson_1', { over: [low('A MYSTERIOUS ILLNESS', 'mysterious')] }),
+    F('px_brooklyn_bridge_night_people', { over: [low('A MYSTERIOUS ILLNESS', 'mysterious')] }),
   ]);
   beats('N037', [
     F('cm_brooklyn_bridge_transverse_section', { over: [low('"THE BENDS"', 'bends')] }),
     F('cm_frank_leslies_1883_bridge', { over: [low('100+ FELL ILL · SOME DIED', 'hundred')] }),
     F('px_brooklyn_bridge_tower_dusk', { over: [low('WASHINGTON ROEBLING — PARTLY PARALYSED', 'Roebling')] }),
-    F('px_brooklyn_bridge_cables_sunset', { over: [low('EMILY ROEBLING HELPED FINISH IT', 'Emily')] }),
+    F('px_brooklyn_bridge_blue_hour', { over: [low('EMILY ROEBLING HELPED FINISH IT', 'Emily')] }),
   ]);
 
   // ===== ENDING =====
@@ -230,7 +235,7 @@ function build(T) {
   beats('N039', [
     F('cm_steam_rising_street_towers', { over: [low('STEAM UNDER THE STREETS', 'steam')] }),
     F('cm_ashokan_sunset', { over: [low('WATER FROM 125 MILES AWAY', 'Water')] }),
-    F('cm_second_ave_tunnel_round', { over: [low('A TUNNEL DUG FOR HALF A CENTURY', 'tunnel')] }),
+    F('cm_aqueduct_tunnel_workers_1910s', { over: [low('TUNNELS DUG FOR GENERATIONS', 'tunnel')] }),
     F('cv_subway_arriving', { over: [low('A SUBWAY THAT NEVER SLEEPS', 'subway')] }),
   ]);
   beats('N040', [F('px_times_square_night_crowd', { over: [low('MILLIONS WALK OVER IT EVERY DAY', 'millions')] }), F('cv_skyline_sunset_drone', { over: [head('THAT’S HOW IT’S RUN', 'exactly', 200, 100, '#FFC857')] })]);
@@ -241,4 +246,4 @@ function build(T) {
   add(T.tl.voiceEnd + T.tl.qcard, S('endscreen', {}), 'fade');
   return out;
 }
-module.exports = { assets, build, defaultTrans: 'cut', splitOver: 6, splitTo: 4 };
+module.exports = { assets, build, defaultTrans: 'cut', splitOver: 4.5, splitTo: 3 };

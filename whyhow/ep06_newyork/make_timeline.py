@@ -7,6 +7,6 @@ for pid in order:
     info = sf.info(f'voice/{pid}.wav'); d = info.frames / info.samplerate
     if pid in chapters: t += 1.5
     tl.append(dict(id=pid, start=round(t, 3), dur=round(d, 3))); t += d + 0.25
-    if pid == 'N004': t += 1.6
+    if pid == 'N004': t += 0.8
 json.dump(dict(paras=tl, voiceEnd=round(t + 0.4, 2), qcard=2.5, endscreen=15), open('timeline.json', 'w'), indent=0)
 print('voice end %.1f min' % (t / 60))

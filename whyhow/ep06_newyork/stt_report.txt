@@ -5,7 +5,7 @@ N004 1.000
 N005 1.000 
 N006 0.943 replace: eighteen eighty two -> 1882
 N007 1.000 
-N008 0.877 replace: seventeen hundred -> 1 700 | replace: ninety sixth -> 96th
+N008 0.893 replace: seventeen hundred -> 1700 | replace: ninety sixth -> 96th
 N009 0.947 replace: four hundred -> 400
 N010 1.000 
 N011 0.875 replace: eighteenth -> 18th | replace: two thousand seven -> 2007
@@ -14,7 +14,7 @@ N012B 1.000
 N012C 0.886 replace: eighteen thirty two -> 1832 | replace: thirty five hundred -> 3 500
 N012D 0.930 replace: forty -> 40 | replace: eighteen forty two -> 1842
 N013 1.000 
-N014 0.826 replace: nineteen -> 19 | replace: a hundred and twenty five -> 125
+N014 0.792 replace: nineteen -> 19 | replace: three -> 3 | replace: a hundred and twenty five -> 125
 N015 0.949 replace: ninety five percent -> 95
 N016 1.000 
 N016B 0.878 replace: sixty eight hundred -> 6 800 | replace: seventy five hundred -> 7 500
@@ -34,7 +34,7 @@ N029 0.949 replace: salt water -> saltwater
 N030 0.885 replace: nineteen oh four -> 1904 | replace: arched -> arch
 N031 0.942 replace: nineteen forty five -> 1945 | replace: six -> 6
 N032 1.000 
-N033 0.963 replace: manhattan -> manhattan's
+N033 1.000 
 N034 1.000 
 N035 0.982 replace: and -> in
 N036 0.968 replace: eighteen seventies -> 1870s
