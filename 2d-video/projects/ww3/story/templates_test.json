@@ -1,0 +1,1467 @@
+{
+ "title": "ТЕСТ ШАБЛОНОВ",
+ "duration": 309.0,
+ "shots": [
+  {
+   "id": "t001",
+   "start": 0.0,
+   "end": 3.0,
+   "line": "",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "station"
+   }
+  },
+  {
+   "id": "t002",
+   "start": 3.0,
+   "end": 6.0,
+   "line": "",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "station",
+    "setOpts": {
+     "dawn": true
+    }
+   }
+  },
+  {
+   "id": "t003",
+   "start": 6.0,
+   "end": 9.0,
+   "line": "",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "alarm": 1,
+    "banner": 1,
+    "arcs": 5,
+    "pose": "stand",
+    "expr": "shocked"
+   }
+  },
+  {
+   "id": "t004",
+   "start": 9.0,
+   "end": 12.0,
+   "line": "",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "z": 1.7,
+    "pose": "mic",
+    "alarm": 1,
+    "banner": 1,
+    "expr": "determined"
+   }
+  },
+  {
+   "id": "t005",
+   "start": 12.0,
+   "end": 15.0,
+   "line": "",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "empty": true,
+    "z": 1.3
+   }
+  },
+  {
+   "id": "t006",
+   "start": 15.0,
+   "end": 18.0,
+   "line": "",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "ghosts": [
+     "arkhipov",
+     "duty",
+     "duty",
+     "pilot"
+    ],
+    "banner": 1
+   },
+   "cues": {
+    "ghosts": 0.1
+   }
+  },
+  {
+   "id": "t007",
+   "start": 18.0,
+   "end": 21.0,
+   "line": "",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "petrov",
+    "bg": "control",
+    "expr": "thinking",
+    "alarm": 1
+   }
+  },
+  {
+   "id": "t008",
+   "start": 21.0,
+   "end": 24.0,
+   "line": "",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "arkhipov",
+    "bg": "sub",
+    "expr": "determined",
+    "side": -1
+   }
+  },
+  {
+   "id": "t009",
+   "start": 24.0,
+   "end": 27.0,
+   "line": "",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "sci",
+    "bg": "lab",
+    "expr": "thinking",
+    "side": 1
+   }
+  },
+  {
+   "id": "t010",
+   "start": 27.0,
+   "end": 30.0,
+   "line": "",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "tramgirl",
+    "bg": "tram",
+    "expr": "determined"
+   }
+  },
+  {
+   "id": "t011",
+   "start": 30.0,
+   "end": 33.0,
+   "line": "",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "chief",
+    "bg": "atoll",
+    "expr": "sad"
+   }
+  },
+  {
+   "id": "t012",
+   "start": 33.0,
+   "end": 36.0,
+   "line": "",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "adviser",
+    "bg": "bedroom",
+    "expr": "shocked"
+   }
+  },
+  {
+   "id": "t013",
+   "start": 36.0,
+   "end": 39.0,
+   "line": "",
+   "scene": "subCouncil",
+   "tpl": "subCouncil",
+   "params": {
+    "heat": 0.8
+   }
+  },
+  {
+   "id": "t014",
+   "start": 39.0,
+   "end": 42.0,
+   "line": "",
+   "scene": "subCouncil",
+   "tpl": "subCouncil",
+   "params": {
+    "focus": "arkhipov",
+    "heat": 0.8
+   }
+  },
+  {
+   "id": "t015",
+   "start": 42.0,
+   "end": 45.0,
+   "line": "",
+   "scene": "subOutside",
+   "tpl": "subOutside",
+   "params": {
+    "ships": 3
+   }
+  },
+  {
+   "id": "t016",
+   "start": 45.0,
+   "end": 48.0,
+   "line": "",
+   "scene": "subOutside",
+   "tpl": "subOutside",
+   "params": {
+    "rise": true
+   },
+   "cues": {
+    "rise": 0.0
+   }
+  },
+  {
+   "id": "t017",
+   "start": 48.0,
+   "end": 51.0,
+   "line": "",
+   "scene": "k19",
+   "tpl": "k19",
+   "params": {}
+  },
+  {
+   "id": "t018",
+   "start": 51.0,
+   "end": 54.0,
+   "line": "",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "sub",
+    "setOpts": {
+     "heat": 0.9,
+     "thermo": 50
+    }
+   }
+  },
+  {
+   "id": "t019",
+   "start": 54.0,
+   "end": 57.0,
+   "line": "",
+   "scene": "cockpitCrew",
+   "tpl": "cockpitCrew",
+   "params": {
+    "warn": 1
+   }
+  },
+  {
+   "id": "t020",
+   "start": 57.0,
+   "end": 60.0,
+   "line": "",
+   "scene": "cockpitCrew",
+   "tpl": "cockpitCrew",
+   "params": {
+    "hatch": true
+   },
+   "cues": {
+    "hatch": 0.1
+   }
+  },
+  {
+   "id": "t021",
+   "start": 60.0,
+   "end": 63.0,
+   "line": "",
+   "scene": "cockpitCrew",
+   "tpl": "cockpitCrew",
+   "params": {
+    "ground": true
+   }
+  },
+  {
+   "id": "t022",
+   "start": 63.0,
+   "end": 66.0,
+   "line": "",
+   "scene": "bomberNight",
+   "tpl": "bomberNight",
+   "params": {
+    "tanker": true,
+    "leak": true
+   }
+  },
+  {
+   "id": "t023",
+   "start": 66.0,
+   "end": 69.0,
+   "line": "",
+   "scene": "bomberNight",
+   "tpl": "bomberNight",
+   "params": {
+    "breakup": true,
+    "chutes": 4
+   },
+   "cues": {
+    "break": 0.05
+   }
+  },
+  {
+   "id": "t024",
+   "start": 69.0,
+   "end": 72.0,
+   "line": "",
+   "scene": "goldsboroField",
+   "tpl": "goldsboroField",
+   "params": {},
+   "cues": {
+    "tree": 0.0
+   }
+  },
+  {
+   "id": "t025",
+   "start": 72.0,
+   "end": 75.0,
+   "line": "",
+   "scene": "goldsboroField",
+   "tpl": "goldsboroField",
+   "params": {
+    "tree": false,
+    "swamp": true
+   }
+  },
+  {
+   "id": "t026",
+   "start": 75.0,
+   "end": 78.0,
+   "line": "",
+   "scene": "kitchenNews",
+   "tpl": "kitchenNews",
+   "params": {
+    "tv": {
+     "head": "ЗЕМЛЕТРЯСЕНИЕ У ТАЙВАНЯ"
+    }
+   }
+  },
+  {
+   "id": "t027",
+   "start": 78.0,
+   "end": 81.0,
+   "line": "",
+   "scene": "kitchenNews",
+   "tpl": "kitchenNews",
+   "params": {
+    "who": "petrov",
+    "pose": "sit",
+    "tv": {
+     "head": "1998"
+    }
+   }
+  },
+  {
+   "id": "t028",
+   "start": 81.0,
+   "end": 84.0,
+   "line": "",
+   "scene": "phoneInsert",
+   "tpl": "phoneInsert",
+   "params": {
+    "screen": "message"
+   }
+  },
+  {
+   "id": "t029",
+   "start": 84.0,
+   "end": 87.0,
+   "line": "",
+   "scene": "phoneInsert",
+   "tpl": "phoneInsert",
+   "params": {
+    "screen": "subscribe"
+   },
+   "cues": {
+    "press": 0.3
+   }
+  },
+  {
+   "id": "t030",
+   "start": 87.0,
+   "end": 90.0,
+   "line": "",
+   "scene": "bedroomCall",
+   "tpl": "bedroomCall",
+   "params": {}
+  },
+  {
+   "id": "t031",
+   "start": 90.0,
+   "end": 93.0,
+   "line": "",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "attack",
+    "alarm": 1,
+    "second": true
+   }
+  },
+  {
+   "id": "t032",
+   "start": 93.0,
+   "end": 96.0,
+   "line": "",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "digits",
+    "digits": [
+     [
+      0,
+      "000"
+     ],
+     [
+      0.2,
+      "002"
+     ]
+    ],
+    "alarm": 1
+   }
+  },
+  {
+   "id": "t033",
+   "start": 96.0,
+   "end": 99.0,
+   "line": "",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "santa",
+    "shoup": true
+   }
+  },
+  {
+   "id": "t034",
+   "start": 99.0,
+   "end": 102.0,
+   "line": "",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "radar",
+    "blip": true
+   }
+  },
+  {
+   "id": "t035",
+   "start": 102.0,
+   "end": 105.0,
+   "line": "",
+   "scene": "santaCall",
+   "tpl": "santaCall",
+   "params": {}
+  },
+  {
+   "id": "t036",
+   "start": 105.0,
+   "end": 108.0,
+   "line": "",
+   "scene": "bankQueue",
+   "tpl": "bankQueue",
+   "params": {}
+  },
+  {
+   "id": "t037",
+   "start": 108.0,
+   "end": 111.0,
+   "line": "",
+   "scene": "portScene",
+   "tpl": "portScene",
+   "params": {
+    "truck": true
+   }
+  },
+  {
+   "id": "t038",
+   "start": 111.0,
+   "end": 114.0,
+   "line": "",
+   "scene": "portScene",
+   "tpl": "portScene",
+   "params": {
+    "stopped": 1,
+    "nz": true
+   }
+  },
+  {
+   "id": "t039",
+   "start": 114.0,
+   "end": 117.0,
+   "line": "",
+   "scene": "fieldScene",
+   "tpl": "fieldScene",
+   "params": {}
+  },
+  {
+   "id": "t040",
+   "start": 117.0,
+   "end": 120.0,
+   "line": "",
+   "scene": "fieldScene",
+   "tpl": "fieldScene",
+   "params": {
+    "grey": 1,
+    "frost": 1
+   }
+  },
+  {
+   "id": "t041",
+   "start": 120.0,
+   "end": 123.0,
+   "line": "",
+   "scene": "tramRide",
+   "tpl": "tramRide",
+   "params": {}
+  },
+  {
+   "id": "t042",
+   "start": 123.0,
+   "end": 126.0,
+   "line": "",
+   "scene": "tramRide",
+   "tpl": "tramRide",
+   "params": {
+    "closeup": true
+   }
+  },
+  {
+   "id": "t043",
+   "start": 126.0,
+   "end": 129.0,
+   "line": "",
+   "scene": "tramRide",
+   "tpl": "tramRide",
+   "params": {
+    "today": true,
+    "flowers": 1
+   }
+  },
+  {
+   "id": "t044",
+   "start": 129.0,
+   "end": 132.0,
+   "line": "",
+   "scene": "oleanderBloom",
+   "tpl": "oleanderBloom",
+   "params": {},
+   "cues": {
+    "bloom": 0.2
+   }
+  },
+  {
+   "id": "t045",
+   "start": 132.0,
+   "end": 135.0,
+   "line": "",
+   "scene": "atollGather",
+   "tpl": "atollGather",
+   "params": {}
+  },
+  {
+   "id": "t046",
+   "start": 135.0,
+   "end": 138.0,
+   "line": "",
+   "scene": "atollGather",
+   "tpl": "atollGather",
+   "params": {
+    "focus": "talk"
+   }
+  },
+  {
+   "id": "t047",
+   "start": 138.0,
+   "end": 141.0,
+   "line": "",
+   "scene": "atollBoats",
+   "tpl": "atollBoats",
+   "params": {}
+  },
+  {
+   "id": "t048",
+   "start": 141.0,
+   "end": 144.0,
+   "line": "",
+   "scene": "atollBoats",
+   "tpl": "atollBoats",
+   "params": {
+    "empty": true,
+    "boats": false
+   }
+  },
+  {
+   "id": "t049",
+   "start": 144.0,
+   "end": 147.0,
+   "line": "",
+   "scene": "reef",
+   "tpl": "reef",
+   "params": {}
+  },
+  {
+   "id": "t050",
+   "start": 147.0,
+   "end": 150.0,
+   "line": "",
+   "scene": "seabedCable",
+   "tpl": "seabedCable",
+   "params": {
+    "hose": true
+   },
+   "cues": {
+    "hose": 0.1
+   }
+  },
+  {
+   "id": "t051",
+   "start": 150.0,
+   "end": 153.0,
+   "line": "",
+   "scene": "deadForest",
+   "tpl": "deadForest",
+   "params": {
+    "animals": true
+   }
+  },
+  {
+   "id": "t052",
+   "start": 153.0,
+   "end": 156.0,
+   "line": "",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "two",
+    "charts": [
+     "fall",
+     "spectrum"
+    ]
+   }
+  },
+  {
+   "id": "t053",
+   "start": 156.0,
+   "end": 159.0,
+   "line": "",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "empty"
+   }
+  },
+  {
+   "id": "t054",
+   "start": 159.0,
+   "end": 162.0,
+   "line": "",
+   "scene": "arcticRocket",
+   "tpl": "arcticRocket",
+   "params": {},
+   "cues": {
+    "launch": 0
+   }
+  },
+  {
+   "id": "t055",
+   "start": 162.0,
+   "end": 165.0,
+   "line": "",
+   "scene": "hotline",
+   "tpl": "hotline",
+   "params": {},
+   "cues": {
+    "print": 0
+   }
+  },
+  {
+   "id": "t056",
+   "start": 165.0,
+   "end": 168.0,
+   "line": "",
+   "scene": "cityPhone",
+   "tpl": "cityPhone",
+   "params": {}
+  },
+  {
+   "id": "t057",
+   "start": 168.0,
+   "end": 171.0,
+   "line": "",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "lab",
+    "setOpts": {}
+   }
+  },
+  {
+   "id": "t058",
+   "start": 171.0,
+   "end": 174.0,
+   "line": "",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "city",
+    "setOpts": {
+     "rain": true
+    }
+   }
+  },
+  {
+   "id": "t059",
+   "start": 174.0,
+   "end": 177.0,
+   "line": "",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "norad",
+    "setOpts": {
+     "screen": "map"
+    }
+   }
+  },
+  {
+   "id": "t060",
+   "start": 177.0,
+   "end": 180.0,
+   "line": "",
+   "scene": "chapterTitle",
+   "tpl": "chapterTitle",
+   "params": {
+    "str": "ПЕРВЫЙ ЧАС",
+    "hours": 0
+   }
+  },
+  {
+   "id": "t061",
+   "start": 180.0,
+   "end": 183.0,
+   "line": "",
+   "scene": "chapterTitle",
+   "tpl": "chapterTitle",
+   "params": {
+    "sub": "ЧТО БУДЕТ, ЕСЛИ НАЧНЁТСЯ",
+    "str": "ТРЕТЬЯ МИРОВАЯ",
+    "bg": "space"
+   }
+  },
+  {
+   "id": "t062",
+   "start": 183.0,
+   "end": 186.0,
+   "line": "",
+   "scene": "hoursStrip",
+   "tpl": "hoursStrip",
+   "params": {
+    "from": 0,
+    "to": 3,
+    "bg": "space"
+   }
+  },
+  {
+   "id": "t063",
+   "start": 186.0,
+   "end": 189.0,
+   "line": "",
+   "scene": "caseCard",
+   "tpl": "caseCard",
+   "params": {
+    "n": 2,
+    "where": "КАРИБСКОЕ МОРЕ · 1962"
+   }
+  },
+  {
+   "id": "t064",
+   "start": 189.0,
+   "end": 192.0,
+   "line": "",
+   "scene": "sevenRow",
+   "tpl": "sevenRow",
+   "params": {
+    "state": "first"
+   }
+  },
+  {
+   "id": "t065",
+   "start": 192.0,
+   "end": 195.0,
+   "line": "",
+   "scene": "sevenRow",
+   "tpl": "sevenRow",
+   "params": {
+    "state": "light",
+    "labels": true
+   }
+  },
+  {
+   "id": "t066",
+   "start": 195.0,
+   "end": 198.0,
+   "line": "",
+   "scene": "sevenRow",
+   "tpl": "sevenRow",
+   "params": {
+    "state": "numbers",
+    "question": "Какая история удивила вас больше всего?"
+   }
+  },
+  {
+   "id": "t067",
+   "start": 198.0,
+   "end": 201.0,
+   "line": "",
+   "scene": "bigCounter",
+   "tpl": "bigCounter",
+   "params": {
+    "from": 70300,
+    "to": 12187,
+    "prefix": "≈ ",
+    "unit": "ЯДЕРНЫХ БОЕГОЛОВОК",
+    "years": {
+     "from": "1986",
+     "to": "2026"
+    },
+    "source": "SIPRI, январь 2026",
+    "side": {
+     "label": "ВОЕННЫЕ ЗАПАСЫ"
+    }
+   }
+  },
+  {
+   "id": "t068",
+   "start": 201.0,
+   "end": 204.0,
+   "line": "",
+   "scene": "bigCounter",
+   "tpl": "bigCounter",
+   "params": {
+    "from": 0,
+    "to": 12187,
+    "unit": "БОЕГОЛОВОК",
+    "bg": "globe",
+    "source": "SIPRI, январь 2026"
+   }
+  },
+  {
+   "id": "t069",
+   "start": 204.0,
+   "end": 207.0,
+   "line": "",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "> 99 %",
+      "l": "ДАННЫХ МЕЖДУ КОНТИНЕНТАМИ"
+     },
+     {
+      "v": "≈ 600",
+      "l": "КАБЕЛЬНЫХ СИСТЕМ, 2025"
+     }
+    ],
+    "bg": "space"
+   }
+  },
+  {
+   "id": "t070",
+   "start": 207.0,
+   "end": 210.0,
+   "line": "",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "sats": 14,
+    "icons": [
+     "nav",
+     "cloud",
+     "clock"
+    ],
+    "timer": "60:00"
+   },
+   "cues": {
+    "icons": 0.1
+   }
+  },
+  {
+   "id": "t071",
+   "start": 210.0,
+   "end": 213.0,
+   "line": "",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "belt": true,
+    "sats": 12,
+    "satsDead": 0.5,
+    "lon0": -150,
+    "lat0": 10
+   },
+   "cues": {
+    "belt": 0
+   }
+  },
+  {
+   "id": "t072",
+   "start": 213.0,
+   "end": 216.0,
+   "line": "",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "cables": true,
+    "lon0": -30
+   }
+  },
+  {
+   "id": "t073",
+   "start": 216.0,
+   "end": 219.0,
+   "line": "",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "smoke": 1,
+    "cold": 1
+   }
+  },
+  {
+   "id": "t074",
+   "start": 219.0,
+   "end": 222.0,
+   "line": "",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "lat0": -35,
+    "lon0": 150,
+    "hl": {
+     "au": 1,
+     "nz": 1
+    }
+   },
+   "cues": {
+    "hl": 0
+   }
+  },
+  {
+   "id": "t075",
+   "start": 222.0,
+   "end": 225.0,
+   "line": "",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "marks": [
+     {
+      "at": "hormuz",
+      "label": "ОРМУЗ"
+     },
+     {
+      "at": "malacca",
+      "label": "МАЛАККА"
+     },
+     {
+      "at": "suez",
+      "label": "СУЭЦ",
+      "side": -1
+     },
+     {
+      "at": "bab",
+      "label": "БАБ-ЭЛЬ-МАНДЕБ"
+     }
+    ],
+    "source": "≈ 1/5 нефти мира, 2024"
+   },
+   "cues": {
+    "m1": 0,
+    "m2": 0,
+    "m3": 0,
+    "m4": 0
+   }
+  },
+  {
+   "id": "t076",
+   "start": 225.0,
+   "end": 228.0,
+   "line": "",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "cold": 1,
+    "hl": {
+     "au": 1
+    },
+    "marks": [
+     {
+      "at": "argentina",
+      "label": "АРГЕНТИНА",
+      "color": "#ffc66e"
+     }
+    ]
+   },
+   "cues": {
+    "hl": 0,
+    "cold": 0,
+    "m1": 0
+   }
+  },
+  {
+   "id": "t077",
+   "start": 228.0,
+   "end": 231.0,
+   "line": "",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "view": {
+     "lon0": -170,
+     "lon1": -140,
+     "lat0": 30,
+     "lat1": 5
+    },
+    "arcs": [
+     {
+      "from": "johnston",
+      "to": "hawaii"
+     }
+    ],
+    "marks": [
+     {
+      "at": "hawaii",
+      "label": "ГАВАЙИ"
+     },
+     {
+      "at": "johnston",
+      "label": "400 КМ ВВЕРХ",
+      "side": -1
+     }
+    ]
+   },
+   "cues": {
+    "a1": 0,
+    "m1": 0,
+    "m2": 0
+   }
+  },
+  {
+   "id": "t078",
+   "start": 231.0,
+   "end": 234.0,
+   "line": "",
+   "scene": "doomsday",
+   "tpl": "doomsday",
+   "params": {},
+   "cues": {
+    "sec": 0.2
+   }
+  },
+  {
+   "id": "t079",
+   "start": 234.0,
+   "end": 237.0,
+   "line": "",
+   "scene": "timer",
+   "tpl": "timer",
+   "params": {
+    "from": "00:00",
+    "to": "30:00",
+    "label": "С КОНТИНЕНТА НА КОНТИНЕНТ",
+    "decide": {
+     "min": 10,
+     "label": "НА РЕШЕНИЕ ≈ 10 МИН"
+    }
+   },
+   "cues": {
+    "runEnd": 0.3,
+    "decide": 0.35
+   }
+  },
+  {
+   "id": "t080",
+   "start": 237.0,
+   "end": 240.0,
+   "line": "",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "month": "СЕНТЯБРЬ 2001",
+    "days": 30,
+    "start": 5,
+    "cross": [
+     11,
+     12,
+     13,
+     14
+    ],
+    "mark": 17,
+    "note": "4 ДНЯ"
+   },
+   "cues": {
+    "cross": 0,
+    "mark": 0.2,
+    "note": 0.2
+   }
+  },
+  {
+   "id": "t081",
+   "start": 240.0,
+   "end": 243.0,
+   "line": "",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "range": {
+     "from": "31 ИЮЛЯ",
+     "to": "12 ДЕКАБРЯ"
+    },
+    "note": "1914 · 4,5 МЕСЯЦА"
+   },
+   "cues": {
+    "d2": 0.1,
+    "note": 0.2
+   }
+  },
+  {
+   "id": "t082",
+   "start": 243.0,
+   "end": 246.0,
+   "line": "",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "МАЛЫЙ СЦЕНАРИЙ",
+      "v": 0.08,
+      "str": "−7 %"
+     },
+     {
+      "label": "КРУПНЫЙ",
+      "v": 0.9,
+      "str": "−90 %",
+      "red": true
+     }
+    ],
+    "title": "КАЛОРИЙ В МИРЕ",
+    "source": "Xia и др., Nature Food, 2022"
+   },
+   "cues": {
+    "b1": 0,
+    "b2": 0
+   }
+  },
+  {
+   "id": "t083",
+   "start": 246.0,
+   "end": 249.0,
+   "line": "",
+   "scene": "thermo",
+   "tpl": "thermo",
+   "params": {
+    "to": -8,
+    "globe": true,
+    "compare": {
+     "v": -6,
+     "label": "ЛЕДНИКОВЫЙ ПЕРИОД · ТЫСЯЧИ ЛЕТ"
+    }
+   },
+   "cues": {
+    "drop": 0,
+    "compare": 0.1
+   }
+  },
+  {
+   "id": "t084",
+   "start": 249.0,
+   "end": 252.0,
+   "line": "",
+   "scene": "uvScale",
+   "tpl": "uvScale",
+   "params": {
+    "note": "ВТРОЕ СИЛЬНЕЕ ЭКСТРЕМАЛЬНОГО"
+   },
+   "cues": {
+    "past": 0.1
+   }
+  },
+  {
+   "id": "t085",
+   "start": 252.0,
+   "end": 255.0,
+   "line": "",
+   "scene": "slider",
+   "tpl": "slider",
+   "params": {}
+  },
+  {
+   "id": "t086",
+   "start": 255.0,
+   "end": 258.0,
+   "line": "",
+   "scene": "curves",
+   "tpl": "curves",
+   "params": {},
+   "cues": {
+    "c1": 0,
+    "c2": 0,
+    "c3": 0
+   }
+  },
+  {
+   "id": "t087",
+   "start": 258.0,
+   "end": 261.0,
+   "line": "",
+   "scene": "quote",
+   "tpl": "quote",
+   "params": {
+    "str": "«Ядерная война не может быть выиграна|и никогда не должна быть развязана»",
+    "by": "1985 · 2022"
+   },
+   "cues": {
+    "q1": 0,
+    "q2": 0,
+    "by": 0
+   }
+  },
+  {
+   "id": "t088",
+   "start": 261.0,
+   "end": 264.0,
+   "line": "",
+   "scene": "priceTag",
+   "tpl": "priceTag",
+   "params": {
+    "sub": "НЕИСПРАВНАЯ МИКРОСХЕМА"
+   },
+   "cues": {
+    "price": 0
+   }
+  },
+  {
+   "id": "t089",
+   "start": 264.0,
+   "end": 267.0,
+   "line": "",
+   "scene": "twoSensors",
+   "tpl": "twoSensors",
+   "params": {},
+   "cues": {
+    "sat": 0,
+    "radar": 0,
+    "lamp": 0.1
+   }
+  },
+  {
+   "id": "t090",
+   "start": 267.0,
+   "end": 270.0,
+   "line": "",
+   "scene": "twoSensors",
+   "tpl": "twoSensors",
+   "params": {
+    "mode": "satOnly"
+   },
+   "cues": {
+    "sat": 0,
+    "radar": 0,
+    "lamp": 0.1
+   }
+  },
+  {
+   "id": "t091",
+   "start": 270.0,
+   "end": 273.0,
+   "line": "",
+   "scene": "sunGlint",
+   "tpl": "sunGlint",
+   "params": {},
+   "cues": {
+    "sun": 0,
+    "glint": 0,
+    "glint2": 0.05,
+    "sat": 0.1
+   }
+  },
+  {
+   "id": "t092",
+   "start": 273.0,
+   "end": 276.0,
+   "line": "",
+   "scene": "chain",
+   "tpl": "chain",
+   "params": {
+    "mode": "check",
+    "caption": "ТАКИХ ЛЮДЕЙ МНОГО"
+   }
+  },
+  {
+   "id": "t093",
+   "start": 276.0,
+   "end": 279.0,
+   "line": "",
+   "scene": "briefcase",
+   "tpl": "briefcase",
+   "params": {},
+   "cues": {
+    "open": 0,
+    "phone": 0.1,
+    "folder": 0.1,
+    "card": 0.1
+   }
+  },
+  {
+   "id": "t094",
+   "start": 279.0,
+   "end": 282.0,
+   "line": "",
+   "scene": "smokeDiagram",
+   "tpl": "smokeDiagram",
+   "params": {},
+   "cues": {
+    "rise": 0,
+    "spread": 0.1
+   }
+  },
+  {
+   "id": "t095",
+   "start": 282.0,
+   "end": 285.0,
+   "line": "",
+   "scene": "cutaway",
+   "tpl": "cutaway",
+   "params": {
+    "kind": "hotel"
+   },
+   "cues": {
+    "bunker": 0
+   }
+  },
+  {
+   "id": "t096",
+   "start": 285.0,
+   "end": 288.0,
+   "line": "",
+   "scene": "cutaway",
+   "tpl": "cutaway",
+   "params": {
+    "kind": "mountain"
+   },
+   "cues": {
+    "springs": 0,
+    "doors": 0
+   }
+  },
+  {
+   "id": "t097",
+   "start": 288.0,
+   "end": 291.0,
+   "line": "",
+   "scene": "hiroshimaMap",
+   "tpl": "hiroshimaMap",
+   "params": {
+    "people": "≈ 1 200 000"
+   },
+   "cues": {
+    "circle": 0,
+    "trees": 0,
+    "people": 0.1
+   }
+  },
+  {
+   "id": "t098",
+   "start": 291.0,
+   "end": 294.0,
+   "line": "",
+   "scene": "lamps",
+   "tpl": "lamps",
+   "params": {},
+   "cues": {
+    "off1": 0,
+    "off2": 0.05,
+    "off3": 0.1,
+    "switch": 0.1
+   }
+  },
+  {
+   "id": "t099",
+   "start": 294.0,
+   "end": 297.0,
+   "line": "",
+   "scene": "treaties",
+   "tpl": "treaties",
+   "params": {
+    "snap": true,
+    "bulb": true
+   },
+   "cues": {
+    "y1": 0,
+    "y2": 0,
+    "y3": 0,
+    "y4": 0,
+    "snap": 0.1,
+    "bulb": 0.1
+   }
+  },
+  {
+   "id": "t100",
+   "start": 297.0,
+   "end": 300.0,
+   "line": "",
+   "scene": "bunkersWorld",
+   "tpl": "bunkersWorld",
+   "params": {}
+  },
+  {
+   "id": "t101",
+   "start": 300.0,
+   "end": 303.0,
+   "line": "",
+   "scene": "cableVsHose",
+   "tpl": "cableVsHose",
+   "params": {},
+   "cues": {
+    "hose": 0
+   }
+  },
+  {
+   "id": "t102",
+   "start": 303.0,
+   "end": 306.0,
+   "line": "",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "starfish_1962",
+    "caption": "ИСПЫТАНИЕ, 1962, ТИХИЙ ОКЕАН",
+    "credit": "AEC · общественное достояние"
+   }
+  },
+  {
+   "id": "t103",
+   "start": 306.0,
+   "end": 309.0,
+   "line": "",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "hiroshima_1946",
+    "aspect": "4:3",
+    "caption": "ХИРОСИМА, 1946",
+    "credit": "USAF / NARA · общественное достояние"
+   }
+  }
+ ],
+ "music": []
+}
