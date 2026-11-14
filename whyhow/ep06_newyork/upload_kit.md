@@ -1,6 +1,6 @@
 # EP06 upload kit — How It's Run
 
-**File:** `newyork_whats_hidden_underground.mp4` (1920×1080, 30 fps, ~8:20, −14 LUFS)
+**File:** `newyork_whats_hidden_underground.mp4` (1920×1080, 30 fps, ~8:24, −14 LUFS)
 **Thumbnail:** made by the owner from the prompts below (AI image generator), 1280×720. Test two in YouTube "Test & compare".
 **Subtitles:** `newyork_subtitles_en.srt` (English). YouTube auto-translates captions for viewers.
 **Altered or synthetic content:** answer **Yes** only for the synthetic voice; all footage and photos are real (Pixabay / Coverr / Wikimedia Commons / Library of Congress / NASA), diagrams are our own animation.
