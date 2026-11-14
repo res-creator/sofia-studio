@@ -337,7 +337,7 @@ if EPN in ("wrongchat", "pretend", "password", "cantsayno", "rich", "avoidparty"
         t = T(1.6); f = 180 + 8*np.sin(2*np.pi*3*t); x = np.sign(np.sin(2*np.pi*np.cumsum(f)/SR))*0.4 + 0.3*bp(_r.standard_normal(len(t)), 300, 3000)
         return norm(lp(x, 2500) * np.minimum(t*3, 1) * np.minimum((1.6 - t)*3, 1), 0.5)
     SFX.update(send=_send(), msg=_msg(), shutter=_shutter(), drone=_drone())
-if EPN in ("mic", "teacher", "password", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "idea"):  # video-call sounds for this episode only (own rng, so other episodes mix exactly as before)
+if EPN in ("mic", "teacher", "password", "rich", "busy", "avoidparty", "tour", "splitbill", "photo", "idea", "seventen"):  # video-call sounds for this episode only (own rng, so other episodes mix exactly as before)
     _r = np.random.default_rng(13)
     def _click():
         t = T(0.06); return norm(bp(_r.standard_normal(len(t)), 1800, 7000) * np.exp(-t*160) + 0.4*np.sin(2*np.pi*2400*t)*np.exp(-t*220), 0.55)
@@ -356,7 +356,7 @@ if EPN in ("mic", "teacher", "password", "rich", "busy", "avoidparty", "tour", "
     def _clap():
         t = T(0.12); return norm(bp(_r.standard_normal(len(t)), 900, 6000) * (np.exp(-t*60) + 0.3*np.exp(-np.maximum(t - 0.01, 0)*40)), 0.6)
     SFX.update(click=_click(), keys=_keys(), vol=_vol(), msg=_msg(), cough=_cough(), clap=_clap())
-if EPN in ("rich", "busy", "avoidparty", "tour", "splitbill", "photo"):  # batch rich/busy/avoidparty: phone ring, door bell, crowd cheer, car engine, car-lock chirp, toy jingle (own rng)
+if EPN in ("rich", "busy", "avoidparty", "tour", "splitbill", "photo", "seventen"):  # batch rich/busy/avoidparty: phone ring, door bell, crowd cheer, car engine, car-lock chirp, toy jingle (own rng)
     _r = np.random.default_rng(14)
     def _ring():
         y = np.zeros(int(1.3*SR))
@@ -386,6 +386,21 @@ if EPN in ("rich", "busy", "avoidparty", "tour", "splitbill", "photo"):  # batch
             t = T(0.13); f = 440 * 2 ** ((m - 69) / 12); put(y, np.sign(np.sin(2*np.pi*f*t)) * 0.35 * np.minimum((0.13 - t)*120, 1), k*0.13, 0.5)
         return norm(lp(y, 4000), 0.55)
     SFX.update(ring=_ring(), doorbell=_doorbell(), cheer=_cheer(), vroom=_vroom(), chirp=_chirp(), toy=_toy())
+if EPN == "seventen":  # date-night sounds: paddle slide-whistle, paper unroll, marker squeak (own rng, so other episodes mix exactly as before)
+    _q = np.random.default_rng(97)
+    def _slide():
+        tt = T(0.8); f = 1300 * np.exp(-tt * 1.6) + 250; ph = 2*np.pi*np.cumsum(f)/SR
+        return norm(np.sin(ph) * (1 + 0.3*np.sin(2*np.pi*6*tt)) * np.minimum(tt*60, 1) * np.minimum((0.8 - tt)*10, 1), 0.45)
+    def _unroll():
+        tt = T(1.5); x = bp(_q.standard_normal(len(tt)), 1500, 7000) * (0.5 + 0.5*np.abs(np.sin(2*np.pi*9*tt))) * np.minimum(tt*20, 1) * np.minimum((1.5 - tt)*4, 1)
+        return norm(x, 0.4)
+    def _marker():
+        y = np.zeros(int(0.9*SR))
+        for k_ in range(3):
+            tt = T(0.22); f = 2400 + 600*np.sin(2*np.pi*3*tt + k_); ph = 2*np.pi*np.cumsum(f)/SR
+            put(y, (0.5*np.sin(ph) + 0.5*bp(_q.standard_normal(len(tt)), 2000, 6000)) * np.sin(np.pi*tt/0.22), k_*0.28, 0.6)
+        return norm(y, 0.4)
+    SFX.update(slide=_slide(), unroll=_unroll(), marker=_marker())
 def note(m, key=0): return 440 * 2 ** ((m + key - 69) / 12)
 def pluck(f, d, bright=1.0):
     t = T(d); ph = 2*np.pi*f*t
@@ -528,7 +543,7 @@ elif EPN in ("airport", "raise", "smell", "things", "shoes", "nosy", "quit", "re
             tt = T(0.05); put(music, hp(rng.standard_normal(len(tt)), 6000)*np.exp(-tt*70), t0 + j*b/4, 0.1 if j % 2 else 0.05)
         if (k // 4) % 2 == 1:
             for j, m in enumerate([ch[3] + 12, ch[2] + 12, ch[1] + 12]): put(music, pluck(note(m), 0.6, 1.2), t0 + (j*1.25 + 0.5)*b, 0.07)
-elif EPN in ("restaurant", "loan", "date", "kyle", "cantsayno", "rich", "splitbill"):
+elif EPN in ("restaurant", "loan", "date", "kyle", "cantsayno", "rich", "splitbill", "seventen"):
     # cosy bistro swing: brushed snare, walking bass, muted piano comping, glock hook
     bpm = 120; b = 60/bpm; K = 0
     def glock(f, d=0.8):
@@ -649,7 +664,10 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+if EPN == "seventen":  # answers4 rubric (no levels): music off from the end of "…Ten. Final answer." (the beat before mum's call) until the moral
+    c2e = sp["o4_d"]["t"] + sp["o4_d"]["d"]; c2n = sp["moral"]["t"]
+else:
+    C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause

@@ -2681,3 +2681,36 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "seventen" — rubric answers4 (60-70 s). heroine = Jessica, date = Liam, his mum on video call = Lily
+# option labels (drawn by renderer): 1 В лоб · 2 Вежливо · 3 Как носитель · 4 Королевский
+CAST.update({
+    "date5": dict(voice="am_liam", speed=1.0, lang="en-us", el="TX3LPaxmHKxFdv7VOQHJ"),   # seventen: date who rated the evening 7/10 (Liam)
+    "hismum4": dict(voice="bf_lily", speed=1.0, lang="en-gb", el="pFZP5JQG7iQjIQuC4Bku"),   # seventen: his mum on the video call (Lily)
+})
+EP["seventen"] = dict(
+    title='Он оценил ваше свидание на 7 из 10', rubric='answers4',
+    hook_title=[['ПОСЛЕ СВИДАНИЯ', 'd'], ['7 ИЗ 10', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    cover_b='ЧТО СКАЖЕШЬ ПО-АНГЛИЙСКИ?',
+    absurd='За соседним столиком трое пожилых судей тоже поднимают таблички: 9, 9 и 3.',
+    comment_q='Сколько бы ты ему поставила?',
+    lines=[
+        ('hook_d', 'date5', "[casually] Honestly? Solid seven. Great pasta, bit long.", 'Честно? Крепкая семёрка. Паста отличная, но длинновато.'),
+        ('hook', 'nar', 'Он поставил свиданию семь из десяти. Какой ответ поднимет оценку?', ''),
+        ('o1_h', 'her', "[indignantly] Seven?! You — three!", 'Семь?! Ты — три!'),
+        ('o1_d', 'date5', "[wounded] Three? But I paid for dessert!", 'Три? Но я же заплатил за десерт!'),
+        ('o1_nar', 'nar', 'В лоб — и его табличка сползла со стола.', ''),
+        ('o2_h', 'her', "[hesitantly] Oh… what could be better?", 'Ой… а что могло быть лучше?'),
+        ('o2_d', 'date5', "[eagerly] Glad you asked. Point one…", 'Рад, что спросила. Пункт первый…'),
+        ('o2_nar', 'nar', 'Вежливо — и список до самой двери.', ''),
+        ('o3_h', 'her', "[dryly] Wow. Tough crowd.", 'Ого. Строгая публика.'),
+        ('o3_d', 'date5', "[laughing] Ha! Okay, okay — eight.", 'Ха! Ладно, ладно — восемь.'),
+        ('o3_nar', 'nar', 'Как носитель: два слова и улыбка. Запоминай:', ''),
+        ('o3_tip', 'tip', 'Tough crowd!', ''),
+        ('o4_h', 'her', "[sweetly] Seven's generous. I'd give you five, but you were sweet to the waiter, so six and a half. Still want to compare scores?", 'Семь — это щедро. Я бы дала тебе пять, но ты был мил с официантом, так что шесть с половиной. Всё ещё хочешь сравнить оценки?'),
+        ('o4_d', 'date5', "[hastily] …Ten. Final answer.", '…Десять. Окончательный ответ.'),
+        ('end_m', 'hismum4', "[indignantly] Seven?! She's a ten. You're the seven!", 'Семь?! Она — десятка. Это ты семёрка!'),
+        ('moral', 'nar', 'Мораль: кто ставит оценки — тот сам на экзамене.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши в комментариях!', ''),
+        ('ask', 'nar', 'Сколько бы ты ему поставила?', ''),
+    ],
+)
