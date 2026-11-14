@@ -386,6 +386,37 @@ if EPN in ("rich", "busy", "avoidparty", "tour", "splitbill", "photo"):  # batch
             t = T(0.13); f = 440 * 2 ** ((m - 69) / 12); put(y, np.sign(np.sin(2*np.pi*f*t)) * 0.35 * np.minimum((0.13 - t)*120, 1), k*0.13, 0.5)
         return norm(lp(y, 4000), 0.55)
     SFX.update(ring=_ring(), doorbell=_doorbell(), cheer=_cheer(), vroom=_vroom(), chirp=_chirp(), toy=_toy())
+if EPN == "hairhotel":  # London hotel sounds: rain on the window, footsteps, a sweet wrapper crinkle, pillow pats, linen flaps, a bus, a cat's meow and shake (own rng, so other episodes mix exactly as before)
+    _q = np.random.default_rng(161)
+    def _rain():
+        tt = T(2.5); x = bp(_q.standard_normal(len(tt)), 1500, 7000)*0.35
+        for k_ in range(90): i_ = int(_q.uniform(0, 2.45)*SR); n_ = int(0.01*SR); x[i_:i_+n_] += bp(_q.standard_normal(n_), 2000, 8000)*np.exp(-np.arange(n_)/SR*400)*_q.uniform(0.3, 1)
+        return norm(x*np.minimum(tt*3, 1)*np.minimum((2.5 - tt)*3, 1), 0.4)
+    def _steps():
+        y = np.zeros(int(1.2*SR))
+        for k_ in range(6): tt = T(0.08); put(y, bp(_q.standard_normal(len(tt)), 150, 1800)*np.exp(-tt*60), k_*0.18 + _q.uniform(0, 0.03), 0.5 + 0.3*_q.uniform())
+        return norm(y, 0.5)
+    def _crinkle():
+        y = np.zeros(int(0.6*SR))
+        for k_ in range(26): tt = T(0.015); put(y, bp(_q.standard_normal(len(tt)), 3000, 9000)*np.exp(-tt*300), _q.uniform(0, 0.55), _q.uniform(0.3, 1))
+        return norm(y, 0.5)
+    def _pat():
+        tt = T(0.12); return norm(lp(_q.standard_normal(len(tt)), 700)*np.exp(-tt*50), 0.55)
+    def _flap():
+        tt = T(0.35); x = bp(_q.standard_normal(len(tt)), 300, 3000)*(np.sin(np.pi*tt/0.35)**2)*(1 + 0.6*np.sin(2*np.pi*22*tt))
+        return norm(x, 0.55)
+    def _bus():
+        tt = T(1.6); x = (np.sin(2*np.pi*70*tt) + 0.5*np.sin(2*np.pi*140*tt))*0.5 + 0.6*lp(_q.standard_normal(len(tt)), 500)
+        return norm(lp(x, 900)*np.sin(np.pi*tt/1.6), 0.45)
+    def _meow():
+        tt = T(0.7); f = 520 + 320*np.sin(np.pi*np.minimum(tt/0.55, 1))**1.5; ph = 2*np.pi*np.cumsum(f)/SR
+        x = (np.sin(ph) + 0.5*np.sin(2*ph) + 0.25*np.sin(3*ph))*np.minimum(tt*30, 1)*np.minimum((0.7 - tt)*8, 1)
+        return norm(bp(x, 300, 4000), 0.5)
+    def _shake():
+        y = np.zeros(int(0.9*SR))
+        for k_ in range(7): tt = T(0.09); put(y, bp(_q.standard_normal(len(tt)), 800, 5000)*np.sin(np.pi*tt/0.09), k_*0.11, 0.6)
+        return norm(y, 0.5)
+    SFX.update(rain=_rain(), steps=_steps(), crinkle=_crinkle(), pat=_pat(), flap=_flap(), bus=_bus(), meow=_meow(), shake=_shake())
 def note(m, key=0): return 440 * 2 ** ((m + key - 69) / 12)
 def pluck(f, d, bright=1.0):
     t = T(d); ph = 2*np.pi*f*t
@@ -495,7 +526,7 @@ if EPN == "party":
         seg = (full*op + muff*(1 - op)) * g
         seg *= np.minimum(1, np.arange(n)/(0.03*SR)) * np.minimum(1, (n - np.arange(n))/(0.12*SR))
         put(music, seg, s0, 1.0)
-elif EPN in ("london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "teacher", "pretend", "avoidparty", "tour"):
+elif EPN in ("hairhotel", "london", "sorry", "vendor", "courier", "lie", "weight", "dishes", "teacher", "pretend", "avoidparty", "tour"):
     # cheerful London stroll: pizzicato, walking bass, glockenspiel, brushes
     bpm = 116; b = 60/bpm; K = 0
     def pizz(f, d=0.35):
@@ -649,7 +680,10 @@ sp = {s["id"]: s for s in TL["speech"]}
 gain = np.ones(N)
 def ramp(t0, t1, g0, g1):
     i0, i1 = int(t0*SR), int(t1*SR); gain[i0:i1] = np.linspace(g0, g1, max(1, i1-i0))
-C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
+if EPN == "hairhotel":  # useful4 rubric (no levels): music off from the end of "…Hair-free, I promise." (the beat before the twist) until the moral
+    c2e = sp["o4_r"]["t"] + sp["o4_r"]["d"]; c2n = sp["moral"]["t"]
+else:
+    C2E = dict(teacher="c2_p", rich="c2_m", busy="c2_w", avoidparty="c2_h", tour="c2_h", splitbill="c2_h3", photo="c2_h5", lunch="c2_h", togo="c2_h", seat="c2_h", queue="c2_h", justlooking="c2_h", wifi="c2_h", passport="c2_h", newhair="c2_h", idea="c2_h").get(EPN, "c2_her"); c2e = sp[C2E]["t"] + sp[C2E]["d"]; c2n = sp["c2_nar"]["t"] if EPN not in ("dinner", "salon") else sp["c2_x2"]["t"]   # teacher: silence after the principal's question through the punchline
 if EPN == "airport": c2n = sp["c2_x"]["t"] + sp["c2_x"]["d"] + 0.35
 if EPN == "checkout": c2n = sp["c2_x"]["t"]   # music comes back on "Payment accepted"
 if EPN == "mic": c2n = sp["c2_x2"]["t"]   # silence after her speech through the slow applause

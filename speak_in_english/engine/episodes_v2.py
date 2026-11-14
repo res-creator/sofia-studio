@@ -2681,3 +2681,35 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "hairhotel" — rubric useful4 (60-70 s). heroine = Jessica, hotel receptionist = Daniel
+# option labels (drawn by renderer): 1 В ЛОБ · 2 ВЕЖЛИВО · 3 КАК НОСИТЕЛЬ · 4 КОРОЛЕВСКИЙ
+CAST.update({
+    "recep1": dict(voice="bm_daniel", speed=1.0, lang="en-gb", el="onwK4e9ZLuTAKqWW03F9"),   # hairhotel: beaming hotel receptionist (Daniel)
+})
+EP["hairhotel"] = dict(
+    title='Отель за £200, а в номере волос', rubric='useful4',
+    hook_title=[['ОТЕЛЬ ЗА £200', 'd'], ['ВОЛОС НА ПОДУШКЕ', 'p'], ['ЧТО СКАЖЕШЬ?', 'd']],
+    cover_b='КАК ПОЖАЛОВАТЬСЯ ПО-АНГЛИЙСКИ?',
+    absurd='Над кроватью портрет основателя отеля с пышными рыжими кудрями — ровно того же цвета, что волос.',
+    comment_q='Ты бы пожаловалась или промолчала?',
+    lines=[
+        ('hook_r', 'recep1', "[beaming] Everything perfect, madam?", 'Всё идеально, мадам?'),
+        ('hook', 'nar', 'Двести фунтов за ночь — и чужой волос. Как пожаловаться, чтобы сработало?', ''),
+        ('o1_h', 'her', "[disgusted] Hair! Disgusting! Money back!", 'Волос! Мерзко! Деньги назад!'),
+        ('o1_r', 'recep1', "[hopefully] Ah… it's complimentary?", 'А… это комплимент от отеля?'),
+        ('o1_nar', 'nar', 'В лоб — и волос стал конфеткой на подушке.', ''),
+        ('o2_h', 'her', "[timidly] I'm sorry to bother you, there's a tiny hair…", 'Простите за беспокойство, тут крошечный волосок…'),
+        ('o2_r', 'recep1', "[squinting] Tiny? Then it's practically invisible, madam.", 'Крошечный? Тогда его практически не видно, мадам.'),
+        ('o2_nar', 'nar', 'Вежливо — и проблема стала невидимой.', ''),
+        ('o3_h', 'her', "[firmly] I'm afraid the room hasn't been made up properly. I'd like fresh bedding, please.", 'Боюсь, номер плохо подготовили. Я бы хотела свежее бельё, пожалуйста.'),
+        ('o3_r', 'recep1', "[apologetically] I do apologise. Housekeeping's on the way.", 'Приношу свои извинения. Горничные уже идут.'),
+        ('o3_nar', 'nar', 'Как носитель: спокойно, факт и просьба. Запоминай:', ''),
+        ('o3_tip', 'tip', "The room hasn't been made up properly.", ''),
+        ('o4_h', 'her', "[sweetly] For two hundred pounds I expected a sea view, not a souvenir from the last guest. Shall I invite him back to split the bill?", 'За двести фунтов я ждала вид на море, а не сувенир от прошлого гостя. Может, позвать его обратно и разделить счёт?'),
+        ('o4_r', 'recep1', "[hastily] …Presidential suite, madam. Hair-free, I promise.", '…Президентский люкс, мадам. Без волос, обещаю.'),
+        ('end_r', 'recep1', "[proudly] Ah. That's Biscuit. He actually owns the place.", 'А. Это Бисквит. Вообще-то отель принадлежит ему.'),
+        ('moral', 'nar', 'Мораль: платишь за люкс — требуй люкс. Даже от кота.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши в комментариях!', ''),
+        ('ask', 'nar', 'Ты бы пожаловалась или промолчала?', ''),
+    ],
+)
