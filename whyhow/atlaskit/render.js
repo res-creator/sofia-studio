@@ -72,7 +72,9 @@ async function main() {
   if (MODE === 'video') { const out = ARGS[0], jobs = +(ARGS[1] || 4); const from = ARGS[2] ? Math.floor(+ARGS[2] * K.FPS) : 0, to = ARGS[3] ? Math.ceil(+ARGS[3] * K.FPS) : NF;
     const tmp = out + '_parts'; fs.mkdirSync(tmp, { recursive: true }); const per = Math.ceil((to - from) / jobs); const parts = [];
     await Promise.all(Array.from({ length: jobs }, (_, j) => { const a = from + j * per, b = Math.min(to, a + per); const o = path.join(tmp, `p${j}.mp4`); parts.push(o);
-      return new Promise((r, j) => spawn('node', [__filename, EPD, 'chunk', a, b, o], { stdio: 'inherit' }).on('close', c => c ? j(new Error('chunk ' + j + ' failed')) : r())); }));
+      return new Promise((r, rej) => spawn('node', [__filename, EPD, 'chunk', a, b, o], { stdio: 'inherit' }).on('close', (c, sig) => (c || sig) ? rej(new Error('chunk ' + j + ' failed (' + (c || sig) + ')')) : r())); }));
+    // a chunk killed mid-way (e.g. out of memory) can leave a short file: check every part's length before joining
+    parts.forEach((pp, j) => { const a = from + j * per, b = Math.min(to, a + per); const d = +execFileSync('ffprobe', ['-v', '0', '-show_entries', 'format=duration', '-of', 'csv=p=0', pp]).toString().trim(); if (!(d >= (b - a) / K.FPS - 0.5)) throw new Error('part ' + j + ' too short: ' + d + ' s of ' + ((b - a) / K.FPS).toFixed(1)); });
     fs.writeFileSync(path.join(tmp, 'list.txt'), parts.map(p => `file '${path.resolve(p)}'`).join('\n'));
     execFileSync('ffmpeg', ['-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', path.join(tmp, 'list.txt'), '-c', 'copy', out]); fs.rmSync(tmp, { recursive: true });
     console.log('video', out, (to - from) / K.FPS, 's'); return; }
