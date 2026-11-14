@@ -18,14 +18,27 @@ for l in L[start:]:
 FX = ('highpass=f=75,equalizer=f=300:t=q:w=1.2:g=-2.5,equalizer=f=120:t=q:w=0.9:g=1.8,equalizer=f=3200:t=q:w=1.0:g=2.2,'
       'highshelf=f=10000:g=2,deesser=i=0.35:m=0.5:f=0.5,acompressor=threshold=-20dB:ratio=3:attack=8:release=120:makeup=3,'
       'aecho=0.85:0.5:28|46:0.10|0.06,alimiter=limit=0.89')
-async def tts(text, out):
-    for k in range(10):
+async def tts1(text, out):
+    for k in range(12):
         try:
             await edge_tts.Communicate(text, 'ru-RU-DmitryNeural', rate='-7%', pitch='-2Hz').save(out)
-            if os.path.getsize(out) > 2000: return
+            if os.path.getsize(out) > 1500: return
         except Exception as e: err = e
-        await asyncio.sleep(5 + 5 * k)
+        await asyncio.sleep(4 + 4 * k)
     raise RuntimeError(f'tts failed: {text[:40]}')
+async def tts(text, out):
+    # длинные абзацы сервер не отдаёт — читаем по предложениям и склеиваем
+    sents = [x for x in re.split(r'(?<=[.!?…»])\s+', text) if x.strip()]
+    parts = []
+    for i, x in enumerate(sents):
+        p = f'{out}.{i:02d}.mp3'
+        if not (os.path.exists(p) and os.path.getsize(p) > 1500): await tts1(x, p)
+        parts.append(p)
+    lst = out + '.txt'
+    open(lst, 'w').write(''.join(f"file '{p}'\n" for p in parts))
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', lst, '-c', 'copy', out], check=True)
+    for p in parts: os.remove(p)
+    os.remove(lst)
 os.makedirs(f'{D}/parts', exist_ok=True)
 k = 0
 for it in items:
