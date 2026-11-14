@@ -1,6 +1,7 @@
 # Полная озвучка «Третья мировая»: бесплатный голос Microsoft «Дмитрий» по абзацам SCRIPT.md + студийная обработка,
 # сборка в один файл: паузы между абзацами, тишина под музыкальные паузы и заставки глав. Пишет vo.mp3, script.txt, segments.json.
-import asyncio, json, os, re, subprocess, certifi
+import asyncio, json, os, re, subprocess, sys, certifi
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 certifi.where = lambda: '/root/.ccr/ca-bundle.crt'
 import edge_tts
 D = os.path.dirname(os.path.abspath(__file__)); J = os.path.dirname(D)
@@ -18,35 +19,39 @@ for l in L[start:]:
 FX = ('highpass=f=75,equalizer=f=300:t=q:w=1.2:g=-2.5,equalizer=f=120:t=q:w=0.9:g=1.8,equalizer=f=3200:t=q:w=1.0:g=2.2,'
       'highshelf=f=10000:g=2,deesser=i=0.35:m=0.5:f=0.5,acompressor=threshold=-20dB:ratio=3:attack=8:release=120:makeup=3,'
       'aecho=0.85:0.5:28|46:0.10|0.06,alimiter=limit=0.89')
-async def tts1(text, out):
+from moods import PRESET, mood
+async def tts1(text, out, m):
+    rate, pitch, vol, _ = PRESET[m]
     for k in range(12):
         try:
-            await edge_tts.Communicate(text, 'ru-RU-DmitryNeural', rate='-7%', pitch='-2Hz').save(out)
-            if os.path.getsize(out) > 1500: return
+            await edge_tts.Communicate(text, 'ru-RU-DmitryNeural', rate=rate, pitch=pitch, volume=vol).save(out)
+            if os.path.getsize(out) > 1500: await asyncio.sleep(1); return
         except Exception as e: err = e
         await asyncio.sleep(4 + 4 * k)
     raise RuntimeError(f'tts failed: {text[:40]}')
-async def tts(text, out):
-    # длинные абзацы сервер не отдаёт — читаем по предложениям и склеиваем
+def para(k, text, out):
+    # длинные абзацы сервер не отдаёт — читаем по предложениям; у каждого предложения своё настроение (moods.py)
     sents = [x for x in re.split(r'(?<=[.!?…»])\s+', text) if x.strip()]
     parts = []
     for i, x in enumerate(sents):
-        p = f'{out}.{i:02d}.mp3'
-        if not (os.path.exists(p) and os.path.getsize(p) > 1500): await tts1(x, p)
-        parts.append(p)
+        m = mood(k, x)
+        w = f'{D}/parts/s{k:03d}_{i:02d}_{m}.wav'
+        if not os.path.exists(w):
+            raw = w[:-4] + '.mp3'; asyncio.run(tts1(x, raw, m))
+            fx = FX + (',' + PRESET[m][3] if PRESET[m][3] else '')
+            subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', raw, '-af', fx, '-ar', '48000', '-ac', '1', w], check=True); os.remove(raw)
+        parts.append(w)
     lst = out + '.txt'
     open(lst, 'w').write(''.join(f"file '{p}'\n" for p in parts))
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', lst, '-c', 'copy', out], check=True)
-    for p in parts: os.remove(p)
     os.remove(lst)
 os.makedirs(f'{D}/parts', exist_ok=True)
 k = 0
 for it in items:
     if it['kind'] != 'voice': continue
-    k += 1; it['file'] = f'{D}/parts/p{k:03d}.wav'
+    k += 1; it['file'] = f'{D}/parts/e{k:03d}.wav'
     if os.path.exists(it['file']): continue
-    raw = f'{D}/parts/p{k:03d}.mp3'; asyncio.run(tts(it['text'], raw))
-    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', raw, '-af', FX, '-ar', '48000', '-ac', '1', it['file']], check=True); os.remove(raw)
+    para(k, it['text'], it['file'])
     print(k, flush=True)
 dur = lambda p: float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', p], capture_output=True, text=True).stdout)
 # сборка: перед главой 2,4 с тишины (заставка), между абзацами 0,6 с, музыкальная пауза — её длительность
