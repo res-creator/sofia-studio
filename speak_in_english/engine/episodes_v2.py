@@ -2681,3 +2681,35 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "whistle" — rubric nashe4 (60-70 s). heroine = Jessica, British colleague = George
+# option labels (drawn by renderer): 1 В ЛОБ · 2 ВЕЖЛИВО · 3 КАК НОСИТЕЛЬ · 4 КОРОЛЕВСКИЙ
+CAST.update({
+    "coll4": dict(voice="bm_george", speed=1.0, lang="en-gb", el="JBFqnCBsd6RMkjVDRZzb"),   # whistle: British colleague whistling before the bonus meeting (George)
+})
+EP["whistle"] = dict(
+    title='Коллега свистит в офисе, а «денег не будет»', rubric='nashe4',
+    hook_title=[['КОЛЛЕГА СВИСТИТ', 'd'], ['«ДЕНЕГ НЕ БУДЕТ»', 'p'], ['КАК ОБЪЯСНИТЬ?', 'd']],
+    cover_b='КАК СКАЗАТЬ ПО-АНГЛИЙСКИ?',
+    absurd='На её столе копилка-свинка в строительной каске и с навесным замком.',
+    comment_q='А у вас в офисе свистят?',
+    lines=[
+        ('hook_c', 'coll4', "[cheerfully] Morning! Lovely day for a whistle!", 'Доброе утро! Чудесный день, чтобы посвистеть!'),
+        ('hook', 'nar', 'Свистит в офисе за день до премии. Как объяснить британцу? Выбирай ответ.', ''),
+        ('o1_h', 'her', "[alarmed] Stop! No money!", 'Стоп! Денег нет!'),
+        ('o1_c', 'coll4', "[generously] I've got money. Want a fiver?", 'У меня есть деньги. Хочешь пятёрку?'),
+        ('o1_nar', 'nar', 'В лоб — и он свистит дальше.', ''),
+        ('o2_h', 'her', "[politely] Please don't whistle indoors, it's bad luck.", 'Пожалуйста, не свисти в помещении, это к неудаче.'),
+        ('o2_c', 'coll4', "[amused] Bad luck for whom? The pigeons?", 'К неудаче для кого? Для голубей?'),
+        ('o2_nar', 'nar', 'Вежливо — а голуби за окном возмущены.', ''),
+        ('o3_h', 'her', "[warmly] It's a superstition back home — whistling indoors chases money away.", 'У нас дома есть такое суеверие: свист в помещении прогоняет деньги.'),
+        ('o3_c', 'coll4', "[nodding] Oh, like walking under a ladder? Fair enough.", 'А, как ходить под лестницей? Ну ладно.'),
+        ('o3_nar', 'nar', 'Как носитель: назови это суеверием — британцы поймут. Запоминай:', ''),
+        ('o3_tip', 'tip', "It's a superstition back home.", ''),
+        ('o4_h', 'her', "[sweetly] Whistle away, love. But the bonus meeting's at three, and I'd hate to know who to blame.", 'Свисти на здоровье, дорогой. Но совещание о премии в три, и мне бы очень не хотелось знать, кто виноват.'),
+        ('o4_c', 'coll4', "[muffled] …I've never been this quiet in my life.", '…Я в жизни не был таким тихим.'),
+        ('end_c', 'coll4', "[horrified] Oi! Not indoors! Do you want us all to be poor?!", 'Эй! Не в помещении! Ты хочешь, чтобы мы все обеднели?!'),
+        ('moral', 'nar', 'Мораль: свист — бесплатный. Последствия — нет.', ''),
+        ('outro', 'nar', 'А ты бы ответила как: один, два, три или четыре? Пиши в комментариях!', ''),
+        ('ask', 'nar', 'А у вас в офисе свистят?', ''),
+    ],
+)
