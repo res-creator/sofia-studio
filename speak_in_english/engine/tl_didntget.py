@@ -35,83 +35,83 @@ def wat(lid, t0, word):
 # ---- hook: frame 0 = he is already rattling it off on her doorstep, the parcel with her name held out; his van at the kerb behind
 cue("knock", 0.0, 0.35)
 t = say("hook_c", 0.2); hev = {}
-hev["nar"] = R(t + 0.25); e = say("hook", hev["nar"])
+hev["nar"] = R(t + 0.2); e = say("hook", hev["nar"])
 hev["van"] = wat("hook", hev["nar"], "шесть") - 0.05      # «Шесть уровней» -> the van with its slogan
 cue("whoosh", hev["van"], 0.4)
-scenes.append(dict(id="hook", s=0.0, e=R(e + 0.25), ev=hev)); t = e + 0.25
+scenes.append(dict(id="hook", s=0.0, e=R(e + 0.15), ev=hev)); t = e + 0.15
 
 def opt_start(s): cue("whoosh", s, 0.55); cue("pop", s + 0.08, 0.6); return dict(plate=R(s))
 STEP = 0.55   # walk time for one step toward the van
 
 # ---- o1 A1: "What? Again? Slow!" -> he repeats it LOUDER and faster (her hair blown back); one step toward the van
 s = t; ev = opt_start(s)
-c = say("o1_h", s + 0.3)
+c = say("o1_h", s + 0.25)
 c0 = c + 0.2; ev["loud"] = R(c0); cue("impact", c0 + 0.05, 0.55); c = say("o1_c", c0)
 ev["step"] = R(c + 0.05); cue("whoosh", c + 0.05, 0.3)
-c = say("o1_nar", c + 0.55)
-scenes.append(dict(id="o1", s=R(s), e=R(c + 0.2), ev=ev)); t = c + 0.2
+c = say("o1_nar", c + 0.45)
+scenes.append(dict(id="o1", s=R(s), e=R(c + 0.15), ev=ev)); t = c + 0.15
 
 # ---- o2 A2: the labelled mistake "Sorry, I not understand you." (red cross) -> "No worries, I not understand you too." (also crossed);
 # both stare at the parcel, question marks; another step; narrator + the correct form on the tip plate
 s = t; ev = opt_start(s)
-h0 = s + 0.3; c = say("o2_h", h0); ev["wrong"] = R(h0 + 0.75); cue("nope", h0 + 0.8, 0.45)
-c0 = c + 0.3; c = say("o2_c", c0); ev["wrong2"] = R(c0 + 1.0); cue("nope", c0 + 1.05, 0.4)
+h0 = s + 0.25; c = say("o2_h", h0); ev["wrong"] = R(h0 + 0.75); cue("nope", h0 + 0.8, 0.45)
+c0 = c + 0.25; c = say("o2_c", c0); ev["wrong2"] = R(c0 + 1.0); cue("nope", c0 + 1.05, 0.4)
 ev["stare"] = R(c + 0.1); cue("blink", c + 0.15, 0.5)
-ev["step"] = R(c + 0.5); cue("whoosh", c + 0.5, 0.3)
-c = say("o2_nar", c + 1.05)
+ev["step"] = R(c + 0.4); cue("whoosh", c + 0.4, 0.3)
+c = say("o2_nar", c + 0.7)
 c = say("o2_tip", c + 0.36); ev["tip"] = R(c - D["o2_tip"]); cue("ding", ev["tip"] + 0.05, 0.45)
-scenes.append(dict(id="o2", s=R(s), e=R(c + 0.2), ev=ev)); t = c + 0.2
+scenes.append(dict(id="o2", s=R(s), e=R(c + 0.15), ev=ev)); t = c + 0.15
 
 # ---- o3 B1: "Can you repeat that, please?" -> word for word, same speed (replay icon); third step = he is at the van
 s = t; ev = opt_start(s)
-c = say("o3_h", s + 0.3)
-c0 = c + 0.25; ev["replay"] = R(c0); cue("scratch", c0 - 0.05, 0.35); c = say("o3_c", c0)
+c = say("o3_h", s + 0.25)
+c0 = c + 0.2; ev["replay"] = R(c0); cue("scratch", c0 - 0.05, 0.35); c = say("o3_c", c0)
 ev["step"] = R(c + 0.05); cue("whoosh", c + 0.05, 0.3)
 ev["blink"] = R(c + 0.35); cue("blink", c + 0.4, 0.45)
-c = say("o3_nar", c + 0.6)
-scenes.append(dict(id="o3", s=R(s), e=R(c + 0.2), ev=ev)); t = c + 0.2
+c = say("o3_nar", c + 0.5)
+scenes.append(dict(id="o3", s=R(s), e=R(c + 0.15), ev=ev)); t = c + 0.15
 
 # ---- o4 B2: "Sorry, that went right over my head." -> he lifts the parcel over his head, "Here, catch!" and lobs it OVER her head:
 # it lands on the porch canopy above her door; she ducks, then looks up
 s = t; ev = opt_start(s)
-c = say("o4_h", s + 0.3)
-c0 = c + 0.25; ev["lift"] = R(c0 + 0.1); c = say("o4_c", c0)
+c = say("o4_h", s + 0.25)
+c0 = c + 0.2; ev["lift"] = R(c0 + 0.1); c = say("o4_c", c0)
 ev["throw"] = R(c - 0.35); cue("whoosh", ev["throw"], 0.5)
-ev["land"] = R(ev["throw"] + 0.75); cue("thud", ev["land"], 0.6); cue("boing", ev["land"] + 0.05, 0.35)
+ev["land"] = R(ev["throw"] + 0.65); cue("thud", ev["land"], 0.6); cue("boing", ev["land"] + 0.05, 0.35)
 ev["look"] = R(ev["land"] + 0.35)
-c = say("o4_nar", ev["land"] + 0.55)
+c = say("o4_nar", ev["land"] + 0.4)
 c = say("o4_tip", c + 0.36); ev["tip"] = R(c - D["o4_tip"]); cue("ding", ev["tip"] + 0.05, 0.45)
-scenes.append(dict(id="o4", s=R(s), e=R(c + 0.2), ev=ev)); t = c + 0.2
+scenes.append(dict(id="o4", s=R(s), e=R(c + 0.15), ev=ev)); t = c + 0.15
 
 # ---- o5 C1: "I didn't quite catch that. Could you say it a bit more slowly?" -> slow-motion: he walks back (snail), takes the
 # parcel down from the canopy and holds it out to her: "Six... pounds... customs. Card or cash?"
 s = t; ev = opt_start(s)
-c = say("o5_h", s + 0.3); cue("sparkle", c - 1.0, 0.4)
+c = say("o5_h", s + 0.25); cue("sparkle", c - 1.0, 0.4)
 c0 = c + 0.25; c = say("o5_c", c0)
 ev["walk"] = R(c0 + 0.05); ev["grab"] = R(c0 + 2.6); cue("squeak", ev["grab"] + 0.2, 0.35); ev["give"] = R(c0 + 3.5); cue("pop", ev["give"] + 0.3, 0.4)
-c = say("o5_nar", c + 0.3); ev["smile"] = R(c - D["o5_nar"] + 1.5)
+c = say("o5_nar", c + 0.2); ev["smile"] = R(c - D["o5_nar"] + 1.5)
 c = say("o5_tip", c + 0.36); ev["tip"] = R(c - D["o5_tip"]); cue("ding", ev["tip"] + 0.05, 0.45)
-scenes.append(dict(id="o5", s=R(s), e=R(c + 0.2), ev=ev)); t = c + 0.2
+scenes.append(dict(id="o5", s=R(s), e=R(c + 0.15), ev=ev)); t = c + 0.15
 
 # ---- o6 C2: the royal line; on "adopt your van" the van gets a pink bow and blinks its headlights at her.
 # beat (music silent), his sigh "...My mum says I talk like a microwave." -> microwave DING over his head; she taps her card, PAID; moral
-s = t; ev = opt_start(s); h0 = s + 0.3
+s = t; ev = opt_start(s); h0 = s + 0.25
 c = say("o6_h", h0)
 ev["adopt"] = wat("o6_h", h0, "adopt"); cue("sparkle", ev["adopt"] + 0.1, 0.45); cue("boing", ev["adopt"] + 0.25, 0.3)
 ev["beat"] = R(c + 0.05)
-c0 = c + 0.7; c = say("o6_c", c0)
+c0 = c + 0.55; c = say("o6_c", c0)
 ev["ding"] = R(c + 0.05); cue("lift_ding", c + 0.05, 0.6)
-ev["pay"] = R(c + 0.55); cue("register", c + 0.75, 0.45)
-ev["moral"] = R(c + 0.95); c = say("moral", ev["moral"])
+ev["pay"] = R(c + 0.45); cue("register", c + 0.65, 0.45)
+ev["moral"] = R(c + 0.7); c = say("moral", ev["moral"])
 scenes.append(dict(id="o6", s=R(s), e=R(c + 0.3), ev=ev)); t = c + 0.3
 
 # ---- end screen: question + A1..C2 buttons, СОХРАНИ, ПОДПИСАТЬСЯ (cursor); then the comment question big
 s = t; cue("whoosh", s, 0.7); cue("impact_soft", s + 0.2, 0.5)
-c = say("outro", s + 0.15)
-oev = dict(ask=R(c + 0.3))
-for i in range(6): cue("pop", s + 0.15 + 1.25 + i * 0.3, 0.45)
-c = say("ask", c + 0.3); cue("pop", oev["ask"], 0.5)
-scenes.append(dict(id="outro", s=R(s), e=R(c + 0.55), ev=oev)); t = c + 0.55
+c = say("outro", s + 0.1)
+oev = dict(ask=R(c + 0.2))
+for lv in ["a1", "a2", "b1", "b2", "c1", "c2"]: cue("pop", s + 0.1 + next(x[1] for x in word_times("outro") if x[0].lower().startswith(lv)), 0.45)
+c = say("ask", c + 0.2); cue("pop", oev["ask"], 0.5)
+scenes.append(dict(id="outro", s=R(s), e=R(c + 0.35), ev=oev)); t = c + 0.35
 
 for sp in speech:
     x, sr = sf.read(f"{VO}/{sp['id']}.wav")
