@@ -9,8 +9,9 @@ registerShot('s01', {
   kind: '3d',
   init(T) {
     const M = mood('night');
-    const st = T.stage({ mood: 'night', fov: V(38, 55), fog: [12, 60], keyPos: [-10, 14, -12], keyIntensity: 1.2, ambient: 0.7 });
-    st.add(T.ground(200, 200, M.floor));
+    const st = T.stage({ mood: 'night', fov: V(38, 55), fog: [25, 90], keyPos: [-12, 16, 10], keyIntensity: 2.0, ambient: 1.3 });
+    st.add(T.ground(200, 200, M.dark));
+    const { THREE } = T; for (const [x, z, i] of [[-1, 4, 30], [4, 4, 22], [8.6, 3, 26]]) { const pl = new THREE.PointLight(M.practical, i, 14, 1.6); pl.position.set(x, x > 8 ? 3.8 : 2.2, z); st.add(pl); }
     // concrete building with lit windows
     st.add(T.box(14, 3.2, 6, M.wall, 0, 1.6, -2));
     st.add(T.box(14.6, 0.3, 6.6, '#1a1c2e', 0, 3.3, -2));
@@ -23,10 +24,11 @@ registerShot('s01', {
     const moon = T.sphere(2.2, T.basic('#e8ecff'), -30, 26, -70); st.add(moon);
     // pine forest
     const r = (i) => { const x = Math.sin(i * 12.9898) * 43758.5453; return x - Math.floor(x); };
-    for (let i = 0; i < 140; i++) { const a = r(i) * Math.PI * 2, d = 11 + r(i + 400) * 45; const x = Math.cos(a) * d, z = Math.sin(a) * d - 6; if (z > 6 && Math.abs(x) < 8) continue; st.add(T.pine3D(x, z, 1.4 + r(i + 900) * 1.4, '#0d1020')); }
+    for (let i = 0; i < 140; i++) { const a = r(i) * Math.PI * 2, d = 11 + r(i + 400) * 45; const x = Math.cos(a) * d, z = Math.sin(a) * d - 6; if (z > -1 && x > -26 && x < 12) continue; st.add(T.pine3D(x, z, 1.4 + r(i + 900) * 1.4, '#0d1020')); }
     // lamp post light
     st.add(T.cyl(0.06, 0.08, 4, '#15121c', 8.6, 2, 2));
-    const sh = T.shaft(2.4, 4.5, M.practical, 0.07); sh.position.set(8.6, 1.9, 2); st.add(sh);
+    const moonL = new THREE.DirectionalLight('#9fb0ff', 0.8); moonL.position.set(-20, 20, 30); st.add(moonL);
+    st.add(T.sphere(0.22, T.basic('#ffe2b0'), 8.6, 4.05, 2));
     return { stage: st, beacon };
   },
   draw(s, t, info, T) {
@@ -34,6 +36,7 @@ registerShot('s01', {
     T.dolly(s.stage.camera, t, [[0, { pos: [-14, 9, 30], look: [0, 3, -2] }], [info.dur, { pos: [-6, 4.5, 17], look: [1, 2.5, -2] }]]);
   },
   overlay(g, t, info) {
+    FX.stars(g, t, { count: 90, area: [0, 0, E.W, E.H * 0.22], seed: 7 });
     const a1 = ease.out(prog(t, lt(info, 'сентября', 0.8) - 0.2, lt(info, 'сентября', 0.8) + 0.3)) * clamp((info.dur - t) / 0.4);
     const a2 = ease.out(prog(t, lt(info, 'тысяча', 1.7), lt(info, 'тысяча', 1.7) + 0.5)) * clamp((info.dur - t) / 0.4);
     label(g, '26 СЕНТЯБРЯ', V(170, 90), E.H * V(0.32, 0.25), { size: V(64, 66), align: 'left', a: a1, color: S().ui.cream, spacing: 6 });
