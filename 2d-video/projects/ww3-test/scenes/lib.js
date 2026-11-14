@@ -92,7 +92,7 @@ const LAND = {
   bo: [[109, 2], [117, 7], [119, 1], [116, -4], [110, -3]],
   su: [[95, 5], [98, 4], [106, -6], [104, -5]],
   ng: [[131, -1], [141, -3], [150, -10], [141, -9], [138, -8]],
-  an: Array.from({ length: 37 }, (_, i) => [-180 + i * 10, -70 - 4 * Math.sin(i * 1.3) - 3 * Math.cos(i * 0.7)]),
+  an: Array.from({ length: 37 }, (_, i) => [-180 + i * 10, -72 - 3 * Math.sin(i * 0.5)]),
 };
 const LAND_KEYS = Object.keys(LAND);
 const D2R = Math.PI / 180;

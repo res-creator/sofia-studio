@@ -14,7 +14,7 @@ export function station(g, t, cam, o = {}) {
   layer(g, cam, 0.1, (g) => {
     backdrop(g, dawn ? [shade(M.sky[0], -0.3), M.sky[0], M.sky[1], M.sky[2]] : M.sky);
     if (!dawn) { FX.stars(g, t, { count: 220, area: [-E.W, -E.H, E.W * 3, GY + E.H * 0.6] }); FX.moon(g, CX + V(560, 260), GY - V(640, 1100), 44); }
-    else { const sy = GY - V(110, 160) - (o.sunRise ?? 0) * 120; FX.sun(g, CX + V(260, 0), sy, 70, '#fff3dc', M.key, 6); FX.godRays(g, CX + V(260, 0), sy, { count: 16, angle: -Math.PI / 2, spread: Math.PI * 1.7, len: 1800, a: 0.07, t }); }
+    else { const sx = CX + V(720, 300), sy = GY - V(400, 520) - (o.sunRise ?? 0) * 110; FX.sun(g, sx, sy, 70, '#fff3dc', M.key, 6); FX.godRays(g, sx, sy, { count: 16, angle: -Math.PI / 2, spread: Math.PI * 1.7, len: 1800, a: 0.07, t }); }
     FX.clouds(g, { y: GY - V(700, 1200), h: 160, color: dawn ? '#ffd9b0' : '#9aa8e0', a: dawn ? 0.22 : 0.06, seed: 6 });
   });
   layer(g, cam, 0.3, (g) => { pines(g, GY - V(150, 200), 60, 300, mix(M.sky[1], dark, 0.6), 3); FX.fog(g, GY - V(260, 360), 220, M.fog, dawn ? 0.35 : 0.25); });

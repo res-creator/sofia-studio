@@ -143,12 +143,12 @@ registerShot('s22', { draw(g, t, info) {
     const fillTo = lit < 0 ? x0 : lerp(xs(Math.max(0, lit - 1)), xs(lit), ease.out(prog(t, T[Math.max(0, lit)] - 0.05, T[Math.max(0, lit)] + 0.3)));
     if (lit >= 0) { seg(g, [[x0, y], [fillTo, y]], 6, ui.gold); glow(g, fillTo, y, 60, ui.gold, 0.6); }
     T.forEach((tt, i) => { const on = ease.outBack(prog(t, tt - 0.05, tt + 0.3)), x = xs(i);
-      ring(g, x, y, 22, 4, on > 0 ? ui.gold : alpha(ui.blueprint, 0.5)); if (on > 0) { circle(g, x, y, 12 * on, ui.gold); glow(g, x, y, 90, ui.gold, 0.35 * on); }
-      label(g, L[i], x, y + 80, { size: V(38, 34), a: 0.35 + 0.65 * clamp(on), color: on > 0 ? ui.cream : ui.text, spacing: 3, glow: on > 0 ? 14 : 0 });
-      label(g, top[i], x, y - 70, { size: V(30, 28), a: clamp(on), color: ui.gold, spacing: 2 }); });
+      ring(g, x, y, 28, 5, on > 0 ? ui.gold : alpha(ui.blueprint, 0.5)); if (on > 0) { circle(g, x, y, 12 * on, ui.gold); glow(g, x, y, 90, ui.gold, 0.35 * on); }
+      label(g, L[i], x, y + 90, { size: V(50, 40), a: 0.35 + 0.65 * clamp(on), color: on > 0 ? ui.cream : ui.text, spacing: 3, glow: on > 0 ? 14 : 0 });
+      label(g, top[i], x, y - 80, { size: V(40, 32), a: clamp(on), color: ui.gold, spacing: 2 }); });
     // walking line figure along the line
     const wx = lit < 0 ? x0 - 40 : fillTo - 10, ph = t * Math.PI * 2 * 0.9;
-    UI.lineFigure(g, { x: wx - 40, y: y - 6, s: 0.55, pose: walkPose(ph), color: alpha('#e8f0ff', 0.9) });
+    UI.lineFigure(g, { x: wx - 50, y: y - 6, s: 0.8, pose: walkPose(ph), color: alpha('#e8f0ff', 0.9) });
   });
 } });
 

@@ -94,7 +94,7 @@ registerShot('s08', { draw(g, t, info) {
   const cam = { z: 1 + 0.08 * ease.inOut(t / info.dur), r: -0.01 };
   layer(g, cam, 1, (g) => {
     g.fillStyle = '#030508'; g.fillRect(-E.W, -E.H, E.W * 3, E.H * 3);
-    polarMap(g, -40, -40, E.W + 80, E.H + 80, t, { arcs: [0, 1, 2, 3, 4].map((i) => ({ p: 0.45 + 0.09 * t + i * 0.01 })), alarm: 1, zoom: 1.35, cyo: 120 });
+    polarMap(g, -40, -40, E.W + 80, E.H + 80, t, { arcs: [0, 1, 2, 3, 4].map((i) => ({ p: 0.5 + 0.1 * t + i * 0.015 })), alarm: 1, zoom: 1.15, cyo: -60, cxo: 260 });
   });
   veil(g, S().ui.accent, 0.08 * (0.5 + 0.5 * Math.sin(t * 7)), 'lighter');
 } });
