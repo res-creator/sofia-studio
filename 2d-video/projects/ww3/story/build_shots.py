@@ -80,6 +80,10 @@ for r in raw:
             if at is None: print('cue word not found:', r['key'], c, v); continue
             cues0[c] = round(max(0.0, at - r['start']), 2)
         else: cues0[c] = v
+    for it in sp['params'].get('items', []) or []:          # слова-cue внутри карточек
+        if isinstance(it.get('cue'), str):
+            at = find(it['cue'], r['start'] - 0.3, r['end'] + 3)
+            it['cue'] = round(max(0.0, at - r['start']), 2) if at is not None else None
     for q in range(len(cuts) - 1):
         p = json.loads(json.dumps(sp['params'])); cues = dict(cues0)
         if q:
