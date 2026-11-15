@@ -15,7 +15,7 @@
  "fadeOut": 0.8,
  "music": {
   "enabled": true,
-  "gainDb": -17
+  "gainDb": -10
  },
  "sfx": {
   "enabled": true,

@@ -12,8 +12,6 @@ run = lambda *a: subprocess.run(list(a), check=True)
 chunks = sorted(f for f in os.listdir(os.path.join(B, 'chunks')) if f.endswith('.mp4') and not f.endswith('.tmp.mp4'))
 lst = os.path.join(B, 'chunks', 'list.txt')
 open(lst, 'w').write(''.join(f"file '{os.path.join(B, 'chunks', c)}'\n" for c in chunks))
-silent = os.path.join(B, 'video_silent.mp4')
-run('ffmpeg', '-y', '-v', 'error', '-f', 'concat', '-safe', '0', '-i', lst, '-c', 'copy', silent)
 
 # 2) архивные отрезки под размер окна
 RECT = {'16:9': (231, 90, 1458, 820), '4:3': (413, 90, 1093, 820)}
@@ -31,17 +29,18 @@ for s in story['shots']:
 print(len(segs), 'archive inserts')
 
 # 3) наложение + звук
-args = ['ffmpeg', '-y', '-v', 'error', '-i', silent]
+args = ['ffmpeg', '-y', '-v', 'error', '-f', 'concat', '-safe', '0', '-i', lst]
 for a, b, x, y, f in segs: args += ['-itsoffset', f'{a:.3f}', '-i', f]
 mix = os.path.join(B, 'mix.wav'); args += ['-i', mix]
 fc, last = [], '0:v'
 for i, (a, b, x, y, f) in enumerate(segs):
     fc.append(f"[{last}][{i + 1}:v]overlay={x}:{y}:eof_action=pass:enable='between(t,{a:.3f},{b:.3f})'[v{i}]"); last = f'v{i}'
-final = os.path.join(OUT, 'ww3_final_1080p.mp4')
+final = os.path.join(OUT, os.environ.get('FINAL', 'ww3_final_1080p.mp4'))
 args += ['-filter_complex', ';'.join(fc), '-map', f'[{last}]', '-map', f'{len(segs) + 1}:a', '-c:v', 'libx264', '-preset', 'medium',
          '-crf', '20', '-maxrate', '4500k', '-bufsize', '9000k', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', '-shortest',
          '-movflags', '+faststart', final]
 run(*args)
+if os.environ.get('FINAL'): sys.exit(0)
 phone = os.path.join(OUT, 'ww3_phone_720p.mp4')
 run('ffmpeg', '-y', '-v', 'error', '-i', final, '-vf', 'scale=1280:720', '-c:v', 'libx264', '-preset', 'medium', '-crf', '24', '-maxrate', '1500k',
     '-bufsize', '3000k', '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', phone)
