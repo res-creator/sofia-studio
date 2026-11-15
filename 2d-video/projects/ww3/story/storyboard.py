@@ -122,7 +122,7 @@ SB = {
      S('calendar', keep=True, w='В феврале', single='2026', note='ФЕВРАЛЬ · РЕГИОНАЛЬНЫЙ КОНФЛИКТ'),
      S('portScene', w='А ещё почти', stopped='cue', cues={'stop': 1}),
      S('portScene', w='И даже', stopped=1, cam={'move': 'driftL'}),
-     S('statCard', keep=True, w='Тридцать две', items=[{'v': '32', 'l': 'СТРАНЫ МЭА'}, {'v': '400 МЛН', 'l': 'БАРРЕЛЕЙ ИЗ ЗАПАСОВ'}], cam={'move': 'push', 'amt': 0}),
+     S('statCard', keep=True, w='Тридцать две', items=[{'v': '32', 'l': 'СТРАНЫ МЭА'}, {'v': '400 МЛН', 'l': 'БАРРЕЛЕЙ ИЗ ЗАПАСОВ'}], xs=[0.26, 0.7], cam={'move': 'push', 'amt': 0}),
      S('mapShot', w='Одного', marks=[{'at': 'hormuz', 'label': 'ОРМУЗ'}], arcs=[{'from': 'hormuz', 'to': [10, 50]}, {'from': 'hormuz', 'to': [120, 30]}])],
 32: [S('portScene', truck=True), S('fieldScene', w='Многие', elevator=True),
      S('portScene', w='Встанут', stopped=1, nz=False),

@@ -76,7 +76,7 @@ tpl('statCard', 'One or two short facts as big numbers with labels (e.g. «> 99 
   draw(g, t, info) {
     const cam = camOf(info, t, { move: 'push', z: 1, amt: 0.6 }); if (info.bg === 'space') { space(g, t, cam, { R: V(700, 600), cy: E.H * 1.25, cables: 1, lights: 0.8 }); veil(g, '#04060c', 0.3); } else voidBg(g, t, cam);
     const it = info.items || [{ v: '12 000', l: 'ПОДПИСЬ' }], n = it.length;
-    layer(g, cam, 1, (g) => it.forEach((o, i) => { const a = popAt(t, cue(info, o.cue || 'i' + (i + 1), 0.1 + i * 0.3)), x = E.W * (n === 1 ? 0.5 : V(0.2 + (0.6 * i) / (n - 1), 0.5)), y = E.H * (n === 1 ? 0.45 : V(0.45, 0.25 + i * 0.25));
+    layer(g, cam, 1, (g) => it.forEach((o, i) => { const a = popAt(t, cue(info, o.cue || 'i' + (i + 1), 0.1 + i * 0.3)), x = E.W * (info.xs ? info.xs[i] : n === 1 ? 0.5 : V(0.2 + (0.6 * i) / (n - 1), 0.5)), y = E.H * (n === 1 ? 0.45 : V(0.45, 0.25 + i * 0.25));
       if (a <= 0) return; const L = String(o.v).length, mw = n === 1 ? E.W * 0.8 : E.W * 0.34; bigNum(g, o.v, x, y, { s: a, size: Math.min(V(n > 2 ? 110 : 140, 110), mw / (0.62 * L)), sub: o.l, color: o.red ? S().ui.accent : S().ui.gold }); }));
     source(g, info.source, showAt(t, 0.6, info.dur));
   } });

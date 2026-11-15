@@ -20,7 +20,7 @@ export function norad(g, t, cam, o = {}) {
     rr(g, sc.x - 26, sc.y - 26, sc.w + 52, sc.h + 52, 10); g.fillStyle = shade(wall, -0.6); g.fill();
     screenContent(g, t, sc, o, red);
     glow(g, sc.x + sc.w / 2, sc.y + sc.h / 2, sc.w * 0.9, keyC, 0.15 + pulse * 0.25);
-    if (o.second !== undefined && o.second !== null) { const s2 = { x: sc.x + sc.w + 90, y: sc.y + 60, w: V(360, 300), h: V(220, 200) };
+    if (o.second !== undefined && o.second !== null) { const s2w = V(360, 300), s2 = { x: Math.min(sc.x + sc.w + 90, E.W - s2w - 70), y: sc.y + 60, w: s2w, h: V(220, 200) };
       rr(g, s2.x - 14, s2.y - 14, s2.w + 28, s2.h + 28, 8); g.fillStyle = shade(wall, -0.6); g.fill(); g.fillStyle = '#04100c'; g.fillRect(s2.x, s2.y, s2.w, s2.h);
       text(g, o.secondText || 'ПУСКОВ НЕТ', s2.x + s2.w / 2, s2.y + s2.h / 2, { size: V(40, 36), color: '#7fe8c8', font: FONTS.ui, weight: 900, spacing: 3, glow: 14, glowColor: alpha('#7fe8c8', 0.6), alpha: 0.6 + 0.4 * Math.sin(t * 3) ** 2 });
       glow(g, s2.x + s2.w / 2, s2.y + s2.h / 2, s2.w, '#7fe8c8', 0.08); }
