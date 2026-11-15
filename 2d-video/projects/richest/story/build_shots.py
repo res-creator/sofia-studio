@@ -113,7 +113,7 @@ MIN_FIRST, MIN_LAST = 1.3, 1.1
 for sh in raw:
     d = sh['end'] - sh['start']
     starts = sorted(set([W[i]['start'] for i in sent_starts if sh['start'] + MIN_FIRST < W[i]['start'] < sh['end'] - MIN_LAST]))
-    if sh['sp']['tpl'] in ('chapterTitle', 'phrase') or sh['sp']['params'].get('hold') or not starts and d <= 4.0:
+    if sh['sp']['tpl'] in ('chapterTitle', 'phrase') or sh['sp']['params'].get('hold') or not starts and d <= 3.0:
         out_raw.append(sh); continue
     cuts = [sh['start']]
     for st in starts:
@@ -122,7 +122,7 @@ for sh in raw:
     # куски длиннее 4 с режем ещё и по запятым
     k = 0
     while k < len(cuts) - 1:
-        if cuts[k + 1] - cuts[k] > 4.0:
+        if cuts[k + 1] - cuts[k] > 3.0:
             cl = [W[i]['start'] for i in clause_starts if cuts[k] + 1.6 < W[i]['start'] < cuts[k + 1] - 1.4]
             if cl: cuts.insert(k + 1, min(cl, key=lambda x: abs(x - (cuts[k] + cuts[k + 1]) / 2))); continue
         k += 1

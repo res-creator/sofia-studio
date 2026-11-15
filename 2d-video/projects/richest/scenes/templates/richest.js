@@ -228,6 +228,7 @@ tpl('libraryKid', 'A child reading by a library window (Carnegie library), warm 
   } });
 
 // ---------------------------------------------------------------- крупный текст под мысль диктора
+const PROPER = ['мекк', 'сахар', 'каир', 'мали', 'рим', 'красс', 'фуггер', 'рокфеллер', 'маск', 'алан', 'рыж', 'америк', 'англи', 'европ', 'безос', 'карнеги', 'вандербильт', 'спартак', 'акбар', 'хомстед', 'аугсбург', 'вильгельм', 'манхэттен', 'реформаци', 'форбс', 'статен', 'йоркшир', 'ричмонд', 'шотланди', 'джингеребер', 'мир осман', 'осман', 'али', 'хан', 'гюнтер', 'клеппер', 'стейнмец', 'грег', 'парфян', 'карр', 'аль-умари', 'шульц', 'хайдарабад', 'инди', 'нью-йорк', 'бюджет сша'];
 // Слова появляются по одному ровно тогда, когда их произносят (times — секунды от начала шота). Всё влезает в кадр:
 // размер шрифта подбирается по ширине, максимум 2 строки. accent — индексы слов, выделенных золотом.
 tpl('phrase', 'Big kinetic phrase synced to the narration: words pop in at their spoken times. params: words [str], times [s], accent [i], bg (void|warm|dark), sub (small line under)', {
@@ -235,10 +236,15 @@ tpl('phrase', 'Big kinetic phrase synced to the narration: words pop in at their
     const cam = camOf(info, t, { move: 'push', amt: 0.12 });
     if (info.bg === 'warm') layer(g, cam, 0.3, (g) => { sky(g, ['#1f1410', '#3a2216', '#2a170f']); glow(g, E.W / 2, E.H * 0.45, 700, '#ffb35a', 0.18); });
     else if (info.bg === 'dark') layer(g, cam, 0.3, (g) => { sky(g, ['#07080d', '#10121c', '#07080d']); glow(g, E.W / 2, E.H * 0.45, 600, '#7fa8ff', 0.1); });
+    else if (info.bg === 'black' || info.hand !== false) { g.fillStyle = '#050505'; g.fillRect(-E.W, -E.H, E.W * 3, E.H * 3); }
     else voidBg(g, t, cam);
-    const W = info.words || [], times = info.times || W.map((_, i) => i * 0.3), acc = new Set(info.accent || []);
-    let size = 120; const font = FONTS.ui, sp = 3;
-    const wid = (s, z) => { g.save(); g.font = `900 ${z}px "${font}"`; const w = g.measureText(s).width + sp * s.length; g.restore(); return w; };
+    const hand = info.hand !== false, acc = new Set(info.accent || []);
+    // рукописный стиль: обычный регистр, имена с большой буквы
+    const caseW = (w, i) => { if (!hand) return w; if (/^[A-ZА-ЯЁ]{2,4}$/.test(w) || /\d/.test(w)) return w; const l = w.toLowerCase();
+      return (i === 0 || PROPER.some((p) => l.startsWith(p))) ? l.charAt(0).toUpperCase() + l.slice(1) : l; };
+    const W = (info.words || []).map(caseW), times = info.times || W.map((_, i) => i * 0.3);
+    let size = hand ? 128 : 120; const font = hand ? 'Caveat' : FONTS.ui, sp = hand ? 0 : 3;
+    const wid = (s, z) => { g.save(); g.font = `${hand ? 700 : 900} ${z}px "${font}"`; const w = g.measureText(s).width + sp * s.length; g.restore(); return w; };
     const split = (z) => { const lines = [[]]; let lw = 0, maxW = E.W * 0.84;
       W.forEach((w, i) => { const ww = wid(w, z) + z * 0.3; if (lw + ww > maxW && lines[lines.length - 1].length) { lines.push([]); lw = 0; } lines[lines.length - 1].push(i); lw += ww; }); return lines; };
     let lines = split(size); while ((lines.length > 2 || lines.some((l) => l.reduce((a, i) => a + wid(W[i], size) + size * 0.3, 0) > E.W * 0.86)) && size > 46) { size -= 6; lines = split(size); }
@@ -246,7 +252,7 @@ tpl('phrase', 'Big kinetic phrase synced to the narration: words pop in at their
       lines.forEach((l, li) => { const tot = l.reduce((a, i) => a + wid(W[i], size) + size * 0.3, 0) - size * 0.3; let x = E.W / 2 - tot / 2;
         l.forEach((i) => { const w = wid(W[i], size), p = popAt(t, Math.max(0, (times[i] ?? 0) - 0.05), 0.35);
           if (p > 0) { g.save(); g.translate(x + w / 2, y0 + li * lh); g.scale(0.85 + 0.15 * p, 0.85 + 0.15 * p);
-            T(g, W[i], 0, 0, { size, color: acc.has(i) ? GOLD : CREAM, a: clamp(p * 1.4), spacing: sp, glow: acc.has(i) ? 18 : 0, glowColor: alpha(GOLD, 0.6) }); g.restore(); }
+            text(g, W[i], 0, 0, { size, color: acc.has(i) ? GOLD : '#f4f1ea', font, weight: hand ? 700 : 900, spacing: sp, alpha: clamp(p * 1.4) }); g.restore(); }
           x += w + size * 0.3; }); });
       if (info.sub) T(g, info.sub, E.W / 2, y0 + lines.length * lh + 20, { size: 26, color: '#bcc8e0', a: showAt(t, 0.4, info.dur) }); });
   } });

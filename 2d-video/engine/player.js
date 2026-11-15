@@ -12,6 +12,9 @@ const errors = (window.ERRORS = []);
 const mk = (w, h) => { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; };
 
 async function loadFonts() {
+  for (const f of (E.cfg && E.cfg.fonts) || []) {   // шрифты проекта: config.json "fonts": [{family, file, weight}]
+    try { const ff = new FontFace(f.family, `url(${PROJ}/${f.file})`, { weight: f.weight || '400 900' }); await ff.load(); document.fonts.add(ff); } catch (e) { console.log('project font missing', f.file); }
+  }
   const F = [['Fredoka', '600', 'fredoka', 'normal'], ['Fredoka', '700', 'fredoka', 'normal'],
     ...['600', '700', '800', '900'].map(w => ['Nunito', w, 'nunito', 'normal']),
     ['Playfair Display', '900', 'playfair-display', 'italic']];
