@@ -8,7 +8,7 @@ SEG = json.load(open(os.path.join(P, '../../../ru_geo/ww3/vo_full/segments_el.js
 W = json.load(open(os.path.join(P, 'timeline/words.json')))['words']
 norm = lambda s: re.sub(r'[^0-9a-zа-я]', '', s.lower().replace('ё', 'е'))
 WN = [(norm(w['word']), w['start'], w['end']) for w in W]
-MAXD, KEEPMAX = 3.8, 9.0
+MAXD, KEEPMAX = 4.0, 9.0
 GRAPHIC = set('statCard bigCounter quote calendar timer chapterTitle caseCard mapShot barsShot thermo uvScale slider curves priceTag twoSensors sunGlint chain briefcase smokeDiagram cutaway hiroshimaMap lamps treaties bunkersWorld cableVsHose sevenRow hoursStrip doomsday globeShot phoneInsert'.split())
 CAMS = [{'move': 'push', 'z': 1.25}, {'move': 'driftR', 'z': 1.1}, {'move': 'pull', 'z': 1.3}, {'move': 'driftL', 'z': 1.18}]
 
@@ -65,21 +65,30 @@ for r in raw:
     d = r['end'] - r['start']; sp = r['sp']
     lim = KEEPMAX if sp['keep'] else MAXD
     n = max(1, math.ceil(d / lim - 1e-6)) if d > lim else 1
-    if sp['keep'] and n > 1:   # анимация целиком в первой части, хвост — отдельный кадр
+    if sp['tpl'] in GRAPHIC and d <= KEEPMAX: n = 1          # графику не режем: анимация целиком
+    if (sp['keep'] or sp['tpl'] in GRAPHIC) and n > 1:   # анимация целиком в первой части, хвост — продолжение
         first = min(d - 2.0, 6.0); cuts = [r['start'], r['start'] + first]
         rest = d - first; m = max(1, math.ceil(rest / MAXD - 1e-6))
         cuts += [r['start'] + first + rest * q / m for q in range(1, m + 1)]
     else:
         cuts = [r['start'] + d * q / n for q in range(n + 1)]
+    # словесные cue → секунды от начала шота (ищем слово внутри шота)
+    cues0 = {}
+    for c, v in sp['cues'].items():
+        if isinstance(v, str):
+            at = find(v, r['start'] - 0.3, r['end'])
+            if at is None: print('cue word not found:', r['key'], c, v); continue
+            cues0[c] = round(max(0.0, at - r['start']), 2)
+        else: cues0[c] = v
     for q in range(len(cuts) - 1):
-        p = json.loads(json.dumps(sp['params'])); cues = dict(sp['cues'])
+        p = json.loads(json.dumps(sp['params'])); cues = dict(cues0)
         if q:
-            if sp['tpl'] == 'archive': p['from'] = p.get('from', 0) + (cuts[q] - cuts[0])
+            off = round(cuts[q] - cuts[0], 3)
+            if sp['tpl'] == 'archive': p['from'] = p.get('from', 0) + off
             else:
+                p['tOff'] = off
                 p['cam'] = {**CAMS[(len(shots) + q) % len(CAMS)]}
-                if sp['tpl'] in GRAPHIC: p['cam'] = {'move': ('push', 'pull')[(len(shots) + q) % 2], 'z': 1.05}
-                cues = {c: -20 for c in cues}
-                for c in ('cues',): pass
+                if sp['tpl'] in GRAPHIC: p['cam'] = {'move': ('push', 'pull')[(len(shots) + q) % 2], 'z': 1.03}
         shots.append(dict(tpl=sp['tpl'], params=p, cues=cues, start=round(cuts[q], 3), end=round(cuts[q + 1], 3), key=r['key'], part=q))
 
 # 4) текст, id, звуки

@@ -37,7 +37,7 @@ for i, (a, b, x, y, f) in enumerate(segs):
     fc.append(f"[{last}][{i + 1}:v]overlay={x}:{y}:eof_action=pass:enable='between(t,{a:.3f},{b:.3f})'[v{i}]"); last = f'v{i}'
 final = os.path.join(OUT, os.environ.get('FINAL', 'ww3_final_1080p.mp4'))
 args += ['-filter_complex', ';'.join(fc), '-map', f'[{last}]', '-map', f'{len(segs) + 1}:a', '-c:v', 'libx264', '-preset', 'medium',
-         '-crf', '20', '-maxrate', '4500k', '-bufsize', '9000k', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', '-shortest',
+         '-crf', '20', '-maxrate', '4500k', '-bufsize', '9000k', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '320k', '-shortest',
          '-movflags', '+faststart', final]
 run(*args)
 if os.environ.get('FINAL'): sys.exit(0)

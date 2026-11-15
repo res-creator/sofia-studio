@@ -24,8 +24,13 @@ NAMES = {'ХОЛОДНЫЙ СТАРТ': 'Ночь 26 сентября 1983 го�
          'ПОЧЕМУ ЭТОГО ДО СИХ ПОР НЕ СЛУЧИЛОСЬ': 'Почему этого до сих пор не случилось'}
 ch = [(0 if i == 0 else s['t'] - 2.4, NAMES.get(s['title'], s['title'].capitalize())) for i, s in enumerate(x for x in SEG if x['kind'] == 'chapter')]
 arch = json.load(open(f'{J}/archive.json'))['clips']
-used = {s['params']['clip'] for s in json.load(open(f'{P}/story/shots.json'))['shots'] if s['tpl'] == 'archive'}
-cred = [f"- {c['caption'] or c['id']}: {c['author']} — {c['source']}, {c['license']} — {c['page']}" for c in arch if c['id'] in used]
+caps = {}
+for s in json.load(open(f'{P}/story/shots.json'))['shots']:
+    if s['tpl'] == 'archive': caps.setdefault(s['params']['clip'], []).append(s['params'].get('caption') or '')
+NAME = {'iss_earth_exp65': 'Земля с МКС (Экспедиция 65)', 'aurora_alaska': 'Северное сияние, Аляска (NASA SVS)'}
+def cap(c): return NAME.get(c['id']) or sorted(set(x for x in caps[c['id']] if x), key=len)[0]
+cred = [f"- {cap(c)}: {c['author']} — {c['source']}, {c['license']} — {c['page']}" for c in arch if c['id'] in caps]
+short = [f"{cap(c)} — {c['author']} ({c['license'].split('(')[0].strip()})" for c in arch if c['id'] in caps]
 open(f'{J}/CREDITS.md', 'w').write('# «Что будет, если начнётся Третья мировая» — архив и лицензии\n\n' + '\n'.join(cred) +
     '\n\nАнимация, карты, схемы и графика — нарисованы в коде (2D-студия проекта). Музыка и звуковые эффекты сгенерированы локально (без чужих треков).\n'
     'Голос диктора — ElevenLabs (eleven_v3, голос Todd).\n')
@@ -46,8 +51,11 @@ kit = f'''UPLOAD KIT — «Что будет, если начнётся Трет
 
 Источники (главные): SIPRI Yearbook 2026; Bulletin of the Atomic Scientists (Часы Судного дня, январь 2026); Coupe et al., JGR Atmospheres 2019; Xia et al., Nature Food 2022; Boyd & Wilson, Risk Analysis 2023; материалы музеев и архивов Хиросимы и NARA.
 
-Озвучка сделана с помощью ИИ, факты проверены по источникам. Анимация и графика нарисованы в коде; архивные кадры — общественное достояние и свободные лицензии, авторы: https://github.com/res-creator/sofia-studio/blob/claude/cool-hypatia-ehnxdy/ru_geo/ww3/CREDITS.md
-Grindavík (drone): Swedrone, CC BY 3.0. Chernobyl antlers: Carl Willis, CC BY. NASA — общественное достояние.
+Озвучка сделана с помощью ИИ, факты проверены по источникам. Анимация, карты и графика нарисованы в коде; музыка сгенерирована (без чужих треков).
+В фильме упомянут наш выпуск про Исландию — он есть на канале.
+
+Архивные кадры (общественное достояние и свободные лицензии):
+''' + '\n'.join(short) + f'''
 
 #третьямировая #ядернаязима #история #наука #сквозьстраны #документальный #петров
 

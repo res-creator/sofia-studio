@@ -213,7 +213,7 @@ tpl('noradHall', 'Air-defence hall. params: screen (map|attack|digits|santa|rada
     const alarm = info.alarm === 'cue' ? clamp((t - ac) * 2) : info.alarm ?? 0;
     let digits = '000'; if (info.digits) for (const [f, d, c] of info.digits) if (t >= (c ? cue(info, c, f) : f * info.dur)) digits = d;
     const r = norad(g, t, cam, { screen: info.screen || 'map', p: clamp(t / info.dur * 1.2), digits, digitsLabel: info.digitsLabel, alarm, crewExpr: info.crewExpr || (alarm ? 'scared' : 'neutral'), second: info.second ? 'empty' : null, blip: info.blip });
-    if (info.shoup) layer(g, cam, 1.15, (g) => { fig(g, 'shoup', { x: E.W * 0.22, y: r.GY + V(160, 120), s: 1.6, facing: -1, pose: breathe({ ...POSES.stand, eF: [20, -150], hF: [14, -190] }, t, 1, 7), expr: 'smile', rim: rimOf(r.M, [0.5, -0.9]) }); });
+    if (info.shoup) layer(g, cam, 1.15, (g) => { fig(g, 'shoup', { noFace: true, x: E.W * 0.22, y: r.GY + V(60, 120), s: 1.6, facing: -1, pose: breathe({ ...POSES.stand, eF: [20, -150], hF: [14, -190] }, t, 1, 7), expr: 'smile', rim: rimOf(r.M, [0.5, -0.9]) }); });
     if (alarm) veil(g, r.red, 0.05 * r.pulse, 'lighter'); dust(g, t, info); tag(g, t, info);
   } });
 tpl('santaCall', '1955 split screen: left — a kid at home with a phone (happy), right — Colonel Shoup from behind at the hot-line phone (never his face). params: expr spec for the kid; cue "smile" (Shoup leans in, rings)', {
@@ -223,7 +223,7 @@ tpl('santaCall', '1955 split screen: left — a kid at home with a phone (happy)
     layer(g, { ...cam, x: 0 }, 1, (g) => { fig(g, 'kid', { x: W2 * 0.5, y: rk.GY + V(60, 40), s: 2.1, facing: 1, pose: breathe(POSES.phone, t, 1, 1), expr: exprAt(info, t, info.expr, 'happy'), rim: rimOf(rk.M, [0.4, -1]), blink: blink(t, 2.7), prop: { type: 'phone', glow: '#ffd59a' } });
       FX.rings(g, W2 * 0.5 + 60, rk.GY - 280, t, { count: 2, r0: 30, r1: 120, color: '#fff1e6', a: 0.35 }); }); g.restore();
     g.save(); g.beginPath(); g.rect(W2 + 4, 0, W2, E.H); g.clip(); const rn = norad(g, t, { ...cam, x: W2 * 0.4, z: 1.25 }, { screen: 'santa', p: clamp(t / info.dur), crewExpr: 'smile' });
-    layer(g, { ...cam, x: 0 }, 1, (g) => { fig(g, 'shoup', { x: W2 * 1.45, y: rn.GY + 40, s: 1.6, facing: -1, pose: breathe({ ...POSES.stand, eF: [20, -150], hF: [14, -190] }, t, 1, 2), expr: 'smile', rim: rimOf(rn.M, [0.6, -0.8]), blink: false }); }); g.restore();
+    layer(g, { ...cam, x: 0 }, 1, (g) => { fig(g, 'shoup', { noFace: true, x: W2 * 1.45, y: rn.GY - 10, s: 1.5, facing: -1, pose: breathe({ ...POSES.stand, eF: [20, -150], hF: [14, -190] }, t, 1, 2), expr: 'smile', rim: rimOf(rn.M, [0.6, -0.8]), blink: false }); }); g.restore();
     g.fillStyle = '#05060a'; g.fillRect(W2 - 4, 0, 8, E.H); tag(g, t, info);
   } });
 

@@ -55,7 +55,7 @@ tpl('briefcase', 'The "nuclear briefcase" is not a button: it opens (cue "open")
       const lh = h * Math.cos(op * Math.PI * 0.5) * 0.98 + h * 0.02; rr(g, cx - w / 2, cy - lh, w, lh, 22); g.fillStyle = alpha(S().ui.bpBg, 0.9); g.fill(); g.stroke(); if (op > 0.6) { seg(g, [[cx - w / 2, cy], [cx - w / 2 - 30, cy - h * 0.8 * op], [cx + w / 2 - 30, cy - h * 0.8 * op], [cx + w / 2, cy]], 4, alpha(BP(), 0.6)); }
       if (op > 0.5) { const items = [['phone', 'ТЕЛЕФОН', -w * 0.33], ['tv', 'ПАПКА', 0], ['lock', 'ПРОВЕРКА ЛИЧНОСТИ', w * 0.33]];
         items.forEach(([ic, lb, dx], i) => { const a = popAt(t, cue(info, ['phone', 'folder', 'card'][i], 0.35 + i * 0.18)); if (a <= 0) return; icon(g, ic === 'tv' ? 'screen' : ic, cx + dx, cy + h * 0.42, 1.2 * a, GOLD()); T(g, lb, cx + dx, cy + h + V(50, 50), { size: V(30, 24), a, color: GOLD() }); }); }
-      const nb = showAt(t, cue(info, 'nobutton', 0.05), info.dur * 0.35); if (nb > 0) { T(g, '«КРАСНОЙ КНОПКИ» НЕТ', cx, E.H * 0.18, { size: V(46, 40), color: S().ui.accent, a: nb }); } });
+      const nb = showAt(t, cue(info, 'nobutton', 0.05), info.dur * 0.35); if (nb > 0 && !info.noTitle) { T(g, '«КРАСНОЙ КНОПКИ» НЕТ', cx, E.H * 0.18, { size: V(46, 40), color: S().ui.accent, a: nb }); } });
   } });
 tpl('smokeDiagram', 'Smoke rises above the clouds into the stratosphere (no rain there) and spreads as a thin dark film around the planet. params: cues rise, spread; labels', {
   draw(g, t, info) {
@@ -63,7 +63,7 @@ tpl('smokeDiagram', 'Smoke rises above the clouds into the stratosphere (no rain
     layer(g, cam, 1, (g) => { const gy = E.H * 0.82, cy = E.H * 0.55, sy = E.H * 0.25;
       seg(g, [[-E.W, gy], [E.W * 2, gy]], 4, BP()); for (let i = 0; i < 9; i++) { g.strokeStyle = alpha(BP(), 0.6); g.lineWidth = 2; g.strokeRect(E.W * 0.3 + i * 60, gy - 40 - (i % 3) * 30, 44, 40 + (i % 3) * 30); }
       g.setLineDash([10, 12]); seg(g, [[-E.W, cy], [E.W * 2, cy]], 2, alpha(BP(), 0.5)); seg(g, [[-E.W, sy + 90], [E.W * 2, sy + 90]], 2, alpha(BP(), 0.5)); g.setLineDash([]);
-      T(g, 'ОБЛАКА · ДОЖДЬ', E.W * 0.86, cy - 30, { size: V(24, 22) }); T(g, 'СТРАТОСФЕРА · ДОЖДЯ НЕТ', E.W * 0.82, sy + 60, { size: V(24, 22), color: GOLD() });
+      T(g, 'ОБЛАКА · ДОЖДЬ', E.W * 0.86, cy - 30, { size: V(24, 22) }); T(g, 'СТРАТОСФЕРА · ДОЖДЯ НЕТ', E.W * 0.82, sy - 75, { size: V(24, 22), color: GOLD() });
       for (let i = 0; i < 4; i++) { g.strokeStyle = alpha(BP(), 0.7); g.lineWidth = 3; g.beginPath(); g.ellipse(E.W * 0.1 + i * 160, cy + 20, 60, 20, 0, Math.PI, Math.PI * 2); g.stroke(); }
       const top = lerp(gy - 60, sy + 40, kr), x = E.W * 0.45; for (let i = 0; i < 18; i++) { const u = i / 17, yy = lerp(gy - 60, top, u), wob = Math.sin(t * 1.2 + i) * 14; circle(g, x + wob + (u > 0.85 ? (u - 0.85) * 600 * ks : 0), yy, 30 + u * 30, alpha('#6a6470', 0.9)); }
       if (ks > 0) { g.fillStyle = alpha('#6a6470', 0.85); g.fillRect(x - E.W * 0.6 * ks, sy + 10, E.W * 1.2 * ks, 50); T(g, 'ТОНКАЯ «ШТОРА» САЖИ', E.W / 2, sy - 30, { size: V(32, 30), color: '#e8f0ff', a: ks }); } });

@@ -11,5 +11,6 @@ for (const s of E.shots || []) {
   if (!s.tpl) continue;
   const def = TPL[s.tpl];
   if (!def) { console.log('UNKNOWN TEMPLATE', s.id, s.tpl); continue; }
-  registerShot(s.id, def);
+  const off = (s.params && s.params.tOff) || 0;   // продолжение разрезанного шота: анимация не начинается заново
+  registerShot(s.id, off ? { ...def, draw: (g, t, info, x) => def.draw(g, t + off, { ...info, dur: info.dur + off }, x) } : def);
 }

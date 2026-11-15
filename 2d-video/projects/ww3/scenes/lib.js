@@ -256,6 +256,7 @@ export function fig(g, who, o = {}) {
   const W = WHO[who] || WHO.crew, oo = { outfit: W.outfit, ...o };
   drawFigure(g, oo);
   const [hx, hy, r] = headPos(oo), f = oo.facing ?? 1;
+  if (oo.noFace) { g.save(); g.beginPath(); g.arc(hx, hy, r * 0.94, 0, Math.PI * 2); g.fillStyle = '#0b1122'; g.fill(); g.restore(); }  // вид со спины: без лица
   if (W.hat === 'lei') { const p = oo.pose || POSES.stand, s = (oo.s ?? 1) * (W.outfit.kid ? 0.72 : 1); lei(g, oo.x + f * s * p.sh[0], oo.y + s * p.sh[1], s); }
   else if (W.hat !== 'none') hat(g, W.hat, hx, hy, r, f, { rim: o.rim?.color, rimDir: o.rim?.dir });
   return [hx, hy, r];
