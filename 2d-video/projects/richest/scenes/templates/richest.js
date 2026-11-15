@@ -89,9 +89,9 @@ tpl('fireRome', 'Rome at night: apartment blocks; one burns (cue "fire"); Crassu
     if (mode !== 'build') layer(g, cam, 0.55, (g) => flames(g, E.W * 0.55 + 140, gy - 420, 1.1, t, 4));
     if (mode === 'build') layer(g, cam, 0.55, (g) => { const x = E.W * 0.55; for (let i = 0; i < 6; i++) seg(g, [[x - 20 + i * 64, gy], [x - 20 + i * 64, gy - 460]], 6, '#c9a46a'); for (let j = 0; j < 6; j++) seg(g, [[x - 30, gy - 70 - j * 70], [x + 320, gy - 70 - j * 70]], 5, '#c9a46a'); });
     layer(g, cam, 1, (g) => { g.fillStyle = '#2a1e1c'; g.fillRect(-E.W, gy, E.W * 3, E.H);
-      if (mode === 'build') for (let i = 0; i < 5; i++) fig(g, 'worker', { x: E.W * (0.5 + i * 0.08), y: gy, s: 1.0, facing: i % 2 ? -1 : 1, pose: breathe(i % 2 ? POSES.reach : POSES.holdFront, t, 1.4, i), expr: 'neutral' });
+      if (mode === 'build') for (let i = 0; i < 5; i++) fig(g, 'worker', { x: E.W * (0.5 + i * 0.08), y: gy, s: 1.0, facing: i % 2 ? -1 : 1, pose: breathe(i % 2 ? POSES.reach : POSES.holdFront, t, 1.4, i), expr: 'sad' });
       else { fig(g, 'crassus', { x: E.W * 0.28, y: gy, s: 1.25, facing: 1, pose: breathe(mode === 'deal' ? POSES.explain : POSES.stand, t, 1, 1), expr: mode === 'deal' ? 'smile' : 'neutral' });
-        fig(g, 'trader', { x: E.W * 0.42, y: gy, s: 1.2, facing: -1, pose: breathe(POSES.shrug, t, 1, 3), expr: 'scared' }); }
+        fig(g, 'trader', { x: E.W * 0.42, y: gy, s: 1.2, facing: -1, pose: breathe(POSES.shrug, t, 1, 3), expr: 'sad' }); }
     });
     tagAt(g, t, info);
   } });
@@ -139,7 +139,7 @@ tpl('ticker', 'Stock-exchange screen: a running ticker tape and a price chart; d
       const pts = []; let v = 0.6; const shown = clamp(t / (info.dur * 0.7)); for (let i = 0; i <= n * shown; i++) { v += (r() - 0.45) * 0.06; if (i > n * 0.8) v -= d * 0.035; pts.push([lerp(x0, x1, i / n), lerp(y1, y0, clamp(v))]); }
       if (pts.length > 1) seg(g, pts, 5, d > 0.3 ? RED : '#5ad69a');
       if (info.value) { T(g, info.value, E.W / 2, E.H * 0.16, { size: 70, color: GOLD }); if (info.sub) T(g, info.sub, E.W / 2, E.H * 0.16 + 60, { size: 24 }); }
-      const tape = '  SPCX ▲  TSLA ▼  AMZN ▲  NVDA ▲  GOOGL ▼  META ▲  ORCL ▲  BRK ▼  DELL ▲  MSFT ▲'; g.fillStyle = '#0b1328'; g.fillRect(-E.W, E.H * 0.8, E.W * 3, 60);
+      const tape = info.tape || '  АКЦИИ ▲   ИНДЕКС ▼   НЕФТЬ ▲   ЗОЛОТО ▲   ДОЛЛАР ▼   ЕВРО ▲   МЕДЬ ▲   ЗЕРНО ▼'; g.fillStyle = '#0b1328'; g.fillRect(-E.W, E.H * 0.8, E.W * 3, 60);
       T(g, tape + tape, E.W * 1.2 - (t * 160) % (E.W * 1.4), E.H * 0.8 + 32, { size: 28, color: '#8fd0ff', align: 'center' }); });
     source(g, info.source, showAt(t, 0.6, info.dur)); tagAt(g, t, info);
   } });
@@ -186,9 +186,9 @@ tpl('mythChain', 'How a myth spreads: boxes connected by arrows appear one by on
     const cam = camOf(info, t, { move: 'push', amt: 0.4 }); voidBg(g, t, cam);
     const it = info.items || ['САЙТ', 'РАДИО', 'ЖУРНАЛЫ', 'РОЛИКИ'], n = it.length, step = Math.min(1.1, info.dur * 0.6 / n);
     layer(g, cam, 1, (g) => { T(g, info.big || '$400 000 000 000', E.W / 2, E.H * 0.22, { size: 92, color: GOLD });
-      it.forEach((s, i) => { const p = popAt(t, 0.4 + i * step); if (p <= 0) return; const w = E.W * 0.17, x = E.W * (0.1 + i * 0.8 / (n - 1 || 1)), y = E.H * 0.55;
+      it.forEach((s, i) => { const p = popAt(t, 0.4 + i * step); if (p <= 0) return; const w = E.W * 0.17, x = E.W * (0.14 + i * 0.72 / (n - 1 || 1)), y = E.H * 0.55;
         g.fillStyle = alpha('#1b2a4a', 0.95); rr(g, x - w / 2, y - 60, w, 120, 18); g.fill(); g.strokeStyle = alpha('#9ab4e8', 0.6); g.lineWidth = 2; g.stroke(); T(g, s, x, y, { size: 26 * p });
-        if (i < n - 1) { const x2 = E.W * (0.1 + (i + 1) * 0.8 / (n - 1)); seg(g, [[x + w / 2 + 8, y], [x2 - w / 2 - 16, y]], 4, alpha(GOLD, 0.8)); poly(g, [[x2 - w / 2 - 6, y], [x2 - w / 2 - 22, y - 10], [x2 - w / 2 - 22, y + 10]], GOLD); } });
+        if (i < n - 1) { const x2 = E.W * (0.14 + (i + 1) * 0.72 / (n - 1)); seg(g, [[x + w / 2 + 8, y], [x2 - w / 2 - 16, y]], 4, alpha(GOLD, 0.8)); poly(g, [[x2 - w / 2 - 6, y], [x2 - w / 2 - 22, y - 10], [x2 - w / 2 - 22, y + 10]], GOLD); } });
       const sp = popAt(t, 0.6 + n * step); if (sp > 0 && info.stamp !== false) { g.save(); g.translate(E.W / 2, E.H * 0.8); g.rotate(-0.06); g.strokeStyle = RED; g.lineWidth = 6; rr(g, -260 * sp, -42, 520 * sp, 84, 10); g.stroke(); T(g, info.stamp || 'РАСЧЁТА НЕТ', 0, 2, { size: 44 * sp, color: RED, spacing: 6 }); g.restore(); } });
   } });
 function coin(g, x, y, r, label, col) { glow(g, x, y, r * 2, col, 0.25); circle(g, x, y, r, col); ring(g, x, y, r * 0.82, 3, shade(col, -0.3)); T(g, label, x, y + r + 40, { size: 24 }); }
@@ -206,7 +206,7 @@ tpl('league', 'Rulers «ОТДЕЛЬНАЯ ЛИГА»: a throne, a crown and tre
     layer(g, cam, 0.8, (g) => { const x = E.W / 2; g.fillStyle = '#6a1f2a'; g.fillRect(x - 120, gy - 360, 240, 360); g.fillStyle = GOLD; g.fillRect(x - 150, gy - 220, 300, 30); g.fillRect(x - 150, gy - 400, 300, 40);
       [[-1], [1]].forEach(([s]) => { const cx = x + s * 380; g.fillStyle = '#5a3a1a'; rr(g, cx - 110, gy - 120, 220, 120, 12); g.fill(); g.fillStyle = GOLD; g.fillRect(cx - 110, gy - 80, 220, 12); for (let i = 0; i < 7; i++) circle(g, cx - 80 + i * 26, gy - 128 - (i % 2) * 10, 16, GOLD); glow(g, cx, gy - 140, 120, GOLD, 0.35); });
       g.fillStyle = '#2a1520'; g.fillRect(-E.W, gy, E.W * 3, E.H); seg(g, [[E.W * 0.1, gy - 60], [E.W * 0.9, gy - 60]], 8, '#b83a4a'); [0.1, 0.5, 0.9].forEach((fx) => { g.fillStyle = GOLD; g.fillRect(E.W * fx - 8, gy - 110, 16, 110); }); });
-    layer(g, cam, 1, (g) => { const p = showAt(t, 0.4, info.dur); g.fillStyle = alpha('#0b0b12', 0.85 * p); rr(g, E.W / 2 - 330, E.H * 0.12 - 50, 660, 100, 14); g.fill(); T(g, info.str || 'ОТДЕЛЬНАЯ ЛИГА', E.W / 2, E.H * 0.12, { size: 54, color: GOLD, a: p, spacing: 6 }); });
+    layer(g, cam, 1, (g) => { const p = showAt(t, 0.4, info.dur); g.fillStyle = alpha('#0b0b12', 0.85 * p); rr(g, E.W / 2 - 400, E.H * 0.17 - 50, 800, 100, 14); g.fill(); T(g, info.str || 'ОТДЕЛЬНАЯ ЛИГА', E.W / 2, E.H * 0.17, { size: 54, color: GOLD, a: p, spacing: 6 }); });
   } });
 tpl('fuggerei', 'Augsburg social housing (Fuggerei): rows of yellow houses with green shutters, a sign with the yearly rent (cue "rent"). params: rent (str), sub', {
   draw(g, t, info) {

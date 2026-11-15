@@ -20,7 +20,7 @@ open(f'{J}/richest.srt', 'w').write(''.join(f'{k + 1}\n{srt_t(a)} --> {srt_t(b)}
 # главы: титр главы стоит в тишине 2,4 с перед первым абзацем
 def tc(t): t = max(0, int(t)); return f'{t // 60}:{t % 60:02d}'
 NAMES = {'ХОЛОДНЫЙ СТАРТ': 'Каир, 1324: золото подешевело', 'КАК ИЗМЕРИТЬ БОГАТСТВО': 'Как измерить богатство', 'ПРАВИТЕЛИ: ОТДЕЛЬНАЯ ЛИГА': 'Правители: отдельная лига',
-         'ОТ СЕДЬМОГО ДО ЧЕТВЁРТОГО': '7–4 места', 'ТРОЕ НАВЕРХУ': 'Тройка лидеров', 'А СЕГОДНЯ?': 'А сегодня?', 'ВЕРДИКТ': 'Вердикт'}
+         'ОТ СЕДЬМОГО ДО ЧЕТВЁРТОГО': 'От седьмого до четвёртого', 'ТРОЕ НАВЕРХУ': 'Трое наверху', 'А СЕГОДНЯ?': 'А сегодня?', 'ВЕРДИКТ': 'Вердикт'}
 ch = [(0 if i == 0 else s['t'] - 2.4, NAMES.get(s['title'], s['title'].capitalize())) for i, s in enumerate(x for x in SEG if x['kind'] == 'chapter')]
 arch = json.load(open(f'{J}/archive.json'))['clips']
 caps = {}
@@ -28,8 +28,8 @@ for s in json.load(open(f'{P}/story/shots.json'))['shots']:
     if s['tpl'] == 'archive': caps.setdefault(s['params']['clip'], []).append(s['params'].get('caption') or '')
 NAME = {}
 def cap(c): return NAME.get(c['id']) or sorted(set(x for x in caps[c['id']] if x), key=len)[0]
-cred = [f"- {cap(c)}: {c['author']} — {c['source']}, {c['license']} — {c['page']}" for c in arch if c['id'] in caps]
-short = [f"{cap(c)} — {c['author']} ({c['license'].split('(')[0].strip()})" for c in arch if c['id'] in caps]
+cred = [f"- {cap(c)}: {c['author']} — Wikimedia Commons, {c['license']} — {c['page']}" for c in arch if c['id'] in caps]
+short = [(f"{cap(c)} — общественное достояние" if c['author'] == 'см. страницу файла' else f"{cap(c)} — {c['author']} ({c['license'].split('(')[0].strip()})") for c in arch if c['id'] in caps]
 open(f'{J}/CREDITS.md', 'w').write('# «Кто был самым богатым человеком в истории?» — изображения и лицензии\n\n' + '\n'.join(cred) +
     '\n\nАнимация, карты, схемы и графика — нарисованы в коде (2D-студия проекта). Музыка и звуковые эффекты сгенерированы локально.\n'
     'Голос диктора — ElevenLabs (eleven_v3, голос Todd).\n')

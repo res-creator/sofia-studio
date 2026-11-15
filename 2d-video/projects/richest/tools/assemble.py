@@ -22,8 +22,8 @@ for s in story['shots']:
     p = s['params']; c = clips[p['clip']]; x, y, w, h = RECT[p.get('aspect', '16:9')]
     d = s['end'] - s['start']; f = os.path.join(segdir, f"{s['id']}.mp4")
     src = os.path.join(ROOT, c['file'])
-    if not os.path.exists(f) and src.lower().endswith(('.jpg', '.jpeg', '.png')):   # фото: статично, целиком в окне
-        run('ffmpeg', '-y', '-v', 'error', '-loop', '1', '-t', f'{d + 0.1:.3f}', '-i', src, '-vf',
+    if not os.path.exists(f) and (p.get('still') or src.lower().endswith(('.jpg', '.jpeg', '.png'))):   # фото: статично, целиком в окне
+        run('ffmpeg', '-y', '-v', 'error', '-loop', '1', '-t', f'{d + 0.3:.3f}', '-i', src, '-vf',
             f'scale={w}:{h}:force_original_aspect_ratio=decrease,pad={w}:{h}:(ow-iw)/2:(oh-ih)/2:color=0x0a0c12,setsar=1,fps=24,format=yuv420p',
             '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '16', f)
     if not os.path.exists(f):
@@ -33,18 +33,30 @@ for s in story['shots']:
     segs.append((s['start'], s['end'], x, y, f))
 print(len(segs), 'archive inserts')
 
-# 3) наложение + звук
-args = ['ffmpeg', '-y', '-v', 'error', '-f', 'concat', '-safe', '0', '-i', lst]
-for a, b, x, y, f in segs: args += ['-itsoffset', f'{a:.3f}', '-i', f]
-mix = os.path.join(B, 'mix.wav'); args += ['-i', mix]
-fc, last = [], '0:v'
-for i, (a, b, x, y, f) in enumerate(segs):
-    fc.append(f"[{last}][{i + 1}:v]overlay={x}:{y}:eof_action=pass:enable='between(t,{a:.3f},{b:.3f})'[v{i}]"); last = f'v{i}'
+# 3) наложение (пачками по 20 вставок — ffmpeg не любит десятки входов разом) + звук
 final = os.path.join(OUT, os.environ.get('FINAL', 'richest_final_1080p.mp4'))
-args += ['-filter_complex', ';'.join(fc), '-map', f'[{last}]', '-map', f'{len(segs) + 1}:a', '-c:v', 'libx264', '-preset', 'medium',
-         '-crf', '20', '-maxrate', '4500k', '-bufsize', '9000k', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '320k', '-shortest',
-         '-movflags', '+faststart', final]
-run(*args)
+mix = os.path.join(B, 'mix.wav')
+src_args = ['-f', 'concat', '-safe', '0', '-i', lst]
+batches = [segs[i:i + 20] for i in range(0, len(segs), 20)] or [[]]
+prev = None
+for bi, batch in enumerate(batches):
+    last_batch = bi == len(batches) - 1
+    args = ['ffmpeg', '-y', '-v', 'error'] + (src_args if prev is None else ['-i', prev])
+    for a_, b_, x, y, f in batch: args += ['-itsoffset', f'{a_ - 0.09:.3f}', '-i', f]
+    if last_batch: args += ['-i', mix]
+    fc, lastv = [], '0:v'
+    for i, (a_, b_, x, y, f) in enumerate(batch):
+        fc.append(f"[{lastv}][{i + 1}:v]overlay={x}:{y}:eof_action=pass:enable='between(t,{a_:.3f},{b_:.3f})'[v{i}]"); lastv = f'v{i}'
+    out = final if last_batch else os.path.join(B, f'pass{bi}.mp4')
+    if fc: args += ['-filter_complex', ';'.join(fc), '-map', f'[{lastv}]']
+    else: args += ['-map', '0:v']
+    if last_batch:
+        args += ['-map', f'{len(batch) + 1}:a', '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-maxrate', '4500k', '-bufsize', '9000k',
+                 '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '320k', '-shortest', '-movflags', '+faststart', out]
+    else: args += ['-c:v', 'libx264', '-preset', 'veryfast', '-crf', '19', '-pix_fmt', 'yuv420p', out]
+    run(*args)
+    if prev and prev != final: os.remove(prev)
+    prev = out
 if os.environ.get('FINAL'): sys.exit(0)
 phone = os.path.join(OUT, 'richest_phone_720p.mp4')
 run('ffmpeg', '-y', '-v', 'error', '-i', final, '-vf', 'scale=1280:720', '-c:v', 'libx264', '-preset', 'medium', '-crf', '24', '-maxrate', '1500k',

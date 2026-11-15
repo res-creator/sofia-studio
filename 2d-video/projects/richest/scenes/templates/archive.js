@@ -20,7 +20,7 @@ tpl('archive', 'Archive clip window. params: clip (archive.json id), from (s), a
     if (!info.overlayOnly) {
       g.fillStyle = linGrad(g, 0, r.y, 0, r.y + r.h, ['#11141e', '#0a0c12']); g.fillRect(r.x, r.y, r.w, r.h);
       g.strokeStyle = alpha(ui.cream, 0.15); g.lineWidth = 2; g.strokeRect(r.x - 6, r.y - 6, r.w + 12, r.h + 12);
-      text(g, `АРХИВ: ${info.clip || '—'}${info.from != null ? ` @ ${info.from} с` : ''}`, E.W / 2, r.y + r.h / 2, { size: 38, color: alpha(ui.cream, 0.35), font: FONTS.ui, weight: 900, spacing: 3 });
+      
       FX.dust(g, t, { count: 30, color: '#ffffff', a: 0.1 });
     }
     plate(g, info.caption, showAt(t, 0.3, info.dur), { y: E.H - V(115, 220), x: r.x });
