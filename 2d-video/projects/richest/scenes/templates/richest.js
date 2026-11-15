@@ -90,7 +90,7 @@ tpl('fireRome', 'Rome at night: apartment blocks; one burns (cue "fire"); Crassu
     if (mode === 'build') layer(g, cam, 0.55, (g) => { const x = E.W * 0.55; for (let i = 0; i < 6; i++) seg(g, [[x - 20 + i * 64, gy], [x - 20 + i * 64, gy - 460]], 6, '#c9a46a'); for (let j = 0; j < 6; j++) seg(g, [[x - 30, gy - 70 - j * 70], [x + 320, gy - 70 - j * 70]], 5, '#c9a46a'); });
     layer(g, cam, 1, (g) => { g.fillStyle = '#2a1e1c'; g.fillRect(-E.W, gy, E.W * 3, E.H);
       if (mode === 'build') for (let i = 0; i < 5; i++) fig(g, 'worker', { x: E.W * (0.5 + i * 0.08), y: gy, s: 1.0, facing: i % 2 ? -1 : 1, pose: breathe(i % 2 ? POSES.reach : POSES.holdFront, t, 1.4, i), expr: 'sad' });
-      else { fig(g, 'crassus', { x: E.W * 0.28, y: gy, s: 1.25, facing: 1, pose: breathe(mode === 'deal' ? POSES.explain : POSES.stand, t, 1, 1), expr: mode === 'deal' ? 'smile' : 'neutral' });
+      else { fig(g, 'crassus', { x: E.W * 0.28, y: gy, s: 1.25, facing: 1, pose: breathe(mode === 'deal' ? POSES.explain : POSES.stand, t, 1, 1), expr: 'neutral' });
         fig(g, 'trader', { x: E.W * 0.42, y: gy, s: 1.2, facing: -1, pose: breathe(POSES.shrug, t, 1, 3), expr: 'sad' }); }
     });
     tagAt(g, t, info);
@@ -126,7 +126,10 @@ tpl('castle', 'Norman castle on a hill (Richmond): optional snowy wasteland with
     layer(g, cam, 0.45, (g) => { FX.hills(g, { seed: 9, y: gy - 160, amp: 90, color: info.waste ? '#b8c0cc' : '#3a3a48' }); const x = E.W * 0.62, y = gy - 230, c = info.waste ? '#5a5f6a' : '#1e1e2a';
       g.fillStyle = c; g.fillRect(x - 150, y - 160, 300, 160); g.fillRect(x - 60, y - 300, 120, 300); for (let i = 0; i < 6; i++) g.fillRect(x - 150 + i * 56, y - 190, 30, 30); for (let i = 0; i < 3; i++) g.fillRect(x - 60 + i * 45, y - 330, 28, 30); });
     layer(g, cam, 0.9, (g) => { g.fillStyle = info.waste ? '#dfe4ea' : '#2a2a34'; g.fillRect(-E.W, gy, E.W * 3, E.H);
-      if (info.waste) [0.1, 0.25, 0.4, 0.8].forEach((fx, i) => { const x = E.W * fx; poly(g, [[x - 60, gy], [x - 60, gy - 70], [x, gy - 120], [x + 60, gy - 70], [x + 60, gy]], '#6a5a4a'); g.fillStyle = '#2a2420'; g.fillRect(x - 14, gy - 50, 28, 50); }); });
+      if (info.waste) [0.1, 0.25, 0.4, 0.8].forEach((fx, i) => { const x = E.W * fx;   // сожжённые дома: обугленные стены без крыш, дым, кое-где огонь
+        poly(g, [[x - 60, gy], [x - 60, gy - 60], [x - 30, gy - 85], [x - 5, gy - 55], [x + 20, gy - 90], [x + 60, gy - 50], [x + 60, gy]], '#2a2420');
+        for (let k = 0; k < 5; k++) { const ph = (t * 0.25 + k / 5 + i * 0.13) % 1; g.save(); g.globalAlpha *= 0.45 * (1 - ph); g.fillStyle = '#4a4a50'; g.beginPath(); g.arc(x + Math.sin(ph * 5 + i) * 30, gy - 90 - ph * 380, 30 + ph * 70, 0, 7); g.fill(); g.restore(); }
+        if (i % 2 === 0) flames(g, x, gy - 10, 0.45, t, 30 + i); }); });
     tagAt(g, t, info);
   } });
 
@@ -221,14 +224,18 @@ tpl('libraryKid', 'A child reading by a library window (Carnegie library), warm 
   draw(g, t, info) {
     const cam = camOf(info, t, { move: 'push', amt: 0.35 }), gy = GY();
     layer(g, cam, 0.3, (g) => { sky(g, ['#2a2030', '#4a3a3a', '#6a5040']); for (let i = 0; i < 9; i++) { const x = E.W * (0.02 + i * 0.11); g.fillStyle = '#3a2a20'; g.fillRect(x, gy - 520, 140, 520); for (let k = 0; k < 6; k++) for (let b = 0; b < 6; b++) { g.fillStyle = ['#8a3a2a', '#3a5a7a', '#c8a050', '#4a6a3a'][(i + k + b) % 4]; g.fillRect(x + 10 + b * 21, gy - 500 + k * 84, 17, 70); } }
-      g.fillStyle = '#c8d8f0'; g.fillRect(E.W * 0.62, gy - 470, 260, 300); glow(g, E.W * 0.62 + 130, gy - 320, 300, '#ffe9b0', 0.35); });
+      { const wx = E.W * 0.62, wy = gy - 470; g.fillStyle = '#1a2a4a'; g.fillRect(wx, wy, 260, 300); g.fillStyle = '#e8e0c0'; g.beginPath(); g.arc(wx + 190, wy + 70, 26, 0, 7); g.fill();
+        for (let k = 0; k < 14; k++) { g.fillStyle = '#f0f0ff'; g.fillRect(wx + ((k * 73) % 250) + 4, wy + ((k * 41) % 280) + 6, 3, 3); }
+        g.fillStyle = '#3a2a20'; g.fillRect(wx - 12, wy - 12, 284, 14); g.fillRect(wx - 12, wy + 298, 284, 14); g.fillRect(wx - 12, wy, 14, 300); g.fillRect(wx + 258, wy, 14, 300); g.fillRect(wx + 123, wy, 14, 300); g.fillRect(wx, wy + 143, 260, 14); }
+      glow(g, E.W * 0.62 + 130, gy - 320, 300, '#ffe9b0', 0.2); });
     layer(g, cam, 1, (g) => { g.fillStyle = '#4a3020'; g.fillRect(-E.W, gy, E.W * 3, E.H); g.fillStyle = '#6a4428'; g.fillRect(E.W * 0.5, gy - 140, 420, 24);
       fig(g, 'kid', { x: E.W * 0.58, y: gy, s: 1.2, facing: 1, pose: breathe(POSES.sit, t, 0.6, 2), expr: 'smile' }); g.fillStyle = '#f0e6d0'; g.fillRect(E.W * 0.6, gy - 175, 70, 46); glow(g, E.W * 0.75, gy - 260, 200, '#ffd88a', 0.35); });
     tagAt(g, t, info);
   } });
 
 // ---------------------------------------------------------------- крупный текст под мысль диктора
-const PROPER = ['мекк', 'сахар', 'каир', 'мали', 'рим', 'красс', 'фуггер', 'рокфеллер', 'маск', 'алан', 'рыж', 'америк', 'англи', 'европ', 'безос', 'карнеги', 'вандербильт', 'спартак', 'акбар', 'хомстед', 'аугсбург', 'вильгельм', 'манхэттен', 'реформаци', 'форбс', 'статен', 'йоркшир', 'ричмонд', 'шотланди', 'джингеребер', 'мир осман', 'осман', 'али', 'хан', 'гюнтер', 'клеппер', 'стейнмец', 'грег', 'парфян', 'карр', 'аль-умари', 'шульц', 'хайдарабад', 'инди', 'нью-йорк', 'бюджет сша'];
+const NAMES = {"МЕККУ": "Мекку", "САХАРУ": "Сахару", "КАИРЕ": "Каире", "КАИР": "Каир", "МАЛИ": "Мали", "РИМА": "Рима", "РИМЕ": "Риме", "РИМ": "Рим", "КРАСС": "Красс", "КРАССА": "Красса", "ФУГГЕР": "Фуггер", "ФУГГЕРА": "Фуггера", "ФУГГЕРОВ": "Фуггеров", "РОКФЕЛЛЕР": "Рокфеллер", "РОКФЕЛЛЕРА": "Рокфеллера", "МАСК": "Маск", "МАСКА": "Маска", "АЛАН": "Алан", "АЛАНА": "Алана", "РЫЖИЙ": "Рыжий", "АНГЛИИ": "Англии", "АНГЛИЮ": "Англию", "ЕВРОПЫ": "Европы", "ЕВРОПЕ": "Европе", "БЕЗОС": "Безос", "КАРНЕГИ": "Карнеги", "СПАРТАКА": "Спартака", "АКБАР": "Акбар", "АКБАРА": "Акбара", "ХОМСТЕД": "Хомстед", "ХОМСТЕДЕ": "Хомстеде", "АУГСБУРГ": "Аугсбург", "ВИЛЬГЕЛЬМА": "Вильгельма", "ЗАВОЕВАТЕЛЯ": "Завоевателя", "МАНХЭТТЕН": "Манхэттен", "РЕФОРМАЦИИ": "Реформации", "ФОРБС": "Форбс", "СТАТЕН-АЙЛЕНД": "Статен-Айленд", "ЙОРКШИРА": "Йоркшира", "РИЧМОНДСКИЙ": "Ричмондский", "ШОТЛАНДИИ": "Шотландии", "ДЖИНГЕРЕБЕР": "Джингеребер", "ОСМАН": "Осман", "АЛИ": "Али", "ХАН": "Хан", "ГЮНТЕР": ":Гюнтер:", "КЛЕППЕР": "Клеппер", "СТЕЙНМЕЦ": "Стейнмец", "ГРЕГ": "Грег", "КАРРЫ": "Карры", "КАРРАХ": "Каррах", "АЛЬ-УМАРИ": "аль-Умари", "ШУЛЬЦ": "Шульц", "ХАЙДАРАБАД": "Хайдарабад", "ИНДИЯ": "Индия", "ИНДИИ": "Индии", "НЬЮ-ЙОРК": "Нью-Йорк", "ГИННЕССА": "Гиннесса", "ГИННЕСС": "Гиннесс", "ПЛУТАРХА": "Плутарха", "ПЛУТАРХ": "Плутарх", "ВСЕМИРНЫЙ": "Всемирный", "АВГУСТ": "Август", "АВГУСТА": "Августа", "МУСА": "Муса", "МУСЫ": "Мусы", "МАНСА": "Манса", "АСТОР": "Астор"};
+const KEEPUP = new Set(['США', 'МЛРД', 'МЛН', 'ТРЛН', 'ТЫС', 'XIX', 'XVI', 'XX', 'XXI', 'I', 'II', 'III', 'NARA', 'LOC']);
 // Слова появляются по одному ровно тогда, когда их произносят (times — секунды от начала шота). Всё влезает в кадр:
 // размер шрифта подбирается по ширине, максимум 2 строки. accent — индексы слов, выделенных золотом.
 tpl('phrase', 'Big kinetic phrase synced to the narration: words pop in at their spoken times. params: words [str], times [s], accent [i], bg (void|warm|dark), sub (small line under)', {
@@ -240,9 +247,16 @@ tpl('phrase', 'Big kinetic phrase synced to the narration: words pop in at their
     else voidBg(g, t, cam);
     const hand = info.hand !== false, acc = new Set(info.accent || []);
     // рукописный стиль: обычный регистр, имена с большой буквы
-    const caseW = (w, i) => { if (!hand) return w; if (/^[A-ZА-ЯЁ]{2,4}$/.test(w) || /\d/.test(w)) return w; const l = w.toLowerCase();
-      return (i === 0 || PROPER.some((p) => l.startsWith(p))) ? l.charAt(0).toUpperCase() + l.slice(1) : l; };
-    const W = (info.words || []).map(caseW), times = info.times || W.map((_, i) => i * 0.3);
+    const caseW = (w, i, all) => { if (!hand) return w;
+      const m = w.match(/^([«"(]*)(.*?)([».,!?…:;")]*)$/); const pre = m[1], core = m[2], post = m[3];
+      if (!core || KEEPUP.has(core) || /\d/.test(core) || !/[А-ЯЁA-Z]/.test(core)) return w;
+      let c = NAMES[core] || core.toLowerCase();
+      if (core === 'МИР' && all[i + 1] && all[i + 1].startsWith('ОСМАН')) c = 'Мир';
+      if (core === 'БАНК' && all[i - 1] === 'ВСЕМИРНЫЙ') c = 'банк';
+      const first = all.slice(0, i).every((x) => !/[А-ЯЁA-Za-zа-яё0-9]/.test(x));
+      if (first) c = c.charAt(0).toUpperCase() + c.slice(1);
+      return pre + c + post; };
+    const W = (info.words || []).map((w, i, all) => caseW(w, i, all)), times = info.times || W.map((_, i) => i * 0.3);
     let size = hand ? 128 : 120; const font = hand ? 'Caveat' : FONTS.ui, sp = hand ? 0 : 3;
     const wid = (s, z) => { g.save(); g.font = `${hand ? 700 : 900} ${z}px "${font}"`; const w = g.measureText(s).width + sp * s.length; g.restore(); return w; };
     const split = (z) => { const lines = [[]]; let lw = 0, maxW = E.W * 0.84;

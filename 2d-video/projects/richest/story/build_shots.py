@@ -84,12 +84,12 @@ try:
     from storyboard import KEYS
 except ImportError:
     KEYS = {}
-FILL = {'а', 'и', 'но', 'так', 'да', 'ну', 'вот', 'же', 'ведь', 'кстати', 'теперь', 'тем', 'более', 'что'}
+FILL = {'чем', 'а', 'и', 'но', 'так', 'да', 'ну', 'вот', 'же', 'ведь', 'кстати', 'теперь', 'тем', 'более', 'что'}
 NUMW = ('тысяч', 'миллион', 'миллиард', 'триллион', 'процент', 'сто', 'двест', 'трист', 'пятьс', 'девят', 'восем', 'семь', 'шест', 'пят', 'четыр', 'три', 'два', 'одн', 'полтор', 'десят', 'двадцат', 'сорок')
 ends = [i for i, w in enumerate(W) if re.search(r'[.!?…]»?$', w['word'])]
 sent_starts = [0] + [i + 1 for i in ends if i + 1 < len(W)]
 clause_starts = [i + 1 for i, w in enumerate(W[:-1]) if re.search(r'[,:;—]$', w['word']) or W[i + 1]['word'] in ('—',)]
-def phrase_at(i, t_end):
+def phrase_at(i, t_end, auto=False):
     """ключевые слова мысли, начинающейся со слова i (до конца предложения/шота)"""
     j = i; seq = []
     while j < len(W) and W[j]['start'] < t_end - 0.2:
@@ -97,7 +97,7 @@ def phrase_at(i, t_end):
         if re.search(r'[.!?…]»?$', W[j]['word']): break
         j += 1
     txt = ' '.join(W[k]['word'] for k in seq)
-    for pre, words in KEYS.items():
+    for pre, words in ({} if auto else KEYS).items():
         if norm(txt).startswith(norm(pre)) or (len(norm(txt)) >= 6 and norm(pre).startswith(norm(txt))): return words, seq
     words = [re.sub(r'[«»"().,!?…:;]', '', W[k]['word']) for k in seq]
     idx = [k for k, w in zip(seq, words) if w and w != '—']
@@ -107,6 +107,7 @@ def phrase_at(i, t_end):
         cut = next((n for n, k in enumerate(idx[:7]) if n >= 2 and re.search(r'[,:;—]$', W[k]['word'])), None)
         idx = idx[:(cut + 1) if cut else 6]
     return None, idx
+TAILW = {'за', 'эти', 'это', 'он', 'она', 'что', 'с', 'со', 'в', 'во', 'на', 'при', 'его', 'её', 'их', 'и', 'а', 'но', 'самой', 'самым', 'одним', 'одной', 'как', 'же', 'не', 'по', 'к', 'от', 'до', 'из', 'у', 'о', 'об', 'для', 'который', 'которая', 'которые', 'чем', 'то', 'тот', 'та', 'так', 'ещё', 'уже'}
 def key_of(word): return re.sub(r'[«»"().,!?…:;]', '', word).upper()
 out_raw = []
 MIN_FIRST, MIN_LAST = 1.3, 1.1
@@ -131,11 +132,30 @@ for sh in raw:
         if q == 0: out_raw.append({**sh, 'end': round(cuts[1], 3)}); continue
         i0 = next(i for i, w in enumerate(W) if abs(w['start'] - cuts[q]) < 0.005)
         fixed, idx = phrase_at(i0, cuts[q + 1])
+        prevw = out_raw[-1]['sp']['params'].get('words') if out_raw and out_raw[-1]['sp']['tpl'] == 'phrase' else None
+        if fixed and [w.replace('*', '') for w in fixed] == prevw: fixed, idx = phrase_at(i0, cuts[q + 1], auto=True)
         if fixed:
-            words = [w.lstrip('*') for w in fixed]; fixed_acc = [n for n, w in enumerate(fixed) if w.startswith('*')]
+            words = [w.replace('*', '') for w in fixed]; fixed_acc = [n for n, w in enumerate(fixed) if '*' in w]
             span = max(0.6, min(cuts[q + 1] - cuts[q] - 0.6, (W[idx[-1]]['start'] - cuts[q]) if idx else 1.2))
             times = [round(span * n / max(1, len(words) - 1) * 0.8, 2) for n in range(len(words))]
-        else: words = [key_of(W[k]['word']) for k in idx]; times = [round(W[k]['start'] - cuts[q], 2) for k in idx]
+            # слово карточки появляется, когда диктор его произносит (если нашли в речи)
+            lo = cuts[q]
+            for n, w in enumerate(words):
+                k0 = norm(re.sub(r'[^\wА-Яа-яЁё-]', '', w))[:4]
+                if len(k0) < 3: continue
+                hit = next((W[k]['start'] for k in range(i0, len(W)) if W[k]['start'] >= lo - 0.05 and W[k]['start'] < cuts[q + 1] - 0.3 and norm(W[k]['word']).startswith(k0)), None)
+                if hit is not None: times[n] = round(hit - cuts[q], 2); lo = hit
+            for n in range(1, len(times)):      # монотонно и не позже конца кадра
+                times[n] = max(times[n], times[n - 1])
+            times = [min(t, round(cuts[q + 1] - cuts[q] - 0.7, 2)) for t in times]
+            if times and times[0] > 0.5: times[0] = 0.5
+        else:
+            words = [key_of(W[k]['word']) for k in idx]; times = [round(W[k]['start'] - cuts[q], 2) for k in idx]
+            ended = idx and re.search(r'[.!?…]»?$', W[idx[-1]]['word'])
+            if not ended:     # мысль обрывается кадром: убрать «хвостовые» служебные слова и поставить многоточие
+                while len(words) > 2 and norm(words[-1]) in TAILW: words.pop(); times.pop()
+                words[-1] = words[-1].rstrip(',') + '…'
+            if words == prevw: out_raw[-1]['end'] = round(cuts[q + 1], 3); continue
         if not words: out_raw[-1]['end'] = round(cuts[q + 1], 3); continue
         acc = fixed_acc if fixed else [n for n, w in enumerate(words) if re.search(r'\d', w) or any(norm(w).startswith(x) for x in NUMW) or (n > 0 and w[:1].isupper() and len(w) > 3 and fixed is None and W[idx[n]]['word'][:1].isupper())]
         bg = ('void', 'dark', 'warm')[len(out_raw) % 3]
