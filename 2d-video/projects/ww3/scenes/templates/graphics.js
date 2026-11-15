@@ -77,7 +77,7 @@ tpl('statCard', 'One or two short facts as big numbers with labels (e.g. «> 99 
     const cam = camOf(info, t, { move: 'push', z: 1, amt: 0.6 }); if (info.bg === 'space') { space(g, t, cam, { R: V(700, 600), cy: E.H * 1.25, cables: 1, lights: 0.8 }); veil(g, '#04060c', 0.3); } else voidBg(g, t, cam);
     const it = info.items || [{ v: '12 000', l: 'ПОДПИСЬ' }], n = it.length;
     layer(g, cam, 1, (g) => it.forEach((o, i) => { const a = popAt(t, cue(info, o.cue || 'i' + (i + 1), 0.1 + i * 0.3)), x = E.W * (n === 1 ? 0.5 : V(0.2 + (0.6 * i) / (n - 1), 0.5)), y = E.H * (n === 1 ? 0.45 : V(0.45, 0.25 + i * 0.25));
-      if (a <= 0) return; bigNum(g, o.v, x, y, { s: a, size: V(n > 2 ? 110 : 140, 110), sub: o.l, color: o.red ? S().ui.accent : S().ui.gold }); }));
+      if (a <= 0) return; const L = String(o.v).length, mw = n === 1 ? E.W * 0.8 : E.W * 0.34; bigNum(g, o.v, x, y, { s: a, size: Math.min(V(n > 2 ? 110 : 140, 110), mw / (0.62 * L)), sub: o.l, color: o.red ? S().ui.accent : S().ui.gold }); }));
     source(g, info.source, showAt(t, 0.6, info.dur));
   } });
 
@@ -104,7 +104,7 @@ tpl('mapShot', 'Flat world/regional map. params: view {lon0,lon1,lat0,lat1}, hl 
       (info.arcs || []).forEach((a, i) => { const A = P(...(SPOTS[a.from] || a.from)), B = P(...(SPOTS[a.to] || a.to)); arcLine(g, A, B, k(a.cue || 'a' + (i + 1), 0.2 + i * 0.1), { color: a.color || S().ui.gold, lift: a.lift ?? 0.2 }); });
       (info.marks || []).forEach((m, i) => { const p = P(...(SPOTS[m.at] || m.at)); marker(g, p[0], p[1], t, { a: showAt(t, cue(info, m.cue || 'm' + (i + 1), 0.15 + i * 0.12), info.dur), label: m.label, color: m.color || S().ui.accent, side: m.side ?? 1 }); });
     });
-    if (info.caption) T(g, info.caption.str, E.W / 2, E.H - V(60, 300), { size: V(40, 44), color: S().ui.gold, a: showAt(t, cue(info, info.caption.cue || 'caption', 0.4), info.dur) });
+    if (info.caption) T(g, info.caption.str, E.W / 2, E.H - V(122, 300), { size: V(40, 44), color: S().ui.gold, a: showAt(t, cue(info, info.caption.cue || 'caption', 0.4), info.dur) });
     if (info.tag) plate(g, info.tag, showAt(t, 0.3, info.dur)); source(g, info.source, showAt(t, 0.6, info.dur));
   } });
 

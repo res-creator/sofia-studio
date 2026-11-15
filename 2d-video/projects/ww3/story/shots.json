@@ -1,37 +1,145 @@
 {
- "title": "ТЕСТ ШАБЛОНОВ",
- "duration": 309.0,
+ "title": "Что будет, если начнётся Третья мировая",
+ "duration": 1523.72,
  "shots": [
   {
-   "id": "t001",
+   "id": "s001",
    "start": 0.0,
-   "end": 3.0,
-   "line": "",
-   "scene": "establish",
-   "tpl": "establish",
-   "params": {
-    "set": "station"
-   }
-  },
-  {
-   "id": "t002",
-   "start": 3.0,
-   "end": 6.0,
-   "line": "",
+   "end": 1.38,
+   "line": "Ночь. Бункер под",
    "scene": "establish",
    "tpl": "establish",
    "params": {
     "set": "station",
-    "setOpts": {
-     "dawn": true
+    "tag": {
+     "str": "ПОДМОСКОВЬЕ · НОЧЬ",
+     "kind": "label"
+    },
+    "cam": {
+     "move": "push",
+     "amt": 0.15
     }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
    }
   },
   {
-   "id": "t003",
-   "start": 6.0,
-   "end": 9.0,
-   "line": "",
+   "id": "s002",
+   "start": 1.38,
+   "end": 2.98,
+   "line": "Москвой. Компьютер пишет",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "pose": "sit",
+    "expr": "neutral",
+    "z": 1.0
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s003",
+   "start": 2.98,
+   "end": 6.2,
+   "line": "одно слово: «Старт». Это двадцать",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "alarm": 1,
+    "banner": 1,
+    "arcs": 1,
+    "pose": "desk",
+    "expr": "shocked",
+    "z": 1.5
+   },
+   "sfx": [
+    {
+     "at": 0.1,
+     "name": "buzz",
+     "gain": -16
+    }
+   ],
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s004",
+   "start": 6.2,
+   "end": 8.62,
+   "line": "шестое сентября тысяча девятьсот восемьдесят третьего",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "single": "26.09.1983",
+    "note": "СЕРПУХОВ-15"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s005",
+   "start": 8.62,
+   "end": 11.04,
+   "line": "года. Потом ещё",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "alarm": 1,
+    "banner": 1,
+    "arcs": 1,
+    "pose": "stand",
+    "expr": "worried",
+    "z": 1.2
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s006",
+   "start": 11.04,
+   "end": 13.34,
+   "line": "раз. И ещё.",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "alarm": 1,
+    "banner": 1,
+    "arcs": 2,
+    "pose": "stand",
+    "expr": "shocked",
+    "z": 1.6
+   },
+   "sfx": [
+    {
+     "at": 0.1,
+     "name": "buzz",
+     "gain": -16
+    }
+   ],
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s007",
+   "start": 13.34,
+   "end": 14.94,
+   "line": "Компьютер показывает: пять американских",
    "scene": "petrovDesk",
    "tpl": "petrovDesk",
    "params": {
@@ -39,603 +147,376 @@
     "banner": 1,
     "arcs": 5,
     "pose": "stand",
-    "expr": "shocked"
-   }
-  },
-  {
-   "id": "t004",
-   "start": 9.0,
-   "end": 12.0,
-   "line": "",
-   "scene": "petrovDesk",
-   "tpl": "petrovDesk",
-   "params": {
-    "z": 1.7,
-    "pose": "mic",
-    "alarm": 1,
-    "banner": 1,
-    "expr": "determined"
-   }
-  },
-  {
-   "id": "t005",
-   "start": 12.0,
-   "end": 15.0,
-   "line": "",
-   "scene": "petrovDesk",
-   "tpl": "petrovDesk",
-   "params": {
-    "empty": true,
-    "z": 1.3
-   }
-  },
-  {
-   "id": "t006",
-   "start": 15.0,
-   "end": 18.0,
-   "line": "",
-   "scene": "petrovDesk",
-   "tpl": "petrovDesk",
-   "params": {
-    "ghosts": [
-     "arkhipov",
-     "duty",
-     "duty",
-     "pilot"
-    ],
-    "banner": 1
+    "expr": "shocked",
+    "z": 1.0
    },
-   "cues": {
-    "ghosts": 0.1
+   "sfx": [
+    {
+     "at": 0.1,
+     "name": "buzz",
+     "gain": -16
+    }
+   ],
+   "amb": {
+    "name": "hum",
+    "gain": -26
    }
   },
   {
-   "id": "t007",
-   "start": 18.0,
-   "end": 21.0,
-   "line": "",
+   "id": "s008",
+   "start": 14.94,
+   "end": 18.92,
+   "line": "ракет летят к Советскому Союзу. У дежурного",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "view": {
+     "lon0": -140,
+     "lon1": 60,
+     "lat0": 80,
+     "lat1": 20
+    },
+    "arcs": [
+     {
+      "from": [
+       -100,
+       45
+      ],
+      "to": [
+       40,
+       56
+      ]
+     }
+    ],
+    "caption": {
+     "str": "5 РАКЕТ — ПО ДАННЫМ КОМПЬЮТЕРА"
+    }
+   }
+  },
+  {
+   "id": "s009",
+   "start": 18.92,
+   "end": 20.26,
+   "line": "офицера, Станислава",
    "scene": "bigHead",
    "tpl": "bigHead",
    "params": {
     "who": "petrov",
     "bg": "control",
-    "expr": "thinking",
-    "alarm": 1
+    "expr": "worried",
+    "alarm": 1,
+    "rings": true
    }
   },
   {
-   "id": "t008",
-   "start": 21.0,
-   "end": 24.0,
-   "line": "",
-   "scene": "bigHead",
-   "tpl": "bigHead",
+   "id": "s010",
+   "start": 20.26,
+   "end": 21.86,
+   "line": "Петрова, есть несколько",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
    "params": {
-    "who": "arkhipov",
-    "bg": "sub",
-    "expr": "determined",
-    "side": -1
+    "alarm": 1,
+    "banner": 1,
+    "arcs": 5,
+    "pose": "phone",
+    "expr": "thinking",
+    "z": 1.3,
+    "nameplate": {
+     "name": "СТАНИСЛАВ ПЕТРОВ",
+     "role": "ДЕЖУРНЫЙ ОФИЦЕР"
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
    }
   },
   {
-   "id": "t009",
-   "start": 24.0,
-   "end": 27.0,
-   "line": "",
+   "id": "s011",
+   "start": 21.86,
+   "end": 23.62,
+   "line": "минут.",
+   "scene": "timer",
+   "tpl": "timer",
+   "params": {
+    "from": "00:00",
+    "to": "05:00",
+    "label": "НА РЕШЕНИЕ — МИНУТЫ"
+   }
+  },
+  {
+   "id": "s012",
+   "start": 23.62,
+   "end": 26.25,
+   "line": "Доложить о нападении — значит, возможно,",
    "scene": "bigHead",
    "tpl": "bigHead",
    "params": {
-    "who": "sci",
-    "bg": "lab",
-    "expr": "thinking",
+    "who": "petrov",
+    "bg": "control",
+    "expr": "shocked",
+    "alarm": 1,
     "side": 1
    }
   },
   {
-   "id": "t010",
-   "start": 27.0,
-   "end": 30.0,
-   "line": "",
+   "id": "s013",
+   "start": 26.25,
+   "end": 28.88,
+   "line": "начать войну. Он решает:",
    "scene": "bigHead",
    "tpl": "bigHead",
    "params": {
-    "who": "tramgirl",
-    "bg": "tram",
-    "expr": "determined"
+    "who": "petrov",
+    "bg": "control",
+    "expr": "shocked",
+    "alarm": 1,
+    "side": 1,
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
    }
   },
   {
-   "id": "t011",
-   "start": 30.0,
-   "end": 33.0,
-   "line": "",
+   "id": "s014",
+   "start": 28.88,
+   "end": 30.72,
+   "line": "это ошибка.",
    "scene": "bigHead",
    "tpl": "bigHead",
    "params": {
-    "who": "chief",
-    "bg": "atoll",
-    "expr": "sad"
+    "who": "petrov",
+    "bg": "control",
+    "expr": "determined",
+    "alarm": 1,
+    "rings": true
    }
   },
   {
-   "id": "t012",
-   "start": 33.0,
-   "end": 36.0,
-   "line": "",
-   "scene": "bigHead",
-   "tpl": "bigHead",
+   "id": "s015",
+   "start": 30.72,
+   "end": 32.74,
+   "line": "И докладывает: ложное срабатывание.",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
    "params": {
-    "who": "adviser",
-    "bg": "bedroom",
-    "expr": "shocked"
-   }
-  },
-  {
-   "id": "t013",
-   "start": 36.0,
-   "end": 39.0,
-   "line": "",
-   "scene": "subCouncil",
-   "tpl": "subCouncil",
-   "params": {
-    "heat": 0.8
-   }
-  },
-  {
-   "id": "t014",
-   "start": 39.0,
-   "end": 42.0,
-   "line": "",
-   "scene": "subCouncil",
-   "tpl": "subCouncil",
-   "params": {
-    "focus": "arkhipov",
-    "heat": 0.8
-   }
-  },
-  {
-   "id": "t015",
-   "start": 42.0,
-   "end": 45.0,
-   "line": "",
-   "scene": "subOutside",
-   "tpl": "subOutside",
-   "params": {
-    "ships": 3
-   }
-  },
-  {
-   "id": "t016",
-   "start": 45.0,
-   "end": 48.0,
-   "line": "",
-   "scene": "subOutside",
-   "tpl": "subOutside",
-   "params": {
-    "rise": true
+    "pose": "phone",
+    "alarm": 1,
+    "banner": 0,
+    "expr": "determined",
+    "z": 1.4,
+    "lift": 1
    },
-   "cues": {
-    "rise": 0.0
+   "amb": {
+    "name": "hum",
+    "gain": -26
    }
   },
   {
-   "id": "t017",
-   "start": 48.0,
-   "end": 51.0,
-   "line": "",
-   "scene": "k19",
-   "tpl": "k19",
+   "id": "s016",
+   "start": 32.74,
+   "end": 34.76,
+   "line": "Он оказался",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "pose": "phone",
+    "alarm": 1,
+    "banner": 0,
+    "expr": "determined",
+    "z": 1.4,
+    "lift": 1,
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s017",
+   "start": 34.76,
+   "end": 36.36,
+   "line": "прав. Это было",
+   "scene": "sunGlint",
+   "tpl": "sunGlint",
    "params": {}
   },
   {
-   "id": "t018",
-   "start": 51.0,
-   "end": 54.0,
-   "line": "",
+   "id": "s018",
+   "start": 36.36,
+   "end": 38.3,
+   "line": "солнце, отражённое от облаков.",
    "scene": "establish",
    "tpl": "establish",
    "params": {
-    "set": "sub",
-    "setOpts": {
-     "heat": 0.9,
-     "thermo": 50
+    "set": "space",
+    "cam": {
+     "move": "pull"
     }
    }
   },
   {
-   "id": "t019",
-   "start": 54.0,
-   "end": 57.0,
-   "line": "",
-   "scene": "cockpitCrew",
-   "tpl": "cockpitCrew",
+   "id": "s019",
+   "start": 38.3,
+   "end": 40.24,
+   "line": "На начало",
+   "scene": "establish",
+   "tpl": "establish",
    "params": {
-    "warn": 1
-   }
-  },
-  {
-   "id": "t020",
-   "start": 57.0,
-   "end": 60.0,
-   "line": "",
-   "scene": "cockpitCrew",
-   "tpl": "cockpitCrew",
-   "params": {
-    "hatch": true
-   },
-   "cues": {
-    "hatch": 0.1
-   }
-  },
-  {
-   "id": "t021",
-   "start": 60.0,
-   "end": 63.0,
-   "line": "",
-   "scene": "cockpitCrew",
-   "tpl": "cockpitCrew",
-   "params": {
-    "ground": true
-   }
-  },
-  {
-   "id": "t022",
-   "start": 63.0,
-   "end": 66.0,
-   "line": "",
-   "scene": "bomberNight",
-   "tpl": "bomberNight",
-   "params": {
-    "tanker": true,
-    "leak": true
-   }
-  },
-  {
-   "id": "t023",
-   "start": 66.0,
-   "end": 69.0,
-   "line": "",
-   "scene": "bomberNight",
-   "tpl": "bomberNight",
-   "params": {
-    "breakup": true,
-    "chutes": 4
-   },
-   "cues": {
-    "break": 0.05
-   }
-  },
-  {
-   "id": "t024",
-   "start": 69.0,
-   "end": 72.0,
-   "line": "",
-   "scene": "goldsboroField",
-   "tpl": "goldsboroField",
-   "params": {},
-   "cues": {
-    "tree": 0.0
-   }
-  },
-  {
-   "id": "t025",
-   "start": 72.0,
-   "end": 75.0,
-   "line": "",
-   "scene": "goldsboroField",
-   "tpl": "goldsboroField",
-   "params": {
-    "tree": false,
-    "swamp": true
-   }
-  },
-  {
-   "id": "t026",
-   "start": 75.0,
-   "end": 78.0,
-   "line": "",
-   "scene": "kitchenNews",
-   "tpl": "kitchenNews",
-   "params": {
-    "tv": {
-     "head": "ЗЕМЛЕТРЯСЕНИЕ У ТАЙВАНЯ"
+    "set": "space",
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
     }
    }
   },
   {
-   "id": "t027",
-   "start": 78.0,
-   "end": 81.0,
-   "line": "",
-   "scene": "kitchenNews",
-   "tpl": "kitchenNews",
+   "id": "s020",
+   "start": 40.24,
+   "end": 45.6,
+   "line": "две тысячи двадцать шестого года в мире около двенадцати тысяч ядерных боеголовок.",
+   "scene": "bigCounter",
+   "tpl": "bigCounter",
    "params": {
-    "who": "petrov",
-    "pose": "sit",
-    "tv": {
-     "head": "1998"
+    "from": 0,
+    "to": 12187,
+    "unit": "ЯДЕРНЫХ БОЕГОЛОВОК",
+    "bg": "globe",
+    "source": "SIPRI, январь 2026"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "counter",
+     "gain": -18
+    }
+   ]
+  },
+  {
+   "id": "s021",
+   "start": 45.6,
+   "end": 47.4,
+   "line": "Меньше, чем в восьмидесятых.",
+   "scene": "bigCounter",
+   "tpl": "bigCounter",
+   "params": {
+    "from": 70300,
+    "to": 12187,
+    "prefix": "≈ ",
+    "unit": "БОЕГОЛОВОК",
+    "years": {
+     "from": "1986",
+     "to": "2026"
+    },
+    "source": "SIPRI"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "counter",
+     "gain": -18
+    }
+   ]
+  },
+  {
+   "id": "s022",
+   "start": 47.4,
+   "end": 49.6,
+   "line": "Но достаточно, чтобы изменить жизнь",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "lights": 1,
+    "spin": 0.02
+   }
+  },
+  {
+   "id": "s023",
+   "start": 49.6,
+   "end": 51.8,
+   "line": "на всей планете. Так что",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "lights": 1,
+    "spin": 0.02,
+    "cam": {
+     "move": "pull",
+     "z": 1.05
     }
    }
   },
   {
-   "id": "t028",
-   "start": 81.0,
-   "end": 84.0,
-   "line": "",
-   "scene": "phoneInsert",
-   "tpl": "phoneInsert",
+   "id": "s024",
+   "start": 51.8,
+   "end": 53.4,
+   "line": "будет, если однажды рядом",
+   "scene": "chapterTitle",
+   "tpl": "chapterTitle",
    "params": {
-    "screen": "message"
-   }
-  },
-  {
-   "id": "t029",
-   "start": 84.0,
-   "end": 87.0,
-   "line": "",
-   "scene": "phoneInsert",
-   "tpl": "phoneInsert",
-   "params": {
-    "screen": "subscribe"
+    "sub": "ЧТО БУДЕТ, ЕСЛИ НАЧНЁТСЯ",
+    "str": "ТРЕТЬЯ МИРОВАЯ",
+    "bg": "space"
    },
-   "cues": {
-    "press": 0.3
-   }
+   "sfx": [
+    {
+     "at": 0.0,
+     "name": "whoosh",
+     "gain": -12
+    }
+   ]
   },
   {
-   "id": "t030",
-   "start": 87.0,
-   "end": 90.0,
-   "line": "",
-   "scene": "bedroomCall",
-   "tpl": "bedroomCall",
-   "params": {}
-  },
-  {
-   "id": "t031",
-   "start": 90.0,
-   "end": 93.0,
-   "line": "",
-   "scene": "noradHall",
-   "tpl": "noradHall",
-   "params": {
-    "screen": "attack",
-    "alarm": 1,
-    "second": true
-   }
-  },
-  {
-   "id": "t032",
-   "start": 93.0,
-   "end": 96.0,
-   "line": "",
-   "scene": "noradHall",
-   "tpl": "noradHall",
-   "params": {
-    "screen": "digits",
-    "digits": [
-     [
-      0,
-      "000"
-     ],
-     [
-      0.2,
-      "002"
-     ]
-    ],
-    "alarm": 1
-   }
-  },
-  {
-   "id": "t033",
-   "start": 96.0,
-   "end": 99.0,
-   "line": "",
-   "scene": "noradHall",
-   "tpl": "noradHall",
-   "params": {
-    "screen": "santa",
-    "shoup": true
-   }
-  },
-  {
-   "id": "t034",
-   "start": 99.0,
-   "end": 102.0,
-   "line": "",
-   "scene": "noradHall",
-   "tpl": "noradHall",
-   "params": {
-    "screen": "radar",
-    "blip": true
-   }
-  },
-  {
-   "id": "t035",
-   "start": 102.0,
-   "end": 105.0,
-   "line": "",
-   "scene": "santaCall",
-   "tpl": "santaCall",
-   "params": {}
-  },
-  {
-   "id": "t036",
-   "start": 105.0,
-   "end": 108.0,
-   "line": "",
-   "scene": "bankQueue",
-   "tpl": "bankQueue",
-   "params": {}
-  },
-  {
-   "id": "t037",
-   "start": 108.0,
-   "end": 111.0,
-   "line": "",
-   "scene": "portScene",
-   "tpl": "portScene",
-   "params": {
-    "truck": true
-   }
-  },
-  {
-   "id": "t038",
-   "start": 111.0,
-   "end": 114.0,
-   "line": "",
-   "scene": "portScene",
-   "tpl": "portScene",
-   "params": {
-    "stopped": 1,
-    "nz": true
-   }
-  },
-  {
-   "id": "t039",
-   "start": 114.0,
-   "end": 117.0,
-   "line": "",
-   "scene": "fieldScene",
-   "tpl": "fieldScene",
-   "params": {}
-  },
-  {
-   "id": "t040",
-   "start": 117.0,
-   "end": 120.0,
-   "line": "",
-   "scene": "fieldScene",
-   "tpl": "fieldScene",
-   "params": {
-    "grey": 1,
-    "frost": 1
-   }
-  },
-  {
-   "id": "t041",
-   "start": 120.0,
-   "end": 123.0,
-   "line": "",
-   "scene": "tramRide",
-   "tpl": "tramRide",
-   "params": {}
-  },
-  {
-   "id": "t042",
-   "start": 123.0,
-   "end": 126.0,
-   "line": "",
-   "scene": "tramRide",
-   "tpl": "tramRide",
-   "params": {
-    "closeup": true
-   }
-  },
-  {
-   "id": "t043",
-   "start": 126.0,
-   "end": 129.0,
-   "line": "",
-   "scene": "tramRide",
-   "tpl": "tramRide",
-   "params": {
-    "today": true,
-    "flowers": 1
-   }
-  },
-  {
-   "id": "t044",
-   "start": 129.0,
-   "end": 132.0,
-   "line": "",
-   "scene": "oleanderBloom",
-   "tpl": "oleanderBloom",
-   "params": {},
-   "cues": {
-    "bloom": 0.2
-   }
-  },
-  {
-   "id": "t045",
-   "start": 132.0,
-   "end": 135.0,
-   "line": "",
-   "scene": "atollGather",
-   "tpl": "atollGather",
-   "params": {}
-  },
-  {
-   "id": "t046",
-   "start": 135.0,
-   "end": 138.0,
-   "line": "",
-   "scene": "atollGather",
-   "tpl": "atollGather",
-   "params": {
-    "focus": "talk"
-   }
-  },
-  {
-   "id": "t047",
-   "start": 138.0,
-   "end": 141.0,
-   "line": "",
-   "scene": "atollBoats",
-   "tpl": "atollBoats",
-   "params": {}
-  },
-  {
-   "id": "t048",
-   "start": 141.0,
-   "end": 144.0,
-   "line": "",
-   "scene": "atollBoats",
-   "tpl": "atollBoats",
+   "id": "s025",
+   "start": 53.4,
+   "end": 56.08,
+   "line": "не окажется своего Петрова? Мы пройдём",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
    "params": {
     "empty": true,
-    "boats": false
-   }
-  },
-  {
-   "id": "t049",
-   "start": 144.0,
-   "end": 147.0,
-   "line": "",
-   "scene": "reef",
-   "tpl": "reef",
-   "params": {}
-  },
-  {
-   "id": "t050",
-   "start": 147.0,
-   "end": 150.0,
-   "line": "",
-   "scene": "seabedCable",
-   "tpl": "seabedCable",
-   "params": {
-    "hose": true
+    "z": 1.3
    },
-   "cues": {
-    "hose": 0.1
+   "amb": {
+    "name": "hum",
+    "gain": -26
    }
   },
   {
-   "id": "t051",
-   "start": 150.0,
-   "end": 153.0,
-   "line": "",
-   "scene": "deadForest",
-   "tpl": "deadForest",
+   "id": "s026",
+   "start": 56.08,
+   "end": 62.52,
+   "line": "по часам: первый час, первые сутки, первый месяц, год, десять лет. Без страшилок",
+   "scene": "hoursStrip",
+   "tpl": "hoursStrip",
    "params": {
-    "animals": true
+    "from": 0,
+    "to": 4,
+    "bg": "space"
    }
   },
   {
-   "id": "t052",
-   "start": 153.0,
-   "end": 156.0,
-   "line": "",
+   "id": "s027",
+   "start": 62.52,
+   "end": 64.36,
+   "line": "и без политики.",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "study"
+   }
+  },
+  {
+   "id": "s028",
+   "start": 64.36,
+   "end": 66.36,
+   "line": "Только то, что посчитали учёные,",
    "scene": "scientists",
    "tpl": "scientists",
    "params": {
@@ -644,83 +525,738 @@
      "fall",
      "spectrum"
     ]
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
    }
   },
   {
-   "id": "t053",
-   "start": 156.0,
-   "end": 159.0,
-   "line": "",
-   "scene": "scientists",
-   "tpl": "scientists",
+   "id": "s029",
+   "start": 66.36,
+   "end": 69.68,
+   "line": "и то, что уже случалось в истории. Мы узнаем,",
+   "scene": "archive",
+   "tpl": "archive",
    "params": {
-    "mode": "empty"
+    "clip": "crossroads_1946",
+    "from": 400,
+    "caption": "ИСТОРИЯ: 1946",
+    "credit": "U.S. Army Signal Corps · NARA",
+    "aspect": "4:3"
    }
   },
   {
-   "id": "t054",
-   "start": 159.0,
-   "end": 162.0,
-   "line": "",
-   "scene": "arcticRocket",
-   "tpl": "arcticRocket",
-   "params": {},
-   "cues": {
-    "launch": 0
-   }
-  },
-  {
-   "id": "t055",
-   "start": 162.0,
-   "end": 165.0,
-   "line": "",
-   "scene": "hotline",
-   "tpl": "hotline",
-   "params": {},
-   "cues": {
-    "print": 0
-   }
-  },
-  {
-   "id": "t056",
-   "start": 165.0,
-   "end": 168.0,
-   "line": "",
-   "scene": "cityPhone",
-   "tpl": "cityPhone",
+   "id": "s030",
+   "start": 69.68,
+   "end": 73.42,
+   "line": "почему связь между континентами лежит на дне.",
+   "scene": "seabedCable",
+   "tpl": "seabedCable",
    "params": {}
   },
   {
-   "id": "t057",
-   "start": 168.0,
-   "end": 171.0,
-   "line": "",
-   "scene": "establish",
-   "tpl": "establish",
+   "id": "s031",
+   "start": 73.42,
+   "end": 75.98,
+   "line": "И толщиной она с садовый шланг.",
+   "scene": "cableVsHose",
+   "tpl": "cableVsHose",
+   "params": {}
+  },
+  {
+   "id": "s032",
+   "start": 75.98,
+   "end": 79.08,
+   "line": "Почему голод может оказаться страшнее взрывов.",
+   "scene": "fieldScene",
+   "tpl": "fieldScene",
    "params": {
-    "set": "lab",
-    "setOpts": {}
+    "grey": "cue"
+   },
+   "cues": {
+    "grey": 0.3
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
    }
   },
   {
-   "id": "t058",
-   "start": 171.0,
-   "end": 174.0,
-   "line": "",
-   "scene": "establish",
-   "tpl": "establish",
+   "id": "s033",
+   "start": 79.08,
+   "end": 81.09,
+   "line": "И какая страна, про которую мы уже",
+   "scene": "globeShot",
+   "tpl": "globeShot",
    "params": {
-    "set": "city",
-    "setOpts": {
-     "rain": true
+    "lat0": 60,
+    "lon0": -20,
+    "hl": {
+     "is": 1
+    }
+   },
+   "cues": {
+    "hl": 0.5
+   }
+  },
+  {
+   "id": "s034",
+   "start": 81.09,
+   "end": 83.1,
+   "line": "снимали фильм, по расчётам учёных,",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "lat0": 60,
+    "lon0": -20,
+    "hl": {
+     "is": 1
+    },
+    "cam": {
+     "move": "push",
+     "z": 1.05
+    }
+   },
+   "cues": {
+    "hl": -20
+   }
+  },
+  {
+   "id": "s035",
+   "start": 83.1,
+   "end": 88.28,
+   "line": "попала в пятёрку островных государств, которые смогут себя прокормить. А ещё",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "hl": {
+     "au": 1,
+     "nz": 1,
+     "is": 1
+    },
+    "dots": 38,
+    "caption": {
+     "str": "5 ОСТРОВНЫХ ГОСУДАРСТВ ИЗ 38"
     }
    }
   },
   {
-   "id": "t059",
-   "start": 174.0,
-   "end": 177.0,
+   "id": "s036",
+   "start": 88.28,
+   "end": 92.86,
+   "line": "вспомним семь раз, когда мир был ближе к краю, чем кажется.",
+   "scene": "sevenRow",
+   "tpl": "sevenRow",
+   "params": {
+    "state": "light",
+    "labels": false
+   }
+  },
+  {
+   "id": "s037",
+   "start": 92.86,
+   "end": 97.2,
+   "line": "В одном из них виновата деталь за сорок шесть центов. Почти",
+   "scene": "priceTag",
+   "tpl": "priceTag",
+   "params": {
+    "price": "46 ¢",
+    "sub": "ДЕТАЛЬ"
+   },
+   "sfx": [
+    {
+     "at": 0.4,
+     "name": "blip",
+     "gain": -14
+    }
+   ]
+  },
+  {
+   "id": "s038",
+   "start": 97.2,
+   "end": 99.3,
+   "line": "каждый раз мир спасал человек.",
+   "scene": "sevenRow",
+   "tpl": "sevenRow",
+   "params": {
+    "state": "light"
+   }
+  },
+  {
+   "id": "s039",
+   "start": 99.3,
+   "end": 101.4,
    "line": "",
+   "scene": "sevenRow",
+   "tpl": "sevenRow",
+   "params": {
+    "state": "light",
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s040",
+   "start": 101.4,
+   "end": 104.68,
+   "line": "А однажды — не человек. Это фильм",
+   "scene": "sevenRow",
+   "tpl": "sevenRow",
+   "params": {
+    "state": "first"
+   }
+  },
+  {
+   "id": "s041",
+   "start": 104.68,
+   "end": 107.02,
+   "line": "о том, чего никто не хочет.",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "station",
+    "setOpts": {
+     "dawn": true
+    },
+    "cam": {
+     "move": "rise"
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s042",
+   "start": 107.02,
+   "end": 108.95,
+   "line": "И о том, почему этого до сих пор",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "lights": 1,
+    "spin": 0.03
+   }
+  },
+  {
+   "id": "s043",
+   "start": 108.95,
+   "end": 110.88,
+   "line": "не случилось.",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "lights": 1,
+    "spin": 0.03,
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s044",
+   "start": 110.88,
+   "end": 113.28,
+   "line": "Есть символические",
+   "scene": "chapterTitle",
+   "tpl": "chapterTitle",
+   "params": {
+    "str": "ПЕРВЫЙ ЧАС",
+    "hours": 0
+   },
+   "sfx": [
+    {
+     "at": 0.0,
+     "name": "whoosh",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s045",
+   "start": 113.28,
+   "end": 120.37,
+   "line": "часы Судного дня. Их с тысяча девятьсот сорок седьмого года ведёт журнал физиков-атомщиков.",
+   "scene": "doomsday",
+   "tpl": "doomsday",
+   "params": {
+    "seconds": 85,
+    "source": "Bulletin of the Atomic Scientists"
+   }
+  },
+  {
+   "id": "s046",
+   "start": 120.37,
+   "end": 126.57,
+   "line": "В январе две тысячи двадцать шестого года стрелки перевели на восемьдесят пять секунд до полуночи.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "85 СЕКУНД",
+      "l": "ДО ПОЛУНОЧИ · ЯНВАРЬ 2026"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s047",
+   "start": 126.57,
+   "end": 129.41,
+   "line": "Так близко они не стояли никогда.",
+   "scene": "doomsday",
+   "tpl": "doomsday",
+   "params": {
+    "seconds": 85
+   }
+  },
+  {
+   "id": "s048",
+   "start": 129.41,
+   "end": 132.68,
+   "line": "Но это предупреждение, а не прогноз. Высоко",
+   "scene": "quote",
+   "tpl": "quote",
+   "params": {
+    "str": "Предупреждение,|а не прогноз",
+    "by": ""
+   }
+  },
+  {
+   "id": "s049",
+   "start": 132.68,
+   "end": 134.815,
+   "line": "над Землёй висят спутники, которые",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "sats": 10,
+    "spin": 0.02
+   }
+  },
+  {
+   "id": "s050",
+   "start": 134.815,
+   "end": 136.95,
+   "line": "смотрят только на тепло.",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "sats": 10,
+    "spin": 0.02,
+    "cam": {
+     "move": "push",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s051",
+   "start": 136.95,
+   "end": 139.75,
+   "line": "Двигатель ракеты на старте горит так ярко,",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "sats": 6,
+    "lon0": 40,
+    "lat0": 50,
+    "cam": {
+     "move": "push"
+    }
+   }
+  },
+  {
+   "id": "s052",
+   "start": 139.75,
+   "end": 142.88,
+   "line": "что спутник замечает его за минуту-две. Но спутнику",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "minuteman_test_2017",
+    "from": 19,
+    "caption": "ИСПЫТАТЕЛЬНЫЙ ПУСК, 2017",
+    "credit": "U.S. Air Force · общественное достояние"
+   }
+  },
+  {
+   "id": "s053",
+   "start": 142.88,
+   "end": 149.91,
+   "line": "одному не верят. Тревога настоящая, только если её подтвердит второй прибор. Совсем другой.",
+   "scene": "twoSensors",
+   "tpl": "twoSensors",
+   "params": {},
+   "cues": {
+    "sat": 0.5,
+    "radar": 2.5,
+    "lamp": 4.0
+   }
+  },
+  {
+   "id": "s054",
+   "start": 149.91,
+   "end": 151.51,
+   "line": "Наземный радар. Это правило",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "norad",
+    "setOpts": {
+     "screen": "radar"
+    }
+   }
+  },
+  {
+   "id": "s055",
+   "start": 151.51,
+   "end": 153.11,
+   "line": "«двух датчиков». Ложные",
+   "scene": "twoSensors",
+   "tpl": "twoSensors",
+   "params": {}
+  },
+  {
+   "id": "s056",
+   "start": 153.11,
+   "end": 155.24,
+   "line": "тревоги, о которых мы ещё расскажем,",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "map"
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s057",
+   "start": 155.24,
+   "end": 157.37,
+   "line": "показали, насколько оно важно.",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "map",
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s058",
+   "start": 157.37,
+   "end": 159.68,
+   "line": "А Петров в ту ночь, по сути, сам поступил",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "pose": "desk",
+    "expr": "thinking",
+    "alarm": 1,
+    "banner": 1,
+    "arcs": 5,
+    "z": 1.2
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s059",
+   "start": 159.68,
+   "end": 161.99,
+   "line": "по этому правилу.",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "pose": "desk",
+    "expr": "thinking",
+    "alarm": 1,
+    "banner": 1,
+    "arcs": 5,
+    "z": 1.2,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s060",
+   "start": 161.99,
+   "end": 166.44,
+   "line": "Спутник показывал пуск. Радары молчали. Ракете",
+   "scene": "twoSensors",
+   "tpl": "twoSensors",
+   "params": {
+    "mode": "satOnly"
+   }
+  },
+  {
+   "id": "s061",
+   "start": 166.44,
+   "end": 170.26,
+   "line": "с одного континента на другой нужно около тридцати минут.",
+   "scene": "timer",
+   "tpl": "timer",
+   "params": {
+    "from": "00:00",
+    "to": "30:00",
+    "label": "С КОНТИНЕНТА НА КОНТИНЕНТ"
+   }
+  },
+  {
+   "id": "s062",
+   "start": 170.26,
+   "end": 172.335,
+   "line": "С подводной лодки — ещё быстрее.",
+   "scene": "subOutside",
+   "tpl": "subOutside",
+   "params": {
+    "ships": 0
+   }
+  },
+  {
+   "id": "s063",
+   "start": 172.335,
+   "end": 174.41,
+   "line": "Десять-пятнадцать минут.",
+   "scene": "subOutside",
+   "tpl": "subOutside",
+   "params": {
+    "ships": 0,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   }
+  },
+  {
+   "id": "s064",
+   "start": 174.41,
+   "end": 181.93,
+   "line": "А на решение остаются считаные минуты. Эксперты говорят — около десяти, а то и меньше. Но смысл понятен.",
+   "scene": "timer",
+   "tpl": "timer",
+   "params": {
+    "from": "00:00",
+    "to": "30:00",
+    "label": "ПОЛЁТ",
+    "decide": {
+     "min": 10,
+     "label": "НА РЕШЕНИЕ ≈ 10 МИН"
+    }
+   },
+   "cues": {
+    "decide": 0.5
+   }
+  },
+  {
+   "id": "s065",
+   "start": 181.93,
+   "end": 184.005,
+   "line": "Решать приходится быстрее, чем остывает",
+   "scene": "kitchenNews",
+   "tpl": "kitchenNews",
+   "params": {
+    "who": "viewer",
+    "pose": "sit",
+    "expr": "worried",
+    "tv": {
+     "head": "ЧАЙ ОСТЫВАЕТ"
+    }
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s066",
+   "start": 184.005,
+   "end": 186.08,
+   "line": "чашка чая. И ещё.",
+   "scene": "kitchenNews",
+   "tpl": "kitchenNews",
+   "params": {
+    "who": "viewer",
+    "pose": "sit",
+    "expr": "worried",
+    "tv": {
+     "head": "ЧАЙ ОСТЫВАЕТ"
+    },
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s067",
+   "start": 186.08,
+   "end": 188.65,
+   "line": "Никакой «красной кнопки» нет.",
+   "scene": "quote",
+   "tpl": "quote",
+   "params": {
+    "str": "Никакой «красной кнопки»|нет",
+    "by": ""
+   }
+  },
+  {
+   "id": "s068",
+   "start": 188.65,
+   "end": 193.99,
+   "line": "Есть так называемый ядерный чемоданчик. По сути, это очень надёжный телефон.",
+   "scene": "briefcase",
+   "tpl": "briefcase",
+   "params": {}
+  },
+  {
+   "id": "s069",
+   "start": 193.99,
+   "end": 196.71,
+   "line": "Папка с вариантами решений. И способ доказать,",
+   "scene": "briefcase",
+   "tpl": "briefcase",
+   "params": {
+    "cam": {
+     "move": "push",
+     "z": 1.4
+    }
+   }
+  },
+  {
+   "id": "s070",
+   "start": 196.71,
+   "end": 199.43,
+   "line": "что на том конце провода — именно тот человек.",
+   "scene": "briefcase",
+   "tpl": "briefcase",
+   "params": {
+    "cam": {
+     "move": "push",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s071",
+   "start": 199.43,
+   "end": 202.17,
+   "line": "Потом приказ проходит длинную цепочку,",
+   "scene": "chain",
+   "tpl": "chain",
+   "params": {
+    "n": 5,
+    "mode": "pass"
+   }
+  },
+  {
+   "id": "s072",
+   "start": 202.17,
+   "end": 204.49,
+   "line": "и на каждом шаге стоят люди.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "primed_for_defense",
+    "from": 730,
+    "caption": "ДЕЖУРНЫЕ НА ПУЛЬТЕ, 1960-е",
+    "credit": "U.S. Air Force · общественное достояние"
+   }
+  },
+  {
+   "id": "s073",
+   "start": 204.49,
+   "end": 206.785,
+   "line": "Запомните это. К концу фильма это окажется",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "petrov",
+    "bg": "control",
+    "expr": "determined",
+    "side": -1
+   }
+  },
+  {
+   "id": "s074",
+   "start": 206.785,
+   "end": 209.08,
+   "line": "самым важным. Пока идут",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "petrov",
+    "bg": "control",
+    "expr": "determined",
+    "side": -1,
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   }
+  },
+  {
+   "id": "s075",
+   "start": 209.08,
+   "end": 212.71,
+   "line": "эти минуты, правительства уходят под землю.",
+   "scene": "bunkersWorld",
+   "tpl": "bunkersWorld",
+   "params": {}
+  },
+  {
+   "id": "s076",
+   "start": 212.71,
+   "end": 215.45,
+   "line": "В Колорадо есть гранитная гора Шайенн.",
+   "scene": "cutaway",
+   "tpl": "cutaway",
+   "params": {
+    "kind": "mountain",
+    "tag": {
+     "str": "ГОРА ШАЙЕНН, КОЛОРАДО"
+    }
+   }
+  },
+  {
+   "id": "s077",
+   "start": 215.45,
+   "end": 218.45,
+   "line": "Внутри неё с тысяча девятьсот шестьдесят шестого года",
    "scene": "establish",
    "tpl": "establish",
    "params": {
@@ -731,304 +1267,417 @@
    }
   },
   {
-   "id": "t060",
-   "start": 177.0,
-   "end": 180.0,
-   "line": "",
-   "scene": "chapterTitle",
-   "tpl": "chapterTitle",
+   "id": "s078",
+   "start": 218.45,
+   "end": 221.45,
+   "line": "работает штаб противовоздушной обороны.",
+   "scene": "establish",
+   "tpl": "establish",
    "params": {
-    "str": "ПЕРВЫЙ ЧАС",
-    "hours": 0
-   }
-  },
-  {
-   "id": "t061",
-   "start": 180.0,
-   "end": 183.0,
-   "line": "",
-   "scene": "chapterTitle",
-   "tpl": "chapterTitle",
-   "params": {
-    "sub": "ЧТО БУДЕТ, ЕСЛИ НАЧНЁТСЯ",
-    "str": "ТРЕТЬЯ МИРОВАЯ",
-    "bg": "space"
-   }
-  },
-  {
-   "id": "t062",
-   "start": 183.0,
-   "end": 186.0,
-   "line": "",
-   "scene": "hoursStrip",
-   "tpl": "hoursStrip",
-   "params": {
-    "from": 0,
-    "to": 3,
-    "bg": "space"
-   }
-  },
-  {
-   "id": "t063",
-   "start": 186.0,
-   "end": 189.0,
-   "line": "",
-   "scene": "caseCard",
-   "tpl": "caseCard",
-   "params": {
-    "n": 2,
-    "where": "КАРИБСКОЕ МОРЕ · 1962"
-   }
-  },
-  {
-   "id": "t064",
-   "start": 189.0,
-   "end": 192.0,
-   "line": "",
-   "scene": "sevenRow",
-   "tpl": "sevenRow",
-   "params": {
-    "state": "first"
-   }
-  },
-  {
-   "id": "t065",
-   "start": 192.0,
-   "end": 195.0,
-   "line": "",
-   "scene": "sevenRow",
-   "tpl": "sevenRow",
-   "params": {
-    "state": "light",
-    "labels": true
-   }
-  },
-  {
-   "id": "t066",
-   "start": 195.0,
-   "end": 198.0,
-   "line": "",
-   "scene": "sevenRow",
-   "tpl": "sevenRow",
-   "params": {
-    "state": "numbers",
-    "question": "Какая история удивила вас больше всего?"
-   }
-  },
-  {
-   "id": "t067",
-   "start": 198.0,
-   "end": 201.0,
-   "line": "",
-   "scene": "bigCounter",
-   "tpl": "bigCounter",
-   "params": {
-    "from": 70300,
-    "to": 12187,
-    "prefix": "≈ ",
-    "unit": "ЯДЕРНЫХ БОЕГОЛОВОК",
-    "years": {
-     "from": "1986",
-     "to": "2026"
+    "set": "norad",
+    "setOpts": {
+     "screen": "map"
     },
-    "source": "SIPRI, январь 2026",
-    "side": {
-     "label": "ВОЕННЫЕ ЗАПАСЫ"
+    "cam": {
+     "move": "pull",
+     "z": 1.3
     }
    }
   },
   {
-   "id": "t068",
-   "start": 201.0,
-   "end": 204.0,
-   "line": "",
-   "scene": "bigCounter",
-   "tpl": "bigCounter",
+   "id": "s079",
+   "start": 221.45,
+   "end": 224.605,
+   "line": "Корпуса стоят на огромных пружинах, а двери",
+   "scene": "cutaway",
+   "tpl": "cutaway",
    "params": {
-    "from": 0,
-    "to": 12187,
-    "unit": "БОЕГОЛОВОК",
-    "bg": "globe",
-    "source": "SIPRI, январь 2026"
+    "kind": "mountain",
+    "cam": {
+     "move": "push",
+     "z": 1.4
+    }
    }
   },
   {
-   "id": "t069",
-   "start": 204.0,
-   "end": 207.0,
-   "line": "",
-   "scene": "statCard",
-   "tpl": "statCard",
+   "id": "s080",
+   "start": 224.605,
+   "end": 227.76,
+   "line": "весят по двадцать пять тонн. В тысяча",
+   "scene": "cutaway",
+   "tpl": "cutaway",
    "params": {
-    "items": [
-     {
-      "v": "> 99 %",
-      "l": "ДАННЫХ МЕЖДУ КОНТИНЕНТАМИ"
-     },
-     {
-      "v": "≈ 600",
-      "l": "КАБЕЛЬНЫХ СИСТЕМ, 2025"
-     }
-    ],
-    "bg": "space"
+    "kind": "mountain",
+    "cam": {
+     "move": "push",
+     "z": 1.05
+    }
    }
   },
   {
-   "id": "t070",
-   "start": 207.0,
-   "end": 210.0,
-   "line": "",
-   "scene": "globeShot",
-   "tpl": "globeShot",
+   "id": "s081",
+   "start": 227.76,
+   "end": 231.37,
+   "line": "девятьсот пятьдесят пятом году, ещё до переезда в гору,",
+   "scene": "establish",
+   "tpl": "establish",
    "params": {
-    "sats": 14,
-    "icons": [
-     "nav",
-     "cloud",
-     "clock"
-    ],
-    "timer": "60:00"
+    "set": "city",
+    "tag": {
+     "str": "1955"
+    }
+   }
+  },
+  {
+   "id": "s082",
+   "start": 231.37,
+   "end": 236.61,
+   "line": "ребёнок набрал номер из рекламы магазина, где обещали разговор с Сантой. И",
+   "scene": "santaCall",
+   "tpl": "santaCall",
+   "params": {},
+   "sfx": [
+    {
+     "at": 0.1,
+     "name": "phonering",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s083",
+   "start": 236.61,
+   "end": 239.77,
+   "line": "по ошибке попал на секретную линию штаба.",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "map",
+    "shoup": true
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s084",
+   "start": 239.77,
+   "end": 241.81,
+   "line": "Полковник Гарри Шуп не бросил трубку",
+   "scene": "santaCall",
+   "tpl": "santaCall",
+   "params": {},
+   "cues": {
+    "smile": 0.4
+   },
+   "sfx": [
+    {
+     "at": 0.1,
+     "name": "phonering",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s085",
+   "start": 241.81,
+   "end": 243.85,
+   "line": "и подыграл малышу.",
+   "scene": "santaCall",
+   "tpl": "santaCall",
+   "params": {
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
    },
    "cues": {
-    "icons": 0.1
+    "smile": -20
    }
   },
   {
-   "id": "t071",
-   "start": 210.0,
-   "end": 213.0,
-   "line": "",
+   "id": "s086",
+   "start": 243.85,
+   "end": 248.53,
+   "line": "А к Рождеству штаб объявил, что следит по радарам за полётом Санты.",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "santa",
+    "shoup": true
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s087",
+   "start": 248.53,
+   "end": 251.72,
+   "line": "С тех пор это делают каждый год. Под роскошным",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "santa",
+    "cam": {
+     "move": "pull"
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s088",
+   "start": 251.72,
+   "end": 257.99,
+   "line": "отелем «Гринбрайер» в Западной Вирджинии тридцать лет прятался бункер для парламента страны.",
+   "scene": "cutaway",
+   "tpl": "cutaway",
+   "params": {
+    "kind": "hotel",
+    "tag": {
+     "str": "ГРИНБРАЙЕР, ЗАПАДНАЯ ВИРДЖИНИЯ"
+    }
+   },
+   "cues": {
+    "bunker": 2.5
+   }
+  },
+  {
+   "id": "s089",
+   "start": 257.99,
+   "end": 259.85,
+   "line": "За ним следила маленькая фирма.",
+   "scene": "cutaway",
+   "tpl": "cutaway",
+   "params": {
+    "kind": "hotel",
+    "cam": {
+     "move": "push",
+     "z": 1.5
+    }
+   }
+  },
+  {
+   "id": "s090",
+   "start": 259.85,
+   "end": 262.04,
+   "line": "По документам — мастера, которые чинят в отеле",
+   "scene": "kitchenNews",
+   "tpl": "kitchenNews",
+   "params": {
+    "who": "viewer",
+    "pose": "stand",
+    "expr": "smile",
+    "tv": {
+     "head": "РЕМОНТ ТЕЛЕВИЗОРОВ"
+    }
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s091",
+   "start": 262.04,
+   "end": 264.23,
+   "line": "телевизоры. Они и правда их чинили.",
+   "scene": "kitchenNews",
+   "tpl": "kitchenNews",
+   "params": {
+    "who": "viewer",
+    "pose": "stand",
+    "expr": "smile",
+    "tv": {
+     "head": "РЕМОНТ ТЕЛЕВИЗОРОВ"
+    },
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s092",
+   "start": 264.23,
+   "end": 266.75,
+   "line": "Сотрудники отеля даже приносили им чинить свои телевизоры",
+   "scene": "kitchenNews",
+   "tpl": "kitchenNews",
+   "params": {
+    "who": "viewer",
+    "pose": "sit",
+    "expr": "smile",
+    "tv": {
+     "head": "ПОЧИНЕНО"
+    }
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s093",
+   "start": 266.75,
+   "end": 269.27,
+   "line": "из дома. Отличные были телемастера.",
+   "scene": "kitchenNews",
+   "tpl": "kitchenNews",
+   "params": {
+    "who": "viewer",
+    "pose": "sit",
+    "expr": "smile",
+    "tv": {
+     "head": "ПОЧИНЕНО"
+    },
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s094",
+   "start": 269.27,
+   "end": 273.68,
+   "line": "Тайну раскрыл журналист только в тысяча девятьсот девяносто втором году. Похожие",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "single": "1992",
+    "note": "ТАЙНУ РАСКРЫЛИ"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s095",
+   "start": 273.68,
+   "end": 277.23,
+   "line": "убежища есть у всех крупных ядерных держав.",
+   "scene": "bunkersWorld",
+   "tpl": "bunkersWorld",
+   "params": {
+    "cam": {
+     "move": "driftR"
+    }
+   }
+  },
+  {
+   "id": "s096",
+   "start": 277.23,
+   "end": 280.68,
+   "line": "Просто про американские больше открытых данных.",
    "scene": "globeShot",
    "tpl": "globeShot",
    "params": {
-    "belt": true,
+    "lights": 1
+   }
+  },
+  {
+   "id": "s097",
+   "start": 280.68,
+   "end": 282.68,
+   "line": "",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "ocean",
+    "cam": {
+     "move": "driftL"
+    }
+   }
+  },
+  {
+   "id": "s098",
+   "start": 282.68,
+   "end": 284.68,
+   "line": "Теперь электромагнитный",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "space",
+    "cam": {
+     "move": "pull"
+    }
+   }
+  },
+  {
+   "id": "s099",
+   "start": 284.68,
+   "end": 286.815,
+   "line": "импульс. Его действие",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
     "sats": 12,
-    "satsDead": 0.5,
     "lon0": -150,
     "lat0": 10
-   },
-   "cues": {
-    "belt": 0
    }
   },
   {
-   "id": "t072",
-   "start": 213.0,
-   "end": 216.0,
-   "line": "",
+   "id": "s100",
+   "start": 286.815,
+   "end": 288.95,
+   "line": "проверили на самом деле.",
    "scene": "globeShot",
    "tpl": "globeShot",
    "params": {
-    "cables": true,
-    "lon0": -30
-   }
-  },
-  {
-   "id": "t073",
-   "start": 216.0,
-   "end": 219.0,
-   "line": "",
-   "scene": "globeShot",
-   "tpl": "globeShot",
-   "params": {
-    "smoke": 1,
-    "cold": 1
-   }
-  },
-  {
-   "id": "t074",
-   "start": 219.0,
-   "end": 222.0,
-   "line": "",
-   "scene": "globeShot",
-   "tpl": "globeShot",
-   "params": {
-    "lat0": -35,
-    "lon0": 150,
-    "hl": {
-     "au": 1,
-     "nz": 1
+    "sats": 12,
+    "lon0": -150,
+    "lat0": 10,
+    "cam": {
+     "move": "push",
+     "z": 1.05
     }
-   },
-   "cues": {
-    "hl": 0
    }
   },
   {
-   "id": "t075",
-   "start": 222.0,
-   "end": 225.0,
-   "line": "",
-   "scene": "mapShot",
-   "tpl": "mapShot",
+   "id": "s101",
+   "start": 288.95,
+   "end": 296.29,
+   "line": "Летом тысяча девятьсот шестьдесят второго года над Тихим океаном, на высоте около четырёхсот километров, провели испытание.",
+   "scene": "archive",
+   "tpl": "archive",
    "params": {
-    "marks": [
-     {
-      "at": "hormuz",
-      "label": "ОРМУЗ"
-     },
-     {
-      "at": "malacca",
-      "label": "МАЛАККА"
-     },
-     {
-      "at": "suez",
-      "label": "СУЭЦ",
-      "side": -1
-     },
-     {
-      "at": "bab",
-      "label": "БАБ-ЭЛЬ-МАНДЕБ"
-     }
-    ],
-    "source": "≈ 1/5 нефти мира, 2024"
-   },
-   "cues": {
-    "m1": 0,
-    "m2": 0,
-    "m3": 0,
-    "m4": 0
+    "clip": "high_altitude_1962",
+    "from": 101,
+    "caption": "ИСПЫТАНИЕ, 1962, ТИХИЙ ОКЕАН",
+    "credit": "AEC / DoD · общественное достояние"
    }
   },
   {
-   "id": "t076",
-   "start": 225.0,
-   "end": 228.0,
-   "line": "",
-   "scene": "mapShot",
-   "tpl": "mapShot",
-   "params": {
-    "cold": 1,
-    "hl": {
-     "au": 1
-    },
-    "marks": [
-     {
-      "at": "argentina",
-      "label": "АРГЕНТИНА",
-      "color": "#ffc66e"
-     }
-    ]
-   },
-   "cues": {
-    "hl": 0,
-    "cold": 0,
-    "m1": 0
-   }
-  },
-  {
-   "id": "t077",
-   "start": 228.0,
-   "end": 231.0,
-   "line": "",
+   "id": "s102",
+   "start": 296.29,
+   "end": 299.23,
+   "line": "А на Гавайях, почти в полутора тысячах километров,",
    "scene": "mapShot",
    "tpl": "mapShot",
    "params": {
     "view": {
-     "lon0": -170,
-     "lon1": -140,
+     "lon0": -178,
+     "lon1": -148,
      "lat0": 30,
-     "lat1": 5
+     "lat1": 8
     },
     "arcs": [
      {
@@ -1043,55 +1692,500 @@
      },
      {
       "at": "johnston",
-      "label": "400 КМ ВВЕРХ",
-      "side": -1
+      "label": "ИСПЫТАНИЕ · 400 КМ ВВЕРХ"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s103",
+   "start": 299.23,
+   "end": 302.31,
+   "line": "погасли около трёхсот уличных фонарей.",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "city",
+    "setOpts": {
+     "dark": true
+    }
+   }
+  },
+  {
+   "id": "s104",
+   "start": 302.31,
+   "end": 306.21,
+   "line": "Сами собой завыли сигнализации, испортилась телефонная связь.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "high_altitude_1962",
+    "from": 441,
+    "caption": "ИСПЫТАНИЕ, 1962, ТИХИЙ ОКЕАН",
+    "credit": "AEC / DoD · общественное достояние"
+   }
+  },
+  {
+   "id": "s105",
+   "start": 306.21,
+   "end": 309.41,
+   "line": "А ещё взрыв создал вокруг Земли радиационный пояс.",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "belt": true,
+    "sats": 12,
+    "satsDead": 0.5,
+    "lon0": -150,
+    "lat0": 10
+   },
+   "cues": {
+    "belt": 0.5,
+    "dead": 3
+   }
+  },
+  {
+   "id": "s106",
+   "start": 309.41,
+   "end": 314.64,
+   "line": "За следующие месяцы он вывел из строя как минимум шесть спутников. А сегодня",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "≥ 6",
+      "l": "СПУТНИКОВ ВЫШЛИ ИЗ СТРОЯ"
      }
     ]
    },
-   "cues": {
-    "a1": 0,
-    "m1": 0,
-    "m2": 0
-   }
-  },
-  {
-   "id": "t078",
-   "start": 231.0,
-   "end": 234.0,
-   "line": "",
-   "scene": "doomsday",
-   "tpl": "doomsday",
-   "params": {},
-   "cues": {
-    "sec": 0.2
-   }
-  },
-  {
-   "id": "t079",
-   "start": 234.0,
-   "end": 237.0,
-   "line": "",
-   "scene": "timer",
-   "tpl": "timer",
-   "params": {
-    "from": "00:00",
-    "to": "30:00",
-    "label": "С КОНТИНЕНТА НА КОНТИНЕНТ",
-    "decide": {
-     "min": 10,
-     "label": "НА РЕШЕНИЕ ≈ 10 МИН"
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
     }
+   ]
+  },
+  {
+   "id": "s107",
+   "start": 314.64,
+   "end": 321.75,
+   "line": "на спутниках держатся навигация, прогноз погоды и точное время, по которому сверяют банковские переводы.",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "sats": 14,
+    "icons": [
+     "nav",
+     "cloud",
+     "clock"
+    ]
    },
    "cues": {
-    "runEnd": 0.3,
-    "decide": 0.35
+    "icons": 0.3
    }
   },
   {
-   "id": "t080",
-   "start": 237.0,
-   "end": 240.0,
+   "id": "s108",
+   "start": 321.75,
+   "end": 324.47,
+   "line": "Первый час заканчивается.",
+   "scene": "hoursStrip",
+   "tpl": "hoursStrip",
+   "params": {
+    "from": 0,
+    "to": 1,
+    "bg": "space"
+   }
+  },
+  {
+   "id": "s109",
+   "start": 324.47,
+   "end": 326.73,
+   "line": "А самая большая беда, по расчётам",
+   "scene": "fieldScene",
+   "tpl": "fieldScene",
+   "params": {
+    "grey": "cue"
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s110",
+   "start": 326.73,
+   "end": 328.99,
+   "line": "учёных, начнётся не в первый час.",
+   "scene": "fieldScene",
+   "tpl": "fieldScene",
+   "params": {
+    "grey": "cue",
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s111",
+   "start": 328.99,
+   "end": 332.6,
+   "line": "И даже не в первые сутки. Утро.",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "smoke": 0.3
+   }
+  },
+  {
+   "id": "s112",
+   "start": 332.6,
+   "end": 335.6,
    "line": "",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "iss_earth_exp65",
+    "from": 2,
+    "caption": "",
+    "credit": "NASA · общественное достояние (МКС)"
+   }
+  },
+  {
+   "id": "s113",
+   "start": 335.6,
+   "end": 338.6,
+   "line": "",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "iss_earth_exp65",
+    "from": 97,
+    "caption": "",
+    "credit": "NASA · общественное достояние (МКС)"
+   }
+  },
+  {
+   "id": "s114",
+   "start": 338.6,
+   "end": 341.0,
+   "line": "",
+   "scene": "chapterTitle",
+   "tpl": "chapterTitle",
+   "params": {
+    "str": "ПЕРВЫЕ СУТКИ И ПЕРВЫЙ МЕСЯЦ",
+    "hours": 1
+   },
+   "sfx": [
+    {
+     "at": 0.0,
+     "name": "whoosh",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s115",
+   "start": 341.0,
+   "end": 342.87,
+   "line": "Вы берёте телефон.",
+   "scene": "kitchenNews",
+   "tpl": "kitchenNews",
+   "params": {
+    "who": "viewer",
+    "pose": "phone",
+    "expr": "neutral",
+    "tv": {
+     "head": "УТРО"
+    }
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s116",
+   "start": 342.87,
+   "end": 344.99,
+   "line": "Ваше сообщение родственнику в другой стране,",
+   "scene": "phoneInsert",
+   "tpl": "phoneInsert",
+   "params": {
+    "screen": "message",
+    "str": "Как вы там?"
+   }
+  },
+  {
+   "id": "s117",
+   "start": 344.99,
+   "end": 348.59,
+   "line": "скорее всего, идёт не через космос, а по дну океана.",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "cables": true,
+    "lon0": -30
+   }
+  },
+  {
+   "id": "s118",
+   "start": 348.59,
+   "end": 357.55,
+   "line": "Больше девяноста девяти процентов данных между континентами бегут по подводным кабелям. На карте две тысячи двадцать пятого года таких систем около шестисот.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "> 99 %",
+      "l": "ДАННЫХ МЕЖДУ КОНТИНЕНТАМИ"
+     },
+     {
+      "v": "≈ 600",
+      "l": "КАБЕЛЬНЫХ СИСТЕМ, 2025"
+     }
+    ],
+    "bg": "space"
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s119",
+   "start": 357.55,
+   "end": 360.61,
+   "line": "А толщиной кабель на глубине — примерно как садовый шланг",
+   "scene": "cableVsHose",
+   "tpl": "cableVsHose",
+   "params": {}
+  },
+  {
+   "id": "s120",
+   "start": 360.61,
+   "end": 362.21,
+   "line": "на газоне. Уследить за каждым",
+   "scene": "seabedCable",
+   "tpl": "seabedCable",
+   "params": {
+    "hose": true
+   },
+   "cues": {
+    "hose": 0.2
+   }
+  },
+  {
+   "id": "s121",
+   "start": 362.21,
+   "end": 365.36,
+   "line": "километром почти невозможно. Насколько",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "cables": true,
+    "lon0": 150,
+    "lat0": 10
+   }
+  },
+  {
+   "id": "s122",
+   "start": 365.36,
+   "end": 371.36,
+   "line": "это хрупко, показала природа. В две тысячи шестом году землетрясение у Тайваня за несколько часов",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "view": {
+     "lon0": 100,
+     "lon1": 140,
+     "lat0": 35,
+     "lat1": 5
+    },
+    "marks": [
+     {
+      "at": [
+       121,
+       22
+      ],
+      "label": "ТАЙВАНЬ, 2006"
+     }
+    ],
+    "caption": {
+     "str": "ЗЕМЛЕТРЯСЕНИЕ ПОРВАЛО ≈ 10 КАБЕЛЕЙ"
+    }
+   }
+  },
+  {
+   "id": "s123",
+   "start": 371.36,
+   "end": 374.45,
+   "line": "порвало около десятка подводных кабелей.",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "view": {
+     "lon0": 100,
+     "lon1": 140,
+     "lat0": 35,
+     "lat1": 5
+    },
+    "marks": [
+     {
+      "at": [
+       121,
+       22
+      ],
+      "label": "ТАЙВАНЬ, 2006"
+     }
+    ],
+    "caption": {
+     "str": "ЗЕМЛЕТРЯСЕНИЕ ПОРВАЛО ≈ 10 КАБЕЛЕЙ"
+    },
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s124",
+   "start": 374.45,
+   "end": 377.97,
+   "line": "Связь в части Азии восстанавливали больше месяца.",
+   "scene": "kitchenNews",
+   "tpl": "kitchenNews",
+   "params": {
+    "who": "viewer",
+    "pose": "phone",
+    "expr": "worried",
+    "tv": {
+     "head": "ЗЕМЛЕТРЯСЕНИЕ У ТАЙВАНЯ"
+    }
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s125",
+   "start": 377.97,
+   "end": 380.2,
+   "line": "И никакой войны. Теперь деньги.",
+   "scene": "phoneInsert",
+   "tpl": "phoneInsert",
+   "params": {
+    "screen": "nosignal"
+   }
+  },
+  {
+   "id": "s126",
+   "start": 380.2,
+   "end": 389.01,
+   "line": "Летом тысяча девятьсот четырнадцатого года, когда началась Первая мировая, Нью-Йоркская биржа закрылась на четыре с половиной месяца.",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "range": {
+     "from": "31 ИЮЛЯ",
+     "to": "12 ДЕКАБРЯ"
+    },
+    "note": "1914 · 4,5 МЕСЯЦА"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s127",
+   "start": 389.01,
+   "end": 390.95,
+   "line": "Люди первым делом бросились не за",
+   "scene": "bankQueue",
+   "tpl": "bankQueue",
+   "params": {},
+   "amb": {
+    "name": "murmur",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s128",
+   "start": 390.95,
+   "end": 392.89,
+   "line": "хлебом, а за наличными.",
+   "scene": "bankQueue",
+   "tpl": "bankQueue",
+   "params": {
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   },
+   "amb": {
+    "name": "murmur",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s129",
+   "start": 392.89,
+   "end": 396.365,
+   "line": "И в Британии банки просто не открыли: выходной продлили",
+   "scene": "bankQueue",
+   "tpl": "bankQueue",
+   "params": {
+    "sign": "ЗАКРЫТО",
+    "cam": {
+     "move": "push",
+     "z": 1.4
+    }
+   },
+   "amb": {
+    "name": "murmur",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s130",
+   "start": 396.365,
+   "end": 399.84,
+   "line": "на три дня, чтобы деньги не забрали разом. А после",
+   "scene": "bankQueue",
+   "tpl": "bankQueue",
+   "params": {
+    "sign": "ЗАКРЫТО",
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   },
+   "amb": {
+    "name": "murmur",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s131",
+   "start": 399.84,
+   "end": 405.84,
+   "line": "одиннадцатого сентября две тысячи первого года та же биржа не работала четыре дня. Это самое долгое",
    "scene": "calendar",
    "tpl": "calendar",
    "params": {
@@ -1107,36 +2201,1223 @@
     "mark": 17,
     "note": "4 ДНЯ"
    },
-   "cues": {
-    "cross": 0,
-    "mark": 0.2,
-    "note": 0.2
-   }
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
   },
   {
-   "id": "t081",
-   "start": 240.0,
-   "end": 243.0,
-   "line": "",
+   "id": "s132",
+   "start": 405.84,
+   "end": 407.915,
+   "line": "закрытие с тысяча девятьсот тридцать",
    "scene": "calendar",
    "tpl": "calendar",
    "params": {
-    "range": {
-     "from": "31 ИЮЛЯ",
-     "to": "12 ДЕКАБРЯ"
-    },
-    "note": "1914 · 4,5 МЕСЯЦА"
-   },
-   "cues": {
-    "d2": 0.1,
-    "note": 0.2
+    "month": "СЕНТЯБРЬ 2001",
+    "days": 30,
+    "start": 5,
+    "cross": [
+     11,
+     12,
+     13,
+     14
+    ],
+    "mark": 17,
+    "note": "4 ДНЯ",
+    "cam": {
+     "move": "push",
+     "z": 1.05
+    }
    }
   },
   {
-   "id": "t082",
-   "start": 243.0,
-   "end": 246.0,
+   "id": "s133",
+   "start": 407.915,
+   "end": 409.99,
+   "line": "третьего года.",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "month": "СЕНТЯБРЬ 2001",
+    "days": 30,
+    "start": 5,
+    "cross": [
+     11,
+     12,
+     13,
+     14
+    ],
+    "mark": 17,
+    "note": "4 ДНЯ",
+    "cam": {
+     "move": "push",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s134",
+   "start": 409.99,
+   "end": 414.77,
+   "line": "В первый день после открытия индекс упал больше чем на семь процентов.",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "ИНДЕКС, 17.09.2001",
+      "v": 0.7,
+      "str": "−7 %",
+      "red": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "s135",
+   "start": 414.77,
+   "end": 419.24,
+   "line": "Четыре дня. А тогда было четыре месяца. У мировой",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "4 ДНЯ",
+      "l": "2001"
+     },
+     {
+      "v": "4,5 МЕС.",
+      "l": "1914"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s136",
+   "start": 419.24,
+   "end": 421.835,
+   "line": "торговли есть узкие горлышки. До",
+   "scene": "portScene",
+   "tpl": "portScene",
+   "params": {
+    "truck": false
+   }
+  },
+  {
+   "id": "s137",
+   "start": 421.835,
+   "end": 424.43,
+   "line": "нынешнего конфликта, в две тысячи двадцать четвёртом году,",
+   "scene": "portScene",
+   "tpl": "portScene",
+   "params": {
+    "truck": false,
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   }
+  },
+  {
+   "id": "s138",
+   "start": 424.43,
+   "end": 431.04,
+   "line": "через один Ормузский пролив шла примерно каждая пятая бочка нефти, которую потребляет мир. И это",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "marks": [
+     {
+      "at": "hormuz",
+      "label": "ОРМУЗ"
+     }
+    ],
+    "caption": {
+     "str": "≈ КАЖДАЯ 5-я БОЧКА НЕФТИ, 2024"
+    }
+   }
+  },
+  {
+   "id": "s139",
+   "start": 431.04,
+   "end": 432.64,
+   "line": "уже не модель. В феврале",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "view": {
+     "lon0": 40,
+     "lon1": 65,
+     "lat0": 34,
+     "lat1": 20
+    },
+    "marks": [
+     {
+      "at": "hormuz",
+      "label": "ОРМУЗСКИЙ ПРОЛИВ"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s140",
+   "start": 432.64,
+   "end": 438.64,
+   "line": "две тысячи двадцать шестого года в регионе Персидского залива начались военные действия. Это не мировая война,",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "single": "2026",
+    "note": "ФЕВРАЛЬ · РЕГИОНАЛЬНЫЙ КОНФЛИКТ"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s141",
+   "start": 438.64,
+   "end": 442.33,
+   "line": "а один региональный конфликт. В нём гибнут люди.",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "single": "2026",
+    "note": "ФЕВРАЛЬ · РЕГИОНАЛЬНЫЙ КОНФЛИКТ",
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s142",
+   "start": 442.33,
+   "end": 445.83,
+   "line": "А ещё почти остановилось движение судов через пролив.",
+   "scene": "portScene",
+   "tpl": "portScene",
+   "params": {
+    "stopped": "cue"
+   },
+   "cues": {
+    "stop": 1
+   }
+  },
+  {
+   "id": "s143",
+   "start": 445.83,
+   "end": 447.84,
+   "line": "И даже спустя много месяцев оно",
+   "scene": "portScene",
+   "tpl": "portScene",
+   "params": {
+    "stopped": 1,
+    "cam": {
+     "move": "driftL"
+    }
+   }
+  },
+  {
+   "id": "s144",
+   "start": 447.84,
+   "end": 449.85,
+   "line": "так и не вернулось к прежнему уровню.",
+   "scene": "portScene",
+   "tpl": "portScene",
+   "params": {
+    "stopped": 1,
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   }
+  },
+  {
+   "id": "s145",
+   "start": 449.85,
+   "end": 455.85,
+   "line": "Тридцать две страны Международного энергетического агентства решили выпустить из аварийных запасов около",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "32",
+      "l": "СТРАНЫ МЭА"
+     },
+     {
+      "v": "400 МЛН",
+      "l": "БАРРЕЛЕЙ ИЗ ЗАПАСОВ"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s146",
+   "start": 455.85,
+   "end": 458.27,
+   "line": "четырёхсот миллионов баррелей нефти. Это",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "32",
+      "l": "СТРАНЫ МЭА"
+     },
+     {
+      "v": "400 МЛН",
+      "l": "БАРРЕЛЕЙ ИЗ ЗАПАСОВ"
+     }
+    ],
+    "cam": {
+     "move": "push",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s147",
+   "start": 458.27,
+   "end": 460.69,
+   "line": "больше, чем когда-либо за его историю.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "32",
+      "l": "СТРАНЫ МЭА"
+     },
+     {
+      "v": "400 МЛН",
+      "l": "БАРРЕЛЕЙ ИЗ ЗАПАСОВ"
+     }
+    ],
+    "cam": {
+     "move": "push",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s148",
+   "start": 460.69,
+   "end": 463.485,
+   "line": "Одного узкого пролива хватило, чтобы весь",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "marks": [
+     {
+      "at": "hormuz",
+      "label": "ОРМУЗ"
+     }
+    ],
+    "arcs": [
+     {
+      "from": "hormuz",
+      "to": [
+       10,
+       50
+      ]
+     },
+     {
+      "from": "hormuz",
+      "to": [
+       120,
+       30
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "s149",
+   "start": 463.485,
+   "end": 466.28,
+   "line": "мир почувствовал это на ценах. И это",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "marks": [
+     {
+      "at": "hormuz",
+      "label": "ОРМУЗ"
+     }
+    ],
+    "arcs": [
+     {
+      "from": "hormuz",
+      "to": [
+       10,
+       50
+      ]
+     },
+     {
+      "from": "hormuz",
+      "to": [
+       120,
+       30
+      ]
+     }
+    ],
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s150",
+   "start": 466.28,
+   "end": 469.39,
+   "line": "только нефть. Еда тоже путешествует.",
+   "scene": "portScene",
+   "tpl": "portScene",
+   "params": {
+    "truck": true
+   }
+  },
+  {
+   "id": "s151",
+   "start": 469.39,
+   "end": 471.42,
+   "line": "Многие страны живут на привозном зерне",
+   "scene": "fieldScene",
+   "tpl": "fieldScene",
+   "params": {
+    "elevator": true
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s152",
+   "start": 471.42,
+   "end": 473.45,
+   "line": "и привозных удобрениях.",
+   "scene": "fieldScene",
+   "tpl": "fieldScene",
+   "params": {
+    "elevator": true,
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s153",
+   "start": 473.45,
+   "end": 476.09,
+   "line": "Встанут порты — встанет и еда.",
+   "scene": "portScene",
+   "tpl": "portScene",
+   "params": {
+    "stopped": 1,
+    "nz": false
+   }
+  },
+  {
+   "id": "s154",
+   "start": 476.09,
+   "end": 478.45,
+   "line": "Но учёные посчитали другое.",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "one",
+    "charts": [
+     "fall",
+     "flat"
+    ]
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s155",
+   "start": 478.45,
+   "end": 481.505,
+   "line": "Даже если все порты останутся целы, через год просто",
+   "scene": "fieldScene",
+   "tpl": "fieldScene",
+   "params": {
+    "grey": "cue",
+    "frost": "cue"
+   },
+   "cues": {
+    "grey": 0.3,
+    "frost": 2
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s156",
+   "start": 481.505,
+   "end": 484.56,
+   "line": "может не вырасти урожай. Кстати.",
+   "scene": "fieldScene",
+   "tpl": "fieldScene",
+   "params": {
+    "grey": "cue",
+    "frost": "cue",
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   },
+   "cues": {
+    "grey": -20,
+    "frost": -20
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s157",
+   "start": 484.56,
+   "end": 487.81,
+   "line": "Пока все шестьсот кабелей на дне исправно работают",
+   "scene": "seabedCable",
+   "tpl": "seabedCable",
+   "params": {
+    "cam": {
+     "move": "driftL"
+    }
+   }
+  },
+  {
+   "id": "s158",
+   "start": 487.81,
+   "end": 492.45,
+   "line": "— подпишитесь на канал. Это единственная настоящая кнопка в этом фильме.",
+   "scene": "phoneInsert",
+   "tpl": "phoneInsert",
+   "params": {
+    "screen": "subscribe"
+   },
+   "cues": {
+    "press": 2.0
+   }
+  },
+  {
+   "id": "s159",
+   "start": 492.45,
+   "end": 495.32,
+   "line": "И её нажимать можно. Почему",
+   "scene": "phoneInsert",
+   "tpl": "phoneInsert",
+   "params": {
+    "screen": "subscribe"
+   },
+   "cues": {
+    "press": 0.2
+   }
+  },
+  {
+   "id": "s160",
+   "start": 495.32,
+   "end": 497.82,
    "line": "",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "iss_earth_exp65",
+    "from": 197,
+    "caption": "",
+    "credit": "NASA · общественное достояние (МКС)"
+   }
+  },
+  {
+   "id": "s161",
+   "start": 497.82,
+   "end": 500.32,
+   "line": "",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "field",
+    "cam": {
+     "move": "driftR"
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s162",
+   "start": 500.32,
+   "end": 502.72,
+   "line": "голод",
+   "scene": "chapterTitle",
+   "tpl": "chapterTitle",
+   "params": {
+    "str": "ГОД: ЯДЕРНАЯ ЗИМА",
+    "hours": 3
+   },
+   "sfx": [
+    {
+     "at": 0.0,
+     "name": "whoosh",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s163",
+   "start": 502.72,
+   "end": 506.48,
+   "line": "страшнее взрывов? Всё дело в дыме.",
+   "scene": "quote",
+   "tpl": "quote",
+   "params": {
+    "str": "Почему голод|страшнее взрывов?",
+    "by": ""
+   }
+  },
+  {
+   "id": "s164",
+   "start": 506.48,
+   "end": 513.42,
+   "line": "Когда горят города и дыма очень много, часть уходит выше облаков, в стратосферу, где нет дождя.",
+   "scene": "smokeDiagram",
+   "tpl": "smokeDiagram",
+   "params": {}
+  },
+  {
+   "id": "s165",
+   "start": 513.42,
+   "end": 516.49,
+   "line": "И чёрная сажа, по расчётам, может годами висеть над",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "smoke": "cue"
+   },
+   "cues": {
+    "smoke": 0.3
+   }
+  },
+  {
+   "id": "s166",
+   "start": 516.49,
+   "end": 519.56,
+   "line": "планетой, как тонкая штора. Эту идею",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "smoke": "cue",
+    "cam": {
+     "move": "push",
+     "z": 1.05
+    }
+   },
+   "cues": {
+    "smoke": -20
+   }
+  },
+  {
+   "id": "s167",
+   "start": 519.56,
+   "end": 522.42,
+   "line": "назвали «ядерной зимой».",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "smoke": 1,
+    "cold": "cue"
+   }
+  },
+  {
+   "id": "s168",
+   "start": 522.42,
+   "end": 524.62,
+   "line": "В тысяча девятьсот восемьдесят третьем году о",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "one",
+    "charts": [
+     "fall",
+     "fall"
+    ],
+    "tag": {
+     "str": "США, 1983"
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s169",
+   "start": 524.62,
+   "end": 526.82,
+   "line": "ней написала группа американских учёных,",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "one",
+    "charts": [
+     "fall",
+     "fall"
+    ],
+    "tag": {
+     "str": "США, 1983"
+    },
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s170",
+   "start": 526.82,
+   "end": 528.98,
+   "line": "среди них — астроном Карл Саган.",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "sci",
+    "bg": "lab",
+    "expr": "thinking",
+    "side": -1
+   }
+  },
+  {
+   "id": "s171",
+   "start": 528.98,
+   "end": 532.33,
+   "line": "А почти одновременно похожие расчёты сделали советские",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "one",
+    "charts": [
+     "fall",
+     "fall"
+    ],
+    "tag": {
+     "str": "ВЦ АН СССР"
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s172",
+   "start": 532.33,
+   "end": 535.68,
+   "line": "учёные в Вычислительном центре Академии наук.",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "one",
+    "charts": [
+     "fall",
+     "fall"
+    ],
+    "tag": {
+     "str": "ВЦ АН СССР"
+    },
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s173",
+   "start": 535.68,
+   "end": 538.2,
+   "line": "Две страны, во многом несогласные, пришли",
+   "scene": "hotline",
+   "tpl": "hotline",
+   "params": {}
+  },
+  {
+   "id": "s174",
+   "start": 538.2,
+   "end": 540.72,
+   "line": "к похожему выводу. Одним из",
+   "scene": "hotline",
+   "tpl": "hotline",
+   "params": {
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   }
+  },
+  {
+   "id": "s175",
+   "start": 540.72,
+   "end": 542.73,
+   "line": "первых в Москве эти расчёты сделал",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "sci",
+    "bg": "lab",
+    "expr": "thinking",
+    "side": 1
+   }
+  },
+  {
+   "id": "s176",
+   "start": 542.73,
+   "end": 544.74,
+   "line": "физик Владимир Александров.",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "sci",
+    "bg": "lab",
+    "expr": "thinking",
+    "side": 1,
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   }
+  },
+  {
+   "id": "s177",
+   "start": 544.74,
+   "end": 549.68,
+   "line": "Весной тысяча девятьсот восемьдесят пятого года он поехал на конференцию в Испанию.",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "single": "1985",
+    "note": "МАДРИД"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s178",
+   "start": 549.68,
+   "end": 551.94,
+   "line": "В Мадриде его видели в последний раз.",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "city",
+    "setOpts": {
+     "rain": true
+    }
+   }
+  },
+  {
+   "id": "s179",
+   "start": 551.94,
+   "end": 555.14,
+   "line": "Что с ним случилось, неизвестно до сих пор.",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "one"
+   },
+   "cues": {
+    "vanish": 0.5
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s180",
+   "start": 555.14,
+   "end": 557.55,
+   "line": "А вопрос, который он считал одним из первых,",
+   "scene": "smokeDiagram",
+   "tpl": "smokeDiagram",
+   "params": {
+    "cam": {
+     "move": "pull"
+    }
+   }
+  },
+  {
+   "id": "s181",
+   "start": 557.55,
+   "end": 559.96,
+   "line": "проверяют и сегодня. В две",
+   "scene": "smokeDiagram",
+   "tpl": "smokeDiagram",
+   "params": {
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s182",
+   "start": 559.96,
+   "end": 563.02,
+   "line": "тысячи девятнадцатом году учёные проверили самый тяжёлый",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "two",
+    "modern": true,
+    "charts": [
+     "fall",
+     "fall"
+    ],
+    "tag": {
+     "str": "2019 · 2 МОДЕЛИ"
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s183",
+   "start": 563.02,
+   "end": 566.08,
+   "line": "сценарий на двух климатических моделях.",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "two",
+    "modern": true,
+    "charts": [
+     "fall",
+     "fall"
+    ],
+    "tag": {
+     "str": "2019 · 2 МОДЕЛИ"
+    },
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s184",
+   "start": 566.08,
+   "end": 572.08,
+   "line": "В обеих средняя температура на Земле падает больше чем на восемь градусов. Для сравнения: в последний",
+   "scene": "thermo",
+   "tpl": "thermo",
+   "params": {
+    "to": -8,
+    "globe": true,
+    "compare": {
+     "v": -6,
+     "label": "ЛЕДНИКОВЫЙ ПЕРИОД"
+    }
+   },
+   "cues": {
+    "compare": 3
+   }
+  },
+  {
+   "id": "s185",
+   "start": 572.08,
+   "end": 574.87,
+   "line": "ледниковый период было холоднее, чем до эпохи",
+   "scene": "thermo",
+   "tpl": "thermo",
+   "params": {
+    "to": -8,
+    "globe": true,
+    "compare": {
+     "v": -6,
+     "label": "ЛЕДНИКОВЫЙ ПЕРИОД"
+    },
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   },
+   "cues": {
+    "compare": -20
+   }
+  },
+  {
+   "id": "s186",
+   "start": 574.87,
+   "end": 577.66,
+   "line": "заводов, примерно на шесть градусов.",
+   "scene": "thermo",
+   "tpl": "thermo",
+   "params": {
+    "to": -8,
+    "globe": true,
+    "compare": {
+     "v": -6,
+     "label": "ЛЕДНИКОВЫЙ ПЕРИОД"
+    },
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   },
+   "cues": {
+    "compare": -20
+   }
+  },
+  {
+   "id": "s187",
+   "start": 577.66,
+   "end": 580.15,
+   "line": "Только тот холод длился тысячи лет, а",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "smoke": 1,
+    "cold": 1
+   }
+  },
+  {
+   "id": "s188",
+   "start": 580.15,
+   "end": 582.64,
+   "line": "этот — несколько лет. Летом",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "smoke": 1,
+    "cold": 1,
+    "cam": {
+     "move": "push",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s189",
+   "start": 582.64,
+   "end": 586.12,
+   "line": "над Северной Америкой и Евразией — на двадцать градусов холоднее нормы.",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "cold": "cue",
+    "view": {
+     "lon0": -130,
+     "lon1": 140,
+     "lat0": 75,
+     "lat1": 25
+    },
+    "caption": {
+     "str": "ЛЕТО: −20 °C И БОЛЬШЕ"
+    }
+   }
+  },
+  {
+   "id": "s190",
+   "start": 586.12,
+   "end": 589.6,
+   "line": "А то и больше. До трёх лет подряд.",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "cold": "cue",
+    "view": {
+     "lon0": -130,
+     "lon1": 140,
+     "lat0": 75,
+     "lat1": 25
+    },
+    "caption": {
+     "str": "ЛЕТО: −20 °C И БОЛЬШЕ"
+    },
+    "cam": {
+     "move": "push",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s191",
+   "start": 589.6,
+   "end": 593.9,
+   "line": "Света — примерно треть от обычного, дождей — почти вдвое меньше.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "≈ 1/3",
+      "l": "СВЕТА"
+     },
+     {
+      "v": "≈ ½",
+      "l": "ДОЖДЕЙ"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s192",
+   "start": 593.9,
+   "end": 595.54,
+   "line": "В России время без заморозков",
+   "scene": "fieldScene",
+   "tpl": "fieldScene",
+   "params": {
+    "grey": 1,
+    "frost": "cue"
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s193",
+   "start": 595.54,
+   "end": 601.64,
+   "line": "сокращается до двадцати пяти дней в году. Для большинства культур этого слишком мало. В две тысячи",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "25 ДНЕЙ",
+      "l": "БЕЗ ЗАМОРОЗКОВ В ГОДУ"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s194",
+   "start": 601.64,
+   "end": 603.78,
+   "line": "двадцать втором году это посчитали",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "two",
+    "charts": [
+     "fall",
+     "fall"
+    ],
+    "tag": {
+     "str": "NATURE FOOD, 2022"
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s195",
+   "start": 603.78,
+   "end": 605.92,
+   "line": "в научном журнале «Нейчер Фуд».",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "two",
+    "charts": [
+     "fall",
+     "fall"
+    ],
+    "tag": {
+     "str": "NATURE FOOD, 2022"
+    },
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s196",
+   "start": 605.92,
+   "end": 611.92,
+   "line": "Даже в самом малом сценарии, при ограниченном региональном конфликте, мировой урожай за пять лет падает",
    "scene": "barsShot",
    "tpl": "barsShot",
    "params": {
@@ -1157,148 +3438,4498 @@
     "source": "Xia и др., Nature Food, 2022"
    },
    "cues": {
-    "b1": 0,
-    "b2": 0
+    "b1": 0.3,
+    "b2": "девяносто"
    }
   },
   {
-   "id": "t083",
-   "start": 246.0,
-   "end": 249.0,
-   "line": "",
-   "scene": "thermo",
-   "tpl": "thermo",
+   "id": "s197",
+   "start": 611.92,
+   "end": 615.37,
+   "line": "на семь процентов. Такого спада не было за всю историю",
+   "scene": "barsShot",
+   "tpl": "barsShot",
    "params": {
-    "to": -8,
-    "globe": true,
-    "compare": {
-     "v": -6,
-     "label": "ЛЕДНИКОВЫЙ ПЕРИОД · ТЫСЯЧИ ЛЕТ"
+    "rows": [
+     {
+      "label": "МАЛЫЙ СЦЕНАРИЙ",
+      "v": 0.08,
+      "str": "−7 %"
+     },
+     {
+      "label": "КРУПНЫЙ",
+      "v": 0.9,
+      "str": "−90 %",
+      "red": true
+     }
+    ],
+    "title": "КАЛОРИЙ В МИРЕ",
+    "source": "Xia и др., Nature Food, 2022",
+    "cam": {
+     "move": "pull",
+     "z": 1.05
     }
    },
    "cues": {
-    "drop": 0,
-    "compare": 0.1
+    "b1": -20,
+    "b2": -20
    }
   },
   {
-   "id": "t084",
-   "start": 249.0,
-   "end": 252.0,
+   "id": "s198",
+   "start": 615.37,
+   "end": 618.82,
+   "line": "мировой статистики, с тысяча девятьсот шестьдесят первого года.",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "МАЛЫЙ СЦЕНАРИЙ",
+      "v": 0.08,
+      "str": "−7 %"
+     },
+     {
+      "label": "КРУПНЫЙ",
+      "v": 0.9,
+      "str": "−90 %",
+      "red": true
+     }
+    ],
+    "title": "КАЛОРИЙ В МИРЕ",
+    "source": "Xia и др., Nature Food, 2022",
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   },
+   "cues": {
+    "b1": -20,
+    "b2": -20
+   }
+  },
+  {
+   "id": "s199",
+   "start": 618.82,
+   "end": 620.84,
+   "line": "А в самом тяжёлом сценарии калорий",
+   "scene": "fieldScene",
+   "tpl": "fieldScene",
+   "params": {
+    "grey": 1,
+    "frost": 1
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s200",
+   "start": 620.84,
+   "end": 622.86,
+   "line": "становится меньше на девяносто процентов.",
+   "scene": "fieldScene",
+   "tpl": "fieldScene",
+   "params": {
+    "grey": 1,
+    "frost": 1,
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s201",
+   "start": 622.86,
+   "end": 631.44,
+   "line": "И по расчётам модели, если страны перестанут торговать едой, от голода может погибнуть больше пяти миллиардов человек.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "> 5 МЛРД",
+      "l": "ПО РАСЧЁТАМ МОДЕЛИ"
+     }
+    ],
+    "source": "Nature Food, 2022"
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s202",
+   "start": 631.44,
+   "end": 633.36,
+   "line": "Не от взрывов. От холода",
+   "scene": "fieldScene",
+   "tpl": "fieldScene",
+   "params": {
+    "grey": 1,
+    "frost": 1,
+    "cam": {
+     "move": "rise"
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s203",
+   "start": 633.36,
+   "end": 635.28,
+   "line": "над полями.",
+   "scene": "fieldScene",
+   "tpl": "fieldScene",
+   "params": {
+    "grey": 1,
+    "frost": 1,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s204",
+   "start": 635.28,
+   "end": 637.78,
    "line": "",
+   "scene": "portScene",
+   "tpl": "portScene",
+   "params": {
+    "stopped": 1,
+    "cam": {
+     "move": "driftL"
+    }
+   }
+  },
+  {
+   "id": "s205",
+   "start": 637.78,
+   "end": 640.28,
+   "line": "Но есть",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "smoke": 1,
+    "cold": 1,
+    "spin": 0.02
+   }
+  },
+  {
+   "id": "s206",
+   "start": 640.28,
+   "end": 643.66,
+   "line": "и другие расчёты. В Лос-Аламосе посчитали иначе:",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "two",
+    "charts": [
+     "spectrum",
+     "fall"
+    ],
+    "tag": {
+     "str": "ЛОС-АЛАМОС"
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s207",
+   "start": 643.66,
+   "end": 647.28,
+   "line": "дым поднимается ниже, и зима выходит мягче.",
+   "scene": "smokeDiagram",
+   "tpl": "smokeDiagram",
+   "params": {
+    "cam": {
+     "move": "push"
+    }
+   }
+  },
+  {
+   "id": "s208",
+   "start": 647.28,
+   "end": 649.53,
+   "line": "Им возразили: в их модельном городе слишком",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "sci2",
+    "bg": "lab",
+    "expr": "confused",
+    "side": -1
+   }
+  },
+  {
+   "id": "s209",
+   "start": 649.53,
+   "end": 651.78,
+   "line": "мало того, что может гореть.",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "sci2",
+    "bg": "lab",
+    "expr": "confused",
+    "side": -1,
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   }
+  },
+  {
+   "id": "s210",
+   "start": 651.78,
+   "end": 657.78,
+   "line": "Поэтому ответ — не одна цифра, а целый спектр. От «ядерной осени» в несколько градусов до",
+   "scene": "slider",
+   "tpl": "slider",
+   "params": {}
+  },
+  {
+   "id": "s211",
+   "start": 657.78,
+   "end": 659.89,
+   "line": "«зимы», когда вся планета",
+   "scene": "slider",
+   "tpl": "slider",
+   "params": {
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s212",
+   "start": 659.89,
+   "end": 662.0,
+   "line": "холодеет на восемь. В тысяча девятьсот",
+   "scene": "slider",
+   "tpl": "slider",
+   "params": {
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s213",
+   "start": 662.0,
+   "end": 665.4,
+   "line": "девяносто первом году горели скважины Кувейта.",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "single": "1991",
+    "note": "КУВЕЙТ"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s214",
+   "start": 665.4,
+   "end": 668.05,
+   "line": "Похолодания, которого ждал Саган, не",
+   "scene": "smokeDiagram",
+   "tpl": "smokeDiagram",
+   "params": {}
+  },
+  {
+   "id": "s215",
+   "start": 668.05,
+   "end": 670.7,
+   "line": "случилось: дым не поднялся высоко.",
+   "scene": "smokeDiagram",
+   "tpl": "smokeDiagram",
+   "params": {
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s216",
+   "start": 670.7,
+   "end": 674.13,
+   "line": "А дым лесных пожаров в Канаде в две тысячи семнадцатом году поднялся",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "field",
+    "setOpts": {
+     "grey": 0.6
+    },
+    "tag": {
+     "str": "КАНАДА, 2017"
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s217",
+   "start": 674.13,
+   "end": 677.56,
+   "line": "в стратосферу и держался там месяцами.",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "field",
+    "setOpts": {
+     "grey": 0.6
+    },
+    "tag": {
+     "str": "КАНАДА, 2017"
+    },
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s218",
+   "start": 677.56,
+   "end": 679.84,
+   "line": "Значит, так бывает. Вопрос только в",
+   "scene": "smokeDiagram",
+   "tpl": "smokeDiagram",
+   "params": {
+    "cam": {
+     "move": "pull"
+    }
+   }
+  },
+  {
+   "id": "s219",
+   "start": 679.84,
+   "end": 682.12,
+   "line": "том, сколько дыма. Ядерная",
+   "scene": "smokeDiagram",
+   "tpl": "smokeDiagram",
+   "params": {
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s220",
+   "start": 682.12,
+   "end": 688.76,
+   "line": "зима не длится сто лет. В моделях самое тяжёлое время — от трёх до десяти лет.",
+   "scene": "curves",
+   "tpl": "curves",
+   "params": {
+    "lines": [
+     {
+      "label": "ХОЛОД",
+      "back": 10
+     }
+    ],
+    "years": 15
+   }
+  },
+  {
+   "id": "s221",
+   "start": 688.76,
+   "end": 691.74,
+   "line": "Но если над всей планетой будет холодно и темно, где-то",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "smoke": 1,
+    "cold": 1,
+    "lat0": -30,
+    "lon0": 150
+   }
+  },
+  {
+   "id": "s222",
+   "start": 691.74,
+   "end": 694.72,
+   "line": "же должно быть легче?",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "smoke": 1,
+    "cold": 1,
+    "lat0": -30,
+    "lon0": 150,
+    "cam": {
+     "move": "push",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s223",
+   "start": 694.72,
+   "end": 697.22,
+   "line": "",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "iss_earth_exp65",
+    "from": 49,
+    "caption": "",
+    "credit": "NASA · общественное достояние (МКС)"
+   }
+  },
+  {
+   "id": "s224",
+   "start": 697.22,
+   "end": 699.72,
+   "line": "В две тысячи",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "lat0": -40,
+    "lon0": 170,
+    "spin": 0.03
+   }
+  },
+  {
+   "id": "s225",
+   "start": 699.72,
+   "end": 702.66,
+   "line": "двадцать третьем году два исследователя из Новой",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "two",
+    "modern": true,
+    "charts": [
+     "flat",
+     "rise"
+    ],
+    "tag": {
+     "str": "МЭТТ БОЙД И НИК УИЛСОН, 2023"
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s226",
+   "start": 702.66,
+   "end": 705.6,
+   "line": "Зеландии, Мэтт Бойд и Ник Уилсон,",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "two",
+    "modern": true,
+    "charts": [
+     "flat",
+     "rise"
+    ],
+    "tag": {
+     "str": "МЭТТ БОЙД И НИК УИЛСОН, 2023"
+    },
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s227",
+   "start": 705.6,
+   "end": 713.5,
+   "line": "проверили тридцать восемь островных государств. Сможет ли страна прокормить себя, если солнце надолго закроет дым?",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "dots": 38,
+    "caption": {
+     "str": "38 ОСТРОВНЫХ ГОСУДАРСТВ"
+    }
+   }
+  },
+  {
+   "id": "s228",
+   "start": 713.5,
+   "end": 721.2,
+   "line": "Лучше всех оказались пятеро: Австралия, Новая Зеландия, Исландия, Соломоновы Острова и Вануату. Почти",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "hl": {
+     "au": 1,
+     "nz": 1,
+     "is": 1,
+     "sb": 1,
+     "vu": 1
+    },
+    "caption": {
+     "str": "ЛУЧШЕ ВСЕХ — ПЯТЕРО"
+    }
+   },
+   "cues": {
+    "hl": 0.3
+   }
+  },
+  {
+   "id": "s229",
+   "start": 721.2,
+   "end": 723.3,
+   "line": "все они в Южном полушарии.",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "lat0": -35,
+    "lon0": 150,
+    "hl": {
+     "au": 1,
+     "nz": 1
+    }
+   }
+  },
+  {
+   "id": "s230",
+   "start": 723.3,
+   "end": 725.82,
+   "line": "Там больше океана, а он остывает медленно.",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "lat0": -45,
+    "lon0": -130,
+    "lights": 0.3
+   }
+  },
+  {
+   "id": "s231",
+   "start": 725.82,
+   "end": 728.34,
+   "line": "И они далеко от всех.",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "lat0": -45,
+    "lon0": -130,
+    "lights": 0.3,
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s232",
+   "start": 728.34,
+   "end": 731.27,
+   "line": "А Австралия и Новая Зеландия и сейчас производят",
+   "scene": "portScene",
+   "tpl": "portScene",
+   "params": {
+    "nz": true,
+    "truck": true
+   }
+  },
+  {
+   "id": "s233",
+   "start": 731.27,
+   "end": 734.2,
+   "line": "еды больше, чем съедают. Исландия",
+   "scene": "portScene",
+   "tpl": "portScene",
+   "params": {
+    "nz": true,
+    "truck": true,
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   }
+  },
+  {
+   "id": "s234",
+   "start": 734.2,
+   "end": 738.56,
+   "line": "— особый случай: рыба и тепло прямо из-под земли.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "grindavik_iceland",
+    "from": 5,
+    "caption": "ИСЛАНДИЯ, ГРИНДАВИК",
+    "credit": "Swedrone · CC BY 3.0"
+   }
+  },
+  {
+   "id": "s235",
+   "start": 738.56,
+   "end": 742.54,
+   "line": "Снимая наш фильм про Исландию, мы не подозревали, что рассказываем",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "grindavik_iceland",
+    "from": 208,
+    "caption": "ИСЛАНДИЯ, ГРИНДАВИК",
+    "credit": "Swedrone · CC BY 3.0"
+   }
+  },
+  {
+   "id": "s236",
+   "start": 742.54,
+   "end": 745.71,
+   "line": "про одно из самых надёжных, по этим расчётам, мест",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "lat0": 60,
+    "lon0": -20,
+    "hl": {
+     "is": 1
+    }
+   }
+  },
+  {
+   "id": "s237",
+   "start": 745.71,
+   "end": 748.88,
+   "line": "на случай ядерной зимы. В «Нейчер",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "lat0": 60,
+    "lon0": -20,
+    "hl": {
+     "is": 1
+    },
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s238",
+   "start": 748.88,
+   "end": 753.04,
+   "line": "Фуд» лучше всех тоже вышла Австралия. И ещё Аргентина.",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "hl": {
+     "au": 1
+    },
+    "marks": [
+     {
+      "at": "argentina",
+      "label": "АРГЕНТИНА",
+      "color": "#ffc66e"
+     }
+    ]
+   },
+   "cues": {
+    "hl": 0,
+    "m1": 1.5
+   }
+  },
+  {
+   "id": "s239",
+   "start": 753.04,
+   "end": 757.78,
+   "line": "А хуже всего урожай в моделях — на севере: в Канаде, Европе, России.",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "cold": "cue",
+    "view": {
+     "lon0": -130,
+     "lon1": 140,
+     "lat0": 75,
+     "lat1": 25
+    },
+    "caption": {
+     "str": "КАНАДА · ЕВРОПА · РОССИЯ"
+    }
+   }
+  },
+  {
+   "id": "s240",
+   "start": 757.78,
+   "end": 759.79,
+   "line": "Даже если туда не упадёт ни",
+   "scene": "fieldScene",
+   "tpl": "fieldScene",
+   "params": {
+    "grey": 1,
+    "frost": 1
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s241",
+   "start": 759.79,
+   "end": 761.8,
+   "line": "одного заряда. Слабые",
+   "scene": "fieldScene",
+   "tpl": "fieldScene",
+   "params": {
+    "grey": 1,
+    "frost": 1,
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s242",
+   "start": 761.8,
+   "end": 764.37,
+   "line": "места есть и у лучших. Новая Зеландия почти",
+   "scene": "portScene",
+   "tpl": "portScene",
+   "params": {
+    "nz": true,
+    "stopped": 1
+   }
+  },
+  {
+   "id": "s243",
+   "start": 764.37,
+   "end": 766.94,
+   "line": "всё топливо привозит из-за моря.",
+   "scene": "portScene",
+   "tpl": "portScene",
+   "params": {
+    "nz": true,
+    "stopped": 1,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   }
+  },
+  {
+   "id": "s244",
+   "start": 766.94,
+   "end": 775.76,
+   "line": "А в тропиках, когда сажа рассеется, ультрафиолет из-за истончённого озона несколько лет может быть втрое сильнее экстремального. И оговорка.",
    "scene": "uvScale",
    "tpl": "uvScale",
    "params": {
     "note": "ВТРОЕ СИЛЬНЕЕ ЭКСТРЕМАЛЬНОГО"
    },
    "cues": {
-    "past": 0.1
+    "past": 1.5
    }
   },
   {
-   "id": "t085",
-   "start": 252.0,
-   "end": 255.0,
-   "line": "",
-   "scene": "slider",
-   "tpl": "slider",
+   "id": "s245",
+   "start": 775.76,
+   "end": 780.94,
+   "line": "«Безопасное место» здесь — это место, где можно вырастить еду.",
+   "scene": "quote",
+   "tpl": "quote",
+   "params": {
+    "str": "«Безопасное место» —|место, где можно вырастить еду",
+    "by": ""
+   }
+  },
+  {
+   "id": "s246",
+   "start": 780.94,
+   "end": 782.92,
+   "line": "Модели не считают, сколько людей",
+   "scene": "bankQueue",
+   "tpl": "bankQueue",
+   "params": {
+    "n": 14,
+    "sign": ""
+   },
+   "amb": {
+    "name": "murmur",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s247",
+   "start": 782.92,
+   "end": 784.9,
+   "line": "захочет туда приехать.",
+   "scene": "bankQueue",
+   "tpl": "bankQueue",
+   "params": {
+    "n": 14,
+    "sign": "",
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   },
+   "amb": {
+    "name": "murmur",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s248",
+   "start": 784.9,
+   "end": 786.87,
+   "line": "Это карта урожая, а не карта",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "hl": {
+     "au": 1,
+     "nz": 1,
+     "is": 1
+    },
+    "caption": {
+     "str": "КАРТА УРОЖАЯ, А НЕ КАРТА СПАСЕНИЯ"
+    }
+   }
+  },
+  {
+   "id": "s249",
+   "start": 786.87,
+   "end": 788.84,
+   "line": "спасения. Прошло",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "hl": {
+     "au": 1,
+     "nz": 1,
+     "is": 1
+    },
+    "caption": {
+     "str": "КАРТА УРОЖАЯ, А НЕ КАРТА СПАСЕНИЯ"
+    },
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s250",
+   "start": 788.84,
+   "end": 791.16,
+   "line": "десять лет. Что тогда?",
+   "scene": "hoursStrip",
+   "tpl": "hoursStrip",
+   "params": {
+    "from": 3,
+    "to": 4,
+    "bg": "space"
+   }
+  },
+  {
+   "id": "s251",
+   "start": 791.16,
+   "end": 798.88,
+   "line": "Ответ подсказывает город, про который в тысяча девятьсот сорок пятом году говорили: здесь семьдесят пять лет ничего не вырастет.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "hiroshima_1946",
+    "from": 71,
+    "caption": "ХИРОСИМА, ВЕСНА 1946",
+    "credit": "USAAF / NARA · общественное достояние",
+    "aspect": "4:3"
+   }
+  },
+  {
+   "id": "s252",
+   "start": 798.88,
+   "end": 801.28,
+   "line": "Хиросима,",
+   "scene": "chapterTitle",
+   "tpl": "chapterTitle",
+   "params": {
+    "str": "ДЕСЯТЬ ЛЕТ И ДАЛЬШЕ",
+    "hours": 4
+   },
+   "sfx": [
+    {
+     "at": 0.0,
+     "name": "whoosh",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s253",
+   "start": 801.28,
+   "end": 805.82,
+   "line": "шестое августа тысяча девятьсот сорок пятого года.",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "single": "6.08.1945",
+    "note": "ХИРОСИМА"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s254",
+   "start": 805.82,
+   "end": 808.64,
+   "line": "К концу того года здесь погибли, по оценке города,",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "hiroshima_1946",
+    "from": 210,
+    "caption": "ХИРОСИМА, ВЕСНА 1946",
+    "credit": "USAAF / NARA · общественное достояние",
+    "aspect": "4:3"
+   }
+  },
+  {
+   "id": "s255",
+   "start": 808.64,
+   "end": 811.9,
+   "line": "около ста сорока тысяч человек.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "≈ 140 000",
+      "l": "ПОГИБЛИ К КОНЦУ 1945 · ОЦЕНКА ГОРОДА"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s256",
+   "start": 811.9,
+   "end": 818.52,
+   "line": "Выживших называют хибакуся. Многие из них потом всю жизнь лечились от последствий. Тогда многие",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "hiroshima_1946",
+    "from": 15,
+    "caption": "ХИРОСИМА, ВЕСНА 1946",
+    "credit": "USAAF / NARA · общественное достояние",
+    "aspect": "4:3"
+   }
+  },
+  {
+   "id": "s257",
+   "start": 818.52,
+   "end": 822.98,
+   "line": "верили, что здесь семьдесят пять лет ничего не вырастет.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "hiroshima_1946",
+    "from": 410,
+    "caption": "ХИРОСИМА, ВЕСНА 1946",
+    "credit": "USAAF / NARA · общественное достояние",
+    "aspect": "4:3"
+   }
+  },
+  {
+   "id": "s258",
+   "start": 822.98,
+   "end": 826.94,
+   "line": "Ошибались. Уже следующим летом среди развалин зацвели",
+   "scene": "oleanderBloom",
+   "tpl": "oleanderBloom",
+   "params": {},
+   "cues": {
+    "bloom": 1.0
+   },
+   "sfx": [
+    {
+     "at": 0.5,
+     "name": "shimmer",
+     "gain": -18
+    }
+   ]
+  },
+  {
+   "id": "s259",
+   "start": 826.94,
+   "end": 829.07,
+   "line": "олеандры. Олеандр стал символом",
+   "scene": "oleanderBloom",
+   "tpl": "oleanderBloom",
+   "params": {
+    "warm": true,
+    "cam": {
+     "move": "push"
+    }
+   },
+   "sfx": [
+    {
+     "at": 0.5,
+     "name": "shimmer",
+     "gain": -18
+    }
+   ]
+  },
+  {
+   "id": "s260",
+   "start": 829.07,
+   "end": 831.2,
+   "line": "Хиросимы. А ещё",
+   "scene": "oleanderBloom",
+   "tpl": "oleanderBloom",
+   "params": {
+    "warm": true,
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   }
+  },
+  {
+   "id": "s261",
+   "start": 831.2,
+   "end": 832.8,
+   "line": "раньше пошёл трамвай. Мужчины-водители",
+   "scene": "tramRide",
+   "tpl": "tramRide",
    "params": {}
   },
   {
-   "id": "t086",
-   "start": 255.0,
-   "end": 258.0,
-   "line": "",
+   "id": "s262",
+   "start": 832.8,
+   "end": 836.55,
+   "line": "ушли на фронт, и вагоны водили девочки четырнадцати-шестнадцати",
+   "scene": "tramRide",
+   "tpl": "tramRide",
+   "params": {
+    "closeup": true
+   }
+  },
+  {
+   "id": "s263",
+   "start": 836.55,
+   "end": 840.3,
+   "line": "лет из трамвайного училища.",
+   "scene": "tramRide",
+   "tpl": "tramRide",
+   "params": {
+    "closeup": true,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   }
+  },
+  {
+   "id": "s264",
+   "start": 840.3,
+   "end": 842.62,
+   "line": "Около тридцати из них погибли.",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "tramgirl",
+    "bg": "tram",
+    "expr": "determined",
+    "side": 1
+   }
+  },
+  {
+   "id": "s265",
+   "start": 842.62,
+   "end": 847.02,
+   "line": "Но через три дня после взрыва, девятого августа, трамвай снова поехал.",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "single": "9.08.1945",
+    "note": "ТРАМВАЙ СНОВА ПОЕХАЛ"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s266",
+   "start": 847.02,
+   "end": 850.78,
+   "line": "Из ста двадцати трёх вагонов на ходу было только три.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "3 ИЗ 123",
+      "l": "ВАГОНОВ НА ХОДУ"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s267",
+   "start": 850.78,
+   "end": 853.33,
+   "line": "Кондуктором в одном из первых была четырнадцатилетняя",
+   "scene": "tramRide",
+   "tpl": "tramRide",
+   "params": {
+    "closeup": true,
+    "tag": {
+     "str": "САТОКО САСАГУТИ, 14 ЛЕТ"
+    }
+   }
+  },
+  {
+   "id": "s268",
+   "start": 853.33,
+   "end": 855.88,
+   "line": "Сатоко Сасагути.",
+   "scene": "tramRide",
+   "tpl": "tramRide",
+   "params": {
+    "closeup": true,
+    "tag": {
+     "str": "САТОКО САСАГУТИ, 14 ЛЕТ"
+    },
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   }
+  },
+  {
+   "id": "s269",
+   "start": 855.88,
+   "end": 857.48,
+   "line": "Город без воды и света. А",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "hiroshima_1946",
+    "from": 216,
+    "caption": "ХИРОСИМА, ВЕСНА 1946",
+    "credit": "USAAF / NARA · общественное достояние",
+    "aspect": "4:3"
+   }
+  },
+  {
+   "id": "s270",
+   "start": 857.48,
+   "end": 859.84,
+   "line": "по рельсам едет трамвай, и в нём",
+   "scene": "tramRide",
+   "tpl": "tramRide",
+   "params": {
+    "dir": -1
+   }
+  },
+  {
+   "id": "s271",
+   "start": 859.84,
+   "end": 862.2,
+   "line": "работают школьницы. Около",
+   "scene": "tramRide",
+   "tpl": "tramRide",
+   "params": {
+    "dir": -1,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   }
+  },
+  {
+   "id": "s272",
+   "start": 862.2,
+   "end": 868.6,
+   "line": "ста семидесяти деревьев пережили взрыв в радиусе двух километров. Многие из них живы до сих пор.",
+   "scene": "hiroshimaMap",
+   "tpl": "hiroshimaMap",
+   "params": {},
+   "cues": {
+    "circle": 0.2,
+    "trees": 1.5
+   }
+  },
+  {
+   "id": "s273",
+   "start": 868.6,
+   "end": 872.04,
+   "line": "Сегодня в Хиросиме живёт почти миллион двести тысяч человек.",
+   "scene": "hiroshimaMap",
+   "tpl": "hiroshimaMap",
+   "params": {
+    "people": "≈ 1 200 000"
+   },
+   "cues": {
+    "people": 0.5
+   }
+  },
+  {
+   "id": "s274",
+   "start": 872.04,
+   "end": 875.54,
+   "line": "Здесь можно жить, потому что бомба взорвалась в воздухе, и",
+   "scene": "tramRide",
+   "tpl": "tramRide",
+   "params": {
+    "today": true,
+    "flowers": 1
+   }
+  },
+  {
+   "id": "s275",
+   "start": 875.54,
+   "end": 879.04,
+   "line": "основное заражение ушло за недели.",
+   "scene": "tramRide",
+   "tpl": "tramRide",
+   "params": {
+    "today": true,
+    "flowers": 1,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   }
+  },
+  {
+   "id": "s276",
+   "start": 879.04,
+   "end": 883.04,
+   "line": "А небо?",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "hiroshima_lanterns_2019",
+    "from": 146,
+    "caption": "ХИРОСИМА, 6 АВГУСТА 2019",
+    "credit": "U.S. Navy / DVIDS · общественное достояние"
+   }
+  },
+  {
+   "id": "s277",
+   "start": 883.04,
+   "end": 884.64,
+   "line": "В моделях свет возвращается",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "smoke": 0.6,
+    "cold": 0.4
+   }
+  },
+  {
+   "id": "s278",
+   "start": 884.64,
+   "end": 890.64,
+   "line": "к норме примерно через десять лет. Сильный холод уходит примерно за десять лет. Но",
    "scene": "curves",
    "tpl": "curves",
    "params": {},
    "cues": {
-    "c1": 0,
-    "c2": 0,
-    "c3": 0
+    "c1": 0.2,
+    "c2": 2,
+    "c3": 4
    }
   },
   {
-   "id": "t087",
-   "start": 258.0,
-   "end": 261.0,
+   "id": "s279",
+   "start": 890.64,
+   "end": 893.07,
+   "line": "до пятнадцати лет после войны будет ещё",
+   "scene": "curves",
+   "tpl": "curves",
+   "params": {
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   },
+   "cues": {
+    "c1": -20,
+    "c2": -20,
+    "c3": -20
+   }
+  },
+  {
+   "id": "s280",
+   "start": 893.07,
+   "end": 895.5,
+   "line": "примерно на градус холоднее обычного.",
+   "scene": "curves",
+   "tpl": "curves",
+   "params": {
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   },
+   "cues": {
+    "c1": -20,
+    "c2": -20,
+    "c3": -20
+   }
+  },
+  {
+   "id": "s281",
+   "start": 895.5,
+   "end": 897.81,
+   "line": "Озоновый слой восстанавливается за двенадцать-пятнадцать",
+   "scene": "curves",
+   "tpl": "curves",
+   "params": {
+    "cam": {
+     "move": "push"
+    }
+   }
+  },
+  {
+   "id": "s282",
+   "start": 897.81,
+   "end": 900.12,
+   "line": "лет. Есть и",
+   "scene": "curves",
+   "tpl": "curves",
+   "params": {
+    "cam": {
+     "move": "push",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s283",
+   "start": 900.12,
+   "end": 903.68,
+   "line": "другой пример. Не война, а авария: Чернобыль.",
+   "scene": "deadForest",
+   "tpl": "deadForest",
+   "params": {
+    "tag": {
+     "str": "ЧЕРНОБЫЛЬ, 1986"
+    }
+   }
+  },
+  {
+   "id": "s284",
+   "start": 903.68,
+   "end": 909.68,
+   "line": "Весной и летом тысяча девятьсот восемьдесят шестого года отсюда вывезли около ста шестнадцати тысяч",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "≈ 116 000",
+      "l": "ВЫВЕЗЛИ В 1986"
+     },
+     {
+      "v": "≈ 220 000",
+      "l": "ПЕРЕСЕЛИЛИ ПОЗЖЕ"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s285",
+   "start": 909.68,
+   "end": 912.28,
+   "line": "человек. А в следующие годы переселили",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "≈ 116 000",
+      "l": "ВЫВЕЗЛИ В 1986"
+     },
+     {
+      "v": "≈ 220 000",
+      "l": "ПЕРЕСЕЛИЛИ ПОЗЖЕ"
+     }
+    ],
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s286",
+   "start": 912.28,
+   "end": 914.88,
+   "line": "ещё около двухсот двадцати тысяч.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "≈ 116 000",
+      "l": "ВЫВЕЗЛИ В 1986"
+     },
+     {
+      "v": "≈ 220 000",
+      "l": "ПЕРЕСЕЛИЛИ ПОЗЖЕ"
+     }
+    ],
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s287",
+   "start": 914.88,
+   "end": 918.38,
+   "line": "Здесь хорошо видно, что делает природа, когда уходят люди.",
+   "scene": "deadForest",
+   "tpl": "deadForest",
+   "params": {
+    "animals": true
+   }
+  },
+  {
+   "id": "s288",
+   "start": 918.38,
+   "end": 921.54,
+   "line": "Учёные несколько лет считали зверей по следам.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "chernobyl_antlers",
+    "from": 32,
+    "caption": "ЗОНА ЧАЭС: ОЛЕНЬИ РОГА И ДОЗИМЕТР",
+    "credit": "Carl Willis · CC BY"
+   }
+  },
+  {
+   "id": "s289",
+   "start": 921.54,
+   "end": 924.21,
+   "line": "Лосей, косуль, оленей и кабанов там",
+   "scene": "deadForest",
+   "tpl": "deadForest",
+   "params": {
+    "animals": true,
+    "cam": {
+     "move": "driftR"
+    }
+   }
+  },
+  {
+   "id": "s290",
+   "start": 924.21,
+   "end": 926.88,
+   "line": "столько же, сколько в обычных заповедниках.",
+   "scene": "deadForest",
+   "tpl": "deadForest",
+   "params": {
+    "animals": true,
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   }
+  },
+  {
+   "id": "s291",
+   "start": 926.88,
+   "end": 930.0,
+   "line": "А волков — примерно в семь раз больше.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "× 7",
+      "l": "ВОЛКОВ"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s292",
+   "start": 930.0,
+   "end": 933.64,
+   "line": "Но ближайший к станции лес погиб и стал рыжим.",
+   "scene": "deadForest",
+   "tpl": "deadForest",
+   "params": {
+    "animals": false,
+    "cam": {
+     "move": "push",
+     "z": 1.4
+    }
+   }
+  },
+  {
+   "id": "s293",
+   "start": 933.64,
+   "end": 937.34,
+   "line": "А у части насекомых и птиц учёные находят меньше особей, чем",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "one",
+    "charts": [
+     "fall",
+     "flat"
+    ]
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s294",
+   "start": 937.34,
+   "end": 941.04,
+   "line": "должно быть. Почему — пока выясняют. И третий",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "one",
+    "charts": [
+     "fall",
+     "flat"
+    ],
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s295",
+   "start": 941.04,
+   "end": 944.34,
+   "line": "пример — атолл Бикини в Тихом океане.",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "view": {
+     "lon0": 150,
+     "lon1": 180,
+     "lat0": 20,
+     "lat1": 0
+    },
+    "marks": [
+     {
+      "at": [
+       165.4,
+       11.6
+      ],
+      "label": "АТОЛЛ БИКИНИ"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s296",
+   "start": 944.34,
+   "end": 951.08,
+   "line": "С тысяча девятьсот сорок шестого по пятьдесят восьмой год здесь провели двадцать три испытания. В феврале",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "crossroads_1946",
+    "from": 362,
+    "caption": "ИСПЫТАНИЯ, 1946–1958, АТОЛЛ БИКИНИ",
+    "credit": "U.S. Army Signal Corps · NARA",
+    "aspect": "4:3"
+   }
+  },
+  {
+   "id": "s297",
+   "start": 951.08,
+   "end": 954.64,
+   "line": "сорок шестого жителей собрали после воскресной службы.",
+   "scene": "atollGather",
+   "tpl": "atollGather",
+   "params": {},
+   "amb": {
+    "name": "murmur",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s298",
+   "start": 954.64,
+   "end": 957.06,
+   "line": "Губернатор островов спросил, готовы ли они уехать",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "governor",
+    "bg": "atoll",
+    "expr": "neutral",
+    "side": -1
+   }
+  },
+  {
+   "id": "s299",
+   "start": 957.06,
+   "end": 959.48,
+   "line": "на время, ради блага человечества.",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "governor",
+    "bg": "atoll",
+    "expr": "neutral",
+    "side": -1,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   }
+  },
+  {
+   "id": "s300",
+   "start": 959.48,
+   "end": 962.92,
+   "line": "По воспоминаниям, вождь Джуда ответил: «Мы пойдём.",
+   "scene": "atollGather",
+   "tpl": "atollGather",
+   "params": {
+    "focus": "talk"
+   },
+   "cues": {
+    "answer": 1.5
+   },
+   "amb": {
+    "name": "murmur",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s301",
+   "start": 962.92,
+   "end": 965.52,
+   "line": "Всё в руках Божьих». Сто шестьдесят",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "chief",
+    "bg": "atoll",
+    "expr": "neutral",
+    "side": 1
+   }
+  },
+  {
+   "id": "s302",
+   "start": 965.52,
+   "end": 968.82,
+   "line": "семь человек перевезли на соседний атолл.",
+   "scene": "atollBoats",
+   "tpl": "atollBoats",
+   "params": {}
+  },
+  {
+   "id": "s303",
+   "start": 968.82,
+   "end": 970.76,
+   "line": "Им обещали, что ненадолго.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "167",
+      "l": "ЧЕЛОВЕК ПЕРЕВЕЗЛИ"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s304",
+   "start": 970.76,
+   "end": 972.36,
+   "line": "Еды там не хватало. В конце",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "chief",
+    "bg": "atoll",
+    "expr": "thinking"
+   }
+  },
+  {
+   "id": "s305",
+   "start": 972.36,
+   "end": 974.63,
+   "line": "шестидесятых атолл объявили безопасным,",
+   "scene": "atollGather",
+   "tpl": "atollGather",
+   "params": {
+    "focus": "crowd"
+   },
+   "amb": {
+    "name": "murmur",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s306",
+   "start": 974.63,
+   "end": 976.9,
+   "line": "и часть семей вернулась.",
+   "scene": "atollGather",
+   "tpl": "atollGather",
+   "params": {
+    "focus": "crowd",
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   },
+   "amb": {
+    "name": "murmur",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s307",
+   "start": 976.9,
+   "end": 979.21,
+   "line": "А через десять лет у них нашли в организме",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "one",
+    "charts": [
+     "rise",
+     "flat"
+    ]
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s308",
+   "start": 979.21,
+   "end": 981.52,
+   "line": "повышенный цезий.",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "one",
+    "charts": [
+     "rise",
+     "flat"
+    ],
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s309",
+   "start": 981.52,
+   "end": 984.68,
+   "line": "И их увезли опять. В две тысячи",
+   "scene": "atollBoats",
+   "tpl": "atollBoats",
+   "params": {
+    "cam": {
+     "move": "pull"
+    }
+   }
+  },
+  {
+   "id": "s310",
+   "start": 984.68,
+   "end": 987.58,
+   "line": "втором году учёные нырнули в самый большой",
+   "scene": "reef",
+   "tpl": "reef",
+   "params": {
+    "tag": {
+     "str": "КРАТЕР, 2002"
+    }
+   }
+  },
+  {
+   "id": "s311",
+   "start": 987.58,
+   "end": 990.48,
+   "line": "кратер и нашли там кораллы.",
+   "scene": "reef",
+   "tpl": "reef",
+   "params": {
+    "tag": {
+     "str": "КРАТЕР, 2002"
+    },
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   }
+  },
+  {
+   "id": "s312",
+   "start": 990.48,
+   "end": 993.12,
+   "line": "Примерно семьдесят процентов прежних видов.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "≈ 70 %",
+      "l": "ПРЕЖНИХ ВИДОВ КОРАЛЛОВ"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s313",
+   "start": 993.12,
+   "end": 995.37,
+   "line": "Акул и рыбы вокруг много. Потому",
+   "scene": "reef",
+   "tpl": "reef",
+   "params": {
+    "sharks": 3
+   }
+  },
+  {
+   "id": "s314",
+   "start": 995.37,
+   "end": 997.62,
+   "line": "что рыбаков нет.",
+   "scene": "reef",
+   "tpl": "reef",
+   "params": {
+    "sharks": 3,
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   }
+  },
+  {
+   "id": "s315",
+   "start": 997.62,
+   "end": 1000.41,
+   "line": "А люди так и не вернулись. Постоянно",
+   "scene": "atollBoats",
+   "tpl": "atollBoats",
+   "params": {
+    "empty": true,
+    "boats": false
+   }
+  },
+  {
+   "id": "s316",
+   "start": 1000.41,
+   "end": 1003.2,
+   "line": "на Бикини никто не живёт. Природа",
+   "scene": "atollBoats",
+   "tpl": "atollBoats",
+   "params": {
+    "empty": true,
+    "boats": false,
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   }
+  },
+  {
+   "id": "s317",
+   "start": 1003.2,
+   "end": 1004.9,
+   "line": "возвращается быстрее людей.",
+   "scene": "oleanderBloom",
+   "tpl": "oleanderBloom",
+   "params": {
+    "warm": true
+   },
+   "sfx": [
+    {
+     "at": 0.5,
+     "name": "shimmer",
+     "gain": -18
+    }
+   ]
+  },
+  {
+   "id": "s318",
+   "start": 1004.9,
+   "end": 1008.5,
+   "line": "Кораллам, волкам и олеандрам не нужны договоры.",
+   "scene": "deadForest",
+   "tpl": "deadForest",
+   "params": {
+    "animals": true
+   }
+  },
+  {
+   "id": "s319",
+   "start": 1008.5,
+   "end": 1012.0,
+   "line": "И не нужно время, чтобы забыть страх. Людям — нужно.",
+   "scene": "atollBoats",
+   "tpl": "atollBoats",
+   "params": {
+    "empty": true,
+    "boats": false,
+    "golden": true
+   }
+  },
+  {
+   "id": "s320",
+   "start": 1012.0,
+   "end": 1015.14,
+   "line": "Может быть, поэтому самое трудное после любой катастрофы — не",
+   "scene": "cityPhone",
+   "tpl": "cityPhone",
+   "params": {},
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s321",
+   "start": 1015.14,
+   "end": 1018.28,
+   "line": "отстроить город. А снова поверить соседу.",
+   "scene": "cityPhone",
+   "tpl": "cityPhone",
+   "params": {
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   },
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s322",
+   "start": 1018.28,
+   "end": 1021.69,
+   "line": "Мы привыкли думать, что мир держат ракеты и договоры.",
+   "scene": "hotline",
+   "tpl": "hotline",
+   "params": {}
+  },
+  {
+   "id": "s323",
+   "start": 1021.69,
+   "end": 1025.1,
+   "line": "Но, может быть, его держит что-то совсем простое.",
+   "scene": "hotline",
+   "tpl": "hotline",
+   "params": {
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   }
+  },
+  {
+   "id": "s324",
+   "start": 1025.1,
+   "end": 1028.68,
+   "line": "Привычка снять трубку и переспросить.",
+   "scene": "cityPhone",
+   "tpl": "cityPhone",
+   "params": {
+    "cam": {
+     "move": "push",
+     "z": 1.4
+    }
+   },
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s325",
+   "start": 1028.68,
+   "end": 1031.013,
    "line": "",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "black_marble",
+    "from": 23,
+    "caption": "",
+    "credit": "NASA · общественное достояние"
+   }
+  },
+  {
+   "id": "s326",
+   "start": 1031.013,
+   "end": 1033.347,
+   "line": "",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "station",
+    "setOpts": {
+     "dawn": true
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s327",
+   "start": 1033.347,
+   "end": 1035.68,
+   "line": "Но лучше,",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "iss_earth_exp65",
+    "from": 57,
+    "caption": "",
+    "credit": "NASA · общественное достояние (МКС)"
+   }
+  },
+  {
+   "id": "s328",
+   "start": 1035.68,
+   "end": 1038.145,
+   "line": "чтобы до такого не дошло никогда. И",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "station",
+    "cam": {
+     "move": "driftR"
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s329",
+   "start": 1038.145,
+   "end": 1040.61,
+   "line": "пока не дошло.",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "station",
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s330",
+   "start": 1040.61,
+   "end": 1045.72,
+   "line": "Хотя как минимум семь раз мир был к этому ближе, чем кажется.",
+   "scene": "sevenRow",
+   "tpl": "sevenRow",
+   "params": {
+    "state": "dim"
+   }
+  },
+  {
+   "id": "s331",
+   "start": 1045.72,
+   "end": 1048.12,
+   "line": "Раз первый.",
+   "scene": "chapterTitle",
+   "tpl": "chapterTitle",
+   "params": {
+    "str": "СЕМЬ РАЗ НА ГРАНИ"
+   },
+   "sfx": [
+    {
+     "at": 0.0,
+     "name": "whoosh",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s332",
+   "start": 1048.12,
+   "end": 1054.63,
+   "line": "Январь тысяча девятьсот шестьдесят первого года, Северная Каролина, ночь.",
+   "scene": "caseCard",
+   "tpl": "caseCard",
+   "params": {
+    "n": 1,
+    "where": "СЕВЕРНАЯ КАРОЛИНА · 1961"
+   },
+   "sfx": [
+    {
+     "at": 0.05,
+     "name": "hit",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s333",
+   "start": 1054.63,
+   "end": 1057.19,
+   "line": "Командир бомбардировщика, майор Уолтер Таллок,",
+   "scene": "bomberNight",
+   "tpl": "bomberNight",
+   "params": {
+    "tanker": true,
+    "leak": true,
+    "breakup": false
+   }
+  },
+  {
+   "id": "s334",
+   "start": 1057.19,
+   "end": 1059.36,
+   "line": "слышит от самолёта-заправщика: из",
+   "scene": "cockpitCrew",
+   "tpl": "cockpitCrew",
+   "params": {
+    "warn": "cue"
+   },
+   "cues": {
+    "warn": 0.5
+   }
+  },
+  {
+   "id": "s335",
+   "start": 1059.36,
+   "end": 1061.53,
+   "line": "крыла течёт топливо.",
+   "scene": "cockpitCrew",
+   "tpl": "cockpitCrew",
+   "params": {
+    "warn": "cue",
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   },
+   "cues": {
+    "warn": -20
+   }
+  },
+  {
+   "id": "s336",
+   "start": 1061.53,
+   "end": 1063.33,
+   "line": "За пару минут уходят тонны.",
+   "scene": "bomberNight",
+   "tpl": "bomberNight",
+   "params": {
+    "tanker": true,
+    "leak": true,
+    "breakup": false,
+    "cam": {
+     "move": "push"
+    }
+   }
+  },
+  {
+   "id": "s337",
+   "start": 1063.33,
+   "end": 1065.65,
+   "line": "Таллок приказывает экипажу прыгать.",
+   "scene": "cockpitCrew",
+   "tpl": "cockpitCrew",
+   "params": {
+    "warn": 1
+   }
+  },
+  {
+   "id": "s338",
+   "start": 1065.65,
+   "end": 1067.97,
+   "line": "Из восьми человек выжили пятеро.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "5 ИЗ 8",
+      "l": "ВЫЖИЛИ"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s339",
+   "start": 1067.97,
+   "end": 1070.945,
+   "line": "Лейтенант Адам Маттокс выбрался через верхний люк,",
+   "scene": "cockpitCrew",
+   "tpl": "cockpitCrew",
+   "params": {
+    "hatch": true
+   },
+   "cues": {
+    "hatch": 0.3
+   }
+  },
+  {
+   "id": "s340",
+   "start": 1070.945,
+   "end": 1073.92,
+   "line": "без катапультного кресла. А на",
+   "scene": "cockpitCrew",
+   "tpl": "cockpitCrew",
+   "params": {
+    "hatch": true,
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   },
+   "cues": {
+    "hatch": -20
+   }
+  },
+  {
+   "id": "s341",
+   "start": 1073.92,
+   "end": 1077.43,
+   "line": "поля под городком Голдсборо падают две бомбы.",
+   "scene": "bomberNight",
+   "tpl": "bomberNight",
+   "params": {
+    "breakup": true,
+    "chutes": 2
+   },
+   "cues": {
+    "break": 0.05
+   }
+  },
+  {
+   "id": "s342",
+   "start": 1077.43,
+   "end": 1079.61,
+   "line": "Одна повисла на парашюте на дереве.",
+   "scene": "goldsboroField",
+   "tpl": "goldsboroField",
+   "params": {
+    "tree": true
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s343",
+   "start": 1079.61,
+   "end": 1081.69,
+   "line": "Вторая ушла в болото, и часть",
+   "scene": "goldsboroField",
+   "tpl": "goldsboroField",
+   "params": {
+    "tree": false,
+    "swamp": true
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s344",
+   "start": 1081.69,
+   "end": 1083.77,
+   "line": "её так и осталась в земле.",
+   "scene": "goldsboroField",
+   "tpl": "goldsboroField",
+   "params": {
+    "tree": false,
+    "swamp": true,
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s345",
+   "start": 1083.77,
+   "end": 1088.93,
+   "line": "У первой бомбы было четыре ступени защиты. Три из них не сработали.",
+   "scene": "lamps",
+   "tpl": "lamps",
+   "params": {},
+   "cues": {
+    "off1": "Три",
+    "off2": 1.0,
+    "off3": 1.5
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "blip",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s346",
+   "start": 1088.93,
+   "end": 1091.07,
+   "line": "Устояла последняя.",
+   "scene": "lamps",
+   "tpl": "lamps",
+   "params": {
+    "cam": {
+     "move": "push",
+     "z": 1.5
+    }
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "blip",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s347",
+   "start": 1091.07,
+   "end": 1099.0,
+   "line": "Много лет спустя инженер написал, что между страной и катастрофой стоял один простой переключатель. Раз второй.",
    "scene": "quote",
    "tpl": "quote",
    "params": {
-    "str": "«Ядерная война не может быть выиграна|и никогда не должна быть развязана»",
-    "by": "1985 · 2022"
-   },
-   "cues": {
-    "q1": 0,
-    "q2": 0,
-    "by": 0
+    "str": "Между страной и катастрофой|стоял один простой переключатель",
+    "by": "ИЗ ДОКЛАДА ИНЖЕНЕРА"
    }
   },
   {
-   "id": "t088",
-   "start": 261.0,
-   "end": 264.0,
+   "id": "s348",
+   "start": 1099.0,
+   "end": 1102.71,
+   "line": "Октябрь шестьдесят второго, Карибский кризис.",
+   "scene": "caseCard",
+   "tpl": "caseCard",
+   "params": {
+    "n": 2,
+    "where": "КАРИБСКОЕ МОРЕ · 1962"
+   },
+   "sfx": [
+    {
+     "at": 0.05,
+     "name": "hit",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s349",
+   "start": 1102.71,
+   "end": 1104.69,
+   "line": "Советская подводная лодка «Бэ пятьдесят",
+   "scene": "subOutside",
+   "tpl": "subOutside",
+   "params": {
+    "ships": 0
+   }
+  },
+  {
+   "id": "s350",
+   "start": 1104.69,
+   "end": 1106.67,
+   "line": "девять» идёт под водой у Кубы.",
+   "scene": "subOutside",
+   "tpl": "subOutside",
+   "params": {
+    "ships": 0,
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   }
+  },
+  {
+   "id": "s351",
+   "start": 1106.67,
+   "end": 1108.53,
+   "line": "Связи с Москвой давно нет.",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "sub",
+    "setOpts": {
+     "heat": 0.4
+    }
+   }
+  },
+  {
+   "id": "s352",
+   "start": 1108.53,
+   "end": 1113.85,
+   "line": "Сверху американские корабли бросают учебные глубинные гранаты, чтобы заставить её всплыть.",
+   "scene": "subOutside",
+   "tpl": "subOutside",
+   "params": {
+    "ships": 3
+   },
+   "cues": {
+    "f1": 0.5,
+    "f2": 1.8,
+    "f3": 3
+   }
+  },
+  {
+   "id": "s353",
+   "start": 1113.85,
+   "end": 1117.45,
+   "line": "Внутри — больше сорока пяти градусов, тяжело дышать.",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "sub",
+    "setOpts": {
+     "heat": 0.9,
+     "thermo": 50
+    }
+   }
+  },
+  {
+   "id": "s354",
+   "start": 1117.45,
+   "end": 1120.8,
+   "line": "Многим кажется, что война уже началась. По воспоминаниям",
+   "scene": "subCouncil",
+   "tpl": "subCouncil",
+   "params": {
+    "heat": 0.9,
+    "alarm": 0.5
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s355",
+   "start": 1120.8,
+   "end": 1122.4,
+   "line": "одного из офицеров, командир",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "crew",
+    "bg": "sub",
+    "expr": "worried",
+    "side": -1
+   }
+  },
+  {
+   "id": "s356",
+   "start": 1122.4,
+   "end": 1125.73,
+   "line": "хочет готовить к пуску торпеду с ядерным зарядом.",
+   "scene": "subCouncil",
+   "tpl": "subCouncil",
+   "params": {
+    "heat": 0.9,
+    "focus": "commander"
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s357",
+   "start": 1125.73,
+   "end": 1129.49,
+   "line": "Но, по тем же рассказам, для этого нужно согласие троих.",
+   "scene": "subCouncil",
+   "tpl": "subCouncil",
+   "params": {
+    "heat": 0.9,
+    "focus": "all"
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s358",
+   "start": 1129.49,
+   "end": 1132.57,
+   "line": "Командира. Замполита. И начальника штаба бригады,",
+   "scene": "subCouncil",
+   "tpl": "subCouncil",
+   "params": {
+    "heat": 0.9,
+    "focus": "all"
+   },
+   "cues": {
+    "yes1": 0.3,
+    "yes2": 1.2
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s359",
+   "start": 1132.57,
+   "end": 1134.76,
+   "line": "Василия Архипова. За год",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "arkhipov",
+    "bg": "sub",
+    "expr": "determined",
+    "side": -1,
+    "rings": true
+   }
+  },
+  {
+   "id": "s360",
+   "start": 1134.76,
+   "end": 1137.525,
+   "line": "с небольшим до этого Архипов был старшим помощником",
+   "scene": "k19",
+   "tpl": "k19",
+   "params": {
+    "tagStr": "К-19, 1961"
+   }
+  },
+  {
+   "id": "s361",
+   "start": 1137.525,
+   "end": 1140.29,
+   "line": "на атомной подлодке «Ка девятнадцать».",
+   "scene": "k19",
+   "tpl": "k19",
+   "params": {
+    "tagStr": "К-19, 1961",
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   }
+  },
+  {
+   "id": "s362",
+   "start": 1140.29,
+   "end": 1142.21,
+   "line": "Там отказало охлаждение реактора.",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "crew",
+    "bg": "sub",
+    "expr": "scared",
+    "side": 1
+   }
+  },
+  {
+   "id": "s363",
+   "start": 1142.21,
+   "end": 1145.12,
+   "line": "Моряки чинили его своими руками, и несколько человек",
+   "scene": "k19",
+   "tpl": "k19",
+   "params": {
+    "n": 4
+   }
+  },
+  {
+   "id": "s364",
+   "start": 1145.12,
+   "end": 1148.03,
+   "line": "погибли от облучения в первые же недели.",
+   "scene": "k19",
+   "tpl": "k19",
+   "params": {
+    "n": 4,
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   }
+  },
+  {
+   "id": "s365",
+   "start": 1148.03,
+   "end": 1150.255,
+   "line": "Может быть, поэтому он знал цену ошибки",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "arkhipov",
+    "bg": "sub",
+    "expr": "thinking",
+    "side": 1
+   }
+  },
+  {
+   "id": "s366",
+   "start": 1150.255,
+   "end": 1152.48,
+   "line": "лучше многих. По этим рассказам,",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "arkhipov",
+    "bg": "sub",
+    "expr": "thinking",
+    "side": 1,
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   }
+  },
+  {
+   "id": "s367",
+   "start": 1152.48,
+   "end": 1154.81,
+   "line": "двое согласны.",
+   "scene": "subCouncil",
+   "tpl": "subCouncil",
+   "params": {
+    "heat": 0.9,
+    "focus": "all"
+   },
+   "cues": {
+    "yes1": 0.2,
+    "yes2": 0.8
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s368",
+   "start": 1154.81,
+   "end": 1157.69,
+   "line": "А Архипов говорит «нет».",
+   "scene": "subCouncil",
+   "tpl": "subCouncil",
+   "params": {
+    "heat": 0.9,
+    "focus": "arkhipov"
+   },
+   "cues": {
+    "no": 0.4
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s369",
+   "start": 1157.69,
+   "end": 1161.11,
+   "line": "Приказа он не нарушал: у него было право голоса.",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "arkhipov",
+    "bg": "sub",
+    "expr": "determined",
+    "side": -1
+   }
+  },
+  {
+   "id": "s370",
+   "start": 1161.11,
+   "end": 1162.71,
+   "line": "Лодка всплыла. В",
+   "scene": "subOutside",
+   "tpl": "subOutside",
+   "params": {
+    "rise": true
+   },
+   "cues": {
+    "rise": 0
+   }
+  },
+  {
+   "id": "s371",
+   "start": 1162.71,
+   "end": 1167.63,
+   "line": "две тысячи семнадцатом году Архипову посмертно вручили премию «Будущее жизни».",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "single": "2017",
+    "note": "ПРЕМИЯ «БУДУЩЕЕ ЖИЗНИ»"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s372",
+   "start": 1167.63,
+   "end": 1170.235,
+   "line": "А журналисты называют его просто: человек,",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "arkhipov",
+    "bg": "sub",
+    "expr": "neutral",
+    "side": 1,
+    "rings": true
+   }
+  },
+  {
+   "id": "s373",
+   "start": 1170.235,
+   "end": 1172.84,
+   "line": "который спас мир.",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "arkhipov",
+    "bg": "sub",
+    "expr": "neutral",
+    "side": 1,
+    "rings": true,
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   }
+  },
+  {
+   "id": "s374",
+   "start": 1172.84,
+   "end": 1175.34,
    "line": "",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "iss_earth_exp65",
+    "from": 200,
+    "caption": "",
+    "credit": "NASA · общественное достояние (МКС)"
+   }
+  },
+  {
+   "id": "s375",
+   "start": 1175.34,
+   "end": 1177.84,
+   "line": "Раз третий:",
+   "scene": "subOutside",
+   "tpl": "subOutside",
+   "params": {
+    "rise": true,
+    "dawn": true
+   }
+  },
+  {
+   "id": "s376",
+   "start": 1177.84,
+   "end": 1182.36,
+   "line": "ноябрь тысяча девятьсот семьдесят девятого. Утро.",
+   "scene": "caseCard",
+   "tpl": "caseCard",
+   "params": {
+    "n": 3,
+    "where": "США · 1979"
+   },
+   "sfx": [
+    {
+     "at": 0.05,
+     "name": "hit",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s377",
+   "start": 1182.36,
+   "end": 1184.56,
+   "line": "На экранах американских командных центров —",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "attack",
+    "alarm": 1
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s378",
+   "start": 1184.56,
+   "end": 1186.76,
+   "line": "массированный ракетный удар.",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "attack",
+    "alarm": 1,
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s379",
+   "start": 1186.76,
+   "end": 1188.86,
+   "line": "В небо поднимаются истребители.",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "attack",
+    "alarm": 1,
+    "cam": {
+     "move": "push",
+     "z": 1.3
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s380",
+   "start": 1188.86,
+   "end": 1192.38,
+   "line": "Но другие системы не видят ни одного пуска.",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "attack",
+    "alarm": 1,
+    "second": true
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s381",
+   "start": 1192.38,
+   "end": 1195.05,
+   "line": "Через несколько минут выясняется: в компьютер попала",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "empty",
+    "alarm": 0
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s382",
+   "start": 1195.05,
+   "end": 1197.72,
+   "line": "учебная программа. Ночь.",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "empty",
+    "alarm": 0,
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s383",
+   "start": 1197.72,
+   "end": 1202.44,
+   "line": "Июнь тысяча девятьсот восьмидесятого. Это раз четвёртый.",
+   "scene": "caseCard",
+   "tpl": "caseCard",
+   "params": {
+    "n": 4,
+    "where": "США · 1980"
+   },
+   "sfx": [
+    {
+     "at": 0.05,
+     "name": "hit",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s384",
+   "start": 1202.44,
+   "end": 1208.14,
+   "line": "Советник президента США по безопасности потом вспоминал: его разбудил звонок в три часа ночи:",
+   "scene": "bedroomCall",
+   "tpl": "bedroomCall",
+   "params": {},
+   "cues": {
+    "wake": 1,
+    "answer": 2.5
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "phonering",
+     "gain": -14
+    }
+   ],
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s385",
+   "start": 1208.14,
+   "end": 1210.54,
+   "line": "на страну летят двести с лишним ракет,",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "adviser",
+    "bg": "bedroom",
+    "expr": "shocked",
+    "side": 1
+   }
+  },
+  {
+   "id": "s386",
+   "start": 1210.54,
+   "end": 1212.94,
+   "line": "потом — больше двух тысяч.",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "adviser",
+    "bg": "bedroom",
+    "expr": "shocked",
+    "side": 1,
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   }
+  },
+  {
+   "id": "s387",
+   "start": 1212.94,
+   "end": 1214.86,
+   "line": "А по документам было так.",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "digits",
+    "digits": [
+     [
+      0,
+      "000"
+     ]
+    ],
+    "alarm": 0
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s388",
+   "start": 1214.86,
+   "end": 1221.16,
+   "line": "На экранах командных центров вместо нулей появляются цифры. Две ракеты с подлодок. Потом двести.",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "digits",
+    "digits": [
+     [
+      0,
+      "000"
+     ],
+     [
+      0.3,
+      "002"
+     ],
+     [
+      0.6,
+      "200"
+     ]
+    ],
+    "alarm": "cue"
+   },
+   "cues": {
+    "alarm": 2
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s389",
+   "start": 1221.16,
+   "end": 1223.94,
+   "line": "Экипажи бомбардировщиков запускают двигатели.",
+   "scene": "cockpitCrew",
+   "tpl": "cockpitCrew",
+   "params": {
+    "ground": true
+   },
+   "cues": {
+    "start": 0.5
+   }
+  },
+  {
+   "id": "s390",
+   "start": 1223.94,
+   "end": 1231.44,
+   "line": "Причиной, по итогам проверки, скорее всего была неисправная микросхема. Деталь ценой в сорок шесть центов. Раз пятый.",
    "scene": "priceTag",
    "tpl": "priceTag",
    "params": {
     "sub": "НЕИСПРАВНАЯ МИКРОСХЕМА"
    },
    "cues": {
-    "price": 0
+    "price": "сорок"
+   },
+   "sfx": [
+    {
+     "at": 0.4,
+     "name": "blip",
+     "gain": -14
+    }
+   ]
+  },
+  {
+   "id": "s391",
+   "start": 1231.44,
+   "end": 1234.08,
+   "line": "Сентябрь восемьдесят третьего.",
+   "scene": "caseCard",
+   "tpl": "caseCard",
+   "params": {
+    "n": 5,
+    "where": "СЕРПУХОВ-15 · 1983"
+   },
+   "sfx": [
+    {
+     "at": 0.05,
+     "name": "hit",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s392",
+   "start": 1234.08,
+   "end": 1235.68,
+   "line": "Станислав Петров. Его довод",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "alarm": 1,
+    "banner": 1,
+    "arcs": 5,
+    "pose": "stand",
+    "expr": "thinking",
+    "z": 1.2
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
    }
   },
   {
-   "id": "t089",
-   "start": 264.0,
-   "end": 267.0,
-   "line": "",
-   "scene": "twoSensors",
-   "tpl": "twoSensors",
-   "params": {},
-   "cues": {
-    "sat": 0,
-    "radar": 0,
-    "lamp": 0.1
+   "id": "s393",
+   "start": 1235.68,
+   "end": 1237.79,
+   "line": "был простым: если начинают войну,",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "petrov",
+    "bg": "control",
+    "expr": "thinking",
+    "rings": true
    }
   },
   {
-   "id": "t090",
-   "start": 267.0,
-   "end": 270.0,
-   "line": "",
+   "id": "s394",
+   "start": 1237.79,
+   "end": 1239.9,
+   "line": "не запускают пять ракет.",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "petrov",
+    "bg": "control",
+    "expr": "thinking",
+    "rings": true,
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   }
+  },
+  {
+   "id": "s395",
+   "start": 1239.9,
+   "end": 1242.32,
+   "line": "А наземные радары ничего не видели.",
    "scene": "twoSensors",
    "tpl": "twoSensors",
    "params": {
     "mode": "satOnly"
-   },
-   "cues": {
-    "sat": 0,
-    "radar": 0,
-    "lamp": 0.1
    }
   },
   {
-   "id": "t091",
-   "start": 270.0,
-   "end": 273.0,
-   "line": "",
-   "scene": "sunGlint",
-   "tpl": "sunGlint",
+   "id": "s396",
+   "start": 1242.32,
+   "end": 1245.62,
+   "line": "Он не нарушил ни одного правила. Он",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "petrov",
+    "bg": "control",
+    "expr": "determined",
+    "side": -1
+   }
+  },
+  {
+   "id": "s397",
+   "start": 1245.62,
+   "end": 1248.92,
+   "line": "просто не спешил, а проверял. От командования",
+   "scene": "bigHead",
+   "tpl": "bigHead",
+   "params": {
+    "who": "petrov",
+    "bg": "control",
+    "expr": "determined",
+    "side": -1,
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   }
+  },
+  {
+   "id": "s398",
+   "start": 1248.92,
+   "end": 1252.68,
+   "line": "награды он не получил. Получил",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "pose": "desk",
+    "expr": "neutral",
+    "alarm": 0,
+    "banner": 0,
+    "z": 1.3
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s399",
+   "start": 1252.68,
+   "end": 1256.44,
+   "line": "замечание — за неправильно заполненный журнал.",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "pose": "desk",
+    "expr": "neutral",
+    "alarm": 0,
+    "banner": 0,
+    "z": 1.3,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s400",
+   "start": 1256.44,
+   "end": 1258.98,
+   "line": "Записывать было некогда: в одной руке он держал",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "pose": [
+     [
+      0,
+      "phone"
+     ],
+     [
+      0.5,
+      "mic"
+     ]
+    ],
+    "alarm": 1,
+    "banner": 1,
+    "arcs": 5,
+    "expr": "determined",
+    "z": 1.6
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s401",
+   "start": 1258.98,
+   "end": 1261.52,
+   "line": "телефон, в другой — микрофон.",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "pose": [
+     [
+      0,
+      "phone"
+     ],
+     [
+      0.5,
+      "mic"
+     ]
+    ],
+    "alarm": 1,
+    "banner": 1,
+    "arcs": 5,
+    "expr": "determined",
+    "z": 1.6,
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s402",
+   "start": 1261.52,
+   "end": 1263.78,
+   "line": "Мир узнал об этой ночи только в",
+   "scene": "kitchenNews",
+   "tpl": "kitchenNews",
+   "params": {
+    "who": "petrov",
+    "pose": "sit",
+    "tv": {
+     "head": "1998"
+    }
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s403",
+   "start": 1263.78,
+   "end": 1266.04,
+   "line": "тысяча девятьсот девяносто восьмом году.",
+   "scene": "kitchenNews",
+   "tpl": "kitchenNews",
+   "params": {
+    "who": "petrov",
+    "pose": "sit",
+    "tv": {
+     "head": "1998"
+    },
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s404",
+   "start": 1266.04,
+   "end": 1272.88,
+   "line": "Сам Петров говорил: «Я не герой. Я просто оказался в нужное время в нужном месте». Раз шестой.",
+   "scene": "quote",
+   "tpl": "quote",
+   "params": {
+    "str": "«Я не герой.|Я просто оказался|в нужное время в нужном месте»",
+    "by": "СТАНИСЛАВ ПЕТРОВ"
+   }
+  },
+  {
+   "id": "s405",
+   "start": 1272.88,
+   "end": 1279.1,
+   "line": "Через шесть недель после Петрова начинаются штабные учения «Эйбл Арчер».",
+   "scene": "caseCard",
+   "tpl": "caseCard",
+   "params": {
+    "n": 6,
+    "where": "ЕВРОПА · НОЯБРЬ 1983"
+   },
+   "sfx": [
+    {
+     "at": 0.05,
+     "name": "hit",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s406",
+   "start": 1279.1,
+   "end": 1281.18,
+   "line": "Они очень похожи на настоящую",
+   "scene": "bunkersWorld",
+   "tpl": "bunkersWorld",
+   "params": {}
+  },
+  {
+   "id": "s407",
+   "start": 1281.18,
+   "end": 1283.26,
+   "line": "подготовку к ядерному удару.",
+   "scene": "bunkersWorld",
+   "tpl": "bunkersWorld",
+   "params": {
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s408",
+   "start": 1283.26,
+   "end": 1285.35,
+   "line": "А другая сторона как раз в это время",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "radar",
+    "blip": true
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s409",
+   "start": 1285.35,
+   "end": 1287.44,
+   "line": "ищет такие признаки.",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "radar",
+    "blip": true,
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s410",
+   "start": 1287.44,
+   "end": 1294.56,
+   "line": "В рассекреченном американском докладе потом написали: «Возможно, мы нечаянно поставили наши отношения на взвод».",
+   "scene": "quote",
+   "tpl": "quote",
+   "params": {
+    "str": "«Возможно, мы нечаянно|поставили наши отношения на взвод»",
+    "by": "РАССЕКРЕЧЕННЫЙ ДОКЛАД США"
+   }
+  },
+  {
+   "id": "s411",
+   "start": 1294.56,
+   "end": 1296.78,
+   "line": "Насколько близко это было, историки",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "empty"
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s412",
+   "start": 1296.78,
+   "end": 1299.0,
+   "line": "выясняют до сих пор. Январь",
+   "scene": "scientists",
+   "tpl": "scientists",
+   "params": {
+    "mode": "empty",
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s413",
+   "start": 1299.0,
+   "end": 1300.86,
+   "line": "тысяча девятьсот девяносто пятого.",
+   "scene": "caseCard",
+   "tpl": "caseCard",
+   "params": {
+    "n": 7,
+    "where": "НОРВЕГИЯ · 1995"
+   },
+   "sfx": [
+    {
+     "at": 0.05,
+     "name": "hit",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s414",
+   "start": 1300.86,
+   "end": 1306.76,
+   "line": "Норвежские учёные запускают ракету, чтобы изучать северное сияние. Это раз седьмой.",
+   "scene": "arcticRocket",
+   "tpl": "arcticRocket",
    "params": {},
    "cues": {
-    "sun": 0,
-    "glint": 0,
-    "glint2": 0.05,
-    "sat": 0.1
+    "launch": 1
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
    }
   },
   {
-   "id": "t092",
-   "start": 273.0,
-   "end": 276.0,
+   "id": "s415",
+   "start": 1306.76,
+   "end": 1310.76,
+   "line": "Норвегия заранее предупредила около тридцати стран.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "aurora_alaska",
+    "from": 2,
+    "caption": "СЕВЕРНОЕ СИЯНИЕ (NASA)",
+    "credit": "NASA SVS / Mike Toillion"
+   }
+  },
+  {
+   "id": "s416",
+   "start": 1310.76,
+   "end": 1314.26,
+   "line": "Но до дежурных на радарах сообщение не дошло. На экранах",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "radar",
+    "blip": true,
+    "alarm": 0.5
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s417",
+   "start": 1314.26,
+   "end": 1317.76,
+   "line": "ракета была похожа на ту, что запускают с подводной лодки.",
+   "scene": "noradHall",
+   "tpl": "noradHall",
+   "params": {
+    "screen": "radar",
+    "blip": true,
+    "alarm": 0.5,
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s418",
+   "start": 1317.76,
+   "end": 1322.24,
+   "line": "И, как считается, впервые в истории открыли ядерный чемоданчик.",
+   "scene": "briefcase",
+   "tpl": "briefcase",
+   "params": {},
+   "cues": {
+    "open": 0.5
+   }
+  },
+  {
+   "id": "s419",
+   "start": 1322.24,
+   "end": 1324.68,
+   "line": "Через двадцать четыре минуты ракета упала",
+   "scene": "arcticRocket",
+   "tpl": "arcticRocket",
+   "params": {
+    "cam": {
+     "move": "pull"
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s420",
+   "start": 1324.68,
+   "end": 1327.12,
+   "line": "в море у Шпицбергена. Семь",
+   "scene": "arcticRocket",
+   "tpl": "arcticRocket",
+   "params": {
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s421",
+   "start": 1327.12,
+   "end": 1328.72,
+   "line": "раз. Почти каждый",
+   "scene": "sevenRow",
+   "tpl": "sevenRow",
+   "params": {
+    "state": "light",
+    "labels": true
+   }
+  },
+  {
+   "id": "s422",
+   "start": 1328.72,
+   "end": 1330.88,
+   "line": "раз в цепочке оказывался человек, который",
+   "scene": "chain",
+   "tpl": "chain",
+   "params": {
+    "mode": "check"
+   }
+  },
+  {
+   "id": "s423",
+   "start": 1330.88,
+   "end": 1333.04,
+   "line": "не спешил, а проверял.",
+   "scene": "chain",
+   "tpl": "chain",
+   "params": {
+    "mode": "check",
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s424",
+   "start": 1333.04,
+   "end": 1335.96,
+   "line": "А один раз мир спас просто переключатель.",
+   "scene": "sevenRow",
+   "tpl": "sevenRow",
+   "params": {
+    "state": "first"
+   }
+  },
+  {
+   "id": "s425",
+   "start": 1335.96,
+   "end": 1338.88,
+   "line": "Но после таких ночей мир кое-что менял.",
+   "scene": "sevenRow",
+   "tpl": "sevenRow",
+   "params": {
+    "state": "first",
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s426",
+   "start": 1338.88,
+   "end": 1341.88,
+   "line": "И это видно по одной цифре.",
+   "scene": "bigCounter",
+   "tpl": "bigCounter",
+   "params": {
+    "from": 12187,
+    "to": 12187,
+    "unit": "",
+    "bg": "void"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "counter",
+     "gain": -18
+    }
+   ]
+  },
+  {
+   "id": "s427",
+   "start": 1341.88,
+   "end": 1344.38,
    "line": "",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "black_marble",
+    "from": 38,
+    "caption": "",
+    "credit": "NASA · общественное достояние"
+   }
+  },
+  {
+   "id": "s428",
+   "start": 1344.38,
+   "end": 1346.88,
+   "line": "",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "black_marble",
+    "from": 45,
+    "caption": "",
+    "credit": "NASA · общественное достояние"
+   }
+  },
+  {
+   "id": "s429",
+   "start": 1346.88,
+   "end": 1349.28,
+   "line": "Около семидесяти",
+   "scene": "chapterTitle",
+   "tpl": "chapterTitle",
+   "params": {
+    "str": "ПОЧЕМУ ЭТОГО ДО СИХ ПОР НЕ СЛУЧИЛОСЬ"
+   },
+   "sfx": [
+    {
+     "at": 0.0,
+     "name": "whoosh",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s430",
+   "start": 1349.28,
+   "end": 1355.28,
+   "line": "тысяч. Столько ядерных боеголовок было в мире, по оценкам, в тысяча девятьсот восемьдесят",
+   "scene": "bigCounter",
+   "tpl": "bigCounter",
+   "params": {
+    "from": 70300,
+    "to": 12187,
+    "prefix": "≈ ",
+    "unit": "ЯДЕРНЫХ БОЕГОЛОВОК",
+    "years": {
+     "from": "1986",
+     "to": "2026"
+    },
+    "source": "SIPRI / FAS"
+   },
+   "cues": {
+    "count": "двенадцати"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "counter",
+     "gain": -18
+    }
+   ]
+  },
+  {
+   "id": "s431",
+   "start": 1355.28,
+   "end": 1358.975,
+   "line": "шестом году. На начало две тысячи двадцать шестого — около",
+   "scene": "bigCounter",
+   "tpl": "bigCounter",
+   "params": {
+    "from": 70300,
+    "to": 12187,
+    "prefix": "≈ ",
+    "unit": "ЯДЕРНЫХ БОЕГОЛОВОК",
+    "years": {
+     "from": "1986",
+     "to": "2026"
+    },
+    "source": "SIPRI / FAS",
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   },
+   "cues": {
+    "count": -20
+   }
+  },
+  {
+   "id": "s432",
+   "start": 1358.975,
+   "end": 1362.67,
+   "line": "двенадцати тысяч. Почти в шесть раз меньше.",
+   "scene": "bigCounter",
+   "tpl": "bigCounter",
+   "params": {
+    "from": 70300,
+    "to": 12187,
+    "prefix": "≈ ",
+    "unit": "ЯДЕРНЫХ БОЕГОЛОВОК",
+    "years": {
+     "from": "1986",
+     "to": "2026"
+    },
+    "source": "SIPRI / FAS",
+    "cam": {
+     "move": "pull",
+     "z": 1.05
+    }
+   },
+   "cues": {
+    "count": -20
+   }
+  },
+  {
+   "id": "s433",
+   "start": 1362.67,
+   "end": 1368.67,
+   "line": "Но сейчас общее число падает в основном потому, что разбирают старые боеголовки.",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "ВСЕГО",
+      "v": 0.55,
+      "str": "↓ РАЗБИРАЮТ СТАРЫЕ"
+     },
+     {
+      "label": "ВОЕННЫЕ ЗАПАСЫ",
+      "v": 0.7,
+      "str": "↑ РАСТУТ",
+      "red": true,
+      "cue": "военные"
+     }
+    ],
+    "title": "СЕЙЧАС",
+    "source": "SIPRI, январь 2026"
+   }
+  },
+  {
+   "id": "s434",
+   "start": 1368.67,
+   "end": 1370.955,
+   "line": "А военные запасы снова понемногу",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "ВСЕГО",
+      "v": 0.55,
+      "str": "↓ РАЗБИРАЮТ СТАРЫЕ"
+     },
+     {
+      "label": "ВОЕННЫЕ ЗАПАСЫ",
+      "v": 0.7,
+      "str": "↑ РАСТУТ",
+      "red": true,
+      "cue": "военные"
+     }
+    ],
+    "title": "СЕЙЧАС",
+    "source": "SIPRI, январь 2026",
+    "cam": {
+     "move": "push",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s435",
+   "start": 1370.955,
+   "end": 1373.24,
+   "line": "растут. Меньше",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "ВСЕГО",
+      "v": 0.55,
+      "str": "↓ РАЗБИРАЮТ СТАРЫЕ"
+     },
+     {
+      "label": "ВОЕННЫЕ ЗАПАСЫ",
+      "v": 0.7,
+      "str": "↑ РАСТУТ",
+      "red": true,
+      "cue": "военные"
+     }
+    ],
+    "title": "СЕЙЧАС",
+    "source": "SIPRI, январь 2026",
+    "cam": {
+     "move": "push",
+     "z": 1.05
+    }
+   }
+  },
+  {
+   "id": "s436",
+   "start": 1373.24,
+   "end": 1381.85,
+   "line": "чем через год после Карибского кризиса между двумя столицами протянули прямую линию связи. Чтобы в следующий раз просто позвонить.",
+   "scene": "hotline",
+   "tpl": "hotline",
+   "params": {},
+   "cues": {
+    "print": 2
+   }
+  },
+  {
+   "id": "s437",
+   "start": 1381.85,
+   "end": 1385.47,
+   "line": "Потом были договоры о нераспространении и о сокращении.",
+   "scene": "treaties",
+   "tpl": "treaties",
+   "params": {
+    "years": [
+     {
+      "y": "1963",
+      "l": "ГОРЯЧАЯ ЛИНИЯ"
+     },
+     {
+      "y": "1968",
+      "l": "НЕРАСПРОСТРАНЕНИЕ"
+     },
+     {
+      "y": "1987",
+      "l": "СОКРАЩЕНИЕ"
+     },
+     {
+      "y": "1993",
+      "l": "МЕГАТОННЫ В МЕГАВАТТЫ"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s438",
+   "start": 1385.47,
+   "end": 1392.51,
+   "line": "А материал из двадцати тысяч боеголовок двадцать лет превращали в топливо для атомных электростанций.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "20 000",
+      "l": "БОЕГОЛОВОК → ТОПЛИВО ДЛЯ АЭС"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s439",
+   "start": 1392.51,
+   "end": 1396.96,
+   "line": "Программа так и называлась: «Мегатонны в мегаватты». В две",
+   "scene": "quote",
+   "tpl": "quote",
+   "params": {
+    "str": "«Мегатонны|в мегаватты»",
+    "by": "1993–2013"
+   }
+  },
+  {
+   "id": "s440",
+   "start": 1396.96,
+   "end": 1400.59,
+   "line": "тысячи двадцать четвёртом году Нобелевскую премию мира получила",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "single": "2024",
+    "note": "НОБЕЛЕВСКАЯ ПРЕМИЯ МИРА · НИХОН ХИДАНКЁ"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s441",
+   "start": 1400.59,
+   "end": 1405.27,
+   "line": "организация хибакуся — тех, кто пережил Хиросиму и Нагасаки.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "hiroshima_lanterns_2019",
+    "from": 221,
+    "caption": "ХИРОСИМА, 6 АВГУСТА 2019",
+    "credit": "U.S. Navy / DVIDS · общественное достояние"
+   }
+  },
+  {
+   "id": "s442",
+   "start": 1405.27,
+   "end": 1409.45,
+   "line": "Десятилетиями они рассказывали миру, почему это нельзя повторить.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "hiroshima_lanterns_2019",
+    "from": 242,
+    "caption": "ХИРОСИМА, 6 АВГУСТА 2019",
+    "credit": "U.S. Navy / DVIDS · общественное достояние"
+   }
+  },
+  {
+   "id": "s443",
+   "start": 1409.45,
+   "end": 1415.48,
+   "line": "Весной две тысячи двадцать шестого года их оставалось около девяноста одной тысячи. Есть",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "≈ 91 000",
+      "l": "ХИБАКУСЯ · ВЕСНА 2026"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s444",
+   "start": 1415.48,
+   "end": 1421.81,
+   "line": "и тревожная новость. Пятого февраля две тысячи двадцать шестого года истёк последний договор.",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "single": "5.02.2026",
+    "note": "ДОГОВОР ИСТЁК"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s445",
+   "start": 1421.81,
+   "end": 1427.81,
+   "line": "Он ограничивал стратегические арсеналы двух крупнейших ядерных держав. Впервые с тысяча девятьсот семьдесят второго",
+   "scene": "treaties",
+   "tpl": "treaties",
+   "params": {
+    "snap": true,
+    "years": [
+     {
+      "y": "1972",
+      "l": "ПЕРВЫЕ ОГРАНИЧЕНИЯ"
+     },
+     {
+      "y": "2010",
+      "l": "ПОСЛЕДНИЙ ДОГОВОР"
+     }
+    ]
+   },
+   "cues": {
+    "snap": "Впервые"
+   }
+  },
+  {
+   "id": "s446",
+   "start": 1427.81,
+   "end": 1430.95,
+   "line": "года таких ограничений нет.",
+   "scene": "treaties",
+   "tpl": "treaties",
+   "params": {
+    "snap": true,
+    "years": [
+     {
+      "y": "1972",
+      "l": "ПЕРВЫЕ ОГРАНИЧЕНИЯ"
+     },
+     {
+      "y": "2010",
+      "l": "ПОСЛЕДНИЙ ДОГОВОР"
+     }
+    ],
+    "cam": {
+     "move": "push",
+     "z": 1.05
+    }
+   },
+   "cues": {
+    "snap": -20
+   }
+  },
+  {
+   "id": "s447",
+   "start": 1430.95,
+   "end": 1433.19,
+   "line": "И всё же в две тысячи двадцать втором году",
+   "scene": "hotline",
+   "tpl": "hotline",
+   "params": {}
+  },
+  {
+   "id": "s448",
+   "start": 1433.19,
+   "end": 1436.45,
+   "line": "пять ядерных держав вместе повторили фразу,",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "single": "2022",
+    "note": "ПЯТЬ ЯДЕРНЫХ ДЕРЖАВ"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s449",
+   "start": 1436.45,
+   "end": 1443.81,
+   "line": "которую в тысяча девятьсот восемьдесят пятом году вместе записали лидеры двух стран. Вот она.",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "single": "1985",
+    "note": "ЛИДЕРЫ ДВУХ СТРАН"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s450",
+   "start": 1443.81,
+   "end": 1449.52,
+   "line": "Ядерная война не может быть выиграна и никогда не должна быть развязана. Так что",
+   "scene": "quote",
+   "tpl": "quote",
+   "params": {
+    "str": "«Ядерная война не может быть выиграна|и никогда не должна быть развязана»",
+    "by": "1985 · 2022"
+   }
+  },
+  {
+   "id": "s451",
+   "start": 1449.52,
+   "end": 1452.14,
+   "line": "же будет, если однажды рядом не окажется",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "empty": true,
+    "z": 1.2,
+    "cam": {
+     "move": "push",
+     "amt": 0.2
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s452",
+   "start": 1452.14,
+   "end": 1454.76,
+   "line": "своего Петрова? Честный",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "empty": true,
+    "z": 1.2,
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s453",
+   "start": 1454.76,
+   "end": 1457.5,
+   "line": "ответ: систему строили так, чтобы всё не",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "ghosts": [
+     "arkhipov",
+     "duty",
+     "duty",
+     "pilot"
+    ],
+    "banner": 0
+   },
+   "cues": {
+    "ghosts": 0.2
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s454",
+   "start": 1457.5,
+   "end": 1460.24,
+   "line": "держалось на одном Петрове. Одна сломанная",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "ghosts": [
+     "arkhipov",
+     "duty",
+     "duty",
+     "pilot"
+    ],
+    "banner": 0,
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   },
+   "cues": {
+    "ghosts": -20
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s455",
+   "start": 1460.24,
+   "end": 1462.97,
+   "line": "деталь, одна учебная программа или",
+   "scene": "priceTag",
+   "tpl": "priceTag",
+   "params": {
+    "sub": "ОДНА ДЕТАЛЬ"
+   },
+   "sfx": [
+    {
+     "at": 0.4,
+     "name": "blip",
+     "gain": -14
+    }
+   ]
+  },
+  {
+   "id": "s456",
+   "start": 1462.97,
+   "end": 1466.65,
+   "line": "один солнечный блик не должны поднимать мир по тревоге.",
+   "scene": "sunGlint",
+   "tpl": "sunGlint",
+   "params": {}
+  },
+  {
+   "id": "s457",
+   "start": 1466.65,
+   "end": 1469.69,
+   "line": "Поэтому тревогу подтверждают два разных датчика.",
+   "scene": "twoSensors",
+   "tpl": "twoSensors",
+   "params": {}
+  },
+  {
+   "id": "s458",
+   "start": 1469.69,
+   "end": 1473.42,
+   "line": "Поэтому есть прямая линия связи и уведомления о пусках,",
+   "scene": "hotline",
+   "tpl": "hotline",
+   "params": {}
+  },
+  {
+   "id": "s459",
+   "start": 1473.42,
+   "end": 1477.15,
+   "line": "о которых договорились в тысяча девятьсот восемьдесят восьмом году.",
+   "scene": "hotline",
+   "tpl": "hotline",
+   "params": {
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   }
+  },
+  {
+   "id": "s460",
+   "start": 1477.15,
+   "end": 1480.85,
+   "line": "И люди в цепочке, которые перепроверяют каждую тревогу.",
    "scene": "chain",
    "tpl": "chain",
    "params": {
@@ -1307,161 +7938,436 @@
    }
   },
   {
-   "id": "t093",
-   "start": 276.0,
-   "end": 279.0,
-   "line": "",
-   "scene": "briefcase",
-   "tpl": "briefcase",
-   "params": {},
-   "cues": {
-    "open": 0,
-    "phone": 0.1,
-    "folder": 0.1,
-    "card": 0.1
-   }
-  },
-  {
-   "id": "t094",
-   "start": 279.0,
-   "end": 282.0,
-   "line": "",
-   "scene": "smokeDiagram",
-   "tpl": "smokeDiagram",
-   "params": {},
-   "cues": {
-    "rise": 0,
-    "spread": 0.1
-   }
-  },
-  {
-   "id": "t095",
-   "start": 282.0,
-   "end": 285.0,
-   "line": "",
-   "scene": "cutaway",
-   "tpl": "cutaway",
+   "id": "s461",
+   "start": 1480.85,
+   "end": 1483.645,
+   "line": "Мир держался не на одном герое. А на том,",
+   "scene": "establish",
+   "tpl": "establish",
    "params": {
-    "kind": "hotel"
+    "set": "station",
+    "setOpts": {
+     "dawn": true
+    },
+    "cam": {
+     "move": "rise"
+    }
    },
-   "cues": {
-    "bunker": 0
+   "amb": {
+    "name": "wind",
+    "gain": -26
    }
   },
   {
-   "id": "t096",
-   "start": 285.0,
-   "end": 288.0,
-   "line": "",
-   "scene": "cutaway",
-   "tpl": "cutaway",
+   "id": "s462",
+   "start": 1483.645,
+   "end": 1486.44,
+   "line": "что таких людей много. Во многом",
+   "scene": "establish",
+   "tpl": "establish",
    "params": {
-    "kind": "mountain"
+    "set": "station",
+    "setOpts": {
+     "dawn": true
+    },
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
    },
-   "cues": {
-    "springs": 0,
-    "doors": 0
+   "amb": {
+    "name": "wind",
+    "gain": -26
    }
   },
   {
-   "id": "t097",
-   "start": 288.0,
-   "end": 291.0,
-   "line": "",
-   "scene": "hiroshimaMap",
-   "tpl": "hiroshimaMap",
+   "id": "s463",
+   "start": 1486.44,
+   "end": 1489.395,
+   "line": "поэтому этого до сих пор не случилось.",
+   "scene": "goldsboroField",
+   "tpl": "goldsboroField",
    "params": {
-    "people": "≈ 1 200 000"
+    "tree": true,
+    "cam": {
+     "move": "driftL"
+    }
    },
-   "cues": {
-    "circle": 0,
-    "trees": 0,
-    "people": 0.1
+   "amb": {
+    "name": "wind",
+    "gain": -26
    }
   },
   {
-   "id": "t098",
-   "start": 291.0,
-   "end": 294.0,
-   "line": "",
-   "scene": "lamps",
-   "tpl": "lamps",
-   "params": {},
-   "cues": {
-    "off1": 0,
-    "off2": 0.05,
-    "off3": 0.1,
-    "switch": 0.1
-   }
-  },
-  {
-   "id": "t099",
-   "start": 294.0,
-   "end": 297.0,
-   "line": "",
-   "scene": "treaties",
-   "tpl": "treaties",
+   "id": "s464",
+   "start": 1489.395,
+   "end": 1492.35,
+   "line": "А иногда — просто повезло, как в Голдсборо.",
+   "scene": "goldsboroField",
+   "tpl": "goldsboroField",
    "params": {
-    "snap": true,
-    "bulb": true
+    "tree": true,
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
    },
-   "cues": {
-    "y1": 0,
-    "y2": 0,
-    "y3": 0,
-    "y4": 0,
-    "snap": 0.1,
-    "bulb": 0.1
+   "amb": {
+    "name": "wind",
+    "gain": -26
    }
   },
   {
-   "id": "t100",
-   "start": 297.0,
-   "end": 300.0,
-   "line": "",
-   "scene": "bunkersWorld",
-   "tpl": "bunkersWorld",
-   "params": {}
-  },
-  {
-   "id": "t101",
-   "start": 300.0,
-   "end": 303.0,
-   "line": "",
-   "scene": "cableVsHose",
-   "tpl": "cableVsHose",
-   "params": {},
-   "cues": {
-    "hose": 0
-   }
-  },
-  {
-   "id": "t102",
-   "start": 303.0,
-   "end": 306.0,
-   "line": "",
-   "scene": "archive",
-   "tpl": "archive",
+   "id": "s465",
+   "start": 1492.35,
+   "end": 1499.67,
+   "line": "Последний раз ядерное оружие применили на войне девятого августа тысяча девятьсот сорок пятого года. В Нагасаки.",
+   "scene": "calendar",
+   "tpl": "calendar",
    "params": {
-    "clip": "starfish_1962",
-    "caption": "ИСПЫТАНИЕ, 1962, ТИХИЙ ОКЕАН",
-    "credit": "AEC · общественное достояние"
+    "single": "9.08.1945",
+    "note": "НАГАСАКИ"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s466",
+   "start": 1499.67,
+   "end": 1505.89,
+   "line": "Там к концу того года погибли, по оценке города, около семидесяти четырёх тысяч человек.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "≈ 74 000",
+      "l": "ПОГИБЛИ К КОНЦУ 1945 · ОЦЕНКА ГОРОДА"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s467",
+   "start": 1505.89,
+   "end": 1507.71,
+   "line": "С тех пор — ни разу.",
+   "scene": "oleanderBloom",
+   "tpl": "oleanderBloom",
+   "params": {
+    "warm": true
+   },
+   "sfx": [
+    {
+     "at": 0.5,
+     "name": "shimmer",
+     "gain": -18
+    }
+   ]
+  },
+  {
+   "id": "s468",
+   "start": 1507.71,
+   "end": 1510.88,
+   "line": "Восемьдесят один год. А какая",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "81 ГОД",
+      "l": "БЕЗ ЯДЕРНОГО ОРУЖИЯ НА ВОЙНЕ"
+     }
+    ],
+    "bg": "space"
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s469",
+   "start": 1510.88,
+   "end": 1516.73,
+   "line": "из семи историй удивила вас больше всего? Напишите цифру — от одного до семи.",
+   "scene": "sevenRow",
+   "tpl": "sevenRow",
+   "params": {
+    "state": "numbers",
+    "question": "Какая история удивила вас больше всего?"
    }
   },
   {
-   "id": "t103",
-   "start": 306.0,
-   "end": 309.0,
-   "line": "",
-   "scene": "archive",
-   "tpl": "archive",
+   "id": "s470",
+   "start": 1516.73,
+   "end": 1520.225,
+   "line": "А если бы вы сидели на месте Петрова, что бы вы доложили?",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
    "params": {
-    "clip": "hiroshima_1946",
-    "aspect": "4:3",
-    "caption": "ХИРОСИМА, 1946",
-    "credit": "USAF / NARA · общественное достояние"
+    "pose": "sit",
+    "expr": "thinking",
+    "alarm": 1,
+    "banner": 1,
+    "arcs": 5,
+    "z": 1.0
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s471",
+   "start": 1520.225,
+   "end": 1523.72,
+   "line": "",
+   "scene": "petrovDesk",
+   "tpl": "petrovDesk",
+   "params": {
+    "pose": "sit",
+    "expr": "thinking",
+    "alarm": 1,
+    "banner": 1,
+    "arcs": 5,
+    "z": 1.0,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
    }
   }
  ],
- "music": []
+ "music": [
+  {
+   "start": 0.0,
+   "end": 11.04,
+   "mood": "mystery",
+   "intensity": 0.35
+  },
+  {
+   "start": 11.04,
+   "end": 40.24,
+   "mood": "tension",
+   "intensity": 0.6
+  },
+  {
+   "start": 40.24,
+   "end": 113.28,
+   "mood": "mystery",
+   "intensity": 0.45
+  },
+  {
+   "start": 113.28,
+   "end": 209.08,
+   "mood": "tension",
+   "intensity": 0.45
+  },
+  {
+   "start": 209.08,
+   "end": 227.76,
+   "mood": "mystery",
+   "intensity": 0.35
+  },
+  {
+   "start": 227.76,
+   "end": 273.68,
+   "mood": "playful",
+   "intensity": 0.3
+  },
+  {
+   "start": 273.68,
+   "end": 284.68,
+   "mood": "mystery",
+   "intensity": 0.35
+  },
+  {
+   "start": 284.68,
+   "end": 332.6,
+   "mood": "dark",
+   "intensity": 0.45
+  },
+  {
+   "start": 332.6,
+   "end": 341.0,
+   "mood": "wonder",
+   "intensity": 0.3
+  },
+  {
+   "start": 341.0,
+   "end": 431.04,
+   "mood": "mystery",
+   "intensity": 0.35
+  },
+  {
+   "start": 431.04,
+   "end": 466.28,
+   "mood": "tension",
+   "intensity": 0.4
+  },
+  {
+   "start": 466.28,
+   "end": 495.32,
+   "mood": "mystery",
+   "intensity": 0.35
+  },
+  {
+   "start": 495.32,
+   "end": 502.72,
+   "mood": "calm",
+   "intensity": 0.3
+  },
+  {
+   "start": 502.72,
+   "end": 635.28,
+   "mood": "dark",
+   "intensity": 0.45
+  },
+  {
+   "start": 635.28,
+   "end": 640.28,
+   "mood": "sad",
+   "intensity": 0.35
+  },
+  {
+   "start": 640.28,
+   "end": 699.72,
+   "mood": "mystery",
+   "intensity": 0.35
+  },
+  {
+   "start": 699.72,
+   "end": 748.88,
+   "mood": "wonder",
+   "intensity": 0.35
+  },
+  {
+   "start": 748.88,
+   "end": 788.84,
+   "mood": "mystery",
+   "intensity": 0.3
+  },
+  {
+   "start": 788.84,
+   "end": 818.52,
+   "mood": "sad",
+   "intensity": 0.3
+  },
+  {
+   "start": 818.52,
+   "end": 883.04,
+   "mood": "hopeful",
+   "intensity": 0.3
+  },
+  {
+   "start": 883.04,
+   "end": 941.04,
+   "mood": "wonder",
+   "intensity": 0.3
+  },
+  {
+   "start": 941.04,
+   "end": 1003.2,
+   "mood": "sad",
+   "intensity": 0.3
+  },
+  {
+   "start": 1003.2,
+   "end": 1048.12,
+   "mood": "calm",
+   "intensity": 0.25
+  },
+  {
+   "start": 1048.12,
+   "end": 1134.76,
+   "mood": "tension",
+   "intensity": 0.55
+  },
+  {
+   "start": 1134.76,
+   "end": 1152.48,
+   "mood": "dark",
+   "intensity": 0.4
+  },
+  {
+   "start": 1152.48,
+   "end": 1172.84,
+   "mood": "tension",
+   "intensity": 0.45
+  },
+  {
+   "start": 1172.84,
+   "end": 1177.84,
+   "mood": "hopeful",
+   "intensity": 0.35
+  },
+  {
+   "start": 1177.84,
+   "end": 1248.92,
+   "mood": "tension",
+   "intensity": 0.5
+  },
+  {
+   "start": 1248.92,
+   "end": 1299.0,
+   "mood": "mystery",
+   "intensity": 0.4
+  },
+  {
+   "start": 1299.0,
+   "end": 1327.12,
+   "mood": "tension",
+   "intensity": 0.45
+  },
+  {
+   "start": 1327.12,
+   "end": 1349.28,
+   "mood": "mystery",
+   "intensity": 0.4
+  },
+  {
+   "start": 1349.28,
+   "end": 1415.48,
+   "mood": "calm",
+   "intensity": 0.35
+  },
+  {
+   "start": 1415.48,
+   "end": 1449.52,
+   "mood": "sad",
+   "intensity": 0.3
+  },
+  {
+   "start": 1449.52,
+   "end": 1510.88,
+   "mood": "hopeful",
+   "intensity": 0.45
+  },
+  {
+   "start": 1510.88,
+   "end": 1523.72,
+   "mood": "triumph",
+   "intensity": 0.35
+  }
+ ]
 }
