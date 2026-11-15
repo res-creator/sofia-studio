@@ -1,0 +1,46 @@
+L001 1.000 
+L002 0.954 replace: nineteen fifties -> 1950s
+L003 0.929 replace: two -> 2 | replace: four -> 4
+L004 1.000 
+L005 1.000 
+L006 0.960 replace: two hundred -> 200
+L007 0.876 replace: nineteen oh five -> 1905 | replace: fifteenth -> 15th | replace: a hundred and ten -> 110
+L008 1.000 
+L009 0.929 replace: nineteen sixty two -> 1962
+L010 1.000 
+L011 0.945 replace: nineteen fifty -> 1950
+L012 1.000 
+L013 0.957 replace: nineteen fifty -> 1950
+L014 1.000 
+L015 0.851 replace: nineteen fifty one -> 1951 | replace: sixty five -> 65
+L016 1.000 
+L017 0.980 replace: dawn -> don
+L018 0.943 replace: nineteen sixty two -> 1962
+L019 0.958 replace: ninety percent -> 90
+L019B 0.875 replace: nineteen twenty eight -> 1928 | replace: three hundred thousand -> 300 000 | replace: two percent -> 2 | replace: fifteen -> 15
+L020 1.000 
+L021 0.914 replace: a hundred and fifty thousand -> 150 000
+L022 1.000 
+L023 0.956 replace: twenty twenty seven -> 2027
+L023B 0.950 replace: six hundred -> 600 | replace: onto -> on
+L024 0.708 replace: two thousand and two -> 2002 | replace: nine hundred thousand -> 900 000 | replace: fifty eight percent -> 58
+L025 1.000 
+L026 1.000 
+L027 0.895 replace: two thousand -> 2000 | replace: a hundred and fifty -> 150
+L028 1.000 
+L029 1.000 
+L030 0.933 replace: twenty twenty two -> 2022
+L031 0.940 replace: saint -> st | replace: nineteen thirties -> 1930s
+L032 0.974 replace: thirty -> 30
+L032B 0.966 replace: nineteen thirties -> 1930s
+L032C 0.953 replace: nineteen thirty one -> 1931
+L032D 0.952 replace: twenty twenty six -> 2026
+L033 1.000 
+L034 1.000 
+L035 0.945 replace: six hundred -> 600
+L036 0.917 replace: twelve hundred -> 1 200 | replace: fifteen hundred -> 1 500
+L037 1.000 
+L038 1.000 
+L039 0.968 replace: six hundred -> 600
+L040 1.000 
+L041 1.000 
