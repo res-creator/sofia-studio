@@ -43,7 +43,7 @@ items, k, pause_after = [], 0, None
 for i, sg in enumerate(SEG):
     if sg['kind'] == 'chapter':
         n = sum(1 for x in SEG[:i + 1] if x['kind'] == 'chapter')
-        if n > 1: items.append(dict(key=f'C{n}', start=sg['t'] - 2.4, t=sg['t']))
+        if n > 1: items.append(dict(key=f'C{n}', start=sg['t'] - 1.8, t=sg['t']))
     elif sg['kind'] == 'pause': items.append(dict(key=f'P{k}', start=sg['t'], t=sg['t'], dur=sg['dur']))
     else: k += 1; items.append(dict(key=k, start=sg['t'], t=sg['t'], dur=sg['dur'], text=sg['text']))
 END = SEG[-1]['t'] + SEG[-1]['dur'] + 3.0
@@ -113,7 +113,7 @@ MIN_FIRST, MIN_LAST = 1.3, 1.1
 for sh in raw:
     d = sh['end'] - sh['start']
     starts = sorted(set([W[i]['start'] for i in sent_starts if sh['start'] + MIN_FIRST < W[i]['start'] < sh['end'] - MIN_LAST]))
-    if sh['sp']['tpl'] in ('chapterTitle', 'phrase') or not starts and d <= 4.0:
+    if sh['sp']['tpl'] in ('chapterTitle', 'phrase') or sh['sp']['params'].get('hold') or not starts and d <= 4.0:
         out_raw.append(sh); continue
     cuts = [sh['start']]
     for st in starts:

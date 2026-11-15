@@ -21,7 +21,7 @@ open(f'{J}/richest.srt', 'w').write(''.join(f'{k + 1}\n{srt_t(a)} --> {srt_t(b)}
 def tc(t): t = max(0, int(t)); return f'{t // 60}:{t % 60:02d}'
 NAMES = {'ХОЛОДНЫЙ СТАРТ': 'Каир, 1324: золото подешевело', 'КАК ИЗМЕРИТЬ БОГАТСТВО': 'Как измерить богатство', 'ПРАВИТЕЛИ: ОТДЕЛЬНАЯ ЛИГА': 'Правители: отдельная лига',
          'ОТ СЕДЬМОГО ДО ЧЕТВЁРТОГО': 'От седьмого до четвёртого', 'ТРОЕ НАВЕРХУ': 'Трое наверху', 'А СЕГОДНЯ?': 'А сегодня?', 'ВЕРДИКТ': 'Вердикт'}
-ch = [(0 if i == 0 else s['t'] - 2.4, NAMES.get(s['title'], s['title'].capitalize())) for i, s in enumerate(x for x in SEG if x['kind'] == 'chapter')]
+ch = [(0 if i == 0 else s['t'] - 1.8, NAMES.get(s['title'], s['title'].capitalize())) for i, s in enumerate(x for x in SEG if x['kind'] == 'chapter')]
 arch = json.load(open(f'{J}/archive.json'))['clips']
 caps = {}
 for s in json.load(open(f'{P}/story/shots.json'))['shots']:

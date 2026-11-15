@@ -21,8 +21,8 @@ FX = ('highpass=f=75,equalizer=f=300:t=q:w=1.2:g=-2.5,equalizer=f=120:t=q:w=0.9:
 from moods import mood
 # ElevenLabs v3, голос Todd (как в «Исландии»). Эмоции из moods.py превращаем в теги v3 — тег ставится,
 # только когда настроение меняется, чтобы не было перебора. Ключ подставляет прокси. По одному запросу, пауза 3 с.
-FX = FX.replace('aecho=0.85:0.5:28|46:0.10|0.06,', '')   # Todd и так чистый, эхо не нужно
-TAG = {'hush': '[whispers]', 'grave': '[serious]', 'tense': '[nervous]', 'alarm': '[nervous]',
+FX = 'atempo=1.08,' + FX.replace('aecho=0.85:0.5:28|46:0.10|0.06,', '')   # чуть быстрее и живее (просьба владелицы)   # Todd и так чистый, эхо не нужно
+TAG = {'excited': '[excited]', 'curious': '[curious]', 'hush': '[whispers]', 'grave': '[serious]', 'tense': '[nervous]', 'alarm': '[nervous]',
        'wonder': '[surprised]', 'warm': '[softly]', 'neutral': ''}
 EXTRA = {'Цены в Каире от этого не упадут': '[chuckles]', 'В этом он, пожалуй, мог бы поспорить': '[chuckles]',
          'Правда, коммуналка отдельно': '[chuckles]', 'И Рокфеллер': '[pause]', 'И у него бы ещё осталось': '[chuckles]',
@@ -70,12 +70,12 @@ def sil(s):
 sil(0.0)
 for it in items:
     if it['kind'] == 'chapter':
-        if it['n'] > 1: sil(2.4)
+        if it['n'] > 1: sil(1.8)
         segs.append(dict(kind='chapter', t=round(t, 2), title=it['title']))
     elif it['kind'] == 'pause':
         segs.append(dict(kind='pause', t=round(t, 2), dur=it['sec'], hint=it['hint'])); sil(it['sec'])
     else:
-        d = dur(it['file']); segs.append(dict(kind='voice', t=round(t, 2), dur=round(d, 2), text=it['text'])); seq.append(('f', it['file'])); t += d; sil(0.6)
+        d = dur(it['file']); segs.append(dict(kind='voice', t=round(t, 2), dur=round(d, 2), text=it['text'])); seq.append(('f', it['file'])); t += d; sil(0.3)
 lst = f'{D}/concat_el.txt'
 with open(lst, 'w') as f:
     for kind, v in seq:

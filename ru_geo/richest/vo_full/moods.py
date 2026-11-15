@@ -34,8 +34,10 @@ SENT = {
     'Таких разрывов история ещё не видела': 'grave',
     'В год': 'wonder', 'Правда, коммуналка отдельно': 'warm',
     'Деньги можно посчитать': 'hush',
+    'Представляете?': 'wonder', 'А дальше — самое странное': 'excited', 'И здесь начинается самое интересное': 'excited', 'Но самое интересное': 'excited',
 }
 def mood(k, sentence):
+    if sentence.rstrip('»').endswith('?') and not any(sentence.startswith(p) for p in SENT): return 'curious'
     for pre, m in SENT.items():
         if sentence.startswith(pre): return m
     return PARA.get(k, 'neutral')
