@@ -187,7 +187,7 @@ tpl('mythChain', 'How a myth spreads: boxes connected by arrows appear one by on
     const it = info.items || ['САЙТ', 'РАДИО', 'ЖУРНАЛЫ', 'РОЛИКИ'], n = it.length, step = Math.min(1.1, info.dur * 0.6 / n);
     layer(g, cam, 1, (g) => { T(g, info.big || '$400 000 000 000', E.W / 2, E.H * 0.22, { size: 92, color: GOLD });
       it.forEach((s, i) => { const p = popAt(t, 0.4 + i * step); if (p <= 0) return; const w = E.W * 0.17, x = E.W * (0.14 + i * 0.72 / (n - 1 || 1)), y = E.H * 0.55;
-        g.fillStyle = alpha('#1b2a4a', 0.95); rr(g, x - w / 2, y - 60, w, 120, 18); g.fill(); g.strokeStyle = alpha('#9ab4e8', 0.6); g.lineWidth = 2; g.stroke(); T(g, s, x, y, { size: 26 * p });
+        g.fillStyle = alpha('#1b2a4a', 0.95); rr(g, x - w / 2, y - 60, w, 120, 18); g.fill(); g.strokeStyle = alpha('#9ab4e8', 0.6); g.lineWidth = 2; g.stroke(); let z = 26; g.save(); g.font = `900 ${z}px "${FONTS.ui}"`; while (g.measureText(s).width + 2 * s.length > w - 24 && z > 14) { z -= 1; g.font = `900 ${z}px "${FONTS.ui}"`; } g.restore(); T(g, s, x, y, { size: z * p });
         if (i < n - 1) { const x2 = E.W * (0.14 + (i + 1) * 0.72 / (n - 1)); seg(g, [[x + w / 2 + 8, y], [x2 - w / 2 - 16, y]], 4, alpha(GOLD, 0.8)); poly(g, [[x2 - w / 2 - 6, y], [x2 - w / 2 - 22, y - 10], [x2 - w / 2 - 22, y + 10]], GOLD); } });
       const sp = popAt(t, 0.6 + n * step); if (sp > 0 && info.stamp !== false) { g.save(); g.translate(E.W / 2, E.H * 0.8); g.rotate(-0.06); g.strokeStyle = RED; g.lineWidth = 6; rr(g, -260 * sp, -42, 520 * sp, 84, 10); g.stroke(); T(g, info.stamp || 'РАСЧЁТА НЕТ', 0, 2, { size: 44 * sp, color: RED, spacing: 6 }); g.restore(); } });
   } });
@@ -206,7 +206,7 @@ tpl('league', 'Rulers «ОТДЕЛЬНАЯ ЛИГА»: a throne, a crown and tre
     layer(g, cam, 0.8, (g) => { const x = E.W / 2; g.fillStyle = '#6a1f2a'; g.fillRect(x - 120, gy - 360, 240, 360); g.fillStyle = GOLD; g.fillRect(x - 150, gy - 220, 300, 30); g.fillRect(x - 150, gy - 400, 300, 40);
       [[-1], [1]].forEach(([s]) => { const cx = x + s * 380; g.fillStyle = '#5a3a1a'; rr(g, cx - 110, gy - 120, 220, 120, 12); g.fill(); g.fillStyle = GOLD; g.fillRect(cx - 110, gy - 80, 220, 12); for (let i = 0; i < 7; i++) circle(g, cx - 80 + i * 26, gy - 128 - (i % 2) * 10, 16, GOLD); glow(g, cx, gy - 140, 120, GOLD, 0.35); });
       g.fillStyle = '#2a1520'; g.fillRect(-E.W, gy, E.W * 3, E.H); seg(g, [[E.W * 0.1, gy - 60], [E.W * 0.9, gy - 60]], 8, '#b83a4a'); [0.1, 0.5, 0.9].forEach((fx) => { g.fillStyle = GOLD; g.fillRect(E.W * fx - 8, gy - 110, 16, 110); }); });
-    layer(g, cam, 1, (g) => { const p = showAt(t, 0.4, info.dur); g.fillStyle = alpha('#0b0b12', 0.85 * p); rr(g, E.W / 2 - 400, E.H * 0.17 - 50, 800, 100, 14); g.fill(); T(g, info.str || 'ОТДЕЛЬНАЯ ЛИГА', E.W / 2, E.H * 0.17, { size: 54, color: GOLD, a: p, spacing: 6 }); });
+    layer(g, cam, 1, (g) => { const p = showAt(t, 0.4, info.dur), s = info.str || 'ОТДЕЛЬНАЯ ЛИГА'; let z = 54; const tw = (z) => { g.save(); g.font = `900 ${z}px "${FONTS.ui}"`; const w = g.measureText(s).width + 6 * s.length; g.restore(); return w; }; while (tw(z) > E.W * 0.8 && z > 28) z -= 2; const w = tw(z) + 90; g.fillStyle = alpha('#0b0b12', 0.85 * p); rr(g, E.W / 2 - w / 2, E.H * 0.17 - z, w, z * 2, 14); g.fill(); T(g, s, E.W / 2, E.H * 0.17, { size: z, color: GOLD, a: p, spacing: 6 }); });
   } });
 tpl('fuggerei', 'Augsburg social housing (Fuggerei): rows of yellow houses with green shutters, a sign with the yearly rent (cue "rent"). params: rent (str), sub', {
   draw(g, t, info) {
@@ -225,4 +225,28 @@ tpl('libraryKid', 'A child reading by a library window (Carnegie library), warm 
     layer(g, cam, 1, (g) => { g.fillStyle = '#4a3020'; g.fillRect(-E.W, gy, E.W * 3, E.H); g.fillStyle = '#6a4428'; g.fillRect(E.W * 0.5, gy - 140, 420, 24);
       fig(g, 'kid', { x: E.W * 0.58, y: gy, s: 1.2, facing: 1, pose: breathe(POSES.sit, t, 0.6, 2), expr: 'smile' }); g.fillStyle = '#f0e6d0'; g.fillRect(E.W * 0.6, gy - 175, 70, 46); glow(g, E.W * 0.75, gy - 260, 200, '#ffd88a', 0.35); });
     tagAt(g, t, info);
+  } });
+
+// ---------------------------------------------------------------- крупный текст под мысль диктора
+// Слова появляются по одному ровно тогда, когда их произносят (times — секунды от начала шота). Всё влезает в кадр:
+// размер шрифта подбирается по ширине, максимум 2 строки. accent — индексы слов, выделенных золотом.
+tpl('phrase', 'Big kinetic phrase synced to the narration: words pop in at their spoken times. params: words [str], times [s], accent [i], bg (void|warm|dark), sub (small line under)', {
+  draw(g, t, info) {
+    const cam = camOf(info, t, { move: 'push', amt: 0.12 });
+    if (info.bg === 'warm') layer(g, cam, 0.3, (g) => { sky(g, ['#1f1410', '#3a2216', '#2a170f']); glow(g, E.W / 2, E.H * 0.45, 700, '#ffb35a', 0.18); });
+    else if (info.bg === 'dark') layer(g, cam, 0.3, (g) => { sky(g, ['#07080d', '#10121c', '#07080d']); glow(g, E.W / 2, E.H * 0.45, 600, '#7fa8ff', 0.1); });
+    else voidBg(g, t, cam);
+    const W = info.words || [], times = info.times || W.map((_, i) => i * 0.3), acc = new Set(info.accent || []);
+    let size = 120; const font = FONTS.ui, sp = 3;
+    const wid = (s, z) => { g.save(); g.font = `900 ${z}px "${font}"`; const w = g.measureText(s).width + sp * s.length; g.restore(); return w; };
+    const split = (z) => { const lines = [[]]; let lw = 0, maxW = E.W * 0.84;
+      W.forEach((w, i) => { const ww = wid(w, z) + z * 0.3; if (lw + ww > maxW && lines[lines.length - 1].length) { lines.push([]); lw = 0; } lines[lines.length - 1].push(i); lw += ww; }); return lines; };
+    let lines = split(size); while ((lines.length > 2 || lines.some((l) => l.reduce((a, i) => a + wid(W[i], size) + size * 0.3, 0) > E.W * 0.86)) && size > 46) { size -= 6; lines = split(size); }
+    layer(g, cam, 1, (g) => { const lh = size * 1.25, y0 = E.H * 0.47 - (lines.length - 1) * lh / 2;
+      lines.forEach((l, li) => { const tot = l.reduce((a, i) => a + wid(W[i], size) + size * 0.3, 0) - size * 0.3; let x = E.W / 2 - tot / 2;
+        l.forEach((i) => { const w = wid(W[i], size), p = popAt(t, Math.max(0, (times[i] ?? 0) - 0.05), 0.35);
+          if (p > 0) { g.save(); g.translate(x + w / 2, y0 + li * lh); g.scale(0.85 + 0.15 * p, 0.85 + 0.15 * p);
+            T(g, W[i], 0, 0, { size, color: acc.has(i) ? GOLD : CREAM, a: clamp(p * 1.4), spacing: sp, glow: acc.has(i) ? 18 : 0, glowColor: alpha(GOLD, 0.6) }); g.restore(); }
+          x += w + size * 0.3; }); });
+      if (info.sub) T(g, info.sub, E.W / 2, y0 + lines.length * lh + 20, { size: 26, color: '#bcc8e0', a: showAt(t, 0.4, info.dur) }); });
   } });

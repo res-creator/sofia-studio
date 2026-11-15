@@ -78,6 +78,70 @@ for it in items:
     for j, sp in enumerate(specs):
         raw.append(dict(sp=sp, start=marks[j], end=marks[j + 1], key=it['key']))
 
+# 3b) под каждую новую мысль (предложение/часть фразы) — свой кадр: если в шоте начинается новое предложение,
+# с этого места показываем крупно ключевые слова этой мысли (шаблон phrase), слова появляются в момент произнесения.
+try:
+    from storyboard import KEYS
+except ImportError:
+    KEYS = {}
+FILL = {'а', 'и', 'но', 'так', 'да', 'ну', 'вот', 'же', 'ведь', 'кстати', 'теперь', 'тем', 'более', 'что'}
+NUMW = ('тысяч', 'миллион', 'миллиард', 'триллион', 'процент', 'сто', 'двест', 'трист', 'пятьс', 'девят', 'восем', 'семь', 'шест', 'пят', 'четыр', 'три', 'два', 'одн', 'полтор', 'десят', 'двадцат', 'сорок')
+ends = [i for i, w in enumerate(W) if re.search(r'[.!?…]»?$', w['word'])]
+sent_starts = [0] + [i + 1 for i in ends if i + 1 < len(W)]
+clause_starts = [i + 1 for i, w in enumerate(W[:-1]) if re.search(r'[,:;—]$', w['word']) or W[i + 1]['word'] in ('—',)]
+def phrase_at(i, t_end):
+    """ключевые слова мысли, начинающейся со слова i (до конца предложения/шота)"""
+    j = i; seq = []
+    while j < len(W) and W[j]['start'] < t_end - 0.2:
+        seq.append(j)
+        if re.search(r'[.!?…]»?$', W[j]['word']): break
+        j += 1
+    txt = ' '.join(W[k]['word'] for k in seq)
+    for pre, words in KEYS.items():
+        if norm(txt).startswith(norm(pre)) or (len(norm(txt)) >= 6 and norm(pre).startswith(norm(txt))): return words, seq
+    words = [re.sub(r'[«»"().,!?…:;]', '', W[k]['word']) for k in seq]
+    idx = [k for k, w in zip(seq, words) if w and w != '—']
+    while idx and norm(W[idx[0]]['word']) in FILL: idx = idx[1:]
+    # не больше 6 слов: до первой запятой/тире, если мысль длинная
+    if len(idx) > 6:
+        cut = next((n for n, k in enumerate(idx[:7]) if n >= 2 and re.search(r'[,:;—]$', W[k]['word'])), None)
+        idx = idx[:(cut + 1) if cut else 6]
+    return None, idx
+def key_of(word): return re.sub(r'[«»"().,!?…:;]', '', word).upper()
+out_raw = []
+MIN_FIRST, MIN_LAST = 1.3, 1.1
+for sh in raw:
+    d = sh['end'] - sh['start']
+    starts = sorted(set([W[i]['start'] for i in sent_starts if sh['start'] + MIN_FIRST < W[i]['start'] < sh['end'] - MIN_LAST]))
+    if sh['sp']['tpl'] in ('chapterTitle', 'phrase') or not starts and d <= 4.0:
+        out_raw.append(sh); continue
+    cuts = [sh['start']]
+    for st in starts:
+        if st - cuts[-1] >= 1.2: cuts.append(st)
+    cuts.append(sh['end'])
+    # куски длиннее 4 с режем ещё и по запятым
+    k = 0
+    while k < len(cuts) - 1:
+        if cuts[k + 1] - cuts[k] > 4.0:
+            cl = [W[i]['start'] for i in clause_starts if cuts[k] + 1.6 < W[i]['start'] < cuts[k + 1] - 1.4]
+            if cl: cuts.insert(k + 1, min(cl, key=lambda x: abs(x - (cuts[k] + cuts[k + 1]) / 2))); continue
+        k += 1
+    if len(cuts) == 2: out_raw.append(sh); continue
+    for q in range(len(cuts) - 1):
+        if q == 0: out_raw.append({**sh, 'end': round(cuts[1], 3)}); continue
+        i0 = next(i for i, w in enumerate(W) if abs(w['start'] - cuts[q]) < 0.005)
+        fixed, idx = phrase_at(i0, cuts[q + 1])
+        if fixed:
+            words = [w.lstrip('*') for w in fixed]; fixed_acc = [n for n, w in enumerate(fixed) if w.startswith('*')]
+            span = max(0.6, min(cuts[q + 1] - cuts[q] - 0.6, (W[idx[-1]]['start'] - cuts[q]) if idx else 1.2))
+            times = [round(span * n / max(1, len(words) - 1) * 0.8, 2) for n in range(len(words))]
+        else: words = [key_of(W[k]['word']) for k in idx]; times = [round(W[k]['start'] - cuts[q], 2) for k in idx]
+        if not words: out_raw[-1]['end'] = round(cuts[q + 1], 3); continue
+        acc = fixed_acc if fixed else [n for n, w in enumerate(words) if re.search(r'\d', w) or any(norm(w).startswith(x) for x in NUMW) or (n > 0 and w[:1].isupper() and len(w) > 3 and fixed is None and W[idx[n]]['word'][:1].isupper())]
+        bg = ('void', 'dark', 'warm')[len(out_raw) % 3]
+        out_raw.append(dict(sp=dict(tpl='phrase', w=None, keep=True, cues={}, params={'words': words, 'times': times, 'accent': acc, 'bg': bg}), start=round(cuts[q], 3), end=round(cuts[q + 1], 3), key=sh['key']))
+raw = out_raw
+
 # 3) нарезка длинных шотов
 shots = []
 for r in raw:
@@ -110,8 +174,7 @@ for r in raw:
             if sp['tpl'] == 'archive': p['from'] = p.get('from', 0) + off
             else:
                 p['tOff'] = off
-                p['cam'] = {**CAMS[(len(shots) + q) % len(CAMS)]}
-                if sp['tpl'] in GRAPHIC: p['cam'] = {'move': ('push', 'pull')[(len(shots) + q) % 2], 'z': 1.03}
+                pass   # продолжение того же кадра той же камерой: склейка незаметна, кадр не прыгает
         shots.append(dict(tpl=sp['tpl'], params=p, cues=cues, start=round(cuts[q], 3), end=round(cuts[q + 1], 3), key=r['key'], part=q))
 
 # 4) текст, id, звуки
