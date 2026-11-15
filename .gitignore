@@ -41,3 +41,9 @@ whyhow/ep06_newyork/voice/*.wav
 whyhow/ep06_newyork/*.log
 whyhow/ep06_newyork/video_silent.mp4*
 whyhow/ep06_newyork/mix.wav
+whyhow/ep07_lasvegas/voice_raw/
+whyhow/ep07_lasvegas/voice/*.wav
+whyhow/ep07_lasvegas/*.log
+whyhow/ep07_lasvegas/video_silent.mp4*
+whyhow/ep07_lasvegas/mix.wav
+whyhow/ep07_lasvegas/footage/*.mp4
