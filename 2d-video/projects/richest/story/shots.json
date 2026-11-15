@@ -1,0 +1,6261 @@
+{
+ "title": "Кто был самым богатым человеком в истории",
+ "duration": 1154.76,
+ "shots": [
+  {
+   "id": "s001",
+   "start": 0.0,
+   "end": 2.3,
+   "line": "Однажды в чужой город приехал",
+   "scene": "caravan",
+   "tpl": "caravan",
+   "params": {
+    "gate": true,
+    "lead": true,
+    "n": 7
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s002",
+   "start": 2.3,
+   "end": 4.6,
+   "line": "один человек.",
+   "scene": "caravan",
+   "tpl": "caravan",
+   "params": {
+    "gate": true,
+    "lead": true,
+    "n": 7,
+    "tOff": 2.3,
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s003",
+   "start": 4.6,
+   "end": 6.56,
+   "line": "И золото в этом городе",
+   "scene": "caravan",
+   "tpl": "caravan",
+   "params": {
+    "gate": true,
+    "lead": true,
+    "n": 5,
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s004",
+   "start": 6.56,
+   "end": 8.52,
+   "line": "подешевело.",
+   "scene": "caravan",
+   "tpl": "caravan",
+   "params": {
+    "gate": true,
+    "lead": true,
+    "n": 5,
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    },
+    "tOff": 1.96
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s005",
+   "start": 8.52,
+   "end": 11.06,
+   "line": "Это Каир, тысяча триста двадцать четвёртый год.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "atlas",
+    "caption": "КАТАЛОНСКИЙ АТЛАС, 1375",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s006",
+   "start": 11.06,
+   "end": 16.1,
+   "line": "Человек — правитель империи Мали, Манса Муса. Он идёт в Мекку через Сахару.",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "view": {
+     "lon0": -20,
+     "lon1": 50,
+     "lat0": 38,
+     "lat1": 5
+    },
+    "marks": [
+     {
+      "at": [
+       -8,
+       13
+      ],
+      "label": "МАЛИ"
+     },
+     {
+      "at": [
+       31.2,
+       30
+      ],
+      "label": "КАИР"
+     },
+     {
+      "at": [
+       39.8,
+       21.4
+      ],
+      "label": "МЕККА"
+     }
+    ],
+    "arcs": [
+     {
+      "from": [
+       -8,
+       13
+      ],
+      "to": [
+       31.2,
+       30
+      ]
+     },
+     {
+      "from": [
+       31.2,
+       30
+      ],
+      "to": [
+       39.8,
+       21.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "s007",
+   "start": 16.1,
+   "end": 18.56,
+   "line": "И везёт столько золота, что город запомнит это надолго.",
+   "scene": "caravan",
+   "tpl": "caravan",
+   "params": {
+    "n": 9,
+    "cam": {
+     "move": "driftR"
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s008",
+   "start": 18.56,
+   "end": 21.4,
+   "line": "Свита Мусы платит золотом за всё.",
+   "scene": "bazaar",
+   "tpl": "bazaar",
+   "params": {},
+   "cues": {
+    "weigh": 99
+   },
+   "amb": {
+    "name": "murmur",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s009",
+   "start": 21.4,
+   "end": 24.52,
+   "line": "Каирские торговцы тут же поднимают цены.",
+   "scene": "bazaar",
+   "tpl": "bazaar",
+   "params": {
+    "cam": {
+     "move": "push",
+     "z": 1.2
+    }
+   },
+   "cues": {
+    "weigh": 0.2
+   },
+   "amb": {
+    "name": "murmur",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s010",
+   "start": 24.52,
+   "end": 27.64,
+   "line": "А само золото дешевеет.",
+   "scene": "bazaar",
+   "tpl": "bazaar",
+   "params": {
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    },
+    "tOff": 3.12
+   },
+   "cues": {
+    "weigh": 0.2
+   },
+   "amb": {
+    "name": "murmur",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s011",
+   "start": 27.64,
+   "end": 31.78,
+   "line": "Арабский историк аль-Умари записал — спустя годы, со слов очевидцев:",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "АЛЬ-УМАРИ",
+      "l": "ЗАПИСАЛ СПУСТЯ ГОДЫ, СО СЛОВ ОЧЕВИДЦЕВ"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s012",
+   "start": 31.78,
+   "end": 37.78,
+   "line": "до приезда Мусы золотой мискаль стоил не меньше двадцати пяти серебряных дирхемов. А после —",
+   "scene": "scales",
+   "tpl": "scales",
+   "params": {
+    "left": {
+     "v": "1 МИСКАЛЬ",
+     "l": "ЗОЛОТА"
+    },
+    "right": {
+     "v": "25 → 22",
+     "l": "СЕРЕБРЯНЫХ ДИРХЕМА"
+    },
+    "heavier": "left"
+   },
+   "cues": {
+    "tilt": 6.17
+   },
+   "sfx": [
+    {
+     "at": 0.8,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s013",
+   "start": 37.78,
+   "end": 40.64,
+   "line": "двадцать два или меньше. Когда Мусу",
+   "scene": "scales",
+   "tpl": "scales",
+   "params": {
+    "left": {
+     "v": "1 МИСКАЛЬ",
+     "l": "ЗОЛОТА"
+    },
+    "right": {
+     "v": "25 → 22",
+     "l": "СЕРЕБРЯНЫХ ДИРХЕМА"
+    },
+    "heavier": "left",
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   },
+   "cues": {
+    "tilt": 6.17
+   }
+  },
+  {
+   "id": "s014",
+   "start": 40.64,
+   "end": 42.63,
+   "line": "привели к султану Египта, он отказался",
+   "scene": "throneRoom",
+   "tpl": "throneRoom",
+   "params": {},
+   "cues": {
+    "bow": 99,
+    "rise": 99,
+    "sit": 99
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s015",
+   "start": 42.63,
+   "end": 44.62,
+   "line": "целовать перед ним землю.",
+   "scene": "throneRoom",
+   "tpl": "throneRoom",
+   "params": {
+    "tOff": 1.99,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   },
+   "cues": {
+    "bow": 99,
+    "rise": 99,
+    "sit": 99
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s016",
+   "start": 44.62,
+   "end": 47.387,
+   "line": "Потом сказал: «Я кланяюсь Богу, который меня",
+   "scene": "throneRoom",
+   "tpl": "throneRoom",
+   "params": {},
+   "cues": {
+    "bow": 3.68,
+    "rise": 4.98,
+    "sit": 5.74
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s017",
+   "start": 47.387,
+   "end": 50.153,
+   "line": "сотворил». И поклонился. Султан привстал и",
+   "scene": "throneRoom",
+   "tpl": "throneRoom",
+   "params": {
+    "tOff": 2.767,
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   },
+   "cues": {
+    "bow": 3.68,
+    "rise": 4.98,
+    "sit": 5.74
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s018",
+   "start": 50.153,
+   "end": 52.92,
+   "line": "посадил гостя рядом с собой. Сегодня",
+   "scene": "throneRoom",
+   "tpl": "throneRoom",
+   "params": {
+    "tOff": 5.533,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   },
+   "cues": {
+    "bow": 3.68,
+    "rise": 4.98,
+    "sit": 5.74
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s019",
+   "start": 52.92,
+   "end": 58.92,
+   "line": "в интернете вы прочитаете, что Манса Муса — самый богатый человек в истории. Четыреста миллиардов",
+   "scene": "ticker",
+   "tpl": "ticker",
+   "params": {
+    "value": "$400 000 000 000",
+    "sub": "«САМЫЙ БОГАТЫЙ В ИСТОРИИ»"
+   }
+  },
+  {
+   "id": "s020",
+   "start": 58.92,
+   "end": 61.52,
+   "line": "долларов. Запомните",
+   "scene": "ticker",
+   "tpl": "ticker",
+   "params": {
+    "value": "$400 000 000 000",
+    "sub": "«САМЫЙ БОГАТЫЙ В ИСТОРИИ»",
+    "tOff": 6.0,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s021",
+   "start": 61.52,
+   "end": 68.04,
+   "line": "эту цифру. Через несколько минут вы узнаете, откуда она взялась. Так",
+   "scene": "mythChain",
+   "tpl": "mythChain",
+   "params": {
+    "items": [
+     "?",
+     "?",
+     "?",
+     "?"
+    ],
+    "stamp": false
+   },
+   "sfx": [
+    {
+     "at": 0.4,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s022",
+   "start": 68.04,
+   "end": 73.38,
+   "line": "кто же был самым богатым человеком в истории? Римлянин, который скупал горящие дома?",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "crassus",
+    "caption": "ПРЕДПОЛОЖИТЕЛЬНО КРАСС · ЛУВР",
+    "credit": "Wikimedia Commons · CC0",
+    "still": true
+   }
+  },
+  {
+   "id": "s023",
+   "start": 73.38,
+   "end": 76.18,
+   "line": "Банкир, который купил императору корону?",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "fugger",
+    "caption": "ЯКОБ ФУГГЕР · А. ДЮРЕР",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s024",
+   "start": 76.18,
+   "end": 80.72,
+   "line": "Нефтяной король, чьё состояние было больше годового бюджета его страны?",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "rockefeller",
+    "caption": "ДЖОН Д. РОКФЕЛЛЕР",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s025",
+   "start": 80.72,
+   "end": 84.48,
+   "line": "Или человек, который живёт прямо сейчас? Давайте",
+   "scene": "ticker",
+   "tpl": "ticker",
+   "params": {}
+  },
+  {
+   "id": "s026",
+   "start": 84.48,
+   "end": 87.08,
+   "line": "посчитаем. Честно.",
+   "scene": "coins",
+   "tpl": "coins",
+   "params": {},
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "ding",
+     "gain": -18
+    }
+   ]
+  },
+  {
+   "id": "s027",
+   "start": 87.08,
+   "end": 89.08,
+   "line": "",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "atlas",
+    "caption": "КАТАЛОНСКИЙ АТЛАС, 1375",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s028",
+   "start": 89.08,
+   "end": 91.08,
+   "line": "",
+   "scene": "caravan",
+   "tpl": "caravan",
+   "params": {
+    "n": 6,
+    "night": true
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s029",
+   "start": 91.08,
+   "end": 93.48,
+   "line": "Вот простая",
+   "scene": "chapterTitle",
+   "tpl": "chapterTitle",
+   "params": {
+    "str": "КАК ИЗМЕРИТЬ БОГАТСТВО"
+   },
+   "sfx": [
+    {
+     "at": 0.0,
+     "name": "whoosh",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s030",
+   "start": 93.48,
+   "end": 99.8,
+   "line": "задача. В тысяча девятьсот тринадцатом году у Джона Рокфеллера было около девятисот миллионов долларов.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "rockefeller",
+    "caption": "ДЖОН Д. РОКФЕЛЛЕР",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s031",
+   "start": 99.8,
+   "end": 104.24,
+   "line": "Сколько это сегодня? Зависит от того, кого спросить. Если пересчитать",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "$900 МЛН",
+      "l": "РОКФЕЛЛЕР, 1913"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s032",
+   "start": 104.24,
+   "end": 110.24,
+   "line": "по ценам в магазине, выйдет меньше тридцати миллиардов. А если через долю экономики, как делает",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "ПО ЦЕНАМ В МАГАЗИНЕ",
+      "v": 0.05,
+      "str": "< $30 МЛРД"
+     },
+     {
+      "label": "ЧЕРЕЗ ДОЛЮ ЭКОНОМИКИ (GUINNESS)",
+      "v": 0.95,
+      "str": "> $600 МЛРД",
+      "cue": "шестисот"
+     }
+    ],
+    "title": "$900 МЛН В 1913 — ЭТО СКОЛЬКО СЕГОДНЯ?"
+   }
+  },
+  {
+   "id": "s033",
+   "start": 110.24,
+   "end": 112.28,
+   "line": "Книга рекордов Гиннесса, — больше",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "ПО ЦЕНАМ В МАГАЗИНЕ",
+      "v": 0.05,
+      "str": "< $30 МЛРД"
+     },
+     {
+      "label": "ЧЕРЕЗ ДОЛЮ ЭКОНОМИКИ (GUINNESS)",
+      "v": 0.95,
+      "str": "> $600 МЛРД",
+      "cue": "шестисот"
+     }
+    ],
+    "title": "$900 МЛН В 1913 — ЭТО СКОЛЬКО СЕГОДНЯ?",
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s034",
+   "start": 112.28,
+   "end": 114.32,
+   "line": "шестисот миллиардов.",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "ПО ЦЕНАМ В МАГАЗИНЕ",
+      "v": 0.05,
+      "str": "< $30 МЛРД"
+     },
+     {
+      "label": "ЧЕРЕЗ ДОЛЮ ЭКОНОМИКИ (GUINNESS)",
+      "v": 0.95,
+      "str": "> $600 МЛРД",
+      "cue": "шестисот"
+     }
+    ],
+    "title": "$900 МЛН В 1913 — ЭТО СКОЛЬКО СЕГОДНЯ?",
+    "tOff": 8.04,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s035",
+   "start": 114.32,
+   "end": 118.92,
+   "line": "Один и тот же человек, а разница — больше чем в двадцать раз. А для",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "× 20",
+      "l": "РАЗНИЦА ИЗ-ЗА МЕТОДА"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s036",
+   "start": 118.92,
+   "end": 124.92,
+   "line": "древнего Рима или Мали пересчёт по инфляции вообще теряет смысл. Другие деньги, другие",
+   "scene": "coins",
+   "tpl": "coins",
+   "params": {},
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "ding",
+     "gain": -18
+    }
+   ]
+  },
+  {
+   "id": "s037",
+   "start": 124.92,
+   "end": 127.92,
+   "line": "товары, другая жизнь. Поэтому",
+   "scene": "coins",
+   "tpl": "coins",
+   "params": {
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s038",
+   "start": 127.92,
+   "end": 133.92,
+   "line": "историки экономики делают иначе. Они спрашивают: какую часть всей экономики своей страны держал",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 1,
+    "pctStr": "1 %",
+    "label": "ВСЯ ЭКОНОМИКА СТРАНЫ ЗА ГОД",
+    "who": "ВАШЕ СОСТОЯНИЕ"
+   }
+  },
+  {
+   "id": "s039",
+   "start": 133.92,
+   "end": 137.24,
+   "line": "этот человек? Если ты владеешь одним процентом всего,",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 1,
+    "pctStr": "1 %",
+    "label": "ВСЯ ЭКОНОМИКА СТРАНЫ ЗА ГОД",
+    "who": "ВАШЕ СОСТОЯНИЕ",
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s040",
+   "start": 137.24,
+   "end": 140.56,
+   "line": "что страна производит за год, ты богат в любую эпоху.",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 1,
+    "pctStr": "1 %",
+    "label": "ВСЯ ЭКОНОМИКА СТРАНЫ ЗА ГОД",
+    "who": "ВАШЕ СОСТОЯНИЕ",
+    "tOff": 9.32,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s041",
+   "start": 140.56,
+   "end": 143.88,
+   "line": "Хоть в сестерциях, хоть в долларах. Способ",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 1,
+    "pctStr": "1 %",
+    "label": "ВСЯ ЭКОНОМИКА СТРАНЫ ЗА ГОД",
+    "who": "ВАШЕ СОСТОЯНИЕ",
+    "tOff": 12.64,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s042",
+   "start": 143.88,
+   "end": 149.88,
+   "line": "не идеален: экономику древнего Рима или средневековой Англии восстанавливают",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "domesday",
+    "caption": "КНИГА СТРАШНОГО СУДА, 1086",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s043",
+   "start": 149.88,
+   "end": 153.34,
+   "line": "по косвенным данным, и ошибка бывает в разы.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "domesday",
+    "caption": "КНИГА СТРАШНОГО СУДА, 1086",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true,
+    "from": 6.0
+   }
+  },
+  {
+   "id": "s044",
+   "start": 153.34,
+   "end": 156.4,
+   "line": "Но лучше у нас ничего нет. Есть и",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "± В РАЗЫ",
+      "l": "ОШИБКА РЕКОНСТРУКЦИЙ"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s045",
+   "start": 156.4,
+   "end": 162.4,
+   "line": "вторая линейка. Во сколько раз человек богаче, чем в среднем приходится на одного жителя его",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "ОДИН ЧЕЛОВЕК",
+      "v": 0.9,
+      "str": "?"
+     },
+     {
+      "label": "СРЕДНИЙ ДОХОД ЖИТЕЛЯ",
+      "v": 0.02,
+      "str": "1 ГОД"
+     }
+    ],
+    "title": "ВТОРАЯ ЛИНЕЙКА: СКОЛЬКО ЛЕТ СРЕДНЕГО ДОХОДА"
+   }
+  },
+  {
+   "id": "s046",
+   "start": 162.4,
+   "end": 165.613,
+   "line": "времени? Сколько лет обычной работы уместилось",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "ОДИН ЧЕЛОВЕК",
+      "v": 0.9,
+      "str": "?"
+     },
+     {
+      "label": "СРЕДНИЙ ДОХОД ЖИТЕЛЯ",
+      "v": 0.02,
+      "str": "1 ГОД"
+     }
+    ],
+    "title": "ВТОРАЯ ЛИНЕЙКА: СКОЛЬКО ЛЕТ СРЕДНЕГО ДОХОДА",
+    "tOff": 6.0,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s047",
+   "start": 165.613,
+   "end": 168.827,
+   "line": "бы в его состоянии? Запомните обе.",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "ОДИН ЧЕЛОВЕК",
+      "v": 0.9,
+      "str": "?"
+     },
+     {
+      "label": "СРЕДНИЙ ДОХОД ЖИТЕЛЯ",
+      "v": 0.02,
+      "str": "1 ГОД"
+     }
+    ],
+    "title": "ВТОРАЯ ЛИНЕЙКА: СКОЛЬКО ЛЕТ СРЕДНЕГО ДОХОДА",
+    "tOff": 9.213,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s048",
+   "start": 168.827,
+   "end": 172.04,
+   "line": "В конце они дадут разные ответы.",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "ОДИН ЧЕЛОВЕК",
+      "v": 0.9,
+      "str": "?"
+     },
+     {
+      "label": "СРЕДНИЙ ДОХОД ЖИТЕЛЯ",
+      "v": 0.02,
+      "str": "1 ГОД"
+     }
+    ],
+    "title": "ВТОРАЯ ЛИНЕЙКА: СКОЛЬКО ЛЕТ СРЕДНЕГО ДОХОДА",
+    "tOff": 12.427,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s049",
+   "start": 172.04,
+   "end": 178.04,
+   "line": "И последнее правило. Короли и императоры — отдельная лига. Император распоряжался казной,",
+   "scene": "league",
+   "tpl": "league",
+   "params": {}
+  },
+  {
+   "id": "s050",
+   "start": 178.04,
+   "end": 181.56,
+   "line": "землёй и армией государства. Но это не кошелёк.",
+   "scene": "league",
+   "tpl": "league",
+   "params": {
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   }
+  },
+  {
+   "id": "s051",
+   "start": 181.56,
+   "end": 185.08,
+   "line": "Казну нельзя продать и положить деньги себе в карман.",
+   "scene": "league",
+   "tpl": "league",
+   "params": {
+    "tOff": 9.52,
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   }
+  },
+  {
+   "id": "s052",
+   "start": 185.08,
+   "end": 188.293,
+   "line": "Если считать всё, чем правил монарх, любой император",
+   "scene": "league",
+   "tpl": "league",
+   "params": {
+    "cam": {
+     "move": "pull",
+     "z": 1.2
+    }
+   }
+  },
+  {
+   "id": "s053",
+   "start": 188.293,
+   "end": 191.507,
+   "line": "большой империи окажется богаче всех на свете.",
+   "scene": "league",
+   "tpl": "league",
+   "params": {
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    },
+    "tOff": 3.213
+   }
+  },
+  {
+   "id": "s054",
+   "start": 191.507,
+   "end": 194.72,
+   "line": "И сравнение потеряет смысл.",
+   "scene": "league",
+   "tpl": "league",
+   "params": {
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    },
+    "tOff": 6.427
+   }
+  },
+  {
+   "id": "s055",
+   "start": 194.72,
+   "end": 200.72,
+   "line": "Поэтому сначала заглянем в эту королевскую лигу. Тем более что именно из-за одного короля в интернете гуляет",
+   "scene": "mythChain",
+   "tpl": "mythChain",
+   "params": {
+    "items": [
+     "КОРОЛЬ",
+     "?",
+     "?",
+     "?"
+    ],
+    "stamp": false
+   },
+   "sfx": [
+    {
+     "at": 0.4,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s056",
+   "start": 200.72,
+   "end": 202.54,
+   "line": "цифра, которой нет ни в одном",
+   "scene": "mythChain",
+   "tpl": "mythChain",
+   "params": {
+    "items": [
+     "КОРОЛЬ",
+     "?",
+     "?",
+     "?"
+    ],
+    "stamp": false,
+    "tOff": 6.0,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s057",
+   "start": 202.54,
+   "end": 204.36,
+   "line": "документе.",
+   "scene": "mythChain",
+   "tpl": "mythChain",
+   "params": {
+    "items": [
+     "КОРОЛЬ",
+     "?",
+     "?",
+     "?"
+    ],
+    "stamp": false,
+    "tOff": 7.82,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s058",
+   "start": 204.36,
+   "end": 206.76,
+   "line": "",
+   "scene": "chapterTitle",
+   "tpl": "chapterTitle",
+   "params": {
+    "str": "ПРАВИТЕЛИ: ОТДЕЛЬНАЯ ЛИГА"
+   },
+   "sfx": [
+    {
+     "at": 0.0,
+     "name": "whoosh",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s059",
+   "start": 206.76,
+   "end": 211.98,
+   "line": "Император Август оставил редкий документ — отчёт о своих делах, высеченный в камне.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "augustus",
+    "caption": "АВГУСТ ИЗ ПРИМА-ПОРТА",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s060",
+   "start": 211.98,
+   "end": 216.66,
+   "line": "В нём подсчитано, что из собственных средств он отдал казне, народу и ветеранам",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "resgestae",
+    "caption": "«ДЕЯНИЯ» НА СТЕНЕ ХРАМА В АНКАРЕ",
+    "credit": "Wikimedia Commons · CC0",
+    "still": true
+   }
+  },
+  {
+   "id": "s061",
+   "start": 216.66,
+   "end": 219.68,
+   "line": "шестьсот миллионов денариев. Но где",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "600 МЛН",
+      "l": "ДЕНАРИЕВ ИЗ СОБСТВЕННЫХ СРЕДСТВ"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s062",
+   "start": 219.68,
+   "end": 226.2,
+   "line": "кончались деньги Августа и начиналась казна Рима, не скажет никто. Индия",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "aureus",
+    "caption": "ЗОЛОТОЙ АВРЕУС АВГУСТА",
+    "credit": "Wikimedia Commons · CC0",
+    "still": true
+   }
+  },
+  {
+   "id": "s063",
+   "start": 226.2,
+   "end": 232.46,
+   "line": "при Великих Моголах давала, по реконструкциям, около пятой части всего производства мира.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "akbar",
+    "caption": "АКБАР · МИНИАТЮРА ГОВАРДХАНА",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s064",
+   "start": 232.46,
+   "end": 238.46,
+   "line": "Отсюда цифра из интернета: «у императора Акбара — двадцать один триллион долларов». Но это",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "lat0": 20,
+    "lon0": 80,
+    "lights": 1
+   }
+  },
+  {
+   "id": "s065",
+   "start": 238.46,
+   "end": 240.66,
+   "line": "экономика огромной страны,",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "lat0": 20,
+    "lon0": 80,
+    "lights": 1,
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s066",
+   "start": 240.66,
+   "end": 242.86,
+   "line": "а не кошелёк одного человека.",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "lat0": 20,
+    "lon0": 80,
+    "lights": 1,
+    "tOff": 8.2,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s067",
+   "start": 242.86,
+   "end": 248.86,
+   "line": "С Китаем то же самое: при династии Сун он первым в мире стал печатать государственные бумажные деньги,",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "qingming",
+    "caption": "«ПО РЕКЕ В ПРАЗДНИК ЦИНМИН», СУН",
+    "credit": "Wikimedia Commons · CC0",
+    "still": true
+   }
+  },
+  {
+   "id": "s068",
+   "start": 248.86,
+   "end": 251.03,
+   "line": "а личного богатства императора",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "qingming",
+    "caption": "«ПО РЕКЕ В ПРАЗДНИК ЦИНМИН», СУН",
+    "credit": "Wikimedia Commons · CC0",
+    "still": true,
+    "from": 6.0
+   }
+  },
+  {
+   "id": "s069",
+   "start": 251.03,
+   "end": 253.2,
+   "line": "не считал никто.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "qingming",
+    "caption": "«ПО РЕКЕ В ПРАЗДНИК ЦИНМИН», СУН",
+    "credit": "Wikimedia Commons · CC0",
+    "still": true,
+    "from": 8.17
+   }
+  },
+  {
+   "id": "s070",
+   "start": 253.2,
+   "end": 259.66,
+   "line": "Чингисхан основал империю, которая при его потомках стала самой большой сухопутной империей в истории.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "genghis",
+    "caption": "ЧИНГИСХАН · АЛЬБОМ ИМПЕРАТОРОВ ЮАНЬ",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s071",
+   "start": 259.66,
+   "end": 265.08,
+   "line": "Но банковского счёта у него не было. У него была армия. Английский",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "view": {
+     "lon0": 20,
+     "lon1": 140,
+     "lat0": 60,
+     "lat1": 20
+    },
+    "caption": {
+     "str": "НЕ СЧЁТ В БАНКЕ, А АРМИЯ"
+    }
+   }
+  },
+  {
+   "id": "s072",
+   "start": 265.08,
+   "end": 271.08,
+   "line": "король Генрих Восьмой в конце тысяча пятьсот тридцатых годов закрыл все монастыри страны и забрал",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "henry",
+    "caption": "ГЕНРИХ VIII · ГОЛЬБЕЙН",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s073",
+   "start": 271.08,
+   "end": 273.32,
+   "line": "их земли в казну короны.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "henry",
+    "caption": "ГЕНРИХ VIII · ГОЛЬБЕЙН",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true,
+    "from": 6.0
+   }
+  },
+  {
+   "id": "s074",
+   "start": 273.32,
+   "end": 275.893,
+   "line": "Бо́льшую часть быстро продал, а деньги потратил",
+   "scene": "league",
+   "tpl": "league",
+   "params": {
+    "str": "ПРОДАНО · ПОТРАЧЕНО НА ВОЙНЫ"
+   }
+  },
+  {
+   "id": "s075",
+   "start": 275.893,
+   "end": 278.467,
+   "line": "на войны. В этом он, пожалуй, мог",
+   "scene": "league",
+   "tpl": "league",
+   "params": {
+    "str": "ПРОДАНО · ПОТРАЧЕНО НА ВОЙНЫ",
+    "tOff": 2.573,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   }
+  },
+  {
+   "id": "s076",
+   "start": 278.467,
+   "end": 281.04,
+   "line": "бы поспорить с Мансой Мусой. Николая",
+   "scene": "league",
+   "tpl": "league",
+   "params": {
+    "str": "ПРОДАНО · ПОТРАЧЕНО НА ВОЙНЫ",
+    "tOff": 5.147,
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   }
+  },
+  {
+   "id": "s077",
+   "start": 281.04,
+   "end": 286.74,
+   "line": "У Второго были дворцы, земли и драгоценности, но многое принадлежало короне и",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "nicholas",
+    "caption": "НИКОЛАЙ II, ОК. 1909",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s078",
+   "start": 286.74,
+   "end": 288.74,
+   "line": "всей императорской семье.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "nicholas",
+    "caption": "НИКОЛАЙ II, ОК. 1909",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true,
+    "from": 5.7
+   }
+  },
+  {
+   "id": "s079",
+   "start": 288.74,
+   "end": 294.2,
+   "line": "А цифры его «личного состояния» из интернета ничем не подтверждены. ещё",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "faberge",
+    "caption": "ЯЙЦА ФАБЕРЖЕ · ОРУЖЕЙНАЯ ПАЛАТА",
+    "credit": "Wikimedia Commons · CC BY-SA 3.0",
+    "still": true
+   }
+  },
+  {
+   "id": "s080",
+   "start": 294.2,
+   "end": 301.2,
+   "line": "И один правитель — низам Хайдарабада, княжества в Индии. Его звали Мир Осман Али Хан.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "chowmahalla",
+    "caption": "ДВОРЕЦ ЧОУМАХАЛЛА, ХАЙДАРАБАД",
+    "credit": "Wikimedia Commons · CC BY-SA 3.0",
+    "still": true
+   }
+  },
+  {
+   "id": "s081",
+   "start": 301.2,
+   "end": 306.4,
+   "line": "В тысяча девятьсот тридцать седьмом году американский журнал «Тайм» назвал его самым богатым",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "1937",
+      "l": "«ТАЙМ»: САМЫЙ БОГАТЫЙ В МИРЕ"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s082",
+   "start": 306.4,
+   "end": 308.4,
+   "line": "человеком в мире.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "1937",
+      "l": "«ТАЙМ»: САМЫЙ БОГАТЫЙ В МИРЕ"
+     }
+    ],
+    "tOff": 5.2,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s083",
+   "start": 308.4,
+   "end": 314.4,
+   "line": "У него был алмаз «Джейкоб», почти сто восемьдесят пять карат. По одной из версий, камень",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "jacob",
+    "caption": "АЛМАЗ «ДЖЕЙКОБ»",
+    "credit": "Wikimedia Commons · CC BY-SA 4.0",
+    "still": true
+   }
+  },
+  {
+   "id": "s084",
+   "start": 314.4,
+   "end": 317.22,
+   "line": "нашли в туфле его покойного отца.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "jacob",
+    "caption": "АЛМАЗ «ДЖЕЙКОБ»",
+    "credit": "Wikimedia Commons · CC BY-SA 4.0",
+    "still": true,
+    "from": 6.0
+   }
+  },
+  {
+   "id": "s085",
+   "start": 317.22,
+   "end": 321.32,
+   "line": "А низам, по рассказам, держал его на столе вместо пресс-папье.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "≈ 185 КАРАТ",
+      "l": "ВМЕСТО ПРЕСС-ПАПЬЕ"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s086",
+   "start": 321.32,
+   "end": 324.013,
+   "line": "Говорят, при этом он ходил в старой феске и курил",
+   "scene": "league",
+   "tpl": "league",
+   "params": {
+    "str": "ДЕНЬГИ ≈ КАЗНА КНЯЖЕСТВА"
+   }
+  },
+  {
+   "id": "s087",
+   "start": 324.013,
+   "end": 326.707,
+   "line": "дешёвые сигареты. Но и его деньги не",
+   "scene": "league",
+   "tpl": "league",
+   "params": {
+    "str": "ДЕНЬГИ ≈ КАЗНА КНЯЖЕСТВА",
+    "tOff": 2.693,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   }
+  },
+  {
+   "id": "s088",
+   "start": 326.707,
+   "end": 329.4,
+   "line": "отделишь от казны княжества. А теперь",
+   "scene": "league",
+   "tpl": "league",
+   "params": {
+    "str": "ДЕНЬГИ ≈ КАЗНА КНЯЖЕСТВА",
+    "tOff": 5.387,
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   }
+  },
+  {
+   "id": "s089",
+   "start": 329.4,
+   "end": 334.32,
+   "line": "вернёмся к Мансе Мусе. Откуда взялись четыреста миллиардов? В две",
+   "scene": "ticker",
+   "tpl": "ticker",
+   "params": {
+    "value": "$400 000 000 000",
+    "sub": "ОТКУДА?"
+   }
+  },
+  {
+   "id": "s090",
+   "start": 334.32,
+   "end": 340.32,
+   "line": "тысячи двенадцатом году эту цифру назвало американское радио, сославшись на сайт о состояниях",
+   "scene": "mythChain",
+   "tpl": "mythChain",
+   "params": {
+    "items": [
+     "САЙТ О ЗНАМЕНИТОСТЯХ",
+     "РАДИО, 2012",
+     "ЖУРНАЛЫ",
+     "РОЛИКИ"
+    ],
+    "stamp": "РАСЧЁТА НЕТ"
+   },
+   "sfx": [
+    {
+     "at": 0.4,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s091",
+   "start": 340.32,
+   "end": 343.44,
+   "line": "знаменитостей. Опубликованного расчёта нет",
+   "scene": "mythChain",
+   "tpl": "mythChain",
+   "params": {
+    "items": [
+     "САЙТ О ЗНАМЕНИТОСТЯХ",
+     "РАДИО, 2012",
+     "ЖУРНАЛЫ",
+     "РОЛИКИ"
+    ],
+    "stamp": "РАСЧЁТА НЕТ",
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s092",
+   "start": 343.44,
+   "end": 346.56,
+   "line": "до сих пор. Потом цифру повторили крупные журналы,",
+   "scene": "mythChain",
+   "tpl": "mythChain",
+   "params": {
+    "items": [
+     "САЙТ О ЗНАМЕНИТОСТЯХ",
+     "РАДИО, 2012",
+     "ЖУРНАЛЫ",
+     "РОЛИКИ"
+    ],
+    "stamp": "РАСЧЁТА НЕТ",
+    "tOff": 9.12,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s093",
+   "start": 346.56,
+   "end": 349.68,
+   "line": "а за ними — бесчисленные ролики.",
+   "scene": "mythChain",
+   "tpl": "mythChain",
+   "params": {
+    "items": [
+     "САЙТ О ЗНАМЕНИТОСТЯХ",
+     "РАДИО, 2012",
+     "ЖУРНАЛЫ",
+     "РОЛИКИ"
+    ],
+    "stamp": "РАСЧЁТА НЕТ",
+    "tOff": 12.24,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s094",
+   "start": 349.68,
+   "end": 355.08,
+   "line": "Так рождается «факт», который все повторяют и почти никто не проверяет.",
+   "scene": "mythChain",
+   "tpl": "mythChain",
+   "params": {
+    "items": [
+     "САЙТ О ЗНАМЕНИТОСТЯХ",
+     "РАДИО, 2012",
+     "ЖУРНАЛЫ",
+     "РОЛИКИ"
+    ],
+    "stamp": "РАСЧЁТА НЕТ",
+    "cam": {
+     "move": "pull"
+    }
+   },
+   "sfx": [
+    {
+     "at": 0.4,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s095",
+   "start": 355.08,
+   "end": 361.08,
+   "line": "Манса Муса платил золотом за всё. От вас нужно меньше: одна кнопка «Подписаться».",
+   "scene": "phoneInsert",
+   "tpl": "phoneInsert",
+   "params": {
+    "screen": "subscribe"
+   },
+   "cues": {
+    "press": 2.0
+   }
+  },
+  {
+   "id": "s096",
+   "start": 361.08,
+   "end": 363.62,
+   "line": "Цены в Каире от этого не упадут.",
+   "scene": "phoneInsert",
+   "tpl": "phoneInsert",
+   "params": {
+    "screen": "subscribe",
+    "tOff": 6.0,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   },
+   "cues": {
+    "press": 2.0
+   }
+  },
+  {
+   "id": "s097",
+   "start": 363.62,
+   "end": 367.92,
+   "line": "А мы и дальше будем проверять цифры, а не повторять их. же",
+   "scene": "phoneInsert",
+   "tpl": "phoneInsert",
+   "params": {
+    "screen": "subscribe"
+   },
+   "cues": {
+    "press": 0.1
+   }
+  },
+  {
+   "id": "s098",
+   "start": 367.92,
+   "end": 373.92,
+   "line": "Что известно точно? Только то, что после визита Мусы золото в Каире подешевело. Аль-Умари",
+   "scene": "scales",
+   "tpl": "scales",
+   "params": {
+    "left": {
+     "v": "1 МИСКАЛЬ",
+     "l": "ЗОЛОТА"
+    },
+    "right": {
+     "v": "25 → 22",
+     "l": "ДИРХЕМА"
+    },
+    "heavier": "left"
+   },
+   "cues": {
+    "tilt": 0.5
+   },
+   "sfx": [
+    {
+     "at": 0.8,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s099",
+   "start": 373.92,
+   "end": 376.0,
+   "line": "пишет, что цена не восстанавливалась",
+   "scene": "scales",
+   "tpl": "scales",
+   "params": {
+    "left": {
+     "v": "1 МИСКАЛЬ",
+     "l": "ЗОЛОТА"
+    },
+    "right": {
+     "v": "25 → 22",
+     "l": "ДИРХЕМА"
+    },
+    "heavier": "left",
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   },
+   "cues": {
+    "tilt": 0.5
+   }
+  },
+  {
+   "id": "s100",
+   "start": 376.0,
+   "end": 378.08,
+   "line": "двенадцать лет.",
+   "scene": "scales",
+   "tpl": "scales",
+   "params": {
+    "left": {
+     "v": "1 МИСКАЛЬ",
+     "l": "ЗОЛОТА"
+    },
+    "right": {
+     "v": "25 → 22",
+     "l": "ДИРХЕМА"
+    },
+    "heavier": "left",
+    "tOff": 8.08,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   },
+   "cues": {
+    "tilt": 0.5
+   }
+  },
+  {
+   "id": "s101",
+   "start": 378.08,
+   "end": 384.04,
+   "line": "Но историк Уоррен Шульц проверил курсы тех лет и долгого обвала не нашёл.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "НЕ НАШЁЛ",
+      "l": "ДОЛГОГО ОБВАЛА — У. ШУЛЬЦ, 2006"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s102",
+   "start": 384.04,
+   "end": 390.04,
+   "line": "Манса Муса точно был невероятно богат. Но посчитать его богатство невозможно: казна Мали и",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "atlas_musa",
+    "caption": "МАНСА МУСА · КАТАЛОНСКИЙ АТЛАС",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s103",
+   "start": 390.04,
+   "end": 392.92,
+   "line": "личное золото правителя были одним целым.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "atlas_musa",
+    "caption": "МАНСА МУСА · КАТАЛОНСКИЙ АТЛАС",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true,
+    "from": 6.0
+   }
+  },
+  {
+   "id": "s104",
+   "start": 392.92,
+   "end": 395.5,
+   "line": "Поэтому он остаётся легендой.",
+   "scene": "league",
+   "tpl": "league",
+   "params": {
+    "str": "ВНЕ КОНКУРСА"
+   }
+  },
+  {
+   "id": "s105",
+   "start": 395.5,
+   "end": 398.08,
+   "line": "Вне конкурса.",
+   "scene": "league",
+   "tpl": "league",
+   "params": {
+    "str": "ВНЕ КОНКУРСА",
+    "tOff": 2.58,
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   }
+  },
+  {
+   "id": "s106",
+   "start": 398.08,
+   "end": 400.58,
+   "line": "",
+   "scene": "caravan",
+   "tpl": "caravan",
+   "params": {
+    "n": 6,
+    "night": true,
+    "cam": {
+     "move": "driftL"
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s107",
+   "start": 400.58,
+   "end": 403.08,
+   "line": "",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "mosque",
+    "caption": "МЕЧЕТЬ ДЖИНГЕРЕБЕР, ТИМБУКТУ",
+    "credit": "Wikimedia Commons · CC BY-SA 4.0",
+    "still": true
+   }
+  },
+  {
+   "id": "s108",
+   "start": 403.08,
+   "end": 405.48,
+   "line": "Теперь",
+   "scene": "chapterTitle",
+   "tpl": "chapterTitle",
+   "params": {
+    "str": "ОТ СЕДЬМОГО ДО ЧЕТВЁРТОГО"
+   },
+   "sfx": [
+    {
+     "at": 0.0,
+     "name": "whoosh",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s109",
+   "start": 405.48,
+   "end": 411.48,
+   "line": "— частные люди. Те, кто заработал, купил, унаследовал и мог всё это продать.",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "7",
+      "v": 0.4,
+      "str": "?"
+     },
+     {
+      "label": "6",
+      "v": 0.45,
+      "str": "?"
+     },
+     {
+      "label": "5",
+      "v": 0.47,
+      "str": "?"
+     },
+     {
+      "label": "4",
+      "v": 0.5,
+      "str": "?"
+     },
+     {
+      "label": "3",
+      "v": 0.7,
+      "str": "?"
+     },
+     {
+      "label": "2",
+      "v": 0.8,
+      "str": "?"
+     },
+     {
+      "label": "1",
+      "v": 0.95,
+      "str": "?"
+     }
+    ],
+    "title": "ДОЛЯ ЭКОНОМИКИ СВОЕЙ СТРАНЫ"
+   }
+  },
+  {
+   "id": "s110",
+   "start": 411.48,
+   "end": 414.3,
+   "line": "Отсчёт от седьмого места к первому. По",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "7",
+      "v": 0.4,
+      "str": "?"
+     },
+     {
+      "label": "6",
+      "v": 0.45,
+      "str": "?"
+     },
+     {
+      "label": "5",
+      "v": 0.47,
+      "str": "?"
+     },
+     {
+      "label": "4",
+      "v": 0.5,
+      "str": "?"
+     },
+     {
+      "label": "3",
+      "v": 0.7,
+      "str": "?"
+     },
+     {
+      "label": "2",
+      "v": 0.8,
+      "str": "?"
+     },
+     {
+      "label": "1",
+      "v": 0.95,
+      "str": "?"
+     }
+    ],
+    "title": "ДОЛЯ ЭКОНОМИКИ СВОЕЙ СТРАНЫ",
+    "tOff": 6.0,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s111",
+   "start": 414.3,
+   "end": 417.12,
+   "line": "доле экономики своей страны.",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "7",
+      "v": 0.4,
+      "str": "?"
+     },
+     {
+      "label": "6",
+      "v": 0.45,
+      "str": "?"
+     },
+     {
+      "label": "5",
+      "v": 0.47,
+      "str": "?"
+     },
+     {
+      "label": "4",
+      "v": 0.5,
+      "str": "?"
+     },
+     {
+      "label": "3",
+      "v": 0.7,
+      "str": "?"
+     },
+     {
+      "label": "2",
+      "v": 0.8,
+      "str": "?"
+     },
+     {
+      "label": "1",
+      "v": 0.95,
+      "str": "?"
+     }
+    ],
+    "title": "ДОЛЯ ЭКОНОМИКИ СВОЕЙ СТРАНЫ",
+    "tOff": 8.82,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s112",
+   "start": 417.12,
+   "end": 423.12,
+   "line": "Седьмое место. Джон Джейкоб Астор, Нью-Йорк, первая половина девятнадцатого века. Сначала он",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": 7,
+    "name": "ДЖОН ДЖЕЙКОБ АСТОР",
+    "years": "1763–1848 · НЬЮ-ЙОРК"
+   },
+   "sfx": [
+    {
+     "at": 0.05,
+     "name": "hit",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s113",
+   "start": 423.12,
+   "end": 425.36,
+   "line": "разбогател на торговле мехами.",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": 7,
+    "name": "ДЖОН ДЖЕЙКОБ АСТОР",
+    "years": "1763–1848 · НЬЮ-ЙОРК",
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s114",
+   "start": 425.36,
+   "end": 427.9,
+   "line": "А потом стал скупать землю на Манхэттене, когда там",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "city",
+    "setOpts": {
+     "rain": false
+    },
+    "tag": {
+     "str": "МАНХЭТТЕН · ЗЕМЛЯ"
+    }
+   }
+  },
+  {
+   "id": "s115",
+   "start": 427.9,
+   "end": 430.44,
+   "line": "ещё были поля и фермы.",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "city",
+    "setOpts": {
+     "rain": false
+    },
+    "tag": {
+     "str": "МАНХЭТТЕН · ЗЕМЛЯ"
+    },
+    "tOff": 2.54,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   }
+  },
+  {
+   "id": "s116",
+   "start": 430.44,
+   "end": 436.44,
+   "line": "По расчётам историков Майкла Клеппера и Роберта Гюнтера, перед смертью у него было около одной сто седьмой",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 0.9,
+    "pctStr": "≈ 0,9 %",
+    "label": "ЭКОНОМИКА США",
+    "who": "АСТОР · 1/107 (КЛЕППЕР И ГЮНТЕР)"
+   }
+  },
+  {
+   "id": "s117",
+   "start": 436.44,
+   "end": 439.1,
+   "line": "всей экономики Америки. Примерно",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 0.9,
+    "pctStr": "≈ 0,9 %",
+    "label": "ЭКОНОМИКА США",
+    "who": "АСТОР · 1/107 (КЛЕППЕР И ГЮНТЕР)",
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s118",
+   "start": 439.1,
+   "end": 441.76,
+   "line": "девять десятых процента.",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 0.9,
+    "pctStr": "≈ 0,9 %",
+    "label": "ЭКОНОМИКА США",
+    "who": "АСТОР · 1/107 (КЛЕППЕР И ГЮНТЕР)",
+    "tOff": 8.66,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s119",
+   "start": 441.76,
+   "end": 447.02,
+   "line": "Шестое место. Эндрю Карнеги. В тринадцать лет — мальчик на ткацкой фабрике в Пенсильвании,",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": 6,
+    "name": "ЭНДРЮ КАРНЕГИ",
+    "years": "1835–1919"
+   },
+   "sfx": [
+    {
+     "at": 0.05,
+     "name": "hit",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s120",
+   "start": 447.02,
+   "end": 449.02,
+   "line": "доллар двадцать в неделю.",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": 6,
+    "name": "ЭНДРЮ КАРНЕГИ",
+    "years": "1835–1919",
+    "tOff": 5.26,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s121",
+   "start": 449.02,
+   "end": 454.12,
+   "line": "Через полвека — один из главных сталепромышленников Америки. В тысяча",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "carnegie",
+    "caption": "ЭНДРЮ КАРНЕГИ, 1913",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s122",
+   "start": 454.12,
+   "end": 457.04,
+   "line": "девятьсот первом году он продал свою компанию банкиру",
+   "scene": "steelMill",
+   "tpl": "steelMill",
+   "params": {},
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s123",
+   "start": 457.04,
+   "end": 459.96,
+   "line": "Джону Пирпонту Моргану.",
+   "scene": "steelMill",
+   "tpl": "steelMill",
+   "params": {
+    "tOff": 2.92,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s124",
+   "start": 459.96,
+   "end": 465.96,
+   "line": "Только на долю Карнеги пришлось около двухсот двадцати пяти миллионов долларов. Это около одного процента",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 1,
+    "pctStr": "≈ 1 %",
+    "label": "ЭКОНОМИКА США, 1901",
+    "who": "$225 МЛН — ДОЛЯ КАРНЕГИ"
+   }
+  },
+  {
+   "id": "s125",
+   "start": 465.96,
+   "end": 467.82,
+   "line": "всей экономики США того",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 1,
+    "pctStr": "≈ 1 %",
+    "label": "ЭКОНОМИКА США, 1901",
+    "who": "$225 МЛН — ДОЛЯ КАРНЕГИ",
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s126",
+   "start": 467.82,
+   "end": 469.68,
+   "line": "года. этой",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 1,
+    "pctStr": "≈ 1 %",
+    "label": "ЭКОНОМИКА США, 1901",
+    "who": "$225 МЛН — ДОЛЯ КАРНЕГИ",
+    "tOff": 7.86,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s127",
+   "start": 469.68,
+   "end": 475.68,
+   "line": "У стали была и тяжёлая сторона. В тысяча восемьсот девяносто втором году на его заводе в Хомстеде рабочие",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "homestead",
+    "caption": "ЗАВОД В ХОМСТЕДЕ (NARA)",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s128",
+   "start": 475.68,
+   "end": 477.7,
+   "line": "отказались от снижения зарплаты,",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "homestead",
+    "caption": "ЗАВОД В ХОМСТЕДЕ (NARA)",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true,
+    "from": 6.0
+   }
+  },
+  {
+   "id": "s129",
+   "start": 477.7,
+   "end": 479.72,
+   "line": "и завод закрыли для них.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "homestead",
+    "caption": "ЗАВОД В ХОМСТЕДЕ (NARA)",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true,
+    "from": 8.02
+   }
+  },
+  {
+   "id": "s130",
+   "start": 479.72,
+   "end": 482.92,
+   "line": "Глава компании, партнёр Карнеги Генри Фрик, нанял против",
+   "scene": "steelMill",
+   "tpl": "steelMill",
+   "params": {
+    "crowd": true
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s131",
+   "start": 482.92,
+   "end": 486.12,
+   "line": "бастующих около трёхсот вооружённых охранников.",
+   "scene": "steelMill",
+   "tpl": "steelMill",
+   "params": {
+    "crowd": true,
+    "tOff": 3.2,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s132",
+   "start": 486.12,
+   "end": 491.32,
+   "line": "В перестрелке погибли не меньше десяти человек — и рабочие, и охранники. Сам Карнеги был",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "≥ 10",
+      "l": "ПОГИБШИХ · 1892"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s133",
+   "start": 491.32,
+   "end": 493.32,
+   "line": "тогда в Шотландии. ещё",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "≥ 10",
+      "l": "ПОГИБШИХ · 1892"
+     }
+    ],
+    "tOff": 5.2,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s134",
+   "start": 493.32,
+   "end": 499.74,
+   "line": "А за три года до этого Карнеги написал: «Человек, который умирает богатым, умирает опозоренным».",
+   "scene": "quote",
+   "tpl": "quote",
+   "params": {
+    "str": "«Человек, который умирает богатым,|умирает опозоренным»",
+    "by": "ЭНДРЮ КАРНЕГИ, 1889"
+   }
+  },
+  {
+   "id": "s135",
+   "start": 499.74,
+   "end": 504.42,
+   "line": "И после продажи компании действительно раздал около девяноста процентов своих денег.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "carnegielib",
+    "caption": "БИБЛИОТЕКА КАРНЕГИ, 1905",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s136",
+   "start": 504.42,
+   "end": 509.36,
+   "line": "На них построили больше двух с половиной тысяч библиотек по всему миру. место.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "> 2500",
+      "l": "БИБЛИОТЕК ПО ВСЕМУ МИРУ"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s137",
+   "start": 509.36,
+   "end": 514.84,
+   "line": "Пятое Марк Лициний Красс, Рим, первый век до нашей эры. Он начал",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": 5,
+    "name": "МАРК ЛИЦИНИЙ КРАСС",
+    "years": "I ВЕК ДО Н. Э. · РИМ"
+   },
+   "sfx": [
+    {
+     "at": 0.05,
+     "name": "hit",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s138",
+   "start": 514.84,
+   "end": 518.66,
+   "line": "богатеть во время гражданских войн: дёшево скупал имущество людей,",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "crassus",
+    "caption": "ПРЕДПОЛОЖИТЕЛЬНО КРАСС · ЛУВР",
+    "credit": "Wikimedia Commons · CC0",
+    "still": true
+   }
+  },
+  {
+   "id": "s139",
+   "start": 518.66,
+   "end": 522.16,
+   "line": "которых диктатор Сулла объявил вне закона. дальше,",
+   "scene": "fireRome",
+   "tpl": "fireRome",
+   "params": {
+    "mode": "deal"
+   },
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s140",
+   "start": 522.16,
+   "end": 524.33,
+   "line": "А по словам Плутарха, помогли пожары.",
+   "scene": "fireRome",
+   "tpl": "fireRome",
+   "params": {
+    "mode": "fire"
+   },
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s141",
+   "start": 524.33,
+   "end": 526.5,
+   "line": "В Риме постоянно горели дома.",
+   "scene": "fireRome",
+   "tpl": "fireRome",
+   "params": {
+    "mode": "fire",
+    "tOff": 2.17,
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   },
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s142",
+   "start": 526.5,
+   "end": 528.44,
+   "line": "Красс покупал горящие и соседние",
+   "scene": "fireRome",
+   "tpl": "fireRome",
+   "params": {
+    "mode": "deal"
+   },
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s143",
+   "start": 528.44,
+   "end": 530.38,
+   "line": "дома за бесценок.",
+   "scene": "fireRome",
+   "tpl": "fireRome",
+   "params": {
+    "mode": "deal",
+    "tOff": 1.94,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   },
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s144",
+   "start": 530.38,
+   "end": 532.65,
+   "line": "А потом пятьсот его рабов-строителей отстраивали",
+   "scene": "fireRome",
+   "tpl": "fireRome",
+   "params": {
+    "mode": "build"
+   },
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s145",
+   "start": 532.65,
+   "end": 534.92,
+   "line": "их заново. Старший",
+   "scene": "fireRome",
+   "tpl": "fireRome",
+   "params": {
+    "mode": "build",
+    "tOff": 2.27,
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   },
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s146",
+   "start": 534.92,
+   "end": 540.92,
+   "line": "Плиний пишет, что одной только земли у Красса было на двести миллионов сестерциев.",
+   "scene": "scales",
+   "tpl": "scales",
+   "params": {
+    "left": {
+     "v": "КРАСС",
+     "l": "200 МЛН СЕСТЕРЦИЕВ ЗЕМЛЁЙ"
+    },
+    "right": {
+     "v": "КАЗНА РИМА",
+     "l": "ДОХОД ЗА ГОД"
+    },
+    "heavier": "equal"
+   },
+   "sfx": [
+    {
+     "at": 0.8,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s147",
+   "start": 540.92,
+   "end": 543.627,
+   "line": "Примерно столько вся римская казна получала",
+   "scene": "scales",
+   "tpl": "scales",
+   "params": {
+    "left": {
+     "v": "КРАСС",
+     "l": "200 МЛН СЕСТЕРЦИЕВ ЗЕМЛЁЙ"
+    },
+    "right": {
+     "v": "КАЗНА РИМА",
+     "l": "ДОХОД ЗА ГОД"
+    },
+    "heavier": "equal",
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s148",
+   "start": 543.627,
+   "end": 546.333,
+   "line": "за год до походов Помпея. Один человек",
+   "scene": "scales",
+   "tpl": "scales",
+   "params": {
+    "left": {
+     "v": "КРАСС",
+     "l": "200 МЛН СЕСТЕРЦИЕВ ЗЕМЛЁЙ"
+    },
+    "right": {
+     "v": "КАЗНА РИМА",
+     "l": "ДОХОД ЗА ГОД"
+    },
+    "heavier": "equal",
+    "tOff": 8.707,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s149",
+   "start": 546.333,
+   "end": 549.04,
+   "line": "— как годовой бюджет государства.",
+   "scene": "scales",
+   "tpl": "scales",
+   "params": {
+    "left": {
+     "v": "КРАСС",
+     "l": "200 МЛН СЕСТЕРЦИЕВ ЗЕМЛЁЙ"
+    },
+    "right": {
+     "v": "КАЗНА РИМА",
+     "l": "ДОХОД ЗА ГОД"
+    },
+    "heavier": "equal",
+    "tOff": 11.413,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s150",
+   "start": 549.04,
+   "end": 554.56,
+   "line": "По грубой реконструкции экономики Римской империи это около процента. Но ошибка тут",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 1,
+    "pctStr": "≈ 1 % ?",
+    "label": "ЭКОНОМИКА РИМСКОЙ ИМПЕРИИ",
+    "who": "ОШИБКА ОГРОМНАЯ"
+   }
+  },
+  {
+   "id": "s151",
+   "start": 554.56,
+   "end": 556.56,
+   "line": "огромная.",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 1,
+    "pctStr": "≈ 1 % ?",
+    "label": "ЭКОНОМИКА РИМСКОЙ ИМПЕРИИ",
+    "who": "ОШИБКА ОГРОМНАЯ",
+    "tOff": 5.52,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s152",
+   "start": 556.56,
+   "end": 560.1,
+   "line": "Однажды Красс накрыл для народа десять тысяч столов.",
+   "scene": "fireRome",
+   "tpl": "fireRome",
+   "params": {
+    "mode": "deal",
+    "cam": {
+     "move": "pull",
+     "z": 1.1
+    }
+   },
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s153",
+   "start": 560.1,
+   "end": 565.36,
+   "line": "А в семьдесят первом году до нашей эры он подавил самое известное восстание рабов в истории Рима",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "view": {
+     "lon0": 5,
+     "lon1": 25,
+     "lat0": 46,
+     "lat1": 36
+    },
+    "marks": [
+     {
+      "at": [
+       12.5,
+       41.9
+      ],
+      "label": "РИМ"
+     }
+    ],
+    "caption": {
+     "str": "71 ДО Н. Э. · ВОССТАНИЕ СПАРТАКА"
+    }
+   }
+  },
+  {
+   "id": "s154",
+   "start": 565.36,
+   "end": 567.36,
+   "line": "— восстание Спартака.",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "view": {
+     "lon0": 5,
+     "lon1": 25,
+     "lat0": 46,
+     "lat1": 36
+    },
+    "marks": [
+     {
+      "at": [
+       12.5,
+       41.9
+      ],
+      "label": "РИМ"
+     }
+    ],
+    "caption": {
+     "str": "71 ДО Н. Э. · ВОССТАНИЕ СПАРТАКА"
+    },
+    "tOff": 5.26,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s155",
+   "start": 567.36,
+   "end": 570.22,
+   "line": "Для Рима рабы были имуществом. Такими",
+   "scene": "fireRome",
+   "tpl": "fireRome",
+   "params": {
+    "mode": "build"
+   },
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s156",
+   "start": 570.22,
+   "end": 573.08,
+   "line": "же, как его пятьсот строителей.",
+   "scene": "fireRome",
+   "tpl": "fireRome",
+   "params": {
+    "mode": "build",
+    "tOff": 2.86,
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   },
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s157",
+   "start": 573.08,
+   "end": 579.0,
+   "line": "Сам Красс любил повторять: богат лишь тот, кто может на свои доходы содержать целую армию.",
+   "scene": "quote",
+   "tpl": "quote",
+   "params": {
+    "str": "«Богат лишь тот, кто может на свои доходы|содержать армию»",
+    "by": "КРАСС ПО ПЛИНИЮ"
+   }
+  },
+  {
+   "id": "s158",
+   "start": 579.0,
+   "end": 585.0,
+   "line": "В конце жизни он и правда повёл армию на восток, в Парфию. Только римскую, а не свою.",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "view": {
+     "lon0": 10,
+     "lon1": 55,
+     "lat0": 45,
+     "lat1": 28
+    },
+    "arcs": [
+     {
+      "from": [
+       12.5,
+       41.9
+      ],
+      "to": [
+       39,
+       36.9
+      ]
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       39,
+       36.9
+      ],
+      "label": "КАРРЫ · 53 ДО Н. Э."
+     }
+    ]
+   }
+  },
+  {
+   "id": "s159",
+   "start": 585.0,
+   "end": 588.34,
+   "line": "После разгрома при Каррах, в пятьдесят третьем году до нашей эры,",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "view": {
+     "lon0": 10,
+     "lon1": 55,
+     "lat0": 45,
+     "lat1": 28
+    },
+    "arcs": [
+     {
+      "from": [
+       12.5,
+       41.9
+      ],
+      "to": [
+       39,
+       36.9
+      ]
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       39,
+       36.9
+      ],
+      "label": "КАРРЫ · 53 ДО Н. Э."
+     }
+    ],
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s160",
+   "start": 588.34,
+   "end": 591.68,
+   "line": "Красс погиб на переговорах с парфянами.",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "view": {
+     "lon0": 10,
+     "lon1": 55,
+     "lat0": 45,
+     "lat1": 28
+    },
+    "arcs": [
+     {
+      "from": [
+       12.5,
+       41.9
+      ],
+      "to": [
+       39,
+       36.9
+      ]
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       39,
+       36.9
+      ],
+      "label": "КАРРЫ · 53 ДО Н. Э."
+     }
+    ],
+    "tOff": 9.34,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s161",
+   "start": 591.68,
+   "end": 598.66,
+   "line": "Четвёртое место. Корнелиус Вандербильт по прозвищу Коммодор. В шестнадцать лет у него появилась парусная лодка.",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": 4,
+    "name": "КОРНЕЛИУС ВАНДЕРБИЛЬТ",
+    "years": "1794–1877"
+   },
+   "sfx": [
+    {
+     "at": 0.05,
+     "name": "hit",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s162",
+   "start": 598.66,
+   "end": 603.9,
+   "line": "По семейному преданию, купленная на сто долларов, которые дала мать. Он возил людей между Статен-Айлендом",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "vanderbilt",
+    "caption": "КОРНЕЛИУС ВАНДЕРБИЛЬТ",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s163",
+   "start": 603.9,
+   "end": 605.9,
+   "line": "и Манхэттеном.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "vanderbilt",
+    "caption": "КОРНЕЛИУС ВАНДЕРБИЛЬТ",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true,
+    "from": 5.24
+   }
+  },
+  {
+   "id": "s164",
+   "start": 605.9,
+   "end": 612.2,
+   "line": "Потом были пароходы, затем железные дороги и первый вокзал Гранд-Сентрал в Нью-Йорке. Когда Вандербильт",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "gcdepot",
+    "caption": "ГРАНД-СЕНТРАЛ-ДЕПО, 1871",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s165",
+   "start": 612.2,
+   "end": 618.2,
+   "line": "умер в тысяча восемьсот семьдесят седьмом году, у него было около ста миллионов долларов. По расчётам",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 1.15,
+    "pctStr": "≈ 1,15 %",
+    "label": "ЭКОНОМИКА США, 1877",
+    "who": "1/87 (КЛЕППЕР И ГЮНТЕР)"
+   }
+  },
+  {
+   "id": "s166",
+   "start": 618.2,
+   "end": 621.74,
+   "line": "Клеппера и Гюнтера, это одна восемьдесят седьмая",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 1.15,
+    "pctStr": "≈ 1,15 %",
+    "label": "ЭКОНОМИКА США, 1877",
+    "who": "1/87 (КЛЕППЕР И ГЮНТЕР)",
+    "tOff": 6.0,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s167",
+   "start": 621.74,
+   "end": 625.28,
+   "line": "всей экономики Америки. Почти всё",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 1.15,
+    "pctStr": "≈ 1,15 %",
+    "label": "ЭКОНОМИКА США, 1877",
+    "who": "1/87 (КЛЕППЕР И ГЮНТЕР)",
+    "tOff": 9.54,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s168",
+   "start": 625.28,
+   "end": 631.34,
+   "line": "он оставил одному сыну. Внуки построили дворцы, куда сегодня водят экскурсии.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "breakers",
+    "caption": "ОСОБНЯК «БРЕЙКЕРС», НЬЮПОРТ",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s169",
+   "start": 631.34,
+   "end": 636.52,
+   "line": "А в списке богачей «Форбс» за две тысячи четырнадцатый год не нашлось ни одного Вандербильта.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "0",
+      "l": "ВАНДЕРБИЛЬТОВ В СПИСКЕ «ФОРБС», 2014"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s170",
+   "start": 636.52,
+   "end": 638.52,
+   "line": "Честно скажем:",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "0",
+      "l": "ВАНДЕРБИЛЬТОВ В СПИСКЕ «ФОРБС», 2014"
+     }
+    ],
+    "tOff": 5.18,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s171",
+   "start": 638.52,
+   "end": 644.52,
+   "line": "у Карнеги, Красса и Вандербильта — примерно по одному проценту. Разница между ними меньше",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "КАРНЕГИ",
+      "v": 0.5,
+      "str": "≈ 1 %"
+     },
+     {
+      "label": "КРАСС",
+      "v": 0.5,
+      "str": "≈ 1 %"
+     },
+     {
+      "label": "ВАНДЕРБИЛЬТ",
+      "v": 0.55,
+      "str": "≈ 1,15 %"
+     }
+    ],
+    "title": "РАЗНИЦА МЕНЬШЕ ПОГРЕШНОСТИ"
+   }
+  },
+  {
+   "id": "s172",
+   "start": 644.52,
+   "end": 647.52,
+   "line": "любой погрешности. Осталось",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "КАРНЕГИ",
+      "v": 0.5,
+      "str": "≈ 1 %"
+     },
+     {
+      "label": "КРАСС",
+      "v": 0.5,
+      "str": "≈ 1 %"
+     },
+     {
+      "label": "ВАНДЕРБИЛЬТ",
+      "v": 0.55,
+      "str": "≈ 1,15 %"
+     }
+    ],
+    "title": "РАЗНИЦА МЕНЬШЕ ПОГРЕШНОСТИ",
+    "tOff": 6.0,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s173",
+   "start": 647.52,
+   "end": 653.64,
+   "line": "трое. И на первое место мы поставим совсем не того, о ком вы сейчас подумали.",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": "?",
+    "name": "3 · 2 · 1",
+    "years": ""
+   },
+   "sfx": [
+    {
+     "at": 0.05,
+     "name": "hit",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s174",
+   "start": 653.64,
+   "end": 655.64,
+   "line": "",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "gcdepot",
+    "caption": "ГРАНД-СЕНТРАЛ-ДЕПО, 1871",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s175",
+   "start": 655.64,
+   "end": 657.64,
+   "line": "",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": "?",
+    "name": "",
+    "years": ""
+   },
+   "sfx": [
+    {
+     "at": 0.05,
+     "name": "hit",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s176",
+   "start": 657.64,
+   "end": 660.04,
+   "line": "",
+   "scene": "chapterTitle",
+   "tpl": "chapterTitle",
+   "params": {
+    "str": "ТРОЕ НАВЕРХУ"
+   },
+   "sfx": [
+    {
+     "at": 0.0,
+     "name": "whoosh",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s177",
+   "start": 660.04,
+   "end": 666.86,
+   "line": "Третье место. Якоб Фуггер по прозвищу Богатый. Германия, город Аугсбург, начало шестнадцатого века.",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": 3,
+    "name": "ЯКОБ ФУГГЕР «БОГАТЫЙ»",
+    "years": "1459–1525 · АУГСБУРГ"
+   },
+   "sfx": [
+    {
+     "at": 0.05,
+     "name": "hit",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s178",
+   "start": 666.86,
+   "end": 668.46,
+   "line": "Он торговал тканями, владел",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "fugger",
+    "caption": "ЯКОБ ФУГГЕР · А. ДЮРЕР",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s179",
+   "start": 668.46,
+   "end": 674.24,
+   "line": "серебряными и медными рудниками и давал деньги в долг королям и папам. В тысяча",
+   "scene": "mapShot",
+   "tpl": "mapShot",
+   "params": {
+    "view": {
+     "lon0": 0,
+     "lon1": 30,
+     "lat0": 54,
+     "lat1": 42
+    },
+    "marks": [
+     {
+      "at": [
+       10.9,
+       48.4
+      ],
+      "label": "АУГСБУРГ"
+     },
+     {
+      "at": [
+       11.4,
+       47.3
+      ],
+      "label": "ТИРОЛЬ · СЕРЕБРО"
+     },
+     {
+      "at": [
+       19.1,
+       48.7
+      ],
+      "label": "ВЕНГРИЯ · МЕДЬ"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s180",
+   "start": 674.24,
+   "end": 679.5,
+   "line": "пятьсот девятнадцатом году решалось, кто станет императором Священной Римской империи.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "1519",
+      "l": "ВЫБОРЫ ИМПЕРАТОРА"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s181",
+   "start": 679.5,
+   "end": 685.5,
+   "line": "Фуггер дал почти две трети денег, на которые покупали голоса выборщиков в пользу Карла Пятого.",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 64,
+    "pctStr": "≈ 2/3",
+    "label": "ДЕНЬГИ НА ГОЛОСА ВЫБОРЩИКОВ",
+    "who": "ДАЛ ФУГГЕР"
+   }
+  },
+  {
+   "id": "s182",
+   "start": 685.5,
+   "end": 687.54,
+   "line": "А когда император не спешил возвращать",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 64,
+    "pctStr": "≈ 2/3",
+    "label": "ДЕНЬГИ НА ГОЛОСА ВЫБОРЩИКОВ",
+    "who": "ДАЛ ФУГГЕР",
+    "tOff": 6.0,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s183",
+   "start": 687.54,
+   "end": 689.58,
+   "line": "долг, Фуггер написал ему:",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 64,
+    "pctStr": "≈ 2/3",
+    "label": "ДЕНЬГИ НА ГОЛОСА ВЫБОРЩИКОВ",
+    "who": "ДАЛ ФУГГЕР",
+    "tOff": 8.04,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s184",
+   "start": 689.58,
+   "end": 694.44,
+   "line": "«Известно, что без меня Ваше Величество не получили бы корону». часть",
+   "scene": "quote",
+   "tpl": "quote",
+   "params": {
+    "str": "«Известно, что без меня Ваше Величество|не получили бы корону»",
+    "by": "ФУГГЕР — КАРЛУ V, 1523"
+   }
+  },
+  {
+   "id": "s185",
+   "start": 694.44,
+   "end": 699.4,
+   "line": "Даже денег от продажи индульгенций в Германии шла на возврат долга банку Фуггера.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "ИНДУЛЬГЕНЦИИ",
+      "l": "ЧАСТЬ ДЕНЕГ — В ДОЛГ БАНКУ ФУГГЕРА"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s186",
+   "start": 699.4,
+   "end": 705.38,
+   "line": "Тех самых индульгенций, против которых в тысяча пятьсот семнадцатом году выступил Мартин Лютер. С этого принято",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "single": "1517",
+    "note": "МАРТИН ЛЮТЕР"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s187",
+   "start": 705.38,
+   "end": 707.38,
+   "line": "отсчитывать начало Реформации.",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "single": "1517",
+    "note": "МАРТИН ЛЮТЕР",
+    "tOff": 5.98,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s188",
+   "start": 707.38,
+   "end": 712.88,
+   "line": "А ещё Фуггер построил для бедных целый квартал. О нём — в конце фильма. смерти",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "fuggerhaus",
+    "caption": "ДОМ ФУГГЕРОВ, АУГСБУРГ",
+    "credit": "Wikimedia Commons · CC BY-SA 4.0",
+    "still": true
+   }
+  },
+  {
+   "id": "s189",
+   "start": 712.88,
+   "end": 718.88,
+   "line": "После Фуггера капитал его фирмы оценили примерно в два миллиона гульденов. Историк Грег Стейнмец",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 2,
+    "pctStr": "< 2 %",
+    "label": "ЭКОНОМИКА ЕВРОПЫ, ОК. 1525",
+    "who": "≈ 2 МЛН ГУЛЬДЕНОВ (Г. СТЕЙНМЕЦ)"
+   }
+  },
+  {
+   "id": "s190",
+   "start": 718.88,
+   "end": 722.06,
+   "line": "считает, что это чуть меньше двух процентов всей",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 2,
+    "pctStr": "< 2 %",
+    "label": "ЭКОНОМИКА ЕВРОПЫ, ОК. 1525",
+    "who": "≈ 2 МЛН ГУЛЬДЕНОВ (Г. СТЕЙНМЕЦ)",
+    "tOff": 6.0,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s191",
+   "start": 722.06,
+   "end": 725.24,
+   "line": "экономики Европы того времени. место.",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 2,
+    "pctStr": "< 2 %",
+    "label": "ЭКОНОМИКА ЕВРОПЫ, ОК. 1525",
+    "who": "≈ 2 МЛН ГУЛЬДЕНОВ (Г. СТЕЙНМЕЦ)",
+    "tOff": 9.18,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s192",
+   "start": 725.24,
+   "end": 728.32,
+   "line": "Второе Джон Дэвисон Рокфеллер.",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": 2,
+    "name": "ДЖОН Д. РОКФЕЛЛЕР",
+    "years": "1839–1937"
+   },
+   "sfx": [
+    {
+     "at": 0.05,
+     "name": "hit",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s193",
+   "start": 728.32,
+   "end": 733.12,
+   "line": "Первая работа в шестнадцать лет — помощник бухгалтера в Кливленде, пятьдесят центов в",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "rockefeller",
+    "caption": "ДЖОН Д. РОКФЕЛЛЕР",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s194",
+   "start": 733.12,
+   "end": 739.12,
+   "line": "день. День, когда его взяли на работу, двадцать шестое сентября, он праздновал всю жизнь. А в юности",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "single": "26.09",
+    "note": "ПРАЗДНОВАЛ ВСЮ ЖИЗНЬ"
+   },
+   "sfx": [
+    {
+     "at": 0.2,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s195",
+   "start": 739.12,
+   "end": 742.0,
+   "line": "записывал в тетрадь каждый потраченный цент.",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "single": "26.09",
+    "note": "ПРАЗДНОВАЛ ВСЮ ЖИЗНЬ",
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s196",
+   "start": 742.0,
+   "end": 744.88,
+   "line": "Эта тетрадь сохранилась до сих пор.",
+   "scene": "calendar",
+   "tpl": "calendar",
+   "params": {
+    "single": "26.09",
+    "note": "ПРАЗДНОВАЛ ВСЮ ЖИЗНЬ",
+    "tOff": 8.88,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s197",
+   "start": 744.88,
+   "end": 747.14,
+   "line": "Он создал компанию «Стандард Ойл».",
+   "scene": "oilfield",
+   "tpl": "oilfield",
+   "params": {},
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s198",
+   "start": 747.14,
+   "end": 752.44,
+   "line": "К тысяча восемьсот восьмидесятому году она перерабатывала около девяноста процентов",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "≈ 90 %",
+      "l": "ПЕРЕРАБОТКИ НЕФТИ США, 1880"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s199",
+   "start": 752.44,
+   "end": 754.44,
+   "line": "всей нефти Америки.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "≈ 90 %",
+      "l": "ПЕРЕРАБОТКИ НЕФТИ США, 1880"
+     }
+    ],
+    "tOff": 5.3,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s200",
+   "start": 754.44,
+   "end": 758.36,
+   "line": "Карикатуристы рисовали её осьминогом, который душит страну.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "octopus",
+    "caption": "КАРИКАТУРА «ОСЬМИНОГ», 1904 (LOC)",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s201",
+   "start": 758.36,
+   "end": 763.52,
+   "line": "Журналистка Ида Тарбелл несколько лет расследовала, как компания давила конкурентов.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "tarbell",
+    "caption": "ИДА ТАРБЕЛЛ, 1909",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s202",
+   "start": 763.52,
+   "end": 768.82,
+   "line": "А в тысяча девятьсот одиннадцатом году Верховный суд США разделил её на тридцать четыре части.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "34",
+      "l": "КОМПАНИИ ВМЕСТО ОДНОЙ · 1911"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s203",
+   "start": 768.82,
+   "end": 775.44,
+   "line": "И Рокфеллер… стал ещё богаче: акции новых компаний взлетели. В тысяча",
+   "scene": "ticker",
+   "tpl": "ticker",
+   "params": {
+    "drop": false
+   }
+  },
+  {
+   "id": "s204",
+   "start": 775.44,
+   "end": 781.44,
+   "line": "девятьсот тринадцатом году его состояние достигло примерно девятисот миллионов долларов. Это больше",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 2.3,
+    "pctStr": "> 2 %",
+    "label": "ЭКОНОМИКА США, 1913",
+    "who": "РОКФЕЛЛЕР · $900 МЛН"
+   }
+  },
+  {
+   "id": "s205",
+   "start": 781.44,
+   "end": 784.24,
+   "line": "двух процентов экономики США.",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 2.3,
+    "pctStr": "> 2 %",
+    "label": "ЭКОНОМИКА США, 1913",
+    "who": "РОКФЕЛЛЕР · $900 МЛН",
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s206",
+   "start": 784.24,
+   "end": 790.24,
+   "line": "А весь федеральный бюджет страны в том году — около семисот пятнадцати миллионов. Рокфеллер мог бы в одиночку",
+   "scene": "scales",
+   "tpl": "scales",
+   "params": {
+    "left": {
+     "v": "$900 МЛН",
+     "l": "РОКФЕЛЛЕР, 1913"
+    },
+    "right": {
+     "v": "$715 МЛН",
+     "l": "БЮДЖЕТ США, 1913"
+    },
+    "heavier": "left"
+   },
+   "cues": {
+    "tilt": 2.6
+   },
+   "sfx": [
+    {
+     "at": 0.8,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s207",
+   "start": 790.24,
+   "end": 793.54,
+   "line": "оплатить расходы федерального правительства Америки за",
+   "scene": "scales",
+   "tpl": "scales",
+   "params": {
+    "left": {
+     "v": "$900 МЛН",
+     "l": "РОКФЕЛЛЕР, 1913"
+    },
+    "right": {
+     "v": "$715 МЛН",
+     "l": "БЮДЖЕТ США, 1913"
+    },
+    "heavier": "left",
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   },
+   "cues": {
+    "tilt": 2.6
+   }
+  },
+  {
+   "id": "s208",
+   "start": 793.54,
+   "end": 796.84,
+   "line": "год. И у него бы ещё осталось. А умер",
+   "scene": "scales",
+   "tpl": "scales",
+   "params": {
+    "left": {
+     "v": "$900 МЛН",
+     "l": "РОКФЕЛЛЕР, 1913"
+    },
+    "right": {
+     "v": "$715 МЛН",
+     "l": "БЮДЖЕТ США, 1913"
+    },
+    "heavier": "left",
+    "tOff": 9.3,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   },
+   "cues": {
+    "tilt": 2.6
+   }
+  },
+  {
+   "id": "s209",
+   "start": 796.84,
+   "end": 801.92,
+   "line": "он с небольшой долей прежнего состояния: остальное раздал на благотворительность и передал",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "octopus2",
+    "caption": "КАРИКАТУРА, НАЧАЛО XX ВЕКА (LOC)",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s210",
+   "start": 801.92,
+   "end": 803.92,
+   "line": "семье. первое",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "octopus2",
+    "caption": "КАРИКАТУРА, НАЧАЛО XX ВЕКА (LOC)",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true,
+    "from": 5.08
+   }
+  },
+  {
+   "id": "s211",
+   "start": 803.92,
+   "end": 809.92,
+   "line": "И место. Человек, о котором почти никто не слышал.",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": 1,
+    "star": true,
+    "name": "АЛАН РУФУС, «РЫЖИЙ»",
+    "years": "ОК. 1040–1093 · АНГЛИЯ"
+   },
+   "sfx": [
+    {
+     "at": 0.05,
+     "name": "hit",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s212",
+   "start": 809.92,
+   "end": 812.707,
+   "line": "Алан Руфус, Алан Рыжий. Родственник",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": 1,
+    "star": true,
+    "name": "АЛАН РУФУС, «РЫЖИЙ»",
+    "years": "ОК. 1040–1093 · АНГЛИЯ",
+    "tOff": 6.0,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s213",
+   "start": 812.707,
+   "end": 815.493,
+   "line": "Вильгельма Завоевателя, который в тысяча шестьдесят шестом году",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": 1,
+    "star": true,
+    "name": "АЛАН РУФУС, «РЫЖИЙ»",
+    "years": "ОК. 1040–1093 · АНГЛИЯ",
+    "tOff": 8.787,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s214",
+   "start": 815.493,
+   "end": 818.28,
+   "line": "захватил Англию. Зимой",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": 1,
+    "star": true,
+    "name": "АЛАН РУФУС, «РЫЖИЙ»",
+    "years": "ОК. 1040–1093 · АНГЛИЯ",
+    "tOff": 11.573,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s215",
+   "start": 818.28,
+   "end": 821.64,
+   "line": "тысяча шестьдесят девятого года войско Вильгельма",
+   "scene": "castle",
+   "tpl": "castle",
+   "params": {
+    "waste": true
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s216",
+   "start": 821.64,
+   "end": 825.0,
+   "line": "жестоко подавило восстания на севере Англии.",
+   "scene": "castle",
+   "tpl": "castle",
+   "params": {
+    "waste": true,
+    "tOff": 3.36,
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s217",
+   "start": 825.0,
+   "end": 828.36,
+   "line": "Хронисты пишут о сожжённых деревнях и голоде.",
+   "scene": "castle",
+   "tpl": "castle",
+   "params": {
+    "waste": true,
+    "tOff": 6.72,
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s218",
+   "start": 828.36,
+   "end": 831.94,
+   "line": "А Алан получил огромные земли — от Йоркшира до востока",
+   "scene": "castle",
+   "tpl": "castle",
+   "params": {},
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s219",
+   "start": 831.94,
+   "end": 835.52,
+   "line": "страны — и построил Ричмондский замок.",
+   "scene": "castle",
+   "tpl": "castle",
+   "params": {
+    "tOff": 3.58,
+    "cam": {
+     "move": "driftL",
+     "z": 1.18
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s220",
+   "start": 835.52,
+   "end": 842.04,
+   "line": "Его владения записаны в Книге Страшного суда — описи почти всей Англии тысяча восемьдесят шестого года.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "domesday",
+    "caption": "КНИГА СТРАШНОГО СУДА, 1086",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s221",
+   "start": 842.04,
+   "end": 844.4,
+   "line": "И многие деревни Йоркшира там записаны",
+   "scene": "castle",
+   "tpl": "castle",
+   "params": {
+    "waste": true,
+    "cam": {
+     "move": "pull"
+    }
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s222",
+   "start": 844.4,
+   "end": 846.76,
+   "line": "как «пустошь». Правда,",
+   "scene": "castle",
+   "tpl": "castle",
+   "params": {
+    "waste": true,
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    },
+    "tOff": 2.36
+   },
+   "amb": {
+    "name": "wind",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s223",
+   "start": 846.76,
+   "end": 852.32,
+   "line": "землю тогда не продавали, как сегодня: её держали «от короля». Это ещё",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "richmond",
+    "caption": "РИЧМОНДСКИЙ ЗАМОК · А. КЕЙРИНКС",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s224",
+   "start": 852.32,
+   "end": 854.32,
+   "line": "одна звёздочка. Британские",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "richmond",
+    "caption": "РИЧМОНДСКИЙ ЗАМОК · А. КЕЙРИНКС",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true,
+    "from": 5.56
+   }
+  },
+  {
+   "id": "s225",
+   "start": 854.32,
+   "end": 860.32,
+   "line": "историки Филип Бересфорд и Уильям Рубинштейн подсчитали: перед смертью у Алана было",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 7,
+    "pctStr": "≈ 7 %",
+    "label": "ДОХОД АНГЛИИ, 1090-Е",
+    "who": "БЕРЕСФОРД И РУБИНШТЕЙН"
+   }
+  },
+  {
+   "id": "s226",
+   "start": 860.32,
+   "end": 862.787,
+   "line": "около семи процентов всего",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 7,
+    "pctStr": "≈ 7 %",
+    "label": "ДОХОД АНГЛИИ, 1090-Е",
+    "who": "БЕРЕСФОРД И РУБИНШТЕЙН",
+    "tOff": 6.0,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s227",
+   "start": 862.787,
+   "end": 865.253,
+   "line": "дохода Англии. Больше, чем у",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 7,
+    "pctStr": "≈ 7 %",
+    "label": "ДОХОД АНГЛИИ, 1090-Е",
+    "who": "БЕРЕСФОРД И РУБИНШТЕЙН",
+    "tOff": 8.467,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s228",
+   "start": 865.253,
+   "end": 867.72,
+   "line": "любого в нашем списке. честно:",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 7,
+    "pctStr": "≈ 7 %",
+    "label": "ДОХОД АНГЛИИ, 1090-Е",
+    "who": "БЕРЕСФОРД И РУБИНШТЕЙН",
+    "tOff": 10.933,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s229",
+   "start": 867.72,
+   "end": 873.72,
+   "line": "Но экономику Англии одиннадцатого века мы знаем очень приблизительно. Другие историки считают",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": 1,
+    "star": true,
+    "name": "?",
+    "years": "ОЦЕНКА ОДНОЙ КНИГИ"
+   },
+   "sfx": [
+    {
+     "at": 0.05,
+     "name": "hit",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s230",
+   "start": 873.72,
+   "end": 876.32,
+   "line": "такие подсчёты почти гаданием. Поэтому на",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": 1,
+    "star": true,
+    "name": "?",
+    "years": "ОЦЕНКА ОДНОЙ КНИГИ",
+    "tOff": 6.0,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s231",
+   "start": 876.32,
+   "end": 878.92,
+   "line": "первом месте у нас не только человек, но и",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": 1,
+    "star": true,
+    "name": "?",
+    "years": "ОЦЕНКА ОДНОЙ КНИГИ",
+    "tOff": 8.6,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s232",
+   "start": 878.92,
+   "end": 881.52,
+   "line": "большой вопросительный знак.",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": 1,
+    "star": true,
+    "name": "?",
+    "years": "ОЦЕНКА ОДНОЙ КНИГИ",
+    "tOff": 11.2,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s233",
+   "start": 881.52,
+   "end": 884.02,
+   "line": "",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "richmond2",
+    "caption": "РИЧМОНДСКИЙ ЗАМОК, ГРАВЮРА",
+    "credit": "Wikimedia Commons · CC0",
+    "still": true
+   }
+  },
+  {
+   "id": "s234",
+   "start": 884.02,
+   "end": 886.52,
+   "line": "",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "7 АСТОР",
+      "v": 0.13,
+      "str": "0,9 %"
+     },
+     {
+      "label": "6 КАРНЕГИ",
+      "v": 0.14,
+      "str": "1 %"
+     },
+     {
+      "label": "5 КРАСС",
+      "v": 0.14,
+      "str": "≈1 %"
+     },
+     {
+      "label": "4 ВАНДЕРБИЛЬТ",
+      "v": 0.16,
+      "str": "1,15 %"
+     },
+     {
+      "label": "3 ФУГГЕР",
+      "v": 0.27,
+      "str": "< 2 %"
+     },
+     {
+      "label": "2 РОКФЕЛЛЕР",
+      "v": 0.32,
+      "str": "> 2 %"
+     },
+     {
+      "label": "1 АЛАН*",
+      "v": 0.95,
+      "str": "≈ 7 %"
+     }
+    ],
+    "title": "ИТОГ ОТСЧЁТА"
+   }
+  },
+  {
+   "id": "s235",
+   "start": 886.52,
+   "end": 888.92,
+   "line": "Это было",
+   "scene": "chapterTitle",
+   "tpl": "chapterTitle",
+   "params": {
+    "str": "А СЕГОДНЯ?"
+   },
+   "sfx": [
+    {
+     "at": 0.0,
+     "name": "whoosh",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s236",
+   "start": 888.92,
+   "end": 894.92,
+   "line": "девятьсот лет назад. А теперь — наше время. Двенадцатого июня две тысячи двадцать шестого года",
+   "scene": "ticker",
+   "tpl": "ticker",
+   "params": {}
+  },
+  {
+   "id": "s237",
+   "start": 894.92,
+   "end": 898.26,
+   "line": "компания «Спейс-Икс» вышла на биржу.",
+   "scene": "ticker",
+   "tpl": "ticker",
+   "params": {
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s238",
+   "start": 898.26,
+   "end": 904.26,
+   "line": "И, по данным журнала «Форбс», в тот день Илон Маск стал первым в истории человеком с состоянием больше триллиона",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "> $1 ТРЛН",
+      "l": "МАСК · 12 ИЮНЯ 2026 · «ФОРБС»"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s239",
+   "start": 904.26,
+   "end": 906.64,
+   "line": "долларов. С тех пор",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "> $1 ТРЛН",
+      "l": "МАСК · 12 ИЮНЯ 2026 · «ФОРБС»"
+     }
+    ],
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s240",
+   "start": 906.64,
+   "end": 912.12,
+   "line": "цифра то падала, то росла. В начале ноября «Форбс» оценивал его примерно в",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "ИЛОН МАСК",
+      "v": 0.95,
+      "str": "≈ $870 МЛРД"
+     },
+     {
+      "label": "ДЖЕФФ БЕЗОС",
+      "v": 0.39,
+      "str": "≈ $360 МЛРД"
+     }
+    ],
+    "title": "«ФОРБС», НАЧАЛО НОЯБРЯ 2026"
+   }
+  },
+  {
+   "id": "s241",
+   "start": 912.12,
+   "end": 914.12,
+   "line": "восемьсот семьдесят миллиардов.",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "ИЛОН МАСК",
+      "v": 0.95,
+      "str": "≈ $870 МЛРД"
+     },
+     {
+      "label": "ДЖЕФФ БЕЗОС",
+      "v": 0.39,
+      "str": "≈ $360 МЛРД"
+     }
+    ],
+    "title": "«ФОРБС», НАЧАЛО НОЯБРЯ 2026",
+    "tOff": 5.48,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s242",
+   "start": 914.12,
+   "end": 918.6,
+   "line": "На втором месте Джефф Безос — около трёхсот шестидесяти.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "musk",
+    "caption": "ИЛОН МАСК",
+    "credit": "Wikimedia Commons · CC BY-SA 3.0",
+    "still": true
+   }
+  },
+  {
+   "id": "s243",
+   "start": 918.6,
+   "end": 924.6,
+   "line": "Приложим к Маску ту же линейку. По нашему подсчёту, восемьсот семьдесят миллиардов — это около двух и семи",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 2.7,
+    "pctStr": "≈ 2,7 %",
+    "label": "ЭКОНОМИКА США, 2026",
+    "who": "МАСК · НАШ ПОДСЧЁТ",
+    "compare": {
+     "pct": 2.3,
+     "str": "≈ 2,3 %",
+     "label": "РОКФЕЛЛЕР, 1913"
+    }
+   }
+  },
+  {
+   "id": "s244",
+   "start": 924.6,
+   "end": 928.01,
+   "line": "десятых процента экономики США. У Рокфеллера в",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 2.7,
+    "pctStr": "≈ 2,7 %",
+    "label": "ЭКОНОМИКА США, 2026",
+    "who": "МАСК · НАШ ПОДСЧЁТ",
+    "compare": {
+     "pct": 2.3,
+     "str": "≈ 2,3 %",
+     "label": "РОКФЕЛЛЕР, 1913"
+    },
+    "tOff": 6.0,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s245",
+   "start": 928.01,
+   "end": 931.42,
+   "line": "лучший год было чуть больше двух. Агентство «Блумберг»",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 2.7,
+    "pctStr": "≈ 2,7 %",
+    "label": "ЭКОНОМИКА США, 2026",
+    "who": "МАСК · НАШ ПОДСЧЁТ",
+    "compare": {
+     "pct": 2.3,
+     "str": "≈ 2,3 %",
+     "label": "РОКФЕЛЛЕР, 1913"
+    },
+    "tOff": 9.41,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s246",
+   "start": 931.42,
+   "end": 934.83,
+   "line": "в ноябре оценивает Маска почти так же, как «Форбс». Значит,",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 2.7,
+    "pctStr": "≈ 2,7 %",
+    "label": "ЭКОНОМИКА США, 2026",
+    "who": "МАСК · НАШ ПОДСЧЁТ",
+    "compare": {
+     "pct": 2.3,
+     "str": "≈ 2,3 %",
+     "label": "РОКФЕЛЛЕР, 1913"
+    },
+    "tOff": 12.82,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s247",
+   "start": 934.83,
+   "end": 938.24,
+   "line": "по этой линейке он Рокфеллера уже обошёл.",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 2.7,
+    "pctStr": "≈ 2,7 %",
+    "label": "ЭКОНОМИКА США, 2026",
+    "who": "МАСК · НАШ ПОДСЧЁТ",
+    "compare": {
+     "pct": 2.3,
+     "str": "≈ 2,3 %",
+     "label": "РОКФЕЛЛЕР, 1913"
+    },
+    "tOff": 16.23,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s248",
+   "start": 938.24,
+   "end": 944.48,
+   "line": "Но состояние Маска скачет так сильно, что ответ зависит от дня, когда считать. есть",
+   "scene": "ticker",
+   "tpl": "ticker",
+   "params": {
+    "drop": true
+   },
+   "cues": {
+    "drop": 0.5
+   }
+  },
+  {
+   "id": "s249",
+   "start": 944.48,
+   "end": 946.61,
+   "line": "Но важная разница. У Красса",
+   "scene": "fireRome",
+   "tpl": "fireRome",
+   "params": {
+    "mode": "build"
+   },
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s250",
+   "start": 946.61,
+   "end": 948.74,
+   "line": "были земли и дома.",
+   "scene": "fireRome",
+   "tpl": "fireRome",
+   "params": {
+    "mode": "build",
+    "tOff": 2.13,
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   },
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s251",
+   "start": 948.74,
+   "end": 952.14,
+   "line": "У Фуггера — рудники и расписки королей.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "fugger",
+    "caption": "ЯКОБ ФУГГЕР · А. ДЮРЕР",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s252",
+   "start": 952.14,
+   "end": 958.14,
+   "line": "А богатство Маска — это в основном цена акций. Пятого ноября, по данным «Форбс», его состояние",
+   "scene": "ticker",
+   "tpl": "ticker",
+   "params": {
+    "drop": true,
+    "value": "−$80 МЛРД",
+    "sub": "ЗА ОДИН ДЕНЬ · 5 НОЯБРЯ 2026"
+   },
+   "cues": {
+    "drop": 3.4
+   }
+  },
+  {
+   "id": "s253",
+   "start": 958.14,
+   "end": 960.64,
+   "line": "за один день уменьшилось почти на",
+   "scene": "ticker",
+   "tpl": "ticker",
+   "params": {
+    "drop": true,
+    "value": "−$80 МЛРД",
+    "sub": "ЗА ОДИН ДЕНЬ · 5 НОЯБРЯ 2026",
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   },
+   "cues": {
+    "drop": 3.4
+   }
+  },
+  {
+   "id": "s254",
+   "start": 960.64,
+   "end": 963.14,
+   "line": "восемьдесят миллиардов. Хотя он",
+   "scene": "ticker",
+   "tpl": "ticker",
+   "params": {
+    "drop": true,
+    "value": "−$80 МЛРД",
+    "sub": "ЗА ОДИН ДЕНЬ · 5 НОЯБРЯ 2026",
+    "tOff": 8.5,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   },
+   "cues": {
+    "drop": 3.4
+   }
+  },
+  {
+   "id": "s255",
+   "start": 963.14,
+   "end": 965.64,
+   "line": "не потратил ни цента. А теперь",
+   "scene": "ticker",
+   "tpl": "ticker",
+   "params": {
+    "drop": true,
+    "value": "−$80 МЛРД",
+    "sub": "ЗА ОДИН ДЕНЬ · 5 НОЯБРЯ 2026",
+    "tOff": 11.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   },
+   "cues": {
+    "drop": 3.4
+   }
+  },
+  {
+   "id": "s256",
+   "start": 965.64,
+   "end": 971.64,
+   "line": "вторая линейка — во сколько раз человек богаче, чем в среднем приходится на одного жителя его времени.",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "АЛАН РЫЖИЙ",
+      "v": 0.012,
+      "str": "> 100 ТЫС. ЛЕТ"
+     },
+     {
+      "label": "КРАСС",
+      "v": 0.055,
+      "str": "≈ 500 ТЫС.",
+      "cue": "Красса"
+     },
+     {
+      "label": "РОКФЕЛЛЕР",
+      "v": 0.22,
+      "str": "≈ 2 МЛН",
+      "cue": "Рокфеллера"
+     },
+     {
+      "label": "МАСК",
+      "v": 1,
+      "str": "≈ 9 МЛН ЛЕТ",
+      "red": true,
+      "cue": "Маска"
+     }
+    ],
+    "title": "СКОЛЬКО ЛЕТ СРЕДНЕГО ДОХОДА · НАШ ГРУБЫЙ РАСЧЁТ"
+   }
+  },
+  {
+   "id": "s257",
+   "start": 971.64,
+   "end": 975.104,
+   "line": "По нашим грубым расчётам, состояние Алана Рыжего равнялось",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "АЛАН РЫЖИЙ",
+      "v": 0.012,
+      "str": "> 100 ТЫС. ЛЕТ"
+     },
+     {
+      "label": "КРАСС",
+      "v": 0.055,
+      "str": "≈ 500 ТЫС.",
+      "cue": "Красса"
+     },
+     {
+      "label": "РОКФЕЛЛЕР",
+      "v": 0.22,
+      "str": "≈ 2 МЛН",
+      "cue": "Рокфеллера"
+     },
+     {
+      "label": "МАСК",
+      "v": 1,
+      "str": "≈ 9 МЛН ЛЕТ",
+      "red": true,
+      "cue": "Маска"
+     }
+    ],
+    "title": "СКОЛЬКО ЛЕТ СРЕДНЕГО ДОХОДА · НАШ ГРУБЫЙ РАСЧЁТ",
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s258",
+   "start": 975.104,
+   "end": 978.568,
+   "line": "среднему доходу англичанина за сто с лишним тысяч",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "АЛАН РЫЖИЙ",
+      "v": 0.012,
+      "str": "> 100 ТЫС. ЛЕТ"
+     },
+     {
+      "label": "КРАСС",
+      "v": 0.055,
+      "str": "≈ 500 ТЫС.",
+      "cue": "Красса"
+     },
+     {
+      "label": "РОКФЕЛЛЕР",
+      "v": 0.22,
+      "str": "≈ 2 МЛН",
+      "cue": "Рокфеллера"
+     },
+     {
+      "label": "МАСК",
+      "v": 1,
+      "str": "≈ 9 МЛН ЛЕТ",
+      "red": true,
+      "cue": "Маска"
+     }
+    ],
+    "title": "СКОЛЬКО ЛЕТ СРЕДНЕГО ДОХОДА · НАШ ГРУБЫЙ РАСЧЁТ",
+    "tOff": 9.464,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s259",
+   "start": 978.568,
+   "end": 982.032,
+   "line": "лет. Красса — примерно за полмиллиона лет.",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "АЛАН РЫЖИЙ",
+      "v": 0.012,
+      "str": "> 100 ТЫС. ЛЕТ"
+     },
+     {
+      "label": "КРАСС",
+      "v": 0.055,
+      "str": "≈ 500 ТЫС.",
+      "cue": "Красса"
+     },
+     {
+      "label": "РОКФЕЛЛЕР",
+      "v": 0.22,
+      "str": "≈ 2 МЛН",
+      "cue": "Рокфеллера"
+     },
+     {
+      "label": "МАСК",
+      "v": 1,
+      "str": "≈ 9 МЛН ЛЕТ",
+      "red": true,
+      "cue": "Маска"
+     }
+    ],
+    "title": "СКОЛЬКО ЛЕТ СРЕДНЕГО ДОХОДА · НАШ ГРУБЫЙ РАСЧЁТ",
+    "tOff": 12.928,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s260",
+   "start": 982.032,
+   "end": 985.496,
+   "line": "Рокфеллера — за два миллиона. А Маска — примерно",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "АЛАН РЫЖИЙ",
+      "v": 0.012,
+      "str": "> 100 ТЫС. ЛЕТ"
+     },
+     {
+      "label": "КРАСС",
+      "v": 0.055,
+      "str": "≈ 500 ТЫС.",
+      "cue": "Красса"
+     },
+     {
+      "label": "РОКФЕЛЛЕР",
+      "v": 0.22,
+      "str": "≈ 2 МЛН",
+      "cue": "Рокфеллера"
+     },
+     {
+      "label": "МАСК",
+      "v": 1,
+      "str": "≈ 9 МЛН ЛЕТ",
+      "red": true,
+      "cue": "Маска"
+     }
+    ],
+    "title": "СКОЛЬКО ЛЕТ СРЕДНЕГО ДОХОДА · НАШ ГРУБЫЙ РАСЧЁТ",
+    "tOff": 16.392,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s261",
+   "start": 985.496,
+   "end": 988.96,
+   "line": "за девять миллионов лет. Мир",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "АЛАН РЫЖИЙ",
+      "v": 0.012,
+      "str": "> 100 ТЫС. ЛЕТ"
+     },
+     {
+      "label": "КРАСС",
+      "v": 0.055,
+      "str": "≈ 500 ТЫС.",
+      "cue": "Красса"
+     },
+     {
+      "label": "РОКФЕЛЛЕР",
+      "v": 0.22,
+      "str": "≈ 2 МЛН",
+      "cue": "Рокфеллера"
+     },
+     {
+      "label": "МАСК",
+      "v": 1,
+      "str": "≈ 9 МЛН ЛЕТ",
+      "red": true,
+      "cue": "Маска"
+     }
+    ],
+    "title": "СКОЛЬКО ЛЕТ СРЕДНЕГО ДОХОДА · НАШ ГРУБЫЙ РАСЧЁТ",
+    "tOff": 19.856,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s262",
+   "start": 988.96,
+   "end": 994.96,
+   "line": "стал богаче. Двести лет назад в крайней бедности жило большинство людей на Земле. Сегодня, по оценке",
+   "scene": "curves",
+   "tpl": "curves",
+   "params": {
+    "lines": [
+     {
+      "label": "ДОЛЯ В КРАЙНЕЙ БЕДНОСТИ: БОЛЬШИНСТВО → ≈ 1 ИЗ 10",
+      "back": 200
+     }
+    ],
+    "years": 200
+   }
+  },
+  {
+   "id": "s263",
+   "start": 994.96,
+   "end": 997.28,
+   "line": "Всемирного банка на две тысячи двадцать пятый год,",
+   "scene": "curves",
+   "tpl": "curves",
+   "params": {
+    "lines": [
+     {
+      "label": "ДОЛЯ В КРАЙНЕЙ БЕДНОСТИ: БОЛЬШИНСТВО → ≈ 1 ИЗ 10",
+      "back": 200
+     }
+    ],
+    "years": 200,
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s264",
+   "start": 997.28,
+   "end": 999.6,
+   "line": "— примерно каждый десятый.",
+   "scene": "curves",
+   "tpl": "curves",
+   "params": {
+    "lines": [
+     {
+      "label": "ДОЛЯ В КРАЙНЕЙ БЕДНОСТИ: БОЛЬШИНСТВО → ≈ 1 ИЗ 10",
+      "back": 200
+     }
+    ],
+    "years": 200,
+    "tOff": 8.32,
+    "cam": {
+     "move": "pull",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s265",
+   "start": 999.6,
+   "end": 1005.6,
+   "line": "Это всё ещё больше восьмисот миллионов человек, которые живут меньше чем на три доллара в день. А разрыв",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "> 800 МЛН",
+      "l": "ЖИВУТ МЕНЬШЕ ЧЕМ НА $3 В ДЕНЬ · ВСЕМИРНЫЙ БАНК, 2025"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": 0.3,
+     "name": "pop",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s266",
+   "start": 1005.6,
+   "end": 1008.547,
+   "line": "между самыми богатыми и всеми остальными,",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "> 800 МЛН",
+      "l": "ЖИВУТ МЕНЬШЕ ЧЕМ НА $3 В ДЕНЬ · ВСЕМИРНЫЙ БАНК, 2025"
+     }
+    ],
+    "tOff": 6.0,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s267",
+   "start": 1008.547,
+   "end": 1011.493,
+   "line": "как видно по нашей линейке, сегодня больше, чем у",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "> 800 МЛН",
+      "l": "ЖИВУТ МЕНЬШЕ ЧЕМ НА $3 В ДЕНЬ · ВСЕМИРНЫЙ БАНК, 2025"
+     }
+    ],
+    "tOff": 8.947,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s268",
+   "start": 1011.493,
+   "end": 1014.44,
+   "line": "любого из героев этого фильма.",
+   "scene": "statCard",
+   "tpl": "statCard",
+   "params": {
+    "items": [
+     {
+      "v": "> 800 МЛН",
+      "l": "ЖИВУТ МЕНЬШЕ ЧЕМ НА $3 В ДЕНЬ · ВСЕМИРНЫЙ БАНК, 2025"
+     }
+    ],
+    "tOff": 11.893,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s269",
+   "start": 1014.44,
+   "end": 1016.94,
+   "line": "",
+   "scene": "globeShot",
+   "tpl": "globeShot",
+   "params": {
+    "lights": 1,
+    "spin": 0.03
+   }
+  },
+  {
+   "id": "s270",
+   "start": 1016.94,
+   "end": 1019.44,
+   "line": "",
+   "scene": "establish",
+   "tpl": "establish",
+   "params": {
+    "set": "city"
+   }
+  },
+  {
+   "id": "s271",
+   "start": 1019.44,
+   "end": 1021.84,
+   "line": "кто",
+   "scene": "chapterTitle",
+   "tpl": "chapterTitle",
+   "params": {
+    "str": "ВЕРДИКТ"
+   },
+   "sfx": [
+    {
+     "at": 0.0,
+     "name": "whoosh",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s272",
+   "start": 1021.84,
+   "end": 1027.72,
+   "line": "Так же самый богатый человек в истории? Честный ответ — их несколько. Если мерить",
+   "scene": "rankCard",
+   "tpl": "rankCard",
+   "params": {
+    "n": "?",
+    "name": "КТО ЖЕ?",
+    "years": ""
+   },
+   "sfx": [
+    {
+     "at": 0.05,
+     "name": "hit",
+     "gain": -12
+    }
+   ]
+  },
+  {
+   "id": "s273",
+   "start": 1027.72,
+   "end": 1033.72,
+   "line": "долей экономики своей страны, первым может оказаться Алан Рыжий. С огромной",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 7,
+    "pctStr": "АЛАН*",
+    "label": "ДОЛЯ ЭКОНОМИКИ СВОЕЙ СТРАНЫ",
+    "who": "С ОГРОМНОЙ ЗВЁЗДОЧКОЙ"
+   }
+  },
+  {
+   "id": "s274",
+   "start": 1033.72,
+   "end": 1036.16,
+   "line": "звёздочкой. Если брать",
+   "scene": "pie",
+   "tpl": "pie",
+   "params": {
+    "pct": 7,
+    "pctStr": "АЛАН*",
+    "label": "ДОЛЯ ЭКОНОМИКИ СВОЕЙ СТРАНЫ",
+    "who": "С ОГРОМНОЙ ЗВЁЗДОЧКОЙ",
+    "tOff": 6.0,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s275",
+   "start": 1036.16,
+   "end": 1039.9,
+   "line": "только хорошо задокументированные состояния, это Рокфеллер.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "rockefeller",
+    "caption": "ПО ДОКУМЕНТАМ — РОКФЕЛЛЕР",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s276",
+   "start": 1039.9,
+   "end": 1043.24,
+   "line": "Или уже Маск — смотря в какой день считать. если",
+   "scene": "ticker",
+   "tpl": "ticker",
+   "params": {}
+  },
+  {
+   "id": "s277",
+   "start": 1043.24,
+   "end": 1049.24,
+   "line": "А считать, во сколько раз человек богаче среднего жителя своего времени, далеко впереди Маск.",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "РОКФЕЛЛЕР",
+      "v": 0.22,
+      "str": "≈ 2 МЛН ЛЕТ"
+     },
+     {
+      "label": "МАСК",
+      "v": 1,
+      "str": "≈ 9 МЛН ЛЕТ",
+      "red": true
+     }
+    ],
+    "title": "ВО СКОЛЬКО РАЗ БОГАЧЕ СРЕДНЕГО"
+   }
+  },
+  {
+   "id": "s278",
+   "start": 1049.24,
+   "end": 1052.8,
+   "line": "Таких разрывов история ещё не видела. А Манса",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "РОКФЕЛЛЕР",
+      "v": 0.22,
+      "str": "≈ 2 МЛН ЛЕТ"
+     },
+     {
+      "label": "МАСК",
+      "v": 1,
+      "str": "≈ 9 МЛН ЛЕТ",
+      "red": true
+     }
+    ],
+    "title": "ВО СКОЛЬКО РАЗ БОГАЧЕ СРЕДНЕГО",
+    "tOff": 6.0,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s279",
+   "start": 1052.8,
+   "end": 1058.36,
+   "line": "Муса стоит в стороне. Его богатство пока не смог посчитать никто — и, скорее всего,",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "atlas_musa",
+    "caption": "МАНСА МУСА · ВНЕ КОНКУРСА",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s280",
+   "start": 1058.36,
+   "end": 1060.36,
+   "line": "не сможет. ещё",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "atlas_musa",
+    "caption": "МАНСА МУСА · ВНЕ КОНКУРСА",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true,
+    "from": 5.56
+   }
+  },
+  {
+   "id": "s281",
+   "start": 1060.36,
+   "end": 1065.04,
+   "line": "И один вопрос. Что остаётся от таких состояний? От Красса",
+   "scene": "scales",
+   "tpl": "scales",
+   "params": {
+    "left": {
+     "v": "ЗОЛОТО",
+     "l": "ЧТО НАКОПИЛИ"
+    },
+    "right": {
+     "v": "?",
+     "l": "ЧТО ОСТАЛОСЬ"
+    },
+    "heavier": "equal"
+   },
+   "sfx": [
+    {
+     "at": 0.8,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s282",
+   "start": 1065.04,
+   "end": 1066.94,
+   "line": "— рассказ о пожарах.",
+   "scene": "fireRome",
+   "tpl": "fireRome",
+   "params": {
+    "mode": "fire"
+   },
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s283",
+   "start": 1066.94,
+   "end": 1071.56,
+   "line": "От Вандербильта — дворцы, где теперь водят экскурсии. в Аугсбурге",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "breakers",
+    "caption": "ОСОБНЯК «БРЕЙКЕРС», НЬЮПОРТ",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s284",
+   "start": 1071.56,
+   "end": 1078.08,
+   "line": "А до сих пор работает квартал, который Якоб Фуггер построил для бедных пятьсот лет назад.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "fuggerei",
+    "caption": "ФУГГЕРАЙ, АУГСБУРГ",
+    "credit": "Wikimedia Commons · CC BY 3.0 de",
+    "still": true
+   }
+  },
+  {
+   "id": "s285",
+   "start": 1078.08,
+   "end": 1084.08,
+   "line": "Жильцы платят восемьдесят восемь евроцентов. В год. Правда, коммуналка отдельно.",
+   "scene": "fuggerei",
+   "tpl": "fuggerei",
+   "params": {
+    "rent": "0,88 €",
+    "sub": "В ГОД · КОММУНАЛКА ОТДЕЛЬНО"
+   },
+   "cues": {
+    "rent": 0.5
+   },
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s286",
+   "start": 1084.08,
+   "end": 1086.56,
+   "line": "И каждый день читают молитвы",
+   "scene": "fuggerei",
+   "tpl": "fuggerei",
+   "params": {
+    "rent": "0,88 €",
+    "sub": "В ГОД · КОММУНАЛКА ОТДЕЛЬНО",
+    "tOff": 6.0,
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   },
+   "cues": {
+    "rent": 0.5
+   },
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s287",
+   "start": 1086.56,
+   "end": 1089.04,
+   "line": "за семью Фуггеров. В тысячах",
+   "scene": "fuggerei",
+   "tpl": "fuggerei",
+   "params": {
+    "rent": "0,88 €",
+    "sub": "В ГОД · КОММУНАЛКА ОТДЕЛЬНО",
+    "tOff": 8.48,
+    "cam": {
+     "move": "push",
+     "z": 1.25
+    }
+   },
+   "cues": {
+    "rent": 0.5
+   },
+   "amb": {
+    "name": "city",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s288",
+   "start": 1089.04,
+   "end": 1091.16,
+   "line": "городов люди до сих пор берут",
+   "scene": "libraryKid",
+   "tpl": "libraryKid",
+   "params": {},
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s289",
+   "start": 1091.16,
+   "end": 1093.28,
+   "line": "книги в библиотеках Карнеги.",
+   "scene": "libraryKid",
+   "tpl": "libraryKid",
+   "params": {
+    "tOff": 2.12,
+    "cam": {
+     "move": "driftR",
+     "z": 1.1
+    }
+   },
+   "amb": {
+    "name": "roomtone",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s290",
+   "start": 1093.28,
+   "end": 1097.24,
+   "line": "А на деньги Рокфеллера создан Чикагский университет.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "carnegielib",
+    "caption": "БИБЛИОТЕКА КАРНЕГИ, 1905",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s291",
+   "start": 1097.24,
+   "end": 1102.24,
+   "line": "",
+   "scene": "scales",
+   "tpl": "scales",
+   "params": {
+    "left": {
+     "v": "ЗОЛОТО",
+     "l": ""
+    },
+    "right": {
+     "v": "КНИГА · ДОМ · ГОРОД",
+     "l": ""
+    },
+    "heavier": "right"
+   },
+   "cues": {
+    "tilt": 1
+   },
+   "sfx": [
+    {
+     "at": 0.8,
+     "name": "tick",
+     "gain": -16
+    }
+   ]
+  },
+  {
+   "id": "s292",
+   "start": 1102.24,
+   "end": 1105.06,
+   "line": "Красс мерил богатство армией, которую мог содержать.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "crassus",
+    "caption": "ПРЕДПОЛОЖИТЕЛЬНО КРАСС · ЛУВР",
+    "credit": "Wikimedia Commons · CC0",
+    "still": true
+   }
+  },
+  {
+   "id": "s293",
+   "start": 1105.06,
+   "end": 1107.94,
+   "line": "Фуггер — королями, которые были ему должны.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "fugger",
+    "caption": "ЯКОБ ФУГГЕР · А. ДЮРЕР",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s294",
+   "start": 1107.94,
+   "end": 1111.04,
+   "line": "Карнеги считал позором умереть богатым.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "carnegie",
+    "caption": "ЭНДРЮ КАРНЕГИ, 1913",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s295",
+   "start": 1111.04,
+   "end": 1117.04,
+   "line": "А Рокфеллер в старости раздавал прохожим новенькие монетки по десять центов. У каждого был свой ответ,",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "rockefeller",
+    "caption": "ДЖОН Д. РОКФЕЛЛЕР",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s296",
+   "start": 1117.04,
+   "end": 1119.18,
+   "line": "зачем человеку столько денег.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "rockefeller",
+    "caption": "ДЖОН Д. РОКФЕЛЛЕР",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true,
+    "from": 6.0
+   }
+  },
+  {
+   "id": "s297",
+   "start": 1119.18,
+   "end": 1122.77,
+   "line": "И почти от каждого остались две памяти: о том, что он отдал,",
+   "scene": "steelMill",
+   "tpl": "steelMill",
+   "params": {},
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s298",
+   "start": 1122.77,
+   "end": 1126.36,
+   "line": "и о том, чего это стоило другим.",
+   "scene": "steelMill",
+   "tpl": "steelMill",
+   "params": {
+    "tOff": 3.59,
+    "cam": {
+     "move": "pull",
+     "z": 1.3
+    }
+   },
+   "amb": {
+    "name": "hum",
+    "gain": -26
+   }
+  },
+  {
+   "id": "s299",
+   "start": 1126.36,
+   "end": 1132.36,
+   "line": "А от Мансы Мусы осталась легенда, которая живёт уже семьсот лет. Мечеть Джингеребер в",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "mosque",
+    "caption": "МЕЧЕТЬ ДЖИНГЕРЕБЕР, ТИМБУКТУ",
+    "credit": "Wikimedia Commons · CC BY-SA 4.0",
+    "still": true
+   }
+  },
+  {
+   "id": "s300",
+   "start": 1132.36,
+   "end": 1135.92,
+   "line": "Тимбукту, которую, по преданию, построили после его хаджа.",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "mosque",
+    "caption": "МЕЧЕТЬ ДЖИНГЕРЕБЕР, ТИМБУКТУ",
+    "credit": "Wikimedia Commons · CC BY-SA 4.0",
+    "still": true,
+    "from": 6.0
+   }
+  },
+  {
+   "id": "s301",
+   "start": 1135.92,
+   "end": 1141.28,
+   "line": "И рисунок на средневековой карте, которую нарисовали в Европе: африканский король с золотым",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "atlas_musa",
+    "caption": "МАНСА МУСА · КАТАЛОНСКИЙ АТЛАС, 1375",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true
+   }
+  },
+  {
+   "id": "s302",
+   "start": 1141.28,
+   "end": 1143.28,
+   "line": "самородком в руке. кого",
+   "scene": "archive",
+   "tpl": "archive",
+   "params": {
+    "clip": "atlas_musa",
+    "caption": "МАНСА МУСА · КАТАЛОНСКИЙ АТЛАС, 1375",
+    "credit": "Wikimedia Commons · общественное достояние",
+    "still": true,
+    "from": 5.36
+   }
+  },
+  {
+   "id": "s303",
+   "start": 1143.28,
+   "end": 1149.28,
+   "line": "А бы вы поставили на первое место? Красса, Фуггера, Рокфеллера, Маска или Алана",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "КРАСС",
+      "v": 0.3,
+      "str": "?"
+     },
+     {
+      "label": "ФУГГЕР",
+      "v": 0.3,
+      "str": "?"
+     },
+     {
+      "label": "РОКФЕЛЛЕР",
+      "v": 0.3,
+      "str": "?"
+     },
+     {
+      "label": "МАСК",
+      "v": 0.3,
+      "str": "?"
+     },
+     {
+      "label": "АЛАН РЫЖИЙ",
+      "v": 0.3,
+      "str": "?"
+     }
+    ],
+    "title": "КОГО ВЫ ПОСТАВИТЕ ПЕРВЫМ?"
+   }
+  },
+  {
+   "id": "s304",
+   "start": 1149.28,
+   "end": 1152.02,
+   "line": "Рыжего? Напишите в комментариях.",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "КРАСС",
+      "v": 0.3,
+      "str": "?"
+     },
+     {
+      "label": "ФУГГЕР",
+      "v": 0.3,
+      "str": "?"
+     },
+     {
+      "label": "РОКФЕЛЛЕР",
+      "v": 0.3,
+      "str": "?"
+     },
+     {
+      "label": "МАСК",
+      "v": 0.3,
+      "str": "?"
+     },
+     {
+      "label": "АЛАН РЫЖИЙ",
+      "v": 0.3,
+      "str": "?"
+     }
+    ],
+    "title": "КОГО ВЫ ПОСТАВИТЕ ПЕРВЫМ?",
+    "tOff": 6.0,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  },
+  {
+   "id": "s305",
+   "start": 1152.02,
+   "end": 1154.76,
+   "line": "",
+   "scene": "barsShot",
+   "tpl": "barsShot",
+   "params": {
+    "rows": [
+     {
+      "label": "КРАСС",
+      "v": 0.3,
+      "str": "?"
+     },
+     {
+      "label": "ФУГГЕР",
+      "v": 0.3,
+      "str": "?"
+     },
+     {
+      "label": "РОКФЕЛЛЕР",
+      "v": 0.3,
+      "str": "?"
+     },
+     {
+      "label": "МАСК",
+      "v": 0.3,
+      "str": "?"
+     },
+     {
+      "label": "АЛАН РЫЖИЙ",
+      "v": 0.3,
+      "str": "?"
+     }
+    ],
+    "title": "КОГО ВЫ ПОСТАВИТЕ ПЕРВЫМ?",
+    "tOff": 8.74,
+    "cam": {
+     "move": "push",
+     "z": 1.03
+    }
+   }
+  }
+ ],
+ "music": [
+  {
+   "start": 0.0,
+   "end": 52.92,
+   "mood": "mystery",
+   "intensity": 0.4
+  },
+  {
+   "start": 52.92,
+   "end": 87.08,
+   "mood": "tension",
+   "intensity": 0.45
+  },
+  {
+   "start": 87.08,
+   "end": 93.48,
+   "mood": "wonder",
+   "intensity": 0.35
+  },
+  {
+   "start": 93.48,
+   "end": 172.04,
+   "mood": "playful",
+   "intensity": 0.3
+  },
+  {
+   "start": 172.04,
+   "end": 206.76,
+   "mood": "mystery",
+   "intensity": 0.35
+  },
+  {
+   "start": 206.76,
+   "end": 265.08,
+   "mood": "epic",
+   "intensity": 0.35
+  },
+  {
+   "start": 265.08,
+   "end": 329.4,
+   "mood": "playful",
+   "intensity": 0.3
+  },
+  {
+   "start": 329.4,
+   "end": 355.08,
+   "mood": "tension",
+   "intensity": 0.4
+  },
+  {
+   "start": 355.08,
+   "end": 367.92,
+   "mood": "playful",
+   "intensity": 0.3
+  },
+  {
+   "start": 367.92,
+   "end": 398.08,
+   "mood": "mystery",
+   "intensity": 0.35
+  },
+  {
+   "start": 398.08,
+   "end": 405.48,
+   "mood": "wonder",
+   "intensity": 0.3
+  },
+  {
+   "start": 405.48,
+   "end": 469.68,
+   "mood": "playful",
+   "intensity": 0.35
+  },
+  {
+   "start": 469.68,
+   "end": 493.32,
+   "mood": "sad",
+   "intensity": 0.3
+  },
+  {
+   "start": 493.32,
+   "end": 509.36,
+   "mood": "hopeful",
+   "intensity": 0.3
+  },
+  {
+   "start": 509.36,
+   "end": 556.56,
+   "mood": "tension",
+   "intensity": 0.4
+  },
+  {
+   "start": 556.56,
+   "end": 591.68,
+   "mood": "dark",
+   "intensity": 0.4
+  },
+  {
+   "start": 591.68,
+   "end": 647.52,
+   "mood": "playful",
+   "intensity": 0.3
+  },
+  {
+   "start": 647.52,
+   "end": 660.04,
+   "mood": "tension",
+   "intensity": 0.45
+  },
+  {
+   "start": 660.04,
+   "end": 725.24,
+   "mood": "epic",
+   "intensity": 0.35
+  },
+  {
+   "start": 725.24,
+   "end": 775.44,
+   "mood": "mystery",
+   "intensity": 0.35
+  },
+  {
+   "start": 775.44,
+   "end": 803.92,
+   "mood": "triumph",
+   "intensity": 0.35
+  },
+  {
+   "start": 803.92,
+   "end": 818.28,
+   "mood": "mystery",
+   "intensity": 0.4
+  },
+  {
+   "start": 818.28,
+   "end": 854.32,
+   "mood": "sad",
+   "intensity": 0.3
+  },
+  {
+   "start": 854.32,
+   "end": 881.52,
+   "mood": "tension",
+   "intensity": 0.4
+  },
+  {
+   "start": 881.52,
+   "end": 888.92,
+   "mood": "wonder",
+   "intensity": 0.3
+  },
+  {
+   "start": 888.92,
+   "end": 944.48,
+   "mood": "action",
+   "intensity": 0.35
+  },
+  {
+   "start": 944.48,
+   "end": 988.96,
+   "mood": "tension",
+   "intensity": 0.4
+  },
+  {
+   "start": 988.96,
+   "end": 1014.44,
+   "mood": "sad",
+   "intensity": 0.3
+  },
+  {
+   "start": 1014.44,
+   "end": 1021.84,
+   "mood": "calm",
+   "intensity": 0.3
+  },
+  {
+   "start": 1021.84,
+   "end": 1060.36,
+   "mood": "epic",
+   "intensity": 0.35
+  },
+  {
+   "start": 1060.36,
+   "end": 1071.56,
+   "mood": "calm",
+   "intensity": 0.3
+  },
+  {
+   "start": 1071.56,
+   "end": 1102.24,
+   "mood": "hopeful",
+   "intensity": 0.35
+  },
+  {
+   "start": 1102.24,
+   "end": 1126.36,
+   "mood": "calm",
+   "intensity": 0.3
+  },
+  {
+   "start": 1126.36,
+   "end": 1143.28,
+   "mood": "hopeful",
+   "intensity": 0.4
+  },
+  {
+   "start": 1143.28,
+   "end": 1154.76,
+   "mood": "triumph",
+   "intensity": 0.35
+  }
+ ]
+}
