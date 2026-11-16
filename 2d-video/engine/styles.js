@@ -18,6 +18,12 @@ export const BASE_MOODS = {
 const UI = { card: 'rgba(18,28,48,.94)', cardLine: 'rgba(150,180,230,.25)', text: '#9fb6d8', sub: '#6f84a6', accent: '#ff6f61', gold: '#ffd47e', cream: '#fff1dc', blueprint: '#8fb8e8', bpBg: '#0b1324', good: '#5fd39a' };
 
 export const STYLES = {
+  toon: {
+    name: 'Toon', desc: 'Clean flat cartoon look (outlined characters, warm sets): almost no grade, light vignette and grain.',
+    ink: '#2a2321', inkFar: '#4a3d38', feature: '#fff6e6', rimWidth: 0, ui: UI,
+    grade: { contrast: 1.0, sat: 1.0, lift: [0, 0, 0], gamma: [1, 1, 1], gain: [1, 1, 1], vignette: 0.22, grain: 0.03, bloom: 0 },
+    moods: {},
+  },
   dusk: {
     name: 'Cinematic Dusk', desc: 'Reference look: mauve-purple shadows, amber key light, cream rim light, soft grain, 2:1 letterbox.',
     ink: '#0e0b12', inkFar: '#2b2333', feature: '#f4efe6', rimWidth: 4, ui: UI,

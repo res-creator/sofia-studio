@@ -1,0 +1,6 @@
+[
+ {"start": 0.0, "end": 55.6, "file": "desert_city.mp3", "offset": 0, "gain": -2, "fadeIn": 0.6},
+ {"start": 55.6, "end": 68.4, "file": "investigations.mp3", "offset": 0, "gain": -1},
+ {"start": 69.6, "end": 88.6, "file": "sneaky_snitch.mp3", "offset": 0, "gain": -2, "fadeIn": 0.4},
+ {"start": 88.6, "end": 95.0, "file": "thinking_music.mp3", "offset": 0, "gain": -4, "fadeIn": 0.8}
+]
