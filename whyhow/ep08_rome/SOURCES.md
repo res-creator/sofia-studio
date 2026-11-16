@@ -1,0 +1,23 @@
+# EP08 Rome water — sources
+
+Confidence: H = high (several solid sources agree), M = medium (figures vary), L = estimate, said as such.
+
+| # | Claim | Source | Conf. |
+|---|---|---|---|
+| 1 | Aqua Virgo built by Agrippa, 19 BC; as Acqua Vergine it still feeds the Trevi Fountain (and other Baroque fountains); Trevi completed 1762 | Wikipedia "Aqua Virgo", "Trevi Fountain" https://en.wikipedia.org/wiki/Trevi_Fountain ; Turismo Roma https://www.turismoroma.it/en/places/vergine-aqueduct-del-nazareno | H |
+| 2 | Rome ~1 million people at its height (estimate); Aqua Appia 312 BC by Appius Claudius (also Via Appia); 11 aqueducts by the 3rd century AD (Aqua Alexandrina, 226); Aqua Marcia ~91 km, prized for cold, clear water (Pliny) | Wikipedia "List of aqueducts in the city of Rome" https://en.wikipedia.org/wiki/List_of_aqueducts_in_the_city_of_Rome ; "Roman aqueduct" | H (population: M) |
+| 3 | Tiber polluted by drains, frequent floods | Wikipedia "Tiber"; "Cloaca Maxima" | H |
+| 4 | Gravity flow, gentle slope; most of the length underground; arches only across valleys; access shafts; surveying tools chorobates and groma (Vitruvius); inverted siphons (e.g. Gier aqueduct, Lyon) | Wikipedia "Roman aqueduct" ; Vitruvius, De architectura VIII ; engineeringrome.org https://engineeringrome.org/water-delivery-infrastructure-in-ancient-rome/ | H |
+| 5 | Nîmes aqueduct ~50 km, total drop ~12.6 m; Pont du Gard ~49 m high; descends ~2.5 cm over 456 m; lower tiers of dry stone, blocks of several tons | Wikipedia "Pont du Gard" ; Structurae https://structurae.net/en/structures/pont-du-gard ; romaq.org https://www.romaq.org/the-project/aqueducts/178 | H (drop: M) |
+| 6 | Distribution tank (castellum) with priority: public fountains, baths, private houses (Vitruvius VIII.6); fountains ran continuously, overflow flushed sewers; multi-seat public latrines; sponge on a stick (tersorium); Baths of Caracalla ~1,600 bathers | Vitruvius VIII.6 ; Wikipedia "Baths of Caracalla", "Tersorium" | H (tersorium use: M) |
+| 7 | Cloaca Maxima, 6th c. BC, drained the Forum marsh; parts still carry stormwater | Wikipedia "Cloaca Maxima" https://en.wikipedia.org/wiki/Cloaca_Maxima ; Atlas Obscura https://atlasobscura.com/places/cloaca-maxima | H |
+| 8 | Frontinus, curator aquarum from AD 97, wrote De aquaeductu: illegal taps by landowners, bribed water-men, stamped pipes, measuring deliveries; quote on pyramids and Greek works (I.16) | Frontinus, De aquaeductu (LacusCurtius) https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Frontinus/De_Aquis/text*.html ; J. Ancient History doi 10.1515/jah-2023-0025 | H |
+| 9 | Lead pipes (fistulae); plumbum → "plumbing" | Etymology dictionaries (Merriam-Webster "plumbing") | H |
+| 10 | Siege of Rome 537–538: Goths cut the aqueducts; Goths tried to enter through an aqueduct channel, which Belisarius had blocked (Procopius, Wars V.19, VI.9); aqueducts not maintained afterwards; city population fell to tens of thousands (estimates vary) | Wikipedia "Siege of Rome (537–538)" https://en.wikipedia.org/wiki/Siege_of_Rome_(537%E2%80%93538) ; Procopius (LacusCurtius) | H (population: M) |
+| 11 | Papal restoration: Nicholas V restored Acqua Vergine (1453); later Acqua Felice (1586), Acqua Paola (1612) | David Karmon, "Restoring the Ancient Water Supply System in Renaissance Rome" https://waters.iath.virginia.edu/karmon.html | H |
+| 12 | Segovia aqueduct: unmortared granite blocks (~20,000–24,000), supplied water until 1973 | Wikipedia "Aqueduct of Segovia" https://en.wikipedia.org/wiki/Aqueduct_of_Segovia ; Britannica ; ASCE https://www.asce.org/about-civil-engineering/history-and-heritage/historic-landmarks/acueducto-de-segovia | H |
+| 13 | MIT/Harvard 2023 (Seymour, Masic, Science Advances): lime clasts from "hot mixing" let cracks self-heal | phys.org https://phys.org/news/2023-01-secrets-self-healing-roman-concrete.html ; MIT https://sustainability.mit.edu/article/riddle-solved-why-was-roman-concrete-so-durable | H |
+| 14 | ~2,500–2,800 nasoni, free drinking water, normally flowing continuously | Wikipedia "Nasone" https://en.wikipedia.org/wiki/Nasone ; Wanted in Rome https://www.wantedinrome.com/news/nasoni-romes-free-drinking-fountains.html | H |
+| 15 | Trevi coins collected and given to Caritas — about €1.4–1.6 million a year | Reuters / Catholic News Agency reports on Caritas Rome (2019–2024) | M (yearly amount varies) |
+| 16 | Barbegal mills near Arles: 16 water wheels fed by an aqueduct (2nd c. AD), "one of the first industrial complexes" | Wikipedia "Barbegal aqueduct and mills" | H |
+| 17 | Eifel aqueduct (Cologne): calcite sinter mined in the Middle Ages as "aqueduct marble" for churches | Wikipedia "Eifel Aqueduct" | H |
