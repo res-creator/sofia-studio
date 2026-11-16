@@ -2681,3 +2681,34 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "newgirl1" — series «Новенькая», ep 1 «Пельмени» (story, choose-next). USA high school. heroine = Jessica
+CAST.update({
+    "britt1": dict(voice="af_nicole", speed=1.0, lang="en-us", el="FGY2WhTYpPnrIDTdsKH5"),   # Brittany, queen bee (Laura)
+    "leo1": dict(voice="am_liam", speed=1.0, lang="en-us", el="TX3LPaxmHKxFdv7VOQHJ"),       # Leo, nerd friend (Liam)
+    "princ1": dict(voice="am_adam", speed=1.0, lang="en-us", el="nPczCjzI2devNBz1zQrb"),     # principal (Brian)
+    "carson1": dict(voice="bf_alice", speed=1.0, lang="en-gb", el="Xb7hH8MSUJpSbSDYk0k2"),   # Miss Carson, English teacher (Alice)
+})
+EP["newgirl1"] = dict(
+    title='Новенькая. Серия 1: Пельмени', rubric='story_choose',
+    hook_title=[['НОВЕНЬКАЯ', 'd'], ['ПЕЛЬМЕНИ', 'p'], ['НА ВСЮ СТОЛОВУЮ', 'd']],
+    lines=[
+        ('hook_b', 'britt1', "[smirking] Oops.", 'Ой.'),
+        ('hook', 'nar', 'Первый день в американской школе. Первые три минуты в столовой.', ''),
+        ('b1', 'britt1', "[disgusted] Ew. What is that? Dog food?", 'Фу. Это что? Собачий корм?'),
+        ('h1', 'her', "[quietly, hurt] It's… dumplings. My mom made them.", 'Это… пельмени. Мама сделала.'),
+        ('b2', 'britt1', "[mocking, exaggerated accent] Eet's dahmpleengs! My mahm made zem!", '(передразнивает акцент)'),
+        ('n1', 'nar', 'Английский у Сони хороший. Но смеются не над словами. Смеются над ней.', ''),
+        ('p1', 'princ1', "[stunned, slowly] …Whose is this?", '…Чьё это?'),
+        ('l1', 'leo1', "[amazed, mouth full] Okay. These are amazing. Do you have more?", 'Так. Это потрясающе. А ещё есть?'),
+        ('n2', 'nar', 'Так у Сони появился первый друг. И первая проблема.', ''),
+        ('n3', 'nar', 'Пять тысяч просмотров. И лайк от того, кому она хотела понравиться.', ''),
+        ('c1', 'carson1', "[announcing] The winner gives a speech in front of the whole school.", 'Победитель выступит перед всей школой.'),
+        ('b3', 'britt1', "[smug] So… me again?", 'То есть… опять я?'),
+        ('l2', 'leo1', "[whispering] Nobody signs up against her. Nobody.", 'Против неё никто не записывается. Никто.'),
+        ('h2', 'her', "[determined, practicing slowly] Th… th… think. Three. Thursday.", ''),
+        ('mum', 'nar', 'Доча, покажи им. Мы из Алматы — мы не сдаёмся.', ''),
+        ('b4', 'britt1', "[sweet but cold] Don't even think about it, dumpling.", 'Даже не думай, пельмешка.'),
+        ('fork', 'nar', 'Что делать Соне? Пиши А или Б. Следующая серия — по большинству.', ''),
+        ('ask', 'nar', 'А тебя травили в школе? Расскажи в комментариях.', ''),
+    ],
+)
