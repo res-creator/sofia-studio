@@ -1,0 +1,32 @@
+{
+ "language": "ru",
+ "speechLanguage": "ru",
+ "title": "Что если бы вы родились в Северной Корее",
+ "aspect": "16:9",
+ "resolution": "1080p",
+ "fps": 24,
+ "style": "toon",
+ "voiceover": "input/voiceover.mp3",
+ "script": "input/script.txt",
+ "duration": 1015.62,
+ "captions": false,
+ "bars": "none",
+ "fadeIn": 0.5,
+ "fadeOut": 0.8,
+ "music": {
+  "enabled": true,
+  "gainDb": -10
+ },
+ "sfx": {
+  "enabled": false,
+  "gainDb": -6
+ },
+ "loudness": -14,
+ "fonts": [
+  {
+   "family": "Caveat",
+   "file": "assets/Caveat.ttf",
+   "weight": "400 700"
+  }
+ ]
+}
