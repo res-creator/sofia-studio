@@ -4,7 +4,8 @@
 import { E, ease, prog, clamp, lerp, noise, shade, alpha, rng } from '/engine/core.js';
 import { tpl } from './_registry.js';
 import * as T from '../toon.js';
-import { person, camel, tag, yearTag, bubble, withCam, K, inn, pop, k01, hand, box, ell, poly, line, limb, coin, sack, chest, barPile, goldBar, light, finish, C, OL, SKIN } from '../toon.js';
+const MARKS = new Set(['cross', 'check']);
+import { person, camel, tag, handW, yearTag, bubble, withCam, K, inn, pop, k01, hand, box, ell, poly, line, limb, coin, sack, chest, barPile, goldBar, light, finish, C, OL, SKIN } from '../toon.js';
 import * as CA from '../cast.js';
 import { SETS } from './sets.js';
 
@@ -84,7 +85,7 @@ tpl('stage', 'Generic cartoon scene (set, cast, props, tags, cam) described by d
 // split: две сцены рядом (левая/правая половина), params.L / params.R — описания stage
 tpl('split', 'Two stage scenes side by side.', { draw(g, t, info) {
   const halves = [info.L, info.R]; const k = ease.out(clamp(t / 0.35));
-  halves.forEach((P, i) => { if (!P) return; g.save(); const x0 = i ? E.W / 2 + 6 : 0, w = E.W / 2 - 6; g.beginPath(); g.rect(x0 + (i ? (1 - k) * w : 0), 0, w * (i ? k : 1), E.H); g.clip(); g.translate(x0 - E.W / 4 + (P.shiftX || 0), 0); drawScene(g, t, { ...info, ...P }, { ...P, noFinish: true }); g.restore(); });
+  halves.forEach((P, i) => { if (!P) return; g.save(); const x0 = i ? E.W / 2 + 6 : 0, w = E.W / 2 - 6; g.beginPath(); g.rect(x0 + (i ? (1 - k) * w : 0), 0, w * (i ? k : 1), E.H); g.clip(); g.translate(x0 - E.W / 4 + (P.shiftX || 0), 0); drawScene(g, t, { ...info, ...P }, { ...P, noFinish: true, clipX: [E.W / 4 - (P.shiftX || 0), E.W / 4 - (P.shiftX || 0) + w] }); g.restore(); });
   g.fillStyle = '#111'; g.fillRect(E.W / 2 - 6, 0, 12, E.H); finish(g, { vig: 0.3 }); } });
 export function drawScene(g, t, info, P) {
   {
@@ -92,16 +93,19 @@ export function drawScene(g, t, info, P) {
     const raw = P.cam || [[0, 960, 540, 1]];
     const camKeys = raw.map((c) => K(c[0] === 'end' ? info.dur : tm(info, c[0], 0), c[1], c[2], c[3] ?? 1));
     if (raw.length < 2) camKeys.push(K(info.dur, camKeys[0].x, camKeys[0].y, camKeys[0].z * (P.push ?? 1.07)));
+    const B = g.getTransform(), camTags = [];
     withCam(g, t, camKeys, (g) => {
       setF(g, t, P.setOpts || {}, info);
       const items = [];
-      (P.props || []).forEach((p, i) => items.push({ z: p.z ?? (p.y ?? 0) - 2000 * (p.back ? 1 : 0), draw: () => drawProp(g, p, t, info) }));
+      (P.props || []).forEach((p, i) => items.push({ z: p.z ?? (MARKS.has(p.k) ? 1e5 + i : (p.y ?? 0) - 2000 * (p.back ? 1 : 0)), draw: () => drawProp(g, p, t, info) }));
       (P.cast || []).forEach((a, i) => items.push({ z: a.z ?? (a.y ?? setF.gy ?? 930), draw: () => drawActor(g, a, t, info, i) }));
       items.sort((a, b) => a.z - b.z).forEach((it) => it.draw());
       (P.fx || []).forEach((f) => (FX[f.k] || (() => {}))(g, f, t, info));
-      (P.tags || []).filter((x) => !x.screen).forEach((x) => drawTag(g, x, t, info));
+      // бирки: позиция следует за камерой, но размер экранный и бирка не выходит за кадр
+      { const m = g.getTransform(), bi = B.inverse(); (P.tags || []).filter((x) => !x.screen).forEach((x) => { const pt = bi.transformPoint(m.transformPoint({ x: x.x, y: x.y })); const st = x.string ? bi.transformPoint(m.transformPoint({ x: x.string[0], y: x.string[1] })) : null; camTags.push({ ...x, x: pt.x, y: pt.y, string: st ? [st.x, st.y] : undefined }); }); }
       (P.bubbles || []).forEach((b) => { const a = tm(info, b.at, 0), e = b.until != null ? tm(info, b.until, info.dur) : 1e9; if (t < a || t > e) return; bubble(g, b.x, b.y, b.w || 420, b.h || 160, pop(t, a), (g) => { if (b.text) (Array.isArray(b.text) ? b.text : [b.text]).forEach((s, i, arr) => hand(g, s, 0, 6 + (i - (arr.length - 1) / 2) * (b.size || 56) * 1.1, { size: b.size || 56, color: b.color || OL })); if (b.prop) drawProp(g, { ...b.prop, x: 0, y: 0 }, t, info); }, { tail: b.tail ?? -60 }); });
     });
+    if (camTags.length) { g.save(); g.setTransform(B); const [lo, hi] = P.clipX || [0, E.W]; camTags.forEach((x) => { const size = x.size || 54, w = handW(g, x.t, size) + size * 0.9, h = size * 1.25; x.x = Math.min(Math.max(x.x, lo + w / 2 + 28), hi - w / 2 - 28); x.y = Math.min(Math.max(x.y, h / 2 + 28), E.H - h / 2 - 28); drawTag(g, x, t, info); }); g.restore(); }
     if (P.dim) T.dim(g, P.dim, P.dimCol || '#101030');
     (P.tags || []).filter((x) => x.screen).forEach((x) => drawTag(g, x, t, info, true));
     if (P.year) yearTag(g, P.year[0], pop(t, tm(info, P.year[1] ?? 0.15, 0.15)), P.year[2] || {});

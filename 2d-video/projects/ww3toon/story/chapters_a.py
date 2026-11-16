@@ -64,7 +64,7 @@ def build(add, X, T):
     add(X('сорок шесть'), BIG('46 ¢', 'одна деталь', set='paperdesk', props=[P('chip', 960, 620, s=2.6)], dim=0.45, col='#f2c037'))
     add(X('Почти каждый'), S('podium', [A('PETROV', 700, 930, s=1.0, pose='cheer', expr='smile'), A('ARKHIPOV', 1220, 930, s=1.0, pose='hips', expr='smirk')], [], [G('человек', 960, 140, 'человек', bg='g')], setOpts=dict(title='')))
     add(X('спасал человек'), FACE('ARKHIPOV', 'sub', expr='smile', z=2.2, setOpts=dict(red=False)))
-    add(X('А однажды'), S('fields', [], [P('tree', 1250, 930, s=1.4), P('bomb', 1250, 560, s=0.8, chute=True, rot2=0.2)], [G('не человек', 700, 200, 'не', bg='y')], [[0, 1100, 520, 1.0], ['end', 1200, 520, 1.25]]))
+    add(X('А однажды'), S('fields', [], [P('tree', 1250, 930, s=1.4), P('bomb', 1250, 560, s=0.8, chute=True, rot2=0.2, z=5000)], [G('не человек', 700, 200, 'не', bg='y')], [[0, 1100, 520, 1.0], ['end', 1200, 520, 1.25]]))
     add(X('Это фильм'), S('city', [A(f'CITIZEN({i})', 260 + i * 350, 930, s=0.95, pose='idle', look=0.1, expr='neutral') for i in range(5)], [], [G('чего никто не хочет', 960, 160, 'никто', bg='y')], setOpts=dict(dusk=True)))
     add(X('И о том'), S('orbit', [], [P('satellite', 1500, 260, s=0.5)], [], [[0, 960, 640, 1.0], ['end', 960, 760, 1.2]], setOpts=dict(night=True)))
     add(T(110.0), card('Третья мировая: что будет?', ['третья', 'мировая']))
