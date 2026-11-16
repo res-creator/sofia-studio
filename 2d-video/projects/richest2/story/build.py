@@ -1,5 +1,6 @@
 # Раскадровка нового «Самого богатого» в мультяшном стиле → story/shots.json
-import json, os
+import json, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 P = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 cfg = json.load(open(f'{P}/config.json'))
 SB = [  # (start, template, params)
@@ -11,8 +12,11 @@ SB = [  # (start, template, params)
  (55.6, 'kidPhone', {}), (57.3, 'phoneArticle', {}), (60.2, 'tower', {}), (63.4, 'pinboard', {}),
  (68.4, 'card', {'text': 'Так кто же был самым богатым человеком в истории?', 'gold': ['богатым']}),
  (71.2, 'crassusFire', {}), (73.4, 'fuggerCrown', {}), (76.2, 'oilKing', {}), (80.1, 'nowMan', {}), (83.0, 'countDesk', {}),
- (89.0, 'card', {'text': 'Глава 1. Простая задача', 'gold': ['простая']}), (92.5, 'END', {}),
+ (89.0, 'card', {'text': 'Как измерить богатство?', 'gold': ['богатство']}),
 ]
+from chapters import CH
+SB += CH
+SB.append((float(cfg['duration']), 'END', {}))
 W = json.load(open(f'{P}/timeline/words.json')); W = W.get('words', W)
 def line(a, b): return ' '.join(w['word'] for w in W if a <= w['start'] < b)
 shots = []

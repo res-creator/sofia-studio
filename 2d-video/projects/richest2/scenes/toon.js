@@ -195,6 +195,15 @@ export function hat(g, h, col, t) {
   else if (h === 'cap') { g.beginPath(); g.ellipse(0, -30, 66, 42, 0, Math.PI, 0); g.closePath(); fo(g, col || '#3a4a6a'); ell(g, 42, -30, 40, 9, col || '#3a4a6a', 4); }
   else if (h === 'fez') { path(g, [[-36, -40], [36, -40], [28, -96], [-28, -96]]); fo(g, col || '#b8322a'); line(g, [[0, -96], [30, -70]], 4); }
   else if (h === 'veil') { g.beginPath(); g.ellipse(0, -14, 70, 62, 0, Math.PI, 0); g.closePath(); fo(g, col || '#e9e2d0'); }
+  else if (h === 'mughal') { const c = col || '#f2ead8'; ell(g, 0, -50, 68, 38, c); line(g, [[-58, -50], [58, -54]], 3); ell(g, 10, -72, 9, 9, C.red, 3); line(g, [[10, -80], [30, -130]], 6, '#f6efe0'); }
+  else if (h === 'chinese') { g.beginPath(); g.ellipse(0, -30, 60, 44, 0, Math.PI, 0); g.closePath(); fo(g, '#1e1b20'); line(g, [[-100, -50], [-50, -40]], 10, OL); line(g, [[50, -40], [100, -50]], 10, OL); }
+  else if (h === 'fur') { const c = col || '#8a5a35'; box(g, -66, -70, 132, 40, c, { r: 18 }); g.beginPath(); g.ellipse(0, -72, 52, 36, 0, Math.PI, 0); g.closePath(); fo(g, '#a8322a'); }
+  else if (h === 'tudor') { ell(g, 0, -56, 76, 18, col || '#1e1b20', 5, -0.08); ell(g, 0, -66, 46, 16, col || '#1e1b20', 4); line(g, [[30, -70], [80, -110]], 7, '#f6efe0'); ell(g, -10, -60, 6, 6, C.gold, 3); }
+  else if (h === 'hood') { g.beginPath(); g.ellipse(0, -6, 74, 74, 0, Math.PI * 0.9, Math.PI * 2.1); g.closePath(); fo(g, col || '#2b2228'); }
+  else if (h === 'bonnet') { ell(g, 0, -46, 80, 18, col || '#5a3a5a', 5); g.beginPath(); g.ellipse(0, -52, 50, 34, 0, Math.PI, 0); g.closePath(); fo(g, col || '#5a3a5a'); ell(g, 36, -66, 12, 12, '#d96a8a', 3); }
+  else if (h === 'knight') { g.beginPath(); g.ellipse(0, 4, 76, 80, 0, 0, Math.PI * 2); g.moveTo(50, 12); g.ellipse(0, 12, 50, 52, 0, 0, Math.PI * 2); g.fillStyle = '#9aa0aa'; g.fill('evenodd'); g.lineWidth = LW; g.strokeStyle = OL; g.stroke(); for (let i = -2; i <= 2; i++) line(g, [[i * 24, -72], [i * 24, -50]], 2, '#6a707a'); }
+  else if (h === 'military') { g.beginPath(); g.ellipse(0, -40, 66, 30, 0, Math.PI, 0); g.closePath(); fo(g, col || '#3a4a3a'); box(g, -62, -46, 124, 18, '#2b2b2b', { r: 6, lw: 4 }); ell(g, 0, -56, 8, 8, C.gold, 3); }
+  else if (h === 'bowler') { g.beginPath(); g.ellipse(0, -46, 54, 42, 0, Math.PI, 0); g.closePath(); fo(g, col || '#2b2622'); ell(g, 0, -46, 72, 12, col || '#2b2622', 4); }
   else if (h === 'kufi') { g.beginPath(); g.ellipse(0, -36, 58, 34, 0, Math.PI, 0); g.closePath(); fo(g, col || '#f2ead8'); }
 }
 

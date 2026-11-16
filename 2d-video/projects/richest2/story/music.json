@@ -2,5 +2,22 @@
  {"start": 0.0, "end": 55.6, "file": "desert_city.mp3", "offset": 0, "gain": -2, "fadeIn": 0.6},
  {"start": 55.6, "end": 68.4, "file": "investigations.mp3", "offset": 0, "gain": -1},
  {"start": 69.6, "end": 88.6, "file": "sneaky_snitch.mp3", "offset": 0, "gain": -2, "fadeIn": 0.4},
- {"start": 88.6, "end": 95.0, "file": "thinking_music.mp3", "offset": 0, "gain": -4, "fadeIn": 0.8}
+ {"start": 88.6, "end": 196.6, "file": "thinking_music.mp3", "offset": 0, "gain": -3, "fadeIn": 0.8},
+ {"start": 196.3, "end": 310.4, "file": "teller_of_the_tales.mp3", "offset": 0, "gain": -3},
+ {"start": 310.1, "end": 359.4, "file": "hidden_agenda.mp3", "offset": 0, "gain": -2},
+ {"start": 359.2, "end": 380.2, "file": "ibn_alnoor.mp3", "offset": 0, "gain": -2},
+ {"start": 380.0, "end": 443.0, "file": "the_entertainer.mp3", "offset": 0, "gain": -3},
+ {"start": 442.7, "end": 465.8, "file": "gathering_darkness.mp3", "offset": 0, "gain": 0},
+ {"start": 465.5, "end": 480.8, "file": "lasting_hope.mp3", "offset": 0, "gain": -2},
+ {"start": 480.6, "end": 529.1, "file": "scheming_weasel_faster.mp3", "offset": 0, "gain": -3},
+ {"start": 528.9, "end": 559.0, "file": "heroic_age.mp3", "offset": 0, "gain": -3},
+ {"start": 558.8, "end": 622.6, "file": "pixel_peeker_polka__faster.mp3", "offset": 0, "gain": -4},
+ {"start": 616.2, "end": 686.0, "file": "master_of_the_feast.mp3", "offset": 0, "gain": -3, "fadeIn": 1.5},
+ {"start": 685.8, "end": 757.0, "file": "monkeys_spinning_monkeys.mp3", "offset": 0, "gain": -3},
+ {"start": 756.7, "end": 797.6, "file": "gathering_darkness.mp3", "offset": 40, "gain": 0},
+ {"start": 797.4, "end": 836.9, "file": "teller_of_the_tales.mp3", "offset": 110, "gain": -3},
+ {"start": 830.0, "end": 928.7, "file": "local_forecast__elevator.mp3", "offset": 0, "gain": -3, "fadeIn": 1.5},
+ {"start": 928.5, "end": 958.4, "file": "lasting_hope.mp3", "offset": 30, "gain": -2},
+ {"start": 951.0, "end": 1023.4, "file": "investigations.mp3", "offset": 0, "gain": -2, "fadeIn": 1.5},
+ {"start": 1023.2, "end": 1077.9, "file": "inspired.mp3", "offset": 0, "gain": -2, "fadeOut": 2.5}
 ]
