@@ -13,7 +13,7 @@ def remap(t):
         if t >= b: d += b - a
         elif t > a: return a - d
     return t - d
-def run(*a): subprocess.run(a, check=True)
+def run(*a, **k): subprocess.run(a, check=True, **k)
 
 END = float(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', os.path.join(B, 'mix.wav')]))
 keep = []; s = 0.0
