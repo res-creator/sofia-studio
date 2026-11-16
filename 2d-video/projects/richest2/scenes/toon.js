@@ -77,7 +77,7 @@ export function tag(g, str, x, y, k = 1, o = {}) {
   g.restore();
 }
 // жёлтая плашка-год в левом верхнем углу (экранная, без камеры)
-export function yearTag(g, str, k = 1, o = {}) { if (k <= 0) return; g.save(); g.setTransform(E.PX, 0, 0, E.PX, 0, 0); tag(g, str, o.x ?? 150, o.y ?? 90, k, { bg: o.bg ?? '#ffd43b', size: o.size ?? 54, rot: -0.03 }); g.restore(); }
+export function yearTag(g, str, k = 1, o = {}) { if (k <= 0) return; g.save(); g.setTransform(E.PX, 0, 0, E.PX, 0, 0); tag(g, str, Math.max(o.x ?? 150, (handW(g, str, o.size ?? 54) + (o.size ?? 54) * 0.9) / 2 + 40), o.y ?? 90, k, { bg: o.bg ?? '#ffd43b', size: o.size ?? 54, rot: -0.03 }); g.restore(); }
 // облачко речи
 export function bubble(g, x, y, w, h, k, draw, o = {}) {
   if (k <= 0) return; g.save(); g.translate(x, y); const s = ease.outBack(clamp(k)); g.scale(s, s); g.globalAlpha = clamp(k * 3);

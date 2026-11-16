@@ -169,7 +169,7 @@ tpl('payGold', 'Cairo market: Musa\'s retinue pays a merchant with gold coins; c
       person(g, { ...CA.MALIAN('#3a7a5a', 0), x: 980, y: 960, s: 1.1, t, pose: 'give', face: -1, look: -0.8, expr: 'smile' });
       person(g, { ...CA.MALIAN('#a8322a', 1), x: 1260, y: 980, s: 1.0, t, pose: 'idle', face: -1, look: -0.6, prop: (g) => sack(g, 70, -120, 0.7, '#c99a4a') });
       for (let i = 0; i < 9; i++) { const st = tP + i * 0.17, k = prog(t, st, st + 0.55); if (k <= 0) continue; const x = lerp(860, 440 + (i % 3) * 20, k), y = lerp(780, 640, k) - Math.sin(k * Math.PI) * 160; if (k < 1) T.coin(g, x, y, 22); else T.coin(g, 380 + (i % 3) * 34, 680 - Math.floor(i / 3) * 14, 22); }
-      tag(g, 'золотом за всё', 700, 280, pop(t, tA - 0.2), { size: 54 });
+      tag(g, 'золотом за всё', 700, 330, pop(t, tA - 0.2), { size: 54 });
     });
     finish(g);
   } });
