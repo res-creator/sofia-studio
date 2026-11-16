@@ -38,7 +38,7 @@ L032D 0.952 replace: twenty twenty six -> 2026
 L033 1.000 
 L034 1.000 
 L035 0.945 replace: six hundred -> 600
-L036 0.917 replace: twelve hundred -> 1 200 | replace: fifteen hundred -> 1 500
+L036 0.936 replace: twelve hundred -> 1200 | replace: fifteen hundred -> 1500
 L037 1.000 
 L038 1.000 
 L039 0.968 replace: six hundred -> 600

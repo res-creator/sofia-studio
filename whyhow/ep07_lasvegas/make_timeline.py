@@ -5,8 +5,8 @@ order = [l.split(',')[0] for l in open('SCRIPT_EN.csv', encoding='utf-8').read()
 t = 0.9; tl = []
 for pid in order:
     info = sf.info(f'voice/{pid}.wav'); d = info.frames / info.samplerate
-    if pid in chapters: t += 1.5
+    if pid in chapters: t += 2.0
     tl.append(dict(id=pid, start=round(t, 3), dur=round(d, 3))); t += d + 0.25
-    if pid == 'L004': t += 0.8
+    if pid == 'L004': t += 2.8
 json.dump(dict(paras=tl, voiceEnd=round(t + 0.4, 2), qcard=2.5, endscreen=15), open('timeline.json', 'w'), indent=0)
 print('voice end %.1f min' % (t / 60))

@@ -38,7 +38,7 @@ Numbers in [brackets] point to SOURCES.md.
 
 **L011** In nineteen fifty, the mayor of Las Vegas wanted to bring them into the city, so he could tax them. The casino bosses didn't like that at all. [1]
 
-**L012** So they went to the county and asked it to create a separate town around their casinos. Once that town existed, the city couldn't annex it. The man leading the campaign was Gus Greenbaum, who ran the Flamingo, a casino started by the gangster Bugsy Siegel. [1]
+**L012** So they went to the county and asked it to create a separate town around their casinos. Once that town existed, the city couldn't annex it. The man leading the campaign was Gus Greenbaum, who ran the Flamingo, a casino opened by the gangster Bugsy Siegel. [1]
 
 **L013** The county agreed, in December nineteen fifty. The new town was called Paradise. And to this day, most of the Strip is in Paradise, run by the county, not by the city of Las Vegas. [1]
 
@@ -46,7 +46,7 @@ Numbers in [brackets] point to SOURCES.md.
 
 ## CH3 — Bombs as a tourist attraction
 
-**L014** One year later, Las Vegas got a very strange new neighbor.
+**L014** Just a month later, Las Vegas got a very strange new neighbor.
 
 **L015** In January nineteen fifty-one, the United States started testing nuclear bombs at a site in the desert, about sixty-five miles from the city. [5]
 

@@ -1,9 +1,9 @@
 # EP07 upload kit — How It's Run
 
-**File:** `lasvegas_shouldnt_exist.mp4` (1920×1080, 30 fps, ~8:30, −14 LUFS)
+**File:** `lasvegas_shouldnt_exist.mp4` (1920×1080, 30 fps, ~8:36, −14 LUFS)
 **Thumbnail:** made by the owner from the prompts below (AI image generator), 1280×720. Test two in YouTube "Test & compare".
 **Subtitles:** `lasvegas_subtitles_en.srt` (English). YouTube auto-translates captions for viewers.
-**Altered or synthetic content:** answer **Yes** only for the synthetic voice; all footage and photos are real (Wikimedia Commons / US government films / Library of Congress / NASA / Pixabay / Coverr), diagrams are our own animation.
+**Altered or synthetic content:** the narration is a synthetic (AI) voice that does not imitate a real person, so "No" is allowed; "Yes" is also safe. All footage and photos are real (Wikimedia Commons / US government films / Library of Congress / NASA / Pixabay / Coverr), diagrams are our own animation.
 
 ## Title
 Las Vegas Shouldn't Exist. Here's How It Does.
@@ -21,13 +21,13 @@ How does a city of more than two million people survive in a desert with about f
 
 Chapters
 0:00 The Strip isn't in Las Vegas
-0:34 1. The meadows
-1:26 2. The Strip that escaped the city
-2:13 3. Bombs as a tourist attraction
-3:03 4. Drinking the same water twice
-4:56 5. The third straw
-6:54 6. The city under the city
-7:42 The answer
+0:36 1. The meadows
+1:29 2. The Strip that escaped the city
+2:16 3. Bombs as a tourist attraction
+3:07 4. Drinking the same water twice
+5:00 5. The third straw
+6:59 6. The city under the city
+7:47 The answer
 
 Main sources
 - Southern Nevada Water Authority; Las Vegas Valley Water District

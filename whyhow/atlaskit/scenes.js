@@ -84,7 +84,7 @@ function stats(ctx, t, d, p) {
   if (p.img) { kenBurns(ctx, IMG[p.img], t, d, p.kb || { z: [1.08, 1.16] }); darken(ctx, p.dark || 0.66); coldGrade(ctx, 0.15); vignette(ctx, 0.6); } else navyBg(ctx, t);
   if (p.head) text(ctx, p.head, W / 2, 200, { size: 56, font: F.head, align: 'center', color: C.iceL, alpha: fade(t, 0.1), ls: 2 });
   const n = p.items.length, gap = W / (n + 0.0);
-  p.items.forEach((it, i) => { const at = it.at != null ? it.at : 0.3 + i * 0.5; if (t < at) return; const u = E.out(clamp(seg(t, at, at + 1.4)));
+  p.items.forEach((it, i) => { const at = it.at != null ? it.at : 0.3 + i * 0.5; if (t < at) return; const u = E.out(clamp(seg(t, at, at + (it.cnt || 1.4))));
     const cx = gap * (i + 0.5); const v = lerp(it.from || 0, it.v, u); const s = pop(t, at, 0.4);
     ctx.save(); ctx.translate(cx, H / 2 + 40); ctx.scale(s, s);
     text(ctx, (it.pre || '') + fmtNum(v, it.dec || 0) + (it.suf || ''), 0, 0, { size: it.size || 150, font: F.head, align: 'center', color: it.color || C.cream, shadow: 20, maxW: gap - 60 });
