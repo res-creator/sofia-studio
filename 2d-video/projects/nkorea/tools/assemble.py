@@ -1,6 +1,6 @@
-# Сборка: куски build/chunks/c*.mp4 + build/mix.wav → out/nkorea_1080p.mp4
+# Сборка: куски build/chunks/c*.mp4 + build/mix.wav → ru_geo/nkorea/video/nkorea_1080p.mp4
 import os, subprocess
-P = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); B = os.path.join(P, 'build'); O = os.path.join(P, 'out'); os.makedirs(O, exist_ok=True)
+P = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); B = os.path.join(P, 'build'); O = os.path.abspath(os.path.join(P, '../../../ru_geo/nkorea/video')); os.makedirs(O, exist_ok=True)
 ch = sorted(f for f in os.listdir(os.path.join(B, 'chunks')) if f.endswith('.mp4') and 'tmp' not in f)
 lst = os.path.join(B, 'chunks', 'list.txt'); open(lst, 'w').write(''.join(f"file '{os.path.join(B, 'chunks', c)}'\n" for c in ch))
 run = lambda *a: subprocess.run(list(a), check=True)
