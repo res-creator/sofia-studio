@@ -1,5 +1,5 @@
 # Финальная сборка v2: вставляет перерисованные сцены (build/redo) и вырезает лишние паузы на чёрных карточках.
-#   python3 tools/recut.py            → out/richest_toon_1080p.mp4, out/richest_toon_phone_720p.mp4, build/richest_cut.srt
+#   python3 tools/recut.py            → out/richest_toon_1080p.mp4, build/richest_cut.srt
 # Исходник видео: build/prev_1080p.mp4 (предыдущая полная сборка). Голос, музыка и субтитры сдвигаются вместе с вырезами.
 import json, os, re, subprocess
 P = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); B = os.path.join(P, 'build'); O = os.path.join(P, 'out')
@@ -56,7 +56,6 @@ fc.append(''.join(f'[v{i}]' for i in range(len(pieces))) + f'concat=n={len(piece
 f1 = os.path.join(O, 'richest_toon_1080p.mp4'); f2 = os.path.join(O, 'richest_toon_phone_720p.mp4')
 run('ffmpeg', '-y', '-v', 'error', *inputs, '-i', os.path.join(B, 'mix_cut.wav'), '-filter_complex', ';'.join(fc), '-map', '[v]', '-map', f'{len(inputs) // 2}:a',
     '-c:v', 'libx264', '-preset', 'medium', '-crf', '19', '-maxrate', '5000k', '-bufsize', '10000k', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '256k', '-shortest', '-movflags', '+faststart', f1)
-run('ffmpeg', '-y', '-v', 'error', '-i', f1, '-vf', 'scale=1280:720', '-c:v', 'libx264', '-preset', 'medium', '-crf', '24', '-maxrate', '1500k', '-bufsize', '3000k', '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', f2)
 
 # 4) субтитры по новому времени
 def ts(x): x = max(0, x); h, r = divmod(x, 3600); m, s = divmod(r, 60); return f'{int(h):02d}:{int(m):02d}:{int(s):02d},{int(round((s - int(s)) * 1000)) % 1000:03d}'
