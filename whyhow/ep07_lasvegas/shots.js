@@ -129,7 +129,7 @@ function build(T) {
     F('gov_fireball_valley', { over: [low('THE FLASH LIT UP THE SKY', 'flash')] }),
   ]);
   beats('L017', [
-    F('px_riviera_showgirls_bronze', { over: [low('LAS VEGAS TURNED IT INTO A SHOW', 'show')] }),
+    F('cm_sands_1959', { kb: { z: [1.25, 1.1], x: [0.55, 0.5] }, over: [low('LAS VEGAS TURNED IT INTO A SHOW', 'show')] }),
     F('cm_teapot_desert_rock_troops', { over: [low('DAWN BOMB PARTIES', 'dawn'), note('PHOTO: WATCHING A TEST, 1955')] }),
     F('cm_upshot_encore_cloud', { over: [low('UP TO THE ROOF TO WATCH', 'roof')] }),
     F('px_cocktails_bar', { over: [low('"ATOMIC COCKTAILS"', 'cocktails'), note('STOCK FOOTAGE')] }),
