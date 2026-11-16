@@ -19,7 +19,7 @@ Numbers in [brackets] point to SOURCES.md.
 
 ## CH1 — A city that outgrew its river
 
-**R004** Rome sits on the river Tiber. But for drinking, the Tiber was a bad idea. The city's drains emptied into it, and it flooded often. [3]
+**R004** Rome sits on the river Tiber. But for drinking, the Tiber was a bad idea. The city's sewers emptied into it. And it often flooded. [3]
 
 **R005** For centuries, Romans drank from the river, from wells and from local springs. But as Rome grew into the biggest city in the Mediterranean, that wasn't enough. [2]
 
