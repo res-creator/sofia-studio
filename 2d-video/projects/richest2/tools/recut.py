@@ -46,16 +46,15 @@ for src, a, b in segs:
         if ca > cur: pieces.append((src, cur, ca, a))
         cur = max(cur, cb)
     if cur < b - 1e-6: pieces.append((src, cur, b, a))
-inputs = ['-i', os.path.join(B, 'prev_1080p.mp4')]; idx = {0: 0}
-for _, _, f in redo: idx[f] = len(inputs) // 2; inputs += ['-i', f]
-fc = []
-for i, (src, a, b, s0) in enumerate(pieces):
-    off = 0 if src == 0 else s0
-    fc.append(f'[{idx[src]}:v]trim=start={a - off:.4f}:end={b - off:.4f},setpts=PTS-STARTPTS,fps={FPS},format=yuv420p[v{i}]')
-fc.append(''.join(f'[v{i}]' for i in range(len(pieces))) + f'concat=n={len(pieces)}:v=1:a=0[v]')
-f1 = os.path.join(O, 'richest_toon_1080p.mp4'); f2 = os.path.join(O, 'richest_toon_phone_720p.mp4')
-run('ffmpeg', '-y', '-v', 'error', *inputs, '-i', os.path.join(B, 'mix_cut.wav'), '-filter_complex', ';'.join(fc), '-map', '[v]', '-map', f'{len(inputs) // 2}:a',
-    '-c:v', 'libx264', '-preset', 'medium', '-crf', '19', '-maxrate', '5000k', '-bufsize', '10000k', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '256k', '-shortest', '-movflags', '+faststart', f1)
+pd = os.path.join(B, 'pieces'); os.makedirs(pd, exist_ok=True); lst = os.path.join(pd, 'list.txt'); L = []
+for i, (src, a, b, s0) in enumerate(pieces):   # каждый кусок отдельно (одна общая команда не влезает в память)
+    f = os.path.join(B, 'prev_1080p.mp4') if src == 0 else src; off = 0 if src == 0 else s0; o = os.path.join(pd, f'{i:03d}.mp4')
+    run('ffmpeg', '-y', '-v', 'error', '-ss', f'{a - off:.4f}', '-i', f, '-frames:v', str(round((b - a) * FPS)), '-an', '-vf', f'fps={FPS},format=yuv420p',
+        '-c:v', 'libx264', '-preset', 'medium', '-crf', '19', '-maxrate', '5000k', '-bufsize', '10000k', '-g', '48', o); L.append(f"file '{o}'")
+open(lst, 'w').write('\n'.join(L) + '\n')
+f1 = os.path.join(O, 'richest_toon_1080p.mp4')
+run('ffmpeg', '-y', '-v', 'error', '-f', 'concat', '-safe', '0', '-i', lst, '-i', os.path.join(B, 'mix_cut.wav'), '-map', '0:v', '-map', '1:a',
+    '-c:v', 'copy', '-c:a', 'aac', '-b:a', '256k', '-shortest', '-movflags', '+faststart', f1)
 
 # 4) субтитры по новому времени
 def ts(x): x = max(0, x); h, r = divmod(x, 3600); m, s = divmod(r, 60); return f'{int(h):02d}:{int(m):02d}:{int(s):02d},{int(round((s - int(s)) * 1000)) % 1000:03d}'
