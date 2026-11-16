@@ -1,0 +1,4 @@
+[
+ {"start": 0.0, "end": 52.0, "file": "hidden_agenda.mp3", "gain": -2, "fadeIn": 1.5},
+ {"start": 51.5, "end": 112.0, "file": "investigations.mp3", "gain": -2, "fadeIn": 1.0, "fadeOut": 1.5}
+]
