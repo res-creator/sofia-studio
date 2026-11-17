@@ -1,1 +1,1 @@
-{"title":"cover","duration":2,"shots":[{"id":"c1","start":0,"end":2,"tpl":"cover","params":{}}]}
+{"title":"cover","duration":6,"shots":[{"id":"c1","start":0,"end":2,"tpl":"coverA","params":{}},{"id":"c2","start":2,"end":4,"tpl":"coverB","params":{}},{"id":"c3","start":4,"end":6,"tpl":"coverC","params":{}}]}
