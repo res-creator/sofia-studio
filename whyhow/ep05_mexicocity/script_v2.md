@@ -39,7 +39,7 @@ Rules applied:
 
 **X006** For more than a century, the city has been drinking the water underneath it. About seventy percent of its supply is groundwater. [31]
 
-**X007** Pump the water out, and the clay squeezes flat, like a wet sponge under a brick. Everything on top goes down with it. [26]
+**X007** Pump the water out, and the clay squeezes flat. Think of a wet sponge under a brick. Everything on top goes down with it. [26]
 
 **X008** It has already gone down a long way. In nineteen ten, the city center stood almost two meters above the level of the old lake. By nineteen fifty-nine, it was five and a half meters below it. The city had sunk below its own lake. And that's why, today, this city has to pump its sewage uphill. [8][35]
 
@@ -109,7 +109,7 @@ Rules applied:
 
 ## CH7 — Can it be stopped?
 
-**X030** So, can Mexico City stop sinking?
+**X030** So, can Mexico City stop the sinking?
 
 **X031** Not completely. The lost height is gone for good. And the clay is still squeezing out water from decades of past pumping. How fast it sinks now depends mostly on how thick the clay is. [28][41]
 
