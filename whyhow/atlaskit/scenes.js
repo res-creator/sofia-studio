@@ -350,4 +350,29 @@ function lakelevel(ctx, t, d, p) {
   if (u > 0.98) text(ctx, 'THE CITY SANK BELOW ITS OWN LAKE', W / 2, 330, { size: 40, font: F.head, align: 'center', color: C.yellow, alpha: fade(t, 3.3) });
   text(ctx, 'Source: SACMEX, "El gran reto del agua en la Ciudad de México"', W - 40, H - 20, { size: 20, font: F.reg, align: 'right', color: 'rgba(255,255,255,0.55)' });
 }
-module.exports = { clay, lakelevel, inch, slope, video, photo, overlays, title, chapter, stats, calendar, split, bars, thermo, ratio, myth, versus, endq, endscreen, sat, globe, pop, fade, fadeOut };
+
+// ---------- Mexico City cathedral: lowering the high side (under-excavation) ----------
+function cathedral(ctx, t, d, p) {
+  navyBg(ctx, t);
+  text(ctx, p.title || 'LOWER THE HIGH SIDE', W / 2, 130, { size: 52, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.1) });
+  const u = E.inOut(clamp(seg(t, 0.8, 0.8 + (p.dur || 3))));
+  const gy = 640, x0 = 560, x1 = 1360;
+  // tilt: left low; right side lowered toward level
+  const yl = gy + 60, yr = gy + 60 - lerp(140, 40, u);
+  const hb = 300;
+  ctx.fillStyle = '#E9E2D0'; ctx.beginPath(); ctx.moveTo(x0, yl); ctx.lineTo(x1, yr); ctx.lineTo(x1, yr - hb); ctx.lineTo(x0, yl - hb); ctx.closePath(); ctx.fill();
+  // towers
+  ctx.fillRect(x0, yl - hb - 160, 90, 160); ctx.fillRect(x1 - 90, yr - hb - 160, 90, 160);
+  ctx.fillStyle = '#7A5C40'; ctx.beginPath(); ctx.moveTo(0, yl); ctx.lineTo(x0, yl); ctx.lineTo(x1, yr); ctx.lineTo(W, yr); ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath(); ctx.fill();
+  // level line
+  ctx.setLineDash([12, 10]); ctx.strokeStyle = C.yellow; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x0 - 80, yl); ctx.lineTo(x1 + 80, yl); ctx.stroke(); ctx.setLineDash([]);
+  text(ctx, 'LEVEL', x0 - 90, yl + 8, { size: 26, font: F.bold, align: 'right', color: C.yellow });
+  // shafts on the high side
+  for (let i = 0; i < 5; i++) { const sx = x1 - 300 + i * 70; ctx.fillStyle = '#2A2016'; ctx.fillRect(sx, lerp(yl, yr, (sx - x0) / (x1 - x0)) + 6, 22, 260); }
+  // clay pulled out sideways (small bits moving into shafts)
+  for (let i = 0; i < 30; i++) { const v = ((t * 0.7) + i / 30) % 1; const sx = x1 - 300 + (i % 5) * 70 + 11; const bx = sx + (1 - v) * 40 * (i % 2 ? 1 : -1); const by = gy + 140 + (i % 7) * 18 - v * 120; ctx.fillStyle = '#C9A06E'; ctx.beginPath(); ctx.arc(bx, by, 5, 0, 7); ctx.fill(); }
+  text(ctx, '32 SHAFTS · CLAY PULLED OUT ~1.5 MILLION TIMES', W / 2, H - 120, { size: 36, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.6) });
+  text(ctx, 'HIGH SIDE LOWERED BY UP TO ~92 CM (1993–1998)', W / 2, H - 70, { size: 30, font: F.bold, align: 'center', color: C.yellow, alpha: fade(t, 2.0) });
+  text(ctx, 'DIAGRAM · NOT TO SCALE · TILT EXAGGERATED', 48, 60, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
+}
+module.exports = { cathedral, clay, lakelevel, inch, slope, video, photo, overlays, title, chapter, stats, calendar, split, bars, thermo, ratio, myth, versus, endq, endscreen, sat, globe, pop, fade, fadeOut };
