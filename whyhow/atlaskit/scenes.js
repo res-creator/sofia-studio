@@ -55,7 +55,9 @@ function overlays(ctx, t, d, p) {
     else if (o.type === 'thermo') { const v = o.v; ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = 'rgba(11,20,38,0.78)'; rr(ctx, 40, 40, 250, 86, 8); ctx.fill();
       ctx.fillStyle = C.cream; rr(ctx, 64, 54, 18, 58, 9); ctx.fill(); ctx.fillStyle = v < 0 ? C.ice : C.red; rr(ctx, 67, 54 + 58 * (v < 0 ? 0.65 : 0.2), 12, 58 * (v < 0 ? 0.35 : 0.8), 6); ctx.fill(); ctx.beginPath(); ctx.arc(73, 112, 14, 0, 7); ctx.fill();
       text(ctx, (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(v) + '°C', 270, 104, { size: 54, font: F.head, align: 'right', color: C.cream }); ctx.restore(); }
-    else if (o.type === 'note') text(ctx, o.text, o.x || 48, o.y || 60, { size: o.size || 24, font: F.monoB, color: o.color || C.cream, alpha: a * 0.9, shadow: 8, align: o.align });
+    else if (o.type === 'note') { const sz = o.size || 24, nx = o.x || 48, ny = o.y || 60, nw = K.measure(ctx, o.text, sz, F.monoB) + 28; const bx = o.align === 'center' ? nx - nw / 2 : o.align === 'right' ? nx - nw + 14 : nx - 14;
+      ctx.save(); ctx.globalAlpha = a * 0.78; ctx.fillStyle = 'rgba(8,14,28,1)'; rr(ctx, bx, ny - sz - 8, nw, sz + 20, 6); ctx.fill(); ctx.restore();
+      text(ctx, o.text, nx, ny, { size: sz, font: F.monoB, color: o.color || C.cream, alpha: a, align: o.align }); }
     else if (o.type === 'ring') { const u = E.out(clamp(seg(t, at, at + 0.7))); ctx.save(); ctx.globalAlpha = a; ctx.strokeStyle = o.color || C.yellow; ctx.lineWidth = 6; ctx.beginPath(); ctx.ellipse(o.x, o.y, o.rx, o.ry, 0, -Math.PI / 2, -Math.PI / 2 + u * Math.PI * 2); ctx.stroke(); ctx.restore(); }
   }
 }
@@ -229,7 +231,7 @@ function slope(ctx, t, d, p) {
   navyBg(ctx, t);
   if (p.title) text(ctx, p.title, W / 2, 140, { size: 56, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.1) });
   if (p.sub) text(ctx, p.sub, W / 2, 196, { size: 30, font: F.bold, align: 'center', color: C.iceL, alpha: fade(t, 0.3) });
-  const TP = [[120, 430], [260, 432], [380, 380], [520, 300], [660, 370], [760, 500], [850, 690], [950, 720], [1040, 620], [1120, 470], [1200, 400], [1290, 470], [1370, 640], [1455, 860], [1545, 700], [1610, 565], [1800, 565]];
+  const TP = p.under ? [[120, 430], [260, 420], [400, 300], [560, 260], [700, 330], [820, 390], [880, 520], [960, 545], [1040, 520], [1100, 400], [1200, 330], [1320, 300], [1460, 360], [1560, 430], [1620, 560], [1800, 565]] : [[120, 430], [260, 432], [380, 380], [520, 300], [660, 370], [760, 500], [850, 690], [950, 720], [1040, 620], [1120, 470], [1200, 400], [1290, 470], [1370, 640], [1455, 860], [1545, 700], [1610, 565], [1800, 565]];
   const ty = x => { for (let i = 1; i < TP.length; i++) if (x <= TP[i][0]) { const a = TP[i - 1], b = TP[i]; const u = (x - a[0]) / (b[0] - a[0]); return lerp(a[1], b[1], 0.5 - Math.cos(Math.PI * u) / 2); } return TP[TP.length - 1][1]; };
   const ly = x => 425 + (x - 200) * 95 / 1520; // the channel: a gentle, steady drop
   // ground
@@ -261,7 +263,8 @@ function slope(ctx, t, d, p) {
   if (rev > 0.95) { ctx.fillStyle = C.cream; for (let i = 0; i < 5; i++) { const bx = 1655 + i * 34, bh = 50 + hash(i + 7) * 60; ctx.globalAlpha = fade(t, 0.3 + (p.dur || 3.2)); ctx.fillRect(bx, 565 - bh, 28, bh); } ctx.globalAlpha = 1;
     text(ctx, 'CITY', 1730, 440, { size: 38, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.3 + (p.dur || 3.2)) }); }
   const lab = (k, s, x, y, at) => { if (xr < x) return; const big = hl === k; chip(ctx, s, x, y, { size: big ? 40 : 30, align: 'center', bg: big ? C.yellow : hexA(C.navy3, 0.95), color: big ? C.ink : C.cream, alpha: fade(t, at || 0) }); };
-  if (p.labels !== false) { lab('tunnel', 'TUNNEL', 520, 250); lab('arches', 'ARCHES', 950, 800); lab('tunnel', 'TUNNEL', 1200, 360); if (siph) lab('siphon', 'INVERTED SIPHON', 1458, 950); else lab('arches', 'ARCHES', 1458, 950); }
+  if (p.labels !== false && p.under) { lab('tunnel', 'LONG TUNNEL', 560, 210); lab('arches', 'ARCHES', 960, 620); lab('tunnel', 'LONG TUNNEL', 1320, 250); }
+  else if (p.labels !== false) { lab('tunnel', 'TUNNEL', 520, 250); lab('arches', 'ARCHES', 950, 800); lab('tunnel', 'TUNNEL', 1200, 360); if (siph) lab('siphon', 'INVERTED SIPHON', 1458, 950); else lab('arches', 'ARCHES', 1458, 950); }
   if (p.tag) text(ctx, p.tag, W / 2, H - 70, { size: 34, font: F.bold, align: 'center', color: C.yellow, alpha: fade(t, p.tagAt || 2.5) });
   text(ctx, 'DIAGRAM · NOT TO SCALE', 48, 60, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
 }

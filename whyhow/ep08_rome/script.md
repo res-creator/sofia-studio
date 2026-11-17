@@ -89,7 +89,7 @@ Numbers in [brackets] point to SOURCES.md.
 
 ## CH5 — The day the water stopped
 
-**R027** For five hundred years, the water kept flowing. And then, it stopped.
+**R027** For more than eight hundred years, the water kept flowing. And then, it stopped.
 
 **R028** In five thirty-seven AD, a Gothic army besieged Rome, and cut the aqueducts to take away the city's water. [10]
 
@@ -101,7 +101,7 @@ Numbers in [brackets] point to SOURCES.md.
 
 **R030B** Some aqueducts ended up as building material. In Germany, the aqueduct of Cologne had built up a thick layer of mineral deposit inside its channel. In the Middle Ages, people cut it out, polished it like marble, and used it in churches. [17]
 
-**R031** It took more than a thousand years to bring the water back. In the fourteen hundreds, popes began to restore the old Aqua Virgo. And in seventeen sixty-two, the Trevi Fountain was finished at the end of its line, as a grand monument to that water. [1][11]
+**R031** It took almost a thousand years to bring the water back. In the fourteen hundreds, popes began to restore the old Aqua Virgo. And in seventeen sixty-two, the Trevi Fountain was finished at the end of its line, as a grand monument to that water. [1][11]
 
 ---
 
@@ -123,6 +123,6 @@ Numbers in [brackets] point to SOURCES.md.
 
 **R037** It found clean springs far away. It built channels that ran downhill for dozens of miles, mostly underground, with a slope so gentle you couldn't see it. It gave the water away for free, and it fought the thieves who tried to steal it.
 
-**R038** And when the water stopped, Rome stopped too. It took the city a thousand years to get it back.
+**R038** And when the water stopped, Rome stopped too. It took the city almost a thousand years to get it back.
 
 **R039** So, would you drink from a two-thousand-year-old aqueduct? And which city should we explain next? Tell me in the comments. This was How It's Run.

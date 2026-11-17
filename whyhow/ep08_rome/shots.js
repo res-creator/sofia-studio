@@ -52,8 +52,8 @@ function build(T) {
   // ===== COLD OPEN =====
   beats('R001', [
     F('cm_tourists_tossing_coins_trevi_fountain', { over: [head('THE TREVI FOUNTAIN, ROME', null, 200, 90)] }),
-    F('px_trevi_cascade_close', { over: [low('THE WATER WAS FIRST BROUGHT HERE 2,000+ YEARS AGO', 'water')] }),
-    F('cm_arl_aqua_virgo_tunnel_lit', { over: [head('AN AQUEDUCT BUILT IN 19 BC', 'aqueduct', 200, 90), note('THE AQUA VIRGO TUNNEL, STILL IN USE')] }),
+    F('px_trevi_cascade_close', { in: 0.6, over: [low('THE WATER WAS FIRST BROUGHT HERE 2,000+ YEARS AGO', 'water')] }),
+    F('cm_remains_aqua_virgo_aqueduct_rinascente', { over: [low('BY AN AQUEDUCT BUILT IN 19 BC', 'aqueduct'), note('REMAINS OF THE AQUA VIRGO, ROME')] }),
     F('px_trevi_tilt_down', { in: 6, over: [head("AND IT'S STILL RUNNING", 'still', 200, 100, Yc)] }),
   ], { start: 0 });
   beats('R002', [
@@ -93,7 +93,7 @@ function build(T) {
     F('cm_arl_map_aqueducts_entering_rome', { over: [note('MAP: AQUEDUCT LINES ENTERING ANCIENT ROME')] }),
   ]);
   beats('R008', [
-    F('cm_arl_aqua_marcia_specus', { in: 2.5, over: [low('THE LONGEST: THE AQUA MARCIA', 'Marcia')] }),
+    F('cm_arl_aqua_marcia_specus', { in: 4.5, over: [low('THE LONGEST: THE AQUA MARCIA', 'Marcia')] }),
     st('fifty', 'FROM THE SPRINGS TO ROME', [{ v: 50, suf: '+ MILES', label: 'ABOUT 91 KM', at: 0.3, cnt: 0.8, size: 230 }], 'Source: Wikipedia "Aqua Marcia"'),
     F('cm_upper_aniene_river_near_subiaco', { over: [low('COLD AND CLEAR: "THE BEST WATER IN ROME"', 'cold'), note('THE UPPER ANIENE VALLEY, WHERE ITS SPRINGS ARE')] }),
   ]);
@@ -106,7 +106,7 @@ function build(T) {
     F('cm_arl_open_channel_on_arches', { over: [low('NO PUMPS. GRAVITY DOES EVERYTHING', 'pumps')] }),
   ]);
   beats('R010', [
-    F('cm_arl_pont_du_gard_specus_sinter', { in: 1.5, over: [low('THE HARD PART: THE SLOPE', 'slope')] }),
+    F('cm_arl_pont_du_gard_specus_sinter', { in: 1.5, over: [low('THE HARD PART: THE SLOPE', 'slope'), note('INSIDE THE PONT DU GARD CHANNEL')] }),
     S('slope', { cutW: 'steep', title: 'GETTING THE SLOPE RIGHT', labels: false, dur: 2.0, tag: 'TOO STEEP: IT WEARS THE CHANNEL AWAY · TOO FLAT: IT STOPS', tagAt: 0.6 }),
     F('cm_long_ruined_arcade_anio_novus', { over: [low('A GENTLE, STEADY DROP', 'gentle')] }),
     F('cm_francis_towne_watercolour_ruined_claudian', { over: [low('OVER DOZENS OF MILES OF HILLS AND VALLEYS', 'dozens'), note('WATERCOLOUR: FRANCIS TOWNE, 1780')] }),
@@ -135,18 +135,18 @@ function build(T) {
   beats('R014', [
     F('cm_aqua_claudia_arches_stretching_across', { over: [low('WHAT MOST PEOPLE GET WRONG', 'wrong')] }),
     F('cm_dramatic_low_aqua_claudia_arches', { over: [head('THE ARCHES ARE THE EXCEPTION', 'exception', 200, 90, Yc)] }),
-    S('slope', { cutW: 'underground', title: 'MOST OF AN AQUEDUCT RUNS UNDERGROUND', hl: 'tunnel', dur: 2.6 }),
+    S('slope', { cutW: 'underground', title: 'MOST OF AN AQUEDUCT RUNS UNDERGROUND', hl: 'tunnel', under: true, dur: 2.2 }),
     F('cm_tunnel_aqua_marcia_cut_through', { over: [low('TUNNELS AND BURIED CHANNELS', 'tunnels'), note('AQUA MARCIA TUNNEL, NEAR VICOVARO')] }),
     F('cm_aqua_claudia_arches_beside_ploughed', { over: [low('ARCHES ONLY TO CROSS A VALLEY', 'valley')] }),
   ]);
   beats('R015', [
-    F('cm_arl_narrow_channel_toward_light', { over: [low('COOL · CLEAN · SAFE FROM ENEMIES', 'cool')] }),
+    F('cm_arl_narrow_channel_toward_light', { over: [low('COOL · CLEAN · SAFE FROM ENEMIES', 'cool'), note('AQUEDUCT CHANNEL, SOUTHERN FRANCE')] }),
     F('cm_inside_vaulted_stone_channel_specus', { over: [low('SHAFTS EVERY FEW HUNDRED FEET', 'shafts'), note('INSIDE THE NÎMES AQUEDUCT CHANNEL')] }),
     F('cm_arl_specus_tool_marks', { over: [low('…TO CLIMB DOWN AND CLEAN IT', 'clean')] }),
   ]);
   beats('R016', [
     F('cm_ruined_arches_gier_aqueduct_siphon', { over: [low('A VALLEY TOO DEEP FOR ARCHES', 'deep'), note('GIER AQUEDUCT, LYON')] }),
-    S('slope', { cutW: 'sealed', title: 'SEALED PIPES, DOWN AND BACK UP', siphon: true, hl: 'siphon', dur: 2.4, labels: true }),
+    S('slope', { cutW: 'sealed', title: 'SEALED PIPES, DOWN AND BACK UP', siphon: true, hl: 'siphon', dur: 1.5, labels: true }),
     F('cm_1818_drawing_inverted_siphons_gier', { over: [low('PUSHED BY ITS OWN PRESSURE', 'pressure'), note('DRAWING, 1818: THE GIER SIPHONS')] }),
     F('cm_gier_aqueduct_siphon_bridge_arches', { over: [low('"AN INVERTED SIPHON"', 'inverted'), note('THE BRIDGE THAT CARRIED THE SIPHON PIPES, BEAUNANT')] }),
   ]);
@@ -162,15 +162,15 @@ function build(T) {
   chapter('R017', 3, 'Free water for everyone');
   beats('R017', [
     F('cm_arl_pompeii_castellum_exterior', { over: [low('A DISTRIBUTION TANK', 'distribution'), note("POMPEII'S WATER TANK")] }),
-    F('cm_arl_castellum_pipe_holes', { over: [low('…IN A STRICT ORDER OF PRIORITY', 'priority')] }),
+    F('cm_arl_castellum_pipe_holes', { over: [low('…IN A STRICT ORDER OF PRIORITY', 'priority'), note("NÎMES' WATER TANK, FRANCE")] }),
   ]);
   beats('R018', [
     F('cm_arl_pompeii_street_fountain', { over: [low('1. PUBLIC FOUNTAINS: FREE FOR ANYONE', 'public'), note('STREET FOUNTAIN, POMPEII')] }),
-    F('cm_terrax_cgi_aqueduct_distribution', { in: 9, cutW: 'baths', over: [low('2. THE PUBLIC BATHS', 'baths'), note('ANIMATION OF ROMAN COLOGNE: TERRA X / ZDF')] }),
-    F('cm_arl_lead_pipes_along_wall', { over: [low('3. LAST: PRIVATE HOMES THAT PAID', 'last')] }),
+    F('cm_terrax_cgi_aqueduct_distribution', { in: 7, cutW: 'Then', over: [low('2. THE PUBLIC BATHS', 'baths'), { ...note('ANIMATION OF ROMAN COLOGNE: TERRA X / ZDF'), y: 130, at: 0.1 }] }),
+    F('cm_arl_lead_pipes_along_wall', { cutW: 'rich', over: [low('3. LAST: PRIVATE HOMES, FOR THOSE WHO PAID', 'rich')] }),
   ]);
   beats('R019', [
-    F('cm_nasone_rome_sidewalk_water_running', { over: [low('NO TAPS: THE WATER RAN ALL THE TIME', 'taps')] }),
+    F('cm_nasone_rome_sidewalk_water_running', { over: [low('NO TAPS: THE WATER RAN ALL THE TIME', 'taps'), note('TODAY: A ROMAN "NASONE" STREET FOUNTAIN')] }),
     F('cm_photo_woman_zinc_tub_nasone', { over: [low('DAY AND NIGHT', 'day'), note('OLD PHOTO, ROME')] }),
     F('cm_cloaca_maxima_grating_roman_forum', { over: [low('THE OVERFLOW FLUSHED THE STREETS AND SEWERS', 'flushed')] }),
   ]);
@@ -182,7 +182,7 @@ function build(T) {
   ]);
   beats('R020B', [
     F('cm_arl_caracalla_walk_a', { over: [low('THE BATHS OF CARACALLA, ROME', 'Caracalla')] }),
-    st('thousand', 'BATHERS AT A TIME', [{ v: 1000, suf: '+', label: 'MORE THAN A THOUSAND', at: 0.3, cnt: 0.9, size: 240 }], 'Source: Wikipedia "Baths of Caracalla"', { img: 'cm_massive_ruined_vaults_baths_caracalla' }),
+    st('thousand', 'BATHERS AT A TIME', [{ v: 1000, suf: '+', label: 'ESTIMATES GO UP TO ~1,600', at: 0.3, cnt: 0.9, size: 240 }], 'Source: Wikipedia "Baths of Caracalla"', { img: 'cm_massive_ruined_vaults_baths_caracalla' }),
     F('px_caracalla_walls', { over: [low('LIBRARIES · GARDENS · GYMS', 'libraries')] }),
     F('cm_underground_service_tunnels_beneath_baths', { over: [low('ALL FILLED BY AQUEDUCT WATER', 'filled'), note('SERVICE TUNNELS UNDER THE BATHS')] }),
   ]);
@@ -204,7 +204,7 @@ function build(T) {
   beats('R024', [
     F('cm_remains_aqua_marcia', { over: [low('WATER THAT NEVER ARRIVED', 'never')] }),
     F('cm_arl_aqua_claudia_pines_pan', { over: [low('LANDOWNERS TAPPED THE AQUEDUCTS', 'Landowners')] }),
-    F('cm_romans_picnicking_grass_aqueduct_arches', { over: [low('IN THE COUNTRYSIDE', 'countryside')] }),
+    F('cm_photograph_aqua_claudia_arches_campagna', { over: [low('IN THE COUNTRYSIDE', 'countryside'), note('OLD PHOTO: THE ROMAN CAMPAGNA')] }),
     F('cm_arl_lead_pipes_behind_grille', { over: [low('WATER WORKERS PAID TO CONNECT SECRET PIPES', 'secretly')] }),
   ]);
   beats('R025', [
@@ -213,8 +213,8 @@ function build(T) {
   ]);
   beats('R026', [
     F('cm_stamped_inscription_roman_lead_pipe', { over: [low('PIPES WERE STAMPED WITH NAMES', 'stamped')] }),
-    F('cm_roman_lead_pipe_stamped_emperors', { over: [low("…SO THE CITY KNEW WHOSE PIPE IT WAS", 'belonged'), note("STAMPED WITH THE EMPEROR'S NAME")] }),
-    F('cm_arl_castellum_pipe_holes', { in: 6, over: [low('ILLEGAL PIPES TORN OUT', 'tearing')] }),
+    F('cm_roman_lead_pipe_stamped_emperors', { kb: { z: [1.0, 1.04] }, over: [low("…SO THE CITY KNEW WHOSE PIPE IT WAS", 'belonged'), note("STAMPED WITH THE EMPEROR'S NAME")] }),
+    F('cm_roman_lead_pipes_one_imperial', { kb: { z: [1.0, 1.05] }, over: [low('ILLEGAL PIPES TORN OUT', 'tearing')] }),
     F('cm_inscribed_boundary_stone_cippus_aqua', { over: [low('EVERY AQUEDUCT MEASURED', 'measuring'), note('BOUNDARY STONE OF THREE AQUEDUCTS')] }),
   ]);
   beats('R026B', [
@@ -225,7 +225,7 @@ function build(T) {
 
   // ===== CH5 =====
   chapter('R027', 5, 'The day the water stopped');
-  beats('R027', [F('cm_19th_century_photo_aqueduct_ruins', { over: [low('500 YEARS OF WATER. THEN IT STOPPED.', 'stopped')] })]);
+  beats('R027', [F('cm_19th_century_photo_aqueduct_ruins', { over: [low('800+ YEARS OF WATER. THEN IT STOPPED.', 'stopped'), note('PHOTO, 1800s')] })]);
   beats('R028', [
     F('cm_illustration_vitiges_king_goths_besieging', { over: [low('AD 537: THE GOTHS BESIEGE ROME', 'Gothic'), note('LATER ILLUSTRATION')] }),
     F('cm_arl_aqua_claudia_meadow_wide', { over: [low('THEY CUT THE AQUEDUCTS', 'cut')] }),
@@ -240,22 +240,22 @@ function build(T) {
   beats('R029', [
     F('cm_piranesi_etching_ruined_roman_aqueduct', { over: [low('NO MONEY. NO WORKERS. NO REPAIRS.', 'nobody'), note('ETCHING: PIRANESI')] }),
     F('cm_arl_narrow_channel_toward_light', { in: 7, over: [low('MINERAL DEPOSITS AND RUBBLE', 'mineral'), note('DEPOSITS INSIDE AN AQUEDUCT CHANNEL, SOUTHERN FRANCE')] }),
-    F('cm_coloured_aquatint_ruined_claudian_aqueduct', { over: [low('ONE BY ONE, THE AQUEDUCTS WENT DRY', 'dry')] }),
+    F('cm_coloured_aquatint_ruined_claudian_aqueduct', { over: [low('ONE BY ONE, THE AQUEDUCTS WENT DRY', 'dry'), note('AQUATINT, 19TH CENTURY')] }),
   ]);
   beats('R030', [
-    F('cm_hackert_rome_ruined_baths_caracalla', { over: [low('FROM HUNDREDS OF THOUSANDS…', 'hundreds'), note('PAINTING: HACKERT, c. 1780')] }),
+    F('cm_hackert_rome_ruined_baths_caracalla', { kb: { z: [1.45, 1.55], x: [0.5, 0.52], y: [0.78, 0.78] }, over: [low('FROM HUNDREDS OF THOUSANDS…', 'hundreds'), note('PAINTING: HACKERT, c. 1780')] }),
     F('cm_thomas_cole_roman_campagna_1843', { over: [low('…TO A SMALL TOWN BY THE RIVER', 'town'), note('PAINTING: THOMAS COLE, 1843')] }),
-    F('cm_19th_century_photo_tiber_bank', { over: [low('BACK TO THE TIBER AND WELLS', 'back')] }),
+    F('cm_19th_century_photo_tiber_bank', { over: [low('BACK TO THE TIBER AND WELLS', 'back'), note('PHOTO, 1800s')] }),
   ]);
   beats('R030B', [
-    F('cm_piranesi_etching_roman_aqueduct_remains', { over: [low('SOME AQUEDUCTS BECAME BUILDING MATERIAL', 'material')] }),
-    F('cm_reconstructed_arch_eifel_aqueduct_vussem', { over: [low('COLOGNE, GERMANY: THE EIFEL AQUEDUCT', 'Cologne')] }),
+    F('cm_piranesi_etching_roman_aqueduct_remains', { over: [low('SOME AQUEDUCTS BECAME BUILDING MATERIAL', 'material'), note('ETCHING: PIRANESI')] }),
+    F('cm_reconstructed_arch_eifel_aqueduct_vussem', { over: [low('COLOGNE, GERMANY: THE EIFEL AQUEDUCT', 'Cologne'), note('PARTLY RECONSTRUCTED BRIDGE, VUSSEM')] }),
     F('cm_cross_section_eifel_aqueduct_channel', { over: [low('A THICK LAYER OF MINERAL DEPOSIT', 'thick')] }),
     F('cm_polished_aqueduct_marble_sinter_eifel', { over: [low('CUT OUT AND POLISHED LIKE MARBLE', 'polished')] }),
     F('cm_columns_eifel_aqueduct_sinter_wartburg', { over: [low('…AND USED IN CHURCHES AND CASTLES', 'churches'), note('COLUMNS OF "AQUEDUCT MARBLE", WARTBURG CASTLE')] }),
   ]);
   beats('R031', [
-    F('cm_lano_e_painting_aqua_claudia', { over: [low('MORE THAN 1,000 YEARS LATER…', 'thousand')] }),
+    F('cm_lano_e_painting_aqua_claudia', { over: [low('ALMOST 1,000 YEARS LATER…', 'thousand'), note('PAINTING: LANOÜE, 19TH CENTURY')] }),
     F('cm_1553_medal_pope_julius_iii', { over: [low('1400s: POPES RESTORE THE AQUA VIRGO', 'popes'), note('PAPAL MEDAL, 1553')] }),
     F('cm_engraving_trevi_fountain_salvatore_busuttil', { over: [chipC('1762: THE TREVI FOUNTAIN IS FINISHED', 'seventeen', 960, 56), note('OLD ENGRAVING')] }),
     F('cm_map_aqua_virgo_inside_rome', { over: [low('AT THE END OF THE LINE', 'end'), note('MAP: THE AQUA VIRGO INSIDE ROME')] }),
@@ -278,7 +278,7 @@ function build(T) {
     F('px_pantheon_coffers', { over: [low('…THE LIME DISSOLVES AND FILLS IT', 'dissolves')] }),
   ]);
   beats('R034', [
-    F('px_man_drinking_nasone', { over: [low('ROME STILL GIVES AWAY ITS WATER', 'gives')] }),
+    F('cm_nasone_drinking_fountain_rome_street', { over: [low('ROME STILL GIVES AWAY ITS WATER', 'gives')] }),
     st('two', 'ROME TODAY', [{ v: 2500, suf: '+', label: '"NASONI" STREET FOUNTAINS', at: 0.3, cnt: 0.9, size: 240 }], 'Source: Wikipedia "Nasone"; Wanted in Rome'),
     F('cm_nasone_piazza_dei_ponziani_rome', { over: [low('FREE, DAY AND NIGHT', 'free')] }),
   ]);
@@ -296,15 +296,15 @@ function build(T) {
     F('px_pont_du_gard_drone_river', { in: 4, over: [low('DOWNHILL FOR DOZENS OF MILES', 'downhill')] }),
     F('cm_looking_out_aqua_marcia_tunnel', { over: [low('MOSTLY UNDERGROUND', 'underground')] }),
     F('cm_arl_pompeii_street_fountain', { in: 2, over: [low('WATER FOR FREE', 'free')] }),
-    F('cm_roman_lead_pipe_fistula_stamped', { over: [low('…AND A FIGHT AGAINST THIEVES', 'thieves')] }),
+    F('cm_stamped_inscription_roman_lead_pipe', { kb: { z: [1.0, 1.05] }, over: [low('…AND A FIGHT AGAINST THIEVES', 'thieves')] }),
   ]);
   beats('R038', [
-    F('cm_pillement_painting_ruined_aqueduct_arches', { over: [head('WHEN THE WATER STOPPED, ROME STOPPED', 'stopped', 200, 80, Yc)] }),
-    F('px_trevi_night_blue_water', { over: [low('A THOUSAND YEARS TO GET IT BACK', 'thousand')] }),
+    F('cm_pillement_painting_ruined_aqueduct_arches', { over: [head('WHEN THE WATER STOPPED, ROME STOPPED', 'stopped', 200, 80, Yc), { ...note('PAINTING: PILLEMENT, 18TH CENTURY'), y: 1030 }] }),
+    F('px_trevi_night_blue_water', { over: [low('ALMOST A THOUSAND YEARS TO GET IT BACK', 'thousand')] }),
   ]);
   beats('R039', [
     F('cm_arl_aqua_claudia_meadow_walk', { in: 7 }),
-    S('endq', { img: 'cm_aqua_claudia_arches_sunny_day', credit: credit('cm_aqua_claudia_arches_sunny_day'), lines: ['WOULD YOU DRINK', 'FROM A 2,000-YEAR-OLD', 'AQUEDUCT?'], hl: 2, sub: 'Tell us in the comments · Which city should we explain next?' }),
+    S('endq', { img: 'cm_aqua_claudia_arches_sunny_day', credit: credit('cm_aqua_claudia_arches_sunny_day'), lines: ['WOULD YOU DRINK', 'FROM A 2,000-YEAR-OLD', 'AQUEDUCT?'], hl: 2, sub: 'Tell me in the comments · Which city should we explain next?' }),
   ]);
   add(T.tl.voiceEnd + T.tl.qcard, S('endscreen', {}), 'fade');
   return out;

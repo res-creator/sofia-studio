@@ -1,9 +1,9 @@
 # EP08 upload kit — How It's Run
 
-**File:** `rome_how_ancient_rome_got_its_water.mp4` (1920×1080, 30 fps, ~8:13, −14 LUFS)
+**File:** `rome_how_ancient_rome_got_its_water.mp4` (1920×1080, 30 fps, ~8:16, −14 LUFS)
 **Thumbnail:** made by the owner from the prompts below (AI image generator), 1280×720. Test two in YouTube "Test & compare".
 **Subtitles:** `rome_subtitles_en.srt` (English). YouTube auto-translates captions for viewers.
-**Altered or synthetic content:** the narration is a synthetic (AI) voice that does not imitate a real person, so "No" is allowed; "Yes" is also safe. Footage and photos are real (Wikimedia Commons / Pixabay / Coverr); one short clip is a labelled CGI animation (Terra X / ZDF, CC BY); the slope diagrams are our own animation.
+**Altered or synthetic content:** the narration is a synthetic (AI) voice that does not imitate a real person, so "No" is allowed; "Yes" is also safe. Footage and photos are real (Wikimedia Commons / Pixabay / Coverr); one short clip is a labelled CGI animation of Roman Cologne (Terra X / ZDF, CC BY-SA 4.0); the slope diagrams are our own animation.
 **Playlist:** How Cities Really Work
 
 ## Title
@@ -11,7 +11,7 @@ How Ancient Rome Got Its Water
 
 Alternatives (for A/B title test):
 - How Roman Aqueducts Really Worked (Without a Single Pump)
-- Rome Had Free Water 2,000 Years Ago. Then It Stopped.
+- Rome Had Free Water 2,000 Years Ago. Then It Stopped for Almost 1,000 Years.
 - The Roman Engineering Trick That Moved Rivers With Gravity
 
 ## Description
@@ -22,13 +22,13 @@ How did a city of around a million people get fresh water day and night, with no
 
 Chapters
 0:00 Water from 19 BC, still running
-0:34 1. A city that outgrew its river
-1:24 2. Downhill all the way
-3:22 3. Free water for everyone
-4:27 4. The water thieves
-5:21 5. The day the water stopped
-6:36 6. Built to last
-7:26 The answer
+0:35 1. A city that outgrew its river
+1:25 2. Downhill all the way
+3:23 3. Free water for everyone
+4:28 4. The water thieves
+5:22 5. The day the water stopped
+6:38 6. Built to last
+7:27 The answer
 
 Main sources
 - Frontinus, De aquaeductu (LacusCurtius); Vitruvius, De architectura VIII

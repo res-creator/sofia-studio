@@ -3,7 +3,7 @@ R002 1.000
 R003 1.000 
 R004 1.000 
 R005 1.000 
-R006 0.877 replace: three hundred and twelve -> 312 | replace: appia -> pia
+R006 0.807 replace: three hundred and twelve -> 312 | replace: appius -> apius | replace: appia -> pia | replace: appian -> apian
 R007 0.917 replace: third -> 3rd | replace: eleven -> 11
 R008 0.918 replace: aqua marcia -> aquamarsa | replace: fifty -> 50
 R009 1.000 
@@ -28,13 +28,13 @@ R024 1.000
 R025 1.000 
 R026 1.000 
 R026B 1.000 
-R027 0.870 replace: five hundred -> 500
+R027 0.889 replace: eight hundred -> 800
 R028 0.895 replace: five thirty seven -> 537
 R028B 1.000 
 R029 1.000 
 R030 1.000 
 R030B 1.000 
-R031 0.923 replace: fourteen hundreds -> 1400s | replace: seventeen sixty two -> 1762
+R031 0.921 replace: fourteen hundreds -> 1400s | replace: seventeen sixty two -> 1762
 R032 0.918 replace: twenty thousand -> 20 000 | replace: nineteen seventies -> 1970s
 R033 0.955 replace: twenty twenty three -> 2023
 R034 0.912 replace: two thousand -> 2 000 | replace: nasoni -> nizoni
