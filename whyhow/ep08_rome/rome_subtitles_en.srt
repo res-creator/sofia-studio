@@ -1,724 +1,665 @@
 1
-00:00:00,900 --> 00:00:03,370
-Throw a coin into the
-Trevi Fountain in Rome,
+00:00:00,900 --> 00:00:05,020
+Throw a coin into the Trevi Fountain, and
+it lands in water that started flowing to
 
 2
-00:00:03,500 --> 00:00:07,000
-and you're throwing it into water that was
-first brought to the city more than two
+00:00:05,060 --> 00:00:06,610
+Rome in nineteen BC.
 
 3
-00:00:07,040 --> 00:00:10,390
-thousand years ago, by an
-aqueduct built in nineteen BC.
+00:00:07,200 --> 00:00:07,820
+Same springs.
 
 4
-00:00:10,880 --> 00:00:11,790
-And it's still running.
+00:00:07,860 --> 00:00:08,810
+Still running.
 
 5
-00:00:12,731 --> 00:00:15,501
-Ancient Rome was a city of
-around a million people.
+00:00:09,577 --> 00:00:14,047
+Ancient Rome pulled rivers of fresh water
+into a city of around a million people.
 
 6
-00:00:15,731 --> 00:00:18,361
-No pumps, no electricity, no steel pipes.
+00:00:14,337 --> 00:00:14,947
+No pumps.
 
 7
-00:00:18,731 --> 00:00:21,051
-And yet, fresh water poured
-into it day and night,
+00:00:15,057 --> 00:00:17,607
+Just a slope so gentle
+you can't even see it.
 
 8
-00:00:21,091 --> 00:00:23,101
-from springs dozens of miles away.
+00:00:18,371 --> 00:00:20,941
+Then, one year, an army
+switched it all off.
 
 9
-00:00:24,024 --> 00:00:25,594
-So how did the Romans do it?
+00:00:21,131 --> 00:00:24,441
+And it took Rome almost a thousand
+years to get its water back.
 
 10
-00:00:25,644 --> 00:00:29,574
-How do you move a river across mountains
-and valleys using nothing but gravity?
+00:00:24,551 --> 00:00:25,891
+So how did the water get in?
 
 11
-00:00:29,884 --> 00:00:30,954
-And why did it all stop?
+00:00:25,931 --> 00:00:26,901
+And how did it stop?
 
 12
-00:00:36,667 --> 00:00:38,357
+00:00:29,232 --> 00:00:30,922
 Rome sits on the river Tiber.
 
 13
-00:00:38,467 --> 00:00:40,877
+00:00:31,032 --> 00:00:33,442
 But for drinking, the
 Tiber was a bad idea.
 
 14
-00:00:41,147 --> 00:00:42,887
+00:00:33,712 --> 00:00:35,452
 The city's sewers emptied into it.
 
 15
-00:00:42,927 --> 00:00:43,917
+00:00:35,492 --> 00:00:36,482
 And it often flooded.
 
 16
-00:00:44,744 --> 00:00:47,064
+00:00:37,308 --> 00:00:39,648
 For centuries, Romans
 drank from the river,
 
 17
-00:00:47,104 --> 00:00:49,014
+00:00:39,688 --> 00:00:41,578
 from wells and from local springs.
 
 18
-00:00:49,444 --> 00:00:52,314
+00:00:42,008 --> 00:00:44,878
 But as Rome grew into the biggest
 city in the Mediterranean,
 
 19
-00:00:52,684 --> 00:00:53,574
+00:00:45,248 --> 00:00:46,138
 that wasn't enough.
 
 20
-00:00:54,466 --> 00:00:59,346
+00:00:47,030 --> 00:00:51,810
 In three hundred and twelve BC, a magistrate
 named Appius Claudius built the first
 
 21
-00:00:59,386 --> 00:01:01,196
+00:00:51,850 --> 00:00:53,660
 aqueduct, the Aqua Appia.
 
 22
-00:01:01,446 --> 00:01:03,796
-It's the same man who
-built the famous road,
-
-23
-00:01:03,986 --> 00:01:04,776
-the Appian Way.
-
-24
-00:01:05,639 --> 00:01:09,149
+00:00:54,284 --> 00:00:57,814
 Over the next five centuries,
 Rome added more and more of them.
 
-25
-00:01:09,399 --> 00:01:13,349
+23
+00:00:58,044 --> 00:01:01,994
 By the third century AD, eleven
 aqueducts carried water into the city.
 
-26
-00:01:14,204 --> 00:01:18,854
+24
+00:01:02,849 --> 00:01:07,499
 The longest, the Aqua Marcia, brought water
 from springs more than fifty miles away.
 
-27
-00:01:19,004 --> 00:01:23,434
+25
+00:01:07,669 --> 00:01:12,079
 And its water was so cold and clear that
 Romans considered it the best in the city.
 
-28
-00:01:26,316 --> 00:01:27,326
+26
+00:01:14,961 --> 00:01:15,971
 Here's the secret.
 
-29
-00:01:27,416 --> 00:01:30,736
+27
+00:01:16,061 --> 00:01:19,381
 An aqueduct is just a channel
 that runs very slightly downhill,
 
-30
-00:01:30,776 --> 00:01:32,886
+28
+00:01:19,421 --> 00:01:21,531
 all the way from the spring to the city.
 
-31
-00:01:33,176 --> 00:01:33,846
+29
+00:01:21,821 --> 00:01:22,491
 No pumps.
 
-32
-00:01:34,116 --> 00:01:35,166
+30
+00:01:22,761 --> 00:01:23,811
 Gravity does everything.
 
-33
-00:01:36,111 --> 00:01:37,611
+31
+00:01:24,757 --> 00:01:26,257
 The hard part is the slope.
 
-34
-00:01:37,651 --> 00:01:40,701
+32
+00:01:26,297 --> 00:01:29,347
 Too steep, and the water rushes
 and wears the channel away.
 
-35
-00:01:40,871 --> 00:01:42,721
+33
+00:01:29,517 --> 00:01:31,367
 Too flat, and it stops flowing.
 
-36
-00:01:43,071 --> 00:01:47,331
+34
+00:01:31,717 --> 00:01:35,977
 So Roman surveyors had to plan a gentle,
 steady drop over dozens of miles of hills
 
-37
-00:01:47,371 --> 00:01:48,041
+35
+00:01:36,017 --> 00:01:36,687
 and valleys.
 
-38
-00:01:49,019 --> 00:01:51,579
+36
+00:01:37,664 --> 00:01:40,224
 Look at the aqueduct that
 supplied the city of Nimes,
 
-39
-00:01:51,619 --> 00:01:52,849
+37
+00:01:40,264 --> 00:01:41,494
 in southern France.
 
-40
-00:01:53,079 --> 00:01:56,809
+38
+00:01:41,724 --> 00:01:45,434
 Over about thirty miles, it drops
 only around forty feet in total.
 
-41
-00:01:57,651 --> 00:02:00,191
-And its most famous
-bridge, the Pont du Gard,
+39
+00:01:46,296 --> 00:01:48,676
+Its most famous bridge, the Pont du Gard,
 
-42
-00:02:00,231 --> 00:02:02,441
+40
+00:01:48,716 --> 00:01:50,866
 is about a hundred and sixty feet high.
 
-43
-00:02:02,691 --> 00:02:05,261
+41
+00:01:51,136 --> 00:01:53,726
 Along its whole length,
 roughly fifteen hundred feet,
 
-44
-00:02:05,391 --> 00:02:08,141
+42
+00:01:53,836 --> 00:01:56,546
 the water channel on top
 drops by just one inch.
 
-45
-00:02:09,052 --> 00:02:11,922
-And the lower arches of the
-bridge were built without mortar.
+43
+00:01:57,480 --> 00:01:59,610
+The lower arches were
+built without mortar.
 
-46
-00:02:12,212 --> 00:02:14,822
+44
+00:01:59,900 --> 00:02:02,220
 Huge stone blocks, some
 weighing several tons,
 
-47
-00:02:15,012 --> 00:02:18,122
-simply held in place by their
-own weight and their perfect cut.
+45
+00:02:02,260 --> 00:02:05,330
+held in place by their own
+weight and their perfect cut.
 
-48
-00:02:18,998 --> 00:02:23,408
+46
+00:02:06,033 --> 00:02:10,443
 Without lasers or GPS, Roman
 surveyors did this with simple tools:
 
-49
-00:02:23,598 --> 00:02:26,498
+47
+00:02:10,633 --> 00:02:13,533
 a long wooden table with a water
 level, called a chorobates,
 
-50
-00:02:26,538 --> 00:02:28,628
+48
+00:02:13,573 --> 00:02:15,663
 and a sighting cross called a groma.
 
-51
-00:02:29,603 --> 00:02:31,653
-And here's something
-most people get wrong.
+49
+00:02:16,638 --> 00:02:18,568
+Here's something most people get wrong.
 
-52
-00:02:31,903 --> 00:02:33,793
+50
+00:02:18,798 --> 00:02:20,688
 The famous arches are the exception.
 
-53
-00:02:34,203 --> 00:02:37,723
+51
+00:02:21,058 --> 00:02:24,598
 Most of an aqueduct runs underground,
 in tunnels and buried channels,
 
-54
-00:02:37,763 --> 00:02:39,393
+52
+00:02:24,638 --> 00:02:26,288
 following the shape of the hills.
 
-55
-00:02:40,023 --> 00:02:42,613
+53
+00:02:26,878 --> 00:02:29,428
 Arches were built only where
 the water had to cross a valley.
 
-56
-00:02:43,491 --> 00:02:45,791
+54
+00:02:30,316 --> 00:02:32,786
 Underground, the water
 stayed cool and clean,
 
-57
-00:02:45,831 --> 00:02:47,361
+55
+00:02:32,896 --> 00:02:34,126
 and it was safe from enemies.
 
-58
-00:02:48,111 --> 00:02:51,881
+56
+00:02:34,676 --> 00:02:38,766
 Workers could climb down through shafts
 every few hundred feet to clean the channel.
 
+57
+00:02:38,976 --> 00:02:43,156
+But one day, an enemy army would try to
+use these channels as a secret way into
+
+58
+00:02:43,196 --> 00:02:43,626
+Rome.
+
 59
-00:02:52,776 --> 00:02:55,276
-And where a valley was
-too deep even for arches,
+00:02:44,561 --> 00:02:46,901
+Where a valley was too
+deep even for arches,
 
 60
-00:02:55,316 --> 00:02:59,656
+00:02:46,941 --> 00:02:51,361
 the Romans used a trick: sealed pipes that
 let the water run down one side of the
 
 61
-00:02:59,696 --> 00:03:02,566
+00:02:51,401 --> 00:02:54,251
 valley and back up the other,
 pushed by its own pressure.
 
 62
-00:03:02,956 --> 00:03:05,266
+00:02:54,941 --> 00:02:56,991
 Engineers call it an inverted siphon.
 
 63
-00:03:06,061 --> 00:03:08,151
-Some aqueducts even powered machines.
-
-64
-00:03:08,581 --> 00:03:12,381
-Near the town of Arles, in France, water
-from an aqueduct ran down a hillside
-
-65
-00:03:12,421 --> 00:03:14,891
-through sixteen water
-wheels, one after another,
-
-66
-00:03:14,961 --> 00:03:17,351
-turning mills that ground
-grain for the region.
-
-67
-00:03:17,901 --> 00:03:21,631
-Historians sometimes call it one of
-the first industrial plants in history.
-
-68
-00:03:24,482 --> 00:03:27,502
+00:02:59,767 --> 00:03:02,787
 When the water reached Rome, it
 flowed into a distribution tank,
 
-69
-00:03:27,542 --> 00:03:30,612
+64
+00:03:02,827 --> 00:03:05,897
 and from there into the city
 in a strict order of priority.
 
-70
-00:03:31,595 --> 00:03:35,045
+65
+00:03:06,880 --> 00:03:10,330
 First, public fountains, where
 anyone could fill a jar for free.
 
-71
-00:03:35,355 --> 00:03:36,665
+66
+00:03:10,540 --> 00:03:11,970
 Then, the public baths.
 
-72
-00:03:36,775 --> 00:03:40,345
+67
+00:03:12,060 --> 00:03:15,630
 And only last, private homes, for
 the rich who paid for their own pipe.
 
-73
-00:03:41,226 --> 00:03:42,896
+68
+00:03:16,512 --> 00:03:18,182
 The fountains never had taps.
 
-74
-00:03:43,186 --> 00:03:45,286
+69
+00:03:18,472 --> 00:03:20,572
 The water ran all the time, day and night,
 
-75
-00:03:45,326 --> 00:03:46,876
+70
+00:03:20,612 --> 00:03:22,162
 and the overflow was useful too.
 
-76
-00:03:47,106 --> 00:03:48,836
+71
+00:03:22,392 --> 00:03:24,122
 It flushed the streets and the sewers.
 
-77
-00:03:49,521 --> 00:03:52,661
+72
+00:03:24,806 --> 00:03:27,906
 Rome had huge public baths
 with hot and cold pools,
 
-78
-00:03:52,701 --> 00:03:55,781
+73
+00:03:27,946 --> 00:03:31,066
 and public toilets with
 dozens of seats side by side,
 
-79
-00:03:55,821 --> 00:03:57,471
+74
+00:03:31,106 --> 00:03:32,776
 where people sat and chatted.
 
-80
-00:03:57,761 --> 00:04:00,571
-Instead of toilet paper, many
-used a sponge on a stick.
-
-81
-00:04:01,449 --> 00:04:02,879
+75
+00:03:33,560 --> 00:03:34,970
 The baths were enormous.
 
-82
-00:04:03,229 --> 00:04:06,169
+76
+00:03:35,340 --> 00:03:38,280
 The Baths of Caracalla, which
 still stand in ruins in Rome,
 
-83
-00:04:06,209 --> 00:04:08,689
+77
+00:03:38,320 --> 00:03:40,800
 could take more than a
 thousand bathers at a time,
 
-84
-00:04:08,729 --> 00:04:10,879
+78
+00:03:40,840 --> 00:03:42,990
 with libraries, gardens and gyms.
 
-85
-00:04:11,009 --> 00:04:12,939
+79
+00:03:43,140 --> 00:03:45,050
 All of it filled by aqueduct water.
 
-86
-00:04:13,886 --> 00:04:16,236
+80
+00:03:45,998 --> 00:03:48,348
 All that dirty water had to go somewhere.
 
-87
-00:04:16,386 --> 00:04:19,136
+81
+00:03:48,518 --> 00:03:51,248
 Under the Roman Forum
 runs the Cloaca Maxima,
 
-88
-00:04:19,246 --> 00:04:23,316
+82
+00:03:51,358 --> 00:03:55,428
 the great sewer, first built in the
 sixth century BC to drain a marsh.
 
-89
-00:04:23,846 --> 00:04:26,796
+83
+00:03:55,958 --> 00:03:58,908
 Parts of it still carry rainwater
 away from the city today.
 
-90
-00:04:29,688 --> 00:04:31,058
+84
+00:04:01,800 --> 00:04:03,170
 Where there's free
 water, there are thieves.
 
-91
-00:04:31,624 --> 00:04:36,204
+85
+00:04:03,735 --> 00:04:08,315
 In the year ninety-seven AD, a senator
 named Frontinus became Rome's water
 
-92
-00:04:36,244 --> 00:04:36,684
+86
+00:04:08,355 --> 00:04:08,985
 commissioner.
 
-93
-00:04:36,724 --> 00:04:39,484
+87
+00:04:09,255 --> 00:04:11,595
 And he wrote a whole book
 about how the system worked,
 
-94
-00:04:39,524 --> 00:04:41,174
+88
+00:04:11,635 --> 00:04:13,285
 and about what was going wrong.
 
-95
-00:04:42,061 --> 00:04:45,671
+89
+00:04:14,172 --> 00:04:17,782
 He found that a lot of water never
 reached the people it was meant for.
 
-96
-00:04:45,981 --> 00:04:48,571
+90
+00:04:18,092 --> 00:04:20,682
 Landowners tapped into the
 aqueducts in the countryside.
 
-97
-00:04:49,041 --> 00:04:52,751
+91
+00:04:21,152 --> 00:04:24,842
 In the city, water workers were
 secretly paid to connect private pipes.
 
-98
-00:04:53,633 --> 00:04:55,163
+92
+00:04:25,745 --> 00:04:27,275
 Those pipes were made of lead.
 
-99
-00:04:55,293 --> 00:04:57,283
+93
+00:04:27,405 --> 00:04:29,395
 The Latin word for lead is plumbum.
 
-100
-00:04:57,373 --> 00:04:59,363
+94
+00:04:29,485 --> 00:04:31,475
 And that's where our
 word plumbing comes from.
 
-101
-00:04:59,961 --> 00:05:04,031
+95
+00:04:32,072 --> 00:04:36,162
 Pipes were stamped with names, so the
 city could see who a pipe belonged to.
 
-102
-00:05:04,401 --> 00:05:06,641
+96
+00:04:36,512 --> 00:04:38,752
 Frontinus started tearing
 out the illegal ones,
 
-103
-00:05:06,681 --> 00:05:09,931
+97
+00:04:38,792 --> 00:04:42,042
 and measuring how much water
 each aqueduct really delivered.
 
-104
-00:05:10,835 --> 00:05:12,865
-Frontinus was proud of the system.
-
-105
-00:05:13,195 --> 00:05:16,755
-He wrote: compare these aqueducts,
-with so many indispensable structures,
-
-106
-00:05:16,795 --> 00:05:19,945
-to the idle pyramids, or
-the useless, though famous,
-
-107
-00:05:20,075 --> 00:05:20,905
-works of the Greeks.
-
-108
-00:05:23,906 --> 00:05:26,356
+98
+00:04:44,946 --> 00:04:47,396
 For more than eight hundred
 years, the water kept flowing.
 
-109
-00:05:26,506 --> 00:05:27,596
+99
+00:04:47,546 --> 00:04:48,636
 And then, it stopped.
 
-110
-00:05:28,223 --> 00:05:31,863
+100
+00:04:49,262 --> 00:04:52,902
 In five thirty-seven AD, a
 Gothic army besieged Rome,
 
-111
-00:05:31,903 --> 00:05:34,653
+101
+00:04:52,942 --> 00:04:55,692
 and cut the aqueducts to
 take away the city's water.
 
-112
-00:05:35,081 --> 00:05:37,051
+102
+00:04:56,121 --> 00:04:58,091
 And then the Goths tried something clever.
 
-113
-00:05:37,281 --> 00:05:39,741
+103
+00:04:58,321 --> 00:05:00,781
 With the water gone, the
 aqueduct channels were empty,
 
-114
-00:05:39,781 --> 00:05:42,261
+104
+00:05:00,821 --> 00:05:03,301
 and they tried to send
 soldiers through one of them,
 
-115
-00:05:42,301 --> 00:05:43,411
+105
+00:05:03,341 --> 00:05:04,451
 right into the city.
 
-116
-00:05:43,801 --> 00:05:45,731
+106
+00:05:04,841 --> 00:05:06,771
 The Roman commander had expected it.
 
-117
-00:05:45,841 --> 00:05:47,871
+107
+00:05:06,881 --> 00:05:08,911
 He had already sealed
 the channel with masonry.
 
-118
-00:05:48,868 --> 00:05:52,498
+108
+00:05:09,908 --> 00:05:13,538
 After the war, nobody had the money
 or the workers to repair them.
 
-119
-00:05:52,728 --> 00:05:55,418
+109
+00:05:13,768 --> 00:05:16,458
 The channels filled with
 mineral deposits and rubble,
 
-120
-00:05:55,508 --> 00:05:57,838
+110
+00:05:16,548 --> 00:05:18,878
 and one by one, the aqueducts went dry.
 
-121
-00:05:58,718 --> 00:06:02,568
+111
+00:05:19,758 --> 00:05:23,588
 Rome shrank from a city of hundreds
 of thousands into a small town,
 
-122
-00:06:02,618 --> 00:06:03,748
+112
+00:05:23,678 --> 00:05:24,788
 huddled along the river.
 
-123
-00:06:04,078 --> 00:06:07,848
+113
+00:05:25,118 --> 00:05:28,888
 For centuries, its people went back to
 drinking from the Tiber and from wells.
 
-124
-00:06:08,792 --> 00:06:11,282
+114
+00:05:29,831 --> 00:05:32,321
 Some aqueducts ended up
 as building material.
 
-125
-00:06:11,652 --> 00:06:16,092
+115
+00:05:32,691 --> 00:05:37,111
 In Germany, the aqueduct of Cologne had
 built up a thick layer of mineral deposit
 
-126
-00:06:16,132 --> 00:06:17,402
+116
+00:05:37,151 --> 00:05:38,441
 inside its channel.
 
-127
-00:06:17,672 --> 00:06:20,882
+117
+00:05:38,711 --> 00:05:41,921
 In the Middle Ages, people cut
 it out, polished it like marble,
 
-128
-00:06:21,032 --> 00:06:22,102
+118
+00:05:42,071 --> 00:05:43,141
 and used it in churches.
 
-129
-00:06:23,143 --> 00:06:26,153
+119
+00:05:44,183 --> 00:05:47,193
 It took almost a thousand
 years to bring the water back.
 
-130
-00:06:26,383 --> 00:06:30,233
+120
+00:05:47,423 --> 00:05:51,273
 In the fourteen hundreds, popes
 began to restore the old Aqua Virgo.
 
-131
-00:06:30,363 --> 00:06:34,203
+121
+00:05:51,403 --> 00:05:55,243
 And in seventeen sixty-two, the Trevi
 Fountain was finished at the end of its line,
 
-132
-00:06:34,243 --> 00:06:36,353
+122
+00:05:55,283 --> 00:05:57,393
 as a grand monument to that water.
 
-133
-00:06:39,260 --> 00:06:41,950
-Some Roman aqueducts
-didn't need to be rebuilt.
+123
+00:05:58,299 --> 00:06:00,449
+And the coins people throw into it today?
 
-134
-00:06:42,200 --> 00:06:46,980
+124
+00:06:00,619 --> 00:06:02,389
+They're collected and given to charity.
+
+125
+00:06:02,599 --> 00:06:04,409
+Well over a million euros a year.
+
+126
+00:06:07,177 --> 00:06:09,807
+Some Roman aqueducts
+never needed rebuilding.
+
+127
+00:06:10,197 --> 00:06:14,877
 In Segovia, in Spain, an aqueduct bridge
 of more than twenty thousand granite blocks
 
-135
-00:06:47,020 --> 00:06:50,510
-stands without a single drop of
-mortar holding the stones together.
+128
+00:06:14,917 --> 00:06:16,387
+stands without any mortar.
 
-136
-00:06:50,800 --> 00:06:53,650
+129
+00:06:16,617 --> 00:06:19,567
 It carried water into the city
 until the nineteen seventies.
 
-137
-00:06:53,905 --> 00:06:56,375
-And Roman concrete had
-a secret of its own.
+130
+00:06:19,846 --> 00:06:24,666
+And in twenty twenty-three, scientists at
+MIT found that Roman concrete can heal its
 
-138
-00:06:56,685 --> 00:07:01,525
-In twenty twenty-three, scientists from
-MIT found that small white lumps of lime in
+131
+00:06:24,706 --> 00:06:28,256
+own cracks, thanks to small
+white lumps of lime inside it.
 
-139
-00:07:01,565 --> 00:07:03,635
-the concrete can work like a repair kit.
-
-140
-00:07:03,865 --> 00:07:07,535
-When a crack lets water in, the
-lime dissolves and fills it again.
-
-141
-00:07:08,306 --> 00:07:11,536
-Two thousand years later, Rome
-still gives away its water.
-
-142
-00:07:11,746 --> 00:07:14,206
-More than two and a half
-thousand little street fountains,
-
-143
-00:07:14,246 --> 00:07:18,136
-called nasoni, run day and night, and
-anyone can drink from them for free.
-
-144
-00:07:19,052 --> 00:07:21,682
-And the coins people throw
-into the Trevi Fountain?
-
-145
-00:07:21,872 --> 00:07:23,702
-They're collected and given to charity.
-
-146
-00:07:23,892 --> 00:07:25,762
-Well over a million euros a year.
-
-147
-00:07:28,516 --> 00:07:30,246
+132
+00:06:31,044 --> 00:06:32,774
 So, how did ancient Rome get its water?
 
-148
-00:07:30,750 --> 00:07:32,900
+133
+00:06:33,278 --> 00:06:35,428
 It found clean springs far away.
 
-149
-00:07:33,170 --> 00:07:36,020
+134
+00:06:35,738 --> 00:06:38,548
 It built channels that ran
 downhill for dozens of miles,
 
-150
-00:07:36,070 --> 00:07:39,340
+135
+00:06:38,598 --> 00:06:41,868
 mostly underground, with a slope
 so gentle you couldn't see it.
 
-151
-00:07:39,530 --> 00:07:43,260
+136
+00:06:42,058 --> 00:06:45,788
 It gave the water away for free, and it
 fought the thieves who tried to steal it.
 
-152
-00:07:44,080 --> 00:07:46,310
+137
+00:06:46,609 --> 00:06:48,839
 And when the water
 stopped, Rome stopped too.
 
-153
-00:07:46,500 --> 00:07:49,290
+138
+00:06:49,029 --> 00:06:51,819
 It took the city almost a
 thousand years to get it back.
 
-154
-00:07:49,941 --> 00:07:52,881
+139
+00:06:52,470 --> 00:06:54,400
+And in Rome, water is still free.
+
+140
+00:06:54,670 --> 00:06:57,090
+More than two and a half
+thousand little street fountains,
+
+141
+00:06:57,130 --> 00:06:59,180
+called nasoni, run day and night.
+
+142
+00:06:59,350 --> 00:07:00,560
+Anyone can drink from them.
+
+143
+00:07:00,879 --> 00:07:04,019
 So, would you drink from a
 two-thousand-year-old aqueduct?
 
-155
-00:07:52,921 --> 00:07:55,111
+144
+00:07:04,059 --> 00:07:06,029
 And which city should we explain next?
 
-156
-00:07:55,201 --> 00:07:56,191
+145
+00:07:06,119 --> 00:07:07,129
 Tell me in the comments.
 
-157
-00:07:56,581 --> 00:07:57,731
+146
+00:07:07,519 --> 00:07:08,669
 This was How It's Run.
