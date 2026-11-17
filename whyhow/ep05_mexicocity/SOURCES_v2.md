@@ -59,6 +59,7 @@ Researched 17 Nov 2026. Confidence: **H** = peer-reviewed / official / several s
 | **H. Extras** ||||
 | 44 | Dry Texcoco lake bed was a source of dust storms (tolvaneras); still a major source of wind-blown PM10. | Britannica — https://www.britannica.com/print/article/589372 ; USDA-ARS modeling study — https://www.ars.usda.gov/ARSUserFiles/30123025/Tatarko%20PDF/2.%20A%20modeling%20study%20of%20Aeolian%20erosion%20enhanced%20by%20surface%20wind%20confluences.pdf | M |
 | 45 | Lago Nabor Carrillo (next to the airport): artificial lake ~1,000 ha, 36 million m³, built 1982 on the old Texcoco bed. (Claim that it was made by *deliberately inducing subsidence* with pumping — NOT verified.) | Letras Libres — https://dev.letraslibres.com/wp-content/uploads/2016/05/0153-convivio03-m.pdf | L |
+| 46 | Greater Mexico City (metropolitan area) population ~22 million (UN World Urbanization Prospects: 21.8 million in 2018; ~22.5 million 2023 est.) | UN DESA World Urbanization Prospects 2018 — https://population.un.org/wup/ ; Wikipedia "Greater Mexico City" | M |
 
 ## Popular claims checked
 
