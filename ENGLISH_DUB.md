@@ -9,6 +9,7 @@ The owner publishes ENGLISH versions on her channel. His team delivers a kit per
   Norway voice, subtitles, cover, upload kit DONE: see norway/NORWAY_NOTES.md.
 - VOICE_ADDON (1) folder: ALL_INSTRUCTIONS_FOR_YOUR_AI.md/.pdf (master instructions for all 3 films + full scripts),
   kokoro_voice.py, master_voice.py, onset_check.py, sample Kokoro_Puck_man_US.mp3.
+- JAPAN (folder shared by link, archive mislabeled КИТАЙ): DONE — see japan/JAPAN_NOTES.md.
 - ВЬЕТНАМ folder on Drive (added later): voice, subtitles, cover, upload kit DONE — see vietnam/VIETNAM_NOTES.md.
 - "Google AI Studio" folder: old unrelated prompts/videos (Lulu and Mimi), ignore.
 
