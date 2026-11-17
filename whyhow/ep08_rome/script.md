@@ -7,7 +7,7 @@ Numbers in [brackets] point to SOURCES.md.
 
 ---
 
-v3 (after critic review): new cold open with the siege hook, open loop in R015, cut Barbegal (R016B), the Frontinus quote (R026B), the sponge line, the Appian Way line; Trevi coins moved after R031; nasoni moved to the ending.
+v4 (after second critic review): CH1 cut to one paragraph (R005; R006–R008 and the Cloaca Maxima R021 removed), R017 opens with a question, shorter recap R037. v3 (after critic review): new cold open with the siege hook, open loop in R015, cut Barbegal (R016B), the Frontinus quote (R026B), the sponge line, the Appian Way line; Trevi coins moved after R031; nasoni moved to the ending.
 
 ---
 
@@ -25,13 +25,10 @@ v3 (after critic review): new cold open with the siege hook, open loop in R015, 
 
 **R004** Rome sits on the river Tiber. But for drinking, the Tiber was a bad idea. The city's sewers emptied into it. And it often flooded. [3]
 
-**R005** For centuries, Romans drank from the river, from wells and from local springs. But as Rome grew into the biggest city in the Mediterranean, that wasn't enough. [2]
+**R005** So Rome went looking for clean springs in the hills, some more than fifty miles away. Starting in three hundred and twelve BC, over the next five centuries, it built eleven aqueducts to bring that water in. [2]
 
-**R006** In three hundred and twelve BC, a magistrate named Appius Claudius built the first aqueduct, the Aqua Appia. [2]
 
-**R007** Over the next five centuries, Rome added more and more of them. By the third century AD, eleven aqueducts carried water into the city. [2]
 
-**R008** The longest, the Aqua Marcia, brought water from springs more than fifty miles away. And its water was so cold and clear that Romans considered it the best in the city. [2]
 
 ---
 
@@ -59,7 +56,7 @@ v3 (after critic review): new cold open with the siege hook, open loop in R015, 
 
 ## CH3 — Free water for everyone
 
-**R017** When the water reached Rome, it flowed into a distribution tank, and from there into the city in a strict order of priority. [6]
+**R017** When the water reached Rome, who got it first? It flowed into a distribution tank, and from there into the city in a strict order of priority. [6]
 
 **R018** First, public fountains, where anyone could fill a jar for free. Then, the public baths. And only last, private homes, for the rich who paid for their own pipe. [6]
 
@@ -69,7 +66,6 @@ v3 (after critic review): new cold open with the siege hook, open loop in R015, 
 
 **R020B** The baths were enormous. The Baths of Caracalla, which still stand in ruins in Rome, could take more than a thousand bathers at a time, with libraries, gardens and gyms. All of it filled by aqueduct water. [6]
 
-**R021** All that dirty water had to go somewhere. Under the Roman Forum runs the Cloaca Maxima, the great sewer, first built in the sixth century BC to drain a marsh. Parts of it still carry rainwater away from the city today. [7]
 
 ---
 
@@ -119,7 +115,7 @@ v3 (after critic review): new cold open with the siege hook, open loop in R015, 
 
 **R036** So, how did ancient Rome get its water? 
 
-**R037** It found clean springs far away. It built channels that ran downhill for dozens of miles, mostly underground, with a slope so gentle you couldn't see it. It gave the water away for free, and it fought the thieves who tried to steal it. 
+**R037** It found clean springs far away, and let gravity do the rest, mostly underground. It gave the water away for free, and it fought the thieves who tried to steal it. 
 
 **R038** And when the water stopped, Rome stopped too. It took the city almost a thousand years to get it back. 
 

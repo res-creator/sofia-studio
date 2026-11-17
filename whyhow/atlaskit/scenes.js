@@ -268,4 +268,32 @@ function slope(ctx, t, d, p) {
   if (p.tag) text(ctx, p.tag, W / 2, H - 70, { size: 34, font: F.bold, align: 'center', color: C.yellow, alpha: fade(t, p.tagAt || 2.5) });
   text(ctx, 'DIAGRAM · NOT TO SCALE', 48, 60, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
 }
-module.exports = { slope, video, photo, overlays, title, chapter, stats, calendar, split, bars, thermo, ratio, myth, versus, endq, endscreen, sat, globe, pop, fade, fadeOut };
+
+// ---------- the one-inch drop: a long bridge whose channel tilts (exaggerated) ----------
+function inch(ctx, t, d, p) {
+  navyBg(ctx, t);
+  text(ctx, p.title || 'THE CHANNEL ON TOP OF THE PONT DU GARD', W / 2, 140, { size: 52, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.1) });
+  const x0 = 140, x1 = 1780, yb = 760; const u = E.inOut(clamp(seg(t, 0.6, 2.2)));
+  const ex = lerp(0, 120, u); // exaggerated tilt in px
+  const top = x => 430 + ex * (x - x0) / (x1 - x0);
+  // water under the bridge
+  ctx.fillStyle = hexA(C.ice, 0.22); ctx.fillRect(0, yb + 40, W, 40);
+  // three tiers of arches
+  const tiers = [[yb, 230, 160], [yb - 230, 120, 80], [null, 70, 40]];
+  ctx.fillStyle = '#C9A46A';
+  for (let x = x0; x < x1; x += 40) { const tp = top(x); ctx.fillRect(x, tp, 40, yb + 40 - tp); }
+  ctx.fillStyle = C.navy2;
+  for (let x = x0 + 20; x < x1 - 60; x += 160) { ctx.beginPath(); ctx.moveTo(x, yb + 40); ctx.lineTo(x, yb - 100); ctx.arc(x + 60, yb - 100, 60, Math.PI, 0); ctx.lineTo(x + 120, yb + 40); ctx.fill(); }
+  for (let x = x0 + 10; x < x1 - 30; x += 54) { const b = top(x + 20) + 90; ctx.beginPath(); ctx.moveTo(x, b); ctx.lineTo(x, b - 30); ctx.arc(x + 18, b - 30, 18, Math.PI, 0); ctx.lineTo(x + 36, b); ctx.fill(); }
+  // water channel on top
+  ctx.strokeStyle = C.ice; ctx.lineWidth = 14; ctx.beginPath(); ctx.moveTo(x0, top(x0) - 8); ctx.lineTo(x1, top(x1) - 8); ctx.stroke();
+  for (let i = 0; i < 24; i++) { const v = ((t * 0.12) + i / 24) % 1; const x = lerp(x0, x1, v); ctx.fillStyle = '#FFFFFF'; ctx.beginPath(); ctx.arc(x, top(x) - 8, 5, 0, 7); ctx.fill(); }
+  // level line and the drop marker
+  ctx.setLineDash([12, 10]); ctx.strokeStyle = hexA(C.cream, 0.6); ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x0, top(x0) - 8); ctx.lineTo(x1 + 20, top(x0) - 8); ctx.stroke(); ctx.setLineDash([]);
+  if (u > 0.05) { arrow(ctx, x1 + 40, top(x0) - 8, x1 + 40, top(x1) - 8, { color: C.yellow, w: 5 });
+    text(ctx, '1 INCH', x1 + 40, top(x0) - 40, { size: 54, font: F.head, align: 'center', color: C.yellow, alpha: u }); }
+  text(ctx, '← ABOUT 1,500 FT (~456 M) →', W / 2, yb + 120, { size: 40, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.4) });
+  text(ctx, 'TILT EXAGGERATED: THE REAL SLOPE IS INVISIBLE TO THE EYE', W / 2, H - 60, { size: 30, font: F.bold, align: 'center', color: C.iceL, alpha: fade(t, 1.6) });
+  text(ctx, 'DIAGRAM · NOT TO SCALE', 48, 60, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
+}
+module.exports = { inch, slope, video, photo, overlays, title, chapter, stats, calendar, split, bars, thermo, ratio, myth, versus, endq, endscreen, sat, globe, pop, fade, fadeOut };

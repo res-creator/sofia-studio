@@ -2,13 +2,10 @@ R001 0.958 replace: nineteen -> 19
 R002 1.000 
 R003 1.000 
 R004 1.000 
-R005 1.000 
-R006 0.727 replace: three hundred and twelve -> 312 | replace: appius -> apius | replace: appia -> pia
-R007 0.917 replace: third -> 3rd | replace: eleven -> 11
-R008 0.918 replace: aqua marcia -> aquamarsa | replace: fifty -> 50
+R005 0.873 replace: fifty -> 50 | replace: three hundred and twelve -> 312 | replace: eleven -> 11
 R009 1.000 
 R010 1.000 
-R011 0.863 replace: nimes -> n mes | replace: thirty -> 30 | replace: forty -> 40
+R011 0.920 replace: thirty -> 30 | replace: forty -> 40
 R012 0.806 replace: pont du gard -> pondougar | replace: a hundred and sixty -> 160 | replace: fifteen hundred -> 1500
 R012B 1.000 
 R013 0.931 replace: chorobates -> carabates | replace: sighting -> siding
@@ -20,7 +17,6 @@ R018 1.000
 R019 1.000 
 R020 1.000 
 R020B 0.946 replace: caracalla -> curacalla | replace: gardens -> garins
-R021 0.976 replace: sixth -> 6th
 R022 1.000 
 R023 0.951 replace: ninety seven -> 97
 R024 1.000 

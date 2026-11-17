@@ -1,6 +1,6 @@
 # EP08 upload kit — How It's Run
 
-**File:** `rome_how_ancient_rome_got_its_water.mp4` (1920×1080, 30 fps, ~7:27, −14 LUFS)
+**File:** `rome_how_ancient_rome_got_its_water.mp4` (1920×1080, 30 fps, ~6:45, −14 LUFS)
 **Thumbnail:** made by the owner from the prompts below (AI image generator), 1280×720. Test two in YouTube "Test & compare".
 **Subtitles:** `rome_subtitles_en.srt` (English). YouTube auto-translates captions for viewers.
 **Altered or synthetic content:** the narration is a synthetic (AI) voice that does not imitate a real person, so "No" is allowed; "Yes" is also safe. Footage and photos are real (Wikimedia Commons / Pixabay / Coverr); one short clip is a labelled CGI animation of Roman Cologne (Terra X / ZDF, CC BY-SA 4.0); the slope diagrams are our own animation.
@@ -23,12 +23,12 @@ How did ancient Rome bring fresh water to around a million people with no pumps?
 Chapters
 0:00 Water from 19 BC, still running
 0:29 A city that outgrew its river
-1:13 1. Downhill all the way
-2:58 2. Free water for everyone
-4:00 3. The water thieves
-4:43 4. The day the water stopped
-6:06 5. Built to last
-6:30 The answer
+0:50 1. Downhill all the way
+2:35 2. Free water for everyone
+3:24 3. The water thieves
+4:07 4. The day the water stopped
+5:29 5. Built to last
+5:53 The answer
 
 Main sources
 - Frontinus, De aquaeductu (LacusCurtius); Vitruvius, De architectura VIII
@@ -49,11 +49,11 @@ roman aqueducts, how roman aqueducts worked, roman aqueduct construction techniq
 Paste `SOURCES.md` (the numbered list) + `CREDITS.md`.
 
 ## Thumbnail prompts (16:9, 1280×720) — run A vs B in "Test & compare"
-**A — the coin and the ancient channel (main):**
+**A — the coin (main, pairs with the Trevi title):**
 ```
-Photorealistic YouTube thumbnail, 16:9. The Trevi Fountain in Rome at night, warm floodlit statues, turquoise water. In the foreground a single coin in sharp focus mid-air above the water. Below the water line, a cut-away view of a glowing ancient stone tunnel with clear water flowing toward the fountain. Big bold yellow text, max 3 words: "FROM 19 BC". Very high contrast, simple composition readable at small size, no logos, no watermarks.
+Photorealistic YouTube thumbnail, 16:9. The Trevi Fountain in Rome at night, warm floodlit statues, turquoise water. In the foreground a single coin in sharp focus mid-air above the water. Big bold yellow text, max 2 words: "STILL RUNNING". Very high contrast, simple composition readable at small size, no logos, no watermarks.
 ```
-**B — the one-inch drop:**
+**B — the one-inch drop (pair with the title "Rome Moved Rivers Without a Single Pump" if you test titles):**
 ```
 Photorealistic YouTube thumbnail, 16:9. Extreme close-up on top of the Pont du Gard Roman aqueduct: the long stone water channel running away into the distance, a bright yellow spirit level lying in it with its bubble just off center; the huge arches and the green river gorge falling away below. Big bold white text: "1 INCH DROP". Very high contrast, simple, readable at small size, no logos, no watermarks.
 ```
