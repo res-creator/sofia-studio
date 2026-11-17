@@ -296,4 +296,58 @@ function inch(ctx, t, d, p) {
   text(ctx, 'TILT EXAGGERATED: THE REAL SLOPE IS INVISIBLE TO THE EYE', W / 2, H - 60, { size: 30, font: F.bold, align: 'center', color: C.iceL, alpha: fade(t, 1.6) });
   text(ctx, 'DIAGRAM · NOT TO SCALE', 48, 60, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
 }
-module.exports = { inch, slope, video, photo, overlays, title, chapter, stats, calendar, split, bars, thermo, ratio, myth, versus, endq, endscreen, sat, globe, pop, fade, fadeOut };
+
+// ---------- Mexico City: clay squeezed by pumping (sponge) ----------
+function clay(ctx, t, d, p) {
+  navyBg(ctx, t);
+  text(ctx, p.title || 'PUMP THE WATER OUT, THE CLAY SQUEEZES FLAT', W / 2, 130, { size: 52, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.1) });
+  const u = E.inOut(clamp(seg(t, p.at || 0.8, (p.at || 0.8) + (p.dur || 2.6))));
+  const x0 = 200, x1 = 1720, top0 = 420, clayH0 = 300, drop = 120 * u;
+  const clayTop = top0 + drop, clayBot = top0 + clayH0;
+  // aquifer (gravel)
+  ctx.fillStyle = '#5E5A52'; ctx.fillRect(x0, clayBot, x1 - x0, 230);
+  for (let i = 0; i < 160; i++) { ctx.fillStyle = hexA('#9C978C', 0.8); ctx.beginPath(); ctx.arc(x0 + hash(i) * (x1 - x0), clayBot + 10 + hash(i + 3) * 210, 5 + hash(i + 7) * 7, 0, 7); ctx.fill(); }
+  text(ctx, 'AQUIFER: WATER IN SAND AND GRAVEL', x1 - 20, clayBot + 210, { size: 26, font: F.bold, align: 'right', color: C.cream });
+  // clay
+  const g = ctx.createLinearGradient(0, clayTop, 0, clayBot); g.addColorStop(0, '#8C6A4C'); g.addColorStop(1, '#6E523A');
+  ctx.fillStyle = g; ctx.fillRect(x0, clayTop, x1 - x0, clayBot - clayTop);
+  const nw = Math.round(90 * (1 - 0.75 * u));
+  for (let i = 0; i < nw; i++) { ctx.fillStyle = hexA('#7FB2FF', 0.85); ctx.beginPath(); ctx.ellipse(x0 + 20 + hash(i + 11) * (x1 - x0 - 40), clayTop + 12 + hash(i + 13) * (clayBot - clayTop - 24), 12, 5, 0, 0, 7); ctx.fill(); }
+  text(ctx, 'LAKE CLAY: ~70% WATER', x0 + 20, clayTop + 44, { size: 30, font: F.head, color: C.cream });
+  // city on top
+  ctx.fillStyle = C.cream; for (let i = 0; i < 14; i++) { const bx = x0 + 60 + i * 105, bh = 60 + hash(i + 21) * 110; ctx.fillRect(bx, clayTop - bh, 70, bh); }
+  // original ground line
+  ctx.setLineDash([12, 10]); ctx.strokeStyle = hexA(C.yellow, 0.9); ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x0 - 40, top0); ctx.lineTo(x1 + 40, top0); ctx.stroke(); ctx.setLineDash([]);
+  text(ctx, 'STREET LEVEL, BEFORE', x0 - 40, top0 - 14, { size: 24, font: F.bold, color: C.yellow });
+  // pump + well
+  const px = 1560; ctx.fillStyle = '#C9D3E0'; ctx.fillRect(px, clayTop - 120, 16, clayBot + 120 - clayTop + 120);
+  for (let i = 0; i < 6; i++) { const v = ((t * 0.8) + i / 6) % 1; ctx.fillStyle = '#7FB2FF'; ctx.beginPath(); ctx.arc(px + 8, clayBot + 110 - v * (clayBot + 230 - clayTop), 6, 0, 7); ctx.fill(); }
+  text(ctx, 'WELLS', px + 8, clayTop - 140, { size: 30, font: F.head, align: 'center', color: C.iceL });
+  if (u > 0.1) { arrow(ctx, x1 + 60, top0, x1 + 60, clayTop, { color: C.yellow, w: 5 }); text(ctx, 'SINKS', x1 + 60, clayTop + 40, { size: 30, font: F.head, align: 'center', color: C.yellow, alpha: u }); }
+  text(ctx, 'DIAGRAM · NOT TO SCALE', 48, 60, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
+}
+// ---------- Mexico City: falling below the old lake level, 1910 -> 1959 ----------
+function lakelevel(ctx, t, d, p) {
+  navyBg(ctx, t);
+  const u = E.inOut(clamp(seg(t, 0.8, 3.2)));
+  const yr = Math.round(lerp(1910, 1959, u));
+  text(ctx, 'THE CITY CENTER VS. THE OLD LAKE LEVEL', W / 2, 130, { size: 52, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.1) });
+  text(ctx, String(yr), W / 2, 230, { size: 90, font: F.head, align: 'center', color: C.yellow });
+  const scale = 52, lakeY = 520; // px per meter
+  const rel = lerp(1.9, -5.5, u); const groundY = lakeY - rel * scale;
+  // lake level line (where the lake surface stood)
+  ctx.fillStyle = hexA(C.ice, 0.25); ctx.fillRect(0, lakeY, 560, H - lakeY);
+  ctx.strokeStyle = C.ice; ctx.lineWidth = 6; ctx.setLineDash([18, 12]); ctx.beginPath(); ctx.moveTo(0, lakeY); ctx.lineTo(W, lakeY); ctx.stroke(); ctx.setLineDash([]);
+  text(ctx, 'LAKE TEXCOCO LEVEL', 40, lakeY - 16, { size: 30, font: F.head, color: C.iceL });
+  // city block
+  ctx.fillStyle = '#6E5A3E'; ctx.fillRect(700, groundY, 1220, H - groundY);
+  ctx.fillStyle = C.cream; for (let i = 0; i < 10; i++) { const bx = 740 + i * 115, bh = 70 + hash(i + 5) * 120; ctx.fillRect(bx, groundY - bh, 80, bh); }
+  text(ctx, 'CITY CENTER', 1310, groundY + 50, { size: 34, font: F.head, align: 'center', color: C.cream });
+  // dimension
+  const lab = (rel >= 0 ? '+' : '−') + Math.abs(rel).toFixed(1) + ' M';
+  arrow(ctx, 640, lakeY, 640, groundY, { color: C.yellow, w: 5 });
+  text(ctx, lab, 620, (lakeY + groundY) / 2 + 20, { size: 60, font: F.head, align: 'right', color: C.yellow });
+  if (u > 0.98) text(ctx, 'THE CITY SANK BELOW ITS OWN LAKE', W / 2, 330, { size: 40, font: F.head, align: 'center', color: C.yellow, alpha: fade(t, 3.3) });
+  text(ctx, 'Source: SACMEX, "El gran reto del agua en la Ciudad de México"', W - 40, H - 20, { size: 20, font: F.reg, align: 'right', color: 'rgba(255,255,255,0.55)' });
+}
+module.exports = { clay, lakelevel, inch, slope, video, photo, overlays, title, chapter, stats, calendar, split, bars, thermo, ratio, myth, versus, endq, endscreen, sat, globe, pop, fade, fadeOut };
