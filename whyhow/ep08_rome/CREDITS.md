@@ -1,0 +1,111 @@
+# EP08 credits — paste into the YouTube description / pinned comment.
+
+Photos and video (Wikimedia Commons):
+- Coin- Fontana the Trevi — Joris, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ACoin-_Fontana_the_Trevi.JPG
+- How did Roman Aqueducts work — Ancient Rome Live, CC BY 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AHow_did_Roman_Aqueducts_work.webm
+- 99 04 aniene a subiaco — Lalupa, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3A99_04_aniene_a_subiaco.jpg
+- Cole Thomas Aqueduct near Rome 1832 — Thomas Cole, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ACole_Thomas_Aqueduct_near_Rome_1832.jpg
+- Parco degli Acquedotti, Roma — Dariosolarino, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AParco_degli_Acquedotti%2C_Roma.jpg
+- The Mouth of the Cloaca Maxima (I) (4924744246) — Unknown, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AThe_Mouth_of_the_Cloaca_Maxima_%28I%29_%284924744246%29.jpg
+- Forum Boarium - inondation 1900 — AnonymousUnknown, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AForum_Boarium_-_inondation_1900.jpg
+- Aqua appia planlatium — ? / Coldeel, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAqua_appia_planlatium.jpg
+- Rome - Old Appian Way (2925966038) — Roger Wollstadt, CC BY-SA 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ARome_-_Old_Appian_Way_%282925966038%29.jpg
+- Rome, via Appia Antica - WMI-mAppiaM 2016 - g2494 06 — Gianfranco, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ARome%2C_via_Appia_Antica_-_WMI-mAppiaM_2016_-_g2494_06.jpg
+- Alto Aniene a Subiaco — RobValmo, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAlto_Aniene_a_Subiaco.jpg
+- Aqua Anio Novus (5) — Andrawaag, CC BY 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAqua_Anio_Novus_%285%29.jpg
+- Francis Towne - The Claudian Aquaduct, Rome - Google Art Project — Francis Towne, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AFrancis_Towne_-_The_Claudian_Aquaduct%2C_Rome_-_Google_Art_Project.jpg
+- Castellum Divisorium (Nîmes)05 — Finoskov, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ACastellum_Divisorium_%28N%C3%AEmes%2905.jpg
+- F30 - Aqueduc de Nîmes à Uzès 4 — Marianne Casamance, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AF30_-_Aqueduc_de_N%C3%AEmes_%C3%A0_Uz%C3%A8s_4.jpg
+- 1013 Pont du Gard Photo by Giles Laurent — Giles Laurent, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3A1013_Pont_du_Gard_Photo_by_Giles_Laurent.jpg
+- Pont du Gard 27 — Victorgrigas, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3APont_du_Gard_27.jpg
+- Pont du Gard 24 — Victorgrigas, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3APont_du_Gard_24.jpg
+- Pont du Gard arch underside — I, BrokenSphere, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3APont_du_Gard_arch_underside.JPG
+- Real Chorobates, Isaac Moreno Gallo — Albers mayoral, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AReal_Chorobates%2C_Isaac_Moreno_Gallo.jpg
+- Parc dels Aqüeductes (Parco degli Acquedotti) — Chixoy, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AParc_dels_Aq%C3%BCeductes_%28Parco_degli_Acquedotti%29.jpg
+- Acquedottoclaudio1 — Unknown, CC BY-SA 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAcquedottoclaudio1.jpg
+- Aqua Marcia (Rome), Eremo di San Benedetto. Vicovaro 2 — Rjdeadly, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAqua_Marcia_%28Rome%29%2C_Eremo_di_San_Benedetto._Vicovaro_2.png
+- Parco degli Acquedotti 2013 -1 — Σπάρτακος, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AParco_degli_Acquedotti_2013_-1.JPG
+- F30 - Aqueduc de Nîmes à Uzès 11 — Marianne Casamance, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AF30_-_Aqueduc_de_N%C3%AEmes_%C3%A0_Uz%C3%A8s_11.jpg
+- Aqueduc de Beaunant — CHABERT Louis, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAqueduc_de_Beaunant.jpg
+- Penhouët 1818 - Siphons renversés de l'Aqueduc du Mont-Pila — Armand de Penhoüet, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3APenhou%C3%ABt_1818_-_Siphons_renvers%C3%A9s_de_l%27Aqueduc_du_Mont-Pila.jpg
+- Aqueduc de Beaunant vue générale — Drong~commonswiki, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAqueduc_de_Beaunant_vue_g%C3%A9n%C3%A9rale.jpg
+- 120612-Barbegal-01 — BlueBreezeWiki, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3A120612-Barbegal-01.jpg
+- Barbegal - Meunerie romaine - ruines 02 — MOSSOT, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ABarbegal_-_Meunerie_romaine_-_ruines_02.jpg
+- Model of the Barbegal mill, Musée de l'Arles antique (15022060149) — Carole Raddato, CC BY-SA 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AModel_of_the_Barbegal_mill%2C_Mus%C3%A9e_de_l%27Arles_antique_%2815022060149%29.jpg
+- Barbegal - Meunerie romaine - ruines 01 — MOSSOT, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ABarbegal_-_Meunerie_romaine_-_ruines_01.jpg
+- Wasserversorgung in Köln zu Zeiten des Römischen Reichs — ZDF/Terra X/Gruppe 5, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Wasserversorgung_in_K%C3%B6ln_zu_Zeiten_des_R%C3%B6mischen_Reichs.webm
+- Drinking fountain in Via Tommaso da Celano, Rome, Italy Dec 10, 2023 03-14-55 PM — Dieterdreist, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ADrinking_fountain_in_Via_Tommaso_da_Celano%2C_Rome%2C_Italy_Dec_10%2C_2023_03-14-55_PM.jpeg
+- Vrouw met een zinken teil bij een waterpomp in een straatje, Bestanddeelnr 254-5538 — Willem van de Poll, CC0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AVrouw_met_een_zinken_teil_bij_een_waterpomp_in_een_straatje%2C_Bestanddeelnr_254-5538.jpg
+- Cloaka Maxima at Forum Romanum — Chris 73 / Wikimedia Commons, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ACloaka_Maxima_at_Forum_Romanum.jpg
+- Ostia Antica Latrine — AlMare, CC BY-SA 2.5, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AOstia_Antica_Latrine.jpg
+- Efeso, latrina 01 — Sailko, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AEfeso%2C_latrina_01.JPG
+- Caseggiato dei Triclini Ostia Antica 2006-09-08 n3 — Marie-Lan Nguyen, CC BY 2.5, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ACaseggiato_dei_Triclini_Ostia_Antica_2006-09-08_n3.jpg
+- 028 Caracalla Thermen Rom — Edelmauswaldgeist, CC0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3A028_Caracalla_Thermen_Rom.jpg
+- Caracalla - sotterranei 9280060 — Lalupa, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ACaracalla_-_sotterranei_9280060.JPG
+- RomaCloacaMaximaPercorso — DieBuche, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ARomaCloacaMaximaPercorso.png
+- Piranesi-16060 — Giovanni Battista Piranesi, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3APiranesi-16060.jpg
+- Cloaka Maxima outside closeup 1 — Chris 73, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ACloaka_Maxima_outside_closeup_1.jpg
+- Sextus Iulius Frontinus 1788 (cropped) — UnknownUnknown, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ASextus_Iulius_Frontinus_1788_%28cropped%29.jpg
+- Vitrvvivs itervm et Frontinvs 1513 (114991564) — National Library of Poland, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AVitrvvivs_itervm_et_Frontinvs_1513_%28114991564%29.jpg
+- Aqua Marcia 01 — Chris 73, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAqua_Marcia_01.jpg
+- Parco acquedotti pasquetta — Sara Botti, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AParco_acquedotti_pasquetta.jpg
+- 2s5v4n- Fistule, segmenti di condotto idrico in piombo, da Tivoli, I sec. d.C. -FG — Fabrizio Garrisi, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3A2s5v4n-_Fistule%2C_segmenti_di_condotto_idrico_in_piombo%2C_da_Tivoli%2C_I_sec._d.C._-FG.jpg
+- Inscripted lead pipe (Ancient Roman) - Museo Nazionale di Ravenna - Ravenna 2016 — José Luiz, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AInscripted_lead_pipe_%28Ancient_Roman%29_-_Museo_Nazionale_di_Ravenna_-_Ravenna_2016.jpg
+- MBA Lyon Exposition Claude - Conduite d'eau au nom de l'empereur Claude — Lyokoï, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AMBA_Lyon_Exposition_Claude_-_Conduite_d%27eau_au_nom_de_l%27empereur_Claude.jpg
+- Cippus of the Aqua Marcia, Aqua Tepula, and Aqua Julia (Rome, MC NCE 73; CIL VI 1248 = 315 — Mark Landon / Wikimedia Commons, CC BY 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ACippus_of_the_Aqua_Marcia%2C_Aqua_Tepula%2C_and_Aqua_Julia_%28Rome%2C_MC_NCE_73%3B_CIL_VI_1248_%3D_31559%29.jpg
+- Esquilino - Porta Maggiore - condotte 1678 — Lalupa, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AEsquilino_-_Porta_Maggiore_-_condotte_1678.JPG
+- Anderson - Roma - n. 1148 - Acquedotti - Veduta generale - Roma — James or Domenico Anderson, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAnderson_-_Roma_-_n._1148_-_Acquedotti_-_Veduta_generale_-_Roma.jpg
+- Vitige, king of the Goths, besieging the mausoleum of Hadrian in Rome in 537 (L. Pogliaghi — Lodovico Pogliaghi, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AVitige%2C_king_of_the_Goths%2C_besieging_the_mausoleum_of_Hadrian_in_Rome_in_537_%28L._Pogliaghi%29.png
+- Dictionnaire Décembre Alonnier-I-066 — UnknownUnknown, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ADictionnaire_D%C3%A9cembre_Alonnier-I-066.jpg
+- Aqua Claudia 21 — Chris 73, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAqua_Claudia_21.jpg
+- Tancredi Scarpelli - Byzantine General Belisarius defending Rome in 537-538 — Tancredi Scarpelli, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ATancredi_Scarpelli_-_Byzantine_General_Belisarius_defending_Rome_in_537-538.jpg
+- Aqua Marcia 02 — Chris 73, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAqua_Marcia_02.jpg
+- Piranesi-1027 — Giovanni Battista Piranesi, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3APiranesi-1027.jpg
+- A Claudian aqueduct. Coloured aquatint with etching by M. Du Wellcome V0020183 — Unknown, CC BY 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AA_Claudian_aqueduct._Coloured_aquatint_with_etching_by_M._Du_Wellcome_V0020183.jpg
+- Hackert, Rom von den Caracalla-Thermen aus, um 1779-80 — Jacob Philipp Hackert, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AHackert%2C_Rom_von_den_Caracalla-Thermen_aus%2C_um_1779-80.jpg
+- Cole Thomas Roman Campagna 1843 — Thomas Cole, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ACole_Thomas_Roman_Campagna_1843.jpg
+- Bords du Tibre, temple de Vesta et égout Cloaca Maxima, Rome (6481017201) — Bibliothèque de Toulouse, No restrictions, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ABords_du_Tibre%2C_temple_de_Vesta_et_%C3%A9gout_Cloaca_Maxima%2C_Rome_%286481017201%29.jpg
+- Piranesi-1040 — Giovanni Battista Piranesi, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3APiranesi-1040.jpg
+- Vussem-Aqueduct Mechernich (1) — Romaine, CC0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AVussem-Aqueduct_Mechernich_%281%29.jpg
+- Eifelwasserleitung04 — Markus Schweiß, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AEifelwasserleitung04.jpg
+- Aquaeduktenmarmor — Roll-Stone, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAquaeduktenmarmor.jpg
+- Der Festsaal im Palas der Wartburg. 01 — Holger Uwe Schmitt, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ADer_Festsaal_im_Palas_der_Wartburg._01.jpg
+- Félix-Hippolyte Lanoüe, The Aqua Claudia in the Roman Campagna, c. 1840, NGA 166129 — National Gallery of Art, CC0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AF%C3%A9lix-Hippolyte_Lano%C3%BCe%2C_The_Aqua_Claudia_in_the_Roman_Campagna%2C_c._1840%2C_NGA_166129.jpg
+- Scuola romana, medaglia di giulio III, 1553, fontana dell'aqua virgo — Sailko, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AScuola_romana%2C_medaglia_di_giulio_III%2C_1553%2C_fontana_dell%27aqua_virgo.JPG
+- Salvatore Busuttil - 8a7464b827 — Salvatore Busuttil, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ASalvatore_Busuttil_-_8a7464b827.jpg
+- Aqua virgo planrome — Coldeel, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAqua_virgo_planrome.PNG
+- Acueducto de Segovia en 2016 — Emilio J. Rodríguez Posada, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAcueducto_de_Segovia_en_2016.webm
+- Acueducto de segovia (2) — Fernando García, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAcueducto_de_segovia_%282%29.jpg
+- San Francisco water (1925) (14597290757) — Internet Archive Book Images, No restrictions, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ASan_Francisco_water_%281925%29_%2814597290757%29.jpg
+- 01 Pantheon Dome — NateBergin, CC BY 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3A01_Pantheon_Dome.jpg
+- Drinking Fountain in Piazza dei Ponziani, Roma, Italia Oct 15, 2022 12-05-13 PM — Dieterdreist, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ADrinking_Fountain_in_Piazza_dei_Ponziani%2C_Roma%2C_Italia_Oct_15%2C_2022_12-05-13_PM.jpeg
+- Aaron Sommers Throwing Coin in Trevi Fountain — Billcarson9999, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAaron_Sommers_Throwing_Coin_in_Trevi_Fountain.JPG
+- Cleaning fontana di Trevi - Foto Giovanni Dall'Orto — G.dallorto, CC BY-SA 2.5, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ACleaning_fontana_di_Trevi_-_Foto_Giovanni_Dall%27Orto.jpg
+- Fontaine d'Eure (2) — Chris06, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AFontaine_d%27Eure_%282%29.jpg
+- Aqua Marcia (Rome), Eremo di San Benedetto. Vicovaro 1 — Rjdeadly, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAqua_Marcia_%28Rome%29%2C_Eremo_di_San_Benedetto._Vicovaro_1.png
+- Alba-la-romaine fistula MAttMrcell purified — Qhloé, CC0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAlba-la-romaine_fistula_MAttMrcell_purified.jpg
+- Pillement Aqua Julia — Jean-Baptiste Pillement, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3APillement_Aqua_Julia.jpg
+
+Stock video and photos (Pixabay Content License / Coverr license, free for commercial use):
+- Video by fabionegozio from Pixabay — https://pixabay.com/videos/id-111605/
+- Video by ghasoub from Pixabay — https://pixabay.com/videos/id-127669/
+- Image by DomyD from Pixabay — https://pixabay.com/photos/italy-rome-roman-forum-1633686/
+- Video by davide_giordani from Pixabay — https://pixabay.com/videos/id-149700/
+- Video by xat-ch from Pixabay — https://pixabay.com/videos/id-281603/
+- Video by criss1234 from Pixabay — https://pixabay.com/videos/id-110717/
+- Video by Mimmo95 from Pixabay — https://pixabay.com/videos/id-203001/
+- Video by furiocapozzi from Pixabay — https://pixabay.com/videos/id-122764/
+- Video by xat-ch from Pixabay — https://pixabay.com/videos/id-282557/
+- Video by xat-ch from Pixabay — https://pixabay.com/videos/id-281604/
+- Video by jameskop from Pixabay — https://pixabay.com/videos/id-145602/
+- Image by pcdazero from Pixabay — https://pixabay.com/photos/ancient-rome-caracalla-spa-rome-484702/
+- Video by seyhmuskino from Pixabay — https://pixabay.com/videos/id-286891/
+- Image by WikiImages from Pixabay — https://pixabay.com/photos/trevi-fountain-fountain-63052/
+- Image by jillmackie from Pixabay — https://pixabay.com/photos/pantheon-rome-italy-architecture-293074/
+- Image by cadop from Pixabay — https://pixabay.com/photos/pantheon-rome-architecture-italy-3547892/
+- Video by GIUSEPPE-DE-BERGOLIS from Pixabay — https://pixabay.com/videos/id-175405/
+- Video by xat-ch from Pixabay — https://pixabay.com/videos/id-282556/
+- Image by user32212 from Pixabay — https://pixabay.com/photos/trevi-fountain-water-blue-rome-1921697/
+
+Diagrams, maps, charts and animation: How It's Run (own work). 
+Music and sound: own synthesis. Voice: synthetic (Kokoro TTS), script by How It's Run.

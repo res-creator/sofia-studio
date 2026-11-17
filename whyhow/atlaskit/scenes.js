@@ -223,4 +223,46 @@ function sat(ctx, t, d, p) {
   else kenBurns(ctx, img, t, d, p.kb); ctx.restore();
   if (p.dark) darken(ctx, p.dark); vignette(ctx, 0.45); overlays(ctx, t, d, p); if (p.credit) credit(ctx, p.credit);
 }
-module.exports = { video, photo, overlays, title, chapter, stats, calendar, split, bars, thermo, ratio, myth, versus, endq, endscreen, sat, globe, pop, fade, fadeOut };
+
+// ---------- aqueduct profile: spring -> tunnel -> arches -> (siphon) -> city ----------
+function slope(ctx, t, d, p) {
+  navyBg(ctx, t);
+  if (p.title) text(ctx, p.title, W / 2, 140, { size: 56, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.1) });
+  if (p.sub) text(ctx, p.sub, W / 2, 196, { size: 30, font: F.bold, align: 'center', color: C.iceL, alpha: fade(t, 0.3) });
+  const TP = [[120, 430], [260, 432], [380, 380], [520, 300], [660, 370], [760, 500], [850, 690], [950, 720], [1040, 620], [1120, 470], [1200, 400], [1290, 470], [1370, 640], [1455, 860], [1545, 700], [1610, 565], [1800, 565]];
+  const ty = x => { for (let i = 1; i < TP.length; i++) if (x <= TP[i][0]) { const a = TP[i - 1], b = TP[i]; const u = (x - a[0]) / (b[0] - a[0]); return lerp(a[1], b[1], 0.5 - Math.cos(Math.PI * u) / 2); } return TP[TP.length - 1][1]; };
+  const ly = x => 425 + (x - 200) * 95 / 1520; // the channel: a gentle, steady drop
+  // ground
+  ctx.save(); ctx.beginPath(); ctx.moveTo(0, H); ctx.lineTo(0, ty(120)); for (let x = 120; x <= 1800; x += 6) ctx.lineTo(x, ty(x)); ctx.lineTo(W, ty(1800)); ctx.lineTo(W, H); ctx.closePath();
+  const g = ctx.createLinearGradient(0, 300, 0, H); g.addColorStop(0, '#6E5A3E'); g.addColorStop(1, '#3A2E20'); ctx.fillStyle = g; ctx.fill();
+  ctx.strokeStyle = '#8FB36A'; ctx.lineWidth = 6; ctx.beginPath(); for (let x = 120; x <= 1800; x += 6) (x === 120 ? ctx.moveTo(x, ty(x)) : ctx.lineTo(x, ty(x))); ctx.stroke(); ctx.restore();
+  const x0 = 200, x1 = 1720; const rev = E.out(clamp(seg(t, 0.3, 0.3 + (p.dur || 3.2)))); const xr = lerp(x0, x1, rev);
+  const siph = !!p.siphon, sA = 1372, sB = 1545;
+  const hl = p.hl || '';
+  const col = k => (hl && hl === k ? C.yellow : C.iceL);
+  // arches where the channel is above ground
+  ctx.save(); ctx.beginPath(); ctx.rect(0, 0, xr, H); ctx.clip();
+  for (let x = x0; x < x1; x += 40) { const top = ly(x) + 8, gr = Math.min(ty(x), ty(x + 40)); if (gr - top < 18) continue; if (siph && x > sA - 30 && x < sB) continue;
+    const c = hexA(col('arches'), 0.9); ctx.fillStyle = c; ctx.fillRect(x - 4, top, 9, ty(x) - top); ctx.fillRect(x + 36, top, 9, ty(x + 40) - top);
+    ctx.strokeStyle = c; ctx.lineWidth = 6; for (let y = top; y < gr - 30; y += 110) { ctx.beginPath(); ctx.moveTo(x, y + 4); ctx.lineTo(x + 40, y + 4); ctx.stroke(); ctx.beginPath(); ctx.arc(x + 20, y + 24, 20, Math.PI, 0); ctx.stroke(); } }
+  // channel line: solid above ground, dashed underground
+  for (let x = x0; x < Math.min(xr, x1); x += 8) { if (siph && x > sA && x < sB) continue; const under = ty(x) < ly(x) - 4;
+    ctx.strokeStyle = under ? col('tunnel') : C.ice; ctx.lineWidth = under ? 8 : 12; ctx.setLineDash(under ? [14, 10] : []); ctx.beginPath(); ctx.moveTo(x, ly(x)); ctx.lineTo(x + 8, ly(x + 8)); ctx.stroke(); }
+  ctx.setLineDash([]);
+  if (siph && xr > sA) { const u = clamp((xr - sA) / (sB - sA)); ctx.strokeStyle = col('siphon'); ctx.lineWidth = 12; ctx.beginPath(); ctx.moveTo(sA, ly(sA));
+    const n = 40; for (let i = 1; i <= n * u; i++) { const x = lerp(sA, sB, i / n); const y = Math.min(ly(x) + 40 + 400 * Math.sin(Math.PI * i / n), ty(x) - 18); ctx.lineTo(x, y); } ctx.stroke();
+    ctx.fillStyle = C.cream; for (const x of [sA, sB]) { rr(ctx, x - 22, ly(x) - 26, 44, 40, 4); ctx.fill(); } }
+  // flowing water dots
+  if (rev > 0.98) for (let i = 0; i < 26; i++) { const u = ((t * 0.09) + i / 26) % 1; const x = lerp(x0, x1, u); if (siph && x > sA && x < sB) continue; ctx.fillStyle = hexA('#FFFFFF', 0.85); ctx.beginPath(); ctx.arc(x, ly(x), 5, 0, 7); ctx.fill(); }
+  ctx.restore();
+  // spring + city
+  ctx.fillStyle = C.ice; ctx.beginPath(); ctx.ellipse(x0, ly(x0) + 8, 40, 14, 0, 0, 7); ctx.fill();
+  text(ctx, 'SPRING', x0, ly(x0) - 40, { size: 38, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.3) });
+  if (rev > 0.95) { ctx.fillStyle = C.cream; for (let i = 0; i < 5; i++) { const bx = 1655 + i * 34, bh = 50 + hash(i + 7) * 60; ctx.globalAlpha = fade(t, 0.3 + (p.dur || 3.2)); ctx.fillRect(bx, 565 - bh, 28, bh); } ctx.globalAlpha = 1;
+    text(ctx, 'CITY', 1730, 440, { size: 38, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.3 + (p.dur || 3.2)) }); }
+  const lab = (k, s, x, y, at) => { if (xr < x) return; const big = hl === k; chip(ctx, s, x, y, { size: big ? 40 : 30, align: 'center', bg: big ? C.yellow : hexA(C.navy3, 0.95), color: big ? C.ink : C.cream, alpha: fade(t, at || 0) }); };
+  if (p.labels !== false) { lab('tunnel', 'TUNNEL', 520, 250); lab('arches', 'ARCHES', 950, 800); lab('tunnel', 'TUNNEL', 1200, 360); if (siph) lab('siphon', 'INVERTED SIPHON', 1458, 950); else lab('arches', 'ARCHES', 1458, 950); }
+  if (p.tag) text(ctx, p.tag, W / 2, H - 70, { size: 34, font: F.bold, align: 'center', color: C.yellow, alpha: fade(t, p.tagAt || 2.5) });
+  text(ctx, 'DIAGRAM · NOT TO SCALE', 48, 60, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
+}
+module.exports = { slope, video, photo, overlays, title, chapter, stats, calendar, split, bars, thermo, ratio, myth, versus, endq, endscreen, sat, globe, pop, fade, fadeOut };
