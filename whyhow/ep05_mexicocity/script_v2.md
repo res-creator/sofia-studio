@@ -1,6 +1,6 @@
 # EP05 v2 — The City That Sank Below Its Own Lake (Mexico City)
 
-Format: How It's Run, English, voice am_puck speed 1.08 (~190 wpm), target ~7 min (~1,300 spoken words). Mostly real Mexico City footage/photos (EP05 library + new), cut every 2–4 s.
+Format: How It's Run, English, voice am_puck speed 1.08 (~190 wpm), target ~5:45 (~1,050 spoken words). Mostly real Mexico City footage/photos (EP05 library + new), cut every 2–4 s.
 Numbers in [brackets] point to SOURCES_v2.md. v2.1 = after critic script review.
 Rules applied:
 - payoff + conflict in the first 20 s;
@@ -53,7 +53,7 @@ Rules applied:
 
 **X011** By then, the city was already drinking from hundreds of wells, sunk straight into the old lakebed. [26]
 
-**X012** In nineteen twenty-five, an engineer named Roberto Gayol compared new measurements with ones taken almost fifty years earlier. The city center had dropped. He warned that the city was sinking. Few people listened. [26]
+**X012** In nineteen twenty-five, an engineer named Roberto Gayol compared new measurements with ones taken almost fifty years earlier. The city center had dropped. He warned that the city was sinking. It took more than twenty years for anyone to prove why. In nineteen forty-seven, engineer Nabor Carrillo showed that the pumping was squeezing the clay. [26]
 
 ---
 
@@ -63,7 +63,7 @@ Rules applied:
 
 **X014** The Metropolitan Cathedral was already sinking while it was being built. Its builders hid it, wedging in stones and making the cornices uneven, so it would look straight. [14]
 
-**X015** By nineteen eighty-nine, one end of the cathedral was almost two and a half meters lower than the other, and cracks were spreading through it. [14]
+**X015** By nineteen eighty-nine, one end of the cathedral was almost two and a half meters lower than the other. [14]
 
 **X016** They couldn't lift the cathedral, so they lowered the high side. Workers dug thirty-two shafts, and through narrow pipes they pulled out clay, a little at a time, about one and a half million times. In five years, the high side came down by almost a meter. [15]
 
@@ -89,15 +89,15 @@ Rules applied:
 
 ## CH5 — The sinking moved out of town
 
-**X024** Back in nineteen forty, the city had banned new wells in the old center. Later, it moved its pumping out to the edges. Downtown, the sinking slowed, from up to half a meter a year to about ten centimeters. [27]
+**X024** Back in nineteen forty, the city had banned new wells in the old center. Later, it moved its pumping out to the edges. Downtown, the sinking slowed, from up to half a meter a year to ten or fifteen centimeters. [27]
 
-**X025** But the water still had to come from somewhere. So the edges started sinking faster. In Nezahualcoyotl, on the old lakebed east of the city, parts of the ground dropped about three centimeters a month. [2][27]
+**X025** But the water still had to come from somewhere. So the edges started sinking faster. In Neza, a suburb on the old lakebed east of the city, parts of the ground were dropping about three centimeters a month. [2][27]
 
-**X026** Today, about two point seven million people live in sunken bowls, where rainwater collects, and floods are worse. [3]
+**X026** Today, about two point seven million people live around the city in sunken bowls, where rainwater collects, and floods are worse. Another one and a half million live where the sinking tears open cracks in the ground. [3]
 
 ---
 
-## CH6 — Thirsty and flooded
+## CH6 — A lake city with no water
 
 **X027** And here's the paradox. A city built on a lake is running out of water.
 
@@ -121,6 +121,7 @@ Rules applied:
 
 **X033** Mexico City drained the lake it was built on, and then drank the water out of the mud. So the city fell below its own lake, and now even its sewage has to climb.
 
-**X034** And the Angel of Independence still stands at the heart of it all. Over the years, the city has added step after step at its feet, so people can keep climbing up to it. Fourteen so far. And counting. [12]
+**X034A** Which city should we explain next? Tell me in the comments.
 
-**X035** So, would you live in a city that sinks a little every day? And which city should we explain next? Tell me in the comments. This was How It's Run.
+**X034** And the Angel of Independence still stands at the heart of it all. Over the years, the city has added step after step at its feet, so people can keep climbing up to it. Fourteen so far. And counting. This was How It's Run. [12]
+
