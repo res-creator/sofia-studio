@@ -2681,3 +2681,32 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+# ---------------- "friends1" — #1millionstories, film story «Друзья» (1st person, Sonya). London. Narrator Sarah = Sonya's voice-over (4th field = English subtitle for nar lines)
+CAST.update({
+    "barista9": dict(voice="bf_alice", speed=1.15, lang="en-gb", el="pFZP5JQG7iQjIQuC4Bku"),   # London barista (Lily)
+    "colleague9": dict(voice="bm_george", speed=1.0, lang="en-gb", el="JBFqnCBsd6RMkjVDRZzb"),  # colleague Tom (George)
+})
+EP["friends1"] = dict(
+    title='«Друзья»: десять сезонов вместо курсов', rubric='film_story',
+    hook_title=[['ПЕРЕЕХАЛА В ЛОНДОН', 'd'], ['«ДРУЗЬЯ»', 'p'], ['НАУЧИЛИ МЕНЯ ЖИТЬ', 'd']],
+    lines=[
+        ('bar', 'barista9', "[very fast, cheerful] Hiya love, what can I get you, oat flat white, to have in or take away?", 'Привет, милая, что будешь — флэт уайт на овсяном, здесь или с собой?'),
+        ('hook', 'nar', 'Первый месяц в Лондоне я не понимала никого. Вообще.', "My first month in London, I didn't understand anyone. At all."),
+        ('n1', 'nar', 'Коллеги смеялись над шуткой — а я смеялась на секунду позже.', 'My colleagues laughed at a joke — and I laughed a second too late.'),
+        ('col1', 'colleague9', "[curious, friendly] What's so funny?", 'А что смешного?'),
+        ('n2', 'nar', 'Я молчала. А вечером сидела одна и стеснялась позвонить домой.', 'I said nothing. In the evening I sat alone, too ashamed to call home.'),
+        ('n3', 'nar', 'Тогда я включила «Друзей». Шесть человек в Нью-Йорке, одна кофейня, десять сезонов. Работы нет, денег нет, любовь не складывается — но у них есть друг друга.', 'Then I put on Friends. Six people in New York, one coffee shop, ten seasons. No jobs, no money, no luck in love — but they have each other.'),
+        ('n4', 'nar', 'Сериалу больше тридцати лет, а его смотрят до сих пор. Потому что в нём каждый узнаёт себя — того, кто боится остаться один.', "The show is over thirty years old and people still watch it. Because everyone sees themselves in it — the one who's afraid of being alone."),
+        ('tip1', 'tip', "How you doin'?", ''),
+        ('tip2', 'tip', 'We were on a break!', ''),
+        ('tip3', 'tip', 'Could it BE any more obvious?', ''),
+        ('n5', 'nar', 'Я ставила на паузу каждую шутку и повторяла вслух. Сезон за сезоном.', 'I paused every joke and repeated it out loud. Season after season.'),
+        ('n6', 'nar', 'Я учила не язык. Я училась смеяться вместе со всеми.', "I wasn't learning a language. I was learning to laugh with everyone else."),
+        ('n7', 'nar', 'Год спустя. То же кафе.', 'A year later. The same café.'),
+        ('col2', 'colleague9', "[out of breath] Sorry, sorry! The traffic was crazy!", 'Простите, простите! Пробки ужасные!'),
+        ('her1', 'her', "[deadpan, playful] Could you BE any later?", 'Ты мог опоздать ещё сильнее?'),
+        ('n8', 'nar', 'Секунда тишины. И все засмеялись. Это была моя первая шутка по-английски.', 'A second of silence. Then everyone laughed. My first joke in English.'),
+        ('col3', 'colleague9', "[warmly] Happy birthday, Sonya! We'll always be there for you.", 'С днём рождения, Соня! Мы всегда будем рядом.'),
+        ('n9', 'nar', '«Друзья» подарили мне английский. А потом — друзей. А тебя какой сериал спас от одиночества? Напиши в комментариях.', 'Friends gave me English. And then — friends. Which show saved you from loneliness? Tell me in the comments.'),
+    ],
+)
