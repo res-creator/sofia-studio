@@ -1,6 +1,6 @@
 # EP08 upload kit — How It's Run
 
-**File:** `rome_how_ancient_rome_got_its_water.mp4` (1920×1080, 30 fps, ~6:45, −14 LUFS)
+**File:** `rome_how_ancient_rome_got_its_water.mp4` (1920×1080, 30 fps, ~6:48, −14 LUFS)
 **Thumbnail:** made by the owner from the prompts below (AI image generator), 1280×720. Test two in YouTube "Test & compare".
 **Subtitles:** `rome_subtitles_en.srt` (English). YouTube auto-translates captions for viewers.
 **Altered or synthetic content:** the narration is a synthetic (AI) voice that does not imitate a real person, so "No" is allowed; "Yes" is also safe. Footage and photos are real (Wikimedia Commons / Pixabay / Coverr); one short clip is a labelled CGI animation of Roman Cologne (Terra X / ZDF, CC BY-SA 4.0); the slope diagrams are our own animation.
