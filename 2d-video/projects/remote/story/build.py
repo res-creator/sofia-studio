@@ -11,39 +11,32 @@ def X(ph, lead=0.12):
 T = lambda s: s
 S = []
 def add(at, k, tr=None, **p): S.append((at, dict(k=k, **p), tr))
-PEOPLE = [[200, 1000, 0.72, 0, {}], [420, 990, 0.7, 1, {}], [1150, 1000, 0.72, 2, {}], [1380, 990, 0.7, 3, {}], [1650, 1010, 0.74, 4, {}]]
-add(T(0), 'apt', h=dict(expr='tired', pose='desk', lookY=0.6))
-add(X('Соседи'), 'apt', h=dict(expr='angry', pose=[[-122, -446, -1], [122, -446, 1]], look=-1), drill=1, cam=[[0, 700, 520, 1.25], [9, 680, 520, 1.3]])
-add(X('начальник,'), 'phone', ring=1, call=1)
-add(X('сообщения'), 'phone', notes=1)
-add(X('И вы решили'), 'apt', stand=1, hx=900, hy=990, hs=1.0, pack=1, h=dict(expr='focus', pose='idle', look=0.6), cam=[[0, 960, 560, 1.15], [9, 960, 540, 1.22]])
-add(X('дальше, чем'), 'globe', lon=60, lat=30, rings=1, spin=25)
-add(X('Куда'), 'apt', h=dict(expr='worried', pose='chin', look=0.8, lookY=-0.6), q=1, cam=[[0, 820, 470, 2.0], [9, 820, 460, 2.15]])
-add(X('тайгу,'), 'nature', 'whip', set='taiga', label='тайга?')
-add(X('пустыню,'), 'nature', 'whip', set='desert', label='пустыня?')
-add(X('Антарктиду.'), 'nature', 'whip', set='antarctic', label='Антарктида?')
-add(X('И почти'), 'tri')
-add(X('Сегодня'), 'globe', lon=-10, lat=-35, pin=[3.36, -54.42], pinLabel='?', spin=3)
-add(X('А потом'), 'moon', label='не на Земле?')
-add(X('Берите'), 'apt', stand=1, hx=960, hy=990, hs=1.0, pack=1, h=dict(expr='smile', pose='shrug', look=0.2), cam=[[0, 960, 600, 1.1], [9, 960, 580, 1.2]])
-add(T(34.45), 'title', 'dip')
-add(T(37.6), 'card', text='Остров на краю карты')
-SA = [-75, -60, 45, 5]
-add(X('Начнём'), 'map', 'fade', view=SA, labels=[['Африка', 22, -6, 70], ['Южная Америка', -57, -9, 60]], cam=[[0, 960, 540, 1.0], [9, 960, 560, 1.06]], pins=[['tristan', 1.0, 'Тристан-да-Кунья', {'ring': True}]])
-add(X('Посреди'), 'map', view=[-45, -50, 25, -15], labels=[['Южная Атлантика', -14, -30, 70, '#2f5a7a']], pins=[['tristan', 0.1, 'Тристан-да-Кунья', {'ring': True}]])
-add(X('Аэропорта'), 'island', 'push', noRunway=0.3)
-add(X('Сюда'), 'sea', days=1)
-add(X('Если,'), 'sea', 'whip', storm=1)
-add(X('До соседнего'), 'map', 'push', view=[-30, -46, 14, -8], pins=[['tristan', 0.1, 'Тристан'], ['helena', 0.3, 'Святая Елена']], routes=[['tristan', 'helena', 0.6, '≈ 2 400 км']])
-add(X('Это дальше,'), 'map', 'push', view=[25, 44, 85, 66], labels=[['Россия', 62, 62, 80]], pins=[['moscow', 0.1, 'Москва'], ['omsk', 0.3, 'Омск']], routes=[['moscow', 'omsk', 0.5, '2 235 км']])
-add(X('На острове одна'), 'village', 'push', sign=1)
-add(X('И в ней'), 'village', count=0.3, people=PEOPLE, cam=[[0, 960, 600, 1.0], [9, 960, 600, 1.05]])
-add(X('И вот тут'), 'village', people=[[1150, 1000, 0.72, 2, {'pose': 'shrug', 'expr': 'smile', 'look': -1}], [1380, 990, 0.7, 3, {'pose': 'point', 'expr': 'smile', 'flip': True}], [1650, 1010, 0.74, 4, {'expr': 'smile', 'look': -1}]], hero=[500, 1010, 0.8, {'expr': 'shock', 'look': 1}])
-add(X('Сбежать'), 'village', people=[[1350, 990, 0.8, 0, {'pose': 'chin', 'look': -1, 'expr': 'smile'}], [1580, 1000, 0.82, 3, {'pose': 'hips', 'look': -1, 'expr': 'smile'}]], hero=[640, 1010, 0.85, {'expr': 'worried', 'look': 1}], egg=0.8, cam=[[0, 1000, 640, 1.25], [9, 1000, 620, 1.32]])
-add(X('Нет,'), 'village', hero=[760, 1010, 0.9, {'expr': 'tired', 'pose': [[-100, -175, 1], [30, -470, -1]]}], cross=0.15, cam=[[0, 900, 620, 1.35], [9, 900, 610, 1.42]])
-add(X('К тому'), 'map', 'push', view=[-26, -46, -2, -32], pins=[['tristan', 0.1, 'Тристан'], ['gough', 0.4, 'Гоф']], routes=[['tristan', 'gough', 0.7, '420 км', {'arc': 0.3}]])
-add(X('Там круглый'), 'station')
-add(X('Значит,'), 'map', 'push', view=[-40, -70, 40, -25], labels=[['Антарктида', 0, -67, 70, '#5a6a7a']], pins=[['tristan', 0.1, 'Тристан'], ['gough', 0.2, 'Гоф'], ['bouvet', 1.0, '?', {'ring': True, 'col': '#3a6aa8'}]])
+import sys, copy
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+SEG = json.load(open(os.path.join(P, '../../../ru_geo/remote/vo/segments_el.json')))
+CH = [s['t'] for s in SEG if s['kind'] == 'chapter']
+CH = [CH[0], CH[1] - 2.9] + [c - 2.95 for c in CH[2:]]   # титр ставим в паузу перед главой
+import board
+board.build(add, X, T, CH)
+# длинные кадры (> 5,2 с) делим: вторая часть того же кадра другим планом
+S.sort(key=lambda s: s[0]); END0 = float(cfg['duration']); out = []
+for i, (st, p, tr) in enumerate(S):
+    en = S[i + 1][0] if i + 1 < len(S) else END0; d = en - st
+    if d <= 5.6 or p['k'] in ('title', 'card', 'quote', 'tri', 'board', 'phone'): out.append((st, p, tr)); continue
+    n = 2 if d <= 8.5 else 3
+    for j in range(n):
+        q = copy.deepcopy(p)
+        if j:
+            c = (q.get('cam') or [[0, 960, 540, 1.0]])[-1]; x, y, z = c[1], c[2], c[3]
+            if q['k'] in ('map', 'globe', 'globe2', 'orbits'): q['cam'] = [[0, 960 + (90 if j == 1 else -90), 540, 1.18], [9, 960 + (60 if j == 1 else -60), 530, 1.24]]; q['k2'] = 1
+            else: q['cam'] = [[0, x + (100 if j == 1 else -100), y - 20, z * 1.25], [9, x + (70 if j == 1 else -70), y - 30, z * 1.32]]
+            for key in ('pins', 'routes'):
+                for it in q.get(key, []): it[1 if key == 'pins' else 2] = 0
+            if q.get('tag'): q['tag'] = list(q['tag']) + [None] * (4 - len(q['tag'])) if len(q['tag']) < 4 else list(q['tag']); q['tag'][3] = 0
+            for key in ('count', 'egg', 'cross', 'noRunway', 'sub', 'q'):
+                if key in q: q[key] = 0
+        out.append((st + d * j / n, q, tr if j == 0 else None))
+S = out
 END = float(cfg['duration']); S.sort(key=lambda s: s[0]); shots = []
 for i, (st, p, tr) in enumerate(S):
     en = S[i + 1][0] if i + 1 < len(S) else END; d = dict(id=f'r{i + 1:03d}', start=round(st, 3), end=round(en, 3), params=p)

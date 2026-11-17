@@ -136,6 +136,7 @@ export function fig(g, x, y, s, o, t) {
   if (mo > 0.12) { g.beginPath(); g.ellipse(mx, my, ex.o ? 16 : 22, 6 + 16 * mo, 0, 0, Math.PI * 2); fo(g, '#5a1f1c', 4); g.save(); g.clip(); el(g, mx, my + 12 * mo, 14, 8, '#d0585a', 0); g.fillStyle = '#fff'; g.fillRect(mx - 16, my - 6 - 16 * mo, 32, 9); g.restore(); }
   else { const c = ex.m * 12; g.beginPath(); g.moveTo(mx - 22, my - c * 0.3); g.quadraticCurveTo(mx, my + c, mx + 22, my - c * 0.3); g.lineWidth = 4.5; g.strokeStyle = OL; g.lineCap = 'round'; g.stroke(); }
   if (o.sweat) { const k = (t * 0.7) % 1; g.save(); g.globalAlpha = 1 - k * 0.6; g.beginPath(); const sx = 92, sy = -500 + k * 70; g.moveTo(sx, sy - 14); g.quadraticCurveTo(sx + 11, sy + 4, sx, sy + 9); g.quadraticCurveTo(sx - 11, sy + 4, sx, sy - 14); fo(g, '#bfe6ff', 3); g.restore(); }
+  if (o.hair === 'helmet') { g.beginPath(); g.arc(0, -446, 150, 0, Math.PI * 2); g.fillStyle = 'rgba(190,225,255,.22)'; g.fill(); g.lineWidth = 8; g.strokeStyle = OL; g.stroke(); g.beginPath(); g.arc(-40, -500, 70, 3.6, 4.6); g.lineWidth = 10; g.strokeStyle = 'rgba(255,255,255,.7)'; g.stroke(); bx(g, -90, -310, 180, 26, '#c8c2b4', 10, 4); }
   g.restore();
   // руки
   const P = typeof o.pose === 'string' ? POSE[o.pose] || POSE.idle : o.pose; const sh = [[-84, -318], [84, -318]];

@@ -1,7 +1,7 @@
 # Озвучка «Где дальше всего от людей»: ElevenLabs v3, голос Todd (stability 0.0), теги эмоций — прямо в SCRIPT.md ([softly] …).
 # Ключ подставляет прокси облачной сессии (заголовок xi-api-key: proxy). Один запрос за раз, пауза 3 с; готовые абзацы не перегенерируются.
 # Пишет vo/vo_el.mp3, vo/script.txt, vo/segments_el.json (время каждого абзаца и титров глав).
-import json, os, re, subprocess, sys, time
+import hashlib, json, os, re, subprocess, sys, time
 D = os.path.dirname(os.path.abspath(__file__)); J = os.path.dirname(D)
 L = open(f'{J}/SCRIPT.md').read().splitlines()
 start = next(i for i, l in enumerate(L) if l.startswith('## ХОЛОДНЫЙ СТАРТ'))
@@ -34,7 +34,7 @@ os.makedirs(f'{D}/el', exist_ok=True)
 k = 0
 for it in items:
     if it['kind'] != 'voice': continue
-    k += 1; it['file'] = f'{D}/el/e{k:03d}.wav'; raw = f'{D}/el/e{k:03d}.mp3'
+    k += 1; h = hashlib.md5(it['tts'].encode()).hexdigest()[:10]; it['file'] = f'{D}/el/h_{h}.wav'; raw = f'{D}/el/h_{h}.mp3'
     if not os.path.exists(raw): el(it['tts'], raw); print(k, len(it['tts']), flush=True)
     if not os.path.exists(it['file']): subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', raw, '-af', FX, '-ar', '48000', '-ac', '1', it['file']], check=True)
 if '--gen-only' in sys.argv: sys.exit(0)
@@ -42,12 +42,14 @@ dur = lambda p: float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries',
 seq, t, segs = [], 0.0, []
 def sil(s):
     global t; seq.append(('sil', s)); t += s
+cold = True
 for it in items:
     if it['kind'] == 'chapter':
-        if it['n'] > 1: sil(4.8 if it['n'] == 2 else 2.4)   # перед первой главой — ещё и заставка-название
+        cold = it['n'] == 1
+        if it['n'] > 1: sil(2.6 if it['n'] == 2 else 2.4)   # перед главой: титр (перед первой ещё и название)
         segs.append(dict(kind='chapter', t=round(t, 2), title=it['title']))
     else:
-        d = dur(it['file']); segs.append(dict(kind='voice', t=round(t, 2), dur=round(d, 2), text=it['text'])); seq.append(('f', it['file'])); t += d; sil(0.6)
+        d = dur(it['file']); segs.append(dict(kind='voice', t=round(t, 2), dur=round(d, 2), text=it['text'])); seq.append(('f', it['file'])); t += d; sil(0.35 if cold else 0.6)
 lst = f'{D}/concat_el.txt'
 with open(lst, 'w') as f:
     for kind, v in seq:
