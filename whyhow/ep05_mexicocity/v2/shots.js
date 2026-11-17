@@ -49,13 +49,13 @@ function build(T) {
   const Yc = '#FFC857';
   const st = (cutW, head, items, source, o = {}) => S('stats', { cutW, head, items, source, ...o });
 
-  const cnt = (w, to, o = {}) => ({ type: 'count', from: o.from != null ? o.from : to, to, w, dur: o.dur || 0.3, y: o.y || 560, size: o.size || 170, pre: o.pre, suf: o.suf, label: o.label, dec: o.dec });
+  const cnt = (w, to, o = {}) => ({ type: 'count', from: o.from != null ? o.from : to, to, w, dur: o.dur || 0.3, y: o.y || 560, size: o.size || 170, pre: o.pre, suf: o.suf, label: o.label, dec: o.dec, x: o.x });
 
   // ===== COLD OPEN =====
   beats('X001', [
     F('px_angel_column_towers_wide', { over: [head('THE ANGEL OF INDEPENDENCE', null, 200, 86), note('MEXICO CITY')] }),
     F('cm_angel_inauguration_1910_escobar', { cutW: 'nineteen', over: [low('1910: 9 STEPS', 'nine'), note('INAUGURATION, SEPTEMBER 1910')] }),
-    F('cm_angel_overcast_towers', { cutW: 'Today', kb: { z: [1.75, 1.9], x: [0.52, 0.52], y: [0.74, 0.76] }, over: [cnt('twenty-three', 23, { label: 'STEPS TODAY', y: 300 })] }),
+    F('cm_angel_overcast_towers', { cutW: 'Today', kb: { z: [1.75, 1.9], x: [0.52, 0.52], y: [0.74, 0.76] }, over: [cnt('twenty-three', 23, { label: 'STEPS TODAY', y: 330, x: 420, size: 200 })] }),
   ], { start: 0 });
   beats('X002', [
     F('cm_angel_ceremony_1955_steps', { over: [head('NOBODY BUILT IT TALLER', 'Nobody', 200, 90), note('1955')] }),
@@ -80,7 +80,6 @@ function build(T) {
     S('clay', { cutW: 'clay', at: 99, title: 'UNDER THE STREETS: OLD LAKE CLAY' }),
   ]);
   beats('X006', [
-    F('px_centro_crowd_dense_pedestrians'),
     F('cm_water_truck_cistern_fill_point', { cutW: 'About', over: [cnt('seventy', 70, { suf: '%', label: 'OF THE SUPPLY IS GROUNDWATER' }), note('WATER FILLING POINT, MEXICO CITY')] }),
   ]);
   beats('X007', [
