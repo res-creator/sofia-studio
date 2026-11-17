@@ -1,34 +1,34 @@
 # EP08 upload kit — How It's Run
 
-**File:** `rome_how_ancient_rome_got_its_water.mp4` (1920×1080, 30 fps, ~8:16, −14 LUFS)
+**File:** `rome_how_ancient_rome_got_its_water.mp4` (1920×1080, 30 fps, ~7:27, −14 LUFS)
 **Thumbnail:** made by the owner from the prompts below (AI image generator), 1280×720. Test two in YouTube "Test & compare".
 **Subtitles:** `rome_subtitles_en.srt` (English). YouTube auto-translates captions for viewers.
 **Altered or synthetic content:** the narration is a synthetic (AI) voice that does not imitate a real person, so "No" is allowed; "Yes" is also safe. Footage and photos are real (Wikimedia Commons / Pixabay / Coverr); one short clip is a labelled CGI animation of Roman Cologne (Terra X / ZDF, CC BY-SA 4.0); the slope diagrams are our own animation.
 **Playlist:** How Cities Really Work
 
 ## Title
-How Ancient Rome Got Its Water
+The Trevi Fountain Runs on 2,000-Year-Old Plumbing
 
 Alternatives (for A/B title test):
-- How Roman Aqueducts Really Worked (Without a Single Pump)
-- Rome Had Free Water 2,000 Years Ago. Then It Stopped for Almost 1,000 Years.
-- The Roman Engineering Trick That Moved Rivers With Gravity
+- Rome Moved Rivers Without a Single Pump
+- How Ancient Rome Got Its Water
+- The Day Ancient Rome's Water Was Cut Off
 
 ## Description
 ```
-Throw a coin into the Trevi Fountain and you're throwing it into water first brought to Rome in 19 BC, by an aqueduct that still runs today.
+Throw a coin into the Trevi Fountain and it lands in water that started flowing to Rome in 19 BC, from the same springs. Still running.
 
-How did a city of around a million people get fresh water day and night, with no pumps and no electricity? We look at how Roman aqueducts really worked: a channel with a slope so gentle you can't see it (the Pont du Gard drops about one inch end to end), the surprising truth that most aqueducts ran underground, inverted siphons, the 16-wheel water mill of Barbegal, free fountains, giant baths and public toilets, the water thieves Frontinus hunted down, the Gothic siege of 537 that cut the water off, the "aqueduct marble" of Cologne, Segovia's mortar-free granite bridge, MIT's discovery about self-healing Roman concrete, and Rome's 2,500 free street fountains.
+How did ancient Rome bring fresh water to around a million people with no pumps? A slope so gentle you can't see it (the Pont du Gard drops about one inch end to end), aqueducts that mostly ran underground, inverted siphons, free public fountains, giant baths, the water thieves Frontinus hunted down, the Gothic siege of 537 that switched the water off, Cologne's "aqueduct marble", the popes who brought the water back, and Rome's 2,500 free street fountains today.
 
 Chapters
 0:00 Water from 19 BC, still running
-0:35 1. A city that outgrew its river
-1:25 2. Downhill all the way
-3:23 3. Free water for everyone
-4:28 4. The water thieves
-5:22 5. The day the water stopped
-6:38 6. Built to last
-7:27 The answer
+0:29 A city that outgrew its river
+1:13 1. Downhill all the way
+2:58 2. Free water for everyone
+4:00 3. The water thieves
+4:43 4. The day the water stopped
+6:06 5. Built to last
+6:30 The answer
 
 Main sources
 - Frontinus, De aquaeductu (LacusCurtius); Vitruvius, De architectura VIII
@@ -39,7 +39,7 @@ Main sources
 - Caritas Rome (via Reuters / CNA) — Trevi coins
 Full list with links and footage credits: pinned comment.
 
-#ancientrome #romanaqueduct #engineering #howitsrun #documentary
+#ancientrome #romanaqueduct #trevifountain #howitsrun #documentary
 ```
 
 ## Tags
@@ -48,16 +48,15 @@ roman aqueducts, how roman aqueducts worked, roman aqueduct construction techniq
 ## Pinned comment
 Paste `SOURCES.md` (the numbered list) + `CREDITS.md`.
 
-## Thumbnail prompts (16:9, 1280×720)
-**A — the bridge over the gorge:**
+## Thumbnail prompts (16:9, 1280×720) — run A vs B in "Test & compare"
+**A — the coin and the ancient channel (main):**
 ```
-Photorealistic YouTube thumbnail, 16:9. The Pont du Gard Roman aqueduct bridge at golden hour over a turquoise river, a thin glowing stream of water running along the very top channel, dramatic sky. Bold white condensed text: "NO PUMPS", giant yellow "ONLY GRAVITY". High contrast, cinematic, sharp, no logos, no watermarks.
+Photorealistic YouTube thumbnail, 16:9. The Trevi Fountain in Rome at night, warm floodlit statues, turquoise water. In the foreground a single coin in sharp focus mid-air above the water. Below the water line, a cut-away view of a glowing ancient stone tunnel with clear water flowing toward the fountain. Big bold yellow text, max 3 words: "FROM 19 BC". Very high contrast, simple composition readable at small size, no logos, no watermarks.
 ```
-**B — Trevi water from 19 BC:**
+**B — the one-inch drop:**
 ```
-Photorealistic YouTube thumbnail, 16:9. Close-up of a hand tossing a coin into the turquoise water of the Trevi Fountain at night, the lit baroque statues behind, coin in sharp focus mid-air. Bold text: "THIS WATER" in white, "IS FROM 19 BC" in giant yellow. High contrast, no logos, no watermarks.
+Photorealistic YouTube thumbnail, 16:9. Extreme close-up on top of the Pont du Gard Roman aqueduct: the long stone water channel running away into the distance, a bright yellow spirit level lying in it with its bubble just off center; the huge arches and the green river gorge falling away below. Big bold white text: "1 INCH DROP". Very high contrast, simple, readable at small size, no logos, no watermarks.
 ```
-**C — the hidden tunnel (for a test):**
-```
-Photorealistic YouTube thumbnail, 16:9. Split view: on top, ruined Roman aqueduct arches across a green meadow outside Rome; below the ground, a cut-away of a lit stone tunnel with clear water flowing through it. A yellow arrow pointing down at the tunnel. Bold text: "THE ARCHES" in white, "WERE THE EXCEPTION" in giant yellow. No logos, no watermarks.
-```
+
+## End screen
+In YouTube Studio add 2 elements over the last 15 s (the boxes in the video): "Best for viewer" video + Subscribe.

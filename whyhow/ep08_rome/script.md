@@ -7,23 +7,27 @@ Numbers in [brackets] point to SOURCES.md.
 
 ---
 
-## COLD OPEN
-
-**R001** Throw a coin into the Trevi Fountain in Rome, and you're throwing it into water that was first brought to the city more than two thousand years ago, by an aqueduct built in nineteen BC. And it's still running. [1]
-
-**R002** Ancient Rome was a city of around a million people. No pumps, no electricity, no steel pipes. And yet, fresh water poured into it day and night, from springs dozens of miles away. [2]
-
-**R003** So how did the Romans do it? How do you move a river across mountains and valleys using nothing but gravity? And why did it all stop?
+v3 (after critic review): new cold open with the siege hook, open loop in R015, cut Barbegal (R016B), the Frontinus quote (R026B), the sponge line, the Appian Way line; Trevi coins moved after R031; nasoni moved to the ending.
 
 ---
 
-## CH1 — A city that outgrew its river
+## COLD OPEN
+
+**R001** Throw a coin into the Trevi Fountain, and it lands in water that started flowing to Rome in nineteen BC. Same springs. Still running. [1]
+
+**R002** Ancient Rome pulled rivers of fresh water into a city of around a million people. No pumps. Just a slope so gentle you can't even see it. [2]
+
+**R003** Then, one year, an army switched it all off. And it took Rome almost a thousand years to get its water back. So how did the water get in? And how did it stop? [10][11]
+
+---
+
+## CH1 — A city that outgrew its river (no chapter card; follows the title)
 
 **R004** Rome sits on the river Tiber. But for drinking, the Tiber was a bad idea. The city's sewers emptied into it. And it often flooded. [3]
 
 **R005** For centuries, Romans drank from the river, from wells and from local springs. But as Rome grew into the biggest city in the Mediterranean, that wasn't enough. [2]
 
-**R006** In three hundred and twelve BC, a magistrate named Appius Claudius built the first aqueduct, the Aqua Appia. It's the same man who built the famous road, the Appian Way. [2]
+**R006** In three hundred and twelve BC, a magistrate named Appius Claudius built the first aqueduct, the Aqua Appia. [2]
 
 **R007** Over the next five centuries, Rome added more and more of them. By the third century AD, eleven aqueducts carried water into the city. [2]
 
@@ -37,21 +41,19 @@ Numbers in [brackets] point to SOURCES.md.
 
 **R010** The hard part is the slope. Too steep, and the water rushes and wears the channel away. Too flat, and it stops flowing. So Roman surveyors had to plan a gentle, steady drop over dozens of miles of hills and valleys. [4]
 
-**R011** Look at the aqueduct that supplied the city of Nîmes, in southern France. Over about thirty miles, it drops only around forty feet in total. [5]
+**R011** Look at the aqueduct that supplied the city of Nimes, in southern France. Over about thirty miles, it drops only around forty feet in total. [5]
 
-**R012** And its most famous bridge, the Pont du Gard, is about a hundred and sixty feet high. Along its whole length, roughly fifteen hundred feet, the water channel on top drops by just one inch. [5]
+**R012** Its most famous bridge, the Pont du Gard, is about a hundred and sixty feet high. Along its whole length, roughly fifteen hundred feet, the water channel on top drops by just one inch. [5]
 
-**R012B** And the lower arches of the bridge were built without mortar. Huge stone blocks, some weighing several tons, simply held in place by their own weight and their perfect cut. [5]
+**R012B** The lower arches were built without mortar. Huge stone blocks, some weighing several tons, held in place by their own weight and their perfect cut. [5]
 
 **R013** Without lasers or GPS, Roman surveyors did this with simple tools: a long wooden table with a water level, called a chorobates, and a sighting cross called a groma. [4]
 
-**R014** And here's something most people get wrong. The famous arches are the exception. Most of an aqueduct runs underground, in tunnels and buried channels, following the shape of the hills. Arches were built only where the water had to cross a valley. [4]
+**R014** Here's something most people get wrong. The famous arches are the exception. Most of an aqueduct runs underground, in tunnels and buried channels, following the shape of the hills. Arches were built only where the water had to cross a valley. [4]
 
-**R015** Underground, the water stayed cool and clean, and it was safe from enemies. Workers could climb down through shafts every few hundred feet to clean the channel. [4]
+**R015** Underground, the water stayed cool and clean, and it was safe from enemies. Workers could climb down through shafts every few hundred feet to clean the channel. But one day, an enemy army would try to use these channels as a secret way into Rome. [4]
 
-**R016** And where a valley was too deep even for arches, the Romans used a trick: sealed pipes that let the water run down one side of the valley and back up the other, pushed by its own pressure. Engineers call it an inverted siphon. [4]
-
-**R016B** Some aqueducts even powered machines. Near the town of Arles, in France, water from an aqueduct ran down a hillside through sixteen water wheels, one after another, turning mills that ground grain for the region. Historians sometimes call it one of the first industrial plants in history. [16]
+**R016** Where a valley was too deep even for arches, the Romans used a trick: sealed pipes that let the water run down one side of the valley and back up the other, pushed by its own pressure. Engineers call it an inverted siphon. [4]
 
 ---
 
@@ -63,7 +65,7 @@ Numbers in [brackets] point to SOURCES.md.
 
 **R019** The fountains never had taps. The water ran all the time, day and night, and the overflow was useful too. It flushed the streets and the sewers. [6]
 
-**R020** Rome had huge public baths with hot and cold pools, and public toilets with dozens of seats side by side, where people sat and chatted. Instead of toilet paper, many used a sponge on a stick. [6]
+**R020** Rome had huge public baths with hot and cold pools, and public toilets with dozens of seats side by side, where people sat and chatted. [6]
 
 **R020B** The baths were enormous. The Baths of Caracalla, which still stand in ruins in Rome, could take more than a thousand bathers at a time, with libraries, gardens and gyms. All of it filled by aqueduct water. [6]
 
@@ -73,7 +75,7 @@ Numbers in [brackets] point to SOURCES.md.
 
 ## CH4 — The water thieves
 
-**R022** Where there's free water, there are thieves.
+**R022** Where there's free water, there are thieves. 
 
 **R023** In the year ninety-seven AD, a senator named Frontinus became Rome's water commissioner. And he wrote a whole book about how the system worked, and about what was going wrong. [8]
 
@@ -83,13 +85,11 @@ Numbers in [brackets] point to SOURCES.md.
 
 **R026** Pipes were stamped with names, so the city could see who a pipe belonged to. Frontinus started tearing out the illegal ones, and measuring how much water each aqueduct really delivered. [8]
 
-**R026B** Frontinus was proud of the system. He wrote: compare these aqueducts, with so many indispensable structures, to the idle pyramids, or the useless, though famous, works of the Greeks. [8]
-
 ---
 
 ## CH5 — The day the water stopped
 
-**R027** For more than eight hundred years, the water kept flowing. And then, it stopped.
+**R027** For more than eight hundred years, the water kept flowing. And then, it stopped. 
 
 **R028** In five thirty-seven AD, a Gothic army besieged Rome, and cut the aqueducts to take away the city's water. [10]
 
@@ -103,26 +103,26 @@ Numbers in [brackets] point to SOURCES.md.
 
 **R031** It took almost a thousand years to bring the water back. In the fourteen hundreds, popes began to restore the old Aqua Virgo. And in seventeen sixty-two, the Trevi Fountain was finished at the end of its line, as a grand monument to that water. [1][11]
 
+**R035** And the coins people throw into it today? They're collected and given to charity. Well over a million euros a year. [15]
+
 ---
 
 ## CH6 — Built to last
 
-**R032** Some Roman aqueducts didn't need to be rebuilt. In Segovia, in Spain, an aqueduct bridge of more than twenty thousand granite blocks stands without a single drop of mortar holding the stones together. It carried water into the city until the nineteen seventies. [12]
+**R032** Some Roman aqueducts never needed rebuilding. In Segovia, in Spain, an aqueduct bridge of more than twenty thousand granite blocks stands without any mortar. It carried water into the city until the nineteen seventies. [12]
 
-**R033** And Roman concrete had a secret of its own. In twenty twenty-three, scientists from MIT found that small white lumps of lime in the concrete can work like a repair kit. When a crack lets water in, the lime dissolves and fills it again. [13]
-
-**R034** Two thousand years later, Rome still gives away its water. More than two and a half thousand little street fountains, called nasoni, run day and night, and anyone can drink from them for free. [14]
-
-**R035** And the coins people throw into the Trevi Fountain? They're collected and given to charity. Well over a million euros a year. [15]
+**R033** And in twenty twenty-three, scientists at MIT found that Roman concrete can heal its own cracks, thanks to small white lumps of lime inside it. [13]
 
 ---
 
 ## ENDING
 
-**R036** So, how did ancient Rome get its water?
+**R036** So, how did ancient Rome get its water? 
 
-**R037** It found clean springs far away. It built channels that ran downhill for dozens of miles, mostly underground, with a slope so gentle you couldn't see it. It gave the water away for free, and it fought the thieves who tried to steal it.
+**R037** It found clean springs far away. It built channels that ran downhill for dozens of miles, mostly underground, with a slope so gentle you couldn't see it. It gave the water away for free, and it fought the thieves who tried to steal it. 
 
-**R038** And when the water stopped, Rome stopped too. It took the city almost a thousand years to get it back.
+**R038** And when the water stopped, Rome stopped too. It took the city almost a thousand years to get it back. 
 
-**R039** So, would you drink from a two-thousand-year-old aqueduct? And which city should we explain next? Tell me in the comments. This was How It's Run.
+**R034** And in Rome, water is still free. More than two and a half thousand little street fountains, called nasoni, run day and night. Anyone can drink from them. [14]
+
+**R039** So, would you drink from a two-thousand-year-old aqueduct? And which city should we explain next? Tell me in the comments. This was How It's Run. 

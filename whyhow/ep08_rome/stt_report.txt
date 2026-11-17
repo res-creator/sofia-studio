@@ -1,21 +1,20 @@
-R001 0.923 replace: two thousand -> 2 000 | replace: nineteen -> 19
+R001 0.958 replace: nineteen -> 19
 R002 1.000 
 R003 1.000 
 R004 1.000 
 R005 1.000 
-R006 0.807 replace: three hundred and twelve -> 312 | replace: appius -> apius | replace: appia -> pia | replace: appian -> apian
+R006 0.727 replace: three hundred and twelve -> 312 | replace: appius -> apius | replace: appia -> pia
 R007 0.917 replace: third -> 3rd | replace: eleven -> 11
 R008 0.918 replace: aqua marcia -> aquamarsa | replace: fifty -> 50
 R009 1.000 
 R010 1.000 
 R011 0.863 replace: nimes -> n mes | replace: thirty -> 30 | replace: forty -> 40
-R012 0.812 replace: pont du gard -> pondougar | replace: a hundred and sixty -> 160 | replace: fifteen hundred -> 1500
+R012 0.806 replace: pont du gard -> pondougar | replace: a hundred and sixty -> 160 | replace: fifteen hundred -> 1500
 R012B 1.000 
 R013 0.931 replace: chorobates -> carabates | replace: sighting -> siding
 R014 1.000 
 R015 1.000 
 R016 1.000 
-R016B 0.979 replace: sixteen -> 16
 R017 1.000 
 R018 1.000 
 R019 1.000 
@@ -27,7 +26,6 @@ R023 0.951 replace: ninety seven -> 97
 R024 1.000 
 R025 1.000 
 R026 1.000 
-R026B 1.000 
 R027 0.889 replace: eight hundred -> 800
 R028 0.895 replace: five thirty seven -> 537
 R028B 1.000 
@@ -35,9 +33,9 @@ R029 1.000
 R030 1.000 
 R030B 1.000 
 R031 0.921 replace: fourteen hundreds -> 1400s | replace: seventeen sixty two -> 1762
-R032 0.918 replace: twenty thousand -> 20 000 | replace: nineteen seventies -> 1970s
-R033 0.955 replace: twenty twenty three -> 2023
-R034 0.912 replace: two thousand -> 2 000 | replace: nasoni -> nizoni
+R032 0.896 replace: twenty thousand -> 20 000 | replace: nineteen seventies -> 1970s
+R033 0.920 replace: twenty twenty three -> 2023
+R034 0.964 replace: nasoni -> nizoni
 R035 1.000 
 R036 1.000 
 R037 1.000 
