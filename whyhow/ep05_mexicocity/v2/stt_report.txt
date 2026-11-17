@@ -1,0 +1,35 @@
+X001 0.885 replace: nineteen ten -> 1910 | replace: twenty three -> 23
+X002 1.000 
+X003 0.931 replace: parts -> partes | replace: forty -> 40
+X004 0.960 replace: twenty -> 20
+X005 0.952 replace: seventy percent -> 70
+X006 0.930 replace: seventy percent -> 70
+X007 1.000 
+X008 0.938 replace: nineteen ten -> 1910 | replace: nineteen fifty nine -> 1959
+X009 0.857 replace: tenochtitlan -> tainochtitlan | replace: sixteen twenty nine parts -> 1629 partes | replace: under water -> underwater
+X010 0.921 replace: nineteen hundred -> 1900 | replace: gran -> grand
+X011 0.914 replace: lakebed -> lake bed
+X012 0.855 replace: nineteen twenty five -> 1925 | replace: gayol -> gallol | replace: fifty -> 50 | replace: twenty -> 20 | replace: nineteen forty seven -> 1947 | replace: nabor -> naboor
+X013 1.000 
+X014 1.000 
+X015 0.895 replace: nineteen eighty nine -> 1989
+X016 0.968 replace: thirty two -> 32
+X017 1.000 
+X018 0.970 replace: arts -> artes
+X019 1.000 
+X020 0.883 replace: nineteen fifties -> 1950s | replace: nineteen fifty -> 1950 | replace: fifty one -> 51
+X021 0.938 replace: nineteen sixty seven -> 1967
+X022 0.788 replace: nineteen seventy five -> 1975 | replace: two hundred -> 200
+X023 0.897 replace: twenty nineteen -> 2019 | replace: sixty two -> 62
+X024 0.911 replace: nineteen forty -> 1940 | replace: ten -> 10 | replace: fifteen -> 15
+X025 0.909 replace: neza -> nessa | replace: lakebed -> lake bed | replace: parts -> partes
+X026 0.932 replace: two point seven -> 2 7
+X027 1.000 
+X028 0.913 replace: eleven hundred -> 1 100 | replace: twenty twenty four -> 2024
+X029 0.884 replace: and -> in | replace: forty percent -> 40
+X030 0.857 replace: so -> though
+X031 1.000 
+X032 0.904 replace: twenty nineteen -> 2019 | replace: seventy thousand -> 70 000
+X033 1.000 
+X034 0.977 replace: fourteen -> 14
+X034A 1.000 
