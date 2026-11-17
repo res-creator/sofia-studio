@@ -154,7 +154,6 @@ function build(T) {
   beats('R020', [
     F('px_bath_roman_baths_steam', { over: [note('ROMAN BATHS IN BATH, ENGLAND')] }),
     F('cm_ostia_antica_public_latrine_rows', { over: [low('PUBLIC TOILETS: DOZENS OF SEATS', 'toilets'), note("OSTIA, ROME'S PORT")] }),
-    F('cm_latrine_ephesus_marble_seats_water', { over: [note('EPHESUS, TURKEY')] }),
   ]);
   beats('R020B', [
     F('cm_arl_caracalla_walk_a', { over: [low('THE BATHS OF CARACALLA, ROME', 'Caracalla')] }),
@@ -174,7 +173,7 @@ function build(T) {
   beats('R024', [
     F('cm_remains_aqua_marcia'),
     F('cm_arl_aqua_claudia_pines_pan'),
-    F('cm_photograph_aqua_claudia_arches_campagna', { over: [note('OLD PHOTO: THE ROMAN CAMPAGNA')] }),
+    F('cm_long_line_aqueduct_arches_across'),
     F('cm_arl_lead_pipes_behind_grille', { over: [low('WATER WORKERS PAID TO CONNECT SECRET PIPES', 'secretly')] }),
   ]);
   beats('R025', [
