@@ -53,9 +53,9 @@ function build(T) {
 
   // ===== COLD OPEN =====
   beats('X001', [
-    F('px_angel_independence_night_drone', { over: [head('THE ANGEL OF INDEPENDENCE', null, 200, 86), note('MEXICO CITY')] }),
+    F('px_angel_column_towers_wide', { over: [head('THE ANGEL OF INDEPENDENCE', null, 200, 86), note('MEXICO CITY')] }),
     F('cm_angel_inauguration_1910_escobar', { cutW: 'nineteen', over: [low('1910: 9 STEPS', 'nine'), note('INAUGURATION, SEPTEMBER 1910')] }),
-    F('cm_angel_base_steps_today', { cutW: 'Today', over: [cnt('twenty-three', 23, { label: 'STEPS TODAY' })] }),
+    F('cm_angel_overcast_towers', { cutW: 'Today', kb: { z: [1.75, 1.9], x: [0.52, 0.52], y: [0.74, 0.76] }, over: [cnt('twenty-three', 23, { label: 'STEPS TODAY', y: 300 })] }),
   ], { start: 0 });
   beats('X002', [
     F('cm_angel_ceremony_1955_steps', { over: [head('NOBODY BUILT IT TALLER', 'Nobody', 200, 90), note('1955')] }),
@@ -63,7 +63,7 @@ function build(T) {
     F('cm_maf_angel_reforma_bus_1970s', { cutW: 'street', over: [head('THE STREET SANK AROUND IT', 'street', 200, 86, Yc), note('ARCHIVE PHOTO, c. 1970s')] }),
   ]);
   beats('X003', [
-    st('worst', 'IN THE WORST PARTS OF THE CITY', [{ pre: 'UP TO ', v: 40, from: 40, suf: ' CM', label: 'A YEAR · MORE THAN A FOOT', at: 0.3, cnt: 0.2, size: 220 }], 'Source: Cigna & Tapete 2021 (Sentinel-1 radar, 2014–2020)', { img: 'cm_nisar_subsidence_map_pia26709', dark: 0.6 }),
+    st('worst', 'IN THE WORST PARTS OF THE CITY', [{ pre: 'UP TO ', v: 40, from: 40, suf: ' CM', label: 'A YEAR · MORE THAN A FOOT', at: 0.3, cnt: 0.2, size: 220 }], 'Source: Cigna & Tapete 2021 (Sentinel-1 radar, 2014–2020)', { img: 'cm_nisar_subsidence_map_figA', dark: 0.6 }),
     F('px_drone_sunrise_haze_over_city', { cutW: 'height', over: [head('IT NEVER COMES BACK', 'never', 200, 90, Yc)] }),
   ]);
   beats('X004', [
@@ -80,7 +80,7 @@ function build(T) {
     S('clay', { cutW: 'clay', at: 99, title: 'UNDER THE STREETS: OLD LAKE CLAY' }),
   ]);
   beats('X006', [
-    F('cm_deep_well_water_gushing_2018', { over: [note('A CITY DEEP WELL, 2018')] }),
+    F('px_centro_crowd_dense_pedestrians'),
     F('cm_water_truck_cistern_fill_point', { cutW: 'About', over: [cnt('seventy', 70, { suf: '%', label: 'OF THE SUPPLY IS GROUNDWATER' }), note('WATER FILLING POINT, MEXICO CITY')] }),
   ]);
   beats('X007', [
@@ -144,7 +144,7 @@ function build(T) {
 
   // ===== CH4 =====
   chapter('X019', 3, 'Sewage that has to go uphill');
-  beats('X019', [F('px_drone_storm_clouds_over_city')]);
+  beats('X019', [F('cm_sobrevuelo_storm_torre_latino_2017')]);
   beats('X020', [
     st('four', 'BY THE 1950s', [{ v: 4, from: 4, suf: ' M', label: 'SEWERS BELOW THE CANAL THEY DRAIN INTO', at: 0.3, cnt: 0.2, size: 240 }], 'Source: SACMEX', { img: 'cm_pump_station_villa_coapa_2017', dark: 0.65 }),
     F('cm_flood_1952_boats_christensen', { cutW: 'floods', over: [note('MEXICO CITY FLOOD, 1952')] }),
@@ -154,10 +154,10 @@ function build(T) {
     F('cm_pump_station_villa_coapa_2017', { over: [low('SEWAGE PUMPED UPHILL', 'pumping'), note('SEWAGE & STORMWATER PUMPING PLANT, 2017')] }),
     F('cm_aerial_city_1962', { cutW: 'nineteen', kb: { z: [1.3, 1.15], x: [0.6, 0.5] }, over: [low('1967: GO DEEP', 'radical'), note('1960s')] }),
   ]);
-  beats('X022', [st('shafts', 'THE DEEP DRAIN, 1975', [{ v: 200, from: 200, suf: '+ M', label: 'SOME SHAFTS DEEPER THAN THIS', at: 0.3, cnt: 0.2, size: 240 }], 'Source: SACMEX', { img: 'cm_lumbrera7_rio_churubusco_works', dark: 0.78, kb: { z: [1.6, 1.7], x: [0.5, 0.5], y: [0.15, 0.15] } })]);
+  beats('X022', [st('shafts', 'THE DEEP DRAIN, 1975', [{ v: 200, from: 200, suf: '+ M', label: 'SOME SHAFTS DEEPER THAN THIS', at: 0.3, cnt: 0.2, size: 240 }], 'Source: SACMEX', {})]);
   beats('X023', [
-    F('cm_teo_tbm_officials_2019', { kb: { z: [1.9, 2.0], x: [0.6, 0.6], y: [0.12, 0.12] }, over: [note('TUNNEL-BORING MACHINE, EMISOR ORIENTE')] }),
-    F('cm_teo_tunnel_inauguration_2014', { cutW: 'sixty-two', kb: { z: [1.9, 2.0], x: [0.5, 0.5], y: [0.1, 0.1] }, over: [cnt('sixty-two', 62, { suf: ' KM', label: "THE WORLD'S LONGEST SEWAGE TUNNEL" }), note('EMISOR ORIENTE, FIRST SECTION, 2014')] }),
+    F('cm_sobrevuelo_central_abasto_2017'),
+    st('sixty-two', 'EMISOR ORIENTE, 2019', [{ v: 62, from: 62, suf: ' KM', label: "THE WORLD'S LONGEST SEWAGE TUNNEL", at: 0.3, cnt: 0.2, size: 240 }], 'Source: Guinness World Records; CONAGUA'),
   ]);
 
   // ===== CH5 =====
@@ -188,7 +188,7 @@ function build(T) {
     F('cm_pipa_water_truck_xochimilco', { cutW: 'homes', over: [note('A WATER TRUCK, MEXICO CITY')] }),
   ]);
   beats('X029', [
-    F('cm_xochimilco_pipe_over_canal', { over: [cnt('forty', 40, { pre: 'UP TO ', suf: '%', label: 'OF THE WATER NEVER REACHES A HOME' })] }),
+    st('forty', 'LEAKS AND ILLEGAL TAPS', [{ pre: 'UP TO ', v: 40, from: 40, suf: '%', label: 'OF THE WATER NEVER REACHES A HOME', at: 0.3, cnt: 0.2, size: 220 }], 'Source: SACMEX; Al Jazeera (2024)', { img: 'cm_casa_camilos_calderas_2', dark: 0.7 }),
   ]);
 
   // ===== CH7 =====
@@ -212,7 +212,7 @@ function build(T) {
   beats('X034A', [F('px_aerial_roofs_dense_neighbourhood', { in: 6, over: [head('WHICH CITY SHOULD WE EXPLAIN NEXT?', null, 200, 80)] })]);
   beats('X034', [
     F('cm_sobrevuelo_angel_night_2016'),
-    F('cm_angel_base_steps_today', { cutW: 'step', kb: { z: [1.05, 1.2] } }),
+    F('cm_angel_overcast_towers', { cutW: 'step', kb: { z: [1.6, 1.85], x: [0.52, 0.52], y: [0.74, 0.76] } }),
     F('px_angel_independence_night_drone', { in: 5, cutW: 'Fourteen', over: [head('14 STEPS SO FAR. AND COUNTING.', 'Fourteen', 200, 90, Yc)] }),
   ]);
   add(T.tl.voiceEnd + 0.4, S('endscreen', {}), 'fade');
