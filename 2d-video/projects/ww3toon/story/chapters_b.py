@@ -124,7 +124,7 @@ def build(add, X, T):
     add(X('меньше на'), S('home', [A('CITIZEN(4)', 960, 930, s=1.2, expr='sad', pose='hold', hold={'k': 'table', 'w': 300}, holdS=0.6)], [], [G('пустые тарелки', 960, 140, 'девяносто', bg='r')], setOpts=dict(night=True)))
     add(X('И по расчётам модели'), S('port', [], [P('cross', 960, 520, s=3, at='перестанут')], [G('если торговля остановится', 960, 160, 'торговать', bg='r')]))
     add(X('торговать едой'), S('ship', [], [P('cargo', 960, 800, s=0.8), P('cross', 960, 640, s=2.6, at=0.3)], []))
-    add(X('от голода'), BIG('> 5 млрд', 'человек', set='black', col='#ff5a4a', props=[]))
+    add(X('от голода'), BIG('> 5 млрд', 'человек, расчёт модели', set='black', col='#ff5a4a', props=[]))
     add(X('Не от'), ('split', dict(L=dict(set='city', props=[P('cross', 960, 520, s=3)], tags=[G('взрывы', 960, 200, 0.1, bg='r')], setOpts=dict(night=True)), R=dict(set='farm', setOpts=dict(frozen=True, snow=True), tags=[G('холод над полями', 960, 200, 'холода', bg='y')]))))
     add(X('От холода'), S('farm', [], [P('wheat', 600 + i * 180, 960, s=1.2, dead=True) for i in range(5)], [], [[0, 960, 700, 1.2], ['end', 960, 760, 1.35]], setOpts=dict(frozen=True, snow=True)))
     add(T(631.5), S('farm', [], [], [], [[0, 960, 540, 1.0], ['end', 960, 600, 1.15]], setOpts=dict(frozen=True, snow=True, dark=True)))
