@@ -239,7 +239,7 @@ function build(T) {
     F('px_jackson_square_washington_artillery'),
     F('cm_french_quarter_from_hotel_river', { cutW: 'still' }),
     F('px_rainwater_rushing_into_drain', { cutW: 'Every', over: [head('EVERY TIME IT RAINS…', 'Every', 200, 90, Yc), note('STOCK FOOTAGE')] }),
-    F('cm_west_closure_complex_discharge', { cutW: 'switches', over: [head('…THE PUMPS SWITCH ON', 'switches', 200, 90, Yc)] }),
+    F('cm_west_closure_complex_pumps_running', { cutW: 'switches', over: [head('…THE PUMPS SWITCH ON', 'switches', 200, 90, Yc)] }),
   ]);
   add(T.tl.voiceEnd + 0.4, S('endscreen', {}), 'fade');
   return out;
