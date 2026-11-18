@@ -1,0 +1,18 @@
+[
+ {
+  "start": 0.0,
+  "end": 30.34,
+  "file": "lotus.mp3",
+  "gain": -3,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 29.74,
+  "end": 103.43,
+  "file": "tea_roots.mp3",
+  "gain": -3,
+  "fadeIn": 1.0,
+  "fadeOut": 1.5
+ }
+]
