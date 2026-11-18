@@ -18,7 +18,7 @@ Rules:
 - New Orleans Is Trapped by Its Own Pumps
 - How New Orleans Survives 12 Feet Below the Sea
 
-**Thumbnail A:** A real aerial of New Orleans neighborhoods with a translucent blue band drawn ABOVE the rooftops, marking sea level. Text: "12 FT BELOW THE SEA".
+**Thumbnail A:** A real street-level or low-oblique photo of houses in eastern New Orleans (the only area 12–14 ft below), with a translucent blue band marking sea level at the correct height — about the eaves of a one-story house. Text: "12 FT BELOW THE SEA".
 **Thumbnail B:** A real photo of a giant pump inside a New Orleans drainage station. Text: "IF THESE STOP…".
 
 ---
@@ -45,6 +45,8 @@ Rules:
 
 **N008** In eighteen ninety-five, a city map put the old swamps about a foot below sea level. Those same spots are now five to seven feet below. Parts of eastern New Orleans are twelve to fourteen feet down. [2][3]
 
+**N008B** Measured from a NASA research plane, some areas were sinking up to two inches a year. [10]
+
 **N009** And that's the trap. The lower the city sinks, the harder it has to pump. And the harder it drains, the lower it sinks. [11]
 
 ---
@@ -57,9 +59,9 @@ Rules:
 
 **N012** And here's the strange part. Fifty-one of the city's hundred and twenty drainage pumps run on twenty-five hertz power. [19]
 
-**N013** That's an old standard the national grid left behind a century ago. So the city makes this power itself, and one of its turbines was installed in nineteen fifteen. [19][20]
+**N013** That's an old standard the national grid left behind long ago. So the city makes this power itself, and one of its turbines was installed in nineteen fifteen. [19][20]
 
-**N014** When the pumps fail, the city floods. In August twenty seventeen, eight to nine inches of rain fell in a few hours. No system could keep up with that. But some pumps were down. The water board first said they all worked. It wasn't true, and its director stepped down. [18][22]
+**N014** When the pumps fail, the city floods. In August twenty seventeen, eight to nine inches of rain fell in a few hours. No drainage system here could keep up with that. But some pumps were down. The water board first said they all worked. It wasn't true, and its director stepped down. [18][22]
 
 ---
 
@@ -71,7 +73,9 @@ Rules:
 
 **N017** In eighteen fifty, the Atchafalaya took less than a tenth of the river's water. By nineteen fifty, it took thirty percent. Engineers warned the Mississippi could switch within decades. [24]
 
-**N018** If it did, the river past New Orleans could turn salty. The city could lose its drinking water, much of its port, and the fresh water its chemical plants depend on. [27][28]
+**N018** If it did, the river past New Orleans could turn salty. The city could lose its drinking water, much of its port, and the fresh water its chemical plants depend on. [27]
+
+**N018B** In twenty twenty-three, we got a preview. Salt water crept up the river, and the Army Corps built an underwater wall to hold it back. [28]
 
 **N019** So in nineteen sixty-three, the Army Corps of Engineers finished the Old River Control Structure, far upriver: a set of giant floodgates with one job. Keep seventy percent of the water in the Mississippi, and let only thirty percent go. [25]
 
@@ -99,11 +103,11 @@ Rules:
 
 **N027** So why doesn't New Orleans just stop pumping?
 
-**N028** Part of the answer is under the streets. In the northeast of the city, wells stopped pumping groundwater, and the ground there has even risen a little. [8]
+**N028** There are really two kinds of pumping. One pulls groundwater out of wells. Where the city stopped that, in the northeast, the ground has even risen a little. The other kind pumps out the rain. And that one can never stop. [8]
 
 **N029** But the rain still has to go somewhere. About half the city is already below sea level. Switch off the drainage pumps, and the bowl fills up. [4][23]
 
-**N030** We know what that looks like. South of the city, a drained farm called Delta Farms lost its levee in nineteen sixty-one. Today, it's open water. [41]
+**N030** We know what that looks like. South of the city, a drained farm called Delta Farms lost its levee in nineteen sixty-one, and again in nineteen seventy-one. Today, it's open water. [41]
 
 ---
 
