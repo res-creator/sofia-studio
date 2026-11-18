@@ -39,7 +39,7 @@ Rules:
 
 **N005** The first city stood on the highest ground around: a natural ridge of river silt, today's French Quarter. Behind it lay swamp. [5]
 
-**N006** Around nineteen hundred, the city started draining that swamp with powerful new pumps, and built whole neighborhoods on the dried-out land. [1][13]
+**N006** Around nineteen hundred, the city started draining that swamp with powerful new pumps, and built whole new neighborhoods where the swamp had been. [1][13]
 
 **N007** But the swamp soil was full of peat, made of old roots and plants. Once the water was gone, air got in. The peat rotted, the soil packed down, and the ground dropped. [6]
 
@@ -65,7 +65,7 @@ Rules:
 
 **N012** And here's the strange part. Fifty-one of the city's hundred and twenty drainage pumps run on twenty-five hertz power. [19]
 
-**N013** That's an old standard the national grid left behind long ago. So the city made this power itself, with its own old turbines. One of them was installed in nineteen fifteen. It spent much of its last decade under repair, and in twenty twenty-two it stopped nineteen times. Only in December twenty twenty-five did a new power plant let the city retire it. [19][20][52]
+**N013** That's an old standard the national grid left behind long ago. So for a century, the city made this power itself, with its own old turbines. One of them was installed in nineteen fifteen. It spent much of its last decade under repair, and in twenty twenty-two it stopped nineteen times. Only in December twenty twenty-five did a new power plant let the city retire it. [19][20][52]
 
 **N014** When the pumps fail, the city floods. In August twenty seventeen, eight to nine inches of rain fell in a few hours. No drainage system here could keep up with that. But some pumps were down. The water board first said they all worked. It wasn't true, and its director stepped down. [18][22]
 
@@ -105,17 +105,19 @@ Rules:
 
 ## CH5 — Through the walls
 
-**N025** Everything so far was about keeping water out. In two thousand five, it got in. Not over the walls, but straight through them.
+**N025** Everything so far was about keeping water out. In two thousand five, it got in. Not just over the walls, but straight through them.
 
 **N025A** When Hurricane Katrina pushed its surge into the city's drainage canals, the floodwall on the 17th Street Canal gave way. The water hadn't even reached its top. [43]
 
-**N025B** In all, the system had fifty major breaches. Most came from water pouring over the top. But four were walls that failed before the water ever got there. Investigators later found what happened. The water pushed the walls away from their levees, a gap opened, and the soft ground underneath simply slid. The same thing happened on the London Avenue Canal, and on the Industrial Canal. [42][44]
+**N025B** In all, the system had fifty major breaches. Most came from water pouring over the top. But four walls failed because the ground beneath them gave way. On the 17th Street and London Avenue canals, they broke before the water ever reached the top. The water pushed the walls away from their levees, a gap opened, and the ground underneath gave out. [42][44]
 
-**N025C** About eighty percent of the city flooded, in many places more than fifteen feet deep. Most pump stations were out: their crews had evacuated, their power was gone, and thirty-four of seventy-one stations were damaged. It took about six weeks to pump the city dry. In Louisiana, at least nine hundred and eighty-six people died. [46][47][48][49]
+**N025C** About eighty percent of the city flooded, in many places more than fifteen feet deep.
+
+**N025C1** Most pump stations stopped. Power was lost, many operators had been evacuated, and thirty-four of seventy-one stations were damaged. It took about six weeks to pump the city dry. In Louisiana, more than a thousand people died. [46][47][48][49]
 
 **N025C2** Many who left never came back. Today, the city has about a quarter fewer people than in two thousand. [40]
 
-**N025D** In twenty-oh-six, the head of the Army Corps of Engineers said the Corps took responsibility. [45]
+**N025D** In twenty-oh-six, the head of the Army Corps of Engineers said the Corps took responsibility. He called it the first time the Corps had to take responsibility for a catastrophic failure. [45]
 
 **N025E** Then it built a new wall around the bowl: levees, floodwalls, a surge barrier almost two miles long, and giant gates where those canals meet the lake, with pump stations that push the rain over them. On the West Bank stands what the Corps calls the largest drainage pump station in the world. Total cost: about fourteen and a half billion dollars. [33][34][35][51]
 
@@ -137,7 +139,7 @@ Rules:
 
 ## ENDING
 
-**N031** So New Orleans pumps every drop of rain uphill, on pumps and power built a century ago. It holds a river in place with one set of floodgates, and lives inside a wall that sinks along with it.
+**N031** So New Orleans pumps every drop of rain uphill, on pumps built a century ago. It holds a river in place with one set of floodgates, and lives inside a wall that sinks along with it.
 
 **N032A** Which city should we explain next? Tell me in the comments.
 

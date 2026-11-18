@@ -1,0 +1,47 @@
+N001 1.000 
+N002 1.000 
+N003 0.873 replace: a hundred and thirty -> 130 | replace: twelve -> 12
+N004 1.000 
+N005 1.000 
+N006 0.933 replace: nineteen hundred -> 1900
+N007 1.000 
+N008 0.939 replace: eighteen ninety five -> 1895 | replace: twenty -> 20
+N008A 0.905 replace: twelve -> 12 | replace: fourteen -> 14
+N008B 1.000 
+N009 1.000 
+N010 0.941 replace: nineteen fifteen -> 1915 | replace: wood -> would
+N010B 0.864 replace: sixty eight thousand -> 68 000 | replace: fifteen hundred -> 1 500 | replace: two hundred -> 200
+N010C 1.000 
+N011 0.944 replace: fourteen -> 14
+N012 0.684 replace: fifty one -> 51 | replace: hundred and twenty -> 120 | replace: twenty five hertz -> 25 hz
+N013 0.901 replace: nineteen fifteen -> 1915 | replace: twenty twenty two -> 2022 | replace: nineteen -> 19 | replace: twenty twenty five -> 2025
+N014 0.971 replace: twenty seventeen -> 2017
+N014B 1.000 
+N015 1.000 
+N016 0.964 replace: atchafalaya -> atchafalier
+N017 0.857 replace: eighteen fifty -> 1850 | replace: nineteen fifty -> 1950 | replace: thirty -> 30
+N018 0.951 replace: fresh water -> freshwater
+N018B 0.906 replace: twenty twenty three -> 2023 | replace: salt water -> saltwater | replace: two hundred -> 200
+N019 0.872 replace: nineteen sixty three -> 1963 | replace: seventy percent -> 70 | replace: thirty percent -> 30
+N020 0.926 replace: nineteen seventy three -> 1973 | replace: nineteen eighty six -> 1986
+N021 1.000 
+N022 0.827 replace: nineteen twenty seven -> 1927 | replace: caernarvon -> carnarvon | replace: thirty nine -> 39 | replace: ten thousand -> 10 000
+N023 0.955 replace: levees -> levies
+N024 0.862 replace: bonnet carr -> bonnie coray | replace: flood water -> floodwater | replace: twenty eighteen -> 2018 | replace: twenty twenty -> 2020 | replace: twenty nineteen -> 2019
+N025 0.913 replace: two thousand five -> 2005
+N025A 0.945 replace: floodwall -> flood wall
+N025B 0.968 replace: fifty -> 50 | replace: and -> in
+N025C 0.828 replace: eighty percent -> 80 | replace: fifteen -> 15
+N025C1 0.921 replace: thirty four -> 34 | replace: seventy one -> 71
+N025C2 0.919 replace: two thousand -> 2000
+N025D 0.938 replace: twenty oh six -> 2006
+N025E 0.918 replace: floodwalls -> flood walls | replace: fourteen and a half -> 14 5 | delete: dollars -> 
+N026 0.865 replace: twenty twenty one -> 2021 | replace: three point two -> 3 2 | delete: dollar ->  | replace: a hundred and fifteen -> 115
+N027 1.000 
+N028 1.000 
+N028B 1.000 
+N029 1.000 
+N030 0.839 replace: levee -> levy | replace: nineteen sixty one -> 1961 | replace: nineteen seventy one -> 1971
+N031 1.000 
+N032 1.000 
+N032A 1.000 

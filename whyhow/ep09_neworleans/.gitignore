@@ -1,0 +1,6 @@
+voice_raw/
+voice/*.wav
+*.log
+video_silent.mp4
+video_silent.mp4_parts/
+mix.wav
