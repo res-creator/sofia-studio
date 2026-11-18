@@ -391,6 +391,9 @@ function bowl(ctx, t, d, p) {
   const pts = [[0, sea - 2 * ft], [260, sea - 2 * ft], [300, sea - 16 * ft], [520, sea - lerp(14, 11, u) * ft], [800, sea + deep * ft], [1150, sea + lerp(1.26, 7, u) * ft], [1450, sea + east * ft], [1640, sea - 3 * ft], [1700, sea + 1 * ft], [W, sea + 1 * ft]];
   ctx.fillStyle = '#6E5A3E'; ctx.beginPath(); ctx.moveTo(0, H); for (const [x, y] of pts) ctx.lineTo(x, y); ctx.lineTo(W, H); ctx.closePath(); ctx.fill();
   ctx.strokeStyle = '#8FB36A'; ctx.lineWidth = 5; ctx.beginPath(); pts.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.stroke();
+  if (p.fill) { const f = E.inOut(clamp(seg(t, 0.6, 3.2))); const wl = lerp(sea + east * ft, sea, f); ctx.save(); ctx.beginPath(); ctx.rect(560, wl, 1080, H); ctx.clip(); ctx.fillStyle = hexA('#3D7BE0', 0.75); ctx.beginPath(); ctx.moveTo(0, H); for (const [x, y] of pts) ctx.lineTo(x, Math.min(y, H)); ctx.lineTo(W, H); ctx.closePath(); ctx.restore(); ctx.save(); ctx.beginPath(); ctx.moveTo(560, wl); for (let x = 560; x <= 1640; x += 10) { let y = sea; for (let i = 1; i < pts.length; i++) if (x <= pts[i][0]) { const a2 = pts[i - 1], b2 = pts[i]; y = lerp(a2[1], b2[1], (x - a2[0]) / (b2[0] - a2[0])); break; } ctx.lineTo(x, Math.max(wl, Math.min(y, wl + 2000))); } ctx.restore();
+    ctx.fillStyle = hexA('#3D7BE0', 0.8); ctx.beginPath(); for (let x = 560; x <= 1640; x += 6) { let y = sea; for (let i = 1; i < pts.length; i++) if (x <= pts[i][0]) { const a2 = pts[i - 1], b2 = pts[i]; y = lerp(a2[1], b2[1], (x - a2[0]) / (b2[0] - a2[0])); break; } if (y > wl) ctx.rect(x, wl, 6, y - wl); } ctx.fill();
+    if (f > 0.95) chip(ctx, 'FLOODED', 1100, sea - 60, { size: 60, align: 'center', bg: C.red, color: C.cream, alpha: fade(t, 3.2) }); }
   // river and lake water
   ctx.fillStyle = hexA(C.ice, 0.55); ctx.fillRect(0, sea - 8 * ft, 250, 8 * ft + 6); ctx.fillRect(1700, sea, W - 1700, 3 * ft);
   text(ctx, 'MISSISSIPPI', 125, sea - 8 * ft - 16, { size: 28, font: F.head, align: 'center', color: C.cream });
@@ -476,4 +479,16 @@ function iwall(ctx, t, d, p) {
   chip(ctx, cap, W / 2, H - 70, { size: 36, align: 'center' });
   text(ctx, 'DIAGRAM · NOT TO SCALE · Source: USACE IPET report', 48, 60, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
 }
-module.exports = { bowl, raintolake, riversplit, iwall, cathedral, clay, lakelevel, inch, slope, video, photo, overlays, title, chapter, stats, calendar, split, bars, thermo, ratio, myth, versus, endq, endscreen, sat, globe, pop, fade, fadeOut };
+
+// ---------- 25 Hz vs 60 Hz ----------
+function hertz(ctx, t, d, p) {
+  navyBg(ctx, t);
+  text(ctx, 'TWO KINDS OF ELECTRICITY', W / 2, 130, { size: 52, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.1) });
+  const wave = (y, hz, col, lab, sub, at) => { if (t < at) return; const a = fade(t, at); ctx.save(); ctx.globalAlpha = a; ctx.strokeStyle = col; ctx.lineWidth = 6; ctx.beginPath();
+    for (let x = 200; x <= 1720; x += 4) { const ph = (x - 200) / 1520 * hz / 10 * 2 * Math.PI - t * 3; const yy = y + Math.sin(ph) * 70; x === 200 ? ctx.moveTo(x, yy) : ctx.lineTo(x, yy); } ctx.stroke(); ctx.restore();
+    text(ctx, lab, 200, y - 100, { size: 46, font: F.head, color: col, alpha: a }); text(ctx, sub, 200, y + 130, { size: 30, font: F.bold, color: C.cream, alpha: a }); };
+  wave(430, 60, C.iceL, '60 HZ', 'THE US GRID TODAY', 0.3);
+  wave(800, 25, C.yellow, '25 HZ', 'AN OLD STANDARD · 51 OF NEW ORLEANS\' 120 DRAINAGE PUMPS', 1.0);
+  text(ctx, 'DIAGRAM · Source: Sewerage & Water Board of New Orleans', 48, 60, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
+}
+module.exports = { hertz, bowl, raintolake, riversplit, iwall, cathedral, clay, lakelevel, inch, slope, video, photo, overlays, title, chapter, stats, calendar, split, bars, thermo, ratio, myth, versus, endq, endscreen, sat, globe, pop, fade, fadeOut };

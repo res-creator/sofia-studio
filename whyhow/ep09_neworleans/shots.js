@@ -62,7 +62,7 @@ function build(T) {
   beats('N003', [
     F('cm_aerial_cbd_gasometers_1921', { over: [note('NEW ORLEANS, 1921')] }),
     F('cm_aerial_new_orleans_east_2019', { cutW: 'Today', over: [low('TODAY: ABOUT HALF BELOW SEA LEVEL', 'half'), note('NEW ORLEANS EAST, 2019')] }),
-    F('cm_algiers_levee_ship_passing', { cutW: 'twelve', over: [head('UP TO 12 FT BELOW THE SEA', 'twelve', 200, 90, Yc), note('A SHIP ON THE MISSISSIPPI, ABOVE STREET LEVEL')] }),
+    F('cm_bywater_floodwall_chartres', { cutW: 'twelve', over: [head('12+ FT BELOW THE SEA', 'twelve', 200, 96, Yc), note('RIVERFRONT FLOODWALL, BYWATER, 2026')] }),
   ]);
   beats('N004', [
     F('px_nola_drone_skyline_sunset_slow', { over: [head("WHY NOT STOP PUMPING?", 'stop', 200, 90)] }),
@@ -85,14 +85,14 @@ function build(T) {
     S('bowl', { cutW: 'air', dur: 3, title: 'DRAIN THE SWAMP · THE PEAT ROTS · THE GROUND DROPS' }),
   ]);
   beats('N008', [
-    F('cm_aerial_cbd_gasometers_1921', { kb: { z: [1.4, 1.25], x: [0.4, 0.5] }, over: [low('THE 1895 MAP SAID: "20 FT"', 'twenty'), note('NEW ORLEANS, 1921')] }),
-    S('bowl', { cutW: 'Correct', hold: 0 }),
+    F('px_bayou_cypress_moss', { over: [low('THE FIRST SIGN: AN 1895 CITY MAP', 'map'), note('LOUISIANA CYPRESS SWAMP')] }),
+    S('stats', { cutW: 'twenty', head: 'THE OLD SWAMPS ON THE 1895 MAP', items: [{ pre: '+', v: 20, from: 20, suf: ' FT', label: 'MEASURED FROM CAIRO, ILLINOIS', at: 0.3, cnt: 0.2, size: 200 }, { pre: '−', v: 1.3, from: 1.3, dec: 1, suf: ' FT', label: 'CORRECTED TO SEA LEVEL', w: 'Correct', cnt: 0.2, size: 200, color: Yc }], source: 'Source: R. Campanella (Tulane), 64 Parishes (2024)' }),
   ]);
   beats('N008A', [S('bowl', { dur: 3.5 })]);
   beats('N008B', [F('nasa_radar_new_orleans_1998', { over: [low('UP TO 2 IN A YEAR (NASA RADAR, 2009–2012)', 'two'), note('NASA SPACEBORNE RADAR IMAGE, 1998')] })]);
   beats('N009', [
     F('px_nola_drone_hospital_levee_lake', { over: [head('THE TRAP', 'trap', 200, 110, Yc)] }),
-    F('cm_west_closure_complex_discharge', { cutW: 'harder', over: [note('PUMPS AT WORK, 2023')] }),
+    F('cm_orleans_canal_pumps_construction_2006', { cutW: 'harder', over: [note('BUILDING NEW PUMPS, 2006')] }),
   ]);
 
   // ===== CH2 =====
@@ -115,14 +115,14 @@ function build(T) {
     F('cm_broad_pumping_station_2018', { over: [cnt('Fifty-one', 51, { suf: ' OF 120', label: 'PUMPS RUN ON 25 HZ POWER' })] }),
   ]);
   beats('N013', [
-    F('cm_orleans_avenue_canal_pumping_station', { over: [low('AN OLD STANDARD', 'standard')] }),
+    S('hertz', {}),
     F('cm_sunrise_skyline_after_ida', { cutW: 'nineteen', over: [low('TURBINE 4: INSTALLED 1915', 'nineteen'), note('POWER OUT AFTER HURRICANE IDA, 2021')] }),
-    F('nasa_new_orleans_blackout_after_ida', { cutW: 'December', over: [low('RETIRED AFTER A NEW PLANT OPENED, DEC 2025', 'retire')] }),
+    F('nasa_new_orleans_blackout_after_ida', { cutW: 'December', over: [low('RETIRED AFTER A NEW PLANT OPENED, DEC 2025', 'retire'), note('BLACKOUT AFTER HURRICANE IDA, 2021')] }),
   ]);
   beats('N014', [
-    F('cm_banks_street_kayakers_flood_2019', { kb: { z: [1.3, 1.1] }, over: [note('STREET FLOODING, 2019')] }),
-    F('cm_cars_on_neutral_ground_flood_threat', { cutW: 'August', kb: { z: [1.35, 1.15], x: [0.4, 0.5] }, over: [low('AUGUST 2017: 8–9 INCHES IN A FEW HOURS', 'eight'), note('A FLOODED NEW ORLEANS STREET (ANOTHER STORM)')] }),
-    F('cm_felicity_street_flooded_2023', { cutW: 'water', kb: { z: [1.3, 1.1] } }),
+    F('cm_cylindrical_pumping_station', { over: [note('A DRAINAGE PUMP STATION, NEW ORLEANS')] }),
+    F('px_flooded_street_parked_cars', { cutW: 'eight', over: [low('AUGUST 2017: 8–9 INCHES IN A FEW HOURS', 'eight'), note('STOCK FOOTAGE, NOT NEW ORLEANS')] }),
+    F('cm_17th_street_pump_repair_2024', { cutW: 'some', over: [low('SOME PUMPS WERE DOWN', 'down'), note('PUMP REPAIR, 2024')] }),
   ]);
   beats('N014B', [
     F('gov_katrina_flooded_neighbourhood_aerial', { over: [head('THE FLOOD THAT CAME THROUGH THE WALLS', 'walls', 200, 80, Yc), note('NEW ORLEANS, 2005')] }),
@@ -133,7 +133,7 @@ function build(T) {
   beats('N015', [F('cm_ship_crescent_city_connection_levee', { over: [note('THE MISSISSIPPI AT NEW ORLEANS')] })]);
   beats('N016', [
     F('ia_valley_meander_cutoff_map', { over: [note('1950s US ARMY CORPS FILM: HOW THE RIVER MOVES')] }),
-    F('nasa_atchafalaya_delta_1973_2016_fast', { cutW: 'Atchafalaya', over: [low('THE ATCHAFALAYA: A SHORTER, STEEPER PATH', 'Atchafalaya'), note('LANDSAT, 1973–2016')] }),
+    F('nasa_atchafalaya_delta_1973_2016_fast', { cutW: 'Atchafalaya', over: [head('THE ATCHAFALAYA: A SHORTER, STEEPER PATH', 'Atchafalaya', 160, 70), note('LANDSAT, 1973–2016')] }),
   ]);
   beats('N017', [
     F('cm_atchafalaya_basin_swamp', { over: [low('1850: LESS THAN 10%', 'tenth'), note('ATCHAFALAYA BASIN')] }),
@@ -164,7 +164,7 @@ function build(T) {
   beats('N022', [
     F('ia_1927_crevasse_water_past_houses', { over: [low('1927: ONE OF THE WORST US FLOODS', 'worst')] }),
     F('cm_1927_caernarvon_dynamite_blast', { cutW: 'Caernarvon', over: [note('CAERNARVON, 1927')] }),
-    F('cm_1927_caernarvon_levee_blown', { cutW: 'thirty-nine', over: [cnt('thirty-nine', 39, { suf: ' TONS', label: 'OF DYNAMITE' })] }),
+    F('cm_1927_caernarvon_levee_blown', { cutW: 'thirty-nine', over: [low('39 TONS OF DYNAMITE', 'thirty-nine')] }),
     F('ia_1927_refugees_belongings_levee', { cutW: 'About', over: [low('~10,000 PEOPLE HAD TO LEAVE', 'thousand'), note('1927 FLOOD REFUGEES (SIGNAL CORPS FILM)')] }),
   ]);
   beats('N023', [
@@ -174,7 +174,7 @@ function build(T) {
   beats('N024', [
     F('cm_bonnet_carre_open_2016_a', { over: [low('BONNET CARRÉ SPILLWAY', 'Bonnet'), note('OPEN, JANUARY 2016')] }),
     F('cm_bonnet_carre_open_bw', { cutW: 'used', over: [note('HISTORIC OPENING (US ARMY CORPS PHOTO)')] }),
-    F('cm_bonnet_carre_open_2016_b', { cutW: 'three', over: [low('2018 · 2019 · 2020', 'three')] }),
+    F('cm_bonnet_carre_open_2016_b', { cutW: 'three', over: [low('OPENED 2018 · 2019 · 2020', 'three'), note('JANUARY 2016')] }),
     F('cm_bonnet_carre_crowds_bw', { cutW: 'twice', over: [low('2019: OPENED TWICE IN ONE YEAR', 'twice'), note('CROWDS AT AN EARLIER OPENING')] }),
   ]);
 
@@ -197,12 +197,12 @@ function build(T) {
     F('gov_katrina_superdome_damaged_roof', { cutW: 'Louisiana', over: [low('LOUISIANA: MORE THAN 1,000 DEAD', 'thousand')] }),
   ]);
   beats('N025C2', [F('cm_lower_ninth_ward_damage', { over: [low('TODAY: ~25% FEWER PEOPLE THAN IN 2000', 'quarter'), note('LOWER NINTH WARD')] })]);
-  beats('N025D', [F('cm_fema_17th_street_breach_repair', { over: [low('THE ARMY CORPS TOOK RESPONSIBILITY', 'responsibility'), note('EMERGENCY REPAIR, SEPT 2005')] })]);
+  beats('N025D', [F('cm_fema_17th_street_breach_repair', { over: [low('THE ARMY CORPS TOOK RESPONSIBILITY', 'responsibility'), note('EMERGENCY REPAIR, SEPT 2005')] }), F('cm_drainage_canal_floodwall_2005', { cutW: 'He', over: [note('A DRAINAGE CANAL FLOODWALL, OCT 2005')] })]);
   beats('N025E', [
     F('cm_ihnc_surge_barrier_construction_aerial', { over: [note('SURGE BARRIER UNDER CONSTRUCTION, EAST OF THE CITY')] }),
     F('cm_ihnc_sector_gate_installation_2011', { cutW: 'gates', over: [note('INSTALLING A GIANT GATE, 2011')] }),
     F('cm_west_closure_complex_pumps_running', { cutW: 'West', over: [low('WEST CLOSURE COMPLEX', 'West')] }),
-    st('fourteen', 'THE NEW WALL AROUND THE BOWL', [{ pre: '$', v: 14.5, from: 14.5, dec: 1, suf: ' BILLION', label: 'LEVEES · FLOODWALLS · GATES · PUMPS', at: 0.3, cnt: 0.2, size: 210 }], 'Source: US Army Corps of Engineers', { img: 'cm_fema_17th_street_canal_levees_2008', dark: 0.62 }),
+    st('Total', 'THE NEW WALL AROUND THE BOWL', [{ pre: '$', v: 14.5, from: 14.5, dec: 1, suf: ' BILLION', label: 'LEVEES · FLOODWALLS · GATES · PUMPS', at: 0.3, cnt: 0.2, size: 210 }], 'Source: US Army Corps of Engineers', { img: 'cm_fema_17th_street_canal_levees_2008', dark: 0.62 }),
   ]);
   beats('N026', [
     F('gov_wslp_levee_construction_aerial', { over: [low('THE NEW WALLS ARE SINKING TOO', 'sinking'), note('LEVEE WORK WEST OF THE CITY, 2025')] }),
@@ -215,12 +215,12 @@ function build(T) {
   beats('N027', [F('px_nola_drone_sunset_skyline_industrial')]);
   beats('N028', [
     F('cm_aerial_new_orleans_east_2019', { kb: { z: [1.3, 1.1] }, over: [low('WELLS STOPPED · THE GROUND ROSE A LITTLE', 'risen'), note('NEW ORLEANS EAST')] }),
-    F('cm_17th_street_pccp_wet_test_2025', { cutW: 'other', over: [head('RAIN PUMPING CAN NEVER STOP', 'never', 200, 86, Yc)] }),
+    F('cm_17th_street_pccp_wet_test_2025', { cutW: 'other', over: [{ ...head('RAIN PUMPING CAN NEVER STOP', 'never', 200, 86, Yc), y: 960 }] }),
   ]);
   beats('N028B', [F('cm_water_meter_cover_crescent', { over: [low('LEAKING PIPES: HIDDEN DRAINS', 'leaking')] })]);
   beats('N029', [
     F('px_nola_drone_rooftops_sunset_flat', { in: 6 }),
-    S('bowl', { cutW: 'Switch', hold: 1, title: 'SWITCH OFF THE PUMPS, AND THE BOWL FILLS' }),
+    S('bowl', { cutW: 'Switch', hold: 1, fill: true, title: 'SWITCH OFF THE PUMPS, AND THE BOWL FILLS' }),
   ]);
   beats('N030', [
     F('cm_isle_de_jean_charles_stilt_house', { over: [low('DELTA FARMS: LEVEE BROKE IN 1961 AND 1971', 'Delta'), note('COASTAL LOUISIANA (NOT DELTA FARMS)')] }),
@@ -230,7 +230,7 @@ function build(T) {
   // ===== ENDING =====
   chapter('N031', 6, 'The answer');
   beats('N031', [
-    F('cm_west_closure_complex_discharge'),
+    F('gov_sela_algiers_drainage_construction'),
     F('cm_old_river_discharge_2011', { cutW: 'river', kb: { z: [1.25, 1.1] } }),
     F('cm_industrial_canal_floodwall_2011', { cutW: 'lives' }),
   ]);
@@ -238,7 +238,8 @@ function build(T) {
   beats('N032', [
     F('px_jackson_square_washington_artillery'),
     F('cm_french_quarter_from_hotel_river', { cutW: 'still' }),
-    F('nasa_supermoon_over_mississippi_steamboat', { cutW: 'Every', over: [head('EVERY TIME IT RAINS, THE PUMPS SWITCH ON', 'Every', 200, 76, Yc)] }),
+    F('px_rainwater_rushing_into_drain', { cutW: 'Every', over: [head('EVERY TIME IT RAINS…', 'Every', 200, 90, Yc), note('STOCK FOOTAGE')] }),
+    F('cm_west_closure_complex_discharge', { cutW: 'switches', over: [head('…THE PUMPS SWITCH ON', 'switches', 200, 90, Yc)] }),
   ]);
   add(T.tl.voiceEnd + 0.4, S('endscreen', {}), 'fade');
   return out;
