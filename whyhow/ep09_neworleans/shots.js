@@ -160,7 +160,7 @@ function build(T) {
 
   // ===== CH4 =====
   chapter('N021', 3, 'The towns they flooded on purpose');
-  beats('N021', [F('ia_1927_drowned_landscape', { over: [note('1927 FLOOD (US ARMY SIGNAL CORPS FILM)')] })]);
+  beats('N021', [F('ia_1927_drowned_landscape', { in: 2.6, over: [note('1927 FLOOD (US ARMY SIGNAL CORPS FILM)')] })]);
   beats('N022', [
     F('ia_1927_crevasse_water_past_houses', { over: [low('1927: ONE OF THE WORST US FLOODS', 'worst')] }),
     F('cm_1927_caernarvon_dynamite_blast', { cutW: 'Caernarvon', over: [note('CAERNARVON, 1927')] }),

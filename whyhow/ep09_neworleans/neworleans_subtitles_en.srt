@@ -1,0 +1,808 @@
+1
+00:00:00,900 --> 00:00:04,730
+Every time it rains in New Orleans,
+the water has nowhere to go.
+
+2
+00:00:04,800 --> 00:00:08,330
+So the city pumps it out, uphill,
+over its walls and into a lake.
+
+3
+00:00:09,128 --> 00:00:11,898
+And all that draining is a big
+reason the city keeps sinking.
+
+4
+00:00:12,493 --> 00:00:16,803
+A hundred and thirty years ago, almost
+none of New Orleans was below sea level.
+
+5
+00:00:16,993 --> 00:00:18,803
+Today, about half of it is.
+
+6
+00:00:19,033 --> 00:00:21,483
+Some neighborhoods sit
+twelve feet below the sea.
+
+7
+00:00:22,374 --> 00:00:24,804
+So why doesn't New
+Orleans just stop pumping?
+
+8
+00:00:25,054 --> 00:00:27,174
+And why does it depend
+on one set of floodgates,
+
+9
+00:00:27,214 --> 00:00:28,304
+far up the Mississippi?
+
+10
+00:00:30,657 --> 00:00:33,127
+The first city stood on
+the highest ground around:
+
+11
+00:00:33,257 --> 00:00:36,147
+a natural ridge of river
+silt, today's French Quarter.
+
+12
+00:00:36,357 --> 00:00:37,607
+Behind it lay swamp.
+
+13
+00:00:38,120 --> 00:00:42,140
+Around nineteen hundred, the city started
+draining that swamp with powerful new
+
+14
+00:00:42,180 --> 00:00:45,350
+pumps, and built whole new
+neighborhoods where the swamp had been.
+
+15
+00:00:46,161 --> 00:00:49,791
+But the swamp soil was full of
+peat, made of old roots and plants.
+
+16
+00:00:50,241 --> 00:00:52,391
+Once the water was gone, air got in.
+
+17
+00:00:52,561 --> 00:00:55,631
+The peat rotted, the soil packed
+down, and the ground dropped.
+
+18
+00:00:56,537 --> 00:00:59,547
+The first sign showed up on a
+city map in eighteen ninety-five.
+
+19
+00:01:00,237 --> 00:01:02,547
+Strangely, it put the old
+swamps at twenty feet.
+
+20
+00:01:02,817 --> 00:01:04,907
+Its heights were measured
+from a mark in Cairo,
+
+21
+00:01:04,957 --> 00:01:06,467
+Illinois, far up the river.
+
+22
+00:01:06,657 --> 00:01:10,427
+Correct for that, and those swamps were
+already about a foot below sea level.
+
+23
+00:01:11,294 --> 00:01:14,344
+Those same spots are now
+five to seven feet below.
+
+24
+00:01:14,814 --> 00:01:18,044
+Parts of eastern New Orleans are
+twelve to fourteen feet down.
+
+25
+00:01:18,741 --> 00:01:22,761
+Measured from a NASA research plane, some
+areas were sinking up to two inches a
+
+26
+00:01:22,801 --> 00:01:23,191
+year.
+
+27
+00:01:23,726 --> 00:01:24,636
+And that's the trap.
+
+28
+00:01:24,726 --> 00:01:27,176
+The lower the city sinks,
+the harder it has to pump.
+
+29
+00:01:27,326 --> 00:01:29,376
+And the harder it drains,
+the lower it sinks.
+
+30
+00:01:32,181 --> 00:01:35,211
+The machine that made it
+possible was invented right here.
+
+31
+00:01:35,581 --> 00:01:39,701
+In nineteen fifteen, a young city engineer
+named Albert Baldwin Wood put in a giant
+
+32
+00:01:39,741 --> 00:01:42,931
+screw pump, the most advanced
+drainage pump of its time.
+
+33
+00:01:43,141 --> 00:01:45,331
+Even the Dutch sent engineers to study it.
+
+34
+00:01:45,601 --> 00:01:46,751
+Here's how it works.
+
+35
+00:01:47,261 --> 00:01:50,471
+Rain runs into some sixty-eight
+thousand drains in the street,
+
+36
+00:01:50,521 --> 00:01:52,281
+then through fifteen
+hundred miles of pipes,
+
+37
+00:01:52,321 --> 00:01:54,651
+into about two hundred miles of canals.
+
+38
+00:01:54,921 --> 00:01:59,091
+Then the pumps lift it up, into big canals
+that carry it out to Lake Pontchartrain.
+
+39
+00:01:59,984 --> 00:02:03,374
+The whole system can keep up with
+about half an inch of rain an hour.
+
+40
+00:02:03,564 --> 00:02:06,274
+When rain falls much faster
+than an inch an hour,
+
+41
+00:02:06,404 --> 00:02:07,214
+the streets flood.
+
+42
+00:02:08,062 --> 00:02:11,492
+Pumps of his design still work
+today, some about a century old.
+
+43
+00:02:11,642 --> 00:02:13,512
+The biggest are fourteen feet across.
+
+44
+00:02:14,264 --> 00:02:15,814
+And here's the strange part.
+
+45
+00:02:16,004 --> 00:02:19,924
+Fifty-one of the city's hundred and twenty
+drainage pumps run on twenty-five hertz
+
+46
+00:02:19,964 --> 00:02:20,514
+power.
+
+47
+00:02:21,326 --> 00:02:24,116
+That's an old standard the
+national grid left behind long ago.
+
+48
+00:02:24,186 --> 00:02:26,306
+So for a century, the city
+made this power itself,
+
+49
+00:02:26,346 --> 00:02:27,616
+with its own old turbines.
+
+50
+00:02:28,026 --> 00:02:29,696
+One of them was installed
+in nineteen fifteen.
+
+51
+00:02:30,026 --> 00:02:31,846
+It spent much of its
+last decade under repair,
+
+52
+00:02:31,886 --> 00:02:34,116
+and in twenty twenty-two
+it stopped nineteen times.
+
+53
+00:02:34,306 --> 00:02:38,076
+Only in December twenty twenty-five did
+a new power plant let the city retire it.
+
+54
+00:02:38,211 --> 00:02:39,961
+When the pumps fail, the city floods.
+
+55
+00:02:40,411 --> 00:02:44,261
+In August twenty seventeen, eight to
+nine inches of rain fell in a few hours.
+
+56
+00:02:44,491 --> 00:02:46,831
+No drainage system here
+could keep up with that.
+
+57
+00:02:46,871 --> 00:02:48,221
+But some pumps were down.
+
+58
+00:02:48,411 --> 00:02:50,261
+The water board first
+said they all worked.
+
+59
+00:02:50,371 --> 00:02:52,501
+It wasn't true, and its
+director stepped down.
+
+60
+00:02:53,300 --> 00:02:56,760
+But the flood that nearly destroyed
+New Orleans didn't come from rain,
+
+61
+00:02:56,800 --> 00:02:57,910
+or from the river.
+
+62
+00:02:58,140 --> 00:03:00,550
+It came through walls that
+were built to stop it.
+
+63
+00:03:00,620 --> 00:03:01,310
+We'll get there.
+
+64
+00:03:04,075 --> 00:03:05,365
+Pumps handle the rain.
+
+65
+00:03:05,495 --> 00:03:08,665
+But the biggest threat to New Orleans
+is the river it was built for.
+
+66
+00:03:09,224 --> 00:03:11,834
+The Mississippi has
+changed course many times.
+
+67
+00:03:11,924 --> 00:03:14,364
+And for the last century, it
+has been trying to do it again,
+
+68
+00:03:14,404 --> 00:03:17,614
+into a shorter, steeper
+path: the Atchafalaya River.
+
+69
+00:03:18,055 --> 00:03:22,245
+In eighteen fifty, the Atchafalaya took
+less than a tenth of the river's water.
+
+70
+00:03:22,495 --> 00:03:24,765
+By nineteen fifty, it took thirty percent.
+
+71
+00:03:25,515 --> 00:03:27,905
+Engineers warned the Mississippi
+could switch within decades.
+
+72
+00:03:28,981 --> 00:03:32,231
+If it did, the river past
+New Orleans could turn salty.
+
+73
+00:03:32,561 --> 00:03:35,351
+The city could lose its drinking
+water, much of its port,
+
+74
+00:03:35,481 --> 00:03:38,151
+and the fresh water its
+chemical plants depend on.
+
+75
+00:03:38,935 --> 00:03:40,825
+In twenty twenty-three, we got a preview.
+
+76
+00:03:41,315 --> 00:03:44,995
+Salt water crept up the river, and the
+Army Corps built an underwater wall to hold
+
+77
+00:03:45,035 --> 00:03:45,585
+it back.
+
+78
+00:03:45,855 --> 00:03:49,105
+In September, the salt went over
+it, and the wall had to be raised.
+
+79
+00:03:49,375 --> 00:03:52,955
+Downriver, in Plaquemines Parish, the
+drinking water was affected for more than two
+
+80
+00:03:52,995 --> 00:03:53,725
+hundred days.
+
+81
+00:03:54,160 --> 00:03:57,920
+So in nineteen sixty-three, the Army
+Corps of Engineers finished the Old River
+
+82
+00:03:57,960 --> 00:04:02,590
+Control Structure, far upriver: a
+set of giant floodgates with one job.
+
+83
+00:04:02,880 --> 00:04:04,960
+Keep seventy percent of the
+water in the Mississippi,
+
+84
+00:04:05,000 --> 00:04:06,970
+and let only thirty percent go.
+
+85
+00:04:07,850 --> 00:04:11,120
+In nineteen seventy-three, a
+huge flood almost broke it.
+
+86
+00:04:11,230 --> 00:04:14,750
+Part of a wall collapsed, and the water
+dug deep holes on both sides of its
+
+87
+00:04:14,790 --> 00:04:15,360
+foundation.
+
+88
+00:04:15,750 --> 00:04:17,100
+It held, but only just.
+
+89
+00:04:17,470 --> 00:04:20,070
+Since then, it has never been
+allowed to work as hard again,
+
+90
+00:04:20,110 --> 00:04:23,340
+and in nineteen eighty-six a second
+structure was added beside it.
+
+91
+00:04:25,925 --> 00:04:28,975
+For the river's floods, the
+city once had a harsher option.
+
+92
+00:04:29,165 --> 00:04:31,455
+It protected itself by
+flooding someone else.
+
+93
+00:04:32,063 --> 00:04:36,073
+In nineteen twenty-seven, during one of
+the worst floods in American history,
+
+94
+00:04:36,683 --> 00:04:38,703
+engineers blew up the levee at Caernarvon,
+
+95
+00:04:38,743 --> 00:04:41,693
+south of the city, with
+thirty-nine tons of dynamite.
+
+96
+00:04:41,963 --> 00:04:44,433
+About ten thousand people
+had to leave their homes.
+
+97
+00:04:45,369 --> 00:04:47,099
+They were promised full compensation.
+
+98
+00:04:47,529 --> 00:04:48,699
+Thousands got nothing.
+
+99
+00:04:48,889 --> 00:04:51,319
+And the blast wasn't
+even needed: within days,
+
+100
+00:04:51,409 --> 00:04:53,279
+levees broke upriver on their own.
+
+101
+00:04:53,672 --> 00:04:55,702
+Today, a spillway does that job.
+
+102
+00:04:55,972 --> 00:04:59,632
+The Bonnet Carré Spillway sends flood
+water into Lake Pontchartrain before it
+
+103
+00:04:59,672 --> 00:05:00,562
+reaches the city.
+
+104
+00:05:00,852 --> 00:05:02,682
+It used to open once every few years.
+
+105
+00:05:02,792 --> 00:05:06,002
+Then it opened three years in a row,
+from twenty eighteen to twenty twenty.
+
+106
+00:05:06,352 --> 00:05:08,402
+And in twenty nineteen,
+for the first time ever,
+
+107
+00:05:08,452 --> 00:05:10,142
+it had to open twice in one year.
+
+108
+00:05:12,412 --> 00:05:14,892
+Everything so far was
+about keeping water out.
+
+109
+00:05:14,932 --> 00:05:16,872
+In two thousand five, it got in.
+
+110
+00:05:16,912 --> 00:05:19,602
+Not just over the walls,
+but straight through them.
+
+111
+00:05:20,314 --> 00:05:24,304
+When Hurricane Katrina pushed its
+surge into the city's drainage canals,
+
+112
+00:05:24,414 --> 00:05:27,364
+the floodwall on the 17th
+Street Canal gave way.
+
+113
+00:05:27,614 --> 00:05:29,484
+The water hadn't even reached its top.
+
+114
+00:05:30,369 --> 00:05:32,499
+In all, the system had
+fifty major breaches.
+
+115
+00:05:32,829 --> 00:05:34,619
+Most came from water pouring over the top.
+
+116
+00:05:34,789 --> 00:05:37,739
+But four walls failed because
+the ground beneath them gave way.
+
+117
+00:05:38,069 --> 00:05:40,209
+On the 17th Street and
+London Avenue canals,
+
+118
+00:05:40,249 --> 00:05:42,379
+they broke before the
+water ever reached the top.
+
+119
+00:05:42,629 --> 00:05:44,569
+The water pushed the walls
+away from their levees,
+
+120
+00:05:44,609 --> 00:05:46,959
+a gap opened, and the
+ground underneath gave out.
+
+121
+00:05:47,187 --> 00:05:49,177
+About eighty percent of the city flooded,
+
+122
+00:05:49,407 --> 00:05:51,737
+in many places more
+than fifteen feet deep.
+
+123
+00:05:52,280 --> 00:05:53,970
+Most pump stations stopped.
+
+124
+00:05:54,440 --> 00:05:56,990
+Power was lost, many
+operators had been evacuated,
+
+125
+00:05:57,080 --> 00:05:59,930
+and thirty-four of seventy-one
+stations were damaged.
+
+126
+00:06:00,280 --> 00:06:02,650
+It took about six weeks
+to pump the city dry.
+
+127
+00:06:02,960 --> 00:06:05,690
+In Louisiana, more than
+a thousand people died.
+
+128
+00:06:06,608 --> 00:06:08,338
+Many who left never came back.
+
+129
+00:06:08,428 --> 00:06:11,798
+Today, the city has about a quarter
+fewer people than in two thousand.
+
+130
+00:06:12,617 --> 00:06:16,457
+In twenty-oh-six, the head of the Army
+Corps of Engineers said the Corps took
+
+131
+00:06:16,497 --> 00:06:17,347
+responsibility.
+
+132
+00:06:17,817 --> 00:06:21,717
+He called it the first time the Corps had
+to take responsibility for a catastrophic
+
+133
+00:06:21,757 --> 00:06:22,527
+failure.
+
+134
+00:06:23,417 --> 00:06:25,167
+Then it built a new wall around the bowl:
+
+135
+00:06:25,417 --> 00:06:28,417
+levees, floodwalls, a surge
+barrier almost two miles long,
+
+136
+00:06:28,457 --> 00:06:30,437
+and giant gates where
+those canals meet the lake,
+
+137
+00:06:30,477 --> 00:06:32,787
+with pump stations that
+push the rain over them.
+
+138
+00:06:33,077 --> 00:06:36,697
+On the West Bank stands what the Corps
+calls the largest drainage pump station in
+
+139
+00:06:36,737 --> 00:06:37,247
+the world.
+
+140
+00:06:37,517 --> 00:06:39,567
+Total cost: about fourteen
+and a half billion dollars.
+
+141
+00:06:40,447 --> 00:06:43,337
+But the new walls are sinking
+too, and the sea keeps rising.
+
+142
+00:06:43,667 --> 00:06:46,777
+The original design allowed
+for one foot of sea-level rise.
+
+143
+00:06:47,067 --> 00:06:48,877
+A newer study uses almost two.
+
+144
+00:06:49,147 --> 00:06:52,827
+In twenty twenty-one, the Corps proposed
+a three-point-two-billion-dollar plan to
+
+145
+00:06:52,867 --> 00:06:55,127
+raise about a hundred and
+fifteen miles of levees,
+
+146
+00:06:55,167 --> 00:06:56,657
+just to keep the same protection.
+
+147
+00:06:59,095 --> 00:07:01,145
+So why doesn't New
+Orleans just stop pumping?
+
+148
+00:07:01,755 --> 00:07:03,485
+There are really two kinds of pumping.
+
+149
+00:07:03,875 --> 00:07:05,805
+One pulls groundwater out of wells.
+
+150
+00:07:05,895 --> 00:07:07,575
+Where the city stopped
+that, in the northeast,
+
+151
+00:07:07,615 --> 00:07:09,445
+the ground has even risen a little.
+
+152
+00:07:09,575 --> 00:07:11,225
+The other kind pumps out the rain.
+
+153
+00:07:11,335 --> 00:07:12,665
+And that one can never stop.
+
+154
+00:07:13,646 --> 00:07:17,366
+And even where the wells are gone, leaking
+water pipes under the streets now act
+
+155
+00:07:17,406 --> 00:07:20,616
+like hidden drains, pulling the
+groundwater down on their own.
+
+156
+00:07:21,422 --> 00:07:23,392
+But the rain still has to go somewhere.
+
+157
+00:07:23,642 --> 00:07:26,152
+About half the city is
+already below sea level.
+
+158
+00:07:26,302 --> 00:07:28,892
+Switch off the drainage
+pumps, and the bowl fills up.
+
+159
+00:07:29,661 --> 00:07:31,211
+We know what that looks like.
+
+160
+00:07:31,541 --> 00:07:36,061
+Southwest of the city, a drained farm called
+Delta Farms lost its levee in nineteen
+
+161
+00:07:36,101 --> 00:07:38,471
+sixty-one, and again in
+nineteen seventy-one.
+
+162
+00:07:38,921 --> 00:07:40,411
+Today, it's open water.
+
+163
+00:07:43,298 --> 00:07:46,098
+So New Orleans pumps
+every drop of rain uphill,
+
+164
+00:07:46,138 --> 00:07:48,228
+on pumps built a century ago.
+
+165
+00:07:48,478 --> 00:07:51,038
+It holds a river in place
+with one set of floodgates,
+
+166
+00:07:51,078 --> 00:07:53,928
+and lives inside a wall
+that sinks along with it.
+
+167
+00:07:54,761 --> 00:07:56,391
+Which city should we explain next?
+
+168
+00:07:56,501 --> 00:07:57,291
+Tell me in the comments.
+
+169
+00:07:57,905 --> 00:08:01,785
+Three hundred years ago, the first settlers
+built on the only high ground they could
+
+170
+00:08:01,825 --> 00:08:03,135
+find: the riverbank.
+
+171
+00:08:03,285 --> 00:08:04,435
+It's still above the sea.
+
+172
+00:08:04,685 --> 00:08:08,155
+Everything behind it stays dry
+the same way it did a century ago.
+
+173
+00:08:08,365 --> 00:08:10,895
+Every time it rains, someone
+switches on the pumps.
+
+174
+00:08:11,305 --> 00:08:12,355
+This was How It's Run.
