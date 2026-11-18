@@ -1,18 +1,82 @@
 [
  {
-  "start": 0.0,
-  "end": 30.34,
+  "start": 0,
+  "end": 30.14,
   "file": "lotus.mp3",
   "gain": -3,
   "fadeIn": 0.8,
   "fadeOut": 1.2
  },
  {
-  "start": 29.74,
-  "end": 103.43,
+  "start": 29.44,
+  "end": 102.25,
   "file": "tea_roots.mp3",
   "gain": -3,
-  "fadeIn": 1.0,
-  "fadeOut": 1.5
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 101.55,
+  "end": 157.17,
+  "file": "wholesome.mp3",
+  "gain": -3,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 156.47,
+  "end": 245.65,
+  "file": "dreamer.mp3",
+  "gain": -3,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 244.95,
+  "end": 321.09,
+  "file": "thinking_music.mp3",
+  "gain": -3,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 320.39,
+  "end": 434.49,
+  "file": "atlantean_twilight.mp3",
+  "gain": -3,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 433.79,
+  "end": 503.09,
+  "file": "eastern_thought.mp3",
+  "gain": -3,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 502.39,
+  "end": 572.25,
+  "file": "lasting_hope.mp3",
+  "gain": -3,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 571.55,
+  "end": 595.69,
+  "file": "enchanted_valley.mp3",
+  "gain": -3,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 594.99,
+  "end": 654.94,
+  "file": "inspired.mp3",
+  "gain": -3,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
  }
 ]

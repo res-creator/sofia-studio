@@ -126,7 +126,7 @@ export function fig(g, x, y, s, o, t) {
   g.save(); g.globalAlpha = 0.1; el(g, -55 + f, -400, 20, 12, '#e8806a', 0); el(g, 55 + f, -400, 20, 12, '#e8806a', 0); g.restore();
   if (o.stubble) { g.save(); g.globalAlpha = 0.12; g.beginPath(); g.ellipse(f * 0.5, -372, 78, 44, 0, 0, Math.PI); g.fillStyle = '#3a2a20'; g.fill(); g.restore(); }
   hair(g, o, f);
-  if (o.scarf) { g.beginPath(); g.moveTo(-122, -400); g.bezierCurveTo(-138, -600, 138, -600, 122, -400); g.lineTo(98, -410); g.bezierCurveTo(100, -520, 40, -540, 0, -540); g.bezierCurveTo(-40, -540, -100, -520, -98, -410); g.closePath(); fo(g, vg(g, -600, 200, o.scarf, 0.12)); ln(g, [[-60, -560], [-20, -548]], 3, shade(o.scarf, -0.15)); }
+  if (o.scarf) { g.beginPath(); g.moveTo(-122, -400); g.bezierCurveTo(-138, -600, 138, -600, 122, -400); g.lineTo(98, -410); g.bezierCurveTo(100, -520, 40, -540, 0, -540); g.bezierCurveTo(-40, -540, -100, -520, -98, -410); g.closePath(); fo(g, vg(g, -600, 200, o.scarf, 0.12)); }
   if (o.pakol) { g.beginPath(); g.ellipse(0, -540, 116, 44, 0, 0, Math.PI * 2); fo(g, vg(g, -584, 88, o.pakol, 0.15)); g.beginPath(); g.ellipse(0, -556, 104, 30, 0, Math.PI, 0); fo(g, shade(o.pakol, 0.08), 4); ln(g, [[-110, -530], [110, -530]], 3, shade(o.pakol, -0.25)); }
   if (o.beard) { g.beginPath(); g.moveTo(-96 + f * 0.4, -420); g.quadraticCurveTo(-90 + f, -320, f, -318); g.quadraticCurveTo(90 + f, -320, 96 + f * 0.4, -420); g.quadraticCurveTo(50 + f, -380, f, -392); g.quadraticCurveTo(-50 + f, -380, -96 + f * 0.4, -420); g.closePath(); fo(g, vg(g, -420, 100, o.beardC || o.hairC || '#4a3426', 0.15), 4); }
   // глаза

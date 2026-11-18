@@ -13,7 +13,9 @@ for l in L[start:]:
         if ch > MAXCH: break
         items.append(dict(kind='chapter', title=t[3:].strip(), n=ch)); continue
     if not t or t.startswith(('*(', '<!--', '---', '>', '|', '#')): continue
-    items.append(dict(kind='voice', tts=t, text=re.sub(r'\s+', ' ', re.sub(r'\[[a-z ]+\]', '', t)).strip()))
+    txt = re.sub(r'\s+', ' ', re.sub(r'\[[a-z ,]+\]', '', t)).strip()
+    if not txt: items.append(dict(kind='pause', dur=1.2)); continue
+    items.append(dict(kind='voice', tts=t, text=txt))
 FX = ('highpass=f=75,equalizer=f=300:t=q:w=1.2:g=-2.5,equalizer=f=120:t=q:w=0.9:g=1.8,equalizer=f=3200:t=q:w=1.0:g=2.2,'
       'highshelf=f=10000:g=2,deesser=i=0.35:m=0.5:f=0.5,acompressor=threshold=-20dB:ratio=3:attack=8:release=120:makeup=3,alimiter=limit=0.89')
 def el(text, out):
@@ -44,6 +46,7 @@ def sil(s):
     global t; seq.append(('sil', s)); t += s
 cold = True
 for it in items:
+    if it['kind'] == 'pause': sil(it['dur']); continue
     if it['kind'] == 'chapter':
         cold = it['n'] == 1
         if it['n'] > 1: sil(2.6 if it['n'] == 2 else 2.4)   # перед главой: титр (перед первой ещё и название)
