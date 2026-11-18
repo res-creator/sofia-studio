@@ -375,4 +375,105 @@ function cathedral(ctx, t, d, p) {
   text(ctx, 'HIGH SIDE LOWERED BY UP TO ~92 CM (1993–1998)', W / 2, H - 70, { size: 30, font: F.bold, align: 'center', color: C.yellow, alpha: fade(t, 2.0) });
   text(ctx, 'DIAGRAM · NOT TO SCALE · TILT EXAGGERATED', 48, 60, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
 }
-module.exports = { cathedral, clay, lakelevel, inch, slope, video, photo, overlays, title, chapter, stats, calendar, split, bars, thermo, ratio, myth, versus, endq, endscreen, sat, globe, pop, fade, fadeOut };
+
+// ---------- New Orleans: the bowl deepening (1895 -> today) ----------
+function bowl(ctx, t, d, p) {
+  navyBg(ctx, t);
+  const u = p.hold != null ? p.hold : E.inOut(clamp(seg(t, 0.8, 0.8 + (p.dur || 3))));
+  text(ctx, p.title || 'NEW ORLEANS, CROSS-SECTION: RIVER TO LAKE', W / 2, 120, { size: 48, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.1) });
+  text(ctx, u < 0.5 ? '1895' : 'TODAY', W / 2, 205, { size: 70, font: F.head, align: 'center', color: C.yellow });
+  const sea = 560, ft = 22; // px per foot
+  // sea level line
+  ctx.setLineDash([16, 10]); ctx.strokeStyle = C.ice; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(0, sea); ctx.lineTo(W, sea); ctx.stroke(); ctx.setLineDash([]);
+  text(ctx, 'SEA LEVEL', W - 40, sea - 14, { size: 28, font: F.head, align: 'right', color: C.iceL });
+  // profile: x positions: river(left) -> natural levee/French Quarter -> backswamp -> lakefront -> lake(right)
+  const deep = lerp(1.26, 6.5, u), east = lerp(1.26, 13, u);
+  const pts = [[0, sea - 2 * ft], [260, sea - 2 * ft], [300, sea - 16 * ft], [520, sea - lerp(14, 11, u) * ft], [800, sea + deep * ft], [1150, sea + lerp(1.26, 7, u) * ft], [1450, sea + east * ft], [1640, sea - 3 * ft], [1700, sea + 1 * ft], [W, sea + 1 * ft]];
+  ctx.fillStyle = '#6E5A3E'; ctx.beginPath(); ctx.moveTo(0, H); for (const [x, y] of pts) ctx.lineTo(x, y); ctx.lineTo(W, H); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = '#8FB36A'; ctx.lineWidth = 5; ctx.beginPath(); pts.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.stroke();
+  // river and lake water
+  ctx.fillStyle = hexA(C.ice, 0.55); ctx.fillRect(0, sea - 8 * ft, 250, 8 * ft + 6); ctx.fillRect(1700, sea, W - 1700, 3 * ft);
+  text(ctx, 'MISSISSIPPI', 125, sea - 8 * ft - 16, { size: 28, font: F.head, align: 'center', color: C.cream });
+  text(ctx, 'LAKE PONTCHARTRAIN', 1800, sea + 3 * ft + 40, { size: 24, font: F.head, align: 'center', color: C.cream });
+  // houses on the ground
+  for (const x of [380, 460, 700, 760, 860, 1080, 1180, 1380, 1460, 1520]) { let y = sea; for (let i = 1; i < pts.length; i++) if (x <= pts[i][0]) { const a = pts[i - 1], b = pts[i]; y = lerp(a[1], b[1], (x - a[0]) / (b[0] - a[0])); break; } ctx.fillStyle = C.cream; ctx.fillRect(x - 18, y - 34, 36, 34); }
+  text(ctx, 'FRENCH QUARTER (NATURAL RIDGE)', 420, sea - 16 * ft - 24, { size: 24, font: F.bold, align: 'center', color: C.yellow });
+  const lab = (x, v, s2) => text(ctx, '−' + v.toFixed(v < 2 ? 1 : 0) + ' FT', x, sea + v * ft + 60, { size: 40, font: F.head, align: 'center', color: C.yellow });
+  lab(800, deep); lab(1450, east);
+  text(ctx, 'OLD SWAMPS', 800, sea + deep * ft + 100, { size: 24, font: F.bold, align: 'center', color: C.cream });
+  text(ctx, 'EASTERN NEW ORLEANS', 1450, sea + east * ft + 100, { size: 24, font: F.bold, align: 'center', color: C.cream, alpha: u });
+  text(ctx, 'DIAGRAM · HEIGHTS EXAGGERATED', 48, 60, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
+  text(ctx, 'Sources: R. Campanella (Tulane); 1895 drainage map', W - 40, H - 20, { size: 20, font: F.reg, align: 'right', color: 'rgba(255,255,255,0.55)' });
+}
+// ---------- New Orleans: rain to lake ----------
+function raintolake(ctx, t, d, p) {
+  navyBg(ctx, t);
+  text(ctx, 'WHERE THE RAIN GOES', W / 2, 120, { size: 52, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.1) });
+  const sea = 520;
+  ctx.fillStyle = '#6E5A3E'; ctx.fillRect(0, 640, 1250, H - 640);
+  // street, drains, pipes, canal, pump, lift, outfall canal, lake
+  ctx.fillStyle = '#3A3F4A'; ctx.fillRect(0, 630, 1250, 14);
+  for (let i = 0; i < 40; i++) { const x = (hash(i) * 1200 + t * 300 * (0.6 + hash(i + 9))) % 1200; const y = ((t * 500 + hash(i + 3) * 600) % 520) + 100; if (y < 620) { ctx.strokeStyle = hexA('#9CC3FF', 0.7); ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x - 6, y + 18); ctx.stroke(); } }
+  ctx.strokeStyle = C.ice; ctx.lineWidth = 16; ctx.beginPath(); ctx.moveTo(80, 700); ctx.lineTo(900, 760); ctx.stroke();
+  for (const x of [150, 400, 650]) { ctx.fillStyle = '#222'; ctx.fillRect(x, 630, 40, 14); ctx.strokeStyle = C.ice; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(x + 20, 644); ctx.lineTo(x + 20, 705); ctx.stroke(); }
+  ctx.fillStyle = hexA(C.ice, 0.7); ctx.fillRect(900, 720, 200, 80);
+  // pump station
+  ctx.fillStyle = '#C9B48A'; ctx.fillRect(1080, 560, 150, 180); text(ctx, 'PUMP', 1155, 660, { size: 30, font: F.head, align: 'center', color: C.ink });
+  // lift pipe up over levee into outfall canal
+  ctx.strokeStyle = C.ice; ctx.lineWidth = 16; ctx.beginPath(); ctx.moveTo(1230, 700); ctx.lineTo(1300, 700); ctx.lineTo(1300, 470); ctx.lineTo(1380, 470); ctx.stroke();
+  ctx.fillStyle = '#7A6A50'; ctx.beginPath(); ctx.moveTo(1260, H); ctx.lineTo(1340, 440); ctx.lineTo(1400, 440); ctx.lineTo(1400, H); ctx.fill();
+  ctx.fillStyle = hexA(C.ice, 0.7); ctx.fillRect(1400, 470, 380, 60); ctx.fillStyle = '#7A6A50'; ctx.fillRect(1400, 530, 520, H - 530);
+  ctx.fillStyle = hexA(C.ice, 0.6); ctx.fillRect(1780, 480, W - 1780, 60);
+  ctx.setLineDash([14, 10]); ctx.strokeStyle = hexA(C.iceL, 0.8); ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(0, sea); ctx.lineTo(W, sea); ctx.stroke(); ctx.setLineDash([]);
+  text(ctx, 'SEA LEVEL', 20, sea - 12, { size: 24, font: F.head, color: C.iceL });
+  // flowing dots
+  const path = [[160, 650], [170, 700], [900, 760], [1080, 740], [1300, 700], [1300, 470], [1400, 480], [1900, 500]];
+  for (let k = 0; k < 18; k++) { const v = ((t * 0.18) + k / 18) % 1; const L = path.length - 1; const f = v * L; const i = Math.min(L - 1, Math.floor(f)); const a = path[i], b = path[i + 1], w = f - i; ctx.fillStyle = '#FFFFFF'; ctx.beginPath(); ctx.arc(lerp(a[0], b[0], w), lerp(a[1], b[1], w), 6, 0, 7); ctx.fill(); }
+  const L2 = (s2, x, y, at) => chip(ctx, s2, x, y, { size: 28, align: 'center', bg: hexA(C.navy3, 0.95), color: C.cream, alpha: fade(t, at) });
+  L2('68,000 STREET DRAINS', 400, 600, 0.4); L2('1,500 MILES OF PIPES', 500, 830, 1.0); L2('~200 MILES OF CANALS', 1000, 850, 1.6); L2('PUMPED UP & OUT', 1300, 400, 2.2); L2('LAKE PONTCHARTRAIN', 1760, 610, 2.8);
+  text(ctx, 'DIAGRAM · NOT TO SCALE · Source: Sewerage & Water Board of New Orleans', 48, 60, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
+}
+// ---------- Old River: the 70/30 split ----------
+function riversplit(ctx, t, d, p) {
+  navyBg(ctx, t);
+  text(ctx, 'OLD RIVER CONTROL', W / 2, 120, { size: 54, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.1) });
+  const u = E.out(clamp(seg(t, 0.5, 2.0)));
+  ctx.lineCap = 'round';
+  const mis = [[960, 200], [960, 420], [1100, 600], [1150, 800], [1300, 1000]], atc = [[960, 420], [760, 600], [640, 800], [560, 1000]];
+  const draw = (pts, w, c, a) => { ctx.strokeStyle = c; ctx.globalAlpha = a; ctx.lineWidth = w; ctx.beginPath(); pts.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.stroke(); ctx.globalAlpha = 1; };
+  draw(mis.slice(0, 2), 60, C.ice, 1); draw(mis.slice(1), lerp(60, 44, u), C.ice, 1); draw(atc, lerp(60, 22, u), '#5FA8D3', 1);
+  ctx.fillStyle = C.yellow; ctx.fillRect(900, 405, 120, 30); text(ctx, 'FLOODGATES', 1040, 430, { size: 30, font: F.head, color: C.yellow });
+  text(ctx, 'MISSISSIPPI', 1180, 300, { size: 34, font: F.head, color: C.cream });
+  text(ctx, '70%', 1250, 700, { size: 90, font: F.head, color: C.cream, alpha: u });
+  text(ctx, '→ BATON ROUGE, NEW ORLEANS', 1210, 760, { size: 28, font: F.bold, color: C.iceL, alpha: u });
+  text(ctx, 'ATCHAFALAYA', 500, 560, { size: 34, font: F.head, align: 'right', color: C.cream });
+  text(ctx, '30%', 560, 720, { size: 90, font: F.head, align: 'right', color: C.cream, alpha: u });
+  text(ctx, 'SHORTER, STEEPER PATH TO THE GULF', 600, 780, { size: 26, font: F.bold, align: 'right', color: C.iceL, alpha: u });
+  text(ctx, 'DIAGRAM · NOT TO SCALE · Source: US Army Corps of Engineers', 48, 60, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
+}
+// ---------- Katrina: I-wall failure ----------
+function iwall(ctx, t, d, p) {
+  navyBg(ctx, t);
+  text(ctx, 'HOW THE CANAL WALLS FAILED (2005)', W / 2, 120, { size: 50, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.1) });
+  const rise = E.out(clamp(seg(t, 0.4, 1.8))), lean = E.inOut(clamp(seg(t, 1.8, 3.2))), fail = E.in(clamp(seg(t, 3.2, 4.2)));
+  const gy = 760, wx = 900, top = 360;
+  // levee
+  ctx.fillStyle = '#7A6A50'; ctx.beginPath(); ctx.moveTo(500, gy); ctx.lineTo(820, 560); ctx.lineTo(980, 560); ctx.lineTo(1400, gy); ctx.lineTo(1400, H); ctx.lineTo(500, H); ctx.fill();
+  ctx.fillStyle = '#6E5A3E'; ctx.fillRect(0, gy, W, H - gy);
+  // canal water (left), rising
+  const wl = lerp(620, 470, rise); ctx.fillStyle = hexA(C.ice, 0.6); ctx.beginPath(); ctx.moveTo(0, wl); ctx.lineTo(lerp(700, 840, rise), wl); ctx.lineTo(500, gy); ctx.lineTo(0, gy); ctx.fill();
+  text(ctx, 'CANAL', 200, wl - 20, { size: 34, font: F.head, color: C.cream });
+  text(ctx, 'CITY', 1650, gy - 30, { size: 34, font: F.head, color: C.cream });
+  // gap
+  if (lean > 0) { ctx.fillStyle = hexA(C.ice, 0.85); ctx.beginPath(); ctx.moveTo(wx - 8, 560); ctx.lineTo(wx - 8 + 40 * lean, 560); ctx.lineTo(wx - 8, 900); ctx.fill(); }
+  // I-wall + sheet pile, leaning then sliding
+  ctx.save(); ctx.translate(wx + 260 * fail, 560); ctx.rotate(0.12 * lean + 0.3 * fail); ctx.fillStyle = '#B9C0C8'; ctx.fillRect(-10, top - 560, 20, 560 - top + 10); ctx.fillStyle = '#7F8790'; ctx.fillRect(-5, 0, 10, 300); ctx.restore();
+  // top-of-wall line
+  ctx.setLineDash([12, 10]); ctx.strokeStyle = C.yellow; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(600, top); ctx.lineTo(1200, top); ctx.stroke(); ctx.setLineDash([]);
+  text(ctx, 'TOP OF THE WALL', 1210, top + 10, { size: 26, font: F.bold, color: C.yellow });
+  if (fail > 0.3) { ctx.fillStyle = hexA(C.ice, 0.7 * fail); ctx.beginPath(); ctx.moveTo(980, 560); ctx.lineTo(1400 + 400 * fail, gy); ctx.lineTo(980, gy); ctx.fill(); }
+  const cap = t < 1.8 ? 'THE WATER RISES — BUT STAYS BELOW THE TOP' : t < 3.2 ? 'IT PUSHES THE WALL AWAY · A GAP OPENS' : 'THE GROUND GIVES OUT · THE WALL FAILS';
+  chip(ctx, cap, W / 2, H - 70, { size: 36, align: 'center' });
+  text(ctx, 'DIAGRAM · NOT TO SCALE · Source: USACE IPET report', 48, 60, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
+}
+module.exports = { bowl, raintolake, riversplit, iwall, cathedral, clay, lakelevel, inch, slope, video, photo, overlays, title, chapter, stats, calendar, split, bars, thermo, ratio, myth, versus, endq, endscreen, sat, globe, pop, fade, fadeOut };
