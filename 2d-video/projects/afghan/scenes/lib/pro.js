@@ -29,7 +29,7 @@ export const W = (info, word, fb, after = -0.3) => { if (typeof word === 'number
 export const SK = { a: '#f1c8a2', b: '#e2b087', c: '#c98d62' };
 const EXPR = {
   neutral: { bl: 0, br: 0, ey: 1, m: 0.15 }, worried: { bl: 9, br: 9, ey: 1.05, m: -0.35 }, angry: { bl: -12, br: -12, ey: 0.9, m: -0.3 },
-  shock: { bl: 14, br: 14, ey: 1.3, m: 0, o: 1 }, smile: { bl: 2, br: 2, ey: 1, m: 0.7 }, sad: { bl: 10, br: 10, ey: 0.95, m: -0.6 }, tired: { bl: 0, br: 0, ey: 0.75, m: -0.1 }, focus: { bl: -5, br: -5, ey: 0.85, m: -0.1 },
+  shock: { bl: 14, br: 14, ey: 1.3, m: 0, o: 1 }, laugh: { bl: 4, br: 4, ey: 1, m: 0.9, arc: 1 }, calm: { bl: 0, br: 0, ey: 1, m: 0.35, arc: 1 }, smile: { bl: 2, br: 2, ey: 1, m: 0.7 }, sad: { bl: 10, br: 10, ey: 0.95, m: -0.6 }, tired: { bl: 0, br: 0, ey: 0.75, m: -0.1 }, focus: { bl: -5, br: -5, ey: 0.85, m: -0.1 },
 };
 // руки: IK по точке кисти; bend ±1 — куда сгиб локтя
 function arm(g, sx, sy, hx, hy, bend, s, o, hold) {
@@ -47,6 +47,10 @@ const POSE = {
   phone: [[-100, -175, 1], [92, -432, 1]], phoneL: [[-92, -432, -1], [100, -175, -1]], point: [[-100, -175, 1], [235, -330, 1]], chin: [[-100, -175, 1], [22, -372, -1]],
   shrug: [[-165, -300, -1], [165, -300, 1]], hips: [[-95, -190, -1], [95, -190, 1]], tea: [[-100, -175, 1], [62, -255, -1]], hover: [[-100, -175, 1], [120, -215, -1]],
   reach: [[-100, -175, 1], [175, -250, -1]], wipe: [[-100, -175, 1], [-20, -470, -1]], back: [[-120, -230, 1], [120, -230, -1]],
+  // новые позы (анимируются через motion.js poseAt): обе руки вверх, «тсс», взмах, объятие, держать перед собой, поднять вверх, стук, стрижка, закрыть лицо
+  cheer: [[-150, -540, -1], [150, -540, 1]], hush: [[-100, -175, 1], [12, -380, -1]], wave: [[-100, -175, 1], [190, -500, 1]], hug: [[-30, -250, 1], [150, -250, -1]],
+  hold: [[-100, -175, 1], [135, -265, -1]], hold2: [[-60, -255, 1], [135, -265, -1]], up: [[-100, -175, 1], [150, -470, -1]], knock: [[-100, -175, 1], [205, -360, 1]],
+  cut: [[-40, -300, 1], [150, -420, -1]], face: [[-30, -390, 1], [30, -390, -1]], sweep: [[60, -200, 1], [130, -240, -1]], fist: [[-100, -175, 1], [8, -330, -1]],
 };
 function hair(g, o, f) {
   const c = o.hairC || '#3e2c22';
@@ -78,9 +82,12 @@ export function fig(g, x, y, s, o, t) {
   const ex = EXPR[o.expr] || EXPR.neutral, f = o.turn * 26, seed = o.seed ?? 1;
   const br = Math.sin(t * 2.1 + seed) * 0.008, bob = Math.sin(t * 2.1 + seed) * 2;
   g.save(); g.translate(x, y); g.scale(s * (o.flip ? -1 : 1), s);
-  if (!o.noShadow) blob(g, 0, 0, 120, 22, 0.3);
-  if (!o.seated) { ln(g, [[-34, -140], [-38, -10]], 11); ln(g, [[34, -140], [38, -10]], 11); el(g, -46, -4, 24, 12, '#1d1c1a', 3); el(g, 46, -4, 24, 12, '#1d1c1a', 3); }
+  if (!o.noShadow) blob(g, 0, 0, 120 * (1 - clamp((o.lift || 0) / 400) * 0.5), 22, 0.3);
+  if (o.lift) g.translate(0, -o.lift);
+  if (!o.seated && o.step == null) { ln(g, [[-34, -140], [-38, -10]], 11); ln(g, [[34, -140], [38, -10]], 11); el(g, -46, -4, 24, 12, '#1d1c1a', 3); el(g, 46, -4, 24, 12, '#1d1c1a', 3); }
+  else if (!o.seated) { const ph = o.step, up = Math.abs(Math.sin(ph)) * 7; g.translate(0, -up); [[-1, 0], [1, Math.PI]].forEach(([sd, d]) => { const sw = Math.sin(ph + d), fx = sd * 30 + sw * 46, fy = -10 + up - Math.max(0, Math.cos(ph + d)) * 20; ln(g, [[sd * 34, -140], [fx, fy]], 11); el(g, fx - 8 * sd + sw * 4, fy + 6, 24, 12, '#1d1c1a', 3); }); }
   g.translate(0, bob);
+  if (o.bow) { g.translate(0, -140); g.rotate(o.bow); g.translate(0, 140); }
   if (o.pack) { rr(g, -88, -400, 176, 250, 34); fo(g, vg(g, -400, 250, o.pack, 0.2)); rr(g, -118, -446, 236, 52, 26); fo(g, vg(g, -446, 52, '#d9c9a0', 0.2)); ln(g, [[-60, -446], [-60, -394]], 4, '#8a7a50'); ln(g, [[60, -446], [60, -394]], 4, '#8a7a50'); }
   g.save(); g.translate(0, -140); g.scale(1, 1 + br); g.translate(0, 140);
   // торс
@@ -131,7 +138,8 @@ export function fig(g, x, y, s, o, t) {
   if (o.beard) { g.beginPath(); g.moveTo(-96 + f * 0.4, -420); g.quadraticCurveTo(-90 + f, -320, f, -318); g.quadraticCurveTo(90 + f, -320, 96 + f * 0.4, -420); g.quadraticCurveTo(50 + f, -380, f, -392); g.quadraticCurveTo(-50 + f, -380, -96 + f * 0.4, -420); g.closePath(); fo(g, vg(g, -420, 100, o.beardC || o.hairC || '#4a3426', 0.15), 4); }
   // глаза
   const blink = ((t + seed * 1.7) % 3.6) < 0.12 ? 0.12 : 1, ey = ex.ey * blink, lx = clamp(o.look, -1, 1) * 6 + f * 0.25, ly = (o.lookY ?? 0) * 5;
-  [-34, 34].forEach((dx, i) => { g.save(); g.translate(dx + f, -448); g.scale(1, ey); g.beginPath(); g.ellipse(0, 0, 15, 17, 0, 0, Math.PI * 2); fo(g, '#fbf8f1', 3.5); el(g, lx, ly + 1, 7.5, 8.5, '#1a1614', 0); el(g, lx + 2.5, ly - 2.5, 2.4, 2.4, '#fff', 0); g.restore(); });
+  if (ex.arc || o.eyesShut) [-34, 34].forEach((dx) => { g.beginPath(); if (ex.arc && !o.eyesShut) g.arc(dx + f, -440, 15, Math.PI * 1.1, Math.PI * 1.9); else g.arc(dx + f, -452, 15, Math.PI * 0.15, Math.PI * 0.85); g.lineWidth = 5; g.strokeStyle = OL; g.lineCap = 'round'; g.stroke(); });
+  else [-34, 34].forEach((dx, i) => { g.save(); g.translate(dx + f, -448); g.scale(1, ey); g.beginPath(); g.ellipse(0, 0, 15, 17, 0, 0, Math.PI * 2); fo(g, '#fbf8f1', 3.5); el(g, lx, ly + 1, 7.5, 8.5, '#1a1614', 0); el(g, lx + 2.5, ly - 2.5, 2.4, 2.4, '#fff', 0); g.restore(); });
   // брови
   const bw = o.brow ?? 7; ln(g, [[-54 + f, -478 - ex.bl * 0 - 4], [-16 + f, -480 - ex.bl]], bw, o.browC || shade(o.hairC || '#3e2c22', -0.1)); ln(g, [[54 + f, -478 - 4], [16 + f, -480 - ex.br]], bw, o.browC || shade(o.hairC || '#3e2c22', -0.1));
   if (o.glasses) { g.save(); g.lineWidth = 4; g.strokeStyle = '#3a2b22'; g.beginPath(); g.arc(-34 + f, -448, 27, 0, Math.PI * 2); g.stroke(); g.beginPath(); g.arc(34 + f, -448, 27, 0, Math.PI * 2); g.stroke(); ln(g, [[-7 + f, -452], [7 + f, -452]], 4, '#3a2b22'); g.restore(); }
@@ -142,6 +150,8 @@ export function fig(g, x, y, s, o, t) {
   const mo = Math.max(talk, ex.o ? 0.9 : 0, o.mouth ?? 0), mx = f * 1.05, my = -382;
   if (mo > 0.12) { g.beginPath(); g.ellipse(mx, my, ex.o ? 16 : 22, 6 + 16 * mo, 0, 0, Math.PI * 2); fo(g, '#5a1f1c', 4); g.save(); g.clip(); el(g, mx, my + 12 * mo, 14, 8, '#d0585a', 0); g.fillStyle = '#fff'; g.fillRect(mx - 16, my - 6 - 16 * mo, 32, 9); g.restore(); }
   else { const c = ex.m * 12; g.beginPath(); g.moveTo(mx - 22, my - c * 0.3); g.quadraticCurveTo(mx, my + c, mx + 22, my - c * 0.3); g.lineWidth = 4.5; g.strokeStyle = OL; g.lineCap = 'round'; g.stroke(); }
+  if (o.tear) { const k = (t * 0.5) % 1; g.save(); g.globalAlpha = o.tear * (1 - k * 0.5); g.beginPath(); const sx = -34 + f, sy = -424 + k * 60; g.moveTo(sx, sy - 12); g.quadraticCurveTo(sx + 9, sy + 4, sx, sy + 8); g.quadraticCurveTo(sx - 9, sy + 4, sx, sy - 12); fo(g, '#bfe6ff', 3); g.restore(); }
+  if (o.veil > 0) { const top = lerp(-332, -424, clamp(o.veil)), vc = o.veilC || o.scarf || '#3a3a4a'; g.save(); g.beginPath(); g.ellipse(0, hy, 112, 118, 0, 0, Math.PI * 2); g.clip(); g.beginPath(); g.moveTo(-130, top + 10); g.quadraticCurveTo(f, top - 8, 130, top + 10); g.lineTo(130, -300); g.lineTo(-130, -300); g.closePath(); fo(g, vg(g, top, 120, vc, 0.12), 0); g.beginPath(); g.moveTo(-130, top + 10); g.quadraticCurveTo(f, top - 8, 130, top + 10); g.lineWidth = 5; g.strokeStyle = OL; g.stroke(); for (let k = -1; k <= 1; k++) ln(g, [[k * 40 + f * 0.5, top + 16], [k * 46 + f * 0.5, -334]], 3, shade(vc, -0.25)); g.restore(); if (top < -336) { g.beginPath(); g.moveTo(-96, -350); g.quadraticCurveTo(0, -300, 96, -350); g.lineTo(80, -316); g.quadraticCurveTo(0, -282, -80, -316); g.closePath(); fo(g, vg(g, -350, 60, vc, 0.12), 4); } }
   if (o.sweat) { const k = (t * 0.7) % 1; g.save(); g.globalAlpha = 1 - k * 0.6; g.beginPath(); const sx = 92, sy = -500 + k * 70; g.moveTo(sx, sy - 14); g.quadraticCurveTo(sx + 11, sy + 4, sx, sy + 9); g.quadraticCurveTo(sx - 11, sy + 4, sx, sy - 14); fo(g, '#bfe6ff', 3); g.restore(); }
   if (o.hair === 'helmet') { g.beginPath(); g.arc(0, -446, 150, 0, Math.PI * 2); g.fillStyle = 'rgba(190,225,255,.22)'; g.fill(); g.lineWidth = 8; g.strokeStyle = OL; g.stroke(); g.beginPath(); g.arc(-40, -500, 70, 3.6, 4.6); g.lineWidth = 10; g.strokeStyle = 'rgba(255,255,255,.7)'; g.stroke(); bx(g, -90, -310, 180, 26, '#c8c2b4', 10, 4); }
   g.restore();
