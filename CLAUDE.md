@@ -1,5 +1,7 @@
 # Sofia Studio — notes for the next session
 
+> **Channel «Мысленный эксперимент» + Pikabu (Nov 2026): read `ru_geo/HANDOFF_MYSL.md` first.**
+
 > **English TikTok channel (money/business stories):** read `CHANNEL.md` first — it has the rules, pipeline, voice and checklist for those episodes. The notes below are for the Sofia kids' channel.
 
 > **Russian geography channel (style of GOLOVOLOM TV, long-form 16:9):** read `ru_geo/STYLE.md` — reference analysis, style rules (1–26) and the pipeline (`ru_geo/norway_pilot/` = working pilot v4, 3:38, approved direction; big data via `sh ru_geo/fetch_data.sh` + `python3 ru_geo/norway_pilot/fetch_media.py`).
