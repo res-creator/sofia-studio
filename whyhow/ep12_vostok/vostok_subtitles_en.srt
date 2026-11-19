@@ -1,0 +1,1054 @@
+1
+00:00:00,900 --> 00:00:02,790
+April twelfth, nineteen eighty-two.
+
+2
+00:00:02,830 --> 00:00:06,770
+Four in the morning, at Vostok Station,
+in the middle of Antarctica.
+
+3
+00:00:07,560 --> 00:00:09,750
+Outside, it is far below minus fifty-five.
+
+4
+00:00:10,200 --> 00:00:12,890
+In eleven days, the sun will
+set for four months.
+
+5
+00:00:14,130 --> 00:00:16,300
+A power technician wakes up to smoke.
+
+6
+00:00:16,510 --> 00:00:18,260
+The power station is on fire.
+
+7
+00:00:18,530 --> 00:00:21,000
+In about fifteen minutes, the whole
+building is burning.
+
+8
+00:00:21,310 --> 00:00:23,280
+The fire extinguishers barely work.
+
+9
+00:00:24,404 --> 00:00:26,614
+By morning, the station has
+no electricity,
+
+10
+00:00:26,924 --> 00:00:29,874
+no heating, and no power to
+melt snow for water.
+
+11
+00:00:30,184 --> 00:00:31,274
+One man is dead.
+
+12
+00:00:31,544 --> 00:00:32,694
+Twenty are left alive.
+
+13
+00:00:33,846 --> 00:00:35,306
+And nobody can come for them.
+
+14
+00:00:35,346 --> 00:00:36,516
+Not for seven months.
+
+15
+00:00:37,304 --> 00:00:41,814
+Vostok is where the coldest air temperature
+ever measured on Earth was recorded:
+
+16
+00:00:42,064 --> 00:00:44,194
+minus eighty-nine point two Celsius.
+
+17
+00:00:44,744 --> 00:00:47,114
+That's minus a hundred and
+twenty-eight Fahrenheit.
+
+18
+00:00:47,584 --> 00:00:50,654
+People have wintered there almost every
+year since nineteen fifty-seven.
+
+19
+00:00:51,104 --> 00:00:54,114
+So how do people survive at the
+coldest place ever measured?
+
+20
+00:00:54,761 --> 00:00:58,291
+The obvious answer is technology:
+power plants, heating.
+
+21
+00:00:58,541 --> 00:01:01,621
+But in nineteen eighty-two, those
+twenty men lost all of it,
+
+22
+00:01:01,661 --> 00:01:03,391
+and they still got through the winter.
+
+23
+00:01:04,594 --> 00:01:06,044
+The second answer: rescue.
+
+24
+00:01:06,314 --> 00:01:08,824
+If something goes wrong, you
+fly people out.
+
+25
+00:01:09,094 --> 00:01:11,644
+But at Vostok, for about nine
+months a year,
+
+26
+00:01:11,734 --> 00:01:14,484
+no plane or tractor is
+supposed to come at all.
+
+27
+00:01:15,591 --> 00:01:16,681
+So it's something else.
+
+28
+00:01:16,951 --> 00:01:17,941
+First, why here.
+
+29
+00:01:18,211 --> 00:01:20,921
+Then, what this place does to a
+body and to a machine.
+
+30
+00:01:21,211 --> 00:01:23,161
+Then we'll go back to the
+night of the fire.
+
+31
+00:01:23,391 --> 00:01:26,131
+And at the end, we'll see the lesson
+Vostok learned from it,
+
+32
+00:01:26,171 --> 00:01:28,401
+which is still shaping the
+station right now.
+
+33
+00:01:32,945 --> 00:01:37,915
+In the nineteen fifties, the world's scientists
+planned the International Geophysical Year.
+
+34
+00:01:38,465 --> 00:01:39,995
+America took the South Pole.
+
+35
+00:01:40,185 --> 00:01:43,555
+So the Soviet Union took the two
+other poles nobody wanted:
+
+36
+00:01:43,705 --> 00:01:47,355
+the South Geomagnetic Pole, and the
+Pole of Inaccessibility.
+
+37
+00:01:48,532 --> 00:01:50,382
+Vostok was built on the first.
+
+38
+00:01:50,832 --> 00:01:52,962
+On December sixteenth,
+nineteen fifty-seven,
+
+39
+00:01:53,352 --> 00:01:56,492
+a tractor train arrived and set up
+camp, on flat snow,
+
+40
+00:01:56,532 --> 00:01:59,082
+three and a half kilometres
+above sea level.
+
+41
+00:01:59,252 --> 00:02:01,442
+That's about eleven thousand
+five hundred feet.
+
+42
+00:02:02,592 --> 00:02:06,602
+The nearest coast, at Mirny, was about
+fourteen hundred kilometres away.
+
+43
+00:02:06,952 --> 00:02:09,582
+That's London to Rome, or
+Chicago to Denver.
+
+44
+00:02:09,832 --> 00:02:10,882
+And there was no road.
+
+45
+00:02:11,212 --> 00:02:12,422
+Only tracks in the snow.
+
+46
+00:02:13,670 --> 00:02:16,800
+The first winter, the thermometer
+fell to minus eighty-seven.
+
+47
+00:02:17,310 --> 00:02:20,760
+In nineteen sixty, it reached minus
+eighty-eight point three,
+
+48
+00:02:20,990 --> 00:02:21,780
+a world record.
+
+49
+00:02:22,859 --> 00:02:25,659
+That winter, the station
+chief, Vasily Sidorov,
+
+50
+00:02:25,699 --> 00:02:27,709
+told reporters what the cold did.
+
+51
+00:02:28,199 --> 00:02:31,909
+Diesel fuel turned into a sticky mass.
+Antifreeze crystallised.
+
+52
+00:02:32,139 --> 00:02:33,189
+Metal became brittle.
+
+53
+00:02:34,393 --> 00:02:37,263
+Then the frame of the main diesel
+generator cracked.
+
+54
+00:02:37,493 --> 00:02:38,543
+They could not weld it.
+
+55
+00:02:38,633 --> 00:02:41,683
+At that height, there was not enough
+oxygen for the welding torch.
+
+56
+00:02:42,843 --> 00:02:44,213
+That was the first warning.
+
+57
+00:02:44,443 --> 00:02:47,033
+At Vostok, the diesel is not
+just one machine.
+
+58
+00:02:47,363 --> 00:02:49,233
+It's light, heat and water at once.
+
+59
+00:02:52,220 --> 00:02:54,410
+Even before the cold, there is the air.
+
+60
+00:02:54,700 --> 00:02:56,990
+The station sits at three and a
+half thousand metres,
+
+61
+00:02:57,160 --> 00:03:01,210
+but the polar air is so thin that your
+lungs think it's four thousand.
+
+62
+00:03:01,320 --> 00:03:04,450
+There is nearly forty percent less
+oxygen in every breath.
+
+63
+00:03:05,672 --> 00:03:09,042
+New arrivals get headaches,
+dizziness, and trouble sleeping.
+
+64
+00:03:09,432 --> 00:03:14,392
+A station doctor, Sergey Bushmanov, says
+people often lose five to ten kilos,
+
+65
+00:03:14,432 --> 00:03:16,522
+ten to twenty pounds, in
+their first month.
+
+66
+00:03:17,634 --> 00:03:18,484
+Then the rules.
+
+67
+00:03:18,654 --> 00:03:22,844
+At minus seventy and below, you may not stay
+outside for more than ten minutes.
+
+68
+00:03:23,214 --> 00:03:27,504
+A mask is compulsory, because one deep
+breath can frostbite your airways.
+
+69
+00:03:27,694 --> 00:03:31,044
+And at least half of every new crew must
+have wintered at Vostok before.
+
+70
+00:03:32,291 --> 00:03:33,991
+There is no liquid water here.
+
+71
+00:03:34,031 --> 00:03:35,741
+Every drop starts as snow.
+
+72
+00:03:36,031 --> 00:03:39,161
+The crew cuts blocks from a snow
+quarry, carries them inside,
+
+73
+00:03:39,291 --> 00:03:41,181
+and melts them, with heat from the diesel.
+
+74
+00:03:42,399 --> 00:03:46,189
+And from late April to late August, the
+sun does not rise at all.
+
+75
+00:03:46,359 --> 00:03:48,289
+That is when the real cold comes.
+
+76
+00:03:48,479 --> 00:03:51,449
+In August, the average temperature
+is minus sixty-eight.
+
+77
+00:03:52,793 --> 00:03:54,363
+That's why the planes stop.
+
+78
+00:03:54,753 --> 00:03:59,263
+From late February to mid-November, the air at
+Vostok stays below minus fifty-five.
+
+79
+00:03:59,633 --> 00:04:02,483
+Too cold for any plane or
+tractor to come in.
+
+80
+00:04:03,543 --> 00:04:08,093
+So every summer, everything the station needs
+for winter has to arrive by road,
+
+81
+00:04:08,563 --> 00:04:11,333
+fourteen hundred kilometres by
+tractor across the ice.
+
+82
+00:04:11,903 --> 00:04:14,873
+Today the trains leave from Progress
+Station on the coast.
+
+83
+00:04:16,100 --> 00:04:18,670
+The tractors run on the same
+fuel they carry.
+
+84
+00:04:18,960 --> 00:04:21,130
+About a third of it is burned
+on the way there.
+
+85
+00:04:21,721 --> 00:04:23,711
+And when the trains fail to bring enough,
+
+86
+00:04:23,921 --> 00:04:25,211
+Vostok simply closes.
+
+87
+00:04:25,621 --> 00:04:28,081
+It has been shut for the winter
+at least three times,
+
+88
+00:04:28,121 --> 00:04:30,011
+because the fuel did not arrive.
+
+89
+00:04:31,166 --> 00:04:34,176
+So the whole station lives on
+one thing: diesel,
+
+90
+00:04:34,246 --> 00:04:37,016
+turned into heat and light by
+one power station.
+
+91
+00:04:37,406 --> 00:04:40,596
+And in nineteen eighty-two, that
+power station burned down.
+
+92
+00:04:43,696 --> 00:04:49,006
+In January nineteen eighty-two, the twenty-seventh Soviet
+expedition arrived at Vostok. Twenty-one men.
+
+93
+00:04:49,156 --> 00:04:50,616
+Their leader was Pyotr Astakhov.
+
+94
+00:04:50,656 --> 00:04:52,966
+He had led Vostok before, and
+Americans knew him.
+
+95
+00:04:53,256 --> 00:04:55,386
+In nineteen sixty-seven,
+according to his biography,
+
+96
+00:04:55,536 --> 00:04:58,256
+he climbed twenty-seven metres up a
+radio mast at the South Pole,
+
+97
+00:04:58,296 --> 00:05:00,246
+at minus seventy, to fix an antenna.
+
+98
+00:05:00,556 --> 00:05:02,926
+There's an Astakhov Glacier in
+Antarctica today.
+
+99
+00:05:03,464 --> 00:05:05,314
+In March, one of them fell ill.
+
+100
+00:05:05,704 --> 00:05:08,934
+A plane flew in at below minus
+sixty to take him out.
+
+101
+00:05:09,244 --> 00:05:13,054
+The doctor's notes call it the only flight
+like that in Vostok's history.
+
+102
+00:05:13,324 --> 00:05:15,654
+Then the last plane left, and
+the winter began.
+
+103
+00:05:16,849 --> 00:05:20,449
+On April twelfth, a power
+technician, Sergei Kuznetsov,
+
+104
+00:05:20,489 --> 00:05:21,579
+woke up to smoke.
+
+105
+00:05:21,949 --> 00:05:26,379
+The fire probably started in the wiring of a
+small annex next to the machine hall,
+
+106
+00:05:26,449 --> 00:05:27,679
+where the mechanics slept.
+
+107
+00:05:28,865 --> 00:05:31,375
+The head of the power station,
+Alexei Karpenko,
+
+108
+00:05:31,505 --> 00:05:33,195
+went in to shut down the diesels.
+
+109
+00:05:33,465 --> 00:05:34,655
+He died in the smoke.
+
+110
+00:05:35,606 --> 00:05:39,316
+The others threw snow and fired
+extinguishers. Nothing worked.
+
+111
+00:05:39,606 --> 00:05:41,016
+The aluminium building melted.
+
+112
+00:05:41,226 --> 00:05:42,656
+All the generators were lost.
+
+113
+00:05:43,650 --> 00:05:45,120
+But one thing went their way.
+
+114
+00:05:45,270 --> 00:05:48,340
+The wind changed, and the flames
+missed the fuel store,
+
+115
+00:05:48,470 --> 00:05:50,220
+dozens of barrels of diesel.
+
+116
+00:05:50,610 --> 00:05:53,220
+The doctor, Arkady Maksimov, wrote later:
+
+117
+00:05:53,350 --> 00:05:55,820
+without fuel, we would have had no
+chance of surviving.
+
+118
+00:05:57,109 --> 00:05:59,889
+Now the station was cold and dark,
+in the polar night,
+
+119
+00:05:59,929 --> 00:06:01,599
+and nobody in the world knew.
+
+120
+00:06:02,400 --> 00:06:07,030
+A driller, Boris Moiseev, got a small
+generator from the drilling rig working.
+
+121
+00:06:07,260 --> 00:06:08,850
+It was just enough for the radio.
+
+122
+00:06:09,460 --> 00:06:13,270
+On the evening of April thirteenth, about
+sixteen hours after the fire,
+
+123
+00:06:13,520 --> 00:06:15,890
+Vostok finally reached the outside world.
+
+124
+00:06:17,050 --> 00:06:18,860
+Evacuation was impossible.
+
+125
+00:06:19,190 --> 00:06:21,900
+No plane could land, and no
+tractor could get through.
+
+126
+00:06:21,950 --> 00:06:23,930
+So the men made a decision:
+they would stay,
+
+127
+00:06:23,970 --> 00:06:25,080
+and finish the winter.
+
+128
+00:06:26,310 --> 00:06:29,600
+They found an old kerosene stove and
+heated the mess room.
+
+129
+00:06:29,910 --> 00:06:32,440
+Then they made five stoves out
+of gas cylinders,
+
+130
+00:06:32,570 --> 00:06:34,260
+burning diesel drip by drip.
+
+131
+00:06:35,351 --> 00:06:38,301
+Next to a stove, it was plus
+twenty-five at head height.
+
+132
+00:06:38,551 --> 00:06:40,981
+Two metres away, by the wall, it was zero.
+
+133
+00:06:41,271 --> 00:06:43,321
+They took turns at night to
+watch the fire.
+
+134
+00:06:44,417 --> 00:06:48,027
+They made candles from paraffin, with
+wicks of asbestos cord.
+
+135
+00:06:48,257 --> 00:06:50,707
+They melted snow for water on the stoves.
+
+136
+00:06:51,057 --> 00:06:54,947
+The cook baked bread by sticking the dough
+to the inside walls of a stove.
+
+137
+00:06:56,163 --> 00:06:57,353
+And the work went on.
+
+138
+00:06:57,503 --> 00:07:01,373
+The meteorologist, Vello Park, kept up
+the full weather programme,
+
+139
+00:07:01,523 --> 00:07:06,153
+every observation, even after his bosses
+cancelled all science at Vostok.
+
+140
+00:07:07,290 --> 00:07:09,400
+Outside, the winter fell to
+minus eighty-five.
+
+141
+00:07:10,243 --> 00:07:14,113
+Later, Moiseev revived an older
+generator from cold storage,
+
+142
+00:07:14,203 --> 00:07:15,913
+so they had more power for light.
+
+143
+00:07:16,789 --> 00:07:19,689
+In early November, the first
+plane of spring flew in,
+
+144
+00:07:19,729 --> 00:07:22,679
+with a new generator and four men
+from the next crew.
+
+145
+00:07:23,109 --> 00:07:27,859
+About two weeks later, a tractor train arrived
+with materials for a new power station.
+
+146
+00:07:29,084 --> 00:07:32,674
+From the fire to the tractor train: two
+hundred and twenty-seven days.
+
+147
+00:07:33,523 --> 00:07:35,313
+Every man got a state award.
+
+148
+00:07:35,743 --> 00:07:39,013
+Astakhov was nominated for Hero
+of the Soviet Union,
+
+149
+00:07:39,063 --> 00:07:42,673
+but, by his biography's account,
+powerful people blocked it.
+
+150
+00:07:45,715 --> 00:07:48,525
+One year later, Vostok broke a
+record that still stands.
+
+151
+00:07:49,300 --> 00:07:53,600
+In July nineteen eighty-three, the next crew
+watched the temperature fall about two
+
+152
+00:07:53,640 --> 00:07:55,890
+and a half degrees every day, for a week.
+
+153
+00:07:56,913 --> 00:08:00,223
+On July twenty-first, at five
+forty-five in the morning,
+
+154
+00:08:00,433 --> 00:08:04,653
+Moscow time, the meteorologists on
+duty, Karpyuk and Lazarev,
+
+155
+00:08:04,693 --> 00:08:07,743
+read the thermometer: minus
+eighty-nine point two.
+
+156
+00:08:08,033 --> 00:08:10,063
+Minus a hundred and
+twenty-eight Fahrenheit.
+
+157
+00:08:11,324 --> 00:08:14,434
+That's seventy degrees Celsius
+colder than your freezer.
+
+158
+00:08:14,684 --> 00:08:18,854
+And more than twenty degrees colder than the
+coldest towns where people live,
+
+159
+00:08:18,944 --> 00:08:20,714
+like Oymyakon, in Siberia.
+
+160
+00:08:22,125 --> 00:08:24,175
+Scientists later found out why.
+
+161
+00:08:24,445 --> 00:08:27,575
+For a whole week, there was no
+cloud and almost no wind,
+
+162
+00:08:27,685 --> 00:08:30,485
+and a pool of the coldest air sat
+right over the station,
+
+163
+00:08:30,525 --> 00:08:32,375
+with no warm air getting in.
+
+164
+00:08:33,516 --> 00:08:38,136
+Satellites have since seen colder spots:
+small hollows on the high ice ridge,
+
+165
+00:08:38,176 --> 00:08:41,206
+where the snow surface reached
+about minus ninety-eight.
+
+166
+00:08:41,536 --> 00:08:43,526
+But that is the snow, not the air.
+
+167
+00:08:43,716 --> 00:08:46,446
+The coldest air ever measured
+is still Vostok's.
+
+168
+00:08:47,470 --> 00:08:51,000
+In a normal year, Vostok averages
+about minus fifty-five.
+
+169
+00:08:51,470 --> 00:08:54,060
+By some estimates, that's about
+the average on Mars.
+
+170
+00:08:55,113 --> 00:08:58,203
+But the strangest thing about
+Vostok is not in the air.
+
+171
+00:08:58,373 --> 00:08:59,263
+It's under the floor.
+
+172
+00:09:02,078 --> 00:09:04,988
+Under nearly four kilometres of
+ice, there is a lake.
+
+173
+00:09:05,338 --> 00:09:08,368
+Lake Vostok is two hundred and
+forty kilometres long,
+
+174
+00:09:08,498 --> 00:09:13,008
+nearly the size of Lake Ontario, kept liquid
+by the weight of the ice above it.
+
+175
+00:09:13,218 --> 00:09:16,128
+Reaching it is why scientists put
+up with all this cold.
+
+176
+00:09:16,815 --> 00:09:19,665
+For decades, the crew drilled
+down, collecting ice.
+
+177
+00:09:20,095 --> 00:09:22,235
+Russia, France and America
+drilled together,
+
+178
+00:09:22,275 --> 00:09:24,045
+and split the ice three ways.
+
+179
+00:09:24,355 --> 00:09:27,605
+The cores held air from more than four
+hundred thousand years ago.
+
+180
+00:09:27,735 --> 00:09:31,235
+They showed that carbon dioxide and
+temperature rose and fell together,
+
+181
+00:09:31,275 --> 00:09:32,765
+through four ice ages.
+
+182
+00:09:33,867 --> 00:09:36,977
+In twenty twelve, the drill finally
+reached the lake water.
+
+183
+00:09:37,147 --> 00:09:38,137
+Did they find life?
+
+184
+00:09:38,547 --> 00:09:41,257
+Reports of a new bacterium turned
+out to be contamination.
+
+185
+00:09:41,827 --> 00:09:45,097
+A Russian geneticist, Vladimir
+Korolyov, put it bluntly:
+
+186
+00:09:45,367 --> 00:09:46,537
+all of them were contaminants.
+
+187
+00:09:46,867 --> 00:09:49,297
+So far, nothing alive has been confirmed.
+
+188
+00:09:51,976 --> 00:09:55,086
+So how do people survive at the
+coldest place ever measured?
+
+189
+00:09:55,875 --> 00:09:57,205
+Not with buildings alone.
+
+190
+00:09:57,455 --> 00:09:59,875
+In nineteen eighty-two, the
+power station burned,
+
+191
+00:09:59,915 --> 00:10:01,065
+and the men survived.
+
+192
+00:10:01,155 --> 00:10:02,185
+And not with rescue.
+
+193
+00:10:02,415 --> 00:10:03,025
+There was none.
+
+194
+00:10:04,038 --> 00:10:06,328
+Vostok survives on three things.
+
+195
+00:10:06,738 --> 00:10:09,568
+Fuel, dragged fourteen hundred
+kilometres by tractor.
+
+196
+00:10:09,758 --> 00:10:11,508
+A crew where half have done it before.
+
+197
+00:10:11,638 --> 00:10:12,948
+And a spare for everything.
+
+198
+00:10:14,121 --> 00:10:16,601
+In nineteen eighty-two,
+Vostok had the fuel,
+
+199
+00:10:16,641 --> 00:10:17,791
+and it had the people.
+
+200
+00:10:18,081 --> 00:10:19,451
+What it didn't have was a spare.
+
+201
+00:10:19,961 --> 00:10:22,751
+Light, heat and water all lived
+in one building.
+
+202
+00:10:22,921 --> 00:10:25,551
+The only spares were the ones they
+dug out of the snow.
+
+203
+00:10:26,762 --> 00:10:28,912
+The new Vostok was built on that lesson.
+
+204
+00:10:29,362 --> 00:10:32,912
+In January twenty twenty-four, a new
+winter complex started work:
+
+205
+00:10:33,102 --> 00:10:36,192
+five blue modules, a hundred and
+forty metres long,
+
+206
+00:10:36,342 --> 00:10:39,302
+longer than a football field,
+standing on thirty-six legs,
+
+207
+00:10:39,342 --> 00:10:40,972
+so the snow blows underneath.
+
+208
+00:10:41,633 --> 00:10:43,863
+Its walls are eighty centimetres thick.
+
+209
+00:10:44,033 --> 00:10:46,463
+It has a sauna, a gym and a cinema.
+
+210
+00:10:46,813 --> 00:10:48,503
+It has four main generators.
+
+211
+00:10:48,673 --> 00:10:51,093
+And two backup generators, in a
+separate module,
+
+212
+00:10:51,133 --> 00:10:52,903
+far from the main power plant.
+
+213
+00:10:54,072 --> 00:10:56,342
+Getting it there took more
+than three years.
+
+214
+00:10:56,552 --> 00:10:59,982
+The first ship broke a propeller off
+Angola and had to turn back.
+
+215
+00:11:00,332 --> 00:11:02,712
+The modules finally crossed
+the ice by tractor,
+
+216
+00:11:02,752 --> 00:11:04,362
+the same way as the fuel.
+
+217
+00:11:05,571 --> 00:11:08,481
+And at the end of every summer, the
+last plane still leaves,
+
+218
+00:11:08,591 --> 00:11:10,381
+and the station is on its own again.
+
+219
+00:11:11,243 --> 00:11:15,933
+Would you spend one winter at Vostok, knowing
+that no plane can come for nine months?
+
+220
+00:11:16,063 --> 00:11:17,093
+Tell me in the comments.
+
+221
+00:11:17,423 --> 00:11:19,793
+And tell me which place we
+should explain next.
+
+222
+00:11:20,924 --> 00:11:24,084
+Alexei Karpenko is buried on a
+small island near Mirny,
+
+223
+00:11:24,124 --> 00:11:25,054
+on the coast.
+
+224
+00:11:25,584 --> 00:11:28,994
+And every April, when the last plane has
+gone and the sun goes down,
+
+225
+00:11:29,044 --> 00:11:31,774
+the Vostok crew knows exactly
+what keeps them alive.
+
+226
+00:11:32,064 --> 00:11:32,794
+It's a fire.
+
+227
+00:11:33,084 --> 00:11:34,804
+The right kind of fire, in
+the right place,
+
+228
+00:11:34,844 --> 00:11:35,654
+with a spare.
+
+229
+00:11:35,944 --> 00:11:37,094
+This was How It's Run.

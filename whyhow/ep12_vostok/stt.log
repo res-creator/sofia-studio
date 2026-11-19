@@ -1,0 +1,64 @@
+A001 0.776 replace: twelfth nineteen eighty two four -> 12th 1982 4 | replace: fifty five -> 55 | replace: eleven -> 11 | replace: four -> 4
+A002 0.963 replace: fifteen -> 15
+A003 1.000 
+A004 1.000 
+A005 0.822 replace: eighty nine point two -> 89 2 | replace: a hundred and twenty eight -> 128 | replace: nineteen fifty seven -> 1957
+A006 0.885 replace: nineteen eighty two -> 1982 | replace: twenty -> 20
+A007 1.000 
+A008 1.000 
+A009 0.959 replace: nineteen fifties -> 1950s
+A010 0.714 replace: sixteenth nineteen fifty seven -> 16th 1957 | replace: three and a half kilometres -> 3 5 kilometers | replace: eleven thousand five hundred -> 11 500
+A011 0.897 replace: fourteen hundred kilometres -> 1 400 kilometers
+A012 0.714 replace: eighty seven -> 87 | replace: nineteen sixty -> 1960 | replace: eighty eight point three -> 88 3
+A013 0.920 replace: sidorov -> sidharov | replace: crystallised -> crystallized
+A014 1.000 
+A015 1.000 
+A016 0.800 replace: three and a half thousand metres -> 3 500 meters | replace: four thousand -> 4 000 | replace: forty percent -> 40
+A017 0.828 replace: sergey -> sergei | replace: five -> 5 | replace: ten -> 10 | replace: ten -> 10 | replace: twenty -> 20
+A018 0.955 replace: seventy -> 70 | replace: ten -> 10
+A018B 1.000 
+A019 0.949 replace: sixty eight -> 68
+A020 0.949 replace: fifty five -> 55
+A021 0.921 replace: fourteen hundred kilometres -> 1400 kilometers
+A022 1.000 
+A023 1.000 
+A024 0.926 replace: nineteen eighty two -> 1982
+A025 0.787 delete: in ->  | replace: nineteen eighty two -> 1982 | replace: twenty seventh -> 27th | replace: twenty one -> 21 | replace: astakhov -> astohov | replace: nineteen sixty seven -> 1967 | replace: twenty seven metres -> 27 meters | replace: seventy -> 70 | replace: astakhov -> astohov
+A026 0.976 replace: sixty -> 60
+A027 0.969 replace: twelfth -> 12th
+A028 0.950 replace: karpenko -> carpenko
+A029 1.000 
+A030 0.973 replace: maksimov -> maksimef
+A031 1.000 
+A032 0.921 replace: moiseev -> moiseif | replace: thirteenth -> 13th | replace: sixteen -> 16
+A033 1.000 
+A034 1.000 
+A035 0.915 replace: twenty five -> 25 | replace: metres -> meters
+A036 1.000 
+A037 0.923 replace: vello -> velo | replace: programme -> program
+A038 0.800 replace: eighty five -> 85
+A039 0.938 replace: moiseev -> moiseyev
+A040 1.000 
+A041 0.727 replace: two hundred and twenty seven -> 227
+A042 0.917 replace: astakhov -> astahoff | replace: biography's -> biographies
+A044 1.000 
+A045 0.909 replace: nineteen eighty three -> 1983
+A046 0.613 replace: twenty first -> 21st | replace: five forty five -> 5 45 | replace: karpyuk -> karpuk | replace: lazarev -> lazareff | replace: eighty nine point two -> 89 2 | replace: a hundred and twenty eight -> 128
+A047 0.920 replace: seventy -> 70 | replace: twenty -> 20
+A048 1.000 
+A049 0.960 replace: ninety eight -> 98
+A050 0.919 replace: fifty five -> 55
+A051 1.000 
+A052 0.899 replace: kilometres -> kilometers | replace: two hundred and forty kilometres -> 240 kilometers
+A053 0.946 replace: four hundred thousand -> 400 000
+A055 0.943 replace: twenty twelve -> 2012 | replace: korolyov -> korolev
+A057 1.000 
+A058 0.909 replace: nineteen eighty two -> 1982
+A059 0.898 replace: fourteen hundred kilometres -> 1400 kilometers
+A060 0.950 replace: nineteen eighty two -> 1982
+A061 0.825 replace: twenty twenty four -> 2024 | replace: a hundred and forty metres -> 140 meters | replace: thirty six -> 36
+A062 0.941 replace: eighty centimetres -> 80 cm
+A063 1.000 
+A064 1.000 
+A065 0.982 replace: and -> in
+A065A 1.000 

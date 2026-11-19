@@ -17,33 +17,33 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 - **Bookend**: 4 a.m., 12 April 1982 → every April, when the last plane is gone.
 - **Personal CTA**: "Would you spend one winter at Vostok?"
 
-**Title (main):** How People Survive the Coldest Place on Earth (Vostok Station)
+**Title (main):** How People Survive the Coldest Place Ever Measured
 **Alternative titles:**
-- The Night the Coldest Place on Earth Lost Its Heat
-- Vostok: 20 Men, No Heat, 8 Months at Minus 80
+- The Night the Coldest Station on Earth Lost Its Heat
+- What Happens When the Coldest Station on Earth Loses Power
 
-**Thumbnail A:** real photo of Vostok on the white plateau (NOAA aerial), frosted blue grade; text "VOSTOK", badge "−89.2°C", hook "NO PLANE / FOR 9 MONTHS".
-**Thumbnail B:** frosted face close-up (Concordia winter-over, real photo) with a red glow from below; text "1982", badge "NO HEAT", hook "8 MONTHS / AT −80°C".
+**Thumbnail A:** real photo of Vostok on the white plateau (NOAA aerial), frosted blue grade; text "VOSTOK", badge "−89.2°C / −128°F", hook "NO PLANE / FOR 9 MONTHS".
+**Thumbnail B:** our stove diagram over the real Jan 1982 Vostok photo (cm_vostok_glaciological_pit); text "1982", badge "NO POWER", hook "227 DAYS / ON THEIR OWN".
 
 ---
 
 ## COLD OPEN
 
-**A001** April twelfth, nineteen eighty-two. Four in the morning, at Vostok Station, in the middle of Antarctica. Outside, it is below minus sixty. In eleven days, the sun will set for four months. [32][42][9]
+**A001** April twelfth, nineteen eighty-two. Four in the morning, at Vostok Station, in the middle of Antarctica. Outside, it is far below minus fifty-five. In eleven days, the sun will set for four months. [32][42][9]
 
 **A002** A power technician wakes up to smoke. The power station is on fire. In about fifteen minutes, the whole building is burning. The fire extinguishers barely work. [33][36]
 
-**A003** By morning, the station has no electricity, no heating, and no way to make water. One man is dead. Twenty are left alive. [33][34][35]
+**A003** By morning, the station has no electricity, no heating, and no power to melt snow for water. One man is dead. Twenty are left alive. [33][34][35][29]
 
 **A004** And nobody can come for them. Not for seven months.
 
-**A005** Vostok is where the coldest temperature ever measured on Earth was recorded: minus eighty-nine point two degrees Celsius. People have lived there every year since nineteen fifty-seven, with only three winters missed. So how do people survive at the coldest place on Earth? [10][14][20]
+**A005** Vostok is where the coldest air temperature ever measured on Earth was recorded: minus eighty-nine point two Celsius. That's minus a hundred and twenty-eight Fahrenheit. People have wintered there almost every year since nineteen fifty-seven. So how do people survive at the coldest place ever measured? [10][14][20]
 
-**A006** The obvious answer is good buildings. But in nineteen eighty-two, those twenty men lost their main building, and they still got through the winter. [44]
+**A006** The obvious answer is technology: power plants, heating. But in nineteen eighty-two, those twenty men lost all of it, and they still got through the winter. [33][44]
 
-**A007** The second answer: rescue. If something goes wrong, you fly people out. But at Vostok, for about nine months a year, no plane can land at all. [21]
+**A007** The second answer: rescue. If something goes wrong, you fly people out. But at Vostok, for about nine months a year, no plane or tractor is supposed to come at all. [21]
 
-**A008** So it's something else. First, we'll see why anyone put a station here. Then, what this place does to a body and to a machine. Then we'll go back to the night of the fire. And at the end, we'll see the lesson Vostok learned from it, which is still shaping the station right now.
+**A008** So it's something else. First, why here. Then, what this place does to a body and to a machine. Then we'll go back to the night of the fire. And at the end, we'll see the lesson Vostok learned from it, which is still shaping the station right now.
 
 ---
 
@@ -51,9 +51,9 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 **A009** In the nineteen fifties, the world's scientists planned the International Geophysical Year. America took the South Pole. So the Soviet Union took the two other poles nobody wanted: the South Geomagnetic Pole, and the Pole of Inaccessibility. [2]
 
-**A010** Vostok was built on the first. On December sixteenth, nineteen fifty-seven, a tractor train arrived and set up camp, on flat snow, three and a half kilometres above sea level. [1][14]
+**A010** Vostok was built on the first. On December sixteenth, nineteen fifty-seven, a tractor train arrived and set up camp, on flat snow, three and a half kilometres above sea level. That's about eleven thousand five hundred feet. [1][14]
 
-**A011** The nearest coast, at Mirny, was about fourteen hundred kilometres away. That's London to Rome. And there was no road. Only tracks in the snow. [3]
+**A011** The nearest coast, at Mirny, was about fourteen hundred kilometres away. That's London to Rome, or Chicago to Denver. And there was no road. Only tracks in the snow. [3]
 
 **A012** The first winter, the thermometer fell to minus eighty-seven. In nineteen sixty, it reached minus eighty-eight point three, a world record. [6]
 
@@ -67,13 +67,13 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 ## CH2 — What the cold does
 
-**A016** Even before the cold, there is the air. The station sits at three and a half thousand metres, but the polar air is so thin that your lungs think it's four thousand. There is about a third less oxygen in every breath. [8]
+**A016** Even before the cold, there is the air. The station sits at three and a half thousand metres, but the polar air is so thin that your lungs think it's four thousand. There is nearly forty percent less oxygen in every breath. [8]
 
-**A017** New arrivals get headaches, dizziness, and trouble sleeping. A station doctor, Sergey Bushmanov, says people usually lose five to ten kilos in their first month. [27]
+**A017** New arrivals get headaches, dizziness, and trouble sleeping. A station doctor, Sergey Bushmanov, says people often lose five to ten kilos, ten to twenty pounds, in their first month. [27]
 
 **A018** Then the rules. At minus seventy and below, you may not stay outside for more than ten minutes. A mask is compulsory, because one deep breath can frostbite your airways. And at least half of every new crew must have wintered at Vostok before. [26]
 
-**A018B** There is no running water. Every litre is snow. The crew cuts blocks from a snow quarry, carries them inside, and melts them, with heat from the diesel. [29]
+**A018B** There is no liquid water here. Every drop starts as snow. The crew cuts blocks from a snow quarry, carries them inside, and melts them, with heat from the diesel. [29]
 
 **A019** And from late April to late August, the sun does not rise at all. That is when the real cold comes. In August, the average temperature is minus sixty-eight. [9][5]
 
@@ -83,7 +83,7 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 **A022** The tractors run on the same fuel they carry. About a third of it is burned on the way there. [19]
 
-**A023** And when the trains fail to bring enough, Vostok simply closes. It has been shut for the winter three times, because the fuel did not arrive. [20]
+**A023** And when the trains fail to bring enough, Vostok simply closes. It has been shut for the winter at least three times, because the fuel did not arrive. [20]
 
 **A024** So the whole station lives on one thing: diesel, turned into heat and light by one power station. And in nineteen eighty-two, that power station burned down.
 
@@ -91,7 +91,7 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 ## CH3 — The night of the fire
 
-**A025** In January nineteen eighty-two, the twenty-seventh Soviet expedition arrived at Vostok. Twenty-one men. Their leader was Pyotr Astakhov. He had led Vostok before. [35][36][64]
+**A025** In January nineteen eighty-two, the twenty-seventh Soviet expedition arrived at Vostok. Twenty-one men. Their leader was Pyotr Astakhov. He had led Vostok before, and Americans knew him. In nineteen sixty-seven, according to his biography, he climbed twenty-seven metres up a radio mast at the South Pole, at minus seventy, to fix an antenna. There's an Astakhov Glacier in Antarctica today. [35][36][64]
 
 **A026** In March, one of them fell ill. A plane flew in at below minus sixty to take him out. The doctor's notes call it the only flight like that in Vostok's history. Then the last plane left, and the winter began. [22]
 
@@ -109,7 +109,7 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 **A033** Evacuation was impossible. No plane could land, and no tractor could get through. So the men made a decision: they would stay, and finish the winter. [43]
 
-**A034** They found an old kerosene stove and heated the mess room. Then they welded five stoves out of gas cylinders, burning diesel drip by drip. [38]
+**A034** They found an old kerosene stove and heated the mess room. Then they made five stoves out of gas cylinders, burning diesel drip by drip. [38]
 
 **A035** Next to a stove, it was plus twenty-five at head height. Two metres away, by the wall, it was zero. They took turns at night to watch the fire. [38]
 
@@ -121,13 +121,12 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 **A039** Later, Moiseev revived an older generator from cold storage, so they had more power for light. [37]
 
-**A040** In early November, the first plane of spring flew in, with a new generator and four men from the next crew. About two weeks later, a tractor train arrived with a whole new power station. [44]
+**A040** In early November, the first plane of spring flew in, with a new generator and four men from the next crew. About two weeks later, a tractor train arrived with materials for a new power station. [44]
 
 **A041** From the fire to the tractor train: two hundred and twenty-seven days. [44]
 
 **A042** Every man got a state award. Astakhov was nominated for Hero of the Soviet Union, but, by his biography's account, powerful people blocked it. [44][64]
 
-**A043** He had another honour, though. In nineteen sixty-seven, on an exchange at the American South Pole station, he climbed twenty-seven metres up a radio mast at minus seventy to fix an antenna. America named a glacier after him: the Astakhov Glacier. [64]
 
 ---
 
@@ -137,15 +136,15 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 **A045** In July nineteen eighty-three, the next crew watched the temperature fall about two and a half degrees every day, for a week. [10]
 
-**A046** On July twenty-first, at five forty-five in the morning, Moscow time, the meteorologists on duty, Karpyuk and Lazarev, read the thermometer: minus eighty-nine point two. [10][66]
+**A046** On July twenty-first, at five forty-five in the morning, Moscow time, the meteorologists on duty, Karpyuk and Lazarev, read the thermometer: minus eighty-nine point two. Minus a hundred and twenty-eight Fahrenheit. [10][66]
 
-**A047** That's seventy degrees colder than your freezer. And more than twenty degrees colder than the coldest town where people live, Oymyakon, in Siberia. [62]
+**A047** That's seventy degrees Celsius colder than your freezer. And more than twenty degrees colder than the coldest towns where people live, like Oymyakon, in Siberia. [62]
 
 **A048** Scientists later found out why. For a whole week, there was no cloud and almost no wind, and a pool of the coldest air sat right over the station, with no warm air getting in. [11]
 
 **A049** Satellites have since seen colder spots: small hollows on the high ice ridge, where the snow surface reached about minus ninety-eight. But that is the snow, not the air. The coldest air ever measured is still Vostok's. [13]
 
-**A050** In a normal year, Vostok averages about minus fifty-five. That's close to the average on Mars. [5][63]
+**A050** In a normal year, Vostok averages about minus fifty-five. By some estimates, that's about the average on Mars. [5][63]
 
 **A051** But the strangest thing about Vostok is not in the air. It's under the floor.
 
@@ -153,33 +152,31 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 ## CH5 — The lake under the station
 
-**A052** Under nearly four kilometres of ice, there is a lake. Lake Vostok is two hundred and forty kilometres long, nearly the size of Lake Ontario, kept liquid by pressure and the Earth's heat. [46]
+**A052** Under nearly four kilometres of ice, there is a lake. Lake Vostok is two hundred and forty kilometres long, nearly the size of Lake Ontario, kept liquid by the weight of the ice above it. Reaching it is why scientists put up with all this cold. [46]
 
-**A053** For decades, the crew drilled down, collecting ice. The cores held air from more than four hundred thousand years ago. They showed that carbon dioxide and temperature rose and fell together, through four ice ages. [48]
+**A053** For decades, the crew drilled down, collecting ice. Russia, France and America drilled together, and split the ice three ways. The cores held air from more than four hundred thousand years ago. They showed that carbon dioxide and temperature rose and fell together, through four ice ages. [23][48]
 
-**A054** On February fifth, twenty twelve, the drill finally broke through into the lake water. The water rushed up the hole and froze. [50]
 
-**A055** Did they find life? Reports of a new bacterium in twenty thirteen turned out to be contamination. So far, nothing alive has been confirmed. [52]
+**A055** In twenty twelve, the drill finally reached the lake water. Did they find life? Reports of a new bacterium turned out to be contamination. A Russian geneticist, Vladimir Korolyov, put it bluntly: all of them were contaminants. So far, nothing alive has been confirmed. [50][52]
 
-**A056** And now the deep drilling has paused. In twenty twenty-six, the station is building a new store for ice older than a million years, because the old stores under the snow are failing. [69]
 
 ---
 
 ## CH6 — The lesson of 1982
 
-**A057** So how do people survive at the coldest place on Earth?
+**A057** So how do people survive at the coldest place ever measured?
 
-**A058** Not with buildings alone. In nineteen eighty-two, the main building burned, and the men survived. And not with rescue. There was none. [44]
+**A058** Not with buildings alone. In nineteen eighty-two, the power station burned, and the men survived. And not with rescue. There was none. [44]
 
 **A059** Vostok survives on three things. Fuel, dragged fourteen hundred kilometres by tractor. A crew where half have done it before. And a spare for everything. [19][26]
 
-**A060** In nineteen eighty-two, Vostok had the fuel, and it had the people. What it didn't have was a spare. Light, heat and water all lived in one building. [33]
+**A060** In nineteen eighty-two, Vostok had the fuel, and it had the people. What it didn't have was a spare. Light, heat and water all lived in one building. The only spares were the ones they dug out of the snow. [33][37]
 
-**A061** The new Vostok was built on that lesson. In January twenty twenty-four, a new winter complex started work: five blue modules, a hundred and forty metres long, standing on thirty-six legs, so the snow blows underneath. [53][54][55]
+**A061** The new Vostok was built on that lesson. In January twenty twenty-four, a new winter complex started work: five blue modules, a hundred and forty metres long, longer than a football field, standing on thirty-six legs, so the snow blows underneath. [53][54][55]
 
 **A062** Its walls are eighty centimetres thick. It has a sauna, a gym and a cinema. It has four main generators. And two backup generators, in a separate module, far from the main power plant. [55][56][30]
 
-**A063** Getting it there took four years. The first ship broke a propeller off Angola and had to turn back. The modules finally crossed the ice by tractor, the same way as the fuel. [53]
+**A063** Getting it there took more than three years. The first ship broke a propeller off Angola and had to turn back. The modules finally crossed the ice by tractor, the same way as the fuel. [53]
 
 **A064** And at the end of every summer, the last plane still leaves, and the station is on its own again. [21]
 

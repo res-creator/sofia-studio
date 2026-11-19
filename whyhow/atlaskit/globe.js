@@ -48,7 +48,7 @@ function globe(ctx, t, d, p) {
   const land = R < 900 ? LAND110 : LAND;
   if (p.relief) { // muted relief look: dark slate sea, earthy land with a soft inner shade and a light coastline
     ctx.save(); ctx.shadowColor = 'rgba(0,0,0,0.6)'; ctx.shadowBlur = 18;
-    const lg = ctx.createLinearGradient(cx - R, cy - R, cx + R, cy + R); lg.addColorStop(0, '#5E7A5A'); lg.addColorStop(0.5, '#4C6748'); lg.addColorStop(1, '#6D6A4E');
+    const lg = ctx.createLinearGradient(cx - R, cy - R, cx + R, cy + R); if (p.ice) { lg.addColorStop(0, '#E4EDF7'); lg.addColorStop(0.5, '#BFD2E6'); lg.addColorStop(1, '#D6E2EF'); } else { lg.addColorStop(0, '#5E7A5A'); lg.addColorStop(0.5, '#4C6748'); lg.addColorStop(1, '#6D6A4E'); }
     drawPolys(ctx, P, land, lg, null, 0, 2); ctx.restore();
     drawPolys(ctx, P, land, null, hexA('#E9DFC4', 0.45), R > 3000 ? 2 : 1.2, 2);
   } else drawPolys(ctx, P, land, C.land, null, 0, 2);
