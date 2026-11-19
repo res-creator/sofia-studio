@@ -179,20 +179,23 @@ function build(T) {
     F('cm_nps_tahoma_flood_trim_lines_2019', { cutW: 'thirteen', over: [low('~13 FT DEEP · ~9 MPH AT ORTING (MODEL)', 'thirteen'), note('REAL DEBRIS-FLOW MARKS ON TREES, TAHOMA CREEK, 2019')] }),
   ]);
   beats('T026', [
-    F('cm_orting_lenticular_ufo_cloud', { over: [head("WALK. DON'T DRIVE.", 'Walk', 200, 110, Yc)] }),
+    F('cm_orting_street_rainier_2009', { kb: { z: [1.25, 1.1] }, over: [head("WALK. DON'T DRIVE.", 'Walk', 200, 110, Yc)] }),
     F('gov_usgs_rainier_over_puyallup_valley_orting_a', { cutW: 'Roads', kb: { z: [1.25, 1.1] }, over: [low('100+ FT ABOVE THE VALLEY FLOOR', 'hundred')] }),
   ]);
   beats('T027', [F('gov_usgs_lahar_drill_students_fairgrounds_2024', { kb: { z: [1.3, 1.1] }, over: [cnt('forty-five', 45000, { suf: '+', label: "THE WORLD'S LARGEST LAHAR DRILL, 2024", y: 500 })] })]);
   beats('T028', [F('cm_orting_middle_school', { over: [low('2006: 25 MIN TO GET HALFWAY', 'twenty-five'), note('ORTING MIDDLE SCHOOL')] })]);
   beats('T029', [
-    F('cm_orting_sr162_east_rainier_b', { over: [low('THE HIGHWAY BETWEEN TOWN AND THE HILLS', 'highway'), low('"BRIDGE FOR KIDS": BUILDING SINCE 2025', 'Construction'), note('STATE ROUTE 162, ORTING')] }),
+    F('cm_orting_sr162_east_rainier_b', { over: [low('THE HIGHWAY BETWEEN TOWN AND THE HILLS', 'highway'), note('STATE ROUTE 162, ORTING')] }),
+    F('cm_orting_washington_street', { cutW: 'Construction', kb: { z: [1.2, 1.05] }, over: [low('"BRIDGE FOR KIDS": BUILDING SINCE 2025', 'Construction'), note('ORTING')] }),
     F('cm_orting_sr162_bridge_puyallup_river', { cutW: 'second', over: [low('A WALKING BRIDGE OVER THE RIVER: NO FUNDING YET', 'money'), note('TODAY: ONLY THE ROAD BRIDGE OVER THE PUYALLUP RIVER')] }),
   ]);
   beats('T030', [
     F('gov_usgs_rainier_puyallup_daffodil_field_1989', { kb: { z: [1.2, 1.1] }, over: [note('PUYALLUP (USGS PHOTO, 1989)')] }),
     S('stats', { cutW: 'county', head: 'PIERCE COUNTY, MAY 2023', items: [], over: [at(head('"THERE IS NO LAHAR."', null, 520, 120, Yc), 0.3), { ...chipC('AN OLD SIREN WENT OFF BY MISTAKE', null, 700, 50), at: 0.8 }], source: 'Recreated text. Source: Pierce County Emergency Management' }),
   ]);
-  beats('T030B', [F('px_siren_pole_generic', { kb: { z: [1.05, 1.25] }, over: [low('MONTHLY TEST: A CHIME, NOT THE ALARM', 'chime'), note('ILLUSTRATIVE SIREN, NOT PIERCE COUNTY')] })]);
+  beats('T030B', [F('px_siren_pole_generic', { kb: { z: [1.05, 1.25] }, over: [low('MONTHLY TEST: A CHIME, NOT THE ALARM', 'chime'), note('ILLUSTRATIVE SIREN, NOT PIERCE COUNTY')] }),
+    S('stats', { cutW: 'voice', head: 'FIRST MONDAY OF THE MONTH, NOON', items: [], over: [at(head('"THIS IS A TEST."', null, 520, 120, Yc), 0.3), { ...chipC('A CHIME, THEN A VOICE', null, 700, 50), at: 0.8 }], source: 'Recreated text. Source: Pierce County Emergency Management' }),
+  ]);
 
   // ===== CH5 =====
   chapter('T031', 4, 'The question nobody can answer');
@@ -228,7 +231,7 @@ function build(T) {
   ]);
   beats('T037A', [F('px_rainier_sunset_over_water', { over: [head('WHICH PLACE SHOULD WE EXPLAIN NEXT?', null, 200, 80)] })]);
   beats('T037', [
-    F('cm_orting_last_light_rainier_red_barn'),
+    F('cm_orting_last_light_rainier_red_barn', { kb: { z: [1.0, 1.25], x: [0.5, 0.42] } }),
     F('gov_colombia_orting_drill_walk', { cutW: 'gone', over: [head('GONE BEFORE IT ARRIVES', 'gone', 200, 80, Yc)] }),
   ]);
   add(T.tl.voiceEnd + 0.4, S('endscreen', {}), 'fade');
