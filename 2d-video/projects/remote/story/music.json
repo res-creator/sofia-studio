@@ -1,0 +1,74 @@
+[
+ {
+  "start": 0,
+  "end": 31.34,
+  "file": "carefree.mp3",
+  "gain": -3,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 30.64,
+  "end": 116.45,
+  "file": "teller_of_the_tales.mp3",
+  "gain": -3,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 115.75,
+  "end": 196.73,
+  "file": "investigations.mp3",
+  "gain": -3,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 196.03,
+  "end": 237.05,
+  "file": "mirage.mp3",
+  "gain": -3,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 236.35,
+  "end": 287.81,
+  "file": "dreamer.mp3",
+  "gain": -3,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 287.11,
+  "end": 342.09,
+  "file": "thinking_music.mp3",
+  "gain": -3,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 341.39,
+  "end": 431.65,
+  "file": "atlantean_twilight.mp3",
+  "gain": -3,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 430.95,
+  "end": 510.61,
+  "file": "lasting_hope.mp3",
+  "gain": -3,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 509.91,
+  "end": 552.82,
+  "file": "inspired.mp3",
+  "gain": -3,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ }
+]

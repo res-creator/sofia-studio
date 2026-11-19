@@ -1,0 +1,240 @@
+# «Япония» — авторы и лицензии
+
+## Музыка
+«Do you Shakuhachi» - Antti Luode (Wikimedia Commons, CC BY 3.0)
+«Cyborg Ninja», «Eastern Thought», «Ishikari Lore», «Tea Roots» - Kevin MacLeod (incompetech.com), CC BY 4.0, creativecommons.org/licenses/by/4.0/
+
+## Фото Wikimedia Commons (по лицензиям)
+- **CC BY 2.0**: City Foodsters, Daniel Ramirez from Honolulu, USA, Dick Thomas Johnson, Hajime NAKANO, JoshBerglund19 from United States, Kainoki Kaede, Maarten Heerlien from Voorschoten, The Netherlands, Mr. Brian, Natasha Suslina from Tokyo, Japan, Nullumayulife, RachelH_, Stephen Kelly from San Francisco, CA, USA, calamity_sal, foooomio, ot0rip 604 from Japan
+- **CC BY 3.0**: Marek Ślusarczyk (Tupungato), Tim Adams
+- **CC BY 3.0, GFDL**: TC411-507 at Japanese Wikipedia
+- **CC BY 4.0**: BWard 1997, Jakub Hałun, Lianguanlun, RuinDig/Yuki Uchida
+- **CC BY-SA 2.0**: Domenico Convertini from Zurich, Schweiz, Eric Salard, Japanexperterna.se, Osamu Iwasaki, Stéfan Le Dû from Nantes, France, Takashi Hososhima from Tokyo, Japan, doronko, ltsc1980, 極地狐
+- **CC BY-SA 3.0**: Celuici, Japanexperterna, Joe Mabel, Markmark28, User:uniquex, 衛兵隊衛士
+- **CC BY-SA 3.0, GFDL**: Aimaimyi, Corpse Reviver, Fboas
+- **CC BY-SA 4.0**: Basile Morin, EllieBellie25, Hirho, Hyppolyte de Saint-Rambert, Insightwm, Ivilinia, Jakub Hałun, Kugel~commonswiki, MaedaAkihiko, Mike Gifford, NMaia, NevinThompson, Ominae, Thirteen-fri, Tokumeigakarinoaoshima, Trueshow111, 小倉商事
+- **CC0**: Akahito Yamabe, Aspere, DimiTalen, Syced, Yiannis Theologos Michellis, lumoplank, ukiyo-e print, The Metropolitan Museum of Art (DP135724)
+- **PDM, Public domain**: Utagawa Hiroshige (1797–1858)
+- **Public domain**: Sui-setz, U.S. Navy photo by Sheryl Sullivan, unknown (released into public domain)
+
+## Подробно по каждому фото
+- `jp/bosai_zukin.jpg` — Mr. Brian — CC BY 2.0 — https://commons.wikimedia.org/wiki/File%3A%E9%8A%80%E8%89%B2%E3%81%AE%E9%98%B2%E7%81%BD%E9%A0%AD%E5%B7%BE_2011_%285517060092%29.jpg
+- `jp/capsule_osaka.jpg` — Syced — CC0 — https://commons.wikimedia.org/wiki/File%3AAugust_2007_capsule_hotel_in_Osaka.jpg
+- `jp/capsule_tokyo.jpg` — Trueshow111 — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3ACapsule_hotel.jpg
+- `jp/catcafe_nekorobi.jpg` — Takashi Hososhima from Tokyo, Japan — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File%3AA_shop_assistant_of_a_cat_cafe_%286887378772%29.jpg
+- `jp/divercity_gundam.jpg` — ltsc1980 — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File%3ADiver_City_Tokyo_%2820873006931%29.jpg
+- `jp/divercity_gundam2.jpg` — Aimaimyi — CC BY-SA 3.0, GFDL — https://commons.wikimedia.org/wiki/File%3ADiver_City_Tokyo_-01.jpg
+- `jp/eew_phone.jpg` — RuinDig/Yuki Uchida — CC BY 4.0 — https://commons.wikimedia.org/wiki/File%3AEarthquake-Early-Warning-on-Smartphone_01.jpg
+- `jp/eikando_autumn.jpg` — lumoplank — CC0 — https://commons.wikimedia.org/wiki/File%3AEikando%2C_Kyoto_-_Eikando7356.jpg
+- `jp/fuji_climb.jpg` — Jakub Hałun — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3A20100728_Climbing_Mt_Fuji_6304.jpg
+- `jp/fuji_goraiko.jpg` — U.S. Navy photo by Sheryl Sullivan — Public domain — https://commons.wikimedia.org/wiki/File%3ACFAY_MWR_Hosts_Mount_Fuji_Climb_%289878965%29.jpg
+- `jp/fushimi_light.jpg` — Hyppolyte de Saint-Rambert — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3AFushimi_Inari_Taisha_lumi%C3%A8re.jpg
+- `jp/fushimi_senbon.jpg` — ot0rip 604 from Japan — CC BY 2.0 — https://commons.wikimedia.org/wiki/File%3ASenbon_Torii_at_Fushimi_Inari_Taisha%2C_Kyoto%3B_September_2014.jpg
+- `jp/garbage_boxes_fuchu.jpg` — Osamu Iwasaki — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File%3AGarbage_Boxes_in_Fuchu%2C_Tokyo_01_-_Feb_28%2C_2009.jpg
+- `jp/geiko_lanterns.jpg` — Japanexperterna.se — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File%3AGion_Higashi_Tsunemomo.jpg
+- `jp/genkan_ryokan.jpg` — Hajime NAKANO — CC BY 2.0 — https://commons.wikimedia.org/wiki/File%3A%E3%81%8A%E3%81%8B%E3%81%88%E3%82%8A%E3%81%AA%E3%81%95%E3%81%84%E3%80%82_%2833421771032%29.jpg
+- `jp/hanami_ueno.jpg` — EllieBellie25 — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3AHanami_Matsuri_picknick_in_Ueno_park%2C_Tokyo_Japan.jpg
+- `jp/hanami_yoyogi.jpg` — NMaia — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3AHanami_in_Yoyogi_Park_%282019%29.jpg
+- `jp/hiroshige_sushi.jpg` — Utagawa Hiroshige (1797–1858) — PDM, Public domain — https://commons.wikimedia.org/wiki/File%3AHiroshige_Bowl_of_Sushi.jpg
+- `jp/ic_gate_koiwa.jpg` — MaedaAkihiko — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3AJRE_Koiwa-STA_IC-card-only-Gate.jpg
+- `jp/kabukicho_neon.jpg` — Basile Morin — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3AColorful_neon_street_signs_in_Kabukich%C5%8D%2C_Shinjuku%2C_Tokyo.jpg
+- `jp/kaitenzushi_asakusa.jpg` — Maarten Heerlien from Voorschoten, The Netherlands — CC BY 2.0 — https://commons.wikimedia.org/wiki/File%3AKonveyer_belt_sushi_at_Asakusa_%286156191536%29.jpg
+- `jp/kiyomizu_crowd.jpg` — NevinThompson — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3AKiyomizu-dera_Nio-mon_and_pagoda_with_summer_crowd%2C_Kyoto%2C_August_2019.jpg
+- `jp/kiyomizuzaka_crowd.jpg` — Mike Gifford — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3A%E6%BA%80%E5%93%A1_2025_%2854925211732%29.jpg
+- `jp/koban_hakata.jpg` — Hirho — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3AHakata_Police_Station_Chiyo_Police_Box_23-1_Chiyo-2-ch%C5%8Dme_Hakata-ku_Fukuoka_City_20221118.jpg
+- `jp/konbini_kyoto.jpg` — Japanexperterna — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File%3AConvenience_store_interior.jpg
+- `jp/kumamon_goods.jpg` — 極地狐 — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File%3A%E3%81%8F%E3%81%BE%E3%82%82%E3%82%93%E3%82%B0%E3%83%83%E3%82%BA_%2821349147228%29.jpg
+- `jp/kumamon_train.jpg` — Insightwm — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3AKumamon-themed_Train.jpg
+- `jp/kumamon_wall.jpg` — foooomio — CC BY 2.0 — https://commons.wikimedia.org/wiki/File%3AKumamon_on_the_wall_%2814987894668%29.jpg
+- `jp/kusatsu_yubatake.jpg` — Aspere — CC0 — https://commons.wikimedia.org/wiki/File%3A251130_Yubatake%2C_Kusatsu_12.jpg
+- `jp/lost_found_namba.jpg` — 小倉商事 — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3ANamba-owasuremono-center.jpg
+- `jp/maiko_tomitsuyu.jpg` — Japanexperterna.se — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File%3AGion_Tomitsuyu.jpg
+- `jp/met_sushi.jpg` — ukiyo-e print, The Metropolitan Museum of Art (DP135724) — CC0 — https://commons.wikimedia.org/wiki/File%3AMET_DP135724.jpg
+- `jp/metro_rush.jpg` — Tim Adams — CC BY 3.0 — https://commons.wikimedia.org/wiki/File%3ATokyo_metro_at_rush_hour.png
+- `jp/n700_fuji.jpg` — MaedaAkihiko — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3ASeries-N700a-Mt.Fuji.jpg
+- `jp/n700_hiroshima.jpg` — Eric Salard — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File%3AShinkansen_N700_at_HIroshima_Station_2_2025-03-27.jpg
+- `jp/n700_seats.jpg` — 衛兵隊衛士 — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File%3AShinkansen_N700_series_Green_seat.JPG
+- `jp/n700_z15.jpg` — TC411-507 at Japanese Wikipedia — CC BY 3.0, GFDL — https://commons.wikimedia.org/wiki/File%3AShinkansen_N700_z15.jpg
+- `jp/nara_deer_fed.jpg` — User:uniquex — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File%3AA_deer_at_Nara_Park%2C_Japan.jpeg
+- `jp/nara_feeding.jpg` — Natasha Suslina from Tokyo, Japan — CC BY 2.0 — https://commons.wikimedia.org/wiki/File%3AFeeding_deer_%285074350231%29.jpg
+- `jp/ninenzaka_kimono.jpg` — Domenico Convertini from Zurich, Schweiz — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File%3AGion_-_Nineizaka_%28Ninenzaka%29%2C_Kyoto%2C_Japan_%2848923331853%29.jpg
+- `jp/ninenzaka_street.jpg` — Domenico Convertini from Zurich, Schweiz — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File%3AGion_-_Nineizaka_%28Ninenzaka%29%2C_Kyoto%2C_Japan_%2848923867241%29.jpg
+- `jp/noren_unagi.jpg` — doronko — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File%3ANoren_of_%22Obana%22%2C_Unagi_restaurant_in_Minamisenju_-_Jan_18%2C_2009.jpg
+- `jp/okinawa_sakura_yae.jpg` — Kugel~commonswiki — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3ASakura_at_Mount_Yae_202301_03.jpg
+- `jp/okonomiyaki_teppan.jpg` — Lianguanlun — CC BY 4.0 — https://commons.wikimedia.org/wiki/File%3AOkonomiyaki_cooking_on_teppan_Osaka.jpg
+- `jp/onigiri_newdays.jpg` — Nullumayulife — CC BY 2.0 — https://commons.wikimedia.org/wiki/File%3A%E6%96%B0%E7%99%BA%E5%A3%B2_%288822182618%29.jpg
+- `jp/onsen_tsurunoyu.jpg` — Markmark28 — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File%3ATsurunoyu_onsen_rotenburo2.JPG
+- `jp/onsen_washing.jpg` — Thirteen-fri — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3AImabari_Radium_Onsen_%28Indoor_-_Bathroom%29_03f.jpg
+- `jp/onsen_yudomari.jpg` — JoshBerglund19 from United States — CC BY 2.0 — https://commons.wikimedia.org/wiki/File%3AYudomari_seaside_onsen_%283631258781%29.jpg
+- `jp/owlcafe.jpg` — Kainoki Kaede — CC BY 2.0 — https://commons.wikimedia.org/wiki/File%3AOwls_Looking_at_Me_%2821160358532%29.jpg
+- `jp/ramen_chahan.jpg` — Akahito Yamabe — CC0 — https://commons.wikimedia.org/wiki/File%3ARamen_and_Chahan.jpg
+- `jp/ramen_ichiran.jpg` — Ivilinia — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3ATonkotsu_ramen_ichiran.jpg
+- `jp/ramen_shop_yuzawa.jpg` — Syced — CC0 — https://commons.wikimedia.org/wiki/File%3ARamen_restaurant_in_Yuzawa_2.jpg
+- `jp/ryoanji_tourists.jpg` — DimiTalen — CC0 — https://commons.wikimedia.org/wiki/File%3ARy%C5%8Dan-ji_rock_garden_with_silhouettes_of_tourists%2C_Kyoto%2C_2016.jpg
+- `jp/sapporo_ice_phoenix.jpg` — Ominae — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3AGreat_Phoenix_Ice_Sculpture.JPG
+- `jp/seven_eleven.jpg` — Dick Thomas Johnson — CC BY 2.0 — https://commons.wikimedia.org/wiki/File%3ASeven-Eleven_in_Japan_2012_%2814884682980%29.jpg
+- `jp/seven_eleven_int.jpg` — Corpse Reviver — CC BY-SA 3.0, GFDL — https://commons.wikimedia.org/wiki/File%3AInterior_of_Seven-Eleven.jpg
+- `jp/shibuya_cross_2024.jpg` — Jakub Hałun — CC BY 4.0 — https://commons.wikimedia.org/wiki/File%3AShibuya_Crossing%2C_Tokyo%2C_20240822_0931_5358.jpg
+- `jp/shibuya_cross_day.jpg` — Celuici — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File%3AShibuya_Crossing%2C_May_2017.jpg
+- `jp/shinkansen0.jpg` — Sui-setz — Public domain — https://commons.wikimedia.org/wiki/File%3AShinkansen_0-series.jpg
+- `jp/street_yanaka.jpg` — Joe Mabel — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File%3ATokyo_-_Yanaka_141A.jpg
+- `jp/subway_tokyo_night.jpg` — Stephen Kelly from San Francisco, CA, USA — CC BY 2.0 — https://commons.wikimedia.org/wiki/File%3ATokyo_Subway_Train%2C_10_pm_%2820251494100%29.jpg
+- `jp/sushi_master_kyoto.jpg` — Marek Ślusarczyk (Tupungato) — CC BY 3.0 — https://commons.wikimedia.org/wiki/File%3A010_Sushi_master_in_Kyoto%2C_Japan_-_sushi_chef_%E5%AF%BF%E5%8F%B8%E8%81%B7%E4%BA%BA.jpg
+- `jp/takoyaki_cook.jpg` — City Foodsters — CC BY 2.0 — https://commons.wikimedia.org/wiki/File%3AHonkeohtako%27s_takoyaki%2C_Osaka%3B_December_2013_%2803%29.jpg
+- `jp/teamlab_1.jpg` — Domenico Convertini from Zurich, Schweiz — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File%3ATeamLab_Borderless%2C_Odaiba%2C_Tokyo%2C_Japan_%2849070134108%29.jpg
+- `jp/teamlab_3.jpg` — Domenico Convertini from Zurich, Schweiz — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File%3ATeamLab_Borderless%2C_Odaiba%2C_Tokyo%2C_Japan_%2849070835722%29.jpg
+- `jp/tessei_crew.jpg` — calamity_sal — CC BY 2.0 — https://commons.wikimedia.org/wiki/File%3AShinkansen_cleaning_crew_2017_%2833378268134%29.jpg
+- `jp/toilet_buttons.jpg` — Stéfan Le Dû from Nantes, France — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File%3AJapanese_toilet_buttons.jpg
+- `jp/toilet_slippers.jpg` — RachelH_ — CC BY 2.0 — https://commons.wikimedia.org/wiki/File%3AToilet_slippers_%2814290697165%29.jpg
+- `jp/toilet_tokyo.jpg` — Fboas — CC BY-SA 3.0, GFDL — https://commons.wikimedia.org/wiki/File%3AJapanese_Toilets_Tokyo.jpg
+- `jp/ufo_gigo.jpg` — BWard 1997 — CC BY 4.0 — https://commons.wikimedia.org/wiki/File%3AGiGO_Akihabara_UFO_Catcher_Machines_15-09-2024_%281%29.jpg
+- `jp/vending_mountain_road.jpg` — Kugel~commonswiki — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3A2km_sign_of_the_Okinawa_Prefectural_Road_Route_244_202609.jpg
+- `jp/vending_osaka.jpg` — Tokumeigakarinoaoshima — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File%3AOtsuka_vending_machines_in_Kita-ku%2C_Osaka.jpg
+- `jp/vending_row.jpg` — Daniel Ramirez from Honolulu, USA — CC BY 2.0 — https://commons.wikimedia.org/wiki/File%3AVending_Machines_in_Japan_%2843679427685%29.jpg
+- `jp/yakitori_lanterns.jpg` — Yiannis Theologos Michellis — CC0 — https://commons.wikimedia.org/wiki/File%3AYakitori_shop_lanterns_in_Omoide-Yokoch%C5%8D%2C_Shinjuku%2C_Tokyo%2C_Japan_2011_2_%287024865381%29.jpg
+- `jp/yen_1000.jpg` — unknown (released into public domain) — Public domain — https://commons.wikimedia.org/wiki/File%3A1000_Yen_banknotes_of_Japan_%28Series_D%29_-_A.JPG
+
+## Видео Pixabay (Pixabay Content License)
+16944022, ADG7, Alex_Sochi7777, Close-UpStock, Coverr-Free-Footage, DavidClode, DeltaWorks, Emir_Saleh, Engin_Akyurt, Erjol, FreemanGoldFamily, Frieve-A, GreenCardShow, Japan-coutry-movie, JayShawflybydrones, Joker911, Joyvideo123, JustYøu, Kaffeesüchtig, Kanenori, Luster2739, MagicTV, MasterAndMargarita, MingMedia, Natures_Embrace, NguyenGianga2, NickyPe, RoyBuri, SYG_Anime, Solarselle77, Stephnino, SterlingTeaches, TABUTIMAN, TungArt7, XiaosKitchen, Yocchi09, ZachMcCoyDavies, alizadeleon, carl_watermark, clubsilencio, higty, hsukusuke, kieutruongphoto, kinchan_kinchan, klimkin, kokanish, matteoarrigo, md579, mhardy62, morn_japan, ochii_kai, pandachan2go, thienvan2211, u_0uzfwvuep4, u_33gaolzbk3, viarami, wdT0R0, yetti_in_japan, zzzluvyouzzz, 魔理沙のズボラ飯
+
+## Подробно по каждому клипу
+- 3608 — Coverr-Free-Footage — https://pixabay.com/videos/id-3608/
+- 3625 — Coverr-Free-Footage — https://pixabay.com/videos/id-3625/
+- 3627 — Coverr-Free-Footage — https://pixabay.com/videos/id-3627/
+- 3630 — Coverr-Free-Footage — https://pixabay.com/videos/id-3630/
+- 4251 — klimkin — https://pixabay.com/videos/id-4251/
+- 4431 — mhardy62 — https://pixabay.com/videos/id-4431/
+- 7263 — Coverr-Free-Footage — https://pixabay.com/videos/id-7263/
+- 11291 — GreenCardShow — https://pixabay.com/videos/id-11291/
+- 11714 — XiaosKitchen — https://pixabay.com/videos/id-11714/
+- 18909 — Joyvideo123 — https://pixabay.com/videos/id-18909/
+- 29483 — Engin_Akyurt — https://pixabay.com/videos/id-29483/
+- 30142 — DeltaWorks — https://pixabay.com/videos/id-30142/
+- 31889 — viarami — https://pixabay.com/videos/id-31889/
+- 31890 — viarami — https://pixabay.com/videos/id-31890/
+- 33821 — matteoarrigo — https://pixabay.com/videos/id-33821/
+- 35693 — kieutruongphoto — https://pixabay.com/videos/id-35693/
+- 36510 — Joker911 — https://pixabay.com/videos/id-36510/
+- 36999 — alizadeleon — https://pixabay.com/videos/id-36999/
+- 37546 — Frieve-A — https://pixabay.com/videos/id-37546/
+- 39790 — Erjol — https://pixabay.com/videos/id-39790/
+- 40531 — zzzluvyouzzz — https://pixabay.com/videos/id-40531/
+- 40602 — alizadeleon — https://pixabay.com/videos/id-40602/
+- 41957 — carl_watermark — https://pixabay.com/videos/id-41957/
+- 42087 — MingMedia — https://pixabay.com/videos/id-42087/
+- 44621 — alizadeleon — https://pixabay.com/videos/id-44621/
+- 44622 — alizadeleon — https://pixabay.com/videos/id-44622/
+- 52913 — Erjol — https://pixabay.com/videos/id-52913/
+- 53375 — Close-UpStock — https://pixabay.com/videos/id-53375/
+- 53789 — Close-UpStock — https://pixabay.com/videos/id-53789/
+- 57431 — morn_japan — https://pixabay.com/videos/id-57431/
+- 63288 — Close-UpStock — https://pixabay.com/videos/id-63288/
+- 66410 — 魔理沙のズボラ飯 — https://pixabay.com/videos/id-66410/
+- 66416 — 魔理沙のズボラ飯 — https://pixabay.com/videos/id-66416/
+- 66836 — JustYøu — https://pixabay.com/videos/id-66836/
+- 67857 — 魔理沙のズボラ飯 — https://pixabay.com/videos/id-67857/
+- 69297 — 16944022 — https://pixabay.com/videos/id-69297/
+- 80262 — TABUTIMAN — https://pixabay.com/videos/id-80262/
+- 81032 — NickyPe — https://pixabay.com/videos/id-81032/
+- 81330 — Luster2739 — https://pixabay.com/videos/id-81330/
+- 82361 — md579 — https://pixabay.com/videos/id-82361/
+- 82365 — md579 — https://pixabay.com/videos/id-82365/
+- 84908 — Luster2739 — https://pixabay.com/videos/id-84908/
+- 91320 — kinchan_kinchan — https://pixabay.com/videos/id-91320/
+- 94323 — Engin_Akyurt — https://pixabay.com/videos/id-94323/
+- 107392 — Japan-coutry-movie — https://pixabay.com/videos/id-107392/
+- 107395 — Japan-coutry-movie — https://pixabay.com/videos/id-107395/
+- 107575 — DeltaWorks — https://pixabay.com/videos/id-107575/
+- 108371 — RoyBuri — https://pixabay.com/videos/id-108371/
+- 108824 — DeltaWorks — https://pixabay.com/videos/id-108824/
+- 110790 — yetti_in_japan — https://pixabay.com/videos/id-110790/
+- 111430 — Close-UpStock — https://pixabay.com/videos/id-111430/
+- 117216 — TABUTIMAN — https://pixabay.com/videos/id-117216/
+- 123556 — Luster2739 — https://pixabay.com/videos/id-123556/
+- 125511 — clubsilencio — https://pixabay.com/videos/id-125511/
+- 130652 — SYG_Anime — https://pixabay.com/videos/id-130652/
+- 130680 — hsukusuke — https://pixabay.com/videos/id-130680/
+- 136101 — ochii_kai — https://pixabay.com/videos/id-136101/
+- 138120 — higty — https://pixabay.com/videos/id-138120/
+- 143363 — Emir_Saleh — https://pixabay.com/videos/id-143363/
+- 143455 — Japan-coutry-movie — https://pixabay.com/videos/id-143455/
+- 147893 — carl_watermark — https://pixabay.com/videos/id-147893/
+- 150622 — higty — https://pixabay.com/videos/id-150622/
+- 151762 — Kanenori — https://pixabay.com/videos/id-151762/
+- 151941 — Kanenori — https://pixabay.com/videos/id-151941/
+- 153086 — Kanenori — https://pixabay.com/videos/id-153086/
+- 157699 — Kanenori — https://pixabay.com/videos/id-157699/
+- 157706 — Kanenori — https://pixabay.com/videos/id-157706/
+- 163258 — NickyPe — https://pixabay.com/videos/id-163258/
+- 163656 — kokanish — https://pixabay.com/videos/id-163656/
+- 164900 — ADG7 — https://pixabay.com/videos/id-164900/
+- 164904 — ochii_kai — https://pixabay.com/videos/id-164904/
+- 167404 — u_33gaolzbk3 — https://pixabay.com/videos/id-167404/
+- 171734 — wdT0R0 — https://pixabay.com/videos/id-171734/
+- 173522 — Kanenori — https://pixabay.com/videos/id-173522/
+- 174860 — Alex_Sochi7777 — https://pixabay.com/videos/id-174860/
+- 177314 — Kanenori — https://pixabay.com/videos/id-177314/
+- 180386 — Kanenori — https://pixabay.com/videos/id-180386/
+- 181114 — MagicTV — https://pixabay.com/videos/id-181114/
+- 181116 — MagicTV — https://pixabay.com/videos/id-181116/
+- 184370 — Kanenori — https://pixabay.com/videos/id-184370/
+- 188595 — Kanenori — https://pixabay.com/videos/id-188595/
+- 188621 — Kanenori — https://pixabay.com/videos/id-188621/
+- 188724 — SterlingTeaches — https://pixabay.com/videos/id-188724/
+- 200290 — thienvan2211 — https://pixabay.com/videos/id-200290/
+- 202740 — Kanenori — https://pixabay.com/videos/id-202740/
+- 202982 — Kanenori — https://pixabay.com/videos/id-202982/
+- 203473 — Kaffeesüchtig — https://pixabay.com/videos/id-203473/
+- 204278 — pandachan2go — https://pixabay.com/videos/id-204278/
+- 205345 — Kanenori — https://pixabay.com/videos/id-205345/
+- 205346 — Kanenori — https://pixabay.com/videos/id-205346/
+- 207906 — thienvan2211 — https://pixabay.com/videos/id-207906/
+- 208552 — Kanenori — https://pixabay.com/videos/id-208552/
+- 208581 — Kanenori — https://pixabay.com/videos/id-208581/
+- 211013 — Kanenori — https://pixabay.com/videos/id-211013/
+- 211067 — Kanenori — https://pixabay.com/videos/id-211067/
+- 214940 — Kanenori — https://pixabay.com/videos/id-214940/
+- 218731 — NguyenGianga2 — https://pixabay.com/videos/id-218731/
+- 218732 — NguyenGianga2 — https://pixabay.com/videos/id-218732/
+- 218733 — NguyenGianga2 — https://pixabay.com/videos/id-218733/
+- 218734 — NguyenGianga2 — https://pixabay.com/videos/id-218734/
+- 218735 — NguyenGianga2 — https://pixabay.com/videos/id-218735/
+- 218736 — NguyenGianga2 — https://pixabay.com/videos/id-218736/
+- 220211 — DeltaWorks — https://pixabay.com/videos/id-220211/
+- 222991 — JayShawflybydrones — https://pixabay.com/videos/id-222991/
+- 232696 — Kanenori — https://pixabay.com/videos/id-232696/
+- 234878 — ochii_kai — https://pixabay.com/videos/id-234878/
+- 235285 — Kanenori — https://pixabay.com/videos/id-235285/
+- 236768 — JayShawflybydrones — https://pixabay.com/videos/id-236768/
+- 239173 — ZachMcCoyDavies — https://pixabay.com/videos/id-239173/
+- 239174 — ZachMcCoyDavies — https://pixabay.com/videos/id-239174/
+- 239872 — Natures_Embrace — https://pixabay.com/videos/id-239872/
+- 241122 — Kanenori — https://pixabay.com/videos/id-241122/
+- 241125 — Natures_Embrace — https://pixabay.com/videos/id-241125/
+- 241395 — Natures_Embrace — https://pixabay.com/videos/id-241395/
+- 241403 — Natures_Embrace — https://pixabay.com/videos/id-241403/
+- 243075 — Natures_Embrace — https://pixabay.com/videos/id-243075/
+- 243931 — Kanenori — https://pixabay.com/videos/id-243931/
+- 246271 — ochii_kai — https://pixabay.com/videos/id-246271/
+- 246618 — Kanenori — https://pixabay.com/videos/id-246618/
+- 248449 — TungArt7 — https://pixabay.com/videos/id-248449/
+- 253702 — ochii_kai — https://pixabay.com/videos/id-253702/
+- 254093 — Kanenori — https://pixabay.com/videos/id-254093/
+- 256109 — Kanenori — https://pixabay.com/videos/id-256109/
+- 259546 — DavidClode — https://pixabay.com/videos/id-259546/
+- 266428 — Kanenori — https://pixabay.com/videos/id-266428/
+- 268537 — Kanenori — https://pixabay.com/videos/id-268537/
+- 269084 — Kanenori — https://pixabay.com/videos/id-269084/
+- 274538 — Kanenori — https://pixabay.com/videos/id-274538/
+- 304115 — MasterAndMargarita — https://pixabay.com/videos/id-304115/
+- 325563 — MagicTV — https://pixabay.com/videos/id-325563/
+- 325564 — MagicTV — https://pixabay.com/videos/id-325564/
+- 326769 — Yocchi09 — https://pixabay.com/videos/id-326769/
+- 330502 — Solarselle77 — https://pixabay.com/videos/id-330502/
+- 334649 — Stephnino — https://pixabay.com/videos/id-334649/
+- 334650 — Stephnino — https://pixabay.com/videos/id-334650/
+- 343095 — Kanenori — https://pixabay.com/videos/id-343095/
+- 357529 — FreemanGoldFamily — https://pixabay.com/videos/id-357529/
+- 363532 — Solarselle77 — https://pixabay.com/videos/id-363532/
+- 368458 — Kanenori — https://pixabay.com/videos/id-368458/
+- 380567 — u_0uzfwvuep4 — https://pixabay.com/videos/id-380567/

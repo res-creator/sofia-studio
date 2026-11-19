@@ -1,5 +1,7 @@
 # Studio — notes for the next session
 
+> **Channel «Мысленный эксперимент» + Pikabu (Nov 2026):** read `ru_geo/HANDOFF_MYSL.md` first.
+
 > **English TikTok channel (money/business stories):** read `CHANNEL.md` first — it has the rules, pipeline, voice and checklist for those episodes.
 
 > **English dubs of travel documentaries (India, Norway, Vietnam):** read `ENGLISH_DUB.md` first.
@@ -10,5 +12,6 @@
 - Never write API keys into code, git, chat logs or memory. ElevenLabs keys only via env var `ELEVEN_API_KEYS`. Max 2 ElevenLabs requests at once (space calls ~3 s apart).
 - English only on screen and in audio. Hashtags in all lowercase.
 - Owner talks Russian; answer her in Russian, simply.
+- When the owner asks for voice options or voice links: send only links (free previews are fine). Do NOT generate test samples or spend ElevenLabs credits unless she explicitly asks for samples.
 - At the end of every task, always give the owner direct GitHub links: the Pull Request, the branch folder, and the final files (MP4, cover, SRT, upload kit).
 - The owner closed the Sofia & Gus kids' channel and the disaster-documentary channel (Nov 11, 2026); their files were removed. `lib/fonts.js` stays (used by `tests/mcd_collage`).

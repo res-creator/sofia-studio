@@ -1,0 +1,268 @@
+{
+ "clips": [
+  {
+   "id": "atlas",
+   "file": "ru_geo/data/richest_img/Catalan_Atlas_BNF__sheet_6.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD (весь лист)",
+   "page": "https://commons.wikimedia.org/wiki/File:Catalan_Atlas_BNF,_sheet_6.jpg"
+  },
+  {
+   "id": "crassus",
+   "file": "ru_geo/data/richest_img/Roman_Marble_Statue_Head_of_Crassus__Louvre__28027339230_.jpg",
+   "caption": "",
+   "author": "Gary Todd from Xinzheng, China",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:Roman_Marble_Statue_Head_of_Crassus,_Louvre_(28027339230).jpg"
+  },
+  {
+   "id": "augustus",
+   "file": "ru_geo/data/richest_img/Statue-Augustus.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD",
+   "page": "https://commons.wikimedia.org/wiki/File:Statue-Augustus.jpg"
+  },
+  {
+   "id": "aureus",
+   "file": "ru_geo/data/richest_img/Aureus__Auguste__Lyon__btv1b104440369.jpg",
+   "caption": "",
+   "author": "Национальная библиотека Франции",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:Aureus,_Auguste,_Lyon,_btv1b104440369.jpg"
+  },
+  {
+   "id": "akbar",
+   "file": "ru_geo/data/richest_img/Govardhan._Akbar_With_Lion_and_Calf_ca._1630__Metmuseum.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD",
+   "page": "https://commons.wikimedia.org/wiki/File:Govardhan._Akbar_With_Lion_and_Calf_ca._1630,_Metmuseum.jpg"
+  },
+  {
+   "id": "qingming",
+   "file": "ru_geo/data/richest_img/Along_the_River_During_the_Qingming_Festival_Section_1.jpg",
+   "caption": "",
+   "author": "Image provided by Baidu Tieba, Spliced by SJLD",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:Along_the_River_During_the_Qingming_Festival_Section_1.jpg"
+  },
+  {
+   "id": "nicholas",
+   "file": "ru_geo/data/richest_img/Nicholas_II_by_Boissonnas___Eggler_c1909.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD",
+   "page": "https://commons.wikimedia.org/wiki/File:Nicholas_II_by_Boissonnas_&_Eggler_c1909.jpg"
+  },
+  {
+   "id": "chowmahalla",
+   "file": "ru_geo/data/richest_img/Chowmahalla_Palace_01.jpg",
+   "caption": "",
+   "author": "Bernard Gagnon",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Chowmahalla_Palace_01.jpg"
+  },
+  {
+   "id": "fugger",
+   "file": "ru_geo/data/richest_img/Albrecht_D_rer_-_Jakob_Fugger__the_Wealthy_-_WGA07011.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD",
+   "page": "https://commons.wikimedia.org/wiki/File:Albrecht_Dürer_-_Jakob_Fugger,_the_Wealthy_-_WGA07011.jpg"
+  },
+  {
+   "id": "fuggerhaus",
+   "file": "ru_geo/data/richest_img/Fuggerhaus_Augsburg_Nordseite.jpg",
+   "caption": "",
+   "author": "Ricardalovesmonuments",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Fuggerhaus_Augsburg_Nordseite.jpg"
+  },
+  {
+   "id": "richmond",
+   "file": "ru_geo/data/richest_img/Alexander_Keirincx_-_Richmond_Castle__Yorkshire_-_Google_Art_Project.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD",
+   "page": "https://commons.wikimedia.org/wiki/File:Alexander_Keirincx_-_Richmond_Castle,_Yorkshire_-_Google_Art_Project.jpg"
+  },
+  {
+   "id": "domesday",
+   "file": "ru_geo/data/richest_img/Domesday-book-1804x972.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD",
+   "page": "https://commons.wikimedia.org/wiki/File:Domesday-book-1804x972.jpg"
+  },
+  {
+   "id": "breakers",
+   "file": "ru_geo/data/richest_img/Breakers__1878__-_Newport__RI.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD",
+   "page": "https://commons.wikimedia.org/wiki/File:Breakers_(1878)_-_Newport,_RI.jpg"
+  },
+  {
+   "id": "tarbell",
+   "file": "ru_geo/data/richest_img/Ida_M._Tarbell__1909.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD",
+   "page": "https://commons.wikimedia.org/wiki/File:Ida_M._Tarbell,_1909.jpg"
+  },
+  {
+   "id": "octopus2",
+   "file": "ru_geo/data/richest_img/Next__LCCN2001695241.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD (тот же сюжет, LoC)",
+   "page": "https://commons.wikimedia.org/wiki/File:Next!_LCCN2001695241.jpg"
+  },
+  {
+   "id": "rockefeller",
+   "file": "ru_geo/data/richest_img/Portrait_of_J._D._Rockefeller.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD",
+   "page": "https://commons.wikimedia.org/wiki/File:Portrait_of_J._D._Rockefeller.jpg"
+  },
+  {
+   "id": "homestead",
+   "file": "ru_geo/data/richest_img/Industries_of_War_-_Machinery_-_Miscellaneous_-_Manufacturing_Steel_Products_at_the_Homest",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD (NARA)",
+   "page": "https://commons.wikimedia.org/wiki/File:Industries_of_War_-_Machinery_-_Miscellaneous_-_Manufacturing_Steel_Products_at_the_Homestead_Works,_Munhall,_Pennsylvania,_of_the_Carnegie_Steel_Company._Cooling_bed_-_48%22_Universal_plate_mill_-_NARA_-_45486069.jpg"
+  },
+  {
+   "id": "musk",
+   "file": "ru_geo/data/richest_img/Elon_Musk_Royal_Society__crop2_.jpg",
+   "caption": "",
+   "author": "Duncan Hull",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Elon_Musk_Royal_Society_(crop2).jpg"
+  },
+  {
+   "id": "bezos",
+   "file": "ru_geo/data/richest_img/Jeff_Bezos_at_Amazon_Spheres_Grand_Opening_in_Seattle_-_2018__39074799225___cropped_.jpg",
+   "caption": "",
+   "author": "Seattle City Council",
+   "license": "CC BY 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Jeff_Bezos_at_Amazon_Spheres_Grand_Opening_in_Seattle_-_2018_(39074799225)_(cropped).jpg"
+  },
+  {
+   "id": "atlas_musa",
+   "file": "ru_geo/data/richest_img/Catalan_Atlas_BNF_Sheet_6_Mansa_Musa.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD",
+   "page": "https://commons.wikimedia.org/wiki/File:Catalan_Atlas_BNF_Sheet_6_Mansa_Musa.jpg"
+  },
+  {
+   "id": "mosque",
+   "file": "ru_geo/data/richest_img/Djinguereber_Mosque__Timbuktu__Mali.jpg",
+   "caption": "",
+   "author": "Dr. Ondřej Havelka (cestovatel)",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Djinguereber_Mosque,_Timbuktu,_Mali.jpg"
+  },
+  {
+   "id": "resgestae",
+   "file": "ru_geo/data/richest_img/Monumentum_Ancyranum_Res_Gestae_Divi_Augusti_Part_1.jpg",
+   "caption": "",
+   "author": "Perrot, Georges; Guillaume, Edmond; Delbet, Jules",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:Monumentum_Ancyranum_Res_Gestae_Divi_Augusti_Part_1.jpg"
+  },
+  {
+   "id": "genghis",
+   "file": "ru_geo/data/richest_img/YuanEmperorAlbumGenghisPortrait.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD",
+   "page": "https://commons.wikimedia.org/wiki/File:YuanEmperorAlbumGenghisPortrait.jpg"
+  },
+  {
+   "id": "henry",
+   "file": "ru_geo/data/richest_img/Hans_Holbein__the_Younger__Around_1497-1543_-_Portrait_of_Henry_VIII_of_England_-_Google_Art_Project.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD",
+   "page": "https://commons.wikimedia.org/wiki/File:Hans_Holbein,_the_Younger,_Around_1497-1543_-_Portrait_of_Henry_VIII_of_England_-_Google_Art_Project.jpg"
+  },
+  {
+   "id": "faberge",
+   "file": "ru_geo/data/richest_img/Faberge_eggs_in_Kremlin_Armoury_01_by_shakko.jpg",
+   "caption": "",
+   "author": "shakko",
+   "license": "CC BY-SA 3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Faberge_eggs_in_Kremlin_Armoury_01_by_shakko.jpg"
+  },
+  {
+   "id": "jacob",
+   "file": "ru_geo/data/richest_img/Jacob_Diamond.jpg",
+   "caption": "",
+   "author": "Barun Ghosh",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Jacob_Diamond.jpg"
+  },
+  {
+   "id": "vanderbilt",
+   "file": "ru_geo/data/richest_img/Cornelius_Vanderbilt_Daguerrotype2.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD",
+   "page": "https://commons.wikimedia.org/wiki/File:Cornelius_Vanderbilt_Daguerrotype2.jpg"
+  },
+  {
+   "id": "gcdepot",
+   "file": "ru_geo/data/richest_img/Grand_Central_Depot__New_York_City__1870.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD",
+   "page": "https://commons.wikimedia.org/wiki/File:Grand_Central_Depot,_New_York_City,_1870.jpg"
+  },
+  {
+   "id": "carnegie",
+   "file": "ru_geo/data/richest_img/Andrew_Carnegie__three-quarter_length_portrait__seated__facing_slightly_left__1913.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD (LoC)",
+   "page": "https://commons.wikimedia.org/wiki/File:Andrew_Carnegie,_three-quarter_length_portrait,_seated,_facing_slightly_left,_1913.jpg"
+  },
+  {
+   "id": "carnegielib",
+   "file": "ru_geo/data/richest_img/Carnegie_Library__Sandusky__O.__1905_postcard.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD",
+   "page": "https://commons.wikimedia.org/wiki/File:Carnegie_Library,_Sandusky,_O.,_1905_postcard.jpg"
+  },
+  {
+   "id": "octopus",
+   "file": "ru_geo/data/richest_img/Standard_oil_octopus_loc_color.jpg",
+   "caption": "",
+   "author": "см. страницу файла",
+   "license": "PD (Puck 1904, LoC)",
+   "page": "https://commons.wikimedia.org/wiki/File:Standard_oil_octopus_loc_color.jpg"
+  },
+  {
+   "id": "fuggerei",
+   "file": "ru_geo/data/richest_img/Gasse_in_der_Fuggerei__Augsburg.JPG",
+   "caption": "",
+   "author": "High Contrast",
+   "license": "CC BY 3.0 de",
+   "page": "https://commons.wikimedia.org/wiki/File:Gasse_in_der_Fuggerei,_Augsburg.JPG"
+  },
+  {
+   "id": "richmond2",
+   "file": "ru_geo/data/richest_img/Richmond_Castle__Yorkshire_MET_ep09.1.1.bw.R.jpg",
+   "caption": "",
+   "author": "Philip Wilson Steer",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:Richmond_Castle,_Yorkshire_MET_ep09.1.1.bw.R.jpg"
+  }
+ ]
+}

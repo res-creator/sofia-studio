@@ -1,0 +1,13 @@
+[
+ {"start": 0.0, "end": 66.0, "file": "investigations.mp3", "gain": -2, "fadeIn": 1.5},
+ {"start": 61.0, "end": 194.4, "file": "eastern_thought.mp3", "gain": -3, "fadeIn": 2.0},
+ {"start": 191.8, "end": 331.0, "file": "cherry_blossom.mp3", "gain": -3, "offset": 0},
+ {"start": 328.4, "end": 412.0, "file": "gathering_darkness.mp3", "gain": -3},
+ {"start": 411.5, "end": 465.2, "file": "sneaky_snitch.mp3", "gain": -5},
+ {"start": 462.6, "end": 601.8, "file": "hidden_agenda.mp3", "gain": -3},
+ {"start": 599.2, "end": 657.3, "file": "sovereign.mp3", "gain": -4, "offset": 20},
+ {"start": 654.7, "end": 768.6, "file": "thinking_music.mp3", "gain": -3},
+ {"start": 766.0, "end": 906.4, "file": "atlantean_twilight.mp3", "gain": -3},
+ {"start": 903.8, "end": 967.6, "file": "dreamer.mp3", "gain": -3},
+ {"start": 965.0, "end": 1040.0, "file": "lasting_hope.mp3", "gain": -2, "fadeOut": 3.0}
+]
