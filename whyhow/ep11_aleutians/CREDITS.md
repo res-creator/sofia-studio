@@ -39,8 +39,8 @@ Photos and video (Wikimedia Commons):
 - Aleut Evacuation, 1942 (34008700550) — National Park Service, Alaska Region, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAleut_Evacuation%2C_1942_%2834008700550%29.png
 - Atka Island reindeer and World War II aircraft — Hillebrand, Steve - U.S. Fish and Wildlife Service, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAtka_Island_reindeer_and_World_War_II_aircraft.jpg
 - Women and children having a meal at Ward Lake Evacuation Camp (35534072510) — National Park Service, Alaska Region, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AWomen_and_children_having_a_meal_at_Ward_Lake_Evacuation_Camp_%2835534072510%29.jpg
-- Funter Bay 110 — gillfoto, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AFunter_Bay_110.jpg
 - Killisnoo evacuation camp, 1942 (33551289614) — National Park Service, Alaska Region, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AKillisnoo_evacuation_camp%2C_1942_%2833551289614%29.jpg
+- Funter Bay 110 — gillfoto, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AFunter_Bay_110.jpg
 - Aleut Womens Petition - DPLA - 1a29b80d0338d2a8db8448ab782dcd00 (page 1) — National Archives at Seattle, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAleut_Womens_Petition_-_DPLA_-_1a29b80d0338d2a8db8448ab782dcd00_%28page_1%29.jpg
 - Peace Memorial at the top of Engineer Hill, Attu (39020676024) — USFWSAlaska, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3APeace_Memorial_at_the_top_of_Engineer_Hill%2C_Attu_%2839020676024%29.jpg
 - Japanese Memorial, Attu (39020739234) — USFWSAlaska, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AJapanese_Memorial%2C_Attu_%2839020739234%29.jpg
@@ -61,8 +61,8 @@ Photos and video (Wikimedia Commons):
 - Adak National Forest. Adak Island, Alaska (16046920393) — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAdak_National_Forest._Adak_Island%2C_Alaska_%2816046920393%29.jpg
 - Abandoned homes on Adak Island, Alaska (16665815472) — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAbandoned_homes_on_Adak_Island%2C_Alaska_%2816665815472%29.jpg
 - Ruined Adak homes. Adak Island, Alaska (47996636018) — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ARuined_Adak_homes._Adak_Island%2C_Alaska_%2847996636018%29.jpg
-- Adak Army Base and Adak Naval Operating Base (20359238629) — National Park Service, Alaska Region, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAdak_Army_Base_and_Adak_Naval_Operating_Base_%2820359238629%29.jpg
 - Abandoned bunker. Adak Island, Alaska (47996634728) — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAbandoned_bunker._Adak_Island%2C_Alaska_%2847996634728%29.jpg
+- Adak Army Base and Adak Naval Operating Base (20359238629) — National Park Service, Alaska Region, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAdak_Army_Base_and_Adak_Naval_Operating_Base_%2820359238629%29.jpg
 - Wreck of the Heritage. Adak Island, Alaska (31372084535) — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AWreck_of_the_Heritage._Adak_Island%2C_Alaska_%2831372084535%29.jpg
 - Shipwreck in the Adak Harbor. Adak Island, Alaska — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AShipwreck_in_the_Adak_Harbor._Adak_Island%2C_Alaska.jpg
 - Power line in Adak Island (47996624717) — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3APower_line_in_Adak_Island_%2847996624717%29.jpg
