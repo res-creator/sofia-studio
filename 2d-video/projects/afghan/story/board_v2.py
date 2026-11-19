@@ -206,7 +206,7 @@ def build_full(add, w, END):
     FAM = [F(560, 880, 0.9, 'granny', seated=True, expr='smile'), F(960, 880, 0.9, 'mother', seated=True, pose='tea', holdR='baby', expr='smile'), F(1360, 880, 0.9, 'father', seated=True, expr='smile')]
     GIRLS = [F(560, 900, 0.62, 'girl', expr='smile', seed=31), F(820, 900, 0.62, 'girl', expr='focus', seed=32, skin='#d8a070'), F(1080, 900, 0.62, 'girl', expr='smile', seed=33), F(1340, 900, 0.62, 'girl', expr='focus', seed=34, skin='#c88c5c')]
     def digits(t, a, b, x7):  # 1…6 загораются, 7 перечёркнут
-        return [TX(str(k + 1), a + (b - a) * k / 6, 300 + k * 200, 560, 190, '#ffffff') for k in range(6)] + [TX('7', x7, 1700, 560, 190, '#ff8a7a'), ['stamp', x7 + 0.15, 1700, 560, 120]]
+        return [TX(str(k + 1), a + (b - a) * k / 6, 330 + k * 180, 560, 180, '#ffffff') for k in range(6)] + [TX('7', x7, 1560, 560, 180, '#ff8a7a'), ['stamp', x7 + 0.15, 1560, 560, 110]]
     # ---------------------------------------------------------------- ХОЛОДНЫЙ СТАРТ
     V(0.0, bg='classroom', bo={'board': [{'t': '7 × 8 = 56', 'at': 0.0, 'cps': 14}]}, figs=[F(1100, 940, 0.78, 'girl', poses=[[0, 'point']], expr='smile', look=-1)], under=[['deskrow', [300, 1600]]], fx=[CN(0.2, 0, 12, 230, 150, size=90, suf=' лет', dur=0.8, col=YEL)], mv={'r': 0.05, 'kick': 1})
     t = 1.2
@@ -514,7 +514,7 @@ def build_full(add, w, END):
     t = 425.85; zk = w('закрыли', t)
     V(t, 'whip2', bg='university', bo={'locked': {'kv': [[0, 0], [zk, 1]], 'd': 0.1}}, fx=[TG('2022', w('втором', t), 960, 150, 84, YEL), ['chain', zk, 960, 600, 300]], mv={'r': 0.04, 'kick': 1})
     t = 429.0
-    V(t, bg='university', figs=[F(640 + k * 320, 1000, 0.75, 'mstudent', walk={'x0': 640 + k * 320 + (900 if k == 2 else -900), 'x1': 640 + k * 320, 'at': w('вышли', t) - 1.4 + k * 0.2, 'dur': 1.2}, expr='angry', seed=27 + k, holdR='notes', pose='hold', skin=['#f1c8a2', '#d8a070', '#e2b48a'][k], beard=k == 2) for k in range(3)], fx=[TG('в знак протеста', w('протеста', t), 960, 150, 80, YEL), ['burst', w('экзаменов', t), 960, 560, 'lines', {'n': 12, 'grav': 0}]], mv={'r': 0.03, 'px': -35})
+    V(t, bg='university', figs=[F(640 + k * 320, 1000, 0.75, 'mstudent', walk={'x0': 640 + k * 320 + (900 if k == 2 else -900), 'x1': 640 + k * 320, 'at': t + 0.1 + k * 0.35, 'dur': 1.6}, expr='angry', seed=27 + k, holdR='notes', pose='hold', skin=['#f1c8a2', '#d8a070', '#e2b48a'][k], beard=k == 2) for k in range(3)], fx=[TG('в знак протеста', w('протеста', t), 960, 150, 80, YEL), ['burst', w('экзаменов', t), 960, 560, 'lines', {'n': 12, 'grav': 0}]], mv={'r': 0.03, 'px': -35})
     # ---------------------------------------------------------------- 40 ЛЕТ (продолжение после теста)
     t = 550.16
     V(t, 'dipWhite', bg='room', bo={'night': 1}, figs=[F(800, 900, 1.0, 'granny', seated=True, expr='calm', mouthKeys=[[0, 1]], look=0.6), F(1180, 900, 0.62, 'girl', seated=True, expr='smile', look=-1)], fx=[['burst', [t + 0.4, t + 1.3, t + 2.2], 900, 420, 'notes', {'n': 3, 'speed': 220, 'grav': -60, 'dir': -1, 'spread': 0.9, 'size': 22, 'life': 1.4}], TG('ландаи', w('ландаи', t), 960, 160, 80, YEL)], tint='sepia', mv={'r': 0.04})
@@ -529,12 +529,12 @@ def build_full(add, w, END):
     t = 566.75
     V(t, bg='secretClass', figs=[F(960, 900, 0.95, 'girl', seated=True, pose='write', holdR='pen', expr='focus', lookY=0.6, seed=46)], under=[['stack', [t + 0.3, t + 0.6, t + 0.9], 1450, 860]], fx=[TG('учебники брата', w('учебников', t), 1450, 560, 66)], view=[1100, 600, 1.2], mv={'r': 0.05, 'kick': 1})
     t = 569.8
-    V(t, bg='room', bo={'night': 1}, figs=[F(960, 920, 1.05, 'girl', seated=True, pose='hold', holdR='notes', expr='smile', lookY=0.5, seed=46)], view=[1030, 640, 1.6], fx=[TG('тётины конспекты', w('конспектам', t), 960, 160, 76, YEL)], mv={'r': 0.05})
+    V(t, bg='room', bo={'night': 1}, figs=[F(960, 920, 1.05, 'girl', seated=True, pose='hold', holdR='notes', expr='smile', lookY=0.5, seed=46)], view=[1030, 640, 1.6], fx=[TG('тётины конспекты', w('конспектам', t), 1450, 960, 76, YEL)], mv={'r': 0.05})
     card(571.85, 40, 60, 'Бабушка')
     t = 574.5
     V(t, bg='room', figs=[F(960, 900, 1.0, 'heroOld', seated=True, expr='smile', pose='tea', holdR='baby')], view=[960, 560, 1.3], mv={'r': 0.05, 'kick': 1})
     t = 575.95; c68 = w('шестидесяти', t)
-    V(t, bg='paper', fx=[CN(c68, 0, 68, 960, 460, size=260, pre='≈ ', suf=' лет', dur=1.2), TG('средняя жизнь женщины', c68 + 0.6, 960, 760, 76, YEL)], mv={'r': 0.04}, sfx=[[c68, 'counter', -15]])
+    V(t, bg='paper', fx=[TG('женщины здесь живут', t + 0.1, 960, 200, 76), CN(c68, 0, 68, 960, 460, size=260, pre='≈ ', suf=' лет', dur=1.2), TG('средняя жизнь женщины', c68 + 0.6, 960, 760, 76, YEL)], mv={'r': 0.04}, sfx=[[c68, 'counter', -15]])
     t = 579.65
     V(t, bg='room', figs=[F(960, 900, 1.0, 'heroOld', seated=True, expr='laugh', pose='tea', holdR='baby', nods=[580.2])], view=[960, 520, 1.6], fx=[['burst', 580.0, 960, 300, 'hearts', {'n': 12}]], tint='pink', mv={'r': 0.05})
     t = 580.85; vy = w('выбираешь', t)
@@ -548,7 +548,7 @@ def build_full(add, w, END):
     t = 591.75
     V(t, bg='classroom', bo={'board': [{'t': 'нельзя', 'at': 0.1, 'cps': 10}]}, figs=[F(1150, 940, 0.75, 'girl', pose='point', expr='focus', look=-1, seed=46)], view=[860, 520, 1.2], mv={'r': 0.05})
     t = 593.35; pe = w('переписать', t)
-    V(t, bg='classroom', figs=[F(1150, 940, 0.75, 'girl', poses=[[0, 'point'], [pe, 'cheer']], expr='laugh', look=-1, seed=46)], view=[860, 520, 1.2], fx=[['board', t, 'нельзя', 760, 340, 90, 0, '#ff8a7a'], ['stamp', w('люди', t), 760, 340, 120], ['board', pe, 'можно', 760, 460, 110, 10, '#bfe8b0'], ['burst', pe + 0.3, 760, 460, 'stars', {'n': 16}]], mv={'r': 0.05}, sfx=[[pe + 0.3, 'ding', -18]])
+    V(t, bg='classroom', figs=[F(1150, 940, 0.75, 'girl', poses=[[0, 'point'], [pe, 'cheer']], expr='laugh', look=-1, seed=46)], view=[860, 520, 1.2], fx=[['board', t, 'нельзя', 760, 340, 90, 0, '#ff8a7a'], ['stamp', w('люди', t), 760, 340, 120], ['board', pe, 'можно', 1150, 340, 120, 10, '#bfe8b0'], ['burst', pe + 0.3, 1150, 340, 'stars', {'n': 16}]], mv={'r': 0.05}, sfx=[[pe + 0.3, 'ding', -18]])
     card(595.29, 0, 0, 'Финал')
     t = 597.95
     V(t, bg='room', bo={'night': 1}, fx=[['clockspin', 960, 520, 230, t + 0.1, 3.0]], mv={'r': 0.05, 'kick': 1})
@@ -575,7 +575,7 @@ def build_full(add, w, END):
     t = 624.0
     V(t, bg='classroom', bo={'board': [{'t': '7 × 8 = 56', 'at': 0.3, 'cps': 12}]}, figs=[F(1100, 940, 0.62, 'girl', pose='point', expr='laugh', look=-1, seed=46), F(1650, 960, 0.7, 'heroOld', seated=True, expr='laugh', nods=[625.5])], under=[['deskrow', [1650]]], fx=[['burst', w('умножения', t), 760, 330, 'stars', {'n': 14}]], mv={'r': 0.04})
     t = 626.3
-    V(t, 'whip2', bg='midwife', figs=[F(960, 960, 0.9, 'girl', seed=46, poses=[[0, 'idle'], [w('врачи', t), 'hold']], holdKeys=[[0, None], [w('врачи', t), 'steth']], coat={'kv': [[0, 0]]} and '#f4f4ee', shirt='#f4f4ee', expr='laugh')], fx=[TG('свои врачи', w('врачи', t), 960, 160, 80, YEL), ['burst', w('врачи', t) + 0.1, 960, 400, 'sparkle', {'n': 16}]], mv={'r': 0.04, 'kick': 1})
+    V(t, 'whip2', bg='midwife', figs=[F(960, 960, 0.9, 'girl', seed=46, walk={'x0': -200, 'x1': 960, 'at': t, 'dur': 1.3}, poses=[[0, 'idle'], [t + 1.4, 'hold']], holdKeys=[[0, None], [t + 1.4, 'steth']], jumpAt=w('врачи', t), coat={'kv': [[0, 0]]} and '#f4f4ee', shirt='#f4f4ee', expr='laugh')], fx=[TG('свои врачи', w('врачи', t), 960, 160, 80, YEL), ['burst', w('врачи', t) + 0.1, 960, 400, 'sparkle', {'n': 16}]], mv={'r': 0.04, 'kick': 1})
     t = 630.45
     V(t, bg='secretClass', figs=[F(560, 900, 0.7, 'girl', seated=True, expr='focus', look=0.5, lookY=0.4, seed=41), F(800, 900, 0.7, 'girl', seated=True, expr='focus', seed=42, skin='#d8a070', look=0.3, lookY=0.4), F(1340, 900, 0.95, 'aunt', pose='point', expr='smile', look=-1)], fx=[['glow', 960, 260, 400, '255,220,150', 0.5]], mv={'r': 0.03, 'px': 30})
     t = 634.45
