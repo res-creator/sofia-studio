@@ -1599,8 +1599,8 @@
   "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
   "author": "U.S. Army Signal Corps (dir. John Huston)",
   "is_real_subject": true,
-  "duration_s": null,
-  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): torn US flag whipping on a mast, ship's bow plunging through heavy seas",
+  "duration_s": 14.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): army tent battered on a flooded shore, torn US flag whipping on a mast, a PBY flying boat tossing at its mooring in wind-whipped water, a ship's bow in heavy seas",
   "tags": [
    "sea",
    "storm",
@@ -1627,7 +1627,7 @@
   "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
   "author": "U.S. Army Signal Corps (dir. John Huston)",
   "is_real_subject": true,
-  "duration_s": null,
+  "duration_s": 18.0,
   "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): animated map showing Dutch Harbor on the chain and the line to Midway / San Francisco",
   "tags": [
    "map",
@@ -1655,7 +1655,7 @@
   "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
   "author": "U.S. Army Signal Corps (dir. John Huston)",
   "is_real_subject": true,
-  "duration_s": null,
+  "duration_s": 20.0,
   "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): bombers roar down a flooded steel-mat runway throwing spray, then lift into the mist",
   "tags": [
    "ww2 air",
@@ -1683,8 +1683,8 @@
   "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
   "author": "U.S. Army Signal Corps (dir. John Huston)",
   "is_real_subject": true,
-  "duration_s": null,
-  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): relief map of the western islands with an arrow pointing at Kiska",
+  "duration_s": 10.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): animated map: line from Dutch Harbor west along the chain to Kiska, then a relief map with an arrow at Kiska",
   "tags": [
    "map",
    "kiska"
@@ -1694,6 +1694,5170 @@
    "KISKA"
   ],
   "place": "map, Rat Islands",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_tundra_hills_smoke",
+  "file": "ia_report_1943_tundra_hills_smoke.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 252.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 16.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): low cloud and smoke drifting over brown tundra hills",
+  "tags": [
+   "landscape",
+   "tundra",
+   "adak"
+  ],
+  "best_for": [
+   "LANDSCAPE",
+   "TUNDRA",
+   "ADAK"
+  ],
+  "place": "Adak Island, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_tent_camp_tundra",
+  "file": "ia_report_1943_tent_camp_tundra.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 268.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 20.1,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): pyramid tents of the army camp on golden tundra under hills, a raven flies past",
+  "tags": [
+   "ww2 bases",
+   "adak",
+   "tundra"
+  ],
+  "best_for": [
+   "WW2_BASES",
+   "ADAK",
+   "TUNDRA"
+  ],
+  "place": "Adak Island, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_b24_wet_airfield",
+  "file": "ia_report_1943_b24_wet_airfield.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 300.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): B-24 Liberators on the wet, puddled airfield; airmen walk out to the planes",
+  "tags": [
+   "ww2 air",
+   "planes",
+   "adak"
+  ],
+  "best_for": [
+   "WW2_AIR",
+   "PLANES",
+   "ADAK"
+  ],
+  "place": "Adak airfield, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_b24_takeoff_bay",
+  "file": "ia_report_1943_b24_takeoff_bay.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 340.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): B-24 takes off along the bay shore, aircrew watch, bomber tail with star",
+  "tags": [
+   "ww2 air",
+   "planes",
+   "adak"
+  ],
+  "best_for": [
+   "WW2_AIR",
+   "PLANES",
+   "ADAK"
+  ],
+  "place": "Adak airfield, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_bombs_beach_soldiers",
+  "file": "ia_report_1943_bombs_beach_soldiers.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 394.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 16.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): rows of bombs stacked on the shore, soldiers jog along the beach toward the ships",
+  "tags": [
+   "ww2 bases",
+   "adak",
+   "soldiers"
+  ],
+  "best_for": [
+   "WW2_BASES",
+   "ADAK",
+   "SOLDIERS"
+  ],
+  "place": "Adak, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_harbor_ships_flag",
+  "file": "ia_report_1943_harbor_ships_flag.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 446.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 16.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): harbor with transports and a warship flying the US flag, mountains behind",
+  "tags": [
+   "ships",
+   "adak"
+  ],
+  "best_for": [
+   "SHIPS",
+   "ADAK"
+  ],
+  "place": "Adak harbor, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_ship_dusk_mountains",
+  "file": "ia_report_1943_ship_dusk_mountains.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 527.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 6.5,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): a warship sails past dark island mountains at dusk",
+  "tags": [
+   "ships",
+   "landscape"
+  ],
+  "best_for": [
+   "SHIPS",
+   "LANDSCAPE"
+  ],
+  "place": "Aleutian waters, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_unloading_dock_supplies",
+  "file": "ia_report_1943_unloading_dock_supplies.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 540.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 18.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): crates and supplies unloaded at a wooden dock, truck and cargo net swung ashore",
+  "tags": [
+   "ww2 bases",
+   "adak",
+   "supply"
+  ],
+  "best_for": [
+   "WW2_BASES",
+   "ADAK",
+   "SUPPLY"
+  ],
+  "place": "Adak, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_bulldozer_builds_airfield",
+  "file": "ia_report_1943_bulldozer_builds_airfield.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 856.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 18.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): bulldozers and graders scrape out the airfield on the drained lagoon in days",
+  "tags": [
+   "adak",
+   "construction",
+   "ww2 bases"
+  ],
+  "best_for": [
+   "ADAK",
+   "CONSTRUCTION",
+   "WW2_BASES"
+  ],
+  "place": "Adak (Sweeper Cove airfield), Sept 1942",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_marston_mat_runway",
+  "file": "ia_report_1943_marston_mat_runway.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 880.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 16.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): endless rows of pierced steel Marston matting laid across the new runway",
+  "tags": [
+   "adak",
+   "construction",
+   "ww2 air"
+  ],
+  "best_for": [
+   "ADAK",
+   "CONSTRUCTION",
+   "WW2_AIR"
+  ],
+  "place": "Adak airfield, 1942",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_runway_water_volcano",
+  "file": "ia_report_1943_runway_water_volcano.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 936.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): flooded steel-mat runway shining under a snowy volcano, fighter taxis through spray",
+  "tags": [
+   "adak",
+   "ww2 air",
+   "volcano"
+  ],
+  "best_for": [
+   "ADAK",
+   "WW2_AIR",
+   "VOLCANO"
+  ],
+  "place": "Adak airfield, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_rainbow_over_airfield",
+  "file": "ia_report_1943_rainbow_over_airfield.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 962.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 18.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): a full rainbow arcs over the island and the airfield",
+  "tags": [
+   "adak",
+   "weather",
+   "landscape"
+  ],
+  "best_for": [
+   "ADAK",
+   "WEATHER",
+   "LANDSCAPE"
+  ],
+  "place": "Adak, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_p39_takeoff_spray",
+  "file": "ia_report_1943_p39_takeoff_spray.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 984.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): P-39/P-40 fighters take off through sheets of spray off the wet runway, mountains behind",
+  "tags": [
+   "adak",
+   "ww2 air",
+   "planes"
+  ],
+  "best_for": [
+   "ADAK",
+   "WW2_AIR",
+   "PLANES"
+  ],
+  "place": "Adak airfield, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_b24_snowy_volcano",
+  "file": "ia_report_1943_b24_snowy_volcano.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 1228.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 16.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): B-24 Liberator parked on the airfield with a snowy volcano behind, ground crew waving it in",
+  "tags": [
+   "ww2 air",
+   "adak",
+   "volcano"
+  ],
+  "best_for": [
+   "WW2_AIR",
+   "ADAK",
+   "VOLCANO"
+  ],
+  "place": "Adak airfield, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_recon_photo_kiska",
+  "file": "ia_report_1943_recon_photo_kiska.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 1350.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): officers study a reconnaissance photo of Japanese positions on Kiska with a magnifier and pencil",
+  "tags": [
+   "kiska",
+   "ww2 air",
+   "maps"
+  ],
+  "best_for": [
+   "KISKA",
+   "WW2_AIR",
+   "MAPS"
+  ],
+  "place": "Adak, 1942-43",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_field_mass_volcano",
+  "file": "ia_report_1943_field_mass_volcano.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 1452.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): an outdoor Mass and a field organ on the tundra with a volcano in the distance",
+  "tags": [
+   "adak",
+   "ww2 bases",
+   "volcano"
+  ],
+  "best_for": [
+   "ADAK",
+   "WW2_BASES",
+   "VOLCANO"
+  ],
+  "place": "Adak, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_briefing_map_kiska",
+  "file": "ia_report_1943_briefing_map_kiska.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 1612.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 10.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): pencil traces the route on a briefing chart of the western Aleutians before a mission to Kiska",
+  "tags": [
+   "map",
+   "kiska",
+   "ww2 air"
+  ],
+  "best_for": [
+   "MAP",
+   "KISKA",
+   "WW2_AIR"
+  ],
+  "place": "Adak, 1942-43",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_b24_takeoff_mountains",
+  "file": "ia_report_1943_b24_takeoff_mountains.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 1980.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): B-24 lifts off over the puddled runway and banks away past the mountains",
+  "tags": [
+   "ww2 air",
+   "planes",
+   "adak"
+  ],
+  "best_for": [
+   "WW2_AIR",
+   "PLANES",
+   "ADAK"
+  ],
+  "place": "Adak airfield, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_p38_takeoff_tundra",
+  "file": "ia_report_1943_p38_takeoff_tundra.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 2022.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 16.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): P-38 Lightnings roll and take off past golden tundra slopes",
+  "tags": [
+   "ww2 air",
+   "planes",
+   "adak"
+  ],
+  "best_for": [
+   "WW2_AIR",
+   "PLANES",
+   "ADAK"
+  ],
+  "place": "Adak airfield, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_formation_over_cloud",
+  "file": "ia_report_1943_formation_over_cloud.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 2100.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 18.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): bomber formation over a sea of clouds, seen from another plane",
+  "tags": [
+   "ww2 air",
+   "aerial",
+   "clouds"
+  ],
+  "best_for": [
+   "WW2_AIR",
+   "AERIAL",
+   "CLOUDS"
+  ],
+  "place": "over the Aleutians, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_b24_air_to_air_sea",
+  "file": "ia_report_1943_b24_air_to_air_sea.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 2124.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): air-to-air: B-24s fly low over the dark Bering Sea toward Kiska",
+  "tags": [
+   "ww2 air",
+   "aerial",
+   "sea"
+  ],
+  "best_for": [
+   "WW2_AIR",
+   "AERIAL",
+   "SEA"
+  ],
+  "place": "over the Aleutians, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_clouds_coast_from_bomber",
+  "file": "ia_report_1943_clouds_coast_from_bomber.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 2214.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): from a bomber: island cliffs and coast emerging through clouds",
+  "tags": [
+   "aerial",
+   "coast",
+   "kiska"
+  ],
+  "best_for": [
+   "AERIAL",
+   "COAST",
+   "KISKA"
+  ],
+  "place": "approach to Kiska, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_b17_b24_past_island_volcano",
+  "file": "ia_report_1943_b17_b24_past_island_volcano.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 2256.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): B-17 and B-24 bombers fly past a mountainous island (Kiska volcano) under broken cloud",
+  "tags": [
+   "ww2 air",
+   "kiska",
+   "volcano"
+  ],
+  "best_for": [
+   "WW2_AIR",
+   "KISKA",
+   "VOLCANO"
+  ],
+  "place": "over Kiska, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_bombers_over_kiska_coast",
+  "file": "ia_report_1943_bombers_over_kiska_coast.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 2304.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): B-24s over the Kiska coastline, aerial view of the island below",
+  "tags": [
+   "ww2 air",
+   "kiska",
+   "aerial"
+  ],
+  "best_for": [
+   "WW2_AIR",
+   "KISKA",
+   "AERIAL"
+  ],
+  "place": "over Kiska, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_aerial_kiska_camp",
+  "file": "ia_report_1943_aerial_kiska_camp.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 2370.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 12.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): aerial view straight down on the Japanese camp area on Kiska, bombers off the wing",
+  "tags": [
+   "kiska",
+   "aerial",
+   "japanese occupation"
+  ],
+  "best_for": [
+   "KISKA",
+   "AERIAL",
+   "JAPANESE_OCCUPATION"
+  ],
+  "place": "over Kiska, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_aerial_kiska_lakes_lowpass",
+  "file": "ia_report_1943_aerial_kiska_lakes_lowpass.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 2412.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): aerial of Kiska's lake-dotted lowlands, B-17 skimming low over brown tundra",
+  "tags": [
+   "kiska",
+   "aerial"
+  ],
+  "best_for": [
+   "KISKA",
+   "AERIAL"
+  ],
+  "place": "over Kiska, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_bombs_falling_kiska",
+  "file": "ia_report_1943_bombs_falling_kiska.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 2546.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): bombs tumble from the bomb bay and fall toward Kiska",
+  "tags": [
+   "kiska",
+   "bombing",
+   "ww2 air"
+  ],
+  "best_for": [
+   "KISKA",
+   "BOMBING",
+   "WW2_AIR"
+  ],
+  "place": "over Kiska, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_bomb_bursts_kiska_harbor",
+  "file": "ia_report_1943_bomb_bursts_kiska_harbor.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 2560.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): bomb bursts and smoke spread across Kiska harbor and camp seen from above",
+  "tags": [
+   "kiska",
+   "bombing",
+   "japanese occupation"
+  ],
+  "best_for": [
+   "KISKA",
+   "BOMBING",
+   "JAPANESE_OCCUPATION"
+  ],
+  "place": "Kiska Harbor, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_smoke_over_kiska",
+  "file": "ia_report_1943_smoke_over_kiska.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 2590.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): black smoke and cloud over Kiska after the bombing",
+  "tags": [
+   "kiska",
+   "bombing"
+  ],
+  "best_for": [
+   "KISKA",
+   "BOMBING"
+  ],
+  "place": "Kiska, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_bomber_silhouette_sea_island",
+  "file": "ia_report_1943_bomber_silhouette_sea_island.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 2616.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): bomber silhouetted against bright sea with an island behind on the way home",
+  "tags": [
+   "ww2 air",
+   "sea"
+  ],
+  "best_for": [
+   "WW2_AIR",
+   "SEA"
+  ],
+  "place": "Aleutian waters, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_report_1943_formation_home_islands",
+  "file": "ia_report_1943_formation_home_islands.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "gov.dod.dimoc.20347 @ 2646.0s",
+  "title": "REPORT FROM THE ALEUTIANS",
+  "page_url": "https://archive.org/details/gov.dod.dimoc.20347",
+  "licence": "Public domain (US War Department / Army Signal Corps film, 1943)",
+  "attribution": "U.S. Army Signal Corps, \"Report from the Aleutians\" (1943, dir. John Huston), via DoD DIMOC / archive.org",
+  "author": "U.S. Army Signal Corps (dir. John Huston)",
+  "is_real_subject": true,
+  "duration_s": 16.0,
+  "description": "Report from the Aleutians (John Huston, US Army Signal Corps, 1943, Technicolor): bombers in loose formation over the sea, low islands on the horizon",
+  "tags": [
+   "ww2 air",
+   "aerial",
+   "sea"
+  ],
+  "best_for": [
+   "WW2_AIR",
+   "AERIAL",
+   "SEA"
+  ],
+  "place": "Aleutian waters, 1942-43",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_landing_ships_fog",
+  "file": "ia_kiska_1943_color_landing_ships_fog.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10183 @ 20.0s",
+  "title": "Kiska, Aleutian Islands, Alaska",
+  "page_url": "https://archive.org/details/428-npc-10183",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy colour film (NARA 428-NPC-10183), Kiska operation Aug 1943: landing ships (LCIs) plough through pale fog-grey sea toward Kiska",
+  "tags": [
+   "kiska",
+   "color ww2",
+   "ships",
+   "fog"
+  ],
+  "best_for": [
+   "KISKA",
+   "COLOR_WW2",
+   "SHIPS",
+   "FOG"
+  ],
+  "place": "off Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_troops_on_deck",
+  "file": "ia_kiska_1943_color_troops_on_deck.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10183 @ 60.0s",
+  "title": "Kiska, Aleutian Islands, Alaska",
+  "page_url": "https://archive.org/details/428-npc-10183",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy colour film (NARA 428-NPC-10183), Kiska operation Aug 1943: troops in helmets crowd a ship's deck with packs, waiting to land",
+  "tags": [
+   "kiska",
+   "color ww2",
+   "soldiers"
+  ],
+  "best_for": [
+   "KISKA",
+   "COLOR_WW2",
+   "SOLDIERS"
+  ],
+  "place": "off Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_troops_climb_net",
+  "file": "ia_kiska_1943_color_troops_climb_net.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10183 @ 120.0s",
+  "title": "Kiska, Aleutian Islands, Alaska",
+  "page_url": "https://archive.org/details/428-npc-10183",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 12.0,
+  "description": "US Navy colour film (NARA 428-NPC-10183), Kiska operation Aug 1943: soldiers climb down a cargo net on the ship's side",
+  "tags": [
+   "kiska",
+   "color ww2",
+   "landing"
+  ],
+  "best_for": [
+   "KISKA",
+   "COLOR_WW2",
+   "LANDING"
+  ],
+  "place": "off Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_island_mist_ships",
+  "file": "ia_kiska_1943_color_island_mist_ships.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10183 @ 152.0s",
+  "title": "Kiska, Aleutian Islands, Alaska",
+  "page_url": "https://archive.org/details/428-npc-10183",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy colour film (NARA 428-NPC-10183), Kiska operation Aug 1943: misty dark island coast with ships at anchor under heavy cloud",
+  "tags": [
+   "kiska",
+   "color ww2",
+   "fog",
+   "landscape"
+  ],
+  "best_for": [
+   "KISKA",
+   "COLOR_WW2",
+   "FOG",
+   "LANDSCAPE"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_cloud_capped_ridge",
+  "file": "ia_kiska_1943_color_cloud_capped_ridge.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10183 @ 210.0s",
+  "title": "Kiska, Aleutian Islands, Alaska",
+  "page_url": "https://archive.org/details/428-npc-10183",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy colour film (NARA 428-NPC-10183), Kiska operation Aug 1943: cloud pouring over a dark ridge of Kiska, warship at anchor",
+  "tags": [
+   "kiska",
+   "color ww2",
+   "fog",
+   "landscape"
+  ],
+  "best_for": [
+   "KISKA",
+   "COLOR_WW2",
+   "FOG",
+   "LANDSCAPE"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_landing_craft_bay",
+  "file": "ia_kiska_1943_color_landing_craft_bay.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10183 @ 245.0s",
+  "title": "Kiska, Aleutian Islands, Alaska",
+  "page_url": "https://archive.org/details/428-npc-10183",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 18.0,
+  "description": "US Navy colour film (NARA 428-NPC-10183), Kiska operation Aug 1943: landing craft cross the grey bay toward the island shore",
+  "tags": [
+   "kiska",
+   "color ww2",
+   "landing"
+  ],
+  "best_for": [
+   "KISKA",
+   "COLOR_WW2",
+   "LANDING"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_misty_cliffs_sea_stacks",
+  "file": "ia_kiska_1943_color_misty_cliffs_sea_stacks.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10183 @ 278.0s",
+  "title": "Kiska, Aleutian Islands, Alaska",
+  "page_url": "https://archive.org/details/428-npc-10183",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy colour film (NARA 428-NPC-10183), Kiska operation Aug 1943: misty cliffs and jagged sea stacks along the Kiska shore",
+  "tags": [
+   "kiska",
+   "color ww2",
+   "coast",
+   "fog"
+  ],
+  "best_for": [
+   "KISKA",
+   "COLOR_WW2",
+   "COAST",
+   "FOG"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_beach_landing_craft",
+  "file": "ia_kiska_1943_color_beach_landing_craft.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10184 @ 18.0s",
+  "title": "Kiska, Aleutian Islands, Alaska",
+  "page_url": "https://archive.org/details/428-npc-10184",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 18.0,
+  "description": "US Navy colour film (NARA 428-NPC-10184), Kiska landing 15-16 Aug 1943: landing craft packed against a steep stony beach, troops pouring ashore, more boats in the bay",
+  "tags": [
+   "kiska",
+   "color ww2",
+   "landing"
+  ],
+  "best_for": [
+   "KISKA",
+   "COLOR_WW2",
+   "LANDING"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_troops_climb_green_cliff",
+  "file": "ia_kiska_1943_color_troops_climb_green_cliff.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10184 @ 85.0s",
+  "title": "Kiska, Aleutian Islands, Alaska",
+  "page_url": "https://archive.org/details/428-npc-10184",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 18.7,
+  "description": "US Navy colour film (NARA 428-NPC-10184), Kiska landing 15-16 Aug 1943: lines of troops climb a steep green tundra slope above the beach toward the fog",
+  "tags": [
+   "kiska",
+   "color ww2",
+   "tundra",
+   "soldiers"
+  ],
+  "best_for": [
+   "KISKA",
+   "COLOR_WW2",
+   "TUNDRA",
+   "SOLDIERS"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_men_on_cliffs_sea",
+  "file": "ia_kiska_1943_color_men_on_cliffs_sea.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10184 @ 112.0s",
+  "title": "Kiska, Aleutian Islands, Alaska",
+  "page_url": "https://archive.org/details/428-npc-10184",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 15.9,
+  "description": "US Navy colour film (NARA 428-NPC-10184), Kiska landing 15-16 Aug 1943: soldiers spread across green cliff slopes above the grey sea and sea stacks",
+  "tags": [
+   "kiska",
+   "color ww2",
+   "coast"
+  ],
+  "best_for": [
+   "KISKA",
+   "COLOR_WW2",
+   "COAST"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_volcano_in_haze",
+  "file": "ia_kiska_1943_color_volcano_in_haze.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10184 @ 133.0s",
+  "title": "Kiska, Aleutian Islands, Alaska",
+  "page_url": "https://archive.org/details/428-npc-10184",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 8.0,
+  "description": "US Navy colour film (NARA 428-NPC-10184), Kiska landing 15-16 Aug 1943: the cone of Kiska Volcano dim in haze above the tundra",
+  "tags": [
+   "kiska",
+   "volcano",
+   "color ww2"
+  ],
+  "best_for": [
+   "KISKA",
+   "VOLCANO",
+   "COLOR_WW2"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_bulldozer_stony_beach",
+  "file": "ia_kiska_1943_color_bulldozer_stony_beach.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10184 @ 225.0s",
+  "title": "Kiska, Aleutian Islands, Alaska",
+  "page_url": "https://archive.org/details/428-npc-10184",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 3.2,
+  "description": "US Navy colour film (NARA 428-NPC-10184), Kiska landing 15-16 Aug 1943: bulldozer crawls off a landing craft onto the stony beach under misty cliffs",
+  "tags": [
+   "kiska",
+   "color ww2",
+   "landing"
+  ],
+  "best_for": [
+   "KISKA",
+   "COLOR_WW2",
+   "LANDING"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_beachhead_boats",
+  "file": "ia_kiska_1943_color_beachhead_boats.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10184 @ 240.0s",
+  "title": "Kiska, Aleutian Islands, Alaska",
+  "page_url": "https://archive.org/details/428-npc-10184",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy colour film (NARA 428-NPC-10184), Kiska landing 15-16 Aug 1943: crowded beachhead, landing craft and bulldozers on the shingle, boats circling offshore",
+  "tags": [
+   "kiska",
+   "color ww2",
+   "landing"
+  ],
+  "best_for": [
+   "KISKA",
+   "COLOR_WW2",
+   "LANDING"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_fog_over_peak_bay",
+  "file": "ia_kiska_1943_color_fog_over_peak_bay.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10189 @ 20.0s",
+  "title": "Kiska, Aleutian Islands, Alaska",
+  "page_url": "https://archive.org/details/428-npc-10189",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy colour film (NARA 428-NPC-10189), Kiska operation 1943: fog rolling over a dark island peak above a wide grey bay, a ship tiny below",
+  "tags": [
+   "fog",
+   "landscape",
+   "color ww2",
+   "kiska"
+  ],
+  "best_for": [
+   "FOG",
+   "LANDSCAPE",
+   "COLOR_WW2",
+   "KISKA"
+  ],
+  "place": "Aleutian anchorage near Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_fog_bank_valley",
+  "file": "ia_kiska_1943_color_fog_bank_valley.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10189 @ 40.0s",
+  "title": "Kiska, Aleutian Islands, Alaska",
+  "page_url": "https://archive.org/details/428-npc-10189",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 18.0,
+  "description": "US Navy colour film (NARA 428-NPC-10189), Kiska operation 1943: thick fog bank filling a valley between dark hills over shimmering water",
+  "tags": [
+   "fog",
+   "landscape",
+   "color ww2"
+  ],
+  "best_for": [
+   "FOG",
+   "LANDSCAPE",
+   "COLOR_WW2"
+  ],
+  "place": "Aleutian anchorage near Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_volcano_above_clouds",
+  "file": "ia_kiska_1943_color_volcano_above_clouds.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10189 @ 103.0s",
+  "title": "Kiska, Aleutian Islands, Alaska",
+  "page_url": "https://archive.org/details/428-npc-10189",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 16.0,
+  "description": "US Navy colour film (NARA 428-NPC-10189), Kiska operation 1943: a volcano's snowy summit pokes above a bank of low cloud over the sea",
+  "tags": [
+   "volcano",
+   "fog",
+   "color ww2"
+  ],
+  "best_for": [
+   "VOLCANO",
+   "FOG",
+   "COLOR_WW2"
+  ],
+  "place": "Aleutians (likely Kiska/Segula), Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_cloud_waterfall_ridge",
+  "file": "ia_kiska_1943_color_cloud_waterfall_ridge.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10189 @ 120.0s",
+  "title": "Kiska, Aleutian Islands, Alaska",
+  "page_url": "https://archive.org/details/428-npc-10189",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 18.0,
+  "description": "US Navy colour film (NARA 428-NPC-10189), Kiska operation 1943: cloud pours over a dark mountain ridge like a waterfall, seen from a ship",
+  "tags": [
+   "fog",
+   "weather",
+   "landscape",
+   "color ww2"
+  ],
+  "best_for": [
+   "FOG",
+   "WEATHER",
+   "LANDSCAPE",
+   "COLOR_WW2"
+  ],
+  "place": "Aleutians, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_bw_battleship_deck_sea",
+  "file": "ia_kiska_1943_bw_battleship_deck_sea.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10289 @ 88.0s",
+  "title": "Kiska operations",
+  "page_url": "https://archive.org/details/428-npc-10289",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film (NARA 428-NPC-10289), Kiska operations 1943, b/w: crew on a battleship's foredeck, heavy guns trained out over a grey heaving sea",
+  "tags": [
+   "kiska",
+   "ships",
+   "sea"
+  ],
+  "best_for": [
+   "KISKA",
+   "SHIPS",
+   "SEA"
+  ],
+  "place": "off Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_bw_troops_packed_boat",
+  "file": "ia_kiska_1943_bw_troops_packed_boat.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10289 @ 205.0s",
+  "title": "Kiska operations",
+  "page_url": "https://archive.org/details/428-npc-10289",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film (NARA 428-NPC-10289), Kiska operations 1943, b/w: helmeted troops packed shoulder to shoulder in a landing craft before the Kiska landing",
+  "tags": [
+   "kiska",
+   "soldiers",
+   "landing"
+  ],
+  "best_for": [
+   "KISKA",
+   "SOLDIERS",
+   "LANDING"
+  ],
+  "place": "off Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_bw_beach_landing_craft_tractors",
+  "file": "ia_kiska_1943_bw_beach_landing_craft_tractors.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10293 @ 10.0s",
+  "title": "Kiska (Aleutian Islands, Alaska)",
+  "page_url": "https://archive.org/details/428-npc-10293",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film (NARA 428-NPC-10293), Kiska Aug 1943, b/w: landing craft ramps down on the stony beach, tractors hauling sledges of supplies, troops everywhere",
+  "tags": [
+   "kiska",
+   "landing",
+   "supply"
+  ],
+  "best_for": [
+   "KISKA",
+   "LANDING",
+   "SUPPLY"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_bw_supply_dump_slope",
+  "file": "ia_kiska_1943_bw_supply_dump_slope.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10293 @ 120.0s",
+  "title": "Kiska (Aleutian Islands, Alaska)",
+  "page_url": "https://archive.org/details/428-npc-10293",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film (NARA 428-NPC-10293), Kiska Aug 1943, b/w: huge pile of crates at a supply dump below a steep tundra slope, tractor working",
+  "tags": [
+   "kiska",
+   "supply"
+  ],
+  "best_for": [
+   "KISKA",
+   "SUPPLY"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_bw_truck_beach_road",
+  "file": "ia_kiska_1943_bw_truck_beach_road.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10293 @ 210.0s",
+  "title": "Kiska (Aleutian Islands, Alaska)",
+  "page_url": "https://archive.org/details/428-npc-10293",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film (NARA 428-NPC-10293), Kiska Aug 1943, b/w: army truck struggles along the muddy beach road under a steep grassy bank",
+  "tags": [
+   "kiska",
+   "supply"
+  ],
+  "best_for": [
+   "KISKA",
+   "SUPPLY"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_bw_landing_craft_line_beach",
+  "file": "ia_kiska_1943_bw_landing_craft_line_beach.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10293 @ 265.0s",
+  "title": "Kiska (Aleutian Islands, Alaska)",
+  "page_url": "https://archive.org/details/428-npc-10293",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 18.0,
+  "description": "US Navy film (NARA 428-NPC-10293), Kiska Aug 1943, b/w: line of beached landing craft unloading, tractors on the shore",
+  "tags": [
+   "kiska",
+   "landing"
+  ],
+  "best_for": [
+   "KISKA",
+   "LANDING"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_bw_wide_beachhead",
+  "file": "ia_kiska_1943_bw_wide_beachhead.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10293 @ 290.0s",
+  "title": "Kiska (Aleutian Islands, Alaska)",
+  "page_url": "https://archive.org/details/428-npc-10293",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film (NARA 428-NPC-10293), Kiska Aug 1943, b/w: wide view of the crowded beachhead from above, dozens of boats along the shore",
+  "tags": [
+   "kiska",
+   "landing"
+  ],
+  "best_for": [
+   "KISKA",
+   "LANDING"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_bw_troops_ridge_fog",
+  "file": "ia_kiska_1943_bw_troops_ridge_fog.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10294 @ 40.0s",
+  "title": "Kiska",
+  "page_url": "https://archive.org/details/428-npc-10294",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 18.0,
+  "description": "US Navy film (NARA 428-NPC-10294), Kiska Aug 1943, b/w: tiny figures of troops climb a bare ridge into grey fog",
+  "tags": [
+   "kiska",
+   "fog",
+   "soldiers"
+  ],
+  "best_for": [
+   "KISKA",
+   "FOG",
+   "SOLDIERS"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_bw_halftrack_cove",
+  "file": "ia_kiska_1943_bw_halftrack_cove.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10294 @ 116.0s",
+  "title": "Kiska",
+  "page_url": "https://archive.org/details/428-npc-10294",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film (NARA 428-NPC-10294), Kiska Aug 1943, b/w: a vehicle crosses a cove below a steep slope, smoke drifting",
+  "tags": [
+   "kiska",
+   "landing"
+  ],
+  "best_for": [
+   "KISKA",
+   "LANDING"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_bw_bulldozer_boulder_beach",
+  "file": "ia_kiska_1943_bw_bulldozer_boulder_beach.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10294 @ 140.0s",
+  "title": "Kiska",
+  "page_url": "https://archive.org/details/428-npc-10294",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film (NARA 428-NPC-10294), Kiska Aug 1943, b/w: bulldozer clears a road across a boulder beach, landing craft beyond",
+  "tags": [
+   "kiska",
+   "landing",
+   "construction"
+  ],
+  "best_for": [
+   "KISKA",
+   "LANDING",
+   "CONSTRUCTION"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_bw_landing_craft_sea_stacks",
+  "file": "ia_kiska_1943_bw_landing_craft_sea_stacks.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-10294 @ 236.0s",
+  "title": "Kiska",
+  "page_url": "https://archive.org/details/428-npc-10294",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film (NARA 428-NPC-10294), Kiska Aug 1943, b/w: landing craft approach the shore past jagged sea stacks in grey water",
+  "tags": [
+   "kiska",
+   "landing",
+   "coast"
+  ],
+  "best_for": [
+   "KISKA",
+   "LANDING",
+   "COAST"
+  ],
+  "place": "Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_bw_soldiers_firing_snow",
+  "file": "ia_attu_1943_bw_soldiers_firing_snow.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-12241 @ 110.0s",
+  "title": "Action on Attu",
+  "page_url": "https://archive.org/details/428-npc-12241",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "US Navy combat film 'Action on Attu' (NARA 428-NPC-12241), May 1943, b/w, rough: soldiers firing from a snowy slope, snow-patched mountains behind",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "snow"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "SNOW"
+  ],
+  "place": "Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_bw_troops_cross_valley",
+  "file": "ia_attu_1943_bw_troops_cross_valley.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-12241 @ 154.0s",
+  "title": "Action on Attu",
+  "page_url": "https://archive.org/details/428-npc-12241",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "US Navy combat film 'Action on Attu' (NARA 428-NPC-12241), May 1943, b/w, rough: lines of troops cross an open tundra valley floor with a winding creek",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "soldiers"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "SOLDIERS"
+  ],
+  "place": "Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_bw_artillery_snow_mountains",
+  "file": "ia_attu_1943_bw_artillery_snow_mountains.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-12241 @ 180.0s",
+  "title": "Action on Attu",
+  "page_url": "https://archive.org/details/428-npc-12241",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 18.0,
+  "description": "US Navy combat film 'Action on Attu' (NARA 428-NPC-12241), May 1943, b/w, rough: artillery pieces firing in a valley under snow-streaked mountains, haze",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "snow"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "SNOW"
+  ],
+  "place": "Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_bw_snow_peaks_fog_band",
+  "file": "ia_attu_1943_bw_snow_peaks_fog_band.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-12241 @ 200.0s",
+  "title": "Action on Attu",
+  "page_url": "https://archive.org/details/428-npc-12241",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 12.0,
+  "description": "US Navy combat film 'Action on Attu' (NARA 428-NPC-12241), May 1943, b/w, rough: snowy jagged peaks above a band of fog, men crouched in the foreground",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "fog",
+   "snow"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "FOG",
+   "SNOW"
+  ],
+  "place": "Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_bw_column_below_peaks",
+  "file": "ia_attu_1943_bw_column_below_peaks.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-12241 @ 290.0s",
+  "title": "Action on Attu",
+  "page_url": "https://archive.org/details/428-npc-12241",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy combat film 'Action on Attu' (NARA 428-NPC-12241), May 1943, b/w, rough: column of men and vehicles moving below snowy peaks across the valley",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "snow"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "SNOW"
+  ],
+  "place": "Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_fog_men_on_deck",
+  "file": "ia_attu_1943_fog_men_on_deck.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-785 @ 16.0s",
+  "title": "U.S. Troops Arrive, Start Ashore, Attu",
+  "page_url": "https://archive.org/details/428-npc-785",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 6.0,
+  "description": "US Navy film (NARA 428-NPC-785) 'U.S. Troops Arrive, Start Ashore, Attu', 11 May 1943, b/w: men on a transport's deck staring into thick fog, other ships ghostly behind",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "fog",
+   "ships"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "FOG",
+   "SHIPS"
+  ],
+  "place": "off Attu (Massacre Bay), 11 May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_fog_boat_in_mist",
+  "file": "ia_attu_1943_fog_boat_in_mist.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-785 @ 46.0s",
+  "title": "U.S. Troops Arrive, Start Ashore, Attu",
+  "page_url": "https://archive.org/details/428-npc-785",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 12.0,
+  "description": "US Navy film (NARA 428-NPC-785) 'U.S. Troops Arrive, Start Ashore, Attu', 11 May 1943, b/w: a landing boat full of troops disappears into dense fog, helmets in foreground",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "fog",
+   "landing"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "FOG",
+   "LANDING"
+  ],
+  "place": "off Attu, 11 May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_fog_landing_craft_emerge",
+  "file": "ia_attu_1943_fog_landing_craft_emerge.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-785 @ 56.0s",
+  "title": "U.S. Troops Arrive, Start Ashore, Attu",
+  "page_url": "https://archive.org/details/428-npc-785",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "US Navy film (NARA 428-NPC-785) 'U.S. Troops Arrive, Start Ashore, Attu', 11 May 1943, b/w: landing craft loaded with soldiers slide out of the fog past the ship",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "fog",
+   "landing"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "FOG",
+   "LANDING"
+  ],
+  "place": "off Attu, 11 May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_fog_boats_lost",
+  "file": "ia_attu_1943_fog_boats_lost.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-785 @ 79.0s",
+  "title": "U.S. Troops Arrive, Start Ashore, Attu",
+  "page_url": "https://archive.org/details/428-npc-785",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 7.0,
+  "description": "US Navy film (NARA 428-NPC-785) 'U.S. Troops Arrive, Start Ashore, Attu', 11 May 1943, b/w: a line of small boats barely visible in the fog bank",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "fog"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "FOG"
+  ],
+  "place": "off Attu, 11 May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_fog_tractor_swung_over",
+  "file": "ia_attu_1943_fog_tractor_swung_over.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-785 @ 86.0s",
+  "title": "U.S. Troops Arrive, Start Ashore, Attu",
+  "page_url": "https://archive.org/details/428-npc-785",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 8.0,
+  "description": "US Navy film (NARA 428-NPC-785) 'U.S. Troops Arrive, Start Ashore, Attu', 11 May 1943, b/w: a tracked vehicle swung over the side from a crowded transport into the fog",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "fog",
+   "ships"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "FOG",
+   "SHIPS"
+  ],
+  "place": "off Attu, 11 May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_fog_loaded_boats_circle",
+  "file": "ia_attu_1943_fog_loaded_boats_circle.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-785 @ 130.0s",
+  "title": "U.S. Troops Arrive, Start Ashore, Attu",
+  "page_url": "https://archive.org/details/428-npc-785",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 18.0,
+  "description": "US Navy film (NARA 428-NPC-785) 'U.S. Troops Arrive, Start Ashore, Attu', 11 May 1943, b/w: boats packed with troops circle in the white fog waiting for the signal to go in",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "fog",
+   "landing"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "FOG",
+   "LANDING"
+  ],
+  "place": "off Attu, 11 May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_fog_megaphone_silhouette",
+  "file": "ia_attu_1943_fog_megaphone_silhouette.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-785 @ 194.0s",
+  "title": "U.S. Troops Arrive, Start Ashore, Attu",
+  "page_url": "https://archive.org/details/428-npc-785",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "US Navy film (NARA 428-NPC-785) 'U.S. Troops Arrive, Start Ashore, Attu', 11 May 1943, b/w: silhouette of an officer shouting through a megaphone across the fog",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "fog"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "FOG"
+  ],
+  "place": "off Attu, 11 May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_fog_boats_under_transport",
+  "file": "ia_attu_1943_fog_boats_under_transport.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-785 @ 224.0s",
+  "title": "U.S. Troops Arrive, Start Ashore, Attu",
+  "page_url": "https://archive.org/details/428-npc-785",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 16.0,
+  "description": "US Navy film (NARA 428-NPC-785) 'U.S. Troops Arrive, Start Ashore, Attu', 11 May 1943, b/w: landing craft pull away from the grey transport into the fog",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "fog",
+   "ships"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "FOG",
+   "SHIPS"
+  ],
+  "place": "off Attu, 11 May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_battleship_bow_green_water",
+  "file": "ia_attu_1943_battleship_bow_green_water.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-12227 @ 10.0s",
+  "title": "Landings on Attu",
+  "page_url": "https://archive.org/details/428-npc-12227",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film 'Landings on Attu' (NARA 428-NPC-12227), May 1943, b/w: heavy seas break green and white over a battleship's bow and forward turrets on the way to Attu",
+  "tags": [
+   "attu",
+   "ships",
+   "sea",
+   "storm"
+  ],
+  "best_for": [
+   "ATTU",
+   "SHIPS",
+   "SEA",
+   "STORM"
+  ],
+  "place": "North Pacific en route to Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_bow_plunges_waves",
+  "file": "ia_attu_1943_bow_plunges_waves.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-12227 @ 95.0s",
+  "title": "Landings on Attu",
+  "page_url": "https://archive.org/details/428-npc-12227",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "US Navy film 'Landings on Attu' (NARA 428-NPC-12227), May 1943, b/w: battleship bow plunges into a wave, spray sweeps the deck",
+  "tags": [
+   "ships",
+   "sea",
+   "storm"
+  ],
+  "best_for": [
+   "SHIPS",
+   "SEA",
+   "STORM"
+  ],
+  "place": "North Pacific, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_snowy_coast_horizon",
+  "file": "ia_attu_1943_snowy_coast_horizon.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-12227 @ 180.0s",
+  "title": "Landings on Attu",
+  "page_url": "https://archive.org/details/428-npc-12227",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film 'Landings on Attu' (NARA 428-NPC-12227), May 1943, b/w: snow-covered coastline of Attu low on the horizon, ships offshore",
+  "tags": [
+   "attu",
+   "snow",
+   "coast"
+  ],
+  "best_for": [
+   "ATTU",
+   "SNOW",
+   "COAST"
+  ],
+  "place": "off Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_helmet_silhouette_glittering_sea",
+  "file": "ia_attu_1943_helmet_silhouette_glittering_sea.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-12227 @ 200.0s",
+  "title": "Landings on Attu",
+  "page_url": "https://archive.org/details/428-npc-12227",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "US Navy film 'Landings on Attu' (NARA 428-NPC-12227), May 1943, b/w: silhouette of a helmeted sailor against glittering sea and distant islands",
+  "tags": [
+   "attu",
+   "sea",
+   "ships"
+  ],
+  "best_for": [
+   "ATTU",
+   "SEA",
+   "SHIPS"
+  ],
+  "place": "off Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_battleships_at_anchor",
+  "file": "ia_attu_1943_battleships_at_anchor.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-12227 @ 245.0s",
+  "title": "Landings on Attu",
+  "page_url": "https://archive.org/details/428-npc-12227",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film 'Landings on Attu' (NARA 428-NPC-12227), May 1943, b/w: battleships and transports gathered at anchor in a grey bay",
+  "tags": [
+   "attu",
+   "ships"
+  ],
+  "best_for": [
+   "ATTU",
+   "SHIPS"
+  ],
+  "place": "Aleutian anchorage, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_ship_smoke_island",
+  "file": "ia_attu_1943_ship_smoke_island.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-12227 @ 285.0s",
+  "title": "Landings on Attu",
+  "page_url": "https://archive.org/details/428-npc-12227",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film 'Landings on Attu' (NARA 428-NPC-12227), May 1943, b/w: a ship trailing black smoke near the shore of an island, landing craft nearby",
+  "tags": [
+   "attu",
+   "ships"
+  ],
+  "best_for": [
+   "ATTU",
+   "SHIPS"
+  ],
+  "place": "off Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_massacre_bay_landing_craft_surf",
+  "file": "ia_attu_1943_massacre_bay_landing_craft_surf.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "NPC-787 @ 20.0s",
+  "title": "USA Troops Land, Massacre Bay, Attu Island, 05/11/1943",
+  "page_url": "https://archive.org/details/NPC-787",
+  "licence": "Public domain (US Navy film, National Archives)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 10.0,
+  "description": "US Navy film (NARA, NPC-787) 'USA Troops Land, Massacre Bay, Attu Island', 11 May 1943, b/w: landing craft grinding onto the beach in the surf, ships beyond",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "landing"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "LANDING"
+  ],
+  "place": "Massacre Bay, Attu, 11 May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_massacre_bay_vehicles_snowy_slopes",
+  "file": "ia_attu_1943_massacre_bay_vehicles_snowy_slopes.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "NPC-787 @ 28.0s",
+  "title": "USA Troops Land, Massacre Bay, Attu Island, 05/11/1943",
+  "page_url": "https://archive.org/details/NPC-787",
+  "licence": "Public domain (US Navy film, National Archives)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "US Navy film (NARA, NPC-787) 'USA Troops Land, Massacre Bay, Attu Island', 11 May 1943, b/w: vehicles and boats on the black-sand beach under snow-streaked slopes",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "snow",
+   "landing"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "SNOW",
+   "LANDING"
+  ],
+  "place": "Massacre Bay, Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_massacre_bay_beach_panorama",
+  "file": "ia_attu_1943_massacre_bay_beach_panorama.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "NPC-787 @ 62.0s",
+  "title": "USA Troops Land, Massacre Bay, Attu Island, 05/11/1943",
+  "page_url": "https://archive.org/details/NPC-787",
+  "licence": "Public domain (US Navy film, National Archives)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 18.0,
+  "description": "US Navy film (NARA, NPC-787) 'USA Troops Land, Massacre Bay, Attu Island', 11 May 1943, b/w: troops and supplies crowd the beach, snowy headlands across the bay",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "snow"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "SNOW"
+  ],
+  "place": "Massacre Bay, Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_massacre_bay_craft_ramp_snow",
+  "file": "ia_attu_1943_massacre_bay_craft_ramp_snow.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "NPC-787 @ 83.0s",
+  "title": "USA Troops Land, Massacre Bay, Attu Island, 05/11/1943",
+  "page_url": "https://archive.org/details/NPC-787",
+  "licence": "Public domain (US Navy film, National Archives)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 18.0,
+  "description": "US Navy film (NARA, NPC-787) 'USA Troops Land, Massacre Bay, Attu Island', 11 May 1943, b/w: landing craft surge onto the beach, snowy mountain behind",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "landing",
+   "snow"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "LANDING",
+   "SNOW"
+  ],
+  "place": "Massacre Bay, Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_massacre_bay_halftrack_star",
+  "file": "ia_attu_1943_massacre_bay_halftrack_star.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "NPC-787 @ 128.0s",
+  "title": "USA Troops Land, Massacre Bay, Attu Island, 05/11/1943",
+  "page_url": "https://archive.org/details/NPC-787",
+  "licence": "Public domain (US Navy film, National Archives)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 12.0,
+  "description": "US Navy film (NARA, NPC-787) 'USA Troops Land, Massacre Bay, Attu Island', 11 May 1943, b/w: tracked vehicle with white star unloaded, troops around",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "landing"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "LANDING"
+  ],
+  "place": "Massacre Bay, Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_massacre_bay_shore_ships",
+  "file": "ia_attu_1943_massacre_bay_shore_ships.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "NPC-787 @ 150.0s",
+  "title": "USA Troops Land, Massacre Bay, Attu Island, 05/11/1943",
+  "page_url": "https://archive.org/details/NPC-787",
+  "licence": "Public domain (US Navy film, National Archives)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film (NARA, NPC-787) 'USA Troops Land, Massacre Bay, Attu Island', 11 May 1943, b/w: the long beach with landing craft and men, transports anchored in the bay",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "ships"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "SHIPS"
+  ],
+  "place": "Massacre Bay, Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_massacre_bay_curving_shore",
+  "file": "ia_attu_1943_massacre_bay_curving_shore.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "NPC-787 @ 180.0s",
+  "title": "USA Troops Land, Massacre Bay, Attu Island, 05/11/1943",
+  "page_url": "https://archive.org/details/NPC-787",
+  "licence": "Public domain (US Navy film, National Archives)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "US Navy film (NARA, NPC-787) 'USA Troops Land, Massacre Bay, Attu Island', 11 May 1943, b/w: curving shoreline of the bay, snowy coast, supplies on the beach",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "coast"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "COAST"
+  ],
+  "place": "Massacre Bay, Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_troops_advance_tundra_snowy",
+  "file": "ia_attu_1943_troops_advance_tundra_snowy.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "NPC-787 @ 264.0s",
+  "title": "USA Troops Land, Massacre Bay, Attu Island, 05/11/1943",
+  "page_url": "https://archive.org/details/NPC-787",
+  "licence": "Public domain (US Navy film, National Archives)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "US Navy film (NARA, NPC-787) 'USA Troops Land, Massacre Bay, Attu Island', 11 May 1943, b/w: soldiers advance up the tundra from the beach toward snowy mountains",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "snow",
+   "tundra"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "SNOW",
+   "TUNDRA"
+  ],
+  "place": "Massacre Bay, Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_seabees_tent_frames_row",
+  "file": "ia_attu_1943_seabees_tent_frames_row.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "NPC-939 @ 120.0s",
+  "title": "Seabees Construct Tent City, Massacre Bay, Attu, 04/29/1943",
+  "page_url": "https://archive.org/details/NPC-939",
+  "licence": "Public domain (US Navy film, National Archives)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 18.0,
+  "description": "US Navy film (NARA, NPC-939) 'Seabees Construct Tent City, Massacre Bay, Attu', 1943, b/w: rows of wooden tent frames going up on the flat by the bay, hills behind",
+  "tags": [
+   "attu",
+   "ww2 bases",
+   "construction"
+  ],
+  "best_for": [
+   "ATTU",
+   "WW2_BASES",
+   "CONSTRUCTION"
+  ],
+  "place": "Massacre Bay, Attu, 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_seabees_canvas_wind",
+  "file": "ia_attu_1943_seabees_canvas_wind.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "NPC-939 @ 150.0s",
+  "title": "Seabees Construct Tent City, Massacre Bay, Attu, 04/29/1943",
+  "page_url": "https://archive.org/details/NPC-939",
+  "licence": "Public domain (US Navy film, National Archives)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film (NARA, NPC-939) 'Seabees Construct Tent City, Massacre Bay, Attu', 1943, b/w: Seabees fight to pull canvas over a tent frame as the wind tears at it",
+  "tags": [
+   "attu",
+   "ww2 bases",
+   "wind"
+  ],
+  "best_for": [
+   "ATTU",
+   "WW2_BASES",
+   "WIND"
+  ],
+  "place": "Massacre Bay, Attu, 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_seabees_canvas_wind_2",
+  "file": "ia_attu_1943_seabees_canvas_wind_2.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "NPC-939 @ 195.0s",
+  "title": "Seabees Construct Tent City, Massacre Bay, Attu, 04/29/1943",
+  "page_url": "https://archive.org/details/NPC-939",
+  "licence": "Public domain (US Navy film, National Archives)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 18.0,
+  "description": "US Navy film (NARA, NPC-939) 'Seabees Construct Tent City, Massacre Bay, Attu', 1943, b/w: canvas billows and snaps in the gale while men cling to the roof frame",
+  "tags": [
+   "attu",
+   "wind",
+   "williwaw"
+  ],
+  "best_for": [
+   "ATTU",
+   "WIND",
+   "WILLIWAW"
+  ],
+  "place": "Massacre Bay, Attu, 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_bay_snow_slopes_water",
+  "file": "ia_attu_1943_bay_snow_slopes_water.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "NPC-939 @ 268.0s",
+  "title": "Seabees Construct Tent City, Massacre Bay, Attu, 04/29/1943",
+  "page_url": "https://archive.org/details/NPC-939",
+  "licence": "Public domain (US Navy film, National Archives)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 16.0,
+  "description": "US Navy film (NARA, NPC-939) 'Seabees Construct Tent City, Massacre Bay, Attu', 1943, b/w: grey water of the bay below snow-streaked slopes",
+  "tags": [
+   "attu",
+   "landscape",
+   "snow"
+  ],
+  "best_for": [
+   "ATTU",
+   "LANDSCAPE",
+   "SNOW"
+  ],
+  "place": "Massacre Bay, Attu, 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_island_peak_from_ship",
+  "file": "ia_kiska_1943_color_island_peak_from_ship.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "NPC-1134 @ 62.0s",
+  "title": "CLs Shell, LCs & APs Off Shore, Kiska, 08/1943",
+  "page_url": "https://archive.org/details/NPC-1134",
+  "licence": "Public domain (US Navy film, National Archives)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 16.0,
+  "description": "US Navy colour film (NARA, NPC-1134) 'CLs shell, LCs and APs off shore, Kiska', Aug 1943 (faded colour; burnt-in timecode cropped): dark island peak with snow patches across a calm grey sea",
+  "tags": [
+   "kiska",
+   "color ww2",
+   "landscape"
+  ],
+  "best_for": [
+   "KISKA",
+   "COLOR_WW2",
+   "LANDSCAPE"
+  ],
+  "place": "off Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_kiska_1943_color_landing_craft_silhouettes",
+  "file": "ia_kiska_1943_color_landing_craft_silhouettes.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "NPC-1134 @ 163.0s",
+  "title": "CLs Shell, LCs & APs Off Shore, Kiska, 08/1943",
+  "page_url": "https://archive.org/details/NPC-1134",
+  "licence": "Public domain (US Navy film, National Archives)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy colour film (NARA, NPC-1134) 'CLs shell, LCs and APs off shore, Kiska', Aug 1943 (faded colour; burnt-in timecode cropped): troops wade to landing craft, then loaded craft move off in silhouette across the flat bay",
+  "tags": [
+   "kiska",
+   "color ww2",
+   "landing"
+  ],
+  "best_for": [
+   "KISKA",
+   "COLOR_WW2",
+   "LANDING"
+  ],
+  "place": "off Kiska, Aug 1943",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_howitzer_snowy_mountain",
+  "file": "ia_attu_1943_howitzer_snowy_mountain.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-6037 @ 10.0s",
+  "title": "Invasion & Bombardment of Attu",
+  "page_url": "https://archive.org/details/428-npc-6037",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film (NARA 428-NPC-6037) 'Invasion and Bombardment of Attu', May 1943, b/w: howitzer crew firing on the tundra below a snow-streaked mountain wrapped in cloud",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "snow"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "SNOW"
+  ],
+  "place": "Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_valley_guns_firing_smoke",
+  "file": "ia_attu_1943_valley_guns_firing_smoke.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-6037 @ 40.0s",
+  "title": "Invasion & Bombardment of Attu",
+  "page_url": "https://archive.org/details/428-npc-6037",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film (NARA 428-NPC-6037) 'Invasion and Bombardment of Attu', May 1943, b/w: wide tundra valley under snowy slopes, gun smoke drifting from batteries",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "snow"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "SNOW"
+  ],
+  "place": "Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_snowy_ridges_lake",
+  "file": "ia_attu_1943_snowy_ridges_lake.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-6037 @ 105.0s",
+  "title": "Invasion & Bombardment of Attu",
+  "page_url": "https://archive.org/details/428-npc-6037",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film (NARA 428-NPC-6037) 'Invasion and Bombardment of Attu', May 1943, b/w: snow-streaked ridges falling to a bay and a meltwater lake, empty land",
+  "tags": [
+   "attu",
+   "landscape",
+   "snow"
+  ],
+  "best_for": [
+   "ATTU",
+   "LANDSCAPE",
+   "SNOW"
+  ],
+  "place": "Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_captured_japanese_flags",
+  "file": "ia_attu_1943_captured_japanese_flags.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-6037 @ 140.0s",
+  "title": "Invasion & Bombardment of Attu",
+  "page_url": "https://archive.org/details/428-npc-6037",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 12.0,
+  "description": "US Navy film (NARA 428-NPC-6037) 'Invasion and Bombardment of Attu', May 1943, b/w: US soldiers hold up captured Japanese flags on the tundra",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "japanese occupation"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "JAPANESE_OCCUPATION"
+  ],
+  "place": "Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_japanese_gun_in_grass",
+  "file": "ia_attu_1943_japanese_gun_in_grass.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-6037 @ 168.0s",
+  "title": "Invasion & Bombardment of Attu",
+  "page_url": "https://archive.org/details/428-npc-6037",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "US Navy film (NARA 428-NPC-6037) 'Invasion and Bombardment of Attu', May 1943, b/w: abandoned Japanese gun half hidden in tall grass camouflage",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "japanese occupation"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "JAPANESE_OCCUPATION"
+  ],
+  "place": "Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_troops_climb_snow_slope",
+  "file": "ia_attu_1943_troops_climb_snow_slope.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-6037 @ 205.0s",
+  "title": "Invasion & Bombardment of Attu",
+  "page_url": "https://archive.org/details/428-npc-6037",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film (NARA 428-NPC-6037) 'Invasion and Bombardment of Attu', May 1943, b/w: lines of troops climb a long tundra slope with snow patches, foxholes in the foreground",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "snow",
+   "soldiers"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "SNOW",
+   "SOLDIERS"
+  ],
+  "place": "Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_transports_beach_boats",
+  "file": "ia_attu_1943_transports_beach_boats.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-6037 @ 250.0s",
+  "title": "Invasion & Bombardment of Attu",
+  "page_url": "https://archive.org/details/428-npc-6037",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film (NARA 428-NPC-6037) 'Invasion and Bombardment of Attu', May 1943, b/w: transports anchored off the beach, small boats in the swell, men on the shore",
+  "tags": [
+   "attu",
+   "battle of attu",
+   "ships"
+  ],
+  "best_for": [
+   "ATTU",
+   "BATTLE_OF_ATTU",
+   "SHIPS"
+  ],
+  "place": "Massacre Bay, Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_seabees_building_snowy_peaks",
+  "file": "ia_attu_1943_seabees_building_snowy_peaks.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-905 @ 88.0s",
+  "title": "CBs CONSTRUCT CAMP, ATTU",
+  "page_url": "https://archive.org/details/428-npc-905",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 16.0,
+  "description": "US Navy film (NARA 428-NPC-905) 'CBs Construct Camp, Attu', 30 May 1943, b/w: Seabees frame a wooden building with jagged snowy mountains of Attu behind",
+  "tags": [
+   "attu",
+   "ww2 bases",
+   "construction",
+   "snow"
+  ],
+  "best_for": [
+   "ATTU",
+   "WW2_BASES",
+   "CONSTRUCTION",
+   "SNOW"
+  ],
+  "place": "Attu, 30 May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_seabees_barracks_roof",
+  "file": "ia_attu_1943_seabees_barracks_roof.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-905 @ 185.0s",
+  "title": "CBs CONSTRUCT CAMP, ATTU",
+  "page_url": "https://archive.org/details/428-npc-905",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film (NARA 428-NPC-905) 'CBs Construct Camp, Attu', 30 May 1943, b/w: Seabees swarm over the roof of a long wooden barracks under construction",
+  "tags": [
+   "attu",
+   "ww2 bases",
+   "construction"
+  ],
+  "best_for": [
+   "ATTU",
+   "WW2_BASES",
+   "CONSTRUCTION"
+  ],
+  "place": "Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_attu_1943_bulldozer_hut_snowy_mountains",
+  "file": "ia_attu_1943_bulldozer_hut_snowy_mountains.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "428-npc-905 @ 280.0s",
+  "title": "CBs CONSTRUCT CAMP, ATTU",
+  "page_url": "https://archive.org/details/428-npc-905",
+  "licence": "Public domain (US Navy film, National Archives RG 428)",
+  "attribution": "U.S. Navy, via National Archives (NARA) / archive.org",
+  "author": "U.S. Navy",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Navy film (NARA 428-NPC-905) 'CBs Construct Camp, Attu', 30 May 1943, b/w: bulldozer drags a prefabricated hut across the camp under snowy mountains",
+  "tags": [
+   "attu",
+   "ww2 bases",
+   "snow"
+  ],
+  "best_for": [
+   "ATTU",
+   "WW2_BASES",
+   "SNOW"
+  ],
+  "place": "Attu, May 1943",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "ia_nps_makushin_village_site_valley",
+  "file": "ia_nps_makushin_village_site_valley.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "nps-video-aleu-makushin @ 41.5s",
+  "title": "Makushin (Aleutian Islands World War II National Historic Area, NPS video)",
+  "page_url": "https://archive.org/details/nps-video-aleu-makushin",
+  "licence": "Public domain (National Park Service video, Aleutian Islands WWII NHA)",
+  "attribution": "National Park Service, Aleutian Islands WWII National Historic Area, via archive.org",
+  "author": "National Park Service",
+  "is_real_subject": true,
+  "duration_s": 5.5,
+  "description": "NPS Aleutian WWII NHA video 'Makushin' (low-res 480x270 slideshow): green valley and sea cliffs at the site of the abandoned Unangan village of Makushin, Unalaska Island, never resettled after the 1942 evacuation (slow pan, no text)",
+  "tags": [
+   "lost village",
+   "unangan",
+   "evacuation",
+   "landscape"
+  ],
+  "best_for": [
+   "LOST_VILLAGE",
+   "UNANGAN",
+   "EVACUATION",
+   "LANDSCAPE"
+  ],
+  "place": "Makushin village site, Unalaska Island, 2009",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_nps_makushin_valley_lake",
+  "file": "ia_nps_makushin_valley_lake.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "nps-video-aleu-makushin @ 51.5s",
+  "title": "Makushin (Aleutian Islands World War II National Historic Area, NPS video)",
+  "page_url": "https://archive.org/details/nps-video-aleu-makushin",
+  "licence": "Public domain (National Park Service video, Aleutian Islands WWII NHA)",
+  "attribution": "National Park Service, Aleutian Islands WWII National Historic Area, via archive.org",
+  "author": "National Park Service",
+  "is_real_subject": true,
+  "duration_s": 4.5,
+  "description": "NPS Aleutian WWII NHA video 'Makushin' (low-res 480x270 slideshow): tundra slopes and a lagoon below clouds at the old Makushin village site (no text)",
+  "tags": [
+   "lost village",
+   "unangan",
+   "landscape"
+  ],
+  "best_for": [
+   "LOST_VILLAGE",
+   "UNANGAN",
+   "LANDSCAPE"
+  ],
+  "place": "Makushin village site, Unalaska Island, 2009",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_snowy_volcano_bay",
+  "file": "gov_tiglax_snowy_volcano_bay.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 5.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 8.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): snow-capped volcano above a calm dark bay",
+  "tags": [
+   "volcano",
+   "landscape",
+   "amnwr"
+  ],
+  "best_for": [
+   "VOLCANO",
+   "LANDSCAPE",
+   "AMNWR"
+  ],
+  "place": "Aleutian Islands (Alaska Maritime NWR), 2000s",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_snowy_peaks_sea_stacks",
+  "file": "gov_tiglax_snowy_peaks_sea_stacks.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 30.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 12.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): snowy peaks behind black sea stacks, then a volcano with snow blowing off it",
+  "tags": [
+   "volcano",
+   "coast",
+   "wind"
+  ],
+  "best_for": [
+   "VOLCANO",
+   "COAST",
+   "WIND"
+  ],
+  "place": "Aleutian Islands, 2000s",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_aerial_twin_volcanoes_coast",
+  "file": "gov_tiglax_aerial_twin_volcanoes_coast.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 47.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 8.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): aerial over a cliff coast toward two snow-capped volcanic cones",
+  "tags": [
+   "volcano",
+   "aerial",
+   "coast"
+  ],
+  "best_for": [
+   "VOLCANO",
+   "AERIAL",
+   "COAST"
+  ],
+  "place": "Aleutian Islands (Islands of Four Mountains area), 2000s",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_aerial_green_valley_snow",
+  "file": "gov_tiglax_aerial_green_valley_snow.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 53.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 8.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): aerial over a green treeless valley with snow patches and cloud",
+  "tags": [
+   "aerial",
+   "tundra",
+   "landscape"
+  ],
+  "best_for": [
+   "AERIAL",
+   "TUNDRA",
+   "LANDSCAPE"
+  ],
+  "place": "Aleutian Islands, 2000s",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_cliffs_surf_rocks",
+  "file": "gov_tiglax_cliffs_surf_rocks.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 65.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): dark island cliffs, surf breaking on a boulder beach",
+  "tags": [
+   "coast",
+   "sea"
+  ],
+  "best_for": [
+   "COAST",
+   "SEA"
+  ],
+  "place": "Aleutian Islands, 2000s",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_green_cliffs_sea_stacks",
+  "file": "gov_tiglax_green_cliffs_sea_stacks.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 84.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 12.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): green cliffs with sea stacks and an arch in grey sea",
+  "tags": [
+   "coast",
+   "landscape"
+  ],
+  "best_for": [
+   "COAST",
+   "LANDSCAPE"
+  ],
+  "place": "Aleutian Islands, 2000s",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_globe_refuge_map",
+  "file": "gov_tiglax_globe_refuge_map.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 96.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 10.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): animated globe showing Alaska Maritime NWR units strung along the Aleutian chain",
+  "tags": [
+   "map",
+   "chain",
+   "amnwr"
+  ],
+  "best_for": [
+   "MAP",
+   "CHAIN",
+   "AMNWR"
+  ],
+  "place": "map",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_volcano_steaming",
+  "file": "gov_tiglax_volcano_steaming.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 126.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 7.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): snowy volcano cone with a steam plume",
+  "tags": [
+   "volcano",
+   "eruption"
+  ],
+  "best_for": [
+   "VOLCANO",
+   "ERUPTION"
+  ],
+  "place": "Aleutian Islands, 2000s",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_rock_arch",
+  "file": "gov_tiglax_rock_arch.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 132.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 8.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): rock arch over grassy cliff edge, sea behind",
+  "tags": [
+   "coast"
+  ],
+  "best_for": [
+   "COAST"
+  ],
+  "place": "Aleutian Islands, 2000s",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_aerial_volcano_above_clouds",
+  "file": "gov_tiglax_aerial_volcano_above_clouds.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 143.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): aerial: volcano summit, then a snow-capped volcano rising above a sea of cloud",
+  "tags": [
+   "volcano",
+   "aerial",
+   "clouds"
+  ],
+  "best_for": [
+   "VOLCANO",
+   "AERIAL",
+   "CLOUDS"
+  ],
+  "place": "Aleutian Islands, 2000s",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_ship_sea_stacks",
+  "file": "gov_tiglax_ship_sea_stacks.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 216.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 12.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): research ship Tiglax passes a line of sea stacks (the film's title 'Journey of the Tiglax' is overlaid mid-shot)",
+  "tags": [
+   "ships",
+   "coast",
+   "amnwr"
+  ],
+  "best_for": [
+   "SHIPS",
+   "COAST",
+   "AMNWR"
+  ],
+  "place": "Aleutian Islands, 2000s",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_sea_lions_storm_surf",
+  "file": "gov_tiglax_sea_lions_storm_surf.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 312.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 12.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): sea lions in storm-whipped surf, wind tearing the wave tops",
+  "tags": [
+   "storm",
+   "sea lions",
+   "sea"
+  ],
+  "best_for": [
+   "STORM",
+   "SEA_LIONS",
+   "SEA"
+  ],
+  "place": "Aleutian Islands, 2000s",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_rough_sea_wind",
+  "file": "gov_tiglax_rough_sea_wind.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 324.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 18.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): big grey swells and wind-driven spray from the ship's rail",
+  "tags": [
+   "storm",
+   "sea",
+   "wind"
+  ],
+  "best_for": [
+   "STORM",
+   "SEA",
+   "WIND"
+  ],
+  "place": "Aleutian waters, 2000s",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_bow_spray_storm",
+  "file": "gov_tiglax_bow_spray_storm.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 336.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 12.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): heavy spray explodes over the bow as the ship slams into waves",
+  "tags": [
+   "storm",
+   "sea",
+   "ships"
+  ],
+  "best_for": [
+   "STORM",
+   "SEA",
+   "SHIPS"
+  ],
+  "place": "Aleutian waters, 2000s",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_dark_clouds_island",
+  "file": "gov_tiglax_dark_clouds_island.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 346.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 12.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): dark storm clouds and fog over an island",
+  "tags": [
+   "weather",
+   "fog",
+   "storm"
+  ],
+  "best_for": [
+   "WEATHER",
+   "FOG",
+   "STORM"
+  ],
+  "place": "Aleutian Islands, 2000s",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_snowy_island_sea",
+  "file": "gov_tiglax_snowy_island_sea.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 364.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 10.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): snow-covered island across a cold grey sea",
+  "tags": [
+   "snow",
+   "islands",
+   "sea"
+  ],
+  "best_for": [
+   "SNOW",
+   "ISLANDS",
+   "SEA"
+  ],
+  "place": "Aleutian Islands, 2000s",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_bird_clouds_cliff",
+  "file": "gov_tiglax_bird_clouds_cliff.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 414.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 10.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): clouds of seabirds swirling off a cliff headland",
+  "tags": [
+   "birds",
+   "coast"
+  ],
+  "best_for": [
+   "BIRDS",
+   "COAST"
+  ],
+  "place": "Aleutian Islands, 2000s",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_sea_stacks_glitter",
+  "file": "gov_tiglax_sea_stacks_glitter.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 429.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 7.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): horned and tufted puffins on a mossy cliff (first 4.5 s), then jagged black sea stacks against glittering sea",
+  "tags": [
+   "coast",
+   "sea"
+  ],
+  "best_for": [
+   "COAST",
+   "SEA"
+  ],
+  "place": "Aleutian Islands, 2000s",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_puffin_slope_bird_swarm",
+  "file": "gov_tiglax_puffin_slope_bird_swarm.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 446.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): a puffin flies past a green slope; huge swarm of auklets over a rocky island at dusk",
+  "tags": [
+   "birds",
+   "puffin"
+  ],
+  "best_for": [
+   "BIRDS",
+   "PUFFIN"
+  ],
+  "place": "Aleutian Islands (Kiska/Buldir area), 2000s",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_map_kiska_island",
+  "file": "gov_tiglax_map_kiska_island.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 640.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 6.1,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): map graphic highlighting Kiska Island in the western Aleutians",
+  "tags": [
+   "map",
+   "kiska"
+  ],
+  "best_for": [
+   "MAP",
+   "KISKA"
+  ],
+  "place": "map",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_auklet_millions_sea",
+  "file": "gov_tiglax_auklet_millions_sea.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 598.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): hundreds of thousands of auklets rafting and flying over the sea off Kiska",
+  "tags": [
+   "birds",
+   "kiska",
+   "sea"
+  ],
+  "best_for": [
+   "BIRDS",
+   "KISKA",
+   "SEA"
+  ],
+  "place": "off Kiska, 2000s",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_auklet_swarm_sky",
+  "file": "gov_tiglax_auklet_swarm_sky.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 656.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): auklets swarming in a dense cloud over the sea and at dusk over a ridge",
+  "tags": [
+   "birds",
+   "kiska",
+   "dusk"
+  ],
+  "best_for": [
+   "BIRDS",
+   "KISKA",
+   "DUSK"
+  ],
+  "place": "Kiska, 2000s",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_volcano_across_sea",
+  "file": "gov_tiglax_volcano_across_sea.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 806.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 10.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): distant volcano across a choppy grey sea from the ship",
+  "tags": [
+   "volcano",
+   "sea"
+  ],
+  "best_for": [
+   "VOLCANO",
+   "SEA"
+  ],
+  "place": "Aleutian Islands, 2000s",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_ship_backlit_storm_sky",
+  "file": "gov_tiglax_ship_backlit_storm_sky.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 846.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 12.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): the Tiglax silhouetted on shining water under dramatic storm clouds",
+  "tags": [
+   "ships",
+   "weather"
+  ],
+  "best_for": [
+   "SHIPS",
+   "WEATHER"
+  ],
+  "place": "Aleutian Islands, 2000s",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_tufted_puffins_cliff",
+  "file": "gov_tiglax_tufted_puffins_cliff.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 862.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 16.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): tufted puffins on a lichen-covered cliff edge",
+  "tags": [
+   "birds",
+   "puffin"
+  ],
+  "best_for": [
+   "BIRDS",
+   "PUFFIN"
+  ],
+  "place": "Aleutian Islands (Aiktak Island area), 2000s",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_tiglax_steller_sea_lion_haulout",
+  "file": "gov_tiglax_steller_sea_lion_haulout.mp4",
+  "type": "video",
+  "source": "usfws",
+  "source_id": "gov.fws.aws.4.5 @ 1120.0s",
+  "title": "The Tiglax - Alaska Maritime National Wildlife Refuge",
+  "page_url": "https://archive.org/details/gov.fws.aws.4.5",
+  "licence": "Public domain (US Fish and Wildlife Service film; CC0 on archive.org)",
+  "attribution": "U.S. Fish and Wildlife Service, Alaska Maritime NWR, \"Journey of the Tiglax\", via archive.org",
+  "author": "U.S. Fish and Wildlife Service",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "USFWS film 'Journey of the Tiglax' (Alaska Maritime NWR, 2009, public domain): Steller sea lions crowded on a black-sand beach haul-out",
+  "tags": [
+   "wildlife",
+   "sea lions"
+  ],
+  "best_for": [
+   "WILDLIFE",
+   "SEA_LIONS"
+  ],
+  "place": "Aleutian Islands, 2000s",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_noaa_kiska_2018_vessel_fog",
+  "file": "gov_noaa_kiska_2018_vessel_fog.mp4",
+  "type": "video",
+  "source": "noaa",
+  "source_id": "noaa-oe-video-video-playlist-marine-kiska @ 70.0s",
+  "title": "USS Abner Read - NOAA Ocean Exploration",
+  "page_url": "https://archive.org/details/noaa-oe-video-video-playlist-marine-kiska",
+  "licence": "verify: NOAA Ocean Exploration video (federal, public domain mark on archive.org), but the footage was shot by the NOAA-funded Project Recover partners (Scripps / Univ. of Delaware)",
+  "attribution": "NOAA Ocean Exploration / Project Recover, via archive.org",
+  "author": "NOAA Ocean Exploration / Project Recover",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "NOAA Ocean Exploration video 'USS Abner Read' (2018 Project Recover expedition): expedition vessel flying a US flag waits in thick grey fog off Kiska, July 2018",
+  "tags": [
+   "kiska",
+   "fog",
+   "ships",
+   "today"
+  ],
+  "best_for": [
+   "KISKA",
+   "FOG",
+   "SHIPS",
+   "TODAY"
+  ],
+  "place": "off Kiska, July 2018",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_noaa_kiska_2018_abner_read_wreck_fish",
+  "file": "gov_noaa_kiska_2018_abner_read_wreck_fish.mp4",
+  "type": "video",
+  "source": "noaa",
+  "source_id": "noaa-oe-video-video-playlist-marine-kiska @ 115.0s",
+  "title": "USS Abner Read - NOAA Ocean Exploration",
+  "page_url": "https://archive.org/details/noaa-oe-video-video-playlist-marine-kiska",
+  "licence": "verify: NOAA Ocean Exploration video (federal, public domain mark on archive.org), but the footage was shot by the NOAA-funded Project Recover partners (Scripps / Univ. of Delaware)",
+  "attribution": "NOAA Ocean Exploration / Project Recover, via archive.org",
+  "author": "NOAA Ocean Exploration / Project Recover",
+  "is_real_subject": true,
+  "duration_s": 16.0,
+  "description": "NOAA Ocean Exploration video 'USS Abner Read' (2018 Project Recover expedition): ROV lights reveal wreckage of the destroyer USS Abner Read's stern, blown off by a mine off Kiska in Aug 1943, fish swirling",
+  "tags": [
+   "kiska",
+   "wreck",
+   "underwater",
+   "ww2 legacy"
+  ],
+  "best_for": [
+   "KISKA",
+   "WRECK",
+   "UNDERWATER",
+   "WW2_LEGACY"
+  ],
+  "place": "seabed off Kiska, 2018",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_noaa_kiska_2018_abner_read_anemones",
+  "file": "gov_noaa_kiska_2018_abner_read_anemones.mp4",
+  "type": "video",
+  "source": "noaa",
+  "source_id": "noaa-oe-video-video-playlist-marine-kiska @ 130.0s",
+  "title": "USS Abner Read - NOAA Ocean Exploration",
+  "page_url": "https://archive.org/details/noaa-oe-video-video-playlist-marine-kiska",
+  "licence": "verify: NOAA Ocean Exploration video (federal, public domain mark on archive.org), but the footage was shot by the NOAA-funded Project Recover partners (Scripps / Univ. of Delaware)",
+  "attribution": "NOAA Ocean Exploration / Project Recover, via archive.org",
+  "author": "NOAA Ocean Exploration / Project Recover",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "NOAA Ocean Exploration video 'USS Abner Read' (2018 Project Recover expedition): Abner Read stern wreckage overgrown with anemones and corals, 75 years on",
+  "tags": [
+   "kiska",
+   "wreck",
+   "underwater",
+   "ww2 legacy"
+  ],
+  "best_for": [
+   "KISKA",
+   "WRECK",
+   "UNDERWATER",
+   "WW2_LEGACY"
+  ],
+  "place": "seabed off Kiska, 2018",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_noaa_kiska_2018_abner_read_gun_mount",
+  "file": "gov_noaa_kiska_2018_abner_read_gun_mount.mp4",
+  "type": "video",
+  "source": "noaa",
+  "source_id": "noaa-oe-video-video-playlist-marine-kiska @ 165.0s",
+  "title": "USS Abner Read - NOAA Ocean Exploration",
+  "page_url": "https://archive.org/details/noaa-oe-video-video-playlist-marine-kiska",
+  "licence": "verify: NOAA Ocean Exploration video (federal, public domain mark on archive.org), but the footage was shot by the NOAA-funded Project Recover partners (Scripps / Univ. of Delaware)",
+  "attribution": "NOAA Ocean Exploration / Project Recover, via archive.org",
+  "author": "NOAA Ocean Exploration / Project Recover",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "NOAA Ocean Exploration video 'USS Abner Read' (2018 Project Recover expedition): overgrown gun mount and hull plates of the Abner Read wreck, rockfish passing",
+  "tags": [
+   "kiska",
+   "wreck",
+   "underwater"
+  ],
+  "best_for": [
+   "KISKA",
+   "WRECK",
+   "UNDERWATER"
+  ],
+  "place": "seabed off Kiska, 2018",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "gov_noaa_kiska_2018_wreath_on_sea",
+  "file": "gov_noaa_kiska_2018_wreath_on_sea.mp4",
+  "type": "video",
+  "source": "noaa",
+  "source_id": "noaa-oe-video-video-playlist-marine-kiska @ 289.0s",
+  "title": "USS Abner Read - NOAA Ocean Exploration",
+  "page_url": "https://archive.org/details/noaa-oe-video-video-playlist-marine-kiska",
+  "licence": "verify: NOAA Ocean Exploration video (federal, public domain mark on archive.org), but the footage was shot by the NOAA-funded Project Recover partners (Scripps / Univ. of Delaware)",
+  "attribution": "NOAA Ocean Exploration / Project Recover, via archive.org",
+  "author": "NOAA Ocean Exploration / Project Recover",
+  "is_real_subject": true,
+  "duration_s": 12.0,
+  "description": "NOAA Ocean Exploration video 'USS Abner Read' (2018 Project Recover expedition): memorial wreath floating on the grey sea over the Abner Read wreck site",
+  "tags": [
+   "kiska",
+   "memorials",
+   "sea"
+  ],
+  "best_for": [
+   "KISKA",
+   "MEMORIALS",
+   "SEA"
+  ],
+  "place": "off Kiska, July 2018",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "ia_amchitka_1944_windswept_sea",
+  "file": "ia_amchitka_1944_windswept_sea.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "111-adc-1418 @ 20.0s",
+  "title": "AMCHITKA ISLAND, ALASKA",
+  "page_url": "https://archive.org/details/111-adc-1418",
+  "licence": "Public domain (US Army Signal Corps film, National Archives RG 111)",
+  "attribution": "U.S. Army Signal Corps, via National Archives (NARA) / archive.org",
+  "author": "U.S. Army Signal Corps",
+  "is_real_subject": true,
+  "duration_s": 18.0,
+  "description": "US Army Signal Corps film (NARA 111-ADC-1418) 'Amchitka Island, Alaska', 4 Sept 1944, b/w: wind-whipped grey sea off Amchitka, whitecaps to the horizon",
+  "tags": [
+   "amchitka",
+   "sea",
+   "wind",
+   "storm"
+  ],
+  "best_for": [
+   "AMCHITKA",
+   "SEA",
+   "WIND",
+   "STORM"
+  ],
+  "place": "Amchitka, Sept 1944",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_amchitka_1944_windsock_gale",
+  "file": "ia_amchitka_1944_windsock_gale.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "111-adc-1418 @ 74.0s",
+  "title": "AMCHITKA ISLAND, ALASKA",
+  "page_url": "https://archive.org/details/111-adc-1418",
+  "licence": "Public domain (US Army Signal Corps film, National Archives RG 111)",
+  "attribution": "U.S. Army Signal Corps, via National Archives (NARA) / archive.org",
+  "author": "U.S. Army Signal Corps",
+  "is_real_subject": true,
+  "duration_s": 10.0,
+  "description": "US Army Signal Corps film (NARA 111-ADC-1418) 'Amchitka Island, Alaska', 4 Sept 1944, b/w: windsock stretched straight out in a gale over the airfield",
+  "tags": [
+   "amchitka",
+   "wind",
+   "williwaw"
+  ],
+  "best_for": [
+   "AMCHITKA",
+   "WIND",
+   "WILLIWAW"
+  ],
+  "place": "Amchitka, Sept 1944",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_amchitka_1944_fighter_takeoff_strip",
+  "file": "ia_amchitka_1944_fighter_takeoff_strip.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "111-adc-1418 @ 104.0s",
+  "title": "AMCHITKA ISLAND, ALASKA",
+  "page_url": "https://archive.org/details/111-adc-1418",
+  "licence": "Public domain (US Army Signal Corps film, National Archives RG 111)",
+  "attribution": "U.S. Army Signal Corps, via National Archives (NARA) / archive.org",
+  "author": "U.S. Army Signal Corps",
+  "is_real_subject": true,
+  "duration_s": 14.0,
+  "description": "US Army Signal Corps film (NARA 111-ADC-1418) 'Amchitka Island, Alaska', 4 Sept 1944, b/w: fighter plane takes off along the muddy Amchitka runway",
+  "tags": [
+   "amchitka",
+   "ww2 air"
+  ],
+  "best_for": [
+   "AMCHITKA",
+   "WW2_AIR"
+  ],
+  "place": "Amchitka, Sept 1944",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_amchitka_1944_ships_choppy_bay",
+  "file": "ia_amchitka_1944_ships_choppy_bay.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "111-adc-1418 @ 125.0s",
+  "title": "AMCHITKA ISLAND, ALASKA",
+  "page_url": "https://archive.org/details/111-adc-1418",
+  "licence": "Public domain (US Army Signal Corps film, National Archives RG 111)",
+  "attribution": "U.S. Army Signal Corps, via National Archives (NARA) / archive.org",
+  "author": "U.S. Army Signal Corps",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Army Signal Corps film (NARA 111-ADC-1418) 'Amchitka Island, Alaska', 4 Sept 1944, b/w: transports anchored in a choppy bay off Amchitka",
+  "tags": [
+   "amchitka",
+   "ships",
+   "sea"
+  ],
+  "best_for": [
+   "AMCHITKA",
+   "SHIPS",
+   "SEA"
+  ],
+  "place": "Amchitka, Sept 1944",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_amchitka_1944_crashed_plane_wreck",
+  "file": "ia_amchitka_1944_crashed_plane_wreck.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "111-adc-1418 @ 220.0s",
+  "title": "AMCHITKA ISLAND, ALASKA",
+  "page_url": "https://archive.org/details/111-adc-1418",
+  "licence": "Public domain (US Army Signal Corps film, National Archives RG 111)",
+  "attribution": "U.S. Army Signal Corps, via National Archives (NARA) / archive.org",
+  "author": "U.S. Army Signal Corps",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Army Signal Corps film (NARA 111-ADC-1418) 'Amchitka Island, Alaska', 4 Sept 1944, b/w: wreck of a crashed plane on the Amchitka airfield",
+  "tags": [
+   "amchitka",
+   "ww2 air",
+   "wreck"
+  ],
+  "best_for": [
+   "AMCHITKA",
+   "WW2_AIR",
+   "WRECK"
+  ],
+  "place": "Amchitka, Sept 1944",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "ia_amchitka_1944_long_pier",
+  "file": "ia_amchitka_1944_long_pier.mp4",
+  "type": "video",
+  "source": "archive.org",
+  "source_id": "111-adc-1418 @ 255.0s",
+  "title": "AMCHITKA ISLAND, ALASKA",
+  "page_url": "https://archive.org/details/111-adc-1418",
+  "licence": "Public domain (US Army Signal Corps film, National Archives RG 111)",
+  "attribution": "U.S. Army Signal Corps, via National Archives (NARA) / archive.org",
+  "author": "U.S. Army Signal Corps",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "US Army Signal Corps film (NARA 111-ADC-1418) 'Amchitka Island, Alaska', 4 Sept 1944, b/w: long wooden pier stretching into the bay, crane tower at its end",
+  "tags": [
+   "amchitka",
+   "ww2 bases"
+  ],
+  "best_for": [
+   "AMCHITKA",
+   "WW2_BASES"
+  ],
+  "place": "Amchitka, Sept 1944",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "gov_nasa_shishaldin_1999_satellite_plume",
+  "file": "gov_nasa_shishaldin_1999_satellite_plume.mp4",
+  "type": "video",
+  "source": "nasa",
+  "source_id": "SVS-670 @ 0.0s",
+  "title": "Shishaldin Volcano in Alaska.",
+  "page_url": "https://archive.org/details/SVS-670",
+  "licence": "Public domain (NASA Goddard Scientific Visualization Studio)",
+  "attribution": "NASA Goddard Space Flight Center SVS, via archive.org",
+  "author": "NASA Goddard SVS",
+  "is_real_subject": true,
+  "duration_s": 20.0,
+  "description": "NASA Goddard SVS satellite sequence: ash plume streaming from Shishaldin Volcano across the Alaska Peninsula region, April 1999 (low-res, letterboxed)",
+  "tags": [
+   "volcano",
+   "shishaldin",
+   "eruption",
+   "space"
+  ],
+  "best_for": [
+   "VOLCANO",
+   "SHISHALDIN",
+   "ERUPTION",
+   "SPACE"
+  ],
+  "place": "Shishaldin, Unimak Island, 1999 (satellite)",
+  "season": "spring",
+  "night": false
+ },
+ {
+  "key": "px_dutch_harbor_crab_boats",
+  "file": "px_dutch_harbor_crab_boats.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "5946681",
+  "title": "dutch harbor, boats, fishing, trawlers, crab boat, crab fishing, aleutian islands, alaska, fishing boats, harbor, bay, tenacity, marina, nautical, maritime, coast guard, commercial fishing",
+  "page_url": "https://pixabay.com/photos/dutch-harbor-boats-fishing-trawlers-5946681/",
+  "licence": "Pixabay Content License",
+  "attribution": "NWimagesbySabrinaE via Pixabay",
+  "author": "NWimagesbySabrinaE",
+  "is_real_subject": true,
+  "description": "Crab boats and trawlers moored at Dutch Harbor, Unalaska (photographer's tags: Dutch Harbor crab fishing)",
+  "tags": [
+   "dutch harbor",
+   "boats",
+   "fishing",
+   "trawlers",
+   "crab boat",
+   "crab fishing",
+   "aleutian islands",
+   "alaska"
+  ],
+  "best_for": [
+   "DUTCH_HARBOR",
+   "FISHING_FLEET",
+   "TODAY"
+  ],
+  "place": "Dutch Harbor, Unalaska, AK",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_dutch_harbor_dock_nets_buoys",
+  "file": "px_dutch_harbor_dock_nets_buoys.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "69565",
+  "title": "dutch harbor, alaska, harbor, ships, boats, dock, coast, nets, buoy, net, usa, fishing nets, alaska, alaska, alaska, alaska, alaska, buoy, fishing nets, fishing nets, fishing nets",
+  "page_url": "https://pixabay.com/photos/dutch-harbor-alaska-harbor-ships-69565/",
+  "licence": "Pixabay Content License",
+  "attribution": "12019 via Pixabay",
+  "author": "12019",
+  "is_real_subject": true,
+  "description": "Dutch Harbor dock with ships, nets and buoys (repost of a public-domain US government photo by user 12019)",
+  "tags": [
+   "dutch harbor",
+   "alaska",
+   "harbor",
+   "ships",
+   "boats",
+   "dock",
+   "coast",
+   "nets"
+  ],
+  "best_for": [
+   "DUTCH_HARBOR",
+   "FISHING_FLEET",
+   "TODAY"
+  ],
+  "place": "Dutch Harbor, Unalaska, AK",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "px_dutch_harbor_mountains_clouds",
+  "file": "px_dutch_harbor_mountains_clouds.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "2613954",
+  "title": "dutch harbor, alaska, sky, clouds, mountains, travel, vacation, holiday, water, sunrise, morning, panorama, landscape, tourism, nature, outdoors, snow, dutch harbor, dutch harbor, alaska, alaska, alaska, alaska, alaska",
+  "page_url": "https://pixabay.com/photos/dutch-harbor-alaska-sky-clouds-2613954/",
+  "licence": "Pixabay Content License",
+  "attribution": "12019 via Pixabay",
+  "author": "12019",
+  "is_real_subject": true,
+  "description": "Dutch Harbor under green mountains and cloud",
+  "tags": [
+   "dutch harbor",
+   "alaska",
+   "sky",
+   "clouds",
+   "mountains",
+   "travel",
+   "vacation",
+   "holiday"
+  ],
+  "best_for": [
+   "DUTCH_HARBOR",
+   "LANDSCAPE",
+   "TODAY"
+  ],
+  "place": "Dutch Harbor, Unalaska, AK",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "px_dutch_harbor_houses_road",
+  "file": "px_dutch_harbor_houses_road.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "79925",
+  "title": "dutch harbor, alaska, mountains, house, home, purple, village, road, nature, outside, dutch harbor, alaska, alaska, alaska, alaska, alaska",
+  "page_url": "https://pixabay.com/photos/dutch-harbor-alaska-mountains-house-79925/",
+  "licence": "Pixabay Content License",
+  "attribution": "12019 via Pixabay",
+  "author": "12019",
+  "is_real_subject": true,
+  "description": "Houses and road at Unalaska / Dutch Harbor below mountains",
+  "tags": [
+   "dutch harbor",
+   "alaska",
+   "mountains",
+   "house",
+   "home",
+   "purple",
+   "village",
+   "road"
+  ],
+  "best_for": [
+   "UNALASKA",
+   "TODAY"
+  ],
+  "place": "Unalaska, AK",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "px_agattu_steller_sea_lions",
+  "file": "px_agattu_steller_sea_lions.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "86568",
+  "title": "agattu island, alaska, stellar, sea lion, animal, wildlife, water, reflections, nature, outside, alaska, alaska, alaska, alaska, alaska, sea lion, sea lion, sea lion",
+  "page_url": "https://pixabay.com/photos/agattu-island-alaska-stellar-86568/",
+  "licence": "Pixabay Content License",
+  "attribution": "12019 via Pixabay",
+  "author": "12019",
+  "is_real_subject": true,
+  "description": "Steller sea lions hauled out on rocks at Agattu Island, western Aleutians (repost of USFWS-style photo)",
+  "tags": [
+   "agattu island",
+   "alaska",
+   "stellar",
+   "sea lion",
+   "animal",
+   "wildlife",
+   "water",
+   "reflections"
+  ],
+  "best_for": [
+   "WILDLIFE",
+   "SEA_LIONS",
+   "WESTERN_ALEUTIANS"
+  ],
+  "place": "Agattu Island, Near Islands, AK",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "px_red_king_crab",
+  "file": "px_red_king_crab.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "79935",
+  "title": "red king crab, sea, nature, ocean, water, underwater, macro, close-up, black water, black sea, black ocean, black king",
+  "page_url": "https://pixabay.com/photos/red-king-crab-sea-ocean-water-79935/",
+  "licence": "Pixabay Content License",
+  "attribution": "12019 via Pixabay",
+  "author": "12019",
+  "is_real_subject": true,
+  "description": "Red king crab close-up on the seabed",
+  "tags": [
+   "red king crab",
+   "sea",
+   "nature",
+   "ocean",
+   "water",
+   "underwater",
+   "macro",
+   "close-up"
+  ],
+  "best_for": [
+   "KING_CRAB",
+   "FISHING"
+  ],
+  "place": "Alaska (location not given)",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_mount_redoubt_steaming",
+  "file": "px_mount_redoubt_steaming.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "67515",
+  "title": "volcano, glacier, fumarole, mount redoubt, alaska, usa, outbreak, active, volcano, volcano, fumarole, fumarole, mount redoubt, mount redoubt, mount redoubt, mount redoubt, alaska, alaska, alaska, alaska, alaska",
+  "page_url": "https://pixabay.com/photos/volcano-glacier-fumarole-67515/",
+  "licence": "Pixabay Content License",
+  "attribution": "WikiImages via Pixabay",
+  "author": "WikiImages",
+  "is_real_subject": false,
+  "description": "COMPARISON: Mount Redoubt, Alaska, steaming glacier-covered volcano (Cook Inlet, not the Aleutian chain)",
+  "tags": [
+   "volcano",
+   "glacier",
+   "fumarole",
+   "mount redoubt",
+   "alaska",
+   "usa",
+   "outbreak",
+   "active"
+  ],
+  "best_for": [
+   "VOLCANO",
+   "COMPARISON"
+  ],
+  "place": "Mount Redoubt, Cook Inlet, AK",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_puffin_alaska",
+  "file": "px_puffin_alaska.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "2568537",
+  "title": "puffin, nature, alaska, bird",
+  "page_url": "https://pixabay.com/photos/puffin-alaska-bird-2568537/",
+  "licence": "Pixabay Content License",
+  "attribution": "Ramblin1 via Pixabay",
+  "author": "Ramblin1",
+  "is_real_subject": false,
+  "description": "Puffin standing on a rock (photographer's tag: Alaska; exact place not given)",
+  "tags": [
+   "puffin",
+   "nature",
+   "alaska",
+   "bird"
+  ],
+  "best_for": [
+   "BIRDS",
+   "PUFFIN"
+  ],
+  "place": "Alaska",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "px_arctic_fox_snow",
+  "file": "px_arctic_fox_snow.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "1758183",
+  "title": "fox, arctic, animal, snow, field, winter, white, white fox, arctic fox, canine, wild animal, wilderness, wildlife photography, animal world, fauna, nature, norway, wildlife, fox, fox, fox, fox, fox, animal, animal, snow, winter, winter, winter, arctic fox, arctic fox, norway, norway",
+  "page_url": "https://pixabay.com/photos/fox-arctic-animal-snow-field-1758183/",
+  "licence": "Pixabay Content License",
+  "attribution": "12019 via Pixabay",
+  "author": "12019",
+  "is_real_subject": false,
+  "description": "ILLUSTRATIVE: arctic fox in a snow field (not the Aleutians)",
+  "tags": [
+   "fox",
+   "arctic",
+   "animal",
+   "snow",
+   "field",
+   "winter",
+   "white",
+   "white fox"
+  ],
+  "best_for": [
+   "FOXES",
+   "ILLUSTRATIVE"
+  ],
+  "place": "location not given",
+  "season": "winter",
+  "night": false
+ },
+ {
+  "key": "px_steller_sea_lions_rocks",
+  "file": "px_steller_sea_lions_rocks.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "80649",
+  "title": "glacier bay, alaska, steller sea lions, wildlife, rocks, rocky, sea-life, nature, outside, sky, clouds, brown life, brown lion, glacier bay, glacier bay, glacier bay, glacier bay, glacier bay, alaska, alaska, alaska, alaska, alaska",
+  "page_url": "https://pixabay.com/photos/glacier-bay-alaska-steller-sea-lions-80649/",
+  "licence": "Pixabay Content License",
+  "attribution": "12019 via Pixabay",
+  "author": "12019",
+  "is_real_subject": false,
+  "description": "Steller sea lions crowded on rocks (Glacier Bay, Alaska - ILLUSTRATIVE for the Aleutian rookeries)",
+  "tags": [
+   "glacier bay",
+   "alaska",
+   "steller sea lions",
+   "wildlife",
+   "rocks",
+   "rocky",
+   "sea-life",
+   "nature"
+  ],
+  "best_for": [
+   "WILDLIFE",
+   "SEA_LIONS",
+   "ILLUSTRATIVE"
+  ],
+  "place": "Glacier Bay, AK",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "px_alaska_trawler_bay",
+  "file": "px_alaska_trawler_bay.jpg",
+  "type": "photo",
+  "source": "pixabay",
+  "source_id": "4429731",
+  "title": "alaska, fishing, boat, trawler, mountain, sea, ocean, bay, blue, trees, salmon, fish, fisherman, trout, nature, river, water, wild, alaskan, wildlife, landscape, outdoor, recreation, cruise, waterway, leisure",
+  "page_url": "https://pixabay.com/photos/alaska-fishing-boat-trawler-4429731/",
+  "licence": "Pixabay Content License",
+  "attribution": "dennisflarsen via Pixabay",
+  "author": "dennisflarsen",
+  "is_real_subject": false,
+  "description": "ILLUSTRATIVE: fishing trawler in an Alaskan bay with mountains (not identified as Aleutians)",
+  "tags": [
+   "alaska",
+   "fishing",
+   "boat",
+   "trawler",
+   "mountain",
+   "sea",
+   "ocean",
+   "bay"
+  ],
+  "best_for": [
+   "FISHING_FLEET",
+   "ILLUSTRATIVE"
+  ],
+  "place": "Alaska",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "px_v_sea_lions_ice_floe_alaska",
+  "file": "px_v_sea_lions_ice_floe_alaska.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "3344",
+  "title": "sea lions, lion, alaska, ice floe, nature, wildlife",
+  "page_url": "https://pixabay.com/videos/id-3344/",
+  "licence": "Pixabay Content License",
+  "attribution": "brigachtal via Pixabay",
+  "author": "brigachtal",
+  "is_real_subject": false,
+  "duration_s": 20.0,
+  "description": "ILLUSTRATIVE: sea lions on an ice floe in Alaska (southcentral, not Aleutians)",
+  "tags": [
+   "sea lions",
+   "lion",
+   "alaska",
+   "ice floe",
+   "nature",
+   "wildlife"
+  ],
+  "best_for": [
+   "WILDLIFE",
+   "SEA_LIONS",
+   "ILLUSTRATIVE"
+  ],
+  "place": "Alaska",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_v_sea_otters_alaska",
+  "file": "px_v_sea_otters_alaska.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "3342",
+  "title": "sea otters, swim, sea, pacific, ocean, lake otter, otter, alaska",
+  "page_url": "https://pixabay.com/videos/id-3342/",
+  "licence": "Pixabay Content License",
+  "attribution": "brigachtal via Pixabay",
+  "author": "brigachtal",
+  "is_real_subject": false,
+  "duration_s": 20.0,
+  "description": "ILLUSTRATIVE: sea otters floating in the Pacific off Alaska (sea otters were the fur trade's prize)",
+  "tags": [
+   "sea otters",
+   "swim",
+   "sea",
+   "pacific",
+   "ocean",
+   "lake otter",
+   "otter",
+   "alaska"
+  ],
+  "best_for": [
+   "WILDLIFE",
+   "SEA_OTTER",
+   "FUR_TRADE",
+   "ILLUSTRATIVE"
+  ],
+  "place": "Alaska",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_v_bald_eagle_valdez",
+  "file": "px_v_bald_eagle_valdez.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "3341",
+  "title": "white-tailed eagle, eagle, majestic, alaska, valdez, bald eagle",
+  "page_url": "https://pixabay.com/videos/id-3341/",
+  "licence": "Pixabay Content License",
+  "attribution": "brigachtal via Pixabay",
+  "author": "brigachtal",
+  "is_real_subject": false,
+  "duration_s": 20.0,
+  "description": "ILLUSTRATIVE: bald eagle at Valdez, Alaska",
+  "tags": [
+   "white-tailed eagle",
+   "eagle",
+   "majestic",
+   "alaska",
+   "valdez",
+   "bald eagle"
+  ],
+  "best_for": [
+   "BIRDS",
+   "EAGLE",
+   "ILLUSTRATIVE"
+  ],
+  "place": "Valdez, AK",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_v_winter_sea_snow_wind",
+  "file": "px_v_winter_sea_snow_wind.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "197525",
+  "title": "sea, coast, japan sea, wave, snowfall, wind, winter, stormy weather, rock, japan",
+  "page_url": "https://pixabay.com/videos/id-197525/",
+  "licence": "Pixabay Content License",
+  "attribution": "Kanenori via Pixabay",
+  "author": "Kanenori",
+  "is_real_subject": false,
+  "duration_s": 20.0,
+  "description": "ILLUSTRATIVE: winter sea with snowfall and wind-driven waves on a rocky shore (Japan Sea coast)",
+  "tags": [
+   "sea",
+   "coast",
+   "japan sea",
+   "wave",
+   "snowfall",
+   "wind",
+   "winter",
+   "stormy weather"
+  ],
+  "best_for": [
+   "STORM",
+   "WIND",
+   "SEA",
+   "ILLUSTRATIVE"
+  ],
+  "place": "Japan Sea coast",
+  "season": "winter",
+  "night": false
+ },
+ {
+  "key": "px_v_dark_storm_ocean",
+  "file": "px_v_dark_storm_ocean.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "233772",
+  "title": "ocean, cloud, storm, sea, dark, sky, stormy, sun, water, cloudy, coastline, splashing, cloudscape, coast, wave, seascape",
+  "page_url": "https://pixabay.com/videos/id-233772/",
+  "licence": "Pixabay Content License",
+  "attribution": "Mario_Krimer via Pixabay",
+  "author": "Mario_Krimer",
+  "is_real_subject": false,
+  "duration_s": 20.0,
+  "description": "ILLUSTRATIVE: dark storm clouds over the ocean",
+  "tags": [
+   "ocean",
+   "cloud",
+   "storm",
+   "sea",
+   "dark",
+   "sky",
+   "stormy",
+   "sun"
+  ],
+  "best_for": [
+   "STORM",
+   "SEA",
+   "ILLUSTRATIVE"
+  ],
+  "place": "location not given",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_v_storm_waves_spray",
+  "file": "px_v_storm_waves_spray.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "306154",
+  "title": "sea, splashing, wave, spray, water, coastline, ocean, storm, beach, rocky coastline, rough, seascape, splash, rock, stormy, shore, stone, coast, rocky, crashing, shoreline, hit, seacoast",
+  "page_url": "https://pixabay.com/videos/id-306154/",
+  "licence": "Pixabay Content License",
+  "attribution": "Mario_Krimer via Pixabay",
+  "author": "Mario_Krimer",
+  "is_real_subject": false,
+  "duration_s": 20.0,
+  "description": "ILLUSTRATIVE: storm waves smashing into a coast with spray",
+  "tags": [
+   "sea",
+   "splashing",
+   "wave",
+   "spray",
+   "water",
+   "coastline",
+   "ocean",
+   "storm"
+  ],
+  "best_for": [
+   "STORM",
+   "SEA",
+   "ILLUSTRATIVE"
+  ],
+  "place": "location not given",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_v_storm_ocean_rain_wind",
+  "file": "px_v_storm_ocean_rain_wind.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "16160",
+  "title": "storm, ocean, sky, rain, the waves, wind, dark clouds, rolling sea, anger, a strong wind, clouds, sea, night, darkness, rainy, cloudy, water, lightning",
+  "page_url": "https://pixabay.com/videos/id-16160/",
+  "licence": "Pixabay Content License",
+  "attribution": "Macb3t via Pixabay",
+  "author": "Macb3t",
+  "is_real_subject": false,
+  "duration_s": 20.0,
+  "description": "ILLUSTRATIVE: storm over the ocean with rain, wind and rolling dark clouds",
+  "tags": [
+   "storm",
+   "ocean",
+   "sky",
+   "rain",
+   "the waves",
+   "wind",
+   "dark clouds",
+   "rolling sea"
+  ],
+  "best_for": [
+   "STORM",
+   "WIND",
+   "ILLUSTRATIVE"
+  ],
+  "place": "location not given",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_v_winter_storm_waves_snow_ice",
+  "file": "px_v_winter_storm_waves_snow_ice.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "154325",
+  "title": "waves, sea, beach, storm, snow, ice, winter storm, water, sea beach, cold water, winter",
+  "page_url": "https://pixabay.com/videos/id-154325/",
+  "licence": "Pixabay Content License",
+  "attribution": "Nils_Vega via Pixabay",
+  "author": "Nils_Vega",
+  "is_real_subject": false,
+  "duration_s": 20.0,
+  "description": "ILLUSTRATIVE: winter storm waves with snow and ice on a beach",
+  "tags": [
+   "waves",
+   "sea",
+   "beach",
+   "storm",
+   "snow",
+   "ice",
+   "winter storm",
+   "water"
+  ],
+  "best_for": [
+   "STORM",
+   "SEA",
+   "SNOW",
+   "ILLUSTRATIVE"
+  ],
+  "place": "location not given",
+  "season": "winter",
+  "night": false
+ },
+ {
+  "key": "px_v_blizzard_mountains",
+  "file": "px_v_blizzard_mountains.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "63281",
+  "title": "storm, mountains, blizzard, wind, stormy, snow, winter, cold, icy, freezing, rockclimbing, alps, windy",
+  "page_url": "https://pixabay.com/videos/id-63281/",
+  "licence": "Pixabay Content License",
+  "attribution": "Simon via Pixabay",
+  "author": "Simon",
+  "is_real_subject": false,
+  "duration_s": 16.6,
+  "description": "ILLUSTRATIVE: blizzard wind blasting snow over mountains",
+  "tags": [
+   "storm",
+   "mountains",
+   "blizzard",
+   "wind",
+   "stormy",
+   "snow",
+   "winter",
+   "cold"
+  ],
+  "best_for": [
+   "WIND",
+   "SNOW",
+   "ILLUSTRATIVE"
+  ],
+  "place": "location not given",
+  "season": "winter",
+  "night": false
+ },
+ {
+  "key": "px_v_fog_lighthouse_fishing_boat",
+  "file": "px_v_fog_lighthouse_fishing_boat.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "217053",
+  "title": "lighthouse, coast, fog, fishing boat, sea, japan",
+  "page_url": "https://pixabay.com/videos/id-217053/",
+  "licence": "Pixabay Content License",
+  "attribution": "Kanenori via Pixabay",
+  "author": "Kanenori",
+  "is_real_subject": false,
+  "duration_s": 18.5,
+  "description": "ILLUSTRATIVE: fog over a coast with lighthouse and fishing boat (Japan)",
+  "tags": [
+   "lighthouse",
+   "coast",
+   "fog",
+   "fishing boat",
+   "sea",
+   "japan"
+  ],
+  "best_for": [
+   "FOG",
+   "FISHING",
+   "ILLUSTRATIVE"
+  ],
+  "place": "Japan",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_v_aerial_fog_island_coast",
+  "file": "px_v_aerial_fog_island_coast.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "2179",
+  "title": "fog, sea, island, aerial, coastline, coast, shore, landscape, nature, forest",
+  "page_url": "https://pixabay.com/videos/id-2179/",
+  "licence": "Pixabay Content License",
+  "attribution": "bellergy via Pixabay",
+  "author": "bellergy",
+  "is_real_subject": false,
+  "duration_s": 20.0,
+  "description": "ILLUSTRATIVE: aerial over an island coastline in fog",
+  "tags": [
+   "fog",
+   "sea",
+   "island",
+   "aerial",
+   "coastline",
+   "coast",
+   "shore",
+   "landscape"
+  ],
+  "best_for": [
+   "FOG",
+   "AERIAL",
+   "COAST",
+   "ILLUSTRATIVE"
+  ],
+  "place": "location not given",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_v_foggy_beach_drone",
+  "file": "px_v_foggy_beach_drone.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "184840",
+  "title": "beach, ocean, sea, mist, fog, foggy, shore, drone footage, landscape",
+  "page_url": "https://pixabay.com/videos/id-184840/",
+  "licence": "Pixabay Content License",
+  "attribution": "scitech via Pixabay",
+  "author": "scitech",
+  "is_real_subject": false,
+  "duration_s": 20.0,
+  "description": "ILLUSTRATIVE: drone over a misty beach and sea in thick fog",
+  "tags": [
+   "beach",
+   "ocean",
+   "sea",
+   "mist",
+   "fog",
+   "foggy",
+   "shore",
+   "drone footage"
+  ],
+  "best_for": [
+   "FOG",
+   "SEA",
+   "ILLUSTRATIVE"
+  ],
+  "place": "location not given",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_v_puffin_rocks",
+  "file": "px_v_puffin_rocks.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "50656",
+  "title": "puffin, animal, island, snow, rocks, breed, nest, water, mystical, cold, sea",
+  "page_url": "https://pixabay.com/videos/id-50656/",
+  "licence": "Pixabay Content License",
+  "attribution": "RoyBuri via Pixabay",
+  "author": "RoyBuri",
+  "is_real_subject": false,
+  "duration_s": 20.0,
+  "description": "ILLUSTRATIVE: puffin on rocks by the sea",
+  "tags": [
+   "puffin",
+   "animal",
+   "island",
+   "snow",
+   "rocks",
+   "breed",
+   "nest",
+   "water"
+  ],
+  "best_for": [
+   "BIRDS",
+   "PUFFIN",
+   "ILLUSTRATIVE"
+  ],
+  "place": "location not given",
+  "season": "summer",
+  "night": false
+ },
+ {
+  "key": "px_v_red_fox",
+  "file": "px_v_red_fox.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "28480",
+  "title": "red fox, forest animal, fur, cute, reddish, wild, nature, wildlife, wilderness",
+  "page_url": "https://pixabay.com/videos/id-28480/",
+  "licence": "Pixabay Content License",
+  "attribution": "Sommerland via Pixabay",
+  "author": "Sommerland",
+  "is_real_subject": false,
+  "duration_s": 20.0,
+  "description": "ILLUSTRATIVE: red fox in the wild (foxes were introduced to Aleutian islands for fur farming)",
+  "tags": [
+   "red fox",
+   "forest animal",
+   "fur",
+   "cute",
+   "reddish",
+   "wild",
+   "nature",
+   "wildlife"
+  ],
+  "best_for": [
+   "FOXES",
+   "FUR_TRADE",
+   "ILLUSTRATIVE"
+  ],
+  "place": "location not given",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_v_volcano_eruption_iceland",
+  "file": "px_v_volcano_eruption_iceland.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "152085",
+  "title": "volcano, iceland, icelandic, eruption, smoking, fire, lava, glow, drone, nature, pollution",
+  "page_url": "https://pixabay.com/videos/id-152085/",
+  "licence": "Pixabay Content License",
+  "attribution": "Gylfi via Pixabay",
+  "author": "Gylfi",
+  "is_real_subject": false,
+  "duration_s": 15.3,
+  "description": "COMPARISON: volcanic eruption with lava and smoke in Iceland",
+  "tags": [
+   "volcano",
+   "iceland",
+   "icelandic",
+   "eruption",
+   "smoking",
+   "fire",
+   "lava",
+   "glow"
+  ],
+  "best_for": [
+   "VOLCANO",
+   "ERUPTION",
+   "COMPARISON"
+  ],
+  "place": "Iceland",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_v_abandoned_house_empty",
+  "file": "px_v_abandoned_house_empty.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "42057",
+  "title": "abandoned, house, empty, building, old, mood, decay, architecture, ruin, lapsed, broken",
+  "page_url": "https://pixabay.com/videos/id-42057/",
+  "licence": "Pixabay Content License",
+  "attribution": "Matthias_Groeneveld via Pixabay",
+  "author": "Matthias_Groeneveld",
+  "is_real_subject": false,
+  "duration_s": 20.0,
+  "description": "ILLUSTRATIVE: empty abandoned house interior, decay",
+  "tags": [
+   "abandoned",
+   "house",
+   "empty",
+   "building",
+   "old",
+   "mood",
+   "decay",
+   "architecture"
+  ],
+  "best_for": [
+   "ABANDONED",
+   "EMPTY_HOUSES",
+   "ILLUSTRATIVE"
+  ],
+  "place": "location not given",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_v_abandoned_building_snow",
+  "file": "px_v_abandoned_building_snow.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "202332",
+  "title": "abandoned building, architectural building, old, winter, snow, hospital, communism, albania",
+  "page_url": "https://pixabay.com/videos/id-202332/",
+  "licence": "Pixabay Content License",
+  "attribution": "Albanian_Filmmaker via Pixabay",
+  "author": "Albanian_Filmmaker",
+  "is_real_subject": false,
+  "duration_s": 9.9,
+  "description": "ILLUSTRATIVE: abandoned building in winter snow",
+  "tags": [
+   "abandoned building",
+   "architectural building",
+   "old",
+   "winter",
+   "snow",
+   "hospital",
+   "communism",
+   "albania"
+  ],
+  "best_for": [
+   "ABANDONED",
+   "ILLUSTRATIVE"
+  ],
+  "place": "location not given",
+  "season": "winter",
+  "night": false
+ },
+ {
+  "key": "px_v_bunker_ruins",
+  "file": "px_v_bunker_ruins.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "379527",
+  "title": "bunker, history, ruins, ruin, abandoned, old, building, forest, wood, nature, landscape, trees, woods, war, poland, military, army",
+  "page_url": "https://pixabay.com/videos/id-379527/",
+  "licence": "Pixabay Content License",
+  "attribution": "WildEastMan via Pixabay",
+  "author": "WildEastMan",
+  "is_real_subject": false,
+  "duration_s": 15.2,
+  "description": "ILLUSTRATIVE: old concrete bunker ruins",
+  "tags": [
+   "bunker",
+   "history",
+   "ruins",
+   "ruin",
+   "abandoned",
+   "old",
+   "building",
+   "forest"
+  ],
+  "best_for": [
+   "ABANDONED",
+   "WW2_LEGACY",
+   "ILLUSTRATIVE"
+  ],
+  "place": "location not given",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_v_abandoned_ship_shore",
+  "file": "px_v_abandoned_ship_shore.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "95241",
+  "title": "abandoned, boat, tanker, shore, sea, beach, daylight, wreck, rust, ship, industry, gone, drifting, floating, shipwrecked, rocks",
+  "page_url": "https://pixabay.com/videos/id-95241/",
+  "licence": "Pixabay Content License",
+  "attribution": "Matthias_Groeneveld via Pixabay",
+  "author": "Matthias_Groeneveld",
+  "is_real_subject": false,
+  "duration_s": 20.0,
+  "description": "ILLUSTRATIVE: abandoned rusting tanker wreck on a shore",
+  "tags": [
+   "abandoned",
+   "boat",
+   "tanker",
+   "shore",
+   "sea",
+   "beach",
+   "daylight",
+   "wreck"
+  ],
+  "best_for": [
+   "ABANDONED",
+   "SHIPS",
+   "ILLUSTRATIVE"
+  ],
+  "place": "location not given",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_v_fishing_port_winter",
+  "file": "px_v_fishing_port_winter.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "154926",
+  "title": "fishing, port, harbor, village, winter, iceland",
+  "page_url": "https://pixabay.com/videos/id-154926/",
+  "licence": "Pixabay Content License",
+  "attribution": "Gylfi via Pixabay",
+  "author": "Gylfi",
+  "is_real_subject": false,
+  "duration_s": 11.9,
+  "description": "ILLUSTRATIVE: fishing port in winter (Iceland)",
+  "tags": [
+   "fishing",
+   "port",
+   "harbor",
+   "village",
+   "winter",
+   "iceland"
+  ],
+  "best_for": [
+   "FISHING_FLEET",
+   "ILLUSTRATIVE"
+  ],
+  "place": "Iceland",
+  "season": "winter",
+  "night": false
+ },
+ {
+  "key": "px_v_bush_plane_alaska_takeoff",
+  "file": "px_v_bush_plane_alaska_takeoff.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "428",
+  "title": "plane, flight, start, flying, airplane, alaska, takeoff, pilot, cessna, 53287458",
+  "page_url": "https://pixabay.com/videos/id-428/",
+  "licence": "Pixabay Content License",
+  "attribution": "Vimeo-Free-Videos via Pixabay",
+  "author": "Vimeo-Free-Videos",
+  "is_real_subject": false,
+  "duration_s": 15.0,
+  "description": "ILLUSTRATIVE: small plane taking off in Alaska",
+  "tags": [
+   "plane",
+   "flight",
+   "start",
+   "flying",
+   "airplane",
+   "alaska",
+   "takeoff",
+   "pilot"
+  ],
+  "best_for": [
+   "AIR_TRAVEL",
+   "ILLUSTRATIVE"
+  ],
+  "place": "Alaska",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_v_grass_wind",
+  "file": "px_v_grass_wind.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "145252",
+  "title": "grass, wind, autumn, nature",
+  "page_url": "https://pixabay.com/videos/id-145252/",
+  "licence": "Pixabay Content License",
+  "attribution": "RuslanSikunov via Pixabay",
+  "author": "RuslanSikunov",
+  "is_real_subject": false,
+  "duration_s": 19.8,
+  "description": "ILLUSTRATIVE: grass bending in the wind",
+  "tags": [
+   "grass",
+   "wind",
+   "autumn",
+   "nature"
+  ],
+  "best_for": [
+   "WIND",
+   "TUNDRA",
+   "ILLUSTRATIVE"
+  ],
+  "place": "location not given",
+  "season": "autumn",
+  "night": false
+ },
+ {
+  "key": "px_v_empty_street_snow_night",
+  "file": "px_v_empty_street_snow_night.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "63970",
+  "title": "snow, cold, winter, dark, night, 4k, evening, snowing, city, urban, shops, street, empty, quiet, peaceful",
+  "page_url": "https://pixabay.com/videos/id-63970/",
+  "licence": "Pixabay Content License",
+  "attribution": "Matthias_Groeneveld via Pixabay",
+  "author": "Matthias_Groeneveld",
+  "is_real_subject": false,
+  "duration_s": 20.0,
+  "description": "ILLUSTRATIVE: empty street at night with falling snow, nobody around",
+  "tags": [
+   "snow",
+   "cold",
+   "winter",
+   "dark",
+   "night",
+   "4k",
+   "evening",
+   "snowing"
+  ],
+  "best_for": [
+   "EMPTY_TOWN",
+   "SNOW",
+   "NIGHT",
+   "ILLUSTRATIVE"
+  ],
+  "place": "location not given",
+  "season": "winter",
+  "night": true
+ },
+ {
+  "key": "px_v_seagulls_storm_shore",
+  "file": "px_v_seagulls_storm_shore.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "192597",
+  "title": "seagulls, shore, beach, wind, storm, waves, ocean, sea, sand, clouds, cloudy, afternoon, blow, blowing, windy, stormy, overcast",
+  "page_url": "https://pixabay.com/videos/id-192597/",
+  "licence": "Pixabay Content License",
+  "attribution": "ECLoverde via Pixabay",
+  "author": "ECLoverde",
+  "is_real_subject": false,
+  "duration_s": 17.8,
+  "description": "ILLUSTRATIVE: seagulls on a windy stormy shore, waves breaking",
+  "tags": [
+   "seagulls",
+   "shore",
+   "beach",
+   "wind",
+   "storm",
+   "waves",
+   "ocean",
+   "sea"
+  ],
+  "best_for": [
+   "BIRDS",
+   "STORM",
+   "WIND",
+   "ILLUSTRATIVE"
+  ],
+  "place": "location not given",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_v_cliffs_sea_waves_faroe",
+  "file": "px_v_cliffs_sea_waves_faroe.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "93714",
+  "title": "cliffs, sea, waves, faroe islands, nature, mystical, atlantic",
+  "page_url": "https://pixabay.com/videos/id-93714/",
+  "licence": "Pixabay Content License",
+  "attribution": "NathanKoop via Pixabay",
+  "author": "NathanKoop",
+  "is_real_subject": false,
+  "duration_s": 20.0,
+  "description": "ILLUSTRATIVE: dark sea cliffs and waves in mist (Faroe Islands - similar treeless North Atlantic islands)",
+  "tags": [
+   "cliffs",
+   "sea",
+   "waves",
+   "faroe islands",
+   "nature",
+   "mystical",
+   "atlantic"
+  ],
+  "best_for": [
+   "COAST",
+   "FOG",
+   "ILLUSTRATIVE"
+  ],
+  "place": "Faroe Islands",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "px_v_abandoned_room_empty",
+  "file": "px_v_abandoned_room_empty.mp4",
+  "type": "video",
+  "source": "pixabay",
+  "source_id": "16399",
+  "title": "abandoned, room, empty, building, pan, interior, house, structure, industrial, city, abandon, decay, inside, indoor",
+  "page_url": "https://pixabay.com/videos/id-16399/",
+  "licence": "Pixabay Content License",
+  "attribution": "StefWithAnF via Pixabay",
+  "author": "StefWithAnF",
+  "is_real_subject": false,
+  "duration_s": 16.5,
+  "description": "ILLUSTRATIVE: empty abandoned room interior",
+  "tags": [
+   "abandoned",
+   "room",
+   "empty",
+   "building",
+   "pan",
+   "interior",
+   "house",
+   "structure"
+  ],
+  "best_for": [
+   "ABANDONED",
+   "EMPTY_HOUSES",
+   "ILLUSTRATIVE"
+  ],
+  "place": "location not given",
   "season": "unknown",
   "night": false
  },
@@ -6434,6 +11598,37 @@
    "SPACE"
   ],
   "place": "Unalaska Island (satellite)",
+  "season": "unknown",
+  "night": false
+ },
+ {
+  "key": "cm_funter_bay_aleut_womens_petition_1943",
+  "file": "cm_funter_bay_aleut_womens_petition_1943.jpg",
+  "type": "photo",
+  "source": "wikimedia_commons",
+  "source_id": "File:Aleut Womens Petition - DPLA - 1a29b80d0338d2a8db8448ab782dcd00 (page 1).jpg",
+  "title": "Aleut Womens Petition - DPLA - 1a29b80d0338d2a8db8448ab782dcd00 (page 1)",
+  "page_url": "https://commons.wikimedia.org/wiki/File%3AAleut_Womens_Petition_-_DPLA_-_1a29b80d0338d2a8db8448ab782dcd00_%28page_1%29.jpg",
+  "licence": "Public domain",
+  "attribution": "National Archives at Seattle, Public domain, via Wikimedia Commons",
+  "author": "National Archives at Seattle",
+  "is_real_subject": true,
+  "description": "Page 1 of the petition written by Unangan women held at the Funter Bay evacuation camp, protesting conditions (1943, National Archives via DPLA)",
+  "tags": [
+   "funter bay",
+   "evacuation",
+   "camps",
+   "unangan",
+   "document"
+  ],
+  "best_for": [
+   "FUNTER_BAY",
+   "EVACUATION",
+   "CAMPS",
+   "UNANGAN",
+   "DOCUMENT"
+  ],
+  "place": "Funter Bay camp, SE Alaska, 1943",
   "season": "unknown",
   "night": false
  }
