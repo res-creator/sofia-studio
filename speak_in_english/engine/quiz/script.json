@@ -1,0 +1,51 @@
+{
+ "slug": "quiz_london_vs_ny",
+ "voices": {
+  "nar": {
+   "id": "EXAVITQu4vr4xnSDxMaL",
+   "model": "eleven_multilingual_v2"
+  },
+  "uk": {
+   "id": "pFZP5JQG7iQjIQuC4Bku",
+   "model": "eleven_v3"
+  },
+  "us": {
+   "id": "FGY2WhTYpPnrIDTdsKH5",
+   "model": "eleven_v3"
+  }
+ },
+ "intro": "Лондон против Нью-Йорка. Как они скажут по-английски?",
+ "outro": "Сколько у тебя правильных из шести? Пиши цифру в комментариях. Завтра будет сложнее.",
+ "questions": [
+  {
+   "ru": "Позвони мне",
+   "uk": "Give me a ring.",
+   "us": "Give me a call."
+  },
+  {
+   "ru": "Выбрось мусор",
+   "uk": "Take out the rubbish.",
+   "us": "Take out the trash."
+  },
+  {
+   "ru": "Ты меня бесишь",
+   "uk": "You're driving me mad.",
+   "us": "You're driving me crazy."
+  },
+  {
+   "ru": "Я без сил",
+   "uk": "I'm absolutely knackered.",
+   "us": "I'm totally beat."
+  },
+  {
+   "ru": "Мне нужно в туалет",
+   "uk": "I need the loo.",
+   "us": "I need the bathroom."
+  },
+  {
+   "ru": "Давай разберёмся позже",
+   "uk": "Let's sort it out later.",
+   "us": "Let's figure it out later."
+  }
+ ]
+}
