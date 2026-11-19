@@ -1,0 +1,15 @@
+{
+ "slug": "literal_ep1",
+ "voices": {"a": {"voice": "af_heart", "lang": "en-us", "speed": 0.9}, "b": {"voice": "bf_emma", "lang": "en-gb", "speed": 0.95}},
+ "intro": "Russian phrases. Word for word.",
+ "outro": "How many did you know? Tell me in the comments.",
+ "items": [
+  {"ru": "Не вешай мне лапшу на уши", "lit": "Don't hang noodles on my ears.", "real": "Stop pulling my leg."},
+  {"ru": "Ни пуха ни пера", "lit": "Neither fluff nor feather.", "real": "Break a leg."},
+  {"ru": "Кошки на душе скребут", "lit": "Cats are scratching at my soul.", "real": "I feel really down."},
+  {"ru": "Душа в пятки ушла", "lit": "My soul went into my heels.", "real": "My heart sank."},
+  {"ru": "Как с гуся вода", "lit": "Like water off a goose.", "real": "Like water off a duck's back."},
+  {"ru": "Семь пятниц на неделе", "lit": "Seven Fridays in a week.", "real": "He changes his mind every five minutes."},
+  {"ru": "Тянуть кота за хвост", "lit": "To pull the cat by the tail.", "real": "Stop dragging your feet."}
+ ]
+}
