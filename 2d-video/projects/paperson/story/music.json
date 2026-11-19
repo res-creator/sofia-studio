@@ -1,0 +1,50 @@
+[
+ {
+  "start": 0.0,
+  "end": 30.5,
+  "file": "music_your_breath.mp3",
+  "gain": -4,
+  "fadeIn": 1.5,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 29.5,
+  "end": 60.0,
+  "file": "music_forest_walk.mp3",
+  "gain": -4,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 59.0,
+  "end": 89.5,
+  "file": "music_your_breath.mp3",
+  "gain": -4,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 88.5,
+  "end": 119.0,
+  "file": "music_forest_walk.mp3",
+  "gain": -4,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 118.0,
+  "end": 148.5,
+  "file": "music_your_breath.mp3",
+  "gain": -4,
+  "fadeIn": 0.8,
+  "fadeOut": 1.2
+ },
+ {
+  "start": 147.5,
+  "end": 178.0,
+  "file": "music_forest_walk.mp3",
+  "gain": -4,
+  "fadeIn": 0.8,
+  "fadeOut": 2.5
+ }
+]
