@@ -66,7 +66,8 @@ function build(T) {
     S('firemap', { cutW: 'power', fireW: 'fire', spreadW: 'fifteen', title: 'VOSTOK, 12 APRIL 1982, ABOUT 4 A.M.' }),
   ]);
   beats('A003', [
-    S('stats', { head: 'BY MORNING', items: [], sfx: 'boom', over: [at(head('NO ELECTRICITY', null, 400, 84, Yc), 0.3), { ...head('NO HEATING', null, 520, 84, Yc), w: 'heating' }, { ...head('NO POWER TO MELT SNOW FOR WATER', null, 640, 64, Yc), w: 'melt' }, { ...chipC('1 DEAD · 20 ALIVE', null, 800, 52), w: 'One' }], source: 'Sources: AARI (2017), RT (2022), Nauka i Zhizn (2001)' }),
+    S('stats', { head: 'BY MORNING', items: [], sfx: 'boom', over: [at(head('NO ELECTRICITY', null, 400, 84, Yc), 0.3), { ...head('NO HEATING', null, 520, 84, Yc), w: 'heating' }, { ...head('NO POWER TO MELT SNOW FOR WATER', null, 640, 64, Yc), w: 'melt' }], source: 'Sources: AARI (2017), RT (2022), Nauka i Zhizn (2001)' }),
+    Wd('ia_1967_navy_night_lights_station', { cutW: 'One', in: 4, over: [low('1 DEAD · 20 ALIVE', 'Twenty'), note('A POLAR STATION AT NIGHT, 1960s · ' + IL)] }),
   ]);
   beats('A004', [St('px_blowing_snow_storm', { over: [head('NOBODY CAN COME', null, 200, 100), note(IL)] })]);
   beats('A005', [
@@ -76,7 +77,7 @@ function build(T) {
   ]);
   beats('A006', [
     F('ia_1967_navy_powerplant_mechanic', { over: [head('TECHNOLOGY?', null, 200, 120, Yc), note('A POLAR POWER STATION, 1960s · ' + IL)] }),
-    A('cm_vostok_glaciological_pit', { cutW: 'But', over: [low('1982: THEY LOST ALL OF IT', 'lost'), note('VOSTOK, JANUARY 1982 (27TH SOVIET EXPEDITION)')] }),
+    St('ia_1968_navy_two_men_walking_wind', { cutW: 'But', over: [low('1982: THEY LOST ALL OF IT', 'lost'), note('A STATION IN A BLIZZARD, 1960s · ' + IL)] }),
   ]);
   beats('A007', [
     F('ia_1968_navy_c130_jato_takeoff', { over: [head('RESCUE?', null, 200, 120, Yc), note('US NAVY LC-130, 1960s · ' + IL)] }),
@@ -86,7 +87,7 @@ function build(T) {
     A('cm_vostok_1960s_settlement', { cutW: 'First', over: [low('1 · WHY HERE', 'why'), note('VOSTOK, 1966')] }),
     Wd('ia_1961_navy_frosted_beard_face', { cutW: 'Then', over: [low('2 · BODY AND MACHINE', 'body'), note('ANTARCTICA, c.1960 · ' + IL)] }),
     S('firemap', { cutW: 'back', fireW: 'night', spreadW: 'fire', title: 'VOSTOK, 12 APRIL 1982', over: [{ ...chipC('3 · THE NIGHT OF THE FIRE', null, 1010, 40), w: 'fire' }] }),
-    A('cm_vostok_1970s_view', { cutW: 'end', kb: { z: [1.2, 1.04] }, over: [low('4 · THE LESSON', 'lesson'), note('VOSTOK, 1973')] }),
+    A('cm_vostok_2024_new_winter_complex', { cutW: 'end', kb: { z: [1.4, 1.3], x: [0.3, 0.32] }, over: [low('4 · THE LESSON', 'lesson'), note('VOSTOK, 2024')] }),
   ]);
   add(T.e('A008') + 0.15, S('title', { lines: ['VOSTOK:', 'THE COLDEST PLACE', 'EVER MEASURED'], hl: 1, img: 'cm_vostok_station_plateau', credit: credit('cm_vostok_station_plateau'), brand: true, sfx: 'riser' }), 'cut');
 
@@ -110,7 +111,7 @@ function build(T) {
     A('cm_kharkovchanka_tractor', { cutW: 'road', over: [low('NO ROAD · ONLY TRACKS IN THE SNOW', 'tracks'), note('KHARKOVCHANKA, THE MIRNY–VOSTOK TRACTOR (MIRNY)')] }),
   ]);
   beats('A012', [
-    S('ladder', { title: 'THE FIRST WINTERS', min: -100, max: 0, items: [{ v: -87.2, label: '1958', sub: 'THE FIRST WINTER', w: 'eighty-seven' }, { v: -88.3, label: '1960', sub: 'WORLD RECORD', w: 'eighty-eight', hl: true }], source: 'Source: AARI (2013)' }),
+    S('ladder', { title: 'THE FIRST WINTERS', min: -100, max: 0, items: [{ v: -87.2, label: '1958', sub: 'THE FIRST WINTER', w: 'eighty-seven', dy: -110 }, { v: -88.3, label: '1960', sub: 'WORLD RECORD', w: 'eighty-eight', hl: true, dy: 50 }], source: 'Source: AARI (2013)' }),
   ]);
   beats('A013', [
     St('ia_1961_navy_camp_blowing_snow', { over: [note('ANTARCTICA, c.1960 · ' + IL)] }),
@@ -126,16 +127,17 @@ function build(T) {
   chapter('A016', 2, 'What the cold does');
   beats('A016', [
     A('cm_vostok_station_plateau', { over: [note('VOSTOK, 2000')] }),
-    S('stats', { cutW: 'but', head: 'THIN AIR', items: [], over: [at(head('3,488 M ON THE MAP', null, 440, 80), 0.3), { ...head('~4,000 M FOR YOUR LUNGS', null, 570, 80, Yc), w: 'lungs' }, { ...chipC('NEARLY 40% LESS OXYGEN PER BREATH', null, 720, 48), w: 'forty' }], source: 'AARI air pressure (624 hPa); our standard-atmosphere calculation' }),
+    S('stats', { cutW: 'but', head: 'THIN AIR', items: [], over: [at(head('3,488 M ON THE MAP', null, 440, 80), 0.3), { ...head('~4,000 M FOR YOUR LUNGS', null, 570, 80, Yc), w: 'lungs' }, ], source: 'AARI air pressure (624 hPa); our standard-atmosphere calculation' }),
+    Wd('ia_1968_navy_men_pushing_wind', { cutW: 'There', over: [low('NEARLY 40% LESS OXYGEN PER BREATH', 'forty'), note('ANTARCTICA, 1960s · ' + IL)] }),
   ]);
   beats('A017', [
     Wd('ia_1961_navy_parka_faces_goggles', { over: [note('ANTARCTICA, c.1960 · ' + IL)] }),
-    S('stats', { cutW: 'A', head: 'SERGEY BUSHMANOV, STATION DOCTOR', items: [], sfx: 'boom', over: [at(head('5–10 KG', null, 500, 140, Yc), 0.4), at(head('(10–20 LB) IN THE FIRST MONTH', null, 640, 56), 0.8)], source: 'Russia Beyond / gw2ru interview' }),
+    S('stats', { cutW: 'five', head: 'SERGEY BUSHMANOV, STATION DOCTOR', items: [], sfx: 'boom', over: [at(head('5–10 KG', null, 500, 140, Yc), 0.4), at(head('(10–20 LB) IN THE FIRST MONTH', null, 640, 56), 0.8)], source: 'Russia Beyond / gw2ru interview' }),
   ]);
   beats('A018', [
     A('cm_concordia_frozen_face', { over: [low('−70°C: NO MORE THAN 10 MINUTES OUTSIDE', 'ten'), note('WINTER-OVER, CONCORDIA STATION · ' + IL)] }),
     A('cm_concordia_icicles_clothing', { cutW: 'A', over: [low('MASKS COMPULSORY', 'mask'), note('CONCORDIA STATION · ' + IL)] }),
-    A('cm_vostok_ice_core_team', { cutW: 'And', over: [low('≥ HALF OF EVERY CREW: VOSTOK VETERANS', 'half'), note('VOSTOK (SOVIET, FRENCH AND US SCIENTISTS)')] }),
+    F('ia_1967_navy_greeting_party_parkas', { cutW: 'And', over: [low('≥ HALF OF EVERY CREW: VOSTOK VETERANS', 'half'), note('A SOVIET STATION, 1967 · ' + IL)] }),
   ]);
   beats('A018B', [
     A('cm_vostok_2017_water_provisioning_3', { over: [note('VOSTOK, FEBRUARY 2017: THE SNOW QUARRY')] }),
@@ -165,7 +167,8 @@ function build(T) {
     S('stats', { cutW: 'It', head: 'WHEN THE FUEL DOES NOT ARRIVE', items: [], sfx: 'boom', over: [cnt('three', 3, { pre: '≥', label: 'WINTERS VOSTOK WAS CLOSED', y: 560, size: 220 })], source: 'Source: AARI (2013, 2017)' }),
   ]);
   beats('A024', [
-    S('supplyline', { title: 'THE WHOLE STATION LIVES ON ONE LINE', nodes: [{ id: 'pro', name: 'PROGRESS', x: 200, y: 540, src: true }, { id: 'tr', name: 'TRACTORS', x: 560, y: 540 }, { id: 'fu', name: 'FUEL STORE', x: 900, y: 540 }, { id: 'pw', name: 'POWER STATION', x: 1240, y: 540 }, { id: 'hl', name: 'HEAT · LIGHT · WATER', x: 1640, y: 540 }],
+    F('ia_1957_navy_fuel_tank', { over: [note('POLAR FUEL STORAGE, 1956 · ' + IL)] }),
+    S('supplyline', { cutW: 'turned', title: 'THE WHOLE STATION LIVES ON ONE LINE', nodes: [{ id: 'pro', name: 'PROGRESS', x: 200, y: 540, src: true }, { id: 'tr', name: 'TRACTORS', x: 560, y: 540 }, { id: 'fu', name: 'FUEL STORE', x: 900, y: 540 }, { id: 'pw', name: 'POWER STATION', x: 1240, y: 540 }, { id: 'hl', name: 'HEAT · LIGHT · WATER', x: 1640, y: 540 }],
       events: [{ at: T.at('A024', 'nineteen') - T.s('A024'), year: '12 APRIL 1982', label: 'THE POWER STATION BURNS', cut: 'pw' }, { at: T.at('A024', 'burned') - T.s('A024'), year: '', label: 'THE POWER STATION BURNS', cut: 'hl' }] }),
   ]);
 
@@ -183,37 +186,42 @@ function build(T) {
     A('cm_concordia_last_takeoff', { cutW: 'Then', over: [low('THE LAST PLANE LEAVES', 'last'), note('LAST TAKEOFF BEFORE WINTER, CONCORDIA · ' + IL)] }),
   ]);
   beats('A027', [
-    S('firemap', { fireW: 'smoke', spreadW: 'machine', title: 'VOSTOK, 12 APRIL 1982, ABOUT 4 A.M.', over: [{ ...chipC('SERGEI KUZNETSOV, POWER TECHNICIAN', null, 1010, 40), w: 'Kuznetsov' }] }),
+    F('ia_1961_navy_bunk_room', { over: [note('A STATION BUNK ROOM, c.1960 · ' + IL)] }),
+    S('firemap', { cutW: 'fire', fireW: 'fire', spreadW: 'machine', title: 'VOSTOK, 12 APRIL 1982, ABOUT 4 A.M.', over: [{ ...chipC('WOKEN BY SMOKE: SERGEI KUZNETSOV, POWER TECHNICIAN', null, 1010, 40), at: 0.3 }] }),
   ]);
   beats('A028', [
-    S('stats', { head: 'ALEXEI KARPENKO', items: [], sfx: 'boom', over: [at(head('HEAD OF THE POWER STATION', null, 470, 70), 0.3), { ...head('HE WENT IN TO SHUT DOWN THE DIESELS', null, 590, 56, Yc), w: 'shut' }], source: 'Sources: AARI (2017), Nauka i Zhizn (2001)' }),
+    F('ia_1967_navy_powerplant_panel', { in: 8, over: [note('A POLAR POWER STATION, 1960s · ' + IL)] }),
+    S('stats', { cutW: 'He', head: 'ALEXEI KARPENKO', items: [], sfx: 'boom', over: [at(head('HEAD OF THE POWER STATION', null, 470, 70), 0.3), { ...head('HE WENT IN TO SHUT DOWN THE DIESELS', null, 590, 56, Yc), w: 'shut' }], source: 'Sources: AARI (2017), Nauka i Zhizn (2001)' }),
   ]);
   beats('A029', [
     S('firemap', { fireAt: 0.01, spreadAt: 0.02, title: 'VOSTOK, 12 APRIL 1982', over: [{ ...chipC('THE ALUMINIUM BUILDING MELTED', null, 1010, 40), w: 'melted' }] }),
-    S('stats', { cutW: 'All', head: 'LOST', items: [], over: [at(head('ALL THE GENERATORS', null, 540, 100, Yc), 0.2)], source: 'Sources: AARI (2017), The Conversation' }),
+    St('ia_1968_navy_hut_blizzard', { cutW: 'All', over: [low('ALL THE GENERATORS: LOST', 'generators'), note('A STATION IN A BLIZZARD, 1960s · ' + IL)] }),
   ]);
   beats('A030', [
     S('firemap', { fireAt: 0.01, spreadAt: 0.02, windW: 'wind', saveW: 'missed', title: 'BUT ONE THING WENT THEIR WAY' }),
-    S('stats', { cutW: 'The', head: 'DR ARKADY MAKSIMOV, 1982', items: [], sfx: 'boom', over: [at(head('"WITHOUT FUEL, WE WOULD HAVE HAD', null, 480, 68, Yc), 0.4), at(head('NO CHANCE OF SURVIVING."', null, 580, 68, Yc), 0.7)], source: 'Maksimov, quoted by RT (2022)' }),
+    F('ia_1968_navy_fuel_drums', { cutW: 'dozens', over: [low('DOZENS OF BARRELS OF DIESEL', 'barrels'), note('FUEL DRUMS, 1960s · ' + IL)] }),
+    S('stats', { cutW: 'Arkady', head: 'DR ARKADY MAKSIMOV, 1982', items: [], sfx: 'boom', over: [at(head('"WITHOUT FUEL, WE WOULD HAVE HAD', null, 480, 68, Yc), 0.4), at(head('NO CHANCE OF SURVIVING."', null, 580, 68, Yc), 0.7)], source: 'Maksimov, quoted by RT (2022)' }),
   ]);
   beats('A031', [St('px_person_walking_frozen_fog', { dark: 0.45, over: [note(IL)] })]);
   beats('A032', [
-    F('ia_1961_navy_ham_radio_operator', { over: [low('BORIS MOISEEV, DRILLER', 'Moiseev'), note('A POLAR RADIO ROOM, c.1960 · ' + IL)] }),
+    S('stats', { head: 'BORIS MOISEEV, DRILLER', items: [], over: [at(head('A GENERATOR FROM THE DRILLING RIG', null, 520, 70, Yc), 0.3)], source: 'Sources: AARI (2017), RT (2022)' }),
+    F('ia_1961_navy_ham_radio_operator', { cutW: 'radio', over: [low('JUST ENOUGH FOR THE RADIO', 'radio'), note('A POLAR RADIO ROOM, c.1960 · ' + IL)] }),
     S('stats', { cutW: 'On', head: '13 APRIL 1982, EVENING', items: [], sfx: 'boom', over: [cnt('sixteen', 16, { pre: '~', suf: ' H', label: 'BEFORE ANYONE KNEW', y: 560, size: 200 })], source: 'Source: Nauka i Zhizn (2001)' }),
   ]);
   beats('A033', [
-    S('yearbar', { title: '1982 AT VOSTOK', bands: [{ from: 56, to: 316, label: 'NO PLANES, NO TRACTORS', color: '#E63946', row: 1, at: 0.2 }], marks: [{ day: 102, label: '12 APRIL: FIRE', at: 0.6, color: C('orange') }] }),
+    St('ia_1967_navy_hut_blowing_snow', { over: [low('EVACUATION: IMPOSSIBLE', 'impossible'), note('A STATION IN BLOWING SNOW, 1960s · ' + IL)] }),
     Q('So', 'THE DECISION', 'WE STAY.', 'WE FINISH THE WINTER.', null, 'Sources: AARI (2017), RT (2022)'),
   ]);
-  beats('A034', [S('stove', { flameAt: 0.8, hotAt: 99, coldAt: 99, title: 'APRIL 1982: HEAT FROM A GAS CYLINDER' })]);
-  beats('A035', [S('stove', { flameAt: 0.01, hotW: 'twenty-five', coldW: 'zero', title: 'APRIL 1982: HEAT FROM A GAS CYLINDER' })]);
+  beats('A034', [F('ia_1967_navy_galley_two_men', { over: [low('FIRST: AN OLD KEROSENE STOVE IN THE MESS', 'mess'), note('A STATION MESS, 1960s · ' + IL)] }), S('stove', { cutW: 'Then', flameAt: 0.5, hotAt: 99, coldAt: 99, title: 'APRIL 1982: HEAT FROM A GAS CYLINDER' })]);
+  beats('A035', [S('stove', { flameAt: 0.01, hotW: 'twenty-five', coldW: 'zero', title: 'APRIL 1982: HEAT FROM A GAS CYLINDER' }), A('cm_south_pole_tunnel_night', { cutW: 'They', over: [low('NIGHT FIRE WATCHES', 'turns'), note('A STATION AT NIGHT (SOUTH POLE, 1981) · ' + IL)] })]);
   beats('A036', [
     S('stove', { flameAt: 0.01, hotAt: 0.01, coldAt: 0.01, candleW: 'candles', title: 'LIGHT, WATER, BREAD' }),
     F('ia_1968_navy_galley_cooking', { cutW: 'The', over: [low('BREAD BAKED ON THE STOVE WALLS', 'bread'), note('A POLAR GALLEY, 1960s · ' + IL)] }),
   ]);
   beats('A037', [
-    F('ia_1961_navy_weather_shelter', { over: [low('VELLO PARK, METEOROLOGIST', 'Park'), note('READING A WEATHER SCREEN, c.1960 · ' + IL)] }),
-    F('ia_1961_navy_meteorologists_indoor', { cutW: 'even', over: [low('EVERY OBSERVATION, ALL WINTER', 'every'), note('WEATHER OFFICE, c.1960 · ' + IL)] }),
+    S('stats', { head: 'VELLO PARK, METEOROLOGIST', items: [], over: [at(head('THE FULL WEATHER PROGRAMME', null, 520, 76, Yc), 0.3)], source: 'Sources: AARI (2017), RT (2022)' }),
+    F('ia_1961_navy_weather_shelter', { cutW: 'every', over: [low('EVERY OBSERVATION, ALL WINTER', 'every'), note('READING A WEATHER SCREEN, c.1960 · ' + IL)] }),
+    F('ia_1961_navy_meteorologists_indoor', { cutW: 'cancelled', over: [note('WEATHER OFFICE, c.1960 · ' + IL)] }),
   ]);
   beats('A038', [S('ladder', { title: 'WINTER 1982', min: -100, max: 0, items: [{ v: -85, label: 'THE LOWEST THAT WINTER', w: 'minus', hl: true }], source: 'Source: AARI (2013)' })]);
   beats('A039', [A('cm_station_y_diesel_generator', { over: [low('AN OLD GENERATOR, DUG OUT AND REVIVED', 'revived'), note('A 1950s POLAR DIESEL GENERATOR · ' + IL)] })]);
@@ -221,10 +229,11 @@ function build(T) {
     F('ia_1961_navy_lc130_landing_headon', { over: [low('EARLY NOVEMBER: THE FIRST PLANE', 'November'), note('SKI PLANE · NOT THE ACTUAL Il-14')] }),
     F('ia_1961_navy_tractor_pulls_sledge', { cutW: 'About', over: [low('A TRACTOR TRAIN WITH A NEW POWER STATION', 'tractor'), note('TRACTOR TRAIN, c.1960 · ' + IL)] }),
   ]);
-  beats('A041', [S('stats', { head: 'FROM THE FIRE TO THE TRACTOR TRAIN', items: [], sfx: 'boom', over: [cnt('two', 227, { from: 0, dur: 1.6, label: 'DAYS', y: 560, size: 230 })], source: 'Sources: Nauka i Zhizn (2001); Astakhov biography' })]);
+  beats('A041', [S('stats', { head: 'FROM THE FIRE TO THE TRACTOR TRAIN', items: [], sfx: 'boom', over: [{ ...cnt(undefined, 227, { from: 0, dur: 1.6, label: 'DAYS', y: 560, size: 230 }), at: 0.3 }], source: 'Sources: Nauka i Zhizn (2001); Astakhov biography' })]);
   beats('A042', [
-    A('cm_vostok_1960s_settlement', { kb: { z: [1.2, 1.05] }, over: [low('EVERY MAN: A STATE AWARD', 'award'), note('VOSTOK, 1966')] }),
-    S('stats', { cutW: 'Astakhov', head: 'PYOTR ASTAKHOV', items: [], over: [at(head('NOMINATED: HERO OF THE SOVIET UNION', null, 480, 60), 0.3), { ...head('BLOCKED', null, 620, 110, '#E63946'), w: 'blocked' }], source: 'Source: Astakhov biography (Divnogorsk, 2015)' }),
+    F('ia_1967_navy_soviet_us_toast', { over: [low('EVERY MAN: A STATE AWARD', 'award'), note('A SOVIET STATION, 1967 · ' + IL)] }),
+    S('stats', { cutW: 'Astakhov', head: 'PYOTR ASTAKHOV', items: [], over: [at(head('NOMINATED: HERO OF THE SOVIET UNION', null, 520, 60), 0.3)], source: 'Source: Astakhov biography (Divnogorsk, 2015)' }),
+    A('cm_vostok_1970s_exterior', { cutW: 'powerful', kb: { z: [1.25, 1.1] }, over: [low('BLOCKED, HIS BIOGRAPHY SAYS', 'blocked'), note('VOSTOK, 1973')] }),
   ]);
 
   // ===== CH4 =====
@@ -235,7 +244,7 @@ function build(T) {
     F('ia_1961_navy_weather_balloon_launch', { cutW: 'every', over: [note('WEATHER BALLOON LAUNCH, c.1960 · ' + IL)] }),
   ]);
   beats('A046', [
-    F('ia_1961_navy_weather_shelter', { in: 5, over: [low('21 JULY 1983 · 05:45 MOSCOW TIME', 'July'), note('A WEATHER SCREEN, c.1960 · ' + IL)] }),
+    A('cm_concordia_aurora', { over: [low('21 JULY 1983 · 05:45 MOSCOW TIME', 'July'), note('POLAR NIGHT ON THE PLATEAU (CONCORDIA) · ' + IL)] }),
     S('ladder', { cutW: 'minus', title: 'THE WORLD RECORD', min: -100, max: 0, items: [{ v: -89.2, label: 'VOSTOK, 21 JULY 1983', sub: '−128.6°F · READ BY KARPYUK AND LAZAREV', at: 0.4, hl: true }], source: 'Sources: WMO; AARI (2013)' }),
   ]);
   beats('A047', [S('ladder', { title: 'HOW COLD IS THAT?', min: -100, max: 0, items: [{ v: -18, label: 'YOUR FREEZER', w: 'freezer' }, { v: -67.7, label: 'OYMYAKON, SIBERIA (1933)', sub: 'COLDEST TOWNS PEOPLE LIVE IN', w: 'Oymyakon' }, { v: -89.2, label: 'VOSTOK (1983)', at: 0.3, hl: true }], source: 'Sources: WMO' })]);
@@ -248,7 +257,8 @@ function build(T) {
     S('ladder', { cutW: 'But', title: 'SNOW VS AIR', min: -100, max: -80, items: [{ v: -98, label: 'SNOW SURFACE (SATELLITE)', dash: true, at: 0.2, color: C('iceL') }, { v: -89.2, label: 'AIR: STILL THE RECORD', w: 'air', hl: true }], source: 'Sources: Scambos et al. 2018; WMO' }),
   ]);
   beats('A050', [
-    S('stats', { head: 'A NORMAL YEAR AT VOSTOK', items: [], over: [{ ...head('ABOUT −55°C', null, 520, 150, Yc), w: 'fifty-five' }, { ...chipC('≈ THE AVERAGE ON MARS (BY SOME ESTIMATES)', null, 760, 46), w: 'Mars' }], source: 'Sources: AARI; NASA / ESA Mars fact sheets' }),
+    A('cm_dome_c_snow_surface', { over: [note('THE EAST ANTARCTIC PLATEAU (DOME C) · ' + IL)] }),
+    S('stats', { cutW: 'By', head: 'A NORMAL YEAR AT VOSTOK', items: [], over: [{ ...head('ABOUT −55°C', null, 520, 150, Yc), w: 'fifty-five' }, { ...chipC('≈ THE AVERAGE ON MARS (BY SOME ESTIMATES)', null, 760, 46), w: 'Mars' }], source: 'Sources: AARI; NASA / ESA Mars fact sheets' }),
   ]);
   beats('A051', [F('gov_nasa_subglacial_lakes_crosssection', { over: [note('NASA ANIMATION')] })]);
 
@@ -263,30 +273,33 @@ function build(T) {
     F('ia_1961_navy_snow_core_sample', { over: [note('PULLING A CORE, c.1960 · ' + IL)] }),
     A('cm_vostok_ice_core_team', { cutW: 'Russia', kb: { z: [1.2, 1.05] }, over: [low('RUSSIA · FRANCE · USA', 'France'), note('VOSTOK ICE CORES')] }),
     A('cm_vostok_ice_core_420ky_graph', { cutW: 'The', over: [low('420,000 YEARS OF AIR', 'four'), note('CHART: THE VOSTOK ICE CORE (PETIT ET AL. 1999)')] }),
-    A('cm_vostok_co2_400kyr_chart', { cutW: 'carbon', over: [low('CO₂ AND TEMPERATURE: FOUR ICE AGES', 'ice')] }),
+    A('cm_vostok_ice_core_petit_chart', { cutW: 'carbon', over: [low('CO₂ AND TEMPERATURE: FOUR ICE AGES', 'ice'), note('CHART: VOSTOK ICE CORE, 420,000 YEARS')] }),
   ]);
   beats('A055', [
     A('cm_lake_vostok_system_diagram', { over: [low('5 FEB 2012: THE DRILL REACHES THE WATER', 'twelve'), note('DIAGRAM: THE LAKE VOSTOK SYSTEM')] }),
-    S('stats', { cutW: 'A', head: 'VLADIMIR KOROLYOV, GENETICIST, 2013', items: [], sfx: 'boom', over: [at(head('"ALL OF THEM WERE', null, 480, 90, Yc), 0.3), at(head('CONTAMINANTS."', null, 600, 90, Yc), 0.6)], source: 'Interfax, 11 March 2013' }),
+    F('gov_nasa_lake_vostok_radar_zoom', { cutW: 'Did', over: [low('LIFE?', 'life'), note('NASA / RADARSAT VISUALIZATION')] }),
+    S('stats', { cutW: 'put', head: 'VLADIMIR KOROLYOV, GENETICIST, 2013', items: [], sfx: 'boom', over: [at(head('"ALL OF THEM WERE', null, 480, 90, Yc), 0.3), at(head('CONTAMINANTS."', null, 600, 90, Yc), 0.6)], source: 'Interfax, 11 March 2013' }),
     S('stats', { cutW: 'So', head: 'LIFE IN LAKE VOSTOK', items: [], over: [at(head('NOT CONFIRMED', null, 560, 120, C('iceL')), 0.2)], source: 'Sources: AARI (2017); PNPI' }),
   ]);
 
   // ===== CH6 =====
   chapter('A057', 6, 'The lesson of 1982');
-  beats('A057', [A('cm_vostok_crew_immortal_regiment', { kb: { z: [1.2, 1.05] }, over: [note('VOSTOK WINTER CREW, 2022')] })]);
+  beats('A057', [A('cm_concordia_view', { over: [note('A PLATEAU STATION IN TWILIGHT (CONCORDIA) · ' + IL)] })]);
   beats('A058', [
     S('stats', { head: 'NOT BUILDINGS ALONE', items: [], over: [at(head('1982: THE POWER STATION BURNED', null, 470, 70), 0.3), { ...head('THEY SURVIVED', null, 590, 90, Yc), w: 'survived' }] }),
     S('stats', { cutW: 'And', head: 'NOT RESCUE', items: [], over: [at(head('THERE WAS NONE', null, 540, 110, '#E63946'), 0.5)] }),
   ]);
   const N3 = [{ id: 'fu', name: 'FUEL', x: 400, y: 560, src: true }, { id: 'cr', name: 'A VETERAN CREW', x: 960, y: 560 }, { id: 'sp', name: 'A SPARE FOR EVERYTHING', x: 1520, y: 560 }];
-  beats('A059', [S('supplyline', { title: 'VOSTOK SURVIVES ON THREE THINGS', nodes: N3, events: [] })]);
+  beats('A059', [A('cm_south_pole_traverse_tractor', { cutW: 'Fuel', over: [low('1 · FUEL, 1,400 KM BY TRACTOR', 'Fuel'), note('A TRAVERSE TRACTOR (US) · ' + IL)] }), A('cm_vostok_scientist_tractor', { cutW: 'crew', over: [low('2 · A VETERAN CREW', 'crew'), note('VOSTOK, 1960s')] }), S('supplyline', { cutW: 'spare', title: 'VOSTOK SURVIVES ON THREE THINGS', nodes: N3, events: [] })]);
   beats('A060', [
     S('supplyline', { title: '1982', nodes: N3, events: [{ at: T.at('A060', 'spare') - T.s('A060'), year: '1982', label: 'NO SPARE: LIGHT, HEAT AND WATER IN ONE BUILDING', cut: 'sp' }] }),
-    A('cm_station_y_diesel_generator', { cutW: 'The', kb: { z: [1.2, 1.05] }, over: [low('THE ONLY SPARES: DUG OUT OF THE SNOW', 'dug'), note('A 1950s POLAR GENERATOR · ' + IL)] }),
+    St('ia_1961_navy_station_buried_drift', { cutW: 'Light', over: [low('LIGHT, HEAT AND WATER: ONE BUILDING', 'one'), note('A STATION IN DRIFTING SNOW, c.1960 · ' + IL)] }),
+    A('cm_wais_fuel_bladders_digging', { cutW: 'only', over: [low('THE ONLY SPARES: DUG OUT OF THE SNOW', 'dug'), note('DIGGING OUT IN ANTARCTICA (WAIS, 2012) · ' + IL)] }),
   ]);
   beats('A061', [
-    A('cm_vostok_2024_new_winter_complex', { over: [low('JANUARY 2024: THE NEW WINTER COMPLEX', 'January'), note('VOSTOK, 2024')] }),
-    S('stats', { cutW: 'five', head: 'THE NEW VOSTOK', items: [], over: [at(head('5 MODULES · 140 M', null, 440, 90, Yc), 0.3), { ...chipC('LONGER THAN A FOOTBALL FIELD', null, 580, 46), w: 'football' }, { ...head('36 LEGS · SNOW BLOWS UNDER', null, 720, 70), w: 'thirty-six' }], source: 'Source: AARI' }),
+    A('cm_vostok_2024_new_winter_complex', { kb: { z: [1.35, 1.2], x: [0.28, 0.35] }, over: [low('JANUARY 2024: THE NEW WINTER COMPLEX', 'January'), note('VOSTOK, 2024')] }),
+    S('stats', { cutW: 'five', head: 'THE NEW VOSTOK', items: [], over: [at(head('5 MODULES · 140 M', null, 440, 90, Yc), 0.3), { ...chipC('LONGER THAN A FOOTBALL FIELD', null, 580, 46), w: 'football' }], source: 'Source: AARI' }),
+    A('cm_south_pole_station_2013', { cutW: 'standing', over: [low('36 LEGS · SNOW BLOWS UNDER', 'thirty-six'), note('A STATION ON STILTS (SOUTH POLE) · ' + IL)] }),
   ]);
   beats('A062', [
     S('stats', { head: 'BUILT ON THE LESSON', items: [], over: [at(head('80 CM WALLS', null, 400, 80), 0.3), { ...head('4 MAIN GENERATORS', null, 520, 80), w: 'four' }, { ...head('+2 BACKUPS IN A SEPARATE MODULE', null, 660, 70, Yc), w: 'backup' }], source: 'Sources: AARI; Meduza (2020)' }),
@@ -298,7 +311,7 @@ function build(T) {
       pins: [{ lon: 30.3, lat: 59.9, label: 'ST PETERSBURG', at: 0.3, small: true, size: 40 }, { lon: 8, lat: -12, label: 'PROPELLER BROKEN OFF ANGOLA', w: 'propeller', small: true, size: 40, color: C('red') }] }),
     F('ia_1961_navy_tractor_crate_sledge', { cutW: 'The', over: [low('THE MODULES CROSSED THE ICE BY TRACTOR', 'tractor'), note('TRACTOR WITH CARGO, c.1960 · ' + IL)] }),
   ]);
-  beats('A064', [F('ia_1969_navy_lc130_takeoff_long', { in: 8, over: [note('LAST FLIGHT OUT, 1969 · ' + IL)] })]);
+  beats('A064', [F('ia_1961_navy_r4d_takeoff_snowcloud', { over: [note('SKI PLANE TAKEOFF, c.1960 · ' + IL)] })]);
 
   // ===== ENDING =====
   beats('A065A', [A('cm_vostok_station_core', { kb: { z: [1.25, 1.05] }, over: [head('ONE WINTER AT VOSTOK?', null, 200, 90)] })]);
@@ -306,7 +319,7 @@ function build(T) {
     A('cm_mirny_soviet_cemetery', { over: [low('ALEXEI KARPENKO, BURIED ON BUROMSKY ISLAND', 'Karpenko'), note('EXPEDITION CEMETERY, BUROMSKY ISLAND, NEAR MIRNY')] }),
     A('cm_concordia_dark', { cutW: 'every', over: [note('A STATION IN THE POLAR NIGHT (CONCORDIA) · ' + IL)] }),
     S('stove', { cutW: 'fire', flameAt: 0.01, hotAt: 0.01, coldAt: 99, title: 'THE RIGHT KIND OF FIRE' }),
-    A('cm_vostok_2024_new_winter_complex', { cutW: 'spare', kb: { z: [1.0, 1.2] }, over: [low('WITH A SPARE', 'spare'), note('VOSTOK, 2024')] }),
+    A('cm_vostok_1970s_soviet_base', { cutW: 'spare', kb: { z: [1.0, 1.2] }, over: [low('WITH A SPARE', 'spare'), note('VOSTOK FROM ABOVE, 1974')] }),
   ]);
   add(T.tl.voiceEnd + 0.4, S('endscreen', {}), 'fade');
   return out;

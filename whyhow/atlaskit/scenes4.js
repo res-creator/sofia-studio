@@ -24,10 +24,10 @@ function ladder(ctx, t, d, p) {
   ctx.save(); ctx.fillStyle = g; ctx.shadowColor = hexA(C.ice, 0.9); ctx.shadowBlur = 24; rr(ctx, X - 14, Y(cur), 28, y1 + 10 - Y(cur), 14); ctx.fill(); ctx.restore();
   // rungs
   let side = 0;
-  for (const it of items) { const a = fade(t, it.at || 0, 0.35); if (a <= 0) continue; const y = Y(it.v), s = pop(t, it.at || 0);
+  for (const it of items) { const a = fade(t, it.at || 0, 0.35); if (a <= 0) continue; const y0r = Y(it.v), y = y0r + (it.dy || 0), s = pop(t, it.at || 0);
     const col = it.color || (it.v <= -85 ? C.ice : C.cream);
     ctx.save(); ctx.globalAlpha = a; ctx.strokeStyle = col; ctx.lineWidth = 4; if (it.dash) ctx.setLineDash([12, 10]);
-    ctx.beginPath(); ctx.moveTo(X + 34, y); ctx.lineTo(X + 34 + 90 * s, y); ctx.stroke(); ctx.restore();
+    ctx.beginPath(); ctx.moveTo(X + 34, y0r); ctx.lineTo(X + 70, y0r); ctx.lineTo(X + 34 + 90 * s, y); ctx.stroke(); ctx.restore();
     const big = it.v.toFixed(it.v % 1 ? 1 : 0).replace('-', '−') + '°C';
     ctx.save(); ctx.globalAlpha = a; ctx.translate(X + 150, y); ctx.scale(0.9 + 0.1 * s, 0.9 + 0.1 * s);
     const w = text(ctx, big, 0, 30, { size: it.hl ? 110 : 80, font: F.head, color: it.hl ? C.yellow : col });
