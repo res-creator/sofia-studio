@@ -23,7 +23,7 @@ Photos and video (Wikimedia Commons):
 - Glaciological pit Vostok Station.jpg — А. Н. Рудой, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Glaciological_pit_Vostok_Station.jpg
 - 428-GX-K-102503 (24058682070).jpg — National Museum of the U.S. Navy, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:428-GX-K-102503_(24058682070).jpg
 - Last takeoff (16782609524).jpg — ESA_events, CC BY-SA 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Last_takeoff_(16782609524).jpg
-- Corp2219 - Flickr - NOAA Photo Library.jpg — NOAA Photo Library, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Corp2219_-_Flickr_-_NOAA_Photo_Library.jpg
+- Dark Concordia (18312328236).jpg — ESA_events, CC BY-SA 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Dark_Concordia_(18312328236).jpg
 - Station Y Generator (52318520793).jpg — David Stanley from Nanaimo, Canada, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Station_Y_Generator_(52318520793).jpg
 - 428-GX-K-102671 (23727431743).jpg — National Museum of the U.S. Navy, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:428-GX-K-102671_(23727431743).jpg
 - Aurore australe à Concordia base.JPG — Christophe L-D S, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Aurore_australe_%C3%A0_Concordia_base.JPG
@@ -41,7 +41,6 @@ Photos and video (Wikimedia Commons):
 - Antarctica (11235786905).jpg — Christopher Michel, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Antarctica_(11235786905).jpg
 - Antarctica South Pole Station.jpg — Eli Duke, CC BY-SA 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Antarctica_South_Pole_Station.jpg
 - Soviet Expedition Cemetery and Ivan Khmara's Stone.jpg — Tsy1980, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Soviet_Expedition_Cemetery_and_Ivan_Khmara%27s_Stone.jpg
-- Dark Concordia (18312328236).jpg — ESA_events, CC BY-SA 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Dark_Concordia_(18312328236).jpg
 
 NASA imagery (public domain; no endorsement implied):
 - Coldest Place on Earth (2013) — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/4126
@@ -82,7 +81,6 @@ US government film (public domain): US Navy Operation Deep Freeze films 1957-196
 - PORTRAIT OF ANTARCTICA (US Navy, 1961) — US Navy, Portrait of Antarctica (1961), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.24506
 - PORTRAIT OF ANTARCTICA (US Navy, 1961) — US Navy, Portrait of Antarctica (1961), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.24506
 - DESERT WITHOUT SAND (US Navy, Commander Task Force 43, 1967) — US Navy, Desert Without Sand (1967), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.25337
-- PORTRAIT OF ANTARCTICA (US Navy, 1961) — US Navy, Portrait of Antarctica (1961), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.24506
 - PORTRAIT OF ANTARCTICA (US Navy, 1961) — US Navy, Portrait of Antarctica (1961), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.24506
 - PORTRAIT OF ANTARCTICA (US Navy, 1961) — US Navy, Portrait of Antarctica (1961), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.24506
 - PORTRAIT OF ANTARCTICA (US Navy, 1961) — US Navy, Portrait of Antarctica (1961), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.24506

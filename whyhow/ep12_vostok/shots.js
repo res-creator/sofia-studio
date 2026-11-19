@@ -213,7 +213,7 @@ function build(T) {
     Q('So', 'THE DECISION', 'WE STAY.', 'WE FINISH THE WINTER.', null, 'Sources: AARI (2017), RT (2022)'),
   ]);
   beats('A034', [F('ia_1967_navy_galley_two_men', { over: [low('FIRST: AN OLD KEROSENE STOVE IN THE MESS', 'mess'), note('A STATION MESS, 1960s · ' + IL)] }), S('stove', { cutW: 'Then', flameAt: 0.5, hotAt: 99, coldAt: 99, title: 'APRIL 1982: HEAT FROM A GAS CYLINDER' })]);
-  beats('A035', [S('stove', { flameAt: 0.01, hotW: 'twenty-five', coldW: 'zero', title: 'APRIL 1982: HEAT FROM A GAS CYLINDER' }), A('cm_south_pole_tunnel_night', { cutW: 'They', over: [low('NIGHT FIRE WATCHES', 'turns'), note('A STATION AT NIGHT (SOUTH POLE, 1981) · ' + IL)] })]);
+  beats('A035', [S('stove', { flameAt: 0.01, hotW: 'twenty-five', coldW: 'zero', title: 'APRIL 1982: HEAT FROM A GAS CYLINDER' }), A('cm_concordia_dark', { cutW: 'They', kb: { z: [1.25, 1.1] }, over: [low('NIGHT FIRE WATCHES', 'turns'), note('A STATION IN THE POLAR NIGHT (CONCORDIA) · ' + IL)] })]);
   beats('A036', [
     S('stove', { flameAt: 0.01, hotAt: 0.01, coldAt: 0.01, candleW: 'candles', title: 'LIGHT, WATER, BREAD' }),
     F('ia_1968_navy_galley_cooking', { cutW: 'The', over: [low('BREAD BAKED ON THE STOVE WALLS', 'bread'), note('A POLAR GALLEY, 1960s · ' + IL)] }),
@@ -297,7 +297,7 @@ function build(T) {
     A('cm_wais_fuel_bladders_digging', { cutW: 'only', over: [low('THE ONLY SPARES: DUG OUT OF THE SNOW', 'dug'), note('DIGGING OUT IN ANTARCTICA (WAIS, 2012) · ' + IL)] }),
   ]);
   beats('A061', [
-    A('cm_vostok_2024_new_winter_complex', { kb: { z: [1.35, 1.2], x: [0.28, 0.35] }, over: [low('JANUARY 2024: THE NEW WINTER COMPLEX', 'January'), note('VOSTOK, 2024')] }),
+    A('cm_vostok_2024_new_winter_complex', { kb: { z: [1.55, 1.4], x: [0.2, 0.24] }, over: [low('JANUARY 2024: THE NEW WINTER COMPLEX', 'January'), note('VOSTOK, 2024')] }),
     S('stats', { cutW: 'five', head: 'THE NEW VOSTOK', items: [], over: [at(head('5 MODULES · 140 M', null, 440, 90, Yc), 0.3), { ...chipC('LONGER THAN A FOOTBALL FIELD', null, 580, 46), w: 'football' }], source: 'Source: AARI' }),
     A('cm_south_pole_station_2013', { cutW: 'standing', over: [low('36 LEGS · SNOW BLOWS UNDER', 'thirty-six'), note('A STATION ON STILTS (SOUTH POLE) · ' + IL)] }),
   ]);
@@ -311,7 +311,7 @@ function build(T) {
       pins: [{ lon: 30.3, lat: 59.9, label: 'ST PETERSBURG', at: 0.3, small: true, size: 40 }, { lon: 8, lat: -12, label: 'PROPELLER BROKEN OFF ANGOLA', w: 'propeller', small: true, size: 40, color: C('red') }] }),
     F('ia_1961_navy_tractor_crate_sledge', { cutW: 'The', over: [low('THE MODULES CROSSED THE ICE BY TRACTOR', 'tractor'), note('TRACTOR WITH CARGO, c.1960 · ' + IL)] }),
   ]);
-  beats('A064', [F('ia_1961_navy_r4d_takeoff_snowcloud', { over: [note('SKI PLANE TAKEOFF, c.1960 · ' + IL)] })]);
+  beats('A064', [F('ia_1968_navy_c130_jato_takeoff', { over: [note('SKI PLANE TAKEOFF, 1960s · ' + IL)] })]);
 
   // ===== ENDING =====
   beats('A065A', [A('cm_vostok_station_core', { kb: { z: [1.25, 1.05] }, over: [head('ONE WINTER AT VOSTOK?', null, 200, 90)] })]);
