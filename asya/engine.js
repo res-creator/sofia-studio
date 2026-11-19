@@ -346,6 +346,18 @@ const SCREENS = {
 let st_bg = C.screen;
 
 // ---------------- captions ----------------
+// Bublik "talks": white speech bubble with a tail (Ася = yellow thought captions)
+function bubble(lines) {
+  g.font = '56px ' + FONT; const lh = 70, w = Math.max(...lines.map(l => g.measureText(l).width)) + 110, h = lines.length * lh + 60;
+  const x = (W - w) / 2, y = 250 - h / 2 + 20;
+  g.save(); g.shadowColor = 'rgba(10,20,70,0.35)'; g.shadowBlur = 18;
+  g.beginPath(); g.roundRect(x, y, w, h, 46); g.moveTo(x + w * 0.66, y + h - 2); g.lineTo(x + w * 0.74, y + h + 52); g.lineTo(x + w * 0.80, y + h - 2); g.closePath();
+  g.fillStyle = '#fff'; g.fill(); g.restore();
+  g.fillStyle = C.ink; g.textAlign = 'center'; g.textBaseline = 'middle';
+  lines.forEach((l, i) => g.fillText(l, W / 2, y + 30 + lh / 2 + i * lh));
+}
+const HANDLE = '@asya_i_bublik'; // series watermark (change here)
+function watermark() { g.font = '38px ' + FONT; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = 'rgba(255,255,255,0.75)'; g.fillText(HANDLE, W / 2, 120); }
 function caption(lines) {
   g.font = '66px ' + FONT; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = C.yellow; g.strokeStyle = C.yellow; g.lineWidth = 5; g.lineJoin = 'round';
   g.shadowColor = 'rgba(10,20,70,0.55)'; g.shadowBlur = 14;
@@ -367,7 +379,7 @@ function render(ep, out, stillTimes) {
     st_bg = st.bg || C.screen;
     (shot.kind === 'phone' ? phone : wide)(st);
     g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(T.grain, 0, 0);
-    const cap = typeof shot.cap === 'function' ? shot.cap(lt) : shot.cap; if (cap && cap.length) caption(cap);
+    watermark(); const cap = typeof shot.cap === 'function' ? shot.cap(lt) : shot.cap; if (cap && cap.cat) bubble(cap.cat); else if (cap && cap.length) caption(cap);
   }
   if (stillTimes) { const outs = []; for (const t of stillTimes) { frame(t); const f = out.replace(/\.mp4$/, `_${t}.png`); fs.writeFileSync(f, cv.toBuffer('image/png')); outs.push(f); } return Promise.resolve(outs); }
   const ff = spawn('ffmpeg', ['-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', `${W}x${H}`, '-r', FPS, '-i', '-',
@@ -395,5 +407,6 @@ function mixAudio(ep, out, total) {
   const r = require('child_process').spawnSync('ffmpeg', args, {stdio: 'inherit'}); if (r.status) throw new Error('audio mix failed');
 }
 
-const FACE = {z: 1.55, cx: 560, cy: 720}; // reaction close-up camera
-module.exports = {render, SCREENS, FACE, C, clamp, ease, rub};
+const FACE = {z: 1.55, cx: 560, cy: 720};
+const CAT = {z: 2.3, cx: 770, cy: 1000}; // Bublik close-up // reaction close-up camera
+module.exports = {render, SCREENS, FACE, CAT, C, clamp, ease, rub};
