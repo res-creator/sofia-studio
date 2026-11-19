@@ -91,39 +91,55 @@ function shot(t) {
 }
 function drawWorld(c, t, cam) { c.save(); c.translate(540, 960); c.scale(cam.z, cam.z); c.translate(-cam.x, -cam.y); world(c, t, cam.tag); c.restore(); }
 
-// ---------------- text overlays (reference look: white text, dark outline, key letters yellow)
-function txt(c, s, x, y, size, col = '#FFFFFF', font = 'Nun9', sw = 14, maxW = 980) { UI.textFit(c, font, size, s, maxW); c.textAlign = 'center'; c.textBaseline = 'middle'; UI.strokeText(c, s, x, y, col, INK, sw); }
+// ---------------- text overlays (reference look: rounded heavy font, dark outline + shadow, words appear as they are said)
+const TR_RU = { i2: 'Да ладно. Это легко.', i4: 'Спроси что угодно.', o1: 'Видишь? Легко.', o3: 'Чуть-чуть.' };
+const SPLIT = [5, 6];                                                     // chorus: words in the first line
+const TRH = [['э брайт лайт ин флайт', 'гэйв э найт э фрайт ласт найт'], ['э снэйк кэн бэйк э кэйк,', 'мэйк ит, тэйк ит ту зэ лэйк']];
+function shade(c) { const g = c.createLinearGradient(0, 0, 0, 760); g.addColorStop(0, 'rgba(25,18,30,.55)'); g.addColorStop(0.6, 'rgba(25,18,30,.25)'); g.addColorStop(1, 'rgba(25,18,30,0)'); c.fillStyle = g; c.fillRect(0, 0, W, 760); }
+function strokeFill(c, s, x, y, col, sw) { c.lineJoin = 'round'; c.miterLimit = 2; c.save(); c.shadowColor = 'rgba(0,0,0,.45)'; c.shadowBlur = 18; c.shadowOffsetY = 6; c.strokeStyle = INK; c.lineWidth = sw; c.strokeText(s, x, y); c.restore(); c.fillStyle = col; c.fillText(s, x, y); }
+// lay out words once (so revealed words never jump), then draw the first n of them
+function layout(c, words, size, font, maxW) { c.font = `${size}px ${font}`; const sp = c.measureText(' ').width; const rows = [[]]; let w = 0;
+  words.forEach(o => { const ww = c.measureText(o.w).width; if (w && w + sp + ww > maxW) { rows.push([]); w = 0; } rows[rows.length - 1].push({ ...o, ww }); w += (w ? sp : 0) + ww; });
+  return rows.map(r => { const tot = r.reduce((a, o) => a + o.ww, 0) + sp * (r.length - 1); let x = 540 - tot / 2; return r.map(o => { const q = { ...o, x }; x += o.ww + sp; return q; }); }); }
+function drawWords(c, rows, size, font, y, lh, n, alpha = 1, sw = 15) { let k = 0; c.save(); c.globalAlpha = alpha; c.font = `${size}px ${font}`; c.textAlign = 'left'; c.textBaseline = 'middle';
+  rows.forEach((r, ri) => r.forEach(o => { if (k++ >= n) return; const yy = y + ri * lh;
+    if (o.fam) { const low = o.w.toLowerCase(), i = low.indexOf(o.fam.toLowerCase()); if (i >= 0) { strokeFill(c, o.w, o.x, yy, '#FFFFFF', sw); c.fillStyle = YEL; c.fillText(o.w.slice(i, i + o.fam.length), o.x + c.measureText(o.w.slice(0, i)).width, yy); return; } }
+    strokeFill(c, o.w, o.x, yy, o.col || '#FFFFFF', sw); })); c.restore(); return y + rows.length * lh; }
+function revealN(words, t0, d, t) { if (t < t0) return 0; const tot = words.reduce((a, w) => a + w.w.length + 1, 0); let acc = 0, n = 0; for (const w of words) { if (t >= t0 + d * acc / tot - 0.04) n++; acc += w.w.length + 1; } return n; }
 function famWord(c, word, fam, x, y, size, k = 1) {   // "BRIGHT" with IGHT yellow
-  c.save(); c.translate(x, y); c.scale(k, k); UI.textFit(c, 'Unb9', size, word, 960); c.textBaseline = 'middle'; c.textAlign = 'left';
+  c.save(); c.translate(x, y); c.scale(k, k); UI.textFit(c, 'Unb9', size, word, 980); c.textBaseline = 'middle'; c.textAlign = 'left';
   const i = word.indexOf(fam), a = i >= 0 ? word.slice(0, i) : word, b = i >= 0 ? fam : '', w = c.measureText(word).width; let cx = -w / 2;
-  c.lineJoin = 'round'; c.lineWidth = 22; c.strokeStyle = INK; c.strokeText(word, cx, 0);
-  c.fillStyle = '#FFFFFF'; c.fillText(a, cx, 0); cx += c.measureText(a).width; c.fillStyle = YEL; c.fillText(b, cx, 0); cx += c.measureText(b).width; c.fillStyle = '#FFFFFF'; c.fillText(word.slice(a.length + b.length), cx, 0);
+  strokeFill(c, word, cx, 0, '#FFFFFF', 26); c.fillStyle = '#FFFFFF'; c.fillText(a, cx, 0); cx += c.measureText(a).width; c.fillStyle = YEL; c.fillText(b, cx, 0); cx += c.measureText(b).width; c.fillStyle = '#FFFFFF'; c.fillText(word.slice(a.length + b.length), cx, 0);
   c.restore(); }
-function karaoke(c, l, t, fam, y) {   // words appear as they are sung; family letters yellow
-  const shown = l.words.filter(w => t >= w[1] - 0.06).map(w => w[0]); if (!shown.length) return;
-  c.font = '84px Nun9'; const lines = UI.wrap(c, l.words.map(w => w[0]).join(' '), 940); let idx = 0;
-  lines.forEach((ln, li) => { const ws = ln.split(' '); const full = c.measureText(ln).width; let x = 540 - full / 2; const yy = y + li * 100;
-    ws.forEach(w => { const on = idx < shown.length; idx++; const ww = c.measureText(w + ' ').width; if (on) { c.textAlign = 'left'; c.textBaseline = 'middle'; c.lineJoin = 'round'; c.lineWidth = 14; c.strokeStyle = INK; c.strokeText(w, x, yy);
-        const low = w.toLowerCase(), f = fam.toLowerCase(), i = low.indexOf(f); if (i >= 0) { c.fillStyle = '#FFFFFF'; c.fillText(w.slice(0, i), x, yy); const xa = x + c.measureText(w.slice(0, i)).width; c.fillStyle = YEL; c.fillText(w.slice(i, i + f.length), xa, yy); c.fillStyle = '#FFFFFF'; c.fillText(w.slice(i + f.length), xa + c.measureText(w.slice(i, i + f.length)).width, yy); }
-        else { c.fillStyle = '#FFFFFF'; c.fillText(w, x, yy); } } x += ww; }); });
-  return y + lines.length * 100; }
 function overlays(c, t) {
-  // spoken lines: subtitle at the top (as in the references)
-  const s = t < 0.3 ? TL.speech[0] : TL.speech.find(x => x.kind === 'talk' && t >= x.t - 0.05 && t < x.t + x.d + 0.35);
-  if (s && t < SG.card - 0.05) txt(c, s.text, 540, 330, 66);
-  if (t >= SG.off && t < SG.last_word + 0.4) {
+  const inSong = t >= SG.off && t < SG.last_word + 0.4;
+  // spoken lines (intro/outro): words appear as they are said; Russian translation under English lines
+  const s = t < 0.3 ? TL.speech[0] : TL.speech.find(x => x.kind === 'talk' && t >= x.t - 0.05 && t < x.t + x.d + 0.45);
+  if (s && t < SG.card - 0.05) { shade(c); const ws = s.text.split(' ').map(w => ({ w })); const rows = layout(c, ws, 80, 'Nun9', 920);
+    const n = t < 0.3 ? ws.length : revealN(ws, s.t, s.d * 0.85, t); const y2 = drawWords(c, rows, 80, 'Nun9', 300, 96, n);
+    if (TR_RU[s.id] && n >= ws.length) { c.save(); c.font = '50px Nun8'; c.textAlign = 'center'; c.textBaseline = 'middle'; strokeFill(c, TR_RU[s.id], 540, y2 + 6, '#FFE9A8', 10); c.restore(); } }
+  if (inSong) {
     const l = lineAt(t);
-    if (l) { const fam = SG.fam[l.r]; if (l.tag === 'echo') { const y2 = karaoke(c, l, t, fam, 340); }
-      else { const y2 = karaoke(c, l, t, fam, 300); txt(c, SG.tr[l.r], 540, y2 + 14, 46, '#FFFFFF', 'Nun8', 10); } return; }
+    if (l) { shade(c); const fam = SG.fam[l.r]; const ws = l.words.map(w => ({ w: w[0], fam }));
+      const n = l.words.filter(w => t >= w[1] - 0.06).length;
+      if (l.tag === 'echo') { drawWords(c, layout(c, ws, 92, 'Nun9', 940), 92, 'Nun9', 330, 104, n); return; }
+      const sp = SPLIT[l.r], fit = part => { c.font = '88px Nun9'; const w = c.measureText(part.map(o => o.w).join(' ')).width; return Math.min(88, Math.floor(88 * 990 / w)); };
+      const z1 = fit(ws.slice(0, sp)), z2 = fit(ws.slice(sp)), r1 = layout(c, ws.slice(0, sp), z1, 'Nun9', 5000), r2 = layout(c, ws.slice(sp), z2, 'Nun9', 5000);
+      drawWords(c, r1, z1, 'Nun9', 280, 100, n); c.save(); c.font = '44px Nun8'; c.textAlign = 'center'; c.textBaseline = 'middle'; if (n > 0) strokeFill(c, TRH[l.r][0], 540, 350, '#FFE9A8', 9); c.restore();
+      drawWords(c, r2, z2, 'Nun9', 450, 100, Math.max(0, n - sp)); c.save(); c.font = '44px Nun8'; c.textAlign = 'center'; c.textBaseline = 'middle'; if (n > sp) strokeFill(c, TRH[l.r][1], 540, 520, '#FFE9A8', 9); c.restore(); return; }
     const p = pairAt(t);
     if (p) { const fam = SG.fam[p.ri];
-      if (p.k === 5 && t > p.te + 0.75 && t < roundEnd(p.ri) - 0.15) { txt(c, 'Ладно… а как сказать:', 540, 300, 56); c.font = '64px Nun9'; UI.wrap(c, SG.ru[p.ri], 940).forEach((ln, i) => txt(c, ln, 540, 400 + i * 80, 64, YEL)); return; }
-      const qk = clamp(P(t, p.tr - 0.08, p.tr + 0.06)); if (qk > 0) { c.save(); c.globalAlpha = qk; const q = p.k === 0 ? `Как будет «${p.ru.toLowerCase()}»?` : p.ru + '?'; txt(c, q, 540, 330, 76, YEL); c.restore(); }
-      if (t >= p.te - 0.06) famWord(c, p.en, fam, 540, 1500, 200, eBack(P(t, p.te - 0.06, p.te + 0.18), 1.8)); }
+      if (p.k === 5 && t > p.te + 0.75 && t < roundEnd(p.ri) - 0.15) { shade(c); const a0 = p.te + 0.75, d = roundEnd(p.ri) - 0.3 - a0;
+        const h = layout(c, 'Ладно… а как сказать:'.split(' ').map(w => ({ w })), 60, 'Nun9', 920); drawWords(c, h, 60, 'Nun9', 270, 70, 99, 1, 12);
+        const ws = SG.ru[p.ri].split(' ').map(w => ({ w, col: YEL })); drawWords(c, layout(c, ws, 70, 'Nun9', 940), 70, 'Nun9', 370, 84, revealN(ws, a0 + 0.15, d * 0.8, t)); return; }
+      shade(c); const q = p.k === 0 ? [{ w: 'Как' }, { w: 'будет' }, { w: '«' + p.ru.toLowerCase() + '»?', col: YEL }] : [{ w: p.ru + '?', col: YEL }];
+      const qa = t >= p.te - 0.05 ? 0.45 : clamp(P(t, p.tr - 0.1, p.tr + 0.05));
+      drawWords(c, layout(c, q, 84, 'Nun9', 940), 84, 'Nun9', 320, 96, q.length, qa);
+      if (t >= p.te - 0.06) famWord(c, p.en, fam, 540, 1470, 230, eBack(P(t, p.te - 0.06, p.te + 0.18), 1.8)); }
   }
   if (t >= SG.card - 0.05) { const k = eBack(P(t, SG.card - 0.05, SG.card + 0.3), 1.6); c.save(); c.translate(540, 1460); c.scale(k, k);
-    c.fillStyle = 'rgba(43,35,51,.82)'; rr(c, -470, -170, 940, 340, 60); c.fill(); txt(c, 'ENGLISH IS', 0, -70, 96, '#FFFFFF', 'Unb9', 16, 860);
-    famWord(c, 'EASY', 'EASY', 0, 40, 110); txt(c, '(почти)', 0, 125, 54, '#FFFFFF', 'Nun9', 10); c.restore(); }
+    c.fillStyle = 'rgba(43,35,51,.85)'; rr(c, -470, -190, 940, 380, 60); c.fill(); c.font = '96px Unb9'; c.textAlign = 'center'; c.textBaseline = 'middle'; strokeFill(c, 'ENGLISH IS', 0, -80, '#FFFFFF', 16);
+    famWord(c, 'EASY', 'EASY', 0, 40, 120); c.font = '64px Nun9'; strokeFill(c, '(почти)', 0, 140, '#FFFFFF', 12); c.restore(); }
 }
 function renderFrame(c, t) {
   c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1;
