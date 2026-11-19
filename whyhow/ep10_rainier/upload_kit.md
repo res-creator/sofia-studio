@@ -1,6 +1,6 @@
 # EP10 upload kit — How It's Run
 
-**File:** `rainier_town_outrunning_volcano.mp4` (1920×1080, 30 fps, ~8:15, −14 LUFS).
+**File:** `rainier_town_outrunning_volcano.mp4` (1920×1080, 30 fps, ~8:18, −14 LUFS).
 **Mid-roll ads:** the video is over 8 minutes, so mid-rolls are allowed. Place them on chapter breaks: about 3:51 and 6:24.
 **Thumbnail:** made by the owner from the prompts below, 1280×720. Run A vs B in YouTube "Test & compare".
 **Subtitles:** `rainier_subtitles_en.srt` (English).
