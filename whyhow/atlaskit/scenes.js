@@ -535,6 +535,53 @@ function laharmap(ctx, t, d, p) {
   text(ctx, 'WORST-CASE LAHAR · HOW FAST THE MUD ARRIVES', W / 2 - 160, 62, { size: 48, font: F.head, align: 'center', color: C.cream });
   text(ctx, 'MAP · NOT TO SCALE · Source: USGS (2026)', 48, H - 30, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
 }
+// ---------- Aleutians: the supply line from outside; cut -> the island goes dark ----------
+function supplyline(ctx, t, d, p) {
+  navyBg(ctx, t, false);
+  text(ctx, p.title || 'THE LINE FROM OUTSIDE', W / 2, 90, { size: 52, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.1) });
+  // nodes from east (right) to west (left) along a gentle arc
+  const nodes = p.nodes || [
+    { id: 'anc', name: 'ANCHORAGE', x: 1760, y: 300, src: true },
+    { id: 'dut', name: 'DUTCH HARBOR', x: 1380, y: 520 },
+    { id: 'atk', name: 'ATKA', x: 1020, y: 640 },
+    { id: 'adk', name: 'ADAK', x: 820, y: 670 },
+    { id: 'ksk', name: 'KISKA', x: 520, y: 660 },
+    { id: 'att', name: 'ATTU', x: 200, y: 600 }];
+  const N = Object.fromEntries(nodes.map(n => [n.id, n]));
+  // sea arc of islands (decor)
+  ctx.save(); ctx.strokeStyle = hexA(C.iceL, 0.18); ctx.lineWidth = 60; ctx.lineCap = 'round'; ctx.beginPath();
+  nodes.slice(1).forEach((n, i) => i ? ctx.lineTo(n.x, n.y) : ctx.moveTo(n.x, n.y)); ctx.stroke(); ctx.restore();
+  const ev = p.events || [];
+  const cutAt = {}; const reAt = {};
+  for (const e of ev) { if (e.cut) cutAt[e.cut] = Math.min(cutAt[e.cut] ?? 1e9, e.at); if (e.rebuild) reAt[e.rebuild] = e.at; }
+  // supply links: from the source along the chain
+  const grow = clamp(seg(t, 0.4, 1.8));
+  for (let i = 1; i < nodes.length; i++) { const a = nodes[i - 1], b = nodes[i]; const gi = clamp(grow * (nodes.length - 1) - (i - 1)); if (gi <= 0) continue;
+    const ct = cutAt[b.id], rt = reAt[b.id]; const cut = ct != null && t >= ct && !(rt != null && t >= rt);
+    const bx = lerp(a.x, b.x, gi), by = lerp(a.y, b.y, gi);
+    ctx.save(); ctx.lineCap = 'round';
+    if (cut) { const k = clamp(seg(t, ct, ct + 0.6)); ctx.strokeStyle = hexA(C.red, 0.9 - 0.5 * k); ctx.setLineDash([10, 14]); ctx.lineWidth = 6; }
+    else { ctx.strokeStyle = C.yellow; ctx.lineWidth = 8; ctx.shadowColor = hexA(C.yellow, 0.8); ctx.shadowBlur = 16;
+      // flowing dots
+    }
+    ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(bx, by); ctx.stroke(); ctx.restore();
+    if (!cut && gi >= 1) { for (let k = 0; k < 3; k++) { const u = ((t * 0.5 + k / 3) % 1); ctx.fillStyle = C.cream; ctx.beginPath(); ctx.arc(lerp(a.x, b.x, u), lerp(a.y, b.y, u), 5, 0, 7); ctx.fill(); } }
+    if (cut) { const k = clamp(seg(t, ct, ct + 0.35)); const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2, r = 22 * E.back(k);
+      ctx.save(); ctx.strokeStyle = C.red; ctx.lineWidth = 8; ctx.beginPath(); ctx.moveTo(mx - r, my - r); ctx.lineTo(mx + r, my + r); ctx.moveTo(mx + r, my - r); ctx.lineTo(mx - r, my + r); ctx.stroke(); ctx.restore(); } }
+  // nodes
+  for (const n of nodes) { const ct = cutAt[n.id], rt = reAt[n.id]; const dark = ct != null && t >= ct + 0.4 && !(rt != null && t >= rt);
+    const lit = !dark; const a = fade(t, 0.3);
+    ctx.save(); ctx.globalAlpha = a;
+    if (lit) { const g = ctx.createRadialGradient(n.x, n.y, 4, n.x, n.y, 60); g.addColorStop(0, hexA(C.yellow, 0.55)); g.addColorStop(1, hexA(C.yellow, 0)); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(n.x, n.y, 60, 0, 7); ctx.fill(); }
+    ctx.fillStyle = lit ? (n.src ? C.cream : C.yellow) : '#3A4560'; ctx.beginPath(); ctx.arc(n.x, n.y, n.src ? 18 : 16, 0, 7); ctx.fill(); ctx.lineWidth = 4; ctx.strokeStyle = C.navy; ctx.stroke(); ctx.restore();
+    text(ctx, n.name, n.x, n.y + (n.src ? -40 : 58), { size: 34, font: F.head, align: 'center', color: lit ? C.cream : hexA(C.cream, 0.4), alpha: a }); }
+  // event captions (latest wins), bottom
+  let cur = null; for (const e of ev) if (t >= e.at) cur = e;
+  if (cur) { const k = clamp(seg(t, cur.at, cur.at + 0.3)); ctx.save(); ctx.globalAlpha = k;
+    chip(ctx, cur.year, 120, 930, { size: 56, bg: cur.rebuild ? C.yellow : C.red, color: cur.rebuild ? C.ink : C.cream });
+    text(ctx, cur.label, 120 + 40 + K.measure(ctx, cur.year, 56, F.head) + 40, 930, { size: 44, font: F.head, color: C.cream }); ctx.restore(); }
+  text(ctx, 'DIAGRAM · ' + (p.source || 'Sources: NPS, CWRIC, Alaska DOL, Denali Commission'), 48, H - 30, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
+}
 // ---------- Rainier: tree rings date the buried forest ----------
 function treerings(ctx, t, d, p) {
   navyBg(ctx, t);
@@ -549,4 +596,4 @@ function treerings(ctx, t, d, p) {
   text(ctx, 'LATE SUMMER', 1180, 590, { size: 44, font: F.head, color: C.cream, alpha: fade(t, 2.4) });
   text(ctx, 'DIAGRAM · Source: tree-ring study, Geology (2026)', 48, 60, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
 }
-module.exports = { laharmap, treerings, hertz, bowl, raintolake, riversplit, iwall, cathedral, clay, lakelevel, inch, slope, video, photo, overlays, title, chapter, stats, calendar, split, bars, thermo, ratio, myth, versus, endq, endscreen, sat, globe, pop, fade, fadeOut };
+module.exports = { supplyline, laharmap, treerings, hertz, bowl, raintolake, riversplit, iwall, cathedral, clay, lakelevel, inch, slope, video, photo, overlays, title, chapter, stats, calendar, split, bars, thermo, ratio, myth, versus, endq, endscreen, sat, globe, pop, fade, fadeOut };

@@ -1,0 +1,61 @@
+A001 0.852 replace: seventh nineteen forty two -> 7th 1942 | replace: attu -> atu
+A002 0.955 replace: forty -> 40
+A003 0.973 replace: adak -> aidek
+A004 1.000 
+A005 0.963 replace: adak -> adec
+A006 0.929 replace: nine thousand -> 9 000
+A007 0.965 replace: nineteen forty two -> 1942
+A008 1.000 
+A009 0.864 replace: adak -> adac | replace: twenty twenty one -> 2021
+A011 0.831 replace: attu -> atu | replace: fifteen hundred -> 1 500 | replace: five hundred and fifty -> 550
+A012 0.947 replace: adak -> adac | replace: adak -> adac
+A013 0.907 replace: twenty two -> 22 | replace: thirty -> 30 | replace: one percent -> 1 | replace: adak's -> adac's
+A014 0.941 replace: williwaw -> willy waugh
+A014B 0.833 replace: wind -> when | replace: seventeen forty five -> 1745
+A015 0.913 replace: nine thousand -> 9 000
+A016 1.000 
+A017 0.844 replace: fifteen -> 15 000 | replace: eighteen thousand -> 18 000
+A018 0.821 replace: seventeen forty five -> 1745 | replace: attu -> atu | replace: fifteen -> 15 | replace: attu -> atu
+A019 0.960 replace: eighty percent -> 80
+A020 0.947 replace: eighteen eleven -> 1811
+A020B 0.667 replace: eighteen thirty one -> 1831 | replace: a hundred and twenty -> 120
+A021 0.704 replace: eighteen sixty seven -> 1867 | replace: ten -> 10 | replace: two hundred and twenty -> 220 | replace: a hundred and seven -> 107
+A022 0.744 replace: nineteen forty two forty five unangan -> 1942 45 unangen | replace: attu -> atu
+A023 0.850 replace: nineteen forty two -> 1942 | replace: attu -> atu
+A024 0.957 replace: nineteen forty eight -> 1948
+A025 0.963 replace: golodoff -> galadoff
+A026 0.925 replace: olean golodoff -> olin galidov | replace: attuans -> atuans
+A027 0.882 replace: eight hundred and eighty one unangan -> 881 unangen
+A027B 0.873 replace: fratis -> freitas | replace: elders' -> elders | replace: seventy seven -> 77
+A028 0.944 replace: atka -> akka
+A029 0.957 replace: seventy four -> 74
+A030 1.000 
+A031 0.870 replace: attu biorka kashega -> atu bjorka kshaga
+A032 0.772 replace: attuans -> atuans | replace: golodoff -> golodov | replace: nineteen eighty eight -> 1988 | replace: twelve thousand dollars -> 12 000
+A034 1.000 
+A035 0.914 replace: nineteen forty three -> 1943 | replace: komandorski -> kamondorski
+A036 0.763 replace: fifteen thousand -> 15 000 | replace: attu -> atu | replace: twenty five hundred -> 2 500 | replace: twenty nine -> 29 | replace: five hundred and fifty -> 550 | replace: twelve hundred -> 1 200
+A036B 0.926 replace: twenty twenty four -> 2024
+A037 0.848 replace: thirty four thousand -> 34 000
+A038 1.000 
+A039 0.969 replace: read -> reed
+A040 0.938 replace: adak -> adac
+A041 0.794 replace: nineteen ninety -> 1990 | replace: four and a half thousand -> 4 500 | replace: six thousand -> 6 000
+A042 1.000 
+A043 0.818 replace: nineteen ninety seven -> 1997
+A044 0.585 replace: two thousand adak -> 2000 adac | replace: three hundred and sixteen -> 316 | replace: twenty twenty -> 2020 | insert:  -> 170 | replace: hundred and seventy a ninety six percent -> 96 | replace: three hundred thousand -> 300 000
+A045 0.941 replace: adak's -> adac
+A046 0.921 replace: three hundred -> 300 | replace: twenty nineteen -> 2019
+A047 0.922 replace: twenty twenty five adak's -> 2025 adac's | replace: seventeen -> 17
+A048 1.000 
+A049 0.882 replace: attu -> atu | replace: twenty ten -> 2010 | replace: twenty one -> 21
+A050 1.000 
+A051 0.882 replace: nine thousand -> 9 000
+A052 0.925 replace: seventeen forty five -> 1745 | replace: fur -> first
+A053 0.874 replace: attu -> atu | replace: nineteen forty three adak -> 1943 aidek | replace: nineteen nineties -> 1990s
+A054 0.959 replace: twenty six -> 26
+A055 0.812 replace: twenty twenty six -> 2026 | replace: a hundred and fifteen -> 115 | delete: dollars ->  | replace: adak's -> adac's
+A056 0.939 replace: twenty twenty six -> 2026
+A057 1.000 
+A058 0.937 replace: nineteen forty two -> 1942 | replace: three hundred -> 300
+A058A 0.970 replace: adak -> adac
