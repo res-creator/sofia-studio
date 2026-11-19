@@ -86,7 +86,7 @@ function build(T) {
     F('cm_adak_short_final_runway', { cutW: 'first', over: [low('1 · GETTING THERE', 'first')] }),
     sea('ia_attu_1943_fog_landing_craft_emerge', { cutW: 'back', over: [low('2 · 1942', 'nineteen')] }),
     F('cm_adak_abandoned_military_facilities', { cutW: 'visit', over: [low('3 · THE NAVY TOWN', 'Navy')] }),
-    storm('gov_tiglax_ship_backlit_storm_sky', { cutW: 'end', over: [low('4 · WHAT REALLY EMPTIES THEM', 'really')] }),
+    storm('gov_tiglax_ship_backlit_slow', { cutW: 'end', over: [low('4 · WHAT REALLY EMPTIES THEM', 'really')] }),
   ]);
   add(T.e('A007') + 0.15, S('title', { lines: ['WHY AMERICA\'S', 'ALEUTIAN ISLANDS', 'KEEP EMPTYING'], hl: 2, img: 'cm_attu_jarmin_pass_panorama', credit: credit('cm_attu_jarmin_pass_panorama'), brand: true, sfx: 'riser' }), 'cut');
 
@@ -324,8 +324,8 @@ function build(T) {
   beats('A058A', [F('cm_adak_city', { kb: { z: [1.05, 1.25] }, over: [head('WOULD YOU LIVE HERE FOR A YEAR?', null, 200, 80)] })]);
   beats('A058', [
     A('cm_attu_village_1937', { kb: { z: [1.0, 1.2] }, over: [note('ATTU, 1937')] }),
-    sea('gov_tiglax_aerial_twin_volcanoes_coast', { cutW: 'Today', in: 3 }),
-    storm('gov_tiglax_ship_backlit_storm_sky', { cutW: 'some', in: 2, over: [note('THE REFUGE SHIP TIGLAX (USFWS)')] }),
+    sea('gov_tiglax_snowy_volcano_bay', { cutW: 'Today' }),
+    storm('gov_tiglax_ship_backlit_slow', { cutW: 'refuge', over: [note('THE REFUGE SHIP TIGLAX (USFWS)')] }),
     sea('ia_attu_1943_snowy_coast_horizon', { cutW: 'About', in: 4, over: [low('~300 ATTUAN DESCENDANTS IN THE U.S.', 'three'), note('ATTU')] }),
   ]);
   add(T.tl.voiceEnd + 0.4, S('endscreen', {}), 'fade');
