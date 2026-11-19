@@ -7,7 +7,10 @@ def V(at, tr=None, mv=None, sfx=None, **p):
     d = dict(at=at, p=dict(k='v2', **p), tr=tr, mv=mv, sfx=sfx or []); S.append(d)
 BOY, FAT, BRO, CLK, WK, WK2, MAN, WOM = 'boy', 'father', 'brother', 'clerk', 'worker', 'worker2', 'man', 'woman'
 def fig(x, y, s, who, **o): return [x, y, s, who, o]
-M = lambda r=0.04, **k: dict(r=r, **k)
+def M(r=0.04, **k):
+    d = dict(r=0.0)   # камера неподвижна: без наезда и рывков (замечание владелицы 19.11)
+    if 'shake' in k: d['shake'] = k['shake']
+    return d
 
 # ============================================================ ХОЛОДНЫЙ СТАРТ
 V(0.0, bg='doorHouse', bo={'open': 0}, figs=[],
@@ -94,9 +97,9 @@ V(148.6, bg='bayNight', bo={'day': 1, 'boat': {'at': 148.6, 'dur': 4.8, 'x0': 19
 V(153.7, bg='color', bo={'col': '#1f2438'}, fx=[['count', 154.9, 0, 300000, 960, 420, {'size': 240, 'dur': 2.0, 'unit': 'китайцев', 'usize': 100, 'ucol': '#ffffff'}]], mv=M(0.03), sfx=[[154.9, 'counter', -14]])
 V(157.0, bg='color', bo={'col': '#2a2638'}, fx=[['iconrow', 10, 360, 560, 130, 1.5, {'hi': [0, 1, 2, 3, 4, 5, 6, 7, 8], 'at': 159.3, 'step': 0.12, 'col': '#e2483a'}], ['ptag', 'историки спорят', 960, 150, 157.4, {'size': 80}], ['ptxt', '9 из 10', 960, 880, 170, 160.0, {'col': '#ffd43b'}]], mv=M(0.035), sfx=[[159.3, 'pop', -14]])
 V(162.5, bg='black', fx=[['qm', 162.8, 960, 520, 3.0], ['ptag', 'точных подсчётов нет', 960, 880, 163.0, {'size': 84}]], vig=0, mv=M(0.04))
-V(164.3, bg='paper', bo={'col': '#f0e8d4'}, fx=[['sub', 165.8], ['ptag', 'подпись', 960, 130, 166.6, {'size': 70, 'bg': '#ffd43b'}]], mv=M(0.025))
-V(168.8, bg='deskRoom', figs=[fig(1400, 1010, 0.95, CLK, flip=True, exprs=[[168.8, 'neutral']], look=-1)], fx=[['plate', 170.1, 700, 400, '200 вопросов', '#f6f1e4', 96], ['qm', 170.6, 1000, 330, 1.4]], mv=M(0.04, kick=1, kx=-20), sfx=[[170.1, 'pop', -12]])
-V(171.7, 'dip', bg='years', bo={'a': 1906, 'b': 1925, 'at': 171.9}, figs=[fig(1500, 1030, 0.8, BOY, appear=176.0, popIn=1, exprs=[[176.0, 'smile']])], fx=[['ptag', 'Ли', 1500, 340, 177.0, {'size': 90, 'bg': '#ffd43b'}], ['count', 172.1, 0, 19, 960, 880, {'size': 130, 'pl': 1}]], mv=M(0.03))
+V(164.3, bg='paper', bo={'col': '#f0e8d4'}, fx=[['sub', 166.1], ['ptag', 'подпись', 960, 130, 167.9, {'size': 70, 'bg': '#ffd43b'}]], mv=M(0.025))
+V(169.4, bg='deskRoom', figs=[fig(1400, 1010, 0.95, CLK, flip=True, exprs=[[169.4, 'neutral']], look=-1)], fx=[['plate', 171.0, 700, 400, '200 вопросов', '#f6f1e4', 96], ['qm', 171.5, 1000, 330, 1.4]], mv=M(0.04), sfx=[[171.0, 'pop', -12]])
+V(172.7, 'dip', bg='years', bo={'a': 1906, 'b': 1925, 'at': 172.8}, figs=[fig(1500, 1030, 0.8, BOY, appear=177.4, popIn=1, exprs=[[177.4, 'smile']])], fx=[['ptag', 'Ли', 1500, 340, 178.0, {'size': 90, 'bg': '#ffd43b'}], ['count', 173.2, 0, 19, 960, 880, {'size': 130, 'pl': 1}]], mv=M(0.03))
 
 # ------------------------------------------------------------ сборка
 S.sort(key=lambda s: s['at']); shots = []; SFXL = []
@@ -104,7 +107,7 @@ for i, s in enumerate(S):
     en = S[i + 1]['at'] if i + 1 < len(S) else END
     d = dict(id=f'p{i + 1:03d}', start=round(s['at'], 3), end=round(en, 3), params=s['p'])
     if s['tr']: d['in'] = {'type': s['tr']} if s['tr'] in ('whip2', 'impact', 'drop', 'lightning') else {'type': s['tr'], 'dur': 0.35 if s['tr'] != 'dip' else 0.6}
-    d['mv'] = s['mv'] or dict(r=0.04)
+    d['mv'] = s['mv'] or dict(r=0.0)
     shots.append(d)
     for c in s['sfx']: SFXL.append(dict(t=round(c[0], 3), name=c[1], gain=c[2], **({'dur': c[3]} if len(c) > 3 else {})))
     if s['tr'] == 'whip2': SFXL.append(dict(t=round(s['at'], 3), name='swish', gain=-12))

@@ -7,7 +7,7 @@ P = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); ROOT = os.path.
 sys.path.insert(0, os.path.join(ROOT, '2d-video/audio'))
 import sfx as SFX
 from dsp import SR, write_wav
-M = os.path.join(ROOT, 'ru_geo/style_options'); B = os.path.join(P, 'build'); os.makedirs(B, exist_ok=True)
+M = os.path.join(ROOT, 'ru_geo/paperson/music'); B = os.path.join(P, 'build'); os.makedirs(B, exist_ok=True)
 OUT = sys.argv[1]; A = float(sys.argv[2]) if len(sys.argv) > 2 else 0.0
 story = json.load(open(os.path.join(P, 'story/shots.json'))); END = float(sys.argv[3]) if len(sys.argv) > 3 else story['duration']
 CUES = json.load(open(os.path.join(P, 'story/music.json'))); vo = os.path.join(P, 'input/voiceover.mp3')
