@@ -18,4 +18,4 @@ for s0 in range(0, N, seg):
     ch = chords[(s0 // seg) % 4]; w = sum(np.sin(2*np.pi*f*t) + 0.3*np.sin(4*np.pi*f*t) for f in ch) / len(ch)
     w = (w * env * (0.8 + 0.2*np.sin(2*np.pi*0.25*t))).astype(np.float32); e = min(s0+seg, N); pad[s0:e] += w[:e-s0]
 fade = np.minimum(1, np.linspace(0, 1, N) * 40) * np.minimum(1, (N - np.arange(N)) / (SR * 1.5)); out += pad * fade * 0.05; out = np.clip(out, -0.98, 0.98)
-subprocess.run(["ffmpeg","-y","-loglevel","error","-f","f32le","-ar",str(SR),"-ac","1","-i","-","-af","loudnorm=I=-14:TP=-1.5:LRA=9","-ar","48000",f"{wd}/audio.wav"], input=out.tobytes(), check=True); print("audio ok")
+subprocess.run(["ffmpeg","-y","-loglevel","error","-f","f32le","-ar",str(SR),"-ac","1","-i","-","-af","acompressor=threshold=0.05:ratio=4:attack=3:release=60:makeup=3,loudnorm=I=-14:TP=-1.5:LRA=7","-ar","48000",f"{wd}/audio.wav"], input=out.tobytes(), check=True); print("audio ok")

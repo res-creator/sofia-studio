@@ -1,17 +1,126 @@
 {
  "slug": "heard_ep1",
- "voice": {"voice": "af_nicole", "lang": "en-us", "fast": 1.15, "slow": 0.8},
+ "voice": {
+  "id": "cgSgspJ2msm6clMCkdW9",
+  "model": "eleven_v3"
+ },
  "hook_ru": "Ты знаешь все слова. Почему не понимаешь?",
  "items": [
-  {"heard_ru": "джиит ет?", "heard_en": "Jeet yet?", "fast": "Jeet yet?", "slow": "Did. You. Eat. Yet?", "written": "Did you eat yet?", "hl": "Did you", "note": "d + y звучит как «дж»"},
-  {"heard_ru": "уодья вонт?", "heard_en": "Whaddya want?", "fast": "Whaddya want?", "slow": "What. Do. You. Want?", "written": "What do you want?", "hl": "do you", "note": "do you склеивается в «дья»"},
-  {"heard_ru": "ай данно", "heard_en": "I dunno", "fast": "I dunno.", "slow": "I. Don't. Know.", "written": "I don't know", "hl": "don't know", "note": "три звука слились в «данно»"},
-  {"heard_ru": "гимми дэт", "heard_en": "Gimme that", "fast": "Gimme that.", "slow": "Give. Me. That.", "written": "Give me that", "hl": "Give me", "note": "give me превращается в «гимми»"},
-  {"heard_ru": "уонна гоу?", "heard_en": "Wanna go?", "fast": "Wanna go?", "slow": "Want. To. Go?", "written": "Want to go?", "hl": "Want to", "note": "want to превращается в «уонна»"},
-  {"heard_ru": "доунча ноу?", "heard_en": "Doncha know?", "fast": "Doncha know?", "slow": "Don't. You. Know?", "written": "Don't you know?", "hl": "Don't you", "note": "t + y звучит как «ч»"},
-  {"heard_ru": "кайнда тайрд", "heard_en": "Kinda tired", "fast": "Kinda tired.", "slow": "Kind. Of. Tired.", "written": "Kind of tired", "hl": "Kind of", "note": "of превращается в «а»"}
+  {
+   "heard_ru": "джиит ет?",
+   "heard_en": "Jeet yet?",
+   "fast": "Jeet yet?",
+   "slow": "Did. You. Eat. Yet?",
+   "written": "Did you eat yet?",
+   "hl": "Did you",
+   "note": "d + y звучит как «дж»"
+  },
+  {
+   "heard_ru": "уодья вонт?",
+   "heard_en": "Whaddya want?",
+   "fast": "Whaddya want?",
+   "slow": "What. Do. You. Want?",
+   "written": "What do you want?",
+   "hl": "do you",
+   "note": "do you склеивается в «дья»"
+  },
+  {
+   "heard_ru": "ай данно",
+   "heard_en": "I dunno",
+   "fast": "I dunno.",
+   "slow": "I. Don't. Know.",
+   "written": "I don't know",
+   "hl": "don't know",
+   "note": "три звука слились в «данно»"
+  },
+  {
+   "heard_ru": "гимми дэт",
+   "heard_en": "Gimme that",
+   "fast": "Gimme that.",
+   "slow": "Give. Me. That.",
+   "written": "Give me that",
+   "hl": "Give me",
+   "note": "give me превращается в «гимми»"
+  },
+  {
+   "heard_ru": "уонна гоу?",
+   "heard_en": "Wanna go?",
+   "fast": "Wanna go?",
+   "slow": "Want. To. Go?",
+   "written": "Want to go?",
+   "hl": "Want to",
+   "note": "want to превращается в «уонна»"
+  },
+  {
+   "heard_ru": "доунча ноу?",
+   "heard_en": "Doncha know?",
+   "fast": "Doncha know?",
+   "slow": "Don't. You. Know?",
+   "written": "Don't you know?",
+   "hl": "Don't you",
+   "note": "t + y звучит как «ч»"
+  },
+  {
+   "heard_ru": "кайнда тайрд",
+   "heard_en": "Kinda tired",
+   "fast": "Kinda tired.",
+   "slow": "Kind. Of. Tired.",
+   "written": "Kind of tired",
+   "hl": "Kind of",
+   "note": "of превращается в «а»"
+  }
  ],
  "outro_voice": "Gonna. Wanna. Gotta. Gimme. Dunno.",
- "outro_list": [["gonna", "going to"], ["wanna", "want to"], ["gotta", "got to"], ["gimme", "give me"], ["dunno", "don't know"]],
- "outro_ru": "Сколько фраз ты услышала сразу?"
+ "outro_list": [
+  [
+   "gonna",
+   "going to"
+  ],
+  [
+   "wanna",
+   "want to"
+  ],
+  [
+   "gotta",
+   "got to"
+  ],
+  [
+   "gimme",
+   "give me"
+  ],
+  [
+   "dunno",
+   "don't know"
+  ]
+ ],
+ "outro_ru": "Сколько фраз ты услышала сразу?",
+ "spare_items": [
+  {
+   "heard_ru": "лемми си",
+   "heard_en": "Lemme see",
+   "fast": "Lemme see.",
+   "slow": "Let. Me. See.",
+   "written": "Let me see",
+   "hl": "Let me",
+   "note": "let me превращается в «лемми»"
+  },
+  {
+   "heard_ru": "гоча",
+   "heard_en": "Gotcha",
+   "fast": "Gotcha.",
+   "slow": "Got. You.",
+   "written": "Got you",
+   "hl": "Got you",
+   "note": "t + y звучит как «ч»"
+  },
+  {
+   "heard_ru": "уоча дуин",
+   "heard_en": "Whatcha doin'?",
+   "fast": "Whatcha doin'?",
+   "slow": "What. Are. You. Doing?",
+   "written": "What are you doing?",
+   "hl": "What are you",
+   "note": "три слова слились в «уоча»"
+  }
+ ]
 }
