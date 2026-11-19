@@ -2,7 +2,7 @@
 
 **File:** `aleutians_islands_still_empty.mp4` (1920×1080, 30 fps, ~11:25, −14 LUFS).
 **Mid-roll ads:** the video is over 8 minutes, so mid-rolls are allowed. Place them on chapter breaks: about 4:07 and 7:23.
-**Thumbnail:** `aleutians_cover_A.jpg` (main, pairs with the main title) and `aleutians_cover_B.jpg` (pairs with the Japan title), 1280×720. Run A vs B in YouTube "Test & compare".
+**Thumbnail (v2, Nov 2026, after studying the top Aleutian/Attu videos on YouTube):** `aleutians_cover_C.jpg` (main: the Attu soldier in the snow, "JAPAN INVADED AMERICA", pairs with the Japan title) and `aleutians_cover_D.jpg` (the ruined Adak home, "ADAK 96% GONE WHY?", pairs with the main title), 1280×720. Run C vs D in YouTube "Test & compare". The old A/B covers stay as spares.
 **Subtitles:** `aleutians_subtitles_en.srt` (English).
 **Altered or synthetic content:** synthetic (AI) narrator voice that does not imitate a real person: "No" is allowed, "Yes" is also safe. All footage and photos are real: US Navy and US Army Signal Corps films 1942–44 (National Archives, via Internet Archive), Atomic Energy Commission films of Amchitka, US Fish & Wildlife Service, Wikimedia Commons, Pixabay. Clips that are not from the Aleutians are labelled ILLUSTRATIVE. Maps and diagrams are our own animation.
 **Playlist:** How Cities Really Work

@@ -2,7 +2,8 @@
 
 **File:** `vostok_coldest_place_ever_measured.mp4` (1920×1080, 30 fps, ~11:56, −14 LUFS).
 **Mid-roll ads:** the video is over 8 minutes, so mid-rolls are allowed. Place them on chapter breaks at about 4:41 and 7:43 (check the exact times against the chapters below after upload).
-**Thumbnails** (1280×720; test A against B in YouTube "Test & compare"):
+**Thumbnails** (1280×720; test C against B in YouTube "Test & compare"; A is a spare):
+- `vostok_cover_C.jpg`: main (v2, after the top Vostok videos on YouTube): a real Vostok photo at night, "−89°C", a crossed-out plane, "NO PLANES FOR 9 MONTHS".
 - `vostok_cover_A.jpg`: main, a real Vostok photo from 1973.
 - `vostok_cover_B.jpg`: our 1982 stove diagram; pairs with the "Night" title.
 
