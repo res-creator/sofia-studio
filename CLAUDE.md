@@ -4,6 +4,8 @@
 
 > **English dubs of travel documentaries (India, Norway, Vietnam):** read `ENGLISH_DUB.md` first.
 
+> **«Ася и взрослая жизнь» (owner's personal series, RUSSIAN on screen by owner's choice, no voice):** read `asya/BIBLE.md` first; engine `asya/engine.js`, episodes `asya/episodes.js`.
+
 > **Long-form How It's Run films (YouTube, animated):** Для создания длинных анимационных YouTube-фильмов How It’s Run обязательно сначала прочитай `longform/LONGFORM_STYLE.md` и используй утверждённую систему `longform/figmakit/`. Не разрабатывай новый стиль и анимационный движок с нуля без отдельного задания.
 
 ## Hard rules (from the owner)
