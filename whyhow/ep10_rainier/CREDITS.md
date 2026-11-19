@@ -26,6 +26,7 @@ Photos and video (Wikimedia Commons):
 - Orting Mid Schl 9517 — Chris Light, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AOrting_Mid_Schl_9517.jpg
 - WA 162 East 3198 — Chris Light, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AWA_162_East_3198.jpg
 - 2023-01-31, SR 162 Bridge over the Puyallup River (Orting, Washington), 01 — Steven Pavlov, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3A2023-01-31%2C_SR_162_Bridge_over_the_Puyallup_River_%28Orting%2C_Washington%29%2C_01.jpg
+- Clouds over Nisqually Valley (glacier and river). (755bc9419f224044a906d688a5100445) — National Park Service, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AClouds_over_Nisqually_Valley_%28glacier_and_river%29._%28755bc9419f224044a906d688a5100445%29.JPG
 - 2022-12-06, White River from the 24th St E Bridge, Sumner Link Trail, Sumner, Washington,  — Steven Pavlov, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3A2022-12-06%2C_White_River_from_the_24th_St_E_Bridge%2C_Sumner_Link_Trail%2C_Sumner%2C_Washington%2C_03.jpg
 - Mud Mountain Lake, Filled — ECTran71, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AMud_Mountain_Lake%2C_Filled.jpg
 - Wall of ice at mouth of Nisqually Glacier, August 27, 1895 (WAITE 57) — Alvin H. Waite, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AWall_of_ice_at_mouth_of_Nisqually_Glacier%2C_August_27%2C_1895_%28WAITE_57%29.jpeg

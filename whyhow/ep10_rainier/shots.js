@@ -200,7 +200,7 @@ function build(T) {
   beats('T032', [
     F('ia_dclaw_sim_nisqually_alder', { over: [low('THE LAHAR REACHES ALDER LAKE IN ~50 MIN', 'fifty'), note(SIM)] }),
     F('ia_dclaw_sim_alder_dam_3d', { cutW: 'pushes', over: [low('WATER OVER THE 330-FT DAM', 'pour'), note(SIM)] }),
-    F('ia_journey_river_rainier_behind', { cutW: 'What', over: [low('AFTER THAT: UNKNOWN', 'model')] }),
+    F('cm_nps_clouds_nisqually_valley', { cutW: 'What', kb: { z: [1.05, 1.2] }, over: [low('AFTER THAT: UNKNOWN', 'model')] }),
   ]);
   beats('T032B', [
     F('cm_sumner_white_river_from_bridge_2022', { over: [note('THE WHITE RIVER IN SUMNER')] }),
