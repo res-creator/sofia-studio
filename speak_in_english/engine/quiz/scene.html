@@ -1,0 +1,86 @@
+<!doctype html><meta charset=utf-8><style>
+:root{--bg:#2e2530;--acc:#e59ab0;--sub:#a8979f;--card:#3d3340;--cb:#54485a;--dim:#4a3f4d;--q:#7c6a82;--tx:#f6efe9}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;background:var(--bg);overflow:hidden;font-family:'Inter Display','Inter',sans-serif}
+#f{width:1080px;height:1920px;position:relative;overflow:hidden;background:radial-gradient(900px 700px at 50% 30%,#3a2e3d,#2e2530 70%)}
+.c{position:absolute;left:0;right:0;text-align:center}
+#tag{top:130px;color:var(--acc);font-weight:900;font-size:62px;letter-spacing:3px}
+#sub{top:240px;color:var(--sub);font-weight:700;font-size:46px;letter-spacing:3px}
+#lvl{top:340px}
+#lvl span{display:inline-block;border:5px solid var(--acc);color:var(--acc);font-weight:900;font-size:44px;letter-spacing:4px;padding:6px 30px;border-radius:40px}
+#q{top:440px;color:var(--tx);font-weight:900;font-size:124px;line-height:1.08;padding:0 70px}
+#ring{position:absolute;left:400px;top:770px;width:280px;height:280px;border-radius:50%}
+#ringIn{position:absolute;left:400px;top:770px;width:280px;height:280px;border-radius:50%}
+#n{top:812px;font-size:180px;font-weight:900;color:var(--tx);line-height:1}
+.card{position:absolute;top:1075px;width:440px;height:545px;border-radius:50px;background:var(--card);border:6px solid var(--cb)}
+#cl{left:70px}#cr{right:70px}
+.card img{width:220px;height:220px;border-radius:50%;object-fit:cover;margin:36px auto 0;display:block;border:8px solid var(--acc)}
+.card b{display:block;margin-top:26px;text-align:center;color:var(--acc);font-size:54px;letter-spacing:4px;font-weight:900}
+.card .a{display:block;text-align:center;margin-top:14px;color:var(--tx);font-size:50px;font-weight:900;padding:0 24px;line-height:1.1}
+.card .h{display:block;text-align:center;margin-top:10px;color:var(--q);font-size:120px;font-weight:900;line-height:1}
+.steps{position:absolute;left:0;right:0;top:1640px;display:flex;justify-content:center;align-items:flex-end;gap:16px;height:160px}
+.steps i{width:90px;background:var(--dim);border-radius:12px}
+.steps i.on{background:var(--acc)}
+#end{opacity:0}
+#endTitle{top:520px;color:var(--tx);font-weight:900;font-size:112px;line-height:1.1;padding:0 70px}
+#endSub{top:900px;color:var(--tx);font-weight:800;font-size:68px;line-height:1.25;padding:0 70px}
+</style>
+<div id=f>
+<div class=c id=tag>ТЕСТ ПО АНГЛИЙСКОМУ</div><div class=c id=sub>ЛОНДОН ПРОТИВ НЬЮ-ЙОРКА</div>
+<div class=c id=lvl><span id=lvlT>A2</span></div>
+<div class=c id=q></div>
+<div id=ring></div><div id=ringIn></div><div class=c id=n></div>
+<div class=card id=cl><img src="assets/uk.png"><b>LONDON</b><span class=h id=hl>?</span><span class=a id=al style="display:none"></span></div>
+<div class=card id=cr><img src="assets/us.png"><b>NEW YORK</b><span class=h id=hr>?</span><span class=a id=ar style="display:none"></span></div>
+<div class=steps id=steps><i style=height:40px></i><i style=height:70px></i><i style=height:100px></i><i style=height:130px></i><i style=height:160px></i></div>
+<div class=c id=end><div class=c id=endTitle>Сколько у тебя из 5?</div><div class=c id=endSub>Пиши цифру в комментариях.<br>Завтра будет сложнее.</div></div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const ease=x=>1-Math.pow(1-clamp(x),3);
+const pop=x=>{x=clamp(x);return x<1?1+0.14*Math.sin(Math.PI*x)*(1-x*0.2):1};
+function setRing(frac){ // frac of remaining time 0..1
+  const deg=360*frac;
+  $('ring').style.background=`conic-gradient(var(--acc) 0deg ${deg}deg, #4a3f4d ${deg}deg 360deg)`;
+  $('ringIn').style.background='radial-gradient(circle,#2e2530 0 62%,transparent 63%)';
+}
+let TL=null;
+function render(t){
+  const Q=TL.q; let cur=Q[0];
+  for(const q of Q) if(t>=q.start-0.001) cur=q;
+  const i=cur.i;
+  const inEnd=t>=TL.outro[0]-0.25;
+  // question text
+  $('q').textContent='«'+cur.ru+'»'; $('lvlT').textContent=cur.level;
+  const tin=ease((t-cur.start)/0.3); const pre=(i===0&&t<cur.start); $('q').style.opacity=pre?1:tin; $('q').style.transform=pre?'none':`translateY(${(1-tin)*24}px)`; $('q').style.fontSize=(cur.ru.length>16?84:124)+'px';
+  // steps
+  [...$('steps').children].forEach((el,k)=>el.className=(k<i||(k===i&&t>=cur.usv[0]))?'on':'');
+  // ring + number
+  const [c0,c1]=cur.count; const counting=t<c1+0.02;
+  const rem=clamp((c1-t)/(c1-c0));
+  setRing(t<c0?1:rem);
+  const secLeft=t<c0?4:Math.max(1,Math.ceil(c1-t-0.001));
+  $('n').textContent=t<c1?secLeft:'';
+  const showRing=t<c1; $('ring').style.opacity=$('ringIn').style.opacity=showRing?1:0; $('n').style.opacity=showRing?1:0;
+  // pulse number on each second
+  const ph=t<c0?0:((c1-t)%1); $('n').style.transform=`scale(${t>=c0&&t<c1?1+0.12*Math.max(0,(ph-0.8)/0.2):1})`;
+  // cards
+  const reveal=(side,vs)=>{const on=t>=vs[0]-0.05; const a=$('a'+side), h=$('h'+side);
+    a.style.display=on?'block':'none'; h.style.display=on?'none':'block';
+    if(on){a.textContent=side==='l'?cur.uk:cur.us; a.style.transform=`scale(${pop((t-vs[0]+0.05)/0.45)})`;}};
+  reveal('l',cur.ukv); reveal('r',cur.usv);
+  // speaking glow on avatars
+  const sp=(vs)=>t>=vs[0]&&t<=vs[1];
+  $('cl').style.borderColor=sp(cur.ukv)?'#e59ab0':'#54485a'; $('cr').style.borderColor=sp(cur.usv)?'#e59ab0':'#54485a';
+  $('cl').style.transform=`scale(${sp(cur.ukv)?1.04:1})`; $('cr').style.transform=`scale(${sp(cur.usv)?1.04:1})`;
+  // end screen
+  const e=ease((t-(TL.outro[0]-0.25))/0.4);
+  const keep=['tag','sub'];
+  ['lvl','q','ring','ringIn','n','cl','cr'].forEach(id=>{const el=$(id); if(inEnd){el.style.opacity=1-e;} });
+  $('end').style.opacity=inEnd?e:0;
+  if(inEnd){$('steps').children.length&&[...$('steps').children].forEach(el=>el.className='on');
+    $('cl').style.transform='scale(1)';$('cr').style.transform='scale(1)';}
+}
+window.setTL=tl=>{TL=tl};window.render=render;
+</script>
