@@ -1,0 +1,5 @@
+{
+ "voices": {"tom": {"id": "TX3LPaxmHKxFdv7VOQHJ", "model": "eleven_multilingual_v2"}, "her": {"id": "cgSgspJ2msm6clMCkdW9", "model": "eleven_v3"}},
+ "intro": [["tom", "i1", "Блин, английский такой сложный."], ["her", "i2", "Nah. It's easy."], ["tom", "i3", "Правда?"], ["her", "i4", "Ask me anything."]],
+ "outro": [["her", "o1", "See? Easy."], ["tom", "o2", "Ну… почти."], ["her", "o3", "A little."]]
+}
