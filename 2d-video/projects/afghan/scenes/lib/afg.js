@@ -35,7 +35,6 @@ export function gate(g, t, o = {}) {
 export function courtyard(g, t, o = {}) {
   sky(g, o.night ? '#16224a' : '#8fc6ea', o.night ? '#3a3f6e' : '#e8f2f8'); if (o.night) { const R = rng(5); for (let i = 0; i < 90; i++) el(g, R() * 1920, R() * 420, 1.6, 1.6, 'rgba(255,255,255,.8)', 0); el(g, 1600, 160, 50, 50, '#f6f0d6', 0); }
   mountains(g, 470, o.night);
-  if (o.kites) [[500, 200, '#e2483a', 0], [1300, 140, '#3a8ae0', 1], [900, 260, '#f2c037', 2]].forEach(([x, y, c, i]) => { const xx = x + Math.sin(t * 0.8 + i) * 30, yy = y + Math.cos(t * 0.6 + i) * 18; g.save(); g.translate(xx, yy); g.rotate(Math.sin(t + i) * 0.15); pg(g, [[0, -60], [44, 0], [0, 60], [-44, 0]], c, 4); ln(g, [[0, -60], [0, 60]], 3); ln(g, [[-44, 0], [44, 0]], 3); g.restore(); g.save(); g.beginPath(); g.moveTo(xx, yy + 60); g.quadraticCurveTo(xx - 40, yy + 300, xx + 60 - i * 40, 900); g.lineWidth = 2; g.strokeStyle = 'rgba(40,40,40,.6)'; g.stroke(); g.restore(); });
   // дувал (стена двора)
   g.fillStyle = vg(g, 520, 120, '#c9a77c', 0.15); g.fillRect(-400, 520, 2720, 140); ln(g, [[-400, 520], [2320, 520]], 5); for (let x = -380; x < 2320; x += 160) ln(g, [[x, 530], [x + 20, 650]], 2, 'rgba(90,60,30,.25)');
   // дом
@@ -48,6 +47,8 @@ export function courtyard(g, t, o = {}) {
   // земля двора, тандыр, ковёр на верёвке
   g.fillStyle = vg(g, 660, 600, o.night ? '#7a6248' : '#d8c09a', 0.15); g.fillRect(-400, 660, 2720, 900); ln(g, [[-400, 680], [2320, 680]], 4, 'rgba(0,0,0,.2)');
   g.beginPath(); g.ellipse(1830, 760, 90, 40, 0, 0, Math.PI * 2); fo(g, '#b8946a', 5); bx(g, 1740, 760, 180, 120, '#b8946a', 30, 5);
+  // змеи рисуются ПОСЛЕ дома и дерева: летят в открытом небе перед домом; o.khx/o.khy — рука, держащая нитку жёлтого змея
+  if (o.kites) [[500, 170, '#e2483a', 0], [1500, 130, '#3a8ae0', 1], [o.khx != null ? (o.kx ?? 1080) : 1000, o.khx != null ? (o.ky ?? 200) : 200, '#f2c037', 2]].forEach(([x, y, c, i]) => { const xx = x + Math.sin(t * 0.8 + i) * 30, yy = y + Math.cos(t * 0.6 + i) * 18; g.save(); g.beginPath(); g.moveTo(xx, yy + 60); const held = i === 2 && o.khx != null, ex = held ? o.khx : xx + 60 - i * 40, ey = held ? o.khy : 900; g.quadraticCurveTo(xx - 40, (yy + ey) / 2 + 60, ex, ey); g.lineWidth = held ? 5 : 2; g.strokeStyle = held ? '#2a2321' : 'rgba(40,40,40,.75)'; g.stroke(); for (let k = 1; k <= 3; k++) { g.beginPath(); g.moveTo(xx, yy + 60 + k * 26); g.lineTo(xx + (k % 2 ? 14 : -14), yy + 72 + k * 26); g.lineWidth = 5; g.strokeStyle = c; g.stroke(); } g.restore(); g.save(); g.translate(xx, yy); g.rotate(Math.sin(t + i) * 0.15); pg(g, [[0, -60], [44, 0], [0, 60], [-44, 0]], c, 4); ln(g, [[0, -60], [0, 60]], 3); ln(g, [[-44, 0], [44, 0]], 3); g.restore(); });
 }
 // ------------------------------------------------------------------ комната: ниши, ковёр, тошаки (подушки вдоль стены), окно, лампа
 export function room(g, t, o = {}) {

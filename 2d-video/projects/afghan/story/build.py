@@ -29,6 +29,14 @@ V2 = []
 board_v2.build(lambda at, k, tr=None, **p: V2.append((at, dict(k=k, **p), tr)), w)
 if os.environ.get('V2FULL', '1') == '1': board_v2.build_full(lambda at, k, tr=None, **p: V2.append((at, dict(k=k, **p), tr)), w, float(cfg['duration']))
 S = [x for x in S if not any(a - 0.05 <= x[0] < b - 0.05 for a, b in board_v2.RANGES)] + V2
+# вжухов не больше ~6 на фильм: каждый второй whip2 → склейка + «срез в движение» (рывок камеры)
+_wk = 0; _S2 = []
+for at_, p_, tr_ in sorted(S, key=lambda x: x[0]):
+    if tr_ == 'whip2' and p_.get('k') == 'v2' and p_.get('bg') != 'black':
+        _wk += 1
+        if _wk % 4 != 1: tr_ = None; p_['mv'] = {**p_.get('mv', {'r': 0.045}), 'kick': 1, 'kx': 30}
+    _S2.append((at_, p_, tr_))
+S = _S2
 # длинные кадры (> 5,2 с) делим: вторая часть того же кадра другим планом
 S.sort(key=lambda s: s[0]); END0 = float(cfg['duration']); out = []
 for i, (st, p, tr) in enumerate(S):

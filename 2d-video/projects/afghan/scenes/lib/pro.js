@@ -120,6 +120,8 @@ export function fig(g, x, y, s, o, t) {
     g.beginPath(); g.moveTo(-90, -200); g.lineTo(-128, -40); g.quadraticCurveTo(0, -20, 128, -40); g.lineTo(90, -200); g.closePath(); fo(g, hg(g, -128, 256, o.coat, 0.16));
     g.beginPath(); g.ellipse(0, -334, 36, 11, 0, 0, Math.PI * 2); fo(g, o.shirt, 3); ln(g, [[-92, -200], [92, -200]], 3, shade(o.coat, -0.3));
   }
+  // стетоскоп на шее: трубки за шеей, дуга на груди, головка на груди (рисуется поверх торса, до головы и рук)
+  if (o.steth) { g.beginPath(); g.moveTo(-44, -336); g.bezierCurveTo(-60, -250, 60, -250, 44, -336); g.lineWidth = 11; g.strokeStyle = OL; g.stroke(); g.lineWidth = 6; g.strokeStyle = '#5a6a7a'; g.stroke(); ln(g, [[0, -272], [26, -205]], 9); ln(g, [[0, -272], [26, -205]], 5, '#5a6a7a'); el(g, 30, -196, 17, 17, '#b8c0c8', 5); el(g, 30, -196, 7, 7, '#7a8088', 0); }
   if (o.pack) { ln(g, [[-58, -334], [-62, -180]], 13, OL); ln(g, [[-58, -334], [-62, -180]], 7, shade(o.pack, -0.1)); ln(g, [[58, -334], [62, -180]], 13, OL); ln(g, [[58, -334], [62, -180]], 7, shade(o.pack, -0.1)); }
   g.restore();
   // голова

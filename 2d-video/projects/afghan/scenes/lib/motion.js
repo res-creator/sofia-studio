@@ -5,6 +5,8 @@ import { E, ease, clamp, lerp, noise, rng, shade, OL, fo, rr, el, ln, pg, bx, vg
 import { tag, big } from '/projects/remote/scenes/lib/sets.js';
 
 const FR = () => 1 / (E.fps || 24);
+// крупный текст с тонким контуром (≈7 % кегля; общий big() из sets.js даёт 16 % — слишком жирно)
+export function bigT(g, s, x, y, size, k = 1, col = '#ffffff', rot = -0.03) { if (k <= 0) return; g.save(); g.translate(x, y); g.rotate(rot); g.scale(k, k); g.font = `700 ${size}px "Caveat"`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round'; g.lineWidth = Math.max(4, size * 0.075); g.strokeStyle = '#141212'; g.strokeText(s, 0, 0); g.fillStyle = col; g.fillText(s, 0, 0); g.restore(); }
 export const R = (i, a) => (a == null ? 1e9 : a - i.shot.start);
 
 // ------------------------------------------------------------------ поп по кривой референса
@@ -18,7 +20,7 @@ export function pop2(t, a) {
 const out2 = (t, b) => (b == null || t < b ? 1 : 1 - ease.in(clamp((t - b) / (4 * FR()))));
 export function ptxt(g, s, x, y, size, t, a, o = {}) {
   const p = pop2(t, a); if (!p) return; const k = p.k * out2(t, o.until); if (k <= 0.01) return;
-  g.save(); g.globalAlpha *= p.a; big(g, s, x, y, size, k, o.col || '#ffffff', o.rot ?? p.rot); g.restore();
+  g.save(); g.globalAlpha *= p.a; bigT(g, s, x, y, size, k, o.col || '#ffffff', o.rot ?? p.rot); g.restore();
 }
 export function ptag(g, s, x, y, t, a, o = {}) {
   const p = pop2(t, a); if (!p) return; const k = p.k * out2(t, o.until); if (k <= 0.01) return;
@@ -28,8 +30,9 @@ export function ptag(g, s, x, y, t, a, o = {}) {
 const fmt = (v, dec) => { const s = dec ? v.toFixed(dec).replace('.', ',') : String(Math.round(v)); return Math.abs(v) < 10000 ? s : s.replace(/\B(?=(\d{3})+(?!\d))/g, ' '); };
 export function countUp(g, t, a, from, to, x, y, o = {}) {
   const p = pop2(t, a); if (!p) return; const d = o.dur ?? 1.0, v = lerp(from, to, ease.out(clamp((t - a) / d)));
-  const s = (o.pre || '') + fmt(v, o.dec) + (o.suf || ''), size = o.size ?? 190;
-  g.save(); g.globalAlpha *= p.a; big(g, s, x, y, size, p.k, o.col || '#ffd43b', o.rot ?? p.rot); g.restore();
+  const n = Math.round(v), pl = o.pl === 1 ? ['год', 'года', 'лет'] : o.pl, form = !pl ? '' : ' ' + ((n % 100 >= 11 && n % 100 <= 14) ? pl[2] : n % 10 === 1 ? pl[0] : (n % 10 >= 2 && n % 10 <= 4) ? pl[1] : pl[2]);
+  const s = (o.pre || '') + fmt(v, o.dec) + (o.suf || '') + form, size = o.size ?? 190;
+  g.save(); g.globalAlpha *= p.a; bigT(g, s, x, y, size, p.k, o.col || '#ffd43b', o.rot ?? p.rot); g.restore();
   if (o.unit) ptxt(g, o.unit, x + (o.ux ?? 0), y + size * 0.62 + (o.uy ?? 0), o.usize ?? 64, t, a + d * 0.7, { col: o.ucol || '#ffffff' });
 }
 export const countTicks = (a, d = 1.0, n = 6) => [...Array(n)].map((_, k) => a + d * ease.out(k / n) * 0.9);
@@ -115,7 +118,7 @@ export function typed(s, gt, w0) {
 }
 export function typeLine(g, s, x, y, size, gt, w0, o = {}) {
   const str = typed(s, gt, w0); if (!str) return; g.save(); g.font = `700 ${size}px "Caveat"`; const full = g.measureText(s).width; g.textAlign = 'left'; g.textBaseline = 'middle';
-  if (o.stroke !== false) { g.lineJoin = 'round'; g.lineWidth = size * 0.14; g.strokeStyle = o.sc || '#141212'; g.strokeText(str, x - full / 2, y); } g.fillStyle = o.col || '#ffffff'; g.fillText(str, x - full / 2, y); g.restore();
+  if (o.stroke !== false) { g.lineJoin = 'round'; g.lineWidth = Math.max(4, size * 0.07); g.strokeStyle = o.sc || '#141212'; g.strokeText(str, x - full / 2, y); } g.fillStyle = o.col || '#ffffff'; g.fillText(str, x - full / 2, y); g.restore();
 }
 // ------------------------------------------------------------------ фоновая жизнь
 export function dust(g, t, x0, y0, w, h, n = 40, seed = 3) { const r = rng(seed); g.save(); g.globalCompositeOperation = 'screen'; for (let i = 0; i < n; i++) { const bx0 = r() * w, by0 = r() * h, sp = 6 + r() * 14, ph = r() * 9; const px = x0 + ((bx0 + t * sp + noise(t * 0.3 + ph, i) * 30) % w + w) % w, py = y0 + ((by0 - t * sp * 0.4 + noise(t * 0.25, i + 9) * 20) % h + h) % h; g.globalAlpha = 0.25 + 0.35 * (0.5 + 0.5 * Math.sin(t * 1.3 + ph)); g.fillStyle = '#fff3d0'; g.beginPath(); g.arc(px, py, 2 + r() * 3, 0, Math.PI * 2); g.fill(); } g.restore(); }

@@ -30,8 +30,8 @@ function drawBg(g, name, t, gt, o) {
   if (name === 'clockNight') return f(g, t);
   return f(g, t, o);
 }
-const spool = (g, x, y) => { g.save(); g.translate(x + 6, y - 20); bx(g, -26, -34, 52, 68, '#b8864a', 8, 4); bx(g, -18, -24, 36, 48, '#e8e0d0', 4, 3); ln(g, [[0, -34], [60, -200]], 2, '#ffffff'); g.restore(); };
-const steth = (g, x, y) => { g.save(); g.translate(x, y); g.beginPath(); g.moveTo(-10, -40); g.bezierCurveTo(-50, 40, 40, 60, 30, -20); g.lineWidth = 9; g.strokeStyle = OL; g.stroke(); g.lineWidth = 5; g.strokeStyle = '#5a6a7a'; g.stroke(); el(g, 30, -30, 20, 20, '#b8c0c8', 5); g.restore(); };
+const spool = (g, x, y) => { g.save(); g.translate(x + 6, y - 20); bx(g, -26, -34, 52, 68, '#b8864a', 8, 4); bx(g, -18, -24, 36, 48, '#e8e0d0', 4, 3); g.restore(); };
+const steth = (g, x, y) => { g.save(); g.translate(x, y); for (const [w, c] of [[10, OL], [5, '#5a6a7a']]) { g.beginPath(); g.moveTo(-34, -70); g.bezierCurveTo(-44, 0, 34, 0, 34, -70); g.lineWidth = w; g.strokeStyle = c; g.stroke(); g.beginPath(); g.moveTo(0, -16); g.quadraticCurveTo(10, 50, 0, 96); g.stroke(); } el(g, -34, -74, 7, 7, OL, 0); el(g, 34, -74, 7, 7, OL, 0); el(g, 0, 108, 22, 22, '#b8c0c8', 5); el(g, 0, 108, 9, 9, '#7a8088', 0); g.restore(); };
 const key = (g, x, y) => { g.save(); g.translate(x + 10, y - 10); g.rotate(-0.6); el(g, 0, -30, 18, 18, '#e0b33a', 5); ln(g, [[0, -12], [0, 40]], 8, '#c8901c'); ln(g, [[0, 30], [14, 30]], 6, '#c8901c'); g.restore(); };
 const mic = (g, x, y) => { g.save(); g.translate(x, y); ln(g, [[0, 0], [0, -60]], 8); bx(g, -20, -110, 40, 60, '#3a3a3a', 20, 4); g.restore(); };
 const PROPS = { spool, steth, key, mic, baby, notes, pen, dryer: M.dryer, broom: M.broom, money: M.money, toolbag: M.toolbag, handbag: M.handbag, cloth: M.cloth, folder: M.folder, comb: M.comb, book: M.book };
@@ -53,6 +53,7 @@ function actorDraw(g, t, gt, st, [x, y, s, who, op = {}]) {
   if (o.jumpAt != null) o.jumpAt = [].concat(o.jumpAt).map(r); if (o.bowAt != null) o.bowAt = r(o.bowAt);
   if (o.veilKeys) o.veilKeys = o.veilKeys.map(([a, v]) => [r(a), v]);
   if (o.holdKeys) o.holdR = keyAt(o.holdKeys, gt); if (o.holdLKeys) o.holdL = keyAt(o.holdLKeys, gt);
+  if (o.stethAt != null) o.steth = gt >= o.stethAt;
   if (o.tearAt != null) o.tear = gt > o.tearAt ? 1 : 0; if (o.sweatAt != null) o.sweat = gt > o.sweatAt && gt < o.sweatAt + 2.5;
   if (o.mouthKeys) o.mouth = keyAt(o.mouthKeys, gt) ? 0.35 + 0.45 * Math.abs(Math.sin(gt * 9)) : 0; if (o.talkKeys) o.talk = !!keyAt(o.talkKeys, gt);
   if (o.lookKeys) o.look = M.kv(gt, o.lookKeys, 0.25); if (o.turnKeys) o.turn = M.kv(gt, o.turnKeys, 0.25);
@@ -97,7 +98,11 @@ function fxDraw(g, t, gt, st, F) {
     case 'dast': A.dastarkhan(g, t); break;
     case 'rehal': B.rehal(g, F[1], F[2], F[3] ?? 1); break;
     case 'deskrow': A.deskRow(g, F[1], F[2]); break;
-    case 'plate': { const [, at, x, y, s0, col] = F; const p = M.pop2(gt, at); if (!p) break; g.save(); g.translate(x, y); g.scale(p.k, p.k); g.font = '700 64px "Caveat"'; const ww = g.measureText(s0).width + 60; bx(g, -ww / 2, -50, ww, 100, col || '#f6f1e4', 8, 5); htxt(g, s0, 0, 2, 64, OL); g.restore(); break; }
+    case 'plate': { const [, at, x, y, s0, col, fs0] = F; const fs = fs0 || 64; const p = M.pop2(gt, at); if (!p) break; g.save(); g.translate(x, y); g.scale(p.k, p.k); g.font = `700 ${fs}px "Caveat"`; const ww = g.measureText(s0).width + fs; bx(g, -ww / 2, -fs * 0.78, ww, fs * 1.56, col || '#f6f1e4', 8, 5); htxt(g, s0, 0, 2, fs, OL); g.restore(); break; }
+    case 'strike': { const [, at, x, y, w0] = F; const u = ease.out(clamp((gt - at) / 0.25)); if (u <= 0) break; ln(g, [[x - w0 / 2, y + 8], [x - w0 / 2 + w0 * u, y - 4]], 12, '#141212'); ln(g, [[x - w0 / 2, y + 8], [x - w0 / 2 + w0 * u, y - 4]], 7, '#e2483a'); break; }
+    case 'sleep': { const [, x, y, s0, who, op = {}] = F; bx(g, x - 520 * s0, y - 20, 640 * s0, 60, '#e8e4f0', 20, 5); g.save(); g.translate(x, y); g.rotate(-Math.PI / 2); fig(g, 0, 0, s0, { ...C[who], eyesShut: !op.awake, noShadow: true, ...op }, t); g.restore(); bx(g, x - 330 * s0, y - 150 * s0, 360 * s0, 170 * s0, op.blanket || '#7a5a9a', 30, 5); break; }
+    case 'table': { const [, x, y, w0] = F; bx(g, x - w0 / 2, y, w0, 34, '#7a5236', 6, 5); bx(g, x - w0 / 2 + 20, y + 34, w0 - 40, 150, '#8a6242', 6, 5); break; }
+    case 'notebook': { const [, x, y, w0, h0] = F; blob(g, x, y + h0 / 2 + 10, w0 * 0.55, 30, 0.3); pg(g, [[x - w0 / 2, y - h0 / 2], [x, y - h0 / 2 + 14], [x, y + h0 / 2], [x - w0 / 2, y + h0 / 2 - 14]], '#f8f6ee', 5); pg(g, [[x + w0 / 2, y - h0 / 2], [x, y - h0 / 2 + 14], [x, y + h0 / 2], [x + w0 / 2, y + h0 / 2 - 14]], '#f8f6ee', 5); for (let k = 1; k < 8; k++) { const yy = y - h0 / 2 + k * h0 / 8 + 7; ln(g, [[x - w0 / 2 + 20, yy], [x - 20, yy + 4]], 2, '#a8c0e0'); ln(g, [[x + 20, yy + 4], [x + w0 / 2 - 20, yy]], 2, '#a8c0e0'); } break; }
     case 'dots': { const [, at, n, x0, y0, w0, h0] = F; const R = (k) => { const v = Math.sin(k * 91.7 + 1.3) * 43758.5; return v - Math.floor(v); }; for (let i = 0; i < n; i++) { const a = at + i * 0.07; if (gt < a) continue; const x = x0 + R(i) * w0, y = y0 + R(i + 50) * h0; glow(g, x, y, 40, '255,220,120', 0.7); el(g, x, y, 9, 9, '#ffe9a0', 3); } break; }
     case 'stack': { const [, ats, x, y] = F; ats.forEach((a, k) => { const p = M.pop2(gt, a); if (!p) return; g.save(); g.translate(x + (k % 2) * 8, y - k * 34); g.scale(p.k, p.k); bx(g, -150, -16, 300, 32, ['#3a6aa8', '#c84a6a', '#2b6a4a', '#e0b33a'][k % 4], 4, 4); g.restore(); }); break; }
     case 'sketch': { const [, at, d, x0, y0, w0] = F; const u = clamp((gt - at) / d); if (u <= 0) break; g.save(); g.beginPath(); const N = 9; for (let k = 0; k <= N * u; k++) { const x = x0 + (k / N) * w0, y = y0 - (k % 2 ? 160 : 20); k ? g.lineTo(x, y) : g.moveTo(x, y); } g.lineWidth = 9; g.strokeStyle = '#3a5a8a'; g.lineJoin = 'round'; g.stroke(); g.restore(); break; }
