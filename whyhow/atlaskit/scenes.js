@@ -491,4 +491,42 @@ function hertz(ctx, t, d, p) {
   wave(800, 25, C.yellow, '25 HZ', 'AN OLD STANDARD · 51 OF NEW ORLEANS\' 120 DRAINAGE PUMPS', 1.0);
   text(ctx, 'DIAGRAM · Source: Sewerage & Water Board of New Orleans', 48, 60, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
 }
-module.exports = { hertz, bowl, raintolake, riversplit, iwall, cathedral, clay, lakelevel, inch, slope, video, photo, overlays, title, chapter, stats, calendar, split, bars, thermo, ratio, myth, versus, endq, endscreen, sat, globe, pop, fade, fadeOut };
+
+// ---------- Rainier: lahar clock map ----------
+function laharmap(ctx, t, d, p) {
+  navyBg(ctx, t, false);
+  // Puget Sound water (top-left)
+  ctx.fillStyle = hexA(C.ice, 0.35); ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(620, 0); ctx.lineTo(560, 160); ctx.lineTo(420, 260); ctx.lineTo(300, 420); ctx.lineTo(0, 520); ctx.fill();
+  text(ctx, 'PUGET SOUND', 140, 120, { size: 30, font: F.head, color: C.iceL });
+  // land shading
+  ctx.fillStyle = hexA('#3B4A33', 0.6); ctx.beginPath(); ctx.moveTo(620, 0); ctx.lineTo(W, 0); ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.lineTo(0, 520); ctx.lineTo(300, 420); ctx.lineTo(420, 260); ctx.lineTo(560, 160); ctx.fill();
+  // volcano
+  const vx = 1560, vy = 820;
+  ctx.fillStyle = '#E8EEF5'; ctx.beginPath(); ctx.moveTo(vx - 120, vy + 70); ctx.lineTo(vx, vy - 90); ctx.lineTo(vx + 120, vy + 70); ctx.fill();
+  text(ctx, 'MOUNT RAINIER', vx, vy + 115, { size: 34, font: F.head, align: 'center', color: C.cream });
+  // valley path: Rainier -> Orting -> Sumner/Puyallup -> Tacoma tideflats
+  const path = [[vx - 60, vy - 10], [1300, 700], [1060, 620], [900, 520], [760, 420], [620, 360], [380, 210]];
+  const towns = [{ i: 3, name: 'ORTING', tm: '~1 HOUR', dx: 26 }, { i: 5, name: 'PUYALLUP · SUMNER', tm: '~3 HOURS', dx: 26 }, { i: 6, name: 'TACOMA TIDEFLATS', tm: '4–5 HOURS', dx: 26 }];
+  ctx.strokeStyle = hexA(C.iceL, 0.6); ctx.lineWidth = 10; ctx.lineCap = 'round'; ctx.beginPath(); path.forEach(([x, y], k) => k ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.stroke();
+  const u = clamp(seg(t, 0.5, (p.dur || 5.5))); const L = path.length - 1, f = u * L, i0 = Math.min(L - 1, Math.floor(f)), w = f - i0;
+  ctx.strokeStyle = '#8B5A2B'; ctx.lineWidth = 26; ctx.beginPath(); ctx.moveTo(path[0][0], path[0][1]); for (let k = 1; k <= i0; k++) ctx.lineTo(path[k][0], path[k][1]); ctx.lineTo(lerp(path[i0][0], path[i0 + 1][0], w), lerp(path[i0][1], path[i0 + 1][1], w)); ctx.stroke();
+  for (const tw of towns) { const [x, y] = path[tw.i]; const on = f >= tw.i - 0.02; ctx.fillStyle = on ? C.red : C.cream; ctx.beginPath(); ctx.arc(x, y, 14, 0, 7); ctx.fill();
+    text(ctx, tw.name, x + 26, y - 18, { size: 32, font: F.head, color: C.cream }); if (on) chip(ctx, tw.tm, x + 26, y + 34, { size: 32, bg: C.yellow, color: C.ink }); }
+  text(ctx, 'WORST-CASE LAHAR · TIME FROM THE START OF THE FLOW', W / 2, 80, { size: 40, font: F.head, align: 'center', color: C.cream });
+  text(ctx, 'MAP · NOT TO SCALE · Source: USGS (2026)', 48, H - 30, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
+}
+// ---------- Rainier: tree rings date the buried forest ----------
+function treerings(ctx, t, d, p) {
+  navyBg(ctx, t);
+  text(ctx, 'DATING THE BURIED FOREST', W / 2, 120, { size: 52, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.1) });
+  const cx = 700, cy = 590, R = 360, n = 60;
+  ctx.fillStyle = '#C79A62'; ctx.beginPath(); ctx.arc(cx, cy, R + 18, 0, 7); ctx.fill(); ctx.fillStyle = '#6B4A2B'; ctx.beginPath(); ctx.arc(cx, cy, R + 18, 0, 7); ctx.lineWidth = 18; ctx.strokeStyle = '#5A3A1E'; ctx.stroke();
+  for (let i = n; i >= 1; i--) { const r = R * i / n; ctx.fillStyle = i % 2 ? '#D9AE75' : '#C9985E'; ctx.beginPath(); ctx.arc(cx, cy, r, 0, 7); ctx.fill(); }
+  const u = clamp(seg(t, 0.6, 2.4)); const last = R;
+  ctx.strokeStyle = C.red; ctx.lineWidth = 16; ctx.beginPath(); ctx.arc(cx, cy, last - 8, -Math.PI / 2, -Math.PI / 2 + u * 2 * Math.PI); ctx.stroke();
+  text(ctx, '21 BURIED TREES · RINGS MATCHED', 1180, 420, { size: 38, font: F.head, color: C.cream, alpha: fade(t, 0.4) });
+  text(ctx, 'LAST RING: 1507', 1180, 520, { size: 70, font: F.head, color: C.yellow, alpha: fade(t, 1.8) });
+  text(ctx, 'LATE SUMMER', 1180, 590, { size: 44, font: F.head, color: C.cream, alpha: fade(t, 2.4) });
+  text(ctx, 'DIAGRAM · Source: tree-ring study, Geology (2026)', 48, 60, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
+}
+module.exports = { laharmap, treerings, hertz, bowl, raintolake, riversplit, iwall, cathedral, clay, lakelevel, inch, slope, video, photo, overlays, title, chapter, stats, calendar, split, bars, thermo, ratio, myth, versus, endq, endscreen, sat, globe, pop, fade, fadeOut };
