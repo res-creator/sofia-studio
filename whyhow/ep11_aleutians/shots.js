@@ -198,8 +198,8 @@ function build(T) {
   beats('A028', [A('cm_atka_reindeer_ww2_plane', { over: [low('JUNE 1942: ATKA BURNED BY U.S. FORCES', 'fire'), note('ATKA ISLAND TODAY')] })]);
   beats('A029', [
     A('cm_ward_lake_camp_meal', { over: [note('ARRIVING AT WARD LAKE CAMP, 1942–45')] }),
-    A('cm_funter_bay', { cutW: 'herring', over: [low('FUNTER BAY: AN OLD CANNERY', 'herring'), note('FUNTER BAY TODAY')] }),
-    A('cm_killisnoo_evacuation_camp_1942', { cutW: 'rotten', over: [note('KILLISNOO CAMP, 1942')] }),
+    A('cm_killisnoo_evacuation_camp_1942', { cutW: 'herring', over: [note('KILLISNOO CAMP, 1942')] }),
+    A('cm_funter_bay', { cutW: 'rotten', over: [low('FUNTER BAY: AN OLD CANNERY', 'rotten'), note('FUNTER BAY TODAY')] }),
     A('cm_funter_bay_aleut_womens_petition_1943', { cutW: 'At', over: [low('AT LEAST 74 DIED IN THE CAMPS', 'seventy-four'), note('PETITION BY UNANGAN WOMEN, FUNTER BAY, 1943')] }),
   ]);
   beats('A034', [
@@ -214,7 +214,7 @@ function build(T) {
       pins: [{ ...G.kom, label: 'KOMANDORSKI ISLANDS', sub: 'MARCH 26, 1943', at: 0.5, color: C('red'), align: 'right', lx: -26 }, { ...G.attu, label: 'ATTU', at: 1.0, small: true, size: 48 }, { ...G.kiska, label: 'KISKA', at: 1.2, small: true, size: 48 }],
       waves: [{ ...G.kom, at: 0.6, n: 4, speed: 220, max: 600, color: C('red') }],
       routes: [{ pts: [[158, 50.5], [163, 53.3], [165.5, 54.6]], at: 1.0, dur: 1.4, color: C('red'), label: 'SUPPLY CONVOY TURNED BACK', size: 30, ly: 50 }] }),
-    F('ia_kiska_1943_color_battleships_bay', { cutW: 'After', over: [low('NO MORE JAPANESE SUPPLY SHIPS', 'never')] }),
+    F('ia_kiska_1943_color_battleships_bay', { cutW: 'After', in: 3, over: [low('NO MORE JAPANESE SUPPLY SHIPS', 'never')] }),
   ]);
   beats('A036', [
     sea('ia_attu_1943_fog_megaphone_silhouette', { over: [low('ATTU, MAY 11, 1943', 'fifteen')] }),
@@ -277,8 +277,8 @@ function build(T) {
     S('stats', { cutW: 'If', head: 'IF NEW YORK SHRANK THE SAME WAY', items: [], over: [at(head('8.3 MILLION → 300,000', null, 540, 110, Yc), 0.4)], source: 'Our calculation from US Census figures' }),
   ]);
   beats('A045', [
-    F('cm_adak_army_naval_base_aerial'),
-    F('cm_adak_abandoned_bunker', { cutW: 'In', over: [low('SCHOOL: 5 STUDENTS (2022–23)', 'five')] }),
+    F('cm_adak_abandoned_bunker'),
+    F('cm_adak_army_naval_base_aerial', { cutW: 'In', over: [low('SCHOOL: 5 STUDENTS (2022–23)', 'five')] }),
   ]);
   beats('A046', [
     sea('cm_adak_wreck_heritage', { over: [note('WRECK OF A FISHING BOAT, ADAK')] }),
@@ -304,7 +304,7 @@ function build(T) {
   const NODES = [{ id: 'anc', name: 'ANCHORAGE', x: 1760, y: 300, src: true }, { id: 'dut', name: 'DUTCH HARBOR', x: 1380, y: 520 }, { id: 'atk', name: 'LOST VILLAGES', x: 1060, y: 630 }, { id: 'adk', name: 'ADAK', x: 820, y: 670 }, { id: 'ksk', name: 'KISKA', x: 520, y: 660 }, { id: 'att', name: 'ATTU', x: 200, y: 600 }];
   const t52 = T.P['A052'].start, t53 = T.P['A053'].start, t55 = T.P['A055'].start;
   beats('A052', [S('supplyline', { nodes: NODES, dur: T.P['A052'].dur, events: [{ at: T.at('A052', 'fur') - t52, year: '1745', label: 'FUR SHIPS' }, { at: T.at('A052', 'government') - t52, year: '1867', label: 'GOVERNMENT SERVICES' }, { at: T.at('A052', 'military') - t52, year: '1942', label: 'MILITARY MONEY' }, { at: T.at('A052', 'quota') - t52, year: '2000s', label: 'A FISH QUOTA' }, { at: T.at('A052', 'barge') - t52, year: '2025', label: 'A BARGE WITH A GENERATOR' }] })]);
-  beats('A053', [S('supplyline', { nodes: NODES, events: [{ at: T.at('A053', 'Attu') - t53, year: '1867+', label: 'ATTU: SERVICES SHRINK', cut: 'att' }, { at: T.at('A053', 'lost') - t53, year: '1945', label: 'FOUR VILLAGES NEVER RESETTLED', cut: 'atk' }, { at: T.at('A053', 'Kiska') - t53, year: '1943', label: 'JAPAN CUT OFF ON KISKA', cut: 'ksk' }, { at: T.at('A053', 'Adak') - t53, year: '1997', label: 'THE NAVY LEAVES ADAK', cut: 'adk' }] })]);
+  beats('A053', [S('supplyline', { nodes: NODES, events: [{ at: T.at('A053', 'cut') - t53, year: '1867+', label: 'ATTU: SERVICES SHRINK', cut: 'att' }, { at: T.at('A053', 'lost') - t53, year: '1945', label: 'FOUR VILLAGES NEVER RESETTLED', cut: 'atk' }, { at: T.at('A053', 'Kiska') - t53, year: '1943', label: 'JAPAN CUT OFF ON KISKA', cut: 'ksk' }, { at: T.at('A053', 'Adak') - t53, year: '1997', label: 'THE NAVY LEAVES ADAK', cut: 'adk' }] })]);
   beats('A054', [
     A('cm_unalaska_2021_a', { over: [low('#1 U.S. FISHING PORT BY VOLUME, 26 YEARS', 'twenty-six'), note('DUTCH HARBOR / UNALASKA, 2021')] }),
     A('cm_dutch_harbor_offloading_crab', { cutW: 'But' }),
@@ -325,7 +325,7 @@ function build(T) {
   beats('A058', [
     A('cm_attu_village_1937', { kb: { z: [1.0, 1.2] }, over: [note('ATTU, 1937')] }),
     sea('gov_tiglax_aerial_twin_volcanoes_coast', { cutW: 'Today', in: 3 }),
-    sea('gov_tiglax_ship_sea_stacks', { cutW: 'some', over: [note('THE REFUGE SHIP TIGLAX (USFWS)')] }),
+    storm('gov_tiglax_ship_backlit_storm_sky', { cutW: 'some', in: 2, over: [note('THE REFUGE SHIP TIGLAX (USFWS)')] }),
     sea('ia_attu_1943_snowy_coast_horizon', { cutW: 'About', in: 4, over: [low('~300 ATTUAN DESCENDANTS IN THE U.S.', 'three'), note('ATTU')] }),
   ]);
   add(T.tl.voiceEnd + 0.4, S('endscreen', {}), 'fade');
