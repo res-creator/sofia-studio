@@ -15,6 +15,24 @@ const PH = {}; const PHC = {
   law: 'Закон об исключении китайцев, 1882. Общественное достояние', rail: 'Китайские рабочие, 1863-1869. Общественное достояние', genthe: 'Сан-Франциско, 18 апреля 1906. Фото: Арнольд Генте. Общественное достояние',
   worden: 'Сан-Франциско, 1906. Фото: Уиллард Уорден. Общественное достояние', leaving: 'Жители покидают город, 1906. NARA. Общественное достояние', paperson: 'Заявление на удостоверение личности, Сан-Франциско. Общественное достояние', lawrence: 'Сан-Франциско после пожара, 1906. Фото: Джордж Лоренс. Общественное достояние' };
 await Promise.all(Object.keys(PHC).map((k) => new Promise((res) => { const im = new Image(); im.onload = () => { PH[k] = im; res(); }; im.onerror = () => res(); im.src = `/project/assets/archive/${k}.jpg`; })));
+// «вырезка из бумаги»: фото на весь кадр в тоне эпохи, персонажи с белым контуром и тенью, плёночное зерно
+function photoFull(g, o) {
+  const im = PH[o.src]; g.fillStyle = '#0c0c10'; g.fillRect(-200, -200, 2320, 1480); if (!im) return;
+  const cs = Math.max(1920 / im.width, 1080 / im.height) * (o.zoom ?? 1.02), w = im.width * cs, h = im.height * cs;
+  g.save(); g.filter = o.tone === 'none' ? 'none' : `grayscale(1) sepia(${o.sep ?? 0.55}) contrast(1.08) brightness(${o.br ?? 0.9})`; g.drawImage(im, 960 - w / 2 + (o.dx ?? 0), 540 - h / 2 + (o.dy ?? 0), w, h); g.restore();
+  g.fillStyle = `rgba(20,12,6,${o.dim ?? 0.28})`; g.fillRect(-200, -200, 2320, 1480);
+}
+let GRAIN = null;
+function grain(g, gt, a = 0.13) {
+  if (!GRAIN) { GRAIN = document.createElement('canvas'); GRAIN.width = GRAIN.height = 256; const x = GRAIN.getContext('2d'), d = x.createImageData(256, 256); let r = 1; for (let i = 0; i < d.data.length; i += 4) { r = (r * 16807) % 2147483647; const v = (r % 255); d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; } x.putImageData(d, 0, 0); }
+  g.save(); g.setTransform(E.PX, 0, 0, E.PX, 0, 0); g.globalAlpha = a; g.globalCompositeOperation = 'overlay'; const ox = (Math.floor(gt * 24) * 53) % 256, oy = (Math.floor(gt * 24) * 97) % 256;
+  for (let x = -ox; x < 1920; x += 256) for (let y = -oy; y < 1080; y += 256) g.drawImage(GRAIN, x, y); g.restore();
+}
+function sticker(g, draw) {
+  const cv = g.canvas, oc = document.createElement('canvas'); oc.width = cv.width; oc.height = cv.height; const o = oc.getContext('2d'); o.setTransform(g.getTransform()); draw(o);
+  g.save(); g.setTransform(1, 0, 0, 1, 0, 0); const k = E.PX * 1.0, f = [[5, 0], [-5, 0], [0, 5], [0, -5], [4, 4], [-4, -4], [4, -4], [-4, 4]].map(([x, y]) => `drop-shadow(${x * k}px ${y * k}px 0 #fbf8f0)`).join(' ');
+  g.filter = f + ` drop-shadow(${10 * k}px ${16 * k}px ${18 * k}px rgba(0,0,0,.55))`; g.drawImage(oc, 0, 0); g.restore();
+}
 function photoBg(g, o) {
   const im = PH[o.src]; g.fillStyle = '#101014'; g.fillRect(-200, -200, 2320, 1480); if (!im) return;
   const cs = Math.max(2320 / im.width, 1480 / im.height); g.save(); g.filter = 'blur(26px)'; g.drawImage(im, 960 - im.width * cs / 2, 540 - im.height * cs / 2, im.width * cs, im.height * cs); g.restore();
@@ -43,6 +61,7 @@ const resolve = (o, gt) => { if (!o) return {}; const r = {}; for (const k in o)
 function drawBg(g, name, t, gt, o) {
   if (!name) return; if (name === 'black') { g.fillStyle = '#060606'; g.fillRect(-200, -200, 2320, 1480); return; }
   if (name === 'photo') return photoBg(g, o);
+  if (name === 'photoFull') return photoFull(g, o);
   if (name === 'paper') { g.fillStyle = vg(g, 0, 1080, o.col || '#f2ead8', 0.1); g.fillRect(-200, -200, 2320, 1480); return; }
   if (name === 'color') { g.fillStyle = vg(g, 0, 1080, o.col || '#2a2638', 0.2); g.fillRect(-200, -200, 2320, 1480); return; }
   if (name === 'map') { worldMap(g, t, { view: o.view, hl: o.hl, labels: o.labels }); return; }
@@ -147,7 +166,7 @@ function fxDraw(g, t, gt, st, F) {
 }
 function scene(g, t, gt, st, P) {
   const bo = resolve(P.bo, gt);
-  const body = (g) => { drawBg(g, P.bg, P.bgT === 'abs' ? gt : t, gt, bo); (P.under || []).forEach((F) => fxDraw(g, t, gt, st, F)); (P.figs || []).forEach((f) => actorDraw(g, t, gt, st, f)); (P.over || []).forEach((F) => fxDraw(g, t, gt, st, F)); };
+  const body = (g) => { drawBg(g, P.bg, P.bgT === 'abs' ? gt : t, gt, bo); (P.under || []).forEach((F) => fxDraw(g, t, gt, st, F)); (P.sticker ? sticker(g, (gg) => (P.figs || []).forEach((f) => actorDraw(gg, t, gt, st, f))) : (P.figs || []).forEach((f) => actorDraw(g, t, gt, st, f))); (P.over || []).forEach((F) => fxDraw(g, t, gt, st, F)); };
   if (P.view) { const [cx, cy, z] = P.view; g.save(); g.translate(960, 540); g.scale(z, z); g.translate(-cx, -cy); body(g); g.restore(); } else body(g);
   if (P.old) B.oldPhoto(g, t);
 }
@@ -156,6 +175,7 @@ function drawV2(g, t, i) {
   scene(g, t, gt, st, i);
   (i.panels || []).forEach((P) => M.panel(g, gt, { ...P, draw: (gg, lt, gtt) => scene(gg, gtt - st, gtt, st, P) }));
   (i.fx || []).forEach((F) => fxDraw(g, t, gt, st, F));
+  if (i.grain) grain(g, gt, i.grain);
   if (i.vig !== 0) vignette(g, i.vig ?? 0.32);
 }
 for (const s of E.shots || []) if ((s.params || {}).k === 'v2') registerShot(s.id, { draw: (g, t, info) => drawV2(g, t, info) });
