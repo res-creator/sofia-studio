@@ -1,0 +1,12 @@
+{
+ "slug": "rap_ough_ep1",
+ "bpm": 80,
+ "voices": {"hero": "cgSgspJ2msm6clMCkdW9", "teacher": "pFZP5JQG7iQjIQuC4Bku"},
+ "model": "eleven_v3",
+ "intro": [[0.3, "hero", "English is so hard!"], [2.6, "teacher", "Easy. Let me show you."]],
+ "verse1": [["Though, though", "it sounds like oh"], ["Through, through", "it rhymes with glue"], ["Tough, tough", "it sounds like stuff"], ["Cough, cough", "it sounds like off"]],
+ "chorus": [["Though the dough was tough,", "he coughed all night!"], ["Same letters, new sound,", "that's English, all right!"]],
+ "verse2": [["Bought, bought", "it sounds like caught"], ["Thought, thought", "it sounds like taught"], ["Bough, bough", "it sounds like wow"], ["Rough, rough", "it sounds like puff"]],
+ "turn": {"cue": "Your turn!", "pairs": [["Though?", "Oh!"], ["Through?", "Oo!"], ["Tough?", "Uff!"], ["Cough?", "Off!"]]},
+ "outro": [[0.2, "hero", "So English is easy?"], [2.7, "teacher", "Easy... ish."]]
+}
