@@ -2,7 +2,7 @@
 
 **File:** `rainier_town_outrunning_volcano.mp4` (1920×1080, 30 fps, ~8:18, −14 LUFS).
 **Mid-roll ads:** the video is over 8 minutes, so mid-rolls are allowed. Place them on chapter breaks: about 3:51 and 6:24.
-**Thumbnail:** `rainier_cover_A.jpg` (main, "WALK UPHILL") and `rainier_cover_B.jpg` ("RIVER OF MUD"), 1280×720, real USGS photo (public domain) of Rainier over the Orting area + our mud arrow. Run A vs B in YouTube "Test & compare". The AI prompts below are a spare option.
+**Thumbnail:** `rainier_cover_A.jpg` (main, "WALK UPHILL") and `rainier_cover_B.jpg` ("RIVER OF MUD"), 1280×720, real USGS photo (public domain) of Rainier over the Orting area + our red "lahar zone" overlay and dotted mud path. Run A vs B in YouTube "Test & compare". The AI prompts below are a spare option.
 **Subtitles:** `rainier_subtitles_en.srt` (English).
 **Altered or synthetic content:** synthetic (AI) narrator voice that does not imitate a real person: "No" is allowed, "Yes" is also safe. Footage and photos are real (USGS, National Park Service, NASA, Wikimedia Commons, Pixabay). Clips of lahars flowing over maps are USGS D-Claw computer models and are labelled "USGS COMPUTER MODEL, NOT REAL FOOTAGE" on screen. The lahar clock map and tree-ring diagram are our own animation.
 **Playlist:** How Cities Really Work
