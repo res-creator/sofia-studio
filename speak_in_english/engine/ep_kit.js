@@ -61,14 +61,14 @@ module.exports = function makeKit(TL, UI) {
     c.textAlign = 'center'; c.textBaseline = 'middle';
     const q = eBack(P(u, 0.25, 0.6), 2.2);
     c.save(); c.translate(540, 300); c.scale(q, q); font(c, 'Unb9', o.qSize || 54); strokeText(c, o.q[0], 0, -50, C.oliveD, C.white, 14); strokeText(c, o.q[1], 0, 36, C.pink, C.white, 14); c.restore();
-    const k = eBack(P(u, 0.7, 1.1), 1.8), n = o.rows.length, bh = 140 + n * 115;
-    if (k > 0) { c.save(); c.translate(540, 740); c.scale(k, k); c.fillStyle = 'rgba(0,0,0,.14)'; R(c, -470 + 8, -bh / 2 + 12, 940, bh, 34); c.fill(); c.fillStyle = C.white; c.strokeStyle = C.oliveD; c.lineWidth = 7; R(c, -470, -bh / 2, 940, bh, 34); c.fill(); c.stroke();
+    const k = eBack(P(u, 0.7, 1.1), 1.8), n = o.rows.length, RH = o.rowH || 115, BY = o.boxY || 740, bh = 140 + n * RH;   // o.rowH / o.boxY: compact cheat sheet for 5-6 rows (new episodes)
+    if (k > 0) { c.save(); c.translate(540, BY); c.scale(k, k); c.fillStyle = 'rgba(0,0,0,.14)'; R(c, -470 + 8, -bh / 2 + 12, 940, bh, 34); c.fill(); c.fillStyle = C.white; c.strokeStyle = C.oliveD; c.lineWidth = 7; R(c, -470, -bh / 2, 940, bh, 34); c.fill(); c.stroke();
       font(c, 'Unb9', 38); c.fillStyle = C.pink; c.textAlign = 'left'; c.fillText('ШПАРГАЛКА', -420, -bh / 2 + 45);
-      o.rows.forEach(([lv, ph], i) => { const y = -bh / 2 + 150 + i * 115, kk = eBack(P(u, 1.0 + i * 0.18, 1.35 + i * 0.18), 2.2); if (kk <= 0) return; c.save(); c.translate(0, y); c.scale(kk, kk); c.fillStyle = LVCOL[lv]; R(c, -430, -34, 82, 68, 18); c.fill(); font(c, 'Unb9', 30); c.fillStyle = C.white; c.textAlign = 'center'; c.fillText(lv, -389, 3); textFit(c, 'Nun9', 46, ph, 740); c.fillStyle = C.oliveD; c.textAlign = 'left'; c.fillText(ph, -320, 3); c.restore(); });
+      o.rows.forEach(([lv, ph], i) => { const y = -bh / 2 + 150 + i * RH, kk = eBack(P(u, 1.0 + i * 0.18, 1.35 + i * 0.18), 2.2); if (kk <= 0) return; c.save(); c.translate(0, y); c.scale(kk, kk); c.fillStyle = LVCOL[lv]; R(c, -430, -34, 82, 68, 18); c.fill(); font(c, 'Unb9', 30); c.fillStyle = C.white; c.textAlign = 'center'; c.fillText(lv, -389, 3); textFit(c, 'Nun9', 46, ph, 740); c.fillStyle = C.oliveD; c.textAlign = 'left'; c.fillText(ph, -320, 3); c.restore(); });
       c.restore(); }
-    const by = 740 + bh / 2 + 140, bk = eBack(P(u, 2.4, 2.8), 2.2);
+    const by = BY + bh / 2 + 140, bk = eBack(P(u, 2.4, 2.8), 2.2);
     if (bk > 0) { c.save(); c.translate(540, by); c.scale(bk, bk); c.fillStyle = C.gold; R(c, -450, -50, 420, 100, 50); c.fill(); c.strokeStyle = C.oliveD; c.lineWidth = 6; c.stroke(); font(c, 'Unb9', 34); c.fillStyle = C.oliveD; c.textAlign = 'center'; c.fillText('СОХРАНИ', -240, 3);
-      c.fillStyle = '#4CAF6A'; R(c, 10, -50, 440, 100, 50); c.fill(); c.strokeStyle = C.oliveD; c.stroke(); c.fillStyle = C.white; font(c, 'Unb9', 24); c.fillText(o.cta[0], 230, -12); c.fillText(o.cta[1], 230, 20); c.restore(); }
+      c.fillStyle = '#4CAF6A'; R(c, 10, -50, 440, 100, 50); c.fill(); c.strokeStyle = C.oliveD; c.stroke(); c.fillStyle = C.white; if (o.ctaFit) { textFit(c, 'Unb9', 26, o.cta[0], 390); c.fillText(o.cta[0], 230, -12); textFit(c, 'Unb9', 26, o.cta[1], 390); c.fillText(o.cta[1], 230, 20); } else { font(c, 'Unb9', 24); c.fillText(o.cta[0], 230, -12); c.fillText(o.cta[1], 230, 20); } c.restore(); }
     const ak = eOut(P(t, sp.t + 1.3, sp.t + 1.6));
     if (ak > 0) { c.save(); c.globalAlpha = ak; c.translate(600, by + 140 + Math.sin(t * 7) * 8); font(c, 'Unb9', 40); c.fillStyle = C.oliveD; c.textAlign = 'center'; c.fillText('ПИШИ В КОММЕНТЫ', 0, 0); c.fillStyle = C.pink; c.beginPath(); c.moveTo(-34, 40); c.lineTo(34, 40); c.lineTo(0, 84); c.fill(); c.restore(); }
     const subT = (wordT('outro', 'подпиш') || sp.t + 4.0) - 0.35, sy = by + 380;

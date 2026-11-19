@@ -2681,3 +2681,49 @@ EP["idea"] = dict(
            'C1': {'type': 'eq', 'en': "I'd like to clarify that I proposed this.", 'ru': '= Хочу уточнить: это предложила я.', 'ex': [["I'd like to clarify…", '= хочу уточнить…']]},
            'C2': {'type': 'c2', 'vocab': [['to be accurate', '= если быть точной'], ['proper credit', '= честное авторство']], 'moral': ['', '', ''], 'moral_at': 99}},
 )
+
+# ---------------- "salo" (TikTok, hard_cut). ElevenLabs only; narrator Sarah, heroine = Jessica, customs officer Reggie = George (reggie / bm_george), tip = Bella.
+CAST.update({
+    "customs": dict(voice="bm_george", speed=0.95, lang="en-gb", el="JBFqnCBsd6RMkjVDRZzb"),   # George (salo: Reggie in customs uniform)
+})
+EP["salo"] = dict(
+    title='Таможня нашла сало',
+    hook_title=[['ТАМОЖНЯ НАШЛА', 'd'], ['САЛО', 'p'], ['КАК ОБЪЯСНИТЬ?', 'd']],
+    stamp="ПРОВЕРИМ!", stamp_word="Проверим", next=None,
+    camera="hard_cut", card_fade=True,
+    chunks={'c2_h': [['Officer, this humble delicacy', 'Офицер, этот скромный деликатес'], ['has sustained generations of my family', 'кормил поколения моей семьи'], ['through winters you cannot imagine.', 'в такие зимы, которые вам и не снились.'], ['To confiscate it would be a culinary tragedy.', 'Конфисковать его — кулинарная трагедия.']]},
+    lines=[
+        ('hook_o', 'customs', '[suspiciously] Madam... what IS this?', 'Мадам… что ЭТО такое?'),
+        ('hook', 'nar', 'Лондон, таможня. В чемодане килограмм сала от мамы. Как объяснить, что это, на английском? По одной фразе видно твой уровень. А на Си-два случится то, чего ты не ждёшь. Проверим!', ''),
+        ('a1_h', 'her', '[eagerly] Food! Pig! Good!', 'Еда! Свинья! Хорошо!'),
+        ('a1_o', 'customs', '[alarmed] A pig? In the suitcase?!', 'Свинья? В чемодане?!'),
+        ('a1_nar', 'nar', 'Три слова — и у таможни уже живая свинья в чемодане.', ''),
+        ('a2_h', 'her', '[proudly] It is fat of pig. My mum make it.', 'Это жир от свиньи. Моя мама делать его.'),
+        ('a2_o', 'customs', '[slowly, writing] Pig fat. Homemade. By... mum.', 'Свиной жир. Домашний. Сделан… мамой.'),
+        ('a2_nar', 'nar', 'Почти. Только мама «made», а не «make». Правильно так:', ''),
+        ('a2_tip', 'tip', 'My mum made it.', ''),
+        ('b1_h', 'her', "[politely] It's a traditional food from my country. It's like bacon, but saltier.", 'Это традиционная еда моей страны. Как бекон, только солонее.'),
+        ('b1_o', 'customs', '[intrigued] Bacon, you say?', 'Бекон, говорите?'),
+        ('b1_o2', 'customs', "[hungrily] That's a lot of bacon for one person.", 'Многовато бекона для одного человека.'),
+        ('b1_nar', 'nar', 'Приём: сравни с тем, что он знает. Про бекон понял… и слишком заинтересовался.', ''),
+        ('b2_h', 'her', "[warmly] It's a family thing. My mum swears by it.", 'Это семейное. Моя мама в него свято верит.'),
+        ('b2_o', 'customs', '[shocked] Swears? At whom?', 'Ругается? На кого?'),
+        ('b2_nar', 'nar', 'Swear by — это «верить как в лекарство». А он услышал «ругается». Запоминай:', ''),
+        ('b2_tip', 'tip', 'My mum swears by it.', ''),
+        ('c1_h', 'her', '[calmly] I completely understand the rules. Would it help if I declared it?', 'Я полностью понимаю правила. Поможет, если я его задекларирую?'),
+        ('c1_o', 'customs', '[softening] Declaring is... very responsible.', 'Декларировать — это… очень ответственно.'),
+        ('c1_nar', 'nar', 'Приём: признай правила и предложи решение. С таким не спорят. Запоминай:', ''),
+        ('c1_tip', 'tip', 'Would it help if I declared it?', ''),
+        ('c2_h', 'her', '[grandly] Officer, this humble delicacy has sustained generations of my family through winters you cannot imagine. To confiscate it would be a culinary tragedy.', 'Офицер, этот скромный деликатес кормил поколения моей семьи в такие зимы, которые вам и не снились. Конфисковать его — кулинарная трагедия.'),
+        ('c2_o', 'customs', '[whispering] ...Do you have black bread?', '…А чёрный хлеб у вас есть?'),
+        ('c2_h2', 'her', '[slyly] And garlic.', 'И чеснок.'),
+        ('c2_nar', 'nar', 'Мораль: сало проходит любую границу.', ''),
+        ('outro', 'nar', 'А как бы ты объяснил иностранцу, что такое сало? Пиши в комментарии! И подпишись, впереди ещё много новых серий.', ''),
+    ],
+    cards={'A1': {'type': 'meter', 'label': 'FOOD! PIG! GOOD!', 'ok': False, 'note': 'СВИНЬЯ ✗ подозревается', 'bars': [['ГРАММАТИКА', 0]]},
+           'A2': {'type': 'swap', 'bad': 'My mum make it.', 'bad_note': 'в прошлом — made', 'good': ['My mum', 'made it.']},
+           'B1': {'type': 'eq', 'en': "It's like…, but…", 'ru': '= Это как…, только…', 'note': "It's like bacon, but saltier.", 'stamp': ['ГЛАВНЫЙ', 'ПРИЁМ']},
+           'B2': {'type': 'big', 'en': 'swear by', 'ru': 'очень доверять', 'ex': ['My mum swears by it.', 'мама в это свято верит.'], 'icon': 'bell'},
+           'C1': {'type': 'eq', 'en': 'Would it help if I declared it?', 'ru': '= Поможет, если я задекларирую?', 'ex': [['I completely understand the rules.', '= я полностью понимаю правила.']]},
+           'C2': {'type': 'c2', 'vocab': [['delicacy', '= деликатес'], ['sustain', '= кормить, поддерживать']], 'moral': ['САЛО ПРОХОДИТ', 'ЛЮБУЮ', 'ГРАНИЦУ'], 'moral_at': 0.35}},
+)
