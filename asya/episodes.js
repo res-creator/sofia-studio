@@ -3,6 +3,7 @@ const {SCREENS, FACE, clamp, ease} = require('./engine');
 const blink = (lt, at, base) => (at.some(a => lt > a && lt < a + 0.13) ? 'blink' : base);
 const thumbCycle = (lt, cyc = .8) => { const f = (lt % cyc) / cyc; return f < .4 ? ease(f / .4) : Math.max(0, 1 - (f - .4) / .25); };
 
+const pops = (n, rate, v = 0.55) => Array.from({length: n}, (_, i) => [i / rate + 0.05, 'pop', v]);
 const EP = {};
 
 // 1. Зарплата
@@ -18,11 +19,11 @@ const ep1Cart = [
 EP.ep1 = {title: 'Зарплата', shots: [
   {dur: 3.0, kind: 'phone', st: lt => ({thumb: 0, screen: SCREENS.bank({balance: 1240 + ease(lt / 1.2 - .3) * 45000,
     ops: [{name: 'Зарплата', sum: '+45 000 ₽', c: '#4fbf9f', a: clamp(lt * 2 - .6)}, {name: 'Кофе', sum: '−240 ₽', c: '#d9a02a'}, {name: 'Метро', sum: '−62 ₽', c: '#8a7be0'}]})}),
-    cap: ['ПРИШЛА ЗАРПЛАТА!']},
-  {dur: 2.8, kind: 'wide', st: lt => ({eyes: blink(lt, [1.6], 'happy'), mouth: 'grin', cat: 'idle', steam: true}), cap: ['ВСЁ, С ЭТОГО МЕСЯЦА', 'ЖИВУ ЭКОНОМНО']},
-  {dur: 3.8, kind: 'phone', st: lt => ({thumb: thumbCycle(lt, .55), screen: SCREENS.list({title: 'Корзина', items: ep1Cart, shown: lt * 2.2})}), cap: ['ТОЛЬКО САМОЕ', 'НЕОБХОДИМОЕ']},
-  {dur: 2.6, kind: 'phone', st: lt => ({thumb: 0, screen: SCREENS.bank({balance: 3200, ops: [{name: 'Маркетплейс', sum: '−29 640 ₽', c: '#ee7d98'}, {name: 'Доставка еды', sum: '−8 980 ₽', c: '#e0412a'}, {name: 'Такси', sum: '−4 420 ₽', c: '#d9a02a'}]})}), cap: ['ЧЕРЕЗ ДВА ДНЯ']},
-  {dur: 3.4, kind: 'wide', cam: FACE, st: lt => ({eyes: 'wide', cat: lt < 1.2 ? 'wide' : 'judge', steam: false}), cap: lt => (lt < 1.4 ? ['…'] : ['БУБЛИК,', 'МЫ НА ГРЕЧКЕ'])},
+    cap: ['ПРИШЛА ЗАРПЛАТА!'], sfx: [[0.45, 'coin', 0.9]]},
+  {dur: 2.8, kind: 'wide', st: lt => ({eyes: blink(lt, [1.6], 'happy'), mouth: 'grin', cat: 'idle', steam: true}), cap: ['ВСЁ, С ЭТОГО МЕСЯЦА', 'ЖИВУ ЭКОНОМНО'], sfx: [[0.3, 'ding', 0.6]]},
+  {dur: 3.8, kind: 'phone', st: lt => ({thumb: thumbCycle(lt, .55), screen: SCREENS.list({title: 'Корзина', items: ep1Cart, shown: lt * 2.2})}), cap: ['ТОЛЬКО САМОЕ', 'НЕОБХОДИМОЕ'], sfx: pops(7, 2.2)},
+  {dur: 2.6, kind: 'phone', st: lt => ({thumb: 0, screen: SCREENS.bank({balance: 3200, ops: [{name: 'Маркетплейс', sum: '−29 640 ₽', c: '#ee7d98'}, {name: 'Доставка еды', sum: '−8 980 ₽', c: '#e0412a'}, {name: 'Такси', sum: '−4 420 ₽', c: '#d9a02a'}]})}), cap: ['ЧЕРЕЗ ДВА ДНЯ'], sfx: [[0.05, 'scratch', 0.8]]},
+  {dur: 3.4, kind: 'wide', cam: FACE, st: lt => ({eyes: 'wide', cat: lt < 1.2 ? 'wide' : 'judge', steam: false}), cap: lt => (lt < 1.4 ? ['…'] : ['БУБЛИК,', 'МЫ НА ГРЕЧКЕ']), sfx: [[1.4, 'sad', 0.8], [2.7, 'meow', 0.8]]},
 ]};
 
 // 2. Зарядка
@@ -36,11 +37,11 @@ const ep2Cart = [
   {name: 'Ещё носки', price: 590, c: '#d9a02a', icon: '♥'},
 ];
 EP.ep2 = {title: 'Зарядка', shots: [
-  {dur: 3.0, kind: 'wide', st: lt => ({eyes: blink(lt, [1.8], 'down'), cat: 'idle', steam: true}), cap: ['ЗАЙДУ НА МАРКЕТПЛЕЙС', 'ТОЛЬКО ЗА ЗАРЯДКОЙ']},
-  {dur: 3.8, kind: 'phone', st: lt => ({thumb: thumbCycle(lt, .55), screen: SCREENS.list({title: 'Корзина', items: ep2Cart, shown: lt * 2.1})}), cap: lt => (lt < 1.8 ? ['ТАК, ЗАРЯДКА…'] : ['…И ПАРУ МЕЛОЧЕЙ'])},
-  {dur: 2.4, kind: 'phone', st: lt => ({thumb: 0, screen: SCREENS.done({title: 'Заказ оформлен!', sub: ['7 товаров · 7 720 ₽', 'Доставим в четверг']})}), cap: ['ГОТОВО!']},
-  {dur: 2.6, kind: 'phone', st: lt => ({thumb: 0, bg: '#1c1c24', screen: SCREENS.lowBattery()}), cap: ['ВЕЧЕРОМ']},
-  {dur: 3.6, kind: 'wide', cam: FACE, st: lt => ({eyes: 'wide', mouth: lt > 1.6 ? 'o' : 'w', cat: 'judge', q: lt > 1.6 ? (lt - 1.6) / 1.2 : 0}), cap: lt => (lt < 1.6 ? ['А ЗАРЯДКУ', 'Я ЗАКАЗАЛА?'] : ['…НЕТ'])},
+  {dur: 3.0, kind: 'wide', st: lt => ({eyes: blink(lt, [1.8], 'down'), cat: 'idle', steam: true}), cap: ['ЗАЙДУ НА МАРКЕТПЛЕЙС', 'ТОЛЬКО ЗА ЗАРЯДКОЙ'], sfx: [[0.3, 'ding', 0.6], [2.5, 'tap', 0.7]]},
+  {dur: 3.8, kind: 'phone', st: lt => ({thumb: thumbCycle(lt, .55), screen: SCREENS.list({title: 'Корзина', items: ep2Cart, shown: lt * 2.1})}), cap: lt => (lt < 1.8 ? ['ТАК, ЗАРЯДКА…'] : ['…И ПАРУ МЕЛОЧЕЙ']), sfx: pops(7, 2.1)},
+  {dur: 2.4, kind: 'phone', st: lt => ({thumb: 0, screen: SCREENS.done({title: 'Заказ оформлен!', sub: ['7 товаров · 7 720 ₽', 'Доставим в четверг']})}), cap: ['ГОТОВО!'], sfx: [[0.2, 'chime', 0.8]]},
+  {dur: 2.6, kind: 'phone', st: lt => ({thumb: 0, bg: '#1c1c24', screen: SCREENS.lowBattery()}), cap: ['ВЕЧЕРОМ'], sfx: [[0.4, 'beep', 0.8]]},
+  {dur: 3.6, kind: 'wide', cam: FACE, st: lt => ({eyes: 'wide', mouth: lt > 1.6 ? 'o' : 'w', cat: 'judge', q: lt > 1.6 ? (lt - 1.6) / 1.2 : 0}), cap: lt => (lt < 1.6 ? ['А ЗАРЯДКУ', 'Я ЗАКАЗАЛА?'] : ['…НЕТ']), sfx: [[0.05, 'scratch', 0.7], [1.6, 'sad', 0.8], [2.9, 'meow', 0.8]]},
 ]};
 
 // 3. Подписки
@@ -54,10 +55,10 @@ const ep3Subs = [
   {name: 'Что это вообще?', price: 199, c: '#ee7d98', icon: '?'},
 ];
 EP.ep3 = {title: 'Подписки', shots: [
-  {dur: 3.0, kind: 'wide', st: lt => ({eyes: blink(lt, [1.5], 'down'), mouth: 'flat', cat: 'idle', steam: true}), cap: ['ПОСМОТРЮ, КУДА', 'УХОДЯТ ДЕНЬГИ']},
-  {dur: 4.2, kind: 'phone', st: lt => ({thumb: thumbCycle(lt, .6), screen: SCREENS.list({title: 'Подписки', items: ep3Subs, shown: lt * 2, totalLabel: 'В месяц', button: null})}), cap: ['ПОДПИСКИ…']},
-  {dur: 2.8, kind: 'wide', cam: FACE, st: lt => ({eyes: 'wide', mouth: 'o', cat: 'wide'}), cap: ['4 175 ₽ В МЕСЯЦ?!', 'Я ИМИ ДАЖЕ НЕ ПОЛЬЗУЮСЬ']},
-  {dur: 3.4, kind: 'wide', st: lt => ({eyes: blink(lt, [2.2], 'down'), mouth: 'smile', cat: 'judge'}), cap: ['ЛАДНО,', 'ОТМЕНЮ ЗАВТРА']},
+  {dur: 3.0, kind: 'wide', st: lt => ({eyes: blink(lt, [1.5], 'down'), mouth: 'flat', cat: 'idle', steam: true}), cap: ['ПОСМОТРЮ, КУДА', 'УХОДЯТ ДЕНЬГИ'], sfx: [[2.3, 'tap', 0.7]]},
+  {dur: 4.2, kind: 'phone', st: lt => ({thumb: thumbCycle(lt, .6), screen: SCREENS.list({title: 'Подписки', items: ep3Subs, shown: lt * 2, totalLabel: 'В месяц', button: null})}), cap: ['ПОДПИСКИ…'], sfx: pops(7, 2)},
+  {dur: 2.8, kind: 'wide', cam: FACE, st: lt => ({eyes: 'wide', mouth: 'o', cat: 'wide'}), cap: ['4 175 ₽ В МЕСЯЦ?!', 'Я ИМИ ДАЖЕ НЕ ПОЛЬЗУЮСЬ'], sfx: [[0.05, 'scratch', 0.8]]},
+  {dur: 3.4, kind: 'wide', st: lt => ({eyes: blink(lt, [2.2], 'down'), mouth: 'smile', cat: 'judge'}), cap: ['ЛАДНО,', 'ОТМЕНЮ ЗАВТРА'], sfx: [[0.3, 'sad', 0.75], [1.6, 'meow', 0.8]]},
 ]};
 
 module.exports = EP;

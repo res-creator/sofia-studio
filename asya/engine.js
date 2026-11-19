@@ -204,7 +204,7 @@ function face(x, y, st) {
 function asya(st) {
   const x = 480, y = 610 + Math.sin(st.t * 2) * 2.5;
   curls(x, y, 70, false);
-  paint(P([[x - 38, y + 130], [x + 38, y + 130], [x + 42, y + 230], [x - 42, y + 230]], 62, 2, 8), C.skinD, T.skin);
+  paint(P([[x - 40, y + 120], [x + 40, y + 120], [x + 46, y + 300], [x - 46, y + 300]], 62, 2, 8), C.skinD, T.skin); // neck runs under the sweater
   paint(P([[x - 120, y + 245], [x + 120, y + 245], [x + 230, y + 290], [x + 250, y + 640], [x - 260, y + 640], [x - 240, y + 290]], 63, 4, 70), C.sweater, T.knit);
   // crew neckline
   g.beginPath(); g.moveTo(x - 90, y + 248); g.quadraticCurveTo(x, y + 320, x + 90, y + 248); g.quadraticCurveTo(x, y + 290, x - 90, y + 248); g.fillStyle = C.skinD; g.fill();
@@ -282,14 +282,15 @@ function phone(st) {
   paint(S([[-80, 1200], [140, 1060], [250, 1020], [290, 1250], [230, 1640], [-80, 1760]], 92, 6), C.skin, T.skin);
   for (let k = 0; k < 3; k++) paint(S(ell(268 + k * 6, 1040 + k * 80, 46, 30, 12, -0.15), 96 + k, 3), C.skin, T.skin, 1, 'rgba(150,80,60,0.5)', 3);
   paint(P([[-80, 1600], [170, 1560], [300, 1980], [-80, 1980]], 93, 6, 50), C.sweater, T.knit);
-  const ty = 1360 - (st.thumb || 0) * 190;
+  const ty = 1480 - (st.thumb || 0) * 260; // rests low, swipes up
   paint(S([[1160, 1560], [900, 1520], [740, ty + 50], [690, ty], [720, ty - 45], [790, ty - 30], [960, 1330], [1160, 1290]], 94, 6), C.skin, T.skin);
   g.beginPath(); g.ellipse(716, ty - 6, 28, 19, -0.5, 0, 7); g.fillStyle = 'rgba(255,225,215,0.7)'; g.fill();
   paint(P([[1160, 1590], [930, 1600], [1000, 1980], [1160, 1980]], 95, 6, 50), C.sweater, T.knit);
 }
 
 // ---------------- app screens (fictional apps — brand slot for future ads) ----------------
-function txt(s, x, y, size, color = C.ink, align = 'left') { g.font = `${size}px ${FONT}`; g.fillStyle = color; g.textAlign = align; g.textBaseline = 'alphabetic'; g.fillText(s, x, y); }
+function txt(s, x, y, size, color = C.ink, align = 'left', maxW = 0) { g.font = `${size}px ${FONT}`;
+  while (maxW && size > 18 && g.measureText(s).width > maxW) { size -= 1; g.font = `${size}px ${FONT}`; } g.fillStyle = color; g.textAlign = align; g.textBaseline = 'alphabetic'; g.fillText(s, x, y); }
 function statusBar(sx, sy, sw, time = '19:42', battery = 76) {
   txt(time, sx + 50, sy + 72, 44);
   const bx = sx + sw - 120, by = sy + 44; g.strokeStyle = C.ink; g.lineWidth = 3; g.strokeRect(bx, by, 64, 30); g.fillStyle = C.ink; g.fillRect(bx + 66, by + 9, 6, 12);
@@ -305,7 +306,7 @@ const SCREENS = {
       txt(rub(balance), sx + 80, sy + 410, 92, '#fff');
       ops.forEach((o, i) => { const y = sy + 600 + i * 120; if (o.a !== undefined && o.a <= 0) return; g.save(); g.globalAlpha = o.a ?? 1;
         g.beginPath(); g.arc(sx + 80, y, 34, 0, 7); g.fillStyle = o.c || C.mint; g.fill(); g.strokeStyle = C.ink; g.lineWidth = 3; g.stroke();
-        txt(o.name, sx + 135, y + 14, 38); txt(o.sum, sx + sw - 40, y + 14, 40, o.sum.startsWith('+') ? '#1d8a5a' : C.ink, 'right'); g.restore(); });
+        g.font = `40px ${FONT}`; const sumW = g.measureText(o.sum).width; txt(o.sum, sx + sw - 40, y + 14, 40, o.sum.startsWith('+') ? '#1d8a5a' : C.ink, 'right'); txt(o.name, sx + 135, y + 14, 38, C.ink, 'left', sw - 40 - 135 - sumW - 24); g.restore(); });
     };
   },
   list({title, items, totalLabel = 'Итого', button = 'Оформить', shown = 99, scroll = 0}) {
@@ -316,7 +317,7 @@ const SCREENS = {
         g.save(); g.globalAlpha = a; g.translate(0, (1 - a) * 30);
         paint(() => smoothPath(rr(sx + 34, y, 92, 92, 18)), it.c, null, 1, C.ink, 3);
         txt(it.name[0], sx + 80, y + 64, 50, '#fff', 'center');
-        txt(it.name, sx + 142, y + 58, 31); txt(rub(it.price), sx + sw - 30, y + 58, 32, C.ink, 'right'); g.restore(); });
+        g.font = `32px ${FONT}`; const pw = g.measureText(rub(it.price)).width; txt(rub(it.price), sx + sw - 30, y + 58, 32, C.ink, 'right'); txt(it.name, sx + 142, y + 58, 32, C.ink, 'left', sw - 30 - 142 - pw - 22); g.restore(); });
       g.fillStyle = st_bg; g.fillRect(sx, sy + 100, sw, 90); txt(title, sx + 50, sy + 170, 54);
       g.fillStyle = '#fff'; g.fillRect(sx, sy + sh - 220, sw, 220); ln([[sx, sy + sh - 220], [sx + sw, sy + sh - 220]], C.ink, 3);
       txt(totalLabel, sx + 50, sy + sh - 150, 40); txt(rub(total), sx + sw - 40, sy + sh - 150, 50, C.ink, 'right');
@@ -370,9 +371,28 @@ function render(ep, out, stillTimes) {
   }
   if (stillTimes) { const outs = []; for (const t of stillTimes) { frame(t); const f = out.replace(/\.mp4$/, `_${t}.png`); fs.writeFileSync(f, cv.toBuffer('image/png')); outs.push(f); } return Promise.resolve(outs); }
   const ff = spawn('ffmpeg', ['-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', `${W}x${H}`, '-r', FPS, '-i', '-',
-    '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-shortest', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', '-c:a', 'aac', '-movflags', '+faststart', out], {stdio: ['pipe', 'inherit', 'inherit']});
+    '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', '-movflags', '+faststart', out + '.silent.mp4'], {stdio: ['pipe', 'inherit', 'inherit']});
   return (async () => { for (let i = 0; i < Math.round(total * FPS); i++) { frame(i / FPS); const b = Buffer.from(g.getImageData(0, 0, W, H).data.buffer); if (!ff.stdin.write(b)) await new Promise(r => ff.stdin.once('drain', r)); }
-    ff.stdin.end(); await new Promise(r => ff.on('close', r)); return [out]; })();
+    ff.stdin.end(); await new Promise(r => ff.on('close', r)); mixAudio(ep, out, total); fs.unlinkSync(out + '.silent.mp4'); return [out]; })();
+}
+
+// ---------------- audio ----------------
+// music bed (series theme) + SFX. shot.sfx = [[timeInShot, name, volume]]; cuts get a soft whoosh;
+// music ducks under the last shot (punchline) where ep.sting plays.
+const AUD = path.join(__dirname, 'audio');
+function mixAudio(ep, out, total) {
+  const ev = []; let s0 = 0;
+  ep.shots.forEach((sh, i) => { if (i) ev.push([s0, 'whoosh', 0.35]); for (const [t, n, v] of (sh.sfx || [])) ev.push([s0 + t, n, v ?? 0.8]); s0 += sh.dur; });
+  const lastStart = total - ep.shots[ep.shots.length - 1].dur;
+  const args = ['-y', '-v', 'error', '-i', out + '.silent.mp4', '-stream_loop', '-1', '-i', path.join(AUD, 'theme.mp3')];
+  ev.forEach(([, n]) => args.push('-i', path.join(AUD, n + '.mp3')));
+  const duck = ep.duck ?? lastStart;
+  let fc = `[1:a]atrim=0:${total},asetpts=N/SR/TB,volume='if(gt(t,${duck}),0.10,0.32)':eval=frame,afade=t=out:st=${(total - 0.8).toFixed(2)}:d=0.8[m]`;
+  const labels = ['[m]'];
+  ev.forEach(([t, , v], i) => { const ms = Math.max(0, Math.round(t * 1000)); fc += `;[${i + 2}:a]volume=${v},adelay=${ms}|${ms}[s${i}]`; labels.push(`[s${i}]`); });
+  fc += `;${labels.join('')}amix=inputs=${labels.length}:normalize=0:duration=first,alimiter=limit=0.9[a]`;
+  args.push('-filter_complex', fc, '-map', '0:v', '-map', '[a]', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-t', String(total), '-movflags', '+faststart', out);
+  const r = require('child_process').spawnSync('ffmpeg', args, {stdio: 'inherit'}); if (r.status) throw new Error('audio mix failed');
 }
 
 const FACE = {z: 1.55, cx: 560, cy: 720}; // reaction close-up camera
