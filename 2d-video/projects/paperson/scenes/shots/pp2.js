@@ -9,6 +9,21 @@ import * as M from '../lib/motion.js';
 import { worldMap, mapProj, pin, route, globe } from '/projects/remote/scenes/lib/sets.js';
 import { subscribe } from '/projects/remote/scenes/lib/sets2.js';
 import * as PP from '../lib/pp_sets.js';
+// архивные фото (общественное достояние / CC BY-SA с указанием автора): загружаются до первого кадра
+const PH = {}; const PHC = {
+  angel_building: 'Остров Ангела. Фото: E bailey, CC BY-SA 4.0', poetry: 'Стихи на стене барака. Фото: Rhododendrites, CC BY-SA 4.0', carved: 'Надписи на стене. Фото: Frank Schulenburg, CC BY-SA 4.0',
+  law: 'Закон об исключении китайцев, 1882. Общественное достояние', rail: 'Китайские рабочие, 1863-1869. Общественное достояние', genthe: 'Сан-Франциско, 18 апреля 1906. Фото: Арнольд Генте. Общественное достояние',
+  worden: 'Сан-Франциско, 1906. Фото: Уиллард Уорден. Общественное достояние', leaving: 'Жители покидают город, 1906. NARA. Общественное достояние', paperson: 'Заявление на удостоверение личности, Сан-Франциско. Общественное достояние', lawrence: 'Сан-Франциско после пожара, 1906. Фото: Джордж Лоренс. Общественное достояние' };
+await Promise.all(Object.keys(PHC).map((k) => new Promise((res) => { const im = new Image(); im.onload = () => { PH[k] = im; res(); }; im.onerror = () => res(); im.src = `/project/assets/archive/${k}.jpg`; })));
+function photoBg(g, o) {
+  const im = PH[o.src]; g.fillStyle = '#101014'; g.fillRect(-200, -200, 2320, 1480); if (!im) return;
+  const cs = Math.max(2320 / im.width, 1480 / im.height); g.save(); g.filter = 'blur(26px)'; g.drawImage(im, 960 - im.width * cs / 2, 540 - im.height * cs / 2, im.width * cs, im.height * cs); g.restore();
+  g.fillStyle = 'rgba(8,8,14,.45)'; g.fillRect(-200, -200, 2320, 1480);
+  const mw = o.maxw ?? 1560, mh = o.maxh ?? 820, k = Math.min(mw / im.width, mh / im.height), w = im.width * k, h = im.height * k, cx = 960, cy = o.cy ?? 520;
+  g.save(); g.translate(cx, cy); g.rotate(o.rot ?? 0); g.shadowColor = 'rgba(0,0,0,.6)'; g.shadowBlur = 40; g.shadowOffsetY = 14; g.fillStyle = '#f4f1ea'; g.fillRect(-w / 2 - 16, -h / 2 - 16, w + 32, h + 32); g.shadowColor = 'transparent';
+  if (o.bw) g.filter = 'grayscale(1) contrast(1.05)'; g.drawImage(im, -w / 2, -h / 2, w, h); g.filter = 'none'; g.restore();
+  const c = o.credit ?? PHC[o.src]; if (c) { g.save(); g.font = '600 26px sans-serif'; const tw = g.measureText(c).width + 36; g.fillStyle = 'rgba(10,10,16,.72)'; g.fillRect(960 - tw / 2, 1006, tw, 46); g.fillStyle = '#e8e4da'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(c, 960, 1030); g.restore(); }
+}
 const SKC = '#e6bf94';
 export const C = {
   boy: { hair: 'side', hairC: '#1c1816', body: 'perahan', coat: '#5a6a7a', vest: '#3a4048', skin: SKC, seed: 3, brow: 6 },
@@ -27,6 +42,7 @@ const resolve = (o, gt) => { if (!o) return {}; const r = {}; for (const k in o)
 // фон по имени
 function drawBg(g, name, t, gt, o) {
   if (!name) return; if (name === 'black') { g.fillStyle = '#060606'; g.fillRect(-200, -200, 2320, 1480); return; }
+  if (name === 'photo') return photoBg(g, o);
   if (name === 'paper') { g.fillStyle = vg(g, 0, 1080, o.col || '#f2ead8', 0.1); g.fillRect(-200, -200, 2320, 1480); return; }
   if (name === 'color') { g.fillStyle = vg(g, 0, 1080, o.col || '#2a2638', 0.2); g.fillRect(-200, -200, 2320, 1480); return; }
   if (name === 'map') { worldMap(g, t, { view: o.view, hl: o.hl, labels: o.labels }); return; }
