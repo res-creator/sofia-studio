@@ -1,0 +1,42 @@
+T001 1.000 
+T002 0.931 replace: they're -> their | replace: forty -> 40
+T003 1.000 
+T004 1.000 
+T005 0.820 replace: fourteen thousand four hundred and ten -> 14 410 | replace: forty eight -> 48
+T006 1.000 
+T007 1.000 
+T008 0.892 replace: a hundred -> 100 | replace: fifteen -> 15 | replace: twenty -> 20
+T009 1.000 
+T009B 0.950 replace: eighteen ninety four -> 1894
+T010 0.944 replace: fifty six hundred -> 5600
+T011 0.927 replace: three hundred -> 300 | replace: seventy five -> 75
+T013 0.889 replace: eleven -> 11 | replace: six thousand -> 6 000 | replace: two thousand two -> 2002
+T014 0.846 replace: ninety thousand -> 90 000 | replace: fifty thousand -> 50 000
+T014B 0.864 replace: puyallup -> hualup | replace: nine thousand -> 9 000
+T015 0.923 replace: nineteen ninety three -> 1993
+T016 0.939 replace: firs -> furs | replace: ten -> 10
+T017 0.940 replace: a hundred -> 100 | replace: fifteen -> 15
+T018 0.911 replace: twenty one -> 21 | replace: fifteen oh seven -> 1507
+T019 1.000 
+T021 0.871 insert:  -> 1985 | replace: nineteen eighty five in colombia -> columbia | replace: nevado -> novato | replace: armero -> armaro | replace: twenty three thousand -> 23 000 | replace: armero -> armaro
+T022 0.850 replace: nineteen ninety eight -> 1998 | replace: and -> in
+T023 0.929 replace: twenty sixteen -> 2016 | replace: twenty five -> 25 | replace: ten -> 10
+T024 0.914 replace: forty -> 40 | replace: three -> 3 | replace: orting -> ording
+T025 0.930 replace: orting -> ordering | replace: tideflats -> tied flats
+T025B 0.966 replace: forty -> 40
+T025C 0.917 replace: thirty -> 30 | replace: thirteen -> 13 | replace: nine -> 9
+T026 1.000 
+T027 0.824 replace: twenty twenty four -> 2024 | replace: forty five thousand -> 45 000
+T028 0.868 replace: two thousand six -> 2006 | replace: twenty five -> 25
+T029 0.914 replace: footbridge -> foot bridge | replace: twenty twenty five -> 2025 | replace: nine -> 9 | delete: dollars -> 
+T030 0.935 replace: twenty twenty three -> 2023
+T030B 1.000 
+T031 1.000 
+T032 0.916 replace: fifty -> 50 | replace: three hundred and thirty -> 330
+T032B 0.896 replace: nineteen oh six -> 1906 | replace: logjam -> log jam
+T033 0.917 replace: eighteen ninety six -> 1896
+T034 0.829 replace: tahoma creek -> to homacreek | replace: thirty five -> 35 | replace: nineteen sixty seven -> 1967 | replace: nineteen eighties -> 1980s
+T035 0.872 replace: twenty twenty five -> 2025 | replace: thirteen hundred and fifty -> 1 350
+T036 1.000 
+T037 0.952 replace: fifteen oh seven -> 1507
+T037A 0.909 replace: place -> play

@@ -47,7 +47,7 @@ Numbers in [brackets] point to SOURCES.md. Rules from the critic:
 
 **T009** Lava and ash are not the main threat here. Ash usually blows east, away from Seattle and Tacoma. The killer that travels far is the mud. [51]
 
-**T009B** And the eruption people talk about, in eighteen ninety-four? Seattle papers reported black smoke. A rival paper said it never happened, and no ash has ever been found. The last real eruption of lava was about a thousand years ago. [5]
+**T009B** And the eruption people talk about, in eighteen ninety-four? Seattle papers reported black smoke. A rival paper said it never happened, and no ash has ever been found. The last eruption of fresh magma was about a thousand years ago. [5]
 
 ---
 
@@ -58,7 +58,7 @@ Numbers in [brackets] point to SOURCES.md. Rules from the critic:
 **T011** It filled valleys more than three hundred feet deep and ran for over seventy-five miles. It even pushed back the sea. The valley where Kent and Auburn stand today was once an arm of Puget Sound. The mud helped fill it. [13][15]
 
 
-**T013** And it wasn't a one-off. At least eleven big lahars have reached these lowlands in the last six thousand years. In two thousand two, the U.S. Geological Survey put the chance of another one in an average lifetime at at least one in seven. [16][17]
+**T013** And it wasn't a one-off. At least eleven big lahars have reached these lowlands in the last six thousand years. In two thousand two, the U.S. Geological Survey put the chance of another one in an average lifetime at one in seven, or more. [16][17]
 
 **T014** Around ninety thousand people now live in the mapped lahar zones, in towns like Puyallup, Sumner and Orting, and more than fifty thousand people work there. [14][23]
 
@@ -91,7 +91,7 @@ Numbers in [brackets] point to SOURCES.md. Rules from the critic:
 
 **T024** When a big lahar is detected, sirens sound in the valley towns. For most of them, that means at least forty minutes, and up to three hours, of warning. Orting is near the short end. [28]
 
-**T025** A new USGS map times the worst case. The mud reaches Orting in about an hour, Puyallup and Sumner in about three, and the port of Tacoma in about five. [27]
+**T025** A new map from the U.S. Geological Survey times the worst case. The mud reaches Orting in about an hour, Puyallup and Sumner in about three, and the Tacoma tideflats in four to five. [27]
 
 **T025B** That hour starts when the mountain lets go. Sensors need a few minutes to catch it, and the alarm takes time. That's why Orting is left with about forty. [28][34]
 
@@ -113,7 +113,7 @@ Numbers in [brackets] point to SOURCES.md. Rules from the critic:
 
 ## CH5 — The question nobody can answer
 
-**T031** And there's one scenario the model doesn't answer.
+**T031** And there's one scenario nobody has worked out yet.
 
 **T032** In the U.S. Geological Survey's worst-case model, a giant landslide lahar reaches Alder Lake in about fifty minutes, and pushes out enough water to pour over the three-hundred-and-thirty-foot dam. What happens after that, the model doesn't say. [30]
 
