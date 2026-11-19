@@ -8,10 +8,10 @@ html,body{width:1080px;height:1920px;background:var(--bg);overflow:hidden;font-f
 #sub{top:240px;color:var(--sub);font-weight:700;font-size:46px;letter-spacing:3px}
 #lvl{top:340px}
 #lvl span{display:inline-block;border:5px solid var(--acc);color:var(--acc);font-weight:900;font-size:44px;letter-spacing:4px;padding:6px 30px;border-radius:40px}
-#q{top:440px;color:var(--tx);font-weight:900;font-size:124px;line-height:1.08;padding:0 70px}
-#ring{position:absolute;left:400px;top:770px;width:280px;height:280px;border-radius:50%}
-#ringIn{position:absolute;left:400px;top:770px;width:280px;height:280px;border-radius:50%}
-#n{top:812px;font-size:180px;font-weight:900;color:var(--tx);line-height:1}
+#q{top:380px;color:var(--tx);font-weight:900;font-size:124px;line-height:1.08;padding:0 70px}
+#ring{position:absolute;left:400px;top:750px;width:280px;height:280px;border-radius:50%}
+#ringIn{position:absolute;left:400px;top:750px;width:280px;height:280px;border-radius:50%}
+#n{top:792px;font-size:180px;font-weight:900;color:var(--tx);line-height:1}
 .card{position:absolute;top:1075px;width:440px;height:545px;border-radius:50px;background:var(--card);border:6px solid var(--cb)}
 #cl{left:70px}#cr{right:70px}
 .card img{width:220px;height:220px;border-radius:50%;object-fit:cover;margin:36px auto 0;display:block;border:8px solid var(--acc)}
@@ -27,13 +27,12 @@ html,body{width:1080px;height:1920px;background:var(--bg);overflow:hidden;font-f
 </style>
 <div id=f>
 <div class=c id=tag>ТЕСТ ПО АНГЛИЙСКОМУ</div><div class=c id=sub>ЛОНДОН ПРОТИВ НЬЮ-ЙОРКА</div>
-<div class=c id=lvl><span id=lvlT>A2</span></div>
 <div class=c id=q></div>
 <div id=ring></div><div id=ringIn></div><div class=c id=n></div>
 <div class=card id=cl><img src="assets/uk.png"><b>LONDON</b><span class=h id=hl>?</span><span class=a id=al style="display:none"></span></div>
 <div class=card id=cr><img src="assets/us.png"><b>NEW YORK</b><span class=h id=hr>?</span><span class=a id=ar style="display:none"></span></div>
-<div class=steps id=steps><i style=height:40px></i><i style=height:70px></i><i style=height:100px></i><i style=height:130px></i><i style=height:160px></i></div>
-<div class=c id=end><div class=c id=endTitle>Сколько у тебя из 5?</div><div class=c id=endSub>Пиши цифру в комментариях.<br>Завтра будет сложнее.</div></div>
+<div class=steps id=steps></div>
+<div class=c id=end><div class=c id=endTitle>Сколько у тебя из 6?</div><div class=c id=endSub>Пиши цифру в комментариях.<br>Завтра будет сложнее.</div></div>
 </div>
 <script>
 const $=id=>document.getElementById(id);
@@ -52,7 +51,7 @@ function render(t){
   const i=cur.i;
   const inEnd=t>=TL.outro[0]-0.25;
   // question text
-  $('q').textContent='«'+cur.ru+'»'; $('lvlT').textContent=cur.level;
+  $('q').textContent='«'+cur.ru+'»';
   const tin=ease((t-cur.start)/0.3); const pre=(i===0&&t<cur.start); $('q').style.opacity=pre?1:tin; $('q').style.transform=pre?'none':`translateY(${(1-tin)*24}px)`; $('q').style.fontSize=(cur.ru.length>16?84:124)+'px';
   // steps
   [...$('steps').children].forEach((el,k)=>el.className=(k<i||(k===i&&t>=cur.usv[0]))?'on':'');
@@ -77,10 +76,10 @@ function render(t){
   // end screen
   const e=ease((t-(TL.outro[0]-0.25))/0.4);
   const keep=['tag','sub'];
-  ['lvl','q','ring','ringIn','n','cl','cr'].forEach(id=>{const el=$(id); if(inEnd){el.style.opacity=1-e;} });
+  ['q','ring','ringIn','n','cl','cr'].forEach(id=>{const el=$(id); if(inEnd){el.style.opacity=1-e;} });
   $('end').style.opacity=inEnd?e:0;
   if(inEnd){$('steps').children.length&&[...$('steps').children].forEach(el=>el.className='on');
     $('cl').style.transform='scale(1)';$('cr').style.transform='scale(1)';}
 }
-window.setTL=tl=>{TL=tl};window.render=render;
+window.setTL=tl=>{TL=tl;const st=$('steps');st.innerHTML='';const n=tl.q.length;for(let k=0;k<n;k++){const e=document.createElement('i');e.style.height=(40+k*(120/(n-1)))+'px';e.style.width='70px';st.appendChild(e);}};window.render=render;
 </script>

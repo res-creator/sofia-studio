@@ -1,9 +1,11 @@
 # Тест по английскому: Лондон против Нью-Йорка (серия «Квиз», ролик 1)
 
-Файлы: `quiz_london_vs_ny.mp4` (1080x1920, 30 fps, около 59 секунд), `quiz_london_vs_ny_cover.png` (кадр 0), `quiz_london_vs_ny.srt`.
+Длина: 1:09 (нужно больше 60 секунд для программы вознаграждений TikTok).
+
+Файлы: `quiz_london_vs_ny.mp4` (1080x1920, 30 fps, около 69 секунд, больше минуты для монетизации TikTok), `quiz_london_vs_ny_cover.png` (кадр 0), `quiz_london_vs_ny.srt`.
 
 ## Подпись (TikTok)
-Тест: Лондон против Нью-Йорка. Как они скажут по-английски? Сколько у тебя правильных из 5? Пиши цифру в комментариях. Завтра будет сложнее.
+Тест: Лондон против Нью-Йорка. Как они скажут по-английски? Сколько у тебя правильных из 6? Пиши цифру в комментариях. Завтра будет сложнее.
 
 #английский #английскийязык #учуанглийский #тестпоанглийскому #speakinenglish
 
@@ -16,14 +18,17 @@
 - Цель: 150K+. Если ролик не дотянул, менять только фразы, формат оставлять.
 - Лучшие неправильные ответы из комментариев превращать в следующий выпуск.
 
-## Фразы (по уровням)
-| Уровень | Русский | London | New York |
-|---|---|---|---|
-| A2 | Позвони мне | Give me a ring. | Give me a call. |
-| A2 | Выбрось мусор | Take out the rubbish. | Take out the trash. |
-| B1 | Ты меня бесишь | You're driving me mad. | You're driving me crazy. |
-| B2 | Я без сил | I'm absolutely knackered. | I'm totally beat. |
-| B2 | Давай разберёмся позже | Let's sort it out later. | Let's figure it out later. |
+## Фразы
+| Русский | London | New York |
+|---|---|---|
+| Позвони мне | Give me a ring. | Give me a call. |
+| Выбрось мусор | Take out the rubbish. | Take out the trash. |
+| Ты меня бесишь | You're driving me mad. | You're driving me crazy. |
+| Я без сил | I'm absolutely knackered. | I'm totally beat. |
+| Мне нужно в туалет | I need the loo. | I need the bathroom. |
+| Давай разберёмся позже | Let's sort it out later. | Let's figure it out later. |
+
+Бирок уровней (A2/B1/B2) в ролике нет: для выбора британского и американского варианта они ничего не значат.
 
 ## Голоса (ElevenLabs, известные из CAST)
-Диктор: Sarah (multilingual v2). London: Lily. New York: Laura. Озвучка по одной реплике, пауза 3 секунды, всего около 450 символов на ролик.
+Диктор: Sarah (multilingual v2). London: Lily. New York: Laura. Озвучка по одной реплике, пауза 3 секунды, всего около 560 символов на ролик.
