@@ -243,7 +243,7 @@ function pants() {
 // ---------------- scenes ----------------
 function wide(st) {
   wall(); clock(...st.clock); floor(); chair(); pants(); girl(st); table(st);
-  if (st.q > 0) for (const [x, y, rot, d] of [[200, 520, -0.25, 0], [300, 400, 0.12, .25], [720, 470, 0.3, .5]]) {
+  if (st.q > 0) for (const [x, y, rot, d] of [[200, 520, -0.25, 0], [790, 700, 0.12, .25], [700, 520, 0.3, .5]]) {
     const a = Math.max(0, Math.min(1, (st.q - d) * 4)); if (!a) continue;
     g.save(); g.translate(x, y - (1 - a) * 30); g.rotate(rot + Math.sin(st.t * 3 + x) * .07); g.globalAlpha = a;
     g.font = '150px Cap'; g.fillStyle = '#fff'; g.textAlign = 'center'; g.fillText('?', 0, 0); g.restore();
