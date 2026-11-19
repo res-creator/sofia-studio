@@ -1,0 +1,79 @@
+<!doctype html><meta charset=utf-8><style>
+:root{--bg:#2e2530;--acc:#e59ab0;--sub:#a8979f;--card:#3d3340;--cb:#54485a;--dim:#4a3f4d;--q:#7c6a82;--tx:#f6efe9}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;background:var(--bg);overflow:hidden;font-family:'Inter Display','Inter',sans-serif}
+#f{width:1080px;height:1920px;position:relative;overflow:hidden;background:radial-gradient(900px 700px at 50% 30%,#3a2e3d,#2e2530 70%)}
+.c{position:absolute;left:0;right:0;text-align:center}
+#tag{top:130px;color:var(--acc);font-weight:900;font-size:68px;letter-spacing:3px}
+#sub{top:230px;color:var(--sub);font-weight:700;font-size:42px;letter-spacing:3px}
+.card{position:absolute;left:60px;right:60px;border-radius:50px;background:var(--card);border:6px solid var(--cb)}
+#c1{top:300px;height:400px}#c2{top:740px;height:440px}
+.card b{display:block;margin-top:34px;text-align:center;color:var(--acc);font-size:42px;letter-spacing:4px;font-weight:900}
+#hru{display:block;text-align:center;margin-top:30px;color:var(--tx);font-size:118px;font-weight:900;line-height:1.05;padding:0 20px}
+#hen{display:block;text-align:center;margin-top:16px;color:var(--sub);font-size:56px;font-weight:700}
+#wr{display:block;text-align:center;margin-top:34px;color:var(--tx);font-size:96px;font-weight:900;line-height:1.1;padding:0 30px}
+#wr span{color:var(--acc)}
+#nt{display:block;text-align:center;margin-top:26px;color:var(--sub);font-size:46px;font-weight:700;padding:0 40px}
+#hero{position:absolute;left:430px;top:1260px;width:220px;height:220px;border-radius:50%;object-fit:cover;border:8px solid var(--acc)}
+#cap{top:1575px;color:var(--sub);font-weight:800;font-size:50px}
+.steps{position:absolute;left:0;right:0;top:1690px;display:flex;justify-content:center;align-items:flex-end;gap:14px;height:130px}
+.steps i{width:70px;background:var(--dim);border-radius:12px}.steps i.on{background:var(--acc)}
+#hook{opacity:0}#hookT{top:380px;color:var(--tx);font-weight:900;font-size:104px;line-height:1.12;padding:0 70px}
+#hookH{top:960px;color:var(--acc);font-weight:900;font-size:90px}
+#hookQ{top:1130px;color:var(--sub);font-weight:800;font-size:56px}
+#out{opacity:0}#outT{top:380px;color:var(--acc);font-weight:900;font-size:60px;letter-spacing:1px}
+.ol{position:absolute;left:100px;right:100px;height:120px;border-radius:30px;background:var(--card);border:5px solid var(--cb);display:flex;align-items:center;justify-content:space-between;padding:0 46px;opacity:0}
+.ol b{color:var(--tx);font-size:64px;font-weight:900}.ol i{color:var(--sub);font-size:48px;font-weight:700;font-style:normal}
+#askT{top:1290px;color:var(--tx);font-weight:900;font-size:80px;line-height:1.15;padding:0 70px;opacity:0}
+</style>
+<div id=f>
+<div class=card id=c1><b>ЗВУЧИТ</b><span id=hru></span><span id=hen></span></div>
+<div class=card id=c2><b>НАПИСАНО</b><span id=wr></span><span id=nt></span></div>
+<img id=hero src="assets/hero.png"><div class=c id=cap></div>
+<div class=steps id=steps></div>
+<div class=c id=hook><div class=c id=hookT>Ты знаешь все слова.<br>Почему не понимаешь?</div><div class=c id=hookH>Jeet yet?</div></div>
+<div class=c id=out><div class=c id=outT>ЗАПОМНИ 5 СОКРАЩЕНИЙ</div></div>
+<div id=ols></div>
+<div class=c id=askT>Сколько фраз ты услышала сразу?<br>Пиши цифру в комментариях.</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const ease=x=>1-Math.pow(1-clamp(x),3);const pop=x=>{x=clamp(x);return x<1?1+0.1*Math.sin(Math.PI*x):1};
+let TL=null,OL=[];
+window.setTL=(tl,ol)=>{TL=tl;OL=ol;const st=$('steps');st.innerHTML='';const n=tl.q.length;for(let k=0;k<n;k++){const e=document.createElement('i');e.style.height=(36+k*(84/(n-1)))+'px';st.appendChild(e)}
+  const h=$('ols');h.innerHTML='';ol.forEach((r,k)=>{const d=document.createElement('div');d.className='ol';d.style.top=(500+k*140)+'px';d.innerHTML='<b>'+r[0]+'</b><i>= '+r[1]+'</i>';h.appendChild(d)})};
+function render(t){
+  const inHook=t<TL.hook[1];const q0=TL.q[0];
+  const outT=TL.outro[0]-0.3;const inOut=t>=outT;
+  // hook
+  $('hook').style.opacity=inHook?1:0;
+  // main cards
+  const showMain=!inHook&&!inOut;
+  ['c1','c2','hero','cap','steps'].forEach(id=>$(id).style.display=(showMain||(id==='hero'&&inHook))?'block':'none');
+  $('hero').style.display=(inHook||showMain)?'block':'none';
+  $('hero').style.top='1260px';
+  
+  const hs=inHook&&t>=TL.hookv[0]&&t<=TL.hookv[1]+0.3;
+  if(inHook){$('hookH').style.opacity=1;$('cap').style.display='none'}
+  $('hero').style.borderColor=hs?'#f6efe9':'#e59ab0';
+  if(showMain){
+    let cur=TL.q[0];for(const q of TL.q) if(t>=q.start-0.001) cur=q;const i=cur.i;
+    const tin=ease((t-cur.start)/0.3);
+    $('hru').textContent=cur.heard_ru;$('hen').textContent=cur.heard_en;$('c1').style.opacity=tin;$('c1').style.transform=`translateY(${(1-tin)*20}px)`;
+    const reveal=t>=cur.slow[0]-0.02;
+    $('c2').style.opacity=reveal?1:0.35;
+    if(reveal){const w=cur.written;const hl=cur.hl;const k=w.indexOf(hl);$('wr').innerHTML=k>=0?w.slice(0,k)+'<span>'+hl+'</span>'+w.slice(k+hl.length):w;$('nt').textContent=cur.note;$('c2').style.transform=`scale(${pop((t-cur.slow[0]+0.02)/0.4)})`}
+    else{$('wr').innerHTML='<span style="color:#7c6a82;font-size:120px">?</span>';$('nt').textContent='';$('c2').style.transform='none'}
+    const sp=(v)=>t>=v[0]&&t<=v[1];const speaking=sp(cur.f1)||sp(cur.slow)||sp(cur.f2);
+    $('c1').style.borderColor=(sp(cur.f1)||sp(cur.f2))?'#e59ab0':'#54485a';$('c2').style.borderColor=(sp(cur.slow))?'#e59ab0':'#54485a';
+    $('hero').style.borderColor=speaking?'#f6efe9':'#e59ab0';
+    $('cap').textContent='';
+    [...$('steps').children].forEach((el,k)=>el.className=(k<i||(k===i&&reveal))?'on':'');
+  }
+  // outro list
+  const e=ease((t-outT)/0.4);$('out').style.opacity=inOut?e:0;
+  [...$('ols').children].forEach((el,k)=>{const at=TL.outro[0]+0.1+k*0.55;el.style.opacity=(inOut&&t>=at)?1:0});
+  $('askT').style.opacity=(t>=TL.ask)?ease((t-TL.ask)/0.4):0;
+}
+window.render=render;
+</script>
