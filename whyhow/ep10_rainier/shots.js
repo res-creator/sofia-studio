@@ -51,6 +51,7 @@ function build(T) {
 
   const cnt = (w, to, o = {}) => ({ type: 'count', from: o.from != null ? o.from : to, to, w, dur: o.dur || 0.3, y: o.y || 560, size: o.size || 170, pre: o.pre, suf: o.suf, label: o.label, dec: o.dec, x: o.x });
   const SIM = 'USGS COMPUTER MODEL, NOT REAL FOOTAGE';
+  const simN = () => ({ type: 'note', text: SIM, x: 1860, y: 1000, align: 'right', at: 0.2 });
 
   // ===== COLD OPEN =====
   beats('T001', [
@@ -66,7 +67,7 @@ function build(T) {
   beats('T003', [F('cm_tahoma_heli_down_valley_a', { over: [head('NO ERUPTION NEEDED', 'eruption', 200, 100, Yc), note('DEBRIS-FLOW CHANNEL, TAHOMA CREEK, 2019')] })]);
   beats('T004', [
     F('px_rainier_over_lake_town', { over: [head('HOW DO YOU LIVE UNDER THIS?', 'live', 200, 90)] }),
-    S('treerings', { cutW: 'forest', dur: 0.01 }),
+    F('cm_orting_1896_historic', { cutW: 'forest', kb: { z: [1.05, 1.2] }, over: [note('ORTING, 1896')] }),
   ]);
   add(T.e('T004') + 0.15, S('title', { lines: ['THE TOWN THAT', 'PRACTICES OUTRUNNING', 'MOUNT RAINIER'], hl: 2, img: 'gov_usgs_rainier_over_puyallup_valley_orting_b', credit: credit('gov_usgs_rainier_over_puyallup_valley_orting_b'), brand: true }), 'cut');
 
@@ -82,15 +83,15 @@ function build(T) {
   ]);
   beats('T007', [
     F('ia_carbon_icefall_avalanche', { over: [note('ICE AVALANCHE ON RAINIER')] }),
-    F('ia_dclaw_sim_lahar_descends', { cutW: 'lahar', over: [low('A LAHAR: MUD, BOULDERS, TREES', 'lahar'), note(SIM)] }),
+    F('ia_dclaw_sim_lahar_descends', { cutW: 'lahar', over: [low('A LAHAR: MUD, BOULDERS, TREES', 'lahar'), simN()] }),
   ]);
   beats('T008', [
-    F('ia_dclaw_sim_tahoma_headwall', { over: [low('100+ MPH ON THE UPPER SLOPES', 'hundred'), note(SIM)] }),
+    F('ia_dclaw_sim_tahoma_headwall', { over: [low('100+ MPH ON THE UPPER SLOPES', 'hundred'), simN()] }),
     F('cm_tahoma_heli_downstream_braids', { cutW: 'Down', over: [low('15–20 MPH IN THE VALLEYS', 'fifteen'), note('DEBRIS-FLOW DEPOSITS, 2019')] }),
   ]);
   beats('T009', [
     F('px_seattle_space_needle_rainier', { over: [low('ASH USUALLY BLOWS EAST', 'east')] }),
-    F('ia_flood_river_past_boulders', { cutW: 'killer', over: [head('THE KILLER IS THE MUD', 'mud', 200, 96, Yc)] }),
+    F('cm_tahoma_heli_channel_close', { cutW: 'killer', over: [head('THE KILLER IS THE MUD', 'mud', 200, 96, Yc)] }),
   ]);
   beats('T009B', [
     F('cm_seattle_rainier_1880s', { over: [low('1894: "BLACK SMOKE"?', 'eighteen'), note('SEATTLE, 1880s')] }),
@@ -105,11 +106,11 @@ function build(T) {
   ]);
   beats('T011', [
     F('cm_usgs_map_osceola_electron_mudflows', { over: [low('330+ FT DEEP · 75+ MILES', 'three'), note('USGS MAP OF THE OLD MUDFLOWS')] }),
-    F('cm_aerial_enumclaw_auburn_plateau', { cutW: 'valley', over: [low('THIS VALLEY WAS ONCE SEA', 'arm'), note('THE VALLEY BETWEEN ENUMCLAW AND AUBURN TODAY')] }),
+    F('cm_aerial_enumclaw_auburn_plateau', { cutW: 'valley', over: [low('THE MUD FILLED AN ARM OF PUGET SOUND', 'arm'), note('THE VALLEY BETWEEN ENUMCLAW AND AUBURN TODAY')] }),
   ]);
   beats('T013', [
     F('cm_usgs_rainier_hazard_map_jpg', { over: [low('11+ BIG LAHARS IN 6,000 YEARS', 'eleven'), note('USGS HAZARD MAP')] }),
-    F('cm_amtrak_puyallup_rainier_2025', { cutW: 'In', over: [cnt('seven', 7, { pre: '1 IN ', label: 'IN AN AVERAGE LIFETIME (USGS, 2002)', y: 500 })] }),
+    F('cm_orting_rainier_view_a', { cutW: 'In', over: [cnt('seven', 7, { pre: '1 IN ', label: 'IN AN AVERAGE LIFETIME (USGS, 2002)', y: 500 })] }),
   ]);
   beats('T014', [
     F('px_rainier_over_lake_boats', { over: [cnt('ninety', 90000, { pre: '~', label: 'PEOPLE LIVE IN THE LAHAR ZONES', y: 500 })] }),
@@ -122,23 +123,25 @@ function build(T) {
 
   // ===== CH3 =====
   chapter('T015', 2, 'The forest under Orting');
-  beats('T015', [F('cm_orting_fields_rainier', { over: [low('1993: STUMPS, STILL STANDING UPRIGHT', 'upright'), note('ORTING')] })]);
+  beats('T015', [
+    F('cm_orting_fields_rainier', { over: [note('ORTING')] }),
+    F('ia_climate_tahoma_dead_trees_valley', { cutW: 'tree', over: [low('1993: STUMPS, STILL STANDING UPRIGHT', 'upright'), note('DEAD TREES IN THE NATIONAL PARK (NOT ORTING)')] }),
+  ]);
   beats('T016', [
     F('cm_orting_high_school', { over: [note('ORTING HIGH SCHOOL')] }),
-    F('ia_climate_tahoma_dead_trees_valley', { cutW: 'Douglas', over: [low('DOUGLAS FIRS UP TO 10 FT WIDE', 'Douglas'), note('TREES KILLED BY A DEBRIS FLOW IN THE PARK (NOT ORTING)')] }),
-    F('ia_climate_tahoma_valley_logs_rainier', { cutW: 'wide', over: [note('TAHOMA CREEK, IN THE NATIONAL PARK')] }),
+    F('ia_climate_tahoma_valley_logs_rainier', { cutW: 'Douglas', over: [low('DOUGLAS FIRS UP TO 10 FT WIDE', 'Douglas'), note('TREES KILLED BY A DEBRIS FLOW IN THE PARK (NOT ORTING)')] }),
   ]);
   beats('T017', [
     F('cm_usgs_map_osceola_electron_mudflows', { kb: { z: [1.5, 1.7], x: [0.4, 0.4], y: [0.5, 0.5] }, over: [low('THE ELECTRON MUDFLOW', 'Electron'), note('USGS MAP')] }),
     F('cm_orting_foothills_trail_rainier', { cutW: 'By', over: [low('BURIED UP TO 15 FT DOWN', 'fifteen')] }),
   ]);
   beats('T018', [
-    F('px_rainier_trees_foreground', { over: [low('21 BURIED TREES', 'twenty-one')] }),
+    F('px_rainier_trees_foreground'),
     S('treerings', { cutW: 'Four', dur: 3 }),
   ]);
   beats('T019', [
     F('px_rainier_west_face_blue', { kb: { z: [1.3, 1.15] }, over: [head('NO ERUPTION', 'eruption', 200, 110, Yc)] }),
-    F('ia_dclaw_sim_sunset_amphitheater', { cutW: 'landslide', over: [low('A LANDSLIDE ON THE WEST SIDE', 'landslide'), note(SIM)] }),
+    F('ia_dclaw_sim_sunset_amphitheater', { cutW: 'landslide', over: [low('A LANDSLIDE ON THE WEST SIDE', 'landslide'), simN()] }),
     F('ia_peace_fog_forest', { cutW: 'Puyallup', over: [low('PUYALLUP TRIBE: OLD STORIES OF A BURIED VALLEY', 'stories')] }),
   ]);
 
@@ -158,7 +161,8 @@ function build(T) {
     F('gov_usgs_lahar_station_pr05_rainier_2020', { over: [low('TRIPWIRES AND SENSORS', 'tripwires')] }),
     F('gov_usgs_station_para_seismic_infrasound_2020', { cutW: 'twenty-five', over: [low('25 NEW SEISMIC STATIONS', 'twenty-five')] }),
     F('ia_dclaw_scientist_computer', { cutW: 'Their', }),
-    F('ia_dclaw_rainier_over_city', { cutW: 'centers', over: [low('~10 SECONDS TO EMERGENCY CENTERS', 'ten'), low('2 WARNING POINTS, STAFFED 24/7', 'staffed')] }),
+    F('gov_colombia_rainier_over_tacoma_photo', { cutW: 'reach', over: [low('~10 SECONDS TO EMERGENCY CENTERS', 'ten')] }),
+    F('cm_rainier_over_port_of_tacoma', { cutW: 'two', over: [low('2 WARNING POINTS, STAFFED 24/7', 'staffed')] }),
   ]);
   beats('T024', [
     F('gov_colombia_lahar_warning_test_sign_siren', { over: [low('SIRENS IN THE VALLEY TOWNS', 'sirens')] }),
@@ -167,39 +171,35 @@ function build(T) {
   ]);
   beats('T025', [S('laharmap', { dur: 7 })]);
   beats('T025B', [
-    F('ia_dclaw_sim_orting_inundation', { over: [low('SENSORS NEED A FEW MINUTES', 'Sensors'), note(SIM)] }),
+    F('ia_dclaw_sim_orting_inundation', { over: [low('SENSORS NEED A FEW MINUTES', 'Sensors'), simN()] }),
     F('cm_orting_volcano_evacuation_route_sign', { cutW: 'forty', kb: { z: [1.3, 1.15] }, over: [low('ORTING: ABOUT 40 MINUTES', 'forty')] }),
   ]);
   beats('T025C', [
-    F('ia_dclaw_sim_sumner_puyallup', { over: [low('NOT A 30-FT WALL', 'Forget'), note(SIM)] }),
+    F('ia_dclaw_sim_sumner_puyallup', { over: [low('NOT A 30-FT WALL', 'Forget'), simN()] }),
     F('cm_nps_tahoma_flood_trim_lines_2019', { cutW: 'thirteen', over: [low('~13 FT DEEP · ~9 MPH AT ORTING (MODEL)', 'thirteen'), note('REAL DEBRIS-FLOW MARKS ON TREES, TAHOMA CREEK, 2019')] }),
   ]);
   beats('T026', [
-    F('cm_orting_sr162_east_rainier_a', { over: [head("WALK. DON'T DRIVE.", 'Walk', 200, 110, Yc)] }),
+    F('cm_orting_lenticular_ufo_cloud', { over: [head("WALK. DON'T DRIVE.", 'Walk', 200, 110, Yc)] }),
     F('gov_usgs_rainier_over_puyallup_valley_orting_a', { cutW: 'Roads', kb: { z: [1.25, 1.1] }, over: [low('100+ FT ABOVE THE VALLEY FLOOR', 'hundred')] }),
   ]);
   beats('T027', [F('gov_usgs_lahar_drill_students_fairgrounds_2024', { kb: { z: [1.3, 1.1] }, over: [cnt('forty-five', 45000, { suf: '+', label: "THE WORLD'S LARGEST LAHAR DRILL, 2024", y: 500 })] })]);
   beats('T028', [F('cm_orting_middle_school', { over: [low('2006: 25 MIN TO GET HALFWAY', 'twenty-five'), note('ORTING MIDDLE SCHOOL')] })]);
   beats('T029', [
-    F('cm_orting_sr162_east_rainier_b', { over: [low('THE HIGHWAY BETWEEN TOWN AND THE HILLS', 'highway'), note('STATE ROUTE 162, ORTING')] }),
-    F('cm_orting_sr162_east_rainier_a', { cutW: 'Construction', kb: { z: [1.3, 1.15] }, over: [low('"BRIDGE FOR KIDS": BUILDING SINCE 2025', 'Construction'), note('STATE ROUTE 162, ORTING')] }),
-    F('cm_orting_sr162_bridge_puyallup_river', { cutW: 'second', over: [low('RIVER BRIDGE: NO FUNDING YET', 'money'), note('THE RIVER BRIDGE AT ORTING TODAY')] }),
+    F('cm_orting_sr162_east_rainier_b', { over: [low('THE HIGHWAY BETWEEN TOWN AND THE HILLS', 'highway'), low('"BRIDGE FOR KIDS": BUILDING SINCE 2025', 'Construction'), note('STATE ROUTE 162, ORTING')] }),
+    F('cm_orting_sr162_bridge_puyallup_river', { cutW: 'second', over: [low('A WALKING BRIDGE OVER THE RIVER: NO FUNDING YET', 'money'), note('TODAY: ONLY THE ROAD BRIDGE OVER THE PUYALLUP RIVER')] }),
   ]);
   beats('T030', [
     F('gov_usgs_rainier_puyallup_daffodil_field_1989', { kb: { z: [1.2, 1.1] }, over: [note('PUYALLUP (USGS PHOTO, 1989)')] }),
     S('stats', { cutW: 'county', head: 'PIERCE COUNTY, MAY 2023', items: [], over: [at(head('"THERE IS NO LAHAR."', null, 520, 120, Yc), 0.3), { ...chipC('AN OLD SIREN WENT OFF BY MISTAKE', null, 700, 50), at: 0.8 }], source: 'Recreated text. Source: Pierce County Emergency Management' }),
   ]);
-  beats('T030B', [
-    F('gov_colombia_lahar_warning_test_sign_siren', { in: 1.2, over: [low('MONTHLY TEST: A CHIME, NOT THE ALARM', 'chime')] }),
-    F('px_siren_pole_generic', { cutW: 'real', kb: { z: [1.05, 1.2] }, over: [note('ILLUSTRATIVE SIREN, NOT PIERCE COUNTY')] }),
-  ]);
+  beats('T030B', [F('px_siren_pole_generic', { kb: { z: [1.05, 1.25] }, over: [low('MONTHLY TEST: A CHIME, NOT THE ALARM', 'chime'), note('ILLUSTRATIVE SIREN, NOT PIERCE COUNTY')] })]);
 
   // ===== CH5 =====
   chapter('T031', 4, 'The question nobody can answer');
   beats('T031', [F('ia_westside_cloudy_valley')]);
   beats('T032', [
-    F('ia_dclaw_sim_nisqually_alder', { over: [low('THE LAHAR REACHES ALDER LAKE IN ~50 MIN', 'fifty'), note(SIM)] }),
-    F('ia_dclaw_sim_alder_dam_3d', { cutW: 'pushes', over: [low('WATER OVER THE 330-FT DAM', 'pour'), note(SIM)] }),
+    F('ia_dclaw_sim_nisqually_alder', { over: [low('THE LAHAR REACHES ALDER LAKE IN ~50 MIN', 'fifty'), simN()] }),
+    F('ia_dclaw_sim_alder_dam_3d', { cutW: 'pushes', over: [low('WATER OVER THE 330-FT DAM', 'pour'), simN()] }),
     F('cm_nps_clouds_nisqually_valley', { cutW: 'What', kb: { z: [1.05, 1.2] }, over: [low('AFTER THAT: UNKNOWN', 'model')] }),
   ]);
   beats('T032B', [
@@ -223,14 +223,13 @@ function build(T) {
   chapter('T036', 5, 'The answer');
   beats('T036', [
     F('ia_peace_rainier_people_road'),
-    F('gov_colombia_orting_drill_walk', { cutW: 'teach', in: 2 }),
-    F('gov_usgs_rainier_over_puyallup_valley_orting_b', { cutW: 'build' }),
+    F('cm_puyallup_emerald_ridge_high_school', { cutW: 'teach', over: [note('A HIGH SCHOOL IN PUYALLUP')] }),
+    F('cm_orting_park_veterans_memorial_rainier', { cutW: 'build', over: [note('ORTING')] }),
   ]);
   beats('T037A', [F('px_rainier_sunset_over_water', { over: [head('WHICH PLACE SHOULD WE EXPLAIN NEXT?', null, 200, 80)] })]);
   beats('T037', [
     F('cm_orting_last_light_rainier_red_barn'),
-    S('treerings', { cutW: 'fifteen-oh-seven', dur: 0.01 }),
-    F('px_rainier_alpenglow_over_field', { cutW: 'every', over: [head('NEXT TIME, THE PEOPLE WILL BE GONE', 'gone', 200, 80, Yc)] }),
+    F('gov_colombia_orting_drill_walk', { cutW: 'gone', over: [head('GONE BEFORE IT ARRIVES', 'gone', 200, 80, Yc)] }),
   ]);
   add(T.tl.voiceEnd + 0.4, S('endscreen', {}), 'fade');
   return out;

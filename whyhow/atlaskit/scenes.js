@@ -495,24 +495,44 @@ function hertz(ctx, t, d, p) {
 // ---------- Rainier: lahar clock map ----------
 function laharmap(ctx, t, d, p) {
   navyBg(ctx, t, false);
-  // Puget Sound water (top-left)
-  ctx.fillStyle = hexA(C.ice, 0.35); ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(620, 0); ctx.lineTo(560, 160); ctx.lineTo(420, 260); ctx.lineTo(300, 420); ctx.lineTo(0, 520); ctx.fill();
-  text(ctx, 'PUGET SOUND', 140, 120, { size: 30, font: F.head, color: C.iceL });
-  // land shading
-  ctx.fillStyle = hexA('#3B4A33', 0.6); ctx.beginPath(); ctx.moveTo(620, 0); ctx.lineTo(W, 0); ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.lineTo(0, 520); ctx.lineTo(300, 420); ctx.lineTo(420, 260); ctx.lineTo(560, 160); ctx.fill();
+  // Puget Sound water (top-left) with Commencement Bay
+  ctx.fillStyle = hexA(C.ice, 0.35); ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(620, 0); ctx.lineTo(560, 160); ctx.lineTo(420, 250); ctx.lineTo(330, 300); ctx.lineTo(300, 420); ctx.lineTo(0, 520); ctx.fill();
+  text(ctx, 'PUGET SOUND', 40, 380, { size: 40, font: F.head, color: C.iceL });
+  // land
+  ctx.fillStyle = hexA('#3B4A33', 0.6); ctx.beginPath(); ctx.moveTo(620, 0); ctx.lineTo(W, 0); ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.lineTo(0, 520); ctx.lineTo(300, 420); ctx.lineTo(330, 300); ctx.lineTo(420, 250); ctx.lineTo(560, 160); ctx.fill();
+  // city outlines (built-up areas)
+  const city = (pts, name, lx, ly) => { ctx.fillStyle = hexA(C.cream, 0.13); ctx.strokeStyle = hexA(C.cream, 0.45); ctx.lineWidth = 3; ctx.setLineDash([10, 8]); ctx.beginPath(); pts.forEach(([x, y], k) => k ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.closePath(); ctx.fill(); ctx.stroke(); ctx.setLineDash([]); if (name) text(ctx, name, lx, ly, { size: 30, font: F.head, color: hexA(C.cream, 0.7) }); };
+  city([[330, 150], [520, 120], [560, 230], [430, 300], [300, 280]], null);
+  city([[560, 330], [700, 300], [740, 420], [600, 450]], null);
+  city([[740, 330], [850, 320], [860, 420], [760, 430]], null);
+  city([[840, 470], [960, 460], [980, 560], [860, 580]], null);
+  // rivers
+  const river = (pts, name, lx, ly) => { ctx.strokeStyle = hexA(C.iceL, 0.75); ctx.lineWidth = 6; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.beginPath(); pts.forEach(([x, y], k) => k ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.stroke(); if (name) text(ctx, name, lx, ly, { size: 26, font: F.monoB, color: C.iceL }); };
+  river([[1480, 790], [1300, 730], [1080, 650], [920, 548], [780, 440], [640, 378], [400, 230]], 'PUYALLUP RIVER', 1120, 770);
+  river([[1640, 640], [1420, 600], [1200, 560], [980, 540], [920, 548]], 'CARBON RIVER', 1330, 545);
+  river([[1700, 330], [1400, 330], [1100, 360], [880, 400], [790, 432]], 'WHITE RIVER', 1250, 315);
   // volcano
   const vx = 1560, vy = 820;
-  ctx.fillStyle = '#E8EEF5'; ctx.beginPath(); ctx.moveTo(vx - 120, vy + 70); ctx.lineTo(vx, vy - 90); ctx.lineTo(vx + 120, vy + 70); ctx.fill();
-  text(ctx, 'MOUNT RAINIER', vx, vy + 115, { size: 34, font: F.head, align: 'center', color: C.cream });
-  // valley path: Rainier -> Orting -> Sumner/Puyallup -> Tacoma tideflats
-  const path = [[vx - 60, vy - 10], [1300, 700], [1060, 620], [900, 520], [760, 420], [620, 360], [380, 210]];
-  const towns = [{ i: 3, name: 'ORTING', tm: '~1 HOUR', dx: 26 }, { i: 5, name: 'PUYALLUP · SUMNER', tm: '~3 HOURS', dx: 26 }, { i: 6, name: 'TACOMA TIDEFLATS', tm: '4–5 HOURS', dx: 26 }];
-  ctx.strokeStyle = hexA(C.iceL, 0.6); ctx.lineWidth = 10; ctx.lineCap = 'round'; ctx.beginPath(); path.forEach(([x, y], k) => k ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.stroke();
-  const u = clamp(seg(t, 0.5, (p.dur || 5.5))); const L = path.length - 1, f = u * L, i0 = Math.min(L - 1, Math.floor(f)), w = f - i0;
-  ctx.strokeStyle = '#8B5A2B'; ctx.lineWidth = 26; ctx.beginPath(); ctx.moveTo(path[0][0], path[0][1]); for (let k = 1; k <= i0; k++) ctx.lineTo(path[k][0], path[k][1]); ctx.lineTo(lerp(path[i0][0], path[i0 + 1][0], w), lerp(path[i0][1], path[i0 + 1][1], w)); ctx.stroke();
-  for (const tw of towns) { const [x, y] = path[tw.i]; const on = f >= tw.i - 0.02; ctx.fillStyle = on ? C.red : C.cream; ctx.beginPath(); ctx.arc(x, y, 14, 0, 7); ctx.fill();
-    text(ctx, tw.name, x + 26, y - 18, { size: 32, font: F.head, color: C.cream }); if (on) chip(ctx, tw.tm, x + 26, y + 34, { size: 32, bg: C.yellow, color: C.ink }); }
-  text(ctx, 'WORST-CASE LAHAR · TIME FROM THE START OF THE FLOW', W / 2, 80, { size: 40, font: F.head, align: 'center', color: C.cream });
+  ctx.fillStyle = '#E8EEF5'; ctx.beginPath(); ctx.moveTo(vx - 140, vy + 80); ctx.lineTo(vx, vy - 100); ctx.lineTo(vx + 140, vy + 80); ctx.fill();
+  text(ctx, 'MOUNT RAINIER', vx, vy + 130, { size: 46, font: F.head, align: 'center', color: C.cream });
+  // lahar path: Rainier -> Orting -> Puyallup/Sumner -> Tacoma tideflats
+  const path = [[vx - 60, vy - 10], [1300, 720], [1060, 640], [900, 520], [760, 420], [620, 360], [380, 220]];
+  const knots = [[0, 0], [3, 60], [5, 180], [6, 270]];
+  const towns = [{ i: 3, name: 'ORTING', tm: '~1 HOUR' }, { i: 5, name: 'PUYALLUP · SUMNER', tm: '~3 HOURS' }, { i: 6, name: 'TACOMA TIDEFLATS', tm: '4–5 HOURS' }];
+  const dur = p.dur || Math.max(4, d - 2);
+  const u = clamp(seg(t, 0.6, 0.6 + dur)); const L = path.length - 1, f = u * L, i0 = Math.min(L - 1, Math.floor(f)), w = f - i0;
+  ctx.strokeStyle = '#8B5A2B'; ctx.lineWidth = 34; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(path[0][0], path[0][1]); for (let k = 1; k <= i0; k++) ctx.lineTo(path[k][0], path[k][1]);
+  const hx = lerp(path[i0][0], path[i0 + 1][0], w), hy = lerp(path[i0][1], path[i0 + 1][1], w); ctx.lineTo(hx, hy); ctx.stroke();
+  if (u > 0 && u < 1) { ctx.fillStyle = hexA('#B07A3F', 0.5 + 0.3 * Math.sin(t * 8)); ctx.beginPath(); ctx.arc(hx, hy, 30, 0, 7); ctx.fill(); }
+  for (const tw of towns) { const [x, y] = path[tw.i]; const on = f >= tw.i - 0.02; ctx.fillStyle = on ? C.red : C.cream; ctx.beginPath(); ctx.arc(x, y, 18, 0, 7); ctx.fill();
+    text(ctx, tw.name, x + 30, y - 24, { size: 46, font: F.head, color: C.cream }); if (on) chip(ctx, tw.tm, x + 30, y + 40, { size: 44, bg: C.yellow, color: C.ink }); }
+  // running clock
+  let mins = 0; for (let k = 0; k < knots.length - 1; k++) { const [a0, m0] = knots[k], [a1, m1] = knots[k + 1]; if (f >= a0) mins = m0 + (m1 - m0) * clamp((f - a0) / (a1 - a0)); }
+  const hh = Math.floor(mins / 60), mm = Math.floor(mins % 60);
+  rr(ctx, W - 470, 130, 420, 150, 18); ctx.fillStyle = hexA('#000000', 0.55); ctx.fill();
+  text(ctx, 'TIME SINCE THE FLOW STARTED', W - 260, 168, { size: 24, font: F.monoB, align: 'center', color: hexA(C.cream, 0.8) });
+  text(ctx, `${hh}:${String(mm).padStart(2, '0')}`, W - 260, 250, { size: 84, font: F.head, align: 'center', color: C.yellow });
+  text(ctx, 'WORST-CASE LAHAR · HOW FAST THE MUD ARRIVES', W / 2 - 160, 62, { size: 48, font: F.head, align: 'center', color: C.cream });
   text(ctx, 'MAP · NOT TO SCALE · Source: USGS (2026)', 48, H - 30, { size: 22, font: F.monoB, color: hexA(C.cream, 0.6) });
 }
 // ---------- Rainier: tree rings date the buried forest ----------
