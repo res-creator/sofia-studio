@@ -4,7 +4,7 @@ python3 mix.py EPDIR OUT.wav   (needs EPDIR/timeline.json, EPDIR/voice/<id>.wav,
 import json, sys, os, subprocess, numpy as np, soundfile as sf
 from scipy.signal import butter, sosfilt, resample_poly
 EP, OUT = sys.argv[1:3]; SR = 48000
-TL = json.load(open(os.path.join(EP, 'timeline.json'))); MT = json.load(open(os.path.join(EP, 'mix.json')))['tense'] if os.path.exists(os.path.join(EP, 'mix.json')) else ['P024', 'P036']; CU = json.load(open(os.path.join(EP, 'cues.json')))
+TL = json.load(open(os.path.join(EP, 'timeline.json'))); MJ = json.load(open(os.path.join(EP, 'mix.json'))) if os.path.exists(os.path.join(EP, 'mix.json')) else {}; MT = MJ.get('tense', ['P024', 'P036']); CU = json.load(open(os.path.join(EP, 'cues.json')))
 N = int((CU['dur'] + 0.5) * SR); voice = np.zeros(N); rng = np.random.default_rng(7)
 for p in TL['paras']:
     x, sr = sf.read(os.path.join(EP, 'voice', p['id'] + '.wav'), dtype='float64'); x = x if x.ndim == 1 else x.mean(1)
@@ -46,7 +46,21 @@ def whoosh(at, g=0.6):
     i = max(0, int((at - 0.6) * SR)); fx[i:i + L] += g * s[:max(0, N - i)] / (np.abs(s).max() + 1e-9)
 def tick(at, g=0.35):
     L = int(0.25 * SR); tt = np.arange(L) / SR; s = np.sin(2 * np.pi * 1800 * tt) * np.exp(-tt * 40); i = int(at * SR); fx[i:i + L] += g * s[:max(0, N - i)]
+def click(at, g=0.5):
+    L = int(0.06 * SR); n = rng.standard_normal(L) * np.exp(-np.arange(L) / SR * 90); i = int(at * SR); fx[i:i + L] += g * n[:max(0, N - i)]
+    L2 = int(0.05 * SR); i2 = i + int(0.09 * SR); n2 = rng.standard_normal(L2) * np.exp(-np.arange(L2) / SR * 120); fx[i2:i2 + L2] += 0.6 * g * n2[:max(0, N - i2)]
+def riser(at, dur=2.0, g=0.5):
+    L = int(dur * SR); tt = np.arange(L) / SR; n = sosfilt(butter(2, [300, 6000], 'band', fs=SR, output='sos'), rng.standard_normal(L)) * (tt / dur) ** 2
+    i = max(0, int((at - dur) * SR)); fx[i:i + L] += g * n[:max(0, N - i)] / (np.abs(n).max() + 1e-9)
 for c in CU['shots']:
+    s = c.get('sfx')
+    if s:
+        for k in s.split('+'):
+            if k == 'click': click(c['t'])
+            elif k == 'boom': boom(c['t'] + 0.05, 0.8)
+            elif k == 'whoosh': whoosh(c['t'] + 0.3, 0.5)
+            elif k == 'riser': riser(c['t'])
+    if c['scene'] == 'globe': whoosh(c['t'] + 0.4, 0.45)
     if c['scene'] in ('chapter', 'title'): whoosh(c['t']); boom(c['t'] + 0.2, 0.9)
     elif c['scene'] in ('stats', 'myth', 'bars', 'ratio', 'thermo'): tick(c['t'] + 0.3); boom(c['t'] + 0.3, 0.45)
     elif c['scene'] == 'endq': boom(c['t'] + 0.2, 0.6)
@@ -54,7 +68,28 @@ boom(0.05, 1.0)  # sound at 0.0 s
 # --- ducking envelope from voice ---
 env = np.abs(voice); win = int(0.25 * SR); env = np.convolve(env, np.ones(win) / win, 'same'); talk = np.clip(env / 0.02, 0, 1)
 talk = np.convolve(talk, np.ones(int(0.6 * SR)) / int(0.6 * SR), 'same')
-music = pad * (0.30 - 0.20 * talk) + wind * (0.10 - 0.06 * talk)
+# --- ambience beds by shot (p.amb: sea | storm | rain | wind | quiet), default wind ---
+def smooth(x, k):
+    c = np.cumsum(np.concatenate([np.zeros(k // 2 + 1), x, np.zeros(k)])); return (c[k:k + len(x)] - c[:len(x)]) / k
+def bedmask(name):
+    msk = np.zeros(N); sh = CU['shots']
+    for i, c in enumerate(sh):
+        if (c.get('amb') or 'wind') == name:
+            a = int(c['t'] * SR); b = int((sh[i + 1]['t'] if i + 1 < len(sh) else CU['dur']) * SR); msk[a:b] = 1
+    return smooth(msk, int(0.8 * SR))
+bn = np.cumsum(rng.standard_normal(N)); bn = sosfilt(butter(2, 20, 'high', fs=SR, output='sos'), bn)
+surf = sosfilt(butter(2, 600, 'low', fs=SR, output='sos'), bn); surf /= np.abs(surf).max() + 1e-9
+swell = np.clip(np.sin(2 * np.pi * t / 7.5 + np.sin(t * 0.13)) , 0, 1) ** 3; surf = surf * (0.35 + 0.65 * swell)
+hiss = sosfilt(butter(2, 2500, 'high', fs=SR, output='sos'), rng.standard_normal(N)); hiss /= np.abs(hiss).max() + 1e-9
+rain = hiss * (0.6 + 0.4 * (rng.random(N) > 0.997)); gust = 0.5 + 0.5 * np.sin(2 * np.pi * 0.11 * t + np.sin(0.37 * t) * 2) ** 2
+amb = wind * bedmask('wind') + (0.9 * surf + 0.3 * wind) * bedmask('sea') + (0.8 * surf + 1.1 * wind * gust) * bedmask('storm') + (0.5 * rain + 0.4 * wind) * bedmask('rain')
+if not any(c.get('amb') for c in CU['shots']): amb = wind
+# --- silence before the shock: mix.json "drop": [para ids] -> music out 1.4 s before, boom on the line ---
+mgain = np.ones(N)
+for pid in MJ.get('drop', []):
+    s0 = P[pid]['start']; a = int((s0 - 1.4) * SR); b = int((s0 + 1.2) * SR); r = np.ones(b - a); fa = int(0.4 * SR); r[:fa] = np.linspace(1, 0, fa); r[fa:-int(0.8 * SR)] = 0; r[-int(0.8 * SR):] = np.linspace(0, 1, int(0.8 * SR))
+    mgain[a:b] = np.minimum(mgain[a:b], r[:len(mgain[a:b])]); boom(s0 + 0.02, 1.0)
+music = pad * mgain * (0.30 - 0.20 * talk) + amb * (0.12 - 0.06 * talk)
 mix = voice + music + fx * 0.35
 mix = np.stack([mix, mix], 1) / (np.abs(mix).max() + 1e-9) * 0.8
 tmp = OUT + '.raw.wav'; sf.write(tmp, mix.astype(np.float32), SR)

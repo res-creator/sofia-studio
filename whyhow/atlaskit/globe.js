@@ -46,7 +46,12 @@ function globe(ctx, t, d, p) {
   for (let la = -80; la <= 80; la += 10) line(ctx, P, Array.from({ length: 181 }, (_, i) => [-180 + i * 2, la]));
   for (let lo = -180; lo < 180; lo += 15) line(ctx, P, Array.from({ length: 91 }, (_, i) => [lo, -90 + i * 2]));
   const land = R < 900 ? LAND110 : LAND;
-  drawPolys(ctx, P, land, C.land, null, 0, 2);
+  if (p.relief) { // muted relief look: dark slate sea, earthy land with a soft inner shade and a light coastline
+    ctx.save(); ctx.shadowColor = 'rgba(0,0,0,0.6)'; ctx.shadowBlur = 18;
+    const lg = ctx.createLinearGradient(cx - R, cy - R, cx + R, cy + R); lg.addColorStop(0, '#5E7A5A'); lg.addColorStop(0.5, '#4C6748'); lg.addColorStop(1, '#6D6A4E');
+    drawPolys(ctx, P, land, lg, null, 0, 2); ctx.restore();
+    drawPolys(ctx, P, land, null, hexA('#E9DFC4', 0.45), R > 3000 ? 2 : 1.2, 2);
+  } else drawPolys(ctx, P, land, C.land, null, 0, 2);
   if (R > 700) drawPolys(ctx, P, LAKES, '#122648', null, 0, 2);
   if (p.borders !== false && R > 500) drawPolys(ctx, P, CTRY, null, hexA(C.border, 0.6), R > 3000 ? 1.6 : 1, 2);
   // highlight a country (by drawing its outline brighter) — p.hl = polygon index list not needed; Russia highlight via bbox filter
@@ -56,6 +61,27 @@ function globe(ctx, t, d, p) {
   const sh = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.4, R * 0.2, cx, cy, R * 1.02); sh.addColorStop(0, 'rgba(255,255,255,0.06)'); sh.addColorStop(0.7, 'rgba(0,0,0,0)'); sh.addColorStop(1, 'rgba(0,0,0,0.45)');
   ctx.fillStyle = sh; ctx.fillRect(cx - R, cy - R, 2 * R, 2 * R); ctx.restore();
   if (p.arctic && p.arcticLabel) { const a = clamp(key(p.arctic, t)); const q = P(p.arcticLabel[0] * rad, 66.56 * rad); if (q[2] && a > 0) text(ctx, 'ARCTIC CIRCLE', q[0] + 10, q[1] - 12, { size: 24, font: F.monoB, color: C.iceL, alpha: a, shadow: 8 }); }
+  // red danger zones: {lon, lat, r (km), at, label}
+  for (const z of p.zones || []) { const a = clamp(seg(t, z.at || 0, (z.at || 0) + 0.6)); if (a <= 0) continue;
+    const pts = Array.from({ length: 73 }, (_, i) => { const b = i * 5 * rad, dr = z.r / 6371; const la1 = Math.asin(Math.sin(z.lat * rad) * Math.cos(dr) + Math.cos(z.lat * rad) * Math.sin(dr) * Math.cos(b));
+      const lo1 = z.lon * rad + Math.atan2(Math.sin(b) * Math.sin(dr) * Math.cos(z.lat * rad), Math.cos(dr) - Math.sin(z.lat * rad) * Math.sin(la1)); return P(lo1, la1); });
+    ctx.save(); ctx.globalAlpha = a; ctx.beginPath(); pts.forEach((q, i) => i ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1])); ctx.closePath(); ctx.fillStyle = hexA(C.red, 0.28); ctx.fill();
+    ctx.setLineDash([10, 8]); ctx.strokeStyle = C.red; ctx.lineWidth = 3; ctx.stroke(); ctx.restore(); }
+  // animated routes / arcs: {pts:[[lon,lat],...], at, dur, color, dash, label}
+  for (const r of p.routes || []) { const u = clamp(seg(t, r.at || 0, (r.at || 0) + (r.dur || 1.5))); if (u <= 0) continue;
+    const dense = []; for (let i = 0; i < r.pts.length - 1; i++) { const [a0, b0] = r.pts[i]; let [a1, b1] = r.pts[i + 1]; if (a1 - a0 > 180) a1 -= 360; if (a0 - a1 > 180) a1 += 360; for (let k = 0; k < 24; k++) dense.push([a0 + (a1 - a0) * k / 24, b0 + (b1 - b0) * k / 24]); } dense.push(r.pts[r.pts.length - 1]);
+    const n = Math.max(2, Math.round(dense.length * E.inOut(u))); const qs = dense.slice(0, n).map(([lo, la]) => P(lo * rad, la * rad));
+    ctx.save(); ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = r.color || C.yellow; ctx.lineWidth = r.w || 5; ctx.shadowColor = hexA(r.color || C.yellow, 0.7); ctx.shadowBlur = 10;
+    if (r.dash !== false) ctx.setLineDash([16, 10]); ctx.beginPath(); qs.forEach((q, i) => i ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1])); ctx.stroke(); ctx.setLineDash([]);
+    const hq = qs[qs.length - 1]; ctx.fillStyle = r.color || C.yellow; ctx.beginPath(); ctx.arc(hq[0], hq[1], (r.w || 5) + 4, 0, 7); ctx.fill(); ctx.restore();
+    if (r.label && u >= 1) { const mq = qs[Math.floor(qs.length / 2)]; text(ctx, r.label, mq[0] + (r.lx || 14), mq[1] + (r.ly || -14), { size: r.size || 34, font: F.head, color: r.color || C.yellow, shadow: 10, alpha: clamp(seg(t, (r.at || 0) + (r.dur || 1.5), (r.at || 0) + (r.dur || 1.5) + 0.4)) }); } }
+  // expanding wave rings from a point: {lon, lat, at, n, speed (px/s), color}
+  for (const w of p.waves || []) { const t0 = w.at || 0; if (t < t0) continue; const q = P(w.lon * rad, w.lat * rad);
+    for (let k = 0; k < (w.n || 4); k++) { const age = t - t0 - k * 0.45; if (age <= 0) continue; const rr = age * (w.speed || 260); const al = clamp(1 - rr / (w.max || 900));
+      if (al <= 0) continue; ctx.save(); ctx.strokeStyle = hexA(w.color || C.yellow, al * 0.9); ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(q[0], q[1], rr, 0, 7); ctx.stroke(); ctx.restore(); } }
+  // free labels on the map: {lon, lat, text, at, size, color}
+  for (const l of p.labels || []) { const a = clamp(seg(t, l.at || 0, (l.at || 0) + 0.5)); if (a <= 0) continue; const q = P(l.lon * rad, l.lat * rad); if (!q[2]) continue;
+    text(ctx, l.text, q[0], q[1], { size: l.size || 30, font: l.mono ? F.monoB : F.head, color: l.color || hexA(C.cream, 0.85), align: l.align || 'center', shadow: 10, alpha: a }); }
   // pins
   for (const pin of p.pins || []) { const a = clamp(seg(t, pin.at || 0, (pin.at || 0) + 0.6)); if (a <= 0) continue; const q = P(pin.lon * rad, pin.lat * rad); if (!q[2]) continue;
     const pulse = (t * 0.8) % 1; ctx.save(); ctx.strokeStyle = hexA(pin.color || C.yellow, (1 - pulse) * a); ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(q[0], q[1], 10 + pulse * 40, 0, 7); ctx.stroke();

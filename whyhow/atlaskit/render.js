@@ -55,7 +55,7 @@ async function frame(ctx, time) {
   const fin = K.clamp(time / 0.6), fout = K.clamp((DUR - time) / 1.0); if (fin < 1 || fout < 1) { ctx.fillStyle = `rgba(0,0,0,${1 - Math.min(fin, fout)})`; ctx.fillRect(0, 0, K.W, K.H); }
 }
 async function main() {
-  if (MODE === 'cues') { fs.writeFileSync(ARGS[0], JSON.stringify({ dur: DUR, shots: shots.filter(s => !s.off).map(s => ({ t: +s.t.toFixed(3), scene: s.scene })), cuts: shots.map(s => +s.t.toFixed(3)) })); return; }
+  if (MODE === 'cues') { fs.writeFileSync(ARGS[0], JSON.stringify({ dur: DUR, shots: shots.filter(s => !s.off).map(s => ({ t: +s.t.toFixed(3), scene: s.scene, sfx: s.p && s.p.sfx, amb: s.p && s.p.amb })), cuts: shots.map(s => +s.t.toFixed(3)) })); return; }
   await K.preload(Object.fromEntries(Object.entries(ep.assets).map(([k, f]) => [k, path.resolve(EP, f)])));
   const cv = K.createCanvas(K.W, K.H), ctx = cv.getContext('2d');
   if (MODE === 'shots') { fs.writeFileSync(ARGS[0], JSON.stringify(shots.filter(s => !s.off).map(s => ({ t: +s.t.toFixed(3), scene: s.scene, p: s.p })))); return; } // full shot list (for credits)
