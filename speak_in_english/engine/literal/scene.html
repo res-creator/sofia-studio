@@ -1,0 +1,56 @@
+<!doctype html><meta charset=utf-8><style>
+:root{--bg:#2e2530;--acc:#e59ab0;--sub:#a8979f;--card:#3d3340;--cb:#54485a;--dim:#4a3f4d;--q:#7c6a82;--tx:#f6efe9}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;background:var(--bg);overflow:hidden;font-family:'Inter Display','Inter',sans-serif}
+#f{width:1080px;height:1920px;position:relative;overflow:hidden;background:radial-gradient(900px 700px at 50% 30%,#3a2e3d,#2e2530 70%)}
+.c{position:absolute;left:0;right:0;text-align:center}
+#tag{top:130px;color:var(--acc);font-weight:900;font-size:72px;letter-spacing:4px}
+#sub{top:240px;color:var(--sub);font-weight:700;font-size:46px;letter-spacing:3px}
+#q{top:400px;color:var(--tx);font-weight:900;font-size:110px;line-height:1.08;padding:0 60px}
+.card{position:absolute;top:800px;width:450px;height:760px;border-radius:50px;background:var(--card);border:6px solid var(--cb)}
+#cl{left:60px}#cr{right:60px}
+.card img{width:220px;height:220px;border-radius:50%;object-fit:cover;margin:36px auto 0;display:block;border:8px solid var(--acc)}
+.card b{display:block;margin-top:26px;text-align:center;color:var(--acc);font-size:40px;letter-spacing:2px;font-weight:900}
+.card .a{display:block;text-align:center;margin-top:22px;color:var(--tx);font-size:56px;font-weight:900;padding:0 26px;line-height:1.12}
+.steps{position:absolute;left:0;right:0;top:1680px;display:flex;justify-content:center;align-items:flex-end;gap:14px;height:140px}
+.steps i{width:70px;background:var(--dim);border-radius:12px}.steps i.on{background:var(--acc)}
+#end{opacity:0}
+#endTitle{top:520px;color:var(--tx);font-weight:900;font-size:108px;line-height:1.1;padding:0 70px}
+#endSub{top:900px;color:var(--tx);font-weight:800;font-size:66px;line-height:1.25;padding:0 70px}
+</style>
+<div id=f>
+<div class=c id=tag>ДОСЛОВНО</div><div class=c id=sub>РУССКИЕ ФРАЗЫ ПО-АНГЛИЙСКИ</div>
+<div class=c id=q></div>
+<div class=card id=cl><img src="assets/uk.png"><b>ДОСЛОВНО</b><span class=a id=al></span></div>
+<div class=card id=cr><img src="assets/us.png"><b>НА САМОМ ДЕЛЕ</b><span class=a id=ar></span></div>
+<div class=steps id=steps></div>
+<div class=c id=end><div class=c id=endTitle>Сколько ты знала?</div><div class=c id=endSub>Пиши в комментариях,<br>какую фразу показать дальше.</div></div>
+</div>
+<script>
+const $=id=>document.getElementById(id);const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const ease=x=>1-Math.pow(1-clamp(x),3);const pop=x=>{x=clamp(x);return x<1?1+0.12*Math.sin(Math.PI*x):1};
+let TL=null;
+function render(t){
+  const Q=TL.q;let cur=Q[0];for(const q of Q) if(t>=q.start-0.001) cur=q;const i=cur.i;
+  const pre=(i===0&&t<cur.start);const tin=ease((t-cur.start)/0.3);
+  $('q').textContent='«'+cur.ru+'»';$('q').style.opacity=pre?1:tin;$('q').style.transform=pre?'none':`translateY(${(1-tin)*24}px)`;
+  $('q').style.fontSize=(cur.ru.length>20?88:cur.ru.length>14?100:116)+'px';
+  [...$('steps').children].forEach((el,k)=>el.className=(k<i||(k===i&&t>=cur.realv[0]))?'on':'');
+  // left card: literal (visible on the cover during the intro)
+  const litOn=pre||t>=cur.litv[0]-0.05;$('al').textContent=litOn?cur.lit:'?';
+  $('al').style.color=litOn?'#f6efe9':'#7c6a82';$('al').style.fontSize=litOn?'56px':'120px';
+  $('al').style.transform=`scale(${(!pre&&t>=cur.litv[0]-0.05)?pop((t-cur.litv[0]+0.05)/0.45):1})`;
+  // right card: ? -> Sorry, what? -> real
+  let rt='?',rc='#7c6a82',rs='120px',rp=1;
+  if(t>=cur.realv[0]-0.05){rt=cur.real;rc='#f6efe9';rs='56px';rp=pop((t-cur.realv[0]+0.05)/0.45)}
+  else if(t>=cur.whatv[0]-0.05){rt='Sorry, what?';rc='#a8979f';rs='56px';rp=pop((t-cur.whatv[0]+0.05)/0.45)}
+  $('ar').textContent=rt;$('ar').style.color=rc;$('ar').style.fontSize=rs;$('ar').style.transform=`scale(${rp})`;
+  const sp=v=>t>=v[0]&&t<=v[1];const ls=!pre&&sp(cur.litv),rs2=sp(cur.whatv)||sp(cur.realv);
+  $('cl').style.borderColor=ls?'#e59ab0':'#54485a';$('cr').style.borderColor=rs2?'#e59ab0':'#54485a';
+  $('cl').style.transform=`scale(${ls?1.03:1})`;$('cr').style.transform=`scale(${rs2?1.03:1})`;
+  const inEnd=t>=TL.outro[0]-0.25,e=ease((t-(TL.outro[0]-0.25))/0.4);
+  ['q','cl','cr'].forEach(id=>{if(inEnd)$(id).style.opacity=1-e});$('end').style.opacity=inEnd?e:0;
+  if(inEnd)[...$('steps').children].forEach(el=>el.className='on');
+}
+window.setTL=tl=>{TL=tl;const st=$('steps');st.innerHTML='';const n=tl.q.length;for(let k=0;k<n;k++){const e=document.createElement('i');e.style.height=(40+k*(90/(n-1)))+'px';st.appendChild(e)}};window.render=render;
+</script>
