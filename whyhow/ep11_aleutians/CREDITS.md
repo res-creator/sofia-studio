@@ -78,17 +78,43 @@ US government photos and video (public domain): US Navy and US Army Signal Corps
 - The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
 - Invasion & Bombardment of Attu — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-6037
 - U.S. TROOPS ON ALASKAN FRONT [ETC.] — United News / Office of War Information, via National Archives (NARA) / archive.org — https://archive.org/details/gov.archives.arc.38921
+- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
+- U.S. Troops Arrive, Start Ashore, Attu — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-785
+- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
+- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
 - AMCHITKA ISLAND, ALASKA — U.S. Army Signal Corps, via National Archives (NARA) / archive.org — https://archive.org/details/111-adc-1418
 - The Amchitka Program — U.S. Atomic Energy Commission / DOE NNSA Nevada, via archive.org — https://archive.org/details/TheAmchitkaProgram
 - REPORT FROM THE ALEUTIANS — U.S. Army Signal Corps, "Report from the Aleutians" (1943, dir. John Huston), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.20347
 - Seabees Construct Tent City, Massacre Bay, Attu, 04/29/1943 — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/NPC-939
+- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
+- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
+- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
+- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
 - USA Troops Land, Massacre Bay, Attu Island, 05/11/1943 — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/NPC-787
+- Invasion & Bombardment of Attu — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-6037
+- REPORT FROM THE ALEUTIANS — U.S. Army Signal Corps, "Report from the Aleutians" (1943, dir. John Huston), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.20347
+- REPORT FROM THE ALEUTIANS — U.S. Army Signal Corps, "Report from the Aleutians" (1943, dir. John Huston), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.20347
+- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
+- Landings on Attu — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-12227
+- REPORT FROM THE ALEUTIANS — U.S. Army Signal Corps, "Report from the Aleutians" (1943, dir. John Huston), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.20347
 - Sub S-32 Returns Base, Dutch Harbor, Alaska, 03/20/1943 — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/NPC-641
+- REPORT FROM THE ALEUTIANS — U.S. Army Signal Corps, "Report from the Aleutians" (1943, dir. John Huston), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.20347
+- REPORT FROM THE ALEUTIANS — U.S. Army Signal Corps, "Report from the Aleutians" (1943, dir. John Huston), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.20347
 - Kiska, Aleutian Islands, Alaska — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-10186
+- Kiska, Aleutian Islands, Alaska — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-10186
+- U.S. Troops Arrive, Start Ashore, Attu — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-785
+- Invasion & Bombardment of Attu — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-6037
 - Action on Attu — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-12241
+- Kiska, Aleutian Islands, Alaska — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-10186
+- Kiska, Aleutian Islands, Alaska — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-10184
 - Kiska, Aleutian Islands, Alaska — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-10184
 - Kiska, Aleutian Islands, Alaska — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-10189
 - Kiska — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-10294
+- REPORT FROM THE ALEUTIANS — U.S. Army Signal Corps, "Report from the Aleutians" (1943, dir. John Huston), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.20347
+- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
+- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
+- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
+- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
 
 Stock video and photos (Pixabay Content License / Coverr license, free for commercial use):
 - brigachtal via Pixabay — https://pixabay.com/videos/id-3342/
