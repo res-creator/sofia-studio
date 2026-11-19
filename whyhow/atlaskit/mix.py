@@ -5,6 +5,8 @@ import json, sys, os, subprocess, numpy as np, soundfile as sf
 from scipy.signal import butter, sosfilt, resample_poly
 EP, OUT = sys.argv[1:3]; SR = 48000
 TL = json.load(open(os.path.join(EP, 'timeline.json'))); MJ = json.load(open(os.path.join(EP, 'mix.json'))) if os.path.exists(os.path.join(EP, 'mix.json')) else {}; MT = MJ.get('tense', ['P024', 'P036']); CU = json.load(open(os.path.join(EP, 'cues.json')))
+def smooth(x, k):
+    c = np.cumsum(np.concatenate([np.zeros(k // 2 + 1), x, np.zeros(k)])); return (c[k:k + len(x)] - c[:len(x)]) / k
 N = int((CU['dur'] + 0.5) * SR); voice = np.zeros(N); rng = np.random.default_rng(7)
 for p in TL['paras']:
     x, sr = sf.read(os.path.join(EP, 'voice', p['id'] + '.wav'), dtype='float64'); x = x if x.ndim == 1 else x.mean(1)
@@ -66,11 +68,9 @@ for c in CU['shots']:
     elif c['scene'] == 'endq': boom(c['t'] + 0.2, 0.6)
 boom(0.05, 1.0)  # sound at 0.0 s
 # --- ducking envelope from voice ---
-env = np.abs(voice); win = int(0.25 * SR); env = np.convolve(env, np.ones(win) / win, 'same'); talk = np.clip(env / 0.02, 0, 1)
-talk = np.convolve(talk, np.ones(int(0.6 * SR)) / int(0.6 * SR), 'same')
+env = np.abs(voice); win = int(0.25 * SR); env = smooth(env, win); talk = np.clip(env / 0.02, 0, 1)
+talk = smooth(talk, int(0.6 * SR))
 # --- ambience beds by shot (p.amb: sea | storm | rain | wind | quiet), default wind ---
-def smooth(x, k):
-    c = np.cumsum(np.concatenate([np.zeros(k // 2 + 1), x, np.zeros(k)])); return (c[k:k + len(x)] - c[:len(x)]) / k
 def bedmask(name):
     msk = np.zeros(N); sh = CU['shots']
     for i, c in enumerate(sh):
