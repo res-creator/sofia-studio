@@ -4,15 +4,16 @@ Photos and video (Wikimedia Commons):
 - Attu village 1937 — Murie, O. J., photographer; Image source: Department of Interior on caption card; U.S. Fish and Wildlife Service on file, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAttu_village_1937.jpg
 - Early Russian Orthodox Church, Attu Island, Alaska — The Library of Congress, Documentary photographs of Alaska and the islands off its northern coast, 1890-1900, l. 42, no., Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AEarly_Russian_Orthodox_Church%2C_Attu_Island%2C_Alaska.jpg
 - Attu village aerial photo 1942-43 — United States, Office of War Information., Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAttu_village_aerial_photo_1942-43.jpg
+- Lost Village of Attu Interpretive Sign (38832033715) — USFWSAlaska, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ALost_Village_of_Attu_Interpretive_Sign_%2838832033715%29.jpg
 - Attu Coastguard Station — 496psk, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAttu_Coastguard_Station.jpg
 - The city of Adak, Alaska (47996644657) — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AThe_city_of_Adak%2C_Alaska_%2847996644657%29.jpg
-- Abandoned homes on Adak Island, Alaska (16665815472) — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAbandoned_homes_on_Adak_Island%2C_Alaska_%2816665815472%29.jpg
+- Abandoned playground equipment on Adak. Adak Island, Alaska (16665805242) — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAbandoned_playground_equipment_on_Adak._Adak_Island%2C_Alaska_%2816665805242%29.jpg
 - Adak, Alaska Base (1055923818) — Alexandra Kay from Murfreesboro, TN, United States, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAdak%2C_Alaska_Base_%281055923818%29.jpg
 - Kittlitz - Unalashka Natives with their Canoes (1827) — F. H. von Kittlitz, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AKittlitz_-_Unalashka_Natives_with_their_Canoes_%281827%29.png
-- Alaska Airlines at Adak — Pabobfin, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAlaska_Airlines_at_Adak.jpg
-- Ruined Adak homes. Adak Island, Alaska (47996636018) — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ARuined_Adak_homes._Adak_Island%2C_Alaska_%2847996636018%29.jpg
-- Panorama of Jarmin Pass, Attu (39698529912) — USFWSAlaska, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3APanorama_of_Jarmin_Pass%2C_Attu_%2839698529912%29.jpg
 - Short final PADK RW23 — Mestersvig, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AShort_final_PADK_RW23.jpg
+- Abandoned military facilities on Adak Island. Aleutian Islands, Alaska — Paxson Woelber, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAbandoned_military_facilities_on_Adak_Island._Aleutian_Islands%2C_Alaska.jpg
+- Panorama of Jarmin Pass, Attu (39698529912) — USFWSAlaska, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3APanorama_of_Jarmin_Pass%2C_Attu_%2839698529912%29.jpg
+- Unimak Island from transpacific flight February 2026 — 4300streetcar, CC BY 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AUnimak_Island_from_transpacific_flight_February_2026.jpg
 - Unalaska Harbor (8230568481) — Joseph from Cabin On The Road, USA, CC BY-SA 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AUnalaska_Harbor_%288230568481%29.jpg
 - Shemya Island-color — (US Air Force photo), Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AShemya_Island-color.jpg
 - PBY-5A Catalina in a gale on Adak island in February 1943 — U.S. Navy, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3APBY-5A_Catalina_in_a_gale_on_Adak_island_in_February_1943.jpg
@@ -27,18 +28,19 @@ Photos and video (Wikimedia Commons):
 - Near Islands — nationalatlas.gov/U.S. Geological Survey, edited by Ulrich Kaden, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ANear_Islands.jpg
 - Skins of sea otters 1892 — Archival Photographer Stefan Claesson, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ASkins_of_sea_otters_1892.jpg
 - Tikhanov - Alexandr Andreyevich Baranov (1818) — Mikhail Tikhanov, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ATikhanov_-_Alexandr_Andreyevich_Baranov_%281818%29.png
-- Old Russian Graveyard — sonyaseattle, CC BY-SA 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AOld_Russian_Graveyard.jpg
 - Two Aleuts in kayak with fort at Oululuk (Unalaska), Alaska in background, between 1816 an — University of Washington, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ATwo_Aleuts_in_kayak_with_fort_at_Oululuk_%28Unalaska%29%2C_Alaska_in_background%2C_between_1816_and_1817_%28AL%2BCA_8219%29.jpg
 - Russian America Settlements Map — United States National Park Service, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ARussian_America_Settlements_Map.png
+- 1873 U.S. Coast Survey Map of the Aleutian Islands, Alaska - Geographicus - AleutianIsland — United States Coast Survey, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3A1873_U.S._Coast_Survey_Map_of_the_Aleutian_Islands%2C_Alaska_-_Geographicus_-_AleutianIslands-uscs-1873.jpg
 - Town of Unalaska, Alaska, June 1906 (COBB 151) — John Nathan Cobb, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ATown_of_Unalaska%2C_Alaska%2C_June_1906_%28COBB_151%29.jpeg
+- Attu Chichagof Harbor with smoke 1943 — United States, Office of War Information., Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAttu_Chichagof_Harbor_with_smoke_1943.jpg
 - Burning oil tanks at Dutch Harbor 1942 — Capt. Lewis R. Devoe, USNR, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ABurning_oil_tanks_at_Dutch_Harbor_1942.jpg
 - NorthwesternInFlames-2 — US Navy, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ANorthwesternInFlames-2.jpg
 - A6M2-N Rufes Holtz Bay 1942 — USAAF, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AA6M2-N_Rufes_Holtz_Bay_1942.jpg
 - Aleut Evacuation, 1942 (34008700550) — National Park Service, Alaska Region, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAleut_Evacuation%2C_1942_%2834008700550%29.png
 - Atka Island reindeer and World War II aircraft — Hillebrand, Steve - U.S. Fish and Wildlife Service, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAtka_Island_reindeer_and_World_War_II_aircraft.jpg
+- Women and children having a meal at Ward Lake Evacuation Camp (35534072510) — National Park Service, Alaska Region, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AWomen_and_children_having_a_meal_at_Ward_Lake_Evacuation_Camp_%2835534072510%29.jpg
 - Funter Bay 110 — gillfoto, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AFunter_Bay_110.jpg
 - Killisnoo evacuation camp, 1942 (33551289614) — National Park Service, Alaska Region, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AKillisnoo_evacuation_camp%2C_1942_%2833551289614%29.jpg
-- Women and children having a meal at Ward Lake Evacuation Camp (35534072510) — National Park Service, Alaska Region, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AWomen_and_children_having_a_meal_at_Ward_Lake_Evacuation_Camp_%2835534072510%29.jpg
 - Aleut Womens Petition - DPLA - 1a29b80d0338d2a8db8448ab782dcd00 (page 1) — National Archives at Seattle, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAleut_Womens_Petition_-_DPLA_-_1a29b80d0338d2a8db8448ab782dcd00_%28page_1%29.jpg
 - Peace Memorial at the top of Engineer Hill, Attu (39020676024) — USFWSAlaska, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3APeace_Memorial_at_the_top_of_Engineer_Hill%2C_Attu_%2839020676024%29.jpg
 - Japanese Memorial, Attu (39020739234) — USFWSAlaska, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AJapanese_Memorial%2C_Attu_%2839020739234%29.jpg
@@ -49,17 +51,18 @@ Photos and video (Wikimedia Commons):
 - Morzhovoi, Alaska in ~1897 — H.W. Elliott, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AMorzhovoi%2C_Alaska_in_~1897.jpg
 - Church and village of Kashega, 1938 (33917828274) — National Park Service, Alaska Region, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AChurch_and_village_of_Kashega%2C_1938_%2833917828274%29.jpg
 - Biorka Village (35790126431) — National Park Service, Alaska Region, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ABiorka_Village_%2835790126431%29.jpg
-- Lost Village of Attu Interpretive Sign (38832033715) — USFWSAlaska, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ALost_Village_of_Attu_Interpretive_Sign_%2838832033715%29.jpg
 - St. Nicholas Russian Orthodox Chapel, Atka Island, Alaska — Thester11, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ASt._Nicholas_Russian_Orthodox_Chapel%2C_Atka_Island%2C_Alaska.JPG
 - VIEW OF VILLAGE WITH RAINBOW - Village of Nikolski, Nikolski, Aleutians West Census Area,  — Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AVIEW_OF_VILLAGE_WITH_RAINBOW_-_Village_of_Nikolski%2C_Nikolski%2C_Aleutians_West_Census_Area%2C_AK_HABS_AK%2C1-NICO%2C1-2_%28CT%29.tif
 - USS Cape Cod (AD-43) at Adak, Alaska (USA), circa in September 1989 — U.S. Navy, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AUSS_Cape_Cod_%28AD-43%29_at_Adak%2C_Alaska_%28USA%29%2C_circa_in_September_1989.jpg
+- Sweeper Cove, Mount Moffett and Adak - panoramio — Michael Gordon, CC BY 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ASweeper_Cove%2C_Mount_Moffett_and_Adak_-_panoramio.jpg
 - CH-46D Sea Knight of HC-11 at Adak in 1986 — PH2 Paul Pappas, USN, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ACH-46D_Sea_Knight_of_HC-11_at_Adak_in_1986.JPEG
 - Residences in Adak. Adak Island, Aleutian Islands, Alaska - panoramio — Paxson Woelber, CC BY 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AResidences_in_Adak._Adak_Island%2C_Aleutian_Islands%2C_Alaska_-_panoramio.jpg
 - Adak Tundra — Chiefhuggybear, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAdak_Tundra.jpg
 - Adak National Forest. Adak Island, Alaska (16046920393) — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAdak_National_Forest._Adak_Island%2C_Alaska_%2816046920393%29.jpg
-- Abandoned military facilities on Adak Island. Aleutian Islands, Alaska — Paxson Woelber, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAbandoned_military_facilities_on_Adak_Island._Aleutian_Islands%2C_Alaska.jpg
+- Abandoned homes on Adak Island, Alaska (16665815472) — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAbandoned_homes_on_Adak_Island%2C_Alaska_%2816665815472%29.jpg
+- Ruined Adak homes. Adak Island, Alaska (47996636018) — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ARuined_Adak_homes._Adak_Island%2C_Alaska_%2847996636018%29.jpg
 - Adak Army Base and Adak Naval Operating Base (20359238629) — National Park Service, Alaska Region, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAdak_Army_Base_and_Adak_Naval_Operating_Base_%2820359238629%29.jpg
-- Abandoned playground equipment on Adak. Adak Island, Alaska (16665805242) — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAbandoned_playground_equipment_on_Adak._Adak_Island%2C_Alaska_%2816665805242%29.jpg
+- Abandoned bunker. Adak Island, Alaska (47996634728) — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AAbandoned_bunker._Adak_Island%2C_Alaska_%2847996634728%29.jpg
 - Wreck of the Heritage. Adak Island, Alaska (31372084535) — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AWreck_of_the_Heritage._Adak_Island%2C_Alaska_%2831372084535%29.jpg
 - Shipwreck in the Adak Harbor. Adak Island, Alaska — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AShipwreck_in_the_Adak_Harbor._Adak_Island%2C_Alaska.jpg
 - Power line in Adak Island (47996624717) — Paxson Woelber, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3APower_line_in_Adak_Island_%2847996624717%29.jpg
@@ -70,51 +73,24 @@ Photos and video (Wikimedia Commons):
 - Processing plants, Dutch Harbor — NOAA Photo Library, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AProcessing_plants%2C_Dutch_Harbor.jpg
 - Cobra Dane radar, Eareckson Air Station, Shemya, Alaska — Chief Petty Officer Brandon Raile, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ACobra_Dane_radar%2C_Eareckson_Air_Station%2C_Shemya%2C_Alaska.jpg
 - USS Carl M. Levin (DDG-120) in Unalaska, Alaska on 10 August 2025 — United States Navy, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3AUSS_Carl_M._Levin_%28DDG-120%29_in_Unalaska%2C_Alaska_on_10_August_2025.jpg
-- Sweeper Cove, Mount Moffett and Adak - panoramio — Michael Gordon, CC BY 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File%3ASweeper_Cove%2C_Mount_Moffett_and_Adak_-_panoramio.jpg
 
 US government photos and video (public domain): US Navy and US Army Signal Corps films (National Archives), the Atomic Energy Commission films on Amchitka, and US Fish & Wildlife Service footage (Alaska Maritime NWR), via Internet Archive:
 - Landings on Attu — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-12227
-- U.S. Troops Arrive, Start Ashore, Attu — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-785
 - The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
 - Invasion & Bombardment of Attu — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-6037
 - U.S. TROOPS ON ALASKAN FRONT [ETC.] — United News / Office of War Information, via National Archives (NARA) / archive.org — https://archive.org/details/gov.archives.arc.38921
-- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
 - U.S. Troops Arrive, Start Ashore, Attu — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-785
-- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
-- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
 - AMCHITKA ISLAND, ALASKA — U.S. Army Signal Corps, via National Archives (NARA) / archive.org — https://archive.org/details/111-adc-1418
 - The Amchitka Program — U.S. Atomic Energy Commission / DOE NNSA Nevada, via archive.org — https://archive.org/details/TheAmchitkaProgram
 - REPORT FROM THE ALEUTIANS — U.S. Army Signal Corps, "Report from the Aleutians" (1943, dir. John Huston), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.20347
 - Seabees Construct Tent City, Massacre Bay, Attu, 04/29/1943 — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/NPC-939
-- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
-- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
-- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
-- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
 - USA Troops Land, Massacre Bay, Attu Island, 05/11/1943 — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/NPC-787
-- Invasion & Bombardment of Attu — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-6037
-- REPORT FROM THE ALEUTIANS — U.S. Army Signal Corps, "Report from the Aleutians" (1943, dir. John Huston), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.20347
-- REPORT FROM THE ALEUTIANS — U.S. Army Signal Corps, "Report from the Aleutians" (1943, dir. John Huston), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.20347
-- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
-- Landings on Attu — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-12227
-- REPORT FROM THE ALEUTIANS — U.S. Army Signal Corps, "Report from the Aleutians" (1943, dir. John Huston), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.20347
 - Sub S-32 Returns Base, Dutch Harbor, Alaska, 03/20/1943 — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/NPC-641
-- REPORT FROM THE ALEUTIANS — U.S. Army Signal Corps, "Report from the Aleutians" (1943, dir. John Huston), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.20347
-- REPORT FROM THE ALEUTIANS — U.S. Army Signal Corps, "Report from the Aleutians" (1943, dir. John Huston), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.20347
 - Kiska, Aleutian Islands, Alaska — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-10186
-- Kiska, Aleutian Islands, Alaska — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-10186
-- U.S. Troops Arrive, Start Ashore, Attu — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-785
-- Invasion & Bombardment of Attu — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-6037
 - Action on Attu — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-12241
-- Kiska, Aleutian Islands, Alaska — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-10186
-- Kiska, Aleutian Islands, Alaska — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-10184
 - Kiska, Aleutian Islands, Alaska — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-10184
 - Kiska, Aleutian Islands, Alaska — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-10189
 - Kiska — U.S. Navy, via National Archives (NARA) / archive.org — https://archive.org/details/428-npc-10294
-- REPORT FROM THE ALEUTIANS — U.S. Army Signal Corps, "Report from the Aleutians" (1943, dir. John Huston), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.20347
-- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
-- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
-- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
-- The Tiglax - Alaska Maritime National Wildlife Refuge — U.S. Fish and Wildlife Service, Alaska Maritime NWR, "Journey of the Tiglax", via archive.org — https://archive.org/details/gov.fws.aws.4.5
 
 Stock video and photos (Pixabay Content License / Coverr license, free for commercial use):
 - brigachtal via Pixabay — https://pixabay.com/videos/id-3342/
