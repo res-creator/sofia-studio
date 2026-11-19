@@ -2,7 +2,7 @@
 
 **File:** `aleutians_islands_still_empty.mp4` (1920×1080, 30 fps, ~11:25, −14 LUFS).
 **Mid-roll ads:** the video is over 8 minutes, so mid-rolls are allowed. Place them on chapter breaks: about 4:07 and 7:23.
-**Thumbnail:** `aleutians_cover_A.jpg` (main) and `aleutians_cover_B.jpg`, 1280×720. Run A vs B in YouTube "Test & compare".
+**Thumbnail:** `aleutians_cover_A.jpg` (main, pairs with the main title) and `aleutians_cover_B.jpg` (pairs with the Japan title), 1280×720. Run A vs B in YouTube "Test & compare".
 **Subtitles:** `aleutians_subtitles_en.srt` (English).
 **Altered or synthetic content:** synthetic (AI) narrator voice that does not imitate a real person: "No" is allowed, "Yes" is also safe. All footage and photos are real: US Navy and US Army Signal Corps films 1942–44 (National Archives, via Internet Archive), Atomic Energy Commission films of Amchitka, US Fish & Wildlife Service, Wikimedia Commons, Pixabay. Clips that are not from the Aleutians are labelled ILLUSTRATIVE. Maps and diagrams are our own animation.
 **Playlist:** How Cities Really Work
@@ -10,10 +10,10 @@
 **Before upload:** check whether Adak's fish plant or the Adak population has new news (KUCB), and that the Shemya fighter deployment (Oct 2026) is still described correctly.
 
 ## Title
-The American Islands Japan Invaded Are Still Empty
+Why America's Aleutian Islands Keep Emptying
 
 Alternatives (for A/B title test):
-- Why America's Aleutian Islands Keep Emptying
+- The American Islands Japan Invaded Are Still Empty (pair with cover B)
 - The Town at the End of America Is Running Out of People
 
 ## Description

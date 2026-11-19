@@ -41,7 +41,7 @@ function build(T) {
       if (sh.p.toneW) { sh.p.toneAt = sh.p.toneW.map(w => Math.max(0.3, T.at(pid, w) - t0)); delete sh.p.toneW; }
       add(t0, sh, 'cut'); });
   }
-  const chapter = (pid, n, title) => add(T.s(pid) - 2.0, S('chapter', { n, title }), 'fade');
+  const chapter = (pid, n, title) => add(T.s(pid) - 2.0, S('chapter', { n, title }), 'cut');
 
 
   const note = (text) => ({ type: 'note', text, x: 60, y: 70, at: 0.3 });
@@ -65,12 +65,12 @@ function build(T) {
   ], { start: 0 });
   beats('A002', [
     A('cm_attu_village_aerial_1942', { over: [note('ATTU VILLAGE UNDER JAPANESE OCCUPATION, 1942')] }),
-    sea('ia_attu_1943_fog_boat_in_mist', { cutW: 'About', over: [low('ABOUT HALF NEVER CAME BACK', 'half')] }),
+    A('cm_attu_lost_village_sign', { cutW: 'About', over: [low('ABOUT HALF NEVER CAME BACK', 'half')] }),
   ]);
   beats('A003', [
     A('cm_attu_coast_guard_station', { over: [low('ATTU TODAY: NOBODY', 'nobody'), note('FORMER COAST GUARD STATION, ATTU')] }),
     A('cm_adak_city', { cutW: 'Adak', over: [note('ADAK')] }),
-    F('cm_adak_abandoned_homes', { cutW: 'Last', over: [low('WINTER 2025: A FEW DOZEN PEOPLE', 'dozen')] }),
+    F('cm_adak_abandoned_playground', { cutW: 'Last', over: [low('WINTER 2025: A FEW DOZEN PEOPLE', 'dozen')] }),
   ]);
   beats('A004', [storm('gov_tiglax_dark_clouds_island', { over: [head('WHY DO THEY KEEP EMPTYING?', null, 200, 90)] })]);
   beats('A005', [
@@ -83,29 +83,28 @@ function build(T) {
     A('cm_kittlitz_unalaska_natives_canoes_1827', { cutW: 'But', over: [low('PEOPLE HERE FOR ~9,000 YEARS', 'thousand'), note('UNANGAN KAYAKS OFF UNALASKA, 1827 (KITTLITZ)')] }),
   ]);
   beats('A007', [
-    F('cm_adak_alaska_airlines', { cutW: 'first', over: [low('1 · GETTING THERE', 'first')] }),
+    F('cm_adak_short_final_runway', { cutW: 'first', over: [low('1 · GETTING THERE', 'first')] }),
     sea('ia_attu_1943_fog_landing_craft_emerge', { cutW: 'back', over: [low('2 · 1942', 'nineteen')] }),
-    F('cm_adak_ruined_homes', { cutW: 'visit', over: [low('3 · THE NAVY TOWN', 'Navy')] }),
+    F('cm_adak_abandoned_military_facilities', { cutW: 'visit', over: [low('3 · THE NAVY TOWN', 'Navy')] }),
     storm('gov_tiglax_ship_backlit_storm_sky', { cutW: 'end', over: [low('4 · WHAT REALLY EMPTIES THEM', 'really')] }),
   ]);
-  add(T.e('A007') + 0.15, S('title', { lines: ['THE AMERICAN ISLANDS', 'JAPAN INVADED', 'ARE STILL EMPTY'], hl: 2, img: 'cm_attu_jarmin_pass_panorama', credit: credit('cm_attu_jarmin_pass_panorama'), brand: true, sfx: 'riser' }), 'cut');
+  add(T.e('A007') + 0.15, S('title', { lines: ['WHY AMERICA\'S', 'ALEUTIAN ISLANDS', 'KEEP EMPTYING'], hl: 2, img: 'cm_attu_jarmin_pass_panorama', credit: credit('cm_attu_jarmin_pass_panorama'), brand: true, sfx: 'riser' }), 'cut');
 
   // ===== CH1 (no card) =====
   beats('A008', [S('globe', { relief: true, borders: false, lon: [[0, -150], [3.5, -176]], lat: [[0, 42], [3.5, 54]], R: [[0, 430], [3.5, 2600]],
     routes: [{ pts: [pt(G.unimak), pt(G.dut), pt(G.atka), pt(G.adak), pt(G.kiska), pt(G.attu)], at: 3.8, dur: 2.4, dash: false, w: 7, label: 'OVER 1,000 MILES', ly: 60 }],
-    pins: [{ ...G.attu, label: 'ATTU', at: 6.2, small: true, size: 36 }, { ...G.dut, label: 'DUTCH HARBOR', at: 4.2, small: true, size: 36 }],
+    pins: [{ ...G.attu, label: 'ATTU', at: 6.2, small: true, size: 50 }, { ...G.dut, label: 'DUTCH HARBOR', at: 4.2, small: true, size: 50 }],
     labels: [{ lon: -170, lat: 47.5, text: '≈ NEW YORK → MIAMI', at: 7.5, size: 40, color: C('yellow') }, { lon: -168, lat: 58.5, text: 'BERING SEA', at: 3.6, mono: true }, { lon: 178, lat: 47.5, text: 'PACIFIC OCEAN', at: 3.6, mono: true }] })]);
   beats('A009', [
     F('gov_tiglax_volcano_steaming', { over: [note('A STEAMING ALEUTIAN VOLCANO (USFWS)')] }),
     S('globe', { cutW: 'Great', relief: true, borders: false, lon: [[0, -176.4], [4, -176.4]], lat: [[0, 52.0], [4, 52.0]], R: [[0, 9000], [4, 12000]],
-      pins: [{ ...G.sitkin, label: 'GREAT SITKIN', sub: 'LAVA IN THE CRATER SINCE 2021', color: C('red'), at: 0.3 }, { ...G.adak, label: 'ADAK', small: true, size: 34, at: 0.8, lx: -150, ly: 40 }], waves: [{ ...G.sitkin, at: 0.4, n: 3, speed: 200, max: 500, color: C('red') }] }),
+      pins: [{ ...G.sitkin, label: 'GREAT SITKIN', sub: 'LAVA IN THE CRATER SINCE 2021', color: C('red'), at: 0.3 }, { ...G.adak, label: 'ADAK', small: true, size: 48, at: 0.8, lx: -150, ly: 40 }], waves: [{ ...G.sitkin, at: 0.4, n: 3, speed: 200, max: 500, color: C('red') }] }),
   ]);
   beats('A011', [S('globe', { relief: true, borders: false, lon: [[0, -176], [3, -178]], lat: [[0, 53], [3, 54]], R: [[0, 2600], [3, 1500]],
-    pins: [{ ...G.attu, label: 'ATTU', at: 0.3 }, { ...G.anc, label: 'ANCHORAGE', at: 1.2, small: true, size: 36 }, { ...G.kam, label: 'KAMCHATKA', at: 6.5, small: true, size: 36, align: 'right', lx: -26 }],
+    pins: [{ ...G.attu, label: 'ATTU', at: 0.3 }, { ...G.anc, label: 'ANCHORAGE', at: 1.2, small: true, size: 50 }, { ...G.kam, label: 'KAMCHATKA', at: 6.5, small: true, size: 50, align: 'right', lx: -26 }],
     routes: [{ pts: [pt(G.attu), pt(G.anc)], at: 1.4, dur: 1.8, label: '1,500 MI ≈ LONDON → MOSCOW', size: 34, ly: -40 }, { pts: [pt(G.attu), pt(G.kam)], at: 6.8, dur: 1.2, color: C('red'), label: '< 550 MI', size: 36, ly: 50 }] })]);
   beats('A012', [
-    F('cm_adak_alaska_airlines', { kb: { z: [1.25, 1.1] }, over: [low('ADAK: 2 FLIGHTS A WEEK', 'two')] }),
-    F('cm_adak_short_final_runway', { cutW: 'Anchorage' }),
+    A('cm_unimak_from_airliner_2026', { over: [low('ADAK: 2 FLIGHTS A WEEK', 'two'), note('THE ALEUTIANS FROM A PLANE, 2026')] }),
     sea('cm_unalaska_harbor', { cutW: 'ferry', over: [low('FERRY: ~ONCE A MONTH, SUMMER ONLY', 'month')] }),
     F('cm_shemya_aerial_color', { cutW: 'West', over: [low('WEST OF ADAK: NO SCHEDULED SERVICE', 'scheduled'), note('SHEMYA ISLAND')] }),
   ]);
@@ -121,7 +120,7 @@ function build(T) {
   ]);
   beats('A014B', [
     sea('gov_tiglax_sea_stacks_glitter'),
-    A('cm_waxell_aleuts_shumagin_1741', { cutW: 'It', over: [low('IT CAME BY SHIP', 'ship'), note('ALEUTS MEET THE BERING EXPEDITION, 1741 (SVEN WAXELL)')] }),
+    A('cm_waxell_aleuts_shumagin_1741', { cutW: 'It', over: [head('IT CAME BY SHIP', 'ship', 200, 100, Yc), note('ALEUTS MEET THE BERING EXPEDITION, 1741 (SVEN WAXELL)')] }),
   ]);
 
   // ===== CH2 =====
@@ -149,20 +148,20 @@ function build(T) {
     sea('px_v_sea_otters_alaska', { over: [note('SEA OTTERS (ILLUSTRATIVE, ALASKA)')] }),
     A('cm_sea_otter_skins_1892', { cutW: 'forced', over: [note('SEA OTTER SKINS, 1892')] }),
     A('cm_tikhanov_baranov_1818', { cutW: 'Violence', over: [note('ALEXANDER BARANOV, RUSSIAN-AMERICAN COMPANY (1818)')] }),
-    A('cm_unalaska_old_russian_graveyard', { cutW: 'By', over: [cnt('eighty', 80, { pre: '~', suf: '%', label: 'OF THE UNANGAN LOST (NPS)', y: 520 })] }),
+    S('stats', { cutW: 'By', head: 'BY THE END OF RUSSIAN RULE', items: [], sfx: 'boom', over: [cnt('eighty', 80, { pre: '~', suf: '%', label: 'OF THE UNANGAN LOST (NPS)', y: 560, size: 200 })], source: 'Source: National Park Service' }),
   ]);
   beats('A020', [
     A('cm_unalaska_two_aleuts_kayak_fort', { over: [note('A RUSSIAN POST AT UNALASKA (EARLY ILLUSTRATION)')] }),
     A('cm_russian_america_settlements_map', { cutW: 'eighteen' }),
     storm('px_v_storm_ocean_rain_wind', { cutW: 'No', over: [head('NO SHIP FOR FIVE YEARS', 'five', 200, 100, Yc), note('ILLUSTRATIVE')] }),
   ]);
-  beats('A020B', [A('cm_attu_russian_orthodox_church_early', { kb: { z: [1.3, 1.1] }, over: [low('1831: 120 PEOPLE ON ATTU', 'hundred')] })]);
+  beats('A020B', [A('cm_map_1873_coast_survey_aleutians', { over: [low('1831: 120 PEOPLE ON ATTU', 'hundred'), note('U.S. COAST SURVEY MAP, 1873')] })]);
   beats('A021', [
     A('cm_unalaska_town_1906', { over: [low('1867: ALASKA SOLD TO THE U.S.', 'eighteen'), note('UNALASKA, 1906')] }),
     sea('ia_attu_1943_snowy_ridges_lake', { cutW: 'Within', over: [low('ATTU: 220 → 107 IN ~10 YEARS', 'halved')] }),
   ]);
   beats('A022', [
-    A('cm_attu_village_aerial_1942', { kb: { z: [1.3, 1.1] }, over: [low('1942: 45 UNANGAN ON ATTU', 'forty-five')] }),
+    A('cm_attu_chichagof_harbor_smoke_1943', { over: [low('1942: 45 UNANGAN ON ATTU', 'forty-five'), note('CHICHAGOF HARBOR, ATTU, 1943')] }),
     F('ia_report_1943_map_dutch_harbor_midway', { cutW: 'That', over: [note('U.S. ARMY FILM, 1943')] }),
   ]);
 
@@ -179,38 +178,40 @@ function build(T) {
     Q('body', 'CHARLES FOSTER JONES, ATTU', '1948: SHOT', 'THROUGH THE HEAD', 'JAPAN HAD CALLED IT SUICIDE', 'Source: NPS, "Attu Boy" (2012)'),
   ]);
   beats('A025', [
-    storm('ia_attu_1943_bow_plunges_waves', { over: [low('SEPT 1942: SHIPPED TO JAPAN', 'September')] }),
+    storm('ia_attu_1943_bow_plunges_waves', { over: [low('SEPT 1942: SHIPPED TO JAPAN', 'September'), note('ILLUSTRATIVE: U.S. NAVY FILM, 1943')] }),
     S('globe', { cutW: 'Otaru', relief: true, borders: false, lon: [[0, 165], [3, 158]], lat: [[0, 50], [3, 48]], R: [[0, 1500], [3, 1250]],
       pins: [{ ...G.attu, label: 'ATTU', at: 0.2 }, { ...G.otaru, label: 'OTARU, JAPAN', at: 1.6, color: C('red') }], routes: [{ pts: [pt(G.attu), pt(G.kiska), pt(G.otaru)], at: 0.4, dur: 1.4 }] }),
   ]);
   beats('A026', [
-    Q(null, 'OLEAN GOLODOFF, IN JAPAN', '"I FED THEM', 'TO MY CHILDREN"', 'ORANGE PEELS', 'Quoted by AP (2023); NPS, "Attu Boy"'),
-    storm('gov_tiglax_dark_clouds_island', { cutW: 'She', in: 4 }),
+    S('stats', { head: 'OLEAN GOLODOFF, IN JAPAN', items: [], sfx: 'boom', over: [at(head('ORANGE PEELS', null, 430, 110, Yc), 0.3), at(head('"I FED THEM TO MY CHILDREN, AND ONLY THEN', null, 580, 54), 0.9), at(head('WOULD THEY STOP CRYING FOR A WHILE."', null, 660, 54), 1.1)], source: 'Quoted by AP (2023); NPS, "Attu Boy"' }),
+    sea('gov_tiglax_volcano_across_sea', { cutW: 'She' }),
     sea('ia_report_1943_snowy_peaks_sea', { cutW: 'About', over: [low('ABOUT HALF OF THE ATTUANS DIED IN JAPAN', 'half')] }),
   ]);
   beats('A027', [
     A('cm_aleut_evacuation_1942', { over: [note('UNANGAN EVACUATION, 1942')] }),
     F('ia_dutch_harbor_1943_crowd_dock_mountains', { cutW: 'Eight', over: [cnt('eighty-one', 881, { label: 'UNANGAN REMOVED · 9 VILLAGES', y: 520 }), note('DUTCH HARBOR, 1943')] }),
-    sea('ia_report_1943_harbor_ships_flag', { cutW: 'On', over: [low('ST. PAUL: A FEW HOURS · ONE SUITCASE', 'suitcase')] }),
+    sea('ia_report_1943_harbor_ships_flag', { cutW: 'On', over: [low('ST. PAUL: A FEW HOURS · ONE SUITCASE', 'suitcase'), note('ILLUSTRATIVE: U.S. SHIPS, 1943')] }),
   ]);
-  beats('A027B', [Q('Greg', 'GREG FRATIS, ST. PAUL, AGE 2', '"ONE SUITCASE.', 'THE BOAT IS HERE."', 'AT 77: "LET\'S NOT LET IT HAPPEN AGAIN."', 'Source: USFWS (2017)')]);
+  beats('A027B', [S('stats', { head: 'GREG FRATIS, ST. PAUL, AGE 2', items: [], sfx: 'boom', over: [{ ...chipC('THE ELDERS TOLD HIM:', null, 380, 46), at: 0.2 }, at(head('"ONE SUITCASE.', null, 520, 92, Yc), 0.5), at(head('THE BOAT IS HERE."', null, 640, 92, Yc), 0.8)], source: 'Source: USFWS (2017)' }),
+    A('cm_aleut_evacuation_1942', { cutW: 'At', kb: { z: [1.3, 1.1] }, over: [head('AT 77: "LET\'S NOT LET IT HAPPEN AGAIN."', null, 200, 60)] }),
+  ]);
   beats('A028', [A('cm_atka_reindeer_ww2_plane', { over: [low('JUNE 1942: ATKA BURNED BY U.S. FORCES', 'fire'), note('ATKA ISLAND TODAY')] })]);
   beats('A029', [
-    A('cm_funter_bay', { over: [low('FUNTER BAY: AN OLD CANNERY', 'cannery'), note('FUNTER BAY TODAY')] }),
-    A('cm_killisnoo_evacuation_camp_1942', { cutW: 'herring', over: [note('KILLISNOO CAMP, 1942')] }),
-    A('cm_ward_lake_camp_meal', { cutW: 'rotten', over: [note('WARD LAKE CAMP, 1942–45')] }),
+    A('cm_ward_lake_camp_meal', { over: [note('ARRIVING AT WARD LAKE CAMP, 1942–45')] }),
+    A('cm_funter_bay', { cutW: 'herring', over: [low('FUNTER BAY: AN OLD CANNERY', 'herring'), note('FUNTER BAY TODAY')] }),
+    A('cm_killisnoo_evacuation_camp_1942', { cutW: 'rotten', over: [note('KILLISNOO CAMP, 1942')] }),
     A('cm_funter_bay_aleut_womens_petition_1943', { cutW: 'At', over: [low('AT LEAST 74 DIED IN THE CAMPS', 'seventy-four'), note('PETITION BY UNANGAN WOMEN, FUNTER BAY, 1943')] }),
   ]);
   beats('A034', [
     sea('ia_report_1943_ship_dusk_mountains'),
-    F('ia_kiska_1943_color_battleship_firing', { cutW: 'And', sfx: 'boom' }),
+    F('ia_kiska_1943_color_battleship_firing', { cutW: 'And', sfx: 'boom', in: 2 }),
   ]);
 
   // ===== CH4 =====
   chapter('A035', 3, 'The battle for an empty island');
   beats('A035', [
     S('globe', { relief: true, borders: false, lon: [[0, 172], [3, 170]], lat: [[0, 53], [3, 53.5]], R: [[0, 1800], [3, 3000]],
-      pins: [{ ...G.kom, label: 'KOMANDORSKI ISLANDS', sub: 'MARCH 26, 1943', at: 0.5, color: C('red'), align: 'right', lx: -26 }, { ...G.attu, label: 'ATTU', at: 1.0, small: true, size: 34 }, { ...G.kiska, label: 'KISKA', at: 1.2, small: true, size: 34 }],
+      pins: [{ ...G.kom, label: 'KOMANDORSKI ISLANDS', sub: 'MARCH 26, 1943', at: 0.5, color: C('red'), align: 'right', lx: -26 }, { ...G.attu, label: 'ATTU', at: 1.0, small: true, size: 48 }, { ...G.kiska, label: 'KISKA', at: 1.2, small: true, size: 48 }],
       waves: [{ ...G.kom, at: 0.6, n: 4, speed: 220, max: 600, color: C('red') }],
       routes: [{ pts: [[158, 50.5], [163, 53.3], [165.5, 54.6]], at: 1.0, dur: 1.4, color: C('red'), label: 'SUPPLY CONVOY TURNED BACK', size: 30, ly: 50 }] }),
     F('ia_kiska_1943_color_battleships_bay', { cutW: 'After', over: [low('NO MORE JAPANESE SUPPLY SHIPS', 'never')] }),
@@ -259,7 +260,7 @@ function build(T) {
   chapter('A040', 4, 'The town that turned off the lights');
   beats('A040', [
     A('cm_adak_1989_uss_cape_cod', { over: [note('ADAK, 1989')] }),
-    A('cm_adak_base_1980s', { cutW: 'Adak', kb: { z: [1.3, 1.1] } }),
+    F('cm_adak_sweeper_cove_moffett', { cutW: 'Adak', kb: { z: [1.25, 1.05] } }),
   ]);
   beats('A041', [
     A('cm_adak_1986_navy_helicopter', { over: [low('PEAK: NEARLY 6,000 PEOPLE', 'six'), note('NAVAL AIR STATION ADAK, 1986')] }),
@@ -277,7 +278,7 @@ function build(T) {
   ]);
   beats('A045', [
     F('cm_adak_army_naval_base_aerial'),
-    F('cm_adak_abandoned_playground', { cutW: 'In', over: [low('SCHOOL: 5 STUDENTS (2022–23)', 'five')] }),
+    F('cm_adak_abandoned_bunker', { cutW: 'In', over: [low('SCHOOL: 5 STUDENTS (2022–23)', 'five')] }),
   ]);
   beats('A046', [
     sea('cm_adak_wreck_heritage', { over: [note('WRECK OF A FISHING BOAT, ADAK')] }),
@@ -290,7 +291,7 @@ function build(T) {
     F('cm_adak_quonset_hut', { cutW: 'To' }),
     F('cm_adak_abandoned_church', { cutW: 'For', over: [cnt('seventeen', 17, { suf: ' DAYS', label: 'WITHOUT POWER FOR PARTS OF TOWN', y: 520 })] }),
   ]);
-  beats('A048', [Q(null, 'STEVEN CARROLL, ADAK, OCT 2025', '"I DON\'T KNOW HOW LONG', 'WE CAN GET BY."', 'HE COOKED FOR THREE FAMILIES', 'Quoted by Alaska Public Media (2025)')]);
+  beats('A048', [F('cm_adak_residences', { kb: { z: [1.3, 1.1] }, over: [low('ONE RESIDENT COOKED FOR THREE FAMILIES', 'three')] }), Q('know', 'STEVEN CARROLL, ADAK, OCT 2025', '"I DON\'T KNOW HOW LONG', 'WE CAN GET BY."', null, 'Quoted by Alaska Public Media (2025)')]);
   beats('A049', [
     A('cm_attu_coast_guard_station', { kb: { z: [1.3, 1.1] }, over: [low('2010: THE LAST 21 LEAVE ATTU', 'twenty-one')] }),
     sea('gov_tiglax_snowy_island_sea', { cutW: 'Even', over: [low('THE PLANE WAS LATE: FOG', 'fog'), note('WESTERN ALEUTIANS (USFWS)')] }),
@@ -323,9 +324,9 @@ function build(T) {
   beats('A058A', [F('cm_adak_city', { kb: { z: [1.05, 1.25] }, over: [head('WOULD YOU LIVE HERE FOR A YEAR?', null, 200, 80)] })]);
   beats('A058', [
     A('cm_attu_village_1937', { kb: { z: [1.0, 1.2] }, over: [note('ATTU, 1937')] }),
-    sea('ia_attu_1943_snowy_coast_horizon', { cutW: 'Today', in: 6 }),
+    sea('gov_tiglax_aerial_twin_volcanoes_coast', { cutW: 'Today', in: 3 }),
     sea('gov_tiglax_ship_sea_stacks', { cutW: 'some', over: [note('THE REFUGE SHIP TIGLAX (USFWS)')] }),
-    sea('gov_tiglax_aerial_twin_volcanoes_coast', { cutW: 'About', over: [low('~300 ATTUAN DESCENDANTS IN THE U.S.', 'three')] }),
+    sea('ia_attu_1943_snowy_coast_horizon', { cutW: 'About', in: 4, over: [low('~300 ATTUAN DESCENDANTS IN THE U.S.', 'three'), note('ATTU')] }),
   ]);
   add(T.tl.voiceEnd + 0.4, S('endscreen', {}), 'fade');
   return out;

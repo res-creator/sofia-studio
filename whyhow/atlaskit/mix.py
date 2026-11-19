@@ -89,7 +89,7 @@ mgain = np.ones(N)
 for pid in MJ.get('drop', []):
     s0 = P[pid]['start']; a = int((s0 - 1.4) * SR); b = int((s0 + 1.2) * SR); r = np.ones(b - a); fa = int(0.4 * SR); r[:fa] = np.linspace(1, 0, fa); r[fa:-int(0.8 * SR)] = 0; r[-int(0.8 * SR):] = np.linspace(0, 1, int(0.8 * SR))
     mgain[a:b] = np.minimum(mgain[a:b], r[:len(mgain[a:b])]); boom(s0 + 0.02, 1.0)
-music = pad * mgain * (0.30 - 0.20 * talk) + amb * (0.12 - 0.06 * talk)
+music = pad * mgain * (0.30 - 0.20 * talk) + amb * mgain * (0.12 - 0.06 * talk)
 mix = voice + music + fx * 0.35
 mix = np.stack([mix, mix], 1) / (np.abs(mix).max() + 1e-9) * 0.8
 tmp = OUT + '.raw.wav'; sf.write(tmp, mix.astype(np.float32), SR)

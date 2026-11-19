@@ -87,7 +87,7 @@ function globe(ctx, t, d, p) {
     const pulse = (t * 0.8) % 1; ctx.save(); ctx.strokeStyle = hexA(pin.color || C.yellow, (1 - pulse) * a); ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(q[0], q[1], 10 + pulse * 40, 0, 7); ctx.stroke();
     ctx.fillStyle = pin.color || C.yellow; ctx.globalAlpha = a; ctx.beginPath(); ctx.arc(q[0], q[1], pin.small ? 7 : 11, 0, 7); ctx.fill(); ctx.lineWidth = 3; ctx.strokeStyle = C.navy; ctx.stroke(); ctx.restore();
     if (pin.label) { const lx = q[0] + (pin.lx || 26), ly = q[1] + (pin.ly || -18); const s = E.back(clamp(seg(t, pin.at || 0, (pin.at || 0) + 0.5)));
-      ctx.save(); ctx.translate(lx, ly); ctx.scale(s, s); chip(ctx, pin.label, 0, 0, { size: pin.size || 46, align: pin.align }); if (pin.sub) text(ctx, pin.sub, pin.align === 'right' ? -8 : 8, 46, { size: 22, font: F.monoB, color: C.cream, shadow: 8, align: pin.align === 'right' ? 'right' : 'left' }); ctx.restore(); } }
+      ctx.save(); ctx.translate(lx, ly); ctx.scale(s, s); chip(ctx, pin.label, 0, 0, { size: pin.size || 58, align: pin.align }); if (pin.sub) text(ctx, pin.sub, pin.align === 'right' ? -8 : 8, 46, { size: 22, font: F.monoB, color: C.cream, shadow: 8, align: pin.align === 'right' ? 'right' : 'left' }); ctx.restore(); } }
   // optional distance bracket between two lat lines along a meridian
   if (p.bracket) { const b = p.bracket, a = clamp(seg(t, b.at, b.at + 0.8)); if (a > 0) { const q0 = P(b.lon * rad, b.lat0 * rad), q1 = P(b.lon * rad, (b.lat0 + (b.lat1 - b.lat0) * a) * rad);
     ctx.save(); ctx.strokeStyle = C.yellow; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(q0[0], q0[1]); ctx.lineTo(q1[0], q1[1]); ctx.stroke(); ctx.restore();
