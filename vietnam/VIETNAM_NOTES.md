@@ -17,3 +17,4 @@ PICTURE_EN_4K.mp4 (4.5 GB) and MUSIC_AND_EFFECTS.wav (487 MB) are needed on the 
 
 - 2026-11-20 owner rejected all my Vietnam thumbnails (vidIQ, elegant, bold, depth) — removed. Owner's style references: vivid, saturated travel-poster look, huge country name, landmark/person in front of the letters, small script kicker.
 - 2026-11-20 owner's ChatGPT thumbnails (vivid poster style, text by ChatGPT): vn_mekong_reflection.jpg (Cai Rang, in film 8:39 — recommended), vn_terraces.jpg and vn_halong.jpg (NOT in the film — keep for style only).
+- 2026-11-20 owner's ChatGPT thumbnails, all places in the film: vn_golden_bridge.jpg (F073), vn_nhatrang_cablecar.jpg (F067), vn_motorbikes.jpg (F018), vn_buivien_night.jpg (F078). Recommended test: golden_bridge + mekong_reflection + motorbikes.
