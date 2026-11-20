@@ -15,3 +15,6 @@ PICTURE_EN_4K.mp4 (4.5 GB) and MUSIC_AND_EFFECTS.wav (487 MB) are needed on the 
 ## Status: FILM BUILT (owner's computer)
 - Desktop/Vietnam/FINAL_EN_4K.mp4, 4.85 GB, 29:33; mix -14.2 LUFS, TP -1.6 dBFS, LRA 10.8; all 109 fit (tightest F057 10.57/10.80).
 - Tip for local builds: the repo is huge (9 GB+) — use a sparse clone of only the film folder.
+- 2026-11-20 thumbnails made with vidIQ (66 credits) after analysing top English Vietnam videos (scenic "UNSEEN/WONDERS OF VIETNAM" 1.8–2.8M; cost-of-living "$1,000/MONTH?", "Locals earn $233" 250K in 6 days):
+  vietnam/thumbs/vq_350_month.jpg (avg pay $350, F046; vidIQ score 96), vq_really_cheap.jpg (stools + $1 coffee; 81), vq_golden_bridge.jpg (Ba Na Hills; 59).
+  Recommended A/B test: vq_350_month + vq_really_cheap + thumb_coffee_vs_5m2_4k. New title: "VIETNAM: Is It Really That Cheap? | 4K Travel Documentary".
