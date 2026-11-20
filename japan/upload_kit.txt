@@ -5,17 +5,28 @@ VIDEO: FINAL_EN_4K.mp4 (build on the owner's computer: folder with PICTURE_EN_4K
 SUBTITLES: japan/SUBTITLES_EN.srt (timed to the final English voice; upload as English)
 COVER: japan/COVER_EN.jpg (1920x1080, "JAPAN", Mt Fuji + pagoda + sakura)
 
-TITLE (recommended format — country first, "| 4K Travel Documentary" at the end):
-1. JAPAN: Where Do 80,000 People Vanish Every Year? | 4K Travel Documentary
-2. JAPAN: They Return Your Lost Wallet, So Why Do 80,000 People Go Missing?
-3. Japan Is Not What You Think: Rent-a-Dad, Death by Overwork and 80,000 Missing (4K)
+TITLE (v2, 2026-11-20):
+JAPAN: Where Do 80,000 People Vanish Every Year? | 4K Travel Documentary
+Title test option: JAPAN: They Return Your Lost Wallet. So Why Do 80,000 People Vanish? | 4K
 
 CATEGORY: Travel & Events. Language: English. Made for kids: No.
 ALTERED OR SYNTHETIC CONTENT: YES — the film contains 27 photorealistic AI-generated reconstruction stills (and an AI voice).
 
-DESCRIPTION (paste as is — keep the credits (licences require them), the AI line and the crisis-line note):
+DESCRIPTION v2 (replace the [LINK] lines with real URLs or delete them):
 ----------------------------------------------------------------
-Japan through the eyes of a first-time visitor: a country that hands back your lost wallet, cash and all, yet files 80,000 missing-person reports a year. Why napping in a meeting can be a compliment, what it costs to rent a dad for an evening, why rabbits hop through the ruins of a secret poison-gas factory, why some elderly women steal food to stay in prison, what ramen, hotels and the Shinkansen really cost, and what the Japanese mean by ikigai. The answer about the missing comes at the very end.
+Japan returns your lost wallet, cash and all. So why are 80,000 people reported missing there every year? A 4K travel documentary, Tokyo to Okinawa.
+
+A first-time visitor's look at how Japan really works. Tokyo's lost and found takes in almost 5 million items a year. A railway apologized because a train left 20 seconds early. A bowl of ramen is just over $6, a small Tokyo apartment about $700 a month, and death by overwork has its own word: karoshi. You can rent a "dad" for an evening, and some elderly women steal food to stay in prison.
+
+Along the way: Shibuya Crossing in the rain, Kyoto, Osaka's Dotonbori, Himeji Castle, the bowing deer of Nara, Rabbit Island (Okunoshima) and Gunkanjima, Mount Fuji, a silent tea ceremony, sento and onsen with snow monkeys in Jigokudani, Akihabara and anime, Hiroshima, the Nebuta festival in Aomori and Obon. And the answer to where the 80,000 go, at the very end.
+
+▶ Watch next — Countries of the World | 4K Travel Documentaries: [PLAYLIST LINK]
+Vietnam: [VIETNAM LINK]
+Norway: [NORWAY LINK]
+India: [INDIA LINK]
+
+Content note: the film discusses overwork-related suicide (15:37 chapter) and people who vanish (41:24 chapter).
+If you or someone close to you is struggling, please reach out to a local crisis line (in the US, call or text 988).
 
 0:00 Cold open: where do people disappear to?
 1:55 Found: Tokyo, where everything comes back
@@ -30,9 +41,8 @@ Japan through the eyes of a first-time visitor: a country that hands back your l
 41:24 Vanish: those who are gone
 46:09 Lights: festival of the dead and the answer about the missing
 
-Some stills are reconstructions or similar places; the names of people come from Japanese and international press reports.
-If you or someone close to you is struggling, please reach out to a local crisis line (in the US, call or text 988).
-Next: a country where everything is said out loud, and nobody apologizes for twenty seconds. Subscribe so you don't miss it.
+Some stills are AI-generated reconstructions or similar places; the names of people come from Japanese and international press reports.
+Spot the object almost nobody comes back for — it appears in every chapter. Leave the minute you first saw it in the comments.
 
 Narration created with AI. Facts checked against sources.
 
@@ -47,7 +57,7 @@ Other footage: Pexels License, Pixabay License, PAKUTASO, public domain. Some st
 Maps: Source: Geospatial Information Authority of Japan (GSI Tiles, seamless aerial photo), processed (出典：国土地理院 地理院タイル（全国最新写真（シームレス））を加工して作成); NASA Earth Observatory Blue Marble; AWS Terrain Tiles / SRTM.
 Music: "Shadowstep", "Rain Over Kyoto Station", "Ghibli Station", "Aomori Wings", "Akatsuki Rising", "Floating Lanterns" - The Mini Vandals; "A Stroll", "High Noon" - The Grey Room / Density & Time; "Kawaii!" - Bad Snacks; "Minyo San Kyoku", "Hon Kyoku" - Doug Maxwell / Zac Zinger; "Somnia Variation 3" - Reed Mathis; "After Sunset" - Alex Jones / Xander Jones; "Imperial Forces" - Aaron Kenny; "Spinning And Swirling" - Asher Fulero (all YouTube Audio Library); "Infinite Perspective" Kevin MacLeod (incompetech.com), Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/
 
-#japan #travel #documentary
+#japan #traveldocumentary #tokyo
 ----------------------------------------------------------------
 
 TAGS:
