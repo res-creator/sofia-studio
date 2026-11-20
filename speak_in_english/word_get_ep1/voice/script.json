@@ -1,0 +1,167 @@
+{
+ "voices": {
+  "nar": [
+   "pqHfZKP75CvOlQylNhV4",
+   "eleven_multilingual_v2",
+   "ru"
+  ],
+  "get": [
+   "TX3LPaxmHKxFdv7VOQHJ",
+   "eleven_v3",
+   "en"
+  ],
+  "obt": [
+   "JBFqnCBsd6RMkjVDRZzb",
+   "eleven_v3",
+   "en"
+  ],
+  "girl": [
+   "cgSgspJ2msm6clMCkdW9",
+   "eleven_v3",
+   "en"
+  ],
+  "emp": [
+   "bIHbv24MWmeRgasZH58o",
+   "eleven_v3",
+   "en"
+  ],
+  "groom": [
+   "N2lVS1w4EtoT3dr4eOWO",
+   "eleven_v3",
+   "en"
+  ],
+  "bride": [
+   "XrExE9yKIg1WjnnlVkGX",
+   "eleven_v3",
+   "en"
+  ],
+  "tour": [
+   "IKne3meq5aSn9XLyUdCD",
+   "eleven_v3",
+   "en"
+  ],
+  "fine": [
+   "EXAVITQu4vr4xnSDxMaL",
+   "eleven_v3",
+   "en"
+  ]
+ },
+ "lines": {
+  "n1": [
+   "nar",
+   "Пациент: слово GET. Диагноз: переработка."
+  ],
+  "n2": [
+   "nar",
+   "Восемнадцать часов назад."
+  ],
+  "n3": [
+   "nar",
+   "Шесть утра. Слово гэт встаёт."
+  ],
+  "g1": [
+   "get",
+   "[energetic] Get up! Let's go!"
+  ],
+  "x1": [
+   "girl",
+   "[urgent, on the phone] GET! We need you!"
+  ],
+  "n4": [
+   "nar",
+   "А это аристократы английского языка: OBTAIN, RECEIVE и BECOME. Они не работают. Они... присутствуют."
+  ],
+  "o1": [
+   "obt",
+   "[posh, bored] We don't do buses, darling."
+  ],
+  "b1": [
+   "girl",
+   "[panicked] I need to get on the bus!"
+  ],
+  "g2": [
+   "get",
+   "[shouting] Get on! Go, go, go!"
+  ],
+  "e1": [
+   "emp",
+   "[confused] Sorry... I don't get it."
+  ],
+  "g3": [
+   "get",
+   "[fast] You get it now?"
+  ],
+  "e2": [
+   "emp",
+   "[surprised] Oh! I get it!"
+  ],
+  "w1": [
+   "groom",
+   "[overjoyed] We're getting married!"
+  ],
+  "g4": [
+   "get",
+   "[out of breath] Getting married! Congrats! Next!"
+  ],
+  "n5": [
+   "nar",
+   "Но даже у самого трудолюбивого слова есть предел."
+  ],
+  "n6": [
+   "nar",
+   "Работу взяли на себя аристократы."
+  ],
+  "b2": [
+   "girl",
+   "[stiff, very formal] I must... board the bus."
+  ],
+  "e3": [
+   "emp",
+   "[stiff, very formal] I do not... receive it."
+  ],
+  "w2": [
+   "groom",
+   "[stiff, unsure] We are... becoming married?"
+  ],
+  "r1": [
+   "bride",
+   "[horrified] Becoming?!"
+  ],
+  "n7": [
+   "nar",
+   "Лондон был на грани катастрофы."
+  ],
+  "g5": [
+   "get",
+   "[weak but determined] Get on. Get it. Get married."
+  ],
+  "g6": [
+   "get",
+   "[to the aristocrats, cool] And you three... get a life."
+  ],
+  "n8": [
+   "nar",
+   "Лондон спасён. А гэт наконец ушёл в отпуск."
+  ],
+  "t1": [
+   "tour",
+   "[dreamy sigh] I can't get over this view..."
+  ],
+  "g7": [
+   "get",
+   "[eye twitching] ...Seriously?"
+  ],
+  "n9": [
+   "nar",
+   "Отпуск GET длился ноль целых четыре десятых секунды."
+  ],
+  "f1": [
+   "fine",
+   "[forced cheerful smile] I'm fine!"
+  ],
+  "n10": [
+   "nar",
+   "В следующем выпуске: слово FINE. Которое всегда врёт."
+  ]
+ }
+}
