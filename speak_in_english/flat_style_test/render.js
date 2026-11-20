@@ -18,15 +18,15 @@ const blink = (t, s = 0) => ((t + s) % 3.3) < .12;
 // phrase captions: [text, start, end]
 const CAP = []; { const add = (id, groups) => { let wi = 0; groups.forEach((n, k) => { const s = wT(id, wi); wi += n; const e = k === groups.length - 1 ? E(id) + .25 : wT(id, wi); CAP.push([LN[id].words.slice(wi - n, wi).map(w => w.w).join(' '), s - .05, e]); }); };
   add('a1', [5, 3]); add('a2', [2, 2, 2, 1]); add('a3', [2, 3]); add('a4', [1]); add('a5', [3, 3]); }
-const ANNA = {skin: '#ffd8bf', skinS: '#f2b898', hair: '#8a4b2a', hairS: '#6a3218', hairStyle: 'long', top: '#7fd1c0', topS: '#5ab5a2', iris: '#3a2a1a', lips: '#d9566b', freckles: true, brow: '#5a2a14'};
-const BOSS = {skin: '#f2c6a2', skinS: '#dca880', hair: '#9a9aa2', hairStyle: 'bald', beard: '#9a9aa2', glasses: true, top: '#2f4a7a', topS: '#203560', iris: '#2a1f1d', brow: '#6a6a72'};
+const ANNA = {skin: '#fcd2b4', skinS: '#efb08c', hair: '#9a4a24', hairS: '#7a3418', hairL: '#c06a3a', hairStyle: 'part', top: '#8e7cc3', topS: '#6f5ca8', collar: '#fffaf0', pendant: '#ffcc12', freckles: true, brow: '#5a2a14'};
+const BOSS = {skin: '#f2c6a2', skinS: '#dca880', hair: '#9a9aa2', hairStyle: 'bald', beard: '#9a9aa2', glasses: true, top: '#2f4a7a', topS: '#203560', collar: '#ffffff', brow: '#6a6a72'};
 // ---------------- sets ----------------
 function room() { rr(-20, -20, W + 40, H + 40, 0, '#f6e7c8', 0); for (let x = 0; x < W; x += 90) { g.fillStyle = 'rgba(255,255,255,0.35)'; g.fillRect(x, 0, 40, 1250); }
   rr(-20, 1180, W + 40, 60, 0, '#7fb9a8', 0); ln([[0, 1180], [W, 1180]], 6); rr(-20, 1240, W + 40, 800, 0, '#c99560', 0); ln([[0, 1240], [W, 1240]], 6); for (let x = -200; x < W + 200; x += 150) ln([[x, 1240], [x - 120, H]], 3, 'rgba(90,60,30,0.4)');
   rr(640, 260, 340, 420, 18, '#bfe6ff'); ln([[810, 266], [810, 674]], 7); ln([[646, 470], [974, 470]], 7); ell(900, 340, 46, 46, '#fff2a8', 0); rr(626, 680, 368, 34, 10, '#fff8ea');
   rr(80, 300, 220, 260, 12, '#ffd36e'); text('TO DO:', 190, 360, 40, '#2a1f1d'); text('be brave', 190, 430, 36, '#c0283a');
   blob([[120, 1000], [200, 1000], [190, 1150], [130, 1150]], '#e0703a', '#c05520'); for (let k = 0; k < 4; k++) blob([[160, 1000], [100 + k * 40, 860], [140 + k * 30, 880]], '#4fb06a', '#2f9050'); }
-function desk() { rr(120, 1260, 840, 60, 14, '#b8794a'); rr(170, 1320, 30, 420, 6, '#8a5a32'); rr(880, 1320, 30, 420, 6, '#8a5a32'); }
+function desk() { rr(150, 1300, 780, 420, 10, '#a86a3c'); g.fillStyle = 'rgba(0,0,0,0.12)'; g.fillRect(150, 1300, 780, 40); rr(120, 1250, 840, 60, 14, '#c8864f'); ln([[540, 1320], [540, 1700]], 4, 'rgba(60,30,10,0.35)'); }
 function laptopBack(x, y) { poly([[x - 170, y], [x + 170, y], [x + 150, y - 220], [x - 150, y - 220]], '#c9ced6'); ell(x, y - 110, 26, 26, '#ffffff', 4); }
 function callScreen(t, mode) { // full-screen video call UI
   rr(-900, -900, W + 1800, H + 1800, 0, '#1f2430', 0);
