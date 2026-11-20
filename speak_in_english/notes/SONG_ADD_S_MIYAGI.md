@@ -1,4 +1,4 @@
-# «Добавь S» — Present Simple, короткая (~1:00), вайб Miyagi
+# «Добавь S» — Present Simple, короткая (~1:00), рэп с битом (стиль как у Marvin)
 
 Тема: he / she / it + S. Мелодичная тёплая читка, распевный припев, без лирической тяжести.
 
@@ -6,16 +6,16 @@
 Добавь S
 
 ## Style
-Мелодичный рэп, расслабленный регги-грув, тёплый даб-бас, мягкие барабаны, хриплый тёплый мужской вокал, распевный припев, летнее настроение, 90 BPM, чёткая дикция, голос громче музыки
+Рэп, Trap, 808 бас, мужской вокал, хит для тик-тока
 
 ## Exclude
-клубный, EDM, хор, автотюн, труба, джаз, саксофон, гитара, лоу-фай, женский вокал
+пение, баллада, лирика, регги, джаз, саксофон, гитара, автотюн, хор
 
 ## Lyrics
-[Intro – spoken, male, relaxed]
+[Intro – голос, бит вступает после]
 Он, она, оно — и в конце эс. Минута. Погнали.
 
-[Verse 1 – male melodic rap, laid-back]
+[Verse 1 – рэп, читка в бит]
 She wakes up at seven — встаёт, и солнце в окне,
 She makes her coffee — варит кофе. Не мне.
 She works in a café — работает, улыбка с утра,
@@ -23,25 +23,25 @@ She takes the metro — едет домой до темна.
 Does she love me? — любит? Вопрос без ответа,
 She doesn't know — не знает. А я знаю это.
 
-[Hook – male, sung, catchy]
+[Hook – рэп, цепляющий, не петь]
 He, she, it — добавь S, S, S,
 She loves, she knows, she goes — вот и весь процесс.
 I, you, we, they — без S, без S,
 I love her — просто. Without S.
 
-[Verse 2 – male melodic rap]
+[Verse 2 – рэп, читка в бит]
 She reads my message — читает, но молчит,
 She never answers — не отвечает. Сердце стучит.
 Every Friday she dances — по пятницам танцует,
 And every Friday he watches — а он это рисует.
 
-[Hook – male, sung, catchy]
+[Hook – рэп, цепляющий, не петь]
 He, she, it — добавь S, S, S,
 She loves, she knows, she goes — вот и весь процесс.
 I, you, we, they — без S, без S,
 I love her — просто. Without S.
 
-[Outro – spoken, smiling]
+[Outro – голос]
 She likes this song. Likes — с эс. Запомнила?
 
 ## Чему учит
