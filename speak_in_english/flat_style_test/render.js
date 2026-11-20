@@ -1,7 +1,7 @@
 // Flat vector style test (montage grammar of the reference: hard cuts every ~1.5–2 s, slow push/pull, inserts,
 // metaphor cutaway, invisibility fade, snap zoom, phrase captions). Story: «Первый созвон на английском» (opening).
 const fs = require('fs'), path = require('path'), {spawn, spawnSync} = require('child_process');
-const K = require('./flat'); const {blob, poly, ell, rr, ln, curve, text, person, caption} = K;
+const K = require('./flat'), A = require('./anna'); const {blob, poly, ell, rr, ln, curve, text, person, caption} = K;
 const W = 1080, H = 1920, FPS = 30, D = __dirname, VD = path.join(D, 'voice'), OUT = path.join(D, 'out'), TMP = path.join(OUT, 'tmp'); fs.mkdirSync(TMP, {recursive: true});
 const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v)), ease = v => { v = clamp(v); return v * v * (3 - 2 * v); };
 let g;
@@ -21,11 +21,12 @@ const CAP = []; { const add = (id, groups) => { let wi = 0; groups.forEach((n, k
 const ANNA = {skin: '#fcd2b4', skinS: '#efb08c', hair: '#9a4a24', hairS: '#7a3418', hairL: '#c06a3a', hairStyle: 'part', top: '#8e7cc3', topS: '#6f5ca8', collar: '#fffaf0', pendant: '#ffcc12', freckles: true, brow: '#5a2a14'};
 const BOSS = {skin: '#f2c6a2', skinS: '#dca880', hair: '#9a9aa2', hairStyle: 'bald', beard: '#9a9aa2', glasses: true, top: '#2f4a7a', topS: '#203560', collar: '#ffffff', brow: '#6a6a72'};
 // ---------------- sets ----------------
-function room() { rr(-20, -20, W + 40, H + 40, 0, '#f6e7c8', 0); for (let x = 0; x < W; x += 90) { g.fillStyle = 'rgba(255,255,255,0.35)'; g.fillRect(x, 0, 40, 1250); }
-  rr(-20, 1180, W + 40, 60, 0, '#7fb9a8', 0); ln([[0, 1180], [W, 1180]], 6); rr(-20, 1240, W + 40, 800, 0, '#c99560', 0); ln([[0, 1240], [W, 1240]], 6); for (let x = -200; x < W + 200; x += 150) ln([[x, 1240], [x - 120, H]], 3, 'rgba(90,60,30,0.4)');
+function room() { rr(-400, -400, W + 800, H + 800, 0, '#f6e7c8', 0); for (let x = -400; x < W + 400; x += 90) { g.fillStyle = 'rgba(255,255,255,0.35)'; g.fillRect(x, -400, 40, 1840); }
+  rr(-400, 1440, W + 800, 60, 0, '#7fb9a8', 0); ln([[-400, 1440], [W + 400, 1440]], 6); rr(-400, 1500, W + 800, 900, 0, '#c99560', 0); ln([[-400, 1500], [W + 400, 1500]], 6); for (let x = -400; x < W + 400; x += 150) ln([[x, 1500], [x - 120, H + 400]], 3, 'rgba(90,60,30,0.4)');
   rr(640, 260, 340, 420, 18, '#bfe6ff'); ln([[810, 266], [810, 674]], 7); ln([[646, 470], [974, 470]], 7); ell(900, 340, 46, 46, '#fff2a8', 0); rr(626, 680, 368, 34, 10, '#fff8ea');
   rr(80, 300, 220, 260, 12, '#ffd36e'); text('TO DO:', 190, 360, 40, '#2a1f1d'); text('be brave', 190, 430, 36, '#c0283a');
-  blob([[120, 1000], [200, 1000], [190, 1150], [130, 1150]], '#e0703a', '#c05520'); for (let k = 0; k < 4; k++) blob([[160, 1000], [100 + k * 40, 860], [140 + k * 30, 880]], '#4fb06a', '#2f9050'); }
+  blob([[90, 1560], [210, 1560], [195, 1760], [105, 1760]], '#e0703a', '#c05520'); for (let k = 0; k < 4; k++) blob([[150, 1560], [80 + k * 50, 1380], [130 + k * 36, 1400]], '#4fb06a', '#2f9050'); }
+function annaFull(t, o) { const st = {x: 540, y: 1760, s: 1, pose: 'hold', blink: blink(t), ...o}; A.draw(g, st); if ((st.pose || 'hold') === 'hold' && !o.noLaptop) { g.save(); g.globalAlpha = st.alpha ?? 1; poly([[400, 1100], [680, 1100], [700, 1130], [380, 1130]], '#c9ced6'); poly([[410, 1100], [670, 1100], [640, 930], [440, 930]], '#c9ced6'); ell(540, 1015, 22, 22, '#ffffff', 4); g.restore(); } }
 function desk() { rr(150, 1300, 780, 420, 10, '#a86a3c'); g.fillStyle = 'rgba(0,0,0,0.12)'; g.fillRect(150, 1300, 780, 40); rr(120, 1250, 840, 60, 14, '#c8864f'); ln([[540, 1320], [540, 1700]], 4, 'rgba(60,30,10,0.35)'); }
 function laptopBack(x, y) { poly([[x - 170, y], [x + 170, y], [x + 150, y - 220], [x - 150, y - 220]], '#c9ced6'); ell(x, y - 110, 26, 26, '#ffffff', 4); }
 function callScreen(t, mode) { // full-screen video call UI
@@ -48,22 +49,22 @@ function cactus(x, y) { blob([[x - 90, y + 180], [x + 90, y + 180], [x + 70, y +
 
 // ---------------- shots: [start, draw(t, u), camera(u) -> {z, fx, fy}] ----------------
 const SH = [
-  [0, (t) => { room(); laptopBack(540, 1250); person(ANNA, {x: 540, y: 820, mouth: 0, blink: blink(t), mood: 'smile', arms: 'desk'}); desk(); }, u => ({z: 1 + u * .05, fx: 540, fy: 900})],
-  [wT('a1', 4) - .05, (t) => { room(); laptopBack(540, 1250); person(ANNA, {x: 540, y: 820, mood: 'grin', brows: 'up', blink: blink(t), arms: 'desk'}); desk(); }, u => ({z: 1.5 - u * .06, fx: 540, fy: 820})],
+  [0, (t) => { room(); annaFull(t, {mood: 'smile'}); }, u => ({z: .92 + u * .06, fx: 540, fy: 1060})],
+  [wT('a1', 4) - .05, (t) => { room(); annaFull(t, {mood: 'smile', brows: 'up'}); }, u => ({z: 1.9 - u * .08, fx: 540, fy: 700})],
   [T('a2') - .1, (t) => callScreen(t, 'click'), u => ({z: 1.15 + u * .1, fx: 540, fy: 1250})],
-  [wT('a2', 6) - .05, (t) => { room(); person(ANNA, {x: 540, y: 820 + Math.sin(t * 9) * 16, mood: 'flat', blink: blink(t), arms: 'desk', look: 0}); desk(); }, u => ({z: 1.6, fx: 540, fy: 860})],
-  [T('a3') - .1, (t, u) => { room(); const k = ease((t - T('a3') - .3) / .4); g.save(); g.globalAlpha = 1 - k; person(ANNA, {x: 540, y: 820, mood: 'flat', blink: true, arms: 'desk'}); g.restore(); g.save(); g.globalAlpha = k; cactus(540, 900); g.restore(); desk(); }, u => ({z: 1.1, fx: 540, fy: 950})],
-  [wT('a3', 2) - .05, (t) => { room(); const k = ease((t - wT('a3', 2)) / .9); person(ANNA, {x: 540, y: 820, mood: 'smile', blink: true, arms: 'desk', alpha: 1 - k * .8}); desk(); }, u => ({z: 1 + u * .03, fx: 540, fy: 900})],
+  [wT('a2', 6) - .05, (t) => { room(); g.save(); g.translate(0, Math.sin(t * 9) * 14); annaFull(t, {mood: 'flat'}); g.restore(); }, u => ({z: 1.9, fx: 540, fy: 720})],
+  [T('a3') - .1, (t, u) => { room(); const k = ease((t - T('a3') - .3) / .4); annaFull(t, {mood: 'flat', blink: true, alpha: 1 - k}); g.save(); g.globalAlpha = k; g.translate(540, 1760); g.scale(1.9, 1.9); g.translate(-540, -1760); cactus(540, 1340); g.restore(); }, u => ({z: .95, fx: 540, fy: 1060})],
+  [wT('a3', 2) - .05, (t) => { room(); const k = ease((t - wT('a3', 2)) / .9); annaFull(t, {mood: 'smile', blink: true, alpha: 1 - k * .8}); }, u => ({z: .95 + u * .03, fx: 540, fy: 1060})],
   [T('b1') - .3, (t) => callScreen(t, 'boss'), u => ({z: 1.15 + u * .35, fx: 290, fy: 560})],
-  [T('a4') - .15, (t) => { room(); person(ANNA, {x: 540, y: 820, mood: 'o', wide: true, blink: false, brows: 'up', arms: 'desk', mouth: talk('a4', t) * .4}); desk(); }, u => ({z: 2.6 - (1 - ease(u * 6)) * .9, fx: 540, fy: 800})],
-  [T('a5') - .1, (t) => { room(); laptopBack(540, 1250); person(ANNA, {x: 540, y: 820, mood: 'flat', wide: true, sweat: true, blink: false, arms: 'face'}); desk(); }, u => ({z: 1.7 - u * .5, fx: 540, fy: 900})],
+  [T('a4') - .15, (t) => { room(); annaFull(t, {mood: 'o', wide: true, blink: false, brows: 'up', mouth: talk('a4', t) * .4}); }, u => ({z: 3.2 - (1 - ease(u * 6)) * 1.1, fx: 540, fy: 660})],
+  [T('a5') - .1, (t) => { room(); annaFull(t, {pose: 'face', mood: 'flat', wide: true, sweat: true, blink: false}); }, u => ({z: 1.9 - u * .95, fx: 540, fy: 900 + u * 160})],
 ];
 function frame(t) {
   let k = 0; for (let i = 0; i < SH.length; i++) if (t >= SH[i][0]) k = i; const [t0, draw, cam] = SH[k], t1 = SH[k + 1] ? SH[k + 1][0] : TOTAL, u = clamp((t - t0) / Math.max(.1, t1 - t0)), c = cam(u);
   g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#f6e7c8'; g.fillRect(0, 0, W, H);
   g.setTransform(c.z, 0, 0, c.z, W / 2 - c.fx * c.z, H / 2 - c.fy * c.z); draw(t, u);
   g.setTransform(1, 0, 0, 1, 0, 0);
-  for (const [s, a, b] of CAP) if (t >= a && t < b) caption(s, 1520, 78);
+  for (const [s, a, b] of CAP) if (t >= a && t < b) caption(s.replace(/ё/g, 'е'), 1520, 78);
   if (t >= T('b1') - .05 && t < E('b1') + .3) { caption('And Anna... what do you think?', 1420, 70); caption('А что думает Анна?', 1520, 54, '#ffe066'); }
   if (t > E('a5') + .3) { const kk = ease((t - E('a5') - .3) / .3); g.fillStyle = `rgba(0,0,0,${.6 * kk})`; g.fillRect(0, 0, W, H); g.globalAlpha = kk; caption('Продолжение следует...', 960, 76); g.globalAlpha = 1; }
 }
