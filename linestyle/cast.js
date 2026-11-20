@@ -348,16 +348,16 @@ function armchair(part, st) {
 // node linestyle/cast.js  -> linestyle/out/cast_stand.png, cast_sit.png, cast_all.png
 // =====================================================================================
 const CAST = [
-  {name: 'Девушка', sex: 'f', age: 'adult', Ht: 1060, fat: 1, skin: '#fbd8bf', hair: {style: 'long', c: '#8a3b23', c2: '#c4602f'}, top: {c: '#f2c14e', type: 'sweater'}, bottom: {type: 'skirt', c: '#4b6fd1', len: 0.95}, shoes: '#3a2f3a', lips: '#e0334a', shadow: '#c58be8', lashes: true},
-  {name: 'Парень', sex: 'm', age: 'adult', Ht: 1110, fat: 1, skin: '#f0c4a0', hair: {style: 'short', c: '#2f2420'}, top: {c: '#3fa77a', type: 'hoodie'}, bottom: {type: 'pants', c: '#3b4f86'}, shoes: '#ffffff', stubble: true},
-  {name: 'Девочка', sex: 'f', age: 'kid', Ht: 700, fat: 1, skin: '#ffdcc4', hair: {style: 'pigtails', c: '#e0a33a', c2: '#f2c45a'}, top: {c: '#ff7aa8', type: 'dress'}, bottom: {type: 'dress', c: '#ff7aa8', len: 0.75}, shoes: '#d8304a', freckles: true, socks: '#ffffff'},
-  {name: 'Подросток', sex: 'm', age: 'teen', Ht: 930, fat: .92, skin: '#e9b48e', hair: {style: 'messy', c: '#5b3322'}, top: {c: '#ff8a3a', type: 'tshirt'}, bottom: {type: 'pants', c: '#6d7a86'}, shoes: '#2f8a7c', backpack: '#3b6fd1'},
-  {name: 'Мама', sex: 'f', age: 'adult', Ht: 1030, fat: 1.35, skin: '#fbd6b8', hair: {style: 'bob', c: '#5a2150', c2: '#cf4a86'}, top: {c: '#f3b51e', type: 'wrap', dot: '#fff3c9'}, bottom: {type: 'dress', c: '#f3b51e', dot: '#fff3c9', len: 1.0}, shoes: '#d8304a', lips: '#e2303f', shadow: '#8f5be0', lashes: true, beads: '#ff7a59', mole: true},
-  {name: 'Папа', sex: 'm', age: 'adult', Ht: 1100, fat: 1.25, skin: '#f2c6a2', hair: {style: 'side', c: '#4a3426'}, top: {c: '#bfe0f5', type: 'shirt', tie: '#d8344a'}, bottom: {type: 'pants', c: '#3a3f55'}, shoes: '#5a3a22', glasses: '#2b2b33', mustache: '#4a3426', belly: true},
-  {name: 'Бабушка', sex: 'f', age: 'old', Ht: 960, fat: 1.2, skin: '#f6d2b8', hair: {style: 'bun', c: '#d9d6df', c2: '#ffffff'}, top: {c: '#b06ab8', type: 'cardigan', under: '#fff6e8'}, bottom: {type: 'skirt', c: '#5b4a7a', len: 1.15}, shoes: '#4a3a3a', glasses: '#c9963f', beads: '#fff8ee', lips: '#d86a7a'},
-  {name: 'Дедушка', sex: 'm', age: 'old', Ht: 1000, fat: 1.05, skin: '#efc6a6', hair: {style: 'bald', c: '#e4e2ea'}, top: {c: '#f4efe4', type: 'vest', vest: '#7a8f5a'}, bottom: {type: 'pants', c: '#7a6a5a'}, shoes: '#3a2a22', glasses: '#2b2b33', beard: '#eceaf0', cane: true},
-  {name: 'Продавщица', sex: 'f', age: 'adult', Ht: 1050, fat: 1.1, skin: '#f9d2b2', hair: {style: 'pony', c: '#c2382c', c2: '#e2603c'}, top: {c: '#7ac8e8', type: 'tshirt'}, bottom: {type: 'pants', c: '#2f3a55'}, shoes: '#ffffff', apron: '#2fae5a', lips: '#e2303f', lashes: true, shadow: '#5ab0e0'},
-  {name: 'Врач', sex: 'm', age: 'adult', Ht: 1090, fat: 1, skin: '#d9a07a', hair: {style: 'short', c: '#1e1a1a'}, top: {c: '#9fd8e8', type: 'scrubs'}, bottom: {type: 'pants', c: '#9fd8e8'}, shoes: '#ffffff', coat: true, steth: true, glasses: '#3b6fd1'},
+  {name: 'Девушка', pose: 'hip', sitPose: 'mug', sex: 'f', age: 'adult', Ht: 1060, fat: 1, skin: '#fbd8bf', hair: {style: 'long', c: '#8a3b23', c2: '#c4602f'}, top: {c: '#f2c14e', type: 'sweater'}, bottom: {type: 'skirt', c: '#4b6fd1', len: 0.95}, shoes: '#3a2f3a', lips: '#e0334a', shadow: '#c58be8', lashes: true},
+  {name: 'Парень', pose: 'pocket', sitPose: 'lap', sex: 'm', age: 'adult', Ht: 1110, fat: 1, skin: '#f0c4a0', hair: {style: 'short', c: '#2f2420'}, top: {c: '#3fa77a', type: 'hoodie'}, bottom: {type: 'pants', c: '#3b4f86'}, shoes: '#ffffff', stubble: true},
+  {name: 'Девочка', pose: 'wave', sitPose: 'lap', sex: 'f', age: 'kid', Ht: 700, fat: 1, skin: '#ffdcc4', hair: {style: 'pigtails', c: '#e0a33a', c2: '#f2c45a'}, top: {c: '#ff7aa8', type: 'dress'}, bottom: {type: 'dress', c: '#ff7aa8', len: 0.75}, shoes: '#d8304a', freckles: true, socks: '#ffffff'},
+  {name: 'Подросток', pose: 'straps', sitPose: 'lap', sex: 'm', age: 'teen', Ht: 930, fat: .92, skin: '#e9b48e', hair: {style: 'messy', c: '#5b3322'}, top: {c: '#ff8a3a', type: 'tshirt'}, bottom: {type: 'pants', c: '#6d7a86'}, shoes: '#2f8a7c', backpack: '#3b6fd1'},
+  {name: 'Мама', pose: 'hips', sitPose: 'mug', sex: 'f', age: 'adult', Ht: 1030, fat: 1.35, skin: '#fbd6b8', hair: {style: 'bob', c: '#5a2150', c2: '#cf4a86'}, top: {c: '#f3b51e', type: 'wrap', dot: '#fff3c9'}, bottom: {type: 'dress', c: '#f3b51e', dot: '#fff3c9', len: 1.0}, shoes: '#d8304a', lips: '#e2303f', shadow: '#8f5be0', lashes: true, beads: '#ff7a59', mole: true},
+  {name: 'Папа', pose: 'down', sitPose: 'lap', sex: 'm', age: 'adult', Ht: 1100, fat: 1.25, skin: '#f2c6a2', hair: {style: 'side', c: '#4a3426'}, top: {c: '#bfe0f5', type: 'shirt', tie: '#d8344a'}, bottom: {type: 'pants', c: '#3a3f55'}, shoes: '#5a3a22', glasses: '#2b2b33', mustache: '#4a3426', belly: true},
+  {name: 'Бабушка', pose: 'folded', sitPose: 'lap', sex: 'f', age: 'old', Ht: 960, fat: 1.2, skin: '#f6d2b8', hair: {style: 'bun', c: '#d9d6df', c2: '#ffffff'}, top: {c: '#b06ab8', type: 'cardigan', under: '#fff6e8'}, bottom: {type: 'skirt', c: '#5b4a7a', len: 1.15}, shoes: '#4a3a3a', glasses: '#c9963f', beads: '#fff8ee', lips: '#d86a7a'},
+  {name: 'Дедушка', pose: 'cane', sitPose: 'lap', sex: 'm', age: 'old', Ht: 1000, fat: 1.05, skin: '#efc6a6', hair: {style: 'bald', c: '#e4e2ea'}, top: {c: '#f4efe4', type: 'vest', vest: '#7a8f5a'}, bottom: {type: 'pants', c: '#7a6a5a'}, shoes: '#3a2a22', glasses: '#2b2b33', beard: '#eceaf0', cane: true},
+  {name: 'Продавщица', pose: 'folded', sitPose: 'mug', sex: 'f', age: 'adult', Ht: 1050, fat: 1.1, skin: '#f9d2b2', hair: {style: 'pony', c: '#c2382c', c2: '#e2603c'}, top: {c: '#7ac8e8', type: 'tshirt'}, bottom: {type: 'pants', c: '#2f3a55'}, shoes: '#ffffff', apron: '#2fae5a', lips: '#e2303f', lashes: true, shadow: '#5ab0e0'},
+  {name: 'Врач', pose: 'down', sitPose: 'lap', sex: 'm', age: 'adult', Ht: 1090, fat: 1, skin: '#d9a07a', hair: {style: 'short', c: '#1e1a1a'}, top: {c: '#9fd8e8', type: 'scrubs'}, bottom: {type: 'pants', c: '#9fd8e8'}, shoes: '#ffffff', coat: true, steth: true, glasses: '#3b6fd1'},
 ];
 
 function G2(pts) { return pts; }
@@ -371,7 +371,7 @@ function person(P, X, Gy, sit) {
   Object.assign(C, {skin: P.skin, nail: P.lips && !kid ? P.lips : '#efb5a0'});
   // proportions (standing)
   const top0 = Gy - P.Ht, fw = HH * (kid ? .92 : .8) * (fat > 1.15 ? 1.08 : 1), chin0 = top0 + HH;
-  const shW = hh * (kid ? .72 : m ? 1.02 : .86) * Math.pow(fat, .8), waW = hh * (kid ? .62 : m ? .74 : .6) * Math.pow(fat, 1.3) * (P.belly ? 1.18 : 1), hiW = hh * (kid ? .64 : m ? .74 : .88) * fat;
+  const shW = hh * (kid ? .66 : m ? .9 : .76) * Math.pow(fat, .8), waW = hh * (kid ? .62 : m ? .74 : .6) * Math.pow(fat, 1.3) * (P.belly ? 1.18 : 1), hiW = hh * (kid ? .64 : m ? .74 : .88) * fat;
   const shY0 = chin0 + hh * (kid ? .2 : .3), wy0 = shY0 + hh * (kid ? 1.05 : 1.4), hy0 = wy0 + hh * (kid ? .45 : .55);
   const seatY = Gy - hh * (kid ? 1.6 : 1.85), dy = sit ? (seatY - hh * .05) - hy0 : 0;
   const top = top0 + dy, chin = chin0 + dy, shY = shY0 + dy, wy = wy0 + dy, hy = hy0 + dy, fc = top + HH * .52;
@@ -406,16 +406,19 @@ function person(P, X, Gy, sit) {
   if (P.bottom.type === 'pants') { const cy = sit ? seatY + hh * .1 : hy + hh * .38; fillS([[X - hiW, hy - hh * .05], [X + hiW, hy - hh * .05], [X + hiW * .98, cy], [X, cy + 4], [X - hiW * .98, cy]], P.bottom.c); line([[X, hy + hh * .05], [X, cy]], 2.5); }
   // ---- skirt / dress lower ----
   if (P.bottom.type !== 'pants') {
-    const L = P.bottom.len || 1, end = sit ? seatY + hh * .35 * L : hy + hh * 1.25 * L, fl = sit ? 1.3 : 1.08 + (P.bottom.type === 'dress' ? .06 : 0);
+    const L = P.bottom.len || 1, end = sit ? seatY + hh * .35 * L : hy + hh * 1.25 * L, fl = sit ? 1.25 : 1.04 + (P.bottom.type === 'dress' ? .05 : 0);
     const sk = [[X - waW, wy], [X + waW, wy], [X + hiW * 1.02, hy], [X + hiW * fl, end], [X + hiW * .4, end + 12], [X, end + 4], [X - hiW * .4, end + 12], [X - hiW * fl, end], [X - hiW * 1.02, hy]];
     fillS(sk, P.bottom.c); if (P.bottom.dot) dots(sk, P.bottom.dot);
     line([[X - hiW * .4, hy + hh * .1], [X - hiW * .5, end]], 2.5); line([[X + hiW * .35, hy + hh * .15], [X + hiW * .45, end + 4]], 2.5);
   }
   // ---- doctor coat (behind arms, over body) ----
+  // ---- arms: noodle arms that grow out of a sloped shoulder (behind the torso unless crossing the body) ----
+  const ARMSET = makeArms(P, X, hh, shW, shY, wy, hy, hiW, seatY, sit, Gy, waW);
+  for (const a of ARMSET.filter(a => !a.front)) drawArm(a);
   // ---- neck + torso ----
   tube([[X, chin - HH * .15], [X, shY + hh * .12]], hh * (kid ? .32 : m ? .42 : .34) * Math.pow(fat, .6), hh * (m ? .46 : .38) * Math.pow(fat, .6), P.skin);
   const hem = P.bottom.type === 'pants' ? hy + hh * (P.coat ? 1.1 : .22) : wy + 6, vNeck = P.top.type === 'wrap' || P.top.type === 'cardigan' || P.coat ? .7 : P.top.type === 'shirt' ? .32 : .14;
-  const torso = [[X - shW, shY + hh * .2], [X - shW * .8, shY + hh * .01], [X - hh * .26, shY - hh * .04], [X, shY + hh * vNeck], [X + hh * .26, shY - hh * .04], [X + shW * .8, shY + hh * .01], [X + shW, shY + hh * .2], [X + shW * .97, shY + hh * .55], [X + waW, wy], [X + hiW * (P.bottom.type === 'pants' ? 1.02 : .98), Math.max(wy, hem - hh * .1)], [X + hiW * 1.02, hem], [X - hiW * 1.02, hem], [X - hiW * (P.bottom.type === 'pants' ? 1.02 : .98), Math.max(wy, hem - hh * .1)], [X - waW, wy]];
+  const torso = [[X - shW, shY + hh * .5], [X - shW * .9, shY + hh * .2], [X - shW * .6, shY + hh * .05], [X - hh * .24, shY - hh * .02], [X, shY + hh * vNeck], [X + hh * .24, shY - hh * .02], [X + shW * .6, shY + hh * .05], [X + shW * .9, shY + hh * .2], [X + shW, shY + hh * .5], [X + shW * .98, shY + hh * .8], [X + waW, wy], [X + hiW * (P.bottom.type === 'pants' ? 1.02 : .98), Math.max(wy, hem - hh * .1)], [X + hiW * 1.02, hem], [X - hiW * 1.02, hem], [X - hiW * (P.bottom.type === 'pants' ? 1.02 : .98), Math.max(wy, hem - hh * .1)], [X - waW, wy], [X - shW * .98, shY + hh * .8]];
   const topCol = P.coat ? '#fbfbf8' : P.top.type === 'cardigan' ? P.top.c : P.top.c;
   if (P.top.type === 'cardigan') fillS([[X - hh * .3, shY], [X + hh * .3, shY], [X + waW * .5, hem], [X - waW * .5, hem]], P.top.under);
   if (P.top.type === 'shirt' || P.coat) fillS([[X - hh * .3, shY - hh * .02], [X + hh * .3, shY - hh * .02], [X + hh * .2, shY + hh * .7], [X - hh * .2, shY + hh * .7]], P.coat ? P.top.c : P.top.c);
@@ -435,21 +438,9 @@ function person(P, X, Gy, sit) {
     g.fillStyle = C.ink; g.font = `${Math.round(hh * .1)}px HL, HC`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('ОЛЯ', X + waW * .375, at + hh * .25); }
   if (P.backpack) for (const s of [-1, 1]) fillS([[X + s * shW * .55, shY + hh * .02], [X + s * shW * .78, shY + hh * .05], [X + s * shW * .72, wy], [X + s * shW * .52, wy]], P.backpack, 3.5);
   if (P.beads) { const n = 11; for (let i = 0; i <= n; i++) { const u = i / n; circ(X - hh * .3 + u * hh * .6, shY + Math.sin(u * Math.PI) * hh * .3, hh * .045, P.beads, 2.5); } }
-  // ---- arms + hands ----
-  const sleeve = P.coat ? '#fbfbf8' : (P.top.type === 'tshirt' || P.top.type === 'scrubs' || P.top.type === 'wrap' || P.top.type === 'dress') ? null : P.top.type === 'vest' ? P.top.c : P.top.c;
-  const k = P.Ht / 1850 * (kid ? 1.1 : 1);
-  for (const s of [-1, 1]) {
-    const sh = [X + s * (shW - hh * .14), shY + hh * .16];
-    let el, wr, ang, mode = 'open';
-    if (!sit) { el = [X + s * (shW + hh * .02), shY + hh * 1.25]; wr = [X + s * (shW - hh * .02), wy + hh * .55]; ang = Math.PI / 2 - s * .12; mode = 'hold'; }
-    else { el = [X + s * (shW + hh * .1), wy]; wr = [X + s * hiW * .58, seatY - hh * .02]; ang = Math.PI / 2 + s * .5; }
-    if (P.cane && s > 0 && !sit) { wr = [X + shW + hh * .35, wy + hh * .45]; el = [X + shW + hh * .25, shY + hh * 1.1]; ang = Math.PI / 2; mode = 'hold'; }
-    const aw = hh * .3 * Math.pow(fat, .7);
-    if (P.cane && s > 0 && !sit) { line([[wr[0] + 4, wr[1] - hh * .15], [wr[0] + 6, Gy]], 9); g.beginPath(); g.arc(wr[0] - hh * .08, wr[1] - hh * .15, hh * .12, Math.PI, 0); g.strokeStyle = '#7a4a2a'; g.lineWidth = 9; g.stroke(); line([[wr[0] + 4, wr[1] - hh * .15], [wr[0] + 6, Gy]], 0.1); }
-    if (sleeve) tube([sh, el, wr], aw * 1.2, aw * .95, sleeve);
-    else { tube([sh, el, wr], aw, aw * .75, P.skin); const sl = P.top.type === 'scrubs' ? P.top.c : P.top.c; if (P.top.type !== 'wrap' && P.top.type !== 'dress') tube([sh, [sh[0] + (el[0] - sh[0]) * .45, sh[1] + (el[1] - sh[1]) * .45]], aw * 1.35, aw * 1.25, sl); else tube([sh, [sh[0] + (el[0] - sh[0]) * .3, sh[1] + (el[1] - sh[1]) * .3]], aw * 1.3, aw * 1.2, P.top.c); }
-    g.save(); g.translate(wr[0], wr[1]); g.scale(k, k); hand(0, 0, ang, mode, s > 0 ? -1 : 1, null, !!P.lips && !kid); g.restore();
-  }
+  // ---- arms in front of the body ----
+  if (sit && P.sitPose === 'mug') { const mx = X, my = wy - hh * .5; fillS([[mx - hh * .28, my - hh * .3], [mx + hh * .28, my - hh * .3], [mx + hh * .25, my + hh * .2], [mx - hh * .25, my + hh * .2]], '#ffd84a'); oval(mx, my - hh * .3, hh * .28, hh * .07, '#fff6d0', 3); }
+  for (const a of ARMSET.filter(a => a.front)) drawArm(a);
   if (P.steth) { g.beginPath(); g.moveTo(X - hh * .3, shY); g.quadraticCurveTo(X - hh * .3, shY + hh * .9, X - hh * .05, shY + hh * 1.1); g.strokeStyle = '#2b2b33'; g.lineWidth = 7; g.stroke(); g.beginPath(); g.moveTo(X + hh * .3, shY); g.quadraticCurveTo(X + hh * .3, shY + hh * .7, X + hh * .1, shY + hh * .85); g.stroke(); circ(X - hh * .05, shY + hh * 1.12, hh * .07, '#c9ced6', 3.5); }
   // ---- head ----
   head2(P, X, fc, HH, fw, top);
@@ -528,6 +519,63 @@ function head2(P, X, fc, hh, fw, top) {
     for (const s of [-1, 1]) fillS([[X + s * r * .85, fc - hh * .32], [X + s * r * 1.12, fc - hh * .22], [X + s * r * 1.08, fc + hh * .0], [X + s * r * .92, fc + hh * .02]], c, 3);
     oval(X - r * .3, fc - hh * .4, r * .25, hh * .05, 'rgba(255,255,255,0.55)', 0);
   }
+}
+
+// ---------- arms & hands (reference: thin noodle arms, no elbow bump, small mitten hands) ----------
+function makeArms(P, X, hh, shW, shY, wy, hy, hiW, seatY, sit, Gy, waW) {
+  const w = hh * .24 * Math.pow(P.fat, .6), out = [];
+  const sleeveLong = !['tshirt', 'scrubs', 'wrap', 'dress'].includes(P.top.type) || P.coat;
+  const sc = P.coat ? '#fbfbf8' : P.top.c;
+  const pose = sit ? (P.sitPose || 'lap') : (P.pose || 'down');
+  for (const s of [-1, 1]) {
+    const S = [X + s * (shW - w * .55), shY + hh * .32];              // shoulder joint, inside the sloped shoulder
+    let E, H, hand = 'mitt', front = false, ang = Math.PI / 2;
+    const one = {hip: -1, wave: 1, cane: 1}; const side = pose === 'hips' ? 'hip' : one[pose] ? (one[pose] === s ? pose : 'down') : pose;
+    if (sit) {
+      if (pose === 'mug') { E = [X + s * (shW + hh * .05), wy - hh * .1]; H = [X + s * hh * .35, wy - hh * .35]; hand = 'hold'; front = true; ang = -s * .3 + (s > 0 ? Math.PI : 0); }
+      else { E = [X + s * (shW + hh * .08), wy + hh * .1]; H = [X + s * hiW * .55, seatY + hh * .05]; front = true; ang = Math.PI / 2 + s * .35; }
+    } else if (side === 'hip') { E = [X + s * (shW + hh * .55), wy - hh * .15]; H = [X + s * (hiW * .95), hy - hh * .1]; hand = 'fist'; front = true; ang = s > 0 ? Math.PI * .85 : Math.PI * .15; }
+    else if (side === 'wave') { E = [X + s * (shW + hh * .45), shY + hh * .25]; H = [X + s * (shW + hh * .55), shY - hh * .6]; hand = 'wave'; ang = -Math.PI / 2; }
+    else if (side === 'pocket') { E = [X + s * (shW + hh * .12), wy - hh * .1]; H = [X + s * hh * .35, wy + hh * .12]; hand = 'none'; front = true; }
+    else if (side === 'folded') { E = [X + s * (shW + hh * .1), wy - hh * .2]; H = [X + s * hh * .12, wy + hh * .05]; hand = 'fist'; front = true; ang = s > 0 ? Math.PI : 0; }
+    else if (side === 'straps') { E = [X + s * (shW + hh * .1), shY + hh * 1.0]; H = [X + s * shW * .55, shY + hh * .55]; hand = 'fist'; front = true; ang = -Math.PI / 2; }
+    else if (side === 'cane') { E = [X + s * (shW + hh * .3), shY + hh * 1.0]; H = [X + s * (shW + hh * .45), wy + hh * .3]; hand = 'fist'; ang = Math.PI / 2; }
+    else { const bw = Math.max(shW, waW, hiW * .92); E = [X + s * (Math.max(shW, waW * .95) + hh * .1), shY + hh * 1.2]; H = [X + s * (bw + hh * .1), hy + hh * .2]; ang = Math.PI / 2 - s * .12; }
+    out.push({s, S, E, H, w, hand, front, ang, sleeveLong, sc, skin: P.skin, cane: side === 'cane' ? Gy : 0});
+  }
+  return out;
+}
+function drawArm(a) {
+  const {S, E, H, w} = a;
+  if (a.cane) { line([[H[0] + 6, H[1] - 10], [H[0] + 10, a.cane]], 9); g.beginPath(); g.arc(H[0] - w * .6, H[1] - 10, w * .65, Math.PI, 0); g.strokeStyle = C.ink; g.lineWidth = 9; g.stroke(); }
+  // one smooth tapered noodle (no elbow bump)
+  const path_ = [S, E, H];
+  fillS(tubePts(path_, w * 1.08, w * .82), a.sleeveLong ? a.sc : a.skin);
+  if (!a.sleeveLong) { const m = [S[0] + (E[0] - S[0]) * .55, S[1] + (E[1] - S[1]) * .55]; fillS(tubePts([S, m], w * 1.35, w * 1.25), a.sc); }
+  else { // cuff
+    const d = Math.hypot(E[0] - H[0], E[1] - H[1]) || 1, c = [H[0] + (E[0] - H[0]) / d * w * .7, H[1] + (E[1] - H[1]) / d * w * .7];
+    line([[c[0] - (E[1] - H[1]) / d * w * .45, c[1] + (E[0] - H[0]) / d * w * .45], [c[0] + (E[1] - H[1]) / d * w * .45, c[1] - (E[0] - H[0]) / d * w * .45]], 2.5);
+  }
+  mitt(H[0], H[1], a.ang, a.hand, w, a.skin, a.s);
+}
+function mitt(x, y, ang, kind, w, skin, s) {
+  if (kind === 'none') return;
+  const r = w * .75;
+  g.save(); g.translate(x, y); g.rotate(ang);
+  if (kind === 'fist' || kind === 'hold') {
+    fillS([[-r * .2, -r * .9], [r * 1.1, -r * .85], [r * 1.35, -r * .2], [r * 1.3, r * .7], [r * .4, r * .95], [-r * .2, r * .8]], skin, 3.5);
+    for (const k of [-.35, .2]) line([[r * .9, r * k], [r * 1.3, r * k + 2]], 2);
+    fillS([[r * .1, -r * .95], [r * .9, -r * 1.25], [r * 1.15, -r * .95], [r * .6, -r * .6]], skin, 3);
+  } else if (kind === 'wave') {
+    fillS([[-r * .2, -r * .8], [r * .9, -r * .9], [r * 1.1, r * .9], [-r * .2, r * .85]], skin, 3.5);
+    const fa = [-.5, -.17, .17, .5]; for (let q = 0; q < 4; q++) { g.save(); g.translate(r * .95, fa[q] * r * 1.4); g.rotate(fa[q] * .5); fillS([[0, -r * .2], [r * .8, -r * .17], [r * .9, 0], [r * .8, r * .17], [0, r * .2]], skin, 3); g.restore(); }
+    g.save(); g.translate(r * .3, -r * .9 * (s || 1)); g.rotate(-.9 * (s || 1)); fillS([[0, -r * .2], [r * .7, -r * .16], [r * .78, 0], [r * .7, r * .16], [0, r * .2]], skin, 3); g.restore();
+  } else { // relaxed mitten, fingers together, small thumb
+    fillS([[-r * .25, -r * .75], [r * 1.0, -r * .7], [r * 1.5, -r * .25], [r * 1.55, r * .25], [r * 1.05, r * .72], [-r * .25, r * .72]], skin, 3.5);
+    for (const k of [-.25, .2]) line([[r * 1.05, r * k], [r * 1.45, r * k]], 2);
+    fillS([[r * .1, -r * .7 * (s || 1)], [r * .75, -r * 1.05 * (s || 1)], [r * .95, -r * .82 * (s || 1)], [r * .55, -r * .45 * (s || 1)]], skin, 3);
+  }
+  g.restore();
 }
 
 // ---------- sheets ----------
