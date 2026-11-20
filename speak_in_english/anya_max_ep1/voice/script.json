@@ -1,0 +1,111 @@
+{
+ "voices": {
+  "anya": [
+   "EXAVITQu4vr4xnSDxMaL",
+   "eleven_multilingual_v2",
+   "ru"
+  ],
+  "max_ru": [
+   "nPczCjzI2devNBz1zQrb",
+   "eleven_multilingual_v2",
+   "ru"
+  ],
+  "max_en": [
+   "nPczCjzI2devNBz1zQrb",
+   "eleven_v3",
+   "en"
+  ],
+  "cour": [
+   "bIHbv24MWmeRgasZH58o",
+   "eleven_v3",
+   "en"
+  ],
+  "sell": [
+   "XrExE9yKIg1WjnnlVkGX",
+   "eleven_v3",
+   "en"
+  ]
+ },
+ "lines": {
+  "x1": [
+   "max_en",
+   "[on a work call, relaxed] Yeah, sure. I'll send it by five."
+  ],
+  "x2": [
+   "max_ru",
+   "Ань, я до вечера на созвонах. Закажи еду в приложении, там всё просто."
+  ],
+  "a3": [
+   "anya",
+   "Отлично. Приготовлю ему ужин. Сама."
+  ],
+  "a4": [
+   "anya",
+   "Так... эд ту карт... квонтити... двадцать? Ну, пусть двадцать."
+  ],
+  "c5": [
+   "cour",
+   "[cheerful] Delivery! Twenty kilos of rice! Cash or card?"
+  ],
+  "a6": [
+   "anya",
+   "Кэш? Кард? Что это вообще?!"
+  ],
+  "c7": [
+   "cour",
+   "[happy] Cash! Okay! Thank you!"
+  ],
+  "a8": [
+   "anya",
+   "Кэш... Значит, наличные. Запомнила."
+  ],
+  "s9": [
+   "sell",
+   "[friendly] Hello! Tomatoes? How many? One kilo?"
+  ],
+  "a10": [
+   "anya",
+   "Ван кило, плиз. Хау мач?"
+  ],
+  "s11": [
+   "sell",
+   "[warmly] Thirty thousand. Thank you! Oh... you have beautiful eyes!"
+  ],
+  "a12": [
+   "anya",
+   "Не знаю, что она сказала. Кивай и улыбайся."
+  ],
+  "a13": [
+   "anya",
+   "Да вы издеваетесь..."
+  ],
+  "x14": [
+   "max_ru",
+   "Ого... Ань, ты как это всё купила?"
+  ],
+  "a15": [
+   "anya",
+   "Сама. Кэш, плиз. Ван кило."
+  ],
+  "s16": [
+   "sell",
+   "[cheerful] Hello, beautiful! You forgot your change!"
+  ],
+  "x17": [
+   "max_ru",
+   "Говорит... ты сдачу забыла."
+  ],
+  "a18": [
+   "anya",
+   "А бьютифул — это что?"
+  ],
+  "x19": [
+   "max_ru",
+   "Э-э... Покупательница."
+  ],
+  "a20": [
+   "anya",
+   "Хм. Покупательница..."
+  ]
+ }
+}
