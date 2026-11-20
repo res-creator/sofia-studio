@@ -107,103 +107,116 @@ function hand(x, y, ang, mode, flip = 1, obj = null, ring = true) {
   g.restore();
 }
 
-// ---------- Ирина Павловна (detailed) ----------
+// ---------- Ирина Павловна — rigged (head group, jaw, secondary motion) ----------
+// st: time, t, jaw 0..1 (smoothed voice), talk 0..1, smile 0..1, blink 0..1, lid, look, brow, pen 0..1, writing, push
 function irina(st) {
-  const x = 540, y = 1000 + Math.sin(st.t * 1.3) * 2, br = st.brow || 0;
-  // side curls (behind) + bouffant back
-  for (const s of [-1, 1]) for (const [dx, dy, r] of [[245, 120, 62], [270, 30, 58], [225, 200, 50]]) oval(x + s * dx, y + dy, r, r * 0.9, C.hairM, 4);
-  shape([[x - 250, y + 80], [x - 280, y - 80], [x - 230, y - 230], [x - 100, y - 310], [x + 60, y - 320], [x + 210, y - 262], [x + 285, y - 110], [x + 270, y + 80], [x + 190, y + 150], [x - 180, y + 150]], C.hairP);
-  // neck, chest, collarbones
+  const x = 540, y = 1000, j = st.jaw || 0, sm = st.smile || 0, talk = st.talk || 0, T = st.time;
+  const breath = Math.sin(T * 1.25);
+  // head motion: slow idle sway + talking accents + small nod that follows the jaw
+  const rot = 0.022 * Math.sin(T * 0.8) + talk * (0.018 * Math.sin(T * 2.3 + 1) + 0.012 * Math.sin(T * 3.7)) - sm * 0.03;
+  const nod = talk * (1.5 + 5 * j) + breath * 1.2;
+  const piv = [x, y + 175];
+  const head = (fn) => { g.save(); g.translate(piv[0], piv[1] + nod); g.rotate(rot); g.translate(-piv[0], -piv[1]); fn(); g.restore(); };
+  const sway = (pts, k = 1) => pts.map(([px, py]) => { const w = clamp((py - (y - 60)) / 220); return [px + w * k * (4 * Math.sin(T * 1.1 + .6) - rot * 140), py]; });
+
+  // 1) back hair (part of the head group)
+  head(() => {
+    shape(sway([[x - 205, y + 160], [x - 236, y + 30], [x - 240, y - 90], [x - 205, y - 195], [x - 120, y - 262], [x, y - 284], [x + 128, y - 262], [x + 214, y - 192], [x + 244, y - 80], [x + 240, y + 40], [x + 214, y + 162], [x + 150, y + 182], [x - 150, y + 180]]), C.hairP);
+  });
+
+  // 2) body (breathes)
+  g.save(); g.translate(0, breath * 1.6);
   shape([[x - 86, y + 110], [x + 86, y + 110], [x + 102, y + 240], [x - 102, y + 240]], C.skin);
   shape([[x - 220, y + 210], [x + 220, y + 210], [x + 255, y + 320], [x + 60, y + 455], [x, y + 475], [x - 60, y + 455], [x - 255, y + 320]], C.skin);
   line([[x - 160, y + 250], [x - 80, y + 262]], 3); line([[x + 160, y + 250], [x + 80, y + 262]], 3);
-  line([[x - 70, y + 200], [x, y + 216], [x + 70, y + 200]], 3); // double chin shadow line
-  // wrap dress with polka dots
   const dress = [[x - 305, 1620], [x - 292, y + 330], [x - 238, y + 272], [x - 60, y + 438], [x, y + 482], [x + 60, y + 438], [x + 238, y + 272], [x + 292, y + 330], [x + 305, 1620]];
   shape(dress, C.dress);
-  g.save(); crPath(dress); g.clip(); g.fillStyle = C.dot; for (let i = 0; i < 16; i++) for (let j = 0; j < 10; j++) { g.beginPath(); g.arc(x - 300 + i * 42 + (j % 2) * 21, y + 280 + j * 40, 6, 0, 7); g.fill(); } g.restore();
+  g.save(); crPath(dress); g.clip(); g.fillStyle = C.dot; for (let i = 0; i < 16; i++) for (let k = 0; k < 10; k++) { g.beginPath(); g.arc(x - 300 + i * 42 + (k % 2) * 21, y + 280 + k * 40, 6, 0, 7); g.fill(); } g.restore();
   crPath(dress); g.strokeStyle = C.ink; g.lineWidth = LW; g.stroke();
-  line([[x - 238, y + 272], [x + 40, y + 520], [x + 150, y + 600]], 3.5); // wrap overlap
-  line([[x - 2, y + 418], [x + 2, y + 470]], 3); // cleavage
+  line([[x - 238, y + 272], [x + 40, y + 520], [x + 150, y + 600]], 3.5);
+  line([[x - 2, y + 418], [x + 2, y + 470]], 3);
   line([[x - 255, y + 420], [x - 200, y + 525], [x - 105, y + 548], [x - 14, y + 505]], 3.5);
   line([[x + 255, y + 420], [x + 200, y + 525], [x + 105, y + 548], [x + 14, y + 505]], 3.5);
-  // bead necklace
-  for (let i = 0; i <= 11; i++) { const u = i / 11, px = x - 150 + u * 300, py = y + 238 + Math.sin(u * Math.PI) * 92; oval(px, py, 17, 17, C.bead, 3.5); oval(px - 5, py - 5, 4, 4, 'rgba(255,255,255,0.8)', 0); }
-  // face
-  shape([[x - 186, y - 60], [x - 160, y - 150], [x - 80, y - 192], [x + 80, y - 192], [x + 160, y - 150], [x + 186, y - 60], [x + 186, y + 50], [x + 140, y + 130], [x + 60, y + 178], [x - 60, y + 178], [x - 140, y + 130], [x - 186, y + 50]], C.skin);
-  for (const s of [-1, 1]) { shape([[x + s * 176, y - 22], [x + s * 214, y - 42], [x + s * 228, y + 18], [x + s * 186, y + 62]], C.skin, 4); line([[x + s * 196, y - 12], [x + s * 210, y + 8], [x + s * 194, y + 30]], 2.5);
-    oval(x + s * 208, y + 74, 14, 14, C.gold, 3.5); shape([[x + s * 208, y + 88], [x + s * 222, y + 118], [x + s * 208, y + 134], [x + s * 194, y + 118]], C.gold, 3.5); }
-  oval(x - 115, y + 76, 54, 44, C.cheek, 0); oval(x + 115, y + 76, 54, 44, C.cheek, 0);
-  // eyes
-  for (const s of [-1, 1]) {
-    const ex = x + s * 76, ey = y + 6, almond = [[ex - 44, ey], [ex - 16, ey - 20], [ex + 18, ey - 20], [ex + 44, ey + 2], [ex + 16, ey + 22], [ex - 18, ey + 22]];
-    const band = [[ex - 54, ey - 2], [ex - 22, ey - 38 - br * .5], [ex + 24, ey - 38 - br * .5], [ex + 56, ey - 2], [ex + 26, ey - 22], [ex - 22, ey - 22]];
-    shape(band, C.shadow, 3.5);
-    if (st.blink) { line([[ex - 46, ey + 2], [ex, ey + 12], [ex + 46, ey + 2]], 5); }
-    else {
-      shape(almond, '#ffffff', 0);
-      g.save(); crPath(almond); g.clip(); oval(ex + (st.look || 0) * 9, ey + 4, 23, 23, C.ink, 0); oval(ex + (st.look || 0) * 9 + 8, ey - 4, 6, 6, '#ffffff', 0);
-      if (st.lid) { g.fillStyle = C.skin; g.fillRect(ex - 50, ey - 30, 100, 10 + 30 * st.lid); } g.restore();
-      crPath(almond); g.strokeStyle = C.ink; g.lineWidth = 3; g.stroke();
-      line([[ex - 46, ey + (st.lid ? -18 + 30 * st.lid : 0)], [ex - 14, ey - 21 + (st.lid ? 30 * st.lid : 0)], [ex + 18, ey - 21 + (st.lid ? 30 * st.lid : 0)], [ex + 46, ey + 2]], 5.5);
-    }
-    for (let k = 0; k < 6; k++) { const lx = ex - 40 + k * 16; line([[lx, ey - 24 - Math.sin(k / 5 * Math.PI) * 8], [lx + s * 3, ey - 32 - Math.sin(k / 5 * Math.PI) * 10]], 2); }
-    for (const k of [-24, -10, 6]) line([[ex + k, ey + 26], [ex + k - 3, ey + 36]], 2);
-    shape([[ex - 52, ey - 72 - br], [ex - 10, ey - 90 - br], [ex + 42, ey - 80 - br], [ex + 46, ey - 66 - br], [ex - 8, ey - 74 - br], [ex - 50, ey - 58 - br]].map(([px, py]) => [s > 0 ? 2 * ex - px : px, py]), C.brow, 3);
-  }
-  shape([[x - 8, y + 22], [x + 8, y + 22], [x + 15, y + 72], [x, y + 80], [x - 15, y + 72]], C.nose, 0);
-  line([[x - 64, y + 84], [x - 76, y + 112], [x - 72, y + 138]], 3); line([[x + 64, y + 84], [x + 76, y + 112], [x + 72, y + 138]], 3);
-  oval(x + 64, y + 104, 5, 5, C.ink, 0); // beauty mark
-  // mouth (visemes)
-  const my = y + 128, m = st.mouth;
-  if (m === 'open') {
-    shape([[x - 46, my - 2], [x, my - 10], [x + 46, my - 2], [x + 30, my + 42], [x, my + 50], [x - 30, my + 42]], C.mouthIn, 3.5);
-    shape([[x - 34, my + 2], [x + 34, my + 2], [x + 30, my + 14], [x - 30, my + 14]], '#ffffff', 2.5);
-    shape([[x - 22, my + 44], [x, my + 30], [x + 22, my + 44], [x, my + 50]], C.tongue, 0);
-    shape([[x - 52, my - 2], [x - 24, my - 18], [x, my - 10], [x + 24, my - 18], [x + 52, my - 2], [x, my - 4]], C.lip, 3.5);
-    shape([[x - 46, my + 30], [x, my + 52], [x + 46, my + 30], [x + 22, my + 66], [x - 22, my + 66]], C.lip, 3.5);
-  } else if (m === 'teeth') {
-    shape([[x - 50, my], [x - 24, my - 16], [x, my - 9], [x + 24, my - 16], [x + 50, my], [x, my + 4]], C.lip, 3.5);
-    shape([[x - 44, my + 4], [x + 44, my + 4], [x + 40, my + 18], [x - 40, my + 18]], '#ffffff', 2.5);
-    for (const k of [-22, 0, 22]) line([[x + k, my + 5], [x + k, my + 17]], 1.8);
-    shape([[x - 46, my + 18], [x, my + 22], [x + 46, my + 18], [x + 22, my + 40], [x - 22, my + 40]], C.lip, 3.5);
-  } else if (m === 'smile') {
-    shape([[x - 60, my - 8], [x - 26, my - 18], [x, my - 10], [x + 26, my - 18], [x + 60, my - 8], [x, my + 2]], C.lip, 3.5);
-    shape([[x - 60, my - 6], [x, my + 4], [x + 60, my - 6], [x + 26, my + 24], [x - 26, my + 24]], C.lip, 3.5);
-    line([[x - 60, my - 7], [x, my + 2], [x + 60, my - 7]], 3); line([[x - 68, my - 16], [x - 62, my - 4]], 2.5); line([[x + 68, my - 16], [x + 62, my - 4]], 2.5);
-  } else {
-    shape([[x - 48, my], [x - 22, my - 16], [x, my - 9], [x + 22, my - 16], [x + 48, my], [x, my + 3]], C.lip, 3.5);
-    shape([[x - 46, my + 1], [x, my + 4], [x + 46, my + 1], [x + 22, my + 26], [x - 22, my + 26]], C.lip, 3.5);
-    line([[x - 48, my], [x, my + 3], [x + 48, my]], 3);
-  }
-  // hair front: plum cap + magenta swoop with lock lines
-  shape([[x - 192, y - 30], [x - 188, y - 160], [x - 92, y - 244], [x + 60, y - 254], [x + 192, y - 172], [x + 198, y - 40], [x + 150, y - 118], [x + 40, y - 148], [x - 80, y - 138], [x - 160, y - 86]], C.hairP);
-  shape([[x - 30, y - 236], [x + 140, y - 222], [x + 218, y - 132], [x + 204, y - 54], [x + 152, y - 112], [x + 60, y - 142], [x - 30, y - 176]], C.hairM);
-  line([[x + 10, y - 214], [x + 140, y - 196], [x + 200, y - 120]], 3); line([[x, y - 190], [x + 110, y - 170], [x + 186, y - 96]], 3);
-  line([[x - 150, y - 150], [x - 90, y - 200], [x - 20, y - 222]], 3);
+  for (let i = 0; i <= 11; i++) { const u = i / 11, px = x - 150 + u * 300, py = y + 238 + Math.sin(u * Math.PI) * 92 + Math.sin(T * 1.25 + u) * 1.5; oval(px, py, 17, 17, C.bead, 3.5); oval(px - 5, py - 5, 4, 4, 'rgba(255,255,255,0.8)', 0); }
+  g.restore();
 
-  // arms (bare) — left holds notebook, right writes / raises pen
-  const pen = st.pen || 0, wr = st.writing ? Math.sin(st.t * 13) * 6 : 0;
-  const L = [x - 215, y + 470], R = [x + 30 + pen * 150 + wr, y + 470 - pen * 120];
+  // 3) face + features + front hair (head group, jaw deforms the lower face)
+  head(() => {
+    const D = j * 24; // jaw drop
+    const F = [[-186, -60, 0], [-160, -150, 0], [-80, -192, 0], [80, -192, 0], [160, -150, 0], [186, -60, 0], [184, 40, .12], [146, 126, .5], [66, 178, .88], [0, 186, 1], [-66, 178, .88], [-146, 126, .5], [-184, 40, .12]];
+    shape(F.map(([dx, dy, w]) => [x + dx * (1 - w * j * .04), y + dy + w * D]), C.skin);
+    line([[x - 66, y + 202 + D * .9], [x, y + 216 + D], [x + 66, y + 202 + D * .9]], 3); // double chin follows the jaw
+    oval(x - 115, y + 76 - sm * 9, 54, 44, C.cheek, 0); oval(x + 115, y + 76 - sm * 9, 54, 44, C.cheek, 0);
+    // eyes
+    const lid = Math.max(st.lid || 0, st.blink || 0), br = (st.brow || 0) + talk * j * 6;
+    for (const s of [-1, 1]) {
+      const ex = x + s * 76, ey = y + 6, almond = [[ex - 44, ey], [ex - 16, ey - 20], [ex + 18, ey - 20], [ex + 44, ey + 2], [ex + 16, ey + 22], [ex - 18, ey + 22]];
+      shape([[ex - 54, ey - 2], [ex - 22, ey - 38 - br * .5], [ex + 24, ey - 38 - br * .5], [ex + 56, ey - 2], [ex + 26, ey - 22], [ex - 22, ey - 22]], C.shadow, 3.5);
+      shape(almond, '#ffffff', 0);
+      g.save(); crPath(almond); g.clip();
+      oval(ex + (st.look || 0) * 10, ey + 4, 23, 23, C.ink, 0); oval(ex + (st.look || 0) * 10 + 8, ey - 4, 6, 6, '#ffffff', 0);
+      const lc = ey - 22 + 46 * lid; g.fillStyle = C.skin; g.beginPath(); g.moveTo(ex - 50, ey - 40); g.lineTo(ex + 50, ey - 40); g.lineTo(ex + 50, lc); g.quadraticCurveTo(ex, lc + 10 * (1 - lid), ex - 50, lc); g.fill();
+      if (sm > 0) { const ly2 = ey + 24 - sm * 12; g.beginPath(); g.moveTo(ex - 50, ey + 40); g.lineTo(ex + 50, ey + 40); g.lineTo(ex + 50, ly2); g.quadraticCurveTo(ex, ly2 - 8, ex - 50, ly2); g.fill(); }
+      g.restore();
+      if (lid < 0.95) { crPath(almond); g.strokeStyle = C.ink; g.lineWidth = 2.5; g.stroke(); }
+      const ly = ey - 21 + 44 * lid; line([[ex - 46, ey + 1], [ex - 14, ly], [ex + 18, ly], [ex + 46, ey + 2]], 5.5);
+      for (let k = 0; k < 6; k++) { const lx = ex - 40 + k * 16, a = Math.sin(k / 5 * Math.PI); line([[lx, ly - 2 - a * 6], [lx + s * 3, ly - 10 - a * 8]], 2); }
+      for (const k of [-24, -10, 6]) line([[ex + k, ey + 27 - sm * 6], [ex + k - 3, ey + 36 - sm * 6]], 2);
+      shape([[ex - 52, ey - 72 - br], [ex - 10, ey - 90 - br], [ex + 42, ey - 80 - br], [ex + 46, ey - 66 - br], [ex - 8, ey - 74 - br], [ex - 50, ey - 58 - br]].map(([px, py]) => [s > 0 ? 2 * ex - px : px, py]), C.brow, 3);
+    }
+    shape([[x - 8, y + 22], [x + 8, y + 22], [x + 15, y + 72], [x, y + 80], [x - 15, y + 72]], C.nose, 0);
+    for (const s of [-1, 1]) line([[x + s * (62 + sm * 8), y + 84], [x + s * (76 + sm * 10), y + 112 + D * .3], [x + s * (72 + sm * 8), y + 138 + D * .6]], 3);
+    oval(x + 64 + sm * 6, y + 104 - sm * 3, 5, 5, C.ink, 0);
+    // mouth: upper lip anchored to the skull, lower lip rides on the jaw
+    const my = y + 124, Dm = j * 30, w = 44 + sm * 16 - j * 8, cy = my + 2 + Dm * .3 - sm * 9;
+    const upper = [[x - w, cy], [x - w * .5, my - 14], [x, my - 8], [x + w * .5, my - 14], [x + w, cy], [x + w * .45, my + 3], [x, my + 4], [x - w * .45, my + 3]];
+    const lowerTop = [[x - w * .45, my + 4 + Dm], [x, my + 6 + Dm], [x + w * .45, my + 4 + Dm]];
+    if (Dm > 3) {
+      const inner = [[x - w + 4, cy], [x - w * .45, my + 3], [x, my + 4], [x + w * .45, my + 3], [x + w - 4, cy], ...lowerTop.slice().reverse()];
+      shape(inner, C.mouthIn, 3);
+      g.save(); crPath(inner); g.clip(); g.fillStyle = '#ffffff'; g.fillRect(x - w, my, w * 2, Math.min(12, Dm * .45)); oval(x, my + 8 + Dm, w * .45, Dm * .38 + 2, C.tongue, 0); g.restore();
+    }
+    shape(upper, C.lip, 3.5);
+    shape([[x - w + 2, cy + 1], ...lowerTop, [x + w - 2, cy + 1], [x + w * .4, my + 24 + Dm], [x, my + 28 + Dm], [x - w * .4, my + 24 + Dm]], C.lip, 3.5);
+    if (Dm <= 3) line([[x - w, cy], [x, my + 4], [x + w, cy]], 3);
+    if (sm > .3) { line([[x - w - 8, cy - 8], [x - w - 2, cy + 4]], 2.5); line([[x + w + 8, cy - 8], [x + w + 2, cy + 4]], 2.5); }
+    line([[x - 18, my + 46 + D], [x, my + 50 + D], [x + 18, my + 46 + D]], 2.5); // chin crease under the lip
+    // earrings swing with the head
+    for (const s of [-1, 1]) {
+      const ex = x + s * 206, ey = y + 150, a = 0.22 * Math.sin(T * 2.6 + s) * (0.3 + talk * .7) - rot * 2.5;
+      g.save(); g.translate(ex, ey); g.rotate(a); oval(0, 0, 13, 13, C.gold, 3.5); shape([[0, 12], [14, 42], [0, 58], [-14, 42]], C.gold, 3.5); g.restore();
+    }
+    // front hair: side part, locks framing the face, strands follow the flow, tips curl in
+    const left = sway([[x - 72, y - 262], [x - 160, y - 236], [x - 216, y - 150], [x - 226, y - 30], [x - 214, y + 92], [x - 192, y + 156], [x - 166, y + 116], [x - 172, y - 20], [x - 152, y - 120], [x - 98, y - 190]]);
+    const right = sway([[x - 72, y - 262], [x + 60, y - 272], [x + 182, y - 216], [x + 236, y - 100], [x + 234, y + 40], [x + 212, y + 158], [x + 172, y + 128], [x + 178, y + 0], [x + 160, y - 82], [x + 92, y - 152], [x - 10, y - 172], [x - 60, y - 196]]);
+    shape(left, C.hairP); shape(right, C.hairP);
+    shape(sway([[x - 44, y - 246], [x + 62, y - 256], [x + 156, y - 204], [x + 198, y - 112], [x + 186, y - 30], [x + 158, y - 96], [x + 76, y - 168], [x - 20, y - 206]]), C.hairM);
+    for (const p of [[[x - 60, y - 252], [x + 40, y - 240], [x + 150, y - 190], [x + 205, y - 70], [x + 208, y + 70], [x + 192, y + 140]],
+      [[x - 50, y - 232], [x + 30, y - 212], [x + 118, y - 156], [x + 160, y - 60]], [[x + 20, y - 200], [x + 110, y - 180], [x + 176, y - 110]],
+      [[x - 84, y - 248], [x - 165, y - 205], [x - 202, y - 100], [x - 204, y + 50], [x - 188, y + 130]], [[x - 96, y - 226], [x - 150, y - 180], [x - 176, y - 60]]]) line(sway(p), 2.6);
+  });
+
+  // 4) arms, shawl, notebook, hands (smooth, organic motion)
+  const pen = st.pen || 0, wn = st.writing ? [5 * Math.sin(st.t * 2.3) + 3 * Math.sin(st.t * 3.7 + 1), 3 * Math.sin(st.t * 2.9 + .5)] : [0, 0];
+  const gest = talk * (6 * Math.sin(T * 1.9) + 10 * j);
+  const L = [x - 215, y + 470 + breath * 1.6], R = [x + 30 + pen * 145 + wn[0], y + 470 - pen * 118 + wn[1] - gest * pen];
   shape(tubePts([[x - 255, y + 320], [x - 300, y + 520], L], 112, 82), C.skin); line([[x - 300, y + 505], [x - 270, y + 520]], 2.5);
-  shape(tubePts([[x + 255, y + 320], [x + 302, y + 520], [R[0] + 60, R[1] + 30]], 112, 82), C.skin); line([[x + 300, y + 505], [x + 270, y + 520]], 2.5);
-  // shawl over shoulders
+  shape(tubePts([[x + 255, y + 320], [x + 302, y + 520 - pen * 20], [R[0] + 60, R[1] + 30]], 112, 82), C.skin); line([[x + 300, y + 505 - pen * 20], [x + 270, y + 520 - pen * 20]], 2.5);
   for (const s of [-1, 1]) {
-    const pts = [[x + s * 320, y + 290], [x + s * 252, y + 236], [x + s * 190, y + 262], [x + s * 240, y + 380], [x + s * 300, y + 470], [x + s * 352, y + 500]];
-    shape(pts, C.shawl);
+    shape([[x + s * 320, y + 290], [x + s * 252, y + 236], [x + s * 190, y + 262], [x + s * 240, y + 380], [x + s * 300, y + 470], [x + s * 352, y + 500]].map(([px, py]) => [px, py + breath * 1.6]), C.shawl);
     line([[x + s * 240, y + 270], [x + s * 280, y + 380]], 2.5); line([[x + s * 280, y + 280], [x + s * 320, y + 420]], 2.5);
-    for (let k = 0; k < 6; k++) line([[x + s * (300 + k * 9), y + 470 + k * 5], [x + s * (296 + k * 9), y + 500 + k * 5]], 2.5);
+    for (let k = 0; k < 6; k++) line([[x + s * (300 + k * 9), y + 470 + k * 5], [x + s * (296 + k * 9) + Math.sin(T * 1.7 + k) * 2, y + 500 + k * 5]], 2.5);
   }
-  // notebook (spiral pad) + hands
-  g.save(); g.translate(x - 110, y + 470); g.rotate(-0.05);
+  g.save(); g.translate(x - 110, y + 470 + breath * 1.6); g.rotate(-0.05);
   shape([[-140, -100], [120, -100], [118, 100], [-142, 100]], C.note);
   for (let k = 0; k < 8; k++) oval(-120 + k * 32, -100, 8, 13, null, 3);
   for (let k = 0; k < 5; k++) line([[-110, -55 + k * 30], [100, -55 + k * 30]], 2);
-  line([[-80, 70], [-40, 58], [-10, 74], [30, 60 + wr * .4]], 2.5);
+  line([[-80, 70], [-40, 58], [-10, 74], [30 + wn[0] * .5, 60 + wn[1]]], 2.5);
   g.restore();
   hand(L[0], L[1], -0.15, 'hold', 1, null, true);
-  hand(R[0], R[1], Math.PI + 0.35 - pen * 0.4, 'hold', -1, () => { shape([[16, -140], [30, -140], [30, 60], [23, 80], [16, 60]], C.pen, 3); oval(23, -140, 8, 6, '#e8e8f2', 2.5); }, false);
+  hand(R[0], R[1], Math.PI + 0.35 - pen * 0.4 + wn[0] * 0.004, 'hold', -1, () => { shape([[16, -140], [30, -140], [30, 60], [23, 80], [16, 60]], C.pen, 3); oval(23, -140, 8, 6, '#e8e8f2', 2.5); }, false);
 }
+
 // ---------- bubble + watermark ----------
 function bubble(text, k) {
   if (!text) return;
@@ -229,11 +242,13 @@ const VO = TEXTS.map((_, i) => {
   spawnSync('ffmpeg', ['-y', '-v', 'error', '-i', path.join(D, 'voice', `l${i}.mp3`), '-af', trim + ',loudnorm=I=-16:TP=-1.5', '-ac', '1', '-ar', String(SR), '-c:a', 'pcm_s16le', wav]);
   const b = fs.readFileSync(wav), pcm = new Int16Array(b.buffer, b.byteOffset + 44, (b.length - 44) >> 1), spf = SR / FPS, env = [];
   for (let f = 0; f * spf < pcm.length; f++) { let s = 0, n = 0; for (let k = Math.floor(f * spf); k < Math.min(pcm.length, (f + 1) * spf); k++) { s += pcm[k] * pcm[k]; n++; } env.push(Math.sqrt(s / Math.max(1, n)) / 32768); }
-  const mx = Math.max(...env) || 1; return {wav, dur: pcm.length / SR, env: env.map(v => v / mx)};
+  const mx = Math.max(...env) || 1; let jv = 0; const jaw = env.map(v => { const tg = Math.pow(clamp((v / mx - 0.08) / 0.75), 0.8); jv += (tg - jv) * (tg > jv ? 0.55 : 0.22); return jv; });
+  return {wav, dur: pcm.length / SR, env: env.map(v => v / mx), jaw};
 });
 const LEAD = 0.25; // voice starts this long after the cut
-const viseme = (i, t) => { const v = VO[i], f = Math.floor((t - LEAD) * FPS); if (f < 0 || f >= v.env.length) return null; const e = v.env[f]; return e < 0.12 ? 'closed' : e < 0.45 ? 'teeth' : 'open'; };
-const blinkAt = (t, at) => at.some(a => t > a && t < a + 0.12);
+const jawAt = (i, t) => { const v = VO[i], f = (t - LEAD) * FPS, k = Math.floor(f); if (k < 0) return 0; if (k >= v.jaw.length - 1) { const last = v.jaw[v.jaw.length - 1] || 0; return last * clamp(1 - (f - v.jaw.length) / 4); } return v.jaw[k] + (v.jaw[k + 1] - v.jaw[k]) * (f - k); };
+const talkAt = (i, t) => clamp((t - LEAD + 0.15) / 0.3) * clamp((LEAD + VO[i].dur + 0.35 - t) / 0.35);
+const blinkV = (t, at) => Math.max(0, ...at.map(a => 1 - Math.abs(t - a) / 0.09));
 
 // ---------- shots (durations follow the voice) ----------
 const MED = {z: 1.3, cx: 540, cy: 960}, CLOSE = {z: 1.8, cx: 540, cy: 900};
@@ -251,9 +266,11 @@ function frame(time) {
   const t = time - s0, cam = shot.cam;
   g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = C.bg; g.fillRect(0, 0, W, H);
   g.translate(W / 2, H / 2); g.scale(cam.z, cam.z); g.translate(-cam.cx, -cam.cy);
-  const st = Object.assign({t}, shot.st(t)), vis = viseme(shot.i, t);
-  st.mouth = vis || (t > LEAD + VO[shot.i].dur && st.after) || 'closed';
-  st.blink = blinkAt(t, [LEAD + VO[shot.i].dur + 0.2]) || blinkAt(time, [1.6, 5.3, 9.1]);
+  const st = Object.assign({t}, shot.st(t));
+  st.time = time; st.jaw = jawAt(shot.i, t); st.talk = talkAt(shot.i, t);
+  st.smile = st.after === 'smile' ? ease((t - LEAD - VO[shot.i].dur - 0.05) / 0.45) : 0;
+  st.blink = Math.max(blinkV(t, [LEAD + VO[shot.i].dur + 0.25]), blinkV(time, [1.7, 5.4, 9.3, 12.6]));
+  st.look = (st.look || 0) * ease(t / 0.6);
   chair(); irina(st); table(st);
   g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(PAPER, 0, 0);
   watermark(); bubble(t >= LEAD ? shot.say : null, t - LEAD);
