@@ -1,0 +1,11 @@
+{"voices": {
+  "anna": ["EXAVITQu4vr4xnSDxMaL", "eleven_multilingual_v2", "ru"],
+  "boss": ["JBFqnCBsd6RMkjVDRZzb", "eleven_v3", "en"]},
+ "lines": {
+  "a1": ["anna", "Первый созвон на новой работе. Весь на английском."],
+  "a2": ["anna", "План простой: камеру выключить, микрофон выключить. Кивать."],
+  "a3": ["anna", "Я мебель. Меня здесь нет."],
+  "b1": ["boss", "[friendly] And Anna... what do you think?"],
+  "a4": ["anna", "Что?"],
+  "a5": ["anna", "Он только что сказал моё имя."]
+ }}
