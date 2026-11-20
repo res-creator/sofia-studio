@@ -75,3 +75,19 @@ call off, make up, find out, hang out, pick up, calm down, give up on, let go, l
 ## TikTok
 Фрагмент: подводка + Verse 1 (~25 с) — вызов «считай» держит до конца.
 Подпись: «19 фразовых глаголов за 1:30. Сколько насчитала?» #английский #фразовыеглаголы #рэп #speakinenglish
+
+---
+## Разбор референса (трек Jubilee «В плеере грустный бит», прислала владелица)
+- Темп ~136 BPM, читка в half-time (ощущается как 68). Ниже 250 Гц — ~60% энергии, верх приглушён: тёмный, «ватный» бит.
+- Сверху бит — зацикленный грустный распевный вокальный сэмпл, без большого спетого припева.
+- Читка спокойная, разговорная, с иронией (не агрессия), ~2.6 слова/с, плотные внутренние рифмы и панчи-омонимы (блок / Блок).
+- Внутри трека разговорная вставка-скит.
+
+## Style под референс (без TikTok)
+Russian rap, sad beat, melancholic pitched vocal sample loop, half-time trap, 136 BPM, deep sub 808, dark muffled mix, soft hi-hats, male rap, calm deadpan conversational flow, dense internal rhymes, clear diction, vocals upfront and dry
+
+## Exclude
+club, EDM, dance, chant, gang vocals, autotune, heavy reverb, choir, trumpet, brass, jazz, saxophone, guitar, lo-fi, boom bap, female lead vocal
+
+## Теги в тексте
+[Verse – male rap, calm, clear diction] · [Hook – male rap, half-sung, vocal sample behind] · [Bridge – spoken skit]
