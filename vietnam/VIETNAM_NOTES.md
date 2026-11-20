@@ -19,3 +19,4 @@ PICTURE_EN_4K.mp4 (4.5 GB) and MUSIC_AND_EFFECTS.wav (487 MB) are needed on the 
   vietnam/thumbs/vq_350_month.jpg (avg pay $350, F046; vidIQ score 96), vq_really_cheap.jpg (stools + $1 coffee; 81), vq_golden_bridge.jpg (Ba Na Hills; 59).
   Recommended A/B test: vq_350_month + vq_really_cheap + thumb_coffee_vs_5m2_4k. New title: "VIETNAM: Is It Really That Cheap? | 4K Travel Documentary".
 - 2026-11-20 elegant versions (owner disliked yellow AI-style text): photos by owner's ChatGPT (no text), text added in code (Montserrat + Cormorant italic, white, no outline): vietnam/thumbs/el_vendor.jpg, el_pho.jpg, el_aerial.jpg.
+- 2026-11-20 bold versions (owner: elegant ones too plain): Anton + one red accent (stool colour), hooks from the film: bold_vendor.jpg 'CHEAP FOR WHO?', bold_pho.jpg '$350 A MONTH average pay' (F046), bold_aerial.jpg '53 YEARS of pay to buy a home' (F056).
