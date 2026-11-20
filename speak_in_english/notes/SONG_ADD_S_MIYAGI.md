@@ -6,10 +6,10 @@
 Добавь S
 
 ## Style
-Melodic Russian rap, laid-back reggae groove, warm dub bass, soft drums, offbeat keys, raspy warm male voice, melodic flow, sung hook, summer vibe, 90 BPM, clear diction, vocals upfront
+Мелодичный рэп, расслабленный регги-грув, тёплый даб-бас, мягкие барабаны, хриплый тёплый мужской вокал, распевный припев, летнее настроение, 90 BPM, чёткая дикция, голос громче музыки
 
 ## Exclude
-club, EDM, chant, gang vocals, heavy autotune, trumpet, brass, jazz, saxophone, guitar, lo-fi, boom bap, female vocal
+клубный, EDM, хор, автотюн, труба, джаз, саксофон, гитара, лоу-фай, женский вокал
 
 ## Lyrics
 [Intro – spoken, male, relaxed]
