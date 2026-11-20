@@ -20,3 +20,4 @@ PICTURE_EN_4K.mp4 (4.5 GB) and MUSIC_AND_EFFECTS.wav (487 MB) are needed on the 
   Recommended A/B test: vq_350_month + vq_really_cheap + thumb_coffee_vs_5m2_4k. New title: "VIETNAM: Is It Really That Cheap? | 4K Travel Documentary".
 - 2026-11-20 elegant versions (owner disliked yellow AI-style text): photos by owner's ChatGPT (no text), text added in code (Montserrat + Cormorant italic, white, no outline): vietnam/thumbs/el_vendor.jpg, el_pho.jpg, el_aerial.jpg.
 - 2026-11-20 bold versions (owner: elegant ones too plain): Anton + one red accent (stool colour), hooks from the film: bold_vendor.jpg 'CHEAP FOR WHO?', bold_pho.jpg '$350 A MONTH average pay' (F046), bold_aerial.jpg '53 YEARS of pay to buy a home' (F056).
+- 2026-11-20 depth-effect versions (owner's references: landmark/person in front of the country name): person cut out with rembg (u2net_human_seg) and layered over huge 'VIETNAM' + script 'Is it really cheap?': depth_vendor.jpg, depth_pho.jpg.
