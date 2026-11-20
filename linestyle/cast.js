@@ -360,7 +360,19 @@ const CAST = [
   {name: 'Врач', pose: 'down', sitPose: 'lap', sex: 'm', age: 'adult', Ht: 1090, fat: 1, skin: '#d9a07a', hair: {style: 'short', c: '#1e1a1a'}, top: {c: '#9fd8e8', type: 'scrubs'}, bottom: {type: 'pants', c: '#9fd8e8'}, shoes: '#ffffff', coat: true, steth: true, glasses: '#3b6fd1'},
 ];
 
-function G2(pts) { return pts; }
+function roundPoly(pts, r = 14) {
+  const n = pts.length, out = [];
+  for (let i = 0; i < n; i++) {
+    const a = pts[(i - 1 + n) % n], v = pts[i], b = pts[(i + 1) % n];
+    const la = Math.hypot(a[0] - v[0], a[1] - v[1]) || 1, lb = Math.hypot(b[0] - v[0], b[1] - v[1]) || 1, ra = Math.min(r, la / 2.5), rb = Math.min(r, lb / 2.5);
+    const p1 = [v[0] + (a[0] - v[0]) * ra / la, v[1] + (a[1] - v[1]) * ra / la], p2 = [v[0] + (b[0] - v[0]) * rb / lb, v[1] + (b[1] - v[1]) * rb / lb];
+    for (let k = 0; k <= 4; k++) { const u = k / 4; out.push([(1 - u) * (1 - u) * p1[0] + 2 * (1 - u) * u * v[0] + u * u * p2[0], (1 - u) * (1 - u) * p1[1] + 2 * (1 - u) * u * v[1] + u * u * p2[1]]); }
+    const L = Math.hypot(b[0] - p2[0], b[1] - p2[1]) - rb, steps = Math.floor(L / 18);
+    for (let k = 1; k < steps; k++) { const u = k / steps; const q2 = [b[0] + (v[0] - b[0]) * rb / lb, b[1] + (v[1] - b[1]) * rb / lb]; out.push([p2[0] + (q2[0] - p2[0]) * u, p2[1] + (q2[1] - p2[1]) * u]); }
+  }
+  return out;
+}
+const fillP = (pts, col, lw = LW) => fillS(roundPoly(pts), col, lw);
 function fillS(pts, col, lw = LW) { shape(pts, col, lw); shadeOver(pts); crPath(pts); g.strokeStyle = C.ink; g.lineWidth = lw; g.stroke(); }
 function tube(path_, w0, w1, col) { fillS(tubePts(path_, w0, w1), col); }
 function circ(x, y, r, col, lw = 3) { oval(x, y, r, r, col, lw); }
@@ -388,7 +400,7 @@ function person(P, X, Gy, sit) {
   // ---- back hair ----
   hairBack(P, X, fc, HH, fw, top);
   // ---- backpack behind ----
-  if (P.backpack) fillS([[X - shW * .95, shY + hh * .1], [X + shW * .95, shY + hh * .1], [X + shW, wy + hh * .4], [X - shW, wy + hh * .4]], P.backpack);
+  if (P.backpack) fillP([[X - shW * .95, shY + hh * .1], [X + shW * .95, shY + hh * .1], [X + shW, wy + hh * .4], [X - shW, wy + hh * .4]], P.backpack);
   // ---- legs ----
   for (const s of [-1, 1]) {
     const hip = [X + s * hiW * .48, hy + hh * .12];
@@ -396,18 +408,18 @@ function person(P, X, Gy, sit) {
     if (!sit) { knee = [X + s * hiW * .46, hy + (ank - hy) * .5]; foot = [X + s * hiW * .44, ank]; }
     else { knee = [X + s * hiW * .62, seatY + hh * .08]; foot = [X + s * hiW * .6, ank]; }
     const legC = P.bottom.type === 'pants' ? P.bottom.c : P.skin, w0 = P.bottom.type === 'pants' ? legW : legW * .8, w1 = P.bottom.type === 'pants' ? calf * 1.15 : calf;
-    if (sit) { tube([knee, [knee[0], (knee[1] + foot[1]) / 2], foot], w0 * .9, w1, legC); fillS([[hip[0] - s * 10, hip[1] - 20], [knee[0] - w0 * .55, knee[1] - w0 * .3], [knee[0], knee[1] + w0 * .35], [knee[0] + w0 * .55, knee[1] - w0 * .3]], legC); }
+    if (sit) { tube([knee, [knee[0], (knee[1] + foot[1]) / 2], foot], w0 * .9, w1, legC); fillP([[hip[0] - s * 10, hip[1] - 20], [knee[0] - w0 * .55, knee[1] - w0 * .3], [knee[0], knee[1] + w0 * .35], [knee[0] + w0 * .55, knee[1] - w0 * .3]], legC); }
     else tube([hip, knee, foot], w0, w1, legC);
-    if (P.socks && !sit) fillS([[foot[0] - w1 * .55, foot[1] - hh * .25], [foot[0] + w1 * .55, foot[1] - hh * .25], [foot[0] + w1 * .55, foot[1]], [foot[0] - w1 * .55, foot[1]]], P.socks, 3);
+    if (P.socks && !sit) fillP([[foot[0] - w1 * .55, foot[1] - hh * .25], [foot[0] + w1 * .55, foot[1] - hh * .25], [foot[0] + w1 * .55, foot[1]], [foot[0] - w1 * .55, foot[1]]], P.socks, 3);
     const sw = hh * (kid ? .2 : .22);
-    fillS([[foot[0] - sw * .8, foot[1] - hh * .06], [foot[0] + sw * .8, foot[1] - hh * .07], [foot[0] + s * sw * .2 + sw * 1.1, Gy - 18], [foot[0] + s * sw * .2 + sw, Gy], [foot[0] + s * sw * .2 - sw, Gy], [foot[0] + s * sw * .2 - sw * 1.1, Gy - 18]], P.shoes);
+    fillP([[foot[0] - sw * .8, foot[1] - hh * .06], [foot[0] + sw * .8, foot[1] - hh * .07], [foot[0] + s * sw * .2 + sw * 1.1, Gy - 18], [foot[0] + s * sw * .2 + sw, Gy], [foot[0] + s * sw * .2 - sw, Gy], [foot[0] + s * sw * .2 - sw * 1.1, Gy - 18]], P.shoes);
   }
   // ---- hips / crotch (pants) ----
-  if (P.bottom.type === 'pants') { const cy = sit ? seatY + hh * .1 : hy + hh * .38; fillS([[X - hiW, hy - hh * .05], [X + hiW, hy - hh * .05], [X + hiW * .98, cy], [X, cy + 4], [X - hiW * .98, cy]], P.bottom.c); line([[X, hy + hh * .05], [X, cy]], 2.5); }
+  if (P.bottom.type === 'pants') { const cy = sit ? seatY + hh * .1 : hy + hh * .38; fillP([[X - hiW * .97, hy - hh * .15], [X + hiW * .97, hy - hh * .15], [X + hiW * .95, cy], [X, cy + 4], [X - hiW * .95, cy]], P.bottom.c); line([[X, hy + hh * .05], [X, cy]], 2.5); }
   // ---- skirt / dress lower ----
   if (P.bottom.type !== 'pants') {
     const L = P.bottom.len || 1, end = sit ? seatY + hh * .35 * L : hy + hh * 1.25 * L, fl = sit ? 1.25 : 1.04 + (P.bottom.type === 'dress' ? .05 : 0);
-    const sk = [[X - waW, wy], [X + waW, wy], [X + hiW * 1.02, hy], [X + hiW * fl, end], [X + hiW * .4, end + 12], [X, end + 4], [X - hiW * .4, end + 12], [X - hiW * fl, end], [X - hiW * 1.02, hy]];
+    const sk = roundPoly([[X - waW, wy], [X + waW, wy], [X + hiW * 1.02, hy], [X + hiW * fl, end], [X + hiW * .4, end + 12], [X, end + 4], [X - hiW * .4, end + 12], [X - hiW * fl, end], [X - hiW * 1.02, hy]], 22);
     fillS(sk, P.bottom.c); if (P.bottom.dot) dots(sk, P.bottom.dot);
     line([[X - hiW * .4, hy + hh * .1], [X - hiW * .5, end]], 2.5); line([[X + hiW * .35, hy + hh * .15], [X + hiW * .45, end + 4]], 2.5);
   }
@@ -418,28 +430,28 @@ function person(P, X, Gy, sit) {
   // ---- neck + torso ----
   tube([[X, chin - HH * .15], [X, shY + hh * .12]], hh * (kid ? .32 : m ? .42 : .34) * Math.pow(fat, .6), hh * (m ? .46 : .38) * Math.pow(fat, .6), P.skin);
   const hem = P.bottom.type === 'pants' ? hy + hh * (P.coat ? 1.1 : .22) : wy + 6, vNeck = P.top.type === 'wrap' || P.top.type === 'cardigan' || P.coat ? .7 : P.top.type === 'shirt' ? .32 : .14;
-  const torso = [[X - shW, shY + hh * .5], [X - shW * .9, shY + hh * .2], [X - shW * .6, shY + hh * .05], [X - hh * .24, shY - hh * .02], [X, shY + hh * vNeck], [X + hh * .24, shY - hh * .02], [X + shW * .6, shY + hh * .05], [X + shW * .9, shY + hh * .2], [X + shW, shY + hh * .5], [X + shW * .98, shY + hh * .8], [X + waW, wy], [X + hiW * (P.bottom.type === 'pants' ? 1.02 : .98), Math.max(wy, hem - hh * .1)], [X + hiW * 1.02, hem], [X - hiW * 1.02, hem], [X - hiW * (P.bottom.type === 'pants' ? 1.02 : .98), Math.max(wy, hem - hh * .1)], [X - waW, wy], [X - shW * .98, shY + hh * .8]];
+  const torso = roundPoly([[X - shW, shY + hh * .5], [X - shW * .9, shY + hh * .2], [X - shW * .6, shY + hh * .05], [X - hh * .24, shY - hh * .02], [X, shY + hh * vNeck], [X + hh * .24, shY - hh * .02], [X + shW * .6, shY + hh * .05], [X + shW * .9, shY + hh * .2], [X + shW, shY + hh * .5], [X + shW * .98, shY + hh * .8], [X + waW, wy], ...(P.bottom.type === 'pants' ? [[X + hiW, Math.max(wy, hem - hh * .1)], [X + hiW, hem], [X - hiW, hem], [X - hiW, Math.max(wy, hem - hh * .1)]] : [[X + waW, hem], [X - waW, hem]]), [X - waW, wy], [X - shW * .98, shY + hh * .8]], 18);
   const topCol = P.coat ? '#fbfbf8' : P.top.type === 'cardigan' ? P.top.c : P.top.c;
-  if (P.top.type === 'cardigan') fillS([[X - hh * .3, shY], [X + hh * .3, shY], [X + waW * .5, hem], [X - waW * .5, hem]], P.top.under);
-  if (P.top.type === 'shirt' || P.coat) fillS([[X - hh * .3, shY - hh * .02], [X + hh * .3, shY - hh * .02], [X + hh * .2, shY + hh * .7], [X - hh * .2, shY + hh * .7]], P.coat ? P.top.c : P.top.c);
-  if (P.top.type === 'cardigan' || P.coat) { const L1 = torso.slice(0, 3).concat([[X - hh * .05, hem], [X - hiW * 1.02, hem], [X - hiW * .98, Math.max(wy, hem - hh * .1)], [X - waW, wy]]), R1 = [[X, shY + hh * vNeck], [X + hh * .26, shY - hh * .04], [X + shW * .8, shY + hh * .01], [X + shW, shY + hh * .2], [X + shW * .97, shY + hh * .55], [X + waW, wy], [X + hiW * .98, Math.max(wy, hem - hh * .1)], [X + hiW * 1.02, hem], [X + hh * .05, hem]]; fillS(L1, topCol); fillS(R1, topCol); }
+  if (P.top.type === 'cardigan') fillP([[X - hh * .3, shY], [X + hh * .3, shY], [X + waW * .5, hem], [X - waW * .5, hem]], P.top.under);
+  if (P.top.type === 'shirt' || P.coat) fillP([[X - hh * .3, shY - hh * .02], [X + hh * .3, shY - hh * .02], [X + hh * .2, shY + hh * .7], [X - hh * .2, shY + hh * .7]], P.coat ? P.top.c : P.top.c);
+  if (P.top.type === 'cardigan' || P.coat) { const bw = P.bottom.type === 'pants' ? hiW : waW; for (const s of [-1, 1]) fillP([[X, shY + hh * vNeck], [X + s * hh * .24, shY - hh * .02], [X + s * shW * .6, shY + hh * .05], [X + s * shW * .9, shY + hh * .2], [X + s * shW, shY + hh * .5], [X + s * shW * .98, shY + hh * .8], [X + s * waW, wy], [X + s * bw, Math.max(wy, hem - hh * .1)], [X + s * bw, hem], [X + s * hh * .05, hem]], topCol); }
   else { fillS(torso, topCol); if (P.top.dot) dots(torso, P.top.dot); }
   // torso details
   if (P.top.type === 'wrap') { line([[X - shW * .8, shY + hh * .2], [X + hh * .1, wy + 4]], 3); line([[X - waW, wy + 4], [X + waW, wy + 4]], 3); }
-  if (P.top.type === 'hoodie') { fillS([[X - hh * .45, shY + hh * .02], [X - hh * .5, shY - hh * .25], [X, shY - hh * .1], [X + hh * .5, shY - hh * .25], [X + hh * .45, shY + hh * .02], [X, shY + hh * .2]], P.top.c); line([[X - hh * .12, shY + hh * .2], [X - hh * .14, shY + hh * .6]], 3); line([[X + hh * .12, shY + hh * .2], [X + hh * .14, shY + hh * .6]], 3); fillS([[X - waW * .8, wy - hh * .15], [X + waW * .8, wy - hh * .15], [X + waW * .95, wy + hh * .25], [X - waW * .95, wy + hh * .25]], P.top.c, 3); }
-  if (P.top.type === 'sweater') { line([[X - hiW * 1.02, hem - 14], [X + hiW * 1.02, hem - 14]], 2.5); for (let q = 0; q < 3; q++) line([[X - waW * .6 + q * waW * .6, shY + hh * .5], [X - waW * .6 + q * waW * .6, wy - 10]], 2); }
-  if (P.top.type === 'shirt' && !P.coat) { for (let q = 0; q < 4; q++) circ(X, shY + hh * (.75 + q * .3), 4, '#ffffff', 2); if (P.top.tie) fillS([[X - 14, shY + hh * .18], [X + 14, shY + hh * .18], [X + 22, shY + hh * 1.1], [X, shY + hh * 1.25], [X - 22, shY + hh * 1.1]], P.top.tie, 3.5); }
+  if (P.top.type === 'hoodie') { fillP([[X - hh * .45, shY + hh * .02], [X - hh * .5, shY - hh * .25], [X, shY - hh * .1], [X + hh * .5, shY - hh * .25], [X + hh * .45, shY + hh * .02], [X, shY + hh * .2]], P.top.c); line([[X - hh * .12, shY + hh * .2], [X - hh * .14, shY + hh * .6]], 3); line([[X + hh * .12, shY + hh * .2], [X + hh * .14, shY + hh * .6]], 3); fillP([[X - waW * .8, wy - hh * .15], [X + waW * .8, wy - hh * .15], [X + waW * .95, wy + hh * .25], [X - waW * .95, wy + hh * .25]], P.top.c, 3); }
+  if (P.top.type === 'sweater') { { const bw = P.bottom.type === 'pants' ? hiW : waW; line([[X - bw, hem - 14], [X + bw, hem - 14]], 2.5); } for (let q = 0; q < 3; q++) line([[X - waW * .6 + q * waW * .6, shY + hh * .5], [X - waW * .6 + q * waW * .6, wy - 10]], 2); }
+  if (P.top.type === 'shirt' && !P.coat) { for (let q = 0; q < 4; q++) circ(X, shY + hh * (.75 + q * .3), 4, '#ffffff', 2); if (P.top.tie) fillP([[X - 14, shY + hh * .18], [X + 14, shY + hh * .18], [X + 22, shY + hh * 1.1], [X, shY + hh * 1.25], [X - 22, shY + hh * 1.1]], P.top.tie, 3.5); }
   if (P.belly) line([[X - waW * .9, wy + hh * .1], [X, wy + hh * .25], [X + waW * .9, wy + hh * .1]], 3);
   if (P.top.type === 'cardigan') for (let q = 0; q < 4; q++) circ(X - hh * .02, shY + hh * (.9 + q * .3), 6, '#fff6e8', 2.5);
-  if (P.top.type === 'vest') { const vh = wy + hh * .3; fillS([[X - shW * .78, shY + hh * .12], [X - hh * .2, shY + hh * .1], [X - 4, shY + hh * .9], [X - 4, vh], [X - waW * 1.02, vh], [X - waW, wy]], P.top.vest); fillS([[X + shW * .78, shY + hh * .12], [X + hh * .2, shY + hh * .1], [X + 4, shY + hh * .9], [X + 4, vh], [X + waW * 1.02, vh], [X + waW, wy]], P.top.vest); for (let q = 0; q < 3; q++) circ(X + 18, shY + hh * (1.05 + q * .28), 5, '#c9963f', 2); }
-  if (P.coat) { line([[X - hh * .26, shY - hh * .04], [X - hh * .5, shY + hh * .6], [X - hh * .05, shY + hh * .9]], 3); line([[X + hh * .26, shY - hh * .04], [X + hh * .5, shY + hh * .6], [X + hh * .05, shY + hh * .9]], 3); fillS([[X - shW * .7, wy + hh * .1], [X - shW * .25, wy + hh * .1], [X - shW * .25, wy + hh * .5], [X - shW * .7, wy + hh * .5]], '#fbfbf8', 3); line([[X + shW * .35, shY + hh * .6], [X + shW * .7, shY + hh * .6]], 3); g.fillStyle = '#3b6fd1'; g.fillRect(X + shW * .42, shY + hh * .45, 6, hh * .17); }
-  if (P.apron) { const at = shY + hh * .55; fillS([[X - waW * .62, at], [X + waW * .62, at], [X + hiW * .78, hy + hh * (sit ? .4 : .95)], [X - hiW * .78, hy + hh * (sit ? .4 : .95)]], P.apron); line([[X - waW * .75, at], [X - hh * .26, shY - hh * .03]], 6); line([[X + waW * .75, at], [X + hh * .26, shY - hh * .03]], 6);
-    fillS([[X - hh * .3, wy + hh * .15], [X + hh * .3, wy + hh * .15], [X + hh * .3, wy + hh * .45], [X - hh * .3, wy + hh * .45]], P.apron, 3); fillS([[X + waW * .1, at + hh * .15], [X + waW * .65, at + hh * .15], [X + waW * .65, at + hh * .35], [X + waW * .1, at + hh * .35]], '#ffffff', 3);
+  if (P.top.type === 'vest') { const vh = wy + hh * .3; fillP([[X - shW * .78, shY + hh * .12], [X - hh * .2, shY + hh * .1], [X - 4, shY + hh * .9], [X - 4, vh], [X - waW * 1.02, vh], [X - waW, wy]], P.top.vest); fillP([[X + shW * .78, shY + hh * .12], [X + hh * .2, shY + hh * .1], [X + 4, shY + hh * .9], [X + 4, vh], [X + waW * 1.02, vh], [X + waW, wy]], P.top.vest); for (let q = 0; q < 3; q++) circ(X + 18, shY + hh * (1.05 + q * .28), 5, '#c9963f', 2); }
+  if (P.coat) { line([[X - hh * .26, shY - hh * .04], [X - hh * .5, shY + hh * .6], [X - hh * .05, shY + hh * .9]], 3); line([[X + hh * .26, shY - hh * .04], [X + hh * .5, shY + hh * .6], [X + hh * .05, shY + hh * .9]], 3); fillP([[X - shW * .7, wy + hh * .1], [X - shW * .25, wy + hh * .1], [X - shW * .25, wy + hh * .5], [X - shW * .7, wy + hh * .5]], '#fbfbf8', 3); line([[X + shW * .35, shY + hh * .6], [X + shW * .7, shY + hh * .6]], 3); g.fillStyle = '#3b6fd1'; g.fillRect(X + shW * .42, shY + hh * .45, 6, hh * .17); }
+  if (P.apron) { const at = shY + hh * .55; fillP([[X - waW * .62, at], [X + waW * .62, at], [X + hiW * .78, hy + hh * (sit ? .4 : .95)], [X - hiW * .78, hy + hh * (sit ? .4 : .95)]], P.apron); line([[X - waW * .75, at], [X - hh * .26, shY - hh * .03]], 6); line([[X + waW * .75, at], [X + hh * .26, shY - hh * .03]], 6);
+    fillP([[X - hh * .3, wy + hh * .15], [X + hh * .3, wy + hh * .15], [X + hh * .3, wy + hh * .45], [X - hh * .3, wy + hh * .45]], P.apron, 3); fillP([[X + waW * .1, at + hh * .15], [X + waW * .65, at + hh * .15], [X + waW * .65, at + hh * .35], [X + waW * .1, at + hh * .35]], '#ffffff', 3);
     g.fillStyle = C.ink; g.font = `${Math.round(hh * .1)}px HL, HC`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('ОЛЯ', X + waW * .375, at + hh * .25); }
-  if (P.backpack) for (const s of [-1, 1]) fillS([[X + s * shW * .55, shY + hh * .02], [X + s * shW * .78, shY + hh * .05], [X + s * shW * .72, wy], [X + s * shW * .52, wy]], P.backpack, 3.5);
+  if (P.backpack) for (const s of [-1, 1]) fillP([[X + s * shW * .55, shY + hh * .02], [X + s * shW * .78, shY + hh * .05], [X + s * shW * .72, wy], [X + s * shW * .52, wy]], P.backpack, 3.5);
   if (P.beads) { const n = 11; for (let i = 0; i <= n; i++) { const u = i / n; circ(X - hh * .3 + u * hh * .6, shY + Math.sin(u * Math.PI) * hh * .3, hh * .045, P.beads, 2.5); } }
   // ---- arms in front of the body ----
-  if (sit && P.sitPose === 'mug') { const mx = X, my = wy - hh * .5; fillS([[mx - hh * .28, my - hh * .3], [mx + hh * .28, my - hh * .3], [mx + hh * .25, my + hh * .2], [mx - hh * .25, my + hh * .2]], '#ffd84a'); oval(mx, my - hh * .3, hh * .28, hh * .07, '#fff6d0', 3); }
+  if (sit && P.sitPose === 'mug') { const mx = X, my = wy - hh * .5; fillP([[mx - hh * .28, my - hh * .3], [mx + hh * .28, my - hh * .3], [mx + hh * .25, my + hh * .2], [mx - hh * .25, my + hh * .2]], '#ffd84a'); oval(mx, my - hh * .3, hh * .28, hh * .07, '#fff6d0', 3); }
   for (const a of ARMSET.filter(a => a.front)) drawArm(a);
   if (P.steth) { g.beginPath(); g.moveTo(X - hh * .3, shY); g.quadraticCurveTo(X - hh * .3, shY + hh * .9, X - hh * .05, shY + hh * 1.1); g.strokeStyle = '#2b2b33'; g.lineWidth = 7; g.stroke(); g.beginPath(); g.moveTo(X + hh * .3, shY); g.quadraticCurveTo(X + hh * .3, shY + hh * .7, X + hh * .1, shY + hh * .85); g.stroke(); circ(X - hh * .05, shY + hh * 1.12, hh * .07, '#c9ced6', 3.5); }
   // ---- head ----
