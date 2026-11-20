@@ -33,3 +33,6 @@ Saved here: india/SCRIPT_EN.csv (columns id, chapter, start_s, max_duration_s, e
 - Owner's computer: Desktop/India/FINAL_EN_4K.mp4 (7.8 GB, 53:07), mix -14.1 LUFS, TP -1.5 dBFS, all 151 fit.
 - Subtitles re-timed to the real voice: india/SUBTITLES_EN.srt (dubtools/make_srt.py). Upload kit: india/upload_kit.txt.
 - Left: owner watches the film (p061 p075 p101 p143 starts), uploads to YouTube. Intermediate WAVs in Desktop/India can be deleted after the check.
+- 2026-11-20 analytics: 267 views, 3.0K impressions, CTR 1.2%, avg 6:17 (11%), ~70% leave in the first 20–30 s, 75% from search, US only 6%.
+  Norway (poster-style cover) CTR 2.6% → switch India to poster style. New owner's ChatGPT covers:
+  india/thumbs/india_varanasi_reflection.jpg (Varanasi 27:47) and india_moon_cobra_skulls.jpg (= the cold open hooks 0:00–0:30). Test both.
