@@ -107,28 +107,25 @@ function hand(x, y, ang, mode, flip = 1, obj = null, ring = true) {
   g.restore();
 }
 
-// ---------- Ирина Павловна — rigged (head group, jaw, secondary motion) ----------
-// st: time, t, jaw 0..1 (smoothed voice), talk 0..1, smile 0..1, blink 0..1, lid, look, brow, pen 0..1, writing, push
+// ---------- Ирина Павловна — rig v4: viseme mouth, coupled face, whole neck ----------
+// st: time, t, mo {open,width,round,smile,press,bite}, talk, nod, browUp, smile, blink, lid, look, tilt, pen, writing, push
 function irina(st) {
-  const x = 540, y = 1000, j = st.jaw || 0, sm = st.smile || 0, talk = st.talk || 0, T = st.time;
+  const x = 540, y = 1000, T = st.time, talk = st.talk || 0, mo = st.mo || {open: 0, width: 1, round: 0, smile: 0, press: 0, bite: 0};
+  const sm = Math.max(st.smile || 0, mo.smile * 0.6), op = mo.open;
   const breath = Math.sin(T * 1.25);
-  // head motion: slow idle sway + talking accents + small nod that follows the jaw
-  const rot = 0.022 * Math.sin(T * 0.8) + talk * (0.018 * Math.sin(T * 2.3 + 1) + 0.012 * Math.sin(T * 3.7)) - sm * 0.03;
-  const nod = talk * (1.5 + 5 * j) + breath * 1.2;
+  const rot = 0.02 * Math.sin(T * 0.8) + (st.tilt || 0) + talk * 0.012 * Math.sin(T * 2.1 + 1) - (st.nod || 0) * 0.01;
+  const nodY = (st.nod || 0) * 7 + breath * 1.2;
   const piv = [x, y + 175];
-  const head = (fn) => { g.save(); g.translate(piv[0], piv[1] + nod); g.rotate(rot); g.translate(-piv[0], -piv[1]); fn(); g.restore(); };
+  const head = (fn) => { g.save(); g.translate(piv[0], piv[1] + nodY); g.rotate(rot); g.translate(-piv[0], -piv[1]); fn(); g.restore(); };
   const sway = (pts, k = 1) => pts.map(([px, py]) => { const w = clamp((py - (y - 60)) / 220); return [px + w * k * (4 * Math.sin(T * 1.1 + .6) - rot * 140), py]; });
 
-  // 1) back hair (part of the head group)
-  head(() => {
-    shape(sway([[x - 205, y + 160], [x - 236, y + 30], [x - 240, y - 90], [x - 205, y - 195], [x - 120, y - 262], [x, y - 284], [x + 128, y - 262], [x + 214, y - 192], [x + 244, y - 80], [x + 240, y + 40], [x + 214, y + 162], [x + 150, y + 182], [x - 150, y + 180]]), C.hairP);
-  });
+  head(() => shape(sway([[x - 205, y + 160], [x - 236, y + 30], [x - 240, y - 90], [x - 205, y - 195], [x - 120, y - 262], [x, y - 284], [x + 128, y - 262], [x + 214, y - 192], [x + 244, y - 80], [x + 240, y + 40], [x + 214, y + 162], [x + 150, y + 182], [x - 150, y + 180]]), C.hairP));
 
-  // 2) body (breathes)
+  // body: neck and chest are ONE shape (no seam line)
   g.save(); g.translate(0, breath * 1.6);
-  shape([[x - 86, y + 110], [x + 86, y + 110], [x + 102, y + 240], [x - 102, y + 240]], C.skin);
-  shape([[x - 220, y + 210], [x + 220, y + 210], [x + 255, y + 320], [x + 60, y + 455], [x, y + 475], [x - 60, y + 455], [x - 255, y + 320]], C.skin);
-  line([[x - 160, y + 250], [x - 80, y + 262]], 3); line([[x + 160, y + 250], [x + 80, y + 262]], 3);
+  shape([[x - 84, y + 100], [x + 84, y + 100], [x + 96, y + 196], [x + 222, y + 214], [x + 256, y + 320], [x + 60, y + 455], [x, y + 475], [x - 60, y + 455], [x - 256, y + 320], [x - 222, y + 214], [x - 96, y + 196]], C.skin);
+  g.strokeStyle = 'rgba(214,140,110,0.55)'; g.lineWidth = 3; g.lineCap = 'round';
+  for (const s of [-1, 1]) { g.beginPath(); g.moveTo(x + s * 150, y + 252); g.quadraticCurveTo(x + s * 110, y + 262, x + s * 82, y + 258); g.stroke(); }
   const dress = [[x - 305, 1620], [x - 292, y + 330], [x - 238, y + 272], [x - 60, y + 438], [x, y + 482], [x + 60, y + 438], [x + 238, y + 272], [x + 292, y + 330], [x + 305, 1620]];
   shape(dress, C.dress);
   g.save(); crPath(dress); g.clip(); g.fillStyle = C.dot; for (let i = 0; i < 16; i++) for (let k = 0; k < 10; k++) { g.beginPath(); g.arc(x - 300 + i * 42 + (k % 2) * 21, y + 280 + k * 40, 6, 0, 7); g.fill(); } g.restore();
@@ -140,53 +137,61 @@ function irina(st) {
   for (let i = 0; i <= 11; i++) { const u = i / 11, px = x - 150 + u * 300, py = y + 238 + Math.sin(u * Math.PI) * 92 + Math.sin(T * 1.25 + u) * 1.5; oval(px, py, 17, 17, C.bead, 3.5); oval(px - 5, py - 5, 4, 4, 'rgba(255,255,255,0.8)', 0); }
   g.restore();
 
-  // 3) face + features + front hair (head group, jaw deforms the lower face)
   head(() => {
-    const D = j * 24; // jaw drop
-    const F = [[-186, -60, 0], [-160, -150, 0], [-80, -192, 0], [80, -192, 0], [160, -150, 0], [186, -60, 0], [184, 40, .12], [146, 126, .5], [66, 178, .88], [0, 186, 1], [-66, 178, .88], [-146, 126, .5], [-184, 40, .12]];
-    shape(F.map(([dx, dy, w]) => [x + dx * (1 - w * j * .04), y + dy + w * D]), C.skin);
-    line([[x - 66, y + 202 + D * .9], [x, y + 216 + D], [x + 66, y + 202 + D * .9]], 3); // double chin follows the jaw
-    oval(x - 115, y + 76 - sm * 9, 54, 44, C.cheek, 0); oval(x + 115, y + 76 - sm * 9, 54, 44, C.cheek, 0);
-    // eyes
-    const lid = Math.max(st.lid || 0, st.blink || 0), br = (st.brow || 0) + talk * j * 6;
+    // face: only the chin region follows the jaw, softly (stays a closed outline, nothing floats outside it)
+    const D = op * 16;
+    const F = [[-186, -60, 0], [-160, -150, 0], [-80, -192, 0], [80, -192, 0], [160, -150, 0], [186, -60, 0], [184, 40, .05], [148, 124, .35], [70, 176, .8], [0, 186, 1], [-70, 176, .8], [-148, 124, .35], [-184, 40, .05]];
+    shape(F.map(([dx, dy, w]) => [x + dx * (1 - w * op * .05), y + dy + w * D]), C.skin);
+    // cheeks lift with smile and with wide vowels
+    const ch = sm * 12 + mo.width * 2 - 2;
+    oval(x - 115, y + 78 - ch, 54, 44 - sm * 4, C.cheek, 0); oval(x + 115, y + 78 - ch, 54, 44 - sm * 4, C.cheek, 0);
+    // eyes: upper lid + lower lid are the eye shape itself (lashes ride on the upper lid, lower lid rises with smile)
+    const br = (st.browUp || 0), lidBase = st.lid || 0, bl = st.blink || 0;
     for (const s of [-1, 1]) {
-      const ex = x + s * 76, ey = y + 6, almond = [[ex - 44, ey], [ex - 16, ey - 20], [ex + 18, ey - 20], [ex + 44, ey + 2], [ex + 16, ey + 22], [ex - 18, ey + 22]];
-      shape([[ex - 54, ey - 2], [ex - 22, ey - 38 - br * .5], [ex + 24, ey - 38 - br * .5], [ex + 56, ey - 2], [ex + 26, ey - 22], [ex - 22, ey - 22]], C.shadow, 3.5);
-      shape(almond, '#ffffff', 0);
-      g.save(); crPath(almond); g.clip();
-      oval(ex + (st.look || 0) * 10, ey + 4, 23, 23, C.ink, 0); oval(ex + (st.look || 0) * 10 + 8, ey - 4, 6, 6, '#ffffff', 0);
-      const lc = ey - 22 + 46 * lid; g.fillStyle = C.skin; g.beginPath(); g.moveTo(ex - 50, ey - 40); g.lineTo(ex + 50, ey - 40); g.lineTo(ex + 50, lc); g.quadraticCurveTo(ex, lc + 10 * (1 - lid), ex - 50, lc); g.fill();
-      if (sm > 0) { const ly2 = ey + 24 - sm * 12; g.beginPath(); g.moveTo(ex - 50, ey + 40); g.lineTo(ex + 50, ey + 40); g.lineTo(ex + 50, ly2); g.quadraticCurveTo(ex, ly2 - 8, ex - 50, ly2); g.fill(); }
-      g.restore();
-      if (lid < 0.95) { crPath(almond); g.strokeStyle = C.ink; g.lineWidth = 2.5; g.stroke(); }
-      const ly = ey - 21 + 44 * lid; line([[ex - 46, ey + 1], [ex - 14, ly], [ex + 18, ly], [ex + 46, ey + 2]], 5.5);
-      for (let k = 0; k < 6; k++) { const lx = ex - 40 + k * 16, a = Math.sin(k / 5 * Math.PI); line([[lx, ly - 2 - a * 6], [lx + s * 3, ly - 10 - a * 8]], 2); }
-      for (const k of [-24, -10, 6]) line([[ex + k, ey + 27 - sm * 6], [ex + k - 3, ey + 36 - sm * 6]], 2);
-      shape([[ex - 52, ey - 72 - br], [ex - 10, ey - 90 - br], [ex + 42, ey - 80 - br], [ex + 46, ey - 66 - br], [ex - 8, ey - 74 - br], [ex - 50, ey - 58 - br]].map(([px, py]) => [s > 0 ? 2 * ex - px : px, py]), C.brow, 3);
+      const ex = x + s * 76, ey = y + 6;
+      const lowY = ey + 21 - sm * 13;                          // lower lid (squints up when smiling)
+      let topY = ey - 21 + 40 * lidBase + sm * 4;               // upper lid
+      topY = topY + (lowY - 3 - topY) * bl;                     // blink closes onto the lower lid
+      const up = (k) => [[ex - 44, ey + 1], [ex - 15, topY], [ex + 17, topY], [ex + 44, ey + 2]][k];
+      const eyePath = () => { g.beginPath(); g.moveTo(ex - 44, ey + 1); g.bezierCurveTo(ex - 28, topY - 2, ex + 28, topY - 2, ex + 44, ey + 2); g.bezierCurveTo(ex + 26, lowY + 2, ex - 26, lowY + 2, ex - 44, ey + 1); g.closePath(); };
+      { const bt = Math.min(topY - 15, ey - 34 + (topY - (ey - 21)) * .9) - br * .3; shape([[ex - 54, ey - 2], [ex - 22, bt], [ex + 24, bt], [ex + 56, ey - 2], [ex + 26, topY - 2], [ex - 22, topY - 2]], C.shadow, 3.5); }
+      if (lowY - topY > 4) {
+        eyePath(); g.fillStyle = '#fff'; g.fill();
+        g.save(); eyePath(); g.clip(); oval(ex + (st.look || 0) * 10, ey + 3, 23, 23, C.ink, 0); oval(ex + (st.look || 0) * 10 + 8, ey - 5, 6, 6, '#fff', 0); g.restore();
+        g.beginPath(); g.moveTo(ex - 44, ey + 1); g.bezierCurveTo(ex - 26, lowY + 2, ex + 26, lowY + 2, ex + 44, ey + 2); g.strokeStyle = C.ink; g.lineWidth = 2.5; g.stroke();
+      }
+      g.beginPath(); g.moveTo(ex - 46, ey + 1); g.bezierCurveTo(ex - 28, topY - 2, ex + 28, topY - 2, ex + 46, ey + 2); g.strokeStyle = C.ink; g.lineWidth = 5.5; g.lineCap = 'round'; g.stroke();
+      for (let k = 0; k < 6; k++) { const u = (k + .5) / 6, lx = ex - 40 + u * 80, ly = ey + 1 + (topY - 2 - ey) * Math.sin(u * Math.PI) * .98; line([[lx, ly - 1], [lx + s * 3 + (u - .5) * 6, ly - 9 - Math.sin(u * Math.PI) * 3]], 2); }
+      for (const k of [-24, -10, 6]) { const u = (k + 44) / 88, ly = ey + 1 + (lowY + 2 - ey) * Math.sin(u * Math.PI) * .98; line([[ex + k, ly + 4], [ex + k - 3, ly + 12]], 2); }
+      const bY = -br - sm * 4 + (st.frown || 0) * (s * 0 + 6);
+      shape([[ex - 52, ey - 72 + bY], [ex - 10, ey - 90 + bY], [ex + 42, ey - 80 + bY + (st.frown || 0) * 8], [ex + 46, ey - 66 + bY + (st.frown || 0) * 8], [ex - 8, ey - 74 + bY], [ex - 50, ey - 58 + bY]].map(([px, py]) => [s > 0 ? 2 * ex - px : px, py]), C.brow, 3);
     }
-    shape([[x - 8, y + 22], [x + 8, y + 22], [x + 15, y + 72], [x, y + 80], [x - 15, y + 72]], C.nose, 0);
-    for (const s of [-1, 1]) line([[x + s * (62 + sm * 8), y + 84], [x + s * (76 + sm * 10), y + 112 + D * .3], [x + s * (72 + sm * 8), y + 138 + D * .6]], 3);
+    shape([[x - 8, y + 22], [x + 8, y + 22], [x + 15 + sm * 2, y + 72], [x, y + 80 - sm * 2], [x - 15 - sm * 2, y + 72]], C.nose, 0);
+    for (const s of [-1, 1]) line([[x + s * (62 + sm * 10 + mo.width * 2), y + 84 - sm * 4], [x + s * (76 + sm * 12 + (mo.width - 1) * 10), y + 112 + D * .3], [x + s * (72 + sm * 10 + (mo.width - 1) * 8), y + 136 + D * .55]], 3);
     oval(x + 64 + sm * 6, y + 104 - sm * 3, 5, 5, C.ink, 0);
-    // mouth: upper lip anchored to the skull, lower lip rides on the jaw
-    const my = y + 124, Dm = j * 30, w = 44 + sm * 16 - j * 8, cy = my + 2 + Dm * .3 - sm * 9;
-    const upper = [[x - w, cy], [x - w * .5, my - 14], [x, my - 8], [x + w * .5, my - 14], [x + w, cy], [x + w * .45, my + 3], [x, my + 4], [x - w * .45, my + 3]];
-    const lowerTop = [[x - w * .45, my + 4 + Dm], [x, my + 6 + Dm], [x + w * .45, my + 4 + Dm]];
+    // mouth from viseme params
+    const my = y + 124, Dm = op * 30, w = 44 * mo.width + sm * 14, rnd = mo.round, pr = mo.press;
+    const cy = my + 2 + Dm * .28 - sm * 10 + rnd * 4;           // corners
+    const upT = my - 14 - op * 3 - rnd * 3 + pr * 3;             // top of upper lip (lifts a little when speaking)
+    const upB = my + 3 - op * 2;                                 // bottom edge of upper lip
+    const loT = my + 4 + Dm, loB = my + 26 + Dm + rnd * 4 - pr * 6 - mo.bite * 8;
+    const upper = [[x - w, cy], [x - w * .5, upT], [x, upT + 6 - rnd * 2], [x + w * .5, upT], [x + w, cy], [x + w * .45, upB], [x, upB + 1], [x - w * .45, upB]];
     if (Dm > 3) {
-      const inner = [[x - w + 4, cy], [x - w * .45, my + 3], [x, my + 4], [x + w * .45, my + 3], [x + w - 4, cy], ...lowerTop.slice().reverse()];
+      const inner = [[x - w + 4 + rnd * 8, cy], [x - w * .45, upB], [x, upB + 1], [x + w * .45, upB], [x + w - 4 - rnd * 8, cy], [x + w * .45, loT], [x, loT + 2], [x - w * .45, loT]];
       shape(inner, C.mouthIn, 3);
-      g.save(); crPath(inner); g.clip(); g.fillStyle = '#ffffff'; g.fillRect(x - w, my, w * 2, Math.min(12, Dm * .45)); oval(x, my + 8 + Dm, w * .45, Dm * .38 + 2, C.tongue, 0); g.restore();
+      g.save(); crPath(inner); g.clip(); g.fillStyle = '#fff'; g.fillRect(x - w, upB - 2, w * 2, Math.min(11, Dm * .4) * (1 - rnd * .6)); oval(x, loT + 4, w * .42, Dm * .32 + 2, C.tongue, 0); g.restore();
     }
+    if (mo.bite > .3) { g.fillStyle = '#fff'; g.fillRect(x - w * .5, upB - 1, w, 8); g.strokeStyle = C.ink; g.lineWidth = 2; g.strokeRect(x - w * .5, upB - 1, w, 8); }
     shape(upper, C.lip, 3.5);
-    shape([[x - w + 2, cy + 1], ...lowerTop, [x + w - 2, cy + 1], [x + w * .4, my + 24 + Dm], [x, my + 28 + Dm], [x - w * .4, my + 24 + Dm]], C.lip, 3.5);
-    if (Dm <= 3) line([[x - w, cy], [x, my + 4], [x + w, cy]], 3);
-    if (sm > .3) { line([[x - w - 8, cy - 8], [x - w - 2, cy + 4]], 2.5); line([[x + w + 8, cy - 8], [x + w + 2, cy + 4]], 2.5); }
-    line([[x - 18, my + 46 + D], [x, my + 50 + D], [x + 18, my + 46 + D]], 2.5); // chin crease under the lip
-    // earrings swing with the head
+    shape([[x - w + 2, cy + 1], [x - w * .45, loT], [x, loT + 2], [x + w * .45, loT], [x + w - 2, cy + 1], [x + w * .4, loB], [x, loB + 3], [x - w * .4, loB]], C.lip, 3.5);
+    if (Dm <= 3) line([[x - w, cy], [x - w * .4, upB + 1], [x, upB + 2], [x + w * .4, upB + 1], [x + w, cy]], 3);
+    if (sm > .3) for (const s of [-1, 1]) line([[x + s * (w + 9), cy - 9], [x + s * (w + 3), cy + 3]], 2.5);
+    // earrings
     for (const s of [-1, 1]) {
       const ex = x + s * 206, ey = y + 150, a = 0.22 * Math.sin(T * 2.6 + s) * (0.3 + talk * .7) - rot * 2.5;
       g.save(); g.translate(ex, ey); g.rotate(a); oval(0, 0, 13, 13, C.gold, 3.5); shape([[0, 12], [14, 42], [0, 58], [-14, 42]], C.gold, 3.5); g.restore();
     }
-    // front hair: side part, locks framing the face, strands follow the flow, tips curl in
+    // front hair
     const left = sway([[x - 72, y - 262], [x - 160, y - 236], [x - 216, y - 150], [x - 226, y - 30], [x - 214, y + 92], [x - 192, y + 156], [x - 166, y + 116], [x - 172, y - 20], [x - 152, y - 120], [x - 98, y - 190]]);
     const right = sway([[x - 72, y - 262], [x + 60, y - 272], [x + 182, y - 216], [x + 236, y - 100], [x + 234, y + 40], [x + 212, y + 158], [x + 172, y + 128], [x + 178, y + 0], [x + 160, y - 82], [x + 92, y - 152], [x - 10, y - 172], [x - 60, y - 196]]);
     shape(left, C.hairP); shape(right, C.hairP);
@@ -196,9 +201,9 @@ function irina(st) {
       [[x - 84, y - 248], [x - 165, y - 205], [x - 202, y - 100], [x - 204, y + 50], [x - 188, y + 130]], [[x - 96, y - 226], [x - 150, y - 180], [x - 176, y - 60]]]) line(sway(p), 2.6);
   });
 
-  // 4) arms, shawl, notebook, hands (smooth, organic motion)
+  // arms, shawl, notebook, hands
   const pen = st.pen || 0, wn = st.writing ? [5 * Math.sin(st.t * 2.3) + 3 * Math.sin(st.t * 3.7 + 1), 3 * Math.sin(st.t * 2.9 + .5)] : [0, 0];
-  const gest = talk * (6 * Math.sin(T * 1.9) + 10 * j);
+  const gest = (st.nod || 0) * 14 + talk * 4 * Math.sin(T * 1.9);
   const L = [x - 215, y + 470 + breath * 1.6], R = [x + 30 + pen * 145 + wn[0], y + 470 - pen * 118 + wn[1] - gest * pen];
   shape(tubePts([[x - 255, y + 320], [x - 300, y + 520], L], 112, 82), C.skin); line([[x - 300, y + 505], [x - 270, y + 520]], 2.5);
   shape(tubePts([[x + 255, y + 320], [x + 302, y + 520 - pen * 20], [R[0] + 60, R[1] + 30]], 112, 82), C.skin); line([[x + 300, y + 505 - pen * 20], [x + 270, y + 520 - pen * 20]], 2.5);
@@ -246,6 +251,36 @@ const VO = TEXTS.map((_, i) => {
   return {wav, dur: pcm.length / SR, env: env.map(v => v / mx), jaw};
 });
 const LEAD = 0.25; // voice starts this long after the cut
+const VIS = {A: {open: .95, width: 1.0, round: 0, smile: .1, press: 0, bite: 0}, O: {open: .62, width: .72, round: 1, smile: 0, press: 0, bite: 0},
+  U: {open: .32, width: .6, round: 1, smile: 0, press: 0, bite: 0}, E: {open: .52, width: 1.12, round: 0, smile: .35, press: 0, bite: 0},
+  I: {open: .3, width: 1.18, round: 0, smile: .55, press: 0, bite: 0}, M: {open: 0, width: .96, round: 0, smile: 0, press: 1, bite: 0},
+  F: {open: .1, width: 1.0, round: 0, smile: 0, press: 0, bite: 1}, R: {open: .2, width: 1.0, round: 0, smile: .1, press: 0, bite: 0}, X: {open: 0, width: 1.0, round: 0, smile: 0, press: 0, bite: 0}};
+const VMAP = {'а': 'A', 'я': 'A', 'о': 'O', 'ё': 'O', 'у': 'U', 'ю': 'U', 'е': 'E', 'э': 'E', 'и': 'I', 'ы': 'I'};
+const cons = (cl) => /[мбп]/.test(cl) ? 'M' : /[фв]/.test(cl) ? 'F' : cl.length ? 'R' : null;
+VO.forEach((v, i) => {
+  const txt = TEXTS[i].toLowerCase().replace(/[^а-яё]/g, ''), syl = []; let cl = '';
+  for (const ch of txt) { if (VMAP[ch]) { syl.push({v: VMAP[ch], c: cons(cl)}); cl = ''; } else cl += ch; }
+  const e = v.env.map((q, f, a) => ((a[f - 1] ?? q) + q + (a[f + 1] ?? q)) / 3);
+  let pk = []; for (let f = 1; f < e.length - 1; f++) if (e[f] >= e[f - 1] && e[f] > e[f + 1] && e[f] > 0.2) { if (pk.length && f - pk[pk.length - 1] < 3) { if (e[f] > e[pk[pk.length - 1]]) pk[pk.length - 1] = f; } else pk.push(f); }
+  if (pk.length > syl.length) pk = pk.map(f => [f, e[f]]).sort((a, b) => b[1] - a[1]).slice(0, syl.length).map(q => q[0]).sort((a, b) => a - b);
+  const keys = [[0, syl[0] && syl[0].c === 'M' ? 'M' : 'X']];
+  pk.forEach((f, k) => {
+    const sy = syl[Math.min(syl.length - 1, Math.floor(k * syl.length / pk.length))];
+    if (k > 0) { let lo = pk[k - 1], mn = 9; for (let q = pk[k - 1]; q < f; q++) if (e[q] < mn) { mn = e[q]; lo = q; } if (sy.c && mn < .55 && f - pk[k - 1] > 3) keys.push([lo, sy.c]); }
+    keys.push([f, sy.v]);
+  });
+  keys.push([Math.min(e.length - 1, pk[pk.length - 1] + 5), 'X'], [e.length + 6, 'X']);
+  v.keys = keys; v.esm = e;
+  const hs = pk.map(f => e[f]).sort((a, b) => b - a), thr = hs[Math.floor(hs.length * .3)] || 1; v.stress = pk.filter(f => e[f] >= thr);
+});
+const moAt = (i, t) => {
+  const v = VO[i], f = (t - LEAD) * FPS; if (f <= 0) return VIS.X;
+  let k = 0; while (k < v.keys.length - 2 && v.keys[k + 1][0] <= f) k++;
+  const [f0, a] = v.keys[k], [f1, b] = v.keys[Math.min(k + 1, v.keys.length - 1)], u = f1 > f0 ? ease((f - f0) / (f1 - f0)) : 1, A = VIS[a], B = VIS[b], o = {};
+  for (const key in A) o[key] = A[key] + (B[key] - A[key]) * u;
+  const env = v.esm[Math.min(v.esm.length - 1, Math.max(0, Math.round(f)))] || 0; o.open *= clamp(0.5 + 0.7 * env, 0, 1.1); return o;
+};
+const bellSum = (i, t) => VO[i].stress.reduce((a, f) => a + Math.exp(-Math.pow((t - LEAD - f / FPS - 0.04) / 0.13, 2)), 0);
 const jawAt = (i, t) => { const v = VO[i], f = (t - LEAD) * FPS, k = Math.floor(f); if (k < 0) return 0; if (k >= v.jaw.length - 1) { const last = v.jaw[v.jaw.length - 1] || 0; return last * clamp(1 - (f - v.jaw.length) / 4); } return v.jaw[k] + (v.jaw[k + 1] - v.jaw[k]) * (f - k); };
 const talkAt = (i, t) => clamp((t - LEAD + 0.15) / 0.3) * clamp((LEAD + VO[i].dur + 0.35 - t) / 0.35);
 const blinkV = (t, at) => Math.max(0, ...at.map(a => 1 - Math.abs(t - a) / 0.09));
@@ -253,10 +288,10 @@ const blinkV = (t, at) => Math.max(0, ...at.map(a => 1 - Math.abs(t - a) / 0.09)
 // ---------- shots (durations follow the voice) ----------
 const MED = {z: 1.3, cx: 540, cy: 960}, CLOSE = {z: 1.8, cx: 540, cy: 900};
 const SHOTS = [
-  {i: 0, tail: 0.6, cam: MED, st: t => ({writing: true, look: 0.2, lid: .35}), say: ['Я ОЧЕНЬ ВНИМАТЕЛЬНО', 'ВАС ВЫСЛУШАЛА'], sfx: []},
-  {i: 1, tail: 0.5, cam: MED, st: t => ({pen: ease(t / 0.5), look: 0, lid: .2, brow: 10}), say: ['И КАК СПЕЦИАЛИСТ', 'МОГУ СКАЗАТЬ…'], sfx: []},
-  {i: 2, tail: 0.9, cam: CLOSE, st: t => ({pen: 1, look: 0, lid: .3, after: 'smile'}), say: ['…НАШЕ ВРЕМЯ ВЫШЛО.', 'С ВАС ПЯТЬ ТЫСЯЧ'], sfx: [['end', 'coin', 0.7]]},
-  {i: 3, tail: 1.5, cam: MED, st: t => ({pen: 1, push: ease((t - 0.2) / 0.6), look: 0.3, lid: .35, after: 'smile'}), say: ['САЛФЕТКИ — ОТДЕЛЬНО'], sfx: [['end', 'sad', 0.6]]},
+  {i: 0, tail: 0.6, cam: MED, st: t => ({writing: true, look: 0.2, lid: .35, tilt: .025}), say: ['Я ОЧЕНЬ ВНИМАТЕЛЬНО', 'ВАС ВЫСЛУШАЛА'], sfx: []},
+  {i: 1, tail: 0.5, cam: MED, st: t => ({pen: ease(t / 0.5), look: 0, lid: .12, brow: 8, tilt: -.015}), say: ['И КАК СПЕЦИАЛИСТ', 'МОГУ СКАЗАТЬ…'], sfx: []},
+  {i: 2, tail: 0.9, cam: CLOSE, st: t => ({pen: 1, look: 0, lid: .25, after: 'smile', tilt: .03}), say: ['…НАШЕ ВРЕМЯ ВЫШЛО.', 'С ВАС ПЯТЬ ТЫСЯЧ'], sfx: [['end', 'coin', 0.7]]},
+  {i: 3, tail: 1.5, cam: MED, st: t => ({pen: 1, push: ease((t - 0.2) / 0.6), look: 0.3, lid: .3, after: 'smile', tilt: -.03, brow: 4}), say: ['САЛФЕТКИ — ОТДЕЛЬНО'], sfx: [['end', 'sad', 0.6]]},
 ];
 SHOTS.forEach(s => { s.dur = LEAD + VO[s.i].dur + s.tail; });
 const TOTAL = SHOTS.reduce((a, s) => a + s.dur, 0);
@@ -267,9 +302,11 @@ function frame(time) {
   g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = C.bg; g.fillRect(0, 0, W, H);
   g.translate(W / 2, H / 2); g.scale(cam.z, cam.z); g.translate(-cam.cx, -cam.cy);
   const st = Object.assign({t}, shot.st(t));
-  st.time = time; st.jaw = jawAt(shot.i, t); st.talk = talkAt(shot.i, t);
+  st.time = time; st.talk = talkAt(shot.i, t); st.mo = moAt(shot.i, t); const bump = Math.min(1, bellSum(shot.i, t));
+  st.nod = bump * st.talk; st.browUp = (st.brow || 0) + 7 * bump;
   st.smile = st.after === 'smile' ? ease((t - LEAD - VO[shot.i].dur - 0.05) / 0.45) : 0;
   st.blink = Math.max(blinkV(t, [LEAD + VO[shot.i].dur + 0.25]), blinkV(time, [1.7, 5.4, 9.3, 12.6]));
+  st.tilt = (st.tilt || 0) * ease(t / 0.6);
   st.look = (st.look || 0) * ease(t / 0.6);
   chair(); irina(st); table(st);
   g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(PAPER, 0, 0);
