@@ -56,4 +56,4 @@ I had to wait with an empty plate — great!
 ## Песня 3. «Make up» (рифма -ake) — мирятся
 Слова: Проснуться? Wake! · Испечь? Bake! · Торт? Cake! · Ошибка? Mistake! · Фальшивый? Fake! · Помириться? Make up!
 Фраза: «I woke up at eight to bake you a cake — sorry, my mistake, let's make up, no fake!»
-Концовка: «Торт сама пекла?» — «Fake.» — «В смысле?» — «Из магазина.»
+Концовка: «Торт сам пёк?» — «Fake.» — «В смысле?» — «Из магазина.»
