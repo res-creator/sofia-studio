@@ -126,11 +126,23 @@ function irina(st) {
   shape([[x - 84, y + 100], [x + 84, y + 100], [x + 96, y + 196], [x + 222, y + 214], [x + 256, y + 320], [x + 60, y + 455], [x, y + 475], [x - 60, y + 455], [x - 256, y + 320], [x - 222, y + 214], [x - 96, y + 196]], C.skin);
   g.strokeStyle = 'rgba(214,140,110,0.55)'; g.lineWidth = 3; g.lineCap = 'round';
   for (const s of [-1, 1]) { g.beginPath(); g.moveTo(x + s * 150, y + 252); g.quadraticCurveTo(x + s * 110, y + 262, x + s * 82, y + 258); g.stroke(); }
-  const dress = [[x - 305, 1620], [x - 292, y + 330], [x - 238, y + 272], [x - 60, y + 438], [x, y + 482], [x + 60, y + 438], [x + 238, y + 272], [x + 292, y + 330], [x + 305, 1620]];
+  const top = [[x - 292, y + 330], [x - 238, y + 272], [x - 60, y + 438], [x, y + 482], [x + 60, y + 438], [x + 238, y + 272], [x + 292, y + 330]];
+  if (st.full) { // legs + shoes (behind the skirt), weight shifts a little
+    const sw = Math.sin(T * 0.7) * 4;
+    for (const s of [-1, 1]) {
+      shape(tubePts([[x + s * 92, y + 1000], [x + s * 104 + sw, y + 1190], [x + s * 86 + sw, y + 1342]], 128, 64), C.skin);
+      line([[x + s * 70 + sw, y + 1120], [x + s * 82 + sw, y + 1150]], 2.5);
+      shape([[x + s * 50 + sw, y + 1336], [x + s * 122 + sw, y + 1330], [x + s * 150 + sw, y + 1362], [x + s * 140 + sw, y + 1384], [x + s * 40 + sw, y + 1386], [x + s * 36 + sw, y + 1356]], '#d8304a');
+      line([[x + s * 58 + sw, y + 1344], [x + s * 120 + sw, y + 1340]], 3);
+    }
+  }
+  const dress = st.full ? [[x - 300, y + 1060], [x - 330, y + 840], [x - 312, y + 620], ...top, [x + 312, y + 620], [x + 330, y + 840], [x + 300, y + 1060], [x + 150, y + 1080], [x, y + 1068], [x - 150, y + 1082]]
+                        : [[x - 305, 1620], ...top, [x + 305, 1620]];
   shape(dress, C.dress);
-  g.save(); crPath(dress); g.clip(); g.fillStyle = C.dot; for (let i = 0; i < 16; i++) for (let k = 0; k < 10; k++) { g.beginPath(); g.arc(x - 300 + i * 42 + (k % 2) * 21, y + 280 + k * 40, 6, 0, 7); g.fill(); } g.restore();
+  g.save(); crPath(dress); g.clip(); g.fillStyle = C.dot; for (let i = 0; i < 18; i++) for (let k = 0; k < 22; k++) { g.beginPath(); g.arc(x - 340 + i * 42 + (k % 2) * 21, y + 280 + k * 40, 6, 0, 7); g.fill(); } g.restore();
   crPath(dress); g.strokeStyle = C.ink; g.lineWidth = LW; g.stroke();
-  line([[x - 238, y + 272], [x + 40, y + 520], [x + 150, y + 600]], 3.5);
+  line(st.full ? [[x - 238, y + 272], [x + 40, y + 520], [x + 170, y + 700], [x + 230, y + 1068]] : [[x - 238, y + 272], [x + 40, y + 520], [x + 150, y + 600]], 3.5);
+  if (st.full) { line([[x + 60, y + 640], [x + 120, y + 900], [x + 110, y + 1066]], 2.5); line([[x - 80, y + 700], [x - 120, y + 1070]], 2.5); }
   line([[x - 2, y + 418], [x + 2, y + 470]], 3);
   line([[x - 255, y + 420], [x - 200, y + 525], [x - 105, y + 548], [x - 14, y + 505]], 3.5);
   line([[x + 255, y + 420], [x + 200, y + 525], [x + 105, y + 548], [x + 14, y + 505]], 3.5);
@@ -222,6 +234,26 @@ function irina(st) {
   hand(R[0], R[1], Math.PI + 0.35 - pen * 0.4 + wn[0] * 0.004, 'hold', -1, () => { shape([[16, -140], [30, -140], [30, 60], [23, 80], [16, 60]], C.pen, 3); oval(23, -140, 8, 6, '#e8e8f2', 2.5); }, false);
 }
 
+// ---------- full-body set ----------
+function officeFull(st) {
+  shape([[-700, 2200], [1800, 2200], [1800, 3000], [-700, 3000]], '#d9a36d'); line([[-700, 2236], [1800, 2236]], 3);
+  oval(540, 2392, 330, 46, '#c98ad8', 0);
+  // diploma on the wall
+  shape([[930, 820], [1250, 812], [1256, 1060], [936, 1068]], '#c9963f'); shape([[952, 840], [1232, 834], [1236, 1042], [956, 1048]], '#fffaf0', 3);
+  g.font = '34px HL, HC'; g.fillStyle = C.ink; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('ДИПЛОМ', 1094, 900); g.font = '24px HL, HC'; g.fillText('психолог', 1094, 945); g.fillText('(онлайн-курс, 2 недели)', 1094, 985);
+  // ficus
+  shape([[-130, 2080], [130, 2080], [100, 2390], [-100, 2390]], '#ff7a59'); line([[-130, 2120], [130, 2120]], 3);
+  line([[0, 2080], [10, 1700], [-10, 1420]], 7);
+  for (let k = 0; k < 11; k++) { const a = -2.6 + k * .42, cx = Math.cos(a) * (120 + (k % 3) * 40), cy = 1640 + Math.sin(a) * 260 + k * 22;
+    g.save(); g.translate(cx, cy); g.rotate(a + 1.57 + Math.sin(st.time * .9 + k) * .03); shape([[0, -70], [34, -10], [0, 70], [-34, -10]], k % 2 ? '#2fae5a' : '#3cc46a', 3.5); line([[0, -60], [0, 60]], 2); g.restore(); }
+  // side table with tissues + water
+  shape([[1010, 1880], [1330, 1880], [1330, 1920], [1010, 1920]], '#b9814c'); line([[1050, 1920], [1040, 2380]], 9); line([[1290, 1920], [1300, 2380]], 9);
+  shape([[1060, 1780], [1130, 1780], [1124, 1880], [1066, 1880]], C.glass); oval(1095, 1780, 35, 9, 'rgba(230,245,255,0.8)', 3);
+  const tx = 1230 - (st.push || 0) * 110, ty = 1790;
+  shape([[tx - 80, ty], [tx + 80, ty], [tx + 80, ty + 90], [tx - 80, ty + 90]], C.tissueBox); oval(tx, ty + 5, 40, 9, '#5aa9d6', 3);
+  shape([[tx - 24, ty + 3], [tx - 30, ty - 46], [tx - 2, ty - 30], [tx + 16, ty - 60], [tx + 26, ty + 3]], '#ffffff', 3.5);
+}
+
 // ---------- bubble + watermark ----------
 function bubble(text, k) {
   if (!text) return;
@@ -286,13 +318,15 @@ const talkAt = (i, t) => clamp((t - LEAD + 0.15) / 0.3) * clamp((LEAD + VO[i].du
 const blinkV = (t, at) => Math.max(0, ...at.map(a => 1 - Math.abs(t - a) / 0.09));
 
 // ---------- shots (durations follow the voice) ----------
-const MED = {z: 1.3, cx: 540, cy: 960}, CLOSE = {z: 1.8, cx: 540, cy: 900};
+const MED = {z: 1.3, cx: 540, cy: 960}, CLOSE = {z: 1.8, cx: 540, cy: 900}, FULLC = {z: 0.62, cx: 540, cy: 1280};
+const FULL = process.env.MODE === 'full';
 const SHOTS = [
   {i: 0, tail: 0.6, cam: MED, st: t => ({writing: true, look: 0.2, lid: .35, tilt: .025}), say: ['Я ОЧЕНЬ ВНИМАТЕЛЬНО', 'ВАС ВЫСЛУШАЛА'], sfx: []},
   {i: 1, tail: 0.5, cam: MED, st: t => ({pen: ease(t / 0.5), look: 0, lid: .12, brow: 8, tilt: -.015}), say: ['И КАК СПЕЦИАЛИСТ', 'МОГУ СКАЗАТЬ…'], sfx: []},
   {i: 2, tail: 0.9, cam: CLOSE, st: t => ({pen: 1, look: 0, lid: .25, after: 'smile', tilt: .03}), say: ['…НАШЕ ВРЕМЯ ВЫШЛО.', 'С ВАС ПЯТЬ ТЫСЯЧ'], sfx: [['end', 'coin', 0.7]]},
   {i: 3, tail: 1.5, cam: MED, st: t => ({pen: 1, push: ease((t - 0.2) / 0.6), look: 0.3, lid: .3, after: 'smile', tilt: -.03, brow: 4}), say: ['САЛФЕТКИ — ОТДЕЛЬНО'], sfx: [['end', 'sad', 0.6]]},
 ];
+if (FULL) SHOTS.forEach(s => { if (s.cam === MED) s.cam = FULLC; });
 SHOTS.forEach(s => { s.dur = LEAD + VO[s.i].dur + s.tail; });
 const TOTAL = SHOTS.reduce((a, s) => a + s.dur, 0);
 
@@ -308,15 +342,15 @@ function frame(time) {
   st.blink = Math.max(blinkV(t, [LEAD + VO[shot.i].dur + 0.25]), blinkV(time, [1.7, 5.4, 9.3, 12.6]));
   st.tilt = (st.tilt || 0) * ease(t / 0.6);
   st.look = (st.look || 0) * ease(t / 0.6);
-  chair(); irina(st); table(st);
+  if (FULL && shot.cam === FULLC) { st.full = true; officeFull(st); irina(st); } else if (FULL) { st.full = true; irina(st); } else { chair(); irina(st); table(st); }
   g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(PAPER, 0, 0);
   watermark(); bubble(t >= LEAD ? shot.say : null, t - LEAD);
 }
 
 const cv = createCanvas(W, H); g = cv.getContext('2d');
 const outDir = path.join(D, 'out'); fs.mkdirSync(outDir, {recursive: true});
-if (process.argv[2]) { for (const s of process.argv[2].split(',').map(Number)) { frame(s); fs.writeFileSync(path.join(outDir, `still_${s}.png`), cv.toBuffer('image/png')); } process.exit(0); }
-const out = path.join(outDir, 'psiholog.mp4'), silent = path.join(tmp, 'silent.mp4');
+if (process.argv[2]) { for (const s of process.argv[2].split(',').map(Number)) { frame(s); fs.writeFileSync(path.join(outDir, `${FULL ? 'full_' : ''}still_${s}.png`), cv.toBuffer('image/png')); } process.exit(0); }
+const out = path.join(outDir, FULL ? 'psiholog_full.mp4' : 'psiholog.mp4'), silent = path.join(tmp, 'silent.mp4');
 const ff = spawn('ffmpeg', ['-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', `${W}x${H}`, '-r', FPS, '-i', '-', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', silent], {stdio: ['pipe', 'inherit', 'inherit']});
 (async () => {
   for (let i = 0; i < Math.round(TOTAL * FPS); i++) { frame(i / FPS); const b = Buffer.from(g.getImageData(0, 0, W, H).data.buffer); if (!ff.stdin.write(b)) await new Promise(r => ff.stdin.once('drain', r)); }
