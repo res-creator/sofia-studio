@@ -46,9 +46,9 @@ LINES.forEach(([who, text], i) => {
 const TOTAL = tt - GAP + TAIL;
 
 // ---------------- palette (muted, warm, watercolor) ----------------
-const C = {ink: '#2b2220', wall: '#eedfbf', wallS: '#e2cfa6', floor: '#b98a63', floorD: '#9b6e4b', fridge: '#f3f1ea', fridgeIn: '#e3f0f2', night: '#2d3f66', nightD: '#1f2d4d',
-  skin: '#f6cdb0', skinS: '#e7ad8e', blush: 'rgba(240,120,120,0.45)', hair: '#6fc27a', hairS: '#4f9f5c', hoodie: '#f28c3a', hoodieS: '#d26e22', tights: '#d9493f',
-  kskin: '#ecc19c', kskinS: '#d39f7b', beanie: '#8659c9', beanieS: '#6a41a8', khood: '#8798b3', khoodS: '#6d7e9a', table: '#c9925a', tableS: '#a7733f', mustard: '#efc23d', lamp: '#f2d27a'};
+const C = {ink: '#251c1a', wall: '#ffdc8a', wallS: '#f5c35e', floor: '#cf7a3c', floorD: '#a85a22', fridge: '#ffffff', fridgeIn: '#d6f6ff', night: '#26409a', nightD: '#182a6e',
+  skin: '#ffc9a1', skinS: '#f39d74', blush: 'rgba(255,80,110,0.5)', hair: '#2fd35a', hairS: '#13a33a', hoodie: '#ff7417', hoodieS: '#de5300', tights: '#ff3434',
+  kskin: '#ffc292', kskinS: '#eb955f', beanie: '#8b35ff', beanieS: '#661bd8', khood: '#3f8bf0', khoodS: '#2466c9', table: '#ee9437', tableS: '#c46d18', mustard: '#ffcc12', lamp: '#ffd83a'};
 
 // ---------------- noise / geometry ----------------
 function rng(seed) { let s = (seed * 2654435761) >>> 0 || 1; return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296); }
@@ -75,11 +75,11 @@ function tube(path_, w0, w1 = w0) { // thick limb outline with round caps
 // ---------------- textures ----------------
 function mk() { const c = createCanvas(W, H); return [c, c.getContext('2d')]; }
 const WASH = (() => { const [c, x] = mk(), r = rng(11); for (let i = 0; i < 260; i++) { const px = r() * W, py = r() * H, rad = 40 + r() * 180, gr = x.createRadialGradient(px, py, 0, px, py, rad), dark = r() < .55;
-  gr.addColorStop(0, dark ? 'rgba(120,70,40,0.05)' : 'rgba(255,255,245,0.14)'); gr.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = gr; x.fillRect(px - rad, py - rad, rad * 2, rad * 2); }
+  gr.addColorStop(0, dark ? 'rgba(120,60,20,0.04)' : 'rgba(255,255,245,0.06)'); gr.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = gr; x.fillRect(px - rad, py - rad, rad * 2, rad * 2); }
   // fine pigment edges
   for (let i = 0; i < 4000; i++) { x.fillStyle = r() < .5 ? 'rgba(90,60,30,0.035)' : 'rgba(255,255,255,0.06)'; x.fillRect(r() * W, r() * H, 1 + r() * 3, 1 + r() * 3); } return c; })();
 const PAPER = (() => { const [c, x] = mk(), r = rng(12), im = x.createImageData(W, H);
-  for (let i = 0; i < im.data.length; i += 4) { const v = 128 + (r() - .5) * 90; im.data[i] = v; im.data[i + 1] = v * .98; im.data[i + 2] = v * .93; im.data[i + 3] = 16; } x.putImageData(im, 0, 0);
+  for (let i = 0; i < im.data.length; i += 4) { const v = 128 + (r() - .5) * 90; im.data[i] = v; im.data[i + 1] = v * .98; im.data[i + 2] = v * .93; im.data[i + 3] = 10; } x.putImageData(im, 0, 0);
   x.strokeStyle = 'rgba(120,100,70,0.05)'; for (let i = 0; i < 1800; i++) { const px = r() * W, py = r() * H; x.lineWidth = .8; x.beginPath(); x.moveTo(px, py); x.lineTo(px + (r() - .5) * 30, py + (r() - .5) * 30); x.stroke(); } return c; })();
 
 // ---------------- hand-drawn primitives ----------------
@@ -104,7 +104,7 @@ function draw(shapePts, o = {}) {
     const r = rng(seed + 7), off = o.offset ?? 4, fp = wobble(base, closed, seed + 3, o.amp ?? 2.2).map(([x, y]) => [x + (r() - .5) * off, y + (r() - .5) * off]);
     pathOf(fp); g.fillStyle = o.fill; g.fill();
     g.save(); pathOf(fp); g.clip();
-    if (o.shade) { const [sx, sy] = o.shadeDir || [16, 12]; g.fillStyle = o.shade; g.globalAlpha = .55; g.fillRect(-2000, -2000, 6000, 6000); g.globalAlpha = 1; g.translate(-sx, -sy); pathOf(fp); g.fillStyle = o.fill; g.fill(); g.translate(sx, sy); }
+    if (o.shade) { const [sx, sy] = o.shadeDir || [16, 12]; g.fillStyle = o.shade; g.globalAlpha = .5; g.fillRect(-2000, -2000, 6000, 6000); g.globalAlpha = 1; g.translate(-sx, -sy); pathOf(fp); g.fillStyle = o.fill; g.fill(); g.translate(sx, sy); }
     const m = g.getTransform(); g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = o.washA ?? 1; g.drawImage(WASH, 0, 0); g.globalAlpha = 1; g.setTransform(m);
     g.restore();
   }
@@ -152,11 +152,11 @@ function kitchen(time) {
   for (const [x, y, c, s] of [[230, 600, '#7fc4e8', 70], [290, 640, '#f28c3a', 71]]) draw(potato(x, y, 20, 20, s), {fill: c, seed: s, lw: 4}); // magnets
 }
 function room(time) {
-  draw(rr(-300, -300, W + 600, 1870, 1), {fill: '#cfe1d6', line: false, seed: 3, amp: 0, offset: 0});
+  draw(rr(-300, -300, W + 600, 1870, 1), {fill: '#8fe6c3', line: false, seed: 3, amp: 0, offset: 0});
   for (let x = -40, k = 0; x < W + 60; x += 110, k++) draw([[x, -50], [x + 6, 1560]], {closed: false, lw: 14, seed: 120 + k, amp: 3, col: 'rgba(255,255,245,0.35)'});
   spot(560, 300, 520, 420, 'rgba(255,230,160,0.35)');
   stroke([[560, -40], [562, 170]], 5, 21);
-  draw([[470, 270], [650, 270], [600, 170], [520, 170]], {fill: '#f08f7a', shade: '#d06c58', seed: 22, lw: 7});
+  draw([[470, 270], [650, 270], [600, 170], [520, 170]], {fill: '#ff6a52', shade: '#e04a32', seed: 22, lw: 7});
   draw(potato(560, 282, 34, 16, 23), {fill: '#fff6cf', seed: 24, lw: 5});
   // window (night)
   draw(rr(600, 470, 380, 340, 14), {fill: C.night, shade: C.nightD, shadeDir: [-20, -14], seed: 131, lw: 9});
@@ -168,24 +168,24 @@ function room(time) {
   hand('БЕГИ!', 204, 470, 78, '#e0503f', 'center', -0.04);
   draw(potato(204, 620, 46, 46, 137), {fill: '#7fc4e8', seed: 138, lw: 5}); stroke([[170, 700], [204, 650], [240, 700]], 6, 139); stroke([[150, 640], [204, 610], [260, 660]], 6, 140);
   // plant
-  draw([[90, 1420], [230, 1420], [212, 1560], [108, 1560]], {fill: '#d9774c', shade: '#b85d36', seed: 141, lw: 7});
-  for (let k = 0; k < 6; k++) { const a = -2.4 + k * .32; draw(potato(160 + Math.cos(a) * 90, 1360 + Math.sin(a) * 110, 30, 70, 142 + k, .1).map(([px, py]) => [px, py]), {fill: '#6fae62', shade: '#4f8d47', seed: 150 + k, lw: 6}); }
+  draw([[90, 1420], [230, 1420], [212, 1560], [108, 1560]], {fill: '#f2643a', shade: '#cc4718', seed: 141, lw: 7});
+  for (let k = 0; k < 6; k++) { const a = -2.4 + k * .32; draw(potato(160 + Math.cos(a) * 90, 1360 + Math.sin(a) * 110, 30, 70, 142 + k, .1).map(([px, py]) => [px, py]), {fill: '#3cc24a', shade: '#1e9a30', seed: 150 + k, lw: 6}); }
   // floor + rug
   draw([[-300, 1560], [W + 300, 1556], [W + 300, 2300], [-300, 2300]], {fill: C.floor, shade: C.floorD, shadeDir: [0, -40], seed: 51, lw: 8});
   for (let x = -200, k = 0; x < W + 200; x += 130, k++) draw([[x, 1575], [x - 90, 2000]], {closed: false, lw: 5, seed: 200 + k, amp: 2, col: 'rgba(110,70,40,0.6)'});
-  draw(potato(470, 1730, 330, 90, 160, .05), {fill: '#e98fa6', shade: '#cf6f88', shadeDir: [0, -16], seed: 161, lw: 7});
+  draw(potato(470, 1730, 330, 90, 160, .05), {fill: '#ff6f9f', shade: '#e44d80', shadeDir: [0, -16], seed: 161, lw: 7});
 }
 function sofaBack() {
-  draw([[600, 1010], [1130, 1000], [1130, 1320], [604, 1330]], {fill: '#d9a441', shade: '#b9852a', seed: 170, lw: 8});
+  draw([[600, 1010], [1130, 1000], [1130, 1320], [604, 1330]], {fill: '#ffb21f', shade: '#e08a00', seed: 170, lw: 8});
   stroke([[866, 1030], [868, 1300]], 5, 171);
 }
 function sofaFront() {
-  draw([[590, 1300], [1130, 1294], [1130, 1450], [594, 1456]], {fill: '#e3b04f', shade: '#c28e30', shadeDir: [0, -18], seed: 172, lw: 8});
-  draw([[560, 1170], [660, 1166], [664, 1460], [566, 1466]], {fill: '#d9a441', shade: '#b9852a', seed: 173, lw: 8});
+  draw([[590, 1300], [1130, 1294], [1130, 1450], [594, 1456]], {fill: '#ffbf33', shade: '#e39500', shadeDir: [0, -18], seed: 172, lw: 8});
+  draw([[560, 1170], [660, 1166], [664, 1460], [566, 1466]], {fill: '#ffb21f', shade: '#e08a00', seed: 173, lw: 8});
   stroke([[610, 1456], [606, 1530]], 14, 174); stroke([[1100, 1450], [1104, 1530]], 14, 175);
 }
 function bowl() {
-  draw([[900, 1278], [1040, 1278], [1016, 1340], [924, 1340]], {fill: '#5aa0d8', shade: '#3f80b6', seed: 180, lw: 6});
+  draw([[900, 1278], [1040, 1278], [1016, 1340], [924, 1340]], {fill: '#2fa2ff', shade: '#1b7fd8', seed: 180, lw: 6});
   for (let k = 0; k < 5; k++) draw(potato(925 + k * 25, 1272 - (k % 2) * 10, 22, 14, 181 + k, .3), {fill: '#f2c45a', seed: 186 + k, lw: 4});
 }
 function table() {
@@ -202,9 +202,24 @@ function cup() {
   draw(potato(x + 55, y, 56, 12, 93), {fill: '#f0eee8', seed: 94, lw: 5});
 }
 
+// ---------------- hands with fingers ----------------
+// type: open | fist | point | hold ; ang = direction the hand points (from elbow to wrist)
+function handF(x, y, ang, type, skin, skinS, seed, flip = 1) {
+  const dir = [Math.cos(ang), Math.sin(ang)], nrm = [-dir[1] * flip, dir[0] * flip];
+  const at = (f, s) => [x + dir[0] * f + nrm[0] * s, y + dir[1] * f + nrm[1] * s];
+  const finger = (s, len, bend, w, k) => { const a = at(14, s), m = at(14 + len * .55, s + bend * .5), b = at(14 + len, s + bend); draw(tube([a, m, b], w, w * .85), {fill: skin, seed: seed + k, lw: 4.5, amp: 1}); };
+  const curl = (s, k) => draw(potato(...at(24, s), 11, 10, seed + 20 + k, .15), {fill: skin, shade: skinS, seed: seed + 30 + k, lw: 4.5, amp: 1});
+  if (type === 'open') { finger(-15, 34, -8, 15, 1); finger(-4, 40, -2, 15, 2); finger(7, 38, 3, 15, 3); finger(17, 30, 8, 13, 4); }
+  else if (type === 'point') { curl(-12, 1); curl(0, 2); curl(11, 3); finger(-16, 46, -4, 15, 4); }
+  else { curl(-15, 1); curl(-4, 2); curl(7, 3); curl(17, 4); }
+  draw(potato(x, y, 27, 24, seed + 40, .12).map(([px, py]) => [x + (px - x) * Math.abs(dir[0]) + (px - x) * .2, py]), {fill: skin, shade: skinS, seed: seed + 41, lw: 5.5, amp: 1.2});
+  const th = type === 'open' || type === 'point' ? [at(2, -26), at(18, -40)] : [at(4, -24), at(20, -18)];
+  draw(tube([at(-4, -16), ...th], 15, 13), {fill: skin, seed: seed + 42, lw: 4.5, amp: 1});
+}
+
 // ---------------- Шуша ----------------
 function shusha(st) {
-  const x = 470, by = (st.talk ? Math.sin(st.time * 18) * 4 : 0) + Math.sin(st.time * 2) * 3, sh = st.shake ? Math.sin(st.time * 45) * 6 : 0;
+  const x = 470, by = Math.sin(st.time * 1.7) * 3 + st.talkW * Math.sin(st.time * 4.2) * 2.5, sh = 0;
   // legs (striped tights) + shoes
   for (const s of [-1, 1]) {
     const lx = x + s * 42, leg = tube([[lx, 1490], [lx + s * 4, 1690]], 38, 32);
@@ -227,9 +242,13 @@ function shusha(st) {
     cross: [[[x - 70, 1335], [x + 62, 1300]], [[x + 70, 1335], [x - 62, 1300]]],
     sneakers: [[[x - 170, 1330], [x - 80, 1290]], [[x + 170, 1330], [x + 80, 1290]]],
   };
-  const P = poses[st.pose || 'down'], shoulders = [[x - 92, 1225 + by], [x + 92, 1225 + by]];
-  for (let k = 0; k < 2; k++) { const [e, h] = P[k]; const hh = [h[0] + sh, h[1] + by]; draw(tube([shoulders[k], [e[0] + sh, e[1] + by], hh], 40, 32), {fill: C.hoodie, shade: C.hoodieS, seed: 320 + k, lw: 7}); draw(potato(hh[0], hh[1], 27, 25, 330 + k, .15), {fill: C.skin, shade: C.skinS, seed: 332 + k, lw: 6}); }
-  if (st.pose === 'sneakers') for (const s of [-1, 1]) { const cx = x + s * 78, cy = 1262 + by; draw([[cx - 70, cy + 30], [cx - 66, cy - 20], [cx - 10, cy - 30], [cx + 30, cy - 4], [cx + 76, cy + 6], [cx + 74, cy + 34]], {fill: '#ff8fc0', shade: '#e0679f', seed: 380 + s, lw: 6}); stroke([[cx - 72, cy + 34], [cx + 76, cy + 36]], 9, 382 + s); for (let k = 0; k < 3; k++) stroke([[cx - 40 + k * 16, cy - 18], [cx - 32 + k * 16, cy - 4]], 4, 384 + k); }
+  const A = poses[st.prevPose || 'down'], B = poses[st.pose || 'down'], kk = st.poseK ?? 1, mix = (p, q) => [p[0] + (q[0] - p[0]) * kk, p[1] + (q[1] - p[1]) * kk];
+  const P = [0, 1].map(k => [mix(A[k][0], B[k][0]), mix(A[k][1], B[k][1])]), shoulders = [[x - 92, 1225 + by], [x + 92, 1225 + by]];
+  const HT = {down: ['open', 'open'], hips: ['fist', 'fist'], up: ['open', 'open'], point: ['point', 'open'], cross: ['fist', 'fist'], sneakers: ['hold', 'hold']};
+  for (let k = 0; k < 2; k++) { const [e, h] = P[k]; const ee = [e[0], e[1] + by], hh = [h[0], h[1] + by]; draw(tube([shoulders[k], ee, hh], 40, 32), {fill: C.hoodie, shade: C.hoodieS, seed: 320 + k, lw: 7});
+    if (st.pose === 'sneakers' && kk > .6) continue;
+    handF(hh[0], hh[1], Math.atan2(hh[1] - ee[1], hh[0] - ee[0]), (kk < .5 ? HT[st.prevPose || 'down'] : HT[st.pose || 'down'])[k], C.skin, C.skinS, 600 + k * 50, k ? -1 : 1); }
+  if (st.pose === 'sneakers' && kk > .6) for (const s of [-1, 1]) { const cx = x + s * 78, cy = 1262 + by; draw([[cx - 70, cy + 30], [cx - 66, cy - 20], [cx - 10, cy - 30], [cx + 30, cy - 4], [cx + 76, cy + 6], [cx + 74, cy + 34]], {fill: '#ff8fc0', shade: '#e0679f', seed: 380 + s, lw: 6}); stroke([[cx - 72, cy + 34], [cx + 76, cy + 36]], 9, 382 + s); for (let k = 0; k < 3; k++) stroke([[cx - 40 + k * 16, cy - 18], [cx - 32 + k * 16, cy - 4]], 4, 384 + k); }
   // neck
   draw(tube([[x + sh, 1110 + by], [x + sh, 1200 + by]], 48, 54), {fill: C.skinS, seed: 340, lw: 6});
   const hx = x + sh, hy = 975 + by;
@@ -294,9 +313,9 @@ function keshaArms(st) {
   if (st.item === 'chip') draw(potato(h[0] + 22, h[1] - 40, 30, 22, 453, .25), {fill: '#f2c45a', shade: '#d9a43a', seed: 454, lw: 5});
   else { stroke([[h[0] - 10, h[1]], [h[0] + 50, h[1] - 92]], 10, 451); stroke([[h[0] - 10, h[1]], [h[0] + 50, h[1] - 92]], 5, 452);
   draw(potato(h[0] + 56, h[1] - 106, 16, 24, 453), {fill: '#dfe3ea', seed: 454, lw: 5}); }
-  draw(potato(h[0], h[1], 28, 26, 455, .15), {fill: C.kskin, shade: C.kskinS, seed: 456, lw: 6});
+  handF(h[0], h[1], -1.2 - sp * 0.4, 'hold', C.kskin, C.kskinS, 700, -1);
   draw(tube([[x + 110, 1130 + by], [x + 172, 1232], [x + 82, 1250]], 42, 36), {fill: C.khood, shade: C.khoodS, seed: 457, lw: 7});
-  draw(potato(x + 80, 1250, 28, 24, 458, .15), {fill: C.kskin, shade: C.kskinS, seed: 459, lw: 6});
+  handF(x + 80, 1250, Math.PI + 0.25, 'open', C.kskin, C.kskinS, 760, -1);
 }
 
 // ---------------- direction ----------------
@@ -309,18 +328,21 @@ function frame(time) {
   g.setTransform(1, 0, 0, 1, 0, 0); g.translate(W / 2, H / 2); g.scale(cam.z, cam.z); g.translate(-cam.cx, -cam.cy);
   const mouth = (who) => { if (!cur || cur.who !== who) return 0; return cur.env[Math.floor((time - cur.t0) * FPS)] || 0; };
   const blinkAt = (seed) => ((time + seed) % 3.7) < 0.12;
-  const lastOf = (who) => { let r = null, t0 = 0; for (const c of CUE) if (c.who === who && time >= c.t0) { r = DIR[c.i]; t0 = c.t0; } return [r || {}, t0]; };
-  const [sd] = lastOf('sh'), [kd, kt0] = lastOf('ke');
+  const lastOf = (who) => { let r = null, t0 = 0, pr = null; for (const c of CUE) if (c.who === who && time >= c.t0) { pr = r; r = DIR[c.i]; t0 = c.t0; } return [r || {}, t0, pr || {}]; };
+  const [sd, st0, sprev] = lastOf('sh'), [kd, kt0, kprev] = lastOf('ke');
+  const talkW = (who) => (cur && cur.who === who ? clamp((time - cur.t0) / 0.25) * clamp((cur.t1 - time) / 0.25) : 0);
   (EP.set === 'room' ? room : kitchen)(time);
-  const kst = {time, by: (cur && cur.who === 'ke' ? Math.sin(time * 14) * 3 : 0) + Math.sin(time * 1.6 + 1) * 3, mouth: mouth('ke'), blink: blinkAt(1.3), spoon: kd.spoon ? clamp((time - kt0) * 3) : 0, happy: kd.happy, surprised: kd.surprised, item: EP.item};
+  const kst = {time, by: Math.sin(time * 1.5 + 1) * 3 + talkW('ke') * Math.sin(time * 3.6) * 2, mouth: mouth('ke'), blink: blinkAt(1.3), spoon: lerpE(kprev.spoon || 0, kd.spoon || 0, (time - kt0) / 0.5), happy: kd.happy, surprised: kd.surprised, item: EP.item};
   if (EP.set === 'room') { sofaBack(); keshaBody(kst); sofaFront(); keshaArms(kst); bowl(); } else { keshaBody(kst); table(); cup(); keshaArms(kst); }
-  shusha({time, talk: cur && cur.who === 'sh', mouth: mouth('sh'), blink: blinkAt(0), pose: sd.pose, angry: sd.angry, flat: sd.flat, shake: sd.shake && cur && cur.who === 'sh', look: sd.look});
+  shusha({time, talkW: talkW('sh'), mouth: mouth('sh'), blink: blinkAt(0), pose: sd.pose, prevPose: sprev.pose, poseK: ease((time - st0) / 0.45), angry: sd.angry, flat: sd.flat, look: sd.look});
   g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(PAPER, 0, 0);
-  const v = g.createRadialGradient(W / 2, H / 2, 500, W / 2, H / 2, 1200); v.addColorStop(0, 'rgba(40,20,10,0)'); v.addColorStop(1, 'rgba(40,20,10,0.22)'); g.fillStyle = v; g.fillRect(0, 0, W, H);
+  const v = g.createRadialGradient(W / 2, H / 2, 500, W / 2, H / 2, 1200); v.addColorStop(0, 'rgba(40,20,10,0)'); v.addColorStop(1, 'rgba(40,20,10,0.12)'); g.fillStyle = v; g.fillRect(0, 0, W, H);
   if (cur) subtitle(cur.text, cur.who);
   if (time < CUE[0].t0 + 1.2) { g.globalAlpha = clamp(CUE[0].t0 + 1.2 - time); hand(EP.title, W / 2, 200, 70, '#fffaf0'); g.globalAlpha = 1; }
 }
 const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+const ease = (v) => { v = clamp(v); return v * v * (3 - 2 * v); };
+const lerpE = (a, b, k) => a + (b - a) * ease(k);
 function wrap(text, maxW) { const words = text.split(' '), out = []; let l = ''; for (const w of words) { const t = l ? l + ' ' + w : w; if (g.measureText(t).width > maxW && l) { out.push(l); l = w; } else l = t; } out.push(l); return out; }
 function subtitle(text, who) {
   g.font = `66px ${FONT}`; g.textAlign = 'center'; g.textBaseline = 'middle';
@@ -339,7 +361,6 @@ const ff = spawn('ffmpeg', ['-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', '
   ff.stdin.end(); await new Promise(r => ff.on('close', r));
   const args = ['-y', '-v', 'error', '-i', silent, '-stream_loop', '-1', '-i', path.join(D, `sfx/${EP.amb}.mp3`)];
   const ev = CUE.map(c => [c.wav, c.t0, 1.0]);
-  let prev = 'wide'; CUE.forEach(c => { const cm = DIR[c.i].cam; if (cm !== prev) ev.push([path.join(D, 'sfx/whoosh.mp3'), Math.max(0, c.t0 - 0.12), 0.25]); prev = cm; });
   if (EP.end) ev.push([path.join(D, `sfx/${EP.end}.mp3`), CUE[CUE.length - 1].t1 + 0.2, 0.8]);
   for (const [li, n, dt, v] of EP.sfx || []) ev.push([path.join(D, `sfx/${n}.mp3`), CUE[li].t0 + dt, v]);
   ev.forEach(([f]) => args.push('-i', f));
