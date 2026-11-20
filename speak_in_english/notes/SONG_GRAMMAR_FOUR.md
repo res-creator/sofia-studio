@@ -13,7 +13,7 @@ Present Simple. Одно правило. Одна буква.
 
 [Verse 1 – female rap, playful]
 I wake up at six — he wakes up at noon,
-I cook us a dinner — he eats with a spoon.
+I cook us dinner — he eats with a spoon.
 I clean the whole flat — he cleans... his phone,
 I pay all the bills — he plays on his own.
 Я — всё сама, а он — только с буквой «S»,
