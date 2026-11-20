@@ -1,7 +1,7 @@
 // «Шуша и Кеша: Йогурт» v2 — HAND-DRAWN look.
 // Every shape: wobbly irregular outline drawn as tapered brush strokes (thick middle, thin ends,
 // small gaps/overshoots), fill slightly off-register, watercolor wash + paper, soft one-side shading.
-// node shusha/render_hand.js [stills t1,t2]  -> shusha/out/yogurt_v2.mp4
+// node shusha/render_hand.js <yogurt|sport> [stills t1,t2]  -> shusha/out/<ep>.mp4
 const {createCanvas, GlobalFonts} = require('@napi-rs/canvas');
 const {spawn, spawnSync} = require('child_process');
 const fs = require('fs'), path = require('path');
@@ -12,13 +12,27 @@ GlobalFonts.registerFromPath(F + '/neucha/files/neucha-latin-400-normal.woff2', 
 const FONT = 'HL, HC';
 let g;
 
-// ---------------- audio prep (same voices as v1) ----------------
-const LINES = JSON.parse(fs.readFileSync(path.join(D, 'voice/lines.json'), 'utf8'));
+// ---------------- episodes ----------------
+const EPID = process.argv[2] || 'yogurt', STILLS = process.argv[3];
+const EPS = {
+  yogurt: {voice: 'voice', out: 'yogurt_v2.mp4', set: 'kitchen', title: 'Шуша и Кеша: «Йогурт»', amb: 'hum', end: 'clink',
+    dir: [{pose: 'point', angry: true, look: 'left', cam: 'wide'}, {cam: 'wide'}, {pose: 'hips', angry: true, look: 'right', cam: 'sh'}, {cam: 'ke'},
+      {pose: 'up', angry: true, shake: true, look: 'right', cam: 'sh'}, {spoon: 1, cam: 'ke'}, {pose: 'cross', angry: true, look: 'right', cam: 'wide'},
+      {surprised: true, cam: 'ke'}, {pose: 'point', look: 'left', cam: 'wide'}, {spoon: 1, happy: true, cam: 'ke'}]},
+  sport: {voice: 'voice_sport', out: 'sport.mp4', set: 'room', title: 'Шуша и Кеша: «С понедельника»', amb: 'tvhum', item: 'chip',
+    sfx: [[3, 'crunch', 0.1, 0.9], [7, 'crunch', 0.2, 0.8], [9, 'rain', 0.6, 0.7]],
+    dir: [{pose: 'up', look: 'right', cam: 'wide'}, {spoon: 1, cam: 'ke'}, {pose: 'hips', look: 'right', cam: 'sh'}, {spoon: 1, cam: 'ke'},
+      {pose: 'point', look: 'right', cam: 'wide'}, {cam: 'ke'}, {pose: 'sneakers', look: 'right', cam: 'sh'}, {spoon: 1, cam: 'ke'},
+      {pose: 'hips', angry: true, look: 'right', cam: 'wide'}, {cam: 'ke', surprised: true}, {pose: 'cross', look: 'right', flat: true, cam: 'sh'}]},
+};
+const EP = EPS[EPID];
+// ---------------- audio prep ----------------
+const LINES = JSON.parse(fs.readFileSync(path.join(D, EP.voice, 'lines.json'), 'utf8'));
 const GAP = 0.22, START = 0.5, TAIL = 1.6;
-const tmp = path.join(D, 'out', 'tmp2'); fs.mkdirSync(tmp, {recursive: true});
+const tmp = path.join(D, 'out', 'tmp_' + EPID); fs.mkdirSync(tmp, {recursive: true});
 let tt = START; const CUE = [];
 LINES.forEach(([who, text], i) => {
-  const raw = path.join(D, 'voice', `raw_${String(i).padStart(2, '0')}_${who}.mp3`), wav = path.join(tmp, `l${i}.wav`);
+  const raw = path.join(D, EP.voice, `raw_${String(i).padStart(2, '0')}_${who}.mp3`), wav = path.join(tmp, `l${i}.wav`);
   const trim = 'silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse';
   const fx = who === 'sh' ? `${trim},asetrate=${SR}*1.09,aresample=${SR},atempo=1.04` : `${trim},atempo=0.97`;
   spawnSync('ffmpeg', ['-y', '-v', 'error', '-i', raw, '-af', fx + ',loudnorm=I=-16:TP=-1.5', '-ac', '1', '-ar', String(SR), '-c:a', 'pcm_s16le', wav]);
@@ -137,6 +151,43 @@ function kitchen(time) {
   stroke([[34, 748], [334, 752]], 8, 68); stroke([[62, 600], [64, 700]], 12, 69);
   for (const [x, y, c, s] of [[230, 600, '#7fc4e8', 70], [290, 640, '#f28c3a', 71]]) draw(potato(x, y, 20, 20, s), {fill: c, seed: s, lw: 4}); // magnets
 }
+function room(time) {
+  draw(rr(-300, -300, W + 600, 1870, 1), {fill: '#cfe1d6', line: false, seed: 3, amp: 0, offset: 0});
+  for (let x = -40, k = 0; x < W + 60; x += 110, k++) draw([[x, -50], [x + 6, 1560]], {closed: false, lw: 14, seed: 120 + k, amp: 3, col: 'rgba(255,255,245,0.35)'});
+  spot(560, 300, 520, 420, 'rgba(255,230,160,0.35)');
+  stroke([[560, -40], [562, 170]], 5, 21);
+  draw([[470, 270], [650, 270], [600, 170], [520, 170]], {fill: '#f08f7a', shade: '#d06c58', seed: 22, lw: 7});
+  draw(potato(560, 282, 34, 16, 23), {fill: '#fff6cf', seed: 24, lw: 5});
+  // window (night)
+  draw(rr(600, 470, 380, 340, 14), {fill: C.night, shade: C.nightD, shadeDir: [-20, -14], seed: 131, lw: 9});
+  draw(potato(900, 540, 30, 30, 132), {fill: '#f7e7a6', seed: 133, lw: 5});
+  g.fillStyle = '#f5d66a'; for (const [x, y] of [[640, 700], [700, 660], [760, 720], [880, 690], [930, 740]]) g.fillRect(x, y, 15, 19);
+  stroke([[790, 476], [792, 806]], 8, 134); stroke([[606, 640], [976, 636]], 8, 135);
+  // poster «БЕГИ!»
+  draw([[70, 400], [330, 392], [338, 760], [76, 768]], {fill: '#fff2c9', shade: '#ead79c', seed: 136, lw: 7});
+  hand('БЕГИ!', 204, 470, 78, '#e0503f', 'center', -0.04);
+  draw(potato(204, 620, 46, 46, 137), {fill: '#7fc4e8', seed: 138, lw: 5}); stroke([[170, 700], [204, 650], [240, 700]], 6, 139); stroke([[150, 640], [204, 610], [260, 660]], 6, 140);
+  // plant
+  draw([[90, 1420], [230, 1420], [212, 1560], [108, 1560]], {fill: '#d9774c', shade: '#b85d36', seed: 141, lw: 7});
+  for (let k = 0; k < 6; k++) { const a = -2.4 + k * .32; draw(potato(160 + Math.cos(a) * 90, 1360 + Math.sin(a) * 110, 30, 70, 142 + k, .1).map(([px, py]) => [px, py]), {fill: '#6fae62', shade: '#4f8d47', seed: 150 + k, lw: 6}); }
+  // floor + rug
+  draw([[-300, 1560], [W + 300, 1556], [W + 300, 2300], [-300, 2300]], {fill: C.floor, shade: C.floorD, shadeDir: [0, -40], seed: 51, lw: 8});
+  for (let x = -200, k = 0; x < W + 200; x += 130, k++) draw([[x, 1575], [x - 90, 2000]], {closed: false, lw: 5, seed: 200 + k, amp: 2, col: 'rgba(110,70,40,0.6)'});
+  draw(potato(470, 1730, 330, 90, 160, .05), {fill: '#e98fa6', shade: '#cf6f88', shadeDir: [0, -16], seed: 161, lw: 7});
+}
+function sofaBack() {
+  draw([[600, 1010], [1130, 1000], [1130, 1320], [604, 1330]], {fill: '#d9a441', shade: '#b9852a', seed: 170, lw: 8});
+  stroke([[866, 1030], [868, 1300]], 5, 171);
+}
+function sofaFront() {
+  draw([[590, 1300], [1130, 1294], [1130, 1450], [594, 1456]], {fill: '#e3b04f', shade: '#c28e30', shadeDir: [0, -18], seed: 172, lw: 8});
+  draw([[560, 1170], [660, 1166], [664, 1460], [566, 1466]], {fill: '#d9a441', shade: '#b9852a', seed: 173, lw: 8});
+  stroke([[610, 1456], [606, 1530]], 14, 174); stroke([[1100, 1450], [1104, 1530]], 14, 175);
+}
+function bowl() {
+  draw([[900, 1278], [1040, 1278], [1016, 1340], [924, 1340]], {fill: '#5aa0d8', shade: '#3f80b6', seed: 180, lw: 6});
+  for (let k = 0; k < 5; k++) draw(potato(925 + k * 25, 1272 - (k % 2) * 10, 22, 14, 181 + k, .3), {fill: '#f2c45a', seed: 186 + k, lw: 4});
+}
 function table() {
   draw([[606, 1250], [1120, 1246], [1124, 1300], [610, 1304]], {fill: C.table, shade: C.tableS, shadeDir: [0, -14], seed: 81, lw: 8});
   draw([[636, 1300], [1100, 1300], [1096, 1424], [640, 1420]], {fill: C.tableS, seed: 82, lw: 8});
@@ -174,9 +225,11 @@ function shusha(st) {
     up: [[[x - 172, 1110], [x - 150, 960]], [[x + 172, 1110], [x + 150, 960]]],
     point: [[[x - 190, 1205], [x - 282, 1132]], [[x + 125, 1340], [x + 120, 1450]]],
     cross: [[[x - 70, 1335], [x + 62, 1300]], [[x + 70, 1335], [x - 62, 1300]]],
+    sneakers: [[[x - 170, 1330], [x - 80, 1290]], [[x + 170, 1330], [x + 80, 1290]]],
   };
   const P = poses[st.pose || 'down'], shoulders = [[x - 92, 1225 + by], [x + 92, 1225 + by]];
   for (let k = 0; k < 2; k++) { const [e, h] = P[k]; const hh = [h[0] + sh, h[1] + by]; draw(tube([shoulders[k], [e[0] + sh, e[1] + by], hh], 40, 32), {fill: C.hoodie, shade: C.hoodieS, seed: 320 + k, lw: 7}); draw(potato(hh[0], hh[1], 27, 25, 330 + k, .15), {fill: C.skin, shade: C.skinS, seed: 332 + k, lw: 6}); }
+  if (st.pose === 'sneakers') for (const s of [-1, 1]) { const cx = x + s * 78, cy = 1262 + by; draw([[cx - 70, cy + 30], [cx - 66, cy - 20], [cx - 10, cy - 30], [cx + 30, cy - 4], [cx + 76, cy + 6], [cx + 74, cy + 34]], {fill: '#ff8fc0', shade: '#e0679f', seed: 380 + s, lw: 6}); stroke([[cx - 72, cy + 34], [cx + 76, cy + 36]], 9, 382 + s); for (let k = 0; k < 3; k++) stroke([[cx - 40 + k * 16, cy - 18], [cx - 32 + k * 16, cy - 4]], 4, 384 + k); }
   // neck
   draw(tube([[x + sh, 1110 + by], [x + sh, 1200 + by]], 48, 54), {fill: C.skinS, seed: 340, lw: 6});
   const hx = x + sh, hy = 975 + by;
@@ -193,6 +246,7 @@ function shusha(st) {
   for (const s of [-1, 1]) {
     const ex = hx + s * 62, ey = hy + 8;
     if (st.blink) { curve([ex - 30, ey], [ex, ey + 8], [ex + 30, ey], 7, 360 + s); continue; }
+    if (st.flat) { draw(potato(ex, ey + 6, 30, 30, 362 + s, .1), {fill: '#fffdf8', seed: 364 + s, lw: 6}); draw(potato(ex, ey + 14, 9, 10, 366 + s), {fill: C.ink, line: false, seed: 1}); draw([[ex - 34, ey - 26], [ex + 34, ey - 26], [ex + 34, ey + 6], [ex - 34, ey + 6]], {fill: C.skin, line: false, seed: 2, amp: 0, offset: 0}); stroke([[ex - 32, ey + 6], [ex + 32, ey + 6]], 7, 370 + s); continue; }
     draw(potato(ex, ey, 33, 42, 362 + s, .1), {fill: '#fffdf8', seed: 364 + s, lw: 6});
     const px = st.look === 'left' ? -12 : st.look === 'right' ? 12 : 0;
     draw(potato(ex + px, ey + 7, 11, 13, 366 + s), {fill: C.ink, seed: 368 + s, lw: 0, line: false});
@@ -237,26 +291,16 @@ function keshaBody(st) {
 function keshaArms(st) {
   const x = 870, by = st.by, sp = st.spoon || 0, h = [x - 150, 1230 - sp * 230];
   draw(tube([[x - 110, 1130 + by], [x - 190, 1240 - sp * 60], h], 42, 36), {fill: C.khood, shade: C.khoodS, seed: 450, lw: 7});
-  stroke([[h[0] - 10, h[1]], [h[0] + 50, h[1] - 92]], 10, 451); stroke([[h[0] - 10, h[1]], [h[0] + 50, h[1] - 92]], 5, 452);
-  draw(potato(h[0] + 56, h[1] - 106, 16, 24, 453), {fill: '#dfe3ea', seed: 454, lw: 5});
+  if (st.item === 'chip') draw(potato(h[0] + 22, h[1] - 40, 30, 22, 453, .25), {fill: '#f2c45a', shade: '#d9a43a', seed: 454, lw: 5});
+  else { stroke([[h[0] - 10, h[1]], [h[0] + 50, h[1] - 92]], 10, 451); stroke([[h[0] - 10, h[1]], [h[0] + 50, h[1] - 92]], 5, 452);
+  draw(potato(h[0] + 56, h[1] - 106, 16, 24, 453), {fill: '#dfe3ea', seed: 454, lw: 5}); }
   draw(potato(h[0], h[1], 28, 26, 455, .15), {fill: C.kskin, shade: C.kskinS, seed: 456, lw: 6});
   draw(tube([[x + 110, 1130 + by], [x + 172, 1232], [x + 82, 1250]], 42, 36), {fill: C.khood, shade: C.khoodS, seed: 457, lw: 7});
   draw(potato(x + 80, 1250, 28, 24, 458, .15), {fill: C.kskin, shade: C.kskinS, seed: 459, lw: 6});
 }
 
 // ---------------- direction ----------------
-const DIR = [
-  {pose: 'point', angry: true, look: 'left', cam: 'wide'},
-  {cam: 'wide'},
-  {pose: 'hips', angry: true, look: 'right', cam: 'sh'},
-  {cam: 'ke'},
-  {pose: 'up', angry: true, shake: true, look: 'right', cam: 'sh'},
-  {spoon: 1, cam: 'ke'},
-  {pose: 'cross', angry: true, look: 'right', cam: 'wide'},
-  {surprised: true, cam: 'ke'},
-  {pose: 'point', look: 'left', cam: 'wide'},
-  {spoon: 1, happy: true, cam: 'ke'},
-];
+const DIR = EP.dir;
 const CAMS = {wide: {z: 1, cx: W / 2, cy: H / 2}, sh: {z: 1.6, cx: 470, cy: 1060}, ke: {z: 1.6, cx: 860, cy: 1060}};
 
 function frame(time) {
@@ -267,14 +311,14 @@ function frame(time) {
   const blinkAt = (seed) => ((time + seed) % 3.7) < 0.12;
   const lastOf = (who) => { let r = null, t0 = 0; for (const c of CUE) if (c.who === who && time >= c.t0) { r = DIR[c.i]; t0 = c.t0; } return [r || {}, t0]; };
   const [sd] = lastOf('sh'), [kd, kt0] = lastOf('ke');
-  kitchen(time);
-  const kst = {time, by: (cur && cur.who === 'ke' ? Math.sin(time * 14) * 3 : 0) + Math.sin(time * 1.6 + 1) * 3, mouth: mouth('ke'), blink: blinkAt(1.3), spoon: kd.spoon ? clamp((time - kt0) * 3) : 0, happy: kd.happy, surprised: kd.surprised};
-  keshaBody(kst); table(); cup(); keshaArms(kst);
-  shusha({time, talk: cur && cur.who === 'sh', mouth: mouth('sh'), blink: blinkAt(0), pose: sd.pose, angry: sd.angry, shake: sd.shake && cur && cur.who === 'sh', look: sd.look});
+  (EP.set === 'room' ? room : kitchen)(time);
+  const kst = {time, by: (cur && cur.who === 'ke' ? Math.sin(time * 14) * 3 : 0) + Math.sin(time * 1.6 + 1) * 3, mouth: mouth('ke'), blink: blinkAt(1.3), spoon: kd.spoon ? clamp((time - kt0) * 3) : 0, happy: kd.happy, surprised: kd.surprised, item: EP.item};
+  if (EP.set === 'room') { sofaBack(); keshaBody(kst); sofaFront(); keshaArms(kst); bowl(); } else { keshaBody(kst); table(); cup(); keshaArms(kst); }
+  shusha({time, talk: cur && cur.who === 'sh', mouth: mouth('sh'), blink: blinkAt(0), pose: sd.pose, angry: sd.angry, flat: sd.flat, shake: sd.shake && cur && cur.who === 'sh', look: sd.look});
   g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(PAPER, 0, 0);
   const v = g.createRadialGradient(W / 2, H / 2, 500, W / 2, H / 2, 1200); v.addColorStop(0, 'rgba(40,20,10,0)'); v.addColorStop(1, 'rgba(40,20,10,0.22)'); g.fillStyle = v; g.fillRect(0, 0, W, H);
   if (cur) subtitle(cur.text, cur.who);
-  if (time < CUE[0].t0 + 1.2) { g.globalAlpha = clamp(CUE[0].t0 + 1.2 - time); hand('Шуша и Кеша: «Йогурт»', W / 2, 200, 78, '#fffaf0'); g.globalAlpha = 1; }
+  if (time < CUE[0].t0 + 1.2) { g.globalAlpha = clamp(CUE[0].t0 + 1.2 - time); hand(EP.title, W / 2, 200, 70, '#fffaf0'); g.globalAlpha = 1; }
 }
 const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
 function wrap(text, maxW) { const words = text.split(' '), out = []; let l = ''; for (const w of words) { const t = l ? l + ' ' + w : w; if (g.measureText(t).width > maxW && l) { out.push(l); l = w; } else l = t; } out.push(l); return out; }
@@ -286,17 +330,18 @@ function subtitle(text, who) {
 
 // ---------------- output ----------------
 const cv = createCanvas(W, H); g = cv.getContext('2d');
-const outDir = path.join(D, 'out'), out = path.join(outDir, 'yogurt_v2.mp4');
-if (process.argv[2]) { for (const s of process.argv[2].split(',').map(Number)) { frame(s); fs.writeFileSync(path.join(outDir, `still_${s}.png`), cv.toBuffer('image/png')); } process.exit(0); }
+const outDir = path.join(D, 'out'), out = path.join(outDir, EP.out);
+if (STILLS) { for (const s of STILLS.split(',').map(Number)) { frame(s); fs.writeFileSync(path.join(outDir, `still_${s}.png`), cv.toBuffer('image/png')); } process.exit(0); }
 const silent = path.join(tmp, 'silent.mp4');
 const ff = spawn('ffmpeg', ['-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', `${W}x${H}`, '-r', FPS, '-i', '-', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', silent], {stdio: ['pipe', 'inherit', 'inherit']});
 (async () => {
   for (let i = 0; i < Math.round(TOTAL * FPS); i++) { frame(i / FPS); const b = Buffer.from(g.getImageData(0, 0, W, H).data.buffer); if (!ff.stdin.write(b)) await new Promise(r => ff.stdin.once('drain', r)); }
   ff.stdin.end(); await new Promise(r => ff.on('close', r));
-  const args = ['-y', '-v', 'error', '-i', silent, '-stream_loop', '-1', '-i', path.join(D, 'sfx/hum.mp3')];
+  const args = ['-y', '-v', 'error', '-i', silent, '-stream_loop', '-1', '-i', path.join(D, `sfx/${EP.amb}.mp3`)];
   const ev = CUE.map(c => [c.wav, c.t0, 1.0]);
   let prev = 'wide'; CUE.forEach(c => { const cm = DIR[c.i].cam; if (cm !== prev) ev.push([path.join(D, 'sfx/whoosh.mp3'), Math.max(0, c.t0 - 0.12), 0.25]); prev = cm; });
-  ev.push([path.join(D, 'sfx/clink.mp3'), CUE[CUE.length - 1].t1 + 0.2, 0.8]);
+  if (EP.end) ev.push([path.join(D, `sfx/${EP.end}.mp3`), CUE[CUE.length - 1].t1 + 0.2, 0.8]);
+  for (const [li, n, dt, v] of EP.sfx || []) ev.push([path.join(D, `sfx/${n}.mp3`), CUE[li].t0 + dt, v]);
   ev.forEach(([f]) => args.push('-i', f));
   let fc = `[1:a]atrim=0:${TOTAL},asetpts=N/SR/TB,volume=0.12,afade=t=in:d=0.4,afade=t=out:st=${(TOTAL - 0.6).toFixed(2)}:d=0.6[h]`; const lab = ['[h]'];
   ev.forEach(([, s, v], i) => { const ms = Math.round(s * 1000); fc += `;[${i + 2}:a]aresample=48000,volume=${v},adelay=${ms}|${ms}[e${i}]`; lab.push(`[e${i}]`); });
