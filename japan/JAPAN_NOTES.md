@@ -13,3 +13,4 @@ PICTURE_EN_4K.mp4 (8.2 GB) and MUSIC_AND_EFFECTS.wav (834 MB) are needed on the 
 - Film has 27 AI-generated stills → answer YES to "altered or synthetic content".
 - Planned release: Tue 2 Dec, 22:00 Moldova (Vietnam 25 Nov).
 - 2026-11-20 FILM BUILT on owner's computer (Desktop/Japan/FINAL_EN_4K.mp4, 17 Nov). Title v2 + description v2 in upload_kit.txt (every claim checked against SCRIPT_EN.csv).
+- 2026-11-20 owner's ChatGPT thumbnails: jp_shibuya_umbrella.jpg (opening 0:01, clear umbrella = the film's game), jp_fuji_reflection.jpg — ready. jp_himeji_draft / jp_nebuta_draft: title too hidden, owner re-doing in ChatGPT.
