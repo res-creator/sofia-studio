@@ -9,15 +9,10 @@ PICTURE_EN_4K.mp4 (4.5 GB) and MUSIC_AND_EFFECTS.wav (487 MB) are needed on the 
 - Lead-in retakes F024 F036 F037; onset_check still flags them — listen.
 - Subtitles: vietnam/SUBTITLES_EN.srt (436 cues). Cover: vietnam/COVER_EN.jpg. Upload kit: vietnam/upload_kit.txt.
 - DECIDED: keep the Russia mentions (F003/F064/F068) as they are (owner, 2026-11-12).
-- Second thumbnail for A/B test: vietnam/thumbs/thumb_coffee_vs_home_4k.jpg ($1 coffee F003/F016/F098; 53 years of income for a home F056 + card 15:02). Planned release: 25 Nov, 22:00 Moldova (15:00 New York).
 - ChatGPT-made thumbnail (owner): vietnam/thumbs/thumb_coffee_vs_5m2_4k.jpg ($1 coffee vs 4 people in 5 m² — F004/F049). Recommended for the A/B test.
 
 ## Status: FILM BUILT (owner's computer)
 - Desktop/Vietnam/FINAL_EN_4K.mp4, 4.85 GB, 29:33; mix -14.2 LUFS, TP -1.6 dBFS, LRA 10.8; all 109 fit (tightest F057 10.57/10.80).
 - Tip for local builds: the repo is huge (9 GB+) — use a sparse clone of only the film folder.
-- 2026-11-20 thumbnails made with vidIQ (66 credits) after analysing top English Vietnam videos (scenic "UNSEEN/WONDERS OF VIETNAM" 1.8–2.8M; cost-of-living "$1,000/MONTH?", "Locals earn $233" 250K in 6 days):
-  vietnam/thumbs/vq_350_month.jpg (avg pay $350, F046; vidIQ score 96), vq_really_cheap.jpg (stools + $1 coffee; 81), vq_golden_bridge.jpg (Ba Na Hills; 59).
-  Recommended A/B test: vq_350_month + vq_really_cheap + thumb_coffee_vs_5m2_4k. New title: "VIETNAM: Is It Really That Cheap? | 4K Travel Documentary".
-- 2026-11-20 elegant versions (owner disliked yellow AI-style text): photos by owner's ChatGPT (no text), text added in code (Montserrat + Cormorant italic, white, no outline): vietnam/thumbs/el_vendor.jpg, el_pho.jpg, el_aerial.jpg.
-- 2026-11-20 bold versions (owner: elegant ones too plain): Anton + one red accent (stool colour), hooks from the film: bold_vendor.jpg 'CHEAP FOR WHO?', bold_pho.jpg '$350 A MONTH average pay' (F046), bold_aerial.jpg '53 YEARS of pay to buy a home' (F056).
-- 2026-11-20 depth-effect versions (owner's references: landmark/person in front of the country name): person cut out with rembg (u2net_human_seg) and layered over huge 'VIETNAM' + script 'Is it really cheap?': depth_vendor.jpg, depth_pho.jpg.
+
+- 2026-11-20 owner rejected all my Vietnam thumbnails (vidIQ, elegant, bold, depth) — removed. Owner's style references: vivid, saturated travel-poster look, huge country name, landmark/person in front of the letters, small script kicker.
