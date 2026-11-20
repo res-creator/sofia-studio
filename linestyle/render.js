@@ -113,7 +113,7 @@ function irina(st) {
   const x = 540, y = 1000, T = st.time, talk = st.talk || 0, mo = st.mo || {open: 0, width: 1, round: 0, smile: 0, press: 0, bite: 0};
   const sm = Math.max(st.smile || 0, mo.smile * 0.6), op = mo.open;
   const breath = Math.sin(T * 1.25);
-  const rot = 0.02 * Math.sin(T * 0.8) + (st.tilt || 0) + talk * 0.012 * Math.sin(T * 2.1 + 1) - (st.nod || 0) * 0.01;
+  const rot = 0.02 * Math.sin(T * 0.8) + (st.tilt || 0) + talk * 0.012 * Math.sin(T * 2.1 + 1) - (st.nod || 0) * 0.01 + (st.walk || 0) * 0.03 * Math.sin(st.phase || 0);
   const nodY = (st.nod || 0) * 7 + breath * 1.2;
   const piv = [x, y + 175];
   const head = (fn) => { g.save(); g.translate(piv[0], piv[1] + nodY); g.rotate(rot); g.translate(-piv[0], -piv[1]); fn(); g.restore(); };
@@ -128,12 +128,14 @@ function irina(st) {
   for (const s of [-1, 1]) { g.beginPath(); g.moveTo(x + s * 150, y + 252); g.quadraticCurveTo(x + s * 110, y + 262, x + s * 82, y + 258); g.stroke(); }
   const top = [[x - 292, y + 330], [x - 238, y + 272], [x - 60, y + 438], [x, y + 482], [x + 60, y + 438], [x + 238, y + 272], [x + 292, y + 330]];
   if (st.full) { // legs + shoes (behind the skirt), weight shifts a little
-    const sw = Math.sin(T * 0.7) * 4;
+    const wk = st.walk || 0;
     for (const s of [-1, 1]) {
-      shape(tubePts([[x + s * 92, y + 1000], [x + s * 104 + sw, y + 1190], [x + s * 86 + sw, y + 1342]], 128, 64), C.skin);
-      line([[x + s * 70 + sw, y + 1120], [x + s * 82 + sw, y + 1150]], 2.5);
-      shape([[x + s * 50 + sw, y + 1336], [x + s * 122 + sw, y + 1330], [x + s * 150 + sw, y + 1362], [x + s * 140 + sw, y + 1384], [x + s * 40 + sw, y + 1386], [x + s * 36 + sw, y + 1356]], '#d8304a');
-      line([[x + s * 58 + sw, y + 1344], [x + s * 120 + sw, y + 1340]], 3);
+      const ph = (st.phase || 0) + (s > 0 ? Math.PI : 0), lift = Math.max(0, Math.sin(ph)) * 30 * wk, fx = Math.cos(ph) * 16 * wk;
+      const sw = Math.sin(T * 0.7) * 4 * (1 - wk) + fx, kn = lift * .45;
+      shape(tubePts([[x + s * 92, y + 1000], [x + s * 104 + sw * .6, y + 1190 - kn], [x + s * 86 + sw, y + 1342 - lift]], 128, 64), C.skin);
+      line([[x + s * 70 + sw * .6, y + 1120 - kn], [x + s * 82 + sw * .6, y + 1150 - kn]], 2.5);
+      shape([[x + s * 50 + sw, y + 1336 - lift], [x + s * 122 + sw, y + 1330 - lift], [x + s * 150 + sw, y + 1362 - lift * .8], [x + s * 140 + sw, y + 1384 - lift * .8], [x + s * 40 + sw, y + 1386 - lift], [x + s * 36 + sw, y + 1356 - lift]], '#d8304a');
+      line([[x + s * 58 + sw, y + 1344 - lift], [x + s * 120 + sw, y + 1340 - lift]], 3);
     }
   }
   const dress = st.full ? [[x - 300, y + 1060], [x - 330, y + 840], [x - 312, y + 620], ...top, [x + 312, y + 620], [x + 330, y + 840], [x + 300, y + 1060], [x + 150, y + 1080], [x, y + 1068], [x - 150, y + 1082]]
@@ -216,9 +218,9 @@ function irina(st) {
   // arms, shawl, notebook, hands
   const pen = st.pen || 0, wn = st.writing ? [5 * Math.sin(st.t * 2.3) + 3 * Math.sin(st.t * 3.7 + 1), 3 * Math.sin(st.t * 2.9 + .5)] : [0, 0];
   const gest = (st.nod || 0) * 14 + talk * 4 * Math.sin(T * 1.9);
-  const L = [x - 215, y + 470 + breath * 1.6], R = [x + 30 + pen * 145 + wn[0], y + 470 - pen * 118 + wn[1] - gest * pen];
+  const L = [x - 215, y + 470 + breath * 1.6], R0 = [x + 30 + pen * 145 + wn[0], y + 470 - pen * 118 + wn[1] - gest * pen], rc = st.reach || 0, R = [R0[0] + (x + 440 - R0[0]) * rc, R0[1] + (y + 560 - R0[1]) * rc];
   shape(tubePts([[x - 255, y + 320], [x - 300, y + 520], L], 112, 82), C.skin); line([[x - 300, y + 505], [x - 270, y + 520]], 2.5);
-  shape(tubePts([[x + 255, y + 320], [x + 302, y + 520 - pen * 20], [R[0] + 60, R[1] + 30]], 112, 82), C.skin); line([[x + 300, y + 505 - pen * 20], [x + 270, y + 520 - pen * 20]], 2.5);
+  shape(tubePts([[x + 255, y + 320], [x + 302 + rc * 50, y + 520 - pen * 20 - rc * 40], [R[0] + 60 * (1 - rc) - 30 * rc, R[1] + 30 * (1 - rc)]], 112, 82), C.skin); line([[x + 300, y + 505 - pen * 20], [x + 270, y + 520 - pen * 20]], 2.5);
   for (const s of [-1, 1]) {
     shape([[x + s * 320, y + 290], [x + s * 252, y + 236], [x + s * 190, y + 262], [x + s * 240, y + 380], [x + s * 300, y + 470], [x + s * 352, y + 500]].map(([px, py]) => [px, py + breath * 1.6]), C.shawl);
     line([[x + s * 240, y + 270], [x + s * 280, y + 380]], 2.5); line([[x + s * 280, y + 280], [x + s * 320, y + 420]], 2.5);
@@ -231,7 +233,7 @@ function irina(st) {
   line([[-80, 70], [-40, 58], [-10, 74], [30 + wn[0] * .5, 60 + wn[1]]], 2.5);
   g.restore();
   hand(L[0], L[1], -0.15, 'hold', 1, null, true);
-  hand(R[0], R[1], Math.PI + 0.35 - pen * 0.4 + wn[0] * 0.004, 'hold', -1, () => { shape([[16, -140], [30, -140], [30, 60], [23, 80], [16, 60]], C.pen, 3); oval(23, -140, 8, 6, '#e8e8f2', 2.5); }, false);
+  hand(R[0], R[1], (Math.PI + 0.35 - pen * 0.4 + wn[0] * 0.004) * (1 - rc) + 0.35 * rc, 'hold', -1, () => { shape([[16, -140], [30, -140], [30, 60], [23, 80], [16, 60]], C.pen, 3); oval(23, -140, 8, 6, '#e8e8f2', 2.5); }, false);
 }
 
 // ---------- full-body set ----------
@@ -326,7 +328,15 @@ const SHOTS = [
   {i: 2, tail: 0.9, cam: CLOSE, st: t => ({pen: 1, look: 0, lid: .25, after: 'smile', tilt: .03}), say: ['…НАШЕ ВРЕМЯ ВЫШЛО.', 'С ВАС ПЯТЬ ТЫСЯЧ'], sfx: [['end', 'coin', 0.7]]},
   {i: 3, tail: 1.5, cam: MED, st: t => ({pen: 1, push: ease((t - 0.2) / 0.6), look: 0.3, lid: .3, after: 'smile', tilt: -.03, brow: 4}), say: ['САЛФЕТКИ — ОТДЕЛЬНО'], sfx: [['end', 'sad', 0.6]]},
 ];
-if (FULL) SHOTS.forEach(s => { if (s.cam === MED) s.cam = FULLC; });
+if (FULL) {
+  SHOTS.forEach(s => { if (s.cam === MED) s.cam = FULLC; });
+  // shot 0: walks in from the left;  shot 1: small step + gesture;  shot 3: steps right and points the pen at the tissues
+  const walkSeg = (t, t0, t1, x0, x1) => { const u = clamp((t - t0) / (t1 - t0)); const k = ease(u); return {rootX: x0 + (x1 - x0) * k, walk: u > 0 && u < 1 ? Math.min(1, Math.sin(u * Math.PI) * 2.2) : 0, phase: (x0 + (x1 - x0) * k) / 70}; };
+  const s0 = SHOTS[0].st, s1 = SHOTS[1].st, s3 = SHOTS[3].st;
+  SHOTS[0].st = t => Object.assign(s0(t), walkSeg(t, 0, 1.7, -560, 0), {writing: t > 1.7});
+  SHOTS[1].st = t => Object.assign(s1(t), walkSeg(t, 0.1, 0.7, 0, 40));
+  SHOTS[3].st = t => Object.assign(s3(t), walkSeg(t, 0, 0.9, 40, 190), {reach: ease((t - 0.8) / 0.5) * (1 - ease((t - 2.6) / 0.6)), push: ease((t - 1.0) / 0.6)});
+}
 SHOTS.forEach(s => { s.dur = LEAD + VO[s.i].dur + s.tail; });
 const TOTAL = SHOTS.reduce((a, s) => a + s.dur, 0);
 
@@ -342,7 +352,7 @@ function frame(time) {
   st.blink = Math.max(blinkV(t, [LEAD + VO[shot.i].dur + 0.25]), blinkV(time, [1.7, 5.4, 9.3, 12.6]));
   st.tilt = (st.tilt || 0) * ease(t / 0.6);
   st.look = (st.look || 0) * ease(t / 0.6);
-  if (FULL && shot.cam === FULLC) { st.full = true; officeFull(st); irina(st); } else if (FULL) { st.full = true; irina(st); } else { chair(); irina(st); table(st); }
+  if (FULL && shot.cam === FULLC) { st.full = true; officeFull(st); const bob = -Math.abs(Math.sin(st.phase || 0)) * 10 * (st.walk || 0); g.save(); g.translate(st.rootX || 0, bob); irina(st); g.restore(); } else if (FULL) { st.full = true; irina(st); } else { chair(); irina(st); table(st); }
   g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(PAPER, 0, 0);
   watermark(); bubble(t >= LEAD ? shot.say : null, t - LEAD);
 }
