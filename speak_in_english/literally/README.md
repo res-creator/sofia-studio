@@ -1,0 +1,3 @@
+# «Буквально» — две пробы стиля
+- `thinline/` — копия шаблона `speak/mums/render.js` (ветка claude/eloquent-brahmagupta-nf3pp4) с идиомами, буквальными эффектами и карточками. Голоса: `voice/gen_fish.py` (fish.audio, ключ подставляет прокси). Запуск: положить как `speak/literally/` в checkout той ветки, `npm install` в корне, `node speak/literally/render.js`.
+- `handdrawn/` — рисованная версия на наборе кисти из `shusha/render_hand.js`: `literally_hd.js` (кадры: `node literally_hd.js a b part.mp4`, звук: `--mix out.mp4 silent.mp4`), герои в `cast.js`. Голоса ElevenLabs по `literally_hd.json`. Запуск: положить как `ourcast/` в checkout той ветки.

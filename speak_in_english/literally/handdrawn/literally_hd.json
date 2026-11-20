@@ -1,0 +1,14 @@
+{"voices": {"tom_ru": ["TX3LPaxmHKxFdv7VOQHJ", "eleven_multilingual_v2"], "tom_en": ["TX3LPaxmHKxFdv7VOQHJ", "eleven_v3"], "her": ["cgSgspJ2msm6clMCkdW9", "eleven_v3"]},
+ "lines": [
+  ["h0", "tom", "tom_ru", "Всё. Теперь я говорю как носитель."],
+  ["h1", "her", "her", "Oh no."],
+  ["h2", "her", "her", "So, how are you?"],
+  ["h3", "tom", "tom_en", "I'm feeling under the weather!"],
+  ["h4", "her", "her", "That means you're sick."],
+  ["h5", "her", "her", "Okay, listen."],
+  ["h6", "tom", "tom_en", "I'm all ears!"],
+  ["h7", "tom", "tom_en", "Wow! It's raining cats and dogs!"],
+  ["h8", "her", "her", "Just don't tell anyone."],
+  ["h9", "tom", "tom_en", "Mum's the word!"],
+  ["h10", "tom", "tom_ru", "Ой."]
+ ]}
