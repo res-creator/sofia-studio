@@ -7,5 +7,5 @@
 ```
 python3 voice/gen.py && python3 voice/stt.py
 for i in 0 1 2 3; do node render.js chunk $i 4 & done; wait
-node render.js audio && node render.js srt && node render.js cover 72
+node render.js audio && node render.js srt && node render.js cover2 cat && node render.js cover2 officer
 ```

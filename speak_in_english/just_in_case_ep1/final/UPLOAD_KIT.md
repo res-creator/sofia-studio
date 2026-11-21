@@ -5,7 +5,7 @@
 
 **Хэштеги:** #английский #английскийязык #учуанглийский #юмор #ньюйорк #speakinenglish
 
-**Обложка:** `just_in_case_ep1_cover.png` · **Субтитры:** `just_in_case_ep1.srt`
+**Обложка:** `just_in_case_ep1_cover.png` (запасная: `just_in_case_ep1_cover_alt.png`) · **Субтитры:** `just_in_case_ep1.srt`
 
 Фразы выпуска:
 - My cat ate my passport. — Мой кот съел мой паспорт.

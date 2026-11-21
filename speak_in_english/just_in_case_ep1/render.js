@@ -200,6 +200,20 @@ else if (mode === 'chunk') {
 }
 else if (mode === 'audio') audio();
 else if (mode === 'srt') srt();
+else if (mode === 'cover2') {
+  // the.seventh-style cover: huge close-up, wide shocked eyes, heavy outlined text
+  const big = (txt, y, size, fill) => { g.font = `${size}px ${FONT}`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round';
+    let f = size; while (g.measureText(txt).width > 1010) { f -= 4; g.font = `${f}px ${FONT}`; }
+    g.fillStyle = '#000000'; g.fillText(txt, 540 + 6, y + 10); g.lineWidth = f * .26; g.strokeStyle = '#000000'; g.strokeText(txt, 540, y); g.fillStyle = fill; g.fillText(txt, 540, y); };
+  const v = a1 || 'cat';
+  if (v === 'cat') { air(80, false); g.fillStyle = 'rgba(20,15,30,0.25)'; g.fillRect(0, 0, W, H);
+    person('katya', 430, 3150, 1.95, 80, {pose: 'down', mood: 'o', wide: true, blink: false, brows: 'up', sweat: true, mouth: .9, twitch: false, look: .8});
+    desk(1640); bag(820, 1690, 1.3, 0); cat(820, 1580, 1.25, 1, 0);
+    big('МОЙ КОТ СЪЕЛ', 250, 120, '#ffffff'); big('ПАСПОРТ?!', 400, 170, '#ffd23f'); }
+  else { air(80, true); person('officer', 540, 3000, 1.95, 76, {pose: 'down', mood: 'flat', blink: false, brows: 'angry', mouth: 0, twitch: true, look: -.4});
+    big('ТЫ ФЛИРТУЕШЬ', 250, 112, '#ffffff'); big('СО МНОЙ?!', 400, 170, '#ffd23f'); big('на таможне', 1740, 90, '#ffffff'); }
+  fs.writeFileSync(path.join(OUT, `cover_${v}.png`), cv.toBuffer('image/png')); console.log('cover2', v);
+}
 else if (mode === 'cover') {
   g.setTransform(1, 0, 0, 1, 0, 0); air(+a1, false); person('katya', 360, 2120, 1.0, +a1, {pose: 'shrug', mood: 'o', wide: true, blink: false, brows: 'up', sweat: true, mouth: 0, twitch: false}); desk(1500); bag(800, 1530, 1.2, +a1); cat(800, 1420, 1.1, 1, 0);
   g.save(); g.translate(540, 330); g.rotate(-.03); rr(-480, -150, 960, 300, 44, '#e0303f', 8); text('«МОЙ КОТ СЪЕЛ', 0, -48, 84, '#ffffff', 'center', FONT); text('МОЙ ПАСПОРТ»', 0, 56, 84, '#ffe066', 'center', FONT); g.restore();
