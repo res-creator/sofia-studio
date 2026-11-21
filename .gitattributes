@@ -12,3 +12,5 @@ ru_geo/remote/test/*.mp4 filter=lfs diff=lfs merge=lfs -text
 ru_geo/remote/video/*.mp4 filter=lfs diff=lfs merge=lfs -text
 ru_geo/afghan/test/*.mp4 filter=lfs diff=lfs merge=lfs -text
 ru_geo/afghan/video/*.mp4 filter=lfs diff=lfs merge=lfs -text
+ru_geo/paperson/video/*.mp4 filter=lfs diff=lfs merge=lfs -text
+ru_geo/paperson/test/*.mp4 filter=lfs diff=lfs merge=lfs -text
