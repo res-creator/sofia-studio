@@ -12,6 +12,7 @@ const T = (ctx, s, x, y, size, color, align) => text(ctx, s, x, y, { size, font:
     const g = ctx.createLinearGradient(0, 0, 760, 0); g.addColorStop(0, 'rgba(6,12,24,1)'); g.addColorStop(0.55, 'rgba(6,12,24,0.85)'); g.addColorStop(1, 'rgba(6,12,24,0)'); ctx.fillStyle = g; ctx.fillRect(0, 0, 800, H); vign(ctx, 0.5);
     ctx.save(); ctx.translate(50, 120); chip(ctx, '190 MILLION YEARS AGO', 0, 0, { size: 50, bg: C.red, color: C.cream }); ctx.restore();
     T(ctx, 'DINOSAURS', 44, 330, 160);
+    text(ctx, 'MUSEUM CAST', 1230, 690, { size: 26, font: F.monoB, color: C.cream, align: 'right', stroke: 5, strokeColor: C.ink });
     ctx.save(); ctx.translate(50, 470); chip(ctx, 'IN ANTARCTICA', 0, 0, { size: 104, bg: C.yellow, color: C.ink }); ctx.restore();
     fs.writeFileSync(process.argv[2], cv.toBuffer('image/jpeg', 92)); }
   // B: NASA bedrock under the ice
@@ -22,7 +23,7 @@ const T = (ctx, s, x, y, size, color, align) => text(ctx, s, x, y, { size, font:
     ctx.save(); ctx.translate(W / 2, 640); chip(ctx, 'THE DEEPEST CANYON ON LAND', 0, 0, { size: 84, bg: C.yellow, color: C.ink, align: 'center' }); ctx.restore();
     fs.writeFileSync(process.argv[3], cv.toBuffer('image/jpeg', 92)); }
   // C: THEN (paleoart) / NOW (real aerial) split
-  { const cv = K.createCanvas(W, H), ctx = cv.getContext('2d'); const a = await img('cm_reconstruction_snow_hill_island_cretaceous'), b = await img('cm_transantarctic_beardmore_icebridge_2013');
+  { const cv = K.createCanvas(W, H), ctx = cv.getContext('2d'); const a = await img('cm_reconstruction_eocene_antarctic_pond'), b = await img('cm_transantarctic_beardmore_icebridge_2013');
     ctx.save(); ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(700, 0); ctx.lineTo(580, H); ctx.lineTo(0, H); ctx.clip(); ctx.filter = 'saturate(1.35) contrast(1.15)'; ctx.drawImage(a, 0, 100, 1300, 1100, 0, 0, 700 * 1.1, H); ctx.restore();
     ctx.save(); ctx.beginPath(); ctx.moveTo(700, 0); ctx.lineTo(W, 0); ctx.lineTo(W, H); ctx.lineTo(580, H); ctx.clip(); ctx.filter = 'contrast(1.2)'; ctx.drawImage(b, 500, 0, 1200, 1080, 560, 0, 720, H); ctx.restore();
     ctx.strokeStyle = C.cream; ctx.lineWidth = 10; ctx.beginPath(); ctx.moveTo(700, 0); ctx.lineTo(580, H); ctx.stroke(); vign(ctx, 0.4);

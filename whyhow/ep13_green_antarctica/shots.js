@@ -75,7 +75,7 @@ function build(T) {
   ]);
   beats('A004', [
     Wd('gov_nasa_lima_transantarctic_peaks', { over: [low('TODAY: THE COLDEST, DRIEST CONTINENT', 'coldest'), note('TRANSANTARCTIC MOUNTAINS (NASA LANDSAT)')] }),
-    A('cm_reconstruction_hanson_formation_eruption', { cutW: 'forests', over: [note('EARLY JURASSIC ANTARCTICA · ' + REC)] }),
+    A('cm_cryolophosaurus_field_museum_mount', { cutW: 'forests', over: [note('ANTARCTIC DINOSAUR CRYOLOPHOSAURUS (CAST), FIELD MUSEUM')] }),
     F('px_tasmania_rainforest_creek_drone', { cutW: 'About', over: [low('~90 MILLION YEARS AGO: A RAINFOREST', 'rainforest'), note('TEMPERATE RAINFOREST, TASMANIA · ' + IL)] }),
     S('globe', ANT({ cutW: 'nine', lon: [[0, -100], [3, -107]], lat: [[0, -78], [3, -80]], R: [[0, 1300], [3, 1700]], pins: [{ ...G.sp, label: 'SOUTH POLE', at: 0.2, small: true, size: 40, color: C('iceL') }, { ...G.amund, label: 'RAINFOREST ROOTS (CORE 2017)', w: 'nine', small: true, size: 40 }], routes: [{ pts: [pt(G.amund), [-100, -86], pt(G.sp)], w: 5, at: 1.2, dur: 1.4, label: '~900 KM (560 MI)', ly: 50 }] })),
   ]);
@@ -86,14 +86,15 @@ function build(T) {
   ]);
   beats('A007', [
     A('cm_reconstruction_great_cretaceous_ocean_1898', { kb: { z: [1.0, 1.15] }, over: [head('THE ASTEROID?', null, 170, 100, Yc), note('"THE GREAT CRETACEOUS OCEAN", 1898 · ' + REC)] }),
-    A('px_palm_forest_mist', { cutW: 'after', kb: { z: [1.25, 1.05] }, over: [low('AFTER IT: EVEN WARMER · PALMS ON THE COAST', 'Palm'), note('PALMS TODAY · ' + IL)] }),
+    F('px_palm_trees_from_below', { cutW: 'after', over: [low('AFTER IT: EVEN WARMER', 'warmer'), note('PALMS TODAY · ' + IL)] }),
+    F('px_jungle_volcano_palms_aerial', { cutW: 'Palm', over: [low('PALMS ON THE COAST', 'Palm'), note('PALM FOREST TODAY · ' + IL)] }),
   ]);
   beats('A008', [
     A('cm_cryolophosaurus_field_museum_aurora', { cutW: 'First', over: [low('1 · DINOSAURS IN THE DARK', 'dinosaurs'), note('CRYOLOPHOSAURUS CAST, FIELD MUSEUM')] }),
     F('gov_nasa_sea_ice_ring_antarctica', { cutW: 'Then', over: [low('2 · THE SLOW FREEZE', 'freeze'), note('NASA VISUALIZATION')] }),
     F('gov_nasa_bedmap2_ice_peels_off', { cutW: 'what', over: [low('3 · WHAT THE ICE HIDES', 'hides'), note('NASA VISUALIZATION (BEDMAP2)')] }),
   ]);
-  add(T.e('A008') + 0.15, S('title', { lines: ['WHEN ANTARCTICA', 'WAS GREEN'], hl: 1, img: 'cm_reconstruction_snow_hill_island_cretaceous', credit: credit('cm_reconstruction_snow_hill_island_cretaceous') + ' · reconstruction', brand: true, sfx: 'riser' }), 'cut');
+  add(T.e('A008') + 0.15, S('title', { lines: ['WHEN ANTARCTICA', 'WAS GREEN'], hl: 1, img: 'cm_reconstruction_eocene_antarctic_pond', credit: credit('cm_reconstruction_eocene_antarctic_pond') + ' · reconstruction', brand: true, sfx: 'riser' }), 'cut');
 
   // ===== CH1 =====
   beats('A009', [
@@ -113,7 +114,7 @@ function build(T) {
   ]);
   beats('A012', [A('cm_transantarctic_above_clouds', { over: [low('INDIA HITS ASIA → THE HIMALAYAS', 'Himalayas'), note('HIGH PEAKS (TRANSANTARCTIC MOUNTAINS) · ' + IL)] })]);
   beats('A013', [
-    A('cm_map_gondwana_breakup_80ma_grobe', { over: [note('MAP: 80 MILLION YEARS AGO (H. GROBE / AWI)')] }),
+    A('cm_map_south_atlantic_opens_126ma', { over: [note('MAP: 126 MILLION YEARS AGO (GPLATES)')] }),
     A('cm_map_gondwana_breakup_65ma_grobe', { cutW: 'Animals', over: [low('STILL JOINED TO SOUTH AMERICA AND AUSTRALIA', 'joined'), note('MAP: 65 MILLION YEARS AGO')] }),
     S('globe', ANT({ cutW: 'by', pins: [{ ...G.sp, label: 'SOUTH POLE', at: 0.2, small: true, size: 40 }] })),
   ]);
@@ -141,13 +142,13 @@ function build(T) {
     A('cm_reconstruction_glacialisaurus_model', { cutW: 'Two', over: [note('MUSEUM MODEL: GLACIALISAURUS AND CRYOLOPHOSAURUS · ' + REC)] }),
   ]);
   beats('A019', [
-    A('cm_reconstruction_snow_hill_island_cretaceous', { over: [note('LATE CRETACEOUS ANTARCTICA · ' + REC + ' · M. CHARNELLI')] }),
+    A('cm_reconstruction_antarctopelta_vegavis_drawing', { over: [note('LATE CRETACEOUS ANTARCTICA · ' + REC)] }),
     S('globe', ANT({ cutW: 'In', lon: [[0, -100], [3, -107]], lat: [[0, -72], [3, -74]], R: [[0, 1700], [3, 3200]], pins: [{ ...G.amund, label: 'AMUNDSEN SEA CORE, 2017', at: 0.4, small: true, size: 44 }] })),
-    F('px_tasmania_rainforest_creek_drone', { cutW: 'The', in: 3, over: [low('SOIL + A 3-M WEB OF FOSSIL ROOTS', 'roots'), note('SWAMPY TEMPERATE RAINFOREST, TASMANIA · ' + IL)] }),
+    F('px_misty_conifer_forest_hills', { cutW: 'The', over: [low('SOIL + A 3-M WEB OF FOSSIL ROOTS', 'roots'), note('SWAMPY TEMPERATE RAINFOREST, TASMANIA · ' + IL)] }),
     A('cm_andrill_core_table', { cutW: 'swampy', over: [note('A SEABED CORE FROM ANTARCTICA (ANDRILL) · ' + IL)] }),
   ]);
   beats('A020', [
-    S('stats', { head: 'NOVEMBER 2024', items: [], sfx: 'boom', over: [at(head('THE FIRST AMBER', null, 500, 110, Yc), 0.3), at(head('EVER FOUND IN ANTARCTICA', null, 630, 70), 0.6)], source: 'Source: Alfred Wegener Institute (AWI), Antarctic Science 2024' }),
+    S('stats', { head: 'NOVEMBER 2024', items: [], sfx: 'boom', over: [at(head('THE FIRST AMBER', null, 500, 110, Yc), 0.05), at(head('EVER FOUND IN ANTARCTICA', null, 630, 70), 0.3)], source: 'Source: Alfred Wegener Institute (AWI), Antarctic Science 2024' }),
     A('px_monkey_puzzle_cones', { cutW: 'Drops', over: [note('CONIFER (ARAUCARIA) TODAY · ' + IL)] }),
   ]);
   beats('A021', [
@@ -158,12 +159,12 @@ function build(T) {
     A('cm_long_island_view_james_ross_2003', { over: [low('JAMES ROSS ISLAND, 1986', 'James'), note('LOOKING TO JAMES ROSS ISLAND, 2003')] }),
     A('cm_antarctopelta_jaw_fossil', { cutW: 'found', over: [low('EDUARDO OLIVERO & ROBERTO SCASSO', 'Olivero'), note('ANTARCTOPELTA: LOWER JAW (REAL FOSSIL)')] }),
     A('cm_reconstruction_antarctopelta', { cutW: 'Antarctopelta', over: [note(REC + ' · L. MARTINEZ-REZA')] }),
-    A('cm_reconstruction_antarctopelta_model', { cutW: 'For', over: [low('"THE FIRST DINOSAUR FOUND IN ANTARCTICA"', 'first'), note('MUSEUM MODEL · ' + REC)] }),
+    A('cm_reconstruction_antarctopelta_model', { cutW: 'For', over: [low('FOR 40 YEARS: "THE FIRST"', 'first'), note('MUSEUM MODEL · ' + REC)] }),
   ]);
   beats('A023', [
     S('stats', { head: '2026', items: [], sfx: 'boom', over: [at(head('40 YEARS IN A DRAWER', null, 520, 110, Yc), 0.3), { ...chipC('BRITISH ANTARCTIC SURVEY', null, 680, 44), w: 'Survey' }], source: 'Source: Barrett et al. 2026 (BAS)' }),
     A('cm_sauropodomorph_bones_antarctica', { cutW: 'titanosaur', over: [note('LONG-NECKED DINOSAUR BONES FROM ANTARCTICA (FIELD MUSEUM) · ' + IL)] }),
-    S('stats', { cutW: 'December', head: 'MICHAEL THOMSON, GEOLOGIST', items: [], over: [at(head('9 DECEMBER 1985', null, 520, 100, Yc), 0.3), { ...chipC('ONE MONTH EARLIER', null, 680, 50), w: 'month' }] }),
+    S('stats', { cutW: 'December', head: 'MICHAEL THOMSON, GEOLOGIST', items: [], over: [at(head('9 DECEMBER 1985', null, 520, 100, Yc), 0.05), { ...chipC('ONE MONTH EARLIER', null, 680, 50), w: 'month' }] }),
   ]);
   beats('A024', [
     A('cm_reconstruction_trinisaura_mendez', { over: [note('TRINISAURA · ' + REC)] }),
@@ -173,7 +174,7 @@ function build(T) {
   beats('A025', [
     S('globe', { relief: true, borders: false, lon: [[0, -150], [3, -151]], lat: [[0, 60], [3, 66]], R: [[0, 900], [3, 1500]], pins: [{ ...G.alaska, label: 'NORTHERN ALASKA, 2021', at: 0.4, small: true, size: 44 }] }),
     A('cm_reconstruction_leaellynasaura_side', { cutW: 'A', over: [low('BABY DINOSAURS, JUST HATCHED', 'baby'), note('A SMALL POLAR DINOSAUR · ' + REC)] }),
-    A('cm_reconstruction_leaellynasaura_polar_coast', { cutW: 'So', kb: { z: [1.25, 1.05] }, over: [low('THEY STAYED THROUGH THE POLAR NIGHT', 'stayed'), note(REC)] }),
+    A('cm_reconstruction_trinisaura_martinez', { cutW: 'So', over: [low('THEY STAYED THROUGH THE POLAR NIGHT', 'stayed'), note('TRINISAURA · ' + REC)] }),
   ]);
   beats('A026', [
     A('cm_taniwhasaurus_mosasaur_field_museum', { over: [note('ANTARCTIC MOSASAUR TANIWHASAURUS (CAST), FIELD MUSEUM')] }),
@@ -201,25 +202,25 @@ function build(T) {
     F('ia_1967_navy_icebreaker_eastwind', { cutW: 'The', over: [low('CARLOTA ESCUTIA & HENK BRINKHUIS', 'Escutia'), note('A SHIP IN ANTARCTIC ICE, 1960s · ' + IL)] }),
   ]);
   beats('A032', [
-    A('px_palm_forest_mist', { over: [low('53 MILLION YEARS AGO: PALM POLLEN', 'palm'), note('PALMS IN MIST TODAY · ' + IL)] }),
+    F('px_fern_jungle_greenhouse', { over: [low('53 MILLION YEARS AGO: PALM POLLEN', 'palm'), note('PALMS AND FERNS (BOTANICAL GARDEN) · ' + IL)] }),
     A('px_baobab_tarangire', { cutW: 'relatives', over: [low('AND BAOBAB RELATIVES', 'baobab'), note('BAOBAB, TANZANIA · ' + IL)] }),
     F('px_rainforest_clouds_hills', { cutW: 'On', over: [note('A NEAR-TROPICAL RAINFOREST · ' + IL)] }),
   ]);
   beats('A033', [S('ladder', { title: 'THE COAST OF ANTARCTICA, ~53 MILLION YEARS AGO', min: -30, max: 30, items: [{ v: 10, label: 'EVEN IN WINTER: ABOVE +10°C', sub: '50°F · IN THE POLAR NIGHT', w: 'ten', hl: true }], source: 'Source: Pross et al. 2012, Nature' })]);
   beats('A034', [
-    A('cm_seymour_island_landscape_2023', { kb: { z: [1.3, 1.1] }, over: [low('SEYMOUR ISLAND, 1982', 'Seymour'), note('SEYMOUR ISLAND TODAY')] }),
+    A('cm_marambio_base_seymour_aerial_2023', { kb: { z: [1.35, 1.15] }, over: [low('SEYMOUR ISLAND: THE FIRST ANTARCTIC MAMMAL (1982)', 'Seymour'), note('SEYMOUR ISLAND, 2023')] }),
     A('cm_reconstruction_eocene_antarctic_pond', { cutW: 'It', over: [low('A MARSUPIAL: THE FIRST LAND MAMMAL FROM ANTARCTICA', 'marsupial'), note('EOCENE ANTARCTICA · ' + REC)] }),
     A('cm_llanocetus_whale_skull_seymour', { cutW: 'first', over: [note('ALSO FROM SEYMOUR: AN EOCENE WHALE SKULL (REAL FOSSIL)')] }),
   ]);
   beats('A035', [
-    A('cm_map_gondwana_breakup_53ma_grobe', { over: [low('SOUTH AMERICA → ANTARCTICA → AUSTRALIA', 'bridge'), note('MAP: 53 MILLION YEARS AGO (H. GROBE / AWI)')] }),
+    F('gov_nasa_continental_drift_atlantic_opens', { over: [low('SOUTH AMERICA → ANTARCTICA → AUSTRALIA', 'bridge'), note('NASA VISUALIZATION: CONTINENTAL DRIFT')] }),
     A('px_tasmania_forest_boardwalk', { cutW: 'Australia\'s', over: [low('KOALAS, KANGAROOS: PROBABLY THIS WAY', 'koalas'), note('SOUTHERN BEECH FOREST, TASMANIA · ' + IL)] }),
   ]);
   beats('A036', [A('cm_reconstruction_kumimanu_nobu_tamura', { over: [low("ANTARCTICA'S LAST SUMMER", 'last'), note('GIANT FOSSIL PENGUIN · ' + REC + ' · NOBU TAMURA')] })]);
 
   // ===== CH4 =====
   chapter('A037', 3, 'The slow freeze');
-  beats('A037', [S('stats', { head: 'OVER MILLIONS OF YEARS', items: [], over: [at(head('CARBON DIOXIDE FELL', null, 540, 100, Yc), 0.3)], source: 'Sources: Pagani et al. 2011; DeConto & Pollard 2003' })]);
+  beats('A037', [S('stats', { head: 'OVER MILLIONS OF YEARS', items: [], over: [at(head('CARBON DIOXIDE FELL', null, 540, 100, Yc), 0.05)], source: 'Sources: Pagani et al. 2011; DeConto & Pollard 2003' })]);
   beats('A038', [
     A('cm_royal_society_range_noaa_1999', { over: [low('ONE LEADING IDEA: THE HIMALAYAS', 'Himalayas'), note('ROYAL SOCIETY RANGE, ANTARCTICA (NOAA) · ' + IL)] }),
     A('cm_apocalypse_peaks_aster', { cutW: 'That', over: [low('WEATHERING LOCKS CO₂ INTO STONE', 'stone'), note('BARE ROCK FROM SPACE (NASA ASTER) · ' + IL)] }),
@@ -238,7 +239,7 @@ function build(T) {
   beats('A041', [
     F('gov_nasa_perpetual_ocean_australia_southern', { over: [low('THE WALL: A HELPER, NOT THE CAUSE', 'helper'), note('NASA PERPETUAL OCEAN')] }),
     S('stats', { cutW: 'In', head: '2003', items: [], over: [at(head('ROBERT DECONTO & DAVID POLLARD', null, 520, 80, Yc), 0.3)], source: 'Source: DeConto & Pollard 2003, Nature' }),
-    F('gov_nasa_sea_ice_growth_2024', { cutW: 'below', over: [low('BELOW A CO₂ THRESHOLD, ICE COULD STAY', 'stay'), note('NASA VISUALIZATION (TODAY\'S SEA ICE) · ' + IL)] }),
+    F('gov_nasa_sea_ice_growth_2024', { cutW: 'switch', over: [low('BELOW A CO₂ THRESHOLD, ICE COULD STAY', 'stay'), note('NASA VISUALIZATION (TODAY\'S SEA ICE) · ' + IL)] }),
   ]);
   beats('A042', [
     F('gov_nasa_sea_ice_ring_antarctica', { in: 2, over: [low('~34 MILLION YEARS AGO', 'thirty-four'), note('NASA VISUALIZATION (TODAY\'S ICE) · ' + IL)] }),
@@ -293,11 +294,11 @@ function build(T) {
   beats('A053', [F('gov_nasa_globe_africa_to_antarctica', { over: [note('NASA VISUALIZATION')] })]);
   beats('A054', [
     S('stats', { head: 'NOT THE DRIFT', items: [], over: [at(head('IT WAS AT THE POLE WHEN IT WAS GREEN', null, 540, 64), 0.3)] }),
-    S('stats', { cutW: 'Not', head: 'NOT THE ASTEROID', items: [], over: [at(head('IT GOT WARMER AFTERWARDS', null, 540, 76), 0.3)] }),
+    F('gov_nasa_globe_americas_to_antarctica', { cutW: 'Not', over: [low('NOT THE ASTEROID: IT GOT WARMER AFTERWARDS', 'warmer'), note('NASA VISUALIZATION')] }),
   ]);
   beats('A055', [
     S('stats', { head: 'WHY ANTARCTICA FROZE', items: [], over: [at(head('1 · CARBON DIOXIDE FELL', null, 480, 84, Yc), 0.3), { ...head('2 · THE OCEAN CLOSED A RING', null, 620, 84), w: 'ocean' }], source: 'Sources: DeConto & Pollard 2003; Pagani et al. 2011' }),
-    F('gov_nasa_perpetual_ocean_south_america_antarctica', { cutW: 'the', over: [note('NASA PERPETUAL OCEAN')] }),
+    F('gov_nasa_ocean_flows_toward_ice', { cutW: 'the', over: [note('NASA VISUALIZATION: OCEAN CURRENTS')] }),
   ]);
   beats('A056', [
     S('stats', { head: 'CARBON DIOXIDE TODAY', items: [], sfx: 'boom', over: [at(head('> 420 PPM', null, 520, 140, Yc), 0.3), { ...chipC('PRE-INDUSTRIAL: ~280 PPM', null, 690, 46), at: 1.0 }], source: 'Source: NOAA' }),
@@ -320,7 +321,7 @@ function build(T) {
   // ===== ENDING =====
   beats('A060A', [
     A('cm_reconstruction_cryolophosaurus_side', { over: [head('WHICH ANTARCTICA WOULD YOU VISIT?', null, 180, 70), note(REC)] }),
-    A('cm_reconstruction_eocene_antarctic_pond', { cutW: 'among', kb: { z: [1.2, 1.05] }, over: [note('EOCENE ANTARCTICA · ' + REC)] }),
+    A('cm_cryolophosaurus_field_museum_wide', { cutW: 'among', over: [note('CRYOLOPHOSAURUS CAST, FIELD MUSEUM')] }),
   ]);
   beats('A060', [
     A('cm_scott_1911_wilson_sketching_beardmore', { kb: { z: [1.2, 1.05] }, over: [low('NATURAL HISTORY MUSEUM, LONDON', 'London'), note('DR EDWARD WILSON, BEARDMORE GLACIER, 1911')] }),

@@ -4,10 +4,10 @@
 
 **Mid-roll ads:** the video is over 8 minutes, so mid-rolls are allowed. Place them on chapter breaks at about 5:19 and 8:57.
 
-**Thumbnails** (1280×720): test C against A in YouTube "Test & compare"; B is a spare.
-- `antarctica_cover_C.jpg` (main): THEN / NOW. On the left is licensed paleoart, labelled RECONSTRUCTION; on the right is a real NASA aerial of the Transantarctic Mountains. Text: "SAME CONTINENT".
-- `antarctica_cover_A.jpg`: a museum cast of the Cryolophosaurus skull. Text: "190 MILLION YEARS AGO · DINOSAURS IN ANTARCTICA".
-- `antarctica_cover_B.jpg`: NASA BedMachine view of the Denman canyon. Text: "UNDER THE ICE · THE DEEPEST CANYON ON LAND".
+**Thumbnails** (1280×720; test A against C in YouTube "Test & compare"; B is a spare):
+- `antarctica_cover_A.jpg` (main): a museum cast of the Cryolophosaurus skull. Text: "190 MILLION YEARS AGO · DINOSAURS IN ANTARCTICA", plus a small "MUSEUM CAST" tag.
+- `antarctica_cover_C.jpg`: "THEN / NOW / SAME CONTINENT". On the left, a licensed reconstruction of an Eocene Antarctic beech forest (no dinosaurs, no palms); on the right, a real NASA aerial of the Transantarctic Mountains.
+- `antarctica_cover_B.jpg`: a NASA BedMachine view of the Denman canyon. Text: "UNDER THE ICE · THE DEEPEST CANYON ON LAND".
 
 **Subtitles:** `antarctica_subtitles_en.srt` (English).
 
@@ -30,7 +30,7 @@ What is on screen:
 Antarctica Had Dinosaurs and Rainforests. So Why Did It Freeze?
 
 Alternatives (for an A/B title test):
-- What Antarctica Looked Like Before the Ice (pair with cover C)
+- What Antarctica Looked Like Before the Ice (pairs with cover C)
 - The Rainforest 560 Miles From the South Pole
 
 ## Description
@@ -69,7 +69,7 @@ antarctica, antarctica before the ice, green antarctica, antarctica dinosaurs, c
 Paste `SOURCES.md` (the numbered list) + `CREDITS.md`.
 
 ## Honesty notes
-- Dinosaurs and palm trees are 13 million years apart and are never shown together; the THEN image on cover C shows Late Cretaceous life only.
+- Dinosaurs and palm trees are 13 million years apart and are never shown together; the THEN image on cover C is an Eocene forest with no animals.
 - The main cause of the freeze is falling CO2; the ocean gateways helped, and when Drake Passage opened is still debated.
 - Errors in the reference film that we do not repeat:
   - the record cold was in 1983, not 1982;
