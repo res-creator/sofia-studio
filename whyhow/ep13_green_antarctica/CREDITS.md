@@ -1,0 +1,121 @@
+# EP13 credits — paste into the YouTube description / pinned comment.
+
+Photos and video (Wikimedia Commons):
+- Le Tour du monde, nouvelle série-20-p079.jpg — Robert Falcon Scott, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Le_Tour_du_monde%2C_nouvelle_s%C3%A9rie-20-p079.jpg
+- Le Tour du monde, nouvelle série-20-p075.jpg — Le Tour du monde, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Le_Tour_du_monde%2C_nouvelle_s%C3%A9rie-20-p075.jpg
+- Le Tour du monde, nouvelle série-20-p063.jpg — Robert Falcon Scott, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Le_Tour_du_monde%2C_nouvelle_s%C3%A9rie-20-p063.jpg
+- Le Tour du monde, nouvelle série-20-p061a.jpg — Le Tour du monde, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Le_Tour_du_monde%2C_nouvelle_s%C3%A9rie-20-p061a.jpg
+- Pressure on the Beardmore below the Cloudmaker Mountain.jpg — Charles Seymour Wright, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Pressure_on_the_Beardmore_below_the_Cloudmaker_Mountain.jpg
+- Glossopteris sp. (fossil leaf) (Permian; Antarctica) 1 (49063572172) (cropped).jpg — James St. John, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Glossopteris_sp._%28fossil_leaf%29_%28Permian%3B_Antarctica%29_1_%2849063572172%29_%28cropped%29.jpg
+- Glossopteris sp. (fossil leaf) (Permian; Antarctica) 2 (49062918518).jpg — James St. John, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Glossopteris_sp._%28fossil_leaf%29_%28Permian%3B_Antarctica%29_2_%2849062918518%29.jpg
+- Fire storm.jpg — Leonardo HerSan, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Fire_storm.jpg
+- Gondwana115Ma hg.png — Hannes Grobe/AWI, CC BY 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Gondwana115Ma_hg.png
+- PSM V53 D224 The Great Cretaceous Ocean.jpg — James Carter Beard, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:PSM_V53_D224_The_Great_Cretaceous_Ocean.jpg
+- Cryolophosaurus skeletal mount.jpg — Jens Lallensack, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Cryolophosaurus_skeletal_mount.jpg
+- Snow Hill Island Formation paleoenvironment recon.jpg — Martina Charnelli, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Snow_Hill_Island_Formation_paleoenvironment_recon.jpg
+- Pangaea Glossopteris.jpg — Petter Bøckman, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Pangaea_Glossopteris.jpg
+- Glossopteris angustifolia 255 maf India.jpg — Ghedo, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Glossopteris_angustifolia_255_maf_India.jpg
+- Glossopteris browniana - perm australia.jpg — Ghedo, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Glossopteris_browniana_-_perm_australia.jpg
+- Alfred Wegener - Pangaea.jpg — Von Alfred Wegener erstellte Karte, CC0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Alfred_Wegener_-_Pangaea.jpg
+- Pangaea 200Ma.jpg — Fama Clamosa, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Pangaea_200Ma.jpg
+- Snider-Pellegrini Wegener fossil map-i18n.png — USGS/USA-Gov, modified by Eurico Zimbres, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Snider-Pellegrini_Wegener_fossil_map-i18n.png
+- Early Jurassic breakup of Gondwana.png — Brownfield, M.E., and Schenk, C.J., Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Early_Jurassic_breakup_of_Gondwana.png
+- Opening of eastern Indian Ocean 120 Ma.png — Fama Clamosa, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Opening_of_eastern_Indian_Ocean_120_Ma.png
+- Transantarctic Mountains November 2019.jpg — John Hardin, CC BY 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Transantarctic_Mountains_November_2019.jpg
+- Gondwana080Ma hg.png — Hannes Grobe/AWI, CC BY 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Gondwana080Ma_hg.png
+- Gondwana065Ma hg.png — Hannes Grobe/AWI, CC BY 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Gondwana065Ma_hg.png
+- CryolophosaurusDB.jpg — ДиБгд at Russian Wikipedia, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:CryolophosaurusDB.jpg
+- Transantarctic Mountains (10986929324).jpg — NASA ICE, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Transantarctic_Mountains_%2810986929324%29.jpg
+- View of the Transantarctic Mountains.jpg — NASA/Michael Studinger, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:View_of_the_Transantarctic_Mountains.jpg
+- Dallmann Camp.jpg — Wilfried Bauer, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Dallmann_Camp.jpg
+- Cryolophosaurus hip bones.jpg — Jens Lallensack, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Cryolophosaurus_hip_bones.jpg
+- Cryolophosaurus ellioti Holotype Skull FMNH.jpg — Jonathan Chen, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Cryolophosaurus_ellioti_Holotype_Skull_FMNH.jpg
+- Cryolophosaurus ellioti crest (Hanson Formation, Lower Jurassic; Mt. Kirkpatrick, Queen Al — James St. John, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Cryolophosaurus_ellioti_crest_%28Hanson_Formation%2C_Lower_Jurassic%3B_Mt._Kirkpatrick%2C_Queen_Alexandra_Range%2C_Transantarctic_Mountains%2C_Antarctica%29.jpg
+- Cryolophosaurus ellioti theropod dinosaur (Hanson Formation, Lower Jurassic; Mt. Kirkpatri — James St. John, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Cryolophosaurus_ellioti_theropod_dinosaur_%28Hanson_Formation%2C_Lower_Jurassic%3B_Mt._Kirkpatrick%2C_Queen_Alexandra_Range%2C_Transantarctic_Mountains%2C_Antarctica%29_11_%2846105151272%29.jpg
+- Cryolophosaurus ellioti 2022 Reconstruction.png — Leoomas, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Cryolophosaurus_ellioti_2022_Reconstruction.png
+- Glacialisaurus holotype PR 1823.jpg — Jens Lallensack, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Glacialisaurus_holotype_PR_1823.jpg
+- Glacialisaurus FMNH.jpg — Zissoudisctrucker, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Glacialisaurus_FMNH.jpg
+- ANDRILL coretable.jpg — Peter West, Office of Polar Programs, National Science Foundation., Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:ANDRILL_coretable.jpg
+- Leaellynasaura reconstruction.png — PaleoEquii, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Leaellynasaura_reconstruction.png
+- Long Island view towards James Ross Island.jpg — euphro, CC BY-SA 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Long_Island_view_towards_James_Ross_Island.jpg
+- Antarctopelta oliveroi holotype left dentary MLP 86-X-28-1,.jpg — MARCELO A. REGUERO ZULMA GASPARINI EDUARDO B. OLIVERO RODOLFO A. CORIA MARTA S. FERNÁNDEZ JOSÉ P. O´GORMAN SOLEDAD GOUIRIC-CAVALLI CAROLINA , CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Antarctopelta_oliveroi_holotype_left_dentary_MLP_86-X-28-1%2C.jpg
+- Antarctopelta LMR.jpg — Levi B. Martinez-Reza, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Antarctopelta_LMR.jpg
+- Antarctopelta Oliveroi 20250105.jpg — Rjcastillo, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Antarctopelta_Oliveroi_20250105.jpg
+- Sauropodomorph skeletal material Antarctica PR 3051.jpg — Jens Lallensack, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Sauropodomorph_skeletal_material_Antarctica_PR_3051.jpg
+- Trinisaura santamartaensis.jpg — Daniel Méndez, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Trinisaura_santamartaensis.jpg
+- Holotype of Imperobator antarcticus.jpg — Reguero et al. (2022), CC BY 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Holotype_of_Imperobator_antarcticus.jpg
+- Leaellynasaura.jpg — Danny Cicchetti, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Leaellynasaura.jpg
+- Taniwhasaurus Field Museum.jpg — Eden, Janine and Jim, CC BY 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Taniwhasaurus_Field_Museum.jpg
+- Aristonectes NT small.jpg — Nobu Tamura email:nobu.tamura@yahoo.com http://spinops.blogspot.com/2014/09/aristonectes-quiriquinensis.html, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Aristonectes_NT_small.jpg
+- Diplomoceras maximum PRI 13889.jpg — Neil Pezzoni, CC BY 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Diplomoceras_maximum_PRI_13889.jpg
+- Base Marambio - vista general.jpg — Ministerio de Cultura de la Nación, CC BY-SA 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Base_Marambio_-_vista_general.jpg
+- Geologic map of Seymour Island, Antarctica.png — Crame et al., 2014, PLoS ONE, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Geologic_map_of_Seymour_Island%2C_Antarctica.png
+- Base Marambio - Paisaje.jpg — Ministerio de Cultura de la Nación, CC BY-SA 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Base_Marambio_-_Paisaje.jpg
+- Vegavis 2019 Dinosaur Expo.jpg — ノボホショコロトソ, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Vegavis_2019_Dinosaur_Expo.jpg
+- Vegavis restoration.jpg — El fosilmaníaco, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Vegavis_restoration.jpg
+- Reconstruction of an Eocene pond in the Nothofagus forest of the Antarctic Peninsula.jpg — Pollyanna von Knorring, Photo credits: Simon Pierre Barrette and José Grau de Puerto Montt, Wikimedia Commons (CC BY-SA 3.0), and Mats Wedin, CC BY 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Reconstruction_of_an_Eocene_pond_in_the_Nothofagus_forest_of_the_Antarctic_Peninsula.jpg
+- Llanocetus denticrinatus.jpg — Tim from Washington, D.C., United States of America, CC BY-SA 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Llanocetus_denticrinatus.jpg
+- Gondwana053Ma hg.png — Hannes Grobe/AWI, CC BY 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Gondwana053Ma_hg.png
+- Kumimanu NT.jpg — Nobu Tamura email:nobu.tamura@yahoo.com https://spinops.blogspot.com/, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Kumimanu_NT.jpg
+- NOAA Royal Society Range.jpg — Michael Van Woert, NOAA NESDIS, ORA, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:NOAA_Royal_Society_Range.jpg
+- Apocalypse Peaks ASTER.jpg — NASA/GSFC/METI/ERSDAC/JAROS, and U.S./Japan ASTER Science Team, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Apocalypse_Peaks_ASTER.jpg
+- Gondwana038ma hg.png — Hannes Grobe/AWI, CC BY 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Gondwana038ma_hg.png
+- Scotia Sea NOAA.jpg — Uploaded by Fama Clamosa ( talk ) 13:56, 13 July 2015 (UTC), Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Scotia_Sea_NOAA.jpg
+- 00 1922 Drake Passage - (South America - Antarctic).jpg — W. Bulach, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:00_1922_Drake_Passage_-_%28South_America_-_Antarctic%29.jpg
+- Antarctic Circumpolar Current.png — NASA, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Antarctic_Circumpolar_Current.png
+- Type locality for Antarctotrechus balli, Oliver Bluffs, Beardmore Glacier.jpg — Allan C. Ashworth and Terry L. Erwin, CC BY 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Type_locality_for_Antarctotrechus_balli%2C_Oliver_Bluffs%2C_Beardmore_Glacier.jpg
+- Wright Valley 2013 01.jpg — Michael Studinger, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Wright_Valley_2013_01.jpg
+- Taylor Glacier, Antarctica 1.jpg — Eli Duke, CC BY-SA 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Taylor_Glacier%2C_Antarctica_1.jpg
+- Deglaciated Antarctic Topography.png — Original: Robert A. Rohde / Global Warming Art. Internationalized by cropping and re-positioning the description by Szczureq, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Deglaciated_Antarctic_Topography.png
+- AntarcticBedrock.jpg — Paul V. heinrich, CC BY 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:AntarcticBedrock.jpg
+- Shape of bedrock under Denman Glacier.png — NASA, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Shape_of_bedrock_under_Denman_Glacier.png
+- Lake Vostok drill 2011.jpg — Nicolle Rager-Fuller / NSF, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Lake_Vostok_drill_2011.jpg
+- Ice-core drill hg.jpg — Hannes Grobe, Alfred Wegener Institute for Polar and Marine Research, CC BY-SA 2.5, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Ice-core_drill_hg.jpg
+- Antarctica WAIS Divide Field Camp 10.jpg — Eli Duke, CC BY-SA 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Antarctica_WAIS_Divide_Field_Camp_10.jpg
+- Epica-dml end hg.jpg — Hannes Grobe, AWI, CC BY 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Epica-dml_end_hg.jpg
+- Thwaites Glacier.jpg — NASA, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Thwaites_Glacier.jpg
+- Thwaites ls7 2001336 lrg.jpg — NASA Earth Observatory images by Lauren Dauphin, using Landsat data from the U.S. Geological Survey, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Thwaites_ls7_2001336_lrg.jpg
+- Thwaites oli 2019362 lrg.jpg — NASA Earth Observatory images by Lauren Dauphin, using Landsat data from the U.S. Geological Survey, Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Thwaites_oli_2019362_lrg.jpg
+- Cryolophosaurus reconstruction (flipped).jpg — Dibrangosaurus, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Cryolophosaurus_reconstruction_%28flipped%29.jpg
+
+NASA imagery (public domain; no endorsement implied):
+- Landsat Image Mosaic of Antarctica Flyover of McMurdo Station and Dry Valleys — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/3482
+- A Tour of the Cryosphere 2009 — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/3619
+- Antarctic Bedrock — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/4060
+- Perpetual Ocean 2: Polar Views — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/5529
+- Perpetual Ocean — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/3827
+- Perpetual Ocean — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/3827
+- Antarctic Sea Ice Maximum, 2024 — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/5391
+- Antarctic Bedrock — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/4060
+- A Tour of the Cryosphere 2009 — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/3619
+- Antarctic Bedrock — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/4060
+- Antarctic Bedrock — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/4060
+- The Reference Elevation Model of Antarctica (REMA) — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/4478
+- ICESat-2 maps subglacial lakes (2021) — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/4913
+- 25 Years of Antarctic Land Ice Elevation Change Anomalies (West Coast Fly Over) — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/4625
+- West Antarctic Collapse — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/4168
+- Operation IceBridge - Ice Shelf — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/13460
+- Antarctic Ocean Flows: an excerpt from Atlas of a Changing Earth (4k format) — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/4888
+- 25 Years of Antarctic Land Ice Elevation Change Anomalies (West Coast Fly Over) — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/4625
+- Operation IceBridge - Pine Island Glacier — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/13441
+- Draining the Oceans — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/4823
+- Landsat Image Mosaic of Antarctica Flyover of McMurdo Station and Dry Valleys — NASA Goddard Space Flight Center Scientific Visualization Studio — https://svs.gsfc.nasa.gov/3482
+
+US government film (public domain): US Navy Operation Deep Freeze films 1957-1969 and NASA/NOAA/NSF/USGS imagery, via Internet Archive and agency libraries:
+- DESERT WITHOUT SAND (US Navy, Commander Task Force 43, 1967) — US Navy, Desert Without Sand (1967), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.25337
+- PORTRAIT OF ANTARCTICA (US Navy, 1961) — US Navy, Portrait of Antarctica (1961), via DoD DIMOC / archive.org — https://archive.org/details/gov.dod.dimoc.24506
+
+Stock video and photos (Pixabay Content License / Coverr license, free for commercial use):
+- R_B_X via Pixabay — https://pixabay.com/videos/id-208946/
+- M71 via Pixabay — https://pixabay.com/photos/palm-trees-grass-field-nature-802019/
+- Rag-Lehcim via Pixabay — https://pixabay.com/photos/monkey-puzzle-tree-chilean-pine-trees-1007125/
+- anaterate via Pixabay — https://pixabay.com/photos/ammonite-fossil-petrification-3235509/
+- Thamnguyen_TBVN via Pixabay — https://pixabay.com/videos/id-287510/
+- 7523944 via Pixabay — https://pixabay.com/photos/tree-baobab-tarangire-national-park-6880117/
+- u_vzdpugfofv via Pixabay — https://pixabay.com/videos/id-265333/
+- pen_ash via Pixabay — https://pixabay.com/photos/overland-track-tasmania-nature-3891983/
+- pen_ash via Pixabay — https://pixabay.com/photos/overland-track-tasmania-nature-3891985/
+- pen_ash via Pixabay — https://pixabay.com/photos/weindorfers-forest-walk-tasmania-2365608/
+
+Diagrams, maps, charts and animation: How It's Run (own work). 
+Music and sound: own synthesis. Voice: synthetic (Kokoro TTS), script by How It's Run.
