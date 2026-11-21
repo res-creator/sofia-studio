@@ -12,7 +12,7 @@ function envelope(f) { const raw = spawnSync('ffmpeg', ['-v', 'error', '-i', f, 
   for (let i = 0; i * per < n; i++) { let s = 0, c = 0; for (let j = Math.floor(i * per); j < Math.min(n, (i + 1) * per); j++) { const v = raw.readInt16LE(j * 2) / 32768; s += v * v; c++; } out.push(Math.sqrt(s / Math.max(1, c))); }
   const srt = [...out].sort((a, b) => a - b), p = srt[Math.floor(srt.length * .93)] || 1; return out.map(v => clamp((v / p - .08) * 1.15)); }
 // trim leading/trailing silence so the cut is tight
-function trimmed(f) { const r = spawnSync('ffmpeg', ['-v', 'error', '-i', f, '-af', 'silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse', '-ar', '44100', '-ac', '1', path.join(TMP, path.basename(f, '.mp3') + '.wav'), '-y']); return path.join(TMP, path.basename(f, '.mp3') + '.wav'); }
+function trimmed(f) { const o = path.join(TMP, path.basename(f, '.mp3') + '.wav'); if (fs.existsSync(o) && fs.statSync(o).mtimeMs >= fs.statSync(f).mtimeMs && fs.statSync(o).size > 1000) return o; const r = spawnSync('ffmpeg', ['-v', 'error', '-i', f, '-af', 'silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse', '-ar', '44100', '-ac', '1', path.join(TMP, path.basename(f, '.mp3') + '.wav'), '-y']); return path.join(TMP, path.basename(f, '.mp3') + '.wav'); }
 
 // ---------------- timeline ----------------
 const SCRIPT = JSON.parse(fs.readFileSync(path.join(VD, 'script.json'), 'utf8')).lines;
