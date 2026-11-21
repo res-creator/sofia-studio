@@ -1,0 +1,114 @@
+{
+ "voices": {
+  "nar": [
+   "eleven",
+   "HZ9zc6dCuq98qtFx52ur"
+  ],
+  "teacher": [
+   "eleven",
+   "OowtKaZH9N7iuGbsd00l"
+  ],
+  "vova": [
+   "eleven",
+   "Uv3rf12Omd9Asyv54Bqw"
+  ]
+ },
+ "lines": {
+  "n1": [
+   "nar",
+   "[casual] Англичанка говорит:"
+  ],
+  "t1": [
+   "teacher",
+   "[sweetly, menacing] Who wants to read?"
+  ],
+  "n2": [
+   "nar",
+   "[dramatic pause] И всё. Весь класс в этот момент... умирает."
+  ],
+  "n3": [
+   "nar",
+   "[fast, amused] Тридцать человек одновременно что-то ищут в рюкзаке."
+  ],
+  "n4": [
+   "nar",
+   "[sarcastic] Ты ищешь так старательно, что находишь прошлогодний бутерброд."
+  ],
+  "n5": [
+   "nar",
+   "[tense, quieter] Она ведёт ручкой по журналу. Сверху вниз."
+  ],
+  "n6": [
+   "nar",
+   "[whispers] Это как рулетка. [dramatic] Только ставка — твоя жизнь."
+  ],
+  "n7": [
+   "nar",
+   "[tense] Ручка останавливается... [relieved, laughing] на Вове!"
+  ],
+  "t2": [
+   "teacher",
+   "[strict] Vova. Read, please."
+  ],
+  "v1": [
+   "vova",
+   "[nervous, slowly] Зе кэт... из он... [unsure] зе тейбл."
+  ],
+  "n8": [
+   "nar",
+   "[deadpan] Англичанка закрывает глаза. Как будто мелом по доске провели."
+  ],
+  "t3": [
+   "teacher",
+   "[pained sigh] Not zeh. [firmly] THE! Tongue between your teeth."
+  ],
+  "n9": [
+   "nar",
+   "[laughing] Весь класс высовывает языки. Тридцать человек сидят с языками!"
+  ],
+  "n10": [
+   "nar",
+   "[panicked, fast] И в этот момент заходит директор."
+  ],
+  "t4": [
+   "teacher",
+   "[slowly, ominous] And now... you."
+  ],
+  "n11": [
+   "nar",
+   "[nervous] Ты читаешь:"
+  ],
+  "h1": [
+   "nar",
+   "[nervous] Ворк."
+  ],
+  "t5": [
+   "teacher",
+   "[firm] Work."
+  ],
+  "h2": [
+   "nar",
+   "[louder, stubborn] Ворк!"
+  ],
+  "t6": [
+   "teacher",
+   "[shouting] WORK!"
+  ],
+  "n12": [
+   "nar",
+   "[dramatic] Это уже не урок. Это перестрелка."
+  ],
+  "n13": [
+   "nar",
+   "[excited] Звенит звонок! [relieved] Ты спасён."
+  ],
+  "t7": [
+   "teacher",
+   "[sarcastic sweetness] Homework: read the text. Out loud. On video."
+  ],
+  "n14": [
+   "nar",
+   "[friendly, smiling] У кого тоже была такая англичанка? Пиши, как её звали."
+  ]
+ }
+}
