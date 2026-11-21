@@ -44,6 +44,7 @@ function face(st, c) {
   const by = ey - 100 - (st.mood === 'surprised' ? 16 : 0);
   for (const s of [-1, 1]) { const cx = s * 56, tilt = st.mood === 'angry' ? 18 : st.mood === 'sad' ? -16 : st.brows === 'up' ? -6 : 0;
     P(); g.moveTo(cx - s * 34, by + tilt); g.quadraticCurveTo(cx, by - 14, cx + s * 34, by - tilt * .3); g.strokeStyle = c.brow || OUT; g.lineWidth = 15; g.lineCap = 'round'; g.stroke(); }
+  if (st.earrings) for (const q2 of [-1, 1]) { P(); g.roundRect(q2 * 152 - 14, HY + 44, 28, 34, 8); fs(st.earrings, 5); }
   // nose + blush
   ell(4, HY + 40, 14, 11, c.skinS, 5);
   if (st.blush !== false) { ell(-92, HY + 60, 22, 11, 'rgba(255,120,110,0.28)', 0); ell(92, HY + 60, 22, 11, 'rgba(255,120,110,0.28)', 0); }
