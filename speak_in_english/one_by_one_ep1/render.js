@@ -241,7 +241,8 @@ function chunks(id) { const l = LN[id]; if (l.ch) return l.ch; const s = SHOWN[i
 function bold(s, x, y, size, fill) { g.font = `${size}px ${FONT}`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round';
   let f = size; while (g.measureText(s).width > 980 && f > 40) { f -= 4; g.font = `${f}px ${FONT}`; } g.lineWidth = f * .24; g.strokeStyle = '#000000'; g.strokeText(s, x, y); g.fillStyle = fill; g.fillText(s, x, y); }
 function captions(t, sh) {
-  for (const id in LN) { const l = LN[id]; if (!inW(t, l.at, l.end + .2)) continue; if (id === 'n14') continue;
+  let cur = null; for (const id in LN) { const l = LN[id]; if (inW(t, l.at, l.end + .2) && (!cur || l.at > LN[cur].at)) cur = id; }
+  for (const id of cur ? [cur] : []) { const l = LN[id]; if (id === 'n14') continue;
     const ch = chunks(id); let c = ch[0]; for (const q of ch) if (t - l.at >= q.s - .03) c = q;
     const en = /[A-Za-z]/.test(c.txt), pop = 1 + .1 * (1 - ease((t - l.at - c.s) / .1)), y = sh.kind === 'TH_CARD' || sh.kind === 'END' ? 1640 : CAPY;
     g.save(); g.translate(540, y); g.scale(pop, pop); bold(c.txt, 0, 0, 76, en ? '#ffd23f' : '#ffffff'); g.restore();
