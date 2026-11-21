@@ -51,6 +51,8 @@ export const C = {
   worker: { hair: 'side', hairC: '#1c1816', body: 'perahan', coat: '#4a5a6a', vest: '#6a5a40', skin: SKC, seed: 14 },
   worker2: { hair: 'side', hairC: '#1c1816', body: 'perahan', coat: '#7a6a4a', vest: '#4a4a3a', skin: SK.b, seed: 15 },
   man: { hair: 'side', hairC: '#2a2320', body: 'uniform', coat: '#6a5a4a', shirt: '#e3dcc2', tie: '#33352a', skin: SK.a, seed: 17 },
+  boy47: { hair: 'side', hairC: '#6a6a70', body: 'perahan', coat: '#5a6a7a', vest: '#3a4048', skin: SKC, seed: 3, brow: 6, glasses: true, stubble: true },
+  kid: { hair: 'side', hairC: '#1c1816', body: 'perahan', coat: '#8a7a52', vest: '#4a3a30', skin: SKC, seed: 21 },
   woman: { hair: 'bob', hairC: '#1c1816', body: 'dress', coat: '#7a3a5a', shirt: '#7a3a5a', skin: SKC, seed: 18 },
 };
 

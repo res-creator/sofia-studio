@@ -7,6 +7,15 @@ def V(at, tr=None, mv=None, sfx=None, **p):
     d = dict(at=at, p=dict(k='v2', **p), tr=tr, mv=mv, sfx=sfx or []); S.append(d)
 BOY, FAT, BRO, CLK, WK, WK2, MAN, WOM = 'boy', 'father', 'brother', 'clerk', 'worker', 'worker2', 'man', 'woman'
 def fig(x, y, s, who, **o): return [x, y, s, who, o]
+WD = json.load(open(f'{P}/timeline/words.json'))['words']
+import re as _re
+_nz = lambda t: _re.sub(r'[^a-zа-я0-9]', '', t.lower().replace('ё', 'е'))
+WARN = []
+def W(pre, after=0.0, fb=None):
+    m = _nz(pre)
+    for x in WD:
+        if x['start'] >= after - 0.05 and _nz(x['word']).startswith(m): return round(x['start'], 2)
+    WARN.append((pre, after)); return round(fb if fb is not None else after + 0.5, 2)
 def M(r=0.04, **k):
     d = dict(r=0.0)   # камера неподвижна: без наезда и рывков (замечание владелицы 19.11)
     if 'shake' in k: d['shake'] = k['shake']
@@ -101,6 +110,8 @@ V(164.3, bg='paper', bo={'col': '#f0e8d4'}, fx=[['sub', 166.1], ['ptag', 'под
 V(169.4, bg='deskRoom', figs=[fig(1400, 1010, 0.95, CLK, flip=True, exprs=[[169.4, 'neutral']], look=-1)], fx=[['plate', 171.0, 700, 400, '200 вопросов', '#f6f1e4', 96], ['qm', 171.5, 1000, 330, 1.4]], mv=M(0.04), sfx=[[171.0, 'pop', -12]])
 V(172.7, 'dip', bg='years', bo={'a': 1906, 'b': 1925, 'at': 172.8}, figs=[fig(1500, 1030, 0.8, BOY, appear=177.4, popIn=1, exprs=[[177.4, 'smile']])], fx=[['ptag', 'Ли', 1500, 340, 178.0, {'size': 90, 'bg': '#ffd43b'}], ['count', 173.2, 0, 19, 960, 880, {'size': 130, 'pl': 1}]], mv=M(0.03))
 
+
+exec(open(f'{P}/story/ch_full.py').read())
 
 # ------------------------------------------------------------ единый стиль «вырезки на архивных фото»
 FULL = ('angel_building', 'genthe', 'worden', 'leaving', 'lawrence', 'carved', 'poetry')
