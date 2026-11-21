@@ -8,4 +8,4 @@ Who wants to read? И весь класс умирает. У кого тоже �
 **Обложка:** `read_aloud_ep1_cover.png` · **Субтитры:** `read_aloud_ep1.srt`
 
 Чему учит: the (язык между зубами), work — «уёрк» (работать), walk — «уок» (гулять), Who wants to read?
-Голоса: ElevenLabs (рассказчик, англичанка) + Fish Audio (Вова). Музыка и звуки: asya/audio.
+Голоса: ElevenLabs. Музыка и звуки: asya/audio.
