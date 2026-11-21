@@ -17,7 +17,7 @@ for (const [k, st] of Object.entries({smug: {mood: 'smug'}, angry: {mood: 'angry
 // standing kids
 front('vova_wipe', 'vova', {pose: 'wave', mood: 'surprised', sweat: true});
 front('sasha_stand', 'sasha', {pose: 'down', mood: 'smug'}); front('sasha_win', 'sasha', {pose: 'wave', mood: 'grin'});
-front('hero_sad', 'hero', {pose: 'down', mood: 'sad'}); front('hero_shrug', 'hero', {pose: 'shrug', mood: 'surprised'});
+front('herostand_sad', 'hero', {pose: 'down', mood: 'sad'}); front('hero_shrug', 'hero', {pose: 'shrug', mood: 'surprised'});
 // seated, facing the board (we see faces from the front)
 const SEATED = {hero_n: ['hero', {mood: 'flat'}], hero_o: ['hero', {mood: 'surprised'}], hero_sad: ['hero', {mood: 'sad'}], hero_sleep: ['hero', {mood: 'sleepy', blink: true}],
   hero_hold: ['hero', {pose: 'hold', mood: 'surprised', sweat: true}], hero_proud: ['hero', {pose: 'hold', mood: 'grin'}], hero_sweat: ['hero', {mood: 'surprised', sweat: true}],

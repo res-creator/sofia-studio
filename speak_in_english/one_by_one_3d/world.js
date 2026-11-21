@@ -144,7 +144,7 @@ at(C, () => { const wt = paint(512, 512, x => { x.fillStyle = '#3a3a68'; x.fillR
   // podium 1-2-3
   box(1.0, .9, .8, 0xf0c040, 0, .45, 2.0, paint(256, 256, x => { x.fillStyle = '#f0c040'; x.fillRect(0, 0, 256, 256); x.fillStyle = INKS; x.font = `180px ${BOLD}`; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('1', 128, 140); }));
   box(1.0, .6, .8, 0xc8ccd8, -1.0, .3, 2.0); box(1.0, .4, .8, 0xd89a5a, 1.0, .2, 2.0);
-  sashaPod = sprite('sasha_win_m0', 1.63, 640 / 1560, 0, .9, 2.1); heroPod = sprite('hero_sad_m0', 1.63, 640 / 1560, 1.0, 0, 3.0);
+  sashaPod = sprite('sasha_win_m0', 1.63, 640 / 1560, 0, .9, 2.1); heroPod = sprite('herostand_sad_m0', 1.63, 640 / 1560, 1.35, 0, 3.0);
   const cols = [0xffd23f, 0xe03050, 0x4ab0e0, 0x7ad060]; for (let i = 0; i < 60; i++) { const c = new THREE.Mesh(new THREE.PlaneGeometry(.06, .1), new THREE.MeshBasicMaterial({color: cols[i % 4], side: THREE.DoubleSide})); c.userData = {x: (rnd() - .5) * 5, z: 1 + rnd() * 3.5, s: .3 + rnd() * .6, p: rnd() * 10}; C.add(c); confetti.push(c); } });
 
 // ================= LOCATION D: corridor with lockers (x = 120) =================
@@ -184,7 +184,7 @@ const S = { // kind: [loc, [from pos, from look], [to pos, to look]]
   STRUGGLE: ['A', HEROCU, [V(.5, 1.18, 5.65), V(.5, .98, 8)]],
   SPIES: ['A', [V(-1.4, 2.0, 4.9), V(-1.4, 2.0, 0)], [V(-1.4, 2.0, 4.4), V(-1.4, 2.0, 0)]],
   EXIT: ['A', [V(-.3, 1.5, 9.2), V(2.4, 1.25, 0)], [V(-.2, 1.45, 8.5), V(2.6, 1.25, 0)]],
-  PODIUM: ['C', [V(.4, 1.45, 6.8), V(.45, 1.25, 0)], [V(.4, 1.43, 6.2), V(.45, 1.25, 0)]],
+  PODIUM: ['C', [V(.65, 1.4, 7.6), V(.65, 1.15, 0)], [V(.65, 1.39, 7.2), V(.65, 1.15, 0)]],
   CORRIDOR: ['D', [V(0, 1.4, 6.3), V(0, 1.15, 0)], [V(.05, 1.38, 5.6), V(0, 1.15, 0)]],
   MAP: ['B', [V(0, 2.8, .62), V(0, 0, .38)], [V(0, 2.5, .6), V(0, 0, .36)]],
   MEANING: ['A', [V(-1.4, 2.0, 4.9), V(-1.4, 2.0, 0)], [V(-1.4, 2.0, 4.3), V(-1.4, 2.0, 0)]],
@@ -256,11 +256,11 @@ window.renderAt = t => {
     tents.find(q => q.who === 'sasha').visible = fu >= 1; const ht = tents.find(q => q.who === 'hero'); ht.visible = t > sh.at + .3; if (ht.cur !== '6') { ht.cur = '6'; ht.lab('6'); } } else flyTent.visible = false;
   if (false) { const bu = Math.max(0, (t - sh.at) / (sh.end - sh.at)); balloon.position.set(hs.position.x + .32 + bu * .1, 1.15 + bu * bu * 2.2, hs.z0 + .3); balloon.rotation.z = Math.sin(t * 2) * .12; }
   // other locations
-  sashaPod.set(`sasha_win_m0`); heroPod.set('hero_sad_m0');
+  sashaPod.set(`sasha_win_m0`); heroPod.set('herostand_sad_m0');
   confetti.forEach(c => { const q = c.userData, y = 5.5 - ((t * q.s + q.p) % 5.5); c.position.set(q.x + Math.sin(t + q.p) * .2, y, q.z); c.rotation.set(t * 3 + q.p, t * 2, 0); });
   const sm = mf(talk(['s1'], t)); sashaCor.set(`sasha_stand_m${sm}`); heroCor.set('hero_shrug_m0');
   [teacher, sashaCor, heroCor, sashaPod].forEach((m, i) => { m.position.y = m.base + m.h / 2 + Math.abs(Math.sin(t * 2 + i)) * .008; });
-  for (const m of [teacher, vovaBoard, sashaPod, heroPod, sashaCor, heroCor]) { const wp = new THREE.Vector3(); m.getWorldPosition(wp); m.rotation.y = Math.max(-.7, Math.min(.7, Math.atan2(camera.position.x - wp.x, camera.position.z - wp.z))); }
+  for (const m of [teacher, vovaBoard, sashaPod, sashaCor, heroCor]) { const wp = new THREE.Vector3(); m.getWorldPosition(wp); m.rotation.y = Math.max(-.7, Math.min(.7, Math.atan2(camera.position.x - wp.x, camera.position.z - wp.z))); }
   renderer.render(scene, camera);
   // 2D pass: image, vignette, location dip, captions
   og.setTransform(1, 0, 0, 1, 0, 0); og.drawImage(renderer.domElement, 0, 0);

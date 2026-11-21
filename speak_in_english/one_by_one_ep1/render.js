@@ -274,10 +274,10 @@ function audio() {
   const sfx = n => path.join(D, 'sfx', n + '.mp3'), ev = [];
   for (const id in LN) ev.push([LN[id].file, LN[id].at, 1.0]);
   ev.push([sfx('whoosh'), M('n7', .62), .5]); ev.push([sfx('chime'), T('n12'), .4]); ev.push([sfx('ding'), T('n15'), .35]);
-  const args = ['-y', '-v', 'error'], fl = []; ev.forEach(([f]) => args.push('-i', f)); args.push('-stream_loop', '-1', '-i', sfx('music'));
+  const args = ['-y', '-v', 'error'], fl = []; ev.forEach(([f]) => args.push('-i', f)); args.push('-stream_loop', '-1', '-i', sfx('music_dyn'));
   ev.forEach(([f, at, gn], i) => fl.push(`[${i}:a]aresample=44100,aformat=channel_layouts=stereo,volume=${gn},adelay=${Math.round(at * 1000)}|${Math.round(at * 1000)}[a${i}]`));
   const m = ev.length, quiet = [[M('n8', .78), E('n8') + .4], [T('n14'), E('n14')]].map(([a, b]) => `(1-0.7*between(t,${a},${b}))`).join('*');
-  fl.push(`[${m}:a]aresample=44100,aformat=channel_layouts=stereo,atrim=0:${TOTAL},volume='0.14*${quiet}':eval=frame,afade=t=in:d=0.3,afade=t=out:st=${TOTAL - 1.5}:d=1.5[mus]`);
+  fl.push(`[${m}:a]aresample=44100,aformat=channel_layouts=stereo,atrim=0:${TOTAL},volume='0.18*${quiet}':eval=frame,afade=t=in:d=0.3,afade=t=out:st=${TOTAL - 1.5}:d=1.5[mus]`);
   fl.push(`${ev.map((_, i) => `[a${i}]`).join('')}[mus]amix=inputs=${m + 1}:normalize=0:duration=longest,atrim=0:${TOTAL},acompressor=threshold=0.05:ratio=4:attack=3:release=60:makeup=3,loudnorm=I=-15:TP=-1.5:LRA=7,alimiter=limit=0.8:level=disabled[out]`);
   args.push('-filter_complex', fl.join(';'), '-map', '[out]', '-ar', '44100', '-ac', '2', path.join(TMP, 'mix.wav'));
   const r = spawnSync('ffmpeg', args); if (r.status) { console.error(r.stderr.toString()); process.exit(1); } console.log('mix ok', TOTAL.toFixed(2));
