@@ -101,6 +101,17 @@ V(164.3, bg='paper', bo={'col': '#f0e8d4'}, fx=[['sub', 166.1], ['ptag', 'под
 V(169.4, bg='deskRoom', figs=[fig(1400, 1010, 0.95, CLK, flip=True, exprs=[[169.4, 'neutral']], look=-1)], fx=[['plate', 171.0, 700, 400, '200 вопросов', '#f6f1e4', 96], ['qm', 171.5, 1000, 330, 1.4]], mv=M(0.04), sfx=[[171.0, 'pop', -12]])
 V(172.7, 'dip', bg='years', bo={'a': 1906, 'b': 1925, 'at': 172.8}, figs=[fig(1500, 1030, 0.8, BOY, appear=177.4, popIn=1, exprs=[[177.4, 'smile']])], fx=[['ptag', 'Ли', 1500, 340, 178.0, {'size': 90, 'bg': '#ffd43b'}], ['count', 173.2, 0, 19, 960, 880, {'size': 130, 'pl': 1}]], mv=M(0.03))
 
+
+# ------------------------------------------------------------ единый стиль «вырезки на архивных фото»
+FULL = ('angel_building', 'genthe', 'worden', 'leaving', 'lawrence', 'carved', 'poetry')
+FLAT = ('photo', 'photoFull', 'black', 'paper', 'color', 'icons', 'years')
+for s in S:
+    p = s['p']; bg = p.get('bg')
+    if bg == 'photo' and p['bo'].get('src') in FULL: p['bg'] = 'photoFull'; p['bo'] = dict(src=p['bo']['src'], sep=0.65)
+    if p.get('figs'): p['sticker'] = 1
+    p['grain'] = 0.15
+    if p['bg'] not in FLAT and not s.get('tint'): s['tint'] = 'sepia'
+
 # ------------------------------------------------------------ сборка
 S.sort(key=lambda s: s['at']); shots = []; SFXL = []
 for i, s in enumerate(S):
@@ -108,6 +119,7 @@ for i, s in enumerate(S):
     d = dict(id=f'p{i + 1:03d}', start=round(s['at'], 3), end=round(en, 3), params=s['p'])
     if s['tr']: d['in'] = {'type': s['tr']} if s['tr'] in ('whip2', 'impact', 'drop', 'lightning') else {'type': s['tr'], 'dur': 0.35 if s['tr'] != 'dip' else 0.6}
     d['mv'] = s['mv'] or dict(r=0.0)
+    if s.get('tint'): d['tint'] = s['tint']
     shots.append(d)
     for c in s['sfx']: SFXL.append(dict(t=round(c[0], 3), name=c[1], gain=c[2], **({'dur': c[3]} if len(c) > 3 else {})))
     if s['tr'] == 'whip2': SFXL.append(dict(t=round(s['at'], 3), name='swish', gain=-12))
