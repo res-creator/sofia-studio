@@ -29,10 +29,12 @@ function grain(g, gt, a = 0.13) {
   g.save(); g.setTransform(E.PX, 0, 0, E.PX, 0, 0); g.globalAlpha = a; g.globalCompositeOperation = 'overlay'; const ox = (Math.floor(gt * 24) * 53) % 256, oy = (Math.floor(gt * 24) * 97) % 256;
   for (let x = -ox; x < 1920; x += 256) for (let y = -oy; y < 1080; y += 256) g.drawImage(GRAIN, x, y); g.restore();
 }
+let OC = null;
 function sticker(g, draw) {
-  const cv = g.canvas, oc = document.createElement('canvas'); oc.width = cv.width; oc.height = cv.height; const o = oc.getContext('2d'); o.setTransform(g.getTransform()); draw(o);
-  g.save(); g.setTransform(1, 0, 0, 1, 0, 0); const k = E.PX * 1.0, f = [[5, 0], [-5, 0], [0, 5], [0, -5], [4, 4], [-4, -4], [4, -4], [-4, 4]].map(([x, y]) => `drop-shadow(${x * k}px ${y * k}px 0 #fbf8f0)`).join(' ');
-  g.filter = f + ` drop-shadow(${10 * k}px ${16 * k}px ${18 * k}px rgba(0,0,0,.55))`; g.drawImage(oc, 0, 0); g.restore();
+  const cv = g.canvas; if (!OC || OC.width !== cv.width || OC.height !== cv.height) { OC = document.createElement('canvas'); OC.width = cv.width; OC.height = cv.height; }
+  const o = OC.getContext('2d'); o.setTransform(1, 0, 0, 1, 0, 0); o.clearRect(0, 0, OC.width, OC.height); o.setTransform(g.getTransform()); draw(o);
+  g.save(); g.setTransform(1, 0, 0, 1, 0, 0); const k = E.PX * 1.0, f = [[5, 0], [-5, 0], [0, 5], [0, -5]].map(([x, y]) => `drop-shadow(${x * k}px ${y * k}px 0 #fbf8f0)`).join(' ');
+  g.filter = f + ` drop-shadow(${10 * k}px ${16 * k}px ${18 * k}px rgba(0,0,0,.55))`; g.drawImage(OC, 0, 0); g.filter = 'none'; g.restore();
 }
 function photoBg(g, o) {
   const im = PH[o.src]; g.fillStyle = '#101014'; g.fillRect(-200, -200, 2320, 1480); if (!im) return;
