@@ -59,15 +59,15 @@ const TR = {t1: 'Доброе утро, класс!', c1: 'Доброе утро
 const SHOWN = {c1: 'Good mo-o-orning, tea-cher!', h1: 'I am on duty today!', h2: 'Торо… тороугх… сороуглы…', n8: 'Всё сдвинулось. Твой пятый уходит Саше. А тебе — шестой. А в шестом… вот это.'};
 
 // ---------------- shots ----------------
-const C = (z, x, y) => [z, x, y], WIDE = C(1, 540, 960), CW = C(1.15, 540, 1160), HERO = C(2.0, 300, 1300), PAIR = C(1.2, 540, 1450), TCU = C(2.3, 640, 660), TW = C(1.15, 560, 900);
+const C = (z, x, y) => [z, x, y], WIDE = C(1, 540, 960), CW = C(1.15, 540, 1160), HERO = C(2.0, 300, 1300), PAIR = C(1.2, 540, 1450), TCU = C(3.4, 660, 860), TW = C(2.2, 620, 900), FW = C(1.5, 560, 990);
 // [start, scene, camFrom, camTo, fast]  (camera in world coords of the scene; fast = quick punch-in)
 // mostly static framings with straight cuts; a quick punch-in only on 3 accents (Next!, the boss word, Sasha's answer)
-const SH = [[0, 'CLASS', CW, CW], [T('t1'), 'TEACH', WIDE, WIDE], [T('c1'), 'CHORUS', CW, CW], [T('n2'), 'HOSTAGE', CW, CW],
-  [T('n3'), 'NAMES', PAIR, PAIR], [T('t2'), 'TEACH', TW, TW], [T('n4'), 'AUTO', HERO, HERO], [M('h1', .55), 'BOARD', C(1.4, 420, 800), C(1.4, 420, 800)],
-  [T('t3'), 'TEACH', WIDE, WIDE], [T('n5'), 'MATH', WIDE, WIDE], [T('n6'), 'ANTHEM', WIDE, WIDE], [M('n6', .55), 'SLEEP', WIDE, WIDE],
+const SH = [[0, 'CLASS', CW, CW], [T('t1'), 'TEACH', FW, FW], [T('c1'), 'CHORUS', CW, CW], [T('n2'), 'HOSTAGE', CW, CW],
+  [T('n3'), 'NAMES', PAIR, PAIR], [T('t2'), 'TEACH', TW, TW], [T('n4'), 'AUTO', HERO, HERO], [M('h1', .55), 'BOARD', C(1.9, 420, 860), C(1.9, 420, 860)],
+  [T('t3'), 'TEACH', FW, FW], [T('n5'), 'MATH', WIDE, WIDE], [T('n6'), 'ANTHEM', WIDE, WIDE], [M('n6', .55), 'SLEEP', WIDE, WIDE],
   [T('n7'), 'CHAIN', WIDE, WIDE], [T('n8'), 'BALLOON', WIDE, WIDE], [M('n8', .78), 'BOSS', C(.7, 540, 900), WIDE, 1],
-  [T('t4'), 'TEACH', TW, C(2.4, 650, 660), 1], [T('h2'), 'STRUGGLE', HERO, HERO], [T('t5'), 'TEACH', TCU, TCU], [T('n9'), 'SPIES', WIDE, WIDE],
-  [T('n10'), 'EXIT', WIDE, WIDE], [T('t6'), 'TEACH', TW, TW], [T('n12'), 'PODIUM', WIDE, WIDE],
+  [T('t4'), 'TEACH', TW, C(3.8, 660, 840), 1], [T('h2'), 'STRUGGLE', HERO, HERO], [T('t5'), 'TEACH', TCU, TCU], [T('n9'), 'SPIES', WIDE, WIDE],
+  [T('n10'), 'EXIT', C(1.5, 720, 990), C(1.5, 720, 990)], [T('t6'), 'TEACH', TW, TW], [T('n12'), 'PODIUM', WIDE, WIDE],
   [T('n13'), 'CORRIDOR', WIDE, WIDE], [T('s1'), 'CORRIDOR', WIDE, C(2.0, 760, 1100), 1], [M('s1', .5), 'MAP', WIDE, WIDE],
   [T('t7'), 'TEACH', TCU, TCU], [T('n14'), 'MEANING', WIDE, WIDE], [T('n15') - .2, 'END', WIDE, WIDE]];
 const shotAt = t => { let s = SH[0], i = 0; SH.forEach((q, k) => { if (t >= q[0]) { s = q; i = k; } }); const end = SH[i + 1] ? SH[i + 1][0] : TOTAL; return {kind: s[1], at: s[0], end, i, from: s[2], to: s[3], fast: s[4], prev: i ? SH[i - 1][1] : null}; };
@@ -97,16 +97,21 @@ function schoolDesk(x, y, w, depth = 60, panel = 150) { // top + front panel + m
   ln([[x - w / 2 + 30, y + panel], [x - w / 2 + 30, y + panel + depth * 2.2]], 12, '#4a4f5a'); ln([[x + w / 2 - 30, y + panel], [x + w / 2 - 30, y + panel + depth * 2.2]], 12, '#4a4f5a');
   g.beginPath(); g.moveTo(x - w / 2 + 18, y - depth); g.lineTo(x + w / 2 - 18, y - depth); g.lineTo(x + w / 2, y); g.lineTo(x - w / 2, y); g.closePath(); g.fillStyle = '#e3b37a'; g.fill(); g.strokeStyle = INK; g.lineWidth = 7; g.stroke();
   rr(x - w / 2, y, w, 24, 4, '#c98a4a', 6); rr(x - w / 2 + 16, y + 24, w - 32, panel - 24, 4, '#b07a42', 6); }
-function backPerson(who, x, fy, s, o = {}) { const P = CAST[who].pal, L2 = CAST[who].look2 || {}, hair = P.hair || '#7a3a1e', top = P.card || '#7ccfb6', topS = P.cardS || top, skin = P.skin || '#fcd5b8';
+function backPerson(who, x, fy, s, o = {}) { const P = CAST[who].pal, L2 = CAST[who].look2 || {}, hair = P.hair || '#7a3a1e', hairS = P.hairS || hair, top = P.card || '#7ccfb6', topS = P.cardS || top, skin = P.skin || '#fcd5b8';
   g.save(); g.translate(x, fy); g.scale(s, s);
-  if (o.raise) { ln([[110, -840], [190, -1000], [210, -1240]], 54, INK); ln([[110, -840], [190, -1000], [210, -1240]], 40, top); ell(214, -1268, 30, 34, skin, 6); }
-  g.beginPath(); g.moveTo(-120, -880); g.quadraticCurveTo(-170, -860, -175, -800); g.lineTo(-185, -520); g.lineTo(185, -520); g.lineTo(175, -800); g.quadraticCurveTo(170, -860, 120, -880); g.closePath(); g.fillStyle = top; g.fill(); g.strokeStyle = INK; g.lineWidth = 7; g.stroke();
-  g.save(); g.clip(); g.fillStyle = topS; g.fillRect(120, -900, 80, 400); g.restore();
-  if (o.band) { rr(-196, -820, 60, 70, 8, '#e03030', 5); }
-  rr(-26, -950, 52, 80, 10, P.skinS || '#efb491', 6);
-  for (const q of [-1, 1]) ell(q * 142, -1090, 18, 30, skin, 6);
-  if (L2.hair === 'bald') { ell(0, -1110, 140, 160, skin, 7); } else if (!L2.hair || L2.hair === 'long') { g.beginPath(); g.moveTo(-170, -1120); g.bezierCurveTo(-180, -1300, 180, -1300, 170, -1120); g.lineTo(178, -880); g.lineTo(-178, -880); g.closePath(); g.fillStyle = hair; g.fill(); g.strokeStyle = INK; g.lineWidth = 7; g.stroke(); }
-  else { ell(0, -1110, 140, 162, skin, 7); g.beginPath(); g.ellipse(0, -1130, 146, 150, 0, Math.PI * .92, Math.PI * 2.08); g.closePath(); g.fillStyle = hair; g.fill(); g.strokeStyle = INK; g.lineWidth = 7; g.stroke(); }
+  // chair (seat + metal legs), then the back, then the backrest in front of it
+  ln([[-120, -420], [-120, -150]], 14, '#4a4f5a'); ln([[120, -420], [120, -150]], 14, '#4a4f5a');
+  if (o.raise) { ln([[110, -860], [180, -1010], [200, -1220]], 50, INK); ln([[110, -860], [180, -1010], [200, -1220]], 36, top); ell(202, -1250, 28, 32, skin, 6); }
+  g.beginPath(); g.moveTo(-110, -900); g.quadraticCurveTo(-160, -880, -165, -820); g.lineTo(-172, -470); g.lineTo(172, -470); g.lineTo(165, -820); g.quadraticCurveTo(160, -880, 110, -900); g.closePath(); g.fillStyle = top; g.fill(); g.strokeStyle = INK; g.lineWidth = 7; g.stroke();
+  g.save(); g.clip(); g.fillStyle = topS; g.fillRect(118, -920, 70, 470); g.restore();
+  
+  rr(-150, -560, 300, 110, 12, '#b07a42', 7);
+  rr(-30, -960, 60, 80, 10, P.skinS || '#efb491', 6);
+  for (const q of [-1, 1]) ell(q * 128, -1080, 16, 28, skin, 6);
+  // back of the head: all hair; long hair falls onto the shoulders
+  if (L2.hair === 'bald') ell(0, -1100, 128, 150, skin, 7);
+  else { ell(0, -1100, 130, 152, hair, 7); g.save(); g.beginPath(); g.ellipse(0, -1100, 130, 152, 0, 0, 7); g.clip(); g.fillStyle = hairS; g.fillRect(60, -1260, 80, 320); g.restore();
+    if (!L2.hair || L2.hair === 'long') { g.beginPath(); g.moveTo(-128, -1110); g.lineTo(-140, -860); g.quadraticCurveTo(0, -830, 140, -860); g.lineTo(128, -1110); g.closePath(); g.fillStyle = hair; g.fill(); g.strokeStyle = INK; g.lineWidth = 7; g.stroke(); } }
   g.restore(); }
 function backWall_old(t) { g.fillStyle = '#f3ead8'; g.fillRect(-1000, -1000, 3080, 3920); g.fillStyle = '#7fb8a8'; g.fillRect(-1000, 900, 3080, 400); ln([[-1000, 900], [2080, 900]], 7);
   g.fillStyle = '#d9a066'; g.fillRect(-1000, 1300, 3080, 2600); ln([[-1000, 1300], [2080, 1300]], 7);
@@ -127,7 +132,7 @@ function classRoom(t, o = {}) {
     r.desk.forEach(([x, y, w]) => deskSurface(x, y, w, 50 * r.s * 2));
     r.st.forEach(([x, who], i) => { const seed = ri * 7 + i, fy = dy + 560 * r.s;
       const ex = {seated: true, pose: 'desk', blink: blink(t, seed), mouth: 0, mood: 'flat'};
-      if (o.mode === 'chorus') Object.assign(ex, {mouth: .45 + .25 * Math.abs(Math.sin(t * 2 + seed * .3)), mood: 'sleepy'});
+      if (o.mode === 'chorus') { const c = talkId(['c1'], t - seed * .02); Object.assign(ex, {mouth: c > .05 ? .35 + .65 * c : 0, mood: 'flat'}); }
       if (o.mode === 'hostage') Object.assign(ex, {mood: 'sad', brows: 'sad'});
       if (o.mode === 'hostage' && ri === 1 && i === 0) Object.assign(ex, {pose: 'wave'});
       if (who === 'hero' && o.hero) Object.assign(ex, o.hero); if (who === 'vova' && o.vova) Object.assign(ex, o.vova);
@@ -152,14 +157,14 @@ function frontRoom(t, o = {}) {
   rr(180, 950, 120, 22, 4, '#3a6ad0', 4); rr(186, 930, 108, 22, 4, '#e05030', 4); rr(192, 910, 96, 22, 4, '#f0b030', 4);
   rr(360, 960, 60, 50, 6, '#c8664a', 5); for (let i = 0; i < 4; i++) ell(375 + i * 10, 920 - Math.abs(i - 1.5) * 8, 12, 40, '#3cb371', 4);
   ln([[520, 1010], [520, 960]], 6); ell(520, 930, 40, 40, '#4ab0e0', 5); ell(512, 922, 16, 12, '#7ac070', 0);
-  if (o.teacher !== false) teacher(t, 650, 1210, .58, o.teacher || {pose: 'hips'});
-  if (o.vovaBoard) { const s2 = .58, x = 380, y = 1210; person('vova', x, y, s2, {pose: 'wave', mood: 'o', wide: true, brows: 'up', blink: false});
-    rr(x - 110 * s2 - 10, y - 820 * s2, 40, 50, 6, '#e03030', 4);
+  if (o.teacher !== false) teacher(t, 660, 1205, .37, o.teacher || {pose: 'hips'});
+  if (o.vovaBoard) { const s2 = .37, x = 400, y = 1205; person('vova', x, y, s2, {pose: 'wave', mood: 'o', wide: true, brows: 'up', blink: false});
     const hx = x + 236 * s2 + Math.sin(t * 7) * 18, hy = y - 1080 * s2; g.save(); g.translate(hx, hy); g.rotate(Math.sin(t * 7) * .2); rr(-40, -28, 80, 56, 12, '#9ab0c8', 5); g.restore(); }
   // students from behind: one row, then the hero (right, cropped) in the foreground
-  schoolDesk(330, 1430, 340, 50, 160); schoolDesk(780, 1430, 340, 50, 160);
-  backPerson('girl3', 330, 1680, .42); backPerson('boy2', 780, 1680, .42);
-  backPerson('hero', 880, 2350, .95, {raise: o.raise}); backPerson('vova', 120, 2350, .95, {band: true});
+  // seen from the back of the class: a student's back at a desk (chair closer to us), a classmate's head cropped in the foreground
+  schoolDesk(330, 1380, 300, 40, 120); schoolDesk(790, 1380, 300, 40, 120);
+  backPerson('girl3', 330, 1560, .3); backPerson('hero', 790, 1560, .3, {raise: o.raise});
+  backPerson('vova', 150, 2020, .62);
 }
 function teachScene(t, ex = {}) { frontRoom(t, {teacher: {pose: 'hips', ...ex}}); }
 function boardScene(t) { frontRoom(t, {teacher: false, vovaBoard: true, board: [['Who is on duty?', 54]]}); }
@@ -189,7 +194,7 @@ function chain(t) { g.fillStyle = '#f3ead8'; g.fillRect(-1000, -1000, 3080, 3920
     rr(x - 66, 820, 132, 96, 18, hot ? '#ffe066' : '#ffffff', 6); text(lab, x, 870, lab.length > 1 ? 44 : 64, i === 4 ? '#c0283a' : INK, 'center', FONT);
     if (i === 4) text('ТЫ', x, 960, 40, '#c0283a', 'center', FONT); });
   if (zoom) { for (let i = 0; i < 6; i++) ln([[420 + i * 6, 1250 + i * 22], [488, 1250 + i * 22]], 7, '#3a6ab8'); g.save(); g.translate(540, 520); g.rotate(-.04); rr(-300, -70, 600, 140, 20, '#c0283a', 7); text('БОБ РАЗОГНАЛСЯ', 0, 4, 60, '#ffffff', 'center', FONT); g.restore(); } }
-function balloon(t) { g.fillStyle = '#bfe3ff'; g.fillRect(-1000, -1000, 3080, 3920); const u = clamp((t - T('n8')) / 2.5), bx = 540 + u * 260, by = 900 - u * 700;
+function balloon(t) { g.fillStyle = '#bfe3ff'; g.fillRect(-1000, -1000, 3080, 3920); const u = ease(clamp((t - T('n8')) / Math.max(1, M('n8', .78) - T('n8')))), bx = 540 + u * 300, by = 900 - u * 1400;
   ln([[bx, by + 160], [540 + u * 60, 1330]], 4); ell(bx, by, 150, 180, '#c0283a', 8); text('5', bx, by, 190, '#ffffff', 'center', FONT);
   hero(t, 540, 2700, 1.45, {pose: 'down', mood: 'sad', brows: 'sad'}); }
 function boss(t) { g.fillStyle = '#3a0a14'; g.fillRect(-1000, -1000, 3080, 3920); const k = ease((t - M('n8', .78)) / .4), sh = Math.sin(t * 40) * 4;
