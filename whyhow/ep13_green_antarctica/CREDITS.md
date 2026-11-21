@@ -35,12 +35,11 @@ Photos and video (Wikimedia Commons):
 - Cryolophosaurus ellioti 2022 Reconstruction.png — Leoomas, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Cryolophosaurus_ellioti_2022_Reconstruction.png
 - Glacialisaurus holotype PR 1823.jpg — Jens Lallensack, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Glacialisaurus_holotype_PR_1823.jpg
 - Glacialisaurus FMNH.jpg — Zissoudisctrucker, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Glacialisaurus_FMNH.jpg
-- Antarctopelta.jpg — Offy, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Antarctopelta.jpg
+- Antarctopelta LMR.jpg — Levi B. Martinez-Reza, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Antarctopelta_LMR.jpg
 - ANDRILL coretable.jpg — Peter West, Office of Polar Programs, National Science Foundation., Public domain, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:ANDRILL_coretable.jpg
 - Leaellynasaura reconstruction.png — PaleoEquii, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Leaellynasaura_reconstruction.png
 - Long Island view towards James Ross Island.jpg — euphro, CC BY-SA 2.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Long_Island_view_towards_James_Ross_Island.jpg
 - Antarctopelta oliveroi holotype left dentary MLP 86-X-28-1,.jpg — MARCELO A. REGUERO ZULMA GASPARINI EDUARDO B. OLIVERO RODOLFO A. CORIA MARTA S. FERNÁNDEZ JOSÉ P. O´GORMAN SOLEDAD GOUIRIC-CAVALLI CAROLINA , CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Antarctopelta_oliveroi_holotype_left_dentary_MLP_86-X-28-1%2C.jpg
-- Antarctopelta LMR.jpg — Levi B. Martinez-Reza, CC BY-SA 3.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Antarctopelta_LMR.jpg
 - Antarctopelta Oliveroi 20250105.jpg — Rjcastillo, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Antarctopelta_Oliveroi_20250105.jpg
 - Sauropodomorph skeletal material Antarctica PR 3051.jpg — Jens Lallensack, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Sauropodomorph_skeletal_material_Antarctica_PR_3051.jpg
 - Trinisaura santamartaensis.jpg — Daniel Méndez, CC BY-SA 4.0, via Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Trinisaura_santamartaensis.jpg
