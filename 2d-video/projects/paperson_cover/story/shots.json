@@ -1,0 +1,1 @@
+{"duration": 6, "shots": [{"id": "c01", "start": 0, "end": 6, "params": {"k": "v2", "bg": "photoFull", "bo": {"src": "poetry", "dim": 0.55, "br": 1.0, "nocredit": 1}, "sticker": 1, "grain": 0.12, "figs": [[1480, 1330, 2.15, "boy", {"exprs": [[0, "worried"]], "look": -0.3, "sweatAt": 0.1}]], "fx": []}, "mv": {"r": 0}}], "sfx": []}

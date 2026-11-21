@@ -1,0 +1,32 @@
+{
+ "language": "ru",
+ "speechLanguage": "ru",
+ "title": "\u0411\u0443\u043c\u0430\u0436\u043d\u044b\u0435 \u0441\u044b\u043d\u043e\u0432\u044c\u044f",
+ "aspect": "16:9",
+ "resolution": "1080p",
+ "fps": 24,
+ "style": "toon",
+ "voiceover": "input/voiceover.mp3",
+ "script": "input/script.txt",
+ "duration": 6,
+ "captions": false,
+ "bars": "none",
+ "fadeIn": 0.5,
+ "fadeOut": 0.8,
+ "music": {
+  "enabled": true,
+  "gainDb": -10
+ },
+ "sfx": {
+  "enabled": false,
+  "gainDb": -6
+ },
+ "loudness": -14,
+ "fonts": [
+  {
+   "family": "Caveat",
+   "file": "assets/Caveat.ttf",
+   "weight": "400 700"
+  }
+ ]
+}
