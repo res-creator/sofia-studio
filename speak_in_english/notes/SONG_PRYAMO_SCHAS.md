@@ -21,14 +21,14 @@ Mom is calling me — мама звонит: «Ну как ты?»
 I'm working, mom — работаю, дедлайны, факты.
 I'm studying hard — учу, конспекты на столе,
 I'm cooking dinner — готовлю, сковородка в огне.
-I'm cleaning my room — убираю, всё до блеска…
-Хотя… I'm lying — лежу. И вру. Обидно, но честно.
+I'm cleaning my room — убираю, всё до блеска.
+Хотя… I'm LYING — лежу. И вру. Обидно, но честно.
 
 [Hook – рэп, цепляющий, не петь]
 Right now, right now — прямо щас,
 Am, is, are — и ING у нас.
 I'm doing, you're doing, he's doing — вот так,
-Right now, right now — читай в такт.
+Right now, right now — читай в такт. (right now!)
 
 [Verse 2 – рэп, быстрая читка в бит]
 Are you coming tonight? — пацаны в чате орут,
@@ -42,10 +42,18 @@ They are dancing inside — внутри танцует полгорода.
 Right now, right now — прямо щас,
 Am, is, are — и ING у нас.
 I'm doing, you're doing, he's doing — вот так,
-Right now, right now — читай в такт.
+Right now, right now — читай в такт. (right now!)
 
 [Outro – голос]
-We are having fun. А ты? What are you doing right now? Пиши в комменты.
+We are having fun. А ты?
+What are you doing right now?
+Пиши в комменты.
+
+## Знаки (правила Suno)
+- [ ] — команды, не поются; ( ) — выкрик на фоне (right now!)
+- одно многоточие — только пауза перед панчем «Хотя… I'm LYING»
+- LYING заглавными — одно слово с напором
+- концовка разбита на строки: каждая строка — отдельная фраза
 
 ## Чему учит
 - am / is / are + ING = действие прямо сейчас
