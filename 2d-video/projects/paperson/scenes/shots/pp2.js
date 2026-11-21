@@ -21,6 +21,7 @@ function photoFull(g, o) {
   const cs = Math.max(1920 / im.width, 1080 / im.height) * (o.zoom ?? 1.02), w = im.width * cs, h = im.height * cs;
   g.save(); g.filter = o.tone === 'none' ? 'none' : `grayscale(1) sepia(${o.sep ?? 0.55}) contrast(1.08) brightness(${o.br ?? 0.9})`; g.drawImage(im, 960 - w / 2 + (o.dx ?? 0), 540 - h / 2 + (o.dy ?? 0), w, h); g.restore();
   g.fillStyle = `rgba(20,12,6,${o.dim ?? 0.28})`; g.fillRect(-200, -200, 2320, 1480);
+  const c = o.credit ?? PHC[o.src]; if (c && !o.nocredit) { g.save(); g.font = '600 24px sans-serif'; const tw = g.measureText(c).width + 32; g.fillStyle = 'rgba(10,10,16,.6)'; g.fillRect(960 - tw / 2, 1018, tw, 42); g.fillStyle = '#e8e4da'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(c, 960, 1039); g.restore(); }
 }
 let GRAIN = null;
 function grain(g, gt, a = 0.13) {

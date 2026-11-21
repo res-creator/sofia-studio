@@ -1,10 +1,42 @@
 [
  {
   "start": 0,
-  "end": 179.26,
+  "end": 199,
   "file": "mixkit_22.mp3",
   "gain": -8,
   "fadeIn": 1.5,
+  "fadeOut": 3.0
+ },
+ {
+  "start": 195,
+  "end": 315,
+  "file": "mixkit_41.mp3",
+  "gain": -8,
+  "fadeIn": 3.0,
+  "fadeOut": 3.0
+ },
+ {
+  "start": 311,
+  "end": 443,
+  "file": "mixkit_18.mp3",
+  "gain": -8,
+  "fadeIn": 3.0,
+  "fadeOut": 3.0
+ },
+ {
+  "start": 439,
+  "end": 638,
+  "file": "mixkit_22.mp3",
+  "gain": -8,
+  "fadeIn": 3.0,
+  "fadeOut": 3.0
+ },
+ {
+  "start": 634,
+  "end": 651.22,
+  "file": "mixkit_41.mp3",
+  "gain": -8,
+  "fadeIn": 3.0,
   "fadeOut": 3.0
  }
 ]
