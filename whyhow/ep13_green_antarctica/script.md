@@ -25,9 +25,9 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 **Title (main):** Antarctica Had Dinosaurs and Rainforests. So Why Did It Freeze?
 **Alternative titles:**
 - What Antarctica Looked Like Before the Ice
-- The Rainforest 900 km From the South Pole
+- The Rainforest 560 Miles From the South Pole
 
-**Thumbnail A:** real Cryolophosaurus skull (Field Museum) on a split frame, ice above and green forest below; text "ANTARCTICA", badge "90 MILLION YEARS AGO", hook "RAINFOREST / AT THE POLE".
+**Thumbnail A:** real Cryolophosaurus holotype skull (Field Museum) on a split frame, ice above and green forest below (no palms); text "ANTARCTICA", badge "190 MILLION YEARS AGO", hook "DINOSAURS / IN ANTARCTICA".
 **Thumbnail B:** NASA BedMachine "ice peeled off"; text "UNDER THE ICE", badge "ALPS-SIZED MOUNTAINS".
 
 ---
@@ -36,11 +36,11 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 **A001** February eighth, nineteen twelve. Robert Falcon Scott and his men are walking back from the South Pole. They are starving and freezing. But on a rocky ridge above the Beardmore Glacier, they stop, to collect rocks. [5]
 
-**A002** Sixteen kilos of rocks. They drag them on the sledge for weeks, to the very end. When a search party finds the tent in November, the rocks are lying next to the bodies. [5]
+**A002** Sixteen kilos of rocks, about thirty-five pounds. They drag them on the sledge for weeks, to the very end. When a search party finds the tent in November, the rocks are lying next to the bodies. [5]
 
-**A003** In those rocks are fossil leaves, from a plant called Glossopteris. Leaves from a forest. In Antarctica. [5]
+**A003** Among those rocks are fossil leaves, from a plant called Glossopteris. Leaves from a forest. In Antarctica. [5]
 
-**A004** Today, it is the coldest and driest place on Earth. But Antarctica once had forests, rivers, and dinosaurs. About ninety million years ago, there was even a rainforest, nine hundred kilometres from the South Pole. [1]
+**A004** Today, it is the coldest and driest place on Earth. But Antarctica once had forests, rivers, and dinosaurs. About ninety million years ago, there was even a swampy, temperate rainforest, nine hundred kilometres from the South Pole. That's about five hundred and sixty miles. [1]
 
 **A005** So what happened? How does a green continent freeze?
 
@@ -48,7 +48,7 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 **A007** The second answer: the asteroid. It killed the dinosaurs, so maybe it killed Antarctica too. But after the asteroid, Antarctica got even warmer. Palm trees grew on its coast. [25]
 
-**A008** So it's something else. First, we'll see how scientists proved that Antarctica was once joined to the rest of the world. Then we'll meet the dinosaurs that lived through months of darkness. Then we'll watch the slow freeze. And at the end, we'll look under the ice, at what it hides, and at what is starting to melt right now.
+**A008** So it's something else. First, the dinosaurs that lived through months of darkness. Then, the slow freeze. And at the end, what the ice hides, and what is starting to melt right now.
 
 ---
 
@@ -58,11 +58,11 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 **A010** The answer is that the oceans were not there yet. About three hundred million years ago, all the land on Earth was joined in one supercontinent, Pangaea. Its southern half, Gondwana, held South America, Africa, India, Australia, and Antarctica, right in the middle. [5]
 
-**A011** Then Gondwana began to break apart. Africa left first. India broke away and raced north, at up to twenty centimetres a year. Most plates move at two to five, about as fast as your fingernails grow. [6]
+**A011** Then Gondwana began to break apart. India broke away and raced north, at up to twenty centimetres a year, about eight inches. Most plates move at two to five centimetres, about as fast as your fingernails grow. [6]
 
 **A012** When India hit Asia, it pushed up the Himalayas. Remember them. They will matter at the end of this story. [6][28]
 
-**A013** But Antarctica stayed behind, still joined to South America and Australia. Animals could walk across it. And by the time of the dinosaurs, it was already near the pole. [7]
+**A013** But Antarctica stayed behind, still joined to South America and Australia. Animals could walk across it. And by the last age of the dinosaurs, it was already near the pole. [7]
 
 **A014** So the real question is not how Antarctica got to the pole. It's how anything lived there at all.
 
@@ -74,11 +74,11 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 **A016** Paleontologist William Hammer came to dig them out. His team cut about two thousand three hundred kilograms of rock off the mountain in three weeks. [8]
 
-**A017** Inside was a meat-eating dinosaur about six and a half metres long, with a strange crest running across its head, from side to side, like a quiff. Scientists nicknamed it Elvisaurus. Its real name is Cryolophosaurus, the frozen-crested lizard. It lived about a hundred and ninety million years ago. [8][9]
+**A017** Inside was a meat-eating dinosaur about six and a half metres long, twenty-one feet, with a strange crest running across its head, from side to side, like a pompadour. Scientists nicknamed it Elvisaurus. Its real name is Cryolophosaurus, the cold-crested lizard. It lived about a hundred and ninety million years ago. [8] [9]
 
-**A018** Nearby was a long-necked plant-eater, Glacialisaurus. Hunter and prey, side by side, on a mountain that is now buried in ice. [10]
+**A018** Nearby was a long-necked plant-eater, Glacialisaurus. Two very different dinosaurs, on one mountain that now stands in ice. [10]
 
-**A019** By the end of the dinosaur age, Antarctica was richer still. In twenty seventeen, a German research ship drilled into the seabed off West Antarctica. The core held soil, and a three-metre web of fossil roots, from a swampy rainforest that grew ninety million years ago. [1]
+**A019** Later in the age of dinosaurs, Antarctica was richer still. In twenty seventeen, a German research ship drilled into the seabed off West Antarctica. The core held soil, and a three-metre web of fossil roots, from a swampy rainforest that grew ninety million years ago. [1]
 
 **A020** In twenty twenty-four, the same core gave up something else: the first amber ever found in Antarctica. Drops of resin from the trees of that forest. [2]
 
@@ -86,15 +86,15 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 **A022** In nineteen eighty-six, two Argentine geologists, Eduardo Olivero and Roberto Scasso, found an armoured dinosaur on James Ross Island. Antarctopelta, the Antarctic shield. For forty years, it was known as the first dinosaur ever found in Antarctica. [11]
 
-**A023** Then, in twenty twenty-six, scientists at the British Antarctic Survey looked again at an old box. Inside was a dinosaur tail bone, collected by geologist Michael Thomson in December nineteen eighty-five, one month earlier. Nobody had looked at it properly for forty years. [13]
+**A023** Then, in twenty twenty-six, scientists described a bone that had sat in a British Antarctic Survey drawer for forty years: the tail bone of a long-necked titanosaur, collected by geologist Michael Thomson in December nineteen eighty-five, one month earlier. [13]
 
-**A024** On the same island were small two-legged plant-eaters, a raptor-like hunter, and duck-billed dinosaurs. And they probably did not leave for the winter. [12][14][15]
+**A024** On James Ross Island and its neighbours lived small two-legged plant-eaters, a raptor-like hunter, and, from a single tooth, a duck-billed dinosaur. [12] [14] [15]
 
-**A025** In twenty twenty-one, scientists in Alaska, which was also inside the polar circle back then, found the bones of baby dinosaurs, just hatched. A hatchling cannot walk thousands of kilometres. So their parents stayed through the polar night. The same was probably true in the south. [18]
+**A025** In twenty twenty-one, scientists in Alaska, which was also inside the polar circle back then, found the bones of baby dinosaurs, just hatched. A hatchling cannot walk thousands of kilometres. So their parents stayed through the polar night. Scientists think the same was probably true in the south. [18]
 
-**A026** The seas were even fuller. Long-necked plesiosaurs, some perhaps longer than a bus. Mosasaurs, giant sea lizards. And ammonites, shelled relatives of squid, by the thousands. [19][20][21]
+**A026** In the seas swam giant sea lizards, long-necked reptiles, and ammonites, shelled relatives of squid, by the thousands. [19] [20] [21]
 
-**A027** Then, sixty-six million years ago, an asteroid about ten kilometres wide hit Mexico. [22]
+**A027** Then, sixty-six million years ago, an asteroid about ten kilometres wide, six miles, hit Mexico. [22]
 
 ---
 
@@ -102,7 +102,7 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 **A028** On Seymour Island, the rock layers record what happened next. Scientists counted more than six thousand fossils there. Around two thirds of the species vanished, suddenly. The last seven kinds of ammonite disappeared in a single pulse. [21]
 
-**A029** The dinosaurs were gone. But Antarctica itself survived. Even one of their relatives made it through: a bird, a cousin of today's ducks, found on an Antarctic island and described in twenty twenty-five. [16]
+**A029** The dinosaurs were gone. But Antarctica itself survived. And birds are dinosaurs too, and their line made it through. On an Antarctic island, scientists found the skull of Vegavis, a cousin of today's ducks that lived alongside the last dinosaurs. It was described in twenty twenty-five. [16]
 
 **A030** And then the strangest chapter began. Antarctica got warmer.
 
@@ -110,11 +110,11 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 **A032** In mud fifty-three million years old, they found pollen from palm trees, and from relatives of the baobab. On the coast of Antarctica, there was a near-tropical rainforest. [25]
 
-**A033** Even in winter, in the darkness of the polar night, the coast stayed warmer than ten degrees Celsius. [25]
+**A033** Even in winter, in the darkness of the polar night, the coast stayed warmer than ten degrees Celsius, fifty Fahrenheit. [25]
 
 **A034** And Antarctica was not empty. In nineteen eighty-two, Michael Woodburne and William Zinsmeister found a tiny jaw on Seymour Island. It belonged to a marsupial, a pouched mammal, the first land mammal ever found in Antarctica. [23]
 
-**A035** Scientists think marsupials used Antarctica as a bridge, walking from South America to Australia. Without that green corridor, there might be no kangaroos today. [24]
+**A035** Scientists think marsupials used Antarctica as a bridge, walking from South America to Australia. Australia's marsupials, from koalas to kangaroos, probably arrived this way. [24]
 
 **A036** But this was Antarctica's last summer. And it ended without a single disaster.
 
@@ -130,7 +130,7 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 **A040** Now water could flow all the way around Antarctica. Today, that current moves about a hundred and seventy million cubic metres of water every second. That's more than a hundred times all the rivers on Earth combined. It acts like a wall, keeping warm water away. [32]
 
-**A041** But scientists now think the wall was a helper, not the cause. The main lever was carbon dioxide. When it fell below a threshold, ice could finally stay. [27][29]
+**A041** But scientists now think the wall was a helper, not the cause. In two thousand three, two climate modellers, Robert DeConto and David Pollard, found the switch: below a certain level of carbon dioxide, ice could stay. [27] [29]
 
 **A042** About thirty-four million years ago, it did. In just a few hundred thousand years, an ice sheet spread across the continent. [30]
 
@@ -138,7 +138,7 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 **A044** The forests shrank to the coasts. One of the last trees was the southern beech. Its fossil leaves have been found about five hundred kilometres from the South Pole. Its relatives still grow today, in Patagonia, Tasmania and New Zealand. [34]
 
-**A045** In the dry valleys, the last mosses and insects died out about fourteen million years ago. After that, Antarctica belonged to the ice. [34]
+**A045** In the Dry Valleys, the last mosses and insects died out about fourteen million years ago. A few dwarf beech shrubs may have hung on even later. But the continent now belonged to the ice. [34]
 
 **A046** But the ice did not erase that world. It only covered it.
 
@@ -150,11 +150,11 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 **A048** Fifty years later, two small planes flew over them with radar. Geophysicist Fausto Ferraccioli said they were the size of the European Alps, with sharp peaks and deep valleys. The Gamburtsev Mountains. No human has ever seen them. [35]
 
-**A049** Their roots formed about a billion years ago. The ice has protected them ever since it arrived. [36]
+**A049** Their roots formed about a billion years ago. Some scientists think the ice sheet was born on these very peaks, and it has protected them ever since. [36]
 
 **A050** There are deeper places too. Under Denman Glacier, the rock lies more than three and a half kilometres below sea level. It is the deepest point on land anywhere on Earth. [39]
 
-**A051** And there is water. Scientists now count seven hundred and sixty-six lakes under the Antarctic ice. The biggest, Lake Vostok, is about two hundred and fifty kilometres long. [38][37]
+**A051** And there is water. Hundreds of lakes lie under the Antarctic ice. The biggest, Lake Vostok, is about two hundred and fifty kilometres long. [38] [37]
 
 **A052** The ice itself is a record. In January twenty twenty-five, a European team drilled down two thousand eight hundred metres and reached ice at least one point two million years old. Every layer holds bubbles of ancient air. [43]
 
@@ -162,17 +162,17 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 ## CH6 — Why it froze, and what's moving now
 
-**A053** So why did Antarctica freeze?
+**A053** So, in the end, what froze Antarctica?
 
 **A054** Not because it drifted to the pole. It was already there when it was green. Not because of the asteroid. It got warmer after that. [7][25]
 
 **A055** It froze because carbon dioxide fell, slowly, over millions of years. And when the ocean closed a ring around it, the ice could stay. [27][32]
 
-**A056** That same lever is moving again, the other way. In West Antarctica, the Thwaites Glacier is about the size of Great Britain. Its front is a hundred and twenty kilometres wide. [41]
+**A056** Today, carbon dioxide is rising again, past four hundred and twenty parts per million. And at the edge of West Antarctica, the ice is already moving. The Thwaites Glacier is about the size of Florida. Its front is a hundred and twenty kilometres wide. [41]
 
-**A057** The ice flowing out of it has more than doubled since the nineteen nineties. Tides push warm seawater kilometres under the ice, melting it from below. [41][42]
+**A057** The ice flowing out of it and its neighbours has more than doubled since the nineteen nineties. Tides push warm seawater kilometres under the ice, melting it from below. [41] [42]
 
-**A058** If Thwaites collapsed completely, sea levels would rise about sixty-five centimetres. All of West Antarctica holds more than three metres. [41]
+**A058** If Thwaites collapsed completely, sea levels would rise about sixty-five centimetres, about two feet. All of West Antarctica holds more than three metres, over ten feet. Scientists say a full collapse is unlikely in the next few decades, but the retreat is speeding up. [41]
 
 **A059** That would not bring back the rainforest. But it would redraw every coastline on the map.
 
@@ -182,4 +182,4 @@ Rules (from `07_reference_breakdown_nov2026.md`):
 
 **A060A** If you could walk through Antarctica for one day, in the age of Cryolophosaurus, or among the palms fifty million years ago, which would you choose? Tell me in the comments. And tell me which place we should explain next.
 
-**A060** Scott's rocks are in London today, at the Natural History Museum. Sixteen kilos he refused to leave behind, because they proved that the coldest place on Earth was once green. This was How It's Run. [5]
+**A060** Scott's rocks are in London today, at the Natural History Museum. Sixteen kilos they refused to leave behind. Two years later, those leaves were described in London, one more clue that the coldest place on Earth was once green. This was How It's Run. [5]

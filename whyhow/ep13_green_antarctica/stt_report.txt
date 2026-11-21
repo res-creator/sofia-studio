@@ -1,0 +1,61 @@
+A001 0.930 replace: eighth nineteen twelve -> 8th 1912
+A002 0.932 replace: sixteen -> 16 | replace: thirty five -> 35
+A003 0.941 replace: glossopteris -> glassopterus
+A004 0.857 replace: ninety -> 90 | replace: nine hundred kilometres -> 900 km | replace: five hundred and sixty -> 560
+A005 1.000 
+A006 1.000 
+A007 1.000 
+A008 1.000 
+A009 0.962 replace: glossopteris -> glossopterous
+A010 0.941 replace: three hundred -> 300 | replace: pangaea -> pangea
+A011 0.822 replace: twenty centimetres -> 20 cm | replace: eight -> 8 | replace: two to five centimetres -> 2 5 cm
+A012 1.000 
+A013 1.000 
+A014 1.000 
+A015 0.787 replace: nineteen ninety -> 1990 | replace: elliot -> elliott | replace: kirkpatrick -> patrick | replace: four thousand metres -> 4 000 meters
+A016 0.875 replace: two thousand three hundred -> 2 300
+A017 0.904 replace: metres -> meters | replace: twenty one -> 21 | replace: a hundred and ninety -> 190
+A018 1.000 
+A019 0.923 replace: twenty seventeen -> 2017 | replace: metre -> meter | replace: ninety -> 90
+A020 0.923 replace: twenty twenty four -> 2024
+A021 0.894 replace: nine hundred kilometres -> 900 kilometers
+A022 0.892 replace: nineteen eighty six -> 1986 | replace: armoured -> armored | replace: forty -> 40
+A023 0.810 replace: twenty twenty six -> 2026 | replace: forty -> 40 | replace: tail bone -> tailbone | replace: thomson -> thompson | replace: nineteen eighty five -> 1985
+A024 0.902 replace: neighbours -> neighbors | replace: plant eaters -> planteaters
+A025 0.938 replace: twenty twenty one -> 2021 | replace: kilometres -> kilometers
+A026 1.000 
+A027 0.774 replace: sixty six -> 66 | replace: ten kilometres -> 10 kilometers
+A028 0.919 replace: layers -> layer's | replace: six thousand -> 6 000
+A029 0.935 replace: vegavis -> vigavis | replace: twenty twenty five -> 2025
+A030 0.842 replace: antarctica -> and tarktica
+A031 0.772 replace: twenty ten -> 2010 | replace: joides -> joyde's | replace: four kilometres -> 4 kilometers | replace: henk brinkhuis -> hank brinkhouse
+A032 0.915 replace: fifty three -> 53 | replace: baobab -> bayobab
+A033 0.900 replace: ten -> 10 | replace: fifty -> 50
+A034 0.889 replace: and -> an | replace: nineteen eighty two -> 1982 | replace: woodburne -> woodman
+A035 1.000 
+A036 1.000 
+A037 1.000 
+A038 1.000 
+A039 0.909 replace: thirty five -> 35 | replace: eight hundred kilometres -> 800 kilometers
+A040 0.886 replace: a hundred and seventy -> 170 | replace: metres -> meters | replace: a hundred -> 100
+A041 0.889 replace: two thousand three -> 2003 | replace: modellers -> modelers | replace: deconto -> decanto
+A042 0.837 replace: thirty four -> 34 | replace: an -> and | replace: sheet -> sheets
+A043 0.949 replace: ninety percent -> 90
+A044 0.886 replace: forests -> forest | replace: beech -> beach | replace: five hundred kilometres -> 500 kilometers
+A045 0.943 replace: fourteen -> 14 | replace: beech -> beach
+A046 1.000 
+A047 0.900 replace: nineteen fifty eight -> 1958
+A048 0.921 replace: fausto ferraccioli -> fosto ferricioli | replace: gamburtsev -> gombertssef
+A049 1.000 
+A050 0.968 replace: kilometres -> kilometers
+A051 0.844 replace: two hundred and fifty kilometres -> 250 kilometers
+A052 0.767 replace: twenty twenty five -> 2025 | replace: two thousand eight hundred metres -> 2 800 meters | replace: one point two -> 1 2
+A053 1.000 
+A054 1.000 
+A055 1.000 
+A056 0.854 replace: four hundred and twenty -> 420 | replace: a hundred and twenty kilometres -> 120 kilometers
+A057 0.877 replace: neighbours -> neighbors | replace: nineteen nineties -> 1990s | replace: kilometres -> kilometers
+A058 0.854 replace: sixty five centimetres -> 65 centimeters | replace: two -> 2 | replace: three metres -> 3 meters | replace: ten -> 10
+A059 1.000 
+A060 0.977 replace: sixteen -> 16
+A060A 0.975 replace: fifty -> 50
