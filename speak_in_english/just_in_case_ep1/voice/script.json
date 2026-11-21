@@ -1,0 +1,110 @@
+{
+ "voices": {
+  "katya": [
+   "FGY2WhTYpPnrIDTdsKH5",
+   "eleven_v3",
+   "ru"
+  ],
+  "tutor": [
+   "TX3LPaxmHKxFdv7VOQHJ",
+   "eleven_v3",
+   "en"
+  ],
+  "officer": [
+   "pNInz6obpgDQGcFmaJgB",
+   "eleven_v3",
+   "en"
+  ],
+  "nar": [
+   "pqHfZKP75CvOlQylNhV4",
+   "eleven_v3",
+   "ru"
+  ]
+ },
+ "lines": {
+  "t1": [
+   "tutor",
+   "[cheerful, fast] Hi, Katya! New York tomorrow? Awesome! Let's start with the basics. Hello, how are you?"
+  ],
+  "k1": [
+   "katya",
+   "[dismissive] Это я знаю. [excited] Как сказать: «мой кот съел мой паспорт»?"
+  ],
+  "t2": [
+   "tutor",
+   "[confused, slowly] ...My cat... ate my passport?"
+  ],
+  "k2": [
+   "katya",
+   "[carefully, strong Russian accent] Май кэт эйт май паспорт. [pleased] Записала! [curious] А как сказать: «это не моё, мне подкинули»?"
+  ],
+  "t3": [
+   "tutor",
+   "[nervous] It's not mine. Someone put it in my bag. [suspicious] ...Wait. Why do you need this?"
+  ],
+  "k3": [
+   "katya",
+   "[innocent] На всякий случай! [excited] А «я не флиртую, у меня просто глаз дёргается»?"
+  ],
+  "t4": [
+   "tutor",
+   "[very slowly, tired] I'm not flirting. My eye is just twitching."
+  ],
+  "k4": [
+   "katya",
+   "[sympathetic] Вам тоже пригодится."
+  ],
+  "t5": [
+   "tutor",
+   "[exhausted] Okay. Lesson's over. That's fifty dollars."
+  ],
+  "k5": [
+   "katya",
+   "[innocent, sweet] А как сказать: «у меня нет денег»?"
+  ],
+  "t6": [
+   "tutor",
+   "[deadpan] ...I don't have any money."
+  ],
+  "k6": [
+   "katya",
+   "[shouting happily, strong Russian accent] Ай донт хэв эни мани! Спасибо!"
+  ],
+  "n1": [
+   "nar",
+   "[dramatic] Через неделю. Аэропорт Нью-Йорка."
+  ],
+  "o1": [
+   "officer",
+   "[stern, loud] Ma'am! Is this your bag? [suspicious] Something is moving inside."
+  ],
+  "k7": [
+   "katya",
+   "[panicking, strong Russian accent] Итс нот майн! Самуан пут ит ин май бэг!"
+  ],
+  "o2": [
+   "officer",
+   "[suspicious] Okay... and where is your passport?"
+  ],
+  "k8": [
+   "katya",
+   "[sad, guilty, strong Russian accent] Май кэт... эйт май паспорт."
+  ],
+  "o3": [
+   "officer",
+   "[long pause, confused] ...Are you flirting with me?"
+  ],
+  "k9": [
+   "katya",
+   "[nervous, strong Russian accent] Ай эм нот флёртинг! Май ай из джаст твичинг!"
+  ],
+  "o4": [
+   "officer",
+   "[sighs heavily] ...Welcome to America."
+  ],
+  "n2": [
+   "nar",
+   "[friendly] Четыре фразы на всякий случай. Какую выучишь первой? Пиши в комментариях!"
+  ]
+ }
+}
