@@ -119,8 +119,10 @@ function drawShot(buf, shot, lt) {
 const BARS = () => ({ none: 0, wide: V(60, 0), scope: V(138, 170), thin: V(30, 60) });
 const barVal = (s) => (typeof (s?.bars ?? E.cfg.bars) === 'number' ? (s.bars ?? E.cfg.bars) : BARS()[s?.bars ?? E.cfg.bars ?? V('wide', 'none')] ?? 0);
 
+// карта времени: config.timeMap = [[новое, старое], ...] (кусочно-линейная): озвучка перемонтирована, кадры остаются на старой шкале
+function mapTime(tn) { const M = E.cfg.timeMap; if (!M || !M.length) return tn; if (tn <= M[0][0]) return M[0][1] + (tn - M[0][0]); for (let i = 1; i < M.length; i++) { if (tn <= M[i][0]) { const [a0, b0] = M[i - 1], [a1, b1] = M[i]; return a1 === a0 ? b1 : b0 + (b1 - b0) * (tn - a0) / (a1 - a0); } } const L = M[M.length - 1]; return L[1] + (tn - L[0]); }
 window.renderFrame = function (f) {
-  const t = f / E.fps, i = shotIndexAt(t), shot = E.shots[i], lt = t - shot.start;
+  const tn = f / E.fps, t = mapTime(tn), i = shotIndexAt(t), shot = E.shots[i], lt = t - shot.start;
   drawShot(bufA, shot, lt);
   const tr = shot.in || { type: 'cut' }, tdur = tr.dur ?? ({ whip: 0.35, whip2: 0.21, impact: 0.33, drop: 0.29, lightning: 0.25 }[tr.type] ?? 0.5);
   const W = main.width, H = main.height; mg.setTransform(1, 0, 0, 1, 0, 0); mg.globalAlpha = 1; mg.globalCompositeOperation = 'source-over';
@@ -161,7 +163,7 @@ window.renderFrame = function (f) {
   if (E.cfg.captions && shot.captions !== false) captions(mg, t, E.cfg.captionStyle || {});
   const cur = barVal(shot), prevB = i > 0 ? barVal(E.shots[i - 1]) : cur, bar = prevB + (cur - prevB) * ease.inOut(prog(lt, 0, 0.6));
   if (bar > 0) { mg.fillStyle = '#000'; mg.fillRect(0, 0, E.W, bar); mg.fillRect(0, E.H - bar, E.W, bar); }
-  const fi = E.cfg.fadeIn ?? 0.5, fo = E.cfg.fadeOut ?? 0.8, dur = window.DURATION, fade = Math.max(fi > 0 ? 1 - t / fi : 0, fo > 0 ? 1 - (dur - t) / fo : 0);
+  const fi = E.cfg.fadeIn ?? 0.5, fo = E.cfg.fadeOut ?? 0.8, dur = window.DURATION, fade = Math.max(fi > 0 ? 1 - tn / fi : 0, fo > 0 ? 1 - (dur - tn) / fo : 0);
   if (fade > 0) { mg.fillStyle = `rgba(0,0,0,${clamp(fade)})`; mg.fillRect(0, 0, E.W, E.H); }
   if (q.has('debug')) { mg.fillStyle = 'rgba(0,0,0,.6)'; mg.fillRect(0, E.H - 54, E.W, 54); text(mg, `${shot.id}  ${t.toFixed(2)}s  (${lt.toFixed(2)}/${(shot.end - shot.start).toFixed(2)})  ${(shot.line || '').slice(0, 70)}`, 20, E.H - 27, { size: 26, color: '#fff', font: FONTS.ui, weight: 800, align: 'left' }); }
   mg.setTransform(1, 0, 0, 1, 0, 0);

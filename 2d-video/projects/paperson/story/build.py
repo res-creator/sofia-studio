@@ -1,13 +1,13 @@
 # Раскадровка пробного куска «Бумажные сыновья» (0:00-2:58) -> story/shots.json. Времена абсолютные, по словам озвучки.
 import json, os
 P = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-END = float(json.load(open(f'{P}/config.json'))['duration'])
+_CFG = json.load(open(f'{P}/config.json')); END = float(_CFG.get('oldDuration', _CFG['duration']))
 S = []
 def V(at, tr=None, mv=None, sfx=None, **p):
     d = dict(at=at, p=dict(k='v2', **p), tr=tr, mv=mv, sfx=sfx or []); S.append(d)
 BOY, FAT, BRO, CLK, WK, WK2, MAN, WOM = 'boy', 'father', 'brother', 'clerk', 'worker', 'worker2', 'man', 'woman'
 def fig(x, y, s, who, **o): return [x, y, s, who, o]
-WD = json.load(open(f'{P}/timeline/words.json'))['words']
+WD = json.load(open(f'{P}/story/words_old.json'))['words']
 import re as _re
 _nz = lambda t: _re.sub(r'[^a-zа-я0-9]', '', t.lower().replace('ё', 'е'))
 WARN = []
@@ -42,7 +42,7 @@ V(19.9, bg='color', bo={'col': '#1f2438'}, panels=[
     {'at': 21.2, 'x': 980, 'y': 150, 'w': 870, 'h': 640, 'bg': 'doorHouse', 'figs': [fig(1440, 1020, 0.95, FAT, flip=True, exprs=[[21.2, 'neutral']])], 'over': [['plate', 22.0, 1220, 280, 1, '#f6f1e4', 90]]}],
   fx=[['ptxt', '«отец»', 1415, 880, 90, 21.6, {'col': '#ffffff'}], ['ptxt', 'ты', 505, 880, 90, 20.2, {'col': '#ffffff'}], ['stamp', 24.3, 960, 470, 190]], mv=M(0.025), sfx=[[24.3, 'hit', -9]])
 V(25.1, 'whip2', bg='color', bo={'col': '#1a0e12'}, figs=[fig(960, 1010, 1.1, BOY, exprs=[[25.1, 'sad']], look=0.5)], fx=[['stamp', 25.7, 960, 480, 260], ['ptxt', 'ОТКАЗАТЬ', 960, 900, 150, 25.7, {'col': '#e2483a'}]], mv=M(0.045), sfx=[[25.7, 'hit', -9]])
-V(26.7, bg='color', bo={'col': '#2a2638'}, fx=[['count', 27.2, 0, 31, 960, 330, {'size': 300, 'dur': 0.9, 'pl': 1}]], mv=M(0.03), sfx=[[27.2, 'counter', -14]])
+V(26.7, bg='color', bo={'col': '#2a2638'}, fx=[['count', 26.9, 0, 31, 960, 400, {'size': 300, 'dur': 0.9, 'pl': 1}]], mv=M(0.03), sfx=[[27.2, 'counter', -14]])
 V(28.5, bg='deskRoom', figs=[fig(520, 1010, 0.9, BOY, holdR='folder', exprs=[[28.5, 'worried']], look=1), fig(1400, 1010, 0.95, CLK, flip=True, exprs=[[28.5, 'neutral']], look=-1)],
   fx=[['doc', 29.2, 960, 420, 330, 230, 'Признание', 0.04, 54], ['ptag', 'признаться во всём', 960, 150, 29.2, {'size': 74, 'bg': '#ffd43b'}]], mv=M(0.045, kick=1, kx=-25))
 V(30.4, bg='color', bo={'col': '#2a2638'}, figs=[fig(460, 1010, 0.8, MAN, exprs=[[30.4, 'sad']]), fig(960, 1010, 0.8, BRO, exprs=[[30.4, 'worried']]), fig(1460, 1010, 0.8, WOM, exprs=[[30.4, 'sad']])],
@@ -58,15 +58,15 @@ V(42.83, bg='capitol', fx=[['ptag', '1882', 300, 150, 42.9, {'size': 90, 'bg': '
 V(44.5, bg='deskRoom', bo={'tx': 1130}, figs=[fig(700, 1010, 0.9, CLK, pose='cut', holdR='pen', exprs=[[44.5, 'focus']], look=1)], fx=[['doc', 46.4, 1130, 640, 330, 220, 'Закон', 0.04, 50], ['ptag', 'закон написан', 960, 140, 47.0, {'size': 78, 'bg': '#f6efdc'}]], mv=M(0.05, kick=1, kx=25))
 V(45.9, bg='photo', bo={'src': 'law', 'maxh': 860}, fx=[['ptag', 'закон 1882', 960, 120, 46.8, {'size': 74, 'bg': '#ffd43b'}]], mv=M(0.0))
 V(48.6, bg='railroad', figs=[fig(560, 1020, 0.7, WK, exprs=[[48.6, 'neutral']], appear=48.6, popIn=1), fig(1250, 1020, 0.7, WK2, flip=True, exprs=[[48.8, 'neutral']], appear=48.8, popIn=1)],
-  over=[['hat', 560, 1020, 0.7], ['hat', 1250, 1020, 0.7]], fx=[['ptag', 'Америка зовёт работников', 960, 130, 49.1, {'size': 72}]], mv=M(0.04))
+  fx=[['ptag', 'Америка зовёт работников', 960, 130, 49.1, {'size': 72}]], mv=M(0.04))
 V(50.4, bg='photo', bo={'src': 'rail', 'maxw': 900, 'maxh': 600}, fx=[['ptag', 'китайцы едут', 960, 120, 50.6, {'size': 74, 'bg': '#ffd43b'}]], mv=M(0.0))
-V(51.9, bg='railroad', bo={'move': 1}, figs=[fig(960, 1020, 0.75, WK, exprs=[[51.9, 'worried']], look=1)], over=[['hat', 960, 1020, 0.75]], fx=[['ptag', 'Запад', 300, 150, 52.2, {'size': 80, 'bg': '#ffd43b'}], ['dim', [[51.9, 0.0], [53.0, 0.3]]]], mv=M(0.045, kick=1, kx=-25))
+V(51.9, bg='railroad', bo={'move': 1}, figs=[fig(960, 1020, 0.75, WK, exprs=[[51.9, 'worried']], look=1)], fx=[['ptag', 'Запад', 300, 150, 52.2, {'size': 80, 'bg': '#ffd43b'}], ['dim', [[51.9, 0.0], [53.0, 0.3]]]], mv=M(0.045, kick=1, kx=-25))
 V(53.9, bg='railroad', figs=[fig(700, 1020, 0.8, WK, exprs=[[53.9, 'worried'], [56.2, 'sad']], look=1, sweatAt=56.4), fig(1250, 1020, 0.8, WK2, flip=True, exprs=[[53.9, 'worried']])],
-  over=[['hat', 700, 1020, 0.8], ['hat', 1250, 1020, 0.8]], fx=[['plate', 56.2, 960, 250, '«сбивают заработки»', '#f6f1e4', 74], ['strike', 57.1, 960, 250, 700]], mv=M(0.04), sfx=[[56.2, 'pop', -12], [57.1, 'hit', -12]])
+  fx=[['plate', 56.2, 960, 250, '«сбивают заработки»', '#f6f1e4', 74], ['strike', 57.1, 960, 250, 700]], mv=M(0.04), sfx=[[56.2, 'pop', -12], [57.1, 'hit', -12]])
 V(57.6, 'whip2', bg='capitol', fx=[['ptag', 'Вашингтон', 960, 130, 57.9, {'size': 84, 'bg': '#ffd43b'}], ], mv=M(0.045))
 V(59.3, bg='photo', bo={'src': 'law', 'maxh': 860}, fx=[['ptag', 'закон об исключении китайцев', 960, 120, 59.5, {'size': 74, 'bg': '#ffd43b'}]], mv=M(0.0))
 
-V(61.4, bg='color', bo={'col': '#2a2638'}, figs=[fig(640, 1010, 0.95, WK, exprs=[[61.4, 'worried'], [62.4, 'sad']], look=1)], over=[['hat', 640, 1010, 0.95]],
+V(61.4, bg='color', bo={'col': '#2a2638'}, figs=[fig(640, 1010, 0.95, WK, exprs=[[61.4, 'worried'], [62.4, 'sad']], look=1)],
   fx=[['doc', 61.5, 1330, 560, 420, 300, 'Закон', 0.04, 60], ['stamp', 62.4, 640, 600, 220], ['ptag', 'рабочим', 640, 150, 62.4, {'size': 84, 'bg': '#ffd43b'}]], mv=M(0.05, kick=1, kx=25), sfx=[[62.4, 'hit', -9]])
 V(63.2, bg='color', bo={'col': '#243046'}, figs=[fig(460, 1010, 0.8, MAN, exprs=[[63.2, 'smile']]), fig(960, 1010, 0.8, BRO, exprs=[[63.2, 'smile']]), fig(1460, 1010, 0.8, CLK, flip=True, exprs=[[63.2, 'smile']])],
   fx=[['plate', 63.4, 460, 300, 'купцы', '#f6f1e4', 78], ['plate', 64.0, 960, 300, 'студенты', '#f6f1e4', 78], ['plate', 64.6, 1460, 300, 'дипломаты', '#f6f1e4', 78], ['ptag', 'узкие двери', 960, 130, 65.8, {'size': 76, 'bg': '#ffd43b'}]], mv=M(0.04), sfx=[[63.4, 'pop', -12], [64.0, 'pop', -12], [64.6, 'pop', -12]])
@@ -86,7 +86,7 @@ V(98.3, bg='archive', bo={'burn': {'kv': [[98.3, 0.1], [101.0, 1.0]], 'd': 2.6}}
 V(102.3, bg='color', bo={'col': '#3a2e3a'}, figs=[fig(520, 1010, 0.85, MAN, pose='up', exprs=[[102.3, 'focus']]), fig(960, 1010, 0.85, WOM, exprs=[[102.3, 'focus']]), fig(1400, 1010, 0.85, BRO, pose='up', exprs=[[102.3, 'focus']])],
   fx=[['plate', 105.0, 960, 280, '«родился здесь»', '#f6f1e4', 84], ['ptag', 'многие', 300, 130, 102.7, {'size': 76}]], mv=M(0.04), sfx=[[105.0, 'pop', -12]])
 V(106.0, bg='color', bo={'col': '#2a3846'}, figs=[fig(960, 1010, 0.95, MAN, exprs=[[106.0, 'smile']])], fx=[['ok', 107.0, 1400, 580, 130], ['ptag', 'часть говорит правду', 960, 140, 106.6, {'size': 76, 'bg': '#ffd43b'}]], mv=M(0.045, kick=1, kx=20), sfx=[[107.0, 'ding', -14]])
-V(107.8, bg='capitol', fx=[['ptag', 'Верховный суд', 960, 120, 108.2, {'size': 80, 'bg': '#ffd43b'}], ['ptxt', '1898', 960, 940, 170, 109.0, {'col': '#ffffff'}]], mv=M(0.045))
+V(107.8, bg='capitol', fx=[['ptag', 'Вашингтон, 1898', 960, 120, 108.2, {'size': 80, 'bg': '#ffd43b'}], ['ptxt', '1898', 960, 940, 170, 109.0, {'col': '#ffffff'}]], mv=M(0.045))
 V(111.1, bg='color', bo={'col': '#2a3846'}, figs=[fig(620, 1010, 0.9, WOM, holdR='baby', exprs=[[111.1, 'smile']])], fx=[['doc', 112.0, 1300, 560, 440, 300, 'Гражданин', 0.03, 56], ['ptag', 'родился в Америке', 960, 130, 113.0, {'size': 78, 'bg': '#ffd43b'}], ['ok', 114.3, 1300, 700, 130]], mv=M(0.045, kick=1, kx=20), sfx=[[114.3, 'ding', -14]])
 V(115.2, bg='archive', bo={'empty': 1, 'dim': 0.35}, fx=[['qm', 116.7, 560, 400, 1.6], ['qm', 117.0, 1320, 440, 1.3], ['ptag', 'архива больше нет', 960, 130, 118.4, {'size': 76, 'bg': '#f6efdc'}]], mv=M(0.04, px=-30))
 V(117.6, bg='photo', bo={'src': 'worden', 'maxw': 1100, 'maxh': 860}, fx=[['ptag', 'архива больше нет', 960, 120, 118.2, {'size': 74, 'bg': '#ffd43b'}]], mv=M(0.0))
@@ -97,17 +97,16 @@ V(119.7, bg='color', bo={'col': '#1f2438'}, panels=[
 V(124.6, bg='doorHouse', bo={'open': {'kv': [[124.6, 0], [128.8, 1]], 'd': 0.6}}, figs=[fig(1380, 1010, 0.9, BOY, walk={'x0': 1700, 'x1': 640, 'at': 128.0, 'dur': 1.5}, exprs=[[124.6, 'neutral'], [128.8, 'smile']])], fx=[['ptag', 'дверь', 960, 130, 129.0, {'size': 90, 'bg': '#ffd43b'}]], mv=M(0.05), sfx=[[128.8, 'whoosh', -14, 0.4]])
 V(130.1, 'whip2', bg='paper', bo={'col': '#e8dcc0'}, fx=[['card', 'БУМАЖНЫЕ', 130.5, 960, 440, 190, 16, '#2a2a33'], ['card', 'СЫНОВЬЯ', 131.4, 960, 700, 190, 16, '#e2483a']], mv=M(0.03))
 V(133.0, bg='bayNight', bo={'day': 1, 'boat': {'at': 133.0, 'dur': 3.6, 'x0': 1850, 'x1': 600}}, fx=[['plate', 136.0, 960, 230, 'у него родился сын', '#f6f1e4', 74], ['ptag', 'Китай', 300, 130, 134.0, {'size': 70}]], mv=M(0.035, px=-30), sfx=[[136.0, 'pop', -12]])
-V(136.8, bg='paper', bo={'col': '#e8dcc0'}, figs=[fig(960, 1050, 0.55, MAN, exprs=[[136.8, 'smile'], [138.2, 'worried']])], fx=[['strike', 138.2, 960, 380, 700], ['plate', 137.4, 960, 380, 'сын', '#f6f1e4', 150], ['qm', 138.3, 1500, 420, 1.5]], mv=M(0.04), sfx=[[138.2, 'hit', -11]])
+V(136.8, bg='paper', bo={'col': '#e8dcc0'}, figs=[fig(960, 1060, 1.1, MAN, exprs=[[136.8, 'smile'], [138.2, 'worried']])], fx=[['strike', 138.2, 960, 380, 700], ['plate', 137.4, 960, 380, 'сын', '#f6f1e4', 150], ['qm', 138.3, 1500, 420, 1.5]], mv=M(0.04), sfx=[[138.2, 'hit', -11]])
 V(139.2, bg='color', bo={'col': '#2a2638'}, figs=[fig(440, 1010, 0.8, MAN, holdR='money', exprs=[[139.2, 'smile']]), fig(960, 1010, 0.8, WOM, exprs=[[139.2, 'neutral']]), fig(1480, 1010, 0.8, CLK, flip=True, exprs=[[139.2, 'neutral']])],
   fx=[['ptag', 'родственник', 440, 190, 140.8, {'size': 66}], ['ptag', 'сосед', 960, 190, 141.8, {'size': 66}], ['ptag', 'чужой человек', 1480, 190, 142.9, {'size': 66}], ['ptag', 'место', 960, 100, 139.5, {'size': 84, 'bg': '#ffd43b'}]], mv=M(0.04, kick=1, kx=-20), sfx=[[140.8, 'pop', -12], [141.8, 'pop', -12], [142.9, 'pop', -12]])
 V(144.2, bg='paper', bo={'col': '#e8dcc0'}, fx=[['doc', 144.3, 960, 540, 640, 420, 'Фамилия', 0, 54], ['type', 'Ли', 880, 530, 120, 145.0, {}], ['ptag', 'новая фамилия', 960, 130, 144.7, {'size': 84, 'bg': '#ffd43b'}]], mv=M(0.04), sfx=[[147.7, 'ding', -14]])
-V(146.0, bg='photo', bo={'src': 'paperson', 'maxh': 800}, fx=[['ptag', 'подлинный документ', 960, 120, 146.2, {'size': 74, 'bg': '#ffd43b'}], ['ok', 147.7, 1180, 640, 130]], mv=M(0.0))
+V(146.0, bg='photo', bo={'src': 'paperson', 'maxh': 800}, fx=[['ptag', 'документ эпохи', 960, 120, 146.2, {'size': 74, 'bg': '#ffd43b'}], ['ok', 147.7, 1180, 640, 130]], mv=M(0.0))
 V(148.6, bg='bayNight', bo={'day': 1, 'boat': {'at': 148.6, 'dur': 4.8, 'x0': 1900, 'x1': 520}}, fx=[['ptag', '1882 - 1943', 960, 150, 150.2, {'size': 86, 'bg': '#ffd43b'}]], mv=M(0.035, px=-30))
-V(153.7, bg='color', bo={'col': '#1f2438'}, fx=[['count', 154.9, 0, 300000, 960, 420, {'size': 240, 'dur': 2.0, 'unit': 'китайцев', 'usize': 100, 'ucol': '#ffffff'}]], mv=M(0.03), sfx=[[154.9, 'counter', -14]])
-V(157.0, bg='color', bo={'col': '#2a2638'}, fx=[['iconrow', 10, 360, 560, 130, 1.5, {'hi': [0, 1, 2, 3, 4, 5, 6, 7, 8], 'at': 159.3, 'step': 0.12, 'col': '#e2483a'}], ['ptag', 'историки спорят', 960, 150, 157.4, {'size': 80}], ['ptxt', '9 из 10', 960, 880, 170, 160.0, {'col': '#ffd43b'}]], mv=M(0.035), sfx=[[159.3, 'pop', -14]])
+V(153.7, bg='color', bo={'col': '#1f2438'}, fx=[['count', 154.9, 0, 300000, 960, 420, {'size': 240, 'dur': 2.0, 'unit': 'китайцев (оценка)', 'usize': 100, 'ucol': '#ffffff'}]], mv=M(0.03), sfx=[[154.9, 'counter', -14]])
+V(157.0, bg='color', bo={'col': '#2a2638'}, fx=[['iconrow', 10, 360, 560, 130, 1.5, {'hi': [0, 1, 2, 3, 4, 5, 6, 7, 8], 'at': 159.3, 'step': 0.12, 'col': '#e2483a'}], ['ptag', 'оценка историков', 960, 150, 157.4, {'size': 80}], ['ptxt', 'подавляющее большинство?', 960, 880, 100, 160.0, {'col': '#ffd43b'}]], mv=M(0.035), sfx=[[159.3, 'pop', -14]])
 V(162.5, bg='black', fx=[['qm', 162.8, 960, 520, 3.0], ['ptag', 'точных подсчётов нет', 960, 880, 163.0, {'size': 84}]], vig=0, mv=M(0.04))
-V(164.3, bg='paper', bo={'col': '#f0e8d4'}, fx=[['sub', 164.7], ['ptag', 'подпись', 960, 130, 167.9, {'size': 70, 'bg': '#ffd43b'}]], mv=M(0.025))
-V(169.4, bg='deskRoom', figs=[fig(1400, 1010, 0.95, CLK, flip=True, exprs=[[169.4, 'neutral']], look=-1)], fx=[['plate', 171.0, 700, 400, '200 вопросов', '#f6f1e4', 96], ['qm', 171.5, 1000, 330, 1.4]], mv=M(0.04), sfx=[[171.0, 'pop', -12]])
+V(164.3, bg='paper', bo={'col': '#f0e8d4'}, fx=[['sub', 164.7]], figs=[fig(520, 1040, 1.1, BOY, exprs=[[164.3, 'smile']])], mv=M(0.025))
 V(172.7, 'dip', bg='years', bo={'a': 1906, 'b': 1925, 'at': 172.8}, figs=[fig(1500, 1030, 0.8, BOY, appear=177.4, popIn=1, exprs=[[177.4, 'smile']])], fx=[['ptag', 'Ли', 1500, 340, 178.0, {'size': 90, 'bg': '#ffd43b'}], ['count', 173.2, 0, 19, 960, 880, {'size': 130, 'pl': 1}]], mv=M(0.03))
 
 
@@ -121,7 +120,7 @@ for s in S:
     if bg == 'photo' and p['bo'].get('src') in FULL: p['bg'] = 'photoFull'; p['bo'] = dict(src=p['bo']['src'], sep=0.65)
     if p.get('figs'): p['sticker'] = 1
     p['grain'] = 0.15
-    if p['bg'] not in FLAT and not s.get('tint'): s['tint'] = 'sepia'
+    if p['bg'] not in ('photo', 'photoFull', 'black') and not s.get('tint'): s['tint'] = 'sepia'
 
 # ------------------------------------------------------------ сборка
 S.sort(key=lambda s: s['at']); shots = []; SFXL = []
@@ -134,5 +133,5 @@ for i, s in enumerate(S):
     shots.append(d)
     for c in s['sfx']: SFXL.append(dict(t=round(c[0], 3), name=c[1], gain=c[2], **({'dur': c[3]} if len(c) > 3 else {})))
     if s['tr'] == 'whip2': SFXL.append(dict(t=round(s['at'], 3), name='swish', gain=-12))
-json.dump(dict(duration=END, shots=shots, sfx=sorted(SFXL, key=lambda c: c['t'])), open(f'{P}/story/shots.json', 'w'), ensure_ascii=False, indent=1)
+json.dump(dict(duration=float(_CFG['duration']), shots=shots, sfx=sorted(SFXL, key=lambda c: c['t'])), open(f'{P}/story/shots.json', 'w'), ensure_ascii=False, indent=1)
 print(len(shots), 'shots; longest:', max((s['end'] - s['start'], s['id']) for s in shots))

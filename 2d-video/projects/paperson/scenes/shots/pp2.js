@@ -11,10 +11,10 @@ import { subscribe } from '/projects/remote/scenes/lib/sets2.js';
 import * as PP from '../lib/pp_sets.js';
 // архивные фото (общественное достояние / CC BY-SA с указанием автора): загружаются до первого кадра
 const PH = {}; const PHC = {
-  angel_building: 'Остров Ангела. Фото: E bailey, CC BY-SA 4.0', poetry: 'Стихи на стене барака. Фото: Rhododendrites, CC BY-SA 4.0', carved: 'Надписи на стене. Фото: Frank Schulenburg, CC BY-SA 4.0',
-  law: 'Закон об исключении китайцев, 1882. Общественное достояние', rail: 'Китайские рабочие, 1863-1869. Общественное достояние', genthe: 'Сан-Франциско, 18 апреля 1906. Фото: Арнольд Генте. Общественное достояние',
-  dorm: 'Музейная реконструкция барака. Фото: Кэрол Хайсмит, Библиотека Конгресса. Общественное достояние', chinatown: 'Чайнатаун, Сан-Франциско. Фото: Арнольд Генте. Общественное достояние', calcapitol: 'Капитолий Калифорнии. Фото: Frank Schulenburg, CC BY-SA 4.0', canton: 'Кантон, 1917-1919. Фото: Сидней Гэмбл. Общественное достояние',
-  worden: 'Сан-Франциско, 1906. Фото: Уиллард Уорден. Общественное достояние', leaving: 'Жители покидают город, 1906. NARA. Общественное достояние', paperson: 'Заявление на удостоверение личности, Сан-Франциско. Общественное достояние', lawrence: 'Сан-Франциско после пожара, 1906. Фото: Джордж Лоренс. Общественное достояние' };
+  angel_building: 'Остров Ангела сегодня. Фото: E bailey, CC BY-SA 4.0', poetry: 'Надписи на стене барака (фото 2017). Rhododendrites, CC BY-SA 4.0', carved: 'Надписи на стене барака (фото 2017). Frank Schulenburg, CC BY-SA 4.0',
+  law: 'Закон об исключении китайцев, 1882. Общественное достояние', rail: 'Китайские рабочие, 1863-1869. Автор неизвестен. Общественное достояние', genthe: 'Сан-Франциско, 18 апреля 1906. Фото: Арнольд Генте. Общественное достояние',
+  dorm: 'Музейная реконструкция барака. Фото: Кэрол Хайсмит, Библиотека Конгресса. Общественное достояние', chinatown: 'Улица в Чайнатауне, Сан-Франциско. Фото: Арнольд Генте. Дата по оценке Commons: 1920-е. Общественное достояние', calcapitol: 'Капитолий Калифорнии (фото 2019). Frank Schulenburg, CC BY-SA 4.0', canton: 'Двор родового храма, Гуанчжоу, 1917-1919. Фото: Сидни Гэмбл (Duke University Libraries). Общественное достояние',
+  worden: 'Сан-Франциско, 1906. Фото: Уиллард Уорден. Общественное достояние', leaving: 'Жители покидают город, 1906. NARA. Общественное достояние', paperson: 'Документ эпохи: свидетельство личности, Сан-Франциско, 1916 (имя, лицо и подпись скрыты). Общественное достояние', lawrence: 'Сан-Франциско после пожара, 1906. Фото: Джордж Лоренс. Общественное достояние' };
 await Promise.all(Object.keys(PHC).map((k) => new Promise((res) => { const im = new Image(); im.onload = () => { PH[k] = im; res(); }; im.onerror = () => res(); im.src = `/project/assets/archive/${k}.jpg`; })));
 // «вырезка из бумаги»: фото на весь кадр в тоне эпохи, персонажи с белым контуром и тенью, плёночное зерно
 function photoFull(g, o) {
@@ -49,7 +49,7 @@ function photoBg(g, o) {
 const SKC = '#e6bf94';
 export const C = {
   boy: { hair: 'side', hairC: '#1c1816', body: 'perahan', coat: '#5a6a7a', vest: '#3a4048', skin: SKC, seed: 3, brow: 6 },
-  brother: { hair: 'side', hairC: '#1c1816', body: 'perahan', coat: '#7a6a52', vest: '#4a3a30', skin: SKC, seed: 6 },
+  brother: { hair: 'cap', capC: '#3a3a42', hairC: '#1c1816', body: 'perahan', coat: '#8a7a56', vest: '#5a4a38', skin: SKC, seed: 6 },
   father: { hair: 'side', hairC: '#2a2420', body: 'uniform', coat: '#3a3f4a', shirt: '#e3dcc2', tie: '#6a2a22', skin: SK.b, seed: 8, brow: 5 },
   clerk: { hair: 'side', hairC: '#3a2a20', body: 'uniform', coat: '#2a3a5a', shirt: '#efece4', tie: '#2a2a33', skin: SK.a, seed: 12 },
   worker: { hair: 'side', hairC: '#1c1816', body: 'perahan', coat: '#4a5a6a', vest: '#6a5a40', skin: SKC, seed: 14 },
@@ -117,8 +117,8 @@ function actorDraw(g, t, gt, st, [x, y, s, who, op = {}]) {
 function fxDraw(g, t, gt, st, F) {
   const [k] = F, tt = gt;
   switch (k) {
-    case 'ptag': M.ptag(g, F[1], F[2], F[3], tt, F[4], F[5] || {}); break;
-    case 'ptxt': M.ptxt(g, F[1], F[2], F[3], F[4], tt, F[5], F[6] || {}); break;
+    case 'ptag': M.ptag(g, F[1], F[2], F[3], tt, F[4], { ...(F[5] || {}), size: ((F[5] || {}).size ?? 54) * 1.25 }); break;
+    case 'ptxt': M.ptxt(g, F[1], F[2], F[3], F[4] * 1.12, tt, F[5], F[6] || {}); break;
     case 'count': M.countUp(g, tt, F[1], F[2], F[3], F[4], F[5], F[6] || {}); break;
     case 'stamp': M.stampX(g, tt, F[1], F[2], F[3], F[4] ?? 120, F[5] || {}); break;
     case 'ok': M.stampOK(g, tt, F[1], F[2], F[3], F[4] ?? 90); break;
@@ -150,7 +150,7 @@ function fxDraw(g, t, gt, st, F) {
     case 'dast': A.dastarkhan(g, t); break;
     case 'rehal': B.rehal(g, F[1], F[2], F[3] ?? 1); break;
     case 'deskrow': A.deskRow(g, F[1], F[2]); break;
-    case 'plate': { const [, at, x, y, s0, col, fs0] = F; const fs = fs0 || 64; const p = M.pop2(gt, at); if (!p) break; g.save(); g.translate(x, y); g.scale(p.k, p.k); g.font = `700 ${fs}px "Caveat"`; const ww = g.measureText(s0).width + fs; bx(g, -ww / 2, -fs * 0.78, ww, fs * 1.56, col || '#f6f1e4', 8, 5); htxt(g, s0, 0, 2, fs, OL); g.restore(); break; }
+    case 'plate': { const [, at, x, y, s0, col, fs0] = F; const fs = (fs0 || 64) * 1.15; const p = M.pop2(gt, at); if (!p) break; g.save(); g.translate(x, y); g.scale(p.k, p.k); g.font = `700 ${fs}px "Caveat"`; const ww = g.measureText(s0).width + fs; bx(g, -ww / 2, -fs * 0.78, ww, fs * 1.56, col || '#f6f1e4', 8, 5); htxt(g, s0, 0, 2, fs, OL); g.restore(); break; }
     case 'strike': { const [, at, x, y, w0] = F; const u = ease.out(clamp((gt - at) / 0.25)); if (u <= 0) break; ln(g, [[x - w0 / 2, y + 8], [x - w0 / 2 + w0 * u, y - 4]], 12, '#141212'); ln(g, [[x - w0 / 2, y + 8], [x - w0 / 2 + w0 * u, y - 4]], 7, '#e2483a'); break; }
     case 'sleep': { const [, x, y, s0, who, op = {}] = F; bx(g, x - 520 * s0, y - 20, 640 * s0, 60, '#e8e4f0', 20, 5); g.save(); g.translate(x, y); g.rotate(-Math.PI / 2); fig(g, 0, 0, s0, { ...C[who], eyesShut: !op.awake, noShadow: true, ...op }, t); g.restore(); bx(g, x - 330 * s0, y - 150 * s0, 360 * s0, 170 * s0, op.blanket || '#7a5a9a', 30, 5); break; }
     case 'table': { const [, x, y, w0] = F; bx(g, x - w0 / 2, y, w0, 34, '#7a5236', 6, 5); bx(g, x - w0 / 2 + 20, y + 34, w0 - 40, 150, '#8a6242', 6, 5); break; }
