@@ -43,6 +43,18 @@ d.rectangle((0, 0, 40, H), fill=(255, 212, 59))
 text_o(d, (110, 150), 'УЧИ', F(330), (255, 255, 255), 8); text_o(d, (110, 450), 'ЧУЖУЮ', F(330), (255, 255, 255), 8); text_o(d, (110, 750), 'ЖИЗНЬ', F(330), (255, 212, 59), 8)
 tag(c, (1150, 80), 'ЗАВТРА ДОПРОС', fill=(255, 255, 255), size=62, ang=3)
 c.save(os.path.join(D, 'cover_c.jpg'), quality=92)
+
+# ---------------------------------------------------------------- D: как C, но с меткой-запросом «КИТАЙЦЫ В АМЕРИКЕ» и годом
+dd = cover(Image.open(A + 'poetry.jpg')); dd = ImageEnhance.Brightness(dd).enhance(0.55); dd = dd.filter(ImageFilter.GaussianBlur(1.2)); d = ImageDraw.Draw(dd)
+d.rectangle((0, 0, 40, H), fill=(255, 212, 59))
+text_o(d, (110, 190), 'УЧИ', F(310), (255, 255, 255), 8); text_o(d, (110, 480), 'ЧУЖУЮ', F(310), (255, 255, 255), 8); text_o(d, (110, 770), 'ЖИЗНЬ', F(310), (255, 212, 59), 8)
+tag(dd, (110, 60), 'КИТАЙЦЫ В АМЕРИКЕ', fill=(255, 255, 255), size=64, ang=-2); tag(dd, (1480, 880), '1925', fill=(196, 40, 28), fg=(255, 255, 255), size=80, ang=3)
+dd.save(os.path.join(D, 'cover_d.jpg'), quality=92)
+# сравнение в размере ленты (320x180)
+sh = Image.new('RGB', (330 * 4 + 10, 200), (16, 16, 16))
+for i, n in enumerate('abcd'): sh.paste(Image.open(os.path.join(D, f'cover_{n}.jpg')).resize((320, 180), Image.LANCZOS), (10 + i * 330, 10))
+sh.save(os.path.join(D, 'feed_size.jpg'), quality=90)
+
 # сравнение (в уменьшенном виде = как в ленте)
 sh = Image.new('RGB', (W // 2 * 3 + 40, H // 2 + 20), (16, 16, 16))
 for i, n in enumerate('abc'): sh.paste(Image.open(os.path.join(D, f'cover_{n}.jpg')).resize((W // 2, H // 2), Image.LANCZOS), (10 + i * (W // 2 + 10), 10))
