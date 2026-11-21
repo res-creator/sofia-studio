@@ -295,6 +295,8 @@ else if (mode === 'chunk') {
   (async () => { for (let f = f0; f < f1; f++) { frame(f / FPS); const b = Buffer.from(g.getImageData(0, 0, W, H).data.buffer); if (!ff.stdin.write(b)) await new Promise(r => ff.stdin.once('drain', r)); } ff.stdin.end(); })().catch(e => { console.error('FRAME ERROR', e); process.exit(1); });
   ff.on('close', c => console.log('chunk', i, 'done', c));
 }
+else if (mode === 'dump') { const lines = {}; for (const id in LN) { const l = LN[id]; lines[id] = {at: l.at, end: l.end, who: l.who, env: l.env, ch: chunks(id), text: SHOWN[id] || l.text}; }
+  fs.writeFileSync(a1, JSON.stringify({TOTAL, SH: SH.map(q => [q[0], q[1]]), lines, TR})); console.log('dump', SH.length, TOTAL.toFixed(2)); }
 else if (mode === 'audio') audio();
 else if (mode === 'srt') srt();
 else if (mode === 'cover') {
