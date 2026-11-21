@@ -74,7 +74,7 @@ V(67.4, bg='black', fx=[['ptxt', '1943', 960, 420, 320, 68.9, {'col': '#ffd43b'}
 V(70.0, bg='paper', bo={'col': '#e8dcc0'}, fx=[['doc', 70.2, 960, 540, 560, 400, 'ГРАЖДАНСТВО', 0.02, 62], ['stamp', 73.7, 960, 560, 260], ['ptag', 'по натурализации', 960, 140, 73.7, {'size': 70, 'bg': '#ffd43b'}]], mv=M(0.045), sfx=[[73.7, 'hit', -9]])
 V(75.1, bg='years', bo={'a': 1882, 'b': 1909, 'at': 75.3}, fx=[['count', 76.3, 0, 27, 960, 880, {'size': 140, 'pl': 1}]], mv=M(0.03), sfx=[[76.3, 'counter', -14]])
 V(78.4, bg='capitol', figs=[fig(1500, 1030, 0.75, BOY, walk={'x0': 2200, 'x1': 1500, 'at': 79.0, 'dur': 1.6}, exprs=[[78.4, 'worried']])], fx=[['dim', [[78.4, 0.3]]], ['ptxt', 'он уже знает', 960, 940, 110, 78.6, {'col': '#ffffff'}]], mv=M(0.04, px=-30))
-V(81.0, bg='village', bo={'dry': 1}, figs=[fig(640, 1020, 0.85, WOM, exprs=[[81.0, 'sad']]), fig(1280, 1020, 0.85, MAN, exprs=[[81.0, 'sad']], look=-1)], fx=[['ptag', 'Гуандун', 960, 130, 82.5, {'size': 90, 'bg': '#ffd43b'}], ['ptxt', 'мало земли', 960, 940, 100, 83.5, {'col': '#ffffff'}]], mv=M(0.04, kick=1, kx=20))
+V(81.0, bg='photoFull', bo={'src': 'canton', 'sep': 0.65, 'zoom': 1.2, 'dim': 0.3}, figs=[fig(640, 1020, 0.85, WOM, exprs=[[81.0, 'sad']]), fig(1280, 1020, 0.85, MAN, exprs=[[81.0, 'sad']], look=-1)], fx=[['ptag', 'Гуандун', 960, 130, 82.5, {'size': 90, 'bg': '#ffd43b'}], ['ptxt', 'мало земли', 960, 940, 100, 83.5, {'col': '#ffffff'}]], mv=M(0.04, kick=1, kx=20))
 V(85.1, bg='doorHouse', bo={'open': 0}, fx=[['stamp', 85.7, 760, 590, 190], ['stamp', 86.1, 1000, 520, 150], ['ptxt', 'законных путей нет', 960, 940, 100, 86.0, {'col': '#2a2a33'}]], mv=M(0.045), sfx=[[85.7, 'hit', -9], [86.1, 'hit', -11]])
 V(87.1, bg='black', fx=[['glow', 960, 600, [[87.1, 40], [89.4, 620]], '255,120,40', 0.7], ['ptxt', 'лазейка', 960, 420, 190, 87.6, {'col': '#ffffff'}]], vig=0, mv=M(0.05))
 V(90.2, 'whip2', bg='black', fx=[['ptxt', '1906', 960, 400, 300, 90.5, {'col': '#ffd43b'}], ['card', 'Архив горит', 91.0, 960, 640, 130]], vig=0, mv=M(0.03))
@@ -114,7 +114,7 @@ V(172.7, 'dip', bg='years', bo={'a': 1906, 'b': 1925, 'at': 172.8}, figs=[fig(15
 exec(open(f'{P}/story/ch_full.py').read())
 
 # ------------------------------------------------------------ единый стиль «вырезки на архивных фото»
-FULL = ('angel_building', 'genthe', 'worden', 'leaving', 'lawrence', 'carved', 'poetry')
+FULL = ('dorm', 'chinatown', 'calcapitol', 'canton', 'angel_building', 'genthe', 'worden', 'leaving', 'lawrence', 'carved', 'poetry')
 FLAT = ('photo', 'photoFull', 'black', 'paper', 'color', 'icons', 'years')
 for s in S:
     p = s['p']; bg = p.get('bg')
