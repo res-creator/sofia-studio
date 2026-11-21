@@ -142,7 +142,7 @@ function build(T) {
     A('cm_reconstruction_glacialisaurus_model', { cutW: 'Two', over: [note('MUSEUM MODEL: GLACIALISAURUS AND CRYOLOPHOSAURUS · ' + REC)] }),
   ]);
   beats('A019', [
-    A('cm_reconstruction_antarctopelta_vegavis_drawing', { over: [note('LATE CRETACEOUS ANTARCTICA · ' + REC)] }),
+    A('cm_reconstruction_antarctopelta', { kb: { z: [1.25, 1.05] }, over: [note('ANTARCTOPELTA, LATE CRETACEOUS ANTARCTICA · ' + REC)] }),
     S('globe', ANT({ cutW: 'In', lon: [[0, -100], [3, -107]], lat: [[0, -72], [3, -74]], R: [[0, 1700], [3, 3200]], pins: [{ ...G.amund, label: 'AMUNDSEN SEA CORE, 2017', at: 0.4, small: true, size: 44 }] })),
     F('px_misty_conifer_forest_hills', { cutW: 'The', over: [low('SOIL + A 3-M WEB OF FOSSIL ROOTS', 'roots'), note('SWAMPY TEMPERATE RAINFOREST, TASMANIA · ' + IL)] }),
     A('cm_andrill_core_table', { cutW: 'swampy', over: [note('A SEABED CORE FROM ANTARCTICA (ANDRILL) · ' + IL)] }),
@@ -208,8 +208,8 @@ function build(T) {
   ]);
   beats('A033', [S('ladder', { title: 'THE COAST OF ANTARCTICA, ~53 MILLION YEARS AGO', min: -30, max: 30, items: [{ v: 10, label: 'EVEN IN WINTER: ABOVE +10°C', sub: '50°F · IN THE POLAR NIGHT', w: 'ten', hl: true }], source: 'Source: Pross et al. 2012, Nature' })]);
   beats('A034', [
-    A('cm_marambio_base_seymour_aerial_2023', { kb: { z: [1.35, 1.15] }, over: [low('SEYMOUR ISLAND: THE FIRST ANTARCTIC MAMMAL (1982)', 'Seymour'), note('SEYMOUR ISLAND, 2023')] }),
-    A('cm_reconstruction_eocene_antarctic_pond', { cutW: 'It', over: [low('A MARSUPIAL: THE FIRST LAND MAMMAL FROM ANTARCTICA', 'marsupial'), note('EOCENE ANTARCTICA · ' + REC)] }),
+    A('cm_marambio_base_seymour_aerial_2023', { kb: { z: [1.35, 1.15] }, over: [at(low('SEYMOUR ISLAND: THE FIRST ANTARCTIC MAMMAL (1982)'), 0.3), note('SEYMOUR ISLAND, 2023')] }),
+    A('cm_reconstruction_eocene_antarctic_pond', { cutW: 'tiny', over: [low('A MARSUPIAL: THE FIRST LAND MAMMAL FROM ANTARCTICA', 'marsupial'), note('EOCENE ANTARCTICA · ' + REC)] }),
     A('cm_llanocetus_whale_skull_seymour', { cutW: 'first', over: [note('ALSO FROM SEYMOUR: AN EOCENE WHALE SKULL (REAL FOSSIL)')] }),
   ]);
   beats('A035', [
@@ -321,7 +321,7 @@ function build(T) {
   // ===== ENDING =====
   beats('A060A', [
     A('cm_reconstruction_cryolophosaurus_side', { over: [head('WHICH ANTARCTICA WOULD YOU VISIT?', null, 180, 70), note(REC)] }),
-    A('cm_cryolophosaurus_field_museum_wide', { cutW: 'among', over: [note('CRYOLOPHOSAURUS CAST, FIELD MUSEUM')] }),
+    A('cm_cryolophosaurus_field_museum_wide', { cutW: 'among', kb: { z: [1.45, 1.35], x: [0.55, 0.6], y: [0.45, 0.45] }, over: [note('CRYOLOPHOSAURUS CAST, FIELD MUSEUM')] }),
   ]);
   beats('A060', [
     A('cm_scott_1911_wilson_sketching_beardmore', { kb: { z: [1.2, 1.05] }, over: [low('NATURAL HISTORY MUSEUM, LONDON', 'London'), note('DR EDWARD WILSON, BEARDMORE GLACIER, 1911')] }),
