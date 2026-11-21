@@ -1,30 +1,114 @@
-{"voices": {
-  "nar": ["fish", "6ada82e315e648b6a30a2e2210844cbf"],
-  "teacher": ["eleven", "Xb7hH8MSUJpSbSDYk0k2"],
-  "vova": ["fish", "76d4aadd0fdf40fabdf0364a70efb99e"]},
+{
+ "voices": {
+  "nar": [
+   "eleven",
+   "HZ9zc6dCuq98qtFx52ur"
+  ],
+  "teacher": [
+   "eleven",
+   "Xb7hH8MSUJpSbSDYk0k2"
+  ],
+  "vova": [
+   "fish",
+   "76d4aadd0fdf40fabdf0364a70efb99e"
+  ]
+ },
  "lines": {
-  "n1": ["nar", "Англичанка говорит:"],
-  "t1": ["teacher", "[strict, cheerful] Who wants to read?"],
-  "n2": ["nar", "Весь класс в этот момент умирает."],
-  "n3": ["nar", "Тридцать человек одновременно что-то ищут в рюкзаке."],
-  "n4": ["nar", "Ты ищешь так старательно, что находишь прошлогодний бутерброд."],
-  "n5": ["nar", "Она ведёт ручкой по журналу. Сверху вниз."],
-  "n6": ["nar", "Это как рулетка. Только ставка — твоя жизнь."],
-  "n7": ["nar", "Ручка останавливается... на Вове."],
-  "t2": ["teacher", "[strict] Vova. Read, please."],
-  "v1": ["vova", "Зе кэт... из он... зе тейбл."],
-  "n8": ["nar", "Англичанка закрывает глаза. Как будто мелом по доске провели."],
-  "t3": ["teacher", "[pained, slowly] Not zeh. THE. Tongue between your teeth."],
-  "n9": ["nar", "Весь класс высовывает языки. Тридцать человек сидят с языками."],
-  "n10": ["nar", "И в этот момент заходит директор."],
-  "t4": ["teacher", "[slowly, ominous] And now... you."],
-  "n11": ["nar", "Ты читаешь:"],
-  "h1": ["nar", "Ворк."],
-  "t5": ["teacher", "[firm] Work."],
-  "h2": ["nar", "Ворк!"],
-  "t6": ["teacher", "[shouting] WORK!"],
-  "n12": ["nar", "Это уже не урок. Это перестрелка."],
-  "n13": ["nar", "Звенит звонок. Ты спасён."],
-  "t7": ["teacher", "[sweetly, evil] Homework: read the text. Out loud. On video."],
-  "n14": ["nar", "У кого тоже была такая англичанка? Пиши, как её звали."]
- }}
+  "n1": [
+   "nar",
+   "[casual] Англичанка говорит:"
+  ],
+  "t1": [
+   "teacher",
+   "[strict, cheerful] Who wants to read?"
+  ],
+  "n2": [
+   "nar",
+   "[dramatic pause] И всё. Весь класс в этот момент... умирает."
+  ],
+  "n3": [
+   "nar",
+   "[fast, amused] Тридцать человек одновременно что-то ищут в рюкзаке."
+  ],
+  "n4": [
+   "nar",
+   "[sarcastic] Ты ищешь так старательно, что находишь прошлогодний бутерброд."
+  ],
+  "n5": [
+   "nar",
+   "[tense, quieter] Она ведёт ручкой по журналу. Сверху вниз."
+  ],
+  "n6": [
+   "nar",
+   "[whispers] Это как рулетка. [dramatic] Только ставка — твоя жизнь."
+  ],
+  "n7": [
+   "nar",
+   "[tense] Ручка останавливается... [relieved, laughing] на Вове!"
+  ],
+  "t2": [
+   "teacher",
+   "[strict] Vova. Read, please."
+  ],
+  "v1": [
+   "vova",
+   "Зе кэт... из он... зе тейбл."
+  ],
+  "n8": [
+   "nar",
+   "[deadpan] Англичанка закрывает глаза. Как будто мелом по доске провели."
+  ],
+  "t3": [
+   "teacher",
+   "[pained, slowly] Not zeh. THE. Tongue between your teeth."
+  ],
+  "n9": [
+   "nar",
+   "[laughing] Весь класс высовывает языки. Тридцать человек сидят с языками!"
+  ],
+  "n10": [
+   "nar",
+   "[panicked, fast] И в этот момент заходит директор."
+  ],
+  "t4": [
+   "teacher",
+   "[slowly, ominous] And now... you."
+  ],
+  "n11": [
+   "nar",
+   "[nervous] Ты читаешь:"
+  ],
+  "h1": [
+   "nar",
+   "[nervous] Ворк."
+  ],
+  "t5": [
+   "teacher",
+   "[firm] Work."
+  ],
+  "h2": [
+   "nar",
+   "[louder, stubborn] Ворк!"
+  ],
+  "t6": [
+   "teacher",
+   "[shouting] WORK!"
+  ],
+  "n12": [
+   "nar",
+   "[dramatic] Это уже не урок. Это перестрелка."
+  ],
+  "n13": [
+   "nar",
+   "[excited] Звенит звонок! [relieved] Ты спасён."
+  ],
+  "t7": [
+   "teacher",
+   "[sweetly, evil] Homework: read the text. Out loud. On video."
+  ],
+  "n14": [
+   "nar",
+   "[friendly, smiling] У кого тоже была такая англичанка? Пиши, как её звали."
+  ]
+ }
+}
