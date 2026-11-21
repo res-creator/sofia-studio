@@ -10,7 +10,7 @@ const X = { // extra classmates (palette variants)
 const ALL = {...C, ...X};
 function save(name, w, h, fn) { const cv = createCanvas(w, h), g = cv.getContext('2d'); fn(g); fs.writeFileSync(`sprites/${name}.png`, cv.toBuffer('image/png')); }
 const MOUTHS = [0, .5, 1];
-const front = (name, who, st) => MOUTHS.forEach((m, i) => save(`${name}_m${i}`, 640, 1440, g => T.draw(g, {x: 320, y: 1420, s: 1, ...ALL[who], ...st, mouth: m})));
+const front = (name, who, st) => MOUTHS.forEach((m, i) => save(`${name}_m${i}`, 640, 1560, g => T.draw(g, {x: 320, y: 1540, s: 1, ...ALL[who], ...st, mouth: m})));
 const seat = (name, who, st) => MOUTHS.forEach((m, i) => save(`${name}_m${i}`, 560, 640, g => T.draw(g, {x: 280, y: 640 + 520 * .7, s: .7, seated: true, pose: 'desk', ...ALL[who], ...st, mouth: m})));
 // teacher (standing) in four moods
 for (const [k, st] of Object.entries({smug: {mood: 'smug'}, angry: {mood: 'angry'}, pain: {mood: 'sad', blink: true}, sweet: {mood: 'smug', brows: 'up'}})) front(`teacher_${k}`, 'teacher', {pose: 'hips', ...st});
@@ -41,6 +41,6 @@ function back(g, pal, hair, x, y, s, raise) { const P = () => g.beginPath(); con
   else { P(); g.ellipse(0, 120, 148, 150, 0, 0, 7); fill(pal.hair); }
   g.restore(); }
 const HAIR = {hero: 'spiky', sasha: 'short', lena: 'ponytail', vova: 'short', kid1: 'curly', kid2: 'long', kid3: 'spiky'};
-for (const who in HAIR) save(`back_${who}`, 420, 680, g => back(g, ALL[who].pal, HAIR[who], 210, 100, 1.08));
-save('back_hero_raise', 420, 680, g => back(g, ALL.hero.pal, 'spiky', 210, 100, 1.08, true));
+for (const who in HAIR) save(`back_${who}`, 420, 760, g => back(g, ALL[who].pal, HAIR[who], 210, 180, 1.08));
+save('back_hero_raise', 420, 760, g => back(g, ALL.hero.pal, 'spiky', 210, 180, 1.08, true));
 console.log('sprites', fs.readdirSync('sprites').length);

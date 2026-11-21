@@ -52,17 +52,17 @@ function face(st, c) {
   const my = HY + 92, m = st.mouth || 0;
   if (st.tongue) { P(); g.moveTo(-50, my - 6); g.quadraticCurveTo(0, my - 14, 50, my - 6); g.quadraticCurveTo(40, my + 46, 0, my + 50); g.quadraticCurveTo(-40, my + 46, -50, my - 6); fs('#7a2230');
     P(); g.moveTo(-26, my + 12); g.lineTo(26, my + 12); g.lineTo(26, my + 70); g.quadraticCurveTo(0, my + 96, -26, my + 70); g.closePath(); fs('#f07a8a', 6); }
-  else if (m > .12 || st.mood === 'grin') { const h = st.mood === 'grin' ? 26 : 14 + m * 46, w = 62;
+  else if (m > .12 || st.mood === 'grin') { const h = st.mood === 'grin' ? 44 : 14 + m * 46, w = 62;
     P(); g.moveTo(-w, my - 8); g.quadraticCurveTo(0, my - 2, w, my - 8); g.quadraticCurveTo(w * .8, my + h, 0, my + h + 6); g.quadraticCurveTo(-w * .8, my + h, -w, my - 8); g.closePath(); fs('#7a2230');
-    g.save(); g.clip(); g.fillStyle = '#ffffff'; g.fillRect(-w, my - 10, w * 2, Math.min(18, h * .45)); if (st.mood !== 'grin') ell(0, my + h + 2, w * .5, h * .35, '#f07a8a', 0); g.restore();
+    g.save(); g.clip(); g.fillStyle = '#ffffff'; g.fillRect(-w, my - 10, w * 2, Math.min(18, h * .45)); ell(0, my + h + 2, w * .5, h * .35, '#f07a8a', 0); g.restore();
     P(); g.moveTo(-w, my - 8); g.quadraticCurveTo(0, my - 2, w, my - 8); g.quadraticCurveTo(w * .8, my + h, 0, my + h + 6); g.quadraticCurveTo(-w * .8, my + h, -w, my - 8); g.closePath(); fs(null);
-    if (st.mood === 'grin') for (const xx of [-30, 0, 30]) line([[xx, my - 4], [xx, my + h * .9]], 4); }
+  }
   else if (st.mood === 'sad' || st.mood === 'angry') q([-30, my + 10], [0, my - 8], [30, my + 10], 7);
   else if (st.mood === 'surprised') ell(0, my + 6, 16, 20, '#7a2230', 6);
   else if (st.mood === 'flat' || st.mood === 'sleepy') line([[-24, my], [24, my]], 7);
   else if (st.mood === 'smug') q([-34, my + 4], [10, my + 16], [40, my - 10], 7);
   else q([-38, my - 4], [0, my + 20], [38, my - 4], 7);
-  if (st.sweat) { P(); g.moveTo(175, HY - 120); g.quadraticCurveTo(200, HY - 76, 188, HY - 58); g.quadraticCurveTo(175, HY - 46, 162, HY - 58); g.quadraticCurveTo(156, HY - 76, 175, HY - 120); fs('#8fd2ff', 5); }
+  if (false) { P(); g.moveTo(175, HY - 120); g.quadraticCurveTo(200, HY - 76, 188, HY - 58); g.quadraticCurveTo(175, HY - 46, 162, HY - 58); g.quadraticCurveTo(156, HY - 76, 175, HY - 120); fs('#8fd2ff', 5); }
 }
 // ---------- body ----------
 // arm: [shoulder, elbow, hand] per side; s=-1 screen-left
@@ -94,6 +94,6 @@ function draw(gg, st) { g = gg; const c = st.pal; g.save(); g.translate(st.x, st
   g.save(); g.translate(0, -930); g.scale(1.2, 1.2); g.translate(0, 930); hairBack(st, c); g.restore(); if (!st.seated) legs(st, c);
   const front = st.pose === 'hold' || st.pose === 'desk' || st.pose === 'fists';
   if (!front) { arm(st, c, -1); arm(st, c, 1); } torso(st, c); if (front) { arm(st, c, -1); arm(st, c, 1); }
-  g.save(); g.translate(0, -930); g.scale(1.2, 1.2); g.translate(0, 930); face(st, c); hairFront(st, c); g.restore();
+  g.save(); g.translate(0, -930); g.scale(1.2, 1.2); g.translate(0, 930); face(st, c); hairFront(st, c); if (st.sweat) { P(); g.moveTo(190, HY - 60); g.quadraticCurveTo(218, HY - 14, 204, HY + 6); g.quadraticCurveTo(190, HY + 20, 176, HY + 6); g.quadraticCurveTo(168, HY - 14, 190, HY - 60); fs('#8fd2ff', 5); } g.restore();
   g.restore(); }
 module.exports = {draw, POSES};

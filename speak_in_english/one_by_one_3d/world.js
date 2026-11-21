@@ -56,7 +56,7 @@ function board(kind) { if (BOARD.k === kind) return; BOARD.k = kind; boardTex.re
   else if (kind === 'mean') { f(100); x.fillStyle = '#ffd84a'; x.fillText('thoroughly', 512, 170); f(60); x.fillStyle = '#eef3e8'; x.fillText('«ТхА-рэ-ли»', 512, 290); f(80); x.fillText('= тщательно', 512, 410); }
   else { f(64); x.fillText('21 ноября', 512, 120); x.fillText('Classwork', 512, 205); x.textAlign = 'left'; x.fillText('Reading, p. 42', 110, 330); } }); }
 board('day');
-let hostSign, tents = [], nameTents = [], balloon, heroBook, heroPaper, chalkHand;
+let flyTent, hostSign, tents = [], nameTents = [], balloon, heroBook, heroPaper, chalkHand;
 at(A, () => {
   const back = plane(RW, RH, wallTex, 0, RH / 2, 0); const rear = plane(RW, RH, wallTex, 0, RH / 2, RD, Math.PI);
   for (const s of [-1, 1]) plane(RD, RH, wallTex, s * RW / 2, RH / 2, RD / 2, -s * Math.PI / 2);
@@ -92,11 +92,12 @@ function studentDesk(x, z) { at(A, () => { box(1.3, .05, .55, 0xe6b47a, x, .74, 
 function chair(x, z) { at(A, () => { box(.44, .04, .4, 0xa8703c, x, .45, z); box(.44, .3, .04, 0xa8703c, x, .72, z + .2); for (const sx of [-1, 1]) for (const sz of [-1, 1]) cyl(.016, .45, 0x8a8f9a, x + sx * .18, .225, z + sz * .17, 8); }); }
 const LAYOUT = [[3.0, -.8, ['lena', 'kid2']], [3.0, .8, ['kid1', 'sasha']], [4.6, -.8, ['kid3', null]], [4.6, .8, [null, null]], [6.2, .8, ['hero', 'vova']], [6.2, -.8, [null, null]]];
 LAYOUT.forEach(([z, x, who]) => { studentDesk(x, z); [-1, 1].forEach((s, i) => { const sx = x + s * .3; chair(sx, z + .45); if (!who[i]) return; const id = who[i].replace('b', '');
-  at(A, () => { const sp = sprite(`back_${id}`, .95, 420 / 680, sx, .4, z + .32, false); sp.who = id; sp.z0 = z; SEATS.push(sp); }); }); });
+  at(A, () => { const sp = sprite(`back_${id}`, 1.06, 420 / 760, sx, .4, z + .32, false); sp.who = id; sp.z0 = z; SEATS.push(sp); }); }); });
 const seat = id => SEATS.find(s => s.who === id);
 // desk tents for the paragraph chain + name cards (in-world labels)
 function tent(label, x, z, col = '#ffffff') { const t = paint(256, 160); const m = box(.34, .2, .02, 0xffffff, x, .86, z - .2, t); m.rotation.x = -.25; m.lab = l => t.redraw(c => { c.fillStyle = col; c.fillRect(0, 0, 256, 160); c.fillStyle = l.length > 2 ? '#c0283a' : INKS; c.font = `${l.length > 3 ? 70 : 110}px ${BOLD}`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(l, 128, 86); }); m.lab(label); m.visible = false; return m; }
 at(A, () => { tents = [['lena', 1], ['kid3', 2], ['vova', 3], ['sasha', 4], ['hero', 5]].map(([id, n]) => { const s = seat(id); const t = tent(String(n), s.position.x, s.z0); t.who = id; return t; });
+  flyTent = tent('5', 0, 0, '#ffe066'); flyTent.lab('5');
   nameTents = [['hero', 'MICHAEL'], ['vova', 'BOB']].map(([id, n]) => { const s = seat(id); return tent(n, s.position.x, s.z0, '#fffbe8'); });
   heroBook = box(.36, .03, .26, 0x3a6ad0, seat('hero').position.x, .78, 6.2 - .08, paint(256, 180, x => { x.fillStyle = '#3a6ad0'; x.fillRect(0, 0, 256, 180); x.fillStyle = '#fff'; x.font = `40px ${BOLD}`; x.textAlign = 'center'; x.fillText('ENGLISH', 128, 100); })); heroBook.visible = false;
   heroPaper = plane(.28, .37, paint(420, 560, x => { x.fillStyle = '#fffdf5'; x.fillRect(0, 0, 420, 560); x.fillStyle = '#c0283a'; x.font = `44px ${HW}`; x.textAlign = 'center'; x.fillText('Paragraph 5', 210, 70); x.fillStyle = INKS; x.font = `38px ${HW}`; ['London is the capital', 'of Great Britain.', 'It is a very big', 'and beautiful city…'].forEach((s, i) => x.fillText(s, 210, 160 + i * 70)); x.strokeStyle = INKS; x.lineWidth = 6; x.strokeRect(3, 3, 414, 554); }), 0, 0, 0, Math.PI, true); heroPaper.visible = false;
@@ -105,7 +106,7 @@ at(A, () => { tents = [['lena', 1], ['kid3', 2], ['vova', 3], ['sasha', 4], ['he
   const str = new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, -.23, 0), new THREE.Vector3(.04, -.6, 0), new THREE.Vector3(-.02, -1.0, 0)]), lineMat); balloon.add(str); A.add(balloon); balloon.visible = false; });
 // standing people in the classroom
 let teacher, vovaBoard;
-at(A, () => { teacher = sprite('teacher_smug_m0', 1.68, 640 / 1440, .05, 0, 2.0); vovaBoard = sprite('vova_wipe_m0', 1.45, 640 / 1440, -2.55, 0, .7); vovaBoard.visible = false; vovaBoard.sh.visible = false; });
+at(A, () => { teacher = sprite('teacher_smug_m0', 1.82, 640 / 1560, .05, 0, 2.0); vovaBoard = sprite('vova_wipe_m0', 1.57, 640 / 1560, -2.55, 0, .7); vovaBoard.visible = false; vovaBoard.sh.visible = false; });
 
 // ================= LOCATION B: desk top for paper inserts (x = 40) =================
 const B = new THREE.Group(); B.position.x = 40; scene.add(B);
@@ -143,7 +144,7 @@ at(C, () => { const wt = paint(512, 512, x => { x.fillStyle = '#3a3a68'; x.fillR
   // podium 1-2-3
   box(1.0, .9, .8, 0xf0c040, 0, .45, 2.0, paint(256, 256, x => { x.fillStyle = '#f0c040'; x.fillRect(0, 0, 256, 256); x.fillStyle = INKS; x.font = `180px ${BOLD}`; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('1', 128, 140); }));
   box(1.0, .6, .8, 0xc8ccd8, -1.0, .3, 2.0); box(1.0, .4, .8, 0xd89a5a, 1.0, .2, 2.0);
-  sashaPod = sprite('sasha_win_m0', 1.5, 640 / 1440, 0, .9, 2.1); heroPod = sprite('hero_sad_m0', 1.5, 640 / 1440, 1.15, 0, 2.8);
+  sashaPod = sprite('sasha_win_m0', 1.63, 640 / 1560, 0, .9, 2.1); heroPod = sprite('hero_sad_m0', 1.63, 640 / 1560, 1.0, 0, 3.0);
   const cols = [0xffd23f, 0xe03050, 0x4ab0e0, 0x7ad060]; for (let i = 0; i < 60; i++) { const c = new THREE.Mesh(new THREE.PlaneGeometry(.06, .1), new THREE.MeshBasicMaterial({color: cols[i % 4], side: THREE.DoubleSide})); c.userData = {x: (rnd() - .5) * 5, z: 1 + rnd() * 3.5, s: .3 + rnd() * .6, p: rnd() * 10}; C.add(c); confetti.push(c); } });
 
 // ================= LOCATION D: corridor with lockers (x = 120) =================
@@ -155,7 +156,7 @@ at(D, () => { const wt = paint(512, 512, x => { x.fillStyle = '#e8e0d0'; x.fillR
   for (let i = -6; i <= 6; i++) { const L = box(.6, 1.9, .5, [0x6a8ab8, 0x5a7aa8][(i + 20) % 2], i * .62, .95, .26); box(.36, .05, .02, 0xd0d8e8, i * .62, 1.55, .52); box(.36, .05, .02, 0xd0d8e8, i * .62, 1.45, .52); box(.04, .14, .03, 0xd0d8e8, i * .62 + .2, 1.0, .52); }
   box(1.2, .5, .06, 0xffffff, -2.2, 2.6, .05, paint(400, 160, x => { x.fillStyle = '#fff'; x.fillRect(0, 0, 400, 160); x.fillStyle = '#2f4a7a'; x.font = `58px ${BOLD}`; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('КАБИНЕТ 7', 200, 84); }));
   for (const lx of [-3, 0, 3]) box(.8, .06, .3, 0xfffbe8, lx, 3.96, 3);
-  heroCor = sprite('hero_shrug_m0', 1.5, 640 / 1440, -.55, 0, 2.2); sashaCor = sprite('sasha_stand_m0', 1.55, 640 / 1440, .6, 0, 2.2); });
+  heroCor = sprite('hero_shrug_m0', 1.63, 640 / 1560, -.55, 0, 2.2); sashaCor = sprite('sasha_stand_m0', 1.68, 640 / 1560, .6, 0, 2.2); });
 
 // ---------------- light ----------------
 const hemi = new THREE.HemisphereLight(0xfff3e0, 0xb89070, 1.25); scene.add(hemi);
@@ -164,11 +165,11 @@ const LOC = {A: {x: 0, fog: 0xf1e2bf, key: 0xffe2b8}, B: {x: 40, fog: 0xe8d8b8, 
 
 // ---------------- shots: camera path per shot (world coords relative to the location) ----------------
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
-const BACKTEACH = [V(-.05, 1.5, 6.4), V(.05, 1.3, 0)], TEACHCU = [V(.05, 1.5, 3.9), V(.05, 1.45, 1.9)];
+const BACKTEACH = [V(-.45, 1.5, 6.4), V(-.3, 1.3, 0)], TEACHCU = [V(.05, 1.5, 3.9), V(.05, 1.45, 1.9)];
 const HEROCU = [V(.5, 1.2, 5.45), V(.5, 1.0, 8)];
 const S = { // kind: [loc, [from pos, from look], [to pos, to look]]
   CLASS: ['A', [V(.3, 1.7, 1.45), V(.1, .85, 8)], [V(.3, 1.6, 2.0), V(.1, .85, 8)], 0, 66],
-  TEACH: ['A', BACKTEACH, [V(0, 1.48, 5.6), V(.05, 1.33, 0)]],
+  TEACH: ['A', BACKTEACH, [V(-.4, 1.48, 5.6), V(-.3, 1.33, 0)]],
   CHORUS: ['A', [V(0, 1.55, 1.0), V(0, .95, 8)], [V(0, 1.5, 1.6), V(0, .95, 8)], 0, 60],
   HOSTAGE: ['A', [V(0, 1.8, .35), V(0, 2.2, 12)], [V(0, 1.8, .9), V(0, 2.3, 12)], 0, 62],
   NAMES: ['A', [V(.8, 1.3, 5.35), V(.8, .95, 8)], [V(.8, 1.28, 5.6), V(.8, .95, 8)], 0, 62],
@@ -178,12 +179,12 @@ const S = { // kind: [loc, [from pos, from look], [to pos, to look]]
   ANTHEM: ['A', [V(.5, 1.2, 5.4), V(.5, 1.0, 8)], [V(.5, 1.18, 5.62), V(.5, 1.0, 8)]],
   SLEEP: ['A', [V(.5, 1.18, 5.6), V(.5, 1.0, 8)], [V(.5, 1.17, 5.75), V(.5, 1.0, 8)]],
   CHAIN: ['A', [V(0, 2.5, .4), V(.1, .7, 6)], [V(.05, 2.35, 1.0), V(.1, .7, 6)], 0, 66],
-  BALLOON: ['A', [V(.55, 1.2, 5.4), V(.6, 1.15, 8)], [V(.55, 1.22, 5.55), V(.6, 1.3, 8)]],
+  BALLOON: ['A', [V(.75, 2.3, 1.2), V(.8, .15, 5.2)], [V(.75, 2.2, 1.7), V(.8, .15, 5.2)], 0, 62],
   BOSS: ['A', [V(-1.4, 2.0, 7.0), V(-1.4, 2.0, 0)], [V(-1.4, 2.0, 5.0), V(-1.4, 2.0, 0)], .5],
   STRUGGLE: ['A', HEROCU, [V(.5, 1.18, 5.65), V(.5, .98, 8)]],
   SPIES: ['A', [V(-1.4, 2.0, 4.9), V(-1.4, 2.0, 0)], [V(-1.4, 2.0, 4.4), V(-1.4, 2.0, 0)]],
   EXIT: ['A', [V(-.3, 1.5, 9.2), V(2.4, 1.25, 0)], [V(-.2, 1.45, 8.5), V(2.6, 1.25, 0)]],
-  PODIUM: ['C', [V(.3, 1.45, 6.4), V(.4, 1.3, 0)], [V(.35, 1.42, 5.6), V(.45, 1.3, 0)]],
+  PODIUM: ['C', [V(.4, 1.45, 6.8), V(.45, 1.25, 0)], [V(.4, 1.43, 6.2), V(.45, 1.25, 0)]],
   CORRIDOR: ['D', [V(0, 1.4, 6.3), V(0, 1.15, 0)], [V(.05, 1.38, 5.6), V(0, 1.15, 0)]],
   MAP: ['B', [V(0, 2.8, .62), V(0, 0, .38)], [V(0, 2.5, .6), V(0, 0, .36)]],
   MEANING: ['A', [V(-1.4, 2.0, 4.9), V(-1.4, 2.0, 0)], [V(-1.4, 2.0, 4.3), V(-1.4, 2.0, 0)]],
@@ -219,7 +220,8 @@ function captions(t) { let cur = null; for (const id in L) { const l = L[id]; if
 window.renderAt = t => {
   let sh = SH[0]; for (const s of SH) if (t >= s.at) sh = s; const k = sh.kind, loc = LOC[sh.loc], d = sh.def;
   // camera: eased path; fast shots finish their push in d[3] seconds
-  const dur = d[3] || (sh.end - sh.at), u = warpU([sh.at, sh.at + dur / 2, sh.at + dur], Math.min(t, sh.at + dur));
+  // moderate camera (owner's note): no quick punches; every shot drifts only ~35% of its planned path, every 3rd shot holds still
+  const dur = sh.end - sh.at, idx = SH.indexOf(sh), amt = idx % 3 === 2 ? 0 : .35, u = amt * warpU([sh.at, sh.at + dur / 2, sh.at + dur], t);
   const pos = new THREE.Vector3().lerpVectors(d[1][0], d[2][0], u), look = new THREE.Vector3().lerpVectors(d[1][1], d[2][1], u);
   pos.x += loc.x; look.x += loc.x; camera.position.copy(pos); camera.up.set(0, sh.loc === 'B' ? 0 : 1, sh.loc === 'B' ? -1 : 0); camera.lookAt(look); const fov = d[4] || 50; if (camera.fov !== fov) { camera.fov = fov; camera.updateProjectionMatrix(); }
   scene.fog.color.set(loc.fog); scene.background.set(loc.fog); key.color.set(loc.key); key.position.set(loc.x - 5, 7, 9); key.target.position.set(loc.x, 0, 3);
@@ -235,7 +237,7 @@ window.renderAt = t => {
   // students: front texture when the camera is in front of them (near the board), back texture otherwise
   const front = camera.position.z < 2.6 && sh.loc === 'A' && k !== 'BOARD' && !['TEACH', 'BOSS', 'SPIES', 'MEANING', 'EXIT'].includes(k) || ['AUTO', 'NAMES', 'ANTHEM', 'SLEEP', 'BALLOON', 'STRUGGLE'].includes(k);
   const chorus = mf(talk(['c1'], t)), hm = mf(talk(HERO_IDS, t));
-  SEATS.forEach((s, i) => { const id = s.who; s.rotation.y = front ? Math.PI : 0; s.scale.set(front ? 560 / 640 / (420 / 680) : 1, front ? .92 : 1, 1);
+  SEATS.forEach((s, i) => { const id = s.who; s.rotation.y = front ? Math.PI : 0; s.scale.set(front ? (560 / 640) / (420 / 760) * .83 : 1, front ? .83 : 1, 1);
     s.position.y = (front ? .52 : .4) + s.h * s.scale.y / 2 + Math.sin(t * 1.6 + i) * .004; s.position.z = front ? s.z0 + .38 : s.z0 + .32;
     if (!front) { s.set(id === 'hero' && k === 'EXIT' && t >= L.h3.at - .2 ? 'back_hero_raise' : `back_${id}`); return; }
     let n = `${id}_n`;
@@ -244,17 +246,21 @@ window.renderAt = t => {
     if (id === 'vova' && (k === 'AUTO' || k === 'NAMES')) n = 'vova_o';
     const mi = k === 'CHORUS' ? Math.min(2, chorus + (i % 2 && chorus ? 0 : 0)) : id === 'hero' ? hm : 0; s.set(`${n}_m${mi}`); });
   teacher.visible = !front && k !== 'BOARD'; if (teacher.sh) teacher.sh.visible = teacher.visible;
-  tents.forEach(tn => { tn.visible = k === 'CHAIN'; if (!tn.visible) return; const after = t > L.n7.at + (L.n7.end - L.n7.at) * .62; const lab = {lena: '1', kid3: '2', vova: after ? '3+4' : '3', sasha: after ? '5' : '4', hero: after ? '6' : '5'}[tn.who];
+  tents.forEach(tn => { tn.visible = k === 'CHAIN' || k === 'BALLOON'; if (k === 'BALLOON' && (tn.who === 'lena' || tn.who === 'kid3' || tn.who === 'vova')) tn.visible = false; if (!tn.visible) return; const after = t > L.n7.at + (L.n7.end - L.n7.at) * .62 || k === 'BALLOON'; const lab = {lena: '1', kid3: '2', vova: after ? '3+4' : '3', sasha: after ? '5' : '4', hero: after ? '6' : '5'}[tn.who];
     if (tn.cur !== lab) { tn.cur = lab; tn.lab(lab); } tn.rotation.y = Math.PI; });
   nameTents.forEach(tn => { tn.visible = k === 'NAMES'; tn.rotation.y = Math.PI; });
   const hs = seat('hero'); heroBook.visible = k === 'STRUGGLE'; heroBook.position.set(hs.position.x, .79, hs.z0 + .05); heroBook.rotation.y = Math.PI;
   heroPaper.visible = k === 'ANTHEM' || k === 'SLEEP'; heroPaper.position.set(hs.position.x, .8, hs.z0 + .22); heroPaper.rotation.set(-.6, Math.PI, 0);
-  balloon.visible = k === 'BALLOON'; if (balloon.visible) { const bu = Math.max(0, (t - sh.at) / (sh.end - sh.at)); balloon.position.set(hs.position.x + .32 + bu * .1, 1.15 + bu * bu * 2.2, hs.z0 + .3); balloon.rotation.z = Math.sin(t * 2) * .12; }
+  balloon.visible = false; if (k === 'BALLOON') { const fu = Math.min(1, Math.max(0, (t - sh.at - .3) / 1.6)), e = fu * fu * (3 - 2 * fu), ss = seat('sasha'), a = new THREE.Vector3(hs.position.x, .86, hs.z0 - .2), b = new THREE.Vector3(ss.position.x, .86, ss.z0 - .2);
+    flyTent.visible = fu < 1; flyTent.position.lerpVectors(a, b, e); flyTent.position.y += Math.sin(e * Math.PI) * .9; flyTent.rotation.set(-.25, Math.PI + e * Math.PI * 2, 0);
+    tents.find(q => q.who === 'sasha').visible = fu >= 1; const ht = tents.find(q => q.who === 'hero'); ht.visible = t > sh.at + .3; if (ht.cur !== '6') { ht.cur = '6'; ht.lab('6'); } } else flyTent.visible = false;
+  if (false) { const bu = Math.max(0, (t - sh.at) / (sh.end - sh.at)); balloon.position.set(hs.position.x + .32 + bu * .1, 1.15 + bu * bu * 2.2, hs.z0 + .3); balloon.rotation.z = Math.sin(t * 2) * .12; }
   // other locations
   sashaPod.set(`sasha_win_m0`); heroPod.set('hero_sad_m0');
   confetti.forEach(c => { const q = c.userData, y = 5.5 - ((t * q.s + q.p) % 5.5); c.position.set(q.x + Math.sin(t + q.p) * .2, y, q.z); c.rotation.set(t * 3 + q.p, t * 2, 0); });
   const sm = mf(talk(['s1'], t)); sashaCor.set(`sasha_stand_m${sm}`); heroCor.set('hero_shrug_m0');
   [teacher, sashaCor, heroCor, sashaPod].forEach((m, i) => { m.position.y = m.base + m.h / 2 + Math.abs(Math.sin(t * 2 + i)) * .008; });
+  for (const m of [teacher, vovaBoard, sashaPod, heroPod, sashaCor, heroCor]) { const wp = new THREE.Vector3(); m.getWorldPosition(wp); m.rotation.y = Math.max(-.7, Math.min(.7, Math.atan2(camera.position.x - wp.x, camera.position.z - wp.z))); }
   renderer.render(scene, camera);
   // 2D pass: image, vignette, location dip, captions
   og.setTransform(1, 0, 0, 1, 0, 0); og.drawImage(renderer.domElement, 0, 0);
