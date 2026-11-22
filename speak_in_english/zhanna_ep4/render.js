@@ -258,7 +258,7 @@ function panel(id, t, a0, b0, thought) { const k = ease((t - a0) / .3) * (1 - ea
   g.translate(PX, PY); if (thought) { cloudShape(1); cloudShape(0, '#fffaf0'); } else { rr(10, 10, PW - 20, PH - 20, 46, '#fffaf0', 10); }
   g.save(); g.beginPath(); g.roundRect(30, 40, PW - 60, PH - 80, 36); g.clip(); CARD[id](t); g.restore();
   g = prev; g.save(); g.globalAlpha = k; const sc = .92 + .08 * k; g.translate(540, PY + PH / 2); g.scale(sc, sc); g.translate(-540, -(PY + PH / 2)); g.drawImage(clCv, 0, 0); g.restore(); }
-const ZT = [[470, 712, 13], [440, 672, 20]];
+const ZT = [[360, 740, 13], [390, 690, 20]];
 const PANELS = [['nocall', BY.z1.at + 3.3, BY.z1.end + .25, ZT], ['bio', BY.z2.at, BY.l2.end + .35], ['want', BY.z3.at, BY.z3.end + .3, ZT], ['look', BY.l3.at - .05, BY.l3.end + .4],
   ['deal', BY.z4.at, cs('l4', 1) + .1], ['swipe', cs('l4', 1) + .1, BY.z5.end + .35], ['fish', BY.l5.at - .05, TL.MATCH], ['match', TL.MATCH, BY.l7.at - .1], ['chat', BY.l7.at - .1, TL.END]];
 for (let i = 1; i < PANELS.length; i++) if (PANELS[i - 1][2] > PANELS[i][1]) PANELS[i - 1][2] = PANELS[i][1];   // never two panels at once
@@ -273,7 +273,7 @@ function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30
   txt('Пишите букву в комменты', 540, 1590, 42, INK); g.restore(); }
 
 // ---------- shots ----------
-const CAM = {TWO: [1.0, 545, 1000], Z_UP: [1.35, 380, 790], L_UP: [1.35, 715, 830], TWO_UP: [1.1, 545, 800]};
+const CAM = {TWO: [1.0, 545, 1000], Z_UP: [1.04, 530, 800], L_UP: [1.04, 555, 810], TWO_UP: [1.06, 545, 795]};   // every shot keeps both characters fully in frame
 const SH = [[0, 'TWO'], [BY.z1.at + 3.2, 'Z_UP'], [BY.l2.at - .1, 'L_UP'], [BY.z3.at - .1, 'Z_UP'], [BY.l3.at - .1, 'L_UP'], [BY.z4.at - .1, 'Z_UP'], [BY.l4.at - .1, 'L_UP'],
   [BY.z5.at - .1, 'Z_UP'], [BY.l5.at - .1, 'L_UP'], [BY.z6.at - .1, 'Z_UP'], [TL.MATCH, 'TWO_UP'], [BY.z7.at - .1, 'Z_UP'], [BY.l7.at - .1, 'L_UP'], [BY.l8.at - .1, 'TWO_UP'], [BY.z8.at - .1, 'Z_UP'], [TL.END, 'END']]
   .map(([at, k], i, a) => ({at, k, i, end: a[i + 1] ? a[i + 1][0] : TL.TOTAL}));
