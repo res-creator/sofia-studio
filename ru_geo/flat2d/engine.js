@@ -6,8 +6,33 @@ export const lerp = (a, b, t) => a + (b - a) * t;
 export const ease = (x) => { x = clamp(x); return x * x * (3 - 2 * x); };
 export let g = null; export let LW = 7; let ENV = [];
 export const SCENES = {};            // имя -> { bg(st), fg(st) }
-export const EMBLEMS = {};           // эмблемы для титров глав
+export const EMBLEMS = {}; export const CARD_BG = {};           // эмблемы для титров глав
 export function init(canvas, env) { g = canvas.getContext('2d'); ENV = env || []; }
+// ---------- архивные фото ----------
+export const PHOTOS = {}; export const CREDITS = {};
+export async function loadPhotos(film) {
+  let cr = {}; try { cr = await (await fetch(`/${film}/archive/credits.json`)).json(); } catch (e) { return; }
+  Object.assign(CREDITS, cr);
+  await Promise.all(Object.keys(cr).map((k) => new Promise((res) => { const im = new Image(); im.onload = () => { PHOTOS[k] = im; res(); }; im.onerror = () => { console.log('ERR photo ' + k); res(); }; im.src = `/${film}/archive/img/${cr[k].file}`; })));
+}
+let GRAIN = null;
+export function grain(t, a = 0.1) {
+  if (!GRAIN) { GRAIN = document.createElement('canvas'); GRAIN.width = GRAIN.height = 256; const x = GRAIN.getContext('2d'), d = x.createImageData(256, 256); let r = 1; for (let i = 0; i < d.data.length; i += 4) { r = (r * 1664525 + 1013904223) >>> 0; const v = r >>> 24; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; } x.putImageData(d, 0, 0); }
+  g.save(); g.globalAlpha = a; g.globalCompositeOperation = 'overlay'; const ox = (Math.floor(t * 24) * 53) % 256, oy = (Math.floor(t * 24) * 97) % 256; for (let x = -ox; x < W; x += 256) for (let y = -oy; y < H; y += 256) g.drawImage(GRAIN, x, y); g.restore();
+}
+/** фото на весь кадр (cover) в мировых координатах 0..W, 0..H; tone: color | bw | sepia */
+export function drawPhoto(key, tone = 'color', dim = 0.12) {
+  const im = PHOTOS[key]; g.fillStyle = '#0c0c10'; g.fillRect(-1400, -400, 4800, 1900); if (!im) return;
+  const cs = Math.max(W / im.width, H / im.height) * 1.02, w = im.width * cs, h = im.height * cs;
+  g.save(); g.filter = tone === 'bw' ? 'grayscale(1) contrast(1.08) brightness(.95)' : tone === 'sepia' ? 'grayscale(1) sepia(.55) contrast(1.08) brightness(.92)' : 'saturate(.9) contrast(1.05)'; g.drawImage(im, W / 2 - w / 2, H / 2 - h / 2, w, h); g.restore();
+  g.fillStyle = `rgba(20,12,6,${dim})`; g.fillRect(0, 0, W, H);
+}
+/** фото-«открытка», приколотая поверх сцены */
+export function polaroid(key, x, y, w, rot = 0, note = '') {
+  const im = PHOTOS[key]; if (!im) return; const h = w * im.height / im.width;
+  g.save(); g.translate(x, y); g.rotate(rot); g.shadowColor = 'rgba(0,0,0,.5)'; g.shadowBlur = 30; g.shadowOffsetY = 12; g.fillStyle = '#f7f4ec'; g.fillRect(-w / 2 - 18, -h / 2 - 18, w + 36, h + 80); g.shadowColor = 'transparent'; g.drawImage(im, -w / 2, -h / 2, w, h);
+  if (note) { g.font = '900 34px Nunito'; g.fillStyle = INK; g.textAlign = 'center'; g.fillText(note, 0, h / 2 + 46); } g.restore();
+}
 
 // ---------- примитивы ----------
 export const poly = (pts) => { g.beginPath(); pts.forEach(([x, y], i) => i ? g.lineTo(x, y) : g.moveTo(x, y)); g.closePath(); };
@@ -172,7 +197,7 @@ export function makeFilm(film, SB) {
 }
 const drawCardTitle = (title, t0, t) => { // плашка-заставка главы
   const k = (t - t0); const em = EMBLEMS[title] || EMBLEMS.default;
-  g.fillStyle = '#ffd98a'; g.fillRect(0, 0, W, H); for (let i = -2; i < 14; i++) { g.fillStyle = i % 2 ? '#ffc76b' : '#ffd98a'; g.fillRect(i * 160 + ((k * 40) % 320), 0, 160, H); }
+  if (CARD_BG[title] && PHOTOS[CARD_BG[title]]) { drawPhoto(CARD_BG[title], 'color', 0.5); g.fillStyle = 'rgba(255,217,138,.16)'; g.fillRect(0, 0, W, H); } else { g.fillStyle = '#ffd98a'; g.fillRect(0, 0, W, H); for (let i = -2; i < 14; i++) { g.fillStyle = i % 2 ? '#ffc76b' : '#ffd98a'; g.fillRect(i * 160 + ((k * 40) % 320), 0, 160, H); } }
   g.save(); g.translate(W / 2, 400); const sc = 0.9 + 0.1 * ease(k / 0.25); g.scale(sc, sc); if (em) em(k); g.restore();
   g.save(); g.translate(W / 2, 760); g.scale(0.92 + 0.08 * ease(k / 0.3), 0.92 + 0.08 * ease(k / 0.3)); g.font = '900 100px Nunito'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round';
   const words = title.split(' '); const lines = []; let cur = ''; for (const w of words) { if ((cur + ' ' + w).trim().length > 20 && cur) { lines.push(cur); cur = w; } else cur = (cur + ' ' + w).trim(); } lines.push(cur);
@@ -191,14 +216,17 @@ export function renderFrame(M, f, extra = {}) {
   let sc = sb; if (sb.seq) { const e = sb.seq.find((q) => pt < q.to) || sb.seq[sb.seq.length - 1]; sc = { ...sb, ...e }; }
   if (sb.after && t > seg.t + seg.dur + 0.4) sc = { ...sc, ...sb.after, cams: sb.after.cams || ['w'] };
   const span = it.b - it.a, shotLen = span / it.n, si = Math.min(it.n - 1, Math.floor((t - it.a) / shotLen)), sk = ((t - it.a) - si * shotLen) / shotLen;
+  const ph = sb.photos && sb.photos.find((q) => pt >= q.from && pt < q.to);
+  if (ph) sc = { ...sc, scene: 'photo', sp: { src: ph.src, tone: ph.tone, cap: ph.cap, dim: ph.dim }, cams: ['w'], actors: ph.actors || [], sticker: true, fg: null, hud: null, dim: null, tilt: null, punch: null };
   const actors = (sc.actors || []).map((a) => resolveActor(a, pt, t, f));
   const cams = sc.cams || ['w']; const cs = camFor(cams[si % cams.length], actors, sc.cam);
   const z = lerp(cs.z0, cs.z1, ease(sk)) * (1 + (sc.punch && t >= seg.t + sc.punch ? Math.exp(-(t - seg.t - sc.punch) * 14) * 0.07 : 0));
-  g.save(); g.translate(W / 2, H / 2); if (sc.tilt) g.rotate(typeof sc.tilt === 'function' ? sc.tilt(pt) : sc.tilt); g.scale(z, z); g.translate(-cs.cx, -cs.cy); LW = 7 / Math.sqrt(z);
+  let zz = z, ccx = cs.cx, ccy = cs.cy; if (ph) { const k = ease((pt - ph.from) / (ph.to - ph.from)); zz = lerp(ph.z0 ?? 1.03, ph.z1 ?? 1.13, k); ccx = ph.cx ?? 960; ccy = ph.cy ?? 540; }
+  g.save(); g.translate(W / 2, H / 2); if (sc.tilt) g.rotate(typeof sc.tilt === 'function' ? sc.tilt(pt) : sc.tilt); g.scale(zz, zz); g.translate(-ccx, -ccy); LW = 7 / Math.sqrt(zz);
   const S = SCENES[sc.scene] || SCENES.room, st = { t, pt, f, sp: sc.sp || {}, seg, dur: seg.dur, shot: si };
-  S.bg && S.bg(st); actors.forEach((a) => { if (a.custom) a.custom(a, st); else drawChar(a); }); S.fg && S.fg(st); if (sc.fg) sc.fg(st);
+  S.bg && S.bg(st); if (sc.sticker) drawSticker(actors); else actors.forEach((a) => { if (a.custom) a.custom(a, st); else drawChar(a); }); S.fg && S.fg(st); if (sc.fg) sc.fg(st);
   g.restore();
-  if (sc.hud) sc.hud(st);
+  if (sc.hud) sc.hud(st); if (S.hud) S.hud(st, sc);
   if (sc.dim) { const d = typeof sc.dim === 'function' ? sc.dim(pt) : sc.dim; if (d > 0) { g.fillStyle = `rgba(20,14,40,${d})`; g.fillRect(0, 0, W, H); } }
   if (!extra.nocap) drawCaption(film, t);
   if (t < 0.4) { g.fillStyle = `rgba(0,0,0,${1 - t / 0.4})`; g.fillRect(0, 0, W, H); }
@@ -216,3 +244,21 @@ function resolveActor(a, pt, t, f) {
   if (a.flipAt) { o.flip = stepFn(a.flipAt, pt, 1); }
   return o;
 }
+
+let OC = null;
+function drawSticker(actors) { // персонажи как «вырезки» с белым контуром и тенью поверх фото
+  const main = g, cv = main.canvas; if (!OC) { OC = document.createElement('canvas'); OC.width = cv.width; OC.height = cv.height; }
+  const o = OC.getContext('2d'); o.setTransform(1, 0, 0, 1, 0, 0); o.clearRect(0, 0, OC.width, OC.height); o.setTransform(main.getTransform());
+  g = o; actors.forEach((a) => drawChar(a)); g = main;
+  g.save(); g.setTransform(1, 0, 0, 1, 0, 0); const k = 1.6, f = [[4, 0], [-4, 0], [0, 4], [0, -4]].map(([x, y]) => `drop-shadow(${x * k}px ${y * k}px 0 #fbf8f0)`).join(' ');
+  g.filter = f + ` drop-shadow(${8 * k}px ${12 * k}px ${14 * k}px rgba(0,0,0,.55))`; g.drawImage(OC, 0, 0); g.filter = 'none'; g.restore();
+}
+SCENES.photo = {
+  bg(st) { drawPhoto(st.sp.src, st.sp.tone || 'color', st.sp.dim ?? 0.1); },
+  fg(st) { /* зерно и виньетка поверх всего кадра рисуются в hud */ },
+  hud(st, sc) {
+    const c = CREDITS[st.sp.src]; const vg = g.createRadialGradient(W / 2, H / 2, 420, W / 2, H / 2, 1250); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,.45)'); g.fillStyle = vg; g.fillRect(0, 0, W, H); grain(st.t, st.sp.tone === 'color' ? 0.06 : 0.12);
+    const label = st.sp.cap || (c && c.cap) || ''; const txt = (label ? label + '. ' : '') + (c ? 'Фото: ' + c.author + ', ' + c.license : ''); if (!txt) return;
+    g.save(); g.font = '700 26px Nunito'; const w = Math.min(1820, g.measureText(txt).width + 34); g.fillStyle = 'rgba(10,10,16,.68)'; g.beginPath(); g.roundRect(30, 28, w, 46, 10); g.fill(); g.fillStyle = '#f2efe6'; g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillText(txt, 46, 52, 1790); g.restore();
+  },
+};

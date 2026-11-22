@@ -1,4 +1,4 @@
-import { W, H, g, INK, TAU, clamp, lerp, ease, SCENES, EMBLEMS, drawChar, poly, rrect, ell, circ, fillO, R, P, E, C, line, rng, windows, building, tree, cloud, stack, star, ferris, bus, truck, smoke, flame, person_silhouette, LW } from './engine.js';
+import { W, H, g, INK, TAU, clamp, lerp, ease, SCENES, EMBLEMS, PHOTOS, drawPhoto, drawChar, poly, rrect, ell, circ, fillO, R, P, E, C, line, rng, windows, building, tree, cloud, stack, star, ferris, bus, truck, smoke, flame, person_silhouette, LW } from './engine.js';
 
 const FLOOR_Y = 760;
 const stripes = (a, b, y0 = 0, y1 = FLOOR_Y, x0 = -1200, x1 = 3200, w = 80) => { for (let i = Math.floor(x0 / w); i < x1 / w; i++) { g.fillStyle = i % 2 ? a : b; g.fillRect(i * w, y0, w, y1 - y0); } };
@@ -255,7 +255,7 @@ SCENES.milk = {
 SCENES.info = {
   bg(st) {
     const sp = st.sp, t = st.pt, items = sp.items || [], n = items.length;
-    g.fillStyle = sp.bg || '#ffd98a'; g.fillRect(-1200, -400, 4400, 1800); for (let i = -2; i < 14; i++) { g.fillStyle = i % 2 ? 'rgba(255,255,255,.18)' : 'rgba(255,255,255,0)'; g.fillRect(i * 160 + ((st.t * 20) % 320), -400, 160, 1800); }
+    if (sp.bgPhoto && PHOTOS[sp.bgPhoto]) { drawPhoto(sp.bgPhoto, sp.tone || 'color', 0.5); g.fillStyle = 'rgba(10,10,25,.35)'; g.fillRect(-200, -200, 2400, 1500); } else { g.fillStyle = sp.bg || '#ffd98a'; g.fillRect(-1200, -400, 4400, 1800); for (let i = -2; i < 14; i++) { g.fillStyle = i % 2 ? 'rgba(255,255,255,.18)' : 'rgba(255,255,255,0)'; g.fillRect(i * 160 + ((st.t * 20) % 320), -400, 160, 1800); } }
     if (sp.title) { g.save(); g.font = '900 70px Nunito'; g.textAlign = 'center'; g.lineWidth = 14; g.strokeStyle = INK; g.fillStyle = '#fff'; g.strokeText(sp.title, 960, 190); g.fillText(sp.title, 960, 190); g.restore(); }
     const cw = Math.min(440, (1300 - (n - 1) * 34) / n), tw0 = n * cw + (n - 1) * 34, x0 = 960 - tw0 / 2, sc0 = n === 1 ? 1.9 : n === 2 ? 1.6 : 1.35, scl = Math.min(sc0, 1640 / tw0);
     g.save(); g.translate(960, 560); g.scale(scl, scl); g.translate(-960, -560);

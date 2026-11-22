@@ -1,0 +1,138 @@
+{
+ "town86": {
+  "file": "town86.jpg",
+  "author": "IAEA Imagebank",
+  "license": "CC BY-SA 2.0",
+  "cap": "Припять",
+  "page": "https://commons.wikimedia.org/wiki/File:IAEA_02790026_(5613123694).jpg",
+  "title": "File:IAEA 02790026 (5613123694).jpg"
+ },
+ "wheel": {
+  "file": "wheel.jpg",
+  "author": "Jorge Franganillo from Barcelona, Spain",
+  "license": "CC BY 2.0",
+  "cap": "Припять, парк (позднее фото)",
+  "page": "https://commons.wikimedia.org/wiki/File:Pripyat_amusement_park_(26590732399).jpg",
+  "title": "File:Pripyat amusement park (26590732399).jpg"
+ },
+ "blocks": {
+  "file": "blocks.jpg",
+  "author": "IAEA Imagebank",
+  "license": "CC BY-SA 2.0",
+  "cap": "Припять сегодня",
+  "page": "https://commons.wikimedia.org/wiki/File:Abandoned_buildings_in_Pripyat_(02710148).jpg",
+  "title": "File:Abandoned buildings in Pripyat (02710148).jpg"
+ },
+ "pool": {
+  "file": "pool.jpg",
+  "author": "Hnapel",
+  "license": "CC BY-SA 4.0",
+  "cap": "Бассейн «Лазурный», Припять (позднее фото)",
+  "page": "https://commons.wikimedia.org/wiki/File:Pripyat_swimming_pool_hnapel_001.jpg",
+  "title": "File:Pripyat swimming pool hnapel 001.jpg"
+ },
+ "plantmodel": {
+  "file": "plantmodel.jpg",
+  "author": "Tadpolefarm",
+  "license": "CC BY-SA 4.0",
+  "cap": "Схема станции: четыре блока",
+  "page": "https://commons.wikimedia.org/wiki/File:Chernobyl_Power_Station_aerial_view.jpg",
+  "title": "File:Chernobyl Power Station aerial view.jpg"
+ },
+ "sarc": {
+  "file": "sarc.jpg",
+  "author": "Roman Harak",
+  "license": "CC BY-SA 2.0",
+  "cap": "Четвёртый блок и «Укрытие»",
+  "page": "https://commons.wikimedia.org/wiki/File:Chernobyl_-_25th_anniversary_(5654372657).jpg",
+  "title": "File:Chernobyl - 25th anniversary (5654372657).jpg"
+ },
+ "arch": {
+  "file": "arch.jpg",
+  "author": "Cls14",
+  "license": "CC BY-SA 4.0",
+  "cap": "Новая защитная арка, 2016",
+  "page": "https://commons.wikimedia.org/wiki/File:Chernobyl_New_Safe_Confinement_August_2016.jpg",
+  "title": "File:Chernobyl New Safe Confinement August 2016.jpg"
+ },
+ "archbuild": {
+  "file": "archbuild.jpg",
+  "author": "Kamil Porembiński from Łódź, Poland",
+  "license": "CC BY-SA 2.0",
+  "cap": "Строительство арки",
+  "page": "https://commons.wikimedia.org/wiki/File:New_Safe_Confinement_(NSC_or_New_Shelter)_-_Chernobyl,_Ukraine_-_4_July_2013.jpg",
+  "title": "File:New Safe Confinement (NSC or New Shelter) - Chernobyl, Ukraine - 4 July 2013.jpg"
+ },
+ "liquid": {
+  "file": "liquid.jpg",
+  "author": "IAEA Imagebank",
+  "license": "CC BY-SA 2.0",
+  "cap": "Дезактивация, 1986",
+  "page": "https://commons.wikimedia.org/wiki/File:IAEA_02790019_(5613119300).jpg",
+  "title": "File:IAEA 02790019 (5613119300).jpg"
+ },
+ "pass": {
+  "file": "pass.jpg",
+  "author": "Vgenze",
+  "license": "CC BY-SA 4.0",
+  "cap": "Пропуск на 1 мая 1986 года",
+  "page": "https://commons.wikimedia.org/wiki/File:%D0%9F%D1%80%D0%BE%D0%BF%D1%83%D1%81%D0%BA_%D0%9A%D0%93%D0%91_%D0%B4%D0%BB%D1%8F_%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BF%D0%BE%D1%80%D1%82%D0%B0_%D0%B2_%D0%9A%D0%B8%D0%B5%D0%B2%D0%B5.jpg",
+  "title": "File:Пропуск КГБ для транспорта в Киеве.jpg"
+ },
+ "plantmap": {
+  "file": "plantmap.jpg",
+  "author": "Vgenze",
+  "license": "CC BY-SA 4.0",
+  "cap": "План станции, 1986",
+  "page": "https://commons.wikimedia.org/wiki/File:%D0%A1%D1%85%D0%B5%D0%BC%D0%B0_%D0%A7%D0%90%D0%AD%D0%A1,_%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9_%D1%87%D0%B5%D1%80%D1%82%D0%B5%D0%B6,_%D0%B8%D1%8E%D0%BB%D1%8C_1986_%D0%B3%D0%BE%D0%B4%D0%B0.jpg",
+  "title": "File:Схема ЧАЭС, Рабочий чертеж, июль 1986 года.jpg"
+ },
+ "forsmark": {
+  "file": "forsmark.jpg",
+  "author": "автор неизвестен",
+  "license": "общественное достояние",
+  "cap": "АЭС «Форсмарк», Швеция",
+  "page": "https://commons.wikimedia.org/wiki/File:Forsmark_Kraftwerk.JPG",
+  "title": "File:Forsmark Kraftwerk.JPG"
+ },
+ "bus": {
+  "file": "bus.jpg",
+  "author": "Michal Bělka",
+  "license": "CC BY-SA 4.0",
+  "cap": "Брошенный автобус в зоне",
+  "page": "https://commons.wikimedia.org/wiki/File:Pripjat_2019_54.jpg",
+  "title": "File:Pripjat 2019 54.jpg"
+ },
+ "school": {
+  "file": "school.jpg",
+  "author": "Adam Jones from Kelowna, BC, Canada",
+  "license": "CC BY-SA 2.0",
+  "cap": "Школа в Припяти (позднее фото)",
+  "page": "https://commons.wikimedia.org/wiki/File:Abandoned_Schoolhouse_-_Pripyat_Ghost_Town_-_Chernobyl_Exclusion_Zone_-_Northern_Ukraine_-_06_(26825511820).jpg",
+  "title": "File:Abandoned Schoolhouse - Pripyat Ghost Town - Chernobyl Exclusion Zone - Northern Ukraine - 06 (26825511820).jpg"
+ },
+ "flat": {
+  "file": "flat.jpg",
+  "author": "Michal Bělka",
+  "license": "CC BY-SA 4.0",
+  "cap": "Квартира в Припяти (позднее фото)",
+  "page": "https://commons.wikimedia.org/wiki/File:Pripjat_2019_30.jpg",
+  "title": "File:Pripjat 2019 30.jpg"
+ },
+ "sign": {
+  "file": "sign.jpg",
+  "author": "Adam Jones from Kelowna, BC, Canada",
+  "license": "CC BY-SA 2.0",
+  "cap": "Граница зоны отчуждения",
+  "page": "https://commons.wikimedia.org/wiki/File:Sign_at_Entrance_to_Chernobyl_Exclusion_Zone_-_Northern_Ukraine_(26825581640).jpg",
+  "title": "File:Sign at Entrance to Chernobyl Exclusion Zone - Northern Ukraine (26825581640).jpg"
+ },
+ "slav": {
+  "file": "slav.jpg",
+  "author": "IAEA Imagebank",
+  "license": "CC BY-SA 2.0",
+  "cap": "Славутич",
+  "page": "https://commons.wikimedia.org/wiki/File:Slavutych_(02710036).jpg",
+  "title": "File:Slavutych (02710036).jpg"
+ }
+}
