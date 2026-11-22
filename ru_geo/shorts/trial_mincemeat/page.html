@@ -1,0 +1,200 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script>
+const cv = document.getElementById('c'), g = cv.getContext('2d');
+const W = 1080, H = 1920;
+let WORDS = [];
+const CREAM = '#f4ecd8', INK = '#1a1410', RED = '#c8412b', GOLD = '#e8b04a', SKIN = '#e9c7a0';
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const ease = (x) => { x = clamp(x); return x * x * (3 - 2 * x); };
+const ramp = (t, a, b) => clamp((t - a) / (b - a));
+const pop = (t, a) => { const x = t - a; if (x < 0) return 0; if (x > 0.5) return 1; const k = x / 0.5; return 1 + Math.sin(k * Math.PI * 2.2) * Math.exp(-k * 4) * 0.5 - (1 - k) * (1 - k) * 0 - (1 - clamp(k * 4)) ; };
+const spring = (t, a) => { const x = t - a; if (x <= 0) return 0; return 1 - Math.exp(-x * 9) * Math.cos(x * 16); };
+
+// ---------- paper cutout helper: cream outline + shadow, then fill ----------
+function cut(path, fill, o = {}) {
+  g.save();
+  g.shadowColor = 'rgba(0,0,0,.45)'; g.shadowBlur = 22; g.shadowOffsetY = 12;
+  g.lineJoin = 'round'; g.lineWidth = o.out ?? 14; g.strokeStyle = CREAM; path(); g.stroke();
+  g.shadowColor = 'transparent'; g.fillStyle = fill; path(); g.fill();
+  g.lineWidth = 3; g.strokeStyle = INK; path(); g.stroke();
+  g.restore();
+}
+const rrect = (x, y, w, h, r) => () => { g.beginPath(); g.roundRect(x, y, w, h, r); };
+const circ = (x, y, r) => () => { g.beginPath(); g.arc(x, y, r, 0, 7); };
+const poly = (pts) => () => { g.beginPath(); pts.forEach(([x, y], i) => i ? g.lineTo(x, y) : g.moveTo(x, y)); g.closePath(); };
+const ell = (x, y, rx, ry, rot = 0) => () => { g.beginPath(); g.ellipse(x, y, rx, ry, rot, 0, 7); };
+function text(s, x, y, size, fill = CREAM, o = {}) {
+  g.save(); g.font = `${o.w ?? 900} ${size}px Inter, Arial, sans-serif`; g.textAlign = o.align ?? 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round';
+  if (o.rot) { g.translate(x, y); g.rotate(o.rot); x = 0; y = 0; }
+  if (o.stroke !== false) { g.lineWidth = o.sw ?? size * 0.22; g.strokeStyle = o.sc ?? INK; g.strokeText(s, x, y); }
+  g.fillStyle = fill; g.fillText(s, x, y); g.restore();
+}
+
+// ---------- characters ----------
+function officer(x, y, s, o = {}) { // bean-head officer cutout, standing, origin = feet center
+  g.save(); g.translate(x, y); g.scale(s, s); if (o.rot) g.rotate(o.rot);
+  const dead = o.eyes === 'closed';
+  cut(rrect(-62, -300, 124, 250, 30), '#6b5b3e');                   // tunic
+  cut(rrect(-50, -52, 44, 52, 10), '#3d3426'); cut(rrect(6, -52, 44, 52, 10), '#3d3426'); // legs
+  cut(rrect(-100, -290, 40, 190, 20), '#6b5b3e'); cut(rrect(60, -290, 40, 190, 20), '#6b5b3e'); // arms
+  cut(circ(-80, -100, 22), SKIN, { out: 8 }); cut(circ(80, -100, 22), SKIN, { out: 8 });
+  cut(poly([[-18, -296], [18, -296], [0, -200]]), '#e8dcc0', { out: 6 }); // shirt V
+  cut(poly([[-6, -290], [6, -290], [10, -210], [0, -196], [-10, -210]]), '#3a4a2a', { out: 4 }); // tie
+  cut(circ(0, -380, 92), SKIN);                                      // head
+  cut(rrect(-84, -482, 168, 52, 18), '#4a4030', { out: 10 });          // cap band
+  cut(poly([[-96, -440], [96, -440], [64, -520], [-64, -520]]), '#5a5038', { out: 10 }); // cap top
+  g.fillStyle = GOLD; g.beginPath(); g.arc(0, -458, 11, 0, 7); g.fill();
+  g.strokeStyle = INK; g.lineWidth = 5; g.lineCap = 'round';
+  if (dead) { [-34, 34].forEach((ex) => { g.beginPath(); g.moveTo(ex - 14, -384); g.quadraticCurveTo(ex, -374, ex + 14, -384); g.stroke(); }); g.beginPath(); g.moveTo(-18, -336); g.lineTo(18, -336); g.stroke(); }
+  else { [-34, 34].forEach((ex) => { g.fillStyle = '#fff'; g.beginPath(); g.arc(ex, -382, 15, 0, 7); g.fill(); g.stroke(); g.fillStyle = INK; g.beginPath(); g.arc(ex + 3, -380, 7, 0, 7); g.fill(); }); g.beginPath(); g.arc(0, -344, 18, 0.15, Math.PI - 0.15); g.stroke(); }
+  g.restore();
+}
+function helmetSoldier(x, y, s, look = 0) { // enemy soldier, only head + shoulders, grey
+  g.save(); g.translate(x, y); g.scale(s, s);
+  cut(rrect(-50, -90, 100, 120, 24), '#5a6068', { out: 10 });
+  cut(circ(0, -140, 58), SKIN, { out: 10 });
+  cut(poly([[-66, -148], [66, -148], [58, -214], [0, -230], [-58, -214]]), '#45504f', { out: 10 });
+  g.strokeStyle = INK; g.lineWidth = 4; g.lineCap = 'round';
+  [-22, 22].forEach((ex) => { g.fillStyle = '#fff'; g.beginPath(); g.arc(ex, -134, 11, 0, 7); g.fill(); g.stroke(); g.fillStyle = INK; g.beginPath(); g.arc(ex + look * 5, -134, 5, 0, 7); g.fill(); });
+  g.beginPath(); g.moveTo(-14, -104); g.lineTo(14, -104); g.stroke();
+  g.restore();
+}
+
+// ---------- backgrounds ----------
+function nightSea(t, o = {}) {
+  const gr = g.createLinearGradient(0, 0, 0, H); gr.addColorStop(0, '#0a1626'); gr.addColorStop(0.5, '#12304a'); gr.addColorStop(1, '#0b1e30'); g.fillStyle = gr; g.fillRect(0, 0, W, H);
+  g.fillStyle = '#f4ecd8'; g.beginPath(); g.arc(800, 330, 90, 0, 7); g.fill(); g.fillStyle = '#12304a'; g.beginPath(); g.arc(840, 310, 84, 0, 7); g.fill();
+  for (let i = 0; i < 40; i++) { const sx = (i * 197) % W, sy = (i * 131) % 700; g.fillStyle = `rgba(255,255,255,${0.35 + 0.3 * Math.sin(t * 2 + i)})`; g.fillRect(sx, sy, 4, 4); }
+  const horizon = o.horizon ?? 760;
+  g.fillStyle = '#0e3552'; g.fillRect(0, horizon, W, H - horizon);
+  for (let r = 0; r < 9; r++) { const y = horizon + 60 + r * 120; g.fillStyle = r % 2 ? '#134263' : '#0e3552'; g.beginPath(); g.moveTo(0, y);
+    for (let x = 0; x <= W; x += 30) g.lineTo(x, y + Math.sin(x * 0.02 + t * 1.6 + r) * (12 + r * 2)); g.lineTo(W, H); g.lineTo(0, H); g.fill(); }
+}
+function parchment() {
+  const gr = g.createLinearGradient(0, 0, W, H); gr.addColorStop(0, '#d9c49a'); gr.addColorStop(1, '#bba577'); g.fillStyle = gr; g.fillRect(0, 0, W, H);
+  g.strokeStyle = 'rgba(90,60,30,.18)'; g.lineWidth = 2; for (let x = 0; x < W; x += 90) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x, H); g.stroke(); } for (let y = 0; y < H; y += 90) { g.beginPath(); g.moveTo(0, y); g.lineTo(W, y); g.stroke(); }
+  const v = g.createRadialGradient(W / 2, H / 2, 400, W / 2, H / 2, 1300); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(50,25,5,.55)'); g.fillStyle = v; g.fillRect(0, 0, W, H);
+}
+function medMap() { // stylised: Africa bottom, Italy boot, Sicily
+  cut(poly([[-20, 960], [300, 880], [620, 900], [900, 860], [1100, 900], [1100, 1300], [-20, 1300]]), '#c7a566', { out: 8 }); // Africa coast
+  cut(poly([[-20, 330], [330, 360], [470, 420], [520, 520], [610, 640], [660, 760], [610, 780], [570, 700], [500, 640], [420, 520], [300, 470], [-20, 470]]), '#b89458', { out: 8 }); // Europe + boot
+  cut(poly([[520, 820], [660, 800], [700, 860], [610, 900], [540, 880]]), '#a98348', { out: 8 }); // Sicily
+  cut(poly([[800, 500], [960, 470], [1100, 560], [1100, 780], [940, 720], [860, 620]]), '#b89458', { out: 8 }); // Greece-ish
+}
+
+// ---------- icons ----------
+function envelope(x, y, s, rot = 0, col = '#efe3c6') { g.save(); g.translate(x, y); g.rotate(rot); g.scale(s, s);
+  cut(rrect(-110, -70, 220, 140, 10), col, { out: 10 }); g.strokeStyle = INK; g.lineWidth = 4; g.beginPath(); g.moveTo(-110, -70); g.lineTo(0, 15); g.lineTo(110, -70); g.stroke(); g.restore(); }
+function ticket(x, y, s, rot = 0) { g.save(); g.translate(x, y); g.rotate(rot); g.scale(s, s); cut(rrect(-120, -62, 240, 124, 14), '#d95b4a', { out: 10 }); g.fillStyle = CREAM; g.beginPath(); g.arc(-120, 0, 18, 0, 7); g.arc(120, 0, 18, 0, 7); g.fill();
+  text('ТЕАТР', 0, -8, 46, CREAM, { sw: 8 }); text('№ 17', 0, 34, 32, CREAM, { sw: 6 }); g.restore(); }
+function photoHeart(x, y, s, rot = 0) { g.save(); g.translate(x, y); g.rotate(rot); g.scale(s, s); cut(rrect(-100, -120, 200, 240, 8), '#f4f1ea', { out: 10 }); g.fillStyle = '#b8c6d6'; g.fillRect(-80, -100, 160, 170);
+  cut(circ(0, -45, 42), SKIN, { out: 6 }); cut(poly([[-34, -75], [34, -75], [48, -30], [-48, -30]]), '#6b3a2a', { out: 4 });
+  g.fillStyle = RED; g.beginPath(); g.moveTo(0, 105); g.bezierCurveTo(-48, 82, -34, 62, 0, 84); g.bezierCurveTo(34, 62, 48, 82, 0, 105); g.fill(); g.restore(); }
+function briefcase(x, y, s, open = 0) { g.save(); g.translate(x, y); g.scale(s, s);
+  cut(rrect(-190, -110, 380, 220, 26), '#5a3a22', { out: 12 }); cut(rrect(-50, -150, 100, 56, 20), '#3a2414', { out: 8 });
+  g.fillStyle = GOLD; g.fillRect(-26, -20, 52, 40); g.strokeStyle = INK; g.lineWidth = 4; g.strokeRect(-26, -20, 52, 40);
+  g.fillStyle = '#e8dcc0'; g.fillRect(-190, -4, 380, 8);
+  g.restore(); }
+function plane(x, y, s, rot) { g.save(); g.translate(x, y); g.rotate(rot); g.scale(s, s); cut(ell(0, 0, 90, 24), '#9aa4ae', { out: 8 }); cut(poly([[-20, 0], [40, -90], [60, -90], [20, 0]]), '#8a949e', { out: 8 }); cut(poly([[-80, -4], [-110, -44], [-90, -44], [-60, -4]]), '#8a949e', { out: 6 }); g.restore(); }
+
+// ---------- captions ----------
+function chunks() {
+  const out = []; let cur = [];
+  WORDS.forEach((w, i) => { cur.push(w); const end = /[.,–!?]$/.test(w[0]) || cur.length >= 3 || (WORDS[i + 1] && WORDS[i + 1][1] - w[2] > 0.3); if (end) { out.push({ a: cur[0][1], b: w[2], s: cur.map((x) => x[0].replace(/[–]/g, '').trim()).join(' ').replace(/[,.]$/, '').trim() }); cur = []; } });
+  if (cur.length) out.push({ a: cur[0][1], b: cur[cur.length - 1][2], s: cur.map((x) => x[0]).join(' ') });
+  return out;
+}
+let CH = null;
+function captions(t) {
+  CH = CH || chunks(); const c = CH.find((c, i) => t >= c.a - 0.02 && t < (CH[i + 1] ? CH[i + 1].a : c.b + 0.5));
+  if (!c) return; const k = spring(t, c.a) ; const sc = 0.9 + 0.1 * clamp(k, 0, 1.15);
+  let fs = 96; g.font = `900 ${fs}px Inter, Arial, sans-serif`; const mw = g.measureText(c.s.toUpperCase()).width; if (mw > 940) fs = Math.floor(fs * 940 / mw);
+  g.save(); g.translate(W / 2, 1690); g.scale(sc, sc); text(c.s.toUpperCase(), 0, 0, fs, '#fff', { sw: fs * 0.22 }); g.restore();
+}
+
+// ---------- the story ----------
+const T = (id) => id;
+function scene(t) {
+  // S1 0-2.8 : submarine, body thrown into the sea
+  if (t < 2.85) {
+    nightSea(t);
+    const bob = Math.sin(t * 2) * 8;
+    g.save(); g.translate(0, bob);
+    cut(rrect(80, 780, 720, 130, 60), '#2b3640', { out: 12 }); cut(rrect(330, 690, 170, 110, 20), '#2b3640', { out: 12 }); cut(rrect(398, 600, 20, 100, 6), '#2b3640', { out: 6 });
+    cut(circ(190, 845, 20), '#e8b04a', { out: 6 }); cut(circ(290, 845, 20), '#e8b04a', { out: 6 });
+    text('HMS SERAPH', 600, 868, 38, CREAM, { sw: 8 }); g.restore();
+    // body arc
+    const u = ramp(t, 0.55, 1.55); const bx = 560 + u * 300, by = 640 - Math.sin(u * Math.PI) * 280 + u * u * 340;
+    if (t > 0.55 && t < 1.7) officer(bx, by + 440 * 0.0, 0.46, { eyes: 'closed', rot: -0.3 + u * 1.5 });
+    if (t >= 1.5) { const s = ramp(t, 1.5, 2.3); g.save(); g.globalAlpha = 1 - s; for (let i = 0; i < 6; i++) { g.fillStyle = '#d7eaf5'; g.beginPath(); g.arc(860 + (i - 3) * 30, 980 - Math.sin(s * 3.1 + i) * 120 * s, 16 - i, 0, 7); g.fill(); } g.restore();
+      g.save(); g.globalAlpha = clamp(1 - Math.abs(t - 1.9) / 1.2); officer(900 + (t - 1.5) * 20, 1020 + (t - 1.5) * 40, 0.4, { eyes: 'closed', rot: 1.4 }); g.restore(); }
+    return;
+  }
+  // S2 2.85-10.35 : map 1943
+  if (t < 10.35) {
+    parchment(); medMap();
+    const tt = ease(ramp(t, 2.95, 3.45)); g.save(); g.globalAlpha = tt; text('1943', W / 2, 230, 190, RED, { sw: 28, sc: CREAM }); g.restore();
+    text('СИЦИЛИЯ', 850, 835, 56, INK, { sw: 0, stroke: false, w: 900 });
+    if (t > 6.0) { const a = ease(ramp(t, 6.0, 7.5)); g.save(); g.strokeStyle = '#2f6fb0'; g.lineWidth = 34; g.lineCap = 'round'; g.setLineDash([60, 40]);
+      g.beginPath(); g.moveTo(420, 1250); g.quadraticCurveTo(480 + 40 * a, 1100 - 90 * a, 420 + 200 * a, 1250 - 330 * a); g.stroke(); g.setLineDash([]);
+      if (a > 0.95) { g.fillStyle = '#2f6fb0'; g.beginPath(); g.moveTo(610, 900); g.lineTo(560, 960); g.lineTo(680, 960); g.closePath(); g.fill(); } g.restore(); text('СОЮЗНИКИ', 300, 1320, 60, '#2f6fb0', { sw: 14, sc: CREAM }); }
+    if (t > 8.1) { for (let i = 0; i < 3; i++) { const p = spring(t, 8.2 + i * 0.2); g.save(); g.globalAlpha = clamp(p); helmetSoldier(470 + i * 150, 560 + (1 - clamp(p)) * 60 + i * 40, 0.7, Math.sin(t * 2 + i) > 0 ? 1 : -1); g.restore(); }
+      text('ЖДУТ ЗДЕСЬ', 600, 740, 66, RED, { sw: 16, sc: CREAM, rot: -0.04 }); }
+    return;
+  }
+  // S3 10.35-13.2 : the bait
+  if (t < 13.2) {
+    const gr = g.createLinearGradient(0, 0, 0, H); gr.addColorStop(0, '#2a6f8f'); gr.addColorStop(1, '#0d3350'); g.fillStyle = gr; g.fillRect(0, 0, W, H);
+    for (let i = 0; i < 12; i++) { g.fillStyle = 'rgba(255,255,255,.12)'; g.beginPath(); g.arc((i * 211 + t * 30) % W, 1700 - ((t * 60 + i * 150) % 1500), 8 + i % 4 * 4, 0, 7); g.fill(); }
+    g.strokeStyle = CREAM; g.lineWidth = 6; g.beginPath(); g.moveTo(540, 0); g.lineTo(540, 700 + Math.sin(t * 3) * 10); g.stroke();
+    g.save(); g.translate(540, 760 + Math.sin(t * 3) * 10); g.strokeStyle = '#d0d0d0'; g.lineWidth = 12; g.lineCap = 'round'; g.beginPath(); g.moveTo(0, -60); g.lineTo(0, 40); g.arc(-34, 40, 34, 0, Math.PI); g.stroke(); g.restore();
+    envelope(540, 900 + Math.sin(t * 3) * 10, 0.9, Math.sin(t * 2) * 0.1);
+    const fx = 1500 - ease(ramp(t, 10.6, 12.9)) * 800; const fy = 960;
+    g.save(); g.translate(fx, fy); g.scale(-1, 1); cut(ell(0, 0, 150, 80), '#d98a3e', { out: 12 }); cut(poly([[130, 0], [220, -70], [220, 70]]), '#c4742e', { out: 10 });
+    g.fillStyle = '#fff'; g.beginPath(); g.arc(-70, -14, 22, 0, 7); g.fill(); g.strokeStyle = INK; g.lineWidth = 4; g.stroke(); g.fillStyle = INK; g.beginPath(); g.arc(-64, -14, 10, 0, 7); g.fill(); g.restore();
+    text('ВРАГ ПОВЕРИТ САМ', W / 2, 330, 84, CREAM, { sw: 20 });
+    return;
+  }
+  // S4 13.2-19.0 : the plan, body under a sheet
+  if (t < 19.0) {
+    parchment();
+    text('ПЛАН', W / 2, 250, 150, RED, { sw: 24, sc: CREAM });
+    const sp = spring(t, 13.9); g.save(); g.globalAlpha = clamp(sp);
+    cut(rrect(80, 1040, 920, 40, 14), '#6a5a48', { out: 10 }); cut(rrect(170, 1080, 40, 150, 8), '#6a5a48', { out: 8 }); cut(rrect(870, 1080, 40, 150, 8), '#6a5a48', { out: 8 });
+    g.restore();
+    const lie = clamp(sp); g.save(); g.translate(540, 1050 - (1 - lie) * 200); g.rotate(-Math.PI / 2); g.scale(0.55, 0.55); g.translate(0, 330 * 0 + 0); g.restore();
+    g.save(); g.globalAlpha = clamp(sp); officer(580, 1030 + (1 - lie) * -80, 0.8, { eyes: 'closed', rot: -Math.PI / 2 + 0.02 }); g.restore();
+    if (t > 15.1) { g.save(); g.globalAlpha = ease(ramp(t, 15.1, 15.6)); cut(rrect(230, 430, 620, 120, 20), CREAM, { out: 8 }); text('ТЕЛО ЧЕЛОВЕКА', W / 2, 490, 64, INK, { sw: 0, stroke: false }); g.restore(); }
+    if (t > 16.4) { const k = ramp(t, 16.4, 18.6); plane(160 + k * 760, 640 + k * 260, 1.2, 0.35); if (k > 0.9) { text('УТОПЛЕНИЕ', W / 2, 770, 70, '#2f6fb0', { sw: 16, sc: CREAM }); } }
+    return;
+  }
+  // S5 19.0-23.7 : officer + name
+  if (t < 23.7) {
+    nightSea(t, { horizon: 1180 }); g.fillStyle = 'rgba(0,0,0,.25)'; g.fillRect(0, 0, W, H);
+    const k = spring(t, 19.3); officer(540, 1220, 1.15 * clamp(k, 0, 1.1), { eyes: 'open' });
+    if (t > 21.9) { const p = spring(t, 21.9); g.save(); g.translate(540, 1420); g.scale(clamp(p, 0, 1.15), clamp(p, 0, 1.15)); cut(rrect(-400, -80, 800, 170, 24), CREAM, { out: 10 }); text('МАЙОР УИЛЬЯМ МАРТИН', 0, -22, 58, INK, { sw: 0, stroke: false }); text('вымышленное имя', 0, 42, 44, RED, { sw: 0, stroke: false, w: 700 }); g.restore(); }
+    return;
+  }
+  // S6 23.7-27.3 : pockets
+  if (t < 27.3) {
+    parchment(); text('В КАРМАНАХ', W / 2, 250, 130, RED, { sw: 24, sc: CREAM });
+    const items = [[24.2, () => envelope(540, 650, 1.5, -0.08), 'ПИСЬМА'], [25.3, () => ticket(540, 1040, 1.4, 0.07), 'БИЛЕТЫ'], [26.35, () => photoHeart(540, 1420, 1.2, -0.05), 'ФОТО НЕВЕСТЫ']];
+    items.forEach(([a, d, label], i) => { const p = spring(t, a); if (p <= 0) return; g.save(); g.translate(540, [650, 1040, 1420][i]); g.scale(clamp(p, 0, 1.1), clamp(p, 0, 1.1)); g.translate(-540, -[650, 1040, 1420][i]); d(); g.restore(); });
+    return;
+  }
+  // S7 27.3-32.6 : briefcase + Greece
+  { nightSea(t, { horizon: 1500 }); g.fillStyle = 'rgba(0,0,0,.35)'; g.fillRect(0, 0, W, H);
+    const k = spring(t, 27.5); g.save(); g.translate(540, 620); g.scale(clamp(k, 0, 1.1), clamp(k, 0, 1.1)); g.translate(-540, -620); briefcase(540, 620, 1.35);
+    // chain
+    g.strokeStyle = '#c9ccd2'; g.lineWidth = 12; g.setLineDash([26, 10]); g.beginPath(); g.moveTo(540, 740); g.quadraticCurveTo(300, 900, 190, 880); g.stroke(); g.setLineDash([]); cut(circ(160, 880, 40), SKIN, { out: 8 }); g.restore();
+    if (t > 28.7) { const a = ease(ramp(t, 28.7, 29.4)); g.save(); g.globalAlpha = a; cut(rrect(220, 960, 640, 130, 20), '#c8412b', { out: 10 }); text('СЕКРЕТНО', W / 2, 1025, 90, CREAM, { sw: 0, stroke: false }); g.restore(); }
+    if (t > 30.8) { const p = ease(ramp(t, 30.8, 31.8)); g.save(); g.globalAlpha = p; cut(rrect(120, 1120, 840, 270, 26), '#d9c49a', { out: 10 }); g.fillStyle = RED; g.strokeStyle = RED; g.lineWidth = 30; g.lineCap = 'round'; g.beginPath(); g.moveTo(190, 1330); g.lineTo(190 + 360 * p, 1330 - 0); g.stroke();
+      g.beginPath(); g.moveTo(600, 1260); g.lineTo(700, 1330); g.lineTo(600, 1400); g.closePath(); g.fill(); text('ГРЕЦИЯ', 800, 1255, 70, INK, { sw: 0, stroke: false }); g.restore(); }
+  }
+}
+function grain(t) { g.save(); g.globalAlpha = 0.07; for (let i = 0; i < 700; i++) { g.fillStyle = Math.random() > 0.5 ? '#fff' : '#000'; g.fillRect(Math.random() * W, Math.random() * H, 3, 3); } g.restore();
+  const v = g.createRadialGradient(W / 2, H / 2, 600, W / 2, H / 2, 1300); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,.45)'); g.fillStyle = v; g.fillRect(0, 0, W, H); }
+window.renderFrame = (f) => { const t = f / 30; g.clearRect(0, 0, W, H); g.save(); scene(t); g.restore(); captions(t); grain(t); };
+fetch('words.json').then((r) => r.json()).then((w) => { WORDS = w; document.fonts.load('900 60px Inter').then(() => { window.ready = true; }); });
+</script></body></html>
