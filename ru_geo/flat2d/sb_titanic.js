@@ -18,7 +18,7 @@ export const SB = [
     { to: 4.5, scene: 'cabin', sp: { ...N, scrape: true, bulb: 0 }, cams: [[430, 600, 1.9, 2.1], 'w'], actors: [sleeper()] },
     { to: 99, scene: 'cabin', sp: { ...N, water: (pt) => clamp((pt - 4.5) / 4), bulb: 0 }, cams: [[1620, 700, 2.4, 2.6], 'w'], actors: [sleeper()] }] },
   { m: 'Тебя зовут Шон', shotLen: 3.4, seq: [
-    { to: 7.5, scene: 'promenade', sp: { people: false }, cams: ['c0', 'a0'], actors: [shon({ emo: 'grin', looks: [[0, 0.2]] })] },
+    { to: 6.8, scene: 'promenade', sp: { people: false }, cams: ['c0', 'a0'], actors: [shon({ emo: 'grin', looks: [[0, 0.2]] })] },
     { to: 99, scene: 'info', sp: { bg: '#bfe6f6', items: [{ big: '1 из 7', label: 'шансы мужчины в третьем классе', at: 0.3 }] }, cams: ['w'], actors: [] }] },
   { m: 'Ты придуман.', scene: 'tender', sp: {}, cams: ['w', 'a0'], shotLen: 3.4, actors: [shon({ x: 560, y: 790, s: 1.0, emo: 'flat', item: 'case', pose: { L: 'hang', R: 'hang' } })] },
 
@@ -46,7 +46,7 @@ export const SB = [
   // ===== ЧЕТЫРНАДЦАТОГО АПРЕЛЯ =====
   { m: 'Предупреждения о льдах', photos: [{ from: 0.2, to: 5.2, src: 'wireless' }], scene: 'radioRoom', sp: { papers: true }, cams: ['w', 'a0', 'w'], shotLen: 3.0, actors: [{ who: 'sailor', x: 1130, y: 780, s: 0.9, emo: 'flat', pose: { L: 'hold', R: 'hold' }, item: 'paper', still: true }] },
   { m: 'Где-то поблизости стоит пароход', photos: [{ from: 0.2, to: 5.8, src: 'cal' }], shotLen: 3.2, seq: [
-    { to: 6.5, scene: 'seaNight', sp: { californian: true, shipX: 560 }, cams: ['w'], actors: [] },
+    { to: 6.4, scene: 'seaNight', sp: { californian: true, shipX: 560 }, cams: ['w'], actors: [] },
     { to: 99, scene: 'radioRoom', sp: { night: true, on: (false) }, cams: ['a0', 'w'], actors: [{ who: 'sailor', x: 1130, y: 780, s: 0.9, emo: 'flat', pose: { L: 'hip', R: 'up' }, flip: -1, emos: [[0, 'flat']] }] }] },
   { m: 'А ты вечером в общей комнате', scene: 'generalRoom', sp: { night: true, notes: true }, cams: ['w', 'a0', 'a1', 'a2'], shotLen: 3.2,
     actors: [shon({ x: 700, y: 900, emo: 'grin', pose: { L: 'hold', R: 'hang' }, looks: [[0, 0.8]] }), sboy({ x: 960, y: 900, s: 0.8, emo: 'grin', pose: { L: 'hang', R: 'hang' }, looks: [[0, -0.8]] }), smom({ x: 1700, y: 900, emo: 'grin', flip: -1, pose: { L: 'hang', R: 'hang' } })] },
@@ -57,7 +57,7 @@ export const SB = [
 
   // ===== ДВАДЦАТЬ МИНУТ ДО ПОЛУНОЧИ =====
   { m: 'Вперёдсмотрящий замечает айсберг', photos: [{ from: 3.9, to: 6.4, src: 'iceberg', cap: 'Айсберг рядом с местом гибели, 1912' }], shotLen: 3.2, seq: [
-    { to: 3.0, scene: 'seaNight', sp: { moon: false }, cams: [[1000, 420, 1.6, 1.8]], actors: [{ who: 'sailor', x: 1250, y: 940, s: 1.4, emo: 'surprised', pose: { L: 'point', R: 'hold' }, flip: -1, sweatAt: [0, 3] }] },
+    { to: 3.2, scene: 'seaNight', sp: { moon: false }, cams: [[1000, 420, 1.6, 1.8]], actors: [{ who: 'sailor', x: 1250, y: 940, s: 1.4, emo: 'surprised', pose: { L: 'point', R: 'hold' }, flip: -1, sweatAt: [0, 3] }] },
     { to: 99, scene: 'seaNight', sp: { iceberg: true, hitAt: 3.2 - 3.0, moon: false, shipX: 560 }, cams: ['w'], punch: 3.4, actors: [] }] },
   { m: 'По данным обследования обломков', scene: 'compartments', sp: {}, cams: ['w'], actors: [] },
   { m: 'Твоя каюта у носа', scene: 'cabin', sp: { ...N, water: (pt) => clamp(pt / 4), bulb: 0 }, cams: [[1620, 700, 1.7, 1.9], 'w'], actors: [sleeper()] },

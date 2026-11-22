@@ -61,7 +61,7 @@ export const SB = [
 
   // ===== СУББОТА =====
   { m: 'Утром ты просыпаешься', shotLen: 2.8, seq: [
-    { to: 3.5, scene: 'room', sp: { door: 0 }, cams: ['c0', 'a0'], actors: [boy({ emo: 'flat', pose: { L: 'hang', R: 'hang' }, looks: [[0, 0.3]] })] },
+    { to: 2.8, scene: 'room', sp: { door: 0 }, cams: ['c0', 'a0'], actors: [boy({ emo: 'flat', pose: { L: 'hang', R: 'hang' }, looks: [[0, 0.3]] })] },
     { to: 99, scene: 'yard', sp: { helis: true }, cams: ['w', 'a0', 'w'], actors: [boy({ x: 700, y: 960, s: 1.15, emo: 'surprised', lookY: -1.5, looks: [[0, 0.4]], pose: { L: 'hang', R: 'hang' }, move: [[0, 500, 960], [8, 1000, 960]], walk: [0, 8] })] }] },
   { m: 'Ты ждёшь отца.', scene: 'room', sp: { door: 1 }, cams: ['a0', 'w'], shotLen: 3.2, actors: [boy({ x: 520, y: 900, emo: 'sad', pose: { L: 'hang', R: 'hang' }, looks: [[0, -0.8]] })] },
   { m: 'Мама ходит от окна к окну', shotLen: 3.0, seq: [
@@ -69,7 +69,7 @@ export const SB = [
     { to: 99, scene: 'kitchen', sp: { phone: true }, cams: ['w'], actors: [boy({ x: 1400, y: 960, s: 1.05, emo: 'sad', pose: { L: 'hang', R: 'hang' } }), mom({ x: 1000, y: 900, emo: 'worry', poses: [[0, 'hang', 'hang'], [1.0, 'hang', 'up']], flip: -1 })] }] },
   { m: 'Кто-то из взрослых слышал слухи', scene: 'yard', sp: { helis: false }, cams: ['w', 'a0', 'a1'], shotLen: 2.8, actors: [{ who: 'granny', x: 800, y: 980, s: 1.1, emo: 'worry', flip: 1, pose: { L: 'hang', R: 'cheek' } }, { who: 'dad', x: 1050, y: 980, s: 1.1, emo: 'worry', flip: -1, pose: { L: 'hip', R: 'hang' } }, boy({ x: 1400, y: 990, s: 1.0, emo: 'sad', looks: [[0, -0.8]], pose: { L: 'hang', R: 'hang' } })] },
   { m: 'Позже по радио просят закрыть окна', shotLen: 3.0, seq: [
-    { to: 8.5, scene: 'kitchen', sp: { radio: true }, cams: ['w'], actors: [mom({ x: 1050, y: 900, emo: 'worry', pose: { L: 'hang', R: 'up' }, flip: -1 }), boy({ x: 1400, y: 960, s: 1.0, emo: 'sad', pose: { L: 'hang', R: 'hang' } })] },
+    { to: 9.0, scene: 'kitchen', sp: { radio: true }, cams: ['w'], actors: [mom({ x: 1050, y: 900, emo: 'worry', pose: { L: 'hang', R: 'up' }, flip: -1 }), boy({ x: 1400, y: 960, s: 1.0, emo: 'sad', pose: { L: 'hang', R: 'hang' } })] },
     { to: 99, scene: 'street', sp: { buses: 0 }, cams: ['w', 'a0'], actors: [{ who: 'militia', x: 900, y: 1000, s: 1.2, emo: 'flat', pose: { L: 'hang', R: 'hold' }, item: 'dosi' }, { who: 'militia', x: 1300, y: 1000, s: 1.2, emo: 'flat', flip: -1 }] }] },
   { m: 'Почему не эвакуируют сразу?', shotLen: 4, scene: 'info', sp: { bg: '#e8d8f0', items: [{ big: '?', label: 'почему не эвакуируют сразу', at: 0.3 }, { big: 'нет приказа', label: 'комиссия приезжает только вечером', at: 3.6 }, { big: 'когда решили?', label: 'историки называют по-разному', at: 9.0 }] }, cams: ['w'], actors: [] },
   { m: 'Ночью из Киева и из области', scene: 'street', sp: { buses: 3, moving: true }, dim: 0.5, cams: ['w', [960, 780, 1.5, 1.6]], actors: [] },
