@@ -1,7 +1,7 @@
 # Тётя Жанна с Брайтона, серия 1 — upload kit
 
 **Файлы:**
-- final/zhanna_ep1.mp4 (1080x1920, 76 с)
+- final/zhanna_ep1.mp4 (1080x1920, 71 с)
 - final/cover.png
 - final/zhanna_ep1.srt
 
@@ -17,6 +17,6 @@ Split the bill на первом свидании — red flag или норм? 
 ## Сцена и голоса
 Плоский 2D-мульт (render.js), улица Брайтона, интервью «NEWS 24». В облачках над Жанной — её истории.
 Голоса Fish Audio (s2.1-pro-free):
-- Жанна — 08b267d9a5fb4b6ead23d97878586ee3 (ускорена в 1.2 раза);
+- Жанна — 9da8d1b72aa94201857c41e140e4926f (ускорена в 1.08 раза);
 - корреспондентка — 5b410454f9f644d89167feb8cc73fc40.
 Тексты реплик: voice/script.json. Сценарий: speak_in_english/notes/SCRIPT_ZHANNA_EP1_V3.md (ветка с заметками).

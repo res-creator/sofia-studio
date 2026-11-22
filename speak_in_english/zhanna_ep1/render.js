@@ -84,8 +84,10 @@ function zhanna(t) { const l = lineAt(t), spk = l && l.who === 'z', a = blendArm
 }
 function reporter(t) { const l = lineAt(t), spk = l && l.who === 'r', c = RE, x = c.x + Math.sin(t * 1.2 + 2) * 3;
   T.draw(g, {...c, x, y: FEET, arms: wig(GEST.mic, t, 2), mood: 'flat', mouth: spk ? env(l, t) : 0, blink: blink(t, 5), tilt: spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t), look: .6});
-  const H = GEST.mic(1)[2], hx = x + H[0] * c.s, hy = FEET + H[1] * c.s; // microphone toward Zhanna
-  g.save(); g.translate(hx, hy); g.rotate(-.35); rr(-6, -18, 120, 26, 10, '#2a2a2a', 5); ell(128, -5, 26, 22, '#5a5a62', 6); rr(30, -42, 58, 50, 6, '#e0283a', 5); txt('24', 59, -17, 30, '#ffffff'); g.restore(); }
+}
+function mic(t) { const c = RE, x = c.x + Math.sin(t * 1.2 + 2) * 3, H = GEST.mic(1)[2], hx = x + H[0] * c.s, hy = FEET + H[1] * c.s; // microphone in front of Zhanna, aimed at her mouth
+  const mx = ZH.x - 70, my = FEET - 700, a = Math.atan2(my - hy, mx - hx), len = Math.min(260, Math.hypot(mx - hx, my - hy));
+  g.save(); g.translate(hx, hy); g.rotate(a); rr(-6, -13, len - 30, 26, 10, '#2a2a2a', 5); ell(len - 10, 0, 30, 26, '#5a5a62', 6); rr(len * .35, -40, 62, 52, 6, '#e0283a', 5); g.save(); g.translate(len * .35 + 31, -14); g.rotate(-a); txt('24', 0, 0, 30, '#ffffff'); g.restore(); g.restore(); }
 
 // ---------- thought cloud cutaways ----------
 const PX = 110, PY = 120, PW = 860, PH = 520;
@@ -129,7 +131,7 @@ const CLOUD_FOR = {z2: 'z2', z3: 'z3', z4: 'z4', z5: 'z5', z6: 'z6', z7: 'z7', z
 
 // ---------- shots ----------
 const CAM = {Z_MED: [1.55, 620, 824], Z_CLOUD: [1.5, 640, 668], Z_CU: [2.3, 650, 800], TWO: [1.02, 470, 1010]};
-const SH = [[0, 'Z_MED'], [BY.z2.at - .1, 'Z_CLOUD'], [BY.r1.at - .1, 'TWO'], [BY.z6.at - .1, 'Z_CLOUD'], [BY.r2.at - .1, 'TWO'], [BY.z8.at - .1, 'Z_CLOUD'], [BY.z8.end + .1, 'Z_CU'], [BY.r3.at - .1, 'TWO'], [BY.z9.at - .1, 'Z_MED'],
+const SH = [[0, 'TWO'], [BY.z1.at - .1, 'Z_MED'], [BY.z2.at - .1, 'Z_CLOUD'], [BY.r1.at - .1, 'TWO'], [BY.z6.at - .1, 'Z_CLOUD'], [BY.r2.at - .1, 'TWO'], [BY.z8.at - .1, 'Z_CLOUD'], [BY.z8.end + .1, 'Z_CU'], [BY.r3.at - .1, 'TWO'], [BY.z9.at - .1, 'Z_MED'],
   [BY.r4.at - .1, 'TWO'], [BY.z10.at - .1, 'Z_CU'], [TL.PHONE - .1, 'Z_CLOUD'], [TL.END, 'END']].map(([at, k], i, a) => ({at, k, i, end: a[i + 1] ? a[i + 1][0] : TL.TOTAL}));
 // extra cuts inside long cloud stretches: cut to close-up on the punch words
 const PUNCH = [[BY.z5.at + (BY.z5.end - BY.z5.at) * .62, BY.z5.end + .1]];
@@ -159,7 +161,7 @@ function caption(t) { let cur = null; for (const {l, ch} of CH) for (const c of 
 function chip(t) { let c = null; for (const q of chips) if (t >= q.a && t < q.a + 1.5) c = q; if (!c) return; const k = ease((t - c.a) / .15); const s = `${c.w} = ${c.tr}`;
   g.font = `40px ${FONT}`; const w = Math.min(1000, g.measureText(s).width + 50); g.save(); g.globalAlpha = k; g.translate(540, 1545 + (1 - k) * 20); rr(-w / 2, -38, w, 76, 38, '#1f3a8a', 6, '#ffffff'); g.font = `40px ${FONT}`; g.textAlign = 'center'; g.textBaseline = 'middle';
   let f = 40; while (g.measureText(s).width > w - 40) { f -= 2; g.font = `${f}px ${FONT}`; } g.fillStyle = '#ffffff'; g.fillText(s, 0, 2); g.restore(); }
-function hook(t) { if (t > 3.2) return; const k = ease(t / .25) * (1 - ease((t - 2.9) / .3)); g.save(); g.globalAlpha = k; g.translate(540, 300); g.rotate(-.03); rr(-430, -110, 860, 220, 26, '#ffd23f', 8); txt('КАК НАЙТИ МУЖА', 0, -38, 72, INK); txt('В АМЕРИКЕ?', 0, 44, 72, '#c0283a'); g.restore();
+function hook(t) { const T1 = BY.z1.at + 1.8; if (t > T1 + .3) return; const k = ease(t / .25) * (1 - ease((t - T1) / .3)); g.save(); g.globalAlpha = k; g.translate(540, 300); g.rotate(-.03); rr(-430, -110, 860, 220, 26, '#ffd23f', 8); txt('КАК НАЙТИ МУЖА', 0, -38, 72, INK); txt('В АМЕРИКЕ?', 0, 44, 72, '#c0283a'); g.restore();
   g.save(); g.globalAlpha = k; rr(70, 480, 230, 64, 12, '#e0283a', 6); txt('NEWS 24', 185, 513, 40, '#ffffff'); g.restore(); }
 function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30,20,30,${.55 * k})`; g.fillRect(0, 0, W, H); g.save(); g.globalAlpha = k; g.translate(0, (1 - k) * 80);
   rr(60, 190, 960, 1500, 44, '#fffaf0', 8); txt('ПЕРЕВОДИМ ЖАННУ', 540, 290, 64, '#d63a8a');
@@ -169,7 +171,7 @@ function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30
 
 function frame(t) {
   const c = camAt(t); g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
-  g.save(); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); street(t); reporter(t); zhanna(t); g.restore();
+  g.save(); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); street(t); reporter(t); zhanna(t); mic(t); g.restore();
   const v = g.createRadialGradient(W / 2, H * .45, 650, W / 2, H * .45, 1250); v.addColorStop(0, 'rgba(30,15,30,0)'); v.addColorStop(1, 'rgba(30,15,30,0.2)'); g.fillStyle = v; g.fillRect(0, 0, W, H);
   if (c.k === 'Z_CLOUD' && c.sh.k !== 'END') { const l = lineAt(t) || L.find(q => q.at > t); const id = t >= TL.PHONE - .1 ? 'z11' : CLOUD_FOR[(L.filter(q => q.at <= t + .1).pop() || {}).id];
     if (id) { const a = id === 'z11' ? TL.PHONE : BY[id].at, b = id === 'z11' ? BY.z11.end + .3 : BY[id].end + .25; if (t < b) cloud(id, (t - a) / (b - a), t); } }
