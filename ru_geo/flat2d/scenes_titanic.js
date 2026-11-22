@@ -184,7 +184,7 @@ SCENES.boatDeck = {
     g.fillStyle = '#d9b36a'; g.fillRect(-1400, 780, 4800, 500); line([[-1400, 780], [3400, 780]], 7); for (let i = 0; i < 16; i++) line([[-1400, 840 + i * 40], [3400, 840 + i * 40]], 3, 'rgba(42,34,48,.3)');
     line([[-1400, 600], [3400, 600]], 10); for (let i = -4; i < 40; i++) line([[i * 140, 600], [i * 140, 780]], 7);
     for (let i = 0; i < 4; i++) { const bx = 300 + i * 480, lowered = sp.lowering && i === (sp.boatIdx ?? 1) ? ease((pt - (sp.lowerAt ?? 3)) / 4) * 420 : 0; if (sp.boatsGone && i < sp.boatsGone) continue; g.save(); g.translate(bx, 440 + lowered); P([[-130, 0], [130, 0], [100, 56], [-100, 56]], '#f4f1ea', 7); line([[-130, 0], [-130, -120]], 8); line([[130, 0], [130, -120]], 8); R(-132, -124, 264, 12, '#8a5a32', 4, 5); if (sp.people && i === (sp.boatIdx ?? 1)) { for (let k = 0; k < sp.people; k++) person_silhouette(-70 + k * 35, 30, 0.45, '#5b5b6a'); } g.restore(); }
-    for (const x of [170, 650, 1130, 1610]) { line([[x, 300], [x, 440]], 9); line([[x, 300], [x + 60, 260]], 9); }
+    for (let i = 0; i < 4; i++) { if (sp.boatsGone && i < sp.boatsGone) continue; const bx = 300 + i * 480; for (const d of [-1, 1]) { const x = bx + d * 160; line([[x, 780], [x, 290]], 12); line([[x, 290], [x - d * 40, 262]], 10); line([[x - d * 40, 262], [bx + d * 130, 316]], 5); } }
     if (sp.ice) { const r = rng(9); for (let i = 0; i < 8; i++) { const x = 200 + r() * 1500, y = 840 + r() * 120; P([[x - 30, y], [x - 10, y - 30], [x + 20, y - 18], [x + 34, y]], '#e8f4fa', 4); } }
     if (sp.sliding) { for (let i = 0; i < 6; i++) { const k = ((pt * 0.5 + i * 0.17) % 1); R(1700 - k * 1500 + i * 30, 800 + i * 30 + k * 60, 60, 40, ['#8a5a32', '#6a8a5a', '#8a6a9a'][i % 3], 6, 5); } }
   },

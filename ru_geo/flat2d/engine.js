@@ -205,7 +205,7 @@ const drawCardTitle = (title, t0, t) => { // плашка-заставка гл�
 };
 function drawCaption(film, t) {
   let c = null; for (const s of film.segs) if (s.kind === 'voice' && t >= s.t - 0.05 && t < s.t + s.dur + 0.1) { c = s.captions.find(([a, b]) => t >= a - 0.02 && t < b + 0.02); if (c) break; } if (!c) return;
-  const k = ease((t - c[0]) / 0.1), sc = 0.9 + 0.1 * k; g.save(); g.translate(W / 2, 972); g.scale(sc, sc); let fs = 80; g.font = `900 ${fs}px Nunito`; const mw = g.measureText(c[2]).width; if (mw > 1780) fs = Math.floor(fs * 1780 / mw); g.font = `900 ${fs}px Nunito`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round'; g.lineWidth = fs * 0.21; g.strokeStyle = '#000'; g.strokeText(c[2], 0, 0); g.fillStyle = '#fff'; g.fillText(c[2], 0, 0); g.restore();
+  const k = ease((t - c[0]) / 0.1), sc = 0.9 + 0.1 * k; g.save(); g.translate(W / 2, 1008); g.scale(sc, sc); let fs = 76; g.font = `900 ${fs}px Nunito`; const mw = g.measureText(c[2]).width; if (mw > 1780) fs = Math.floor(fs * 1780 / mw); g.font = `900 ${fs}px Nunito`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round'; g.lineWidth = fs * 0.21; g.strokeStyle = '#000'; g.strokeText(c[2], 0, 0); g.fillStyle = '#fff'; g.fillText(c[2], 0, 0); g.restore();
 }
 export function renderFrame(M, f, extra = {}) {
   const t = f / FPS, film = M.film;
@@ -257,7 +257,7 @@ SCENES.photo = {
   bg(st) { drawPhoto(st.sp.src, st.sp.tone || 'color', st.sp.dim ?? 0.1); },
   fg(st) { /* зерно и виньетка поверх всего кадра рисуются в hud */ },
   hud(st, sc) {
-    const c = CREDITS[st.sp.src]; const vg = g.createRadialGradient(W / 2, H / 2, 420, W / 2, H / 2, 1250); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,.45)'); g.fillStyle = vg; g.fillRect(0, 0, W, H); grain(st.t, st.sp.tone === 'color' ? 0.06 : 0.12);
+    const c = CREDITS[st.sp.src]; const vg = g.createRadialGradient(W / 2, H / 2, 420, W / 2, H / 2, 1250); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,.45)'); g.fillStyle = vg; g.fillRect(0, 0, W, H); const bg = g.createLinearGradient(0, 860, 0, H); bg.addColorStop(0, 'rgba(0,0,0,0)'); bg.addColorStop(1, 'rgba(0,0,0,.6)'); g.fillStyle = bg; g.fillRect(0, 860, W, H - 860); grain(st.t, st.sp.tone === 'color' ? 0.06 : 0.12);
     const label = st.sp.cap || (c && c.cap) || ''; const txt = (label ? label + '. ' : '') + (c ? 'Фото: ' + c.author + ', ' + c.license : ''); if (!txt) return;
     g.save(); g.font = '700 26px Nunito'; const w = Math.min(1820, g.measureText(txt).width + 34); g.fillStyle = 'rgba(10,10,16,.68)'; g.beginPath(); g.roundRect(30, 28, w, 46, 10); g.fill(); g.fillStyle = '#f2efe6'; g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillText(txt, 46, 52, 1790); g.restore();
   },

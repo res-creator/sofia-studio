@@ -97,8 +97,8 @@ SCENES.kitchen = {
     P([[380, 556], [440, 556], [430, 500], [390, 500]], '#c8c8d0', 5); line([[440, 520], [470, 530]], 6);
     R(1300, 640, 460, 40, '#7a4a22', 8); for (const x of [1320, 1720]) R(x, 680, 26, 150, '#5c3618', 4);
     if (sp.radio) { R(1400, 580, 120, 66, '#8a5a32', 8); C(1440, 614, 20, '#e8d8b0', 4); line([[1470, 600], [1500, 600]], 4); line([[1470, 620], [1500, 620]], 4); for (let i = 0; i < 3; i++) { g.strokeStyle = 'rgba(255,255,255,.9)'; g.lineWidth = 6; g.beginPath(); g.arc(1460, 614, 70 + ((st.t * 50 + i * 36) % 110), -0.7, 0.7); g.stroke(); } }
-    const ph = st.sp.phone ? Math.sin(st.t * 40) * 4 : 0; g.save(); g.translate(1000 + ph, 360); R(-30, -40, 60, 80, '#f5a623', 10, 6); C(0, 10, 18, '#fff', 4); line([[-30, -40], [-60, -10]], 8); g.restore();
-    if (sp.phone) { g.save(); g.font = '900 56px Nunito'; g.textAlign = 'center'; g.lineWidth = 12; g.strokeStyle = INK; g.fillStyle = '#fff'; const k = Math.floor(st.t * 4) % 2; g.strokeText('дзынь!', 1180, 300 - k * 8); g.fillText('дзынь!', 1180, 300 - k * 8); g.restore(); }
+    const ph = st.sp.phone ? Math.sin(st.t * 40) * 4 : 0; g.save(); g.translate(1296 + ph, 340); R(-30, -40, 60, 80, '#f5a623', 10, 6); C(0, 10, 18, '#fff', 4); line([[-30, -40], [-60, -10]], 8); g.restore();
+    if (sp.phone) { g.save(); g.font = '900 56px Nunito'; g.textAlign = 'center'; g.lineWidth = 12; g.strokeStyle = INK; g.fillStyle = '#fff'; const k = Math.floor(st.t * 4) % 2; g.strokeText('дзынь!', 1296, 250 - k * 8); g.fillText('дзынь!', 1296, 250 - k * 8); g.restore(); }
   },
 };
 
@@ -256,14 +256,15 @@ SCENES.info = {
   bg(st) {
     const sp = st.sp, t = st.pt, items = sp.items || [], n = items.length;
     if (sp.bgPhoto && PHOTOS[sp.bgPhoto]) { drawPhoto(sp.bgPhoto, sp.tone || 'color', 0.5); g.fillStyle = 'rgba(10,10,25,.35)'; g.fillRect(-200, -200, 2400, 1500); } else { g.fillStyle = sp.bg || '#ffd98a'; g.fillRect(-1200, -400, 4400, 1800); for (let i = -2; i < 14; i++) { g.fillStyle = i % 2 ? 'rgba(255,255,255,.18)' : 'rgba(255,255,255,0)'; g.fillRect(i * 160 + ((st.t * 20) % 320), -400, 160, 1800); } }
-    if (sp.title) { g.save(); g.font = '900 70px Nunito'; g.textAlign = 'center'; g.lineWidth = 14; g.strokeStyle = INK; g.fillStyle = '#fff'; g.strokeText(sp.title, 960, 190); g.fillText(sp.title, 960, 190); g.restore(); }
-    const cw = Math.min(440, (1300 - (n - 1) * 34) / n), tw0 = n * cw + (n - 1) * 34, x0 = 960 - tw0 / 2, sc0 = n === 1 ? 1.9 : n === 2 ? 1.6 : 1.35, scl = Math.min(sc0, 1640 / tw0);
-    g.save(); g.translate(960, 560); g.scale(scl, scl); g.translate(-960, -560);
-    items.forEach((it, i) => { const at = it.at ?? i * 1.8, k = ease((t - at) / 0.35); if (k <= 0) return; g.save(); g.translate(x0 + i * (cw + 34) + cw / 2, 560); g.scale(k, k); g.rotate((i % 2 ? 1 : -1) * 0.03);
+    if (sp.title) { g.save(); g.font = '900 70px Nunito'; g.textAlign = 'center'; g.lineWidth = 14; g.strokeStyle = INK; g.fillStyle = '#fff'; g.strokeText(sp.title, 960, 130); g.fillText(sp.title, 960, 130); g.restore(); }
+    const cw = Math.min(440, (1240 - (n - 1) * 34) / n), tw0 = n * cw + (n - 1) * 34, x0 = 960 - tw0 / 2, sc0 = n === 1 ? 1.6 : n === 2 ? 1.5 : 1.3, scl = Math.min(sc0, 1500 / tw0, sp.title ? 1.1 : 9), cy = sp.title ? 590 : 520;
+    const vis = items.reduce((a, it, i) => a + clamp(ease(((it.at ?? i * 1.8) - 0) <= t ? (t - (it.at ?? i * 1.8)) / 0.5 : 0)), 0), shift = (n - Math.min(n, Math.max(vis, 1))) / 2 * (cw + 34);
+    g.save(); g.translate(960, cy); g.scale(scl, scl); g.translate(-960, -cy); g.translate(shift, 0);
+    items.forEach((it, i) => { const at = it.at ?? i * 1.8, k = ease((t - at) / 0.35); if (k <= 0) return; g.save(); g.translate(x0 + i * (cw + 34) + cw / 2, cy); g.scale(k, k); g.rotate((i % 2 ? 1 : -1) * 0.03);
       R(-cw / 2, -220, cw, 440, it.color || '#fffdf0', 34, 8); g.textAlign = 'center'; g.lineJoin = 'round';
       if (it.icon) { const up = it.icon === 'up'; P(up ? [[0, -170], [90, -50], [30, -50], [30, 30], [-30, 30], [-30, -50], [-90, -50]] : [[0, 30], [90, -90], [30, -90], [30, -170], [-30, -170], [-30, -90], [-90, -90]], up ? '#4aa84a' : '#e0443a', 9); }
-      else { let fs = it.big.length > 6 ? 96 : 140; g.font = `900 ${fs}px Nunito`; while (g.measureText(it.big).width > cw - 40 && fs > 26) { fs -= 4; g.font = `900 ${fs}px Nunito`; } g.lineWidth = fs * 0.12; g.strokeStyle = INK; g.fillStyle = it.bigColor || '#e0443a'; const by = it.label ? -50 : 20; g.strokeText(it.big, 0, by); g.fillText(it.big, 0, by); }
-      if (it.label) { let fl = 40; g.font = `900 ${fl}px Nunito`; g.fillStyle = INK; const words = it.label.split(' '); const mk = (f) => { g.font = `900 ${f}px Nunito`; const ls = []; let cur = ''; for (const w of words) { const tst = (cur + ' ' + w).trim(); if (g.measureText(tst).width > cw - 36 && cur) { ls.push(cur); cur = w; } else cur = tst; } ls.push(cur); return ls; }; let ls = mk(fl); while (ls.length > 4 && fl > 24) { fl -= 3; ls = mk(fl); } ls.forEach((l, j2) => g.fillText(l, 0, 50 + j2 * (fl + 12))); }
+      else { let fs = it.big.length > 6 ? 96 : 140; g.font = `900 ${fs}px Nunito`; while (g.measureText(it.big).width > cw - 56 && fs > 26) { fs -= 4; g.font = `900 ${fs}px Nunito`; } g.lineWidth = fs * 0.12; g.strokeStyle = INK; g.fillStyle = it.bigColor || '#e0443a'; const by = it.label ? -50 : 20; g.strokeText(it.big, 0, by); g.fillText(it.big, 0, by); }
+      if (it.label) { let fl = 40; const words = it.label.split(' '); const mk = (f) => { g.font = `900 ${f}px Nunito`; const ls = []; let cur = ''; for (const w of words) { const tst = (cur + ' ' + w).trim(); if (g.measureText(tst).width > cw - 64 && cur) { ls.push(cur); cur = w; } else cur = tst; } ls.push(cur); return ls; }; let ls = mk(fl); const bad = (l2) => l2.length > 4 || l2.some((l) => g.measureText(l).width > cw - 48); while (bad(ls) && fl > 20) { fl -= 2; ls = mk(fl); } g.fillStyle = INK; ls.forEach((l, j2) => g.fillText(l, 0, 50 + j2 * (fl + 12))); }
       g.restore(); });
     g.restore();
   },
