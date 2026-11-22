@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}</style></head>
+<body><canvas id="c" width="1920" height="1080"></canvas>
+<script type="module">
+import * as E from './engine.js';
+const film = new URLSearchParams(location.search).get('film') || 'chernobyl';
+const [, ff] = await Promise.all([0, new FontFace('Nunito', 'url(/flat2d/Nunito-Black.ttf)', { weight: '900' }).load()]); document.fonts.add(ff);
+E.init(document.getElementById('c'), []); await import(`./scenes_${film}.js`); const { g, INK } = E;
+const txt = (s, x, y, size, fill, rot = -0.05) => { g.save(); g.translate(x, y); g.rotate(rot); g.font = `900 ${size}px Nunito`; g.textAlign = 'center'; g.lineJoin = 'round'; g.lineWidth = size * 0.2; g.strokeStyle = '#000'; g.strokeText(s, 0, 0); g.fillStyle = fill; g.fillText(s, 0, 0); g.restore(); };
+const tag = (s, color) => { g.save(); g.translate(70, 60); g.font = '900 54px Nunito'; const w = g.measureText(s).width + 50; g.fillStyle = color; g.fillRect(0, 0, w, 84); g.lineWidth = 6; g.strokeStyle = '#000'; g.strokeRect(0, 0, w, 84); g.fillStyle = '#fff'; g.textBaseline = 'middle'; g.fillText(s, 25, 46); g.restore(); };
+const ring = (x, y, rx, ry) => { g.save(); g.strokeStyle = '#e0302a'; g.lineWidth = 14; g.beginPath(); g.ellipse(x, y, rx, ry, -0.2, 0.2, Math.PI * 2 - 0.1); g.stroke(); g.restore(); };
+if (film === 'chernobyl') {
+  g.save(); g.translate(960, 540); g.scale(1.5, 1.5); g.translate(-760, -400); E.SCENES.room.bg({ t: 0, pt: 0, sp: { night: true, glow: true, book: false, door: 0 } }); g.restore();
+  g.fillStyle = 'rgba(10,10,30,.45)'; g.fillRect(0, 0, 1920, 1080);
+  const gr = g.createRadialGradient(1300, 500, 50, 1300, 500, 700); gr.addColorStop(0, 'rgba(255,190,100,.35)'); gr.addColorStop(1, 'rgba(255,190,100,0)'); g.fillStyle = gr; g.fillRect(0, 0, 1920, 1080);
+  E.drawChar({ who: 'boy', x: 1450, y: 1500, s: 3.2, emo: 'sad', item: 'teddy', pose: { L: 'belly', R: 'belly' }, t: 1, blink: 0, look: -0.6, tilt: 0, sweat: 1 });
+  ring(1335, 330, 110, 200);
+  tag('ЧЕРНОБЫЛЬ', '#d8362d'); txt('ЭТО НА ТРИ ДНЯ', 650, 700, 118, '#ffd24a'); txt('ТЫ НЕ ВЕРНЁШЬСЯ', 640, 840, 100, '#ffffff');
+} else {
+  g.save(); g.translate(960, 540); g.scale(1.0, 1.0); g.translate(-960, -540); E.SCENES.seaNight.bg({ t: 0, pt: 0, sp: { iceberg: true, hitAt: 0.1, shipX: 760, moon: true } }); g.restore();
+  g.fillStyle = 'rgba(8,10,30,.5)'; g.fillRect(0, 0, 1920, 1080);
+  E.drawChar({ who: 'shon', x: 1400, y: 1500, s: 3.2, emo: 'surprised', pose: { L: 'hang', R: 'hang' }, t: 1, blink: 0, look: -0.5, tilt: 0, sweat: 1 });
+  ring(620, 470, 560, 230);
+  tag('ТИТАНИК', '#2f6fc2'); txt('ШАНС 1 ИЗ 7', 620, 720, 140, '#ffd24a'); txt('ТЫ В ТРЕТЬЕМ КЛАССЕ', 700, 850, 90, '#ffffff');
+}
+window.ready = true;
+</script></body></html>
