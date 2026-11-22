@@ -1,7 +1,7 @@
 # Тётя Жанна с Брайтона, серия 2 «Жанна в салоне ногтей» — upload kit
 
 **Файлы:**
-- final/zhanna_ep2.mp4 (1080x1920, 74 с)
+- final/zhanna_ep2.mp4 (1080x1920, 85 с)
 - final/cover.png
 - final/zhanna_ep2.srt
 
