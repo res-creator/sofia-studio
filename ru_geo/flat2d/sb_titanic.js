@@ -25,17 +25,16 @@ export const SB = [
   // ===== ОДИННАДЦАТОГО АПРЕЛЯ =====
   { m: 'Около полудня маленький катер', photos: [{ from: 9.0, to: 14.2, src: 'tender' }], scene: 'tender', cams: ['w', 'a0', 'w', 'a0'], shotLen: 3.6, actors: [shon({ x: 560, y: 790, s: 1.0, emo: 'flat', item: 'case', looks: [[0, 0.8]] })] },
   { m: 'Борт уходит вверх', shotLen: 3.2, seq: [
-    { to: 6, scene: 'tender', cams: [[560, 520, 1.5, 1.7], 'a0'], actors: [shon({ x: 560, y: 790, s: 1.0, emo: 'surprised', item: 'case', lookY: -1.6, looks: [[0, 0.9]] })],
-      fg: (st) => { const k = st.pt - 2.0; if (k > 0 && k < 3) { g.save(); g.translate(520 + k * 40, 600 + k * k * 90); g.rotate(k * 3); E(0, 0, 36, 12, '#6a5a46', 5); g.restore(); } } },
+    { to: 6, scene: 'tender', cams: [[560, 520, 1.5, 1.7], 'a0'], actors: [shon({ x: 560, y: 790, s: 1.0, emo: 'surprised', item: 'case', lookY: -1.6, looks: [[0, 0.9]] })] },
     { to: 99, scene: 'info', sp: { bg: '#bfe6f6', items: [{ big: '≈ 1 000', label: 'мест в третьем классе', at: 0.4 }, { big: '≈ 710', label: 'человек плыло в третьем классе', at: 4.5 }] }, cams: ['w'], actors: [] }] },
-  { m: 'Ты находишь свою койку', photos: [{ from: 0.2, to: 3.4, src: 'cabin', actors: [{ who: 'shon', x: 1480, y: 930, s: 1.15, emo: 'grin', pose: { L: 'hang', R: 'hang' } }] }], scene: 'cabin', sp: { bulb: (pt) => (pt > 3.6 && pt < 4.2) || (pt > 5.2 && pt < 5.8) || pt > 7 ? 1 : 0 }, cams: ['a0', [1100, 300, 2.0, 2.2], 'w'], shotLen: 3.4, actors: [shon({ x: 760, y: 900, emo: 'grin', pose: { L: 'hang', R: 'up' }, looks: [[0, 0.9]] })] },
+  { m: 'Ты находишь свою койку', photos: [{ from: 0.2, to: 3.4, src: 'cabin', actors: [{ who: 'shon', x: 1480, y: 930, s: 0.95, emo: 'grin', pose: { L: 'hang', R: 'hang' } }] }], scene: 'cabin', sp: { bulb: (pt) => (pt > 3.6 && pt < 4.2) || (pt > 5.2 && pt < 5.8) || pt > 7 ? 1 : 0 }, cams: ['a0', [1100, 300, 2.0, 2.2], 'w'], shotLen: 3.4, actors: [shon({ x: 760, y: 900, emo: 'grin', pose: { L: 'hang', R: 'up' }, looks: [[0, 0.9]] })] },
   { m: 'Кормят три раза в день', shotLen: 3.0, seq: [
     { to: 5, scene: 'dining', cams: ['w', 'a0'], actors: [shon({ x: 960, y: 900, s: 1.1, emo: 'grin', pose: { L: 'hold', R: 'hold' } }), { who: 'steward', x: 1420, y: 900, s: 1.1, emo: 'flat', pose: { L: 'hold', R: 'hang' } }] },
     { to: 99, scene: 'baths', sp: { crowd: 10 }, cams: ['w', [1600, 560, 1.7, 1.8]], actors: [shon({ x: 1160, y: 900, s: 1.1, emo: 'worry' })] }] },
   { m: 'Запомни дорогу от койки', scene: 'corridor', sp: { speed: 140 }, cams: ['a0', 'w'], shotLen: 3.0, actors: [shon({ emo: 'flat', walk: [0, 6], pose: { L: 'hang', R: 'hang' }, still: true })] },
 
   // ===== ТРИ ДНЯ НА БОРТУ =====
-  { m: 'Двенадцатого и тринадцатого', photos: [{ from: 3.4, to: 7.6, src: 'promen', actors: [{ who: 'shon', x: 1300, y: 930, s: 1.15, emo: 'grin', pose: { L: 'hang', R: 'hang' } }] }], shotLen: 3.2, seq: [
+  { m: 'Двенадцатого и тринадцатого', photos: [{ from: 3.4, to: 7.6, src: 'promen', actors: [{ who: 'shon', x: 1300, y: 930, s: 0.95, emo: 'grin', pose: { L: 'hang', R: 'hang' } }] }], shotLen: 3.2, seq: [
     { to: 3, scene: 'dining', cams: ['w'], actors: [shon({ x: 960, y: 900, s: 1.1, emo: 'grin' })] },
     { to: 7, scene: 'promenade', cams: ['w', 'a0'], actors: [shon({ x: 960, y: 900, emo: 'grin', looks: [[0, 0.8]] })] },
     { to: 99, scene: 'generalRoom', sp: { notes: true }, cams: ['w'], actors: [shon({ x: 700, y: 900, emo: 'grin' })] }] },
@@ -79,7 +78,7 @@ export const SB = [
   { m: 'Путь занимает больше времени', scene: 'stairs', cams: ['w'], actors: [shon({ x: 700, y: 800, emo: 'worry', walk: [0, 3], pose: { L: 'hang', R: 'hold' }, move: [[0, 700, 800], [3, 1250, 190]] })] },
 
   // ===== ШЛЮПКИ =====
-  { m: 'Вы выходите на палубу.', photos: [{ from: 4.4, to: 8.9, src: 'boatdeck', actors: [{ who: 'shon', x: 1350, y: 930, s: 1.15, emo: 'worry', pose: { L: 'hang', R: 'hang' } }] }], scene: 'boatDeck', sp: { ice: true }, cams: ['w', 'a1', 'a0'], shotLen: 3.0,
+  { m: 'Вы выходите на палубу.', photos: [{ from: 4.4, to: 8.9, src: 'boatdeck', actors: [{ who: 'shon', x: 1350, y: 930, s: 0.95, emo: 'worry', pose: { L: 'hang', R: 'hang' } }] }], scene: 'boatDeck', sp: { ice: true }, cams: ['w', 'a1', 'a0'], shotLen: 3.0,
     actors: [shon({ x: 800, y: 920, emo: 'surprised', pose: { L: 'hang', R: 'hold' }, looks: [[0, 0.8]] }), { who: 'officer', x: 1300, y: 920, s: 1.15, emo: 'flat', talk: [0, 3], pose: { L: 'hip', R: 'out' }, flip: -1 }, sboy({ x: 640, y: 920, s: 0.75, emo: 'sad' })] },
   { m: 'На корабле двадцать шлюпок.', shotLen: 4, seq: [
     { to: 99, scene: 'info', sp: { bg: '#bfe6f6', items: [{ big: '20', label: 'шлюпок', at: 0.3 }, { big: '≈ 1 170', label: 'мест в шлюпках', at: 6 }, { big: '≈ 2 200', label: 'человек на борту', at: 10.5 }] }, cams: ['w'], actors: [] }] },
@@ -118,7 +117,7 @@ export const SB = [
   { m: 'Британия и США провели расследования', photos: [{ from: 0.3, to: 4.4, src: 'senate' }, { from: 9.4, to: 15.6, src: 'cartoon' }], shotLen: 4, scene: 'info', sp: { bg: '#bfe6f6', items: [{ big: '1912', label: 'два расследования', at: 0.4 }, { big: 'места для всех', label: 'в шлюпках', at: 4.6 }, { big: 'радио', label: 'без перерывов', at: 8.2 }, { big: '1914', label: 'ледовый патруль', at: 12.2 }] }, cams: ['w'], actors: [] },
   { m: 'Правила стали меняться', scene: 'boatDeck', sp: { day: true }, cams: ['w'], shotLen: 2.9, actors: [shon({ x: 960, y: 920, s: 1.15, emo: 'flat' })] },
   { m: 'Время в ту ночь было общим', scene: 'boatDeck', sp: { ice: true }, cams: ['w'], actors: [shon({ x: 960, y: 920, s: 1.15, emo: 'flat', pose: { L: 'hang', R: 'hang' } })] },
-  { m: 'Что бы ты хотел знать', scene: 'boatDeck', sp: { ice: true }, cams: ['c0', 'a0'], shotLen: 1.8, actors: [shon({ x: 960, y: 920, s: 1.15, emo: 'sad', looks: [[0, 0]] })] },
+  { m: 'Что бы ты хотел знать', scene: 'boatDeck', sp: { ice: true }, cams: ['w'], shotLen: 1.8, actors: [shon({ x: 960, y: 920, s: 1.15, emo: 'sad', looks: [[0, 0]] })] },
 ];
 
 export const CARDS = { 'ОДИННАДЦАТОГО АПРЕЛЯ': 'leave2', 'ТРИ ДНЯ НА БОРТУ': 'promen', 'ЧЕТЫРНАДЦАТОГО АПРЕЛЯ': 'boatdeck', 'ДВАДЦАТЬ МИНУТ ДО ПОЛУНОЧИ': 'iceberg2', 'ПУТЬ НАВЕРХ': 'cabin', 'ШЛЮПКИ': 'boatsC2', 'ОГНИ НА ГОРИЗОНТЕ': 'boatsC', 'ТВОИ ШАНСЫ': 'ny2', 'ПОСЛЕ': 'senate' };

@@ -26,7 +26,7 @@ SCENES.tender = {
     P([[-1400, 640], [-1400, 420], [-700, 470], [-300, 560], [0, 640]], '#6fae5a', 7); // берег Ирландии
     g.save(); g.translate(0, Math.sin(t * 1.6) * 6); P([[900, -200], [2800, -200], [2800, 640], [840, 640]], '#2a2a3a', 8); R(900, 600, 1900, 30, '#d8362d', 0, 6);
     for (let r = 0; r < 4; r++) for (let i = 0; i < 18; i++) C(1000 + i * 90, 220 + r * 100, 15, '#ffe28a', 4); R(840, -260, 1960, 60, '#f4f1ea', 0, 7); g.restore();
-    g.save(); g.translate(0, Math.sin(t * 2.2) * 8); P([[260, 760], [880, 760], [840, 860], [300, 860]], '#8a4a2a', 7); R(280, 740, 580, 26, '#d9b36a', 6, 6); R(520, 640, 200, 100, '#f4f1ea', 8, 6); R(560, 660, 40, 40, '#bfe6f6', 4, 4); R(620, 660, 40, 40, '#bfe6f6', 4, 4); line([[300, 740], [300, 660]], 6); line([[860, 740], [860, 660]], 6); line([[300, 664], [860, 664]], 5); R(450, 560, 24, 90, '#cfcfd6', 4, 5); g.restore();
+    g.save(); g.translate(0, Math.sin(t * 2.2) * 8); P([[260, 760], [880, 760], [840, 860], [300, 860]], '#8a4a2a', 7); R(280, 740, 580, 26, '#d9b36a', 6, 6); R(520, 640, 200, 100, '#f4f1ea', 8, 6); R(560, 660, 40, 40, '#bfe6f6', 4, 4); R(620, 660, 40, 40, '#bfe6f6', 4, 4); line([[300, 740], [300, 660]], 6); line([[860, 740], [860, 660]], 6); line([[300, 664], [860, 664]], 5); g.restore();
   },
 };
 
@@ -180,7 +180,7 @@ SCENES.gate = {
 SCENES.boatDeck = {
   bg(st) {
     const sp = st.sp, t = st.t, pt = st.pt, day = !!sp.day; sky(day ? '#8fd0ee' : '#0f1630', day ? '#e8f4fa' : '#3a3a6a'); if (!day) stars(120, 7); sea(560, day ? '#3d8fd0' : '#16264a', day ? '#8fd0ee' : '#3a4a7a', t);
-    if (sp.rockets) { for (let i = 0; i < 5; i++) { const at = i * 1.4, k = pt - at; if (k > 0 && k < 2.4) { const x = 500 + i * 260; if (k < 1.2) line([[x, 540], [x, 540 - k * 330]], 5, '#ffd24a'); else { const r = (k - 1.2) * 140; for (let j = 0; j < 12; j++) { const a = j * TAU / 12; C(x + Math.cos(a) * r, 540 - 1.2 * 330 + Math.sin(a) * r, 9, '#fffdf0', 3); } } } } }
+    if (sp.rockets) { for (let i = 0; i < 5; i++) { const at = i * 1.4, k = pt - at; if (k > 0 && k < 2.4) { const x = 500 + i * 260; if (k < 1.2) line([[x, 540], [x, 540 - k * 330]], 9, '#ffd24a'); else { const r = (k - 1.2) * 140; for (let j = 0; j < 12; j++) { const a = j * TAU / 12; C(x + Math.cos(a) * r, 540 - 1.2 * 330 + Math.sin(a) * r, 15, '#fffdf0', 3); } } } } }
     g.fillStyle = '#d9b36a'; g.fillRect(-1400, 780, 4800, 500); line([[-1400, 780], [3400, 780]], 7); for (let i = 0; i < 16; i++) line([[-1400, 840 + i * 40], [3400, 840 + i * 40]], 3, 'rgba(42,34,48,.3)');
     line([[-1400, 600], [3400, 600]], 10); for (let i = -4; i < 40; i++) line([[i * 140, 600], [i * 140, 780]], 7);
     for (let i = 0; i < 4; i++) { const bx = 300 + i * 480, lowered = sp.lowering && i === (sp.boatIdx ?? 1) ? ease((pt - (sp.lowerAt ?? 3)) / 4) * 420 : 0; if (sp.boatsGone && i < sp.boatsGone) continue; g.save(); g.translate(bx, 440 + lowered); P([[-130, 0], [130, 0], [100, 56], [-100, 56]], '#f4f1ea', 7); line([[-130, 0], [-130, -120]], 8); line([[130, 0], [130, -120]], 8); R(-132, -124, 264, 12, '#8a5a32', 4, 5); if (sp.people && i === (sp.boatIdx ?? 1)) { for (let k = 0; k < sp.people; k++) person_silhouette(-70 + k * 35, 30, 0.45, '#5b5b6a'); } g.restore(); }

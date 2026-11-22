@@ -219,9 +219,9 @@ export function renderFrame(M, f, extra = {}) {
   if (sb.photos && !sb._np) { const ps = sb.photos.map((q) => ({ ...q })).sort((x, y) => x.from - y.from); ps.forEach((q, i) => { if (i === 0 && q.from < 0.8) q.from = 0; const nx = ps[i + 1]; if (nx && nx.from - q.to < 1.0) q.to = nx.from; if (!nx && q.to > seg.dur - 1.0) q.to = 1e9; }); const bn = []; (sb.seq || []).forEach((e) => { if (e.to < 90) bn.push(e.to); }); for (let k = 1; k < it.n; k++) bn.push((it.a - seg.t) + k * shotLen); ps.forEach((q, i) => { const pv = ps[i - 1]; if (q.to < 1e8) { const B = bn.filter((x) => x > q.to && x <= q.to + 0.9).sort((x, y) => x - y)[0]; if (B !== undefined) q.to = B; } const Bf = bn.filter((x) => x < q.from && x >= q.from - 0.9).sort((x, y) => y - x)[0]; if (Bf !== undefined && (!pv || Bf >= pv.to)) q.from = Bf; }); sb._np = ps; }
   const ph = sb._np && sb._np.find((q) => pt >= q.from && pt < q.to);
   if (ph) sc = { ...sc, scene: 'photo', sp: { src: ph.src, tone: ph.tone, cap: ph.cap, dim: ph.dim }, cams: ['w'], actors: ph.actors || [], sticker: true, fg: null, hud: null, dim: null, tilt: null, punch: null };
-  const actors = (sc.actors || []).map((a) => resolveActor(a, pt, t, f));
+  const actors = (sc.actors || []).map((a) => { const o = resolveActor(a, pt, t, f); if (!ph && !o.bust && o.y > 945) o.y = 945; return o; });
   const cams = sc.cams || ['w']; const cs = camFor(cams[si % cams.length], actors, sc.cam);
-  const z = lerp(cs.z0, cs.z1, ease(sk)) * (1 + (sc.punch && t >= seg.t + sc.punch ? Math.exp(-(t - seg.t - sc.punch) * 14) * 0.07 : 0));
+  const z = (Math.abs(cs.z1 - cs.z0) < 0.01 ? lerp(cs.z0, cs.z0 * 1.04, ease(sk)) : lerp(cs.z0, cs.z1, ease(sk))) * (1 + (sc.punch && t >= seg.t + sc.punch ? Math.exp(-(t - seg.t - sc.punch) * 14) * 0.07 : 0));
   let zz = z, ccx = cs.cx, ccy = cs.cy; if (ph) { const k = ease((pt - ph.from) / (ph.to - ph.from)); zz = lerp(ph.z0 ?? 1.03, ph.z1 ?? 1.13, k); ccx = ph.cx ?? 960; ccy = ph.cy ?? 540; }
   g.save(); g.translate(W / 2, H / 2); if (sc.tilt) g.rotate(typeof sc.tilt === 'function' ? sc.tilt(pt) : sc.tilt); g.scale(zz, zz); g.translate(-ccx, -ccy); LW = 7 / Math.sqrt(zz);
   const S = SCENES[sc.scene] || SCENES.room, st = { t, pt, f, sp: sc.sp || {}, seg, dur: seg.dur, shot: si };

@@ -30,7 +30,7 @@ export const SB = [
     { to: 2.8, scene: 'info', sp: { bg: '#ffd98a', items: [{ big: '≈ 50 000', label: 'жителей', at: 0.3 }] }, cams: ['w'], actors: [] },
     { to: 9.4, scene: 'info', sp: { bg: '#bfe6f6', items: [{ big: 'бассейн', label: '', at: 5.6 }, { big: 'стадион', label: '', at: 6.0 }, { big: 'Дворец культуры', label: '', at: 7.2 }, { big: 'кино', label: '', at: 8.0 }] }, cams: ['w'], actors: [] },
     { to: 99, scene: 'yard', sp: {}, cams: ['w', 'a0'], actors: [mom({ x: 700, y: 960, s: 1.1, emo: 'grin', look: 0.3 }), { who: 'kid2', x: 980, y: 960, s: 0.7, emo: 'grin' }] }] },
-  { m: 'К Первому мая в парке', photos: [{ from: 0.3, to: 5.4, src: 'wheel', cap: 'Колесо обозрения Припяти (позднее фото)', actors: [{ who: 'boy', x: 1500, y: 940, s: 1.1, emo: 'flat', pose: { L: 'belly', R: 'belly' } }] }], scene: 'town', sp: { title: 'К 1 МАЯ', wheelX: 1120 }, cams: [[1120, 520, 1.9, 2.1], 'w'], actors: [{ who: 'worker', x: 700, y: 1010, s: 1.1, emo: 'grin', pose: { L: 'hip', R: 'point' } }] },
+  { m: 'К Первому мая в парке', photos: [{ from: 0.3, to: 5.4, src: 'wheel', cap: 'Колесо обозрения Припяти (позднее фото)', actors: [{ who: 'boy', x: 1500, y: 930, s: 0.9, emo: 'flat', pose: { L: 'belly', R: 'belly' } }] }], scene: 'town', sp: { title: 'К 1 МАЯ', wheelX: 1120 }, cams: [[1120, 520, 1.9, 2.1], 'w'], actors: [{ who: 'worker', x: 700, y: 1010, s: 1.1, emo: 'grin', pose: { L: 'hip', R: 'point' } }] },
   { m: 'Ты живёшь на пятом этаже', scene: 'room', sp: { door: 0 }, cams: ['a0', [960, 300, 2.3, 2.5], 'w'], shotLen: 3.6, actors: [boy({ x: 980, y: 900, looks: [[0, 0.3], [4, 0.9]], emo: 'flat' })] },
   { m: 'Твой отец работает на станции', photos: [{ from: 0.2, to: 2.3, src: 'plantmodel', cap: 'Модель станции' }], scene: 'plant', sp: { day: true, fire: false }, cams: ['w', 'a0'], actors: [{ who: 'dad', x: 880, y: 960, s: 1.2, emo: 'flat', pose: { L: 'hang', R: 'hip' }, item: 'case' }, { who: 'worker', x: 1150, y: 960, s: 1.1, emo: 'grin' }, { who: 'worker', x: 600, y: 960, s: 1.1, emo: 'flat' }] },
   { m: 'В пятницу вечером он уходит', scene: 'room', sp: { ...NIGHT, door: 1 }, cams: ['w', [520, 600, 1.8, 2.0], 'a1'], shotLen: 2.6,
@@ -40,7 +40,7 @@ export const SB = [
   // ===== ОДИН ЧАС ДВАДЦАТЬ ТРИ МИНУТЫ =====
   { m: 'В ту ночь на станции должны были проверить', photos: [{ from: 0.3, to: 5.9, src: 'plantmap' }], scene: 'plant', sp: { fire: false }, cams: ['w', 'a0'], actors: [{ who: 'worker', x: 760, y: 960, s: 1.15, emo: 'flat', pose: { L: 'hip', R: 'point' } }] },
   { m: 'Проверку собирались сделать днём', scene: 'info', sp: { bg: '#ffd98a', items: [{ big: '14:00', label: 'проверку отложили', at: 0.5 }, { big: '≈ 9 часов', label: 'ждали', at: 3.6 }, { big: 'ночь', label: 'досталась ночной смене', at: 6.4 }] }, cams: ['w'], actors: [] },
-  { m: 'При подготовке к проверке', scene: 'info', sp: { bg: '#e8d8f0', items: [{ big: '', icon: 'down', label: 'мощность реактора упала', at: 0.3 }, { big: '', icon: 'up', label: 'потом её подняли', at: 3.6 }, { big: '?', label: 'в режиме, к которому реактор был плохо приспособлен', at: 7.0 }] }, cams: ['w'], actors: [] },
+  { m: 'При подготовке к проверке', scene: 'info', sp: { bg: '#e8d8f0', items: [{ big: '', icon: 'down', label: 'мощность реактора упала', at: 0.3 }, { big: '', icon: 'up', label: 'потом её подняли', at: 2.6 }, { big: '?', label: 'в режиме, к которому реактор был плохо приспособлен', at: 4.8 }] }, cams: ['w'], actors: [] },
   { m: 'В час двадцать три минуты ночи', scene: 'plant', sp: { fire: true }, cams: ['w', [800, 470, 1.8, 2.0]], punch: 2.6, shotLen: 2.4, actors: [],
     fg: (st) => { const k = st.pt - 2.4; if (k > 0 && k < 0.5) { g.fillStyle = `rgba(255,255,255,${0.9 * (1 - k / 0.5)})`; g.fillRect(-1200, -400, 4400, 1800); } } },
   { m: 'Это не была атомная бомба', scene: 'plant', sp: { fire: true }, cams: [[800, 480, 1.4, 1.5], 'w'], actors: [] },
@@ -83,17 +83,17 @@ export const SB = [
   { m: 'Теперь вопрос к тебе.', scene: 'bag', sp: {}, cams: ['w'], actors: [] },
   { m: 'Ты выбираешь.', shotLen: 3.0, seq: [
     { to: 9.4, scene: 'room', sp: { door: 1 }, cams: ['a0', 'w'], actors: [boy({ item: 'bag', emo: 'sad', pose: { L: 'hang', R: 'hold' }, looks: [[0, 0.5]] }), mom({ emo: 'worry' })] },
-    { to: 99, scene: 'room', sp: { door: 0 }, cams: [[300, 520, 1.9, 2.1], 'w'], actors: [mom({ x: 470, y: 800, item: 'paper', poses: [[0, 'hang', 'hold']], emo: 'sad', flip: -1 })],
+    { to: 99, scene: 'room', sp: { door: 0 }, cams: [[300, 520, 1.9, 2.1], 'w'], actors: [mom({ x: 470, y: 800, poses: [[0, 'hang', 'hold']], emo: 'sad', flip: -1 })],
       fg: (st) => { if (st.pt > 14.8) { g.save(); g.translate(225, 440); g.rotate(-0.06); R(-80, -50, 160, 100, '#fffdf0', 8, 6); g.font = '900 28px Nunito'; g.fillStyle = INK; g.textAlign = 'center'; g.fillText('Мы живы.', 0, -6); g.fillText('Ищи нас', 0, 30); g.restore(); } } }] },
   { m: 'Окна в доме закрываются', scene: 'facade', sp: {}, cams: ['w'], actors: [] },
   { m: 'Автобусов больше тысячи.', photos: [{ from: 3.5, to: 6.0, src: 'bus' }], scene: 'street', sp: { buses: 4, moving: true }, cams: ['w', [960, 800, 1.5, 1.6]], actors: [] },
-  { m: 'Когда автобус отъезжает', scene: 'busIn', sp: { wheel: true }, cams: ['a0', 'c0', 'w'], shotLen: 2.4, actors: [boy({ x: 770, y: 1000, s: 1.15, emo: 'sad', flip: -1, bust: true, bustCut: 130, item: 'teddy', looks: [[0, -0.9]] }), mom({ x: 1450, y: 1000, s: 1.1, emo: 'sad', bust: true, bustCut: 130 })] },
-  { m: 'Автобус везёт вас в село', scene: 'busIn', sp: {}, cams: ['w', 'a0', 'a1', 'w'], shotLen: 3.0, actors: [boy({ x: 770, y: 1000, s: 1.15, emo: 'sad', bust: true, bustCut: 130, item: 'teddy', looks: [[0, 0.5]] }), mom({ x: 1450, y: 1000, s: 1.1, emo: 'sad', bust: true, bustCut: 130, flip: -1 }), { who: 'granny', x: 330, y: 1000, s: 1.1, emo: 'sad', bust: true, bustCut: 130 }] },
+  { m: 'Когда автобус отъезжает', scene: 'busIn', sp: { wheel: true }, cams: ['a0', 'c0', 'w'], shotLen: 2.4, actors: [boy({ x: 370, y: 905, s: 1.15, emo: 'sad', flip: -1, bust: true, bustCut: 130, item: 'teddy', looks: [[0, -0.9]] }), mom({ x: 1070, y: 905, s: 1.1, emo: 'sad', bust: true, bustCut: 130 })] },
+  { m: 'Автобус везёт вас в село', scene: 'busIn', sp: {}, cams: ['w', 'a0', 'a1', 'w'], shotLen: 3.0, actors: [boy({ x: 370, y: 905, s: 1.15, emo: 'sad', bust: true, bustCut: 130, item: 'teddy', looks: [[0, 0.5]] }), mom({ x: 1070, y: 905, s: 1.1, emo: 'sad', bust: true, bustCut: 130, flip: -1 }), { who: 'granny', x: 1770, y: 905, s: 1.1, emo: 'sad', bust: true, bustCut: 130 }] },
 
   // ===== ПОНЕДЕЛЬНИК =====
   { m: 'В понедельник утром', photos: [{ from: 0.3, to: 5.2, src: 'forsmark' }], scene: 'forsmark', sp: { alarm: true }, cams: ['w', 'a0'], shotLen: 3.2, actors: [{ who: 'swede', x: 940, y: 980, s: 1.2, emo: 'surprised', pose: { L: 'hang', R: 'hold' }, item: 'dosi', sweatAt: [4, 11] }] },
   { m: 'Сначала шведы решают', shotLen: 3.0, seq: [
-    { to: 6.2, scene: 'forsmark', sp: { alarm: true }, cams: ['w', 'a0'], actors: [{ who: 'swede', x: 600, y: 980, s: 1.1, emo: 'surprised', walk: [0, 6], move: [[0, 600, 980], [6, 1300, 980]] }, { who: 'swede', x: 400, y: 980, s: 1.1, emo: 'worry', walk: [0, 6], move: [[0, 400, 980], [6, 1500, 980]] }, { who: 'swede', x: 200, y: 980, s: 1.1, emo: 'surprised', walk: [0, 6], move: [[0, 200, 980], [6, 1700, 980]] }] },
+    { to: 6.2, scene: 'forsmark', sp: { alarm: true }, cams: ['w', 'a0'], actors: [{ who: 'swede', x: 560, y: 940, s: 1.15, emo: 'surprised', pose: { L: 'hang', R: 'hold' } }, { who: 'swede', x: 960, y: 940, s: 1.25, emo: 'worry' }, { who: 'swede', x: 1360, y: 940, s: 1.1, emo: 'surprised', flip: -1 }] },
     { to: 99, scene: 'map', sp: { arrow: true, t0: 0.3 }, cams: ['w'], actors: [] }] },
   { m: 'Швеция спрашивает Москву', scene: 'map', sp: { moscow: true, q: true, ring: true }, cams: ['w'], actors: [] },
   { m: 'Вечером в программе', scene: 'tv', sp: { talk: true }, cams: ['w', [960, 480, 1.7, 1.8]], actors: [] },
@@ -101,16 +101,16 @@ export const SB = [
   { m: 'Ты в чужой деревенской избе', scene: 'village', sp: { tv: 'static' }, cams: ['w', 'a0', 'a1'], shotLen: 3.6, actors: [boy({ x: 960, y: 920, s: 1.05, emo: 'sad', pose: { L: 'hang', R: 'hang' }, looks: [[0, 0.9]] }), mom({ x: 1200, y: 920, s: 1.05, emo: 'sad', flip: -1, pose: { L: 'hang', R: 'cheek' } }), { who: 'granny', x: 640, y: 920, s: 1.05, emo: 'sad' }] },
 
   // ===== ЧТО ОСТАЛОСЬ =====
-  { m: 'Среда проходит', photos: [{ from: 4.6, to: 8.0, src: 'school', cap: 'Заброшенная школа в Припяти (позднее фото)', actors: [{ who: 'boy', x: 1000, y: 930, s: 1.15, emo: 'sad', pose: { L: 'belly', R: 'belly' } }] }], shotLen: 3.0, seq: [
+  { m: 'Среда проходит', photos: [{ from: 4.6, to: 8.0, src: 'school', cap: 'Заброшенная школа в Припяти (позднее фото)', actors: [{ who: 'boy', x: 1000, y: 930, s: 0.95, emo: 'sad', pose: { L: 'belly', R: 'belly' } }] }], shotLen: 3.0, seq: [
     { to: 4.2, scene: 'info', sp: { bg: '#ffd98a', items: [{ big: 'среда', label: 'проходит', at: 0.3 }, { big: 'ещё одна', label: '', at: 2.0 }] }, cams: ['w'], actors: [] },
     { to: 99, scene: 'school', sp: {}, cams: ['w', 'a1', 'a0'], actors: [{ who: 'teacher', x: 1500, y: 900, s: 1.2, emo: 'flat', talk: [0, 2], pose: { L: 'hang', R: 'point' }, flip: -1 }, boy({ x: 700, y: 960, s: 1.1, emo: 'sad', pose: { L: 'hang', R: 'hang' }, looks: [[0, 0.7]] })] }] },
   { m: 'Первого мая в Киеве', photos: [{ from: 0.2, to: 3.8, src: 'pass' }], shotLen: 3.0, seq: [
-    { to: 7.5, scene: 'street', sp: { buses: 0, crowd: 16 }, cams: ['w'], actors: [], fg: () => { for (let i = 0; i < 6; i++) { const x = 300 + i * 260; line([[x, 900], [x, 700]], 8); P([[x, 700], [x + 110, 725], [x, 760]], '#e0443a', 5); } } },
+    { to: 7.5, scene: 'street', sp: { buses: 0 }, cams: ['w'], actors: [], fg: () => { for (let i = 0; i < 6; i++) { const x = 300 + i * 260; line([[x, 900], [x, 700]], 8); P([[x, 700], [x + 110, 725], [x, 760]], '#e0443a', 5); } } },
     { to: 99, scene: 'street', sp: { buses: 3, moving: true }, cams: ['w', 'a0'], actors: [{ who: 'kid2', x: 700, y: 1010, s: 0.9, emo: 'grin', pose: { L: 'wave', R: 'hang' } }, { who: 'boy', x: 1100, y: 1010, s: 0.9, emo: 'flat', pose: { L: 'hang', R: 'wave' } }] }] },
   { m: 'К концу года над четвёртым блоком', photos: [{ from: 0.3, to: 6.6, src: 'sarc' }, { from: 7.4, to: 12.2, src: 'slav' }, { from: 12.6, to: 17.0, src: 'liquid' }], shotLen: 3.2, seq: [
     { to: 7, scene: 'arch', sp: { sarc: true, year: '1986' }, cams: ['w'], actors: [] },
     { to: 12.5, scene: 'town', sp: { title: 'новый город', wheel: false }, cams: ['w'], actors: [{ who: 'worker', x: 900, y: 1010, s: 1.1, emo: 'grin' }] },
-    { to: 22, scene: 'info', sp: { bg: '#bfe6f6', title: 'на очистке работали сотни тысяч', items: [{ big: 'военные', label: '', at: 0.4 }, { big: 'шахтёры', label: '', at: 1.7 }, { big: 'водители', label: '', at: 3.0 }, { big: 'строители', label: '', at: 4.3 }] }, cams: ['w'], actors: [] },
+    { to: 22, scene: 'info', sp: { bg: '#bfe6f6', items: [{ big: 'военные', label: '', at: 0.4 }, { big: 'шахтёры', label: '', at: 1.7 }, { big: 'водители', label: '', at: 3.0 }, { big: 'строители', label: '', at: 4.3 }] }, cams: ['w'], actors: [] },
     { to: 99, scene: 'plant', sp: { day: true, fire: false }, cams: ['w'], actors: [{ who: 'worker', x: 800, y: 980, s: 1.1, emo: 'flat' }, { who: 'worker', x: 1050, y: 980, s: 1.1, emo: 'flat' }] }] },
   { m: 'Сильнее всего пострадали Украина', scene: 'map', sp: {}, cams: ['w'], actors: [], fg: () => { txt('БЕЛАРУСЬ', 900, 590, 44); txt('РОССИЯ', 1650, 520, 44); } },
   { m: 'Через тридцать лет, в две тысячи шестнадцатом', photos: [{ from: 0.3, to: 8.2, src: 'arch' }, { from: 9.0, to: 12.5, src: 'archbuild' }], shotLen: 3.4, seq: [
@@ -128,11 +128,11 @@ export const SB = [
   { m: 'По докладу комитета ООН', shotLen: 5, scene: 'info', sp: { bg: '#bfe6f6', items: [{ big: '≈ 20 000', label: 'случаев рака щитовидной железы к 2015 году', at: 1.0 }, { big: '1 из 4', label: 'вероятно связан с облучением', at: 13 }, { big: 'большинство', label: 'излечимо', at: 21 }] }, cams: ['w'], actors: [] },
   { m: 'Ты был бы в этой группе.', shotLen: 4, seq: [
     { to: 8, scene: 'milk', sp: { all: true }, cams: ['w'], actors: [] },
-    { to: 99, scene: 'info', sp: { bg: '#e8d8f0', title: 'главная проблема здоровья', items: [{ big: 'тревога', label: '', at: 0.6 }, { big: 'потеря дома', label: '', at: 3.2 }, { big: 'неизвестность', label: '', at: 6 }] }, cams: ['w'], actors: [] }] },
+    { to: 99, scene: 'info', sp: { bg: '#e8d8f0', items: [{ big: 'тревога', label: '', at: 0.6 }, { big: 'потеря дома', label: '', at: 3.2 }, { big: 'неизвестность', label: '', at: 6 }] }, cams: ['w'], actors: [] }] },
 
   // ===== ПОЧЕМУ ЭТО СЛУЧИЛОСЬ =====
   { m: 'Помнишь, я обещал сказать', scene: 'info', sp: { bg: '#ffd98a', items: [{ big: '?', label: 'что решила конструкция, а что люди', at: 0.4 }] }, cams: ['w'], actors: [] },
-  { m: 'В восемьдесят шестом советский доклад', shotLen: 5, scene: 'info', sp: { bg: '#e8d8f0', items: [{ big: '1986', label: 'доклад: виноват персонал', at: 0.5 }, { big: '1992', label: 'МАГАТЭ: главное в конструкции и культуре безопасности', at: 8.5 }, { big: 'кнопка', label: 'могла не остановить реактор, а разогнать', at: 17 }] }, cams: ['w'], actors: [] },
+  { m: 'В восемьдесят шестом советский доклад', shotLen: 5, scene: 'info', sp: { bg: '#e8d8f0', items: [{ big: '1986', label: 'доклад: виноват персонал', at: 0.5 }, { big: '1992', label: 'МАГАТЭ: главное в конструкции и культуре безопасности', at: 4.5 }, { big: 'кнопка', label: 'могла не остановить реактор, а разогнать', at: 13 }] }, cams: ['w'], actors: [] },
   { m: 'Что стало с отцом героя', photos: [{ from: 0, to: 3.2, src: 'flat' }], scene: 'room', sp: { old: true, door: 0 }, cams: [[300, 520, 1.9, 2.1], 'w'], actors: [],
     fg: () => { g.save(); g.translate(225, 440); g.rotate(-0.06); R(-80, -50, 160, 100, '#efe6c8', 8, 6); g.font = '900 28px Nunito'; g.fillStyle = INK; g.textAlign = 'center'; g.fillText('Мы живы.', 0, -6); g.fillText('Ищи нас', 0, 30); g.restore(); } },
   { m: 'Какую вещь ты не смог бы оставить', scene: 'bag', sp: {}, cams: ['w'], actors: [] },
