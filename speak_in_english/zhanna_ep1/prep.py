@@ -3,7 +3,7 @@ import json, subprocess, numpy as np, soundfile as sf, os
 S = json.load(open('voice/script.json')); SR = 44100; os.makedirs('out', exist_ok=True)
 GAP = {'z1': .35, 'z8': 1.3, 'z10': 1.2}  # comedic pauses after these lines
 def load(k, who):
-    o = f'out/v_{k}.wav'; tempo = 1.08 if who == 'z' else 1.0
+    o = f'out/v_{k}.wav'; tempo = 1.2 if who == 'z' else 1.0
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', f'voice/{k}.mp3', '-af', f'silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=stop_periods=-1:stop_duration=0.22:stop_threshold=-38dB:stop_silence=0.16,atempo={tempo}', '-ar', str(SR), '-ac', '1', o], check=True)
     return sf.read(o)[0]
 t = .35; L = []; clips = []
