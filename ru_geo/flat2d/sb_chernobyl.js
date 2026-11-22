@@ -1,10 +1,10 @@
 // Раскадровка «Чернобыль»: для каждого абзаца озвучки сцена, герои и камера. m = начало абзаца. pt = секунды от начала абзаца.
-import { g, INK, TAU, ease, lerp, R, P, E, C, line, CARD_BG } from './engine.js';
+import { g, INK, TAU, ease, lerp, R, P, E, C, line, CARD_BG, drawChar } from './engine.js';
 
 const boy = (o = {}) => ({ who: 'boy', x: 930, y: 900, s: 1.15, emo: 'flat', pose: { L: 'belly', R: 'belly' }, ...o });
 const mom = (o = {}) => ({ who: 'mom', x: 235, y: 800, s: 1.0, emo: 'sad', ...o });
 const txt = (s, x, y, size = 72, fill = '#fff') => { g.save(); g.font = `900 ${size}px Nunito`; g.textAlign = 'center'; g.lineJoin = 'round'; g.lineWidth = size * 0.22; g.strokeStyle = INK; g.fillStyle = fill; g.strokeText(s, x, y); g.fillText(s, x, y); g.restore(); };
-const sleeper = (o = {}) => boy({ x: 706, y: 588, s: 0.85, rot: -Math.PI / 2, emo: 'sleep', pose: { L: 'hang', R: 'hang' }, still: true, tilt: 0, ...o });
+const sleeper = (o = {}) => boy({ x: 706, y: 588, s: 0.85, rot: -Math.PI / 2, emo: 'sleep', pose: { L: 'hang', R: 'hang' }, still: true, tilt: 0, custom: (a) => { drawChar(a); blanket(); }, ...o });
 const blanket = () => { R(500, 556, 226, 106, '#3d86d6', 20, 6); line([[560, 560], [560, 656]], 4); line([[640, 560], [640, 656]], 4); };
 const NIGHT = { night: true };
 
@@ -17,7 +17,7 @@ export const SB = [
     sp: { door: (pt) => pt < 4.3 ? 1 : Math.max(0, 1 - ease((pt - 4.3) / 0.9)) },
     actors: [boy({ item: 'teddy', emo: 'sad', move: [[0, 930, 900, 1.15], [2.6, 930, 900, 1.15], [5.0, 280, 900, 0.95]], flipAt: [[0, 1], [2.7, -1]], walk: [2.7, 5.0], looks: [[0, 0.8]] }), mom({ move: [[0, 235, 800, 1.0], [3.0, 235, 800, 1.0], [4.4, 150, 800, 0.85]], fade: [3.4, 4.5, 1, 0] })] },
   { m: 'А всего полтора дня назад', shotLen: 2.8, seq: [
-    { to: 4.6, scene: 'room', sp: { ...NIGHT, glow: true, teddyBed: false, book: true }, cams: [[520, 600, 1.9, 2.1], 'w'], actors: [sleeper()], fg: blanket },
+    { to: 4.6, scene: 'room', sp: { ...NIGHT, glow: true, teddyBed: false, book: true }, cams: [[520, 600, 1.9, 2.1], 'w'], actors: [sleeper()] },
     { to: 10.4, scene: 'plant', sp: { fire: true }, cams: ['w', [800, 480, 1.9, 2.1]], actors: [] },
     { to: 99, scene: 'room', sp: { door: 0 }, cams: ['a0', 'w'], actors: [boy({ emo: 'sad', looks: [[0, 0.1]] })] }] },
   { m: 'Ты придуман. Но город', seq: [
@@ -34,7 +34,7 @@ export const SB = [
   { m: 'Ты живёшь на пятом этаже', scene: 'room', sp: { door: 0 }, cams: ['a0', [960, 300, 2.3, 2.5], 'w'], shotLen: 3.6, actors: [boy({ x: 980, y: 900, looks: [[0, 0.3], [4, 0.9]], emo: 'flat' })] },
   { m: 'Твой отец работает на станции', photos: [{ from: 0.2, to: 2.3, src: 'plantmodel', cap: 'Модель станции' }], scene: 'plant', sp: { day: true, fire: false }, cams: ['w', 'a0'], actors: [{ who: 'dad', x: 880, y: 960, s: 1.2, emo: 'flat', pose: { L: 'hang', R: 'hip' }, item: 'case' }, { who: 'worker', x: 1150, y: 960, s: 1.1, emo: 'grin' }, { who: 'worker', x: 600, y: 960, s: 1.1, emo: 'flat' }] },
   { m: 'В пятницу вечером он уходит', scene: 'room', sp: { ...NIGHT, door: 1 }, cams: ['w', [520, 600, 1.8, 2.0], 'a1'], shotLen: 2.6,
-    actors: [sleeper(), { who: 'dad', x: 820, y: 800, s: 1.05, emo: 'grin', tilt: -14, flip: -1, move: [[0, 820, 800, 1.05], [3.5, 820, 800, 1.05], [5.5, 235, 800, 1.0]], walk: [3.5, 5.5], item: 'case', fade: [5.2, 6.4, 1, 0] }], fg: blanket },
+    actors: [sleeper(), { who: 'dad', x: 900, y: 800, s: 1.05, emo: 'grin', tilt: -14, flip: -1, move: [[0, 900, 800, 1.05], [3.5, 900, 800, 1.05], [5.5, 235, 800, 1.0]], walk: [3.5, 5.5], item: 'case', fade: [5.2, 6.4, 1, 0] }] },
   { m: 'Это последняя обычная ночь', scene: 'town', sp: { night: true }, cams: ['w'], actors: [] },
 
   // ===== ОДИН ЧАС ДВАДЦАТЬ ТРИ МИНУТЫ =====
@@ -45,7 +45,7 @@ export const SB = [
     fg: (st) => { const k = st.pt - 2.4; if (k > 0 && k < 0.5) { g.fillStyle = `rgba(255,255,255,${0.9 * (1 - k / 0.5)})`; g.fillRect(-1200, -400, 4400, 1800); } } },
   { m: 'Это не была атомная бомба', scene: 'plant', sp: { fire: true }, cams: [[800, 480, 1.4, 1.5], 'w'], actors: [] },
   { m: 'В первые часы погибли двое', scene: 'plant', sp: { fire: true }, cams: ['w', 'a0'], dim: 0.15, actors: [{ who: 'worker', x: 820, y: 960, s: 1.1, emo: 'sad', pose: { L: 'hang', R: 'hang' } }, { who: 'worker', x: 1040, y: 960, s: 1.1, emo: 'sad', pose: { L: 'hang', R: 'hang' } }] },
-  { m: 'А ты спишь.', scene: 'room', sp: { ...NIGHT, glow: true }, cams: [[520, 600, 1.9, 2.1], 'w'], actors: [sleeper()], fg: blanket },
+  { m: 'А ты спишь.', scene: 'room', sp: { ...NIGHT, glow: true }, cams: [[520, 600, 1.9, 2.1], 'w'], actors: [sleeper()] },
 
   // ===== ПЯТЬ МИНУТ =====
   { m: 'Через пять минут к станции', scene: 'plant', sp: { fire: true, trucks: 3, siren: true }, cams: ['w', 'a0', 'w'], shotLen: 3.0, actors: [{ who: 'lieut', x: 1500, y: 980, s: 1.1, emo: 'angry', pose: { L: 'hip', R: 'point' }, flip: -1 }] },
@@ -57,7 +57,7 @@ export const SB = [
   { m: 'А теперь о цене.', scene: 'info', shotLen: 4, sp: { bg: '#ffd98a', items: [{ big: '≈ 600', label: 'человек было на станции в ту ночь', at: 0.3 }, { big: '134', label: 'острая лучевая болезнь', at: 6.0 }, { big: '28', label: 'умерли за три месяца', at: 12.2 }] }, cams: ['w'], actors: [] },
   { m: 'Тех, кому стало плохо', seq: [
     { to: 4.8, scene: 'sky', sp: {}, cams: ['w'], actors: [] },
-    { to: 99, scene: 'room', sp: { ...NIGHT }, cams: [[520, 600, 1.9, 2.1]], actors: [sleeper()], fg: blanket }] },
+    { to: 99, scene: 'room', sp: { ...NIGHT }, cams: [[520, 600, 1.9, 2.1]], actors: [sleeper()] }] },
 
   // ===== СУББОТА =====
   { m: 'Утром ты просыпаешься', shotLen: 2.8, seq: [
