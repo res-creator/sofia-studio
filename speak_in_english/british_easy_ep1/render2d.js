@@ -105,11 +105,11 @@ function arms(who, t) { // blended gesture with small wiggle
 }
 function person(who, t) {
   const c = CAST[who], a = arms(who, t), ac = a.act, [l] = lineAt(t), spk = l && l[2].includes(who);
-  const ph = beatPh(t), b = Math.exp(-ph * 5) * ac.e, hop = ac.e > 1.5 ? Math.abs(Math.sin(ph * Math.PI)) * 22 : 0;
-  const m = spk ? env(t) : 0, tilt = (spk ? .07 * Math.sin(t * 3.1 + c.seed) : .035 * Math.sin(t * 1.3 + c.seed)) + .025 * b * (who === 'A' ? 1 : -1);
-  const sway = Math.sin(t * 1.7 + c.seed) * 6 * (spk ? 1.5 : 1);
-  T.draw(g, {...c, x: c.x + sway, y: FEET - b * 10 - hop, sq: 1 - .03 * b, arms: a.fn, front: a.front, mood: ac.mood, mouth: m, blink: blink(t, c.seed), tilt, look: c.look * (spk ? .6 : 1), sweat: ac.sweat});
-  if (who === 'B' && (ac.g === 'teaHold' || ac.g === 'teaSip') && a.k > .9) { const H = a.fn(1)[2], s = c.s; cup(c.x + sway + H[0] * s, FEET - b * 10 - hop + H[1] * s * (1 - .03 * b) + 12, .9, ac.g === 'teaHold', t); }
+  const ph = beatPh(t), b = Math.exp(-ph * 5) * ac.e, hop = ac.e > 1.5 ? Math.abs(Math.sin(ph * Math.PI)) * 5 : 0;
+  const m = spk ? env(t) : 0, tilt = (spk ? .07 * Math.sin(t * 3.1 + c.seed) : .035 * Math.sin(t * 1.3 + c.seed)) + .012 * b * (who === 'A' ? 1 : -1);
+  const sway = Math.sin(t * 1.7 + c.seed) * 3 * (spk ? 1.3 : 1);
+  T.draw(g, {...c, x: c.x + sway, y: FEET - b * 3 - hop, sq: 1 - .012 * b, arms: a.fn, front: a.front, mood: ac.mood, mouth: m, blink: blink(t, c.seed), tilt, look: c.look * (spk ? .6 : 1), sweat: ac.sweat});
+  if (who === 'B' && (ac.g === 'teaHold' || ac.g === 'teaSip') && a.k > .9) { const H = a.fn(1)[2], s = c.s; cup(c.x + sway + H[0] * s, FEET - b * 3 - hop + H[1] * s * (1 - .012 * b) + 12, .9, ac.g === 'teaHold', t); }
 }
 
 // ---------- camera ----------
@@ -117,7 +117,7 @@ const CAM = {WIDE: [1, 545, 1050], HOOK: [1.07, 545, 1070], END: [1, 545, 1050],
 const SH = TL.SH.map(([at, k], i) => ({at, k, end: i + 1 < TL.SH.length ? TL.SH[i + 1][0] : TL.TOTAL, i}));
 function camAt(t) { let sh = SH[0]; for (const s of SH) if (t >= s.at) sh = s; const [z, x, y] = CAM[sh.k], u = (t - sh.at) / (sh.end - sh.at);
   const push = sh.i % 3 === 2 ? 0 : .05 * ease(u), punch = .05 * (1 - ease((t - sh.at) / .3)) * (sh.i ? 1 : 0);
-  let kick = 0; const [l] = lineAt(t); if (l && l[2] === 'AB' && sh.k === 'HOOK') kick = .02 * Math.exp(-beatPh(t) * 6);
+  let kick = 0; const [l] = lineAt(t); if (l && l[2] === 'AB' && sh.k === 'HOOK') kick = .008 * Math.exp(-beatPh(t) * 6);
   return {z: z * (1 + push + punch + kick), x, y, sh}; }
 
 // ---------- HUD ----------
