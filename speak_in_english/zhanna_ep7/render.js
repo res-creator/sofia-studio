@@ -16,11 +16,11 @@ function star(x, y, r, fill, lw = 5, n = 8, rot = 0) { const p = []; for (let i 
 function sparkle(x, y, r, a = 1) { g.save(); g.globalAlpha *= a; poly([[x, y - r], [x + r * .22, y - r * .22], [x + r, y], [x + r * .22, y + r * .22], [x, y + r], [x - r * .22, y + r * .22], [x - r, y], [x - r * .22, y - r * .22]], '#fff6c0', 3); g.restore(); }
 
 // Zhanna: exactly as in ep2 (palette, hair, brooch, sparkles, pink nails)
-const ZH = {hair: 'bouffant', lashes: true, earrings: '#f2c820', skirt: true, pal: {skin: '#f4c8a8', skinS: '#e2aa88', hair: '#f3d27a', hairS: '#d9b257', brow: '#8a6030', lip: '#d02a5a', top: '#d63a8a', topS: '#b02a70', collar: '#d63a8a', bottom: '#2a2230', skirt: '#2a2230', legs: '#f4c8a8', shoe: '#e0b040', sole: '#e0b040'}, x: 265, s: .76};
+const ZH = {hair: 'bouffant', lashes: true, earrings: '#f2c820', skirt: true, pal: {skin: '#f4c8a8', skinS: '#e2aa88', hair: '#f3d27a', hairS: '#d9b257', brow: '#8a6030', lip: '#d02a5a', top: '#d63a8a', topS: '#b02a70', collar: '#d63a8a', bottom: '#2a2230', skirt: '#2a2230', legs: '#f4c8a8', shoe: '#e0b040', sole: '#e0b040'}, x: 255, s: .76};
 // Petrovich: ~60, grey flat cap, simple brown jacket, grey moustache, kind eyes
-const PE = {hair: 'short', cap: true, moustache: true, pal: {skin: '#eec3a2', skinS: '#d9a583', hair: '#cfcfcf', brow: '#9a9a9a', stache: '#dcdcdc', cap: '#7a808c', capS: '#5e6470', top: '#8a6d52', topS: '#6e553f', collar: '#eef3f8', bottom: '#4a4a52', legs: '#4a4a52', shoe: '#2a2230', sole: '#2a2230'}, x: 668, s: .76};
+const PE = {hair: 'short', cap: true, moustache: true, pal: {skin: '#eec3a2', skinS: '#d9a583', hair: '#cfcfcf', brow: '#9a9a9a', stache: '#dcdcdc', cap: '#7a808c', capS: '#5e6470', top: '#8a6d52', topS: '#6e553f', collar: '#eef3f8', bottom: '#4a4a52', legs: '#4a4a52', shoe: '#2a2230', sole: '#2a2230'}, x: 730, s: .76};
 // Waiter Tyler: young American, black shirt, red tie
-const WA = {hair: 'spiky', pal: {skin: '#f0c9a8', skinS: '#ddae8c', hair: '#6b4a2e', brow: '#4a3220', top: '#2f2f3a', topS: '#23232c', collar: '#ffffff', tie: '#c8323c', bottom: '#2a2a33', legs: '#2a2a33', shoe: '#1e1e24', sole: '#1e1e24'}, x: 958, s: .72};
+const WA = {hair: 'spiky', pal: {skin: '#f0c9a8', skinS: '#ddae8c', hair: '#6b4a2e', brow: '#4a3220', top: '#2f2f3a', topS: '#23232c', collar: '#ffffff', tie: '#c8323c', bottom: '#2a2a33', legs: '#2a2a33', shoe: '#1e1e24', sole: '#1e1e24'}, x: 1360, s: .72};
 
 // ---------- restaurant (flat) ----------
 const SEAT = 1850, TABLE = 1352;
@@ -52,14 +52,14 @@ function plate(x, y, food) { ell(x, y - 6, 92, 22, '#ffffff', 6); ell(x, y - 8, 
   if (food === 'steak') { ell(x - 10, y - 18, 40, 14, '#8a4a2a', 5); ln([[x - 30, y - 22], [x - 4, y - 14]], 3, '#5a2a14'); ln([[x - 14, y - 24], [x + 12, y - 16]], 3, '#5a2a14'); }
   if (food === 'bones') { ln([[x - 40, y - 14], [x + 34, y - 14]], 4); for (let k = 0; k < 4; k++) ln([[x - 26 + k * 16, y - 24], [x - 26 + k * 16, y - 4]], 3); poly([[x + 34, y - 14], [x + 52, y - 26], [x + 52, y - 2]], '#ffffff', 4); } }
 function table(t) { // in front of the seated pair: hides their lower bodies
-  rr(20, TABLE, 820, 34, 12, '#fffaf2', 7); rr(36, TABLE + 30, 788, 700, 6, '#fffaf2', 7); for (let x = 60; x < 820; x += 70) ln([[x, TABLE + 60], [x, TABLE + 640]], 3, '#efe4d4'); rr(36, TABLE + 30, 788, 36, 0, '#c8323c', 5);
+  rr(-40, TABLE, 1040, 34, 12, '#fffaf2', 7); rr(-24, TABLE + 30, 1008, 700, 6, '#fffaf2', 7); for (let x = 0; x < 980; x += 70) ln([[x, TABLE + 60], [x, TABLE + 640]], 3, '#efe4d4'); rr(-24, TABLE + 30, 1008, 36, 0, '#c8323c', 5);
   const later = t >= TL.LATER + .2;
   // candle in the middle (between the faces, below the chins)
-  rr(448, TABLE - 70, 34, 70, 8, '#fff4dc', 5); const fl = 1 + .08 * Math.sin(t * 13); ell(465, TABLE - 92, 11 * fl, 20 * fl, '#ffc94a', 4); ell(465, TABLE - 88, 5, 9, '#fff2b0', 0);
-  if (!later) { rr(200, TABLE - 16, 150, 18, 4, '#7a2a30', 4); rr(560, TABLE - 16, 150, 18, 4, '#7a2a30', 4); }   // closed menus
-  else { plate(272, TABLE, t < BY.p7.end + .4 ? 'steak' : null); plate(658, TABLE, 'bones'); }
-  glass(118, TABLE, 'flute'); glass(790, TABLE, t >= BY.w4.at ? 'wine' : 'water');
-  if (t >= BY.p7.end + .4) { const k = ease((t - BY.p7.end - .4) / .4); g.save(); g.globalAlpha = k; rr(222, TABLE - 66, 100, 64, 8, '#f2ecdc', 6); ln([[222, TABLE - 50], [322, TABLE - 50]], 4); g.restore(); } // to-go box
+  rr(475, TABLE - 70, 34, 70, 8, '#fff4dc', 5); const fl = 1 + .08 * Math.sin(t * 13); ell(492, TABLE - 92, 11 * fl, 20 * fl, '#ffc94a', 4); ell(492, TABLE - 88, 5, 9, '#fff2b0', 0);
+  if (!later) { rr(190, TABLE - 16, 150, 18, 4, '#7a2a30', 4); rr(622, TABLE - 16, 150, 18, 4, '#7a2a30', 4); }   // closed menus
+  else { plate(262, TABLE, t < BY.p7.end + .4 ? 'steak' : null); plate(720, TABLE, 'bones'); }
+  glass(108, TABLE, 'flute'); glass(870, TABLE, t >= BY.w4.at ? 'wine' : 'water');
+  if (t >= BY.p7.end + .4) { const k = ease((t - BY.p7.end - .4) / .4); g.save(); g.globalAlpha = k; rr(212, TABLE - 66, 100, 64, 8, '#f2ecdc', 6); ln([[212, TABLE - 50], [312, TABLE - 50]], 4); g.restore(); } // to-go box
 }
 
 // ---------- gestures ----------
@@ -78,7 +78,7 @@ const PG = {
   present: s => s > 0 ? [[78, -860], [160, -760], [240, -800]] : [[-78, -860], [-140, -740], [-80, -690]],
   cap: s => s > 0 ? [[78, -860], [290, -1020], [222, -1212]] : [[-78, -860], [-140, -740], [-80, -690]],
   raise: s => s > 0 ? [[78, -860], [200, -950], [215, -1110]] : [[-78, -860], [-140, -740], [-80, -690]],
-  pay: s => s > 0 ? [[78, -860], [190, -760], [280, -700]] : [[-78, -860], [-140, -740], [-80, -690]],
+  pay: s => s > 0 ? [[78, -860], [175, -760], [235, -700]] : [[-78, -860], [-140, -740], [-80, -690]],
 };
 const WG = {
   down: s => [[s * 78, -860], [s * 102, -720], [s * 110, -580]],
@@ -126,7 +126,7 @@ function petrovich(t) { const l = lineAt(t), spk = l && l.who === 'p', a = blend
   T.draw(g, {...c, x, y, arms: wig(a.fn, t, spk ? 4 : 1.5), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: !wink && blink(t, 7), wink, tilt, look: t >= TL.END ? 0 : (l && l.who === 'w') || t >= TL.CHECK && t < BY.p7.end ? .7 : -.6, capLift});
   if (a.act.g === 'pay' && a.e > .6 && t < BY.p6.end + .2) { const Hh = a.fn(1)[2]; g.save(); g.translate(x + Hh[0] * c.s + 6, y + Hh[1] * c.s - 4); g.rotate(-.15); rr(-46, -22, 92, 44, 6, '#9ccf8a', 5); ell(0, 0, 12, 12, '#7ab868', 3); g.restore(); }
   hands(x, y, c.s, a, c, null, false); }
-const WIN = [[BY.w1.at - 1.1, BY.w4.end + .4], [BY.p5.end - .7, BY.p7.end + .3]];
+const WIN = [[BY.w1.at - 1.1, BY.w4.end + .4], [BY.p5.at - .4, BY.p7.end + .3]];
 function waiterOff(t) { let off = 1; for (const [a, b] of WIN) { const k = Math.min(ease((t - a) / .8), 1 - ease((t - b) / .9)); off = Math.min(off, 1 - clamp(k)); } return off; }
 function waiter(t) { const off = waiterOff(t); if (off >= .999) return; const l = lineAt(t), spk = l && l.who === 'w', a = blendArms(wAct, WG, t), c = WA, walking = off > .001, x = c.x + off * 520 + Math.sin(t * 1.2 + 2) * 3, FEET = 1720 - (walking ? Math.abs(Math.sin(t * 8)) * 6 : 0);
   T.draw(g, {...c, x, y: FEET, arms: wig(a.fn, t, spk ? 6 : 1.5), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: blink(t, 5), tilt: spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t), look: -.7});
@@ -179,12 +179,15 @@ function laterCard(t) { const a = TL.LATER, b = BY.p5.at - .2; if (t < a || t >=
   const ag = -1.57 + (t - a) * 3; ln([[540, 1130], [540 + Math.cos(ag) * 105, 1130 + Math.sin(ag) * 105]], 9); ln([[540, 1130], [540 + Math.cos(ag / 12 - .5) * 70, 1130 + Math.sin(ag / 12 - .5) * 70]], 11); ell(540, 1130, 12, 12, INK, 0); g.restore(); }
 
 // ---------- shots ----------
-const CAM = {TWO: [1.1, 470, 1030], ZP: [1.25, 465, 1010], Z_MED: [1.6, 290, 1000], Z_UP: [1.5, 300, 918], P_MED: [1.6, 668, 1000], P_UP: [1.45, 760, 940], P_CU: [2.0, 668, 1030],
-  W_MED: [1.5, 900, 925], PW: [1.25, 805, 975]};
+const CAM = {TWO: [1.1, 490, 1030], ZP: [1.25, 490, 1010], Z_MED: [1.6, 270, 1000], Z_UP: [1.5, 270, 918], P_MED: [1.6, 730, 1000], P_UP: [1.45, 730, 940], P_CU: [2.0, 730, 1030],
+  W_MED: [1.5, 1360, 925], PW: [1.25, 1050, 975]};
 const SH = [[0, 'TWO'], [BY.p1.at - .15, 'P_MED'], [BY.w1.at - .1, 'W_MED'], [BY.z2.at - .1, 'Z_MED'], [BY.w2.at - .1, 'W_MED'], [BY.z3.at - .1, 'ZP'], [BY.p2.at - .1, 'PW'], [BY.w3.at - .1, 'PW'],
   [BY.p3.at - .1, 'P_UP'], [BY.w4.at - .1, 'W_MED'], [BY.z4.at - .1, 'Z_UP'], [BY.p4.at - .2, 'P_CU'], [TL.LATER + .3, 'TWO'], [BY.p5.at - .1, 'P_MED'], [TL.CHECK - .5, 'PW'], [BY.w5.at - .1, 'W_MED'],
   [BY.z5.at - .1, 'Z_UP'], [BY.p7.at - .1, 'PW'], [BY.z6.at - .1, 'ZP'], [BY.p8.at - .15, 'P_CU'], [TL.END, 'END']].map(([at, k], i, a) => ({at, k, i, end: a[i + 1] ? a[i + 1][0] : TL.TOTAL}));
-function camAt(t) { let sh = SH[0]; for (const s of SH) if (t >= s.at) sh = s; const k = sh.k === 'END' ? 'TWO' : sh.k, [z, x, y] = CAM[k], u = clamp((t - sh.at) / (sh.end - sh.at));
+// framing rule: every character is fully inside the frame horizontally or fully outside. cams.json (node render.js frame) holds the solved [z, x] per shot
+const SUBJ = {TWO: 'ZP', ZP: 'ZP', Z_MED: 'Z', Z_UP: 'Z', P_MED: 'P', P_UP: 'P', P_CU: 'P', W_MED: 'W', PW: 'PW', END: 'ZP'};
+let SOLVED = null; try { SOLVED = JSON.parse(fs.readFileSync(__dirname + '/cams.json', 'utf8')); } catch (e) {}
+function camAt(t) { let sh = SH[0]; for (const s of SH) if (t >= s.at) sh = s; const k = sh.k === 'END' ? 'TWO' : sh.k; let [z, x, y] = CAM[k]; if (SOLVED && SOLVED[sh.i]) [z, x] = SOLVED[sh.i]; const u = clamp((t - sh.at) / (sh.end - sh.at));
   const push = sh.i % 3 === 2 ? 0 : .035 * ease(u), punch = sh.at > 0 && sh.k !== 'END' ? .03 * (1 - ease((t - sh.at) / .3)) : 0; return {z: z * (1 + push + punch), x, y, k, sh}; }
 
 // ---------- captions ----------
@@ -237,7 +240,7 @@ function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30
 
 let COVER = false;
 function frame(t) {
-  const c = COVER ? {z: 1.34, x: 468, y: 1060, k: 'ZP', sh: {k: 'ZP'}} : camAt(t); curCam = c; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
+  const c = COVER ? {z: 1.04, x: 492, y: 1060, k: 'ZP', sh: {k: 'ZP'}} : camAt(t); curCam = c; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
   g = GB; g.setTransform(1, 0, 0, 1, 0, 0); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); restaurant(t); g = G0;
   g.save(); g.filter = `blur(${(2.5 * c.z).toFixed(1)}px) saturate(0.6) brightness(1.03)`; g.drawImage(bgCv, 0, 0); g.filter = 'none'; g.restore();
   g.save(); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); if (!COVER) waiter(t); zhanna(t); petrovich(t); table(t); g.restore();
@@ -259,3 +262,20 @@ else if (mode === 'clip') { const [a, b] = arg.split(':').map(Number), F0 = Math
 else if (mode === 'srt') { const ts = s => { const ms = Math.round(s * 1000), h = Math.floor(ms / 3600000), m = Math.floor(ms / 60000) % 60, sec = Math.floor(ms / 1000) % 60; return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')},${String(ms % 1000).padStart(3, '0')}`; };
   let n = 0, out = ''; for (const c of FLAT) out += `${++n}\n${ts(c.a)} --> ${ts(c.hold)}\n${c.s}${c.tr ? '\n' + c.tr : ''}\n\n`; fs.mkdirSync('final', {recursive: true}); fs.writeFileSync('final/zhanna_ep7.srt', out); }
 else if (mode === 'info') { for (const c of FLAT) console.log(c.id, c.a.toFixed(2), c.hold.toFixed(2), c.s, '|', c.tr || ''); for (const q of CHIPS) console.log('CHIP', q.a.toFixed(2), (q.b - q.a).toFixed(2), q.w); for (const s of SH) console.log('SH', s.at.toFixed(2), s.k); }
+else if (mode === 'frame') { // measure each character's horizontal extent per shot, then solve the camera
+  const SC = .25, OX = 600, mc = createCanvas(Math.round(2600 * SC), Math.round(2000 * SC)), mg = mc.getContext('2d');
+  const ext = (fn, t) => { g = mg; g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, mc.width, mc.height); g.setTransform(SC, 0, 0, SC, OX * SC, 0); fn(t); g = G0;
+    const d = mg.getImageData(0, 0, mc.width, mc.height).data, w = mc.width; let a = 1e9, b = -1e9; for (let i = 3; i < d.length; i += 4) if (d[i] > 8) { const x = ((i - 3) / 4) % w; if (x < a) a = x; if (x > b) b = x; } return a > b ? null : [a / SC - OX, (b + 1) / SC - OX]; };
+  const CHR = {Z: zhanna, P: petrovich, W: waiter}, out = {}, M = 16;
+  for (const sh of SH) { const k = sh.k === 'END' ? 'TWO' : sh.k, [z0, x0] = CAM[k], E = {};
+    for (const c of 'ZPW') { let a = 1e9, b = -1e9; for (let t = sh.at; t < sh.end; t += .1) { const e = ext(CHR[c], t); if (e) { a = Math.min(a, e[0]); b = Math.max(b, e[1]); } } E[c] = a > b ? null : [a - M, b + M]; }
+    const subj = SUBJ[sh.k].split('').filter(c => E[c]); let best = null;
+    const ZS = []; for (let d = 0; d <= 1.3; d += .01) { if (z0 - d >= .7) ZS.push(z0 - d); if (d && z0 + d <= 2.2) ZS.push(z0 + d); } ZS.sort((p, q) => Math.abs(p - z0) * (p > z0 ? 1.5 : 1) - Math.abs(q - z0) * (q > z0 ? 1.5 : 1));
+    for (const z of ZS) { if (best) break; const wMin = 1080 / (z * 1.07), wMax = 1080 / z; // narrowest (push+punch) and widest view
+      const S = subj.map(c => E[c]), sa = Math.min(...S.map(e => e[0])), sb = Math.max(...S.map(e => e[1])); if (sb - sa > wMin) continue;
+      const cands = []; for (let x = sb - wMin / 2; x <= sa + wMin / 2; x += 2) cands.push(x); cands.sort((p, q) => Math.abs(p - x0) - Math.abs(q - x0));
+      for (const x of cands) { let ok = true; for (const c of 'ZPW') { if (subj.includes(c) || !E[c]) continue; const [oa, ob] = E[c];
+          const outside = (x + wMax / 2 <= oa) || (x - wMax / 2 >= ob), inside = oa >= x - wMin / 2 && ob <= x + wMin / 2; if (!outside && !inside) { ok = false; break; } }
+        if (ok) { best = [+z.toFixed(3), Math.round(x)]; break; } } }
+    out[sh.i] = best; console.log(sh.i, sh.k, sh.at.toFixed(2), JSON.stringify(E), '->', best, 'was', [z0, x0]); }
+  fs.writeFileSync('cams.json', JSON.stringify(out)); }
