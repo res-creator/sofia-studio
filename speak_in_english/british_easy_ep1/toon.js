@@ -76,7 +76,7 @@ const POSES = {
   desk: s => [[s * 78, -860], [s * 140, -700], [s * 60, -610]],
   fists: s => [[s * 78, -860], [s * 120, -760], [s * 30, -800]],
 };
-function arm(st, c, s) { const [S, E, H] = (POSES[st.pose] || POSES.down)(s); limb([S, [S[0] + (E[0] - S[0]) * .45, S[1] + (E[1] - S[1]) * .45]], 46, c.top); limb([[S[0] + (E[0] - S[0]) * .4, S[1] + (E[1] - S[1]) * .4], E, H], 30, c.arm || c.skin); ell(H[0], H[1], 26, 24, c.skin, 6); }
+function arm(st, c, s) { const [S, E, H] = st.arms ? st.arms(s) : (POSES[st.pose] || POSES.down)(s); limb([S, [S[0] + (E[0] - S[0]) * .45, S[1] + (E[1] - S[1]) * .45]], 46, c.top); limb([[S[0] + (E[0] - S[0]) * .4, S[1] + (E[1] - S[1]) * .4], E, H], 30, c.arm || c.skin); ell(H[0], H[1], 26, 24, c.skin, 6); }
 function legs(st, c) { for (const s of [-1, 1]) { limb([[s * 40, -580], [s * 46, -90]], 44, c.legs || c.bottom);
     P(); g.moveTo(s * 46 - 50 + (s > 0 ? 24 : -24), -20); g.bezierCurveTo(s * 46 - 50 + (s > 0 ? 24 : -24), -90, s * 46 + 50 + (s > 0 ? 24 : -24), -100, s * 46 + 60 + (s > 0 ? 24 : -24), -30); g.lineTo(s * 46 + 60 + (s > 0 ? 24 : -24), 0); g.lineTo(s * 46 - 50 + (s > 0 ? 24 : -24), 0); g.closePath(); fs(c.shoe || '#ffffff');
     line([[s * 46 - 50 + (s > 0 ? 24 : -24), -12], [s * 46 + 60 + (s > 0 ? 24 : -24), -12]], 6, c.sole || '#e05a2a'); } }
@@ -90,10 +90,10 @@ function torso(st, c) {
   if (st.skirt || c.skirt) { P(); g.moveTo(-96, -580); g.lineTo(96, -580); g.lineTo(140, -380); g.quadraticCurveTo(0, -360, -140, -380); g.closePath(); fs(c.skirt || c.bottom); for (const xx of [-50, 0, 50]) line([[xx, -560], [xx * 1.3, -390]], 4); }
   else { P(); g.moveTo(-96, -570); g.lineTo(96, -570); g.lineTo(90, -520); g.lineTo(-90, -520); g.closePath(); fs(c.bottom); }
 }
-function draw(gg, st) { g = gg; const c = st.pal; g.save(); g.translate(st.x, st.y); g.scale(st.s || 1, st.s || 1); g.globalAlpha = st.alpha ?? 1;
-  g.save(); g.translate(0, -930); g.scale(1.2, 1.2); g.translate(0, 930); hairBack(st, c); g.restore(); if (!st.seated) legs(st, c);
-  const front = st.pose === 'hold' || st.pose === 'desk' || st.pose === 'fists';
+function draw(gg, st) { g = gg; const c = st.pal; g.save(); g.translate(st.x, st.y); g.scale(st.s || 1, st.s || 1); if (st.sq) g.scale(1 + (1 - st.sq) * .5, st.sq); g.globalAlpha = st.alpha ?? 1;
+  g.save(); g.translate(0, -930); g.rotate(st.tilt || 0); g.scale(1.2, 1.2); g.translate(0, 930); hairBack(st, c); g.restore(); if (!st.seated) legs(st, c);
+  const front = st.front ?? (st.pose === 'hold' || st.pose === 'desk' || st.pose === 'fists');
   if (!front) { arm(st, c, -1); arm(st, c, 1); } torso(st, c); if (front) { arm(st, c, -1); arm(st, c, 1); }
-  g.save(); g.translate(0, -930); g.scale(1.2, 1.2); g.translate(0, 930); face(st, c); hairFront(st, c); if (st.sweat) { P(); g.moveTo(190, HY - 60); g.quadraticCurveTo(218, HY - 14, 204, HY + 6); g.quadraticCurveTo(190, HY + 20, 176, HY + 6); g.quadraticCurveTo(168, HY - 14, 190, HY - 60); fs('#8fd2ff', 5); } g.restore();
+  g.save(); g.translate(0, -930); g.rotate(st.tilt || 0); g.scale(1.2, 1.2); g.translate(0, 930); face(st, c); hairFront(st, c); if (st.sweat) { P(); g.moveTo(190, HY - 60); g.quadraticCurveTo(218, HY - 14, 204, HY + 6); g.quadraticCurveTo(190, HY + 20, 176, HY + 6); g.quadraticCurveTo(168, HY - 14, 190, HY - 60); fs('#8fd2ff', 5); } g.restore();
   g.restore(); }
 module.exports = {draw, POSES};
