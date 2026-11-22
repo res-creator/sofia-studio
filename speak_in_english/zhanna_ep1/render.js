@@ -4,7 +4,8 @@ const fs = require('fs'), {spawn} = require('child_process'), {createCanvas, Glo
 for (const [f, n] of [['nunito-cyrillic-900-normal', 'NBC'], ['nunito-latin-900-normal', 'NBL'], ['neucha-cyrillic-400-normal', 'HWC'], ['neucha-latin-400-normal', 'HWL']]) GlobalFonts.registerFromPath(`fonts/${f}.woff2`, n);
 const W = 1080, H = 1920, FPS = 30, INK = '#2a2230', FONT = 'NBL, NBC', HW = 'HWL, HWC';
 const TL = require('./timeline.json'), L = TL.L, BY = Object.fromEntries(L.map(l => [l.id, l]));
-const cv = createCanvas(W, H), g = cv.getContext('2d');
+const cv = createCanvas(W, H), G0 = cv.getContext('2d'); let g = G0;
+const bgCv = createCanvas(W, H), GB = bgCv.getContext('2d'), clCv = createCanvas(W, H), GC = clCv.getContext('2d');
 const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v)), ease = v => { v = clamp(v); return v * v * (3 - 2 * v); }, lerp = (a, b, k) => a + (b - a) * k;
 const hash = n => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
 function rr(x, y, w, h, r, fill, lw = 7, stroke = INK) { g.beginPath(); g.roundRect(x, y, w, h, r); if (fill) { g.fillStyle = fill; g.fill(); } if (lw) { g.strokeStyle = stroke; g.lineWidth = lw; g.lineJoin = 'round'; g.stroke(); } }
@@ -80,7 +81,9 @@ function zhanna(t) { const l = lineAt(t), spk = l && l.who === 'z', a = blendArm
   const S = c.s, bx = x - 40 * S, by = FEET - 790 * S * breathe; star(bx, by, 34, '#f2c820', 5, 8, t * .3); ell(bx, by, 10, 10, '#ff5a8a', 4); sparkle(bx + 30, by - 28, 14, .5 + .5 * Math.sin(t * 5));
   for (let i = 0; i < 9; i++) { const sx = x + (hash(i) - .5) * 150 * S, sy = FEET - (590 + hash(i + 9) * 260) * S; sparkle(sx, sy, 7 + 5 * hash(i + 3), Math.max(0, Math.sin(t * 4 + i * 1.7))); }
   if (a.act.g === 'phone' && a.e > .8) { const H = a.fn(1)[2]; rr(x + H[0] * S - 26, FEET + H[1] * S * breathe - 70, 52, 96, 10, '#e05a8a', 5); }
-  if (a.act.g === 'three' && a.e > .8) { const H = a.fn(1)[2]; for (let k = 0; k < 3; k++) { const fx = x + H[0] * S - 16 + k * 16, fy = FEET + H[1] * S - 14; ln([[fx, fy], [fx + (k - 1) * 3, fy - 40]], 18, INK); ln([[fx, fy], [fx + (k - 1) * 3, fy - 40]], 9, ZH.pal.skin); ell(fx + (k - 1) * 3, fy - 44, 6, 5, '#d02a5a', 0); } }
+  if (a.act.g === 'three' && a.e > .8) { const H = a.fn(1)[2], hx = x + H[0] * S, hy = FEET + H[1] * S, sk = ZH.pal.skin; g.save(); g.translate(hx, hy - 6); g.rotate(.08);
+    for (const fx of [-15, 0, 15]) { rr(fx - 8, -64 - Math.abs(fx) * .3, 16, 60, 8, sk, 4); ell(fx, -56 - Math.abs(fx) * .3, 5, 7, '#d63a8a', 2); }
+    ell(0, -8, 27, 24, sk, 4); g.beginPath(); g.ellipse(0, -10, 24, 21, 0, 0, 7); g.fillStyle = sk; g.fill(); ell(-24, -14, 9, 14, sk, 4); g.restore(); }
 }
 function reporter(t) { const l = lineAt(t), spk = l && l.who === 'r', c = RE, x = c.x + Math.sin(t * 1.2 + 2) * 3;
   T.draw(g, {...c, x, y: FEET, arms: wig(GEST.mic, t, 2), mood: 'flat', mouth: spk ? env(l, t) : 0, blink: blink(t, 5), tilt: spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t), look: .6});
@@ -122,11 +125,14 @@ const CLOUD = {
     txt('incoming call', 430, 325, 26, '#bbb'); const ring = Math.sin(u * 40) * (u < .5 ? 6 : 0); ell(370 + ring, 420, 34, 34, u > .55 ? '#ffffff' : '#e0283a', 5); ell(490 - ring, 420, 34, 34, '#2f9a5a', 5);
     if (u > .55) txt('DECLINED', 430, 470, 30, '#e0283a'); },
 };
-function cloud(id, u, t) { const k = ease(u * 6) * (1 - ease((u - .93) * 14)); if (k <= 0) return; g.save(); g.globalAlpha = k;
-  for (const [x, y, r] of [[700, 760, 16], [740, 700, 24]]) ell(x, y, r, r, '#fffaf0', 6);
-  g.translate(PX + PW / 2, PY + PH / 2); g.scale(.85 + .15 * k, .85 + .15 * k); g.translate(-PW / 2, -PH / 2);
-  for (let i = 0; i < 14; i++) { const a = i / 14 * Math.PI * 2; ell(PW / 2 + Math.cos(a) * (PW / 2 - 10), PH / 2 + Math.sin(a) * (PH / 2 - 10), 70, 60, '#fffaf0', 6); }
-  rr(10, 10, PW - 20, PH - 20, 60, '#fffaf0', 0); g.save(); g.beginPath(); g.roundRect(20, 20, PW - 40, PH - 40, 50); g.clip(); CLOUD[id](u); g.restore(); g.restore(); }
+function cloudShape(pass) { const puffs = []; for (let x = 70; x <= PW - 70; x += 105) { puffs.push([x, 40, 68]); puffs.push([x, PH - 40, 68]); } for (let y = 110; y <= PH - 110; y += 100) { puffs.push([30, y, 62]); puffs.push([PW - 30, y, 62]); }
+  for (const [x, y, r] of puffs) { g.beginPath(); g.arc(x, y, r, 0, 7); if (pass) { g.strokeStyle = INK; g.lineWidth = 12; g.stroke(); } else { g.fillStyle = '#fffaf0'; g.fill(); } }
+  g.beginPath(); g.roundRect(20, 30, PW - 40, PH - 60, 40); if (pass) { g.strokeStyle = INK; g.lineWidth = 12; g.stroke(); } else { g.fillStyle = '#fffaf0'; g.fill(); } }
+function cloud(id, u, t, a0, b0) { const k = ease((t - a0) / .3) * (1 - ease((t - b0 + .25) / .25)); if (k <= 0) return;
+  const prev = g; g = GC; g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, W, H);
+  for (const [x, y, r] of [[690, 770, 14], [735, 712, 22]]) ell(x, y, r, r, '#fffaf0', 6);
+  g.translate(PX, PY); cloudShape(1); cloudShape(0); g.save(); g.beginPath(); g.roundRect(30, 40, PW - 60, PH - 80, 36); g.clip(); CLOUD[id](u); g.restore();
+  g = prev; g.save(); g.globalAlpha = k; const sc = .9 + .1 * k; g.translate(540, PY + PH / 2); g.scale(sc, sc); g.translate(-540, -(PY + PH / 2)); g.drawImage(clCv, 0, 0); g.restore(); }
 const CLOUD_FOR = {z2: 'z2', z3: 'z3', z4: 'z4', z5: 'z5', z6: 'z6', z7: 'z7', z8: 'z8'};
 
 // ---------- shots ----------
@@ -153,14 +159,17 @@ const CH = L.map(l => ({l, ch: chunks(l)}));
 const chips = []; for (const l of L) { const s = l.text; for (const [w, tr] of GLOSS) { const i = s.toLowerCase().indexOf(w.toLowerCase()); if (i >= 0) chips.push({a: l.at + (l.end - l.at) * i / s.length, w: w.replace('call-ай', 'коллай'), tr}); } }
 chips.sort((a, b) => a.a - b.a);
 const isEn = w => /[a-z]/i.test(w) || /^(ю|ноу|кар|хаус|чекаю|блокаю|гостит|коллай|текстай|коллбэкну)/i.test(w.replace(/[«»"?!.,…—]/g, ''));
-function caption(t) { let cur = null; for (const {l, ch} of CH) for (const c of ch) if (t >= c.a - .02 && t < c.b + (c === ch[ch.length - 1] ? .25 : 0)) cur = c; if (!cur) return;
+function curChunk(t) { let cur = null; for (const {l, ch} of CH) for (const c of ch) if (t >= c.a - .02 && t < c.b + (c === ch[ch.length - 1] ? .25 : 0)) cur = c; return cur; }
+function caption(t) { const cur = curChunk(t); if (!cur) return;
   const words = cur.s.split(' '); let size = 70; g.font = `${size}px ${FONT}`; const sp = () => g.measureText(' ').width; let tw = words.reduce((a, w) => a + g.measureText(w).width, 0) + sp() * (words.length - 1);
   while (tw > 980 && size > 40) { size -= 4; g.font = `${size}px ${FONT}`; tw = words.reduce((a, w) => a + g.measureText(w).width, 0) + sp() * (words.length - 1); }
   const pop = 1 + .08 * clamp(1 - (t - cur.a) / .12); g.save(); g.translate(540, 1640); g.scale(pop, pop); let x = -tw / 2; g.textAlign = 'left'; g.textBaseline = 'middle'; g.lineJoin = 'round';
   for (const w of words) { const ww = g.measureText(w).width; g.lineWidth = size * .24; g.strokeStyle = '#000'; g.strokeText(w, x, 0); g.fillStyle = isEn(w) ? '#ffd23f' : '#ffffff'; g.fillText(w, x, 0); x += ww + sp(); } g.restore(); }
-function chip(t) { let c = null; for (const q of chips) if (t >= q.a && t < q.a + 1.5) c = q; if (!c) return; const k = ease((t - c.a) / .15); const s = `${c.w} = ${c.tr}`;
-  g.font = `40px ${FONT}`; const w = Math.min(1000, g.measureText(s).width + 50); g.save(); g.globalAlpha = k; g.translate(540, 1545 + (1 - k) * 20); rr(-w / 2, -38, w, 76, 38, '#1f3a8a', 6, '#ffffff'); g.font = `40px ${FONT}`; g.textAlign = 'center'; g.textBaseline = 'middle';
-  let f = 40; while (g.measureText(s).width > w - 40) { f -= 2; g.font = `${f}px ${FONT}`; } g.fillStyle = '#ffffff'; g.fillText(s, 0, 2); g.restore(); }
+function chip(t) { const cur = curChunk(t); if (!cur) return; const low = cur.s.toLowerCase(); let c = null; for (const q of chips) if (t >= q.a - .1 && low.includes(q.w.toLowerCase())) c = q; if (!c) return;
+  const k = ease((t - Math.max(c.a - .1, cur.a)) / .15), w1 = c.w, w2 = ' — ' + c.tr; g.font = `42px ${FONT}`; const a1 = g.measureText(w1).width; let f = 42; const tot = () => g.measureText(w1).width + g.measureText(w2).width;
+  while (tot() > 900) { f -= 2; g.font = `${f}px ${FONT}`; } const tw = tot(), w = tw + 56;
+  g.save(); g.globalAlpha = k; g.translate(540, 1536 + (1 - k) * 16); g.rotate(-.015); rr(-w / 2 + 6, -34, w, 72, 20, 'rgba(42,34,48,0.35)', 0); rr(-w / 2, -40, w, 72, 20, '#fffaf0', 5);
+  g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillStyle = '#d63a8a'; g.fillText(w1, -tw / 2, -3); g.fillStyle = INK; g.fillText(w2, -tw / 2 + g.measureText(w1).width, -3); g.restore(); }
 function hook(t) { const T1 = BY.z1.at + 1.8; if (t > T1 + .3) return; const k = ease(t / .25) * (1 - ease((t - T1) / .3)); g.save(); g.globalAlpha = k; g.translate(540, 300); g.rotate(-.03); rr(-430, -110, 860, 220, 26, '#ffd23f', 8); txt('КАК НАЙТИ МУЖА', 0, -38, 72, INK); txt('В АМЕРИКЕ?', 0, 44, 72, '#c0283a'); g.restore();
   g.save(); g.globalAlpha = k; rr(70, 480, 230, 64, 12, '#e0283a', 6); txt('NEWS 24', 185, 513, 40, '#ffffff'); g.restore(); }
 function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30,20,30,${.55 * k})`; g.fillRect(0, 0, W, H); g.save(); g.globalAlpha = k; g.translate(0, (1 - k) * 80);
@@ -171,10 +180,12 @@ function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30
 
 function frame(t) {
   const c = camAt(t); g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
-  g.save(); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); street(t); reporter(t); zhanna(t); mic(t); g.restore();
+  g = GB; g.setTransform(1, 0, 0, 1, 0, 0); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); street(t); g = G0;
+  g.save(); g.filter = `blur(${(2.5 * c.z).toFixed(1)}px) saturate(0.72) brightness(1.03)`; g.drawImage(bgCv, 0, 0); g.filter = 'none'; g.restore();
+  g.save(); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); reporter(t); zhanna(t); mic(t); g.restore();
   const v = g.createRadialGradient(W / 2, H * .45, 650, W / 2, H * .45, 1250); v.addColorStop(0, 'rgba(30,15,30,0)'); v.addColorStop(1, 'rgba(30,15,30,0.2)'); g.fillStyle = v; g.fillRect(0, 0, W, H);
   if (c.k === 'Z_CLOUD' && c.sh.k !== 'END') { const l = lineAt(t) || L.find(q => q.at > t); const id = t >= TL.PHONE - .1 ? 'z11' : CLOUD_FOR[(L.filter(q => q.at <= t + .1).pop() || {}).id];
-    if (id) { const a = id === 'z11' ? TL.PHONE : BY[id].at, b = id === 'z11' ? BY.z11.end + .3 : BY[id].end + .25; if (t < b) cloud(id, (t - a) / (b - a), t); } }
+    if (id) { const a = id === 'z11' ? TL.PHONE : BY[id].at, b = id === 'z11' ? BY.z11.end + .3 : BY[id].end + .25; if (t < b) cloud(id, (t - a) / (b - a), t, a, b); } }
   if (process.env.NOCAP) return;
   hook(t); if (c.sh.k === 'END') endCard(t); else { chip(t); caption(t); }
 }
