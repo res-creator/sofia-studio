@@ -85,22 +85,22 @@ function hands(c, x, y, a, nail, skip) { for (const s of [-1, 1]) { if (skip && 
 
 function zhanna(t) { const l = spk(t, 'z'), a = blendArms(zAct, t), c = ZH, x = c.x + Math.sin(t * 1.4) * 3;
   const shock = t >= SHOCK0 && t < SHOCK1, tilt = shock ? 0 : l ? .05 * Math.sin(t * 2.6) : .025 * Math.sin(t * 1.1) + .015, br = 1 - .006 * (1 + Math.sin(t * 2.2));
-  T.draw(g, {...c, x, y: FEET, seated: true, sq: br, arms: wig(a.fn, t, shock ? 0 : l ? 8 : 2), front: a.front, mood: a.act.mood, mouth: l ? env(l, t) : 0, blink: !shock && blink(t, 2), tilt, look: shock ? 0 : lookAt(t, 'z', .2)});
+  T.draw(g, {...c, x, y: FEET, seated: true, sq: br, arms: (a.fn = wig(a.fn, t, shock ? 0 : l ? 8 : 2)), front: a.front, mood: a.act.mood, mouth: l ? env(l, t) : 0, blink: !shock && blink(t, 2), tilt, look: shock ? 0 : lookAt(t, 'z', .2)});
   const S = c.s, bx = x - 40 * S, by = FEET - 790 * S * br; star(bx, by, 41 * S, '#f2c820', 4, 8, t * .3); ell(bx, by, 11 * S, 11 * S, '#ff5a8a', 3);
   for (let i = 0; i < 6; i++) { const sx = x + (hash(i) - .5) * 150 * S, sy = FEET - (640 + hash(i + 9) * 190) * S; sparkle(sx, sy, (8 + 5 * hash(i + 3)) * S / .78, Math.max(0, Math.sin(t * 4 + i * 1.7))); }
   hands(c, x, FEET, a, '#d63a8a', s => a.act.g === 'phone' && s > 0 && a.e > .5);
   if (a.act.g === 'phone' && a.e > .5) { const Hh = a.fn(1)[2], px = x + Hh[0] * S, py = FEET + Hh[1] * S; g.save(); g.translate(px, py); g.rotate(-.12); rr(-22, -44, 44, 78, 9, '#e05a8a', 4); rr(-16, -38, 32, 58, 5, '#bfe3f5', 3); g.restore();
     hand(px - 4, py + 14, -1.2, S, c.pal.skin, '#d63a8a', false); } }
 function luda(t) { const l = spk(t, 'l'), a = blendArms(lAct, t), c = LU, x = c.x + Math.sin(t * 1.2 + 1) * 3, shocked = a.act.mood === 'surprised';
-  T.draw(g, {...c, x, y: FEET, seated: true, arms: wig(a.fn, t, l ? 9 : shocked ? 3 : 2), front: a.front, mood: a.act.mood, mouth: l ? env(l, t) : 0, blink: blink(t, 4), tilt: l ? .06 * Math.sin(t * 2.9) : .02 * Math.sin(t + 1), look: lookAt(t, 'l', .7)});
+  T.draw(g, {...c, x, y: FEET, seated: true, arms: (a.fn = wig(a.fn, t, l ? 9 : shocked ? 3 : 2)), front: a.front, mood: a.act.mood, mouth: l ? env(l, t) : 0, blink: blink(t, 4), tilt: l ? .06 * Math.sin(t * 2.9) : .02 * Math.sin(t + 1), look: lookAt(t, 'l', .7)});
   hands(c, x, FEET, a, '#c0203a'); }
 function toma(t) { const l = spk(t, 't'), a = blendArms(tAct, t), c = TO, x = c.x + Math.sin(t * .9 + 3) * 2;
   const lk = l && l.id === 't3' ? .3 : l ? -1 : lookAt(t, 't', -.3);
-  T.draw(g, {...c, x, y: FEET, seated: true, arms: wig(a.fn, t, l ? 4 : 1), front: a.front, mood: a.act.mood, mouth: l ? env(l, t) * .8 : 0, blink: blink(t, 7, 4.2), tilt: a.act.g === 'chin' ? -.08 : .03 * Math.sin(t * .8), look: lk});
+  T.draw(g, {...c, x, y: FEET, seated: true, arms: (a.fn = wig(a.fn, t, l ? 4 : 1)), front: a.front, mood: a.act.mood, mouth: l ? env(l, t) * .8 : 0, blink: blink(t, 7, 4.2), tilt: a.act.g === 'chin' ? -.08 : .03 * Math.sin(t * .8), look: lk});
   hands(c, x, FEET, a, '#b0506a'); }
 function waitress(t) { const x = wPos(t); if (x == null) return; const l = spk(t, 'w'), a = blendArms(wAct, t), c = WA, walking = a.act.g === 'walk', bob = walking ? Math.abs(Math.sin(t * 9)) * 9 : 0;
   g.save(); g.translate(x, 0); g.scale(-1, 1);   // mirrored: she faces the table on her left
-  T.draw(g, {...c, x: 0, y: WFLOOR - bob, arms: wig(a.fn, t, l ? 6 : 1), front: a.front, mood: a.act.mood, mouth: l ? env(l, t) : 0, blink: blink(t, 9), tilt: l ? .04 * Math.sin(t * 3) : 0, look: .5});
+  T.draw(g, {...c, x: 0, y: WFLOOR - bob, arms: (a.fn = wig(a.fn, t, l ? 6 : 1)), front: a.front, mood: a.act.mood, mouth: l ? env(l, t) : 0, blink: blink(t, 9), tilt: l ? .04 * Math.sin(t * 3) : 0, look: .5});
   hands(c, 0, WFLOOR - bob, a, '#ff9ac8');
   if (a.act.g === 'note' && a.e > .6) { const Hh = a.fn(-1)[2]; g.save(); g.translate(Hh[0] * c.s, WFLOOR + Hh[1] * c.s); rr(-30, -62, 60, 76, 6, '#ffffff', 4); for (let k = 0; k < 3; k++) ln([[-18, -44 + k * 16], [18, -44 + k * 16]], 3, '#9aa'); g.restore(); }
   if (a.act.g === 'check' && a.e > .6) { const Hh = a.fn(1)[2]; g.save(); g.translate(Hh[0] * c.s + 30, WFLOOR + Hh[1] * c.s - 10); rr(-40, -56, 80, 104, 8, '#3a2a2a', 4); rr(-30, -46, 60, 22, 4, '#f2c820', 0); g.restore(); }
