@@ -18,7 +18,7 @@ function sparkle(x, y, r, a = 1, col = '#fff6c0') { g.save(); g.globalAlpha *= a
 const at = (id, u) => BY[id].at + (BY[id].end - BY[id].at) * u;
 
 // ---------- characters ----------
-const ZH = {hair: 'bouffant', lashes: true, earrings: '#f2c820', skirt: true, pal: {skin: '#f4c8a8', skinS: '#e2aa88', hair: '#f3d27a', hairS: '#d9b257', brow: '#8a6030', lip: '#d02a5a', top: '#d63a8a', topS: '#b02a70', collar: '#d63a8a', bottom: '#2a2230', skirt: '#2a2230', legs: '#f4c8a8', shoe: '#e0b040', sole: '#e0b040'}, x: 540, s: .86};
+const ZH = {outfit: 'leopard', hair: 'bouffant', lashes: true, earrings: '#f2c820', skirt: true, pal: {skin: '#f4c8a8', skinS: '#e2aa88', hair: '#f3d27a', hairS: '#d9b257', brow: '#8a6030', lip: '#d02a5a', top: '#d63a8a', topS: '#b02a70', collar: '#d63a8a', bottom: '#2a2230', skirt: '#2a2230', legs: '#f4c8a8', shoe: '#e0b040', sole: '#e0b040'}, x: 540, s: .86};
 const WET = {...ZH.pal, hair: '#ecc867', hairS: '#d2ad4f'};
 const KY = {hair: 'ponytail', lashes: true, earrings: '#f4f4ff', skirt: true, pal: {skin: '#f6d4bc', skinS: '#e6b89c', hair: '#6a3e2a', brow: '#4a2a1a', lip: '#e0607a', top: '#c9b6f2', topS: '#ad98dc', collar: '#c9b6f2', bottom: '#8a7ab8', skirt: '#8a7ab8', legs: '#f6d4bc', shoe: '#ffffff', sole: '#ffffff'}};
 const SEAT = 1900, TABLE = 1400;
@@ -111,20 +111,23 @@ const KG = {
   shock: s => [[s * 78, -860], [s * 200, -930], [s * 230, -1060]],
 };
 const lineAt = t => { for (const l of L) if (t >= l.at - .03 && t < l.end + .08) return l; return null; };
-const env = (l, t) => { const i = Math.floor((t - l.at) * 30); return clamp(((l.env[i] || 0) + (l.env[i + 1] || 0)) / 2); };
+const env = (l, t) => { const i = Math.floor((t - l.at) * 30); return clamp(l.env[i] || 0); };   // mouthEnv from prep.py: 0 = closed, no smoothing (keeps syllable closures)
+const talkSt = (l, t, seed) => { if (!l) return {mouth: 0, nod: 0, vis: .5}; const e = env(l, t), e0 = env(l, t - .1); return {mouth: e, vis: hash(Math.floor(t * 9) + seed), nod: 9 * clamp(e - e0)}; };
 const blink = (t, s) => ((t + s * 1.3) % (3.3 + s * .4)) < .12;
 function plan(P, who, t, idle) { const l = lineAt(t); if (l && l.who === who) { const u = (t - l.at) / (l.end - l.at); let gg = idle; for (const [k, v] of (P[l.id] || [])) if (u >= k) gg = v; return gg; } return idle; }
 const ZPLAN = {z1: [[0, 'present']], z2: [[0, 'wave'], [.62, 'point']], z3: [[0, 'shrug'], [.28, 'present'], [.52, 'cheek']], z5: [[0, 'fork'], [.58, 'forkup']], z6: [[0, 'bags'], [.55, 'eyes'], [.93, 'rest']],
   z7: [[0, 'pelmeni']], z8: [[0, 'hush'], [.5, 'pour']], z9: [[0, 'spoon'], [.44, 'brooch'], [.72, 'wave']], z10: [[0, 'explain'], [.5, 'brooch']], z11: [[0, 'wag']], z12: [[0, 'shrug']], z13: [[0, 'brooch']]};
 function zAct(t) { if (COVER) return {g: 'fork', mood: 'grin'}; if (t >= TL.END) return {g: 'rest', mood: 'grin'};
   let idle = 'rest'; if (t >= at('z8', .5) && t < TL.FRIDGE + .35) idle = 'pour'; if (t >= BY.z8.end && t < BY.p1.end + .3 && t >= TL.FRIDGE + .35) idle = 'shrug';
-  const l = lineAt(t); let mood = plan(MOODS, 'z', t, 'smug');
-  if (!(l && l.who === 'z')) mood = t >= TL.RING - .1 && t < BY.k6.at + .3 ? 'surprised' : t >= BY.k6.at && t < BY.k7.at ? 'happy' : l && l.id === 'p1' ? 'flat' : t >= TL.GRAB1 + .3 && t < BY.z13.at ? 'surprised' : t >= TL.GRAB2 + .3 ? 'surprised' : t >= BY.z8.end && t < BY.z9.at ? 'flat' : 'smug';
-  const wink = !!(l && l.id === 'z1' && (t - l.at) / (l.end - l.at) > .8);
-  return {g: plan(ZPLAN, 'z', t, idle), mood, wink}; }
-// emotions: smug when trolling, grin on punchlines, shock, shiver, dreamy, triumphant, one wink
-const MOODS = {z1: [[0, 'smug'], [.82, 'grin']], z2: [[0, 'grin']], z3: [[0, 'surprised'], [.3, 'smug'], [.78, 'grin']], z5: [[0, 'smug'], [.58, 'grin']], z6: [[0, 'kind'], [.75, 'grin']],
-  z7: [[0, 'grin']], z8: [[0, 'smug'], [.75, 'grin']], z9: [[0, 'happy'], [.4, 'grin']], z10: [[0, 'smug']], z11: [[0, 'smug'], [.55, 'angry']], z12: [[0, 'kind']], z13: [[0, 'flat'], [.55, 'grin']]};
+  return {g: plan(ZPLAN, 'z', t, idle), mood: zMood(t)}; }
+// emotions change on every beat (toon v2 moods): eye-roll / side-smirk when trolling, laugh and grin on punchlines, shock, shiver, dreamy, proud, flirty wink
+const MOODS = {z1: [[0, 'smug'], [.12, 'eyeroll'], [.45, 'smugside'], [.82, 'flirty']], z2: [[0, 'grin'], [.6, 'smugside']], z3: [[0, 'shocked'], [.28, 'smug'], [.76, 'laugh']],
+  z5: [[0, 'proud'], [.58, 'laugh']], z6: [[0, 'dreamy'], [.75, 'grin']], z7: [[0, 'worried'], [.5, 'proud']], z8: [[0, 'smugside'], [.72, 'proud']], z9: [[0, 'dreamy'], [.38, 'proud'], [.75, 'grin']],
+  z10: [[0, 'smug']], z11: [[0, 'smugside'], [.55, 'proud']], z12: [[0, 'flirty']], z13: [[0, 'flat'], [.6, 'laugh']]};
+function zMood(t) { if (COVER) return 'grin'; if (t >= TL.END) return 'laugh'; const l = lineAt(t); if (l && l.who === 'z') return plan(MOODS, 'z', t, 'smug');
+  return t >= TL.RING - .1 && t < BY.k6.at + .3 ? 'shocked' : t >= BY.k6.at && t < BY.k7.at ? 'proud' : l && l.id === 'p1' ? 'smugside' : t >= TL.GRAB1 + .3 && t < BY.z13.at ? 'shocked' : t >= TL.GRAB2 + .3 ? 'shocked' : t >= BY.z8.end && t < BY.z9.at ? 'smugside' : 'smug'; }
+const LAUGH0 = TL.END;   // silent laugh bursts after the last line
+const moodBlink = t => zMood(t) !== zMood(t - .1);   // blink on emotion changes
 function blendArms(fnAt, GT, t) { const a1 = fnAt(t); let prev = a1.g, k = 1; for (let d = .02; d <= .2; d += .02) { const a = fnAt(t - d); if (a.g !== a1.g) { prev = a.g; k = d / .2; break; } }
   const e = ease(k), f0 = GT[prev], f1 = GT[a1.g]; return {fn: s => f1(s).map((p, i) => [lerp(f0(s)[i][0], p[0], e), lerp(f0(s)[i][1], p[1], e)]), front: FRONT.has(a1.g) || (e < .5 && FRONT.has(prev)), act: a1, e}; }
 const wig = (fn, t, amp) => s => fn(s).map((p, i) => [p[0] + Math.sin(t * 4.3 + s + i) * amp * (i / 2), p[1] + Math.cos(t * 3.7 + i) * amp * (i / 2)]);
@@ -142,8 +145,7 @@ function gripObject(drawObj, h) { const sd = h.side || 1, W2 = (h.w || 0) / h.S;
   g.restore(); }
 function hands(x, y, S, a, c, nail, glossy, skip = new Set()) { for (const s of [-1, 1]) { if (skip.has(s)) continue; const P3 = a.fn(s), E = P3[1], Hh = P3[2]; hand(x + Hh[0] * S, y + Hh[1] * S, Math.atan2(Hh[1] - E[1], Hh[0] - E[0]), S, c.pal.skin, nail, glossy); } }
 function limbW(pts, w, col) { ln(pts, w + 14, INK); ln(pts, w, col); }
-function armOver(a, x, y, S, c, sq = 1) { for (const s of [-1, 1]) { const [Sh, E, Hh] = a.fn(s); if (Hh[1] > -900) continue; g.save(); g.translate(x, y); g.scale(S, S * sq);
-    const m = (k) => [Sh[0] + (E[0] - Sh[0]) * k, Sh[1] + (E[1] - Sh[1]) * k]; limbW([Sh, m(.45)], 46, c.pal.top); limbW([m(.4), E, Hh], 30, c.pal.arm || c.pal.skin); g.restore(); } }
+function armOver(a, x, y, S, c, sq = 1) { for (const s of [-1, 1]) { const P3 = a.fn(s); if (P3[2][1] > -900) continue; g.save(); g.translate(x, y); g.scale(S, S * sq); T.drawArm(g, c, s, P3); g.restore(); } }   // whole raised arm in front of hair + face
 const hpos = (a, s, x, y, S) => { const P3 = a.fn(s); return [x + P3[2][0] * S, y + P3[2][1] * S, Math.atan2(P3[2][1] - P3[1][1], P3[2][0] - P3[1][0])]; };
 
 // props in hands
@@ -157,13 +159,16 @@ function zState(t, x, y, S) { const l = lineAt(t), spk = l && l.who === 'z', a =
   const tilt = spk ? .035 * Math.sin(t * 2.6) : .02 * Math.sin(t * 1.1), br = 1 - .006 * (1 + Math.sin(t * 2.2));
   return {l, spk, a, fsx, x: x + shiver, y, S, look, tilt, br}; }
 function zhannaAt(t, x0, y0, S0, opt = {}) { const st = zState(t, x0, y0, S0), {a, fsx, x, y, S} = st;
-  T.draw(g, {...ZH, pal: fsx.wet > .5 ? WET : ZH.pal, x, y, s: S, sq: st.br, arms: (a.fn = wig(a.fn, t, st.spk ? 6 : 2)), front: a.front, mood: a.act.mood, wink: a.act.wink, mouth: st.spk ? env(st.l, t) : 0, blink: blink(t, 2), tilt: st.tilt, look: st.look,
+  const ts = st.spk ? talkSt(st.l, t, 3) : {mouth: a.act.mood === 'laugh' && t >= LAUGH0 ? T.laughEnv(t - LAUGH0) : 0, nod: 0, vis: .5}, breath = 2 + 2 * Math.sin(t * 2.2);
+  const pal = {...(fsx.wet > .5 ? WET : ZH.pal), ...(fsx.cream > .5 ? {lid: '#fbfaf2'} : {})};
+  T.draw(g, {...ZH, pal, x, y, s: S, sq: st.br, arms: (a.fn = T.ik(wig(a.fn, t, st.spk ? 6 : 2), breath)), ik: false, front: a.front, mood: a.act.mood, mouth: ts.mouth, talking: !!st.spk, vis: ts.vis, nod: ts.nod, t, lean: .012 * Math.sin(t * .6),
+    blink: blink(t, 2) || moodBlink(t), tilt: st.tilt, look: st.look,
     skinFx: skinFx(fsx), faceFx: faceFx(fsx, t), hairFx: hairFx(fsx, t)});
   if (opt.mini) return; const bx = x - 40 * S, by = y - 790 * S * st.br; star(bx, by, 30 * S / .76, '#f2c820', 5, 8, t * .3); ell(bx, by, 9, 9, '#ff5a8a', 4);
   for (let i = 0; i < 6; i++) { const sx = x + (hash(i) - .5) * 160 * S, sy = y - (600 + hash(i + 9) * 240) * S; sparkle(sx, sy, 7 + 5 * hash(i + 3), Math.max(0, Math.sin(t * 4 + i * 1.7))); }
   // props
   if (st.l && st.l.id === 'z7') for (const sd of [-1, 1]) for (let k = 0; k < 3; k++) { const cx = x + sd * (300 + k * 26) * S, cy = y - 1070 * S; g.beginPath(); g.arc(cx, cy, (40 + k * 20) * S, sd > 0 ? -.6 : Math.PI - .6, sd > 0 ? .6 : Math.PI + .6); g.strokeStyle = '#6ab8f0'; g.lineWidth = 6; g.lineCap = 'round'; g.stroke(); }   // shiver lines
-  HELD.clear(); const gR = a.act.g; armOver(a, x, y, S, ZH, st.br); const [rx, ry] = hpos(a, 1, x, y, S), [lx, ly] = hpos(a, -1, x, y, S);
+  HELD.clear(); const gR = a.act.g; armOver(a, x, y, S, {...ZH, pal}, st.br); const [rx, ry] = hpos(a, 1, x, y, S), [lx, ly] = hpos(a, -1, x, y, S);
   const onFace = (bx, by) => [x + bx * S, y + by * S], aim = (tx, ty) => [Math.atan2(ty - ry, tx - rx), Math.hypot(tx - rx, ty - ry)];
   const skin = ZH.pal.skin, nail = '#d63a8a', skip = new Set(), H = (hx, hy, rot, w, o = {}) => ({x: hx, y: hy, rot, S, skin, nail, w, ...o});
   const fist = (sd, hx, hy, tx, ty, len, gripAt, drawFn) => { const ang = Math.atan2(ty - hy, tx - hx), ox = hx - Math.cos(ang) * gripAt, oy = hy - Math.sin(ang) * gripAt, sc = Math.hypot(tx - ox, ty - oy) / len; skip.add(sd);
@@ -195,13 +200,14 @@ const PH = {x: 170, y: 220, w: 740, h: 1310};
 const KPLAN = {k1: [[0, 'present']], k3: [[0, 'cheek']], k4: [[0, 'eyes']], k5: [[0, 'hair']], k6: [[0, 'shock']], k7: [[0, 'cheek']]};
 function kAct(t) { const l = lineAt(t); const id = l && l.who === 'k' ? l.id : null; let gg = 'rest';
   if (id) gg = plan(KPLAN, 'k', t, 'rest'); else { const prev = [...L].reverse().find(q => q.who === 'k' && q.end <= t + .4); if (prev && t - prev.end < .4) gg = KPLAN[prev.id][0][1]; }
-  const mood = id === 'k6' ? 'surprised' : id === 'k7' || id === 'k1' ? 'grin' : id === 'k5' ? 'smug' : id === 'k4' ? 'kind' : null; return {g: gg, mood}; }
+  const u = l && id ? (t - l.at) / (l.end - l.at) : 0, mood = id === 'k6' ? (u < .5 ? 'shocked' : 'surprised') : id === 'k7' ? (u < .45 ? 'laugh' : 'flirty') : id === 'k1' ? 'grin' : id === 'k5' ? 'proud' : id === 'k4' ? 'dreamy' : id === 'k3' ? 'smugside' : t >= TL.RING - .2 && t < BY.k6.at ? 'surprised' : 'neutral'; return {g: gg, mood}; }
 function kayleeRoom() { const {x, y, w, h} = PH; const gr = g.createLinearGradient(0, y, 0, y + h); gr.addColorStop(0, '#ffe4ee'); gr.addColorStop(1, '#f6d6f0'); g.fillStyle = gr; g.fillRect(x, y, w, h);
   rr(x + 40, y + 330, 260, 18, 6, '#ffffff', 4); for (let i = 0; i < 4; i++) rr(x + 60 + i * 58, y + 250, 40, 80, 10, ['#ffc2d6', '#c9b6f2', '#b8e8d8', '#ffe6a8'][i], 4);
   g.save(); g.globalAlpha = .7; g.beginPath(); g.arc(x + w - 120, y + 240, 90, 0, 7); g.strokeStyle = '#ffffff'; g.lineWidth = 26; g.stroke(); g.restore(); }
 function kaylee(t, x, y, S) { const l = lineAt(t), spk = l && l.who === 'k', a = blendArms(kAct, KG, t), id = l && l.id;
   const patches = (t >= at('k4', .35) && t < BY.k4.end + .6);
-  T.draw(g, {...KY, x, y, s: S, arms: (a.fn = wig(a.fn, t, spk ? 5 : 1.5)), front: true, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: blink(t, 4), tilt: spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t), look: 0,
+  const ts = spk ? talkSt(l, t, 11) : {mouth: 0, nod: 0, vis: .5};
+  T.draw(g, {...KY, x, y, s: S, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 5 : 1.5), 2 + 2 * Math.sin(t * 2.4))), ik: false, front: true, mood: a.act.mood, mouth: ts.mouth, talking: !!spk, vis: ts.vis, nod: ts.nod, t, blink: blink(t, 4), tilt: spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t), look: 0,
     faceFx: patches ? (gg, HY) => { const pg = g; g = gg; for (const s of [-1, 1]) { g.save(); g.translate(s * 54, HY + 52); g.rotate(s * .2); g.beginPath(); g.ellipse(0, 0, 40, 18, 0, 0, Math.PI); g.closePath(); g.fillStyle = '#f2c84a'; g.fill(); g.strokeStyle = INK; g.lineWidth = 4; g.stroke(); g.restore(); } g = pg; } : null});
   armOver(a, x, y, S, KY); const [rx, ry, ra] = hpos(a, 1, x, y, S);
   const kskip = new Set(), KH = (hx, hy, rot, w, o = {}) => ({x: hx, y: hy, rot, S, skin: KY.pal.skin, nail: '#ff9ec0', w, ...o});
