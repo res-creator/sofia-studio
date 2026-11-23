@@ -46,6 +46,7 @@ function face(st, c) {
     if (st.lashes) for (let j = 0; j < 3; j++) line([[cx + s * (26 + j * 12), ey - 62 + j * 14], [cx + s * (44 + j * 18), ey - 84 + j * 12]], 6);
     const pr = st.mood === 'surprised' ? 8 : 11; ell(cx + look - s * 6, ey + 8, pr, pr * 1.4, OUT, 0); }
   if (st.glasses) { for (const s of [-1, 1]) { P(); g.ellipse(s * 56, ey + 4, 60, 56, 0, 0, 7); g.strokeStyle = OUT; g.lineWidth = 5; g.stroke(); } line([[-150, ey - 6], [-116, ey]], 5); line([[150, ey - 6], [116, ey]], 5); }
+  if (st.probe) { ell(-50, ey, 20, 20, '#ff00ff', 0); ell(50, ey, 20, 20, '#ff00ff', 0); ell(0, HY + 100, 20, 14, '#ff00ff', 0); }
   // brows: thick, separate from the eyes
   const by = ey - 100 - (st.mood === 'surprised' ? 16 : st.mood === 'kind' ? 14 : 0);
   for (const s of [-1, 1]) { const cx = s * 56, tilt = st.mood === 'angry' ? 18 : st.mood === 'sad' ? -16 : st.mood === 'kind' ? -9 : st.brows === 'up' ? -6 : 0;
@@ -98,7 +99,9 @@ function torso(st, c) {
 }
 
 function moustache(st, c) { const y = HY + 66; for (const s of [-1, 1]) { P(); g.moveTo(0, y - 8); g.bezierCurveTo(s * 30, y - 22, s * 70, y - 16, s * 84, y + 14); g.bezierCurveTo(s * 70, y + 10, s * 50, y + 18, s * 30, y + 14); g.quadraticCurveTo(s * 10, y + 10, 0, y + 4); g.closePath(); fs(c.stache || c.hair, 6); } }
-function cap(st, c) { g.save(); const lift = st.capLift || 0; g.translate(0, HY - 120 - lift * 40); g.rotate(-lift * .12); g.translate(0, -(HY - 120));
+function cap(st, c) { const lift = st.capLift || 0;
+  if (lift > 0 && st.bald) { ell(0, HY - 140, 140, 52, c.skin, 6); ell(-40, HY - 160, 34, 12, 'rgba(255,255,255,.85)', 0); }   // shiny bald top under the cap
+  g.save(); g.translate(0, HY - 120 - lift * 40); g.rotate(-Math.min(lift, 1) * .12); g.translate(0, -(HY - 120));
   P(); g.moveTo(-170, HY - 64); g.bezierCurveTo(-182, HY - 215, 182, HY - 232, 172, HY - 70); g.quadraticCurveTo(0, HY - 108, -170, HY - 64); g.closePath(); fs(c.cap);
   g.save(); g.clip(); g.fillStyle = c.capS || c.cap; g.fillRect(70, HY - 260, 140, 220); g.restore(); P(); g.moveTo(-170, HY - 64); g.bezierCurveTo(-182, HY - 215, 182, HY - 232, 172, HY - 70); g.quadraticCurveTo(0, HY - 108, -170, HY - 64); g.closePath(); fs(null);
   q([-120, HY - 150], [0, HY - 190], [120, HY - 160], 5); ell(0, HY - 196, 14, 9, c.capS || c.cap, 5);

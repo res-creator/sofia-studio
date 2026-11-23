@@ -1,4 +1,4 @@
-// «Тётя Жанна с Брайтона», ep7 «Петрович наконец появляется» — flat 2D. node render.js still 1,10 | clip 0:20 out/p0.mp4 | srt | cover | info   (NOCAP=1 hides captions)
+// «Тётя Жанна с Брайтона», ep7 v2 «Петрович заговорил» (his face is never shown) — flat 2D. node render.js still 1,10 | clip 0:20 out/p0.mp4 | srt | cover | info   (NOCAP=1 hides captions)
 const fs = require('fs'), {spawn} = require('child_process'), {createCanvas, GlobalFonts} = require('@napi-rs/canvas'), T = require('./toon');
 for (const [f, n] of [['nunito-cyrillic-900-normal', 'NBC'], ['nunito-latin-900-normal', 'NBL'], ['neucha-cyrillic-400-normal', 'HWC'], ['neucha-latin-400-normal', 'HWL']]) GlobalFonts.registerFromPath(`fonts/${f}.woff2`, n);
 const W = 1080, H = 1920, FPS = 30, INK = '#2a2230', FONT = 'NBL, NBC', HW = 'HWL, HWC';
@@ -16,11 +16,11 @@ function star(x, y, r, fill, lw = 5, n = 8, rot = 0) { const p = []; for (let i 
 function sparkle(x, y, r, a = 1) { g.save(); g.globalAlpha *= a; poly([[x, y - r], [x + r * .22, y - r * .22], [x + r, y], [x + r * .22, y + r * .22], [x, y + r], [x - r * .22, y + r * .22], [x - r, y], [x - r * .22, y - r * .22]], '#fff6c0', 3); g.restore(); }
 
 // Zhanna: exactly as in ep2 (palette, hair, brooch, sparkles, pink nails)
-const ZH = {hair: 'bouffant', lashes: true, earrings: '#f2c820', skirt: true, pal: {skin: '#f4c8a8', skinS: '#e2aa88', hair: '#f3d27a', hairS: '#d9b257', brow: '#8a6030', lip: '#d02a5a', top: '#d63a8a', topS: '#b02a70', collar: '#d63a8a', bottom: '#2a2230', skirt: '#2a2230', legs: '#f4c8a8', shoe: '#e0b040', sole: '#e0b040'}, x: 255, s: .76};
+const ZH = {hair: 'bouffant', lashes: true, earrings: '#f2c820', skirt: true, pal: {skin: '#f4c8a8', skinS: '#e2aa88', hair: '#f3d27a', hairS: '#d9b257', brow: '#8a6030', lip: '#d02a5a', top: '#d63a8a', topS: '#b02a70', collar: '#d63a8a', bottom: '#2a2230', skirt: '#2a2230', legs: '#f4c8a8', shoe: '#e0b040', sole: '#e0b040'}, x: 215, s: .76};
 // Petrovich: ~60, grey flat cap, simple brown jacket, grey moustache, kind eyes
-const PE = {hair: 'short', cap: true, moustache: true, pal: {skin: '#eec3a2', skinS: '#d9a583', hair: '#cfcfcf', brow: '#9a9a9a', stache: '#dcdcdc', cap: '#7a808c', capS: '#5e6470', top: '#8a6d52', topS: '#6e553f', collar: '#eef3f8', bottom: '#4a4a52', legs: '#4a4a52', shoe: '#2a2230', sole: '#2a2230'}, x: 730, s: .76};
+const PE = {hair: 'short', cap: true, moustache: true, pal: {skin: '#eec3a2', skinS: '#d9a583', hair: '#cfcfcf', brow: '#9a9a9a', stache: '#dcdcdc', cap: '#7a808c', capS: '#5e6470', top: '#8a6d52', topS: '#6e553f', collar: '#eef3f8', bottom: '#4a4a52', legs: '#4a4a52', shoe: '#2a2230', sole: '#2a2230'}, x: 760, s: .76};
 // Waiter Tyler: young American, black shirt, red tie
-const WA = {hair: 'spiky', pal: {skin: '#f0c9a8', skinS: '#ddae8c', hair: '#6b4a2e', brow: '#4a3220', top: '#2f2f3a', topS: '#23232c', collar: '#ffffff', tie: '#c8323c', bottom: '#2a2a33', legs: '#2a2a33', shoe: '#1e1e24', sole: '#1e1e24'}, x: 1360, s: .72};
+const WA = {hair: 'spiky', pal: {skin: '#f0c9a8', skinS: '#ddae8c', hair: '#6b4a2e', brow: '#4a3220', top: '#2f2f3a', topS: '#23232c', collar: '#ffffff', tie: '#c8323c', bottom: '#2a2a33', legs: '#2a2a33', shoe: '#1e1e24', sole: '#1e1e24'}, x: 1300, s: .72};
 
 // ---------- restaurant (flat) ----------
 const SEAT = 1850, TABLE = 1352;
@@ -50,16 +50,17 @@ function glass(x, y, kind, fill) { // y = table top
   rr(x - 26, y - 90, 52, 90, 8, 'rgba(225,242,255,.9)', 5); rr(x - 22, y - 60, 44, 56, 6, 'rgba(160,210,240,.7)', 0); }
 function plate(x, y, food) { ell(x, y - 6, 92, 22, '#ffffff', 6); ell(x, y - 8, 62, 13, '#f4f0ea', 3);
   if (food === 'steak') { ell(x - 10, y - 18, 40, 14, '#8a4a2a', 5); ln([[x - 30, y - 22], [x - 4, y - 14]], 3, '#5a2a14'); ln([[x - 14, y - 24], [x + 12, y - 16]], 3, '#5a2a14'); }
+  if (food === 'fish') { g.beginPath(); g.moveTo(x - 50, y - 14); g.quadraticCurveTo(x, y - 40, x + 40, y - 14); g.quadraticCurveTo(x, y + 10, x - 50, y - 14); g.closePath(); g.fillStyle = '#b8c8d0'; g.fill(); g.strokeStyle = INK; g.lineWidth = 4; g.stroke(); }
   if (food === 'bones') { ln([[x - 40, y - 14], [x + 34, y - 14]], 4); for (let k = 0; k < 4; k++) ln([[x - 26 + k * 16, y - 24], [x - 26 + k * 16, y - 4]], 3); poly([[x + 34, y - 14], [x + 52, y - 26], [x + 52, y - 2]], '#ffffff', 4); } }
 function table(t) { // in front of the seated pair: hides their lower bodies
-  rr(-40, TABLE, 1040, 34, 12, '#fffaf2', 7); rr(-24, TABLE + 30, 1008, 700, 6, '#fffaf2', 7); for (let x = 0; x < 980; x += 70) ln([[x, TABLE + 60], [x, TABLE + 640]], 3, '#efe4d4'); rr(-24, TABLE + 30, 1008, 36, 0, '#c8323c', 5);
+  rr(-140, TABLE, 1140, 34, 12, '#fffaf2', 7); rr(-124, TABLE + 30, 1108, 700, 6, '#fffaf2', 7); for (let x = -100; x < 980; x += 70) ln([[x, TABLE + 60], [x, TABLE + 640]], 3, '#efe4d4'); rr(-124, TABLE + 30, 1108, 36, 0, '#c8323c', 5);
   const later = t >= TL.LATER + .2;
   // candle in the middle (between the faces, below the chins)
   rr(475, TABLE - 70, 34, 70, 8, '#fff4dc', 5); const fl = 1 + .08 * Math.sin(t * 13); ell(492, TABLE - 92, 11 * fl, 20 * fl, '#ffc94a', 4); ell(492, TABLE - 88, 5, 9, '#fff2b0', 0);
-  if (!later) { rr(190, TABLE - 16, 150, 18, 4, '#7a2a30', 4); rr(622, TABLE - 16, 150, 18, 4, '#7a2a30', 4); }   // closed menus
-  else { plate(262, TABLE, t < BY.p7.end + .4 ? 'steak' : null); plate(720, TABLE, 'bones'); }
-  glass(108, TABLE, 'flute'); glass(870, TABLE, t >= BY.w4.at ? 'wine' : 'water');
-  if (t >= BY.p7.end + .4) { const k = ease((t - BY.p7.end - .4) / .4); g.save(); g.globalAlpha = k; rr(212, TABLE - 66, 100, 64, 8, '#f2ecdc', 6); ln([[212, TABLE - 50], [312, TABLE - 50]], 4); g.restore(); } // to-go box
+  if (!later) { rr(150, TABLE - 16, 150, 18, 4, '#7a2a30', 4);  }   // closed menus
+  else { plate(222, TABLE, t < BOX0 ? 'steak' : null); plate(760, TABLE, t < TL.FORK + 1.2 ? 'fish' : 'bones'); }
+  glass(70, TABLE, 'flute'); glass(905, TABLE, t >= BY.w4.at ? 'wine' : 'water');
+  if (t >= BOX0) { const k = ease((t - BOX0) / .4); g.save(); g.globalAlpha = k; rr(590, TABLE - 66, 100, 64, 8, '#f2ecdc', 6); ln([[590, TABLE - 50], [690, TABLE - 50]], 4); g.restore(); } // to-go box (steams at p7)
 }
 
 // ---------- gestures ----------
@@ -70,15 +71,16 @@ const ZG = {
   shrug: s => [[s * 78, -860], [s * 160, -770], [s * 210, -850]],
   wag: s => s > 0 ? [[78, -860], [180, -900], [170, -1040]] : [[-78, -860], [-150, -740], [-90, -680]],
   brooch: s => s > 0 ? [[78, -860], [150, -740], [20, -790]] : [[-78, -860], [-150, -740], [-90, -680]],
-  point: s => s > 0 ? [[78, -860], [190, -820], [300, -860]] : [[-78, -860], [-150, -740], [-90, -680]],
+  point: s => s > 0 ? [[78, -860], [180, -820], [255, -860]] : [[-78, -860], [-150, -740], [-90, -680]],
   shock: s => [[s * 78, -860], [s * 200, -930], [s * 250, -1060]],
 };
 const PG = {
   rest: s => [[s * 78, -860], [s * 140, -740], [s * 80, -690]],
   present: s => s > 0 ? [[78, -860], [160, -760], [240, -800]] : [[-78, -860], [-140, -740], [-80, -690]],
   cap: s => s > 0 ? [[78, -860], [290, -1020], [222, -1212]] : [[-78, -860], [-140, -740], [-80, -690]],
-  raise: s => s > 0 ? [[78, -860], [200, -950], [215, -1110]] : [[-78, -860], [-140, -740], [-80, -690]],
   pay: s => s > 0 ? [[78, -860], [175, -760], [235, -700]] : [[-78, -860], [-140, -740], [-80, -690]],
+  hold: s => [[s * 78, -860], [s * 160, -800], [s * 235, -930]],
+  raise: s => s > 0 ? [[78, -860], [200, -1000], [190, -1300]] : [[-78, -860], [-160, -800], [-235, -930]],
 };
 const WG = {
   down: s => [[s * 78, -860], [s * 102, -720], [s * 110, -580]],
@@ -86,24 +88,36 @@ const WG = {
   present: s => s < 0 ? [[-78, -860], [-160, -760], [-240, -800]] : [[78, -860], [102, -720], [110, -580]],
   point: s => s < 0 ? [[-78, -860], [-180, -770], [-290, -720]] : [[78, -860], [102, -720], [110, -580]],
   check: s => s < 0 ? [[-78, -860], [-170, -770], [-270, -760]] : [[78, -860], [102, -720], [110, -580]],
+  take: s => s < 0 ? [[-78, -860], [-175, -800], [-285, -850]] : [[78, -860], [102, -720], [110, -580]],
+  pour: s => s > 0 ? [[78, -860], [150, -760], [150, -680]] : [[-78, -860], [-102, -720], [-110, -580]],
 };
-const FRONT = new Set(['table', 'explain', 'brooch', 'rest', 'pad']);
+const FRONT = new Set(['table', 'explain', 'brooch', 'rest', 'pad', 'pour']);
 const lineAt = t => { for (const l of L) if (t >= l.at - .03 && t < l.end + .08) return l; return null; };
 const env = (l, t) => { const i = Math.floor((t - l.at) * 30); return clamp(((l.env[i] || 0) + (l.env[i + 1] || 0)) / 2); };
 const blink = (t, s) => ((t + s * 1.3) % (3.3 + s * .4)) < .12;
 const ZPLAN = {z1: [[0, 'explain'], [.4, 'brooch'], [.72, 'wag']], z2: [[0, 'palm'], [.35, 'explain'], [.72, 'shrug']], z3: [[0, 'point'], [.55, 'wag']], z4: [[0, 'shock']], z5: [[0, 'shrug'], [.5, 'palm']], z6: [[0, 'point'], [.6, 'brooch']]};
-const PPLAN = {p1: [[0, 'rest']], p2: [[0, 'rest']], p3: [[0, 'present'], [.6, 'rest']], p4: [[0, 'cap']], p5: [[0, 'raise']], p6: [[0, 'pay']], p7: [[0, 'present']], p8: [[0, 'rest']]};
-const WPLAN = {w1: [[0, 'present'], [.55, 'pad']], w2: [[0, 'pad']], w3: [[0, 'present']], w4: [[0, 'present']], w5: [[0, 'present'], [.5, 'point']]};
-function plan(P, who, t, idle) { const l = lineAt(t); if (l && l.who === who) { const u = (t - l.at) / (l.end - l.at); let gg = idle; for (const [k, v] of P[l.id]) if (u >= k) gg = v; return gg; } return idle; }
+const PPLAN = {p5: [[0, 'raise']]};
+const WPLAN = {w1: [[0, 'present'], [.55, 'pad']], w2: [[0, 'pad']], w3: [[0, 'present']], w4: [[0, 'take']], w6: [[0, 'check']], w5: [[0, 'present'], [.5, 'point']]};
+// ---- Petrovich stays hidden: menu -> newspaper, hands, back view, steam. Paper top never goes below PMIN (cap brim level), except under full steam.
+const RAISED = 930, PMIN = 994, GA0 = BY.z3.at + 1.6, GA1 = GA0 + 1.0, MT = BY.w4.at + .35, BOX0 = BY.z5.end - .3, CAPT = BY.p4.at + .3;
+const STEAM = [BY.p7.at - .75, BY.p7.at - .25, BY.p7.end + .45, BY.p7.end + 1.0];   // rise start, full cover, fade start, gone
+function steamK(t) { return t < STEAM[0] || t > STEAM[3] ? 0 : t < STEAM[1] ? ease((t - STEAM[0]) / (STEAM[1] - STEAM[0])) : t < STEAM[2] ? 1 : 1 - ease((t - STEAM[2]) / (STEAM[3] - STEAM[2])); }
+function paperTop(t) { let y = RAISED;
+  if (t >= GA0 && t < GA1 + .9) y = t < GA0 + 1.2 ? lerp(RAISED, PMIN, ease((t - GA0) / 1.2)) : lerp(PMIN, RAISED, ease((t - GA1 - .6) / .3));   // gag 1: lowers… waiter steps in front
+  if (t >= BY.p7.at - .15 && t < BY.p7.end + .4) y = t < BY.p7.end ? lerp(RAISED, 1250, ease((t - BY.p7.at + .15) / .3)) : lerp(1250, RAISED, ease((t - BY.p7.end) / .3));   // steam gag
+  if (t >= BY.p8.at + .2 && t < TL.CUT) y = lerp(RAISED, PMIN, ease((t - BY.p8.at - .2) / (TL.CUT - BY.p8.at - .35)));   // cliffhanger
+  return y; }
+const FORKK = [[0, [235, -930]], [.45, [40, -690]], [.7, [40, -700]], [1.05, [175, -1250]], [1.25, [70, -1180]], [1.75, [70, -1180]], [1.95, [175, -1250]], [2.3, [235, -930]]];
+function forkHand(t) { const u = t - TL.FORK; if (u < 0 || u > 2.3) return null; let i = 0; while (i < FORKK.length - 2 && u > FORKK[i + 1][0]) i++; const [a, p] = FORKK[i], [b, q] = FORKK[i + 1], k = ease((u - a) / (b - a)); return {p: [lerp(p[0], q[0], k), lerp(p[1], q[1], k)], full: u > .55 && u < 1.3, chew: u > 1.25 && u < 1.75}; }
+function plan(P, who, t, idle) { const l = lineAt(t); if (l && l.who === who) { const u = (t - l.at) / (l.end - l.at); let gg = idle; for (const [k, v] of (P[l.id] || [])) if (u >= k) gg = v; return gg; } return idle; }
 const REVEAL = BY.p3.at + 1.0;
 function zAct(t) { if (t >= TL.END) return {g: 'table', mood: 'grin'}; const l = lineAt(t);
   const shocked = t >= REVEAL && t < TL.LATER, idle = t >= BY.z4.at && t < TL.LATER ? 'shock' : 'table';
   return {g: plan(ZPLAN, 'z', t, idle), mood: shocked && !(l && l.who === 'z') ? 'surprised' : l && l.id === 'p7' ? 'flat' : 'smug'}; }
-function pAct(t) { if (t >= TL.END) return {g: 'rest', mood: 'kind'}; const l = lineAt(t); let gg = plan(PPLAN, 'p', t, 'rest');
-  if (t >= TL.CHECK && t < BY.p6.end + .2 && !(l && l.who === 'p')) gg = 'pay'; return {g: gg, mood: 'kind'}; }
+function pAct(t) { return {g: plan(PPLAN, 'p', t, 'hold'), mood: 'kind'}; }
 function wAct(t) { if (t >= TL.END) return {g: 'down', mood: 'grin'}; const l = lineAt(t);
-  let idle = t > BY.w1.end && t < BY.w4.end + .3 ? 'pad' : 'down'; if (t >= TL.CHECK - .6 && t < BY.p6.end + .1) idle = 'check';
-  const mood = l && l.id === 'w2' ? 'smug' : l && l.id === 'w4' ? 'surprised' : t >= REVEAL - .4 && t < BY.w4.at ? 'surprised' : l && l.who === 'w' ? null : t >= BY.p6.at + 1 && t < BY.w5.end ? 'grin' : null;
+  let idle = t > BY.w1.end && t < BY.w4.at ? 'pad' : 'down'; if (t >= GA1 + .5 && t < BY.z3.end + .4) idle = 'pour'; if (t >= MT - .3 && t < BY.w4.end + 1.4) idle = 'take'; if (t >= TL.CHECK - .6 && t < BY.p6.end + .1) idle = 'check';
+  const mood = l && l.id === 'w2' ? 'smug' : l && (l.id === 'w4' || l.id === 'w6') && (t - l.at) < 1.0 ? 'surprised' : t >= REVEAL - .4 && t < BY.w4.at ? 'surprised' : l && l.who === 'w' ? null : t >= BY.p6.at + 1 && t < BY.w5.end ? 'grin' : null;
   return {g: plan(WPLAN, 'w', t, idle), mood}; }
 function blendArms(fnAt, GT, t) { const a1 = fnAt(t); let prev = a1.g, k = 1; for (let d = .02; d <= .2; d += .02) { const a = fnAt(t - d); if (a.g !== a1.g) { prev = a.g; k = d / .2; break; } }
   const e = ease(k), f0 = GT[prev], f1 = GT[a1.g]; return {fn: s => f1(s).map((p, i) => [lerp(f0(s)[i][0], p[0], e), lerp(f0(s)[i][1], p[1], e)]), front: FRONT.has(a1.g) || (e < .5 && FRONT.has(prev)), act: a1, e}; }
@@ -120,17 +134,37 @@ function zhanna(t) { const l = lineAt(t), spk = l && l.who === 'z', a = blendArm
   const S = c.s, bx = x - 40 * S, by = y - 790 * S * br; star(bx, by, 30, '#f2c820', 5, 8, t * .3); ell(bx, by, 9, 9, '#ff5a8a', 4);
   for (let i = 0; i < 7; i++) { const sx = x + (hash(i) - .5) * 140 * S, sy = y - (600 + hash(i + 9) * 240) * S; sparkle(sx, sy, 7 + 5 * hash(i + 3), Math.max(0, Math.sin(t * 4 + i * 1.7))); }
   hands(x, y, S, a, c, '#d63a8a', true); }
-function petrovich(t) { const l = lineAt(t), spk = l && l.who === 'p', a = blendArms(pAct, PG, t), c = PE, x = c.x + Math.sin(t * 1.1 + 1) * 2, y = SEAT;
-  const capLift = a.act.g === 'cap' ? a.e * clamp((BY.p4.end + .3 - t) / .3) : 0, wink = t >= BY.p8.at && t < BY.p8.end + 1.2;
-  const tilt = spk ? .03 * Math.sin(t * 2.2) : .02 * Math.sin(t * .9) - .02;
-  T.draw(g, {...c, x, y, arms: wig(a.fn, t, spk ? 4 : 1.5), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: !wink && blink(t, 7), wink, tilt, look: t >= TL.END ? 0 : (l && l.who === 'w') || t >= TL.CHECK && t < BY.p7.end ? .7 : -.6, capLift});
-  if (a.act.g === 'pay' && a.e > .6 && t < BY.p6.end + .2) { const Hh = a.fn(1)[2]; g.save(); g.translate(x + Hh[0] * c.s + 6, y + Hh[1] * c.s - 4); g.rotate(-.15); rr(-46, -22, 92, 44, 6, '#9ccf8a', 5); ell(0, 0, 12, 12, '#7ab868', 3); g.restore(); }
-  hands(x, y, c.s, a, c, null, false); }
-const WIN = [[BY.w1.at - 1.1, BY.w4.end + .4], [BY.p5.at - .4, BY.p7.end + .3]];
+function paper(x, top, kind, alpha = 1) { const w = 170, h = 360; g.save(); g.globalAlpha *= alpha;
+  if (kind === 'menu') { rr(x - w, top, w * 2, h, 14, '#7a2a30', 7); rr(x - w + 18, top + 18, w * 2 - 36, h - 36, 8, null, 4, '#e8c27a'); txt('MENU', x, top + 120, 64, '#e8c27a', HW); star(x, top + 210, 22, '#e8c27a', 4); }
+  else { rr(x - w, top, w * 2, h, 6, '#f4f1e8', 7); txt('BRIGHTON TIMES', x, top + 42, 40, INK, HW); ln([[x - w + 16, top + 70], [x + w - 16, top + 70]], 4);
+    rr(x - w + 20, top + 90, 150, 110, 4, '#c8cfd6', 4); for (let k = 0; k < 9; k++) ln([[x - w + (k < 4 ? 186 : 20), top + 98 + k * 26], [x + w - 20, top + 98 + k * 26]], 4, '#b8b2a4'); ln([[x, top + 214], [x, top + h - 14]], 3, '#d8d2c4'); }
+  g.restore(); }
+function steam(x, y, k) { if (k <= 0) return; const P = [[-120, 40, 80], [-40, -20, 95], [60, 10, 90], [140, 60, 70], [-150, 130, 70], [-60, 120, 100], [60, 130, 100], [150, 150, 70], [0, 200, 80], [-100, 210, 60], [100, 215, 60]];
+  g.save(); g.globalAlpha *= clamp(k * 1.5); const s = .6 + .4 * k, dy = (1 - k) * 160; for (const pass of [1, 0]) for (const [px, py, pr] of P) { g.beginPath(); g.arc(x + px * s, y + py * s + dy, pr * s, 0, 7); if (pass) { g.strokeStyle = '#9aa4ac'; g.lineWidth = 12; g.stroke(); } else { g.fillStyle = '#ffffff'; g.fill(); } }
+  for (let i = 0; i < 3; i++) ln([[x - 60 + i * 60, y + 260 * s + dy], [x - 50 + i * 60 + 10 * Math.sin(i), y + 320 * s + dy]], 6, '#c8d0d6'); g.restore(); }
+function petrovich(t) { const l = lineAt(t), spk = l && l.who === 'p', a = blendArms(pAct, PG, t), c = PE, x = c.x + Math.sin(t * 1.1 + 1) * 2, y = SEAT, S = c.s, top = paperTop(t);
+  const capLift = t >= CAPT && t < CAPT + 1.0 ? 4 * Math.sin(Math.PI * clamp((t - CAPT) / 1.0)) : 0, fk = forkHand(t);
+  const fn = fk ? (s => s > 0 ? [[78, -860], [lerp(78, fk.p[0], .5) + 60, lerp(-860, fk.p[1], .5) + 40], fk.p] : a.fn(s)) : a.fn;
+  T.draw(g, {...c, x, y, arms: wig(fn, t, 1.2), front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: spk ? env(l, t) : 0, blink: blink(t, 7), tilt: 0, look: -.3, capLift, bald: true});
+  const kind = t < MT ? 'menu' : 'paper', mk = t < MT ? 0 : ease((t - MT) / .45), chew = fk && fk.chew ? 4 * Math.sin(t * 30) : 0;
+  if (process.env.NOPAPER) {} else if (t >= MT - .05) paper(x, top + chew, 'paper'); if (t < MT + .45) paper(x + 230 * mk, top + 10 * mk, 'menu', 1 - mk);
+  if (capLift > 2.5) { const by = Math.min(top, 905) - 8; sparkle(x + 40, by - 10, 26, 1); sparkle(x - 30, by + 2, 14, .8); }   // bald glint above the paper
+  const inPaper = (hx, hy) => Math.abs(hx - x) < 166 && hy > top + 6 && hy < top + 360;
+  for (const s of [-1, 1]) { const P3 = fn(s), E = P3[1], Hh = P3[2], hx = x + Hh[0] * S, hy = y + Hh[1] * S; if (inPaper(hx, hy) && !(a.act.g === 'hold' && !fk)) continue;
+    const ang = Math.atan2(Hh[1] - E[1], Hh[0] - E[0]); if (fk && s > 0) { g.save(); g.translate(hx, hy); g.rotate(ang - .5); ln([[10, 0], [70, 0]], 7, '#c8ccd2'); for (const o of [-6, 0, 6]) ln([[70, o], [92, o]], 4, '#c8ccd2'); if (fk.full) ell(92, 0, 16, 9, '#b8c8d0', 4); g.restore(); }
+    hand(hx, hy, ang, S, c.pal.skin, null, false); if (s < 0 || (fk && s > 0)) { const wx = hx - Math.cos(ang) * 22 * S, wy = hy - Math.sin(ang) * 22 * S; ell(wx, wy, 13, 13, '#e8c27a', 4); } }   // wrist watch
+  steam(x - 10, 1012, steamK(t)); }
+const WIN = [[BY.w1.at - 1.1, BY.w4.end + .8], [BY.p5.at - .3, BY.p7.end + .5]];
 function waiterOff(t) { let off = 1; for (const [a, b] of WIN) { const k = Math.min(ease((t - a) / .8), 1 - ease((t - b) / .9)); off = Math.min(off, 1 - clamp(k)); } return off; }
-function waiter(t) { const off = waiterOff(t); if (off >= .999) return; const l = lineAt(t), spk = l && l.who === 'w', a = blendArms(wAct, WG, t), c = WA, walking = off > .001, x = c.x + off * 520 + Math.sin(t * 1.2 + 2) * 3, FEET = 1720 - (walking ? Math.abs(Math.sin(t * 8)) * 6 : 0);
+function waiterX(t) { let x = WA.x, walk = false; if (t >= GA1 && t < BY.z3.end + .4) { x = lerp(WA.x, 800, ease((t - GA1) / .6)); walk = t < GA1 + .6; }
+  if (t >= BY.w4.at - .6 && t < BY.w4.end + .4) { x = lerp(WA.x, 1180, ease((t - BY.w4.at + .6) / .5)); walk = walk || t < BY.w4.at - .1; } if (t >= BY.w4.end + .4) x = t < BY.w4.end + 2 ? 1180 : x;
+  return {x, walk}; }
+const waiterFront = t => t >= GA1 && t < BY.z3.end + .4;
+function waiter(t) { const off = waiterOff(t); if (off >= .999) return; const l = lineAt(t), spk = l && l.who === 'w', a = blendArms(wAct, WG, t), c = WA, wp = waiterX(t), walking = off > .001 || wp.walk, x = wp.x + off * 520 + Math.sin(t * 1.2 + 2) * 3, FEET = 1720 - (walking ? Math.abs(Math.sin(t * 8)) * 6 : 0);
   T.draw(g, {...c, x, y: FEET, arms: wig(a.fn, t, spk ? 6 : 1.5), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: blink(t, 5), tilt: spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t), look: -.7});
   if (a.act.g === 'pad' && a.e > .5) { const Hh = a.fn(-1)[2]; g.save(); g.translate(x + Hh[0] * c.s + 18, FEET + Hh[1] * c.s - 30); g.rotate(-.1); rr(-36, -46, 72, 92, 6, '#fffdf4', 5); for (let k = 0; k < 4; k++) ln([[-22, -24 + k * 18], [22, -24 + k * 18]], 3, '#9ab0d0'); g.restore(); }
+  if (a.act.g === 'pour' && a.e > .5) { const Hh = a.fn(1)[2]; g.save(); g.translate(x + Hh[0] * c.s + 8, FEET + Hh[1] * c.s - 40); g.rotate(.5); rr(-26, -40, 52, 80, 10, '#dff2fb', 5); ln([[26, -30], [44, -44]], 6); g.restore(); ln([[x + Hh[0] * c.s + 46, FEET + Hh[1] * c.s - 50], [905, TABLE - 60]], 5, '#8fd2ff'); }
+  if (a.act.g === 'take' && t >= MT + .45) { const Hh = a.fn(-1)[2]; g.save(); g.translate(x + Hh[0] * c.s - 14, FEET + Hh[1] * c.s + 10); g.rotate(-.12); rr(-30, -70, 60, 140, 8, '#7a2a30', 5); g.restore(); }
   if (a.act.g === 'check' && a.e > .5) { const Hh = a.fn(-1)[2]; g.save(); g.translate(x + Hh[0] * c.s - 20, FEET + Hh[1] * c.s - 6); g.rotate(-.08); rr(-48, -30, 96, 60, 6, '#2a2a33', 5); txt('CHECK', 0, 0, 20, '#e8c27a'); g.restore(); }
   hands(x, FEET, c.s, a, c, null, false); }
 
@@ -154,11 +188,13 @@ const CARD = {
   steak: u => { steakPic(250, 250, 1.1); txt('WELL-DONE', 600, 150, 58, '#7a3e22'); txt('+', 600, 225, 54, INK); txt('JUICY', 600, 300, 58, '#d8323c'); if (u > .25) txt('?!', 600, 395, 90, INK, HW); for (let i = 0; i < 3; i++) ell(130 + i * 40, 150 - (i % 2) * 30, 10, 14, '#8fd2ff', 3); },
   fish: u => { fishPic(240, 230, 1.0); txt('SEA BASS', 240, 380, 46, INK); if (u > .35) { g.save(); g.translate(600, 290); g.scale(1.5, 1.5); glass(0, 60, 'wine'); g.restore(); txt('HOUSE WHITE', 600, 415, 42, INK); } },
   years: u => { rr(110, 70, 260, 300, 24, '#ffffff', 7); rr(110, 70, 260, 80, 24, '#d8323c', 7); txt('20', 240, 255, 130, INK); txt('YEARS', 240, 335, 40, INK);
-    rr(460, 110, 280, 170, 50, '#ffffff', 7); poly([[520, 270], [500, 330], [570, 278]], '#ffffff', 0); ln([[520, 276], [500, 330], [566, 278]], 7); txt('Mm-hmm…', 600, 195, 50, '#7a808c', HW); if (u > .45) txt('?!', 600, 380, 100, '#d63a8a', HW); },
+    rr(460, 110, 280, 170, 50, '#ffffff', 7); poly([[520, 270], [500, 330], [570, 278]], '#ffffff', 0); ln([[520, 276], [500, 330], [566, 278]], 7); txt('Mm-hmm…', 600, 195, 50, '#7a808c', HW); if (u > .4) { g.save(); g.translate(560, 385); g.rotate(-.15); ell(0, 0, 44, 44, 'rgba(220,240,255,.7)', 8); ell(-14, -14, 12, 7, '#ffffff', 0); g.beginPath(); g.moveTo(40, 18); g.bezierCurveTo(90, 60, 60, 90, 110, 100); g.strokeStyle = '#c8a04a'; g.lineWidth = 5; g.stroke(); g.restore(); txt('?!', 700, 380, 90, '#d63a8a', HW); } },
   check: (u, paid) => { rr(140, 50, 320, 400, 16, '#2a2a33', 0); rr(160, 70, 280, 360, 10, '#fffdf4', 5); txt('BRIGHTON GRILL', 300, 110, 26, INK); for (let k = 0; k < 4; k++) ln([[190, 160 + k * 40], [410, 160 + k * 40]], 4, '#cfc6b4');
     txt('TOTAL', 222, 380, 30, INK); txt('$148.50', 362, 380, 34, '#d8323c');
-    if (paid) { const k = ease((u - .05) * 4); bill(lerp(900, 640, k), 210, -.08, '$100'); bill(lerp(900, 670, k), 300, .06, '$100'); if (u > .45) { g.save(); g.translate(600, 420); g.rotate(-.06); rr(-210, -38, 420, 76, 16, '#2f9a5a', 6); txt('KEEP THE CHANGE', 0, 2, 38, '#ffffff'); g.restore(); } }
-    else txt('CHECK, PLEASE', 640, 240, 40, INK); },
+    if (paid) { const k = ease((u - .05) * 4), bx = lerp(900, 650, k), sk = '#eec3a2'; bill(bx, 210, -.08, '$100'); bill(bx + 30, 300, .06, '$100');
+      if (u < .55) { for (const [hx, hy, an] of [[bx + 150, 250, Math.PI], [bx + 180, 330, Math.PI - .2]]) { g.save(); g.translate(hx, hy); rr(40, -42, 200, 84, 10, '#8a6d52', 7); rr(26, -36, 20, 72, 6, '#eef3f8', 5); g.restore(); hand(hx, hy, an, 1.6, sk, null, false); }
+        ell(bx + 205, 240, 20, 20, '#e8c27a', 5); } if (u > .45) { g.save(); g.translate(600, 420); g.rotate(-.06); rr(-210, -38, 420, 76, 16, '#2f9a5a', 6); txt('KEEP THE CHANGE', 0, 2, 38, '#ffffff'); g.restore(); } }
+    else { txt('THE BILL?', 640, 190, 46, '#1f3a8a'); txt('=', 640, 250, 46, INK); txt('THE CHECK!', 640, 310, 46, '#d8323c'); } },
   box: u => { glove(240, 230, 1.15); txt('BOX?!', 240, 400, 56, '#d8323c', HW); if (u > .45) { togo(620, 230, 1.1); txt('TO-GO BOX', 620, 380, 44, INK); } },
 };
 let curCam = null;
@@ -170,37 +206,39 @@ function panel(id, u, t, a0, b0, thought, press) { const k = ease((t - a0) / .3)
   g = prev; g.save(); g.globalAlpha = k; const sc = .92 + .08 * k; g.translate(540, PY + PH / 2); g.scale(sc, sc); g.translate(-540, -(PY + PH / 2)); g.drawImage(clCv, 0, 0); g.restore(); }
 // the two check cards are one card that changes content (no fade between them)
 const PANELS = [['steak', BY.w2.at - .1, BY.w2.end + .35, false], ['fish', BY.p3.at + .2, BY.w4.end, false], ['years', BY.z4.at + .3, BY.z4.end + .35, true],
-  ['check', TL.CHECK - .8, BY.p6.end + .9, false], ['box', BY.z5.at, BY.z5.end + .35, true]];
+  ['check', BY.w6.at + .1, BY.p6.end + .9, false], ['box', BY.z5.at, BY.z5.end + .35, true]];
 function panels(t) { for (const [id, a, b, th] of PANELS) if (t >= a && t < b) { const paid = id === 'check' && t >= BY.p6.at + .05; panel(id, paid ? (t - BY.p6.at - .05) / (b - BY.p6.at - .05) : (t - a) / (b - a), t, a, b, th, paid); } }
-function laterCard(t) { const a = TL.LATER, b = BY.p5.at - .2; if (t < a || t >= b) return; const k = ease((t - a) / .25) * (1 - ease((t - b + .25) / .25));
+function laterCard(t) { const a = TL.LATER, b = TL.FORK - .05; if (t < a || t >= b) return; const k = ease((t - a) / .25) * (1 - ease((t - b + .25) / .25));
   g.save(); g.globalAlpha = k; g.fillStyle = '#e9b98a'; g.fillRect(0, 0, W, H); g.fillStyle = '#f0c89e'; for (let x = -200; x < 1300; x += 120) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x + 60, 0); g.lineTo(x + 460, H); g.lineTo(x + 400, H); g.fill(); }
   txt('ONE HOUR', 540, 700, 130, INK); txt('LATER…', 540, 840, 130, '#ffffff');
   ell(540, 1130, 150, 150, '#fffaf0', 10); for (let i = 0; i < 12; i++) { const ag = i / 12 * 6.28; ln([[540 + Math.cos(ag) * 120, 1130 + Math.sin(ag) * 120], [540 + Math.cos(ag) * 135, 1130 + Math.sin(ag) * 135]], 6); }
   const ag = -1.57 + (t - a) * 3; ln([[540, 1130], [540 + Math.cos(ag) * 105, 1130 + Math.sin(ag) * 105]], 9); ln([[540, 1130], [540 + Math.cos(ag / 12 - .5) * 70, 1130 + Math.sin(ag / 12 - .5) * 70]], 11); ell(540, 1130, 12, 12, INK, 0); g.restore(); }
 
 // ---------- shots ----------
-const CAM = {TWO: [1.1, 490, 1030], ZP: [1.25, 490, 1010], Z_MED: [1.6, 270, 1000], Z_UP: [1.5, 270, 918], P_MED: [1.6, 730, 1000], P_UP: [1.45, 730, 940], P_CU: [2.0, 730, 1030],
-  W_MED: [1.5, 1360, 925], PW: [1.25, 1050, 975]};
-const SH = [[0, 'TWO'], [BY.p1.at - .15, 'P_MED'], [BY.w1.at - .1, 'W_MED'], [BY.z2.at - .1, 'Z_MED'], [BY.w2.at - .1, 'W_MED'], [BY.z3.at - .1, 'ZP'], [BY.p2.at - .1, 'PW'], [BY.w3.at - .1, 'PW'],
-  [BY.p3.at - .1, 'P_UP'], [BY.w4.at - .1, 'W_MED'], [BY.z4.at - .1, 'Z_UP'], [BY.p4.at - .2, 'P_CU'], [TL.LATER + .3, 'TWO'], [BY.p5.at - .1, 'P_MED'], [TL.CHECK - .5, 'PW'], [BY.w5.at - .1, 'W_MED'],
-  [BY.z5.at - .1, 'Z_UP'], [BY.p7.at - .1, 'PW'], [BY.z6.at - .1, 'ZP'], [BY.p8.at - .15, 'P_CU'], [TL.END, 'END']].map(([at, k], i, a) => ({at, k, i, end: a[i + 1] ? a[i + 1][0] : TL.TOTAL}));
+const CAM = {TWO: [1.1, 485, 1030], ZP: [1.25, 485, 1010], Z_MED: [1.6, 235, 1000], Z_UP: [1.5, 235, 918], P_MED: [1.6, 760, 1000], P_UP: [1.45, 760, 940], P_CU: [1.9, 760, 1020],
+  W_MED: [1.5, 1300, 925], PW: [1.2, 1030, 975]};
+const SH = [[0, 'TWO'], [BY.p1.at - .15, 'P_MED'], [BY.w1.at - .1, 'W_MED'], [BY.z2.at - .1, 'Z_MED'], [BY.w2.at - .1, 'W_MED'], [BY.z3.at - .1, 'ZP'], [GA1 - .1, 'PW'], [BY.p2.at - .1, 'BACK'], [BY.w3.at - .1, 'PW'],
+  [BY.p3.at - .1, 'P_UP'], [BY.w4.at - .7, 'PW'], [BY.z4.at - .1, 'Z_UP'], [BY.p4.at - .2, 'P_CU'], [TL.LATER + .3, 'P_MED'], [BY.w6.at - .1, 'W_MED'], [BY.p6.at - .1, 'PW'], [BY.w5.at - .1, 'W_MED'],
+  [BY.z5.at - .1, 'Z_UP'], [STEAM[0] - .1, 'PW'], [BY.z6.at - .1, 'ZP'], [BY.p8.at - .15, 'P_CU'], [TL.CUT, 'BLACK'], [TL.END, 'END']].map(([at, k], i, a) => ({at, k, i, end: a[i + 1] ? a[i + 1][0] : TL.TOTAL}));
 // framing rule: every character is fully inside the frame horizontally or fully outside. cams.json (node render.js frame) holds the solved [z, x] per shot
 const SUBJ = {TWO: 'ZP', ZP: 'ZP', Z_MED: 'Z', Z_UP: 'Z', P_MED: 'P', P_UP: 'P', P_CU: 'P', W_MED: 'W', PW: 'PW', END: 'ZP'};
 let SOLVED = null; try { SOLVED = JSON.parse(fs.readFileSync(__dirname + '/cams.json', 'utf8')); } catch (e) {}
-function camAt(t) { let sh = SH[0]; for (const s of SH) if (t >= s.at) sh = s; const k = sh.k === 'END' ? 'TWO' : sh.k; let [z, x, y] = CAM[k]; if (SOLVED && SOLVED[sh.i]) [z, x] = SOLVED[sh.i]; const u = clamp((t - sh.at) / (sh.end - sh.at));
-  const push = sh.i % 3 === 2 ? 0 : .035 * ease(u), punch = sh.at > 0 && sh.k !== 'END' ? .03 * (1 - ease((t - sh.at) / .3)) : 0; return {z: z * (1 + push + punch), x, y, k, sh}; }
+function camAt(t) { let sh = SH[0]; for (const s of SH) if (t >= s.at) sh = s; const k = sh.k === 'END' || sh.k === 'BLACK' || sh.k === 'BACK' ? 'TWO' : sh.k; let [z, x, y] = CAM[k]; if (SOLVED && SOLVED[sh.i]) [z, x] = SOLVED[sh.i]; const u = clamp((t - sh.at) / (sh.end - sh.at));
+  const push = sh.i % 3 === 2 ? 0 : .02 * ease(u), punch = sh.at > 0 && sh.k !== 'END' ? .02 * (1 - ease((t - sh.at) / .3)) : 0; return {z: z * (1 + push + punch), x, y, k, sh}; }
 
 // ---------- captions ----------
 const GLOSS = {z1: [['date', 'свидание'], ['забукала', 'book — заказала'], ['ю ноу', 'you know — понимаешь']], z2: [['Рэди', 'ready — готовы'], ['заордерю', 'order — закажу'], ['Вэлл дан', 'well-done — полная прожарка']],
-  z3: [['конфидентно', 'confident — уверенно'], ['инглише', 'English — английский']], z4: [['спикаешь', 'speak — говоришь']], z5: [['Бокс', 'box — коробка (а не бокс)']], z6: [['транслейтор', 'translator — переводчик'], ['ю ноу', 'you know — понимаешь']]};
+  z3: [['конфидентно', 'confident — уверенно'], ['инглише', 'English — английский']], z4: [['спикаешь', 'speak — говоришь']], z5: [['Бокс', 'box — коробка (а не бокс)']], z6: [['транслейтор', 'translator — переводчик']]};
 const SPL = {
   w1: [['Hi, folks! Are you ready to order?', 'Привет! Готовы сделать заказ?']],
   w2: [['Well-done… but juicy.', 'Полная прожарка… но сочный.'], ["Sure… I'll let the chef know.", 'Ладно… передам повару.']],
-  w3: [['And for you, sir?', 'А вам, сэр?'], ['Is the steak okay?', 'Стейк подойдёт?']],
+  w3: [['And for you, sir? The steak as well?', 'А вам, сэр? Тоже стейк?']],
   p3: [["Actually, I'll have the sea bass,", 'Вообще-то мне сибаса,'], ["if that's all right.", 'если можно.'], ['And a glass of the house white, please.', 'И бокал домашнего белого, пожалуйста.'], ['Thank you ever so much.', 'Премного благодарен.']],
   w4: [['Oh! Excellent choice, sir!', 'О! Отличный выбор, сэр!']],
   p4: [['You never asked, darling.', 'Ты не спрашивала, дорогая.']],
-  p5: [['Could we get the check, please?', 'Можно нам счёт, пожалуйста?']],
+  p5: [['Could we have the bill, please?', 'Можно нам счёт, пожалуйста?']],
+  w6: [['The… check? Sure!', 'Счёт? Конечно!']],
+  p8: [['As you wish, darling.', 'Как скажешь, дорогая.']],
   p6: [['Here you are. Keep the change.', 'Вот, пожалуйста. Сдачи не надо.']],
   w5: [['Thank you, sir! Would you like a box for that?', 'Спасибо, сэр! Вам упаковать с собой?']],
   p7: [["She'd love one, thank you.", 'Да, она с удовольствием, спасибо.']],
@@ -223,6 +261,12 @@ function outlinedWords(words, y, size0, colFn) { let size = size0; g.font = `${s
   for (const w of words) { g.lineWidth = size * .24; g.strokeStyle = '#000'; g.strokeText(w, x, y); g.fillStyle = colFn(w); g.fillText(w, x, y); x += g.measureText(w).width + sp(); } }
 function caption(t) { const cur = curChunk(t); if (!cur) return; const pop = 1 + .08 * clamp(1 - (t - cur.a) / .12); g.save(); g.translate(540, 1640); g.scale(pop, pop); g.translate(-540, -1640);
   outlinedWords(cur.s.split(' '), 1640, 70, w => isEn(w) ? '#ffd23f' : '#ffffff'); g.restore(); if (cur.tr) outlinedWords(cur.tr.split(' '), 1730, 46, () => '#ffffff'); }
+function flag(x, y, w, h) { g.save(); g.beginPath(); g.rect(x, y, w, h); g.clip(); g.fillStyle = '#1f3a8a'; g.fillRect(x, y, w, h);
+  ln([[x, y], [x + w, y + h]], 10, '#ffffff'); ln([[x + w, y], [x, y + h]], 10, '#ffffff'); ln([[x, y], [x + w, y + h]], 4, '#d8323c'); ln([[x + w, y], [x, y + h]], 4, '#d8323c');
+  ln([[x + w / 2, y], [x + w / 2, y + h]], 14, '#ffffff'); ln([[x, y + h / 2], [x + w, y + h / 2]], 14, '#ffffff'); ln([[x + w / 2, y], [x + w / 2, y + h]], 8, '#d8323c'); ln([[x, y + h / 2], [x + w, y + h / 2]], 8, '#d8323c'); g.restore(); g.strokeStyle = INK; g.lineWidth = 4; g.strokeRect(x, y, w, h); }
+function britChip(t) { const a = BY.p3.at, b = BY.p3.at + 3.0; if (t < a || t >= b) return; const k = ease((t - a) / .15) * (1 - ease((t - b + .15) / .15));
+  g.save(); g.globalAlpha = k; g.translate(540, 1536 + (1 - k) * 16); g.rotate(-.015); g.font = `42px ${FONT}`; const tw = g.measureText('British accent').width, w = tw + 130;
+  rr(-w / 2 + 6, -34, w, 72, 20, 'rgba(42,34,48,0.35)', 0); rr(-w / 2, -40, w, 72, 20, '#fffaf0', 5); flag(-w / 2 + 22, -24, 60, 40); txt('British accent', -w / 2 + 100, -3, 42, '#1f3a8a', FONT, 'left'); g.restore(); }
 function chip(t) { let c = null; for (const q of CHIPS) if (t >= q.a && t < q.b) c = q; if (!c) return;
   const k = ease((t - c.a) / .15) * (1 - ease((t - c.b + .12) / .12)), w1 = c.w, w2 = ' — ' + c.tr; let f = 42; g.font = `${f}px ${FONT}`; const tot = () => g.measureText(w1).width + g.measureText(w2).width;
   while (tot() > 900) { f -= 2; g.font = `${f}px ${FONT}`; } const tw = tot(), w = tw + 56;
@@ -230,24 +274,37 @@ function chip(t) { let c = null; for (const q of CHIPS) if (t >= q.a && t < q.b)
   g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillStyle = '#d63a8a'; g.fillText(w1, -tw / 2, -3); g.fillStyle = INK; g.fillText(w2, -tw / 2 + g.measureText(w1).width, -3); g.restore(); }
 const HOOK_END = 4.6;
 function hook(t) { if (t > HOOK_END + .3) return; const a = ease(t / .25) * (1 - ease((t - HOOK_END) / .3)); g.save(); g.globalAlpha = a; g.translate(540, 330); g.rotate(-.02);
-  rr(-450, -165, 900, 330, 34, '#fffaf0', 9); txt('ПЕТРОВИЧ', 0, -92, 88, INK); txt('НАКОНЕЦ', 0, 2, 96, '#d63a8a'); txt('ПОЯВИЛСЯ', 0, 96, 88, INK); g.restore(); }
+  rr(-450, -165, 900, 330, 34, '#fffaf0', 9); txt('КТО ТАКОЙ', 0, -92, 88, INK); txt('ПЕТРОВИЧ?', 0, 2, 96, '#d63a8a'); txt('ЧТО ПОД КЕПКОЙ?', 0, 96, 80, INK); g.restore(); }
 function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30,20,30,${.55 * k})`; g.fillRect(0, 0, W, H); g.save(); g.globalAlpha = k; g.translate(0, (1 - k) * 80);
   rr(60, 170, 960, 1540, 44, '#fffaf0', 8); txt('ПЕРЕВОДИМ ПЕТРОВИЧА', 540, 270, 62, '#d63a8a');
   const R = [['ARE YOU READY TO ORDER?', 'готовы сделать заказ?'], ["I'LL HAVE THE SEA BASS", 'мне, пожалуйста, сибаса'], ["IF THAT'S ALL RIGHT", 'если можно'], ['YOU NEVER ASKED', 'ты не спрашивала'],
-    ['COULD WE GET THE CHECK, PLEASE?', 'можно нам счёт? (в Англии — the bill)'], ['KEEP THE CHANGE', 'сдачи не надо'], ['WOULD YOU LIKE A BOX?', 'упаковать вам с собой?']];
+    ['THE BILL (UK) = THE CHECK (US)', 'счёт'], ['KEEP THE CHANGE', 'сдачи не надо'], ['WOULD YOU LIKE A BOX?', 'упаковать вам с собой?']];
   R.forEach(([en, ru], i) => { const y = 390 + i * 126; let f = 52; g.font = `${f}px ${FONT}`; while (g.measureText(en).width > 880) { f -= 2; g.font = `${f}px ${FONT}`; } txt(en, 540, y, f, '#1f3a8a'); txt(ru, 540, y + 50, 38, '#c0283a'); });
-  txt('Кто круче:', 540, 1340, 52, INK); txt('Жанна или Петрович?', 540, 1420, 60, '#d63a8a'); txt('Пишите Ж или П в комменты', 540, 1530, 44, INK); g.restore(); }
+  txt('Почему Петрович молчал 20 лет?', 540, 1320, 50, '#d63a8a'); txt('1 — шпион    2 — лорд', 540, 1410, 48, INK); txt('3 — Жанна не давала слова', 540, 1480, 48, INK); txt('Пишите цифру!', 540, 1580, 50, '#d63a8a'); g.restore(); }
+function blackCard(t) { const k = ease((t - TL.CUT) / .2); g.save(); g.fillStyle = '#000000'; g.fillRect(0, 0, W, H); g.globalAlpha = ease((t - TL.CUT - .15) / .3); txt('ПРОДОЛЖЕНИЕ', 540, 900, 96, '#ffffff'); txt('СЛЕДУЕТ…', 540, 1020, 96, '#ff7ac0'); g.restore(); }
+function backView(t) { // reverse angle over Petrovich's shoulder: cap, back of the head, jacket; Zhanna across the table
+  const l = lineAt(t), zl = l && l.who === 'z', nod = l && l.id === 'p2' ? 8 * Math.sin(Math.PI * clamp((t - l.at) / (l.end - l.at))) : 0;
+  T.draw(g, {...ZH, x: 330, y: 1690, s: .7, arms: s => ZG.table(s), front: true, mood: 'smug', mouth: zl ? env(l, t) : 0, blink: blink(t, 2), tilt: .03 * Math.sin(t * 1.1), look: .3});
+  star(330 - 28, 1690 - 553, 26, '#f2c820', 5, 8, t * .3); ell(330 - 28, 1690 - 553, 8, 8, '#ff5a8a', 4); for (const s of [-1, 1]) { const P3 = ZG.table(s); hand(330 + P3[2][0] * .7, 1690 + P3[2][1] * .7, Math.atan2(P3[2][1] - P3[1][1], P3[2][0] - P3[1][0]), .7, ZH.pal.skin, '#d63a8a', true); }
+  rr(-40, 1250, 1160, 760, 0, '#fffaf2', 7); glass(150, 1330, 'flute'); rr(560, 1250, 34, 70, 8, '#fff4dc', 5); ell(577, 1228, 11, 20, '#ffc94a', 4); rr(260, 1300, 150, 18, 4, '#7a2a30', 4);
+  const px = 770, py = 1340 + nod, c = PE.pal;
+  g.beginPath(); g.moveTo(470, 1930); g.bezierCurveTo(470, 1640, 560, 1560, px, 1556); g.bezierCurveTo(980, 1560, 1050, 1640, 1050, 1930); g.closePath(); g.fillStyle = c.top; g.fill(); g.strokeStyle = INK; g.lineWidth = 8; g.stroke();
+  ln([[px, 1600], [px, 1930]], 5, c.topS); rr(px - 56, 1450 + nod * .5, 112, 120, 30, c.skinS, 7); rr(px - 70, 1548, 140, 30, 14, c.collar, 6);
+  for (const s of [-1, 1]) ell(px + s * 158, py + 10, 30, 46, c.skin, 7);
+  ell(px, py, 160, 175, c.hair, 8); g.save(); g.beginPath(); g.ellipse(px, py, 160, 175, 0, 0, 7); g.clip(); for (let k = 0; k < 6; k++) ln([[px - 120 + k * 48, py + 40], [px - 110 + k * 48, py + 150]], 4, '#b4b4b4'); g.restore(); ell(px, py, 160, 175, null, 8);
+  g.beginPath(); g.moveTo(px - 178, py - 40); g.bezierCurveTo(px - 190, py - 230, px + 190, py - 240, px + 180, py - 40); g.quadraticCurveTo(px, py - 70, px - 178, py - 40); g.closePath(); g.fillStyle = c.cap; g.fill(); g.strokeStyle = INK; g.lineWidth = 8; g.stroke();
+  rr(px - 40, py - 66, 80, 18, 8, c.capS, 5); ell(px, py - 222, 16, 10, c.capS, 5); }
 
 let COVER = false;
 function frame(t) {
-  const c = COVER ? {z: 1.04, x: 492, y: 1060, k: 'ZP', sh: {k: 'ZP'}} : camAt(t); curCam = c; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
+  const c0 = COVER ? {z: 1.04, x: 485, y: 1060, k: 'ZP', sh: {k: 'ZP'}} : camAt(t), back = c0.sh.k === 'BACK', c = back ? {...c0, z: 1.15, x: 760, y: 820} : c0; curCam = c; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
   g = GB; g.setTransform(1, 0, 0, 1, 0, 0); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); restaurant(t); g = G0;
   g.save(); g.filter = `blur(${(2.5 * c.z).toFixed(1)}px) saturate(0.6) brightness(1.03)`; g.drawImage(bgCv, 0, 0); g.filter = 'none'; g.restore();
-  g.save(); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); if (!COVER) waiter(t); zhanna(t); petrovich(t); table(t); g.restore();
+  if (back) backView(t); else { g.save(); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); const wf = waiterFront(t); if (!COVER && !wf) waiter(t); zhanna(t); petrovich(t); table(t); if (!COVER && wf) waiter(t); g.restore(); }
   const v = g.createRadialGradient(W / 2, H * .45, 650, W / 2, H * .45, 1250); v.addColorStop(0, 'rgba(30,15,30,0)'); v.addColorStop(1, 'rgba(30,15,30,0.18)'); g.fillStyle = v; g.fillRect(0, 0, W, H);
-  if (c.sh.k !== 'END' && !COVER) panels(t); laterCard(t);
+  if (c.sh.k !== 'END' && c.sh.k !== 'BLACK' && !COVER) panels(t); laterCard(t); if (c.sh.k === 'BLACK') blackCard(t);
   if (process.env.NOCAP) return;
-  hook(t); if (c.sh.k === 'END') endCard(t); else if (!(t >= TL.LATER && t < BY.p5.at - .2)) { chip(t); caption(t); }
+  hook(t); if (c.sh.k === 'END') endCard(t); else if (c.sh.k !== 'BLACK' && !(t >= TL.LATER && t < TL.FORK)) { chip(t); britChip(t); caption(t); }
 }
 const [mode, arg, outName] = process.argv.slice(2);
 if (mode === 'still') { fs.mkdirSync('out/st', {recursive: true}); for (const t of arg.split(',')) { frame(+t); fs.writeFileSync(`out/st/${t}.png`, cv.toBuffer('image/png')); } }
@@ -267,11 +324,11 @@ else if (mode === 'frame') { // measure each character's horizontal extent per s
   const ext = (fn, t) => { g = mg; g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, mc.width, mc.height); g.setTransform(SC, 0, 0, SC, OX * SC, 0); fn(t); g = G0;
     const d = mg.getImageData(0, 0, mc.width, mc.height).data, w = mc.width; let a = 1e9, b = -1e9; for (let i = 3; i < d.length; i += 4) if (d[i] > 8) { const x = ((i - 3) / 4) % w; if (x < a) a = x; if (x > b) b = x; } return a > b ? null : [a / SC - OX, (b + 1) / SC - OX]; };
   const CHR = {Z: zhanna, P: petrovich, W: waiter}, out = {}, M = 16;
-  for (const sh of SH) { const k = sh.k === 'END' ? 'TWO' : sh.k, [z0, x0] = CAM[k], E = {};
+  for (const sh of SH) { if (sh.k === 'BACK' || sh.k === 'BLACK') continue; const k = sh.k === 'END' ? 'TWO' : sh.k, [z0, x0] = CAM[k], E = {};
     for (const c of 'ZPW') { let a = 1e9, b = -1e9; for (let t = sh.at; t < sh.end; t += .1) { const e = ext(CHR[c], t); if (e) { a = Math.min(a, e[0]); b = Math.max(b, e[1]); } } E[c] = a > b ? null : [a - M, b + M]; }
     const subj = SUBJ[sh.k].split('').filter(c => E[c]); let best = null;
     const ZS = []; for (let d = 0; d <= 1.3; d += .01) { if (z0 - d >= .7) ZS.push(z0 - d); if (d && z0 + d <= 2.2) ZS.push(z0 + d); } ZS.sort((p, q) => Math.abs(p - z0) * (p > z0 ? 1.5 : 1) - Math.abs(q - z0) * (q > z0 ? 1.5 : 1));
-    for (const z of ZS) { if (best) break; const wMin = 1080 / (z * 1.07), wMax = 1080 / z; // narrowest (push+punch) and widest view
+    for (const z of ZS) { if (best) break; const wMin = 1080 / (z * 1.045), wMax = 1080 / z; // narrowest (push+punch) and widest view
       const S = subj.map(c => E[c]), sa = Math.min(...S.map(e => e[0])), sb = Math.max(...S.map(e => e[1])); if (sb - sa > wMin) continue;
       const cands = []; for (let x = sb - wMin / 2; x <= sa + wMin / 2; x += 2) cands.push(x); cands.sort((p, q) => Math.abs(p - x0) - Math.abs(q - x0));
       for (const x of cands) { let ok = true; for (const c of 'ZPW') { if (subj.includes(c) || !E[c]) continue; const [oa, ob] = E[c];
@@ -279,3 +336,5 @@ else if (mode === 'frame') { // measure each character's horizontal extent per s
         if (ok) { best = [+z.toFixed(3), Math.round(x)]; break; } } }
     out[sh.i] = best; console.log(sh.i, sh.k, sh.at.toFixed(2), JSON.stringify(E), '->', best, 'was', [z0, x0]); }
   fs.writeFileSync('cams.json', JSON.stringify(out)); }
+else if (mode === 'facecheck') { // Petrovich's face carries magenta probes; any magenta pixel in any frame = face visible
+  process.env.NOCAP = 1; let bad = 0; const [step, off] = (arg || '1:0').split(':').map(Number); for (let i = off || 0; i < TL.TOTAL * FPS; i += step) { frame(i / FPS); const d = cv.data(); let n = 0; for (let j = 0; j < d.length; j += 16) if (d[j] > 230 && d[j + 1] < 40 && d[j + 2] > 230) n++; if (n) { bad++; console.log('VISIBLE', (i / FPS).toFixed(2), n); } } console.log('facecheck done, frames with face:', bad); }
