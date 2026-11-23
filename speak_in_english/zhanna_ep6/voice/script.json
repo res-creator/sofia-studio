@@ -1,0 +1,132 @@
+{
+ "voices": {
+  "z": "08b267d9a5fb4b6ead23d97878586ee3",
+  "b": "685fbf7e5b8a46008c1dee91d782b528"
+ },
+ "lines": [
+  [
+   "b1",
+   "b",
+   "Zhanna, I have a date with a Russian guy tonight. Teach me Russian. Fast."
+  ],
+  [
+   "z2",
+   "z",
+   "Первое: «авось». Umbrella не взяла — авось не рейнит."
+  ],
+  [
+   "b2",
+   "b",
+   "Авось? So, like… fingers crossed?",
+   "Ah-vohs? So, like... fingers crossed?"
+  ],
+  [
+   "b3",
+   "b",
+   "Got it. I didn't sanitize this nail file. Авось?",
+   "Got it. I didn't sanitize this nail file. Ah-vohs?"
+  ],
+  [
+   "z3",
+   "z",
+   "Деточка! Авось — не на моих ногтях!"
+  ],
+  [
+   "z4",
+   "z",
+   "Второе: «нормально». Всё горит — а ты: «нормально»."
+  ],
+  [
+   "b4",
+   "b",
+   "Normal… no? So it's NOT normal?",
+   "Normal... no? So it's NOT normal?"
+  ],
+  [
+   "z5",
+   "z",
+   "Это it's fine, ю ноу! Как дела?"
+  ],
+  [
+   "b5",
+   "b",
+   "Нормально! My car got towed, my ex is engaged, and I'm broke!",
+   "Normalno! My car got towed, my ex is engaged, and I'm broke!"
+  ],
+  [
+   "z6",
+   "z",
+   "Идеально. Ты русская."
+  ],
+  [
+   "z7",
+   "z",
+   "Третье: «давай». Это bye, come on и let's."
+  ],
+  [
+   "b7",
+   "b",
+   "Давай.",
+   "Dah-vye."
+  ],
+  [
+   "z8",
+   "z",
+   "Этому я тебя не учила!"
+  ],
+  [
+   "z9",
+   "z",
+   "И главное: «ой всё». Сказала — и ушла."
+  ],
+  [
+   "b8",
+   "b",
+   "Ой… всё?",
+   "Oy... vsyo?"
+  ],
+  [
+   "z10",
+   "z",
+   "Не спрашивай — утверждай!"
+  ],
+  [
+   "z11",
+   "z",
+   "Петрович опаздывает? Пишу: «ой всё». Сендую."
+  ],
+  [
+   "z12",
+   "z",
+   "«Ok»?! Двадцать лет работало!"
+  ],
+  [
+   "b9",
+   "b",
+   "Hun, no. Give me that."
+  ],
+  [
+   "b10",
+   "b",
+   "Ой. Всё.",
+   "Oy. Vsyo."
+  ],
+  [
+   "z13",
+   "z",
+   "Пять секунд — и кольцо?! Деточка… учи меня."
+  ],
+  [
+   "b11",
+   "b",
+   "Ой. Всё.",
+   "Oy. Vsyo."
+  ],
+  [
+   "b12",
+   "b",
+   "Нормально, hun.",
+   "Normalno, hun."
+  ]
+ ]
+}
