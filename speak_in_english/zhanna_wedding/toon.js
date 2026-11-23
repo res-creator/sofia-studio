@@ -1,4 +1,6 @@
-// "Toon" character kit v2 (zhanna_grwm). Backward compatible with v1: draw(g, st) with the same st fields.
+// "Toon" character kit v3 (zhanna_grwm). v3: brows in normal layer order with the fringe trimmed above them, soft lipstick mouth
+// with no black ink, continuous mouth shape (D <-> oval blend), mood blending (st.moodFrom / st.moodK), smoothing helpers follow / smooth / talk / moodAt.
+// v2: Backward compatible with v1: draw(g, st) with the same st fields.
 // v2 adds: jaw drop + visemes (st.mouth 0..1, st.vis 0..1 noise, st.talking = a line is being spoken), st.nod (px), brows drawn over the fringe, 20 moods (MOODS),
 // outfits (st.outfit: sequins | leopard | gold | blazer | fitness), IK arms (ik), shoulder rise, st.lean, head turn with st.look,
 // hooks skinFx / faceFx / hairFx, drawArm / palOf for renderers that redraw raised arms in front of the head, laughEnv() bursts.
@@ -27,8 +29,9 @@ function hairFront(st, c) { const h = st.hair;
   if (h === 'spiky') { P(); g.moveTo(-158, HY - 10); g.lineTo(-170, HY - 90); g.lineTo(-205, HY - 120); g.lineTo(-150, HY - 150); g.lineTo(-150, HY - 200); g.lineTo(-80, HY - 185); g.lineTo(-40, HY - 245); g.lineTo(20, HY - 195);
     g.lineTo(90, HY - 240); g.lineTo(110, HY - 180); g.lineTo(185, HY - 175); g.lineTo(150, HY - 120); g.lineTo(195, HY - 70); g.lineTo(150, HY - 55); g.lineTo(150, HY - 10); g.lineTo(120, HY - 95); g.lineTo(40, HY - 120); g.lineTo(-30, HY - 100); g.lineTo(-110, HY - 120); g.closePath(); fs(c.hair);
     q([10, HY - 240], [30, HY - 290], [60, HY - 270], 6); }
-  else if (h === 'bouffant') { P(); g.moveTo(-170, HY + 10); g.bezierCurveTo(-200, HY - 170, -60, HY - 250, 40, HY - 230); g.bezierCurveTo(160, HY - 220, 210, HY - 120, 170, HY + 10); g.quadraticCurveTo(150, HY - 80, 90, HY - 105);
-    g.quadraticCurveTo(30, HY - 60, -40, HY - 100); g.quadraticCurveTo(-110, HY - 70, -170, HY + 10); g.closePath(); fs(c.hair); q([-40, HY - 200], [40, HY - 230], [120, HY - 170], 6); q([-120, HY - 150], [-60, HY - 190], [0, HY - 170], 5); }
+  else if (h === 'bouffant') { P(); g.moveTo(-170, HY + 10); g.bezierCurveTo(-200, HY - 170, -60, HY - 250, 40, HY - 230); g.bezierCurveTo(160, HY - 220, 210, HY - 120, 170, HY + 10);   // v3: fringe ends above the brows
+    g.quadraticCurveTo(168, HY - 100, 112, HY - 156); g.quadraticCurveTo(50, HY - 200, -10, HY - 176); g.quadraticCurveTo(-80, HY - 204, -124, HY - 154); g.quadraticCurveTo(-170, HY - 100, -170, HY + 10); g.closePath(); fs(c.hair);
+    q([-30, HY - 214], [40, HY - 240], [110, HY - 204], 6); q([-110, HY - 190], [-60, HY - 214], [0, HY - 200], 5); }
   else if (h === 'ponytail' || h === 'long') { P(); g.moveTo(-160, HY + 20); g.bezierCurveTo(-175, HY - 120, -100, HY - 185, 0, HY - 182); g.bezierCurveTo(100, HY - 185, 172, HY - 120, 160, HY + 20); g.lineTo(140, HY - 40);
     g.quadraticCurveTo(110, HY - 110, 20, HY - 110); g.lineTo(0, HY - 60); g.lineTo(-30, HY - 112); g.quadraticCurveTo(-120, HY - 105, -140, HY - 40); g.closePath(); fs(c.hair);
     }
@@ -68,31 +71,38 @@ let FX = 0, UP = 0;   // head-turn feature shift, chin-up feature shift
 function eye(st, c, E, s) { const cx = s * 50 + FX, ey = HY - 30 - UP, wide = E.wide || 1, rx = 50 * wide, ry = 70 * wide, lidCol = c.lid || c.skin;
   if (st.blink || E.closed === 'happy' || (s > 0 && (E.winkR || st.wink))) { q([cx - 42, ey + 8], [cx, ey - 20], [cx + 42, ey + 8], LW + 2); if (st.lashes) line([[cx + s * 40, ey + 6], [cx + s * 54, ey - 4]], 6); return; }
   if (E.closed === 'squeeze') { line([[cx + s * 34, ey - 26], [cx - s * 28, ey - 2], [cx + s * 34, ey + 20]], LW + 3); return; }
-  ell(cx, ey, rx, ry, '#ffffff', LW);
+  ell(cx, ey, rx, ry, '#ffffff', 0);   // outline drawn later, only where the eye is visible
   g.save(); P(); g.ellipse(cx, ey, rx - 2, ry - 2, 0, 0, 7); g.clip();
   const pr = E.pr || 11, px = cx + (E.px || 0) + (st.look || 0) * 14 - s * 6, py = ey + 8 + (E.py || 0);
   ell(px, py, pr, pr * 1.4, OUT, 0); ell(px - pr * .35, py - pr * .55, pr * .38, pr * .38, '#ffffff', 0);
   const lid = E.lid || 0, low = E.low || 0;
-  if (lid > 0) { const ly = ey - ry + 2 * ry * lid; g.fillStyle = lidCol; g.fillRect(cx - rx - 4, ey - ry - 4, rx * 2 + 8, ly - (ey - ry) + 4); line([[cx - rx, ly], [cx + rx, ly]], LW); }
-  if (low > 0) { const ly = ey + ry - 2 * ry * low; P(); g.moveTo(cx - rx - 4, ey + ry + 4); g.lineTo(cx + rx + 4, ey + ry + 4); g.lineTo(cx + rx + 4, ly + 20); g.quadraticCurveTo(cx, ly - 18, cx - rx - 4, ly + 20); g.closePath(); g.fillStyle = lidCol; g.fill(); q([cx - rx * .8, ly + 10], [cx, ly - 14], [cx + rx * .8, ly + 10], 5); }
+  g.restore(); g.save(); P(); g.ellipse(cx, ey, rx + 3, ry + 3, 0, 0, 7); g.clip();   // lids cover the whole eye incl. its rim
+  if (lid > 0) { const ly = ey - ry + 2 * ry * lid; g.save(); P(); g.rect(cx - rx - 4, ey - ry - 4, rx * 2 + 8, ly - (ey - ry) + 4); g.clip(); g.fillStyle = lidCol; g.fill(); if (!c.lid) ell(110, HY + 40, 70, 160, c.skinS, 0); g.restore(); line([[cx - rx, ly], [cx + rx, ly]], LW); }
+  if (low > 0) { const ly = ey + ry - 2 * ry * low; P(); g.moveTo(cx - rx - 4, ey + ry + 4); g.lineTo(cx + rx + 4, ey + ry + 4); g.lineTo(cx + rx + 4, ly + 20); g.quadraticCurveTo(cx, ly - 18, cx - rx - 4, ly + 20); g.closePath(); g.fillStyle = lidCol; g.fill(); g.save(); g.clip(); if (!c.lid) ell(110, HY + 40, 70, 160, c.skinS, 0); g.restore(); q([cx - rx * .8, ly + 10], [cx, ly - 14], [cx + rx * .8, ly + 10], 5); }
   g.restore();
   const top = ey - ry + 2 * ry * lid, bot = ey + ry - 2 * ry * low * .8;   // outline only where the eye is visible (not above the lid)
   g.save(); P(); g.rect(cx - rx - 10, top - 3, rx * 2 + 20, bot - top + 13); g.clip(); ell(cx, ey, rx, ry, null, LW); g.restore();
   if (st.lashes) { if (lid > .05) { const hw = Math.sqrt(Math.max(0, 1 - ((top - ey) / ry) ** 2)) * rx; for (let j = 0; j < 3; j++) line([[cx + s * (hw - 6 - j * 12), top], [cx + s * (hw + 8 - j * 8), top - 16 + j * 2]], 6); }
-    else for (let j = 0; j < 3; j++) line([[cx + s * (26 + j * 12), top + 8 + j * 12], [cx + s * (44 + j * 18), top - 14 + j * 10]], 6); } }
-function brows(st, c, E) { const ey = HY - 30 - UP;
+    else for (let j = 0; j < 3; j++) { const an = -Math.PI / 2 + s * (.75 + j * .3), bx = cx + Math.cos(an) * rx, by = ey + Math.sin(an) * ry; line([[bx, by], [bx + Math.cos(an) * 16 + s * 6, by + Math.sin(an) * 16]], 6); } } }   // v3: lashes on the outer upper rim
+function brows(st, c, E) { const ey = HY - 30 - UP;   // v3: normal layer order (face -> brows -> fringe); fringe is trimmed above them
   for (const s of [-1, 1]) { let [lift, tilt] = (s < 0 ? E.browsL : E.browsR) || E.brows || [0, 0]; if (st.brows === 'up') { lift -= 6; tilt -= 6; }
-    const cx = s * 56 + FX, by = ey - 104 + lift;
-    P(); g.moveTo(cx - s * 36, by + tilt); g.quadraticCurveTo(cx, by - 16, cx + s * 36, by - tilt * .3);
-    g.strokeStyle = OUT; g.lineWidth = 22; g.lineCap = 'round'; g.stroke(); g.strokeStyle = c.brow || OUT; g.lineWidth = 15; g.stroke(); } }
-// mouth: closed shapes by mood; while talking a viseme picked from loudness + noise (closed / small o / e / a / wide A); the jaw follows
-function mouthPath(w, h, my, cor) { P(); g.moveTo(-w + FX, my - 8 + cor); g.quadraticCurveTo(FX, my - 2, w + FX, my - 8 + cor); g.quadraticCurveTo(w * .8 + FX, my + h, FX, my + h + 6); g.quadraticCurveTo(-w * .8 + FX, my + h, -w + FX, my - 8 + cor); g.closePath(); }
-function openMouth(c, w, h, my, cor, oval) {
-  if (oval) { P(); g.ellipse(FX, my + h * .45, w, h * .55, 0, 0, 7); } else mouthPath(w, h, my, cor); g.fillStyle = '#7a2230'; g.fill();
-  g.save(); g.clip(); g.fillStyle = '#ffffff'; if (!oval || h > 40) g.fillRect(-w + FX, my - 12, w * 2, Math.min(16, h * .32)); ell(FX, my + h + 4, w * .55, Math.max(6, h * .34), '#f07a8a', 0); g.restore();
-  if (oval) { P(); g.ellipse(FX, my + h * .45, w, h * .55, 0, 0, 7); } else mouthPath(w, h, my, cor);
-  if (c.lip) { g.strokeStyle = c.lip; g.lineWidth = 11; g.lineJoin = 'round'; g.stroke(); } g.strokeStyle = OUT; g.lineWidth = c.lip ? 4 : 7; g.stroke(); }
-function closedMouth(c, shape, my) { const lc = c.lip || OUT, lw = c.lip ? 12 : 7, X = FX;
+    lift = Math.max(-18, lift); const arch = 14 + Math.max(0, -lift) * .5, cx = s * 56 + FX, by = ey - 100 + lift;
+    P(); g.moveTo(cx - s * 36, by + tilt * 1.15); g.quadraticCurveTo(cx, by - arch, cx + s * 36, by - tilt * .35);
+    g.strokeStyle = c.brow || OUT; g.lineWidth = 16; g.lineCap = 'round'; g.stroke(); } }
+// ---------- mouth v3: one continuous shape (no hard viseme switches). r = roundness 0 (wide "a/e") .. 1 (round "o");
+// control points of a D-shape and an ellipse are blended by r. No black ink: soft lipstick lips + thin darker lip edge.
+const shade = (hex, k) => { const n = parseInt(hex.slice(1), 16), f = v => Math.max(0, Math.min(255, Math.round(v * k))); return `rgb(${f(n >> 16)},${f((n >> 8) & 255)},${f(n & 255)})`; };
+function mouthShape(w, h, my, cor, r) { const X = FX, lp = (a, b) => a + (b - a) * r, cy = my + h * .45, ry = h * .55 + .5, k = .5523;
+  const D = [[-w, my - 8 + cor], [-w * .6, my - 6 + cor * .5], [-w * .3, my - 2], [0, my - 2], [w * .3, my - 2], [w * .6, my - 6 + cor * .5], [w, my - 8 + cor], [w * .95, my + h * .55], [w * .5, my + h + 6], [0, my + h + 6], [-w * .5, my + h + 6], [-w * .95, my + h * .55]];
+  const O = [[-w, cy], [-w, cy - k * ry], [-k * w, cy - ry], [0, cy - ry], [k * w, cy - ry], [w, cy - k * ry], [w, cy], [w, cy + k * ry], [k * w, cy + ry], [0, cy + ry], [-k * w, cy + ry], [-w, cy + k * ry]];
+  const Pt = D.map((d, i) => [lp(d[0], O[i][0]) + X, lp(d[1], O[i][1])]);
+  P(); g.moveTo(...Pt[0]); for (let i = 0; i < 4; i++) g.bezierCurveTo(...Pt[i * 3 + 1], ...Pt[i * 3 + 2], ...Pt[(i * 3 + 3) % 12]); g.closePath(); }
+const lipOf = c => c.lip || '#c46a72';
+function openMouth(c, w, h, my, cor, r, alpha = 1) { if (h < .5 || alpha <= 0) return; g.save(); g.globalAlpha *= alpha; const lip = lipOf(c);
+  mouthShape(w, h, my, cor, r); g.fillStyle = '#6a1a2a'; g.fill();
+  g.save(); g.clip(); if (h > 14) { g.fillStyle = '#ffffff'; g.fillRect(-w + FX, my - 14, w * 2, Math.min(15, h * .3)); } ell(FX, my + h + 4, w * .55, Math.max(5, h * .34), '#f07a8a', 0); g.restore();
+  mouthShape(w, h, my, cor, r); g.lineJoin = 'round'; g.strokeStyle = lip; g.lineWidth = Math.min(10, 4 + h * .25); g.stroke(); g.strokeStyle = shade(lip, .72); g.lineWidth = 2.2; g.stroke(); g.restore(); }
+function closedMouth(c, shape, my, alpha = 1) { if (alpha <= 0) return; g.save(); g.globalAlpha *= alpha; const lc = lipOf(c), lw = c.lip ? 12 : 8, X = FX;
   switch (shape) {
     case 'smirk': q([-34 + X, my + 4], [10 + X, my + 16], [40 + X, my - 10], lw, lc); break;
     case 'smirk2': q([-28 + X, my + 6], [16 + X, my + 14], [48 + X, my - 20], lw, lc); break;
@@ -100,33 +110,41 @@ function closedMouth(c, shape, my) { const lc = c.lip || OUT, lw = c.lip ? 12 : 
     case 'line': line([[-26 + X, my], [26 + X, my]], lw, lc); break;
     case 'side': line([[-12 + X, my + 4], [32 + X, my - 4]], lw, lc); break;
     case 'wavy': line([[-30 + X, my + 6], [-14 + X, my - 2], [2 + X, my + 6], [18 + X, my - 2], [32 + X, my + 6]], lw, lc); break;
-    case 'ew': line([[-34 + X, my + 10], [-14 + X, my - 2], [6 + X, my + 8], [30 + X, my - 6]], lw, lc); ell(-6 + X, my + 18, 12, 10, '#f07a8a', 5); break;
+    case 'ew': line([[-34 + X, my + 10], [-14 + X, my - 2], [6 + X, my + 8], [30 + X, my - 6]], lw, lc); ell(-6 + X, my + 18, 12, 10, '#f07a8a', 0); break;
     case 'soft': q([-24 + X, my], [X, my + 12], [24 + X, my], lw, lc); break;
-    case 'o': ell(X, my + 6, 16, 20, '#7a2230', 6); break;
-    case 'O': openMouth(c, 30, 70, my - 4, 0, true); break;
-    case 'grin': openMouth(c, 62, 40, my, -12); break;
-    case 'laugh': openMouth(c, 64, 58, my, -14); break;
-    default: q([-38 + X, my - 4], [X, my + 20], [38 + X, my - 4], lw, lc); } }
-function mouth(st, c, E) { const m = clamp(st.mouth || 0), my = HY + 92 - UP + JAW * .5, cor = E.corner || 0, v = st.vis ?? .5;
+    case 'o': openMouth(c, 16, 22, my - 2, 0, 1); break;
+    case 'O': openMouth(c, 30, 70, my - 4, 0, 1); break;
+    case 'grin': openMouth(c, 62, 40, my, -12, 0); break;
+    case 'laugh': openMouth(c, 64, 58, my, -14, 0); break;
+    default: q([-38 + X, my - 4], [X, my + 20], [38 + X, my - 4], lw, lc); }
+  g.restore(); }
+// rest shape while a line is spoken: open moods close down between syllables
+const restShape = (shape, talking) => talking ? ({O: 'o', grin: 'smile', laugh: 'smile'}[shape] || shape) : shape;
+function mouth(st, c, E) { const m = clamp(st.mouth || 0), my = HY + 92 - UP + JAW * .5, cor = E.corner || 0;
   if (st.tongue) { P(); g.moveTo(-50, my - 6); g.quadraticCurveTo(0, my - 14, 50, my - 6); g.quadraticCurveTo(40, my + 46, 0, my + 50); g.quadraticCurveTo(-40, my + 46, -50, my - 6); fs('#7a2230');
     P(); g.moveTo(-26, my + 12); g.lineTo(26, my + 12); g.lineTo(26, my + 70); g.quadraticCurveTo(0, my + 96, -26, my + 70); g.closePath(); fs('#f07a8a', 6); return; }
-  if (m <= .08) return closedMouth(c, st.talking ? ({O: 'o', grin: 'smile', laugh: 'smile'}[E.mouth] || E.mouth) : E.mouth, my);   // between syllables the mouth really closes
-
-  const wideMood = E.mouth === 'grin' || E.mouth === 'laugh' || cor <= -10;
-  if (E.mouth === 'laugh') return openMouth(c, 64, 30 + m * 40, my, cor);
-  if (E.mouth === 'O') return openMouth(c, 30, 50 + m * 24, my - 4, 0, true);
-  if (m < .32) return v < .5 ? openMouth(c, 20 + m * 20, 10 + m * 40, my, 0, true) : openMouth(c, wideMood ? 56 : 46, 6 + m * 34, my, cor * .6);   // small o / e
-  if (m < .66) return v < .33 ? openMouth(c, 30, 26 + m * 34, my, 0, true) : openMouth(c, wideMood ? 60 : 52, 16 + m * 40, my, cor * .8);   // o / a
-  openMouth(c, wideMood ? 64 : 58, 26 + m * 42, my, cor); }   // wide A
-function face(st, c) { const E = moodOf(st), talk = clamp(st.mouth || 0), v = st.vis ?? .5;
-  // jaw: follows loudness ('e' and small 'o' visemes drop less), mood minimum for laugh / shock
-  JAW = 26 * Math.max(E.jaw || 0, talk * (talk < .32 ? .55 : 1));
+  const r = clamp(st.round ?? ((st.vis ?? .5) < .4 ? 1 : 0)), laugh = E.mouth === 'laugh', wide = clamp(-cor / 12);
+  const w = (1 - r) * (46 + 14 * wide + m * 8) + r * (18 + m * 16), h = m * (laugh ? 70 : 58), aOpen = clamp(m / .14);
+  const kB = clamp(st.moodK ?? 1), A = st.moodFrom ? (MOODS[st.moodFrom] || MOODS.neutral).mouth : E.mouth, rest = restShape(E.mouth, st.talking), restA = restShape(A, st.talking);
+  if (aOpen < 1) { if (restA !== rest && kB < 1) closedMouth(c, restA, my, (1 - aOpen) * (1 - kB)); closedMouth(c, rest, my, (1 - aOpen) * (restA !== rest ? kB : 1)); }
+  openMouth(c, laugh ? 64 : w, h + 4 * r * m, my, cor * (1 - r), laugh ? 0 : r, aOpen); }
+// mood blending: numeric fields lerp, closed-eye style / wink switch at the middle (a blink covers it)
+function blendMood(A, B, k) { if (k >= 1 || !A) return B; const o = {}, keys = new Set([...Object.keys(A), ...Object.keys(B)]), lerp = (a, b) => a + (b - a) * k;
+  for (const key of keys) { const a = A[key], b = B[key];
+    if (key === 'brows' || key === 'browsL' || key === 'browsR') continue;
+    if (typeof a === 'number' || typeof b === 'number') o[key] = lerp(a ?? (key === 'wide' ? 1 : key === 'pr' ? 11 : 0), b ?? (key === 'wide' ? 1 : key === 'pr' ? 11 : 0)); else o[key] = k < .5 ? a : b; }
+  for (const side of ['browsL', 'browsR']) { const a = A[side] || A.brows || [0, 0], b = B[side] || B.brows || [0, 0]; o[side] = [lerp(a[0], b[0]), lerp(a[1], b[1])]; }
+  o.mouth = B.mouth; return o; }
+function face(st, c) { const E = st.moodFrom ? blendMood(MOODS[st.moodFrom] || MOODS.neutral, moodOf(st), clamp(st.moodK ?? 1)) : moodOf(st), talk = clamp(st.mouth || 0);
+  // jaw follows the (smoothed) mouth opening; mood minimum for laugh / shock
+  JAW = 26 * Math.max(E.jaw || 0, talk);
   FX = (st.look || 0) * 12; UP = E.up || 0;
   for (const s of [-1, 1]) { ell(s * 150, HY + 10, 26, 40, c.skin); q([s * 146, HY - 6], [s * 160, HY + 10], [s * 148, HY + 28], 5); }
   headPath(); fs(c.skin);
   g.save(); headPath(); g.clip(); ell(110, HY + 40, 70, 160, c.skinS, 0); ell(0, jy(HY + 150), 60, 12, c.skinS, 0); g.restore(); headPath(); fs(null);
   if (st.skinFx) { g.save(); headPath(); g.clip(); st.skinFx(g, HY); g.restore(); headPath(); fs(null); }   // face masks under eyes/brows/mouth
   for (const s of [-1, 1]) eye(st, c, E, s);
+  brows(st, c, E);
   if (st.glasses) { const ey = HY - 30 - UP; for (const s of [-1, 1]) { P(); g.ellipse(s * 56 + FX, ey + 4, 60, 56, 0, 0, 7); g.strokeStyle = OUT; g.lineWidth = 5; g.stroke(); } line([[-150, ey - 6], [-116 + FX, ey]], 5); line([[150, ey - 6], [116 + FX, ey]], 5); }
   if (st.probe) { ell(-50, HY - 30, 20, 20, '#ff00ff', 0); ell(50, HY - 30, 20, 20, '#ff00ff', 0); ell(0, HY + 100, 20, 14, '#ff00ff', 0); }
   if (st.earrings) for (const s of [-1, 1]) { P(); g.roundRect(s * 152 - 14, HY + 44, 28, 34, 8); fs(st.earrings, 5); }
@@ -211,7 +229,7 @@ function torso(st, c) { const o = st.outfit;
   torsoBase(st, c); }
 function accessories(st, c) { const o = st.outfit;
   if (o === 'blazer') { for (const s of [-1, 1]) { ell(s * 62, HY - 200, 52, 34, '#2a2230', 6); ell(s * 62 - 14, HY - 210, 12, 7, 'rgba(255,255,255,.7)', 0); } line([[-12, HY - 204], [12, HY - 204]], 8); }   // sunglasses on the hair
-  if (o === 'fitness') { P(); g.moveTo(-205, HY - 120); g.quadraticCurveTo(0, HY - 215, 205, HY - 120); g.strokeStyle = OUT; g.lineWidth = 36; g.stroke(); g.strokeStyle = c.band; g.lineWidth = 26; g.stroke(); } }
+  if (o === 'fitness') { P(); g.moveTo(-210, HY - 160); g.quadraticCurveTo(0, HY - 270, 210, HY - 160); g.strokeStyle = OUT; g.lineWidth = 36; g.stroke(); g.strokeStyle = c.band; g.lineWidth = 26; g.stroke(); } }
 
 // ---------- arms: IK (natural elbow, no backward bend), shoulder rise, breathing ----------
 const L1 = 170, L2 = 190;
@@ -237,12 +255,32 @@ function arm(st, c, s) { const fn = st.arms || (POSES[st.pose] || POSES.down); c
 // laugh bursts: a few wide "ha-ha-ha" openings (not a fast sine); u = seconds since the laugh started
 function laughEnv(u) { if (u < 0) return 0; const bursts = [[0, .28], [.36, .26], [.7, .24], [1.05, .3]]; for (const [a, d] of bursts) if (u >= a && u < a + d) return .55 + .45 * Math.sin(Math.PI * (u - a) / d); return 0; }
 
-function draw(gg, st) { g = gg; const c = palOf(st), E = moodOf(st); g.save(); g.translate(st.x, st.y); g.rotate(st.lean || 0); g.scale(st.s || 1, st.s || 1); if (st.sq) g.scale(1 + (1 - st.sq) * .5, st.sq); g.globalAlpha = st.alpha ?? 1;
+function draw(gg, st) { g = gg; const c = palOf(st), E = st.moodFrom ? blendMood(MOODS[st.moodFrom] || MOODS.neutral, moodOf(st), clamp(st.moodK ?? 1)) : moodOf(st); g.save(); g.translate(st.x, st.y); g.rotate(st.lean || 0); g.scale(st.s || 1, st.s || 1); if (st.sq) g.scale(1 + (1 - st.sq) * .5, st.sq); g.globalAlpha = st.alpha ?? 1;
   const headT = () => { g.translate(0, -930 + (st.nod || 0) - (E.up || 0) * .4); g.rotate((st.tilt || 0) + (E.tilt || 0)); g.scale(1.2, 1.2); g.translate((st.look || 0) * 4, 930); };
   g.save(); headT(); hairBack(st, c); g.restore(); if (!st.seated) legs(st, c);
   const front = st.front ?? (st.pose === 'hold' || st.pose === 'desk' || st.pose === 'fists');
   if (!front) { arm(st, c, -1); arm(st, c, 1); } torso(st, c); if (front) { arm(st, c, -1); arm(st, c, 1); }
-  g.save(); headT(); face(st, c); if (st.moustache) moustache(st, c); if (st.faceFx) st.faceFx(g, HY); hairFront(st, c); accessories(st, c); brows(st, c, E); if (st.hairFx) st.hairFx(g, HY); if (st.cap) cap(st, c);
+  g.save(); headT(); face(st, c); if (st.moustache) moustache(st, c); if (st.faceFx) st.faceFx(g, HY); hairFront(st, c); accessories(st, c); if (st.hairFx) st.hairFx(g, HY); if (st.cap) cap(st, c);
   if (st.sweat) { P(); g.moveTo(190, HY - 60); g.quadraticCurveTo(218, HY - 14, 204, HY + 6); g.quadraticCurveTo(190, HY + 20, 176, HY + 6); g.quadraticCurveTo(168, HY - 14, 190, HY - 60); fs('#8fd2ff', 5); } g.restore();
   g.restore(); }
-module.exports = {draw, POSES, MOODS, OUTFITS, ik, solveArm, drawArm, palOf, laughEnv};
+// ---------- v3 smoothing helpers (for renderers) ----------
+// attack / release are settle times in seconds (~95%: time constant = value / 3).
+// follow(): STATELESS. Simulates the follower over the last `look` seconds, so it is deterministic for random access (stills)
+// and identical across parallel render chunks. targetFn(t) -> number.
+// o.maxRate (units/s) caps the speed so nothing jumps; o.onsetBelow: when rising from below this value the cap is lifted (true onsets snap open)
+function follow(targetFn, t, attack = .05, release = .08, look = .45, step = 1 / 240, o = {}) { let x = targetFn(t - look);
+  for (let u = t - look + step; u <= t + 1e-9; u += step) { const tg = targetFn(u), up = tg > x, tau = (up ? attack : release) / 3; let d = (tg - x) * (1 - Math.exp(-step / Math.max(1e-4, tau)));
+    if (o.maxRate && !(up && o.onsetBelow != null && x < o.onsetBelow)) d = Math.max(-o.maxRate * step, Math.min(o.maxRate * step, d)); x += d; } return x; }
+// smooth(): STATEFUL per id (for sequential renders); dt = frame time.
+const SM = new Map();
+function smooth(id, target, dt, attack = .05, release = .08) { if (!SM.has(id)) { SM.set(id, target); return target; } const x = SM.get(id), tau = (target > x ? attack : release) / 3, y = x + (target - x) * (1 - Math.exp(-dt / Math.max(1e-4, tau))); SM.set(id, y); return y; }
+// envelope of a spoken line (array at fps) as a continuous function of absolute time, 0 outside the line
+const envAt = (line, t, fps = 30) => { const f = (t - line.at) * fps; if (f < 0 || f > line.env.length - 1) return 0; const i = Math.floor(f), k = f - i; return (line.env[i] || 0) * (1 - k) + (line.env[i + 1] || 0) * k; };
+// mouth for a line: smoothed openness (attack 50 ms / release 80 ms, rate-limited to 15%/frame except true onsets; closures become eased dips), roundness crossfade, nod on stressed syllables
+function talk(line, t, seed = 0, o = {}) { if (!line) return {mouth: 0, round: .5, nod: 0};
+  const e = u => envAt(line, u), mouth = follow(e, t, o.attack ?? .05, o.release ?? .08, .5, 1 / 240, {maxRate: o.maxRate ?? 4.2, onsetBelow: .12});   // <= 15% of the opening per frame at 30 fps, except true onsets
+  const hsh2 = n => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); }, round = follow(u => hsh2(Math.floor(u * 9) + seed) < .4 ? 1 : 0, t, .09, .09, .3);
+  const nod = follow(u => 9 * clamp(e(u) - e(u - .1)), t, .08, .16, .4); return {mouth, round, nod}; }
+// emotion blending: moodFn(t) -> mood name; returns {mood, moodFrom, moodK} with a blend over `dur` and blink=true around the switch
+function moodAt(moodFn, t, dur = .25) { const m = moodFn(t); for (let d = 1 / 60; d <= dur; d += 1 / 60) { const p = moodFn(t - d); if (p !== m) { const k = (dur - d) / dur; return {mood: m, moodFrom: p, moodK: 1 - k, blink: d < .1}; } } return {mood: m, moodFrom: null, moodK: 1, blink: false}; }
+module.exports = {draw, POSES, MOODS, OUTFITS, ik, solveArm, drawArm, palOf, laughEnv, follow, smooth, envAt, talk, moodAt, blendMood};

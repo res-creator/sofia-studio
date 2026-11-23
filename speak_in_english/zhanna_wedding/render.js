@@ -6,6 +6,8 @@ const TL = require('./timeline.json'), L = TL.L, BY = Object.fromEntries(L.map(l
 const cv = createCanvas(W, H), G0 = cv.getContext('2d'); let g = G0;
 const bgCv = createCanvas(W, H), GB = bgCv.getContext('2d'), clCv = createCanvas(W, H), GC = clCv.getContext('2d');
 const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v)), ease = v => { v = clamp(v); return v * v * (3 - 2 * v); }, lerp = (a, b, k) => a + (b - a) * k;
+const P01 = (t, a, d) => clamp((t - a) / d), ex = x => x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.pow(2, -10 * x), ei = x => x * x * x, eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const spr = (x, d = 7, f = 9) => x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.exp(-d * x) * Math.cos(f * x);   // spring 0->1 with overshoot
 const hash = n => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
 function rr(x, y, w, h, r, fill, lw = 7, stroke = INK) { g.beginPath(); g.roundRect(x, y, w, h, r); if (fill) { g.fillStyle = fill; g.fill(); } if (lw) { g.strokeStyle = stroke; g.lineWidth = lw; g.lineJoin = 'round'; g.stroke(); } }
 function ell(x, y, rx, ry, fill, lw = 7) { g.beginPath(); g.ellipse(x, y, Math.max(.1, rx), Math.max(.1, ry), 0, 0, 7); if (fill) { g.fillStyle = fill; g.fill(); } if (lw) { g.strokeStyle = INK; g.lineWidth = lw; g.stroke(); } }
@@ -29,7 +31,7 @@ const OF = {hair: 'short', glasses: true, pal: {skin: '#f0c9a8', skinS: '#ddae8c
 const GY = {...GA, pal: {...GA.pal, skin: '#f0c9a8', skinS: '#ddae8c', hair: '#6b4a2e', top: '#8a6d52', topS: '#6e553f', tie: '#c8323c', bottom: '#4a4a52', legs: '#4a4a52', shoe: '#2a2230'}};
 const LY = {...LU, pal: {...LU.pal, skin: '#f4d0b4', skinS: '#e2b498', hair: '#3a2a20', top: '#d8323c', topS: '#b0262f', skirt: '#d8323c', legs: '#f4d0b4', shoe: '#d8323c'}};
 
-const BANQ = TL.BANQ, BANG = TL.BANG, SWAN = TL.SWAN, GATE = TL.GATE, SCENE = t => t < BANQ + .62 ? 'cer' : 'bq';
+const WHIP = TL.WHIP, PUNCH = TL.PUNCH, FREEZE = TL.FREEZE, BANQ = TL.BANQ, BANG = TL.BANG, SWAN = TL.SWAN, GATE = TL.GATE, SCENE = t => t < BANQ + .62 ? 'cer' : 'bq';
 const FEET = 1760, SEAT = 1850, TABLE = 1352;
 const X = {cer: {z: 170, p: -480, g: 780, l: 1400, o: 1090}, bq: {z: 70, g: 600, l: 1090, p: 1620}};
 
@@ -50,7 +52,7 @@ function arch(x) { g.save(); g.translate(x, 0); ln([[-330, 1500], [-330, 760]], 
   for (let i = 0; i < 8; i++) for (const s of [-1, 1]) { ell(s * 330, 820 + i * 80, 30, 26, i % 2 ? '#f6a0c0' : '#ffffff', 0); } g.restore(); }
 function setCer(t) { sky(); palmTree(-700, 1060, 700); palmTree(1650, 1060, 760, 1.1); palmTree(2200, 1060, 600); lights(-60);
   g.fillStyle = '#4a7a4a'; g.fillRect(-1400, 1240, 4600, 2200); g.fillStyle = '#f6f0e6'; g.fillRect(-1400, 1240, 4600, 14); rr(380, 1250, 880, 900, 0, '#f8f2f4', 0); // aisle runner
-  arch(X.cer.o); if (curCam && ['CW', 'GL'].includes(curCam.sh.k)) T.draw(g, {...OF, x: X.cer.o, y: 1440, mood: t > GATE + .1 ? 'shocked' : 'flat', ...(() => { const ts = talkSt(lineOf('o', t), t, 2); return {mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t}; })(), blink: blink(t, 3), pose: 'hold'});
+  arch(X.cer.o); if (curCam && ['CW', 'GL'].includes(curCam.sh.k)) T.draw(g, {...OF, x: X.cer.o, y: 1440, mood: t > GATE + .1 ? 'shocked' : 'flat', ...(() => { const ts = talkSt(lineFor('o', t), t, 2); return {mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t}; })(), blink: blink(t, 3), pose: 'hold'});
   
   guestRow(t, 1500, 5, -1000, 230, .9, false); guestRow(t, 1500, 4, 1500, 230, .9, false); }
 function setBq(t) { sky(); palmTree(-800, 1060, 700); palmTree(2050, 1060, 760, 1.1); lights(-40); lights(260);
@@ -92,9 +94,10 @@ const GG = {
 const FRONT = new Set(['table', 'explain', 'brooch', 'rest', 'bout', 'hands', 'mic', 'micUp', 'micPalm', 'micHip']);
 const lineAt = t => { for (const l of L) if (t >= l.at - .03 && t < l.end + .08) return l; return null; };
 const env = (l, t) => { const i = Math.floor((t - l.at) * 30); return clamp(l.env[i] || 0); };   // mouthEnv from prep.py: 0 = closed, no smoothing
-const talkSt = (l, t, seed) => { if (!l) return {mouth: 0, nod: 0, vis: .5, talking: false}; const e = env(l, t), e0 = env(l, t - .1); return {mouth: e, vis: hash(Math.floor(t * 9) + seed), nod: 9 * clamp(e - e0), talking: true}; };
+const lineFor = (who, t) => { for (const l of L) if (l.who === who && t >= l.at - .05 && t < l.end + .3) return l; return null; };
+const talkSt = (l, t, seed) => { const r = T.talk(l, t, seed); return {mouth: r.mouth, round: r.round, vis: r.round, nod: r.nod, talking: !!l && t < l.end + .05}; };   // toon v3: stateless smoothed mouth (no seams between chunks)
+const moodSt = (fn, t) => T.moodAt(u => fn(u).mood, t, .25);   // blended emotion change + blink at the switch
 const lineOf = (who, t) => { const l = lineAt(t); return l && l.who === who ? l : null; };
-const moodBlink = (fn, t) => fn(t).mood !== fn(t - .1).mood;   // blink on every emotion change
 function armOver(a, x, y, S, st) { for (const sd of [-1, 1]) { const P3 = a.fn(sd); if (P3[2][1] > -900) continue; g.save(); g.translate(x, y); g.scale(S, S); T.drawArm(g, st, sd, P3); g.restore(); } }   // whole raised arm in front of hair + face
 const blink = (t, s) => ((t + s * 1.3) % (3.3 + s * .4)) < .12;
 function plan(P, who, t, idle) { const l = lineAt(t); if (l && l.who === who) { const u = (t - l.at) / (l.end - l.at); let gg = idle; for (const [k, v] of (P[l.id] || [])) if (u >= k) gg = v; return gg; } return idle; }
@@ -148,9 +151,9 @@ function zhanna(t) { const sc = SCENE(t), l = lineAt(t), spk = l && l.who === 'z
   if (sc === 'cer' && t < GATE - .05) return;   // behind the closed gate
   const tilt = spk ? .04 * Math.sin(t * 2.6) : .03 * Math.sin(t * 1.1) + .02, br = 1 - .006 * (1 + Math.sin(t * 2.2)), S = c.s;
   if (sc === 'bq') { const k = talkK(t), base = a.fn; a.fn = sd => sd > 0 ? MIC_TALK.map((p, i) => [lerp(MIC_REST[i][0], p[0], k), lerp(MIC_REST[i][1], p[1], k)]) : base(sd); }
-  const breath = 2 + 2 * Math.sin(t * 2.2), ts = talkSt(spk ? l : null, t, 3), st = {...c, outfit: 'gold'};
-  T.draw(g, {...st, x, y, sq: br, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 6 : 2), breath)), ik: false, front: a.front, mood: a.act.mood, mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t,
-    blink: blink(t, 2) || moodBlink(zAct, t), tilt, look: sc === 'bq' ? .5 : .7});
+  const breath = 2 + 2 * Math.sin(t * 2.2), ts = talkSt(lineFor('z', t), t, 3), md = moodSt(zAct, t), st = {...c, outfit: 'gold'};
+  T.draw(g, {...st, x, y, sq: br, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 6 : 2), breath)), ik: false, front: a.front, mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, mouth: ts.mouth, round: ts.round, talking: ts.talking, vis: ts.vis, nod: ts.nod, t,
+    blink: blink(t, 2) || md.blink, tilt, look: sc === 'bq' ? .5 : .7});
   armOver(a, x, y, S, st);
   const bx = x - 40 * S, by = y - 720 * S * br; star(bx, by, 30, '#f2c820', 5, 8, t * .3); ell(bx, by, 9, 9, '#ff5a8a', 4);
   for (let i = 0; i < 7; i++) { const sx = x + (hash(i) - .5) * 140 * S, sy = y - (600 + hash(i + 9) * 240) * S; sparkle(sx, sy, 7 + 5 * hash(i + 3), Math.max(0, Math.sin(t * 4 + i * 1.7))); }
@@ -172,9 +175,9 @@ function ring(hx, hy, t) { poly([[hx - 26, hy - 30], [hx, hy - 62], [hx + 26, hy
 function bout(x, y, S) { for (let k = 0; k < 5; k++) { const a = k / 5 * 6.28; ell(x + Math.cos(a) * 16 * S / .74, y + Math.sin(a) * 16 * S / .74, 14, 12, '#e8324a', 3); } ell(x, y, 8, 8, '#f2c820', 3); }
 function gary(t) { const sc = SCENE(t), l = lineAt(t), spk = l && l.who === 'g', a = blendArms(gAct, GG, t), c = GA, S = c.s, x = X[sc].g + Math.sin(t * 1.2 + 2) * 2, y = sc === 'bq' ? SEAT : FEET;
   const shake = t >= BANG - .05 && t < BANG + .25 ? 6 * Math.sin(t * 90) : 0;
-  const ts = talkSt(spk ? l : null, t, 5);
-  T.draw(g, {...c, x: x + shake, y, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 6 : 1.5), 2 + 2 * Math.sin(t * 2.3))), ik: false, front: a.front, mood: a.act.mood, sweat: a.act.sweat, mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t,
-    blink: blink(t, 5) || moodBlink(gAct, t), tilt: spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t), look: sc === 'bq' ? -.8 : -.9}); armOver(a, x + shake, y, S, c);
+  const ts = talkSt(lineFor('g', t), t, 5), md = moodSt(gAct, t);
+  T.draw(g, {...c, x: x + shake, y, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 6 : 1.5), 2 + 2 * Math.sin(t * 2.3))), ik: false, front: a.front, mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, sweat: a.act.sweat, mouth: ts.mouth, round: ts.round, talking: ts.talking, vis: ts.vis, nod: ts.nod, t,
+    blink: blink(t, 5) || md.blink, tilt: spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t), look: sc === 'bq' ? -.8 : -.9}); armOver(a, x + shake, y, S, c);
   bout(x + shake - 48 * S, y - 800 * S, S); hands(x + shake, y, S, a, c, null, false);
  }
 function priceTag(t) { const sc = SCENE(t), S = GA.s, x = X.bq.g + Math.sin(t * 1.2 + 2) * 2, y = SEAT;
@@ -182,9 +185,9 @@ function priceTag(t) { const sc = SCENE(t), S = GA.s, x = X.bq.g + Math.sin(t * 
     poly([[0, 0], [40, -40], [250, -40], [250, 80], [40, 80]], '#fff4c8', 5); ell(28, 20, 8, 8, '#ffffff', 3); txt('SECOND HAND', 145, 0, 30, INK); txt('−50%', 145, 46, 44, '#d8323c'); g.restore(); } }
 function lucy(t) { const sc = SCENE(t), l = lineAt(t), spk = l && l.who === 'l', a = blendArms(lAct, GG, t), c = LU, S = c.s, x = X[sc].l + Math.sin(t * 1.3 + 4) * 2, up = sc === 'bq' ? lucyUp(t) : 0, y = sc === 'bq' ? lerp(SEAT, FEET + 20, up) : FEET;
   veil(x, y, S, up * .5 * (l && l.id === 'l3' ? 1 : 0), t);
-  const ts = talkSt(spk ? l : null, t, 9);
-  T.draw(g, {...c, x, y, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 7 : 1.5), 2 + 2 * Math.sin(t * 2.5))), ik: false, front: a.front, mood: a.act.mood, mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t,
-    blink: blink(t, 9) || moodBlink(lAct, t), tilt: spk ? .05 * Math.sin(t * 3.2) : .02 * Math.sin(t + 1), look: sc === 'bq' ? -.8 : -.9}); armOver(a, x, y, S, c);
+  const ts = talkSt(lineFor('l', t), t, 9), md = moodSt(lAct, t);
+  T.draw(g, {...c, x, y, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 7 : 1.5), 2 + 2 * Math.sin(t * 2.5))), ik: false, front: a.front, mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, mouth: ts.mouth, round: ts.round, talking: ts.talking, vis: ts.vis, nod: ts.nod, t,
+    blink: blink(t, 9) || md.blink, tilt: spk ? .05 * Math.sin(t * 3.2) : .02 * Math.sin(t + 1), look: sc === 'bq' ? -.8 : -.9}); armOver(a, x, y, S, c);
   tiara(x, y, S); hands(x, y, S, a, c, '#e8324a', true); const [hx, hy] = handPos(x, y, S, a.fn, -1); ring(hx, hy, t); }
 // ---- Petrovich: palm leaf (ceremony) -> cake -> champagne tower -> ice swan. Every cover is opaque and reaches above the cap brim.
 const pUp = t => clamp((t - SWAN - .62) / .45), PSTAND = t => ease(pUp(t));
@@ -218,10 +221,10 @@ function swan(x, t) { if (t < SWAN) return; const dx = swanX(t), c = x + dx;
   for (let i = 0; i < 4; i++) sparkle(c - 160 + i * 110, 900 + hash(i) * 200, 14, Math.max(0, Math.sin(t * 5 + i * 1.6))); g.restore(); }
 function petrovich(t) { const sc = SCENE(t), l = lineAt(t), spk = l && l.who === 'p', c = PE, S = c.s;
   if (sc === 'cer') { const x = X.cer.p, y = FEET, fn = wig(s => [[s * 78, -860], [s * 102, -720], [s * 110, -580]], t, 1.2), a = {fn};
-    const ts = talkSt(spk ? l : null, t, 7); T.draw(g, {...c, x, y, arms: (a.fn = T.ik(fn, 2)), ik: false, front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t, blink: blink(t, 7), tilt: 0, look: .4});
+    const ts = talkSt(lineFor('p', t), t, 7); T.draw(g, {...c, x, y, arms: (a.fn = T.ik(fn, 2)), ik: false, front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t, blink: blink(t, 7), tilt: 0, look: .4});
     hands(x, y, S, a, c, null, false); palmPot(x, t); return; }
   const x = X.bq.p, up = PSTAND(t), y = lerp(SEAT, FEET, up), bob = l && (l.id === 'p2' || l.id === 'p4') ? 6 * Math.sin(Math.PI * clamp((t - l.at) / (l.end - l.at))) : 0;
-  const ts = talkSt(spk ? l : null, t, 7); T.draw(g, {...c, x, y: y + bob, arms: s => [[s * 78, -860], [s * 140, -740], [s * 80, -690]], front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t, blink: blink(t, 7), tilt: 0, look: -.5}); }
+  const ts = talkSt(lineFor('p', t), t, 7); T.draw(g, {...c, x, y: y + bob, arms: s => [[s * 78, -860], [s * 140, -740], [s * 80, -690]], front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t, blink: blink(t, 7), tilt: 0, look: -.5}); }
 function propsBq(t) { const x = X.bq.p; tower(x, t); cake(x, t); }
 // slippers gift: slides along the table at z9, the lid pops
 const BOX0 = BY.z9.at + .9, TAG0 = BY.z8.at + 2.0;
@@ -256,19 +259,22 @@ const CARD = {
     if (u > .3) { slipper(350, 372, 1.0, -.15); slipper(510, 380, 1.0, .1); } },
 };
 let curCam = null;
-function panel(id, u, t, a0, b0, thought) { const k = ease((t - a0) / .3) * (1 - ease((t - b0 + .3) / .3)); if (k <= 0) return;
+function panel(id, u, t, a0, b0, thought) { const ui = P01(t, a0, .45), uo = P01(t, b0 - .3, .3), sp = spr(ui, 6, 10);
+  const k = clamp(ui * 5) * (1 - ei(clamp((uo - .35) / .65))); if (k <= 0) return;
+  const scl = (.62 + .38 * sp) * (uo < .35 ? 1 + .05 * Math.sin(Math.PI * uo / .35) : 1 - .4 * ei((uo - .35) / .65)), rot = (1 - sp) * -.08;
   const prev = g; g = GC; g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, W, H);
   if (thought) { const c = curCam, hx = 540 + (X[SCENE(t)].z + 60 - c.x) * c.z, top = Math.max(PY + PH + 70, 960 + (700 - c.y) * c.z); ell(hx + 10, top - 22, 14, 14, '#fffaf0', 6); ell(hx + 34, (top + PY + PH) / 2 - 8, 22, 22, '#fffaf0', 6); }
   g.translate(PX, PY); if (thought) { cloudShape(1); cloudShape(0, '#fffaf0'); } else { rr(10, 10, PW - 20, PH - 20, 46, '#fffaf0', 10); }
   g.save(); g.beginPath(); g.roundRect(30, 40, PW - 60, PH - 80, 36); g.clip(); CARD[id](u); g.restore();
-  g = prev; g.save(); g.globalAlpha = k; const sc = .92 + .08 * k; g.translate(540, PY + PH / 2); g.scale(sc, sc); g.translate(-540, -(PY + PH / 2)); g.drawImage(clCv, 0, 0); g.restore(); }
-const PANELS = [['photo', BY.z3.at + .3, BY.z3.end + .3, true], ['toast', BY.z5.at, BY.c1.end + .2, false], ['bride', BY.z6.at + .1, BY.z6.at + 3.6, false],
-  ['partners', BY.z7.at + 1.6, BY.z7.end + .35, true], ['nohard', BY.z9.at, BY.z9.at + 1.75, false]];
+  g = prev; g.save(); g.globalAlpha = k; g.translate(540, PY + PH / 2); g.rotate(rot); g.scale(scl, scl); g.translate(-540, -(PY + PH / 2)); g.drawImage(clCv, 0, 0); g.restore(); }
+const PANELS = TL.PANELS;   // from prep.py (the card SFX use the same times)
 function panels(t) { for (const [id, a, b, th] of PANELS) if (t >= a && t < b) panel(id, (t - a) / (b - a), t, a, b, th); }
-function banqCard(t) { const a = BANQ, b = BANQ + 1.25; if (t < a || t >= b) return; const k = ease((t - a) / .2) * (1 - ease((t - b + .2) / .2));
-  g.save(); g.globalAlpha = k; g.fillStyle = '#f2a0c0'; g.fillRect(0, 0, W, H); g.fillStyle = '#f6b4cc'; for (let x = -200; x < 1300; x += 120) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x + 60, 0); g.lineTo(x + 460, H); g.lineTo(x + 400, H); g.fill(); }
+const PLATE = [WHIP[0] + .2, WHIP[1] + .2];   // fully covers the frame from PLATE[0]+.25 to PLATE[1]-.2 (the scene switches under it)
+function banqCard(t) { const a = PLATE[0], b = PLATE[1]; if (t < a || t >= b) return; const k = 1, dx = (1 - ex(P01(t, a, .25))) * 1180 - ei(P01(t, b - .2, .2)) * 1180, moving = dx !== 0;
+  g.save(); g.globalAlpha = k; g.translate(dx, 0); g.fillStyle = '#f2a0c0'; g.fillRect(-60, 0, W + 120, H); g.fillStyle = '#f6b4cc'; for (let x = -200; x < 1300; x += 120) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x + 60, 0); g.lineTo(x + 460, H); g.lineTo(x + 400, H); g.fill(); }
   txt('BANQUET', 540, 760, 150, '#ffffff'); txt('банкет', 540, 880, 70, INK); const cl = ease((t - a) / .5) * .35;
   for (const s of [-1, 1]) { g.save(); g.translate(540 + s * 90, 1420); g.rotate(-s * cl); g.scale(2.2, 2.2); g.beginPath(); g.moveTo(-18, -160); g.lineTo(18, -160); g.lineTo(12, -62); g.lineTo(-12, -62); g.closePath(); g.fillStyle = '#f6d36a'; g.fill(); g.strokeStyle = INK; g.lineWidth = 4; g.stroke(); ln([[0, -62], [0, 0]], 5); ell(0, 0, 20, 5, '#ffffff', 3); g.restore(); }
+  if (moving) for (let i = 0; i < 14; i++) { const yy = 120 + i * 130 + hash(i) * 40; ln([[dx > 0 ? -40 : W + 40, yy], [dx > 0 ? -40 - 300 - hash(i + 3) * 300 : W + 340 + hash(i + 3) * 300, yy]], 10, 'rgba(255,255,255,.75)'); }
   if (t > a + .4) for (let i = 0; i < 5; i++) sparkle(540 + Math.cos(i * 1.3) * 90, 1060 + Math.sin(i * 1.3) * 60, 18, 1); g.restore(); }
 
 // ---------- shots ----------
@@ -281,7 +287,14 @@ const SH = [[0, 'CW'], [BY.z1.at + 2.0, 'Z_MED'], [BY.l1.at - .1, 'L_MED'], [BY.
 const SUBJ = {CW: 'ZGL', Z_MED: 'Z', Z_UP: 'Z', ZP: 'ZP', G_MED: 'G', L_MED: 'L', GL: 'GL', BW: 'ZGL', BW2: 'GLP', BZ: 'Z', BG: 'G', BL: 'L', BGL: 'GL', BP: 'P', BPC: 'P', END: 'ZGL'};
 let SOLVED = null; try { SOLVED = JSON.parse(fs.readFileSync(__dirname + '/cams.json', 'utf8')); } catch (e) {}
 function camAt(t) { let sh = SH[0]; for (const s of SH) if (t >= s.at) sh = s; const k = sh.k === 'END' ? 'BW' : sh.k; let [z, x, y] = CAM[k]; if (SOLVED && SOLVED[sh.i]) [z, x] = SOLVED[sh.i]; const u = clamp((t - sh.at) / (sh.end - sh.at));
-  const push = sh.i % 3 === 2 ? 0 : .02 * ease(u), punch = sh.at > 0 && sh.k !== 'END' ? .02 * (1 - ease((t - sh.at) / .3)) : 0; return {z: z * (1 + push + punch), x, y, k, sh}; }
+  let push = sh.i % 3 === 2 ? 0 : .02 * ease(u), punch = sh.at > 0 && sh.k !== 'END' ? .015 * (1 - ease((t - sh.at) / .3)) : 0;
+  if (sh.k === 'BPC') push = .12 * eio(u);                                           // T5 slow dramatic push on the reveal
+  let sx = 0, sy = 0; for (const [t0, k] of PUNCH) { const v = t - t0; if (v >= 0 && v < .7) { const d = Math.exp(-7 * v); punch += .07 * k * d; sx += 9 * k * Math.exp(-8 * v) * Math.sin(v * 64 + t0); sy += 7 * k * Math.exp(-8 * v) * Math.cos(v * 57 + t0); } }   // T4
+  let jump = 0; if (JUMPABLE.has(sh.k) && sh.end - sh.at > 4) { for (const c of FLAT) if (c.a > sh.at + 1.8 && c.a < sh.end - 1.2 && c.a <= t && c.who !== 'c') jump++; }   // T8 jump-cut punch-in on chunk changes
+  const jz = jump % 2 ? 1.08 : 1, z1 = z * (1 + push + punch) * jz;
+  let wx = 0; if (t >= WHIP[0] && t < WHIP[0] + .45) wx = ei(P01(t, WHIP[0], .45)) * 1500; if (t >= WHIP[1] && t < WHIP[1] + .45) wx = -(1 - ex(P01(t, WHIP[1], .45))) * 1500;   // T3 whip-pan
+  return {z: z1, x: x + wx + sx / z1, y: y - (jz > 1 ? 34 : 0) + sy / z1, k, sh, whip: wx !== 0}; }
+const JUMPABLE = new Set(['Z_MED', 'BZ', 'GL', 'BGL']);
 
 // ---------- captions ----------
 const GLOSS = {z1: [['спикаю', 'speak — говорю']], z2: [['инвайт', 'invite — приглашение'], ['сендила', 'send — отправила'], ['RSVP', 'ответ на приглашение'], ['плас-ваном', 'plus-one — гость «плюс один»']],
@@ -309,21 +322,28 @@ function chunks(l) { if (SPL[l.id]) { const P = SPL[l.id], n = P.reduce((a, c) =
   for (const p of parts) { if ((cur + ' ' + p).trim().length > 34 && cur) { out.push(cur); cur = p; } else cur = (cur + ' ' + p).trim(); } if (cur) out.push(cur);
   for (let i = 0; i < out.length; i++) { const n0 = out.reduce((a, c) => a + c.length, 0); if (out.length > 1 && out[i].length / n0 * (l.end - l.at) < 1.2) { const j = i < out.length - 1 ? i : i - 1; out.splice(j, 2, out[j] + ' ' + out[j + 1]); i = -1; } }
   const n = out.reduce((a, c) => a + c.length, 0); let acc = 0; return out.map(c => { const a = l.at + (l.end - l.at) * acc / n; acc += c.length; return {s: c, a, b: l.at + (l.end - l.at) * acc / n, who: l.who, id: l.id}; }); }
-const CH = L.map(l => ({l, ch: chunks(l)})), FLAT = [].concat(...CH.map(x => x.ch));
+function wordTimes(l, ch) { const nc = ch.reduce((a, c) => a + c.s.split(' ').length, 0), W2 = l.words || [], nw = W2.length;
+  const at = i => nw === 0 ? l.at + (l.end - l.at) * i / nc : nw === nc ? W2[i] : W2[Math.min(nw - 1, Math.round(i * (nw - 1) / Math.max(1, nc - 1)))];
+  let i = 0; ch.forEach((c, j) => { const n = c.s.split(' ').length; c.wt = []; for (let k = 0; k < n; k++) c.wt.push(Math.max(l.at, at(i + k))); c.a = j === 0 ? l.at : c.wt[0] - .04; i += n; });
+  ch.forEach((c, j) => { c.b = j < ch.length - 1 ? ch[j + 1].a : l.end; }); return ch; }
+const CH = L.map(l => ({l, ch: wordTimes(l, chunks(l))})), FLAT = [].concat(...CH.map(x => x.ch));
 FLAT.forEach((c, i) => { const nx = FLAT[i + 1], lim = nx ? nx.a - .05 : c.b + 1.2; c.hold = Math.max(c.b, Math.min(c.a + 1.2, lim)); if (!nx || nx.id !== c.id) c.hold = Math.max(c.hold, Math.min(c.b + .25, lim)); });
 // chips: per caption chunk; a chunk with two glossary words splits its time (each >= 1.2 s, else only the first)
 const CHIPS = []; { let prevEnd = -1; for (const l of L) { if (l.who !== 'z') continue; const low = l.text.toLowerCase(), D = l.end - l.at;
-    const hits = (GLOSS[l.id] || []).map(([w, tr]) => ({w, tr, est: l.at + D * Math.max(0, low.indexOf(w.toLowerCase())) / low.length})).sort((p, q) => p.est - q.est);
+    const cw = [].concat(...(CH.find(x => x.l === l).ch.map(c => c.s.split(' ').map((w, k) => [w.toLowerCase(), c.wt[k]])))), wtOf = w => { const f = cw.find(([x]) => x.replace(/[«»"?!.,…—:]/g, '') === w.toLowerCase().split(' ')[0]); return f ? f[1] : null; };
+    const hits = (GLOSS[l.id] || []).map(([w, tr]) => ({w, tr, est: wtOf(w) ?? l.at + D * Math.max(0, low.indexOf(w.toLowerCase())) / low.length})).sort((p, q) => p.est - q.est);
     hits.forEach((h, i) => { const a = Math.max(h.est - .1, prevEnd + .03), nx = hits[i + 1] ? hits[i + 1].est - .1 : l.end + .4, b = Math.max(a + 1.3, Math.min(a + 2.6, nx)); CHIPS.push({a, b, w: h.w, tr: h.tr}); prevEnd = b; }); } }
 
 const EN = /^(спикаю|инвайт|сендила|плас-ваном|оквард|сиквел|ай|лайк|ту|мейк|конгрэтьюлейшнс|зе|брайд|энд|грум|мэн|дэнс|ченджаются|ю|ноу|хард|филингс)$/i;
 const isEn = w => { const x = w.replace(/[«»"?!.,…—:]/g, ''); return /[a-z]/i.test(x) || EN.test(x); };
 function curChunk(t) { let cur = null; for (const c of FLAT) if (t >= c.a - .02 && t < c.hold) cur = c; return cur; }
-function outlinedWords(words, y, size0, colFn) { let size = size0; g.font = `${size}px ${FONT}`; const sp = () => g.measureText(' ').width; const tw0 = () => words.reduce((a, w) => a + g.measureText(w).width, 0) + sp() * (words.length - 1);
+function outlinedWords(words, y, size0, colFn, fx) { let size = size0; g.font = `${size}px ${FONT}`; const sp = () => g.measureText(' ').width; const tw0 = () => words.reduce((a, w) => a + g.measureText(w).width, 0) + sp() * (words.length - 1);
   let tw = tw0(); while (tw > 980 && size > 34) { size -= 4; g.font = `${size}px ${FONT}`; tw = tw0(); } let x = 540 - tw / 2; g.textAlign = 'left'; g.textBaseline = 'middle'; g.lineJoin = 'round';
-  for (const w of words) { g.lineWidth = size * .24; g.strokeStyle = '#000'; g.strokeText(w, x, y); g.fillStyle = colFn(w); g.fillText(w, x, y); x += g.measureText(w).width + sp(); } }
-function caption(t) { const cur = curChunk(t); if (!cur) return; const pop = 1 + .08 * clamp(1 - (t - cur.a) / .12); g.save(); g.translate(540, 1640); g.scale(pop, pop); g.translate(-540, -1640);
-  outlinedWords(cur.s.split(' '), 1640, 70, w => isEn(w) ? '#ffd23f' : '#ffffff'); g.restore(); if (cur.tr) outlinedWords(cur.tr.split(' '), 1730, 46, () => '#ffffff'); }
+  words.forEach((w, i) => { const ww = g.measureText(w).width, f = fx ? fx(i) : {al: 1, s: 1}; g.save(); g.globalAlpha *= f.al; g.translate(x + ww / 2, y); g.scale(f.s, f.s); g.translate(-(x + ww / 2), -y);
+    g.lineWidth = size * .24; g.strokeStyle = '#000'; g.strokeText(w, x, y); g.fillStyle = colFn(w); g.fillText(w, x, y); g.restore(); x += ww + sp(); }); }
+function caption(t) { const cur = curChunk(t); if (!cur) return;
+  outlinedWords(cur.s.split(' '), 1640, 70, w => isEn(w) ? '#ffd23f' : '#ffffff', (i) => { const wt = cur.wt ? cur.wt[i] : cur.a; return t < wt - .03 ? {al: .38, s: 1} : {al: 1, s: 1 + .22 * (1 - spr(P01(t, wt - .03, .32), 6, 11))}; });
+  if (cur.tr) outlinedWords(cur.tr.split(' '), 1730, 46, () => '#ffffff'); }
 function flag(x, y, w, h) { g.save(); g.beginPath(); g.rect(x, y, w, h); g.clip(); g.fillStyle = '#1f3a8a'; g.fillRect(x, y, w, h);
   ln([[x, y], [x + w, y + h]], 10, '#ffffff'); ln([[x + w, y], [x, y + h]], 10, '#ffffff'); ln([[x, y], [x + w, y + h]], 4, '#d8323c'); ln([[x + w, y], [x, y + h]], 4, '#d8323c');
   ln([[x + w / 2, y], [x + w / 2, y + h]], 14, '#ffffff'); ln([[x, y + h / 2], [x + w, y + h / 2]], 14, '#ffffff'); ln([[x + w / 2, y], [x + w / 2, y + h]], 8, '#d8323c'); ln([[x, y + h / 2], [x + w, y + h / 2]], 8, '#d8323c'); g.restore(); g.strokeStyle = INK; g.lineWidth = 4; g.strokeRect(x, y, w, h); }
@@ -336,7 +356,7 @@ function chip(t) { let c = null; for (const q of CHIPS) if (t >= q.a && t < q.b)
   g.save(); g.globalAlpha = k; g.translate(540, 1536 + (1 - k) * 16); g.rotate(-.015); rr(-w / 2 + 6, -34, w, 72, 20, 'rgba(42,34,48,0.35)', 0); rr(-w / 2, -40, w, 72, 20, '#fffaf0', 5);
   g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillStyle = '#d63a8a'; g.fillText(w1, -tw / 2, -3); g.fillStyle = INK; g.fillText(w2, -tw / 2 + g.measureText(w1).width, -3); g.restore(); }
 const HOOK_END = 4.3;
-function hook(t) { if (t > HOOK_END + .3) return; const a = ease(t / .2) * (1 - ease((t - HOOK_END) / .3)); g.save(); g.globalAlpha = a; g.translate(540, 330); g.rotate(-.02);
+function hook(t) { if (t > HOOK_END + .3) return; const a = clamp(t / .06) * (1 - ease((t - HOOK_END) / .3)), st = 1 + .6 * (1 - ex(P01(t, 0, .3))); g.save(); g.globalAlpha = a; g.translate(540, 330); g.rotate(-.02 - .06 * (1 - ex(P01(t, 0, .3)))); g.scale(st, st);
   rr(-450, -165, 900, 330, 34, '#fffaf0', 9); txt('БЫВШИЙ ЖЕНИТСЯ', 0, -92, 80, INK); txt('НА ЕЁ ПОДРУГЕ.', 0, 2, 80, INK); txt('ЖАННА ПРИШЛА', 0, 98, 88, '#d63a8a'); g.restore(); }
 function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30,20,30,${.55 * k})`; g.fillRect(0, 0, W, H); g.save(); g.globalAlpha = k; g.translate(0, (1 - k) * 80);
   rr(60, 170, 960, 1540, 44, '#fffaf0', 8); txt('ПЕРЕВОДИМ ЖАННУ', 540, 270, 66, '#d63a8a');
@@ -350,16 +370,29 @@ let COVER = null;
 function world(t) { const sc = SCENE(t);
   if (sc === 'cer') { gary(t); lucy(t); petrovich(t); zhanna(t); gate(t); }
   else { zhanna(t); gary(t); lucy(t); priceTag(t); petrovich(t); headTable(t); giftBox(t); propsBq(t); swan(X.bq.p, t); } }
-function frame(t) {
-  const c = COVER || camAt(t); curCam = c; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
+function scene(t, c) { curCam = c; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
   g = GB; g.setTransform(1, 0, 0, 1, 0, 0); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); (SCENE(t) === 'cer' ? setCer : setBq)(t); g = G0;
   g.save(); g.filter = `blur(${(3 * c.z).toFixed(1)}px) saturate(0.75) brightness(0.95)`; g.drawImage(bgCv, 0, 0); g.filter = 'none'; g.restore();
   g.save(); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); world(t); g.restore();
   const v = g.createRadialGradient(W / 2, H * .45, 650, W / 2, H * .45, 1250); v.addColorStop(0, 'rgba(30,15,30,0)'); v.addColorStop(1, 'rgba(30,15,30,0.2)'); g.fillStyle = v; g.fillRect(0, 0, W, H);
-  if (c.sh.k !== 'END' && !COVER) panels(t); banqCard(t);
+  if (c.sh.k !== 'END' && !COVER) panels(t); }
+const accCv = createCanvas(W, H), GACC = accCv.getContext('2d'), frzCv = createCanvas(W, H), GFRZ = frzCv.getContext('2d');
+function frame(t) {
+  const c = COVER || camAt(t);
+  if (!COVER && c.whip) { GACC.clearRect(0, 0, W, H); const N = 6; for (let k = 0; k < N; k++) { const ts = t + (k / (N - 1) - .5) / 30 * .9; scene(ts, camAt(ts)); GACC.globalAlpha = 1 / (k + 1); GACC.drawImage(cv, 0, 0); } GACC.globalAlpha = 1; g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(accCv, 0, 0); curCam = c; }   // T3 motion blur
+  else if (!COVER && t >= FREEZE[0] && t < FREEZE[0] + FREEZE[1]) freezeFrame(t);
+  else scene(t, c);
+  banqCard(t);
   if (process.env.NOCAP) return;
-  hook(t); if (c.sh.k === 'END') endCard(t); else if (!(t >= BANQ && t < BANQ + 1.25)) { chip(t); britChip(t); caption(t); }
+  hook(t); if (c.sh.k === 'END') endCard(t); else if (!(t >= PLATE[0] && t < PLATE[1])) { chip(t); britChip(t); caption(t); }
 }
+function freezeFrame(t) { const f0 = FREEZE[0], u = (t - f0) / FREEZE[1], c0 = camAt(f0); scene(f0, c0); GFRZ.clearRect(0, 0, W, H); GFRZ.drawImage(cv, 0, 0);
+  g.setTransform(1, 0, 0, 1, 0, 0); const z = 1 + .05 * eio(u); g.save(); g.translate(540, 960); g.scale(z, z); g.translate(-540, -960); g.filter = 'grayscale(1) contrast(1.3) brightness(1.05)'; g.drawImage(frzCv, 0, 0); g.filter = 'none';
+  // red pencil circle drawn on around the SECOND HAND tag (world -> screen at the frozen camera)
+  const S = GA.s, tx = X.bq.g + 40 * S + 60 + 150, ty = SEAT - 840 * S + 70 + 18, sx = 540 + (tx - c0.x) * c0.z, sy = 960 + (ty - c0.y) * c0.z, pr = ex(P01(t, f0 + .15, .5));
+  if (pr > 0) { g.beginPath(); for (let i = 0; i <= 64 * pr; i++) { const a = -2.2 + i / 64 * 6.6, r = 1 + .05 * Math.sin(i * .7); const px = sx + Math.cos(a) * 200 * c0.z * r, py = sy + Math.sin(a) * 92 * c0.z * r; i ? g.lineTo(px, py) : g.moveTo(px, py); } g.strokeStyle = '#e0262f'; g.lineWidth = 9; g.lineCap = 'round'; g.stroke(); }
+  g.restore();
+  const lk = spr(P01(t, f0 + .25, .4), 6, 10); if (lk > 0) { g.save(); g.translate(540, 600); g.rotate(-.04 + (1 - lk) * -.1); g.scale(lk, lk); rr(-270, -52, 540, 104, 10, '#e0262f', 6); txt('ПРОБЕГ: 7 ЛЕТ', 0, 2, 62, '#ffffff', HW); g.restore(); } }
 const [mode, arg, outName] = process.argv.slice(2);
 if (mode === 'still') { fs.mkdirSync('out/st', {recursive: true}); for (const t of arg.split(',')) { frame(+t); fs.writeFileSync(`out/st/${t}.png`, cv.toBuffer('image/png')); } }
 else if (mode === 'cover') { // NOCAP still shifted down 180 px, top strip filled, cream plate top edge at y=330 (text inside the 3:4 crop)
@@ -393,3 +426,9 @@ else if (mode === 'frame') { // measure each character's horizontal extent per s
   fs.writeFileSync('cams.json', JSON.stringify(out)); }
 else if (mode === 'facecheck') { // Petrovich's face carries magenta probes; any magenta pixel in any frame = face visible
   process.env.NOCAP = 1; let bad = 0; const [step, off, from, to] = (arg || '1:0').split(':').map(Number); for (let i = Math.round((from || 0) * FPS) + (off || 0); i < Math.min(to || 1e9, TL.TOTAL) * FPS; i += step) { frame(i / FPS); const d = cv.data(); let n = 0; for (let j = 0; j < d.length; j += 16) if (d[j] > 230 && d[j + 1] < 40 && d[j + 2] > 230) n++; if (n) { bad++; console.log('VISIBLE', (i / FPS).toFixed(2), n); } } console.log('facecheck done, frames with face:', bad); }
+else if (mode === 'smoothcheck') { // per-frame change of the drawn mouth opening; >15% allowed only at true onsets (opening from a nearly closed mouth)
+  let n = 0, big = 0, worst = 0, dips = 0, low = 0, dur = 0;
+  for (const l of L) { if (l.who === 'p') continue; const M = []; for (let t = l.at - .1; t < l.end + .3; t += 1 / FPS) M.push(T.talk(l, t).mouth); dur += l.end - l.at;
+    for (let i = 1; i < M.length; i++) { const d = Math.abs(M[i] - M[i - 1]), onset = M[i - 1] < .12 && M[i] > M[i - 1]; n++; if (d > .151 && !onset) { big++; worst = Math.max(worst, d); } if (M[i] < .15) low++; }
+    let hi = 0, lo = 1, down = false; for (const m of M) { if (!down) { if (m > hi) hi = m; if (hi - m >= .2) { down = true; lo = m; } } else { if (m < lo) lo = m; if (m - lo >= .2) { dips++; down = false; hi = m; } } } }
+  console.log(`frames ${n}, non-onset jumps >15%: ${big} (${(100 * big / n).toFixed(1)}%), worst ${worst.toFixed(3)}, visible syllable dips/s ${(dips / dur).toFixed(2)}, near-closed ${(100 * low / n).toFixed(0)}%`); }
