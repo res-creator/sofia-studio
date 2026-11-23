@@ -40,9 +40,25 @@ def tone(f, d, v=.2, shape=lambda x: np.exp(-x * 6)):
 def noise(d, v, smooth=40): n = rng.standard_normal(int(d * SR)); return np.convolve(n, np.ones(smooth) / smooth, 'same') * np.hanning(len(n)) * v
 def put(at, a): i = int(max(0, at) * SR); fx[i:i + len(a)] += a[:len(fx) - i]
 def horn(at, d=.5, v=.12): put(at, tone(415, d, v, lambda x: np.where(x < .9, 1, 0)) + tone(523, d, v * .8, lambda x: np.where(x < .9, 1, 0)))
+# word timings (faster-whisper on the trimmed clips, voice/words.json from voice/words.py): kinetic captions pop word by word
+WORDS = {}
+if os.path.exists('voice/words.json'):
+    WORDS = json.load(open('voice/words.json'))
+    for k, ws in WORDS.items():   # glue split contractions (Ma 'am) back together
+        m = []
+        for w in ws:
+            if m and w[2][:1] in "'’": m[-1] = [m[-1][0], w[1], m[-1][2] + w[2]]
+            else: m.append(list(w))
+        WORDS[k] = m
+    for l in L:
+        if l['id'] in WORDS: l['words'] = [round(l['at'] + w[0], 3) for w in WORDS[l['id']]]
 by = {l['id']: l for l in L}
+def wt(k, sub, d=0.):   # time of the first spoken word of line k containing sub
+    for st, en, w in WORDS.get(k, []):
+        if sub.lower() in w.lower(): return round(by[k]['at'] + st, 3)
+    return round(by[k]['at'] + d, 3)
 x = np.arange(int(TOTAL * SR)) / SR; hum = .012 * np.sin(2 * np.pi * 55 * x) * (1 + .3 * np.sin(2 * np.pi * .7 * x)); hum[int(END * SR):] = 0; fx[:len(hum)] += hum   # engine hum
-put(by['z1']['at'] + .5, tone(1600, .25, .08) + tone(2400, .25, .04))         # lipstick "mwah" ping
+KISS = round(by['z1']['at'] + .78, 3); put(KISS, noise(.05, .35, 3)); put(KISS + .03, tone(900, .08, .06, lambda x: np.exp(-x * 20)))   # lipstick kiss «чмок» (soft)
 put(by['z3']['at'] + .6, noise(.9, .5, 6) * np.sin(2 * np.pi * 3 * np.arange(int(.9 * SR)) / SR) ** 2)   # tyre screech (left turn)
 horn(by['e4']['at'] - .3, .45); horn(by['z4']['end'] - .2, .35, .08)
 horn(by['z7']['at'] + .8, .3, .07); horn(by['z7']['at'] + 1.3, .3, .06)
@@ -53,10 +69,29 @@ for s in (STAMP1, STAMP2): put(s, tone(90, .35, .45)); put(s, noise(.12, .6, 20)
 DOOR = round(by['e12']['end'] + .1, 3); put(DOOR, tone(70, .5, .45)); put(DOOR, noise(.2, .7, 25))   # door slam
 put(by['p3']['at'] - .3, tone(1046, .5, .05))                                   # British "ting"
 put(END, tone(1046, 1.2, .1) + tone(1568, 1.2, .06))                            # end card chime
+# ---- edit events: one source for picture (render.js) and sound (see EDIT_PLAN.md) ----
+PUNCH = [[wt('z4', 'консид', 2.4), 1.0], [wt('z5', 'стартов', 1.2), .8], [STAMP1, 1.0], [wt('z13', 'взял', 4.2), .9]]   # punch-in + small shake, 4 times
+PK1 = round(by['z9']['at'] + 1.9, 3); FREEZE = [round(PK1 + .15, 3), 1.6]                    # top view: car parked on two spots -> freeze + label
+WHIP = [round(by['z9']['at'] - .1, 3), round(by['z10']['at'] - .1, 3)]                      # whip-pan into the top view and back
+P3S = by['p3']['at'] + (by['p3']['end'] - by['p3']['at']) * .4; LIC = round(by['z13']['at'] + .25, 3)
+PANELS = [['right', by['e3']['at'] - .1, by['e3']['end'] + .4, None, ''], ['yield', by['e4']['at'] - .05, by['e4']['end'] + .3, None, ''], ['speed', by['e5']['at'] - .1, by['e5']['end'] + .4, None, ''],
+  ['price', by['z5']['at'] + .3, by['z5']['end'] + .05, 'z', ''], ['merge', by['e7']['at'], by['e7']['end'] + .3, None, ''], ['stop', by['e8']['at'], by['e8']['end'] + .1, None, ''],
+  ['cutlets', by['z10']['at'] + .4, by['z10']['end'] + .1, 'z', ''], ['failed', STAMP1 - .15, by['e11']['end'] + .2, None, ''], ['nextweek', P3S + .05, by['p3']['end'] + .3, 'e', ''],
+  ['passed', STAMP2 - .2, LIC, None, 'cutout'], ['license', LIC, by['z13']['end'] + .15, None, 'cutin']]   # passed -> license: match cut on the PASSED stamp
+PANELS = [[i, round(a, 3), round(b, 3), th, m] for i, a, b, th, m in PANELS]
+def whoosh(d, v):
+    n = rng.standard_normal(int(d * SR)); x = np.linspace(0, 1, len(n)); n = np.convolve(n, np.ones(12) / 12, 'same'); return n * np.sin(np.pi * x) ** 2 * v
+put(WHIP[0] - .3, whoosh(.35, .16)); put(WHIP[1] - .3, whoosh(.3, .13))
+for t0, k in PUNCH:
+    if abs(t0 - STAMP1) > .05: put(t0, tone(70, .22, .22 * k))
+put(FREEZE[0], noise(.03, .5, 2)); put(FREEZE[0], tone(2400, .04, .06)); put(FREEZE[0] + .35, noise(.5, .06, 3))
+for pid, a0, b0, th, m in PANELS:
+    if m != 'cutin': put(a0, whoosh(.12, .07))
+put(.02, whoosh(.14, .08))                                                       # hook plate lands
 mix = voice + fx
 mix = mix / max(1e-6, np.abs(mix).max()) * .89
 sf.write('out/audio_raw.wav', mix, SR)
 subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', 'out/audio_raw.wav', '-af', 'loudnorm=I=-15:TP=-1.5', '-ar', '44100', 'out/audio.wav'], check=True)
-json.dump({'L': L, 'END': END, 'TOTAL': TOTAL, 'STAMP1': STAMP1, 'STAMP2': STAMP2, 'DOOR': DOOR}, open('timeline.json', 'w'), ensure_ascii=False)
+json.dump({'L': L, 'END': END, 'TOTAL': TOTAL, 'STAMP1': STAMP1, 'STAMP2': STAMP2, 'DOOR': DOOR, 'PUNCH': PUNCH, 'FREEZE': FREEZE, 'WHIP': WHIP, 'PANELS': PANELS, 'KISS': KISS}, open('timeline.json', 'w'), ensure_ascii=False)
 for l in L: print(l['id'], l['at'], l['end'])
 print('STAMP1', STAMP1, 'STAMP2', STAMP2, 'DOOR', DOOR, 'END', END, 'TOTAL', TOTAL)
