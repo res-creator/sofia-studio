@@ -16,6 +16,9 @@ function txt(s, x, y, size, col, font = FONT, align = 'center') { g.font = `${si
 function star(x, y, r, fill, lw = 5, n = 8, rot = 0) { const p = []; for (let i = 0; i < n * 2; i++) { const a = rot + i * Math.PI / n, r2 = i % 2 ? r * .42 : r; p.push([x + Math.cos(a) * r2, y + Math.sin(a) * r2]); } poly(p, fill, lw); }
 function sparkle(x, y, r, a = 1, col = '#fff6c0') { g.save(); g.globalAlpha *= a; poly([[x, y - r], [x + r * .22, y - r * .22], [x + r, y], [x + r * .22, y + r * .22], [x, y + r], [x - r * .22, y + r * .22], [x - r, y], [x - r * .22, y - r * .22]], col, 3); g.restore(); }
 const at = (id, u) => BY[id].at + (BY[id].end - BY[id].at) * u;
+const P01 = (t, a, d) => clamp((t - a) / d), ex = x => x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.pow(2, -10 * x), ei = x => x * x * x, eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const spr = (x, d = 7, f = 9) => x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.exp(-d * x) * Math.cos(f * x);   // spring 0->1 with overshoot
+const PUNCH = TL.PUNCH, FREEZE = TL.FREEZE, SHUSH = TL.SHUSH, WHIP = TL.WHIP, MATCH = TL.MATCH, SHG = [SHUSH[0], SHUSH[1] + .5];   // edit events from prep.py
 
 // ---------- characters ----------
 const ZH = {outfit: 'leopard', hair: 'bouffant', lashes: true, earrings: '#f2c820', skirt: true, pal: {skin: '#f4c8a8', skinS: '#e2aa88', hair: '#f3d27a', hairS: '#d9b257', brow: '#8a6030', lip: '#d02a5a', top: '#d63a8a', topS: '#b02a70', collar: '#d63a8a', bottom: '#2a2230', skirt: '#2a2230', legs: '#f4c8a8', shoe: '#e0b040', sole: '#e0b040'}, x: 540, s: .86};
@@ -64,6 +67,7 @@ function room(t) {
   rr(-260, 900, 260, 24, 6, '#8a5a3c', 6); poly([[-170, 900], [-150, 800], [-110, 800], [-90, 900]], 'rgba(220,240,255,.9)', 5);
 }
 // ---------- vanity (sharp foreground) ----------
+let JARPOS = null, BOTPOS = null; const scr = (x, y) => { const m = g.getTransform(); return [m.a * x + m.c * y + m.e, m.b * x + m.d * y + m.f]; };   // screen position of a prop (for the match cut)
 let HELDA = {};   // props in Zhanna's hands: name -> how much (0..1) it is in the hand (table copy fades out, no pops)
 function vanity(t) { rr(-200, TABLE, 1480, 40, 14, '#fbeef0', 8); rr(-180, TABLE + 36, 1440, 700, 0, '#f0d8de', 8); for (const x of [120, 540, 960]) { rr(x - 150, TABLE + 90, 300, 160, 16, null, 5); ell(x, TABLE + 170, 14, 14, '#e8c27a', 4); }
   const onTable = (n, f) => { const a = 1 - (HELDA[n] || 0); if (a <= .01) return; g.save(); g.globalAlpha *= a; f(); g.restore(); };
@@ -96,13 +100,14 @@ const ZG = {
   eyes: s => [[s * 78, -860], [s * 220, -930], [s * 64, -1095]],
   pelmeni: s => s < 0 ? [[-78, -860], [-235, -900], [-100, -1012]] : [[78, -860], [160, -760], [60, -760]],
   hush: s => s > 0 ? [[78, -860], [180, -860], [40, -955]] : REST(s),
+  shush: s => s > 0 ? [[78, -860], [262, -905], [238, -1010]] : REST(s),   // «Шшш»: arm forward, index finger up
   pour: s => s > 0 ? [[78, -860], [265, -1160], [185, -1610]] : [[-78, -860], [-160, -760], [-200, -860]],
   spoon: s => s > 0 ? [[78, -860], [255, -885], [215 + rub(.8)[0], -940 + rub(.8)[1]]] : [[-78, -860], [-175, -760], [-110, -790]],
   brooch: s => s > 0 ? [[78, -860], [160, -740], [20, -790]] : REST(s),
   explain: s => [[s * 78, -860], [s * 165, -760], [s * 165, -830]],
   wag: s => s > 0 ? [[78, -860], [190, -910], [180, -1050]] : REST(s),
 };
-const FRONT = new Set(['spoon', 'bags', 'rest', 'present', 'cheek', 'fork', 'forkup', 'eyes', 'pelmeni', 'hush', 'spoon', 'brooch', 'explain', 'point', 'wave', 'wag', 'shrug']);
+const FRONT = new Set(['shush', 'spoon', 'bags', 'rest', 'present', 'cheek', 'fork', 'forkup', 'eyes', 'pelmeni', 'hush', 'spoon', 'brooch', 'explain', 'point', 'wave', 'wag', 'shrug']);
 const KG = {
   rest: s => [[s * 78, -860], [s * 150, -720], [s * 100, -640]],
   present: s => s > 0 ? [[78, -860], [215, -800], [225, -950]] : [[-78, -860], [-150, -720], [-100, -640]],
@@ -118,13 +123,13 @@ const spkAt = (who, t) => { const l = lineAt(t); return l && l.who === who ? 1 :
 const talkSt0 = (l, t, seed) => { if (!l) return {mouth: 0, nod: 0, vis: .5}; const e = env(l, t), e0 = env(l, t - .1); return {mouth: e, vis: hash(Math.floor(t * 9) + seed), nod: 9 * clamp(e - e0)}; };
 const blink = (t, s) => ((t + s * 1.3) % (3.3 + s * .4)) < .12;
 function plan(P, who, t, idle) { const l = lineAt(t); if (l && l.who === who) { const u = (t - l.at) / (l.end - l.at); let gg = idle; for (const [k, v] of (P[l.id] || [])) if (u >= k) gg = v; return gg; } return idle; }
-const ZPLAN = {z1: [[0, 'present']], z2: [[0, 'wave'], [.62, 'point']], z3: [[0, 'shrug'], [.28, 'present'], [.52, 'cheek']], z5: [[0, 'fork'], [.58, 'forkup']], z6: [[0, 'bags'], [.55, 'eyes'], [.93, 'rest']],
-  z7: [[0, 'pelmeni']], z8: [[0, 'hush'], [.5, 'pour']], z9: [[0, 'spoon'], [.44, 'brooch'], [.72, 'wave']], z10: [[0, 'explain'], [.5, 'brooch']], z11: [[0, 'wag']], z12: [[0, 'shrug']], z13: [[0, 'brooch']]};
+const ZPLAN = {z0: [[0, 'wave'], [.62, 'present']], z1: [[0, 'present']], z2: [[0, 'wave'], [.62, 'point']], z3: [[0, 'present'], [.52, 'cheek']], z5: [[0, 'fork'], [.58, 'forkup']], z6: [[0, 'bags'], [.55, 'eyes'], [.93, 'rest']],
+  z7: [[0, 'pelmeni']], z8: [[0, 'rest'], [.5, 'pour']], z9: [[0, 'spoon'], [.44, 'brooch'], [.72, 'wave']], z10: [[0, 'explain'], [.5, 'brooch']], z11: [[0, 'wag']], z12: [[0, 'shrug']], z13: [[0, 'brooch']]};
 function zAct(t) { if (COVER) return {g: 'fork', mood: 'grin'}; if (t >= TL.END) return {g: 'rest', mood: 'grin'};
   let idle = 'rest'; if (t >= at('z8', .5) && t < TL.FRIDGE + .35) idle = 'pour'; if (t >= BY.z8.end && t < BY.p1.end + .3 && t >= TL.FRIDGE + .35) idle = 'shrug';
-  return {g: plan(ZPLAN, 'z', t, idle), mood: zMood(t)}; }
+  const gg = t >= SHG[0] && t < SHG[1] ? 'shush' : plan(ZPLAN, 'z', t, idle); return {g: gg, mood: zMood(t)}; }
 // emotions change on every beat (toon v2 moods): eye-roll / side-smirk when trolling, laugh and grin on punchlines, shock, shiver, dreamy, proud, flirty wink
-const MOODS = {z1: [[0, 'smug'], [.12, 'eyeroll'], [.45, 'smugside'], [.82, 'flirty']], z2: [[0, 'grin'], [.6, 'smugside']], z3: [[0, 'shocked'], [.28, 'smug'], [.76, 'laugh']],
+const MOODS = {z0: [[0, 'grin'], [.55, 'proud']], z1: [[0, 'smug'], [.12, 'eyeroll'], [.45, 'smugside'], [.82, 'flirty']], z2: [[0, 'grin'], [.6, 'smugside']], z3: [[0, 'shocked'], [.28, 'smug'], [.76, 'laugh']],
   z5: [[0, 'proud'], [.58, 'laugh']], z6: [[0, 'dreamy'], [.75, 'grin']], z7: [[0, 'worried'], [.5, 'proud']], z8: [[0, 'smugside'], [.72, 'proud']], z9: [[0, 'dreamy'], [.38, 'proud'], [.75, 'grin']],
   z10: [[0, 'smug']], z11: [[0, 'smugside'], [.55, 'proud']], z12: [[0, 'flirty']], z13: [[0, 'flat'], [.6, 'laugh']]};
 function zMood(t) { if (COVER) return 'grin'; if (t >= TL.END) return 'laugh'; const l = lineAt(t); if (l && l.who === 'z') return plan(MOODS, 'z', t, 'smug');
@@ -139,6 +144,10 @@ function hand(x, y, ang, S, skin, nail, glossy) { g.save(); g.translate(x, y); g
   g.save(); g.translate(-4, -22); g.rotate(-.9); rr(0, -6, 30, 12, 6, skin, 5); if (nail) ell(29, 0, 6, 5, nail, 3); g.restore();
   ell(0, 0, 27, 25, skin, 5); g.restore(); }
 // gripObject: back of the hand -> object -> front fingertips + thumb. h = {x, y, rot, S, skin, nail, w (half-width of the object at the grip, world px), fist, side}
+// pointUp: fist with the index finger raised (nail on top), thumb tucked across the curled fingers — the «shh / hold on» hand
+function pointUp(x, y, S, skin, nail) { g.save(); g.translate(x, y); g.scale(S, S);
+  rr(-24, -84, 18, 82, 9, skin, 5); if (nail) { ell(-15, -76, 6, 7, nail, 3); ell(-17, -79, 2, 2, '#ffffff', 0); }
+  ell(0, 0, 32, 34, skin, 5); for (let i = 0; i < 3; i++) rr(-8, -10 + i * 14, 40, 14, 7, skin, 5); rr(-30, -14, 40, 14, 7, skin, 5); g.restore(); }
 function gripObject(drawObj, h) { const sd = h.side || 1, W2 = (h.w || 0) / h.S;
   g.save(); g.translate(h.x, h.y); g.rotate(h.rot); g.scale(sd * h.S, h.S); ell(0, 0, h.fist ? 30 : 34, h.fist ? 32 : 36, h.skin, 5); g.restore();
   drawObj();
@@ -166,7 +175,7 @@ function zState(t, x, y, S) { const l = lineAt(t), spk = l && l.who === 'z', a =
 function zhannaAt(t, x0, y0, S0, opt = {}) { const st = zState(t, x0, y0, S0), {a, fsx, x, y, S} = st;
   const zl = lineFor('z', t), ts = zl ? T.talk(zl, t, 3) : {mouth: t >= LAUGH0 ? T.follow(u => T.laughEnv(u - LAUGH0), t, .06, .1, .3) : 0, nod: 0, round: 0}, breath = 2 + 2 * Math.sin(t * 2.2), md = T.moodAt(zMood, t, .25);
   const pal = {...(fsx.wet > .5 ? WET : ZH.pal), ...(fsx.cream > .5 ? {lid: '#fbfaf2'} : {})};
-  T.draw(g, {...ZH, pal, x, y, s: S, sq: st.br, arms: (a.fn = T.ik(wig(a.fn, t, 2 + 4 * st.spkK), breath)), ik: false, front: a.front, mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, mouth: ts.mouth, round: ts.round, talking: !!st.spk, nod: ts.nod, t, lean: .012 * Math.sin(t * .6),
+  T.draw(g, {...ZH, pal, x, y, s: S, sq: st.br, arms: (a.fn = T.ik(wig(a.fn, t, 2 + 4 * st.spkK), breath)), ik: false, front: a.front, mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, mouth: ts.mouth, round: ts.round, sh: T.follow(u => u >= SHUSH[0] && u < SHUSH[1] ? 1 : 0, t, .08, .12, .3), talking: !!st.spk, nod: ts.nod, t, lean: .012 * Math.sin(t * .6),
     blink: blink(t, 2) || md.blink, tilt: st.tilt, look: st.look,
     skinFx: skinFx(fsx), faceFx: faceFx(fsx, t), hairFx: hairFx(fsx, t)});
   if (opt.mini) return; const bx = x - 40 * S, by = y - 790 * S * st.br; star(bx, by, 30 * S / .76, '#f2c820', 5, 8, t * .3); ell(bx, by, 9, 9, '#ff5a8a', 4);
@@ -179,7 +188,8 @@ function zhannaAt(t, x0, y0, S0, opt = {}) { const st = zState(t, x0, y0, S0), {
   const zProp = (gR, al, skip) => {
   const fist = (sd, hx, hy, tx, ty, len, gripAt, drawFn) => { const ang = Math.atan2(ty - hy, tx - hx), ox = hx - Math.cos(ang) * gripAt, oy = hy - Math.sin(ang) * gripAt, sc = Math.hypot(tx - ox, ty - oy) / len; skip.add(sd);
     gripObject(() => drawFn(ox, oy, ang, sc), H(hx, hy, ang - Math.PI / 2, 0, {fist: true, side: sd})); };
-  if (gR === 'present' && t < BY.z3.end) { HELDA.mayo = Math.max(HELDA.mayo || 0, al); skip.add(1); gripObject(() => jar(rx, ry + 56, .8), H(rx, ry, 0, 44)); }
+  if (gR === 'present' && t < BY.z3.end) { HELDA.mayo = Math.max(HELDA.mayo || 0, al); skip.add(1); gripObject(() => jar(rx, ry + 56, .8), H(rx, ry, 0, 44)); JARPOS = scr(rx, ry); }
+  if (gR === 'shush') { skip.add(1); pointUp(rx, ry, S * 1.3, skin, nail); }
   if (gR === 'cheek' || gR === 'spoon') { const cream = gR === 'spoon'; HELDA[cream ? 'cream' : 'mayo'] = Math.max(HELDA[cream ? 'cream' : 'mayo'] || 0, al); skip.add(-1); gripObject(() => cream ? creamTub(lx, ly + 31, .62) : jar(lx, ly + 43, .62), H(lx, ly, 0, cream ? 36 : 34, {side: -1})); }
   if (gR === 'cheek') ell(rx - 16, ry - 22, 20, 13, '#fff1bf', 4);   // mayo on the fingertips, rubbed on the cheek
   if (gR === 'fork') { const [tx, ty] = onFace(92, -1048); fist(1, rx, ry, tx, ty, 150, 22, (ox, oy, ang, sc) => fork(ox, oy, ang, false, sc)); }
@@ -223,7 +233,7 @@ function kaylee(t, x, y, S) { const l = lineAt(t), spk = l && l.who === 'k', a =
   armOver(a, x, y, S, KY); const [rx, ry, ra] = hpos(a, 1, x, y, S);
   const KH = (hx, hy, rot, w, o = {}) => ({x: hx, y: hy, rot, S, skin: KY.pal.skin, nail: '#ff9ec0', w, ...o});
   const kProp = (G, skip) => {
-  if (G === 'present') { skip.add(1); gripObject(() => { g.save(); g.translate(rx, ry); rr(-30, -60, 60, 110, 14, '#ffc2d6', 5); rr(-12, -88, 24, 30, 6, '#ffffff', 4); txt('$80', 0, 26, 24, '#b02a70'); g.restore(); }, KH(rx, ry, 0, 30 * 1)); }
+  if (G === 'present') { skip.add(1); BOTPOS = scr(rx, ry - 5); gripObject(() => { g.save(); g.translate(rx, ry); rr(-30, -60, 60, 110, 14, '#ffc2d6', 5); rr(-12, -88, 24, 30, 6, '#ffffff', 4); txt('$80', 0, 26, 24, '#b02a70'); g.restore(); }, KH(rx, ry, 0, 30 * 1)); }
   if (G === 'cheek' && (id === 'k3' || (!id && t < BY.k4.at))) { skip.add(1); gripObject(() => { g.save(); g.translate(rx - 10, ry - 20); g.rotate(-.5); g.beginPath(); g.moveTo(-40, 30); g.quadraticCurveTo(-50, -40, 0, -46); g.quadraticCurveTo(50, -40, 40, 30); g.quadraticCurveTo(0, 10, -40, 30); g.closePath(); g.fillStyle = '#7ad0a8'; g.fill(); g.strokeStyle = INK; g.lineWidth = 5; g.stroke(); g.restore(); }, KH(rx, ry, -.5, 38)); }
   if (G === 'cheek' && id === 'k7') { skip.add(1); const tx = x + 95 * S, ty = y - 1050 * S, ang = Math.atan2(ty - ry, tx - rx), ox = rx - Math.cos(ang) * 22, oy = ry - Math.sin(ang) * 22;
     gripObject(() => fork(ox, oy, ang, false, Math.hypot(tx - ox, ty - oy) / 150), KH(rx, ry, ang - Math.PI / 2, 0, {fist: true})); }
@@ -265,25 +275,32 @@ const CARD = {
     g.beginPath(); g.moveTo(-130, 24); g.quadraticCurveTo(0, -12, 140, 20); g.quadraticCurveTo(150, 50, 120, 56); g.quadraticCurveTo(0, 30, -120, 56); g.quadraticCurveTo(-150, 50, -130, 24); g.closePath(); g.fillStyle = '#5e6470'; g.fill(); g.stroke(); g.restore();
     txt('PETROVICH', 640, 410, 50, '#5e6470'); stamp(640, 130, .9, u - .4); },
 };
-function panel(id, u, t, a0, b0) { const k = ease((t - a0) / .3) * (1 - ease((t - b0 + .3) / .3)); if (k <= 0) return;
+function panel(id, u, t, a0, b0) { const ui = P01(t, a0, .45), uo = P01(t, b0 - .3, .3), sp = spr(ui, 6, 10);   // spring in (overshoot + tilt), anticipation out (grow 5%, then shrink)
+  const k = clamp(ui * 5) * (1 - ei(clamp((uo - .35) / .65))); if (k <= 0) return;
+  const scl = (.62 + .38 * sp) * (uo < .35 ? 1 + .05 * Math.sin(Math.PI * uo / .35) : 1 - .4 * ei((uo - .35) / .65)), rot = (1 - sp) * -.08;
   const prev = g; g = GC; g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, W, H); g.translate(PX, PY); rr(10, 10, PW - 20, PH2 - 20, 46, '#fffaf0', 10);
   g.save(); g.beginPath(); g.roundRect(30, 40, PW - 60, PH2 - 80, 36); g.clip(); CARD[id](u); g.restore();
-  g = prev; g.save(); g.globalAlpha = k; const sc = .92 + .08 * k; g.translate(540, PY + PH2 / 2); g.scale(sc, sc); g.translate(-540, -(PY + PH2 / 2)); g.drawImage(clCv, 0, 0); g.restore(); }
-const PANELS = [['mayo', at('z3', .3), BY.z3.end + .4], ['fork', BY.z5.at + .1, BY.z5.end + .35], ['pelmeni', BY.z7.at + .15, BY.z7.end + .35], ['shelf', BY.z10.at + .1, BY.z10.end + .35], ['brad', at('z13', .3), BY.z13.end + .6]];
+  g = prev; g.save(); g.globalAlpha = k; g.translate(540, PY + PH2 / 2); g.rotate(rot); g.scale(scl, scl); g.translate(-540, -(PY + PH2 / 2)); g.drawImage(clCv, 0, 0); g.restore(); }
+const PANELS = TL.PANELS;   // from prep.py (card SFX use the same times)
 function panels(t) { for (const [id, a, b] of PANELS) if (t >= a && t < b) panel(id, (t - a) / (b - a), t, a, b); }
 
 // ---------- shots ----------
 const CAM = {WIDE: [1.0, 540, 1010], MED: [1.35, 540, 1030], CU: [1.68, 540, 1000], CU2: [1.55, 540, 1010]};
 const KS = id => [BY[id].at - .12, 'PHONE'];
 const SH = [[0, 'MED'], [BY.z2.at - .1, 'WIDE'], KS('k1'), [BY.z3.at - .1, 'CU'], KS('k3'), [BY.z5.at - .1, 'MED'], KS('k4'), [BY.z6.at - .1, 'CU'], [BY.z7.at - .1, 'MED'], KS('k5'),
-  [BY.z8.at - .05, 'WIDE'], [BY.z9.at - .1, 'CU'], [TL.RING - .2, 'PHONE'], [BY.z10.at - .1, 'MED'], KS('k7'), [BY.z11.at - .1, 'CU'], [BY.z12.at - .4, 'MED'], [TL.GRAB1 - .1, 'CU2'], [BY.z13.at - .1, 'CU'], [TL.GRAB2 - .1, 'CU2'], [TL.END, 'END']]
+  [BY.z8.at - .05, 'MED'], [at('z8', .45), 'WIDE'], [BY.z9.at - .1, 'CU'], [TL.RING - .2, 'PHONE'], [BY.z10.at - .1, 'MED'], KS('k7'), [BY.z11.at - .1, 'CU'], [BY.z12.at - .4, 'MED'], [TL.GRAB1 - .1, 'CU2'], [BY.z13.at - .1, 'CU'], [TL.GRAB2 - .1, 'CU2'], [TL.END, 'END']]
   .map(([at0, k], i, a) => ({at: at0, k, i, end: a[i + 1] ? a[i + 1][0] : TL.TOTAL}));
 let SOLVED = null; try { SOLVED = JSON.parse(fs.readFileSync(__dirname + '/cams.json', 'utf8')); } catch (e) {}
 function camAt(t) { let sh = SH[0]; for (const s of SH) if (t >= s.at) sh = s; const k = sh.k === 'END' ? 'MED' : sh.k === 'PHONE' ? 'WIDE' : sh.k; let [z, x, y] = CAM[k]; if (SOLVED && SOLVED[sh.i]) [z, x] = SOLVED[sh.i]; const u = clamp((t - sh.at) / (sh.end - sh.at));
-  const push = sh.i % 3 === 2 ? 0 : .025 * ease(u), punch = sh.at > 0 && sh.k !== 'END' ? .02 * (1 - ease((t - sh.at) / .3)) : 0; return {z: z * (1 + push + punch), x, y, k, sh}; }
+  let push = sh.i % 3 === 2 ? 0 : .025 * ease(u), punch = sh.at > 0 && sh.k !== 'END' ? .015 * (1 - ease((t - sh.at) / .3)) : 0;
+  let sx = 0, sy = 0; for (const [t0, k2] of PUNCH) { const v = t - t0; if (v >= 0 && v < .7) { punch += .05 * k2 * Math.exp(-7 * v); sx += 9 * k2 * Math.exp(-8 * v) * Math.sin(v * 64 + t0); sy += 7 * k2 * Math.exp(-8 * v) * Math.cos(v * 57 + t0); } }   // punch-in + small shake on the 4 top punchlines
+  let jump = 0; if (JUMPABLE.has(sh.k) && sh.end - sh.at > 4) for (const c of FLAT) if (c.a > sh.at + 1.8 && c.a < sh.end - 1.2 && c.a <= t) jump++;   // pattern-interrupt reframe on caption changes in long shots
+  const jz = jump % 2 ? 1.08 : 1, z1 = z * (1 + push + punch) * jz; return {z: z1, x: x + sx / z1, y: y - (jz > 1 ? 30 : 0) + sy / z1, k, sh}; }
+const JUMPABLE = new Set(['MED', 'WIDE']);
+function whipDx(t) { for (const [tc, d] of WHIP) { if (t >= tc - .25 && t < tc) return -d * ei(P01(t, tc - .25, .25)) * 1300; if (t >= tc && t < tc + .3) return d * (1 - ex(P01(t, tc, .3))) * 1300; } return 0; }
 
 // ---------- captions ----------
-const GLOSS = {z1: [['Гёрлиз', 'the girlies — девочки'], ['глоу', 'glow — сияние'], ['Ю ноу', 'you know — понимаешь']], z2: [['Гет рэди виз ми', 'get ready with me — собирайся со мной'], ['скинкеа рутин', 'skincare routine — уход за кожей'], ['тэгнула', 'tag — отметила']],
+const GLOSS = {z0: [['Get Ready With Me', 'собирайся со мной (GRWM)']], z1: [['Гёрлиз', 'the girlies — девочки'], ['глоу', 'glow — сияние'], ['Ю ноу', 'you know — понимаешь']], z2: [['скинкеа рутин', 'skincare routine — уход за кожей'], ['тэгнула', 'tag — отметила']],
   z3: [['дьюп', 'dupe — дешёвый аналог']], z5: [['Гуаша', 'gua sha — скребок для лица'], ['Лифтинг', 'lifting — подтяжка']], z6: [['Патчи', 'patches — патчи']], z7: [['Криотерапия', 'cryotherapy — лечение холодом'], ['Сибирь-стайл', 'Siberia style — по-сибирски']],
   z8: [['Протеин', 'protein — белок'], ['Слэй', 'slay — ты королева']], z9: [['Ноу филтер', 'no filter — без фильтра'], ['Залайкайте', 'like — ставьте лайки']], z10: [['Линк ин био', 'link in bio — ссылка в профиле']],
   z11: [['Коллаб', 'collab — совместный ролик'], ['клинзер', 'cleanser — гель для умывания']], z12: [['Чекни', 'check — проверь'], ['глас скин', 'glass skin — кожа как стекло']], z13: [['Гёрлиз', 'the girlies — девочки'], ['дэйт', 'date — свидание'], ['дьюп', 'dupe — дешёвый аналог']]};
@@ -300,29 +317,38 @@ function chunks(l) { if (SPL[l.id]) { const P = SPL[l.id], n = P.reduce((a, c) =
   for (const p of parts) { if ((cur + ' ' + p).trim().length > 34 && cur) { out.push(cur); cur = p; } else cur = (cur + ' ' + p).trim(); } if (cur) out.push(cur);
   for (let i = 0; i < out.length; i++) { const n0 = out.reduce((a, c) => a + c.length, 0); if (out.length > 1 && out[i].length / n0 * (l.end - l.at) < 1.2) { const j = i < out.length - 1 ? i : i - 1; out.splice(j, 2, out[j] + ' ' + out[j + 1]); i = -1; } }
   const n = out.reduce((a, c) => a + c.length, 0); let acc = 0; return out.map(c => { const a = l.at + (l.end - l.at) * acc / n; acc += c.length; return {s: c, a, b: l.at + (l.end - l.at) * acc / n, who: l.who, id: l.id}; }); }
-const CH = L.map(l => ({l, ch: chunks(l)})), FLAT = [].concat(...CH.map(x => x.ch));
+function wordTimes(l, ch) { const nc = ch.reduce((a, c) => a + c.s.split(' ').length, 0), W2 = l.words || [], nw = W2.length;   // whisper word times -> caption words
+  const wat = i => nw === 0 ? l.at + (l.end - l.at) * i / nc : nw === nc ? W2[i] : W2[Math.min(nw - 1, Math.round(i * (nw - 1) / Math.max(1, nc - 1)))];
+  let i = 0; ch.forEach((c, j) => { const n = c.s.split(' ').length; c.wt = []; for (let k = 0; k < n; k++) c.wt.push(Math.max(l.at, wat(i + k))); c.a = j === 0 ? l.at : c.wt[0] - .04; i += n; });
+  ch.forEach((c, j) => { c.b = j < ch.length - 1 ? ch[j + 1].a : l.end; }); return ch; }
+const CH = L.map(l => ({l, ch: wordTimes(l, chunks(l))})), FLAT = [].concat(...CH.map(x => x.ch));
 FLAT.forEach((c, i) => { const nx = FLAT[i + 1], lim = nx ? nx.a - .05 : c.b + 1.2; c.hold = Math.max(c.b, Math.min(c.a + 1.2, lim)); if (!nx || nx.id !== c.id) c.hold = Math.max(c.hold, Math.min(c.b + .25, lim)); });
-const CHIPS0 = []; for (const c of []) { if (c.who !== 'z') continue; const hits = (GLOSS[c.id] || []).filter(([w]) => c.s.toLowerCase().includes(w.toLowerCase())); if (!hits.length) continue;
-  const dur = c.hold - c.a; if (dur < 1.2) continue; const use = dur / hits.length >= 1.2 ? hits : hits.slice(0, 1); use.forEach(([w, tr], i) => CHIPS.push({a: c.a + dur * i / use.length, b: c.a + dur * (i + 1) / use.length, w, tr})); }
-const CHIPS = []; { const W0 = []; for (const l of L) { if (l.who !== 'z') continue; const low = l.text.toLowerCase();
-    for (const [w, tr] of GLOSS[l.id] || []) { const i = low.indexOf(w.toLowerCase()); if (i < 0) throw new Error('gloss word not in line: ' + w); W0.push({t: l.at + (l.end - l.at) * i / low.length, w, tr}); } }
-  W0.sort((p, q) => p.t - q.t); let prev = 0; W0.forEach((c, i) => { const a = Math.max(c.t, prev), nx = W0[i + 1], b = Math.max(a + 1.3, nx ? Math.min(nx.t, a + 1.8) : a + 1.6); CHIPS.push({a, b: Math.min(b, TL.END), w: c.w, tr: c.tr}); prev = b; }); }
+// chips tied to the spoken word (whisper timing), each >= 1.3 s, in order
+const CHIPS = []; { let prevEnd = -1; for (const l of L) { if (l.who !== 'z') continue; const low = l.text.toLowerCase(), D = l.end - l.at;
+    const cw = [].concat(...(CH.find(x => x.l === l).ch.map(c => c.s.split(' ').map((w, k) => [w.toLowerCase(), c.wt[k]])))), clean = w => w.replace(/[«»"?!.,…—:]/g, '');
+    const wtOf = w => { const f = cw.find(([x]) => clean(x) === clean(w.toLowerCase().split(' ')[0])); return f ? f[1] : null; };
+    const hits = (GLOSS[l.id] || []).map(([w, tr]) => { if (low.indexOf(w.toLowerCase()) < 0) throw new Error('gloss word not in line: ' + w); return {w, tr, est: wtOf(w) ?? l.at + D * low.indexOf(w.toLowerCase()) / low.length}; }).sort((p, q) => p.est - q.est);
+    hits.forEach((h, i) => { const a = Math.max(h.est - .1, prevEnd + .03), nx = hits[i + 1] ? hits[i + 1].est - .1 : l.end + .4, b = Math.min(TL.END, Math.max(a + 1.3, Math.min(a + 1.9, nx))); CHIPS.push({a, b, w: h.w, tr: h.tr}); prevEnd = b; }); } }
 const ENW = new Set([].concat(...Object.values(GLOSS).map(x => x.map(([w]) => w.toLowerCase().split(/[\s-]+/)))).flat());
 const isEn = w => { const x = w.replace(/[«»"?!.,…—:]/g, '').toLowerCase(); return /[a-z]/i.test(x) || x.split('-').some(p => ENW.has(p)); };
 function curChunk(t) { let cur = null; for (const c of FLAT) if (t >= c.a - .02 && t < c.hold) cur = c; return cur; }
-function outlinedWords(words, y, size0, colFn) { let size = size0; g.font = `${size}px ${FONT}`; const sp = () => g.measureText(' ').width; const tw0 = () => words.reduce((a, w) => a + g.measureText(w).width, 0) + sp() * (words.length - 1);
+function outlinedWords(words, y, size0, colFn, fx) { let size = size0; g.font = `${size}px ${FONT}`; const sp = () => g.measureText(' ').width; const tw0 = () => words.reduce((a, w) => a + g.measureText(w).width, 0) + sp() * (words.length - 1);
   let tw = tw0(); while (tw > 980 && size > 34) { size -= 4; g.font = `${size}px ${FONT}`; tw = tw0(); } let x = 540 - tw / 2; g.textAlign = 'left'; g.textBaseline = 'middle'; g.lineJoin = 'round';
-  for (const w of words) { g.lineWidth = size * .24; g.strokeStyle = '#000'; g.strokeText(w, x, y); g.fillStyle = colFn(w); g.fillText(w, x, y); x += g.measureText(w).width + sp(); } }
-function caption(t) { const cur = curChunk(t); if (!cur) return; const pop = 1 + .08 * clamp(1 - (t - cur.a) / .12); g.save(); g.translate(540, 1640); g.scale(pop, pop); g.translate(-540, -1640);
-  outlinedWords(cur.s.split(' '), 1640, 70, w => isEn(w) ? '#ffd23f' : '#ffffff'); g.restore(); if (cur.tr) outlinedWords(cur.tr.split(' '), 1730, 46, () => '#ffffff'); }
+  words.forEach((w, i) => { const ww = g.measureText(w).width, f = fx ? fx(i) : {al: 1, s: 1}; g.save(); g.globalAlpha *= f.al; g.translate(x + ww / 2, y); g.scale(f.s, f.s); g.translate(-(x + ww / 2), -y);
+    g.lineWidth = size * .24; g.strokeStyle = '#000'; g.strokeText(w, x, y); g.fillStyle = colFn(w); g.fillText(w, x, y); g.restore(); x += ww + sp(); }); }
+function caption(t) { const cur = curChunk(t); if (!cur) return;   // kinetic: words not yet said are dimmed, the spoken word pops (spring)
+  outlinedWords(cur.s.split(' '), 1640, 70, w => isEn(w) ? '#ffd23f' : '#ffffff', i => { const wt = cur.wt ? cur.wt[i] : cur.a; return t < wt - .03 ? {al: .38, s: 1} : {al: 1, s: 1 + .22 * (1 - spr(P01(t, wt - .03, .32), 6, 11))}; });
+  if (cur.tr) outlinedWords(cur.tr.split(' '), 1730, 46, () => '#ffffff'); }
 function chip(t) { let c = null; for (const q of CHIPS) if (t >= q.a && t < q.b) c = q; if (!c) return;
   const k = ease((t - c.a) / .15) * (1 - ease((t - c.b + .12) / .12)), w1 = c.w, w2 = ' — ' + c.tr.replace(/^.*? — /, m => m); let f = 42; g.font = `${f}px ${FONT}`; const tot = () => g.measureText(w1).width + g.measureText(w2).width;
   while (tot() > 900) { f -= 2; g.font = `${f}px ${FONT}`; } const tw = tot(), w = tw + 56;
   g.save(); g.globalAlpha = k; g.translate(540, 1536 + (1 - k) * 16); g.rotate(-.015); rr(-w / 2 + 6, -34, w, 72, 20, 'rgba(42,34,48,0.35)', 0); rr(-w / 2, -40, w, 72, 20, '#fffaf0', 5);
   g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillStyle = '#d63a8a'; g.fillText(w1, -tw / 2, -3); g.fillStyle = INK; g.fillText(w2, -tw / 2 + g.measureText(w1).width, -3); g.restore(); }
-const HOOK_END = 4.4;
-function hook(t) { if (t > HOOK_END + .3) return; const a = ease(t / .2) * (1 - ease((t - HOOK_END) / .3)); g.save(); g.globalAlpha = a; g.translate(540, 300); g.rotate(-.02);
-  rr(-440, -150, 880, 300, 34, '#fffaf0', 9); txt('GLASS SKIN', 0, -62, 100, INK); txt('ЗА $1,99?!', 0, 58, 104, '#d63a8a'); g.restore(); }
+// hook: plate A lands on frame 0 (expo-out scale + turn), plate B «GLASS SKIN» springs in with the price line; both leave with anticipation
+function plate(t, a, b, l1, l2, s1, s2, first) { if (t < a || t >= b) return; const ui = P01(t, a, first ? .3 : .45), uo = P01(t, b - .3, .3), sp = first ? ex(ui) : spr(ui, 6, 10);
+  const al = (first ? clamp(t / .06) : clamp(ui * 5)) * (1 - ei(clamp((uo - .35) / .65))), sc = (first ? 1 + .6 * (1 - sp) : .62 + .38 * sp) * (uo < .35 ? 1 + .05 * Math.sin(Math.PI * uo / .35) : 1 - .4 * ei((uo - .35) / .65));
+  g.save(); g.globalAlpha = al; g.translate(540, 300); g.rotate(-.02 - .07 * (1 - sp)); g.scale(sc, sc); rr(-440, -150, 880, 300, 34, '#fffaf0', 9); txt(l1, 0, -62, s1, INK); txt(l2, 0, 58, s2, '#d63a8a'); g.restore(); }
+function hook(t) { plate(t, 0, BY.z0.end + .25, 'GET READY WITH ME', 'С ТЁТЕЙ ЖАННОЙ', 66, 76, true); plate(t, BY.z1.at, BY.z1.at + 4.0, 'GLASS SKIN', 'ЗА $1,99?!', 100, 104, false); }
 function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30,20,30,${.55 * k})`; g.fillRect(0, 0, W, H); g.save(); g.globalAlpha = k; g.translate(0, (1 - k) * 80);
   rr(60, 150, 960, 1580, 44, '#fffaf0', 8); txt('ПЕРЕВОДИМ ЖАННУ', 540, 250, 66, '#d63a8a');
   const R = [['GET READY WITH ME (GRWM)', 'собирайся со мной'], ['SKINCARE ROUTINE', 'уход за кожей'], ["IT'S GIVING…", 'прям вайб…'], ['GLASS SKIN', 'кожа как стекло'], ['DUPE', 'дешёвый аналог'], ['SLAY', 'ты королева / бомба'], ['LINK IN BIO', 'ссылка в профиле']];
@@ -333,16 +359,28 @@ function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30
 function scene(t, c) { g = GB; g.setTransform(1, 0, 0, 1, 0, 0); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); room(t); g = G0;
   g.save(); g.filter = `blur(${(3 * c.z).toFixed(1)}px) saturate(0.7) brightness(1.02)`; g.drawImage(bgCv, 0, 0); g.filter = 'none'; g.restore();
   g.save(); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); zhannaAt(t, ZH.x, SEAT, ZH.s); vanity(t); petroHand(t); g.restore(); }
-function frame(t) { NOW = t;
+function base(t) { NOW = t;   // picture without captions
   const c = COVER ? {z: 1.5, x: 540, y: 1050, k: 'MED', sh: {k: 'MED'}} : camAt(t); g = G0; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
-  if (c.sh.k === 'PHONE') { scene(t, {z: 1.0, x: 540, y: 1010}); g.save(); g.filter = 'blur(10px)'; g.drawImage(cv, 0, 0); g.filter = 'none'; g.restore(); g.fillStyle = 'rgba(40,20,40,.25)'; g.fillRect(0, 0, W, H); const pk = ease((t - c.sh.at) / .2), sc = .94 + .06 * pk;
-    g.save(); g.translate(540, 875); g.scale(sc, sc); g.translate(-540, -875); phoneInsert(t); g.restore(); }
+  if (c.sh.k === 'PHONE') { scene(t, {z: 1.0, x: 540, y: 1010}); g.save(); g.filter = 'blur(10px)'; g.drawImage(cv, 0, 0); g.filter = 'none'; g.restore(); g.fillStyle = 'rgba(40,20,40,.25)'; g.fillRect(0, 0, W, H);
+    g.save(); phoneInsert(t); g.restore(); }
   else scene(t, c);
   const v = g.createRadialGradient(W / 2, H * .45, 650, W / 2, H * .45, 1250); v.addColorStop(0, 'rgba(30,15,30,0)'); v.addColorStop(1, 'rgba(30,15,30,0.16)'); g.fillStyle = v; g.fillRect(0, 0, W, H);
-  if (c.sh.k !== 'END' && c.sh.k !== 'PHONE' && !COVER) panels(t);
+  if (c.sh.k !== 'END' && c.sh.k !== 'PHONE' && !COVER) panels(t); return c; }
+const accCv = createCanvas(W, H), GACC = accCv.getContext('2d'), tmpCv = createCanvas(W, H), GTMP = tmpCv.getContext('2d');
+function zoomAround(P, k) { if (!P || k <= 0) return; GTMP.clearRect(0, 0, W, H); GTMP.drawImage(cv, 0, 0); const Z = 1 + .8 * k, Q = [lerp(P[0], 540, k), lerp(P[1], 900, k)];
+  g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H); g.save(); g.translate(Q[0], Q[1]); g.scale(Z, Z); g.translate(-P[0], -P[1]); g.drawImage(tmpCv, 0, 0); g.restore(); }
+function frame(t) { let c;
+  if (!COVER && whipDx(t) !== 0) { GACC.clearRect(0, 0, W, H); const N = 6; for (let k = 0; k < N; k++) { const ts = t + (k / (N - 1) - .5) / 30 * .9; c = base(ts); GACC.save(); GACC.globalAlpha = 1 / (k + 1); GACC.translate(whipDx(ts), 0); GACC.drawImage(cv, 0, 0); GACC.restore(); }   // whip-pan with motion blur
+    g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H); g.drawImage(accCv, 0, 0); c = camAt(t); }
+  else if (!COVER && t >= FREEZE[0] && t < FREEZE[0] + FREEZE[1]) { c = freezeFrame(t); }
+  else { c = base(t); if (!COVER && t >= MATCH - .35 && t < MATCH) zoomAround(BOTPOS, ei(P01(t, MATCH - .35, .35))); if (!COVER && t >= MATCH && t < MATCH + .4) zoomAround(JARPOS, 1 - ex(P01(t, MATCH, .4))); }   // match cut: $80 bottle -> mayo jar
   if (process.env.NOCAP) return;
   hook(t); if (c.sh.k === 'END') endCard(t); else { chip(t); caption(t); } }
-
+const frzCv = createCanvas(W, H), GFRZ = frzCv.getContext('2d');
+function freezeFrame(t) { const f0 = FREEZE[0], u = (t - f0) / FREEZE[1], c0 = base(f0); GFRZ.clearRect(0, 0, W, H); GFRZ.drawImage(cv, 0, 0);   // freeze: b/w + contrast, slow zoom, label springs in above the face
+  g.setTransform(1, 0, 0, 1, 0, 0); const z = 1 + .05 * eio(u); g.save(); g.translate(540, 960); g.scale(z, z); g.translate(-540, -960); g.filter = 'grayscale(1) contrast(1.3) brightness(1.05)'; g.drawImage(frzCv, 0, 0); g.filter = 'none'; g.restore();
+  const lk = spr(P01(t, f0 + .15, .4), 6, 10); if (lk > 0) { g.save(); g.translate(540, 300); g.rotate(-.04 + (1 - lk) * -.1); g.scale(lk, lk); rr(-300, -60, 600, 120, 12, '#e0262f', 6); txt('НОУ ФИЛТЕР', 0, 4, 76, '#ffffff', HW); g.restore(); }
+  return c0; }
 const [mode, arg, outName] = process.argv.slice(2);
 if (mode === 'still') { fs.mkdirSync('out/st', {recursive: true}); for (const t of arg.split(',')) { frame(+t); fs.writeFileSync(`out/st/${t}.png`, cv.toBuffer('image/png')); } }
 else if (mode === 'cover') { process.env.NOCAP = 1; COVER = true; const t = +(arg || at('z9', .8)); frame(t); const src = createCanvas(W, H); src.getContext('2d').drawImage(cv, 0, 0);

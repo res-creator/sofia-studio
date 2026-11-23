@@ -4,7 +4,7 @@ import json, subprocess, numpy as np, soundfile as sf, os
 S = json.load(open('voice/script.json')); SR = 44100; os.makedirs('out', exist_ok=True)
 TEMPO = {'z': 1.2, 'k': 1.1, 'p': 1.0}
 # beats: z8 -> fridge door + sad «Угу…» over the pour, z9 -> phone rings, z12 -> Petrovich's hand reaches, p2/z13 -> crunch, second reach
-GAP = {'z1': .2, 'z2': .25, 'k5': .02, 'z8': .8, 'p1': .45, 'z9': 1.05, 'k6': .3, 'z11': .55, 'z12': .78, 'p2': .55, 'z13': .8}
+GAP = {'z0': .15, 'z1': .2, 'z2': .25, 'k5': .02, 'z8': .7, 'p1': .45, 'z9': .95, 'k6': .3, 'z11': .55, 'z12': .7, 'p2': .55, 'z13': .7}
 def load(k, who):
     o = f'out/v_{k}.wav'
     af = 'silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse'
@@ -35,9 +35,20 @@ for k, who, text in S['lines']:
     if who == 'p': a = a * .8
     env = mouthEnv(a, SR)
     L.append({'id': k, 'who': who, 'text': text, 'at': round(t, 3), 'end': round(t + len(a) / SR, 3), 'env': env}); clips.append((t, a))
-    t += len(a) / SR + GAP.get(k, .18)
+    t += len(a) / SR + GAP.get(k, .15)
+# word timings (faster-whisper on the trimmed clips, voice/words.json from voice/words.py): kinetic captions pop word by word
+WORDS = {}
+if os.path.exists('voice/words.json'):
+    for k, ws in json.load(open('voice/words.json')).items():
+        m = []
+        for w in ws:   # glue split tokens ("eighty -dollar", "Ma 'am") back to one caption word
+            if m and (w[2][:1] in "-'’" or not w[2].strip()): m[-1] = [m[-1][0], w[1], m[-1][2] + w[2]]
+            else: m.append(list(w))
+        WORDS[k] = m
+for l in L:
+    if l['id'] in WORDS: l['words'] = [round(l['at'] + w[0], 3) for w in WORDS[l['id']]]
 by = {l['id']: l for l in L}
-END = round(L[-1]['end'] + .9, 3); TOTAL = round(END + 4.6, 3)
+END = round(L[-1]['end'] + .9, 3); TOTAL = round(END + 4.2, 3)
 voice = np.zeros(int(TOTAL * SR) + SR)
 for at, a in clips: i = int(at * SR); voice[i:i + len(a)] += a
 fx = np.zeros_like(voice); rng = np.random.default_rng(7)
@@ -62,10 +73,30 @@ GRAB1 = round(by['z12']['end'] + .15, 3); GRAB2 = round(by['z13']['end'] + .1, 3
 for at in (by['p2']['end'] + .05, by['p3']['end'] + .05):
     for k in range(3): put(at + k * .13, noise(.07, .7, 4))                              # crunch
 put(END, tone(1046, 1.2, .1) + tone(1568, 1.2, .06))                                    # end card chime
+def wt(k, sub, d=0.):   # absolute time of the first word of line k containing sub
+    for st, en, w in WORDS.get(k, []):
+        if sub.lower() in w.lower(): return round(by[k]['at'] + st, 3)
+    return round(by[k]['at'] + d, 3)
+# ---- edit events: one source for picture (render.js) and sound ----
+PUNCH = [[wt('z3', 'восемьдесят', .05), 1.0], [wt('z8', 'слэй', 3.8), .9], [wt('z11', 'коллаб', .05), .9], [wt('z13', 'брэда', 2.4), 1.0]]   # punch-in + small shake on the 4 top punchlines
+FREEZE = [wt('z9', 'ноу', 2.2), 1.6]                                    # freeze-frame on the full mask: «НОУ ФИЛТЕР»
+SHUSH = [round(by['z8']['at'] - .05, 3), round(wt('z8', 'деточка', .7) - .02, 3)]   # «Шшш»: pointing-up finger, «ш» lips
+WHIP = [[round(by['k1']['at'] - .12, 3), 1], [round(RING - .2, 3), 1], [round(by['z10']['at'] - .1, 3), -1]]   # whip-pans into / out of Kaylee's phone
+MATCH = round(by['z3']['at'] - .1, 3)                                    # match cut: Kaylee's $80 bottle -> Zhanna's mayo jar
+def at(k, u): return by[k]['at'] + (by[k]['end'] - by[k]['at']) * u
+PANELS = [['mayo', at('z3', .3), by['z3']['end'] + .4], ['fork', by['z5']['at'] + .1, by['z5']['end'] + .35], ['pelmeni', by['z7']['at'] + .15, by['z7']['end'] + .45],
+  ['shelf', by['z10']['at'] + .1, by['z10']['end'] + .35], ['brad', at('z13', .3), by['z13']['end'] + .6]]
+PANELS = [[i, round(x, 3), round(y, 3)] for i, x, y in PANELS]
+def whoosh(d, v):
+    n = rng.standard_normal(int(d * SR)); x = np.linspace(0, 1, len(n)); n = np.convolve(n, np.ones(12) / 12, 'same'); return n * np.sin(np.pi * x) ** 2 * v
+for t0, d in WHIP: put(t0 - .22, whoosh(.4, .14))                         # quiet whoosh on each whip-pan
+for t0, k in PUNCH: put(t0, tone(70, .22, .2 * k))                       # low thump under each punch-in
+put(FREEZE[0], noise(.03, .5, 3)); put(FREEZE[0], tone(2400, .04, .06))   # shutter click on the freeze
+for pid, a0, b0 in PANELS: put(a0, whoosh(.12, .06))                     # soft paper "fwip" when a card pops
 mix = voice + fx
 mix = mix / max(1e-6, np.abs(mix).max()) * .89
 sf.write('out/audio_raw.wav', mix, SR)
 subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', 'out/audio_raw.wav', '-af', 'loudnorm=I=-15:TP=-1.5', '-ar', '44100', 'out/audio.wav'], check=True)
-json.dump({'L': L, 'END': END, 'TOTAL': TOTAL, 'POUR': POUR, 'FRIDGE': FRIDGE, 'RING': RING, 'HANG': HANG, 'CREAK': CREAK, 'GRAB1': GRAB1, 'GRAB2': GRAB2}, open('timeline.json', 'w'), ensure_ascii=False)
+json.dump({'L': L, 'END': END, 'TOTAL': TOTAL, 'PUNCH': PUNCH, 'FREEZE': FREEZE, 'SHUSH': SHUSH, 'WHIP': WHIP, 'MATCH': MATCH, 'PANELS': PANELS, 'POUR': POUR, 'FRIDGE': FRIDGE, 'RING': RING, 'HANG': HANG, 'CREAK': CREAK, 'GRAB1': GRAB1, 'GRAB2': GRAB2}, open('timeline.json', 'w'), ensure_ascii=False)
 for l in L: print(l['id'], l['at'], l['end'], round(l['end'] - l['at'], 2))
-print('POUR', POUR, 'RING', RING, 'END', END, 'TOTAL', TOTAL)
+print('PUNCH', PUNCH, 'FREEZE', FREEZE, 'SHUSH', SHUSH, 'WHIP', WHIP, 'MATCH', MATCH); print('POUR', POUR, 'RING', RING, 'END', END, 'TOTAL', TOTAL)

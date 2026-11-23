@@ -1,5 +1,6 @@
 // "Toon" character kit v3 (zhanna_grwm). v3: brows in normal layer order with the fringe trimmed above them, soft lipstick mouth
 // with no black ink, continuous mouth shape (D <-> oval blend), mood blending (st.moodFrom / st.moodK), smoothing helpers follow / smooth / talk / moodAt.
+// v3.1: st.sh = «ш» lips (pucker).
 // v2: Backward compatible with v1: draw(g, st) with the same st fields.
 // v2 adds: jaw drop + visemes (st.mouth 0..1, st.vis 0..1 noise, st.talking = a line is being spoken), st.nod (px), brows drawn over the fringe, 20 moods (MOODS),
 // outfits (st.outfit: sequins | leopard | gold | blazer | fitness), IK arms (ik), shoulder rise, st.lean, head turn with st.look,
@@ -120,7 +121,11 @@ function closedMouth(c, shape, my, alpha = 1) { if (alpha <= 0) return; g.save()
   g.restore(); }
 // rest shape while a line is spoken: open moods close down between syllables
 const restShape = (shape, talking) => talking ? ({O: 'o', grin: 'smile', laugh: 'smile'}[shape] || shape) : shape;
-function mouth(st, c, E) { const m = clamp(st.mouth || 0), my = HY + 92 - UP + JAW * .5, cor = E.corner || 0;
+// «ш» viseme (st.sh 0..1, crossfaded): lips pushed forward into a small rounded opening, teeth showing
+function pucker(c) { const my = HY + 92 - UP + JAW * .5, lip = lipOf(c); openMouth(c, 26, 20, my - 2, 0, .85); mouthShape(26, 20, my - 2, 0, .85); g.strokeStyle = lip; g.lineWidth = 15; g.lineJoin = 'round'; g.stroke(); g.strokeStyle = shade(lip, .72); g.lineWidth = 2.2; g.stroke();
+  P(); g.ellipse(FX, my + 20, 16, 4, 0, 0, 7); g.fillStyle = 'rgba(255,255,255,.35)'; g.fill(); }
+function mouth(st, c, E) { const sh = clamp(st.sh || 0); if (sh > 0) { if (sh < 1) { g.save(); g.globalAlpha *= 1 - sh; mouthCore(st, c, E); g.restore(); } g.save(); g.globalAlpha *= sh; pucker(c); g.restore(); return; } mouthCore(st, c, E); }
+function mouthCore(st, c, E) { const m = clamp(st.mouth || 0), my = HY + 92 - UP + JAW * .5, cor = E.corner || 0;
   if (st.tongue) { P(); g.moveTo(-50, my - 6); g.quadraticCurveTo(0, my - 14, 50, my - 6); g.quadraticCurveTo(40, my + 46, 0, my + 50); g.quadraticCurveTo(-40, my + 46, -50, my - 6); fs('#7a2230');
     P(); g.moveTo(-26, my + 12); g.lineTo(26, my + 12); g.lineTo(26, my + 70); g.quadraticCurveTo(0, my + 96, -26, my + 70); g.closePath(); fs('#f07a8a', 6); return; }
   const r = clamp(st.round ?? ((st.vis ?? .5) < .4 ? 1 : 0)), laugh = E.mouth === 'laugh', wide = clamp(-cor / 12);
