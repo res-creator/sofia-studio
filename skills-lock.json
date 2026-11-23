@@ -1,13 +1,6 @@
 {
   "version": 2,
   "skills": {
-    "belt": {
-      "source": "belt-sh/cli",
-      "commit": "86d36c74ad6e1c9203abeb23c5e8026212caf822",
-      "sourceType": "github",
-      "skillPath": ".agents/skills/belt/SKILL.md",
-      "computedHash": "d7d6536bfd67d8c21959d250fdaae5d617a185e89cc8d15f79be126e6cb698e9"
-    },
     "youtube-thumbnail-design": {
       "source": "magentosh/superpowers",
       "commit": "93a647364937903fa2f45629ca7c5f9c89fc57c9",
