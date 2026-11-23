@@ -44,7 +44,7 @@ function face(st, c) {
     if (st.mood === 'kind') { g.save(); P(); g.ellipse(cx, ey, 52, 64, 0, 0, 7); g.clip(); g.fillStyle = c.skin; 
       P(); g.moveTo(cx - 60, ey + 80); g.lineTo(cx + 60, ey + 80); g.lineTo(cx + 60, ey + 40); g.quadraticCurveTo(cx, ey + 8, cx - 60, ey + 40); g.closePath(); g.fill(); g.restore(); q([cx - 40, ey + 36], [cx, ey + 14], [cx + 40, ey + 36], 4); }
     if (st.lashes) for (let j = 0; j < 3; j++) line([[cx + s * (26 + j * 12), ey - 62 + j * 14], [cx + s * (44 + j * 18), ey - 84 + j * 12]], 6);
-    const pr = st.mood === 'surprised' ? 8 : 11; ell(cx + look - s * 6, ey + 8, pr, pr * 1.4, OUT, 0); }
+    const pr = st.mood === 'surprised' ? 8 : 11; ell(cx + look - s * 6, ey + 8 - (st.lookUp || 0) * 46, pr, pr * 1.4, OUT, 0); }
   if (st.glasses) { for (const s of [-1, 1]) { P(); g.ellipse(s * 56, ey + 4, 60, 56, 0, 0, 7); g.strokeStyle = OUT; g.lineWidth = 5; g.stroke(); } line([[-150, ey - 6], [-116, ey]], 5); line([[150, ey - 6], [116, ey]], 5); }
   if (st.probe) { ell(-50, ey, 20, 20, '#ff00ff', 0); ell(50, ey, 20, 20, '#ff00ff', 0); ell(0, HY + 100, 20, 14, '#ff00ff', 0); }
   // brows: thick, separate from the eyes
@@ -111,5 +111,6 @@ function draw(gg, st) { g = gg; const c = st.pal; g.save(); g.translate(st.x, st
   const front = st.front ?? (st.pose === 'hold' || st.pose === 'desk' || st.pose === 'fists');
   if (!front) { arm(st, c, -1); arm(st, c, 1); } torso(st, c); if (front) { arm(st, c, -1); arm(st, c, 1); }
   g.save(); g.translate(0, -930); g.rotate(st.tilt || 0); g.scale(1.2, 1.2); g.translate(0, 930); face(st, c); if (st.moustache) moustache(st, c); hairFront(st, c); if (st.cap) cap(st, c); if (st.sweat) { P(); g.moveTo(190, HY - 60); g.quadraticCurveTo(218, HY - 14, 204, HY + 6); g.quadraticCurveTo(190, HY + 20, 176, HY + 6); g.quadraticCurveTo(168, HY - 14, 190, HY - 60); fs('#8fd2ff', 5); } g.restore();
+  if (st.armsTop) for (const sd of st.armsTop) arm(st, c, sd);   // raised arms go over the hair
   g.restore(); }
 module.exports = {draw, POSES};
