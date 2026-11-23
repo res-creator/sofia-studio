@@ -67,7 +67,7 @@ function room(t) {
   rr(-260, 900, 260, 24, 6, '#8a5a3c', 6); poly([[-170, 900], [-150, 800], [-110, 800], [-90, 900]], 'rgba(220,240,255,.9)', 5);
 }
 // ---------- vanity (sharp foreground) ----------
-let JARPOS = null, BOTPOS = null; const scr = (x, y) => { const m = g.getTransform(); return [m.a * x + m.c * y + m.e, m.b * x + m.d * y + m.f]; };   // screen position of a prop (for the match cut)
+let SHUSHHAND = null, JARPOS = null, BOTPOS = null; const scr = (x, y) => { const m = g.getTransform(); return [m.a * x + m.c * y + m.e, m.b * x + m.d * y + m.f]; };   // screen position of a prop (for the match cut)
 let HELDA = {};   // props in Zhanna's hands: name -> how much (0..1) it is in the hand (table copy fades out, no pops)
 function vanity(t) { rr(-200, TABLE, 1480, 40, 14, '#fbeef0', 8); rr(-180, TABLE + 36, 1440, 700, 0, '#f0d8de', 8); for (const x of [120, 540, 960]) { rr(x - 150, TABLE + 90, 300, 160, 16, null, 5); ell(x, TABLE + 170, 14, 14, '#e8c27a', 4); }
   const onTable = (n, f) => { const a = 1 - (HELDA[n] || 0); if (a <= .01) return; g.save(); g.globalAlpha *= a; f(); g.restore(); };
@@ -100,7 +100,7 @@ const ZG = {
   eyes: s => [[s * 78, -860], [s * 220, -930], [s * 64, -1095]],
   pelmeni: s => s < 0 ? [[-78, -860], [-235, -900], [-100, -1012]] : [[78, -860], [160, -760], [60, -760]],
   hush: s => s > 0 ? [[78, -860], [180, -860], [40, -955]] : REST(s),
-  shush: s => s > 0 ? [[78, -860], [262, -905], [238, -1010]] : REST(s),   // «Шшш»: arm forward, index finger up
+  shush: s => s > 0 ? [[78, -860], [128, -812], [108, -774]] : REST(s),   // «Шшш»: arm stretched toward the viewer (foreshortened: short segments), fist in front of the chest beside the chin   // «Шшш»: arm forward, index finger up
   pour: s => s > 0 ? [[78, -860], [265, -1160], [185, -1610]] : [[-78, -860], [-160, -760], [-200, -860]],
   spoon: s => s > 0 ? [[78, -860], [255, -885], [215 + rub(.8)[0], -940 + rub(.8)[1]]] : [[-78, -860], [-175, -760], [-110, -790]],
   brooch: s => s > 0 ? [[78, -860], [160, -740], [20, -790]] : REST(s),
@@ -167,6 +167,9 @@ function pelmeniBag(x, y, t) { g.save(); g.translate(x, y); g.rotate(-.15); rr(-
 function spoon(x, y, ang, sc = 1) { g.save(); g.translate(x, y); g.rotate(ang); g.scale(sc, 1); ln([[-30, 0], [70, 0]], 9, '#c8ccd2'); ell(96, 0, 30, 20, '#c8ccd2', 5); ell(98, -6, 22, 12, '#ffffff', 3); g.restore(); }
 
 const lookT = t => t >= BY.z12.at && t < TL.GRAB1 + .4 ? 1 : t >= TL.GRAB2 - .2 && t < CUK2 + .3 ? -.9 : 0;
+// the shush arm points at the camera: blend the IK arm toward the raw short (foreshortened) pose, spring in / hold / spring out
+const shushW = t => T.follow(u => u >= SHG[0] && u < SHG[1] ? 1 : 0, t, .25, .3, .5);
+const shushArm = (raw, solved, t) => { const w = shushW(t); return w < .01 ? solved : s => s > 0 ? solved(s).map((p, i) => [lerp(p[0], raw(s)[i][0], w), lerp(p[1], raw(s)[i][1], w)]) : solved(s); };
 function zState(t, x, y, S) { const l = lineAt(t), spk = l && l.who === 'z', a = blendArms(zAct, ZG, t), fsx = faceState(t);
   const spkK = T.follow(u => spkAt('z', u), t, .25, .35, .5), shK = T.follow(u => { const q = lineAt(u); return q && q.id === 'z7' ? 1 : 0; }, t, .15, .2, .4);
   const shiver = 4 * shK * Math.sin(t * 50), look = T.follow(lookT, t, .25, .25, .5);
@@ -175,7 +178,7 @@ function zState(t, x, y, S) { const l = lineAt(t), spk = l && l.who === 'z', a =
 function zhannaAt(t, x0, y0, S0, opt = {}) { const st = zState(t, x0, y0, S0), {a, fsx, x, y, S} = st;
   const zl = lineFor('z', t), ts = zl ? T.talk(zl, t, 3) : {mouth: t >= LAUGH0 ? T.follow(u => T.laughEnv(u - LAUGH0), t, .06, .1, .3) : 0, nod: 0, round: 0}, breath = 2 + 2 * Math.sin(t * 2.2), md = T.moodAt(zMood, t, .25);
   const pal = {...(fsx.wet > .5 ? WET : ZH.pal), ...(fsx.cream > .5 ? {lid: '#fbfaf2'} : {})};
-  T.draw(g, {...ZH, pal, x, y, s: S, sq: st.br, arms: (a.fn = T.ik(wig(a.fn, t, 2 + 4 * st.spkK), breath)), ik: false, front: a.front, mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, mouth: ts.mouth, round: ts.round, sh: T.follow(u => u >= SHUSH[0] && u < SHUSH[1] ? 1 : 0, t, .08, .12, .3), talking: !!st.spk, nod: ts.nod, t, lean: .012 * Math.sin(t * .6),
+  T.draw(g, {...ZH, pal, x, y, s: S, sq: st.br, arms: (a.fn = shushArm(wig(a.fn, t, 2 + 4 * st.spkK), T.ik(wig(a.fn, t, 2 + 4 * st.spkK), breath), t)), ik: false, front: a.front, mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, mouth: ts.mouth, round: ts.round, sh: T.follow(u => u >= SHUSH[0] && u < SHUSH[1] ? 1 : 0, t, .08, .12, .3), talking: !!st.spk, nod: ts.nod, t, lean: .012 * Math.sin(t * .6),
     blink: blink(t, 2) || md.blink, tilt: st.tilt, look: st.look,
     skinFx: skinFx(fsx), faceFx: faceFx(fsx, t), hairFx: hairFx(fsx, t)});
   if (opt.mini) return; const bx = x - 40 * S, by = y - 790 * S * st.br; star(bx, by, 30 * S / .76, '#f2c820', 5, 8, t * .3); ell(bx, by, 9, 9, '#ff5a8a', 4);
@@ -189,7 +192,7 @@ function zhannaAt(t, x0, y0, S0, opt = {}) { const st = zState(t, x0, y0, S0), {
   const fist = (sd, hx, hy, tx, ty, len, gripAt, drawFn) => { const ang = Math.atan2(ty - hy, tx - hx), ox = hx - Math.cos(ang) * gripAt, oy = hy - Math.sin(ang) * gripAt, sc = Math.hypot(tx - ox, ty - oy) / len; skip.add(sd);
     gripObject(() => drawFn(ox, oy, ang, sc), H(hx, hy, ang - Math.PI / 2, 0, {fist: true, side: sd})); };
   if (gR === 'present' && t < BY.z3.end) { HELDA.mayo = Math.max(HELDA.mayo || 0, al); skip.add(1); gripObject(() => jar(rx, ry + 56, .8), H(rx, ry, 0, 44)); JARPOS = scr(rx, ry); }
-  if (gR === 'shush') { skip.add(1); pointUp(rx, ry, S * 1.3, skin, nail); }
+  if (gR === 'shush') { skip.add(1); const push = spr(P01(t, SHG[0], .55), 6, 9) * (1 - ei(P01(t, SHG[1] - .35, .35))); SHUSHHAND = {x: rx, y: ry, s: S * (1.15 + .35 * push), skin, nail, al: g.globalAlpha}; }   // push toward the lens on onset; drawn after the vanity (in front of the props)
   if (gR === 'cheek' || gR === 'spoon') { const cream = gR === 'spoon'; HELDA[cream ? 'cream' : 'mayo'] = Math.max(HELDA[cream ? 'cream' : 'mayo'] || 0, al); skip.add(-1); gripObject(() => cream ? creamTub(lx, ly + 31, .62) : jar(lx, ly + 43, .62), H(lx, ly, 0, cream ? 36 : 34, {side: -1})); }
   if (gR === 'cheek') ell(rx - 16, ry - 22, 20, 13, '#fff1bf', 4);   // mayo on the fingertips, rubbed on the cheek
   if (gR === 'fork') { const [tx, ty] = onFace(92, -1048); fist(1, rx, ry, tx, ty, 150, 22, (ox, oy, ang, sc) => fork(ox, oy, ang, false, sc)); }
@@ -358,7 +361,7 @@ function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30
 // ---------- frame ----------
 function scene(t, c) { g = GB; g.setTransform(1, 0, 0, 1, 0, 0); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); room(t); g = G0;
   g.save(); g.filter = `blur(${(3 * c.z).toFixed(1)}px) saturate(0.7) brightness(1.02)`; g.drawImage(bgCv, 0, 0); g.filter = 'none'; g.restore();
-  g.save(); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); zhannaAt(t, ZH.x, SEAT, ZH.s); vanity(t); petroHand(t); g.restore(); }
+  g.save(); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); SHUSHHAND = null; zhannaAt(t, ZH.x, SEAT, ZH.s); vanity(t); if (SHUSHHAND) { const h = SHUSHHAND; g.save(); g.globalAlpha = h.al; pointUp(h.x, h.y, h.s, h.skin, h.nail); g.restore(); } petroHand(t); g.restore(); }
 function base(t) { NOW = t;   // picture without captions
   const c = COVER ? {z: 1.5, x: 540, y: 1050, k: 'MED', sh: {k: 'MED'}} : camAt(t); g = G0; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
   if (c.sh.k === 'PHONE') { scene(t, {z: 1.0, x: 540, y: 1010}); g.save(); g.filter = 'blur(10px)'; g.drawImage(cv, 0, 0); g.filter = 'none'; g.restore(); g.fillStyle = 'rgba(40,20,40,.25)'; g.fillRect(0, 0, W, H);
