@@ -1,5 +1,7 @@
 // "Toon" character kit v3 (zhanna_grwm). v3: brows in normal layer order with the fringe trimmed above them, soft lipstick mouth
 // with no black ink, continuous mouth shape (D <-> oval blend), mood blending (st.moodFrom / st.moodK), smoothing helpers follow / smooth / talk / moodAt.
+// v4: one-silhouette arms (outline pass then fill pass), sleeves with cuff lines, hand shapes st.hands = {1: shape, -1: shape}
+// (open | fist | point | indexUp | thumbsUp | none), st.nails, drawHand() for renderers, fitText() for labels.
 // v3.1: st.sh = «ш» lips (pucker).
 // v2: Backward compatible with v1: draw(g, st) with the same st fields.
 // v2 adds: jaw drop + visemes (st.mouth 0..1, st.vis 0..1 noise, st.talking = a line is being spoken), st.nod (px), brows drawn over the fringe, 20 moods (MOODS),
@@ -239,23 +241,57 @@ function accessories(st, c) { const o = st.outfit;
 // ---------- arms: IK (natural elbow, no backward bend), shoulder rise, breathing ----------
 const L1 = 170, L2 = 190;
 function solveArm(S, H, hint, s, rise = 0) {
-  S = [S[0], S[1] - clamp((-900 - H[1]) * .05, 0, 18) - rise];   // shoulder rises when the hand goes up
+  S = [s * Math.max(Math.abs(S[0]), 86), S[1] - clamp((-900 - H[1]) * .05, 0, 18) - rise];   // shoulder at the torso corner (arms never grow out of the chest); rises when the hand goes up
   let dx = H[0] - S[0], dy = H[1] - S[1], d = Math.hypot(dx, dy); const k = clamp(d / (L1 + L2 - 4), 1, 1.5), a = L1 * k, b = L2 * k;   // stretchy cartoon arm, max 1.5x
   if (d > a + b - 2) { const f = (a + b - 2) / d; H = [S[0] + dx * f, S[1] + dy * f]; dx = H[0] - S[0]; dy = H[1] - S[1]; d = a + b - 2; }
   d = Math.max(d, Math.abs(a - b) + 2); const ca = clamp((a * a + d * d - b * b) / (2 * a * d), -1, 1), base = Math.atan2(dy, dx), off = Math.acos(ca);
   const c1 = [S[0] + Math.cos(base + off) * a, S[1] + Math.sin(base + off) * a], c2 = [S[0] + Math.cos(base - off) * a, S[1] + Math.sin(base - off) * a];
-  const score = E => s * E[0] + .6 * E[1] - (hint ? Math.hypot(E[0] - hint[0], E[1] - hint[1]) * .15 : 0);   // elbow out and down
+  const score = E => s * E[0] + .6 * E[1] - (hint ? Math.hypot(E[0] - hint[0], E[1] - hint[1]) * .05 : 0) - (s * E[0] < s * S[0] - 6 ? 1e4 : 0);   // elbow out and down; never on the inner side of its shoulder (no crossing, no flips)
   return [S, score(c1) >= score(c2) ? c1 : c2, H]; }
 const ik = (fn, rise = 0) => s => { const [S, E, H] = fn(s); return solveArm(S, H, E, s, rise); };
-function drawArm(gg, st, s, pts, c0) { if (gg) g = gg; const c = c0 || palOf(st), [S, E, H] = pts, m = k => [S[0] + (E[0] - S[0]) * k, S[1] + (E[1] - S[1]) * k];
-  const robe = st.outfit === 'leopard', sw = robe ? 54 : 46;
-  limb([S, m(.45)], sw, c.sleeve || c.top); limb([m(.4), E, H], robe ? 38 : 30, c.arm || c.skin);
-  const w = k => [E[0] + (H[0] - E[0]) * k, E[1] + (H[1] - E[1]) * k];
-  if (robe) { line([w(.72), w(.8)], 52, OUT); line([w(.72), w(.8)], 42, c.trim); }
-  if (st.outfit === 'blazer') { line([w(.8), w(.86)], 40, OUT); line([w(.8), w(.86)], 30, c.cuff); }
-  if (st.outfit === 'fitness') { line([w(.72), w(.8)], 40, OUT); line([w(.72), w(.8)], 30, c.band); }
-  ell(H[0], H[1], 26, 24, c.skin, 6); }
-function arm(st, c, s) { const fn = st.arms || (POSES[st.pose] || POSES.down); const pts = st.ik === false ? fn(s) : solveArm(fn(s)[0], fn(s)[2], fn(s)[1], s, st.breath || 0); drawArm(null, st, s, pts, c); }
+// ---------- v4 arms: ONE silhouette per arm (all outline strokes first, then all fills -> a single outer outline, no joint seams) ----------
+// hand primitives in hand space: +x along the forearm towards the fingertips, y across. ['e', cx, cy, rx, ry] | ['r', x0, yc, len, h, rot]
+const HANDS = {
+  open: {p: [['e', 20, 0, 25, 23], ['r', 32, -15, 34, 11], ['r', 32, -5, 40, 11], ['r', 32, 5, 38, 11], ['r', 32, 15, 30, 11], ['r', 4, -18, 30, 12, -1.0]], l: [[40, -10, 62, -10], [40, 0, 68, 0], [40, 10, 64, 10]], n: [[63, -15], [69, -5], [67, 5], [59, 15]]},
+  fist: {p: [['e', 20, 0, 26, 25], ['r', 34, -15, 18, 11], ['r', 34, -5, 20, 11], ['r', 34, 5, 20, 11], ['r', 34, 15, 17, 11], ['r', 10, -12, 28, 12, .25]], l: [[40, -10, 52, -10], [40, 0, 54, 0], [40, 10, 52, 10]], n: []},
+  point: {p: [['e', 20, 0, 26, 25], ['r', 32, -15, 52, 11], ['r', 34, -5, 20, 11], ['r', 34, 5, 20, 11], ['r', 34, 15, 17, 11], ['r', 10, -12, 28, 12, .25]], l: [[40, -10, 54, -10], [40, 0, 54, 0], [40, 10, 52, 10]], n: [[81, -15]]},
+  thumbsUp: {p: [['e', 20, 0, 26, 25], ['r', 34, -12, 18, 11], ['r', 34, -2, 20, 11], ['r', 34, 8, 20, 11], ['r', 32, 17, 16, 10], ['r', 16, -16, 36, 13, -Math.PI / 2]], l: [[40, -7, 52, -7], [40, 3, 54, 3], [40, 12, 50, 12]], n: [[16, -48]]},
+  none: {p: [], l: [], n: []},
+};
+HANDS.indexUp = HANDS.point;   // drawn with the hand turned so the index points straight up
+const handAng = (shape, ang, s) => shape === 'indexUp' ? -Math.PI / 2 : shape === 'thumbsUp' ? (s > 0 ? 0 : Math.PI) : ang;
+function handPrim(pr, pass, col) { const [t, a, b, c2, d, rot] = pr, e = pass === 'out' ? LW : 0;
+  if (t === 'e') { P(); g.ellipse(a, b, c2 + e, d + e, 0, 0, 7); g.fillStyle = col; g.fill(); return; }
+  g.save(); g.translate(a, b); if (rot) g.rotate(rot); P(); g.roundRect(-e, -d / 2 - e, c2 + 2 * e, d + 2 * e, d / 2 + e); g.fillStyle = col; g.fill(); g.restore(); }
+function handPass(shape, pass, x, y, ang, S, side, skin, nail) { const H2 = HANDS[shape] || HANDS.open; g.save(); g.translate(x, y); g.rotate(ang); g.scale(S, S * side);
+  if (pass === 'out') for (const pr of H2.p) handPrim(pr, 'out', OUT);
+  else if (pass === 'fill') for (const pr of H2.p) handPrim(pr, 'fill', skin);
+  else { for (const [x1, y1, x2, y2] of H2.l) line([[x1, y1], [x2, y2]], 3); if (nail) for (const [nx, ny] of H2.n) { P(); g.ellipse(nx, ny, 6, 4.6, 0, 0, 7); g.fillStyle = nail; g.fill(); g.strokeStyle = OUT; g.lineWidth = 2; g.stroke(); ell(nx - 1.5, ny - 1.5, 1.8, 1.2, '#ffffff', 0); } }
+  g.restore(); }
+// a standalone hand (for renderers): outline + fill + details; `bridge` paints skin back along the forearm so it merges with the arm (no seam at the wrist)
+function drawHand(gg, shape, x, y, ang, S, skin, nail, side = 1, bridge = 0, armW = 28) { if (gg) g = gg; const a = handAng(shape, ang, side);
+  handPass(shape, 'out', x, y, a, S, side, skin, nail); handPass(shape, 'fill', x, y, a, S, side, skin, nail);
+  if (bridge) line([[x, y], [x - Math.cos(ang) * bridge * S, y - Math.sin(ang) * bridge * S]], armW * S, skin);
+  handPass(shape, 'detail', x, y, a, S, side, skin, nail); }
+const SLEEVE = {sequins: ['short', 46], leopard: ['long', 46, .8], blazer: ['long', 40, .86], gold: null, fitness: null};
+function drawArm(gg, st, s, pts, c0, hand) { if (gg) g = gg; const c = c0 || palOf(st), [S, E, H] = pts, m = k => [S[0] + (E[0] - S[0]) * k, S[1] + (E[1] - S[1]) * k], w = k => [E[0] + (H[0] - E[0]) * k, E[1] + (H[1] - E[1]) * k];
+  const sl = st.outfit ? SLEEVE[st.outfit] : ['short', 46], skin = c.skin, scol = c.sleeve || c.top, ang = Math.atan2(H[1] - E[1], H[0] - E[0]), shape = hand || (st.hands && st.hands[s]) || null;
+  const sp = !sl ? null : sl[0] === 'short' ? [S, m(.55)] : [S, E, w(sl[2])], sw = sl ? sl[1] : 0, root = m(.16), hs = shape && shape !== 'blob';
+  const spOut = sp ? [root, ...sp.slice(1)] : null;
+  // 1) outline pass (the shoulder root is left open so the arm grows out of the torso edge)
+  line([root, E], 34 + 2 * LW); line([E, H], 28 + 2 * LW); if (spOut) line(spOut, sw + 2 * LW);
+  if (hs) handPass(shape, 'out', H[0], H[1], handAng(shape, ang, s), 1, s, skin); else if (!shape) { P(); g.ellipse(H[0], H[1], 26 + LW, 24 + LW, 0, 0, 7); g.fillStyle = OUT; g.fill(); }
+  // 2) fill pass
+  line([S, E], 34, skin); line([E, H], 28, skin); if (sp) line(sp, sw, scol);
+  if (hs) handPass(shape, 'fill', H[0], H[1], handAng(shape, ang, s), 1, s, skin); else if (!shape) ell(H[0], H[1], 26, 24, skin, 0);
+  // 3) details: cuff line / trims, finger lines, nails
+  if (sp) { const e2 = sp[sp.length - 1], e1 = sp[sp.length - 2], a2 = Math.atan2(e2[1] - e1[1], e2[0] - e1[0]), nx = -Math.sin(a2) * sw / 2, ny = Math.cos(a2) * sw / 2;
+    if (st.outfit === 'leopard') { const b1 = [e2[0] - Math.cos(a2) * 16, e2[1] - Math.sin(a2) * 16]; line([b1, e2], sw, c.trim); line([[b1[0] + nx, b1[1] + ny], [b1[0] - nx, b1[1] - ny]], 4); }
+    if (st.outfit === 'blazer') { const b1 = [e2[0] + Math.cos(a2) * 8, e2[1] + Math.sin(a2) * 8]; line([e2, b1], 30, c.cuff); }
+    line([[e2[0] + nx, e2[1] + ny], [e2[0] - nx, e2[1] - ny]], 5); }
+  if (st.outfit === 'fitness') { const b0 = w(.72), b1 = w(.82); line([b0, b1], 30, c.band); for (const b of [b0, b1]) { const nx = -Math.sin(ang) * 15, ny = Math.cos(ang) * 15; line([[b[0] + nx, b[1] + ny], [b[0] - nx, b[1] - ny]], 3); } }
+  if (hs) handPass(shape, 'detail', H[0], H[1], handAng(shape, ang, s), 1, s, skin, st.nails); }
+function arm(st, c, s) { const fn = st.arms || (POSES[st.pose] || POSES.down); const pts = st.ik === false ? fn(s) : solveArm(fn(s)[0], fn(s)[2], fn(s)[1], s, st.breath || 0); drawArm(null, st, s, pts, c, st.hands ? st.hands[s] : null); }
 
 // laugh bursts: a few wide "ha-ha-ha" openings (not a fast sine); u = seconds since the laugh started
 function laughEnv(u) { if (u < 0) return 0; const bursts = [[0, .28], [.36, .26], [.7, .24], [1.05, .3]]; for (const [a, d] of bursts) if (u >= a && u < a + d) return .55 + .45 * Math.sin(Math.PI * (u - a) / d); return 0; }
@@ -268,6 +304,16 @@ function draw(gg, st) { g = gg; const c = palOf(st), E = st.moodFrom ? blendMood
   g.save(); headT(); face(st, c); if (st.moustache) moustache(st, c); if (st.faceFx) st.faceFx(g, HY); hairFront(st, c); accessories(st, c); if (st.hairFx) st.hairFx(g, HY); if (st.cap) cap(st, c);
   if (st.sweat) { P(); g.moveTo(190, HY - 60); g.quadraticCurveTo(218, HY - 14, 204, HY + 6); g.quadraticCurveTo(190, HY + 20, 176, HY + 6); g.quadraticCurveTo(168, HY - 14, 190, HY - 60); fs('#8fd2ff', 5); } g.restore();
   g.restore(); }
+// ---------- text fit: every label inside its object, with padding (wrap to `lines`, then shrink) ----------
+// box = {x, y, w, h} (centre-aligned inside); returns the size used
+function fitText(gg, str, box, o = {}) { const gx = gg || g, maxS = o.maxSize || 60, minS = o.minSize || 8, pad = o.pad ?? 6, nl = o.lines || 1, font = o.font || 'NBL, NBC', W2 = box.w - 2 * pad, H2 = box.h - 2 * pad, words = String(str).split(' ');
+  let best = null;
+  for (let size = maxS; size >= minS && !best; size -= 1) { gx.font = `${size}px ${font}`;
+    for (let n = 1; n <= nl && !best; n++) { const rows = []; let cur = ''; for (const wd of words) { const t2 = cur ? cur + ' ' + wd : wd; if (gx.measureText(t2).width <= W2 || !cur) cur = t2; else { rows.push(cur); cur = wd; } } rows.push(cur);
+      if (rows.length <= n && rows.every(r => gx.measureText(r).width <= W2) && rows.length * size * 1.08 <= H2) best = {size, rows}; } }
+  if (!best) { gx.font = `${minS}px ${font}`; best = {size: minS, rows: [str]}; }
+  gx.font = `${best.size}px ${font}`; gx.fillStyle = o.color || OUT; gx.textAlign = 'center'; gx.textBaseline = 'middle';
+  const lh = best.size * 1.08, y0 = box.y + box.h / 2 - (best.rows.length - 1) * lh / 2; best.rows.forEach((r, i) => gx.fillText(r, box.x + box.w / 2, y0 + i * lh)); return best.size; }
 // ---------- v3 smoothing helpers (for renderers) ----------
 // attack / release are settle times in seconds (~95%: time constant = value / 3).
 // follow(): STATELESS. Simulates the follower over the last `look` seconds, so it is deterministic for random access (stills)
@@ -288,4 +334,4 @@ function talk(line, t, seed = 0, o = {}) { if (!line) return {mouth: 0, round: .
   const nod = follow(u => 9 * clamp(e(u) - e(u - .1)), t, .08, .16, .4); return {mouth, round, nod}; }
 // emotion blending: moodFn(t) -> mood name; returns {mood, moodFrom, moodK} with a blend over `dur` and blink=true around the switch
 function moodAt(moodFn, t, dur = .25) { const m = moodFn(t); for (let d = 1 / 60; d <= dur; d += 1 / 60) { const p = moodFn(t - d); if (p !== m) { const k = (dur - d) / dur; return {mood: m, moodFrom: p, moodK: 1 - k, blink: d < .1}; } } return {mood: m, moodFrom: null, moodK: 1, blink: false}; }
-module.exports = {draw, POSES, MOODS, OUTFITS, ik, solveArm, drawArm, palOf, laughEnv, follow, smooth, envAt, talk, moodAt, blendMood};
+module.exports = {draw, POSES, MOODS, OUTFITS, HANDS, ik, solveArm, drawArm, drawHand, fitText, palOf, laughEnv, follow, smooth, envAt, talk, moodAt, blendMood};
