@@ -87,7 +87,7 @@ function nailsOn(hx, hy, col, glossy) { for (let k = 0; k < 4; k++) { const a = 
 function zhanna(t) { const l = lineAt(t), spk = l && l.who === 'z', a = blendArms(zAct, ZG, t), c = ZH;
   const walkK = ease((t - .3) / 1.8), x = lerp(-260, c.x, walkK) + Math.sin(t * 1.4) * 4 * (spk ? 1.4 : 1), bob = walkK < 1 ? Math.abs(Math.sin(t * 9)) * 10 : 0;
   const tilt = spk ? .06 * Math.sin(t * 2.6) : .03 * Math.sin(t * 1.1) + .02, br = 1 - .006 * (1 + Math.sin(t * 2.2));
-  T.draw(g, {...c, x, y: FEET - bob, sq: br, arms: wig(a.fn, t, spk ? 9 : 2), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: blink(t, 2), tilt, look: spk ? .2 : .6});
+  T.draw(g, {...c, x, y: FEET - bob, sq: br, arms: (a.fn = wig(a.fn, t, spk ? 9 : 2)), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: blink(t, 2), tilt, look: spk ? .2 : .6});
   const S = c.s, bx = x - 40 * S, by = FEET - bob - 790 * S * br; star(bx, by, 32, '#f2c820', 5, 8, t * .3); ell(bx, by, 9, 9, '#ff5a8a', 4);
   for (let i = 0; i < 7; i++) { const sx = x + (hash(i) - .5) * 140 * S, sy = FEET - (600 + hash(i + 9) * 240) * S; sparkle(sx, sy, 7 + 5 * hash(i + 3), Math.max(0, Math.sin(t * 4 + i * 1.7))); }
   const done = t > TL.LATER + 1;
@@ -100,7 +100,7 @@ function gumR(t) { // Brook's bubble gum radius
   return r; }
 function brook(t) { const l = lineAt(t), spk = l && l.who === 'b', a = blendArms(bAct, BG, t), c = BR, x = c.x + Math.sin(t * 1.2 + 2) * 3;
   const chew = !spk && gumR(t) < 4 ? .12 + .1 * Math.abs(Math.sin(t * 7)) : 0, stop = t > BY.z8.end - .5 && t < TL.END;
-  T.draw(g, {...c, x, y: FEET, arms: wig(a.fn, t, spk ? 7 : 2), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : stop ? 0 : chew, blink: blink(t, 5), tilt: spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t), look: -.6});
+  T.draw(g, {...c, x, y: FEET, arms: (a.fn = wig(a.fn, t, spk ? 7 : 2)), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : stop ? 0 : chew, blink: blink(t, 5), tilt: spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t), look: -.6});
   for (const s of [-1, 1]) { if (a.act.g === 'terminal' && s < 0) continue; const P3 = a.fn(s), E = P3[1], H = P3[2]; hand(x + H[0] * c.s, FEET + H[1] * c.s, Math.atan2(H[1] - E[1], H[0] - E[0]), c.s, c.pal.skin, '#b48ad8', false); }
   const r = gumR(t), mx = x - 4, my = FEET - c.s * 952; if (r > 3) { ell(mx - r * .3, my + 6, r, r * .95, '#ff9ac8', 5); ell(mx - r * .55, my - r * .3, r * .18, r * .12, 'rgba(255,255,255,.7)', 0); }
   const pop = BY.b3.at - .12; if (t >= pop && t < pop + .3) { const k = (t - pop) / .3; for (let i = 0; i < 6; i++) { const ag = i / 6 * 6.28; ell(mx - 20 + Math.cos(ag) * 60 * k, my + Math.sin(ag) * 50 * k, 10 * (1 - k), 8 * (1 - k), '#ff9ac8', 3); } }
