@@ -14,7 +14,14 @@ function rr(x, y, w, h, r, fill, lw = 7, stroke = INK) { g.beginPath(); g.roundR
 function ell(x, y, rx, ry, fill, lw = 7) { g.beginPath(); g.ellipse(x, y, Math.max(.1, rx), Math.max(.1, ry), 0, 0, 7); if (fill) { g.fillStyle = fill; g.fill(); } if (lw) { g.strokeStyle = INK; g.lineWidth = lw; g.stroke(); } }
 function ln(pts, w, col = INK) { g.beginPath(); pts.forEach((p, i) => i ? g.lineTo(...p) : g.moveTo(...p)); g.strokeStyle = col; g.lineWidth = w; g.lineCap = 'round'; g.lineJoin = 'round'; g.stroke(); }
 function poly(pts, fill, lw = 7) { g.beginPath(); pts.forEach((p, i) => i ? g.lineTo(...p) : g.moveTo(...p)); g.closePath(); g.fillStyle = fill; g.fill(); if (lw) { g.strokeStyle = INK; g.lineWidth = lw; g.lineJoin = 'round'; g.stroke(); } }
-function txt(s, x, y, size, col, font = FONT, align = 'center') { g.font = `${size}px ${font}`; g.fillStyle = col; g.textAlign = align; g.textBaseline = 'middle'; g.fillText(s, x, y); }
+// fitText: every label on an object gets its box (maxW x maxH, padding already subtracted); the text shrinks, then wraps to two lines, until it fits
+const TXTLOG = []; function txt(s, x, y, size, col, font = FONT, align = 'center', maxW = 0, maxH = 0) { s = String(s); g.font = `${size}px ${font}`; let f = size;
+  if (maxW) { const lim = maxH || size * 1.2; while ((g.measureText(s).width > maxW || f > lim) && f > size * .62) { f -= 1; g.font = `${f}px ${font}`; }
+    if (g.measureText(s).width > maxW && s.includes(' ')) { const ws = s.split(' '); let best = 1, bw = 1e9; for (let i = 1; i < ws.length; i++) { g.font = `${size}px ${font}`; const w = Math.max(g.measureText(ws.slice(0, i).join(' ')).width, g.measureText(ws.slice(i).join(' ')).width); if (w < bw) { bw = w; best = i; } }
+      const a = ws.slice(0, best).join(' '), b = ws.slice(best).join(' '); let f2 = Math.min(size, lim / 2.1); g.font = `${f2}px ${font}`; while (Math.max(g.measureText(a).width, g.measureText(b).width) > maxW && f2 > 6) { f2 -= 1; g.font = `${f2}px ${font}`; }
+      TXTLOG.push([s, maxW, Math.max(g.measureText(a).width, g.measureText(b).width), 'wrap']); g.fillStyle = col; g.textAlign = align; g.textBaseline = 'middle'; g.fillText(a, x, y - f2 * .55); g.fillText(b, x, y + f2 * .55); return; }
+    TXTLOG.push([s, maxW, g.measureText(s).width, f < size ? 'shrunk' : 'ok']); }
+  g.fillStyle = col; g.textAlign = align; g.textBaseline = 'middle'; g.fillText(s, x, y); }
 function star(x, y, r, fill, lw = 5, n = 8, rot = 0) { const p = []; for (let i = 0; i < n * 2; i++) { const a = rot + i * Math.PI / n, rr2 = i % 2 ? r * .42 : r; p.push([x + Math.cos(a) * rr2, y + Math.sin(a) * rr2]); } poly(p, fill, lw); }
 function sparkle(x, y, r, a = 1) { g.save(); g.globalAlpha *= a; poly([[x, y - r], [x + r * .22, y - r * .22], [x + r, y], [x + r * .22, y + r * .22], [x, y + r], [x - r * .22, y + r * .22], [x - r, y], [x - r * .22, y - r * .22]], '#fff6c0', 3); g.restore(); }
 function heart(x, y, r, fill = '#ff5a8a') { g.beginPath(); g.moveTo(x, y + r * .9); g.bezierCurveTo(x - r * 1.4, y - r * .1, x - r * .7, y - r * 1.2, x, y - r * .4); g.bezierCurveTo(x + r * .7, y - r * 1.2, x + r * 1.4, y - r * .1, x, y + r * .9); g.fillStyle = fill; g.fill(); g.strokeStyle = INK; g.lineWidth = 4; g.stroke(); }
@@ -40,9 +47,9 @@ const rollAt = t => t > TURN[0] && t < TURN[1] ? -.035 * Math.sin(Math.PI * (t -
 
 // ---------- street (seen through the rear window; blurred) ----------
 function sign(kind, x, y, s) { g.save(); g.translate(x, y); g.scale(s, s); ln([[0, 0], [0, 260]], 12, '#8a9098');
-  if (kind === 'yield') { poly([[-90, -70], [90, -70], [0, 80]], '#d8323c', 6); poly([[-60, -52], [60, -52], [0, 48]], '#ffffff', 0); txt('YIELD', 0, -24, 26, '#d8323c'); }
-  if (kind === 'speed') { rr(-70, -100, 140, 180, 10, '#ffffff', 6); txt('SPEED', 0, -70, 26, INK); txt('LIMIT', 0, -42, 26, INK); txt('30', 0, 20, 64, INK); }
-  if (kind === 'stop') { const p = []; for (let i = 0; i < 8; i++) { const a = Math.PI / 8 + i * Math.PI / 4; p.push([Math.cos(a) * 86, -10 + Math.sin(a) * 86]); } poly(p, '#d8323c', 6); txt('STOP', 0, -8, 40, '#ffffff'); }
+  if (kind === 'yield') { poly([[-90, -70], [90, -70], [0, 80]], '#d8323c', 6); poly([[-60, -52], [60, -52], [0, 48]], '#ffffff', 0); txt('YIELD', 0, -24, 26, '#d8323c', FONT, 'center', 70, 28); }
+  if (kind === 'speed') { rr(-70, -100, 140, 180, 10, '#ffffff', 6); txt('SPEED', 0, -70, 26, INK, FONT, 'center', 112, 28); txt('LIMIT', 0, -42, 26, INK, FONT, 'center', 112, 28); txt('30', 0, 20, 64, INK, FONT, 'center', 116, 70); }
+  if (kind === 'stop') { const p = []; for (let i = 0; i < 8; i++) { const a = Math.PI / 8 + i * Math.PI / 4; p.push([Math.cos(a) * 86, -10 + Math.sin(a) * 86]); } poly(p, '#d8323c', 6); txt('STOP', 0, -8, 40, '#ffffff', FONT, 'center', 124, 48); }
   g.restore(); }
 function carSide(x, y, col, s = 1, dir = 1) { g.save(); g.translate(x, y); g.scale(s * dir, s); rr(-150, -50, 300, 70, 26, col, 6); poly([[-90, -50], [-60, -100], [60, -100], [100, -50]], col, 6); poly([[-75, -54], [-52, -92], [0, -92], [0, -54]], '#cfe6f2', 4); poly([[10, -54], [10, -92], [55, -92], [84, -54]], '#cfe6f2', 4);
   ell(-90, 24, 30, 30, '#2a2a30', 5); ell(90, 24, 30, 30, '#2a2a30', 5); g.restore(); }
@@ -168,7 +175,7 @@ function container(x, y, s, open = true, steamy = true) { g.save(); g.translate(
 function clipboard(x, y, ang, sc, t) { g.save(); g.translate(x, y); g.rotate(ang); g.scale(sc, sc); rr(-62, -84, 124, 168, 10, '#b07a44', 6); rr(-50, -64, 100, 140, 4, '#ffffff', 4); rr(-26, -94, 52, 24, 6, '#c8ccd2', 5);
   for (let k = 0; k < 5; k++) ln([[-36, -40 + k * 22], [26, -40 + k * 22]], 3, '#9ab0d0');
   const marks = [BY.e4.at + .5, BY.e5.at + .5, BY.e8.at + .5].filter(m => t >= m).length; for (let k = 0; k < marks; k++) { const mx = 36, my = -40 + k * 22; ln([[mx - 8, my - 8], [mx + 8, my + 8]], 4, '#d8323c'); ln([[mx + 8, my - 8], [mx - 8, my + 8]], 4, '#d8323c'); }
-  if (t >= TL.STAMP1) { g.save(); g.rotate(-.25); rr(-48, 30, 96, 34, 6, null, 5, t >= TL.STAMP2 ? '#2f9a5a' : '#d8323c'); txt(t >= TL.STAMP2 ? 'PASSED' : 'FAILED', 0, 48, 24, t >= TL.STAMP2 ? '#2f9a5a' : '#d8323c'); g.restore(); }
+  if (t >= TL.STAMP1) { g.save(); g.translate(0, 47); g.rotate(-.18); g.translate(0, -47); rr(-40, 32, 80, 30, 6, null, 5, t >= TL.STAMP2 ? '#2f9a5a' : '#d8323c'); txt(t >= TL.STAMP2 ? 'PASSED' : 'FAILED', 0, 47, 22, t >= TL.STAMP2 ? '#2f9a5a' : '#d8323c', FONT, 'center', 68, 24); g.restore(); }
   g.restore(); }
 // container state: in the bag -> Zhanna's hand (z10) -> examiner's clipboard (z11) -> dashboard (e12: "Keep the cutlets!")
 const C_HAND = BY.z10.at + .3, C_CLIP = BY.z11.at + .9, C_DASH = BY.e12.at + 1.1;
@@ -197,7 +204,7 @@ function zHands(t) { const {a, x, y, br} = ZA, S = ZH.s, sk = ZH.pal.skin, NL = 
     gripBack(h.x, h.y, h.ang, S, sk);
     if (o === 'lip') { const mx = x + 4, my = y - 950 * S * br + 2, dx = mx - h.x, dy = my - h.y, L0 = Math.hypot(dx, dy), ux = dx / L0, uy = dy / L0;
       g.save(); g.translate(h.x - ux * 14, h.y - uy * 14); g.rotate(Math.atan2(uy, ux)); const len = L0 + 14; rr(0, -10, len - 26, 20, 6, '#f2c820', 4); rr(len - 30, -8, 30, 16, 7, '#d02a5a', 4); g.restore(); }
-    if (o === 'license') { g.save(); g.translate(h.x + 52, h.y - 30); g.rotate(-.12); rr(-62, -38, 124, 76, 8, '#fffaf0', 5); ell(-34, -2, 16, 18, '#f3d27a', 3); rr(-12, -18, 60, 8, 3, '#9ab0d0', 0); rr(-12, -2, 50, 8, 3, '#9ab0d0', 0); txt('OK', 22, 22, 18, '#2f9a5a'); g.restore(); }
+    if (o === 'license') { g.save(); g.translate(h.x + 52, h.y - 30); g.rotate(-.12); rr(-62, -38, 124, 76, 8, '#fffaf0', 5); ell(-34, -2, 16, 18, '#f3d27a', 3); rr(-12, -18, 60, 8, 3, '#9ab0d0', 0); rr(-12, -2, 50, 8, 3, '#9ab0d0', 0); txt('OK', 22, 22, 18, '#2f9a5a', FONT, 'center', 40, 20); g.restore(); }
     if (o === 'cont') { g.save(); g.globalAlpha *= ease((t - C_HAND) / .3); container(h.x - 52, h.y - 4, .9); g.restore(); }
     gripFront(h.x, h.y, h.ang, S, sk, NL, true); }
   if (t >= C_CLIP - .5 && t < C_CLIP) { const h = H[-1], mv = ease((t - C_CLIP + .5) / .5); container(lerp(h.x - 52, EX.x + 150, mv), lerp(h.y - 4, DASH - 26, mv) - Math.sin(Math.PI * mv) * 50, .9); } }
@@ -205,7 +212,7 @@ function exX(t) { const a = TL.DOOR - .45; return t < a ? EX.x : EX.x - 900 * ea
 function eBody(t) { const x0 = exX(t); if (x0 < -700) { EA = null; return; } const l = lineAt(t), spk = l && l.who === 'e', a = blendArms(eAct, EG, t), c = EX, x = x0 + Math.sin(t * 1.2 + 2) * 2, y = SEAT;
   const twitch = a.act.mood === 'sad' && Math.sin(t * 23) > .7 ? 1 : 0, tilt = (spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t)) + rollAt(t) * 3 + (eAct(t).g === 'look' ? -.12 : 0);
   const ts = talkSt(lineFor('e', t), t, 7), md = T.moodAt(eMood, t, .25); T.draw(g, {...c, x, y, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 5 : 1.2), 2 + 2 * Math.sin(t * 2.4))), ik: false, front: a.front, mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, mouth: ts.mouth, round: ts.round, talking: ts.talking, vis: ts.vis, nod: ts.nod, t, blink: blink(t, 5) || twitch || md.blink, tilt, look: a.act.g === 'look' ? .9 : spk ? 0 : .6, sweat: a.act.mood === 'sad' || t >= BY.e11.at && t < TL.DOOR});
-  const S = c.s; rr(x - 70 * S - 22, y - 800 * S - 16, 44, 30, 6, '#e8c27a', 4); txt('DMV', x - 70 * S, y - 800 * S, 15, INK);
+  const S = c.s; rr(x - 70 * S - 22, y - 800 * S - 16, 44, 30, 6, '#e8c27a', 4); txt('DMV', x - 70 * S, y - 800 * S, 15, INK, FONT, 'center', 34, 20);
   EA = {a, x, y, clip: null}; }
 function eHands(t) { if (!EA) return; const {a, x, y} = EA, S = EX.s; const hasClip = a.act.g !== 'shock' && a.act.g !== 'push';
   const sk = EX.pal.skin, h = handPos(x, y, S, a, -1), r = handPos(x, y, S, a, 1);
@@ -220,7 +227,7 @@ function jacket(x, y, S) { const c = PE.pal; g.save(); g.translate(x, y); g.scal
   g.beginPath(); g.moveTo(-290, -380); g.lineTo(-300, -790); g.quadraticCurveTo(-300, -905, -150, -910); g.lineTo(150, -910); g.quadraticCurveTo(300, -905, 300, -790); g.lineTo(290, -380); g.closePath(); g.fillStyle = c.top; g.fill(); g.strokeStyle = INK; g.lineWidth = 7 / S * .76; g.stroke();
   poly([[-46, -900], [46, -900], [0, -760]], c.collar, 6); ln([[-46, -900], [-110, -640]], 8, c.topS); ln([[46, -900], [110, -640]], 8, c.topS); for (const yy of [-700, -600, -500]) ell(0, yy, 9, 9, c.topS, 4); g.restore(); }
 function lap(x, y, S) { const c = PE.pal; g.save(); g.translate(x, y); g.scale(S, S); rr(-290, -560, 580, 140, 40, c.bottom, 7); for (const s of [-1, 1]) ell(s * 130, -430, 115, 60, c.bottom, 7); g.restore(); }
-function paper(x, top, k, S) { const w = S ? 215 * S : 178 * k, h = S ? 420 * S : 360 * k; rr(x - w, top, w * 2, h, 6, '#f4f1e8', 7); txt('BRIGHTON TIMES', x, top + 42 * k, 40 * k, INK, HW); ln([[x - w + 16 * k, top + 70 * k], [x + w - 16 * k, top + 70 * k]], 4);
+function paper(x, top, k, S) { const w = S ? 215 * S : 178 * k, h = S ? 420 * S : 360 * k; rr(x - w, top, w * 2, h, 6, '#f4f1e8', 7); txt('BRIGHTON TIMES', x, top + 42 * k, 40 * k, INK, HW, 'center', 2 * w - 30 * k, 48 * k); ln([[x - w + 16 * k, top + 70 * k], [x + w - 16 * k, top + 70 * k]], 4);
   rr(x - w + 20 * k, top + 90 * k, 150 * k, 110 * k, 4, '#c8cfd6', 4); for (let j = 0; j < 9; j++) ln([[x - w + (j < 4 ? 186 : 20) * k, top + (98 + j * 26) * k], [x + w - 20 * k, top + (98 + j * 26) * k]], 4, '#b8b2a4'); ln([[x, top + 214 * k], [x, top + h - 14 * k]], 3, '#d8d2c4'); }
 const nodAt = t => { const l = lineAt(t); return l && l.who === 'p' && /Угу/.test(l.text) ? Math.sin(Math.PI * clamp((t - l.at) / (l.end - l.at))) : 0; };
 function petro(t, x, y, S, top) { const l = lineAt(t), spk = l && l.who === 'p', a = blendArms(() => ({g: 'hold'}), {hold: s => [[s * 262, -845], [s * 318, -690], [s * 226, -935]]}, t), k = S / .76, nod = nodAt(t) * 10 * k;
@@ -247,7 +254,7 @@ function topCar(x, y, ang, col, zh) { g.save(); g.translate(x, y); g.rotate(ang)
   g.restore(); }
 function topView(t) { const u = clamp((t - PK0) / (PK1 - PK0)), e = ease(u), x = lerp(-260, 700, e), y = lerp(860, 1150, ease(clamp((u - .45) / .55))), ang = lerp(0, -.42, ease(clamp((u - .55) / .45))) + (u >= 1 ? .02 * Math.sin((t - PK1) * 14) * Math.exp(-(t - PK1) * 3) : 0);
   if (u > .6 && u < 1) for (let i = 0; i < 2; i++) ln([[x - 200, y + 70 - i * 140], [x - 330, y + 90 - i * 160]], 10, 'rgba(40,40,40,.45)');
-  topCar(x, y, ang, '#e46aa0', true); if (u >= 1) { const k = ease((t - PK1) / .3); g.save(); g.globalAlpha = k; for (const sx of [530, 870]) { rr(sx - 60, 1030, 120, 60, 14, '#fffaf0', 5); txt(sx < 700 ? '1' : '2', sx, 1061, 40, '#d63a8a'); } g.restore(); } }
+  topCar(x, y, ang, '#e46aa0', true); if (u >= 1) { const k = ease((t - PK1) / .3); g.save(); g.globalAlpha = k; for (const sx of [530, 870]) { rr(sx - 60, 1030, 120, 60, 14, '#fffaf0', 5); txt(sx < 700 ? '1' : '2', sx, 1061, 40, '#d63a8a', FONT, 'center', 100, 48); } g.restore(); } }
 
 // ---------- clouds (thoughts) and cards (cutaways) ----------
 const PX = 110, PY = 120, PW = 860, PH = 520;
@@ -259,26 +266,26 @@ function speedo(x, y, r, v) { g.beginPath(); g.arc(x, y, r, Math.PI, 0); g.close
   const a = Math.PI + v / 80 * Math.PI; ln([[x, y], [x + Math.cos(a) * r * .78, y + Math.sin(a) * r * .78]], 9, '#ff3a3a'); ell(x, y, 12, 12, '#ffffff', 4); }
 function board(x, y, s, stamp, u) { g.save(); g.translate(x, y); g.scale(s, s); rr(-130, -170, 260, 340, 16, '#b07a44', 8); rr(-106, -136, 212, 290, 6, '#ffffff', 5); rr(-50, -186, 100, 40, 10, '#c8ccd2', 6); for (let k = 0; k < 6; k++) ln([[-80, -90 + k * 40], [70, -90 + k * 40]], 4, '#9ab0d0');
   for (let k = 0; k < 3; k++) { const mx = 84, my = -90 + k * 40; ln([[mx - 12, my - 12], [mx + 12, my + 12]], 6, '#d8323c'); ln([[mx + 12, my - 12], [mx - 12, my + 12]], 6, '#d8323c'); } g.restore(); }
-function stampMark(x, y, label, col, u, rot) { const k = clamp(u / .18), sc = lerp(1.8, 1, ease(k)); if (u <= 0) return; g.save(); g.globalAlpha *= k; g.translate(x, y); g.rotate(rot); g.scale(sc, sc); rr(-150, -50, 300, 100, 12, 'rgba(255,255,255,.6)', 9, col); txt(label, 0, 4, 66, col); g.restore(); }
+function stampMark(x, y, label, col, u, rot) { const k = clamp(u / .18), sc = lerp(1.8, 1, ease(k)); if (u <= 0) return; g.save(); g.globalAlpha *= k; g.translate(x, y); g.rotate(rot); g.scale(sc, sc); rr(-150, -50, 300, 100, 12, 'rgba(255,255,255,.6)', 9, col); txt(label, 0, 4, 66, col, FONT, 'center', 270, 80); g.restore(); }
 const CARD = {
   right: u => { g.save(); g.translate(250, 300); ln([[0, 140], [0, -10]], 46, '#2a7ad0'); g.beginPath(); g.arc(90, -10, 90, Math.PI, 1.5 * Math.PI); g.strokeStyle = '#2a7ad0'; g.lineWidth = 46; g.stroke(); poly([[90, -150], [190, -100], [90, -50]], '#2a7ad0', 0); g.restore();
-    txt('MAKE A', 600, 170, 56, INK); txt('RIGHT TURN', 600, 245, 62, '#2a7ad0'); txt('направо', 600, 345, 52, '#c0283a'); },
-  yield: u => { sign('yield', 250, 250, 1.7); txt('YIELD', 610, 200, 84, '#d8323c'); txt('уступи', 610, 300, 52, INK); txt('дорогу', 610, 360, 52, INK); },
-  speed: u => { sign('speed', 220, 240, 1.35); speedo(600, 330, 170, lerp(30, 52, ease(u * 2)) + Math.sin(u * 40) * .8); txt('SPEED LIMIT 30', 600, 400, 44, INK); if (u > .35) txt(Math.round(lerp(30, 50, ease((u - .35) * 4))) + '!', 600, 255, 64, '#ff5a5a'); },
-  price: u => { g.save(); g.translate(230, 270); g.rotate(-.12); poly([[-120, -70], [90, -70], [140, 0], [90, 70], [-120, 70]], '#fff3c0', 7); ell(100, 0, 12, 12, '#ffffff', 5); txt('30', -20, 4, 90, INK); if (u > .2) ln([[-110, 50], [80, -50]], 12, '#d8323c'); g.restore();
-    if (u > .3) { ln([[380, 270], [470, 270]], 12); poly([[470, 245], [505, 270], [470, 295]], INK, 0); g.save(); g.translate(620, 270); g.rotate(.1); poly([[-120, -70], [90, -70], [140, 0], [90, 70], [-120, 70]], '#ffc0dc', 7); ell(100, 0, 12, 12, '#ffffff', 5); txt('50?', -14, 4, 86, '#d63a8a'); g.restore(); } },
+    txt('MAKE A', 600, 170, 56, INK, FONT, 'center', 420, 64); txt('RIGHT TURN', 600, 245, 62, '#2a7ad0', FONT, 'center', 420, 70); txt('направо', 600, 345, 52, '#c0283a', FONT, 'center', 420, 60); },
+  yield: u => { sign('yield', 250, 250, 1.7); txt('YIELD', 610, 200, 84, '#d8323c', FONT, 'center', 400, 90); txt('уступи', 610, 300, 52, INK, FONT, 'center', 400, 60); txt('дорогу', 610, 360, 52, INK, FONT, 'center', 400, 60); },
+  speed: u => { sign('speed', 220, 240, 1.35); speedo(600, 330, 170, lerp(30, 52, ease(u * 2)) + Math.sin(u * 40) * .8); txt('SPEED LIMIT 30', 600, 400, 44, INK, FONT, 'center', 400, 50); if (u > .35) txt(Math.round(lerp(30, 50, ease((u - .35) * 4))) + '!', 600, 255, 64, '#ff5a5a', FONT, 'center', 200, 70); },
+  price: u => { g.save(); g.translate(230, 270); g.rotate(-.12); poly([[-120, -70], [90, -70], [140, 0], [90, 70], [-120, 70]], '#fff3c0', 7); ell(100, 0, 12, 12, '#ffffff', 5); txt('30', -20, 4, 90, INK, FONT, 'center', 170, 110); if (u > .2) ln([[-110, 50], [80, -50]], 12, '#d8323c'); g.restore();
+    if (u > .3) { ln([[380, 270], [470, 270]], 12); poly([[470, 245], [505, 270], [470, 295]], INK, 0); g.save(); g.translate(620, 270); g.rotate(.1); poly([[-120, -70], [90, -70], [140, 0], [90, 70], [-120, 70]], '#ffc0dc', 7); ell(100, 0, 12, 12, '#ffffff', 5); txt('50?', -14, 4, 86, '#d63a8a', FONT, 'center', 170, 110); g.restore(); } },
   merge: u => { rr(130, 60, 300, 420, 10, '#8a8f98', 6); ln([[280, 80], [280, 460]], 8, '#ffffff'); g.setLineDash([30, 26]); ln([[280, 80], [280, 460]], 8, '#8a8f98'); g.setLineDash([]); g.save(); g.translate(355, 400);
     g.beginPath(); g.moveTo(0, 40); g.bezierCurveTo(0, -120, -150, -120, -150, -260); g.strokeStyle = '#f2c820'; g.lineWidth = 30; g.stroke(); poly([[-150, -330], [-195, -255], [-105, -255]], '#f2c820', 0); g.restore();
-    txt('MERGE', 640, 200, 84, '#2a7ad0'); txt('LEFT', 640, 285, 64, '#2a7ad0'); txt('перестройтесь', 640, 375, 46, '#c0283a'); },
-  stop: u => { sign('stop', 240, 250, 1.6); txt('COME TO A', 610, 160, 46, INK); txt('COMPLETE', 610, 230, 62, '#d8323c'); txt('STOP', 610, 300, 62, '#d8323c'); txt('полная остановка', 610, 385, 40, INK); },
-  cutlets: u => { container(430, 330, 2.4, true, true); for (let i = 0; i < 5; i++) { const ph = (u * 2 + i * .2) % 1; g.save(); g.globalAlpha *= 1 - ph; heart(250 + i * 90, 210 - ph * 120, 22); g.restore(); } txt('домашние!', 430, 440, 46, '#d63a8a', HW); },
-  failed: u => { board(300, 270, 1.15); stampMark(560, 290, 'FAILED', '#d8323c', u - .05, -.18); if (u > .3) txt('не сдали', 560, 420, 48, INK); },
-  nextweek: u => { rr(110, 80, 280, 330, 24, '#ffffff', 7); rr(110, 80, 280, 90, 24, '#d8323c', 7); txt('NEXT WEEK', 250, 126, 34, '#ffffff'); txt('TUE', 250, 250, 96, INK); txt('Zhanna', 250, 350, 40, '#d63a8a', HW);
+    txt('MERGE', 640, 200, 84, '#2a7ad0', FONT, 'center', 340, 90); txt('LEFT', 640, 285, 64, '#2a7ad0', FONT, 'center', 340, 70); txt('перестройтесь', 640, 375, 46, '#c0283a', FONT, 'center', 340, 56); },
+  stop: u => { sign('stop', 240, 250, 1.6); txt('COME TO A', 610, 160, 46, INK, FONT, 'center', 400, 56); txt('COMPLETE', 610, 230, 62, '#d8323c', FONT, 'center', 400, 70); txt('STOP', 610, 300, 62, '#d8323c', FONT, 'center', 400, 70); txt('полная остановка', 610, 385, 40, INK, FONT, 'center', 400, 50); },
+  cutlets: u => { container(430, 330, 2.4, true, true); for (let i = 0; i < 5; i++) { const ph = (u * 2 + i * .2) % 1; g.save(); g.globalAlpha *= 1 - ph; heart(250 + i * 90, 210 - ph * 120, 22); g.restore(); } txt('домашние!', 430, 440, 46, '#d63a8a', HW, 'center', 700, 56); },
+  failed: u => { board(300, 270, 1.15); stampMark(560, 290, 'FAILED', '#d8323c', u - .05, -.18); if (u > .3) txt('не сдали', 560, 420, 48, INK, FONT, 'center', 400, 56); },
+  nextweek: u => { rr(110, 80, 280, 330, 24, '#ffffff', 7); rr(110, 80, 280, 90, 24, '#d8323c', 7); txt('NEXT WEEK', 250, 126, 34, '#ffffff', FONT, 'center', 240, 56); txt('TUE', 250, 250, 96, INK, FONT, 'center', 240, 110); txt('Zhanna', 250, 350, 40, '#d63a8a', HW, 'center', 240, 50);
     const n = Math.min(6, 1 + Math.floor(u * 9)); for (let i = 0; i < n; i++) container(610 + (i % 2) * 90 - (i >= 4 ? 45 : 0), 420 - Math.floor(i / 2) * 70, 1.05, false, false); if (u > .6) container(625, 420 - 3 * 70 + 10, 1.05, true, true); },
   passed: u => { board(300, 270, 1.15); if (u > 0) { const k = ease(u / .15); ln([[460, 290], [460 + 230 * k, 290]], 0); } stampMark(560, 230, 'FAILED', '#d8323c', 1, -.18); if (u > .12) ln([[420, 270], [700, 190]], 14, INK); stampMark(580, 370, 'PASSED', '#2f9a5a', u - .2, .06); },
-  license: u => { g.save(); g.translate(480, 270); g.rotate(-.05); rr(-330, -170, 660, 340, 30, '#fffaf0', 9); rr(-330, -170, 660, 80, 30, '#2a7ad0', 9); txt('DRIVER LICENSE', 0, -130, 48, '#ffffff');
+  license: u => { g.save(); g.translate(480, 270); g.rotate(-.05); rr(-330, -170, 660, 340, 30, '#fffaf0', 9); rr(-330, -170, 660, 80, 30, '#2a7ad0', 9); txt('DRIVER LICENSE', 0, -130, 48, '#ffffff', FONT, 'center', 600, 60);
     rr(-300, -66, 190, 210, 14, '#ffe0ee', 6); ell(-205, 0, 84, 70, '#f3d27a', 6); ell(-205, 30, 46, 52, '#f4c8a8', 5); ell(-205, -18, 60, 26, '#f3d27a', 0); q2([-224, 52], [-205, 64], [-186, 52]); star(-150, 110, 18, '#f2c820', 4);
-    txt('ZHANNA', 110, -30, 60, INK); txt('BRIGHTON BEACH', 110, 30, 34, '#7a808c'); g.restore(); stampMark(580, 370, 'PASSED', '#2f9a5a', 1, .06); },
+    txt('ZHANNA', 110, -52, 60, INK, FONT, 'center', 390, 64); txt('BRIGHTON BEACH', 110, 0, 34, '#7a808c', FONT, 'center', 390, 40); g.restore(); stampMark(580, 370, 'PASSED', '#2f9a5a', 1, .06); },
 };
 function q2(a, c, b) { g.beginPath(); g.moveTo(...a); g.quadraticCurveTo(...c, ...b); g.strokeStyle = '#d02a5a'; g.lineWidth = 7; g.lineCap = 'round'; g.stroke(); }
 let curCam = null;
@@ -358,7 +365,7 @@ function flag(x, y, w, h) { g.save(); g.beginPath(); g.rect(x, y, w, h); g.clip(
   ln([[x + w / 2, y], [x + w / 2, y + h]], 14, '#ffffff'); ln([[x, y + h / 2], [x + w, y + h / 2]], 14, '#ffffff'); ln([[x + w / 2, y], [x + w / 2, y + h]], 8, '#d8323c'); ln([[x, y + h / 2], [x + w, y + h / 2]], 8, '#d8323c'); g.restore(); g.strokeStyle = INK; g.lineWidth = 4; g.strokeRect(x, y, w, h); }
 function britChip(t) { const a = BY.p3.at, b = BY.p3.at + 2.6; if (t < a || t >= b) return; const k = ease((t - a) / .15) * (1 - ease((t - b + .15) / .15));
   g.save(); g.globalAlpha = k; g.translate(540, 1536 + (1 - k) * 16); g.rotate(-.015); g.font = `42px ${FONT}`; const tw = g.measureText('British accent').width, w = tw + 130;
-  rr(-w / 2 + 6, -34, w, 72, 20, 'rgba(42,34,48,0.35)', 0); rr(-w / 2, -40, w, 72, 20, '#fffaf0', 5); flag(-w / 2 + 22, -24, 60, 40); txt('British accent', -w / 2 + 100, -3, 42, '#1f3a8a', FONT, 'left'); g.restore(); }
+  rr(-w / 2 + 6, -34, w, 72, 20, 'rgba(42,34,48,0.35)', 0); rr(-w / 2, -40, w, 72, 20, '#fffaf0', 5); flag(-w / 2 + 22, -24, 60, 40); txt('British accent', -w / 2 + 100, -3, 42, '#1f3a8a', FONT, 'left', w - 120, 50); g.restore(); }
 function chip(t) { for (const c of CHIPS) if (t >= c.a && t < c.b) chip1(t, c); }
 function chip1(t, c) {
   const k = ease((t - c.a) / .15) * (1 - ease((t - c.b + .12) / .12)), w1 = c.w, w2 = c.sep + c.tr; let f = 42; g.font = `${f}px ${FONT}`; const tot = () => g.measureText(w1).width + g.measureText(w2).width;
@@ -367,13 +374,13 @@ function chip1(t, c) {
   g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillStyle = '#d63a8a'; g.fillText(w1, -tw / 2, -3); g.fillStyle = INK; g.fillText(w2, -tw / 2 + g.measureText(w1).width, -3); g.restore(); }
 const HOOK_END = 2.7;
 function hook(t) { if (t > HOOK_END + .3) return; const a = clamp(t / .06) * (1 - ease((t - HOOK_END) / .3)), st = 1 + .6 * (1 - ex(P01(t, 0, .3))); g.save(); g.globalAlpha = a; g.translate(540, 330); g.rotate(-.02 - .06 * (1 - ex(P01(t, 0, .3)))); g.scale(st, st);
-  rr(-450, -165, 900, 330, 34, '#fffaf0', 9); txt('ЖАННА', 0, -92, 92, INK); txt('СДАЁТ НА ПРАВА', 0, 4, 86, '#d63a8a'); txt('В АМЕРИКЕ', 0, 98, 80, INK); g.restore(); }
+  rr(-450, -165, 900, 330, 34, '#fffaf0', 9); txt('ЖАННА', 0, -92, 92, INK, FONT, 'center', 840, 100); txt('СДАЁТ НА ПРАВА', 0, 4, 86, '#d63a8a', FONT, 'center', 840, 96); txt('В АМЕРИКЕ', 0, 98, 80, INK, FONT, 'center', 840, 90); g.restore(); }
 function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30,20,30,${.55 * k})`; g.fillRect(0, 0, W, H); g.save(); g.globalAlpha = k; g.translate(0, (1 - k) * 80);
-  rr(60, 170, 960, 1540, 44, '#fffaf0', 8); txt('ПЕРЕВОДИМ ЖАННУ', 540, 270, 64, '#d63a8a');
+  rr(60, 170, 960, 1540, 44, '#fffaf0', 8); txt('ПЕРЕВОДИМ ЖАННУ', 540, 270, 64, '#d63a8a', FONT, 'center', 880, 80);
   const R = [['CHECK YOUR MIRRORS', 'проверьте зеркала'], ['MAKE A RIGHT TURN', 'поверните направо'], ['YIELD', 'уступите дорогу'], ['THE SPEED LIMIT IS 30', 'ограничение скорости — 30'],
     ['MERGE LEFT', 'перестройтесь влево'], ['COME TO A COMPLETE STOP', 'полностью остановитесь'], ['PULL OVER', 'остановитесь у обочины']];
-  R.forEach(([en, ru], i) => { const y = 390 + i * 126; let f = 52; g.font = `${f}px ${FONT}`; while (g.measureText(en).width > 880) { f -= 2; g.font = `${f}px ${FONT}`; } txt(en, 540, y, f, '#1f3a8a'); txt(ru, 540, y + 50, 38, '#c0283a'); });
-  txt('А вы с какого раза', 540, 1300, 52, '#d63a8a'); txt('сдали на права?', 540, 1366, 52, '#d63a8a'); txt('1 — с первого    2 — со второго', 540, 1450, 44, INK); txt('3 — с третьего и дальше', 540, 1512, 44, INK); txt('Пишите цифру!', 540, 1600, 50, '#d63a8a'); g.restore(); }
+  R.forEach(([en, ru], i) => { const y = 390 + i * 126; let f = 52; g.font = `${f}px ${FONT}`; while (g.measureText(en).width > 880) { f -= 2; g.font = `${f}px ${FONT}`; } txt(en, 540, y, f, '#1f3a8a', FONT, 'center', 880, 60); txt(ru, 540, y + 50, 38, '#c0283a', FONT, 'center', 880, 46); });
+  txt('А вы с какого раза', 540, 1300, 52, '#d63a8a', FONT, 'center', 880, 60); txt('сдали на права?', 540, 1366, 52, '#d63a8a', FONT, 'center', 880, 60); txt('1 — с первого    2 — со второго', 540, 1450, 44, INK, FONT, 'center', 880, 56); txt('3 — с третьего и дальше', 540, 1512, 44, INK, FONT, 'center', 880, 56); txt('Пишите цифру!', 540, 1600, 50, '#d63a8a', FONT, 'center', 880, 60); g.restore(); }
 
 let COVER = false;
 function scene(t, c) { NOW = t; const view = c.sh.k; curCam = c; g = G0; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
@@ -397,7 +404,7 @@ function whipFrame(t) { GACC.setTransform(1, 0, 0, 1, 0, 0); GACC.fillStyle = '#
 function freezeFrame(t) { const f0 = TL.FREEZE[0], u = (t - f0) / TL.FREEZE[1]; scene(f0, camAt(f0)); GFRZ.setTransform(1, 0, 0, 1, 0, 0); GFRZ.clearRect(0, 0, W, H); GFRZ.drawImage(cv, 0, 0);
   g = G0; g.setTransform(1, 0, 0, 1, 0, 0); const z = 1 + .05 * eio(u); g.save(); g.translate(540, 960); g.scale(z, z); g.translate(-540, -960); g.filter = 'grayscale(1) contrast(1.3) brightness(1.05)'; g.drawImage(frzCv, 0, 0); g.filter = 'none';
   const pr = ex(P01(t, f0 + .15, .5)); if (pr > 0) { g.beginPath(); for (let i = 0; i <= 64 * pr; i++) { const a = -2.2 + i / 64 * 6.6, r = 1 + .04 * Math.sin(i * .7), px = 700 + Math.cos(a) * 330 * r, py = 1150 + Math.sin(a) * 170 * r; i ? g.lineTo(px, py) : g.moveTo(px, py); } g.strokeStyle = '#e0262f'; g.lineWidth = 9; g.lineCap = 'round'; g.stroke(); }   // red pencil around the car
-  g.restore(); const lk = spr(P01(t, f0 + .25, .4), 6, 10); if (lk > 0) { g.save(); g.translate(540, 560); g.rotate(-.04 + (1 - lk) * -.1); g.scale(lk, lk); rr(-360, -56, 720, 112, 10, '#e0262f', 6); txt('1 МАШИНА = 2 МЕСТА', 0, 2, 62, '#ffffff', HW); g.restore(); } }
+  g.restore(); const lk = spr(P01(t, f0 + .25, .4), 6, 10); if (lk > 0) { g.save(); g.translate(540, 560); g.rotate(-.04 + (1 - lk) * -.1); g.scale(lk, lk); rr(-360, -56, 720, 112, 10, '#e0262f', 6); txt('1 МАШИНА = 2 МЕСТА', 0, 2, 62, '#ffffff', HW, 'center', 680, 90); g.restore(); } }
 function frame(t) { NOW = t;
   const c = COVER ? {z: .83, x: 572, y: 1000, k: 'TWO', sh: {k: 'TWO'}} : camAt(t), view = c.sh.k;
   if (!COVER && whipU(t)) whipFrame(t); else if (!COVER && t >= TL.FREEZE[0] && t < TL.FREEZE[0] + TL.FREEZE[1]) freezeFrame(t); else scene(t, c);
@@ -411,7 +418,7 @@ if (mode === 'still') { fs.mkdirSync('out/st', {recursive: true}); for (const t 
 else if (mode === 'cover') { // NOCAP still shifted down 180 px, top strip filled, cream plate 900x330 (text inside the 3:4 crop)
   const t = +(arg || BY.z1.at + 2.0); process.env.NOCAP = 1; COVER = true; frame(t); const src = createCanvas(W, H); src.getContext('2d').drawImage(cv, 0, 0);
   g = G0; g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(src, 0, 180); g.save(); g.filter = 'blur(8px)'; g.drawImage(src, 0, 0, W, 8, 0, 0, W, 184); g.filter = 'none'; g.restore();
-  g.save(); g.translate(540, 495); g.rotate(-.02); rr(-450, -165, 900, 330, 34, '#fffaf0', 9); txt('ЖАННА', 0, -92, 92, INK); txt('СДАЁТ', 0, 4, 100, '#d63a8a'); txt('НА ПРАВА', 0, 98, 86, INK); g.restore();
+  g.save(); g.translate(540, 495); g.rotate(-.02); rr(-450, -165, 900, 330, 34, '#fffaf0', 9); txt('ЖАННА', 0, -92, 92, INK, FONT, 'center', 840, 100); txt('СДАЁТ', 0, 4, 100, '#d63a8a', FONT, 'center', 840, 110); txt('НА ПРАВА', 0, 98, 86, INK, FONT, 'center', 840, 96); g.restore();
   fs.mkdirSync('final', {recursive: true}); fs.writeFileSync('final/cover.png', cv.toBuffer('image/png')); }
 else if (mode === 'clip') { const [a, b] = arg.split(':').map(Number), F0 = Math.round(a * FPS), F1 = Math.round(Math.min(b, TL.TOTAL) * FPS);
   const ff = spawn('ffmpeg', ['-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', `${W}x${H}`, '-r', '30', '-i', '-', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', outName]);
@@ -436,6 +443,10 @@ else if (mode === 'frame') { // measure each character's horizontal extent per s
         if (ok) { best = [+z.toFixed(3), Math.round(x)]; break; } } }
     out[sh.i] = best; console.log(sh.i, sh.k, sh.at.toFixed(2), JSON.stringify(E), '->', best, 'was', [z0, x0]); }
   fs.writeFileSync('cams.json', JSON.stringify(out)); }
+else if (mode === 'textaudit') { // render sample frames and report every object label: fitted size vs its box
+  const seen = new Map(); for (let t = 0; t < TL.TOTAL; t += .25) { TXTLOG.length = 0; frame(t); for (const [s0, mw, w, st] of TXTLOG) { const k = s0.replace(/\d+!$/, 'N!'); if (!seen.has(k) || seen.get(k)[1] < w) seen.set(k, [mw, w, st]); } }
+  let bad = 0; for (const [k, [mw, w, st]] of seen) { const ok = w <= mw + .5; if (!ok) bad++; console.log(ok ? 'OK ' : 'OVER', k.padEnd(34), 'box', Math.round(mw), 'text', Math.round(w), st); } console.log('labels', seen.size, 'overflowing', bad);
+  const un = (fs.readFileSync(__filename, 'utf8').match(/txt\([^;]*?\)/g) || []).filter(c => !/,\s*'(center|left)',/.test(c) && !c.startsWith('txt(s, x')); console.log('txt calls without a box:', un.length, un.join(' | ')); }
 else if (mode === 'smoothcheck') { // per-frame change of the drawn mouth opening; >15% allowed only at true onsets (opening from a nearly closed mouth)
   let n = 0, big = 0, worst = 0, dips = 0, low = 0, dur = 0;
   for (const l of L) { if (l.who === 'p') continue; const M = []; for (let t = l.at - .1; t < l.end + .3; t += 1 / FPS) M.push(T.talk(l, t).mouth); dur += l.end - l.at;
