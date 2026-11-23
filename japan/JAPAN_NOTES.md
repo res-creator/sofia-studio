@@ -14,3 +14,11 @@ PICTURE_EN_4K.mp4 (8.2 GB) and MUSIC_AND_EFFECTS.wav (834 MB) are needed on the 
 - Planned release: Tue 2 Dec, 22:00 Moldova (Vietnam 25 Nov).
 - 2026-11-20 FILM BUILT on owner's computer (Desktop/Japan/FINAL_EN_4K.mp4, 17 Nov). Title v2 + description v2 in upload_kit.txt (every claim checked against SCRIPT_EN.csv).
 - 2026-11-20 owner's ChatGPT thumbnails: jp_shibuya_umbrella.jpg (opening 0:01, clear umbrella = the film's game), jp_fuji_reflection.jpg — ready. jp_himeji.jpg and jp_nebuta.jpg redone (title readable). Recommended test: shibuya_umbrella + fuji_reflection + nebuta.
+
+## 2026-11-23 RE-VOICED with the new voice (Fish Audio)
+- japan/voice/*.mp3 replaced: Fish Audio s2.1-pro-free, zero-shot clone from the boyfriend's ElevenLabs v3 sample (1:46), emotion = first delivery_notes tag.
+  (Old Kokoro voice is in git history, commit before this one.) All 175 fit max_duration_s; mastered (LUFS spread 0.7).
+- F027 shortened again (same facts): "...the first auction of the year. A two hundred and forty-three kilogram bluefin tuna sells for five hundred and ten million yen. About three point two million dollars, a record."
+- onset_check still flags F012 F017 F042 F065 F076 F103 F136 F142 (one regen pass done) — listen.
+- SUBTITLES_EN.srt re-timed to the new voice.
+- NEXT: owner rebuilds FINAL_EN_4K.mp4 on her computer (new voice/ + SCRIPT_EN.csv + SUBTITLES_EN.srt), old FINAL must be replaced.
