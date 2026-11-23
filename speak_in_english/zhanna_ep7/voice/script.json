@@ -1,0 +1,109 @@
+{
+ "voices": {
+  "z": "08b267d9a5fb4b6ead23d97878586ee3",
+  "p": "55f0cafef00f4e16808bcd75c4b41a6f",
+  "w": "440fb3c75e0844a7819405d9212e16bf"
+ },
+ "lines": [
+  [
+   "z1",
+   "z",
+   "Петрович, у нас date! Я всё забукала. С американцами говорю я, а ты молчи, ю ноу?"
+  ],
+  [
+   "p1",
+   "p",
+   "Угу."
+  ],
+  [
+   "w1",
+   "w",
+   "Hi, folks! Are you ready to order?"
+  ],
+  [
+   "z2",
+   "z",
+   "Рэди! Деточка, я заордерю за двоих. Два стейка. Вэлл дан… но чтобы сочный!"
+  ],
+  [
+   "w2",
+   "w",
+   "Well-done… but juicy. Sure… I'll let the chef know."
+  ],
+  [
+   "z3",
+   "z",
+   "Видишь, Петрович? С ними надо громко и конфидентно. А в инглише ты — ноль."
+  ],
+  [
+   "p2",
+   "p",
+   "Угу."
+  ],
+  [
+   "w3",
+   "w",
+   "And for you, sir? The steak as well?"
+  ],
+  [
+   "p3",
+   "p",
+   "Actually, I'll have the sea bass, if that's all right. And a glass of the house white, please. Thank you ever so much."
+  ],
+  [
+   "w4",
+   "w",
+   "Oh! Excellent choice, sir!"
+  ],
+  [
+   "z4",
+   "z",
+   "Петрович?! Ты что, спикаешь?! А чего ты молчал двадцать лет?!"
+  ],
+  [
+   "p4",
+   "p",
+   "You never asked, darling."
+  ],
+  [
+   "p5",
+   "p",
+   "Could we have the bill, please?"
+  ],
+  [
+   "w6",
+   "w",
+   "The… check? Sure!"
+  ],
+  [
+   "p6",
+   "p",
+   "Here you are. Keep the change."
+  ],
+  [
+   "w5",
+   "w",
+   "Thank you, sir! Would you like a box for that?"
+  ],
+  [
+   "z5",
+   "z",
+   "Бокс? Деточка, я на свидании, а не на ринге!"
+  ],
+  [
+   "p7",
+   "p",
+   "She'd love one, thank you."
+  ],
+  [
+   "z6",
+   "z",
+   "Ну всё, Петрович, ты теперь мой транслейтор. А ну, опусти газету!"
+  ],
+  [
+   "p8",
+   "p",
+   "As you wish, darling."
+  ]
+ ]
+}
