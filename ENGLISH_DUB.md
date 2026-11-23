@@ -33,3 +33,9 @@ No ElevenLabs needed for these films.
 Use titles/description/tags from each kit README. Keep the CREDITS block (licences require it) and
 "Narration created with AI. Facts checked against sources." Subtitles: re-time SUBTITLES_EN.srt to the final voice.
 Each film's last paragraph teases the next film (India→Norway, Norway→Vietnam); keep only if that film follows on her channel.
+
+## New voice test (2026-11-23)
+Owner's boyfriend made an emotional English sample in ElevenLabs (eleven_v3, his own voice design), 1:46. Cloned zero-shot in Fish Audio
+(reference audio sent with each request, dubtools/fish_tts.py; model s2.1-pro-free, because creating a saved model / paid models need API credit).
+Delivery-note tags from SCRIPT_EN.csv are passed as [tag] at the start of each line. Probe: japan/sample_fish_voice_0-60s.mp3 (F001–F008, all fit max).
+Open: rights (ElevenLabs ToS on using output to clone elsewhere; Fish free-model terms for monetised use) — owner/boyfriend to confirm.
