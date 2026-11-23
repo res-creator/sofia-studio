@@ -97,7 +97,7 @@ function zhanna(t) { const l = lineAt(t), spk = l && l.who === 'z', a = blendArm
   const x = c.x + Math.sin(t * 1.4) * 4 * (spk ? 1.4 : 1);
   const tilt = spk ? .05 * Math.sin(t * 2.6) : .03 * Math.sin(t * 1.1) + .02, br = 1 - .006 * (1 + Math.sin(t * 2.2));
   const look = t >= TL.DOOR && t < BY.z13.at + 1 ? -.9 : a.act.g === 'text' ? .9 : spk ? .2 : .6;
-  T.draw(g, {...c, x, y: FEET, sq: br, arms: wig(a.fn, t, spk ? 8 : 2), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: blink(t, 2), tilt, look});
+  T.draw(g, {...c, x, y: FEET, sq: br, arms: (a.fn = wig(a.fn, t, spk ? 8 : 2)), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: blink(t, 2), tilt, look});
   const S = c.s, bx = x - 40 * S, by = FEET - 790 * S * br; star(bx, by, 32, '#f2c820', 5, 8, t * .3); ell(bx, by, 9, 9, '#ff5a8a', 4);
   for (let i = 0; i < 7; i++) { const sx = x + (hash(i) - .5) * 140 * S, sy = FEET - (600 + hash(i + 9) * 240) * S; sparkle(sx, sy, 7 + 5 * hash(i + 3), Math.max(0, Math.sin(t * 4 + i * 1.7))); }
   for (const s of [-1, 1]) { const P3 = a.fn(s), E = P3[1], H = P3[2]; const hx = x + H[0] * S, hy = FEET + H[1] * S * br;
@@ -110,7 +110,7 @@ function gumR(t) { // Brook's bubble gum radius
   return r; }
 function brook(t) { const l = lineAt(t), spk = l && l.who === 'b', a = blendArms(bAct, BG, t), c = BR, x = c.x + Math.sin(t * 1.2 + 2) * 3;
   const chew = !spk && gumR(t) < 4 ? .12 + .1 * Math.abs(Math.sin(t * 7)) : 0;
-  T.draw(g, {...c, x, y: FEET, arms: wig(a.fn, t, spk ? 7 : 2), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : chew, blink: blink(t, 5), tilt: spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t), look: -.6});
+  T.draw(g, {...c, x, y: FEET, arms: (a.fn = wig(a.fn, t, spk ? 7 : 2)), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : chew, blink: blink(t, 5), tilt: spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t), look: -.6});
   for (const s of [-1, 1]) { const P3 = a.fn(s), E = P3[1], H = P3[2], hx = x + H[0] * c.s, hy = FEET + H[1] * c.s, ang = Math.atan2(H[1] - E[1], H[0] - E[0]);
     if (s < 0 && a.act.g === 'vmsg' && a.e > .6) phoneProp(hx - 4, hy - 46 * c.s, c.s, BLUE_B(t) ? '#3a8ae0' : '#e05a8a');
     if (s < 0 && a.act.g === 'file' && a.e > .6) { g.save(); g.translate(hx, hy); g.rotate(ang - .5); rr(10 * c.s, -6 * c.s, 95 * c.s, 12 * c.s, 5, '#e8d2b0', 4); g.restore(); }
