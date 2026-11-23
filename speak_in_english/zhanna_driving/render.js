@@ -19,11 +19,11 @@ function heart(x, y, r, fill = '#ff5a8a') { g.beginPath(); g.moveTo(x, y + r * .
 
 // ---------- cast ----------
 // Zhanna: series palette (pink sequined top, star brooch, blonde bouffant, pink nails). Driver's seat = screen right (front view through the windshield)
-const ZH = {hair: 'bouffant', lashes: true, earrings: '#f2c820', skirt: true, seated: true, pal: {skin: '#f4c8a8', skinS: '#e2aa88', hair: '#f3d27a', hairS: '#d9b257', brow: '#8a6030', lip: '#d02a5a', top: '#d63a8a', topS: '#b02a70', collar: '#d63a8a', bottom: '#2a2230', skirt: '#2a2230', legs: '#f4c8a8', shoe: '#e0b040', sole: '#e0b040'}, x: 965, s: .76};
+const ZH = {outfit: 'blazer', hair: 'bouffant', lashes: true, earrings: '#f2c820', skirt: true, seated: true, pal: {skin: '#f4c8a8', skinS: '#e2aa88', hair: '#f3d27a', hairS: '#d9b257', brow: '#8a6030', lip: '#d02a5a', top: '#d63a8a', topS: '#b02a70', collar: '#d63a8a', bottom: '#2a2230', skirt: '#2a2230', legs: '#f4c8a8', shoe: '#e0b040', sole: '#e0b040'}, x: 965, s: .76};
 // Petrovich: grey flat cap, brown jacket — back seat, always behind the BRIGHTON TIMES
 const PE = {hair: 'short', cap: true, moustache: true, seated: true, pal: {arm: '#8a6d52', skin: '#eec3a2', skinS: '#d9a583', hair: '#cfcfcf', brow: '#9a9a9a', stache: '#dcdcdc', cap: '#7a808c', capS: '#5e6470', top: '#8a6d52', topS: '#6e553f', collar: '#eef3f8', bottom: '#4a4a52', legs: '#4a4a52', shoe: '#2a2230', sole: '#2a2230'}, x: 525, y: 1470, s: .46};
 // Examiner: tired DMV officer, pale-blue shirt, navy tie, glasses, clipboard
-const EX = {hair: 'short', glasses: true, seated: true, pal: {skin: '#e9bf9c', skinS: '#d4a27e', hair: '#8a7a68', brow: '#5a4a3a', top: '#a9c6e4', topS: '#8eaed0', collar: '#ffffff', tie: '#26346a', bottom: '#3a4050', legs: '#3a4050', shoe: '#1e1e24', sole: '#1e1e24'}, x: 110, s: .76};
+const EX = {hair: 'short', glasses: true, seated: true, pal: {skin: '#e9bf9c', skinS: '#d4a27e', hair: '#8a7a68', brow: '#5a4a3a', top: '#a9c6e4', topS: '#8eaed0', collar: '#ffffff', tie: '#26346a', bottom: '#3a4050', legs: '#3a4050', shoe: '#1e1e24', sole: '#1e1e24'}, x: 88, s: .76};
 const SEAT = 1850, DASH = 1352;
 let NOW = 0;
 
@@ -115,31 +115,32 @@ const EG = {
 };
 const FRONT = new Set(['palm', 'dream', 'wheel', 'brooch', 'pad', 'point', 'clutch', 'stamp', 'beg', 'look', 'offer', 'shake', 'push', 'lip', 'wag', 'license', 'wave']);
 const lineAt = t => { for (const l of L) if (t >= l.at - .03 && t < l.end + .08) return l; return null; };
-const env = (l, t) => { const i = Math.floor((t - l.at) * 30); return clamp(((l.env[i] || 0) + (l.env[i + 1] || 0)) / 2); };
+const env = (l, t) => { const i = Math.floor((t - l.at) * 30); return clamp(l.env[i] || 0); };   // mouthEnv (prep.py): 0 = closed, no smoothing
+const talkSt = (l, t, seed) => { if (!l) return {mouth: 0, nod: 0, vis: .5}; const e = env(l, t), e0 = env(l, t - .1); return {mouth: e, vis: hash(Math.floor(t * 9) + seed), nod: 9 * clamp(e - e0)}; };
 const blink = (t, s) => ((t + s * 1.3) % (3.3 + s * .4)) < .12;
 const ZPLAN = {z1: [[0, 'point'], [.22, 'lip'], [.8, 'wheel']], z2: [[0, 'palm'], [.55, 'wheel']], z3: [[0, 'wag'], [.45, 'wheel']], z4: [[0, 'wag'], [.6, 'palm']], z5: [[0, 'shake']], z7: [[0, 'wave']], z8: [[0, 'brooch']],
   z10: [[0, 'dream'], [.3, 'offer']], z11: [[0, 'offer'], [.45, 'brooch']], z12: [[0, 'fists']], z13: [[0, 'license'], [.7, 'shrug']]};
 const EPLAN = {e1: [[0, 'pad']], e2: [[0, 'look']], e3: [[0, 'point']], e4: [[0, 'point']], e5: [[0, 'point']], e7: [[0, 'point']], e8: [[0, 'point']], e9: [[0, 'pad']], e10: [[0, 'shock']], e11: [[0, 'stamp'], [.6, 'beg']], e12: [[0, 'stamp'], [.35, 'push']]};
 function plan(P, who, t, idle) { const l = lineAt(t); if (l && l.who === who) { const u = (t - l.at) / (l.end - l.at); let gg = idle; for (const [k, v] of (P[l.id] || [])) if (u >= k) gg = v; return gg; } return idle; }
-// Zhanna's emotions: smug trolling, laughs after punchlines, dreamy cutlets, shocked at FAILED, indignant, triumphant; one wink
-const ZMOOD = {z1: [[0, 'smug'], [.3, 'wink'], [.62, 'smug']], z2: [[0, 'smug'], [.7, 'flat']], z3: [[0, 'smug']], z4: [[0, 'smug']], z5: [[0, 'smug']], z7: [[0, null]], z8: [[0, 'kind']], z9: [[0, 'smug']],
-  z10: [[0, 'kind']], z11: [[0, 'kind']], z12: [[0, 'angry']], z13: [[0, 'happy'], [.25, null], [.7, 'smug']]};
-const LAUGH = [['z3', 1.0], ['z5', .9], ['z7', .7], ['z11', .7]];
-function zAct(t) { if (t >= TL.END) return {g: 'wheel', mood: 'happy', laugh: false}; const l = lineAt(t), spk = l && l.who === 'z';
-  let mood = 'smug', laugh = false, wink = false;
-  if (spk) { const u = (t - l.at) / (l.end - l.at); for (const [k, v] of (ZMOOD[l.id] || [])) if (u >= k) mood = v; }
-  else { for (const [id, d] of LAUGH) if (t >= BY[id].end && t < BY[id].end + d) { mood = 'happy'; laugh = true; }
-    if (t >= BY.e11.at + 1 && t < BY.z12.at) mood = 'surprised'; if (t >= BY.e10.at && t < BY.e10.end + .1) mood = 'grin';
-    if (t >= BY.p3.at && t < BY.e12.at) mood = 'smug'; if (t >= TL.STAMP2 && t < BY.z13.at) { mood = 'happy'; laugh = true; } if (l && l.id === 'p2') mood = 'kind'; }
-  if (mood === 'wink') { mood = 'smug'; wink = true; }
-  return {g: plan(ZPLAN, 'z', t, 'wheel'), mood, laugh, wink}; }
-function eAct(t) { const l = lineAt(t), spk = l && l.who === 'e', id = l ? l.id : '';
-  let idle = 'pad'; if (t >= BY.z5.at && t < BY.z5.end + .2) idle = 'clutch'; if (t >= BY.z10.at + .5 && t < BY.e10.at) idle = 'clutch'; if (t >= BY.z12.at && t < BY.e12.at) idle = 'beg';
-  let mood = 'flat'; if (t < BY.z1.at + 1.6) mood = 'sleepy'; else if (t < BY.e2.at) mood = 'surprised';
-  if (spk) mood = {e1: 'sleepy', e2: 'surprised', e3: 'flat', e4: 'angry', e5: 'angry', e7: 'flat', e8: 'angry', e9: 'sleepy', e10: 'surprised', e11: 'sad', e12: 'grin'}[id] || 'flat';
-  else if (l && l.who === 'z' && ['z3', 'z4', 'z5', 'z7', 'z8', 'z9', 'z10', 'z11'].includes(id) && t - l.at > .8) mood = 'surprised';
-  if (l && l.who === 'p' && id === 'p3') mood = 'surprised'; if (l && id === 'z12') mood = 'sad';
-  return {g: plan(EPLAN, 'e', t, idle), mood: COVER ? 'surprised' : mood}; }
+// Zhanna's emotions (toon v2 MOODS) change on every beat; a blink on each change
+const ZMOOD = {z1: [[0, 'smug'], [.25, 'flirty'], [.62, 'proud']], z2: [[0, 'smugside'], [.6, 'eyeroll']], z3: [[0, 'smug'], [.55, 'grin']], z4: [[0, 'smugside'], [.55, 'proud']],
+  z5: [[0, 'grin'], [.5, 'smug']], z7: [[0, 'happy'], [.5, 'proud']], z8: [[0, 'dreamy']], z9: [[0, 'smug']], z10: [[0, 'kind'], [.4, 'dreamy']], z11: [[0, 'smugside'], [.5, 'dreamy']],
+  z12: [[0, 'angry']], z13: [[0, 'proud'], [.4, 'grin'], [.75, 'smugside']]};
+const LAUGH = [['z3', 1.0], ['z5', .9], ['z7', .8], ['z11', .7]];
+const LISTEN = [['e2', 'smug'], ['e3', 'smugside'], ['e4', 'smugside'], ['e5', 'flat'], ['e7', 'smug'], ['e8', 'eyeroll'], ['p2', 'kind'], ['e9', 'proud'], ['e10', 'grin'], ['p3', 'surprised'], ['e12', 'laugh']];
+function zLaugh(t) { for (const [id, d] of LAUGH) if (t >= BY[id].end && t < BY[id].end + d) return t - BY[id].end; if (t >= TL.STAMP2 && t < BY.z13.at) return t - TL.STAMP2; if (t >= TL.END) return t - TL.END; return -1; }
+function zMood(t) { if (COVER) return 'flirty'; if (t >= TL.END) return 'laugh'; const l = lineAt(t);
+  if (l && l.who === 'z') { const u = (t - l.at) / (l.end - l.at); let m = 'smug'; for (const [k, v] of (ZMOOD[l.id] || [])) if (u >= k) m = v; return m; }
+  if (zLaugh(t) >= 0) return 'laugh'; if (t >= TL.STAMP1 && t < BY.z12.at) return 'shocked';
+  for (const [id, m] of LISTEN) if (l && l.id === id) return m; return 'smug'; }
+function zAct(t) { return {g: plan(ZPLAN, 'z', t, 'wheel'), mood: zMood(t)}; }
+const EMOOD = {e1: 'sleepy', e2: 'worried', e3: 'flat', e4: 'angry', e5: 'angry', e7: 'flat', e8: 'angry', e9: 'sleepy', e10: 'shocked', e11: 'sad', e12: 'happy',
+  z1: 'surprised', z2: 'flat', z3: 'shocked', z4: 'disgusted', z5: 'worried', z7: 'shocked', z8: 'disgusted', p2: 'eyeroll', z10: 'worried', z11: 'worried', z12: 'worried', p3: 'surprised', z13: 'happy'};
+function eMood(t) { if (COVER) return 'shocked'; const l = lineAt(t); if (!l) return t < BY.z1.at ? 'sleepy' : t > TL.STAMP1 && t < BY.e12.at ? 'sad' : 'flat';
+  if (l.id === 'z1' && t < l.at + 1.4) return 'sleepy'; if (l.id === 'p3' && t > l.at + (l.end - l.at) * .5) return 'worried'; return EMOOD[l.id] || 'flat'; }
+function eAct(t) { let idle = 'pad'; if (t >= BY.z5.at && t < BY.z5.end + .2) idle = 'clutch'; if (t >= BY.z10.at + .5 && t < BY.e10.at) idle = 'clutch'; if (t >= BY.z12.at && t < BY.e12.at) idle = 'beg';
+  return {g: plan(EPLAN, 'e', t, idle), mood: eMood(t)}; }
+const moodBlink = (f, t) => f(t) !== f(t - .1);
 function blendArms(fnAt, GT, t) { const a1 = fnAt(t); let prev = a1.g, k = 1; for (let d = .02; d <= .2; d += .02) { const a = fnAt(t - d); if (a.g !== a1.g) { prev = a.g; k = d / .2; break; } }
   const e = ease(k), f0 = GT[prev], f1 = GT[a1.g]; return {fn: s => f1(s).map((p, i) => [lerp(f0(s)[i][0], p[0], e), lerp(f0(s)[i][1], p[1], e)]), front: FRONT.has(a1.g) || (e < .5 && FRONT.has(prev)), act: a1, e}; }
 const wig = (fn, t, amp) => s => fn(s).map((p, i) => [p[0] + Math.sin(t * 4.3 + s + i) * amp * (i / 2), p[1] + Math.cos(t * 3.7 + i) * amp * (i / 2)]);
@@ -174,13 +175,14 @@ const C_HAND = BY.z10.at + .3, C_CLIP = BY.z11.at + .9, C_DASH = BY.e12.at + 1.1
 let ZA = null, EA = null;
 function zBody(t) { const l = lineAt(t), spk = l && l.who === 'z', a = blendArms(zAct, ZG, t), c = ZH, x = c.x + Math.sin(t * 1.4) * 3 * (spk ? 1.4 : 1), y = SEAT;
   const tilt = (spk ? .05 * Math.sin(t * 2.6) : .03 * Math.sin(t * 1.1) + .02) + rollAt(t) * 2, br = 1 - .006 * (1 + Math.sin(t * 2.2));
-  T.draw(g, {...c, x, y, sq: br, arms: (a.fn = wig(a.fn, t, spk ? 6 : 1.5)), front: a.front, mood: COVER ? 'smug' : a.act.mood, wink: COVER || a.act.wink, mouth: spk ? env(l, t) : a.act.laugh ? .55 + .35 * Math.abs(Math.sin(t * 14)) : 0, blink: blink(t, 2), tilt: tilt + (a.act.laugh ? .04 * Math.sin(t * 14) : 0), look: a.act.g === 'lip' || COVER ? -.6 : spk ? .2 : -.4});
+  const ts = spk ? talkSt(l, t, 3) : {mouth: zLaugh(t) >= 0 ? T.laughEnv(zLaugh(t)) : 0, nod: 0, vis: .5}, breath = 2 + 2 * Math.sin(t * 2.2);
+  T.draw(g, {...c, x, y, sq: br, arms: (a.fn = wig(a.fn, t, spk ? 6 : 1.5)), ik: false, breath, front: a.front, mood: a.act.mood, mouth: ts.mouth, talking: !!spk, vis: ts.vis, nod: ts.nod, t, blink: blink(t, 2) || moodBlink(zMood, t), tilt, look: a.act.g === 'lip' || COVER ? -.6 : spk ? .2 : -.4});
   const S = c.s, bx = x - 40 * S, by = y - 790 * S * br; star(bx, by, 30, '#f2c820', 5, 8, t * .3); ell(bx, by, 9, 9, '#ff5a8a', 4);
   for (let i = 0; i < 7; i++) { const sx = x + (hash(i) - .5) * 140 * S, sy = y - (600 + hash(i + 9) * 240) * S; sparkle(sx, sy, 7 + 5 * hash(i + 3), Math.max(0, Math.sin(t * 4 + i * 1.7))); }
   ZA = {a, x, y, br}; }
 function limbW(pts, w, col) { ln(pts, w + 14); ln(pts, w, col); }
-function zArms(x, y, S, br, a) { g.save(); g.translate(x, y); g.scale(S, S); g.scale(1 + (1 - br) * .5, br); const c = ZH.pal;
-  for (const s of [-1, 1]) { const [A, E, Hh] = a.fn(s), m = [A[0] + (E[0] - A[0]) * .45, A[1] + (E[1] - A[1]) * .45]; limbW([A, m], 46, c.top); limbW([[A[0] + (E[0] - A[0]) * .4, A[1] + (E[1] - A[1]) * .4], E, Hh], 30, c.skin); } g.restore(); }
+function zArms(x, y, S, br, a) { g.save(); g.translate(x, y); g.scale(S, S); g.scale(1 + (1 - br) * .5, br); const c = T.palOf(ZH);
+  for (const s of [-1, 1]) T.drawArm(g, ZH, s, a.fn(s), c); g.restore(); }
 function zHands(t) { const {a, x, y, br} = ZA, S = ZH.s, sk = ZH.pal.skin, NL = '#d63a8a'; zArms(x, y, S, br, a);
   const H = {}; for (const s of [-1, 1]) H[s] = handPos(x, y, S, a, s);
   const onWheel = s => { const d = Math.hypot(H[s].x - ZH.x, H[s].y - 1335); return d > 90 && d < 160; };
@@ -200,7 +202,7 @@ function zHands(t) { const {a, x, y, br} = ZA, S = ZH.s, sk = ZH.pal.skin, NL = 
 function exX(t) { const a = TL.DOOR - .45; return t < a ? EX.x : EX.x - 900 * ease((t - a) / .5); }
 function eBody(t) { const x0 = exX(t); if (x0 < -700) { EA = null; return; } const l = lineAt(t), spk = l && l.who === 'e', a = blendArms(eAct, EG, t), c = EX, x = x0 + Math.sin(t * 1.2 + 2) * 2, y = SEAT;
   const twitch = a.act.mood === 'sad' && Math.sin(t * 23) > .7 ? 1 : 0, tilt = (spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t)) + rollAt(t) * 3 + (eAct(t).g === 'look' ? -.12 : 0);
-  T.draw(g, {...c, x, y, arms: (a.fn = wig(a.fn, t, spk ? 5 : 1.2)), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: blink(t, 5) || twitch, tilt, look: a.act.g === 'look' ? .9 : spk ? 0 : .6, sweat: a.act.mood === 'sad' || t >= BY.e11.at && t < TL.DOOR});
+  const ts = spk ? talkSt(l, t, 7) : {mouth: 0, nod: 0, vis: .5}; T.draw(g, {...c, x, y, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 5 : 1.2), 2 + 2 * Math.sin(t * 2.4))), ik: false, front: a.front, mood: a.act.mood, mouth: ts.mouth, talking: !!spk, vis: ts.vis, nod: ts.nod, t, blink: blink(t, 5) || twitch || moodBlink(eMood, t), tilt, look: a.act.g === 'look' ? .9 : spk ? 0 : .6, sweat: a.act.mood === 'sad' || t >= BY.e11.at && t < TL.DOOR});
   const S = c.s; rr(x - 70 * S - 22, y - 800 * S - 16, 44, 30, 6, '#e8c27a', 4); txt('DMV', x - 70 * S, y - 800 * S, 15, INK);
   EA = {a, x, y, clip: null}; }
 function eHands(t) { if (!EA) return; const {a, x, y} = EA, S = EX.s; const hasClip = a.act.g !== 'shock' && a.act.g !== 'push';
@@ -220,7 +222,7 @@ function paper(x, top, k, S) { const w = S ? 215 * S : 178 * k, h = S ? 420 * S 
   rr(x - w + 20 * k, top + 90 * k, 150 * k, 110 * k, 4, '#c8cfd6', 4); for (let j = 0; j < 9; j++) ln([[x - w + (j < 4 ? 186 : 20) * k, top + (98 + j * 26) * k], [x + w - 20 * k, top + (98 + j * 26) * k]], 4, '#b8b2a4'); ln([[x, top + 214 * k], [x, top + h - 14 * k]], 3, '#d8d2c4'); }
 const nodAt = t => { const l = lineAt(t); return l && l.who === 'p' && /Угу/.test(l.text) ? Math.sin(Math.PI * clamp((t - l.at) / (l.end - l.at))) : 0; };
 function petro(t, x, y, S, top) { const l = lineAt(t), spk = l && l.who === 'p', a = blendArms(() => ({g: 'hold'}), {hold: s => [[s * 262, -845], [s * 318, -690], [s * 226, -935]]}, t), k = S / .76, nod = nodAt(t) * 10 * k;
-  const fn = a.fn; jacket(x, y + nod, S); T.draw(g, {...PE, x, y: y + nod, s: S, arms: (a.fn = wig(fn, t, 1.2)), front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: spk ? env(l, t) : 0, blink: blink(t, 7), tilt: 0, look: -.3});
+  const fn = a.fn; jacket(x, y + nod, S); const ts = spk ? talkSt(l, t, 5) : {mouth: 0, nod: 0, vis: .5}; T.draw(g, {...PE, x, y: y + nod, s: S, arms: (a.fn = wig(fn, t, 1.2)), ik: false, front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: ts.mouth, talking: !!spk, vis: ts.vis, t, blink: blink(t, 7), tilt: 0, look: -.3});
   lap(x, y + nod, S); const HP = [-1, 1].map(s => ({s, ...handPos(x, y + nod, S, a, s)})); for (const h of HP) gripBack(h.x, h.y, h.s < 0 ? 0 : Math.PI, S, PE.pal.skin); paper(x, top + nod, k, S); for (const h of HP) { const s = h.s; gripFront(h.x, h.y, s < 0 ? 0 : Math.PI, S, PE.pal.skin); if (s < 0) { ell(h.x - Math.cos(h.ang) * 22 * S, h.y - Math.sin(h.ang) * 22 * S, 13 * k, 13 * k, '#e8c27a', 4); } } }
 function petrovich(t) { petro(t, PE.x + Math.sin(t * 1.1 + 1) * 2, PE.y, PE.s, PE.y - 1272 * PE.s); }
 
