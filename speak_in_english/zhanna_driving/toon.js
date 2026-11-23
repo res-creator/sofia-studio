@@ -41,6 +41,8 @@ function face(st, c) {
     if (st.blink || st.mood === 'happy' || (st.wink && s > 0)) { q([cx - 40, ey + 6], [cx, ey - 18], [cx + 40, ey + 6], LW); continue; }
     ell(cx, ey, 50 * wide, 70 * wide, '#ffffff', LW);
     if (st.mood === 'sleepy' || st.mood === 'smug') { g.save(); P(); g.ellipse(cx, ey, 52, 64, 0, 0, 7); g.clip(); g.fillStyle = c.skin; g.fillRect(cx - 60, ey - 70, 120, 62); g.restore(); line([[cx - 48, ey - 8], [cx + 48, ey - 8]], LW); }
+    if (st.mood === 'angry') { g.save(); P(); g.ellipse(cx, ey, 52, 72, 0, 0, 7); g.clip(); g.fillStyle = c.skin; P(); g.moveTo(cx - 70, ey - 90); g.lineTo(cx + 70, ey - 90); g.lineTo(cx + 70, ey - 40 - s * 34); g.lineTo(cx - 70, ey - 40 + s * 34); g.closePath(); g.fill(); g.restore();
+      line([[cx - 50, ey - 40 + s * 30], [cx + 50, ey - 40 - s * 30]], LW); }
     if (st.mood === 'kind') { g.save(); P(); g.ellipse(cx, ey, 52, 64, 0, 0, 7); g.clip(); g.fillStyle = c.skin; 
       P(); g.moveTo(cx - 60, ey + 80); g.lineTo(cx + 60, ey + 80); g.lineTo(cx + 60, ey + 40); g.quadraticCurveTo(cx, ey + 8, cx - 60, ey + 40); g.closePath(); g.fill(); g.restore(); q([cx - 40, ey + 36], [cx, ey + 14], [cx + 40, ey + 36], 4); }
     if (st.lashes) for (let j = 0; j < 3; j++) line([[cx + s * (26 + j * 12), ey - 62 + j * 14], [cx + s * (44 + j * 18), ey - 84 + j * 12]], 6);

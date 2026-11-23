@@ -21,7 +21,7 @@ function heart(x, y, r, fill = '#ff5a8a') { g.beginPath(); g.moveTo(x, y + r * .
 // Zhanna: series palette (pink sequined top, star brooch, blonde bouffant, pink nails). Driver's seat = screen right (front view through the windshield)
 const ZH = {hair: 'bouffant', lashes: true, earrings: '#f2c820', skirt: true, seated: true, pal: {skin: '#f4c8a8', skinS: '#e2aa88', hair: '#f3d27a', hairS: '#d9b257', brow: '#8a6030', lip: '#d02a5a', top: '#d63a8a', topS: '#b02a70', collar: '#d63a8a', bottom: '#2a2230', skirt: '#2a2230', legs: '#f4c8a8', shoe: '#e0b040', sole: '#e0b040'}, x: 965, s: .76};
 // Petrovich: grey flat cap, brown jacket — back seat, always behind the BRIGHTON TIMES
-const PE = {hair: 'short', cap: true, moustache: true, seated: true, pal: {skin: '#eec3a2', skinS: '#d9a583', hair: '#cfcfcf', brow: '#9a9a9a', stache: '#dcdcdc', cap: '#7a808c', capS: '#5e6470', top: '#8a6d52', topS: '#6e553f', collar: '#eef3f8', bottom: '#4a4a52', legs: '#4a4a52', shoe: '#2a2230', sole: '#2a2230'}, x: 525, y: 1470, s: .46};
+const PE = {hair: 'short', cap: true, moustache: true, seated: true, pal: {arm: '#8a6d52', skin: '#eec3a2', skinS: '#d9a583', hair: '#cfcfcf', brow: '#9a9a9a', stache: '#dcdcdc', cap: '#7a808c', capS: '#5e6470', top: '#8a6d52', topS: '#6e553f', collar: '#eef3f8', bottom: '#4a4a52', legs: '#4a4a52', shoe: '#2a2230', sole: '#2a2230'}, x: 525, y: 1470, s: .46};
 // Examiner: tired DMV officer, pale-blue shirt, navy tie, glasses, clipboard
 const EX = {hair: 'short', glasses: true, seated: true, pal: {skin: '#e9bf9c', skinS: '#d4a27e', hair: '#8a7a68', brow: '#5a4a3a', top: '#a9c6e4', topS: '#8eaed0', collar: '#ffffff', tie: '#26346a', bottom: '#3a4050', legs: '#3a4050', shoe: '#1e1e24', sole: '#1e1e24'}, x: 110, s: .76};
 const SEAT = 1850, DASH = 1352;
@@ -57,10 +57,10 @@ function street(t) { const off = offAt(t);
   for (const [t0, col, dir] of PASSERS) { const u = (t - t0) / 1.0; if (u > 0 && u < 1) carSide(dir < 0 ? lerp(1500, -500, u) : lerp(-500, 1500, u), 1110, col, 1.3, dir); } }
 function rearInterior() { // car ceiling, rear window frame, rear bench (all blurred with the street)
   g.save(); g.fillStyle = '#d8ccc0'; g.beginPath(); g.rect(-1400, -800, 3900, 3000); g.roundRect(-170, 560, 1400, 560, 70); g.fill('evenodd'); g.restore();
-  rr(-170, 560, 1400, 560, 70, null, 14, '#6a5e58'); rr(-300, 1090, 1700, 500, 60, '#b49a82', 8); for (const x of [60, 525, 990]) rr(x - 170, 1110, 340, 380, 50, '#c4ab92', 5); }
+  rr(-170, 560, 1400, 560, 70, null, 14, '#6a5e58'); rr(-300, 985, 1700, 620, 60, '#b49a82', 8); for (const x of [60, 525, 990]) rr(x - 170, 1005, 340, 480, 50, '#c4ab92', 5); }
 
 // ---------- interior (crisp) ----------
-function seatBacks() { rr(330, 1100, 390, 440, 40, '#4a4452', 7); rr(370, 1130, 310, 60, 24, '#5a5262', 5); for (const x of [EX.x, ZH.x]) { rr(x - 70, 870, 140, 120, 34, '#4a4452', 6); ln([[x - 36, 990], [x - 36, 1012]], 8, '#9aa0a8'); ln([[x + 36, 990], [x + 36, 1012]], 8, '#9aa0a8'); rr(x - 165, 1008, 330, 520, 60, '#5a5262', 7); ln([[x - 120, 1060], [x - 120, 1440]], 4, '#4a4452'); ln([[x + 120, 1060], [x + 120, 1440]], 4, '#4a4452'); } }
+function seatBacks() { rr(330, 1196, 390, 400, 40, '#4a4452', 7); rr(370, 1222, 310, 56, 24, '#5a5262', 5); for (const x of [EX.x, ZH.x]) { rr(x - 70, 870, 140, 120, 34, '#4a4452', 6); ln([[x - 36, 990], [x - 36, 1012]], 8, '#9aa0a8'); ln([[x + 36, 990], [x + 36, 1012]], 8, '#9aa0a8'); rr(x - 165, 1008, 330, 520, 60, '#5a5262', 7); ln([[x - 120, 1060], [x - 120, 1440]], 4, '#4a4452'); ln([[x + 120, 1060], [x + 120, 1440]], 4, '#4a4452'); } }
 function dashboard(t) {
   g.beginPath(); g.moveTo(-1400, DASH + 40); g.quadraticCurveTo(-1400, DASH, -1300, DASH); g.lineTo(2400, DASH); g.lineTo(2500, DASH + 40); g.lineTo(2500, 2600); g.lineTo(-1400, 2600); g.closePath(); g.fillStyle = '#3e3848'; g.fill(); g.strokeStyle = INK; g.lineWidth = 8; g.stroke();
   rr(-1400, DASH + 6, 3900, 26, 10, '#4c4558', 0); rr(30, DASH + 70, 250, 110, 18, '#4c4558', 6); ln([[110, DASH + 125], [200, DASH + 125]], 6, '#2a2430');   // glovebox
@@ -91,7 +91,9 @@ function frameCar() { // windshield frame: pink roof and A-pillars (outside ever
 const ZG = {
   wheel: s => [[s * 78, -860], [s * 175, -700], [s * 145, -757]],
   point: s => s > 0 ? [[78, -860], [190, -920], [150, -1080]] : ZG.wheel(s),          // finger up (mirror / "listen")
-  lip: s => s > 0 ? [[78, -860], [210, -860], [205, -990]] : ZG.wheel(s),
+  lip: s => s > 0 ? [[78, -860], [235, -850], [118 + 14 * Math.sin(NOW * 9), -918]] : ZG.wheel(s),
+  palm: s => s > 0 ? [[78, -860], [175, -790], [255, -860]] : ZG.wheel(s),
+  dream: s => s > 0 ? [[78, -860], [130, -760], [30, -800]] : ZG.wheel(s),
   wag: s => s > 0 ? [[78, -860], [180, -900], [170, -1040]] : ZG.wheel(s),
   brooch: s => s > 0 ? [[78, -860], [150, -740], [20, -790]] : ZG.wheel(s),
   shrug: s => [[s * 78, -860], [s * 160, -770], [s * 210, -850]],
@@ -111,17 +113,26 @@ const EG = {
   look: s => s < 0 ? [[-78, -860], [-130, -730], [-20, -770]] : [[78, -860], [150, -760], [110, -680]],
   push: s => [[s * 78, -860], [s * 200, -760], [s * 300 + 40, -800]],
 };
-const FRONT = new Set(['wheel', 'brooch', 'pad', 'point', 'clutch', 'stamp', 'beg', 'look', 'offer', 'shake', 'push', 'lip', 'wag', 'license', 'wave']);
+const FRONT = new Set(['palm', 'dream', 'wheel', 'brooch', 'pad', 'point', 'clutch', 'stamp', 'beg', 'look', 'offer', 'shake', 'push', 'lip', 'wag', 'license', 'wave']);
 const lineAt = t => { for (const l of L) if (t >= l.at - .03 && t < l.end + .08) return l; return null; };
 const env = (l, t) => { const i = Math.floor((t - l.at) * 30); return clamp(((l.env[i] || 0) + (l.env[i + 1] || 0)) / 2); };
 const blink = (t, s) => ((t + s * 1.3) % (3.3 + s * .4)) < .12;
-const ZPLAN = {z1: [[0, 'point'], [.3, 'lip'], [.78, 'wheel']], z2: [[0, 'shrug'], [.55, 'wheel']], z3: [[0, 'wag'], [.45, 'wheel']], z4: [[0, 'wag'], [.6, 'shrug']], z5: [[0, 'shake']], z7: [[0, 'wave']], z8: [[0, 'brooch']],
-  z10: [[0, 'offer']], z11: [[0, 'offer'], [.45, 'brooch']], z12: [[0, 'fists']], z13: [[0, 'license'], [.7, 'shrug']]};
+const ZPLAN = {z1: [[0, 'point'], [.22, 'lip'], [.8, 'wheel']], z2: [[0, 'palm'], [.55, 'wheel']], z3: [[0, 'wag'], [.45, 'wheel']], z4: [[0, 'wag'], [.6, 'palm']], z5: [[0, 'shake']], z7: [[0, 'wave']], z8: [[0, 'brooch']],
+  z10: [[0, 'dream'], [.3, 'offer']], z11: [[0, 'offer'], [.45, 'brooch']], z12: [[0, 'fists']], z13: [[0, 'license'], [.7, 'shrug']]};
 const EPLAN = {e1: [[0, 'pad']], e2: [[0, 'look']], e3: [[0, 'point']], e4: [[0, 'point']], e5: [[0, 'point']], e7: [[0, 'point']], e8: [[0, 'point']], e9: [[0, 'pad']], e10: [[0, 'shock']], e11: [[0, 'stamp'], [.6, 'beg']], e12: [[0, 'stamp'], [.35, 'push']]};
 function plan(P, who, t, idle) { const l = lineAt(t); if (l && l.who === who) { const u = (t - l.at) / (l.end - l.at); let gg = idle; for (const [k, v] of (P[l.id] || [])) if (u >= k) gg = v; return gg; } return idle; }
-function zAct(t) { if (t >= TL.END) return {g: 'wheel', mood: 'grin'}; const l = lineAt(t), spk = l && l.who === 'z';
-  const mood = spk && (l.id === 'z12') ? 'angry' : t >= BY.z13.at ? 'grin' : spk ? 'smug' : l && l.who === 'e' ? 'smug' : 'smug';
-  return {g: plan(ZPLAN, 'z', t, 'wheel'), mood}; }
+// Zhanna's emotions: smug trolling, laughs after punchlines, dreamy cutlets, shocked at FAILED, indignant, triumphant; one wink
+const ZMOOD = {z1: [[0, 'smug'], [.3, 'wink'], [.62, 'smug']], z2: [[0, 'smug'], [.7, 'flat']], z3: [[0, 'smug']], z4: [[0, 'smug']], z5: [[0, 'smug']], z7: [[0, null]], z8: [[0, 'kind']], z9: [[0, 'smug']],
+  z10: [[0, 'kind']], z11: [[0, 'kind']], z12: [[0, 'angry']], z13: [[0, 'happy'], [.25, null], [.7, 'smug']]};
+const LAUGH = [['z3', 1.0], ['z5', .9], ['z7', .7], ['z11', .7]];
+function zAct(t) { if (t >= TL.END) return {g: 'wheel', mood: 'happy', laugh: false}; const l = lineAt(t), spk = l && l.who === 'z';
+  let mood = 'smug', laugh = false, wink = false;
+  if (spk) { const u = (t - l.at) / (l.end - l.at); for (const [k, v] of (ZMOOD[l.id] || [])) if (u >= k) mood = v; }
+  else { for (const [id, d] of LAUGH) if (t >= BY[id].end && t < BY[id].end + d) { mood = 'happy'; laugh = true; }
+    if (t >= BY.e11.at + 1 && t < BY.z12.at) mood = 'surprised'; if (t >= BY.e10.at && t < BY.e10.end + .1) mood = 'grin';
+    if (t >= BY.p3.at && t < BY.e12.at) mood = 'smug'; if (t >= TL.STAMP2 && t < BY.z13.at) { mood = 'happy'; laugh = true; } if (l && l.id === 'p2') mood = 'kind'; }
+  if (mood === 'wink') { mood = 'smug'; wink = true; }
+  return {g: plan(ZPLAN, 'z', t, 'wheel'), mood, laugh, wink}; }
 function eAct(t) { const l = lineAt(t), spk = l && l.who === 'e', id = l ? l.id : '';
   let idle = 'pad'; if (t >= BY.z5.at && t < BY.z5.end + .2) idle = 'clutch'; if (t >= BY.z10.at + .5 && t < BY.e10.at) idle = 'clutch'; if (t >= BY.z12.at && t < BY.e12.at) idle = 'beg';
   let mood = 'flat'; if (t < BY.z1.at + 1.6) mood = 'sleepy'; else if (t < BY.e2.at) mood = 'surprised';
@@ -136,6 +147,12 @@ function hand(x, y, ang, S, skin, nail, glossy) { g.save(); g.translate(x, y); g
   for (const o of [-16, -5.5, 5.5, 16]) { const len = 44 - Math.abs(o) * .5; rr(8, o - 6, len, 12, 6, skin, 5); if (nail) { ell(len + 1, o, 7, 5.5, nail, 3); if (glossy) ell(len - 1, o - 2, 2.5, 1.5, '#ffffff', 0); } }
   g.save(); g.translate(-4, -22); g.rotate(-.9); rr(0, -6, 30, 12, 6, skin, 5); if (nail) ell(29, 0, 6, 5, nail, 3); g.restore();
   ell(0, 0, 27, 25, skin, 5); g.restore(); }
+// gripping hand in two layers: back = palm + thumb (behind the object), front = curled fingers with nails over the object's edge
+function gripBack(x, y, ang, S, skin) { g.save(); g.translate(x, y); g.rotate(ang); g.scale(S, S); g.save(); g.translate(-2, 20); g.rotate(.8); rr(0, -6, 30, 12, 6, skin, 5); g.restore(); ell(0, 0, 27, 25, skin, 5); g.restore(); }
+function gripFront(x, y, ang, S, skin, nail, glossy) { g.save(); g.translate(x, y); g.rotate(ang); g.scale(S, S);
+  for (const o of [-15, -5, 5, 15]) { const len = 30 - Math.abs(o) * .35; rr(4, o - 6, len, 12, 6, skin, 5); if (nail) { ell(len + 2, o, 6.5, 5.5, nail, 3); if (glossy) ell(len, o - 2, 2.2, 1.4, '#ffffff', 0); } else ln([[len - 2, o - 3], [len - 2, o + 3]], 2, '#c89a7a'); }
+  g.restore(); }
+function pen(x, y, ang, S) { g.save(); g.translate(x, y); g.rotate(ang + 1.2); g.scale(S, S); rr(-50, -6, 100, 12, 5, '#26346a', 4); poly([[50, -6], [66, 0], [50, 6]], '#e8c27a', 3); g.restore(); }
 const handPos = (x, y, S, a, s) => { const P3 = a.fn(s), E = P3[1], Hh = P3[2]; return {x: x + Hh[0] * S, y: y + Hh[1] * S, ang: Math.atan2(Hh[1] - E[1], Hh[0] - E[0])}; };
 function hands(x, y, S, a, c, nail, glossy) { for (const s of [-1, 1]) { const h = handPos(x, y, S, a, s); hand(h.x, h.y, h.ang, S, c.pal.skin, nail, glossy); } }
 
@@ -157,15 +174,29 @@ const C_HAND = BY.z10.at + .3, C_CLIP = BY.z11.at + .9, C_DASH = BY.e12.at + 1.1
 let ZA = null, EA = null;
 function zBody(t) { const l = lineAt(t), spk = l && l.who === 'z', a = blendArms(zAct, ZG, t), c = ZH, x = c.x + Math.sin(t * 1.4) * 3 * (spk ? 1.4 : 1), y = SEAT;
   const tilt = (spk ? .05 * Math.sin(t * 2.6) : .03 * Math.sin(t * 1.1) + .02) + rollAt(t) * 2, br = 1 - .006 * (1 + Math.sin(t * 2.2));
-  T.draw(g, {...c, x, y, sq: br, arms: (a.fn = wig(a.fn, t, spk ? 6 : 1.5)), front: a.front, mood: COVER ? 'smug' : a.act.mood, mouth: spk ? env(l, t) : 0, blink: blink(t, 2), tilt, look: spk ? .2 : -.4});
+  T.draw(g, {...c, x, y, sq: br, arms: (a.fn = wig(a.fn, t, spk ? 6 : 1.5)), front: a.front, mood: COVER ? 'smug' : a.act.mood, wink: COVER || a.act.wink, mouth: spk ? env(l, t) : a.act.laugh ? .55 + .35 * Math.abs(Math.sin(t * 14)) : 0, blink: blink(t, 2), tilt: tilt + (a.act.laugh ? .04 * Math.sin(t * 14) : 0), look: a.act.g === 'lip' || COVER ? -.6 : spk ? .2 : -.4});
   const S = c.s, bx = x - 40 * S, by = y - 790 * S * br; star(bx, by, 30, '#f2c820', 5, 8, t * .3); ell(bx, by, 9, 9, '#ff5a8a', 4);
   for (let i = 0; i < 7; i++) { const sx = x + (hash(i) - .5) * 140 * S, sy = y - (600 + hash(i + 9) * 240) * S; sparkle(sx, sy, 7 + 5 * hash(i + 3), Math.max(0, Math.sin(t * 4 + i * 1.7))); }
-  ZA = {a, x, y}; }
-function zHands(t) { const {a, x, y} = ZA, S = ZH.s; hands(x, y, S, a, ZH, '#d63a8a', true);
-  if (a.act.g === 'lip' && a.e > .5) { const h = handPos(x, y, S, a, 1); g.save(); g.translate(h.x - 6, h.y - 12); g.rotate(-2.3); rr(-8, -10, 46, 20, 6, '#f2c820', 4); rr(36, -8, 24, 16, 6, '#d02a5a', 4); g.restore(); }
-  if (a.act.g === 'license' && a.e > .5) { const h = handPos(x, y, S, a, 1); g.save(); g.translate(h.x + 40, h.y - 50); g.rotate(-.12); rr(-62, -38, 124, 76, 8, '#fffaf0', 5); ell(-34, -2, 16, 18, '#f3d27a', 3); rr(-12, -18, 60, 8, 3, '#9ab0d0', 0); rr(-12, -2, 50, 8, 3, '#9ab0d0', 0); txt('OK', 22, 22, 18, '#2f9a5a'); g.restore(); }
-  if (t >= C_HAND && t < C_CLIP) { const h = handPos(x, y, S, a, -1), k = ease((t - C_HAND) / .3); if (a.act.g === 'offer' || a.act.g === 'brooch' || a.act.g === 'wheel') {
-      const mv = t > C_CLIP - .5 ? ease((t - C_CLIP + .5) / .5) : 0; g.save(); g.globalAlpha *= k; container(lerp(h.x - 20, EX.x + 150, mv), lerp(h.y - 26, DASH - 26, mv) - Math.sin(Math.PI * mv) * 50, .9); g.restore(); } } }
+  ZA = {a, x, y, br}; }
+function limbW(pts, w, col) { ln(pts, w + 14); ln(pts, w, col); }
+function zArms(x, y, S, br, a) { g.save(); g.translate(x, y); g.scale(S, S); g.scale(1 + (1 - br) * .5, br); const c = ZH.pal;
+  for (const s of [-1, 1]) { const [A, E, Hh] = a.fn(s), m = [A[0] + (E[0] - A[0]) * .45, A[1] + (E[1] - A[1]) * .45]; limbW([A, m], 46, c.top); limbW([[A[0] + (E[0] - A[0]) * .4, A[1] + (E[1] - A[1]) * .4], E, Hh], 30, c.skin); } g.restore(); }
+function zHands(t) { const {a, x, y, br} = ZA, S = ZH.s, sk = ZH.pal.skin, NL = '#d63a8a'; zArms(x, y, S, br, a);
+  const H = {}; for (const s of [-1, 1]) H[s] = handPos(x, y, S, a, s);
+  const onWheel = s => { const d = Math.hypot(H[s].x - ZH.x, H[s].y - 1335); return d > 90 && d < 160; };
+  const holdC = t >= C_HAND && t < C_CLIP - .5 && ['offer', 'brooch', 'wheel', 'dream'].includes(a.act.g) && !onWheel(-1);
+  const obj = {1: a.act.g === 'lip' && a.e > .5 ? 'lip' : a.act.g === 'license' && a.e > .5 ? 'license' : null, '-1': holdC ? 'cont' : null};
+  for (const s of [-1, 1]) if (onWheel(s)) gripBack(H[s].x, H[s].y, H[s].ang, S, sk);
+  wheel(t);
+  for (const s of [-1, 1]) if (onWheel(s)) gripFront(H[s].x, H[s].y, H[s].ang, S, sk, NL, true);
+  for (const s of [-1, 1]) { if (onWheel(s)) continue; const h = H[s], o = obj[s]; if (!o) { hand(h.x, h.y, h.ang, S, sk, NL, true); continue; }
+    gripBack(h.x, h.y, h.ang, S, sk);
+    if (o === 'lip') { const mx = x + 4, my = y - 950 * S * br + 2, dx = mx - h.x, dy = my - h.y, L0 = Math.hypot(dx, dy), ux = dx / L0, uy = dy / L0;
+      g.save(); g.translate(h.x - ux * 14, h.y - uy * 14); g.rotate(Math.atan2(uy, ux)); const len = L0 + 14; rr(0, -10, len - 26, 20, 6, '#f2c820', 4); rr(len - 30, -8, 30, 16, 7, '#d02a5a', 4); g.restore(); }
+    if (o === 'license') { g.save(); g.translate(h.x + 52, h.y - 30); g.rotate(-.12); rr(-62, -38, 124, 76, 8, '#fffaf0', 5); ell(-34, -2, 16, 18, '#f3d27a', 3); rr(-12, -18, 60, 8, 3, '#9ab0d0', 0); rr(-12, -2, 50, 8, 3, '#9ab0d0', 0); txt('OK', 22, 22, 18, '#2f9a5a'); g.restore(); }
+    if (o === 'cont') { g.save(); g.globalAlpha *= ease((t - C_HAND) / .3); container(h.x - 52, h.y - 4, .9); g.restore(); }
+    gripFront(h.x, h.y, h.ang, S, sk, NL, true); }
+  if (t >= C_CLIP - .5 && t < C_CLIP) { const h = H[-1], mv = ease((t - C_CLIP + .5) / .5); container(lerp(h.x - 52, EX.x + 150, mv), lerp(h.y - 4, DASH - 26, mv) - Math.sin(Math.PI * mv) * 50, .9); } }
 function exX(t) { const a = TL.DOOR - .45; return t < a ? EX.x : EX.x - 900 * ease((t - a) / .5); }
 function eBody(t) { const x0 = exX(t); if (x0 < -700) { EA = null; return; } const l = lineAt(t), spk = l && l.who === 'e', a = blendArms(eAct, EG, t), c = EX, x = x0 + Math.sin(t * 1.2 + 2) * 2, y = SEAT;
   const twitch = a.act.mood === 'sad' && Math.sin(t * 23) > .7 ? 1 : 0, tilt = (spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t)) + rollAt(t) * 3 + (eAct(t).g === 'look' ? -.12 : 0);
@@ -173,26 +204,32 @@ function eBody(t) { const x0 = exX(t); if (x0 < -700) { EA = null; return; } con
   const S = c.s; rr(x - 70 * S - 22, y - 800 * S - 16, 44, 30, 6, '#e8c27a', 4); txt('DMV', x - 70 * S, y - 800 * S, 15, INK);
   EA = {a, x, y, clip: null}; }
 function eHands(t) { if (!EA) return; const {a, x, y} = EA, S = EX.s; const hasClip = a.act.g !== 'shock' && a.act.g !== 'push';
-  const h = handPos(x, y, S, a, -1); let cx = h.x + 16, cy = h.y - 10; if (a.act.g === 'shock') { cx = h.x; cy = h.y - 60; }
-  if (a.act.g !== 'push') { clipboard(cx, cy, a.act.g === 'shock' ? -.5 : -.08, .9, t); EA.clip = [cx, cy]; }
-  hands(x, y, S, a, EX, null, false); }
+  const sk = EX.pal.skin, h = handPos(x, y, S, a, -1), r = handPos(x, y, S, a, 1);
+  if (hasClip) { const rot = a.act.g === 'shock' ? -.5 : -.08, cx = h.x + Math.cos(rot) * 50 + 4, cy = h.y + Math.sin(rot) * 50 - 6, ga = rot;
+    gripBack(h.x, h.y, ga, S, sk); clipboard(cx, cy, rot, .9, t); EA.clip = [cx, cy]; gripFront(h.x, h.y, ga, S, sk);
+    if (['pad', 'stamp', 'look'].includes(a.act.g)) { gripBack(r.x, r.y, r.ang, S, sk); pen(r.x, r.y, r.ang, S); gripFront(r.x, r.y, r.ang, S, sk); } else hand(r.x, r.y, r.ang, S, sk, null, false); }
+  else hands(x, y, S, a, EX, null, false); }
 function dashProps(t) { if (t >= C_CLIP) { const k = ease((t - C_DASH) / .35); container(lerp(EX.x + 150, 525, k), DASH - 26 - Math.sin(Math.PI * k) * 60, .9); } }
 
 // ---------- Petrovich (hidden behind the BRIGHTON TIMES, in both views) ----------
-function paper(x, top, k) { const w = 178 * k, h = 360 * k; rr(x - w, top, w * 2, h, 6, '#f4f1e8', 7); txt('BRIGHTON TIMES', x, top + 42 * k, 40 * k, INK, HW); ln([[x - w + 16 * k, top + 70 * k], [x + w - 16 * k, top + 70 * k]], 4);
+function jacket(x, y, S) { const c = PE.pal; g.save(); g.translate(x, y); g.scale(S, S);
+  g.beginPath(); g.moveTo(-290, -380); g.lineTo(-300, -790); g.quadraticCurveTo(-300, -905, -150, -910); g.lineTo(150, -910); g.quadraticCurveTo(300, -905, 300, -790); g.lineTo(290, -380); g.closePath(); g.fillStyle = c.top; g.fill(); g.strokeStyle = INK; g.lineWidth = 7 / S * .76; g.stroke();
+  poly([[-46, -900], [46, -900], [0, -760]], c.collar, 6); ln([[-46, -900], [-110, -640]], 8, c.topS); ln([[46, -900], [110, -640]], 8, c.topS); for (const yy of [-700, -600, -500]) ell(0, yy, 9, 9, c.topS, 4); g.restore(); }
+function lap(x, y, S) { const c = PE.pal; g.save(); g.translate(x, y); g.scale(S, S); rr(-290, -560, 580, 140, 40, c.bottom, 7); for (const s of [-1, 1]) ell(s * 130, -430, 115, 60, c.bottom, 7); g.restore(); }
+function paper(x, top, k, S) { const w = S ? 215 * S : 178 * k, h = S ? 420 * S : 360 * k; rr(x - w, top, w * 2, h, 6, '#f4f1e8', 7); txt('BRIGHTON TIMES', x, top + 42 * k, 40 * k, INK, HW); ln([[x - w + 16 * k, top + 70 * k], [x + w - 16 * k, top + 70 * k]], 4);
   rr(x - w + 20 * k, top + 90 * k, 150 * k, 110 * k, 4, '#c8cfd6', 4); for (let j = 0; j < 9; j++) ln([[x - w + (j < 4 ? 186 : 20) * k, top + (98 + j * 26) * k], [x + w - 20 * k, top + (98 + j * 26) * k]], 4, '#b8b2a4'); ln([[x, top + 214 * k], [x, top + h - 14 * k]], 3, '#d8d2c4'); }
 const nodAt = t => { const l = lineAt(t); return l && l.who === 'p' && /Угу/.test(l.text) ? Math.sin(Math.PI * clamp((t - l.at) / (l.end - l.at))) : 0; };
-function petro(t, x, y, S, top) { const l = lineAt(t), spk = l && l.who === 'p', a = blendArms(() => ({g: 'hold'}), {hold: s => [[s * 78, -860], [s * 160, -800], [s * 235, -930]]}, t), k = S / .76, nod = nodAt(t) * 10 * k;
-  const fn = a.fn; T.draw(g, {...PE, x, y: y + nod, s: S, arms: (a.fn = wig(fn, t, 1.2)), front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: spk ? env(l, t) : 0, blink: blink(t, 7), tilt: 0, look: -.3});
-  paper(x, top + nod, k); for (const s of [-1, 1]) { const h = handPos(x, y + nod, S, a, s); hand(h.x, h.y, h.ang, S, PE.pal.skin, null, false); if (s < 0) { ell(h.x - Math.cos(h.ang) * 22 * S, h.y - Math.sin(h.ang) * 22 * S, 13 * k, 13 * k, '#e8c27a', 4); } } }
-function petrovich(t) { petro(t, PE.x + Math.sin(t * 1.1 + 1) * 2, PE.y, PE.s, 885); }
+function petro(t, x, y, S, top) { const l = lineAt(t), spk = l && l.who === 'p', a = blendArms(() => ({g: 'hold'}), {hold: s => [[s * 262, -845], [s * 318, -690], [s * 226, -935]]}, t), k = S / .76, nod = nodAt(t) * 10 * k;
+  const fn = a.fn; jacket(x, y + nod, S); T.draw(g, {...PE, x, y: y + nod, s: S, arms: (a.fn = wig(fn, t, 1.2)), front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: spk ? env(l, t) : 0, blink: blink(t, 7), tilt: 0, look: -.3});
+  lap(x, y + nod, S); const HP = [-1, 1].map(s => ({s, ...handPos(x, y + nod, S, a, s)})); for (const h of HP) gripBack(h.x, h.y, h.s < 0 ? 0 : Math.PI, S, PE.pal.skin); paper(x, top + nod, k, S); for (const h of HP) { const s = h.s; gripFront(h.x, h.y, s < 0 ? 0 : Math.PI, S, PE.pal.skin); if (s < 0) { ell(h.x - Math.cos(h.ang) * 22 * S, h.y - Math.sin(h.ang) * 22 * S, 13 * k, 13 * k, '#e8c27a', 4); } } }
+function petrovich(t) { petro(t, PE.x + Math.sin(t * 1.1 + 1) * 2, PE.y, PE.s, PE.y - 1272 * PE.s); }
 
 // ---------- special views (screen coordinates) ----------
 function backSeat(t) { // reverse angle into the back seat: Petrovich behind the paper, front seat backs in the foreground
-  const l = lineAt(t); petro(t, 540, 1882, 1.0, 640);
+  const l = lineAt(t); petro(t, 540, 1882, 1.0, 1882 - 1250);
   if (l && (l.id === 'p3' || l.id === 'p2')) { const e = env(l, t), bx = 885, by = 470, r = 74 + 8 * e; ell(bx, by, r, r * .78, '#fffaf0', 7); poly([[bx - 40, by + 44], [778, 660], [bx - 4, by + 56]], '#fffaf0', 0); ln([[bx - 40, by + 46], [778, 660], [bx - 2, by + 56]], 7);
     g.save(); g.translate(bx - 38, by - 24); g.scale(.95, .95); flag(0, 0, 76, 50); g.restore(); for (let i = 0; i < 3; i++) ln([[700 + i * 20, 590 - i * 26], [720 + i * 22, 576 - i * 28]], 6); }
-  rr(330, 1130, 420, 900, 50, '#4a4452', 8); rr(370, 1160, 340, 90, 30, '#5a5262', 6);
+  rr(330, 1560, 420, 600, 50, '#4a4452', 8); rr(370, 1590, 340, 80, 30, '#5a5262', 6);
   for (const [x, f] of [[110, 1], [970, -1]]) { rr(x - 120, 980, 240, 150, 50, '#4a4452', 8); ln([[x - 50, 1130], [x - 50, 1170]], 12, '#9aa0a8'); ln([[x + 50, 1130], [x + 50, 1170]], 12, '#9aa0a8'); rr(x - 230 + f * 20, 1160, 460, 900, 90, '#5a5262', 9); ln([[x - 150, 1240], [x - 150, 1900]], 5, '#4a4452'); ln([[x + 150, 1240], [x + 150, 1900]], 5, '#4a4452'); } }
 function backSeatBg(t) { g.save(); g.translate(540, 960); g.scale(1.25, 1.25); g.translate(-525, -960); street(t); rearInterior(); g.restore(); }
 // parking, top-down
@@ -202,7 +239,7 @@ function topBg(t) { g.fillStyle = '#8a8f98'; g.fillRect(0, 0, W, H); for (let i 
   for (const x of [20, 360, 700, 1040]) ln([[x, 1010], [x, 1290]], 10, '#ffffff'); ln([[20, 1290], [1040, 1290]], 8, '#ffffff');
   topCar(-150, 1150, 0, '#4a7ad0', false); }
 function topCar(x, y, ang, col, zh) { g.save(); g.translate(x, y); g.rotate(ang); rr(-170, -88, 340, 176, 50, col, 8); rr(40, -70, 70, 140, 22, '#5a6a80', 5); rr(-140, -70, 50, 140, 18, '#5a6a80', 5); for (const [wx, wy] of [[-110, -92], [110, -92], [-110, 92], [110, 92]]) rr(wx - 30, wy - 12, 60, 24, 8, '#2a2a30', 4);
-  if (zh) { rr(-60, -55, 90, 110, 20, '#3e3848', 5); ell(-15, 0, 62, 66, '#f3d27a', 6); g.beginPath(); g.arc(-15, 0, 40, -1.2, .8); g.strokeStyle = '#d9b257'; g.lineWidth = 5; g.stroke(); star(20, -40, 16, '#f2c820', 4); ell(130, -60, 16, 10, '#fff3c0', 3); ell(130, 60, 16, 10, '#fff3c0', 3); }
+  if (zh) { rr(-88, -66, 120, 132, 26, '#f08cb8', 5); ln([[-70, -40], [14, -40]], 4, '#c8558a'); ln([[-70, 40], [14, 40]], 4, '#c8558a'); ell(155, -58, 14, 10, '#fff3c0', 3); ell(155, 58, 14, 10, '#fff3c0', 3); rr(-172, -70, 14, 30, 4, '#d8323c', 3); rr(-172, 40, 14, 30, 4, '#d8323c', 3); }
   g.restore(); }
 function topView(t) { const u = clamp((t - PK0) / (PK1 - PK0)), e = ease(u), x = lerp(-260, 700, e), y = lerp(860, 1150, ease(clamp((u - .45) / .55))), ang = lerp(0, -.42, ease(clamp((u - .55) / .45))) + (u >= 1 ? .02 * Math.sin((t - PK1) * 14) * Math.exp(-(t - PK1) * 3) : 0);
   if (u > .6 && u < 1) for (let i = 0; i < 2; i++) ln([[x - 200, y + 70 - i * 140], [x - 330, y + 90 - i * 160]], 10, 'rgba(40,40,40,.45)');
@@ -267,9 +304,9 @@ function camAt(t) { let sh = SH[0]; for (const s of SH) if (t >= s.at) sh = s; c
   const push = sh.i % 3 === 2 ? 0 : .02 * ease(u), punch = sh.at > 0 && sh.k !== 'END' ? .02 * (1 - ease((t - sh.at) / .3)) : 0; return {z: z * (1 + push + punch), x, y, k, sh}; }
 
 // ---------- captions ----------
-const GLOSS = {z1: [['Чекаю', 'check — проверяю'], ['Лукаю', 'look — выгляжу'], ['ю ноу', 'you know — понимаешь']], z3: [['Райт', 'направо / правильно', 'RIGHT', ' = ']],
+const GLOSS = {z1: [['Чекаю', 'check — проверяю'], ['Лукаю', 'look — выгляжу'], ['ю ноу', 'you know — понимаешь']], z9: [['Паркуюсь', 'park — парковаться']], z3: [['Райт', 'направо / правильно', 'RIGHT', ' = ']],
   z4: [['Йилд', 'yield — уступи дорогу'], ['саджешн', 'suggestion — предложение'], ['консидернула', 'consider — рассмотрела']], z7: [['Мёрджусь', 'merge — перестраиваюсь'], ['сигнал', 'signal — поворотник']],
-  z9: [['Паркуюсь', 'park — парковаться']], z11: [['Брайб', 'bribe — взятка']], z12: [['Фейлд', 'failed — не сдала'], ['фейлишь', 'fail — заваливать']], p2: [['Full stop', 'точка (UK)', 'full stop', ' — ']]};
+  z11: [['Брайб', 'bribe — взятка']], z12: [['Фейлд', 'failed — не сдала'], ['фейлишь', 'fail — заваливать']], p2: [['Full stop', 'точка (UK)', 'full stop', ' — ']]};
 const SPL = {
   e1: [['Check your mirrors.', 'Проверьте зеркала.']],
   e2: [["Ma'am… who is that in the back seat?", 'Мэм… а кто это на заднем сиденье?']],
@@ -293,8 +330,9 @@ function chunks(l) { if (SPL[l.id]) { const P = SPL[l.id], n = P.reduce((a, c) =
 const CH = L.map(l => ({l, ch: chunks(l)})), FLAT = [].concat(...CH.map(x => x.ch));
 FLAT.forEach((c, i) => { const nx = FLAT[i + 1], lim = nx ? nx.a - .05 : c.b + 1.2; c.hold = Math.max(c.b, Math.min(c.a + 1.2, lim)); if (!nx || nx.id !== c.id) c.hold = Math.max(c.hold, Math.min(c.b + .25, lim)); });
 // chips: per caption chunk; a chunk with several glossary words splits its time (each >= 1.2 s, else only the first)
-const CHIPS = []; for (const c of FLAT) { if (c.who !== 'z' && c.id !== 'p2') continue; const hits = (GLOSS[c.id] || []).filter(([w]) => c.s.toLowerCase().includes(w.toLowerCase())); if (!hits.length) continue;
-  const dur = Math.max(c.hold - c.a, c.id === 'p2' ? 1.3 : 0); if (dur < 1.2) continue; const use = dur / hits.length >= 1.2 ? hits : hits.slice(0, 1); use.forEach(([w, tr, show, sep], i) => CHIPS.push({a: c.a + dur * i / use.length, b: c.a + dur * (i + 1) / use.length, w: show || w, tr, sep: sep || ' — '})); }
+const CHIPS = []; for (const c of FLAT) { if (c.who !== 'z' && c.id !== 'p2') continue; const hits = (GLOSS[c.id] || []).filter(([w]) => c.s.toLowerCase().includes(w.toLowerCase()));
+  for (const [w, tr, show, sep] of hits) { const pos = c.s.toLowerCase().indexOf(w.toLowerCase()) / c.s.length, a = Math.max(c.a + (c.b - c.a) * pos - .15, c.a); const nx = L.find(l => l.at > c.b + .01 && l.id !== c.id), lim = nx ? nx.at - .05 : 1e9; CHIPS.push({a, b: Math.min(a + 1.7, Math.max(a + 1.2, lim)), w: show || w, tr, sep: sep || ' — '}); } }
+CHIPS.sort((p, q) => p.a - q.a); { const slotEnd = [-1, -1]; for (const q of CHIPS) { q.slot = slotEnd[0] <= q.a ? 0 : 1; slotEnd[q.slot] = q.b + .05; } }
 const EN = /^(чекаю|лукаю|ю|ноу|райт|йилд|саджешн|консидернула|мёрджусь|паркуюсь|брайб|фейлд|фейлишь)$/i;
 const isEn = w => { const x = w.replace(/[«»"?!.,…—:]/g, ''); return /[a-z]/i.test(x) || EN.test(x); };
 function curChunk(t) { let cur = null; for (const c of FLAT) if (t >= c.a - .02 && t < c.hold) cur = c; return cur; }
@@ -309,10 +347,11 @@ function flag(x, y, w, h) { g.save(); g.beginPath(); g.rect(x, y, w, h); g.clip(
 function britChip(t) { const a = BY.p3.at, b = BY.p3.at + 2.6; if (t < a || t >= b) return; const k = ease((t - a) / .15) * (1 - ease((t - b + .15) / .15));
   g.save(); g.globalAlpha = k; g.translate(540, 1536 + (1 - k) * 16); g.rotate(-.015); g.font = `42px ${FONT}`; const tw = g.measureText('British accent').width, w = tw + 130;
   rr(-w / 2 + 6, -34, w, 72, 20, 'rgba(42,34,48,0.35)', 0); rr(-w / 2, -40, w, 72, 20, '#fffaf0', 5); flag(-w / 2 + 22, -24, 60, 40); txt('British accent', -w / 2 + 100, -3, 42, '#1f3a8a', FONT, 'left'); g.restore(); }
-function chip(t) { let c = null; for (const q of CHIPS) if (t >= q.a && t < q.b) c = q; if (!c) return;
+function chip(t) { for (const c of CHIPS) if (t >= c.a && t < c.b) chip1(t, c); }
+function chip1(t, c) {
   const k = ease((t - c.a) / .15) * (1 - ease((t - c.b + .12) / .12)), w1 = c.w, w2 = c.sep + c.tr; let f = 42; g.font = `${f}px ${FONT}`; const tot = () => g.measureText(w1).width + g.measureText(w2).width;
   while (tot() > 900) { f -= 2; g.font = `${f}px ${FONT}`; } const tw = tot(), w = tw + 56;
-  g.save(); g.globalAlpha = k; g.translate(540, 1536 + (1 - k) * 16); g.rotate(-.015); rr(-w / 2 + 6, -34, w, 72, 20, 'rgba(42,34,48,0.35)', 0); rr(-w / 2, -40, w, 72, 20, '#fffaf0', 5);
+  g.save(); g.globalAlpha = k; g.translate(540, 1536 - c.slot * 86 + (1 - k) * 16); g.rotate(-.015); rr(-w / 2 + 6, -34, w, 72, 20, 'rgba(42,34,48,0.35)', 0); rr(-w / 2, -40, w, 72, 20, '#fffaf0', 5);
   g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillStyle = '#d63a8a'; g.fillText(w1, -tw / 2, -3); g.fillStyle = INK; g.fillText(w2, -tw / 2 + g.measureText(w1).width, -3); g.restore(); }
 const HOOK_END = 2.7;
 function hook(t) { if (t > HOOK_END + .3) return; const a = ease(t / .25) * (1 - ease((t - HOOK_END) / .3)); g.save(); g.globalAlpha = a; g.translate(540, 330); g.rotate(-.02);
@@ -332,7 +371,7 @@ function frame(t) { NOW = t;
   g = G0; g.save(); g.filter = `blur(${(view === 'TOP' ? 4 : 2.6 * c.z).toFixed(1)}px) saturate(0.7) brightness(1.03)`; g.drawImage(bgCv, 0, 0); g.filter = 'none'; g.restore();
   if (view === 'PSEAT') backSeat(t); else if (view === 'TOP') topView(t);
   else { g.save(); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); g.translate(525, 1000); g.rotate(rollAt(t)); g.translate(-525, -1000);
-    petrovich(t); seatBacks(); eBody(t); zBody(t); eHands(t); dashboard(t); dashProps(t); wheel(t); zHands(t); mirror(t); frameCar(); g.restore(); }
+    petrovich(t); seatBacks(); eBody(t); zBody(t); eHands(t); dashboard(t); dashProps(t); zHands(t); mirror(t); frameCar(); g.restore(); }
   const v = g.createRadialGradient(W / 2, H * .45, 650, W / 2, H * .45, 1250); v.addColorStop(0, 'rgba(30,15,30,0)'); v.addColorStop(1, 'rgba(30,15,30,0.18)'); g.fillStyle = v; g.fillRect(0, 0, W, H);
   if (view !== 'END' && !COVER) panels(t);
   if (process.env.NOCAP) return;
