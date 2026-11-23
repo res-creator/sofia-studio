@@ -28,7 +28,7 @@ function heart(x, y, r, fill = '#ff5a8a') { g.beginPath(); g.moveTo(x, y + r * .
 
 // ---------- cast ----------
 // Zhanna: series palette (pink sequined top, star brooch, blonde bouffant, pink nails). Driver's seat = screen right (front view through the windshield)
-const ZH = {outfit: 'blazer', hair: 'bouffant', lashes: true, earrings: '#f2c820', skirt: true, seated: true, pal: {skin: '#f4c8a8', skinS: '#e2aa88', hair: '#f3d27a', hairS: '#d9b257', brow: '#8a6030', lip: '#d02a5a', top: '#d63a8a', topS: '#b02a70', collar: '#d63a8a', bottom: '#2a2230', skirt: '#2a2230', legs: '#f4c8a8', shoe: '#e0b040', sole: '#e0b040'}, x: 965, s: .76};
+const ZH = {outfit: 'blazer', hair: 'bouffant', lashes: true, earrings: '#f2c820', skirt: true, seated: true, pal: {skin: '#f4c8a8', skinS: '#e2aa88', hair: '#f3d27a', hairS: '#d9b257', brow: '#8a6030', lip: '#d02a5a', top: '#d63a8a', topS: '#b02a70', collar: '#d63a8a', bottom: '#2a2230', skirt: '#2a2230', legs: '#f4c8a8', shoe: '#e0b040', sole: '#e0b040'}, x: 990, s: .76};
 // Petrovich: grey flat cap, brown jacket — back seat, always behind the BRIGHTON TIMES
 const PE = {hair: 'short', cap: true, moustache: true, seated: true, pal: {arm: '#8a6d52', skin: '#eec3a2', skinS: '#d9a583', hair: '#cfcfcf', brow: '#9a9a9a', stache: '#dcdcdc', cap: '#7a808c', capS: '#5e6470', top: '#8a6d52', topS: '#6e553f', collar: '#eef3f8', bottom: '#4a4a52', legs: '#4a4a52', shoe: '#2a2230', sole: '#2a2230'}, x: 525, y: 1470, s: .46};
 // Examiner: tired DMV officer, pale-blue shirt, navy tie, glasses, clipboard
@@ -92,8 +92,8 @@ function mirror(t) { const x = 525, y = 630, k = COVER ? 1 : mirK(t);
     lips(20, 46); g.restore(); if (t - MIR[0] > .5 && t - MIR[0] < 1.6) { heart(118, -48, 16); heart(140, -82, 11); } sparkle(-80, -36, 14, .9); }
   g.restore(); }
 function frameCar() { // windshield frame: pink roof and A-pillars (outside every character's extent)
-  g.fillStyle = '#e46aa0'; g.beginPath(); g.moveTo(-1400, -800); g.lineTo(2500, -800); g.lineTo(2500, 2600); g.lineTo(1330, 2600); g.lineTo(1265, 1352); g.quadraticCurveTo(1235, 520, 1115, 480); g.lineTo(-55, 480); g.quadraticCurveTo(-175, 520, -210, 1352); g.lineTo(-275, 2600); g.lineTo(-1400, 2600); g.closePath(); g.fill();
-  g.beginPath(); g.moveTo(-210, 1352); g.quadraticCurveTo(-175, 520, -55, 480); g.lineTo(1115, 480); g.quadraticCurveTo(1235, 520, 1265, 1352); g.strokeStyle = INK; g.lineWidth = 10; g.stroke(); g.strokeStyle = '#2a2430'; g.lineWidth = 6; g.beginPath(); g.moveTo(-185, 1352); g.quadraticCurveTo(-151, 540, -45, 504); g.lineTo(1105, 504); g.quadraticCurveTo(1211, 540, 1241, 1352); g.stroke();
+  g.fillStyle = '#e46aa0'; g.beginPath(); g.moveTo(-1400, -800); g.lineTo(2500, -800); g.lineTo(2500, 2600); g.lineTo(1360, 2600); g.lineTo(1295, 1352); g.quadraticCurveTo(1265, 520, 1145, 480); g.lineTo(-55, 480); g.quadraticCurveTo(-175, 520, -210, 1352); g.lineTo(-275, 2600); g.lineTo(-1400, 2600); g.closePath(); g.fill();
+  g.beginPath(); g.moveTo(-210, 1352); g.quadraticCurveTo(-175, 520, -55, 480); g.lineTo(1145, 480); g.quadraticCurveTo(1265, 520, 1295, 1352); g.strokeStyle = INK; g.lineWidth = 10; g.stroke(); g.strokeStyle = '#2a2430'; g.lineWidth = 6; g.beginPath(); g.moveTo(-185, 1352); g.quadraticCurveTo(-151, 540, -45, 504); g.lineTo(1135, 504); g.quadraticCurveTo(1241, 540, 1271, 1352); g.stroke();
   rr(150, 430, 780, 20, 10, '#c8558a', 0); }
 
 // ---------- gestures ----------
@@ -126,7 +126,9 @@ const FRONT = new Set(['palm', 'dream', 'wheel', 'brooch', 'pad', 'point', 'clut
 const lineAt = t => { for (const l of L) if (t >= l.at - .03 && t < l.end + .08) return l; return null; };
 const env = (l, t) => { const i = Math.floor((t - l.at) * 30); return clamp(l.env[i] || 0); };   // mouthEnv (prep.py): 0 = closed, no smoothing
 const lineFor = (who, t) => { for (const l of L) if (l.who === who && t >= l.at - .05 && t < l.end + .3) return l; return null; };
-const talkSt = (l, t, seed) => { const r = T.talk(l, t, seed); return {mouth: r.mouth, round: r.round, vis: r.round, nod: r.nod, talking: !!l && t < l.end + .05}; };   // toon v3: spring-smoothed, stateless
+// mouth: same spring as T.talk, but the stateless follower looks back 1.2 s (not .5 s) so the start state has decayed -> frame-to-frame steps stay under the 15 % cap
+const talkM = (l, t, seed = 0) => { if (!l) return {mouth: 0, round: .5, nod: 0}; const r = T.talk(l, t, seed); r.mouth = T.follow(u => T.envAt(l, u), t, .05, .08, 1.2, 1 / 240, {maxRate: 4.0, onsetBelow: .12}); return r; };
+const talkSt = (l, t, seed) => { const r = talkM(l, t, seed); return {mouth: r.mouth, round: r.round, vis: r.round, nod: r.nod, talking: !!l && t < l.end + .05}; };   // toon v3: spring-smoothed, stateless
 const blink = (t, s) => ((t + s * 1.3) % (3.3 + s * .4)) < .12;
 const ZPLAN = {z1: [[0, 'point'], [.22, 'lip'], [.8, 'wheel']], z2: [[0, 'palm'], [.55, 'wheel']], z3: [[0, 'wag'], [.45, 'wheel']], z4: [[0, 'wag'], [.6, 'palm']], z5: [[0, 'shake']], z7: [[0, 'wave']], z8: [[0, 'brooch']],
   z10: [[0, 'dream'], [.3, 'offer']], z11: [[0, 'offer'], [.45, 'brooch']], z12: [[0, 'fists']], z13: [[0, 'license'], [.7, 'shrug']]};
@@ -151,20 +153,20 @@ function eMood(t) { if (COVER) return 'shocked'; const l = lineAt(t); if (!l) re
 function eAct(t) { let idle = 'pad'; if (t >= BY.z5.at && t < BY.z5.end + .2) idle = 'clutch'; if (t >= BY.z10.at + .5 && t < BY.e10.at) idle = 'clutch'; if (t >= BY.z12.at && t < BY.e12.at) idle = 'beg';
   return {g: plan(EPLAN, 'e', t, idle), mood: eMood(t)}; }
 function blendArms(fnAt, GT, t) { const a1 = fnAt(t); let prev = a1.g, k = 1; for (let d = .02; d <= .2; d += .02) { const a = fnAt(t - d); if (a.g !== a1.g) { prev = a.g; k = d / .2; break; } }
-  const e = ease(k), f0 = GT[prev], f1 = GT[a1.g]; return {fn: s => f1(s).map((p, i) => [lerp(f0(s)[i][0], p[0], e), lerp(f0(s)[i][1], p[1], e)]), front: FRONT.has(a1.g) || (e < .5 && FRONT.has(prev)), act: a1, e}; }
+  const e = ease(k), f0 = GT[prev], f1 = GT[a1.g], bulge = prev === a1.g ? 0 : Math.sin(Math.PI * e);   // gesture changes travel on an outward arc (hand and elbow swing out, never across the face)
+  return {prev, fn: s => f1(s).map((p, i) => [lerp(f0(s)[i][0], p[0], e) + (i ? s * (i === 2 ? 80 : 40) * bulge : 0), lerp(f0(s)[i][1], p[1], e)]), front: FRONT.has(a1.g) || (e < .5 && FRONT.has(prev)), act: a1, e}; }
+// Zhanna's hands stay close to the body (wheel, lipstick, brooch): the v4 IK with its long fixed upper/forearm pushes those elbows far out, so her elbows are posed by hand;
+// the shoulders sit at the v4 torso corners (±86) like everyone else's
+const shoulders = fn => s => { const p = fn(s); return [[s * Math.max(86, Math.abs(p[0][0])), p[0][1]], p[1], p[2]]; };
 const wig = (fn, t, amp) => s => fn(s).map((p, i) => [p[0] + Math.sin(t * 4.3 + s + i) * amp * (i / 2), p[1] + Math.cos(t * 3.7 + i) * amp * (i / 2)]);
-function hand(x, y, ang, S, skin, nail, glossy) { g.save(); g.translate(x, y); g.rotate(ang); g.scale(S, S);
-  for (const o of [-16, -5.5, 5.5, 16]) { const len = 44 - Math.abs(o) * .5; rr(8, o - 6, len, 12, 6, skin, 5); if (nail) { ell(len + 1, o, 7, 5.5, nail, 3); if (glossy) ell(len - 1, o - 2, 2.5, 1.5, '#ffffff', 0); } }
-  g.save(); g.translate(-4, -22); g.rotate(-.9); rr(0, -6, 30, 12, 6, skin, 5); if (nail) ell(29, 0, 6, 5, nail, 3); g.restore();
-  ell(0, 0, 27, 25, skin, 5); g.restore(); }
-// gripping hand in two layers: back = palm + thumb (behind the object), front = curled fingers with nails over the object's edge
-function gripBack(x, y, ang, S, skin) { g.save(); g.translate(x, y); g.rotate(ang); g.scale(S, S); g.save(); g.translate(-2, 20); g.rotate(.8); rr(0, -6, 30, 12, 6, skin, 5); g.restore(); ell(0, 0, 27, 25, skin, 5); g.restore(); }
+function hand(x, y, ang, S, skin, nail, glossy, side = 1) { T.drawHand(g, 'open', x, y, ang, S, skin, nail, side, 22); }   // toon v4 hand, merged into the forearm (bridge)
+function gripBack(x, y, ang, S, skin, fore = ang) { ln([[x, y], [x - Math.cos(fore) * 26 * S, y - Math.sin(fore) * 26 * S]], 28 * S, skin); g.save(); g.translate(x, y); g.rotate(ang); g.scale(S, S); g.save(); g.translate(-2, 20); g.rotate(.8); rr(0, -6, 30, 12, 6, skin, 5); g.restore(); ell(0, 0, 27, 25, skin, 5); g.restore(); }
 function gripFront(x, y, ang, S, skin, nail, glossy) { g.save(); g.translate(x, y); g.rotate(ang); g.scale(S, S);
   for (const o of [-15, -5, 5, 15]) { const len = 30 - Math.abs(o) * .35; rr(4, o - 6, len, 12, 6, skin, 5); if (nail) { ell(len + 2, o, 6.5, 5.5, nail, 3); if (glossy) ell(len, o - 2, 2.2, 1.4, '#ffffff', 0); } else ln([[len - 2, o - 3], [len - 2, o + 3]], 2, '#c89a7a'); }
   g.restore(); }
 function pen(x, y, ang, S) { g.save(); g.translate(x, y); g.rotate(ang + 1.2); g.scale(S, S); rr(-50, -6, 100, 12, 5, '#26346a', 4); poly([[50, -6], [66, 0], [50, 6]], '#e8c27a', 3); g.restore(); }
 const handPos = (x, y, S, a, s) => { const P3 = a.fn(s), E = P3[1], Hh = P3[2]; return {x: x + Hh[0] * S, y: y + Hh[1] * S, ang: Math.atan2(Hh[1] - E[1], Hh[0] - E[0])}; };
-function hands(x, y, S, a, c, nail, glossy) { for (const s of [-1, 1]) { const h = handPos(x, y, S, a, s); hand(h.x, h.y, h.ang, S, c.pal.skin, nail, glossy); } }
+function hands(x, y, S, a, c, nail, glossy) { for (const s of [-1, 1]) { const h = handPos(x, y, S, a, s); hand(h.x, h.y, h.ang, S, c.pal.skin, nail, glossy, s); } }
 
 // ---------- props ----------
 function container(x, y, s, open = true, steamy = true) { g.save(); g.translate(x, y); g.scale(s, s);
@@ -185,13 +187,13 @@ let ZA = null, EA = null;
 function zBody(t) { const l = lineAt(t), spk = l && l.who === 'z', a = blendArms(zAct, ZG, t), c = ZH, x = c.x + Math.sin(t * 1.4) * 3 * (spk ? 1.4 : 1), y = SEAT;
   const tilt = (spk ? .05 * Math.sin(t * 2.6) : .03 * Math.sin(t * 1.1) + .02) + rollAt(t) * 2, br = 1 - .006 * (1 + Math.sin(t * 2.2));
   const zl = lineFor('z', t), ts = zl ? talkSt(zl, t, 3) : {mouth: T.follow(u => zLaugh(u) >= 0 ? T.laughEnv(zLaugh(u)) : 0, t, .06, .1, .3), nod: 0, round: .5, vis: .5, talking: false}, breath = 2 + 2 * Math.sin(t * 2.2), md = T.moodAt(zMood, t, .25);
-  T.draw(g, {...c, x, y, sq: br, arms: (a.fn = wig(a.fn, t, spk ? 6 : 1.5)), ik: false, breath, front: a.front, mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, mouth: ts.mouth, round: ts.round, talking: ts.talking, vis: ts.vis, nod: ts.nod, t, blink: blink(t, 2) || md.blink, tilt, look: a.act.g === 'lip' || COVER ? -.6 : spk ? .2 : -.4});
+  T.draw(g, {...c, x, y, sq: br, arms: (a.fn = shoulders(wig(a.fn, t, spk ? 6 : 1.5))), ik: false, breath, front: a.front, mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, mouth: ts.mouth, round: ts.round, talking: ts.talking, vis: ts.vis, nod: ts.nod, t, blink: blink(t, 2) || md.blink, tilt, look: a.act.g === 'lip' || COVER ? -.6 : spk ? .2 : -.4});
   const S = c.s, bx = x - 40 * S, by = y - 790 * S * br; star(bx, by, 30, '#f2c820', 5, 8, t * .3); ell(bx, by, 9, 9, '#ff5a8a', 4);
   for (let i = 0; i < 7; i++) { const sx = x + (hash(i) - .5) * 140 * S, sy = y - (600 + hash(i + 9) * 240) * S; sparkle(sx, sy, 7 + 5 * hash(i + 3), Math.max(0, Math.sin(t * 4 + i * 1.7))); }
   ZA = {a, x, y, br}; }
 function limbW(pts, w, col) { ln(pts, w + 14); ln(pts, w, col); }
 function zArms(x, y, S, br, a) { g.save(); g.translate(x, y); g.scale(S, S); g.scale(1 + (1 - br) * .5, br); const c = T.palOf(ZH);
-  for (const s of [-1, 1]) T.drawArm(g, ZH, s, a.fn(s), c); g.restore(); }
+  for (const s of [-1, 1]) T.drawArm(g, ZH, s, a.fn(s), c, 'none'); g.restore(); }   // v4: one silhouette per arm (sleeve + cuff), hands drawn by the grips
 function zHands(t) { const {a, x, y, br} = ZA, S = ZH.s, sk = ZH.pal.skin, NL = '#d63a8a'; zArms(x, y, S, br, a);
   const H = {}; for (const s of [-1, 1]) H[s] = handPos(x, y, S, a, s);
   const onWheel = s => { const d = Math.hypot(H[s].x - ZH.x, H[s].y - 1335); return d > 90 && d < 160; };
@@ -200,7 +202,7 @@ function zHands(t) { const {a, x, y, br} = ZA, S = ZH.s, sk = ZH.pal.skin, NL = 
   for (const s of [-1, 1]) if (onWheel(s)) gripBack(H[s].x, H[s].y, H[s].ang, S, sk);
   wheel(t);
   for (const s of [-1, 1]) if (onWheel(s)) gripFront(H[s].x, H[s].y, H[s].ang, S, sk, NL, true);
-  for (const s of [-1, 1]) { if (onWheel(s)) continue; const h = H[s], o = obj[s]; if (!o) { hand(h.x, h.y, h.ang, S, sk, NL, true); continue; }
+  for (const s of [-1, 1]) { if (onWheel(s)) continue; const h = H[s], o = obj[s]; if (!o) { hand(h.x, h.y, h.ang, S, sk, NL, true, s); continue; }
     gripBack(h.x, h.y, h.ang, S, sk);
     if (o === 'lip') { const mx = x + 4, my = y - 950 * S * br + 2, dx = mx - h.x, dy = my - h.y, L0 = Math.hypot(dx, dy), ux = dx / L0, uy = dy / L0;
       g.save(); g.translate(h.x - ux * 14, h.y - uy * 14); g.rotate(Math.atan2(uy, ux)); const len = L0 + 14; rr(0, -10, len - 26, 20, 6, '#f2c820', 4); rr(len - 30, -8, 30, 16, 7, '#d02a5a', 4); g.restore(); }
@@ -211,7 +213,7 @@ function zHands(t) { const {a, x, y, br} = ZA, S = ZH.s, sk = ZH.pal.skin, NL = 
 function exX(t) { const a = TL.DOOR - .45; return t < a ? EX.x : EX.x - 900 * ease((t - a) / .5); }
 function eBody(t) { const x0 = exX(t); if (x0 < -700) { EA = null; return; } const l = lineAt(t), spk = l && l.who === 'e', a = blendArms(eAct, EG, t), c = EX, x = x0 + Math.sin(t * 1.2 + 2) * 2, y = SEAT;
   const twitch = a.act.mood === 'sad' && Math.sin(t * 23) > .7 ? 1 : 0, tilt = (spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t)) + rollAt(t) * 3 + (eAct(t).g === 'look' ? -.12 : 0);
-  const ts = talkSt(lineFor('e', t), t, 7), md = T.moodAt(eMood, t, .25); T.draw(g, {...c, x, y, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 5 : 1.2), 2 + 2 * Math.sin(t * 2.4))), ik: false, front: a.front, mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, mouth: ts.mouth, round: ts.round, talking: ts.talking, vis: ts.vis, nod: ts.nod, t, blink: blink(t, 5) || twitch || md.blink, tilt, look: a.act.g === 'look' ? .9 : spk ? 0 : .6, sweat: a.act.mood === 'sad' || t >= BY.e11.at && t < TL.DOOR});
+  const ts = talkSt(lineFor('e', t), t, 7), md = T.moodAt(eMood, t, .25); T.draw(g, {...c, x, y, arms: (a.fn = shoulders(wig(a.fn, t, spk ? 5 : 1.2))), ik: false, front: a.front, mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, mouth: ts.mouth, round: ts.round, talking: ts.talking, vis: ts.vis, nod: ts.nod, t, blink: blink(t, 5) || twitch || md.blink, tilt, look: a.act.g === 'look' ? .9 : spk ? 0 : .6, sweat: a.act.mood === 'sad' || t >= BY.e11.at && t < TL.DOOR});
   const S = c.s; rr(x - 70 * S - 22, y - 800 * S - 16, 44, 30, 6, '#e8c27a', 4); txt('DMV', x - 70 * S, y - 800 * S, 15, INK, FONT, 'center', 34, 20);
   EA = {a, x, y, clip: null}; }
 function eHands(t) { if (!EA) return; const {a, x, y} = EA, S = EX.s; const hasClip = a.act.g !== 'shock' && a.act.g !== 'push';
@@ -232,7 +234,7 @@ function paper(x, top, k, S) { const w = S ? 215 * S : 178 * k, h = S ? 420 * S 
 const nodAt = t => { const l = lineAt(t); return l && l.who === 'p' && /Угу/.test(l.text) ? Math.sin(Math.PI * clamp((t - l.at) / (l.end - l.at))) : 0; };
 function petro(t, x, y, S, top) { const l = lineAt(t), spk = l && l.who === 'p', a = blendArms(() => ({g: 'hold'}), {hold: s => [[s * 262, -845], [s * 318, -690], [s * 226, -935]]}, t), k = S / .76, nod = nodAt(t) * 10 * k;
   const fn = a.fn; jacket(x, y + nod, S); const ts = talkSt(lineFor('p', t), t, 5); T.draw(g, {...PE, x, y: y + nod, s: S, arms: (a.fn = wig(fn, t, 1.2)), ik: false, front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: ts.mouth, round: ts.round, talking: ts.talking, vis: ts.vis, t, blink: blink(t, 7), tilt: 0, look: -.3});
-  lap(x, y + nod, S); const HP = [-1, 1].map(s => ({s, ...handPos(x, y + nod, S, a, s)})); for (const h of HP) gripBack(h.x, h.y, h.s < 0 ? 0 : Math.PI, S, PE.pal.skin); paper(x, top + nod, k, S); for (const h of HP) { const s = h.s; gripFront(h.x, h.y, s < 0 ? 0 : Math.PI, S, PE.pal.skin); if (s < 0) { ell(h.x - Math.cos(h.ang) * 22 * S, h.y - Math.sin(h.ang) * 22 * S, 13 * k, 13 * k, '#e8c27a', 4); } } }
+  lap(x, y + nod, S); const HP = [-1, 1].map(s => ({s, ...handPos(x, y + nod, S, a, s)})); for (const h of HP) gripBack(h.x, h.y, h.s < 0 ? 0 : Math.PI, S, PE.pal.skin, h.ang); paper(x, top + nod, k, S); for (const h of HP) { const s = h.s; gripFront(h.x, h.y, s < 0 ? 0 : Math.PI, S, PE.pal.skin); if (s < 0) { ell(h.x - Math.cos(h.ang) * 22 * S, h.y - Math.sin(h.ang) * 22 * S, 13 * k, 13 * k, '#e8c27a', 4); } } }
 function petrovich(t) { petro(t, PE.x + Math.sin(t * 1.1 + 1) * 2, PE.y, PE.s, PE.y - 1272 * PE.s); }
 
 // ---------- special views (screen coordinates) ----------
@@ -406,7 +408,7 @@ function freezeFrame(t) { const f0 = TL.FREEZE[0], u = (t - f0) / TL.FREEZE[1]; 
   const pr = ex(P01(t, f0 + .15, .5)); if (pr > 0) { g.beginPath(); for (let i = 0; i <= 64 * pr; i++) { const a = -2.2 + i / 64 * 6.6, r = 1 + .04 * Math.sin(i * .7), px = 700 + Math.cos(a) * 330 * r, py = 1150 + Math.sin(a) * 170 * r; i ? g.lineTo(px, py) : g.moveTo(px, py); } g.strokeStyle = '#e0262f'; g.lineWidth = 9; g.lineCap = 'round'; g.stroke(); }   // red pencil around the car
   g.restore(); const lk = spr(P01(t, f0 + .25, .4), 6, 10); if (lk > 0) { g.save(); g.translate(540, 560); g.rotate(-.04 + (1 - lk) * -.1); g.scale(lk, lk); rr(-360, -56, 720, 112, 10, '#e0262f', 6); txt('1 МАШИНА = 2 МЕСТА', 0, 2, 62, '#ffffff', HW, 'center', 680, 90); g.restore(); } }
 function frame(t) { NOW = t;
-  const c = COVER ? {z: .83, x: 572, y: 1000, k: 'TWO', sh: {k: 'TWO'}} : camAt(t), view = c.sh.k;
+  const c = COVER ? {z: .81, x: 592, y: 1000, k: 'TWO', sh: {k: 'TWO'}} : camAt(t), view = c.sh.k;
   if (!COVER && whipU(t)) whipFrame(t); else if (!COVER && t >= TL.FREEZE[0] && t < TL.FREEZE[0] + TL.FREEZE[1]) freezeFrame(t); else scene(t, c);
   curCam = c; g = G0; g.setTransform(1, 0, 0, 1, 0, 0);
   if (process.env.NOCAP) return;
@@ -447,9 +449,15 @@ else if (mode === 'textaudit') { // render sample frames and report every object
   const seen = new Map(); for (let t = 0; t < TL.TOTAL; t += .25) { TXTLOG.length = 0; frame(t); for (const [s0, mw, w, st] of TXTLOG) { const k = s0.replace(/\d+!$/, 'N!'); if (!seen.has(k) || seen.get(k)[1] < w) seen.set(k, [mw, w, st]); } }
   let bad = 0; for (const [k, [mw, w, st]] of seen) { const ok = w <= mw + .5; if (!ok) bad++; console.log(ok ? 'OK ' : 'OVER', k.padEnd(34), 'box', Math.round(mw), 'text', Math.round(w), st); } console.log('labels', seen.size, 'overflowing', bad);
   const un = (fs.readFileSync(__filename, 'utf8').match(/txt\([^;]*?\)/g) || []).filter(c => !/,\s*'(center|left)',/.test(c) && !c.startsWith('txt(s, x')); console.log('txt calls without a box:', un.length, un.join(' | ')); }
+else if (mode === 'armaudit') { // a raised hand must stay on its shoulder's side; elbows never on the inner side of their shoulder; Zhanna and the examiner
+  const bad = {}; for (let t = 0; t < TL.END; t += 1 / FPS) { NOW = t;
+    for (const [who, fn0] of [['Z', blendArms(zAct, ZG, t)], ['E', blendArms(eAct, EG, t)]]) { const a = fn0, fn = shoulders(a.fn);
+      for (const s of [-1, 1]) { const [Sh, E, Hh] = fn(s); if (Hh[1] < -880 && Hh[0] * s < 40) { const k = who + ' hand-cross ' + a.act.g + ' s=' + s; (bad[k] = bad[k] || []).push(+t.toFixed(2)); }
+        if (E[0] * s < Sh[0] * s - 6) { const k = who + ' elbow-in ' + a.act.g + ' s=' + s; (bad[k] = bad[k] || []).push(+t.toFixed(2)); } } } }
+  for (const [k, v] of Object.entries(bad)) console.log(k, v.length, 'frames', v[0], '…', v[v.length - 1]); if (!Object.keys(bad).length) console.log('no crossing'); }
 else if (mode === 'smoothcheck') { // per-frame change of the drawn mouth opening; >15% allowed only at true onsets (opening from a nearly closed mouth)
   let n = 0, big = 0, worst = 0, dips = 0, low = 0, dur = 0;
-  for (const l of L) { if (l.who === 'p') continue; const M = []; for (let t = l.at - .1; t < l.end + .3; t += 1 / FPS) M.push(T.talk(l, t).mouth); dur += l.end - l.at;
+  for (const l of L) { if (l.who === 'p') continue; const M = []; for (let t = l.at - .1; t < l.end + .3; t += 1 / FPS) M.push(talkM(l, t).mouth); dur += l.end - l.at;
     for (let i = 1; i < M.length; i++) { const d = Math.abs(M[i] - M[i - 1]), onset = M[i - 1] < .12 && M[i] > M[i - 1]; n++; if (d > .151 && !onset) { big++; worst = Math.max(worst, d); } if (M[i] < .15) low++; }
     let hi = 0, lo = 1, down = false; for (const m of M) { if (!down) { if (m > hi) hi = m; if (hi - m >= .2) { down = true; lo = m; } } else { if (m < lo) lo = m; if (m - lo >= .2) { dips++; down = false; hi = m; } } } }
   console.log(`frames ${n}, non-onset jumps >15%: ${big} (${(100 * big / n).toFixed(1)}%), worst ${worst.toFixed(3)}, visible syllable dips/s ${(dips / dur).toFixed(2)}, near-closed ${(100 * low / n).toFixed(0)}%`); }
