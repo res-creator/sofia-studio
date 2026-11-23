@@ -3,7 +3,7 @@
 
 Usage (inside a film folder with SCRIPT_EN.csv, or any CSV with columns id, english_narration/text, max_duration_s, delivery_notes):
   export FISH_API_KEY=...            # your key from fish.audio -> Developers. Never write it into files or git.
-  python3 fish_voice.py --ref ref.mp3 --ref-text ref_text.txt --csv SCRIPT_EN.csv --out voice_raw [--model s2.1-pro] [--ids F001 F002]
+  python3 fish_voice.py --ref ref.mp3 --ref-text ref_text.txt --csv SCRIPT_EN.csv --out voice_raw [--model s2.1-pro-free] [--ids F001 F002]
 Then: python3 master_voice.py (voice_raw -> voice), python3 onset_check.py, python3 place_voice.py.
 
 - ref.mp3: 1-3 min of clean voice, no music. ref_text.txt: the EXACT words spoken in ref.mp3 (no tags).
@@ -16,7 +16,7 @@ import numpy as np, ormsgpack
 ap = argparse.ArgumentParser()
 ap.add_argument('--ref', required=True); ap.add_argument('--ref-text', required=True)
 ap.add_argument('--csv', default='SCRIPT_EN.csv'); ap.add_argument('--out', default='voice_raw')
-ap.add_argument('--model', default='s2.1-pro'); ap.add_argument('--ids', nargs='*')
+ap.add_argument('--model', default='s2.1-pro-free'); ap.add_argument('--ids', nargs='*')
 ap.add_argument('--text-col', default=None)
 A = ap.parse_args()
 KEY = os.environ.get('FISH_API_KEY', 'proxy-injected')
