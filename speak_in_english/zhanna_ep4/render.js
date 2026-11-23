@@ -105,7 +105,7 @@ function hand(x, y, ang, S, skin, nail, glossy) { g.save(); g.translate(x, y); g
 function phoneProp(x, y, ang, S, caseCol) { g.save(); g.translate(x, y); g.rotate(ang); g.scale(S, S); rr(-44, -78, 88, 150, 16, caseCol, 6); rr(-35, -68, 70, 128, 9, '#ffe4ee', 3); heart(0, -10, 14, '#ff5a8a', 3); rr(-22, 30, 44, 12, 6, '#ff9ac8', 0); g.restore(); }
 function person(t, c, act, GT, who, seedB, lookIdle) { const l = lineAt(t), spk = l && l.who === who, a = blendArms(act, GT, t), x = c.x + Math.sin(t * 1.3 + seedB) * 3;
   const tilt = spk ? .05 * Math.sin(t * 2.6 + seedB) : .025 * Math.sin(t * 1.1 + seedB) + (who === 'z' ? .02 : -.02), br = 1 - .006 * (1 + Math.sin(t * 2.2 + seedB));
-  T.draw(g, {...c, x, y: FEET, sq: br, arms: wig(a.fn, t, spk ? 8 : 2), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: blink(t, seedB), tilt, look: a.act.look !== undefined ? a.act.look : spk ? .15 * Math.sign(lookIdle) : lookIdle});
+  T.draw(g, {...c, x, y: FEET, sq: br, arms: (a.fn = wig(a.fn, t, spk ? 8 : 2)), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: blink(t, seedB), tilt, look: a.act.look !== undefined ? a.act.look : spk ? .15 * Math.sign(lookIdle) : lookIdle});
   return {x, a, br}; }
 function hands(c, P, nail, phoneSide, caseCol) { const {x, a, br} = P, S = c.s;
   for (const s of [-1, 1]) { const P3 = a.fn(s), E = P3[1], Hh = P3[2], hx = x + Hh[0] * S, hy = FEET + Hh[1] * S * br, ang = Math.atan2(Hh[1] - E[1], Hh[0] - E[0]);
