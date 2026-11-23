@@ -130,7 +130,7 @@ function hands(x, y, S, a, c, nail, glossy) { for (const s of [-1, 1]) { const P
 
 function zhanna(t) { const l = lineAt(t), spk = l && l.who === 'z', a = blendArms(zAct, ZG, t), c = ZH, x = c.x + Math.sin(t * 1.4) * 3 * (spk ? 1.4 : 1), y = SEAT;
   const tilt = spk ? .05 * Math.sin(t * 2.6) : .03 * Math.sin(t * 1.1) + .02, br = 1 - .006 * (1 + Math.sin(t * 2.2));
-  T.draw(g, {...c, x, y, sq: br, arms: wig(a.fn, t, spk ? 8 : 2), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: blink(t, 2), tilt, look: spk ? .4 : .7});
+  T.draw(g, {...c, x, y, sq: br, arms: (a.fn = wig(a.fn, t, spk ? 8 : 2)), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: blink(t, 2), tilt, look: spk ? .4 : .7});
   const S = c.s, bx = x - 40 * S, by = y - 790 * S * br; star(bx, by, 30, '#f2c820', 5, 8, t * .3); ell(bx, by, 9, 9, '#ff5a8a', 4);
   for (let i = 0; i < 7; i++) { const sx = x + (hash(i) - .5) * 140 * S, sy = y - (600 + hash(i + 9) * 240) * S; sparkle(sx, sy, 7 + 5 * hash(i + 3), Math.max(0, Math.sin(t * 4 + i * 1.7))); }
   hands(x, y, S, a, c, '#d63a8a', true); }
@@ -144,8 +144,8 @@ function steam(x, y, k) { if (k <= 0) return; const P = [[-120, 40, 80], [-40, -
   for (let i = 0; i < 3; i++) ln([[x - 60 + i * 60, y + 260 * s + dy], [x - 50 + i * 60 + 10 * Math.sin(i), y + 320 * s + dy]], 6, '#c8d0d6'); g.restore(); }
 function petrovich(t) { const l = lineAt(t), spk = l && l.who === 'p', a = blendArms(pAct, PG, t), c = PE, x = c.x + Math.sin(t * 1.1 + 1) * 2, y = SEAT, S = c.s, top = paperTop(t);
   const capLift = t >= CAPT && t < CAPT + 1.0 ? 4 * Math.sin(Math.PI * clamp((t - CAPT) / 1.0)) : 0, fk = forkHand(t);
-  const fn = fk ? (s => s > 0 ? [[78, -860], [lerp(78, fk.p[0], .5) + 60, lerp(-860, fk.p[1], .5) + 40], fk.p] : a.fn(s)) : a.fn;
-  T.draw(g, {...c, x, y, arms: wig(fn, t, 1.2), front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: spk ? env(l, t) : 0, blink: blink(t, 7), tilt: 0, look: -.3, capLift, bald: true});
+  const base = a.fn, fn = fk ? (s => s > 0 ? [[78, -860], [lerp(78, fk.p[0], .5) + 60, lerp(-860, fk.p[1], .5) + 40], fk.p] : base(s)) : base;
+  T.draw(g, {...c, x, y, arms: (a.fn = wig(fn, t, 1.2)), front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: spk ? env(l, t) : 0, blink: blink(t, 7), tilt: 0, look: -.3, capLift, bald: true});
   const kind = t < MT ? 'menu' : 'paper', mk = t < MT ? 0 : ease((t - MT) / .45), chew = fk && fk.chew ? 4 * Math.sin(t * 30) : 0;
   if (process.env.NOPAPER) {} else if (t >= MT - .05) paper(x, top + chew, 'paper'); if (t < MT + .45) paper(x + 230 * mk, top + 10 * mk, 'menu', 1 - mk);
   if (capLift > 2.5) { const by = Math.min(top, 905) - 8; sparkle(x + 40, by - 10, 26, 1); sparkle(x - 30, by + 2, 14, .8); }   // bald glint above the paper
@@ -161,7 +161,7 @@ function waiterX(t) { let x = WA.x, walk = false; if (t >= GA1 && t < BY.z3.end 
   return {x, walk}; }
 const waiterFront = t => t >= GA1 && t < BY.z3.end + .4;
 function waiter(t) { const off = waiterOff(t); if (off >= .999) return; const l = lineAt(t), spk = l && l.who === 'w', a = blendArms(wAct, WG, t), c = WA, wp = waiterX(t), walking = off > .001 || wp.walk, x = wp.x + off * 520 + Math.sin(t * 1.2 + 2) * 3, FEET = 1720 - (walking ? Math.abs(Math.sin(t * 8)) * 6 : 0);
-  T.draw(g, {...c, x, y: FEET, arms: wig(a.fn, t, spk ? 6 : 1.5), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: blink(t, 5), tilt: spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t), look: -.7});
+  T.draw(g, {...c, x, y: FEET, arms: (a.fn = wig(a.fn, t, spk ? 6 : 1.5)), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: blink(t, 5), tilt: spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t), look: -.7});
   if (a.act.g === 'pad' && a.e > .5) { const Hh = a.fn(-1)[2]; g.save(); g.translate(x + Hh[0] * c.s + 18, FEET + Hh[1] * c.s - 30); g.rotate(-.1); rr(-36, -46, 72, 92, 6, '#fffdf4', 5); for (let k = 0; k < 4; k++) ln([[-22, -24 + k * 18], [22, -24 + k * 18]], 3, '#9ab0d0'); g.restore(); }
   if (a.act.g === 'pour' && a.e > .5) { const Hh = a.fn(1)[2]; g.save(); g.translate(x + Hh[0] * c.s + 8, FEET + Hh[1] * c.s - 40); g.rotate(.5); rr(-26, -40, 52, 80, 10, '#dff2fb', 5); ln([[26, -30], [44, -44]], 6); g.restore(); ln([[x + Hh[0] * c.s + 46, FEET + Hh[1] * c.s - 50], [905, TABLE - 60]], 5, '#8fd2ff'); }
   if (a.act.g === 'take' && t >= MT + .45) { const Hh = a.fn(-1)[2]; g.save(); g.translate(x + Hh[0] * c.s - 14, FEET + Hh[1] * c.s + 10); g.rotate(-.12); rr(-30, -70, 60, 140, 8, '#7a2a30', 5); g.restore(); }
