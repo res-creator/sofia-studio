@@ -1,4 +1,4 @@
-// «Тётя Жанна с Брайтона», ep5 «Жанна на бранче с подругами» — flat 2D. node render.js still 1,10 | clip 0:20 out/p0.mp4 | srt | chips   (NOCAP=1 hides captions)
+// «Тётя Жанна с Брайтона», ep5 v2 «Жанна на бранче: расследование» — flat 2D. node render.js still 1,10 | clip 0:20 out/p0.mp4 | srt | chips   (NOCAP=1 hides captions)
 const fs = require('fs'), {spawn} = require('child_process'), {createCanvas, GlobalFonts} = require('@napi-rs/canvas'), T = require('./toon');
 for (const [f, n] of [['nunito-cyrillic-900-normal', 'NBC'], ['nunito-latin-900-normal', 'NBL'], ['neucha-cyrillic-400-normal', 'HWC'], ['neucha-latin-400-normal', 'HWL']]) GlobalFonts.registerFromPath(`${__dirname}/fonts/${f}.woff2`, n);
 const W = 1080, H = 1920, FPS = 30, INK = '#2a2230', FONT = 'NBL, NBC', HW = 'HWL, HWC';
@@ -44,38 +44,36 @@ const lineAt = t => { for (const l of L) if (t >= l.at - .03 && t < l.end + .08)
 const env = (l, t) => { const i = Math.floor((t - l.at) * 30); return clamp(((l.env[i] || 0) + (l.env[i + 1] || 0)) / 2); };
 const blink = (t, s, per = 3.3) => ((t + s * 1.3) % (per + s * .4)) < .12;
 const PLAN = {
-  l1: [[0, 'up'], [.32, 'shrug'], [.62, 'up']], l2: [[0, 'shrug'], [.35, 'explain'], [.68, 'up']], l3: [[0, 'star']],
-  z1: [[0, 'explain'], [.5, 'palm']], z2: [[0, 'explain'], [.42, 'wag']], z3: [[0, 'shrug'], [.28, 'phone']], z4: [[0, 'table'], [.25, 'hair']], z5: [[0, 'palm'], [.55, 'shrug']],
-  t1: [[0, 'chin']], t2: [[0, 'chin']], t3: [[0, 'point']],
-  w1: [[0, 'note']], w2: [[0, 'note']], w3: [[0, 'check']]};
+  l1: [[0, 'up'], [.32, 'shrug'], [.62, 'up']], l2: [[0, 'explain'], [.5, 'up']], l3: [[0, 'shrug'], [.5, 'up']], l4: [[0, 'explain'], [.6, 'shrug']], l5: [[0, 'star']], l6: [[0, 'up']],
+  z1: [[0, 'explain'], [.45, 'palm']], z3: [[0, 'wag'], [.5, 'hair']], z4: [[0, 'palm']], z5: [[0, 'explain'], [.5, 'palm']], z6: [[0, 'table']], z8: [[0, 'shrug'], [.22, 'phone']], z9: [[0, 'table'], [.3, 'hair']], z10: [[0, 'palm'], [.5, 'shrug']],
+  t1: [[0, 'chin']], t2: [[0, 'chin']], t3: [[0, 'chin']], t4: [[0, 'point']], t5: [[0, 'chin']],
+  w4: [[0, 'check']]};
 function plan(who, t, idle) { const l = lineAt(t); if (l && l.who === who) { const u = (t - l.at) / (l.end - l.at); let gg = idle; for (const [k, v] of PLAN[l.id]) if (u >= k) gg = v; return gg; } return idle; }
-const SHOCK0 = TL.REVEAL, SHOCK1 = BY.z4.at + .5;   // Zhanna recognises herself
+const SHOCK0 = TL.REVEAL, SHOCK1 = BY.z9.at + .5;   // Zhanna recognises herself
 const spk = (t, who) => { const l = lineAt(t); return l && l.who === who ? l : null; };
 const LOOK = {l: {z: 1, t: 1, w: 1}, z: {l: -1, t: 1, w: 1}, t: {l: -1, z: -1, w: 1}};
-const lookAt = (t, me, dflt) => { const l = lineAt(t); if (!l || l.who === me) return dflt; return LOOK[me][l.who] ?? dflt; };
+const lookAt = (t, me, dflt) => { const l = lineAt(t); if (l && ['z6', 't3'].includes(l.id) && me !== 't') return 1; if (!l || l.who === me) return dflt; return LOOK[me][l.who] ?? dflt; };
+const ZMOOD = {l1: 'surprised', l2: 'grin', t1: 'flat', l3: 'surprised', z5: 'angry', t2: 'flat', l4: 'surprised', z6: 'smug', t3: 'flat', l5: 'angry', z8: 'angry', t4: 'flat', w4: 'smug', t5: 'flat', z10: 'grin'};
 function zAct(t) { if (t >= TL.END) return {g: 'palm', mood: 'grin'};
   if (t >= SHOCK0 && t < SHOCK1) return {g: 'table', mood: 'surprised'};
-  const l = lineAt(t); let mood = 'smug'; if (l && l.id === 'l2' && t > l.at + 1) mood = 'grin'; if (l && l.id === 't2') mood = 'flat'; if (t >= SHOCK1 && t < BY.w3.at) mood = 'grin';
+  if (t >= BY.z8.end && t < SHOCK0) return {g: 'phone', mood: 'flat'};
+  const l = lineAt(t); let mood = l ? ZMOOD[l.id] || 'smug' : 'smug'; if (t >= SHOCK1 && t < BY.w4.at - .9) mood = 'grin';
   return {g: plan('z', t, 'table'), mood}; }
 function lAct(t) { if (t >= TL.END) return {g: 'up', mood: 'grin'}; const l = lineAt(t);
-  if (t >= BY.t3.at + .4 && t < BY.w3.at) return {g: t < BY.z4.at + 1.2 ? 'up' : 'table', mood: 'surprised'};
-  if (l && l.id === 'l1') return {g: plan('l', t, 'table'), mood: t < l.at + 2.4 ? 'surprised' : 'grin'};
-  if (l && l.id === 'l2') return {g: plan('l', t, 'table'), mood: 'grin'};
-  if (l && l.id === 'l3') return {g: 'star', mood: 'smug'};
-  if (l && l.id === 'z5') return {g: 'table', mood: 'flat'};
-  return {g: 'table', mood: l && l.id === 'w2' ? 'grin' : 'smug'}; }
+  if (t >= TL.REVEAL + .3 && t < BY.w4.at - .9) return {g: t < BY.l6.end ? plan('l', t, 'up') : 'table', mood: 'surprised'};
+  if (l && l.who === 'l') return {g: plan('l', t, 'table'), mood: l.id === 'l1' && t < l.at + 2.4 ? 'surprised' : l.id === 'l5' ? 'smug' : 'grin'};
+  if (l && ['z6', 't3'].includes(l.id)) return {g: 'table', mood: 'smug'};
+  if (l && l.id === 'z10') return {g: 'table', mood: 'flat'};
+  return {g: 'table', mood: l && ['z5', 't2', 't5'].includes(l.id) ? 'grin' : 'smug'}; }
 function tAct(t) { if (t >= TL.END) return {g: 'chin', mood: 'smug'}; const l = lineAt(t);
-  if (l && l.id === 't3') return {g: 'point', mood: 'sleepy'};
-  if (t >= BY.t3.end && t < BY.t3.end + .5) return {g: 'point', mood: 'sleepy'};
-  return {g: plan('t', t, 'chin'), mood: l && l.id === 'z5' ? 'smug' : 'sleepy'}; }
-const W_IN1 = BY.w1.at - 1.0, W_OUT1 = BY.w2.end + .9, W_IN2 = BY.w3.at - .9;
-function wAct(t) { if (t < W_IN1 + .8 || (t > W_OUT1 && t < W_IN2 + .7)) return {g: 'walk', mood: ''};
-  const l = lineAt(t); let mood = ''; if (l && l.id === 'w1') mood = 'grin'; if (l && l.id === 'w2') mood = t < l.at + 1.8 ? 'flat' : 'grin'; if (l && l.id === 'w3') mood = t < l.at + 2.4 ? '' : 'flat';
-  return {g: plan('w', t, t < W_OUT1 ? 'note' : 'check'), mood}; }
-function wPos(t) { // waitress walks in from the right, leaves, comes back with the check
-  if (t < W_IN1) return null; if (t < W_IN1 + .9) return lerp(1720, WA.x, ease((t - W_IN1) / .9));
-  if (t < W_OUT1) return WA.x; if (t < W_OUT1 + .9) return lerp(WA.x, 1720, ease((t - W_OUT1) / .9));
-  if (t < W_IN2) return null; if (t < W_IN2 + .9) return lerp(1720, WA.x, ease((t - W_IN2) / .9)); return WA.x; }
+  if (l && l.id === 't4') return {g: 'point', mood: 'sleepy'};
+  if (t >= BY.t4.end && t < BY.t4.end + .6) return {g: 'point', mood: 'sleepy'};
+  if (l && l.id === 'z6') return {g: 'chin', mood: 'flat'};
+  return {g: plan('t', t, 'chin'), mood: l && l.id === 'z10' ? 'smug' : 'sleepy'}; }
+const W_IN = BY.w4.at - .9;
+function wAct(t) { if (t < W_IN + .8 || t > W_OUT) return {g: 'walk', mood: ''}; const l = lineAt(t); return {g: 'check', mood: l && l.id === 'w4' ? (t < l.at + 2.6 ? '' : 'flat') : ''}; }
+const W_OUT = BY.w4.end + .7;
+function wPos(t) { if (t < W_IN) return null; if (t < W_IN + .9) return lerp(1720, WA.x, ease((t - W_IN) / .9)); if (t < W_OUT) return WA.x; if (t < W_OUT + 1) return lerp(WA.x, 1720, ease(t - W_OUT)); return null; }
 function blendArms(fnAt, t) { const a1 = fnAt(t); let prev = a1.g, k = 1; for (let d = .02; d <= .2; d += .02) { const a = fnAt(t - d); if (a.g !== a1.g) { prev = a.g; k = d / .2; break; } }
   const e = ease(k), f0 = A[prev], f1 = A[a1.g]; return {fn: s => f1(s).map((p, i) => [lerp(f0(s)[i][0], p[0], e), lerp(f0(s)[i][1], p[1], e)]), front: FRONT.has(a1.g) || (e < .5 && FRONT.has(prev)), act: a1, e}; }
 const wig = (fn, t, amp) => s => fn(s).map((p, i) => [p[0] + Math.sin(t * 4.3 + s + i) * amp * (i / 2), p[1] + Math.cos(t * 3.7 + i) * amp * (i / 2)]);
@@ -97,7 +95,7 @@ function luda(t) { const l = spk(t, 'l'), a = blendArms(lAct, t), c = LU, x = c.
   T.draw(g, {...c, x, y: FEET, seated: true, arms: wig(a.fn, t, l ? 9 : shocked ? 3 : 2), front: a.front, mood: a.act.mood, mouth: l ? env(l, t) : 0, blink: blink(t, 4), tilt: l ? .06 * Math.sin(t * 2.9) : .02 * Math.sin(t + 1), look: lookAt(t, 'l', .7)});
   hands(c, x, FEET, a, '#c0203a'); }
 function toma(t) { const l = spk(t, 't'), a = blendArms(tAct, t), c = TO, x = c.x + Math.sin(t * .9 + 3) * 2;
-  const lk = l && l.id !== 't1' ? -1 : lookAt(t, 't', -.3);
+  const lk = l && l.id === 't3' ? .3 : l ? -1 : lookAt(t, 't', -.3);
   T.draw(g, {...c, x, y: FEET, seated: true, arms: wig(a.fn, t, l ? 4 : 1), front: a.front, mood: a.act.mood, mouth: l ? env(l, t) * .8 : 0, blink: blink(t, 7, 4.2), tilt: a.act.g === 'chin' ? -.08 : .03 * Math.sin(t * .8), look: lk});
   hands(c, x, FEET, a, '#b0506a'); }
 function waitress(t) { const x = wPos(t); if (x == null) return; const l = spk(t, 'w'), a = blendArms(wAct, t), c = WA, walking = a.act.g === 'walk', bob = walking ? Math.abs(Math.sin(t * 9)) * 9 : 0;
@@ -141,7 +139,7 @@ function table(t) {
     if (food === 'pancakes') { for (let k = 0; k < 3; k++) rr(px - 52, TT - 6 - k * 13, 104, 14, 7, '#e8b060', 4); rr(px - 14, TT - 50, 28, 12, 4, '#fff1a8', 3); }
     if (food === 'croissant') { g.beginPath(); g.moveTo(px - 60, TT); g.quadraticCurveTo(px, TT - 60, px + 60, TT); g.quadraticCurveTo(px, TT - 18, px - 60, TT); g.fillStyle = '#e8a850'; g.fill(); g.strokeStyle = INK; g.lineWidth = 5; g.stroke(); for (const d of [-25, 0, 25]) ln([[px + d, TT - 34 + Math.abs(d) * .4], [px + d * .8, TT - 12]], 3); }
     if (food === 'toast') { rr(px - 50, TT - 34, 100, 34, 8, '#e0b070', 5); ell(px, TT - 36, 40, 12, '#8cc06a', 4); } }
-  if (t >= TL.GLASS) { const k = ease((t - TL.GLASS) / .25); for (const [i, gx] of [345, 650, 735].entries()) if (t >= TL.GLASS + i * .14) flute(gx, TT + 4, .95 * (i === 0 ? k : 1)); }
+  for (const cx of [345, 735]) { ell(cx, TT + 6, 34, 8, '#ffffff', 4); rr(cx - 22, TT - 44, 44, 46, 10, '#ffffff', 5); ell(cx, TT - 42, 18, 5, '#7a4a2a', 0); ln([[cx + 22, TT - 34], [cx + 34, TT - 26], [cx + 22, TT - 14]], 5); }
 }
 
 // ---------- clouds (thoughts) and cards (cutaways) ----------
@@ -156,20 +154,31 @@ function tree(x, y, u) { g.save(); g.translate(x, y); poly([[0, -120], [70, 0], 
   for (let i = 0; i < 6; i++) sparkle(-50 + (i % 3) * 50, -20 + Math.floor(i / 3) * 70, 11, .5 + .5 * Math.sin(u * 30 + i)); g.restore(); }
 function bag(x, y) { g.save(); g.translate(x, y); g.beginPath(); g.arc(0, -40, 46, Math.PI, 0); g.strokeStyle = INK; g.lineWidth = 14; g.stroke(); g.strokeStyle = '#f2c820'; g.lineWidth = 7; g.stroke();
   rr(-85, -40, 170, 130, 16, '#2a2230', 6); g.strokeStyle = '#f2c820'; g.lineWidth = 6; g.beginPath(); g.arc(-12, 22, 20, .7, 5.6); g.stroke(); g.beginPath(); g.arc(12, 22, 20, -2.4, 2.4); g.stroke(); g.restore(); }
+function title(s) { txt(s, 430, 78, 44, INK); }
+function runner(x, y, u) { g.save(); g.translate(x, y); const b = Math.sin(u * 40) * 6;   // blonde in pink sequins, seen from behind, running after her wig
+  for (const sd of [-1, 1]) ln([[sd * 14, 40], [sd * 22 + Math.sin(u * 40 + sd) * 14, 100]], 12, '#f4c8a8');
+  poly([[-36, -40], [36, -40], [46, 50], [-46, 50]], '#d63a8a', 5); for (let i = 0; i < 5; i++) sparkle(-24 + i * 12, -10 + (i % 2) * 30, 7, .8);
+  for (const sd of [-1, 1]) ln([[sd * 34, -30], [sd * 60, 0 + b * sd]], 11, '#f4c8a8');
+  ell(0, -72 + b * .3, 34, 34, '#e8d0b0', 5); ln([[-20, -88], [20, -88]], 3, '#c8a888'); g.restore(); }
+function flyingWig(x, y, u, sc = 1) { g.save(); g.translate(x, y); g.rotate(Math.sin(u * 20) * .3); g.scale(sc, sc); wig2(0, 0); g.restore(); for (let i = 0; i < 3; i++) ln([[x - 130 * sc, y - 30 * sc + i * 26 * sc], [x - 95 * sc, y - 30 * sc + i * 26 * sc]], 4, '#9aa'); }
+function baldHead(x, y, sc) { g.save(); g.translate(x, y); g.scale(sc, sc); rr(-60, 40, 120, 70, 20, '#3a4a6a', 5); ell(0, 0, 52, 58, '#f0c8a8', 5); ell(-16, -28, 14, 8, '#ffffff', 0); sparkle(22, -40, 12, 1);
+  ell(-54, 4, 10, 16, '#f0c8a8', 4); ell(54, 4, 10, 16, '#f0c8a8', 4); g.restore(); }
+function beach(x0, y0, w, h) { g.fillStyle = '#bfe3f5'; g.fillRect(x0, y0, w, h); g.fillStyle = '#4aa0d0'; g.fillRect(x0, y0 + h * .42, w, h * .16); g.fillStyle = '#f2d9a0'; g.fillRect(x0, y0 + h * .58, w, h * .42); }
+function brooch(x, y, r) { star(x, y, r, '#f2c820', 6, 8, 0); ell(x, y, r * .28, r * .28, '#ff5a8a', 5); }
 const CARD = {
-  mimosa: u => { g.save(); g.translate(250, 450); g.scale(3.0, 3.0); flute(0, 0, 1); g.restore();
-    txt('CHAMPAGNE', 580, 200, 56, '#c08a10'); txt('99%', 580, 268, 72, INK); txt('JUICE', 580, 350, 46, '#e0702a'); txt('1%', 580, 408, 56, INK); },
-  gossip: u => { const items = [[0, 165, 'NOT HER HAIR', () => wig2(165, 230)], [.33, 430, 'SEQUINS', () => tree(430, 230, u)], [.63, 695, 'MADE IN BRIGHTON', () => bag(695, 260)]];
-    for (const [u0, x, lab, fn] of items) { const k = fadeIn((u - u0) * 8.3); if (k <= 0) continue; g.save(); g.globalAlpha *= k; fn(); let f = 42; g.font = `${f}px ${FONT}`; while (g.measureText(lab).width > 250) { f -= 2; g.font = `${f}px ${FONT}`; } txt(lab, x, 412, f, '#d63a8a'); g.restore(); } },
-  phone: (u, press) => { rr(130, 20, 300, 450, 40, '#2a2230', 0); rr(146, 38, 268, 414, 30, '#ffffff', 5);
-    rr(166, 64, 228, 46, 23, '#eef0f4', 3); txt('fake but gorgeous', 280, 88, 22, '#7a7a8a');
-    ell(280, 200, 62, 62, '#f3d27a', 5); g.save(); g.beginPath(); g.ellipse(280, 200, 62, 62, 0, 0, 7); g.clip(); ell(280, 214, 34, 40, '#f4c8a8', 4); ell(280, 284, 56, 30, '#d63a8a', 4); g.restore(); ell(280, 200, 62, 62, null, 5);
-    txt('blonde · sequins', 280, 300, 24, INK);
-    rr(190, 340, 180, 64, 18, press ? '#e0283a' : '#ffffff', 5); txt(press ? 'BLOCKED' : 'BLOCK', 280, 372, press ? 30 : 34, press ? '#ffffff' : '#e0283a');
-    txt('BLOCK!', 640, 200, 88, '#e0283a', HW); txt('?!', 640, 320, 80, INK, HW); },
+  clue1: u => { beach(40, 120, 780, 340); g.fillStyle = 'rgba(255,250,240,0.85)'; g.fillRect(40, 40, 780, 80); title('УЛИКА №1'); const k = ease(u * 1.5); flyingWig(lerp(500, 650, k), 255 - 15 * Math.sin(u * 6), u, .8); runner(lerp(260, 380, k), 320, u); },
+  clue2: u => { title('УЛИКА №2'); tree(330, 270, u); txt('SO EXTRA', 590, 270, 64, '#d63a8a', HW); },
+  clue3: u => { title('УЛИКА №3'); baldHead(300, 260, 1.4); for (let i = 0; i < 3; i++) { g.save(); g.translate(540 + i * 60, 250 + i * 30); g.rotate(-.2 + i * .15); rr(-60, -30, 120, 60, 8, '#9fd8a0', 5); txt('$', 0, 0, 40, '#2f7a3a'); g.restore(); } txt('PAYS FOR EVERYTHING', 430, 448, 38, '#2f7a3a'); },
+  clue4: u => { title('УЛИКА №4'); brooch(430, 280, 120 + 6 * Math.sin(u * 10)); for (let i = 0; i < 4; i++) sparkle(250 + i * 120, 170 + (i % 2) * 220, 18, .5 + .5 * Math.sin(u * 20 + i)); },
+  phone: (u, photo) => { rr(170, 18, 520, 460, 40, '#2a2230', 0); rr(186, 34, 488, 428, 30, '#ffffff', 5);
+    rr(206, 50, 448, 46, 23, '#eef0f4', 3); txt('#brightonbeach', 430, 74, 28, '#3a5ad8');
+    if (!photo) { for (let i = 0; i < 3; i++) rr(206 + i * 152, 112, 140, 140, 10, '#e8e4ee', 0); txt('searching…', 430, 330, 30, '#9a9aaa'); return; }
+    const k = ease(photo * 3); g.save(); g.globalAlpha *= k; txt('@zhanna.gorgeous', 330, 118, 28, INK, FONT, 'left'); ell(300, 118, 18, 18, '#f3d27a', 4);
+    g.save(); g.beginPath(); g.roundRect(206, 140, 448, 300, 14); g.clip(); beach(206, 140, 448, 300); for (let i = 0; i < 6; i++) ln([[206, 380 + i * 14], [654, 380 + i * 14]], 3, '#c8955a');
+    runner(400, 330, 1.3); flyingWig(530, 220, 1.3); baldHead(250, 210, .7); g.restore(); rr(206, 140, 448, 300, 14, null, 5); g.restore(); },
   check: u => { g.save(); g.translate(430, 250); g.rotate(-.03); rr(-190, -210, 380, 430, 18, '#ffffff', 6);
-    txt('BRIGHTON CAFÉ', 0, -160, 34, INK); ln([[-150, -125], [150, -125]], 3, '#bbb'); txt('3 x MIMOSA', -150, -80, 30, INK, FONT, 'left'); txt('$36', 150, -80, 30, INK, FONT, 'right');
-    txt('3 x BRUNCH', -150, -30, 30, INK, FONT, 'left'); txt('$54', 150, -30, 30, INK, FONT, 'right'); ln([[-150, 6], [150, 6]], 3, '#bbb'); txt('TOTAL', -150, 44, 36, INK, FONT, 'left'); txt('$90', 150, 44, 36, INK, FONT, 'right');
+    txt('BRIGHTON CAFÉ', 0, -160, 34, INK); ln([[-150, -125], [150, -125]], 3, '#bbb'); txt('3 x BRUNCH', -150, -80, 30, INK, FONT, 'left'); txt('$54', 150, -80, 30, INK, FONT, 'right');
+    txt('3 x COFFEE', -150, -30, 30, INK, FONT, 'left'); txt('$12', 150, -30, 30, INK, FONT, 'right'); ln([[-150, 6], [150, 6]], 3, '#bbb'); txt('TOTAL', -150, 44, 36, INK, FONT, 'left'); txt('$66', 150, 44, 36, INK, FONT, 'right');
     const k = ease((u - .3) * 4); if (k > 0) { g.save(); g.globalAlpha *= k; g.translate(0, 140); g.rotate(-.12); g.scale(1.3 - .3 * k, 1.3 - .3 * k); rr(-170, -48, 340, 96, 14, 'rgba(47,154,90,0.12)', 6, '#2f9a5a'); txt('PAID BY', -40, -18, 28, '#2f9a5a'); txt('PETROVICH', -10, 20, 36, '#d63a8a');
       g.beginPath(); g.moveTo(130, 14); g.bezierCurveTo(96, -10, 110, -30, 130, -14); g.bezierCurveTo(150, -30, 164, -10, 130, 14); g.fillStyle = '#ff5a8a'; g.fill(); g.strokeStyle = INK; g.lineWidth = 3; g.stroke(); g.restore(); } g.restore(); },
 };
@@ -179,28 +188,32 @@ function panel(id, u, t, a0, b0, thought, press) { const k = ease((t - a0) / .3)
   g.translate(PX, PY); if (thought) { cloudShape(1); cloudShape(0, '#fffaf0'); } else { rr(10, 10, PW - 20, PH - 20, 46, '#fffaf0', 10); }
   g.save(); g.beginPath(); g.roundRect(30, 40, PW - 60, PH - 80, 36); g.clip(); CARD[id](u, press); g.restore();
   g = prev; g.save(); g.globalAlpha = k; const sc = .92 + .08 * k; g.translate(540, PY + PH / 2); g.scale(sc, sc); g.translate(-540, -(PY + PH / 2)); g.drawImage(clCv, 0, 0); g.restore(); }
-const PANELS = [['mimosa', BY.w2.at + .2, BY.w2.end + .6], ['gossip', BY.l2.at + .3, BY.l2.end + .35, 'l'], ['phone', BY.z3.at + 1.5, BY.z3.end + .45], ['check', BY.w3.at + 1.0, BY.w3.end + .5]];
+const PANELS = [['clue1', BY.l2.at + .2, BY.l2.end + .5, 'l'], ['clue2', BY.l3.at + .2, BY.l3.end + .4, 'l'], ['clue3', BY.l4.at + .2, BY.l4.end + .4, 'l'], ['clue4', BY.l5.at + 1.0, BY.l5.end + .4],
+  ['phone', BY.z8.at + 1.0, TL.REVEAL + .3], ['check', BY.w4.at + 1.0, BY.w4.end + .5]];
 function panels(t, cam) { for (const [id, a, b, th] of PANELS) if (t >= a && t < b) {
   let puffs = null; if (th) { const hx = 540 + (LU.x + 25 - cam.x) * cam.z, hy = 960 + (FEET - 1330 * S0 - cam.y) * cam.z; puffs = [[hx + 10, hy - 24, 12], [hx + 34, (hy - 40 + 680) / 2, 19]]; }
-  panel(id, (t - a) / (b - a), t, a, b, puffs, id === 'phone' && t > BY.z3.end - .45); } }
+  panel(id, (t - a) / (b - a), t, a, b, puffs, id === 'phone' && t >= TL.PHOTO ? t - TL.PHOTO : 0); } }
 
 // ---------- shots ----------
 const CAM = {WIDE: [1.0, 540, 1150], WIDE4: [.74, 760, 1170], L_MED: [2.3, 118, 1280], Z_MED: [2.4, 540, 1280], T_MED: [2.3, 962, 1280], LZ: [1.35, 345, 1170], ZT: [1.35, 735, 1170],
   Z_UP: [2.2, 540, 1105], W_MED: [1.6, 1420, 1060], BROOCH: [2.9, 530, 1245]};
-const SH = [[0, 'WIDE'], [BY.l1.at + 2.6, 'L_MED'], [BY.z1.at - .1, 'Z_MED'], [BY.t1.at - .1, 'T_MED'], [W_IN1 - .05, 'WIDE4'], [BY.w1.at + 1.0, 'W_MED'], [BY.z2.at - .1, 'Z_MED'], [BY.w2.at - .1, 'W_MED'],
-  [BY.l2.at - .1, 'LZ'], [BY.t2.at - .1, 'T_MED'], [BY.z3.at - .1, 'Z_UP'], [BY.l3.at - .1, 'L_MED'], [TL.REVEAL, 'BROOCH', 'Z_MED'], [BY.t3.at - .1, 'T_MED'], [BY.t3.end + .1, 'LZ'],
-  [BY.z4.at + 1.0, 'Z_MED'], [W_IN2 - .05, 'WIDE4'], [BY.w3.at + .6, 'W_MED'], [BY.z5.at - .1, 'Z_UP'], [BY.z5.at + 2.6, 'WIDE'], [TL.END, 'END']].map(([at, k, from], i, a) => ({at, k, from, i, end: a[i + 1] ? a[i + 1][0] : TL.TOTAL}));
+const SH = [[0, 'WIDE'], [BY.l1.at + 2.6, 'L_MED'], [BY.z1.at - .1, 'Z_MED'], [BY.l2.at - .1, 'LZ'], [BY.z3.at - .1, 'Z_MED'], [BY.t1.at - .1, 'T_MED'], [BY.z4.at - .1, 'Z_MED'],
+  [BY.l3.at - .1, 'LZ'], [BY.z5.at - .1, 'Z_MED'], [BY.t2.at - .1, 'T_MED'], [BY.l4.at - .1, 'LZ'], [BY.z6.at - .1, 'ZT'], [BY.t3.at - .1, 'T_MED'], [BY.l5.at - .1, 'LZ'],
+  [BY.z8.at - .1, 'Z_UP'], [BY.t4.at - .1, 'WIDE'], [TL.REVEAL, 'BROOCH', 'Z_MED'], [BY.l6.at - .1, 'LZ'], [BY.z9.at + 1.0, 'Z_MED'], [W_IN - .05, 'WIDE4'], [BY.w4.at + .6, 'W_MED'],
+  [BY.t5.at - .1, 'T_MED'], [BY.z10.at - .1, 'Z_MED'], [TL.END, 'END']].map(([at, k, from], i, a) => ({at, k, from, i, end: a[i + 1] ? a[i + 1][0] : TL.TOTAL}));
 let COVERCAM = null;
 function camAt(t) { if (COVERCAM) return {...COVERCAM, k: 'COVER', sh: {k: 'COVER'}}; let sh = SH[0]; for (const s of SH) if (t >= s.at) sh = s; const k = sh.k === 'END' ? 'WIDE' : sh.k; let [z, x, y] = CAM[k]; const u = clamp((t - sh.at) / (sh.end - sh.at));
   if (sh.from) { const e = ease((t - sh.at) / .6), f = CAM[sh.from]; z = lerp(f[0], z, e); x = lerp(f[1], x, e); y = lerp(f[2], y, e); return {z, x, y, k, sh}; }
   const push = sh.i % 3 === 2 || k === 'WIDE4' ? 0 : .035 * ease(u), punch = sh.at > 0 ? .03 * (1 - ease((t - sh.at) / .3)) : 0; return {z: z * (1 + push + punch), x, y, k, sh}; }
 
 // ---------- captions ----------
-const GLOSS = [["I can't even", 'у меня нет слов'], ['fake', 'фальшивка'], ['gorgeous', 'шикарная'], ['Спиллни ти', 'spill the tea — выкладывай'], ['ю ноу', 'you know — понимаешь'], ['drama', 'драма'],
-  ['джуса', 'juice — сока'], ['So extra', 'это перебор'], ['Лоу-ки', 'low-key — слегка, вроде'], ['зачекаю', 'check — проверю'], ['инсте', 'Instagram'], ['заблокаю', 'block — заблокирую'], ['real', 'настоящий']];
-const GLINE = {z1: [['Спиллни ти', 'spill the tea — выкладывай']], z4: [['gorgeous', 'шикарная']], z3: [["I can't even", 'у меня нет слов'], ['зачекаю', 'check — проверю'], ['заблокаю', 'block — заблокирую']]};
-const TRB = {w1: ['Привет, дамы! Для начала принести вам мимозы?'], w2: ['Так… по сути, шампанское.', 'Рада за вас.'], w3: ['Ах да, ваш счёт уже оплачен.', 'Какой-то… Петрович?']};
-const CHOVR = {t2: ['So extra. Лоу-ки на кого-то похожа…'], l2: ['Короче! Волосы — блонд, но не свои.', 'Блёстки — как на ёлке.', 'Сумка — Шанель, но с Брайтона!'], w1: ['Hi, ladies! Can I start you off with some mimosas?'], w3: ["Oh, and your check's been taken care of.", 'Some guy named… Petrovich?']};
+const GLOSS = [["I can't even", 'у меня нет слов'], ['fake', 'фальшивка'], ['gorgeous', 'шикарная'], ['Спиллни ти', 'spill the tea — выкладывай'], ['ю ноу', 'you know — понимаешь'],
+  ['фейшле', 'facial — уход за лицом'], ['фейшл', 'facial — уход за лицом'], ['So extra', 'это перебор'], ['кринж', 'cringe — стыдоба'], ['Лоу-ки', 'low-key — по секрету'], ['зачекаю', 'check — проверю'], ['хэштег', 'hashtag'], ['лакшери', 'luxury — роскошный']];
+const GLINE = {z1: [['Спиллни ти', 'spill the tea — выкладывай'], ['фейшле', 'facial — уход за лицом']], z9: [['gorgeous', 'шикарная']], z8: [['зачекаю', 'check — проверю'], ['хэштег', 'hashtag']]};
+const TRB = {w4: ['Ах да, ваш счёт уже оплачен.', 'Лысый джентльмен… Петрович?']};
+const CHOVR = {l2: ['Улика номер один: ветер сдул с неё парик —', 'и она за ним по пляжу бежала!'], l4: ['Улика номер три: с ней был лысый мужчина.', 'И платил за всё он!'],
+  l1: ["Девочки, I can't even!", 'Вчера на бордвоке видела одну. Со спины!', 'Такая fake… но gorgeous… но fake!'], z1: ['Кто?! Деточка, спиллни ти!', 'Я вчера весь день на фейшле была, ю ноу.'],
+  t1: ['Жанн. Лоу-ки спрашиваю: а ты свои где брала?'], t3: ['Мой Гарик не платит.', 'Мой Гарик даже за себя не платит.'], z8: ['Всё! Щас зачекаю хэштег Брайтон-Бич —', 'и найду её!'], t4: ['Жанн. Посмотри.'], w4: ["Oh, and your check's been taken care of.", 'A bald gentleman… Petrovich?']};
 function chunks(l) { let out; if (CHOVR[l.id]) out = CHOVR[l.id]; else { const parts = [].concat(...l.text.match(/[^.!?…]+[.!?…]*/g).map(x => x.trim()).filter(Boolean).map(p => p.length > 34 && p.includes(',') ? p.split(/(?<=,)\s+/) : [p])); out = []; let cur = '';
   for (const p of parts) { if ((cur + ' ' + p).trim().length > 34 && cur) { out.push(cur); cur = p; } else cur = (cur + ' ' + p).trim(); } if (cur) out.push(cur); }
   const n = out.reduce((a, c) => a + c.length, 0); let acc = 0; return out.map((c, i) => { const a = l.at + (l.end - l.at) * acc / n; acc += c.length; return {s: c, a, b: l.at + (l.end - l.at) * acc / n, tr: (TRB[l.id] || [])[i], who: l.who, id: l.id}; }); }
@@ -210,7 +223,7 @@ const CHIPS = []; for (const {l, ch} of CH) { if (l.who === 'w') continue; ch.fo
   for (const [w, tr] of (GLINE[l.id] || GLOSS)) { const i = c.s.toLowerCase().indexOf(w.toLowerCase()); if (i >= 0) found.push({w, tr, a: Math.max(c.a, c.a + (c.b - c.a) * i / c.s.length - .1)}); }
   found.sort((p, q) => p.a - q.a); const keep = []; for (const f of found) { if (keep.length && f.a < keep[keep.length - 1].a + 1.2) f.a = keep[keep.length - 1].a + 1.2; if (endC - f.a < 1.2 && keep.length) break; keep.push(f); }
   keep.forEach((f, k) => { const b = k + 1 < keep.length ? keep[k + 1].a : endC; if (b - f.a >= 1.2) CHIPS.push({...f, b}); else if (k === 0 && endC - c.a >= 1.2) CHIPS.push({...f, a: Math.max(c.a, endC - 1.2), b: endC}); }); }); }
-const RUSS = /^(спиллни|ти|ю|ноу|джуса|лоу-ки|зачекаю|инсте|заблокаю)$/i;
+const RUSS = /^(спиллни|ти|ю|ноу|фейшле|фейшл|кринж|лоу-ки|зачекаю|хэштег|лакшери)$/i;
 const isEn = w => /[a-z]/i.test(w) || RUSS.test(w.replace(/[«»"?!.,…—:]/g, ''));
 function curChunk(t) { let cur = null; for (const {ch} of CH) for (const c of ch) if (t >= c.a - .02 && t < c.b + (c === ch[ch.length - 1] ? .25 : 0)) cur = c; return cur; }
 function outlinedWords(words, y, size0, colFn) { let size = size0; g.font = `${size}px ${FONT}`; const sp = () => g.measureText(' ').width; const tw0 = () => words.reduce((a, w) => a + g.measureText(w).width, 0) + sp() * (words.length - 1);
@@ -225,12 +238,12 @@ function chip(t) { let c = null; for (const q of CHIPS) if (t >= q.a && t < q.b)
   g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillStyle = '#d63a8a'; g.fillText(w1, -tw / 2, -3); g.fillStyle = INK; g.fillText(w2, -tw / 2 + g.measureText(w1).width, -3); g.restore(); }
 const HOOK1 = 2.9;
 function hook(t) { if (t > HOOK1 + .3) return; const k = ease(t / .25) * (1 - ease((t - HOOK1) / .3)); g.save(); g.globalAlpha = k; g.translate(540, 330); g.rotate(-.025);
-  rr(-440, -125, 880, 250, 30, '#fffaf0', 8); txt('ЖАННА НА БРАНЧЕ', 0, -45, 72, INK); txt('СПЛЕТНИ', 0, 50, 96, '#d63a8a'); g.restore(); }
+  rr(-440, -125, 880, 250, 30, '#fffaf0', 8); txt('ЖАННА ВЕДЁТ', 0, -45, 72, INK); txt('РАССЛЕДОВАНИЕ', 0, 50, 84, '#d63a8a'); g.restore(); }
 function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30,20,30,${.55 * k})`; g.fillRect(0, 0, W, H); g.save(); g.globalAlpha = k; g.translate(0, (1 - k) * 80);
   rr(60, 190, 960, 1500, 44, '#fffaf0', 8); txt('ПЕРЕВОДИМ ЖАННУ', 540, 290, 64, '#d63a8a');
-  const R = [['SPILL THE TEA', 'выкладывай сплетни'], ["I CAN'T EVEN", 'у меня нет слов'], ['FAKE / GORGEOUS', 'фальшивка / шикарная'], ['SO EXTRA', 'это перебор'], ['LOW-KEY', 'слегка, вроде как'], ['LOVE THAT FOR YOU', 'рада за тебя'], ["IT'S BEEN TAKEN CARE OF", 'уже оплачено']];
+  const R = [['SPILL THE TEA', 'выкладывай сплетни'], ["I CAN'T EVEN", 'у меня нет слов'], ['FAKE / GORGEOUS', 'фальшивка / шикарная'], ['SO EXTRA', 'это перебор'], ['CRINGE', 'стыдоба, кринж'], ['LOW-KEY', 'немножко, по секрету'], ["IT'S BEEN TAKEN CARE OF", 'уже оплачено']];
   R.forEach(([en, ru], i) => { const y = 410 + i * 128; let f = 52; g.font = `${f}px ${FONT}`; while (g.measureText(en).width > 880) { f -= 2; g.font = `${f}px ${FONT}`; } txt(en, 540, y, f, '#1f3a8a'); txt(ru, 540, y + 50, 38, '#c0283a'); });
-  txt('Жанна — FAKE или GORGEOUS?', 540, 1360, 50, INK); txt('FAKE, GORGEOUS или ОБА?', 540, 1430, 50, '#d63a8a'); txt('Пишите в комменты', 540, 1530, 44, INK); g.restore(); }
+  txt('Fake или gorgeous?', 540, 1350, 50, '#d63a8a'); txt('Вас бы подруги со спины узнали?', 540, 1430, 46, INK); txt('Пишите в комменты', 540, 1530, 44, INK); g.restore(); }
 
 function frame(t) {
   const c = camAt(t); g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
@@ -251,10 +264,10 @@ if (require.main === module) {
     (async () => { for (let i = F0; i < F1; i++) { frame(i / FPS); if (!ff.stdin.write(Buffer.from(cv.data()))) await new Promise(r => ff.stdin.once('drain', r)); } ff.stdin.end(); ff.on('close', c => console.log('done', c)); })(); }
   else if (mode === 'srt') { const ts = s => { const ms = Math.round(s * 1000), h = Math.floor(ms / 3600000), m = Math.floor(ms / 60000) % 60, sec = Math.floor(ms / 1000) % 60; return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')},${String(ms % 1000).padStart(3, '0')}`; };
     let n = 0, out = ''; for (const {ch} of CH) for (const c of ch) out += `${++n}\n${ts(c.a)} --> ${ts(c.b)}\n${c.s}${c.tr ? '\n' + c.tr : ''}\n\n`; fs.writeFileSync('final/zhanna_ep5.srt', out); }
-  else if (mode === 'cover') { const t = +(arg || 54.5); COVERCAM = {z: 2.15, x: 550, y: 1110}; process.env.NOCAP = 1; frame(t);
+  else if (mode === 'cover') { const t = +(arg || (BY.z9.at + 2.6)); COVERCAM = {z: 2.15, x: 550, y: 1110}; process.env.NOCAP = 1; frame(t);
     g.save(); g.translate(540, 330 + 165); g.rotate(-.02); rr(-450 + 8, -165 + 10, 900, 330, 34, 'rgba(42,34,48,0.35)', 0); rr(-450, -165, 900, 330, 34, '#fffaf0', 9);
     const fit = (s, f0) => { let f = f0; g.font = `${f}px ${FONT}`; while (g.measureText(s).width > 820) { f -= 2; g.font = `${f}px ${FONT}`; } return f; };
-    txt('ЖАННА НА БРАНЧЕ', 0, -88, fit('ЖАННА НА БРАНЧЕ', 74), INK); txt('FAKE, НО GORGEOUS', 0, 6, fit('FAKE, НО GORGEOUS', 92), '#d63a8a'); txt('СПЛЕТНИ С ПОДРУГАМИ', 0, 98, fit('СПЛЕТНИ С ПОДРУГАМИ', 56), INK); g.restore();
+    txt('ПОДРУГИ НАШЛИ', 0, -88, fit('ПОДРУГИ НАШЛИ', 74), INK); txt('FAKE, НО GORGEOUS', 0, 6, fit('FAKE, НО GORGEOUS', 92), '#d63a8a'); txt('УГАДАЙТЕ, КТО ЭТО', 0, 98, fit('УГАДАЙТЕ, КТО ЭТО', 56), INK); g.restore();
     fs.writeFileSync('final/cover.png', cv.toBuffer('image/png')); }
   else if (mode === 'chips') { for (const c of CHIPS) console.log(c.w, c.a.toFixed(2), c.b.toFixed(2), (c.b - c.a).toFixed(2)); }
 }
