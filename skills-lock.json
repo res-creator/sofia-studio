@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "skills": {
+    "youtube-thumbnail-design": {
+      "source": "magentosh/superpowers",
+      "commit": "93a647364937903fa2f45629ca7c5f9c89fc57c9",
+      "sourceType": "github",
+      "skillPath": "guides/design/youtube-thumbnail-design/SKILL.md",
+      "computedHash": "87e3e67fa65f9909468fee93c483cf2f7679dc281ec90201719f79e62f03b617"
+    }
+  }
+}
