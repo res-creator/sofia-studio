@@ -13,6 +13,9 @@ function rr(x, y, w, h, r, fill, lw = 7, stroke = INK) { g.beginPath(); g.roundR
 function ell(x, y, rx, ry, fill, lw = 7) { g.beginPath(); g.ellipse(x, y, Math.max(.1, rx), Math.max(.1, ry), 0, 0, 7); if (fill) { g.fillStyle = fill; g.fill(); } if (lw) { g.strokeStyle = INK; g.lineWidth = lw; g.stroke(); } }
 function ln(pts, w, col = INK) { g.beginPath(); pts.forEach((p, i) => i ? g.lineTo(...p) : g.moveTo(...p)); g.strokeStyle = col; g.lineWidth = w; g.lineCap = 'round'; g.lineJoin = 'round'; g.stroke(); }
 function poly(pts, fill, lw = 7) { g.beginPath(); pts.forEach((p, i) => i ? g.lineTo(...p) : g.moveTo(...p)); g.closePath(); g.fillStyle = fill; g.fill(); if (lw) { g.strokeStyle = INK; g.lineWidth = lw; g.lineJoin = 'round'; g.stroke(); } }
+const TEXTLOG = [];   // textaudit: labels that could not fit their box
+function fit(str, x, y, w, h, maxS, col, o = {}) { const pad = o.pad ?? 5, sz = T.fitText(g, str, {x: x - w / 2, y: y - h / 2, w, h}, {maxSize: maxS, color: col, pad, lines: o.lines || 1, font: o.font || FONT, minSize: 6});
+  g.font = `${sz}px ${o.font || FONT}`; const mw = String(str).split(' ').reduce((m, wd) => Math.max(m, g.measureText(wd).width), 0); if (mw > w - 2 * pad + .5 || sz < maxS * .45) TEXTLOG.push([str, sz, maxS]); return sz; }
 function txt(s, x, y, size, col, font = FONT, align = 'center') { g.font = `${size}px ${font}`; g.fillStyle = col; g.textAlign = align; g.textBaseline = 'middle'; g.fillText(s, x, y); }
 function star(x, y, r, fill, lw = 5, n = 8, rot = 0) { const p = []; for (let i = 0; i < n * 2; i++) { const a = rot + i * Math.PI / n, rr2 = i % 2 ? r * .42 : r; p.push([x + Math.cos(a) * rr2, y + Math.sin(a) * rr2]); } poly(p, fill, lw); }
 function sparkle(x, y, r, a = 1) { g.save(); g.globalAlpha *= a; poly([[x, y - r], [x + r * .22, y - r * .22], [x + r, y], [x + r * .22, y + r * .22], [x, y + r], [x - r * .22, y + r * .22], [x - r, y], [x - r * .22, y - r * .22]], '#fff6c0', 3); g.restore(); }
@@ -52,11 +55,11 @@ function arch(x) { g.save(); g.translate(x, 0); ln([[-330, 1500], [-330, 760]], 
   for (let i = 0; i < 8; i++) for (const s of [-1, 1]) { ell(s * 330, 820 + i * 80, 30, 26, i % 2 ? '#f6a0c0' : '#ffffff', 0); } g.restore(); }
 function setCer(t) { sky(); palmTree(-700, 1060, 700); palmTree(1650, 1060, 760, 1.1); palmTree(2200, 1060, 600); lights(-60);
   g.fillStyle = '#4a7a4a'; g.fillRect(-1400, 1240, 4600, 2200); g.fillStyle = '#f6f0e6'; g.fillRect(-1400, 1240, 4600, 14); rr(380, 1250, 880, 900, 0, '#f8f2f4', 0); // aisle runner
-  arch(X.cer.o); if (curCam && ['CW', 'GL'].includes(curCam.sh.k)) T.draw(g, {...OF, x: X.cer.o, y: 1440, mood: t > GATE + .1 ? 'shocked' : 'flat', ...(() => { const ts = talkSt(lineFor('o', t), t, 2); return {mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t}; })(), blink: blink(t, 3), pose: 'hold'});
+  arch(X.cer.o); if (curCam && ['CW', 'GL'].includes(curCam.sh.k)) T.draw(g, {...OF, hands: {1: 'open', '-1': 'open'}, x: X.cer.o, y: 1440, mood: t > GATE + .1 ? 'shocked' : 'flat', ...(() => { const ts = talkSt(lineFor('o', t), t, 2); return {mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t}; })(), blink: blink(t, 3), pose: 'hold'});
   
   guestRow(t, 1500, 5, -1000, 230, .9, false); guestRow(t, 1500, 4, 1500, 230, .9, false); }
 function setBq(t) { sky(); palmTree(-800, 1060, 700); palmTree(2050, 1060, 760, 1.1); lights(-40); lights(260);
-  g.save(); g.shadowColor = 'rgba(255,120,200,.9)'; g.shadowBlur = 30; rr(420, 40, 1060, 190, 30, '#3a1a3a', 8); txt('GARY & LUCY', 950, 140, 96, '#ff9ad8', HW); g.restore();
+  g.save(); g.shadowColor = 'rgba(255,120,200,.9)'; g.shadowBlur = 30; rr(420, 40, 1060, 190, 30, '#3a1a3a', 8); fit('GARY & LUCY', 950, 135, 1000, 150, 96, '#ff9ad8', {font: HW}); g.restore();
   g.fillStyle = '#7a5a4a'; g.fillRect(-1400, 1240, 4600, 2200); for (let x = -1400; x < 3200; x += 140) ln([[x, 1240], [x - 60, 2400]], 5, '#6a4a3c');
   const cheer = (BY.c1 && t >= BY.c1.at - .1 && t < BY.c1.end + .3) || (t >= BY.c2.at - .1 && t < BY.c2.end + .6);
   for (const [x0, n] of [[-1100, 5], [1650, 6]]) { guestRow(t, 1330, n, x0, 220, .95, cheer); }
@@ -81,10 +84,10 @@ const ZG = {
 };
 const GG = {
   down: s => [[s * 78, -860], [s * 102, -720], [s * 110, -580]],
-  collar: s => s < 0 ? [[-78, -860], [-160, -760], [-95, -845]] : [[78, -860], [102, -720], [110, -580]],
+  collar: s => s < 0 ? [[-78, -860], [-170, -760], [-125, -830]] : [[78, -860], [102, -720], [110, -580]],
   bout: s => s < 0 ? [[-78, -860], [-140, -740], [-40, -800]] : [[78, -860], [102, -720], [110, -580]],
   rest: s => [[s * 78, -860], [s * 140, -740], [s * 80, -690]],
-  fistUp: s => s > 0 ? [[78, -860], [190, -930], [170, -1060]] : [[-78, -860], [-140, -740], [-80, -690]],
+  fistUp: s => s > 0 ? [[78, -860], [215, -930], [255, -1075]] : [[-78, -860], [-140, -740], [-80, -690]],
   slam: s => s > 0 ? [[78, -860], [190, -780], [190, -680]] : [[-78, -860], [-140, -740], [-80, -690]],
   hands: s => [[s * 78, -860], [s * 150, -760], [s * 120, -800]],
   point: s => s < 0 ? [[-78, -860], [-180, -830], [-275, -870]] : [[78, -860], [102, -720], [110, -580]],
@@ -98,7 +101,7 @@ const lineFor = (who, t) => { for (const l of L) if (l.who === who && t >= l.at 
 const talkSt = (l, t, seed) => { const r = T.talk(l, t, seed); return {mouth: r.mouth, round: r.round, vis: r.round, nod: r.nod, talking: !!l && t < l.end + .05}; };   // toon v3: stateless smoothed mouth (no seams between chunks)
 const moodSt = (fn, t) => T.moodAt(u => fn(u).mood, t, .25);   // blended emotion change + blink at the switch
 const lineOf = (who, t) => { const l = lineAt(t); return l && l.who === who ? l : null; };
-function armOver(a, x, y, S, st) { for (const sd of [-1, 1]) { const P3 = a.fn(sd); if (P3[2][1] > -900) continue; g.save(); g.translate(x, y); g.scale(S, S); T.drawArm(g, st, sd, P3); g.restore(); } }   // whole raised arm in front of hair + face
+function armOver(a, x, y, S, st) { for (const sd of [-1, 1]) { const P3 = a.fn(sd); if (P3[2][1] > -900) continue; g.save(); g.translate(x, y); g.scale(S, S); T.drawArm(g, st, sd, P3, null, 'none'); g.restore(); } }   // whole raised arm in front of hair + face
 const blink = (t, s) => ((t + s * 1.3) % (3.3 + s * .4)) < .12;
 function plan(P, who, t, idle) { const l = lineAt(t); if (l && l.who === who) { const u = (t - l.at) / (l.end - l.at); let gg = idle; for (const [k, v] of (P[l.id] || [])) if (u >= k) gg = v; return gg; } return idle; }
 const ZPLAN = {z1: [[0, 'cheer'], [.25, 'wag'], [.55, 'explain'], [.8, 'brooch']], z2: [[0, 'explain'], [.4, 'shrug'], [.72, 'back']], z3: [[0, 'wag'], [.6, 'shrug']], z4: [[0, 'hips']],
@@ -130,6 +133,8 @@ function hand(x, y, ang, S, skin, nail, glossy) { g.save(); g.translate(x, y); g
   for (const o of [-16, -5.5, 5.5, 16]) { const len = 44 - Math.abs(o) * .5; rr(8, o - 6, len, 12, 6, skin, 5); if (nail) { ell(len + 1, o, 7, 5.5, nail, 3); if (glossy) ell(len - 1, o - 2, 2.5, 1.5, '#ffffff', 0); } }
   g.save(); g.translate(-4, -22); g.rotate(-.9); rr(0, -6, 30, 12, 6, skin, 5); if (nail) ell(29, 0, 6, 5, nail, 3); g.restore();
   ell(0, 0, 27, 25, skin, 5); g.restore(); }
+const NONE = {1: 'none', '-1': 'none'};
+function hands4(x, y, S, a, c, nail, shapeFn, sides = [-1, 1]) { for (const sd of sides) { const P3 = a.fn(sd); T.drawHand(g, shapeFn(sd), x + P3[2][0] * S, y + P3[2][1] * S, Math.atan2(P3[2][1] - P3[1][1], P3[2][0] - P3[1][0]), S, c.pal.skin, nail, sd, 22); } }
 function hands(x, y, S, a, c, nail, glossy, sides = [-1, 1]) { for (const s of sides) { const P3 = a.fn(s), E = P3[1], Hh = P3[2]; hand(x + Hh[0] * S, y + Hh[1] * S, Math.atan2(Hh[1] - E[1], Hh[0] - E[0]), S, c.pal.skin, nail, glossy); } }
 
 const PX = 110, PY = 120, PW = 860, PH = 520;
@@ -152,14 +157,17 @@ function zhanna(t) { const sc = SCENE(t), l = lineAt(t), spk = l && l.who === 'z
   const tilt = spk ? .04 * Math.sin(t * 2.6) : .03 * Math.sin(t * 1.1) + .02, br = 1 - .006 * (1 + Math.sin(t * 2.2)), S = c.s;
   if (sc === 'bq') { const k = talkK(t), base = a.fn; a.fn = sd => sd > 0 ? MIC_TALK.map((p, i) => [lerp(MIC_REST[i][0], p[0], k), lerp(MIC_REST[i][1], p[1], k)]) : base(sd); }
   const breath = 2 + 2 * Math.sin(t * 2.2), ts = talkSt(lineFor('z', t), t, 3), md = moodSt(zAct, t), st = {...c, outfit: 'gold'};
-  T.draw(g, {...st, x, y, sq: br, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 6 : 2), breath)), ik: false, front: a.front, mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, mouth: ts.mouth, round: ts.round, talking: ts.talking, vis: ts.vis, nod: ts.nod, t,
+  T.draw(g, {...st, hands: NONE, x, y, sq: br, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 6 : 2), breath)), ik: false, front: a.front, mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, mouth: ts.mouth, round: ts.round, talking: ts.talking, vis: ts.vis, nod: ts.nod, t,
     blink: blink(t, 2) || md.blink, tilt, look: sc === 'bq' ? .5 : .7});
   armOver(a, x, y, S, st);
   const bx = x - 40 * S, by = y - 720 * S * br; star(bx, by, 30, '#f2c820', 5, 8, t * .3); ell(bx, by, 9, 9, '#ff5a8a', 4);
   for (let i = 0; i < 7; i++) { const sx = x + (hash(i) - .5) * 140 * S, sy = y - (600 + hash(i + 9) * 240) * S; sparkle(sx, sy, 7 + 5 * hash(i + 3), Math.max(0, Math.sin(t * 4 + i * 1.7))); }
-  if (sc === 'bq') { const [hx, hy] = handPos(x, y, S, a.fn, 1), k = talkK(t), mx = x + 98 * S, my = y - 878 * S; micTo(hx, hy, lerp(hx + 8, mx, k), lerp(hy - 110, my, k), c.pal.skin, '#d63a8a');
-    hands(x, y, S, {fn: sd => sd < 0 ? a.fn(sd) : null}, c, '#d63a8a', true, [-1]); }
-  else hands(x, y, S, a, c, '#d63a8a', true); }
+  if (sc === 'bq') { const [hx, hy] = handPos(x, y, S, a.fn, 1), k = talkK(t), mx = x + 98 * S, my = y - 878 * S; const P3 = a.fn(1), dir = Math.atan2(P3[2][1] - P3[1][1], P3[2][0] - P3[1][0]);
+    ln([[hx, hy], [hx - Math.cos(dir) * 26 * S, hy - Math.sin(dir) * 26 * S]], 28 * S, c.pal.skin);   // wrist bridge: the grip grows out of the arm
+    micTo(hx, hy, lerp(hx + 8, mx, k), lerp(hy - 110, my, k), c.pal.skin, '#d63a8a');
+    hands4(x, y, S, a, c, '#d63a8a', sd => ZHS(a, sd), [-1]); }
+  else hands4(x, y, S, a, c, '#d63a8a', sd => ZHS(a, sd)); }
+const ZHS = (a, sd) => { const gname = a.act.g; return sd > 0 && gname === 'wag' ? 'indexUp' : sd < 0 && gname === 'back' ? 'point' : 'open'; };
 function gate(t) { const k = ease((t - GATE) / .28), x0 = X.cer.z - 230, x1 = X.cer.z + 230, top = 860, bot = 1780;
   for (const [hx, dir] of [[x0, 1], [x1, -1]]) { const w = 230 * Math.max(.12, Math.cos(k * 1.35)), sk = k * 60;
     g.save(); g.beginPath(); g.moveTo(hx, top); g.lineTo(hx + dir * w, top - sk); g.lineTo(hx + dir * w, bot + sk); g.lineTo(hx, bot); g.closePath(); g.fillStyle = '#fbf8f2'; g.fill(); g.strokeStyle = INK; g.lineWidth = 7; g.stroke(); g.clip();
@@ -176,19 +184,19 @@ function bout(x, y, S) { for (let k = 0; k < 5; k++) { const a = k / 5 * 6.28; e
 function gary(t) { const sc = SCENE(t), l = lineAt(t), spk = l && l.who === 'g', a = blendArms(gAct, GG, t), c = GA, S = c.s, x = X[sc].g + Math.sin(t * 1.2 + 2) * 2, y = sc === 'bq' ? SEAT : FEET;
   const shake = t >= BANG - .05 && t < BANG + .25 ? 6 * Math.sin(t * 90) : 0;
   const ts = talkSt(lineFor('g', t), t, 5), md = moodSt(gAct, t);
-  T.draw(g, {...c, x: x + shake, y, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 6 : 1.5), 2 + 2 * Math.sin(t * 2.3))), ik: false, front: a.front, mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, sweat: a.act.sweat, mouth: ts.mouth, round: ts.round, talking: ts.talking, vis: ts.vis, nod: ts.nod, t,
+  T.draw(g, {...c, hands: NONE, x: x + shake, y, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 6 : 1.5), 2 + 2 * Math.sin(t * 2.3))), ik: false, front: a.front, mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, sweat: a.act.sweat, mouth: ts.mouth, round: ts.round, talking: ts.talking, vis: ts.vis, nod: ts.nod, t,
     blink: blink(t, 5) || md.blink, tilt: spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t), look: sc === 'bq' ? -.8 : -.9}); armOver(a, x + shake, y, S, c);
-  bout(x + shake - 48 * S, y - 800 * S, S); hands(x + shake, y, S, a, c, null, false);
+  bout(x + shake - 48 * S, y - 800 * S, S); hands4(x + shake, y, S, a, c, null, sd => sd > 0 && (a.act.g === 'fistUp' || a.act.g === 'slam') ? 'fist' : 'open');
  }
 function priceTag(t) { const sc = SCENE(t), S = GA.s, x = X.bq.g + Math.sin(t * 1.2 + 2) * 2, y = SEAT;
   if (sc === 'bq' && t >= TAG0 && t < BOX0 + 1.6) { const k = ease((t - TAG0) / .25) * (1 - ease((t - BOX0 - 1.3) / .3)), sw = Math.sin(t * 3) * .06; g.save(); g.translate(x + 40 * S, y - 840 * S); g.rotate(sw); ln([[0, 0], [60, 70]], 3, INK); g.translate(60, 70); g.scale(k, k); g.rotate(-.12);
-    poly([[0, 0], [40, -40], [250, -40], [250, 80], [40, 80]], '#fff4c8', 5); ell(28, 20, 8, 8, '#ffffff', 3); txt('SECOND HAND', 145, 0, 30, INK); txt('−50%', 145, 46, 44, '#d8323c'); g.restore(); } }
+    poly([[0, 0], [40, -40], [250, -40], [250, 80], [40, 80]], '#fff4c8', 5); ell(28, 20, 8, 8, '#ffffff', 3); fit('SECOND HAND', 145, 0, 205, 40, 30, INK); fit('−50%', 145, 46, 205, 50, 44, '#d8323c'); g.restore(); } }
 function lucy(t) { const sc = SCENE(t), l = lineAt(t), spk = l && l.who === 'l', a = blendArms(lAct, GG, t), c = LU, S = c.s, x = X[sc].l + Math.sin(t * 1.3 + 4) * 2, up = sc === 'bq' ? lucyUp(t) : 0, y = sc === 'bq' ? lerp(SEAT, FEET + 20, up) : FEET;
   veil(x, y, S, up * .5 * (l && l.id === 'l3' ? 1 : 0), t);
   const ts = talkSt(lineFor('l', t), t, 9), md = moodSt(lAct, t);
-  T.draw(g, {...c, x, y, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 7 : 1.5), 2 + 2 * Math.sin(t * 2.5))), ik: false, front: a.front, mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, mouth: ts.mouth, round: ts.round, talking: ts.talking, vis: ts.vis, nod: ts.nod, t,
+  T.draw(g, {...c, hands: NONE, x, y, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 7 : 1.5), 2 + 2 * Math.sin(t * 2.5))), ik: false, front: a.front, mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, mouth: ts.mouth, round: ts.round, talking: ts.talking, vis: ts.vis, nod: ts.nod, t,
     blink: blink(t, 9) || md.blink, tilt: spk ? .05 * Math.sin(t * 3.2) : .02 * Math.sin(t + 1), look: sc === 'bq' ? -.8 : -.9}); armOver(a, x, y, S, c);
-  tiara(x, y, S); hands(x, y, S, a, c, '#e8324a', true); const [hx, hy] = handPos(x, y, S, a.fn, -1); ring(hx, hy, t); }
+  tiara(x, y, S); hands4(x, y, S, a, c, '#e8324a', sd => sd < 0 && a.act.g === 'point' ? 'point' : 'open'); const [hx, hy] = handPos(x, y, S, a.fn, -1); ring(hx, hy, t); }
 // ---- Petrovich: palm leaf (ceremony) -> cake -> champagne tower -> ice swan. Every cover is opaque and reaches above the cap brim.
 const pUp = t => clamp((t - SWAN - .62) / .45), PSTAND = t => ease(pUp(t));
 function palmPot(x, t) { const l = lineAt(t), nod = l && l.id === 'p1' ? .05 * Math.sin(Math.PI * clamp((t - l.at) / (l.end - l.at)) * 2) : .012 * Math.sin(t * 1.5);
@@ -221,17 +229,18 @@ function swan(x, t) { if (t < SWAN) return; const dx = swanX(t), c = x + dx;
   for (let i = 0; i < 4; i++) sparkle(c - 160 + i * 110, 900 + hash(i) * 200, 14, Math.max(0, Math.sin(t * 5 + i * 1.6))); g.restore(); }
 function petrovich(t) { const sc = SCENE(t), l = lineAt(t), spk = l && l.who === 'p', c = PE, S = c.s;
   if (sc === 'cer') { const x = X.cer.p, y = FEET, fn = wig(s => [[s * 78, -860], [s * 102, -720], [s * 110, -580]], t, 1.2), a = {fn};
-    const ts = talkSt(lineFor('p', t), t, 7); T.draw(g, {...c, x, y, arms: (a.fn = T.ik(fn, 2)), ik: false, front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t, blink: blink(t, 7), tilt: 0, look: .4});
-    hands(x, y, S, a, c, null, false); palmPot(x, t); return; }
+    const ts = talkSt(lineFor('p', t), t, 7); T.draw(g, {...c, hands: NONE, x, y, arms: (a.fn = T.ik(fn, 2)), ik: false, front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t, blink: blink(t, 7), tilt: 0, look: .4});
+    hands4(x, y, S, a, c, null, () => 'open'); palmPot(x, t); return; }
   const x = X.bq.p, up = PSTAND(t), y = lerp(SEAT, FEET, up), bob = l && (l.id === 'p2' || l.id === 'p4') ? 6 * Math.sin(Math.PI * clamp((t - l.at) / (l.end - l.at))) : 0;
-  const ts = talkSt(lineFor('p', t), t, 7); T.draw(g, {...c, x, y: y + bob, arms: s => [[s * 78, -860], [s * 140, -740], [s * 80, -690]], front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t, blink: blink(t, 7), tilt: 0, look: -.5}); }
+  const ts = talkSt(lineFor('p', t), t, 7); T.draw(g, {...c, hands: {1: 'open', '-1': 'open'}, x, y: y + bob, arms: s => [[s * 78, -860], [s * 140, -740], [s * 80, -690]], front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t, blink: blink(t, 7), tilt: 0, look: -.5}); }
 function propsBq(t) { const x = X.bq.p; tower(x, t); cake(x, t); }
 // slippers gift: slides along the table at z9, the lid pops
 const BOX0 = BY.z9.at + .9, TAG0 = BY.z8.at + 2.0;
 function giftBox(t) { if (t < BOX0) return; const k = ease((t - BOX0) / .7), bx = lerp(380, 845, k), lid = ease((t - BOX0 - .9) / .3);
   if (lid > 0) { slipper(bx - 40, TABLE - 74 - 10 * lid, .75, -.5); slipper(bx + 40, TABLE - 74 - 10 * lid, .75, -.2); }
   rr(bx - 95, TABLE - 66, 190, 66, 6, '#fbe6ee', 6); ln([[bx, TABLE - 66], [bx, TABLE]], 10, '#d63a8a');
-  g.save(); g.translate(bx + (lid > 0 ? 160 * lid : 0), TABLE - 66 - 120 * lid); g.rotate(.6 * lid); rr(-104, -26, 208, 30, 6, '#fbe6ee', 6); ln([[0, -26], [0, 4]], 10, '#d63a8a'); ell(-20, -36, 24, 14, '#d63a8a', 5); ell(20, -36, 24, 14, '#d63a8a', 5); g.restore(); }
+  g.save(); g.translate(bx + 165 * lid, TABLE - 66 - 50 * Math.sin(Math.PI * lid) + 44 * lid); g.rotate(.22 * lid);   // lid hops off onto the table (never in front of a face)
+   rr(-104, -26, 208, 30, 6, '#fbe6ee', 6); ln([[0, -26], [0, 4]], 10, '#d63a8a'); ell(-20, -36, 24, 14, '#d63a8a', 5); ell(20, -36, 24, 14, '#d63a8a', 5); g.restore(); }
 function slipper(x, y, sc, rot) { g.save(); g.translate(x, y); g.rotate(rot); g.scale(sc, sc);
   rr(-70, -26, 140, 52, 26, '#f2e6d0', 5); g.save(); g.beginPath(); g.moveTo(-6, -30); g.lineTo(52, -30); g.quadraticCurveTo(82, 0, 52, 30); g.lineTo(-6, 30); g.quadraticCurveTo(-18, 0, -6, -30); g.closePath(); g.fillStyle = '#c8323c'; g.fill(); g.clip();
   for (let k = -2; k <= 4; k++) ln([[k * 16, -32], [k * 16, 32]], 4, '#2a6a3a'); for (let k = -2; k <= 2; k++) ln([[-10, k * 14], [80, k * 14]], 3, '#2a6a3a'); g.restore();
@@ -242,20 +251,20 @@ function headTable(t) { rr(360, TABLE, 1720, 34, 12, '#fffaf2', 7); rr(376, TABL
   for (const gx of [845, 1355]) { const fx = gx; ln([[fx, TABLE], [fx, TABLE - 50]], 6); g.beginPath(); g.moveTo(fx - 16, TABLE - 150); g.lineTo(fx + 16, TABLE - 150); g.lineTo(fx + 10, TABLE - 52); g.lineTo(fx - 10, TABLE - 52); g.closePath(); g.fillStyle = '#f6d36a'; g.fill(); g.strokeStyle = INK; g.lineWidth = 5; g.stroke(); } }
 
 // ---------- clouds (Zhanna's thoughts) and cards ----------
-const mini = (c, x, y, s, extra = {}) => T.draw(g, {...c, x, y, s, mood: 'happy', ...extra});
+const mini = (c, x, y, s, extra = {}) => T.draw(g, {...c, hands: {1: 'open', '-1': 'open'}, x, y, s, mood: 'happy', ...extra});
 const CARD = {
   photo: u => { g.save(); g.translate(420, 250); g.rotate(-.04); rr(-300, -200, 600, 400, 8, '#fffdf4', 7); rr(-270, -175, 540, 300, 4, '#8a6aa0', 4); g.save(); g.beginPath(); g.rect(-270, -175, 540, 300); g.clip();
     const sw = Math.sin(u * 14) * 12; mini(GY, -30 + sw, 220, .25, {pose: 'cheer', mood: 'grin'}); mini(LY, 80 + sw, 220, .25, {pose: 'cheer', mood: 'grin'}); mini(ZH, -200, 220, .25, {pose: 'hips', mood: 'angry'});
-    g.globalAlpha = .65; g.beginPath(); g.ellipse(-200, -60, 70, 120, 0, 0, 7); g.fillStyle = '#ffffff'; g.fill(); g.globalAlpha = 1; g.restore(); txt('1999', 0, 165, 46, INK, HW); g.restore();
-    if (u > .4) txt('?!', 700, 260, 120, '#d63a8a', HW); },
-  partners: u => { txt('27 YEARS — ONE DANCE', 420, 70, 42, INK); const sw = Math.sin(u * 20) * 10; mini(GY, 300 + sw, 470, .26, {pose: 'cheer', mood: 'grin'});
+    g.globalAlpha = .65; g.beginPath(); g.ellipse(-200, -60, 70, 120, 0, 0, 7); g.fillStyle = '#ffffff'; g.fill(); g.globalAlpha = 1; g.restore(); fit('1999', 0, 162, 300, 50, 46, INK, {font: HW}); g.restore();
+    if (u > .4) fit('?!', 700, 260, 150, 140, 120, '#d63a8a', {font: HW}); },
+  partners: u => { fit('27 YEARS — ONE DANCE', 420, 70, 760, 56, 42, INK); const sw = Math.sin(u * 20) * 10; mini(GY, 300 + sw, 470, .26, {pose: 'cheer', mood: 'grin'});
     const who = [ZH, LY, null][Math.min(2, Math.floor(u * 3.2))]; if (who) mini(who, 530 - sw, 470, .26, {pose: 'cheer', mood: 'grin'}); else { g.save(); g.globalAlpha = .9; ell(530, 300, 90, 100, '#c8c8d0', 7); txt('?', 530, 305, 130, '#ffffff', HW); g.restore(); }
   },
-  toast: u => { txt("I'D LIKE TO", 430, 95, 74, '#1f3a8a'); txt('MAKE A TOAST', 430, 180, 74, '#1f3a8a'); ln([[120, 228], [740, 228]], 5, '#e8c27a');
-    txt("I'D LIKE = хотела бы", 430, 300, 50, '#2f9a5a'); if (u > .35) { txt('I LIKE = люблю', 430, 375, 50, '#c0283a'); } },
-  bride: u => { mini(LU, 95, 470, .32, {mood: 'smug'}); txt('THE BRIDE', 285, 210, 42, '#d63a8a'); txt('невеста', 285, 270, 40, INK);
-    if (u > .3) { mini(GA, 480, 470, .32, {mood: 'flat'}); txt('THE GROOM', 665, 210, 42, '#1f3a8a'); txt('жених', 665, 270, 40, INK); } },
-  nohard: u => { txt('NO HARD', 430, 100, 80, '#1f3a8a'); txt('FEELINGS', 430, 190, 80, '#1f3a8a'); txt('= без обид', 430, 280, 54, '#c0283a');
+  toast: u => { fit("I'D LIKE TO", 430, 95, 760, 86, 74, '#1f3a8a'); fit('MAKE A TOAST', 430, 180, 760, 86, 74, '#1f3a8a'); ln([[120, 228], [740, 228]], 5, '#e8c27a');
+    fit("I'D LIKE = хотела бы", 430, 300, 760, 62, 50, '#2f9a5a'); if (u > .35) { fit('I LIKE = люблю', 430, 375, 760, 62, 50, '#c0283a'); } },
+  bride: u => { mini(LU, 95, 470, .32, {mood: 'smug'}); fit('THE BRIDE', 290, 210, 200, 52, 42, '#d63a8a'); fit('невеста', 290, 268, 200, 48, 40, INK);
+    if (u > .3) { mini(GA, 480, 470, .32, {mood: 'flat'}); fit('THE GROOM', 680, 210, 230, 52, 42, '#1f3a8a'); fit('жених', 680, 268, 230, 48, 40, INK); } },
+  nohard: u => { fit('NO HARD', 430, 100, 760, 92, 80, '#1f3a8a'); fit('FEELINGS', 430, 190, 760, 92, 80, '#1f3a8a'); fit('= без обид', 430, 280, 760, 66, 54, '#c0283a');
     if (u > .3) { slipper(350, 372, 1.0, -.15); slipper(510, 380, 1.0, .1); } },
 };
 let curCam = null;
@@ -272,7 +281,7 @@ function panels(t) { for (const [id, a, b, th] of PANELS) if (t >= a && t < b) p
 const PLATE = [WHIP[0] + .2, WHIP[1] + .2];   // fully covers the frame from PLATE[0]+.25 to PLATE[1]-.2 (the scene switches under it)
 function banqCard(t) { const a = PLATE[0], b = PLATE[1]; if (t < a || t >= b) return; const k = 1, dx = (1 - ex(P01(t, a, .25))) * 1180 - ei(P01(t, b - .2, .2)) * 1180, moving = dx !== 0;
   g.save(); g.globalAlpha = k; g.translate(dx, 0); g.fillStyle = '#f2a0c0'; g.fillRect(-60, 0, W + 120, H); g.fillStyle = '#f6b4cc'; for (let x = -200; x < 1300; x += 120) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x + 60, 0); g.lineTo(x + 460, H); g.lineTo(x + 400, H); g.fill(); }
-  txt('BANQUET', 540, 760, 150, '#ffffff'); txt('банкет', 540, 880, 70, INK); const cl = ease((t - a) / .5) * .35;
+  fit('BANQUET', 540, 760, 980, 170, 150, '#ffffff'); fit('банкет', 540, 880, 980, 84, 70, INK); const cl = ease((t - a) / .5) * .35;
   for (const s of [-1, 1]) { g.save(); g.translate(540 + s * 90, 1420); g.rotate(-s * cl); g.scale(2.2, 2.2); g.beginPath(); g.moveTo(-18, -160); g.lineTo(18, -160); g.lineTo(12, -62); g.lineTo(-12, -62); g.closePath(); g.fillStyle = '#f6d36a'; g.fill(); g.strokeStyle = INK; g.lineWidth = 4; g.stroke(); ln([[0, -62], [0, 0]], 5); ell(0, 0, 20, 5, '#ffffff', 3); g.restore(); }
   if (moving) for (let i = 0; i < 14; i++) { const yy = 120 + i * 130 + hash(i) * 40; ln([[dx > 0 ? -40 : W + 40, yy], [dx > 0 ? -40 - 300 - hash(i + 3) * 300 : W + 340 + hash(i + 3) * 300, yy]], 10, 'rgba(255,255,255,.75)'); }
   if (t > a + .4) for (let i = 0; i < 5; i++) sparkle(540 + Math.cos(i * 1.3) * 90, 1060 + Math.sin(i * 1.3) * 60, 18, 1); g.restore(); }
@@ -325,8 +334,13 @@ function chunks(l) { if (SPL[l.id]) { const P = SPL[l.id], n = P.reduce((a, c) =
 function wordTimes(l, ch) { const nc = ch.reduce((a, c) => a + c.s.split(' ').length, 0), W2 = l.words || [], nw = W2.length;
   const at = i => nw === 0 ? l.at + (l.end - l.at) * i / nc : nw === nc ? W2[i] : W2[Math.min(nw - 1, Math.round(i * (nw - 1) / Math.max(1, nc - 1)))];
   let i = 0; ch.forEach((c, j) => { const n = c.s.split(' ').length; c.wt = []; for (let k = 0; k < n; k++) c.wt.push(Math.max(l.at, at(i + k))); c.a = j === 0 ? l.at : c.wt[0] - .04; i += n; });
-  ch.forEach((c, j) => { c.b = j < ch.length - 1 ? ch[j + 1].a : l.end; }); return ch; }
+  ch.forEach((c, j) => { c.b = j < ch.length - 1 ? ch[j + 1].a : l.end; });
+  for (let j = 0; j < ch.length; j++) if (ch.length > 1 && ch[j].b - ch[j].a < 1.2) { const k = j < ch.length - 1 ? j : j - 1, A = ch[k], B = ch[k + 1];
+    if ((A.s + ' ' + B.s).length > 40 && B.b - A.a >= 2.4) { const m = j === k ? A.a + 1.2 : B.b - 1.2; A.b = m; B.a = m; continue; }   // too long to merge: shift the boundary so both last >= 1.2 s
+    ch.splice(k, 2, {...A, s: A.s + ' ' + B.s, tr: A.tr && B.tr ? A.tr + ' ' + B.tr : A.tr || B.tr, wt: A.wt.concat(B.wt), b: B.b}); j = -1; }
+  return ch; }
 const CH = L.map(l => ({l, ch: wordTimes(l, chunks(l))})), FLAT = [].concat(...CH.map(x => x.ch));
+FLAT.forEach((c, i) => { const nx = FLAT[i + 1]; if (nx && nx.a < c.a + 1.25) { nx.a = c.a + 1.25; nx.b = Math.max(nx.b, nx.a); } });   // no caption shorter than 1.2 s: a quick reply waits a beat
 FLAT.forEach((c, i) => { const nx = FLAT[i + 1], lim = nx ? nx.a - .05 : c.b + 1.2; c.hold = Math.max(c.b, Math.min(c.a + 1.2, lim)); if (!nx || nx.id !== c.id) c.hold = Math.max(c.hold, Math.min(c.b + .25, lim)); });
 // chips: per caption chunk; a chunk with two glossary words splits its time (each >= 1.2 s, else only the first)
 const CHIPS = []; { let prevEnd = -1; for (const l of L) { if (l.who !== 'z') continue; const low = l.text.toLowerCase(), D = l.end - l.at;
@@ -338,11 +352,12 @@ const EN = /^(спикаю|инвайт|сендила|плас-ваном|ок�
 const isEn = w => { const x = w.replace(/[«»"?!.,…—:]/g, ''); return /[a-z]/i.test(x) || EN.test(x); };
 function curChunk(t) { let cur = null; for (const c of FLAT) if (t >= c.a - .02 && t < c.hold) cur = c; return cur; }
 function outlinedWords(words, y, size0, colFn, fx) { let size = size0; g.font = `${size}px ${FONT}`; const sp = () => g.measureText(' ').width; const tw0 = () => words.reduce((a, w) => a + g.measureText(w).width, 0) + sp() * (words.length - 1);
-  let tw = tw0(); while (tw > 980 && size > 34) { size -= 4; g.font = `${size}px ${FONT}`; tw = tw0(); } let x = 540 - tw / 2; g.textAlign = 'left'; g.textBaseline = 'middle'; g.lineJoin = 'round';
+  let tw = tw0(); while (tw > 980 && size > 34) { size -= 4; g.font = `${size}px ${FONT}`; tw = tw0(); } if (tw > 1000) TEXTLOG.push([words.join(' '), size, size0]); let x = 540 - tw / 2; g.textAlign = 'left'; g.textBaseline = 'middle'; g.lineJoin = 'round';
   words.forEach((w, i) => { const ww = g.measureText(w).width, f = fx ? fx(i) : {al: 1, s: 1}; g.save(); g.globalAlpha *= f.al; g.translate(x + ww / 2, y); g.scale(f.s, f.s); g.translate(-(x + ww / 2), -y);
     g.lineWidth = size * .24; g.strokeStyle = '#000'; g.strokeText(w, x, y); g.fillStyle = colFn(w); g.fillText(w, x, y); g.restore(); x += ww + sp(); }); }
 function caption(t) { const cur = curChunk(t); if (!cur) return;
-  outlinedWords(cur.s.split(' '), 1640, 70, w => isEn(w) ? '#ffd23f' : '#ffffff', (i) => { const wt = cur.wt ? cur.wt[i] : cur.a; return t < wt - .03 ? {al: .38, s: 1} : {al: 1, s: 1 + .22 * (1 - spr(P01(t, wt - .03, .32), 6, 11))}; });
+  const pop = 1 + .08 * clamp(1 - (t - cur.a) / .12); g.save(); g.translate(540, 1640); g.scale(pop, pop); g.translate(-540, -1640);   // owner's style: whole phrase opaque, pops in
+  outlinedWords(cur.s.split(' '), 1640, 70, w => isEn(w) ? '#ffd23f' : '#ffffff'); g.restore();
   if (cur.tr) outlinedWords(cur.tr.split(' '), 1730, 46, () => '#ffffff'); }
 function flag(x, y, w, h) { g.save(); g.beginPath(); g.rect(x, y, w, h); g.clip(); g.fillStyle = '#1f3a8a'; g.fillRect(x, y, w, h);
   ln([[x, y], [x + w, y + h]], 10, '#ffffff'); ln([[x + w, y], [x, y + h]], 10, '#ffffff'); ln([[x, y], [x + w, y + h]], 4, '#d8323c'); ln([[x + w, y], [x, y + h]], 4, '#d8323c');
@@ -357,14 +372,14 @@ function chip(t) { let c = null; for (const q of CHIPS) if (t >= q.a && t < q.b)
   g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillStyle = '#d63a8a'; g.fillText(w1, -tw / 2, -3); g.fillStyle = INK; g.fillText(w2, -tw / 2 + g.measureText(w1).width, -3); g.restore(); }
 const HOOK_END = 4.3;
 function hook(t) { if (t > HOOK_END + .3) return; const a = clamp(t / .06) * (1 - ease((t - HOOK_END) / .3)), st = 1 + .6 * (1 - ex(P01(t, 0, .3))); g.save(); g.globalAlpha = a; g.translate(540, 330); g.rotate(-.02 - .06 * (1 - ex(P01(t, 0, .3)))); g.scale(st, st);
-  rr(-450, -165, 900, 330, 34, '#fffaf0', 9); txt('БЫВШИЙ ЖЕНИТСЯ', 0, -92, 80, INK); txt('НА ЕЁ ПОДРУГЕ.', 0, 2, 80, INK); txt('ЖАННА ПРИШЛА', 0, 98, 88, '#d63a8a'); g.restore(); }
+  rr(-450, -165, 900, 330, 34, '#fffaf0', 9); fit('БЫВШИЙ ЖЕНИТСЯ', 0, -92, 860, 94, 80, INK); fit('НА ЕЁ ПОДРУГЕ.', 0, 2, 860, 94, 80, INK); fit('ЖАННА ПРИШЛА', 0, 98, 860, 100, 88, '#d63a8a'); g.restore(); }
 function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30,20,30,${.55 * k})`; g.fillRect(0, 0, W, H); g.save(); g.globalAlpha = k; g.translate(0, (1 - k) * 80);
-  rr(60, 170, 960, 1540, 44, '#fffaf0', 8); txt('ПЕРЕВОДИМ ЖАННУ', 540, 270, 66, '#d63a8a');
+  rr(60, 170, 960, 1540, 44, '#fffaf0', 8); fit('ПЕРЕВОДИМ ЖАННУ', 540, 270, 900, 80, 66, '#d63a8a');
   const R = [["I'D LIKE TO MAKE A TOAST", 'я хочу сказать тост'], ['CONGRATULATIONS TO THE BRIDE AND GROOM', 'поздравляю жениха и невесту'], ['I GOT THE BETTER DEAL', 'мне повезло больше'],
     ['RSVP', 'ответ на приглашение'], ['PLUS-ONE', 'гость «плюс один»'], ['THIS IS SO AWKWARD', 'как же неловко'], ['NO HARD FEELINGS', 'без обид']];
-  R.forEach(([en, ru], i) => { const y = 380 + i * 122; let f = 52; g.font = `${f}px ${FONT}`; while (g.measureText(en).width > 880) { f -= 2; g.font = `${f}px ${FONT}`; } txt(en, 540, y, f, '#1f3a8a'); txt(ru, 540, y + 48, 38, '#c0283a'); });
-  txt('Кто победил на этой свадьбе?', 540, 1290, 50, '#d63a8a'); txt('1 — Жанна    2 — Петрович', 540, 1375, 46, INK); txt('3 — Генины тапочки', 540, 1440, 46, INK);
-  txt('А вы бы пошли', 540, 1540, 50, '#d63a8a'); txt('на свадьбу бывшего?', 540, 1605, 50, '#d63a8a'); g.restore(); }
+  R.forEach(([en, ru], i) => { const y = 380 + i * 122; fit(en, 540, y, 900, 62, 52, '#1f3a8a'); fit(ru, 540, y + 48, 900, 46, 38, '#c0283a'); });
+  fit('Кто победил на этой свадьбе?', 540, 1290, 900, 62, 50, '#d63a8a'); fit('1 — Жанна    2 — Петрович', 540, 1375, 900, 58, 46, INK); fit('3 — Генины тапочки', 540, 1440, 900, 58, 46, INK);
+  fit('А вы бы пошли', 540, 1540, 900, 62, 50, '#d63a8a'); fit('на свадьбу бывшего?', 540, 1605, 900, 62, 50, '#d63a8a'); g.restore(); }
 
 let COVER = null;
 function world(t) { const sc = SCENE(t);
@@ -392,13 +407,13 @@ function freezeFrame(t) { const f0 = FREEZE[0], u = (t - f0) / FREEZE[1], c0 = c
   const S = GA.s, tx = X.bq.g + 40 * S + 60 + 150, ty = SEAT - 840 * S + 70 + 18, sx = 540 + (tx - c0.x) * c0.z, sy = 960 + (ty - c0.y) * c0.z, pr = ex(P01(t, f0 + .15, .5));
   if (pr > 0) { g.beginPath(); for (let i = 0; i <= 64 * pr; i++) { const a = -2.2 + i / 64 * 6.6, r = 1 + .05 * Math.sin(i * .7); const px = sx + Math.cos(a) * 200 * c0.z * r, py = sy + Math.sin(a) * 92 * c0.z * r; i ? g.lineTo(px, py) : g.moveTo(px, py); } g.strokeStyle = '#e0262f'; g.lineWidth = 9; g.lineCap = 'round'; g.stroke(); }
   g.restore();
-  const lk = spr(P01(t, f0 + .25, .4), 6, 10); if (lk > 0) { g.save(); g.translate(540, 600); g.rotate(-.04 + (1 - lk) * -.1); g.scale(lk, lk); rr(-270, -52, 540, 104, 10, '#e0262f', 6); txt('ПРОБЕГ: 7 ЛЕТ', 0, 2, 62, '#ffffff', HW); g.restore(); } }
+  const lk = spr(P01(t, f0 + .25, .4), 6, 10); if (lk > 0) { g.save(); g.translate(540, 600); g.rotate(-.04 + (1 - lk) * -.1); g.scale(lk, lk); rr(-270, -52, 540, 104, 10, '#e0262f', 6); fit('ПРОБЕГ: 7 ЛЕТ', 0, 2, 520, 96, 62, '#ffffff', {font: HW}); g.restore(); } }
 const [mode, arg, outName] = process.argv.slice(2);
 if (mode === 'still') { fs.mkdirSync('out/st', {recursive: true}); for (const t of arg.split(',')) { frame(+t); fs.writeFileSync(`out/st/${t}.png`, cv.toBuffer('image/png')); } }
 else if (mode === 'cover') { // NOCAP still shifted down 180 px, top strip filled, cream plate top edge at y=330 (text inside the 3:4 crop)
   const t = +(arg || TAG0 + 1.0); process.env.NOCAP = 1; COVER = {z: .72, x: 560, y: 1060, k: 'COVER', sh: {k: 'COVER'}}; frame(t); const src = createCanvas(W, H); src.getContext('2d').drawImage(cv, 0, 0);
   g = G0; g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(src, 0, 180); g.save(); g.filter = 'blur(8px)'; g.drawImage(src, 0, 0, W, 8, 0, 0, W, 184); g.filter = 'none'; g.restore();
-  g.save(); g.translate(540, 495); g.rotate(-.02); rr(-450, -165, 900, 330, 34, '#fffaf0', 9); txt('ЖАННА', 0, -92, 90, INK); txt('НА СВАДЬБЕ', 0, 2, 96, '#d63a8a'); txt('БЫВШЕГО', 0, 98, 90, INK); g.restore();
+  g.save(); g.translate(540, 495); g.rotate(-.02); rr(-450, -165, 900, 330, 34, '#fffaf0', 9); fit('ЖАННА', 0, -92, 860, 100, 90, INK); fit('НА СВАДЬБЕ', 0, 2, 860, 104, 96, '#d63a8a'); fit('БЫВШЕГО', 0, 98, 860, 100, 90, INK); g.restore();
   fs.mkdirSync('final', {recursive: true}); fs.writeFileSync('final/cover.png', cv.toBuffer('image/png')); }
 else if (mode === 'clip') { const [a, b] = arg.split(':').map(Number), F0 = Math.round(a * FPS), F1 = Math.round(Math.min(b, TL.TOTAL) * FPS);
   const ff = spawn('ffmpeg', ['-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', `${W}x${H}`, '-r', '30', '-i', '-', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', outName]);
@@ -432,3 +447,10 @@ else if (mode === 'smoothcheck') { // per-frame change of the drawn mouth openin
     for (let i = 1; i < M.length; i++) { const d = Math.abs(M[i] - M[i - 1]), onset = M[i - 1] < .12 && M[i] > M[i - 1]; n++; if (d > .151 && !onset) { big++; worst = Math.max(worst, d); } if (M[i] < .15) low++; }
     let hi = 0, lo = 1, down = false; for (const m of M) { if (!down) { if (m > hi) hi = m; if (hi - m >= .2) { down = true; lo = m; } } else { if (m < lo) lo = m; if (m - lo >= .2) { dips++; down = false; hi = m; } } } }
   console.log(`frames ${n}, non-onset jumps >15%: ${big} (${(100 * big / n).toFixed(1)}%), worst ${worst.toFixed(3)}, visible syllable dips/s ${(dips / dur).toFixed(2)}, near-closed ${(100 * low / n).toFixed(0)}%`); }
+else if (mode === 'armaudit') { // raised hands must stay on their shoulder's side; elbows never cross the body midline
+  const bad = {}; for (let t = 0; t < TL.END; t += 1 / FPS) for (const [who, fnAt, GT] of [['z', zAct, ZG], ['g', gAct, GG], ['l', lAct, GG]]) { const a = blendArms(fnAt, GT, t), fn = T.ik(a.fn, 2);
+    for (const s of [-1, 1]) { const [Sh, E, Hh] = fn(s); if (Hh[1] < -880 && Hh[0] * s < 40) { const k = who + ' ' + a.act.g + ' s=' + s; (bad[k] = bad[k] || []).push(+t.toFixed(2)); } if (E[0] * s < 0) { const k = who + ' elbow-cross ' + a.act.g + ' s=' + s; (bad[k] = bad[k] || []).push(+t.toFixed(2)); } } }
+  for (const [k, v] of Object.entries(bad)) console.log(k, v.length, 'frames', v[0], '…', v[v.length - 1]); if (!Object.keys(bad).length) console.log('armaudit: no crossing'); }
+else if (mode === 'textaudit') { // every label must fit inside its box (fitText); captions must fit the frame
+  for (let t = 0; t < TL.TOTAL; t += .25) frame(t); COVER = {z: .72, x: 560, y: 1060, k: 'COVER', sh: {k: 'COVER'}}; frame(TAG0 + 1); COVER = null;
+  const u = new Map(); for (const [s0, sz, mx] of TEXTLOG) u.set(s0, [sz, mx]); for (const [k, v] of u) console.log('DOES NOT FIT', JSON.stringify(k), v); console.log('textaudit: labels that do not fit:', u.size); }
