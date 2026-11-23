@@ -2,7 +2,7 @@
 """Fish Audio voiceover per paragraph, cloned from a reference clip (no saved voice model needed).
 
 Usage (inside a film folder with SCRIPT_EN.csv, or any CSV with columns id, english_narration/text, max_duration_s, delivery_notes):
-  export FISH_API_KEY=...            # your key from fish.audio -> Developers. Never write it into files or git.
+  Key: env var FISH_API_KEY, or a plain-text file ~/fish_audio_key.txt (outside the project). Never put it in the project, git or chat.
   python3 fish_voice.py --ref ref.mp3 --ref-text ref_text.txt --csv SCRIPT_EN.csv --out voice_raw [--model s2.1-pro-free] [--ids F001 F002]
 Then: python3 master_voice.py (voice_raw -> voice), python3 onset_check.py, python3 place_voice.py.
 
@@ -19,7 +19,13 @@ ap.add_argument('--csv', default='SCRIPT_EN.csv'); ap.add_argument('--out', defa
 ap.add_argument('--model', default='s2.1-pro-free'); ap.add_argument('--ids', nargs='*')
 ap.add_argument('--text-col', default=None)
 A = ap.parse_args()
-KEY = os.environ.get('FISH_API_KEY', 'proxy-injected')
+def _key():
+    k = os.environ.get('FISH_API_KEY')
+    for f in ('~/fish_audio_key.txt', '~/.config/fish_audio_key'):
+        f = os.path.expanduser(f)
+        if not k and os.path.exists(f): k = open(f).read().strip()
+    return k or 'proxy-injected'
+KEY = _key()
 REF = open(A.ref, 'rb').read(); REF_TEXT = open(A.ref_text, encoding='utf-8').read().strip()
 ctx = ssl.create_default_context(cafile=os.environ.get('SSL_CERT_FILE')) if os.environ.get('SSL_CERT_FILE') else None
 rows = list(csv.DictReader(open(A.csv, encoding='utf-8'))); os.makedirs(A.out, exist_ok=True)
