@@ -1,0 +1,98 @@
+{
+ "voices": {
+  "z": "08b267d9a5fb4b6ead23d97878586ee3",
+  "t": "802e3bc2b27e49c2995d23ef70e6ac89"
+ },
+ "lines": [
+  [
+   "z1",
+   "z",
+   "Деточка, засекай пять минут! Если я продержусь в gym, Петрович покупает мне шубу."
+  ],
+  [
+   "t1",
+   "t",
+   "Five minutes? Piece of cake! Twenty jumping jacks!"
+  ],
+  [
+   "z2",
+   "z",
+   "Деточка, я в этих туфлях прыгаю только на сейл."
+  ],
+  [
+   "t2",
+   "t",
+   "Okay… let's hit the treadmill, then."
+  ],
+  [
+   "z3",
+   "z",
+   "Ставлю speed на минимум. Я не бегаю, я дефилирую."
+  ],
+  [
+   "t3",
+   "t",
+   "Ma'am, that's the slowest setting. No pain, no gain!"
+  ],
+  [
+   "z4",
+   "z",
+   "Pain я не хочу. Я хочу gain… комплиментов. И я учусь визуально. Покажи!"
+  ],
+  [
+   "t4",
+   "t",
+   "Ten reps, like this… Wait. Why am I doing your workout?"
+  ],
+  [
+   "z5",
+   "z",
+   "Для контента! Улыбайся, я тебя стримлю, ю ноу?"
+  ],
+  [
+   "z6",
+   "z",
+   "Я тебя запромоутила, деточка. С тебя скидка."
+  ],
+  [
+   "t6",
+   "t",
+   "Ma'am… you got me a thousand followers. I gotta be honest. Petrovich paid me to make you quit before the five minutes are up."
+  ],
+  [
+   "z7",
+   "z",
+   "Ах, Петрович — шпион! Сколько он тебе дал? Плачу вдвое."
+  ],
+  [
+   "t7",
+   "t",
+   "Wait… that's his card."
+  ],
+  [
+   "z8",
+   "z",
+   "Ну да, свайпнула утром. Отвечай: я сделала сто reps."
+  ],
+  [
+   "t8",
+   "t",
+   "Sir? Yeah… she did a hundred reps. And a plank. She's a beast."
+  ],
+  [
+   "z9",
+   "z",
+   "Петрович! Пять минут прошло. Шубу — size S. И тренера оплати: он теперь мой personal assistant."
+  ],
+  [
+   "t9",
+   "t",
+   "I'm gonna be so sore tomorrow…"
+  ],
+  [
+   "z10",
+   "z",
+   "Ноу pain, ноу gain, деточка!"
+  ]
+ ]
+}
