@@ -3,14 +3,15 @@ JAPAN — English version — YouTube upload kit
 
 VIDEO: FINAL_EN_4K.mp4 (build on the owner's computer: folder with PICTURE_EN_4K.mp4 8.2 GB + MUSIC_AND_EFFECTS.wav, 50:35)
 SUBTITLES: japan/SUBTITLES_EN.srt (timed to the final English voice; upload as English)
-COVER: japan/COVER_EN.jpg (1920x1080, "JAPAN", Mt Fuji + pagoda + sakura)
+COVER (test 3): japan/thumbs/jp_shibuya_umbrella.jpg, jp_fuji_reflection.jpg, jp_nebuta.jpg (spare: jp_himeji.jpg, team cover COVER_EN.jpg)
 
 TITLE (v2, 2026-11-20):
 JAPAN: Where Do 80,000 People Vanish Every Year? | 4K Travel Documentary
 Title test option: JAPAN: They Return Your Lost Wallet. So Why Do 80,000 People Vanish? | 4K
 
 CATEGORY: Travel & Events. Language: English. Made for kids: No.
-ALTERED OR SYNTHETIC CONTENT: YES — the film contains 27 photorealistic AI-generated reconstruction stills (and an AI voice).
+ALTERED OR SYNTHETIC CONTENT: YES — 27 photorealistic AI-generated reconstruction stills + AI-cloned narration voice.
+PUBLISH: schedule Wed 2 Dec 2026, 22:00 Moldova time (15:00 New York). Playlist: Countries of the World | 4K Travel Documentaries.
 
 DESCRIPTION v2 (replace the [LINK] lines with real URLs or delete them):
 ----------------------------------------------------------------
