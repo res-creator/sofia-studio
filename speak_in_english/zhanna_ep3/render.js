@@ -141,7 +141,7 @@ function zhanna(t) { const l = lineAt(t), spk = l && l.who === 'z', a = blendArm
   ell(x, FEET - P.lift + 4, 150 * c.s, 18, 'rgba(30,30,40,.22)', 0);
   g.save(); if (fk > 0) { g.translate(x, base); g.rotate(.24 * fk); g.translate(-x, -base); }
   const G = a.act.g, faint = G === 'faint' && fk > .5;
-  T.draw(g, {...c, x, y: base, sq: br, arms: wig(a.fn, t, spk ? 8 : 2), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: faint || blink(t, 2), tilt, look: G === 'stream' || G === 'phone' ? .6 : spk ? .2 : .6});
+  T.draw(g, {...c, x, y: base, sq: br, arms: (a.fn = wig(a.fn, t, spk ? 8 : 2)), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: faint || blink(t, 2), tilt, look: G === 'stream' || G === 'phone' ? .6 : spk ? .2 : .6});
   const S = c.s, bx = x - 40 * S, by = base - 790 * S * br; star(bx, by, 32, '#f2c820', 5, 8, t * .3); ell(bx, by, 9, 9, '#ff5a8a', 4);
   for (let i = 0; i < 7; i++) { const sx = x + (hash(i) - .5) * 140 * S, sy = base - (600 + hash(i + 9) * 240) * S + bob; sparkle(sx, sy, 7 + 5 * hash(i + 3), Math.max(0, Math.sin(t * 4 + i * 1.7))); }
   if (faint) for (let i = 0; i < 3; i++) { const ag = t * 5 + i * 2.1; sparkle(x + Math.cos(ag) * 110, base - 1360 * S + Math.sin(ag) * 30, 16, 1); }
@@ -173,7 +173,7 @@ function trainer(t, handsLater) { const l = lineAt(t), spk = l && l.who === 't',
   const x = tX(t) + Math.sin(t * 1.2 + 2) * 3, walking = t > BY.t9.at && t < BY.t9.at + 1.2, y = FEET - hopY(t) - (walking ? Math.abs(Math.sin(t * 8)) * 7 : 0);
   ell(x, FEET + 4, 150 * c.s * (1 - hopY(t) / 300), 18, 'rgba(30,30,40,.22)', 0);
   if (t >= BY.z5.at && t < TL.FOLLOW + .6) { const k = ease((t - BY.z5.at) / .4) * (1 - ease((t - TL.FOLLOW) / .6)); const rg = g.createRadialGradient(x, FEET - 800, 40, x, FEET - 800, 420); rg.addColorStop(0, `rgba(255,250,215,${.55 * k})`); rg.addColorStop(1, 'rgba(255,250,215,0)'); g.fillStyle = rg; g.fillRect(x - 430, FEET - 1240, 860, 900); }
-  T.draw(g, {...c, x, y, sq: tired ? .975 : 1, arms: wig(a.fn, t, spk ? 7 : 2), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: blink(t, 5), headband: c.headband,
+  T.draw(g, {...c, x, y, sq: tired ? .975 : 1, arms: (a.fn = wig(a.fn, t, spk ? 7 : 2)), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: blink(t, 5), headband: c.headband,
     tilt: tired ? .07 + .02 * Math.sin(t) : spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t), look: -.6, sweat: tired || a.act.g === 'curl' || a.act.g === 'jack'});
   if (handsLater) TA = {a, x, y}; else trainerHands(t, a, x, y); }
 function floorBag(t) { if (t < 1.9 || t >= BY.t9.at - .1) { if (t >= TL.FAINT + .15) { const k = ease((t - TL.FAINT - .15) / .3), x = tX(t) - 120; bag(x, lerp(FEET - 330, FEET - 120, k), .55, {ring: true}); } return; }
