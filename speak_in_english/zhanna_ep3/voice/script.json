@@ -7,82 +7,92 @@
   [
    "z1",
    "z",
-   "Петрович подарил мне membership в gym. Намёк, ю ноу? Я его сразу заблокала."
+   "Деточка, засекай пять минут! Если я продержусь в gym, Петрович покупает мне шубу."
   ],
   [
    "t1",
    "t",
-   "Welcome in! Ready to crush your first workout?"
+   "Five minutes? Piece of cake! Twenty jumping jacks!"
   ],
   [
    "z2",
    "z",
-   "Краш? Деточка, мой краш — это Петрович. Был. До membership."
+   "Деточка, я в этих туфлях прыгаю только на сейл."
   ],
   [
    "t2",
    "t",
-   "Okay! Let's start easy. Three sets of ten reps."
+   "Okay… let's hit the treadmill, then."
   ],
   [
    "z3",
    "z",
-   "Сеты? Деточка, я знаю только суши-сеты."
+   "Ставлю speed на минимум. Я не бегаю, я дефилирую."
   ],
   [
    "t3",
    "t",
-   "No pain, no gain!"
+   "Ma'am, that's the slowest setting. No pain, no gain!"
   ],
   [
    "z4",
    "z",
-   "Pain я не хочу. Я хочу gain… в смысле, массаж."
+   "Pain я не хочу. Я хочу gain… комплиментов. И я учусь визуально. Покажи!"
   ],
   [
    "t4",
    "t",
-   "Watch me first. Like this… and squeeze!"
+   "Ten reps, like this… Wait. Why am I doing your workout?"
   ],
   [
    "z5",
    "z",
-   "Стоп, ещё раз, я не зачекала. Улыбайся, деточка, это для сторис."
-  ],
-  [
-   "t5",
-   "t",
-   "Your turn! Come on, you got this!"
+   "Для контента! Улыбайся, я тебя стримлю, ю ноу?"
   ],
   [
    "z6",
    "z",
-   "Селфи на тренажёре, селфи с гантелей. Запостила. Workout done."
+   "Я тебя запромоутила, деточка. С тебя скидка."
   ],
   [
    "t6",
    "t",
-   "Wait… you didn't do a single rep!"
+   "Ma'am… you got me a thousand followers. I gotta be honest. Petrovich paid me to make you quit before the five minutes are up."
   ],
   [
    "z7",
    "z",
-   "Деточка, я сделала сорок селфи. Это сорок reps, ю ноу?"
+   "Ах, Петрович — шпион! Сколько он тебе дал? Плачу вдвое."
   ],
   [
    "t7",
    "t",
-   "I did all three sets for you… I'm gonna be so sore tomorrow."
+   "Wait… that's his card."
   ],
   [
    "z8",
    "z",
-   "Вот, деточка: ноу pain, ноу gain. Тебе pain, мне gain."
+   "Ну да, свайпнула утром. Отвечай: я сделала сто reps."
+  ],
+  [
+   "t8",
+   "t",
+   "Sir? Yeah… she did a hundred reps. And a plank. She's a beast."
   ],
   [
    "z9",
    "z",
-   "Петрович! Я тебя разблокала. Membership теперь на тебя. Это намёк, ю ноу?"
+   "Петрович! Пять минут прошло. Шубу — size S. И тренера оплати: он теперь мой personal assistant."
+  ],
+  [
+   "t9",
+   "t",
+   "I'm gonna be so sore tomorrow…"
+  ],
+  [
+   "z10",
+   "z",
+   "Ноу pain, ноу gain, деточка!"
   ]
  ]
 }
