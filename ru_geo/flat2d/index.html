@@ -5,7 +5,7 @@ import * as E from './engine.js';
 const film = new URLSearchParams(location.search).get('film') || 'chernobyl';
 try {
   const [fj, env, ff] = await Promise.all([fetch(`/${film}/film.json`).then((r) => r.json()), fetch(`/${film}/env.json`).then((r) => r.json()), new FontFace('Nunito', 'url(/flat2d/Nunito-Black.ttf)', { weight: '900' }).load()]);
-  document.fonts.add(ff); E.init(document.getElementById('c'), env);
+  document.fonts.add(ff); E.init(document.getElementById('c'), env); E.setGrade(new URLSearchParams(location.search).get('grade'));
   await E.loadPhotos(film); await import(`./scenes_${film}.js`); const { SB } = await import(`./sb_${film}.js`);
   const M = E.makeFilm(fj, SB); window.M = M; window.renderFrame = (f, o) => E.renderFrame(M, f, o); window.TOTAL = Math.ceil(fj.total * 30); window.ready = true;
 } catch (e) { window.err = String(e && e.stack || e); console.log('ERR ' + window.err); }

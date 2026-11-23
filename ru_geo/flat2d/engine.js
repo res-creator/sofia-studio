@@ -7,6 +7,9 @@ export const ease = (x) => { x = clamp(x); return x * x * (3 - 2 * x); };
 export let g = null; export let LW = 7; let ENV = [];
 export const SCENES = {};            // имя -> { bg(st), fg(st) }
 export const EMBLEMS = {}; export const CARD_BG = {};           // эмблемы для титров глав
+let GRADE = null, GC = null;
+export function setGrade(name) { GRADE = name === 'dark' ? { sat: 0.5, bri: 0.7, con: 1.08, tint: 'rgba(22,28,44,.34)' } : name === 'dark2' ? { sat: 0.38, bri: 0.62, con: 1.12, tint: 'rgba(24,30,40,.42)' } : null; }
+function applyGrade() { if (!GRADE) return; const cv = g.canvas; if (!GC) { GC = document.createElement('canvas'); GC.width = cv.width; GC.height = cv.height; } const x = GC.getContext('2d'); x.setTransform(1, 0, 0, 1, 0, 0); x.drawImage(cv, 0, 0); g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.filter = `saturate(${GRADE.sat}) brightness(${GRADE.bri}) contrast(${GRADE.con})`; g.drawImage(GC, 0, 0); g.filter = 'none'; g.fillStyle = GRADE.tint; g.fillRect(0, 0, W, H); const vg = g.createRadialGradient(W / 2, H / 2, 380, W / 2, H / 2, 1180); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,.5)'); g.fillStyle = vg; g.fillRect(0, 0, W, H); g.restore(); }
 export function init(canvas, env) { g = canvas.getContext('2d'); ENV = env || []; }
 // ---------- архивные фото ----------
 export const PHOTOS = {}; export const CREDITS = {};
@@ -211,7 +214,7 @@ export function renderFrame(M, f, extra = {}) {
   const t = f / FPS, film = M.film;
   g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#000'; g.fillRect(0, 0, W, H);
   const it = M.L.find((x) => t >= x.a && t < x.b) || M.L[M.L.length - 1];
-  if (it.kind === 'card') { drawCardTitle(it.title, it.a, t); return; }
+  if (it.kind === 'card') { drawCardTitle(it.title, it.a, t); applyGrade(); return; }
   const sb = it.sb, seg = it.seg, pt = t - seg.t;
   let sc = sb; if (sb.seq) { const e = sb.seq.find((q) => pt < q.to) || sb.seq[sb.seq.length - 1]; sc = { ...sb, ...e }; }
   if (sb.after && t > seg.t + seg.dur + 0.4) sc = { ...sc, ...sb.after, cams: sb.after.cams || ['w'] };
@@ -227,6 +230,7 @@ export function renderFrame(M, f, extra = {}) {
   const S = SCENES[sc.scene] || SCENES.room, st = { t, pt, f, sp: sc.sp || {}, seg, dur: seg.dur, shot: si };
   S.bg && S.bg(st); if (sc.sticker) drawSticker(actors); else actors.forEach((a) => { if (a.custom) a.custom(a, st); else drawChar(a); }); S.fg && S.fg(st); if (sc.fg) sc.fg(st);
   g.restore();
+  if (!ph) applyGrade();
   if (sc.hud) sc.hud(st); if (S.hud) S.hud(st, sc);
   if (sc.dim) { const d = typeof sc.dim === 'function' ? sc.dim(pt) : sc.dim; if (d > 0) { g.fillStyle = `rgba(20,14,40,${d})`; g.fillRect(0, 0, W, H); } }
   if (!extra.nocap) drawCaption(film, t);

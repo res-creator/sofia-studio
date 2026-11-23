@@ -8,7 +8,7 @@ const srv = http.createServer((q, s) => { const p = path.join(root, decodeURICom
 await new Promise((r) => srv.on('listening', r));
 const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox'] }); const pg = await b.newPage({ viewport: { width: 1920, height: 1080 } });
 pg.on('pageerror', (e) => console.log('ERR', e.message)); pg.on('console', (m) => { const t = m.text(); if (m.type() === 'error' || t.startsWith('NO SB') || t.startsWith('ERR')) console.log('PAGE', t); });
-await pg.goto(`http://localhost:${srv.address().port}/flat2d/index.html?film=${film}`); await pg.waitForFunction(() => window.ready || window.err, null, { timeout: 60000 });
+await pg.goto(`http://localhost:${srv.address().port}/flat2d/index.html?film=${film}&grade=${process.env.GRADE || ''}`); await pg.waitForFunction(() => window.ready || window.err, null, { timeout: 60000 });
 if (await pg.evaluate(() => window.err)) { console.log('page error'); process.exit(1); }
 const total = await pg.evaluate(() => window.TOTAL); const frames = [];
 for (const p of spec.split(',')) { if (p === 'all') { for (let f = 0; f < total; f += +step) frames.push(f); } else if (p.includes('-')) { const [a, b2] = p.split('-').map(Number); for (let f = a; f <= b2; f += +step) frames.push(f); } else frames.push(+p); }
