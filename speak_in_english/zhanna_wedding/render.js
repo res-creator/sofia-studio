@@ -31,7 +31,7 @@ const LY = {...LU, pal: {...LU.pal, skin: '#f4d0b4', skinS: '#e2b498', hair: '#3
 
 const BANQ = TL.BANQ, BANG = TL.BANG, SWAN = TL.SWAN, GATE = TL.GATE, SCENE = t => t < BANQ + .62 ? 'cer' : 'bq';
 const FEET = 1760, SEAT = 1850, TABLE = 1352;
-const X = {cer: {z: 170, p: -480, g: 780, l: 1400, o: 1090}, bq: {z: 120, g: 600, l: 1040, p: 1560}};
+const X = {cer: {z: 170, p: -480, g: 780, l: 1400, o: 1090}, bq: {z: 70, g: 600, l: 1090, p: 1620}};
 
 // ---------- sets (drawn into the background canvas, then blurred) ----------
 function sky() { const gr = g.createLinearGradient(0, -400, 0, 1150); gr.addColorStop(0, '#1d1f4e'); gr.addColorStop(.55, '#6a3a7a'); gr.addColorStop(.85, '#e0707a'); gr.addColorStop(1, '#f6a86a'); g.fillStyle = gr; g.fillRect(-1400, -1400, 4600, 2600);
@@ -50,7 +50,7 @@ function arch(x) { g.save(); g.translate(x, 0); ln([[-330, 1500], [-330, 760]], 
   for (let i = 0; i < 8; i++) for (const s of [-1, 1]) { ell(s * 330, 820 + i * 80, 30, 26, i % 2 ? '#f6a0c0' : '#ffffff', 0); } g.restore(); }
 function setCer(t) { sky(); palmTree(-700, 1060, 700); palmTree(1650, 1060, 760, 1.1); palmTree(2200, 1060, 600); lights(-60);
   g.fillStyle = '#4a7a4a'; g.fillRect(-1400, 1240, 4600, 2200); g.fillStyle = '#f6f0e6'; g.fillRect(-1400, 1240, 4600, 14); rr(380, 1250, 880, 900, 0, '#f8f2f4', 0); // aisle runner
-  arch(X.cer.o); if (curCam && ['CW', 'GL'].includes(curCam.sh.k)) T.draw(g, {...OF, x: X.cer.o, y: 1440, mood: t > GATE + .1 ? 'surprised' : 'flat', mouth: lineAt(t) && lineAt(t).id === 'o1' ? env(lineAt(t), t) : 0, blink: blink(t, 3), pose: 'hold'});
+  arch(X.cer.o); if (curCam && ['CW', 'GL'].includes(curCam.sh.k)) T.draw(g, {...OF, x: X.cer.o, y: 1440, mood: t > GATE + .1 ? 'shocked' : 'flat', ...(() => { const ts = talkSt(lineOf('o', t), t, 2); return {mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t}; })(), blink: blink(t, 3), pose: 'hold'});
   
   guestRow(t, 1500, 5, -1000, 230, .9, false); guestRow(t, 1500, 4, 1500, 230, .9, false); }
 function setBq(t) { sky(); palmTree(-800, 1060, 700); palmTree(2050, 1060, 760, 1.1); lights(-40); lights(260);
@@ -79,7 +79,7 @@ const ZG = {
 };
 const GG = {
   down: s => [[s * 78, -860], [s * 102, -720], [s * 110, -580]],
-  collar: s => s < 0 ? [[-78, -860], [-150, -760], [-60, -880]] : [[78, -860], [102, -720], [110, -580]],
+  collar: s => s < 0 ? [[-78, -860], [-160, -760], [-95, -845]] : [[78, -860], [102, -720], [110, -580]],
   bout: s => s < 0 ? [[-78, -860], [-140, -740], [-40, -800]] : [[78, -860], [102, -720], [110, -580]],
   rest: s => [[s * 78, -860], [s * 140, -740], [s * 80, -690]],
   fistUp: s => s > 0 ? [[78, -860], [190, -930], [170, -1060]] : [[-78, -860], [-140, -740], [-80, -690]],
@@ -91,29 +91,34 @@ const GG = {
 };
 const FRONT = new Set(['table', 'explain', 'brooch', 'rest', 'bout', 'hands', 'mic', 'micUp', 'micPalm', 'micHip']);
 const lineAt = t => { for (const l of L) if (t >= l.at - .03 && t < l.end + .08) return l; return null; };
-const env = (l, t) => { const i = Math.floor((t - l.at) * 30); return clamp(((l.env[i] || 0) + (l.env[i + 1] || 0)) / 2); };
+const env = (l, t) => { const i = Math.floor((t - l.at) * 30); return clamp(l.env[i] || 0); };   // mouthEnv from prep.py: 0 = closed, no smoothing
+const talkSt = (l, t, seed) => { if (!l) return {mouth: 0, nod: 0, vis: .5, talking: false}; const e = env(l, t), e0 = env(l, t - .1); return {mouth: e, vis: hash(Math.floor(t * 9) + seed), nod: 9 * clamp(e - e0), talking: true}; };
+const lineOf = (who, t) => { const l = lineAt(t); return l && l.who === who ? l : null; };
+const moodBlink = (fn, t) => fn(t).mood !== fn(t - .1).mood;   // blink on every emotion change
+function armOver(a, x, y, S, st) { for (const sd of [-1, 1]) { const P3 = a.fn(sd); if (P3[2][1] > -900) continue; g.save(); g.translate(x, y); g.scale(S, S); T.drawArm(g, st, sd, P3); g.restore(); } }   // whole raised arm in front of hair + face
 const blink = (t, s) => ((t + s * 1.3) % (3.3 + s * .4)) < .12;
 function plan(P, who, t, idle) { const l = lineAt(t); if (l && l.who === who) { const u = (t - l.at) / (l.end - l.at); let gg = idle; for (const [k, v] of (P[l.id] || [])) if (u >= k) gg = v; return gg; } return idle; }
 const ZPLAN = {z1: [[0, 'cheer'], [.25, 'wag'], [.55, 'explain'], [.8, 'brooch']], z2: [[0, 'explain'], [.4, 'shrug'], [.72, 'back']], z3: [[0, 'wag'], [.6, 'shrug']], z4: [[0, 'hips']],
   z5: [[0, 'micUp']], z6: [[0, 'micPalm'], [.4, 'mic'], [.75, 'micPalm']], z7: [[0, 'mic'], [.5, 'micPalm']], z8: [[0, 'micPalm'], [.5, 'mic']], z9: [[0, 'micUp'], [.3, 'micPalm']]};
-function zAct(t) { const bq = SCENE(t) === 'bq', l = lineAt(t); if (t >= TL.END) return {g: bq ? 'micHip' : 'hips', mood: 'grin'};
+function zAct(t) { const bq = SCENE(t) === 'bq', l = lineAt(t); if (t >= TL.END) return {g: bq ? 'micHip' : 'hips', mood: 'laugh'};
   let idle = bq ? 'micHip' : 'hips'; if (!bq && t < GATE + .3) idle = 'down'; if (t >= BY.p1.at - .2 && t < BY.p1.end + .2) idle = 'back';
   let mood = plan(ZMOOD, 'z', t, 'smug');
-  if (!(l && l.who === 'z')) { const id = l && l.id; if (t < GATE + .3) mood = 'smug'; else if (id === 'l1' || id === 'g1') mood = 'angry'; else if (id === 'g2' || id === 'l2') mood = 'smug';
-    else if (id === 'c1') mood = 'grin'; else if (id === 'l3' || id === 'g3') mood = 'surprised'; else if (t >= BY.p3.at && t < BY.c2.at) mood = 'kind'; else if (t >= BY.c2.at) mood = 'grin'; }
+  if (!(l && l.who === 'z')) { const id = l && l.id; if (t < GATE + .3) mood = 'smug'; else if (id === 'l1') mood = 'disgusted'; else if (id === 'g1') mood = 'smugside'; else if (id === 'g2' || id === 'l2') mood = 'smug';
+    else if (id === 'c1') mood = 'proud'; else if (id === 'l3') mood = 'worried'; else if (id === 'g3' || (t >= BANG - .1 && t < BY.p3.at)) mood = 'shocked'; else if (t >= BY.p3.at && t < BY.c2.at) mood = 'dreamy'; else if (t >= BY.c2.at) mood = 'laugh'; }
   return {g: plan(ZPLAN, 'z', t, idle), mood}; }
 // smug while trolling, grin on punchlines, shocked, indignant, dreamy (kind), triumphant, one wink and one eye-roll
-const ZMOOD = {z1: [[0, 'grin'], [.32, 'wink'], [.5, 'smug']], z2: [[0, 'smug'], [.78, 'grin']], z3: [[0, 'surprised'], [.16, 'angry'], [.78, 'grin']], z4: [[0, 'eyeroll']], z5: [[0, 'grin']],
-  z6: [[0, 'grin'], [.42, 'smug'], [.8, 'angry']], z7: [[0, 'smug'], [.3, 'kind'], [.72, 'smug']], z8: [[0, 'smug'], [.55, 'grin']], z9: [[0, 'grin'], [.5, 'smug']]};
-function gAct(t) { const bq = SCENE(t) === 'bq', l = lineAt(t), id = l && l.id; let gg = bq ? 'rest' : 'down', mood = bq ? 'flat' : t < GATE ? 'happy' : 'surprised';
-  if (id === 'g1') { gg = 'collar'; mood = 'sad'; } if (id === 'z3') mood = 'sad'; if (id === 'g2') { gg = 'bout'; mood = 'smug'; } if (id === 'l2' || id === 'z4') mood = 'flat';
-  if (bq) { if (['z6', 'z7'].includes(id)) mood = 'sad'; if (id === 'z8' || id === 'z9') mood = 'surprised'; if (id === 'l3') mood = 'angry';
+const ZMOOD = {z1: [[0, 'proud'], [.3, 'flirty'], [.5, 'smugside']], z2: [[0, 'smug'], [.45, 'eyeroll'], [.78, 'proud']], z3: [[0, 'shocked'], [.16, 'angry'], [.78, 'laugh']], z4: [[0, 'eyeroll']], z5: [[0, 'proud']],
+  z6: [[0, 'grin'], [.42, 'smugside'], [.8, 'disgusted']], z7: [[0, 'smug'], [.3, 'dreamy'], [.72, 'smugside']], z8: [[0, 'smug'], [.55, 'laugh']], z9: [[0, 'grin'], [.5, 'cryinglaugh']]};
+function gAct(t) { const bq = SCENE(t) === 'bq', l = lineAt(t), id = l && l.id; let gg = bq ? 'rest' : 'down', mood = bq ? 'flat' : t < GATE ? 'happy' : 'shocked';
+  if (id === 'z2' || id === 'p1') mood = 'worried'; if (id === 'g1') { gg = 'collar'; mood = 'worried'; } if (id === 'z3') mood = 'sad'; if (id === 'g2') { gg = 'bout'; mood = 'proud'; } if (id === 'l2' || id === 'z4') mood = 'flat';
+  if (bq) { if (id === 'z5' || id === 'c1') mood = 'worried'; if (id === 'z6') mood = 'worried'; if (id === 'z7') mood = 'sad'; if (id === 'z8') mood = 'shocked'; if (id === 'z9') mood = 'disgusted'; if (id === 'l3') mood = 'worried';
     if (id === 'g3') { gg = t < BANG - .12 ? 'fistUp' : 'slam'; mood = 'angry'; } else if (t >= BANG - .12 && t < BANG + .5) { gg = 'slam'; mood = 'angry'; }
-    if (t >= BY.p3.at && t < BY.c2.at) mood = 'surprised'; if (t >= BY.c2.at) mood = 'sad'; }
+    if (t >= BY.p3.at && t < BY.c2.at) mood = 'shocked'; if (t >= BY.c2.at) mood = 'sad'; }
   return {g: gg, mood, sweat: id === 'g1' || id === 'z3' || (bq && (id === 'z8' || id === 'g3'))}; }
-function lAct(t) { const bq = SCENE(t) === 'bq', l = lineAt(t), id = l && l.id; let gg = bq ? 'rest' : 'down', mood = bq ? 'flat' : t < GATE ? 'happy' : 'angry';
-  if (id === 'l1') gg = 'point'; if (id === 'l2') { gg = 'hips'; mood = 'smug'; } if (!bq && id === 'z4') mood = 'angry';
-  if (bq) { if (['z6', 'z8', 'z9'].includes(id)) mood = 'angry'; if (id === 'l3') { gg = 'shock'; mood = 'angry'; } if (t >= BY.p3.at && t < BY.c2.at) mood = 'surprised'; if (t >= BY.c2.at) mood = 'sad'; }
+function lAct(t) { const bq = SCENE(t) === 'bq', l = lineAt(t), id = l && l.id; let gg = bq ? 'rest' : 'down', mood = bq ? 'flat' : t < GATE ? 'happy' : 'shocked';
+  if (id === 'l1') { gg = 'point'; mood = 'angry'; } if (id === 'z2' || id === 'z3') mood = 'disgusted'; if (id === 'l2') { gg = 'hips'; mood = 'proud'; } if (!bq && id === 'z4') mood = 'angry';
+  if (bq) { if (id === 'z5' || id === 'c1') mood = 'worried'; if (id === 'z6') mood = 'angry'; if (id === 'z7') mood = 'disgusted'; if (id === 'z8') mood = 'shocked'; if (id === 'z9') mood = 'disgusted';
+    if (id === 'l3') { gg = 'shock'; mood = 'angry'; } if (id === 'g3') mood = 'angry'; if (t >= BY.p3.at && t < BY.c2.at) mood = 'surprised'; if (t >= BY.c2.at) mood = 'sad'; }
   return {g: gg, mood}; }
 function blendArms(fnAt, GT, t) { const a1 = fnAt(t); let prev = a1.g, k = 1; for (let d = .02; d <= .2; d += .02) { const a = fnAt(t - d); if (a.g !== a1.g) { prev = a.g; k = d / .2; break; } }
   const e = ease(k), f0 = GT[prev], f1 = GT[a1.g]; return {fn: s => f1(s).map((p, i) => [lerp(f0(s)[i][0], p[0], e), lerp(f0(s)[i][1], p[1], e)]), front: FRONT.has(a1.g) || (e < .5 && FRONT.has(prev)), act: a1, e}; }
@@ -143,12 +148,13 @@ function zhanna(t) { const sc = SCENE(t), l = lineAt(t), spk = l && l.who === 'z
   if (sc === 'cer' && t < GATE - .05) return;   // behind the closed gate
   const tilt = spk ? .04 * Math.sin(t * 2.6) : .03 * Math.sin(t * 1.1) + .02, br = 1 - .006 * (1 + Math.sin(t * 2.2)), S = c.s;
   if (sc === 'bq') { const k = talkK(t), base = a.fn; a.fn = sd => sd > 0 ? MIC_TALK.map((p, i) => [lerp(MIC_REST[i][0], p[0], k), lerp(MIC_REST[i][1], p[1], k)]) : base(sd); }
-  a.fn = wig(a.fn, t, spk ? 6 : 2); const top = [-1, 1].filter(sd => a.fn(sd)[2][1] < -880 || (sc === 'bq' && sd > 0));
-  const m = a.act.mood, mood = m === 'wink' ? 'smug' : m === 'eyeroll' ? 'flat' : m;
-  T.draw(g, {...c, x, y, sq: br, arms: a.fn, armsTop: top, front: a.front, mood, wink: m === 'wink', mouth: spk ? env(l, t) : 0, blink: blink(t, 2), tilt, lookUp: m === 'eyeroll' ? 1 : 0, look: m === 'eyeroll' ? .2 : sc === 'bq' ? .5 : .7});
-  const bx = x - 40 * S, by = y - 790 * S * br; star(bx, by, 30, '#f2c820', 5, 8, t * .3); ell(bx, by, 9, 9, '#ff5a8a', 4);
+  const breath = 2 + 2 * Math.sin(t * 2.2), ts = talkSt(spk ? l : null, t, 3), st = {...c, outfit: 'gold'};
+  T.draw(g, {...st, x, y, sq: br, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 6 : 2), breath)), ik: false, front: a.front, mood: a.act.mood, mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t,
+    blink: blink(t, 2) || moodBlink(zAct, t), tilt, look: sc === 'bq' ? .5 : .7});
+  armOver(a, x, y, S, st);
+  const bx = x - 40 * S, by = y - 720 * S * br; star(bx, by, 30, '#f2c820', 5, 8, t * .3); ell(bx, by, 9, 9, '#ff5a8a', 4);
   for (let i = 0; i < 7; i++) { const sx = x + (hash(i) - .5) * 140 * S, sy = y - (600 + hash(i + 9) * 240) * S; sparkle(sx, sy, 7 + 5 * hash(i + 3), Math.max(0, Math.sin(t * 4 + i * 1.7))); }
-  if (sc === 'bq') { const [hx, hy] = handPos(x, y, S, a.fn, 1), k = talkK(t), mx = x + 70 * S, my = y - 905 * S; micTo(hx, hy, lerp(hx + 8, mx, k), lerp(hy - 110, my, k), c.pal.skin, '#d63a8a');
+  if (sc === 'bq') { const [hx, hy] = handPos(x, y, S, a.fn, 1), k = talkK(t), mx = x + 98 * S, my = y - 878 * S; micTo(hx, hy, lerp(hx + 8, mx, k), lerp(hy - 110, my, k), c.pal.skin, '#d63a8a');
     hands(x, y, S, {fn: sd => sd < 0 ? a.fn(sd) : null}, c, '#d63a8a', true, [-1]); }
   else hands(x, y, S, a, c, '#d63a8a', true); }
 function gate(t) { const k = ease((t - GATE) / .28), x0 = X.cer.z - 230, x1 = X.cer.z + 230, top = 860, bot = 1780;
@@ -166,7 +172,9 @@ function ring(hx, hy, t) { poly([[hx - 26, hy - 30], [hx, hy - 62], [hx + 26, hy
 function bout(x, y, S) { for (let k = 0; k < 5; k++) { const a = k / 5 * 6.28; ell(x + Math.cos(a) * 16 * S / .74, y + Math.sin(a) * 16 * S / .74, 14, 12, '#e8324a', 3); } ell(x, y, 8, 8, '#f2c820', 3); }
 function gary(t) { const sc = SCENE(t), l = lineAt(t), spk = l && l.who === 'g', a = blendArms(gAct, GG, t), c = GA, S = c.s, x = X[sc].g + Math.sin(t * 1.2 + 2) * 2, y = sc === 'bq' ? SEAT : FEET;
   const shake = t >= BANG - .05 && t < BANG + .25 ? 6 * Math.sin(t * 90) : 0;
-  T.draw(g, {...c, x: x + shake, y, arms: (a.fn = wig(a.fn, t, spk ? 6 : 1.5)), front: a.front, mood: a.act.mood, sweat: a.act.sweat, mouth: spk ? env(l, t) : 0, blink: blink(t, 5), tilt: spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t), look: sc === 'bq' ? -.8 : -.9});
+  const ts = talkSt(spk ? l : null, t, 5);
+  T.draw(g, {...c, x: x + shake, y, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 6 : 1.5), 2 + 2 * Math.sin(t * 2.3))), ik: false, front: a.front, mood: a.act.mood, sweat: a.act.sweat, mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t,
+    blink: blink(t, 5) || moodBlink(gAct, t), tilt: spk ? .04 * Math.sin(t * 3) : .02 * Math.sin(t), look: sc === 'bq' ? -.8 : -.9}); armOver(a, x + shake, y, S, c);
   bout(x + shake - 48 * S, y - 800 * S, S); hands(x + shake, y, S, a, c, null, false);
  }
 function priceTag(t) { const sc = SCENE(t), S = GA.s, x = X.bq.g + Math.sin(t * 1.2 + 2) * 2, y = SEAT;
@@ -174,7 +182,9 @@ function priceTag(t) { const sc = SCENE(t), S = GA.s, x = X.bq.g + Math.sin(t * 
     poly([[0, 0], [40, -40], [250, -40], [250, 80], [40, 80]], '#fff4c8', 5); ell(28, 20, 8, 8, '#ffffff', 3); txt('SECOND HAND', 145, 0, 30, INK); txt('−50%', 145, 46, 44, '#d8323c'); g.restore(); } }
 function lucy(t) { const sc = SCENE(t), l = lineAt(t), spk = l && l.who === 'l', a = blendArms(lAct, GG, t), c = LU, S = c.s, x = X[sc].l + Math.sin(t * 1.3 + 4) * 2, up = sc === 'bq' ? lucyUp(t) : 0, y = sc === 'bq' ? lerp(SEAT, FEET + 20, up) : FEET;
   veil(x, y, S, up * .5 * (l && l.id === 'l3' ? 1 : 0), t);
-  T.draw(g, {...c, x, y, arms: (a.fn = wig(a.fn, t, spk ? 7 : 1.5)), front: a.front, mood: a.act.mood, mouth: spk ? env(l, t) : 0, blink: blink(t, 9), tilt: spk ? .05 * Math.sin(t * 3.2) : .02 * Math.sin(t + 1), look: sc === 'bq' ? -.8 : -.9});
+  const ts = talkSt(spk ? l : null, t, 9);
+  T.draw(g, {...c, x, y, arms: (a.fn = T.ik(wig(a.fn, t, spk ? 7 : 1.5), 2 + 2 * Math.sin(t * 2.5))), ik: false, front: a.front, mood: a.act.mood, mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t,
+    blink: blink(t, 9) || moodBlink(lAct, t), tilt: spk ? .05 * Math.sin(t * 3.2) : .02 * Math.sin(t + 1), look: sc === 'bq' ? -.8 : -.9}); armOver(a, x, y, S, c);
   tiara(x, y, S); hands(x, y, S, a, c, '#e8324a', true); const [hx, hy] = handPos(x, y, S, a.fn, -1); ring(hx, hy, t); }
 // ---- Petrovich: palm leaf (ceremony) -> cake -> champagne tower -> ice swan. Every cover is opaque and reaches above the cap brim.
 const pUp = t => clamp((t - SWAN - .62) / .45), PSTAND = t => ease(pUp(t));
@@ -208,14 +218,14 @@ function swan(x, t) { if (t < SWAN) return; const dx = swanX(t), c = x + dx;
   for (let i = 0; i < 4; i++) sparkle(c - 160 + i * 110, 900 + hash(i) * 200, 14, Math.max(0, Math.sin(t * 5 + i * 1.6))); g.restore(); }
 function petrovich(t) { const sc = SCENE(t), l = lineAt(t), spk = l && l.who === 'p', c = PE, S = c.s;
   if (sc === 'cer') { const x = X.cer.p, y = FEET, fn = wig(s => [[s * 78, -860], [s * 102, -720], [s * 110, -580]], t, 1.2), a = {fn};
-    T.draw(g, {...c, x, y, arms: (a.fn = wig(a.fn, t, 1.2)), front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: spk ? env(l, t) : 0, blink: blink(t, 7), tilt: 0, look: .4});
+    const ts = talkSt(spk ? l : null, t, 7); T.draw(g, {...c, x, y, arms: (a.fn = T.ik(fn, 2)), ik: false, front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t, blink: blink(t, 7), tilt: 0, look: .4});
     hands(x, y, S, a, c, null, false); palmPot(x, t); return; }
   const x = X.bq.p, up = PSTAND(t), y = lerp(SEAT, FEET, up), bob = l && (l.id === 'p2' || l.id === 'p4') ? 6 * Math.sin(Math.PI * clamp((t - l.at) / (l.end - l.at))) : 0;
-  T.draw(g, {...c, x, y: y + bob, arms: s => [[s * 78, -860], [s * 140, -740], [s * 80, -690]], front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: spk ? env(l, t) : 0, blink: blink(t, 7), tilt: 0, look: -.5}); }
+  const ts = talkSt(spk ? l : null, t, 7); T.draw(g, {...c, x, y: y + bob, arms: s => [[s * 78, -860], [s * 140, -740], [s * 80, -690]], front: false, probe: !!process.env.FACECHECK, mood: 'kind', mouth: ts.mouth, talking: ts.talking, vis: ts.vis, nod: ts.nod, t, blink: blink(t, 7), tilt: 0, look: -.5}); }
 function propsBq(t) { const x = X.bq.p; tower(x, t); cake(x, t); }
 // slippers gift: slides along the table at z9, the lid pops
 const BOX0 = BY.z9.at + .9, TAG0 = BY.z8.at + 2.0;
-function giftBox(t) { if (t < BOX0) return; const k = ease((t - BOX0) / .7), bx = lerp(380, 820, k), lid = ease((t - BOX0 - .9) / .3);
+function giftBox(t) { if (t < BOX0) return; const k = ease((t - BOX0) / .7), bx = lerp(380, 845, k), lid = ease((t - BOX0 - .9) / .3);
   if (lid > 0) { slipper(bx - 40, TABLE - 74 - 10 * lid, .75, -.5); slipper(bx + 40, TABLE - 74 - 10 * lid, .75, -.2); }
   rr(bx - 95, TABLE - 66, 190, 66, 6, '#fbe6ee', 6); ln([[bx, TABLE - 66], [bx, TABLE]], 10, '#d63a8a');
   g.save(); g.translate(bx + (lid > 0 ? 160 * lid : 0), TABLE - 66 - 120 * lid); g.rotate(.6 * lid); rr(-104, -26, 208, 30, 6, '#fbe6ee', 6); ln([[0, -26], [0, 4]], 10, '#d63a8a'); ell(-20, -36, 24, 14, '#d63a8a', 5); ell(20, -36, 24, 14, '#d63a8a', 5); g.restore(); }
@@ -224,9 +234,9 @@ function slipper(x, y, sc, rot) { g.save(); g.translate(x, y); g.rotate(rot); g.
   for (let k = -2; k <= 4; k++) ln([[k * 16, -32], [k * 16, 32]], 4, '#2a6a3a'); for (let k = -2; k <= 2; k++) ln([[-10, k * 14], [80, k * 14]], 3, '#2a6a3a'); g.restore();
   g.beginPath(); g.moveTo(-6, -30); g.lineTo(52, -30); g.quadraticCurveTo(82, 0, 52, 30); g.lineTo(-6, 30); g.quadraticCurveTo(-18, 0, -6, -30); g.closePath(); g.strokeStyle = INK; g.lineWidth = 5; g.stroke(); ell(-40, 0, 18, 12, '#e0d2b8', 3); g.restore(); }
 function flower(x, y, r, col) { for (let k = 0; k < 5; k++) { const a = k / 5 * 6.28 - 1.57; ell(x + Math.cos(a) * r * .62, y + Math.sin(a) * r * .62, r * .5, r * .5, col, 3); } ell(x, y, r * .32, r * .32, '#f2c820', 3); }
-function headTable(t) { rr(360, TABLE, 1620, 34, 12, '#fffaf2', 7); rr(376, TABLE + 30, 1588, 700, 6, '#fffaf2', 7); for (let x = 400; x < 1960; x += 70) ln([[x, TABLE + 60], [x, TABLE + 640]], 3, '#efe4d4');
-  for (let k = 0; k < 14; k++) { const fx = 400 + k * 112; flower(fx, TABLE + 56, 22, k % 2 ? '#f6a0c0' : '#ffffff'); if (k < 13) { ell(fx + 40, TABLE + 66, 16, 8, '#5aa06a', 3); ell(fx + 72, TABLE + 62, 16, 8, '#5aa06a', 3); } }
-  for (const gx of [820, 1300]) { const fx = gx; ln([[fx, TABLE], [fx, TABLE - 50]], 6); g.beginPath(); g.moveTo(fx - 16, TABLE - 150); g.lineTo(fx + 16, TABLE - 150); g.lineTo(fx + 10, TABLE - 52); g.lineTo(fx - 10, TABLE - 52); g.closePath(); g.fillStyle = '#f6d36a'; g.fill(); g.strokeStyle = INK; g.lineWidth = 5; g.stroke(); } }
+function headTable(t) { rr(360, TABLE, 1720, 34, 12, '#fffaf2', 7); rr(376, TABLE + 30, 1688, 700, 6, '#fffaf2', 7); for (let x = 400; x < 2060; x += 70) ln([[x, TABLE + 60], [x, TABLE + 640]], 3, '#efe4d4');
+  for (let k = 0; k < 15; k++) { const fx = 400 + k * 112; flower(fx, TABLE + 56, 22, k % 2 ? '#f6a0c0' : '#ffffff'); if (k < 14) { ell(fx + 40, TABLE + 66, 16, 8, '#5aa06a', 3); ell(fx + 72, TABLE + 62, 16, 8, '#5aa06a', 3); } }
+  for (const gx of [845, 1355]) { const fx = gx; ln([[fx, TABLE], [fx, TABLE - 50]], 6); g.beginPath(); g.moveTo(fx - 16, TABLE - 150); g.lineTo(fx + 16, TABLE - 150); g.lineTo(fx + 10, TABLE - 52); g.lineTo(fx - 10, TABLE - 52); g.closePath(); g.fillStyle = '#f6d36a'; g.fill(); g.strokeStyle = INK; g.lineWidth = 5; g.stroke(); } }
 
 // ---------- clouds (Zhanna's thoughts) and cards ----------
 const mini = (c, x, y, s, extra = {}) => T.draw(g, {...c, x, y, s, mood: 'happy', ...extra});
@@ -263,7 +273,7 @@ function banqCard(t) { const a = BANQ, b = BANQ + 1.25; if (t < a || t >= b) ret
 
 // ---------- shots ----------
 const CAM = {CW: [.95, 600, 1000], Z_MED: [1.6, 170, 960], Z_UP: [1.8, 170, 905], ZP: [1.1, -150, 990], G_MED: [1.5, 780, 960], L_MED: [1.5, 1400, 960], GL: [1.0, 1090, 990],
-  BW: [.75, 560, 1000], BW2: [.75, 1120, 1000], BZ: [1.45, 120, 960], BG: [1.5, 600, 1000], BL: [1.45, 1040, 960], BGL: [1.1, 820, 1010], BP: [1.35, 1560, 1000], BPC: [1.6, 1560, 1010]};
+  BW: [.72, 560, 1000], BW2: [.72, 1120, 1000], BZ: [1.45, 70, 960], BG: [1.5, 600, 1000], BL: [1.45, 1090, 960], BGL: [1.1, 845, 1010], BP: [1.35, 1620, 1000], BPC: [1.6, 1620, 1010]};
 const SH = [[0, 'CW'], [BY.z1.at + 2.0, 'Z_MED'], [BY.l1.at - .1, 'L_MED'], [BY.z2.at - .1, 'Z_MED'], [BY.z2.end - 1.7, 'ZP'], [BY.g1.at - .1, 'G_MED'], [BY.z3.at - .1, 'Z_MED'], [BY.g2.at - .1, 'GL'], [BY.z4.at - .1, 'Z_UP'],
   [BANQ + .62, 'BZ'], [BY.c1.at - .1, 'BW'], [BY.z6.at - .1, 'BZ'], [BY.z6.at + 3.6, 'BGL'], [BY.z7.at - .1, 'BZ'], [BY.p2.at - .15, 'BP'], [BY.z8.at - .1, 'BZ'], [TAG0 - .15, 'BGL'],
   [BY.z9.at - .1, 'BZ'], [BOX0 - .1, 'BGL'], [BY.l3.at - .1, 'BL'], [BY.g3.at - .1, 'BG'], [BANG - .02, 'BP'], [BY.p3.at - .1, 'BPC'], [BY.c2.at - .1, 'BW2'], [SWAN - .25, 'BP'], [TL.END, 'END']]
@@ -353,7 +363,7 @@ function frame(t) {
 const [mode, arg, outName] = process.argv.slice(2);
 if (mode === 'still') { fs.mkdirSync('out/st', {recursive: true}); for (const t of arg.split(',')) { frame(+t); fs.writeFileSync(`out/st/${t}.png`, cv.toBuffer('image/png')); } }
 else if (mode === 'cover') { // NOCAP still shifted down 180 px, top strip filled, cream plate top edge at y=330 (text inside the 3:4 crop)
-  const t = +(arg || TAG0 + 1.0); process.env.NOCAP = 1; COVER = {z: .77, x: 564, y: 1060, k: 'COVER', sh: {k: 'COVER'}}; frame(t); const src = createCanvas(W, H); src.getContext('2d').drawImage(cv, 0, 0);
+  const t = +(arg || TAG0 + 1.0); process.env.NOCAP = 1; COVER = {z: .72, x: 560, y: 1060, k: 'COVER', sh: {k: 'COVER'}}; frame(t); const src = createCanvas(W, H); src.getContext('2d').drawImage(cv, 0, 0);
   g = G0; g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(src, 0, 180); g.save(); g.filter = 'blur(8px)'; g.drawImage(src, 0, 0, W, 8, 0, 0, W, 184); g.filter = 'none'; g.restore();
   g.save(); g.translate(540, 495); g.rotate(-.02); rr(-450, -165, 900, 330, 34, '#fffaf0', 9); txt('ЖАННА', 0, -92, 90, INK); txt('НА СВАДЬБЕ', 0, 2, 96, '#d63a8a'); txt('БЫВШЕГО', 0, 98, 90, INK); g.restore();
   fs.mkdirSync('final', {recursive: true}); fs.writeFileSync('final/cover.png', cv.toBuffer('image/png')); }
