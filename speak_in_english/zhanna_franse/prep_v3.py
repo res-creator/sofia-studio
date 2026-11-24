@@ -21,9 +21,13 @@ LINES = [
 # refine: snap each word start to the strongest vocal onset (rise in dB) within ±0.12 s
 rise = np.r_[0, np.diff(dbs)]
 for L in LINES:
+    prevStart = -1
     for wd in L:
-        i0 = int(wd[1] * FPS); lo, hi = max(1, i0 - 4), min(n - 1, i0 + 4); j = lo + int(np.argmax(rise[lo:hi + 1]))
-        if rise[j] > 2.0: wd[1] = round(j / FPS, 3)
+        i0 = int(wd[1] * FPS); lo, hi = max(1, i0 - 4, int((prevStart + .1) * FPS) + 1), min(n - 1, i0 + 4)
+        if hi >= lo:
+            j = lo + int(np.argmax(rise[lo:hi + 1]))
+            if rise[j] > 2.0: wd[1] = round(j / FPS, 3)
+        wd[1] = max(wd[1], round(prevStart + .1, 3)); prevStart = wd[1]
     for k in range(len(L) - 1): L[k][2] = max(L[k][2], L[k + 1][1]) if L[k][2] < L[k + 1][1] - .25 else L[k + 1][1]
 # light lip-sync: one opening per vowel, distributed on vocal peaks inside each word
 VOW = 'аеёиоуыэюяАЕЁИОУЫЭЮЯ'; sing = np.zeros(n); syl = []
