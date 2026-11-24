@@ -125,6 +125,22 @@ def steps(n, v=.2, dt=.5):
     out = np.zeros(int((n * dt + .2) * SR))
     for k in range(n): i = int(k * dt * SR); c = mixs(tone(110, .09, v, lambda x: np.exp(-x * 25)), noise(.05, v * .3, 6)); out[i:i + len(c)] += c
     return out
+# ---------- stock SFX (myinstants, approved by the owner; cleaned copies in sfx/clean) replace the synthesized crowd/foley ----------
+STOCK = {k: sf.read(f'sfx/clean/{k}.wav')[0] for k in ('applause_short', 'applause_long', 'laugh_light', 'laugh_big', 'aww', 'ooh', 'boo', 'cheer_whistle', 'drumroll', 'clock', 'newspaper', 'crunch', 'beep', 'slap', 'news_sting', 'chime', 'phone')}
+def clip(name, d=None, v=.5, tail=False, fade_in=.03, fade_out=.35):
+    x = STOCK[name].copy()
+    if d is not None and len(x) > int(d * SR): x = x[-int(d * SR):] if tail else x[:int(d * SR)]
+    n = min(len(x), int(fade_in * SR)); x[:n] *= np.linspace(0, 1, n); n = min(len(x), int(fade_out * SR)); x[-n:] *= np.linspace(1, 0, n)
+    return norm(x, v)
+def applause(d, v=.5): return clip('applause_short' if d <= 2.4 else 'applause_long', d, v)
+def crowd(kind, n=7, v=.5, dur=None): return clip({'laugh': 'laugh_light' if n <= 5 else 'laugh_big', 'aww': 'aww', 'ooh': 'ooh', 'boo': 'boo'}[kind], dur, v)
+def whistle(v=.4): return clip('cheer_whistle', 3.2, v)
+def drumroll(d=1.6, v=.5): return clip('drumroll', d + 1.2, v, tail=True, fade_out=.6)   # roll + cymbal crash at the end
+def clock(d=2, v=.35): return clip('clock', d, v)
+def paper(v=.4): return clip('newspaper', 1.2, v)
+def crunch(v=.6): return clip('crunch', 1.0, v)
+def slap(v=.6): return clip('slap', None, v, fade_out=.05)
+def beep_loop(d, v=.55): b = STOCK['beep']; x = np.tile(b, int(np.ceil(d * SR / len(b))))[:int(d * SR)]; return norm(x, v)
 # ---------- timeline ----------
 def build(part):
     t = 0.; L = []; VO = []; CR = []; FXL = []; EV = {}
@@ -135,9 +151,10 @@ def build(part):
         if k == 'r3': cut = min(W[1][0], W[0][1] + .12) if len(W) > 1 else .35; a = a[:int(cut * SR)]; n = int(.02 * SR); a[-n:] *= np.linspace(1, 0, n)
         L.append({'id': k, 'who': LN[k][0], 'text': LN[k][1], 'st': LN[k][2], 'at': round(t0, 3), 'end': round(t0 + len(a) / SR, 3), 'env': mouthEnv(a), 'words': [[round(t0 + w[0], 3), round(t0 + w[1], 3), w[2]] for w in W]})
         VO.append((t0, a * (1.25 if LN[k][2] == 's' else 1)))
+        if k in ('s3', 's5', 's6', 's9', 's11'): put(t0 - .35, clip('chime', 2.0, .3), 'crowd')
         if at is None:
             t += len(a) / SR
-            if k == 'r3': EV['BLEEP'] = [round(t, 3), .5]; put(t, tone(1000, .5, .6, lambda x: np.ones_like(x) * np.minimum(1, (1 - x) * 30))); t += .5
+            if k == 'r3': EV['BLEEP'] = [round(t, 3), .5]; put(t, beep_loop(.5)); put(t - .3, clip('news_sting', 3.0, .4), 'crowd'); t += .5
             t += max(gap, 1.25 - (t - L[-1]['at']))
     def chorus(keys, gap=.3):   # several voices at once
         nonlocal t
@@ -170,7 +187,7 @@ def build(part):
         EV['NIBBLE'] = t; put(t, crunch(.6)); wait(.75); say('e18', .15); react('boo', t, 1.6, .5, 6); react('laugh', t + .9, 1.6, .45, 5); wait(1.9); EV['DESKLAUGH'] = t; say('z17', .2); EV['FICUS'] = t; say('s8', .4)
         EV['ENTER_R'] = [t, 5.0]; put(t, applause(4.4, .5), 'crowd'); put(t + .5, steps(9)); wait(5.15)
         say('r1', .15); react('ooh', t, 1.6, .5, 6); put(t + .5, whistle(.35), 'crowd'); wait(1.4); EV['HAIR'] = t; say('z18', .2); say('e19', .15); say('z19', .25); say('e20', .2); say('r2', .25)
-        EV['CRASH'] = t; [put(t + k * .16, tone(1600, .1, .12, lambda x: np.ones_like(x) * (x < .8))) for k in range(3)]; put(t + .5, mixs(tone(600, .6, .1, lambda x: 1 - x), tone(300, .6, .08, lambda x: 1 - x))); wait(.85)
+        EV['CRASH'] = t; put(t, clip('phone', 1.2, .4)); put(t + .5, mixs(tone(600, .6, .1, lambda x: 1 - x), tone(300, .6, .08, lambda x: 1 - x))); wait(.85)
         say('r3', .25); react('laugh', t - .15, 1.8, .5, 6); wait(1.2); say('r4', .3); EV['LEAN_BACK'] = t; say('z20', .2); react('laugh', t, 2.4, .6, 7); wait(1.9)
         say('s9', .3); say('e21', .2); say('s10', .2); EV['GLANCE'] = [t, 1.6]; wait(1.6)
         say('e22', .2); say('z21', .2); EV['POINT_G'] = t; say('z22', .2); react('laugh', t, 1.8, .5, 6); wait(1.2); EV['HEY'] = t; chorus(['hey_m', 'hey_j', 'hey_r'], .3)
