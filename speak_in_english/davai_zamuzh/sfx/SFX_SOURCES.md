@@ -1,26 +1,37 @@
-# Звуковые эффекты со стоков — статус
+# Звуковые эффекты — источники
 
-**Скачать не получилось.** Storyblocks ищет нормально, но на запрос лицензии и скачивания (get_download_url) отвечает: «этот элемент не входит в текущий тариф аккаунта» (проверено на 18616 и 33034). Это значит, что в тарифе нет аудио. Превью с водяными знаками или без лицензии я не использовал, как и договаривались. Поэтому sfx_preview.mp3 не собран.
+Источник выбрала владелица: myinstants.com. Звуки скачаны в sfx/myinstants/ (как недоверенные медиа, обрабатывались только ffmpeg).
+Очищенные версии лежат в sfx/clean/: обрезана тишина, ограничены пики (без клиппинга), громкость выровнена до −18 LUFS.
 
-Ниже — подобранные варианты. Как только тариф откроет аудио (или будет другой сток), их можно скачать по этим id.
+**Важно:** звуки на myinstants загружают пользователи, права на них не гарантированы. Клипы из известных шоу, игр, песен и мемов (Seinfeld, Deltarune, FNF, BBC/CNN, iPhone и т. п.) я специально не брал, но полностью исключить Content ID нельзя.
 
-| Звук | Storyblocks id | Название |
-|---|---|---|
-| Аплодисменты, коротко | 18616 | Small Short Applause (3 с) |
-| Аплодисменты, долго | 21440 | Intensive Long Audience Clapping (9 с) |
-| Смех, лёгкий | 32974 | Crowd Laugh (2 с) |
-| Смех, большой (студийный) | 33034 | Crowd Studio Laugh (8 с) |
-| Сочувственное «ааав» | 32941 | Crowd Aww (1 с) |
-| Удивлённое «ооо» | 33014 | Crowd Scream Ohh (4 с) |
-| Осуждающее «буу» | 2725 | Crowd boos 1 (5 с) |
-| Свист из зала | 2727 | Crowd cheers and whistles (3 с) |
-| Барабанная дробь + тарелка | 355171053 | Effect Drum Answer Reveal Roll Cymbal 01 (5,6 с) |
-| Часы | 18055 | Wall Clock Ticking – Looping (8 с) |
-| Газета | 43320 | Newspaper Handle Movement (4 с) |
-| Хруст | 18694 | Single Crunch Sound (1 с) |
-| Бип цензуры | 35130 | Digital Bleep |
-| Шлепок по руке | 45253 | Hand Slap |
-| Лирическая подложка | 190900 | Emotional Piano And Guitar Romantic (40 с, музыка) |
-| «Срочные новости» | 20839 | Hot News Stingers (6 с) |
-| «Астропрогноз» | 34914 | Chime Twinkle (4 с) |
-| Сигнал телефона | 170505 | Smartphone Mobile Alert 7 (1 с) |
+| Звук | Файл | Название на myinstants | URL | Длина |
+|---|---|---|---|---|
+| аплодисменты, коротко | clean/applause_short.wav | SHORT Applause | https://www.myinstants.com/media/sounds/short-applause.mp3 | 2.2 с |
+| аплодисменты, долго | clean/applause_long.wav | crowd applause long | https://www.myinstants.com/media/sounds/applause-1.mp3 | 13.0 с |
+| лёгкий смех | clean/laugh_light.wav | Sitcom laughing short | https://www.myinstants.com/media/sounds/sitcom-laughing-short.mp3 | 5.0 с |
+| большой смех | clean/laugh_big.wav | Audience laughing | https://www.myinstants.com/media/sounds/audience-laughing.mp3 | 4.8 с |
+| сочувственное «а-ах» | clean/aww.wav | Aww | https://www.myinstants.com/media/sounds/studio-audience-awwww-sound-fx.mp3 | 1.4 с |
+| удивлённое «о-о» | clean/ooh.wav | Sitcom Crowd Ooh | https://www.myinstants.com/media/sounds/sitcom-crowd-ooh_sRDaL7d.mp3 | 1.9 с |
+| недовольный зал «у-у» | clean/boo.wav | Audience Boo 1 (4s) | https://www.myinstants.com/media/sounds/audience-boo-1-4s.mp3 | 4.1 с |
+| крики и свист | clean/cheer_whistle.wav | 9-Applause Cheering | https://www.myinstants.com/media/sounds/9-applause-cheering.mp3 | 3.7 с |
+| барабанная дробь с тарелкой | clean/drumroll.wav | Drum roll with cymbal crash | https://www.myinstants.com/media/sounds/drum-roll-with-cymbal-crash_3hrkGoY.mp3 | 7.5 с |
+| тиканье часов | clean/clock.wav | Clock Tick Tock | https://www.myinstants.com/media/sounds/clock-tick-tock.mp3 | 5.0 с |
+| шорох газеты | clean/newspaper.wav | Open Newspaper | https://www.myinstants.com/media/sounds/open-newspaper.mp3 | 1.9 с |
+| хруст | clean/crunch.wav | Apple Crunch | https://www.myinstants.com/media/sounds/apple-crunch.mp3 | 4.3 с |
+| бип цензуры | clean/beep.wav | Censor Beep 1 | https://www.myinstants.com/media/sounds/censor-beep-1.mp3 | 0.2 с |
+| шлепок | clean/slap.wav | Slap Sound Effect No Copyright | https://www.myinstants.com/media/sounds/slap-sound-effect-no-copyright.mp3 | 0.5 с |
+| «Срочные новости» | clean/news_sting.wav | News Intro Breaking News | https://www.myinstants.com/media/sounds/news_intro-maximilien_-1801238420_2.mp3 | 5.1 с |
+| «Астропрогноз» | clean/chime.wav | Magic Chimes | https://www.myinstants.com/media/sounds/magic-chimes.mp3 | 4.3 с |
+| сигнал телефона | clean/phone.wav | Message Tone | https://www.myinstants.com/media/sounds/message-tone_tezPBhx.mp3 | 5.1 с |
+
+Лирическую подложку на myinstants не нашёл (там только песни, у которых есть правообладатели), поэтому остаётся наша синтезированная подложка из prep.py.
+
+**Проверка речи.** Whisper с VAD:
+- в аплодисментах, дроби, часах, газете, хрусте, бипе, шлепке, «новостях» и телефоне речи нет;
+- в смехе слышно «ха-ха», в «о-о» — «No!», то есть голоса толпы;
+- первый вариант «Crowd Cheer + Applause» дал фразу «Thank you very much», поэтому я заменил его на «9-Applause Cheering» (в нём есть свист).
+
+Предпрослушивание: sfx_preview.mp3 (≈48 с), девять звуков зала. Перед каждым Эльвира называет номер и звук.
+
+Старый шорт-лист Storyblocks не использовался: тариф аккаунта не включает скачивание аудио.
