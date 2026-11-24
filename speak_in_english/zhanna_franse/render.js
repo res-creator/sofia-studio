@@ -29,14 +29,14 @@ const NAIL = '#d63a8a', FEET = 1900, TABLE = 1400;
 // ---------- shot list (song time = video time; scene cuts on strong beats, every shot >= 1.2 s) ----------
 const SC = Object.fromEntries(TL.SC.map(([k, a]) => [k, a]));
 const SH = [   // [start, scene, camera fn]
-  [0, 'perfume'], [SC.label, 'label'], [SC.perfume2, 'perfume2'], [SC.croissant, 'croissant'], [SC.beret, 'beret'], [SC.eiffel, 'eiffel'], [SC.kvas, 'kvas'],
-  [SONG, 'two'], [BY.z1.at - .15, 'zcu'], [BY.k2.at - .12, 'kcu'], [BY.z2.at - .12, 'zcu2'], [BY.z2.end + .25, 'petro'], [TL.END, 'end']];
+  [0, 'perfume'], [SC.perfume2, 'perfume2'], [SC.croissant, 'croissant'], [SC.beret, 'beret'], [SC.eiffel, 'eiffel'], [SC.kvas, 'kvas'],
+  [SONG, 'two'], [BY.z1.at - .15, 'zcu'], [BY.k2.at - .12, 'kcu'], [BY.z2.at - .12, 'zcu2'], [BY.z2.end + .1, 'petro']];
 const shotAt = t => { let s = SH[0], i = 0; SH.forEach((q, j) => { if (t >= q[0]) { s = q; i = j; } }); return {k: s[1], a: s[0], b: (SH[i + 1] || [TL.TOTAL])[0], i}; };
 const ZX = 540, ZX2 = 390, KX = 770;   // Zhanna alone / in the two-shot, Kaylee in the two-shot
 function camAt(t, sh) { const u = t - sh.a, d = sh.b - sh.a;
   switch (sh.k) {
     case 'perfume': return {z: lerp(1.28, 1.4, eio(clamp(u / d))), x: ZX + 40, y: 1060};
-    case 'perfume2': return {z: 1.7, x: ZX + 50, y: 990};
+    case 'perfume2': return {z: lerp(1.55, 1.72, eio(clamp(u / d))), x: ZX + 60, y: 1000};   // grand pose in her own shot, mist cloud, no cut to the bottle
     case 'croissant': { const pull = eio(P01(t, SC.reveal, .55)); return {z: lerp(2.15, 1.25, pull), x: lerp(ZX + 40, ZX + 40, pull), y: lerp(975, 1080, pull)}; }   // tight on the «croissant», real pull-back on the beat
     case 'beret': return {z: lerp(1.25, 1.36, eio(clamp(u / d))), x: ZX, y: 1000};
     case 'eiffel': { const pull = eio(P01(t, SC.wheel, .65)); return {z: lerp(1.55, .62, pull), x: lerp(ZX - 40, 540, pull), y: lerp(1020, 760, pull)}; }   // tight: lattice behind her looks like the tower; pull-back: a ferris wheel
@@ -76,11 +76,11 @@ const ZG = {
 };
 const ZHS = {voila: ['open', 'open'], present: ['open', 'open'], explain: ['open', 'open'], capup: ['open', 'open'], hips: ['fist', 'fist'], rest: ['open', 'open']};
 const shapeOf = (tab, gname, sd) => (tab[gname] || ['open', 'fist'])[sd > 0 ? 0 : 1];
-const SPRAYS = [.7, 2.1, 4.35, 4.95];   // perfume puffs (song beats)
+const SPRAYS = [3.45, 4.81];   // second-shot perfume puffs (song beats; first shot puffs at .7 and 2.11)
 const CAPDROP = [10.83, 11.55];          // shower cap goes on in the gap before «У…»
 const BITE = [8.3, 8.95];                // bite in the vocal gap after «…дерьмо»
 function zGest(t) {
-  if (t < SC.label) return t >= .55 && t < .95 || t >= 1.95 && t < 2.35 ? 'spray' : 'perfume';
+  if (t < SC.perfume2) return t >= .55 && t < .95 || t >= 1.95 && t < 2.35 ? 'spray' : 'perfume';
   if (t < SC.croissant) return SPRAYS.some(p => t >= p - .15 && t < p + .25) ? 'spray' : 'perfume';
   if (t < SC.beret) return t >= BITE[0] && t < BITE[1] ? 'bite' : 'pastry';
   if (t < SC.eiffel) return t >= CAPDROP[0] - .35 && t < CAPDROP[1] ? 'capup' : 'pose';
@@ -94,7 +94,7 @@ function blendArms(fnAt, GT, t, dur = .2) { const a1 = fnAt(t); let prev = a1, k
   const e = ease(k), f0 = GT[prev], f1 = GT[a1]; return {fn: s => f1(s).map((p, i) => [lerp(f0(s)[i][0], p[0], e), lerp(f0(s)[i][1], p[1], e)]), cur: a1, prev, e}; }
 const wig = (fn, t, amp) => s => fn(s).map((p, i) => [p[0] + Math.sin(t * 4.3 + s + i) * amp * (i / 2), p[1] + Math.cos(t * 3.7 + i) * amp * (i / 2)]);
 function zMood(t) {
-  if (t < SC.label) return 'smug'; if (t < SC.croissant) return t < SC.perfume2 + .5 ? 'proud' : 'smugside';
+  if (t < SC.perfume2) return 'smug'; if (t < SC.croissant) return t < 4.3 ? 'proud' : 'dreamy';
   if (t < SC.reveal) return 'dreamy'; if (t < SC.beret) return t >= BITE[0] && t < BITE[1] + .2 ? 'smug' : 'proud';
   if (t < SC.eiffel) return t < 12.2 ? 'smug' : 'flirty'; if (t < SC.kvas) return t < SC.wheel ? 'proud' : 'smugside';
   if (t < SONG) return t < 20.1 ? 'smug' : 'proud';
@@ -175,7 +175,7 @@ function zhanna(t, x, y, S, opt = {}) { const a = blendArms(zGest, ZG, t, sinceC
   armOver(fn, x, y, S, ZH);
   DIRS = {}; for (const sd of [-1, 1]) { const P3 = fn(sd); DIRS[sd] = Math.atan2(P3[2][1] - P3[1][1], P3[2][0] - P3[1][0]); }
   const [rx, ry, ra] = hpos(fn, 1, x, y, S), skin = ZH.pal.skin, H = (hx, hy, rot, w, o = {}) => ({x: hx, y: hy, rot, S, skin, nail: NAIL, w, ...o}), skip = new Set(), G = a.e < .5 ? a.prev : a.cur;
-  if (G === 'perfume' || G === 'spray') { skip.add(1); let puff = 0; for (const p of [.75, 2.15, ...SPRAYS]) if (t >= p && t < p + .7) puff = (t - p) / .7; gripObject(() => perfumeBottle(rx, ry + 52 * S, S * 1.05, puff), H(rx, ry, 0, 48 * S)); regProp('perfume', rx - 50 * S, ry - 130 * S, 100 * S, 190 * S); }
+  if (G === 'perfume' || G === 'spray') { skip.add(1); let puff = 0; for (const p of [.7, 2.11, ...SPRAYS]) if (t >= p && t < p + .7) puff = (t - p) / .7; gripObject(() => perfumeBottle(rx, ry + 52 * S, S * 1.05, puff), H(rx, ry, 0, 48 * S)); regProp('perfume', rx - 50 * S, ry - 130 * S, 100 * S, 190 * S); }
   if (G === 'pastry' || G === 'bite') { skip.add(1); const bitten = t >= BITE[0] + .3; gripObject(() => pastry(rx - 70 * S, ry - 4 * S, -.08, S * .95, bitten), H(rx, ry, 0, 34 * S, {fist: false})); regProp('pastry', rx - 165 * S, ry - 45 * S, 190 * S, 80 * S); }
   if (G === 'glass' || G === 'toast') { skip.add(1); const tilt = G === 'toast' ? -.15 + .05 * Math.sin(t * 6) : 0; gripObject(() => glassProp(rx, ry + 30 * S, S * 1.1, tilt), H(rx, ry, 0, 10 * S, {fist: true})); regProp('glass', rx - 40 * S, ry - 170 * S, 80 * S, 200 * S);
     if (G === 'toast') for (let k = 0; k < 3; k++) sparkle(rx + (k - 1) * 50 * S, ry - 220 * S - k * 20 * S, 14 * S, Math.max(0, Math.sin(t * 7 + k * 2))); }
@@ -210,11 +210,7 @@ function labelInsert(t, u) { g.fillStyle = '#f7c6da'; g.fillRect(0, 0, W, H); fo
 
 // ---------- captions (owner's old style: whole phrase opaque, pops in; English/Runglish yellow, Russian white, black outline) ----------
 const Y = '#ffd23f', Wh = '#ffffff';
-const SCAP = [   // song section: only short scene captions (no lyrics)
-  [SC.reveal + .25, SC.beret - .05, [['Ле', Y], ['круассан', Y], ['а-ля', Y], ['капуста', Wh]]],
-  [11.4, SC.eiffel - .05, [['Ле', Y], ['берет.', Wh], ['Very', Y], ['fancy.', Y]]],
-  [SC.wheel + .12, SC.kvas - .02, [['Ле', Y], ['Пари.', Y], ['Почти.', Wh]]],
-  [18.4, SONG - .02, [['Ле', Y], ['шампань.', Y], ['On', Y], ['sale.', Y]]]];
+const SCAP = [];   // owner: no captions in the song section, the picture tells the jokes
 const SPLIT = { k1: [['Aunt Zhanna, do you even speak French?', 'Тётя Жанна, ты вообще говоришь по-французски?', 1]],
   z1: [['Деточка, конечно.', null, .38], ['Мерси, бонжур… ле шоппинг.', null, 1]], k2: [["Shopping isn't French!", 'Шоппинг — это не по-французски!', 1]],
   z2: [['It is!', null, .44], ['Это когда платит Петрович.', null, 1]], p1: [['Угу.', null, 1]] };
@@ -224,8 +220,7 @@ const CAPS = [];
 for (const s of SCAP) CAPS.push({a: s[0], b: s[1], words: s[2], tr: null});
 for (const l of L) { if (!SPLIT[l.id]) continue; let a = l.at - .05; const n = SPLIT[l.id].length; SPLIT[l.id].forEach(([s, tr, f], i) => { const b = i === n - 1 ? Math.max(l.end + .35, a + 1.25) : l.at + (l.end - l.at) * f; CAPS.push({a, b: Math.max(b, a + 1.25), words: s.split(' ').map(w => [w, isEn(w) ? Y : Wh]), tr}); a = b; }); }
 CAPS.sort((p, q) => p.a - q.a); for (let i = 0; i < CAPS.length - 1; i++) if (CAPS[i].b > CAPS[i + 1].a) CAPS[i].b = CAPS[i + 1].a;
-const CHIPS = [{a: SC.label + .1, b: SC.croissant - .05, w: 'knockoff', tr: 'подделка'}, {a: 11.75, b: SC.eiffel - .05, w: 'fancy', tr: 'шикарный'}, {a: 18.9, b: SONG - .02, w: 'on sale', tr: 'по скидке'},
-  {a: BY.z1.at + (BY.z1.end - BY.z1.at) * .4, b: BY.z1.end + .3, w: 'merci', tr: 'спасибо (франц.)'}];
+const CHIPS = [];   // owner: no translation chips
 function outlinedWords(words, y, size0) { let size = size0; g.font = `${size}px ${FONT}`; const sp = () => g.measureText(' ').width, tw0 = () => words.reduce((a, [w]) => a + g.measureText(w).width, 0) + sp() * (words.length - 1);
   let tw = tw0(); while (tw > 980 && size > 34) { size -= 4; g.font = `${size}px ${FONT}`; tw = tw0(); } let x = 540 - tw / 2; g.textAlign = 'left'; g.textBaseline = 'middle'; g.lineJoin = 'round';
   CAPBOX.push(['caption', 540 - tw / 2, y - size * .6, tw, size * 1.2]);
@@ -248,13 +243,12 @@ function endTable(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(3
 function world(t, c, set, draw) { g.save(); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); set(t); draw(); g.restore(); }
 function frame(t) { PROPBOX = []; FACEBOX = []; CAPBOX = []; g = G0; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = INK; g.fillRect(0, 0, W, H);
   const sh = shotAt(t), c = camAt(t, sh), Zs = .86;
-  if (sh.k === 'label') labelInsert(t, (t - sh.a) / (sh.b - sh.a));
-  else if (sh.k === 'eiffel') world(t, c, boardwalk, () => zhanna(t, ZX, FEET, Zs));
+  if (sh.k === 'eiffel') world(t, c, boardwalk, () => zhanna(t, ZX, FEET, Zs));
   else if (sh.k === 'petro') petrovich(t);
-  else if (['two', 'zcu', 'kcu', 'zcu2', 'end'].includes(sh.k)) world(t, c, apartment, () => { zhanna(t, ZX2, FEET, Zs * .92, {look: .6}); kaylee(t, KX, FEET, Zs * .86); table(t, {}); });
+  else if (['two', 'zcu', 'kcu', 'zcu2'].includes(sh.k)) world(t, c, apartment, () => { zhanna(t, ZX2, FEET, Zs * .92, {look: .6}); kaylee(t, KX, FEET, Zs * .86); table(t, {}); });
   else world(t, c, apartment, () => { zhanna(t, ZX, FEET, Zs); table(t, {bag: sh.k === 'croissant' && t >= SC.reveal, kvas: sh.k === 'kvas', vase: sh.k !== 'kvas'}); });
   const v = g.createRadialGradient(W / 2, H * .45, 650, W / 2, H * .45, 1250); v.addColorStop(0, 'rgba(30,15,30,0)'); v.addColorStop(1, 'rgba(30,15,30,0.14)'); g.fillStyle = v; g.fillRect(0, 0, W, H);
-  if (process.env.NOCAP) return sh; hookPlate(t); if (sh.k === 'end') endTable(t); else { chip(t); caption(t); } return sh; }
+  if (process.env.NOCAP) return sh; hookPlate(t); caption(t); return sh; }
 
 // ---------- modes ----------
 const [mode, arg, outName] = process.argv.slice(2);

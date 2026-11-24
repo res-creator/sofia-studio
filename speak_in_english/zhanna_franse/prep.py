@@ -40,7 +40,7 @@ for idx, (tp, v) in enumerate(syl):
 print('syllables', len(syl), 'open frames %', round(100 * np.mean(sing > .12)))
 # ---------- 2. spoken punchline ----------
 S = json.load(open('voice/script.json')); TEMPO = {'z': 1.2, 'k': 1.05, 'p': 1.0}
-GAP = {'k1': .3, 'z1': .3, 'k2': .25, 'z2': 1.35}   # z2 -> cold pause + newspaper rustle before «Угу»
+GAP = {'k1': .12, 'z1': .12, 'k2': .1, 'z2': .85}   # tight punchline; z2 -> short cold pause + newspaper rustle before «Угу»
 def load(k, who):
     o = f'out/v_{k}.wav'; af = 'silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse'
     if who == 'z': af += ',silenceremove=stop_periods=-1:stop_duration=0.24:stop_threshold=-42dB:stop_silence=0.17'
@@ -58,12 +58,12 @@ def mouthEnv(x, fps=30, win=.035, hyst=1.5):
             if 0 < i < m - 1 and d[i] <= d[i - 1] and d[i] <= d[i + 1] and nb.max() - d[i] > 2.5: continue
             env[i] = .3 + .7 * min(1, max(0, (d[i] - thr) / max(1e-6, h0 - thr))) ** .8
     return [round(float(v), 3) for v in env]
-t = SONG_LEN + .35; L = [{'id': 'song', 'who': 'z', 'text': '', 'at': 0.0, 'end': SONG_LEN, 'env': [round(float(v), 3) for v in sing], 'round': [int(v) for v in rnd]}]; clips = []
+t = SONG_LEN + .2; L = [{'id': 'song', 'who': 'z', 'text': '', 'at': 0.0, 'end': SONG_LEN, 'env': [round(float(v), 3) for v in sing], 'round': [int(v) for v in rnd]}]; clips = []
 for k, who, text in S['lines']:
     x = load(k, who)
     if who == 'p': x = x * .8
     L.append({'id': k, 'who': who, 'text': text, 'at': round(t, 3), 'end': round(t + len(x) / SR, 3), 'env': mouthEnv(x)}); clips.append((t, x)); t += len(x) / SR + GAP.get(k, .25)
-by = {l['id']: l for l in L}; END = round(L[-1]['end'] + .7, 3); TOTAL = round(END + 3.0, 3)
+by = {l['id']: l for l in L}; END = round(L[-1]['end'] + .9, 3); TOTAL = END   # no end table: the video ends on Petrovich's «Угу»
 voice = np.zeros(int(TOTAL * SR) + SR)
 for at, x in clips: i = int(at * SR); voice[i:i + len(x)] += x
 fx = np.zeros_like(voice); rng = np.random.default_rng(5)
@@ -71,11 +71,10 @@ def tone(f, d, v=.2, shape=lambda x: np.exp(-x * 6)): x = np.arange(int(d * SR))
 def noise(d, v, sm=30): q = rng.standard_normal(int(d * SR)); return np.convolve(q, np.ones(sm) / sm, 'same') * np.hanning(len(q)) * v
 def put(at, x): i = int(at * SR); fx[i:i + len(x)] += x[:len(fx) - i]
 # scene layout on strong beats (song time); every shot >= 1.2 s
-SC = [['perfume', 0.0], ['label', 2.79], ['perfume2', 4.17], ['croissant', 5.45], ['reveal', 8.14], ['beret', 10.83], ['eiffel', 14.32], ['wheel', 16.42], ['kvas', 17.82], ['talk', SONG_LEN]]
-RUSTLE = round(by['z2']['end'] + .55, 3)
+SC = [['perfume', 0.0], ['perfume2', 2.79], ['croissant', 5.45], ['reveal', 8.14], ['beret', 10.83], ['eiffel', 14.32], ['wheel', 16.42], ['kvas', 17.82], ['talk', SONG_LEN]]
+RUSTLE = round(by['z2']['end'] + .25, 3)
 put(RUSTLE, noise(.35, .5, 6)); put(RUSTLE + .4, noise(.2, .35, 6))                       # newspaper rustle before «Угу»
 put(SONG_LEN + .05, tone(1600, .06, .05, lambda x: np.exp(-x * 20)))                       # tiny record-scratch-ish tick as the song is cut
-put(END, tone(1046, 1.0, .1) + tone(1568, 1.0, .06))                                       # end table chime
 mix = voice + fx; mix = mix / max(1e-6, np.abs(mix).max()) * .89
 sf.write('out/audio_raw.wav', mix, SR)
 subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', 'out/audio_raw.wav', '-af', 'loudnorm=I=-15:TP=-1.5', '-ar', '44100', 'out/audio.wav'], check=True)
