@@ -179,7 +179,7 @@ const POSES = {
 function shoe(c, fx, fy, ang, dir) { g.save(); const piv = ang > 0 ? [fx + dir * 55, fy] : [fx - dir * 45, fy]; g.translate(piv[0], piv[1]); g.rotate(ang * dir); g.translate(-piv[0], -piv[1]);
   const b0 = fx - dir * 50, b1 = fx + dir * 60; P(); g.moveTo(b0, fy - 20); g.bezierCurveTo(b0, fy - 90, fx + dir * 50, fy - 100, b1, fy - 30); g.lineTo(b1, fy); g.lineTo(b0, fy); g.closePath(); fs(c.shoe || '#ffffff');
   line([[b0, fy - 12], [b1, fy - 12]], 6, c.sole || '#e05a2a'); g.restore(); }
-function legs(st, c) { const dir = st.walkDir || 0; for (const s of [-1, 1]) { const F = st.walk ? st.walk[s] : [s * 46, 0, 0], hip = [s * 40, -580], ank = [F[0], F[1] - 90], L = 262;
+function legs(st, c) { const dir = st.walkDir || 0; for (const s of [-1, 1]) { const F = st.walk ? st.walk[s] : [s * 46, 0, 0], hip = [s * 40, -580], ank = [F[0], F[1] - 90], L = 245.5;   // 2L = standing hip-to-ankle: a leg at full reach is straight
     const dx = ank[0] - hip[0], dy = ank[1] - hip[1], dd = Math.hypot(dx, dy) || 1, d = Math.min(dd, 2 * L - 1), h = Math.sqrt(Math.max(0, L * L - (d / 2) * (d / 2)));
     const mid = [hip[0] + dx / 2, hip[1] + dy / 2], n = [-dy / dd, dx / dd]; let sg = dir ? (n[0] * dir >= 0 ? 1 : -1) : (n[0] * s >= 0 ? 1 : -1);
     const knee = [mid[0] + n[0] * h * sg, mid[1] + n[1] * h * sg]; limb([hip, knee, ank], 44, c.legs || c.bottom); if (h > 20) ell(knee[0], knee[1], 23, 23, c.legs || c.bottom, 0);
@@ -200,8 +200,12 @@ function walkPose(t, t0, dur, A, B, scA, scB, stride = 90) {
       const u0 = kf - kl, u1 = stanceEnd - kf; let ang = 0; if (kl >= 1 && u0 < .25) ang = -.3 * (1 - u0 / .25); if (kl < N && u1 < .35 && kn <= N + 1 && kf > 0) ang = .45 * (1 - u1 / .35); Fw[s] = [a[0], a[1], 0, ang, a[2]]; }
     else { const e = Math.min(1, (kf - lift) / (Math.min(kn, N) - lift)), ee = e * e * (3 - 2 * e), b = land(Math.min(kn, N), s); Fw[s] = [a[0] + (b[0] - a[0]) * ee, a[1] + (b[1] - a[1]) * ee, Math.sin(Math.PI * e), .15 - .25 * e, a[2]]; } }
   const bx = (Fw[-1][0] + Fw[1][0]) / 2, by = (Fw[-1][1] + Fw[1][1]) / 2, sc = (Fw[-1][4] + Fw[1][4]) / 2, moving = t > t0 && t < t0 + dur, ph = kf - Math.floor(kf);
-  const bob = moving ? -26 * Math.pow(Math.sin(Math.PI * Math.max(0, ph - .1) / .9), 2) + 6 : 0;   // lowest just after contact (down), highest at passing (~2 % of height)
-  const feet = {}; for (const s of [-1, 1]) feet[s] = [(Fw[s][0] - bx) / sc + s * 60, (Fw[s][1] - by) / sc + s * 8 - Fw[s][2] * 60 - bob, Fw[s][3]];
+  // hip height from the legs: every planted foot must be reachable with a STRAIGHT leg (2L = 491) -> body lowest when both feet are planted and spread
+  // (contact), highest when the stance leg is vertical (passing). Down: the stance leg flexes a little right after contact (absorbs the weight).
+  const rel = {}; for (const s of [-1, 1]) rel[s] = (Fw[s][0] - bx) / sc + s * 60;
+  let D = 0; for (const s of [-1, 1]) if (Fw[s][2] < .02) { const dx = rel[s] - s * 40; D = Math.max(D, 491 - Math.sqrt(Math.max(0, 491 * 491 - dx * dx))); }
+  const flex = moving ? 14 * Math.max(0, Math.sin(Math.PI * Math.min(1, ph / .45))) * (ph < .45 ? 1 : 0) : 0, bob = moving ? D + flex : 0;
+  const feet = {}; for (const s of [-1, 1]) feet[s] = [rel[s], (Fw[s][1] - by) / sc + s * 8 - Fw[s][2] * 70 - bob, Fw[s][3]];
   const legPh = s => Math.cos(Math.PI * (kf - (s > 0 ? 1 : 0)));   // +1 when that leg is forward
   return {x: bx, y: by, s: sc, walk: feet, walkDir: dir, bob, lean: moving ? dir * (.045 + .012 * Math.sin(Math.PI * kf)) : 0,
     swing: {'-1': moving ? -legPh(1) * dir : 0, '1': moving ? -legPh(-1) * dir : 0}}; }   // each arm swings forward with the opposite leg
