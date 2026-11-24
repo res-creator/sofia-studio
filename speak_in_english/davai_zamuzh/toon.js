@@ -328,6 +328,7 @@ function draw(gg, st) { g = gg; const c = palOf(st), E = st.moodFrom ? blendMood
   g.save(); headT(); if (st.backFx) st.backFx(g, HY); hairBack(st, c); g.restore(); if (!st.seated) legs(st, c);
   const front = st.front ?? (st.pose === 'hold' || st.pose === 'desk' || st.pose === 'fists');
   if (!front) { arm(st, c, -1); arm(st, c, 1); } torso(st, c); if (front) { arm(st, c, -1); arm(st, c, 1); }
+  if (st.neckFx) { g.save(); st.neckFx(g); g.restore(); }   // necklaces / shawls: body coords, drawn UNDER the head so the jaw and chin always stay on top
   g.save(); headT(); face(st, c); if (st.moustache) moustache(st, c); if (st.faceFx) st.faceFx(g, HY); hairFront(st, c); accessories(st, c); if (st.hairFx) st.hairFx(g, HY); if (st.cap) cap(st, c);
   if (st.sweat) { P(); g.moveTo(190, HY - 60); g.quadraticCurveTo(218, HY - 14, 204, HY + 6); g.quadraticCurveTo(190, HY + 20, 176, HY + 6); g.quadraticCurveTo(168, HY - 14, 190, HY - 60); fs('#8fd2ff', 5); } g.restore();
   g.restore(); }

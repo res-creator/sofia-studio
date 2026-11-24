@@ -3,8 +3,8 @@
 const fs = require('fs'), {spawn} = require('child_process'), {createCanvas} = require('@napi-rs/canvas');
 const src = fs.readFileSync(`${__dirname}/sheet.js`, 'utf8'), cutAt = src.indexOf('// ---------- layout ----------');
 const HX = new Function('require', '__dirname', src.slice(0, cutAt) + `
-return {setG: v => { g = v; }, T, P, fsx, ell, rr, ln, body, chair, seat, LAP, backPerson, petrovich, pearls, shawl, shade, HIP, SEAT_H, ZH, EL, ZV, BR, MK, JS, RY, crystalBall, tarot, laptop, kale, phone, watch};`)(require, __dirname);
-const {T, P, fsx, ell, rr, ln, body, chair, seat, backPerson, petrovich, pearls, shawl, shade, HIP, SEAT_H, ZH, EL, ZV, BR, MK, JS, RY, laptop, kale, phone, watch} = HX;
+return {setG: v => { g = v; }, T, P, fsx, ell, rr, ln, body, chair, seat, LAP, backPerson, petrovich, pearls, shawl, shade, HIP, SEAT_H, ZH, EL, ZV, BR, MK, JS, RY, crystalBall, tarot, laptop, kale, phone, watch, pearlsFx, shawlFx};`)(require, __dirname);
+const {T, P, fsx, ell, rr, ln, body, chair, seat, backPerson, petrovich, pearls, shawl, pearlsFx, shawlFx, shade, HIP, SEAT_H, ZH, EL, ZV, BR, MK, JS, RY, laptop, kale, phone, watch} = HX;
 const PART = +(process.env.PART || 1), TL = require(`./timeline${PART}.json`), L = TL.L, BY = Object.fromEntries(L.map(l => [l.id, l]));
 if (PART === 1) TL.CRASH = 2.5;   // teaser: the crypto chart falls in the third teaser shot
 const W = 1080, H = 1920, FPS = 30, INK = '#2a2230', FONT = 'NBL, NBC', VW = 1080, VH = 1920, FL = 860;
@@ -18,6 +18,14 @@ const poly = (pts, fill, lw = 7) => { P(); pts.forEach((p, i) => i ? g.lineTo(..
 const add = (a, b) => [a[0] + b[0], a[1] + b[1]], lrp = (a, b, u) => [a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u];
 function heart(hx, hy, s, col) { P(); g.moveTo(hx, hy + 22 * s); g.bezierCurveTo(hx - 40 * s, hy - 6 * s, hx - 20 * s, hy - 34 * s, hx, hy - 14 * s); g.bezierCurveTo(hx + 20 * s, hy - 34 * s, hx + 40 * s, hy - 6 * s, hx, hy + 22 * s); fsx(col, 4); }
 
+// ---------- draw recorder for accaudit: faces (jaw boxes) and everything drawn after them, mapped to screen ----------
+let REC = null;
+function recBox(k, x0, y0, x1, y1, extra = {}) { if (!REC) return; const m = g.getTransform(), P2 = (x, y) => [m.a * x + m.c * y + m.e, m.b * x + m.d * y + m.f], a = P2(x0, y0), b = P2(x1, y1);
+  REC.push({k, x0: Math.min(a[0], b[0]), y0: Math.min(a[1], b[1]), x1: Math.max(a[0], b[0]), y1: Math.max(a[1], b[1]), n: REC.length, ...extra}); }
+function recFace(who, x, by, sc, mouth) { const hy = by - 1062 * sc, hw = 152 * 1.2 * sc; recBox('face', x - hw, hy - 165 * 1.2 * sc, x + hw, hy + 176 * 1.2 * sc, {who});   // whole head
+  recBox('jaw', x - hw * .85, hy + 40 * 1.2 * sc, x + hw * .85, hy + 176 * 1.2 * sc, {who, talk: mouth > .05}); }
+const recProp = (name, x0, y0, x1, y1) => recBox('prop', x0, y0, x1, y1, {name});
+const recText = (name, x0, y0, x1, y1) => recBox('text', x0, y0, x1, y1, {name});
 // ---------- studio Б ----------
 const HY = 1100, HS = .3, HOSTX = {e: 380, z: 545, s: 710}, BX = 190, BYF = 1580, BS = .36, SOFA = 800, GS = .32, GX = {m: 640, j: 800, r: 960}, STAND = [430, 1450], STS = .32;
 const DESK = [[255, HY - 470 * HS], [800, HY - 470 * HS], [800, HY + 40], [255, HY + 40]], DTOP = HY - 470 * HS;
@@ -28,23 +36,23 @@ function sign(t) { const cx = 540, y = 70, w = 760, h = w * .2, x = cx - w / 2; 
 function door(t) { const cx = 110, w = 170, h = w * 1.6, x = cx - w / 2, y = FL - h; rr(x - 16, y - 16, w + 32, h + 16, 20, '#f2d06a'); rr(x, y, w, h, 12, '#3a1a4a', 5);
   const open = doorOpen(t); if (open > 0) { g.save(); g.globalAlpha = open; g.fillStyle = '#fff0c8'; g.fillRect(x + 8, y + 8, w - 16, h - 8); g.restore(); }
   heart(cx, y - 46, 1.9, '#ff4f8f'); }
-function desk(t) { const [TL0, TR, BR, BL] = DESK, d = [28, -28]; poly([add(BL, [-14, 0]), add(BR, [14, 0]), add(BR, [14, 20]), add(BL, [-14, 20])], '#4a2050', 6);
+function desk(t) { const [TL0, TR, BR, BL] = DESK, d = [28, -28]; recProp('desk', 255, DTOP - 28, 828, HY + 60); poly([add(BL, [-14, 0]), add(BR, [14, 0]), add(BR, [14, 20]), add(BL, [-14, 20])], '#4a2050', 6);
   poly([TR, add(TR, d), add(BR, d), BR], '#a82848'); poly([TL0, TR, BR, BL], '#c8325a'); poly([TL0, TR, add(TR, d), add(TL0, d)], '#e9bb34', 6);
   for (let k = 0; k < 4; k++) { const u = (k + .5) / 4, p = lrp(lrp(TL0, TR, u), lrp(BL, BR, u), .52); heart(p[0], p[1], 1.15, '#ffd0e0'); } }
 function deskProps(t) { // crystal ball in front of Звездана, ficus at the right end (slides away from Josh in part 2)
-  const bx = 782, by = DTOP - 6, r = 34, glow = PART === 1 ? clamp(1 - Math.abs(t - TL.BALL - .8) / 1.2) : TL.BALL0 ? clamp((t - TL.BALL0) / .4) * (t < TL.BALL0 + 3.4 ? 1 : 0) : 0;
-  ell(bx, by, r * .8, r * .3, '#d4a82a', 5); if (glow > 0) { g.save(); g.globalAlpha = glow * .5; ell(bx, by - r, r * 1.35, r * 1.35, '#fff0a0', 0); g.restore(); }
+  const bx = 806, by = DTOP - 6, r = 32, glow = PART === 1 ? clamp(1 - Math.abs(t - TL.BALL - .8) / 1.2) : TL.BALL0 ? clamp((t - TL.BALL0) / .4) * (t < TL.BALL0 + 3.4 ? 1 : 0) : 0;
+  recProp('ball', bx - r * 1.4, by - r * 2.4, bx + r * 1.4, by + 10); ell(bx, by, r * .8, r * .3, '#d4a82a', 5); if (glow > 0) { g.save(); g.globalAlpha = glow * .5; ell(bx, by - r, r * 1.35, r * 1.35, '#fff0a0', 0); g.restore(); }
   ell(bx, by - r, r, r, '#b9e6ff', 6); ell(bx - 6, by - r - 4, r * .55, r * .55, '#d8c4ff', 0); ell(bx - 12, by - r - 14, 7, 5, 'rgba(255,255,255,.9)', 0);
   if (PART === 2 && TL.BALL0 && t >= TL.BALL0 && t < TL.BALL0 + 3.4) fitLog('0', bx, by - r, r * 1.3, r * 1.3, 60, '#c0283a', {pad: 1});
   const fx = 880 + (PART === 2 ? 50 * ease(P01(t, TL.FICUS + .3, .5)) : 0), fy = HY + 30;   // Звездана's ficus stands on the floor right of the desk
   rr(fx - 34, fy - 70, 68, 70, 10, '#c0703a', 5); ln([[fx, fy - 70], [fx, fy - 170]], 7, '#6a4a2a'); for (const [a, l] of [[-2.4, 70], [-1.9, 84], [-1.3, 84], [-.8, 70], [-2.8, 56], [-.3, 56]]) { const ex = fx + Math.cos(a) * l, ey = fy - 170 + Math.sin(a) * l * .8 + 40; ln([[fx, fy - 150], [ex, ey]], 5, '#2f6a2a'); ell(ex, ey, 22, 13, '#4f9e3f', 4); } }
-function plantStand(t) { const x = 312, y = 1470; rr(x - 26, y - 150, 52, 150, 8, '#f2d06a', 5); rr(x - 44, y - 170, 88, 26, 8, '#e9bb34', 5); rr(x - 30, y - 230, 60, 62, 10, '#ffffff', 5);
+function plantStand(t) { const x = 312, y = 1470; recProp('plant', x - 110, y - 330, x + 110, y); rr(x - 26, y - 150, 52, 150, 8, '#f2d06a', 5); rr(x - 44, y - 170, 88, 26, 8, '#e9bb34', 5); rr(x - 30, y - 230, 60, 62, 10, '#ffffff', 5);
   const bitten = PART === 2 && t >= TL.NIBBLE; for (const [a, l, k] of [[-2.2, 70, 0], [-1.6, 84, 1], [-1.0, 70, 2], [-2.7, 56, 3], [-.5, 56, 4]]) { if (bitten && k === 4) continue; const ex = x + Math.cos(a) * l, ey = y - 228 + Math.sin(a) * l; ln([[x, y - 226], [ex, ey]], 5, '#2f6a2a'); ell(ex, ey, 22, 13, k % 2 ? '#5fb04a' : '#4f9e3f', 4); }
   if (!bitten || true) { ell(x - 20, y - 300, 22, 22, '#ff7aa8', 5); ell(x + 18, y - 296, 18, 18, '#ffb0c8', 5); } }
 function sofaSide() { body(SOFA, BYF, GS, () => poly([[-560, -SEAT_H - 380], [-660, -SEAT_H - 300], [-660, -40], [-560, 0]], shade('#3a6aa8', .75), 6)); }
 function armchair34(x, y, sc, col) { body(x, y, sc, () => poly([[-205, -SEAT_H - 410], [-285, -SEAT_H - 360], [-285, -SEAT_H + 90], [-205, -SEAT_H + 110]], shade(col, .75), 6)); chair(x, y, sc, 420, col); }
 const AUD = [['#6a4a8a', '#3a2a20'], ['#3a6a8a', '#7a5030', 'long'], ['#8a4a5a', '#2a1f1a'], ['#4a7a5a', '#c9a060', 'bun'], ['#6a5a8a', '#5a3a2a']], AUDX = [95, 300, 505, 710, 915], PETRO = 1;
-function audience(t) { AUDX.forEach((x, k) => { if (k === PETRO) { const r = PART === 2 && t >= TL.RUSTLE && t < TL.RUSTLE + .5 ? Math.sin(t * 60) * 3 : 0; g.save(); g.translate(r, 0); petrovich(x, VH + 40, .5); g.restore(); return; } const c = AUD[k]; backPerson(x, VH + 40, .5, {top: c[0], hair: c[1], long: c[2] === 'long', bun: c[2] === 'bun'}); }); }
+function audience(t) { recProp('audience', 0, VH + 40 - 640 * .5, VW, VH); AUDX.forEach((x, k) => { if (k === PETRO) { const r = PART === 2 && t >= TL.RUSTLE && t < TL.RUSTLE + .5 ? Math.sin(t * 60) * 3 : 0; g.save(); g.translate(r, 0); petrovich(x, VH + 40, .5); g.restore(); return; } const c = AUD[k]; backPerson(x, VH + 40, .5, {top: c[0], hair: c[1], long: c[2] === 'long', bun: c[2] === 'bun'}); }); }
 
 // ---------- who speaks / talk ----------
 const lineFor = (who, t) => { for (const l of L) if (l.who === who && t >= l.at - .05 && t < l.end + .3) return l; return null; };
@@ -103,10 +111,10 @@ function armsFor(who, t, base = gestureAt) { const cur = base(who, t); let prev 
 const DEF = {e: EL, z: ZH, s: ZV, b: BR, m: MK, j: JS, r: RY};
 function stOf(who, t, x) { const md = T.moodAt(MOODF[who], t), ts = talkSt(who, t); return {mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, blink: blinkAt(t, SEED[who]) || md.blink, mouth: ts.mouth, round: ts.round, nod: ts.nod, talking: ts.talking, t,
   look: who === 'z' && PART === 2 && TL.HORROR && t >= TL.HORROR - .1 && t < BY.z12.end ? lerp(.9, -.9, ease(P01(t, TL.HORROR, 1.4))) : lookFor(who, t, x), tilt: .02 * Math.sin(t * .9 + SEED[who])}; }
-const ARMS = {};
+const ARMS = {}, NECK = {e: pearlsFx, s: shawlFx};
 function seated(who, x, y, sc, t, o = {}) { const a = armsFor(who, t); ARMS[who] = {a, x, y: y + (HIP - SEAT_H) * sc, sc}; const st = stOf(who, t, x), hands = o.hands || {1: a.name === 'nails' || a.name === 'wave' ? 'open' : a.name === 'card' ? 'none' : a.name === 'point' ? 'point' : 'open', '-1': 'open'};
-  seat(DEF[who], x, y, sc, {...st, arms: a.fn, ik: false, front: true, hands, ...o.st});
-  const by = y + (HIP - SEAT_H) * sc; if (who === 'e') pearls(x, by, sc); if (who === 's') shawl(x, by, sc); return by; }
+  seat(DEF[who], x, y, sc, {...st, arms: a.fn, ik: false, front: true, hands, neckFx: NECK[who], ...o.st});
+  const by = y + (HIP - SEAT_H) * sc; recFace(who, x, by, sc, st.mouth); return by; }
 const hpos = (who, s) => { const A = ARMS[who], p = A.a.fn(s); return [A.x + p[2][0] * A.sc, A.y + p[2][1] * A.sc, Math.atan2(p[2][1] - p[1][1], p[2][0] - p[1][0])]; };
 // grooms: where they are at time t: off | walk | stand | seat
 const ENTER = {m: TL.ENTER_M, j: TL.ENTER_J, r: TL.ENTER_R}, SIT = {m: TL.SIT_M, j: TL.SIT_J, r: TL.SIT_R};
@@ -123,11 +131,11 @@ function drawGroom(w, t, G) { const q = G[w]; if (q.s === 'off') return; const d
   const bob = q.s === 'walk' ? -Math.abs(Math.sin(t * 9)) * 18 * q.sc : 0, gn = q.s === 'walk' ? (w === 'm' ? 'laptop' : w === 'j' ? 'kaleOut' : 'phoneUp') : standGest(w, t);
   const st = stOf(w, t, q.x), fn = GEST[gn], pts = s => { const f = fn(s); return f.map((p, i) => [p[0], p[1] + (i ? Math.sin(t * 2.1 + SEED[w]) * 2 : 0)]); };
   const holdR = gn === 'kaleOut' || gn === 'phoneUp', holdBoth = gn === 'laptop';
-  T.draw(g, {...def, x: q.x, y: q.y + bob, s: q.sc, ...st, arms: pts, ik: true, front: holdBoth, hands: {1: holdR || holdBoth ? 'none' : 'open', '-1': holdBoth ? 'none' : 'open'}});
+  recFace(w, q.x, q.y + bob, q.sc, st.mouth); T.draw(g, {...def, x: q.x, y: q.y + bob, s: q.sc, ...st, arms: pts, ik: true, front: holdBoth, hands: {1: holdR || holdBoth ? 'none' : 'open', '-1': holdBoth ? 'none' : 'open'}});
   const hp = s => { const p = T.solveArm(pts(s)[0], pts(s)[2], pts(s)[1], s, 0); return [q.x + p[2][0] * q.sc, q.y + bob + p[2][1] * q.sc, Math.atan2(p[2][1] - p[1][1], p[2][0] - p[1][0]), p]; };
-  if (gn === 'laptop') { laptop(q.x, q.y + bob - 650 * q.sc, q.sc); for (const s of [-1, 1]) { const [hx, hy, a] = hp(s); T.drawHand(g, 'fist', hx, hy, a, q.sc, def.pal.skin, null, s, 22); } }
-  if (gn === 'kaleOut') { const [hx, hy, a] = hp(1); kale(hx, hy - 10 * q.sc, q.sc); T.drawHand(g, 'fist', hx, hy, a, q.sc, def.pal.skin, null, 1, 22); }
-  if (gn === 'phoneUp') { const [hx, hy, a, p] = hp(1); phoneCrash(hx + 6 * q.sc, hy - 60 * q.sc, q.sc, t); T.drawHand(g, 'fist', hx, hy, a, q.sc, def.pal.skin, null, 1, 22);
+  if (gn === 'laptop') { recProp('laptop', q.x - 130 * q.sc, q.y + bob - 800 * q.sc, q.x + 130 * q.sc, q.y + bob - 620 * q.sc); laptop(q.x, q.y + bob - 650 * q.sc, q.sc); for (const s of [-1, 1]) { const [hx, hy, a] = hp(s); T.drawHand(g, 'fist', hx, hy, a, q.sc, def.pal.skin, null, s, 22); } }
+  if (gn === 'kaleOut') { const [hx, hy, a] = hp(1); recProp('kale', hx - 80 * q.sc, hy - 240 * q.sc, hx + 80 * q.sc, hy + 50 * q.sc); kale(hx, hy - 10 * q.sc, q.sc); T.drawHand(g, 'fist', hx, hy, a, q.sc, def.pal.skin, null, 1, 22); }
+  if (gn === 'phoneUp') { const [hx, hy, a, p] = hp(1); recProp('phone', hx - 50 * q.sc, hy - 145 * q.sc, hx + 56 * q.sc, hy + 25 * q.sc); phoneCrash(hx + 6 * q.sc, hy - 60 * q.sc, q.sc, t); T.drawHand(g, 'fist', hx, hy, a, q.sc, def.pal.skin, null, 1, 22);
     const wr = [q.x + lerp(p[1][0], p[2][0], .78) * q.sc, q.y + bob + lerp(p[1][1], p[2][1], .78) * q.sc]; watch(wr[0], wr[1], q.sc, a + Math.PI / 2); }
   if (w === 'j' && PART === 2 && t >= TL.NIBBLE && t < TL.NIBBLE + 1.4) { const [hx, hy] = hp(-1); ell(hx + 10 * q.sc, hy - 30 * q.sc, 22 * q.sc, 13 * q.sc, '#4f9e3f', 4); } }
 // Ryan's phone: the chart line falls during CRASH
@@ -135,7 +143,7 @@ function phoneCrash(x, y, sc, t) { const u = TL.CRASH != null ? ease(P01(t, TL.C
   const bx = -w / 2 + 12 * sc, by = -h / 2 + 90 * sc, pts = [[0, 0], [16, -20], [30, -12], [46, -40], [64, -60]].map(([a, b], i) => [bx + a * sc, by + lerp(b, i < 2 ? b : 60 - i * 4, u) * sc]);
   ln(pts, 6 * sc, u > .3 ? '#e0303a' : '#2fbf5a'); if (sc >= .29) fitLog(u > .3 ? '-99%' : '+12%', 0, -h / 2 + 30 * sc, w - 16 * sc, 30 * sc, 28 * sc, u > .3 ? '#e0303a' : '#2fbf5a', {pad: 2}); g.restore(); }
 function doorOpen(t) { for (const w of 'mjr') { const E = ENTER[w]; if (E && t >= E[0] - .3 && t < E[0] + .9) return Math.sin(Math.PI * P01(t, E[0] - .3, 1.2)) * .9; } if (TL.KALE_PEEK != null && (PART === 1 ? t >= TL.KALE_PEEK : t < TL.ENTER_J[0])) return .6; return 0; }
-function kalePeek(t) { const show = PART === 1 ? t >= TL.KALE_PEEK : t < TL.ENTER_J[0]; if (!show) return; const u = PART === 1 ? spr(P01(t, TL.KALE_PEEK, .6)) : 1; g.save(); g.translate(110 + 40 * (1 - u), FL - 120); g.scale(.9 * u + .01, .9 * u + .01); kale(0, 60, 1.1); g.restore(); }
+function kalePeek(t) { if ((PART === 1 ? t >= TL.KALE_PEEK : t < TL.ENTER_J[0])) recProp('kalePeek', 40, FL - 320, 200, FL); const show = PART === 1 ? t >= TL.KALE_PEEK : t < TL.ENTER_J[0]; if (!show) return; const u = PART === 1 ? spr(P01(t, TL.KALE_PEEK, .6)) : 1; g.save(); g.translate(110 + 40 * (1 - u), FL - 120); g.scale(.9 * u + .01, .9 * u + .01); kale(0, 60, 1.1); g.restore(); }
 
 // ---------- the studio ----------
 function studio(t, LY = {hosts: 1, fg: 1, aud: 1}) { NOW = t; room(); sign(t); door(t); kalePeek(t);
@@ -146,8 +154,8 @@ function studio(t, LY = {hosts: 1, fg: 1, aud: 1}) { NOW = t; room(); sign(t); d
   const G = grooms(t); sofaSide(); chair(SOFA, BYF, GS, 1560, '#3a6aa8', 'sofa'); for (const w of 'mjr') if (G[w].s === 'seat') drawGroom(w, t, G);
   for (const w of 'mjr') if (G[w].s === 'walk' || G[w].s === 'stand') drawGroom(w, t, G);
   if (LY.aud) audience(t); }
-function cardProp(t) { if (ARMS.s && gestureAt('s', t) === 'card') { const [hx, hy, a] = hpos('s', 1); const lab = PART === 1 ? 'THE KING' : 'MARRIED'; tarotCard(hx + 6 * HS, hy - 150 * HS, HS * 1.15, lab, PART === 2); T.drawHand(g, 'fist', hx, hy, a, HS, ZV.pal.skin, ZV.nails, 1, 22); } }
-function tarotCard(x, y, sc, label, paper) { g.save(); g.translate(x, y); g.rotate(.08); const w = 120 * sc, h = 190 * sc; rr(-w / 2, -h / 2, w, h, 10 * sc, '#2a1a4a', 6 * sc); rr(-w / 2 + 8 * sc, -h / 2 + 8 * sc, w - 16 * sc, h - 16 * sc, 6 * sc, '#f6e8c0', 3 * sc);
+function cardProp(t) { if (ARMS.s && gestureAt('s', t) === 'card' && ARMS.s.a.k > .85) { const [hx, hy, a] = hpos('s', 1); const lab = PART === 1 ? 'THE KING' : 'MARRIED'; tarotCard(hx + 6 * HS, hy - 150 * HS, HS * 1.15, lab, PART === 2); T.drawHand(g, 'fist', hx, hy, a, HS, ZV.pal.skin, ZV.nails, 1, 22); } }
+function tarotCard(x, y, sc, label, paper) { recProp('tarot', x - 70 * sc, y - 105 * sc, x + 70 * sc, y + 105 * sc); g.save(); g.translate(x, y); g.rotate(.08); const w = 120 * sc, h = 190 * sc; rr(-w / 2, -h / 2, w, h, 10 * sc, '#2a1a4a', 6 * sc); rr(-w / 2 + 8 * sc, -h / 2 + 8 * sc, w - 16 * sc, h - 16 * sc, 6 * sc, '#f6e8c0', 3 * sc);
   if (paper) { rr(-34 * sc, -h * .32, 68 * sc, 50 * sc, 3 * sc, '#efe9d8', 3 * sc); for (let k = 0; k < 3; k++) ln([[-26 * sc, -h * .26 + k * 12 * sc], [26 * sc, -h * .26 + k * 12 * sc]], 2 * sc, '#9a9488'); }
   else { poly([[-30 * sc, -h * .1], [-30 * sc, -h * .3], [-15 * sc, -h * .2], [0, -h * .34], [15 * sc, -h * .2], [30 * sc, -h * .3], [30 * sc, -h * .1]], '#f2c820', 3 * sc); }
   fitLog(label, 0, h * .22, w - 24 * sc, 46 * sc, 40 * sc, '#2a1a4a', {pad: 2}); g.restore(); }
@@ -157,10 +165,10 @@ function videoCard(t) { const u = t - TL.CARD; g.fillStyle = '#ffd6e4'; g.fillRe
   rr(600, 260, 400, 520, 16, '#bfe4ff'); for (const [x, w2, h2] of [[620, 70, 260], [700, 60, 360], [770, 90, 220], [870, 70, 320], [940, 50, 200]]) rr(x, 780 - h2, w2, h2, 4, '#6a7aa8', 4); ln([[800, 260], [800, 780]], 8); ln([[600, 520], [1000, 520]], 8);   // window: Brooklyn
   g.fillStyle = '#d9a1b8'; g.fillRect(0, 1400, W, 520); rr(90, 330, 300, 240, 10, '#e9bb34', 7); rr(110, 350, 260, 200, 6, '#ffffff', 4);   // photo frame: her half + torn edge + the cat
   ell(170, 470, 34, 34, '#f6d0b8', 4); ln([[250, 352], [236, 400], [258, 450], [240, 500], [256, 548]], 5); ell(320, 500, 34, 26, '#f2a54a', 4); poly([[296, 482], [304, 458], [314, 478]], '#f2a54a', 4); poly([[326, 478], [336, 458], [344, 482]], '#f2a54a', 4);
-  const sc = .62, x = 520, y = 1990; const st = stOf('b', t, x), fn = s => s > 0 ? [[86, -860], [210, -800], [200, -900]] : [[-86, -860], [-102, -720], [-110, -580]];
-  T.draw(g, {...BR, x, y, s: sc, ...st, look: BY.b2 && t >= BY.b2.at - .1 ? .7 : 0, arms: fn, ik: true, hands: {1: 'none', '-1': 'open'}});
+  const sc = .62, x = 520, y = 1990; const st = stOf('b', t, x), fn = s => s > 0 ? [[86, -860], [230, -760], [270, -700]] : [[-86, -860], [-102, -720], [-110, -580]];
+  recFace('b', x, y, sc, st.mouth); T.draw(g, {...BR, x, y, s: sc, ...st, look: BY.b2 && t >= BY.b2.at - .1 ? .7 : 0, arms: fn, ik: true, hands: {1: 'none', '-1': 'open'}});
   const p = T.solveArm(fn(1)[0], fn(1)[2], fn(1)[1], 1, 0), hx = x + p[2][0] * sc, hy = y + p[2][1] * sc;   // wine glass
-  g.save(); g.translate(hx + 4, hy - 70); P(); g.moveTo(-36, -60); g.quadraticCurveTo(-36, 10, 0, 14); g.quadraticCurveTo(36, 10, 36, -60); g.closePath(); fsx('rgba(255,255,255,.75)', 5); P(); g.moveTo(-30, -20); g.quadraticCurveTo(0, 12, 30, -20); g.closePath(); fsx('#c0283a', 0); ln([[0, 14], [0, 70]], 6); g.restore();
+  recProp('glass', hx - 40, hy - 140, hx + 44, hy + 10); g.save(); g.translate(hx + 4, hy - 70); P(); g.moveTo(-36, -60); g.quadraticCurveTo(-36, 10, 0, 14); g.quadraticCurveTo(36, 10, 36, -60); g.closePath(); fsx('rgba(255,255,255,.75)', 5); P(); g.moveTo(-30, -20); g.quadraticCurveTo(0, 12, 30, -20); g.closePath(); fsx('#c0283a', 0); ln([[0, 14], [0, 70]], 6); g.restore();
   T.drawHand(g, 'fist', hx, hy, Math.atan2(p[2][1] - p[1][1], p[2][0] - p[1][0]), sc, BR.pal.skin, BR.nails, 1, 22);
   // TV frame: REC + tag (top corner, away from her face)
   g.lineWidth = 18; g.strokeStyle = '#2a2230'; g.strokeRect(9, 9, W - 18, H - 18); ell(70, 76, 14, 14, u % 1 < .6 ? '#e0303a' : '#ffd6e4', 0); fitLog('ВИДЕО-ВИЗИТКА', 260, 76, 320, 56, 40, '#2a2230', {pad: 4}); }
@@ -224,7 +232,7 @@ function outlinedWords(words, y, size0, colFn, minOne = 56) { let size = size0; 
   if (TEXTLOG) TEXTLOG.push([words.join(' '), size, 2, 990, size * 2.6, mw() <= 990]); const y0 = y - size * .5; drawWords(A, y0, size, colFn); drawWords(B, y0 + size * 1.1, size, colFn); return y0 + size * 1.7; }
 function curChunk(t) { let cur = null; for (const c of FLAT) if (t >= c.a - .02 && t < c.hold) cur = c; return cur; }
 function caption(t) { const cur = curChunk(t); if (!cur) return; const pop = 1 + .08 * clamp(1 - (t - cur.a) / .12); g.save(); g.translate(540, 1660); g.scale(pop, pop); g.translate(-540, -1660);
-  const en = SPL[cur.id] != null; const yb = outlinedWords(cur.s.split(' '), 1650, 68, w => en ? '#ffd23f' : isEn(w) ? '#ffd23f' : '#ffffff'); g.restore(); if (cur.tr) outlinedWords(cur.tr.split(' '), Math.max(1740, yb + 34), 44, () => '#ffffff', 34); }
+  recText('caption', 40, 1650 - 70, 1040, 1800); const en = SPL[cur.id] != null; const yb = outlinedWords(cur.s.split(' '), 1650, 68, w => en ? '#ffd23f' : isEn(w) ? '#ffd23f' : '#ffffff'); g.restore(); if (cur.tr) outlinedWords(cur.tr.split(' '), Math.max(1740, yb + 34), 44, () => '#ffffff', 34); }
 // chips tied to the spoken word
 const GLOSS = PART === 1 ? [['z2', 'Скэрд', 'scared', 'напуганный'], ['s2', 'Leo', 'Leo', 'Лев (знак зодиака)'], ['z4', 'Кинг', 'king', 'король'], ['z5', 'Фрилансер', 'freelancer', 'фрилансер'], ['z6', 'Depends', 'it depends', 'смотря как, по-разному'], ['s3', 'sign', 'sign', 'знак зодиака']]
   : [['j1', 'kale', 'kale', 'капуста кейл'], ['z8', 'плэнтс', 'plants', 'растения'], ['r2', 'paper', 'on paper', 'на бумаге'], ['BLEEP', '', 'Oh shoot!', 'Ой, блин! (приличный вариант)'], ['s6', 'Mercury', 'Mercury retrograde', 'ретроградный Меркурий'], ['s7', 'compatibility', 'compatibility', 'совместимость'], ['m4', 'split', 'split', 'разделить пополам']];
@@ -232,12 +240,12 @@ const CHIPS = []; { let prev = -1; for (const [id, key, en, ru] of GLOSS) { let 
     a = Math.max(a - .08, prev + .05); const b = a + 1.7; CHIPS.push({a, b, en, ru}); prev = b; } }
 function chip(t) { let c = null; for (const q of CHIPS) if (t >= q.a && t < q.b) c = q; if (!c) return; const k = ease((t - c.a) / .15) * (1 - ease((t - c.b + .12) / .12)), w1 = c.en, w2 = ' — ' + c.ru;
   let f = 42; g.font = `${f}px ${FONT}`; const tot = () => g.measureText(w1).width + g.measureText(w2).width; while (tot() > 920) { f -= 2; g.font = `${f}px ${FONT}`; } const tw = tot(), w = tw + 56; if (TEXTLOG) TEXTLOG.push([w1 + w2, f, 1, 976, 72, tw <= 920]);
-  g.save(); g.globalAlpha = k; g.translate(540, 1556 + (1 - k) * 16); g.rotate(-.015); rr(-w / 2 + 6, -34, w, 72, 20, 'rgba(42,34,48,0.35)', 0); rr(-w / 2, -40, w, 72, 20, '#fffaf0', 5);
+  recText('chip', 540 - w / 2, 1516, 540 + w / 2, 1590); g.save(); g.globalAlpha = k; g.translate(540, 1556 + (1 - k) * 16); g.rotate(-.015); rr(-w / 2 + 6, -34, w, 72, 20, 'rgba(42,34,48,0.35)', 0); rr(-w / 2, -40, w, 72, 20, '#fffaf0', 5);
   g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillStyle = '#d63a8a'; g.fillText(w1, -tw / 2, -3); g.fillStyle = INK; g.fillText(w2, -tw / 2 + g.measureText(w1).width, -3); g.restore(); }
 function plate(t, a, b, l1, l2, y = 1560) { if (t < a || t >= b) return; const ui = P01(t, a, .4), uo = P01(t, b - .3, .3), sp = spr(ui, 6, 10), al = clamp(ui * 5) * (1 - ei(clamp((uo - .35) / .65)));
-  g.save(); g.globalAlpha = al; g.translate(540, y); g.rotate(-.02 - .06 * (1 - sp)); const s = .62 + .38 * sp; g.scale(s, s); rr(-440, -130, 880, 260, 34, '#fffaf0', 9); fitLog(l1, 0, -50, 840, 100, 74, INK); fitLog(l2, 0, 52, 840, 100, 80, '#d63a8a'); g.restore(); }
+  recText('plate', 100, y - 130, 980, y + 130); g.save(); g.globalAlpha = al; g.translate(540, y); g.rotate(-.02 - .06 * (1 - sp)); const s = .62 + .38 * sp; g.scale(s, s); rr(-440, -130, 880, 260, 34, '#fffaf0', 9); fitLog(l1, 0, -50, 840, 100, 74, INK); fitLog(l2, 0, 52, 840, 100, 80, '#d63a8a'); g.restore(); }
 function censor(t) { if (PART !== 2 || t < TL.BLEEP[0] - .02 || t >= TL.BLEEP[0] + 1.4) return; const c = camAt(t), hx = (STAND[0] + 150 - c.x) * c.z + 540, hy = (STAND[1] - 1062 * STS - 60 - c.y) * c.z + 960, k = spr(P01(t, TL.BLEEP[0], .3));   // beside the head (right of it), never on the face
-  g.save(); g.translate(hx + 60, hy); g.rotate(.12); g.scale(k, k); rr(-95, -48, 190, 96, 22, '#2a2230', 6, '#ffffff'); fitLog('#@$%!', 0, 0, 170, 80, 56, '#ffd23f', {pad: 4}); poly([[-60, 44], [-84, 80], [-30, 46]], '#2a2230', 0); g.restore(); }
+  recText('censor', hx + 60 - 95, hy - 50, hx + 60 + 95, hy + 50); g.save(); g.translate(hx + 60, hy); g.rotate(.12); g.scale(k, k); rr(-95, -48, 190, 96, 22, '#2a2230', 6, '#ffffff'); fitLog('#@$%!', 0, 0, 170, 80, 56, '#ffd23f', {pad: 4}); poly([[-60, 44], [-84, 80], [-30, 46]], '#2a2230', 0); g.restore(); }
 function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30,20,30,${.55 * k})`; g.fillRect(0, 0, W, H); g.save(); g.globalAlpha = k; g.translate(0, (1 - k) * 80);
   rr(60, 170, 960, 1540, 44, '#fffaf0', 8); fitLog('ПЕРЕВОДИМ ЖАННУ', 540, 270, 900, 90, 66, '#d63a8a');
   const R = [['SCARED', 'напуганный'], ['FREELANCER', 'фрилансер'], ['IT DEPENDS', 'смотря как, по-разному'], ['PLANTS', 'растения'], ['ON PAPER', 'на бумаге'], ['SPLIT', 'разделить пополам'], ['COMPATIBILITY', 'совместимость']];
@@ -282,5 +290,13 @@ else if (mode === 'smoothcheck') { let n = 0, big = 0, worst = 0, dips = 0, dur 
 else if (mode === 'armaudit') { const bad = {}; for (let t = 0; t < TL.TOTAL; t += 1 / FPS) { NOW = t; for (const w of 'ezsb') { const a = armsFor(w, t); for (const s of [-1, 1]) { const p = a.fn(s); if (p[2][1] < -880 && p[2][0] * s < 40) (bad[w + ' ' + a.name] = bad[w + ' ' + a.name] || []).push(+t.toFixed(2)); if (p[1][0] * s < 0) (bad['elbow ' + w] = bad['elbow ' + w] || []).push(+t.toFixed(2)); } } }
   for (const [k, v] of Object.entries(bad)) console.log(k, v.length, 'frames', v[0], '…', v[v.length - 1]); if (!Object.keys(bad).length) console.log(`part ${PART}: no crossing`); }
 else if (mode === 'textaudit') { let n = 0, bad = 0; for (let t = 0; t < TL.TOTAL; t += .25) { TEXTLOG = []; frame(t); for (const r of TEXTLOG) { n++; const [s, size, lines, w, h, ok] = r; let over = ok === false; if (ok === undefined) { g.font = `${size}px ${FONT}`; over = g.measureText(s).width > w + .5 && lines === 1; } if (over) { bad++; if (bad < 12) console.log('OVER', t.toFixed(2), s, size); } } } console.log(`part ${PART}: ${n} text draws, ${bad} overflowing`); }
+else if (mode === 'accaudit') { // every speaking frame: nothing drawn after a face may cover its open mouth/jaw; no text/plate/chip over any visible face
+  const ov = (a, b) => Math.min(a.x1, b.x1) - Math.max(a.x0, b.x0) > 4 && Math.min(a.y1, b.y1) - Math.max(a.y0, b.y0) > 4, onScreen = f => f.x1 > 0 && f.x0 < W && f.y1 > 0 && f.y0 < H && f.x1 - f.x0 > 40;
+  let frames = 0, talkFrames = 0; const bad = {};
+  for (let i = 0; i < Math.round(TL.TOTAL * FPS); i += 2) { const t = i / FPS; REC = []; frame(t); frames++; const R = REC; REC = null; const sh = shotAt(t); if (sh.k === 'END') continue;
+    for (const j of R.filter(r => r.k === 'jaw' && r.talk)) { talkFrames++; for (const p of R) if (p.k === 'prop' && p.n > j.n && ov(j, p)) { const key = `jaw ${j.who} under ${p.name}`; (bad[key] = bad[key] || []).push(+t.toFixed(2)); } }
+    for (const f of R.filter(r => r.k === 'face' && onScreen(r))) for (const x of R) if (x.k === 'text' && ov(f, x)) { const key = `${x.name} over face ${f.who}`; (bad[key] = bad[key] || []).push(+t.toFixed(2)); } }
+  for (const [k, v] of Object.entries(bad)) console.log(k, v.length, 'frames', v.slice(0, 6).join(' '), v.length > 6 ? '…' : '');
+  console.log(`part ${PART}: ${frames} frames checked, ${talkFrames} speaking-face frames, ${Object.values(bad).reduce((a, v) => a + v.length, 0)} problems`); }
 else if (mode === 'sheet') { const N = 16, k = .25, cols = 4, sc2 = createCanvas(W * k * cols, H * k * N / cols), sg = sc2.getContext('2d'); for (let i = 0; i < N; i++) { const t = (i + .5) * TL.TOTAL / N; frame(t); sg.drawImage(cv, (i % cols) * W * k, Math.floor(i / cols) * H * k, W * k, H * k); sg.fillStyle = '#fff'; sg.font = '28px NBL'; sg.fillText(t.toFixed(1) + 's', (i % cols) * W * k + 10, Math.floor(i / cols) * H * k + 34); }
   fs.mkdirSync('final', {recursive: true}); fs.writeFileSync(`final/contact_sheet${PART}.png`, sc2.toBuffer('image/png')); }
