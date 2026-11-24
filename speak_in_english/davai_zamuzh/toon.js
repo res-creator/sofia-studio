@@ -173,31 +173,38 @@ const POSES = {
   desk: s => [[s * 78, -860], [s * 140, -700], [s * 60, -610]],
   fists: s => [[s * 78, -860], [s * 120, -760], [s * 30, -800]],
 };
-// legs: standing (straight) or walking (st.walk = {'-1': [x, y], '1': [x, y]} foot targets in body coords, y = sole height (0 = floor));
-// 2-bone leg (thigh 260 + shin 260) from the hip to the ankle, knee bends forward/outward when the foot comes closer (lifted / stepping)
-function legs(st, c) { for (const s of [-1, 1]) { const F = st.walk ? st.walk[s] : [s * 46, 0], hip = [s * 40, -580], ank = [F[0], F[1] - 90], L = 262;
-    const dx = ank[0] - hip[0], dy = ank[1] - hip[1], d = Math.min(Math.hypot(dx, dy), 2 * L - 1), h = Math.sqrt(Math.max(0, L * L - (d / 2) * (d / 2)));
-    const mid = [hip[0] + dx / 2, hip[1] + dy / 2], n = [-dy / (Math.hypot(dx, dy) || 1), dx / (Math.hypot(dx, dy) || 1)], sg = n[0] * s >= 0 ? 1 : -1, knee = [mid[0] + n[0] * h * .55 * sg, mid[1] + n[1] * h * .55 * sg];
-    limb([hip, knee, ank], 44, c.legs || c.bottom); if (h > 20) ell(knee[0], knee[1], 23, 23, c.legs || c.bottom, 0);
-    const fx = F[0] + (s > 0 ? 24 : -24), fy = F[1];
-    P(); g.moveTo(fx - 50, fy - 20); g.bezierCurveTo(fx - 50, fy - 90, fx + 50, fy - 100, fx + 60, fy - 30); g.lineTo(fx + 60, fy); g.lineTo(fx - 50, fy); g.closePath(); fs(c.shoe || '#ffffff');
-    line([[fx - 50, fy - 12], [fx + 60, fy - 12]], 6, c.sole || '#e05a2a'); } }
-// walk planner: path from A to B (world, feet position) between t0 and t0+dur, scale scA -> scB; ~2 steps/s, planted feet do not slide.
-// returns {x, y, s (scale), walk (foot targets in body coords), bob, swing: arm swing per side (-1..1)}
-function walkPose(t, t0, dur, A, B, scA, scB, stepW = 46) {
-  // contacts k = 1..N (≈2 per second); foot of side +1 lands on odd k, side -1 on even k; the last contact is a closing step (feet together).
-  // Planted feet never move in screen space; the body (floor point under the hips) is always half-way between the two feet.
-  const N = Math.max(3, Math.round(dur * 2)), n = N - 1, T = dur / N;
-  const P = v => { v = Math.max(0, Math.min(1, v)); return [A[0] + (B[0] - A[0]) * v, A[1] + (B[1] - A[1]) * v]; };
-  const land = k => P(Math.min(k, n) / n), kf = Math.max(0, Math.min(N, (t - t0) / T)), Fw = {};
-  for (const s of [-1, 1]) { const par = s > 0 ? 1 : 0; let kl = Math.floor(kf); if (((kl % 2) + 2) % 2 !== par) kl -= 1; if (kl < 1) kl = par ? -1 : 0;   // start stance: right lifts first (lands on 1), left lands on 2
-    const kn = kl + 2, lift = kl + 1 + .15, a = kl < 1 ? P(0) : land(kl);
-    if (kf <= lift || kl >= N) Fw[s] = [a[0], a[1], 0];
-    else { const e = Math.min(1, (kf - lift) / (Math.min(kn, N) - lift)), ee = e * e * (3 - 2 * e), b = land(Math.min(kn, N)); Fw[s] = [a[0] + (b[0] - a[0]) * ee, a[1] + (b[1] - a[1]) * ee, Math.sin(Math.PI * e)]; } }
-  const bx = (Fw[-1][0] + Fw[1][0]) / 2, by = (Fw[-1][1] + Fw[1][1]) / 2, sc = scA + (scB - scA) * Math.max(0, Math.min(1, (by - A[1]) / ((B[1] - A[1]) || 1)));
-  const moving = t > t0 && t < t0 + dur, ph = kf - Math.floor(kf), bob = moving ? -Math.pow(Math.sin(Math.PI * ph), 2) * 16 : 0, feet = {}, sw = {};
-  for (const s of [-1, 1]) { feet[s] = [s * stepW + (Fw[s][0] - bx) / sc, (Fw[s][1] - by) / sc - Fw[s][2] * 70 - bob]; sw[s] = moving ? Math.sin(Math.PI * (kf - (s > 0 ? 1 : 0)) / 2) : 0; }
-  return {x: bx, y: by, s: sc, walk: feet, bob, swing: {'-1': sw[1], '1': sw[-1]}}; }   // each arm swings with the opposite leg
+// legs: standing (straight) or walking. st.walk = {'-1': [x, y, ang], '1': [...]} foot (ankle-under) targets in body coords, y = sole height
+// above the floor (0 = floor, negative = lifted), ang = shoe roll (rad, + = toe down / heel up); st.walkDir = +1 walking right, -1 left.
+// 2-bone leg (thigh 262 + shin 262, same 44 px thickness as standing): the knee bends toward the walking direction.
+function shoe(c, fx, fy, ang, dir) { g.save(); const piv = ang > 0 ? [fx + dir * 55, fy] : [fx - dir * 45, fy]; g.translate(piv[0], piv[1]); g.rotate(ang * dir); g.translate(-piv[0], -piv[1]);
+  const b0 = fx - dir * 50, b1 = fx + dir * 60; P(); g.moveTo(b0, fy - 20); g.bezierCurveTo(b0, fy - 90, fx + dir * 50, fy - 100, b1, fy - 30); g.lineTo(b1, fy); g.lineTo(b0, fy); g.closePath(); fs(c.shoe || '#ffffff');
+  line([[b0, fy - 12], [b1, fy - 12]], 6, c.sole || '#e05a2a'); g.restore(); }
+function legs(st, c) { const dir = st.walkDir || 0; for (const s of [-1, 1]) { const F = st.walk ? st.walk[s] : [s * 46, 0, 0], hip = [s * 40, -580], ank = [F[0], F[1] - 90], L = 262;
+    const dx = ank[0] - hip[0], dy = ank[1] - hip[1], dd = Math.hypot(dx, dy) || 1, d = Math.min(dd, 2 * L - 1), h = Math.sqrt(Math.max(0, L * L - (d / 2) * (d / 2)));
+    const mid = [hip[0] + dx / 2, hip[1] + dy / 2], n = [-dy / dd, dx / dd]; let sg = dir ? (n[0] * dir >= 0 ? 1 : -1) : (n[0] * s >= 0 ? 1 : -1);
+    const knee = [mid[0] + n[0] * h * sg, mid[1] + n[1] * h * sg]; limb([hip, knee, ank], 44, c.legs || c.bottom); if (h > 20) ell(knee[0], knee[1], 23, 23, c.legs || c.bottom, 0);
+    if (dir) shoe(c, F[0], F[1], F[2] || 0, dir); else { const fx = F[0] + (s > 0 ? 24 : -24), fy = F[1];
+      P(); g.moveTo(fx - 50, fy - 20); g.bezierCurveTo(fx - 50, fy - 90, fx + 50, fy - 100, fx + 60, fy - 30); g.lineTo(fx + 60, fy); g.lineTo(fx - 50, fy); g.closePath(); fs(c.shoe || '#ffffff');
+      line([[fx - 50, fy - 12], [fx + 60, fy - 12]], 6, c.sole || '#e05a2a'); } } }
+// side walk planner (2D-readable): path A -> B mostly horizontal, ~2 steps/s, stride = feet ~hip-to-shoulder width apart at contact,
+// cycle contact -> down -> passing -> up; planted foot fixed in screen space; heel strike / toe-off roll; returns body pose for T.draw
+function walkPose(t, t0, dur, A, B, scA, scB, stride = 90) {
+  const dir = Math.sign(B[0] - A[0]) || 1, len = Math.hypot(B[0] - A[0], B[1] - A[1]), scM = (scA + scB) / 2, N = Math.max(4, Math.round(len / (stride * scM))), T = dur / N;
+  const P2 = v => { v = Math.max(0, Math.min(1, v)); return [A[0] + (B[0] - A[0]) * v, A[1] + (B[1] - A[1]) * v, scA + (scB - scA) * v]; };
+  // contact k (k = 1..N): foot of side (k odd -> +1 lead leg, even -> -1) lands at path fraction (k + .5) / (N + 1); start/end stance feet together
+  const land = (k, s) => P2(k <= 0 ? 0 : k >= N ? 1 : (k + .5) / (N + 1));
+  const kf = Math.max(0, Math.min(N + .999, (t - t0) / T)), Fw = {};
+  for (const s of [-1, 1]) { const par = s > 0 ? 1 : 0; let kl = Math.floor(kf); if (((kl % 2) + 2) % 2 !== par) kl -= 1; if (kl < 1) kl = par ? -1 : 0;
+    const kn = kl + 2, lift = kl + 1 + .1, a = land(kl, s), stanceEnd = Math.min(lift, N + 1);
+    if (kf <= lift || kl >= N) { // stance: heel strike roll (toe up) right after landing, toe-off roll (heel up) just before lifting
+      const u0 = kf - kl, u1 = stanceEnd - kf; let ang = 0; if (kl >= 1 && u0 < .25) ang = -.3 * (1 - u0 / .25); if (kl < N && u1 < .35 && kn <= N + 1 && kf > 0) ang = .45 * (1 - u1 / .35); Fw[s] = [a[0], a[1], 0, ang, a[2]]; }
+    else { const e = Math.min(1, (kf - lift) / (Math.min(kn, N) - lift)), ee = e * e * (3 - 2 * e), b = land(Math.min(kn, N), s); Fw[s] = [a[0] + (b[0] - a[0]) * ee, a[1] + (b[1] - a[1]) * ee, Math.sin(Math.PI * e), .15 - .25 * e, a[2]]; } }
+  const bx = (Fw[-1][0] + Fw[1][0]) / 2, by = (Fw[-1][1] + Fw[1][1]) / 2, sc = (Fw[-1][4] + Fw[1][4]) / 2, moving = t > t0 && t < t0 + dur, ph = kf - Math.floor(kf);
+  const bob = moving ? -26 * Math.pow(Math.sin(Math.PI * Math.max(0, ph - .1) / .9), 2) + 6 : 0;   // lowest just after contact (down), highest at passing (~2 % of height)
+  const feet = {}; for (const s of [-1, 1]) feet[s] = [(Fw[s][0] - bx) / sc + s * 60, (Fw[s][1] - by) / sc + s * 8 - Fw[s][2] * 60 - bob, Fw[s][3]];
+  const legPh = s => Math.cos(Math.PI * (kf - (s > 0 ? 1 : 0)));   // +1 when that leg is forward
+  return {x: bx, y: by, s: sc, walk: feet, walkDir: dir, bob, lean: moving ? dir * (.045 + .012 * Math.sin(Math.PI * kf)) : 0,
+    swing: {'-1': moving ? -legPh(1) * dir : 0, '1': moving ? -legPh(-1) * dir : 0}}; }   // each arm swings forward with the opposite leg
 function torsoBase(st, c) {
   limb([[0, -930], [0, -860]], 34, c.skin);
   P(); g.moveTo(-82, -880); g.quadraticCurveTo(0, -895, 82, -880); g.lineTo(96, -560); g.quadraticCurveTo(0, -548, -96, -560); g.closePath(); fs(c.top);

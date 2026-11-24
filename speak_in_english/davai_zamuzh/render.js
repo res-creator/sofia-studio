@@ -27,7 +27,7 @@ function recFace(who, x, by, sc, mouth) { const hy = by - 1062 * sc, hw = 152 * 
 const recProp = (name, x0, y0, x1, y1) => recBox('prop', x0, y0, x1, y1, {name});
 const recText = (name, x0, y0, x1, y1) => recBox('text', x0, y0, x1, y1, {name});
 // ---------- studio Б ----------
-const HY = 1100, HS = .3, HOSTX = {e: 380, z: 545, s: 710}, BX = 190, BYF = 1580, BS = .36, SOFA = 800, GS = .32, GX = {m: 640, j: 800, r: 960}, STAND = [430, 1450], STS = .32;
+const HY = 1100, HS = .3, HOSTX = {e: 380, z: 545, s: 710}, BX = 190, BYF = 1580, BS = .36, SOFA = 800, GS = .32, GX = {m: 640, j: 800, r: 960}, STAND = [560, 1340], STS = .32;
 const DESK = [[255, HY - 470 * HS], [800, HY - 470 * HS], [800, HY + 40], [255, HY + 40]], DTOP = HY - 470 * HS;
 function room() { g.fillStyle = '#5a2a6a'; g.fillRect(-400, -400, VW + 800, FL + 400); for (let k = 0; k < 9; k++) { g.fillStyle = k % 2 ? 'rgba(255,255,255,.05)' : 'rgba(0,0,0,.05)'; g.fillRect(k * VW / 9, 0, VW / 9, FL); }
   for (let k = 0; k < 4; k++) { g.save(); g.globalAlpha = .1; P(); const bx = VW * (.12 + k * .25); g.moveTo(bx, 0); g.lineTo(bx - 90, FL); g.lineTo(bx + 90, FL); g.closePath(); g.fillStyle = '#fff6c0'; g.fill(); g.restore(); }
@@ -117,10 +117,11 @@ function seated(who, x, y, sc, t, o = {}) { const a = armsFor(who, t); ARMS[who]
   const by = y + (HIP - SEAT_H) * sc; recFace(who, x, by, sc, st.mouth); return by; }
 const hpos = (who, s) => { const A = ARMS[who], p = A.a.fn(s); return [A.x + p[2][0] * A.sc, A.y + p[2][1] * A.sc, Math.atan2(p[2][1] - p[1][1], p[2][0] - p[1][0])]; };
 // grooms: where they are at time t: off | walk | stand | seat
+const WALK_A = [-70, 1165];   // grooms enter from the door side (left) and cross the stage sideways to their spot
 const ENTER = {m: TL.ENTER_M, j: TL.ENTER_J, r: TL.ENTER_R}, SIT = {m: TL.SIT_M, j: TL.SIT_J, r: TL.SIT_R};
 function gState(w, t) { if (PART === 2 && w === 'm') return 'seat'; const E = ENTER[w]; if (!E) return 'off'; if (t < E[0]) return w === 'j' && PART === 2 ? 'off' : 'off'; if (t < E[0] + E[1]) return 'walk'; if (SIT[w] != null && t >= SIT[w]) return 'seat'; return 'stand'; }
 function grooms(t) { const o = {}; for (const w of 'mjr') { const s = gState(w, t); let x = GX[w], y = BYF, sc = GS;
-    if (s === 'walk') { const wp = T.walkPose(t, ENTER[w][0], ENTER[w][1], [110, FL + 6], STAND, .2, STS); x = wp.x; y = wp.y; sc = wp.s; o[w] = {s, x, y, sc, wp}; continue; }
+    if (s === 'walk') { const wp = T.walkPose(t, ENTER[w][0], ENTER[w][1], WALK_A, STAND, .3, STS); x = wp.x; y = wp.y; sc = wp.s; o[w] = {s, x, y, sc, wp}; continue; }
     if (s === 'stand') { x = STAND[0]; y = STAND[1]; sc = STS; } o[w] = {s, x, y, sc}; } return o; }
 function standGest(w, t) { if (w === 'm') return 'laptop'; if (w === 'j') return PART === 2 && t >= TL.GIVE_KALE ? 'standDown' : 'kaleOut'; if (w === 'r') return 'phoneUp'; return 'standDown'; }
 function drawGroom(w, t, G) { const q = G[w]; if (q.s === 'off') return; const def = DEF[w];
@@ -130,9 +131,9 @@ function drawGroom(w, t, G) { const q = G[w]; if (q.s === 'off') return; const d
     return; }
   const wp = q.wp, bob = wp ? wp.bob * q.sc : 0, gn = q.s === 'walk' ? (w === 'm' ? 'laptop' : w === 'j' ? 'kaleOut' : 'phoneUp') : standGest(w, t);
   const st = stOf(w, t, q.x), fn = GEST[gn], free = gn === 'laptop' ? 0 : -1;   // the hand that is not holding a prop swings with the walk (opposite to its leg)
-  const pts = s => { const f = fn(s), sw = wp && s === free ? wp.swing[s] : 0; return f.map((p, i) => [p[0] - (i === 2 ? sw * 14 * s : 0), p[1] + (i ? Math.sin(t * 2.1 + SEED[w]) * 2 : 0) - (i === 2 ? sw * 40 : i === 1 ? sw * 14 : 0)]); };
+  const pts = s => { const f = fn(s), sw = wp && s === free ? wp.swing[s] : 0; return f.map((p, i) => [p[0] + (i === 2 ? sw * 70 : i === 1 ? sw * 30 : 0), p[1] + (i ? Math.sin(t * 2.1 + SEED[w]) * 2 : 0) - (i === 2 ? Math.abs(sw) * 18 : 0)]); };
   const holdR = gn === 'kaleOut' || gn === 'phoneUp', holdBoth = gn === 'laptop';
-  recFace(w, q.x, q.y + bob, q.sc, st.mouth); T.draw(g, {...def, x: q.x, y: q.y + bob, s: q.sc, ...st, walk: wp ? wp.walk : null, arms: pts, ik: true, front: holdBoth, hands: {1: holdR || holdBoth ? 'none' : 'open', '-1': holdBoth ? 'none' : 'open'}});
+  recFace(w, q.x, q.y + bob, q.sc, st.mouth); T.draw(g, {...def, x: q.x, y: q.y + bob, s: q.sc, ...st, walk: wp ? wp.walk : null, walkDir: wp ? wp.walkDir : 0, lean: wp ? wp.lean : 0, arms: pts, ik: true, front: holdBoth, hands: {1: holdR || holdBoth ? 'none' : 'open', '-1': holdBoth ? 'none' : 'open'}});
   const hp = s => { const p = T.solveArm(pts(s)[0], pts(s)[2], pts(s)[1], s, 0); return [q.x + p[2][0] * q.sc, q.y + bob + p[2][1] * q.sc, Math.atan2(p[2][1] - p[1][1], p[2][0] - p[1][0]), p]; };
   if (gn === 'laptop') { recProp('laptop', q.x - 130 * q.sc, q.y + bob - 800 * q.sc, q.x + 130 * q.sc, q.y + bob - 620 * q.sc); laptop(q.x, q.y + bob - 650 * q.sc, q.sc); for (const s of [-1, 1]) { const [hx, hy, a] = hp(s); T.drawHand(g, 'fist', hx, hy, a, q.sc, def.pal.skin, null, s, 22); } }
   if (gn === 'kaleOut') { const [hx, hy, a] = hp(1); recProp('kale', hx - 80 * q.sc, hy - 240 * q.sc, hx + 80 * q.sc, hy + 50 * q.sc); kale(hx, hy - 10 * q.sc, q.sc); T.drawHand(g, 'fist', hx, hy, a, q.sc, def.pal.skin, null, 1, 22); }
@@ -150,10 +151,11 @@ function kalePeek(t) { if ((PART === 1 ? t >= TL.KALE_PEEK : t < TL.ENTER_J[0]))
 function studio(t, LY = {hosts: 1, fg: 1, aud: 1}) { NOW = t; room(); sign(t); door(t); kalePeek(t);
   if (LY.hosts !== 0) for (const w of 'ezs') chair(HOSTX[w], HY, HS, 400, '#7a3a8a');
   if (LY.hosts !== 0) for (const w of 'ezs') seated(w, HOSTX[w], HY, HS, t); desk(t); deskProps(t); if (!LY.fg) { cardProp(t); return; }
-  cardProp(t); plantStand(t);
+  cardProp(t); const G0 = grooms(t); for (const w of 'mjr') if ((G0[w].s === 'walk' || G0[w].s === 'stand') && G0[w].y < 1470) drawGroom(w, t, G0);   // depth order: people behind the plant / bride are drawn first
+  plantStand(t);
   armchair34(BX, BYF, BS, '#f2a0c0'); seated('b', BX, BYF, BS, t); if (PART === 2 && t >= TL.GIVE_KALE) kale(BX + 40, BYF - 420 * BS, BS * .8);
   const G = grooms(t); sofaSide(); chair(SOFA, BYF, GS, 1560, '#3a6aa8', 'sofa'); for (const w of 'mjr') if (G[w].s === 'seat' && LY.seatedG !== 0) drawGroom(w, t, G);
-  for (const w of 'mjr') if (G[w].s === 'walk' || G[w].s === 'stand') drawGroom(w, t, G);
+  for (const w of 'mjr') if ((G[w].s === 'walk' || G[w].s === 'stand') && G[w].y >= 1470) drawGroom(w, t, G);
   if (LY.aud) audience(t); }
 function cardProp(t) { if (ARMS.s && gestureAt('s', t) === 'card' && ARMS.s.a.k > .85) { const [hx, hy, a] = hpos('s', 1); const lab = PART === 1 ? 'THE KING' : 'MARRIED'; tarotCard(hx + 6 * HS, hy - 150 * HS, HS * 1.15, lab, PART === 2); T.drawHand(g, 'fist', hx, hy, a, HS, ZV.pal.skin, ZV.nails, 1, 22); } }
 function tarotCard(x, y, sc, label, paper) { recProp('tarot', x - 70 * sc, y - 105 * sc, x + 70 * sc, y + 105 * sc); g.save(); g.translate(x, y); g.rotate(.08); const w = 120 * sc, h = 190 * sc; rr(-w / 2, -h / 2, w, h, 10 * sc, '#2a1a4a', 6 * sc); rr(-w / 2 + 8 * sc, -h / 2 + 8 * sc, w - 16 * sc, h - 16 * sc, 6 * sc, '#f6e8c0', 3 * sc);
@@ -374,15 +376,19 @@ else if (mode === 'accaudit') { // every speaking frame: nothing drawn after a f
     for (const f of R.filter(r => r.k === 'face' && onScreen(r))) for (const x of R) if (x.k === 'text' && ov(f, x)) { const key = `${x.name} over face ${f.who}`; (bad[key] = bad[key] || []).push(+t.toFixed(2)); } }
   for (const [k, v] of Object.entries(bad)) console.log(k, v.length, 'frames', v.slice(0, 6).join(' '), v.length > 6 ? '…' : '');
   console.log(`part ${PART}: ${frames} frames checked, ${talkFrames} speaking-face frames, ${Object.values(bad).reduce((a, v) => a + v.length, 0)} problems`); }
-else if (mode === 'walktest') { // 8 consecutive frames (every 3rd video frame = 0.1 s) of one groom's walk, fixed camera, planted-foot markers
-  const w = arg || 'm', E = ENTER[w], N = 8, cw = 300, ch = 620, sh = createCanvas(cw * N, ch + 90), sg = sh.getContext('2d'); sg.fillStyle = '#fbf3f6'; sg.fillRect(0, 0, sh.width, sh.height);
-  const t0 = E[0] + 1.2, cam = {z: 1.9, x: 235, y: 1000};
-  for (let i = 0; i < N; i++) { const t = t0 + i * .1; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H); g.save(); g.translate(540, 960); g.scale(cam.z, cam.z); g.translate(-cam.x, -cam.y); NOW = t; room(); door(t);
-    const G = {m: {s: 'off'}, j: {s: 'off'}, r: {s: 'off'}}; const wp = T.walkPose(t, E[0], E[1], [110, FL + 6], STAND, .2, STS); G[w] = {s: 'walk', x: wp.x, y: wp.y, sc: wp.s, wp}; drawGroom(w, t, G);
-    for (const sd of [-1, 1]) { const fx = wp.x + wp.walk[sd][0] * wp.s, fy = wp.y + (wp.walk[sd][1] + wp.bob) * wp.s; ell(fx, fy + 4, 9, 9, sd < 0 ? '#2fbf5a' : '#3a8ad8', 3); }
-    for (let k = 0; k < 7; k++) { const p = T.walkPose(E[0] + (k + .5) * E[1] / 6, E[0], E[1], [110, FL + 6], STAND, .2, STS); }
-    g.restore(); sg.drawImage(cv, 540 - 300, 960 - 620, 600, 1240, i * cw, 40, cw, ch); sg.fillStyle = INK; sg.font = '26px NBL, NBC'; sg.fillText(`+${(i * .1).toFixed(1)} с`, i * cw + 12, 30); }
-  sg.font = '24px NBL, NBC'; sg.fillText('Шаг ходьбы: зелёная точка — левая стопа, синяя — правая. Опорная стопа стоит на месте, тело проходит над ней.', 12, ch + 75);
-  fs.writeFileSync('walk_test.png', sh.toBuffer('image/png')); }
+else if (mode === 'walktest') { // 8 frames 0.08 s apart from the real entrance framing (WIDE) + silhouette strip
+  const w = arg || 'm', E = ENTER[w], N = 8, cropW = 420, cropH = 640, sc2 = .78, cw = cropW * sc2, chh = cropH * sc2, out = createCanvas(cw * N, chh * 2 + 140), og = out.getContext('2d'); og.fillStyle = '#fbf3f6'; og.fillRect(0, 0, out.width, out.height);
+  const t0 = E[0] + 3.2, sil = createCanvas(W, H), sgc = sil.getContext('2d');
+  for (let i = 0; i < N; i++) { const t = t0 + i * .08; g.setTransform(1, 0, 0, 1, 0, 0); worldPass(t, CAMS.WIDE(), {hosts: 1, fg: 1, aud: 1}); const wp = T.walkPose(t, E[0], E[1], WALK_A, STAND, .3, STS), cx = Math.round(wp.x - cropW / 2 + 20), cy = Math.round(wp.y - cropH + 60);
+    // fixed crop for all 8 frames (taken from the middle frame) so planted feet can be compared
+    const mid = T.walkPose(t0 + 3.5 * .08, E[0], E[1], WALK_A, STAND, .3, STS), fx = Math.round(mid.x - cropW / 2), fy = Math.round(mid.y - cropH + 60);
+    og.drawImage(cv, fx, fy, cropW, cropH, i * cw, 40, cw, chh);
+    // silhouette: the groom alone, solid black
+    const keepG = g; g = sgc; HX.setG(g); g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, W, H); const G = {m: {s: 'off'}, j: {s: 'off'}, r: {s: 'off'}}; G[w] = {s: 'walk', x: wp.x, y: wp.y, sc: wp.s, wp}; drawGroom(w, t, G);
+    g.globalCompositeOperation = 'source-in'; g.fillStyle = '#111'; g.fillRect(0, 0, W, H); g.globalCompositeOperation = 'source-over'; g = keepG; HX.setG(g);
+    og.fillStyle = '#ffffff'; og.fillRect(i * cw, 40 + chh + 60, cw, chh); og.drawImage(sil, fx, fy, cropW, cropH, i * cw, 40 + chh + 60, cw, chh); og.strokeStyle = '#ccc'; og.strokeRect(i * cw, 40 + chh + 60, cw, chh);
+    og.fillStyle = INK; og.font = '24px NBL, NBC'; og.fillText(`+${(i * .08).toFixed(2)} с`, i * cw + 10, 28); }
+  og.font = '24px NBL, NBC'; og.fillStyle = INK; og.fillText('Кадр общего плана входа (фиксированное окно) и силуэт: ритм шагов. Опорная стопа стоит, колено поднимается на проходе.', 10, 40 + chh + 40);
+  fs.writeFileSync('walk_test.png', out.toBuffer('image/png')); }
 else if (mode === 'sheet') { const N = 16, k = .25, cols = 4, sc2 = createCanvas(W * k * cols, H * k * N / cols), sg = sc2.getContext('2d'); for (let i = 0; i < N; i++) { const t = (i + .5) * TL.TOTAL / N; frame(t); sg.drawImage(cv, (i % cols) * W * k, Math.floor(i / cols) * H * k, W * k, H * k); sg.fillStyle = '#fff'; sg.font = '28px NBL'; sg.fillText(t.toFixed(1) + 's', (i % cols) * W * k + 10, Math.floor(i / cols) * H * k + 34); }
   fs.mkdirSync('final', {recursive: true}); fs.writeFileSync(`final/contact_sheet${PART}.png`, sc2.toBuffer('image/png')); }
