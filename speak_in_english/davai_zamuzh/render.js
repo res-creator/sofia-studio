@@ -271,7 +271,7 @@ const SPL = {b1: [["Hi! I'm Brittany, thirty-two, nail artist from Brooklyn.", '
   r1: [["I'm Ryan. Crypto investor.", 'Я Райан. Крипто-инвестор.'], ["I'm a millionaire!", 'Я миллионер!']], r2: [['Well… on paper.', 'Ну… на бумаге.']], r3: [['Oh sh—*', '']], r4: [['Okay… I WAS a millionaire.', 'Ладно… Я БЫЛ миллионером.']],
   r5: [['Do you accept crypto?', 'А криптой можно?']], s5: [["What's your sign?", 'Какой у тебя знак?']], s9: [['Mercury is in retrograde.', 'Меркурий ретроградный.'], ['Never trust crypto in retrograde.', 'Не верь крипте при ретрограде.']],
   s12: [["The stars say… he's married.", 'Звёзды говорят… он женат.']], hey_m: [['Hey!', 'Эй!']], hey_j: [['Hey!', 'Эй!']], hey_r: [['Hey!', 'Эй!']], p1: [['Угу.', '']]};
-const RUS = {e1: ['Добрый вечер! В эфире «Давай замуж!».', 'С вами я — Эльвира…'], e24: ['Это было «Давай замуж!».', 'А кого бы выбрали вы? Пишите в комментариях!'],
+const RUS = {s1: ['Девочки… не ссорьтесь. У вас обеих Луна в Скорпионе.'], e1: ['Добрый вечер! В эфире «Давай замуж!».', 'С вами я — Эльвира…'], e24: ['Это было «Давай замуж!».', 'А кого бы выбрали вы? Пишите в комментариях!'],
   s3: ['Бриттани, вы Лев.', 'Brittany, you are a Leo…', 'A Leo needs… a king.'], s8: ['Дева. Pure… and always hungry.', 'Чистый… и вечно голодный.'], s11: ['The stars say… compatibility zero.', 'Совместимость ноль.']};
 function chunks(l) { const end = l.id === 'r3' ? TL.BLEEP[0] + TL.BLEEP[1] : l.end;
   if (RUS[l.id]) { const Pp = RUS[l.id], n = Pp.reduce((a, c) => a + c.length, 0); let acc = 0; return Pp.map(sx => { const a = l.at + (end - l.at) * acc / n; acc += sx.length; return {s: sx, tr: '', a, b: l.at + (end - l.at) * acc / n, id: l.id}; }); }
@@ -318,8 +318,8 @@ function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30
 let COVER = 0;
 const layerFor = k => /^(CU|MCU|ECU|PUSH)$/.test(k) ? null : k === 'HOSTS' || k === 'END' || k === 'OTS_g' || k === 'EZ' || k === 'ZS' ? {fg: 0} : k === 'NEWS' ? {hosts: 0, fg: 1, aud: 0, seatedG: 0} : k === 'GROOMS' || k === 'OTS_b' || k === 'STAGED_b' ? {hosts: 1, fg: 1, aud: 0} : {hosts: 1, fg: 1, aud: 1};
 function worldPass(t, c, LY) { g.save(); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); studio(t, LY); g.restore(); }
-function frame(t) { const c = COVER && PART === 2 ? {z: 2.1, x: 600, y: 1170, sh: shotAt(t)} : camAt(t), sh = c.sh, k = sh.k; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
-  if (COVER && PART === 2) worldPass(t, c, {hosts: 0, fg: 1, aud: 1});
+function frame(t) { const c = COVER && PART === 2 && !process.env.COVER_T ? {z: 2.1, x: 600, y: 1170, sh: shotAt(t)} : camAt(t), sh = c.sh, k = sh.k; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
+  if (COVER && PART === 2 && !process.env.COVER_T) worldPass(t, c, {hosts: 0, fg: 1, aud: 1});
   else if (k === 'PHONEVID') phoneVideo(t, sh);
   else if (k.startsWith('INS_')) insert(k.slice(4), t, sh);
   else if (k === 'INTERRO') interrogation(t, sh);
@@ -395,9 +395,9 @@ if (mode === 'still') { fs.mkdirSync('out/st', {recursive: true}); for (const t 
 else if (mode === 'clip') { const [a, b] = arg.split(':').map(Number), F0 = Math.round(a * FPS), F1 = Math.round(Math.min(b, TL.TOTAL) * FPS);
   const ff = spawn('ffmpeg', ['-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', `${W}x${H}`, '-r', '30', '-i', '-', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', outName]);
   (async () => { for (let i = F0; i < F1; i++) { frame(i / FPS); if (!ff.stdin.write(Buffer.from(cv.data()))) await new Promise(r => ff.stdin.once('drain', r)); } ff.stdin.end(); ff.on('close', c => console.log('done', c)); })(); }
-else if (mode === 'cover') { COVER = 1; const t = PART === 1 ? BY.z7.at + .8 : TL.CRASH + 1.2; frame(t); const src2 = createCanvas(W, H); src2.getContext('2d').drawImage(cv, 0, 0); g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(src2, 0, 0);
-  g.save(); g.translate(540, 300); g.rotate(-.02); rr(-460, -175, 920, 350, 34, '#fffaf0', 9); fitLog('ДАВАЙ ЗАМУЖ!', 0, -70, 860, 120, 110, '#d63a8a'); fitLog(PART === 1 ? 'ЧАСТЬ 1: ЖЕНИХ-ФРИЛАНСЕР' : 'ЧАСТЬ 2: ВЕГАН И КРИПТО', 0, 62, 860, 110, 70, INK); g.restore();
-  fs.mkdirSync('final', {recursive: true}); fs.writeFileSync(`final/cover${PART}.png`, cv.toBuffer('image/png')); }
+else if (mode === 'cover') { COVER = 1; const t = process.env.COVER_T ? +process.env.COVER_T : PART === 1 ? BY.z7.at + .8 : TL.CRASH + 1.2; frame(t); const src2 = createCanvas(W, H); src2.getContext('2d').drawImage(cv, 0, 0); g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(src2, 0, 0);
+  g.save(); g.translate(540, 300); g.rotate(-.02); rr(-460, -175, 920, 350, 34, '#fffaf0', 9); fitLog('ДАВАЙ ЗАМУЖ!', 0, -70, 860, 120, 110, '#d63a8a'); fitLog(process.env.COVER_SUB || (PART === 1 ? 'ЧАСТЬ 1: ЖЕНИХ-ФРИЛАНСЕР' : 'ЧАСТЬ 2: ВЕГАН И КРИПТО'), 0, 62, 860, 110, 70, INK); g.restore();
+  fs.mkdirSync('final', {recursive: true}); fs.writeFileSync(process.env.COVER_OUT || `final/cover${PART}.png`, cv.toBuffer('image/png')); }
 else if (mode === 'srt') { const ts = s => { const ms = Math.round(s * 1000), h = Math.floor(ms / 3600000), m = Math.floor(ms / 60000) % 60, sec = Math.floor(ms / 1000) % 60; return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')},${String(ms % 1000).padStart(3, '0')}`; };
   let n = 0, out = ''; for (const c of FLAT) out += `${++n}\n${ts(c.a)} --> ${ts(c.hold)}\n${c.s}${c.tr ? '\n' + c.tr : ''}\n\n`; fs.mkdirSync('final', {recursive: true}); fs.writeFileSync(`final/part${PART}.srt`, out); }
 else if (mode === 'info') { let bad = 0; for (const c of FLAT) { const d = c.hold - c.a; if (d < 1.2) bad++; console.log('CAP', c.id, c.a.toFixed(2), d.toFixed(2), c.s, '|', c.tr || ''); }
