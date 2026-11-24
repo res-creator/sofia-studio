@@ -39,32 +39,41 @@ function teacup(x, y, sc) { body(x, y, sc, () => { P(); g.moveTo(-58, -730); g.l
   P(); g.arc(66, -704, 20, -1.4, 1.4); g.strokeStyle = INK; g.lineWidth = 7; g.stroke(); ell(0, -730, 58, 12, '#c98a5a', 6); for (const k of [-24, 6, 30]) ell(k, -690, 9, 9, '#f7a6c4', 0);
   for (const k of [-20, 14]) { P(); g.moveTo(k, -760); g.quadraticCurveTo(k + 16, -790, k, -820); g.strokeStyle = 'rgba(255,255,255,.85)'; g.lineWidth = 6; g.stroke(); } }); }
 
-// ---------- Petrovich: ALWAYS from behind ----------
-function petroHead(x, y, sc, shades = true) { body(x, y, sc, () => {
-  for (const s of [-1, 1]) ell(s * 108, -1020, 22, 34, '#e8b896', 6);
-  ell(0, -1040, 108, 118, '#e8b896'); g.save(); P(); g.ellipse(0, -1040, 108, 118, 0, 0, 7); g.clip(); g.fillStyle = 'rgba(0,0,0,.12)'; g.fillRect(44, -1170, 90, 260);
-  P(); g.moveTo(-112, -1010); g.quadraticCurveTo(0, -980, 112, -1010); g.lineTo(112, -900); g.lineTo(-112, -900); g.closePath(); g.fillStyle = '#b8b0a8'; g.fill(); g.restore(); ell(0, -1040, 108, 118, null, 7);
-  for (let k = -3; k <= 3; k++) ln([[k * 26, -986], [k * 27, -944]], 3, '#8a8278');
-  if (shades) { for (const s of [-1, 1]) { P(); g.roundRect(s * 44 - 40, -1138, 80, 50, 18); fsx('#1d1824', 6); } ln([[-6, -1116], [6, -1116]], 8); ln([[-84, -1112], [-104, -1060]], 6); ln([[84, -1112], [104, -1060]], 6); } }); }
-function petroBody(x, y, sc) { body(x, y, sc, () => {   // standing, from behind: tracksuit
+// ---------- Petrovich: ALWAYS from behind (ears at the sides, grey horseshoe at ear level, nape + collar below, bald shine on top) ----------
+function petroHead(x, y, sc) { body(x, y, sc, () => { const cy = -1040;
+  for (const s of [-1, 1]) { ell(s * 106, cy + 10, 22, 36, '#e8b896', 6); ell(s * 106, cy + 10, 9, 18, '#d39a7a', 0); }   // ears
+  ell(0, cy, 104, 116, '#e8b896'); g.save(); P(); g.ellipse(0, cy, 104, 116, 0, 0, 7); g.clip();
+  g.fillStyle = 'rgba(0,0,0,.10)'; g.fillRect(40, cy - 130, 80, 260);
+  P(); g.moveTo(-110, cy - 6); for (let k = 0; k <= 10; k++) g.lineTo(-110 + k * 22, cy - 6 + (k % 2 ? -8 : 0) + Math.abs(k - 5) * -3); g.lineTo(110, cy + 52); g.quadraticCurveTo(0, cy + 70, -110, cy + 52); g.closePath(); g.fillStyle = '#b8b0a8'; g.fill();   // horseshoe fringe at ear level
+  g.restore(); ell(0, cy, 104, 116, null, 7);
+  for (let k = -4; k <= 4; k++) ln([[k * 22, cy + 2], [k * 23, cy + 40]], 3, '#8a8278');
+  ell(-30, cy - 78, 30, 14, 'rgba(255,255,255,.75)', 0, -.3); }); }   // bald shine
+function collar(x, y, sc) { body(x, y, sc, () => { P(); g.moveTo(-70, -930); g.quadraticCurveTo(0, -950, 70, -930); g.lineTo(80, -900); g.quadraticCurveTo(0, -918, -80, -900); g.closePath(); fsx('#1f2d6a', 6); }); }
+// the newspaper seen from behind: we look at its back page; head = 'BRIGHTON POST' or 'BAD NEWS!' (snap = squash on the page turn)
+function paperBack(x, y, sc, top, headline, snap = 0, hw = 250) { body(x, y, sc, () => { g.translate(0, top); g.scale(1 - .12 * snap, 1);
+  rr(-hw, 0, hw * 2, 320, 8, '#efe9d8'); ln([[0, 0], [0, 320]], 5);
+  const bad = headline !== 'BRIGHTON POST';
+  T.fitText(g, headline, {x: -hw + 10, y: 8, w: hw * 2 - 20, h: bad ? 120 : 70}, {maxSize: bad ? 110 : 52, color: bad ? '#c8102e' : INK, pad: 8});
+  for (let k = 0; k < 4; k++) { ln([[-hw + 30, (bad ? 160 : 110) + k * 34], [-24, (bad ? 160 : 110) + k * 34]], 5, '#9a9488'); ln([[24, (bad ? 160 : 110) + k * 34], [hw - 30, (bad ? 160 : 110) + k * 34]], 5, '#9a9488'); } }); }
+// hands gripping the paper's side edges (we see the backs of his hands, fingers curling round the edge)
+function gripHands(x, y, sc, top, hw = 250) { body(x, y, sc, () => { for (const s of [-1, 1]) { const hx = s * hw, hy = top + 150; ell(hx, hy, 34, 44, '#e8b896', 6); for (let k = 0; k < 3; k++) ln([[hx - s * 6, hy - 26 + k * 22], [hx + s * 20, hy - 26 + k * 22]], 4, '#c99272'); } }); }
+function petroBody(x, y, sc, headline = 'BAD NEWS!') { const TOP = -1290;
+  paperBack(x, y, sc, TOP, headline);   // paper is in front of him (further from us), so it goes first
+  body(x, y, sc, () => {   // standing, from behind: tracksuit, heels toward us
   for (const s of [-1, 1]) { ln([[s * 46, -580], [s * 52, -70]], 58, INK); ln([[s * 46, -580], [s * 52, -70]], 46, '#2c3f8f'); ln([[s * 70, -560], [s * 76, -80]], 6, '#f4f1ea');
-    P(); g.roundRect(s * 52 - 44, -78, 88, 70, 26); fsx('#f4f1ea', 6); }
-  for (const s of [-1, 1]) { ln([[s * 104, -880], [s * 140, -720], [s * 132, -560]], 52, INK); ln([[s * 104, -880], [s * 140, -720], [s * 132, -560]], 40, '#2c3f8f'); ln([[s * 120, -860], [s * 152, -720]], 5, '#f4f1ea'); ell(s * 132, -548, 24, 26, '#e8b896', 6); }
+    P(); g.moveTo(s * 52 - 36, -70); g.lineTo(s * 52 + 36, -70); g.lineTo(s * 52 + 34, -14); g.quadraticCurveTo(s * 52, 2, s * 52 - 34, -14); g.closePath(); fsx('#f4f1ea', 6); ln([[s * 52 - 34, -14], [s * 52 + 34, -14]], 5, '#c9c2b2'); }   // heels only: feet point away
   P(); g.moveTo(-118, -900); g.quadraticCurveTo(0, -935, 118, -900); g.lineTo(112, -560); g.quadraticCurveTo(0, -548, -112, -560); g.closePath(); fsx('#2c3f8f'); g.save(); g.clip(); g.fillStyle = '#1f2d6a'; g.fillRect(56, -940, 80, 400); g.restore();
   P(); g.moveTo(-118, -900); g.quadraticCurveTo(0, -935, 118, -900); g.lineTo(112, -560); g.quadraticCurveTo(0, -548, -112, -560); g.closePath(); fsx(null);
   for (const s of [-1, 1]) ln([[s * 100, -896], [s * 106, -580]], 6, '#f4f1ea');
-  ln([[-30, -930], [30, -930]], 40, '#e8b896'); }); petroHead(x, y, sc); }
+  for (const s of [-1, 1]) { ln([[s * 104, -880], [s * 220, -960], [s * 250, TOP + 150]], 52, INK); ln([[s * 104, -880], [s * 220, -960], [s * 250, TOP + 150]], 40, '#2c3f8f'); }   // arms raised, elbows out
+  ln([[-30, -930], [30, -930]], 40, '#e8b896'); }); collar(x, y, sc); petroHead(x, y, sc); gripHands(x, y, sc, TOP); }
 function armchairBack(x, y, sc, col = '#9b3b4a') { body(x, y, sc, () => { const cs = shade(col, .78);
   rr(-300, -760, 600, 760, 90, col); g.save(); P(); g.roundRect(-300, -760, 600, 760, 90); g.clip(); g.fillStyle = cs; g.fillRect(170, -780, 150, 800); g.restore(); rr(-300, -760, 600, 760, 90, null);
   for (const s of [-1, 1]) rr(s * 300 - 60, -520, 120, 520, 50, s > 0 ? cs : col);
   ln([[-200, -640], [200, -640]], 5, cs); ln([[-200, -420], [200, -420]], 5, cs); }); }
-// newspaper held up in front of him (we see its back page): lower = 0 (covers the head) .. 1 (lowered, head visible)
-function newspaper(x, y, sc, lower = 0, rustle = 0) { body(x, y, sc, () => { g.translate(40, lerp(0, 120, ease(lower))); g.rotate(rustle * .03);
-  rr(-240, -1250, 480, 330, 8, '#efe9d8'); ln([[0, -1250], [0, -920]], 5);
-  T.fitText(g, 'BAD NEWS', {x: -230, y: -1238, w: 460, h: 110}, {maxSize: 96, color: '#c8102e', pad: 8});
-  for (let k = 0; k < 4; k++) { ln([[-210, -1100 + k * 34], [-24, -1100 + k * 34]], 5, '#9a9488'); ln([[24, -1100 + k * 34], [210, -1100 + k * 34]], 5, '#9a9488'); }
-  rr(40, -1112, 160, 80, 4, '#c9d6e6', 4); }); }
-function petroChair(x, y, sc, lower = 0, rustle = 0) { newspaper(x, y, sc, lower, rustle); armchairBack(x, y, sc); petroHead(x, y + 330 * sc, sc * .92, lower > .5); }
+// seated in the armchair, from behind: paper (far) -> head (top shows above the chair) -> hands on the paper edges -> chair back (near)
+function petroChair(x, y, sc, headline = 'BAD NEWS!', snap = 0, rustle = 0) { const TOP = -1220 + rustle * 4, HW = 215;
+  paperBack(x, y, sc, TOP, headline, snap, HW); collar(x, y + 57 * sc + 40 * sc, sc * .92); petroHead(x, y + 57 * sc, sc * .92); gripHands(x, y, sc, TOP, HW); armchairBack(x, y, sc); }
 
 // ---------- backgrounds ----------
 function pastelBg() { g.fillStyle = '#fde7ef'; g.fillRect(0, 0, W, H); g.fillStyle = '#f9d5e3'; for (let x = 0; x < W; x += 120) for (let y = 0; y < H; y += 120) { g.save(); g.translate(x + ((y / 120) % 2) * 60, y); ell(0, 0, 10, 10, '#f9d5e3', 0); g.restore(); }
@@ -87,8 +96,8 @@ function title(str, cy = 330, maxS = 92, lines = 2, a = 1) { if (a <= 0) return;
 // ---------- photo slides ----------
 const ZS = .94, FEET = 1860;
 function slide1() { pastelBg(); zh(ZSWEET, 540, FEET, ZS, {arms: CUP, front: true, hands: {1: 'fist', '-1': 'fist'}, mood: 'kind', look: 0}); teacup(540, FEET, ZS); title('me without an attitude'); }
-function slide2() { redBg(); petroBody(800, FEET, .98); zh(ZSAVAGE, 380, FEET, ZS, {arms: HIPS, hands: {1: 'fist', '-1': 'fist'}, mood: 'smugside', backFx: bigHairFx(1), faceFx: shadesFx(1)}); title('me with an attitude'); }
-function slide3() { redBg(); petroChair(770, FEET, .95, 1); zh(ZSAVAGE, 225, FEET, ZS * .92, {arms: s => s > 0 ? [[86, -860], [200, -760], [300, -800]] : HIPS(s), hands: {1: 'open', '-1': 'fist'}, lean: .04, mood: 'smug', backFx: bigHairFx(1), faceFx: shadesFx(1)}); title('my partner in crime'); }
+function slide2() { redBg(); petroBody(840, FEET, .9); zh(ZSAVAGE, 300, FEET, ZS, {arms: HIPS, hands: {1: 'fist', '-1': 'fist'}, mood: 'smugside', backFx: bigHairFx(1), faceFx: shadesFx(1)}); title('me with an attitude'); }
+function slide3() { redBg(); petroChair(790, FEET, .95, 'BAD NEWS!'); zh(ZSAVAGE, 205, FEET, ZS * .92, {arms: s => s > 0 ? [[86, -860], [200, -760], [300, -800]] : HIPS(s), hands: {1: 'open', '-1': 'fist'}, lean: .04, mood: 'smug', backFx: bigHairFx(1), faceFx: shadesFx(1)}); title('my partner in crime'); }
 function slide4() { const half = (left, fn) => { g.save(); P(); if (left) { g.moveTo(0, 0); g.lineTo(560, 0); for (let y = 0; y <= H; y += 120) g.lineTo(y / 120 % 2 ? 520 : 560, y); g.lineTo(0, H); } else { g.moveTo(W, 0); g.lineTo(560, 0); for (let y = 0; y <= H; y += 120) g.lineTo(y / 120 % 2 ? 520 : 560, y); g.lineTo(W, H); } g.closePath(); g.clip(); fn(); g.restore(); };
   half(true, () => { pastelBg(); zh(ZSWEET, 540, FEET, ZS, {pose: 'hips', hands: {1: 'fist', '-1': 'fist'}, mood: 'kind'}); });
   half(false, () => { redBg(); zh(ZSAVAGE, 540, FEET, ZS, {pose: 'hips', hands: {1: 'fist', '-1': 'fist'}, mood: 'smug', backFx: bigHairFx(1), faceFx: shadesFx(1)}); });
@@ -101,18 +110,19 @@ function blink(t, per = 3.7) { return (t % per) < .12; }
 function frame(t) {
   g.setTransform(1, 0, 0, 1, 0, 0);
   if (t < SNAP) {   // sweet at the vanity, soft light, gentle sway
-    pastelBg(); const sway = Math.sin(t * 2) * .015;
-    zh(ZSWEET, 540, FEET + 40, ZS, {arms: CUP, front: true, hands: {1: 'fist', '-1': 'fist'}, mood: 'kind', tilt: sway, nod: Math.sin(t * 2.4) * 4, blink: blink(t)}); teacup(540, FEET + 40, ZS); vanity();
+    pastelBg(); const sway = .06 * Math.sin(t * 1.6), lift = ease((t - .7) / .4) * (1 - ease((t - 1.9) / .4)), up = -70 * lift;
+    const cupArms = s => { const [S, E, Hd] = CUP(s); return [S, [E[0], E[1] + up * .5], [Hd[0], Hd[1] + up]]; };
+    zh(ZSWEET, 540, FEET + 40, ZS, {arms: cupArms, front: true, hands: {1: 'fist', '-1': 'fist'}, mood: lift > .5 ? 'happy' : 'kind', tilt: sway, nod: Math.sin(t * 2.4) * 4, blink: (t > 2.4 && t < 2.52) || (t > .3 && t < .42)}); teacup(540, FEET + 40 + up * ZS, ZS); vanity();
     title('oops, I forgot my attitude', 330, 92, 2, ease((t - .3) / .25));
     return; }
   // attitude world (red)
   const z = t >= POSE ? lerp(1, 1.1, ease((t - POSE) / (DUR - POSE))) : 1; g.translate(700, 1300); g.scale(z, z); g.translate(-700, -1300);
   redBg(t);
-  const zx = t < REACH ? 540 : lerp(540, 235, ease((t - REACH) / .6));
-  const chairX = t < PULL ? 1500 : lerp(1500, 770, ease((t - PULL) / PULLD));
+  const zx = t < REACH ? 540 : lerp(540, 215, ease((t - REACH) / .6));
+  const chairX = t < PULL ? 1500 : lerp(1500, 790, ease((t - PULL) / PULLD));
   const rustle = t > PULL + PULLD && t < PULL + PULLD + .5 ? Math.sin(t * 50) : 0;
-  const lower = ease((t - LOWER) / .8);
-  if (t >= PULL - .1) petroChair(chairX, FEET + 40, .95, lower, rustle);
+  const snap = t >= LOWER && t < LOWER + .25 ? Math.sin((t - LOWER) / .25 * Math.PI) : 0, head = t < LOWER + .12 ? 'BRIGHTON POST' : 'BAD NEWS!';
+  if (t >= PULL - .1) petroChair(chairX, FEET + 40, .95, head, snap, rustle);
   let arms = HIPS, hands = {1: 'fist', '-1': 'fist'}, mood = 'smug';
   if (t >= REACH && t < PULL + PULLD) { const k = t < PULL ? ease((t - REACH) / (PULL - REACH)) : 1 - ease((t - PULL) / PULLD) * .55; arms = reach(k); hands = {1: 'fist', '-1': 'fist'}; mood = 'smugside'; }
   else if (t >= PULL + PULLD && t < POSE) { const k = .45 * (1 - ease((t - PULL - PULLD) / .7)); arms = reach(k); }

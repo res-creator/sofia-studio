@@ -18,7 +18,7 @@ Pick ONE format for the campaign (a video longer than 8 s, OR a photo post with 
 1. TikTok → Inbox → System notifications → Monetization → Campaigns → «Show off your "attitude"!» → **Submit**.
 2. Upload the video (or the 4 photos as a photo post).
 3. Add the sound **«Bad News»** from the campaign card.
-   - For the video: turn the original sound down to about 30 % so the song leads. Our whoosh, snap and chair-slide stay faintly audible.
+   - For the video: turn the original sound down to about 30 % so the song leads. Our whoosh, snap, chair-slide and page-snap stay faintly audible.
 4. Paste the caption below and publish.
 5. **Keep the post public for at least 10 days**, otherwise it won't count.
 
