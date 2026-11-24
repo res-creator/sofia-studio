@@ -100,17 +100,18 @@ const GEST = {
   shrug: s => [[s * 86, -860], [s * 160, -770], [s * 210, -850]],
   standDown: s => [[s * 86, -860], [s * 102, -720], [s * 110, -580]],
   point: s => s > 0 ? [[86, -860], [200, -820], [300, -860]] : LAPA(s),
-  slap: s => s > 0 ? [[86, -860], [250, -720], [470, -610]] : LAPA(s),            // Эльвира's hand lands on Жанна's hand on the desk (hand to hand, low)
-  cardE: s => s > 0 ? [[86, -860], [215, -780], [225, -900]] : LAPA(s),           // card held beside the chin, outside the face
+  slap: s => s > 0 ? [[86, -860], [240, -760], [400, -690]] : LAPA(s),            // Эльвира's hand lands on Жанна's hand on the desk top (hand to hand, low)
+  deskhand: s => s < 0 ? [[-86, -860], [-170, -760], [-150, -690]] : LAPA(s),        // Жанна's left hand rests on the desk top            // Эльвира's hand lands on Жанна's hand on the desk (hand to hand, low)
+  cardE: s => s > 0 ? [[86, -860], [235, -780], [262, -890]] : LAPA(s),           // card held beside the chin, outside the face
   fan: s => s > 0 ? [[86, -860], [215, -840], [230, -985]] : LAPA(s),             // waves a hand beside her face (own side)
   hair: s => s > 0 ? [[86, -860], [235, -1000], [215, -1170]] : LAPA(s),           // fixes her bouffant (own side, above the ear)
-  hug: s => s > 0 ? [[86, -860], [200, -720], [250, -650]] : [[-86, -860], [-70, -700], [140, -640]],   // hugs the ficus at her right
+  hug: s => s > 0 ? [[86, -860], [210, -760], [280, -690]] : [[-86, -860], [-60, -740], [170, -700]],   // hugs the ficus at her right
   cry: s => [[s * 86, -860], [s * 150, -900], [s * 58, -1060]],                    // both palms on her face (crying)
   peek: s => [[s * 86, -860], [s * 155, -870], [s * 62, -940]],                    // hands lowered to the chin: peeks
 };
 function gestureAt(who, t) {   // gesture name for a time (seated hosts / bride)
   const l = lineFor(who, t), id = l && l.id;
-  if (who === 'z') { if (id === 'z1' || id === 'z28') return 'wave'; if (id === 'z6' || id === 'z13' || id === 'z20' || (PART === 2 && inW(t, TL.POINT_G, BY.z22.end - TL.POINT_G))) return 'point'; if (PART === 2 && inW(t, TL.HAIR, BY.z18.end - TL.HAIR + .2)) return 'hair'; }
+  if (who === 'z') { if (PART === 1 && inW(t, TL.SLAP - .8, 1.6)) return 'deskhand'; if (id === 'z1' || id === 'z28') return 'wave'; if (id === 'z6' || id === 'z13' || id === 'z20' || (PART === 2 && inW(t, TL.POINT_G, BY.z22.end - TL.POINT_G))) return 'point'; if (PART === 2 && inW(t, TL.HAIR, BY.z18.end - TL.HAIR + .2)) return 'hair'; }
   if (who === 'b') { if (id === 'b4') return 'nails'; if (PART === 2 && inW(t, TL.CRY[0], TL.PEEK_B - TL.CRY[0] - .3)) return 'cry'; if (PART === 2 && inW(t, TL.PEEK_B - .3, 1.4)) return 'peek'; }
   if (who === 'e') { if (PART === 1 && inW(t, TL.SLAP - .35, .85)) return 'slap'; if (PART === 1 && inW(t, TL.CARDLAUGH, BY.e10.end - TL.CARDLAUGH + .3)) return 'cardE'; if (id === 'e16' || id === 'e15') return 'fan';
     if (PART === 2 && (inW(t, TL.NIBBLE + .2, 1.6) || inW(t, TL.CRASH + .4, 1.8))) return 'pearls'; }
@@ -170,7 +171,7 @@ function kalePeek(t) { if ((PART === 1 ? t >= TL.KALE_PEEK : t < TL.ENTER_J[0]))
 // ---------- the studio ----------
 function studio(t, LY = {hosts: 1, fg: 1, aud: 1}) { NOW = t; room(); sign(t); door(t); kalePeek(t);
   if (LY.hosts !== 0) for (const w of 'ezs') chair(HOSTX[w], HY, HS, 400, '#7a3a8a');
-  if (LY.hosts !== 0) for (const w of SEATED_HOSTS) seated(w, HOSTX[w], HY, HS, t); desk(t); deskProps(t); if (!LY.fg) { cardProp(t); return; }
+  if (LY.hosts !== 0) for (const w of SEATED_HOSTS) seated(w, HOSTX[w], HY, HS, t); desk(t); if (LY.hosts !== 0) overDesk(t); deskProps(t); if (!LY.fg) { cardProp(t); return; }
   cardProp(t); const G0 = grooms(t); for (const w of 'mjr') if ((G0[w].s === 'walk' || G0[w].s === 'stand') && G0[w].y < 1470) drawGroom(w, t, G0);   // depth order: people behind the plant / bride are drawn first
   plantStand(t);
   armchair34(BX, BYF, BS, '#f2a0c0'); bride(t); if (PART === 2 && t >= TL.GIVE_KALE) kale(BX + 40, BYF - 420 * BS, BS * .8);
@@ -184,6 +185,11 @@ function bride(t) { const s = brideState(t); if (s === 'off') return; if (s === 
   const wp = T.walkPose(t, TL.ENTER_B[0] + .3, B_WALK, B_A, [BX, BYF], BS, BS), st = stOf('b', t, wp.x), bob = wp.bob * wp.s;
   const pts = sd => { const f = sd > 0 ? GEST.wave(1) : [[-86, -860], [-102, -720], [-110, -580]], sw = sd < 0 ? wp.swing[sd] : 0; return f.map((p, i) => [p[0] + (i === 2 ? sw * 70 : i === 1 ? sw * 30 : 0), p[1] - (i === 2 ? Math.abs(sw) * 18 : 0)]); };
   recFace('b', wp.x, wp.y + bob, wp.s, st.mouth); T.draw(g, {...BR, x: wp.x, y: wp.y + bob, s: wp.s, ...st, mood: 'grin', walk: wp.walk, walkDir: wp.walkDir, lean: wp.lean, arms: pts, ik: true, hands: {1: 'open', '-1': 'open'}}); }
+// arms that rest / act ON the desk top are drawn again after the desk (the desk would hide them)
+const OVER = {deskhand: [-1], slap: [1], hug: [-1, 1], cardE: [1]};
+function overDesk(t) { for (const w of SEATED_HOSTS) { const A = ARMS[w]; if (!A || !OVER[A.a.name] || A.a.k < .35) continue;
+    body(A.x, A.y, A.sc, () => { for (const sd of OVER[A.a.name]) T.drawArm(g, DEF[w], sd, A.a.fn(sd), null, A.a.name === 'cardE' ? 'fist' : 'open'); });
+    if (A.a.name === 'cardE') { const [hx, hy] = hpos(w, 1); g.save(); g.translate(hx + 4, hy - 34 * A.sc); g.rotate(.12); recProp('cardE', -40 * A.sc, -60 * A.sc, 40 * A.sc, 60 * A.sc); rr(-70 * A.sc, -100 * A.sc, 140 * A.sc, 200 * A.sc, 10 * A.sc, '#ffffff', 5 * A.sc); for (let k = 0; k < 4; k++) ln([[-45 * A.sc, (-60 + k * 30) * A.sc], [45 * A.sc, (-60 + k * 30) * A.sc]], 4 * A.sc, '#b8b0c8'); g.restore(); } } }
 function cardProp(t) { if (ARMS.s && gestureAt('s', t) === 'card' && ARMS.s.a.k > .85) { const [hx, hy, a] = hpos('s', 1); const lab = PART === 1 ? 'THE KING' : 'MARRIED'; tarotCard(hx + 6 * HS, hy - 150 * HS, HS * 1.15, lab, PART === 2); T.drawHand(g, 'fist', hx, hy, a, HS, ZV.pal.skin, ZV.nails, 1, 22); } }
 function tarotCard(x, y, sc, label, paper) { recProp('tarot', x - 70 * sc, y - 105 * sc, x + 70 * sc, y + 105 * sc); g.save(); g.translate(x, y); g.rotate(.08); const w = 120 * sc, h = 190 * sc; rr(-w / 2, -h / 2, w, h, 10 * sc, '#2a1a4a', 6 * sc); rr(-w / 2 + 8 * sc, -h / 2 + 8 * sc, w - 16 * sc, h - 16 * sc, 6 * sc, '#f6e8c0', 3 * sc);
   if (paper) { rr(-34 * sc, -h * .32, 68 * sc, 50 * sc, 3 * sc, '#efe9d8', 3 * sc); for (let k = 0; k < 3; k++) ln([[-26 * sc, -h * .26 + k * 12 * sc], [26 * sc, -h * .26 + k * 12 * sc]], 2 * sc, '#9a9488'); }
