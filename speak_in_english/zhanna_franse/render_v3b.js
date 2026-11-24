@@ -31,9 +31,9 @@ const GEST = {
   rest: REST, hips: HIP,
   perfume: s => s > 0 ? [[78, -860], [235, -850], [262, -1000]] : HIP(s), spray: s => s > 0 ? [[78, -860], [228, -840], [250, -975]] : HIP(s),
   grand: s => s > 0 ? [[78, -860], [235, -850], [262, -1000]] : [[-78, -860], [-235, -960], [-330, -1090]],     // perfume in the right hand, left arm thrown out: «voilà»
-  bottleUp: s => s > 0 ? [[78, -860], [215, -820], [225, -960]] : [[-78, -860], [-150, -780], [-60, -900]],   // bottle up beside the face, left hand flips the tag at chest height
+  bottleUp: s => s > 0 ? [[78, -860], [215, -820], [225, -960]] : HIP(s),   // bottle up beside the face, left hand flips the tag at chest height
   judge: s => s > 0 ? [[78, -860], [175, -760], [95, -700]] : [[-78, -860], [-175, -760], [-95, -700]],        // arms crossed-ish (hands at the waist front)
-  smirk: s => s > 0 ? [[78, -860], [190, -770], [112, -655]] : [[-78, -860], [-170, -780], [-80, -905]],       // one hand on the hip, the other at the chin
+  smirk: s => s > 0 ? [[78, -860], [190, -770], [112, -655]] : [[-78, -860], [-215, -800], [-190, -930]],   // knuckles on the outer jaw, lips free       // one hand on the hip, the other at the chin
   bagHold: s => s > 0 ? [[78, -860], [180, -760], [205, -660]] : HIP(s),
   strut: s => [[s * 78, -860], [s * 120, -730], [s * 120, -610]],
   voila: s => s > 0 ? [[78, -860], [235, -960], [335, -1080]] : HIP(s),
@@ -50,14 +50,25 @@ function gripObject(drawObj, h) { const sd = h.side || 1, W2 = (h.w || 0) / h.S,
   if (h.fist) { for (const o of [-17, -6, 5, 16]) { rr(-22, o - 6, 44, 12, 6, h.skin, 5); if (h.nail) ell(21, o, 6, 5, h.nail, 3); } g.save(); g.translate(-18, -26); g.rotate(.5); rr(-6, -7, 34, 14, 7, h.skin, 5); g.restore(); }
   else { for (const o of [-18, -6, 6, 18]) { rr(W2 - 16, o - 6, 26, 12, 6, h.skin, 5); if (h.nail) ell(W2 + 9, o, 6, 5, h.nail, 3); } rr(-W2 - 12, -16, 26, 14, 7, h.skin, 5); if (h.nail) ell(-W2 - 9, -9, 5, 4, h.nail, 3); }
   g.restore(); }
-const shades = (gg, HY) => { const pg = g; g = gg; for (const s of [-1, 1]) { g.beginPath(); g.ellipse(s * 56, HY - 30, 64, 52, 0, 0, 7); g.fillStyle = '#1d1b22'; g.fill(); g.strokeStyle = INK; g.lineWidth = 7; g.stroke(); ell(s * 56 - 22, HY - 46, 14, 8, 'rgba(255,255,255,.55)', 0); } ln([[-8, HY - 34], [8, HY - 34]], 8); g = pg; };
+// stylish sunglasses (head coordinates): rounded cat-eye lenses a bit wider than the eyes, gold frame, thin bridge, temple arms to the ears,
+// dark gradient lens with a white diagonal shine; brows stay visible above. dy = how far up the head they sit (0 = on the eyes, -1 = pushed up into the hair)
+function glasses(gg, HY, dy = 0) { const pg = g; g = gg; g.save(); g.translate(0, dy * 205); const ey = HY - 32;
+  ln([[-150, ey - 4], [-196, ey + 10]], 7, '#c99a1e'); ln([[150, ey - 4], [196, ey + 10]], 7, '#c99a1e');   // temple arms to the ears
+  for (const s of [-1, 1]) { const cx = s * 58; g.beginPath(); g.moveTo(cx - 62, ey - 30); g.quadraticCurveTo(cx - 62 * 0 + s * 10, ey - 52 - (s > 0 ? 0 : 0), cx + 66, ey - 40);   // cat-eye top edge, outer corner lifted
+    g.quadraticCurveTo(cx + 74 * 1, ey + 2, cx + 46, ey + 34); g.quadraticCurveTo(cx, ey + 52, cx - 44, ey + 34); g.quadraticCurveTo(cx - 70, ey + 8, cx - 62, ey - 30); g.closePath();
+    if (s < 0) { g.save(); g.translate(2 * cx, 0); g.scale(-1, 1); g.translate(0, 0); g.restore(); }
+    const gr = g.createLinearGradient(cx, ey - 50, cx, ey + 50); gr.addColorStop(0, '#2a2238'); gr.addColorStop(1, '#5a3a5e'); g.fillStyle = gr; g.fill(); g.strokeStyle = '#c99a1e'; g.lineWidth = 9; g.stroke(); g.strokeStyle = INK; g.lineWidth = 3; g.stroke();
+    g.save(); g.clip(); g.strokeStyle = 'rgba(255,255,255,.75)'; g.lineWidth = 9; g.beginPath(); g.moveTo(cx - 40, ey + 24); g.lineTo(cx + 2, ey - 40); g.stroke(); g.lineWidth = 4; g.beginPath(); g.moveTo(cx - 18, ey + 30); g.lineTo(cx + 22, ey - 32); g.stroke(); g.restore(); }
+  g.beginPath(); g.moveTo(-12, ey - 18); g.quadraticCurveTo(0, ey - 28, 12, ey - 18); g.strokeStyle = '#c99a1e'; g.lineWidth = 7; g.stroke();   // bridge
+  g.restore(); g = pg; }
+const shades = (gg, HY) => glasses(gg, HY, 0);
 // a character: gesture fn, mood, mouth (light lip-sync for Zhanna), optional walk pose / seated / sunglasses / props in the right hand
 const envAt = t => { const f = t * FPS, i = Math.floor(f), k = f - i; return (TL.env[i] || 0) * (1 - k) + (TL.env[i + 1] || 0) * k; };
 const SONGLINE = {at: 0, end: LEN, env: TL.env};
 function person(st0, t, x, y, S, o = {}) { const g1 = GEST[o.g || 'rest'], g0 = o.gb ? GEST[o.gb[0]] : null, kb = o.gb ? ease(o.gb[1]) : 1, base = g0 && kb < 1 ? s => g1(s).map((p, i) => [lerp(g0(s)[i][0], p[0], kb), lerp(g0(s)[i][1], p[1], kb)]) : g1;
   const fn = T.ik(wig(base, t, 2), 2 + 2 * Math.sin(t * 2.2 + x)); const sing = o.sing ? T.talk(SONGLINE, t + 1 / 30, 3, {attack: .045, release: .07}) : {mouth: 0, nod: 0, round: .5};
   const st = {...st0, hands: {1: 'none', '-1': 'none'}, x, y, s: S, arms: fn, ik: false, front: true, mood: o.mood || 'smug', mouth: o.mouth ?? sing.mouth, round: sing.round, nod: (o.nod || 0) + sing.nod * .6, t,
-    blink: ((t + x * .01) % 3.4) < .12 && !o.shades, tilt: (o.tilt || 0) + .02 * Math.sin(t * 1.1 + x), look: o.look || 0, lean: o.lean || 0, seated: o.seated, faceFx: o.shades ? shades : null, ...(o.walk ? {walk: o.walk.walk, walkDir: o.walk.walkDir} : {})};
+    blink: ((t + x * .01) % 3.4) < .12 && !o.shades, tilt: (o.tilt || 0) + .02 * Math.sin(t * 1.1 + x), look: o.look || 0, lean: o.lean || 0, seated: o.seated, hairFx: o.shades ? shades : null, ...(o.walk ? {walk: o.walk.walk, walkDir: o.walk.walkDir} : {})};
   T.draw(g, st); faceReg(o.name || 'face', x, y, S); armOver(fn, x, y, S, st0);
   DIRS = {}; for (const sd of [-1, 1]) { const P3 = fn(sd); DIRS[sd] = Math.atan2(P3[2][1] - P3[1][1], P3[2][0] - P3[1][0]); }
   const skip = new Set(o.hold ? Object.keys(o.hold).map(Number) : []);
@@ -215,6 +226,8 @@ function frame(t) { FACEBOX = []; PROPBOX = []; TEXTBOX = []; g = G0; g.setTrans
   if (!done) scene(k, t);
   g = G0; g.setTransform(1, 0, 0, 1, 0, 0); vignette(); if (t > LEN - .3) { g.fillStyle = `rgba(0,0,0,${clamp((t - LEN + .3) / .3)})`; g.fillRect(0, 0, W, H); } if (!process.env.NOCAP) lyrics(t); }
 
+// the bag never moves: measure its position once so a chunk/still that starts inside the bag close-up frames it correctly
+{ const tc = createCanvas(W, H), keep = g; g = tc.getContext('2d'); scene(3, SCN[3] + .5); g = keep; }
 // ---------- modes ----------
 const [mode, arg, outName] = process.argv.slice(2);
 if (mode === 'still') { fs.mkdirSync('out/st3b', {recursive: true}); for (const t of arg.split(',')) { frame(+t); fs.writeFileSync(`out/st3b/${t}.png`, cv.toBuffer('image/png')); } }
