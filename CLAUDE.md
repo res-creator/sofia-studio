@@ -7,6 +7,7 @@
 > **Long-form How It's Run films (YouTube, animated):** Для создания длинных анимационных YouTube-фильмов How It’s Run обязательно сначала прочитай `longform/LONGFORM_STYLE.md` и используй утверждённую систему `longform/figmakit/`. Не разрабатывай новый стиль и анимационный движок с нуля без отдельного задания.
 
 ## Hard rules (from the owner)
+- When the owner sends a reference video and says «хочу так же», break it down fully and copy its structure (script base, character build, animation, shots/editing, subtitles, plates). Process: `speak_in_english/notes/REFERENCE_PROCESS.md`. Show a side-by-side storyboard before rendering.
 - Never write API keys into code, git, chat logs or memory. ElevenLabs keys only via env var `ELEVEN_API_KEYS`. Max 2 ElevenLabs requests at once (space calls ~3 s apart).
 - English only on screen and in audio. Hashtags in all lowercase.
 - Owner talks Russian; answer her in Russian, simply.
