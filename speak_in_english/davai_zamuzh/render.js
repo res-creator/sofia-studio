@@ -151,7 +151,7 @@ function studio(t, LY = {hosts: 1, fg: 1, aud: 1}) { NOW = t; room(); sign(t); d
   if (LY.hosts !== 0) for (const w of 'ezs') seated(w, HOSTX[w], HY, HS, t); desk(t); deskProps(t); if (!LY.fg) { cardProp(t); return; }
   cardProp(t); plantStand(t);
   armchair34(BX, BYF, BS, '#f2a0c0'); seated('b', BX, BYF, BS, t); if (PART === 2 && t >= TL.GIVE_KALE) kale(BX + 40, BYF - 420 * BS, BS * .8);
-  const G = grooms(t); sofaSide(); chair(SOFA, BYF, GS, 1560, '#3a6aa8', 'sofa'); for (const w of 'mjr') if (G[w].s === 'seat') drawGroom(w, t, G);
+  const G = grooms(t); sofaSide(); chair(SOFA, BYF, GS, 1560, '#3a6aa8', 'sofa'); for (const w of 'mjr') if (G[w].s === 'seat' && LY.seatedG !== 0) drawGroom(w, t, G);
   for (const w of 'mjr') if (G[w].s === 'walk' || G[w].s === 'stand') drawGroom(w, t, G);
   if (LY.aud) audience(t); }
 function cardProp(t) { if (ARMS.s && gestureAt('s', t) === 'card' && ARMS.s.a.k > .85) { const [hx, hy, a] = hpos('s', 1); const lab = PART === 1 ? 'THE KING' : 'MARRIED'; tarotCard(hx + 6 * HS, hy - 150 * HS, HS * 1.15, lab, PART === 2); T.drawHand(g, 'fist', hx, hy, a, HS, ZV.pal.skin, ZV.nails, 1, 22); } }
@@ -161,7 +161,7 @@ function tarotCard(x, y, sc, label, paper) { recProp('tarot', x - 70 * sc, y - 1
   fitLog(label, 0, h * .22, w - 24 * sc, 46 * sc, 40 * sc, '#2a1a4a', {pad: 2}); g.restore(); }
 
 // ---------- video card (Brittany's apartment) ----------
-function videoCard(t) { const u = t - TL.CARD; g.fillStyle = '#ffd6e4'; g.fillRect(0, 0, W, H); for (let k = 0; k < 8; k++) { g.fillStyle = k % 2 ? '#ffcadb' : '#ffd6e4'; g.fillRect(k * 135, 0, 135, 1400); }
+function videoCard(t, phoneUI) { const u = t - TL.CARD; g.fillStyle = '#ffd6e4'; g.fillRect(0, 0, W, H); for (let k = 0; k < 8; k++) { g.fillStyle = k % 2 ? '#ffcadb' : '#ffd6e4'; g.fillRect(k * 135, 0, 135, 1400); }
   rr(600, 260, 400, 520, 16, '#bfe4ff'); for (const [x, w2, h2] of [[620, 70, 260], [700, 60, 360], [770, 90, 220], [870, 70, 320], [940, 50, 200]]) rr(x, 780 - h2, w2, h2, 4, '#6a7aa8', 4); ln([[800, 260], [800, 780]], 8); ln([[600, 520], [1000, 520]], 8);   // window: Brooklyn
   g.fillStyle = '#d9a1b8'; g.fillRect(0, 1400, W, 520); rr(90, 330, 300, 240, 10, '#e9bb34', 7); rr(110, 350, 260, 200, 6, '#ffffff', 4);   // photo frame: her half + torn edge + the cat
   ell(170, 470, 34, 34, '#f6d0b8', 4); ln([[250, 352], [236, 400], [258, 450], [240, 500], [256, 548]], 5); ell(320, 500, 34, 26, '#f2a54a', 4); poly([[296, 482], [304, 458], [314, 478]], '#f2a54a', 4); poly([[326, 478], [336, 458], [344, 482]], '#f2a54a', 4);
@@ -171,33 +171,51 @@ function videoCard(t) { const u = t - TL.CARD; g.fillStyle = '#ffd6e4'; g.fillRe
   recProp('glass', hx - 40, hy - 140, hx + 44, hy + 10); g.save(); g.translate(hx + 4, hy - 70); P(); g.moveTo(-36, -60); g.quadraticCurveTo(-36, 10, 0, 14); g.quadraticCurveTo(36, 10, 36, -60); g.closePath(); fsx('rgba(255,255,255,.75)', 5); P(); g.moveTo(-30, -20); g.quadraticCurveTo(0, 12, 30, -20); g.closePath(); fsx('#c0283a', 0); ln([[0, 14], [0, 70]], 6); g.restore();
   T.drawHand(g, 'fist', hx, hy, Math.atan2(p[2][1] - p[1][1], p[2][0] - p[1][0]), sc, BR.pal.skin, BR.nails, 1, 22);
   // TV frame: REC + tag (top corner, away from her face)
-  g.lineWidth = 18; g.strokeStyle = '#2a2230'; g.strokeRect(9, 9, W - 18, H - 18); ell(70, 76, 14, 14, u % 1 < .6 ? '#e0303a' : '#ffd6e4', 0); fitLog('ВИДЕО-ВИЗИТКА', 260, 76, 320, 56, 40, '#2a2230', {pad: 4}); }
+  if (phoneUI) return; g.lineWidth = 18; g.strokeStyle = '#2a2230'; g.strokeRect(9, 9, W - 18, H - 18); ell(70, 76, 14, 14, u % 1 < .6 ? '#e0303a' : '#ffd6e4', 0); fitLog('ВИДЕО-ВИЗИТКА', 260, 76, 320, 56, 40, '#2a2230', {pad: 4}); }
 
-// ---------- shots ----------
-// camera: z + world centre; CU frames a head (world head centre), MED a group
-const headOf = {e: [HOSTX.e, 823], z: [HOSTX.z, 823], s: [HOSTX.s, 823], b: [BX, BYF + (HIP - SEAT_H) * BS - 1062 * BS]};
-const groomHead = (w, t) => { const q = grooms(t)[w]; return q.s === 'seat' ? [q.x, q.y + (HIP - SEAT_H) * q.sc - 1062 * q.sc] : [q.x, q.y - 1062 * q.sc]; };
-const CAMS = {WIDE: () => ({z: 1, x: 540, y: 960}), HOSTS: () => ({z: 1.95, x: 545, y: 900}), GROOMS: () => ({z: 1.5, x: 790, y: 1360}),
-  CU_e: () => ({z: 3.0, ...cuAt(headOf.e)}), CU_z: () => ({z: 3.0, ...cuAt(headOf.z)}), CU_s: () => ({z: 3.0, ...cuAt(headOf.s)}), CU_b: () => ({z: 2.2, ...cuAt(headOf.b)}),
-  STAND: () => ({z: 1.8, x: 380, y: 1230}), CU_r: () => ({z: 2.4, x: 480, y: 1150}),
-  PETRO: () => ({z: 2.0, x: AUDX[PETRO], y: VH + 40 - 260 * .5 - 300}), DOOR: () => ({z: 2.2, x: 200, y: 720}), CARD: () => ({z: 1, x: 540, y: 960}), END: () => ({z: 1.95, x: 545, y: 900})};
-const cuAt = ([x, y]) => ({x, y: y + 35});
-const s0 = id => BY[id].at - .08;
-const SHOTS = (PART === 1 ? [[0, 'STAND', 'm'], [1.25, 'STAND', 'j'], [2.5, 'CU_r'], [TL.OPEN - .05, 'WIDE'], [s0('z1'), 'CU_z'], [s0('s1'), 'CU_s'], [TL.CARD, 'CARD'], [s0('e2'), 'CU_e'], [s0('b3'), 'CU_b'], [s0('z2'), 'CU_z'], [TL.REACT1[0], 'CU_e'],
-    [s0('b4'), 'CU_b'], [s0('z3'), 'CU_z'], [TL.REACT2[0], 'CU_e'], [s0('s2'), 'CU_s'], [s0('z4'), 'CU_z'], [s0('e4'), 'HOSTS'], [TL.ENTER_M[0] - .05, 'WIDE'], [s0('m1'), 'STAND'], [s0('z5'), 'CU_z'], [TL.REACT3[0], 'CU_e'],
-    [s0('m2'), 'STAND'], [s0('z6'), 'CU_z'], [s0('s3'), 'CU_s'], [s0('m3'), 'STAND'], [s0('s4'), 'HOSTS'], [s0('e6'), 'WIDE'], [TL.KALE_PEEK, 'DOOR']]
-  : [[0, 'DOOR'], [TL.ENTER_J[0] - .05, 'WIDE'], [s0('j1'), 'STAND'], [s0('z7'), 'CU_z'], [s0('e8'), 'CU_e'], [s0('j2'), 'STAND'], [s0('z8'), 'CU_z'], [s0('s5'), 'CU_s'], [TL.ENTER_R[0] - .05, 'WIDE'], [s0('r1'), 'STAND'],
-    [TL.CRASH - .05, 'CU_r'], [s0('z9'), 'CU_z'], [TL.REACT1[0], 'CU_e'], [s0('s6'), 'CU_s'], [s0('e10'), 'HOSTS'], [s0('z10'), 'CU_z'], [at('z10', .55), 'GROOMS'], [s0('s7'), 'CU_s'], [s0('e11'), 'WIDE'], [s0('b5'), 'CU_b'],
-    [s0('m4'), 'GROOMS'], [s0('z11'), 'CU_z'], [TL.COLD[0], 'PETRO'], [BY.p1.end + .1, 'CU_b'], [BY.s8.at + 1.0, 'CU_s'], [s0('z12'), 'CU_z'], [s0('e12'), 'HOSTS'], [TL.END, 'END']])
-  .map(([a, k, who], i, arr) => ({a, k, who, end: arr[i + 1] ? arr[i + 1][0] : TL.TOTAL, i}));
+// ---------- shots (v2 re-edit: reference-style shot vocabulary) ----------
+// world shots: WIDE HOSTS GROOMS DOOR PETRO, CU_<who>, MCU_<who>, ECU_<who> (eyes), PUSH_<who> (push-in from MCU to CU on a punchline)
+// screen composites: INS_laptop INS_kale INS_chart INS_tarot INS_paper INS_clock INS_ball INS_photo, OTS_b (bride's shoulder -> groom),
+// OTS_g (groom's shoulder -> hosts), STAGED_b (bride in front, grooms react behind), NEWS (crypto crash), INTERRO (interrogation), ASTRO (forecast), PHONEVID (video card)
+const SCW = {e: HS, z: HS, s: HS, b: BS};
+function headW(who, t) { if (who in HOSTX) return [HOSTX[who], HY + (HIP - SEAT_H) * HS - 1062 * HS, HS]; if (who === 'b') return [BX, BYF + (HIP - SEAT_H) * BS - 1062 * BS, BS];
+  const q = grooms(t)[who]; return q.s === 'seat' ? [q.x, q.y + (HIP - SEAT_H) * q.sc - 1062 * q.sc, q.sc] : [q.x, q.y - 1062 * q.sc, q.sc]; }
+const camCU = (who, t, k = .9) => { const [x, y, sc] = headW(who, t); return {z: k / sc, x, y: y + 117 * sc * (.9 / k)}; };
+const camECU = (who, t) => { const [x, y, sc] = headW(who, t); return {z: 3.3 / sc, x, y: y - 20 * sc}; };
+const CAMS = {WIDE: () => ({z: 1, x: 540, y: 960}), HOSTS: () => ({z: 1.95, x: 545, y: 900}), GROOMS: () => ({z: 1.55, x: 800, y: 1330}),
+  DOOR: () => ({z: 2.2, x: 200, y: 720}), PETRO: () => ({z: 2.0, x: AUDX[PETRO], y: VH + 40 - 260 * .5 - 300}), END: () => ({z: 1.95, x: 545, y: 900})};
+const s0 = id => BY[id].at - .08, wd = (id, key, d = .3) => { const w = (BY[id].words || []).find(x => x[2].toLowerCase().includes(key.toLowerCase())); return w ? w[0] - .1 : at(id, d); };
+// [start, kind, who/arg, extra]
+const PLAN = PART === 1 ? [
+  [0, 'INS_laptop'], [1.25, 'INS_kale'], [2.5, 'INS_chart'], [TL.OPEN - .05, 'WIDE'], [at('e1', .5), 'MCU', 'e'], [s0('z1'), 'PUSH', 'z', wd('z1', 'хай')], [s0('s1'), 'MCU', 's'], [at('s1', .5), 'INS_ball'],
+  [TL.CARD, 'PHONEVID', 0], [at('b1', .45), 'PHONEVID', 1], [wd('b1', 'and', .76) - .1, 'INS_photo'], [s0('b2') + .35, 'PHONEVID', 1],
+  [s0('e2'), 'CU', 'e'], [s0('b3'), 'CU', 'b'], [s0('z2'), 'PUSH', 'z', wd('z2', 'тоже', .7)], [TL.REACT1[0], 'ECU', 'e'], [s0('e3'), 'MCU', 'e'], [s0('b4'), 'CU', 'b'],
+  [s0('z3'), 'PUSH', 'z', wd('z3', 'выбери', .7)], [TL.REACT2[0], 'ECU', 'b'], [s0('s2'), 'ASTRO', 'leo'], [wd('s2', 'needs', .6), 'INS_tarot', 'king'], [s0('z4'), 'PUSH', 'z', wd('z4', 'бургер', .7)],
+  [s0('e4'), 'HOSTS'], [TL.ENTER_M[0] - .05, 'WIDE'], [s0('m1'), 'OTS_b', 'm'], [at('m1', .45), 'INS_laptop'], [s0('z5'), 'PUSH', 'z', wd('z5', 'безработ', .5)], [TL.REACT3[0], 'ECU', 'm'],
+  [s0('e5'), 'INTERRO'], [s0('z6'), 'PUSH', 'z', wd('z6', 'ноль', .6)], [s0('s3'), 'ASTRO', 'ask'], [s0('m3'), 'CU', 'm'], [s0('s4'), 'ASTRO', 'aquarius'], [at('s4', .62), 'HOSTS'],
+  [s0('e6'), 'WIDE'], [TL.KALE_PEEK, 'DOOR']]
+ : [
+  [0, 'DOOR'], [TL.ENTER_J[0] - .05, 'WIDE'], [s0('j1'), 'OTS_b', 'j'], [wd('j1', 'brought', .6) - .15, 'INS_kale'], [s0('z7'), 'PUSH', 'z', wd('z7', 'салат', .7)], [s0('e8'), 'MCU', 'e'], [s0('j2'), 'CU', 'j'],
+  [s0('z8'), 'PUSH', 'z', wd('z8', 'шашлык', .5)], [s0('s5'), 'ASTRO', 'virgo'], [TL.ENTER_R[0] - .05, 'WIDE'], [s0('r1'), 'OTS_b', 'r'], [s0('e9'), 'MCU', 'e'],
+  [s0('r2'), 'INS_chart'], [TL.BLEEP[0] - .04, 'NEWS'], [s0('z9'), 'PUSH', 'z', wd('z9', 'первый', .6)], [TL.REACT1[0], 'ECU', 'e'], [s0('s6'), 'ASTRO', 'mercury'], [at('s6', .55), 'MCU', 's'],
+  [s0('e10'), 'OTS_g', 'r'], [s0('z10'), 'MCU', 'z'], [at('z10', .42), 'PUSH', 'z', at('z10', .48)], [at('z10', .66), 'GROOMS'], [s0('s7'), 'ASTRO', 'zero'], [at('s7', .6), 'INS_ball'],
+  [s0('e11'), 'WIDE'], [TL.DRUM[0], 'STAGED_b'], [s0('b5'), 'CU', 'b'], [s0('m4'), 'CU', 'm'], [s0('j3'), 'CU', 'j'], [s0('r5'), 'CU', 'r'],
+  [s0('z11'), 'MCU', 'z'], [TL.COLD[0], 'INS_clock'], [TL.COLD[0] + 1.2, 'INS_paper'], [TL.COLD[0] + 2.45, 'CU', 'b'], [TL.COLD[0] + 3.7, 'INS_tarot', 'married'], [s0('z12'), 'PUSH', 'z', at('z12', .5)],
+  [s0('e12'), 'HOSTS'], [at('e12', .45), 'MCU', 'e'], [TL.END, 'END']];
+const SHOTS = PLAN.map(([a, k, who, x], i, arr) => ({a, k, who, x, end: arr[i + 1] ? arr[i + 1][0] : TL.TOTAL, i}));
 const SHAKE = PART === 2 ? [TL.BLEEP[0], .5] : null;   // shake on one word only: the bleep
 function shotAt(t) { let s = SHOTS[0]; for (const q of SHOTS) if (t >= q.a) s = q; return s; }
-function camAt(t) { const sh = shotAt(t); let c = CAMS[sh.k](); const u = clamp((t - sh.a) / (sh.end - sh.a));
-  const cold = PART === 2 && sh.k === 'PETRO'; const z = c.z * (1 + (cold ? .06 : .025) * ease(u)); let sx = 0, sy = 0;
+function worldCam(sh, t) { const u = clamp((t - sh.a) / (sh.end - sh.a));
+  switch (sh.k) { case 'CU': return camCU(sh.who, t); case 'MCU': return camCU(sh.who, t, .62); case 'ECU': return camECU(sh.who, t);
+    case 'PUSH': { const k = ease(P01(t, sh.x, .45)); const A = camCU(sh.who, t, .62), B = camCU(sh.who, t, 1.15); return {z: lerp(A.z, B.z, k), x: lerp(A.x, B.x, k), y: lerp(A.y, B.y, k)}; }
+    case 'OTS_b': { const [x, y, sc] = headW(sh.who, t); return {z: .62 / sc, x: x + 60 * sc, y: y + 330 * sc}; }
+    case 'OTS_g': return CAMS.HOSTS(); case 'STAGED_b': return {z: 1.35, x: 700, y: 1310};
+    case 'NEWS': { const [x, y, sc] = headW('r', t); const z = lerp(.75, 1.15, ease(u)) / sc; return {z, x: x + 40 * sc, y: y + 200 * sc}; }
+    default: return CAMS[sh.k] ? CAMS[sh.k]() : CAMS.WIDE(); } }
+function camAt(t) { const sh = shotAt(t); const c = worldCam(sh, t); const cold = sh.k === 'PETRO'; let z = c.z * (sh.k === 'PUSH' || sh.k === 'NEWS' || sh.k === 'ECU' ? 1 : 1 + (cold ? .06 : .02) * ease(clamp((t - sh.a) / (sh.end - sh.a)))), sx = 0, sy = 0;
   if (SHAKE && t >= SHAKE[0] && t < SHAKE[0] + .6) { const v = t - SHAKE[0]; sx = 14 * Math.exp(-6 * v) * Math.sin(v * 70); sy = 10 * Math.exp(-6 * v) * Math.cos(v * 61); }
-  const hw = 540 / z, hh = 960 / z; return {z, x: clamp(c.x, hw, VW - hw) + sx / z, y: clamp(c.y, hh, VH - hh) + sy / z, sh}; }
-function teaseGroom(t) { if (PART !== 1 || t >= TL.OPEN - .05) return null; return t < 1.25 ? 'm' : t < 2.5 ? 'j' : 'r'; }
-
+  const hw = 540 / z, hh = 960 / z, free = /ECU|PUSH|NEWS|OTS_b|CU|MCU/.test(sh.k); return {z, x: (free ? c.x : clamp(c.x, hw, VW - hw)) + sx / z, y: (free ? c.y : clamp(c.y, hh, VH - hh)) + sy / z, sh}; }
+function teaseGroom(t) { return null; }
 // ---------- captions (owner's style) ----------
 const RUNG = new Set(['хай', 'гёрлз', 'скэрд', 'смарт', 'рич', 'энд', 'кайнд', 'кинг', 'бургер-кинг', 'депендс', 'онли', 'плэнтс']);
 const isEn = w => { const x = w.replace(/[«»"?!.,…—:*]/g, '').toLowerCase(); return /[a-z]/i.test(x) || RUNG.has(x) || x.split('-').some(p => RUNG.has(p)); };
@@ -244,7 +262,7 @@ function chip(t) { let c = null; for (const q of CHIPS) if (t >= q.a && t < q.b)
   g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillStyle = '#d63a8a'; g.fillText(w1, -tw / 2, -3); g.fillStyle = INK; g.fillText(w2, -tw / 2 + g.measureText(w1).width, -3); g.restore(); }
 function plate(t, a, b, l1, l2, y = 1560) { if (t < a || t >= b) return; const ui = P01(t, a, .4), uo = P01(t, b - .3, .3), sp = spr(ui, 6, 10), al = clamp(ui * 5) * (1 - ei(clamp((uo - .35) / .65)));
   recText('plate', 100, y - 130, 980, y + 130); g.save(); g.globalAlpha = al; g.translate(540, y); g.rotate(-.02 - .06 * (1 - sp)); const s = .62 + .38 * sp; g.scale(s, s); rr(-440, -130, 880, 260, 34, '#fffaf0', 9); fitLog(l1, 0, -50, 840, 100, 74, INK); fitLog(l2, 0, 52, 840, 100, 80, '#d63a8a'); g.restore(); }
-function censor(t) { if (PART !== 2 || t < TL.BLEEP[0] - .02 || t >= TL.BLEEP[0] + 1.4) return; const c = camAt(t), hx = (STAND[0] + 150 - c.x) * c.z + 540, hy = (STAND[1] - 1062 * STS - 60 - c.y) * c.z + 960, k = spr(P01(t, TL.BLEEP[0], .3));   // beside the head (right of it), never on the face
+function censor(t) { if (PART !== 2 || t < TL.BLEEP[0] - .02 || t >= TL.BLEEP[0] + 1.4) return; const c = camAt(t), hs = (STAND[0] - c.x) * c.z + 540, half = 152 * 1.2 * STS * c.z, hx = hs - half - 190, hy = (STAND[1] - 1062 * STS - 60 - c.y) * c.z + 960, k = spr(P01(t, TL.BLEEP[0], .3));   // beside the head (left of it), never on the face
   recText('censor', hx + 60 - 95, hy - 50, hx + 60 + 95, hy + 50); g.save(); g.translate(hx + 60, hy); g.rotate(.12); g.scale(k, k); rr(-95, -48, 190, 96, 22, '#2a2230', 6, '#ffffff'); fitLog('#@$%!', 0, 0, 170, 80, 56, '#ffd23f', {pad: 4}); poly([[-60, 44], [-84, 80], [-30, 46]], '#2a2230', 0); g.restore(); }
 function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30,20,30,${.55 * k})`; g.fillRect(0, 0, W, H); g.save(); g.globalAlpha = k; g.translate(0, (1 - k) * 80);
   rr(60, 170, 960, 1540, 44, '#fffaf0', 8); fitLog('ПЕРЕВОДИМ ЖАННУ', 540, 270, 900, 90, 66, '#d63a8a');
@@ -254,21 +272,77 @@ function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30
 
 // ---------- frame ----------
 let COVER = 0;
-function frame(t) { const c = COVER && PART === 2 ? {z: 2.4, x: 480, y: 1197, sh: shotAt(t)} : camAt(t), sh = c.sh; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
-  if (sh.k === 'CARD' && !COVER) { videoCard(t); }
-  else { const tg = teaseGroom(t); g.save(); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y);
-    const k = sh.k, LY = /^CU_[ezs]$|HOSTS|END/.test(k) ? {fg: 0} : k === 'CU_b' || k === 'GROOMS' || k === 'CU_r' ? {hosts: 1, fg: 1, aud: 0} : {hosts: 1, fg: 1, aud: 1};
-    if (COVER && PART === 2) LY.hosts = 0; if (tg) { teaseStudio(t, tg); } else studio(t, LY); g.restore(); }
+const layerFor = k => /^(CU|MCU|ECU|PUSH)$/.test(k) ? null : k === 'HOSTS' || k === 'END' || k === 'OTS_g' ? {fg: 0} : k === 'NEWS' ? {hosts: 0, fg: 1, aud: 0, seatedG: 0} : k === 'GROOMS' || k === 'OTS_b' || k === 'STAGED_b' ? {hosts: 1, fg: 1, aud: 0} : {hosts: 1, fg: 1, aud: 1};
+function worldPass(t, c, LY) { g.save(); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); studio(t, LY); g.restore(); }
+function frame(t) { const c = COVER && PART === 2 ? {z: 2.4, x: 480, y: 1197, sh: shotAt(t)} : camAt(t), sh = c.sh, k = sh.k; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
+  if (COVER && PART === 2) worldPass(t, c, {hosts: 0, fg: 1, aud: 1});
+  else if (k === 'PHONEVID') phoneVideo(t, sh);
+  else if (k.startsWith('INS_')) insert(k.slice(4), t, sh);
+  else if (k === 'INTERRO') interrogation(t, sh);
+  else if (k === 'ASTRO') astro(t, sh);
+  else { let LY = layerFor(k); if (!LY) { const who = sh.who, host = 'ezs'.includes(who); LY = host ? {fg: 0} : {hosts: 1, fg: 1, aud: 0}; }
+    worldPass(t, c, LY); if (k === 'OTS_b') otsBride(t); if (k === 'OTS_g') otsGroom(t, sh.who); if (k === 'STAGED_b') stagedBride(t); if (k === 'NEWS') newsOverlay(t, sh); }
   const v = g.createRadialGradient(W / 2, H * .45, 650, W / 2, H * .45, 1250); v.addColorStop(0, 'rgba(30,15,30,0)'); v.addColorStop(1, 'rgba(30,15,30,0.14)'); g.fillStyle = v; g.fillRect(0, 0, W, H);
   if (process.env.NOCAP || COVER) return;
   if (PART === 1) plate(t, 0, TL.OPEN - .05, 'СЕГОДНЯ', 'В ПРОГРАММЕ'); if (PART === 1) plate(t, TL.PART2[0], TL.TOTAL + 1, 'ПРОДОЛЖЕНИЕ', 'ЧАСТЬ 2');
-  if (sh.k === 'END') endCard(t); else { censor(t); chip(t); caption(t); } }
-// teaser: the studio with only the featured groom standing (and his prop moment)
-function teaseStudio(t, w) { NOW = t; room(); sign(t); door(t); for (const x of 'ezs') chair(HOSTX[x], HY, HS, 400, '#7a3a8a'); for (const x of 'ezs') seated(x, HOSTX[x], HY, HS, t); desk(t); deskProps(t); plantStand(t);
-  armchair34(BX, BYF, BS, '#f2a0c0'); seated('b', BX, BYF, BS, t); sofaSide(); chair(SOFA, BYF, GS, 1560, '#3a6aa8', 'sofa');
-  const G = {m: {s: 'off'}, j: {s: 'off'}, r: {s: 'off'}}; G[w] = {s: 'stand', x: STAND[0], y: STAND[1], sc: STS};
-  drawGroom(w, t, G); audience(t); }
-
+  profileCard(t);
+  if (k === 'END') endCard(t); else if (k !== 'ECU') { censor(t); chip(t); caption(t); } }
+// grooms' profile cards slide in at the top on their entrance (like the reference's comment cards)
+const PROFILE = {m: ['ЖЕНИХ №1 · МАЙК', 'фрилансер · 29 лет · Водолей', '#8a93a0'], j: ['ЖЕНИХ №2 · ДЖОШ', 'веган · 27 лет · Дева', '#9ac07a'], r: ['ЖЕНИХ №3 · РАЙАН', 'крипто-инвестор · 31 год · Телец', '#26315e']};
+function profileCard(t) { if (shotAt(t).k !== 'WIDE') return; for (const w of 'mjr') { const E = ENTER[w]; if (!E || t < E[0] || t >= E[0] + E[1] + .1) continue; const ui = P01(t, E[0], .35), uo = P01(t, E[0] + E[1] - .2, .3), y = 150 - 300 * (1 - ease(ui)) - 300 * ei(uo);
+    recText('profile', 70, y - 80, 1010, y + 80); g.save(); g.translate(0, y); rr(70, -80, 940, 160, 26, '#ffffff', 5); ell(160, 0, 54, 54, PROFILE[w][2], 5); fitLog(PROFILE[w][0], 600, -26, 760, 60, 50, INK); fitLog(PROFILE[w][1], 600, 34, 760, 48, 38, '#6a5a70'); g.restore(); } }
+// ---- full-screen inserts ----
+function bgBands(c1, c2) { g.fillStyle = c1; g.fillRect(0, 0, W, H); for (let k = 0; k < 12; k++) { g.fillStyle = k % 2 ? c2 : c1; g.fillRect(k * W / 12, 0, W / 12, H); } }
+function stars(t, n = 70, col = '#fff6c0') { for (let i = 0; i < n; i++) { const x = (Math.sin(i * 91.7) * .5 + .5) * W, y = (Math.sin(i * 47.3 + 1) * .5 + .5) * H, r = 2 + 3 * ((Math.sin(i * 13.1 + t * 3) + 1) / 2); ell(x, y, r, r, col, 0); } }
+function insert(kind, t, sh) { const u = t - sh.a;
+  if (kind === 'laptop') { bgBands('#5a2a6a', '#62306f'); g.save(); g.translate(540, 1080 + 10 * Math.sin(u * 2)); laptop(0, 0, 3.4); g.restore(); const s = 3.4 * .32 / .32;
+    for (const sd of [-1, 1]) T.drawHand(g, 'fist', 540 + sd * 410, 1060, sd > 0 ? Math.PI : 0, 2.6, MK.pal.skin, null, sd, 22); ell(780, 640, 10, 10, '#ffffff', 3); }
+  if (kind === 'kale') { bgBands('#ffd6e4', '#ffcadb'); const k = spr(P01(t, sh.a, .5)); g.save(); g.translate(540, 1100); g.scale(k, k); kale(0, 0, 3.2); g.restore(); T.drawHand(g, 'fist', 540, 1100, -Math.PI / 2, 3, JS.pal.skin, null, 1, 22); for (let i = 0; i < 5; i++) { const a = u * 2 + i * 1.3; star5(540 + Math.cos(a) * 380, 700 + Math.sin(a) * 260, 18); } }
+  if (kind === 'chart') { const tc = PART === 1 ? 2.5 : TL.CRASH; g.fillStyle = '#101018'; g.fillRect(0, 0, W, H); const fall = ease(P01(t, tc + .3, .7)); g.save(); g.translate(540 + (fall > 0 && fall < 1 ? Math.sin(t * 80) * 6 : 0), 960); g.scale(6.2, 6.2); phoneCrash(0, 0, 1, t); g.restore();
+    if (fall > .3) { g.save(); g.globalAlpha = .18 * (Math.sin(t * 30) > 0 ? 1 : 0); g.fillStyle = '#ff2030'; g.fillRect(0, 0, W, H); g.restore(); } }
+  if (kind === 'tarot') { g.fillStyle = '#1a1438'; g.fillRect(0, 0, W, H); stars(t); const k = spr(P01(t, sh.a, .5)); g.save(); g.translate(540, 900); g.rotate((1 - k) * .4); g.scale(k, k); tarotCard(0, 0, 4.6, sh.who === 'married' ? 'MARRIED' : 'THE KING', sh.who === 'married'); g.restore(); }
+  if (kind === 'paper') { bgBands('#3a2a4a', '#43304f'); const sh2 = t >= TL.RUSTLE && t < TL.RUSTLE + .5 ? Math.sin(t * 60) * 6 : 0; g.save(); g.translate(540 + sh2, 900); g.rotate(-.03);
+      rr(-470, -560, 940, 1020, 10, '#efe9d8', 8); ln([[0, -560], [0, 460]], 5); fitLog('BRIGHTON POST', -235, -480, 420, 90, 70, INK); fitLog('КУРС ДОЛЛАРА', 235, -480, 420, 90, 60, INK);
+      rr(-430, -390, 400, 260, 6, '#c9d6e6', 5); for (let i = 0; i < 9; i++) { ln([[-430, -90 + i * 50], [-30, -90 + i * 50]], 6, '#9a9488'); ln([[30, -390 + i * 50], [430, -390 + i * 50]], 6, '#9a9488'); } fitLog('$ = ?', 235, 200, 360, 160, 140, '#c0283a'); g.restore();
+    for (const sd of [-1, 1]) T.drawHand(g, 'fist', 540 + sd * 480 + sh2, 760, sd > 0 ? Math.PI : 0, 2.4, '#e8b896', null, sd, 22); }
+  if (kind === 'clock') { bgBands('#5a2a6a', '#62306f'); const tick = Math.floor(u * 2) / 2; ell(540, 900, 330, 330, '#fffaf0', 12); for (let i = 0; i < 12; i++) { const a = i / 12 * Math.PI * 2; ln([[540 + Math.cos(a) * 270, 900 + Math.sin(a) * 270], [540 + Math.cos(a) * 305, 900 + Math.sin(a) * 305]], i % 3 ? 8 : 16); }
+    const am = -Math.PI / 2 + (7 + tick) / 60 * Math.PI * 2; ln([[540, 900], [540 + Math.cos(am) * 240, 900 + Math.sin(am) * 240]], 16); ln([[540, 900], [540 + Math.cos(-Math.PI / 2 + 2.5) * 160, 900 + Math.sin(-Math.PI / 2 + 2.5) * 160]], 22); const as = -Math.PI / 2 + tick * 6 / 60 * Math.PI * 2 * 5; ln([[540, 900], [540 + Math.cos(as) * 260, 900 + Math.sin(as) * 260]], 6, '#d63a3a'); ell(540, 900, 22, 22, INK, 0); }
+  if (kind === 'ball') { g.fillStyle = '#1a1438'; g.fillRect(0, 0, W, H); stars(t); const zero = PART === 2; g.save(); g.globalAlpha = .35 + .2 * Math.sin(t * 6); ell(540, 860, 420, 420, '#fff0a0', 0); g.restore(); ell(540, 1260, 240, 70, '#d4a82a', 8); ell(540, 860, 330, 330, '#b9e6ff', 10); ell(500, 820, 190, 190, '#d8c4ff', 0); ell(420, 720, 60, 40, 'rgba(255,255,255,.9)', 0);
+    if (zero) fitLog('0', 540, 860, 360, 360, 360, '#c0283a', {pad: 4}); else for (let i = 0; i < 7; i++) star5(540 + Math.cos(t * 1.5 + i) * 200, 860 + Math.sin(t * 1.5 + i) * 200, 22); }
+  if (kind === 'photo') { bgBands('#ffd6e4', '#ffcadb'); g.save(); g.translate(540, 900); g.rotate(-.04); rr(-420, -340, 840, 680, 20, '#e9bb34', 10); rr(-370, -290, 740, 580, 10, '#ffffff', 6); ell(-180, -20, 150, 150, BR.pal.skin, 6); ell(-230, -40, 16, 22, INK, 0); ell(-130, -40, 16, 22, INK, 0);
+    ln([[30, -290], [-10, -150], [40, -20], [-5, 120], [30, 290]], 10); const k = spr(P01(t, sh.a + .2, .5)); g.save(); g.translate(220, 60); g.scale(k, k); ell(0, 40, 140, 110, '#f2a54a', 8); poly([[-110, -20], [-80, -130], [-30, -40]], '#f2a54a', 8); poly([[30, -40], [80, -130], [110, -20]], '#f2a54a', 8); ell(-45, 20, 14, 18, INK, 0); ell(45, 20, 14, 18, INK, 0); g.restore(); g.restore(); } }
+function star5(x, y, r) { const p = []; for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + i * Math.PI / 5, rr2 = i % 2 ? r * .45 : r; p.push([x + Math.cos(a) * rr2, y + Math.sin(a) * rr2]); } poly(p, '#ffd23f', 4); }
+// ---- over the shoulder / staging ----
+function otsBride() { g.save(); P(); g.ellipse(150, 1560, 330, 390, -.15, 0, 7); fsx('#3a2418', 9); P(); g.ellipse(120, 2050, 420, 200, 0, 0, 7); fsx('#f27ab0', 9); ell(330, 1250, 26, 40, '#f2c820', 6); g.restore(); }
+function otsGroom(t, w) { const col = {m: '#7a5030', j: '#8a6a3a', r: '#2a1f1a'}[w], top = {m: '#8a93a0', j: '#efe3c8', r: '#26315e'}[w]; P(); g.ellipse(860, 1930, 520, 260, 0, 0, 7); fsx(top, 9); if (w === 'r') { poly([[800, 1700], [860, 1700], [850, 1900], [810, 1900]], '#ffffff', 6); } ell(600, 1640, 40, 60, '#f1c6a2', 7); P(); g.ellipse(860, 1600, 280, 320, .1, 0, 7); fsx(col, 9); P(); g.moveTo(640, 1520); g.quadraticCurveTo(860, 1380, 1080, 1500); g.strokeStyle = 'rgba(255,255,255,.25)'; g.lineWidth = 12; g.stroke();
+  if (w === 'm') for (let i = 0; i < 9; i++) ell(640 + i * 55, 1330 + (i % 2) * 30, 70, 60, col, 7); if (w === 'j') { ell(860, 1260, 90, 80, col, 8); ln([[810, 1320], [910, 1320]], 14, '#3a8a4a'); } }
+function stagedBride(t) { const sc = .78, x = 200, y = 900 + 1062 * sc - 140 * sc; recBox('noop', 0, 0, 0, 0); chair(x, y, sc, 420, '#f2a0c0'); seated('b', x, y, sc, t, {}); }
+// ---- genre cutaways ----
+function newsOverlay(t, sh) { g.fillStyle = '#d42a3a'; g.fillRect(0, 150, W, 96); ln([[0, 150], [W, 150]], 6, '#ffffff'); recText('news-banner', 0, 150, W, 246); fitLog('СРОЧНЫЕ НОВОСТИ', 380, 198, 680, 80, 60, '#ffffff'); rr(760, 164, 280, 66, 12, '#ffffff', 0); fitLog('LIVE', 900, 197, 260, 60, 44, '#d42a3a');
+  const k = spr(P01(t, sh.a + .2, .5)); g.save(); g.translate(880, 470); g.rotate(.08); g.scale(k, k); recText('news-photo', -150, -170, 150, 190); rr(-150, -170, 300, 360, 8, '#ffffff', 6); rr(-125, -145, 250, 240, 4, '#101018', 0); g.save(); g.translate(0, -25); g.scale(1.3, 1.3); phoneCrash(0, 0, 1, TL.CRASH + 2); g.restore(); fitLog('КОМПРОМАТ', 0, 140, 270, 60, 44, '#d42a3a'); g.restore();
+  recText('news-lower', 0, 1430, W, 1530); g.fillStyle = '#101018'; g.fillRect(0, 1430, W, 100); g.fillStyle = '#d42a3a'; g.fillRect(0, 1430, 230, 100); fitLog('BREAKING', 115, 1480, 210, 80, 44, '#ffffff'); fitLog('КРИПТА РУХНУЛА', 650, 1480, 800, 80, 60, '#ffffff'); }
+function interrogation(t, sh) { g.fillStyle = '#12121e'; g.fillRect(0, 0, W, H); const sw = Math.sin(t * 1.6) * 30; ln([[540, 0], [540 + sw * .3, 300]], 6, '#3a3a4a'); g.save(); g.globalAlpha = .22; P(); g.moveTo(540 + sw * .3 - 70, 330); g.lineTo(540 + sw * .3 + 70, 330); g.lineTo(940 + sw, 1500); g.lineTo(140 + sw, 1500); g.closePath(); g.fillStyle = '#fff3c0'; g.fill(); g.restore();
+  P(); g.moveTo(540 + sw * .3 - 110, 330); g.lineTo(540 + sw * .3 + 110, 330); g.lineTo(540 + sw * .3 + 50, 270); g.lineTo(540 + sw * .3 - 50, 270); g.closePath(); fsx('#2a2a3a', 6); ell(540 + sw * .3, 336, 40, 16, '#fff6c0', 4);
+  const sc = .95, x = 540, y = 820 + 1062 * sc - 140 * sc; g.save(); chair(x, y, sc, 380, '#3a3a4a'); const st = stOf('m', t, x); seat(MK, x, y, sc, {...st, mood: lineFor('m', t) ? 'worried' : 'worried', sweat: true, arms: LAPA, ik: false, front: true, hands: {1: 'fist', '-1': 'fist'}}); recFace('m', x, y + (HIP - SEAT_H) * sc, sc, st.mouth); g.restore();
+  const ty = y - 420 * sc + 20; rr(60, ty, 960, 70, 10, '#4a3a2a', 6); g.fillStyle = '#3a2a1a'; g.fillRect(100, ty + 70, 880, 700); ln([[100, ty + 70], [100, ty + 770]], 6); ln([[980, ty + 70], [980, ty + 770]], 6); rr(760, ty - 70, 140, 80, 10, '#e9e4d8', 5);
+  const vg = g.createRadialGradient(540, 900, 300, 540, 900, 1100); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,.6)'); g.fillStyle = vg; g.fillRect(0, 0, W, H); }
+const SIGNS = {leo: ['LEO', 'ЛЕВ', [[-180, 40], [-90, -40], [0, -60], [80, -10], [60, 80], [150, 120]]], aquarius: ['AQUARIUS', 'ВОДОЛЕЙ', [[-200, 0], [-120, -60], [-40, 0], [40, -60], [120, 0], [200, -60]]],
+  virgo: ['VIRGO', 'ДЕВА', [[-180, -60], [-100, 0], [-20, -40], [60, 30], [140, -10], [180, 90]]], mercury: ['MERCURY RETRO', 'МЕРКУРИЙ', null], zero: ['COMPATIBILITY', 'СОВМЕСТИМОСТЬ', null], ask: ['YOUR SIGN?', 'ТВОЙ ЗНАК?', null]};
+function astro(t, sh) { g.fillStyle = '#16123a'; g.fillRect(0, 0, W, H); g.fillStyle = '#211a52'; g.fillRect(0, 0, W, 640); stars(t, 90); const S = SIGNS[sh.who] || SIGNS.ask;
+  recText('astro-title', 240, 90, 840, 190); rr(240, 90, 600, 100, 50, '#7a3ad0', 6); fitLog('АСТРОПРОГНОЗ', 540, 140, 560, 80, 60, '#ffd23f');
+  const k = ease(P01(t, sh.a, .6)); if (S[2]) { const pts = S[2].map(([x, y]) => [540 + x, 400 + y]); g.save(); g.globalAlpha = k; ln(pts.slice(0, Math.max(2, Math.ceil(pts.length * k))), 4, '#fff6c0'); g.restore(); pts.forEach(p => star5(p[0], p[1], 16)); }
+  else if (sh.who === 'mercury') { ell(540, 400, 80, 80, '#c9c4d0', 6); g.save(); g.lineWidth = 8; g.strokeStyle = '#ff7aa8'; P(); g.arc(540, 400, 140, Math.PI * .2, Math.PI * 1.6); g.stroke(); g.restore(); poly([[540 + 140 * Math.cos(Math.PI * .2) - 20, 400 + 140 * Math.sin(Math.PI * .2) - 30], [540 + 140 * Math.cos(Math.PI * .2) + 30, 400 + 140 * Math.sin(Math.PI * .2) - 10], [540 + 140 * Math.cos(Math.PI * .2) - 10, 400 + 140 * Math.sin(Math.PI * .2) + 30]], '#ff7aa8', 4); }
+  else if (sh.who === 'zero') { for (const sd of [-1, 1]) { g.save(); g.translate(540 + sd * 90 + sd * 40 * k, 400); g.rotate(sd * .3 * k); heart(0, 0, 3.2, '#ff4f8f'); g.restore(); } }
+  else { fitLog('?', 540, 400, 200, 200, 200, '#ffd23f'); }
+  recText('astro-sign', 240, 520, 840, 600); fitLog(`${S[0]} · ${S[1]}`, 540, 560, 600, 70, 54, '#ffffff');
+  // Звездана in a gold oval portrait
+  g.save(); P(); g.ellipse(540, 1010, 300, 360, 0, 0, 7); g.fillStyle = '#2a1f5a'; g.fill(); g.clip(); const sc = .9, x = 540, y = 930 + 1062 * sc - 140 * sc; ARMS.s = undefined; seated('s', x, y, sc, t); g.restore(); P(); g.ellipse(540, 1010, 300, 360, 0, 0, 7); g.strokeStyle = '#e9bb34'; g.lineWidth = 16; g.stroke(); }
+function phoneVideo(t, sh) { const zoom = sh.who ? 1.18 : 1; g.save(); g.translate(540, 960); g.scale(zoom, zoom); g.translate(-540, -960 - (zoom > 1 ? 120 : 0)); videoCard(t, true); g.restore();
+  // phone-camera UI instead of the TV frame (status bar, REC, handle, hearts)
+  g.fillStyle = 'rgba(0,0,0,.35)'; g.fillRect(0, 0, W, 90); fitLog('9:41', 90, 45, 140, 60, 40, '#ffffff'); rr(920, 26, 90, 40, 10, null, 5, '#ffffff'); rr(926, 32, 60, 28, 6, '#ffffff', 0); recText('phone-ui', 0, 0, W, 90);
+  ell(80, 150, 16, 16, (t * 2) % 2 < 1.2 ? '#ff3040' : 'rgba(0,0,0,0)', 0); fitLog('REC', 150, 150, 100, 50, 38, '#ffffff'); recText('rec', 50, 120, 220, 180);
+  for (let i = 0; i < 4; i++) { const u = ((t - TL.CARD) * .6 + i * .25) % 1; heart(990 + Math.sin(u * 9 + i) * 18, 1400 - u * 600, 1.2 + i * .1, '#ff4f8f'); }
+  recText('handle', 40, 1500, 520, 1560); rr(40, 1500, 480, 60, 30, 'rgba(0,0,0,.4)', 0); fitLog('@brittany.nails', 280, 1530, 440, 54, 40, '#ffffff'); }
 // ---------- modes ----------
 const [mode, arg, outName] = process.argv.slice(2);
 if (mode === 'still') { fs.mkdirSync('out/st', {recursive: true}); for (const t of arg.split(',')) { frame(+t); fs.writeFileSync(`out/st/p${PART}_${t}.png`, cv.toBuffer('image/png')); } }
