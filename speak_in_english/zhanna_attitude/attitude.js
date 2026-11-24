@@ -6,7 +6,7 @@
 // No song in any file: the owner adds «Bad News» in TikTok.
 const fs = require('fs'), {spawn, execFileSync} = require('child_process'), {createCanvas, GlobalFonts} = require('@napi-rs/canvas'), T = require('./toon');
 for (const [f, n] of [['nunito-cyrillic-900-normal', 'NBC'], ['nunito-latin-900-normal', 'NBL']]) GlobalFonts.registerFromPath(`${__dirname}/fonts/${f}.woff2`, n);
-const W = 1080, H = 1920, FPS = 30, DUR = 12, INK = '#2a2230';
+const W = 1080, H = 1920, FPS = 30, DUR = 12.5, INK = '#2a2230';
 const cv = createCanvas(W, H); let g = cv.getContext('2d');
 const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v)), ease = v => { v = clamp(v); return v * v * (3 - 2 * v); }, lerp = (a, b, k) => a + (b - a) * k;
 const P = () => g.beginPath();
@@ -105,44 +105,79 @@ function slide4() { const half = (left, fn) => { g.save(); P(); if (left) { g.mo
   title('oops… I forgot my attitude'); }
 
 // ---------- video timeline (12 s) ----------
-const SNAP = 3.0, REACH = 5.0, PULL = 5.7, PULLD = 1.3, POSE = 8.0, LOWER = 9.0;
-function blink(t, per = 3.7) { return (t % per) < .12; }
+// ---------- video v2: the partner IS the attitude (Zhanna stays sweet) ----------
+const REACH = 3.0, PULL = 4.0, PULLD = 1.4, SLAM = 5.9, SLAMD = .22, DROP = 6.35, DROPD = .3, CROSS = 6.8, PAT = 7.6, PUSH = 7.0;
+const PCX = 760, PSC = .95, PY = FEET + 40;
+function sideTable() { rr(20, 1480, 300, 40, 12, '#ffffff', 7); rr(40, 1520, 260, 360, 10, '#f6dbe6', 7); ell(170, 1700, 12, 12, '#e0b040', 5); rr(220, 1370, 56, 110, 14, '#f7a6c4', 6); rr(236, 1342, 24, 32, 6, '#e0b040', 5); }
+function cupOnTable() { teacup(110, 1480 + 700 * .7, .7); }
+// Petrovich in the armchair from behind. o.fold 0..1(+overshoot) closes the open paper (right half swings over the left);
+// o.drop 0..1 moves the folded paper down onto the left armrest, front page «BAD NEWS!» facing us; o.cross 0..1 crosses his arms (elbows out)
+function petroSeat(x, y, sc, o = {}) { const fold = o.fold || 0, drop = ease(o.drop || 0), cross = ease(o.cross || 0), TOP = -1250, HW = 215, rust = o.rustle || 0;
+  const paperOn = drop < 1;
+  // open / folding paper, held up at reading height
+  if (paperOn && drop <= 0) body(x, y, sc, () => { g.translate(0, TOP + rust * 4);
+    rr(-HW, 0, HW, 320, 8, '#efe9d8'); for (let k = 0; k < 4; k++) ln([[-HW + 30, 110 + k * 34], [-24, 110 + k * 34]], 5, '#9a9488');   // left half (stays)
+    T.fitText(g, 'BRIGHTON', {x: -HW + 10, y: 8, w: HW - 20, h: 70}, {maxSize: 52, color: INK, pad: 6});
+    const c = Math.cos(Math.PI * clamp(fold, 0, 1.15)), wR = HW * c;   // right half swings over (width +HW -> -HW)
+    if (Math.abs(wR) > 2) { P(); g.rect(Math.min(0, wR), 0, Math.abs(wR), 320); fsx(c > 0 ? '#efe9d8' : '#e2dccb'); if (c > .3) T.fitText(g, 'POST', {x: 10, y: 8, w: wR - 20, h: 70}, {maxSize: 52, color: INK, pad: 6}); }
+    ln([[0, 0], [0, 320]], 5); });
+  // shoulders + elbows (visible above the chair top), collar, head
+  body(x, y, sc, () => { P(); g.moveTo(-150, -760); g.quadraticCurveTo(-150, -880, -60, -895); g.lineTo(60, -895); g.quadraticCurveTo(150, -880, 150, -760); g.closePath(); fsx('#2c3f8f'); for (const sd of [-1, 1]) ln([[sd * 132, -880], [sd * 146, -770]], 6, '#f4f1ea');
+    if (cross > 0) for (const sd of [-1, 1]) { const ex = sd * lerp(150, 205, cross), ey = lerp(-760, -820, cross); ln([[sd * 120, -870], [ex, ey]], 58, INK); ln([[sd * 120, -870], [ex, ey]], 46, '#2c3f8f'); ell(ex, ey, 30, 30, '#2c3f8f', 6); } });   // elbows out = arms crossed in front
+  collar(x, y + 40 * sc, sc * .92); petroHead(x, y + 40 * sc, sc * .92);
+  // hands gripping the paper edges while it is up (right hand follows the swinging edge)
+  if (drop <= 0 && cross <= 0) body(x, y, sc, () => { const c = Math.cos(Math.PI * clamp(fold, 0, 1.15)); for (const hx of [-HW, HW * c]) { const hy = TOP + 150; ell(hx, hy, 34, 44, '#e8b896', 6); for (let k = 0; k < 3; k++) ln([[hx - 6, hy - 26 + k * 22], [hx + 20, hy - 26 + k * 22]], 4, '#c99272'); } });
+  armchairBack(x, y, sc);
+  // the folded paper slapped onto the left armrest, front page facing us (in front of the chair)
+  if (drop > 0) body(x, y, sc, () => { const px = lerp(-HW / 2, 130, drop), py = lerp(TOP, -800, drop); g.save(); g.translate(px, py); g.rotate(lerp(0, .07, drop));
+    rr(-HW / 2 - 20, 0, HW + 40, 300, 8, '#efe9d8'); T.fitText(g, 'BAD NEWS!', {x: -HW / 2 - 10, y: 10, w: HW + 20, h: 130}, {maxSize: 96, color: '#c8102e', pad: 6, lines: 2});
+    for (let k = 0; k < 3; k++) ln([[-HW / 2, 170 + k * 34], [HW / 2, 170 + k * 34]], 5, '#9a9488'); g.restore(); }); }
+// paper bits + dust puff at the slam
+function slamFx(x, y, sc, u) { if (u < 0 || u > 1) return; body(x, y, sc, () => { const cy = -1090; g.save(); g.globalAlpha = 1 - u;
+  for (let k = 0; k < 5; k++) ell(-40 + k * 20, cy + (k % 2 ? 40 : -40), 30 + 90 * u, 24 + 60 * u, 'rgba(240,232,214,.75)', 0);
+  for (let k = 0; k < 7; k++) { const a = -2.6 + k * .55, d = 80 + 260 * u; g.save(); g.translate(Math.cos(a) * d, cy + Math.sin(a) * d * .8 + 120 * u * u); g.rotate(k + u * 6); rr(-12, -8, 24, 16, 2, '#f4efe0', 3); g.restore(); }
+  g.restore(); }); }
+// Zhanna, sweet the whole time
+function zhSweet(t, x, arms, hands, mood) { zh(ZSWEET, x, FEET + 40, ZS, {arms, front: true, hands, mood, tilt: .05 * Math.sin(t * 1.6), nod: Math.sin(t * 2.4) * 4, blink: (t % 3.3) < .12}); }
 function frame(t) {
   g.setTransform(1, 0, 0, 1, 0, 0);
-  if (t < SNAP) {   // sweet at the vanity, soft light, gentle sway
-    pastelBg(); const sway = .06 * Math.sin(t * 1.6), lift = ease((t - .7) / .4) * (1 - ease((t - 1.9) / .4)), up = -70 * lift;
+  // camera: shake on the slam, slow push-in from PUSH
+  const shake = t >= SLAM + SLAMD * .6 && t < SLAM + SLAMD * .6 + .3 ? (1 - (t - SLAM - SLAMD * .6) / .3) * 12 : 0, z = t >= PUSH ? lerp(1, 1.1, ease((t - PUSH) / (DUR - PUSH - .6))) : 1;
+  g.translate(Math.sin(t * 90) * shake, Math.cos(t * 77) * shake); g.translate(560, 1250); g.scale(z, z); g.translate(-560, -1250);
+  pastelBg(); sideTable();
+  // Zhanna
+  const zx = t < REACH ? 540 : lerp(540, 300, ease((t - REACH) / .6));
+  if (t < REACH) {   // tea, as before
+    const lift = ease((t - .7) / .4) * (1 - ease((t - 1.9) / .4)), up = -70 * lift;
     const cupArms = s => { const [S, E, Hd] = CUP(s); return [S, [E[0], E[1] + up * .5], [Hd[0], Hd[1] + up]]; };
-    zh(ZSWEET, 540, FEET + 40, ZS, {arms: cupArms, front: true, hands: {1: 'fist', '-1': 'fist'}, mood: lift > .5 ? 'happy' : 'kind', tilt: sway, nod: Math.sin(t * 2.4) * 4, blink: (t > 2.4 && t < 2.52) || (t > .3 && t < .42)}); teacup(540, FEET + 40 + up * ZS, ZS); vanity();
-    title('oops, I forgot my attitude', 330, 92, 2, ease((t - .3) / .25));
-    return; }
-  // attitude world (red)
-  const z = t >= POSE ? lerp(1, 1.1, ease((t - POSE) / (DUR - POSE))) : 1; g.translate(700, 1300); g.scale(z, z); g.translate(-700, -1300);
-  redBg(t);
-  const zx = t < REACH ? 540 : lerp(540, 215, ease((t - REACH) / .6));
-  const chairX = t < PULL ? 1500 : lerp(1500, 790, ease((t - PULL) / PULLD));
-  const rustle = t > PULL + PULLD && t < PULL + PULLD + .5 ? Math.sin(t * 50) : 0;
-  const snap = t >= LOWER && t < LOWER + .25 ? Math.sin((t - LOWER) / .25 * Math.PI) : 0, head = t < LOWER + .12 ? 'BRIGHTON POST' : 'BAD NEWS!';
-  if (t >= PULL - .1) petroChair(chairX, FEET + 40, .95, head, snap, rustle);
-  let arms = HIPS, hands = {1: 'fist', '-1': 'fist'}, mood = 'smug';
-  if (t >= REACH && t < PULL + PULLD) { const k = t < PULL ? ease((t - REACH) / (PULL - REACH)) : 1 - ease((t - PULL) / PULLD) * .55; arms = reach(k); hands = {1: 'fist', '-1': 'fist'}; mood = 'smugside'; }
-  else if (t >= PULL + PULLD && t < POSE) { const k = .45 * (1 - ease((t - PULL - PULLD) / .7)); arms = reach(k); }
-  if (t >= POSE) mood = t < POSE + 1.2 ? 'proud' : 'smugside';
-  const flip = t >= POSE && t < POSE + 1 ? Math.sin((t - POSE) * Math.PI) : 0;
-  const pop = ease((t - SNAP) / .25), sq = t < SNAP + .35 ? 1 - .06 * Math.sin((t - SNAP) / .35 * Math.PI) : 1;
-  zh(ZSAVAGE, zx, FEET + 40, ZS * (.9 + .1 * pop), {arms, hands, mood, sq, tilt: -.06 * flip, nod: Math.sin(t * 2.6) * 3, blink: blink(t + .7), backFx: bigHairFx(pop, flip), faceFx: shadesFx(ease((t - SNAP - .2) / .5))});
+    zh(ZSWEET, 540, FEET + 40, ZS, {arms: cupArms, front: true, hands: {1: 'fist', '-1': 'fist'}, mood: lift > .5 ? 'happy' : 'kind', tilt: .06 * Math.sin(t * 1.6), nod: Math.sin(t * 2.4) * 4, blink: (t > 2.4 && t < 2.52) || (t > .3 && t < .42)}); teacup(540, FEET + 40 + up * ZS, ZS);
+  } else {
+    cupOnTable();
+    const chairX = t < PULL ? 1500 : lerp(1500, PCX, ease((t - PULL) / PULLD));
+    const fold = t < SLAM ? 0 : t < SLAM + SLAMD ? ease((t - SLAM) / SLAMD) * 1.12 : 1.12 - .12 * ease((t - SLAM - SLAMD) / .12);
+    if (t >= PULL - .05) petroSeat(chairX, PY, PSC, {fold, drop: (t - DROP) / DROPD, cross: (t - CROSS) / .35, rustle: t > PULL + PULLD && t < PULL + PULLD + .4 ? Math.sin(t * 50) : 0});
+    slamFx(chairX, PY, PSC, (t - SLAM - SLAMD * .6) / .7);
+    let arms, mood = 'kind', hands = {1: 'open', '-1': 'open'};
+    const shoulderTo = (k, pat) => s => s > 0 ? [[86, -860], [lerp(168, 230, k), lerp(-735, -880, k)], [lerp(92, 348, k), lerp(-632, -815 + pat, k)]] : T.POSES.down(s);
+    if (t < PULL + PULLD) { const k = t < PULL ? ease((t - REACH) / (PULL - REACH)) : 1 - ease((t - PULL) / PULLD) * .7; arms = s => s > 0 ? [[86, -860], [lerp(168, 290, k), lerp(-735, -830, k)], [lerp(92, 470, k), lerp(-632, -820, k)]] : T.POSES.down(s); hands = {1: 'fist', '-1': 'open'}; mood = 'kind'; }
+    else if (t < PAT) { arms = T.POSES.hold; hands = {1: 'fist', '-1': 'fist'}; mood = t > SLAM && t < CROSS + .4 ? 'surprised' : 'happy'; }
+    else { const k = ease((t - PAT) / .45), pat = t > PAT + .5 && t < PAT + 2.3 ? -14 * Math.abs(Math.sin((t - PAT) * 7)) : 0; arms = shoulderTo(k, pat); mood = 'kind'; }
+    zhSweet(t, zx, arms, hands, mood);
+  }
   g.setTransform(1, 0, 0, 1, 0, 0);
-  if (t >= SNAP && t < SNAP + .2) { g.fillStyle = `rgba(255,255,255,${1 - (t - SNAP) / .2})`; g.fillRect(0, 0, W, H); }   // the snap flash (0.2 s)
-  if (t >= POSE + .3) title('me & my partner in crime', 330, 88, 2, ease((t - POSE - .3) / .25));
+  if (t < PULL + PULLD) title('oops, I forgot my attitude', 330, 92, 2, ease((t - .3) / .25));
+  if (t >= CROSS + .3) title('me & my attitude', 330, 96, 2, ease((t - CROSS - .3) / .25));
 }
 
 // ---------- SFX (synthesised; no song) ----------
 function sfx() { const SR = 44100, N = Math.round(DUR * SR), a = new Float32Array(N); let seed = 7; const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647) * 2 - 1;
   const put = (t0, d, fn) => { const i0 = Math.round(t0 * SR); for (let i = 0; i < d * SR && i0 + i < N; i++) a[i0 + i] += fn(i / SR, i / (d * SR)); };
-  put(SNAP - .02, .09, (x, u) => rnd() * Math.exp(-u * 9) * .8);                                                          // finger snap
-  let lp = 0; put(SNAP, .5, (x, u) => { lp += .18 * (rnd() - lp); return lp * Math.sin(Math.PI * u) * 1.4; });               // whoosh
-  let lp2 = 0; put(PULL, PULLD, (x, u) => { lp2 += .05 * (rnd() - lp2); return lp2 * 2.2 * Math.sin(Math.PI * u) * (1 + .4 * Math.sin(x * 60)); });   // chair sliding
-  let lp3 = 0; put(PULL + PULLD, .5, (x, u) => { lp3 += .4 * (rnd() - lp3); return lp3 * .5 * Math.exp(-u * 4); });          // newspaper rustle
-  let lp4 = 0; put(POSE, .4, (x, u) => { lp4 += .25 * (rnd() - lp4); return lp4 * Math.sin(Math.PI * u) * .9; });            // hair flip swish
+  let lp2 = 0; put(PULL, PULLD, (x, u) => { lp2 += .06 * (rnd() - lp2); return lp2 * 2.4 * Math.sin(Math.PI * u) * (1 + .4 * Math.sin(x * 60)); });   // chair slide whoosh
+  let lp3 = 0; put(PULL + PULLD, .4, (x, u) => { lp3 += .4 * (rnd() - lp3); return lp3 * .5 * Math.exp(-u * 4); });          // rustle
+  const hit = SLAM + SLAMD * .6; put(hit, .14, (x, u) => rnd() * Math.exp(-u * 7) * 1.0 + Math.sin(2 * Math.PI * 90 * x) * Math.exp(-u * 6) * .6);   // loud paper SLAP
+  let lp5 = 0; put(SLAM - .05, .2, (x, u) => { lp5 += .3 * (rnd() - lp5); return lp5 * Math.sin(Math.PI * u) * .8; });        // fold swish
+  put(DROP + DROPD - .03, .1, (x, u) => rnd() * Math.exp(-u * 8) * .6 + Math.sin(2 * Math.PI * 120 * x) * Math.exp(-u * 8) * .4);   // slap on the armrest
+  for (let k = 0; k < 4; k++) put(PAT + .55 + k * .45, .06, (x, u) => rnd() * Math.exp(-u * 10) * .18);                        // soft pats
   const b = Buffer.alloc(44 + N * 2); b.write('RIFF', 0); b.writeUInt32LE(36 + N * 2, 4); b.write('WAVEfmt ', 8); b.writeUInt32LE(16, 16); b.writeUInt16LE(1, 20); b.writeUInt16LE(1, 22); b.writeUInt32LE(SR, 24); b.writeUInt32LE(SR * 2, 28); b.writeUInt16LE(2, 32); b.writeUInt16LE(16, 34); b.write('data', 36); b.writeUInt32LE(N * 2, 40);
   for (let i = 0; i < N; i++) b.writeInt16LE(Math.round(clamp(a[i], -1, 1) * 22000), 44 + i * 2); fs.writeFileSync(`${__dirname}/out/sfx.wav`, b); }
 
@@ -151,7 +186,7 @@ const mode = process.argv[2] || 'slides'; fs.mkdirSync(`${__dirname}/out`, {recu
 const save = p => fs.writeFileSync(p, cv.toBuffer('image/png'));
 if (mode === 'slides') { [slide1, slide2, slide3, slide4].forEach((fn, i) => { g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, W, H); fn(); save(`${__dirname}/final/slide${i + 1}.png`); }); console.log('slides ok'); }
 if (mode === 'still') { for (const t of (process.argv[3] || '1').split(',').map(Number)) { frame(t); save(`${__dirname}/out/still_${t}.png`); } console.log('stills ok'); }
-if (mode === 'cover') { frame(10.5); save(`${__dirname}/final/cover.png`); console.log('cover ok'); }
+if (mode === 'cover') { frame(10.0); save(`${__dirname}/final/cover.png`); console.log('cover ok'); }
 if (mode === 'video') { const ff = spawn('ffmpeg', ['-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', `${W}x${H}`, '-r', String(FPS), '-i', '-', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '19', '-preset', 'veryfast', `${__dirname}/out/video_silent.mp4`], {stdio: ['pipe', 'inherit', 'inherit']});
-  (async () => { for (let f = 0; f < DUR * FPS; f++) { frame(f / FPS); const buf = cv.data(); if (!ff.stdin.write(Buffer.from(buf))) await new Promise(r => ff.stdin.once('drain', r)); } ff.stdin.end(); ff.on('close', c => console.log('video exit', c)); })(); }
+  (async () => { for (let f = 0; f < Math.round(DUR * FPS); f++) { frame(f / FPS); const buf = cv.data(); if (!ff.stdin.write(Buffer.from(buf))) await new Promise(r => ff.stdin.once('drain', r)); } ff.stdin.end(); ff.on('close', c => console.log('video exit', c)); })(); }
 if (mode === 'mux') { sfx(); execFileSync('ffmpeg', ['-v', 'error', '-y', '-i', `${__dirname}/out/video_silent.mp4`, '-i', `${__dirname}/out/sfx.wav`, '-c:v', 'copy', '-c:a', 'aac', '-b:a', '160k', '-shortest', `${__dirname}/final/zhanna_attitude.mp4`]); console.log('mux ok'); }
