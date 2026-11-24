@@ -13,5 +13,6 @@ def run(jobs):   # jobs: [(text, ref, out)]
 if __name__ == '__main__':
     S = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'script.json'))); want = sys.argv[1:]
     D = os.path.dirname(os.path.abspath(__file__))
-    run([(text, S['voices'][who], os.path.join(D, k + '.mp3')) for k, who, text in S['lines'] if (k in want) if want] if want else
-        [(text, S['voices'][who], os.path.join(D, k + '.mp3')) for k, who, text in S['lines'] if not os.path.exists(os.path.join(D, k + '.mp3'))])
+    TAG = {'l': '(laughing) ', 's': '(shouting) ', 'c': '(sad) ', 'w': '(whispering) '}
+    L = [(l[0], l[1], l[2], l[3] if len(l) > 3 else '') for l in S['lines']]
+    run([(TAG.get(st, '') + text, S['voices'][who], os.path.join(D, k + '.mp3')) for k, who, text, st in L if (k in want if want else not os.path.exists(os.path.join(D, k + '.mp3')))])
