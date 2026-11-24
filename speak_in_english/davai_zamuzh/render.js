@@ -120,7 +120,7 @@ const hpos = (who, s) => { const A = ARMS[who], p = A.a.fn(s); return [A.x + p[2
 const ENTER = {m: TL.ENTER_M, j: TL.ENTER_J, r: TL.ENTER_R}, SIT = {m: TL.SIT_M, j: TL.SIT_J, r: TL.SIT_R};
 function gState(w, t) { if (PART === 2 && w === 'm') return 'seat'; const E = ENTER[w]; if (!E) return 'off'; if (t < E[0]) return w === 'j' && PART === 2 ? 'off' : 'off'; if (t < E[0] + E[1]) return 'walk'; if (SIT[w] != null && t >= SIT[w]) return 'seat'; return 'stand'; }
 function grooms(t) { const o = {}; for (const w of 'mjr') { const s = gState(w, t); let x = GX[w], y = BYF, sc = GS;
-    if (s === 'walk') { const u = ease(P01(t, ENTER[w][0], ENTER[w][1])); x = lerp(110, STAND[0], u); y = lerp(FL + 6, STAND[1], u); sc = lerp(.2, STS, u); }
+    if (s === 'walk') { const wp = T.walkPose(t, ENTER[w][0], ENTER[w][1], [110, FL + 6], STAND, .2, STS); x = wp.x; y = wp.y; sc = wp.s; o[w] = {s, x, y, sc, wp}; continue; }
     if (s === 'stand') { x = STAND[0]; y = STAND[1]; sc = STS; } o[w] = {s, x, y, sc}; } return o; }
 function standGest(w, t) { if (w === 'm') return 'laptop'; if (w === 'j') return PART === 2 && t >= TL.GIVE_KALE ? 'standDown' : 'kaleOut'; if (w === 'r') return 'phoneUp'; return 'standDown'; }
 function drawGroom(w, t, G) { const q = G[w]; if (q.s === 'off') return; const def = DEF[w];
@@ -128,10 +128,11 @@ function drawGroom(w, t, G) { const q = G[w]; if (q.s === 'off') return; const d
     if (props === 'laptopLap') { body(q.x, q.y + (HIP - SEAT_H) * q.sc, q.sc, () => {}); laptop(q.x, q.y + (HIP - SEAT_H) * q.sc - 560 * q.sc, q.sc * .8); }
     if (props === 'phoneLap') { const [hx, hy, a] = hpos(w, 1); phone(hx, hy - 30 * q.sc, q.sc * .8, .2); T.drawHand(g, 'fist', hx, hy, a, q.sc, def.pal.skin, null, 1, 22); }
     return; }
-  const bob = q.s === 'walk' ? -Math.abs(Math.sin(t * 9)) * 18 * q.sc : 0, gn = q.s === 'walk' ? (w === 'm' ? 'laptop' : w === 'j' ? 'kaleOut' : 'phoneUp') : standGest(w, t);
-  const st = stOf(w, t, q.x), fn = GEST[gn], pts = s => { const f = fn(s); return f.map((p, i) => [p[0], p[1] + (i ? Math.sin(t * 2.1 + SEED[w]) * 2 : 0)]); };
+  const wp = q.wp, bob = wp ? wp.bob * q.sc : 0, gn = q.s === 'walk' ? (w === 'm' ? 'laptop' : w === 'j' ? 'kaleOut' : 'phoneUp') : standGest(w, t);
+  const st = stOf(w, t, q.x), fn = GEST[gn], free = gn === 'laptop' ? 0 : -1;   // the hand that is not holding a prop swings with the walk (opposite to its leg)
+  const pts = s => { const f = fn(s), sw = wp && s === free ? wp.swing[s] : 0; return f.map((p, i) => [p[0] - (i === 2 ? sw * 14 * s : 0), p[1] + (i ? Math.sin(t * 2.1 + SEED[w]) * 2 : 0) - (i === 2 ? sw * 40 : i === 1 ? sw * 14 : 0)]); };
   const holdR = gn === 'kaleOut' || gn === 'phoneUp', holdBoth = gn === 'laptop';
-  recFace(w, q.x, q.y + bob, q.sc, st.mouth); T.draw(g, {...def, x: q.x, y: q.y + bob, s: q.sc, ...st, arms: pts, ik: true, front: holdBoth, hands: {1: holdR || holdBoth ? 'none' : 'open', '-1': holdBoth ? 'none' : 'open'}});
+  recFace(w, q.x, q.y + bob, q.sc, st.mouth); T.draw(g, {...def, x: q.x, y: q.y + bob, s: q.sc, ...st, walk: wp ? wp.walk : null, arms: pts, ik: true, front: holdBoth, hands: {1: holdR || holdBoth ? 'none' : 'open', '-1': holdBoth ? 'none' : 'open'}});
   const hp = s => { const p = T.solveArm(pts(s)[0], pts(s)[2], pts(s)[1], s, 0); return [q.x + p[2][0] * q.sc, q.y + bob + p[2][1] * q.sc, Math.atan2(p[2][1] - p[1][1], p[2][0] - p[1][0]), p]; };
   if (gn === 'laptop') { recProp('laptop', q.x - 130 * q.sc, q.y + bob - 800 * q.sc, q.x + 130 * q.sc, q.y + bob - 620 * q.sc); laptop(q.x, q.y + bob - 650 * q.sc, q.sc); for (const s of [-1, 1]) { const [hx, hy, a] = hp(s); T.drawHand(g, 'fist', hx, hy, a, q.sc, def.pal.skin, null, s, 22); } }
   if (gn === 'kaleOut') { const [hx, hy, a] = hp(1); recProp('kale', hx - 80 * q.sc, hy - 240 * q.sc, hx + 80 * q.sc, hy + 50 * q.sc); kale(hx, hy - 10 * q.sc, q.sc); T.drawHand(g, 'fist', hx, hy, a, q.sc, def.pal.skin, null, 1, 22); }
@@ -191,12 +192,12 @@ const PLAN = PART === 1 ? [
   [TL.CARD, 'PHONEVID', 0], [at('b1', .45), 'PHONEVID', 1], [wd('b1', 'and', .76) - .1, 'INS_photo'], [s0('b2') + .35, 'PHONEVID', 1],
   [s0('e2'), 'CU', 'e'], [s0('b3'), 'CU', 'b'], [s0('z2'), 'PUSH', 'z', wd('z2', 'тоже', .7)], [TL.REACT1[0], 'ECU', 'e'], [s0('e3'), 'MCU', 'e'], [s0('b4'), 'CU', 'b'],
   [s0('z3'), 'PUSH', 'z', wd('z3', 'выбери', .7)], [TL.REACT2[0], 'ECU', 'b'], [s0('s2'), 'ASTRO', 'leo'], [wd('s2', 'needs', .6), 'INS_tarot', 'king'], [s0('z4'), 'PUSH', 'z', wd('z4', 'бургер', .7)],
-  [s0('e4'), 'HOSTS'], [TL.ENTER_M[0] - .05, 'WIDE'], [s0('m1'), 'OTS_b', 'm'], [at('m1', .45), 'INS_laptop'], [s0('z5'), 'PUSH', 'z', wd('z5', 'безработ', .5)], [TL.REACT3[0], 'ECU', 'm'],
-  [s0('e5'), 'INTERRO'], [s0('z6'), 'PUSH', 'z', wd('z6', 'ноль', .6)], [s0('s3'), 'ASTRO', 'ask'], [s0('m3'), 'CU', 'm'], [s0('s4'), 'ASTRO', 'aquarius'], [at('s4', .62), 'HOSTS'],
+  [s0('e4'), 'HOSTS'], [TL.ENTER_M[0] - .05, 'WIDE'], [TL.ENTER_M[0] + 2.5, 'OTS_b', 'm'], [s0('m1'), 'CU', 'm'], [at('m1', .45), 'INS_laptop'], [s0('z5'), 'PUSH', 'z', wd('z5', 'безработ', .5)], [TL.REACT3[0], 'ECU', 'm'],
+  [s0('e5'), 'INTERRO'], [s0('m2'), 'INTERRO', 'close'], [s0('e5b'), 'INTERRO'], [s0('z6'), 'PUSH', 'z', wd('z6', 'ноль', .6)], [s0('s3'), 'ASTRO', 'ask'], [s0('m3'), 'CU', 'm'], [s0('s4'), 'ASTRO', 'aquarius'], [at('s4', .62), 'HOSTS'],
   [s0('e6'), 'WIDE'], [TL.KALE_PEEK, 'DOOR']]
  : [
-  [0, 'DOOR'], [TL.ENTER_J[0] - .05, 'WIDE'], [s0('j1'), 'OTS_b', 'j'], [wd('j1', 'brought', .6) - .15, 'INS_kale'], [s0('z7'), 'PUSH', 'z', wd('z7', 'салат', .7)], [s0('e8'), 'MCU', 'e'], [s0('j2'), 'CU', 'j'],
-  [s0('z8'), 'PUSH', 'z', wd('z8', 'шашлык', .5)], [s0('s5'), 'ASTRO', 'virgo'], [TL.ENTER_R[0] - .05, 'WIDE'], [s0('r1'), 'OTS_b', 'r'], [s0('e9'), 'MCU', 'e'],
+  [0, 'DOOR'], [TL.ENTER_J[0] - .05, 'WIDE'], [TL.ENTER_J[0] + 2.5, 'OTS_b', 'j'], [s0('j1'), 'CU', 'j'], [wd('j1', 'brought', .6) - .15, 'INS_kale'], [s0('z7'), 'PUSH', 'z', wd('z7', 'салат', .7)], [s0('e8'), 'MCU', 'e'], [s0('j2'), 'CU', 'j'],
+  [s0('z8'), 'PUSH', 'z', wd('z8', 'шашлык', .5)], [s0('s5'), 'ASTRO', 'virgo'], [TL.ENTER_R[0] - .05, 'WIDE'], [TL.ENTER_R[0] + 2.5, 'OTS_b', 'r'], [s0('r1'), 'CU', 'r'], [s0('e9'), 'MCU', 'e'],
   [s0('r2'), 'INS_chart'], [TL.BLEEP[0] - .04, 'NEWS'], [s0('z9'), 'PUSH', 'z', wd('z9', 'первый', .6)], [TL.REACT1[0], 'ECU', 'e'], [s0('s6'), 'ASTRO', 'mercury'], [at('s6', .55), 'MCU', 's'],
   [s0('e10'), 'OTS_g', 'r'], [s0('z10'), 'MCU', 'z'], [at('z10', .42), 'PUSH', 'z', at('z10', .48)], [at('z10', .66), 'GROOMS'], [s0('s7'), 'ASTRO', 'zero'], [at('s7', .6), 'INS_ball'],
   [s0('e11'), 'WIDE'], [TL.DRUM[0], 'STAGED_b'], [s0('b5'), 'CU', 'b'], [s0('m4'), 'CU', 'm'], [s0('j3'), 'CU', 'j'], [s0('r5'), 'CU', 'r'],
@@ -321,7 +322,8 @@ function stagedBride(t) { const sc = .78, x = 200, y = 900 + 1062 * sc - 140 * s
 function newsOverlay(t, sh) { g.fillStyle = '#d42a3a'; g.fillRect(0, 150, W, 96); ln([[0, 150], [W, 150]], 6, '#ffffff'); recText('news-banner', 0, 150, W, 246); fitLog('СРОЧНЫЕ НОВОСТИ', 380, 198, 680, 80, 60, '#ffffff'); rr(760, 164, 280, 66, 12, '#ffffff', 0); fitLog('LIVE', 900, 197, 260, 60, 44, '#d42a3a');
   const k = spr(P01(t, sh.a + .2, .5)); g.save(); g.translate(880, 470); g.rotate(.08); g.scale(k, k); recText('news-photo', -150, -170, 150, 190); rr(-150, -170, 300, 360, 8, '#ffffff', 6); rr(-125, -145, 250, 240, 4, '#101018', 0); g.save(); g.translate(0, -25); g.scale(1.3, 1.3); phoneCrash(0, 0, 1, TL.CRASH + 2); g.restore(); fitLog('КОМПРОМАТ', 0, 140, 270, 60, 44, '#d42a3a'); g.restore();
   recText('news-lower', 0, 1430, W, 1530); g.fillStyle = '#101018'; g.fillRect(0, 1430, W, 100); g.fillStyle = '#d42a3a'; g.fillRect(0, 1430, 230, 100); fitLog('BREAKING', 115, 1480, 210, 80, 44, '#ffffff'); fitLog('КРИПТА РУХНУЛА', 650, 1480, 800, 80, 60, '#ffffff'); }
-function interrogation(t, sh) { g.fillStyle = '#12121e'; g.fillRect(0, 0, W, H); const sw = Math.sin(t * 1.6) * 30; ln([[540, 0], [540 + sw * .3, 300]], 6, '#3a3a4a'); g.save(); g.globalAlpha = .22; P(); g.moveTo(540 + sw * .3 - 70, 330); g.lineTo(540 + sw * .3 + 70, 330); g.lineTo(940 + sw, 1500); g.lineTo(140 + sw, 1500); g.closePath(); g.fillStyle = '#fff3c0'; g.fill(); g.restore();
+function interrogation(t, sh) { const zc = sh.who === 'close' ? 1.7 : 1; g.save(); g.translate(540, 960); g.scale(zc, zc); g.translate(-540, -960 + (zc > 1 ? 40 : 0)); interroScene(t); g.restore(); }
+function interroScene(t) { g.fillStyle = '#12121e'; g.fillRect(0, 0, W, H); const sw = Math.sin(t * 1.6) * 30; ln([[540, 0], [540 + sw * .3, 300]], 6, '#3a3a4a'); g.save(); g.globalAlpha = .22; P(); g.moveTo(540 + sw * .3 - 70, 330); g.lineTo(540 + sw * .3 + 70, 330); g.lineTo(940 + sw, 1500); g.lineTo(140 + sw, 1500); g.closePath(); g.fillStyle = '#fff3c0'; g.fill(); g.restore();
   P(); g.moveTo(540 + sw * .3 - 110, 330); g.lineTo(540 + sw * .3 + 110, 330); g.lineTo(540 + sw * .3 + 50, 270); g.lineTo(540 + sw * .3 - 50, 270); g.closePath(); fsx('#2a2a3a', 6); ell(540 + sw * .3, 336, 40, 16, '#fff6c0', 4);
   const sc = .95, x = 540, y = 820 + 1062 * sc - 140 * sc; g.save(); chair(x, y, sc, 380, '#3a3a4a'); const st = stOf('m', t, x); seat(MK, x, y, sc, {...st, mood: lineFor('m', t) ? 'worried' : 'worried', sweat: true, arms: LAPA, ik: false, front: true, hands: {1: 'fist', '-1': 'fist'}}); recFace('m', x, y + (HIP - SEAT_H) * sc, sc, st.mouth); g.restore();
   const ty = y - 420 * sc + 20; rr(60, ty, 960, 70, 10, '#4a3a2a', 6); g.fillStyle = '#3a2a1a'; g.fillRect(100, ty + 70, 880, 700); ln([[100, ty + 70], [100, ty + 770]], 6); ln([[980, ty + 70], [980, ty + 770]], 6); rr(760, ty - 70, 140, 80, 10, '#e9e4d8', 5);
@@ -372,5 +374,15 @@ else if (mode === 'accaudit') { // every speaking frame: nothing drawn after a f
     for (const f of R.filter(r => r.k === 'face' && onScreen(r))) for (const x of R) if (x.k === 'text' && ov(f, x)) { const key = `${x.name} over face ${f.who}`; (bad[key] = bad[key] || []).push(+t.toFixed(2)); } }
   for (const [k, v] of Object.entries(bad)) console.log(k, v.length, 'frames', v.slice(0, 6).join(' '), v.length > 6 ? '…' : '');
   console.log(`part ${PART}: ${frames} frames checked, ${talkFrames} speaking-face frames, ${Object.values(bad).reduce((a, v) => a + v.length, 0)} problems`); }
+else if (mode === 'walktest') { // 8 consecutive frames (every 3rd video frame = 0.1 s) of one groom's walk, fixed camera, planted-foot markers
+  const w = arg || 'm', E = ENTER[w], N = 8, cw = 300, ch = 620, sh = createCanvas(cw * N, ch + 90), sg = sh.getContext('2d'); sg.fillStyle = '#fbf3f6'; sg.fillRect(0, 0, sh.width, sh.height);
+  const t0 = E[0] + 1.2, cam = {z: 1.9, x: 235, y: 1000};
+  for (let i = 0; i < N; i++) { const t = t0 + i * .1; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H); g.save(); g.translate(540, 960); g.scale(cam.z, cam.z); g.translate(-cam.x, -cam.y); NOW = t; room(); door(t);
+    const G = {m: {s: 'off'}, j: {s: 'off'}, r: {s: 'off'}}; const wp = T.walkPose(t, E[0], E[1], [110, FL + 6], STAND, .2, STS); G[w] = {s: 'walk', x: wp.x, y: wp.y, sc: wp.s, wp}; drawGroom(w, t, G);
+    for (const sd of [-1, 1]) { const fx = wp.x + wp.walk[sd][0] * wp.s, fy = wp.y + (wp.walk[sd][1] + wp.bob) * wp.s; ell(fx, fy + 4, 9, 9, sd < 0 ? '#2fbf5a' : '#3a8ad8', 3); }
+    for (let k = 0; k < 7; k++) { const p = T.walkPose(E[0] + (k + .5) * E[1] / 6, E[0], E[1], [110, FL + 6], STAND, .2, STS); }
+    g.restore(); sg.drawImage(cv, 540 - 300, 960 - 620, 600, 1240, i * cw, 40, cw, ch); sg.fillStyle = INK; sg.font = '26px NBL, NBC'; sg.fillText(`+${(i * .1).toFixed(1)} с`, i * cw + 12, 30); }
+  sg.font = '24px NBL, NBC'; sg.fillText('Шаг ходьбы: зелёная точка — левая стопа, синяя — правая. Опорная стопа стоит на месте, тело проходит над ней.', 12, ch + 75);
+  fs.writeFileSync('walk_test.png', sh.toBuffer('image/png')); }
 else if (mode === 'sheet') { const N = 16, k = .25, cols = 4, sc2 = createCanvas(W * k * cols, H * k * N / cols), sg = sc2.getContext('2d'); for (let i = 0; i < N; i++) { const t = (i + .5) * TL.TOTAL / N; frame(t); sg.drawImage(cv, (i % cols) * W * k, Math.floor(i / cols) * H * k, W * k, H * k); sg.fillStyle = '#fff'; sg.font = '28px NBL'; sg.fillText(t.toFixed(1) + 's', (i % cols) * W * k + 10, Math.floor(i / cols) * H * k + 34); }
   fs.mkdirSync('final', {recursive: true}); fs.writeFileSync(`final/contact_sheet${PART}.png`, sc2.toBuffer('image/png')); }

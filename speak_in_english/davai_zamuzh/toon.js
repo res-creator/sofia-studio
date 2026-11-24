@@ -173,9 +173,31 @@ const POSES = {
   desk: s => [[s * 78, -860], [s * 140, -700], [s * 60, -610]],
   fists: s => [[s * 78, -860], [s * 120, -760], [s * 30, -800]],
 };
-function legs(st, c) { for (const s of [-1, 1]) { limb([[s * 40, -580], [s * 46, -90]], 44, c.legs || c.bottom);
-    P(); g.moveTo(s * 46 - 50 + (s > 0 ? 24 : -24), -20); g.bezierCurveTo(s * 46 - 50 + (s > 0 ? 24 : -24), -90, s * 46 + 50 + (s > 0 ? 24 : -24), -100, s * 46 + 60 + (s > 0 ? 24 : -24), -30); g.lineTo(s * 46 + 60 + (s > 0 ? 24 : -24), 0); g.lineTo(s * 46 - 50 + (s > 0 ? 24 : -24), 0); g.closePath(); fs(c.shoe || '#ffffff');
-    line([[s * 46 - 50 + (s > 0 ? 24 : -24), -12], [s * 46 + 60 + (s > 0 ? 24 : -24), -12]], 6, c.sole || '#e05a2a'); } }
+// legs: standing (straight) or walking (st.walk = {'-1': [x, y], '1': [x, y]} foot targets in body coords, y = sole height (0 = floor));
+// 2-bone leg (thigh 260 + shin 260) from the hip to the ankle, knee bends forward/outward when the foot comes closer (lifted / stepping)
+function legs(st, c) { for (const s of [-1, 1]) { const F = st.walk ? st.walk[s] : [s * 46, 0], hip = [s * 40, -580], ank = [F[0], F[1] - 90], L = 262;
+    const dx = ank[0] - hip[0], dy = ank[1] - hip[1], d = Math.min(Math.hypot(dx, dy), 2 * L - 1), h = Math.sqrt(Math.max(0, L * L - (d / 2) * (d / 2)));
+    const mid = [hip[0] + dx / 2, hip[1] + dy / 2], n = [-dy / (Math.hypot(dx, dy) || 1), dx / (Math.hypot(dx, dy) || 1)], sg = n[0] * s >= 0 ? 1 : -1, knee = [mid[0] + n[0] * h * .55 * sg, mid[1] + n[1] * h * .55 * sg];
+    limb([hip, knee, ank], 44, c.legs || c.bottom); if (h > 20) ell(knee[0], knee[1], 23, 23, c.legs || c.bottom, 0);
+    const fx = F[0] + (s > 0 ? 24 : -24), fy = F[1];
+    P(); g.moveTo(fx - 50, fy - 20); g.bezierCurveTo(fx - 50, fy - 90, fx + 50, fy - 100, fx + 60, fy - 30); g.lineTo(fx + 60, fy); g.lineTo(fx - 50, fy); g.closePath(); fs(c.shoe || '#ffffff');
+    line([[fx - 50, fy - 12], [fx + 60, fy - 12]], 6, c.sole || '#e05a2a'); } }
+// walk planner: path from A to B (world, feet position) between t0 and t0+dur, scale scA -> scB; ~2 steps/s, planted feet do not slide.
+// returns {x, y, s (scale), walk (foot targets in body coords), bob, swing: arm swing per side (-1..1)}
+function walkPose(t, t0, dur, A, B, scA, scB, stepW = 46) {
+  // contacts k = 1..N (≈2 per second); foot of side +1 lands on odd k, side -1 on even k; the last contact is a closing step (feet together).
+  // Planted feet never move in screen space; the body (floor point under the hips) is always half-way between the two feet.
+  const N = Math.max(3, Math.round(dur * 2)), n = N - 1, T = dur / N;
+  const P = v => { v = Math.max(0, Math.min(1, v)); return [A[0] + (B[0] - A[0]) * v, A[1] + (B[1] - A[1]) * v]; };
+  const land = k => P(Math.min(k, n) / n), kf = Math.max(0, Math.min(N, (t - t0) / T)), Fw = {};
+  for (const s of [-1, 1]) { const par = s > 0 ? 1 : 0; let kl = Math.floor(kf); if (((kl % 2) + 2) % 2 !== par) kl -= 1; if (kl < 1) kl = par ? -1 : 0;   // start stance: right lifts first (lands on 1), left lands on 2
+    const kn = kl + 2, lift = kl + 1 + .15, a = kl < 1 ? P(0) : land(kl);
+    if (kf <= lift || kl >= N) Fw[s] = [a[0], a[1], 0];
+    else { const e = Math.min(1, (kf - lift) / (Math.min(kn, N) - lift)), ee = e * e * (3 - 2 * e), b = land(Math.min(kn, N)); Fw[s] = [a[0] + (b[0] - a[0]) * ee, a[1] + (b[1] - a[1]) * ee, Math.sin(Math.PI * e)]; } }
+  const bx = (Fw[-1][0] + Fw[1][0]) / 2, by = (Fw[-1][1] + Fw[1][1]) / 2, sc = scA + (scB - scA) * Math.max(0, Math.min(1, (by - A[1]) / ((B[1] - A[1]) || 1)));
+  const moving = t > t0 && t < t0 + dur, ph = kf - Math.floor(kf), bob = moving ? -Math.pow(Math.sin(Math.PI * ph), 2) * 16 : 0, feet = {}, sw = {};
+  for (const s of [-1, 1]) { feet[s] = [s * stepW + (Fw[s][0] - bx) / sc, (Fw[s][1] - by) / sc - Fw[s][2] * 70 - bob]; sw[s] = moving ? Math.sin(Math.PI * (kf - (s > 0 ? 1 : 0)) / 2) : 0; }
+  return {x: bx, y: by, s: sc, walk: feet, bob, swing: {'-1': sw[1], '1': sw[-1]}}; }   // each arm swings with the opposite leg
 function torsoBase(st, c) {
   limb([[0, -930], [0, -860]], 34, c.skin);
   P(); g.moveTo(-82, -880); g.quadraticCurveTo(0, -895, 82, -880); g.lineTo(96, -560); g.quadraticCurveTo(0, -548, -96, -560); g.closePath(); fs(c.top);
@@ -362,4 +384,4 @@ function talk(line, t, seed = 0, o = {}) { if (!line) return {mouth: 0, round: .
   const nod = follow(u => 9 * clamp(e(u) - e(u - .1)), t, .08, .16, .4); return {mouth, round, nod}; }
 // emotion blending: moodFn(t) -> mood name; returns {mood, moodFrom, moodK} with a blend over `dur` and blink=true around the switch
 function moodAt(moodFn, t, dur = .25) { const m = moodFn(t); for (let d = 1 / 60; d <= dur; d += 1 / 60) { const p = moodFn(t - d); if (p !== m) { const k = (dur - d) / dur; return {mood: m, moodFrom: p, moodK: 1 - k, blink: d < .1}; } } return {mood: m, moodFrom: null, moodK: 1, blink: false}; }
-module.exports = {kindOf, draw, POSES, MOODS, OUTFITS, HANDS, ik, solveArm, drawArm, drawHand, fitText, palOf, laughEnv, follow, smooth, envAt, talk, moodAt, blendMood};
+module.exports = {walkPose, kindOf, draw, POSES, MOODS, OUTFITS, HANDS, ik, solveArm, drawArm, drawHand, fitText, palOf, laughEnv, follow, smooth, envAt, talk, moodAt, blendMood};

@@ -54,8 +54,8 @@ def applause(d, v):
         i = int(rng.uniform(0, d - .05) * SR); c = noise(.03, 1, 3) * rng.uniform(.4, 1); out[i:i + len(c)] += c[:len(out) - i]
     x = np.linspace(0, 1, len(out)); return out * np.minimum(1, x * 6) * np.minimum(1, (1 - x) * 3) * v
 def steps(n, v=.25):
-    out = np.zeros(int((n * .32 + .2) * SR))
-    for k in range(n): i = int(k * .32 * SR); c = mixs(tone(110, .09, v, lambda x: np.exp(-x * 25)), noise(.05, v * .3, 6)); out[i:i + len(c)] += c
+    out = np.zeros(int((n * .5 + .2) * SR))
+    for k in range(n): i = int(k * .5 * SR); c = mixs(tone(110, .09, v, lambda x: np.exp(-x * 25)), noise(.05, v * .3, 6)); out[i:i + len(c)] += c
     return out
 def build(part, lines, plan):
     """plan: dict of extra gaps / events per line id (handled below)"""
@@ -78,14 +78,14 @@ def build(part, lines, plan):
         EV['CARD'] = t; put(t, whoosh(.3, .1)); wait(.35); say('b1', .35); say('b2', .45); EV['CARDEND'] = t
         say('e2', .2); say('b3', .2); say('z2', .3); EV['REACT1'] = [t, 1.3]; wait(1.3); say('e3', .2); say('b4', .2); say('z3', .3); EV['REACT2'] = [t, 1.3]; wait(1.3)
         EV['TAROT_KING'] = t; say('s2', .25); say('z4', .35)
-        say('e4', .2); EV['ENTER_M'] = [t, 1.6]; put(t, mixs(tone(523, .2, .06), tone(659, .25, .05))); put(t + .15, steps(4)); put(t + .3, applause(1.4, .22)); wait(1.75)
+        say('e4', .2); EV['ENTER_M'] = [t, 5.0]; put(t, mixs(tone(523, .2, .06), tone(659, .25, .05))); put(t + .5, steps(10)); put(t + .3, applause(3.0, .22)); wait(5.15)
         say('m1', .3); EV['LAPTOP'] = L[-1]['at'] + .6; say('z5', .3); EV['REACT3'] = [t, 1.3]; wait(1.3)
-        say('e5', .2); say('m2', .2); say('z6', .3); say('s3', .2); say('m3', .2); say('s4', .4)
+        say('e5', .2); say('m2', .25); say('e5b', .3); say('z6', .3); say('s3', .2); say('m3', .2); say('s4', .4)
         EV['SIT_M'] = t - .2; say('e6', .1); EV['KALE_PEEK'] = t; put(t, whoosh(.25, .1)); wait(.9); EV['PART2'] = [t, 1.8]; put(t, mixs(tone(392, .25, .1), tone(523, .4, .08))); wait(1.8)
     else:
-        EV['KALE_PEEK'] = 0; wait(.35); say('e7', .2); EV['ENTER_J'] = [t, 1.6]; put(t, mixs(tone(523, .2, .06), tone(659, .25, .05))); put(t + .15, steps(4)); put(t + .3, applause(1.4, .22)); wait(1.75)
+        EV['KALE_PEEK'] = 0; wait(.35); say('e7', .2); EV['ENTER_J'] = [t, 5.0]; put(t, mixs(tone(523, .2, .06), tone(659, .25, .05))); put(t + .5, steps(10)); put(t + .3, applause(3.0, .22)); wait(5.15)
         say('j1', .3); say('z7', .3); EV['GIVE_KALE'] = t - .3; say('e8', .2); say('j2', .15); EV['NIBBLE'] = t; [put(t + k * .14, noise(.07, .6, 4)) for k in range(3)]; wait(.6); say('z8', .3); EV['FICUS'] = t; say('s5', .35)
-        EV['SIT_J'] = t; EV['ENTER_R'] = [t, 1.6]; put(t, mixs(tone(523, .2, .06), tone(659, .25, .05))); put(t + .15, steps(4)); put(t + .3, applause(1.4, .22)); wait(1.75)
+        EV['SIT_J'] = t; EV['ENTER_R'] = [t, 5.0]; put(t, mixs(tone(523, .2, .06), tone(659, .25, .05))); put(t + .5, steps(10)); put(t + .3, applause(3.0, .22)); wait(5.15)
         say('r1', .2); say('e9', .2); say('r2', .25); EV['CRASH'] = t; [put(t + k * .16, tone(1600, .1, .12, lambda x: np.ones_like(x) * (x < .8))) for k in range(3)]; put(t + .5, tone(600, .6, .1, lambda x: 1 - x) + tone(300, .6, .08, lambda x: 1 - x)); wait(.75)
         say('r3', .25); say('r4', .3); say('z9', .3); EV['REACT1'] = [t, 1.3]; wait(1.3); say('s6', .4)
         EV['SIT_R'] = t; say('e10', .2); say('z10', .3); EV['BALL0'] = t; put(t, tone(1760, .6, .05)); say('s7', .4)
