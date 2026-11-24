@@ -356,7 +356,7 @@ function smooth(id, target, dt, attack = .05, release = .08) { if (!SM.has(id)) 
 const envAt = (line, t, fps = 30) => { const f = (t - line.at) * fps; if (f < 0 || f > line.env.length - 1) return 0; const i = Math.floor(f), k = f - i; return (line.env[i] || 0) * (1 - k) + (line.env[i + 1] || 0) * k; };
 // mouth for a line: smoothed openness (attack 50 ms / release 80 ms, rate-limited to 15%/frame except true onsets; closures become eased dips), roundness crossfade, nod on stressed syllables
 function talk(line, t, seed = 0, o = {}) { if (!line) return {mouth: 0, round: .5, nod: 0};
-  const e = u => envAt(line, u), mouth = follow(e, t, o.attack ?? .05, o.release ?? .08, .5, 1 / 240, {maxRate: o.maxRate ?? 4.2, onsetBelow: .12});   // <= 15% of the opening per frame at 30 fps, except true onsets
+  const e = u => envAt(line, u), mouth = follow(e, t, o.attack ?? .05, o.release ?? .08, o.look ?? 1.2, 1 / 240, {maxRate: o.maxRate ?? 4.2, onsetBelow: .12});   // <= 15% of the opening per frame at 30 fps, except true onsets
   const hsh2 = n => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); }, round = follow(u => hsh2(Math.floor(u * 9) + seed) < .4 ? 1 : 0, t, .09, .09, .3);
   const nod = follow(u => 9 * clamp(e(u) - e(u - .1)), t, .08, .16, .4); return {mouth, round, nod}; }
 // emotion blending: moodFn(t) -> mood name; returns {mood, moodFrom, moodK} with a blend over `dur` and blink=true around the switch
