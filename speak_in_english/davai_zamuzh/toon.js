@@ -238,6 +238,7 @@ function torso(st, c) { const o = kindOf(st.outfit);
     P(); g.moveTo(-34, -886); g.lineTo(0, -720); g.lineTo(34, -886); g.closePath(); fs(c.under, 5);
     for (const s of [-1, 1]) { P(); g.moveTo(s * 34, -886); g.lineTo(s * 66, -868); g.lineTo(s * 54, -830); g.lineTo(s * 70, -820); g.lineTo(s * 8, -712); g.closePath(); fs(c.topS, 5); }
     if (c.tie) { P(); g.moveTo(-10, -870); g.lineTo(10, -870); g.lineTo(16, -740); g.lineTo(0, -716); g.lineTo(-16, -740); g.closePath(); fs(c.tie, 5); }
+    if (st.skirt && c.skirt) { P(); g.moveTo(-100, -580); g.lineTo(100, -580); g.lineTo(140, -380); g.quadraticCurveTo(0, -360, -140, -380); g.closePath(); fs(c.skirt); g.save(); g.clip(); g.fillStyle = c.topS; g.fillRect(70, -600, 90, 240); g.restore(); }
     for (const y of [-680, -620]) ell(0, y, 9, 9, '#f2c820', 4); return; }
   if (o === 'hoodie') {    // hoodie: hood ring round the neck, kangaroo pocket, drawstrings
     torsoShape(c, 92, 104); fs(c.top); g.save(); torsoShape(c, 92, 104); g.clip(); g.fillStyle = c.topS; g.fillRect(68, -900, 60, 360); g.restore(); torsoShape(c, 92, 104); fs(null);

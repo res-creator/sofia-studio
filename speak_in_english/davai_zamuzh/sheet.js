@@ -1,7 +1,7 @@
 // «Давай замуж!» — character sketch sheet in our toon v4 style.   node sheet.js -> sketch.png
 const fs = require('fs'), {createCanvas, GlobalFonts} = require('@napi-rs/canvas'), T = require('./toon');
 for (const [f, n] of [['nunito-cyrillic-900-normal', 'NBC'], ['nunito-latin-900-normal', 'NBL']]) GlobalFonts.registerFromPath(`${__dirname}/fonts/${f}.woff2`, n);
-const W = 2400, H = 2010, cv = createCanvas(W, H), g = cv.getContext('2d'), INK = '#2a2230';
+const W = 2400, H = 2660, cv = createCanvas(W, H); let g = cv.getContext('2d'), INK = '#2a2230';
 const P = () => g.beginPath();
 function fsx(fill, lw = 7) { if (fill) { g.fillStyle = fill; g.fill(); } if (lw) { g.strokeStyle = INK; g.lineWidth = lw; g.lineJoin = 'round'; g.lineCap = 'round'; g.stroke(); } }
 const ell = (x, y, rx, ry, fill, lw = 7, rot = 0) => { P(); g.ellipse(x, y, rx, ry, rot, 0, 7); fsx(fill, lw); };
@@ -60,26 +60,49 @@ function watch(x, y, sc, ang) { g.save(); g.translate(x, y); g.rotate(ang); rr(-
 function pearls(x, y, sc) { for (let k = 0; k <= 8; k++) { const u = k / 8, px = -52 + u * 104, py = -878 + Math.sin(u * Math.PI) * 40; ell(x + px * sc, y + py * sc, 9 * sc, 9 * sc, '#fbf6ea', 3 * sc); } }
 function shawl(x, y, sc) { body(x, y, sc, () => { P(); g.moveTo(-104, -880); g.quadraticCurveTo(0, -840, 104, -880); g.lineTo(128, -700); g.quadraticCurveTo(0, -640, -128, -700); g.closePath(); fsx('#d4a82a');
   g.save(); g.clip(); for (let k = 0; k < 9; k++) ell(-110 + k * 28, -760 + (k % 2) * 30, 8, 8, '#a8721a', 0); g.restore(); for (let k = 0; k < 11; k++) { const u = k / 10, px = -126 + u * 252, py = -700 + Math.sin(u * Math.PI) * 58; ln([[px, py], [px, py + 26]], 5, '#a8721a'); } }); }
-function sofa(x, y, sc, w = 420, col = '#c8325a') { body(x, y, sc, () => { rr(-w / 2, -820, w, 380, 60, col); rr(-w / 2 - 50, -560, 90, 360, 36, col); rr(w / 2 - 40, -560, 90, 360, 36, col); }); }
-function sofaFront(x, y, sc, w = 420, col = '#c8325a', shoe = '#e0b040', leg = '#f4c8a8') { body(x, y, sc, () => {
-  for (const s of [-1, 1]) { ln([[s * 40, -430], [s * 48, -60]], 44 + 14, INK); ln([[s * 40, -430], [s * 48, -60]], 44, leg); P(); g.moveTo(s * 48 - 40, -20); g.bezierCurveTo(s * 48 - 40, -80, s * 48 + 60, -90, s * 48 + 60, -20); g.lineTo(s * 48 + 60, 0); g.lineTo(s * 48 - 40, 0); g.closePath(); fsx(shoe); }
-  rr(-w / 2, -580, w, 150, 40, col); g.save(); g.fillStyle = 'rgba(0,0,0,.12)'; g.fillRect(-w / 2 + 20, -470, w - 40, 30); g.restore(); }); }
-// Petrovich from behind (face never shown): bald crown, grey fringe, tracksuit, newspaper up
-function petrovich(x, y, sc, paperUp = true) { body(x, y, sc, () => {
-  if (paperUp) { rr(-230, -720, 460, 270, 8, '#efe9d8'); ln([[0, -720], [0, -450]], 5); T.fitText(g, 'BRIGHTON POST', {x: -220, y: -708, w: 210, h: 50}, {maxSize: 34, pad: 4}); for (let k = 0; k < 5; k++) { ln([[-200, -630 + k * 30], [-24, -630 + k * 30]], 4, '#9a9488'); ln([[24, -630 + k * 30], [200, -630 + k * 30]], 4, '#9a9488'); } rr(30, -706, 160, 60, 4, '#c9d6e6', 4); }
-  P(); g.moveTo(-170, -300); g.quadraticCurveTo(-180, -420, -110, -440); g.lineTo(110, -440); g.quadraticCurveTo(180, -420, 170, -300); g.lineTo(170, 0); g.lineTo(-170, 0); g.closePath(); fsx('#2c3f8f');
-  for (const s of [-1, 1]) { ln([[s * 140, -400], [s * 160, -40]], 10, '#f4f1ea'); ln([[s * 118, -404], [s * 138, -40]], 10, '#f4f1ea'); }
-  for (const s of [-1, 1]) ell(s * 96, -500, 20, 30, '#e8b896', 6);
-  ell(0, -520, 96, 104, '#e8b896'); g.save(); P(); g.ellipse(0, -520, 96, 104, 0, 0, 7); g.clip(); g.fillStyle = '#c99272'; g.fillRect(40, -640, 80, 240); P(); g.moveTo(-100, -500); g.quadraticCurveTo(0, -470, 100, -500); g.lineTo(100, -400); g.lineTo(-100, -400); g.closePath(); g.fillStyle = '#b8b0a8'; g.fill(); g.restore(); ell(0, -520, 96, 104, null, 7);
-  for (let k = -3; k <= 3; k++) ln([[k * 22, -478], [k * 23, -440]], 3, '#8a8278');
-  if (!paperUp) { rr(-150, -140, 300, 140, 20, '#9b3b4a'); } }); }
-
+// ---------- seating (front view): chair behind -> seated body (no legs) -> bent legs at the seat edge ----------
+// Floor at y. The seat top is 420 units above the floor; the body is lowered so its hips (-560) sit on the seat.
+const SEAT_H = 420, HIP = 560;
+function chair(x, y, sc, w, col, kind = 'arm') { body(x, y, sc, () => { const cs = shade(col, .82);
+  rr(-w / 2, -SEAT_H - 420, w, 470, kind === 'sofa' ? 70 : 90, col); g.save(); P(); g.roundRect(-w / 2, -SEAT_H - 420, w, 470, kind === 'sofa' ? 70 : 90); g.clip(); g.fillStyle = cs; g.fillRect(w / 2 - 70, -SEAT_H - 440, 80, 520); g.restore(); rr(-w / 2, -SEAT_H - 420, w, 470, kind === 'sofa' ? 70 : 90, null);   // back
+  rr(-w / 2 + 10, -SEAT_H - 20, w - 20, 90, 30, shade(col, 1.08));   // seat cushion
+  rr(-w / 2 - 46, -SEAT_H - 150, 92, 260, 40, col); rr(w / 2 - 46, -SEAT_H - 150, 92, 260, 40, cs);   // armrests
+  rr(-w / 2 + 6, -SEAT_H + 60, w - 12, 50, 14, cs);   // base
+  for (const s of [-1, 1]) rr(s * (w / 2 - 30) - 14, -SEAT_H + 104, 28, SEAT_H - 104, 8, '#3a2a30', 5); }); }   // feet
+function shade(hex, k) { const n = parseInt(hex.slice(1), 16), f = v => Math.max(0, Math.min(255, Math.round(v * k))); return `rgb(${f(n >> 16)},${f((n >> 8) & 255)},${f(n & 255)})`; }
+// legs of a seated person, front view: short foreshortened thighs from the hip to the knee at the seat edge, shins down to the floor
+function seatedLegs(x, y, sc, c, o = {}) { body(x, y, sc, () => { const hem = o.hem; // floor-coord y of the skirt hem (null = trousers)
+  for (const s of [-1, 1]) { const kx = s * (o.spread || 58), legCol = c.legs || c.bottom, top = hem != null ? hem - 10 : -SEAT_H - 30;
+    if (hem == null) { ln([[s * 44, -SEAT_H - 30], [kx, -SEAT_H + 6]], 52 + 14, INK); ln([[s * 44, -SEAT_H - 30], [kx, -SEAT_H + 6]], 52, legCol); }   // thigh coming toward us
+    const y0 = hem == null ? -SEAT_H + 6 : top; if (y0 < -70) { ln([[kx, y0], [kx + s * 4, -60]], 44 + 14, INK); ln([[kx, y0], [kx + s * 4, -60]], 44, legCol); }
+    if (hem == null) ell(kx, -SEAT_H + 6, 30, 22, legCol, 0);   // knee cap blends thigh into shin
+    const fx = kx + s * 4; P(); g.moveTo(fx - 46, -16); g.bezierCurveTo(fx - 46, -80, fx + 52, -90, fx + 56, -24); g.lineTo(fx + 56, 0); g.lineTo(fx - 46, 0); g.closePath(); fsx(c.shoe || '#ffffff'); ln([[fx - 46, -10], [fx + 56, -10]], 6, c.sole || INK); } }); }
+// seat a character: chair (optional) is drawn by the caller first; this draws the body and the legs
+function seat(def, x, y, sc, o = {}) { const c = T.palOf(def), k = T.kindOf(def.outfit), by = y + (HIP - SEAT_H) * sc;   // body origin so hips land on the seat
+  ch(def, x, by, sc, {seated: true, ...o});
+  const skirted = k === 'gown' ? -10 : (def.skirt && c.skirt) ? -380 + (HIP - SEAT_H) : null;   // hem in floor coords (body -380 shifted)
+  seatedLegs(x, y, sc, c, {hem: skirted, spread: o.spread}); }
+const LAP = s => [[s * 86, -860], [s * 130, -720], [s * 64, -585]];   // hands resting on the lap
+// ---------- people seen from behind (spectators); Petrovich uses the same body at the same scale ----------
+function backPerson(x, y, sc, o = {}) { body(x, y, sc, () => { const top = o.top || '#6a4a8a', skin = o.skin || '#e8b896';
+  P(); g.moveTo(-170, -300); g.quadraticCurveTo(-180, -420, -110, -440); g.lineTo(110, -440); g.quadraticCurveTo(180, -420, 170, -300); g.lineTo(170, 0); g.lineTo(-170, 0); g.closePath(); fsx(top);
+  g.save(); g.clip(); g.fillStyle = shade(top, .82); g.fillRect(90, -460, 100, 470); g.restore(); P(); g.moveTo(-170, -300); g.quadraticCurveTo(-180, -420, -110, -440); g.lineTo(110, -440); g.quadraticCurveTo(180, -420, 170, -300); g.lineTo(170, 0); g.lineTo(-170, 0); g.closePath(); fsx(null);
+  if (o.stripes) for (const s of [-1, 1]) { ln([[s * 140, -400], [s * 160, -40]], 10, '#f4f1ea'); ln([[s * 118, -404], [s * 138, -40]], 10, '#f4f1ea'); }
+  for (const s of [-1, 1]) ell(s * 96, -500, 20, 30, skin, 6);
+  ell(0, -520, 96, 104, o.bald ? skin : (o.hair || '#3a2a20')); g.save(); P(); g.ellipse(0, -520, 96, 104, 0, 0, 7); g.clip(); g.fillStyle = 'rgba(0,0,0,.12)'; g.fillRect(40, -640, 80, 240);
+  if (o.bald) { P(); g.moveTo(-100, -500); g.quadraticCurveTo(0, -470, 100, -500); g.lineTo(100, -400); g.lineTo(-100, -400); g.closePath(); g.fillStyle = '#b8b0a8'; g.fill(); }
+  if (o.bun) { } g.restore(); ell(0, -520, 96, 104, null, 7);
+  if (o.bald) for (let k = -3; k <= 3; k++) ln([[k * 22, -478], [k * 23, -440]], 3, '#8a8278');
+  if (o.bun) ell(0, -626, 44, 38, o.hair || '#3a2a20');
+  if (o.long) { P(); g.moveTo(-96, -520); g.lineTo(-100, -380); g.quadraticCurveTo(0, -360, 100, -380); g.lineTo(96, -520); g.closePath(); fsx(o.hair); } }); }
+function petrovich(x, y, sc, paperUp = true) { if (paperUp) body(x, y, sc, () => { rr(-230, -770, 460, 270, 8, '#efe9d8'); ln([[0, -770], [0, -500]], 5); T.fitText(g, 'BRIGHTON POST', {x: -220, y: -758, w: 210, h: 50}, {maxSize: 34, pad: 4}); for (let k = 0; k < 5; k++) { ln([[-200, -680 + k * 30], [-24, -680 + k * 30]], 4, '#9a9488'); ln([[24, -680 + k * 30], [200, -680 + k * 30]], 4, '#9a9488'); } rr(30, -756, 160, 60, 4, '#c9d6e6', 4); });
+  backPerson(x, y, sc, {top: '#2c3f8f', stripes: true, bald: true}); }
 // ---------- layout ----------
 g.fillStyle = '#fbf3f6'; g.fillRect(0, 0, W, H);
 g.fillStyle = '#f3dfe8'; g.fillRect(0, 0, W, 96); g.font = '50px NBL, NBC'; g.fillStyle = INK; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('«ДАВАЙ ЗАМУЖ!» — эскиз персонажей (наш стиль, toon v4)', W / 2, 50);
 const ROW1 = 800, S1 = .36, COL = i => 150 + i * 300;
 // 1. Zhanna on the sofa (seated), troll smirk
-{ const x = COL(0), y = ROW1, sc = S1; sofa(x, y, sc); ch(ZH, x, y - 120 * sc, sc, {seated: true, pose: 'hips', hands: {1: 'fist', '-1': 'fist'}, mood: 'neutral'}); sofaFront(x, y, sc); pill('Жанна — сваха', x, ROW1 + 40); }
+{ const x = COL(0), y = ROW1, sc = S1; chair(x, y, sc, 470, '#c8325a', 'sofa'); seat(ZH, x, y, sc, {arms: LAP, hands: {1: 'open', '-1': 'open'}, front: true, mood: 'neutral'}); pill('Жанна — сваха', x, ROW1 + 40); }
 // 2. Эльвира, neutral, hands folded
 { const x = COL(1), y = ROW1, sc = S1; ch(EL, x, y, sc, {pose: 'hold', hands: {1: 'open', '-1': 'open'}, mood: 'proud'}); pearls(x, y, sc); pill('Ведущая Эльвира', x, ROW1 + 40); }
 // 3. Звездана with the crystal ball
@@ -117,27 +140,45 @@ box(5, 'Джош: «I brought you kale!»', (cx, cy) => { const [x, y] = hc(cx -
   ch(JS, x, y, SC2, {arms: fn, front: false, hands: {1: 'none', '-1': 'none'}, mood: 'grin'}); const p = armPts(fn, 1), h = wpt(x, y, SC2, p[2]); kale(h[0], h[1] - 10 * SC2, SC2); T.drawHand(g, 'fist', h[0], h[1], fa(p), SC2, JS.pal.skin, null, 1, 22); });
 box(6, 'Райан: график падает', (cx, cy) => { const [x, y] = hc(cx - 40, cy + 40, .44); const SC2 = .44, fn = s => s > 0 ? [[86, -860], [250, -780], [280, -880]] : [[-86, -860], [-102, -720], [-110, -580]];
   ch(RY, x, y, SC2, {arms: fn, front: false, hands: {1: 'none', '-1': 'none'}, mood: 'shocked', mouth: .6, sweat: true}); const p = armPts(fn, 1), h = wpt(x, y, SC2, p[2]); phone(h[0] + 4 * SC2, h[1] - 60 * SC2, SC2, .12); T.drawHand(g, 'fist', h[0], h[1], fa(p), SC2, RY.pal.skin, null, 1, 22); });
-box(7, 'Петрович: «Угу.»', (cx, cy) => { petrovich(cx, cy + 190, .5); });
+box(7, 'Петрович: «Угу.»', (cx, cy) => { petrovich(cx, cy + 170, .5); });
 
-// ---------- row 3: studio set thumbnail + palette ----------
-{ const X0 = 40, Y0 = 1380, SW = 1240, SH = 580; g.save(); P(); g.roundRect(X0, Y0, SW, SH, 26); g.clip();
-  g.fillStyle = '#5a2a6a'; g.fillRect(X0, Y0, SW, SH); g.fillStyle = '#7a3a8a'; g.fillRect(X0, Y0 + 60, SW, 300); g.fillStyle = '#e88ab0'; g.fillRect(X0, Y0 + 360, SW, 220);
-  for (let k = 0; k < 5; k++) { g.save(); g.globalAlpha = .12; P(); g.moveTo(X0 + 120 + k * 250, Y0); g.lineTo(X0 + 40 + k * 250, Y0 + 420); g.lineTo(X0 + 220 + k * 250, Y0 + 420); g.closePath(); g.fillStyle = '#fff6c0'; g.fill(); g.restore(); }
-  // sign with bulbs
-  rr(X0 + 380, Y0 + 24, 480, 96, 40, '#ff4f8f', 6); for (let k = 0; k < 16; k++) ell(X0 + 404 + k * 29, Y0 + 30, 6, 6, '#fff3a0', 2); T.fitText(g, 'ДАВАЙ ЗАМУЖ!', {x: X0 + 400, y: Y0 + 40, w: 440, h: 70}, {maxSize: 60, pad: 6, color: '#ffffff'});
-  // door with a heart
-  rr(X0 + 560, Y0 + 160, 140, 220, 16, '#f2d06a'); rr(X0 + 574, Y0 + 174, 112, 206, 10, '#3a1a4a', 4); P(); const hx = X0 + 630, hy = Y0 + 140; g.moveTo(hx, hy + 22); g.bezierCurveTo(hx - 40, hy - 6, hx - 20, hy - 34, hx, hy - 14); g.bezierCurveTo(hx + 20, hy - 34, hx + 40, hy - 6, hx, hy + 22); fsx('#ff4f8f', 4);
-  // hosts' sofa (right) with the three hosts
-  sofa(X0 + 960, Y0 + 440, .26, 980, '#c8325a');
-  ch(EL, X0 + 860, Y0 + 400, .17, {seated: true, pose: 'hold', hands: {1: 'none', '-1': 'none'}, mood: 'proud'}); ch(ZH, X0 + 960, Y0 + 400, .17, {seated: true, pose: 'hips', hands: {1: 'none', '-1': 'none'}, mood: 'smug'}); ch(ZV, X0 + 1060, Y0 + 400, .17, {seated: true, pose: 'hold', hands: {1: 'none', '-1': 'none'}, mood: 'dreamy'});
-  body(X0 + 960, Y0 + 440, .26, () => { rr(-490, -580, 980, 150, 40, '#c8325a'); });
-  // hero armchair (left) with the bride
-  sofa(X0 + 300, Y0 + 440, .26, 300, '#f2a0c0'); ch(BR, X0 + 300, Y0 + 400, .17, {seated: true, pose: 'hold', hands: {1: 'none', '-1': 'none'}, mood: 'proud'}); body(X0 + 300, Y0 + 440, .26, () => rr(-150, -580, 300, 150, 40, '#f2a0c0'));
-  // audience from behind
-  for (let k = 0; k < 9; k++) { const ax = X0 + 70 + k * 138, ay = Y0 + SH - 20; if (k === 6) { petrovich(ax, ay + 40, .2); continue; } const cols = ['#3a2a4a', '#5a3a2a', '#2a3a5a', '#4a4a4a']; ell(ax, ay - 70, 38, 42, cols[k % 4], 5); rr(ax - 60, ay - 34, 120, 80, 30, ['#6a4a8a', '#3a6a8a', '#8a4a5a'][k % 3], 5); }
-  g.restore(); rr(X0, Y0, SW, SH, 26, null, 5); pill('Студия: диван ведущих, кресло героини, дверь для женихов, зал', X0 + SW / 2, Y0 - 28, 900); }
-// palette
-{ const cols = [['#f3d27a', 'Жанна'], ['#18a07a', 'Жанна'], ['#7a1838', 'Эльвира'], ['#5b3a9a', 'Звездана'], ['#d4a82a', 'Звездана'], ['#f27ab0', 'Бриттани'], ['#8a93a0', 'Майк'], ['#efe3c8', 'Джош'], ['#26315e', 'Райан'], ['#2c3f8f', 'Петрович'], ['#c8325a', 'диван'], ['#5a2a6a', 'студия']];
-  pill('Палитра', 1820, 1380 - 28, 300); cols.forEach(([c, n], i) => { const x = 1340 + (i % 4) * 255, y = 1400 + Math.floor(i / 4) * 150; rr(x, y, 90, 90, 14, c, 5); g.font = '26px NBL, NBC'; g.fillStyle = INK; g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillText(n, x + 104, y + 45); });
-  g.font = '24px NBL, NBC'; g.textAlign = 'left'; g.fillStyle = '#6a5a70'; ['Своё шоу и свои персонажи: реальных ведущих не рисуем.', 'Лицо Петровича никогда не показываем.'].forEach((t, i) => g.fillText(t, 1340, 1880 + i * 36)); }
-fs.writeFileSync(`${__dirname}/sketch.png`, cv.toBuffer('image/png')); console.log('ok');
+// ---------- row 3: the studio set (its own panel) ----------
+// scene(x0, y0, w, h, L): back wall, sign, door, stage; hero group left, hosts' sofa right (they face each other); audience row in front
+function scene(x0, y0, w, h, L) { g.save(); P(); g.roundRect(x0, y0, w, h, 26); g.clip(); const fy = y0 + L.floor;
+  g.fillStyle = '#5a2a6a'; g.fillRect(x0, y0, w, h); g.fillStyle = '#7a3a8a'; g.fillRect(x0, y0 + L.wallTop, w, L.floor - L.wallTop); for (let k = 0; k < 12; k++) { g.fillStyle = k % 2 ? 'rgba(255,255,255,.05)' : 'rgba(0,0,0,.05)'; g.fillRect(x0 + k * w / 12, y0 + L.wallTop, w / 12, L.floor - L.wallTop); }
+  for (let k = 0; k < 5; k++) { g.save(); g.globalAlpha = .1; P(); const bx = x0 + w * (.1 + k * .2); g.moveTo(bx, y0); g.lineTo(bx - w * .08, fy); g.lineTo(bx + w * .08, fy); g.closePath(); g.fillStyle = '#fff6c0'; g.fill(); g.restore(); }
+  g.fillStyle = '#e88ab0'; g.fillRect(x0, fy, w, h - L.floor); g.fillStyle = '#d9739e'; g.fillRect(x0, fy, w, 14 * L.k);
+  // sign with bulbs + door with a heart, centre back
+  const sw = L.signW, sx = x0 + w / 2 - sw / 2, sy = y0 + L.signY, sh = sw * .2; rr(sx, sy, sw, sh, sh / 2.4, '#ff4f8f', 6); for (let k = 0; k < 16; k++) ell(sx + sw * .06 + k * sw * .88 / 15, sy + 7 * L.k, 5 * L.k, 5 * L.k, '#fff3a0', 2); T.fitText(g, 'ДАВАЙ ЗАМУЖ!', {x: sx + sw * .05, y: sy + sh * .16, w: sw * .9, h: sh * .78}, {maxSize: 200, pad: 4, color: '#ffffff'});
+  const dw = L.doorW, dh = dw * 1.6, dx = x0 + w / 2 - dw / 2, dy = fy - dh; rr(dx - 12 * L.k, dy - 12 * L.k, dw + 24 * L.k, dh + 12 * L.k, 16 * L.k, '#f2d06a'); rr(dx, dy, dw, dh, 10 * L.k, '#3a1a4a', 4); const hx = dx + dw / 2, hy = dy - 34 * L.k, hk = L.k * 1.3; P(); g.moveTo(hx, hy + 22 * hk); g.bezierCurveTo(hx - 40 * hk, hy - 6 * hk, hx - 20 * hk, hy - 34 * hk, hx, hy - 14 * hk); g.bezierCurveTo(hx + 20 * hk, hy - 34 * hk, hx + 40 * hk, hy - 6 * hk, hx, hy + 22 * hk); fsx('#ff4f8f', 4);
+  // hero group (left): bride armchair + grooms' sofa right next to her; everyone looks towards the hosts (look +)
+  const sc = L.sc, by = fy + L.seatDrop;
+  const bX = x0 + L.bride, gX = x0 + L.grooms, hX = x0 + L.hosts;
+  chair(bX, by, sc, 400, '#f2a0c0'); seat(BR, bX, by, sc, {arms: LAP, hands: {1: 'open', '-1': 'open'}, front: true, mood: 'proud', look: .8});
+  const gp = 420; chair(gX, by, sc, 1320, '#3a6aa8', 'sofa');
+  seat(MK, gX - gp * sc, by, sc, {arms: LAP, hands: {1: 'fist', '-1': 'fist'}, front: true, mood: 'smug', look: .8});
+  seat(JS, gX, by, sc, {arms: LAP, hands: {1: 'open', '-1': 'open'}, front: true, mood: 'kind', look: .8});
+  seat(RY, gX + gp * sc, by, sc, {arms: LAP, hands: {1: 'open', '-1': 'open'}, front: true, mood: 'smug', look: .8});
+  // hosts' sofa (right), facing the heroes (look −)
+  const hp = 450; chair(hX, by, sc, 1400, '#c8325a', 'sofa');
+  seat(EL, hX - hp * sc, by, sc, {arms: LAP, hands: {1: 'open', '-1': 'open'}, front: true, mood: 'proud', look: -.8}); pearls(hX - hp * sc, by + (HIP - SEAT_H) * sc, sc);
+  seat(ZH, hX, by, sc, {arms: LAP, hands: {1: 'open', '-1': 'open'}, front: true, mood: 'smugside', look: -.8});
+  seat(ZV, hX + hp * sc, by, sc, {arms: LAP, hands: {1: 'open', '-1': 'open'}, front: true, mood: 'dreamy', look: -.8}); shawl(hX + hp * sc, by + (HIP - SEAT_H) * sc, sc);
+  // audience row in the foreground, from behind; Petrovich is one of them, same scale
+  const as = L.aud, ay = y0 + h + 30 * L.k, cols = [['#6a4a8a', '#3a2a20'], ['#3a6a8a', '#7a5030', 'long'], ['#8a4a5a', '#2a1f1a'], ['#4a7a5a', '#c9a060', 'bun'], ['#6a5a8a', '#5a3a2a'], ['#8a6a3a', '#2a2a2a', 'long'], ['#3a5a7a', '#8a6a4a']];
+  const n = L.audN, step = w / (n - .2);
+  for (let k = 0; k < n; k++) { const ax = x0 + step * (k + .4); if (k === L.petro) { petrovich(ax, ay, as); continue; } const cc = cols[k % cols.length]; backPerson(ax, ay, as, {top: cc[0], hair: cc[1], long: cc[2] === 'long', bun: cc[2] === 'bun'}); }
+  g.restore(); rr(x0, y0, w, h, 26, null, 5); }
+const SY = 1380;
+pill('Студия «Давай замуж!»: невеста и женихи рядом, ведущие напротив, зрители и Петрович в зале', 1200, SY - 30, 1500);
+scene(40, SY, 2320, 1000, {floor: 560, wallTop: 40, signY: 30, signW: 520, doorW: 150, k: 1.2, sc: .32, seatDrop: 190, bride: 190, grooms: 640, hosts: 1830, aud: .4, audN: 11, petro: 5});
+// palette strip
+{ const cols = [['#f3d27a', 'Жанна'], ['#18a07a', 'Жанна'], ['#7a1838', 'Эльвира'], ['#5b3a9a', 'Звездана'], ['#d4a82a', 'Звездана'], ['#f27ab0', 'Бриттани'], ['#8a93a0', 'Майк'], ['#efe3c8', 'Джош'], ['#26315e', 'Райан'], ['#2c3f8f', 'Петрович'], ['#c8325a', 'диван ведущих'], ['#3a6aa8', 'диван женихов']];
+  const py = SY + 1040; cols.forEach(([c, nm], i) => { const x = 60 + (i % 6) * 390, y = py + Math.floor(i / 6) * 90; rr(x, y, 64, 64, 12, c, 5); g.font = '26px NBL, NBC'; g.fillStyle = INK; g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillText(nm, x + 80, y + 32); });
+  g.font = '24px NBL, NBC'; g.fillStyle = '#6a5a70'; g.textAlign = 'center'; g.fillText('Своё шоу и свои персонажи: реальных ведущих не рисуем. Лицо Петровича никогда не показываем.', W / 2, py + 210); }
+fs.writeFileSync(`${__dirname}/sketch.png`, cv.toBuffer('image/png'));
+// ---------- vertical 1080x1920 wide shot, as in the video ----------
+{ const vc = createCanvas(1080, 1920), g0 = g; g = vc.getContext('2d');
+  scene(0, 0, 1080, 1920, {floor: 930, wallTop: 0, signY: 230, signW: 820, doorW: 190, k: 1.5, sc: .25, seatDrop: 290, bride: 90, grooms: 345, hosts: 860, aud: .5, audN: 5, petro: 3});
+  fs.writeFileSync(`${__dirname}/studio_vertical.png`, vc.toBuffer('image/png')); g = g0; }
+console.log('ok');
