@@ -68,8 +68,8 @@ function person(st0, t, x, y, S, o = {}) { const g1 = GEST[o.g || 'rest'], g0 = 
 function perfumeBottle(x, y, s, puff, tag = 0) { g.save(); g.translate(x, y); g.scale(s, s);
   rr(-46, -120, 92, 120, 20, 'rgba(255,214,232,.95)', 6); rr(-38, -110, 76, 100, 14, '#ffb8d4', 0); rr(-16, -150, 32, 34, 6, '#f2c820', 6); rr(-26, -170, 52, 24, 8, '#f2c820', 6);
   rr(-36, -86, 72, 50, 8, '#fffaf0', 4); fit('LE PARFUM', 0, -61, 72, 50, 18, '#b02a70', {pad: 4, lines: 2});
-  if (tag > 0) { ln([[30, -140], [110, -20 - 20 * Math.sin(tag * 3)]], 3); g.save(); g.translate(110, -20 - 20 * Math.sin(tag * 3)); g.rotate(-.25 + .2 * Math.sin(tag * 6)); g.scale(Math.cos(Math.PI * (1 - clamp(tag * 2))), 1);   // the tag flips round
-    rr(-40, 0, 200, 130, 14, '#fff3a8', 6); ell(-20, 20, 8, 8, '#ffffff', 4); fit('$3.99', 60, 46, 170, 64, 56, '#c0283a'); fit('Brighton Beach', 60, 100, 170, 36, 26, INK); g.restore(); }
+  if (tag > 0) { ln([[30, -140], [110, -20 - 20 * Math.sin(tag * 3)]], 3); g.save(); g.translate(110, -20 - 20 * Math.sin(tag * 3)); g.rotate(-.25 + .2 * Math.sin(tag * 6)); const fl = Math.cos(Math.PI * (1 - clamp(tag * 2))); g.scale(Math.abs(fl), 1);   // the tag flips round: back side blank while it turns, text only on the front
+    rr(-40, 0, 200, 130, 14, '#fff3a8', 6); ell(-20, 20, 8, 8, '#ffffff', 4); if (fl > 0) { fit('$3.99', 60, 46, 170, 64, 56, '#c0283a'); fit('Brighton Beach', 60, 100, 170, 36, 26, INK); } g.restore(); }
   g.restore();
   if (puff > 0) for (let k = 0; k < 9; k++) { const u = puff, a = -2.4 + (hash(k) - .5) * 1.1, r = 40 + u * 190 * (.6 + hash(k + 3) * .6); g.save(); g.globalAlpha = (1 - u) * .85; ell(x - 10 * s + Math.cos(a) * r * s, y - 170 * s + Math.sin(a) * r * s * .7, (16 + 26 * u) * s, (14 + 20 * u) * s, '#fff0f6', 3, '#e8b8cc'); g.restore(); sparkle(x + Math.cos(a) * r * s * 1.1, y - 180 * s + Math.sin(a) * r * s * .6, 10 * s, (1 - u), '#ffffff'); } }
 function bag(x, y, s) { g.save(); g.translate(x, y); g.scale(s, s); g.beginPath(); g.arc(0, -120, 60, Math.PI, 0); g.strokeStyle = INK; g.lineWidth = 18; g.stroke(); g.strokeStyle = '#f2c820'; g.lineWidth = 9; g.stroke();
