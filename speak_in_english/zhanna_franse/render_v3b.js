@@ -7,7 +7,10 @@ const fs = require('fs'), {spawn} = require('child_process'), {createCanvas, Glo
 for (const [f, n] of [['nunito-cyrillic-900-normal', 'NBC'], ['nunito-latin-900-normal', 'NBL'], ['montserrat-latin-900-normal', 'MBL'], ['montserrat-cyrillic-900-normal', 'MBC'], ['montserrat-latin-900-italic', 'MIL'], ['montserrat-cyrillic-900-italic', 'MIC']]) GlobalFonts.registerFromPath(`${__dirname}/fonts/${f}.woff2`, n);
 const LYR = 'MBL, MBC', LYRI = 'MIL, MIC';   // lyric font: Montserrat Black (OFL), the closest free Cyrillic match to the reference
 const W = 1080, H = 1920, FPS = 30, INK = '#2a2230', FONT = 'NBL, NBC';
-const TL = require('./timeline_v3.json'), LINES = TL.LINES, LEN = TL.LEN, SCN = TL.SCENES.map(s => s[0]);
+const TL = require('./timeline_v3.json'), LINES = TL.LINES, LEN = TL.LEN;
+const BEAT = [0.72, 1.29, 1.77, 2.35, 2.78, 3.23, 3.67, 4.08, 4.58, 5.11, 5.64, 6.17, 6.67, 7.15, 7.72, 8.25, 8.77, 9.25, 9.69, 10.22, 10.76, 11.25, 11.74, 12.27, 12.68, 13.14, 13.63, 14.09, 14.53, 15.06, 15.59, 16.12, 16.63, 17.16, 17.65, 18.22, 18.72, 19.19, 19.65, 20.12, 20.63, 21.07, 21.51];   // librosa beat_track on the track from 56.0 s, refined to onset peaks
+const FB = b => Math.floor(b * 30 + 1e-6) / 30;   // the hit lands on the beat's frame or 1 frame earlier
+const SCN = [0, FB(3.23), FB(5.64), 9.2, FB(11.74), FB(14.53), FB(17.16), FB(20.12)];   // 3 -> 4 is one continuous shot (9.2 only switches the gesture)
 const cv = createCanvas(W, H), G0 = cv.getContext('2d'); let g = G0; const cA = createCanvas(W, H), cB = createCanvas(W, H);
 const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v)), ease = v => { v = clamp(v); return v * v * (3 - 2 * v); }, lerp = (a, b, k) => a + (b - a) * k, eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
 const hash = n => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); }, P01 = (t, a, d) => clamp((t - a) / d);
@@ -120,17 +123,18 @@ function umbrellaPetro(x, y, s, t) { g.save(); g.translate(x, y); g.scale(s, s);
 const ZS = .86, B = [0.71, 1.5, 2.21, 2.93, 3.65, 4.37, 5.0, 5.64, 6.32, 7.0, 7.66, 8.34, 9.0, 9.66, 10.32, 11.03, 11.73, 12.36, 13.13, 13.83, 14.52, 15.19, 15.88, 16.61, 17.31, 18.02, 18.7, 19.41, 20.11, 20.81, 21.49];
 // k: 'm' = smooth move, 'p' = punch-in (0.16 s, expo), 'c' = cut (instant)
 const CAMK = [
-  [[0, 1.12, 560, 1110], [1.45, 1.3, 580, 1080, 'm'], [1.73, 1.72, 640, 1010, 'p'], [3.28, 1.85, 650, 1000, 'm']],                          // 1 ПАРФЮМ: push-in, punch on the key word
-  [[3.28, 1.3, 600, 1070], [4.37, 2.2, 760, 1060, 'p'], [5.88, 2.35, 770, 1050, 'm']],                                                     // 2 ГОТЬЕ: punch onto the flipping tag
-  [[5.88, 1.0, 640, 760], [7.0, 1.0, 640, 1260, 'm'], [7.22, 1.75, 330, 1000, 'c'], [8.4, 1.05, 560, 1100, 'p'], [9.2, 1.12, 590, 1100, 'm']],  // 3 up-and-down look at the neighbour, cut to Zhanna on the key word, pull out
-  [[9.2, 1.12, 590, 1100], [9.86, 1.2, 600, 1100, 'm'], [9.94, 3.1, 0, 0, 'c'], [11.67, 3.3, 0, 0, 'm']],      // 4 ШАНЕЛЬ: fast zoom to the bag label, back out (x,y = bag, filled at runtime)
-  [[11.67, .95, 300, 1130], [13.27, .95, 900, 1130, 'm'], [13.43, 1.6, 0, 0, 'p'], [14.33, 1.7, 0, 0, 'm']],                                // 5 СЛЕД: tracking the walk, punch to the glitter footprints (x,y at runtime)
-  [[14.33, 1.25, 360, 1060], [14.83, .9, 600, 1130, 'p'], [16.0, 1.7, 820, 1030, 'p'], [17.04, 1.8, 820, 1020, 'm']],                        // 6 КАК Я: Zhanna, then the copying grannies, punch on their sunglasses
-  [[17.04, 1.05, 460, 1100], [18.35, 1.0, 540, 960, 'c'], [20.4, 1.12, 540, 960, 'm']],                                                    // 7 ТЮРЬМЕ: worried + PiP bubble, then the full-screen mugshot
-  [[20.4, .62, 560, 1160], [21.0, .78, 480, 1180, 'p'], [22.5, .84, 470, 1190, 'm']]];                                                     // 8 ВОЛНЕ: rocking wide, push on the key word
+  [[0, 1.12, 560, 1110], [FB(1.29), 1.3, 580, 1080, 'm'], [FB(1.77), 1.72, 640, 1010, 'p'], [SCN[1], 1.85, 650, 1000, 'm']],
+  [[SCN[1], 1.3, 600, 1070], [FB(4.58), 2.2, 760, 1060, 'p'], [SCN[2], 2.35, 770, 1050, 'm']],
+  [[SCN[2], 1.0, 640, 760], [FB(6.67), 1.0, 640, 1260, 'm'], [FB(7.15), 1.75, 330, 1000, 'c'], [FB(8.25), 1.05, 560, 1100, 'p'], [9.2, 1.12, 590, 1100, 'm']],
+  [[9.2, 1.12, 590, 1100], [FB(9.69) - .16, 1.2, 600, 1100, 'm'], [FB(9.69), 3.1, 0, 0, 'c'], [SCN[4], 3.3, 0, 0, 'm']],
+  [[SCN[4], .95, 300, 1130], [FB(13.63) - .16, .95, 900, 1130, 'm'], [FB(13.63), 1.6, 0, 0, 'p'], [SCN[5], 1.7, 0, 0, 'm']],
+  [[SCN[5], 1.25, 360, 1060], [FB(15.06), .9, 600, 1130, 'p'], [FB(16.12), 1.7, 820, 1030, 'p'], [SCN[6], 1.8, 820, 1020, 'm']],
+  [[SCN[6], 1.05, 460, 1100], [FB(18.72), 1.0, 540, 960, 'c'], [SCN[7], 1.12, 540, 960, 'm']],
+  [[SCN[7], .62, 560, 1160], [FB(21.07), .78, 480, 1180, 'p'], [22.5, .84, 470, 1190, 'm']]];
+const MUG = FB(18.72);   // police flash + full-screen mugshot on the beat inside «тюрьме»
 const TRANS = ['whip', 'zoom', 'none', 'whip', 'tear', 'pip', 'rise'];   // 3 -> 4 is one continuous hallway shot   // transition INTO scene k+1 (from scene k)
 let BAGPOS = [0, 0], FOOTPOS = [0, 0];
-function camOf(k, t) { if (k === 4 && t < 13.27) { const wp = T.walkPose(t, SCN[4] - .15, 2.6, [-120, FEET], [980, FEET], ZS, ZS, 95); return {z: .95, x: clamp(wp.x + 60, 300, 900), y: 1130}; } const K = CAMK[k]; let i = 0; while (i < K.length - 1 && t >= K[i + 1][0]) i++; const a = K[i], b = K[i + 1];
+function camOf(k, t) { if (k === 4 && t < FB(13.63) - .16) { const wp = T.walkPose(t, SCN[4] - .15, 2.6, [-120, FEET], [980, FEET], ZS, ZS, 95); return {z: .95, x: clamp(wp.x + 60, 300, 900), y: 1130}; } const K = CAMK[k]; let i = 0; while (i < K.length - 1 && t >= K[i + 1][0]) i++; const a = K[i], b = K[i + 1];
   const pos = q => q[2] === 0 && q[3] === 0 ? (k === 3 ? BAGPOS : FOOTPOS) : [q[2], q[3]];
   if (!b) { const pa = pos(a); return {z: a[1], x: pa[0], y: pa[1]}; }
   const d = b[0] - a[0], kind = b[4] || 'm', u = kind === 'c' ? 0 : kind === 'p' ? clamp((t - a[0]) / Math.min(.16, d)) : clamp((t - a[0]) / d);
@@ -141,37 +145,37 @@ function camOf(k, t) { if (k === 4 && t < 13.27) { const wp = T.walkPose(t, SCN[
   if (kind === 'c') return {z: a[1], x: pa[0], y: pa[1]};
   return {z: lerp(a[1], b[1], e), x: lerp(pa[0], pb[0], e), y: lerp(pa[1], pb[1], e)}; }
 // light shake on strong beats inside a scene
-const SHAKES = [[1.73, .25], [7.22, .3], [9.94, .22], [13.43, .25], [18.4, .3], [21.0, .25]];
+const SHAKES = [[FB(1.77), .25], [FB(7.15), .3], [FB(9.69), .22], [FB(13.63), .25], [MUG, .3], [FB(21.07), .25]];
 const shakeAt = t => { let s = [0, 0]; for (const [a, d] of SHAKES) if (t >= a && t < a + d) { const k = 1 - (t - a) / d; s = [Math.sin(t * 90) * 10 * k, Math.cos(t * 77) * 7 * k]; } return s; };
 // overlays: glitter, flying price tags («money rain»), splash drops, camera flash
 function particles(k, t) { const a = SCN[k];
   if (k === 0 || k === 4) for (let i = 0; i < 26; i++) { const u = (t * .25 + hash(i)) % 1, x = hash(i + 50) * 1080 + Math.sin(t * 2 + i) * 30, y = -40 + u * 2000; sparkle(x, y, 8 + 10 * hash(i + 9), .5 + .5 * Math.sin(t * 6 + i), i % 3 ? '#fff6c0' : '#ffb8e0'); }
-  if (k === 1 && t > 4.37) for (let i = 0; i < 9; i++) { const u = clamp((t - 4.37 - i * .09) / 1.2); if (u <= 0 || u >= 1) continue; const x = 1200 - u * 1500 + hash(i) * 200, y = 600 + hash(i + 3) * 900 + Math.sin(u * 7 + i) * 60;   // price tags fly across
+  if (k === 1 && t > FB(4.58)) for (let i = 0; i < 9; i++) { const u = clamp((t - FB(4.58) - i * .09) / 1.2); if (u <= 0 || u >= 1) continue; const x = 1200 - u * 1500 + hash(i) * 200, y = 600 + hash(i + 3) * 900 + Math.sin(u * 7 + i) * 60;   // price tags fly across
     g.save(); g.translate(x, y); g.rotate(Math.sin(u * 5 + i) * .5); rr(-70, -40, 140, 80, 12, '#fff3a8', 5); fit('$3.99', 0, 0, 120, 60, 40, '#c0283a'); g.restore(); }
   if (k === 7) for (let i = 0; i < 20; i++) { const u = (t * .6 + hash(i)) % 1, x = hash(i + 20) * 1080, y = 1900 - u * 900 - Math.sin(u * 3.14) * 200; ell(x, y, 10, 14, 'rgba(200,235,255,.85)', 3, '#5aa8d8'); }
-  if (k === 6 && t >= 18.35 && t < 18.6) { g.fillStyle = `rgba(255,255,255,${1 - (t - 18.35) / .25})`; g.fillRect(0, 0, W, H); } }   // police camera flash
-function mugshot(t) { g.fillStyle = '#20202a'; g.fillRect(0, 0, W, H); chart(120, 380, 840, 1200); const u = t - 18.35;
+  if (k === 6 && t >= MUG && t < 18.6) { g.fillStyle = `rgba(255,255,255,${1 - (t - MUG) / .25})`; g.fillRect(0, 0, W, H); } }   // police camera flash
+function mugshot(t) { g.fillStyle = '#20202a'; g.fillRect(0, 0, W, H); chart(120, 380, 840, 1200); const u = t - MUG;
   person(ZH, t, 540, 2150, 1.05, {g: u > .9 ? 'shrug' : 'rest', mood: u < .9 ? 'proud' : 'smug', sing: 1, name: 'mugshot-z'});
   rr(270, 1360, 540, 170, 12, '#1d1b22', 7); fit('BRIGHTON PD', 540, 1420, 500, 70, 64, '#ffffff'); fit('№ 0056', 540, 1490, 500, 44, 40, '#ffd23f'); }
 function scene(k, t, camOverride) { const a = SCN[k]; let c = camOverride || camOf(k, t); const sh = shakeAt(t);
-  if (k === 6 && t >= 18.35) { g.save(); const z = 1 + .05 * clamp((t - 18.35) / 2); g.translate(540 + sh[0], 960 + sh[1]); g.scale(z, z); g.translate(-540, -960); mugshot(t); g.restore(); particles(k, t); return; }
+  if (k === 6 && t >= MUG) { g.save(); const z = 1 + .05 * clamp((t - MUG) / 2); g.translate(540 + sh[0], 960 + sh[1]); g.scale(z, z); g.translate(-540, -960); mugshot(t); g.restore(); particles(k, t); return; }
   g.save(); g.translate(540 + sh[0], 960 + sh[1]); g.scale(c.z, c.z); g.translate(-c.x, -c.y);
-  if (k === 0) { apartment(); let puff = 0; for (const p of [.71, 1.5, 2.21, 2.93]) if (t >= p && t < p + .7) puff = (t - p) / .7; person(ZH, t, 540, FEET, ZS, {g: t >= 1.5 && t < 1.95 || t >= 2.93 ? 'spray' : 'grand', mood: t < 1.6 ? 'smug' : 'proud', sing: 1, hold: {1: (hx, hy, S) => gripObject(() => perfumeBottle(hx, hy + 52 * S, S * 1.05, puff), {x: hx, y: hy, rot: 0, S, skin: ZH.pal.skin, nail: NAIL, w: 48 * S})}}); vanity(); }
-  if (k === 1) { apartment(); person(ZH, t, 540, FEET, ZS, {g: 'bottleUp', mood: t < 4.37 ? 'proud' : 'smugside', sing: 1, hold: {1: (hx, hy, S) => gripObject(() => perfumeBottle(hx, hy + 52 * S, S * 1.05, 0, P01(t, 3.7, 1.0)), {x: hx, y: hy, rot: 0, S, skin: ZH.pal.skin, nail: NAIL, w: 48 * S})}}); vanity(); }
+  if (k === 0) { apartment(); let puff = 0; for (const p of [.72, 1.77, 2.78].map(FB)) if (t >= p && t < p + .7) puff = (t - p) / .7; person(ZH, t, 540, FEET, ZS, {g: t >= FB(1.77) - .1 && t < FB(2.35) || t >= FB(2.78) - .1 ? 'spray' : 'grand', mood: t < 1.6 ? 'smug' : 'proud', sing: 1, hold: {1: (hx, hy, S) => gripObject(() => perfumeBottle(hx, hy + 52 * S, S * 1.05, puff), {x: hx, y: hy, rot: 0, S, skin: ZH.pal.skin, nail: NAIL, w: 48 * S})}}); vanity(); }
+  if (k === 1) { apartment(); person(ZH, t, 540, FEET, ZS, {g: 'bottleUp', mood: t < FB(4.58) ? 'proud' : 'smugside', sing: 1, hold: {1: (hx, hy, S) => gripObject(() => perfumeBottle(hx, hy + 52 * S, S * 1.05, 0, P01(t, FB(3.67), 1.0)), {x: hx, y: hy, rot: 0, S, skin: ZH.pal.skin, nail: NAIL, w: 48 * S})}}); vanity(); }
   if (k === 2 || k === 3) { hallway(); const nbG = 'bagHold';
     person(NB, t, 760, FEET, ZS, {g: nbG, mood: k === 2 ? 'proud' : 'smug', look: -.5, tilt: -.03, name: 'neighbour', hold: {1: (hx, hy, S) => { const bx = hx + 10 * S, by = hy + 140 * S; if (k === 3) BAGPOS = [bx, by - 40 * S]; gripObject(() => bag(bx, by, S * .78), {x: hx, y: hy, rot: 0, S, skin: NB.pal.skin, nail: '#9a2a6a', w: 22 * S, fist: true}); }}});
-    person(ZH, t, 310, FEET, ZS, {g: t < 9.2 ? 'judge' : 'smirk', gb: t >= 9.2 ? ['judge', P01(t, 9.2, .35)] : null, mood: t < 7.22 ? 'eyeroll' : t < 9.2 ? 'disgusted' : t < 9.94 ? 'surprised' : 'smugside', look: .8, sing: 1, hand: () => 'fist'}); }
+    person(ZH, t, 310, FEET, ZS, {g: t < 9.2 ? 'judge' : 'smirk', gb: t >= 9.2 ? ['judge', P01(t, 9.2, .35)] : null, mood: t < FB(7.15) ? 'eyeroll' : t < 9.2 ? 'disgusted' : t < FB(9.69) ? 'surprised' : 'smugside', look: .8, sing: 1, hand: () => 'fist'}); }
   if (k === 4) { boardwalk(t); const wp = T.walkPose(t, a - .15, 2.6, [-120, FEET], [980, FEET], ZS, ZS, 95);
-    for (let j = 0; j < 12; j++) { const fx = -120 + j * 95, alive = wp.x - fx; if (alive < 70) continue; if (j === 7) FOOTPOS = [fx, FEET - 120]; g.save(); g.globalAlpha = clamp(1 - alive / 1600); ell(fx, FEET + (j % 2 ? 10 : -6), 34, 14, '#ff8ac8', 4); for (let q = 0; q < 2; q++) sparkle(fx + (hash(j + q) - .5) * 60, FEET - 30 - hash(j * 3 + q) * 40, 12 + (t > 13.43 && j === 7 ? 18 * Math.sin((t - 13.43) * 8) : 0), .9, '#fff6c0'); g.restore(); }
+    for (let j = 0; j < 12; j++) { const fx = -120 + j * 95, alive = wp.x - fx; if (alive < 70) continue; if (j === 7) FOOTPOS = [fx, FEET - 120]; g.save(); g.globalAlpha = clamp(1 - alive / 1600); ell(fx, FEET + (j % 2 ? 10 : -6), 34, 14, '#ff8ac8', 4); for (let q = 0; q < 2; q++) sparkle(fx + (hash(j + q) - .5) * 60, FEET - 30 - hash(j * 3 + q) * 40, 12 + (t > FB(13.63) && j === 7 ? 18 * Math.sin((t - FB(13.63)) * 8) : 0), .9, '#fff6c0'); g.restore(); }
     if (!FOOTPOS[0]) FOOTPOS = [545, FEET - 120]; person(ZH, t, wp.x, wp.y, wp.s, {g: 'strut', mood: 'proud', sing: 1, walk: wp, lean: wp.lean, shades: true, hand: () => 'fist'}); }
-  if (k === 5) { boardwalk(t, false); bench(780, FEET - 40); const copy = t >= 15.19;   // grannies switch to her pose on the beat
+  if (k === 5) { boardwalk(t, false); bench(780, FEET - 40); const copy = t >= FB(15.59);   // grannies switch to her pose on the beat
     for (const [gx, col] of [[680, '#7fb8d8'], [920, '#c9a0e0']]) person(GR(col), t, gx, FEET - 80, ZS * .8, {g: copy ? 'voila' : 'rest', mood: copy ? 'proud' : 'surprised', shades: copy, look: -.6, seated: true, hand: () => 'open', name: 'granny'});
-    if (copy && t < 16.6) for (const gx of [680, 920]) sparkle(gx + 40, FEET - 80 - 1090 * ZS * .8, 22 * Math.abs(Math.sin((t - 15.19) * 6)), 1, '#ffffff');
+    if (copy && t < 16.6) for (const gx of [680, 920]) sparkle(gx + 40, FEET - 80 - 1090 * ZS * .8, 22 * Math.abs(Math.sin((t - FB(15.59)) * 6)), 1, '#ffffff');
     person(ZH, t, 330, FEET, ZS, {g: 'voila', mood: t < 15.6 ? 'proud' : 'smugside', sing: 1, shades: true, hand: sd => sd > 0 ? 'open' : 'fist'}); }
   if (k === 6) { apartment(); person(ZH, t, 700, FEET, ZS, {g: 'worry', mood: 'worried', sing: 1, look: -.7, hand: () => 'open'}); vanity(); }
   if (k === 7) { sea(t); umbrellaPetro(1210, 2050, .9, t); bigWave(t); flamingo(380, 1640, 1.0, t); person(ZH, t, 380, 1640 - 110 + 560 * ZS * .9 + 8 * Math.sin(t * 2.4), ZS * .9, {g: 'wave', mood: 'proud', sing: 1, seated: true, shades: true, hand: () => 'open'}); }
   g.restore();
-  if (k === 6 && t < 18.35) { const pk = P01(t, 17.5, .25), sp = pk < 1 ? 1 - Math.pow(1 - pk, 3) * Math.cos(pk * 6) : 1; if (pk > 0) {   // PiP pop: thought bubble with the mugshot
+  if (k === 6 && t < MUG) { const pk = P01(t, FB(17.65) - .25, .25), sp = pk < 1 ? 1 - Math.pow(1 - pk, 3) * Math.cos(pk * 6) : 1; if (pk > 0) {   // PiP pop: thought bubble with the mugshot
     g.save(); g.translate(300, 820); g.scale(sp, sp); for (const [bx, by, r] of [[200, 210, 16], [150, 160, 24]]) ell(bx, by, r, r, '#ffffff', 6); rr(-230, -190, 460, 340, 90, '#ffffff', 8);
     g.save(); g.beginPath(); g.roundRect(-195, -160, 390, 280, 30); g.clip(); chart(-195, -160, 390, 280); person(ZH, t, 0, 470, .4, {g: 'rest', mood: 'proud', name: 'mugshot'}); g.restore(); rr(-120, 50, 240, 62, 8, '#1d1b22', 5); fit('BRIGHTON PD', 0, 81, 230, 56, 34, '#ffffff'); g.restore(); } }
   particles(k, t); }
@@ -206,10 +210,10 @@ function lyrics(t) { let li = -1; for (let i = 0; i < LINES.length; i++) if (t >
   g.restore(); }
 function vignette() { const v = g.createRadialGradient(W / 2, H * .5, 420, W / 2, H * .5, 1150); v.addColorStop(0, 'rgba(20,10,25,0)'); v.addColorStop(1, 'rgba(20,10,25,.55)'); g.fillStyle = v; g.fillRect(0, 0, W, H);
   const top = g.createLinearGradient(0, 0, 0, 620); top.addColorStop(0, 'rgba(20,10,25,.42)'); top.addColorStop(1, 'rgba(20,10,25,0)'); g.fillStyle = top; g.fillRect(0, 0, W, 620); }
-const sceneAt = t => { let k = 0; SCN.forEach((s, i) => { if (t >= s) k = i; }); return k; };
+const sceneAt = t => { let k = 0; SCN.forEach((s, i) => { if (t >= s - 1e-6) k = i; }); return k; };
 function paint(cc, k, t, cam) { const gg = cc.getContext('2d'); g = gg; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = INK; g.fillRect(0, 0, W, H); scene(k, t, cam); g = G0; }
 // transitions into scene k (centred on the line start s0, 0.3 s; whip and tear slightly longer)
-function transition(kind, k, t, s0) { const d = kind === 'whip' ? .36 : kind === 'tear' ? .4 : .3, u = clamp((t - (s0 - d / 2)) / d), e = eio(u);
+function transition(kind, k, t, s0) { const d = kind === 'whip' ? .36 : kind === 'tear' ? .4 : .3, u = clamp((t - (s0 - d)) / d), e = eio(u);
   paint(cA, k - 1, t); paint(cB, k, t); g = G0; g.setTransform(1, 0, 0, 1, 0, 0);
   if (kind === 'whip') { const off = e * W; for (let j = 0; j < 6; j++) { const o = (j / 5 - .5) * 60 * Math.sin(Math.PI * u); g.globalAlpha = 1 / (j + 1); g.drawImage(cA, -off + o, 0); g.drawImage(cB, W - off + o, 0); } g.globalAlpha = 1; }
   else if (kind === 'zoom') { g.save(); g.globalAlpha = 1 - e; g.translate(540, 960); g.scale(1 + .6 * e, 1 + .6 * e); g.drawImage(cA, -540, -960); g.restore(); g.save(); g.globalAlpha = e; g.translate(540, 960); g.scale(1.25 - .25 * e, 1.25 - .25 * e); g.drawImage(cB, -540, -960); g.restore(); g.globalAlpha = 1; }
@@ -221,15 +225,18 @@ function transition(kind, k, t, s0) { const d = kind === 'whip' ? .36 : kind ===
   else if (kind === 'rise') { g.drawImage(cA, 0, -200 * e); g.globalAlpha = e; g.drawImage(cB, 0, 200 * (1 - e)); g.globalAlpha = 1; } }
 function frame(t) { FACEBOX = []; PROPBOX = []; TEXTBOX = []; g = G0; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = INK; g.fillRect(0, 0, W, H);
   const k = sceneAt(t); let done = false;
-  for (const kk of [k, k + 1]) { if (kk < 1 || kk >= SCN.length) continue; const s0 = SCN[kk], kind = TRANS[kk - 1], d = kind === 'whip' ? .36 : kind === 'tear' ? .4 : .3; if (kind !== 'none' && t >= s0 - d / 2 && t < s0 + d / 2) { transition(kind, kk, t, s0); done = true; break; } }
-  if (!done && k === 3 && t >= 9.78 && t < 9.94) { const u = ease((t - 9.78) / .16), c0 = camOf(3, 9.78), c1 = camOf(3, 9.95); paint(cA, 3, t, {z: c0.z * (1 + .15 * u), x: c0.x, y: c0.y + 60 * u}); paint(cB, 3, t, {z: c1.z * (1.25 - .25 * u), x: c1.x, y: c1.y}); g = G0; g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(cA, 0, 0); g.globalAlpha = u; g.drawImage(cB, 0, 0); g.globalAlpha = 1; done = true; }
+  for (const kk of [k, k + 1]) { if (kk < 1 || kk >= SCN.length) continue; const s0 = SCN[kk], kind = TRANS[kk - 1], d = kind === 'whip' ? .36 : kind === 'tear' ? .4 : .3; if (kind !== 'none' && t >= s0 - d && t < s0) { transition(kind, kk, t, s0); done = true; break; } }
+  if (!done && k === 3 && t >= FB(9.69) - .16 && t < FB(9.69)) { const u = ease((t - (FB(9.69) - .16)) / .16), c0 = camOf(3, FB(9.69) - .16), c1 = camOf(3, FB(9.69) + .01); paint(cA, 3, t, {z: c0.z * (1 + .15 * u), x: c0.x, y: c0.y + 60 * u}); paint(cB, 3, t, {z: c1.z * (1.25 - .25 * u), x: c1.x, y: c1.y}); g = G0; g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(cA, 0, 0); g.globalAlpha = u; g.drawImage(cB, 0, 0); g.globalAlpha = 1; done = true; }
+  if (!done && k === 4 && t >= FB(13.63) - .16 && t < FB(13.63)) { const u = ease((t - (FB(13.63) - .16)) / .16), c0 = camOf(4, FB(13.63) - .17), c1 = camOf(4, FB(13.63) + .01); paint(cA, 4, t, {z: c0.z * (1 + .12 * u), x: c0.x, y: c0.y + 50 * u}); paint(cB, 4, t, {z: c1.z * (1.25 - .25 * u), x: c1.x, y: c1.y}); g = G0; g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(cA, 0, 0); g.globalAlpha = u; g.drawImage(cB, 0, 0); g.globalAlpha = 1; done = true; }   // footprint punch as a zoom-through (no face sweeps through the lyrics)
   if (!done) scene(k, t);
   g = G0; g.setTransform(1, 0, 0, 1, 0, 0); vignette(); if (t > LEN - .3) { g.fillStyle = `rgba(0,0,0,${clamp((t - LEN + .3) / .3)})`; g.fillRect(0, 0, W, H); } if (!process.env.NOCAP) lyrics(t); }
 
 // the bag never moves: measure its position once so a chunk/still that starts inside the bag close-up frames it correctly
 { const tc = createCanvas(W, H), keep = g; g = tc.getContext('2d'); scene(3, SCN[3] + .5); g = keep; }
 // ---------- modes ----------
+const EVENTS = () => { const ev = []; SCN.slice(1).forEach((s, i) => { if (TRANS[i] !== 'none') ev.push([s, 'scene change ' + (i + 1) + ' -> ' + (i + 2) + ' (' + TRANS[i] + ')']); }); CAMK.forEach((K, k) => K.forEach(q => { if (q[4] === 'p') ev.push([q[0], 'punch-in (scene ' + (k + 1) + ')']); if (q[4] === 'c') ev.push([q[0], 'cut / zoom-through (scene ' + (k + 1) + ')']); })); SHAKES.forEach(([a]) => ev.push([a, 'shake'])); [.72, 1.77, 2.78].forEach(p => ev.push([FB(p), 'perfume puff'])); ev.push([FB(3.67), 'price-tag flip']); ev.push([FB(4.58), 'flying price tags']); ev.push([FB(15.59), 'grannies copy + glint']); ev.push([FB(17.65), 'thought bubble pop']); ev.push([MUG, 'police flash']); return ev.sort((a, b) => a[0] - b[0]); };
 const [mode, arg, outName] = process.argv.slice(2);
+if (mode === 'beats') { for (const [t, what] of EVENTS()) { const nb = BEAT.reduce((a, b) => Math.abs(b - t) < Math.abs(a - t) ? b : a), f = Math.round(t * 30), fb = Math.round(nb * 30); console.log(`${t.toFixed(3)} s  frame ${f}  | beat ${nb.toFixed(2)} (frame ${fb})  lead ${fb - f} fr  | ${what}`); } }
 if (mode === 'still') { fs.mkdirSync('out/st3b', {recursive: true}); for (const t of arg.split(',')) { frame(+t); fs.writeFileSync(`out/st3b/${t}.png`, cv.toBuffer('image/png')); } }
 else if (mode === 'clip') { const [a, b] = arg.split(':').map(Number), F0 = Math.round(a * FPS), F1 = Math.round(Math.min(b, LEN) * FPS);
   const ff = spawn('ffmpeg', ['-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', `${W}x${H}`, '-r', '30', '-i', '-', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', outName]);
@@ -241,7 +248,7 @@ else if (mode === 'textaudit') { const over = new Set(); let n = 0; for (let t =
 else if (mode === 'armaudit') { const bad = {}; for (const [nm, f] of Object.entries(GEST)) { const fn = T.ik(f, 2); for (const s of [-1, 1]) { const [Sh, E, Hh] = fn(s); if (Hh[1] < -880 && Hh[0] * s < 40) bad[nm + ' hand crosses s=' + s] = 1; if (E[0] * s < 0) bad[nm + ' elbow crosses s=' + s] = 1; } }
   console.log(Object.keys(bad).length ? Object.keys(bad) : 'armaudit: no crossing (all gestures: a raised hand stays on its own shoulder side)'); }
 else if (mode === 'cutaudit') { // hard cuts / scene changes must be >= 1.2 s apart
-  const ev = [...new Set([...SCN.slice(1).filter((x, i) => TRANS[i] !== 'none'), 18.35, ...[].concat(...CAMK.map(K => K.filter(q => q[4] === 'c').map(q => q[0])))].map(x => +x.toFixed(2)))]; ev.sort((a, b) => a - b); const gaps = ev.map((x, i) => i ? +(x - ev[i - 1]).toFixed(2) : +x.toFixed(2)); console.log('cut times', ev.map(x => +x.toFixed(2)), 'min gap', Math.min(...gaps), gaps); }
+  const ev = [...new Set([...SCN.slice(1).filter((x, i) => TRANS[i] !== 'none'), MUG, ...[].concat(...CAMK.map(K => K.filter(q => q[4] === 'c').map(q => q[0])))].map(x => +x.toFixed(2)))]; ev.sort((a, b) => a - b); const gaps = ev.map((x, i) => i ? +(x - ev[i - 1]).toFixed(2) : +x.toFixed(2)); console.log('cut times', ev.map(x => +x.toFixed(2)), 'min gap', Math.min(...gaps), gaps); }
 else if (mode === 'sheet') { const ts = arg.split(',').map(Number), cols = 6, sw = 270, shh = 480, sc = createCanvas(cols * sw, Math.ceil(ts.length / cols) * shh), sg = sc.getContext('2d');
   ts.forEach((t, i) => { frame(t); sg.drawImage(cv, (i % cols) * sw, Math.floor(i / cols) * shh, sw, shh); sg.fillStyle = '#fff'; sg.font = '24px NBL'; sg.fillText(t.toFixed(2) + 's', (i % cols) * sw + 8, Math.floor(i / cols) * shh + 28); });
   fs.writeFileSync(outName || 'final/contact_sheet_v3.png', sc.toBuffer('image/png')); }

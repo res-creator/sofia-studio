@@ -7,7 +7,10 @@ const fs = require('fs'), {spawn} = require('child_process'), {createCanvas, Glo
 for (const [f, n] of [['nunito-cyrillic-900-normal', 'NBC'], ['nunito-latin-900-normal', 'NBL'], ['montserrat-latin-900-normal', 'MBL'], ['montserrat-cyrillic-900-normal', 'MBC'], ['montserrat-latin-900-italic', 'MIL'], ['montserrat-cyrillic-900-italic', 'MIC']]) GlobalFonts.registerFromPath(`${__dirname}/fonts/${f}.woff2`, n);
 const LYR = 'MBL, MBC', LYRI = 'MIL, MIC';   // lyric font: Montserrat Black (OFL), the closest free Cyrillic match to the reference
 const W = 1080, H = 1920, FPS = 30, INK = '#2a2230', FONT = 'NBL, NBC';
-const TL = require('./timeline_15.json'), LINES = TL.LINES, LEN = TL.LEN, SCN = TL.SCENES.map(s => s[0]);
+const TL = require('./timeline_15.json'), LINES = TL.LINES, LEN = TL.LEN;
+const BEAT = [0.09, 0.65, 1.14, 1.63, 2.1, 2.58, 3.06, 3.57, 4.09, 4.5, 4.93, 5.49, 5.98, 6.49, 6.99, 7.43, 7.87, 8.32, 8.79, 9.33, 9.86, 10.38, 10.88, 11.37, 11.92, 12.46, 12.99, 13.46, 13.9];   // librosa beat_track on the saya clip, refined to onset peaks (16 kHz, hop 160)
+const FB = b => Math.floor(b * 30 + 1e-6) / 30;   // snap to the frame of the beat (never later)
+const SCN = [0, FB(4.09), FB(7.43), FB(9.86), FB(13.46)];   // hook | drop (big hit at 4.09) | ГОТЬЕ | hallway | bag
 const cv = createCanvas(W, H), G0 = cv.getContext('2d'); let g = G0; const cA = createCanvas(W, H), cB = createCanvas(W, H);
 const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v)), ease = v => { v = clamp(v); return v * v * (3 - 2 * v); }, lerp = (a, b, k) => a + (b - a) * k, eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
 const hash = n => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); }, P01 = (t, a, d) => clamp((t - a) / d);
@@ -119,11 +122,11 @@ function umbrellaPetro(x, y, s, t) { g.save(); g.translate(x, y); g.scale(s, s);
 // ---------- shots (15 s): 0 hook (choir intro: sunglasses go on, plate), 1 ПАРФЮМ from the beat drop at 4.0, 2 ГОТЬЕ, 3 hallway Д**ЬМО, 4 bag close-up ----------
 const ZS = .86, B = [0.09, 0.58, 1.09, 1.58, 2.09, 2.59, 3.08, 3.58, 4.08, 4.49, 4.91, 5.42, 5.96, 6.42, 6.9, 7.37, 7.85, 8.27, 8.77, 9.43, 9.96, 10.52, 11.02, 11.52, 12.0, 12.49, 12.97, 13.42, 13.87];
 const CAMK = [
-  [[0, 1.05, 560, 1130], [2.55, 1.22, 560, 1080, 'm'], [2.7, 1.7, 560, 1000, 'p'], [4.0, 1.82, 560, 990, 'm']],                              // hook: slow push-in, punch-in on the «Ой!»
-  [[4.0, 1.18, 560, 1100], [5.78, 1.32, 580, 1070, 'm'], [5.93, 1.72, 640, 1010, 'p'], [7.45, 1.86, 650, 1000, 'm']],                        // ПАРФЮМ: drop -> push, punch on the key word
-  [[7.45, 1.3, 600, 1070], [8.57, 2.2, 760, 1060, 'p'], [10.0, 2.35, 770, 1050, 'm']],                                                     // ГОТЬЕ: punch onto the flipping tag
-  [[10.0, 1.0, 640, 760], [11.2, 1.0, 640, 1260, 'm'], [11.4, 1.55, 380, 1060, 'p'], [12.5, 1.1, 580, 1100, 'p'], [13.55, 1.16, 590, 1100, 'm']],   // look her up and down, punch to Zhanna on the key word, out
-  [[13.7, 3.1, 0, 0], [14.94, 3.35, 0, 0, 'm']]];                                                                                         // bag close-up «COCO SHANEL», slow push to the end
+  [[0, 1.05, 560, 1130], [FB(4.09), 1.45, 560, 1060, 'm']],                                                                         // hook: one slow tension push-in to the drop (no hit at 2.7: the choir is fading there)
+  [[FB(4.09), 1.62, 600, 1020], [FB(4.93), 1.3, 580, 1080, 'm'], [FB(5.98), 1.72, 640, 1010, 'p'], [FB(7.43), 1.86, 650, 1000, 'm']],   // the drop lands TIGHT (hard punch + shake), relaxes, punch on ПАРФЮМ
+  [[FB(7.43), 1.3, 600, 1070], [FB(8.79), 2.2, 760, 1060, 'p'], [FB(9.86), 2.35, 770, 1050, 'm']],                                      // ГОТЬЕ: punch onto the tag on the beat
+  [[FB(9.86), 1.0, 640, 760], [FB(11.2), 1.0, 640, 1260, 'm'], [FB(11.37), 1.55, 380, 1060, 'p'], [FB(12.46), 1.1, 580, 1100, 'p'], [FB(13.46), 1.16, 590, 1100, 'm']],
+  [[FB(13.46), 3.1, 0, 0], [FB(13.9) - .16, 3.15, 0, 0, 'm'], [FB(13.9), 3.6, 0, 0, 'p'], [14.94, 3.75, 0, 0, 'm']]];                      // bag close-up from the 13.46 beat, punch on the 13.9 beat («Коко»)
 const TRANS = ['whip', 'zoom', 'slide', 'bag'];   // into scenes 1..4 ('bag' = zoom-through crossfade into the bag close-up)
 let BAGPOS = [0, 0], FOOTPOS = [0, 0];
 function camOf(k, t) { const K = CAMK[k]; let i = 0; while (i < K.length - 1 && t >= K[i + 1][0]) i++; const a = K[i], b = K[i + 1];
@@ -132,11 +135,11 @@ function camOf(k, t) { const K = CAMK[k]; let i = 0; while (i < K.length - 1 && 
   const d = b[0] - a[0], kind = b[4] || 'm', pa = pos(a), pb = pos(b);
   if (kind === 'p') { const t0 = b[0] - .16, uu = clamp((t - t0) / .16), ee = 1 - Math.pow(2, -10 * uu); return {z: lerp(a[1], b[1], ee), x: lerp(pa[0], pb[0], ee), y: lerp(pa[1], pb[1], ee)}; }
   const e = eio(clamp((t - a[0]) / d)); return {z: lerp(a[1], b[1], e), x: lerp(pa[0], pb[0], e), y: lerp(pa[1], pb[1], e)}; }
-const SHAKES = [[2.7, .28], [4.0, .3], [5.93, .25], [11.4, .3], [14.13, .3]];
+const SHAKES = [[FB(4.09), .32], [FB(5.98), .25], [FB(11.37), .3], [FB(13.9), .28]];
 const shakeAt = t => { let s = [0, 0]; for (const [a, d] of SHAKES) if (t >= a && t < a + d) { const k = 1 - (t - a) / d; s = [Math.sin(t * 90) * 10 * k, Math.cos(t * 77) * 7 * k]; } return s; };
 function particles(k, t) {
-  if (k === 0 && t > 2.7 || k === 1) for (let i = 0; i < 26; i++) { const u = (t * .25 + hash(i)) % 1, x = hash(i + 50) * 1080 + Math.sin(t * 2 + i) * 30, y = -40 + u * 2000; sparkle(x, y, 8 + 10 * hash(i + 9), (k === 0 ? clamp((t - 2.7) / .5) : 1) * (.5 + .5 * Math.sin(t * 6 + i)), i % 3 ? '#fff6c0' : '#ffb8e0'); }
-  if (k === 2 && t > 8.57) for (let i = 0; i < 9; i++) { const u = clamp((t - 8.57 - i * .09) / 1.2); if (u <= 0 || u >= 1) continue; const x = 1200 - u * 1500 + hash(i) * 200, y = 600 + hash(i + 3) * 900 + Math.sin(u * 7 + i) * 60;
+  if (k === 0 && t > FB(3.57) || k === 1) for (let i = 0; i < 26; i++) { const u = (t * .25 + hash(i)) % 1, x = hash(i + 50) * 1080 + Math.sin(t * 2 + i) * 30, y = -40 + u * 2000; sparkle(x, y, 8 + 10 * hash(i + 9), (k === 0 ? clamp((t - FB(3.57)) / .5) : 1) * (.5 + .5 * Math.sin(t * 6 + i)), i % 3 ? '#fff6c0' : '#ffb8e0'); }
+  if (k === 2 && t > FB(8.79)) for (let i = 0; i < 9; i++) { const u = clamp((t - FB(8.79) - i * .09) / 1.2); if (u <= 0 || u >= 1) continue; const x = 1200 - u * 1500 + hash(i) * 200, y = 600 + hash(i + 3) * 900 + Math.sin(u * 7 + i) * 60;
     g.save(); g.translate(x, y); g.rotate(Math.sin(u * 5 + i) * .5); rr(-70, -40, 140, 80, 12, '#fff3a8', 5); fit('$3.99', 0, 0, 120, 60, 40, '#c0283a'); g.restore(); }
   if (k === 4) for (let i = 0; i < 14; i++) sparkle(200 + hash(i) * 680, 700 + hash(i + 4) * 900, 10 + 12 * hash(i + 8), Math.max(0, Math.sin(t * 5 + i * 1.7)), '#fff6c0'); }
 // sunglasses slide down from the hair during the hook (k = 0 on the hair .. 1 on the eyes)
@@ -144,14 +147,14 @@ const shadesK = t => ease(P01(t, .9, 1.1));
 const shadesSlide = k => (gg, HY) => glasses(gg, HY, -(1 - k));   // slides down from the hair along the head
 function scene(k, t, camOverride) { let c = camOverride || camOf(k, t); const sh = shakeAt(t);
   g.save(); g.translate(540 + sh[0], 960 + sh[1]); g.scale(c.z, c.z); g.translate(-c.x, -c.y);
-  if (k === 0) { apartment(); const sk = shadesK(t); person(ZH, t, 540, FEET, ZS, {fx: shadesSlide(sk), g: t < .75 ? 'rest' : t < 2.15 ? 'worry' : 'smirk', mood: t < 2.0 ? 'smug' : t < 2.7 ? 'proud' : 'smugside', tilt: -.05 * ease(P01(t, 2.0, .6)), hand: () => 'open', name: 'hook'});
+  if (k === 0) { apartment(); const sk = shadesK(t); person(ZH, t, 540, FEET, ZS, {fx: shadesSlide(sk), g: t < .75 ? 'rest' : t < 2.15 ? 'worry' : 'smirk', mood: t < 2.1 ? 'smug' : t < FB(3.06) ? 'proud' : 'smugside', tilt: -.05 * ease(P01(t, FB(2.1), .6)), hand: () => 'open', name: 'hook'});
     // custom pass: the slide-down glasses are drawn on top of the face in screen space of the head (same transform as T.draw)
     vanity(); }
-  if (k === 1) { apartment(); let puff = 0; for (const p of [4.08, 4.91, 5.96, 6.9]) if (t >= p && t < p + .7) puff = (t - p) / .7; person(ZH, t, 540, FEET, ZS, {g: t >= 5.93 && t < 6.4 || t >= 6.9 ? 'spray' : 'grand', mood: t < 5.9 ? 'smug' : 'proud', sing: 1, shades: true, hold: {1: (hx, hy, S) => gripObject(() => perfumeBottle(hx, hy + 52 * S, S * 1.05, puff), {x: hx, y: hy, rot: 0, S, skin: ZH.pal.skin, nail: NAIL, w: 48 * S})}}); vanity(); }
-  if (k === 2) { apartment(); person(ZH, t, 540, FEET, ZS, {g: 'bottleUp', mood: t < 8.57 ? 'proud' : 'smugside', sing: 1, shades: true, hold: {1: (hx, hy, S) => gripObject(() => perfumeBottle(hx, hy + 52 * S, S * 1.05, 0, P01(t, 7.9, 1.0)), {x: hx, y: hy, rot: 0, S, skin: ZH.pal.skin, nail: NAIL, w: 48 * S})}}); vanity(); }
+  if (k === 1) { apartment(); let puff = 0; for (const p of [4.09, 4.93, 5.98, 6.99].map(FB)) if (t >= p && t < p + .7) puff = (t - p) / .7; person(ZH, t, 540, FEET, ZS, {g: t >= FB(5.98) - .1 && t < FB(6.49) || t >= FB(6.99) - .1 ? 'spray' : 'grand', mood: t < 5.9 ? 'smug' : 'proud', sing: 1, shades: true, hold: {1: (hx, hy, S) => gripObject(() => perfumeBottle(hx, hy + 52 * S, S * 1.05, puff), {x: hx, y: hy, rot: 0, S, skin: ZH.pal.skin, nail: NAIL, w: 48 * S})}}); vanity(); }
+  if (k === 2) { apartment(); person(ZH, t, 540, FEET, ZS, {g: 'bottleUp', mood: t < 8.57 ? 'proud' : 'smugside', sing: 1, shades: true, hold: {1: (hx, hy, S) => gripObject(() => perfumeBottle(hx, hy + 52 * S, S * 1.05, 0, P01(t, FB(7.87), 1.0)), {x: hx, y: hy, rot: 0, S, skin: ZH.pal.skin, nail: NAIL, w: 48 * S})}}); vanity(); }
   if (k === 3 || k === 4) { hallway();
     person(NB, t, 760, FEET, ZS, {g: 'bagHold', mood: k === 4 ? 'smug' : 'proud', look: -.5, tilt: -.03, name: 'neighbour', hold: {1: (hx, hy, S) => { const bx = hx + 10 * S, by = hy + 140 * S; BAGPOS = [bx, by - 40 * S]; gripObject(() => bag(bx, by, S * .78), {x: hx, y: hy, rot: 0, S, skin: NB.pal.skin, nail: '#9a2a6a', w: 22 * S, fist: true}); }}});
-    person(ZH, t, 310, FEET, ZS, {g: t < 12.5 ? 'judge' : 'smirk', gb: t >= 12.5 ? ['judge', P01(t, 12.5, .35)] : null, mood: t < 11.4 ? 'eyeroll' : t < 12.5 ? 'disgusted' : 'smugside', look: .8, sing: 1, shades: t < 11.4 ? false : false, hand: () => 'fist'}); }
+    person(ZH, t, 310, FEET, ZS, {g: t < FB(12.46) ? 'judge' : 'smirk', gb: t >= FB(12.46) ? ['judge', P01(t, FB(12.46), .35)] : null, mood: t < FB(11.37) ? 'eyeroll' : t < FB(12.46) ? 'disgusted' : 'smugside', look: .8, sing: 1, shades: t < 11.4 ? false : false, hand: () => 'fist'}); }
   g.restore(); particles(k, t); }
 // ---------- lyrics: the reference system 1:1 ----------
 // small words: white Montserrat Black, uppercase, soft dark drop shadow (no hard outline); upcoming words dim (~35%) and ~18% smaller;
@@ -183,10 +186,10 @@ function lyrics(t) { let li = -1; for (let i = 0; i < LINES.length; i++) if (t >
   g.restore(); }
 function vignette() { const v = g.createRadialGradient(W / 2, H * .5, 420, W / 2, H * .5, 1150); v.addColorStop(0, 'rgba(20,10,25,0)'); v.addColorStop(1, 'rgba(20,10,25,.55)'); g.fillStyle = v; g.fillRect(0, 0, W, H);
   const top = g.createLinearGradient(0, 0, 0, 620); top.addColorStop(0, 'rgba(20,10,25,.42)'); top.addColorStop(1, 'rgba(20,10,25,0)'); g.fillStyle = top; g.fillRect(0, 0, W, 620); }
-const sceneAt = t => { let k = 0; SCN.forEach((s, i) => { if (t >= s) k = i; }); return k; };
+const sceneAt = t => { let k = 0; SCN.forEach((s, i) => { if (t >= s - 1e-6) k = i; }); return k; };
 function paint(cc, k, t, cam) { const gg = cc.getContext('2d'); g = gg; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = INK; g.fillRect(0, 0, W, H); scene(k, t, cam); g = G0; }
 // transitions into scene k (centred on the line start s0, 0.3 s; whip and tear slightly longer)
-function transition(kind, k, t, s0) { const d = kind === 'whip' ? .36 : kind === 'tear' ? .4 : .3, u = clamp((t - (s0 - d / 2)) / d), e = eio(u);
+function transition(kind, k, t, s0) { const d = kind === 'whip' ? .36 : kind === 'tear' ? .4 : .3, u = clamp((t - (s0 - d)) / d), e = eio(u);
   paint(cA, k - 1, t); paint(cB, k, t); g = G0; g.setTransform(1, 0, 0, 1, 0, 0);
   if (kind === 'whip') { const off = e * W; for (let j = 0; j < 6; j++) { const o = (j / 5 - .5) * 60 * Math.sin(Math.PI * u); g.globalAlpha = 1 / (j + 1); g.drawImage(cA, -off + o, 0); g.drawImage(cB, W - off + o, 0); } g.globalAlpha = 1; }
   else if (kind === 'zoom') { g.save(); g.globalAlpha = 1 - e; g.translate(540, 960); g.scale(1 + .6 * e, 1 + .6 * e); g.drawImage(cA, -540, -960); g.restore(); g.save(); g.globalAlpha = e; g.translate(540, 960); g.scale(1.25 - .25 * e, 1.25 - .25 * e); g.drawImage(cB, -540, -960); g.restore(); g.globalAlpha = 1; }
@@ -201,15 +204,17 @@ function hookPlate(t) { if (t >= 2.65) return; const ui = P01(t, .15, .3), uo = 
 const ei = x => x * x * x;
 function frame(t) { FACEBOX = []; PROPBOX = []; TEXTBOX = []; g = G0; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = INK; g.fillRect(0, 0, W, H);
   const k = sceneAt(t); let done = false;
-  for (const kk of [k, k + 1]) { if (kk < 1 || kk >= SCN.length) continue; const s0 = SCN[kk], kind = TRANS[kk - 1], d = kind === 'whip' ? .36 : kind === 'tear' ? .4 : .3; if (kind !== 'none' && kind !== 'bag' && t >= s0 - d / 2 && t < s0 + d / 2) { transition(kind, kk, t, s0); done = true; break; } }
-  if (!done && k === 3 && t >= 13.54 && t < 13.7) { const u = ease((t - 13.54) / .16), c0 = camOf(3, 13.54), c1 = camOf(4, 13.71); paint(cB, 4, t, {z: c1.z * (1.25 - .25 * u), x: c1.x, y: c1.y}); paint(cA, 3, t, {z: c0.z * (1 + .15 * u), x: c0.x, y: c0.y + 60 * u}); g = G0; g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(cA, 0, 0); g.globalAlpha = u; g.drawImage(cB, 0, 0); g.globalAlpha = 1; done = true; }
+  for (const kk of [k, k + 1]) { if (kk < 1 || kk >= SCN.length) continue; const s0 = SCN[kk], kind = TRANS[kk - 1], d = kind === 'whip' ? .36 : kind === 'tear' ? .4 : .3; if (kind !== 'none' && kind !== 'bag' && t >= s0 - d && t < s0) { transition(kind, kk, t, s0); done = true; break; } }
+  if (!done && k === 3 && t >= SCN[4] - .16 && t < SCN[4]) { const u = ease((t - (SCN[4] - .16)) / .16), c0 = camOf(3, SCN[4] - .16), c1 = camOf(4, SCN[4] + .001); paint(cB, 4, t, {z: c1.z * (1.25 - .25 * u), x: c1.x, y: c1.y}); paint(cA, 3, t, {z: c0.z * (1 + .15 * u), x: c0.x, y: c0.y + 60 * u}); g = G0; g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(cA, 0, 0); g.globalAlpha = u; g.drawImage(cB, 0, 0); g.globalAlpha = 1; done = true; }
   if (!done) scene(k, t);
   g = G0; g.setTransform(1, 0, 0, 1, 0, 0); vignette(); if (!process.env.NOCAP) { hookPlate(t); lyrics(t); } }
 
 // the bag never moves: measure its position once so a chunk/still that starts inside the bag close-up frames it correctly
 { const tc = createCanvas(W, H), keep = g; g = tc.getContext('2d'); scene(3, SCN[3] + .5); g = keep; }
 // ---------- modes ----------
+const EVENTS = () => { const ev = []; SCN.slice(1).forEach((s, i) => ev.push([s, 'scene change ' + (i + 1) + ' -> ' + (i + 2) + ' (' + TRANS[i] + ')'])); CAMK.forEach((K, k) => K.forEach(q => { if (q[4] === 'p') ev.push([q[0], 'punch-in (scene ' + (k + 1) + ')']); })); SHAKES.forEach(([a]) => ev.push([a, 'shake'])); [4.09, 4.93, 5.98, 6.99].forEach(p => ev.push([FB(p), 'perfume puff'])); ev.push([FB(7.87), 'price-tag flip']); ev.push([FB(8.79), 'flying price tags']); ev.push([FB(3.57), 'glitter starts']); return ev.sort((a, b) => a[0] - b[0]); };
 const [mode, arg, outName] = process.argv.slice(2);
+if (mode === 'beats') { for (const [t, what] of EVENTS()) { const nb = BEAT.reduce((a, b) => Math.abs(b - t) < Math.abs(a - t) ? b : a), f = Math.round(t * 30), fb = Math.round(nb * 30); console.log(`${t.toFixed(3)} s  frame ${f}  | beat ${nb.toFixed(2)} (frame ${fb})  lead ${fb - f} fr  | ${what}`); } }
 if (mode === 'still') { fs.mkdirSync('out/st15', {recursive: true}); for (const t of arg.split(',')) { frame(+t); fs.writeFileSync(`out/st15/${t}.png`, cv.toBuffer('image/png')); } }
 else if (mode === 'clip') { const [a, b] = arg.split(':').map(Number), F0 = Math.round(a * FPS), F1 = Math.ceil(Math.min(b, LEN) * FPS - 1e-6);
   const ff = spawn('ffmpeg', ['-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', `${W}x${H}`, '-r', '30', '-i', '-', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', outName]);
