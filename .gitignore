@@ -80,3 +80,5 @@ whyhow/ep15_dubai/footage/
 whyhow/ep16_tokyo/footage/
 whyhow/ep1[4-9]_*/*.mp4
 whyhow/ep1[4-9]_*/*.log
+whyhow/ep1[4-9]_*/voice/
+whyhow/ep1[4-9]_*/voice_raw/

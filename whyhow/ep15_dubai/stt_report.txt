@@ -1,0 +1,60 @@
+A001 0.857 replace: sixteenth twenty twenty four -> 16 2024
+A002 0.842 replace: twelve hundred -> 1 200 | replace: cancelled -> canceled
+A003 0.986 delete: arizona -> 
+A004 0.971 replace: ann -> anne's
+A005 1.000 
+A006 1.000 
+A007 0.971 replace: one percent -> 1
+A008 0.789 replace: eighteen eighty one -> 1881 | replace: twelve thousand -> 12 000
+A009 0.903 replace: nineteen hundreds -> 1900s | replace: three hundred and thirty five -> 335
+A011 0.866 replace: abdulla -> abdullah | replace: suwaidi -> suedi | replace: fifty -> 50 | replace: nineteen ninety eight -> 1998 | replace: ninety six -> 96
+A012 0.862 replace: nineteen twenties -> 1920s | replace: ten -> 10 | replace: nineteen twenty nine -> 1929
+A013 1.000 
+A015 0.929 replace: nineteen sixty one -> 1961
+A016 0.886 replace: nineteen sixties -> 1960s | replace: tulloch -> tullock | replace: awir -> o 'weare
+A017 1.000 
+A018 0.853 replace: nineteen sixty six -> 1966 | replace: fateh -> fatay | replace: nineteen sixty nine -> 1969
+A019 0.943 replace: nineteen seventy nine -> 1979
+A020 0.933 replace: the second -> ii
+A021 1.000 
+A022 0.885 replace: ali -> ala | replace: five hundred and ninety -> 590
+A023 1.000 
+A024 0.949 replace: seawater -> sea water
+A025 1.000 
+A026 0.704 replace: twenty twenty five -> 2025 | replace: a hundred and ninety four -> 194 | replace: five hundred and eighty five -> 585
+A026B 0.538 delete: on its hottest days the city runs with almost no spare water -> 
+A027 0.961 replace: five -> 5 | replace: sixteen -> 16
+A028 1.000 
+A029 0.652 replace: twenty twenty five -> 2025 | replace: fifty one point eight -> 51 8 | replace: a hundred and twenty five -> 125
+A030 0.853 replace: twenty twenty four -> 2024 | replace: a hundred and forty four -> 144
+A031 0.904 replace: fifteenth -> 15th | replace: fifteenth -> 15th | replace: twelve thirty -> 1230
+A032 1.000 
+A033 0.943 replace: sixty percent -> 60
+A034 0.914 replace: twenty twenty five -> 2025 | replace: eleven -> 11
+A035 1.000 
+A036 0.971 replace: giant -> giants
+A037 0.857 replace: two thousand four -> 2004 | replace: seventeen hundred and fifty -> 1 750
+A038 0.951 replace: three point nine -> 3 9
+A039 1.000 
+A040 0.826 replace: eighty five -> 85 | replace: ninety percent -> 90 | replace: ten -> 10
+A041 0.913 replace: ali port -> alley pork
+A042 0.929 replace: three thousand -> 3 000 | replace: six thousand -> 6 000
+A043 1.000 
+A044 1.000 
+A045 0.948 replace: ninety four -> 94 | replace: forty -> 40
+A046 0.740 replace: nineteen sixty eight -> 1968 | replace: fifty nine thousand -> 59 000 | replace: twenty twenty five -> 2025 | replace: four point five eight -> 4 58
+A047 1.000 
+A048 1.000 
+A049 1.000 
+A050 1.000 
+A050B 1.000 
+A051 0.897 replace: three -> 3 | delete: dollars -> 
+A052 1.000 
+A053 0.944 replace: ten -> 10 | replace: fifteen -> 15
+A054 0.909 replace: ten to forty percent -> 10 40
+A055 0.733 replace: tasreef thirty -> taz reef 30 | replace: eight -> 8 | delete: dollars ->  | replace: seven hundred percent -> 700 | replace: twenty thirty three -> 2033
+A056 0.941 replace: hassyan -> hacean | replace: twenty thirty -> 2030
+A057 1.000 
+A058 0.972 replace: ann -> anne
+A058B 1.000 
+A059 1.000 
