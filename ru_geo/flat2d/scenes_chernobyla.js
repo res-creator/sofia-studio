@@ -33,7 +33,7 @@ function objects() {
     g.drawImage(im, -w / 2, -h / 2, w, h); g.strokeStyle = 'rgba(20,24,30,.55)'; g.lineWidth = 2; g.strokeRect(-w / 2, -h / 2, w, h); g.restore(); }
 }
 const toScreen = (c, wx, wy) => [W / 2 + (wx - c.cx) * c.z, H / 2 + (wy - c.cy) * c.z];
-function plate(x, y, w, h, a = 1) { g.save(); g.globalAlpha = a; g.fillStyle = 'rgba(14,15,17,.80)'; g.beginPath(); g.roundRect(x, y, w, h, 8); g.fill(); g.fillStyle = SIG; g.fillRect(x, y, 4, h); g.restore(); }
+function plate(x, y, w, h) { g.save(); g.fillStyle = 'rgba(14,15,17,.80)'; g.beginPath(); g.roundRect(x, y, w, h, 8); g.fill(); g.fillStyle = SIG; g.fillRect(x, y, 4, h); g.restore(); }
 function reading(t, [t0, t1, lab, big, src, size]) {
   const a = Math.min(ease((t - t0) / 0.4), 1 - ease((t - (t1 - 0.4)) / 0.4)); if (a <= 0) return;
   g.save(); g.globalAlpha = a; g.textBaseline = 'alphabetic'; g.font = `700 ${size}px ${MONO}`; const bw = g.measureText(big).width; g.font = `700 22px ${MONO}`; const lw = g.measureText(lab).width;
