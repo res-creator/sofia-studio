@@ -1,0 +1,27 @@
+// Смешанный отрывок: реальное видео, схема, текстовая карточка, мультяшное объяснение.
+import { W, H, g, clamp, lerp, ease, SCENES, setCaptionStyle } from './engine.js';
+import { MONO, win, plate } from './doc_common.js';
+setCaptionStyle('strip');
+const ACC = '#FF5A1F';
+const load = (dir, n) => Promise.all(Array.from({ length: n }, (_, i) => new Promise((res) => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = `/island2/vid/${dir}/f${String(i + 1).padStart(4, '0')}.jpg`; })));
+const V1 = await load('v1', 264), V2 = await load('v2', 90);
+function clip(arr, t0, t, grade = 0) { const i = clamp(Math.floor((t - t0) * 30), 0, arr.length - 1), im = arr[i]; g.fillStyle = '#05080c'; g.fillRect(0, 0, W, H); if (!im) return; const z = 1 + 0.05 * clamp((t - t0) / 8); g.save(); g.translate(W / 2, H / 2); g.scale(z, z); g.translate(-W / 2, -H / 2); g.filter = 'saturate(.85) contrast(1.05) brightness(.9)'; g.drawImage(im, 0, 0, W, H); g.filter = 'none'; g.restore();
+  const gr = g.createLinearGradient(0, 600, 0, H); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(2,4,8,.55)'); g.fillStyle = gr; g.fillRect(0, 600, W, H - 600);
+  const vg = g.createRadialGradient(W / 2, H / 2, 520, W / 2, H / 2, 1250); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(4,8,14,.38)'); g.fillStyle = vg; g.fillRect(0, 0, W, H); }
+SCENES.stockV1 = { bg(st) { g.save(); g.setTransform(1, 0, 0, 1, 0, 0); clip(V1, 0, st.t);
+  const a = win(st.t, 1.4, 8.6, 0.4); if (a > 0) { g.globalAlpha = a; plate(70, 70, 300, 110, ACC); g.fillStyle = '#9AA3AD'; g.font = `700 22px ${MONO}`; g.fillText('ОСТРОВ', 104, 112); g.fillStyle = '#F4F6F8'; g.font = `700 54px ${MONO}`; g.fillText('ДЕНЬ 1', 104, 164); g.globalAlpha = 1; } g.restore(); } };
+SCENES.stockV2 = { bg(st) { g.save(); g.setTransform(1, 0, 0, 1, 0, 0); clip(V2, 31.2, st.t); const a = win(st.t, 31.4, 34.2, 0.4); if (a > 0) { g.globalAlpha = a; plate(70, 70, 330, 110, '#3FA7D6'); g.fillStyle = '#9AA3AD'; g.font = `700 22px ${MONO}`; g.fillText('ПОТОМ', 104, 112); g.fillStyle = '#F4F6F8'; g.font = `700 54px ${MONO}`; g.fillText('3  ЕДА', 104, 164); g.globalAlpha = 1; } g.restore(); } };
+const ROWS = [[11.0, 'ВОЗДУХ', '3 МИНУТЫ', 0.06], [14.5, 'УКРЫТИЕ', '3 ЧАСА', 0.47], [18.4, 'ВОДА', '3 ДНЯ', 0.79], [20.7, 'ЕДА', '3 НЕДЕЛИ', 1.0]];
+SCENES.ruleScheme = { bg(st) { const t = st.t; g.save(); g.setTransform(1, 0, 0, 1, 0, 0); const gr = g.createLinearGradient(0, 0, 0, H); gr.addColorStop(0, '#0a1624'); gr.addColorStop(1, '#10263a'); g.fillStyle = gr; g.fillRect(0, 0, W, H);
+  g.strokeStyle = 'rgba(120,170,220,.06)'; g.lineWidth = 1; for (let i = 0; i < W; i += 60) { g.beginPath(); g.moveTo(i, 0); g.lineTo(i, H); g.stroke(); } for (let j = 0; j < H; j += 60) { g.beginPath(); g.moveTo(0, j); g.lineTo(W, j); g.stroke(); }
+  const a = Math.min(ease((t - 8.8) / 0.5), 1); g.globalAlpha = a; g.fillStyle = '#F4F6F8'; g.font = `700 52px ${MONO}`; g.fillText('ПРАВИЛО ТРЁХ', 160, 190); g.fillStyle = ACC; g.fillRect(160, 212, 360, 4);
+  g.fillStyle = '#9AA3AD'; g.font = `500 24px ${MONO}`; g.fillText('сколько человек может прожить без…', 160, 262); g.globalAlpha = 1;
+  ROWS.forEach(([at, lab, time, frac], i) => { const k = ease((t - at) / 0.5); if (k <= 0) return; const y = 380 + i * 130; g.save(); g.globalAlpha = k; g.fillStyle = '#9AA3AD'; g.font = `700 26px ${MONO}`; g.fillText(lab, 160, y - 26); g.fillStyle = '#F4F6F8'; g.font = `700 56px ${MONO}`; g.fillText(time, 160, y + 28);
+    g.fillStyle = 'rgba(244,246,248,.12)'; g.fillRect(700, y - 16, 1060, 28); g.fillStyle = i < 2 ? '#E4572E' : '#3FA7D6'; g.fillRect(700, y - 16, 1060 * frac * ease((t - at) / 1.2), 28); g.restore(); });
+  g.restore(); } };
+SCENES.textCard = { bg(st) { const t = st.t; g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#0b0f14'; g.fillRect(0, 0, W, H); const k = ease((t - 23.2) / 0.5); g.globalAlpha = k; g.textAlign = 'center'; g.fillStyle = '#F4F6F8'; g.font = `900 120px Nunito`; g.fillText('ОРИЕНТИРЫ,', W / 2, 470); g.fillText('А НЕ ТОЧНЫЕ СРОКИ', W / 2, 610); g.fillStyle = ACC; g.fillRect(W / 2 - 220, 660, 440, 6); g.textAlign = 'left'; g.restore(); } };
+SCENES.shadeCartoon = { bg(st) { const pt = st.pt; g.fillStyle = '#9fd4e6'; g.fillRect(-1400, -400, 4800, 1100); g.fillStyle = '#6fb3c9'; g.fillRect(-1400, 560, 4800, 160); g.fillStyle = '#e4cf9d'; g.fillRect(-1400, 700, 4800, 700); g.strokeStyle = '#2a2230'; g.lineWidth = 6; g.beginPath(); g.moveTo(-1400, 700); g.lineTo(3400, 700); g.stroke();
+  g.fillStyle = '#ffd24a'; g.strokeStyle = '#2a2230'; g.beginPath(); g.arc(1560, 210, 80, 0, 6.2832); g.fill(); g.stroke(); for (let i = 0; i < 12; i++) { const a = i * Math.PI / 6; g.beginPath(); g.moveTo(1560 + Math.cos(a) * 102, 210 + Math.sin(a) * 102); g.lineTo(1560 + Math.cos(a) * 140, 210 + Math.sin(a) * 140); g.stroke(); }
+  g.fillStyle = 'rgba(42,34,48,.28)'; g.beginPath(); g.ellipse(1180, 900, 380, 70, 0, 0, 6.2832); g.fill();
+  g.strokeStyle = '#6b4f2d'; g.lineWidth = 26; g.lineCap = 'round'; g.beginPath(); g.moveTo(1100, 860); g.quadraticCurveTo(1060, 560, 1130, 330); g.stroke(); g.fillStyle = '#3f8a5a'; g.strokeStyle = '#2a2230'; g.lineWidth = 6; for (let i = 0; i < 6; i++) { g.save(); g.translate(1130, 330); g.rotate(-2.7 + i * 0.55); g.beginPath(); g.moveTo(0, 0); g.quadraticCurveTo(120, -50, 250, 20); g.quadraticCurveTo(120, 20, 0, 0); g.fill(); g.stroke(); g.restore(); } },
+  hud(st, sc) {} };
