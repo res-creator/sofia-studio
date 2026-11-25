@@ -154,7 +154,7 @@ function face(st, c) { const E = st.moodFrom ? blendMood(MOODS[st.moodFrom] || M
   brows(st, c, E);
   if (st.glasses) { const ey = HY - 30 - UP; for (const s of [-1, 1]) { P(); g.ellipse(s * 56 + FX, ey + 4, 60, 56, 0, 0, 7); g.strokeStyle = OUT; g.lineWidth = 5; g.stroke(); } line([[-150, ey - 6], [-116 + FX, ey]], 5); line([[150, ey - 6], [116 + FX, ey]], 5); }
   if (st.probe) { ell(-50, HY - 30, 20, 20, '#ff00ff', 0); ell(50, HY - 30, 20, 20, '#ff00ff', 0); ell(0, HY + 100, 20, 14, '#ff00ff', 0); }
-  if (st.earrings) for (const s of [-1, 1]) { P(); g.roundRect(s * 152 - 14, HY + 44, 28, 34, 8); fs(st.earrings, 5); }
+  if (st.earrings) for (const s of (st.earSides || [-1, 1])) { P(); g.roundRect(s * 152 - 14, HY + 44, 28, 34, 8); fs(st.earrings, 5); }
   ell(4 + FX * 1.3, HY + 40 - UP, 14, 11, c.skinS, 5);
   if (E.nose) for (const s of [-1, 1]) q([s * 10 + FX, HY + 14 - UP], [s * 22 + FX, HY + 8 - UP], [s * 30 + FX, HY + 16 - UP], 4);
   if (st.blush !== false) { const a = .28 + (E.blush || 0) * .4, by = HY + 60 + JAW * .35 - UP; ell(-92 + FX, by, 22 + (E.blush || 0) * 8, 11, `rgba(255,120,110,${a})`, 0); ell(92 + FX, by, 22 + (E.blush || 0) * 8, 11, `rgba(255,120,110,${a})`, 0); }
