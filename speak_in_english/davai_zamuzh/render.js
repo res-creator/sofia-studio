@@ -5,8 +5,9 @@ const src = fs.readFileSync(`${__dirname}/sheet.js`, 'utf8'), cutAt = src.indexO
 const HX = new Function('require', '__dirname', src.slice(0, cutAt) + `
 return {setG: v => { g = v; }, T, P, fsx, ell, rr, ln, body, chair, seat, LAP, backPerson, petrovich, pearls, shawl, shade, HIP, SEAT_H, ZH, EL, ZV, BR, MK, JS, RY, crystalBall, tarot, laptop, kale, phone, watch, pearlsFx, shawlFx};`)(require, __dirname);
 const {T, P, fsx, ell, rr, ln, body, chair, seat, backPerson, petrovich, pearls, shawl, pearlsFx, shawlFx, shade, HIP, SEAT_H, ZH, EL, ZV, BR, MK, JS, RY, laptop, kale, phone, watch} = HX;
-const PART = +(process.env.PART || 1), TL = require(`./timeline${PART}.json`), L = TL.L, BY = Object.fromEntries(L.map(l => [l.id, l]));
-if (PART === 1) TL.CRASH = 2.5;   // teaser: the crypto chart falls in the third teaser shot
+const EP = +(process.env.EP || 0), PART = EP ? 3 : +(process.env.PART || 1), TL = require(EP ? `./series/timeline_ep${EP}.json` : `./timeline${PART}.json`), L = TL.L, BY = Object.fromEntries(L.map(l => [l.id, l]));
+for (const l of L) l.text = l.text.replace(/\u0301/g, '');   // stress marks are for the TTS only
+if (PART === 1) TL.CRASH = 2.5; if (EP === 2) TL.CRASH = TL.NEWS;   // teaser: the crypto chart falls in the third teaser shot
 const W = 1080, H = 1920, FPS = 30, INK = '#2a2230', FONT = 'NBL, NBC', VW = 1080, VH = 1920, FL = 860;
 const cv = createCanvas(W, H); let g = cv.getContext('2d'); HX.setG(g);
 // ---------- series storyboard / series render hooks (SBF = current frame spec; null = normal episode render) ----------
@@ -31,6 +32,8 @@ const recText = (name, x0, y0, x1, y1) => recBox('text', x0, y0, x1, y1, {name})
 // ---------- studio Б ----------
 const HY = 1100, HS = .3, HOSTX = {e: 380, z: 545, s: 710}, BX = 190, BYF = 1580, BS = .36, SOFA = 800, GS = .32, GX = {m: 640, j: 800, r: 960}, STAND = [560, 1340], STS = .32;
 const DESK = [[255, HY - 470 * HS], [800, HY - 470 * HS], [800, HY + 40], [255, HY + 40]], DTOP = HY - 470 * HS;
+const SER = EP ? require('./series/plan.js')(EP, {BY, TL, STAND, DTOP, T}) : null;   // series v5 episode plan (shots + acting)
+const win = (list, who, t) => { let v; for (const [w, a, b, x] of list || []) if (w === who && t >= a && t < b) v = x; return v; };
 function room() { g.fillStyle = '#5a2a6a'; g.fillRect(-400, -400, VW + 800, FL + 400); for (let k = 0; k < 9; k++) { g.fillStyle = k % 2 ? 'rgba(255,255,255,.05)' : 'rgba(0,0,0,.05)'; g.fillRect(k * VW / 9, 0, VW / 9, FL); }
   for (let k = 0; k < 4; k++) { g.save(); g.globalAlpha = .1; P(); const bx = VW * (.12 + k * .25); g.moveTo(bx, 0); g.lineTo(bx - 90, FL); g.lineTo(bx + 90, FL); g.closePath(); g.fillStyle = '#fff6c0'; g.fill(); g.restore(); }
   g.fillStyle = '#e88ab0'; g.fillRect(-400, FL, VW + 800, VH - FL + 400); g.fillStyle = '#d9739e'; g.fillRect(-400, FL, VW + 800, 16); for (let k = 1; k < 7; k++) ln([[-400, FL + k * 150 + k * k * 6], [VW + 400, FL + k * 150 + k * k * 6]], 3, 'rgba(160,60,110,.18)'); }
@@ -46,7 +49,7 @@ function deskProps(t) { // crystal ball in front of Звездана, ficus at t
   recProp('ball', bx - r * 1.4, by - r * 2.4, bx + r * 1.4, by + 10); ell(bx, by, r * .8, r * .3, '#d4a82a', 5); if (glow > 0) { g.save(); g.globalAlpha = glow * .5; ell(bx, by - r, r * 1.35, r * 1.35, '#fff0a0', 0); g.restore(); }
   ell(bx, by - r, r, r, '#b9e6ff', 6); ell(bx - 6, by - r - 4, r * .55, r * .55, '#d8c4ff', 0); ell(bx - 12, by - r - 14, 7, 5, 'rgba(255,255,255,.9)', 0);
   if (PART === 2 && TL.BALL0 && t >= TL.BALL0 && t < TL.BALL0 + 3.4) fitLog('0', bx, by - r, r * 1.3, r * 1.3, 60, '#c0283a', {pad: 1});
-  const hugK = PART === 2 && TL.FICUS ? ease(P01(t, TL.FICUS, .4)) * (1 - ease(P01(t, BY.s8.end + .3, .4))) : 0, fx = lerp(880, 820, hugK), fy = lerp(HY + 30, DTOP + 10, hugK);   // Звездана pulls her ficus close and hugs it
+  const hugK = SER && SER.ficus ? ease(P01(t, SER.ficus[0], .4)) * (1 - ease(P01(t, SER.ficus[1], .4))) : PART === 2 && TL.FICUS ? ease(P01(t, TL.FICUS, .4)) * (1 - ease(P01(t, BY.s8.end + .3, .4))) : 0, fx = lerp(880, 820, hugK), fy = lerp(HY + 30, DTOP + 10, hugK);   // Звездана pulls her ficus close and hugs it
   const fk = lerp(1, .55, hugK); recProp('ficus', fx - 90 * fk, fy - 230 * fk, fx + 90 * fk, fy); g.save(); g.translate(fx, fy); g.scale(fk, fk); g.translate(-fx, -fy);
   rr(fx - 34, fy - 70, 68, 70, 10, '#c0703a', 5); ln([[fx, fy - 70], [fx, fy - 170]], 7, '#6a4a2a'); for (const [a, l] of [[-2.4, 70], [-1.9, 84], [-1.3, 84], [-.8, 70], [-2.8, 56], [-.3, 56]]) { const ex = fx + Math.cos(a) * l, ey = fy - 170 + Math.sin(a) * l * .8 + 40; ln([[fx, fy - 150], [ex, ey]], 5, '#2f6a2a'); ell(ex, ey, 22, 13, '#4f9e3f', 4); } g.restore(); }
 function plantStand(t) { const x = 312, y = 1470; recProp('plant', x - 110, y - 330, x + 110, y); rr(x - 26, y - 150, 52, 150, 8, '#f2d06a', 5); rr(x - 44, y - 170, 88, 26, 8, '#e9bb34', 5); rr(x - 30, y - 230, 60, 62, 10, '#ffffff', 5);
@@ -62,7 +65,7 @@ const lineFor = (who, t) => { for (const l of L) if (l.who === who && t >= l.at 
 const speakerAt = t => { for (const l of L) if (t >= l.at - .05 && t < l.end + .05) return l.who; return null; };
 const blinkAt = (t, s) => ((t + s * 1.37) % (3.1 + s * .43)) < .11;
 const SEED = {e: 1, z: 2, s: 3, b: 4, m: 5, j: 6, r: 7};
-function talkSt(who, t) { const l = lineFor(who, t); if (!l) return {mouth: 0, round: .5, nod: 0, talking: false}; const s = T.talk(l, t, SEED[who]); if (l.id === 'r3' && t >= TL.BLEEP[0] && t < TL.BLEEP[0] + TL.BLEEP[1]) s.mouth = .85; return {...s, talking: true}; }
+function talkSt(who, t) { const l = lineFor(who, t); if (!l) return {mouth: 0, round: .5, nod: 0, talking: false}; const s = T.talk(l, t, SEED[who]); if ((l.id === 'r3' || l.id === 'B17') && t >= TL.BLEEP[0] && t < TL.BLEEP[0] + TL.BLEEP[1]) s.mouth = .85; return {...s, talking: true}; }
 // where everyone is (world) — for the look direction
 const POS = () => ({e: HOSTX.e, z: HOSTX.z, s: HOSTX.s, b: BX, m: grooms(NOW).m.x, j: grooms(NOW).j.x, r: grooms(NOW).r.x, p: AUDX[PETRO]});
 let NOW = 0;
@@ -124,6 +127,7 @@ const GEST = {
   flowerUp: s => s > 0 ? [[86, -860], [240, -820], [215, -975]] : [[-86, -860], [-102, -720], [-110, -580]],   // holds the bitten flower beside his own face
 };
 function gestureAt(who, t) {   // gesture name for a time (seated hosts / bride)
+  if (SER) return win(SER.gest, who, t) || 'lap';
   if (SBF && SBF.gest) return SBF.gest[who] || 'lap';
   const l = lineFor(who, t), id = l && l.id;
   if (who === 'z') { if (PART === 1 && inW(t, TL.SLAP - .8, 1.6)) return 'deskhand'; if (id === 'z1' || id === 'z28') return 'wave'; if (id === 'z6' || id === 'z13' || id === 'z20' || (PART === 2 && inW(t, TL.POINT_G, BY.z22.end - TL.POINT_G))) return 'point'; if (PART === 2 && inW(t, TL.HAIR, BY.z18.end - TL.HAIR + .2)) return 'hair'; }
@@ -143,7 +147,7 @@ function armsFor(who, t, base = gestureAt) { const cur = base(who, t); let prev 
 const DEF = {e: EL, z: ZH, s: ZV, b: BR, m: MK, j: JS, r: RY};
 function stOf(who, t, x) { const md = T.moodAt(MOODF[who], t), ts = talkSt(who, t); return sbSt(who, {mood: md.mood, moodFrom: md.moodFrom, moodK: md.moodK, blink: blinkAt(t, SEED[who]) || md.blink, mouth: ts.mouth, round: ts.round, nod: ts.nod, talking: ts.talking, t,
   look: who === 'z' && PART === 2 && TL.HORROR && t >= TL.HORROR - .1 && t < BY.z25.end ? lerp(.9, -.9, ease(P01(t, TL.HORROR, 1.4))) : who === 'z' && PART === 2 && inW(t, TL.TURN_Z, 1.6) ? .95 : lookFor(who, t, x), tilt: .02 * Math.sin(t * .9 + SEED[who]),
-  lean: who === 'z' ? (PART === 1 ? .07 * ease(P01(t, TL.LEAN_AWAY, .4)) * (1 - ease(P01(t, TL.SLAP + 1.2, .5))) : -.05 * ease(P01(t, TL.LEAN_BACK, .4)) * (1 - ease(P01(t, BY.z20.end + .8, .6)))) : 0}); }
+  lean: who === 'z' && PART < 3 ? (PART === 1 ? .07 * ease(P01(t, TL.LEAN_AWAY, .4)) * (1 - ease(P01(t, TL.SLAP + 1.2, .5))) : -.05 * ease(P01(t, TL.LEAN_BACK, .4)) * (1 - ease(P01(t, BY.z20.end + .8, .6)))) : 0}); }
 const ARMS = {}, NECK = {e: pearlsFx, s: shawlFx};
 const SEATED_HOSTS = 'zse';   // Эльвира drawn last: her slap lands on top of Жанна's hand
 function seated(who, x, y, sc, t, o = {}) { const a = armsFor(who, t); const st = stOf(who, t, x), skipArms = OVER[a.name] && a.k >= .35 ? OVER[a.name] : null; const hands = o.hands || {1: a.name === 'nails' || a.name === 'wave' ? 'open' : a.name === 'card' ? 'none' : a.name === 'point' ? 'point' : 'open', '-1': 'open'};
@@ -159,7 +163,7 @@ const ENTER = {m: TL.ENTER_M, j: TL.ENTER_J, r: TL.ENTER_R}, SIT = {j: TL.FICUS,
 function gState(w, t) { if (PART === 2 && w === 'm') return 'seat'; const E = ENTER[w]; if (!E) return 'off'; if (t < E[0]) return w === 'j' && PART === 2 ? 'off' : 'off'; if (t < E[0] + E[1]) return 'walk'; if (SIT[w] != null && t >= SIT[w]) return 'seat'; return 'stand'; }
 function grooms(t) { const o = {}; for (const w of 'mjr') { const s = gState(w, t); let x = GX[w], y = BYF, sc = GS;
     if (s === 'walk') { const wp = T.walkPose(t, ENTER[w][0], ENTER[w][1], WALK_A, STAND, .3, STS); x = wp.x; y = wp.y; sc = wp.s; o[w] = {s, x, y, sc, wp}; continue; }
-    if (s === 'stand') { x = STAND[0]; y = STAND[1]; sc = STS; } o[w] = {s, x, y, sc}; } return sbGrooms(o); }
+    if (s === 'stand') { x = STAND[0]; y = STAND[1]; sc = STS; } o[w] = {s, x, y, sc}; } return sbGrooms(o, t); }
 function standGest(w, t) { if (w === 'm') return 'laptop'; if (w === 'j') return PART === 2 && t >= TL.GIVE_KALE ? 'standDown' : 'kaleOut'; if (w === 'r') return 'phoneUp'; return 'standDown'; }
 function drawGroom(w, t, G) { const q = G[w]; if (q.s === 'off') return; const def = defOf(w);
   if (q.s === 'seat') { const props = w === 'm' ? 'laptopLap' : w === 'j' ? null : 'phoneLap'; seated(w, q.x, q.y, q.sc, t, {hands: {1: props ? 'fist' : 'open', '-1': props === 'laptopLap' ? 'fist' : 'open'}});
@@ -196,7 +200,7 @@ function studio(t, LY = {hosts: 1, fg: 1, aud: 1}) { NOW = t; room(); sign(t); d
   sbWorld(t, 'front'); if (LY.aud) audience(t); sbWorld(t, 'top'); }
 // Бриттани: part 1 — not there until «Встречайте — Бриттани!», walks in from the left, sits (the cut hides the sit)
 const B_WALK = 3.2, B_A = [-150, 1560];
-function brideState(t) { if (SBF && SBF.bride) return SBF.bride; if (PART === 2 || !TL.ENTER_B) return 'seat'; if (t < TL.ENTER_B[0] + .3) return 'off'; if (t < TL.ENTER_B[0] + .3 + B_WALK) return 'walk'; return 'seat'; }
+function brideState(t) { if (SER && SER.bride) return SER.bride(t); if (SBF && SBF.bride) return SBF.bride; if (PART === 2 || !TL.ENTER_B) return 'seat'; if (t < TL.ENTER_B[0] + .3) return 'off'; if (t < TL.ENTER_B[0] + .3 + B_WALK) return 'walk'; return 'seat'; }
 function bride(t) { const s = brideState(t); if (s === 'off') return; if (s === 'seat') { seated('b', BX, BYF, BS, t); return; }
   const wp = T.walkPose(t, TL.ENTER_B[0] + .3, B_WALK, B_A, [BX, BYF], BS, BS), st = stOf('b', t, wp.x), bob = wp.bob * wp.s;
   const pts = sd => { const f = sd > 0 ? GEST.wave(1) : [[-86, -860], [-102, -720], [-110, -580]], sw = sd < 0 ? wp.swing[sd] : 0; return f.map((p, i) => [p[0] + (i === 2 ? sw * 70 : i === 1 ? sw * 30 : 0), p[1] - (i === 2 ? Math.abs(sw) * 18 : 0)]); };
@@ -239,7 +243,7 @@ const CAMS = {WIDE: () => ({z: 1, x: 540, y: 960}), HOSTS: () => ({z: 1.95, x: 5
 const s0 = id => BY[id].at - .08, wd = (id, key, d = .3) => { const w = (BY[id].words || []).find(x => x[2].toLowerCase().includes(key.toLowerCase())); return w ? w[0] - .1 : at(id, d); };
 // [start, kind, who/arg, extra]
 const ent = (k, d = 0) => TL[k][0] + d, lg = (id, d = .15) => BY[id].end + d;   // a crowd reaction right after a line
-const PLAN = PART === 1 ? [
+const PLAN = SER ? SER.shots : PART === 1 ? [
   [0, 'INS_laptop'], [1.25, 'INS_kale'], [2.5, 'INS_chart'], [TL.OPEN - .05, 'WIDE'], [at('e1', .45), 'MCU', 'e'], [s0('z1'), 'PUSH', 'z', wd('z1', 'хай', .6)], [TL.AP1 - .1, 'HOSTS'],
   [s0('e2'), 'EZ'], [s0('z2'), 'CU', 'z'], [s0('s1'), 'MCU', 's'], [at('s1', .5), 'CU', 's'], [TL.OY - .08, 'EZ'], [TL.L_OY + .3, 'WIDE'],
   [TL.DIM, 'MCU', 'e'], [at('e3', .45), 'CU', 'e'], [s0('e4'), 'ECU', 'e'], [lg('e4'), 'WIDE'], [s0('e5'), 'MCU', 'e'], [at('e5', .5), 'CU', 'e'], [s0('z3'), 'ZS'], [s0('s2'), 'CU', 's'],
@@ -262,7 +266,7 @@ const PLAN = PART === 1 ? [
   [TL.STAND_E, 'MCU', 'e'], [TL.DRUM[0], 'CU', 'b'], [TL.DRUM[0] + 1.3, 'GROOMS'], [s0('b7'), 'CU', 'b'], [s0('m6'), 'CU', 'm'], [s0('j3'), 'CU', 'j'], [s0('r5'), 'CU', 'r'], [TL.CRY[0], 'CU', 'b'],
   [TL.COLD[0], 'INS_clock'], [s0('z23'), 'MCU', 'z'], [s0('z24'), 'PUSH', 'z', BY.z24.at], [TL.RUSTLE, 'INS_paper'], [lg('p1', .6), 'WIDE'], [TL.PEEK_B - .1, 'CU', 'b'], [TL.TAROT_MARRIED, 'INS_tarot', 'married'],
   [TL.HORROR, 'PUSH', 'z', at('z25', .45)], [lg('z25'), 'HOSTS'], [s0('e24'), 'MCU', 'e'], [at('e24', .5), 'CU', 'e'], [TL.WINK, 'CU', 'z'], [at('z26', .5), 'PUSH', 'z', at('z26', .55)], [s0('e25'), 'EZ'], [s0('z27'), 'CU', 'z'], [s0('z28'), 'HOSTS'], [TL.END, 'END']];
-const SHOTS = PLAN.map(([a, k, who, x], i, arr) => ({a, k, who, x, end: arr[i + 1] ? arr[i + 1][0] : TL.TOTAL, i}));
+const SHOTS = PLAN.map(([a, k, who, x], i, arr) => ({a, k, who, x: x && typeof x === 'object' ? x.x : x, o: x && typeof x === 'object' ? x : {}, end: arr[i + 1] ? arr[i + 1][0] : TL.TOTAL, i}));
 const SHAKE = PART === 2 ? [TL.BLEEP[0], .5] : null;   // shake on one word only: the bleep
 function shotAt(t) { if (SBF) return SBF._sh; let s = SHOTS[0]; for (const q of SHOTS) if (t >= q.a) s = q; return s; }
 function worldCam(sh, t) { const u = clamp((t - sh.a) / (sh.end - sh.a));
@@ -290,7 +294,7 @@ const SPL = {b1: [["Hi! I'm Brittany, thirty-two, nail artist from Brooklyn.", '
   s12: [["The stars say… he's married.", 'Звёзды говорят… он женат.']], hey_m: [['Hey!', 'Эй!']], hey_j: [['Hey!', 'Эй!']], hey_r: [['Hey!', 'Эй!']], p1: [['Угу.', '']]};
 const RUS = {s1: ['Девочки… не ссорьтесь. У вас обеих Луна в Скорпионе.'], e1: ['Добрый вечер! В эфире «Давай замуж!».', 'С вами я — Эльвира…'], e24: ['Это было «Давай замуж!».', 'А кого бы выбрали вы? Пишите в комментариях!'],
   s3: ['Бриттани, вы Лев.', 'Brittany, you are a Leo…', 'A Leo needs… a king.'], s8: ['Дева. Pure… and always hungry.', 'Чистый… и вечно голодный.'], s11: ['The stars say… compatibility zero.', 'Совместимость ноль.']};
-function chunks(l) { const end = l.id === 'r3' ? TL.BLEEP[0] + TL.BLEEP[1] : l.end;
+function chunks(l) { const end = l.id === 'r3' || l.id === 'B17' ? TL.BLEEP[0] + TL.BLEEP[1] : l.end;
   if (RUS[l.id]) { const Pp = RUS[l.id], n = Pp.reduce((a, c) => a + c.length, 0); let acc = 0; return Pp.map(sx => { const a = l.at + (end - l.at) * acc / n; acc += sx.length; return {s: sx, tr: '', a, b: l.at + (end - l.at) * acc / n, id: l.id}; }); }
   if (SPL[l.id]) { const Pp = SPL[l.id], n = Pp.reduce((a, c) => a + c[0].length, 0); let acc = 0; return Pp.map(([s, tr]) => { const a = l.at + (end - l.at) * acc / n; acc += s.length; return {s, tr, a, b: l.at + (end - l.at) * acc / n, id: l.id}; }); }
   const parts = [].concat(...l.text.match(/[^.!?…]+[.!?…]*/g).map(x => x.trim()).filter(Boolean).map(p => p.length > 36 && p.includes(',') ? p.split(/(?<=[,:])\s+/) : [p])); const out = []; let cur = '';
@@ -313,7 +317,7 @@ function curChunk(t) { let cur = null; for (const c of FLAT) if (t >= c.a - .02 
 function caption(t) { const cur = curChunk(t); if (!cur) return; const pop = 1 + .08 * clamp(1 - (t - cur.a) / .12); g.save(); g.translate(540, 1660); g.scale(pop, pop); g.translate(-540, -1660);
   recText('caption', 40, 1650 - 70, 1040, 1800); const en = SPL[cur.id] != null; const yb = outlinedWords(cur.s.split(' '), 1650, 68, w => en ? '#ffd23f' : isEn(w) ? '#ffd23f' : '#ffffff'); g.restore(); if (cur.tr) outlinedWords(cur.tr.split(' '), Math.max(1740, yb + 34), 44, () => '#ffffff', 34); }
 // chips tied to the spoken word
-const GLOSS = PART === 1 ? [['z5', 'Скэрд', 'scared', 'напуганный'], ['s3', 'Leo', 'Leo', 'Лев (знак зодиака)'], ['z8', 'Кинг', 'king', 'король'], ['z12', 'Фрилансер', 'freelancer', 'фрилансер'], ['z13', 'Депендс', 'it depends', 'смотря как, по-разному'], ['s5', 'sign', 'sign', 'знак зодиака']]
+const GLOSS = SER ? SER.gloss : PART === 1 ? [['z5', 'Скэрд', 'scared', 'напуганный'], ['s3', 'Leo', 'Leo', 'Лев (знак зодиака)'], ['z8', 'Кинг', 'king', 'король'], ['z12', 'Фрилансер', 'freelancer', 'фрилансер'], ['z13', 'Депендс', 'it depends', 'смотря как, по-разному'], ['s5', 'sign', 'sign', 'знак зодиака']]
   : [['j1', 'kale', 'kale', 'капуста кейл'], ['z17', 'плэнтс', 'plants', 'растения'], ['r2', 'paper', 'on paper', 'на бумаге'], ['BLEEP', '', 'Oh shoot!', 'Ой, блин! (приличный вариант)'], ['s9', 'Mercury', 'Mercury retrograde', 'ретроградный Меркурий'], ['s11', 'compatibility', 'compatibility', 'совместимость'], ['m6', 'split', 'split', 'разделить пополам'], ['z26', 'бьютифул', 'beautiful', 'красивый']];
 const CHIPS = []; { let prev = -1; for (const [id, key, en, ru] of GLOSS) { let a; if (id === 'BLEEP') a = TL.BLEEP[0] + TL.BLEEP[1] + .05; else { const l = BY[id], w = (l.words || []).find(x => x[2].toLowerCase().replace(/[^a-zа-яё-]/gi, '').startsWith(key.toLowerCase().replace(/[^a-zа-яё-]/gi, '').slice(0, 5))); a = w ? w[0] : l.at + .2; }
     a = Math.max(a - .08, prev + .05); const b = a + 1.7; CHIPS.push({a, b, en, ru}); prev = b; } }
@@ -323,7 +327,7 @@ function chip(t) { let c = null; for (const q of CHIPS) if (t >= q.a && t < q.b)
   g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillStyle = '#d63a8a'; g.fillText(w1, -tw / 2, -3); g.fillStyle = INK; g.fillText(w2, -tw / 2 + g.measureText(w1).width, -3); g.restore(); }
 function plate(t, a, b, l1, l2, y = 1560) { if (t < a || t >= b) return; const ui = P01(t, a, .4), uo = P01(t, b - .3, .3), sp = spr(ui, 6, 10), al = clamp(ui * 5) * (1 - ei(clamp((uo - .35) / .65)));
   recText('plate', 100, y - 130, 980, y + 130); g.save(); g.globalAlpha = al; g.translate(540, y); g.rotate(-.02 - .06 * (1 - sp)); const s = .62 + .38 * sp; g.scale(s, s); rr(-440, -130, 880, 260, 34, '#fffaf0', 9); fitLog(l1, 0, -50, 840, 100, 74, INK); fitLog(l2, 0, 52, 840, 100, 80, '#d63a8a'); g.restore(); }
-function censor(t) { if (PART !== 2 || t < TL.BLEEP[0] - .02 || t >= TL.BLEEP[0] + 1.4) return; const c = camAt(t), hs = (STAND[0] - c.x) * c.z + 540, half = 152 * 1.2 * STS * c.z, hx = hs - half - 190, hy = (STAND[1] - 1062 * STS - 60 - c.y) * c.z + 960, k = spr(P01(t, TL.BLEEP[0], .3));   // beside the head (left of it), never on the face
+function censor(t) { if ((PART !== 2 && EP !== 2) || !TL.BLEEP || t < TL.BLEEP[0] - .02 || t >= TL.BLEEP[0] + 1.4) return; const c = camAt(t), hs = (STAND[0] - c.x) * c.z + 540, half = 152 * 1.2 * STS * c.z, hx = hs - half - 190, hy = (STAND[1] - 1062 * STS - 60 - c.y) * c.z + 960, k = spr(P01(t, TL.BLEEP[0], .3));   // beside the head (left of it), never on the face
   recText('censor', hx + 60 - 95, hy - 50, hx + 60 + 95, hy + 50); g.save(); g.translate(hx + 60, hy); g.rotate(.12); g.scale(k, k); rr(-95, -48, 190, 96, 22, '#2a2230', 6, '#ffffff'); fitLog('#@$%!', 0, 0, 170, 80, 56, '#ffd23f', {pad: 4}); poly([[-60, 44], [-84, 80], [-30, 46]], '#2a2230', 0); g.restore(); }
 function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30,20,30,${.55 * k})`; g.fillRect(0, 0, W, H); g.save(); g.globalAlpha = k; g.translate(0, (1 - k) * 80);
   rr(60, 170, 960, 1540, 44, '#fffaf0', 8); fitLog('ПЕРЕВОДИМ ЖАННУ', 540, 270, 900, 90, 66, '#d63a8a');
@@ -333,16 +337,16 @@ function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30
 
 // ---------- frame ----------
 let COVER = 0;
-const layerFor = k => /^(CU|MCU|ECU|PUSH)$/.test(k) ? null : k === 'HOSTS' || k === 'END' || k === 'OTS_g' || k === 'EZ' || k === 'ZS' ? {fg: 0} : k === 'NEWS' ? {hosts: 0, fg: 1, aud: 0, seatedG: 0} : k === 'WALK' ? {hosts: 1, fg: 1, aud: 0, bride: 0, plant: 0, seatedG: 0} : k === 'GROOMS' || k === 'OTS_b' || k === 'STAGED_b' ? {hosts: 1, fg: 1, aud: 0} : {hosts: 1, fg: 1, aud: 1};
+const layerFor = k => /^(CU|MCU|ECU|PUSH)$/.test(k) ? null : k === 'HOSTS' || k === 'END' || k === 'OTS_g' || k === 'EZ' || k === 'ZS' ? {fg: 0} : k === 'NEWS' ? {hosts: 0, fg: 1, aud: 0, seatedG: 0} : k === 'WALK' ? {hosts: SER ? 0 : 1, fg: 1, aud: 0, bride: 0, plant: 0, seatedG: 0} : k === 'GROOMS' || k === 'OTS_b' || k === 'STAGED_b' ? {hosts: 1, fg: 1, aud: 0} : {hosts: 1, fg: 1, aud: 1};
 function worldPass(t, c, LY) { g.save(); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); studio(t, LY); g.restore(); }
-function frame(t) { const c = COVER && PART === 2 && !process.env.COVER_T ? {z: 2.1, x: 600, y: 1170, sh: shotAt(t)} : camAt(t), sh = c.sh, k = sh.k; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
+function frame(t) { if (SER) { SBF = null; const sh0 = shotAt(t); SBF = serFrame(t, sh0); } const c = COVER && PART === 2 && !process.env.COVER_T ? {z: 2.1, x: 600, y: 1170, sh: shotAt(t)} : camAt(t), sh = c.sh, k = sh.k; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
   if (COVER && PART === 2 && !process.env.COVER_T) worldPass(t, c, {hosts: 0, fg: 1, aud: 1});
   else if (k === 'PHONEVID') phoneVideo(t, sh);
   else if (k === 'SB_INS') sbIns(t, SBF.ins);
   else if (k.startsWith('INS_')) insert(k.slice(4), t, sh);
   else if (k === 'INTERRO') interrogation(t, sh);
   else if (k === 'ASTRO') astro(t, sh);
-  else { let LY = SBF && SBF.layer ? SBF.layer : layerFor(k); if (!LY) { const who = sh.who, host = 'ezs'.includes(who), standing = 'mjr'.includes(who) && grooms(t)[who].s !== 'seat'; LY = host ? {fg: 0} : {hosts: 1, fg: 1, aud: 0, seatedG: standing ? 0 : 1}; }
+  else { let LY = SBF && SBF.layer ? SBF.layer : layerFor(k); if (!LY) { const who = sh.who, host = 'ezs'.includes(who), standing = 'mjr'.includes(who) && grooms(t)[who].s !== 'seat'; LY = host ? {fg: 0} : {hosts: SER && standing ? 0 : 1, fg: 1, aud: 0, seatedG: standing ? 0 : 1}; }
     worldPass(t, c, LY); if (PART === 1 && TL.DIM != null && t >= TL.DIM && t < TL.DIMEND + .4) { const k2 = Math.min(ease(P01(t, TL.DIM, .6)), 1 - ease(P01(t, TL.DIMEND, .4))), vg = g.createRadialGradient(540, 760, 200, 540, 960, 1100); vg.addColorStop(0, `rgba(20,8,30,${.1 * k2})`); vg.addColorStop(1, `rgba(20,8,30,${.62 * k2})`); g.fillStyle = vg; g.fillRect(0, 0, W, H); }
     if (k === 'OTS_b') otsBride(t); if (k === 'OTS_g') otsGroom(t, sh.who); if (k === 'STAGED_b') stagedBride(t); if (k === 'NEWS') newsOverlay(t, sh); }
   const v = g.createRadialGradient(W / 2, H * .45, 650, W / 2, H * .45, 1250); v.addColorStop(0, 'rgba(30,15,30,0)'); v.addColorStop(1, 'rgba(30,15,30,0.14)'); g.fillStyle = v; g.fillRect(0, 0, W, H);
@@ -410,12 +414,18 @@ function phoneVideo(t, sh) { const zoom = sh.who ? 1.18 : 1; g.save(); g.transla
   recText('handle', 40, 1500, 520, 1560); rr(40, 1500, 480, 60, 30, 'rgba(0,0,0,.4)', 0); fitLog('@brittany.nails', 280, 1530, 440, 54, 40, '#ffffff'); }
 // ---------- modes ----------
 const [mode, arg, outName] = process.argv.slice(2);
+// ---------- series v5: per-frame spec from the episode plan ----------
+function serFrame(t, sh) { const o = sh.o || {}; const F = {live: true, _sh: {...sh, ins: o.ins}, ins: o.ins, rewind: o.rewind, layer: o.layer, kale: SER.kale ? SER.kale(t) : false,
+    world: SER.world.filter(w => t >= w[0] && t < w[1]).map(w => typeof w[2] === 'function' ? w[2](t) : w[2])};
+  if (sh.k === 'CUSTOM') F.cam = o.cam; if (COVER && process.env.COVER_CAM) { F.cam = JSON.parse(process.env.COVER_CAM); } return F; }
 // ---------- series storyboard helpers ----------
-function sbSt(who, st) { if (!SBF) return st; const o = {...st, blink: 0, talking: SBF.talk === who, mouth: SBF.talk === who ? .55 : 0, round: .4, nod: 0};
+function sbSt(who, st) { if (SER) { const o = {...st}, t = st.t, m = win(SER.mood, who, t), lk = win(SER.look, who, t), le = win(SER.lean, who, t); if (m) { o.mood = m; o.moodFrom = null; } if (lk != null) o.look = lk; if (le != null) o.lean = le; return o; }
+  if (!SBF) return st; const o = {...st, blink: 0, talking: SBF.talk === who, mouth: SBF.talk === who ? .55 : 0, round: .4, nod: 0};
   if (SBF.mood && SBF.mood[who]) { o.mood = SBF.mood[who]; o.moodFrom = null; } if (SBF.look && SBF.look[who] != null) o.look = SBF.look[who]; if (SBF.lean && SBF.lean[who] != null) o.lean = SBF.lean[who]; return o; }
-function defOf(w) { const d = DEF[w]; if (!SBF || !SBF.defx || !SBF.defx[w]) return d; const x = SBF.defx[w], o = {...d};
+function defOf(w) { const d = DEF[w]; const x = SER ? win(SER.defx, w, NOW) : SBF && SBF.defx ? SBF.defx[w] : null; if (!x) return d; const o = {...d};
   if (x.curlers) o.hairFx = SA.curlersFx; if (x.ears) o.earSides = x.ears; if (x.shades) o.faceFx = (gg, HY) => { gg.save(); gg.translate(0, 0); SA.sunglasses(0, HY - 10, 1.9); gg.restore(); }; return o; }
-function sbGrooms(o) { if (!SBF || !SBF.grooms) return o; for (const [w, q] of Object.entries(SBF.grooms)) { const n = {...o[w], ...q};
+function sbGrooms(o, t) { if (SER) { const G = SER.grooms(t); for (const w of 'mjr') o[w] = {...o[w], ...G[w]}; return o; }
+  if (!SBF || !SBF.grooms) return o; for (const [w, q] of Object.entries(SBF.grooms)) { const n = {...o[w], ...q};
     if (q.s === 'walk') n.wp = T.walkPose(q.ph || .45, 0, 1, [n.x - 260, n.y], [n.x + 260, n.y], n.sc, n.sc); o[w] = n; } return o; }
 function sbWorld(t, layer) { for (const e0 of (SBF && SBF.world) || []) { if ((e0.layer || 'front') !== layer) continue; const e = {...e0};
   if (e.hand) { const [w, sd] = e.hand; if (sd === 0) { const a = hpos(w, -1), b = hpos(w, 1); e.x = (a[0] + b[0]) / 2 + (e.dx || 0); e.y = (a[1] + b[1]) / 2 + (e.dy || 0); } else { const a = hpos(w, sd); e.x = a[0] + (e.dx || 0); e.y = a[1] + (e.dy || 0); } }
@@ -423,13 +433,14 @@ function sbWorld(t, layer) { for (const e0 of (SBF && SBF.world) || []) { if ((e
   if (e.a === 'catSit') SA.cat.sit(e.x, e.y, e.s, {money: e.money, meow: e.meow});
   if (e.a === 'detector') SA.detector(e.x, e.y, e.s, e.strip ?? 1);
   if (e.a === 'money') SA.money(e.x, e.y, e.s, e.n || 4, e.rot || 0);
-  if (e.a === 'turban') SA.turban(e.x, e.y, e.s, e.rot || 0);
-  if (e.a === 'earring') SA.earring(e.x, e.y, e.s);
-  if (e.a === 'lipstick') SA.lipstick(e.x, e.y, e.s, e.rot ?? -.6);
+  if (e.a === 'turban') { recProp('turban', e.x - 180 * e.s, e.y - 160 * e.s, e.x + 180 * e.s, e.y + 100 * e.s); SA.turban(e.x, e.y, e.s, e.rot || 0); }
+  if (e.a === 'earring') { recProp('earring', e.x - 14 * e.s, e.y, e.x + 14 * e.s, e.y + 34 * e.s); SA.earring(e.x, e.y, e.s); }
+  if (e.a === 'lipstick') { recProp('lipstick', e.x - 20 * e.s, e.y - 40 * e.s, e.x + 20 * e.s, e.y + 50 * e.s); SA.lipstick(e.x, e.y, e.s, e.rot ?? -.6); }
   if (e.a === 'form') { g.save(); g.translate(e.x, e.y); g.rotate(-.08); rr(-60, -40, 120, 80, 4, '#ffffff', 4); for (let k = 0; k < 3; k++) ln([[-44, -20 + k * 18], [40, -20 + k * 18]], 3, '#9a9488'); g.restore(); }
+  if (e.a === 'flower') { recProp('flower', e.x - 8, e.y - 70, e.x + 34, e.y + 10); }
   if (e.a === 'flower') { ln([[e.x, e.y + 10], [e.x + 12, e.y - 40]], 5, '#4f9e3f'); P(); g.arc(e.x + 14, e.y - 50, 17, -2.6, 1.9); fsx('#ff7aa8', 4); ell(e.x + 4, e.y - 10, 10, 6, '#6ab04c', 3, .5); }
   if (e.a === 'vase') { rr(e.x - 26, e.y - 70, 52, 70, 14, '#8ad0ff', 5); for (const [dx, h, c] of [[-14, 120, '#ff7aa8'], [12, 100, '#ffd25a']]) { ln([[e.x + dx * .4, e.y - 66], [e.x + dx, e.y - h]], 5, '#4f9e3f'); ell(e.x + dx, e.y - h - 10, 16, 16, c, 4); } ln([[e.x + 4, e.y - 66], [e.x + 34, e.y - 104]], 5, '#4f9e3f'); }
-  if (e.a === 'kale') kale(e.x, e.y, e.s);
+  if (e.a === 'kale') { recProp('kale', e.x - 80 * e.s, e.y - 120 * e.s, e.x + 80 * e.s, e.y); kale(e.x, e.y, e.s); }
   if (e.a === 'brideStand') { const st = {mood: e.mood || 'surprised', look: e.look || 0, blink: 0, mouth: e.talk ? .55 : 0, talking: !!e.talk}; T.draw(g, {...BR, x: e.x, y: e.y, s: e.s, ...st, arms: s2 => [[s2 * 86, -860], [s2 * 110, -720], [s2 * 118, -600]], ik: true, hands: {1: 'open', '-1': 'open'}}); }
   if (e.a === 'sniff') for (let k = 0; k < 3; k++) { P(); g.arc(e.x - k * 22, e.y, 10 + k * 7, 2.2, 4.1); g.strokeStyle = INK; g.lineWidth = 4; g.stroke(); } } }
 function exCat(t) { g.fillStyle = '#ffd6e4'; g.fillRect(0, 0, W, H); for (let k = 0; k < 8; k++) { g.fillStyle = k % 2 ? '#ffcadb' : '#ffd6e4'; g.fillRect(k * 135, 0, 135, H); }
@@ -446,8 +457,12 @@ function sbIns(t, ins) { if (ins === 'startup') SA.startupSlide(t); else if (ins
   else if (ins === 'petroRev' || ins === 'petroRev2') { g.fillStyle = '#2a1a3a'; g.fillRect(0, 0, W, H); for (let r = 0; r < 4; r++) for (let k = 0; k < 7; k++) { const x = 60 + k * 160 + (r % 2) * 80, y = 520 + r * 230; rr(x - 62, y - 120, 124, 150, 30, '#8a2a4a', 6); }
     g.save(); const sp = g.createRadialGradient(540, 1100, 80, 540, 1100, 700); sp.addColorStop(0, 'rgba(255,240,200,.35)'); sp.addColorStop(1, 'rgba(255,240,200,0)'); g.fillStyle = sp; g.fillRect(0, 0, W, H); g.restore();
     rr(330, 1060, 420, 520, 60, '#a8325a', 8); SA.petroFront(540, 1760, 1.0, {text: ins === 'petroRev2' ? 'ЖЕНАТ. СОВСЕМ.' : 'BRIGHTON POST', up: ins === 'petroRev2' ? 1 : 0}); }
+  else if (ins === 'ball100') { g.fillStyle = '#1a1438'; g.fillRect(0, 0, W, H); stars(t); g.save(); g.globalAlpha = .35 + .2 * Math.sin(t * 6); ell(540, 860, 420, 420, '#fff0a0', 0); g.restore(); ell(540, 1260, 240, 70, '#d4a82a', 8); ell(540, 860, 330, 330, '#b9e6ff', 10); fit('100', 540, 860, 380, 300, 260, '#d63a8a', {pad: 4}); for (let i = 0; i < 6; i++) heart(540 + Math.cos(t * 1.5 + i) * 400, 860 + Math.sin(t * 1.5 + i) * 400, 1.6, '#ff4f8f'); }
   else if (ins === 'astro100') { astro(t, {who: 'zero', a: t - 1, end: t + 1, k: 'ASTRO'}); } }
-function sbOver(t) { const F = SBF; if (F.rewind) SA.rewindPlate(t); if (F.plate) SA.namePlate(F.plate[0], F.plate[1], F.plateY || (F.chip ? 1370 : 1480)); if (F.chip) sbChip(F.chip[0], F.chip[1]); if (F.cap) sbCap(F.cap[0], F.cap[1] || ''); if (F.hook) SA.hookBar(F.hook); }
+function sbOver(t) { const F = SBF;
+  if (F.live && COVER) return;
+  if (F.live) { if (F.rewind && t >= F.rewind[0] && t < F.rewind[1]) SA.rewindPlate(t); const pl = SER.plates.find(p => t >= p[0] && t < p[1]); if (pl) { const bx = SA.namePlate(pl[2], pl[3], pl[4] || 1400); recText('plate', ...bx); }
+    if (F._sh.k !== 'ECU') { censor(t); chip(t); caption(t); } recText('hook', 40, 40, 1040, 190); SA.hookBar(SER.hook); return; } if (F.rewind) SA.rewindPlate(t); if (F.plate) SA.namePlate(F.plate[0], F.plate[1], F.plateY || (F.chip ? 1370 : 1480)); if (F.chip) sbChip(F.chip[0], F.chip[1]); if (F.cap) sbCap(F.cap[0], F.cap[1] || ''); if (F.hook) SA.hookBar(F.hook); }
 function sbChip(en, ru) { const y = F_CHIPY; g.font = `58px ${FONT}`; const w1 = g.measureText(en).width; g.font = `44px ${FONT}`; const w2 = ru ? g.measureText(' — ' + ru).width : 0; const w = w1 + w2 + 60, x = 540 - w / 2;
   rr(x, y - 50, w, 100, 30, '#fffaf0', 6); g.textAlign = 'left'; g.textBaseline = 'middle'; g.font = `58px ${FONT}`; g.fillStyle = '#d63a8a'; g.fillText(en, x + 30, y + 2); if (ru) { g.font = `44px ${FONT}`; g.fillStyle = INK; g.fillText(' — ' + ru, x + 30 + w1, y + 4); } }
 const F_CHIPY = 1500;
@@ -459,10 +474,10 @@ else if (mode === 'clip') { const [a, b] = arg.split(':').map(Number), F0 = Math
   const ff = spawn('ffmpeg', ['-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', `${W}x${H}`, '-r', '30', '-i', '-', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', outName]);
   (async () => { for (let i = F0; i < F1; i++) { frame(i / FPS); if (!ff.stdin.write(Buffer.from(cv.data()))) await new Promise(r => ff.stdin.once('drain', r)); } ff.stdin.end(); ff.on('close', c => console.log('done', c)); })(); }
 else if (mode === 'cover') { COVER = 1; const t = process.env.COVER_T ? +process.env.COVER_T : PART === 1 ? BY.z7.at + .8 : TL.CRASH + 1.2; frame(t); const src2 = createCanvas(W, H); src2.getContext('2d').drawImage(cv, 0, 0); g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(src2, 0, 0);
-  g.save(); g.translate(540, 300); g.rotate(-.02); rr(-460, -175, 920, 350, 34, '#fffaf0', 9); fitLog('ДАВАЙ ЗАМУЖ!', 0, -70, 860, 120, 110, '#d63a8a'); fitLog(process.env.COVER_SUB || (PART === 1 ? 'ЧАСТЬ 1: ЖЕНИХ-ФРИЛАНСЕР' : 'ЧАСТЬ 2: ВЕГАН И КРИПТО'), 0, 62, 860, 110, 70, INK); g.restore();
+  g.save(); g.translate(540, 300); g.rotate(-.02); rr(-460, -175, 920, 350, 34, '#fffaf0', 9); fitLog('ДАВАЙ ЗАМУЖ!', 0, -70, 860, 120, 110, '#d63a8a'); fitLog(process.env.COVER_SUB || SER && SER.hook || (PART === 1 ? 'ЧАСТЬ 1: ЖЕНИХ-ФРИЛАНСЕР' : 'ЧАСТЬ 2: ВЕГАН И КРИПТО'), 0, 62, 860, 120, 70, INK, {lines: SER ? 2 : 1}); g.restore();
   fs.mkdirSync('final', {recursive: true}); fs.writeFileSync(process.env.COVER_OUT || `final/cover${PART}.png`, cv.toBuffer('image/png')); }
 else if (mode === 'srt') { const ts = s => { const ms = Math.round(s * 1000), h = Math.floor(ms / 3600000), m = Math.floor(ms / 60000) % 60, sec = Math.floor(ms / 1000) % 60; return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')},${String(ms % 1000).padStart(3, '0')}`; };
-  let n = 0, out = ''; for (const c of FLAT) out += `${++n}\n${ts(c.a)} --> ${ts(c.hold)}\n${c.s}${c.tr ? '\n' + c.tr : ''}\n\n`; fs.mkdirSync('final', {recursive: true}); fs.writeFileSync(`final/part${PART}.srt`, out); }
+  let n = 0, out = ''; for (const c of FLAT) out += `${++n}\n${ts(c.a)} --> ${ts(c.hold)}\n${c.s}${c.tr ? '\n' + c.tr : ''}\n\n`; fs.mkdirSync('final', {recursive: true}); fs.mkdirSync('series/final', {recursive: true}); fs.writeFileSync(EP ? `series/final/ep${EP}.srt` : `final/part${PART}.srt`, out); }
 else if (mode === 'info') { let bad = 0; for (const c of FLAT) { const d = c.hold - c.a; if (d < 1.2) bad++; console.log('CAP', c.id, c.a.toFixed(2), d.toFixed(2), c.s, '|', c.tr || ''); }
   for (const q of CHIPS) { console.log('CHIP', q.a.toFixed(2), (q.b - q.a).toFixed(2), q.en); } for (const s of SHOTS) { const d = s.end - s.a; if (d < 1.2) bad++; console.log('SH', s.i, s.a.toFixed(2), d.toFixed(2), s.k, s.who || ''); } console.log('TOTAL', TL.TOTAL, 'items < 1.2 s:', bad); }
 else if (mode === 'smoothcheck') { let n = 0, big = 0, worst = 0, dips = 0, dur = 0;
@@ -496,4 +511,4 @@ else if (mode === 'walktest') { // 8 frames 0.08 s apart from the real entrance 
   og.font = '24px NBL, NBC'; og.fillStyle = INK; og.fillText('Кадр общего плана входа (фиксированное окно) и силуэт: ритм шагов. Опорная стопа стоит, колено поднимается на проходе.', 10, 40 + chh + 40);
   fs.writeFileSync('walk_test.png', out.toBuffer('image/png')); }
 else if (mode === 'sheet') { const N = 16, k = .25, cols = 4, sc2 = createCanvas(W * k * cols, H * k * N / cols), sg = sc2.getContext('2d'); for (let i = 0; i < N; i++) { const t = (i + .5) * TL.TOTAL / N; frame(t); sg.drawImage(cv, (i % cols) * W * k, Math.floor(i / cols) * H * k, W * k, H * k); sg.fillStyle = '#fff'; sg.font = '28px NBL'; sg.fillText(t.toFixed(1) + 's', (i % cols) * W * k + 10, Math.floor(i / cols) * H * k + 34); }
-  fs.mkdirSync('final', {recursive: true}); fs.writeFileSync(`final/contact_sheet${PART}.png`, sc2.toBuffer('image/png')); }
+  fs.mkdirSync('final', {recursive: true}); fs.mkdirSync('series/final', {recursive: true}); fs.writeFileSync(EP ? `series/final/contact_sheet_ep${EP}.png` : `final/contact_sheet${PART}.png`, sc2.toBuffer('image/png')); }
