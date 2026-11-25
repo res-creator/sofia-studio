@@ -140,5 +140,13 @@
   ],
   "cap": "Вазелин (иллюстрация)",
   "need": "баночка"
+ },
+ "titan": {
+  "q": [
+   "OceanGate Titan submersible",
+   "Titan submersible"
+  ],
+  "cap": "Аппарат «Титан» (OceanGate)",
+  "need": "аппарат до катастрофы"
  }
 }
