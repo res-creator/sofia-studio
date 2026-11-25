@@ -16,3 +16,4 @@ ru_geo/paperson/video/*.mp4 filter=lfs diff=lfs merge=lfs -text
 ru_geo/paperson/test/*.mp4 filter=lfs diff=lfs merge=lfs -text
 ru_geo/chernobyl/video/*.mp4 filter=lfs diff=lfs merge=lfs -text
 ru_geo/titanic/video/*.mp4 filter=lfs diff=lfs merge=lfs -text
+ru_geo/titanicp/video/*.mp4 filter=lfs diff=lfs merge=lfs -text
