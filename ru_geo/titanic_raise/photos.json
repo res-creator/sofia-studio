@@ -69,14 +69,6 @@
   "cap": "Французский аппарат «Нотиль»",
   "need": "глубоководный аппарат"
  },
- "vasa_1628": {
-  "q": [
-   "Vasa ship 1628 painting model",
-   "Vasa warship sinking illustration"
-  ],
-  "cap": "«Васа»: иллюстрация (позднее изображение)",
-  "need": "корабль в 1628 году"
- },
  "vasa_raise": {
   "q": [
    "Vasa raising 1961 pontoons",
@@ -148,13 +140,5 @@
   ],
   "cap": "Вазелин (иллюстрация)",
   "need": "баночка"
- },
- "titan": {
-  "q": [
-   "OceanGate Titan submersible",
-   "Titan submersible"
-  ],
-  "cap": "Аппарат «Титан» (OceanGate)",
-  "need": "аппарат до катастрофы"
  }
 }
