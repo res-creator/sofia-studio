@@ -127,3 +127,10 @@ Three primary PDFs were downloaded and text-read directly: the **National Archiv
 - Pek Hock Thiam's job title on the Changi project.
 - Precise Tekong population before resettlement (5,000 vs 8,000) and the last year residents left (1987?).
 - VERS: first precincts and compensation terms.
+
+## Added for the script (our checks / calculations)
+- Lee Kuan Yew born 16 September 1923 (NLB Infopedia https://www.nlb.gov.sg/main/article-detail?cmsuuid=2d7c4a7b-8f7d-4d38-9bb1-5c18bd4a1f8a ; widely documented), so 41 on 9 Aug 1965.
+- 41 million m³ / Empire State Building volume ~37 million cu ft (1.05 million m³) ≈ 39 → "almost forty times" (our calc).
+- 250 million imperial gallons/day = 300 million US gallons; 3 sen per 1,000 imp gal ≈ US$0.007 (our calc). Demand ~440 mgd (imperial) ≈ 530 million US gallons/day.
+- 1.47 million m³ = 9.25 million barrels; 60 ha = 148 acres; 130 m = 427 ft; 10 km = 6.2 mi; 1.2 m = 3.9 ft; 162.8 km² ≈ Washington, D.C. land area 158 km² (our calc).
+- Indonesia island loss: see Popular claims ("Sand mining sank Indonesian islands": partly true; SCMP 2023).

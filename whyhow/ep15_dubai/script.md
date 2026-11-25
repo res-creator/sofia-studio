@@ -127,7 +127,7 @@ Numbers in [brackets] point to SOURCES.md.
 
 **A050** In a city where it almost never rains, there was no network big enough to carry a storm away. So the water sat in the roads, the underpasses and the basements. [6]
 
-**A050B** Farheen fled her ground-floor flat with her one-year-old as the water came through the ceiling. All our apartments were ruined, she said. [46]
+**A050B** Farheen fled her ground-floor flat with her one-year-old as the water came through the ceiling. "All our apartments were ruined," she said. [46]
 
 **A051** Five people died in the Emirates. Insurers estimated the losses at around three billion dollars. [5]
 
@@ -143,8 +143,8 @@ Numbers in [brackets] point to SOURCES.md.
 
 **A057** So that's how Dubai stays alive. It makes its water from the sea, pipes cold under its streets, ships in its food and even its sand, and spends whatever it takes to keep the desert outside.
 
-**A058** And when Ann Celestial's taps ran dry in the middle of a flood, it showed how thin that line really is. Here, even a glass of water depends on pumps, pipes and power, every single day. [46]
-
 **A058B** Would you live in a city where every glass of water starts in the sea? Tell me in the comments.
+
+**A058** And when Ann Celestial's taps ran dry in the middle of a flood, it showed how thin that line really is. Here, even a glass of water depends on pumps, pipes and power, every single day. [46]
 
 **A059** If you want to see how another city survives where it shouldn't, watch our story on Hong Kong next. And subscribe, so you don't miss how the next place on Earth is run.
