@@ -135,30 +135,6 @@
   "cap": "Эндрю Карнеги, фото начала XX века",
   "need": "портрет"
  },
- "homestead_steel": {
-  "q": [
-   "Homestead Steel Works Pittsburgh",
-   "Carnegie Steel Homestead mill historic photo"
-  ],
-  "cap": "Сталелитейный завод Хоумстед, XIX век",
-  "need": "заводской двор и трубы"
- },
- "ford_portrait": {
-  "q": [
-   "Henry Ford portrait 1919",
-   "Henry Ford 1920s photograph"
-  ],
-  "cap": "Генри Форд, фото 1919 года",
-  "need": "портрет"
- },
- "ford_assembly": {
-  "q": [
-   "Ford assembly line 1913 Highland Park",
-   "Ford Model T assembly line"
-  ],
-  "cap": "Конвейер Форда, 1913",
-  "need": "сборка автомобилей"
- },
  "nicholas_ii": {
   "q": [
    "Nicholas II of Russia portrait",

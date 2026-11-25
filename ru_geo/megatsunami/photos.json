@@ -1,23 +1,171 @@
 {
-"lituya_trimline": {"q": ["Lituya Bay trimline", "Lituya Bay 1958 Miller aerial trimline"], "cap": "Граница срезанного леса, залив Литуйя (аэрофото USGS)", "need": "аэрофото склона с чёткой линией срезанного леса"},
-"lituya_overview": {"q": ["Lituya Bay overview with arrows", "Lituya Bay Alaska"], "cap": "Залив Литуйя, Аляска", "need": "общий вид залива и бухты Гилберт"},
-"lituya_forest": {"q": ["Lituya Bay 1958 destroyed forest", "Lituya Bay rockslide Gilbert Inlet"], "cap": "Поваленный лес после волны 1958 года", "need": "склон с поваленным лесом"},
-"fairweather_fault": {"q": ["Fairweather Fault Alaska", "Fairweather Range Alaska"], "cap": "Разлом Фэрвезер: здесь началось землетрясение", "need": "карта или вид хребта Фэрвезер"},
-"alaska_map": {"q": ["Lituya Bay map location Alaska panhandle", "Glacier Bay National Park map"], "cap": "Где находится залив Литуйя", "need": "карта юго-востока Аляски"},
-"lituya_model": {"q": ["Lituya Bay landslide impact experiment wave", "Fritz Hager Lituya Bay scale model"], "cap": "Лабораторная модель удара обвала", "need": "схема или кадр модели"},
-"vajont_dam": {"q": ["Diga del Vajont", "Vajont Dam"], "cap": "Плотина Вайонт сегодня (фото XXI века)", "need": "плотина в узком ущелье"},
-"vajont_longarone": {"q": ["Longarone 1963", "Longarone disastro Vajont"], "cap": "Лонгароне после 9 октября 1963 года", "need": "разрушенная долина после волны"},
-"vajont_before_after": {"q": ["Vajont Dam before after from Longarone", "Vajont valley before after 1963"], "cap": "Долина до и после волны", "need": "снимки до и после"},
-"vajont_slide": {"q": ["Monte Toc landslide scar Vajont", "Monte Toc frana Vajont"], "cap": "Шрам оползня на горе Токк", "need": "склон горы с оползнем над водохранилищем"},
-"storegga_map": {"q": ["Storegga Slide map", "Storegga Rutschung"], "cap": "Схема оползня Стурегга", "need": "карта дна у Норвегии"},
-"storegga_deposits": {"q": ["Storegga tsunami deposits Montrose basin", "Storegga tsunami sand layer peat Shetland"], "cap": "Песок древней волны в торфе (фото XXI века)", "need": "разрез с песчаным слоем"},
-"doggerland": {"q": ["Doggerland map", "Doggerland North Sea 8000 BC"], "cap": "Доггерленд: суша на месте Северного моря (реконструкция)", "need": "карта"},
-"aceh_2004": {"q": ["Street in downtown Banda Aceh after 2004 tsunami", "Banda Aceh tsunami aftermath"], "cap": "Банда-Ачех после цунами 2004 года", "need": "разрушенная улица"},
-"aceh_mosque": {"q": ["Aceh 2004 tsunami standing mosque USGS", "Banda Aceh mosque tsunami 2004"], "cap": "Мечеть, устоявшая в Ачехе, 2005", "need": "мечеть среди обломков"},
-"geiranger": {"q": ["Geirangerfjord", "Sunnylvsfjorden Storfjorden"], "cap": "Гейрангер-фьорд, Норвегия", "need": "узкий фьорд с крутыми склонами"},
-"akneset": {"q": ["Åkerneset", "Åknes rockslide Sunnylvsfjorden", "Åkerneset måling av remna"], "cap": "Склон Окнес над фьордом", "need": "склон с трещиной и измерениями"},
-"lovatnet": {"q": ["Lovatnet lake Loen", "Lodalen Lovatnet Ramnefjellet"], "cap": "Озеро Ловатнет, Норвегия (фото XXI века)", "need": "озеро под крутой горой"},
-"taan_fiord": {"q": ["The 2015 landslide and tsunami in Taan Fiord Fig 1", "Survey of megatsunami runup damage Taan Fiord"], "cap": "Таан-фьорд, Аляска: след волны 2015 года", "need": "снимок или схема заплеска"},
-"cumbre_vieja": {"q": ["Cumbre Vieja desde Tajuya", "Cumbre Vieja volcano La Palma ASTER"], "cap": "Вулкан Кумбре-Вьеха, Ла-Пальма", "need": "вид вулкана"},
-"cumbre_2021": {"q": ["Cumbre Vieja y colada de la erupción del 2021", "Map of 2021 Cumbre Vieja eruption"], "cap": "Извержение 2021 года на Ла-Пальме", "need": "лава или карта извержения"}
+ "lituya_trimline": {
+  "q": [
+   "Lituya Bay trimline",
+   "Lituya Bay 1958 Miller aerial trimline"
+  ],
+  "cap": "Линия среза леса, залив Литуйя (аэрофото)",
+  "need": "аэрофото склона с чёткой линией срезанного леса"
+ },
+ "lituya_overview": {
+  "q": [
+   "Lituya Bay overview with arrows",
+   "Lituya Bay Alaska"
+  ],
+  "cap": "Залив Литуйя, Аляска",
+  "need": "общий вид залива и бухты Гилберт"
+ },
+ "lituya_forest": {
+  "q": [
+   "Lituya Bay 1958 destroyed forest",
+   "Lituya Bay rockslide Gilbert Inlet"
+  ],
+  "cap": "Поваленный лес после волны 1958 года",
+  "need": "склон с поваленным лесом"
+ },
+ "fairweather_fault": {
+  "q": [
+   "Fairweather Fault Alaska",
+   "Fairweather Range Alaska"
+  ],
+  "cap": "Разлом Фэрвезер: здесь началось землетрясение",
+  "need": "карта или вид хребта Фэрвезер"
+ },
+ "alaska_map": {
+  "q": [
+   "Lituya Bay map location Alaska panhandle",
+   "Glacier Bay National Park map"
+  ],
+  "cap": "Где находится залив Литуйя",
+  "need": "карта юго-востока Аляски"
+ },
+ "lituya_model": {
+  "q": [
+   "Lituya Bay landslide impact experiment wave",
+   "Fritz Hager Lituya Bay scale model"
+  ],
+  "cap": "Лабораторная модель удара обвала",
+  "need": "схема или кадр модели"
+ },
+ "vajont_dam": {
+  "q": [
+   "Diga del Vajont",
+   "Vajont Dam"
+  ],
+  "cap": "Плотина Вайонт, 262 м (фото XXI века)",
+  "need": "плотина в узком ущелье"
+ },
+ "vajont_longarone": {
+  "q": [
+   "Longarone 1963",
+   "Longarone disastro Vajont"
+  ],
+  "cap": "Лонгароне после 9 октября 1963 года",
+  "need": "разрушенная долина после волны"
+ },
+ "vajont_before_after": {
+  "q": [
+   "Vajont Dam before after from Longarone",
+   "Vajont valley before after 1963"
+  ],
+  "cap": "Долина до и после волны",
+  "need": "снимки до и после"
+ },
+ "vajont_slide": {
+  "q": [
+   "Monte Toc landslide scar Vajont",
+   "Monte Toc frana Vajont"
+  ],
+  "cap": "Шрам оползня на горе Токк",
+  "need": "склон горы с оползнем над водохранилищем"
+ },
+ "storegga_map": {
+  "q": [
+   "Storegga Slide map",
+   "Storegga Rutschung"
+  ],
+  "cap": "Схема оползня Стурегга (около 3000 км³ по оценкам)",
+  "need": "карта дна у Норвегии"
+ },
+ "storegga_deposits": {
+  "q": [
+   "Storegga tsunami deposits Montrose basin",
+   "Storegga tsunami sand layer peat Shetland"
+  ],
+  "cap": "Песок древней волны в торфе (фото XXI века)",
+  "need": "разрез с песчаным слоем"
+ },
+ "doggerland": {
+  "q": [
+   "Doggerland map",
+   "Doggerland North Sea 8000 BC"
+  ],
+  "cap": "Доггерленд: суша на месте Северного моря (реконструкция)",
+  "need": "карта"
+ },
+ "aceh_2004": {
+  "q": [
+   "Street in downtown Banda Aceh after 2004 tsunami",
+   "Banda Aceh tsunami aftermath"
+  ],
+  "cap": "Банда-Ачех после цунами 2004 года",
+  "need": "разрушенная улица"
+ },
+ "aceh_mosque": {
+  "q": [
+   "Aceh 2004 tsunami standing mosque USGS",
+   "Banda Aceh mosque tsunami 2004"
+  ],
+  "cap": "Мечеть, устоявшая в Ачехе, 2005",
+  "need": "мечеть среди обломков"
+ },
+ "geiranger": {
+  "q": [
+   "Geirangerfjord",
+   "Sunnylvsfjorden Storfjorden"
+  ],
+  "cap": "Гейрангер-фьорд, Норвегия",
+  "need": "узкий фьорд с крутыми склонами"
+ },
+ "akneset": {
+  "q": [
+   "Åkerneset",
+   "Åknes rockslide Sunnylvsfjorden",
+   "Åkerneset måling av remna"
+  ],
+  "cap": "Склон Окнес над фьордом",
+  "need": "склон с трещиной и измерениями"
+ },
+ "lovatnet": {
+  "q": [
+   "Lovatnet lake Loen",
+   "Lodalen Lovatnet Ramnefjellet"
+  ],
+  "cap": "Озеро Ловатнет, Норвегия (фото XXI века)",
+  "need": "озеро под крутой горой"
+ },
+ "taan_fiord": {
+  "q": [
+   "The 2015 landslide and tsunami in Taan Fiord Fig 1",
+   "Survey of megatsunami runup damage Taan Fiord"
+  ],
+  "cap": "Таан-фьорд, Аляска: след волны 2015 года",
+  "need": "снимок или схема заплеска"
+ },
+ "cumbre_vieja": {
+  "q": [
+   "Cumbre Vieja desde Tajuya",
+   "Cumbre Vieja volcano La Palma ASTER"
+  ],
+  "cap": "Вулкан Кумбре-Вьеха, Ла-Пальма",
+  "need": "вид вулкана"
+ },
+ "cumbre_2021": {
+  "q": [
+   "Cumbre Vieja y colada de la erupción del 2021",
+   "Map of 2021 Cumbre Vieja eruption"
+  ],
+  "cap": "Извержение 2021 года на Ла-Пальме",
+  "need": "лава или карта извержения"
+ }
 }
