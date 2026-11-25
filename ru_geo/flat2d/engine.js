@@ -8,7 +8,7 @@ export let g = null; export let LW = 7; let ENV = [];
 export const SCENES = {};            // имя -> { bg(st), fg(st) }
 export const EMBLEMS = {}; export const CARD_BG = {};           // эмблемы для титров глав
 let GRADE = null, GC = null;
-export function setGrade(name) { GRADE = name === 'dark' ? { sat: 0.5, bri: 0.7, con: 1.08, tint: 'rgba(22,28,44,.34)' } : name === 'dark2' ? { sat: 0.38, bri: 0.62, con: 1.12, tint: 'rgba(24,30,40,.42)' } : null; }
+export function setGrade(name) { GRADE = name === 'dark' ? { sat: 0.5, bri: 0.7, con: 1.08, tint: 'rgba(22,28,44,.34)' } : name === 'mid' ? { sat: 0.62, bri: 0.84, con: 1.06, tint: 'rgba(22,28,44,.22)' } : name === 'dark2' ? { sat: 0.38, bri: 0.62, con: 1.12, tint: 'rgba(24,30,40,.42)' } : null; }
 function applyGrade() { if (!GRADE) return; const cv = g.canvas; if (!GC) { GC = document.createElement('canvas'); GC.width = cv.width; GC.height = cv.height; } const x = GC.getContext('2d'); x.setTransform(1, 0, 0, 1, 0, 0); x.drawImage(cv, 0, 0); g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.filter = `saturate(${GRADE.sat}) brightness(${GRADE.bri}) contrast(${GRADE.con})`; g.drawImage(GC, 0, 0); g.filter = 'none'; g.fillStyle = GRADE.tint; g.fillRect(0, 0, W, H); const vg = g.createRadialGradient(W / 2, H / 2, 380, W / 2, H / 2, 1180); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,.5)'); g.fillStyle = vg; g.fillRect(0, 0, W, H); g.restore(); }
 export function init(canvas, env) { g = canvas.getContext('2d'); ENV = env || []; }
 // ---------- архивные фото ----------
