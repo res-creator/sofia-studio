@@ -1,257 +1,258 @@
 {
  "e16": {
-  "lufs": -16.0,
-  "full_mix": -15.81,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "e"
  },
  "j1": {
-  "lufs": -16.0,
-  "full_mix": -16.02,
+  "lufs": -13.04,
+  "full_mix": -12.95,
   "soft": false,
   "who": "j"
  },
  "b6": {
-  "lufs": -16.01,
-  "full_mix": -16.39,
+  "lufs": -13.04,
+  "full_mix": -13.05,
   "soft": false,
   "who": "b"
  },
  "z16": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "z"
  },
  "e17": {
-  "lufs": -16.01,
-  "full_mix": -16.01,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "e"
  },
  "j2": {
-  "lufs": -15.98,
-  "full_mix": -16.11,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "j"
  },
  "e18": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "e"
  },
  "z17": {
-  "lufs": -16.0,
-  "full_mix": -16.08,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "z"
  },
  "s8": {
-  "lufs": -16.05,
-  "full_mix": -16.16,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "s"
  },
  "r1": {
-  "lufs": -16.0,
-  "full_mix": -16.01,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "r"
  },
  "z18": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -13.04,
+  "full_mix": -13.09,
   "soft": false,
   "who": "z"
  },
  "e19": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "e"
  },
  "z19": {
-  "lufs": -16.01,
-  "full_mix": -16.01,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "z"
  },
  "e20": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "e"
  },
  "r2": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "r"
  },
  "r3": {
-  "lufs": -15.99,
-  "full_mix": -14.82,
+  "lufs": -13.04,
+  "full_mix": -11.95,
   "soft": false,
   "who": "r"
  },
  "r4": {
-  "lufs": -16.0,
-  "full_mix": -16.26,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "r"
  },
  "z20": {
-  "lufs": -16.0,
-  "full_mix": -15.93,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "z"
  },
  "s9": {
-  "lufs": -16.0,
-  "full_mix": -15.86,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "s"
  },
  "e21": {
-  "lufs": -16.0,
-  "full_mix": -15.89,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "e"
  },
  "s10": {
-  "lufs": -20.99,
-  "full_mix": -21.0,
+  "lufs": -18.04,
+  "full_mix": -17.86,
   "soft": true,
   "who": "s"
  },
  "e22": {
-  "lufs": -16.01,
-  "full_mix": -15.9,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "e"
  },
  "z21": {
-  "lufs": -16.0,
-  "full_mix": -15.93,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "z"
  },
  "z22": {
-  "lufs": -16.09,
-  "full_mix": -16.18,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "z"
  },
  "hey_m+hey_j+hey_r": {
-  "lufs": -16.41,
-  "full_mix": -16.4,
+  "lufs": -13.08,
+  "full_mix": -13.08,
   "soft": false,
   "who": "m"
  },
  "s11": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "s"
  },
  "e23": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "e"
  },
  "b7": {
-  "lufs": -15.93,
-  "full_mix": -16.01,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "b"
  },
  "m6": {
-  "lufs": -16.0,
-  "full_mix": -16.01,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "m"
  },
  "j3": {
-  "lufs": -16.0,
-  "full_mix": -16.2,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "j"
  },
  "r5": {
-  "lufs": -16.0,
-  "full_mix": -15.75,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "r"
  },
  "z23": {
-  "lufs": -16.0,
-  "full_mix": -16.21,
+  "lufs": -13.04,
+  "full_mix": -13.03,
   "soft": false,
   "who": "z"
  },
  "z24": {
-  "lufs": -16.0,
-  "full_mix": -16.01,
+  "lufs": -13.04,
+  "full_mix": -12.8,
   "soft": false,
   "who": "z"
  },
  "p1": {
-  "lufs": -16.0,
-  "full_mix": -15.27,
+  "lufs": -13.04,
+  "full_mix": -12.48,
   "soft": false,
   "who": "p"
  },
  "b8": {
-  "lufs": -16.0,
-  "full_mix": -15.99,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "b"
  },
  "s12": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "s"
  },
  "z25": {
-  "lufs": -15.96,
-  "full_mix": -16.09,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "z"
  },
  "e24": {
-  "lufs": -16.0,
-  "full_mix": -16.16,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "e"
  },
  "z26": {
-  "lufs": -16.0,
-  "full_mix": -16.09,
+  "lufs": -13.04,
+  "full_mix": -13.09,
   "soft": false,
   "who": "z"
  },
  "e25": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "e"
  },
  "z27": {
-  "lufs": -15.99,
-  "full_mix": -16.04,
+  "lufs": -13.04,
+  "full_mix": -13.1,
   "soft": false,
   "who": "z"
  },
  "z28": {
-  "lufs": -16.0,
-  "full_mix": -16.26,
+  "lufs": -13.04,
+  "full_mix": -13.04,
   "soft": false,
   "who": "z"
  },
- "_music_under_dialogue_lufs": -26.74,
- "_music_alone_lufs": -23.0,
- "_mix_integrated_lufs": -17.87
+ "_music_under_dialogue_lufs": -32.99,
+ "_music_in_pauses_lufs": -29.24,
+ "_master_gain_db": 2.96,
+ "_mix_integrated_lufs": -15.08
 }

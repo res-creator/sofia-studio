@@ -23,3 +23,10 @@ def integrated_lufs(x, sr):   # gated integrated loudness (400 ms blocks, 75 % o
     ms = np.array([(y[i:i + n] ** 2).mean() for i in range(0, max(1, len(y) - n), h)]); l = -.691 + 10 * np.log10(ms + 1e-12)
     ms = ms[l > -70]; rel = -.691 + 10 * np.log10(ms.mean()) - 10; l = -.691 + 10 * np.log10(ms + 1e-12); return float(-.691 + 10 * np.log10(ms[l > rel].mean()))
 def to_lufs(x, sr, target): return x * 10 ** ((target - voiced_lufs(x, sr)) / 20)
+from scipy.ndimage import minimum_filter1d, uniform_filter1d
+def limit(x, sr, ceil_db=-2.2, w=.006, release=.04, gain_only=False):
+    """Look-ahead peak limiter (numpy): gain never lets |x| exceed the ceiling; smooth attack (w) and release."""
+    thr = 10 ** (ceil_db / 20); g = np.minimum(1., thr / (np.abs(x) + 1e-12))
+    n = max(3, int(w * sr)); g = minimum_filter1d(g, 2 * n + 1); g = uniform_filter1d(g, n)
+    r = max(3, int(release * sr)); g2 = uniform_filter1d(minimum_filter1d(g, r), r // 2); g = np.minimum(g, np.maximum(g2, g * .97))
+    return g if gain_only else x * g

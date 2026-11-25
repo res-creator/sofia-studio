@@ -8,7 +8,8 @@ from scipy.signal import butter, sosfilt, lfilter
 from scipy.linalg import solve_toeplitz
 S = json.load(open('voice/script.json')); SR = 44100; os.makedirs('out', exist_ok=True)
 LN = {l[0]: (l[1], l[2], l[3] if len(l) > 3 else '') for l in S['lines']}
-LINE_LUFS, SOFT_DB, MUSIC_LUFS, MUSIC_DUCK = -16., -5., -23., 4.   # every dialogue line is normalised to the same voiced loudness; soft lines sit 5 dB lower
+MASTER_LUFS = -15.
+LINE_LUFS, SOFT_DB, MUSIC_LUFS, MUSIC_DUCK = -16., -5., -32.2, 4.   # music: owner approved the bed, asked for it quieter: about -29 LUFS in pauses / -33 under speech in the FINAL file (after the ~+4 dB master gain)   # every dialogue line is normalised to the same voiced loudness; soft lines sit 5 dB lower
 TEMPO = {'z': 1.2, 'e': 1.1, 's': 1.12, 'b': 1.08, 'm': 1.05, 'j': 1.05, 'r': 1.05, 'p': 1.0}
 rng = np.random.default_rng(11)
 def bp(x, lo, hi, o=2): return sosfilt(butter(o, [lo, hi], 'band', fs=SR, output='sos'), x)
@@ -149,7 +150,9 @@ def build(part):
         a = load(k); W = words(k); t0 = t if at is None else at
         if k == 'r3': cut = min(W[1][0], W[0][1] + .12) if len(W) > 1 else .35; a = a[:int(cut * SR)]; n = int(.02 * SR); a[-n:] *= np.linspace(1, 0, n)
         L.append({'id': k, 'who': LN[k][0], 'text': LN[k][1], 'st': LN[k][2], 'at': round(t0, 3), 'end': round(t0 + len(a) / SR, 3), 'env': mouthEnv(a), 'words': [[round(t0 + w[0], 3), round(t0 + w[1], 3), w[2]] for w in W]})
-        a = loud.to_lufs(a, SR, LINE_LUFS + (SOFT_DB if LN[k][2] == 'w' else 0.) + gdb)   # shouts: same loudness, brightness comes from shout()
+        tg = LINE_LUFS + (SOFT_DB if LN[k][2] == 'w' else 0.) + gdb   # shouts: same loudness, brightness comes from shout()
+        for _ in range(3): a = loud.limit(loud.to_lufs(a, SR, tg), SR, ceil_db=-7.0, w=.004, release=.03)   # tame peaky voices (Майк) so the master limiter leaves dialogue alone
+        a = loud.to_lufs(a, SR, tg)
         VO.append((t0, a, k))
         if k in ('s3', 's5', 's6', 's9', 's11'): put(t0 - .35, clip('chime', 2.0, .3), 'crowd')
         if at is None:
@@ -206,7 +209,7 @@ def build(part):
     for at, a in FXL: i = int(at * SR); fx[i:i + len(a)] += a[:len(fx) - i]
     # duck the audience bed under the dialogue (never covers words)
     e = np.abs(voice); k = int(.12 * SR); e = np.convolve(e, np.ones(k) / k, 'same'); talk = e > .01; duck = np.where(talk, .28, 1.0); k2 = int(.18 * SR); duck = np.convolve(duck, np.ones(k2) / k2, 'same')
-    # background music: original bed (music.py), -23 LUFS alone, smooth sidechain duck of 4 dB under voices -> about -27 LUFS under dialogue
+    # background music: original bed (music.py), -33 LUFS alone before the master gain; 4 dB smooth sidechain duck under voices
     m = music.bed(TOTAL + 1)[:len(voice)]; m = np.pad(m, (0, len(voice) - len(m))); m = m * 10 ** ((MUSIC_LUFS - loud.integrated_lufs(m, SR)) / 20)
     md = np.where(talk, 10 ** (-MUSIC_DUCK / 20), 1.0); att, rel = np.exp(-1 / (.08 * SR)), np.exp(-1 / (.35 * SR)); mdd = md.copy(); g0 = 1.
     for i0 in range(0, len(md), 256):   # attack/release smoothing on 256-sample steps
@@ -229,24 +232,32 @@ def build(part):
         if GROUPS and l['at'] < max(x['end'] for x in GROUPS[-1]) - .05: GROUPS[-1].append(l)
         else: GROUPS.append([l])
     GAIN = {l['id']: 1.0 for l in L}; under = bed * duck * .85 + mus
-    for it in range(3):
+    for it in range(5):
         voice = np.zeros_like(bed)
         for at, a, k in VO: i = int(at * SR); voice[i:i + len(a)] += a[:len(voice) - i] * GAIN[k]
-        nofx = (voice + under)[:N]
+        pre = voice + under + fx; gm = MASTER_LUFS - loud.integrated_lufs(pre[:N], SR)   # measure every line in the MASTERED mix (gain + limiter)
+        lg = loud.limit(pre[:N] * 10 ** (gm / 20), SR, gain_only=True); nofx = (voice + under)[:N] * lg   # the limiter reacts to the full mix (incl. foley)
         for ls in GROUPS:
             a0, a1 = min(l['at'] for l in ls), max(l['end'] for l in ls); tgt = LINE_LUFS + (SOFT_DB if any(l['st'] == 'w' for l in ls) else 0.)
             d = np.clip(tgt - loud.voiced_lufs(nofx[int(a0 * SR):int(a1 * SR)], SR), -3, 3)
             for l in ls: GAIN[l['id']] *= 10 ** (d / 20)
     mix = voice + bed * duck * .85 + fx + mus; mix = mix[:N]
     sf.write(f'out/audio{part}_raw.wav', mix, SR)
-    # no loudness re-normalisation of the whole mix (it would undo the equal line levels): only a true-peak safety limiter
-    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', f'out/audio{part}_raw.wav', '-af', 'alimiter=limit=0.84:attack=3:release=60:level=disabled', '-ar', '44100', f'out/audio{part}.wav'], check=True)
+    # master: ONE linear gain to -15 LUFS integrated (keeps the equal line balance), then a 4x-oversampled limiter for true peak <= -1.5 dBTP
+    gain_db = MASTER_LUFS - loud.integrated_lufs(mix, SR)
+    for it in range(4):
+        sf.write(f'out/audio{part}_raw.wav', loud.limit(mix * 10 ** (gain_db / 20), SR), SR, subtype='FLOAT')
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', f'out/audio{part}_raw.wav', '-af', 'aresample=176400,alimiter=limit=0.813:attack=1:release=50:level=disabled,aresample=44100', '-ar', '44100', f'out/audio{part}.wav'], check=True)
+        got = loud.integrated_lufs(sf.read(f'out/audio{part}.wav')[0], SR)
+        if abs(got - MASTER_LUFS) < .1: break
+        gain_db += MASTER_LUFS - got   # the limiter shaves a little: nudge the linear gain and redo
+    print('part', part, 'master gain', round(gain_db, 2), 'dB ->', round(got, 2), 'LUFS')
     fin = sf.read(f'out/audio{part}.wav')[0]; R = {}
     for ls in GROUPS:
         a0, a1 = min(l['at'] for l in ls), max(l['end'] for l in ls); nm = '+'.join(l['id'] for l in ls)
-        R[nm] = {'lufs': round(loud.voiced_lufs(nofx[int(a0 * SR):int(a1 * SR)], SR), 2), 'full_mix': round(loud.voiced_lufs(fin[int(a0 * SR):int(a1 * SR)], SR), 2), 'soft': any(l['st'] == 'w' for l in ls), 'who': ls[0]['who']}
+        R[nm] = {'lufs': round(loud.voiced_lufs(nofx[int(a0 * SR):int(a1 * SR)], SR) + gain_db, 2), 'full_mix': round(loud.voiced_lufs(fin[int(a0 * SR):int(a1 * SR)], SR), 2), 'soft': any(l['st'] == 'w' for l in ls), 'who': ls[0]['who']}
     sp = tt[:N][talk[:N]]; ml = loud.voiced_lufs(mus[:N][talk[:N]], SR, gate=40) if len(sp) else None
-    R['_music_under_dialogue_lufs'] = round(ml, 2); R['_music_alone_lufs'] = MUSIC_LUFS; R['_mix_integrated_lufs'] = round(loud.integrated_lufs(fin, SR), 2)
+    R['_music_under_dialogue_lufs'] = round(ml + gain_db, 2); R['_music_in_pauses_lufs'] = round(MUSIC_LUFS + gain_db, 2); R['_master_gain_db'] = round(gain_db, 2); R['_mix_integrated_lufs'] = round(loud.integrated_lufs(fin, SR), 2)
     json.dump(R, open(f'out/loudness{part}.json', 'w'), ensure_ascii=False, indent=1)
     sf.write(f'out/music{part}.wav', mus[:N], SR)
     json.dump({'L': L, **EV}, open(f'timeline{part}.json', 'w'), ensure_ascii=False)

@@ -1,293 +1,294 @@
 {
  "e1": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -12.86,
+  "full_mix": -12.79,
   "soft": false,
   "who": "e"
  },
  "z1": {
-  "lufs": -15.98,
-  "full_mix": -15.98,
+  "lufs": -12.86,
+  "full_mix": -12.96,
   "soft": false,
   "who": "z"
  },
  "e2": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "e"
  },
  "z2": {
-  "lufs": -16.06,
-  "full_mix": -16.0,
+  "lufs": -12.86,
+  "full_mix": -12.79,
   "soft": false,
   "who": "z"
  },
  "s1": {
-  "lufs": -16.07,
-  "full_mix": -16.08,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "s"
  },
  "oy_e+oy_z": {
-  "lufs": -16.0,
-  "full_mix": -16.01,
+  "lufs": -12.86,
+  "full_mix": -12.9,
   "soft": false,
   "who": "e"
  },
  "e3": {
-  "lufs": -16.0,
-  "full_mix": -15.97,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "e"
  },
  "e4": {
-  "lufs": -16.0,
-  "full_mix": -15.75,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "e"
  },
  "e5": {
-  "lufs": -16.0,
-  "full_mix": -15.95,
+  "lufs": -12.86,
+  "full_mix": -12.81,
   "soft": false,
   "who": "e"
  },
  "z3": {
-  "lufs": -21.0,
-  "full_mix": -20.91,
+  "lufs": -17.86,
+  "full_mix": -18.13,
   "soft": true,
   "who": "z"
  },
  "s2": {
-  "lufs": -21.0,
-  "full_mix": -20.89,
+  "lufs": -17.86,
+  "full_mix": -17.86,
   "soft": true,
   "who": "s"
  },
  "b1": {
-  "lufs": -16.0,
-  "full_mix": -16.09,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "b"
  },
  "b2": {
-  "lufs": -16.0,
-  "full_mix": -16.32,
+  "lufs": -12.86,
+  "full_mix": -12.87,
   "soft": false,
   "who": "b"
  },
  "b3": {
-  "lufs": -15.98,
-  "full_mix": -16.04,
+  "lufs": -12.85,
+  "full_mix": -12.88,
   "soft": false,
   "who": "b"
  },
  "z4": {
-  "lufs": -16.0,
-  "full_mix": -15.99,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "z"
  },
  "e6": {
-  "lufs": -16.0,
-  "full_mix": -16.15,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "e"
  },
  "e7": {
-  "lufs": -15.94,
-  "full_mix": -16.12,
+  "lufs": -12.86,
+  "full_mix": -12.85,
   "soft": false,
   "who": "e"
  },
  "b4": {
-  "lufs": -16.0,
-  "full_mix": -16.01,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "b"
  },
  "z5": {
-  "lufs": -16.0,
-  "full_mix": -15.84,
+  "lufs": -12.86,
+  "full_mix": -12.93,
   "soft": false,
   "who": "z"
  },
  "e8": {
-  "lufs": -16.0,
-  "full_mix": -13.35,
+  "lufs": -12.85,
+  "full_mix": -10.94,
   "soft": false,
   "who": "e"
  },
  "z6": {
-  "lufs": -16.0,
-  "full_mix": -16.15,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "z"
  },
  "e9": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "e"
  },
  "b5": {
-  "lufs": -16.0,
-  "full_mix": -16.01,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "b"
  },
  "z7": {
-  "lufs": -16.07,
-  "full_mix": -16.14,
+  "lufs": -12.86,
+  "full_mix": -12.93,
   "soft": false,
   "who": "z"
  },
  "e10": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "e"
  },
  "s3": {
-  "lufs": -16.0,
-  "full_mix": -15.95,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "s"
  },
  "z8": {
-  "lufs": -15.94,
-  "full_mix": -15.94,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "z"
  },
  "s4": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -12.86,
+  "full_mix": -12.85,
   "soft": false,
   "who": "s"
  },
  "z9": {
-  "lufs": -16.07,
-  "full_mix": -16.16,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "z"
  },
  "e11": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "e"
  },
  "z10": {
-  "lufs": -20.98,
-  "full_mix": -20.97,
+  "lufs": -17.86,
+  "full_mix": -17.86,
   "soft": true,
   "who": "z"
  },
  "e12": {
-  "lufs": -21.16,
-  "full_mix": -21.16,
+  "lufs": -17.86,
+  "full_mix": -17.86,
   "soft": true,
   "who": "e"
  },
  "z11": {
-  "lufs": -21.01,
-  "full_mix": -21.0,
+  "lufs": -17.86,
+  "full_mix": -17.86,
   "soft": true,
   "who": "z"
  },
  "m1": {
-  "lufs": -16.0,
-  "full_mix": -16.36,
+  "lufs": -12.89,
+  "full_mix": -12.92,
   "soft": false,
   "who": "m"
  },
  "z12": {
-  "lufs": -16.0,
-  "full_mix": -16.07,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "z"
  },
  "m2": {
-  "lufs": -16.0,
-  "full_mix": -16.03,
+  "lufs": -12.87,
+  "full_mix": -12.96,
   "soft": false,
   "who": "m"
  },
  "e13": {
-  "lufs": -16.0,
-  "full_mix": -15.91,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "e"
  },
  "m3": {
-  "lufs": -16.0,
-  "full_mix": -16.37,
+  "lufs": -13.61,
+  "full_mix": -13.72,
   "soft": false,
   "who": "m"
  },
  "e14": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "e"
  },
  "m4": {
-  "lufs": -16.0,
-  "full_mix": -16.08,
+  "lufs": -12.94,
+  "full_mix": -13.04,
   "soft": false,
   "who": "m"
  },
  "z13": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "z"
  },
  "s5": {
-  "lufs": -16.0,
-  "full_mix": -16.0,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "s"
  },
  "m5": {
-  "lufs": -16.0,
-  "full_mix": -16.49,
+  "lufs": -12.86,
+  "full_mix": -12.98,
   "soft": false,
   "who": "m"
  },
  "s6": {
-  "lufs": -15.99,
-  "full_mix": -15.99,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "s"
  },
  "z14": {
-  "lufs": -16.0,
-  "full_mix": -16.09,
+  "lufs": -12.86,
+  "full_mix": -12.95,
   "soft": false,
   "who": "z"
  },
  "s7": {
-  "lufs": -16.01,
-  "full_mix": -16.01,
+  "lufs": -12.86,
+  "full_mix": -12.86,
   "soft": false,
   "who": "s"
  },
  "z15": {
-  "lufs": -16.0,
-  "full_mix": -16.22,
+  "lufs": -12.85,
+  "full_mix": -12.87,
   "soft": false,
   "who": "z"
  },
  "e15": {
-  "lufs": -15.92,
-  "full_mix": -16.19,
+  "lufs": -12.86,
+  "full_mix": -12.85,
   "soft": false,
   "who": "e"
  },
- "_music_under_dialogue_lufs": -26.96,
- "_music_alone_lufs": -23.0,
- "_mix_integrated_lufs": -18.14
+ "_music_under_dialogue_lufs": -33.03,
+ "_music_in_pauses_lufs": -29.06,
+ "_master_gain_db": 3.14,
+ "_mix_integrated_lufs": -15.01
 }
