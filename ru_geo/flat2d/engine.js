@@ -206,9 +206,11 @@ const drawCardTitle = (title, t0, t) => { // плашка-заставка гл�
   const words = title.split(' '); const lines = []; let cur = ''; for (const w of words) { if ((cur + ' ' + w).trim().length > 20 && cur) { lines.push(cur); cur = w; } else cur = (cur + ' ' + w).trim(); } lines.push(cur);
   const lh = 112, y0 = -(lines.length - 1) * lh / 2; lines.forEach((ln, i) => { g.lineWidth = 22; g.strokeStyle = INK; g.strokeText(ln, 0, y0 + i * lh); g.fillStyle = '#fff'; g.fillText(ln, 0, y0 + i * lh); }); g.restore();
 };
+let CAPSTYLE = null; export function setCaptionStyle(n) { CAPSTYLE = n; }
 function drawCaption(film, t) {
   let c = null; for (const s of film.segs) if (s.kind === 'voice' && t >= s.t - 0.05 && t < s.t + s.dur + 0.1) { c = s.captions.find(([a, b]) => t >= a - 0.02 && t < b + 0.02); if (c) break; } if (!c) return;
-  const k = ease((t - c[0]) / 0.1), sc = 0.9 + 0.1 * k; g.save(); g.translate(W / 2, 1008); g.scale(sc, sc); let fs = 76; g.font = `900 ${fs}px Nunito`; const mw = g.measureText(c[2]).width; if (mw > 1780) fs = Math.floor(fs * 1780 / mw); g.font = `900 ${fs}px Nunito`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round'; g.lineWidth = fs * 0.21; g.strokeStyle = '#000'; g.strokeText(c[2], 0, 0); g.fillStyle = '#fff'; g.fillText(c[2], 0, 0); g.restore();
+  const k = ease((t - c[0]) / 0.1), sc = 0.9 + 0.1 * k; if (CAPSTYLE === 'strip') { g.save(); g.globalAlpha = k; g.font = '900 44px Nunito'; const tw = Math.min(1760, g.measureText(c[2]).width + 90); g.fillStyle = 'rgba(14,15,17,.78)'; g.beginPath(); g.roundRect(W / 2 - tw / 2, 936, tw, 92, 10); g.fill(); g.fillStyle = '#FF5A1F'; g.fillRect(W / 2 - tw / 2, 1025, tw, 3); g.fillStyle = '#F4F6F8'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(c[2], W / 2, 984, 1700); g.restore(); return; }
+  g.save(); g.translate(W / 2, 1008); g.scale(sc, sc); let fs = 76; g.font = `900 ${fs}px Nunito`; const mw = g.measureText(c[2]).width; if (mw > 1780) fs = Math.floor(fs * 1780 / mw); g.font = `900 ${fs}px Nunito`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round'; g.lineWidth = fs * 0.21; g.strokeStyle = '#000'; g.strokeText(c[2], 0, 0); g.fillStyle = '#fff'; g.fillText(c[2], 0, 0); g.restore();
 }
 export function renderFrame(M, f, extra = {}) {
   const t = f / FPS, film = M.film;
@@ -224,7 +226,7 @@ export function renderFrame(M, f, extra = {}) {
   if (ph) sc = { ...sc, scene: 'photo', sp: { src: ph.src, tone: ph.tone, cap: ph.cap, dim: ph.dim }, cams: ['w'], actors: ph.actors || [], sticker: true, fg: null, hud: null, dim: null, tilt: null, punch: null };
   const actors = (sc.actors || []).map((a) => { const o = resolveActor(a, pt, t, f); if (!ph && !o.bust && o.y > 945) o.y = 945; return o; });
   const cams = sc.cams || ['w']; const cs = camFor(cams[si % cams.length], actors, sc.cam);
-  const z = (Math.abs(cs.z1 - cs.z0) < 0.01 ? lerp(cs.z0, cs.z0 * 1.04, ease(sk)) : lerp(cs.z0, cs.z1, ease(sk))) * (1 + (sc.punch && t >= seg.t + sc.punch ? Math.exp(-(t - seg.t - sc.punch) * 14) * 0.07 : 0));
+  const z = (Math.abs(cs.z1 - cs.z0) < 0.01 && !sc.noDrift ? lerp(cs.z0, cs.z0 * 1.04, ease(sk)) : lerp(cs.z0, cs.z1, ease(sk))) * (1 + (sc.punch && t >= seg.t + sc.punch ? Math.exp(-(t - seg.t - sc.punch) * 14) * 0.07 : 0));
   let zz = z, ccx = cs.cx, ccy = cs.cy; if (ph) { const k = ease((pt - ph.from) / (ph.to - ph.from)); zz = lerp(ph.z0 ?? 1.03, ph.z1 ?? 1.13, k); ccx = ph.cx ?? 960; ccy = ph.cy ?? 540; }
   g.save(); g.translate(W / 2, H / 2); if (sc.tilt) g.rotate(typeof sc.tilt === 'function' ? sc.tilt(pt) : sc.tilt); g.scale(zz, zz); g.translate(-ccx, -ccy); LW = 7 / Math.sqrt(zz);
   const S = SCENES[sc.scene] || SCENES.room, st = { t, pt, f, sp: sc.sp || {}, seg, dur: seg.dur, shot: si };
