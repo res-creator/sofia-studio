@@ -1,0 +1,161 @@
+{
+ "reuse": [
+  "leave",
+  "boatdeck",
+  "iceberg",
+  "news",
+  "senate"
+ ],
+ "wreck_bow": {
+  "q": [
+   "Titanic wreck bow NOAA",
+   "Bow of RMS Titanic wreck 2004 Ocean Exploration"
+  ],
+  "cap": "Нос «Титаника» на дне, фото NOAA",
+  "need": "носовая часть обломка, поручни, якорные лебёдки"
+ },
+ "wreck_stern": {
+  "q": [
+   "Titanic wreck stern NOAA",
+   "Titanic stern section wreck photograph"
+  ],
+  "cap": "Корма «Титаника», снимок подводного аппарата",
+  "need": "разрушенная корма"
+ },
+ "wreck_map": {
+  "q": [
+   "Titanic wreck site map debris field",
+   "Titanic debris field sonar map NOAA"
+  ],
+  "cap": "Схема места крушения и поля обломков",
+  "need": "карта дна с двумя частями корпуса"
+ },
+ "depth_chart": {
+  "q": [
+   "Titanic wreck depth diagram compared",
+   "Titanic wreck depth Mount Everest comparison diagram"
+  ],
+  "cap": "Схема глубины: около 3 800 м",
+  "need": "диаграмма глубины залегания"
+ },
+ "rusticles": {
+  "q": [
+   "Titanic rusticles",
+   "Rusticles on RMS Titanic wreck NOAA"
+  ],
+  "cap": "«Ржавые сосульки» на корпусе, снимок подводного аппарата",
+  "need": "наросты ржавчины"
+ },
+ "ballard": {
+  "q": [
+   "Robert Ballard oceanographer",
+   "Robert D. Ballard portrait Woods Hole"
+  ],
+  "cap": "Роберт Баллард, океанограф",
+  "need": "портрет"
+ },
+ "argo": {
+  "q": [
+   "Argo remotely operated vehicle Ballard",
+   "Argo ROV Woods Hole Titanic 1985"
+  ],
+  "cap": "Аппарат Argo (Вудс-Хоул)",
+  "need": "подводный буксируемый аппарат"
+ },
+ "nautile": {
+  "q": [
+   "Nautile submersible IFREMER",
+   "Nautile submersible"
+  ],
+  "cap": "Французский аппарат «Нотиль»",
+  "need": "глубоководный аппарат"
+ },
+ "vasa_1628": {
+  "q": [
+   "Vasa ship 1628 painting model",
+   "Vasa warship sinking illustration"
+  ],
+  "cap": "«Васа»: иллюстрация (позднее изображение)",
+  "need": "корабль в 1628 году"
+ },
+ "vasa_raise": {
+  "q": [
+   "Vasa raising 1961 pontoons",
+   "Vasa salvage 1961 Stockholm"
+  ],
+  "cap": "Подъём «Васы», 1961",
+  "need": "корпус между понтонами"
+ },
+ "vasa_museum": {
+  "q": [
+   "Vasa Museum Stockholm interior",
+   "Vasa ship Vasamuseet hull"
+  ],
+  "cap": "«Васа» в музее Стокгольма (фото нового времени)",
+  "need": "корабль в зале музея"
+ },
+ "glomar": {
+  "q": [
+   "Hughes Glomar Explorer",
+   "Glomar Explorer ship Project Azorian"
+  ],
+  "cap": "Судно «Гломар Эксплорер»",
+  "need": "судно со шахтой"
+ },
+ "k129": {
+  "q": [
+   "Soviet submarine K-129 Golf II",
+   "Golf-class submarine"
+  ],
+  "cap": "Подлодка проекта 629 (Golf II), иллюстративное фото",
+  "need": "лодка того же типа"
+ },
+ "bigpiece": {
+  "q": [
+   "The Big Piece Titanic Luxor",
+   "Titanic Big Piece hull section exhibition"
+  ],
+  "cap": "«Большой кусок» в выставке, фото нового времени",
+  "need": "фрагмент корпуса с иллюминаторами"
+ },
+ "artifacts": {
+  "q": [
+   "Titanic artifact exhibition",
+   "Titanic The Artifact Exhibition"
+  ],
+  "cap": "Предметы с «Титаника» на выставке",
+  "need": "витрины с вещами"
+ },
+ "memorial": {
+  "q": [
+   "Titanic Memorial Washington D.C.",
+   "Titanic memorial plaque"
+  ],
+  "cap": "Памятник жертвам «Титаника»",
+  "need": "мемориал"
+ },
+ "pingpong": {
+  "q": [
+   "table tennis balls ping pong",
+   "ping pong balls pile"
+  ],
+  "cap": "Шарики для настольного тенниса (иллюстрация)",
+  "need": "шарики"
+ },
+ "vaseline": {
+  "q": [
+   "Vaseline petroleum jelly jar",
+   "petroleum jelly"
+  ],
+  "cap": "Вазелин (иллюстрация)",
+  "need": "баночка"
+ },
+ "titan": {
+  "q": [
+   "OceanGate Titan submersible",
+   "Titan submersible"
+  ],
+  "cap": "Аппарат «Титан» (OceanGate)",
+  "need": "аппарат до катастрофы"
+ }
+}
