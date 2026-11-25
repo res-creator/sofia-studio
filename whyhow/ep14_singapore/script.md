@@ -13,7 +13,7 @@ Numbers in [brackets] point to SOURCES.md.
 
 **A003** That morning, his island had been pushed out of Malaysia. It was now a country of its own. Almost no army. No natural resources. And barely any land. [34]
 
-**A004** Minutes earlier, he had said the thing that scared him most. "Our water supply comes from Johore." The country's water came from the neighbor that had just let it go. [36]
+**A004** Minutes earlier, he had raised the problem that would shape everything after. "Our water supply comes from Johore." The country's water came from the neighbor that had just let it go. [36]
 
 **A005** Today, that island is one of the richest countries on Earth. And it's not even the same shape. Since that day, Singapore has grown by more than a quarter. It built its own land, out of the sea. [2][3]
 
@@ -65,7 +65,7 @@ Numbers in [brackets] point to SOURCES.md.
 
 **A022** And Singapore bought more of it than anyone. A United Nations report in twenty nineteen found that over twenty years, it imported five hundred and seventeen million tonnes. By far the largest sand importer on the planet. [8]
 
-**A023** It came from its neighbors. Malaysia, Indonesia, Cambodia, Vietnam. In Indonesia, officials said up to twenty-six small islands had been lost to erosion by two thousand nine, and many blamed the sand trade. [10]
+**A023** It came from its neighbors. Malaysia, Indonesia, Cambodia, Vietnam. In Indonesia, officials said up to twenty-six small islands had been lost to erosion by two thousand nine, and many blamed the sand trade. [10][popular claims]
 
 **A024** And the numbers didn't add up. A U.N. study found that Singapore reported importing about a hundred and twenty million tonnes more Indonesian sand than Indonesia said it had exported. [9]
 
@@ -135,8 +135,8 @@ Numbers in [brackets] point to SOURCES.md.
 
 **A050** So that's how Singapore became bigger. It moved its hills into the sea, bought half a billion tonnes of other countries' sand, joined islands, dug under the seabed, borrowed a trick from the Dutch, and turned its sewage into water clean enough to drink.
 
-**A051** It goes back to what one man said on a Monday in nineteen sixty-five, minutes before he broke down. A country with no spare land and no water of its own can't leave anything to chance. Not even the shape of its coastline. [36]
-
 **A051B** Would you live on land that sits below the sea, kept dry by pumps? Tell me in the comments.
+
+**A051** It goes back to what one man said on a Monday in nineteen sixty-five, minutes before he broke down. A country with no spare land and no water of its own can't leave anything to chance. Not even the shape of its coastline. [36]
 
 **A052** If you liked this, watch our story on how seven and a half million people fit into Hong Kong next. And subscribe, so you don't miss how the next place on Earth is run.
