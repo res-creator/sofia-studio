@@ -1,0 +1,174 @@
+{
+ "B1": {
+  "lufs": -13.32,
+  "full_mix": -13.32,
+  "soft": false,
+  "who": "e"
+ },
+ "B2": {
+  "lufs": -13.32,
+  "full_mix": -13.32,
+  "soft": false,
+  "who": "j"
+ },
+ "B3": {
+  "lufs": -13.32,
+  "full_mix": -13.32,
+  "soft": false,
+  "who": "j"
+ },
+ "B4": {
+  "lufs": -13.32,
+  "full_mix": -13.32,
+  "soft": false,
+  "who": "z"
+ },
+ "B5": {
+  "lufs": -13.32,
+  "full_mix": -13.38,
+  "soft": false,
+  "who": "z"
+ },
+ "B6": {
+  "lufs": -13.32,
+  "full_mix": -13.33,
+  "soft": false,
+  "who": "j"
+ },
+ "B7": {
+  "lufs": -13.32,
+  "full_mix": -13.33,
+  "soft": false,
+  "who": "s"
+ },
+ "B8": {
+  "lufs": -13.32,
+  "full_mix": -13.55,
+  "soft": false,
+  "who": "j"
+ },
+ "B9": {
+  "lufs": -13.32,
+  "full_mix": -13.32,
+  "soft": false,
+  "who": "z"
+ },
+ "B10": {
+  "lufs": -13.32,
+  "full_mix": -13.32,
+  "soft": false,
+  "who": "e"
+ },
+ "B11": {
+  "lufs": -13.32,
+  "full_mix": -13.24,
+  "soft": false,
+  "who": "e"
+ },
+ "B12": {
+  "lufs": -13.32,
+  "full_mix": -13.31,
+  "soft": false,
+  "who": "r"
+ },
+ "B13": {
+  "lufs": -13.32,
+  "full_mix": -13.39,
+  "soft": false,
+  "who": "z"
+ },
+ "B14": {
+  "lufs": -13.32,
+  "full_mix": -13.32,
+  "soft": false,
+  "who": "e"
+ },
+ "B15": {
+  "lufs": -13.32,
+  "full_mix": -13.55,
+  "soft": false,
+  "who": "z"
+ },
+ "B16": {
+  "lufs": -13.32,
+  "full_mix": -13.35,
+  "soft": false,
+  "who": "r"
+ },
+ "B17": {
+  "lufs": -13.32,
+  "full_mix": -13.32,
+  "soft": false,
+  "who": "r"
+ },
+ "B18": {
+  "lufs": -13.22,
+  "full_mix": -13.22,
+  "soft": false,
+  "who": "r"
+ },
+ "B19": {
+  "lufs": -13.32,
+  "full_mix": -13.32,
+  "soft": false,
+  "who": "z"
+ },
+ "B20": {
+  "lufs": -18.17,
+  "full_mix": -18.17,
+  "soft": true,
+  "who": "s"
+ },
+ "B21": {
+  "lufs": -13.32,
+  "full_mix": -13.33,
+  "soft": false,
+  "who": "e"
+ },
+ "B22": {
+  "lufs": -13.32,
+  "full_mix": -13.32,
+  "soft": false,
+  "who": "s"
+ },
+ "B23": {
+  "lufs": -13.32,
+  "full_mix": -13.32,
+  "soft": false,
+  "who": "r"
+ },
+ "B24": {
+  "lufs": -13.32,
+  "full_mix": -13.32,
+  "soft": false,
+  "who": "j"
+ },
+ "B25": {
+  "lufs": -13.32,
+  "full_mix": -13.24,
+  "soft": false,
+  "who": "z"
+ },
+ "B26": {
+  "lufs": -13.32,
+  "full_mix": -13.33,
+  "soft": false,
+  "who": "e"
+ },
+ "B27": {
+  "lufs": -13.32,
+  "full_mix": -13.32,
+  "soft": false,
+  "who": "b"
+ },
+ "B28": {
+  "lufs": -13.32,
+  "full_mix": -13.32,
+  "soft": false,
+  "who": "z"
+ },
+ "_music_under_dialogue_lufs": -33.56,
+ "_music_in_pauses_lufs": -29.52,
+ "_master_gain_db": 2.68,
+ "_mix_integrated_lufs": -15.01
+}

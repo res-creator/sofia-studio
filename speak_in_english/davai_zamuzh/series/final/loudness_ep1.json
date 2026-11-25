@@ -1,0 +1,156 @@
+{
+ "A1": {
+  "lufs": -13.37,
+  "full_mix": -13.38,
+  "soft": false,
+  "who": "b"
+ },
+ "A2": {
+  "lufs": -13.37,
+  "full_mix": -13.25,
+  "soft": false,
+  "who": "z"
+ },
+ "A3": {
+  "lufs": -13.37,
+  "full_mix": -13.21,
+  "soft": false,
+  "who": "b"
+ },
+ "A4": {
+  "lufs": -13.37,
+  "full_mix": -13.37,
+  "soft": false,
+  "who": "z"
+ },
+ "A5": {
+  "lufs": -13.37,
+  "full_mix": -13.5,
+  "soft": false,
+  "who": "e"
+ },
+ "A6": {
+  "lufs": -13.37,
+  "full_mix": -13.48,
+  "soft": false,
+  "who": "b"
+ },
+ "A7": {
+  "lufs": -13.37,
+  "full_mix": -13.37,
+  "soft": false,
+  "who": "s"
+ },
+ "A8": {
+  "lufs": -13.37,
+  "full_mix": -13.37,
+  "soft": false,
+  "who": "z"
+ },
+ "A9": {
+  "lufs": -13.37,
+  "full_mix": -13.37,
+  "soft": false,
+  "who": "e"
+ },
+ "A10": {
+  "lufs": -13.33,
+  "full_mix": -13.41,
+  "soft": false,
+  "who": "m"
+ },
+ "A11": {
+  "lufs": -13.37,
+  "full_mix": -13.37,
+  "soft": false,
+  "who": "z"
+ },
+ "A12": {
+  "lufs": -13.37,
+  "full_mix": -13.37,
+  "soft": false,
+  "who": "m"
+ },
+ "A13": {
+  "lufs": -13.37,
+  "full_mix": -13.38,
+  "soft": false,
+  "who": "e"
+ },
+ "A14": {
+  "lufs": -13.6,
+  "full_mix": -13.61,
+  "soft": false,
+  "who": "m"
+ },
+ "A15": {
+  "lufs": -13.37,
+  "full_mix": -13.38,
+  "soft": false,
+  "who": "m"
+ },
+ "A16": {
+  "lufs": -13.37,
+  "full_mix": -13.38,
+  "soft": false,
+  "who": "z"
+ },
+ "A17": {
+  "lufs": -13.37,
+  "full_mix": -13.38,
+  "soft": false,
+  "who": "m"
+ },
+ "A18": {
+  "lufs": -13.37,
+  "full_mix": -13.26,
+  "soft": false,
+  "who": "z"
+ },
+ "A19": {
+  "lufs": -13.37,
+  "full_mix": -13.38,
+  "soft": false,
+  "who": "b"
+ },
+ "A20": {
+  "lufs": -13.37,
+  "full_mix": -13.38,
+  "soft": false,
+  "who": "s"
+ },
+ "A21": {
+  "lufs": -13.42,
+  "full_mix": -13.42,
+  "soft": false,
+  "who": "m"
+ },
+ "A22": {
+  "lufs": -13.37,
+  "full_mix": -13.38,
+  "soft": false,
+  "who": "z"
+ },
+ "A23": {
+  "lufs": -13.37,
+  "full_mix": -13.38,
+  "soft": false,
+  "who": "b"
+ },
+ "A24": {
+  "lufs": -13.37,
+  "full_mix": -13.37,
+  "soft": false,
+  "who": "z"
+ },
+ "A25": {
+  "lufs": -13.37,
+  "full_mix": -13.38,
+  "soft": false,
+  "who": "e"
+ },
+ "_music_under_dialogue_lufs": -33.47,
+ "_music_in_pauses_lufs": -29.57,
+ "_master_gain_db": 2.63,
+ "_mix_integrated_lufs": -15.1
+}
