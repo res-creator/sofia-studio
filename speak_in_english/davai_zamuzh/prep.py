@@ -3,10 +3,12 @@
 # procedural applause / drum roll / clock / paper / crunch / beep / lyrical underscore), ducked under dialogue.
 # python3 prep.py  ->  timeline1.json, timeline2.json, out/audio1.wav, out/audio2.wav
 import json, subprocess, numpy as np, soundfile as sf, os, io, glob
+import loud, music
 from scipy.signal import butter, sosfilt, lfilter
 from scipy.linalg import solve_toeplitz
 S = json.load(open('voice/script.json')); SR = 44100; os.makedirs('out', exist_ok=True)
 LN = {l[0]: (l[1], l[2], l[3] if len(l) > 3 else '') for l in S['lines']}
+LINE_LUFS, SOFT_DB, MUSIC_LUFS, MUSIC_DUCK = -16., -5., -23., 4.   # every dialogue line is normalised to the same voiced loudness; soft lines sit 5 dB lower
 TEMPO = {'z': 1.2, 'e': 1.1, 's': 1.12, 'b': 1.08, 'm': 1.05, 'j': 1.05, 'r': 1.05, 'p': 1.0}
 rng = np.random.default_rng(11)
 def bp(x, lo, hi, o=2): return sosfilt(butter(o, [lo, hi], 'band', fs=SR, output='sos'), x)
@@ -14,15 +16,13 @@ def hp(x, f, o=2): return sosfilt(butter(o, f, 'high', fs=SR, output='sos'), x)
 def lp(x, f, o=2): return sosfilt(butter(o, f, 'low', fs=SR, output='sos'), x)
 def norm(a, peak=.9): return a / max(1e-9, np.abs(a).max()) * peak
 # ---------- performance processing ----------
-def whisper(a):
-    """LPC vocoder: keep the vocal-tract envelope, replace the voiced excitation with noise -> a real whisper."""
-    n, hop, order = 1024, 256, 22; win = np.hanning(n); out = np.zeros(len(a) + n)
-    for i in range(0, len(a) - n, hop):
-        f = a[i:i + n] * win; r = np.correlate(f, f, 'full')[n - 1:n + order]
-        if r[0] < 1e-8: continue
-        r[0] *= 1.001; A = solve_toeplitz(r[:order], -r[1:order + 1]); res = lfilter(np.r_[1, A], [1], f)
-        g = np.sqrt((res ** 2).mean()); exc = rng.standard_normal(n) * g; out[i:i + n] += lfilter([1], np.r_[1, A], exc) * win
-    out = norm(hp(out[:len(a)], 350, 3)) + .65 * norm(hp(a, 600, 2)); return norm(out, .55)   # stage whisper: mostly breath, a little voice for clarity
+def soft(a):
+    """Soft, intimate 'whisper' (owner: no vocoder, no noise): the normal voice, gently compressed, a little warmer and less bright.
+    Its level is set later (-5 dB vs. the other lines)."""
+    k = int(.03 * SR); env = np.sqrt(np.convolve(a ** 2, np.ones(k) / k, 'same')) + 1e-6; ref = np.percentile(env[env > env.max() * .05], 70)
+    g = np.where(env > ref, (env / ref) ** (1 / 2.2 - 1), 1.0); g = np.convolve(g, np.ones(k) / k, 'same'); a = a * g   # ~2.2:1 above the speech level
+    a = a - .4 * hp(a, 4500, 2) + .12 * bp(a, 160, 420)   # softer top (about -4 dB above 5 kHz), a touch of close-mic warmth
+    return a
 def shout(a):
     a = np.tanh(a / max(1e-9, np.abs(a).max()) * 2.6); a = a + .6 * bp(a, 1800, 4200); return norm(a, .98)
 def tears(a):
@@ -37,13 +37,12 @@ def sob(v=.5):
 def load(k):
     who, _, st = LN[k]; o = f'out/v_{k}.wav'
     af = 'silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse'
-    af += ',silenceremove=stop_periods=-1:stop_duration=0.3:stop_threshold=-42dB:stop_silence=0.2' + f',atempo={TEMPO[who]}'
+    af += ',silenceremove=stop_periods=-1:stop_duration=0.3:stop_threshold=-42dB:stop_silence=0.2' + f',atempo={TEMPO[who] * (.94 if st == "w" else 1):.4f}'
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', f'voice/{k}.mp3', '-af', af, '-ar', str(SR), '-ac', '1', o], check=True)
     a = sf.read(o)[0]
-    if st == 'w': a = whisper(a)
+    if st == 'w': a = soft(a)
     elif st == 's': a = shout(a)
     elif st == 'c': a = tears(a)
-    elif st == 'q': a = a * .75
     n = int(.012 * SR); a[:n] *= np.linspace(0, 1, n); a[-n:] *= np.linspace(1, 0, n); sf.write(o, a, SR); return a
 WJ = 'voice/words.json'; WORDS = json.load(open(WJ)) if os.path.exists(WJ) else {}
 def words(k):
@@ -145,12 +144,13 @@ def beep_loop(d, v=.55): b = STOCK['beep']; x = np.tile(b, int(np.ceil(d * SR / 
 def build(part):
     t = 0.; L = []; VO = []; CR = []; FXL = []; EV = {}
     def put(at, a, bus='fx'): (CR if bus == 'crowd' else FXL).append((at, a))
-    def say(k, gap=.25, at=None):
+    def say(k, gap=.25, at=None, gdb=0.):
         nonlocal t
         a = load(k); W = words(k); t0 = t if at is None else at
         if k == 'r3': cut = min(W[1][0], W[0][1] + .12) if len(W) > 1 else .35; a = a[:int(cut * SR)]; n = int(.02 * SR); a[-n:] *= np.linspace(1, 0, n)
         L.append({'id': k, 'who': LN[k][0], 'text': LN[k][1], 'st': LN[k][2], 'at': round(t0, 3), 'end': round(t0 + len(a) / SR, 3), 'env': mouthEnv(a), 'words': [[round(t0 + w[0], 3), round(t0 + w[1], 3), w[2]] for w in W]})
-        VO.append((t0, a * (1.25 if LN[k][2] == 's' else 1)))
+        a = loud.to_lufs(a, SR, LINE_LUFS + (SOFT_DB if LN[k][2] == 'w' else 0.) + gdb)   # shouts: same loudness, brightness comes from shout()
+        VO.append((t0, a, k))
         if k in ('s3', 's5', 's6', 's9', 's11'): put(t0 - .35, clip('chime', 2.0, .3), 'crowd')
         if at is None:
             t += len(a) / SR
@@ -159,7 +159,7 @@ def build(part):
     def chorus(keys, gap=.3):   # several voices at once
         nonlocal t
         t0 = t; e = t0
-        for j, k in enumerate(keys): say(k, at=t0 + j * .04); e = max(e, L[-1]['end'])
+        for j, k in enumerate(keys): say(k, at=t0 + j * .04, gdb=-10 * np.log10(len(keys))); e = max(e, L[-1]['end'])   # the chorus as a whole sits at the line level
         t = e + max(gap, 1.25 - (e - t0))
     def react(kind, at, d, v=.5, n=7):   # audience reaction, sits in a pause (the dialogue waits for it)
         put(at, crowd(kind, n, v, d), 'crowd')
@@ -172,7 +172,7 @@ def build(part):
         say('z3', .15); say('s2', .3); EV['DIMEND'] = t
         EV['CARD'] = t; put(t, whoosh(.3, .1)); wait(.3); say('b1', .35); say('b2', .25); put(t, sob(.45)); EV['SOB1'] = t; wait(1.1); say('b3', .2); EV['PHOTO'] = L[-1]['at']; react('aww', t, 1.8, .45, 6); wait(1.4); EV['CARDEND'] = t
         say('z4', .3); say('e6', .1); EV['ENTER_B'] = [t, 4.6]; put(t, applause(4.4, .5), 'crowd'); put(t + .5, steps(8)); wait(4.8)
-        say('e7', .2); say('b4', .2); EV['LEAN_AWAY'] = t; say('z5', .2); react('laugh', t, 1.8, .45, 5); wait(1.3); EV['SLAP'] = t + .1; put(t + .1, slap(.6)); say('e8', .15); say('z6', .3)
+        say('e7', .2); say('b4', .2); EV['LEAN_AWAY'] = t; say('z5', .2); react('laugh', t, 1.8, .45, 5); wait(1.3); EV['SLAP'] = t + .1; put(t + .1, slap(.3)); say('e8', .15); say('z6', .3)
         say('e9', .2); say('b5', .2); say('z7', .2); EV['CARDLAUGH'] = t; react('laugh', t, 1.5, .4, 4); say('e10', .3)
         say('s3', .2); EV['TAROT_KING'] = L[-1]['at'] + (L[-1]['end'] - L[-1]['at']) * .72; react('ooh', t, 1.6, .45, 6); wait(1.3); say('z8', .2); react('laugh', t, 2.4, .55, 7); wait(1.8); say('s4', .2); say('z9', .3)
         say('e11', .1); EV['ENTER_M'] = [t, 5.0]; put(t, applause(4.4, .5), 'crowd'); put(t + .5, steps(9)); wait(5.15)
@@ -201,14 +201,54 @@ def build(part):
         EV['END'] = t; put(t, mixs(tone(1046, 1.2, .1), tone(1568, 1.2, .06))); wait(5.5)
     TOTAL = round(t, 3); EV['TOTAL'] = TOTAL; N = int(TOTAL * SR)
     voice = np.zeros(N + SR); bed = np.zeros_like(voice); fx = np.zeros_like(voice)
-    for at, a in VO: i = int(at * SR); voice[i:i + len(a)] += a[:len(voice) - i]
+    for at, a, _ in VO: i = int(at * SR); voice[i:i + len(a)] += a[:len(voice) - i]
     for at, a in CR: i = int(at * SR); bed[i:i + len(a)] += a[:len(bed) - i]
     for at, a in FXL: i = int(at * SR); fx[i:i + len(a)] += a[:len(fx) - i]
     # duck the audience bed under the dialogue (never covers words)
-    e = np.abs(voice); k = int(.12 * SR); e = np.convolve(e, np.ones(k) / k, 'same'); duck = np.where(e > .01, .28, 1.0); k2 = int(.18 * SR); duck = np.convolve(duck, np.ones(k2) / k2, 'same')
-    mix = voice + bed * duck * .85 + fx; mix = mix[:N]; mix = mix / max(1e-6, np.abs(mix).max()) * .89
+    e = np.abs(voice); k = int(.12 * SR); e = np.convolve(e, np.ones(k) / k, 'same'); talk = e > .01; duck = np.where(talk, .28, 1.0); k2 = int(.18 * SR); duck = np.convolve(duck, np.ones(k2) / k2, 'same')
+    # background music: original bed (music.py), -23 LUFS alone, smooth sidechain duck of 4 dB under voices -> about -27 LUFS under dialogue
+    m = music.bed(TOTAL + 1)[:len(voice)]; m = np.pad(m, (0, len(voice) - len(m))); m = m * 10 ** ((MUSIC_LUFS - loud.integrated_lufs(m, SR)) / 20)
+    md = np.where(talk, 10 ** (-MUSIC_DUCK / 20), 1.0); att, rel = np.exp(-1 / (.08 * SR)), np.exp(-1 / (.35 * SR)); mdd = md.copy(); g0 = 1.
+    for i0 in range(0, len(md), 256):   # attack/release smoothing on 256-sample steps
+        tgt = md[i0]; c = att if tgt < g0 else rel; g0 = tgt + (g0 - tgt) * c ** 256; mdd[i0:i0 + 256] = g0
+    mdd = np.convolve(mdd, np.ones(512) / 512, 'same')
+    menv = np.ones(len(voice)); tt = np.arange(len(voice)) / SR
+    def off(a0, a1, fo=.6, fi=1.2):   # music out between a0 and a1 (fade out before, fade in after)
+        menv[:] = np.minimum(menv, np.clip(np.maximum((a0 - tt) / fo, (tt - a1) / fi), 0, 1))
+    if part == 1:
+        off(-1, EV['OPEN'] - .3, .01, 1.5)                              # after the opening jingle
+        off(EV['DIM'], EV['DIM'] + 29.5, .8, 1.5)                       # our romantic underscore under the bride intro / video card
+        off(EV['INTERRO'], EV['INTERRO_END'], .5, 1.0)                  # interrogation lamp: cold
+    else:
+        p1 = next(l for l in L if l['id'] == 'p1'); off(EV['COLD'][0], p1['end'] + .2, .6, 1.0)   # cold silences before «Угу»
+    off(TOTAL - 1.8, TOTAL + 5, 1.8, 1)
+    mus = m * mdd * menv
+    # equal loudness IN THE MIX: measure every line (or chorus) over dialogue + audience bed + music, correct its gain, repeat
+    GROUPS = []
+    for l in sorted(L, key=lambda l: l['at']):
+        if GROUPS and l['at'] < max(x['end'] for x in GROUPS[-1]) - .05: GROUPS[-1].append(l)
+        else: GROUPS.append([l])
+    GAIN = {l['id']: 1.0 for l in L}; under = bed * duck * .85 + mus
+    for it in range(3):
+        voice = np.zeros_like(bed)
+        for at, a, k in VO: i = int(at * SR); voice[i:i + len(a)] += a[:len(voice) - i] * GAIN[k]
+        nofx = (voice + under)[:N]
+        for ls in GROUPS:
+            a0, a1 = min(l['at'] for l in ls), max(l['end'] for l in ls); tgt = LINE_LUFS + (SOFT_DB if any(l['st'] == 'w' for l in ls) else 0.)
+            d = np.clip(tgt - loud.voiced_lufs(nofx[int(a0 * SR):int(a1 * SR)], SR), -3, 3)
+            for l in ls: GAIN[l['id']] *= 10 ** (d / 20)
+    mix = voice + bed * duck * .85 + fx + mus; mix = mix[:N]
     sf.write(f'out/audio{part}_raw.wav', mix, SR)
-    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', f'out/audio{part}_raw.wav', '-af', 'loudnorm=I=-15:TP=-1.5', '-ar', '44100', f'out/audio{part}.wav'], check=True)
+    # no loudness re-normalisation of the whole mix (it would undo the equal line levels): only a true-peak safety limiter
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', f'out/audio{part}_raw.wav', '-af', 'alimiter=limit=0.84:attack=3:release=60:level=disabled', '-ar', '44100', f'out/audio{part}.wav'], check=True)
+    fin = sf.read(f'out/audio{part}.wav')[0]; R = {}
+    for ls in GROUPS:
+        a0, a1 = min(l['at'] for l in ls), max(l['end'] for l in ls); nm = '+'.join(l['id'] for l in ls)
+        R[nm] = {'lufs': round(loud.voiced_lufs(nofx[int(a0 * SR):int(a1 * SR)], SR), 2), 'full_mix': round(loud.voiced_lufs(fin[int(a0 * SR):int(a1 * SR)], SR), 2), 'soft': any(l['st'] == 'w' for l in ls), 'who': ls[0]['who']}
+    sp = tt[:N][talk[:N]]; ml = loud.voiced_lufs(mus[:N][talk[:N]], SR, gate=40) if len(sp) else None
+    R['_music_under_dialogue_lufs'] = round(ml, 2); R['_music_alone_lufs'] = MUSIC_LUFS; R['_mix_integrated_lufs'] = round(loud.integrated_lufs(fin, SR), 2)
+    json.dump(R, open(f'out/loudness{part}.json', 'w'), ensure_ascii=False, indent=1)
+    sf.write(f'out/music{part}.wav', mus[:N], SR)
     json.dump({'L': L, **EV}, open(f'timeline{part}.json', 'w'), ensure_ascii=False)
     print('part', part, 'TOTAL', TOTAL, 'lines', len(L))
 build(1); build(2)

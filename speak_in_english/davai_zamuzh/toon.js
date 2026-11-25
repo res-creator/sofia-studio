@@ -351,7 +351,7 @@ function drawArm(gg, st, s, pts, c0, hand) { if (gg) g = gg; const c = c0 || pal
     line([[e2[0] + nx, e2[1] + ny], [e2[0] - nx, e2[1] - ny]], 5); }
   if (st.outfit === 'fitness') { const b0 = w(.72), b1 = w(.82); line([b0, b1], 30, c.band); for (const b of [b0, b1]) { const nx = -Math.sin(ang) * 15, ny = Math.cos(ang) * 15; line([[b[0] + nx, b[1] + ny], [b[0] - nx, b[1] - ny]], 3); } }
   if (hs) handPass(shape, 'detail', H[0], H[1], handAng(shape, ang, s), 1, s, skin, st.nails); }
-function arm(st, c, s) { const fn = st.arms || (POSES[st.pose] || POSES.down); const pts = st.ik === false ? fn(s) : solveArm(fn(s)[0], fn(s)[2], fn(s)[1], s, st.breath || 0); drawArm(null, st, s, pts, c, st.hands ? st.hands[s] : null); }
+function arm(st, c, s) { if (st.skipArms && st.skipArms.includes(s)) return; const fn = st.arms || (POSES[st.pose] || POSES.down); const pts = st.ik === false ? fn(s) : solveArm(fn(s)[0], fn(s)[2], fn(s)[1], s, st.breath || 0); drawArm(null, st, s, pts, c, st.hands ? st.hands[s] : null); }
 
 // laugh bursts: a few wide "ha-ha-ha" openings (not a fast sine); u = seconds since the laugh started
 function laughEnv(u) { if (u < 0) return 0; const bursts = [[0, .28], [.36, .26], [.7, .24], [1.05, .3]]; for (const [a, d] of bursts) if (u >= a && u < a + d) return .55 + .45 * Math.sin(Math.PI * (u - a) / d); return 0; }

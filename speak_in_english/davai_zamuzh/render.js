@@ -131,8 +131,9 @@ function stOf(who, t, x) { const md = T.moodAt(MOODF[who], t), ts = talkSt(who, 
   lean: who === 'z' ? (PART === 1 ? .07 * ease(P01(t, TL.LEAN_AWAY, .4)) * (1 - ease(P01(t, TL.SLAP + 1.2, .5))) : -.05 * ease(P01(t, TL.LEAN_BACK, .4)) * (1 - ease(P01(t, BY.z20.end + .8, .6)))) : 0}; }
 const ARMS = {}, NECK = {e: pearlsFx, s: shawlFx};
 const SEATED_HOSTS = 'zse';   // Эльвира drawn last: her slap lands on top of Жанна's hand
-function seated(who, x, y, sc, t, o = {}) { const a = armsFor(who, t); ARMS[who] = {a, x, y: y + (HIP - SEAT_H) * sc, sc}; const st = stOf(who, t, x), hands = o.hands || {1: a.name === 'nails' || a.name === 'wave' ? 'open' : a.name === 'card' ? 'none' : a.name === 'point' ? 'point' : 'open', '-1': 'open'};
-  seat(DEF[who], x, y, sc, {...st, arms: a.fn, ik: false, front: true, hands, neckFx: NECK[who], ...o.st});
+function seated(who, x, y, sc, t, o = {}) { const a = armsFor(who, t); const st = stOf(who, t, x), skipArms = OVER[a.name] && a.k >= .35 ? OVER[a.name] : null; const hands = o.hands || {1: a.name === 'nails' || a.name === 'wave' ? 'open' : a.name === 'card' ? 'none' : a.name === 'point' ? 'point' : 'open', '-1': 'open'};
+  ARMS[who] = {a, x, y: y + (HIP - SEAT_H) * sc, sc, lean: st.lean || 0};
+  seat(DEF[who], x, y, sc, {...st, arms: a.fn, ik: false, front: true, hands, skipArms, neckFx: NECK[who], ...o.st});
   const by = y + (HIP - SEAT_H) * sc; recFace(who, x, by, sc, st.mouth);
   if (a.name === 'cry' || a.name === 'peek' || (a.name === 'hair' && a.k > .3)) { body(x, by, sc, () => { for (const sd of (a.name === 'hair' ? [1] : [-1, 1])) T.drawArm(g, DEF[who], sd, T.solveArm(a.fn(sd)[0], a.fn(sd)[2], a.fn(sd)[1], sd, 0), null, 'open'); }); }
   return by; }
@@ -173,8 +174,8 @@ function studio(t, LY = {hosts: 1, fg: 1, aud: 1}) { NOW = t; room(); sign(t); d
   if (LY.hosts !== 0) for (const w of 'ezs') chair(HOSTX[w], HY, HS, 400, '#7a3a8a');
   if (LY.hosts !== 0) for (const w of SEATED_HOSTS) seated(w, HOSTX[w], HY, HS, t); desk(t); if (LY.hosts !== 0) overDesk(t); deskProps(t); if (!LY.fg) { cardProp(t); return; }
   cardProp(t); const G0 = grooms(t); for (const w of 'mjr') if ((G0[w].s === 'walk' || G0[w].s === 'stand') && G0[w].y < 1470) drawGroom(w, t, G0);   // depth order: people behind the plant / bride are drawn first
-  plantStand(t);
-  armchair34(BX, BYF, BS, '#f2a0c0'); bride(t); if (PART === 2 && t >= TL.GIVE_KALE) kale(BX + 40, BYF - 420 * BS, BS * .8);
+  if (LY.plant !== 0) plantStand(t);
+  if (LY.bride !== 0) { armchair34(BX, BYF, BS, '#f2a0c0'); bride(t); if (PART === 2 && t >= TL.GIVE_KALE) kale(BX + 40, BYF - 420 * BS, BS * .8); }
   const G = grooms(t); sofaSide(); chair(SOFA, BYF, GS, 1560, '#3a6aa8', 'sofa'); for (const w of 'mjr') if (G[w].s === 'seat' && LY.seatedG !== 0) drawGroom(w, t, G);
   for (const w of 'mjr') if ((G[w].s === 'walk' || G[w].s === 'stand') && G[w].y >= 1470) drawGroom(w, t, G);
   if (LY.aud) audience(t); }
@@ -188,7 +189,7 @@ function bride(t) { const s = brideState(t); if (s === 'off') return; if (s === 
 // arms that rest / act ON the desk top are drawn again after the desk (the desk would hide them)
 const OVER = {deskhand: [-1], slap: [1], hug: [-1, 1], cardE: [1]};
 function overDesk(t) { for (const w of SEATED_HOSTS) { const A = ARMS[w]; if (!A || !OVER[A.a.name] || A.a.k < .35) continue;
-    body(A.x, A.y, A.sc, () => { for (const sd of OVER[A.a.name]) T.drawArm(g, DEF[w], sd, A.a.fn(sd), null, A.a.name === 'cardE' ? 'fist' : 'open'); });
+    g.save(); g.translate(A.x, A.y); g.rotate(A.lean); g.translate(-A.x, -A.y); body(A.x, A.y, A.sc, () => { for (const sd of OVER[A.a.name]) T.drawArm(g, DEF[w], sd, A.a.fn(sd), null, A.a.name === 'cardE' ? 'fist' : 'open'); }); g.restore();
     if (A.a.name === 'cardE') { const [hx, hy] = hpos(w, 1); g.save(); g.translate(hx + 4, hy - 34 * A.sc); g.rotate(.12); recProp('cardE', -40 * A.sc, -60 * A.sc, 40 * A.sc, 60 * A.sc); rr(-70 * A.sc, -100 * A.sc, 140 * A.sc, 200 * A.sc, 10 * A.sc, '#ffffff', 5 * A.sc); for (let k = 0; k < 4; k++) ln([[-45 * A.sc, (-60 + k * 30) * A.sc], [45 * A.sc, (-60 + k * 30) * A.sc]], 4 * A.sc, '#b8b0c8'); g.restore(); } } }
 function cardProp(t) { if (ARMS.s && gestureAt('s', t) === 'card' && ARMS.s.a.k > .85) { const [hx, hy, a] = hpos('s', 1); const lab = PART === 1 ? 'THE KING' : 'MARRIED'; tarotCard(hx + 6 * HS, hy - 150 * HS, HS * 1.15, lab, PART === 2); T.drawHand(g, 'fist', hx, hy, a, HS, ZV.pal.skin, ZV.nails, 1, 22); } }
 function tarotCard(x, y, sc, label, paper) { recProp('tarot', x - 70 * sc, y - 105 * sc, x + 70 * sc, y + 105 * sc); g.save(); g.translate(x, y); g.rotate(.08); const w = 120 * sc, h = 190 * sc; rr(-w / 2, -h / 2, w, h, 10 * sc, '#2a1a4a', 6 * sc); rr(-w / 2 + 8 * sc, -h / 2 + 8 * sc, w - 16 * sc, h - 16 * sc, 6 * sc, '#f6e8c0', 3 * sc);
@@ -232,18 +233,18 @@ const PLAN = PART === 1 ? [
   [s0('e7'), 'MCU', 'e'], [s0('b4'), 'CU', 'b'], [s0('z5'), 'PUSH', 'z', wd('z5', 'ногтями', .6)], [at('z5', .8), 'CU', 'b'], [TL.SLAP - .5, 'EZ'], [s0('z6'), 'CU', 'z'],
   [s0('e9'), 'MCU', 'e'], [s0('b5'), 'CU', 'b'], [s0('z7'), 'PUSH', 'z', wd('z7', 'выбери', .7)], [TL.CARDLAUGH, 'CU', 'e'],
   [s0('s3'), 'ASTRO', 'leo'], [TL.TAROT_KING - .1, 'INS_tarot', 'king'], [lg('s3'), 'WIDE'], [s0('z8'), 'PUSH', 'z', wd('z8', 'бургер', .7)], [lg('z8'), 'HOSTS'], [s0('s4'), 'CU', 's'], [s0('z9'), 'CU', 'z'],
-  [s0('e11'), 'HOSTS'], [ent('ENTER_M'), 'WIDE'], [ent('ENTER_M', 2.6), 'OTS_b', 'm'], [s0('z10'), 'EZ'], [s0('e12'), 'MCU', 'e'], [s0('z11'), 'CU', 'z'], [s0('m1'), 'CU', 'm'], [at('m1', .5), 'INS_laptop'], [s0('z12'), 'PUSH', 'z', wd('z12', 'безработ', .5)],
+  [s0('e11'), 'HOSTS'], [ent('ENTER_M'), 'WIDE'], [ent('ENTER_M', 2.6), 'WALK', 'm'], [s0('z10'), 'EZ'], [s0('e12'), 'MCU', 'e'], [s0('z11'), 'CU', 'z'], [s0('m1'), 'CU', 'm'], [at('m1', .5), 'INS_laptop'], [s0('z12'), 'PUSH', 'z', wd('z12', 'безработ', .5)],
   [lg('z12'), 'ECU', 'm'], [s0('m2'), 'CU', 'm'], [s0('e13'), 'MCU', 'e'], [s0('m3'), 'CU', 'm'], [TL.INTERRO, 'INTERRO'], [TL.GULP - .1, 'INTERRO', 'close'],
   [s0('z13'), 'PUSH', 'z', wd('z13', 'ноль', .6)], [lg('z13'), 'WIDE'], [s0('s5'), 'ASTRO', 'ask'], [s0('m5'), 'CU', 'm'], [s0('s6'), 'ASTRO', 'aquarius'], [s0('z14'), 'PUSH', 'z', at('z14', .45)],
   [s0('s7'), 'CU', 's'], [s0('z15'), 'CU', 'z'], [lg('z15'), 'HOSTS'], [TL.SMOKE, 'WIDE'], [TL.KALE_PEEK, 'DOOR']]
  : [
-  [0, 'MCU', 'e'], [ent('ENTER_J'), 'WIDE'], [ent('ENTER_J', 2.6), 'OTS_b', 'j'], [s0('j1'), 'CU', 'j'], [wd('j1', 'brought', .6) - .15, 'INS_kale'], [s0('b6'), 'CU', 'b'],
+  [0, 'MCU', 'e'], [ent('ENTER_J'), 'WIDE'], [ent('ENTER_J', 2.6), 'WALK', 'j'], [s0('j1'), 'CU', 'j'], [wd('j1', 'brought', .6) - .15, 'INS_kale'], [s0('b6'), 'CU', 'b'],
   [s0('z16'), 'PUSH', 'z', wd('z16', 'салат', .7)], [lg('z16'), 'HOSTS'], [s0('e17'), 'MCU', 'e'], [s0('j2'), 'JOSHPLANT'], [s0('e18'), 'PUSH', 'e', BY.e18.at],
-  [lg('e18', .3), 'WIDE'], [TL.DESKLAUGH, 'CU', 'z'], [TL.FICUS, 'MCU', 's'], [at('s8', .5), 'CU', 's'], [ent('ENTER_R'), 'WIDE'], [ent('ENTER_R', 2.6), 'OTS_b', 'r'], [s0('r1'), 'CU', 'r'], [lg('r1'), 'WIDE'],
+  [lg('e18', .3), 'WIDE'], [TL.DESKLAUGH, 'CU', 'z'], [TL.FICUS, 'MCU', 's'], [at('s8', .5), 'CU', 's'], [ent('ENTER_R'), 'WIDE'], [ent('ENTER_R', 2.6), 'WALK', 'r'], [s0('r1'), 'CU', 'r'], [lg('r1'), 'WIDE'],
   [TL.HAIR, 'CU', 'z'], [s0('e19'), 'EZ'], [s0('e20'), 'MCU', 'e'], [s0('r2'), 'CU', 'r'], [at('r2', .9), 'INS_chart'], [TL.BLEEP[0] - .04, 'NEWS'],
   [s0('r4'), 'CU', 'r'], [TL.LEAN_BACK, 'PUSH', 'z', wd('z20', 'первый', .6)], [lg('z20'), 'HOSTS'], [s0('s9'), 'ASTRO', 'mercury'], [s0('e21'), 'MCU', 'e'], [s0('s10'), 'CU', 's'], [TL.GLANCE[0], 'HOSTS'],
-  [s0('e22'), 'OTS_g', 'r'], [s0('z21'), 'MCU', 'z'], [at('z21', .5), 'PUSH', 'z', at('z21', .55)], [TL.POINT_G, 'GROOMS'], [lg('z22'), 'HOSTS'], [TL.HEY - .05, 'GROOMS'], [s0('s11'), 'ASTRO', 'zero'], [at('s11', .62), 'INS_ball'], [TL.GROOM_BOO, 'GROOMS'],
-  [TL.STAND_E, 'MCU', 'e'], [TL.DRUM[0], 'STAGED_b'], [s0('b7'), 'CU', 'b'], [s0('m6'), 'CU', 'm'], [s0('j3'), 'CU', 'j'], [s0('r5'), 'CU', 'r'], [TL.CRY[0], 'CU', 'b'],
+  [s0('e22'), 'MCU', 'e'], [s0('z21'), 'MCU', 'z'], [at('z21', .5), 'PUSH', 'z', at('z21', .55)], [TL.POINT_G, 'GROOMS'], [lg('z22', .1), 'HOSTS'], [TL.HEY - .05, 'GROOMS'], [s0('s11'), 'ASTRO', 'zero'], [at('s11', .62), 'INS_ball'], [TL.GROOM_BOO, 'GROOMS'],
+  [TL.STAND_E, 'MCU', 'e'], [TL.DRUM[0], 'CU', 'b'], [TL.DRUM[0] + 1.3, 'GROOMS'], [s0('b7'), 'CU', 'b'], [s0('m6'), 'CU', 'm'], [s0('j3'), 'CU', 'j'], [s0('r5'), 'CU', 'r'], [TL.CRY[0], 'CU', 'b'],
   [TL.COLD[0], 'INS_clock'], [s0('z23'), 'MCU', 'z'], [s0('z24'), 'PUSH', 'z', BY.z24.at], [TL.RUSTLE, 'INS_paper'], [lg('p1', .6), 'WIDE'], [TL.PEEK_B - .1, 'CU', 'b'], [TL.TAROT_MARRIED, 'INS_tarot', 'married'],
   [TL.HORROR, 'PUSH', 'z', at('z25', .45)], [lg('z25'), 'HOSTS'], [s0('e24'), 'MCU', 'e'], [at('e24', .5), 'CU', 'e'], [TL.WINK, 'CU', 'z'], [at('z26', .5), 'PUSH', 'z', at('z26', .55)], [s0('e25'), 'EZ'], [s0('z27'), 'CU', 'z'], [s0('z28'), 'HOSTS'], [TL.END, 'END']];
 const SHOTS = PLAN.map(([a, k, who, x], i, arr) => ({a, k, who, x, end: arr[i + 1] ? arr[i + 1][0] : TL.TOTAL, i}));
@@ -253,12 +254,13 @@ function worldCam(sh, t) { const u = clamp((t - sh.a) / (sh.end - sh.a));
   switch (sh.k) { case 'CU': return camCU(sh.who, t); case 'MCU': return camCU(sh.who, t, .62); case 'ECU': return camECU(sh.who, t);
     case 'PUSH': { const k = ease(P01(t, sh.x, .45)); const A = camCU(sh.who, t, .62), B = camCU(sh.who, t, 1.15); return {z: lerp(A.z, B.z, k), x: lerp(A.x, B.x, k), y: lerp(A.y, B.y, k)}; }
     case 'OTS_b': { const [x, y, sc] = headW(sh.who, t); return {z: .62 / sc, x: x + 60 * sc, y: y + 330 * sc}; }
+    case 'WALK': { const [x, y, sc] = headW(sh.who, t); return {z: 1.0 / sc, x, y: y + 470 * sc}; }   // groom walking in, full figure, nobody in front
     case 'OTS_g': return CAMS.HOSTS(); case 'STAGED_b': return {z: 1.35, x: 700, y: 1310};
     case 'NEWS': { const [x, y, sc] = headW('r', t); const z = lerp(.75, 1.15, ease(u)) / sc; return {z, x: x + 40 * sc, y: y + 200 * sc}; }
     default: return CAMS[sh.k] ? CAMS[sh.k]() : CAMS.WIDE(); } }
 function camAt(t) { const sh = shotAt(t); const c = worldCam(sh, t); const cold = sh.k === 'PETRO'; let z = c.z * (sh.k === 'PUSH' || sh.k === 'NEWS' || sh.k === 'ECU' ? 1 : 1 + (cold ? .06 : .02) * ease(clamp((t - sh.a) / (sh.end - sh.a)))), sx = 0, sy = 0;
   if (SHAKE && t >= SHAKE[0] && t < SHAKE[0] + .6) { const v = t - SHAKE[0]; sx = 14 * Math.exp(-6 * v) * Math.sin(v * 70); sy = 10 * Math.exp(-6 * v) * Math.cos(v * 61); }
-  const hw = 540 / z, hh = 960 / z, free = /ECU|PUSH|NEWS|OTS_b|CU|MCU/.test(sh.k); return {z, x: (free ? c.x : clamp(c.x, hw, VW - hw)) + sx / z, y: (free ? c.y : clamp(c.y, hh, VH - hh)) + sy / z, sh}; }
+  const hw = 540 / z, hh = 960 / z, free = /ECU|PUSH|NEWS|OTS_b|WALK|CU|MCU/.test(sh.k); return {z, x: (free ? c.x : clamp(c.x, hw, VW - hw)) + sx / z, y: (free ? c.y : clamp(c.y, hh, VH - hh)) + sy / z, sh}; }
 function teaseGroom(t) { return null; }
 // ---------- captions (owner's style) ----------
 const RUNG = new Set(['хай', 'гёрлз', 'скэрд', 'смарт', 'рич', 'энд', 'кайнд', 'кинг', 'бургер-кинг', 'депендс', 'онли', 'плэнтс', 'бьютифул', 'бай']);
@@ -316,7 +318,7 @@ function endCard(t) { const k = ease((t - TL.END) / .35); g.fillStyle = `rgba(30
 
 // ---------- frame ----------
 let COVER = 0;
-const layerFor = k => /^(CU|MCU|ECU|PUSH)$/.test(k) ? null : k === 'HOSTS' || k === 'END' || k === 'OTS_g' || k === 'EZ' || k === 'ZS' ? {fg: 0} : k === 'NEWS' ? {hosts: 0, fg: 1, aud: 0, seatedG: 0} : k === 'GROOMS' || k === 'OTS_b' || k === 'STAGED_b' ? {hosts: 1, fg: 1, aud: 0} : {hosts: 1, fg: 1, aud: 1};
+const layerFor = k => /^(CU|MCU|ECU|PUSH)$/.test(k) ? null : k === 'HOSTS' || k === 'END' || k === 'OTS_g' || k === 'EZ' || k === 'ZS' ? {fg: 0} : k === 'NEWS' ? {hosts: 0, fg: 1, aud: 0, seatedG: 0} : k === 'WALK' ? {hosts: 1, fg: 1, aud: 0, bride: 0, plant: 0, seatedG: 0} : k === 'GROOMS' || k === 'OTS_b' || k === 'STAGED_b' ? {hosts: 1, fg: 1, aud: 0} : {hosts: 1, fg: 1, aud: 1};
 function worldPass(t, c, LY) { g.save(); g.translate(540, 960); g.scale(c.z, c.z); g.translate(-c.x, -c.y); studio(t, LY); g.restore(); }
 function frame(t) { const c = COVER && PART === 2 && !process.env.COVER_T ? {z: 2.1, x: 600, y: 1170, sh: shotAt(t)} : camAt(t), sh = c.sh, k = sh.k; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#2a2230'; g.fillRect(0, 0, W, H);
   if (COVER && PART === 2 && !process.env.COVER_T) worldPass(t, c, {hosts: 0, fg: 1, aud: 1});

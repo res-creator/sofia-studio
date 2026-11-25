@@ -75,16 +75,17 @@ function chair(x, y, sc, w, col, kind = 'arm') { body(x, y, sc, () => { const cs
 function shade(hex, k) { const n = parseInt(hex.slice(1), 16), f = v => Math.max(0, Math.min(255, Math.round(v * k))); return `rgb(${f(n >> 16)},${f((n >> 8) & 255)},${f(n & 255)})`; }
 // legs of a seated person, front view: short foreshortened thighs from the hip to the knee at the seat edge, shins down to the floor
 function seatedLegs(x, y, sc, c, o = {}) { body(x, y, sc, () => { const hem = o.hem; // floor-coord y of the skirt hem (null = trousers)
-  for (const s of [-1, 1]) { const kx = s * (o.spread || 58), legCol = c.legs || c.bottom, top = hem != null ? hem - 10 : -SEAT_H - 30;
+  for (const s of [-1, 1]) { const kx = s * (o.spread || 58), legCol = c.legs || c.bottom, top = hem != null ? hem - 40 : -SEAT_H - 30;
     if (hem == null) { ln([[s * 44, -SEAT_H - 30], [kx, -SEAT_H + 6]], 52 + 14, INK); ln([[s * 44, -SEAT_H - 30], [kx, -SEAT_H + 6]], 52, legCol); }   // thigh coming toward us
     const y0 = hem == null ? -SEAT_H + 6 : top; if (y0 < -70) { ln([[kx, y0], [kx + s * 4, -60]], 44 + 14, INK); ln([[kx, y0], [kx + s * 4, -60]], 44, legCol); }
     if (hem == null) ell(kx, -SEAT_H + 6, 30, 22, legCol, 0);   // knee cap blends thigh into shin
     const fx = kx + s * 4; P(); g.moveTo(fx - 46, -16); g.bezierCurveTo(fx - 46, -80, fx + 52, -90, fx + 56, -24); g.lineTo(fx + 56, 0); g.lineTo(fx - 46, 0); g.closePath(); fsx(c.shoe || '#ffffff'); ln([[fx - 46, -10], [fx + 56, -10]], 6, c.sole || INK); } }); }
 // seat a character: chair (optional) is drawn by the caller first; this draws the body and the legs
 function seat(def, x, y, sc, o = {}) { const c = T.palOf(def), k = T.kindOf(def.outfit), by = y + (HIP - SEAT_H) * sc;   // body origin so hips land on the seat
-  ch(def, x, by, sc, {seated: true, ...o});
   const skirted = k === 'gown' ? -10 : (def.skirt && c.skirt) ? -380 + (HIP - SEAT_H) : null;   // hem in floor coords (body -380 shifted)
-  seatedLegs(x, y, sc, c, {hem: skirted, spread: o.spread}); }
+  // seated skirt rule: the skirt covers thighs and knees; shins are drawn FIRST and start under the hem, so they only show below it
+  if (skirted != null) { seatedLegs(x, y, sc, c, {hem: skirted, spread: o.spread}); ch(def, x, by, sc, {seated: true, ...o}); }
+  else { ch(def, x, by, sc, {seated: true, ...o}); seatedLegs(x, y, sc, c, {hem: skirted, spread: o.spread}); } }
 const LAP = s => [[s * 86, -860], [s * 130, -720], [s * 64, -585]];   // hands resting on the lap
 // ---------- people seen from behind (spectators); Petrovich uses the same body at the same scale ----------
 function backPerson(x, y, sc, o = {}) { body(x, y, sc, () => { const top = o.top || '#6a4a8a', skin = o.skin || '#e8b896';
