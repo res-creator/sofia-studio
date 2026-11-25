@@ -1,0 +1,18 @@
+Whittier, Alaska (test fragment, How It's Run) · third-party data, assets and tools
+
+Map data and imagery (downloaded by tools/*.py; every URL and date in raw/manifest.jsonl)
+- Imagery: Sentinel-2 cloudless 2016 - https://s2maps.eu by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016 & 2017), CC BY 4.0. Layer s2cloudless_3857 (the 2016 release): zoom 13 (Whittier), zoom 11 (Anchorage–Prince William Sound), zoom 7 (Alaska, on the globe), zoom 4 (whole globe).
+- Elevation: AWS Terrain Tiles (Mapzen/Tilezen "terrarium"), https://registry.opendata.aws/terrain-tiles/ , zoom 12 and 10. Sources include SRTM, GMTED, ETOPO1, GEBCO and USGS 3DEP; attribution as required by the terrain-tiles documentation. Vertical exaggeration ×2.
+- Coastline, Begich Towers position, Anton Anderson Memorial Tunnel geometry: © OpenStreetMap contributors, Open Database License (ODbL) 1.0, via the Overpass API (maps.mail.ru mirror) and Nominatim.
+- The road from Anchorage is schematic; the sea's depth shading is schematic (distance from shore), not measured bathymetry.
+- The film carries a credit line in the bottom-right corner throughout.
+
+Facts: FACTS.md (Alaska Public Media 2013, 2021; Alaska Public Media / Alaska Beacon 2025).
+
+Voice: Kokoro-82M (hexgrad), voice am_puck, speed 1.05, Apache License 2.0, run locally via kokoro-onnx (MIT). Speech check: faster-whisper small.en (MIT).
+
+Fonts: Barlow Condensed (Jeremy Tribby), SIL Open Font License 1.1 (fonts/OFL-barlow.txt).
+
+Music and sound: synthesized in mix.py (numpy/scipy) and with the procedural foley of the Lemo-Opuscar library (core/audio/sfx.py, MIT). No samples.
+
+Engine: built with the Lemo-Opuscar library (3D Map Explainer style; code MIT), three.js (MIT).

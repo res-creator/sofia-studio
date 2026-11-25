@@ -1,0 +1,483 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Whittier, Alaska · 3D map</title>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+<style>
+@font-face{font-family:Barlow;src:url(fonts/BarlowCondensed-Regular.ttf);font-weight:400}
+@font-face{font-family:Barlow;src:url(fonts/BarlowCondensed-Medium.ttf);font-weight:500}
+@font-face{font-family:Barlow;src:url(fonts/BarlowCondensed-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#05080c;overflow:hidden}
+canvas{position:absolute;left:0;top:0;width:1920px;height:1080px}
+</style></head>
+<body>
+<script type="module">
+// Whittier, Alaska: one timeline, 46 s (shot list in TREATMENT.md).
+// ?t0=&t1= cuts a range out of the timeline (build.sh).
+import * as THREE from 'three';
+import { makePost } from './post.js';
+import { clamp, lerp, seg, ss, eo, eio, ei, track, mulberry } from '/core/lib.js';
+
+const Wd = 1920, Ht = 1080, Q = new URLSearchParams(location.search);
+const FULL = 46;
+const T0 = +(Q.get('t0') || 0), T1 = Q.has('t1') ? +Q.get('t1') : FULL;
+
+// ---------- data ----------
+const J = u => fetch(u).then(r => r.json()), B = u => fetch(u).then(r => r.arrayBuffer());
+const [meta, wmeta, mmeta, hraw, wraw, CUES] = await Promise.all([J('assets/meta.json'), J('assets/wide_meta.json'), J('assets/mid_meta.json'), B('assets/height.bin'), B('assets/wide_height.bin'), J('voice/cues.json')]);
+const hbuf = new Float32Array(hraw), wbuf = new Float32Array(wraw);
+const EX = 2.0;                                     // land ×2 (stated on screen)
+const { GW, GH, km_px, width_km: WK, height_km: HK } = meta;
+const [MX0, MY0] = meta.merc;
+const nm = 1.852, D2R = Math.PI / 180;
+
+function merc(lon, lat) { const n = 2 ** meta.z * 256; return [(lon + 180) / 360 * n, (1 - Math.asinh(Math.tan(lat * D2R)) / Math.PI) / 2 * n]; }
+function xz(lon, lat) { const [mx, my] = merc(lon, lat); return [(mx - MX0) * km_px - WK / 2, (my - MY0) * km_px - HK / 2]; }
+const [WX0, WZ0] = xz(wmeta.bbox[0], wmeta.bbox[3]), [WX1, WZ1] = xz(wmeta.bbox[2], wmeta.bbox[1]);
+function bil(buf, w, h, gx, gz) {
+  const x0 = Math.max(0, Math.min(w - 2, Math.floor(gx))), z0 = Math.max(0, Math.min(h - 2, Math.floor(gz)));
+  const fx = clamp(gx - x0), fz = clamp(gz - z0);
+  const a = buf[z0 * w + x0], b = buf[z0 * w + x0 + 1], c = buf[(z0 + 1) * w + x0], d = buf[(z0 + 1) * w + x0 + 1];
+  return (a * (1 - fx) + b * fx) * (1 - fz) + (c * (1 - fx) + d * fx) * fz;
+}
+function hAt(X, Z) {
+  if (Math.abs(X) < WK / 2 && Math.abs(Z) < HK / 2) return bil(hbuf, GW, GH, (X + WK / 2) / WK * (GW - 1), (Z + HK / 2) / HK * (GH - 1));
+  return bil(wbuf, wmeta.GW, wmeta.GH, (X - WX0) / (WX1 - WX0) * (wmeta.GW - 1), (Z - WZ0) / (WZ1 - WZ0) * (wmeta.GH - 1));
+}
+const yOf = h => Math.max(h, 0) / 1000 * EX;
+function geo(lon, lat, lift = 0) { const [X, Z] = xz(lon, lat); return new THREE.Vector3(X, yOf(hAt(X, Z)) + lift, Z); }
+function sea(lon, lat, y = .06) { const [X, Z] = xz(lon, lat); return new THREE.Vector3(X, y, Z); }
+
+// ---------- renderer, two worlds: the map (km, flat) and the globe (km, sphere R = 6371) ----------
+const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true });
+renderer.setPixelRatio(+(Q.get('ss') || 1)); renderer.setSize(Wd, Ht);
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.25;
+document.body.appendChild(renderer.domElement);
+if (Q.has('dbg')) renderer.debug.onShaderError = (gl, prog, vs, fs) => { const l = gl.getShaderInfoLog(fs) || ''; for (let i = 0; i < Math.min(l.length, 1200); i += 250) console.error('SH ' + l.slice(i, i + 250)); const src = gl.getShaderSource(fs).split('\n'); for (let k = 58; k < 66; k++) console.error('L' + (k + 1) + ' ' + (src[k] || '').slice(0, 200)); };
+const scene = new THREE.Scene();
+const HAZE = new THREE.Color(0x5f6872);
+scene.background = HAZE.clone();
+scene.fog = new THREE.Fog(HAZE, 300, 900);
+
+const tl = new THREE.TextureLoader();
+const load = u => new Promise((r, e) => tl.load(u, r, undefined, e));
+const [albedo, waterTex, shadowTex, walbedo, wwaterTex, wshadowTex, worldTex, midTex] = await Promise.all(
+  ['assets/albedo.jpg', 'assets/water.png', 'assets/shadow.png', 'assets/wide_albedo.jpg', 'assets/wide_water.png', 'assets/wide_shadow.png', 'assets/world.jpg', 'assets/mid_albedo.jpg'].map(load));
+for (const t of [albedo, walbedo, worldTex, midTex]) { t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 16; }
+for (const t of [shadowTex, wshadowTex]) t.anisotropy = 8;
+
+// the cross-section cut: everything on the camera side of the section line is removed (S4)
+const CUT = { p: new THREE.Vector4(0, 0, 0, 0), d: { value: 0 } };
+const cutU = { cutP: { value: CUT.p }, cutD: CUT.d };
+const CUT_GLSL = `uniform vec4 cutP; uniform float cutD;
+  bool cutAway(vec3 w){ if (cutD <= 0.) return false; float s = dot(w.xz - cutP.xy, cutP.zw); return s > 0. && s < cutD; }
+`;
+
+function roughFrom(tex) {
+  const c = document.createElement('canvas'); c.width = tex.image.width; c.height = tex.image.height;
+  const g = c.getContext('2d'); g.drawImage(tex.image, 0, 0); const id = g.getImageData(0, 0, c.width, c.height);
+  for (let i = 0; i < id.data.length; i += 4) { const w = id.data[i] / 255; id.data[i] = id.data[i + 1] = id.data[i + 2] = 245 * (1 - w) + 185 * w; }
+  g.putImageData(id, 0, 0); return new THREE.CanvasTexture(c);
+}
+const LIGHT_CHUNK = THREE.ShaderChunk.lights_fragment_begin.replaceAll('RE_Direct( directLight,', 'directLight.color *= mix( 1.0, texture2D( tShadow, vMapUv ).r, 0.88 );\n\t\tRE_Direct( directLight,');
+function terrainMat(map, water, shadow, clipRect) {
+  const m = new THREE.MeshStandardMaterial({ map, roughnessMap: roughFrom(water), roughness: 1, metalness: 0 });
+  m.onBeforeCompile = sh => {
+    Object.assign(sh.uniforms, cutU, { tShadow: { value: shadow }, clipR: { value: clipRect || new THREE.Vector4(1, 1, -1, -1) } });
+    sh.vertexShader = 'varying vec3 vWp;\n' + sh.vertexShader.replace('#include <project_vertex>', '#include <project_vertex>\n vWp = (modelMatrix * vec4(transformed, 1.0)).xyz;');
+    sh.fragmentShader = 'uniform sampler2D tShadow; uniform vec4 clipR; varying vec3 vWp;\n' + CUT_GLSL + sh.fragmentShader
+      .replace('void main() {', 'void main() {\n if (vWp.x > clipR.x && vWp.x < clipR.z && vWp.z > clipR.y && vWp.z < clipR.w) discard;\n if (cutAway(vWp)) discard;')
+      .replace('#include <lights_fragment_begin>', LIGHT_CHUNK);
+  };
+  return m;
+}
+function terrainMesh(w, h, gw, gh, buf, mat) {
+  const g = new THREE.PlaneGeometry(w, h, gw - 1, gh - 1); g.rotateX(-Math.PI / 2);
+  const p = g.attributes.position; for (let i = 0; i < p.count; i++) p.setY(i, yOf(buf[i]));
+  g.computeVertexNormals(); return new THREE.Mesh(g, mat);
+}
+scene.add(terrainMesh(WK, HK, GW, GH, hbuf, terrainMat(albedo, waterTex, shadowTex)));
+{
+  const inset = 1.5, clip = new THREE.Vector4(-WK / 2 + inset, -HK / 2 + inset, WK / 2 - inset, HK / 2 - inset);
+  const wm = terrainMesh(WX1 - WX0, WZ1 - WZ0, wmeta.GW, wmeta.GH, wbuf, terrainMat(walbedo, wwaterTex, wshadowTex, clip));
+  wm.position.set((WX0 + WX1) / 2, -.03, (WZ0 + WZ1) / 2); scene.add(wm);
+}
+const sun = new THREE.DirectionalLight(0xffe2b8, 3.1);
+sun.position.set(80, 70, 150); sun.target.position.set(0, 0, 0);
+scene.add(sun, sun.target, new THREE.HemisphereLight(0x9fb6c8, 0x4a3420, 0.8));
+
+// ---------- glowing ribbons: routes, lanes, boundaries, wakes, pipelines (map and globe) ----------
+// width = max(world width, pixel width). aNorm is the 3D side vector (flat map: horizontal; globe: tangent to the sphere)
+const camera = new THREE.PerspectiveCamera(28, Wd / Ht, 2, 900);
+const gcam = new THREE.PerspectiveCamera(28, Wd / Ht, 100, 2e5);
+const PIXK = 2 * Math.tan(THREE.MathUtils.degToRad(14)) / Ht;
+const RIB_V = `attribute float aSide; attribute vec3 aNorm; attribute float aAlong;
+  uniform float wW, pxW, pixK; varying float vSide, vAlong; varying vec3 vW;
+  void main(){ vec4 wp = modelMatrix * vec4(position, 1.); float pw = length(cameraPosition - wp.xyz) * pixK;
+    float hw = max(wW * .5, pxW * .5 * pw); wp.xyz += aNorm * aSide * hw; vSide = aSide; vAlong = aAlong; vW = wp.xyz;
+    gl_Position = projectionMatrix * viewMatrix * wp; }`;
+const RIB_F = `varying float vSide, vAlong; varying vec3 vW; uniform vec3 col; uniform float k, inten, revA, revB, soft, head, headAmt, dash, duty,
+  flowSp, flowLen, flowAmt, flowPh, base, wakeLen, wakeAmt, L, endFade, normalA; uniform float shipS[8]; uniform float shipA[8];
+  ${CUT_GLSL}
+  void main(){
+    if (cutAway(vW)) discard;
+    float d = vSide; float g = exp(-d * d * k);
+    float vis = smoothstep(revA - soft, revA, vAlong) * (1. - smoothstep(revB, revB + soft, vAlong));
+    if (vis <= 0.) discard;
+    float e = smoothstep(0., endFade, vAlong) * smoothstep(L, L - endFade, vAlong);
+    float a = base;
+    if (dash > 0.) a *= step(fract(vAlong / dash), duty);
+    if (flowAmt > 0.) { float f = fract((vAlong - flowPh) / flowSp); a += flowAmt * smoothstep(1. - flowLen / flowSp, 1., f) * smoothstep(1., .985, f); }
+    a += headAmt * exp(-pow((vAlong - head) / (2.5 * max(1., soft / 2.)), 2.));
+    if (wakeAmt > 0.) for (int j = 0; j < 8; j++) { float x = shipS[j] - vAlong; if (x > 0. && x < wakeLen) a += wakeAmt * shipA[j] * pow(1. - x / wakeLen, 2.); }
+    if (normalA > 0.) { gl_FragColor = vec4(col, normalA * g * vis * e * inten); return; }
+    gl_FragColor = vec4(col * g * a * inten * vis * e, 1.); }`;
+function ribbon(pts, o, sc = scene, up = null) {
+  const pos = [], side = [], nrm = [], al = [], idx = []; let L = 0;
+  for (let i = 0; i < pts.length; i++) {
+    const a = pts[Math.max(0, i - 1)], b = pts[Math.min(pts.length - 1, i + 1)];
+    const t = new THREE.Vector3().subVectors(b, a); const u = up ? pts[i].clone().normalize() : new THREE.Vector3(0, 1, 0);
+    const n = new THREE.Vector3().crossVectors(t, u).normalize();
+    if (i) L += pts[i].distanceTo(pts[i - 1]);
+    const p = pts[i];
+    for (const s of [1, -1]) { pos.push(p.x, p.y, p.z); side.push(s); nrm.push(n.x, n.y, n.z); al.push(L); }
+    if (i) { const q = 2 * i; idx.push(q - 2, q - 1, q, q - 1, q + 1, q); }
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setAttribute('aSide', new THREE.Float32BufferAttribute(side, 1));
+  g.setAttribute('aNorm', new THREE.Float32BufferAttribute(nrm, 3)); g.setAttribute('aAlong', new THREE.Float32BufferAttribute(al, 1)); g.setIndex(idx);
+  const U = { col: new THREE.Color(o.col ?? 0xffa63d), k: o.k ?? 3, inten: 0, wW: o.wW ?? 0, pxW: o.pxW ?? 2, pixK: PIXK, revA: 0, revB: 1e9, soft: o.soft ?? 2,
+    head: -1e6, headAmt: 0, dash: o.dash ?? 0, duty: o.duty ?? .55, flowSp: o.flowSp ?? 30, flowLen: o.flowLen ?? 6, flowAmt: o.flowAmt ?? 0, flowPh: 0,
+    base: o.base ?? 1, wakeLen: o.wakeLen ?? 12, wakeAmt: o.wakeAmt ?? 0, L, endFade: o.endFade ?? .01, normalA: o.normalA ?? 0,
+    shipS: new Array(8).fill(-1e6), shipA: new Array(8).fill(0) };
+  const uniforms = { ...cutU }; for (const k in U) uniforms[k] = { value: U[k] };
+  const normal = (o.normalA ?? 0) > 0;
+  const m = new THREE.Mesh(g, new THREE.ShaderMaterial({ uniforms, vertexShader: RIB_V, fragmentShader: RIB_F, side: THREE.DoubleSide, transparent: true, depthWrite: false,
+    blending: normal ? THREE.NormalBlending : THREE.AdditiveBlending, toneMapped: false }));
+  m.renderOrder = o.order ?? 2; m.frustumCulled = false; sc.add(m);
+  m.L = L; m.u = uniforms; return m;
+}
+const smooth = (pts, n) => new THREE.CatmullRomCurve3(pts, false, 'centripetal').getSpacedPoints(n);
+function offset(pts, d) {
+  return pts.map((p, i) => { const a = pts[Math.max(0, i - 1)], b = pts[Math.min(pts.length - 1, i + 1)];
+    const t = new THREE.Vector3().subVectors(b, a).setY(0).normalize(); return new THREE.Vector3(p.x + t.z * d, p.y, p.z - t.x * d); });
+}
+function arc(pts) { const s = [0]; for (let i = 1; i < pts.length; i++) s.push(s[i - 1] + pts[i].distanceTo(pts[i - 1])); return s; }
+function along(pts, S, s) {
+  s = clamp(s, 0, S[S.length - 1]); let lo = 0, hi = S.length - 1;
+  while (hi - lo > 1) { const mid = (lo + hi) >> 1; if (S[mid] <= s) lo = mid; else hi = mid; }
+  const f = (s - S[lo]) / ((S[hi] - S[lo]) || 1), p = pts[lo].clone().lerp(pts[hi], f);
+  return { p, dir: new THREE.Vector3().subVectors(pts[hi], pts[lo]).normalize() };
+}
+function nearest(pts, S, lon, lat) { const [X, Z] = xz(lon, lat); let bi = 0, bd = 1e9; pts.forEach((p, i) => { const d = (p.x - X) ** 2 + (p.z - Z) ** 2; if (d < bd) { bd = d; bi = i; } }); return S[bi]; }
+const rv = (r, a) => { for (const k in a) r.u[k].value = a[k]; };
+
+// ---------- Whittier data layer ----------
+const AMB = 0xffa63d, AMB2 = 0xffc36b, ICE = 0xd9e6ee;
+const P_BEGICH = [-148.6859, 60.7722];                      // Begich Towers (OSM way 232411466)
+const TUNNEL_LL = [[-148.803615, 60.7888861], [-148.7683108, 60.7830825], [-148.7330898, 60.7772824]];   // OSM way 459258504 (Anton Anderson Memorial Tunnel)
+const ANCH = [-149.90, 61.218];
+// the road from Anchorage: schematic waypoints along Turnagain Arm (Seward Hwy) and Portage Glacier Rd to the tunnel's west portal
+const ROAD_LL = [ANCH, [-149.86, 61.12], [-149.70, 61.01], [-149.46, 60.965], [-149.20, 60.935], [-149.02, 60.86], [-148.90, 60.805], TUNNEL_LL[0]];
+const tunPts = (() => { const P = []; for (let i = 0; i <= 160; i++) { const f = i / 160 * 2, j = Math.min(1, Math.floor(f)), u = f - j; const lo = lerp(TUNNEL_LL[j][0], TUNNEL_LL[j + 1][0], u), la = lerp(TUNNEL_LL[j][1], TUNNEL_LL[j + 1][1], u); P.push(geo(lo, la, .06)); } return P; })(), tunS = arc(tunPts);
+const roadPts = smooth(ROAD_LL.map(([lo, la]) => geo(lo, la, .25)), 600), roadS = arc(roadPts);
+const tunnel = {
+  glow: ribbon(tunPts, { pxW: 30, k: 3, base: .45, col: AMB }),
+  core: ribbon(tunPts, { pxW: 4.5, k: 1.1, base: 2.0, flowAmt: 2.2, flowSp: 1.4, flowLen: .35, col: AMB2 }),
+  cold: ribbon(tunPts, { pxW: 4.0, k: 1.1, base: 1.4, col: ICE, order: 3 }),
+};
+const road = { case: ribbon(roadPts, { pxW: 8, k: 1.0, normalA: .55, col: 0x2b2119 }), glow: ribbon(roadPts, { pxW: 12, k: 3, base: .3, col: AMB }), core: ribbon(roadPts, { pxW: 2.4, k: 1.1, base: 1.4, dash: 2.2, duty: .6, col: AMB2 }) };
+
+// ---------- the globe ----------
+// ---------- the globe ----------
+const gscene = new THREE.Scene(); gscene.background = new THREE.Color(0x04070b);
+const RE = 6371;
+const gdir = (lat, lon) => new THREE.Vector3(Math.cos(lat * D2R) * Math.sin(lon * D2R), Math.sin(lat * D2R), Math.cos(lat * D2R) * Math.cos(lon * D2R));
+{
+  const NU = 360, NV = 180, pos = [], uv = [], idx = [];
+  for (let j = 0; j <= NV; j++) for (let i = 0; i <= NU; i++) {
+    const lat = 90 - j * 180 / NV, lon = -180 + i * 360 / NU, p = gdir(lat, lon).multiplyScalar(RE);
+    pos.push(p.x, p.y, p.z); uv.push(i / NU, 1 - j / NV);
+  }
+  for (let j = 0; j < NV; j++) for (let i = 0; i < NU; i++) { const a = j * (NU + 1) + i, b = a + NU + 1; idx.push(a, b, a + 1, b, b + 1, a + 1); }
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2)); g.setIndex(idx); g.computeVertexNormals();
+  const gm = new THREE.MeshStandardMaterial({ map: worldTex, roughness: .85, metalness: 0 });
+  // the region on the globe uses the same Sentinel-2 imagery as the map, so the dive into the map is a clean match
+  const [mx0, my0, mx1, my1] = wmeta.merc;
+  gm.onBeforeCompile = sh => {
+    sh.uniforms.tWide = { value: walbedo }; sh.uniforms.tMid = { value: midTex }; sh.uniforms.mM = { value: new THREE.Vector4(...mmeta.merc) }; sh.uniforms.mz = { value: mmeta.z }; sh.uniforms.wM = { value: new THREE.Vector4(mx0, my0, mx1, my1) }; sh.uniforms.wz = { value: wmeta.z };
+    sh.vertexShader = 'varying vec3 vOP;\n' + sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\n vOP = position;');
+    sh.fragmentShader = 'uniform sampler2D tWide, tMid; uniform vec4 wM, mM; uniform float wz, mz; varying vec3 vOP;\n' + sh.fragmentShader.replace('#include <map_fragment>', `
+      vec4 sampledDiffuseColor = texture2D( map, vMapUv );
+      { vec3 dn = normalize(vOP); float la = asin(dn.y), lo = atan(dn.x, dn.z); float N = exp2(wz) * 256.;
+        float mx = (lo + PI) / (2. * PI) * N, my = (1. - log(tan(PI * .25 + la * .5)) / PI) * .5 * N;
+        vec2 uw = vec2((mx - wM.x) / (wM.z - wM.x), 1. - (my - wM.y) / (wM.w - wM.y));
+        { float M = exp2(mz) * 256.; float qx = (lo + PI) / (2. * PI) * M, qy = (1. - log(tan(PI * .25 + la * .5)) / PI) * .5 * M;
+          vec2 um = vec2((qx - mM.x) / (mM.z - mM.x), 1. - (qy - mM.y) / (mM.w - mM.y));
+          if (um.x > 0. && um.x < 1. && um.y > 0. && um.y < 1.) { float e2 = smoothstep(0., .06, min(min(um.x, 1. - um.x), min(um.y, 1. - um.y))); sampledDiffuseColor = mix(sampledDiffuseColor, texture2D(tMid, um), e2); } }
+        if (uw.x > 0. && uw.x < 1. && uw.y > 0. && uw.y < 1.) { float e = smoothstep(0., .04, min(min(uw.x, 1. - uw.x), min(uw.y, 1. - uw.y)));
+          sampledDiffuseColor = mix(sampledDiffuseColor, texture2D(tWide, uw), e); } }
+      diffuseColor *= sampledDiffuseColor;`);
+  };
+  gscene.add(new THREE.Mesh(g, gm));
+  // atmosphere: a thin rim, warm on the day side
+  const am = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.FrontSide, toneMapped: false,
+    uniforms: { sunD: { value: gdir(40, -125) } },
+    vertexShader: `varying vec3 vN, vP; void main(){ vN = normalize(normal); vec4 w = modelMatrix * vec4(position, 1.); vP = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }`,
+    fragmentShader: `varying vec3 vN, vP; uniform vec3 sunD; void main(){ vec3 v = normalize(cameraPosition - vP); float r = 1. - clamp(dot(vN, v), 0., 1.);
+      float rim = pow(r, 3.2); float day = smoothstep(-.2, .45, dot(vN, sunD));
+      vec3 c = mix(vec3(.20, .36, .60), vec3(.98, .80, .58), day * .5); gl_FragColor = vec4(c * rim * (.05 + .3 * day), 1.); }` });
+  gscene.add(new THREE.Mesh(new THREE.SphereGeometry(RE * 1.012, 160, 80), am));
+  const gs = new THREE.DirectionalLight(0xffe6c4, 3.0); gs.position.copy(gdir(40, -125).multiplyScalar(5e4)); gscene.add(gs, new THREE.HemisphereLight(0x3a5878, 0x0a0a10, .12));
+  // stars, fixed
+  const R = mulberry(7), sp = [];
+  for (let i = 0; i < 1600; i++) { const u = R() * 2 - 1, th = R() * Math.PI * 2, r = Math.sqrt(1 - u * u); sp.push(r * Math.cos(th) * 9e4, u * 9e4, r * Math.sin(th) * 9e4); }
+  const sg = new THREE.BufferGeometry(); sg.setAttribute('position', new THREE.Float32BufferAttribute(sp, 3));
+  gscene.add(new THREE.Points(sg, new THREE.PointsMaterial({ color: 0x9aa6b4, size: 1.3, sizeAttenuation: false, transparent: true, opacity: .55 })));
+}
+
+const WHG = gdir(P_BEGICH[1], P_BEGICH[0]).multiplyScalar(RE);
+const GCAM_KEYS = ([
+  [0.0, [Math.log(24000), 38, -110, 45, -115]],
+  [2.6, [Math.log(11000), 54, -135, 58, -140]],
+  [5.2, [Math.log(1600), 60.2, -148.8, 61.0, -148.9]],
+  [6.5, null]]);
+let GCAM;
+function setGlobeCam(t) {
+  const dissolve = t >= 6.5 && t < 7.3;
+  const [la, cla, clo, tla, tlo] = dissolve ? mapToGlobe(t) : GCAM(clamp(t, 0, 6.5)); const alt = Math.exp(la);
+  const td = gdir(tla, tlo), north = new THREE.Vector3(0, 1, 0).addScaledVector(td, -td.y).normalize();
+  gcam.position.copy(gdir(cla, clo).multiplyScalar(RE + alt)); gcam.up.copy(north); gcam.lookAt(td.clone().multiplyScalar(RE));
+  gcam.near = Math.max(50, alt * .3); gcam.far = 2e5; gcam.updateProjectionMatrix(); gcam.updateMatrixWorld(); return alt;
+}
+function unxz(p) { let lo = -148.7, la = 60.8; for (let i = 0; i < 8; i++) { const [x, z] = xz(lo, la), [x1] = xz(lo + .001, la), [, z1] = xz(lo, la + .001); lo += (p.x - x) / ((x1 - x) / .001); la += (p.z - z) / ((z1 - z) / .001); } return [lo, la]; }
+
+// ---------- map camera: one continuous move. keys: t, [log distance km, pitch°, yaw°, target lon, lat, target height km] ----------
+const CAM = track([
+  [6.5, [Math.log(150), 82, 0, -149.0, 60.98, 0]],
+  [7.3, [Math.log(140), 80, 0, -149.05, 60.98, 0]],
+  [9.0, [Math.log(128), 68, -4, -149.18, 60.99, 0]],
+  [11.6, [Math.log(118), 58, 4, -149.15, 60.98, 0]],
+  [13.6, [Math.log(70), 50, 14, -148.74, 60.79, 0]],
+  [16.2, [Math.log(42), 44, 40, -148.69, 60.785, 0]],
+  [19.2, [Math.log(30), 40, 66, -148.69, 60.78, 0]],
+  [21.8, [Math.log(9.5), 35, 96, -148.6859, 60.7722, .03]],
+  [28.6, [Math.log(8.2), 33, 112, -148.69, 60.773, .03]],
+  [30.0, [Math.log(12.5), 33, 22, -148.735, 60.779, .05]],
+  [34.0, [Math.log(11.5), 29, 4, -148.785, 60.786, .05]],
+  [37.4, [Math.log(13.5), 31, -6, -148.77, 60.785, .05]],
+  [40.5, [Math.log(20), 27, 60, -148.69, 60.782, 0]],
+  [46.0, [Math.log(36), 21, 82, -148.70, 60.783, 0]]]);
+function mapCam(t) {
+  const [ld, pd, yd, lo, la, h] = CAM(clamp(t, 6.5, 46)); const [X, Z] = xz(lo, la), d = Math.exp(ld), p = pd * D2R, y = yd * D2R;
+  return { d, cam: new THREE.Vector3(X + Math.sin(y) * Math.cos(p) * d, h + Math.sin(p) * d, Z + Math.cos(y) * Math.cos(p) * d), tgt: new THREE.Vector3(X, h, Z) };
+}
+function mapToGlobe(t) { const { cam, tgt } = mapCam(t); const [clo, cla] = unxz(cam), [tlo, tla] = unxz(tgt); return [Math.log(cam.y), cla, clo, tla, tlo]; }
+function setCamera(t) {
+  const { d, cam, tgt } = mapCam(t);
+  camera.position.copy(cam); camera.near = Math.max(.05, d * .02); camera.far = d * 8 + 400; camera.lookAt(tgt); camera.updateProjectionMatrix(); camera.updateMatrixWorld();
+  scene.fog.near = d * 1.1; scene.fog.far = d * 2.3 + 40; return d;
+}
+GCAM = track(GCAM_KEYS.map(([t, v]) => [t, v || mapToGlobe(t)]));
+
+// ---------- post ----------
+const SS = +(Q.get('ss') || 1);
+const post = makePost(renderer, scene, camera, Wd, Ht, { ssaa: SS, ao: false });
+post.dof.maxCoc = 7; post.bloom.strength = .55; post.bloom.radius = .55; post.bloom.threshold = .95;
+const VU = post.vig.uniforms; VU.amt.value = .42; VU.warm.value = .25; VU.sat.value = .92; VU.contrast.value = .12;
+const gpost = makePost(renderer, gscene, gcam, Wd, Ht, { ssaa: SS, ao: false });
+gpost.dof.maxCoc = 0; gpost.bloom.strength = .7; gpost.bloom.radius = .6; gpost.bloom.threshold = .9;
+const GU = gpost.vig.uniforms; GU.amt.value = .5; GU.warm.value = .2; GU.sat.value = .95; GU.contrast.value = .1;
+
+
+// ---------- overlay ----------
+const ov = document.createElement('canvas'); ov.width = Wd * 2; ov.height = Ht * 2; ov.style.width = Wd + 'px'; ov.style.height = Ht + 'px'; document.body.appendChild(ov);
+const g = ov.getContext('2d');
+const snap = document.createElement('canvas'); snap.width = Wd * 2; snap.height = Ht * 2; const sg = snap.getContext('2d');
+await Promise.all(['400 20px Barlow', '500 20px Barlow', '600 20px Barlow'].map(f => document.fonts.load(f, 'ABC')));
+const scrW = (v, cam) => { const p = v.clone().project(cam); return [(p.x + 1) / 2 * Wd, (1 - p.y) / 2 * Ht, p.z]; };
+const scr = v => scrW(v, camera);
+const C = { land: '#2b2119', sea: '#bcdbe6', light: '#f6eee0', amber: '#ffc36b', amberSoft: 'rgba(255,214,150,.92)', ice: '#d9e6ee', dim: 'rgba(240,232,216,.66)' };
+let TX = [];
+function txt(s, x, y, o) {
+  g.save(); g.font = `${o.w || 500} ${o.size}px ${o.f || 'Barlow'}`; g.letterSpacing = (o.sp || 0) + 'px';
+  g.textAlign = o.align || 'center'; g.textBaseline = o.base || 'middle'; g.globalAlpha = clamp(o.a ?? 1); g.fillStyle = o.col || C.light;
+  g.fillText(s, x, y); const w = g.measureText(s).width;
+  const x0 = o.align === 'left' ? x : o.align === 'right' ? x - w : x - w / 2;
+  if ((o.a ?? 1) > .5 && !o.nobox) TX.push({ id: o.id || s, text: s, x0, y0: y - o.size * .6, x1: x0 + w, y1: y + o.size * .6 });
+  g.restore(); return w;
+}
+const tw = (s, size, w = 500, sp = 0, f = 'Barlow') => { g.save(); g.font = `${w} ${size}px ${f}`; g.letterSpacing = sp + 'px'; const r = g.measureText(s).width; g.restore(); return r; };
+function line(pts, col, w = 1.4, a = 1, dash = null) { g.save(); g.globalAlpha = a; g.strokeStyle = col; g.lineWidth = w; if (dash) g.setLineDash(dash); g.beginPath(); pts.forEach(([x, y], i) => i ? g.lineTo(x, y) : g.moveTo(x, y)); g.stroke(); g.restore(); }
+function dot(x, y, r, col, a = 1) { g.save(); g.globalAlpha = a; g.fillStyle = col; g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); g.restore(); }
+
+
+const STY = {
+  land: { size: 30, w: 600, sp: 9, col: C.land, a: .85 }, landL: { size: 30, w: 600, sp: 9, col: C.light, a: .92 },
+  sea: { size: 21, w: 500, sp: 7, col: C.sea, a: .95 }, town: { size: 17, w: 600, sp: 4, col: C.light, a: .92, align: 'left' } };
+// [lon, lat, text, style, from, to]
+const LABELS = [
+  [-149.86, 61.235, 'ANCHORAGE', 'town', 7.6, 12.4], [-149.55, 60.985, 'TURNAGAIN ARM', 'sea', 8.2, 12.4], [-148.05, 60.66, 'PRINCE WILLIAM SOUND', 'sea', 8.4, 12.6],
+  [-148.62, 61.12, 'CHUGACH MOUNTAINS', 'landL', 8.6, 12.4],
+  [-148.53, 60.805, 'PASSAGE CANAL', 'sea', 13.8, 19.0]];
+const BOTTOM_SAFE = 190;
+function mapLabels(t) {
+  for (const [lo, la, s, kind, a0, a1] of LABELS) {
+    let a = ss(seg(t, a0, a0 + .6)) * (1 - ss(seg(t, a1 - .5, a1))); if (a <= .01) continue;
+    const st = STY[kind], [x, y, z] = scr(geo(lo, la, .3)); if (z > 1) continue;
+    const w = tw(s, st.size, st.w, st.sp), x0 = st.align === 'left' ? x : x - w / 2, x1 = x0 + w;
+    const m = Math.min(x0 - 40, Wd - 40 - x1, y - 40, (x0 < 1250 ? Ht - BOTTOM_SAFE : Ht - 70) - y);
+    a *= ss(seg(m, 0, 50)); if (a <= .01) continue;
+    if (kind === 'town') dot(x - 8, y, 3.5, C.light, a);
+    txt(s, x + (kind === 'town' ? 4 : 0), y, { ...st, a: a * st.a, id: 'L' + s + a0 });
+  }
+}
+function subtitles(t) {
+  const c = CUES.find(c => t >= c.t0 - .12 && t < c.t1 + .12);
+  g.save(); const gr = g.createLinearGradient(0, Ht - 230, 0, Ht); gr.addColorStop(0, 'rgba(6,10,15,0)'); gr.addColorStop(1, 'rgba(6,10,15,.55)');
+  g.fillStyle = gr; g.fillRect(0, Ht - 230, Wd, 230); g.restore();
+  if (!c) return;
+  const a = ss(seg(t, c.t0 - .12, c.t0 + .08)) * (1 - ss(seg(t, c.t1 - .08, c.t1 + .12)));
+  const X = 96, Y = Ht - 92;
+  g.save(); g.globalAlpha = a; g.fillStyle = C.amber; g.fillRect(X - 22, Y - 26, 3, 48); g.restore();
+  txt(c.en, X, Y, { size: 38, w: 500, sp: 1.2, align: 'left', col: C.light, a, id: 'sub', nobox: true });
+}
+function credits(t) {
+  const a = ss(seg(t, .6, 1.4));
+  txt('IMAGERY SENTINEL-2 CLOUDLESS 2016 BY EOX (CC BY 4.0) · GLOBE SENTINEL-2 CLOUDLESS 2016 · ELEVATION AWS TERRAIN TILES · COASTLINE, TUNNEL © OPENSTREETMAP (ODbL) · ROAD SCHEMATIC · VERTICAL ×2',
+    Wd - 40, Ht - 26, { size: 11.5, w: 500, sp: 1.1, align: 'right', col: 'rgba(240,232,216,.55)', base: 'alphabetic', a, id: 'credits', nobox: true });
+}
+// the globe: the town pinned, its name set in empty space
+function globeTitle(t) {
+  const a = ss(seg(t, 2.4, 3.1)) * (1 - ss(seg(t, 6.2, 6.8))); if (a <= 0) return;
+  const [x, y] = scrW(WHG, gcam);
+  const r = seg(t, 2.3, 3.5);
+  for (const k of [0, .33, .66]) { const q = (r * 1.4 + k) % 1; g.save(); g.globalAlpha = a * (1 - q) * .8; g.strokeStyle = C.amber; g.lineWidth = 1.4; g.beginPath(); g.arc(x, y, 6 + 34 * q, 0, 7); g.stroke(); g.restore(); }
+  dot(x, y, 4, C.amber, a);
+  const lx = Math.max(120, x - 640), ly = Math.max(260, y - 190), e = eo(seg(t, 2.5, 3.2));
+  line([[x - 5, y - 5], [x - 5 + (lx + 470 - x + 5) * e, y - 5 + (ly + 30 - y + 5) * e]], 'rgba(255,214,150,.85)', 1.2, a);
+  txt('60°46′N   148°41′W', lx, ly - 46, { size: 17, w: 500, sp: 4, align: 'left', col: C.amberSoft, a, id: 'g-coord' });
+  txt('WHITTIER, ALASKA', lx - 2, ly, { size: 58, w: 600, sp: 7, align: 'left', col: C.light, a: a * ss(seg(t, 2.6, 3.2)), id: 'g-title' });
+}
+// the road from Anchorage, schematic, ~60 road miles (Alaska Public Media)
+function roadLabel(t) {
+  const a = ss(seg(t, 10.2, 10.7)) * (1 - ss(seg(t, 12.6, 13.2))); if (a <= 0) return;
+  const m = along(roadPts, roadS, roadS.at(-1) * .52).p, [x, y] = scr(m);
+  txt('≈ 60 ROAD MILES', x + 18, y - 40, { size: 34, w: 600, sp: 3, align: 'left', col: C.light, a, id: 'road-mi' });
+  txt('FROM ANCHORAGE · ROUTE SCHEMATIC', x + 19, y - 10, { size: 14, w: 500, sp: 3, align: 'left', col: C.amberSoft, a, id: 'road-s' });
+  const [wx, wy] = scr(geo(P_BEGICH[0], P_BEGICH[1], .2)); dot(wx, wy, 4, C.amber, a);
+  txt('WHITTIER', wx + 12, wy + 2, { size: 17, w: 600, sp: 4, align: 'left', col: C.light, a, id: 'road-w' });
+}
+// three walls of mountain, the fourth side water (13.2 → 19.2)
+function enclosure(t) {
+  const a = ss(seg(t, 13.6, 14.2)) * (1 - ss(seg(t, 18.8, 19.4))); if (a <= 0) return;
+  const [cx, cz] = xz(-148.675, 60.776), R = 3.4, pts = [];
+  const e = eio(seg(t, 13.8, 15.4)), b0 = 35, b1 = 325, bm = b0 + (b1 - b0) * e;   // bearing from north, clockwise: open to the east (the canal)
+  for (let b = b0; b <= bm; b += 3) { const r = b * D2R, X = cx + Math.sin(r) * R, Z = cz - Math.cos(r) * R; pts.push(scr(new THREE.Vector3(X, yOf(hAt(X, Z)) + .05, Z))); }
+  if (pts.length > 1) line(pts.map(p => [p[0], p[1]]), C.ice, 2.2, a * .95, [10, 7]);
+  const la = a * ss(seg(t, 14.6, 15.1));
+  const [mx, my] = scr(geo(-148.68, 60.80, .9)); txt('MOUNTAINS ON THREE SIDES', mx, my - 28, { size: 24, w: 600, sp: 5, col: C.light, a: la, id: 'enc-m' });
+  const sa = a * ss(seg(t, 15.6, 16.1)), [sx, sy] = scr(sea(-148.60, 60.787, .05)), [ex, ey] = scr(sea(-148.53, 60.80, .05));
+  const k = eo(seg(t, 15.6, 16.4)); line([[sx, sy], [sx + (ex - sx) * k, sy + (ey - sy) * k]], C.amber, 2.4, sa);
+  if (k > .95) { const ang = Math.atan2(ey - sy, ex - sx); g.save(); g.globalAlpha = sa; g.fillStyle = C.amber; g.translate(ex, ey); g.rotate(ang); g.beginPath(); g.moveTo(10, 0); g.lineTo(-6, -7); g.lineTo(-6, 7); g.fill(); g.restore(); }
+  txt('THE FOURTH: PRINCE WILLIAM SOUND', ex + 16, ey + 30, { size: 20, w: 600, sp: 4, align: 'left', col: C.sea, a: sa, id: 'enc-s' });
+}
+// Begich Towers: pin, ring pulse, leader line, data card (19.4 → 28.6)
+function building(t) {
+  const a = ss(seg(t, 20.0, 20.6)) * (1 - ss(seg(t, 28.4, 29.0))); if (a <= 0) return;
+  const [x, y] = scr(geo(P_BEGICH[0], P_BEGICH[1], .03));
+  const r = seg(t, 20.0, 21.6);
+  for (const k of [0, .5]) { const q = (r * 1.2 + k) % 1; g.save(); g.globalAlpha = a * (1 - q) * .85; g.strokeStyle = C.amber; g.lineWidth = 1.6; g.beginPath(); g.arc(x, y, 6 + 40 * q, 0, 7); g.stroke(); g.restore(); }
+  dot(x, y, 5, C.amber, a);
+  const lx = 1180, ly = 250, e = eo(seg(t, 20.3, 21.0));
+  line([[x, y - 6], [x + (lx - 20 - x) * e, y - 6 + (ly + 40 - y + 6) * e]], 'rgba(255,214,150,.85)', 1.3, a);
+  const c1 = a * ss(seg(t, 20.7, 21.2)), c2 = a * ss(seg(t, 24.6, 25.1)), c3 = a * ss(seg(t, 26.1, 26.6)), c4 = a * ss(seg(t, 20.4, 20.9));
+  txt('BEGICH TOWERS', lx, ly, { size: 58, w: 600, sp: 5, align: 'left', col: C.light, a: c1, id: 'b-name' });
+  txt('≈ 275 PEOPLE IN TOWN · ALMOST ALL LIVE HERE', lx + 2, ly + 52, { size: 21, w: 600, sp: 3.5, align: 'left', col: C.amberSoft, a: c4 * ss(seg(t, 21.2, 21.7)), id: 'b-pop' });
+  const w14 = txt('14', lx, ly + 150, { size: 90, w: 600, sp: 1, align: 'left', col: '#ffd08a', a: c2, id: 'b-14' });
+  txt('FLOORS', lx + w14 + 12, ly + 168, { size: 22, w: 600, sp: 3, align: 'left', col: C.light, a: c2, id: 'b-fl' });
+  const w196 = txt('196', lx + 260, ly + 150, { size: 90, w: 600, sp: 1, align: 'left', col: '#ffd08a', a: c3, id: 'b-196' });
+  txt('APARTMENTS', lx + 260 + w196 + 12, ly + 168, { size: 22, w: 600, sp: 3, align: 'left', col: C.light, a: c3, id: 'b-apt' });
+  txt('SOURCES: ALASKA PUBLIC MEDIA (2013, 2025)', lx + 2, ly + 222, { size: 14, w: 500, sp: 2.5, align: 'left', col: C.dim, a: c3, id: 'b-src' });
+}
+// the tunnel (29.0 → 46): name, ruler, cars and trains taking turns, then closed at night
+const tunScr = () => tunPts.map(p => scr(p));
+function tunnelLayer(t) {
+  const a = ss(seg(t, 29.6, 30.2)) * (1 - ss(seg(t, 44.8, 45.6))); if (a <= 0) return;
+  const P = tunScr(), A = P[0], Bp = P[P.length - 1];
+  const la = a * ss(seg(t, 30.4, 30.9)) * (1 - ss(seg(t, 38.4, 38.9)));
+  const mid = P[Math.floor(P.length / 2)];
+  txt('ANTON ANDERSON MEMORIAL TUNNEL', mid[0], mid[1] - 70, { size: 24, w: 600, sp: 4, col: C.light, a: la, id: 't-name' });
+  // ruler under the line
+  const rk = eio(seg(t, 30.7, 31.5)), ra = a * ss(seg(t, 30.7, 31.0)) * (1 - ss(seg(t, 38.4, 38.9)));
+  if (ra > 0) {
+    const off = 44, mx = (A[0] + Bp[0]) / 2, my = (A[1] + Bp[1]) / 2 + off;
+    const pa = [mx + (A[0] - mx) * rk, my + (A[1] + off - my) * rk], pb = [mx + (Bp[0] - mx) * rk, my + (Bp[1] + off - my) * rk];
+    line([pa, pb], C.light, 1.5, ra);
+    const tk = ss(seg(t, 31.4, 31.6)) * ra; for (const q of [pa, pb]) line([[q[0], q[1] - 9], [q[0], q[1] + 9]], C.light, 1.5, tk);
+    txt('2.5 MI · ONE LANE · SHARED WITH TRAINS', mx, my + 34, { size: 26, w: 600, sp: 3, col: C.light, a: ra * ss(seg(t, 31.5, 31.9)), id: 't-rul' });
+  }
+  // cars and trains take turns (34.6 → 38.0): a car eastbound, then a train westbound
+  const glyph = (k, len, col) => { const i = clamp(k) * (P.length - 1), i0 = Math.floor(i), i1 = Math.min(P.length - 1, i0 + 1), f = i - i0;
+    const x = lerp(P[i0][0], P[i1][0], f), y = lerp(P[i0][1], P[i1][1], f), ang = Math.atan2(P[i1][1] - P[i0][1], P[i1][0] - P[i0][0]);
+    g.save(); g.translate(x, y - 1); g.rotate(ang); g.fillStyle = col; g.globalAlpha = a; g.beginPath(); g.roundRect(-len / 2, -4, len, 8, 3); g.fill(); g.restore(); };
+  if (t >= 34.4 && t < 36.3) glyph(eio(seg(t, 34.4, 36.3)), 16, '#f4e6cf');
+  if (t >= 36.2 && t < 38.3) { const k = 1 - eio(seg(t, 36.2, 38.3)); glyph(k, 46, '#f4e6cf'); glyph(k + .06, 14, '#f4e6cf'); }
+  const tt = a * ss(seg(t, 34.4, 34.8)) * (1 - ss(seg(t, 38.2, 38.6)));
+  txt(t < 36.25 ? 'CARS →' : '← TRAINS', mid[0], mid[1] + 130, { size: 22, w: 600, sp: 4, col: C.amberSoft, a: tt, id: 't-turn' });
+  // closed at night: barriers at both portals
+  const na = a * ss(seg(t, 39.0, 39.5)) * (1 - ss(seg(t, 41.6, 42.2)));
+  if (na > 0) for (const q of [A, Bp]) { line([[q[0] - 10, q[1] - 10], [q[0] + 10, q[1] + 10]], C.ice, 2.4, na); line([[q[0] + 10, q[1] - 10], [q[0] - 10, q[1] + 10]], C.ice, 2.4, na); }
+  txt('CLOSED AT NIGHT', mid[0], mid[1] - 70, { size: 24, w: 600, sp: 5, col: C.ice, a: na * (1 - ss(seg(t, 42.0, 42.6))), id: 't-closed' });
+}
+function endLine(t) {
+  const a = ss(seg(t, 41.9, 42.6)); if (a <= 0) return;
+  txt('THE ONLY WAY IN', Wd / 2, 330, { size: 74, w: 600, sp: 8, col: C.light, a, id: 'end1' });
+  txt('CLOSES AT NIGHT.', Wd / 2, 420, { size: 74, w: 600, sp: 8, col: '#ffd08a', a: a * ss(seg(t, 42.3, 42.9)), id: 'end2' });
+}
+
+// ---------- the frame at film time t ----------
+function mapFrame(t, dist) {
+  // the road from Anchorage draws 8.6 → 11.4, fades by 13.2
+  { const k = eio(seg(t, 8.6, 11.4)), f = 1 - ss(seg(t, 12.6, 13.4)); for (const r of [road.case, road.glow, road.core]) rv(r, { revB: k * r.L, inten: (t >= 8.6 ? 1 : 0) * f, head: k * r.L, headAmt: r === road.core ? 1.4 * (1 - ss(seg(k, .85, 1))) : 0, soft: 6 }); }
+  // the tunnel ignites 30.2 → 31.4; cools and dims at night 38.6 → 41
+  const ig = eo(seg(t, 30.2, 31.4)), night = ss(seg(t, 38.6, 40.4));
+  const on = (t >= 30.2 ? 1 : 0) * (1 - night) * (1 - ss(seg(t, 45.0, 45.8)));
+  for (const r of [tunnel.glow, tunnel.core]) rv(r, { revB: ig * r.L, inten: on, head: ig * r.L, headAmt: r === tunnel.core ? 2.0 * (1 - ss(seg(ig, .8, 1))) : 0, soft: .4, flowPh: t * 1.6 });
+  rv(tunnel.cold, { inten: night * (1 - ss(seg(t, 42.5, 45.0))) * .9, revB: 1e9 });
+  post.dof.focus = dist; post.dof.aper = dist * lerp(3.5, 9, ss(seg(t, 7.0, 13.0)));
+  post.bloom.strength = .55;
+  // night falls: the grade darkens and cools
+  VU.fade.value = 1 - .3 * night; VU.warm.value = lerp(.25, -.05, night); VU.sat.value = lerp(.92, .7, night);
+  post.composer.render();
+}
+function globeFrame(t) { setGlobeCam(t); GU.fade.value = ss(seg(t, 0, .7)); gpost.composer.render(); }
+function frame(t) {
+  TX = [];
+  const gW = t < 6.5 ? 1 : t < 7.3 ? 1 - ss(seg(t, 6.5, 7.3)) : 0;
+  const dist = gW < 1 ? setCamera(t) : 0;
+  g.setTransform(2, 0, 0, 2, 0, 0); g.clearRect(0, 0, Wd, Ht);
+  if (gW > 0 && gW < 1) {
+    globeFrame(t); g.setTransform(1, 0, 0, 1, 0, 0); sg.clearRect(0, 0, Wd * 2, Ht * 2); sg.drawImage(renderer.domElement, 0, 0);
+    mapFrame(t, dist);
+    g.globalAlpha = gW; g.drawImage(snap, 0, 0); g.globalAlpha = 1;
+    g.fillStyle = `rgba(232,214,180,${.22 * Math.sin(Math.PI * gW)})`; g.fillRect(0, 0, Wd * 2, Ht * 2);
+    g.setTransform(2, 0, 0, 2, 0, 0);
+  } else if (gW >= 1) globeFrame(t);
+  else mapFrame(t, dist);
+  if (gW < 1) { g.save(); mapLabels(t); roadLabel(t); enclosure(t); building(t); tunnelLayer(t); endLine(t); g.restore(); }
+  if (t < 7.0) globeTitle(t);
+  if (!Q.has('nosubs')) subtitles(t);
+  credits(t);
+}
+window.DUR = T1 - T0;
+window.render = t => frame(t + T0);
+window.TEXTS = t => { window.render(t); return TX.map(o => ({ ...o })); };
+const EVF = [{ t: 0, type: 'space' }, { t: 2.4, type: 'pin' }, { t: 6.5, type: 'dive' }, { t: 8.6, type: 'road' }, { t: 10.2, type: 'tick' },
+  { t: 13.8, type: 'orbit' }, { t: 14.6, type: 'chime' }, { t: 15.6, type: 'chime2' }, { t: 20.0, type: 'pin2' }, { t: 24.2, type: 'tick' }, { t: 25.9, type: 'tick' },
+  { t: 29.6, type: 'whoosh' }, { t: 30.2, type: 'ignite' }, { t: 31.9, type: 'tick' }, { t: 34.4, type: 'car' }, { t: 36.2, type: 'train' },
+  { t: 37.9, type: 'silence' }, { t: 38.6, type: 'night' }, { t: 39.0, type: 'close' }, { t: 41.9, type: 'final' }, { t: 46.0, type: 'end' }];
+window.EV = EVF.map(e => ({ ...e, t: e.t - T0 })).filter(e => e.t >= 0 && e.t <= T1 - T0);
+window.render(0);
+window.READY = true;
+</script>
+</body></html>

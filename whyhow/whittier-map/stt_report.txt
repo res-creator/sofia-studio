@@ -1,0 +1,6 @@
+W01 1.000 
+W02 0.900 replace: sixty -> 60
+W03 0.880 replace: surround it -> surrounded
+W04 0.600 replace: its -> it's | replace: two hundred and seventy five -> 275 | replace: fourteen -> 14 | replace: a hundred and ninety six -> 196
+W05 1.000 
+W06 1.000 

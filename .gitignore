@@ -69,3 +69,8 @@ whyhow/ep12_nunavut/footage/*.raw
 whyhow/ep12_nunavut/footage/tmp/
 whyhow/ep12_vostok/footage/
 whyhow/ep13_green_antarctica/footage/
+whyhow/whittier-map/raw/
+whyhow/whittier-map/assets/
+whyhow/whittier-map/out/
+whyhow/whittier-map/voice_raw/
+whyhow/whittier-map/fonts/*.ttf
