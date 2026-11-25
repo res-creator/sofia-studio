@@ -127,3 +127,7 @@ Wikipedia was used only as a pointer; no number below rests on Wikipedia alone.
 - Palm Jumeirah sand volume (94 vs 100-110 m m³; Van Oord magazine figure of 700 m m³ looks like an error).
 - Whether the Q3 2026 peak (11.682 GW) is the full-year 2026 peak (annual figure due Feb 2027).
 - UAE all-time heat record: 52.1 °C (2002) vs 52.0 °C (2010).
+
+## Our calculations used in the script
+- A026B: 2025 peak day 487 MIG (#16) vs desalination capacity 495 MIGD (#14): ~98% of capacity on the busiest day (our calculation).
+- A045: 94 million m³ of Palm sand / Hoover Dam's ~2.5 million m³ of concrete ≈ 38 (our calculation).
