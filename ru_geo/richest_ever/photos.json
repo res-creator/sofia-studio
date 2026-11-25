@@ -1,0 +1,178 @@
+{
+ "musk_modern": {
+  "q": [
+   "Elon Musk 2022 portrait",
+   "Elon Musk Royal Society"
+  ],
+  "cap": "Илон Маск, фото 2022 года",
+  "need": "современный миллиардер, портрет"
+ },
+ "stock_exchange": {
+  "q": [
+   "New York Stock Exchange floor 1900s",
+   "Wall Street 1910s street"
+  ],
+  "cap": "Уолл-стрит, начало XX века",
+  "need": "биржа или Уолл-стрит, исторический снимок"
+ },
+ "augustus_bust": {
+  "q": [
+   "Augustus of Prima Porta",
+   "Augustus bust Vatican"
+  ],
+  "cap": "Август, статуя из Прима Порта (копия I века)",
+  "need": "мраморный портрет императора"
+ },
+ "mansa_atlas": {
+  "q": [
+   "Catalan Atlas Mansa Musa",
+   "Mansa Musa Catalan Atlas 1375"
+  ],
+  "cap": "Манса Муса на Каталонском атласе, 1375",
+  "need": "миниатюра с правителем Мали, держащим золото"
+ },
+ "rockefeller_portrait": {
+  "q": [
+   "John D. Rockefeller portrait",
+   "John D. Rockefeller 1910s"
+  ],
+  "cap": "Джон Рокфеллер, фото начала XX века",
+  "need": "портрет"
+ },
+ "standard_oil_cartoon": {
+  "q": [
+   "Next! Keppler Puck 1904 Standard Oil",
+   "Standard Oil octopus cartoon 1904"
+  ],
+  "cap": "Карикатура на Standard Oil, 1904",
+  "need": "сатирический рисунок «Осьминог» из журнала Puck"
+ },
+ "res_gestae": {
+  "q": [
+   "Res Gestae Divi Augusti Ankara Monumentum Ancyranum",
+   "Monumentum Ancyranum inscription"
+  ],
+  "cap": "Надпись «Деяния божественного Августа», Анкара",
+  "need": "каменная надпись с текстом Res Gestae"
+ },
+ "denarius_augustus": {
+  "q": [
+   "Denarius of Augustus",
+   "Augustus aureus coin"
+  ],
+  "cap": "Монета Августа",
+  "need": "римская монета с портретом императора"
+ },
+ "egypt_nile": {
+  "q": [
+   "Nile river Egypt Roman era temple Philae",
+   "Philae temple Egypt"
+  ],
+  "cap": "Египет: храм Филе (фото XXI века)",
+  "need": "египетский пейзаж или храм римской эпохи"
+ },
+ "cairo_citadel": {
+  "q": [
+   "Cairo old city 14th century Mamluk mosque",
+   "Sultan Hassan Mosque Cairo"
+  ],
+  "cap": "Каир, мечеть Султана Хасана (XIV век, фото)",
+  "need": "мамлюкский Каир"
+ },
+ "timbuktu_mosque": {
+  "q": [
+   "Djinguereber Mosque Timbuktu",
+   "Timbuktu Mali mosque"
+  ],
+  "cap": "Томбукту, мечеть Джингереубер (фото XXI века)",
+  "need": "мечеть в городе торговли золотом"
+ },
+ "jakob_fugger": {
+  "q": [
+   "Jakob Fugger Dürer portrait",
+   "Jakob Fugger the Rich"
+  ],
+  "cap": "Якоб Фуггер, портрет Дюрера, около 1518",
+  "need": "портрет банкира"
+ },
+ "charles_v": {
+  "q": [
+   "Charles V portrait Titian",
+   "Charles V Holy Roman Emperor portrait"
+  ],
+  "cap": "Император Карл V, портрет XVI века",
+  "need": "портрет императора"
+ },
+ "fuggerei": {
+  "q": [
+   "Fuggerei Augsburg",
+   "Fuggerei housing complex Augsburg"
+  ],
+  "cap": "Фуггерай, Аугсбург (фото XXI века)",
+  "need": "жилой квартал, построенный Фуггерами"
+ },
+ "nathan_rothschild": {
+  "q": [
+   "Nathan Mayer Rothschild portrait",
+   "Nathan Rothschild 1830s"
+  ],
+  "cap": "Натан Ротшильд, портрет XIX века",
+  "need": "портрет банкира"
+ },
+ "james_rothschild": {
+  "q": [
+   "James Mayer de Rothschild Ingres portrait",
+   "Baron James de Rothschild portrait"
+  ],
+  "cap": "Джеймс де Ротшильд, портрет XIX века",
+  "need": "портрет представителя семьи Ротшильдов"
+ },
+ "carnegie_portrait": {
+  "q": [
+   "Andrew Carnegie portrait",
+   "Andrew Carnegie 1913"
+  ],
+  "cap": "Эндрю Карнеги, фото начала XX века",
+  "need": "портрет"
+ },
+ "homestead_steel": {
+  "q": [
+   "Homestead Steel Works Pittsburgh",
+   "Carnegie Steel Homestead mill historic photo"
+  ],
+  "cap": "Сталелитейный завод Хоумстед, XIX век",
+  "need": "заводской двор и трубы"
+ },
+ "ford_portrait": {
+  "q": [
+   "Henry Ford portrait 1919",
+   "Henry Ford 1920s photograph"
+  ],
+  "cap": "Генри Форд, фото 1919 года",
+  "need": "портрет"
+ },
+ "ford_assembly": {
+  "q": [
+   "Ford assembly line 1913 Highland Park",
+   "Ford Model T assembly line"
+  ],
+  "cap": "Конвейер Форда, 1913",
+  "need": "сборка автомобилей"
+ },
+ "nicholas_ii": {
+  "q": [
+   "Nicholas II of Russia portrait",
+   "Nicholas II Serov portrait"
+  ],
+  "cap": "Николай II, портрет начала XX века",
+  "need": "портрет императора"
+ },
+ "winter_palace": {
+  "q": [
+   "Winter Palace Saint Petersburg",
+   "Winter Palace 1900s photograph"
+  ],
+  "cap": "Зимний дворец, Петербург",
+  "need": "фасад дворца"
+ }
+}

@@ -1,0 +1,186 @@
+{
+ "eruption_litho": {
+  "q": [
+   "Krakatoa eruption 1883 lithograph Parker Coward",
+   "Krakatoa 1883 eruption illustration"
+  ],
+  "cap": "Литография извержения Кракатау, 1888 год (иллюстрация, не фото)",
+  "need": "Старинная цветная литография извержения Кракатау"
+ },
+ "strait_map": {
+  "q": [
+   "Sunda Strait map Krakatoa Java Sumatra",
+   "Krakatoa location map Indonesia"
+  ],
+  "cap": "Зондский пролив между Явой и Суматрой (современная карта)",
+  "need": "Карта пролива с островом Кракатау"
+ },
+ "krakatau_map1883": {
+  "q": [
+   "Krakatoa before and after 1883 eruption map Verbeek",
+   "Krakatau Verbeek map 1883 islands"
+  ],
+  "cap": "Карта острова Кракатау до и после 1883 года (по Вербеку)",
+  "need": "Карта-схема: контуры острова до и после взрыва"
+ },
+ "rodrigues_map": {
+  "q": [
+   "Rodrigues island map Mauritius",
+   "Krakatoa sound heard map Rodrigues"
+  ],
+  "cap": "Остров Родригес, около 4800 км от Кракатау (современная карта)",
+  "need": "Карта Родригеса или Индийского океана"
+ },
+ "rs_plate": {
+  "q": [
+   "Krakatoa Royal Society report 1888 map sound heard",
+   "Eruption of Krakatoa and subsequent phenomena plate"
+  ],
+  "cap": "Карта слышимости взрыва из отчёта Королевского общества, 1888",
+  "need": "Таблица или карта из отчёта 1888 года"
+ },
+ "barogram": {
+  "q": [
+   "Krakatoa barograph 1883 pressure wave Royal Society",
+   "Krakatoa air wave barogram"
+  ],
+  "cap": "Барограмма из отчёта Королевского общества, 1888",
+  "need": "Лист с кривыми давления"
+ },
+ "barogram_europe": {
+  "q": [
+   "Krakatoa 1883 air waves barograph record Kew",
+   "Krakatoa pressure wave barogram plate"
+  ],
+  "cap": "Запись воздушной волны, отчёт 1888 года",
+  "need": "Другая запись барографа"
+ },
+ "globe_wave": {
+  "q": [
+   "Krakatoa air wave circuits of globe diagram",
+   "Krakatoa pressure wave path around the Earth Royal Society chart"
+  ],
+  "cap": "Схема пути воздушной волны вокруг Земли, отчёт 1888 года",
+  "need": "Схема на карте полушарий"
+ },
+ "rs_report": {
+  "q": [
+   "Eruption of Krakatoa and subsequent phenomena 1888 title page",
+   "Krakatoa Committee Royal Society report"
+  ],
+  "cap": "Титул отчёта Королевского общества, 1888",
+  "need": "Обложка книги"
+ },
+ "symons": {
+  "q": [
+   "George James Symons meteorologist portrait",
+   "G. J. Symons"
+  ],
+  "cap": "Дж. Дж. Саймонс, редактор отчёта 1888 года (портрет XIX века)",
+  "need": "Портрет метеоролога Саймонса"
+ },
+ "batavia_1880s": {
+  "q": [
+   "Batavia 1880s photograph Dutch East Indies",
+   "Batavia Dutch East Indies 19th century street"
+  ],
+  "cap": "Батавия, 1880-е годы (архивное фото)",
+  "need": "Улица или набережная Батавии"
+ },
+ "anyer_ruins": {
+  "q": [
+   "Anyer lighthouse Krakatoa tsunami 1883",
+   "Anjer Java 1883 Krakatoa destroyed"
+  ],
+  "cap": "Анжер, Ява: берег, разрушенный цунами 1883 года (архивное изображение)",
+  "need": "Руины или маяк у пролива"
+ },
+ "telok_betong": {
+  "q": [
+   "Telok Betong 1883 tsunami gunboat Berouw",
+   "Teluk Betung Krakatoa tsunami Berouw"
+  ],
+  "cap": "Телок-Бетонг после цунами, 1883 (архивное изображение)",
+  "need": "Канонерка Berouw на суше или город после волны"
+ },
+ "tsunami_litho": {
+  "q": [
+   "Krakatoa tsunami 1883 illustration wave",
+   "Krakatoa 1883 tsunami Telok Betong engraving"
+  ],
+  "cap": "Гравюра XIX века: цунами после извержения",
+  "need": "Изображение волны на берегу"
+ },
+ "pumice": {
+  "q": [
+   "Krakatoa pumice 1883 raft",
+   "pumice stone Krakatau 1883 collection"
+  ],
+  "cap": "Пемза: вулканическая порода (современное фото)",
+  "need": "Куски пемзы"
+ },
+ "ship_steam": {
+  "q": [
+   "steamship 1880s Dutch East Indies",
+   "19th century steamship Sunda Strait"
+  ],
+  "cap": "Пароход конца XIX века (иллюстративное фото, не «Норэм Касл»)",
+  "need": "Пароход эпохи"
+ },
+ "ash_cloud": {
+  "q": [
+   "Krakatoa 1883 ash cloud eruption plume photograph",
+   "Krakatoa eruption cloud 27 May 1883 photo"
+  ],
+  "cap": "Облако над Кракатау (фото мая 1883 года, до главного взрыва)",
+  "need": "Облако пепла над островом"
+ },
+ "sunset_ascroft": {
+  "q": [
+   "William Ascroft Krakatoa sunset Chelsea 1883",
+   "Krakatoa sunset pastel sketch Ascroft"
+  ],
+  "cap": "Закат по наброску Уильяма Эскрофта, Лондон, 1883 (рисунок)",
+  "need": "Красный закат над Темзой"
+ },
+ "sunset_scream": {
+  "q": [
+   "The Scream Edvard Munch 1893 sky",
+   "Munch Scream pastel 1893"
+  ],
+  "cap": "Эдвард Мунк, «Крик», 1893 год: гипотеза о связи с закатами 1883 (спорная)",
+  "need": "Картина с красным небом"
+ },
+ "anak_modern": {
+  "q": [
+   "Anak Krakatau volcano 2018",
+   "Anak Krakatoa eruption photo"
+  ],
+  "cap": "Анак-Кракатау, современное фото вулкана",
+  "need": "Конус Анак-Кракатау"
+ },
+ "anak_2018": {
+  "q": [
+   "Anak Krakatau December 2018 collapse satellite",
+   "Sunda Strait tsunami 2018 Anak Krakatau before after"
+  ],
+  "cap": "Анак-Кракатау до и после обрушения, 2018 (спутниковые снимки)",
+  "need": "Сравнение спутниковых снимков"
+ },
+ "hunga_sat": {
+  "q": [
+   "Hunga Tonga eruption January 2022 satellite NASA",
+   "Hunga Tonga-Hunga Haʻapai eruption plume satellite"
+  ],
+  "cap": "Извержение Хунга-Тонга, 15 января 2022 (спутниковый снимок)",
+  "need": "Кадр со спутника"
+ },
+ "hunga_himawari": {
+  "q": [
+   "Hunga Tonga eruption Himawari-8 15 January 2022",
+   "Hunga Tonga shockwave GOES-17 animation"
+  ],
+  "cap": "Хунга-Тонга: взрыв и ударная волна, спутник Himawari, 2022",
+  "need": "Снимок взрыва со спутника"
+ }
+}
