@@ -2,7 +2,9 @@
 
 > **English TikTok channel (money/business stories):** read `CHANNEL.md` first — it has the rules, pipeline, voice and checklist for those episodes. The notes below are for the Sofia kids' channel.
 
-> **English dubs of travel documentaries (India, Norway, Vietnam):** read `ENGLISH_DUB.md` first.
+> **English dubs of travel documentaries (India, Norway, Vietnam, Japan):** read `ENGLISH_DUB.md` first.
+
+> **Making a NEW travel documentary from scratch:** follow `guides/FILM_MAKING_GUIDE_FOR_YOUR_CLAUDE.md` (from the boyfriend's team; owner gates, critics, fact-check, covers 12.3, ads 13.4). Covers: `COVER_STYLE.md`. Voice: `FISH_VOICE.md`.
 
 > **Long-form How It's Run films (YouTube, animated):** Для создания длинных анимационных YouTube-фильмов How It’s Run обязательно сначала прочитай `longform/LONGFORM_STYLE.md` и используй утверждённую систему `longform/figmakit/`. Не разрабатывай новый стиль и анимационный движок с нуля без отдельного задания.
 
