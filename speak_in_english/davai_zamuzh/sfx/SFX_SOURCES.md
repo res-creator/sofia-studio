@@ -24,6 +24,7 @@
 | «Срочные новости» | clean/news_sting.wav | News Intro Breaking News | https://www.myinstants.com/media/sounds/news_intro-maximilien_-1801238420_2.mp3 | 5.1 с |
 | «Астропрогноз» | clean/chime.wav | Magic Chimes | https://www.myinstants.com/media/sounds/magic-chimes.mp3 | 4.3 с |
 | сигнал телефона | clean/phone.wav | Message Tone | https://www.myinstants.com/media/sounds/message-tone_tezPBhx.mp3 | 5.1 с |
+| мяу кота (серия v5) | clean/meow.wav | CAT MEOW!!! | https://www.myinstants.com/media/sounds/cat-meow_Li0Ycr1.mp3 | 0.8 с |
 
 Лирическую подложку на myinstants не нашёл (там только песни, у которых есть правообладатели), поэтому остаётся наша синтезированная подложка из prep.py.
 
