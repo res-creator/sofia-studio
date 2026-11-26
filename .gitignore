@@ -43,3 +43,5 @@ ru_geo/ww3/vo_full/concat_el.txt
 
 ru_geo/stock/
 *.mp3.part
+
+ru_geo/*/vo_clone/c/
