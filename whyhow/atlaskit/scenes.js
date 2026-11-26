@@ -38,6 +38,7 @@ function overlays(ctx, t, d, p) {
   for (const o of p.over || []) {
     const at = o.at || 0; if (t < at || (o.until && t > o.until)) continue; const a = fade(t, at) * (o.until ? 1 - clamp(seg(t, o.until - 0.3, o.until)) : 1);
     if (o.type === 'kin') { require('./scenes5').kin(ctx, t, o); continue; }
+    if (o.type === 'b1m') { require('./scenes6').b1m(ctx, t, o); continue; }
     if (o.type === 'head') { const s = pop(t, at, 0.5); ctx.save(); ctx.translate(o.x || W / 2, o.y || 200); ctx.scale(s, s); ctx.globalAlpha = a;
       text(ctx, o.text, 0, 0, { size: o.size || 110, font: F.head, align: o.align || 'center', color: o.color || C.cream, stroke: 10, strokeColor: 'rgba(8,14,28,0.85)', shadow: 20, maxW: o.maxW || 1700 });
       if (o.sub) text(ctx, o.sub, 0, (o.size || 110) * 0.62, { size: o.subSize || 40, font: F.bold, align: o.align || 'center', color: C.yellow, shadow: 12 }); ctx.restore(); }

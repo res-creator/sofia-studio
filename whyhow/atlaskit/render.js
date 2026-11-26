@@ -8,7 +8,8 @@ const K = require('./core'); const S = require('./scenes'); const X = require('.
 const V = require('./video');
 const S2 = require('./scenes2'); const S3 = require('./scenes3'); const S4 = require('./scenes4');
 const S5 = require('./scenes5');
-const SC = { ...S, ...S2, ...S3, ...S4, mgzoom: S5.mgzoom, blurcard: S5.blurcard, mapline: S5.mapline, xsec: X.xsec, siphon: X.siphonCloseup, examples: X.examples };
+const S6 = require('./scenes6');
+const SC = { ...S, ...S2, ...S3, ...S4, flatmap: S6.flatmap, wcard: S6.wcard, papermap: S6.papermap, cutouts: S6.cutouts, mgzoom: S5.mgzoom, blurcard: S5.blurcard, mapline: S5.mapline, xsec: X.xsec, siphon: X.siphonCloseup, examples: X.examples };
 // scenes that do not draw overlays themselves get them drawn on top when p.over is set
 for (const n of ['stats', 'split', 'bars', 'ratio', 'calendar', 'thermo', 'countdown', 'mythq', 'compare', 'ring', 'river', 'district', 'shaft', 'frost', 'vapour', 'ladder', 'yearbar', 'stove', 'firemap']) if (SC[n]) { const f = SC[n]; SC[n] = (ctx, t, d, p) => { f(ctx, t, d, p); if (p.over) S.overlays(ctx, t, d, p); }; }
 const [, , EPD, MODE, ...ARGS] = process.argv; const EP = path.resolve(EPD);
