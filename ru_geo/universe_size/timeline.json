@@ -1,0 +1,890 @@
+{
+"segs": [
+{
+"t": 0.0,
+"d": 4.39,
+"type": "clip",
+"src": "stock/pb_5.mp4",
+"ss": 0.3
+},
+{
+"t": 4.39,
+"d": 4.39,
+"type": "clip",
+"src": "stock/pb_40041.mp4",
+"ss": 0.3
+},
+{
+"t": 8.78,
+"d": 4.39,
+"type": "clip",
+"src": "stock/pb_6044.mp4",
+"ss": 0.3
+},
+{
+"t": 13.17,
+"d": 4.39,
+"type": "clip",
+"src": "stock/pb_40040.mp4",
+"ss": 0.3
+},
+{
+"t": 17.56,
+"d": 4.39,
+"type": "clip",
+"src": "stock/pb_238134.mp4",
+"ss": 0.3
+},
+{
+"t": 21.95,
+"d": 4.773,
+"type": "clip",
+"src": "stock/pb_365306.mp4",
+"ss": 0.3
+},
+{
+"t": 26.723,
+"d": 4.773,
+"type": "clip",
+"src": "stock/pb_1844.mp4",
+"ss": 0.3
+},
+{
+"t": 31.497,
+"d": 4.773,
+"type": "clip",
+"src": "stock/pb_26967.mp4",
+"ss": 0.3
+},
+{
+"t": 36.27,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_2.png"
+},
+{
+"t": 39.87,
+"d": 4.4,
+"type": "clip",
+"src": "stock/pb_153773.mp4",
+"ss": 0.3
+},
+{
+"t": 44.27,
+"d": 4.4,
+"type": "clip",
+"src": "stock/pb_215697.mp4",
+"ss": 0.3
+},
+{
+"t": 48.67,
+"d": 4.4,
+"type": "clip",
+"src": "stock/pb_153772.mp4",
+"ss": 0.3
+},
+{
+"t": 53.07,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_ch_54.png"
+},
+{
+"t": 55.67,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_3.png"
+},
+{
+"t": 59.27,
+"d": 4.833,
+"type": "clip",
+"src": "stock/pb_11721.mp4",
+"ss": 0.3
+},
+{
+"t": 64.103,
+"d": 4.833,
+"type": "clip",
+"src": "stock/pb_338.mp4",
+"ss": 0.3
+},
+{
+"t": 68.937,
+"d": 4.833,
+"type": "clip",
+"src": "stock/pb_148100.mp4",
+"ss": 0.3
+},
+{
+"t": 73.77,
+"d": 5.103,
+"type": "clip",
+"src": "stock/pb_188508.mp4",
+"ss": 0.3
+},
+{
+"t": 78.873,
+"d": 5.103,
+"type": "clip",
+"src": "stock/pb_160398.mp4",
+"ss": 0.3
+},
+{
+"t": 83.977,
+"d": 5.103,
+"type": "clip",
+"src": "stock/pb_188511.mp4",
+"ss": 0.3
+},
+{
+"t": 89.08,
+"d": 4.128,
+"type": "clip",
+"src": "stock/pb_135988.mp4",
+"ss": 0.3
+},
+{
+"t": 93.207,
+"d": 4.128,
+"type": "clip",
+"src": "stock/pb_138111.mp4",
+"ss": 0.3
+},
+{
+"t": 97.335,
+"d": 4.128,
+"type": "clip",
+"src": "stock/pb_732.mp4",
+"ss": 0.3
+},
+{
+"t": 101.463,
+"d": 4.128,
+"type": "clip",
+"src": "stock/pb_137085.mp4",
+"ss": 0.3
+},
+{
+"t": 105.59,
+"d": 5.128,
+"type": "clip",
+"src": "stock/pb_5503.mp4",
+"ss": 0.3
+},
+{
+"t": 110.718,
+"d": 5.128,
+"type": "clip",
+"src": "stock/pb_3.mp4",
+"ss": 0.3
+},
+{
+"t": 115.845,
+"d": 5.128,
+"type": "clip",
+"src": "stock/pb_53122.mp4",
+"ss": 0.3
+},
+{
+"t": 120.973,
+"d": 5.128,
+"type": "clip",
+"src": "stock/pb_236.mp4",
+"ss": 0.3
+},
+{
+"t": 126.1,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_ch_127.png"
+},
+{
+"t": 128.7,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_7.png"
+},
+{
+"t": 132.3,
+"d": 5.435,
+"type": "clip",
+"src": "stock/pb_10814.mp4",
+"ss": 0.3
+},
+{
+"t": 137.735,
+"d": 5.435,
+"type": "clip",
+"src": "stock/pb_60716.mp4",
+"ss": 0.3
+},
+{
+"t": 143.17,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_8.png"
+},
+{
+"t": 146.77,
+"d": 5.475,
+"type": "clip",
+"src": "stock/pb_8947.mp4",
+"ss": 0.3
+},
+{
+"t": 152.245,
+"d": 5.475,
+"type": "clip",
+"src": "stock/pb_343478.mp4",
+"ss": 0.3
+},
+{
+"t": 157.72,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_9.png"
+},
+{
+"t": 161.32,
+"d": 5.21,
+"type": "clip",
+"src": "stock/pb_19641.mp4",
+"ss": 0.3
+},
+{
+"t": 166.53,
+"d": 5.21,
+"type": "clip",
+"src": "stock/pb_1992.mp4",
+"ss": 0.3
+},
+{
+"t": 171.74,
+"d": 5.21,
+"type": "clip",
+"src": "stock/pb_15299.mp4",
+"ss": 0.3
+},
+{
+"t": 176.95,
+"d": 4.115,
+"type": "clip",
+"src": "stock/pb_36471.mp4",
+"ss": 0.3
+},
+{
+"t": 181.065,
+"d": 4.115,
+"type": "clip",
+"src": "stock/pb_197923.mp4",
+"ss": 0.3
+},
+{
+"t": 185.18,
+"d": 4.115,
+"type": "clip",
+"src": "stock/pb_6045.mp4",
+"ss": 0.3
+},
+{
+"t": 189.295,
+"d": 4.115,
+"type": "clip",
+"src": "stock/pb_270857.mp4",
+"ss": 0.3
+},
+{
+"t": 193.41,
+"d": 5.2,
+"type": "clip",
+"src": "stock/pb_346243.mp4",
+"ss": 0.3
+},
+{
+"t": 198.61,
+"d": 5.2,
+"type": "clip",
+"src": "stock/pb_22555.mp4",
+"ss": 0.3
+},
+{
+"t": 203.81,
+"d": 5.2,
+"type": "clip",
+"src": "stock/pb_346244.mp4",
+"ss": 0.3
+},
+{
+"t": 209.01,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_ch_210.png"
+},
+{
+"t": 211.61,
+"d": 4.027,
+"type": "clip",
+"src": "stock/pb_10339.mp4",
+"ss": 0.3
+},
+{
+"t": 215.638,
+"d": 4.027,
+"type": "clip",
+"src": "stock/pb_133518.mp4",
+"ss": 0.3
+},
+{
+"t": 219.665,
+"d": 4.027,
+"type": "clip",
+"src": "stock/pb_31569.mp4",
+"ss": 0.3
+},
+{
+"t": 223.692,
+"d": 4.027,
+"type": "clip",
+"src": "stock/pb_93839.mp4",
+"ss": 0.3
+},
+{
+"t": 227.72,
+"d": 5.323,
+"type": "clip",
+"src": "stock/pb_2118.mp4",
+"ss": 0.3
+},
+{
+"t": 233.043,
+"d": 5.323,
+"type": "clip",
+"src": "stock/pb_44350.mp4",
+"ss": 0.3
+},
+{
+"t": 238.367,
+"d": 5.323,
+"type": "clip",
+"src": "stock/pb_169951.mp4",
+"ss": 0.3
+},
+{
+"t": 243.69,
+"d": 4.807,
+"type": "clip",
+"src": "stock/pb_184344.mp4",
+"ss": 0.3
+},
+{
+"t": 248.497,
+"d": 4.807,
+"type": "clip",
+"src": "stock/pb_997.mp4",
+"ss": 0.3
+},
+{
+"t": 253.303,
+"d": 4.807,
+"type": "clip",
+"src": "stock/pb_161333.mp4",
+"ss": 0.3
+},
+{
+"t": 258.11,
+"d": 4.32,
+"type": "clip",
+"src": "stock/pb_23882.mp4",
+"ss": 0.3
+},
+{
+"t": 262.43,
+"d": 4.32,
+"type": "clip",
+"src": "stock/pb_209690.mp4",
+"ss": 0.3
+},
+{
+"t": 266.75,
+"d": 4.32,
+"type": "clip",
+"src": "stock/pb_10858.mp4",
+"ss": 0.3
+},
+{
+"t": 271.07,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_ch_272.png"
+},
+{
+"t": 273.67,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_16.png"
+},
+{
+"t": 277.27,
+"d": 4.82,
+"type": "clip",
+"src": "stock/pb_192937.mp4",
+"ss": 0.3
+},
+{
+"t": 282.09,
+"d": 4.82,
+"type": "clip",
+"src": "stock/pb_223165.mp4",
+"ss": 0.3
+},
+{
+"t": 286.91,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_17.png"
+},
+{
+"t": 290.51,
+"d": 3.877,
+"type": "clip",
+"src": "stock/pb_131925.mp4",
+"ss": 0.3
+},
+{
+"t": 294.387,
+"d": 3.877,
+"type": "clip",
+"src": "stock/pb_27770.mp4",
+"ss": 0.3
+},
+{
+"t": 298.263,
+"d": 3.877,
+"type": "clip",
+"src": "stock/pb_123310.mp4",
+"ss": 0.3
+},
+{
+"t": 302.14,
+"d": 4.09,
+"type": "clip",
+"src": "stock/pb_157881.mp4",
+"ss": 0.3
+},
+{
+"t": 306.23,
+"d": 4.09,
+"type": "clip",
+"src": "stock/pb_1209.mp4",
+"ss": 0.3
+},
+{
+"t": 310.32,
+"d": 4.09,
+"type": "clip",
+"src": "stock/pb_43171.mp4",
+"ss": 0.3
+},
+{
+"t": 314.41,
+"d": 4.09,
+"type": "clip",
+"src": "stock/pb_203923.mp4",
+"ss": 0.3
+},
+{
+"t": 318.5,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_19.png"
+},
+{
+"t": 322.1,
+"d": 5.233,
+"type": "clip",
+"src": "stock/pb_7093.mp4",
+"ss": 0.3
+},
+{
+"t": 327.333,
+"d": 5.233,
+"type": "clip",
+"src": "stock/pb_9135.mp4",
+"ss": 0.3
+},
+{
+"t": 332.567,
+"d": 5.233,
+"type": "clip",
+"src": "stock/pb_205561.mp4",
+"ss": 0.3
+},
+{
+"t": 337.8,
+"d": 4.514,
+"type": "clip",
+"src": "stock/pb_115081.mp4",
+"ss": 0.3
+},
+{
+"t": 342.314,
+"d": 4.514,
+"type": "clip",
+"src": "stock/pb_14.mp4",
+"ss": 0.3
+},
+{
+"t": 346.828,
+"d": 4.514,
+"type": "clip",
+"src": "stock/pb_116173.mp4",
+"ss": 0.3
+},
+{
+"t": 351.342,
+"d": 4.514,
+"type": "clip",
+"src": "stock/pb_4.mp4",
+"ss": 0.3
+},
+{
+"t": 355.856,
+"d": 4.514,
+"type": "clip",
+"src": "stock/pb_13100.mp4",
+"ss": 0.3
+},
+{
+"t": 360.37,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_ch_361.png"
+},
+{
+"t": 362.97,
+"d": 5.077,
+"type": "clip",
+"src": "stock/pb_152204.mp4",
+"ss": 0.3
+},
+{
+"t": 368.047,
+"d": 5.077,
+"type": "clip",
+"src": "stock/pb_12910.mp4",
+"ss": 0.3
+},
+{
+"t": 373.123,
+"d": 5.077,
+"type": "clip",
+"src": "stock/pb_31420.mp4",
+"ss": 0.3
+},
+{
+"t": 378.2,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_22.png"
+},
+{
+"t": 381.8,
+"d": 5.333,
+"type": "clip",
+"src": "stock/pb_32158.mp4",
+"ss": 0.3
+},
+{
+"t": 387.133,
+"d": 5.333,
+"type": "clip",
+"src": "stock/pb_535.mp4",
+"ss": 0.3
+},
+{
+"t": 392.467,
+"d": 5.333,
+"type": "clip",
+"src": "stock/pb_39036.mp4",
+"ss": 0.3
+},
+{
+"t": 397.8,
+"d": 4.415,
+"type": "clip",
+"src": "stock/pb_365651.mp4",
+"ss": 0.3
+},
+{
+"t": 402.215,
+"d": 4.415,
+"type": "clip",
+"src": "stock/pb_250440.mp4",
+"ss": 0.3
+},
+{
+"t": 406.63,
+"d": 4.415,
+"type": "clip",
+"src": "stock/pb_75879.mp4",
+"ss": 0.3
+},
+{
+"t": 411.045,
+"d": 4.415,
+"type": "clip",
+"src": "stock/pb_250441.mp4",
+"ss": 0.3
+},
+{
+"t": 415.46,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_24.png"
+},
+{
+"t": 419.06,
+"d": 5.21,
+"type": "clip",
+"src": "stock/pb_82659.mp4",
+"ss": 0.3
+},
+{
+"t": 424.27,
+"d": 5.21,
+"type": "clip",
+"src": "stock/pb_15615.mp4",
+"ss": 0.3
+},
+{
+"t": 429.48,
+"d": 5.21,
+"type": "clip",
+"src": "stock/pb_174070.mp4",
+"ss": 0.3
+},
+{
+"t": 434.69,
+"d": 4.61,
+"type": "clip",
+"src": "stock/pb_182517.mp4",
+"ss": 0.3
+},
+{
+"t": 439.3,
+"d": 4.61,
+"type": "clip",
+"src": "stock/pb_40039.mp4",
+"ss": 0.3
+},
+{
+"t": 443.91,
+"d": 4.61,
+"type": "clip",
+"src": "stock/pb_10.mp4",
+"ss": 0.3
+},
+{
+"t": 448.52,
+"d": 4.61,
+"type": "clip",
+"src": "stock/pb_324681.mp4",
+"ss": 0.3
+},
+{
+"t": 453.13,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_ch_454.png"
+},
+{
+"t": 455.73,
+"d": 4.415,
+"type": "clip",
+"src": "stock/pb_3159.mp4",
+"ss": 0.3
+},
+{
+"t": 460.145,
+"d": 4.415,
+"type": "clip",
+"src": "stock/pb_337311.mp4",
+"ss": 0.3
+},
+{
+"t": 464.56,
+"d": 4.415,
+"type": "clip",
+"src": "stock/pb_27726.mp4",
+"ss": 0.3
+},
+{
+"t": 468.975,
+"d": 4.415,
+"type": "clip",
+"src": "stock/pb_275983.mp4",
+"ss": 0.3
+},
+{
+"t": 473.39,
+"d": 4.93,
+"type": "clip",
+"src": "stock/pb_21528.mp4",
+"ss": 0.3
+},
+{
+"t": 478.32,
+"d": 4.93,
+"type": "clip",
+"src": "stock/pb_3713.mp4",
+"ss": 0.3
+},
+{
+"t": 483.25,
+"d": 4.93,
+"type": "clip",
+"src": "stock/pb_21175.mp4",
+"ss": 0.3
+},
+{
+"t": 488.18,
+"d": 4.93,
+"type": "clip",
+"src": "stock/pb_388064.mp4",
+"ss": 0.3
+},
+{
+"t": 493.11,
+"d": 4.277,
+"type": "clip",
+"src": "stock/pb_183136.mp4",
+"ss": 0.3
+},
+{
+"t": 497.387,
+"d": 4.277,
+"type": "clip",
+"src": "stock/pb_56932.mp4",
+"ss": 0.3
+},
+{
+"t": 501.663,
+"d": 4.277,
+"type": "clip",
+"src": "stock/pb_5194.mp4",
+"ss": 0.3
+},
+{
+"t": 505.94,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_ch_507.png"
+},
+{
+"t": 508.54,
+"d": 5.357,
+"type": "clip",
+"src": "stock/pb_238139.mp4",
+"ss": 0.3
+},
+{
+"t": 513.897,
+"d": 5.357,
+"type": "clip",
+"src": "stock/pb_24072.mp4",
+"ss": 0.3
+},
+{
+"t": 519.253,
+"d": 5.357,
+"type": "clip",
+"src": "stock/pb_137083.mp4",
+"ss": 0.3
+},
+{
+"t": 524.61,
+"d": 4.18,
+"type": "clip",
+"src": "stock/pb_60027.mp4",
+"ss": 0.3
+},
+{
+"t": 528.79,
+"d": 4.18,
+"type": "clip",
+"src": "stock/pb_143016.mp4",
+"ss": 0.3
+},
+{
+"t": 532.97,
+"d": 4.18,
+"type": "clip",
+"src": "stock/pb_60028.mp4",
+"ss": 0.3
+},
+{
+"t": 537.15,
+"d": 5.293,
+"type": "clip",
+"src": "stock/pb_54755.mp4",
+"ss": 0.3
+},
+{
+"t": 542.443,
+"d": 5.293,
+"type": "clip",
+"src": "stock/pb_175210.mp4",
+"ss": 0.3
+},
+{
+"t": 547.737,
+"d": 5.293,
+"type": "clip",
+"src": "stock/pb_207467.mp4",
+"ss": 0.3
+},
+{
+"t": 553.03,
+"d": 4.192,
+"type": "clip",
+"src": "stock/pb_45954.mp4",
+"ss": 0.3
+},
+{
+"t": 557.222,
+"d": 4.192,
+"type": "clip",
+"src": "stock/pb_733.mp4",
+"ss": 0.3
+},
+{
+"t": 561.415,
+"d": 4.192,
+"type": "clip",
+"src": "stock/pb_25122.mp4",
+"ss": 0.3
+},
+{
+"t": 565.607,
+"d": 4.192,
+"type": "clip",
+"src": "stock/pb_41559.mp4",
+"ss": 0.3
+},
+{
+"t": 569.8,
+"d": 5.425,
+"type": "clip",
+"src": "stock/pb_38388.mp4",
+"ss": 0.3
+},
+{
+"t": 575.225,
+"d": 5.425,
+"type": "clip",
+"src": "stock/pb_179775.mp4",
+"ss": 0.3
+}
+]
+}

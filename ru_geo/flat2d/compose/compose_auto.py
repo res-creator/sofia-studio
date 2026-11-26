@@ -41,14 +41,21 @@ for l in L:
 voice = [s for s in segs if s['kind'] == 'voice']
 if len(paras) != len(voice): sys.exit(f'абзацев {len(paras)} != озвученных {len(voice)}')
 # --- подбор клипов
-used = set(); cards = []; tl = []
+used = set(); cards = []; tl = []; CRED = {}
+sys.path.insert(0, f'{R}/lib')
+import pixabay
 def pick(q):
-    for k in search(q):
-        v = DB['v'][k]
-        if k in used or float(v.get('dur') or 0) < 4.5: continue
-        used.add(k); p = f'{ST}/{k}.mp4'
-        if not os.path.exists(p): subprocess.run(['curl', '-sSL', '--max-time', '180', '-o', p, v['mp4']])
-        if os.path.exists(p) and os.path.getsize(p) > 100000: return k, v
+    """Pixabay: горизонтальное видео, >=4.5 с, не повторяем клипы."""
+    try: hits = pixabay.search(q, True, 50)
+    except Exception as e: print('pixabay err', q, e); return None, None
+    for h in hits:
+        k = 'pb_' + str(h['id'])
+        if k in used or float(h.get('duration') or 0) < 4.5: continue
+        v = pixabay.best_video(h, 1920)
+        if v['width'] < v['height'] or v['width'] < 1280: continue
+        p = f'{ST}/{k}.mp4'
+        if pixabay.download(v['url'], p) and os.path.getsize(p) > 100000:
+            used.add(k); CRED[k] = dict(user=h.get('user'), page=h.get('pageURL'), q=q); return k, h
     return None, None
 def add(t, d, **k): tl.append(dict(t=round(t, 3), d=round(d, 3), **k))
 chaps = [(s['t'], s['title']) for s in segs if s['kind'] == 'chapter']; ci = 0
@@ -88,7 +95,7 @@ prev = 0.0
 for s in tl:
     if abs(s['t'] - prev) > 0.15: print('ДЫРА/нахлёст', round(prev, 2), '->', round(s['t'], 2))
     prev = s['t'] + s['d']
-print('segments', len(tl), 'clips used', len(used))
+print('segments', len(tl), 'clips used', len(used)); json.dump(CRED, open(f'{J}/credits_pixabay.json', 'w'), ensure_ascii=False, indent=1)
 # музыка
 M = f'{R}/paperson/music'; mus = f'{J}/music.wav'
 if not os.path.exists(mus):
@@ -97,5 +104,5 @@ if not os.path.exists(mus):
     for i in range(1, len(ids)): filt += f'{prevl}[{i}]acrossfade=d=4[c{i}];'; prevl = f'[c{i}]'
     subprocess.run(['ffmpeg', '-v', 'error', '-y', *args, '-filter_complex', f'{filt}{prevl}atrim=0:{T},asetpts=N/SR/TB,volume=0.13,afade=t=in:d=3,afade=t=out:st={T - 5}:d=5[o]', '-map', '[o]', '-ar', '48000', '-ac', '2', mus], check=True)
 t0, t1 = (sys.argv[2], sys.argv[3]) if len(sys.argv) > 3 else ('0', str(film['total']))
-os.makedirs(f'{J}/video', exist_ok=True); out = f'{J}/video/{slug}.mp4' if len(sys.argv) <= 3 else f'/tmp/claude-0/-home-user-sofia-studio/24c15af6-1f18-59ef-a680-971b83cb24ee/scratchpad/{slug}_excerpt.mp4'
+os.makedirs(f'{J}/video', exist_ok=True); out = f'{J}/video/{slug}.mp4' if len(sys.argv) <= 3 else f'/tmp/claude-0/-home-user-sofia-studio/0950eaf2-4d18-5708-ba0e-bdb1f07766d9/scratchpad/{slug}_excerpt.mp4'
 subprocess.run(['python3', f'{C}/compose.py', slug, f'{J}/timeline.json', out, t0, t1], check=True)

@@ -8,7 +8,7 @@ film = json.load(open(f'{R}/{slug}/film.json', encoding='utf8')); tl = json.load
 t0 = float(sys.argv[4]) if len(sys.argv) > 4 else 0.0; t1 = float(sys.argv[5]) if len(sys.argv) > 5 else film['total']
 W, H, FPS, FADE = 1920, 1080, 30, 0.22
 GRADE = 'eq=saturation=0.9:contrast=1.05:brightness=-0.02,vignette=PI/6'
-tmp = tempfile.mkdtemp(dir='/tmp/claude-0/-home-user-sofia-studio/24c15af6-1f18-59ef-a680-971b83cb24ee/scratchpad'); parts = []
+tmp = tempfile.mkdtemp(dir=os.environ.get('TMPDIR_C', '/tmp')); parts = []
 def run(cmd): subprocess.run(cmd, check=True, stderr=subprocess.DEVNULL)
 for i, s in enumerate(tl):
     a, b = max(s['t'], t0), min(s['t'] + s['d'], t1)
