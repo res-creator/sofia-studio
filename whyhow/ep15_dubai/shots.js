@@ -331,4 +331,4 @@ function build(T) {
   add(T.tl.voiceEnd + 0.4, S('endscreen', {}), 'fade');
   return out;
 }
-module.exports = { assets, build, defaultTrans: 'cut', splitOver: 4.5, splitTo: 3 };
+module.exports = { assets, build, defaultTrans: 'cut', splitOver: 4.5, splitTo: 3, smooth: true };
