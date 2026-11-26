@@ -15,4 +15,5 @@ const make = async (base, out, lines, arr) => { const cv = K.createCanvas(W, H),
   await make('covers_v5_base/singapore.jpg', 'ep14_singapore/singapore_cover_I.jpg', [['SINGAPORE', 230, 132, '#FFFFFF'], ['THIS LAND', 360, 124, Y], ['WAS SEA', 520, 168, Y]], [540, 290, 720, 250, 800, 420]);
   await make('covers_v5_base/dubai.jpg', 'ep15_dubai/dubai_cover_I.jpg', [['DUBAI', 220, 132, '#FFFFFF'], ['DRINKS', 360, 132, Y], ['THE SEA', 530, 176, Y]], [620, 470, 650, 620, 860, 610]);
   await make('covers_v5_base/tokyo.jpg', 'ep16_tokyo/tokyo_cover_I.jpg', [['TOKYO', 220, 132, '#FFFFFF'], ['20 SECONDS', 360, 124, Y], ['EARLY', 530, 176, Y]], [470, 470, 560, 560, 640, 470]);
+  await make('covers_v5_base/aleutians.jpg', 'ep11_aleutians/aleutians_cover_I.jpg', [['ALASKA', 220, 132, '#FFFFFF'], ['JAPAN LEFT', 360, 132, Y], ['THIS', 540, 190, Y]], [400, 470, 620, 620, 840, 470]);
 })();
