@@ -170,8 +170,8 @@ function build(T) {
   ]);
   beats('A023', [
     S('globe', GL({ lon: [[0, 103.8], [3, 104.2]], lat: [[0, 2], [3, 3]], R: [[0, 2600], [3, 2400]], pins: [{ ...G.sg, label: 'SINGAPORE', at: 0.2 }, { lon: 101.5, lat: 3.5, label: 'MALAYSIA', at: 0.6, small: true, size: 36 }, { ...G.riau, label: 'INDONESIA', at: 0.9, small: true, size: 36 }, { ...G.pp, label: 'CAMBODIA', at: 1.2, small: true, size: 36 }, { lon: 106.7, lat: 10.8, label: 'VIETNAM', at: 1.5, small: true, size: 36 }] })),
-    Q('In', 'INDONESIA, BY 2009', 'UP TO 26 SMALL ISLANDS', 'LOST TO EROSION', 'MANY BLAMED THE SAND TRADE', 'Source: Indonesian officials via SCMP'),
-    V('px_port_aerial_coast_2', 'BUILT COASTLINE · ' + IL, { cutW: 'blamed' }),
+    V('px_port_aerial_coast_2', 'BUILT COASTLINE · ' + IL, { cutW: 'In', over: [low('INDONESIA: UP TO 26 SMALL ISLANDS LOST BY 2009', 'twenty-six')] }),
+    V('px_rock_revetment', 'ERODED SHORE · ' + IL, { cutW: 'many', over: [low('MANY BLAMED THE SAND TRADE', 'blamed')] }),
   ]);
   beats('A024', [
     V('px_ships_anchored_hazy_sunset', 'SHIPS AT ANCHOR · ' + IL),
@@ -179,7 +179,7 @@ function build(T) {
     V('cm_aerial_2024_09', 'SINGAPORE COAST FROM THE AIR, 2024', { cutW: 'exported' }),
   ]);
   beats('A025', [
-    S('stats', { head: 'ONE BY ONE, THE NEIGHBORS SAID STOP', items: [], over: [{ ...head('1997 · MALAYSIA', 'Malaysia', 520, 120, Yc) }], source: 'Source: sg101 (Singapore government)' }),
+    V('cm_aerial_2024_01', 'SINGAPORE FROM THE AIR, 2024', { over: [low('1997: MALAYSIA BANS SAND EXPORTS TO SINGAPORE', 'Malaysia')] }),
     V('px_port_aerial_haze_2', 'PORT · ' + IL, { cutW: 'Indonesia', over: [low('2003: INDONESIA BANS SEA SAND', 'Indonesia')] }),
     V('px_container_ship_top_aerial', 'SHIP · ' + IL, { cutW: 'tightened', over: [low('2007: TIGHTENED · INDONESIA SUPPLIED ~90%', 'ninety')] }),
   ]);
@@ -188,8 +188,9 @@ function build(T) {
     Q('hills', 'THE NATIONAL SAND STOCKPILE', 'LOCATION: NOT PUBLISHED', null, 'SIZE: NOT PUBLISHED', 'Sources: MND; HDB annual report'),
   ]);
   beats('A027', [
-    V('px_tanker_passing', 'TANKER · ' + IL, { over: [low('VIETNAM AND CAMBODIA BAN SAND TOO', 'Vietnam')] }),
-    Q('And', '2019', 'MALAYSIA STOPS', 'ALL SEA SAND EXPORTS', 'IT HAD SUPPLIED 97%+ OF SINGAPORE\'S IMPORTS', 'Source: Reuters, 2019'),
+    V('px_container_ship_under_cranes_top', 'PORT · ' + IL, { over: [low('VIETNAM AND CAMBODIA BAN SAND TOO', 'Vietnam')] }),
+    V('px_port_aerial_cranes_bridge', 'PORT · ' + IL, { cutW: 'And', over: [low('2019: MALAYSIA STOPS ALL SEA SAND EXPORTS', 'twenty'), ] }),
+    V('px_port_night_aerial', 'PORT AT NIGHT · ' + IL, { cutW: 'By', over: [low('IT HAD SUPPLIED 97%+ OF SINGAPORE\'S IMPORTS', 'ninety-seven')] }),
   ]);
   beats('A028', [
     V('px_tanker_passing_2', 'SHIP · ' + IL, { over: [low('2023: INDONESIA LIFTS ITS BAN', 'Indonesia')] }),
@@ -213,7 +214,7 @@ function build(T) {
   ]);
   beats('A032', [
     V('cm_jurong_island_2011', 'JURONG ISLAND', { over: [low('60 HECTARES FREED · ~150 ACRES', 'sixty')] }),
-    S('stats', { cutW: 'At', head: 'PM LEE HSIEN LOONG, 2014', items: [], over: [at(head('"LAND CONSTRAINT IS A LITTLE', null, 460, 76), 0.1), at(head('BIT LIKE PEAK OIL."', null, 570, 80, Yc), 0.5)], source: 'Source: AFP / SBS' }),
+    S('stats', { cutW: 'said', head: 'PM LEE HSIEN LOONG, 2014', items: [], over: [at(head('"LAND CONSTRAINT IS A LITTLE', null, 460, 76), 0.1), at(head('BIT LIKE PEAK OIL."', null, 570, 80, Yc), 0.5)], source: 'Source: AFP / SBS' }),
   ]);
   beats('A032B', [
     V('cm_pulau_tekong_from_mainland', 'PULAU TEKONG SEEN FROM THE MAINLAND, 2022', { over: [low('PULAU TEKONG: 10+ VILLAGES', 'villages')] }),

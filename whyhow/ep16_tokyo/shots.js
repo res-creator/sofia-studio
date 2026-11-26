@@ -26,7 +26,7 @@ const R = (k, label) => [k, label];
 const V = (k0, label0, o = {}) => { const [k, label] = R(k0, label0); return F(k, { ...o, over: [...(o.over || []), note(label)] }); };
 const I = (k, label, o = {}) => V(k, label + ' · ' + IL, o);
 const A = (k, label, o = {}) => V(k, label, { sfx: 'click', ...o });
-const Q = (cutW, top, l1, l2, chipT, source) => S('stats', { cutW, head: top, items: [], sfx: 'boom', over: [at(head(l1, null, l2 ? 470 : 520, 88, Yc), 0.3), ...(l2 ? [at(head(l2, null, 590, 88, Yc), 0.6)] : []), ...(chipT ? [{ ...chipC(chipT, null, l2 ? 740 : 700, 44), at: 1.0 }] : [])], source });
+const Q = (cutW, top, l1, l2, chipT, source) => S('stats', { cutW, head: top, items: [], sfx: 'boom', over: [at(head(l1, null, l2 ? 470 : 520, 88, Yc), 0.05), ...(l2 ? [at(head(l2, null, 590, 88, Yc), 0.25)] : []), ...(chipT ? [{ ...chipC(chipT, null, l2 ? 740 : 700, 44), at: 0.6 }] : [])], source });
 const G = { tokyo: { lon: 139.69, lat: 35.69 }, shinjuku: { lon: 139.70, lat: 35.69 }, mnag: { lon: 139.90, lat: 35.84 }, den: { lon: 139.667, lat: 35.597 }, shibuya: { lon: 139.70, lat: 35.658 }, kasu: { lon: 139.751, lat: 35.674 }, kinka: { lon: 141.58, lat: 38.29 }, sendai: { lon: 140.88, lat: 38.26 }, osaka: { lon: 135.50, lat: 34.70 }, tokyost: { lon: 139.767, lat: 35.681 } };
 const GL = (o = {}) => ({ relief: true, borders: true, lon: [[0, 135], [3, 139.7]], lat: [[0, 33], [3, 35.7]], R: [[0, 1400], [3, 2600]], ...o });
 
@@ -115,7 +115,7 @@ function build(T) {
   ]);
   beats('A013', [
     V('pxp_yamanote_platform_passengers', 'YAMANOTE LINE PLATFORM', { over: [low('~¥1,500 AN HOUR (~$10)', 'fifteen')] }),
-    V('pxp_station_staff_yamanote_motion', 'STATION STAFF, YAMANOTE LINE', { cutW: 'One', over: [low('"HARUKA", PUSHER SINCE 2021', 'Haruka')] }),
+    V('pxp_packed_platform_shibuya', 'PACKED PLATFORM, SHIBUYA', { cutW: 'One', kb: { z: [1.25, 1.05] }, over: [low('"HARUKA", PUSHER SINCE 2021', 'Haruka')] }),
     V('dv_yamanote_platform_clock_boarding', 'YAMANOTE PLATFORM', { cutW: 'She', over: [low('MOSTLY: TUCKING IN COATS AND BAGS', 'tucking')] }),
   ]);
 
@@ -204,9 +204,9 @@ function build(T) {
   ]);
   beats('A032', [
     V('pxp_e7_tokyo_station', 'E7 SHINKANSEN (JR EAST) AT TOKYO STATION', { over: [low('JR EAST, TOKYO STATION', 'JR')] }),
-    S('stats', { cutW: 'cleaning', head: 'A 12-MINUTE STOP', items: [], over: [at(head('~7 MINUTES', null, 500, 170, Yc), 0.2), at(head('TO CLEAN THE WHOLE TRAIN', null, 650, 70), 0.6)], source: 'Source: JR East Tessei' }),
-    V('pxp_tohoku_shinkansen_tokyo_station', 'JR EAST SHINKANSEN AT TOKYO STATION', { cutW: 'clean' }),
-    V('px_e7_shinkansen_underground_platform', 'E7 SHINKANSEN PLATFORM · ' + IL, { cutW: 'Every' }),
+    V('pxp_tohoku_shinkansen_tokyo_station', 'JR EAST SHINKANSEN AT TOKYO STATION', { cutW: 'After' }),
+    S('stats', { cutW: 'seven', head: 'A 12-MINUTE STOP', items: [], over: [at(head('~7 MINUTES', null, 500, 170, Yc), 0.05), at(head('TO CLEAN THE WHOLE TRAIN', null, 650, 70), 0.3)], source: 'Source: JR East Tessei' }),
+    V('px_e7_shinkansen_underground_platform', 'E7 SHINKANSEN PLATFORM · ' + IL, { cutW: 'One' }),
   ]);
   beats('A033', [
     V('pxp_e3_tsubasa_tokyo_station', 'E3 "TSUBASA" SHINKANSEN, TOKYO STATION', { over: [low('"THE SEVEN-MINUTE MIRACLE"', 'miracle')] }),
