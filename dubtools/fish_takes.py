@@ -10,16 +10,23 @@ def opt(n, d):
     if n in a: i = a.index(n); v = a[i + 1]; del a[i:i + 2]; return v
     return d
 VOICE = opt('--voice', '536d3a5e000945adb7038665781a4aca'); MODEL = opt('--model', 's2.1-pro-free'); SAY = opt('--say', None)
+REF = opt('--ref', None); REFTXT = opt('--ref-text', None); SPEED = float(opt('--speed', '1.0'))  # --ref audio + --ref-text file: instant clone (owner-authorized own voice), sent as msgpack
 SAY = json.load(open(SAY, encoding='utf-8')) if SAY else {}
 CSV, OUT = a[0], a[1]; os.makedirs(OUT, exist_ok=True)
 KEY = os.environ.get('FISH_API_KEY', '').strip() or 'proxy'
 rows = list(csv.DictReader(open(CSV, encoding='utf-8'))); ids = a[2:] or [r['id'] for r in rows]; by = {r['id']: r for r in rows}
 
+if REF:
+    import msgpack
+    REFA = open(REF, 'rb').read(); REFT = open(REFTXT, encoding='utf-8').read().strip()
 def tts(text):
-    body = json.dumps({'text': text, 'reference_id': VOICE, 'format': 'mp3', 'mp3_bitrate': 192, 'normalize': True, 'latency': 'normal'}).encode()
+    d = {'text': text, 'format': 'mp3', 'mp3_bitrate': 192, 'normalize': True, 'latency': 'normal'}
+    if SPEED != 1.0: d['prosody'] = {'speed': SPEED, 'volume': 0}
+    if REF: d['references'] = [{'audio': REFA, 'text': REFT}]; body = msgpack.packb(d); ctype = 'application/msgpack'
+    else: d['reference_id'] = VOICE; body = json.dumps(d).encode(); ctype = 'application/json'
     for att in range(5):
         req = urllib.request.Request('https://api.fish.audio/v1/tts', data=body, method='POST',
-                                     headers={'Authorization': f'Bearer {KEY}', 'Content-Type': 'application/json', 'model': MODEL})
+                                     headers={'Authorization': f'Bearer {KEY}', 'Content-Type': ctype, 'model': MODEL})
         try:
             with urllib.request.urlopen(req, timeout=240) as r: return r.read()
         except Exception as e:
