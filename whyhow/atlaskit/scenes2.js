@@ -3,7 +3,7 @@
 const K = require('./core');
 const { W, H, C, F, clamp, lerp, seg, E, key, hexA, rr, text, measure, wrap, chip, navyBg, snow, arrow, fmtNum, hash } = K;
 const S = require('./scenes');
-const pop = (t, at, dur = 0.45) => E.back(clamp(seg(t, at, at + dur)));
+const pop = process.env.SMOOTH === '1' ? (t, at, dur = 0.6) => 0.94 + 0.06 * E.out(clamp(seg(t, at, at + dur))) : (t, at, dur = 0.45) => E.back(clamp(seg(t, at, at + dur)));
 const fade = (t, at, dur = 0.4) => E.out(clamp(seg(t, at, at + dur)));
 
 // big countdown number "7 … 1" with a ring that fills, then the trick title

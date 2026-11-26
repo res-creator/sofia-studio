@@ -32,15 +32,16 @@ shots.forEach((s, i) => { s.end = i + 1 < shots.length ? shots[i + 1].t : T.end;
 // usage check: each photo/clip at most 2 times, never back to back
 { const cnt = {}; let last = null; for (const s of shots) { const k = s.p && (s.p.img || s.p.file); if (!k) { last = null; continue; } cnt[k] = (cnt[k] || 0) + 1; if (k === last) console.error('WARN back-to-back', k, s.t.toFixed(1)); last = k; }
   for (const [k, n] of Object.entries(cnt)) if (n > 2) console.error('WARN used', n, 'times:', k); }
-if (ep.splitOver) { const SPL = ['photo', 'video', 'xsec', 'sat', 'siphon']; const res = [];
+const SMOOTH = process.env.SMOOTH === '1' || ep.smooth;
+if (ep.splitOver && !SMOOTH) { const SPL = ['photo', 'video', 'xsec', 'sat', 'siphon']; const res = [];
   for (const s of shots) { if (!SPL.includes(s.scene) || s.d <= ep.splitOver) { res.push(s); continue; }
     const n = Math.ceil(s.d / (ep.splitTo || 6)); const part = s.d / n;
     for (let k = 0; k < n; k++) { const pk = k % 2 ? { ...s.p, _punch: 1.22, _fx: 0.35 + 0.3 * (k % 4 === 1 ? 1 : 0), _fy: 0.45 } : { ...s.p, _punch: 1, _fx: 0.5, _fy: 0.5 };
       res.push({ ...s, t: s.t + k * part, end: s.t + (k + 1) * part, d: part, p: pk, off: k * part, dd: s.d, trans: k ? 'cut' : s.trans, _parent: s }); } }
   shots.length = 0; shots.push(...res); }
 const DUR = T.end, NF = Math.ceil(DUR * K.FPS);
-const XF = 0.5; // crossfade seconds
-shots.forEach(s => { if (!s.trans) s.trans = ep.defaultTrans || 'fade'; });
+const XF = SMOOTH ? 0.6 : 0.5; // crossfade seconds
+shots.forEach((s, i) => { if (!s.trans) s.trans = ep.defaultTrans || 'fade'; if (SMOOTH && i > 0 && s.scene !== 'chapter' && shots[i - 1].scene !== 'chapter') s.trans = 'fade'; });
 let cvA, cvB;
 function drawShot(ctx, s, time) { ctx.save(); SC[s.scene](ctx, time - s.t + (s.off || 0), s.dd || s.d, s.p || {}); ctx.restore(); }
 async function frame(ctx, time) {

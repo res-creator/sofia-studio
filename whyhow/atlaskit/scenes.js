@@ -4,7 +4,7 @@ const { W, H, C, F, clamp, lerp, seg, E, key, hexA, lerpCol, rr, text, measure, 
   credit, coordTag, navyBg, snow, arrow, fmtNum, hash } = K;
 const G0 = require('./globe');
 function globe(ctx, t, d, p) { G0.globe(ctx, t, d, p); overlays(ctx, t, d, p); }
-const pop = (t, at, dur = 0.45) => E.back(clamp(seg(t, at, at + dur)));
+const pop = process.env.SMOOTH === '1' ? (t, at, dur = 0.6) => 0.94 + 0.06 * E.out(clamp(seg(t, at, at + dur))) : (t, at, dur = 0.45) => E.back(clamp(seg(t, at, at + dur)));
 const fade = (t, at, dur = 0.4) => E.out(clamp(seg(t, at, at + dur)));
 const fadeOut = (t, d, dur = 0.35) => 1 - clamp(seg(t, d - dur, d));
 

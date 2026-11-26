@@ -2,7 +2,7 @@
 const K = require('./core');
 const { W, H, C, F, clamp, lerp, seg, E, hexA, rr, text, navyBg, hash, snow, arrow } = K;
 const fade = (t, at, dur = 0.4) => E.out(clamp(seg(t, at, at + dur)));
-const pop = (t, at, dur = 0.45) => E.back(clamp(seg(t, at, at + dur)));
+const pop = process.env.SMOOTH === '1' ? (t, at, dur = 0.6) => 0.94 + 0.06 * E.out(clamp(seg(t, at, at + dur))) : (t, at, dur = 0.45) => E.back(clamp(seg(t, at, at + dur)));
 const tag = (ctx, s) => text(ctx, s, 48, H - 24, { size: 20, font: F.monoB, color: hexA(C.cream, 0.55) });
 const src = (ctx, s) => s && text(ctx, s, W - 40, H - 24, { size: 20, font: F.reg, align: 'right', color: 'rgba(255,255,255,0.55)' });
 
