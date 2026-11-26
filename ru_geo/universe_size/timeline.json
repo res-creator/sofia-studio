@@ -3,9 +3,17 @@
 {
 "t": 0.0,
 "d": 3.136,
-"type": "clip",
-"src": "stock/px5.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Зонд «Вояджер» (изображение NASA)"
 },
 {
 "t": 3.136,
@@ -17,15 +25,23 @@
 {
 "t": 6.271,
 "d": 3.136,
-"type": "clip",
-"src": "stock/px1844.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "Антенна дальней космической связи (Голдстоун)"
 },
 {
 "t": 9.407,
 "d": 3.136,
 "type": "clip",
-"src": "stock/px6044.mp4",
+"src": "stock/px5.mp4",
 "ss": 0.3
 },
 {
@@ -39,7 +55,7 @@
 "t": 15.679,
 "d": 3.136,
 "type": "clip",
-"src": "stock/px22555.mp4",
+"src": "stock/px1844.mp4",
 "ss": 0.3
 },
 {
@@ -52,29 +68,37 @@
 {
 "t": 21.95,
 "d": 3.58,
-"type": "clip",
-"src": "stock/px26967.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/blue_marble.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Земля из космоса (снимок NASA)"
 },
 {
 "t": 25.53,
 "d": 3.58,
 "type": "clip",
-"src": "stock/px71457.mp4",
+"src": "stock/px22555.mp4",
 "ss": 0.3
 },
 {
 "t": 29.11,
 "d": 3.58,
 "type": "clip",
-"src": "stock/px34682.mp4",
+"src": "stock/px263305.mp4",
 "ss": 0.3
 },
 {
 "t": 32.69,
 "d": 3.58,
 "type": "clip",
-"src": "stock/px26968.mp4",
+"src": "stock/px26967.mp4",
 "ss": 0.3,
 "ov": "/home/user/sofia-studio/ru_geo/universe_size/card_ttl_1.png"
 },
@@ -87,9 +111,17 @@
 {
 "t": 39.87,
 "d": 3.3,
-"type": "clip",
-"src": "stock/px89818.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_launch.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "Старт «Вояджера-1», 1977 год"
 },
 {
 "t": 43.17,
@@ -101,15 +133,23 @@
 {
 "t": 46.47,
 "d": 3.3,
-"type": "clip",
-"src": "stock/px535.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/proxima_hubble.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Проксима Центавра (снимок Хаббла)"
 },
 {
 "t": 49.77,
 "d": 3.3,
 "type": "clip",
-"src": "stock/px91317.mp4",
+"src": "stock/px23882.mp4",
 "ss": 0.3
 },
 {
@@ -127,9 +167,17 @@
 {
 "t": 59.27,
 "d": 2.9,
-"type": "clip",
-"src": "stock/px11721.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/sun_earth_size.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Солнце и планеты в одном масштабе (схема)"
 },
 {
 "t": 62.17,
@@ -142,7 +190,7 @@
 "t": 65.07,
 "d": 2.9,
 "type": "clip",
-"src": "stock/px581.mp4",
+"src": "stock/px11721.mp4",
 "ss": 0.3
 },
 {
@@ -162,58 +210,82 @@
 {
 "t": 73.77,
 "d": 3.062,
-"type": "clip",
-"src": "stock/px188508.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/neptune.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Нептун (снимок Вояджера-2)"
 },
 {
 "t": 76.832,
-"d": 3.062,
-"type": "clip",
-"src": "stock/px238134.mp4",
-"ss": 0.3
-},
-{
-"t": 79.894,
-"d": 3.062,
-"type": "clip",
-"src": "stock/px117226.mp4",
-"ss": 0.3
-},
-{
-"t": 82.956,
-"d": 3.062,
-"type": "clip",
-"src": "stock/px188511.mp4",
-"ss": 0.3
-},
-{
-"t": 86.018,
 "d": 3.062,
 "type": "clip",
 "src": "stock/px160398.mp4",
 "ss": 0.3
 },
 {
-"t": 89.08,
-"d": 3.302,
+"t": 79.894,
+"d": 3.062,
+"type": "clip",
+"src": "stock/px1236.mp4",
+"ss": 0.3
+},
+{
+"t": 82.956,
+"d": 3.062,
+"type": "clip",
+"src": "stock/px188508.mp4",
+"ss": 0.3
+},
+{
+"t": 86.018,
+"d": 3.062,
 "type": "clip",
 "src": "stock/px135988.mp4",
 "ss": 0.3
 },
 {
+"t": 89.08,
+"d": 3.302,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/pale_blue_dot.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "«Бледно-голубая точка»: Земля глазами Вояджера-1, 1990 год"
+},
+{
 "t": 92.382,
 "d": 3.302,
 "type": "clip",
-"src": "stock/px6436.mp4",
+"src": "stock/px143016.mp4",
 "ss": 0.3
 },
 {
 "t": 95.684,
 "d": 3.302,
-"type": "clip",
-"src": "stock/px8105.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/blue_marble.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Земля из космоса (снимок NASA)"
 },
 {
 "t": 98.986,
@@ -226,29 +298,45 @@
 "t": 102.288,
 "d": 3.302,
 "type": "clip",
-"src": "stock/px120959.mp4",
+"src": "stock/px19641.mp4",
 "ss": 0.3
 },
 {
 "t": 105.59,
 "d": 3.418,
-"type": "clip",
-"src": "stock/px5503.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Антенна дальней космической связи (Голдстоун)"
 },
 {
 "t": 109.008,
 "d": 3.418,
 "type": "clip",
-"src": "stock/px3.mp4",
+"src": "stock/px236.mp4",
 "ss": 0.3
 },
 {
 "t": 112.427,
 "d": 3.418,
-"type": "clip",
-"src": "stock/px387132.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_launch.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "Старт «Вояджера-1», 1977 год"
 },
 {
 "t": 115.845,
@@ -261,14 +349,14 @@
 "t": 119.263,
 "d": 3.418,
 "type": "clip",
-"src": "stock/px236.mp4",
+"src": "stock/px228.mp4",
 "ss": 0.3
 },
 {
 "t": 122.682,
 "d": 3.418,
 "type": "clip",
-"src": "stock/px341464.mp4",
+"src": "stock/px3735.mp4",
 "ss": 0.3
 },
 {
@@ -286,9 +374,17 @@
 {
 "t": 132.3,
 "d": 3.623,
-"type": "clip",
-"src": "stock/px10814.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/sun_earth_size.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Солнце и планеты в одном масштабе (схема)"
 },
 {
 "t": 135.923,
@@ -314,7 +410,7 @@
 "t": 146.77,
 "d": 3.65,
 "type": "clip",
-"src": "stock/px8947.mp4",
+"src": "stock/px161333.mp4",
 "ss": 0.3
 },
 {
@@ -340,23 +436,39 @@
 {
 "t": 161.32,
 "d": 3.126,
-"type": "clip",
-"src": "stock/px19641.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/proxima_hubble.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Проксима Центавра (снимок Хаббла)"
 },
 {
 "t": 164.446,
 "d": 3.126,
 "type": "clip",
-"src": "stock/px1992.mp4",
+"src": "stock/px92727.mp4",
 "ss": 0.3
 },
 {
 "t": 167.572,
 "d": 3.126,
-"type": "clip",
-"src": "stock/px733.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/blue_marble.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "Земля из космоса (снимок NASA)"
 },
 {
 "t": 170.698,
@@ -369,77 +481,77 @@
 "t": 173.824,
 "d": 3.126,
 "type": "clip",
-"src": "stock/px1236.mp4",
+"src": "stock/px5990.mp4",
 "ss": 0.3
 },
 {
 "t": 176.95,
 "d": 3.292,
 "type": "clip",
-"src": "stock/px36471.mp4",
+"src": "stock/px197923.mp4",
 "ss": 0.3
 },
 {
 "t": 180.242,
 "d": 3.292,
 "type": "clip",
-"src": "stock/px197923.mp4",
+"src": "stock/px134647.mp4",
 "ss": 0.3
 },
 {
 "t": 183.534,
 "d": 3.292,
 "type": "clip",
-"src": "stock/px361832.mp4",
+"src": "stock/px384849.mp4",
 "ss": 0.3
 },
 {
 "t": 186.826,
 "d": 3.292,
 "type": "clip",
-"src": "stock/px6045.mp4",
+"src": "stock/px1295.mp4",
 "ss": 0.3
 },
 {
 "t": 190.118,
 "d": 3.292,
 "type": "clip",
-"src": "stock/px270857.mp4",
+"src": "stock/px129141.mp4",
 "ss": 0.3
 },
 {
 "t": 193.41,
 "d": 3.12,
 "type": "clip",
-"src": "stock/px346243.mp4",
+"src": "stock/px21770.mp4",
 "ss": 0.3
 },
 {
 "t": 196.53,
 "d": 3.12,
 "type": "clip",
-"src": "stock/px218646.mp4",
+"src": "stock/px23567.mp4",
 "ss": 0.3
 },
 {
 "t": 199.65,
 "d": 3.12,
 "type": "clip",
-"src": "stock/px197974.mp4",
+"src": "stock/px139428.mp4",
 "ss": 0.3
 },
 {
 "t": 202.77,
 "d": 3.12,
 "type": "clip",
-"src": "stock/px346244.mp4",
+"src": "stock/px15138.mp4",
 "ss": 0.3
 },
 {
 "t": 205.89,
 "d": 3.12,
 "type": "clip",
-"src": "stock/px23567.mp4",
+"src": "stock/px14955.mp4",
 "ss": 0.3
 },
 {
@@ -451,9 +563,17 @@
 {
 "t": 211.61,
 "d": 3.222,
-"type": "clip",
-"src": "stock/px10339.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milky_way_art.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Млечный Путь (иллюстрация художника)"
 },
 {
 "t": 214.832,
@@ -466,29 +586,37 @@
 "t": 218.054,
 "d": 3.222,
 "type": "clip",
-"src": "stock/px1209.mp4",
+"src": "stock/px203923.mp4",
 "ss": 0.3
 },
 {
 "t": 221.276,
 "d": 3.222,
 "type": "clip",
-"src": "stock/px31569.mp4",
+"src": "stock/px10339.mp4",
 "ss": 0.3
 },
 {
 "t": 224.498,
 "d": 3.222,
 "type": "clip",
-"src": "stock/px93839.mp4",
+"src": "stock/px209690.mp4",
 "ss": 0.3
 },
 {
 "t": 227.72,
 "d": 3.194,
-"type": "clip",
-"src": "stock/px2118.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milky_way_art.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Млечный Путь (иллюстрация художника)"
 },
 {
 "t": 230.914,
@@ -508,28 +636,28 @@
 "t": 237.302,
 "d": 3.194,
 "type": "clip",
-"src": "stock/px169951.mp4",
+"src": "stock/px2118.mp4",
 "ss": 0.3
 },
 {
 "t": 240.496,
 "d": 3.194,
 "type": "clip",
-"src": "stock/px42426.mp4",
+"src": "stock/px11.mp4",
 "ss": 0.3
 },
 {
 "t": 243.69,
 "d": 2.884,
 "type": "clip",
-"src": "stock/px161333.mp4",
+"src": "stock/px184344.mp4",
 "ss": 0.3
 },
 {
 "t": 246.574,
 "d": 2.884,
 "type": "clip",
-"src": "stock/px306120.mp4",
+"src": "stock/px10814.mp4",
 "ss": 0.3
 },
 {
@@ -543,42 +671,58 @@
 "t": 252.342,
 "d": 2.884,
 "type": "clip",
-"src": "stock/px184344.mp4",
+"src": "stock/px175210.mp4",
 "ss": 0.3
 },
 {
 "t": 255.226,
 "d": 2.884,
 "type": "clip",
-"src": "stock/px67824.mp4",
+"src": "stock/px306120.mp4",
 "ss": 0.3
 },
 {
 "t": 258.11,
 "d": 3.24,
-"type": "clip",
-"src": "stock/px23882.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_launch.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Старт «Вояджера-1», 1977 год"
 },
 {
 "t": 261.35,
 "d": 3.24,
 "type": "clip",
-"src": "stock/px209690.mp4",
+"src": "stock/px10.mp4",
 "ss": 0.3
 },
 {
 "t": 264.59,
 "d": 3.24,
-"type": "clip",
-"src": "stock/px54755.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milky_way_art.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "Млечный Путь (иллюстрация художника)"
 },
 {
 "t": 267.83,
 "d": 3.24,
 "type": "clip",
-"src": "stock/px10858.mp4",
+"src": "stock/px235.mp4",
 "ss": 0.3
 },
 {
@@ -596,22 +740,30 @@
 {
 "t": 277.27,
 "d": 3.213,
-"type": "clip",
-"src": "stock/px192937.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/andromeda.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Галактика Андромеды"
 },
 {
 "t": 280.483,
 "d": 3.213,
 "type": "clip",
-"src": "stock/px223165.mp4",
+"src": "stock/px31569.mp4",
 "ss": 0.3
 },
 {
 "t": 283.697,
 "d": 3.213,
 "type": "clip",
-"src": "stock/px14955.mp4",
+"src": "stock/px300187.mp4",
 "ss": 0.3
 },
 {
@@ -623,9 +775,17 @@
 {
 "t": 290.51,
 "d": 2.907,
-"type": "clip",
-"src": "stock/px131925.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/andromeda.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "Галактика Андромеды"
 },
 {
 "t": 293.418,
@@ -638,28 +798,36 @@
 "t": 296.325,
 "d": 2.907,
 "type": "clip",
-"src": "stock/px100386.mp4",
+"src": "stock/px30633.mp4",
 "ss": 0.3
 },
 {
 "t": 299.233,
 "d": 2.907,
 "type": "clip",
-"src": "stock/px123310.mp4",
+"src": "stock/px192937.mp4",
 "ss": 0.3
 },
 {
 "t": 302.14,
 "d": 3.272,
-"type": "clip",
-"src": "stock/px157881.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/andromeda.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Галактика Андромеды"
 },
 {
 "t": 305.412,
 "d": 3.272,
 "type": "clip",
-"src": "stock/px56932.mp4",
+"src": "stock/px182517.mp4",
 "ss": 0.3
 },
 {
@@ -673,14 +841,14 @@
 "t": 311.956,
 "d": 3.272,
 "type": "clip",
-"src": "stock/px115081.mp4",
+"src": "stock/px157881.mp4",
 "ss": 0.3
 },
 {
 "t": 315.228,
 "d": 3.272,
 "type": "clip",
-"src": "stock/px203923.mp4",
+"src": "stock/px16453.mp4",
 "ss": 0.3
 },
 {
@@ -692,15 +860,23 @@
 {
 "t": 322.1,
 "d": 3.14,
-"type": "clip",
-"src": "stock/px7093.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/hudf.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Ultra Deep Field, снимок Хаббла"
 },
 {
 "t": 325.24,
 "d": 3.14,
 "type": "clip",
-"src": "stock/px9135.mp4",
+"src": "stock/px137662.mp4",
 "ss": 0.3
 },
 {
@@ -714,22 +890,30 @@
 "t": 331.52,
 "d": 3.14,
 "type": "clip",
-"src": "stock/px205561.mp4",
+"src": "stock/px7093.mp4",
 "ss": 0.3
 },
 {
 "t": 334.66,
 "d": 3.14,
 "type": "clip",
-"src": "stock/px182517.mp4",
+"src": "stock/px11168.mp4",
 "ss": 0.3
 },
 {
 "t": 337.8,
 "d": 3.224,
-"type": "clip",
-"src": "stock/px116173.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/hudf.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "Ultra Deep Field, снимок Хаббла"
 },
 {
 "t": 341.024,
@@ -742,14 +926,14 @@
 "t": 344.249,
 "d": 3.224,
 "type": "clip",
-"src": "stock/px349354.mp4",
+"src": "stock/px17072.mp4",
 "ss": 0.3
 },
 {
 "t": 347.473,
 "d": 3.224,
 "type": "clip",
-"src": "stock/px10.mp4",
+"src": "stock/px116173.mp4",
 "ss": 0.3
 },
 {
@@ -763,14 +947,14 @@
 "t": 353.921,
 "d": 3.224,
 "type": "clip",
-"src": "stock/px352510.mp4",
+"src": "stock/px31442.mp4",
 "ss": 0.3
 },
 {
 "t": 357.146,
 "d": 3.224,
 "type": "clip",
-"src": "stock/px74933.mp4",
+"src": "stock/px13.mp4",
 "ss": 0.3
 },
 {
@@ -783,35 +967,35 @@
 "t": 362.97,
 "d": 3.046,
 "type": "clip",
-"src": "stock/px152204.mp4",
+"src": "stock/px31420.mp4",
 "ss": 0.3
 },
 {
 "t": 366.016,
 "d": 3.046,
 "type": "clip",
-"src": "stock/px12910.mp4",
+"src": "stock/px39524.mp4",
 "ss": 0.3
 },
 {
 "t": 369.062,
 "d": 3.046,
 "type": "clip",
-"src": "stock/px342539.mp4",
+"src": "stock/px165646.mp4",
 "ss": 0.3
 },
 {
 "t": 372.108,
 "d": 3.046,
 "type": "clip",
-"src": "stock/px31420.mp4",
+"src": "stock/px24241.mp4",
 "ss": 0.3
 },
 {
 "t": 375.154,
 "d": 3.046,
 "type": "clip",
-"src": "stock/px34681.mp4",
+"src": "stock/px2837.mp4",
 "ss": 0.3
 },
 {
@@ -824,14 +1008,14 @@
 "t": 381.8,
 "d": 3.2,
 "type": "clip",
-"src": "stock/px32158.mp4",
+"src": "stock/px9536.mp4",
 "ss": 0.3
 },
 {
 "t": 385.0,
 "d": 3.2,
 "type": "clip",
-"src": "stock/px85050.mp4",
+"src": "stock/px24623.mp4",
 "ss": 0.3
 },
 {
@@ -845,57 +1029,54 @@
 "t": 391.4,
 "d": 3.2,
 "type": "clip",
-"src": "stock/px39036.mp4",
+"src": "stock/px72406.mp4",
 "ss": 0.3
 },
 {
 "t": 394.6,
 "d": 3.2,
 "type": "clip",
-"src": "stock/px85154.mp4",
+"src": "stock/px13046.mp4",
 "ss": 0.3
 },
 {
 "t": 397.8,
 "d": 2.943,
 "type": "clip",
-"src": "stock/px365651.mp4",
+"src": "stock/px9.mp4",
 "ss": 0.3
 },
 {
 "t": 400.743,
 "d": 2.943,
 "type": "clip",
-"src": "stock/px250440.mp4",
+"src": "stock/px9141.mp4",
 "ss": 0.3
 },
 {
 "t": 403.687,
 "d": 2.943,
 "type": "clip",
-"src": "stock/px82659.mp4",
+"src": "stock/px14278.mp4",
 "ss": 0.3
 },
 {
 "t": 406.63,
 "d": 2.943,
-"type": "clip",
-"src": "stock/px75879.mp4",
-"ss": 0.3
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
 },
 {
 "t": 409.573,
 "d": 2.943,
-"type": "clip",
-"src": "stock/px250441.mp4",
-"ss": 0.3
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
 },
 {
 "t": 412.517,
 "d": 2.943,
-"type": "clip",
-"src": "stock/px124593.mp4",
-"ss": 0.3
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
 },
 {
 "t": 415.46,
@@ -906,9 +1087,17 @@
 {
 "t": 419.06,
 "d": 3.126,
-"type": "clip",
-"src": "stock/px138111.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Зонд «Вояджер» (изображение NASA)"
 },
 {
 "t": 422.186,
@@ -921,29 +1110,37 @@
 "t": 425.312,
 "d": 3.126,
 "type": "clip",
-"src": "stock/px137408.mp4",
+"src": "stock/px221919.mp4",
 "ss": 0.3
 },
 {
 "t": 428.438,
 "d": 3.126,
 "type": "clip",
-"src": "stock/px174070.mp4",
+"src": "stock/px147239.mp4",
 "ss": 0.3
 },
 {
 "t": 431.564,
 "d": 3.126,
 "type": "clip",
-"src": "stock/px43613.mp4",
+"src": "stock/px3965.mp4",
 "ss": 0.3
 },
 {
 "t": 434.69,
 "d": 3.073,
-"type": "clip",
-"src": "stock/px13100.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/hudf.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Ultra Deep Field, снимок Хаббла"
 },
 {
 "t": 437.763,
@@ -963,14 +1160,14 @@
 "t": 443.91,
 "d": 3.073,
 "type": "clip",
-"src": "stock/px37712.mp4",
+"src": "stock/px144755.mp4",
 "ss": 0.3
 },
 {
 "t": 446.983,
 "d": 3.073,
 "type": "clip",
-"src": "stock/px144755.mp4",
+"src": "stock/px40038.mp4",
 "ss": 0.3
 },
 {
@@ -997,7 +1194,7 @@
 "t": 458.673,
 "d": 2.943,
 "type": "clip",
-"src": "stock/px49131.mp4",
+"src": "stock/px275983.mp4",
 "ss": 0.3
 },
 {
@@ -1011,14 +1208,14 @@
 "t": 464.56,
 "d": 2.943,
 "type": "clip",
-"src": "stock/px27726.mp4",
+"src": "stock/px388064.mp4",
 "ss": 0.3
 },
 {
 "t": 467.503,
 "d": 2.943,
 "type": "clip",
-"src": "stock/px275983.mp4",
+"src": "stock/px21528.mp4",
 "ss": 0.3
 },
 {
@@ -1031,9 +1228,17 @@
 {
 "t": 473.39,
 "d": 3.287,
-"type": "clip",
-"src": "stock/px21528.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/blue_marble.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Земля из космоса (снимок NASA)"
 },
 {
 "t": 476.677,
@@ -1067,35 +1272,35 @@
 "t": 489.823,
 "d": 3.287,
 "type": "clip",
-"src": "stock/px380341.mp4",
+"src": "stock/px328740.mp4",
 "ss": 0.3
 },
 {
 "t": 493.11,
 "d": 3.207,
 "type": "clip",
-"src": "stock/px183136.mp4",
+"src": "stock/px30878.mp4",
 "ss": 0.3
 },
 {
 "t": 496.317,
 "d": 3.207,
 "type": "clip",
-"src": "stock/px59483.mp4",
+"src": "stock/px205923.mp4",
 "ss": 0.3
 },
 {
 "t": 499.525,
 "d": 3.207,
 "type": "clip",
-"src": "stock/px216420.mp4",
+"src": "stock/px80699.mp4",
 "ss": 0.3
 },
 {
 "t": 502.733,
 "d": 3.207,
 "type": "clip",
-"src": "stock/px45954.mp4",
+"src": "stock/px33237.mp4",
 "ss": 0.3
 },
 {
@@ -1107,9 +1312,17 @@
 {
 "t": 508.54,
 "d": 3.214,
-"type": "clip",
-"src": "stock/px137085.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "Зонд «Вояджер» (изображение NASA)"
 },
 {
 "t": 511.754,
@@ -1121,71 +1334,95 @@
 {
 "t": 514.968,
 "d": 3.214,
-"type": "clip",
-"src": "stock/px60027.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/pale_blue_dot.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "«Бледно-голубая точка»: Земля глазами Вояджера-1, 1990 год"
 },
 {
 "t": 518.182,
 "d": 3.214,
 "type": "clip",
-"src": "stock/px238139.mp4",
+"src": "stock/px126663.mp4",
 "ss": 0.3
 },
 {
 "t": 521.396,
 "d": 3.214,
 "type": "clip",
-"src": "stock/px333527.mp4",
+"src": "stock/px733.mp4",
 "ss": 0.3
 },
 {
 "t": 524.61,
 "d": 3.135,
-"type": "clip",
-"src": "stock/px60028.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Антенна дальней космической связи (Голдстоун)"
 },
 {
 "t": 527.745,
 "d": 3.135,
 "type": "clip",
-"src": "stock/px137083.mp4",
+"src": "stock/px27539.mp4",
 "ss": 0.3
 },
 {
 "t": 530.88,
 "d": 3.135,
-"type": "clip",
-"src": "stock/px228095.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "Зонд «Вояджер» (изображение NASA)"
 },
 {
 "t": 534.015,
 "d": 3.135,
 "type": "clip",
-"src": "stock/px40038.mp4",
+"src": "stock/px60027.mp4",
 "ss": 0.3
 },
 {
 "t": 537.15,
 "d": 3.176,
 "type": "clip",
-"src": "stock/px207467.mp4",
+"src": "stock/px54755.mp4",
 "ss": 0.3
 },
 {
 "t": 540.326,
 "d": 3.176,
 "type": "clip",
-"src": "stock/px175210.mp4",
+"src": "stock/px191254.mp4",
 "ss": 0.3
 },
 {
 "t": 543.502,
 "d": 3.176,
 "type": "clip",
-"src": "stock/px317.mp4",
+"src": "stock/px207467.mp4",
 "ss": 0.3
 },
 {
@@ -1199,15 +1436,23 @@
 "t": 549.854,
 "d": 3.176,
 "type": "clip",
-"src": "stock/px191254.mp4",
+"src": "stock/px48563.mp4",
 "ss": 0.3
 },
 {
 "t": 553.03,
 "d": 3.354,
-"type": "clip",
-"src": "stock/px25122.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/pale_blue_dot.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "«Бледно-голубая точка»: Земля глазами Вояджера-1, 1990 год"
 },
 {
 "t": 556.384,
@@ -1227,7 +1472,7 @@
 "t": 563.092,
 "d": 3.354,
 "type": "clip",
-"src": "stock/px6219.mp4",
+"src": "stock/px213814.mp4",
 "ss": 0.3
 },
 {
@@ -1240,22 +1485,38 @@
 {
 "t": 569.8,
 "d": 3.617,
-"type": "clip",
-"src": "stock/px38388.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_golden_record.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Золотая пластинка «Вояджера» (NASA)"
 },
 {
 "t": 573.417,
 "d": 3.617,
-"type": "clip",
-"src": "stock/px179775.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Антенна дальней космической связи (Голдстоун)"
 },
 {
 "t": 577.033,
 "d": 3.617,
 "type": "clip",
-"src": "stock/px6358.mp4",
+"src": "stock/px179775.mp4",
 "ss": 0.3
 }
 ]

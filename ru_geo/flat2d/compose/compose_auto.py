@@ -20,7 +20,7 @@ def pixabay(q):
         for h in d.get('hits', []):
             vv = h['videos']; m = vv.get('medium') or vv.get('small')
             if not m or not m.get('url') or m['width'] < m['height']: continue
-            if re.search(r'cartoon|character|mascot|funny|fun\b|3d render|illustration|emoji|animation', h.get('tags', ''), re.I): continue
+            if re.search(r'cartoon|character|mascot|funny|fun\b|3d|render|cgi|illustration|emoji|animation|alien|ufo|fantasy|sci-fi|scifi|futuristic|abstract|ai generated|generated|neon|glow|particles|hologram|digital|wallpaper|loop|vfx|effect|magic|astronaut|planet surface|galaxy fantasy', h.get('tags', ''), re.I): continue
             k = 'px%s' % h['id']
             DB['v'][k] = dict(id=k, title=h.get('tags', ''), dur=h.get('duration'), mp4=m['url'], tags=h.get('tags', '').split(', ')[:10]); ids.append(k)
         time.sleep(1.0); return ids
@@ -59,6 +59,23 @@ for l in L:
     if txt: paras.append(dict(text=txt, cue={})); last = ('p', txt)
 voice = [s for s in segs if s['kind'] == 'voice']
 if len(paras) != len(voice): sys.exit(f'абзацев {len(paras)} != озвученных {len(voice)}')
+# --- фото по абзацам из старой раскадровки
+photos_by_par = {}; caps = {}
+oc = f'{J}/SCRIPT_oldcues.md'; cr_path = f'{J}/archive/credits.json'
+if os.path.exists(oc) and os.path.exists(cr_path):
+    CR = json.load(open(cr_path, encoding='utf8')); caps = {k: v.get('cap', '') for k, v in CR.items()}
+    pi = -1
+    for l in open(oc, encoding='utf8').read().split('## ТАБЛИЦА ФАКТОВ')[0].splitlines():
+        t = l.strip()
+        if t.startswith('>>'):
+            try: d = json.loads(t[2:].strip())
+            except Exception: continue
+            ks = list(d.get('shots', [])) + ([d['card']['photo']] if d.get('card', {}).get('photo') else [])
+            if pi >= 0: photos_by_par[pi] = [k for k in ks if k in CR and os.path.exists(f"{J}/archive/img/{CR[k]['file']}")]
+            continue
+        if not t or t.startswith(('---', '#', '|')): continue
+        if re.sub(r'\s+', ' ', re.sub(r'\[[a-z ]+\]', '', t)).strip(): pi += 1
+    PIMG = {k: f"{J}/archive/img/{v['file']}" for k, v in CR.items()}
 # --- подбор клипов
 used = set(); cards = []; tl = []
 def pick(q):
@@ -90,7 +107,12 @@ for idx, ((a, b), p) in enumerate(zip(bounds, paras)):
     ov = None
     if ttl and not big:
         ov = f'{J}/card_ttl_{idx}.png'; cardjobs.append(dict(type='title', text=ttl, out=ov)); last_ttl = t
+    phs = photos_by_par.get(idx, []); pj = 0
     for j in range(n):
+        if pj < len(phs) and (j % 2 == 0 or n <= len(phs) + 1):
+            key = phs[pj]; pj += 1; zz = [[1.0, 1.12], [1.12, 1.0], [1.05, 1.15]][(idx + j) % 3]
+            add(t + j * shot, shot, type='photo', src=PIMG[key], z=zz, p=[[0.4, 0.5], [0.6, 0.45], [0.5, 0.5]][(idx + j) % 3], cap=caps.get(key, ''), **({'ov': ov} if (ov and j == (n - 1 if cue.get('ttl') else 0)) else {}))
+            continue
         k, v = pick(qs[j % len(qs)])
         if not k:
             for q in qs:

@@ -34,12 +34,16 @@ run(['ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', f'{tmp}/
 def tc(x): x = max(0, x); return f'{int(x // 3600)}:{int(x % 3600 // 60):02d}:{x % 60:05.2f}'
 ass = ['[Script Info]', 'ScriptType: v4.00+', f'PlayResX: {W}', f'PlayResY: {H}', '', '[V4+ Styles]',
        'Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding',
-       'Style: C,Inter,60,&H00FFFFFF,&H000000FF,&H00101010,&H80000000,1,0,0,0,100,100,0,0,1,4,2,2,120,120,70,1', '', '[Events]', 'Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text']
+       'Style: K,Inter,40,&H00F0F0F0,&H000000FF,&H00101010,&H80000000,0,1,0,0,100,100,0,0,1,3,1,1,70,70,210,1', 'Style: C,Inter,60,&H00FFFFFF,&H000000FF,&H00101010,&H80000000,1,0,0,0,100,100,0,0,1,4,2,2,120,120,70,1', '', '[Events]', 'Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text']
 for sg in film['segs']:
     if sg['kind'] != 'voice': continue
     for ca, cb, txt in sg['captions']:
         if cb < t0 or ca > t1: continue
         ass.append(f'Dialogue: 0,{tc(ca - t0)},{tc(cb - t0)},C,,0,0,0,,{txt}')
+for s_ in tl:
+    if s_.get('cap'):
+        ca, cb = max(s_['t'], t0), min(s_['t'] + s_['d'], t1)
+        if cb - ca > 0.5: ass.append(f"Dialogue: 0,{tc(ca - t0 + 0.2)},{tc(cb - t0 - 0.2)},K,,0,0,0,,{s_['cap']}")
 open(f'{tmp}/c.ass', 'w', encoding='utf8').write('\n'.join(ass))
 # звук: озвучка (+ музыка, если есть mus.wav рядом)
 dur = t1 - t0; aud = ['-ss', str(t0), '-t', f'{dur:.3f}', '-i', f'{R}/{slug}/vo_clone/vo.mp3']

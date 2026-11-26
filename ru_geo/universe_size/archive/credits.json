@@ -14,5 +14,85 @@
   "cap": "Старт «Вояджера-1», 1977 год",
   "page": "https://commons.wikimedia.org/wiki/File:Titan_3E_with_Voyager_1.jpg",
   "title": "File:Titan 3E with Voyager 1.jpg"
+ },
+ "voyager_golden_record": {
+  "file": "voyager_golden_record.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Золотая пластинка «Вояджера» (NASA)",
+  "page": "https://images.nasa.gov/details/PIA21741",
+  "title": "Voyager: Preparing the Golden Record"
+ },
+ "dsn_antenna": {
+  "file": "dsn_antenna.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Антенна дальней космической связи (Голдстоун)",
+  "page": "https://images.nasa.gov/details/PIA17792",
+  "title": "Goldstone 70-m Antenna"
+ },
+ "pale_blue_dot": {
+  "file": "pale_blue_dot.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "«Бледно-голубая точка»: Земля глазами Вояджера-1, 1990 год",
+  "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000381",
+  "title": "Cassini’s Pale Blue Dot"
+ },
+ "blue_marble": {
+  "file": "blue_marble.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Земля из космоса (снимок NASA)",
+  "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e002131",
+  "title": "NASA Blue Marble 2007 West"
+ },
+ "sun_earth_size": {
+  "file": "sun_earth_size.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Солнце и планеты в одном масштабе (схема)",
+  "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e002113",
+  "title": "Eruptive Prominence"
+ },
+ "neptune": {
+  "file": "neptune.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Нептун (снимок Вояджера-2)",
+  "page": "https://images.nasa.gov/details/8910708",
+  "title": "Space Science"
+ },
+ "proxima_hubble": {
+  "file": "proxima_hubble.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Проксима Центавра (снимок Хаббла)",
+  "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000214",
+  "title": "Hubble's Best Image of Alpha Centauri A and B"
+ },
+ "milky_way_art": {
+  "file": "milky_way_art.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Млечный Путь (иллюстрация художника)",
+  "page": "https://images.nasa.gov/details/PIA17036",
+  "title": "Voyager the Explorer"
+ },
+ "andromeda": {
+  "file": "andromeda.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Галактика Андромеды",
+  "page": "https://images.nasa.gov/details/PIA04921",
+  "title": "Andromeda Galaxy"
+ },
+ "hudf": {
+  "file": "hudf.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Ultra Deep Field, снимок Хаббла",
+  "page": "https://images.nasa.gov/details/hubble-sees-a-legion-of-galaxies_25608651281_o",
+  "title": "Swimming in Sculptor"
  }
 }
