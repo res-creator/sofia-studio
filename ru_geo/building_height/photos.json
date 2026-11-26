@@ -1,0 +1,23 @@
+{
+"elevator_cab": {"q": ["elevator interior", "glass elevator inside skyscraper"], "cap": "кабина лифта (иллюстративное фото)", "need": "кабина лифта изнутри"},
+"steel_rope": {"q": ["steel wire rope on a drum", "steel wire rope"], "cap": "стальной трос (иллюстративное фото)", "need": "крупно стальной трос"},
+"burj_khalifa": {"q": ["Burj Khalifa", "Burj Khalifa Dubai tower"], "cap": "Бурдж-Халифа, Дубай (современное фото)", "need": "башня целиком"},
+"jeddah_tower": {"q": ["Jeddah Tower construction", "Jeddah Tower"], "cap": "Башня Джидда на стройке (фото)", "need": "строящаяся башня"},
+"elevator_shaft": {"q": ["elevator shaft", "lift shaft of a hydraulic elevator"], "cap": "шахта лифта (иллюстративное фото)", "need": "шахта лифта"},
+"carbon_fiber": {"q": ["woven carbon fiber fabric", "carbon fibre weave"], "cap": "углеродное волокно (иллюстративное фото)", "need": "ткань из углеволокна"},
+"dubai_skyline": {"q": ["Dubai skyline", "Dubai skyline Burj Khalifa"], "cap": "панорама Дубая (современное фото)", "need": "небоскрёбы Дубая"},
+"burj_foundation": {"q": ["Burj Khalifa construction", "Burj Dubai under construction"], "cap": "строительство Бурдж-Халифы (фото 2008 года)", "need": "стройка башни"},
+"concrete_pump": {"q": ["concrete pump truck", "concrete pump boom"], "cap": "бетононасос (иллюстративное фото)", "need": "бетононасос на стройке"},
+"skyscraper_crane": {"q": ["skyscraper under construction crane", "tower crane skyscraper construction"], "cap": "высотка на стройке (иллюстративное фото)", "need": "кран и каркас"},
+"wind_tunnel": {"q": ["wind tunnel model skyscraper", "building model wind tunnel test"], "cap": "модель в аэродинамической трубе (иллюстративное фото)", "need": "модель здания в трубе"},
+"vortex_street": {"q": ["Karman vortex street", "vortex street cylinder flow"], "cap": "вихри за препятствием (схема / фото потока)", "need": "вихревая дорожка"},
+"burj_plan": {"q": ["Burj Khalifa floor plan", "Burj Khalifa from above", "Burj Khalifa Y-shaped"], "cap": "Бурдж-Халифа: форма в плане (схема или вид сверху)", "need": "Y-образная форма"},
+"taipei_damper": {"q": ["Taipei 101 tuned mass damper", "Taipei 101 damper ball"], "cap": "маятник в Тайбэе (фото)", "need": "золотой шар"},
+"taipei101": {"q": ["Taipei 101", "Taipei 101 tower"], "cap": "Тайбэй 101 (современное фото)", "need": "башня целиком"},
+"wright_illinois": {"q": ["The Illinois Frank Lloyd Wright mile high skyscraper", "Frank Lloyd Wright Mile High Illinois drawing"], "cap": "проект Райта «Иллинойс», 1950-е (рисунок)", "need": "рисунок башни"},
+"space_elevator": {"q": ["space elevator", "space elevator concept NASA"], "cap": "космический лифт (иллюстрация)", "need": "трос в космос"},
+"earth_geo": {"q": ["geostationary orbit diagram", "Earth geostationary orbit"], "cap": "геостационарная орбита (схема)", "need": "Земля и орбита"},
+"tsiolkovsky": {"q": ["Konstantin Tsiolkovsky", "Tsiolkovsky portrait"], "cap": "К. Э. Циолковский (старое фото)", "need": "портрет"},
+"carbon_nanotube": {"q": ["carbon nanotube", "carbon nanotube structure"], "cap": "углеродная нанотрубка (модель)", "need": "модель нанотрубки"},
+"otis_elevator": {"q": ["Elisha Otis safety elevator", "Elisha Otis 1854"], "cap": "Элиша Отис, демонстрация защёлки, 1850-е (гравюра)", "need": "гравюра или портрет"}
+}

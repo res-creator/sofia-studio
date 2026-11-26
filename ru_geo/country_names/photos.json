@@ -1,0 +1,194 @@
+{
+ "old_world_map": {
+  "q": [
+   "Ortelius Typus Orbis Terrarum 1570",
+   "Waldseemüller map 1507"
+  ],
+  "cap": "Старинная карта мира, 1570 год",
+  "need": "старинная карта мира с подписями"
+ },
+ "canada_map": {
+  "q": [
+   "Canada map",
+   "Canada location map"
+  ],
+  "cap": "Канада на карте",
+  "need": "Канада на современной карте"
+ },
+ "marco_polo": {
+  "q": [
+   "Marco Polo portrait",
+   "Marco Polo Venetian traveller"
+  ],
+  "cap": "Марко Поло (портрет)",
+  "need": "портрет Марко Поло"
+ },
+ "cartier_portrait": {
+  "q": [
+   "Jacques Cartier portrait",
+   "Jacques Cartier 1851"
+  ],
+  "cap": "Жак Картье (портрет XIX века)",
+  "need": "портрет Картье"
+ },
+ "cartier_voyage_map": {
+  "q": [
+   "Harleian world map 1547",
+   "Vallard atlas 1547 Canada"
+  ],
+  "cap": "Карта 1547 года, где уже написано «Канада»",
+  "need": "старинная карта Нового Света"
+ },
+ "brazil_old_map": {
+  "q": [
+   "Lopo Homem Miller Atlas Brazil",
+   "Terra Brasilis Miller Atlas"
+  ],
+  "cap": "Карта Бразилии, XVI век",
+  "need": "старая карта Бразилии"
+ },
+ "brazilwood": {
+  "q": [
+   "Paubrasilia echinata",
+   "brazilwood tree"
+  ],
+  "cap": "Бразильское дерево (фото)",
+  "need": "дерево пау-бразил"
+ },
+ "wouri_river": {
+  "q": [
+   "Douala Wouri river",
+   "River Wouri Douala Cameroon"
+  ],
+  "cap": "Река Вури в Камеруне (фото)",
+  "need": "река Вури"
+ },
+ "shrimp": {
+  "q": [
+   "Callianassa turnerana",
+   "Cameroon ghost shrimp"
+  ],
+  "cap": "Креветка Камеруна (рисунок)",
+  "need": "креветка"
+ },
+ "lake_chad": {
+  "q": [
+   "Lake Chad",
+   "Lake Chad from Apollo 7"
+  ],
+  "cap": "Озеро Чад из космоса",
+  "need": "озеро Чад"
+ },
+ "iceland_ice": {
+  "q": [
+   "Iceland drift ice fjord",
+   "Iceland sea ice Westfjords"
+  ],
+  "cap": "Лёд у берегов Исландии (фото)",
+  "need": "лёд у берега Исландии"
+ },
+ "erik_red": {
+  "q": [
+   "Eric the Red Arngrímur Jónsson",
+   "Erik the Red drawing"
+  ],
+  "cap": "Эйрик Рыжий (рисунок XVII века)",
+  "need": "Эйрик Рыжий"
+ },
+ "maracaibo_stilts": {
+  "q": [
+   "Lake Maracaibo stilt houses",
+   "Lake dwellings of Santa Rosa Maracaibo"
+  ],
+  "cap": "Дома на сваях у озера Маракайбо",
+  "need": "дома на сваях"
+ },
+ "venice": {
+  "q": [
+   "Venice Grand Canal",
+   "Venice canals"
+  ],
+  "cap": "Венеция (фото)",
+  "need": "венецианский канал"
+ },
+ "silver_coins": {
+  "q": [
+   "Spanish silver real coin",
+   "Pieces of eight Spanish dollar"
+  ],
+  "cap": "Испанская серебряная монета",
+  "need": "серебряные монеты"
+ },
+ "terra_australis_map": {
+  "q": [
+   "Terra Australis Ortelius map",
+   "Terra Australis incognita map"
+  ],
+  "cap": "Карта с «Южной землёй» XVI века",
+  "need": "Terra Australis на старой карте"
+ },
+ "flinders_chart": {
+  "q": [
+   "Flinders General chart of Terra Australis 1814",
+   "General chart of Terra Australis or Australia"
+  ],
+  "cap": "Карта Флиндерса, 1814 год",
+  "need": "карта Австралии Флиндерса"
+ },
+ "philippines_map": {
+  "q": [
+   "Philippines Ortelius map",
+   "Murillo Velarde map Philippines 1734"
+  ],
+  "cap": "Старая карта Филиппин",
+  "need": "старая карта Филиппин"
+ },
+ "philip_ii": {
+  "q": [
+   "Philip II of Spain portrait",
+   "Philip II Titian portrait"
+  ],
+  "cap": "Филипп II (портрет XVI века)",
+  "need": "портрет Филиппа II"
+ },
+ "japan_map": {
+  "q": [
+   "Japan old map Ortelius",
+   "Iaponiae insulae descriptio"
+  ],
+  "cap": "Старая карта Японии",
+  "need": "старая карта Японии"
+ },
+ "sunrise_japan": {
+  "q": [
+   "sunrise Japan sea",
+   "Mount Fuji sunrise"
+  ],
+  "cap": "Восход над Японией (фото)",
+  "need": "восход солнца"
+ },
+ "madagascar_map": {
+  "q": [
+   "Madagascar old map Ortelius",
+   "Madagascar Insula map 16th century"
+  ],
+  "cap": "Старая карта Мадагаскара",
+  "need": "старая карта Мадагаскара"
+ },
+ "niger_river": {
+  "q": [
+   "Niger River Mali",
+   "Niger River Timbuktu"
+  ],
+  "cap": "Река Нигер (фото)",
+  "need": "река Нигер"
+ },
+ "flora_shaw": {
+  "q": [
+   "Flora Shaw portrait",
+   "Flora Shaw Lady Lugard"
+  ],
+  "cap": "Флора Шоу (портрет)",
+  "need": "портрет Флоры Шоу"
+ }
+}
