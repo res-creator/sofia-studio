@@ -92,3 +92,5 @@ whyhow/mg_test2/*.wav
 whyhow/style_*/footage
 whyhow/style_*/*.mp3
 whyhow/style_*/*.wav
+whyhow/style_mix/footage
+whyhow/style_mix/*.mp3
