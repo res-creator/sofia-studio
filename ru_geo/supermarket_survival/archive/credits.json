@@ -126,5 +126,13 @@
   "cap": "холодильная витрина",
   "page": "https://commons.wikimedia.org/wiki/File:Open_refrigerator_with_food_at_night.jpg",
   "title": "File:Open refrigerator with food at night.jpg"
+ },
+ "expiry_date": {
+  "file": "expiry_date.jpg",
+  "author": "MasterOfHisOwnDomain",
+  "license": "общественное достояние",
+  "cap": "дата на упаковке: про качество",
+  "page": "https://commons.wikimedia.org/wiki/File:BestBeforeDate.png",
+  "title": "File:BestBeforeDate.png"
  }
 }
