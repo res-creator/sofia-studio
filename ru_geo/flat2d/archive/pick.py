@@ -7,13 +7,13 @@ FREE = re.compile(r'public domain|pd[- ]|cc0|cc by(?!-nc)|cc-by(?!-nc)|no restri
 R_ = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')); slug = sys.argv[1]; J = f'{R_}/{slug}'
 P = json.load(open(f'{J}/photos.json', encoding='utf8')); os.makedirs(f'{J}/archive/img', exist_ok=True); os.makedirs(f'{J}/review', exist_ok=True)
 credits_path = f'{J}/archive/credits.json'; cr = json.load(open(credits_path, encoding='utf8')) if os.path.exists(credits_path) else {}
-def get(u, tries=8):
+def get(u, tries=25):
     for a in range(tries):
         try: return urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=60).read()
         except urllib.error.HTTPError as e:
             if e.code not in (429, 503): raise
         except Exception: pass
-        time.sleep(10 + 10 * a)
+        time.sleep(min(180, 20 + 15 * a))
     raise RuntimeError('fail ' + u[:80])
 def api(**p):
     p['format'] = 'json'; return json.loads(get('https://commons.wikimedia.org/w/api.php?' + urllib.parse.urlencode(p)))
