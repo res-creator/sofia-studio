@@ -10,6 +10,7 @@ for (const [f, n] of [['Inter-Regular.otf', 'InterR'], ['Inter-SemiBold.otf', 'I
   try { GlobalFonts.registerFromPath(IF + f, n); } catch (e) {}
 const F = { head: 'Anton, InterBlack', body: 'InterSB', bold: 'InterB', reg: 'InterR', black: 'InterBlack', mono: 'JBMono', monoB: 'JBMonoB' };
 const W = 1920, H = 1080, FPS = 30;
+const HOUSE = { on: false, light: false };
 const C = {
   navy: '#0B1426', navy2: '#13213B', navy3: '#1C2E50', grid: '#24395F', ice: '#4D8DFF', iceL: '#9CC3FF', frost: '#D6E7FF',
   yellow: '#FFC857', cream: '#F7F5F0', ink: '#171717', red: '#E63946', orange: '#FF8A3D',
@@ -41,6 +42,7 @@ function rr(ctx, x, y, w, h, r) { ctx.beginPath(); ctx.roundRect(x, y, w, h, r);
 
 // ---------- text ----------
 function text(ctx, s, x, y, o = {}) {
+  if (HOUSE.on) { if (o.color === '#FFC857') o = { ...o, color: C.yellow }; if (HOUSE.light) o = { ...o, shadow: 0, stroke: 0 }; }
   const size = o.size || 48; ctx.save();
   ctx.font = `${size}px ${o.font || F.body}`; ctx.textAlign = o.align || 'left'; ctx.textBaseline = o.base || 'alphabetic';
   if (o.ls) ctx.letterSpacing = o.ls + 'px';
@@ -84,7 +86,7 @@ function kenBurns(ctx, img, t, d, kb = {}, box) {
   cover(ctx, img, lerp(z[0], z[1], u), lerp(x[0], x[1], u), lerp(y[0], y[1], u), box);
 }
 // ---------- grade ----------
-function vignette(ctx, a = 0.55) {
+function vignette(ctx, a = 0.55) { if (HOUSE.light) a *= 0.25;
   const g = ctx.createRadialGradient(W / 2, H / 2, H * 0.35, W / 2, H / 2, H * 0.95);
   g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, `rgba(0,0,0,${a})`); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
 }
@@ -98,6 +100,7 @@ function coordTag(ctx, s, x = 48, y = H - 44, alpha = 1) {
   ctx.fillStyle = C.yellow; ctx.beginPath(); ctx.arc(x + 20, y - 9, 6, 0, 7); ctx.fill(); text(ctx, s, x + 38, y, { size: 22, font: F.monoB, color: C.cream }); ctx.restore();
 }
 function navyBg(ctx, t = 0, grid = true) {
+  if (HOUSE.light) { const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#F3EEE3'); g.addColorStop(1, '#E7DFCD'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); return; }
   const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, C.navy2); g.addColorStop(1, C.navy); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
   if (grid) { ctx.save(); ctx.strokeStyle = hexA(C.grid, 0.55); ctx.lineWidth = 1; const o = (t * 6) % 80;
     for (let x = -80 + o; x < W + 80; x += 80) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
@@ -105,7 +108,7 @@ function navyBg(ctx, t = 0, grid = true) {
   vignette(ctx, 0.5);
 }
 // drifting snow particles (deterministic)
-function snow(ctx, t, n = 90, a = 0.7, wind = 40) {
+function snow(ctx, t, n = 90, a = 0.7, wind = 40) { if (HOUSE.light) return;
   ctx.save(); ctx.fillStyle = `rgba(255,255,255,${a})`;
   for (let i = 0; i < n; i++) { const sp = 30 + hash(i) * 70, r = 1 + hash(i + 7) * 2.6;
     const x = ((hash(i + 3) * W + t * wind * (0.5 + hash(i + 9)) + Math.sin(t * 0.8 + i) * 18) % (W + 40) + W + 40) % (W + 40) - 20;
@@ -123,5 +126,5 @@ function arrow(ctx, x0, y0, x1, y1, o = {}) {
   ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x1 - Math.cos(a - 0.45) * hl, y1 - Math.sin(a - 0.45) * hl); ctx.lineTo(x1 - Math.cos(a + 0.45) * hl, y1 - Math.sin(a + 0.45) * hl); ctx.closePath(); ctx.fill(); ctx.restore();
 }
 function fmtNum(v, dec = 0) { return v.toFixed(dec).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
-module.exports = { createCanvas, loadImage, W, H, FPS, C, F, clamp, lerp, seg, E, hash, key, hexA, lerpCol, rr, text, measure, wrap, chip,
+module.exports = { HOUSE, createCanvas, loadImage, W, H, FPS, C, F, clamp, lerp, seg, E, hash, key, hexA, lerpCol, rr, text, measure, wrap, chip,
   IMG, preload, cover, kenBurns, vignette, darken, coldGrade, credit, coordTag, navyBg, snow, grain, arrow, fmtNum };

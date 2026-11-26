@@ -50,7 +50,7 @@ function overlays(ctx, t, d, p) {
     else if (o.type === 'label') { ctx.save(); ctx.globalAlpha = a; if (o.to) { const u = E.out(clamp(seg(t, at, at + 0.6))); arrow(ctx, o.x, o.y + 14, lerp(o.x, o.to[0], u), lerp(o.y + 14, o.to[1], u), { color: o.color || C.yellow, w: 5 }); }
       chip(ctx, o.text, o.x, o.y, { size: o.size || 38, align: o.align || 'center', bg: o.bg, color: o.color2 }); ctx.restore(); }
     else if (o.type === 'tag') coordTag(ctx, o.text, o.x, o.y, a);
-    else if (o.type === 'lower') lower(ctx, t, o, a);
+    else if (o.type === 'lower') { if (K.HOUSE.on) require('./scenes6').b1m(ctx, t, { ...o, mode: 'tag', at, size: 44 }); else lower(ctx, t, o, a); }
     else if (o.type === 'timer') { const u = clamp(seg(t, at, at + (o.dur || 3))); const sec = lerp(o.from || 0, o.to, o.lin ? u : E.inOut(u)); const mm = Math.floor(sec / 60), ss = Math.floor(sec % 60);
       ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = 'rgba(11,20,38,0.78)'; rr(ctx, W - 330, 40, 290, 86, 8); ctx.fill(); ctx.fillStyle = C.red; ctx.beginPath(); ctx.arc(W - 296, 83, 12 * (0.6 + 0.4 * Math.abs(Math.sin(t * 3))), 0, 7); ctx.fill();
       text(ctx, String(mm).padStart(2, '0') + ':' + String(ss).padStart(2, '0'), W - 60, 104, { size: 60, font: F.monoB, align: 'right', color: C.cream }); ctx.restore(); }
@@ -65,6 +65,13 @@ function overlays(ctx, t, d, p) {
 }
 // ---------- title / chapter ----------
 function title(ctx, t, d, p) {
+  if (K.HOUSE.on) { if (p.img) { kenBurns(ctx, IMG[p.img], t, d, p.kb || { z: [1.06, 1.16] }); darken(ctx, 0.35); vignette(ctx, 0.5); } else navyBg(ctx, t);
+    const a = fade(t, 0.2, 0.7) * fadeOut(t, d, 0.5); ctx.save(); ctx.globalAlpha = a;
+    const g = ctx.createLinearGradient(0, H * 0.3, 0, H * 0.75); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(0.5, 'rgba(0,0,0,0.38)'); g.addColorStop(1, 'rgba(0,0,0,0)'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    text(ctx, p.lines.join(' '), W / 2, H / 2 + 24 - (1 - E.out(clamp(t / 1.2))) * 14, { size: 96, font: F.bold, align: 'center', color: '#FFFFFF', ls: 6, maxW: 1700 });
+    const w = E.out(clamp(seg(t, 0.4, 1.2))); ctx.fillStyle = C.yellow; ctx.fillRect(W / 2 - 110 * w, H / 2 + 62, 220 * w, 5);
+    if (p.brand) text(ctx, "HOW IT'S RUN", W / 2, H / 2 + 130, { size: 28, font: F.reg, color: 'rgba(255,255,255,0.85)', align: 'center', ls: 8 });
+    ctx.restore(); if (p.credit) credit(ctx, p.credit); return; }
   if (p.img) { kenBurns(ctx, IMG[p.img], t, d, p.kb || { z: [1.12, 1.2] }); darken(ctx, 0.62); coldGrade(ctx, 0.2); vignette(ctx, 0.6); } else navyBg(ctx, t);
   snow(ctx, t, 120, 0.6);
   const a = fade(t, 0.2, 0.6) * fadeOut(t, d, 0.5); const s = lerp(0.94, 1.0, E.out(clamp(t / 2)));

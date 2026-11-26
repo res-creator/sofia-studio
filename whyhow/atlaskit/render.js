@@ -9,9 +9,22 @@ const V = require('./video');
 const S2 = require('./scenes2'); const S3 = require('./scenes3'); const S4 = require('./scenes4');
 const S5 = require('./scenes5');
 const S6 = require('./scenes6');
+const HOUSE = process.env.HOUSE === '1';
 const SC = { ...S, ...S2, ...S3, ...S4, flatmap: S6.flatmap, wcard: S6.wcard, papermap: S6.papermap, cutouts: S6.cutouts, mgzoom: S5.mgzoom, blurcard: S5.blurcard, mapline: S5.mapline, xsec: X.xsec, siphon: X.siphonCloseup, examples: X.examples };
 // scenes that do not draw overlays themselves get them drawn on top when p.over is set
 for (const n of ['stats', 'split', 'bars', 'ratio', 'calendar', 'thermo', 'countdown', 'mythq', 'compare', 'ring', 'river', 'district', 'shaft', 'frost', 'vapour', 'ladder', 'yearbar', 'stove', 'firemap']) if (SC[n]) { const f = SC[n]; SC[n] = (ctx, t, d, p) => { f(ctx, t, d, p); if (p.over) S.overlays(ctx, t, d, p); }; }
+const RECOL = { '#FFC857': '#E4572E', '#E63946': '#B5462E', '#9CC3FF': '#8FA3B3', '#4D8DFF': '#5B7A8C', '#FF8A3D': '#E4572E' };
+const recolor = o => Array.isArray(o) ? o.map(recolor) : (o && typeof o === 'object') ? Object.fromEntries(Object.entries(o).map(([k, v]) => [k, typeof v === 'string' && RECOL[v] ? RECOL[v] : recolor(v)])) : o;
+if (HOUSE) { K.HOUSE.on = true; K.C.yellow = '#E4572E';
+  const LIGHT = { navy: '#E7DFCD', navy2: '#F3EEE3', navy3: '#FFFFFF', grid: '#D9CFBA', cream: '#1F2329', iceL: '#5B6470', ice: '#E4572E', frost: '#8C949E', snow: '#1F2329' };
+  for (const n of ['stats', 'bars', 'chapter', 'ratio', 'versus', 'ladder', 'yearbar', 'calendar', 'split', 'thermo', 'myth', 'countdown', 'mythq', 'compare', 'endq']) if (SC[n]) { const f = SC[n];
+    SC[n] = (ctx, t, d, p) => { if (p && p.img) return f(ctx, t, d, p); p = recolor(p); const save = {}; for (const k in LIGHT) { save[k] = K.C[k]; K.C[k] = LIGHT[k]; } K.HOUSE.light = true;
+      try { f(ctx, t, d, p); } finally { for (const k in save) K.C[k] = save[k]; K.HOUSE.light = false; } }; }
+  // globe -> flat house map
+  const sc = v => Array.isArray(v) ? v.map(([tt, x]) => [tt, x * Math.PI / 180]) : v * Math.PI / 180;
+  SC.globe = (ctx, t, d, p) => { const pins = [...(p.pins || []), ...(p.labels || []).map(l => ({ ...l, label: l.text }))].map(q => ({ lon: q.lon, lat: q.lat, label: q.label, at: q.at, size: q.small ? 32 : 38 }));
+    S6.flatmap(ctx, t, d, { lon: p.lon, lat: p.lat, s: sc(p.R), land: '#EDE6D6', water: '#B9CFD8', pins, routes: (p.routes || []).map(r => ({ pts: r.pts, at: r.at, dur: r.dur, color: '#E4572E', label: r.label })) });
+    if (p.over) S.overlays(ctx, t, d, { ...p, over: p.over }); }; }
 const [, , EPD, MODE, ...ARGS] = process.argv; const EP = path.resolve(EPD);
 const TL = JSON.parse(fs.readFileSync(path.join(EP, 'timeline.json'))); const WORDS = JSON.parse(fs.readFileSync(fs.existsSync(path.join(EP, 'words_script.json')) ? path.join(EP, 'words_script.json') : path.join(EP, 'words.json')));
 const norm = s => s.toLowerCase().replace(/[^a-z0-9']/g, '');
@@ -43,7 +56,8 @@ if (ep.splitOver && !SMOOTH) { const SPL = ['photo', 'video', 'xsec', 'sat', 'si
   shots.length = 0; shots.push(...res); }
 const DUR = T.end, NF = Math.ceil(DUR * K.FPS);
 const XF = SMOOTH ? 0.6 : 0.5; // crossfade seconds
-shots.forEach((s, i) => { if (!s.trans) s.trans = ep.defaultTrans || 'fade'; if (SMOOTH && i > 0 && s.scene !== 'chapter' && shots[i - 1].scene !== 'chapter') s.trans = 'fade'; });
+const TT = HOUSE ? (shots.find(s => s.scene === 'title') || { t: 0 }).t : 0;
+shots.forEach((s, i) => { if (!s.trans) s.trans = ep.defaultTrans || 'fade'; if (HOUSE && s.t < TT && i > 0) s.trans = 'hardcut'; if (SMOOTH && i > 0 && s.scene !== 'chapter' && shots[i - 1].scene !== 'chapter' && s.trans !== 'hardcut') s.trans = 'fade'; if (s.trans === 'hardcut') s.trans = 'cut'; });
 let cvA, cvB;
 function drawShot(ctx, s, time) { ctx.save(); SC[s.scene](ctx, time - s.t + (s.off || 0), s.dd || s.d, s.p || {}); ctx.restore(); }
 async function frame(ctx, time) {

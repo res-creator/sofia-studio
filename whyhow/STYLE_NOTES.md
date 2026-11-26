@@ -17,6 +17,15 @@ Read before writing or editing any episode.
 - Smooth only: no punch-ins, no jerks, no bounce. Slow eased Ken Burns, 0.5–0.6 s dissolves (`smooth: true` / `SMOOTH=1`).
 - Motion graphics toolkit: `atlaskit/scenes5.js` (camera dive, kinetic text, counters over blurred photos, animated bars, animated route).
 
+## House look (owner's choice, Nov 2026)
+- ONE consistent style for the whole video, no visible mix of borrowed pieces.
+- Opening (first 15–30 s): fast cuts of REAL footage on the music beat (Johnny Harris energy) + one clean title. NO paper, NO taped/framed photos, NO grain — the owner disliked those.
+- Body: real footage first (The B1M feel): long smooth shots, thin white location tags with a short vertical line, clean centred titles.
+- Explanations: flat maps and one-number cards (Wendover feel) in the same palette: sand land #EDE6D6, soft blue water #B9CFD8, charcoal text #1F2329, ONE accent (warm coral #E4572E).
+- Same font family everywhere (F.bold labels, F.head big numbers). Text max 3 s.
+- Music: rhythmic in the opening, then light and calm under the story.
+- Reference tests: `whyhow/style_mix/` (approved direction), `style_b1m`, `style_wendover`, `style_jh` (JH: only the opening rhythm is kept).
+
 ## Typography and colour
 - Tasteful, not loud: one accent colour per video, the rest white or soft grey; no rainbow of bright colours.
 - Text sits on soft blurred or darkened backgrounds, never on busy detail.
