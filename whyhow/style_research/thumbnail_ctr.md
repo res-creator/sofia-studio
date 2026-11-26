@@ -15,3 +15,8 @@ Rules for How It's Run thumbnails:
 3. Text adds to the title, never repeats it. Light tone: curiosity, not fear ("THIS WAS SEA", not "TERRIFYING").
 4. White Anton with dark outline + ONE coral box (#E4572E). Real photos only, no AI images.
 Generator: `whyhow/covers_v2.js` → `*_cover_D.jpg`, `*_cover_E.jpg`.
+
+## v3 (owner: v2 still looked cheap) — `whyhow/covers_v3.js` → `*_cover_F.jpg`
+- No outlined Anton text: heavy Inter Black in solid boxes (dark #101214 + one coral box), soft drop shadow.
+- One clean, premium real image (NASA ISS photo, aerial photo, night city), stronger grade, light vignette.
+- One curved white arrow to the thing the words talk about. Check readability at phone size (336×188).
