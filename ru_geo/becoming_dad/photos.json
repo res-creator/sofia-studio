@@ -1,178 +1,194 @@
 {
-"sperm_micrograph": {
-"q": [
-"human spermatozoa micrograph",
-"human sperm cells magnified"
-],
-"cap": "сперматозоиды под микроскопом (микрофотография)",
-"need": "крупный план живых или окрашенных сперматозоидов"
-},
-"sperm_diagram": {
-"q": [
-"spermatozoon diagram head midpiece tail",
-"sperm cell anatomy"
-],
-"cap": "строение сперматозоида (схема)",
-"need": "схема: головка, шейка, хвост"
-},
-"female_tract_diagram": {
-"q": [
-"female reproductive system diagram",
-"uterus fallopian tube ovary diagram"
-],
-"cap": "женская репродуктивная система (схема)",
-"need": "матка, трубы, яичники на схеме"
-},
-"fertilization_diagram": {
-"q": [
-"fertilization human sperm egg diagram",
-"fertilisation stages diagram"
-],
-"cap": "оплодотворение (схема)",
-"need": "схема встречи сперматозоида и яйцеклетки"
-},
-"egg_sperm_sem": {
-"q": [
-"sperm egg scanning electron micrograph",
-"human oocyte spermatozoa electron microscope"
-],
-"cap": "сперматозоиды у яйцеклетки (электронная микроскопия)",
-"need": "много сперматозоидов вокруг крупной яйцеклетки"
-},
-"cervix_diagram": {
-"q": [
-"uterus anatomy diagram",
-"uterus cervix vagina cross section illustration"
-],
-"cap": "матка и шейка матки (схема)",
-"need": "разрез: шейка и канал"
-},
-"menstrual_cycle_diagram": {
-"q": [
-"menstrual cycle diagram ovulation",
-"ovarian cycle diagram follicle"
-],
-"cap": "менструальный цикл (схема)",
-"need": "цикл с овуляцией на схеме"
-},
-"fertile_window_chart": {
-"q": [
-"fertile window chart",
-"menstrual cycle hormones graph"
-],
-"cap": "окно фертильности (иллюстрация)",
-"need": "график по дням цикла"
-},
-"leeuwenhoek_portrait": {
-"q": [
-"Antonie van Leeuwenhoek portrait",
-"Leeuwenhoek Verkolje portrait"
-],
-"cap": "Антони ван Левенгук (портрет XVII века)",
-"need": "портрет учёного"
-},
-"leeuwenhoek_microscope": {
-"q": [
-"Leeuwenhoek microscope",
-"Leeuwenhoek microscope replica"
-],
-"cap": "микроскоп Левенгука (копия)",
-"need": "маленький микроскоп на ручке"
-},
-"homunculus_drawing": {
-"q": [
-"Hartsoeker homunculus",
-"homunculus sperm drawing 1695"
-],
-"cap": "рисунок XVII века: «человечек» в сперматозоиде",
-"need": "старинная гравюра с человечком внутри сперматозоида"
-},
-"stadium_crowd": {
-"q": [
-"stadium crowd",
-"football stadium full crowd"
-],
-"cap": "переполненный стадион (иллюстративное фото)",
-"need": "толпа на трибунах"
-},
-"marathon_start": {
-"q": [
-"marathon start runners crowd",
-"city marathon start line"
-],
-"cap": "старт массового забега (иллюстративное фото)",
-"need": "тысячи бегущих"
-},
-"sieve_filter": {
-"q": [
-"sieve",
-"metal sieve mesh"
-],
-"cap": "сито: образ отбора (иллюстративное фото)",
-"need": "сито крупным планом"
-},
-"ovary_follicles": {
-"q": [
-"ovary histology primordial follicles",
-"ovarian follicle micrograph"
-],
-"cap": "яичник: фолликулы (микрофотография)",
-"need": "срез яичника с фолликулами"
-},
-"blastocyst": {
-"q": [
-"human blastocyst",
-"blastocyst micrograph"
-],
-"cap": "бластоциста человека (микрофотография)",
-"need": "ранний зародыш в виде шарика"
-},
-"implantation_diagram": {
-"q": [
-"implantation embryo diagram",
-"blastocyst implantation endometrium"
-],
-"cap": "имплантация (схема)",
-"need": "зародыш входит в стенку матки"
-},
-"family_tree": {
-"q": [
-"family tree pedigree chart",
-"genealogy tree old chart"
-],
-"cap": "родословное древо (иллюстрация)",
-"need": "дерево предков"
-},
-"jebel_irhoud_skull": {
-"q": [
-"Jebel Irhoud skull",
-"Homo sapiens early skull Jebel Irhoud"
-],
-"cap": "ранний Homo sapiens, Джебель-Ирхуд (реконструкция/копия)",
-"need": "древний череп"
-},
-"old_family_photo": {
-"q": [
-"family portrait 19th century photograph",
-"old family photograph parents children"
-],
-"cap": "семейное фото XIX века",
-"need": "старая семейная фотография"
-},
-"newborn_hand": {
-"q": [
-"newborn hand holding finger",
-"newborn baby hand"
-],
-"cap": "рука новорождённого (иллюстративное фото)",
-"need": "ладонь младенца на пальце взрослого"
-},
-"dice_roll": {
-"q": [
-"dice",
-"dice rolling"
-],
-"cap": "игральные кости: образ случайности",
-"need": "кубики"
-}
+ "sperm_micrograph": {
+  "q": [
+   "human spermatozoa micrograph",
+   "Spermatozoa-human-1000x"
+  ],
+  "cap": "сперматозоиды под микроскопом (микрофотография)",
+  "need": "крупный план живых или окрашенных сперматозоидов"
+ },
+ "sperm_diagram": {
+  "q": [
+   "spermatozoon diagram head midpiece tail",
+   "sperm cell anatomy"
+  ],
+  "cap": "строение сперматозоида (схема)",
+  "need": "схема: головка, шейка, хвост"
+ },
+ "female_tract_diagram": {
+  "q": [
+   "female reproductive system diagram",
+   "uterus fallopian tube ovary diagram"
+  ],
+  "cap": "женская репродуктивная система (схема)",
+  "need": "матка, трубы, яичники на схеме"
+ },
+ "fertilization_diagram": {
+  "q": [
+   "fertilization human sperm egg diagram",
+   "fertilisation stages diagram"
+  ],
+  "cap": "оплодотворение (схема)",
+  "need": "схема встречи сперматозоида и яйцеклетки"
+ },
+ "egg_sperm_sem": {
+  "q": [
+   "sperm oocyte",
+   "Egg and Sperm"
+  ],
+  "cap": "сперматозоиды у яйцеклетки (электронная микроскопия)",
+  "need": "много сперматозоидов вокруг крупной яйцеклетки"
+ },
+ "cervix_diagram": {
+  "q": [
+   "uterus anatomy diagram",
+   "Scheme female reproductive system"
+  ],
+  "cap": "матка и шейка матки (схема)",
+  "need": "разрез: шейка и канал"
+ },
+ "menstrual_cycle_diagram": {
+  "q": [
+   "menstrual cycle diagram ovulation",
+   "ovarian cycle diagram follicle"
+  ],
+  "cap": "менструальный цикл (схема)",
+  "need": "цикл с овуляцией на схеме"
+ },
+ "fertile_window_chart": {
+  "q": [
+   "fertile window chart",
+   "menstrual cycle hormones graph"
+  ],
+  "cap": "окно фертильности (иллюстрация)",
+  "need": "график по дням цикла"
+ },
+ "leeuwenhoek_portrait": {
+  "q": [
+   "Antonie van Leeuwenhoek portrait",
+   "Leeuwenhoek Verkolje portrait"
+  ],
+  "cap": "Антони ван Левенгук (портрет XVII века)",
+  "need": "портрет учёного"
+ },
+ "leeuwenhoek_microscope": {
+  "q": [
+   "Leeuwenhoek microscope",
+   "Leeuwenhoek microscope replica"
+  ],
+  "cap": "микроскоп Левенгука (копия)",
+  "need": "маленький микроскоп на ручке"
+ },
+ "homunculus_drawing": {
+  "q": [
+   "Hartsoeker homunculus",
+   "Hartsoeker Essai de dioptrique"
+  ],
+  "cap": "рисунок XVII века: «человечек» в сперматозоиде",
+  "need": "старинная гравюра с человечком внутри сперматозоида"
+ },
+ "stadium_crowd": {
+  "q": [
+   "stadium crowd",
+   "football stadium full crowd"
+  ],
+  "cap": "переполненный стадион (иллюстративное фото)",
+  "need": "толпа на трибунах"
+ },
+ "marathon_start": {
+  "q": [
+   "marathon start runners crowd",
+   "city marathon start line"
+  ],
+  "cap": "старт массового забега (иллюстративное фото)",
+  "need": "тысячи бегущих"
+ },
+ "sieve_filter": {
+  "q": [
+   "sieve",
+   "metal sieve mesh"
+  ],
+  "cap": "сито: образ отбора (иллюстративное фото)",
+  "need": "сито крупным планом"
+ },
+ "ovary_follicles": {
+  "q": [
+   "ovary histology primordial follicles",
+   "ovarian follicle"
+  ],
+  "cap": "яичник: фолликулы (микрофотография)",
+  "need": "срез яичника с фолликулами"
+ },
+ "blastocyst": {
+  "q": [
+   "human blastocyst",
+   "blastocyst"
+  ],
+  "cap": "бластоциста человека (микрофотография)",
+  "need": "ранний зародыш в виде шарика"
+ },
+ "implantation_diagram": {
+  "q": [
+   "implantation embryo diagram",
+   "blastocyst implantation endometrium"
+  ],
+  "cap": "имплантация (схема)",
+  "need": "зародыш входит в стенку матки"
+ },
+ "family_tree": {
+  "q": [
+   "family tree pedigree chart",
+   "genealogy tree old chart"
+  ],
+  "cap": "родословное древо (иллюстрация)",
+  "need": "дерево предков"
+ },
+ "jebel_irhoud_skull": {
+  "q": [
+   "Jebel Irhoud skull",
+   "Jebel Irhoud"
+  ],
+  "cap": "ранний Homo sapiens, Джебель-Ирхуд (реконструкция/копия)",
+  "need": "древний череп"
+ },
+ "old_family_photo": {
+  "q": [
+   "family portrait 19th century photograph",
+   "old family photograph parents children"
+  ],
+  "cap": "семейное фото XIX века",
+  "need": "старая семейная фотография"
+ },
+ "newborn_hand": {
+  "q": [
+   "newborn hand holding finger",
+   "newborn baby hand"
+  ],
+  "cap": "рука новорождённого (иллюстративное фото)",
+  "need": "ладонь младенца на пальце взрослого"
+ },
+ "dice_roll": {
+  "q": [
+   "dice",
+   "dice rolling"
+  ],
+  "cap": "игральные кости: образ случайности",
+  "need": "кубики"
+ },
+ "sperm_sem": {
+  "q": [
+   "Human Spermatozoa Scanning Electron Micrograph",
+   "Spermatozoa-human-3140x"
+  ],
+  "cap": "сперматозоиды человека (сканирующий электронный микроскоп)",
+  "need": "крупный план сперматозоидов"
+ },
+ "calendar_pages": {
+  "q": [
+   "calendar page",
+   "wall calendar"
+  ],
+  "cap": "календарь: месяцы попыток (иллюстративное фото)",
+  "need": "листы календаря"
+ }
 }
