@@ -26,7 +26,7 @@ const R = (k, label) => [k, label];
 const V = (k0, label0, o = {}) => { const [k, label] = R(k0, label0); return F(k, { ...o, over: [...(o.over || []), note(label)] }); };
 const I = (k, label, o = {}) => V(k, label + ' · ' + IL, o);
 const A = (k, label, o = {}) => V(k, label, { sfx: 'click', ...o });
-const Q = (cutW, top, l1, l2, chipT, source) => S('stats', { cutW, head: top, items: [], sfx: 'boom', over: [at(head(l1, null, l2 ? 470 : 520, 88, Yc), 0.3), ...(l2 ? [at(head(l2, null, 590, 88, Yc), 0.6)] : []), ...(chipT ? [{ ...chipC(chipT, null, l2 ? 740 : 700, 44), at: 1.0 }] : [])], source });
+const Q = (cutW, top, l1, l2, chipT, source) => S('stats', { cutW, head: top, items: [], sfx: 'boom', over: [at(head(l1, null, l2 ? 470 : 520, 88, Yc), 0.05), ...(l2 ? [at(head(l2, null, 590, 88, Yc), 0.25)] : []), ...(chipT ? [{ ...chipC(chipT, null, l2 ? 740 : 700, 44), at: 0.6 }] : [])], source });
 const G = { sg: { lon: 103.82, lat: 1.35 }, kl: { lon: 101.69, lat: 3.14 }, johor: { lon: 103.76, lat: 1.49 }, changi: { lon: 103.99, lat: 1.36 }, tekong: { lon: 104.05, lat: 1.41 }, jurong: { lon: 103.70, lat: 1.27 }, marina: { lon: 103.86, lat: 1.28 }, tuas: { lon: 103.62, lat: 1.27 }, eastcoast: { lon: 103.93, lat: 1.30 }, jkt: { lon: 106.85, lat: -6.2 }, riau: { lon: 104.2, lat: 0.9 }, pp: { lon: 104.9, lat: 11.55 } };
 const GL = (o = {}) => ({ relief: true, borders: true, lon: [[0, 100], [3, 103.8]], lat: [[0, 5], [3, 1.4]], R: [[0, 1400], [3, 2800]], ...o });
 

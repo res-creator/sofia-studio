@@ -34,7 +34,7 @@ const R = (k, label) => (FT[k] && require('fs').existsSync(path.join(__dirname, 
 const V = (k0, label0, o = {}) => { const [k, label] = R(k0, label0); return F(k, { ...o, over: [...(o.over || []), note(label)] }); };
 const I = (k, label, o = {}) => V(k, label + ' · ' + IL, o);
 const A = (k, label, o = {}) => V(k, label, { sfx: 'click', ...o });
-const Q = (cutW, top, l1, l2, chipT, source) => S('stats', { cutW, head: top, items: [], sfx: 'boom', over: [at(head(l1, null, l2 ? 470 : 520, 88, Yc), 0.3), ...(l2 ? [at(head(l2, null, 590, 88, Yc), 0.6)] : []), ...(chipT ? [{ ...chipC(chipT, null, l2 ? 740 : 700, 44), at: 1.0 }] : [])], source });
+const Q = (cutW, top, l1, l2, chipT, source) => S('stats', { cutW, head: top, items: [], sfx: 'boom', over: [at(head(l1, null, l2 ? 470 : 520, 88, Yc), 0.05), ...(l2 ? [at(head(l2, null, 590, 88, Yc), 0.25)] : []), ...(chipT ? [{ ...chipC(chipT, null, l2 ? 740 : 700, 44), at: 0.6 }] : [])], source });
 const G = { dubai: { lon: 55.27, lat: 25.2 }, phx: { lon: -112.07, lat: 33.45 }, jebel: { lon: 55.03, lat: 24.99 }, alain: { lon: 55.74, lat: 24.2 }, abudhabi: { lon: 54.37, lat: 24.45 }, hassyan: { lon: 54.85, lat: 24.93 }, solar: { lon: 55.35, lat: 24.77 }, awir: { lon: 55.6, lat: 25.15 }, fateh: { lon: 54.4, lat: 25.6 } };
 const GL = (o = {}) => ({ relief: true, borders: true, lon: [[0, 50], [3, 55]], lat: [[0, 22], [3, 25]], R: [[0, 1400], [3, 2200]], ...o });
 
@@ -115,7 +115,7 @@ function build(T) {
     I('pb_dhow_3216218', 'TRADITIONAL BOAT AT SUNRISE', { over: [low('MOHAMMED BIN ABDULLA AL SUWAIDI', 'Mohammed', 'one of the last pearl divers')] }),
     V('fl_dubai_creek_abras_neekoh', 'DUBAI CREEK', { cutW: 'He' }),
     S('stats', { cutW: 'died', head: 'AL SUWAIDI', items: [], over: [at(head('50+ YEARS AT SEA', null, 440, 100, Yc), 0.2), at(head('DIED 1998, AGED 96', null, 560, 80), 0.6), ], source: 'Source: Gulf News; The National' }),
-    V('fl_expo2020_pearl_diving_exhibit', 'PEARL DIVING EXHIBIT, EXPO 2020 DUBAI', { cutW: 'His', over: [low('HIS GRANDSON: PEARL FARMING', 'farms')] }),
+    V('fl_dubai_creek_abra_hurd', 'DUBAI CREEK', { cutW: 'His', over: [low('HIS GRANDSON: PEARL FARMING', 'farms')] }),
   ]);
   beats('A012', [
     I('pb_pearl_oyster_4870120', 'CULTURED PEARLS', { kb: { z: [1.3, 1.1] }, over: [low('1920s: JAPANESE CULTURED PEARLS', 'Japan')] }),
@@ -123,7 +123,7 @@ function build(T) {
     S('stats', { cutW: 'Then', head: '', items: [], sfx: 'boom', over: [at(head('1929', null, 520, 200, Yc), 0.2), at(head('THE CRASH', null, 680, 80), 0.5)] }),
   ]);
   beats('A013', [
-    I('pb_dhow_2042790', 'DHOW', { kb: { z: [1.3, 1.1] } }),
+    V('fl_dubai_creek_water_taxis_hurd', 'DUBAI CREEK', { kb: { z: [1.3, 1.1] } }),
     S('stats', { cutW: 'people', head: 'DUBAI PEARL MUSEUM MANAGER', items: [], over: [at(head('"PEOPLE GOT EVEN POORER.', null, 470, 80), 0.2), at(head('IT WAS STARVATION."', null, 580, 80, Yc), 0.8)] }),
   ]);
 
@@ -166,14 +166,14 @@ function build(T) {
     V('gov_nasa_iss_2021_uae_coast_industrial', 'INDUSTRY ON THE UAE COAST (NASA ISS, 2021) · ' + IL),
     Q('Guinness', 'JEBEL ALI POWER & DESALINATION', '~590 MILLION', 'GALLONS A DAY', 'GUINNESS: LARGEST SINGLE-SITE DESALINATION PLANT', 'Source: DEWA / Guinness World Records 2022'),
   ]);
-  beats('A023', [S('stats', { head: 'ONE SITE vs ALL OF NEW YORK CITY', items: [{ v: 590, from: 590, label: 'JEBEL ALI (MILLION GAL/DAY)', color: Yc, at: 0.3 }, { v: 1000, from: 1000, pre: '~', label: 'NYC USES (MILLION GAL/DAY)', at: 0.9 }], source: 'Sources: DEWA; NYC DEP' }), V('gov_nasa_iss_2021_airport_creek', 'DUBAI FROM THE SPACE STATION (NASA, 2021)', { cutW: 'From' })]);
+  beats('A023', [V('gov_nasa_iss_2021_airport_creek', 'DUBAI FROM THE SPACE STATION (NASA, 2021)', { over: [low('ONE SITE: MORE THAN HALF OF WHAT ALL OF NEW YORK CITY USES', 'half')] })]);
   beats('A024', [
     S('stats', { head: 'HOW MOST OF IT IS MADE', items: [], over: [at(head('SEAWATER + HEAT', null, 440, 96), 0.2), { ...head('→ STEAM → FRESH WATER', 'evaporates', 570, 84, Yc) }], source: 'Multi-stage flash: 427 of 495 MIGD (DEWA)' }),
     I('pb_power_plant_128312', 'POWER PLANT (EUROPE)', { cutW: 'evaporates' }),
   ]);
   beats('A025', [
     I('pb_air_conditioner_102435', 'POWER PLANT CHIMNEY', { over: [head('POWER + WATER = ONE MACHINE', 'same', 200, 72, Yc)] }),
-    Q('If', 'IF THE GAS TURBINES STOP…', 'SO DOES MOST', 'OF THE WATER'),
+    V('gov_nasa_iss_2013_uae_night', 'THE UAE AT NIGHT (NASA ISS, 2013)', { cutW: 'If', over: [low('IF THE TURBINES STOP, SO DOES MOST OF THE WATER', 'stop')] }),
   ]);
   beats('A026', [
     V('pb_dubai_skyline_254757', 'DUBAI MARINA'),
@@ -271,7 +271,7 @@ function build(T) {
   beats('A047', [
     V('pb_dubai_metro_203953', 'DUBAI METRO'),
     V('pb_abra_dubai_296958', 'DOWNTOWN DUBAI', { cutW: 'flights' }),
-    V('pb_dubai_night_163160', 'THE DUBAI FOUNTAIN', { cutW: 'On' }),
+    V('fl_dubai_metro_red_line_seby', 'DUBAI METRO RED LINE', { cutW: 'On' }),
   ]);
 
   // ===== CH5 =====
@@ -294,7 +294,7 @@ function build(T) {
     Q('Insurers', 'APRIL 2024 STORM', '5 DEATHS IN THE UAE', null, 'INSURED LOSSES: ~$3 BILLION', 'Sources: Reuters; Guy Carpenter estimate'),
   ]);
   beats('A052', [
-    S('stats', { head: 'ONLINE, IT WAS BLAMED ON', items: [], over: [at(head('CLOUD SEEDING?', null, 520, 130, Yc), 0.2)] }),
+    V('gov_nasa_iss_2022_dubai_city', 'DUBAI FROM THE SPACE STATION (NASA, 2022)', { over: [head('BLAMED ON CLOUD SEEDING?', 'cloud', 200, 80, Yc)] }),
     V('pb_dubai_night_209890', 'CLOUDS OVER DUBAI', { cutW: 'It\'s', in: 3, over: [low('UAE PLANES FIRE SALT FLARES INTO CLOUDS', 'salt')] }),
   ]);
   beats('A053', [
