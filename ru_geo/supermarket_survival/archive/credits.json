@@ -70,5 +70,21 @@
   "cap": "цинга: иллюстрация из медицинского источника",
   "page": "https://commons.wikimedia.org/wiki/File:Pair_of_pharmacy_storage_jars,_Naples,_Italy,_1756_Wellcome_L0057082.jpg",
   "title": "File:Pair of pharmacy storage jars, Naples, Italy, 1756 Wellcome L0057082.jpg"
+ },
+ "vitamin_pills": {
+  "file": "vitamin_pills.jpg",
+  "author": "Canadian Nurses' Association",
+  "license": "No restrictions",
+  "cap": "витамины (иллюстративное фото)",
+  "page": "https://commons.wikimedia.org/wiki/File:The_Canadian_nurse_(1939)_(14769100424).jpg",
+  "title": "File:The Canadian nurse (1939) (14769100424).jpg"
+ },
+ "canned_goods": {
+  "file": "canned_goods.jpg",
+  "author": "HualinXMN",
+  "license": "CC BY-SA 4.0",
+  "cap": "консервы на полке",
+  "page": "https://commons.wikimedia.org/wiki/File:GuLong_canned_food_on_the_shelf.jpg",
+  "title": "File:GuLong canned food on the shelf.jpg"
  }
 }
