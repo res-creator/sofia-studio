@@ -40,3 +40,6 @@ ru_geo/ww3/vo_full/el/*.wav
 ru_geo/ww3/vo_full/concat_el.txt
 2d-video/projects/_fix_*/
 2d-video/projects/*/build/
+
+ru_geo/stock/
+*.mp3.part
