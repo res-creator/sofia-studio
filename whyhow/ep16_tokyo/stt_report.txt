@@ -1,4 +1,4 @@
-A001 0.773 replace: fourteenth twenty seventeen nine forty four -> 14 2017 9 44
+A001 0.727 replace: fourteenth twenty seventeen nine forty four -> 14th 2017 9 44 | replace: nagareyama -> nagarayama
 A002 0.667 replace: twenty -> 20
 A003 1.000 
 A004 0.959 replace: fifteen -> 15 | replace: twenty -> 20
@@ -8,22 +8,22 @@ A007 0.954 replace: thirty seven -> 37
 A007B 0.909 replace: two hundred percent -> 200 | replace: nineteen -> 19
 A008 1.000 
 A009 0.897 replace: twenty twenty two -> 2022 | replace: two point seven -> 2 7
-A010 1.000 
+A010 0.955 replace: five -> 5
 A011 0.943 replace: nineteen fifty five -> 1955
 A012 0.814 replace: oshiya -> oshia | replace: nineteen seventies -> 1970s | replace: two hundred and twenty percent -> 220
 A013 0.899 replace: fifteen hundred -> 1500 | replace: ten -> 10 | replace: twenty twenty one -> 2021
 A014 1.000 
-A015 0.853 replace: one hundred percent -> 100 | replace: one fifty -> 150 | replace: two hundred percent -> 200
-A016 0.836 replace: twenty nineteen -> 2019 | replace: a hundred and ninety nine -> 199
+A015 0.883 replace: one hundred -> 100 | replace: one fifty -> 150 | replace: two hundred -> 200
+A016 0.778 replace: monzen -> manzan | replace: twenty nineteen -> 2019 | replace: a hundred and ninety nine percent -> 199
 A017 0.756 replace: a hundred and sixty -> 160 | replace: sixty four thousand eight hundred -> 64 800 | replace: twenty seven -> 27 | replace: twenty four hundred -> 2 400
-A018 0.878 replace: nineteen twelve -> 1912 | replace: two thousand -> 2000 | replace: two thousand five -> 2005
-A019 1.000 
+A018 0.864 replace: nineteen twelve -> 1912 | replace: two thousand -> 2000 | replace: two thousand five -> 2005 | delete: hour -> 
+A019 0.957 replace: two -> 2 | replace: three -> 3
 A020 1.000 
-A021 0.905 replace: saikyo -> seikyo | replace: tokyu -> tokyo
+A021 0.952 replace: tokyu -> tokyo
 A022 1.000 
-A023 0.907 replace: nineteen twenty three -> 1923 | replace: en chofu -> enchofu
+A023 0.947 replace: nineteen twenty three -> 1923
 A024 0.975 replace: first -> 1st
-A025 0.966 replace: goto -> godo | replace: tokyu -> tokyo
+A025 0.983 replace: hankyu -> henkyu
 A026 0.971 replace: tokyu -> tokyo
 A027 1.000 
 A028 1.000 
@@ -31,22 +31,22 @@ A029 0.744 replace: first nineteen sixty four -> 1 1964 | replace: two hundred a
 A030 1.000 
 A031 0.676 replace: three hundred and eighty three -> 383 | replace: four hundred and sixty thousand -> 460 000 | replace: twenty twenty four -> 2024 | replace: one point four -> 1 4
 A032 0.957 replace: twelve -> 12 | replace: seven -> 7
-A033 0.886 replace: two thousand five -> 2005 | replace: teruo yabe -> tarouo yabi
+A033 0.870 replace: seven -> 7 | replace: two thousand five -> 2005 | replace: teruo yabe -> toruoyabe
 A034 1.000 
 A035 1.000 
 A036 0.930 replace: eighties -> 80s | replace: nineteen ninety two -> 1992
-A037 0.904 replace: eleventh twenty eleven -> 11 2011 | replace: nine -> 9
-A038 0.955 replace: nineteen -> 19
+A037 0.904 replace: eleventh twenty eleven -> 11th 2011 | replace: nine -> 9
+A038 1.000 
 A038B 0.900 replace: two thousand four -> 2004
-A039 0.906 replace: twentieth nineteen ninety five -> 20 1995
-A040 0.849 replace: kasumigaseki -> kasumigiseki | replace: stationmaster -> station master | replace: fourteen -> 14 | replace: six thousand -> 6 000
+A039 0.906 replace: twentieth nineteen ninety five -> 20th 1995
+A040 0.849 replace: kasumigaseki -> kasumigasaki | replace: stationmaster -> station master | replace: fourteen -> 14 | replace: six thousand -> 6 000
 A041 1.000 
 A042 1.000 
-A043 0.811 replace: sixteenth twenty twenty six -> 16 2026 | replace: six hundred and seventy three thousand -> 673 000
+A043 0.784 replace: sixteenth twenty twenty six -> 16 2026 | replace: eight -> 8 | replace: six hundred and seventy three thousand -> 673 000
 A044 0.964 replace: five -> 5
-A045 0.762 replace: twenty twenty six jr east -> 2026 jreast | replace: nineteen eighty seven -> 1987 | replace: twenty thirty five -> 2035
+A045 0.812 replace: twenty twenty six -> 2026 | replace: nineteen eighty seven -> 1987 | replace: twenty thirty five -> 2035
 A046 1.000 
 A047 0.975 replace: forty -> 40
 A048 0.977 replace: twenty -> 20
 A049 1.000 
-A050 1.000 
+A050 0.909 replace: seven and a half -> 7 5
