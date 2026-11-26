@@ -3,7 +3,7 @@
 const fs = require('fs'), path = require('path');
 const MF = JSON.parse(fs.readFileSync(path.join(__dirname, 'footage/manifest.json')));
 const FT = Object.fromEntries(MF.map(x => [x.key, x]));
-const assets = {}; for (const x of MF) if (x.type === 'photo') assets[x.key] = 'footage/' + x.key + '.jpg';
+const assets = {}; for (const x of MF) if (x.type === 'photo' && fs.existsSync(path.join(__dirname, 'footage/' + x.key + '.jpg'))) assets[x.key] = 'footage/' + x.key + '.jpg';
 const credit = k => { const f = FT[k]; if (!f || !f.attribution) return ''; if (/pixabay/i.test(f.source)) return '';
   if (/nasa|esa|gov/i.test(f.source)) return 'Image: ' + f.attribution; return (f.type === 'video' ? 'Video: ' : 'Photo: ') + f.attribution; };
 const C = n => require('../atlaskit/core').C[n];
@@ -21,7 +21,17 @@ const note = (text) => ({ type: 'note', text, x: 60, y: 70, at: 0.3 });
 const Yc = '#FFC857';
 const IL = 'ILLUSTRATIVE';
 // V: footage with a note label; I: illustrative footage
-const V = (k, label, o = {}) => F(k, { ...o, over: [...(o.over || []), note(label)] });
+// Commons files may be missing (Commons rate limit): honest fallbacks with their own labels
+const FB = { cm_uae_flood_april_2024_road: ['pb_flooded_road_228296', 'FLOODED ROAD · ' + IL], cm_dubai_1965_windtowers: ['loc_1910_dubai_arms_traffic_bain', 'DUBAI, c. 1910 (LIBRARY OF CONGRESS)'],
+  cm_graphic_1881_pearl_fishery: ['fl_expo2020_pearl_diving_exhibit', 'PEARL DIVING EXHIBIT, EXPO 2020 DUBAI'], cm_arab_pearl_divers_persian_gulf_1908: ['pb_dhow_3216218', 'TRADITIONAL BOAT · ' + IL],
+  cm_jubail_1935_pearl_divers_07: ['pb_dhow_2042790', 'DHOW · ' + IL], cm_jubail_1935_pearl_divers_01: ['pb_pearl_oyster_4870120', 'PEARLS · ' + IL],
+  cm_dubai_creek_yeowatzup: ['fl_dubai_creek_abras_neekoh', 'DUBAI CREEK'], cm_sheikh_rashid_1968_meeting: ['fl_dubai_creek_water_taxis_hurd', 'DUBAI CREEK'], cm_abra_ride_2008_imresolt: ['fl_dubai_creek_abra_hurd', 'DUBAI CREEK'],
+  cm_dubai_1965_airport_panorama: ['gov_nasa_iss_2021_airport_creek', 'DUBAI AIRPORT AND THE CREEK (NASA ISS, 2021)'], cm_dubai_1965_airport_first_comet: ['gov_nasa_iss_2009_dubai_night', 'DUBAI AT NIGHT (NASA ISS, 2009)'],
+  cm_jebel_ali_port_1_imresolt: ['pb_container_terminal_7418239', 'CONTAINER PORT · ' + IL], cm_jebel_ali_port_3_imresolt: ['pb_container_port_141056', 'CONTAINER TERMINAL · ' + IL],
+  cm_cira_2024_storm_oman_uae: ['gov_nasa_eo_abu_dhabi_flood_20240419', 'ABU DHABI AREA, 19 APRIL 2024 (NASA LANDSAT 9)'], cm_sheikh_rashid_1971_portrait: ['fl_dubai_creek_traffic_mamamusings', 'DUBAI CREEK'],
+  cm_uae_flood_16_april_2024_cars: ['pb_flooded_road_302862', 'FLOODED ROAD · ' + IL], cm_dubai_after_heavy_rain_jebel_ali_2024: ['gov_nasa_eo_dubai_flood_after_20240419', 'DUBAI, 19 APRIL 2024 (NASA LANDSAT 9)'] };
+const R = (k, label) => (FT[k] && require('fs').existsSync(path.join(__dirname, FT[k].type === 'video' ? 'footage/' + k + '.mp4' : 'footage/' + k + '.jpg'))) ? [k, label] : (FB[k] || [k, label]);
+const V = (k0, label0, o = {}) => { const [k, label] = R(k0, label0); return F(k, { ...o, over: [...(o.over || []), note(label)] }); };
 const I = (k, label, o = {}) => V(k, label + ' · ' + IL, o);
 const A = (k, label, o = {}) => V(k, label, { sfx: 'click', ...o });
 const Q = (cutW, top, l1, l2, chipT, source) => S('stats', { cutW, head: top, items: [], sfx: 'boom', over: [at(head(l1, null, l2 ? 470 : 520, 88, Yc), 0.3), ...(l2 ? [at(head(l2, null, 590, 88, Yc), 0.6)] : []), ...(chipT ? [{ ...chipC(chipT, null, l2 ? 740 : 700, 44), at: 1.0 }] : [])], source });
@@ -127,7 +137,8 @@ function build(T) {
   ]);
   beats('A016', [
     S('globe', GL({ pins: [{ ...G.dubai, label: 'DUBAI', at: 0.2 }, { ...G.awir, label: 'AL AWIR', w: 'Awir', small: true, size: 40 }] })),
-    I('pb_water_pipe_190323', 'WATER PIPE', { cutW: 'pipes', in: 3, over: [low('ERIC TULLOCH, WATER ENGINEER', 'Tulloch')] }),
+    V('fl_dubai_creek_abras_mccaffrey', 'DUBAI CREEK', { cutW: 'fresh', over: [low('ERIC TULLOCH, WATER ENGINEER', 'Tulloch')] }),
+    I('pb_water_pipe_190323', 'WATER PIPE', { cutW: 'pipes', in: 3 }),
   ]);
   beats('A017', [
     A('cm_sheikh_rashid_1971_portrait', 'SHEIKH RASHID BIN SAEED AL MAKTOUM, 1971', { kb: { z: [1.05, 1.2] }, over: [low('SHEIKH RASHID, RULER 1958–1990', 'Rashid')] }),
@@ -167,9 +178,11 @@ function build(T) {
   ]);
   beats('A026', [
     V('pb_dubai_skyline_254757', 'DUBAI MARINA'),
-    S('stats', { cutW: 'In', head: 'DUBAI, 2025', items: [{ v: 194, suf: ' BN', label: 'GALLONS OF WATER IN A YEAR', at: 0.5, color: Yc }, { v: 585, suf: ' M', label: 'GALLONS ON THE BUSIEST DAY', w: 'busiest' }], source: 'Source: DEWA 2025 results (converted to US gallons)' }),
+    S('stats', { cutW: 'In', head: 'DUBAI, 2025', items: [{ v: 194, suf: ' BN', label: 'GALLONS OF WATER IN A YEAR', at: 0.5, color: Yc }, { v: 585, suf: ' M', label: 'GALLONS ON THE BUSIEST DAY', at: 1.4 }], source: 'Source: DEWA 2025 results (converted to US gallons)' }),
+    V('pb_dubai_night_163160', 'THE DUBAI FOUNTAIN', { cutW: 'busiest' }),
   ]);
-  beats('A026B', [S('stats', { head: 'BUSIEST DAY vs WHAT THE PLANTS CAN MAKE', items: [], over: [at(head('~98%', null, 520, 220, Yc), 0.2), { ...chipC('ALMOST NO SPARE WATER', 'spare', 720, 50) }], source: 'Our calculation: 487 MIG peak day / 495 MIGD capacity (DEWA)' })]);
+  beats('A026B', [S('stats', { head: 'BUSIEST DAY vs WHAT THE PLANTS CAN MAKE', items: [], over: [at(head('~98%', null, 520, 220, Yc), 0.2), { ...chipC('ALMOST NO SPARE WATER', null, 720, 50), at: 1.2 }], source: 'Our calculation: 487 MIG peak day / 495 MIGD capacity (DEWA)' }),
+    V('gov_nasa_iss_2022_dubai_night', 'DUBAI AT NIGHT (NASA ISS, 2022)', { cutW: 'On' })]);
   beats('A027', [
     V('pb_dubai_desert_16138', 'DESERT, DUBAI', { over: [low('NO GOING BACK TO WELLS', 'wells')] }),
     V('gov_nasa_iss_2011_rub_al_khali_sand_sea', 'RUB AL KHALI SAND SEA (NASA ISS, 2011)', { cutW: 'Much' }),
@@ -206,11 +219,13 @@ function build(T) {
   ]);
   beats('A035', [I('pb_industrial_pipes_8899206', 'PIPES', { over: [head('IT PIPES COLD TO THEM', 'pipes', 200, 80, Yc)] })]);
   beats('A036', [
-    S('stats', { head: 'DISTRICT COOLING', items: [], over: [at(head('CENTRAL PLANT → CHILLED WATER', null, 440, 80), 0.2), { ...head('→ UNDERGROUND PIPES → BUILDINGS', 'underground', 560, 72, Yc) }], source: 'ILLUSTRATION OF THE PRINCIPLE' }),
+    S('stats', { head: 'DISTRICT COOLING', items: [], over: [at(head('CENTRAL PLANT → CHILLED WATER', null, 440, 80), 0.2), { ...head('→ UNDERGROUND PIPES → BUILDINGS', null, 560, 72, Yc), at: 1.2 }], source: 'ILLUSTRATION OF THE PRINCIPLE' }),
+    I('pb_industrial_pipes_1639990', 'PIPES', { cutW: 'through' }),
     V('pb_dubai_aerial_108522', 'SHEIKH ZAYED ROAD, DUBAI', { cutW: 'The', over: [low('EMPOWER: "WORLD\'S LARGEST DISTRICT COOLING PROVIDER"', 'Empower')] }),
   ]);
   beats('A037', [
-    S('stats', { head: 'EMPOWER', items: [{ v: 1750, pre: '~', label: 'BUILDINGS CONNECTED', at: 0.4, color: Yc }, { v: 6, pre: '~', suf: ' GW', label: 'OF COOLING (OUR CALC)', at: 1.2 }], source: 'Source: Empower / Dubai Media Office, Jan 2026' }),
+    V('fl_dubai_metro_szr_travelourplanet', 'DUBAI METRO, SHEIKH ZAYED ROAD'),
+    S('stats', { cutW: 'Today', head: 'EMPOWER', items: [{ v: 1750, pre: '~', label: 'BUILDINGS CONNECTED', at: 0.4, color: Yc }, { v: 6, pre: '~', suf: ' GW', label: 'OF COOLING (OUR CALC)', at: 1.2 }], source: 'Source: Empower / Dubai Media Office, Jan 2026' }),
     V('pb_dubai_skyline_213422', 'BUSINESS BAY AND DOWNTOWN, DUBAI', { cutW: 'Business', over: [low('BUSINESS BAY PLANT: A GUINNESS RECORD', 'Guinness')] }),
   ]);
   beats('A038', [
@@ -250,7 +265,8 @@ function build(T) {
   ]);
   beats('A046', [
     V('cm_dubai_1965_airport_first_comet', 'DUBAI AIRPORT, 1965'),
-    S('stats', { cutW: 'In', head: 'DUBAI POPULATION', items: [{ v: 59000, label: '1968 CENSUS', at: 0.3 }, { v: 4.58, dec: 2, suf: ' M', label: 'END OF 2025', w: 'four', color: Yc }], source: 'Sources: Dubai Statistics Center; Digital Dubai, July 2026' }),
+    S('stats', { cutW: 'In', head: 'DUBAI POPULATION', items: [{ v: 59000, label: '1968 CENSUS', at: 0.3 }, { v: 4.58, dec: 2, suf: ' M', label: 'END OF 2025', at: 1.2, color: Yc }], source: 'Sources: Dubai Statistics Center; Digital Dubai, July 2026' }),
+    V('gov_nasa_iss_2025_dubai_coast', 'DUBAI FROM THE SPACE STATION (NASA, 2025)', { cutW: 'By' }),
     V('pb_abra_dubai_264535', 'DUBAI MARINA AT NIGHT', { cutW: 'More', over: [low('MORE THAN THE CITY OF LOS ANGELES', 'Los')] }),
   ]);
   beats('A047', [
@@ -294,13 +310,15 @@ function build(T) {
   beats('A055', [
     I('pb_storm_drain_4916909', 'STORM DRAIN', { over: [low('TASREEF: JUNE 2024', 'Tasreef')] }),
     Q('about', 'TASREEF DRAINAGE PROJECT', '$8.2 BILLION', null, 'DRAINAGE CAPACITY +700% BY 2033', 'Source: Dubai Media Office, 24 June 2024'),
+    V('pb_dubai_traffic_303794', 'SHEIKH ZAYED ROAD, DUBAI', { cutW: 'by' }),
   ]);
   beats('A056', [
-    S('globe', GL({ lon: [[0, 55.0], [3, 55.0]], lat: [[0, 24.95], [3, 24.95]], R: [[0, 12000], [3, 14000]], pins: [{ ...G.dubai, label: 'DUBAI', at: 0.2, small: true, size: 40 }, { ...G.jebel, label: 'JEBEL ALI', at: 0.5, small: true, size: 40 }, { ...G.hassyan, label: 'HASSYAN: MEMBRANE DESALINATION', w: 'Hassyan' }] })),
+    S('globe', GL({ lon: [[0, 55.0], [3, 55.0]], lat: [[0, 24.95], [3, 24.95]], R: [[0, 12000], [3, 14000]], pins: [{ ...G.dubai, label: 'DUBAI', at: 0.2, small: true, size: 40 }, { ...G.jebel, label: 'JEBEL ALI', at: 0.5, small: true, size: 40 }, { ...G.hassyan, label: 'HASSYAN: MEMBRANE DESALINATION', at: 1.0 }] })),
+    V('gov_nasa_iss_2025_dubai_artificial_islands', 'DUBAI COAST (NASA ISS, 2025)', { cutW: 'Hassyan' }),
     Q('by', 'DEWA TARGET', 'BY 2030', null, 'ALL DESALINATED WATER: CLEAN ENERGY + WASTE HEAT', 'Source: DEWA'),
   ]);
   beats('A057', [
-    I('pb_sea_waves_283533', 'THE SEA', { in: 5 }),
+    I('pb_sea_waves_283533', 'THE SEA'),
     I('pb_industrial_pipes_8899206', 'PIPES', { cutW: 'pipes' }),
     I('pb_container_port_23544', 'CONTAINER PORT', { cutW: 'ships' }),
     V('pb_dubai_creek_129251', 'DESERT EDGE, DUBAI', { cutW: 'spends' }),
@@ -308,10 +326,10 @@ function build(T) {
   beats('A058B', [V('pb_dubai_skyline_46950', 'DUBAI', { over: [head('WOULD YOU LIVE HERE?', null, 180, 80)] })]);
   beats('A058', [
     V('cm_dubai_after_heavy_rain_jebel_ali_2024', 'JEBEL ALI, DUBAI, 19 APRIL 2024', { kb: { z: [1.2, 1.05] } }),
-    I('pb_tap_water_147075', 'TAP WATER', { cutW: 'Here', in: 3 }),
+    I('pb_tap_water_147075', 'TAP WATER', { cutW: 'Here' }),
     V('gov_nasa_iss_2025_dubai_night_lights', 'DUBAI AT NIGHT FROM THE SPACE STATION (NASA, 2025)', { cutW: 'every' }),
   ]);
-  beats('A059', [V('pb_dubai_marina_203951', 'DUBAI MARINA')]);
+  beats('A059', [V('pb_dubai_marina_203951', 'DUBAI MARINA'), V('pb_abra_dubai_264535', 'DUBAI MARINA', { cutW: 'subscribe', in: 1 })]);
   add(T.tl.voiceEnd + 0.4, S('endscreen', {}), 'fade');
   return out;
 }
