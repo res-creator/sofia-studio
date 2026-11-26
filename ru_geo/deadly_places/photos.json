@@ -1,0 +1,20 @@
+{
+"stopwatch": {"q": ["stopwatch", "analog stopwatch"], "cap": "секундомер (фото)", "need": "аналоговый секундомер"},
+"earth_globe": {"q": ["Blue Marble Earth", "Earth from space Apollo 17"], "cap": "Земля из космоса", "need": "Земля из космоса"},
+"everest_summit": {"q": ["Mount Everest summit", "Mount Everest from Gokyo Ri"], "cap": "Эверест (фото)", "need": "вершина Эвереста"},
+"climbers_everest": {"q": ["climbers Everest summit ridge", "Everest climbers Hillary Step"], "cap": "альпинисты на Эвересте (фото)", "need": "альпинисты на гребне"},
+"lake_nyos": {"q": ["Lake Nyos", "Lake Nyos Cameroon crater lake"], "cap": "озеро Ньос (фото)", "need": "озеро Ньос"},
+"nyos_pipes": {"q": ["Lake Nyos degassing pipe", "Lake Nyos degassing"], "cap": "труба дегазации озера Ньос", "need": "дегазационная труба на озере"},
+"arctic_sea_ice": {"q": ["Barents Sea ice", "Arctic sea ice floating sea"], "cap": "холодное северное море (фото)", "need": "море со льдом"},
+"cold_water_swimmer": {"q": ["cold water swimming", "ice swimming"], "cap": "купание в холодной воде (фото)", "need": "человек в холодной воде"},
+"life_jacket": {"q": ["life jacket", "lifejacket sea rescue"], "cap": "спасательный жилет (фото)", "need": "спасательный жилет"},
+"challenger_map": {"q": ["Challenger Deep map", "Mariana Trench bathymetry map"], "cap": "Марианская впадина (карта)", "need": "карта глубин"},
+"trieste": {"q": ["Bathyscaphe Trieste", "Trieste bathyscaphe 1960"], "cap": "батискаф «Триест» (фото)", "need": "батискаф"},
+"deepsea_challenger": {"q": ["Deepsea Challenger submersible", "Deepsea Challenger"], "cap": "Deepsea Challenger (фото)", "need": "аппарат Кэмерона"},
+"vostok_station": {"q": ["Vostok Station Antarctica", "Vostok station"], "cap": "станция «Восток» (фото)", "need": "станция в Антарктиде"},
+"antarctic_plateau": {"q": ["Antarctic Plateau", "East Antarctica ice sheet landscape"], "cap": "Антарктида (фото)", "need": "ледяная равнина"},
+"death_valley": {"q": ["Death Valley Badwater Basin", "Death Valley National Park"], "cap": "Долина Смерти (фото)", "need": "солончак Бэдуотер"},
+"thermometer_dv": {"q": ["Furnace Creek thermometer Death Valley", "Death Valley thermometer"], "cap": "термометр в Долине Смерти (фото)", "need": "большой термометр"},
+"mine_headframe": {"q": ["gold mine headframe South Africa", "Mponeng gold mine"], "cap": "шахтный копёр, Южная Африка (фото)", "need": "надшахтное здание"},
+"mine_underground": {"q": ["underground gold mine tunnel", "deep mine miners South Africa"], "cap": "подземная выработка (фото)", "need": "тоннель шахты"}
+}
