@@ -1,12 +1,4 @@
 {
- "apples": {
-  "q": [
-   "apples in crate",
-   "apple harvest"
-  ],
-  "cap": "яблоки (иллюстративное фото)",
-  "need": "яблоки в ящике"
- },
  "boiling_pot": {
   "q": [
    "boiling water pot",
@@ -87,14 +79,6 @@
   "cap": "компост",
   "need": "компостная куча"
  },
- "cooking_oil": {
-  "q": [
-   "vegetable oil bottles supermarket",
-   "cooking oil bottle"
-  ],
-  "cap": "растительное масло",
-  "need": "бутылки масла"
- },
  "copiapo_capsule": {
   "q": [
    "Fenix capsule Chile miners",
@@ -110,22 +94,6 @@
   ],
   "cap": "дневник (иллюстративное фото)",
   "need": "рука с ручкой над дневником"
- },
- "dried_meat": {
-  "q": [
-   "dried meat jerky",
-   "dried fish drying"
-  ],
-  "cap": "вяленое мясо (иллюстративное фото)",
-  "need": "вяленое мясо или рыба"
- },
- "eggs": {
-  "q": [
-   "eggs carton",
-   "chicken eggs"
-  ],
-  "cap": "яйца (иллюстративное фото)",
-  "need": "упаковка яиц"
  },
  "empty_shelves": {
   "q": [
@@ -312,14 +280,6 @@
   "cap": "рыбные консервы",
   "need": "банка сардин"
  },
- "sauerkraut": {
-  "q": [
-   "sauerkraut jar",
-   "fermented cabbage"
-  ],
-  "cap": "квашеная капуста",
-  "need": "банка капусты"
- },
  "scurvy_gums": {
   "q": [
    "scurvy gums",
@@ -409,14 +369,6 @@
   ],
   "cap": "счёт чёрточками",
   "need": "чёрточки по пять"
- },
- "toilet_paper": {
-  "q": [
-   "toilet paper shelf",
-   "toilet paper rolls"
-  ],
-  "cap": "бытовая бумага",
-  "need": "рулоны бумаги"
  },
  "toothbrush": {
   "q": [

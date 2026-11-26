@@ -1,0 +1,509 @@
+{
+ "apples": {
+  "q": [
+   "apples in crate",
+   "apple harvest"
+  ],
+  "cap": "яблоки (иллюстративное фото)",
+  "need": "яблоки в ящике"
+ },
+ "boiling_pot": {
+  "q": [
+   "boiling water pot",
+   "pot of boiling water"
+  ],
+  "cap": "кипящая вода",
+  "need": "кастрюля с кипящей водой"
+ },
+ "bottled_water_pallet": {
+  "q": [
+   "pallet bottled water",
+   "bottled water stacked supermarket"
+  ],
+  "cap": "бутилированная вода на палетах",
+  "need": "штабели бутылок"
+ },
+ "calculator_notebook": {
+  "q": [
+   "calculator and notebook",
+   "notebook calculations pencil"
+  ],
+  "cap": "расчёты в блокноте (иллюстративное фото)",
+  "need": "блокнот и калькулятор"
+ },
+ "calendar_wall": {
+  "q": [
+   "wall calendar",
+   "calendar crossed days"
+  ],
+  "cap": "календарь (иллюстративное фото)",
+  "need": "календарь с отметками"
+ },
+ "camping_stove": {
+  "q": [
+   "camping stove",
+   "portable gas stove"
+  ],
+  "cap": "туристическая горелка",
+  "need": "горелка с баллоном"
+ },
+ "canned_goods": {
+  "q": [
+   "canned food shelf",
+   "canned goods supermarket"
+  ],
+  "cap": "консервы на полке",
+  "need": "ряды банок"
+ },
+ "cashier_dark": {
+  "q": [
+   "supermarket checkout lanes",
+   "empty cash register supermarket"
+  ],
+  "cap": "кассы (иллюстративное фото)",
+  "need": "пустые кассы"
+ },
+ "charcoal_grill": {
+  "q": [
+   "charcoal grill",
+   "barbecue charcoal"
+  ],
+  "cap": "гриль с углём (иллюстративное фото)",
+  "need": "угли в гриле"
+ },
+ "citrus": {
+  "q": [
+   "citrus fruits oranges lemons",
+   "oranges"
+  ],
+  "cap": "цитрусовые (иллюстративное фото)",
+  "need": "апельсины и лимоны"
+ },
+ "compost": {
+  "q": [
+   "compost heap",
+   "compost bin kitchen scraps"
+  ],
+  "cap": "компост",
+  "need": "компостная куча"
+ },
+ "cooking_oil": {
+  "q": [
+   "vegetable oil bottles supermarket",
+   "cooking oil bottle"
+  ],
+  "cap": "растительное масло",
+  "need": "бутылки масла"
+ },
+ "copiapo_capsule": {
+  "q": [
+   "Fenix capsule Chile miners",
+   "Fénix 2 rescue capsule"
+  ],
+  "cap": "капсула «Феникс», Чили, 2010",
+  "need": "спасательная капсула"
+ },
+ "diary_writing": {
+  "q": [
+   "writing in diary",
+   "handwriting journal"
+  ],
+  "cap": "дневник (иллюстративное фото)",
+  "need": "рука с ручкой над дневником"
+ },
+ "dried_meat": {
+  "q": [
+   "dried meat jerky",
+   "dried fish drying"
+  ],
+  "cap": "вяленое мясо (иллюстративное фото)",
+  "need": "вяленое мясо или рыба"
+ },
+ "eggs": {
+  "q": [
+   "eggs carton",
+   "chicken eggs"
+  ],
+  "cap": "яйца (иллюстративное фото)",
+  "need": "упаковка яиц"
+ },
+ "empty_shelves": {
+  "q": [
+   "empty shelves supermarket",
+   "bare shelves store"
+  ],
+  "cap": "пустые полки (иллюстративное фото)",
+  "need": "пустые полки"
+ },
+ "empty_supermarket": {
+  "q": [
+   "empty supermarket",
+   "abandoned supermarket interior"
+  ],
+  "cap": "пустой магазин (иллюстративное фото)",
+  "need": "пустой торговый зал"
+ },
+ "fish_counter": {
+  "q": [
+   "fish counter supermarket",
+   "fresh fish display ice"
+  ],
+  "cap": "рыбный прилавок",
+  "need": "рыба на льду"
+ },
+ "flour_sacks": {
+  "q": [
+   "flour sacks",
+   "bag of flour"
+  ],
+  "cap": "мука (иллюстративное фото)",
+  "need": "мешки муки"
+ },
+ "fridge_open": {
+  "q": [
+   "open refrigerator food",
+   "refrigerator interior"
+  ],
+  "cap": "открытый холодильник",
+  "need": "холодильник с едой"
+ },
+ "ghee_jar": {
+  "q": [
+   "ghee jar",
+   "clarified butter ghee"
+  ],
+  "cap": "топлёное масло гхи (иллюстративное фото)",
+  "need": "банка топлёного масла"
+ },
+ "honey_jar": {
+  "q": [
+   "honey jar",
+   "jar of honey"
+  ],
+  "cap": "мёд (иллюстративное фото)",
+  "need": "банка мёда"
+ },
+ "ice_cream_freezer": {
+  "q": [
+   "supermarket freezer ice cream",
+   "freezer aisle"
+  ],
+  "cap": "морозильный отдел",
+  "need": "морозильные витрины"
+ },
+ "locked_door": {
+  "q": [
+   "locked glass door shop closed",
+   "closed store door night"
+  ],
+  "cap": "запертая дверь магазина (иллюстративное фото)",
+  "need": "закрытая дверь"
+ },
+ "mars500_inside": {
+  "q": [
+   "Mars-500 crew",
+   "Mars500 interior module"
+  ],
+  "cap": "экипаж Mars-500 (фото проекта)",
+  "need": "интерьер или экипаж"
+ },
+ "mars500_module": {
+  "q": [
+   "Mars-500 module",
+   "Mars500 isolation facility Moscow"
+  ],
+  "cap": "модуль Mars-500, Москва",
+  "need": "модуль изоляции"
+ },
+ "milk_powder": {
+  "q": [
+   "powdered milk",
+   "dry milk powder"
+  ],
+  "cap": "сухое молоко",
+  "need": "сухое молоко"
+ },
+ "miners_rescue": {
+  "q": [
+   "Copiapó mining accident rescue",
+   "Chile miners rescue 2010",
+   "Camp Esperanza Chile"
+  ],
+  "cap": "спасение шахтёров, Чили, 2010",
+  "need": "спасательные работы"
+ },
+ "minnesota_exp": {
+  "q": [
+   "Minnesota Starvation Experiment",
+   "Ancel Keys 1945"
+  ],
+  "cap": "Миннесотский эксперимент, 1944-1945 (архивное фото)",
+  "need": "участники эксперимента"
+ },
+ "notebook_table": {
+  "q": [
+   "notebook table handwritten",
+   "handwritten table ledger"
+  ],
+  "cap": "таблица в блокноте (иллюстративное фото)",
+  "need": "рукописная таблица"
+ },
+ "pasta_shelf": {
+  "q": [
+   "dry pasta shelf supermarket",
+   "pasta packages"
+  ],
+  "cap": "макароны на полке",
+  "need": "пачки макарон"
+ },
+ "rain_barrel": {
+  "q": [
+   "rain barrel rainwater",
+   "rainwater harvesting tank"
+  ],
+  "cap": "сбор дождевой воды",
+  "need": "бочка под водостоком"
+ },
+ "raw_meat_display": {
+  "q": [
+   "meat counter supermarket",
+   "raw meat display"
+  ],
+  "cap": "мясной прилавок",
+  "need": "сырое мясо в витрине"
+ },
+ "refrigerated_case": {
+  "q": [
+   "supermarket refrigerated display case",
+   "refrigerated food display"
+  ],
+  "cap": "холодильная витрина",
+  "need": "витрина с молочным и мясом"
+ },
+ "rice_bulk": {
+  "q": [
+   "rice grains bulk",
+   "sack of rice grocery"
+  ],
+  "cap": "рис и крупа",
+  "need": "рис"
+ },
+ "roof_sun": {
+  "q": [
+   "rooftop sunlight",
+   "flat roof sun"
+  ],
+  "cap": "плоская крыша на солнце (иллюстративное фото)",
+  "need": "крыша здания"
+ },
+ "salt_pile": {
+  "q": [
+   "salt crystals",
+   "coarse salt pile"
+  ],
+  "cap": "соль (иллюстративное фото)",
+  "need": "горка соли"
+ },
+ "sardines_can": {
+  "q": [
+   "sardines can",
+   "canned sardines"
+  ],
+  "cap": "рыбные консервы",
+  "need": "банка сардин"
+ },
+ "sauerkraut": {
+  "q": [
+   "sauerkraut jar",
+   "fermented cabbage"
+  ],
+  "cap": "квашеная капуста",
+  "need": "банка капусты"
+ },
+ "scurvy_gums": {
+  "q": [
+   "scurvy gums",
+   "scurvy"
+  ],
+  "cap": "цинга: иллюстрация из медицинского источника",
+  "need": "признаки цинги"
+ },
+ "seeds_packets": {
+  "q": [
+   "seed packets",
+   "vegetable seeds packets"
+  ],
+  "cap": "семена (иллюстративное фото)",
+  "need": "пакетики семян"
+ },
+ "siffre_cave": {
+  "q": [
+   "Michel Siffre",
+   "Midnight Cave Texas Siffre",
+   "Scarasson cave"
+  ],
+  "cap": "Мишель Сиффр и пещерные опыты",
+  "need": "Сиффр или пещера"
+ },
+ "soap": {
+  "q": [
+   "hand washing soap",
+   "bar of soap"
+  ],
+  "cap": "мыло и мытьё рук",
+  "need": "мыло, руки под краном"
+ },
+ "solar_cooker": {
+  "q": [
+   "solar cooker box",
+   "solar oven cardboard foil",
+   "CooKit solar cooker"
+  ],
+  "cap": "солнечная печь",
+  "need": "картонная печь с фольгой"
+ },
+ "stairs_exercise": {
+  "q": [
+   "climbing stairs exercise",
+   "person exercising indoors"
+  ],
+  "cap": "зарядка (иллюстративное фото)",
+  "need": "движение в помещении"
+ },
+ "sugar": {
+  "q": [
+   "sugar crystals",
+   "bag of sugar"
+  ],
+  "cap": "сахар (иллюстративное фото)",
+  "need": "сахар"
+ },
+ "supermarket_aisle": {
+  "q": [
+   "supermarket aisle interior",
+   "grocery store aisle"
+  ],
+  "cap": "проход супермаркета (современное фото)",
+  "need": "длинный проход с полками"
+ },
+ "supermarket_exterior": {
+  "q": [
+   "supermarket exterior building",
+   "supermarket store front"
+  ],
+  "cap": "здание супермаркета (современное фото)",
+  "need": "фасад магазина"
+ },
+ "supermarket_shelves": {
+  "q": [
+   "supermarket shelves",
+   "grocery store shelves full"
+  ],
+  "cap": "полки с товарами (современное фото)",
+  "need": "полные полки"
+ },
+ "tally_marks": {
+  "q": [
+   "tally marks wall",
+   "tally marks counting days"
+  ],
+  "cap": "счёт чёрточками",
+  "need": "чёрточки по пять"
+ },
+ "toilet_paper": {
+  "q": [
+   "toilet paper shelf",
+   "toilet paper rolls"
+  ],
+  "cap": "бытовая бумага",
+  "need": "рулоны бумаги"
+ },
+ "toothbrush": {
+  "q": [
+   "toothbrush toothpaste",
+   "toothbrushes"
+  ],
+  "cap": "зубная щётка и паста",
+  "need": "щётки и паста"
+ },
+ "vegetables": {
+  "q": [
+   "root vegetables carrots potatoes onions",
+   "vegetables market"
+  ],
+  "cap": "овощи (иллюстративное фото)",
+  "need": "морковь, картофель, лук"
+ },
+ "vitamin_pills": {
+  "q": [
+   "vitamin tablets",
+   "vitamin pills bottle"
+  ],
+  "cap": "витамины (иллюстративное фото)",
+  "need": "таблетки, баночки"
+ },
+ "wall_clock": {
+  "q": [
+   "wall clock",
+   "analog clock"
+  ],
+  "cap": "часы (иллюстративное фото)",
+  "need": "настенные часы"
+ },
+ "water_bottles": {
+  "q": [
+   "water bottles",
+   "drinking water bottles shelf"
+  ],
+  "cap": "бутылки с водой",
+  "need": "бутылки воды"
+ },
+ "window_sun": {
+  "q": [
+   "sunlight through window glass",
+   "window sunlight room"
+  ],
+  "cap": "солнце через окно (иллюстративное фото)",
+  "need": "солнечный свет через стекло"
+ },
+ "clip_empty_store": {
+  "clip": true,
+  "optional": true,
+  "q": [
+   "empty supermarket aisle",
+   "grocery store walk"
+  ],
+  "cap": "видеоклип: проход магазина",
+  "need": "Coverr: медленный проход по пустому магазину (проверить лицензию на coverr.co)"
+ },
+ "clip_rain_roof": {
+  "clip": true,
+  "optional": true,
+  "q": [
+   "rain on roof",
+   "rain drops water"
+  ],
+  "cap": "видеоклип: дождь",
+  "need": "Coverr: дождь по крыше"
+ },
+ "clip_fire_flame": {
+  "clip": true,
+  "optional": true,
+  "q": [
+   "campfire flame",
+   "fire burning"
+  ],
+  "cap": "видеоклип: огонь",
+  "need": "Coverr: огонь костра/горелки"
+ },
+ "clip_tick_clock": {
+  "clip": true,
+  "optional": true,
+  "q": [
+   "clock ticking",
+   "time passing"
+  ],
+  "cap": "видеоклип: часы",
+  "need": "Coverr: бегущие часы"
+ }
+}
