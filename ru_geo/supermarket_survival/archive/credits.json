@@ -22,5 +22,37 @@
   "cap": "пустой магазин (фото, не из эксперимента)",
   "page": "https://commons.wikimedia.org/wiki/File:2020-03-04_Empty_supermarket_shelves_during_toilet_paper_shortage_in_Sydney_due_to_Coronavirus_fears.jpg",
   "title": "File:2020-03-04 Empty supermarket shelves during toilet paper shortage in Sydney due to Coronavirus fears.jpg"
+ },
+ "locked_door": {
+  "file": "locked_door.jpg",
+  "author": "Rwendland",
+  "license": "CC BY-SA 3.0",
+  "cap": "закрытая дверь магазина (иллюстративное фото)",
+  "page": "https://commons.wikimedia.org/wiki/File:Apple_Store,_Bath,_doors_at_night.jpg",
+  "title": "File:Apple Store, Bath, doors at night.jpg"
+ },
+ "tally_marks": {
+  "file": "tally_marks.jpg",
+  "author": "Shyamal L.",
+  "license": "CC BY-SA 4.0",
+  "cap": "счёт чёрточками",
+  "page": "https://commons.wikimedia.org/wiki/File:Attendance_Aihole_20210403.jpg",
+  "title": "File:Attendance Aihole 20210403.jpg"
+ },
+ "shopping_cart": {
+  "file": "shopping_cart.jpg",
+  "author": "Shixart1985",
+  "license": "CC BY 2.0",
+  "cap": "тележка (иллюстративное фото)",
+  "page": "https://commons.wikimedia.org/wiki/File:Shopper_using_smartphone_while_leaning_on_shopping_cart_in_a_supermarket_undefined.jpg",
+  "title": "File:Shopper using smartphone while leaning on shopping cart in a supermarket undefined.jpg"
+ },
+ "rice_bulk": {
+  "file": "rice_bulk.jpg",
+  "author": "TanvirSdq",
+  "license": "CC BY-SA 4.0",
+  "cap": "крупа: основа расчёта калорий",
+  "page": "https://commons.wikimedia.org/wiki/File:Bagging_puffed_rice_and_grains_on_market_street_Khulna.jpg",
+  "title": "File:Bagging puffed rice and grains on market street Khulna.jpg"
  }
 }
