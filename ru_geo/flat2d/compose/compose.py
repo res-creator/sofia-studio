@@ -16,8 +16,11 @@ for i, s in enumerate(tl):
     d = b - a; off = a - s['t']; o = f'{tmp}/s{i:04d}.mp4'; src = s['src'] if s['src'].startswith('/') else f'{R}/{s["src"]}'
     fade = f'fade=t=in:st=0:d={FADE},fade=t=out:st={max(0, d - FADE):.3f}:d={FADE}'
     if s['type'] == 'clip':
-        vf = f'scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS},{GRADE},{fade},format=yuv420p'
-        run(['ffmpeg', '-v', 'error', '-y', '-stream_loop', '-1', '-ss', str(s.get('ss', 0) + off), '-i', src, '-t', f'{d:.3f}', '-vf', vf, '-an', '-c:v', 'libx264', '-crf', '20', '-preset', 'veryfast', o])
+        vf = f'scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS},{GRADE}'
+        if s.get('ov'):
+            run(['ffmpeg', '-v', 'error', '-y', '-stream_loop', '-1', '-ss', str(s.get('ss', 0) + off), '-i', src, '-loop', '1', '-framerate', str(FPS), '-i', s['ov'], '-t', f'{d:.3f}', '-filter_complex', f'[0:v]{vf}[a];[1:v]format=rgba,fade=t=in:st=0.15:d=0.3:alpha=1[b];[a][b]overlay,{fade},format=yuv420p[o]', '-map', '[o]', '-an', '-c:v', 'libx264', '-crf', '20', '-preset', 'veryfast', o])
+        else:
+            run(['ffmpeg', '-v', 'error', '-y', '-stream_loop', '-1', '-ss', str(s.get('ss', 0) + off), '-i', src, '-t', f'{d:.3f}', '-vf', f'{vf},{fade},format=yuv420p', '-an', '-c:v', 'libx264', '-crf', '20', '-preset', 'veryfast', o])
     else:  # photo / card: плавное линейное приближение
         z0, z1 = s.get('z', [1.0, 1.08] if s['type'] == 'photo' else [1.0, 1.02]); px, py = s.get('p', [0.5, 0.5]); n = max(2, round(d * FPS))
         zf = f"if(lt(on,1),{z0},{z0}+({z1}-{z0})*on/{n})"
@@ -31,7 +34,7 @@ run(['ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', f'{tmp}/
 def tc(x): x = max(0, x); return f'{int(x // 3600)}:{int(x % 3600 // 60):02d}:{x % 60:05.2f}'
 ass = ['[Script Info]', 'ScriptType: v4.00+', f'PlayResX: {W}', f'PlayResY: {H}', '', '[V4+ Styles]',
        'Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding',
-       'Style: C,Inter,74,&H00FFFFFF,&H000000FF,&H00101010,&H80000000,1,0,0,0,100,100,0,0,1,4,2,2,120,120,70,1', '', '[Events]', 'Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text']
+       'Style: C,Inter,60,&H00FFFFFF,&H000000FF,&H00101010,&H80000000,1,0,0,0,100,100,0,0,1,4,2,2,120,120,70,1', '', '[Events]', 'Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text']
 for sg in film['segs']:
     if sg['kind'] != 'voice': continue
     for ca, cb, txt in sg['captions']:
@@ -41,7 +44,7 @@ open(f'{tmp}/c.ass', 'w', encoding='utf8').write('\n'.join(ass))
 # звук: озвучка (+ музыка, если есть mus.wav рядом)
 dur = t1 - t0; aud = ['-ss', str(t0), '-t', f'{dur:.3f}', '-i', f'{R}/{slug}/vo_clone/vo.mp3']
 mus = f'{R}/{slug}/music.wav'
-if os.path.exists(mus): aud += ['-ss', str(t0), '-t', f'{dur:.3f}', '-i', mus]; af = '[1:a]aresample=48000[v];[2:a]aresample=48000[m];[v][m]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=7[o]'
+if os.path.exists(mus): aud += ['-ss', str(t0), '-t', f'{dur:.3f}', '-i', mus]; af = '[1:a]aresample=48000,asplit=2[v][vs];[2:a]aresample=48000[m];[m][vs]sidechaincompress=threshold=0.03:ratio=6:attack=20:release=600[md];[v][md]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=7[o]'
 else: af = '[1:a]aresample=48000,loudnorm=I=-14:TP=-1.5:LRA=7[o]'
 run(['ffmpeg', '-v', 'error', '-y', '-i', f'{tmp}/v.mp4', *aud, '-filter_complex', f"[0:v]ass={tmp}/c.ass:fontsdir=/usr/share/fonts[vv];{af}", '-map', '[vv]', '-map', '[o]', '-c:v', 'libx264', '-crf', '21', '-preset', 'veryfast', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', '-shortest', out])
 print('ok', out, round(dur, 1), 'c'); subprocess.run(['rm', '-rf', tmp])

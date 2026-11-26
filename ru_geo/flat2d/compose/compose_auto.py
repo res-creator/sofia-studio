@@ -62,7 +62,9 @@ if len(paras) != len(voice): sys.exit(f'абзацев {len(paras)} != озву�
 # --- подбор клипов
 used = set(); cards = []; tl = []
 def pick(q):
-    for k in search(q):
+    qw = [w[:5] for w in re.findall(r'[a-z]+', q.lower()) if len(w) > 2]
+    def score(k): tg = ' '.join(DB['v'][k].get('tags', []) + [DB['v'][k].get('title', '')]).lower(); return -sum(1 for w in qw if w in tg)
+    for k in sorted(search(q), key=score):
         v = DB['v'][k]
         if k in used or float(v.get('dur') or 0) < 4.5: continue
         used.add(k); p = f'{ST}/{k}.mp4'
@@ -78,19 +80,23 @@ for i, s in enumerate(segs):
     a = 0.0 if vi == 0 else s['t']; b = film['total']
     for j in range(i + 1, len(segs)): b = segs[j]['t'] - 1.6 if segs[j]['kind'] == 'chapter' else segs[j]['t']; break
     bounds.append((a, b)); vi += 1
-cardjobs = []
+cardjobs = []; last_ttl = -99
 for idx, ((a, b), p) in enumerate(zip(bounds, paras)):
-    cue = p['cue']; qs = (cue.get('b', []) or ['city street'])[:2]; big = cue.get('big'); t = a; dur_total = b - a
+    cue = p['cue']; qs = (cue.get('b', []) or ['city street'])[:3]; big = cue.get('big'); t = a; dur_total = b - a
     if big and dur_total > 6:
         png = f'{J}/card_big_{idx}.png'; cardjobs.append(dict(type='bignum', big=big['n'], label=big.get('l', ''), bg='black', out=png)); add(t, 3.6, type='card', src=png); t += 3.6
     n = max(1, round((b - t) / 3.2)); shot = (b - t) / n
+    ttl = cue.get('ttl') or (p['text'] if (len(p['text']) <= 70 and p['text'].endswith('?') and t - last_ttl > 40) else None)
+    ov = None
+    if ttl and not big:
+        ov = f'{J}/card_ttl_{idx}.png'; cardjobs.append(dict(type='title', text=ttl, out=ov)); last_ttl = t
     for j in range(n):
         k, v = pick(qs[j % len(qs)])
         if not k:
             for q in qs:
                 k, v = pick(q)
                 if k: break
-        if k: add(t + j * shot, shot, type='clip', src=f'stock/{k}.mp4', ss=0.3)
+        if k: add(t + j * shot, shot, type='clip', src=f'stock/{k}.mp4', ss=0.3, **({'ov': ov} if (ov and j == (n - 1 if cue.get('ttl') else 0)) else {}))
         else: add(t + j * shot, shot, type='card', src=f'{C}/black.png')
 # заставки глав
 for ct, title in chaps:
@@ -114,7 +120,7 @@ if not os.path.exists(mus):
     T = film['total']; ids = ['41', '76', '22', '18']; args = []; filt = ''; prevl = '[0]'
     for m in ids: args += ['-i', f'{M}/mixkit_{m}.mp3']
     for i in range(1, len(ids)): filt += f'{prevl}[{i}]acrossfade=d=4[c{i}];'; prevl = f'[c{i}]'
-    subprocess.run(['ffmpeg', '-v', 'error', '-y', *args, '-filter_complex', f'{filt}{prevl}atrim=0:{T},asetpts=N/SR/TB,volume=0.13,afade=t=in:d=3,afade=t=out:st={T - 5}:d=5[o]', '-map', '[o]', '-ar', '48000', '-ac', '2', mus], check=True)
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', *args, '-filter_complex', f'{filt}{prevl}atrim=0:{T},asetpts=N/SR/TB,volume=0.34,afade=t=in:d=3,afade=t=out:st={T - 5}:d=5[o]', '-map', '[o]', '-ar', '48000', '-ac', '2', mus], check=True)
 t0, t1 = (sys.argv[2], sys.argv[3]) if len(sys.argv) > 3 else ('0', str(film['total']))
 os.makedirs(f'{J}/video', exist_ok=True); out = f'{J}/video/{slug}.mp4' if len(sys.argv) <= 3 else f'/tmp/claude-0/-home-user-sofia-studio/24c15af6-1f18-59ef-a680-971b83cb24ee/scratchpad/{slug}_excerpt.mp4'
 subprocess.run(['python3', f'{C}/compose.py', slug, f'{J}/timeline.json', out, t0, t1], check=True)

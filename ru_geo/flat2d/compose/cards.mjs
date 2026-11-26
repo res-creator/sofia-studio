@@ -8,9 +8,11 @@ const css = `@font-face{font-family:Neucha;src:url(data:font/ttf;base64,${fs.rea
 .title{position:absolute;top:410px;width:100%;text-align:center;font-size:118px;line-height:1.08;text-transform:uppercase;font-weight:700;padding:0 160px;text-shadow:0 0 0 #fff}
 .icon{position:absolute;bottom:150px;width:100%;text-align:center;font-size:150px;filter:grayscale(1) brightness(0) invert(1)}
 .big{position:absolute;top:0;bottom:0;left:0;right:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Inter,sans-serif}
+.ttl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 200px;font-family:Inter,sans-serif;font-weight:800;font-size:112px;line-height:1.12;color:#fff;background:rgba(0,0,0,.45);text-shadow:0 6px 30px rgba(0,0,0,.7)}
 .big b{font-size:230px;font-weight:800;letter-spacing:-4px}.big span{font-size:62px;margin-top:20px;opacity:.85;font-family:Neucha,Inter,sans-serif}`;
-const html = (c) => c.type === 'chapter' ? `<body class="dark"><div class="frame"></div><div class="num">${c.num}</div><div class="title">${c.title}</div><div class="icon">${c.icon || ''}</div></body>`
+const html = (c) => c.type === 'title' ? `<body style="background:transparent"><div class="ttl">${c.text}</div></body>`
+  : c.type === 'chapter' ? `<body class="dark"><div class="frame"></div><div class="num">${c.num}</div><div class="title">${c.title}</div><div class="icon">${c.icon || ''}</div></body>`
   : `<body class="${c.bg || 'black'}"><div class="big"><b>${c.big}</b><span>${c.label || ''}</span></div></body>`;
 const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox'] }); const pg = await b.newPage({ viewport: { width: 1920, height: 1080 } });
-for (const c of list) { await pg.setContent(`<style>${css}</style>${html(c)}`); await pg.evaluate(() => document.fonts.ready); await pg.waitForTimeout(150); await pg.screenshot({ path: c.out }); }
+for (const c of list) { await pg.setContent(`<style>${css}</style>${html(c)}`); await pg.evaluate(() => document.fonts.ready); await pg.waitForTimeout(150); await pg.screenshot({ path: c.out, omitBackground: c.type === 'title' }); }
 await b.close(); console.log('cards', list.length);

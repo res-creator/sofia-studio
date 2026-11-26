@@ -7,7 +7,7 @@
 >> {"b":["spacecraft in deep space","radio antenna dish","starfield timelapse"]}
 
 Сутки пути для света: это далеко или близко? Мы измерим этим зондом всё, что сможем, до самого края видимого. А в конце спросим: какого размера вся Вселенная? Ответ меня удивил.
->> {"b":["radio telescope night","starfield timelapse","signal waves abstract"]}
+>> {"ttl":"Какого размера вся Вселенная?","b":["radio telescope night","starfield timelapse","signal waves abstract"]}
 
 Начнём с простого: до ближайшей звезды. Зонд летит со скоростью около семнадцати километров в секунду. Если бы он направился к ней, дорога заняла бы порядка семидесяти пяти тысяч лет. Это наша прикидка по школьной формуле, не чьё-то заявление.
 >> {"b":["spacecraft launch","nearest star space","stars moving in space"],"big":{"n":"75 000 лет","l":"до Проксимы на скорости зонда"}}
