@@ -42,3 +42,4 @@ Voice files saved in repo: voices/buckle_up_narrator/ (ref.mp3, ref_text.txt, RE
 Open: rights (ElevenLabs ToS on using output to clone elsewhere; Fish free-model terms for monetised use) — owner/boyfriend to confirm.
 Fish Audio facts (official pages, 2026-11-23): s2.1-pro-free = $0, same quality as s2.1-pro, "fair use", BUT free use is personal/non-commercial only
 (terms + plan FAQ). Paid API s2.1-pro $15 / 1M UTF-8 bytes (≈ $1 per 50-min English film). For monetised channel use paid API. Guide: FISH_VOICE.md, script dubtools/fish_voice.py.
+- 2026-11-26: owner's own designed voice saved: voices/buckle_up_narrator_v2/ (use for new films). Probe: japan/sample_new_narrator_0-60s.mp3.
