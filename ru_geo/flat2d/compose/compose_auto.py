@@ -83,7 +83,7 @@ for idx, ((a, b), p) in enumerate(zip(bounds, paras)):
     cue = p['cue']; qs = (cue.get('b', []) or ['city street'])[:2]; big = cue.get('big'); t = a; dur_total = b - a
     if big and dur_total > 6:
         png = f'{J}/card_big_{idx}.png'; cardjobs.append(dict(type='bignum', big=big['n'], label=big.get('l', ''), bg='black', out=png)); add(t, 3.6, type='card', src=png); t += 3.6
-    n = max(1, round((b - t) / 4.6)); shot = (b - t) / n
+    n = max(1, round((b - t) / 3.2)); shot = (b - t) / n
     for j in range(n):
         k, v = pick(qs[j % len(qs)])
         if not k:
