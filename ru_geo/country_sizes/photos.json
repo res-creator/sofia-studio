@@ -8,15 +8,6 @@
   "cap": "Мир в проекции Меркатора",
   "need": "карта мира с растянутой Гренландией"
  },
- "greenland_africa_compare": {
-  "q": [
-   "Greenland Africa size comparison Mercator",
-   "True size Africa Greenland map",
-   "Africa versus Greenland true area"
-  ],
-  "cap": "Гренландия и Африка: на карте и на деле",
-  "need": "сравнение размеров"
- },
  "old_sailing_ship": {
   "q": [
    "16th century carrack ship engraving",
@@ -83,7 +74,7 @@
  "globe_earth": {
   "q": [
    "terrestrial globe",
-   "Earth globe",
+   "Globe Earth photograph",
    "Blue Marble Earth globe"
   ],
   "cap": "Глобус",
@@ -161,15 +152,6 @@
   "cap": "Индонезия",
   "need": "архипелаг"
  },
- "africa_krause_map": {
-  "q": [
-   "True Size of Africa Kai Krause",
-   "Africa countries fit inside map",
-   "Africa size comparison United States China India"
-  ],
-  "cap": "Иллюстрация: страны внутри контура Африки",
-  "need": "сравнение площадей"
- },
  "moon_full": {
   "q": [
    "Full moon",
@@ -206,13 +188,13 @@
   "cap": "Проекция Винкеля",
   "need": "компромиссная проекция"
  },
- "true_size_tool": {
+ "greenland_map": {
   "q": [
-   "The True Size Of",
-   "thetruesize.com screenshot",
-   "true size country comparison map tool"
+   "Greenland map",
+   "Greenland location map",
+   "Greenland satellite"
   ],
-  "cap": "Сервис «перетащи страну»: иллюстрация",
-  "need": "экран сервиса сравнения размеров"
+  "cap": "Гренландия",
+  "need": "контур Гренландии"
  }
 }
