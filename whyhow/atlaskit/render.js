@@ -13,19 +13,20 @@ const HOUSE = process.env.HOUSE === '1';
 const SC = { ...S, ...S2, ...S3, ...S4, flatmap: S6.flatmap, wcard: S6.wcard, papermap: S6.papermap, cutouts: S6.cutouts, mgzoom: S5.mgzoom, blurcard: S5.blurcard, mapline: S5.mapline, xsec: X.xsec, siphon: X.siphonCloseup, examples: X.examples };
 // scenes that do not draw overlays themselves get them drawn on top when p.over is set
 for (const n of ['stats', 'split', 'bars', 'ratio', 'calendar', 'thermo', 'countdown', 'mythq', 'compare', 'ring', 'river', 'district', 'shaft', 'frost', 'vapour', 'ladder', 'yearbar', 'stove', 'firemap']) if (SC[n]) { const f = SC[n]; SC[n] = (ctx, t, d, p) => { f(ctx, t, d, p); if (p.over) S.overlays(ctx, t, d, p); }; }
-const RECOL = { '#FFC857': '#E4572E', '#E63946': '#B5462E', '#9CC3FF': '#8FA3B3', '#4D8DFF': '#5B7A8C', '#FF8A3D': '#E4572E' };
+const ACC = process.env.ACCENT || '#FFD60A';  // house accent: owner chose yellow like the thumbnails (Nov 26 2026); was coral #E4572E
+const RECOL = { '#FFC857': ACC, '#E63946': '#B5462E', '#9CC3FF': '#8FA3B3', '#4D8DFF': '#5B7A8C', '#FF8A3D': ACC, '#E4572E': ACC };
 const recolor = o => Array.isArray(o) ? o.map(recolor) : (o && typeof o === 'object') ? Object.fromEntries(Object.entries(o).map(([k, v]) => [k, typeof v === 'string' && RECOL[v] ? RECOL[v] : recolor(v)])) : o;
-if (HOUSE) { K.HOUSE.on = true; K.C.yellow = '#E4572E';
+if (HOUSE) { K.HOUSE.on = true; K.C.yellow = ACC;
   const S5 = require('./scenes5');
   for (const n of ['stats', 'bars', 'chapter', 'ratio', 'versus', 'ladder', 'yearbar', 'calendar', 'split', 'thermo', 'myth', 'countdown', 'mythq', 'compare', 'endq']) if (SC[n]) { const f = SC[n];
     SC[n] = (ctx, t, d, p) => { if (p && p.img) return f(ctx, t, d, p); p = recolor(p); const bg = p._bg && K.IMG[p._bg];
       if (bg) { S5.blurBg(ctx, bg, t, d, { dark: 0.58, blur: 20 }); K.HOUSE.nobg = true; }
-      const save = { ice: K.C.ice, iceL: K.C.iceL }; K.C.ice = '#E4572E'; K.C.iceL = '#D5DAE0';
+      const save = { ice: K.C.ice, iceL: K.C.iceL }; K.C.ice = ACC; K.C.iceL = '#D5DAE0';
       try { f(ctx, t, d, p); } finally { K.HOUSE.nobg = false; Object.assign(K.C, save); } }; }
   // globe -> flat house map
   const sc = v => Array.isArray(v) ? v.map(([tt, x]) => [tt, x * Math.PI / 180]) : v * Math.PI / 180;
   SC.globe = (ctx, t, d, p) => { const pins = [...(p.pins || []), ...(p.labels || []).map(l => ({ ...l, label: l.text }))].map(q => ({ lon: q.lon, lat: q.lat, label: q.label, at: q.at, size: q.small ? 32 : 38 }));
-    S6.flatmap(ctx, t, d, { lon: p.lon, lat: p.lat, s: sc(p.R), land: '#2C3540', water: '#141A21', dark: true, pins, routes: (p.routes || []).map(r => ({ pts: r.pts, at: r.at, dur: r.dur, color: '#E4572E', label: r.label })) });
+    S6.flatmap(ctx, t, d, { lon: p.lon, lat: p.lat, s: sc(p.R), land: '#2C3540', water: '#141A21', dark: true, pins, routes: (p.routes || []).map(r => ({ pts: r.pts, at: r.at, dur: r.dur, color: ACC, label: r.label })) });
     if (p.over) S.overlays(ctx, t, d, { ...p, over: p.over }); }; }
 const [, , EPD, MODE, ...ARGS] = process.argv; const EP = path.resolve(EPD);
 const TL = JSON.parse(fs.readFileSync(path.join(EP, 'timeline.json'))); const WORDS = JSON.parse(fs.readFileSync(fs.existsSync(path.join(EP, 'words_script.json')) ? path.join(EP, 'words_script.json') : path.join(EP, 'words.json')));

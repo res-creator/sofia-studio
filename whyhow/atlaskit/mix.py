@@ -90,6 +90,21 @@ for pid in MJ.get('drop', []):
     s0 = P[pid]['start']; a = int((s0 - 1.4) * SR); b = int((s0 + 1.2) * SR); r = np.ones(b - a); fa = int(0.4 * SR); r[:fa] = np.linspace(1, 0, fa); r[fa:-int(0.8 * SR)] = 0; r[-int(0.8 * SR):] = np.linspace(0, 1, int(0.8 * SR))
     mgain[a:b] = np.minimum(mgain[a:b], r[:len(mgain[a:b])]); boom(s0 + 0.02, 1.0)
 music = pad * mgain * (0.30 - 0.20 * talk) + amb * mgain * (0.12 - 0.06 * talk)
+# --- real music (owner, Nov 2026: "more background music"): EP/music.json {"tracks":[{"file","at": para id or seconds,"gain"}], "level", "duck"}
+MF = os.path.join(EP, 'music.json')
+if os.path.exists(MF):
+    MU = json.load(open(MF)); trk = MU['tracks']; bed = np.zeros(N); XF = int(2.5 * SR)
+    st = [P[x['at']]['start'] - 0.6 if isinstance(x['at'], str) else float(x['at']) for x in trk] + [N / SR]
+    for k, x in enumerate(trk):
+        a0, b0 = max(0, int(st[k] * SR)), min(N, int(st[k + 1] * SR) + XF); L = b0 - a0
+        if L <= 0: continue
+        y = subprocess.run(['ffmpeg', '-v', 'error', '-i', os.path.join(EP, x['file']), '-ss', str(x.get('from', 0)), '-f', 'f32le', '-ac', '1', '-ar', str(SR), '-'], capture_output=True).stdout
+        y = np.frombuffer(y, np.float32).astype(float); y /= np.sqrt(np.mean(y ** 2)) + 1e-9   # RMS 1
+        y = np.tile(y, L // len(y) + 1)[:L] * x.get('gain', 1.0)
+        e = np.ones(L); f = min(XF, L // 2); e[:f] = np.linspace(0, 1, f) if k else 1; e[-f:] = np.linspace(1, 0, f) if b0 < N else e[-f:]
+        bed[a0:b0] += y * e
+    lvl, dk = MU.get('level', 0.055), MU.get('duck', 0.45)   # music RMS between lines / fraction kept under the voice
+    music = bed * mgain * lvl * (1 - (1 - dk) * talk) + amb * mgain * (0.03 - 0.015 * talk)
 mix = voice + music + fx * 0.35
 mix = np.stack([mix, mix], 1) / (np.abs(mix).max() + 1e-9) * 0.8
 tmp = OUT + '.raw.wav'; sf.write(tmp, mix.astype(np.float32), SR)

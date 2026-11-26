@@ -96,3 +96,9 @@ whyhow/style_mix/footage
 whyhow/style_mix/*.mp3
 whyhow/ep1*/.cardbg/
 whyhow/covers_v5_base/
+whyhow/music/*.mp3
+whyhow/ep16_live/voice/
+whyhow/ep16_live/voice_raw/
+whyhow/ep16_live/*.mp4
+whyhow/ep16_live/*.wav
+whyhow/ep16_live/footage

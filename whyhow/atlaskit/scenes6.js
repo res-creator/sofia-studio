@@ -41,9 +41,9 @@ function flatmap(ctx, t, d, p) {
   polys(ctx, P, LAND); ctx.fillStyle = p.land || '#F3EBDA'; ctx.fill('evenodd');
   polys(ctx, P, CTRY); ctx.strokeStyle = p.dark ? 'rgba(255,255,255,0.12)' : 'rgba(120,105,80,0.35)'; ctx.lineWidth = 1.5; ctx.stroke();
   polys(ctx, P, LAND); ctx.strokeStyle = p.dark ? 'rgba(255,255,255,0.35)' : 'rgba(90,120,135,0.55)'; ctx.lineWidth = 2; ctx.stroke();
-  for (const r of p.routes || []) drawRoute(ctx, P, r, t, { color: r.color || '#E4572E', w: 7, glow: false, dash: false });
+  for (const r of p.routes || []) drawRoute(ctx, P, r, t, { color: r.color || C.yellow, w: 7, glow: false, dash: false });
   for (const pin of p.pins || []) { const a = eout(clamp(seg(t, pin.at || 0, (pin.at || 0) + 0.5))); if (a <= 0) continue; const [x, y] = P(pin.lon, pin.lat);
-    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = p.dark ? '#E4572E' : '#2B2D33'; ctx.beginPath(); ctx.arc(x, y, 9, 0, 7); ctx.fill(); ctx.strokeStyle = '#FFFFFF'; ctx.lineWidth = 3; ctx.stroke();
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = p.dark ? C.yellow : '#2B2D33'; ctx.beginPath(); ctx.arc(x, y, 9, 0, 7); ctx.fill(); ctx.strokeStyle = '#FFFFFF'; ctx.lineWidth = 3; ctx.stroke();
     text(ctx, pin.label, x + (pin.dx || 22), y + (pin.dy || 10), { size: pin.size || 40, font: F.bold, color: p.dark ? '#FFFFFF' : '#2B2D33', align: pin.align || 'left', shadow: p.dark ? 10 : 0 }); ctx.restore(); }
   if (p.title) wTitle(ctx, t, p.title);
   if (p.source) text(ctx, p.source, W - 40, H - 30, { size: 20, font: F.reg, align: 'right', color: 'rgba(40,40,40,0.55)' });
@@ -56,7 +56,7 @@ function wcard(ctx, t, d, p) {
   ctx.fillStyle = p.bg || '#F3EBDA'; ctx.fillRect(0, 0, W, H);
   const u = eout(clamp(seg(t, 0.1, 0.8)));
   if (p.head) text(ctx, p.head, W / 2, 330, { size: 46, font: F.bold, align: 'center', color: hexA('#2B2D33', u) });
-  if (p.big) text(ctx, p.big, W / 2, 560 + (1 - u) * 20, { size: p.bigSize || 200, font: F.head, align: 'center', color: p.color || '#E4572E', alpha: u });
+  if (p.big) text(ctx, p.big, W / 2, 560 + (1 - u) * 20, { size: p.bigSize || 200, font: F.head, align: 'center', color: p.color || C.yellow, alpha: u });
   if (p.sub) { const a = eout(clamp(seg(t, 0.6, 1.2))); text(ctx, p.sub, W / 2, 680, { size: 44, font: F.bold, align: 'center', color: hexA('#2B2D33', a) }); }
   if (p.source) text(ctx, p.source, W / 2, H - 50, { size: 22, font: F.reg, align: 'center', color: 'rgba(40,40,40,0.55)' });
 }
