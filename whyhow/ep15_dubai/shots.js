@@ -300,7 +300,7 @@ function build(T) {
   ]);
   beats('A053', [
     Q(null, 'UAE WEATHER SERVICE (NCM)', 'NO SEEDING FLIGHTS', 'DURING THE STORM', null, 'Source: NCM via Al Jazeera, 18 Apr 2024'),
-    S('stats', { cutW: 'And', head: 'CLOUD SEEDING CAN ADD', items: [{ v: 15, pre: '~10–', suf: '%', label: 'TO CLOUDS THAT ARE ALREADY THERE', color: Yc, at: 0.4 }], source: 'Source: UAE NCM estimate' }),
+    S('stats', { cutW: 'And', head: 'CLOUD SEEDING CAN ADD', items: [{ v: 15, from: 15, pre: '~10–', suf: '%', label: 'TO CLOUDS THAT ARE ALREADY THERE', color: Yc, at: 0.4 }], source: 'Source: UAE NCM estimate' }),
     V('cm_cira_2024_storm_oman_uae', 'STORM OVER OMAN AND THE UAE, 16 APRIL 2024 (SATELLITE, CIRA)', { cutW: 'It' }),
   ]);
   beats('A054', [
