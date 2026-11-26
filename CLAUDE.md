@@ -17,6 +17,7 @@ Read `HANDOFF.md` first (channel rules, characters, pipeline, QA checklist). Thi
 - Never use hand type `thumb`.
 - English only on screen and in audio. Hashtags in all lowercase.
 - Owner talks Russian; answer her in Russian, simply.
+- NEVER spend paid credits (ElevenLabs, vidIQ, Fish Audio paid, any API that costs money) without asking the owner first: say what it is for and how many credits it will cost, then wait for her explicit "yes".
 - At the end of every task, always give the owner direct GitHub links: the Pull Request, the branch folder, and the final files (MP4, cover, SRT, upload kit).
 
 ## Episode 2 "Gus at the Doctor" — DONE (published material)
