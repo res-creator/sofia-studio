@@ -1,0 +1,18 @@
+{
+ "voyager_craft": {
+  "file": "voyager_craft.jpg",
+  "author": "NASA/JPL",
+  "license": "общественное достояние",
+  "cap": "Зонд «Вояджер» (изображение NASA)",
+  "page": "https://commons.wikimedia.org/wiki/File:Voyager_spacecraft.jpg",
+  "title": "File:Voyager spacecraft.jpg"
+ },
+ "voyager_launch": {
+  "file": "voyager_launch.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Старт «Вояджера-1», 1977 год",
+  "page": "https://commons.wikimedia.org/wiki/File:Titan_3E_with_Voyager_1.jpg",
+  "title": "File:Titan 3E with Voyager 1.jpg"
+ }
+}
