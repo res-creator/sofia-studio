@@ -1,21 +1,194 @@
 {
-"sealand_tower": {"q": ["Roughs Tower", "HM Fort Roughs Sealand"], "cap": "Рафс-Тауэр, он же Силенд (фото XX-XXI века)", "need": "морской форт-платформа в море, общий план"},
-"flag_sea": {"q": ["Flag of Sealand", "Sealand flag"], "cap": "флаг Силенда (изображение)", "need": "флаг на мачте или сам флаг"},
-"world_map": {"q": ["political map of the world", "world map countries"], "cap": "политическая карта мира (современная)", "need": "карта мира с границами стран"},
-"montevideo_conf": {"q": ["Montevideo Convention parties", "Seventh International Conference of American States"], "cap": "страны Конвенции Монтевидео (схема) и архивные материалы конференции", "need": "карта участников или архивный документ"},
-"roy_bates": {"q": ["Roy Bates", "Roy and Joan Bates on Sealand 1978"], "cap": "Рой Бейтс на Силенде (архивное фото, 1978)", "need": "основатель Силенда на платформе"},
-"chelmsford_hall": {"q": ["Chelmsford Shire Hall", "Shire Hall Chelmsford"], "cap": "Шир-холл в Челмсфорде (современное фото; здесь шёл суд 1968 года)", "need": "здание суда"},
-"liberland_siga": {"q": ["Gornja Siga", "Satellite image of Gornja Siga"], "cap": "Горня-Сига на Дунае (спутниковый снимок)", "need": "пойма Дуная, участок Либерленда"},
-"danube_map": {"q": ["Croatia Serbia border", "Croatia-Serbia Border Map"], "cap": "граница Хорватии и Сербии по Дунаю (схема)", "need": "карта спорной границы"},
-"hutt_river": {"q": ["Hutt River Province", "Leonard Casley at Hutt River Province"], "cap": "Хатт-Ривер, Западная Австралия (фото)", "need": "ферма-княжество, Леонард Кейзли"},
-"wheat_field": {"q": ["wheat field", "wheat harvest"], "cap": "пшеничное поле (иллюстративное фото)", "need": "пшеница, уборка"},
-"molossia": {"q": ["Molossia", "Molossia - Government House"], "cap": "Молоссия, Невада (фото)", "need": "участок и строения микронации"},
-"conch_republic": {"q": ["Conch Republic", "Key West Conch Republic"], "cap": "Республика Конч, Ки-Уэст (современное фото)", "need": "флаг, улица Ки-Уэста"},
-"un_hall": {"q": ["United Nations General Assembly Hall", "United Nations General Assembly hall"], "cap": "зал Генеральной Ассамблеи ООН (фото)", "need": "зал заседаний"},
-"south_sudan_vote": {"q": ["South Sudan independence referendum", "Polling station in Juba South Sudan independence referendum"], "cap": "референдум в Южном Судане, январь 2011 (фото)", "need": "избирательный участок, очередь"},
-"south_sudan_flag": {"q": ["South Sudan Independence Day Celebration", "South Sudan Independence"], "cap": "день независимости Южного Судана, 2011 (фото)", "need": "празднование, флаги"},
-"timor_flag": {"q": ["East Timor independence 2002", "East timor independence un2"], "cap": "независимость Восточного Тимора, 2002 (фото)", "need": "церемония, флаг"},
-"eritrea_vote": {"q": ["Eritrea referendum", "Eritrea independence 1993"], "cap": "Эритрея, 1993 (архивное или документальное фото)", "need": "референдум или празднование независимости"},
-"kosovo_2008": {"q": ["Kosovo declaration of independence 2008", "Kosovo Independence Celebration"], "cap": "Косово, февраль 2008 (фото)", "need": "объявление независимости, толпа"},
-"passport_stamp": {"q": ["passport stamp", "entry stamp passport"], "cap": "штамп в паспорте (иллюстративное фото)", "need": "паспорт с пограничным штампом"}
+"sealand_tower": {
+"q": [
+"Roughs Tower",
+"HM Fort Roughs Sealand"
+],
+"cap": "Рафс-Тауэр, он же Силенд (фото XX-XXI века)",
+"need": "морской форт-платформа в море, общий план"
+},
+"flag_sea": {
+"q": [
+"Flag of Sealand",
+"Sealand flag"
+],
+"cap": "флаг Силенда (изображение)",
+"need": "флаг на мачте или сам флаг"
+},
+"world_map": {
+"q": [
+"political map of the world",
+"world map countries"
+],
+"cap": "политическая карта мира (современная)",
+"need": "карта мира с границами стран"
+},
+"montevideo_conf": {
+"q": [
+"Montevideo Convention parties",
+"Seventh International Conference of American States"
+],
+"cap": "страны Конвенции Монтевидео (схема) и архивные материалы конференции",
+"need": "карта участников или архивный документ"
+},
+"roy_bates": {
+"q": [
+"Roy Bates",
+"Roy and Joan Bates on Sealand 1978"
+],
+"cap": "Рой Бейтс на Силенде (архивное фото, 1978)",
+"need": "основатель Силенда на платформе"
+},
+"chelmsford_hall": {
+"q": [
+"Chelmsford Shire Hall",
+"Shire Hall Chelmsford"
+],
+"cap": "Шир-холл в Челмсфорде (современное фото; здесь шёл суд 1968 года)",
+"need": "здание суда"
+},
+"liberland_siga": {
+"q": [
+"Gornja Siga",
+"Satellite image of Gornja Siga"
+],
+"cap": "Горня-Сига на Дунае (спутниковый снимок)",
+"need": "пойма Дуная, участок Либерленда"
+},
+"danube_map": {
+"q": [
+"Croatia Serbia border",
+"Croatia-Serbia Border Map"
+],
+"cap": "граница Хорватии и Сербии по Дунаю (схема)",
+"need": "карта спорной границы"
+},
+"hutt_river": {
+"q": [
+"Hutt River Province",
+"Leonard Casley at Hutt River Province"
+],
+"cap": "Хатт-Ривер, Западная Австралия (фото)",
+"need": "ферма-княжество, Леонард Кейзли"
+},
+"wheat_field": {
+"q": [
+"wheat field",
+"wheat harvest"
+],
+"cap": "пшеничное поле (иллюстративное фото)",
+"need": "пшеница, уборка"
+},
+"molossia": {
+"q": [
+"Molossia",
+"Molossia - Government House"
+],
+"cap": "Молоссия, Невада (фото)",
+"need": "участок и строения микронации"
+},
+"conch_republic": {
+"q": [
+"Conch Republic",
+"Key West Conch Republic"
+],
+"cap": "Республика Конч, Ки-Уэст (современное фото)",
+"need": "флаг, улица Ки-Уэста"
+},
+"un_hall": {
+"q": [
+"United Nations General Assembly Hall",
+"United Nations General Assembly hall"
+],
+"cap": "зал Генеральной Ассамблеи ООН (фото)",
+"need": "зал заседаний"
+},
+"south_sudan_vote": {
+"q": [
+"South Sudan independence referendum",
+"Polling station in Juba South Sudan independence referendum"
+],
+"cap": "референдум в Южном Судане, январь 2011 (фото)",
+"need": "избирательный участок, очередь"
+},
+"south_sudan_flag": {
+"q": [
+"South Sudan Independence Day Celebration",
+"South Sudan Independence"
+],
+"cap": "день независимости Южного Судана, 2011 (фото)",
+"need": "празднование, флаги"
+},
+"timor_flag": {
+"q": [
+"East Timor independence 2002",
+"East timor independence un2"
+],
+"cap": "независимость Восточного Тимора, 2002 (фото)",
+"need": "церемония, флаг"
+},
+"eritrea_vote": {
+"q": [
+"Eritrea referendum",
+"Eritrea independence 1993"
+],
+"cap": "Эритрея, 1993 (архивное или документальное фото)",
+"need": "референдум или празднование независимости"
+},
+"kosovo_2008": {
+"q": [
+"Kosovo declaration of independence 2008",
+"Kosovo Independence Celebration"
+],
+"cap": "Косово, февраль 2008 (фото)",
+"need": "объявление независимости, толпа"
+},
+"passport_stamp": {
+"q": [
+"passport stamp",
+"entry stamp passport"
+],
+"cap": "штамп в паспорте (иллюстративное фото)",
+"need": "паспорт с пограничным штампом"
+},
+"north_sea": {
+"q": [
+"sea waves horizon",
+"North Sea waves"
+],
+"cap": "море (иллюстративное фото)",
+"need": "волны, горизонт, пустое море"
+},
+"maunsell_forts": {
+"q": [
+"Maunsell Forts",
+"Sealand fortress"
+],
+"cap": "морские форты Маунселла времён войны (фото)",
+"need": "форты-платформы на сваях в море"
+},
+"ballot_box": {
+"q": [
+"ballot box",
+"Wooden ballot box"
+],
+"cap": "урна для голосования (иллюстративное фото)",
+"need": "урна, бюллетени"
+},
+"un_flags": {
+"q": [
+"Flags of the United Nations member states",
+"flags United Nations headquarters"
+],
+"cap": "флаги стран у здания ООН (иллюстративное фото)",
+"need": "ряд флагов"
+},
+"border_post": {
+"q": [
+"border post sign",
+"border marker"
+],
+"cap": "пограничный столб (иллюстративное фото)",
+"need": "пограничный знак или столб"
+}
 }
