@@ -81,10 +81,10 @@
  },
  "iceland_ice": {
   "q": [
-   "Iceland drift ice fjord",
-   "Iceland sea ice Westfjords"
+   "sea ice Iceland",
+   "Iceland sea ice fjord"
   ],
-  "cap": "Лёд у берегов Исландии (фото)",
+  "cap": "Морской лёд у берегов Исландии (фото)",
   "need": "лёд у берега Исландии"
  },
  "erik_red": {
@@ -113,16 +113,16 @@
  },
  "silver_coins": {
   "q": [
-   "Spanish silver real coin",
-   "Pieces of eight Spanish dollar"
+   "silver coin Spanish dollar",
+   "Spanish Silver 8 Reales Coin"
   ],
   "cap": "Испанская серебряная монета",
   "need": "серебряные монеты"
  },
  "terra_australis_map": {
   "q": [
-   "Terra Australis Ortelius map",
-   "Terra Australis incognita map"
+   "Terra Australis map",
+   "Terra Australis Ortelius map"
   ],
   "cap": "Карта с «Южной землёй» XVI века",
   "need": "Terra Australis на старой карте"
@@ -137,24 +137,24 @@
  },
  "philippines_map": {
   "q": [
-   "Philippines Ortelius map",
-   "Murillo Velarde map Philippines 1734"
+   "Philippines map 1734",
+   "Philippines Ortelius map"
   ],
   "cap": "Старая карта Филиппин",
   "need": "старая карта Филиппин"
  },
  "philip_ii": {
   "q": [
-   "Philip II of Spain portrait",
-   "Philip II Titian portrait"
+   "Philip II Titian",
+   "Philip II of Spain portrait"
   ],
   "cap": "Филипп II (портрет XVI века)",
   "need": "портрет Филиппа II"
  },
  "japan_map": {
   "q": [
-   "Japan old map Ortelius",
-   "Iaponiae insulae descriptio"
+   "Japan map 1595",
+   "Ortelius map of Japan"
   ],
   "cap": "Старая карта Японии",
   "need": "старая карта Японии"
@@ -169,8 +169,8 @@
  },
  "madagascar_map": {
   "q": [
-   "Madagascar old map Ortelius",
-   "Madagascar Insula map 16th century"
+   "Madagascar map Ortelius",
+   "Madagascar old map"
   ],
   "cap": "Старая карта Мадагаскара",
   "need": "старая карта Мадагаскара"
@@ -185,7 +185,7 @@
  },
  "flora_shaw": {
   "q": [
-   "Flora Shaw portrait",
+   "Flora Shaw",
    "Flora Shaw Lady Lugard"
   ],
   "cap": "Флора Шоу (портрет)",
