@@ -1,5 +1,7 @@
 # Studio — notes for the next session
 
+> **Owner style rules (tone, pacing, text ≤3 s, smooth motion, tasteful type): read `whyhow/STYLE_NOTES.md` first.**
+
 > **How It's Run NEW format (Nov 2026): faceless Why/How/What-if documentaries about places on Earth, 16:9, 12–20 min, Kokoro am_puck voice:** read `whyhow/README.md` first. The money-story Shorts rules below/in CHANNEL.md are the old format.
 
 > **English TikTok channel (money/business stories):** read `CHANNEL.md` first — it has the rules, pipeline, voice and checklist for those episodes.
