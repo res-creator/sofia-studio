@@ -57,13 +57,13 @@ function build(T) {
   beats('A001', [
     V('cm_minami_nagareyama_exits_2022', 'MINAMI-NAGAREYAMA STATION', { over: [low('TUESDAY, 14 NOVEMBER 2017 · 9:44 AM', 'Tuesday')] }),
     V('cm_tsukuba_express_tx3000_otakanomori', 'TSUKUBA EXPRESS TRAIN (TX-3000), 2024', { cutW: 'station' }),
-    I('px_japan_station_train_departs', 'A TRAIN DEPARTS', { cutW: 'A' }),
+    I('px_jr_platform_train_departs_vertical', 'A TRAIN DEPARTS', { cutW: 'A' }),
   ], { start: 0 });
   beats('A002', [S('stats', { head: '', items: [], sfx: 'boom', over: [at(head('20 SECONDS', null, 500, 200, Yc), 0.05), at(head('EARLY', null, 680, 110), 0.3)] })]);
   beats('A003', [
     V('cm_minami_nagareyama_platforms', 'MINAMI-NAGAREYAMA STATION PLATFORMS', { over: [low('NEXT TRAIN: 4 MINUTES LATER', 'four')] }),
     S('stats', { cutW: 'But', head: 'METROPOLITAN INTERCITY RAILWAY, 14 NOV 2017', items: [], over: [at(head('"WE DEEPLY APOLOGIZE', null, 450, 84), 0.2), { ...head('FOR THE SEVERE INCONVENIENCE…"', 'severe', 570, 72, Yc) }], source: 'Source: company statement, via NPR / Japan Today' }),
-    I('px_japan_local_station_train_arrives', 'A TRAIN ARRIVES', { cutW: 'customers' }),
+    V('px_tokyo_suburb_train_line', 'TOKYO SUBURBAN LINE', { cutW: 'customers' }),
   ]);
   beats('A004', [
     V('cm_tsukuba_express_tx3000_interior', 'TSUKUBA EXPRESS CAR INTERIOR'),
@@ -115,7 +115,7 @@ function build(T) {
   ]);
   beats('A013', [
     V('pxp_yamanote_platform_passengers', 'YAMANOTE LINE PLATFORM', { over: [low('~¥1,500 AN HOUR (~$10)', 'fifteen')] }),
-    V('dv_e235_yamanote_doors_tokyo', 'YAMANOTE DOORS (E235)', { cutW: 'One', over: [low('"HARUKA", PUSHER SINCE 2021', 'Haruka')] }),
+    V('pxp_station_staff_yamanote_motion', 'STATION STAFF, YAMANOTE LINE', { cutW: 'One', over: [low('"HARUKA", PUSHER SINCE 2021', 'Haruka')] }),
     V('dv_yamanote_platform_clock_boarding', 'YAMANOTE PLATFORM', { cutW: 'She', over: [low('MOSTLY: TUCKING IN COATS AND BAGS', 'tucking')] }),
   ]);
 
@@ -162,12 +162,13 @@ function build(T) {
   beats('A023', [
     S('globe', GL({ lon: [[0, 139.72], [3, 139.70]], lat: [[0, 35.66], [3, 35.63]], R: [[0, 60000], [3, 90000]], pins: [{ ...G.tokyost, label: 'CENTRAL TOKYO', at: 0.2, small: true, size: 40 }, { ...G.den, label: 'DEN-EN-CHOFU, 1923', at: 1.2 }] })),
     V('cm_denenchofu_old_station_building_2', 'DEN-EN-CHOFU STATION (1920s DESIGN, REBUILT)', { cutW: 'And' }),
+    V('cm_denenchofu_station_2022', 'DEN-EN-CHOFU, 2022', { cutW: 'planned' }),
   ]);
   beats('A024', [
     V('cm_denenchofu_station_2010', 'DEN-EN-CHOFU', { over: [low('ON SALE: AUGUST 1923', 'August')] }),
     A('cm_kanto_earthquake_1923_destruction', 'TOKYO AFTER THE GREAT KANTO EARTHQUAKE, SEPT 1923', { cutW: 'Then', over: [low('1 SEPTEMBER 1923', 'September')] }),
     A('cm_kanto_earthquake_1923_sumida_fires', 'THE BURNED-OUT SUMIDA AREA, 1923', { cutW: 'much' }),
-    V('cm_denenchofu_old_station_building_1', 'DEN-EN-CHOFU: THE SUBURB WAS BARELY DAMAGED', { cutW: 'But' }),
+    V('cm_denenchofu_station_workers_2015', 'DEN-EN-CHOFU, 2015', { cutW: 'But', over: [low('THE SUBURB WAS BARELY DAMAGED', 'barely')] }),
   ]);
   beats('A025', [
     A('cm_goto_keita_portrait', 'GOTO KEITA, FOUNDER OF THE TOKYU GROUP', { over: [low('GOTO KEITA', 'Goto')] }),
@@ -189,31 +190,31 @@ function build(T) {
   beats('A028', [V('px_shinkansen_fuji_river_bridge_snow', 'TOKAIDO SHINKANSEN, FUJI RIVER BRIDGE')]);
   beats('A029', [
     A('cm_0_series_bullet_train_1971', '0-SERIES SHINKANSEN, 1971', { over: [low('1 OCTOBER 1964', 'October')] }),
-    A('cm_0_series_railway_museum', '0-SERIES SHINKANSEN (RAILWAY MUSEUM)', { cutW: 'Its' }),
     Q('That\'s', 'TOP SPEED, 1964', '130 MPH', null, '210 KM/H', 'Source: JR Central / IEEE Milestone'),
   ]);
   beats('A030', [
-    I('pxp_railway_museum_old_trains', 'JAPANESE NATIONAL RAILWAYS TRAINS, MUSEUM', { over: [low('SOGO SHINJI (PRESIDENT) · SHIMA HIDEO (ENGINEER)', 'Sogo')] }),
+    A('cm_0_series_railway_museum', '0-SERIES SHINKANSEN (RAILWAY MUSEUM)', { over: [low('SOGO SHINJI (PRESIDENT) · SHIMA HIDEO (ENGINEER)', 'Sogo')] }),
     S('stats', { cutW: 'resigned', head: 'SOGO AND SHIMA', items: [], over: [at(head('RESIGNED IN 1963', null, 470, 110, Yc), 0.2), { ...chipC('OVER COST OVERRUNS', null, 640, 50), at: 0.8 }], source: 'Sources: NYT obituary 1998; NDL' }),
     A('cm_0_series_last_day', '0-SERIES ON ITS LAST DAY, 2008', { cutW: 'By' }),
   ]);
   beats('A031', [
     V('dv_n700_passing_tokyo_station_tracks', 'N700 SHINKANSEN NEAR TOKYO STATION', { over: [low('383 TRAINS · 460,000 PASSENGERS A DAY', 'three')] }),
-    V('px_n700_hamamatsucho_tracks', 'TOKAIDO SHINKANSEN TRACKS, HAMAMATSUCHO', { cutW: 'And' }),
+    V('pxp_n700_side_platform', 'N700 SHINKANSEN (TOKAIDO)', { cutW: 'And' }),
     Q('average', 'TOKAIDO SHINKANSEN · AVERAGE DELAY, 2024', '1.4 MINUTES', null, 'INCLUDING TYPHOONS AND EARTHQUAKES', 'Source: JR Central Integrated Report 2025'),
   ]);
   beats('A032', [
     V('pxp_e7_tokyo_station', 'E7 SHINKANSEN (JR EAST) AT TOKYO STATION', { over: [low('JR EAST, TOKYO STATION', 'JR')] }),
     S('stats', { cutW: 'cleaning', head: 'A 12-MINUTE STOP', items: [], over: [at(head('~7 MINUTES', null, 500, 170, Yc), 0.2), at(head('TO CLEAN THE WHOLE TRAIN', null, 650, 70), 0.6)], source: 'Source: JR East Tessei' }),
-    V('pxp_tohoku_shinkansen_tokyo_station', 'JR EAST SHINKANSEN AT TOKYO STATION', { cutW: 'entire' }),
+    V('pxp_tohoku_shinkansen_tokyo_station', 'JR EAST SHINKANSEN AT TOKYO STATION', { cutW: 'clean' }),
     V('px_e7_shinkansen_underground_platform', 'E7 SHINKANSEN PLATFORM · ' + IL, { cutW: 'Every' }),
   ]);
   beats('A033', [
     V('pxp_e3_tsubasa_tokyo_station', 'E3 "TSUBASA" SHINKANSEN, TOKYO STATION', { over: [low('"THE SEVEN-MINUTE MIRACLE"', 'miracle')] }),
     S('stats', { cutW: 'In', head: '2005', items: [], over: [at(head('TERUO YABE', null, 470, 130, Yc), 0.2), at(head('40 YEARS IN RAIL SAFETY', null, 610, 64), 0.6)], source: 'Source: Harvard Business School case "Trouble at Tessei"' }),
+    V('pxp_e7_platform_nose', 'E7 SHINKANSEN (JR EAST)', { cutW: 'complaints' }),
   ]);
   beats('A034', [
-    V('pxp_e7_platform_nose', 'E7 SHINKANSEN (JR EAST)', { over: [low('HE TREATED IT LIKE A PERFORMANCE', 'performance')] }),
+    V('px_e7_shinkansen_underground_platform', 'E7 SHINKANSEN PLATFORM', { in: 2, over: [low('HE TREATED IT LIKE A PERFORMANCE', 'performance')] }),
     S('stats', { cutW: 'Harvard', head: 'HARVARD BUSINESS SCHOOL CASE', items: [], over: [at(head('"TROUBLE AT TESSEI"', null, 520, 110, Yc), 0.2)] }),
   ]);
 
@@ -249,7 +250,7 @@ function build(T) {
   ]);
   beats('A041', [
     V('dv_mejiro_ticket_gates_crowd', 'MEJIRO STATION', { over: [low('NO TRASH CANS', 'trash')] }),
-    V('pxp_station_signs_platform', 'STATION PLATFORM SIGNS', { cutW: 'The' }),
+    V('pxp_commuters_silhouette_station_bw', 'COMMUTERS AT A TOKYO STATION', { cutW: 'The' }),
   ]);
 
   // ===== CH6 =====
@@ -276,7 +277,7 @@ function build(T) {
   beats('A047', [
     V('dv_e235_yamanote_arrives_uguisudani', 'YAMANOTE LINE, UGUISUDANI'),
     V('px_odakyu_level_crossing', 'ODAKYU LINE LEVEL CROSSING', { cutW: 'With' }),
-    V('px_shinkansen_fuji_bridge_blue_sky_b', 'SHINKANSEN, FUJI RIVER BRIDGE', { cutW: 'crews' }),
+    V('px_shinkansen_snow_countryside', 'SHINKANSEN IN SNOW', { cutW: 'crews' }),
     V('px_skytree_night_train_passing', 'TOKYO AT NIGHT', { cutW: 'and' }),
   ]);
   beats('A048', [
@@ -285,7 +286,7 @@ function build(T) {
     V('cm_minami_nagareyama_station_south', 'MINAMI-NAGAREYAMA STATION', { cutW: 'That\'s' }),
     V('px_shibuya_crossing_aerial_night', 'SHIBUYA, TOKYO', { cutW: 'In', in: 3, over: [head('EVERY SECOND BELONGS TO EVERYONE', 'every', 200, 64, Yc)] }),
   ]);
-  beats('A050', [V('px_tokyo_station_marunouchi_night', 'TOKYO STATION'), V('px_tokyo_skytree_skyline_evening', 'TOKYO', { cutW: 'Subscribe' })]);
+  beats('A050', [V('px_tokyo_skytree_aerial_sunrise', 'TOKYO'), V('px_tokyo_skytree_skyline_evening', 'TOKYO', { cutW: 'Subscribe' })]);
   add(T.tl.voiceEnd + 0.4, S('endscreen', {}), 'fade');
   return out;
 }

@@ -4,7 +4,7 @@
 
 **Mid-roll ads:** the video is over 8 minutes, so mid-rolls are allowed. Place them on chapter breaks at about 3:57 and 7:39.
 
-**Thumbnails** (1280×720). Test A against B in "Test & compare"; C is a spare.
+**Thumbnails** (1280×720). Test A against C in "Test & compare". B is a spare: it makes a political leader the main subject with an emotional claim, so use it only if you want to.
 - `singapore_cover_A.jpg` (main): real Marina Bay Sands and the Singapore Flyer at dusk. Text: "THIS LAND WAS SEA", with a red "+28%" badge.
 - `singapore_cover_B.jpg`: a 1965 public-domain portrait of Lee Kuan Yew. Text: "HE CRIED. THEN HE BUILT LAND."
 - `singapore_cover_C.jpg`: a real 2024 aerial photo with ships in the strait. Text: "SINGAPORE BUILDS ITS OWN LAND".

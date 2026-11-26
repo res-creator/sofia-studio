@@ -55,9 +55,9 @@ function build(T) {
 
   // ===== COLD OPEN =====
   beats('A001', [
-    A('cm_lee_kuan_yew_1965', 'LEE KUAN YEW, PRIME MINISTER OF SINGAPORE, 1965', { over: [low('MONDAY, 9 AUGUST 1965 · NOON', 'Monday')] }),
+    A('cm_lee_kuan_yew_1969_conference_1', 'LEE KUAN YEW (PHOTO: 1969)', { over: [low('MONDAY, 9 AUGUST 1965 · NOON', 'Monday')] }),
     A('cm_singapore_river_1960s_01', 'THE SINGAPORE RIVER, EARLY 1960s', { cutW: 'In' }),
-    A('cm_lee_kuan_yew_holt_1965', 'LEE KUAN YEW, 1965', { cutW: 'And', kb: { z: [1.1, 1.3] } }),
+    A('cm_lee_kuan_yew_holt_1965', 'LEE KUAN YEW WITH AUSTRALIAN PM HAROLD HOLT, 1965', { cutW: 'And', kb: { z: [1.1, 1.3] } }),
   ], { start: 0 });
   beats('A002', [
     S('stats', { head: 'LEE KUAN YEW, PRESS CONFERENCE, 9 AUG 1965', items: [], over: [at(head('"FOR ME, IT IS', null, 450, 96), 0.1), at(head('A MOMENT OF ANGUISH"', null, 570, 96, Yc), 0.5)], source: 'Source: National Archives of Singapore transcript' }),
@@ -99,7 +99,8 @@ function build(T) {
     V('cm_pasir_panjang_strait_panorama', 'PASIR PANJANG TERMINAL AND THE SINGAPORE STRAIT', { cutW: 'an' }),
   ]);
   beats('A009', [
-    A('cm_kampong_braddell_hill_1964', 'KAMPONG AT BRADDELL HILL, SINGAPORE, c. 1964', { over: [low('KAMPONGS: WOODEN VILLAGES', 'kampongs')] }),
+    A('cm_chinatown_1965_01', 'CHINATOWN, SINGAPORE, 1965'),
+    A('cm_kampong_braddell_hill_1964', 'KAMPONG AT BRADDELL HILL, SINGAPORE, c. 1964', { cutW: 'Many', over: [low('KAMPONGS: WOODEN VILLAGES', 'kampongs')] }),
     A('cm_braddell_road_1963', 'BRADDELL ROAD AREA, 1963', { cutW: 'In' }),
     Q('around', 'BUKIT HO SWEE FIRE · 25 MAY 1961', '~16,000 HOMELESS', null, '2,000+ HOUSES BURNED IN ONE AFTERNOON', 'Source: NLB / Loh Kah Seng, "Squatters into Citizens"'),
   ]);
@@ -108,7 +109,7 @@ function build(T) {
     V('cm_hdb_jurong_west_2025', 'HDB BLOCKS, JURONG WEST, 2025', { cutW: 'Today', over: [low('~3 IN 4 RESIDENTS LIVE IN HDB FLATS', 'three')] }),
   ]);
   beats('A011', [
-    V('px_hdb_window_sunrise_2', 'HDB ESTATE FROM A WINDOW', { over: [low('A 99-YEAR LEASE', 'lease')] }),
+    V('cm_hdb_bidadari_new', 'NEW HDB FLATS, BIDADARI, 2021', { over: [low('A 99-YEAR LEASE', 'lease')] }),
     S('stats', { cutW: 'When', head: 'WHEN THE LEASE RUNS OUT', items: [], over: [at(head('THE FLAT GOES BACK', null, 470, 100), 0.2), at(head('TO THE STATE', null, 590, 100, Yc), 0.5)], source: 'Source: gov.sg (Minister Khaw Boon Wan, 2014)' }),
   ]);
   beats('A012', [
@@ -120,7 +121,7 @@ function build(T) {
   chapter('A013', 2, 'Moving hills into the sea');
   beats('A013', [
     V('cm_east_coast_park_2024', 'EAST COAST PARK: RECLAIMED LAND', { over: [low('FROM 1966: BEDOK AND TAMPINES HILLS → THE SEA', 'Bedok')] }),
-    V('px_excavator_digging_earth', 'DIGGING EARTH · ' + IL, { cutW: 'cut' }),
+    V('px_sand_quarry_aerial', 'DIGGING EARTH · ' + IL, { cutW: 'cut' }),
     V('px_earth_heap_sky', 'EARTH FILL · ' + IL, { cutW: 'dumped' }),
   ]);
   beats('A014', [
@@ -153,7 +154,7 @@ function build(T) {
   ]);
   beats('A020', [
     V('px_scooter_marina_bay_dawn_3', 'MARINA BAY'),
-    V('px_sand_quarry_aerial', 'SAND · ' + IL, { cutW: 'To', over: [head('IT NEEDED SAND', 'sand', 200, 90, Yc)] }),
+    V('cm_aerial_2024_12', 'SINGAPORE FROM THE AIR, 2024', { cutW: 'To', over: [head('IT NEEDED SAND', 'sand', 200, 90, Yc)] }),
   ]);
 
   // ===== CH3 =====
@@ -163,7 +164,7 @@ function build(T) {
     S('stats', { cutW: 'For', head: 'FOR BUILDING AND RECLAMATION', items: [], over: [at(head('RIVER · BEACH · SEABED SAND', null, 520, 90, Yc), 0.2)], source: 'Source: UNEP 2019' }),
   ]);
   beats('A022', [
-    V('px_container_ship_at_sea', 'SHIP AT SEA · ' + IL),
+    V('px_port_aerial_quay', 'SHIP AT A QUAY BESIDE SAND FLATS · ' + IL),
     Q('over', 'SINGAPORE SAND IMPORTS, 20 YEARS', '517 MILLION TONNES', null, '"BY FAR THE LARGEST IMPORTER"', 'Source: UNEP, 7 May 2019'),
     V('px_bulk_ship_port_aerial', 'BULK SHIP · ' + IL, { cutW: 'By' }),
   ]);
@@ -175,19 +176,20 @@ function build(T) {
   beats('A024', [
     V('px_ships_anchored_hazy_sunset', 'SHIPS AT ANCHOR · ' + IL),
     Q('Singapore', 'SINGAPORE vs INDONESIA TRADE DATA', '120 MILLION TONNES', null, 'MORE IMPORTED THAN INDONESIA SAID IT EXPORTED', 'Source: UNEP 2014 via sg101'),
+    V('cm_aerial_2024_09', 'SINGAPORE COAST FROM THE AIR, 2024', { cutW: 'exported' }),
   ]);
   beats('A025', [
     S('stats', { head: 'ONE BY ONE, THE NEIGHBORS SAID STOP', items: [], over: [{ ...head('1997 · MALAYSIA', 'Malaysia', 520, 120, Yc) }], source: 'Source: sg101 (Singapore government)' }),
-    S('stats', { cutW: 'Indonesia', head: 'INDONESIA', items: [], over: [at(head('2003: SEA SAND BANNED', null, 460, 96), 0.1), { ...head('2007: TIGHTENED', 'tightened', 590, 96, Yc) }, { ...chipC('IT SUPPLIED ~90% OF SINGAPORE\'S SAND', 'ninety', 720, 46) }], source: 'Source: sg101 (Singapore government)' }),
-    V('px_tanker_passing', 'SHIP · ' + IL, { cutW: 'when' }),
+    V('px_port_aerial_haze_2', 'PORT · ' + IL, { cutW: 'Indonesia', over: [low('2003: INDONESIA BANS SEA SAND', 'Indonesia')] }),
+    V('px_container_ship_top_aerial', 'SHIP · ' + IL, { cutW: 'tightened', over: [low('2007: TIGHTENED · INDONESIA SUPPLIED ~90%', 'ninety')] }),
   ]);
   beats('A026', [
-    V('px_earth_heap_sky', 'STOCKPILE LOOK · ' + IL, { in: 1, over: [low('2007: PRICES SHOT UP', 'Prices')] }),
+    V('px_port_aerial_coast_1', 'INDUSTRIAL COAST · ' + IL, { over: [low('2007: PRICES SHOT UP', 'Prices')] }),
     Q('hills', 'THE NATIONAL SAND STOCKPILE', 'LOCATION: NOT PUBLISHED', null, 'SIZE: NOT PUBLISHED', 'Sources: MND; HDB annual report'),
   ]);
   beats('A027', [
-    S('stats', { head: 'MORE BANS', items: [], over: [at(head('VIETNAM · CAMBODIA', null, 440, 96), 0.2), { ...head('2019: MALAYSIA STOPS ALL SEA SAND', 'twenty', 570, 76, Yc) }], source: 'Source: SINGAPORE MND / Mongabay / Malay Mail' }),
-    Q('By', 'MALAYSIA\'S SHARE OF SINGAPORE\'S SAND', '97%+', null, null, 'Source: Reuters, 2019'),
+    V('px_tanker_passing', 'TANKER · ' + IL, { over: [low('VIETNAM AND CAMBODIA BAN SAND TOO', 'Vietnam')] }),
+    Q('And', '2019', 'MALAYSIA STOPS', 'ALL SEA SAND EXPORTS', 'IT HAD SUPPLIED 97%+ OF SINGAPORE\'S IMPORTS', 'Source: Reuters, 2019'),
   ]);
   beats('A028', [
     V('px_tanker_passing_2', 'SHIP · ' + IL, { over: [low('2023: INDONESIA LIFTS ITS BAN', 'Indonesia')] }),
@@ -210,7 +212,7 @@ function build(T) {
     V('px_oil_tank_farm_aerial', 'OIL TANKS · ' + IL, { cutW: 'holding', over: [low('1.47 MILLION M³ · 9+ MILLION BARRELS', 'million')] }),
   ]);
   beats('A032', [
-    Q(null, 'OIL MOVED UNDERGROUND', '60 HECTARES FREED', null, '~150 ACRES · ~84 SOCCER FIELDS', 'Source: JTC'),
+    V('cm_jurong_island_2011', 'JURONG ISLAND', { over: [low('60 HECTARES FREED · ~150 ACRES', 'sixty')] }),
     S('stats', { cutW: 'At', head: 'PM LEE HSIEN LOONG, 2014', items: [], over: [at(head('"LAND CONSTRAINT IS A LITTLE', null, 460, 76), 0.1), at(head('BIT LIKE PEAK OIL."', null, 570, 80, Yc), 0.5)], source: 'Source: AFP / SBS' }),
   ]);
   beats('A032B', [
@@ -225,22 +227,21 @@ function build(T) {
     V('px_sluice_gates', 'PUMPED WATER · ' + IL, { cutW: 'The' }),
   ]);
   beats('A035', [
-    Q(null, 'POLDER vs FILLING THE SEA', '~50% LESS SAND', null, 'BUT: PUMPS FOREVER', 'Source: HDB / PUB'),
+    V('px_rock_breakwater_aerial', 'SEA DIKE · ' + IL, { over: [low('~50% LESS SAND · BUT PUMPS FOREVER', 'half')] }),
     S('stats', { cutW: 'The', head: 'JAAP DEKKER, BOSKALIS PROJECT DIRECTOR', items: [], over: [at(head('"YOU NEED PUMPS TO TAKE', null, 460, 76), 0.1), at(head('THE WATER OUT…"', null, 570, 80, Yc), 0.5)], source: 'Source: Boskalis magazine' }),
     V('cm_marina_barrage_pump_house', 'PUMP HOUSE (MARINA BARRAGE) · ' + IL, { cutW: 'so' }),
   ]);
   beats('A036', [
     V('cm_pulau_tekong_bmtc', 'PULAU TEKONG: ARMY TRAINING ISLAND', { over: [low('ANNOUNCED COMPLETE: SEPT 2025 · ~800 HA', 'September')] }),
-    S('stats', { cutW: 'By', head: 'SINGAPORE\'S LAND AREA', items: [{ v: 581.5, dec: 1, suf: ' KM²', label: '1965', at: 0.3 }, { v: 744.3, dec: 1, suf: ' KM²', label: 'END OF 2025', at: 1.0, color: Yc }], source: 'Source: SLA via SingStat' }),
-    Q('Twenty-eight', 'SINCE 1965', '+28%', null, null, 'Our calculation from SLA figures'),
-    V('gov_iss_singapore_johor_2025', 'SINGAPORE FROM THE ISS (NASA, 2025)', { cutW: 'Since', over: [low('≈ A WASHINGTON, D.C. OF NEW LAND', 'Washington')] }),
+    S('stats', { cutW: 'By', head: 'SINGAPORE\'S LAND AREA', items: [{ v: 581.5, from: 581.5, dec: 1, suf: ' KM²', label: '1965', at: 0.3 }, { v: 744.3, from: 744.3, dec: 1, suf: ' KM²', label: 'END OF 2025', at: 1.0, color: Yc }], source: 'Source: SLA via SingStat' }),
+    V('gov_iss_singapore_johor_2025', 'SINGAPORE FROM THE ISS (NASA, 2025)', { cutW: 'Twenty-eight', over: [low('+28% SINCE 1965', 'Twenty-eight'), low('≈ A WASHINGTON, D.C. OF NEW LAND', 'Washington')] }),
   ]);
-
   // ===== CH5 =====
   chapter('A037', 5, 'Every drop counts');
   beats('A037', [V('px_tap_dripping', 'WATER · ' + IL, { over: [head('WATER', 'Water', 200, 120, Yc)] })]);
   beats('A038', [
-    S('globe', GL({ lon: [[0, 103.8], [3, 103.8]], lat: [[0, 1.55], [3, 1.6]], R: [[0, 26000], [3, 30000]], pins: [{ ...G.sg, label: 'SINGAPORE', at: 0.2 }, { lon: 103.95, lat: 1.75, label: 'JOHOR RIVER', at: 0.6 }] })),
+    A('cm_singapore_river_1960s_05', 'SINGAPORE RIVER, EARLY 1960s', { over: [low('1962 WATER AGREEMENT', 'agreement')] }),
+    S('globe', GL({ cutW: 'Johor', lon: [[0, 103.8], [3, 103.8]], lat: [[0, 1.55], [3, 1.6]], R: [[0, 26000], [3, 30000]], pins: [{ ...G.sg, label: 'SINGAPORE', at: 0.2 }, { lon: 103.95, lat: 1.75, label: 'JOHOR RIVER', at: 0.6 }] })),
     Q('The', '1962 WATER AGREEMENT', '~300 MILLION US GAL/DAY', null, 'PRICE: < 1 US CENT PER 1,000 GALLONS', 'Source: MFA Singapore; our conversion'),
   ]);
   beats('A039', [S('stats', { head: 'THE AGREEMENT RUNS OUT IN', items: [], sfx: 'boom', over: [at(head('2061', null, 540, 220, Yc), 0.2)], source: 'Source: MFA Singapore' }), V('cm_lower_peirce_reservoir_sunset', 'LOWER PEIRCE RESERVOIR', { cutW: 'So' })]);
@@ -251,7 +252,7 @@ function build(T) {
     V('cm_marina_reservoir_2024', 'MARINA RESERVOIR: NOW FRESH WATER', { cutW: 'the' }),
   ]);
   beats('A041', [
-    S('stats', { head: 'THE FOUR NATIONAL TAPS', items: [], over: [at(head('2 · JOHOR', null, 460, 110), 0.1), { ...head('3 · NEWATER', 'Tap', 590, 110, Yc) }] }),
+    V('cm_newater_uv_unit', 'NEWATER UV UNIT (MODEL)', { over: [head('2 · JOHOR   3 · NEWATER', null, 200, 80, Yc)] }),
     V('cm_newater_microfiltration', 'MICROFILTRATION, BEDOK NEWATER FACTORY', { cutW: 'sewage', over: [low('USED WATER, CLEANED TO ULTRA-PURE', 'ultra-pure')] }),
     V('cm_newater_bedok_plant', 'BEDOK NEWATER PLANT', { cutW: 'Most' }),
   ]);
@@ -260,11 +261,10 @@ function build(T) {
     Q('sixty', 'NATIONAL DAY PARADE, 2002', '60,000 PEOPLE', null, 'TOASTED WITH RECYCLED WATER', 'Source: PUB / NLB'),
   ]);
   beats('A043', [
-    S('stats', { head: 'THE FOUR NATIONAL TAPS', items: [], over: [at(head('4 · THE SEA', null, 520, 130, Yc), 0.2), { ...chipC('5 DESALINATION PLANTS', 'five', 680, 50) }] }),
-    V('cm_marina_barrage_panorama', 'MARINA BARRAGE', { cutW: 'Today', over: [low('~530 MILLION US GALLONS A DAY', 'five')] }),
+    V('cm_marina_barrage_2008', 'MARINA BARRAGE, 2008', { over: [head('4 · THE SEA', null, 200, 100, Yc), low('5 DESALINATION PLANTS', 'five')] }),
+    V('px_skyline_construction_trains', 'SINGAPORE', { cutW: 'Today', over: [low('~530 MILLION US GALLONS A DAY', 'five')] }),
     Q('By', 'WATER DEMAND BY 2065', '× ~2', null, null, 'Source: PUB / MSE'),
   ]);
-
   // ===== CH6 =====
   chapter('A044', 6, 'The sea comes back');
   beats('A044', [V('px_storm_waves_old_groyne', 'ROUGH SEA · ' + IL, { over: [head('THE SEA IS RISING', 'rising', 200, 90, Yc)] })]);
@@ -279,8 +279,8 @@ function build(T) {
     Q('protecting', 'PM LEE HSIEN LOONG, 2019', 'S$100 BILLION', null, 'COASTAL PROTECTION, 50–100 YEARS', 'Source: National Day Rally 2019'),
   ]);
   beats('A047', [
-    S('globe', GL({ lon: [[0, 103.95], [3, 103.95]], lat: [[0, 1.31], [3, 1.31]], R: [[0, 40000], [3, 56000]], pins: [{ ...G.eastcoast, label: 'LONG ISLAND (PLANNED)', at: 0.5 }, { ...G.marina, label: 'MARINA BAY', at: 1.0, small: true, size: 36 }] })),
-    V('cm_east_coast_parkway_night', 'EAST COAST', { cutW: 'About', over: [low('~800 HA · ~2× MARINA BAY', 'eight')] }),
+    S('globe', GL({ lon: [[0, 103.95], [3, 103.95]], lat: [[0, 1.31], [3, 1.31]], R: [[0, 40000], [3, 56000]], pins: [{ ...G.eastcoast, label: 'LONG ISLAND (PLANNED)', at: 0.5 }] })),
+    V('cm_east_coast_park_zone_h', 'EAST COAST PARK', { cutW: 'About', over: [low('~800 HA · ~2× MARINA BAY', 'eight')] }),
   ]);
   beats('A048', [
     V('px_long_breakwater_aerial', 'BREAKWATER · ' + IL, { over: [low('BUILT HIGH, AS A WALL AGAINST THE SEA', 'wall')] }),
@@ -294,13 +294,13 @@ function build(T) {
   ]);
   beats('A050', [
     V('cm_singapore_river_1960s_03', 'SINGAPORE RIVER, EARLY 1960s'),
-    V('px_dredger_rainbowing_sand', 'DREDGER · ' + IL, { cutW: 'bought', in: 2 }),
-    V('cm_jurong_island_2011', 'JURONG ISLAND', { cutW: 'joined' }),
+    V('px_bulk_ship_port_aerial', 'BULK SHIP · ' + IL, { cutW: 'bought' }),
+    V('cm_jurong_island_from_hill', 'JURONG ISLAND', { cutW: 'joined' }),
     V('cm_newater_control_room', 'NEWATER CONTROL ROOM', { cutW: 'borrowed' }),
   ]);
   beats('A051B', [V('cm_pulau_tekong_bmtc', 'PULAU TEKONG', { kb: { z: [1.25, 1.05] }, over: [head('WOULD YOU LIVE BELOW THE SEA?', null, 180, 72)] })]);
   beats('A051', [
-    A('cm_lee_kuan_yew_1965', 'LEE KUAN YEW, 1965', { kb: { z: [1.25, 1.05] } }),
+    A('cm_lee_kuan_yew_1969_conference_4', 'LEE KUAN YEW (PHOTO: 1969)', { kb: { z: [1.2, 1.05] } }),
     V('px_marina_bay_night_reflections', 'MARINA BAY AT NIGHT', { cutW: 'A' }),
     V('gov_iss_singapore_lightning_2025', 'SINGAPORE AT NIGHT FROM THE ISS (NASA, 2025)', { cutW: 'Not' }),
   ]);

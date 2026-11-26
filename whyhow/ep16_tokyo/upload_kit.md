@@ -4,7 +4,7 @@
 
 **Mid-roll ads:** the video is over 8 minutes, so mid-rolls are allowed. Place them on chapter breaks at about 4:17 and 7:08.
 
-**Thumbnails** (1280×720). Test A against B in "Test & compare"; C is a spare.
+**Thumbnails** (1280×720). Test A against C in "Test & compare"; B is a spare.
 - `tokyo_cover_A.jpg` (main): a real packed Tokyo platform. Text: "20 SECONDS EARLY", with a red stamp "WE DEEPLY APOLOGIZE".
 - `tokyo_cover_B.jpg`: the real Shibuya crossing at night. Text: "40 MILLION · RIDES A DAY. NO CHAOS."
 - `tokyo_cover_C.jpg`: a real Yamanote E235 train. Text: "NOT ALWAYS ON TIME · LATE NOTES 15 DAYS A MONTH".
