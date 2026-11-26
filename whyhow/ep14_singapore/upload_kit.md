@@ -1,17 +1,15 @@
 # EP14 upload kit — How It's Run
 
-**File:** `singapore_made_itself_bigger.mp4` (1920×1080, 30 fps, about 11:15, −14 LUFS). It is not in git, because the GitHub storage quota for large files is full. It is sent as a file.
+**File:** `singapore_made_itself_bigger.mp4` (1920×1080, 30 fps, 13:02, −14 LUFS). It is not in git, because the GitHub storage quota for large files is full. It is sent as a file.
 
-**Mid-roll ads:** the video is over 8 minutes, so mid-rolls are allowed. Place them on chapter breaks at about 3:57 and 7:39.
+**Mid-roll ads:** the video is over 8 minutes, so mid-rolls are allowed. Place them on chapter breaks at about 4:34 and 8:55.
 
-**Thumbnails** (1280×720). Test A against C in "Test & compare". B is a spare: it makes a political leader the main subject with an emotional claim, so use it only if you want to.
-- `singapore_cover_A.jpg` (main): real Marina Bay Sands and the Singapore Flyer at dusk. Text: "THIS LAND WAS SEA", with a red "+28%" badge.
-- `singapore_cover_B.jpg`: a 1965 public-domain portrait of Lee Kuan Yew. Text: "HE CRIED. THEN HE BUILT LAND."
-- `singapore_cover_C.jpg`: a real 2024 aerial photo with ships in the strait. Text: "SINGAPORE BUILDS ITS OWN LAND".
+**Thumbnails** (1280×720). Main: `singapore_cover_final.jpg` (owner's Hong Kong look: white place name, yellow hook, yellow arrow; made by the owner in ChatGPT). For "Test & compare" add:
+- `singapore_cover_I.jpg`: real Gardens by the Bay aerial, same words (our own version)
 
 **Subtitles:** `singapore_subtitles_en.srt` (English).
 
-**Altered or synthetic content:** the narrator voice is synthetic: Fish Audio TTS, "Ethan" voice. No AI images were used.
+**Altered or synthetic content:** the narration is a synthetic voice (Fish Audio TTS, an instant clone of the channel's own designed voice "How its run Narrator"); it does not imitate a real person. The video uses real footage and photos only. The main thumbnail picture was generated with AI from the owner's prompt (thumbnails are not part of the disclosure, but it shows the real place honestly). Answer "Yes" to be safe.
 
 **What is on screen:**
 - Real Singapore footage (Pixabay, Wikimedia Commons).
@@ -36,12 +34,12 @@ Since then, Singapore has grown by 28%. It built new land out of the sea. We fol
 
 Chapters
 0:00 A moment of anguish
-1:20 1. An island with nowhere to go
-2:28 2. Moving hills into the sea
-3:57 3. The sand wars
-5:37 4. Building land without sand
-7:39 5. Every drop counts
-8:56 6. The sea comes back
+1:30 1. An island with nowhere to go
+2:49 2. Moving hills into the sea
+4:34 3. The sand wars
+6:33 4. Building land without sand
+8:55 5. Every drop counts
+10:27 6. The sea comes back
 
 Main sources
 - National Archives of Singapore (9 Aug 1965 press conference transcript)

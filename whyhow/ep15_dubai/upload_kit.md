@@ -1,17 +1,15 @@
 # EP15 upload kit — How It's Run
 
-**File:** `dubai_how_it_stays_alive.mp4` (1920×1080, 30 fps, ~11:00, −14 LUFS). It is not in git, because the GitHub storage quota for large files is full. It is delivered as a file instead.
+**File:** `dubai_how_it_stays_alive.mp4` (1920×1080, 30 fps, 12:57, −14 LUFS). It is not in git, because the GitHub storage quota for large files is full. It is delivered as a file instead.
 
-**Mid-roll ads:** the video is over 8 minutes, so mid-rolls are allowed. Place them on chapter breaks at about 4:52 and 8:27.
+**Mid-roll ads:** the video is over 8 minutes, so mid-rolls are allowed. Place them on chapter breaks at about 5:48 and 8:03.
 
-**Thumbnails** (1280×720). Main: B. Test B against A in YouTube "Test & compare"; C is a spare.
-- `dubai_cover_A.jpg`: the real Burj Khalifa. Text: "ITS WATER COMES FROM THE SEA", with a red "125°F" badge.
-- `dubai_cover_B.jpg` (main): a real photo of the 16 April 2024 flood (CC0, Wikimedia Commons). Text: "THE DESERT FLOODED · 1.5 YEARS OF RAIN IN A DAY".
-- `dubai_cover_C.jpg`: the hazy skyline. Text: "NO RIVERS. ALMOST NO RAIN. 4.6 MILLION PEOPLE".
+**Thumbnails** (1280×720). Main: `dubai_cover_final.jpg` (owner's Hong Kong look: white place name, yellow hook, yellow arrow; made by the owner in ChatGPT). For "Test & compare" add:
+- `dubai_cover_I.jpg`: real NASA space photo of Palm Jumeirah, same words (our own version)
 
 **Subtitles:** `dubai_subtitles_en.srt` (English).
 
-**Altered or synthetic content:** the narrator voice is synthetic: Fish Audio TTS, "Ethan" voice. It does not imitate a real person. No AI images were used. You may answer "No" or "Yes"; "Yes" is the safe choice.
+**Altered or synthetic content:** the narration is a synthetic voice (Fish Audio TTS, an instant clone of the channel's own designed voice "How its run Narrator"); it does not imitate a real person. The video uses real footage and photos only. The main thumbnail picture was generated with AI from the owner's prompt (thumbnails are not part of the disclosure, but it shows the real place honestly). Answer "Yes" to be safe.
 
 **What is on screen:**
 - Real Dubai footage (Pixabay, Flickr CC, Wikimedia Commons CC0).
@@ -40,11 +38,11 @@ So how does a city of 4.6 million people stay alive in one of the hottest, dries
 
 Chapters
 0:00 The day the desert flooded
-1:21 1. A town that lived on pearls
-2:25 2. Water from the sea
-4:52 3. The war on heat
-6:48 4. A city that imports everything
-8:27 5. The day the desert flooded
+1:36 1. A town that lived on pearls
+2:52 2. Water from the sea
+5:48 3. The war on heat
+8:03 4. A city that imports everything
+9:57 5. The day the desert flooded
 
 Main sources
 - UAE National Center of Meteorology (largest rainfall in 75 years); The National (1,244 flights cancelled); NASA Earth Observatory; ESA Copernicus

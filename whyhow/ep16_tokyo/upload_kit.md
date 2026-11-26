@@ -1,17 +1,15 @@
 # EP16 upload kit — How It's Run
 
-**File:** `tokyo_40_million_rides.mp4` (1920×1080, 30 fps, about 10:30, −14 LUFS). It is not in git, because the GitHub storage quota for large files is full. It is sent as a file.
+**File:** `tokyo_40_million_rides.mp4` (1920×1080, 30 fps, 12:07, −14 LUFS). It is not in git, because the GitHub storage quota for large files is full. It is sent as a file.
 
-**Mid-roll ads:** the video is over 8 minutes, so mid-rolls are allowed. Place them on chapter breaks at about 4:17 and 7:08.
+**Mid-roll ads:** the video is over 8 minutes, so mid-rolls are allowed. Place them on chapter breaks at about 5:00 and 8:19.
 
-**Thumbnails** (1280×720). Test A against C in "Test & compare"; B is a spare.
-- `tokyo_cover_A.jpg` (main): a real packed Tokyo platform. Text: "20 SECONDS EARLY", with a red stamp "WE DEEPLY APOLOGIZE".
-- `tokyo_cover_B.jpg`: the real Shibuya crossing at night. Text: "40 MILLION · RIDES A DAY. NO CHAOS."
-- `tokyo_cover_C.jpg`: a real Yamanote E235 train. Text: "NOT ALWAYS ON TIME · LATE NOTES 15 DAYS A MONTH".
+**Thumbnails** (1280×720). Main: `tokyo_cover_final.jpg` (owner's Hong Kong look: white place name, yellow hook, yellow arrow; made by the owner in ChatGPT). For "Test & compare" add:
+- `tokyo_cover_I.jpg`: real Yamanote E235 photo, same words (our own version)
 
 **Subtitles:** `tokyo_subtitles_en.srt` (English).
 
-**Altered or synthetic content:** the narrator voice is synthetic: Fish Audio TTS, "Ethan" voice. No AI images were used.
+**Altered or synthetic content:** the narration is a synthetic voice (Fish Audio TTS, an instant clone of the channel's own designed voice "How its run Narrator"); it does not imitate a real person. The video uses real footage and photos only. The main thumbnail picture was generated with AI from the owner's prompt (thumbnails are not part of the disclosure, but it shows the real place honestly). Answer "Yes" to be safe.
 
 **What is on screen:**
 - Real Tokyo rail footage: Pixabay, and US DoD AFN Tokyo clips via DVIDS (public domain).
@@ -38,12 +36,12 @@ So how does a metro area of almost 37 million people handle around 40 million ra
 
 Chapters
 0:00 Twenty seconds early
-1:24 1. The busiest station on Earth
-2:36 2. What 200% feels like
-4:17 3. The railway that sells houses
-5:39 4. The bullet train
-7:08 5. When the ground shakes
-8:37 6. The next problem
+1:38 1. The busiest station on Earth
+3:01 2. What 200% feels like
+5:00 3. The railway that sells houses
+6:37 4. The bullet train
+8:19 5. When the ground shakes
+10:03 6. The next problem
 
 Main sources
 - MLIT: delay certificates by line (April 2026), congestion surveys (FY2025)
