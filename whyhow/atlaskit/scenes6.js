@@ -71,7 +71,7 @@ function papermap(ctx, t, d, p) {
     // red marker circle drawn on
     const u = ease(clamp(seg(t, pin.at || 0, (pin.at || 0) + 0.7))); ctx.save(); ctx.strokeStyle = '#C8302A'; ctx.lineWidth = 6; ctx.lineCap = 'round'; ctx.beginPath(); ctx.ellipse(x, y, 46, 38, -0.2, 0, 6.6 * u); ctx.stroke(); ctx.restore();
     stamp(ctx, pin.label, x + (pin.dx || 60), y + (pin.dy || -40), a, pin.rot || -0.03); }
-  if (p.title) { const a = eout(clamp(seg(t, p.title.at || 0, (p.title.at || 0) + 0.5))); if (a > 0) typed(ctx, p.title.text, p.title.x || 120, p.title.y || 170, t - (p.title.at || 0), p.title.size || 70); }
+  if (p.title) { const a = eout(clamp(seg(t, p.title.at || 0, (p.title.at || 0) + 0.5))); if (a > 0) typed(ctx, p.title.text, p.title.x || 120, p.title.y || 170, t - (p.title.at || 0), p.title.size || 92); }
   vignette(ctx, 0.35); grain(ctx, t, 0.08);
 }
 function stamp(ctx, s, x, y, a, rot) { ctx.save(); ctx.globalAlpha = a; ctx.translate(x, y); ctx.rotate(rot || 0); const w = K.measure(ctx, s, 34, F.monoB) + 30;
@@ -90,7 +90,7 @@ function cutouts(ctx, t, d, p) {
     ctx.save(); ctx.beginPath(); ctx.rect(-w / 2, -h / 2, w, h); ctx.clip(); const z = lerp(1.05, 1.14, ease(clamp(t / Math.max(d, 0.1)))); cover(ctx, img, z, 0.5, 0.5, [-w / 2, -h / 2, w, h]); ctx.restore();
     if (c.caption) text(ctx, c.caption, -w / 2, h / 2 + 44, { size: 26, font: F.monoB, color: '#2E2A22' });
     ctx.fillStyle = 'rgba(235,222,190,0.75)'; ctx.save(); ctx.rotate(-0.08); ctx.fillRect(-70, -h / 2 - 34, 140, 40); ctx.restore(); ctx.restore(); }
-  if (p.headline) { const a = clamp(seg(t, p.headline.at || 0, (p.headline.at || 0) + 0.1)); if (a > 0) typed(ctx, p.headline.text, p.headline.x || 120, p.headline.y || 1000, t - (p.headline.at || 0), p.headline.size || 64); }
+  if (p.headline) { const a = clamp(seg(t, p.headline.at || 0, (p.headline.at || 0) + 0.1)); if (a > 0) typed(ctx, p.headline.text, p.headline.x || 120, p.headline.y || 1000, t - (p.headline.at || 0), p.headline.size || 104); }
   vignette(ctx, 0.3); grain(ctx, t, 0.08);
 }
 function drawRoute(ctx, P, r, t, o) { const u = ease(clamp(seg(t, r.at || 0, (r.at || 0) + (r.dur || 1.5)))); if (u <= 0) return; const pts = r.pts.map(([lo, la]) => P(lo, la));
