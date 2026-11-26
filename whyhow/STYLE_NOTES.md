@@ -27,6 +27,9 @@ Read before writing or editing any episode.
 - Music: rhythmic in the opening, then light and calm under the story.
 - Render: `SMOOTH=1 HOUSE=1` (see scratchpad rend.sh pattern: 4 chunks, 2 parallel).
 
+## Thumbnails
+- Follow the v4 system in `whyhow/style_research/thumbnail_ctr.md` (`covers_v4.py`): Inter Display Black caps, white setup line + one coral plate, location kicker, clean grade, max 4 words.
+
 ## Typography and colour
 - Tasteful, not loud: one accent colour per video, the rest white or soft grey; no rainbow of bright colours.
 - Text sits on soft blurred or darkened backgrounds, never on busy detail.
