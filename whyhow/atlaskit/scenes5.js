@@ -75,4 +75,4 @@ function mapline(ctx, t, d, p) {
 }
 
 function overlays(ctx, t, d, p) { const S = require('./scenes'); S.overlays(ctx, t, d, p); }
-module.exports = { mgzoom, blurcard, mapline, kin };
+module.exports = { mgzoom, blurcard, mapline, kin, blurBg };

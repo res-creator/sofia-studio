@@ -16,14 +16,16 @@ for (const n of ['stats', 'split', 'bars', 'ratio', 'calendar', 'thermo', 'count
 const RECOL = { '#FFC857': '#E4572E', '#E63946': '#B5462E', '#9CC3FF': '#8FA3B3', '#4D8DFF': '#5B7A8C', '#FF8A3D': '#E4572E' };
 const recolor = o => Array.isArray(o) ? o.map(recolor) : (o && typeof o === 'object') ? Object.fromEntries(Object.entries(o).map(([k, v]) => [k, typeof v === 'string' && RECOL[v] ? RECOL[v] : recolor(v)])) : o;
 if (HOUSE) { K.HOUSE.on = true; K.C.yellow = '#E4572E';
-  const LIGHT = { navy: '#E7DFCD', navy2: '#F3EEE3', navy3: '#FFFFFF', grid: '#D9CFBA', cream: '#1F2329', iceL: '#5B6470', ice: '#E4572E', frost: '#8C949E', snow: '#1F2329' };
+  const S5 = require('./scenes5');
   for (const n of ['stats', 'bars', 'chapter', 'ratio', 'versus', 'ladder', 'yearbar', 'calendar', 'split', 'thermo', 'myth', 'countdown', 'mythq', 'compare', 'endq']) if (SC[n]) { const f = SC[n];
-    SC[n] = (ctx, t, d, p) => { if (p && p.img) return f(ctx, t, d, p); p = recolor(p); const save = {}; for (const k in LIGHT) { save[k] = K.C[k]; K.C[k] = LIGHT[k]; } K.HOUSE.light = true;
-      try { f(ctx, t, d, p); } finally { for (const k in save) K.C[k] = save[k]; K.HOUSE.light = false; } }; }
+    SC[n] = (ctx, t, d, p) => { if (p && p.img) return f(ctx, t, d, p); p = recolor(p); const bg = p._bg && K.IMG[p._bg];
+      if (bg) { S5.blurBg(ctx, bg, t, d, { dark: 0.58, blur: 20 }); K.HOUSE.nobg = true; }
+      const save = { ice: K.C.ice, iceL: K.C.iceL }; K.C.ice = '#E4572E'; K.C.iceL = '#D5DAE0';
+      try { f(ctx, t, d, p); } finally { K.HOUSE.nobg = false; Object.assign(K.C, save); } }; }
   // globe -> flat house map
   const sc = v => Array.isArray(v) ? v.map(([tt, x]) => [tt, x * Math.PI / 180]) : v * Math.PI / 180;
   SC.globe = (ctx, t, d, p) => { const pins = [...(p.pins || []), ...(p.labels || []).map(l => ({ ...l, label: l.text }))].map(q => ({ lon: q.lon, lat: q.lat, label: q.label, at: q.at, size: q.small ? 32 : 38 }));
-    S6.flatmap(ctx, t, d, { lon: p.lon, lat: p.lat, s: sc(p.R), land: '#EDE6D6', water: '#B9CFD8', pins, routes: (p.routes || []).map(r => ({ pts: r.pts, at: r.at, dur: r.dur, color: '#E4572E', label: r.label })) });
+    S6.flatmap(ctx, t, d, { lon: p.lon, lat: p.lat, s: sc(p.R), land: '#2C3540', water: '#141A21', dark: true, pins, routes: (p.routes || []).map(r => ({ pts: r.pts, at: r.at, dur: r.dur, color: '#E4572E', label: r.label })) });
     if (p.over) S.overlays(ctx, t, d, { ...p, over: p.over }); }; }
 const [, , EPD, MODE, ...ARGS] = process.argv; const EP = path.resolve(EPD);
 const TL = JSON.parse(fs.readFileSync(path.join(EP, 'timeline.json'))); const WORDS = JSON.parse(fs.readFileSync(fs.existsSync(path.join(EP, 'words_script.json')) ? path.join(EP, 'words_script.json') : path.join(EP, 'words.json')));
@@ -42,6 +44,14 @@ const T = {
 };
 const ep = require(path.join(EP, 'shots.js'));
 const shots = ep.build(T).sort((a, b) => a.t - b.t);
+if (HOUSE) { const CARDS = new Set(['stats', 'bars', 'chapter', 'ratio', 'versus', 'ladder', 'yearbar', 'calendar', 'split', 'thermo', 'myth', 'countdown', 'mythq', 'compare', 'endq']);
+  const cdir = path.join(EP, '.cardbg'); fs.mkdirSync(cdir, { recursive: true }); const { execFileSync } = require('child_process');
+  const pick = sh => { if (!sh || !sh.p) return null; if (sh.scene === 'photo' && sh.p.img) return sh.p.img;
+    if (sh.scene === 'video' && sh.p.file) { const key = 'cardbg_' + path.basename(sh.p.file, '.mp4'); const out = path.join(cdir, key + '.jpg');
+      if (!fs.existsSync(out)) try { execFileSync('ffmpeg', ['-v', 'error', '-y', '-ss', String((sh.p.in || 0) + 1), '-i', path.join(EP, sh.p.file), '-frames:v', '1', '-vf', 'scale=960:-2', out]); } catch (e) { return null; }
+      if (!fs.existsSync(out)) return null; ep.assets[key] = path.relative(EP, out); return key; } return null; };
+  shots.forEach((s, i) => { if (!CARDS.has(s.scene) || (s.p && s.p.img)) return; let k = null;
+    for (let j = i - 1; j >= 0 && !k; j--) k = pick(shots[j]); for (let j = i + 1; j < shots.length && !k; j++) k = pick(shots[j]); if (k) s.p._bg = k; }); }
 shots.forEach((s, i) => { s.end = i + 1 < shots.length ? shots[i + 1].t : T.end; s.d = s.end - s.t; if (!SC[s.scene]) throw new Error('no scene ' + s.scene); });
 // auto-split long shots of photo/video/diagram into parts with a hard cut and a different framing (punch-in), time continues
 // usage check: each photo/clip at most 2 times, never back to back

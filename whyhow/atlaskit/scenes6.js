@@ -39,12 +39,12 @@ function flatmap(ctx, t, d, p) {
   geo(); const P = projF(kf(p.lon, t), kf(p.lat, t), kf(p.s, t));
   ctx.fillStyle = p.water || '#BCD6E0'; ctx.fillRect(0, 0, W, H);
   polys(ctx, P, LAND); ctx.fillStyle = p.land || '#F3EBDA'; ctx.fill('evenodd');
-  polys(ctx, P, CTRY); ctx.strokeStyle = 'rgba(120,105,80,0.35)'; ctx.lineWidth = 1.5; ctx.stroke();
-  polys(ctx, P, LAND); ctx.strokeStyle = 'rgba(90,120,135,0.55)'; ctx.lineWidth = 2; ctx.stroke();
+  polys(ctx, P, CTRY); ctx.strokeStyle = p.dark ? 'rgba(255,255,255,0.12)' : 'rgba(120,105,80,0.35)'; ctx.lineWidth = 1.5; ctx.stroke();
+  polys(ctx, P, LAND); ctx.strokeStyle = p.dark ? 'rgba(255,255,255,0.35)' : 'rgba(90,120,135,0.55)'; ctx.lineWidth = 2; ctx.stroke();
   for (const r of p.routes || []) drawRoute(ctx, P, r, t, { color: r.color || '#E4572E', w: 7, glow: false, dash: false });
   for (const pin of p.pins || []) { const a = eout(clamp(seg(t, pin.at || 0, (pin.at || 0) + 0.5))); if (a <= 0) continue; const [x, y] = P(pin.lon, pin.lat);
-    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = '#2B2D33'; ctx.beginPath(); ctx.arc(x, y, 9, 0, 7); ctx.fill(); ctx.strokeStyle = '#FFFFFF'; ctx.lineWidth = 3; ctx.stroke();
-    text(ctx, pin.label, x + (pin.dx || 22), y + (pin.dy || 10), { size: pin.size || 40, font: F.bold, color: '#2B2D33', align: pin.align || 'left' }); ctx.restore(); }
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = p.dark ? '#E4572E' : '#2B2D33'; ctx.beginPath(); ctx.arc(x, y, 9, 0, 7); ctx.fill(); ctx.strokeStyle = '#FFFFFF'; ctx.lineWidth = 3; ctx.stroke();
+    text(ctx, pin.label, x + (pin.dx || 22), y + (pin.dy || 10), { size: pin.size || 40, font: F.bold, color: p.dark ? '#FFFFFF' : '#2B2D33', align: pin.align || 'left', shadow: p.dark ? 10 : 0 }); ctx.restore(); }
   if (p.title) wTitle(ctx, t, p.title);
   if (p.source) text(ctx, p.source, W - 40, H - 30, { size: 20, font: F.reg, align: 'right', color: 'rgba(40,40,40,0.55)' });
 }
