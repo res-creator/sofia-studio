@@ -4,9 +4,9 @@
 
 **Mid-roll ads:** the video is over 8 minutes, so mid-rolls are allowed. Place them on chapter breaks at about 4:52 and 8:27.
 
-**Thumbnails** (1280×720). Test A against B in YouTube "Test & compare"; C is a spare.
-- `dubai_cover_A.jpg` (main): the real Burj Khalifa. Text: "ITS WATER COMES FROM THE SEA", with a red "125°F" badge.
-- `dubai_cover_B.jpg`: a real photo of the 16 April 2024 flood (CC0, Wikimedia Commons). Text: "THE DESERT FLOODED · 1.5 YEARS OF RAIN IN A DAY".
+**Thumbnails** (1280×720). Main: B. Test B against A in YouTube "Test & compare"; C is a spare.
+- `dubai_cover_A.jpg`: the real Burj Khalifa. Text: "ITS WATER COMES FROM THE SEA", with a red "125°F" badge.
+- `dubai_cover_B.jpg` (main): a real photo of the 16 April 2024 flood (CC0, Wikimedia Commons). Text: "THE DESERT FLOODED · 1.5 YEARS OF RAIN IN A DAY".
 - `dubai_cover_C.jpg`: the hazy skyline. Text: "NO RIVERS. ALMOST NO RAIN. 4.6 MILLION PEOPLE".
 
 **Subtitles:** `dubai_subtitles_en.srt` (English).
@@ -67,4 +67,4 @@ Paste `SOURCES.md` (the numbered list) and `CREDITS.md`.
 - The 254.8 mm figure was measured at Al Ain (Abu Dhabi emirate), not in Dubai. The film says only "about a year and a half of rain" for Dubai, based on 142 mm in 24 hours.
 - Cloud seeding did not cause the flood (UAE weather service). The film says so.
 - "Almost all" tap water is desalinated, not "100%", because DEWA keeps reserve wells.
-- The airport flood shots are generic (ILLUSTRATIVE). The real flood images are the CC0 street photos and the NASA and ESA satellite images.
+- There is no free footage of the flooded airport. The film shows the real CC0 street photos and the NASA and ESA satellite images instead. The real flood images are the CC0 street photos and the NASA and ESA satellite images.

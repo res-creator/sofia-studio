@@ -64,7 +64,7 @@ function build(T) {
   // ===== COLD OPEN =====
   beats('A001', [
     V('cm_uae_flood_16_april_2024_cars', 'FLOODED ROAD, UAE, 16 APRIL 2024', { over: [low('TUESDAY, 16 APRIL 2024', 'Tuesday')] }),
-    I('pb_airplane_taxiing_199161', 'AIRPORT APRON', { cutW: 'At' }),
+    V('esa_2024_dubai_floods_sentinel2', 'DUBAI, 17 APRIL 2024 (COPERNICUS SENTINEL-2, ESA)', { cutW: 'At', kb: { z: [1.1, 1.35] } }),
     I('pb_heavy_rain_street_209759', 'HEAVY RAIN', { cutW: 'passenger' }),
   ], { start: 0 });
   beats('A002', [
@@ -80,7 +80,7 @@ function build(T) {
   beats('A004', [
     V('cm_dubai_after_heavy_rain_jebel_ali_2024', 'JEBEL ALI, DUBAI, 19 APRIL 2024', { over: [low('AL BARSHA, DUBAI', 'Barsha')] }),
     I('pb_tap_water_180728', 'A DRY TAP', { cutW: 'had' }),
-    I('pb_swimming_pool_78059', 'SWIMMING POOL', { cutW: 'In', over: [low('WATER FROM THE POOL', 'pool')] }),
+    S('stats', { cutW: 'In', head: 'AL BARSHA, 16 APRIL 2024', items: [], over: [at(head('RESIDENTS SCOOPED WATER', null, 470, 90), 0.1), at(head('FROM THE POOL', null, 590, 90, Yc), 0.4)], source: 'Source: Khaleej Times, 19 Apr 2024' }),
   ]);
   beats('A005', [
     V('pb_dubai_night_209890', 'STORM OVER DUBAI'),
@@ -96,7 +96,7 @@ function build(T) {
   beats('A007', [
     S('stats', { head: 'THE OBVIOUS ANSWER', items: [], over: [at(head('OIL MONEY?', null, 470, 120, Yc), 0.2), { ...chipC('OIL TODAY: ~1% OF DUBAI\'S ECONOMY', 'only', 660, 50) }], source: 'Sources: Oxford Business Group; Dubai statistics' }),
     S('stats', { cutW: 'The', head: 'THE SECOND ANSWER', items: [], over: [at(head('UNDERGROUND WATER?', null, 470, 110, Yc), 0.2), { ...chipC('THE OLD WELLS ARE ALMOST GONE', 'gone', 660, 50) }] }),
-    A('cm_dubai_1965_windtowers', 'BASTAKIYA WIND TOWERS, DUBAI, 1965', { cutW: 'And' }),
+    V('pb_dubai_creek_4642470', 'DUBAI CREEK, DEIRA', { cutW: 'And' }),
   ]);
   add(T.e('A007') + 0.15, S('title', { lines: ['HOW DUBAI STAYS', 'ALIVE IN THE DESERT'], hl: 1, img: 'gov_nasa_iss_2021_desert_city', credit: credit('gov_nasa_iss_2021_desert_city'), brand: true, sfx: 'riser' }), 'cut');
 
@@ -108,15 +108,14 @@ function build(T) {
   ]);
   beats('A009', [
     A('cm_graphic_1881_pearl_fishery', 'PEARL FISHING IN THE GULF, "THE GRAPHIC", 1881 · ' + IL, { over: [low('335 PEARLING BOATS IN DUBAI', 'three')] }),
-    A('cm_arab_pearl_divers_persian_gulf_1908', 'GULF PEARL DIVERS, PUBLISHED 1908 · ' + IL, { cutW: 'almost' }),
-    A('cm_jubail_1935_pearl_divers_07', 'PEARL DIVERS, JUBAIL, 1935 · ' + IL, { cutW: 'Divers' }),
-    A('cm_jubail_1935_pearl_divers_01', 'PEARLING DHOW, JUBAIL, 1935 · ' + IL, { cutW: 'from' }),
+    A('cm_jubail_1935_pearl_divers_07', 'PEARL DIVERS, JUBAIL, 1935 · ' + IL, { cutW: 'almost' }),
+    V('pb_dubai_abra_9060098', 'DUBAI CREEK, TRADITIONAL BOATS', { cutW: 'Divers' }),
   ]);
   beats('A011', [
     I('pb_dhow_3216218', 'TRADITIONAL BOAT AT SUNRISE', { over: [low('MOHAMMED BIN ABDULLA AL SUWAIDI', 'Mohammed', 'one of the last pearl divers')] }),
-    I('pb_sea_waves_283533', 'THE SEA', { cutW: 'He', in: 4 }),
-    S('stats', { cutW: 'died', head: 'AL SUWAIDI', items: [], over: [at(head('50+ YEARS AT SEA', null, 470, 100, Yc), 0.2), at(head('DIED 1998, AGED 96', null, 600, 80), 0.6)], source: 'Source: Gulf News' }),
-    I('pb_pearl_oyster_4870120', 'PEARL FARM', { cutW: 'His', over: [low('HIS GRANDSON: PEARL FARMING', 'farms')] }),
+    V('fl_dubai_creek_abras_neekoh', 'DUBAI CREEK', { cutW: 'He' }),
+    S('stats', { cutW: 'died', head: 'AL SUWAIDI', items: [], over: [at(head('50+ YEARS AT SEA', null, 440, 100, Yc), 0.2), at(head('DIED 1998, AGED 96', null, 560, 80), 0.6), ], source: 'Source: Gulf News; The National' }),
+    V('fl_expo2020_pearl_diving_exhibit', 'PEARL DIVING EXHIBIT, EXPO 2020 DUBAI', { cutW: 'His', over: [low('HIS GRANDSON: PEARL FARMING', 'farms')] }),
   ]);
   beats('A012', [
     I('pb_pearl_oyster_4870120', 'CULTURED PEARLS', { kb: { z: [1.3, 1.1] }, over: [low('1920s: JAPANESE CULTURED PEARLS', 'Japan')] }),
@@ -124,15 +123,15 @@ function build(T) {
     S('stats', { cutW: 'Then', head: '', items: [], sfx: 'boom', over: [at(head('1929', null, 520, 200, Yc), 0.2), at(head('THE CRASH', null, 680, 80), 0.5)] }),
   ]);
   beats('A013', [
-    A('cm_graphic_1881_pearl_fishery', 'PEARL FISHING IN THE GULF, 1881 · ' + IL, { kb: { z: [1.35, 1.15], x: [0.3, 0.5] } }),
+    I('pb_dhow_2042790', 'DHOW', { kb: { z: [1.3, 1.1] } }),
     S('stats', { cutW: 'people', head: 'DUBAI PEARL MUSEUM MANAGER', items: [], over: [at(head('"PEOPLE GOT EVEN POORER.', null, 470, 80), 0.2), at(head('IT WAS STARVATION."', null, 580, 80, Yc), 0.8)] }),
   ]);
 
   // ===== CH2 =====
   chapter('A015', 2, 'Water from the sea');
   beats('A015', [
-    A('cm_dubai_1965_windtowers', 'DUBAI, 1965', { kb: { z: [1.25, 1.05] }, over: [low('UNTIL ~1961: NO CLEAN PUBLIC WATER', 'nineteen')] }),
-    I('pb_water_pipe_190323', 'WATER', { cutW: 'People' }),
+    V('pb_dubai_desert_6826299', 'DESERT NEAR DUBAI', { over: [low('UNTIL ~1961: NO CLEAN PUBLIC WATER', 'nineteen')] }),
+    V('pb_dubai_abra_7767575', 'DUBAI CREEK', { cutW: 'People' }),
     S('stats', { cutW: 'diseases', head: 'BEFORE PIPED WATER', items: [], over: [at(head('TYPHOID · CHOLERA', null, 520, 110, Yc), 0.2)] }),
   ]);
   beats('A016', [
@@ -167,10 +166,10 @@ function build(T) {
     V('gov_nasa_iss_2021_uae_coast_industrial', 'INDUSTRY ON THE UAE COAST (NASA ISS, 2021) · ' + IL),
     Q('Guinness', 'JEBEL ALI POWER & DESALINATION', '~590 MILLION', 'GALLONS A DAY', 'GUINNESS: LARGEST SINGLE-SITE DESALINATION PLANT', 'Source: DEWA / Guinness World Records 2022'),
   ]);
-  beats('A023', [S('stats', { head: 'ONE SITE vs ALL OF NEW YORK CITY', items: [{ v: 590, label: 'JEBEL ALI (MILLION GAL/DAY)', color: Yc, at: 0.3 }, { v: 1000, pre: '~', label: 'NYC USES (MILLION GAL/DAY)', at: 0.9 }], source: 'Sources: DEWA; NYC DEP' })]);
+  beats('A023', [S('stats', { head: 'ONE SITE vs ALL OF NEW YORK CITY', items: [{ v: 590, from: 590, label: 'JEBEL ALI (MILLION GAL/DAY)', color: Yc, at: 0.3 }, { v: 1000, from: 1000, pre: '~', label: 'NYC USES (MILLION GAL/DAY)', at: 0.9 }], source: 'Sources: DEWA; NYC DEP' }), V('gov_nasa_iss_2021_airport_creek', 'DUBAI FROM THE SPACE STATION (NASA, 2021)', { cutW: 'From' })]);
   beats('A024', [
     S('stats', { head: 'HOW MOST OF IT IS MADE', items: [], over: [at(head('SEAWATER + HEAT', null, 440, 96), 0.2), { ...head('→ STEAM → FRESH WATER', 'evaporates', 570, 84, Yc) }], source: 'Multi-stage flash: 427 of 495 MIGD (DEWA)' }),
-    I('pb_power_plant_128312', 'GAS POWER PLANT', { cutW: 'evaporates' }),
+    I('pb_power_plant_128312', 'POWER PLANT (EUROPE)', { cutW: 'evaporates' }),
   ]);
   beats('A025', [
     I('pb_air_conditioner_102435', 'POWER PLANT CHIMNEY', { over: [head('POWER + WATER = ONE MACHINE', 'same', 200, 72, Yc)] }),
@@ -215,12 +214,12 @@ function build(T) {
   ]);
   beats('A034', [
     S('stats', { head: 'DUBAI PEAK ELECTRICITY DEMAND', items: [{ v: 10.76, dec: 2, suf: ' GW', label: '2024', at: 0.4 }, { v: 11.39, dec: 2, suf: ' GW', label: '2025', at: 1.0 }, { v: 11.68, dec: 2, suf: ' GW', label: 'SUMMER 2026 (RECORD)', color: C('red'), w: 'record' }], source: 'Source: DEWA' }),
-    Q('That\'s', '11.7 GW', '> 5 HOOVER DAMS', null, null, 'Hoover Dam: 2.08 GW'),
+    V('gov_nasa_iss_2012_dubai_night', 'DUBAI AT NIGHT (NASA ISS, 2012)', { cutW: 'That\'s', over: [low('> 5 HOOVER DAMS', 'Hoover')] }),
   ]);
-  beats('A035', [I('pb_industrial_pipes_8899206', 'PIPES', { over: [head('IT PIPES COLD TO THEM', 'pipes', 200, 80, Yc)] })]);
+  beats('A035', [I('pb_air_conditioning_units_build_7687775', 'AC UNITS ON A BUILDING', { over: [head('IT PIPES COLD TO THEM', 'pipes', 200, 80, Yc)] })]);
   beats('A036', [
     S('stats', { head: 'DISTRICT COOLING', items: [], over: [at(head('CENTRAL PLANT → CHILLED WATER', null, 440, 80), 0.2), { ...head('→ UNDERGROUND PIPES → BUILDINGS', null, 560, 72, Yc), at: 1.2 }], source: 'ILLUSTRATION OF THE PRINCIPLE' }),
-    I('pb_industrial_pipes_1639990', 'PIPES', { cutW: 'through' }),
+    I('pb_industrial_pipes_8899206', 'INSULATED PIPE', { cutW: 'through' }),
     V('pb_dubai_aerial_108522', 'SHEIKH ZAYED ROAD, DUBAI', { cutW: 'The', over: [low('EMPOWER: "WORLD\'S LARGEST DISTRICT COOLING PROVIDER"', 'Empower')] }),
   ]);
   beats('A037', [
@@ -229,7 +228,7 @@ function build(T) {
     V('pb_dubai_skyline_213422', 'BUSINESS BAY AND DOWNTOWN, DUBAI', { cutW: 'Business', over: [low('BUSINESS BAY PLANT: A GUINNESS RECORD', 'Guinness')] }),
   ]);
   beats('A038', [
-    I('pb_power_plant_128312', 'GAS POWER PLANT', { in: 3, over: [low('MOSTLY NATURAL GAS', 'gas')] }),
+    I('pb_pipeline_67364', 'GAS INDUSTRY', { in: 2, over: [low('MOSTLY NATURAL GAS', 'gas')] }),
     I('pb_solar_panels_desert_72837', 'SOLAR PARK IN A DESERT', { cutW: 'South', over: [low('MOHAMMED BIN RASHID SOLAR PARK: 3.9 GW', 'solar')] }),
     I('pb_solar_panels_desert_42388', 'SOLAR PANELS', { cutW: 'nearly' }),
     Q('But', 'DUBAI\'S POWER, 2025', 'CLEAN ENERGY: ~1/6', null, '16% OF ELECTRICITY GENERATED', 'Source: DEWA 2025 results'),
@@ -244,7 +243,7 @@ function build(T) {
   ]);
   beats('A041', [
     V('cm_jebel_ali_port_3_imresolt', 'JEBEL ALI PORT, DUBAI'),
-    I('pb_container_port_141056', 'CONTAINER TERMINAL', { cutW: 'and' }),
+    I('pb_container_port_23544', 'CONTAINER PORT', { cutW: 'and' }),
   ]);
   beats('A042', [
     I('pb_hydroponic_4255400', 'HYDROPONIC GREENS', { over: [low('BUSTANICA: BILLED AS THE WORLD\'S LARGEST VERTICAL FARM', 'Bustanica')] }),
@@ -265,7 +264,7 @@ function build(T) {
   ]);
   beats('A046', [
     V('cm_dubai_1965_airport_first_comet', 'DUBAI AIRPORT, 1965'),
-    S('stats', { cutW: 'In', head: 'DUBAI POPULATION', items: [{ v: 59000, label: '1968 CENSUS', at: 0.3 }, { v: 4.58, dec: 2, suf: ' M', label: 'END OF 2025', at: 1.2, color: Yc }], source: 'Sources: Dubai Statistics Center; Digital Dubai, July 2026' }),
+    S('stats', { cutW: 'In', head: 'DUBAI POPULATION', items: [{ v: 59000, from: 59000, label: '1968 CENSUS', at: 0.3 }, { v: 4.58, dec: 2, suf: ' M', label: 'END OF 2025', at: 1.2, color: Yc }], source: 'Sources: Dubai Statistics Center; Digital Dubai, July 2026' }),
     V('gov_nasa_iss_2025_dubai_coast', 'DUBAI FROM THE SPACE STATION (NASA, 2025)', { cutW: 'By' }),
     V('pb_abra_dubai_264535', 'DUBAI MARINA AT NIGHT', { cutW: 'More', over: [low('MORE THAN THE CITY OF LOS ANGELES', 'Los')] }),
   ]);
@@ -300,8 +299,7 @@ function build(T) {
   ]);
   beats('A053', [
     Q(null, 'UAE WEATHER SERVICE (NCM)', 'NO SEEDING FLIGHTS', 'DURING THE STORM', null, 'Source: NCM via Al Jazeera, 18 Apr 2024'),
-    S('stats', { cutW: 'And', head: 'CLOUD SEEDING CAN ADD', items: [{ v: 15, from: 15, pre: '~10–', suf: '%', label: 'TO CLOUDS THAT ARE ALREADY THERE', color: Yc, at: 0.4 }], source: 'Source: UAE NCM estimate' }),
-    V('cm_cira_2024_storm_oman_uae', 'STORM OVER OMAN AND THE UAE, 16 APRIL 2024 (SATELLITE, CIRA)', { cutW: 'It' }),
+    V('cm_cira_2024_storm_oman_uae', 'STORM OVER OMAN AND THE UAE, 16 APRIL 2024 (SATELLITE, CIRA)', { cutW: 'And', over: [low('SEEDING: ~10–15% MORE, ONLY FROM CLOUDS ALREADY THERE', 'percent')] }),
   ]);
   beats('A054', [
     Q(null, 'WORLD WEATHER ATTRIBUTION', '10–40% HEAVIER', null, 'LOW CONFIDENCE: THE DATA WERE THIN', 'Source: WWA, April 2024'),
@@ -318,10 +316,10 @@ function build(T) {
     Q('by', 'DEWA TARGET', 'BY 2030', null, 'ALL DESALINATED WATER: CLEAN ENERGY + WASTE HEAT', 'Source: DEWA'),
   ]);
   beats('A057', [
-    I('pb_sea_waves_283533', 'THE SEA'),
-    I('pb_industrial_pipes_8899206', 'PIPES', { cutW: 'pipes' }),
+    V('gov_nasa_iss_2025_dubai_islands', 'DUBAI COAST FROM THE SPACE STATION (NASA, 2025)'),
+    V('pb_dubai_aerial_108522', 'SHEIKH ZAYED ROAD, DUBAI', { cutW: 'pipes' }),
     I('pb_container_port_23544', 'CONTAINER PORT', { cutW: 'ships' }),
-    V('pb_dubai_creek_129251', 'DESERT EDGE, DUBAI', { cutW: 'spends' }),
+    V('pb_dubai_desert_6826298', 'DESERT NEAR DUBAI', { cutW: 'spends' }),
   ]);
   beats('A058B', [V('pb_dubai_skyline_46950', 'DUBAI', { over: [head('WOULD YOU LIVE HERE?', null, 180, 80)] })]);
   beats('A058', [
