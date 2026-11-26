@@ -83,3 +83,4 @@ whyhow/ep1[4-9]_*/*.log
 whyhow/ep1[4-9]_*/voice/
 whyhow/ep1[4-9]_*/voice_raw/
 whyhow/voice_tests/*.mp3
+whyhow/voice_tests/*.wav
