@@ -8,17 +8,22 @@ DBF = f'{R}/stock/coverr_db.json'; DB = json.load(open(DBF)) if os.path.exists(D
 old = f'{R}/iceland/rework/coverr_db.json'
 if not DB['v'] and os.path.exists(old): DB = json.load(open(old))
 def curl(url): return subprocess.run(['curl', '-sS', '-L', '--max-time', '60', url], capture_output=True, text=True).stdout
+import time
 def search(q):
-    if q in DB['q']: return DB['q'][q]
-    try: d = json.loads(curl('https://api.coverr.co/videos?' + urllib.parse.urlencode(dict(query=q, page_size=20, urls='true'))))
-    except Exception: return []
-    ids = []
-    for h in d.get('hits', []):
-        if h.get('is_vertical') or h.get('is_ai_generated'): continue
-        u = h.get('urls') or {}; mp4 = u.get('mp4') or u.get('mp4_download')
-        if not mp4: continue
-        DB['v'][h['id']] = dict(id=h['id'], title=h['title'], dur=h.get('duration'), mp4=mp4, tags=h.get('tags', [])[:10]); ids.append(h['id'])
-    DB['q'][q] = ids; json.dump(DB, open(DBF, 'w'), ensure_ascii=False); return ids
+    if q in DB['q'] and DB['q'][q]: return DB['q'][q]
+    for attempt in range(60):
+        raw = curl('https://api.coverr.co/videos?' + urllib.parse.urlencode(dict(query=q, page_size=20, urls='true')))
+        if 'Exceeded query limit' in raw or not raw.strip(): print('лимит Coverr, жду 5 минут', flush=True); time.sleep(300); continue
+        try: d = json.loads(raw)
+        except Exception: time.sleep(30); continue
+        ids = []
+        for h in d.get('hits', []):
+            if h.get('is_vertical') or h.get('is_ai_generated'): continue
+            u = h.get('urls') or {}; mp4 = u.get('mp4') or u.get('mp4_download')
+            if not mp4: continue
+            DB['v'][h['id']] = dict(id=h['id'], title=h['title'], dur=h.get('duration'), mp4=mp4, tags=h.get('tags', [])[:10]); ids.append(h['id'])
+        DB['q'][q] = ids; json.dump(DB, open(DBF, 'w'), ensure_ascii=False); time.sleep(1.5); return ids
+    return []
 # --- разбор сценария
 L = open(f'{J}/SCRIPT.md', encoding='utf8').read().split('## ТАБЛИЦА ФАКТОВ')[0].splitlines()
 paras, icons = [], {}; last = None; cur_ch = None
@@ -40,7 +45,7 @@ used = set(); cards = []; tl = []
 def pick(q):
     for k in search(q):
         v = DB['v'][k]
-        if k in used or (v.get('dur') or 0) < 4.5: continue
+        if k in used or float(v.get('dur') or 0) < 4.5: continue
         used.add(k); p = f'{ST}/{k}.mp4'
         if not os.path.exists(p): subprocess.run(['curl', '-sSL', '--max-time', '180', '-o', p, v['mp4']])
         if os.path.exists(p) and os.path.getsize(p) > 100000: return k, v
@@ -56,7 +61,7 @@ for i, s in enumerate(segs):
     bounds.append((a, b)); vi += 1
 cardjobs = []
 for idx, ((a, b), p) in enumerate(zip(bounds, paras)):
-    cue = p['cue']; qs = cue.get('b', []) or ['city street']; big = cue.get('big'); t = a; dur_total = b - a
+    cue = p['cue']; qs = (cue.get('b', []) or ['city street'])[:2]; big = cue.get('big'); t = a; dur_total = b - a
     if big and dur_total > 6:
         png = f'{J}/card_big_{idx}.png'; cardjobs.append(dict(type='bignum', big=big['n'], label=big.get('l', ''), bg='black', out=png)); add(t, 3.6, type='card', src=png); t += 3.6
     n = max(1, round((b - t) / 4.6)); shot = (b - t) / n
