@@ -1,0 +1,59 @@
+A001 1.000 
+A002 1.000 
+A003 1.000 
+A004 0.950 replace: iquitos -> ikitu's
+A005 1.000 
+A006 1.000 
+A007 1.000 
+A007C 1.000 
+A008 0.885 replace: nineteen oh three iquitos -> 1903 icozos
+A009 0.966 replace: iquitos -> ikitos
+A010 1.000 
+A011 0.961 replace: eighteen ninety -> 1890
+A012 0.946 replace: fitzcarrald -> fitzcar air l d
+A013 0.930 replace: fitzcarraldo -> fits corraldo | replace: iquitos -> ikitas
+A014 1.000 
+A015 0.835 replace: putumayo -> putu mayo | replace: iquitos -> ikitu's | replace: c sar -> cesar | replace: nineteen twelve -> 1912 | replace: hardenburg -> hardenberg
+A016 0.862 replace: eighteen seventy six -> 1876 | replace: seventy thousand -> 70 000
+A017 0.951 replace: nineteen twenties -> 1920s
+A017B 1.000 
+A018 1.000 
+A019 0.896 replace: iquitos -> ikitas | replace: two thousand three hundred -> 2300
+A020 1.000 
+A020B 1.000 
+A021 1.000 
+A022 1.000 
+A023 1.000 
+A024 0.947 replace: six hundred -> 600
+A024B 0.945 replace: nineteen twenties -> 1920s
+A025 0.909 replace: sixty -> 60 | replace: nauta -> naota | replace: nauta -> naota
+A025B 0.967 replace: sixty -> 60
+A026 0.941 replace: iquitos -> ikatas
+A027 1.000 
+A028 0.875 replace: three hundred and sixty -> 360 | replace: twenty fourteen -> 2014
+A029 0.861 replace: twenty twenty three -> 2023 | replace: twenty twenty four -> 2024 | replace: iquitos -> iquitas
+A029B 0.909 replace: iquitos -> iquitas | replace: nine -> 9 | replace: twenty twenty six -> 2026
+A030 0.944 replace: iquitos -> ikito's
+A031 0.920 replace: thirty thousand -> 30 000
+A032 0.967 replace: iquitos -> ikitos
+A032B 0.950 replace: iquitos -> eks
+A033 1.000 
+A034 0.944 replace: twelve -> 12 | replace: forty -> 40
+A035 0.872 replace: bel n -> baelin | replace: call -> called
+A036 1.000 
+A037 1.000 
+A038 0.949 replace: bel n -> beilen
+A038B 0.877 replace: aguaje -> ahe | replace: bagful -> bag full | replace: iquitos -> ikitos
+A039 1.000 
+A039B 0.933 replace: bel n -> balen
+A040 1.000 
+A041 0.928 replace: saramiriza -> saramirisa | replace: two hundred -> 200
+A042 1.000 
+A043 0.964 replace: warn -> warned
+A044 1.000 
+A044B 0.968 replace: estrecho -> estreto
+A045 0.955 replace: iquitos -> ikitas
+A045B 1.000 
+A046 0.909 replace: thirty thousand mototaxis -> 30 000 moto taxis
+A047 0.968 replace: iquitos -> iketos
+A048 1.000 

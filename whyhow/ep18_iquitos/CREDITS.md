@@ -1,0 +1,157 @@
+# EP18 credits — paste into the YouTube description / pinned comment.
+
+Photos (Wikimedia Commons; licence as listed):
+- (CCC No. 11. 1925) - Vista panorámica de una parte de la ciudad de Iquitos y del río Amazonas, tomada de la torre de una iglesia.png — The West Coast Leader, Ltd. — Public domain — https://commons.wikimedia.org/wiki/File%3A%28CCC_No._11._1925%29_-_Vista_panor%C3%A1mica_de_una_parte_de_la_ciudad_de_Iquitos_y_del_r%C3%ADo_Amazonas%2C_tomada_de_la_torre_de_una_iglesia.png
+- (CCC No. 20. 1926) - A traves de Sud-América Bajo la Linea Ecuatorial (4).png — The West Coast Leader, Ltd. — Public domain — https://commons.wikimedia.org/wiki/File%3A%28CCC_No._20._1926%29_-_A_traves_de_Sud-Am%C3%A9rica_Bajo_la_Linea_Ecuatorial_%284%29.png
+- (CCC No. 24. 1926) - En las Selvas del Amazonas. Ritos y Festividades Extrañas. (5).png — The West Coast Leader, Ltd. — Public domain — https://commons.wikimedia.org/wiki/File%3A%28CCC_No._24._1926%29_-_En_las_Selvas_del_Amazonas._Ritos_y_Festividades_Extra%C3%B1as._%285%29.png
+- (CCC No. 37, 1928) - El Nuevo Servicio Aéreo con Iquitos (1).png — The West Coast Leader, Ltd. — Public domain — https://commons.wikimedia.org/wiki/File%3A%28CCC_No._37%2C_1928%29_-_El_Nuevo_Servicio_A%C3%A9reo_con_Iquitos_%281%29.png
+- (CCC No. 37, 1928) - El Nuevo Servicio Aéreo con Iquitos (5).png — The West Coast Leader, Ltd. — Public domain — https://commons.wikimedia.org/wiki/File%3A%28CCC_No._37%2C_1928%29_-_El_Nuevo_Servicio_A%C3%A9reo_con_Iquitos_%285%29.png
+- (CCC No. 43, 1929) - Iquitos. La gran capital de nuestro oriente (1).png — The West Coast Leader, Ltd. — Public domain — https://commons.wikimedia.org/wiki/File%3A%28CCC_No._43%2C_1929%29_-_Iquitos._La_gran_capital_de_nuestro_oriente_%281%29.png
+- (CCC No. 43, 1929) - Iquitos. La gran capital de nuestro oriente (2).png — The West Coast Leader, Ltd. — Public domain — https://commons.wikimedia.org/wiki/File%3A%28CCC_No._43%2C_1929%29_-_Iquitos._La_gran_capital_de_nuestro_oriente_%282%29.png
+- (CCC No. 43, 1929) - Iquitos. La gran capital de nuestro oriente (3).png — The West Coast Leader, Ltd. — Public domain — https://commons.wikimedia.org/wiki/File%3A%28CCC_No._43%2C_1929%29_-_Iquitos._La_gran_capital_de_nuestro_oriente_%283%29.png
+- Barracks of the Loreto regiment in Iquitos, Peru.jpg — Lira y Gil collection. — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3ABarracks_of_the_Loreto_regiment_in_Iquitos%2C_Peru.jpg
+- Calle Próspero Iquitos 1910.jpg — Serafin Otero — Public domain — https://commons.wikimedia.org/wiki/File%3ACalle_Pr%C3%B3spero_Iquitos_1910.jpg
+- El Ferrocarril de Iquitos, Peru.jpg — Unknown photographer — Public domain — https://commons.wikimedia.org/wiki/File%3AEl_Ferrocarril_de_Iquitos%2C_Peru.jpg
+- El ferrocarril en Plaza de Armas de Iquitos, Peru.jpg — Unknown photographer — Public domain — https://commons.wikimedia.org/wiki/File%3AEl_ferrocarril_en_Plaza_de_Armas_de_Iquitos%2C_Peru.jpg
+- Hidroaviones peruanos.jpg — Unknown author Unknown author — Public domain — https://commons.wikimedia.org/wiki/File%3AHidroaviones_peruanos.jpg
+- Iquitos-1900.jpg — Unknown author Unknown author — Public domain — https://commons.wikimedia.org/wiki/File%3AIquitos-1900.jpg
+- Lower end of the pier at Iquitos.jpg — George Miller Dyott — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3ALower_end_of_the_pier_at_Iquitos.jpg
+- N° 269. Yquitos, Prefectura y Cuartel.png — Fernando Garreaud — Public domain — https://commons.wikimedia.org/wiki/File%3AN%C2%B0_269._Yquitos%2C_Prefectura_y_Cuartel.png
+- N° 270. Yquitos. Calle de Belén.png — Fernando Garreaud — Public domain — https://commons.wikimedia.org/wiki/File%3AN%C2%B0_270._Yquitos._Calle_de_Bel%C3%A9n.png
+- N° 271. Yquitos. Puerto.png — Fernando Garreaud — Public domain — https://commons.wikimedia.org/wiki/File%3AN%C2%B0_271._Yquitos._Puerto.png
+- Photograph of a steamship at Iquitos, circa 1900.jpg — Published by the Republic of Peru — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3APhotograph_of_a_steamship_at_Iquitos%2C_circa_1900.jpg
+- Primer ferrocarril de Iquitos.jpg — Unknown author Unknown author — Public domain — https://commons.wikimedia.org/wiki/File%3APrimer_ferrocarril_de_Iquitos.jpg
+- “Balsa houses at Iquitos, Peru.”.jpg — Published by William Curtis Farabee — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3A%E2%80%9CBalsa_houses_at_Iquitos%2C_Peru.%E2%80%9D.jpg
+- “Shipments,” a warehouse in Iquitos between 1920-25.jpg — Álbum Hoffmann — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3A%E2%80%9CShipments%2C%E2%80%9D_a_warehouse_in_Iquitos_between_1920-25.jpg
+- “The Booth Pier, Iquitos.”.jpg — Harris & Ewing Collection — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3A%E2%80%9CThe_Booth_Pier%2C_Iquitos.%E2%80%9D.jpg
+- “Rubber on the landing stage at Iquitos”.jpg — “Peru To-day” — Public domain — https://commons.wikimedia.org/wiki/File%3A%E2%80%9CRubber_on_the_landing_stage_at_Iquitos%E2%80%9D.jpg
+- “Un atracadero en Iquitos”.jpg — Pedro Portillo — CC0 (https://creativecommons.org/publicdomain/zero/1.0/) — https://commons.wikimedia.org/wiki/File%3A%E2%80%9CUn_atracadero_en_Iquitos%E2%80%9D.jpg
+- Processing rubber at Argelia, circa 1912.jpg — Silvino Santos — Public domain — https://commons.wikimedia.org/wiki/File%3AProcessing_rubber_at_Argelia%2C_circa_1912.jpg
+- Loading rubber from ‘La Florida,’ a Peruvian Amazon Company plantation.jpg — Silvino Santos — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3ALoading_rubber_from_%E2%80%98La_Florida%2C%E2%80%99_a_Peruvian_Amazon_Company_plantation.jpg
+- Julio César Arana on the road to Atenas.jpg — Silvino Santos — Public domain — https://commons.wikimedia.org/wiki/File%3AJulio_C%C3%A9sar_Arana_on_the_road_to_Atenas.jpg
+- “Spiral tapping of Hevea Brasiliensis”.jpg — unknown photographer (via Henry C. Pearson) — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3A%E2%80%9CSpiral_tapping_of_Hevea_Brasiliensis%E2%80%9D.jpg
+- Koh Chang, Thailand, Rubber tapping, Latex.jpg — Vyacheslav Argenberg — CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/) — https://commons.wikimedia.org/wiki/File%3AKoh_Chang%2C_Thailand%2C_Rubber_tapping%2C_Latex.jpg
+- Rubber tree tapping.jpg — Vis M — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3ARubber_tree_tapping.jpg
+- Tapped rubber tree.jpg — Irvin calicut — Public domain — https://commons.wikimedia.org/wiki/File%3ATapped_rubber_tree.jpg
+- Latex being collected from a tapped rubber tree.jpg — Mohd Hafiz Noor Shams / __earth — CC BY 2.5 (https://creativecommons.org/licenses/by/2.5/) — https://commons.wikimedia.org/wiki/File%3ALatex_being_collected_from_a_tapped_rubber_tree.jpg
+- Filmmuseum Berlin - Fitzcarraldo Boat Model.jpg — SunOfErat — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AFilmmuseum_Berlin_-_Fitzcarraldo_Boat_Model.jpg
+- Filmmuseum Berlin - Fitzcarraldo Boat Model (2).jpg — SunOfErat — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AFilmmuseum_Berlin_-_Fitzcarraldo_Boat_Model_%282%29.jpg
+- Fizcarraldo - Iquitos, Perú.jpg — Eduardo Cando — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3AFizcarraldo_-_Iquitos%2C_Per%C3%BA.jpg
+- Iquitos-Casa de Hierro (4).jpg — DiverDave — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/) — https://commons.wikimedia.org/wiki/File%3AIquitos-Casa_de_Hierro_%284%29.jpg
+- LA CASA DE FIERRO, IQUITOS PERU.jpg — Julian71444 — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3ALA_CASA_DE_FIERRO%2C_IQUITOS_PERU.jpg
+- CasadeFierro-Plaza-Antiguedad.jpg — Fitzcarraldo — Public domain — https://commons.wikimedia.org/wiki/File%3ACasadeFierro-Plaza-Antiguedad.jpg
+- C010 Sin nombre 1.jpg — EdwinJs — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AC010_Sin_nombre_1.jpg
+- C011 Sin nombre 1.jpg — EdwinJs — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AC011_Sin_nombre_1.jpg
+- C012 Casa de Barcia 1.jpg — EdwinJs — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AC012_Casa_de_Barcia_1.jpg
+- C014 Sin nombre 1.jpg — EdwinJs — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AC014_Sin_nombre_1.jpg
+- C045 Sin nombre 1.jpg — EdwinJs — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AC045_Sin_nombre_1.jpg
+- C019 Sin nombre 2.jpg — EdwinJs — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AC019_Sin_nombre_2.jpg
+- C023 Casa de Strassberger.jpg — EdwinJs — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AC023_Casa_de_Strassberger.jpg
+- C021 Casa de Hernández 2.jpg — EdwinJs — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AC021_Casa_de_Hern%C3%A1ndez_2.jpg
+- C020 Casa de Kahn 1.jpg — EdwinJs — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AC020_Casa_de_Kahn_1.jpg
+- Morb drone.jpg — Andre 1102 — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AMorb_drone.jpg
+- Skyline Iquitos.JPG — Percy Meza — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/) — https://commons.wikimedia.org/wiki/File%3ASkyline_Iquitos.JPG
+- Discoteca en Iquitos.jpg — Percy Meza — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/) — https://commons.wikimedia.org/wiki/File%3ADiscoteca_en_Iquitos.jpg
+- Discotecas en Iquitos.JPG — Percy Meza — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/) — https://commons.wikimedia.org/wiki/File%3ADiscotecas_en_Iquitos.JPG
+- Entrada de la UCP.jpg — Percy Meza — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/) — https://commons.wikimedia.org/wiki/File%3AEntrada_de_la_UCP.jpg
+- Iquitos desde el aire.jpg — Percy Meza — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AIquitos_desde_el_aire.jpg
+- Santa clara drone.jpg — Andre 1102 — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3ASanta_clara_drone.jpg
+- Iquitos-2012-plaza.jpg — Percy Meza — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/) — https://commons.wikimedia.org/wiki/File%3AIquitos-2012-plaza.jpg
+- Vista ciudad desde rio.JPG — Gabymuaa — Public domain — https://commons.wikimedia.org/wiki/File%3AVista_ciudad_desde_rio.JPG
+- Plaza de Armas en Iquitos.jpg — LLs — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3APlaza_de_Armas_en_Iquitos.jpg
+- Catedral de Iquitos, Perú.jpg — ArticleAmazon — CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/) — https://commons.wikimedia.org/wiki/File%3ACatedral_de_Iquitos%2C_Per%C3%BA.jpg
+- Iquitos en la noche.JPG — Percy Meza — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/) — https://commons.wikimedia.org/wiki/File%3AIquitos_en_la_noche.JPG
+- Malecón Tarapacá.jpg — Estados Unidos de América del Sur — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AMalec%C3%B3n_Tarapac%C3%A1.jpg
+- Iquitos city Malecon.jpg — Suedehead — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3AIquitos_city_Malecon.jpg
+- Avenida José Abelardo Quiñones de Iquitos.jpg — LLs — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AAvenida_Jos%C3%A9_Abelardo_Qui%C3%B1ones_de_Iquitos.jpg
+- Avenida La Participación.jpg — LLs — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AAvenida_La_Participaci%C3%B3n.jpg
+- Iquitos traffic (9138526280).jpg — Leland Jackson from Kingston, RI, United States — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/) — https://commons.wikimedia.org/wiki/File%3AIquitos_traffic_%289138526280%29.jpg
+- Motocarro traffic jam.jpg — mark goble — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/) — https://commons.wikimedia.org/wiki/File%3AMotocarro_traffic_jam.jpg
+- Iquitos-nX-10.jpg — PsamatheM — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AIquitos-nX-10.jpg
+- Iquitos-nX-9.jpg — PsamatheM — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AIquitos-nX-9.jpg
+- Motocars, Iquitos, Peru.jpg — kate fisher — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/) — https://commons.wikimedia.org/wiki/File%3AMotocars%2C_Iquitos%2C_Peru.jpg
+- Iquitosmoto.jpg — MaSii — Public domain — https://commons.wikimedia.org/wiki/File%3AIquitosmoto.jpg
+- Motocarro-Iquitos.jpg — Eduardo Cando — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3AMotocarro-Iquitos.jpg
+- Amazonas, Iquitos - Leticia, Kolumbien (11472107875).jpg — M M from Switzerland — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3AAmazonas%2C_Iquitos_-_Leticia%2C_Kolumbien_%2811472107875%29.jpg
+- Puerto en Iquitos 2026.jpg — LLs — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3APuerto_en_Iquitos_2026.jpg
+- Puerto en Iquitos enero 2026.jpg — LLs — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3APuerto_en_Iquitos_enero_2026.jpg
+- EP Geografía Yurimaguas.jpg — Edison 254 — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AEP_Geograf%C3%ADa_Yurimaguas.jpg
+- SIMA IQUITOS.jpg — Svlett — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3ASIMA_IQUITOS.jpg
+- Transatlantic steamships at the port of Iquitos.jpg — Boletín de la Sociedad Geográfica de Lima [1911] — Public domain — https://commons.wikimedia.org/wiki/File%3ATransatlantic_steamships_at_the_port_of_Iquitos.jpg
+- Amazonas, Iquitos - Leticia, Kolumbien (11472506936).jpg — M M from Switzerland — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3AAmazonas%2C_Iquitos_-_Leticia%2C_Kolumbien_%2811472506936%29.jpg
+- Amazonas, Iquitos - Leticia, Kolumbien (11473071826).jpg — M M from Switzerland — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3AAmazonas%2C_Iquitos_-_Leticia%2C_Kolumbien_%2811473071826%29.jpg
+- Santa clara curva.jpg — Andre 1102 — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3ASanta_clara_curva.jpg
+- Carretera Iquitos-Nauta.jpg — Peje suizo — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3ACarretera_Iquitos-Nauta.jpg
+- Ruta LO-103.JPG — Percy Meza — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/) — https://commons.wikimedia.org/wiki/File%3ARuta_LO-103.JPG
+- Carretera en construcción de la Nueva ciudad de Belén.jpg — Bettyreategui — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3ACarretera_en_construcci%C3%B3n_de_la_Nueva_ciudad_de_Bel%C3%A9n.jpg
+- PE-5N I route sign.png — Percy Meza — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3APE-5N_I_route_sign.png
+- Viva Air Peru.jpg — LLs — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AViva_Air_Peru.jpg
+- Aeropuerto Internacional Francisco Secada Vignetta - Aéreo.jpg — Percy Meza — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AAeropuerto_Internacional_Francisco_Secada_Vignetta_-_A%C3%A9reo.jpg
+- Hidroavión de flotadores en Iquitos.jpg — inyucho — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/) — https://commons.wikimedia.org/wiki/File%3AHidroavi%C3%B3n_de_flotadores_en_Iquitos.jpg
+- Electro Oriente.jpg — GabrieldeLoreto — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AElectro_Oriente.jpg
+- Empresa de Electro Oriente.jpg — Estados Unidos de América del Sur — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AEmpresa_de_Electro_Oriente.jpg
+- Amazonas floating village, Iquitos, Photo by Sascha Grabow.jpg — Sascha Grabow www.saschagrabow.com — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/) — https://commons.wikimedia.org/wiki/File%3AAmazonas_floating_village%2C_Iquitos%2C_Photo_by_Sascha_Grabow.jpg
+- Belen, Iquitos (11473601463).jpg — M M from Switzerland — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3ABelen%2C_Iquitos_%2811473601463%29.jpg
+- Belen, Iquitos (11473826413).jpg — M M from Switzerland — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3ABelen%2C_Iquitos_%2811473826413%29.jpg
+- Calle en Belen Bajo.jpg — Percy Meza — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/) — https://commons.wikimedia.org/wiki/File%3ACalle_en_Belen_Bajo.jpg
+- Floating House Iquitos SG.jpg — Sascha Grabow www.saschagrabow.com — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/) — https://commons.wikimedia.org/wiki/File%3AFloating_House_Iquitos_SG.jpg
+- Floating House Iquitos.jpg — Sascha Grabow www.saschagrabow.com — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/) — https://commons.wikimedia.org/wiki/File%3AFloating_House_Iquitos.jpg
+- Floating houses on the Amazon.jpg — Bruno Girin — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3AFloating_houses_on_the_Amazon.jpg
+- Iquitos amazónico.jpg — Brian.Mo — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/) — https://commons.wikimedia.org/wiki/File%3AIquitos_amaz%C3%B3nico.jpg
+- Iquitos, Peru (11470859936).jpg — M M from Switzerland — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3AIquitos%2C_Peru_%2811470859936%29.jpg
+- Iquitos-nX-6.jpg — PsamatheM — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AIquitos-nX-6.jpg
+- Iquitos-nX-7.jpg — PsamatheM — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AIquitos-nX-7.jpg
+- Iquitos-nX-8.jpg — PsamatheM — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AIquitos-nX-8.jpg
+- Life around Belen district - 6745157177.jpg — Suedehead — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3ALife_around_Belen_district_-_6745157177.jpg
+- Shelter flooding Water continues to rise.jpg — Amazon CARES — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/) — https://commons.wikimedia.org/wiki/File%3AShelter_flooding_Water_continues_to_rise.jpg
+- Inundación Iquitos.JPG — Percy Meza — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/) — https://commons.wikimedia.org/wiki/File%3AInundaci%C3%B3n_Iquitos.JPG
+- Selva de Várzea a las afueras de Iquitos, Maynas.jpg — anoldent — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3ASelva_de_V%C3%A1rzea_a_las_afueras_de_Iquitos%2C_Maynas.jpg
+- Belen Iquitos Peru.JPG — Ctrl303~commonswiki — Public domain — https://commons.wikimedia.org/wiki/File%3ABelen_Iquitos_Peru.JPG
+- Belen, Iquitos (11473478223).jpg — M M from Switzerland — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3ABelen%2C_Iquitos_%2811473478223%29.jpg
+- Belen, zona baja - 6745151459.jpg — Suedehead — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3ABelen%2C_zona_baja_-_6745151459.jpg
+- Belen, zona baja - 6745152879.jpg — Suedehead — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3ABelen%2C_zona_baja_-_6745152879.jpg
+- Venice of the Amazon.jpg — Bruno Girin — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3AVenice_of_the_Amazon.jpg
+- Belen Market.jpg — Suedehead — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3ABelen_Market.jpg
+- Belen market, pasaje Paquito - 6745149793.jpg — Suedehead — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3ABelen_market%2C_pasaje_Paquito_-_6745149793.jpg
+- Belen market, pasaje Paquito.jpg — Suedehead — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3ABelen_market%2C_pasaje_Paquito.jpg
+- Paiche en Belen.jpg — Ctrl303~commonswiki — Public domain — https://commons.wikimedia.org/wiki/File%3APaiche_en_Belen.jpg
+- Festival de Belén, Iquitos 06.png — Kelly Pariona Lagos — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AFestival_de_Bel%C3%A9n%2C_Iquitos_06.png
+- Festival de Belén Iquitos 29.png — Curry1983 — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AFestival_de_Bel%C3%A9n_Iquitos_29.png
+- Festival de Belén Iquitos 11.png — Curry1983 — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AFestival_de_Bel%C3%A9n_Iquitos_11.png
+- Bufeo colorado.jpg — LLs — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3ABufeo_colorado.jpg
+- Amazon river dolphin 6.jpg — Jorge Andrade — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/) — https://commons.wikimedia.org/wiki/File%3AAmazon_river_dolphin_6.jpg
+- Amazon river dolphin 3.jpg — Jorge Andrade — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/) — https://commons.wikimedia.org/wiki/File%3AAmazon_river_dolphin_3.jpg
+- Inia geoffrensis geoffrensis 62673186.jpg — Dan Riskin — CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/) — https://commons.wikimedia.org/wiki/File%3AInia_geoffrensis_geoffrensis_62673186.jpg
+- Inia geoffrensis 179341177.jpg — Diogo Luiz — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AInia_geoffrensis_179341177.jpg
+- Aguaje-fruto.jpg — unknown author — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/) — https://commons.wikimedia.org/wiki/File%3AAguaje-fruto.jpg
+- Fruto de aguaje (Mauritia flexuosa).jpg — Kristi Denby/Archivo Centro Takiwasi — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AFruto_de_aguaje_%28Mauritia_flexuosa%29.jpg
+- Iquitos, Peru (11470824354).jpg — M M from Switzerland — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3AIquitos%2C_Peru_%2811470824354%29.jpg
+- CAUZ89AN.jpg — Gelber21~commonswiki — Public domain — https://commons.wikimedia.org/wiki/File%3ACAUZ89AN.jpg
+- Local fruit.jpg — Suedehead — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3ALocal_fruit.jpg
+- More fruit.jpg — Suedehead — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3AMore_fruit.jpg
+- The Amazon meets Rio Nanay.jpg — Leonora Enking — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3AThe_Amazon_meets_Rio_Nanay.jpg
+- Atardecer.JPG — Gabymuaa — Public domain — https://commons.wikimedia.org/wiki/File%3AAtardecer.JPG
+- Amazon 1983 - 50734537801.jpg — John Hayes — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0/) — https://commons.wikimedia.org/wiki/File%3AAmazon_1983_-_50734537801.jpg
+- DeForestation.jpg — LLs — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3ADeForestation.jpg
+
+Stock video (Pixabay Content License, free for commercial use):
+- Drone_Aventura via Pixabay — https://pixabay.com/videos/id-216058/
+- Drone_Aventura via Pixabay — https://pixabay.com/videos/id-216402/
+- Drone_Aventura via Pixabay — https://pixabay.com/videos/id-216060/
+- Drone_Aventura via Pixabay — https://pixabay.com/videos/id-234023/
+- Kililla via Pixabay — https://pixabay.com/videos/id-87525/
+- Roneres via Pixabay — https://pixabay.com/videos/id-145228/
+- elprofe642 via Pixabay — https://pixabay.com/videos/id-92160/
+- ANDREBXXX via Pixabay — https://pixabay.com/videos/id-240595/
+- Drone_Aventura via Pixabay — https://pixabay.com/videos/id-234124/
+- TravelingOnTheGoYoutubeCh via Pixabay — https://pixabay.com/videos/id-135764/
+- MustaKor via Pixabay — https://pixabay.com/videos/id-277603/
+- sohel2639 via Pixabay — https://pixabay.com/videos/id-90029/
+- InOldNews via Pixabay — https://pixabay.com/videos/id-305763/
+- Kililla via Pixabay — https://pixabay.com/videos/id-216722/
+- Drone_Aventura via Pixabay — https://pixabay.com/videos/id-215919/
+- Drone_Aventura via Pixabay — https://pixabay.com/videos/id-215374/
+
+Maps, charts and animation: How It's Run (own work). Map data: Natural Earth (public domain).
+Music: Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 — Life of Riley, Investigations, Daily Beetle, Wallpaper, Carefree, Airport Lounge.
+Voice: synthetic (AI) narration in the channel's own designed voice; script by How It's Run.
