@@ -9,13 +9,13 @@ const src = (ctx, s) => s && text(ctx, s, W - 40, H - 24, { size: 20, font: F.re
 // Temperature ladder: a vertical thermometer, rungs pop in at p.items[i].at; mercury falls to the lowest shown rung.
 // p.items: [{v (°C), label, sub, at, color, dash}], p.title, p.min, p.max
 function ladder(ctx, t, d, p) {
-  navyBg(ctx, t, true); snow(ctx, t, 50, 0.35, 20);
+  navyBg(ctx, t, true); if (!p.nosnow) snow(ctx, t, 50, 0.35, 20);
   text(ctx, p.title || 'HOW COLD IS VOSTOK?', W / 2, 110, { size: 60, font: F.head, align: 'center', color: C.cream, alpha: fade(t, 0.1) });
   const vmax = p.max != null ? p.max : 0, vmin = p.min != null ? p.min : -100, y0 = 210, y1 = 950, X = 420;
   const Y = v => lerp(y0, y1, (vmax - v) / (vmax - vmin));
   // tube
   ctx.save(); ctx.fillStyle = hexA(C.frost, 0.12); rr(ctx, X - 26, y0 - 20, 52, y1 - y0 + 40, 26); ctx.fill(); ctx.strokeStyle = hexA(C.frost, 0.5); ctx.lineWidth = 3; ctx.stroke(); ctx.restore();
-  for (let v = vmax; v >= vmin; v -= 10) { ctx.fillStyle = hexA(C.frost, 0.5); ctx.fillRect(X - 60, Y(v) - 1, 22, 2); text(ctx, v + '°', X - 72, Y(v) + 9, { size: 24, font: F.mono, align: 'right', color: hexA(C.frost, 0.6) }); }
+  for (let v = vmax; v >= vmin; v -= (p.step || 10)) { ctx.fillStyle = hexA(C.frost, 0.5); ctx.fillRect(X - 60, Y(v) - 1, 22, 2); text(ctx, v + (p.unit != null ? p.unit.trim() : '°'), X - 72, Y(v) + 9, { size: 24, font: F.mono, align: 'right', color: hexA(C.frost, 0.6) }); }
   const items = p.items || []; let low = vmax;
   for (const it of items) { const u = clamp(seg(t, it.at || 0, (it.at || 0) + 0.9)); if (u > 0 && !it.dash) low = Math.min(low, lerp(low === vmax ? vmax : low, it.v, 1)); }
   // mercury falls smoothly toward the lowest revealed solid rung
@@ -28,7 +28,7 @@ function ladder(ctx, t, d, p) {
     const col = it.color || (it.v <= -85 ? C.ice : C.cream);
     ctx.save(); ctx.globalAlpha = a; ctx.strokeStyle = col; ctx.lineWidth = 4; if (it.dash) ctx.setLineDash([12, 10]);
     ctx.beginPath(); ctx.moveTo(X + 34, y0r); ctx.lineTo(X + 70, y0r); ctx.lineTo(X + 34 + 90 * s, y); ctx.stroke(); ctx.restore();
-    const big = it.v.toFixed(it.v % 1 ? 1 : 0).replace('-', '−') + '°C';
+    const big = (it.big != null ? it.big : it.v.toFixed(it.v % 1 ? (Math.abs(it.v * 10 % 1) > 0.01 ? 2 : 1) : 0).replace('-', '−') + (p.unit != null ? p.unit : '°C'));
     ctx.save(); ctx.globalAlpha = a; ctx.translate(X + 150, y); ctx.scale(0.9 + 0.1 * s, 0.9 + 0.1 * s);
     const w = text(ctx, big, 0, 30, { size: it.hl ? 110 : 80, font: F.head, color: it.hl ? C.yellow : col });
     text(ctx, it.label, w + 30, 10, { size: it.hl ? 54 : 46, font: F.head, color: C.cream });
