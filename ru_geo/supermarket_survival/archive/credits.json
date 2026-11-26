@@ -110,5 +110,21 @@
   "cap": "бутылки с водой",
   "page": "https://commons.wikimedia.org/wiki/File:19l_bottles_of_water_cheap_bali.jpg",
   "title": "File:19l bottles of water cheap bali.jpg"
+ },
+ "freezer_ice_cream": {
+  "file": "freezer_ice_cream.jpg",
+  "author": "Department of Agriculture. Office of Governmental and Public",
+  "license": "общественное достояние",
+  "cap": "морозильный отдел",
+  "page": "https://commons.wikimedia.org/wiki/File:Shopper_Examines_Label_On_Ice_Cream_In_Freezer_Section_Of_Grocery_Store_-_DPLA_-_774174b4d651b332c9355c45bbb415f5.jpg",
+  "title": "File:Shopper Examines Label On Ice Cream In Freezer Section Of Grocery Store - DPLA - 774174b4d651b332c9355c45bbb415f5.jpg"
+ },
+ "fridge_open": {
+  "file": "fridge_open.jpg",
+  "author": "W.carter",
+  "license": "CC BY-SA 4.0",
+  "cap": "холодильная витрина",
+  "page": "https://commons.wikimedia.org/wiki/File:Open_refrigerator_with_food_at_night.jpg",
+  "title": "File:Open refrigerator with food at night.jpg"
  }
 }
