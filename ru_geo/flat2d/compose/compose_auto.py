@@ -9,9 +9,27 @@ old = f'{R}/iceland/rework/coverr_db.json'
 if not DB['v'] and os.path.exists(old): DB = json.load(open(old))
 def curl(url): return subprocess.run(['curl', '-sS', '-L', '--max-time', '60', url], capture_output=True, text=True).stdout
 import time
+def pixabay(q):
+    key = os.environ.get('PIXABAY_API_KEY', '')
+    if not key: return []
+    for attempt in range(5):
+        raw = curl('https://pixabay.com/api/videos/?' + urllib.parse.urlencode(dict(key=key, q=q[:100], per_page=20, safesearch='true')))
+        try: d = json.loads(raw)
+        except Exception: time.sleep(20); continue
+        ids = []
+        for h in d.get('hits', []):
+            vv = h['videos']; m = vv.get('medium') or vv.get('small')
+            if not m or not m.get('url') or m['width'] < m['height']: continue
+            k = 'px%s' % h['id']
+            DB['v'][k] = dict(id=k, title=h.get('tags', ''), dur=h.get('duration'), mp4=m['url'], tags=h.get('tags', '').split(', ')[:10]); ids.append(k)
+        time.sleep(1.0); return ids
+    return []
 def search(q):
     if q in DB['q'] and DB['q'][q]: return DB['q'][q]
-    for attempt in range(60):
+    ids = pixabay(q)
+    if len(ids) >= 3:
+        DB['q'][q] = ids; json.dump(DB, open(DBF, 'w'), ensure_ascii=False); return ids
+    for attempt in range(1):
         raw = curl('https://api.coverr.co/videos?' + urllib.parse.urlencode(dict(query=q, page_size=20, urls='true')))
         if 'Exceeded query limit' in raw or not raw.strip(): print('лимит Coverr, жду 5 минут', flush=True); time.sleep(300); continue
         try: d = json.loads(raw)
