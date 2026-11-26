@@ -35,5 +35,6 @@
 8. Нет явной «разгадки в конце» про то, какое название самое неожиданное, кроме газеты. Это сделано сознательно.
 9. Мадагаскар выделен целой главой как «самая спорная», но на деле для зрителя это не пик. Можно объединить с «Названо чужим взглядом».
 
-## Тесты запросов к Викисладу
-См. итог в отчёте (скрипт проверял поиск файлов по первому запросу каждого ключа; результаты в конце отчёта).
+## Тесты запросов к Викисладу (API поиска, 26.11.2026; Викисклад часто отвечал 429, проверка неполная)
+Найдены (есть файлы по первому или второму запросу): old_world_map (Ortelius 1570, Waldseemüller), canada_map (очень общий запрос, нужен выбор человеком), marco_polo, cartier_portrait (Jacques Cartier 1851), cartier_voyage_map (Harleian.jpg), brazil_old_map («Brazil 16thc map.jpg»), brazilwood (Paubrasilia echinata), wouri_river, shrimp (Callianassa turnerana.png, рисунок), lake_chad (раньше: «Lake Chad from Apollo 7.jpg»), flinders_chart, erik_red («Eric the Red.png»), venice, niger_river, maracaibo_stilts (всего 7 попаданий, слабо: может понадобиться запасной запрос).
+НЕ проверены (429 или не дошли): iceland_ice (раньше найдено лишь 156 нерелевантных страниц книг, нужен запрос точнее), silver_coins, terra_australis_map, philippines_map, philip_ii, japan_map, sunrise_japan, madagascar_map, flora_shaw. Лицензии файлов не проверялись.
