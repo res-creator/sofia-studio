@@ -4,7 +4,8 @@
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 W, H = 1280, 720
-CORAL = (228, 87, 46); INK = (16, 18, 20); NAVY = np.array([20, 26, 33], float)
+import os, json
+CORAL = tuple(json.loads(os.environ.get('PLATE', '[228,87,46]'))); PTXT = tuple(json.loads(os.environ.get('PTXT', '[255,255,255]'))); INK = (16, 18, 20); NAVY = np.array([20, 26, 33], float)
 FD = '/usr/share/fonts/opentype/inter/'
 BLACK, SEMI = FD + 'InterDisplay-Black.otf', FD + 'InterDisplay-SemiBold.otf'
 
@@ -52,7 +53,7 @@ def compose(src, out, kicker, setup, payoff, x0, top, s1, s2, side='left', arrow
     # hanging coral plate
     pad = 0.20 * s2; ptop = top + cap1 + 0.22 * s1 + 0.1 * s1; pw = width(payoff, f2, t2) + 2 * pad; ph = cap2 + 2 * pad
     df.rounded_rectangle((x0 - pad, ptop, x0 - pad + pw, ptop + ph), 10, fill=CORAL + (255,))
-    track_text(df, x0, ptop + pad - top1(f2), payoff, f2, t2, (255, 255, 255, 255))
+    track_text(df, x0, ptop + pad - top1(f2), payoff, f2, t2, PTXT + (255,))
     if arrow:  # tapered white bezier + open chevron head
         (p0, p1, p2, p3) = [np.array(p, float) for p in arrow]; pts = [((1 - t) ** 3) * p0 + 3 * ((1 - t) ** 2) * t * p1 + 3 * (1 - t) * t * t * p2 + t ** 3 * p3 for t in np.linspace(0, 1, 60)]
         for k in range(len(pts) - 1):
@@ -64,8 +65,10 @@ def compose(src, out, kicker, setup, payoff, x0, top, s1, s2, side='left', arrow
             df.line([tuple(tip), tuple(e)], fill='white', width=16); df.ellipse([*(e - 8), *(e + 8)], fill='white'); df.ellipse([*(tip - 8), *(tip + 8)], fill='white')
     sh = sh.filter(ImageFilter.GaussianBlur(7))
     im = Image.alpha_composite(Image.alpha_composite(im, sh), fg).convert('RGB').filter(ImageFilter.UnsharpMask(1.0, 60, 2))
+    if os.environ.get('OUTDIR'): out = os.path.join(os.environ['OUTDIR'], os.path.basename(out).replace('.jpg', os.environ.get('SUF', '') + '.jpg'))
     im.save(out, quality=92); return out
 
+SUF = os.environ.get('SUF', '')
 outs = [
  compose('ep14_singapore/footage/cm_gardens_by_the_bay_aerial.jpg', 'ep14_singapore/singapore_cover_G.jpg', 'SINGAPORE', 'THIS WAS', 'SEA', 690, 142, 108, 170, side='right', gr=dict(sat=1.08, teal=1), crop_=dict(zoom=1.2, ax=0.12, ay=0.5)),
  compose('ep14_singapore/cover_src_drone4s.jpg', 'ep14_singapore/singapore_cover_H.jpg', 'SINGAPORE', 'THIS WAS', 'SEA', 64, 150, 108, 170, gr=dict(sat=1.08, teal=1)),
