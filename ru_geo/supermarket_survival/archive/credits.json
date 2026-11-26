@@ -214,5 +214,29 @@
   "cap": "туристическая горелка",
   "page": "https://commons.wikimedia.org/wiki/File:IWATANI_PORTABLE_GAS_STOVE.jpg",
   "title": "File:IWATANI PORTABLE GAS STOVE.jpg"
+ },
+ "cashier_dark": {
+  "file": "cashier_dark.jpg",
+  "author": "Harrison Keely",
+  "license": "CC BY 4.0",
+  "cap": "кассы (иллюстративное фото)",
+  "page": "https://commons.wikimedia.org/wiki/File:Aldi_S%C3%BCd_supermarket_checkout_lanes_in_Franklin,_North_Carolina,_US_14.jpg",
+  "title": "File:Aldi Süd supermarket checkout lanes in Franklin, North Carolina, US 14.jpg"
+ },
+ "charcoal_grill": {
+  "file": "charcoal_grill.jpg",
+  "author": "T.Tseng",
+  "license": "CC BY 2.0",
+  "cap": "гриль с углём (иллюстративное фото)",
+  "page": "https://commons.wikimedia.org/wiki/File:Charcoal_grill.jpg",
+  "title": "File:Charcoal grill.jpg"
+ },
+ "citrus": {
+  "file": "citrus.jpg",
+  "author": "Grouffles",
+  "license": "CC BY-SA 4.0",
+  "cap": "цитрусовые (иллюстративное фото)",
+  "page": "https://commons.wikimedia.org/wiki/File:Citrus_fruits_for_sale_in_a_New_Zealand_supermarket.jpg",
+  "title": "File:Citrus fruits for sale in a New Zealand supermarket.jpg"
  }
 }
