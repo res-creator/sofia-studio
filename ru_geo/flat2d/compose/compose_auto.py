@@ -20,6 +20,7 @@ def pixabay(q):
         for h in d.get('hits', []):
             vv = h['videos']; m = vv.get('medium') or vv.get('small')
             if not m or not m.get('url') or m['width'] < m['height']: continue
+            if re.search(r'cartoon|character|mascot|funny|fun\b|3d render|illustration|emoji|animation', h.get('tags', ''), re.I): continue
             k = 'px%s' % h['id']
             DB['v'][k] = dict(id=k, title=h.get('tags', ''), dur=h.get('duration'), mp4=m['url'], tags=h.get('tags', '').split(', ')[:10]); ids.append(k)
         time.sleep(1.0); return ids

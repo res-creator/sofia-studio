@@ -1,0 +1,890 @@
+{
+"segs": [
+{
+"t": 0.0,
+"d": 4.39,
+"type": "clip",
+"src": "stock/px5.mp4",
+"ss": 0.3
+},
+{
+"t": 4.39,
+"d": 4.39,
+"type": "clip",
+"src": "stock/px40041.mp4",
+"ss": 0.3
+},
+{
+"t": 8.78,
+"d": 4.39,
+"type": "clip",
+"src": "stock/px6044.mp4",
+"ss": 0.3
+},
+{
+"t": 13.17,
+"d": 4.39,
+"type": "clip",
+"src": "stock/px40040.mp4",
+"ss": 0.3
+},
+{
+"t": 17.56,
+"d": 4.39,
+"type": "clip",
+"src": "stock/px238134.mp4",
+"ss": 0.3
+},
+{
+"t": 21.95,
+"d": 4.773,
+"type": "clip",
+"src": "stock/px26967.mp4",
+"ss": 0.3
+},
+{
+"t": 26.723,
+"d": 4.773,
+"type": "clip",
+"src": "stock/px1844.mp4",
+"ss": 0.3
+},
+{
+"t": 31.497,
+"d": 4.773,
+"type": "clip",
+"src": "stock/px26968.mp4",
+"ss": 0.3
+},
+{
+"t": 36.27,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_2.png"
+},
+{
+"t": 39.87,
+"d": 4.4,
+"type": "clip",
+"src": "stock/px89818.mp4",
+"ss": 0.3
+},
+{
+"t": 44.27,
+"d": 4.4,
+"type": "clip",
+"src": "stock/px215697.mp4",
+"ss": 0.3
+},
+{
+"t": 48.67,
+"d": 4.4,
+"type": "clip",
+"src": "stock/px91317.mp4",
+"ss": 0.3
+},
+{
+"t": 53.07,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_ch_54.png"
+},
+{
+"t": 55.67,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_3.png"
+},
+{
+"t": 59.27,
+"d": 4.833,
+"type": "clip",
+"src": "stock/px11721.mp4",
+"ss": 0.3
+},
+{
+"t": 64.103,
+"d": 4.833,
+"type": "clip",
+"src": "stock/px338.mp4",
+"ss": 0.3
+},
+{
+"t": 68.937,
+"d": 4.833,
+"type": "clip",
+"src": "stock/px148100.mp4",
+"ss": 0.3
+},
+{
+"t": 73.77,
+"d": 5.103,
+"type": "clip",
+"src": "stock/px188508.mp4",
+"ss": 0.3
+},
+{
+"t": 78.873,
+"d": 5.103,
+"type": "clip",
+"src": "stock/px160398.mp4",
+"ss": 0.3
+},
+{
+"t": 83.977,
+"d": 5.103,
+"type": "clip",
+"src": "stock/px188511.mp4",
+"ss": 0.3
+},
+{
+"t": 89.08,
+"d": 4.128,
+"type": "clip",
+"src": "stock/px135988.mp4",
+"ss": 0.3
+},
+{
+"t": 93.207,
+"d": 4.128,
+"type": "clip",
+"src": "stock/px138111.mp4",
+"ss": 0.3
+},
+{
+"t": 97.335,
+"d": 4.128,
+"type": "clip",
+"src": "stock/px732.mp4",
+"ss": 0.3
+},
+{
+"t": 101.463,
+"d": 4.128,
+"type": "clip",
+"src": "stock/px137085.mp4",
+"ss": 0.3
+},
+{
+"t": 105.59,
+"d": 5.128,
+"type": "clip",
+"src": "stock/px5503.mp4",
+"ss": 0.3
+},
+{
+"t": 110.718,
+"d": 5.128,
+"type": "clip",
+"src": "stock/px3.mp4",
+"ss": 0.3
+},
+{
+"t": 115.845,
+"d": 5.128,
+"type": "clip",
+"src": "stock/px53122.mp4",
+"ss": 0.3
+},
+{
+"t": 120.973,
+"d": 5.128,
+"type": "clip",
+"src": "stock/px236.mp4",
+"ss": 0.3
+},
+{
+"t": 126.1,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_ch_127.png"
+},
+{
+"t": 128.7,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_7.png"
+},
+{
+"t": 132.3,
+"d": 5.435,
+"type": "clip",
+"src": "stock/px10814.mp4",
+"ss": 0.3
+},
+{
+"t": 137.735,
+"d": 5.435,
+"type": "clip",
+"src": "stock/px60716.mp4",
+"ss": 0.3
+},
+{
+"t": 143.17,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_8.png"
+},
+{
+"t": 146.77,
+"d": 5.475,
+"type": "clip",
+"src": "stock/px8947.mp4",
+"ss": 0.3
+},
+{
+"t": 152.245,
+"d": 5.475,
+"type": "clip",
+"src": "stock/px343478.mp4",
+"ss": 0.3
+},
+{
+"t": 157.72,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_9.png"
+},
+{
+"t": 161.32,
+"d": 5.21,
+"type": "clip",
+"src": "stock/px19641.mp4",
+"ss": 0.3
+},
+{
+"t": 166.53,
+"d": 5.21,
+"type": "clip",
+"src": "stock/px1992.mp4",
+"ss": 0.3
+},
+{
+"t": 171.74,
+"d": 5.21,
+"type": "clip",
+"src": "stock/px15299.mp4",
+"ss": 0.3
+},
+{
+"t": 176.95,
+"d": 4.115,
+"type": "clip",
+"src": "stock/px36471.mp4",
+"ss": 0.3
+},
+{
+"t": 181.065,
+"d": 4.115,
+"type": "clip",
+"src": "stock/px197923.mp4",
+"ss": 0.3
+},
+{
+"t": 185.18,
+"d": 4.115,
+"type": "clip",
+"src": "stock/px6045.mp4",
+"ss": 0.3
+},
+{
+"t": 189.295,
+"d": 4.115,
+"type": "clip",
+"src": "stock/px270857.mp4",
+"ss": 0.3
+},
+{
+"t": 193.41,
+"d": 5.2,
+"type": "clip",
+"src": "stock/px346243.mp4",
+"ss": 0.3
+},
+{
+"t": 198.61,
+"d": 5.2,
+"type": "clip",
+"src": "stock/px22555.mp4",
+"ss": 0.3
+},
+{
+"t": 203.81,
+"d": 5.2,
+"type": "clip",
+"src": "stock/px346244.mp4",
+"ss": 0.3
+},
+{
+"t": 209.01,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_ch_210.png"
+},
+{
+"t": 211.61,
+"d": 4.027,
+"type": "clip",
+"src": "stock/px10339.mp4",
+"ss": 0.3
+},
+{
+"t": 215.638,
+"d": 4.027,
+"type": "clip",
+"src": "stock/px133518.mp4",
+"ss": 0.3
+},
+{
+"t": 219.665,
+"d": 4.027,
+"type": "clip",
+"src": "stock/px31569.mp4",
+"ss": 0.3
+},
+{
+"t": 223.692,
+"d": 4.027,
+"type": "clip",
+"src": "stock/px93839.mp4",
+"ss": 0.3
+},
+{
+"t": 227.72,
+"d": 5.323,
+"type": "clip",
+"src": "stock/px2118.mp4",
+"ss": 0.3
+},
+{
+"t": 233.043,
+"d": 5.323,
+"type": "clip",
+"src": "stock/px44350.mp4",
+"ss": 0.3
+},
+{
+"t": 238.367,
+"d": 5.323,
+"type": "clip",
+"src": "stock/px169951.mp4",
+"ss": 0.3
+},
+{
+"t": 243.69,
+"d": 4.807,
+"type": "clip",
+"src": "stock/px161333.mp4",
+"ss": 0.3
+},
+{
+"t": 248.497,
+"d": 4.807,
+"type": "clip",
+"src": "stock/px306120.mp4",
+"ss": 0.3
+},
+{
+"t": 253.303,
+"d": 4.807,
+"type": "clip",
+"src": "stock/px184344.mp4",
+"ss": 0.3
+},
+{
+"t": 258.11,
+"d": 4.32,
+"type": "clip",
+"src": "stock/px23882.mp4",
+"ss": 0.3
+},
+{
+"t": 262.43,
+"d": 4.32,
+"type": "clip",
+"src": "stock/px209690.mp4",
+"ss": 0.3
+},
+{
+"t": 266.75,
+"d": 4.32,
+"type": "clip",
+"src": "stock/px10858.mp4",
+"ss": 0.3
+},
+{
+"t": 271.07,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_ch_272.png"
+},
+{
+"t": 273.67,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_16.png"
+},
+{
+"t": 277.27,
+"d": 4.82,
+"type": "clip",
+"src": "stock/px192937.mp4",
+"ss": 0.3
+},
+{
+"t": 282.09,
+"d": 4.82,
+"type": "clip",
+"src": "stock/px223165.mp4",
+"ss": 0.3
+},
+{
+"t": 286.91,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_17.png"
+},
+{
+"t": 290.51,
+"d": 3.877,
+"type": "clip",
+"src": "stock/px131925.mp4",
+"ss": 0.3
+},
+{
+"t": 294.387,
+"d": 3.877,
+"type": "clip",
+"src": "stock/px27770.mp4",
+"ss": 0.3
+},
+{
+"t": 298.263,
+"d": 3.877,
+"type": "clip",
+"src": "stock/px123310.mp4",
+"ss": 0.3
+},
+{
+"t": 302.14,
+"d": 4.09,
+"type": "clip",
+"src": "stock/px157881.mp4",
+"ss": 0.3
+},
+{
+"t": 306.23,
+"d": 4.09,
+"type": "clip",
+"src": "stock/px1209.mp4",
+"ss": 0.3
+},
+{
+"t": 310.32,
+"d": 4.09,
+"type": "clip",
+"src": "stock/px115081.mp4",
+"ss": 0.3
+},
+{
+"t": 314.41,
+"d": 4.09,
+"type": "clip",
+"src": "stock/px203923.mp4",
+"ss": 0.3
+},
+{
+"t": 318.5,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_19.png"
+},
+{
+"t": 322.1,
+"d": 5.233,
+"type": "clip",
+"src": "stock/px7093.mp4",
+"ss": 0.3
+},
+{
+"t": 327.333,
+"d": 5.233,
+"type": "clip",
+"src": "stock/px9135.mp4",
+"ss": 0.3
+},
+{
+"t": 332.567,
+"d": 5.233,
+"type": "clip",
+"src": "stock/px205561.mp4",
+"ss": 0.3
+},
+{
+"t": 337.8,
+"d": 4.514,
+"type": "clip",
+"src": "stock/px116173.mp4",
+"ss": 0.3
+},
+{
+"t": 342.314,
+"d": 4.514,
+"type": "clip",
+"src": "stock/px14.mp4",
+"ss": 0.3
+},
+{
+"t": 346.828,
+"d": 4.514,
+"type": "clip",
+"src": "stock/px13100.mp4",
+"ss": 0.3
+},
+{
+"t": 351.342,
+"d": 4.514,
+"type": "clip",
+"src": "stock/px4.mp4",
+"ss": 0.3
+},
+{
+"t": 355.856,
+"d": 4.514,
+"type": "clip",
+"src": "stock/px182517.mp4",
+"ss": 0.3
+},
+{
+"t": 360.37,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_ch_361.png"
+},
+{
+"t": 362.97,
+"d": 5.077,
+"type": "clip",
+"src": "stock/px152204.mp4",
+"ss": 0.3
+},
+{
+"t": 368.047,
+"d": 5.077,
+"type": "clip",
+"src": "stock/px12910.mp4",
+"ss": 0.3
+},
+{
+"t": 373.123,
+"d": 5.077,
+"type": "clip",
+"src": "stock/px31420.mp4",
+"ss": 0.3
+},
+{
+"t": 378.2,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_22.png"
+},
+{
+"t": 381.8,
+"d": 5.333,
+"type": "clip",
+"src": "stock/px32158.mp4",
+"ss": 0.3
+},
+{
+"t": 387.133,
+"d": 5.333,
+"type": "clip",
+"src": "stock/px535.mp4",
+"ss": 0.3
+},
+{
+"t": 392.467,
+"d": 5.333,
+"type": "clip",
+"src": "stock/px39036.mp4",
+"ss": 0.3
+},
+{
+"t": 397.8,
+"d": 4.415,
+"type": "clip",
+"src": "stock/px365651.mp4",
+"ss": 0.3
+},
+{
+"t": 402.215,
+"d": 4.415,
+"type": "clip",
+"src": "stock/px250440.mp4",
+"ss": 0.3
+},
+{
+"t": 406.63,
+"d": 4.415,
+"type": "clip",
+"src": "stock/px75879.mp4",
+"ss": 0.3
+},
+{
+"t": 411.045,
+"d": 4.415,
+"type": "clip",
+"src": "stock/px250441.mp4",
+"ss": 0.3
+},
+{
+"t": 415.46,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_big_24.png"
+},
+{
+"t": 419.06,
+"d": 5.21,
+"type": "clip",
+"src": "stock/px82659.mp4",
+"ss": 0.3
+},
+{
+"t": 424.27,
+"d": 5.21,
+"type": "clip",
+"src": "stock/px15615.mp4",
+"ss": 0.3
+},
+{
+"t": 429.48,
+"d": 5.21,
+"type": "clip",
+"src": "stock/px174070.mp4",
+"ss": 0.3
+},
+{
+"t": 434.69,
+"d": 4.61,
+"type": "clip",
+"src": "stock/px10.mp4",
+"ss": 0.3
+},
+{
+"t": 439.3,
+"d": 4.61,
+"type": "clip",
+"src": "stock/px40039.mp4",
+"ss": 0.3
+},
+{
+"t": 443.91,
+"d": 4.61,
+"type": "clip",
+"src": "stock/px37712.mp4",
+"ss": 0.3
+},
+{
+"t": 448.52,
+"d": 4.61,
+"type": "clip",
+"src": "stock/px144754.mp4",
+"ss": 0.3
+},
+{
+"t": 453.13,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_ch_454.png"
+},
+{
+"t": 455.73,
+"d": 4.415,
+"type": "clip",
+"src": "stock/px3159.mp4",
+"ss": 0.3
+},
+{
+"t": 460.145,
+"d": 4.415,
+"type": "clip",
+"src": "stock/px275983.mp4",
+"ss": 0.3
+},
+{
+"t": 464.56,
+"d": 4.415,
+"type": "clip",
+"src": "stock/px27726.mp4",
+"ss": 0.3
+},
+{
+"t": 468.975,
+"d": 4.415,
+"type": "clip",
+"src": "stock/px388064.mp4",
+"ss": 0.3
+},
+{
+"t": 473.39,
+"d": 4.93,
+"type": "clip",
+"src": "stock/px21528.mp4",
+"ss": 0.3
+},
+{
+"t": 478.32,
+"d": 4.93,
+"type": "clip",
+"src": "stock/px3713.mp4",
+"ss": 0.3
+},
+{
+"t": 483.25,
+"d": 4.93,
+"type": "clip",
+"src": "stock/px21175.mp4",
+"ss": 0.3
+},
+{
+"t": 488.18,
+"d": 4.93,
+"type": "clip",
+"src": "stock/px21209.mp4",
+"ss": 0.3
+},
+{
+"t": 493.11,
+"d": 4.277,
+"type": "clip",
+"src": "stock/px183136.mp4",
+"ss": 0.3
+},
+{
+"t": 497.387,
+"d": 4.277,
+"type": "clip",
+"src": "stock/px56932.mp4",
+"ss": 0.3
+},
+{
+"t": 501.663,
+"d": 4.277,
+"type": "clip",
+"src": "stock/px5194.mp4",
+"ss": 0.3
+},
+{
+"t": 505.94,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/card_ch_507.png"
+},
+{
+"t": 508.54,
+"d": 5.357,
+"type": "clip",
+"src": "stock/px238139.mp4",
+"ss": 0.3
+},
+{
+"t": 513.897,
+"d": 5.357,
+"type": "clip",
+"src": "stock/px24072.mp4",
+"ss": 0.3
+},
+{
+"t": 519.253,
+"d": 5.357,
+"type": "clip",
+"src": "stock/px137083.mp4",
+"ss": 0.3
+},
+{
+"t": 524.61,
+"d": 4.18,
+"type": "clip",
+"src": "stock/px60027.mp4",
+"ss": 0.3
+},
+{
+"t": 528.79,
+"d": 4.18,
+"type": "clip",
+"src": "stock/px143016.mp4",
+"ss": 0.3
+},
+{
+"t": 532.97,
+"d": 4.18,
+"type": "clip",
+"src": "stock/px60028.mp4",
+"ss": 0.3
+},
+{
+"t": 537.15,
+"d": 5.293,
+"type": "clip",
+"src": "stock/px54755.mp4",
+"ss": 0.3
+},
+{
+"t": 542.443,
+"d": 5.293,
+"type": "clip",
+"src": "stock/px175210.mp4",
+"ss": 0.3
+},
+{
+"t": 547.737,
+"d": 5.293,
+"type": "clip",
+"src": "stock/px207467.mp4",
+"ss": 0.3
+},
+{
+"t": 553.03,
+"d": 4.192,
+"type": "clip",
+"src": "stock/px45954.mp4",
+"ss": 0.3
+},
+{
+"t": 557.222,
+"d": 4.192,
+"type": "clip",
+"src": "stock/px733.mp4",
+"ss": 0.3
+},
+{
+"t": 561.415,
+"d": 4.192,
+"type": "clip",
+"src": "stock/px25122.mp4",
+"ss": 0.3
+},
+{
+"t": 565.607,
+"d": 4.192,
+"type": "clip",
+"src": "stock/px333527.mp4",
+"ss": 0.3
+},
+{
+"t": 569.8,
+"d": 5.425,
+"type": "clip",
+"src": "stock/px38388.mp4",
+"ss": 0.3
+},
+{
+"t": 575.225,
+"d": 5.425,
+"type": "clip",
+"src": "stock/px179775.mp4",
+"ss": 0.3
+}
+]
+}
