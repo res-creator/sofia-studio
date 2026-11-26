@@ -13,5 +13,5 @@ if (await pg.evaluate(() => window.err)) { console.log('page error'); process.ex
 const total = await pg.evaluate(() => window.TOTAL); const frames = [];
 for (const p of spec.split(',')) { if (p === 'all') { for (let f = 0; f < total; f += +step) frames.push(f); } else if (p.includes('-')) { const [a, b2] = p.split('-').map(Number); for (let f = a; f <= b2; f += +step) frames.push(f); } else frames.push(+p); }
 const t0 = Date.now(); let done = 0;
-for (const f of frames) { const fn = path.join(outdir, `f${String(f).padStart(5, '0')}.jpg`); if (process.env.RESUME && fs.existsSync(fn)) continue; const d = await pg.evaluate((f) => { window.renderFrame(f); return document.getElementById('c').toDataURL('image/jpeg', 0.93); }, f); fs.writeFileSync(fn, Buffer.from(d.split(',')[1], 'base64')); done++; }
+for (const f of frames) { const fn = path.join(outdir, `f${String(f).padStart(5, '0')}.jpg`); if (process.env.RESUME && fs.existsSync(fn)) continue; const d = await pg.evaluate((f) => { window.renderFrame(f); return document.getElementById('c').toDataURL('image/jpeg', 0.86); }, f); fs.writeFileSync(fn, Buffer.from(d.split(',')[1], 'base64')); done++; }
 console.log('done', done, 'frames', ((Date.now() - t0) / 1000 / Math.max(1, done)).toFixed(3), 's/frame; total', total); await b.close(); srv.close();

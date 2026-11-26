@@ -233,6 +233,7 @@ export function renderFrame(M, f, extra = {}) {
   S.bg && S.bg(st); if (sc.sticker) drawSticker(actors); else actors.forEach((a) => { if (a.custom) a.custom(a, st); else drawChar(a); }); S.fg && S.fg(st); if (sc.fg) sc.fg(st);
   g.restore();
   if (!ph) applyGrade();
+  if (sb.soft && sb.seq) { const ei = Math.max(0, sb.seq.findIndex((q) => pt < q.to)), a0 = ei > 0 ? sb.seq[ei - 1].to : 0, b0 = sb.seq[ei].to; const fin = ei > 0 ? clamp(1 - (pt - a0) / 0.3) : 0, fout = b0 < 90 ? clamp((pt - (b0 - 0.3)) / 0.3) : 0; const al = Math.max(fin, fout) * 0.92; if (al > 0.001) { g.fillStyle = `rgba(0,0,0,${al})`; g.fillRect(0, 0, W, H); } }
   if (sc.hud) sc.hud(st); if (S.hud) S.hud(st, sc);
   if (sc.dim) { const d = typeof sc.dim === 'function' ? sc.dim(pt) : sc.dim; if (d > 0) { g.fillStyle = `rgba(20,14,40,${d})`; g.fillRect(0, 0, W, H); } }
   if (!extra.nocap) drawCaption(film, t);
