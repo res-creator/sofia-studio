@@ -123,7 +123,7 @@ function build(T) {
   chapter('A014', 2, 'What 200% feels like');
   beats('A014', [V('pxp_subway_car_commuters_phones', 'TOKYO SUBWAY CAR', { over: [low('THE GOVERNMENT\'S CROWDING GUIDE', 'guide')] })]);
   beats('A015', [
-    S('ladder', { title: 'HOW CROWDED IS YOUR TRAIN?', max: 260, min: 80, items: [{ v: 100, label: 'FULL', sub: 'A SEAT, A STRAP OR A POLE', at: 0.5 }, { v: 150, label: 'NEWSPAPER', sub: 'YOU CAN STILL OPEN ONE', w: 'fifty' }, { v: 200, label: 'BODY CONTACT', sub: 'YOU CAN JUST READ A MAGAZINE', w: 'two', hl: true }], source: 'Source: MLIT crowding guide', unit: '%', step: 20, nosnow: true }),
+    S('ladder', { title: 'HOW CROWDED IS YOUR TRAIN?', max: 260, min: 80, items: [{ v: 100, label: 'FULL', sub: 'A SEAT, A STRAP OR A POLE', at: 0.5 }, { v: 150, label: 'NEWSPAPER', sub: 'YOU CAN STILL OPEN ONE', w: 'fifty' }, { v: 200, label: 'BODY CONTACT', sub: 'YOU CAN JUST READ A MAGAZINE', w: 'two', hl: true }], source: 'Source: MLIT crowding guide', unit: '%', step: 20, nosnow: true, rise: true }),
     V('pxp_packed_train_interior_straps', 'PACKED TOKYO TRAIN', { cutW: 'considerable', kb: { z: [1.3, 1.1] } }),
   ]);
   beats('A016', [

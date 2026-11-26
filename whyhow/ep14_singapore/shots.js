@@ -269,7 +269,7 @@ function build(T) {
   chapter('A044', 6, 'The sea comes back');
   beats('A044', [V('px_storm_waves_old_groyne', 'ROUGH SEA · ' + IL, { over: [head('THE SEA IS RISING', 'rising', 200, 90, Yc)] })]);
   beats('A045', [
-    S('ladder', { title: 'SEA LEVEL OUTLOOK, SINGAPORE', max: 5, min: 0, items: [{ v: 1.15, label: 'BY 2100', sub: '~4 FT', at: 0.6 }, { v: 5, big: '4–5 M', label: 'TIDES + STORMS', sub: 'UP TO 16 FT', w: 'tides', hl: true }], source: 'Source: 3rd National Climate Change Study, Jan 2024', unit: ' M', step: 1, nosnow: true }),
+    S('ladder', { title: 'SEA LEVEL OUTLOOK, SINGAPORE', max: 5, min: 0, items: [{ v: 1.15, label: 'BY 2100', sub: '~4 FT', at: 0.6 }, { v: 5, big: '4–5 M', label: 'TIDES + STORMS', sub: 'UP TO 16 FT', w: 'tides', hl: true }], source: 'Source: 3rd National Climate Change Study, Jan 2024', unit: ' M', step: 1, nosnow: true, rise: true }),
     V('px_riprap_waves', 'WAVES ON A ROCK WALL · ' + IL, { cutW: 'With' }),
     V('px_waves_on_rocks', 'WAVES · ' + IL, { cutW: 'above' }),
   ]);

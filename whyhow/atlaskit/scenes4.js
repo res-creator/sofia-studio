@@ -19,7 +19,7 @@ function ladder(ctx, t, d, p) {
   const items = p.items || []; let low = vmax;
   for (const it of items) { const u = clamp(seg(t, it.at || 0, (it.at || 0) + 0.9)); if (u > 0 && !it.dash) low = Math.min(low, lerp(low === vmax ? vmax : low, it.v, 1)); }
   // mercury falls smoothly toward the lowest revealed solid rung
-  let target = vmax, cur = vmax; for (const it of items) { if (it.dash) continue; const u = E.inOut(clamp(seg(t, it.at || 0, (it.at || 0) + 0.9))); if (u > 0) { cur = lerp(target, Math.min(target, it.v), u); target = Math.min(target, it.v); } }
+  const mm = p.rise ? Math.max : Math.min; let target = p.rise ? vmin : vmax, cur = target; for (const it of items) { if (it.dash) continue; const u = E.inOut(clamp(seg(t, it.at || 0, (it.at || 0) + 0.9))); if (u > 0) { cur = lerp(target, mm(target, it.v), u); target = mm(target, it.v); } }
   const g = ctx.createLinearGradient(0, y0, 0, y1); g.addColorStop(0, C.iceL); g.addColorStop(1, C.ice);
   ctx.save(); ctx.fillStyle = g; ctx.shadowColor = hexA(C.ice, 0.9); ctx.shadowBlur = 24; rr(ctx, X - 14, Y(cur), 28, y1 + 10 - Y(cur), 14); ctx.fill(); ctx.restore();
   // rungs
