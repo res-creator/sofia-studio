@@ -29,3 +29,8 @@ Generator: `whyhow/covers_v2.js` → `*_cover_D.jpg`, `*_cover_E.jpg`.
 - Layout: 64 px margins, text block in the left or right 45%, subject on the opposite third; keep bottom-right (timestamp) and top-right (hover icons) clear.
 - Max 4 words. Arrow only if it lands exactly on the named thing. QA at 168×94 and 336×188.
 - NOTE: ep15 footage `pb_desalination_plant_7367379.jpg` is a houseplant and `_7382931` a wastewater plant — never use as desalination.
+
+## v5 — OWNER'S CHOICE (Nov 26 2026): her Hong Kong look (CTR 3.3%) — `covers_v5.py` + `covers_v5.js` → `*_cover_I.jpg`
+- Vivid, sunny real photo (sat ~1.2, dehazed), soft dark scrim on the left only.
+- Anton, stacked left-aligned lines: place name WHITE, the hook in YELLOW #FFE01B (last line biggest). Soft drop shadow, no plates, no orange.
+- One curved yellow arrow from the words to the subject. 3 short lines, max ~5 words.

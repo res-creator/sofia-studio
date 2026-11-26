@@ -68,15 +68,16 @@ def compose(src, out, kicker, setup, payoff, x0, top, s1, s2, side='left', arrow
     if os.environ.get('OUTDIR'): out = os.path.join(os.environ['OUTDIR'], os.path.basename(out).replace('.jpg', os.environ.get('SUF', '') + '.jpg'))
     im.save(out, quality=92); return out
 
-SUF = os.environ.get('SUF', '')
-outs = [
- compose('ep14_singapore/footage/cm_gardens_by_the_bay_aerial.jpg', 'ep14_singapore/singapore_cover_G.jpg', 'SINGAPORE', 'THIS WAS', 'SEA', 690, 142, 108, 170, side='right', gr=dict(sat=1.08, teal=1), crop_=dict(zoom=1.2, ax=0.12, ay=0.5)),
- compose('ep14_singapore/cover_src_drone4s.jpg', 'ep14_singapore/singapore_cover_H.jpg', 'SINGAPORE', 'THIS WAS', 'SEA', 64, 150, 108, 170, gr=dict(sat=1.08, teal=1)),
- compose('ep15_dubai/footage/gov_nasa_iss_2014_palm_jumeirah.jpg', 'ep15_dubai/dubai_cover_G.jpg', 'DUBAI', 'THEY DRINK', 'THE SEA', 64, 220, 84, 124,
-         gr=dict(sat=1.1, teal=1.5, warm=1), crop_=dict(zoom=1.12, ax=0.0, ay=0.45), scrim=0.45),
- compose('ep15_dubai/footage/gov_nasa_iss_2014_palm_world_islands.jpg', 'ep15_dubai/dubai_cover_H.jpg', 'DUBAI', 'THEY DRINK', 'THE SEA', 64, 150, 96, 136, gr=dict(sat=1.1, teal=1.5, warm=1), scrim=0.4),
- compose('ep16_tokyo/footage/cm_e235_yamanote_shibuya_2026.jpg', 'ep16_tokyo/tokyo_cover_G.jpg', 'TOKYO', '20 SECONDS', 'EARLY', 64, 180, 82, 150,
-         gr=dict(sat=1.05), crop_=dict(zoom=1.0, ax=0.5, ay=0.22), scrim=0.62),
- compose('ep16_tokyo/footage/pxp_packed_platform_shibuya.jpg', 'ep16_tokyo/tokyo_cover_H.jpg', 'TOKYO', '40 MILLION', 'A DAY', 64, 150, 116, 160, gr=dict(sat=1.05)),
-]
-print('\n'.join(outs))
+if __name__ == '__main__':
+    SUF = os.environ.get('SUF', '')
+    outs = [
+     compose('ep14_singapore/footage/cm_gardens_by_the_bay_aerial.jpg', 'ep14_singapore/singapore_cover_G.jpg', 'SINGAPORE', 'THIS WAS', 'SEA', 690, 142, 108, 170, side='right', gr=dict(sat=1.08, teal=1), crop_=dict(zoom=1.2, ax=0.12, ay=0.5)),
+     compose('ep14_singapore/cover_src_drone4s.jpg', 'ep14_singapore/singapore_cover_H.jpg', 'SINGAPORE', 'THIS WAS', 'SEA', 64, 150, 108, 170, gr=dict(sat=1.08, teal=1)),
+     compose('ep15_dubai/footage/gov_nasa_iss_2014_palm_jumeirah.jpg', 'ep15_dubai/dubai_cover_G.jpg', 'DUBAI', 'THEY DRINK', 'THE SEA', 64, 220, 84, 124,
+             gr=dict(sat=1.1, teal=1.5, warm=1), crop_=dict(zoom=1.12, ax=0.0, ay=0.45), scrim=0.45),
+     compose('ep15_dubai/footage/gov_nasa_iss_2014_palm_world_islands.jpg', 'ep15_dubai/dubai_cover_H.jpg', 'DUBAI', 'THEY DRINK', 'THE SEA', 64, 150, 96, 136, gr=dict(sat=1.1, teal=1.5, warm=1), scrim=0.4),
+     compose('ep16_tokyo/footage/cm_e235_yamanote_shibuya_2026.jpg', 'ep16_tokyo/tokyo_cover_G.jpg', 'TOKYO', '20 SECONDS', 'EARLY', 64, 180, 82, 150,
+             gr=dict(sat=1.05), crop_=dict(zoom=1.0, ax=0.5, ay=0.22), scrim=0.62),
+     compose('ep16_tokyo/footage/pxp_packed_platform_shibuya.jpg', 'ep16_tokyo/tokyo_cover_H.jpg', 'TOKYO', '40 MILLION', 'A DAY', 64, 150, 116, 160, gr=dict(sat=1.05)),
+    ]
+    print('\n'.join(outs))

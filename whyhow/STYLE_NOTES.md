@@ -28,7 +28,7 @@ Read before writing or editing any episode.
 - Render: `SMOOTH=1 HOUSE=1` (see scratchpad rend.sh pattern: 4 chunks, 2 parallel).
 
 ## Thumbnails
-- Follow the v4 system in `whyhow/style_research/thumbnail_ctr.md` (`covers_v4.py`): Inter Display Black caps, white setup line + one coral plate, location kicker, clean grade, max 4 words.
+- Owner's choice: the Hong Kong look (v5 in `whyhow/style_research/thumbnail_ctr.md`, `covers_v5.py` + `covers_v5.js`): vivid photo, Anton stacked lines — place name white, hook yellow #FFE01B — and one yellow arrow. She does NOT like orange plates.
 
 ## Typography and colour
 - Tasteful, not loud: one accent colour per video, the rest white or soft grey; no rainbow of bright colours.
