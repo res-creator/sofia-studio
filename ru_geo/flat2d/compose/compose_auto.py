@@ -60,7 +60,7 @@ for l in L:
 voice = [s for s in segs if s['kind'] == 'voice']
 if len(paras) != len(voice): sys.exit(f'абзацев {len(paras)} != озвученных {len(voice)}')
 # --- фото по абзацам из старой раскадровки
-photos_by_par = {}; caps = {}
+photos_by_par = {}; caps = {}; PIMG = {}; fb = [0]
 oc = f'{J}/SCRIPT_oldcues.md'; cr_path = f'{J}/archive/credits.json'
 if os.path.exists(oc) and os.path.exists(cr_path):
     CR = json.load(open(cr_path, encoding='utf8')); caps = {k: v.get('cap', '') for k, v in CR.items()}
@@ -76,12 +76,15 @@ if os.path.exists(oc) and os.path.exists(cr_path):
         if not t or t.startswith(('---', '#', '|')): continue
         if re.sub(r'\s+', ' ', re.sub(r'\[[a-z ]+\]', '', t)).strip(): pi += 1
     PIMG = {k: f"{J}/archive/img/{v['file']}" for k, v in CR.items()}
+STRICT = True
 # --- подбор клипов
 used = set(); cards = []; tl = []
 def pick(q):
-    qw = [w[:5] for w in re.findall(r'[a-z]+', q.lower()) if len(w) > 2]
+    STOP = {'time', 'laps', 'abst', 'slow', 'moti', 'movi', 'clos', 'view', 'shot', 'real', 'wide', 'live', 'aeri', 'dark', 'black', 'back', 'nigh'}
+    qw = [w[:4] for w in re.findall(r'[a-z]+', q.lower()) if len(w) > 2 and w[:4] not in STOP]
     def score(k): tg = ' '.join(DB['v'][k].get('tags', []) + [DB['v'][k].get('title', '')]).lower(); return -sum(1 for w in qw if w in tg)
     for k in sorted(search(q), key=score):
+        if STRICT and score(k) == 0: continue
         v = DB['v'][k]
         if k in used or float(v.get('dur') or 0) < 4.5: continue
         used.add(k); p = f'{ST}/{k}.mp4'
@@ -119,6 +122,10 @@ for idx, ((a, b), p) in enumerate(zip(bounds, paras)):
                 k, v = pick(q)
                 if k: break
         if k: add(t + j * shot, shot, type='clip', src=f'stock/{k}.mp4', ss=0.3, **({'ov': ov} if (ov and j == (n - 1 if cue.get('ttl') else 0)) else {}))
+        elif PIMG:
+            pool = (phs or []) + [x for x in PIMG if x not in (phs or [])]; key = pool[(fb[0]) % len(pool)]; fb[0] += 1
+            zz = [[1.0, 1.18], [1.18, 1.0], [1.08, 1.2]][fb[0] % 3]; pp = [[0.25, 0.4], [0.75, 0.55], [0.5, 0.3], [0.4, 0.7]][fb[0] % 4]
+            add(t + j * shot, shot, type='photo', src=PIMG[key], z=zz, p=pp, cap=caps.get(key, ''))
         else: add(t + j * shot, shot, type='card', src=f'{C}/black.png')
 # заставки глав
 for ct, title in chaps:

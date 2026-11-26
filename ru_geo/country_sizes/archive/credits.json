@@ -1,0 +1,42 @@
+{
+ "mercator_world_map": {
+  "file": "mercator_world_map.jpg",
+  "author": "Thomas Kitchin",
+  "license": "общественное достояние",
+  "cap": "Мир в проекции Меркатора",
+  "page": "https://commons.wikimedia.org/wiki/File:1794_Samuel_Dunn_Wall_Map_of_the_World_in_Hemispheres_-_Geographicus_-_World2-dunn-1794.jpg",
+  "title": "File:1794 Samuel Dunn Wall Map of the World in Hemispheres - Geographicus - World2-dunn-1794.jpg"
+ },
+ "old_sailing_ship": {
+  "file": "old_sailing_ship.jpg",
+  "author": "Rijksmuseum",
+  "license": "общественное достояние",
+  "cap": "Парусный корабль XVI века (гравюра)",
+  "page": "https://commons.wikimedia.org/wiki/File:Vier_Javaanse_vaartuigen,_1596,_RP-P-OB-80.260.jpg",
+  "title": "File:Vier Javaanse vaartuigen, 1596, RP-P-OB-80.260.jpg"
+ },
+ "compass_old": {
+  "file": "compass_old.jpg",
+  "author": "Jan Janssonius",
+  "license": "общественное достояние",
+  "cap": "Старинный морской компас",
+  "page": "https://commons.wikimedia.org/wiki/File:1650_Jansson_Wind_Rose,_Anemographic_Chart,_or_Map_of_the_Winds_-_Geographicus_-_Anemographica-jannson-1650.jpg",
+  "title": "File:1650 Jansson Wind Rose, Anemographic Chart, or Map of the Winds - Geographicus - Anemographica-jannson-1650.jpg"
+ },
+ "mercator_portrait": {
+  "file": "mercator_portrait.jpg",
+  "author": "Frans Hogenberg",
+  "license": "общественное достояние",
+  "cap": "Герард Меркатор (портрет XVI века)",
+  "page": "https://commons.wikimedia.org/wiki/File:Gerardus_Mercator2.jpg",
+  "title": "File:Gerardus Mercator2.jpg"
+ },
+ "mercator_1569_map": {
+  "file": "mercator_1569_map.jpg",
+  "author": "Mercator, Gerard (1512-1594). Cartographe. Dédicateur",
+  "license": "общественное достояние",
+  "cap": "Карта Меркатора, 1569 год",
+  "page": "https://commons.wikimedia.org/wiki/File:Nova_et_aucta_orbis_terrae_descriptio_ad_usum_navigantium_emendate_accomodata_-_illustriss..._principi..._Wilhelmo_Duci_juliae,_Clivorum_et_Monti_Opus_hoc..._eius_auspiciis_inchoatum..._-_Gerardus_Mercator..._-_btv1b7200344k_(01_of_14).jpg",
+  "title": "File:Nova et aucta orbis terrae descriptio ad usum navigantium emendate accomodata - illustriss... principi... Wilhelmo Duci juliae, Clivorum et Monti Opus hoc... eius auspiciis inchoatum... - Gerardus Mercator... - btv1b7200344k (01 of 14).jpg"
+ }
+}
