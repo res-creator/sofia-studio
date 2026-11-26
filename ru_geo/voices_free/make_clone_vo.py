@@ -9,7 +9,7 @@ start = next(i for i, l in enumerate(L) if l.startswith('## ХОЛОДНЫЙ С�
 for l in L[start:]:
     t = l.strip()
     if t.startswith('## '): items.append(dict(kind='chapter', title=t[3:])); continue
-    if not t or t.startswith(('---', '#', '|')): continue
+    if not t or t.startswith(('---', '#', '|', '>>')): continue
     tags = re.findall(r'\[([a-z ]+)\]', t); txt = re.sub(r'\s+', ' ', re.sub(r'\[[a-z ]+\]', '', t)).strip()
     if txt: items.append(dict(kind='voice', text=txt, tags=tags))
 def tts(text, out):
