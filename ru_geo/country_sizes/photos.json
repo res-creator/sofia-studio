@@ -1,0 +1,218 @@
+{
+ "mercator_world_map": {
+  "q": [
+   "Mercator projection world map",
+   "Mercator 1569 world map",
+   "Mercator projection Wikimedia Commons"
+  ],
+  "cap": "Мир в проекции Меркатора",
+  "need": "карта мира с растянутой Гренландией"
+ },
+ "greenland_africa_compare": {
+  "q": [
+   "Greenland Africa size comparison Mercator",
+   "True size Africa Greenland map",
+   "Africa versus Greenland true area"
+  ],
+  "cap": "Гренландия и Африка: на карте и на деле",
+  "need": "сравнение размеров"
+ },
+ "old_sailing_ship": {
+  "q": [
+   "16th century carrack ship engraving",
+   "Dutch ship 16th century engraving",
+   "Brueghel ship sailing"
+  ],
+  "cap": "Парусный корабль XVI века (гравюра)",
+  "need": "корабль эпохи Меркатора"
+ },
+ "compass_old": {
+  "q": [
+   "antique mariner compass",
+   "old nautical compass rose",
+   "16th century compass"
+  ],
+  "cap": "Старинный морской компас",
+  "need": "компас"
+ },
+ "mercator_portrait": {
+  "q": [
+   "Gerardus Mercator portrait",
+   "Mercator Hondius portrait engraving",
+   "Gerhard Mercator"
+  ],
+  "cap": "Герард Меркатор (портрет XVI века)",
+  "need": "портрет картографа"
+ },
+ "mercator_1569_map": {
+  "q": [
+   "Mercator 1569 Nova et Aucta Orbis Terrae Descriptio",
+   "Mercator world map 1569",
+   "Nova et aucta orbis terrae descriptio"
+  ],
+  "cap": "Карта Меркатора, 1569 год",
+  "need": "оригинал карты 1569 года"
+ },
+ "rhumb_line_diagram": {
+  "q": [
+   "rhumb line loxodrome Mercator",
+   "loxodrome sphere diagram",
+   "rhumb line on Mercator map"
+  ],
+  "cap": "Локсодрома: линия постоянного курса",
+  "need": "схема линии постоянного курса"
+ },
+ "tissot_mercator": {
+  "q": [
+   "Tissot indicatrix Mercator projection",
+   "Tissot's indicatrix world map Mercator",
+   "Mercator distortion ellipses"
+  ],
+  "cap": "Эллипсы Тиссо: растяжение к полюсам",
+  "need": "наглядное искажение проекции"
+ },
+ "orange_peel_map": {
+  "q": [
+   "orange peel map projection",
+   "gores globe map flattened",
+   "interrupted map projection orange peel"
+  ],
+  "cap": "Как разворачивается шар",
+  "need": "разворот шара на плоскость"
+ },
+ "globe_earth": {
+  "q": [
+   "terrestrial globe",
+   "Earth globe",
+   "Blue Marble Earth globe"
+  ],
+  "cap": "Глобус",
+  "need": "глобус или снимок Земли"
+ },
+ "school_world_map": {
+  "q": [
+   "classroom world map Mercator wall map",
+   "school wall map world",
+   "old school world map"
+  ],
+  "cap": "Школьная карта мира",
+  "need": "настенная карта в классе"
+ },
+ "africa_map": {
+  "q": [
+   "Africa map continent",
+   "Africa continent satellite",
+   "Africa political map"
+  ],
+  "cap": "Африка",
+  "need": "контур Африки"
+ },
+ "australia_map": {
+  "q": [
+   "Australia map continent",
+   "Australia satellite",
+   "Australia political map"
+  ],
+  "cap": "Австралия",
+  "need": "контур Австралии"
+ },
+ "russia_map": {
+  "q": [
+   "Russia map",
+   "Russia location map",
+   "Russia Mercator map"
+  ],
+  "cap": "Россия",
+  "need": "контур России"
+ },
+ "congo_map": {
+  "q": [
+   "Democratic Republic of the Congo map",
+   "DR Congo location map",
+   "Congo country map"
+  ],
+  "cap": "Демократическая Республика Конго",
+  "need": "контур Конго"
+ },
+ "france_map": {
+  "q": [
+   "metropolitan France map",
+   "France location map",
+   "France country map"
+  ],
+  "cap": "Франция (без заморских территорий)",
+  "need": "контур Франции"
+ },
+ "brazil_map": {
+  "q": [
+   "Brazil map",
+   "Brazil location map",
+   "Brazil country map"
+  ],
+  "cap": "Бразилия",
+  "need": "контур Бразилии"
+ },
+ "indonesia_map": {
+  "q": [
+   "Indonesia map archipelago",
+   "Indonesia location map",
+   "Indonesia islands satellite"
+  ],
+  "cap": "Индонезия",
+  "need": "архипелаг"
+ },
+ "africa_krause_map": {
+  "q": [
+   "True Size of Africa Kai Krause",
+   "Africa countries fit inside map",
+   "Africa size comparison United States China India"
+  ],
+  "cap": "Иллюстрация: страны внутри контура Африки",
+  "need": "сравнение площадей"
+ },
+ "moon_full": {
+  "q": [
+   "Full moon",
+   "Moon NASA",
+   "Moon near side"
+  ],
+  "cap": "Луна",
+  "need": "диск Луны"
+ },
+ "web_mercator_map": {
+  "q": [
+   "Web Mercator world map",
+   "OpenStreetMap world map",
+   "Web Mercator projection"
+  ],
+  "cap": "Карта в телефоне: веб-Меркатор",
+  "need": "интернет-карта мира"
+ },
+ "gall_peters_map": {
+  "q": [
+   "Gall-Peters projection",
+   "Gall–Peters projection world map",
+   "Peters projection"
+  ],
+  "cap": "Проекция Галла и Петерса",
+  "need": "карта с сохранёнными площадями"
+ },
+ "winkel_tripel_map": {
+  "q": [
+   "Winkel tripel projection",
+   "Winkel Tripel world map",
+   "Winkel tripel projection SW"
+  ],
+  "cap": "Проекция Винкеля",
+  "need": "компромиссная проекция"
+ },
+ "true_size_tool": {
+  "q": [
+   "The True Size Of",
+   "thetruesize.com screenshot",
+   "true size country comparison map tool"
+  ],
+  "cap": "Сервис «перетащи страну»: иллюстрация",
+  "need": "экран сервиса сравнения размеров"
+ }
+}
