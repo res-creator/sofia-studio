@@ -38,6 +38,7 @@ Each film's last paragraph teases the next film (India→Norway, Norway→Vietna
 Owner's boyfriend made an emotional English sample in ElevenLabs (eleven_v3, his own voice design), 1:46. Cloned zero-shot in Fish Audio
 (reference audio sent with each request, dubtools/fish_tts.py; model s2.1-pro-free, because creating a saved model / paid models need API credit).
 Delivery-note tags from SCRIPT_EN.csv are passed as [tag] at the start of each line. Probe: japan/sample_fish_voice_0-60s.mp3 (F001–F008, all fit max).
+Voice files saved in repo: voices/buckle_up_narrator/ (ref.mp3, ref_text.txt, README.md).
 Open: rights (ElevenLabs ToS on using output to clone elsewhere; Fish free-model terms for monetised use) — owner/boyfriend to confirm.
 Fish Audio facts (official pages, 2026-11-23): s2.1-pro-free = $0, same quality as s2.1-pro, "fair use", BUT free use is personal/non-commercial only
 (terms + plan FAQ). Paid API s2.1-pro $15 / 1M UTF-8 bytes (≈ $1 per 50-min English film). For monetised channel use paid API. Guide: FISH_VOICE.md, script dubtools/fish_voice.py.
