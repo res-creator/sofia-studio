@@ -54,5 +54,21 @@
   "cap": "крупа: основа расчёта калорий",
   "page": "https://commons.wikimedia.org/wiki/File:Bagging_puffed_rice_and_grains_on_market_street_Khulna.jpg",
   "title": "File:Bagging puffed rice and grains on market street Khulna.jpg"
+ },
+ "cooking_oil": {
+  "file": "cooking_oil.jpg",
+  "author": "Corn cheese",
+  "license": "CC BY-SA 4.0",
+  "cap": "растительное масло: самая калорийная еда",
+  "page": "https://commons.wikimedia.org/wiki/File:Cooking_oil.jpg",
+  "title": "File:Cooking oil.jpg"
+ },
+ "scurvy_gums": {
+  "file": "scurvy_gums.jpg",
+  "author": "автор неизвестен",
+  "license": "CC BY 4.0",
+  "cap": "цинга: иллюстрация из медицинского источника",
+  "page": "https://commons.wikimedia.org/wiki/File:Pair_of_pharmacy_storage_jars,_Naples,_Italy,_1756_Wellcome_L0057082.jpg",
+  "title": "File:Pair of pharmacy storage jars, Naples, Italy, 1756 Wellcome L0057082.jpg"
  }
 }
