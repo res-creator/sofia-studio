@@ -86,5 +86,29 @@
   "cap": "консервы на полке",
   "page": "https://commons.wikimedia.org/wiki/File:GuLong_canned_food_on_the_shelf.jpg",
   "title": "File:GuLong canned food on the shelf.jpg"
+ },
+ "minnesota_exp": {
+  "file": "minnesota_exp.jpg",
+  "author": "Internet Archive Book Images",
+  "license": "No restrictions",
+  "cap": "Миннесотский эксперимент, 1944-1945 (архивное фото)",
+  "page": "https://commons.wikimedia.org/wiki/File:The_American_Museum_journal_(c1900-(1918))_(18157388022).jpg",
+  "title": "File:The American Museum journal (c1900-(1918)) (18157388022).jpg"
+ },
+ "bottled_water_pallet": {
+  "file": "bottled_water_pallet.jpg",
+  "author": "MCCS Spike Call",
+  "license": "общественное достояние",
+  "cap": "бутилированная вода на палетах",
+  "page": "https://commons.wikimedia.org/wiki/File:An_AS-332_Super_Puma_helicopter_flies_a_pallet_of_bottled_water_from_USNS_Niagara_Falls_(T-AFS_3)_while_under_way_off_the_coast_of_the_Philippines_June_29,_2008,_to_Kalibo,_Philippines,_during_humanitarian_080629-N-HX866-008.jpg",
+  "title": "File:An AS-332 Super Puma helicopter flies a pallet of bottled water from USNS Niagara Falls (T-AFS 3) while under way off the coast of the Philippines June 29, 2008, to Kalibo, Philippines, during humanitarian 080629-N-HX866-008.jpg"
+ },
+ "water_bottles": {
+  "file": "water_bottles.jpg",
+  "author": "Sgroey",
+  "license": "CC BY-SA 4.0",
+  "cap": "бутылки с водой",
+  "page": "https://commons.wikimedia.org/wiki/File:19l_bottles_of_water_cheap_bali.jpg",
+  "title": "File:19l bottles of water cheap bali.jpg"
  }
 }
