@@ -198,5 +198,21 @@
   "cap": "кипящая вода",
   "page": "https://commons.wikimedia.org/wiki/File:HK_Boiling_hot_water_n_noodle_August_2018_IX2_pot_01.jpg",
   "title": "File:HK Boiling hot water n noodle August 2018 IX2 pot 01.jpg"
+ },
+ "calculator_notebook": {
+  "file": "calculator_notebook.jpg",
+  "author": "KK IN HK",
+  "license": "CC BY-SA 4.0",
+  "cap": "расчёты в блокноте (иллюстративное фото)",
+  "page": "https://commons.wikimedia.org/wiki/File:Notebook_computer.jpeg",
+  "title": "File:Notebook computer.jpeg"
+ },
+ "camping_stove": {
+  "file": "camping_stove.jpg",
+  "author": "Dinkun Chen",
+  "license": "CC BY-SA 4.0",
+  "cap": "туристическая горелка",
+  "page": "https://commons.wikimedia.org/wiki/File:IWATANI_PORTABLE_GAS_STOVE.jpg",
+  "title": "File:IWATANI PORTABLE GAS STOVE.jpg"
  }
 }
