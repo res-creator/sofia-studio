@@ -1,0 +1,101 @@
+# EP16 credits — paste into the YouTube description / pinned comment.
+
+Photos and video (Wikimedia Commons):
+- Both station exits of Minami Nagareyama station - 2022 6 12.jpeg — Nesnad This photo was taken with iPhone 6S, CC BY 4.0, via Wikimedia Commons — CC BY 4.0 (https://creativecommons.org/licenses/by/4.0) — https://commons.wikimedia.org/wiki/File:Both_station_exits_of_Minami_Nagareyama_station_-_2022_6_12.jpeg
+- つくばエクスプレス Tsukuba Express TX-3000 流山おおたかの森駅 (20240526) (55076188093).jpg — Takeshi Aida from Hong Kong, Hong Kong, CC BY-SA 4.0, via Wikimedia Commons — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0) — https://commons.wikimedia.org/wiki/File:%E3%81%A4%E3%81%8F%E3%81%B0%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%97%E3%83%AC%E3%82%B9_Tsukuba_Express_TX-3000_%E6%B5%81%E5%B1%B1%E3%81%8A%E3%81%8A%E3%81%9F%E3%81%8B%E3%81%AE%E6%A3%AE%E9%A7%85_(20240526)_(55076188093).jpg
+- JRE Minami-Nagareyama-STA Platforms.jpg — MaedaAkihiko This photo was taken with Panasonic Lumix DC-FZ1000 II, CC BY-SA 4.0, via Wikimedia Commons — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0) — https://commons.wikimedia.org/wiki/File:JRE_Minami-Nagareyama-STA_Platforms.jpg
+- TX Series3000-3681 Inside.jpg — MaedaAkihiko, CC BY-SA 4.0, via Wikimedia Commons — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0) — https://commons.wikimedia.org/wiki/File:TX_Series3000-3681_Inside.jpg
+- (JPN-Tokyo) JR East Yamanote Line E235-0 series 17 @ Shibuya 2026-06-11.jpg — S5A-0043, CC BY 4.0, via Wikimedia Commons — CC BY 4.0 (https://creativecommons.org/licenses/by/4.0) — https://commons.wikimedia.org/wiki/File:(JPN-Tokyo)_JR_East_Yamanote_Line_E235-0_series_17_@_Shibuya_2026-06-11.jpg
+- Crowds near Shinjuku Station Southeast Exit 2011-04-02 panoramio.jpg — Tomi Mäkitalo, CC BY-SA 3.0, via Wikimedia Commons — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0) — https://commons.wikimedia.org/wiki/File:Crowds_near_Shinjuku_Station_Southeast_Exit_2011-04-02_panoramio.jpg
+- 田園調布舊站20170530085447.jpg — R96340, CC BY-SA 4.0, via Wikimedia Commons — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0) — https://commons.wikimedia.org/wiki/File:%E7%94%B0%E5%9C%92%E8%AA%BF%E5%B8%83%E8%88%8A%E7%AB%9920170530085447.jpg
+- 新宿駅南口 (5517072840).jpg — m-jy, CC BY-SA 2.0, via Wikimedia Commons — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0) — https://commons.wikimedia.org/wiki/File:%E6%96%B0%E5%AE%BF%E9%A7%85%E5%8D%97%E5%8F%A3_(5517072840).jpg
+- Sunday morning crowds at the station.jpg — RachelH_, CC BY 2.0, via Wikimedia Commons — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0) — https://commons.wikimedia.org/wiki/File:Sunday_morning_crowds_at_the_station.jpg
+- Shinjuku Station East ⇔ West Free Passage 05.jpg — 番記者, CC BY-SA 4.0, via Wikimedia Commons — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0) — https://commons.wikimedia.org/wiki/File:Shinjuku_Station_East_%E2%87%94_West_Free_Passage_05.jpg
+- Shinjuku Station Yamanote Line platform (39081838475).jpg — W & J from Earth, CC BY-SA 2.0, via Wikimedia Commons — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0) — https://commons.wikimedia.org/wiki/File:Shinjuku_Station_Yamanote_Line_platform_(39081838475).jpg
+- Tokyo-Metro Series15000-15001.jpg — MaedaAkihiko, CC BY-SA 4.0, via Wikimedia Commons — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0) — https://commons.wikimedia.org/wiki/File:Tokyo-Metro_Series15000-15001.jpg
+- Tokyometro15000 inside 15701.jpg — e3uematsu, CC BY-SA 3.0, via Wikimedia Commons — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0) — https://commons.wikimedia.org/wiki/File:Tokyometro15000_inside_15701.jpg
+- Extremely precise women-only car sign in Roppongi train station, Tokyo, Japan.JPG (1265282 — Cory Doctorow, CC BY-SA 2.0, via Wikimedia Commons — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0) — https://commons.wikimedia.org/wiki/File:Extremely_precise_women-only_car_sign_in_Roppongi_train_station,_Tokyo,_Japan.JPG_(1265282259).jpg
+- Boarding point for Ladies Only on a train station platform in Japan 2010-08-14.jpg — Rog01, CC BY-SA 2.0, via Wikimedia Commons — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0) — https://commons.wikimedia.org/wiki/File:Boarding_point_for_Ladies_Only_on_a_train_station_platform_in_Japan_2010-08-14.jpg
+- 田園調布舊站20170530085717.jpg — R96340, CC BY-SA 4.0, via Wikimedia Commons — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0) — https://commons.wikimedia.org/wiki/File:%E7%94%B0%E5%9C%92%E8%AA%BF%E5%B8%83%E8%88%8A%E7%AB%9920170530085717.jpg
+- Den-en-chofu Station (2010-03-22).jpg — RGB256, CC BY-SA 3.0, via Wikimedia Commons — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0) — https://commons.wikimedia.org/wiki/File:Den-en-chofu_Station_(2010-03-22).jpg
+- 1923 Great Kantō earthquake destructions.jpg — Unknown authorUnknown author, Public domain, via Wikimedia Commons — Public domain — https://commons.wikimedia.org/wiki/File:1923_Great_Kant%C5%8D_earthquake_destructions.jpg
+- 1923 Sumida River after the Great Kantō earthquake fires.jpg — Unknown authorUnknown author, Public domain, via Wikimedia Commons — Public domain — https://commons.wikimedia.org/wiki/File:1923_Sumida_River_after_the_Great_Kant%C5%8D_earthquake_fires.jpg
+- GOTO Keita.jpg — Unknown authorUnknown author, Public domain, via Wikimedia Commons — Public domain — https://commons.wikimedia.org/wiki/File:GOTO_Keita.jpg
+- Shibuya sta & Tokyu-dept Toyoko 201704-1.jpg — ITA-ATU, CC BY-SA 4.0, via Wikimedia Commons — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0) — https://commons.wikimedia.org/wiki/File:Shibuya_sta_%26_Tokyu-dept_Toyoko_201704-1.jpg
+- Rush hour of Tokyu Shibuya Station.jpg — Masaru Kamikura, CC BY 2.0, via Wikimedia Commons — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0) — https://commons.wikimedia.org/wiki/File:Rush_hour_of_Tokyu_Shibuya_Station.jpg
+- Shibuya sta & Tokyu-dept Toyoko Night 201704.jpg — ITA-ATU, CC BY-SA 4.0, via Wikimedia Commons — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0) — https://commons.wikimedia.org/wiki/File:Shibuya_sta_%26_Tokyu-dept_Toyoko_Night_201704.jpg
+- 71-1204 Bullet train to Kyoto 1971 (51367419693).jpg — wilford peloquin, CC BY 2.0, via Wikimedia Commons — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0) — https://commons.wikimedia.org/wiki/File:71-1204_Bullet_train_to_Kyoto_1971_(51367419693).jpg
+- 0 Series Shinkansen at the National Railway Museum 2024-10-10.jpg — www.mgaylard.co.uk and thanks for looking, CC BY 2.0, via Wikimedia Commons — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0) — https://commons.wikimedia.org/wiki/File:0_Series_Shinkansen_at_the_National_Railway_Museum_2024-10-10.jpg
+- Last day operation of Shinkansen 0-01.jpg — Gohachiyasu1214, CC BY-SA 4.0, via Wikimedia Commons — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0) — https://commons.wikimedia.org/wiki/File:Last_day_operation_of_Shinkansen_0-01.jpg
+- 59 optical electromagnetic seismograph-0.jpg — Apple2000, CC BY-SA 4.0, via Wikimedia Commons — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0) — https://commons.wikimedia.org/wiki/File:59_optical_electromagnetic_seismograph-0.jpg
+- 2011 Sendai earthquake Shinjuku Station.JPG — 多摩に暇人, CC BY-SA 3.0, via Wikimedia Commons — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0) — https://commons.wikimedia.org/wiki/File:2011_Sendai_earthquake_Shinjuku_Station.JPG
+- Tohoku Shinkansen Damaged by 2011 Sendai Earthquake.jpg — ja:User:Hitomi, CC BY 3.0, via Wikimedia Commons — CC BY 3.0 (https://creativecommons.org/licenses/by/3.0) — https://commons.wikimedia.org/wiki/File:Tohoku_Shinkansen_Damaged_by_2011_Sendai_Earthquake.jpg
+- Repair Tōhoku Shinkansen tracks.JPG — ChiefHira, CC BY-SA 3.0, via Wikimedia Commons — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0) — https://commons.wikimedia.org/wiki/File:Repair_T%C5%8Dhoku_Shinkansen_tracks.JPG
+- Stopped Hayate.JPG — ChiefHira, CC BY-SA 3.0, via Wikimedia Commons — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0) — https://commons.wikimedia.org/wiki/File:Stopped_Hayate.JPG
+- Stopped MAX Yamabiko.JPG — ChiefHira, CC BY-SA 3.0, via Wikimedia Commons — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0) — https://commons.wikimedia.org/wiki/File:Stopped_MAX_Yamabiko.JPG
+- Kasumigaseki Station, Tokyo.jpg — っ, CC BY-SA 3.0, via Wikimedia Commons — CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0/) — https://commons.wikimedia.org/wiki/File:Kasumigaseki_Station,_Tokyo.jpg
+- Chiyoda line - Kasumigaseki Station platforms - Tokyo - 2022 April 3 various.jpeg — Nesnad, CC BY 4.0, via Wikimedia Commons — CC BY 4.0 (https://creativecommons.org/licenses/by/4.0) — https://commons.wikimedia.org/wiki/File:Chiyoda_line_-_Kasumigaseki_Station_platforms_-_Tokyo_-_2022_April_3_various.jpeg
+- Kasumigaseki-Sta-Sakurada-Dori-Gate.JPG — Nyao148, CC BY-SA 3.0, via Wikimedia Commons — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0) — https://commons.wikimedia.org/wiki/File:Kasumigaseki-Sta-Sakurada-Dori-Gate.JPG
+- E235 resumed to operation.JPG — 鉄道オタク兼ゲームファン, CC BY-SA 4.0, via Wikimedia Commons — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0) — https://commons.wikimedia.org/wiki/File:E235_resumed_to_operation.JPG
+- E235*2@ikebukuro station.jpg — JNR583, CC BY-SA 4.0, via Wikimedia Commons — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0) — https://commons.wikimedia.org/wiki/File:E235*2@ikebukuro_station.jpg
+- Closed gate in Tōkaidō Shinkansen Tokyo Station by typhoon, Aug '24 - 01.jpg — 電車(新幹線)でゴー！, CC0, via Wikimedia Commons — CC0 (http://creativecommons.org/publicdomain/zero/1.0/deed.en) — https://commons.wikimedia.org/wiki/File:Closed_gate_in_T%C5%8Dkaid%C5%8D_Shinkansen_Tokyo_Station_by_typhoon,_Aug_%2724_-_01.jpg
+- 20230911 JR East E235-0 05 entering Shinagawa Station.jpg — Windmemories, CC BY-SA 4.0, via Wikimedia Commons — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0) — https://commons.wikimedia.org/wiki/File:20230911_JR_East_E235-0_05_entering_Shinagawa_Station.jpg
+- JRE TX Minami-Nagareyama-STA South.jpg — MaedaAkihiko This photo was taken with Panasonic Lumix DC-FZ1000 II, CC BY-SA 4.0, via Wikimedia Commons — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0) — https://commons.wikimedia.org/wiki/File:JRE_TX_Minami-Nagareyama-STA_South.jpg
+
+US Department of Defense video via DVIDS (public domain; no endorsement implied):
+- For the Full Story: Yamanote Line Takadanobaba — Staff Sgt. Marcus Taylor, AFN Tokyo, via DVIDS (public domain) — Public domain (US Department of Defense / AFN Tokyo work, DVIDS) — https://www.dvidshub.net/video/985902
+- For the Full Story: Yamanote Line Mejiro — Staff Sgt. Marcus Taylor, AFN Tokyo, via DVIDS (public domain) — Public domain (US Department of Defense / AFN Tokyo work, DVIDS) — https://www.dvidshub.net/video/968282
+- For the Full Story: Yamanote Line Tokyo — Airman Ethan Manalastas, AFN Tokyo, via DVIDS (public domain) — Public domain (US Department of Defense / AFN Tokyo work, DVIDS) — https://www.dvidshub.net/video/1016039
+- For the Full Story: Yamanote Line Uguisudani — Staff Sgt. Marcus Taylor, AFN Tokyo, via DVIDS (public domain) — Public domain (US Department of Defense / AFN Tokyo work, DVIDS) — https://www.dvidshub.net/video/1009403
+- For the Full Story: Yamanote Line Nishi-Nippori — Staff Sgt. Marcus Taylor, AFN Tokyo, via DVIDS (public domain) — Public domain (US Department of Defense / AFN Tokyo work, DVIDS) — https://www.dvidshub.net/video/993281
+- For the Full Story: Yamanote Line Nippori — Senior Airman Marcus Taylor, AFN Tokyo, via DVIDS (public domain) — Public domain (US Department of Defense / AFN Tokyo work, DVIDS) — https://www.dvidshub.net/video/954438
+- For the Full Story: Yamanote Line Tokyo — Airman Ethan Manalastas, AFN Tokyo, via DVIDS (public domain) — Public domain (US Department of Defense / AFN Tokyo work, DVIDS) — https://www.dvidshub.net/video/1016039
+- For the Full Story: Yamanote Line Uguisudani — Staff Sgt. Marcus Taylor, AFN Tokyo, via DVIDS (public domain) — Public domain (US Department of Defense / AFN Tokyo work, DVIDS) — https://www.dvidshub.net/video/1009403
+
+Stock video and photos (Pixabay Content License, free for commercial use):
+- Luster2739 via Pixabay — https://pixabay.com/videos/id-84908/
+- Luster2739 via Pixabay — https://pixabay.com/videos/id-81330/
+- zsoca4 via Pixabay — https://pixabay.com/photos/metro-crowd-tokiyo-japan-2387315/
+- MagicTV via Pixabay — https://pixabay.com/videos/id-181114/
+- MagicTV via Pixabay — https://pixabay.com/videos/id-181116/
+- Qamera via Pixabay — https://pixabay.com/photos/motion-trains-subway-train-railway-4123328/
+- gabyobs via Pixabay — https://pixabay.com/photos/japan-tokyo-train-station-people-4549074/
+- Kanenori via Pixabay — https://pixabay.com/videos/id-205346/
+- meguraw645 via Pixabay — https://pixabay.com/photos/shibuya-intersection-cityscape-2328029/
+- FranckinJapan via Pixabay — https://pixabay.com/photos/japan-tokyo-subway-train-wait-1529456/
+- viarami via Pixabay — https://pixabay.com/videos/id-31889/
+- 16944022 via Pixabay — https://pixabay.com/videos/id-87492/
+- uniquedesign52 via Pixabay — https://pixabay.com/photos/city-tokyo-street-view-subway-666097/
+- moritzklassen via Pixabay — https://pixabay.com/photos/tokyo-asia-japan-people-subway-1536844/
+- shin307 via Pixabay — https://pixabay.com/videos/id-136854/
+- djedj via Pixabay — https://pixabay.com/photos/subway-train-train-station-5585064/
+- TungArt7 via Pixabay — https://pixabay.com/videos/id-248449/
+- 16944022 via Pixabay — https://pixabay.com/videos/id-87490/
+- Mentor_Henry via Pixabay — https://pixabay.com/photos/subway-japan-ikebukuro-1718402/
+- dpung via Pixabay — https://pixabay.com/photos/japan-subway-tokyo-931162/
+- Natures_Embrace via Pixabay — https://pixabay.com/videos/id-241395/
+- rubencozar via Pixabay — https://pixabay.com/videos/id-357246/
+- Kanenori via Pixabay — https://pixabay.com/videos/id-202740/
+- travellm via Pixabay — https://pixabay.com/photos/tokyo-railway-museum-train-subway-2268132/
+- 魔理沙のズボラ飯 via Pixabay — https://pixabay.com/videos/id-66410/
+- motihada via Pixabay — https://pixabay.com/photos/train-bullet-train-tokyo-station-2527964/
+- kjmhdk66112 via Pixabay — https://pixabay.com/photos/bullet-train-tokyo-station-2794178/
+- mhardy62 via Pixabay — https://pixabay.com/videos/id-4431/
+- kazokuda via Pixabay — https://pixabay.com/photos/jr-east-japan-tokyo-station-1342722/
+- yuyuyaya76 via Pixabay — https://pixabay.com/photos/bullet-train-japan-train-3846965/
+- SterlingTeaches via Pixabay — https://pixabay.com/videos/id-188724/
+- travelphotographer via Pixabay — https://pixabay.com/photos/japanese-signs-train-station-5933190/
+- Emir_Saleh via Pixabay — https://pixabay.com/videos/id-143363/
+- getluckman via Pixabay — https://pixabay.com/photos/japan-train-station-train-tokyo-1874458/
+- Kanenori via Pixabay — https://pixabay.com/videos/id-246618/
+- JayShawflybydrones via Pixabay — https://pixabay.com/videos/id-236768/
+- Heztherock via Pixabay — https://pixabay.com/videos/id-48588/
+- Kanenori via Pixabay — https://pixabay.com/videos/id-205346/
+- Kanenori via Pixabay — https://pixabay.com/videos/id-211067/
+- 16944022 via Pixabay — https://pixabay.com/videos/id-87490/
+- 16944022 via Pixabay — https://pixabay.com/videos/id-87491/
+- mutomasataka via Pixabay — https://pixabay.com/videos/id-20767/
+- Kanenori via Pixabay — https://pixabay.com/videos/id-256109/
+
+Diagrams, maps, charts and animation: How It's Run (own work). Globe: Natural Earth (public domain).
+Music and sound: own synthesis. Voice: synthetic (Fish Audio TTS), script by How It's Run.
