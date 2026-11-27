@@ -227,13 +227,13 @@ depths = [3300, 3420, 3360, 3500, 3380, 3530, 3440, 3330, 3480, 3400, 3290]
 for i, dpt in enumerate(depths):
     x = 2350 + i * 30
     line([[x, GY + 8], [x, dpt]], 64.0 + i * .14, .22, 'graphite', 6)
-ink('count', 64.4, 1.6, 'blue', text='≈ {0} свай', to=[270], xy=[2810, 3080], size=82)
+ink('count', 64.4, 1.6, 'blue', text='≈ {0} свай', to=[270], xy=[2200, 3090], size=86, align='right')
 ink('dim', 66.4, .9, 'blue', **{'from': [2705, GY + 10], 'to': [2705, 3530]}, lw=6)
-write('самые длинные ≈ 110 м', 2810, 3200, 67.0, 1.6, 'blue', 60)
-write('выше башня → глубже корни', 2810, 3360, 69.25, 1.9, 'graphite', 66)
-magnet(2770, 3337, 71.6, r=22)
+write('самые длинные ≈ 110 м', 2200, 3215, 67.0, 1.6, 'blue', 62, align='right')
+write('выше башня → глубже корни', 2200, 3375, 69.25, 1.9, 'graphite', 68, align='right')
+magnet(1330, 3352, 71.6, r=22)
 arrow([JX, 2840], [JX, 2280], 74.2, .5, 'blue', 7)
-arrow([2215, 2950], [2215, 3500], 74.7, .5, 'blue', 7)
+arrow([2810, 2960], [2810, 3510], 74.7, .5, 'blue', 7)
 line([[5115, OBS + 20], [5135, OBS + 20], [5135, CAB[0] - 8], [5115, CAB[0] - 8]], 75.9, .8, 'blue', 5)
 write('а трос не растёт', 5150, 2510, 77.9, 1.1, 'red', 66)
 
@@ -251,7 +251,7 @@ mw = lambda y: 120 * ((y - MT) / (GY - MT)) ** .8
 my = [MT + (GY - MT) * i / 20 for i in range(21)]
 line([[5960, GY], [8450, GY]], 89.4, .5, lw=10)
 line([[MX - mw(y), y] for y in reversed(my)] + [[MX + mw(y), y] for y in my[1:]], 89.75, 1.6, lw=7, dash=[22, 14])
-write('башня в милю', 7330, 1040, 90.6, 1.0, 'graphite', 56)
+write('башня в милю', 6600, 1040, 90.6, 1.0, 'graphite', 80)
 line([[MX, GY - 10], [MX, 1350]], 91.35, .7, 'grey', 4)
 for i, rot in enumerate((0, 60, 120)): line(ellipse((6520, 2370), 58, 20, rot, 30), 91.5 + i * .15, .15, lw=4)
 line(circle((6520, 2370), 7, 10), 91.95, .05, lw=6)
@@ -263,18 +263,18 @@ write('рисунок остался', 7120, 2610, 96.7, 1.0, 'graphite', 56, al
 
 # ---------------------------------------------------------------- P7 98.75–113.67 a mile > 1.5 km; tripod; nothing to test it with
 line([[1300, KM15], [7500, KM15]], 98.85, 1.6, 'blue', 6, dash=[24, 18])
-write('1,5 км', 1270, 1122, 99.2, .6, 'blue', 80, align='right')
+write('1,5 км', 1270, 1135, 99.2, .6, 'blue', 120, align='right')
 ink('dim', 98.9, 1.4, 'blue', **{'from': [7440, GY], 'to': [7440, MT]}, lw=8, ea=1.6, eb=2.4)
-write('миля > 1,5 км', 7500, 1300, 99.6, 1.1, 'blue', 84)
+write('миля > 1,5 км', 7500, 1480, 99.6, 1.1, 'blue', 130)
 # sway: arcs either side of the top, then the tripod plan
-line(arc((MX, 1700), 260, 260, -112, -98, 8), 101.0, .3, 'blue', 5, arrow=True)
-line(arc((MX, 1700), 260, 260, -68, -82, 8), 101.3, .3, 'blue', 5, arrow=True)
-write('меньше качается', 7560, 2150, 102.6, 1.3, 'graphite', 60)
-TC = (7800, 1700)
+line(arc((MX, 2150), 300, 300, -110, -98, 8), 101.0, .3, 'blue', 6, arrow=True)
+line(arc((MX, 2150), 300, 300, -70, -82, 8), 101.3, .3, 'blue', 6, arrow=True)
+write('меньше качается', 7520, 1985, 102.6, 1.3, 'graphite', 64)
+TC = (7880, 2290)
 line(circle(TC, 150, 40), 104.9, .4, 'grey', 4, dash=[12, 10])
 for i, a in enumerate((-90, 30, 150)):
     line([TC, [TC[0] + 130 * math.cos(math.radians(a)), TC[1] + 130 * math.sin(math.radians(a))]], 105.25 + i * .15, .15, lw=9)
-write('треножник', 7600, 2045, 105.6, .9, 'graphite', 72)
+write('треножник', 7660, 2560, 105.6, .9, 'graphite', 72)
 write('проверить нечем:', 6090, 2720, 107.8, 1.2, 'graphite', 54)
 tag('лифты', 6140, 2830, 109.7, size=46, rot=-1.5, strike=dict(t=110.3, d=.2, color='red')); ev(110.3, 'strike', .2)
 tag('тросы', 6480, 2830, 110.7, size=46, rot=1.5, strike=dict(t=111.3, d=.2, color='red')); ev(111.3, 'strike', .2)
@@ -282,16 +282,16 @@ tag('тросы', 6480, 2830, 110.7, size=46, rot=1.5, strike=dict(t=111.3, d=.2
 # ---------------------------------------------------------------- P8 114.40–129.34 where is the ceiling? there is one; the rope again
 stick(8000, GY - 4, 114.5, h=118)
 arrow([8095, 2700], [8095, 2840], 114.9, .35, 'blue', 5)
-tag('Тимур', 7640, 2840, 115.3, size=44, rot=-2)
-write('где потолок?', 7560, 2690, 117.1, 1.0, 'graphite', 76)
-CEIL = 640
+tag('Тимур', 7600, 2845, 115.3, size=44, rot=-2)
+write('где потолок?', 7520, 2725, 117.1, 1.0, 'graphite', 76)
+CEIL = 690
 line([[700, CEIL], [8450, CEIL]], 118.6, 2.2, 'red', 7, dash=[30, 20], ea=1.6, eb=2.2)
-write('ни лифт, ни сталь?', 5900, CEIL - 60, 121.4, 1.2, 'graphite', 96)
-el(type='stamp', text='ЕСТЬ', xy=[7720, CEIL - 200], size=130, rot=-6, t=123.5); ev(123.5, 'stamp', .1)
+write('ни лифт, ни сталь?', 5300, CEIL + 120, 121.4, 1.2, 'graphite', 96)
+el(type='stamp', text='ЕСТЬ', xy=[7990, CEIL + 210], size=120, rot=-6, t=123.5); ev(123.5, 'stamp', .1)
 RX = 8250
 line([[RX, GY - 8], [RX, 330]], 123.85, 1.8, 'graphite', 9, ea=1.4, eb=1.8)
-tag('трос', 8300, 1500, 125.0, size=64, rot=3)
-write('такого ещё не делали', 8200, 870, 126.0, 1.7, 'graphite', 84, align='right')
+tag('трос', 8300, 1760, 125.0, size=64, rot=3)
+write('такого ещё не делали', 8200, 1210, 126.0, 1.7, 'graphite', 84, align='right')
 
 # ===================================================================== camera (one continuous camera; only the cards hide it)
 c = Cam(*fit([110, 1790, 1400, 3080]))
@@ -312,10 +312,10 @@ c.fit(46.1, 1.9, [2400, 1950, 5400, 2930], a=1.8, b=3)              # ride the p
 c.fit(48.4, 1.6, [4560, 1990, 6100, 2930], a=2, b=3)
 c.to(50.1, 6.0, z=z_of(c) * 1.025)
 c.fit(58.9, 1.4, [4560, 1830, 6150, 2930], a=2, b=3)                # the source card
-c.fit(63.3, 1.9, [2150, 2850, 4000, 3600], zmax=1.15, a=2, b=3)     # down to the piles
+c.fit(63.3, 1.9, [1250, 2850, 2900, 3600], zmax=1.15, a=2, b=3)     # down to the piles
 c.to(65.3, 3.6, z=z_of(c) * 1.02)
-c.fit(69.0, 1.3, [2150, 2850, 3900, 3600], zmax=1.15, a=2, b=3)     # the rule
-c.fit(73.9, 1.4, [2100, 2150, 3900, 3600], a=2, b=3)                # tower up, roots down
+c.fit(69.0, 1.3, [1250, 2850, 2900, 3600], zmax=1.15, a=2, b=3)     # the rule
+c.fit(73.9, 1.4, [1250, 2150, 2950, 3600], a=2, b=3)                # tower up, roots down
 c.fit(75.4, 1.8, [4560, 1830, 6150, 2930], a=2, b=3)                # the rope: it does not grow
 c.to(77.3, 2.2, z=z_of(c) * 1.02)
 c.fit(79.5, 2.2, [80, 1350, 6100, 3600], a=1.8, b=3)                # chapter pull-back: the Jeddah wall
@@ -325,14 +325,14 @@ c.fit(86.3, 2.6, [6000, 1250, 7700, 2330], a=2, b=3, ax='l')
 c.fit(89.3, 1.8, [6000, 950, 8200, 2930], a=2, b=3, ax='l')                 # the mile tower, nuclear lifts, never built
 c.fit(91.4, 2.3, [6000, 1900, 7700, 2930], a=2, b=3, ax='l')
 c.to(94.0, 4.0, z=z_of(c) * 1.025)
-c.fit(98.6, 2.0, [100, 950, 8450, 3100], a=1.8, b=3)                # the mile against Burj and Jeddah
+c.fit(98.6, 2.0, [100, 950, 8600, 3620], a=1.8, b=3)                # the mile against Burj and Jeddah
 c.to(100.6, .6, z=z_of(c) * 1.005)
-c.fit(101.0, 1.7, [6750, 1000, 8600, 2935], a=2, b=3, ax='r')               # sway, tripod
+c.fit(101.0, 1.7, [6800, 1760, 8640, 2935], a=2, b=3, ax='r')               # sway, tripod
 c.to(102.7, 4.0, z=z_of(c) * 1.03)
 c.fit(107.4, 1.6, [6000, 1950, 7800, 2930], a=2, b=3, ax='l')               # nothing to test it with
 c.to(109.0, 4.5, z=z_of(c) * 1.02)
 c.fit(114.1, 1.6, [6900, 2000, 8620, 2930], a=2, b=3, ax='r')               # Timur: where is the ceiling?
-c.fit(118.4, 2.4, [5700, 330, 8640, 2935], a=1.8, b=3, ax='r')              # rise to the ceiling
+c.fit(118.4, 2.4, [5200, 585, 8640, 2935], a=1.8, b=3, ax='r')              # rise to the ceiling
 c.to(120.8, 2.6, z=z_of(c) * 1.02)
 c.to(123.4, 3.0, z=z_of(c) * 1.02)                # the rope, all the way up
 c.fit(126.6, 3.4, [60, 300, 8650, 3600], a=1.8, b=3.2)              # the whole wall

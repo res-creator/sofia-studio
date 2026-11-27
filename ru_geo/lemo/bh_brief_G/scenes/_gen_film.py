@@ -26,9 +26,10 @@ meta = lambda i: json.load(open(os.path.join(OBJ, i + '.json')))
 MET = json.load(open(os.path.join(HERE, 'metrics.json')))
 OFF = 481.72                     # film time of local 0
 DUR = 131.82
-BW, BH = 9600, 3950
+BW, BH = 9900, 3950
 GX, GY0 = 300, 150                # the whole layout below is shifted by (GX, GY0) on the board at the end
-BX = 300                         # zones B–F sit a further 300 px right of the elevator (a clear gap)
+BX = 200                         # zones B–F sit a further 200 px right of the elevator (a clear gap)
+FS = 400                         # zone F sits a further 400 px right (so its close-ups never cut zone D's lines)
 
 def tw(text, size, font='marker'):
     """width of marker lettering in board px (same layout as board.js writeLayout: track .02 em)"""
@@ -82,18 +83,19 @@ class Cam:
         s.moves.append(m)
         if d > .6 and (abs(m.get('dx', 0)) * z_of(s) > 500 or abs(m.get('dy', 0)) * z_of(s) > 400 or abs(m.get('dl', 0)) > .5): ev(t, 'whoosh', d)
         return t + d
-    def fit(s, t, d, box, zmax=1.0, roll=None, a=2, b=2.6):
-        x, y, z = fit(box, zmax); return s.to(t, d, x, y, z, roll, a, b)
+    def fit(s, t, d, box, zmax=1.0, roll=None, a=2, b=2.6, sx=SAFE_X):
+        x, y, z = fit(box, zmax, sx); return s.to(t, d, x, y, z, roll, a, b)
     def shake(s, t, amp=5, f=9, k=7, dir=(0, 1)):
         s.shakes.append(dict(t=t, amp=amp, f=f, k=k, dir=list(dir)))
     def json(s): return dict(x=s.base['x'], y=s.base['y'], z=s.base['z'], roll=0, moves=s.moves, shakes=s.shakes)
 def z_of(c): return math.exp(c.cur['lz'])
 SAFE_Y0, SAFE_Y1, SAFE_X = 50, 800, 90      # the drawing band on screen: nothing below y = 830 (subtitles)
-def fit(box, zmax=1.0):
+def fit(box, zmax=1.0, sx=SAFE_X):
     x0, y0, x1, y1 = box
     if x0 >= 2600: x0 += BX; x1 += BX
+    if x0 >= 7000: x0 += FS; x1 += FS
     x0 += GX; x1 += GX; y0 += GY0; y1 += GY0
-    z = min(zmax, (1920 - 2 * SAFE_X) / (x1 - x0), (SAFE_Y1 - SAFE_Y0) / (y1 - y0))
+    z = min(zmax, (1920 - 2 * sx) / (x1 - x0), (SAFE_Y1 - SAFE_Y0) / (y1 - y0))
     cy = (y0 + y1) / 2 + (540 - (SAFE_Y0 + SAFE_Y1) / 2) / z
     return (x0 + x1) / 2, cy, z
 
@@ -244,6 +246,7 @@ arrow([5480, TOP - 15], [5480, KM + 20], 100.6, .35, 'blue', 6)
 write('дальше решит', 6020, 3000, 101.2, .9, size=90)
 write('материал', 6020, 3140, 102.7, .7, 'red', 110)
 
+F0 = len(E)
 # ===================================================================== F. Timur reaches the top  (V36 104.48–119.58)
 FX = 7100; CX, GY = 7750, 1950; K = 1250 / 1300
 prof = [(220, 2000), (208, 1650), (170, 1650), (158, 1350), (120, 1350), (102, 1090), (62, 1090), (42, 860), (26, 860), (0, 700)]
@@ -284,7 +287,8 @@ def shift(e, dx, dy=0):
         if isinstance(e.get(k), list) and len(e[k]) == 2 and not isinstance(e[k][0], list): e[k] = [e[k][0] + dx, e[k][1] + dy]
     if 'points' in e: e['points'] = [[x + dx, y + dy] for x, y in e['points']]
     for st in e.get('strokes', []): st['points'] = [[x + dx, y + dy] for x, y in st['points']]
-for e in E[B0:A2] + E[A3:]: shift(e, BX)        # the elevator's own later marks (A2…A3) stay on the cable
+for e in E[B0:A2] + E[A3:]: shift(e, BX)
+for e in E[F0:]: shift(e, FS)        # the elevator's own later marks (A2…A3) stay on the cable
 for e in E: shift(e, GX, GY0)
 
 # ===================================================================== camera (one continuous camera; the card hides the start)
@@ -313,10 +317,11 @@ c.fit(83.5, 1.6, [5000, 380, 7050, 2010], a=2, b=3)                    # the jud
 c.shake(87.4, amp=4, f=10, k=8)
 c.fit(91.3, 1.3, [5000, 1720, 7050, 2340])
 c.fit(96.2, 1.5, [5000, 2560, 7050, 3480])                             # E: the record
-c.fit(103.9, 1.4, [7050, 640, 8450, 2010])                             # F: Timur at the top
-c.fit(107.9, 1.8, [7050, 760, 8450, 2730], a=2, b=3)
+c.fit(103.8, 1.3, [7050, 1330, 8450, 2040])                            # F: the tower's foot, the cabin starts
+c.fit(105.1, 1.8, [7050, 620, 8450, 1330], a=1.8, b=2.6)               # … and rides with it to the top
+c.fit(107.9, 1.6, [7050, 1980, 8450, 2730], a=2, b=3)                  # what he knows now
 c.fit(119.8, 1.4, [7050, 2780, 8450, 3470])                            # the question
-c.fit(126.3, 3.5, [250, 180, 8450 + BX, 3480], a=2, b=3.2)                  # the whole wall, once
+c.fit(126.3, 3.5, [250, 180, 6990, 3480], a=2, b=3.2, sx=40)                  # the whole wall, once
 c.to(129.9, 1.92, z=z_of(c) * 1.01)
 
 scene = dict(dur=DUR, board=dict(w=BW, h=BH, seed=41, texScale=.4, ghosts=150, tray=False), hand=1.0, sheen=.07,
