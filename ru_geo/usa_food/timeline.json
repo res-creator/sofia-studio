@@ -37,26 +37,62 @@
 {
 "t": 15.208,
 "d": 2.902,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_obesity.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
 },
 {
 "t": 18.11,
 "d": 3.623,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_diabetes.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
 },
 {
 "t": 21.733,
 "d": 3.623,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_ultra.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
 },
 {
 "t": 25.357,
 "d": 3.623,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_bun.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
 },
 {
 "t": 28.98,
@@ -89,8 +125,17 @@
 {
 "t": 42.86,
 "d": 3.47,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_drinks.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
 },
 {
 "t": 46.33,
@@ -101,32 +146,77 @@
 {
 "t": 48.93,
 "d": 3.224,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_extra.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
 },
 {
 "t": 52.154,
 "d": 3.224,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_sugar.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
 },
 {
 "t": 55.378,
 "d": 3.224,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_school.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
 },
 {
 "t": 58.602,
 "d": 3.224,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_obesity.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
 },
 {
 "t": 61.826,
 "d": 3.224,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_diabetes.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
 },
 {
 "t": 65.05,
@@ -137,56 +227,137 @@
 {
 "t": 68.65,
 "d": 3.188,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_ultra.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
 },
 {
 "t": 71.837,
 "d": 3.188,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_bun.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
 },
 {
 "t": 75.025,
 "d": 3.188,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_drinks.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
 },
 {
 "t": 78.213,
 "d": 3.188,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_extra.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
 },
 {
 "t": 81.4,
 "d": 3.094,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_sugar.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
 },
 {
 "t": 84.494,
 "d": 3.094,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_school.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
 },
 {
 "t": 87.588,
 "d": 3.094,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_obesity.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
 },
 {
 "t": 90.682,
 "d": 3.094,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_diabetes.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
 },
 {
 "t": 93.776,
 "d": 3.094,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_ultra.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
 },
 {
 "t": 96.87,
@@ -204,20 +375,47 @@
 {
 "t": 103.37,
 "d": 2.9,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_bun.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
 },
 {
 "t": 106.27,
 "d": 2.9,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_drinks.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
 },
 {
 "t": 109.17,
 "d": 2.9,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_extra.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
 },
 {
 "t": 112.07,
@@ -703,26 +901,62 @@
 {
 "t": 332.654,
 "d": 2.894,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_sugar.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
 },
 {
 "t": 335.548,
 "d": 2.894,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_school.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
 },
 {
 "t": 338.442,
 "d": 2.894,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_obesity.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
 },
 {
 "t": 341.336,
 "d": 2.894,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_diabetes.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
 },
 {
 "t": 344.23,
@@ -775,14 +1009,32 @@
 {
 "t": 368.16,
 "d": 3.03,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_ultra.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
 },
 {
 "t": 371.19,
 "d": 3.03,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_bun.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
 },
 {
 "t": 374.22,
@@ -793,32 +1045,77 @@
 {
 "t": 376.82,
 "d": 3.408,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_drinks.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
 },
 {
 "t": 380.228,
 "d": 3.408,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_extra.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
 },
 {
 "t": 383.636,
 "d": 3.408,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_sugar.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
 },
 {
 "t": 387.044,
 "d": 3.408,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_school.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
 },
 {
 "t": 390.452,
 "d": 3.408,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_obesity.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
 },
 {
 "t": 393.86,
@@ -830,32 +1127,77 @@
 {
 "t": 396.798,
 "d": 2.938,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_diabetes.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
 },
 {
 "t": 399.737,
 "d": 2.938,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_ultra.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
 },
 {
 "t": 402.675,
 "d": 2.938,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_bun.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
 },
 {
 "t": 405.613,
 "d": 2.938,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_drinks.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
 },
 {
 "t": 408.552,
 "d": 2.938,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_extra.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
 },
 {
 "t": 411.49,
@@ -1011,32 +1353,77 @@
 {
 "t": 480.88,
 "d": 2.936,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_sugar.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
 },
 {
 "t": 483.816,
 "d": 2.936,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_school.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
 },
 {
 "t": 486.752,
 "d": 2.936,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_obesity.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
 },
 {
 "t": 489.688,
 "d": 2.936,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_diabetes.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
 },
 {
 "t": 492.624,
 "d": 2.936,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_ultra.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
 },
 {
 "t": 495.56,
@@ -1082,56 +1469,137 @@
 {
 "t": 516.688,
 "d": 3.178,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_bun.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
 },
 {
 "t": 519.867,
 "d": 3.178,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_drinks.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
 },
 {
 "t": 523.045,
 "d": 3.178,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_extra.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
 },
 {
 "t": 526.223,
 "d": 3.178,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_sugar.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
 },
 {
 "t": 529.402,
 "d": 3.178,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_school.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
 },
 {
 "t": 532.58,
 "d": 3.212,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_obesity.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
 },
 {
 "t": 535.793,
 "d": 3.212,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_diabetes.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
 },
 {
 "t": 539.005,
 "d": 3.212,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_ultra.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
 },
 {
 "t": 542.217,
 "d": 3.212,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_bun.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
 },
 {
 "t": 545.43,
@@ -1149,56 +1617,137 @@
 {
 "t": 551.448,
 "d": 3.418,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_drinks.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
 },
 {
 "t": 554.866,
 "d": 3.418,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_extra.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
 },
 {
 "t": 558.284,
 "d": 3.418,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_sugar.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
 },
 {
 "t": 561.702,
 "d": 3.418,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_school.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
 },
 {
 "t": 565.12,
 "d": 3.26,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_obesity.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
 },
 {
 "t": 568.38,
 "d": 3.26,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_diabetes.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
 },
 {
 "t": 571.64,
 "d": 3.26,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_ultra.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
 },
 {
 "t": 574.9,
 "d": 3.26,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_bun.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
 },
 {
 "t": 578.16,
 "d": 3.26,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_drinks.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
 },
 {
 "t": 581.42,
@@ -1224,8 +1773,17 @@
 {
 "t": 591.41,
 "d": 3.33,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_extra.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
 },
 {
 "t": 594.74,
@@ -1271,32 +1829,77 @@
 {
 "t": 614.85,
 "d": 3.14,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_sugar.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
 },
 {
 "t": 617.99,
 "d": 3.14,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_school.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
 },
 {
 "t": 621.13,
 "d": 3.14,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_obesity.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
 },
 {
 "t": 624.27,
 "d": 3.14,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_diabetes.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
 },
 {
 "t": 627.41,
 "d": 3.14,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_ultra.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
 },
 {
 "t": 630.55,
@@ -1371,26 +1974,62 @@
 {
 "t": 661.09,
 "d": 3.56,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_bun.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
 },
 {
 "t": 664.65,
 "d": 3.56,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_drinks.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
 },
 {
 "t": 668.21,
 "d": 3.56,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_extra.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
 },
 {
 "t": 671.77,
 "d": 3.56,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_sugar.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
 },
 {
 "t": 675.33,
