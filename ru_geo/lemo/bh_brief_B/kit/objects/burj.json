@@ -1,0 +1,24 @@
+{
+ "id": "burj",
+ "size": [
+  240,
+  865
+ ],
+ "anchors": {
+  "top": [
+   0.9958333333333333,
+   0.0
+  ],
+  "base": [
+   0.5,
+   1.0
+  ]
+ },
+ "credit": {
+  "title": "Burj Khalifa Image.jpg",
+  "author": "Meandmybrix",
+  "licence": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Burj_Khalifa_Image.jpg"
+ },
+ "how": "sky key (b>180, b-r>62) inside a hand polygon, largest piece, soft edge; photo's own resolution"
+}

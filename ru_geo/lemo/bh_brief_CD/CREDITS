@@ -1,0 +1,17 @@
+Высота зданий · board film (Engineering Briefing Board style) — credits
+
+Photographs (from ru_geo/building_height/archive/credits.json)
+  burj.png          Burj Khalifa, Dubai — "Burj Khalifa Image.jpg", Meandmybrix, CC0
+                    https://commons.wikimedia.org/wiki/File:Burj_Khalifa_Image.jpg
+                    cut out with a sky key inside a hand polygon (tools/cut/cut_burj.py); the EMAAR-lettered building at the base cut away
+  print_jeddah.png  Jeddah Tower under construction — "Jeddah Tower in its 88th floor.jpg", Omarnizar05, CC0
+                    https://commons.wikimedia.org/wiki/File:Jeddah_Tower_in_its_88th_floor.jpg   (uncut crop on photo paper)
+  print_otis.png    Elisha Otis demonstrating the safety elevator, New York, 1854 (later illustration) — author unknown, public domain
+                    https://commons.wikimedia.org/wiki/File:Elisha_OTIS_1854_(cropped).jpg      (uncut crop on photo paper)
+  Every photo is shown at >= 1 source pixel per screen pixel (tools/rescheck.mjs: lowest 1.16, Burj at 10.25 s).
+
+Fonts (SIL Open Font License 1.1, Google Fonts)
+  Pangolin (marker lettering), Fira Sans Condensed (tags), IBM Plex Mono (typewriter cards)
+
+Engine: Lemo-Opuscar styles/briefing-board/demo/kit (board.js, copied and adapted: Cyrillic fonts, rolling numbers,
+typewriter cards on black, 30 fps shutter). No generated images.

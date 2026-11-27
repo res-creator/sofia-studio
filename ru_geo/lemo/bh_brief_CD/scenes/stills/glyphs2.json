@@ -1,0 +1,7 @@
+{ "extends": "scenes/film.json", "t": 1000, "hand": 0, "cards": [],
+  "cam": { "x": 1500, "y": 1300, "z": 0.5, "moves": [] },
+  "elements": [
+   {"type":"ink","kind":"write","text":"ЁЙЫЩ ёйыщ жюэъ 1 мм² × → –","xy":[300,600],"size":120,"color":"graphite","t":0,"d":0.1},
+   {"type":"tag","text":"ЁЙЫЩ ёйыщ жю","xy":[300,900],"size":90},
+   {"type":"stamp","text":"РВЁТСЯ","xy":[1500,1200],"size":120,"t":0}
+  ] }

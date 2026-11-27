@@ -1,0 +1,15 @@
+{
+  "id": "print_otis",
+  "w": 1002,
+  "h": 942,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/building_height/archive/img/ph_otis.jpg",
+    "id": "print_otis",
+    "crop": "700,0,1620,860",
+    "w": 920,
+    "border": 0.045,
+    "sat": 1.0
+  }
+}
