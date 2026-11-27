@@ -1,0 +1,140 @@
+{
+"1": [
+"tuc_plane",
+"seven_map@0.67"
+],
+"2": [
+"scales",
+"protection@0.56"
+],
+"3": [
+"everest_shuttle",
+"pressure_third@0.07",
+"tuc_everest@0.31"
+],
+"4": [
+"tuc_everest",
+"hypoxia_chain@0.18"
+],
+"5": [
+"acclim",
+"death_zone@0.26",
+"everest_iss@0.48"
+],
+"6": [
+"climbers_everest",
+"first_ascent@0.13",
+"death_zone@0.45",
+"tuc_everest@0.64"
+],
+"7": [
+"nyos_map",
+"nyos_pano@0.13",
+"co2_bottle@0.37",
+"co2_valley@0.74"
+],
+"8": [
+"co2_valley",
+"nyos_1986@0.57"
+],
+"9": [
+"nyos_symptoms",
+"nyos_pano@0.65"
+],
+"10": [
+"nyos_1986",
+"nyos_vent@0.65"
+],
+"11": [
+"nyos_radius",
+"nyos_pano@0.58"
+],
+"12": [
+"nyos_monoun",
+"nyos_platform@0.56",
+"nyos_vent@0.71"
+],
+"13": [
+"cold_shock"
+],
+"14": [
+"cold_shock",
+"rule_1101@0.27"
+],
+"15": [
+"rule_1101_hour"
+],
+"16": [
+"hypothermia"
+],
+"17": [
+"mariana_map",
+"pressure_blocks@0.19"
+],
+"18": [
+"everest_trench",
+"scales@0.38",
+"trieste_1960@0.66"
+],
+"19": [
+"trieste_1960",
+"dives@0.36",
+"piccard_walsh@0.63"
+],
+"20": [
+"vostok_map",
+"vostok_temps@0.21"
+],
+"21": [
+"vostok_temps",
+"vostok_alt@0.17",
+"protection@0.65"
+],
+"22": [
+"dv_map",
+"dv_temps@0.31"
+],
+"23": [
+"dv_temps",
+"dv_terra@0.73"
+],
+"24": [
+"dv_basin",
+"dv_july2024@0.41",
+"dv_terra@0.78"
+],
+"25": [
+"mponeng_map",
+"mine_depth@0.26"
+],
+"26": [
+"mine_cooling",
+"mine_depth@0.58"
+],
+"27": [
+"bubble",
+"scales@0.56"
+],
+"28": [
+"scales_gas",
+"nyos_pano@0.56",
+"scales@0.77"
+],
+"29": [
+"four_ways"
+],
+"30": [
+"insidious",
+"protection@0.75"
+],
+"31": [
+"gap",
+"seven_map@0.80"
+],
+"32": [
+"nyos_pano",
+"everest_iss@0.16",
+"tuc_plane@0.30",
+"seven_map@0.60"
+]
+}

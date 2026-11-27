@@ -3,7 +3,7 @@
   "file": "ocean_horizon.jpg",
   "author": "NASA Johnson Space Center",
   "license": "общественное достояние",
-  "cap": "открытый океан (иллюстративное фото)",
+  "cap": "ночной горизонт Земли с борта МКС над южной частью Тихого океана (2024)",
   "page": "https://commons.wikimedia.org/wiki/File:A_Golden_Atmospheric_Glow_Crowns_Earth%27s_Horizon_(iss071e207178).jpg",
   "title": "File:A Golden Atmospheric Glow Crowns Earth's Horizon (iss071e207178).jpg"
  },
@@ -11,7 +11,7 @@
   "file": "earth_globe_pacific.jpg",
   "author": "NASA",
   "license": "общественное достояние",
-  "cap": "Тихий океан из космоса",
+  "cap": "облака над Тихим океаном, снимок с шаттла (1992)",
   "page": "https://images.nasa.gov/details/s49-71-042",
   "title": "Collapsed Thunderstorm, Southwest Pacific Ocean"
  },
@@ -19,7 +19,7 @@
   "file": "deep_ocean.jpg",
   "author": "NASA",
   "license": "общественное достояние",
-  "cap": "глубокий океан (иллюстративное фото)",
+  "cap": "отмели и глубокий жёлоб у Багамских островов, снимок из космоса (1994)",
   "page": "https://images.nasa.gov/details/sts062-85-031",
   "title": "Earth observations from STS-62 flight"
  },
@@ -27,7 +27,7 @@
   "file": "mir_reentry.jpg",
   "author": "NASA",
   "license": "общественное достояние",
-  "cap": "станция «Мир» (фото 1998 года)",
+  "cap": "станция «Мир», снимок с шаттла «Дискавери» (1995)",
   "page": "https://images.nasa.gov/details/sts063-708-095",
   "title": "Mir space station as seen from STS-63 Discovery"
  },
@@ -35,7 +35,7 @@
   "file": "arctic_icebreaker.jpg",
   "author": "NASA",
   "license": "общественное достояние",
-  "cap": "дрейфующий лёд Арктики",
+  "cap": "исследователь на морском льду Арктики, экспедиция NASA (2010)",
   "page": "https://images.nasa.gov/details/201007040005HQ",
   "title": "ICESCAPE Mission"
  },
@@ -43,7 +43,7 @@
   "file": "antarctic_ice.jpg",
   "author": "NASA",
   "license": "общественное достояние",
-  "cap": "лёд Антарктиды",
+  "cap": "трещина в шельфовом леднике Ларсена, Антарктида (снимок со спутника)",
   "page": "https://images.nasa.gov/details/PIA20894",
   "title": "Growing Crack in Antarctica Larsen C Ice Shelf Spotted by NASA MISR"
  },
@@ -51,7 +51,7 @@
   "file": "bouvet_map.jpg",
   "author": "NASA",
   "license": "общественное достояние",
-  "cap": "карта: остров Буве в южной Атлантике",
+  "cap": "остров Буве, почти весь покрыт льдом; снимок с МКС (2008)",
   "page": "https://images.nasa.gov/details/iss017e016161",
   "title": "Earth Observations taken by the Expedition 17 Crew"
  },
@@ -59,7 +59,7 @@
   "file": "tristan_map.jpg",
   "author": "NASA",
   "license": "общественное достояние",
-  "cap": "карта: Тристан-да-Кунья",
+  "cap": "Тристан-да-Кунья: объёмная модель по снимку спутника (ложные цвета)",
   "page": "https://images.nasa.gov/details/PIA22506",
   "title": "Tristan da Cunha Island"
  },
@@ -67,7 +67,7 @@
   "file": "tristan_aerial.jpg",
   "author": "NASA",
   "license": "общественное достояние",
-  "cap": "остров Тристан-да-Кунья",
+  "cap": "Тристан-да-Кунья, снимок с МКС (2013)",
   "page": "https://images.nasa.gov/details/iss034e041528",
   "title": "Earth Observations taken by Expedition 34 crewmember"
  },
@@ -75,7 +75,7 @@
   "file": "tristan_ship.jpg",
   "author": "NASA",
   "license": "общественное достояние",
-  "cap": "корабль у Тристан-да-Куньи",
+  "cap": "остров Святой Елены, снимок с МКС (2009)",
   "page": "https://images.nasa.gov/details/iss019e014918",
   "title": "Earth Observations by the Expedition 19 crew"
  },
@@ -102,5 +102,549 @@
   "cap": "Остров Буве",
   "page": "https://github.com/johan/world.geo.json",
   "title": "Остров Буве"
+ },
+ "rp_nemo_circle": {
+  "file": "rp_nemo_circle.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Круг вокруг точки: до суши больше 2 500 км"
+ },
+ "rp_nemo_map": {
+  "file": "rp_nemo_map.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Точка Немо и три ближайшие земли"
+ },
+ "rp_nemo_world": {
+  "file": "rp_nemo_world.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Точка Немо: южная часть Тихого океана"
+ },
+ "rp_nemo_coords": {
+  "file": "rp_nemo_coords.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Координаты точки Немо"
+ },
+ "rp_iss_vs_land_a": {
+  "file": "rp_iss_vs_land_a.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Ближайшие люди: над головой"
+ },
+ "rp_iss_vs_land": {
+  "file": "rp_iss_vs_land.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Кто ближе к точке Немо?"
+ },
+ "rp_nemo_latin": {
+  "file": "rp_nemo_latin.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "«Немо» значит «никто»"
+ },
+ "rp_q_far": {
+  "file": "rp_q_far.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Как измерить «далеко»?"
+ },
+ "rp_from_what": {
+  "file": "rp_from_what.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Далеко от чего?"
+ },
+ "rp_pole_def": {
+  "file": "rp_pole_def.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Что такое полюс недоступности"
+ },
+ "rp_pole_kinds": {
+  "file": "rp_pole_kinds.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Три вида полюсов недоступности"
+ },
+ "rp_lukatela": {
+  "file": "rp_lukatela.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "1992: расчёт Хрвое Лукателы"
+ },
+ "rp_coast_shift": {
+  "file": "rp_coast_shift.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Учёт островка сдвигает полюс"
+ },
+ "rp_okolo": {
+  "file": "rp_okolo.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Почему цифры «около»"
+ },
+ "rp_rulers": {
+  "file": "rp_rulers.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Три линейки отдалённости"
+ },
+ "rp_rulers_full": {
+  "file": "rp_rulers_full.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Три линейки отдалённости"
+ },
+ "rp_ship_days": {
+  "file": "rp_ship_days.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Сколько плыть до суши: прикидка"
+ },
+ "rp_iss_orbit": {
+  "file": "rp_iss_orbit.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "16 восходов в сутки"
+ },
+ "rp_iss_years": {
+  "file": "rp_iss_years.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "МКС: 8 км/с, экипаж с 2000 года"
+ },
+ "rp_ship_near": {
+  "file": "rp_ship_near.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Корабль ближе 400 км отменяет прикидку"
+ },
+ "rp_life_chain": {
+  "file": "rp_life_chain.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Почему мало жизни"
+ },
+ "rp_260": {
+  "file": "rp_260.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "≈ 260 затопленных аппаратов (оценка)"
+ },
+ "rp_deorbit": {
+  "file": "rp_deorbit.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Управляемое затопление: схема"
+ },
+ "rp_arctic": {
+  "file": "rp_arctic.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Арктический полюс недоступности"
+ },
+ "rp_antarctic": {
+  "file": "rp_antarctic.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Полюс недоступности Антарктиды"
+ },
+ "rp_eurasia": {
+  "file": "rp_eurasia.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Полюс недоступности Евразии"
+ },
+ "rp_bouvet": {
+  "file": "rp_bouvet.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Остров Буве: до Антарктиды ≈ 1 700 км"
+ },
+ "rp_bouvet_90": {
+  "file": "rp_bouvet_90.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Буве: ≈ 90 % подо льдом"
+ },
+ "rp_bouvet_dates": {
+  "file": "rp_bouvet_dates.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Буве: 1928 и 1979"
+ },
+ "rp_depth": {
+  "file": "rp_depth.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Бездна Челленджера ≈ 11 км"
+ },
+ "rp_up_down": {
+  "file": "rp_up_down.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Вверх и вниз: 400 км и 11 км"
+ },
+ "rp_tristan_loc": {
+  "file": "rp_tristan_loc.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Тристан: до Святой Елены ≈ 2 400 км"
+ },
+ "rp_cape_route": {
+  "file": "rp_cape_route.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Из Кейптауна на Тристан: ≈ 6 суток"
+ },
+ "rp_population": {
+  "file": "rp_population.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Население Тристана: ≈ 220 (2026)"
+ },
+ "rp_history_1867": {
+  "file": "rp_history_1867.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Хронология Тристана"
+ },
+ "rp_rename_1867": {
+  "file": "rp_rename_1867.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "1867: переименование посёлка"
+ },
+ "rp_island": {
+  "file": "rp_island.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Остров Тристан: один посёлок"
+ },
+ "rp_island_peak": {
+  "file": "rp_island_peak.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Остров вырос из вулкана"
+ },
+ "rp_surnames": {
+  "file": "rp_surnames.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Фамилии Тристана"
+ },
+ "rp_neighbours": {
+  "file": "rp_neighbours.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Соседи Тристана: Соловей, Недоступный, Гоф"
+ },
+ "rp_evac": {
+  "file": "rp_evac.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Эвакуация 1961 года"
+ },
+ "rp_return": {
+  "file": "rp_return.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Возвращение на Тристан"
+ },
+ "rp_answer": {
+  "file": "rp_answer.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Ответ: Точка Немо и Тристан"
+ },
+ "rp_firm": {
+  "file": "rp_firm.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Твёрдо и спорно"
+ },
+ "rp_minutes_years": {
+  "file": "rp_minutes_years.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Минуты над океаном и годы на острове"
+ },
+ "rp_q_end": {
+  "file": "rp_q_end.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Вопрос зрителям"
+ },
+ "iss_station": {
+  "file": "iss_station.jpg",
+  "author": "NASA / Роскосмос (экипаж 56-й экспедиции)",
+  "license": "общественное достояние (NASA)",
+  "cap": "Международная космическая станция, снимок с корабля «Союз» (2018)",
+  "page": "https://images.nasa.gov/details/iss056e201248",
+  "title": "iss056e201248"
+ },
+ "iss_sunrise": {
+  "file": "iss_sunrise.jpg",
+  "author": "NASA (экипаж 35-й экспедиции МКС)",
+  "license": "общественное достояние (NASA)",
+  "cap": "восход над южной частью Тихого океана, снимок с МКС (2013)",
+  "page": "https://images.nasa.gov/details/iss035e034848",
+  "title": "ISS035-E-034848"
+ },
+ "ice_shelf_edge": {
+  "file": "ice_shelf_edge.jpg",
+  "author": "NASA / Maria-Jose Vinas",
+  "license": "общественное достояние (NASA)",
+  "cap": "край шельфового ледника у острова Аделейд, Антарктида: где здесь «берег»?",
+  "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001609",
+  "title": "Edge of Ice Shelf"
+ },
+ "eos_village": {
+  "file": "eos_village.jpg",
+  "author": "michael clarke stuff",
+  "license": "CC BY-SA 2.0",
+  "cap": "Эдинбург Семи Морей, единственный посёлок Тристан-да-Куньи",
+  "page": "https://commons.wikimedia.org/wiki/File:Edinburgh_of_the_Seven_Seas_01.jpg",
+  "title": "File:Edinburgh of the Seven Seas 01.jpg"
+ },
+ "potato_patches": {
+  "file": "potato_patches.jpg",
+  "author": "Brian Gratwicke",
+  "license": "CC BY 2.0",
+  "cap": "Картофельные поля на Тристан-да-Кунье",
+  "page": "https://commons.wikimedia.org/wiki/File:Potato_patches_-_Tristan_da_Cunha.jpg",
+  "title": "File:Potato patches - Tristan da Cunha.jpg"
+ },
+ "nightingale_island": {
+  "file": "nightingale_island.jpg",
+  "author": "Brian Gratwicke",
+  "license": "CC BY 2.0",
+  "cap": "остров Соловей (Найтингейл) с моря",
+  "page": "https://commons.wikimedia.org/wiki/File:Nightingale_Island,_British_overseas_territory-20March2012.jpg",
+  "title": "File:Nightingale Island, British overseas territory-20March2012.jpg"
+ },
+ "tristan_from_nightingale": {
+  "file": "tristan_from_nightingale.jpg",
+  "author": "Brian Gratwicke",
+  "license": "CC BY 2.0",
+  "cap": "Тристан-да-Кунья на горизонте, вид с острова Соловей",
+  "page": "https://commons.wikimedia.org/wiki/File:View_of_Tristan_da_Cunha_from_Nightingale_island.jpg",
+  "title": "File:View of Tristan da Cunha from Nightingale island.jpg"
+ },
+ "trieste_1960": {
+  "file": "trieste_1960.jpg",
+  "author": "ВМС США (фото NH 96797)",
+  "license": "общественное достояние",
+  "cap": "батискаф «Триест» над Марианской впадиной перед погружением на дно, 23 января 1960",
+  "page": "https://commons.wikimedia.org/wiki/File:Bathyscaphe_Trieste_with_USS_Lewis_(DE-535)_over_the_Marianas_Trench,_23_January_1960_(NH_96797).jpg",
+  "title": "File:Bathyscaphe Trieste with USS Lewis (DE-535) over the Marianas Trench, 23 January 1960 (NH 96797).jpg"
+ },
+ "hms_challenger": {
+  "file": "hms_challenger.jpg",
+  "author": "гравюра из The Illustrated London News, 1872",
+  "license": "общественное достояние",
+  "cap": "британский корабль «Челленджер», гравюра 1872 года",
+  "page": "https://commons.wikimedia.org/wiki/File:HMS_Challenger_(1858).jpg",
+  "title": "File:HMS Challenger (1858).jpg"
+ },
+ "lenin_pole": {
+  "file": "lenin_pole.jpg",
+  "author": "Cookson69 (Team N2i)",
+  "license": "CC BY-SA 3.0",
+  "cap": "бывшая советская станция «Полюс недоступности» в Антарктиде: бюст Ленина над снегом (2007)",
+  "page": "https://commons.wikimedia.org/wiki/File:Southern_Pole_of_Inaccessibility_Henry_Cookson_team_n2i.jpg",
+  "title": "File:Southern Pole of Inaccessibility Henry Cookson team n2i.jpg"
+ },
+ "nemo_verne": {
+  "file": "nemo_verne.jpg",
+  "author": "Альфонс де Невиль, иллюстрация к роману Жюля Верна",
+  "license": "общественное достояние (CC0)",
+  "cap": "капитан Немо на палубе «Наутилуса», иллюстрация к роману Жюля Верна",
+  "page": "https://commons.wikimedia.org/wiki/File:CAPTAIN_NEMO_ON_TOP_OF_THE_NAUTILUS.jpg",
+  "title": "File:CAPTAIN NEMO ON TOP OF THE NAUTILUS.jpg"
+ },
+ "rp_history_1810": {
+  "file": "rp_history_1810.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Хронология Тристана"
+ },
+ "rp_history_1816": {
+  "file": "rp_history_1816.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Хронология Тристана"
+ },
+ "rp_history_1892": {
+  "file": "rp_history_1892.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Хронология Тристана"
+ },
+ "rp_q_where": {
+  "file": "rp_q_where.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Где живут дальше всех?"
+ },
+ "rp_estimates": {
+  "file": "rp_estimates.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Ранние оценки расходились"
+ },
+ "rp_flash": {
+  "file": "rp_flash.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Вспышка 1979: версии"
+ },
+ "rp_220_dots": {
+  "file": "rp_220_dots.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "≈ 220 жителей"
+ },
+ "rp_volcano_1961": {
+  "file": "rp_volcano_1961.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Последнее извержение: 1961"
+ },
+ "rp_1962": {
+  "file": "rp_1962.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Экспедиция 1962 года"
+ },
+ "motu_nui": {
+  "file": "motu_nui.jpg",
+  "author": "TravelingOtter",
+  "license": "CC BY 2.0",
+  "cap": "островок Моту-Нуи у острова Пасхи",
+  "page": "https://commons.wikimedia.org/wiki/File:Motu_Nui_Islet_-_Easter_Island_(5956399066).jpg",
+  "title": "File:Motu Nui Islet - Easter Island (5956399066).jpg"
+ },
+ "tristan_sea": {
+  "file": "tristan_sea.jpg",
+  "author": "Brian Gratwicke",
+  "license": "CC BY 2.0",
+  "cap": "Тристан-да-Кунья с моря: остров-вулкан",
+  "page": "https://commons.wikimedia.org/wiki/File:Tristan_da_Cunha,_British_overseas_territory-20March2012.jpg",
+  "title": "File:Tristan da Cunha, British overseas territory-20March2012.jpg"
  }
 }

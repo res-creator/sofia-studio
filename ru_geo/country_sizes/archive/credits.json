@@ -11,7 +11,7 @@
   "file": "old_sailing_ship.jpg",
   "author": "Rijksmuseum",
   "license": "общественное достояние",
-  "cap": "Парусный корабль XVI века (гравюра)",
+  "cap": "Парусные суда на гравюре 1596 года",
   "page": "https://commons.wikimedia.org/wiki/File:Vier_Javaanse_vaartuigen,_1596,_RP-P-OB-80.260.jpg",
   "title": "File:Vier Javaanse vaartuigen, 1596, RP-P-OB-80.260.jpg"
  },
@@ -19,7 +19,7 @@
   "file": "compass_old.jpg",
   "author": "Jan Janssonius",
   "license": "общественное достояние",
-  "cap": "Старинный морской компас",
+  "cap": "Роза ветров морского компаса (гравюра Я. Янсониуса, 1650)",
   "page": "https://commons.wikimedia.org/wiki/File:1650_Jansson_Wind_Rose,_Anemographic_Chart,_or_Map_of_the_Winds_-_Geographicus_-_Anemographica-jannson-1650.jpg",
   "title": "File:1650 Jansson Wind Rose, Anemographic Chart, or Map of the Winds - Geographicus - Anemographica-jannson-1650.jpg"
  },
@@ -254,5 +254,437 @@
   "cap": "Индонезия",
   "page": "https://github.com/johan/world.geo.json",
   "title": "Индонезия"
+ },
+ "cs_merc_gl_af": {
+  "file": "cs_merc_gl_af.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Гренландия и Африка на карте Меркатора"
+ },
+ "cs_af_gl": {
+  "file": "cs_af_gl.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Африка и Гренландия в одном масштабе"
+ },
+ "cs_14_gl": {
+  "file": "cs_14_gl.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "14 Гренландий рядом с Африкой в одном масштабе"
+ },
+ "cs_one_course": {
+  "file": "cs_one_course.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Схема: один курс против поправок в пути"
+ },
+ "cs_flanders": {
+  "file": "cs_flanders.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Фландрия (место рождения Меркатора) и Дуйсбург на карте"
+ },
+ "cs_title_1569": {
+  "file": "cs_title_1569.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Латинское название карты 1569 года"
+ },
+ "cs_tl_mercator": {
+  "file": "cs_tl_mercator.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Хронология: Меркатор и «Атлас»"
+ },
+ "cs_rhumb": {
+  "file": "cs_rhumb.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Локсодрома и кратчайший путь на карте Меркатора"
+ },
+ "cs_ruler": {
+  "file": "cs_ruler.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Курс по линейке на карте Меркатора"
+ },
+ "cs_ruler_gc": {
+  "file": "cs_ruler_gc.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Прямой курс и кратчайшая дуга"
+ },
+ "cs_stretch": {
+  "file": "cs_stretch.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Растяжение карты Меркатора по широте"
+ },
+ "cs_tissot": {
+  "file": "cs_tissot.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Одинаковые круги на карте Меркатора"
+ },
+ "cs_square60": {
+  "file": "cs_square60.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Два одинаковых квадрата на карте Меркатора"
+ },
+ "cs_gores": {
+  "file": "cs_gores.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Глобус, разрезанный на дольки, как апельсиновая корка"
+ },
+ "cs_two_jobs": {
+  "file": "cs_two_jobs.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "cs_two_jobs"
+ },
+ "cs_bars_af_gl": {
+  "file": "cs_bars_af_gl.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Африка и Гренландия: площади"
+ },
+ "cs_alg_gl": {
+  "file": "cs_alg_gl.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Алжир и Гренландия в одном масштабе"
+ },
+ "cs_merc_alg_gl": {
+  "file": "cs_merc_alg_gl.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Гренландия и Алжир на карте Меркатора"
+ },
+ "cs_inflate": {
+  "file": "cs_inflate.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Во сколько раз раздута площадь на карте Меркатора"
+ },
+ "cs_gl_shrink": {
+  "file": "cs_gl_shrink.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Гренландия на своём месте и у экватора на карте Меркатора"
+ },
+ "cs_area_rule": {
+  "file": "cs_area_rule.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Площадь растёт как квадрат растяжения"
+ },
+ "cs_merc_ru_af": {
+  "file": "cs_merc_ru_af.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Россия и Африка на карте Меркатора"
+ },
+ "cs_ru_af": {
+  "file": "cs_ru_af.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Россия и Африка в одном масштабе"
+ },
+ "cs_bars_ru": {
+  "file": "cs_bars_ru.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Россия, Канада, Китай и Африка: площади"
+ },
+ "cs_congo_fr": {
+  "file": "cs_congo_fr.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "ДР Конго и Франция в одном масштабе"
+ },
+ "cs_congo_4fr": {
+  "file": "cs_congo_4fr.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "ДР Конго и четыре Франции в одном масштабе"
+ },
+ "cs_africa_top": {
+  "file": "cs_africa_top.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Алжир и ДР Конго на карте Африки"
+ },
+ "cs_br_us48": {
+  "file": "cs_br_us48.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Бразилия и материковые США в одном масштабе"
+ },
+ "cs_indo_span": {
+  "file": "cs_indo_span.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Индонезия с запада на восток"
+ },
+ "cs_indo_us": {
+  "file": "cs_indo_us.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Индонезия поверх США в одном масштабе"
+ },
+ "cs_stack3": {
+  "file": "cs_stack3.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "США, Китай и Индия вместе против Африки"
+ },
+ "cs_three_vs_af": {
+  "file": "cs_three_vs_af.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "США, Китай и Индия рядом с Африкой в одном масштабе"
+ },
+ "cs_moon_aus": {
+  "file": "cs_moon_aus.jpg",
+  "author": "собственная графика; изображение Луны: NASA/GSFC (по данным LRO), общественное достояние",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Ширина Австралии и диаметр Луны в одном масштабе"
+ },
+ "cs_bars_moon": {
+  "file": "cs_bars_moon.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Площадь Луны, Азии, Африки и Австралии"
+ },
+ "cs_rules12": {
+  "file": "cs_rules12.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "cs_rules12"
+ },
+ "cs_land_water": {
+  "file": "cs_land_water.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Площадь Канады: суша и суша с водой"
+ },
+ "cs_disputed": {
+  "file": "cs_disputed.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Схема: спорный район и площадь страны"
+ },
+ "cs_cross": {
+  "file": "cs_cross.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Схема: прямые углы улиц на веб-Меркаторе"
+ },
+ "cs_webmerc": {
+  "file": "cs_webmerc.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Весь мир в проекции веб-Меркатора"
+ },
+ "cs_two_sorts": {
+  "file": "cs_two_sorts.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Одинаковые круги на равноугольной и равновеликой картах"
+ },
+ "cs_gallpeters": {
+  "file": "cs_gallpeters.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Карта мира в проекции Галла — Петерса"
+ },
+ "cs_tl_gp": {
+  "file": "cs_tl_gp.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Хронология: Галл и Петерс"
+ },
+ "cs_tl_1986": {
+  "file": "cs_tl_1986.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Хронология: имя проекции в 1986 году"
+ },
+ "cs_tl_1998": {
+  "file": "cs_tl_1998.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Хронология: проекция Винкеля"
+ },
+ "cs_eq_before": {
+  "file": "cs_eq_before.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Равновеликие проекции Ламберта, Мольвейде и Галла"
+ },
+ "cs_seven": {
+  "file": "cs_seven.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "cs_seven"
+ },
+ "cs_winkel": {
+  "file": "cs_winkel.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Карта мира в проекции Винкеля с одинаковыми кругами"
+ },
+ "cs_three_maps": {
+  "file": "cs_three_maps.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Три задачи и три проекции"
+ },
+ "cs_globe": {
+  "file": "cs_globe.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Глобус: Гренландия и Африка без искажений"
+ },
+ "cs_q_table": {
+  "file": "cs_q_table.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Три вопроса к карте: Меркатор, Галл — Петерс, Винкель"
+ },
+ "moon_apollo13": {
+  "file": "moon_apollo13.jpg",
+  "author": "NASA (экипаж «Аполлона-13»)",
+  "license": "общественное достояние",
+  "cap": "Луна, снятая с «Аполлона-13» на пути к Земле, 1970",
+  "page": "https://images.nasa.gov/details/as13-60-8703",
+  "title": "AS13-60-8703: View of near full Moon photographed by Apollo 13"
+ },
+ "cs_br_us_bars": {
+  "file": "cs_br_us_bars.jpg",
+  "author": "собственная графика (границы стран: johan/world.geo.json, открытые данные)",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Бразилия и материковые США: площади"
+ },
+ "gauss_portrait": {
+  "file": "gauss_portrait.jpg",
+  "author": "Кристиан Альбрехт Йенсен",
+  "license": "общественное достояние",
+  "cap": "Карл Фридрих Гаусс, портрет 1840 года",
+  "page": "https://commons.wikimedia.org/wiki/File:Carl_Friedrich_Gauss_1840_by_Jensen.jpg",
+  "title": "File:Carl Friedrich Gauss 1840 by Jensen.jpg"
+ },
+ "atlas_1595": {
+  "file": "atlas_1595.jpg",
+  "author": "Герард Меркатор (издание 1595 г.)",
+  "license": "общественное достояние",
+  "cap": "Титульный лист «Атласа» Меркатора, 1595 год",
+  "page": "https://commons.wikimedia.org/wiki/File:Mercator_Atlas_1595_page_5_main_frontispiece.jpg",
+  "title": "File:Mercator Atlas 1595 page 5 main frontispiece.jpg"
  }
 }

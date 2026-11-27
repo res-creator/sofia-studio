@@ -1,0 +1,154 @@
+{
+ "1": [
+  "cs_af_gl",
+  "cs_14_gl@0.18",
+  "cs_merc_gl_af@0.39",
+  "cs_rhumb@0.65"
+ ],
+ "2": [
+  "old_sailing_ship",
+  "compass_old@0.26",
+  "cs_one_course@0.41",
+  "cs_flanders@0.80"
+ ],
+ "3": [
+  "mercator_portrait",
+  "cs_flanders@0.20",
+  "mercator_1569_map@0.39",
+  "cs_title_1569@0.56"
+ ],
+ "4": [
+  "cs_tl_mercator",
+  "atlas_1595@0.29",
+  "cs_merc_gl_af@0.69"
+ ],
+ "5": [
+  "cs_rhumb",
+  "rhumb_line_diagram@0.50"
+ ],
+ "6": [
+  "cs_ruler",
+  "cs_ruler_gc@0.48",
+  "old_sailing_ship@0.76"
+ ],
+ "7": [
+  "cs_tissot",
+  "cs_square60@0.19",
+  "cs_stretch@0.64"
+ ],
+ "8": [
+  "cs_tissot",
+  "gauss_portrait@0.14",
+  "cs_gores@0.32",
+  "mercator_portrait@0.63",
+  "cs_af_gl@0.72"
+ ],
+ "9": [
+  "cs_two_jobs",
+  "cs_merc_gl_af@0.46",
+  "cs_title_1569@0.78"
+ ],
+ "10": [
+  "cs_bars_af_gl",
+  "cs_af_gl@0.46",
+  "cs_merc_gl_af@0.68"
+ ],
+ "11": [
+  "cs_alg_gl",
+  "cs_africa_top@0.42",
+  "cs_merc_alg_gl@0.56"
+ ],
+ "12": [
+  "cs_gl_shrink",
+  "cs_inflate@0.25",
+  "cs_tissot@0.60"
+ ],
+ "13": [
+  "cs_area_rule",
+  "cs_square60@0.30",
+  "cs_stretch@0.61"
+ ],
+ "14": [
+  "cs_merc_ru_af",
+  "cs_ru_af@0.12",
+  "cs_bars_ru@0.45"
+ ],
+ "15": [
+  "cs_congo_fr",
+  "cs_congo_4fr@0.50"
+ ],
+ "16": [
+  "cs_br_us48",
+  "cs_br_us_bars@0.60"
+ ],
+ "17": [
+  "cs_indo_span",
+  "cs_indo_us@0.43"
+ ],
+ "18": [
+  "cs_three_vs_af",
+  "cs_stack3@0.16",
+  "cs_three_vs_af@0.74"
+ ],
+ "19": [
+  "moon_apollo13",
+  "cs_moon_aus@0.19"
+ ],
+ "20": [
+  "moon_apollo13",
+  "cs_bars_moon@0.21"
+ ],
+ "21": [
+  "cs_rules12",
+  "cs_land_water@0.43"
+ ],
+ "22": [
+  "cs_disputed",
+  "cs_stack3@0.79"
+ ],
+ "23": [
+  "cs_webmerc",
+  "cs_cross@0.47",
+  "cs_webmerc@0.71"
+ ],
+ "24": [
+  "cs_two_sorts",
+  "cs_gores@0.55"
+ ],
+ "25": [
+  "cs_gallpeters",
+  "cs_tl_gp@0.19",
+  "cs_gallpeters@0.76"
+ ],
+ "26": [
+  "cs_tl_1986",
+  "cs_eq_before@0.50",
+  "cs_seven@0.72"
+ ],
+ "27": [
+  "cs_tl_1998",
+  "cs_winkel@0.38"
+ ],
+ "28": [
+  "cs_two_sorts",
+  "cs_three_maps@0.26"
+ ],
+ "29": [
+  "cs_globe",
+  "cs_gl_shrink@0.32"
+ ],
+ "30": [
+  "cs_ruler",
+  "cs_merc_gl_af@0.19",
+  "cs_tissot@0.34",
+  "mercator_portrait@0.61"
+ ],
+ "31": [
+  "cs_q_table"
+ ],
+ "32": [
+  "cs_three_maps",
+  "cs_rhumb@0.18",
+  "cs_af_gl@0.35"
+ ]
+}

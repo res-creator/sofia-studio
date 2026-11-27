@@ -62,5 +62,637 @@
   "cap": "",
   "page": "",
   "title": "uf_school"
+ },
+ "ufd_deaths": {
+  "file": "ufd_deaths.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Оценка: смерти, связанные с питанием"
+ },
+ "ufd_vs_road": {
+  "file": "ufd_vs_road.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Сравнение: питание и дороги"
+ },
+ "ufd_plan": {
+  "file": "ufd_plan.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "План проверки"
+ },
+ "ufd_upf55": {
+  "file": "ufd_upf55.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Доля калорий из ультрапереработанных продуктов"
+ },
+ "ufd_sample": {
+  "file": "ufd_sample.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Выборка обследования"
+ },
+ "ufd_measure": {
+  "file": "ufd_measure.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Измерение и опрос"
+ },
+ "ufd_extrap": {
+  "file": "ufd_extrap.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Перенос результата на страну"
+ },
+ "ufd_obese40": {
+  "file": "ufd_obese40.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Ожирение у взрослых"
+ },
+ "ufd_100": {
+  "file": "ufd_100.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Сто человек: сорок с ожирением"
+ },
+ "ufd_model": {
+  "file": "ufd_model.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Как устроена оценка"
+ },
+ "ufd_notcount": {
+  "file": "ufd_notcount.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Модель, а не подсчёт"
+ },
+ "ufd_diab_unaware": {
+  "file": "ufd_diab_unaware.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Не знают о диабете"
+ },
+ "ufd_recall": {
+  "file": "ufd_recall.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Опрос о питании за вчера"
+ },
+ "ufd_nova": {
+  "file": "ufd_nova.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Группы переработки"
+ },
+ "ufd_upf_ex": {
+  "file": "ufd_upf_ex.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Примеры ультрапереработанной еды"
+ },
+ "ufd_upf_kids": {
+  "file": "ufd_upf_kids.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Ультрапереработанные калории: дети и взрослые"
+ },
+ "ufd_sources": {
+  "file": "ufd_sources.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Источники ультрапереработанных калорий"
+ },
+ "ufd_nih_design": {
+  "file": "ufd_nih_design.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Схема эксперимента NIH"
+ },
+ "ufd_nih_result": {
+  "file": "ufd_nih_result.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Результат эксперимента NIH"
+ },
+ "ufd_why": {
+  "file": "ufd_why.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Механизм не ясен"
+ },
+ "ufd_sweet": {
+  "file": "ufd_sweet.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Сладкое среди источников калорий"
+ },
+ "ufd_sugar7": {
+  "file": "ufd_sugar7.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Седьмая часть калорий: сахар"
+ },
+ "ufd_spoons": {
+  "file": "ufd_spoons.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "17 ложек против 12"
+ },
+ "ufd_can9": {
+  "file": "ufd_can9.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Банка газировки: 9 ложек"
+ },
+ "ufd_hfcs": {
+  "file": "ufd_hfcs.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Сахар и кукурузный сироп"
+ },
+ "ufd_year": {
+  "file": "ufd_year.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Сахар за год от одной банки в день"
+ },
+ "ufd_soda_size": {
+  "file": "ufd_soda_size.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Порция газировки: было и стало"
+ },
+ "ufd_bagel": {
+  "file": "ufd_bagel.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Бейгл: было и стало"
+ },
+ "ufd_bagel_kcal": {
+  "file": "ufd_bagel_kcal.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Калории в булочке"
+ },
+ "ufd_inflation": {
+  "file": "ufd_inflation.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Калорийная инфляция"
+ },
+ "ufd_plate": {
+  "file": "ufd_plate.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Эффект большой тарелки"
+ },
+ "ufd_ads": {
+  "file": "ufd_ads.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Реклама еды для детей"
+ },
+ "ufd_fries_cost": {
+  "file": "ufd_fries_cost.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Себестоимость порции"
+ },
+ "ufd_density": {
+  "file": "ufd_density.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Плотность калорий"
+ },
+ "ufd_price_density": {
+  "file": "ufd_price_density.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Цена калории и плотность"
+ },
+ "ufd_corn_use": {
+  "file": "ufd_corn_use.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Использование кукурузы в США"
+ },
+ "ufd_corr": {
+  "file": "ufd_corr.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Связь, а не причина"
+ },
+ "ufd_ready_price": {
+  "file": "ufd_ready_price.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Цены готовой и свежей еды"
+ },
+ "ufd_steps": {
+  "file": "ufd_steps.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Разогреть или приготовить"
+ },
+ "ufd_desert": {
+  "file": "ufd_desert.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Схема пищевой пустыни"
+ },
+ "ufd_store": {
+  "file": "ufd_store.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Новый магазин и питание"
+ },
+ "ufd_gap9": {
+  "file": "ufd_gap9.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Что объясняет разрыв в питании"
+ },
+ "ufd_factors4": {
+  "file": "ufd_factors4.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Магазин, цены, привычки, знания"
+ },
+ "ufd_dyes_label": {
+  "file": "ufd_dyes_label.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Красители в составе"
+ },
+ "ufd_red3": {
+  "file": "ufd_red3.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Запрет красного №3"
+ },
+ "ufd_eu6": {
+  "file": "ufd_eu6.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Шесть красителей в ЕС"
+ },
+ "ufd_dyes_debate": {
+  "file": "ufd_dyes_debate.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Спор о красителях"
+ },
+ "ufd_dyes_not": {
+  "file": "ufd_dyes_not.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Красители и ожирение: не доказано"
+ },
+ "ufd_color_sugar": {
+  "file": "ufd_color_sugar.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Цвет не меняет сахар"
+ },
+ "ufd_tray": {
+  "file": "ufd_tray.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Школьный обед: схема"
+ },
+ "ufd_rules": {
+  "file": "ufd_rules.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Правила школьных обедов"
+ },
+ "ufd_quality": {
+  "file": "ufd_quality.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Качество школьных обедов выросло"
+ },
+ "ufd_paper": {
+  "file": "ufd_paper.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Меню на бумаге и в мусорке"
+ },
+ "ufd_free_states": {
+  "file": "ufd_free_states.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Штаты с бесплатными обедами"
+ },
+ "ufd_mexico": {
+  "file": "ufd_mexico.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Мексика: налог на напитки"
+ },
+ "ufd_tax_chain": {
+  "file": "ufd_tax_chain.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Налог: что доказано"
+ },
+ "ufd_chile_label": {
+  "file": "ufd_chile_label.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Чили: значок «много сахара»"
+ },
+ "ufd_chile_bar": {
+  "file": "ufd_chile_bar.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Чили: покупки после пакета мер"
+ },
+ "ufd_maha": {
+  "file": "ufd_maha.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Программа MAHA"
+ },
+ "ufd_labels": {
+  "file": "ufd_labels.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Чтение этикеток: плюсы и минусы"
+ },
+ "ufd_factors": {
+  "file": "ufd_factors.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Факторы веса"
+ },
+ "ufd_drugs": {
+  "file": "ufd_drugs.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Новые препараты и опросы"
+ },
+ "ufd_cycle": {
+  "file": "ufd_cycle.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Замкнутый круг"
+ },
+ "ufd_bmi_muscle": {
+  "file": "ufd_bmi_muscle.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "ИМТ: мышцы и жир"
+ },
+ "ufd_waist": {
+  "file": "ufd_waist.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Обхват талии"
+ },
+ "ufd_term": {
+  "file": "ufd_term.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Спор о термине"
+ },
+ "ufd_road_food": {
+  "file": "ufd_road_food.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Дорога и еда"
+ },
+ "ufd_choice": {
+  "file": "ufd_choice.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Из чего выбирают"
+ },
+ "ufd_env": {
+  "file": "ufd_env.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Среда: четыре рычага"
+ },
+ "ufd_good": {
+  "file": "ufd_good.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Что уже сдвинулось"
+ },
+ "ufd_shelves": {
+  "file": "ufd_shelves.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Полки магазина"
+ },
+ "ufd_3lines": {
+  "file": "ufd_3lines.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Первые три строки состава"
+ },
+ "ufd_question": {
+  "file": "ufd_question.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Вопрос зрителю"
+ },
+ "ufd_desert_def": {
+  "file": "ufd_desert_def.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Определение пищевой пустыни USDA"
+ },
+ "ufd_unknown": {
+  "file": "ufd_unknown.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Вклад причин неизвестен"
+ },
+ "ufd_drugs_caution": {
+  "file": "ufd_drugs_caution.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Осторожность с выводами"
+ },
+ "ufd_10sec": {
+  "file": "ufd_10sec.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Десять секунд"
+ },
+ "ufp_frootloops": {
+  "file": "ufp_frootloops.jpg",
+  "author": "Evan-Amos / Wikimedia Commons",
+  "license": "CC0",
+  "cap": "Хлопья Froot Loops в миске",
+  "page": "https://commons.wikimedia.org/wiki/File:Froot-Loops-Cereal-Bowl.jpg",
+  "title": "Froot-Loops-Cereal-Bowl.jpg"
+ },
+ "ufp_tray": {
+  "file": "ufp_tray.jpg",
+  "author": "USDA / Wikimedia Commons",
+  "license": "общественное достояние",
+  "cap": "Пример школьного обеда по нормам USDA (фото Минсельхоза США)",
+  "page": "https://commons.wikimedia.org/wiki/File:School_lunch_tray_MyPlate_20210810-FNS-UNC-0015.jpg",
+  "title": "School lunch tray MyPlate 20210810-FNS-UNC-0015.jpg"
  }
 }

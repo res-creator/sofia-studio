@@ -11,7 +11,7 @@
   "file": "everest_summit.jpg",
   "author": "NASA",
   "license": "общественное достояние",
-  "cap": "Эверест (фото)",
+  "cap": "Эверест и Гималаи, снимок с шаттла (NASA)",
   "page": "https://images.nasa.gov/details/sts087-716-080",
   "title": "Earth observations taken from shuttle orbiter Columbia during STS-87 mission"
  },
@@ -19,24 +19,400 @@
   "file": "climbers_everest.jpg",
   "author": "NASA",
   "license": "общественное достояние",
-  "cap": "альпинисты на Эвересте (фото)",
+  "cap": "северный путь к Эвересту: ледник и седловина, снимок с МКС (NASA)",
   "page": "https://images.nasa.gov/details/iss026e015208",
   "title": "Earth Observations taken by Expedition 26 crewmember"
- },
- "antarctic_plateau": {
-  "file": "antarctic_plateau.jpg",
-  "author": "NASA",
-  "license": "общественное достояние",
-  "cap": "Антарктида (фото)",
-  "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001755",
-  "title": "Geikie Plateau Peak"
  },
  "death_valley": {
   "file": "death_valley.jpg",
   "author": "NASA",
   "license": "общественное достояние",
-  "cap": "Долина Смерти (фото)",
+  "cap": "Бэдуотер, Долина Смерти, со спутника: октябрь 2023, после ливня временное озеро (NASA)",
   "page": "https://images.nasa.gov/details/PIA26197",
   "title": "Badwater, Death Valley"
+ },
+ "seven_map": {
+  "file": "seven_map.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "семь мест на карте мира"
+ },
+ "tuc_plane": {
+  "file": "tuc_plane.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "время полезного сознания по высоте"
+ },
+ "tuc_everest": {
+  "file": "tuc_everest.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "время полезного сознания по высоте"
+ },
+ "scales": {
+  "file": "scales.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "у каждого места своя шкала"
+ },
+ "scales_gas": {
+  "file": "scales_gas.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "у каждого места своя шкала"
+ },
+ "protection": {
+  "file": "protection.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "защита в каждом месте"
+ },
+ "pressure_third": {
+  "file": "pressure_third.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "давление на вершине Эвереста"
+ },
+ "hypoxia_chain": {
+  "file": "hypoxia_chain.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "гипоксия: мозг страдает первым"
+ },
+ "death_zone": {
+  "file": "death_zone.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "зона смерти на Эвересте"
+ },
+ "acclim": {
+  "file": "acclim.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "акклиматизация: больше красных клеток крови"
+ },
+ "first_ascent": {
+  "file": "first_ascent.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "первое восхождение, 1953"
+ },
+ "co2_bottle": {
+  "file": "co2_bottle.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "схема: углекислый газ растворён в глубине озера"
+ },
+ "co2_valley": {
+  "file": "co2_valley.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "схема: облако газа стекает в низину"
+ },
+ "nyos_symptoms": {
+  "file": "nyos_symptoms.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Ньос: рассказы выживших"
+ },
+ "nyos_map": {
+  "file": "nyos_map.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "карта: озеро Ньос в Камеруне"
+ },
+ "nyos_radius": {
+  "file": "nyos_radius.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "карта: радиус до 25 км вокруг Ньоса"
+ },
+ "nyos_monoun": {
+  "file": "nyos_monoun.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "карта: озёра Ньос и Моной"
+ },
+ "cold_shock": {
+  "file": "cold_shock.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "холодовой шок в воде холоднее 15 °C"
+ },
+ "rule_1101": {
+  "file": "rule_1101.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "правило 1-10-1"
+ },
+ "rule_1101_hour": {
+  "file": "rule_1101_hour.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "правило 1-10-1"
+ },
+ "hypothermia": {
+  "file": "hypothermia.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "как холод отнимает время"
+ },
+ "mariana_map": {
+  "file": "mariana_map.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "карта: Марианская впадина"
+ },
+ "pressure_blocks": {
+  "file": "pressure_blocks.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "давление: уровень моря и дно впадины"
+ },
+ "everest_trench": {
+  "file": "everest_trench.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Эверест и глубина впадины в масштабе"
+ },
+ "dives": {
+  "file": "dives.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "спуски на дно впадины"
+ },
+ "vostok_map": {
+  "file": "vostok_map.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "карта: станция «Восток» в Антарктиде"
+ },
+ "vostok_temps": {
+  "file": "vostok_temps.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "температуры станции «Восток»"
+ },
+ "vostok_alt": {
+  "file": "vostok_alt.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "высота станции «Восток»"
+ },
+ "dv_map": {
+  "file": "dv_map.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "карта: Долина Смерти"
+ },
+ "dv_temps": {
+  "file": "dv_temps.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "рекорды жары Долины Смерти"
+ },
+ "dv_basin": {
+  "file": "dv_basin.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "схема: почему котловина нагревается"
+ },
+ "dv_july2024": {
+  "file": "dv_july2024.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "июль 2024 в Долине Смерти"
+ },
+ "mponeng_map": {
+  "file": "mponeng_map.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "карта: шахта Мпоненг"
+ },
+ "mine_depth": {
+  "file": "mine_depth.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "глубина шахты и жар породы"
+ },
+ "mine_cooling": {
+  "file": "mine_cooling.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "схема охлаждения шахты"
+ },
+ "bubble": {
+  "file": "bubble.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "общий принцип защиты"
+ },
+ "four_ways": {
+  "file": "four_ways.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "четыре способа, которыми убивает среда"
+ },
+ "insidious": {
+  "file": "insidious.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "почему холодная вода коварна"
+ },
+ "gap": {
+  "file": "gap.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "разрыв между местом и телом"
+ },
+ "everest_iss": {
+  "file": "everest_iss.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Эверест на рассвете, снимок с МКС (NASA)",
+  "page": "https://images.nasa.gov/details/0202504",
+  "title": "International Space Station (ISS) - Mt. Everest"
+ },
+ "everest_shuttle": {
+  "file": "everest_shuttle.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Эверест в центре кадра, снимок с шаттла (NASA)",
+  "page": "https://images.nasa.gov/details/STS058-101-014",
+  "title": "Mount Everest as seen from STS-58"
+ },
+ "dv_terra": {
+  "file": "dv_terra.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Долина Смерти: объёмный вид по данным спутника Terra (NASA)",
+  "page": "https://images.nasa.gov/details/PIA12091",
+  "title": "Death Valley, California"
+ },
+ "nyos_1986": {
+  "file": "nyos_1986.jpg",
+  "author": "Jack Lockwood, USGS (Wikimedia Commons)",
+  "license": "общественное достояние",
+  "cap": "озеро Ньос вскоре после выброса 1986 года: вода помутнела (USGS)",
+  "page": "https://commons.wikimedia.org/wiki/File:Lake_Nyos_1986_001.jpg",
+  "title": "Lake Nyos 1986"
+ },
+ "nyos_pano": {
+  "file": "nyos_pano.jpg",
+  "author": "USGS (Wikimedia Commons)",
+  "license": "общественное достояние",
+  "cap": "озеро Ньос 29 августа 1986 года, через неделю после выброса (USGS)",
+  "page": "https://commons.wikimedia.org/wiki/File:Tml15-16_Nc.jpg",
+  "title": "Tml15-16 Nc"
+ },
+ "nyos_platform": {
+  "file": "nyos_platform.jpg",
+  "author": "Bill Evans, USGS (Wikimedia Commons)",
+  "license": "общественное достояние",
+  "cap": "озеро Ньос: плот с трубой для дегазации (USGS)",
+  "page": "https://commons.wikimedia.org/wiki/File:Lake_Nyos_2001.jpg",
+  "title": "Lake Nyos 2001"
+ },
+ "nyos_vent": {
+  "file": "nyos_vent.jpg",
+  "author": "Bill Evans, USGS (Wikimedia Commons)",
+  "license": "общественное достояние",
+  "cap": "труба дегазации на озере Ньос выбрасывает воду с газом, 2006 (USGS)",
+  "page": "https://commons.wikimedia.org/wiki/File:Lake_nyos_co2_vent.jpg",
+  "title": "Lake nyos co2 vent"
+ },
+ "trieste_1960": {
+  "file": "trieste_1960.jpg",
+  "author": "U.S. Navy (Wikimedia Commons)",
+  "license": "общественное достояние",
+  "cap": "батискаф «Триест» над Марианской впадиной перед погружением, 23 января 1960",
+  "page": "https://commons.wikimedia.org/wiki/File:Bathyscaphe_Trieste_with_USS_Lewis_(DE-535)_over_the_Marianas_Trench,_23_January_1960_(NH_96797).jpg",
+  "title": "Bathyscaphe Trieste with USS Lewis, 1960"
+ },
+ "piccard_walsh": {
+  "file": "piccard_walsh.jpg",
+  "author": "NOAA (Wikimedia Commons)",
+  "license": "общественное достояние",
+  "cap": "Дон Уолш и Жак Пикар в стальной сфере «Триеста», 1960 (NOAA)",
+  "page": "https://commons.wikimedia.org/wiki/File:Bathyscaphe_Trieste_Piccard-Walsh.jpg",
+  "title": "Bathyscaphe Trieste Piccard-Walsh"
  }
 }

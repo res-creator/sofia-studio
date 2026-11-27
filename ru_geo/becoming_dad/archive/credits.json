@@ -46,5 +46,517 @@
   "cap": "сперматозоиды под микроскопом (микрофотография)",
   "page": "https://commons.wikimedia.org/wiki/File:Human_Spermatozoa,_Scanning_Electron_Micrograph.jpg",
   "title": "File:Human Spermatozoa, Scanning Electron Micrograph.jpg"
+ },
+ "bd_funnel": {
+  "file": "bd_funnel.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "забег: от миллионов к одному"
+ },
+ "bd_path": {
+  "file": "bd_path.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "путь и бегун в одном масштабе"
+ },
+ "bd_gosha": {
+  "file": "bd_gosha.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Гоша"
+ },
+ "bd_crowd": {
+  "file": "bd_crowd.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "один среди 300 миллионов"
+ },
+ "bd_two_numbers": {
+  "file": "bd_two_numbers.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "два числа фильма"
+ },
+ "bd_loss_third": {
+  "file": "bd_loss_third.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "около трети — потеря"
+ },
+ "bd_range": {
+  "file": "bd_range.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Сколько бегунов на старте"
+ },
+ "bd_range39": {
+  "file": "bd_range39.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Нижняя отметка: 39 миллионов"
+ },
+ "bd_one_in20": {
+  "file": "bd_one_in20.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "каждый двадцатый"
+ },
+ "bd_why_many": {
+  "file": "bd_why_many.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "зачем столько: запас"
+ },
+ "bd_parts": {
+  "file": "bd_parts.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "устройство бегуна"
+ },
+ "bd_ruler": {
+  "file": "bd_ruler.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "0,05 мм на линейке миллиметра"
+ },
+ "bd_route": {
+  "file": "bd_route.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Трасса забега: схема станций"
+ },
+ "bd_route_acid": {
+  "file": "bd_route_acid.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Первая преграда: кислая среда"
+ },
+ "bd_route_tube": {
+  "file": "bd_route_tube.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Дальше: матка и узкая труба"
+ },
+ "bd_route_rest": {
+  "file": "bd_route_rest.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "В трубе есть «приют»"
+ },
+ "bd_route_unknown": {
+  "file": "bd_route_unknown.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Как бегуны находят дорогу?"
+ },
+ "bd_sieve": {
+  "file": "bd_sieve.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "сито шейки матки"
+ },
+ "bd_reach": {
+  "file": "bd_reach.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "сколько доходит"
+ },
+ "bd_days": {
+  "file": "bd_days.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "не минуты, а дни"
+ },
+ "bd_selection": {
+  "file": "bd_selection.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "отбор"
+ },
+ "bd_egg_month": {
+  "file": "bd_egg_month.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "одна яйцеклетка в месяц"
+ },
+ "bd_egg_stock": {
+  "file": "bd_egg_stock.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "запас яйцеклеток"
+ },
+ "bd_egg_crowd": {
+  "file": "bd_egg_crowd.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "один внутрь"
+ },
+ "bd_fusion": {
+  "file": "bd_fusion.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "слияние"
+ },
+ "bd_second": {
+  "file": "bd_second.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Гоша второй"
+ },
+ "bd_lifespan": {
+  "file": "bd_lifespan.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "часы и дни"
+ },
+ "bd_window": {
+  "file": "bd_window.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "окно фертильности"
+ },
+ "bd_wait_a": {
+  "file": "bd_wait_a.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Гоша ждёт"
+ },
+ "bd_wait_b": {
+  "file": "bd_wait_b.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Гоша ждёт"
+ },
+ "bd_chance_days": {
+  "file": "bd_chance_days.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "шанс в дни окна"
+ },
+ "bd_shift": {
+  "file": "bd_shift.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "окно плавает"
+ },
+ "bd_six_a": {
+  "file": "bd_six_a.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "шесть событий"
+ },
+ "bd_six_b": {
+  "file": "bd_six_b.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "шесть событий"
+ },
+ "bd_six_c": {
+  "file": "bd_six_c.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "шесть событий"
+ },
+ "bd_cycle": {
+  "file": "bd_cycle.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "шанс за цикл"
+ },
+ "bd_dice": {
+  "file": "bd_dice.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "два броска кубика"
+ },
+ "bd_age_w": {
+  "file": "bd_age_w.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "возраст"
+ },
+ "bd_age_wm": {
+  "file": "bd_age_wm.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "возраст"
+ },
+ "bd_implant": {
+  "file": "bd_implant.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "путь к имплантации"
+ },
+ "bd_no_fault": {
+  "file": "bd_no_fault.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "ранние потери"
+ },
+ "bd_year": {
+  "file": "bd_year.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "год попыток"
+ },
+ "bd_one_in6": {
+  "file": "bd_one_in6.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "каждый шестой"
+ },
+ "bd_doctor": {
+  "file": "bd_doctor.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "если не получилось"
+ },
+ "bd_lw_scheme": {
+  "file": "bd_lw_scheme.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "схема микроскопа Левенгука"
+ },
+ "bd_preform": {
+  "file": "bd_preform.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "преформизм"
+ },
+ "bd_history": {
+  "file": "bd_history.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "хронология"
+ },
+ "bd_two_cells": {
+  "file": "bd_two_cells.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "встреча двух клеток"
+ },
+ "bd_chain": {
+  "file": "bd_chain.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Непрерывная цепочка предков"
+ },
+ "bd_calc": {
+  "file": "bd_calc.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "расчёт поколений"
+ },
+ "bd_400t": {
+  "file": "bd_400t.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "один из 400 триллионов"
+ },
+ "bd_links": {
+  "file": "bd_links.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "звенья цепи"
+ },
+ "bd_scale_a": {
+  "file": "bd_scale_a.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "три масштаба"
+ },
+ "bd_scale_b": {
+  "file": "bd_scale_b.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "три масштаба"
+ },
+ "bd_scale_c": {
+  "file": "bd_scale_c.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "три масштаба"
+ },
+ "bd_reserves": {
+  "file": "bd_reserves.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "запас попыток"
+ },
+ "bd_answer": {
+  "file": "bd_answer.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "ответ"
+ },
+ "bd_range_band": {
+  "file": "bd_range_band.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "Реальный разброс огромный"
+ },
+ "bd_why_q": {
+  "file": "bd_why_q.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "зачем столько"
+ },
+ "bd_chance_a": {
+  "file": "bd_chance_a.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "шанс в дни окна"
+ },
+ "bd_months": {
+  "file": "bd_months.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "несколько месяцев"
+ },
+ "bd_cycle_a": {
+  "file": "bd_cycle_a.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "шанс за цикл"
+ },
+ "bd_dice_a": {
+  "file": "bd_dice_a.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "два броска"
+ },
+ "bd_chain_far": {
+  "file": "bd_chain_far.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "кто дальше всех"
  }
 }

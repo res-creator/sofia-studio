@@ -1,0 +1,144 @@
+{
+"1": [
+"sperm_micrograph",
+"bd_funnel@0.249",
+"bd_path@0.583",
+"sperm_micrograph@0.743"
+],
+"2": [
+"bd_gosha",
+"bd_crowd@0.279"
+],
+"3": [
+"bd_two_numbers",
+"bd_loss_third@0.549"
+],
+"4": [
+"sperm_micrograph",
+"bd_range@0.086",
+"bd_range_band@0.363"
+],
+"5": [
+"bd_range39",
+"bd_one_in20@0.239",
+"bd_range39@0.638"
+],
+"6": [
+"bd_why_q",
+"bd_why_many@0.247"
+],
+"7": [
+"bd_parts",
+"bd_ruler@0.175",
+"bd_route@0.373"
+],
+"8": [
+"bd_route_acid",
+"bd_sieve@0.437"
+],
+"9": [
+"bd_route_tube",
+"bd_reach@0.347"
+],
+"10": [
+"bd_route_rest",
+"bd_days@0.427"
+],
+"11": [
+"bd_selection",
+"bd_route_unknown@0.454"
+],
+"12": [
+"bd_egg_month",
+"bd_egg_stock@0.256",
+"bd_egg_crowd@0.668"
+],
+"13": [
+"bd_fusion",
+"bd_second@0.331"
+],
+"14": [
+"bd_lifespan",
+"bd_window@0.535"
+],
+"15": [
+"bd_wait_a",
+"bd_wait_b@0.595"
+],
+"16": [
+"bd_chance_a",
+"bd_chance_days@0.539"
+],
+"17": [
+"bd_shift",
+"bd_months@0.455"
+],
+"18": [
+"bd_six_a",
+"bd_six_b@0.173",
+"bd_six_c@0.384"
+],
+"19": [
+"bd_cycle_a",
+"bd_cycle@0.261"
+],
+"20": [
+"bd_dice_a",
+"bd_dice@0.116"
+],
+"21": [
+"bd_age_w",
+"bd_age_wm@0.448"
+],
+"22": [
+"bd_implant",
+"bd_loss_third@0.437"
+],
+"23": [
+"bd_no_fault",
+"bd_year@0.476",
+"bd_one_in6@0.72",
+"bd_history@0.88"
+],
+"24": [],
+"25": [
+"bd_lw_scheme"
+],
+"26": [
+"bd_history",
+"bd_preform@0.409"
+],
+"27": [
+"bd_history",
+"bd_two_cells@0.298",
+"bd_two_cells@0.773"
+],
+"28": [
+"bd_chain",
+"bd_calc@0.713"
+],
+"29": [
+"bd_400t",
+"bd_links@0.673"
+],
+"30": [
+"bd_scale_a",
+"bd_scale_b@0.125",
+"bd_scale_c@0.423"
+],
+"31": [
+"bd_doctor",
+"bd_reserves@0.331"
+],
+"32": [
+"bd_answer",
+"bd_six_c@0.197",
+"bd_cycle@0.33",
+"bd_reserves@0.686",
+"bd_chain@0.789"
+],
+"33": [
+"bd_second",
+"bd_chain@0.121"
+]
+}
