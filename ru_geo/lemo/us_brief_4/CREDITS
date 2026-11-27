@@ -1,18 +1,18 @@
-Высота зданий · board film PART B (film 85.30–181.86, chapter «ТРОС» continued; Engineering Briefing Board style) — credits
-The wall of part A (ru_geo/lemo/bh_brief) is kept as is; part B adds the Burj Khalifa cut-out a second time (burj2, film 164.97).
+Размер Вселенной · board film PART 4 (film 454.73–580.58: chapters «ЧТО ЗА КРАЕМ» and «ФИНАЛ»; Engineering Briefing Board style) — credits
 
-Photographs (from ru_geo/building_height/archive/credits.json)
-  burj.png          Burj Khalifa, Dubai — "Burj Khalifa Image.jpg", Meandmybrix, CC0
-                    https://commons.wikimedia.org/wiki/File:Burj_Khalifa_Image.jpg
-                    cut out with a sky key inside a hand polygon (tools/cut/cut_burj.py); the EMAAR-lettered building at the base cut away
-  print_jeddah.png  Jeddah Tower under construction — "Jeddah Tower in its 88th floor.jpg", Omarnizar05, CC0
-                    https://commons.wikimedia.org/wiki/File:Jeddah_Tower_in_its_88th_floor.jpg   (uncut crop on photo paper)
-  print_otis.png    Elisha Otis demonstrating the safety elevator, New York, 1854 (later illustration) — author unknown, public domain
-                    https://commons.wikimedia.org/wiki/File:Elisha_OTIS_1854_(cropped).jpg      (uncut crop on photo paper)
-  Every photo is shown at >= 1 source pixel per screen pixel (tools/rescheck.mjs, part B: lowest 1.23, burj2 at local 79.7 s).
+Photographs (all NASA, public domain; from ru_geo/universe_size/archive/credits.json). Prints = an uncut crop on photo paper
+(kit/tools/make_print.py), downscaled so every frame still shows >= 1 source px per screen px.
+  print_hudf.png       Hubble deep field ("Swimming in Sculptor")      https://images.nasa.gov/details/hubble-sees-a-legion-of-galaxies_25608651281_o
+  print_voyager.png    Voyager spacecraft, NASA/JPL                     https://commons.wikimedia.org/wiki/File:Voyager_spacecraft.jpg
+  earth.png            NASA Blue Marble 2007 West (cut out with a circular mask fitted to the disc)
+                                                                         https://images.nasa.gov/details/GSFC_20171208_Archive_e002131
+  print_andromeda.png  Andromeda Galaxy (PIA04921)                      https://images.nasa.gov/details/PIA04921
+  print_jwst.png       Webb's first deep field (SMACS 0723)             https://images.nasa.gov/details/webb_first_deep_field
+  print_dsn.png        Goldstone 70-m antenna, Deep Space Network (PIA17792)  https://images.nasa.gov/details/PIA17792
+The nearest star, the galaxy disc, the sea horizon, the ships and the «∞» are drawn in marker (no photo, no generated image).
 
 Fonts (SIL Open Font License 1.1, Google Fonts)
-  Pangolin (marker lettering), Fira Sans Condensed (tags), IBM Plex Mono (typewriter cards)
+  Pangolin (marker lettering), Fira Sans Condensed (tags, stamp, card), IBM Plex Mono (typewriter cards)
 
-Engine: Lemo-Opuscar styles/briefing-board/demo/kit (board.js, copied and adapted: Cyrillic fonts, rolling numbers,
-typewriter cards on black, 30 fps shutter). No generated images.
+Engine: Lemo-Opuscar styles/briefing-board/demo/kit (board.js, as adapted in ru_geo/lemo/bh_brief_B / bh_brief_G; here a card
+at local 0 is black from the first frame).

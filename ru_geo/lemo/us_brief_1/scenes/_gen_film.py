@@ -22,7 +22,8 @@ OBJ = os.path.join(FILM, 'kit', 'objects')
 def meta(i):
     m = json.load(open(os.path.join(OBJ, i + '.json'))); return m.get('size') or [m['w'], m['h']]
 DUR = 127.70
-BW, BH = 7400, 4750
+BW, BH = 7600, 5750
+DXA, DYB, DYC, DYD = 200, 250, 500, 1000    # the plan shifted right, rows B, C, D shifted down (laid out at their old places)
 
 E, EV = [], []
 def el(**k): E.append(k); return k
@@ -150,6 +151,7 @@ line([[2350, 1180], [2470, 1180]], 20.5, .2, 'graphite', 16)                 # t
 write('порог дома', 2470, 1585, 20.55, .7, 'graphite', 70)
 arrow([2560, 1520], [2445, 1215], 21.0, .3, 'graphite', 6)
 
+IA = len(E)
 # ===================================================================== A'. the plan 21.95–35.72 (right of the house)
 write('сутки пути света:', 4150, 520, 22.0, 1.4, 'graphite', 96)
 write('далеко или близко?', 4150, 680, 23.6, 1.6, 'graphite', 84)
@@ -165,6 +167,7 @@ write('какого размера', 4150, 1400, 31.3, 1.1, 'graphite', 100)
 write('вся Вселенная', 4150, 1530, 32.45, 1.1, 'graphite', 100)
 write('?', 4920, 1540, 33.75, .4, 'red', 260)
 
+IB = len(E)
 # ===================================================================== B. the nearest star 36.27–52.35
 VB = (4080, 2160)
 pv = printx('voyager_b', 'print_voyager', VB[0], VB[1], 36.4, w=330, rot=1.5)
@@ -183,6 +186,7 @@ count('≈ {0} 000 лет', [75], 5600, 2440, 45.2, 2.4, 'blue', 110, align='cen
 tag('наша прикидка', 4530, 2620, 48.5, size=54, rot=-1)
 write('время = путь ÷ скорость', 5120, 2645, 49.6, 1.8, 'graphite', 66)
 
+IC = len(E)
 # ===================================================================== C. ШКАЛА СВЕТА 55.67–88.53
 AY = 3490                                    # the light axis (not to scale)
 printx('earth_c', 'earth', 520, 3330, 55.75, w=240, z=10)
@@ -234,6 +238,7 @@ line([[RC[0], RC[1] - 62], [RC[0], RC[1] + 62]], 86.6, .15, 'grey', 4)
 line(arc(RC, 92, 34, 200, 520, 40), 86.8, .8, 'blue', 6, arrow=True)
 
 # ===================================================================== (89.10–105.60: the Pale Blue Dot light-table clip covers the board)
+ID = len(E)
 # ===================================================================== D. арифметика 105.59–125.37
 write('свет быстрее зонда', 330, 4170, 105.7, 1.3, 'graphite', 80)
 count('в {0}–{1} тысяч раз', [17, 18], 330, 4330, 107.5, 2.3, 'blue', 100)
@@ -257,42 +262,52 @@ write('ответ: сутки', 5445, 4480, 122.8, .9, 'blue', 62, align='center
 write('ждать', 6760, 4320, 124.0, .6, 'graphite', 100)
 ink('ring', 124.7, .55, 'red', c=[6895, 4290], r=[175, 75], lw=8)
 
+def shift(e, dx, dy):
+    for k in ('xy', 'from', 'to', 'c'):
+        if isinstance(e.get(k), list) and len(e[k]) == 2 and not isinstance(e[k][0], list): e[k] = [e[k][0] + dx, e[k][1] + dy]
+    if 'points' in e: e['points'] = [[x + dx, y + dy] for x, y in e['points']]
+    for st in e.get('strokes', []): st['points'] = [[x + dx, y + dy] for x, y in st['points']]
+IE = len(E)
+for a_, b_, dx, dy in ((IA, IB, DXA, 0), (IB, IC, 0, DYB), (IC, ID, 0, DYC), (ID, IE, 0, DYD)):
+    for e in E[a_:b_]:
+        if e.get('type') == 'ink' and e.get('kind') == 'count': e['xy'] = [e['xy'][0] + dx, e['xy'][1] + dy]
+        else: shift(e, dx, dy)
+def bx(b, dx=0, dy=0): return [b[0] + dx, b[1] + dy, b[2] + dx, b[3] + dy]
 # ===================================================================== camera (one continuous camera; only the cards hide it)
 c = Cam(*fit([380, 470, 3150, 1600]))
 c.to(1.0, 2.4, z=z_of(c) * 1.03, a=1.6, b=3)                            # Earth lands, Voyager lands
 c.fit(3.1, 3.4, [400, 480, 3150, 1620], a=1.8, b=2.6)                   # the signal out and back, двое суток
 c.fit(6.75, 1.5, [2350, 430, 4080, 1150], a=2, b=2.8)                   # to Voyager: the farthest thing we built
-c.fit(9.7, 1.6, [2350, 430, 4080, 1600], a=2, b=2.8)                    # date, сутки
+c.fit(9.7, 1.6, [380, 430, 4080, 1660], a=2, b=2.8)                    # date, сутки
 c.to(11.6, 3.6, z=z_of(c) * 1.025)
-c.fit(15.4, 1.3, [2450, 450, 4080, 1620], a=2, b=2.8)                   # launch 1977
 c.fit(19.0, 1.9, [250, 150, 4080, 1660], a=1.8, b=2.8)                  # pull back: the house and its threshold
-c.fit(21.9, 1.7, [3950, 380, 5800, 1150], a=2, b=2.8)                   # the plan: сутки пути света
-c.fit(25.3, 1.3, [3950, 400, 5800, 1150], a=2, b=2.8)
-c.fit(27.4, 1.6, [4000, 450, 7150, 1150], a=1.8, b=2.6)                 # ride the dashed line to the edge
-c.fit(30.1, 1.5, [3950, 560, 6700, 1620], a=2, b=2.8)                   # какого размера вся Вселенная?
-c.to(32.0, 3.6, z=z_of(c) * 1.035)
-c.fit(35.85, 1.4, [3550, 1780, 7120, 2720], a=2, b=2.8)                 # B: Voyager and the nearest star
-c.fit(38.95, 1.3, [3600, 1840, 5450, 2520], a=2, b=2.8)                 # 17 км/с
-c.fit(43.0, 3.8, [5100, 1840, 7120, 2520], a=1.6, b=2.4)                # ride the path to the star
-c.fit(47.6, 1.2, [3600, 1840, 7120, 2520], a=2, b=2.8)                  # the whole trip and its 75 000 years
-c.fit(48.6, 1.4, [4300, 1850, 6750, 2720], a=2, b=2.8)                  # наша прикидка
+c.fit(21.9, 1.7, bx([3950, 360, 5800, 1150], DXA), a=2, b=2.8)                   # the plan: сутки пути света
+c.fit(25.3, 1.3, bx([3950, 360, 5800, 1150], DXA), a=2, b=2.8)
+c.fit(27.4, 1.6, bx([4000, 380, 7150, 1150], DXA), a=1.8, b=2.6)                 # ride the dashed line to the edge
+c.fit(30.1, 1.5, bx([3950, 560, 6700, 1620], DXA), a=2, b=2.8)                   # какого размера вся Вселенная?
+c.to(32.0, 3.6, z=z_of(c) * 1.01)
+c.fit(35.85, 1.4, bx([3550, 1780, 7120, 2720], 0, DYB), a=2, b=2.8)                 # B: Voyager and the nearest star
+c.fit(38.95, 1.3, bx([3600, 1840, 5450, 2520], 0, DYB), a=2, b=2.8)                 # 17 км/с
+c.fit(43.0, 3.8, bx([5100, 1840, 7120, 2520], 0, DYB), a=1.6, b=2.4)                # ride the path to the star
+c.fit(47.6, 1.2, bx([3600, 1840, 7120, 2520], 0, DYB), a=2, b=2.8)                  # the whole trip and its 75 000 years
+c.fit(48.6, 1.4, bx([3600, 1840, 7150, 2720], 0, DYB), a=2, b=2.8)                  # наша прикидка
 c.to(50.2, 4.0, z=z_of(c) * 1.03)
-c.fit(54.7, .9, [200, 2880, 2450, 3650], a=2, b=2.4)                    # (under the card) row C, the scale of light
+c.fit(54.7, .9, bx([200, 2880, 2450, 3650], 0, DYC), a=2, b=2.4)                    # (under the card) row C, the scale of light
 c.to(55.7, 4.2, z=z_of(c) * 1.03)
-c.fit(59.95, 1.3, [200, 2880, 2450, 3650], a=2, b=2.8)
-c.fit(63.4, 1.4, [200, 2880, 2450, 3700], a=2, b=2.8)                   # the Moon
-c.fit(66.35, 1.3, [200, 2880, 3000, 3700], a=2, b=2.8)                  # the Sun
-c.fit(69.6, 1.3, [200, 2880, 3000, 3900], a=2, b=2.8)                   # seen 8 minutes late
-c.fit(73.7, 1.4, [2400, 3050, 5150, 3700], a=2, b=2.8)                  # Neptune
-c.fit(78.9, 1.9, [3900, 3050, 6700, 3700], a=1.8, b=2.6)                # ride on to Voyager, сутки
-c.fit(83.1, 1.5, [4250, 3060, 6750, 3920], a=2, b=2.8)                  # a lifetime / one turn of the Earth
+c.fit(59.95, 1.3, bx([200, 2880, 2450, 3650], 0, DYC), a=2, b=2.8)
+c.fit(63.4, 1.4, bx([200, 2880, 2450, 3700], 0, DYC), a=2, b=2.8)                   # the Moon
+c.fit(66.35, 1.3, bx([200, 2880, 3150, 3700], 0, DYC), a=2, b=2.8)                  # the Sun
+c.fit(69.6, 1.3, bx([200, 2880, 3150, 3900], 0, DYC), a=2, b=2.8)                   # seen 8 minutes late
+c.fit(73.7, 1.4, bx([2550, 3050, 5200, 3700], 0, DYC), a=2, b=2.8)                  # Neptune
+c.fit(78.9, 1.9, bx([3900, 3050, 6700, 3700], 0, DYC), a=1.8, b=2.6)                # ride on to Voyager, сутки
+c.fit(83.1, 1.5, bx([4250, 3060, 6750, 3920], 0, DYC), a=2, b=2.8)                  # a lifetime / one turn of the Earth
 c.to(84.8, 4.0, z=z_of(c) * 1.025)
-c.fit(89.4, 15.6, [250, 3980, 2600, 4560], a=2, b=2.2)                  # (under the PBD clip) slowly to row D
-c.fit(105.4, 1.0, [250, 3980, 1900, 4480], a=2, b=2.6)                  # 17–18 thousand times
-c.fit(111.15, 1.5, [250, 3980, 3850, 4560], a=2, b=2.8)                 # сутки света → 49 лет
+c.fit(89.4, 15.6, bx([250, 3980, 2600, 4560], 0, DYD), a=2, b=2.2)                  # (under the PBD clip) slowly to row D
+c.fit(105.4, 1.0, bx([250, 3780, 2000, 4480], 0, DYD), a=2, b=2.6)                  # 17–18 thousand times
+c.fit(111.15, 1.5, bx([250, 3980, 3850, 4560], 0, DYD), a=2, b=2.8)                 # сутки света → 49 лет
 c.to(112.8, 3.4, z=z_of(c) * 1.02)
-c.fit(116.35, 1.5, [3600, 3980, 5300, 4650], a=2, b=2.8)                # the antenna
-c.fit(119.7, 1.6, [3780, 3980, 7250, 4650], a=2, b=2.8)                 # question a day, answer a day, wait
+c.fit(116.35, 1.5, bx([3600, 3980, 5300, 4650], 0, DYD), a=2, b=2.8)                # the antenna
+c.fit(119.7, 1.6, bx([3780, 3980, 7250, 4650], 0, DYD), a=2, b=2.8)                 # question a day, answer a day, wait
 c.to(121.4, 3.8, z=z_of(c) * 1.02)
 c.fit(125.5, 2.1, [0, 0, BW, BH], a=2, b=2.4)                           # pull back: the chapter's wall as a whole
 

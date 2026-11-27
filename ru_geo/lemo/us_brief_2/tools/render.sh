@@ -14,6 +14,7 @@ if [ "$1" = "encode" ]; then
   ffprobe -v error -show_entries format=duration:stream=nb_frames -of csv=p=0 "$OUT"; exit 0
 fi
 if [ "$1" = "worker" ]; then
+  echo $$ > "$HERE/out/worker.pid"
   a=0
   while [ $a -lt $N ]; do
     b=$((a + C)); [ $b -gt $N ] && b=$N; f=$(printf 'c_%05d.mp4' $a)
@@ -28,5 +29,7 @@ if [ "$1" = "worker" ]; then
   done
   echo ALLDONE; exit 0
 fi
+# one worker only (the keeper may call this while the worker is between chunks, encoding)
+P=$(cat "$HERE/out/worker.pid" 2>/dev/null); [ -n "$P" ] && grep -q "render.sh" /proc/$P/cmdline 2>/dev/null && { echo "worker $P running"; exit 0; }
 setsid nohup sh "$0" worker > "$HERE/out/render.log" 2>&1 < /dev/null &
 echo started

@@ -1,18 +1,17 @@
-Высота зданий · board film PART B (film 85.30–181.86, chapter «ТРОС» continued; Engineering Briefing Board style) — credits
-The wall of part A (ru_geo/lemo/bh_brief) is kept as is; part B adds the Burj Khalifa cut-out a second time (burj2, film 164.97).
+Размер Вселенной · board film PART 2 (film 127.70–272.67: chapters «МЯЧ И ГОРОШИНА» and «НАША ГАЛАКТИКА»; Engineering Briefing Board) — credits
 
-Photographs (from ru_geo/building_height/archive/credits.json)
-  burj.png          Burj Khalifa, Dubai — "Burj Khalifa Image.jpg", Meandmybrix, CC0
-                    https://commons.wikimedia.org/wiki/File:Burj_Khalifa_Image.jpg
-                    cut out with a sky key inside a hand polygon (tools/cut/cut_burj.py); the EMAAR-lettered building at the base cut away
-  print_jeddah.png  Jeddah Tower under construction — "Jeddah Tower in its 88th floor.jpg", Omarnizar05, CC0
-                    https://commons.wikimedia.org/wiki/File:Jeddah_Tower_in_its_88th_floor.jpg   (uncut crop on photo paper)
-  print_otis.png    Elisha Otis demonstrating the safety elevator, New York, 1854 (later illustration) — author unknown, public domain
-                    https://commons.wikimedia.org/wiki/File:Elisha_OTIS_1854_(cropped).jpg      (uncut crop on photo paper)
-  Every photo is shown at >= 1 source pixel per screen pixel (tools/rescheck.mjs, part B: lowest 1.23, burj2 at local 79.7 s).
+Photographs (all NASA, public domain; from ru_geo/universe_size/archive/credits.json)
+  print_sun.png      the Sun, Skylab — images.nasa.gov/details/9606705                     (uncut crop on photo paper; also sun2)
+  earth.png          NASA Blue Marble 2007 West — images.nasa.gov/details/GSFC_20171208_Archive_e002131
+                     (cut-out: a circle fitted to the lit disc, tools/cut/cut_earth.py)
+  print_voyager.png  Voyager spacecraft (NASA/JPL) — commons.wikimedia.org/wiki/File:Voyager_spacecraft.jpg   (uncut crop)
+  print_proxima.png  Hubble's best image of Alpha Centauri A and B — images.nasa.gov/details/GSFC_20171208_Archive_e000214
+                     (uncut crop; on the board it carries the printed line «снимок Хаббла: Альфа Центавра A и B»,
+                     Proxima itself is drawn in marker: no NASA photo of Proxima was found)
+  print_jupiter.png  Cassini Jupiter portrait — images.nasa.gov/details/PIA04866          (uncut crop)
+  Every photo is shown at >= 1 source pixel per screen pixel (tools/rescheck.mjs: lowest 3.44, sun at local 3.8 s).
+  Planets, the beach ball, the pea, the Milky Way, the galaxies, Voyager on the lines: drawn in marker. No generated images.
 
-Fonts (SIL Open Font License 1.1, Google Fonts)
-  Pangolin (marker lettering), Fira Sans Condensed (tags), IBM Plex Mono (typewriter cards)
-
-Engine: Lemo-Opuscar styles/briefing-board/demo/kit (board.js, copied and adapted: Cyrillic fonts, rolling numbers,
-typewriter cards on black, 30 fps shutter). No generated images.
+Fonts (SIL Open Font License 1.1): Pangolin, Fira Sans Condensed, IBM Plex Mono.
+Engine: Lemo-Opuscar briefing-board kit (board.js, from ru_geo/lemo/bh_brief_B; added: thousands separator for rolling
+numbers, rolling numbers in the text check, an opaque opening card).

@@ -34,15 +34,18 @@ CONF = {
 }
 C = CONF[SLUG]; SEG, EXTRA_EV = C['SEG'], C['EXTRA']
 
-# ---- картинка
+# ---- картинка (REUSE=1: взять готовую pic.mp4)
 segs = []
-for i, (f, off, a, b, _) in enumerate(SEG):
+if os.environ.get('REUSE') and os.path.exists(f'{S}/pic.mp4'): SEG_RUN = []
+else: SEG_RUN = SEG
+for i, (f, off, a, b, _) in enumerate(SEG_RUN):
     o = f'{S}/s{i}.mp4'
     run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', f'{a - off:.3f}', '-i', f'{P}/{f}', '-t', f'{b - a:.3f}', '-r', '30',
          '-vf', 'scale=1920:1080,setsar=1,format=yuv420p,tpad=stop_mode=clone:stop_duration=1', '-t', f'{b - a:.3f}', '-an',
          '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '16', o]); segs.append(o)
-open(f'{S}/list.txt', 'w').write(''.join(f"file '{x}'\n" for x in segs))
-run(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', f'{S}/list.txt', '-c', 'copy', f'{S}/pic.mp4'])
+if segs:
+  open(f'{S}/list.txt', 'w').write(''.join(f"file '{x}'\n" for x in segs))
+  run(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', f'{S}/list.txt', '-c', 'copy', f'{S}/pic.mp4'])
 
 # ---- шумы из событий всех частей
 SR = 48000; out = np.zeros(int((TOTAL + 2) * SR)); rng = np.random.default_rng(7)
@@ -50,10 +53,10 @@ def bp(x, lo, hi): return sosfilt(butter(2, [lo, hi], 'bandpass', fs=SR, output=
 def put(sig, t, g):
     i = int(t * SR); j = min(len(out), i + len(sig))
     if 0 <= i < j: out[i:j] += sig[:j - i] * g
-def marker(t, Ln, g=.06):
+def marker(t, Ln, g=.06):                         # мягкий шорох без скрежета: только низ-середина, тихо
     n = max(int(.06 * SR), int(min(Ln, 4) * SR)); u = np.linspace(0, 1, n)
-    x = bp(rng.standard_normal(n), 2000, 7500) * .8 + bp(rng.standard_normal(n), 500, 1500) * .5
-    put(x * np.sin(np.pi * u) ** .5 * (.55 + .45 * rng.random(n // 300 + 1).repeat(300)[:n]), t, g)
+    x = bp(rng.standard_normal(n), 250, 1100)
+    put(x * np.sin(np.pi * u) ** 1.5, t, g * .35)
 def click(t, g=.2, f=1500):
     n = int(.045 * SR); x = bp(rng.standard_normal(n), f, 7000) * np.exp(-np.linspace(0, 1, n) * 18)
     put(x + .5 * np.sin(2 * np.pi * 170 * np.arange(n) / SR) * np.exp(-np.linspace(0, 1, n) * 25), t, g)
@@ -87,6 +90,8 @@ for f, off, a, b in EXTRA_EV:
         elif k == 'rise': whoosh(t, 1.2, .07)
         elif k == 'light': click(t, .18, 900)
         else: click(t, .06, 2500)
+SFX_GAIN = float(os.environ.get('SFX_GAIN', '0.4'))        # владелица: все эффекты намного тише
+out = sosfilt(butter(2, 3500, 'lowpass', fs=SR, output='sos'), out) * SFX_GAIN
 wavfile.write(f'{S}/sfx.wav', SR, (np.clip(out, -1, 1) * 32767).astype(np.int16))
 
 # ---- голос + музыка (приглушение под голос) + шумы, громкость -14 LUFS

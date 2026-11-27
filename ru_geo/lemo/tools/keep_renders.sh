@@ -11,7 +11,9 @@ while true; do
     if sh $d/tools/render.sh encode > /dev/null 2>&1; then
       echo "$(date +%T) encoded $d"; rm -rf $d/out/frames $d/out/chk; continue
     fi
-    pgrep -f "$d/tools/frames.mjs" > /dev/null || { echo "$(date +%T) start $d"; (cd $d && sh tools/render.sh > /dev/null 2>&1); }
+    busy=0; pgrep -f "$d/" > /dev/null && busy=1                       # любой процесс этой папки (кадры, кодирование куска)
+    [ -f $d/out/worker.pid ] && kill -0 $(cat $d/out/worker.pid) 2>/dev/null && busy=1
+    [ $busy = 0 ] && { echo "$(date +%T) start $d"; (cd $d && sh tools/render.sh > /dev/null 2>&1); }
   done
   sleep 60
 done

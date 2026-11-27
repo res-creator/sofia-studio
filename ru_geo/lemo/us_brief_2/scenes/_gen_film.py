@@ -19,7 +19,7 @@ meta = lambda i: json.load(open(os.path.join(OBJ, i + '.json')))
 R0, R1 = 127.70, 272.67
 DUR = round(R1 - R0, 3)                       # 144.97
 L = lambda ft: round(ft - R0, 3)              # film time → local time
-BW, BH = 13200, 6950
+BW, BH = 13200, 7250
 
 E, EV = [], []
 def el(**k): E.append(k); return k
@@ -313,7 +313,7 @@ line(circle(SUN, 16, 14), L(228.3), .12, lw=10)
 write('Солнце', SUN[0], SUN[1] + 225, L(228.4), .5, 'graphite', 70, align='center')
 dim([C[0] + 20, C[1] + 8], [SUN[0] - 20, SUN[1] - 8], L(229.0), .7, lw=6)
 dim([SUN[0] + 20, SUN[1] + 8], [C[0] + (SUN[0] - C[0]) * 2.02, C[1] + (SUN[1] - C[1]) * 2.02], L(229.8), .6, 'grey', 5)
-write('полпути', 1840, 5420, L(230.5), .7, 'blue', 60, rot=21)
+write('полпути', 1790, 5395, L(230.5), .7, 'blue', 60, rot=21)
 line([[2440, 5640], [2600, 5600]], L(232.1), .2, 'blue', 5)
 count('{0} св. лет', [26000], 2620, 5650, L(232.2), 1.6, size=120, sep=True)
 write('от центра', 2620, 5760, L(234.1), .7, 'graphite', 74)
@@ -360,7 +360,7 @@ for i, (gx, gy, gs) in enumerate([(12150, 4620, 110), (12500, 5520, 95), (12050,
     line(circle((gx, gy), [gs * .35, gs * .22], 16), L(265.4) + .2 * i, .1, lw=5)
     spiral_arms((gx, gy), gs, L(265.5) + .2 * i, .18, ry=.6, r0=.2, turns=.7, arms=2, rot=30 * i, lw=4)
 arrow([DC[0] + DRX + 120, DC[1] - 120], [12350, DC[1] - 250], L(268.4), .7, 'graphite', 8)
-write('за край', 11620, 4990, L(268.7), .8, 'graphite', 84)
+write('за край', 11680, 5190, L(268.7), .8, 'graphite', 84)
 
 # ===================================================================== camera (one continuous camera; the cards hide the jumps)
 c = Cam(*fit([250, 420, 1700, 1460]))
@@ -370,13 +370,13 @@ c.fit(L(134.2), 1.3, [3150, 520, 4300, 1300], b=3)                       # the E
 c.fit(L(138.65), 1.6, [220, 460, 4300, 1700], b=3)                       # judgement frame: ball, pea, 100 m, the pitch
 c.to(L(140.3), 2.6, z=z_of(c) * 1.02)
 c.fit(L(143.05), 1.4, [3150, 480, 5800, 1450], b=2.8)                    # Voyager
-c.fit(L(146.2), 1.0, [700, 1000, 2700, 2010], a=2, b=2.2)               # down to the ball: the line starts there …
-c.fit(L(147.2), 2.6, [5000, 1000, 7400, 2020], a=1.6, b=2.4)             # … ride it to Voyager on the model
+c.fit(L(146.2), 1.0, [300, 1000, 2700, 2010], a=2, b=2.2)               # down to the ball: the line starts there …
+c.fit(L(147.2), 2.6, [4650, 1000, 7400, 2020], a=1.6, b=2.4)             # … ride it to Voyager on the model
 c.fit(L(150.3), 1.4, [5450, 480, 7500, 2020], b=2.8)                     # the city, record / a stroll
 c.to(L(151.8), 5.0, z=z_of(c) * 1.025)
 c.fit(L(157.55), 1.5, [8350, 460, 12100, 1520], b=2.8)                   # where is the neighbouring ball? Proxima
 c.fit(L(161.2), 1.4, [8350, 460, 12100, 1960], b=2.8)                    # ≈ 29 000 km
-c.fit(L(165.6), 1.3, [9150, 700, 10900, 1700], b=2.8)                    # farther than the opposite point of the Earth
+c.fit(L(165.6), 1.3, [8700, 520, 11750, 1960], b=2.8)                    # farther than the opposite point of the Earth
 c.fit(L(169.3), 1.5, [8350, 460, 12650, 1960], b=2.8)                    # the ruler, subscribe, billions of times longer
 c.to(L(171.2), 5.0, z=z_of(c) * 1.02)
 c.fit(L(176.6), 1.5, [7300, 2950, 9900, 4020], b=2.8)                    # row 2: not to Proxima

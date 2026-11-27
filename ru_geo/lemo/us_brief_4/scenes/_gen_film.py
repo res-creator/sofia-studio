@@ -28,7 +28,8 @@ meta = lambda i: json.load(open(os.path.join(OBJ, i + '.json')))
 MET = json.load(open(os.path.join(HERE, 'metrics.json')))
 OFF = 454.73                     # film time of local 0
 DUR = 125.85                     # film 454.73 → 580.58
-BW, BH = 8450, 3700
+BW, BH = 8700, 5700                # the lower 2200 px stay empty enamel: wide shots of the final band never show the wall
+DXBC = 250                       # zones B and C sit 250 px further right (a clear gap after zone A)
 
 def tw(text, size, font='marker'):
     m = MET[font]; return sum(m.get(c, 500) for c in text) * size / 1000 + .02 * size * (len(text) - 1)
@@ -115,6 +116,11 @@ def fit(box, zmax=1.0, sx=90):
     x0, y0, x1, y1 = box
     z = min(zmax, (1920 - 2 * sx) / (x1 - x0), (SAFE_Y1 - SAFE_Y0) / (y1 - y0))
     cy = (y0 + y1) / 2 + (540 - (SAFE_Y0 + SAFE_Y1) / 2) / z
+    if y0 >= 1900:                      # a framing of the final band: the screen's top edge stays in the gap between the bands
+        lo = 1760 + 540 / z
+        if cy < lo:
+            if lo > y0 + 490 / z: print('  !! fit: box top would leave the band', box)
+            cy = min(lo, y0 + 490 / z)
     return (x0 + x1) / 2, cy, z
 
 # ===================================================================== chapter cards on black (film time)
@@ -143,7 +149,7 @@ write('свет оттуда не дошёл', 2200, 1080, 460.3, 1.1, size=68)
 write('проверить не можем', 2200, 1175, 461.6, 1.0, size=68)
 
 # ===================================================================== B. space almost flat; infinite or huge finite
-B0x = 3550
+B0 = len(E)
 sheet = [[3700, 560], [5150, 560], [5340, 860], [3510, 860], [3700, 560]]
 line(sheet, 463.3, .9, lw=8)
 for i in range(1, 6):
@@ -188,14 +194,15 @@ write('мы их просто не видим', 6550, 880, 478.6, 1.2, size=70)
 arrow([7830, 905], [7820, 1150], 479.6, .3, 'graphite', 6)
 print('sight line at 7800:', round(EYE[1] + sl * (7800 - EYE[0])), ' ship top ≈', round(surf(7800) - 156))
 
+C1 = len(E)
 # ===================================================================== A again: beyond the edge  (480.06–492.67)
-spiral((520, 560), 95, 480.6, .7, dash=[18, 12])
+spiral((540, 560), 150, 480.6, .8, dash=[20, 13])
 write('за краем', 270, 880, 481.0, .6, size=68)
 write('похожее на наше', 270, 970, 482.9, 1.0, size=68)
-spiral((640, 1420), 80, 483.4, .6, dash=[18, 12])
+spiral((620, 1435), 125, 483.4, .7, dash=[20, 13])
 tag('допущение', 300, 1100, 484.85, size=50, rot=-1.5)
 write('проверить нечем', 270, 1270, 485.9, .9, size=64)
-spiral((3130, 1330), 85, 487.5, .6, dash=[18, 12])                          # a region beyond, unreachable in principle
+spiral((3130, 1330), 115, 487.5, .6, dash=[20, 13])                          # a region beyond, unreachable in principle
 line([[3030, 1240], [3230, 1420]], 490.4, .2, 'red', 8); line([[3230, 1240], [3030, 1420]], 490.6, .2, 'red', 8)
 write('по стандартной модели:', 2200, 1310, 488.0, 1.2, size=60)
 write('часть недостижима', 2200, 1400, 490.0, .9, size=60)
@@ -209,10 +216,18 @@ tag('вся Вселенная', 2230, 1620, 498.7, size=50, rot=-1)
 write('размер неизвестен', 2760, 1650, 499.6, 1.1, size=64)
 stamp('ПОКА НЕ ЗНАЕМ', 560, 1640, 503.7, size=64, rot=-5, seed=23)
 
+def shift(e, dx, dy=0):
+    for k in ('xy', 'from', 'to', 'c'):
+        if k == 'to' and e.get('kind') == 'count': continue
+        if isinstance(e.get(k), list) and len(e[k]) == 2 and not isinstance(e[k][0], list): e[k] = [e[k][0] + dx, e[k][1] + dy]
+    if 'points' in e: e['points'] = [[x + dx, y + dy] for x, y in e['points']]
+    for st in e.get('strokes', []): st['points'] = [[x + dx, y + dy] for x, y in st['points']]
+for e in E[B0:C1]: shift(e, DXBC)
+
 # ===================================================================== F. the final ruler  (bottom band)
 AY = 2900                                                                  # the ruler's axis
-MK = dict(earth=450, voy=1150, star=2450, disc=3800, andr=4850, edge=6150)
-NS, VS = 84, 84                                                            # name / value lettering on the ruler
+MK = dict(earth=450, voy=1150, star=2700, disc=3950, andr=4850, edge=6150)
+NS, VS = 92, 92                                                            # name / value lettering on the ruler
 def mtick(x, t, color='graphite'): return line([[x, AY - 32], [x, AY + 32]], t, .12, color, 8)
 # V4 508.54–524.06: back to Voyager, then the ruler grows mark by mark
 EM = meta('earth')
@@ -235,9 +250,8 @@ for i in range(8):
 write('ближайшая звезда', MK['star'], 2850, 515.4, 1.1, size=NS, align='center')
 line([[MK['star'], AY], [MK['disc'], AY]], 516.9, .7, lw=10); mtick(MK['disc'], 517.55)
 DX_, DY_ = MK['disc'], 2600                                                # the galaxy disc, drawn edge-on-ish
-line(arc((DX_, DY_), 270, 75, 0, 360, 60), 517.2, .6, lw=7)
-line(arc((DX_, DY_), 75, 40, 0, 360, 30), 517.7, .2, lw=7)
-line(arc((DX_ - 20, DY_ + 5), 190, 48, 200, 330, 20), 517.85, .15, 'grey', 5); line(arc((DX_ + 20, DY_ - 5), 190, 48, 20, 150, 20), 517.95, .15, 'grey', 5)
+spiral((DX_, DY_), 250, 517.2, .8, lw=7)
+line(arc((DX_, DY_), 62, 34, 0, 360, 30), 517.75, .2, lw=7)
 write('диск галактики', MK['disc'], 2850, 517.6, .9, size=NS, align='center')
 line([[MK['disc'], AY], [MK['andr'], AY]], 518.0, .55, lw=10); mtick(MK['andr'], 518.5)
 printed('andromeda', 'print_andromeda', MK['andr'], 2585, 518.1, w=330, rot=2)
@@ -247,17 +261,17 @@ line([[MK['andr'], AY], [MK['edge'], AY]], 519.0, .65, lw=10); mtick(MK['edge'],
 printed('jwst', 'print_jwst', MK['edge'], 2585, 519.2, w=320, rot=-1.5)
 magnet(MK['edge'] - 120, 2450, 519.55, r=18); magnet(MK['edge'] + 120, 2445, 519.65, r=18)
 write('граница видимого', MK['edge'], 2850, 519.7, 1.0, size=NS, align='center')
-write('на каждой отметке', 4950, 3260, 520.4, 1.0, size=72)
-write('рекорд всё меньше', 4950, 3360, 521.7, 1.0, size=72)
+write('на каждой отметке', 4600, 3260, 520.4, 1.0, size=72)
+write('рекорд всё меньше', 4600, 3360, 521.7, 1.0, size=72)
 # V5 524.61–536.6: «привет» there and back
-printed('dsn', 'print_dsn', 430, 2370, 524.75, w=330, rot=-2)
-magnet(310, 2230, 525.1, r=18); magnet(555, 2225, 525.2, r=18)
+printed('dsn', 'print_dsn', 470, 2370, 524.75, w=330, rot=-2)
+magnet(350, 2230, 525.1, r=18); magnet(595, 2225, 525.2, r=18)
 line(arc((800, 2470), 300, 230, 200, 335, 30), 527.0, 1.4, 'blue', 7, arrow=True, ea=1.4, eb=1.8)     # out: about a day
-write('«привет»', 560, 2180, 525.5, .8, size=60)
-write('сегодня → у зонда ≈ через сутки', 1420, 2185, 527.3, 2.4, 'blue', 62)
+write('«привет»', 600, 2180, 525.5, .8, size=60)
+write('сегодня → у зонда ≈ через сутки', 1400, 2185, 527.3, 2.4, 'blue', 56)
 line(arc((800, 2470), 230, 140, -20, -160, 30), 531.2, 1.2, 'blue', 7, dash=[22, 16], arrow=True, ea=1.4, eb=1.8)
-write('ответ: ещё ≈ сутки', 1420, 2285, 531.4, 1.4, 'blue', 62)
-write('для Вселенной: мгновение', 1420, 2390, 534.7, 1.4, size=62)
+write('ответ: ещё ≈ сутки', 1400, 2280, 531.4, 1.4, 'blue', 56)
+write('для Вселенной: мгновение', 1400, 2380, 534.7, 1.4, size=56)
 # V6 537.15–552.41: the ruler assembled, step by step
 STEPS = [('earth', 'voy', 538.95), ('voy', 'star', 540.0), ('star', 'disc', 541.1), ('disc', 'andr', 542.3), ('andr', 'edge', 543.5)]
 for a_, b_, t_ in STEPS:
@@ -273,24 +287,24 @@ ink('ring', 549.6, .8, 'red', c=[(MK['earth'] + 120 + MK['voy']) / 2, 3100], r=[
 write('нашему зонду — самая первая', 330, 3260, 550.0, 1.4, size=72)
 
 # ===================================================================== V7 553.11–569.17: so how big is the Universe?
-RX = 6600
+RX = 6950
 write('Так какого размера Вселенная?', RX, 2130, 553.2, 1.6, size=84)
 write('видимая часть: ≈ 93 млрд св. лет', RX, 2245, 555.0, 1.8, 'blue', 70)
 ink('ring', 556.6, .6, 'blue', c=[MK['edge'] + 20, 2985], r=[370, 75], lw=6)
-line([[MK['edge'] + 30, AY], [6900, AY]], 558.3, .7, lw=10, dash=[30, 22])
-lemniscate((7080, AY - 5), 110, 558.9, .7)
-write('?', 7260, AY + 35, 559.5, .3, size=110)
+line([[MK['edge'] + 30, AY], [7250, AY]], 558.3, .7, lw=10, dash=[30, 22])
+lemniscate((7430, AY - 5), 110, 558.9, .7)
+write('?', 7610, AY + 35, 559.5, .3, size=110)
 write('целая: возможно, бесконечна', RX, 2355, 558.5, 1.5, size=70)
 write('и мы не знаем', RX, 2460, 560.4, .8, size=70)
 line([[MK['earth'] + 120, AY], [MK['edge'], AY]], 561.4, 2.0, 'blue', 15, alpha=.55)   # the part that has a size
-write('размер — только у видимой части', RX, 2565, 562.0, 1.6, size=64)
+write('размер — только у видимой части', 2400, 3460, 562.0, 1.6, size=64)
 ink('ring', 565.3, .7, 'graphite', c=[MK['voy'], 2575], r=[240, 200], lw=6)
 write('наш рекорд крошечный,', 330, 3360, 565.8, 1.0, size=72)
 write('но он единственный', 330, 3460, 567.0, 1.0, size=72)
 
 # ===================================================================== V8 569.73–579.08: the question to you
 tag('вопрос вам', RX + 20, 2720, 569.8, size=52, rot=-1.5)
-CW, CH = 1240, 470; CXc, CYc = 7600, 3220
+CW, CH = 1240, 470; CXc, CYc = 7920, 3220
 el(type='card', id='msg', xy=[CXc, CYc], w=CW, h=CH, rot=1.2, z=8,
    arrive=dict(t=570.6, kind='drop', d=.45, lift=200, spin=1.0, land=.6),
    lines=[dict(text='Вояджеру-1: одно сообщение', font='sans', size=64, weight=700, x=60, y=-125, color='graphite'),
@@ -299,44 +313,44 @@ el(type='card', id='msg', xy=[CXc, CYc], w=CW, h=CH, rot=1.2, z=8,
           dict(text='ответ — через двое суток', font='sans', size=56, weight=600, x=60, y=180, color='blue')],
    magnets=[[-CW / 2 + 40, -CH / 2 + 40], [CW / 2 - 40, -CH / 2 + 40]], magnetR=22)
 ev(570.87, 'land', .2, size='mid'); ev(570.93, 'clack', .1)
-tag('напишите в комментариях', 7450, 2720, 577.2, size=50, rot=1)
+tag('напишите в комментариях', 7720, 2720, 577.2, size=50, rot=1)
 
 # ===================================================================== camera (film time; the cards hide the cuts)
-c = Cam(*fit([700, 280, 2350, 1700]))
+c = Cam(*fit([700, 290, 2350, 1700]))
 c.to(455.8, 2.4, z=z_of(c) * 1.04)                                         # the edge draws, the prints land
 c.fit(458.3, 1.5, [1000, 300, 3420, 1300], a=2, b=2.8)                     # «что дальше?», light from beyond
 c.to(459.9, 3.2, z=z_of(c) * 1.03)
-c.fit(463.0, 1.6, [3430, 380, 5420, 1060], a=2, b=2.8)                     # B: space almost flat
-c.fit(468.1, 1.3, [3430, 380, 5420, 1760], a=2, b=2.8)                     # both answers
-c.to(469.5, 3.5, z=z_of(c) * 1.03)
-c.fit(473.2, 1.6, [5500, 340, 7300, 1520], a=2, b=2.8)                     # C: the horizon at sea
-c.fit(476.4, 1.6, [5500, 340, 8250, 1600], a=2, b=2.8)                     # … the ship beyond it
-c.to(478.1, 1.8, z=z_of(c) * 1.02)
-c.fit(480.0, 1.8, [220, 380, 1750, 1720], a=2, b=2.8)                      # back to the edge: beyond it
-c.to(481.9, 5.0, z=z_of(c) * 1.03)
-c.fit(487.4, 1.4, [1900, 1150, 3450, 1760], a=2, b=2.8)                    # unreachable in principle
+c.fit(463.0, 1.6, [3700, 380, 5680, 1060], a=2, b=2.8)                     # B: space almost flat
+c.fit(468.1, 1.3, [3700, 1040, 5680, 1760], a=2, b=2.8)                    # both answers
+c.to(469.5, 3.5, z=z_of(c) * 1.02)
+c.fit(473.2, 1.6, [5750, 380, 8500, 1550], a=2, b=2.8)                     # C: the horizon at sea
+c.fit(476.4, 1.5, [6650, 600, 8500, 1500], a=2, b=2.8)                     # … the ship beyond it
+c.to(478.0, 1.8, z=z_of(c) * 1.02)
+c.fit(480.0, 1.8, [220, 470, 1200, 1520], a=2, b=2.8)                      # back to the edge: beyond it
+c.to(481.9, 5.2, z=z_of(c) * 1.03)
+c.fit(487.4, 1.4, [1850, 1050, 3420, 1720], zmax=1.2, a=2, b=2.8)          # unreachable in principle
 c.fit(493.0, 1.4, [760, 320, 2300, 1700], a=2, b=2.8)                      # ≈ 93 млрд св. лет across
-c.fit(498.5, 1.3, [1200, 800, 3450, 1760], a=2, b=2.8)                     # the whole: unknown
-c.fit(500.9, 2.3, [220, 260, 3450, 1760], a=2, b=2.8)                      # the map: «пока не знаем»
-c.fit(505.45, 1.9, [200, 220, 8250, 1780], a=2, b=2.8, sx=50)              # the chapter's part of the wall
+c.fit(498.5, 1.3, [1300, 900, 3420, 1760], a=2, b=2.8)                     # the whole: unknown
+c.fit(500.9, 2.3, [-60, 330, 3500, 1720], a=2, b=2.8, sx=40)               # the map: «пока не знаем»
+c.fit(505.45, 1.9, [200, 220, 8500, 1780], a=2, b=2.8, sx=50)              # the chapter's part of the wall
 c.fit(507.75, .6, [240, 2140, 2350, 3110])                                 # (under the card) the final band
 c.to(508.6, 2.8, z=z_of(c) * 1.03)
 c.fit(511.4, 1.4, [240, 2140, 2350, 3110], a=2, b=2.8)
-c.fit(514.3, 1.5, [900, 2160, 3400, 3110], a=1.8, b=2.6)                   # ride the ruler: the star
-c.fit(516.8, 1.3, [2150, 2160, 5250, 3110], a=1.8, b=2.6)                  # the galaxy, Andromeda
-c.fit(518.4, 1.3, [3500, 2160, 6550, 3110], a=1.8, b=2.6)                  # the edge of the visible
-c.fit(520.1, 3.0, [240, 2160, 6550, 3420], a=2, b=2.8)                     # every mark makes the record smaller
-c.fit(524.5, 1.5, [230, 2100, 2300, 2800], a=2, b=2.8)                     # «привет»
+c.fit(514.3, 1.5, [785, 2160, 3215, 3110], a=1.8, b=2.6)                   # ride the ruler: the star
+c.fit(516.8, 1.3, [2300, 2160, 5400, 3110], a=1.8, b=2.6)                  # the galaxy, Andromeda
+c.fit(518.4, 1.3, [3500, 2160, 6600, 3110], a=1.8, b=2.6)                  # the edge of the visible
+c.fit(520.1, 3.0, [240, 2160, 6600, 3420], a=2, b=2.8)                     # every mark makes the record smaller
+c.fit(524.5, 1.5, [300, 2050, 3100, 2800], a=2, b=2.8)                     # «привет»
 c.to(526.0, 9.0, z=z_of(c) * 1.03)
-c.fit(536.9, 1.5, [240, 2340, 6550, 3170], a=2, b=2.8)                     # the ruler assembled
-c.fit(544.6, 1.4, [240, 2340, 4800, 3420], a=2, b=2.8)                     # each step; our probe gets the first
+c.fit(536.9, 1.5, [240, 2340, 6600, 3170], a=2, b=2.8)                     # the ruler assembled
+c.fit(544.6, 1.4, [240, 2340, 5400, 3420], a=2, b=2.8)                     # each step; our probe gets the first
 c.to(546.0, 6.5, z=z_of(c) * 1.02)
-c.fit(552.9, 1.5, [5750, 2040, 8250, 3020], a=2, b=2.8)                    # so how big is it?
-c.fit(561.2, 1.6, [230, 2040, 8250, 3470], a=2, b=2.8, sx=50)              # only the visible part has a size
-c.fit(565.2, 1.4, [230, 2160, 2600, 3500], a=2, b=2.8)                     # our record: tiny, the only one
-c.fit(569.5, 1.6, [6500, 2040, 8250, 3480], a=2, b=2.8)                    # the question to you
+c.fit(552.9, 1.5, [5700, 2040, 8600, 3060], a=2, b=2.8)                    # so how big is it?
+c.fit(561.2, 1.6, [240, 2340, 6600, 3500], a=2, b=2.8)                     # only the visible part has a size
+c.fit(565.2, 1.4, [180, 2180, 3400, 3480], a=2, b=2.8, sx=40)              # our record: tiny, the only one
+c.fit(569.5, 1.6, [5750, 2040, 8600, 3480], a=2, b=2.8)                    # the question to you
 c.to(571.2, 3.6, z=z_of(c) * 1.02)
-c.fit(575.0, 3.6, [200, 220, 8250, 3500], a=2, b=3.2, sx=40)               # the whole wall, once: one briefing
+c.fit(575.0, 3.6, [230, 220, 8600, 3500], a=2, b=3.2, sx=40)               # the whole wall, once: one briefing
 c.to(578.7, 1.9, z=z_of(c) * 1.008)
 
 # ===================================================================== local time: shift every time by OFF
