@@ -1,6 +1,6 @@
 # EP17 upload kit — How It's Run
 
-**File:** `phoenix_how_it_exists.mp4` (1920×1080, 30 fps, ~11:22, −14 LUFS). Not in git (GitHub large-file quota is full); delivered as a file. Compressed copy for sending: `How Phoenix Exists in the Desert.mp4`.
+**File:** `phoenix_how_it_exists.mp4` (1920×1080, 30 fps, 11:23, −14.1 LUFS). Not in git (GitHub large-file quota is full); delivered as a file. Delivered copy: `How Phoenix Exists in the Desert.mp4` (250 MB). The render master was deleted to free disk; re-render with `rend.sh` if needed.
 
 **Mid-roll ads:** over 8 minutes, so mid-rolls are allowed. Place them on chapter breaks at about 4:56 and 8:40.
 
