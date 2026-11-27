@@ -38,5 +38,13 @@
   "cap": "Карта Меркатора, 1569 год",
   "page": "https://commons.wikimedia.org/wiki/File:Nova_et_aucta_orbis_terrae_descriptio_ad_usum_navigantium_emendate_accomodata_-_illustriss..._principi..._Wilhelmo_Duci_juliae,_Clivorum_et_Monti_Opus_hoc..._eius_auspiciis_inchoatum..._-_Gerardus_Mercator..._-_btv1b7200344k_(01_of_14).jpg",
   "title": "File:Nova et aucta orbis terrae descriptio ad usum navigantium emendate accomodata - illustriss... principi... Wilhelmo Duci juliae, Clivorum et Monti Opus hoc... eius auspiciis inchoatum... - Gerardus Mercator... - btv1b7200344k (01 of 14).jpg"
+ },
+ "rhumb_line_diagram": {
+  "file": "rhumb_line_diagram.jpg",
+  "author": "Jacob Rus",
+  "license": "CC BY-SA 4.0",
+  "cap": "Локсодрома: линия постоянного курса",
+  "page": "https://commons.wikimedia.org/wiki/File:Rhumb_line_vs_great-circle_arc.png",
+  "title": "File:Rhumb line vs great-circle arc.png"
  }
 }
