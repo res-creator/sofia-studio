@@ -107,6 +107,7 @@ def alias(new, old, fn=None):
         if fn: OUT[new]['file'] = fn
 def save(key, fn, cap, build):
     if (slug == 'remote_places') != (key in ('nemo_map', 'tristan_loc', 'bouvet_loc')): return
+    if (slug == 'country_names') != key.startswith('loc_'): return
     p = f'{J}/archive/img/{fn}'; build(p); OUT[key] = dict(file=fn, author='собственная графика, данные: открытые границы стран (johan/world.geo.json)', license='свободно', cap=cap, page='https://github.com/johan/world.geo.json', title=cap)
 afr = AFR
 mk = lambda proj, t, s, tis=False: (lambda p: draw_world(proj, (['Greenland'], afr), t, s, p, tissot=tis))
@@ -136,6 +137,11 @@ if slug == 'remote_places':
     save('nemo_map', 'nemo_map.jpg', 'Точка Немо', lambda p: region((-123.39, -48.88), 4200, [(-123.39, -48.88, 'Точка Немо', HI1), (-124.78, -24.67, 'о. Дюси', HI2), (-109.45, -27.2, 'Мотю-Нуи', HI2), (-129.95, -74.37, 'о. Махер', HI2)], 2688, 'Точка Немо', 'До ближайшей суши около 2 688 км во все стороны', p))
     save('tristan_loc', 'tristan_loc.jpg', 'Тристан-да-Кунья', lambda p: region((-12.28, -37.11), 4200, [(-12.28, -37.11, 'Тристан-да-Кунья', HI1), (-5.72, -15.95, 'Святая Елена', HI2), (18.42, -33.92, 'Кейптаун', HI2)], 2430, 'Тристан-да-Кунья', 'Ближайшие жители: остров Святой Елены, около 2 400 км', p))
     save('bouvet_loc', 'bouvet_loc.jpg', 'Остров Буве', lambda p: region((3.37, -54.42), 4200, [(3.37, -54.42, 'о. Буве', HI1), (18.42, -33.92, 'Кейптаун', HI2)], 0, 'Остров Буве', 'Самый одинокий остров мира: до ближайшей суши около 1 700 км', p))
+if slug == 'country_names':
+    def loc(nm, title, sub, out): draw_world(wt, ([nm], []), title, sub, out)
+    for key, nm, title, sub in (('loc_canada', 'Canada', 'Канада', 'Имя пришло от слова «деревня» (Картье, 1535)'), ('loc_brazil', 'Brazil', 'Бразилия', 'Названа по дереву бразильскому'), ('loc_cameroon', 'Cameroon', 'Камерун', 'Португальцы назвали реку «рекой креветок»'), ('loc_chad', 'Chad', 'Чад', '«Чад» на языке канури значит «озеро»'), ('loc_iceland', 'Iceland', 'Исландия', '«Страна льда»'), ('loc_greenland', 'Greenland', 'Гренландия', '«Зелёная страна»: имя дал Эрик Рыжий'), ('loc_venezuela', 'Venezuela', 'Венесуэла', '«Маленькая Венеция»: дома на сваях у озера Маракайбо'), ('loc_argentina', 'Argentina', 'Аргентина', 'От латинского «серебро»'), ('loc_australia', 'Australia', 'Австралия', '«Южная земля»'), ('loc_japan', 'Japan', 'Япония', '«Восход»: имя пришло с запада от Китая'), ('loc_nigeria', 'Nigeria', 'Нигерия', 'Имя предложили в газете «Таймс» 8 января 1897')):
+        save(key, key + '.jpg', title, (lambda a, b, c: (lambda p: loc(a, b, c, p)))(nm, title, sub))
+
 cp = f'{J}/archive/credits.json'; cr = json.load(open(cp, encoding='utf8')) if os.path.exists(cp) else {}
 for k, vv in OUT.items(): cr[k] = vv
 json.dump(cr, open(cp, 'w'), ensure_ascii=False, indent=1); print('ok', len(OUT))

@@ -22,5 +22,93 @@
   "cap": "Марко Поло (портрет)",
   "page": "https://commons.wikimedia.org/wiki/File:Palazzo_Tursi_Sala_di_rappresentanza_Marco_Polo.JPG",
   "title": "File:Palazzo Tursi Sala di rappresentanza Marco Polo.JPG"
+ },
+ "loc_canada": {
+  "file": "loc_canada.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Канада",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Канада"
+ },
+ "loc_brazil": {
+  "file": "loc_brazil.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Бразилия",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Бразилия"
+ },
+ "loc_cameroon": {
+  "file": "loc_cameroon.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Камерун",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Камерун"
+ },
+ "loc_chad": {
+  "file": "loc_chad.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Чад",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Чад"
+ },
+ "loc_iceland": {
+  "file": "loc_iceland.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Исландия",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Исландия"
+ },
+ "loc_greenland": {
+  "file": "loc_greenland.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Гренландия",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Гренландия"
+ },
+ "loc_venezuela": {
+  "file": "loc_venezuela.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Венесуэла",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Венесуэла"
+ },
+ "loc_argentina": {
+  "file": "loc_argentina.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Аргентина",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Аргентина"
+ },
+ "loc_australia": {
+  "file": "loc_australia.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Австралия",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Австралия"
+ },
+ "loc_japan": {
+  "file": "loc_japan.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Япония",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Япония"
+ },
+ "loc_nigeria": {
+  "file": "loc_nigeria.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Нигерия",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Нигерия"
  }
 }
