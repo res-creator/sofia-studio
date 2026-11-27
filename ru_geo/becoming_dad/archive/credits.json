@@ -1,0 +1,42 @@
+{
+ "start_range": {
+  "file": "start_range.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "старт"
+ },
+ "window_chart": {
+  "file": "window_chart.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "окно"
+ },
+ "odds_cards": {
+  "file": "odds_cards.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "шансы"
+ },
+ "ancestors": {
+  "file": "ancestors.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "предки"
+ },
+ "leeuwenhoek_1677": {
+  "file": "leeuwenhoek_1677.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "1677"
+ }
+}

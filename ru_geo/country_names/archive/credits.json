@@ -6,5 +6,21 @@
   "cap": "Старинная карта мира, 1570 год",
   "page": "https://commons.wikimedia.org/wiki/File:1570_Typus_Ortelius_cropped.jpg",
   "title": "File:1570 Typus Ortelius cropped.jpg"
+ },
+ "canada_map": {
+  "file": "canada_map.jpg",
+  "author": "Schuyler Erle. Adapted by Dr. Blofeld",
+  "license": "CC BY-SA 3.0",
+  "cap": "Канада на карте",
+  "page": "https://commons.wikimedia.org/wiki/File:Location_map_Canada.png",
+  "title": "File:Location map Canada.png"
+ },
+ "marco_polo": {
+  "file": "marco_polo.jpg",
+  "author": "Postcrosser",
+  "license": "CC BY-SA 3.0",
+  "cap": "Марко Поло (портрет)",
+  "page": "https://commons.wikimedia.org/wiki/File:Palazzo_Tursi_Sala_di_rappresentanza_Marco_Polo.JPG",
+  "title": "File:Palazzo Tursi Sala di rappresentanza Marco Polo.JPG"
  }
 }

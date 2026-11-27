@@ -1,0 +1,1288 @@
+{
+"segs": [
+{
+"t": 0.0,
+"d": 3.323,
+"type": "clip",
+"src": "stock/px361127.mp4",
+"ss": 0.3
+},
+{
+"t": 3.323,
+"d": 3.323,
+"type": "clip",
+"src": "stock/px3627.mp4",
+"ss": 0.3
+},
+{
+"t": 6.647,
+"d": 3.323,
+"type": "clip",
+"src": "stock/px136531.mp4",
+"ss": 0.3
+},
+{
+"t": 9.97,
+"d": 3.323,
+"type": "clip",
+"src": "stock/px356442.mp4",
+"ss": 0.3
+},
+{
+"t": 13.293,
+"d": 3.323,
+"type": "clip",
+"src": "stock/px15748.mp4",
+"ss": 0.3
+},
+{
+"t": 16.617,
+"d": 3.323,
+"type": "clip",
+"src": "stock/px136530.mp4",
+"ss": 0.3
+},
+{
+"t": 19.94,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/becoming_dad/card_big_1.png"
+},
+{
+"t": 23.54,
+"d": 2.833,
+"type": "clip",
+"src": "stock/px10809.mp4",
+"ss": 0.3
+},
+{
+"t": 26.373,
+"d": 2.833,
+"type": "clip",
+"src": "stock/px75047.mp4",
+"ss": 0.3
+},
+{
+"t": 29.207,
+"d": 2.833,
+"type": "clip",
+"src": "stock/px206632.mp4",
+"ss": 0.3
+},
+{
+"t": 32.04,
+"d": 3.4,
+"type": "clip",
+"src": "stock/px72720.mp4",
+"ss": 0.3
+},
+{
+"t": 35.44,
+"d": 3.4,
+"type": "clip",
+"src": "stock/px131701.mp4",
+"ss": 0.3
+},
+{
+"t": 38.84,
+"d": 3.4,
+"type": "clip",
+"src": "stock/px51927.mp4",
+"ss": 0.3
+},
+{
+"t": 42.24,
+"d": 3.4,
+"type": "clip",
+"src": "stock/px48119.mp4",
+"ss": 0.3
+},
+{
+"t": 45.64,
+"d": 3.4,
+"type": "clip",
+"src": "stock/px25598.mp4",
+"ss": 0.3
+},
+{
+"t": 49.04,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/becoming_dad/card_ch_50.png"
+},
+{
+"t": 51.64,
+"d": 3.214,
+"type": "clip",
+"src": "stock/px22318.mp4",
+"ss": 0.3
+},
+{
+"t": 54.854,
+"d": 3.214,
+"type": "clip",
+"src": "stock/px110709.mp4",
+"ss": 0.3
+},
+{
+"t": 58.068,
+"d": 3.214,
+"type": "clip",
+"src": "stock/px166289.mp4",
+"ss": 0.3
+},
+{
+"t": 61.282,
+"d": 3.214,
+"type": "clip",
+"src": "stock/px63839.mp4",
+"ss": 0.3
+},
+{
+"t": 64.496,
+"d": 3.214,
+"type": "clip",
+"src": "stock/px106072.mp4",
+"ss": 0.3
+},
+{
+"t": 67.71,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/becoming_dad/card_big_4.png"
+},
+{
+"t": 71.31,
+"d": 3.12,
+"type": "clip",
+"src": "stock/px54755.mp4",
+"ss": 0.3
+},
+{
+"t": 74.43,
+"d": 3.12,
+"type": "clip",
+"src": "stock/px20833.mp4",
+"ss": 0.3
+},
+{
+"t": 77.55,
+"d": 3.12,
+"type": "clip",
+"src": "stock/px5452.mp4",
+"ss": 0.3
+},
+{
+"t": 80.67,
+"d": 3.12,
+"type": "clip",
+"src": "stock/px192281.mp4",
+"ss": 0.3
+},
+{
+"t": 83.79,
+"d": 3.12,
+"type": "clip",
+"src": "stock/px4360.mp4",
+"ss": 0.3
+},
+{
+"t": 86.91,
+"d": 3.234,
+"type": "clip",
+"src": "stock/px10801.mp4",
+"ss": 0.3
+},
+{
+"t": 90.144,
+"d": 3.234,
+"type": "clip",
+"src": "stock/px1101.mp4",
+"ss": 0.3
+},
+{
+"t": 93.378,
+"d": 3.234,
+"type": "clip",
+"src": "stock/px3630.mp4",
+"ss": 0.3
+},
+{
+"t": 96.612,
+"d": 3.234,
+"type": "clip",
+"src": "stock/px85661.mp4",
+"ss": 0.3
+},
+{
+"t": 99.846,
+"d": 3.234,
+"type": "clip",
+"src": "stock/px93587.mp4",
+"ss": 0.3
+},
+{
+"t": 103.08,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/becoming_dad/card_big_6.png"
+},
+{
+"t": 106.68,
+"d": 3.333,
+"type": "clip",
+"src": "stock/px23145.mp4",
+"ss": 0.3
+},
+{
+"t": 110.012,
+"d": 3.333,
+"type": "clip",
+"src": "stock/px201528.mp4",
+"ss": 0.3
+},
+{
+"t": 113.345,
+"d": 3.333,
+"type": "clip",
+"src": "stock/px2296.mp4",
+"ss": 0.3
+},
+{
+"t": 116.678,
+"d": 3.333,
+"type": "clip",
+"src": "stock/px174615.mp4",
+"ss": 0.3
+},
+{
+"t": 120.01,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/becoming_dad/card_ch_121.png"
+},
+{
+"t": 122.61,
+"d": 3.422,
+"type": "clip",
+"src": "stock/px79637.mp4",
+"ss": 0.3
+},
+{
+"t": 126.032,
+"d": 3.422,
+"type": "clip",
+"src": "stock/px15709.mp4",
+"ss": 0.3
+},
+{
+"t": 129.454,
+"d": 3.422,
+"type": "clip",
+"src": "stock/px8703.mp4",
+"ss": 0.3
+},
+{
+"t": 132.876,
+"d": 3.422,
+"type": "clip",
+"src": "stock/px119960.mp4",
+"ss": 0.3
+},
+{
+"t": 136.298,
+"d": 3.422,
+"type": "clip",
+"src": "stock/px43749.mp4",
+"ss": 0.3
+},
+{
+"t": 139.72,
+"d": 2.978,
+"type": "clip",
+"src": "stock/px367684.mp4",
+"ss": 0.3
+},
+{
+"t": 142.698,
+"d": 2.978,
+"type": "clip",
+"src": "stock/px9005.mp4",
+"ss": 0.3
+},
+{
+"t": 145.677,
+"d": 2.978,
+"type": "clip",
+"src": "stock/px50990.mp4",
+"ss": 0.3
+},
+{
+"t": 148.655,
+"d": 2.978,
+"type": "clip",
+"src": "stock/px205589.mp4",
+"ss": 0.3
+},
+{
+"t": 151.633,
+"d": 2.978,
+"type": "clip",
+"src": "stock/px7029.mp4",
+"ss": 0.3
+},
+{
+"t": 154.612,
+"d": 2.978,
+"type": "clip",
+"src": "stock/px374807.mp4",
+"ss": 0.3
+},
+{
+"t": 157.59,
+"d": 2.88,
+"type": "clip",
+"src": "stock/px138644.mp4",
+"ss": 0.3
+},
+{
+"t": 160.47,
+"d": 2.88,
+"type": "clip",
+"src": "stock/px187387.mp4",
+"ss": 0.3
+},
+{
+"t": 163.35,
+"d": 2.88,
+"type": "clip",
+"src": "stock/px15615.mp4",
+"ss": 0.3
+},
+{
+"t": 166.23,
+"d": 2.88,
+"type": "clip",
+"src": "stock/px26562.mp4",
+"ss": 0.3
+},
+{
+"t": 169.11,
+"d": 2.88,
+"type": "clip",
+"src": "stock/px86384.mp4",
+"ss": 0.3
+},
+{
+"t": 171.99,
+"d": 3.195,
+"type": "clip",
+"src": "stock/yKrVajyZsW.mp4",
+"ss": 0.3
+},
+{
+"t": 175.185,
+"d": 3.195,
+"type": "clip",
+"src": "stock/px138443.mp4",
+"ss": 0.3
+},
+{
+"t": 178.38,
+"d": 3.195,
+"type": "clip",
+"src": "stock/px112101.mp4",
+"ss": 0.3
+},
+{
+"t": 181.575,
+"d": 3.195,
+"type": "clip",
+"src": "stock/px8449.mp4",
+"ss": 0.3
+},
+{
+"t": 184.77,
+"d": 3.195,
+"type": "clip",
+"src": "stock/px1152.mp4",
+"ss": 0.3
+},
+{
+"t": 187.965,
+"d": 3.195,
+"type": "clip",
+"src": "stock/px166586.mp4",
+"ss": 0.3
+},
+{
+"t": 191.16,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/becoming_dad/card_ch_192.png"
+},
+{
+"t": 193.76,
+"d": 3.105,
+"type": "clip",
+"src": "stock/px246391.mp4",
+"ss": 0.3
+},
+{
+"t": 196.865,
+"d": 3.105,
+"type": "clip",
+"src": "stock/px364088.mp4",
+"ss": 0.3
+},
+{
+"t": 199.97,
+"d": 3.105,
+"type": "clip",
+"src": "stock/px133085.mp4",
+"ss": 0.3
+},
+{
+"t": 203.075,
+"d": 3.105,
+"type": "clip",
+"src": "stock/px275632.mp4",
+"ss": 0.3
+},
+{
+"t": 206.18,
+"d": 3.105,
+"type": "clip",
+"src": "stock/px388064.mp4",
+"ss": 0.3
+},
+{
+"t": 209.285,
+"d": 3.105,
+"type": "clip",
+"src": "stock/px41315.mp4",
+"ss": 0.3
+},
+{
+"t": 212.39,
+"d": 3.35,
+"type": "clip",
+"src": "stock/px11722.mp4",
+"ss": 0.3
+},
+{
+"t": 215.74,
+"d": 3.35,
+"type": "clip",
+"src": "stock/px8140.mp4",
+"ss": 0.3
+},
+{
+"t": 219.09,
+"d": 3.35,
+"type": "clip",
+"src": "stock/px32934.mp4",
+"ss": 0.3
+},
+{
+"t": 222.44,
+"d": 3.35,
+"type": "clip",
+"src": "stock/px32386.mp4",
+"ss": 0.3
+},
+{
+"t": 225.79,
+"d": 3.35,
+"type": "clip",
+"src": "stock/px8153.mp4",
+"ss": 0.3
+},
+{
+"t": 229.14,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/becoming_dad/card_ch_230.png"
+},
+{
+"t": 231.74,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/becoming_dad/card_big_13.png"
+},
+{
+"t": 235.34,
+"d": 3.392,
+"type": "clip",
+"src": "stock/px370535.mp4",
+"ss": 0.3
+},
+{
+"t": 238.732,
+"d": 3.392,
+"type": "clip",
+"src": "stock/px3965.mp4",
+"ss": 0.3
+},
+{
+"t": 242.124,
+"d": 3.392,
+"type": "clip",
+"src": "stock/px217850.mp4",
+"ss": 0.3
+},
+{
+"t": 245.516,
+"d": 3.392,
+"type": "clip",
+"src": "stock/px149986.mp4",
+"ss": 0.3
+},
+{
+"t": 248.908,
+"d": 3.392,
+"type": "clip",
+"src": "stock/px144362.mp4",
+"ss": 0.3
+},
+{
+"t": 252.3,
+"d": 2.972,
+"type": "clip",
+"src": "stock/px130878.mp4",
+"ss": 0.3
+},
+{
+"t": 255.272,
+"d": 2.972,
+"type": "clip",
+"src": "stock/px26452.mp4",
+"ss": 0.3
+},
+{
+"t": 258.244,
+"d": 2.972,
+"type": "clip",
+"src": "stock/px143434.mp4",
+"ss": 0.3
+},
+{
+"t": 261.216,
+"d": 2.972,
+"type": "clip",
+"src": "stock/px7549.mp4",
+"ss": 0.3
+},
+{
+"t": 264.188,
+"d": 2.972,
+"type": "clip",
+"src": "stock/px41514.mp4",
+"ss": 0.3
+},
+{
+"t": 267.16,
+"d": 3.098,
+"type": "clip",
+"src": "stock/px143683.mp4",
+"ss": 0.3
+},
+{
+"t": 270.258,
+"d": 3.098,
+"type": "clip",
+"src": "stock/px199293.mp4",
+"ss": 0.3
+},
+{
+"t": 273.356,
+"d": 3.098,
+"type": "clip",
+"src": "stock/px108459.mp4",
+"ss": 0.3
+},
+{
+"t": 276.454,
+"d": 3.098,
+"type": "clip",
+"src": "stock/px139428.mp4",
+"ss": 0.3
+},
+{
+"t": 279.552,
+"d": 3.098,
+"type": "clip",
+"src": "stock/px137665.mp4",
+"ss": 0.3
+},
+{
+"t": 282.65,
+"d": 3.005,
+"type": "clip",
+"src": "stock/px59526.mp4",
+"ss": 0.3
+},
+{
+"t": 285.655,
+"d": 3.005,
+"type": "clip",
+"src": "stock/px159908.mp4",
+"ss": 0.3
+},
+{
+"t": 288.66,
+"d": 3.005,
+"type": "clip",
+"src": "stock/px7998.mp4",
+"ss": 0.3
+},
+{
+"t": 291.665,
+"d": 3.005,
+"type": "clip",
+"src": "stock/px197976.mp4",
+"ss": 0.3
+},
+{
+"t": 294.67,
+"d": 3.005,
+"type": "clip",
+"src": "stock/px28605.mp4",
+"ss": 0.3
+},
+{
+"t": 297.675,
+"d": 3.005,
+"type": "clip",
+"src": "stock/px151868.mp4",
+"ss": 0.3
+},
+{
+"t": 300.68,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/becoming_dad/card_ch_302.png"
+},
+{
+"t": 303.28,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/becoming_dad/card_big_17.png"
+},
+{
+"t": 306.88,
+"d": 2.998,
+"type": "clip",
+"src": "stock/px4952.mp4",
+"ss": 0.3
+},
+{
+"t": 309.877,
+"d": 2.998,
+"type": "clip",
+"src": "stock/px152183.mp4",
+"ss": 0.3
+},
+{
+"t": 312.875,
+"d": 2.998,
+"type": "clip",
+"src": "stock/px171409.mp4",
+"ss": 0.3
+},
+{
+"t": 315.873,
+"d": 2.998,
+"type": "clip",
+"src": "stock/px26771.mp4",
+"ss": 0.3
+},
+{
+"t": 318.87,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/becoming_dad/card_big_18.png"
+},
+{
+"t": 322.47,
+"d": 3.315,
+"type": "clip",
+"src": "stock/px141519.mp4",
+"ss": 0.3
+},
+{
+"t": 325.785,
+"d": 3.315,
+"type": "clip",
+"src": "stock/px111279.mp4",
+"ss": 0.3
+},
+{
+"t": 329.1,
+"d": 3.315,
+"type": "clip",
+"src": "stock/px185096.mp4",
+"ss": 0.3
+},
+{
+"t": 332.415,
+"d": 3.315,
+"type": "clip",
+"src": "stock/px9085.mp4",
+"ss": 0.3
+},
+{
+"t": 335.73,
+"d": 3.072,
+"type": "clip",
+"src": "stock/px16160.mp4",
+"ss": 0.3
+},
+{
+"t": 338.802,
+"d": 3.072,
+"type": "clip",
+"src": "stock/px34091.mp4",
+"ss": 0.3
+},
+{
+"t": 341.874,
+"d": 3.072,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+},
+{
+"t": 344.946,
+"d": 3.072,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+},
+{
+"t": 348.018,
+"d": 3.072,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+},
+{
+"t": 351.09,
+"d": 2.947,
+"type": "clip",
+"src": "stock/px61964.mp4",
+"ss": 0.3
+},
+{
+"t": 354.037,
+"d": 2.947,
+"type": "clip",
+"src": "stock/px286930.mp4",
+"ss": 0.3
+},
+{
+"t": 356.983,
+"d": 2.947,
+"type": "clip",
+"src": "stock/px10822.mp4",
+"ss": 0.3
+},
+{
+"t": 359.93,
+"d": 2.947,
+"type": "clip",
+"src": "stock/px50295.mp4",
+"ss": 0.3
+},
+{
+"t": 362.877,
+"d": 2.947,
+"type": "clip",
+"src": "stock/px60404.mp4",
+"ss": 0.3
+},
+{
+"t": 365.823,
+"d": 2.947,
+"type": "clip",
+"src": "stock/px960.mp4",
+"ss": 0.3
+},
+{
+"t": 368.77,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/becoming_dad/card_big_21.png"
+},
+{
+"t": 372.37,
+"d": 3.148,
+"type": "clip",
+"src": "stock/px206998.mp4",
+"ss": 0.3
+},
+{
+"t": 375.518,
+"d": 3.148,
+"type": "clip",
+"src": "stock/px206997.mp4",
+"ss": 0.3
+},
+{
+"t": 378.666,
+"d": 3.148,
+"type": "clip",
+"src": "stock/px22983.mp4",
+"ss": 0.3
+},
+{
+"t": 381.814,
+"d": 3.148,
+"type": "clip",
+"src": "stock/px233941.mp4",
+"ss": 0.3
+},
+{
+"t": 384.962,
+"d": 3.148,
+"type": "clip",
+"src": "stock/px143788.mp4",
+"ss": 0.3
+},
+{
+"t": 388.11,
+"d": 3.011,
+"type": "clip",
+"src": "stock/px63844.mp4",
+"ss": 0.3
+},
+{
+"t": 391.121,
+"d": 3.011,
+"type": "clip",
+"src": "stock/px421.mp4",
+"ss": 0.3
+},
+{
+"t": 394.133,
+"d": 3.011,
+"type": "clip",
+"src": "stock/px107663.mp4",
+"ss": 0.3
+},
+{
+"t": 397.144,
+"d": 3.011,
+"type": "clip",
+"src": "stock/px11850.mp4",
+"ss": 0.3
+},
+{
+"t": 400.156,
+"d": 3.011,
+"type": "clip",
+"src": "stock/px152798.mp4",
+"ss": 0.3
+},
+{
+"t": 403.167,
+"d": 3.011,
+"type": "clip",
+"src": "stock/px59476.mp4",
+"ss": 0.3
+},
+{
+"t": 406.179,
+"d": 3.011,
+"type": "clip",
+"src": "stock/px386787.mp4",
+"ss": 0.3
+},
+{
+"t": 409.19,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/becoming_dad/card_ch_410.png"
+},
+{
+"t": 411.79,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/becoming_dad/card_big_23.png"
+},
+{
+"t": 415.39,
+"d": 2.815,
+"type": "clip",
+"src": "stock/px11186.mp4",
+"ss": 0.3
+},
+{
+"t": 418.205,
+"d": 2.815,
+"type": "clip",
+"src": "stock/px207982.mp4",
+"ss": 0.3
+},
+{
+"t": 421.02,
+"d": 2.815,
+"type": "clip",
+"src": "stock/px244231.mp4",
+"ss": 0.3
+},
+{
+"t": 423.835,
+"d": 2.815,
+"type": "clip",
+"src": "stock/px197486.mp4",
+"ss": 0.3
+},
+{
+"t": 426.65,
+"d": 3.328,
+"type": "clip",
+"src": "stock/px5456.mp4",
+"ss": 0.3
+},
+{
+"t": 429.978,
+"d": 3.328,
+"type": "clip",
+"src": "stock/px63841.mp4",
+"ss": 0.3
+},
+{
+"t": 433.306,
+"d": 3.328,
+"type": "clip",
+"src": "stock/px17089.mp4",
+"ss": 0.3
+},
+{
+"t": 436.634,
+"d": 3.328,
+"type": "clip",
+"src": "stock/px107242.mp4",
+"ss": 0.3
+},
+{
+"t": 439.962,
+"d": 3.328,
+"type": "clip",
+"src": "stock/px94680.mp4",
+"ss": 0.3
+},
+{
+"t": 443.29,
+"d": 3.113,
+"type": "clip",
+"src": "stock/px203449.mp4",
+"ss": 0.3
+},
+{
+"t": 446.403,
+"d": 3.113,
+"type": "clip",
+"src": "stock/px240758.mp4",
+"ss": 0.3
+},
+{
+"t": 449.517,
+"d": 3.113,
+"type": "clip",
+"src": "stock/px137573.mp4",
+"ss": 0.3
+},
+{
+"t": 452.63,
+"d": 3.113,
+"type": "clip",
+"src": "stock/px7350.mp4",
+"ss": 0.3
+},
+{
+"t": 455.743,
+"d": 3.113,
+"type": "clip",
+"src": "stock/px32867.mp4",
+"ss": 0.3
+},
+{
+"t": 458.857,
+"d": 3.113,
+"type": "clip",
+"src": "stock/px55760.mp4",
+"ss": 0.3
+},
+{
+"t": 461.97,
+"d": 3.382,
+"type": "clip",
+"src": "stock/px1334.mp4",
+"ss": 0.3
+},
+{
+"t": 465.352,
+"d": 3.382,
+"type": "clip",
+"src": "stock/px1336.mp4",
+"ss": 0.3
+},
+{
+"t": 468.734,
+"d": 3.382,
+"type": "clip",
+"src": "stock/px197489.mp4",
+"ss": 0.3
+},
+{
+"t": 472.116,
+"d": 3.382,
+"type": "clip",
+"src": "stock/px369823.mp4",
+"ss": 0.3
+},
+{
+"t": 475.498,
+"d": 3.382,
+"type": "clip",
+"src": "stock/px341293.mp4",
+"ss": 0.3
+},
+{
+"t": 478.88,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/becoming_dad/card_big_27.png"
+},
+{
+"t": 482.48,
+"d": 3.515,
+"type": "clip",
+"src": "stock/px216696.mp4",
+"ss": 0.3
+},
+{
+"t": 485.995,
+"d": 3.515,
+"type": "clip",
+"src": "stock/px3451.mp4",
+"ss": 0.3
+},
+{
+"t": 489.51,
+"d": 3.515,
+"type": "clip",
+"src": "stock/px30123.mp4",
+"ss": 0.3
+},
+{
+"t": 493.025,
+"d": 3.515,
+"type": "clip",
+"src": "stock/px80000.mp4",
+"ss": 0.3
+},
+{
+"t": 496.54,
+"d": 3.014,
+"type": "clip",
+"src": "stock/px10339.mp4",
+"ss": 0.3
+},
+{
+"t": 499.554,
+"d": 3.014,
+"type": "clip",
+"src": "stock/px5438.mp4",
+"ss": 0.3
+},
+{
+"t": 502.569,
+"d": 3.014,
+"type": "clip",
+"src": "stock/px260163.mp4",
+"ss": 0.3
+},
+{
+"t": 505.583,
+"d": 3.014,
+"type": "clip",
+"src": "stock/px31569.mp4",
+"ss": 0.3
+},
+{
+"t": 508.597,
+"d": 3.014,
+"type": "clip",
+"src": "stock/px112611.mp4",
+"ss": 0.3
+},
+{
+"t": 511.611,
+"d": 3.014,
+"type": "clip",
+"src": "stock/px95001.mp4",
+"ss": 0.3
+},
+{
+"t": 514.626,
+"d": 3.014,
+"type": "clip",
+"src": "stock/px134252.mp4",
+"ss": 0.3
+},
+{
+"t": 517.64,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/becoming_dad/card_ch_519.png"
+},
+{
+"t": 520.24,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/becoming_dad/card_big_29.png"
+},
+{
+"t": 523.84,
+"d": 2.902,
+"type": "clip",
+"src": "stock/px101795.mp4",
+"ss": 0.3
+},
+{
+"t": 526.742,
+"d": 2.902,
+"type": "clip",
+"src": "stock/px101929.mp4",
+"ss": 0.3
+},
+{
+"t": 529.644,
+"d": 2.902,
+"type": "clip",
+"src": "stock/px41008.mp4",
+"ss": 0.3
+},
+{
+"t": 532.546,
+"d": 2.902,
+"type": "clip",
+"src": "stock/px47551.mp4",
+"ss": 0.3
+},
+{
+"t": 535.448,
+"d": 2.902,
+"type": "clip",
+"src": "stock/px7817.mp4",
+"ss": 0.3
+},
+{
+"t": 538.35,
+"d": 3.302,
+"type": "clip",
+"src": "stock/px32001.mp4",
+"ss": 0.3
+},
+{
+"t": 541.652,
+"d": 3.302,
+"type": "clip",
+"src": "stock/px106519.mp4",
+"ss": 0.3
+},
+{
+"t": 544.954,
+"d": 3.302,
+"type": "clip",
+"src": "stock/px49815.mp4",
+"ss": 0.3
+},
+{
+"t": 548.256,
+"d": 3.302,
+"type": "clip",
+"src": "stock/px357054.mp4",
+"ss": 0.3
+},
+{
+"t": 551.558,
+"d": 3.302,
+"type": "clip",
+"src": "stock/px93548.mp4",
+"ss": 0.3
+},
+{
+"t": 554.86,
+"d": 3.357,
+"type": "clip",
+"src": "stock/px7417.mp4",
+"ss": 0.3
+},
+{
+"t": 558.217,
+"d": 3.357,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+},
+{
+"t": 561.573,
+"d": 3.357,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+},
+{
+"t": 564.93,
+"d": 3.357,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+},
+{
+"t": 568.287,
+"d": 3.357,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+},
+{
+"t": 571.643,
+"d": 3.357,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+},
+{
+"t": 575.0,
+"d": 3.028,
+"type": "clip",
+"src": "stock/px265501.mp4",
+"ss": 0.3
+},
+{
+"t": 578.028,
+"d": 3.028,
+"type": "clip",
+"src": "stock/px127736.mp4",
+"ss": 0.3
+},
+{
+"t": 581.056,
+"d": 3.028,
+"type": "clip",
+"src": "stock/px16111.mp4",
+"ss": 0.3
+},
+{
+"t": 584.084,
+"d": 3.028,
+"type": "clip",
+"src": "stock/px76124.mp4",
+"ss": 0.3
+},
+{
+"t": 587.112,
+"d": 3.028,
+"type": "clip",
+"src": "stock/px27045.mp4",
+"ss": 0.3
+}
+]
+}
