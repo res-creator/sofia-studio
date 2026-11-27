@@ -406,5 +406,53 @@
   "cap": "Схема: смотровая площадка и качание верха башни от ветра (собственная графика)",
   "page": "",
   "title": "Смотровая площадка и ветер"
+ },
+ "ph_damper": {
+  "file": "ph_damper.jpg",
+  "author": "Armand du Plessis",
+  "license": "CC BY 3.0",
+  "cap": "Шар-маятник 660 т в башне Тайбэй 101",
+  "page": "https://commons.wikimedia.org/wiki/File:Taipei_101_Tuned_Mass_Damper_2010.jpg",
+  "title": "File:Taipei 101 Tuned Mass Damper 2010.jpg"
+ },
+ "ph_damper2": {
+  "file": "ph_damper2.jpg",
+  "author": "Johan Jönsson (Julle)",
+  "license": "CC BY-SA 4.0",
+  "cap": "Шар-маятник Тайбэй 101 вблизи",
+  "page": "https://commons.wikimedia.org/wiki/File:Taipei_101_tuned_mass_damper_01.jpg",
+  "title": "File:Taipei 101 tuned mass damper 01.jpg"
+ },
+ "ph_wright": {
+  "file": "ph_wright.jpg",
+  "author": "Al Ravenna, New York World-Telegram and the Sun (Library of Congress)",
+  "license": "Public domain",
+  "cap": "Фрэнк Ллойд Райт, 1954",
+  "page": "https://commons.wikimedia.org/wiki/File:Frank_Lloyd_Wright_portrait.jpg",
+  "title": "File:Frank Lloyd Wright portrait.jpg"
+ },
+ "ph_tsiolkovsky": {
+  "file": "ph_tsiolkovsky.jpg",
+  "author": "фотоателье С. А. Адамович",
+  "license": "Public domain",
+  "cap": "К. Э. Циолковский, около 1909 года",
+  "page": "https://commons.wikimedia.org/wiki/File:Konstantin_Tsiolkovsky_1908-1909.jpg",
+  "title": "File:Konstantin Tsiolkovsky 1908-1909.jpg"
+ },
+ "ph_taipei": {
+  "file": "ph_taipei.jpg",
+  "author": "Heeheemalu",
+  "license": "CC BY-SA 4.0",
+  "cap": "Башня Тайбэй 101 (508 м)",
+  "page": "https://commons.wikimedia.org/wiki/File:Taipei_101_from_Sun_Yat_Sen_Memorial_Hall.jpg",
+  "title": "File:Taipei 101 from Sun Yat Sen Memorial Hall.jpg"
+ },
+ "ph_otis": {
+  "file": "ph_otis.jpg",
+  "author": "автор неизвестен",
+  "license": "Public domain",
+  "cap": "Отис показывает защёлку, Нью-Йорк, 1854 (позднейший рисунок)",
+  "page": "https://commons.wikimedia.org/wiki/File:Elisha_OTIS_1854_(cropped).jpg",
+  "title": "File:Elisha OTIS 1854 (cropped).jpg"
  }
 }

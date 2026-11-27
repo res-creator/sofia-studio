@@ -210,7 +210,7 @@ for i in range(0, len(ts) - 1, 2): d.line(((xo(ts[i]), 160 + ts[i]), (xo(ts[i + 
 lab(d, (360, 215), 'Хорватия', 46, TXT); lab(d, (1560, 215), 'Сербия', 46, TXT)
 para(d, (360, 420), 'Хорватия: граница по старым руслам (кадастр)', 34, OR, 440)
 para(d, (1560, 420), 'Сербия: граница по нынешнему руслу Дуная', 34, BL, 440)
-lab(d, (640, 700), 'жёлтое: не берёт никто, «ничья» по логике основателя', 32, YL)
+para(d, (380, 640), 'жёлтое: не берёт никто, «ничья» по логике основателя', 34, YL, 470)
 S.save('cc_liber_logic', im, 'спор о границе по Дунаю: две линии')
 
 # 11. Либерленд: что сделали соседи
@@ -242,6 +242,7 @@ def hutt_tl(key, hi):
         ax = 'lm' if yr < 1980 else 'rm'; xx = x - 20 if yr < 1980 else x + 20
         for (t, yy, sz) in zip(ls, ys, (46, 34, 34)): d.text((xx, yy), t, font=F(sz), fill=col if t == ls[0] else (TXT if yr in hi else SUB), anchor=ax)
     S.save(key, im, 'хронология Хатт-Ривер'); return im
+hutt_tl('cc_hutt_tl1970', (1970,))
 hutt_tl('cc_hutt_tl1977', (1977,))
 hutt_tl('cc_hutt_tl2017', (2017, 2020))
 

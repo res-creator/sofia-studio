@@ -414,5 +414,37 @@
   "cap": "Дон Уолш и Жак Пикар в стальной сфере «Триеста», 1960 (NOAA)",
   "page": "https://commons.wikimedia.org/wiki/File:Bathyscaphe_Trieste_Piccard-Walsh.jpg",
   "title": "Bathyscaphe Trieste Piccard-Walsh"
+ },
+ "vostok_photo": {
+  "file": "vostok_photo.jpg",
+  "author": "Arctic and Antarctic Research Institute (Wikimedia Commons)",
+  "license": "CC BY 4.0",
+  "cap": "новый зимовочный комплекс станции «Восток», лето 2023–2024 (ААНИИ, CC BY 4.0)",
+  "page": "https://commons.wikimedia.org/wiki/File:Vostok_Station_2024.png",
+  "title": "Vostok Station 2024"
+ },
+ "everest_climbers": {
+  "file": "everest_climbers.jpg",
+  "author": "Debasish biswas kolkata (Wikimedia Commons)",
+  "license": "CC BY-SA 4.0",
+  "cap": "альпинисты у ступени Хиллари под вершиной Эвереста (фото: Debasish Biswas, CC BY-SA 4.0)",
+  "page": "https://commons.wikimedia.org/wiki/File:Hillary_Step_near_Everest_top.jpg",
+  "title": "Hillary Step near Everest top"
+ },
+ "mponeng_surface": {
+  "file": "mponeng_surface.jpg",
+  "author": "JMK (Wikimedia Commons)",
+  "license": "CC BY-SA 4.0",
+  "cap": "шахта Мпоненг, ЮАР: надшахтные постройки (фото: JMK, CC BY-SA 4.0)",
+  "page": "https://commons.wikimedia.org/wiki/File:Mponeng-goudmyn,_Merafong_City-pm,_Wesrand-dm,_a.jpg",
+  "title": "Mponeng-goudmyn, Merafong City-pm, Wesrand-dm, a"
+ },
+ "lifejacket": {
+  "file": "lifejacket.jpg",
+  "author": "Dietmar Rabich (Wikimedia Commons)",
+  "license": "CC BY-SA 4.0",
+  "cap": "спасательные жилеты в гавани Кюлунгсборна, Германия (фото: Dietmar Rabich, CC BY-SA 4.0)",
+  "page": "https://commons.wikimedia.org/wiki/File:K%C3%BChlungsborn,_Marina,_Rettungswesten_--_2024_--_5224.jpg",
+  "title": "Kühlungsborn, Marina, Rettungswesten -- 2024 -- 5224"
  }
 }

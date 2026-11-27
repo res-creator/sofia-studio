@@ -654,5 +654,21 @@
   "cap": "Река Святого Лаврентия, снимок с шаттла, 1991",
   "page": "https://images.nasa.gov/details/s39-83-059",
   "title": "s39-83-059"
+ },
+ "ph_erik": {
+  "file": "ph_erik.jpg",
+  "author": "Arngrímur Jónsson (гравюра XVII века)",
+  "license": "общественное достояние",
+  "cap": "Эйрик Рыжий на гравюре XVII века",
+  "page": "https://commons.wikimedia.org/wiki/File:Eric_the_Red.png",
+  "title": "File:Eric the Red.png"
+ },
+ "ph_tabula": {
+  "file": "ph_tabula.jpg",
+  "author": "аль-Идриси (оригинал 1154); копия Конрада Миллера, 1929",
+  "license": "общественное достояние",
+  "cap": "Карта мира аль-Идриси, 1154 год (копия 1929 года, юг сверху)",
+  "page": "https://commons.wikimedia.org/wiki/File:TabulaRogeriana.jpg",
+  "title": "File:TabulaRogeriana.jpg"
  }
 }

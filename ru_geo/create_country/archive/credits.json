@@ -11,7 +11,7 @@
   "file": "flag_sea.jpg",
   "author": "Wikmeme",
   "license": "CC BY-SA 4.0",
-  "cap": "флаг Силенда (изображение)",
+  "cap": "флаг Силенда",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Sealand_EUROPA.png",
   "title": "File:Flag of Sealand EUROPA.png"
  },
@@ -27,7 +27,7 @@
   "file": "montevideo_conf.jpg",
   "author": "Fedaro",
   "license": "CC BY 3.0",
-  "cap": "страны Конвенции Монтевидео (схема) и архивные материалы конференции",
+  "cap": "современный съезд в Монтевидео (не конференция 1933 года)",
   "page": "https://commons.wikimedia.org/wiki/File:PanoConvenPS.jpg",
   "title": "File:PanoConvenPS.jpg"
  },
@@ -35,7 +35,7 @@
   "file": "roy_bates.jpg",
   "author": "Financial Times",
   "license": "общественное достояние",
-  "cap": "Рой Бейтс на Силенде (архивное фото, 1978)",
+  "cap": "Рой и Джоан Бейтс на Силенде, 1978",
   "page": "https://commons.wikimedia.org/wiki/File:Roy_and_Joan_Bates_on_Sealand_1978.jpg",
   "title": "File:Roy and Joan Bates on Sealand 1978.jpg"
  },
@@ -51,7 +51,7 @@
   "file": "hutt_river.jpg",
   "author": "Windshear",
   "license": "CC BY-SA 4.0",
-  "cap": "Хатт-Ривер, Западная Австралия (фото)",
+  "cap": "монета княжества Хатт-Ривер, 5 долларов",
   "page": "https://commons.wikimedia.org/wiki/File:Hutt_River_Province_five_dollars_coin_1.jpg",
   "title": "File:Hutt River Province five dollars coin 1.jpg"
  },
@@ -123,7 +123,7 @@
   "file": "maunsell_forts.jpg",
   "author": "Steve Cadman",
   "license": "CC BY-SA 2.0",
-  "cap": "морские форты Маунселла времён войны (фото)",
+  "cap": "другие морские форты Маунселла времён войны (не Силенд)",
   "page": "https://commons.wikimedia.org/wiki/File:Maunsell_Sea_Forts_2013.jpg",
   "title": "File:Maunsell Sea Forts 2013.jpg"
  },
@@ -542,5 +542,69 @@
   "cap": "",
   "page": "",
   "title": "флаг приходил последним"
+ },
+ "hutt_border": {
+  "file": "hutt_border.jpg",
+  "author": "ElectronicsForDogs",
+  "license": "CC BY-SA 4.0",
+  "cap": "въезд в Хатт-Ривер с дороги из Западной Австралии, 2010",
+  "page": "https://commons.wikimedia.org/wiki/File:Border_of_Hutt_River_Province.jpg",
+  "title": "File:Border of Hutt River Province.jpg"
+ },
+ "hutt_casley": {
+  "file": "hutt_casley.jpg",
+  "author": "ElectronicsForDogs",
+  "license": "CC BY-SA 4.0",
+  "cap": "Леонард Кейзли (справа) встречает гостя в Хатт-Ривер, 2010",
+  "page": "https://commons.wikimedia.org/wiki/File:Leonard_Casley_at_Hutt_River_Province.jpg",
+  "title": "File:Leonard Casley at Hutt River Province.jpg"
+ },
+ "hutt_passport": {
+  "file": "hutt_passport.jpg",
+  "author": "ElectronicsForDogs",
+  "license": "CC BY-SA 4.0",
+  "cap": "«паспортный контроль» в Хатт-Ривер: паспорт гостя под УФ-лампой, 2010",
+  "page": "https://commons.wikimedia.org/wiki/File:Passport_control_at_Hutt_River_Province.jpg",
+  "title": "File:Passport control at Hutt River Province.jpg"
+ },
+ "liber_iss": {
+  "file": "liber_iss.jpg",
+  "author": "NASA JSC, Earth Science and Remote Sensing Unit",
+  "license": "общественное достояние",
+  "cap": "пойма Дуная у Горня-Сиги, где объявлен Либерленд (снимок с МКС, 2007)",
+  "page": "https://commons.wikimedia.org/wiki/File:Satellite_image_of_Gornja_Siga_in_2007.jpg",
+  "title": "File:Satellite image of Gornja Siga in 2007.jpg"
+ },
+ "timor_ballot": {
+  "file": "timor_ballot.jpg",
+  "author": "UNAMET (миссия ООН), автор неизвестен",
+  "license": "CC BY-SA 4.0",
+  "cap": "бюллетень голосования 1999 года в Восточном Тиморе (миссия ООН UNAMET)",
+  "page": "https://commons.wikimedia.org/wiki/File:Bulletin_Timor_1999.png",
+  "title": "File:Bulletin Timor 1999.png"
+ },
+ "sealand_aerial": {
+  "file": "sealand_aerial.jpg",
+  "author": "Ryan Lackey",
+  "license": "CC BY 2.0",
+  "cap": "Силенд (бывший форт Рафс-Тауэр) с вертолёта",
+  "page": "https://commons.wikimedia.org/wiki/File:Sealand-sky-2.jpg",
+  "title": "File:Sealand-sky-2.jpg"
+ },
+ "icj_palace": {
+  "file": "icj_palace.jpg",
+  "author": "International Court of Justice",
+  "license": "общественное достояние",
+  "cap": "Дворец мира в Гааге, здание Международного суда ООН",
+  "page": "https://commons.wikimedia.org/wiki/File:International_Court_of_Justice_HQ_2006.jpg",
+  "title": "File:International Court of Justice HQ 2006.jpg"
+ },
+ "cc_hutt_tl1970": {
+  "file": "cc_hutt_tl1970.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "хронология Хатт-Ривер"
  }
 }

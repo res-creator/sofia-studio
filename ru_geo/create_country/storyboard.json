@@ -1,0 +1,162 @@
+{
+"1": [
+"sealand_tower",
+"flag_sea@0.196",
+"sealand_aerial@0.563",
+"cc_boxes4@0.767"
+],
+"2": [
+"cc_boxes4",
+"cc_cases_map@0.216",
+"cc_boxes4@0.533"
+],
+"3": [
+"cc_montevideo",
+"cc_boxes4@0.662"
+],
+"4": [
+"cc_boxes4",
+"cc_cond1@0.053",
+"cc_cond2@0.385",
+"cc_cond3@0.573",
+"cc_cond4@0.791"
+],
+"5": [
+"cc_art3",
+"sealand_aerial@0.667"
+],
+"6": [
+"roy_bates",
+"sealand_tower@0.324",
+"cc_sea13@0.467",
+"maunsell_forts@0.686",
+"flag_sea@0.832"
+],
+"7": [
+"chelmsford_hall",
+"cc_limit3@0.275"
+],
+"8": [
+"chelmsford_hall",
+"cc_court_q@0.201",
+"roy_bates@0.528"
+],
+"9": [
+"cc_check_sealand",
+"cc_liber_map@0.757"
+],
+"10": [
+"cc_liber_map",
+"liber_iss@0.303",
+"cc_liber_logic@0.451"
+],
+"11": [
+"cc_liber_status",
+"liber_iss@0.582",
+"cc_liber_status@0.782"
+],
+"12": [
+"cc_liber_claims",
+"cc_check_liber@0.365"
+],
+"13": [
+"hutt_border",
+"hutt_casley@0.106",
+"cc_hutt_tl1970@0.402",
+"cc_hutt_map@0.753"
+],
+"14": [
+"hutt_river",
+"cc_hutt_tl1977@0.141",
+"cc_hutt_people@0.409",
+"hutt_passport@0.693"
+],
+"15": [
+"cc_hutt_court",
+"cc_hutt_tl2017@0.7"
+],
+"16": [
+"cc_check_hutt",
+"hutt_passport@0.397",
+"cc_hutt_map@0.629"
+],
+"17": [
+"cc_molossia_map",
+"cc_size_molossia@0.223",
+"molossia@0.502",
+"cc_micronations@0.824"
+],
+"18": [
+"cc_conch_map",
+"conch_republic@0.193",
+"cc_conch_steps@0.425"
+],
+"19": [
+"cc_un_bars",
+"un_hall@0.469",
+"sealand_aerial@0.763"
+],
+"20": [
+"south_sudan_vote",
+"cc_ss_vote@0.112",
+"cc_ss_map@0.478",
+"south_sudan_flag@0.82"
+],
+"21": [
+"cc_timor_map",
+"timor_ballot@0.125",
+"cc_timor_tl@0.344"
+],
+"22": [
+"cc_eritrea_map",
+"cc_three_real@0.447"
+],
+"23": [
+"cc_path",
+"un_hall@0.628"
+],
+"24": [
+"cc_kosovo_map",
+"cc_kosovo@0.129",
+"icj_palace@0.376",
+"cc_kosovo@0.664"
+],
+"25": [
+"roy_bates",
+"cc_sealand1978@0.261"
+],
+"26": [
+"cc_art3",
+"cc_capacity@0.219"
+],
+"27": [
+"cc_theories",
+"cc_no_recog@0.617"
+],
+"28": [
+"world_map",
+"cc_obstacles@0.227",
+"cc_limit12@0.43",
+"cc_obstacles@0.775"
+],
+"29": [
+"cc_obstacles",
+"cc_three_real@0.28",
+"cc_compare@0.541"
+],
+"30": [
+"cc_you3",
+"cc_limit12@0.411",
+"cc_you3@0.557",
+"cc_you4@0.775"
+],
+"31": [
+"cc_formula",
+"cc_flag_last@0.662",
+"south_sudan_flag@0.883"
+],
+"32": [
+"sealand_aerial",
+"cc_you4@0.22"
+]
+}
