@@ -26,3 +26,10 @@ const make = async (base, out, lines, arr) => { const cv = K.createCanvas(W, H),
   arrow(ctx, 860, 470, 900, 600, 960, 600);
   fs.writeFileSync('ep14_singapore/singapore_cover_J.jpg', cv.toBuffer('image/jpeg', 93)); console.log('J');
 })();
+// Singapore v3: the "sand rainbow" (dredger pumping sand to make land) — the action shot that tops the niche (22M views)
+(async () => {
+  const cv = K.createCanvas(W, H), ctx = cv.getContext('2d'); ctx.drawImage(await loadImage('covers_v5_base/singapore_dredger.jpg'), 0, 0, W, H);
+  line(ctx, 'SINGAPORE', 40, 140, 100, '#FFFFFF'); line(ctx, 'GREW FROM', 40, 270, 120, Y); line(ctx, 'THIS', 40, 440, 180, Y);
+  arrow(ctx, 260, 480, 360, 560, 520, 470);
+  fs.writeFileSync('ep14_singapore/singapore_cover_K.jpg', cv.toBuffer('image/jpeg', 93)); console.log('K');
+})();
