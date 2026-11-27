@@ -1,0 +1,53 @@
+A001 0.738 replace: twenty twenty three -> 2023 | replace: a hundred and ten -> 110 | replace: a hundred and ten -> 110 | replace: thirty one -> 31
+A002 1.000 
+A003 0.973 replace: five -> 5
+A004 1.000 
+A005 0.954 replace: two percent -> 2
+A006 0.909 replace: thirty percent -> 30 | replace: nineteen ninety -> 1990
+A007 1.000 
+A007B 0.912 replace: three hundred and thirty six -> 336
+A008 0.867 replace: hohokam -> ho ho com
+A009 0.966 replace: fourteen hundred -> 1400
+A010 1.000 
+A010B 0.938 replace: grande -> grand | replace: thousand -> 1 000
+A011 0.954 replace: fourteen hundreds -> 1400s
+A012 0.931 replace: eighteen sixty seven -> 1867
+A013 1.000 
+A014 0.939 replace: darrell duppa -> darryl dupa
+A015 0.935 replace: hohokam -> ho ho com
+A016 1.000 
+A017 1.000 
+A018 0.956 replace: nineteen oh two -> 1902
+A019 0.882 replace: seventy five -> 75 | replace: eighteenth nineteen eleven -> 18 1911
+A020 1.000 
+A021 0.909 replace: one hundred and thirty one -> 131
+A022 0.963 replace: nineteen ninety nine -> 1999
+A023 1.000 
+A024 0.896 replace: fifty eight percent -> 58 | replace: forty percent -> 40
+A025 1.000 
+A026 0.917 replace: forty -> 40 | replace: nineteen sixty eight -> 1968
+A027 0.875 replace: nineteen seventy three -> 1973 | replace: three hundred and thirty six -> 336
+A028 0.964 replace: three thousand -> 3 000
+A028B 1.000 
+A029 1.000 
+A030 1.000 
+A031 0.953 replace: forty -> 40 | replace: twenty -> 20
+A031B 0.901 replace: twenty twenty two -> 2022 | replace: nineteen thirties -> 1930s
+A032 0.833 replace: twenty twenty three -> 2023 | replace: five hundred and ninety two thousand -> 592 000
+A033 1.000 
+A034 0.791 replace: twenty twenty six -> 2026 | replace: seven hundred and sixty thousand -> 760 000 | replace: twenty twenty seven -> 2027 | replace: twenty twenty eight -> 2028
+A035 0.897 replace: twenty twenty three -> 2023 | replace: four point eight -> 4 8
+A036 1.000 
+A036B 0.919 replace: nineteen nineties -> 1990s | replace: one hundred -> 100
+A037 1.000 
+A038 0.977 replace: fifty -> 50
+A039 1.000 
+A040 0.921 replace: a hundred and eighty thousand -> 180 000
+A041 0.963 replace: seventy percent -> 70
+A041B 0.958 replace: used -> use | replace: a -> of
+A042 0.946 replace: twenty twenty four -> 2024
+A043 0.917 replace: hohokam -> ho ho com
+A044 0.939 replace: three thousand -> 3 000
+A045 1.000 
+A046 0.861 replace: three hundred and thirty six -> 336 | replace: hohokam -> ho ho kemen
+A047 0.973 replace: three hundred -> 300
