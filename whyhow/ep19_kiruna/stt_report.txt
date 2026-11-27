@@ -1,0 +1,55 @@
+A001 0.739 replace: twenty twenty five -> 2025 | replace: hundred -> 100 | replace: two hundred and twenty four -> 224
+A002 1.000 
+A003 1.000 
+A004 1.000 
+A005 0.889 replace: ninety -> 90 | replace: twenty three thousand -> 23 000
+A006 1.000 
+A007 0.857 replace: s mi -> sami | replace: giron -> kiran | replace: ptarmigan -> p'tarmigan | replace: s mi -> sami
+A008 0.962 replace: kiirunavaara -> kirunavara
+A009 0.849 replace: nineteen hundred -> 1900 | replace: hjalmar lundbohm -> yalmar l nboem | replace: narvik -> n rvik
+A009B 0.889 replace: kiruna -> karen | replace: twenty five -> 25 | replace: esrange -> s range
+A010 0.967 replace: lundbohm -> lundbaum
+A011 1.000 
+A012 1.000 
+A013 1.000 
+A013B 0.957 replace: forty tonnes -> 40 tons
+A014 0.955 replace: sublevel -> sub level
+A015 1.000 
+A016 0.958 replace: mine -> mind
+A017 0.921 replace: two thousand four -> 2004 | replace: kiruna -> kriruna
+A018 1.000 
+A019 1.000 
+A020 0.949 replace: twenty five percent -> 25
+A021 1.000 
+A022 1.000 
+A023 1.000 
+A024 0.931 replace: lundbohm's -> lundbaum's | replace: caf -> cafe
+A024B 1.000 
+A025 0.920 replace: rolled -> roll | replace: twenty -> 20
+A026 0.933 replace: twenty eighteen -> 2018
+A027 1.000 
+A028 1.000 
+A029 0.757 replace: lundbohm -> looned bomb | replace: kiruna -> key runa | replace: nineteen twelve -> 1912
+A030 0.915 replace: lundbohm -> landbaum | replace: s mi -> sami
+A031 0.800 replace: two thousand one -> 2001 | replace: it -> at | replace: nineteen fifty -> 1950
+A032 1.000 
+A033 1.000 
+A034 0.774 replace: six hundred seventy two tonnes -> 672 tons
+A035 0.840 replace: onto -> on to | replace: two hundred twenty four -> 224
+A036 0.810 replace: nineteenth twenty twenty five -> 19 2025 | replace: thirty -> 30
+A037 0.935 replace: ten thousand -> 10 000
+A038 1.000 
+A039 0.744 replace: a hundred and thirteen -> 113 | replace: three -> 3 | replace: two -> 2 | replace: one -> 1
+A040 1.000 
+A041 0.895 replace: twenty twenty five -> 2025
+A042 0.727 replace: twenty seven hundred -> 2 700 | replace: six thousand -> 6 000
+A043 0.772 replace: twenty two and a half -> 22 5 | replace: kronor -> kr ochnor | replace: two -> 2 | delete: dollars -> 
+A043B 1.000 
+A044 0.918 replace: s mi -> sami | replace: gabna -> gahbina
+A045 0.893 replace: at -> it | replace: twenty twenty three -> 2023
+A046 1.000 
+A046B 0.962 replace: route -> root
+A047 1.000 
+A048 1.000 
+A049 1.000 
+A050 1.000 

@@ -1,0 +1,91 @@
+# EP19 credits — paste into the YouTube description / pinned comment.
+
+Photos (Wikimedia Commons; licence as listed):
+- 00 2785 Kiruna - Schweden.jpg — W. Bulach — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3A00_2785_Kiruna_-_Schweden.jpg
+- Aurora 2 in Kiruna.JPG — Tamura — CC0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AAurora_2_in_Kiruna.JPG
+- Aurora Borealis Kiruna.jpg — Martin Eklund — CC0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AAurora_Borealis_Kiruna.jpg
+- Church of Kiruna 2011.jpg — Heinz-Josef Lücking — CC BY-SA 3.0 de (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AChurch_of_Kiruna_2011.jpg
+- Gabna sameby i Nord-Sverige (1).jpg — Silje Bergum Kinsten/norden.org — CC BY 2.5 dk (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AGabna_sameby_i_Nord-Sverige_%281%29.jpg
+- Hjalmar Lundbohmsgården 01.jpg — Jan Ainali — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AHjalmar_Lundbohmsg%C3%A5rden_01.jpg
+- Hjalmar Lundbohmsgården 1.JPG — Julregn — CC0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AHjalmar_Lundbohmsg%C3%A5rden_1.JPG
+- Kiirunavaara Kiruna 2022-08-22 03.jpg — Leonhard Lenz — CC0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiirunavaara_Kiruna_2022-08-22_03.jpg
+- Kiirunavaara Kiruna 2026-01-07 03.jpg — Leonhard Lenz — CC0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiirunavaara_Kiruna_2026-01-07_03.jpg
+- Kiirunavaara Malmbanan September 2017 01.jpg — ArildV — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiirunavaara_Malmbanan_September_2017_01.jpg
+- Kiirunavaara Malmbanan September 2017 02.jpg — ArildV — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiirunavaara_Malmbanan_September_2017_02.jpg
+- Kiirunavaara September 2017 10.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiirunavaara_September_2017_10.jpg
+- Kiirunavaara industry plants.jpg — Helleborus — Public domain (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiirunavaara_industry_plants.jpg
+- Kiirunavaara september 2017 01.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiirunavaara_september_2017_01.jpg
+- Kiirunavaara september 2017 05.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiirunavaara_september_2017_05.jpg
+- Kiirunavaara september 2017 07.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiirunavaara_september_2017_07.jpg
+- Kiirunavaara september 2017 09.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiirunavaara_september_2017_09.jpg
+- Kiruna - KMB - 16000300016631.jpg — Jan Eve Olsson / Riksantikvarieämbetet — CC BY 2.5 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_-_KMB_-_16000300016631.jpg
+- Kiruna - KMB - 16000300027820.jpg — Bengt A Lundberg / Riksantikvarieämbetet — CC BY 2.5 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_-_KMB_-_16000300027820.jpg
+- Kiruna - KMB - 16000300027825.jpg — Bengt A Lundberg / Riksantikvarieämbetet — CC BY 2.5 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_-_KMB_-_16000300027825.jpg
+- Kiruna - KMB - 16001000394344.jpg — C. O. Lundberg — Public domain (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_-_KMB_-_16001000394344.jpg
+- Kiruna - KMB - 16001000395584.jpg — Johan Edvard Nahlin — Public domain (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_-_KMB_-_16001000395584.jpg
+- Kiruna - KMB - 16001000399684.jpg — unknown photographer — Public domain (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_-_KMB_-_16001000399684.jpg
+- Kiruna - KMB - 16001000407004.jpg — C. O. Lundberg — Public domain (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_-_KMB_-_16001000407004.jpg
+- Kiruna Kyrka 01.jpg — I99pema — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_Kyrka_01.jpg
+- Kiruna Lundbohm house 0980.jpg — Amadalvarez — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_Lundbohm_house_0980.jpg
+- Kiruna Mine at Sunset.jpg — -tacitos- — CC BY 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_Mine_at_Sunset.jpg
+- Kiruna September 2017 01.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_September_2017_01.jpg
+- Kiruna September 2017 02.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_September_2017_02.jpg
+- Kiruna September 2017 05.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_September_2017_05.jpg
+- Kiruna September 2017 06.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_September_2017_06.jpg
+- Kiruna Stadshus - Kristallen 2026-01-07 01.jpg — Leonhard Lenz — CC0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_Stadshus_-_Kristallen_2026-01-07_01.jpg
+- Kiruna Stadshus - Kristallen 2026-01-07 02.jpg — Leonhard Lenz — CC0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_Stadshus_-_Kristallen_2026-01-07_02.jpg
+- Kiruna Stadshus - Kristallen 2026-01-09 02.jpg — Leonhard Lenz — CC0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_Stadshus_-_Kristallen_2026-01-09_02.jpg
+- Kiruna centrum September 2017 02.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_centrum_September_2017_02.jpg
+- Kiruna centrum September 2017 03.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_centrum_September_2017_03.jpg
+- Kiruna church.jpg — Bermax — Public domain (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_church.jpg
+- Kiruna from Tuolluvaara September 2017 01.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_from_Tuolluvaara_September_2017_01.jpg
+- Kiruna gamle brandstation med malmbjerget Kirunavaara i baggrunden.jpg — Vikebe — CC0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_gamle_brandstation_med_malmbjerget_Kirunavaara_i_baggrunden.jpg
+- Kiruna in Winter.jpg — Arjoopy — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_in_Winter.jpg
+- Kiruna kommun - Kiruna kyrka - 20170902150747.jpg — Ainali — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_kommun_-_Kiruna_kyrka_-_20170902150747.jpg
+- Kiruna kyrka .jpg — Patwol — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_kyrka_.jpg
+- Kiruna kyrka August 2017 02.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_kyrka_August_2017_02.jpg
+- Kiruna kyrka September 2017 02.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_kyrka_September_2017_02.jpg
+- Kiruna kyrka September 2017 03.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_kyrka_September_2017_03.jpg
+- Kiruna kyrka September 2017 04.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_kyrka_September_2017_04.jpg
+- Kiruna kyrka September 2017 06.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_kyrka_September_2017_06.jpg
+- Kiruna kyrka, juli 2018.jpg — Axel Pettersson — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_kyrka%2C_juli_2018.jpg
+- Kiruna new city centre under construction in 2022.jpg — Vikebe — CC0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna_new_city_centre_under_construction_in_2022.jpg
+- Kiruna20250819-02-kirkeflytting.jpg — TorbjørnS — CC BY 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna20250819-02-kirkeflytting.jpg
+- Kiruna20250819-08-kirkeflytting.jpg — TorbjørnS — CC BY 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna20250819-08-kirkeflytting.jpg
+- Kiruna20250819-09-kirkeflytting.jpg — TorbjørnS — CC BY 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna20250819-09-kirkeflytting.jpg
+- Kiruna20250819-13-kirkeflytting.jpg — TorbjørnS — CC BY 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna20250819-13-kirkeflytting.jpg
+- Kiruna20250819-14-kirkeflytting.jpg — TorbjørnS — CC BY 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna20250819-14-kirkeflytting.jpg
+- Kiruna20250819-21-kirkeflytting.jpg — TorbjørnS — CC BY 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna20250819-21-kirkeflytting.jpg
+- Kiruna20250819-24-kirkeflytting.jpg — TorbjørnS — CC BY 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna20250819-24-kirkeflytting.jpg
+- Kiruna20250819-27-kirkeflytting.jpg — TorbjørnS — CC BY 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKiruna20250819-27-kirkeflytting.jpg
+- Kirunas nya centrum September 2017 01.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKirunas_nya_centrum_September_2017_01.jpg
+- Kirunas nya centrum September 2017 07.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKirunas_nya_centrum_September_2017_07.jpg
+- Kirunas nya centrum September 2017 12.jpg — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKirunas_nya_centrum_September_2017_12.jpg
+- Kirunavaara silhouette sunset.jpg — -tacitos- — CC BY 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKirunavaara_silhouette_sunset.jpg
+- Kristallen och klocktornet.jpg — Nalle&Lisa — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AKristallen_och_klocktornet.jpg
+- Lombololeden and Kiirunavaara Kiruna 2026-01-07 02.jpg — Leonhard Lenz — CC0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3ALombololeden_and_Kiirunavaara_Kiruna_2026-01-07_02.jpg
+- MTAB IORE 101 + 119 Katterjåkk - Vassijaure.jpg — Kabelleger / David Gubler — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AMTAB_IORE_101_%2B_119_Katterj%C3%A5kk_-_Vassijaure.jpg
+- MTAB IORE 133 and 105 Kaisepakte - Stenbacken.jpg — Kabelleger / David Gubler — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AMTAB_IORE_133_and_105_Kaisepakte_-_Stenbacken.jpg
+- Nya Kiruna.jpg — Nalle&Lisa — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3ANya_Kiruna.jpg
+- Oc-lok nr 40 med malmtåg.jpg — unknown photographer — Public domain (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AOc-lok_nr_40_med_malmt%C3%A5g.jpg
+- TEXUS 50 launched with a VSB-30 rocket.jpg — DLR — CC BY 3.0 de (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3ATEXUS_50_launched_with_a_VSB-30_rocket.jpg
+- Winter in Kiruna, Sweden, 2023.jpg — Kgbo — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — https://commons.wikimedia.org/wiki/File%3AWinter_in_Kiruna%2C_Sweden%2C_2023.jpg
+
+Stock video (Pixabay Content License, free for commercial use; labelled ILLUSTRATIVE on screen):
+- timeworx via Pixabay — https://pixabay.com/videos/id-321568/
+- InspiredImages via Pixabay — https://pixabay.com/videos/id-6949/
+- NorthBoundDrones via Pixabay — https://pixabay.com/videos/id-28747/
+- invisiblepower via Pixabay — https://pixabay.com/videos/id-7328/
+- minehart via Pixabay — https://pixabay.com/videos/id-36084/
+- LadislavBur via Pixabay — https://pixabay.com/videos/id-151008/
+- RafterJr72 via Pixabay — https://pixabay.com/videos/id-40030/
+- wastedgeneration via Pixabay — https://pixabay.com/videos/id-12543/
+- Matthias_Groeneveld via Pixabay — https://pixabay.com/videos/id-63970/
+- HelpUkraine via Pixabay — https://pixabay.com/videos/id-121878/
+- janeb13 via Pixabay — https://pixabay.com/videos/id-2194/
+- u_mv4esujzr4 via Pixabay — https://pixabay.com/videos/id-215090/
+- AndyFaeth via Pixabay — https://pixabay.com/videos/id-47505/
+
+Maps, charts and animation: How It's Run (own work). Map data: Natural Earth (public domain).
+Music: Kevin MacLeod (incompetech.com), licensed under CC BY 4.0: "Life of Riley", "Investigations", "Daily Beetle", "Carefree", "Wallpaper".
+Voice: synthetic (AI) narration — the channel's own designed voice, cloned with Fish Audio.
