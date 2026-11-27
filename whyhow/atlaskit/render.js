@@ -94,7 +94,7 @@ async function main() {
       sc.fillStyle = '#fff'; sc.font = '16px JBMono'; sc.fillText(`${Math.floor(ts / 60)}:${String(Math.floor(ts % 60)).padStart(2, '0')}`, (i % cols) * tw + 4, Math.floor(i / cols) * (th + 22) + th + 17); }
     fs.writeFileSync(out, sh.toBuffer('image/jpeg', 82)); return; }
   if (MODE === 'chunk') { const [f0, f1, out] = [+ARGS[0], +ARGS[1], ARGS[2]];
-    const ff = spawn('ffmpeg', ['-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', `${K.W}x${K.H}`, '-r', String(K.FPS), '-i', '-', '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', out], { stdio: ['pipe', 'inherit', 'inherit'] });
+    const ff = spawn('ffmpeg', ['-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', `${K.W}x${K.H}`, '-r', String(K.FPS), '-i', '-', '-c:v', 'libx264', '-preset', 'medium', '-crf', process.env.CHUNK_CRF || '18', ...(process.env.CHUNK_MAXRATE ? ['-maxrate', process.env.CHUNK_MAXRATE, '-bufsize', '8000k'] : []), '-pix_fmt', 'yuv420p', out], { stdio: ['pipe', 'inherit', 'inherit'] });
     process.on('unhandledRejection', e => { console.error(e); process.exit(2); });
     for (let f = f0; f < f1; f++) { await frame(ctx, f / K.FPS); const buf = Buffer.from(ctx.getImageData(0, 0, K.W, K.H).data.buffer); if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r)); }
     ff.stdin.end(); await new Promise(r => ff.on('close', r)); return; }
