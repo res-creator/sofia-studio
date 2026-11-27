@@ -8,133 +8,51 @@
 },
 {
 "t": 3.6,
-"d": 2.902,
-"type": "clip",
-"src": "stock/px199545.mp4",
-"ss": 0.3
-},
-{
-"t": 6.502,
-"d": 2.902,
-"type": "clip",
-"src": "stock/px21117.mp4",
-"ss": 0.3
-},
-{
-"t": 9.404,
-"d": 2.902,
-"type": "clip",
-"src": "stock/px1735.mp4",
-"ss": 0.3
-},
-{
-"t": 12.306,
-"d": 2.902,
-"type": "clip",
-"src": "stock/px137365.mp4",
-"ss": 0.3
-},
-{
-"t": 15.208,
-"d": 2.902,
+"d": 7.545,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_obesity.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.8,
-0.55
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_deaths.jpg",
+"cap": ""
+},
+{
+"t": 11.145,
+"d": 6.965,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_vs_road.jpg",
 "cap": ""
 },
 {
 "t": 18.11,
-"d": 3.623,
+"d": 5.0,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_diabetes.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.5,
-0.25
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_plan.jpg",
 "cap": ""
 },
 {
-"t": 21.733,
-"d": 3.623,
+"t": 23.11,
+"d": 5.87,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_ultra.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.35,
-0.75
-],
-"cap": ""
-},
-{
-"t": 25.357,
-"d": 3.623,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_bun.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.7,
-0.3
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_vs_road.jpg",
 "cap": ""
 },
 {
 "t": 28.98,
-"d": 3.47,
-"type": "clip",
-"src": "stock/px11323.mp4",
-"ss": 0.3
+"d": 7.46,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_upf55.jpg",
+"cap": ""
 },
 {
-"t": 32.45,
-"d": 3.47,
-"type": "clip",
-"src": "stock/px148288.mp4",
-"ss": 0.3
-},
-{
-"t": 35.92,
-"d": 3.47,
-"type": "clip",
-"src": "stock/px1192.mp4",
-"ss": 0.3
-},
-{
-"t": 39.39,
-"d": 3.47,
-"type": "clip",
-"src": "stock/px143486.mp4",
-"ss": 0.3
-},
-{
-"t": 42.86,
+"t": 36.441,
 "d": 3.47,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_drinks.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.2,
-0.4
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_upf_ex.jpg",
+"cap": ""
+},
+{
+"t": 39.91,
+"d": 6.419,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_sample.jpg",
 "cap": ""
 },
 {
@@ -145,77 +63,23 @@
 },
 {
 "t": 48.93,
-"d": 3.224,
+"d": 7.738,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_extra.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.8,
-0.55
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_sample.jpg",
 "cap": ""
 },
 {
-"t": 52.154,
-"d": 3.224,
+"t": 56.668,
+"d": 4.836,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_sugar.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.5,
-0.25
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_measure.jpg",
 "cap": ""
 },
 {
-"t": 55.378,
-"d": 3.224,
+"t": 61.504,
+"d": 3.546,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_school.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.35,
-0.75
-],
-"cap": ""
-},
-{
-"t": 58.602,
-"d": 3.224,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_obesity.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.7,
-0.3
-],
-"cap": ""
-},
-{
-"t": 61.826,
-"d": 3.224,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_diabetes.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.2,
-0.4
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_extrap.jpg",
 "cap": ""
 },
 {
@@ -226,137 +90,37 @@
 },
 {
 "t": 68.65,
-"d": 3.188,
+"d": 7.14,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_ultra.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.8,
-0.55
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_obese40.jpg",
 "cap": ""
 },
 {
-"t": 71.837,
-"d": 3.188,
+"t": 75.79,
+"d": 5.61,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_bun.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.5,
-0.25
-],
-"cap": ""
-},
-{
-"t": 75.025,
-"d": 3.188,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_drinks.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.35,
-0.75
-],
-"cap": ""
-},
-{
-"t": 78.213,
-"d": 3.188,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_extra.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.7,
-0.3
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_100.jpg",
 "cap": ""
 },
 {
 "t": 81.4,
-"d": 3.094,
+"d": 3.403,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_sugar.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.2,
-0.4
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_deaths.jpg",
 "cap": ""
 },
 {
-"t": 84.494,
-"d": 3.094,
+"t": 84.803,
+"d": 6.962,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_school.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.8,
-0.55
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_model.jpg",
 "cap": ""
 },
 {
-"t": 87.588,
-"d": 3.094,
+"t": 91.765,
+"d": 5.105,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_obesity.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.5,
-0.25
-],
-"cap": ""
-},
-{
-"t": 90.682,
-"d": 3.094,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_diabetes.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.35,
-0.75
-],
-"cap": ""
-},
-{
-"t": 93.776,
-"d": 3.094,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_ultra.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.7,
-0.3
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_notcount.jpg",
 "cap": ""
 },
 {
@@ -367,54 +131,16 @@
 },
 {
 "t": 100.47,
-"d": 2.9,
-"type": "clip",
-"src": "stock/px105686.mp4",
-"ss": 0.3
-},
-{
-"t": 103.37,
-"d": 2.9,
+"d": 3.48,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_bun.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.2,
-0.4
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_diab_unaware.jpg",
 "cap": ""
 },
 {
-"t": 106.27,
-"d": 2.9,
+"t": 103.95,
+"d": 8.12,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_drinks.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.8,
-0.55
-],
-"cap": ""
-},
-{
-"t": 109.17,
-"d": 2.9,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_extra.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.5,
-0.25
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_recall.jpg",
 "cap": ""
 },
 {
@@ -425,38 +151,31 @@
 },
 {
 "t": 114.67,
-"d": 3.256,
-"type": "clip",
-"src": "stock/px11626.mp4",
-"ss": 0.3
-},
-{
-"t": 117.926,
-"d": 3.256,
-"type": "clip",
-"src": "stock/px71127.mp4",
-"ss": 0.3
+"d": 6.512,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_nova.jpg",
+"cap": ""
 },
 {
 "t": 121.182,
-"d": 3.256,
-"type": "clip",
-"src": "stock/px7141.mp4",
-"ss": 0.3
+"d": 2.116,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufp_frootloops.jpg",
+"cap": "Хлопья Froot Loops в миске"
 },
 {
-"t": 124.438,
-"d": 3.256,
-"type": "clip",
-"src": "stock/px4315.mp4",
-"ss": 0.3
+"t": 123.298,
+"d": 2.116,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufp_nuggets.jpg",
+"cap": "Куриные наггетсы на тарелке"
 },
 {
-"t": 127.694,
-"d": 3.256,
-"type": "clip",
-"src": "stock/px11674.mp4",
-"ss": 0.3
+"t": 125.415,
+"d": 5.535,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_upf_ex.jpg",
+"cap": ""
 },
 {
 "t": 130.95,
@@ -466,24 +185,17 @@
 },
 {
 "t": 134.55,
-"d": 3.11,
-"type": "clip",
-"src": "stock/px11681.mp4",
-"ss": 0.3
+"d": 2.239,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_upf_kids.jpg",
+"cap": ""
 },
 {
-"t": 137.66,
-"d": 3.11,
-"type": "clip",
-"src": "stock/px11680.mp4",
-"ss": 0.3
-},
-{
-"t": 140.77,
-"d": 3.11,
-"type": "clip",
-"src": "stock/px951.mp4",
-"ss": 0.3
+"t": 136.789,
+"d": 7.091,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_sources.jpg",
+"cap": ""
 },
 {
 "t": 143.88,
@@ -493,66 +205,31 @@
 },
 {
 "t": 147.48,
-"d": 2.968,
-"type": "clip",
-"src": "stock/px275052.mp4",
-"ss": 0.3
+"d": 8.162,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_nih_design.jpg",
+"cap": ""
 },
 {
-"t": 150.448,
-"d": 2.968,
-"type": "clip",
-"src": "stock/px4352.mp4",
-"ss": 0.3
-},
-{
-"t": 153.416,
-"d": 2.968,
-"type": "clip",
-"src": "stock/px267.mp4",
-"ss": 0.3
-},
-{
-"t": 156.384,
-"d": 2.968,
-"type": "clip",
-"src": "stock/px2339.mp4",
-"ss": 0.3
-},
-{
-"t": 159.352,
-"d": 2.968,
-"type": "clip",
-"src": "stock/px66.mp4",
-"ss": 0.3
+"t": 155.642,
+"d": 6.678,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_nih_result.jpg",
+"cap": ""
 },
 {
 "t": 162.32,
-"d": 2.835,
-"type": "clip",
-"src": "stock/px71745.mp4",
-"ss": 0.3
+"d": 7.938,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_why.jpg",
+"cap": ""
 },
 {
-"t": 165.155,
-"d": 2.835,
-"type": "clip",
-"src": "stock/px71743.mp4",
-"ss": 0.3
-},
-{
-"t": 167.99,
-"d": 2.835,
-"type": "clip",
-"src": "stock/px27230.mp4",
-"ss": 0.3
-},
-{
-"t": 170.825,
-"d": 2.835,
-"type": "clip",
-"src": "stock/px146013.mp4",
-"ss": 0.3
+"t": 170.258,
+"d": 3.402,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_sweet.jpg",
+"cap": ""
 },
 {
 "t": 173.66,
@@ -568,101 +245,45 @@
 },
 {
 "t": 179.86,
-"d": 3.407,
-"type": "clip",
-"src": "stock/px216579.mp4",
-"ss": 0.3
+"d": 3.679,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_sugar7.jpg",
+"cap": ""
 },
 {
-"t": 183.267,
-"d": 3.407,
-"type": "clip",
-"src": "stock/px64978.mp4",
-"ss": 0.3
-},
-{
-"t": 186.673,
-"d": 3.407,
-"type": "clip",
-"src": "stock/px21198.mp4",
-"ss": 0.3
+"t": 183.539,
+"d": 6.541,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_spoons.jpg",
+"cap": ""
 },
 {
 "t": 190.08,
-"d": 3.118,
-"type": "clip",
-"src": "stock/px2290.mp4",
-"ss": 0.3
+"d": 10.29,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_can9.jpg",
+"cap": ""
 },
 {
-"t": 193.198,
-"d": 3.118,
-"type": "clip",
-"src": "stock/px40135.mp4",
-"ss": 0.3
-},
-{
-"t": 196.317,
-"d": 3.118,
-"type": "clip",
-"src": "stock/px11124.mp4",
-"ss": 0.3
-},
-{
-"t": 199.435,
-"d": 3.118,
-"type": "clip",
-"src": "stock/px79908.mp4",
-"ss": 0.3
-},
-{
-"t": 202.553,
-"d": 3.118,
-"type": "clip",
-"src": "stock/px23841.mp4",
-"ss": 0.3
-},
-{
-"t": 205.672,
-"d": 3.118,
-"type": "clip",
-"src": "stock/px2700.mp4",
-"ss": 0.3
+"t": 200.37,
+"d": 8.419,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_hfcs.jpg",
+"cap": ""
 },
 {
 "t": 208.79,
-"d": 3.416,
-"type": "clip",
-"src": "stock/px91282.mp4",
-"ss": 0.3
+"d": 12.468,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_year.jpg",
+"cap": ""
 },
 {
-"t": 212.206,
-"d": 3.416,
-"type": "clip",
-"src": "stock/px80136.mp4",
-"ss": 0.3
-},
-{
-"t": 215.622,
-"d": 3.416,
-"type": "clip",
-"src": "stock/px158619.mp4",
-"ss": 0.3
-},
-{
-"t": 219.038,
-"d": 3.416,
-"type": "clip",
-"src": "stock/px64976.mp4",
-"ss": 0.3
-},
-{
-"t": 222.454,
-"d": 3.416,
-"type": "clip",
-"src": "stock/px83155.mp4",
-"ss": 0.3
+"t": 221.258,
+"d": 4.612,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_soda_size.jpg",
+"cap": ""
 },
 {
 "t": 225.87,
@@ -678,94 +299,59 @@
 },
 {
 "t": 232.07,
-"d": 3.26,
-"type": "clip",
-"src": "stock/px11695.mp4",
-"ss": 0.3
+"d": 5.477,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_bagel_kcal.jpg",
+"cap": ""
 },
 {
-"t": 235.33,
-"d": 3.26,
-"type": "clip",
-"src": "stock/px11699.mp4",
-"ss": 0.3
+"t": 237.547,
+"d": 2.608,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_bagel.jpg",
+"cap": ""
 },
 {
-"t": 238.59,
-"d": 3.26,
-"type": "clip",
-"src": "stock/px910.mp4",
-"ss": 0.3
-},
-{
-"t": 241.85,
-"d": 3.26,
-"type": "clip",
-"src": "stock/px11668.mp4",
-"ss": 0.3
+"t": 240.155,
+"d": 4.955,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_soda_size.jpg",
+"cap": ""
 },
 {
 "t": 245.11,
-"d": 3.214,
-"type": "clip",
-"src": "stock/px132534.mp4",
-"ss": 0.3
+"d": 4.339,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_inflation.jpg",
+"cap": ""
 },
 {
-"t": 248.324,
-"d": 3.214,
-"type": "clip",
-"src": "stock/px136431.mp4",
-"ss": 0.3
+"t": 249.449,
+"d": 4.982,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_plate.jpg",
+"cap": ""
 },
 {
-"t": 251.538,
-"d": 3.214,
-"type": "clip",
-"src": "stock/px2793.mp4",
-"ss": 0.3
-},
-{
-"t": 254.752,
-"d": 3.214,
-"type": "clip",
-"src": "stock/px176.mp4",
-"ss": 0.3
-},
-{
-"t": 257.966,
-"d": 3.214,
-"type": "clip",
-"src": "stock/px132536.mp4",
-"ss": 0.3
+"t": 254.431,
+"d": 6.749,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_ads.jpg",
+"cap": ""
 },
 {
 "t": 261.18,
-"d": 3.325,
-"type": "clip",
-"src": "stock/px214512.mp4",
-"ss": 0.3
+"d": 10.64,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_fries_cost.jpg",
+"cap": ""
 },
 {
-"t": 264.505,
-"d": 3.325,
-"type": "clip",
-"src": "stock/px233024.mp4",
-"ss": 0.3
-},
-{
-"t": 267.83,
-"d": 3.325,
-"type": "clip",
-"src": "stock/px313652.mp4",
-"ss": 0.3
-},
-{
-"t": 271.155,
-"d": 3.325,
-"type": "clip",
-"src": "stock/px4854.mp4",
-"ss": 0.3
+"t": 271.82,
+"d": 2.66,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufp_corn.jpg",
+"cap": "Кукурузное поле в штате Айова осенью"
 },
 {
 "t": 274.48,
@@ -775,115 +361,59 @@
 },
 {
 "t": 277.08,
-"d": 3.545,
-"type": "clip",
-"src": "stock/px21299.mp4",
-"ss": 0.3
+"d": 7.657,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_density.jpg",
+"cap": ""
 },
 {
-"t": 280.625,
-"d": 3.545,
-"type": "clip",
-"src": "stock/px4730.mp4",
-"ss": 0.3
-},
-{
-"t": 284.17,
-"d": 3.545,
-"type": "clip",
-"src": "stock/px46140.mp4",
-"ss": 0.3
-},
-{
-"t": 287.715,
-"d": 3.545,
-"type": "clip",
-"src": "stock/px46139.mp4",
-"ss": 0.3
+"t": 284.737,
+"d": 6.523,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_price_density.jpg",
+"cap": ""
 },
 {
 "t": 291.26,
-"d": 3.018,
-"type": "clip",
-"src": "stock/px67773.mp4",
-"ss": 0.3
+"d": 3.26,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufp_corn.jpg",
+"cap": "Кукурузное поле в штате Айова осенью"
 },
 {
-"t": 294.278,
-"d": 3.018,
-"type": "clip",
-"src": "stock/px274450.mp4",
-"ss": 0.3
+"t": 294.52,
+"d": 6.701,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_corn_use.jpg",
+"cap": ""
 },
 {
-"t": 297.297,
-"d": 3.018,
-"type": "clip",
-"src": "stock/px17285.mp4",
-"ss": 0.3
-},
-{
-"t": 300.315,
-"d": 3.018,
-"type": "clip",
-"src": "stock/px67772.mp4",
-"ss": 0.3
-},
-{
-"t": 303.333,
-"d": 3.018,
-"type": "clip",
-"src": "stock/px369220.mp4",
-"ss": 0.3
-},
-{
-"t": 306.352,
-"d": 3.018,
-"type": "clip",
-"src": "stock/px122553.mp4",
-"ss": 0.3
+"t": 301.221,
+"d": 8.149,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_corr.jpg",
+"cap": ""
 },
 {
 "t": 309.37,
-"d": 2.965,
-"type": "clip",
-"src": "stock/px42861.mp4",
-"ss": 0.3
+"d": 8.183,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_ready_price.jpg",
+"cap": ""
 },
 {
-"t": 312.335,
-"d": 2.965,
-"type": "clip",
-"src": "stock/px111832.mp4",
-"ss": 0.3
+"t": 317.553,
+"d": 3.736,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_steps.jpg",
+"cap": ""
 },
 {
-"t": 315.3,
-"d": 2.965,
-"type": "clip",
-"src": "stock/px11615.mp4",
-"ss": 0.3
-},
-{
-"t": 318.265,
-"d": 2.965,
-"type": "clip",
-"src": "stock/px17177.mp4",
-"ss": 0.3
-},
-{
-"t": 321.23,
-"d": 2.965,
-"type": "clip",
-"src": "stock/px11597.mp4",
-"ss": 0.3
-},
-{
-"t": 324.195,
-"d": 2.965,
-"type": "clip",
-"src": "stock/px153817.mp4",
-"ss": 0.3
+"t": 321.289,
+"d": 5.871,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_desert.jpg",
+"cap": ""
 },
 {
 "t": 327.16,
@@ -893,69 +423,16 @@
 },
 {
 "t": 329.76,
-"d": 2.894,
-"type": "clip",
-"src": "stock/px130651.mp4",
-"ss": 0.3
-},
-{
-"t": 332.654,
-"d": 2.894,
+"d": 7.235,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_sugar.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.35,
-0.75
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_desert.jpg",
 "cap": ""
 },
 {
-"t": 335.548,
-"d": 2.894,
+"t": 336.995,
+"d": 7.235,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_school.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.7,
-0.3
-],
-"cap": ""
-},
-{
-"t": 338.442,
-"d": 2.894,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_obesity.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.2,
-0.4
-],
-"cap": ""
-},
-{
-"t": 341.336,
-"d": 2.894,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_diabetes.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.8,
-0.55
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_desert_def.jpg",
 "cap": ""
 },
 {
@@ -966,75 +443,31 @@
 },
 {
 "t": 347.83,
-"d": 3.567,
-"type": "clip",
-"src": "stock/px275107.mp4",
-"ss": 0.3
-},
-{
-"t": 351.398,
-"d": 3.567,
-"type": "clip",
-"src": "stock/px151.mp4",
-"ss": 0.3
+"d": 7.135,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_store.jpg",
+"cap": ""
 },
 {
 "t": 354.965,
-"d": 3.567,
-"type": "clip",
-"src": "stock/px11610.mp4",
-"ss": 0.3
-},
-{
-"t": 358.533,
-"d": 3.567,
-"type": "clip",
-"src": "stock/px223334.mp4",
-"ss": 0.3
+"d": 7.135,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_gap9.jpg",
+"cap": ""
 },
 {
 "t": 362.1,
-"d": 3.03,
-"type": "clip",
-"src": "stock/px168617.mp4",
-"ss": 0.3
-},
-{
-"t": 365.13,
-"d": 3.03,
-"type": "clip",
-"src": "stock/px125069.mp4",
-"ss": 0.3
-},
-{
-"t": 368.16,
-"d": 3.03,
+"d": 7.514,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_ultra.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.5,
-0.25
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_factors4.jpg",
 "cap": ""
 },
 {
-"t": 371.19,
-"d": 3.03,
+"t": 369.614,
+"d": 4.606,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_bun.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.35,
-0.75
-],
-"cap": ""
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufp_frootloops.jpg",
+"cap": "Хлопья Froot Loops в миске"
 },
 {
 "t": 374.22,
@@ -1044,188 +477,59 @@
 },
 {
 "t": 376.82,
-"d": 3.408,
+"d": 1.363,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_drinks.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.7,
-0.3
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufp_frootloops.jpg",
+"cap": "Хлопья Froot Loops в миске"
+},
+{
+"t": 378.183,
+"d": 7.668,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_dyes_label.jpg",
 "cap": ""
 },
 {
-"t": 380.228,
-"d": 3.408,
+"t": 385.851,
+"d": 8.009,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_extra.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.2,
-0.4
-],
-"cap": ""
-},
-{
-"t": 383.636,
-"d": 3.408,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_sugar.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.8,
-0.55
-],
-"cap": ""
-},
-{
-"t": 387.044,
-"d": 3.408,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_school.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.5,
-0.25
-],
-"cap": ""
-},
-{
-"t": 390.452,
-"d": 3.408,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_obesity.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.35,
-0.75
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_red3.jpg",
 "cap": ""
 },
 {
 "t": 393.86,
-"d": 2.938,
-"type": "clip",
-"src": "stock/px81943.mp4",
-"ss": 0.3
-},
-{
-"t": 396.798,
-"d": 2.938,
+"d": 7.757,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_diabetes.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.7,
-0.3
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_eu6.jpg",
 "cap": ""
 },
 {
-"t": 399.737,
-"d": 2.938,
+"t": 401.617,
+"d": 9.873,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_ultra.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.2,
-0.4
-],
-"cap": ""
-},
-{
-"t": 402.675,
-"d": 2.938,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_bun.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.8,
-0.55
-],
-"cap": ""
-},
-{
-"t": 405.613,
-"d": 2.938,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_drinks.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.5,
-0.25
-],
-"cap": ""
-},
-{
-"t": 408.552,
-"d": 2.938,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_extra.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.35,
-0.75
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_dyes_debate.jpg",
 "cap": ""
 },
 {
 "t": 411.49,
-"d": 3.127,
-"type": "clip",
-"src": "stock/px1261.mp4",
-"ss": 0.3
+"d": 3.503,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_dyes_not.jpg",
+"cap": ""
 },
 {
-"t": 414.618,
-"d": 3.127,
-"type": "clip",
-"src": "stock/px169349.mp4",
-"ss": 0.3
+"t": 414.993,
+"d": 3.002,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_sources.jpg",
+"cap": ""
 },
 {
-"t": 417.745,
-"d": 3.127,
-"type": "clip",
-"src": "stock/px172667.mp4",
-"ss": 0.3
-},
-{
-"t": 420.873,
-"d": 3.127,
-"type": "clip",
-"src": "stock/px213748.mp4",
-"ss": 0.3
+"t": 417.995,
+"d": 6.005,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_color_sugar.jpg",
+"cap": ""
 },
 {
 "t": 424.0,
@@ -1235,38 +539,17 @@
 },
 {
 "t": 426.6,
-"d": 3.062,
-"type": "clip",
-"src": "stock/px11166.mp4",
-"ss": 0.3
+"d": 5.512,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufp_tray.jpg",
+"cap": "Пример школьного обеда по нормам USDA (фото Минсельхоза США)"
 },
 {
-"t": 429.662,
-"d": 3.062,
-"type": "clip",
-"src": "stock/px5632.mp4",
-"ss": 0.3
-},
-{
-"t": 432.724,
-"d": 3.062,
-"type": "clip",
-"src": "stock/px33039.mp4",
-"ss": 0.3
-},
-{
-"t": 435.786,
-"d": 3.062,
-"type": "clip",
-"src": "stock/px33046.mp4",
-"ss": 0.3
-},
-{
-"t": 438.848,
-"d": 3.062,
-"type": "clip",
-"src": "stock/px33040.mp4",
-"ss": 0.3
+"t": 432.112,
+"d": 9.798,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_tray.jpg",
+"cap": ""
 },
 {
 "t": 441.91,
@@ -1276,73 +559,38 @@
 },
 {
 "t": 445.51,
-"d": 3.582,
-"type": "clip",
-"src": "stock/px33256.mp4",
-"ss": 0.3
+"d": 2.436,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufp_tray.jpg",
+"cap": "Пример школьного обеда по нормам USDA (фото Минсельхоза США)"
 },
 {
-"t": 449.093,
-"d": 3.582,
-"type": "clip",
-"src": "stock/px1019.mp4",
-"ss": 0.3
+"t": 447.946,
+"d": 7.881,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_rules.jpg",
+"cap": ""
 },
 {
-"t": 452.675,
-"d": 3.582,
-"type": "clip",
-"src": "stock/px197205.mp4",
-"ss": 0.3
-},
-{
-"t": 456.257,
-"d": 3.582,
-"type": "clip",
-"src": "stock/px11620.mp4",
-"ss": 0.3
+"t": 455.828,
+"d": 4.012,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_quality.jpg",
+"cap": ""
 },
 {
 "t": 459.84,
-"d": 3.073,
-"type": "clip",
-"src": "stock/px33244.mp4",
-"ss": 0.3
+"d": 8.482,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_paper.jpg",
+"cap": ""
 },
 {
-"t": 462.913,
-"d": 3.073,
-"type": "clip",
-"src": "stock/px16685.mp4",
-"ss": 0.3
-},
-{
-"t": 465.987,
-"d": 3.073,
-"type": "clip",
-"src": "stock/px82789.mp4",
-"ss": 0.3
-},
-{
-"t": 469.06,
-"d": 3.073,
-"type": "clip",
-"src": "stock/px82786.mp4",
-"ss": 0.3
-},
-{
-"t": 472.133,
-"d": 3.073,
-"type": "clip",
-"src": "stock/px3625.mp4",
-"ss": 0.3
-},
-{
-"t": 475.207,
-"d": 3.073,
-"type": "clip",
-"src": "stock/px82787.mp4",
-"ss": 0.3
+"t": 468.322,
+"d": 9.958,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_free_states.jpg",
+"cap": ""
 },
 {
 "t": 478.28,
@@ -1352,77 +600,16 @@
 },
 {
 "t": 480.88,
-"d": 2.936,
+"d": 8.808,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_sugar.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.7,
-0.3
-],
-"cap": ""
-},
-{
-"t": 483.816,
-"d": 2.936,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_school.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.2,
-0.4
-],
-"cap": ""
-},
-{
-"t": 486.752,
-"d": 2.936,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_obesity.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.8,
-0.55
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_mexico.jpg",
 "cap": ""
 },
 {
 "t": 489.688,
-"d": 2.936,
+"d": 5.872,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_diabetes.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.5,
-0.25
-],
-"cap": ""
-},
-{
-"t": 492.624,
-"d": 2.936,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_ultra.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.35,
-0.75
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_tax_chain.jpg",
 "cap": ""
 },
 {
@@ -1433,172 +620,44 @@
 },
 {
 "t": 499.16,
-"d": 3.587,
-"type": "clip",
-"src": "stock/px132776.mp4",
-"ss": 0.3
+"d": 4.305,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_chile_label.jpg",
+"cap": ""
 },
 {
-"t": 502.748,
-"d": 3.587,
-"type": "clip",
-"src": "stock/px40724.mp4",
-"ss": 0.3
-},
-{
-"t": 506.335,
-"d": 3.587,
-"type": "clip",
-"src": "stock/px74279.mp4",
-"ss": 0.3
-},
-{
-"t": 509.923,
-"d": 3.587,
-"type": "clip",
-"src": "stock/px122321.mp4",
-"ss": 0.3
+"t": 503.465,
+"d": 10.045,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_chile_bar.jpg",
+"cap": ""
 },
 {
 "t": 513.51,
-"d": 3.178,
-"type": "clip",
-"src": "stock/px172686.mp4",
-"ss": 0.3
+"d": 8.772,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufp_rfk.jpg",
+"cap": "Роберт Кеннеди-младший, министр здравоохранения США (официальный портрет, 2025)"
 },
 {
-"t": 516.688,
-"d": 3.178,
+"t": 522.282,
+"d": 10.298,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_bun.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.7,
-0.3
-],
-"cap": ""
-},
-{
-"t": 519.867,
-"d": 3.178,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_drinks.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.2,
-0.4
-],
-"cap": ""
-},
-{
-"t": 523.045,
-"d": 3.178,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_extra.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.8,
-0.55
-],
-"cap": ""
-},
-{
-"t": 526.223,
-"d": 3.178,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_sugar.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.5,
-0.25
-],
-"cap": ""
-},
-{
-"t": 529.402,
-"d": 3.178,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_school.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.35,
-0.75
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_maha.jpg",
 "cap": ""
 },
 {
 "t": 532.58,
-"d": 3.212,
+"d": 2.827,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_obesity.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.7,
-0.3
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_3lines.jpg",
 "cap": ""
 },
 {
-"t": 535.793,
-"d": 3.212,
+"t": 535.407,
+"d": 10.023,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_diabetes.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.2,
-0.4
-],
-"cap": ""
-},
-{
-"t": 539.005,
-"d": 3.212,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_ultra.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.8,
-0.55
-],
-"cap": ""
-},
-{
-"t": 542.217,
-"d": 3.212,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_bun.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.5,
-0.25
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_labels.jpg",
 "cap": ""
 },
 {
@@ -1609,216 +668,80 @@
 },
 {
 "t": 548.03,
-"d": 3.418,
-"type": "clip",
-"src": "stock/px149477.mp4",
-"ss": 0.3
-},
-{
-"t": 551.448,
-"d": 3.418,
+"d": 9.912,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_drinks.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.35,
-0.75
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_factors.jpg",
 "cap": ""
 },
 {
-"t": 554.866,
-"d": 3.418,
+"t": 557.942,
+"d": 7.178,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_extra.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.7,
-0.3
-],
-"cap": ""
-},
-{
-"t": 558.284,
-"d": 3.418,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_sugar.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.2,
-0.4
-],
-"cap": ""
-},
-{
-"t": 561.702,
-"d": 3.418,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_school.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.8,
-0.55
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_unknown.jpg",
 "cap": ""
 },
 {
 "t": 565.12,
-"d": 3.26,
+"d": 8.476,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_obesity.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.5,
-0.25
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_drugs.jpg",
 "cap": ""
 },
 {
-"t": 568.38,
-"d": 3.26,
+"t": 573.596,
+"d": 7.824,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_diabetes.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.35,
-0.75
-],
-"cap": ""
-},
-{
-"t": 571.64,
-"d": 3.26,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_ultra.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.7,
-0.3
-],
-"cap": ""
-},
-{
-"t": 574.9,
-"d": 3.26,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_bun.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.2,
-0.4
-],
-"cap": ""
-},
-{
-"t": 578.16,
-"d": 3.26,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_drinks.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.8,
-0.55
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_drugs_caution.jpg",
 "cap": ""
 },
 {
 "t": 581.42,
-"d": 3.33,
-"type": "clip",
-"src": "stock/px123629.mp4",
-"ss": 0.3
-},
-{
-"t": 584.75,
-"d": 3.33,
-"type": "clip",
-"src": "stock/px11606.mp4",
-"ss": 0.3
-},
-{
-"t": 588.08,
-"d": 3.33,
-"type": "clip",
-"src": "stock/px149665.mp4",
-"ss": 0.3
-},
-{
-"t": 591.41,
-"d": 3.33,
+"d": 4.44,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_extra.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.5,
-0.25
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_cycle.jpg",
+"cap": ""
+},
+{
+"t": 585.86,
+"d": 4.44,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_cycle.jpg",
+"cap": ""
+},
+{
+"t": 590.3,
+"d": 4.44,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_cycle.jpg",
 "cap": ""
 },
 {
 "t": 594.74,
-"d": 3.502,
-"type": "clip",
-"src": "stock/px63066.mp4",
-"ss": 0.3
+"d": 4.378,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_bmi_muscle.jpg",
+"cap": ""
 },
 {
-"t": 598.242,
-"d": 3.502,
-"type": "clip",
-"src": "stock/px14239.mp4",
-"ss": 0.3
+"t": 599.118,
+"d": 2.977,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_waist.jpg",
+"cap": ""
 },
 {
-"t": 601.744,
-"d": 3.502,
-"type": "clip",
-"src": "stock/px43653.mp4",
-"ss": 0.3
+"t": 602.094,
+"d": 7.004,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_term.jpg",
+"cap": ""
 },
 {
-"t": 605.246,
-"d": 3.502,
-"type": "clip",
-"src": "stock/px63067.mp4",
-"ss": 0.3
-},
-{
-"t": 608.748,
-"d": 3.502,
-"type": "clip",
-"src": "stock/px382910.mp4",
-"ss": 0.3
+"t": 609.098,
+"d": 3.152,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_vs_road.jpg",
+"cap": ""
 },
 {
 "t": 612.25,
@@ -1828,236 +751,80 @@
 },
 {
 "t": 614.85,
-"d": 3.14,
+"d": 9.734,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_sugar.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.35,
-0.75
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_road_food.jpg",
 "cap": ""
 },
 {
-"t": 617.99,
-"d": 3.14,
+"t": 624.584,
+"d": 5.966,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_school.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.7,
-0.3
-],
-"cap": ""
-},
-{
-"t": 621.13,
-"d": 3.14,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_obesity.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.2,
-0.4
-],
-"cap": ""
-},
-{
-"t": 624.27,
-"d": 3.14,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_diabetes.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.8,
-0.55
-],
-"cap": ""
-},
-{
-"t": 627.41,
-"d": 3.14,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_ultra.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.5,
-0.25
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_choice.jpg",
 "cap": ""
 },
 {
 "t": 630.55,
-"d": 3.026,
-"type": "clip",
-"src": "stock/px136502.mp4",
-"ss": 0.3
+"d": 8.624,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_env.jpg",
+"cap": ""
 },
 {
-"t": 633.576,
-"d": 3.026,
-"type": "clip",
-"src": "stock/px12669.mp4",
-"ss": 0.3
-},
-{
-"t": 636.602,
-"d": 3.026,
-"type": "clip",
-"src": "stock/px10878.mp4",
-"ss": 0.3
-},
-{
-"t": 639.628,
-"d": 3.026,
-"type": "clip",
-"src": "stock/px120795.mp4",
-"ss": 0.3
-},
-{
-"t": 642.654,
-"d": 3.026,
-"type": "clip",
-"src": "stock/px20910.mp4",
-"ss": 0.3
+"t": 639.174,
+"d": 6.506,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_tray.jpg",
+"cap": ""
 },
 {
 "t": 645.68,
-"d": 3.082,
-"type": "clip",
-"src": "stock/px35578.mp4",
-"ss": 0.3
+"d": 8.167,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_good.jpg",
+"cap": ""
 },
 {
-"t": 648.762,
-"d": 3.082,
-"type": "clip",
-"src": "stock/px176489.mp4",
-"ss": 0.3
-},
-{
-"t": 651.844,
-"d": 3.082,
-"type": "clip",
-"src": "stock/px127737.mp4",
-"ss": 0.3
-},
-{
-"t": 654.926,
-"d": 3.082,
-"type": "clip",
-"src": "stock/px210602.mp4",
-"ss": 0.3
-},
-{
-"t": 658.008,
-"d": 3.082,
-"type": "clip",
-"src": "stock/px131066.mp4",
-"ss": 0.3
+"t": 653.847,
+"d": 7.243,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_shelves.jpg",
+"cap": ""
 },
 {
 "t": 661.09,
-"d": 3.56,
+"d": 11.392,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_bun.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.35,
-0.75
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_3lines.jpg",
 "cap": ""
 },
 {
-"t": 664.65,
-"d": 3.56,
+"t": 672.482,
+"d": 2.848,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_drinks.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.7,
-0.3
-],
-"cap": ""
-},
-{
-"t": 668.21,
-"d": 3.56,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_extra.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.2,
-0.4
-],
-"cap": ""
-},
-{
-"t": 671.77,
-"d": 3.56,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/uf_sugar.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.8,
-0.55
-],
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_10sec.jpg",
 "cap": ""
 },
 {
 "t": 675.33,
-"d": 3.465,
-"type": "clip",
-"src": "stock/px19309.mp4",
-"ss": 0.3
+"d": 4.62,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_question.jpg",
+"cap": ""
 },
 {
-"t": 678.795,
-"d": 3.465,
-"type": "clip",
-"src": "stock/px128186.mp4",
-"ss": 0.3
+"t": 679.95,
+"d": 4.62,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_question.jpg",
+"cap": ""
 },
 {
-"t": 682.26,
-"d": 3.465,
-"type": "clip",
-"src": "stock/px1498.mp4",
-"ss": 0.3
-},
-{
-"t": 685.725,
-"d": 3.465,
-"type": "clip",
-"src": "stock/px128189.mp4",
-"ss": 0.3
+"t": 684.57,
+"d": 4.62,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/usa_food/archive/img/ufd_question.jpg",
+"cap": ""
 }
 ]
 }
