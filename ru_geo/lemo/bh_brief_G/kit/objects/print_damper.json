@@ -1,0 +1,15 @@
+{
+  "id": "print_damper",
+  "w": 1362,
+  "h": 1192,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/building_height/archive/img/ph_damper.jpg",
+    "id": "print_damper",
+    "crop": "330,0,1580,1080",
+    "w": 1250,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

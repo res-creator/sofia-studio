@@ -1,16 +1,32 @@
 #!/bin/sh
-# Resumable render (the container restarts often): two workers write out/frames/f_%05d.jpg, skipping frames on disk.
-#   sh tools/render.sh          start the workers (in the background, detached)   ·   sh tools/render.sh encode
+# Resumable chunked render (the container restarts often; disk is tight): ONE worker renders chunks of C frames into
+# out/frames, encodes each finished chunk to out/chunks/c_XX.mp4 and deletes its frames. Then the chunks are joined.
+#   sh tools/render.sh          start the worker (in the background, detached)
+#   sh tools/render.sh encode   join the chunks into the final mp4
 HERE=$(cd "$(dirname "$0")/.." && pwd); LIB=${LIB:-/root/lemo-opuscar}; export LIB
-FR=$HERE/out/frames; N=2559; OUT=/home/user/sofia-studio/ru_geo/building_height/video/parts/board_brief.mp4
-mkdir -p "$FR" "$HERE/out"
+FR=$HERE/out/frames; CH=$HERE/out/chunks; N=5051; C=500
+OUT=/home/user/sofia-studio/ru_geo/building_height/video/parts/board_brief_CD.mp4
+mkdir -p "$FR" "$CH" "$(dirname "$OUT")"
 if [ "$1" = "encode" ]; then
-  n=$(ls "$FR" | grep -c '^f_.*\.jpg$'); [ "$n" -ge "$N" ] || { echo "only $n/$N frames"; exit 1; }
-  ffmpeg -v error -y -framerate 30 -i "$FR/f_%05d.jpg" -frames:v $N -c:v libx264 -preset medium -crf 17 -pix_fmt yuv420p -r 30 -an -movflags +faststart "$OUT"
+  : > "$CH/list.txt"; a=0
+  while [ $a -lt $N ]; do f=$(printf 'c_%05d.mp4' $a); [ -f "$CH/$f" ] || { echo "missing $f"; exit 1; }; echo "file '$f'" >> "$CH/list.txt"; a=$((a + C)); done
+  ffmpeg -v error -y -f concat -safe 0 -i "$CH/list.txt" -c copy -movflags +faststart "$OUT"
   ffprobe -v error -show_entries format=duration:stream=nb_frames -of csv=p=0 "$OUT"; exit 0
 fi
-cd "$LIB"
-for W in "0 1280" "1280 $N"; do set -- $W
-  setsid nohup node "$HERE/tools/frames.mjs" "$HERE" "$FR" 30 $1 $2 > "$HERE/out/render_$1.log" 2>&1 < /dev/null &
-done
+if [ "$1" = "worker" ]; then
+  a=0
+  while [ $a -lt $N ]; do
+    b=$((a + C)); [ $b -gt $N ] && b=$N; f=$(printf 'c_%05d.mp4' $a)
+    if [ ! -f "$CH/$f" ]; then
+      (cd "$LIB" && node "$HERE/tools/frames.mjs" "$HERE" "$FR" 30 $a $b) || exit 1
+      ffmpeg -v error -y -framerate 30 -start_number $a -i "$FR/f_%05d.jpg" -frames:v $((b - a)) -c:v libx264 -preset medium -crf 17 \
+        -pix_fmt yuv420p -r 30 -an "$CH/$f.tmp.mp4" && mv "$CH/$f.tmp.mp4" "$CH/$f" || exit 1
+      i=$a; while [ $i -lt $b ]; do rm -f "$FR/$(printf 'f_%05d.jpg' $i)"; i=$((i + 1)); done
+      echo "chunk $f done $(date +%T)"
+    fi
+    a=$b
+  done
+  echo ALLDONE; exit 0
+fi
+setsid nohup sh "$0" worker > "$HERE/out/render.log" 2>&1 < /dev/null &
 echo started

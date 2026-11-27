@@ -1,0 +1,15 @@
+{
+  "id": "print_taipei",
+  "w": 548,
+  "h": 666,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/building_height/archive/img/ph_taipei.jpg",
+    "id": "print_taipei",
+    "crop": "860,20,1362,640",
+    "w": 502,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

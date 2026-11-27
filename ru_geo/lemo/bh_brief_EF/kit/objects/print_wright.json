@@ -1,0 +1,15 @@
+{
+  "id": "print_wright",
+  "w": 850,
+  "h": 1150,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/building_height/archive/img/ph_wright.jpg",
+    "id": "print_wright",
+    "crop": "560,0,1340,1080",
+    "w": 780,
+    "border": 0.045,
+    "sat": 1.0
+  }
+}
