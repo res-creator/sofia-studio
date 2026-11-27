@@ -34,3 +34,9 @@ Read before writing or editing any episode.
 - Tasteful, not loud: one accent colour per video, the rest white or soft grey; no rainbow of bright colours.
 - Text sits on soft blurred or darkened backgrounds, never on busy detail.
 - Owner will pick a reference channel; match its look once chosen.
+
+## What worked: Hong Kong (EP04) after 12 days — 368 views, 2.4k impressions, CTR 3.3%, retention 34.8% (3:14 of 9:20), 93% from browse/suggested
+- Title = surprising fact + question ("Hong Kong Is Mostly Mountains. So Where Do 7.5 Million People Live?"). Statement titles ("How Singapore Made Itself Bigger") get far fewer clicks (Singapore: CTR 1.3% on day 1).
+- The cover shows the paradox in ONE photo (green mountains + packed towers) + 3 short lines + arrow.
+- Cold open = 3 short lines, ~20 s: the paradox, then the question at once. No long dated story, no sad/heavy opening.
+- Familiar city + everyday angle (where people live, tiny homes); 9–11 min; fast cutting.
