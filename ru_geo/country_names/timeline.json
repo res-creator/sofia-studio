@@ -5,21 +5,24 @@
 "d": 6.561,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/old_world_map.jpg",
-"cap": "Старинная карта мира, 1570 год"
+"cap": "Старинная карта мира, 1570 год",
+"anim": false
 },
 {
 "t": 6.561,
 "d": 11.372,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_area_rank.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 17.933,
 "d": 3.937,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/old_world_map.jpg",
-"cap": "Старинная карта мира, 1570 год"
+"cap": "Старинная карта мира, 1570 год",
+"anim": false
 },
 {
 "t": 21.87,
@@ -32,14 +35,16 @@
 "d": 6.398,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_riddles.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 31.868,
 "d": 6.932,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_newspaper_q.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 38.8,
@@ -58,42 +63,48 @@
 "d": 3.628,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_lawrence.jpg",
-"cap": "Река Святого Лаврентия, снимок с шаттла, 1991"
+"cap": "Река Святого Лаврентия, снимок с шаттла, 1991",
+"anim": false
 },
 {
 "t": 48.628,
 "d": 6.349,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_map_lawrence.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 54.977,
 "d": 8.163,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_donnacona_tl.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 63.14,
 "d": 4.695,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_chain_canada.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 67.835,
 "d": 3.756,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_lawrence.jpg",
-"cap": "Река Святого Лаврентия, снимок с шаттла, 1991"
+"cap": "Река Святого Лаврентия, снимок с шаттла, 1991",
+"anim": false
 },
 {
 "t": 71.591,
 "d": 10.329,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_myths_canada.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 81.92,
@@ -106,42 +117,48 @@
 "d": 2.838,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_map_brazil.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 87.358,
 "d": 5.676,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_names_brazil.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 93.033,
 "d": 4.054,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_brazilwood.jpg",
-"cap": "Стручок бразильского дерева (пау-бразил), ботанический сад Сан-Паулу"
+"cap": "Стручок бразильского дерева (пау-бразил), ботанический сад Сан-Паулу",
+"anim": false
 },
 {
 "t": 97.087,
 "d": 7.703,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_chain_brazil.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 104.79,
 "d": 8.978,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_flow_brazilwood.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 113.768,
 "d": 5.502,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_names_brazil.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 119.27,
@@ -154,105 +171,120 @@
 "d": 2.794,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_map_maracaibo.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 125.664,
 "d": 3.593,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_stilts.jpg",
-"cap": "Дома на сваях в лагуне Синамаика, Венесуэла (рядом с озером Маракайбо), наши дни"
+"cap": "Дома на сваях в лагуне Синамаика, Венесуэла (рядом с озером Маракайбо), наши дни",
+"anim": false
 },
 {
 "t": 129.257,
 "d": 3.593,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_venice.jpg",
-"cap": "Венеция: Большой канал и мост Риальто"
+"cap": "Венеция: Большой канал и мост Риальто",
+"anim": false
 },
 {
 "t": 132.85,
 "d": 9.98,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_versions_venez.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 142.83,
 "d": 3.435,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_stilts.jpg",
-"cap": "Дома на сваях в лагуне Синамаика, Венесуэла (рядом с озером Маракайбо), наши дни"
+"cap": "Дома на сваях в лагуне Синамаика, Венесуэла (рядом с озером Маракайбо), наши дни",
+"anim": false
 },
 {
 "t": 146.265,
 "d": 3.16,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_venice.jpg",
-"cap": "Венеция: Большой канал и мост Риальто"
+"cap": "Венеция: Большой канал и мост Риальто",
+"anim": false
 },
 {
 "t": 149.425,
 "d": 7.145,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_maybe.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 156.57,
 "d": 5.748,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/old_world_map.jpg",
-"cap": "Старинная карта мира, 1570 год"
+"cap": "Старинная карта мира, 1570 год",
+"anim": false
 },
 {
 "t": 162.317,
 "d": 4.703,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_next_two.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 167.02,
 "d": 4.514,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_map_cameroon.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 171.534,
 "d": 4.352,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_wouri.jpg",
-"cap": "Река Вури в Дуале (Камерун), наши дни"
+"cap": "Река Вури в Дуале (Камерун), наши дни",
+"anim": false
 },
 {
 "t": 175.886,
 "d": 7.254,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_chain_cameroon.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 183.14,
 "d": 5.495,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_ghost_shrimp.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 188.635,
 "d": 4.71,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_chain_cameroon.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 193.345,
 "d": 5.495,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_shrimp_order.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 198.84,
@@ -265,28 +297,32 @@
 "d": 3.029,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_map_chad.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 205.469,
 "d": 5.554,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_lake_chad.jpg",
-"cap": "Озеро Чад, снимок с шаттла, 1994"
+"cap": "Озеро Чад, снимок с шаттла, 1994",
+"anim": false
 },
 {
 "t": 211.023,
 "d": 4.039,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/old_world_map.jpg",
-"cap": "Старинная карта мира, 1570 год"
+"cap": "Старинная карта мира, 1570 год",
+"anim": false
 },
 {
 "t": 215.062,
 "d": 4.208,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_map_iceland.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 219.27,
@@ -299,21 +335,24 @@
 "d": 2.974,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_map_iceland.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 224.844,
 "d": 3.718,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_iceland_snow.jpg",
-"cap": "Исландия под снегом и льдом, спутник NASA, февраль 2015"
+"cap": "Исландия под снегом и льдом, спутник NASA, февраль 2015",
+"anim": false
 },
 {
 "t": 228.561,
 "d": 8.179,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_iceland_names.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 236.74,
@@ -326,63 +365,72 @@
 "d": 4.716,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_iceland_snow.jpg",
-"cap": "Исландия под снегом и льдом, спутник NASA, февраль 2015"
+"cap": "Исландия под снегом и льдом, спутник NASA, февраль 2015",
+"anim": false
 },
 {
 "t": 245.056,
 "d": 7.694,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_myth_iceland.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 252.75,
 "d": 5.817,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_map_greenland.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 258.567,
 "d": 3.878,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_erik.jpg",
-"cap": "Эйрик Рыжий на гравюре XVII века"
+"cap": "Эйрик Рыжий на гравюре XVII века",
+"anim": false
 },
 {
 "t": 262.445,
 "d": 5.817,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_chain_greenland.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 268.262,
 "d": 3.878,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_greenland_ice.jpg",
-"cap": "Ледники Гренландии с самолёта NASA, 2016"
+"cap": "Ледники Гренландии с самолёта NASA, 2016",
+"anim": false
 },
 {
 "t": 272.14,
 "d": 6.288,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_saga_tl.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 278.428,
 "d": 5.502,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_hvalsey.jpg",
-"cap": "Руины церкви в Хвальсее: постройка средневековых норвежцев в Гренландии"
+"cap": "Руины церкви в Хвальсее: постройка средневековых норвежцев в Гренландии",
+"anim": false
 },
 {
 "t": 283.93,
 "d": 3.93,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_greenland_ice.jpg",
-"cap": "Ледники Гренландии с самолёта NASA, 2016"
+"cap": "Ледники Гренландии с самолёта NASA, 2016",
+"anim": false
 },
 {
 "t": 287.86,
@@ -395,42 +443,48 @@
 "d": 3.148,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_chain_argentina.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 294.608,
 "d": 1.889,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_map_argentina.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 296.497,
 "d": 10.703,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_tl_argentina.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 307.2,
 "d": 3.938,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_newspaper_q.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 311.137,
 "d": 8.978,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_clue_nigeria.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 320.115,
 "d": 2.835,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_ortelius_south.jpg",
-"cap": "Воображаемый южный материк на карте Ортелия, 1570 (фрагмент)"
+"cap": "Воображаемый южный материк на карте Ортелия, 1570 (фрагмент)",
+"anim": false
 },
 {
 "t": 322.95,
@@ -449,70 +503,80 @@
 "d": 9.002,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_ortelius_south.jpg",
-"cap": "Воображаемый южный материк на карте Ортелия, 1570 (фрагмент)"
+"cap": "Воображаемый южный материк на карте Ортелия, 1570 (фрагмент)",
+"anim": false
 },
 {
 "t": 338.152,
 "d": 7.668,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_chain_australia.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 345.82,
 "d": 6.928,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_flinders_chart.jpg",
-"cap": "Карта Флиндерса 1814 года: «Terra Australis или Australia»"
+"cap": "Карта Флиндерса 1814 года: «Terra Australis или Australia»",
+"anim": false
 },
 {
 "t": 352.748,
 "d": 6.928,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_tl_australia.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 359.676,
 "d": 3.464,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_chain_australia.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 363.14,
 "d": 9.355,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_who_names.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 372.495,
 "d": 9.355,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/old_world_map.jpg",
-"cap": "Старинная карта мира, 1570 год"
+"cap": "Старинная карта мира, 1570 год",
+"anim": false
 },
 {
 "t": 381.85,
 "d": 6.849,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_tl_phil.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 388.699,
 "d": 7.306,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_map_phil.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 396.005,
 "d": 8.675,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_king_never.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 404.68,
@@ -531,112 +595,128 @@
 "d": 5.088,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_kanji.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 415.968,
 "d": 11.872,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_map_japan_china.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 427.84,
 "d": 8.935,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_versions_japan.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 436.775,
 "d": 5.361,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_map_japan_china.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 442.136,
 "d": 3.574,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_kanji.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 445.71,
 "d": 4.617,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/marco_polo.jpg",
-"cap": "Марко Поло (портрет)"
+"cap": "Марко Поло (портрет)",
+"anim": false
 },
 {
 "t": 450.327,
 "d": 6.464,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_chain_japan.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 456.791,
 "d": 4.309,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_ortelius_japan.jpg",
-"cap": "Япония на карте Ортелия, 1570 (фрагмент)"
+"cap": "Япония на карте Ортелия, 1570 (фрагмент)",
+"anim": false
 },
 {
 "t": 461.1,
 "d": 8.395,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_map_madag.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 469.495,
 "d": 3.694,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/marco_polo.jpg",
-"cap": "Марко Поло (портрет)"
+"cap": "Марко Поло (портрет)",
+"anim": false
 },
 {
 "t": 473.189,
 "d": 4.701,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_chain_madag.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 477.89,
 "d": 10.978,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_tabula.jpg",
-"cap": "Карта мира аль-Идриси, 1154 год (копия 1929 года, юг сверху)"
+"cap": "Карта мира аль-Идриси, 1154 год (копия 1929 года, юг сверху)",
+"anim": false
 },
 {
 "t": 488.868,
 "d": 4.591,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_migration.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 493.459,
 "d": 4.391,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_versions_madag.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 497.85,
 "d": 7.03,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_madagasikara.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 504.88,
 "d": 7.03,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_madagascar.jpg",
-"cap": "Мадагаскар, снимок с шаттла"
+"cap": "Мадагаскар, снимок с шаттла",
+"anim": false
 },
 {
 "t": 511.91,
@@ -655,105 +735,120 @@
 "d": 2.194,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_map_niger.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 520.304,
 "d": 4.389,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/ph_niger.jpg",
-"cap": "Река Нигер и её приток Бенуэ у Локоджи (Нигерия), снимок с МКС, 2024"
+"cap": "Река Нигер и её приток Бенуэ у Локоджи (Нигерия), снимок с МКС, 2024",
+"anim": false
 },
 {
 "t": 524.693,
 "d": 8.047,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_chain_nigeria.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 532.74,
 "d": 7.995,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_variants_nigeria.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 540.735,
 "d": 7.995,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_chain_nigeria.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 548.73,
 "d": 8.077,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_nigeria_fact.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 556.808,
 "d": 6.282,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_pop_africa.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 563.09,
 "d": 3.59,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_chain_nigeria.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 566.68,
 "d": 6.587,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_world_all.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 573.267,
 "d": 10.379,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_summary.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 583.646,
 "d": 2.994,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/old_world_map.jpg",
-"cap": "Старинная карта мира, 1570 год"
+"cap": "Старинная карта мира, 1570 год",
+"anim": false
 },
 {
 "t": 586.64,
 "d": 9.324,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_myths_all.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 },
 {
 "t": 595.964,
 "d": 6.216,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/old_world_map.jpg",
-"cap": "Старинная карта мира, 1570 год"
+"cap": "Старинная карта мира, 1570 год",
+"anim": false
 },
 {
 "t": 602.18,
 "d": 6.601,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/old_world_map.jpg",
-"cap": "Старинная карта мира, 1570 год"
+"cap": "Старинная карта мира, 1570 год",
+"anim": false
 },
 {
 "t": 608.781,
 "d": 8.069,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/country_names/archive/img/cn_next_country.jpg",
-"cap": ""
+"cap": "",
+"anim": true
 }
 ]
 }
