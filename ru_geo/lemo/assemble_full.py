@@ -1,23 +1,38 @@
-"""Полный ролик «Высота зданий» в стиле «Инженерная доска»: доска (по главам) + 3D-карта + архивный стол.
+"""Полный ролик (любой slug из CONF ниже) в стиле «Инженерная доска»: доска (по главам) + 3D-карта + архивный стол.
 Звук собирается заново в полном качестве: голос vo_clone/vo.mp3 + музыка music.wav (приглушается под голос) + шумы.
-python3 assemble_bh_full.py            -> video/building_height_brief_master.mp4 (1080p) и building_height_share.mp4 (720p, < 50 МБ)"""
-import json, subprocess, os
+python3 assemble_full.py <slug>   -> scratchpad master 1080p и ru_geo/<slug>/video/<slug>_share.mp4 (720p, < 50 МБ)"""
+import json, subprocess, os, sys
+SLUG = sys.argv[1]
 import numpy as np
 from scipy.signal import butter, sosfilt
 from scipy.io import wavfile
-R = '/home/user/sofia-studio/ru_geo/building_height'; P = f'{R}/video/parts'; L = '/home/user/sofia-studio/ru_geo/lemo'
-S = '/tmp/claude-0/-home-user-sofia-studio/24c15af6-1f18-59ef-a680-971b83cb24ee/scratchpad/asm_full'; os.makedirs(S, exist_ok=True)
+R = f'/home/user/sofia-studio/ru_geo/{SLUG}'; P = f'{R}/video/parts'; L = '/home/user/sofia-studio/ru_geo/lemo'
+S = f'/tmp/claude-0/-home-user-sofia-studio/24c15af6-1f18-59ef-a680-971b83cb24ee/scratchpad/asm_{SLUG}'; os.makedirs(S, exist_ok=True)
 film = json.load(open(f'{R}/film.json')); TOTAL = float(film['total'])
 run = lambda a: subprocess.run(a, check=True)
-# (файл, начало файла в секундах фильма, кусок фильма a–b, папка событий)
-SEG = [('board_brief.mp4', 0, 0, 20.6, 'bh_brief'), ('map.mp4', 20.6, 20.6, 30.9, None),
+# (файл, начало файла в секундах фильма, кусок фильма a–b, папка событий); EXTRA: события карт и столов
+CONF = {
+ 'building_height': dict(
+  SEG=[('board_brief.mp4', 0, 0, 20.6, 'bh_brief'), ('map.mp4', 20.6, 20.6, 30.9, None),
        ('board_brief.mp4', 0, 30.9, 85.3, 'bh_brief'),
        ('board_brief_B.mp4', 85.3, 85.3, 149.04, 'bh_brief_B'), ('lighttable.mp4', 149.04, 149.04, 164.2, None),
        ('board_brief_B.mp4', 85.3, 164.2, 181.86, 'bh_brief_B'),
        ('board_brief_CD.mp4', 181.86, 181.86, 350.23, 'bh_brief_CD'),
        ('board_brief_EF.mp4', 350.23, 350.23, 481.72, 'bh_brief_EF'),
-       ('board_brief_G.mp4', 481.72, 481.72, TOTAL, 'bh_brief_G')]
-EXTRA_EV = [('map_events.json', 20.6, 20.6, 30.9), ('lighttable_events.json', 149.04, 149.04, 164.2)]
+       ('board_brief_G.mp4', 481.72, 481.72, TOTAL, 'bh_brief_G')],
+  EXTRA=[('map_events.json', 20.6, 20.6, 30.9), ('lighttable_events.json', 149.04, 149.04, 164.2)],
+  SKIP=[(69.5, 73.26)]),
+ 'universe_size': dict(
+  SEG=[('board_1.mp4', 0, 0, 89.1, 'us_brief_1'), ('lt_pbd.mp4', 89.1, 89.1, 105.6, None),
+       ('board_1.mp4', 0, 105.6, 127.7, 'us_brief_1'),
+       ('board_2.mp4', 127.7, 127.7, 272.67, 'us_brief_2'),
+       ('board_3.mp4', 272.67, 272.67, 318.5, 'us_brief_3'), ('lt_hudf.mp4', 318.5, 318.5, 359.8, None),
+       ('board_3.mp4', 272.67, 359.8, 454.73, 'us_brief_3'),
+       ('board_4.mp4', 454.73, 454.73, TOTAL, 'us_brief_4')],
+  EXTRA=[('lt_pbd_events.json', 89.1, 89.1, 105.6), ('lt_hudf_events.json', 318.5, 318.5, 359.8)],
+  SKIP=[]),
+}
+C = CONF[SLUG]; SEG, EXTRA_EV = C['SEG'], C['EXTRA']
 
 # ---- картинка
 segs = []
@@ -86,7 +101,7 @@ A = ['[Script Info]', 'ScriptType: v4.00+', 'PlayResX: 1920', 'PlayResY: 1080', 
      'Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding',
      'Style: C,Inter,52,&H00FFFFFF,&H000000FF,&H48141414,&H48141414,1,0,0,0,100,100,0,0,3,14,0,2,120,120,60,1', '', '[Events]',
      'Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text']
-SKIP = [(69.5, 73.26)]                                 # вопрос печатает машинка
+SKIP = C['SKIP']                                       # фразы, которые печатает машинка
 for s in film['segs']:
     for a, b, tx in s.get('captions') or []:
         a, b = float(a), float(b)
@@ -94,10 +109,10 @@ for s in film['segs']:
         A.append(f'Dialogue: 0,{ts(a)},{ts(b)},C,,0,0,0,,{tx}')
 open(f'{S}/subs.ass', 'w', encoding='utf-8').write('\n'.join(A) + '\n')
 
-master = f'{S}/building_height_brief_master.mp4'
+master = f'{S}/{SLUG}_master.mp4'
 run(['ffmpeg', '-y', '-loglevel', 'error', '-i', f'{S}/pic.mp4', '-i', f'{S}/mix.wav', '-vf', f'ass={S}/subs.ass', '-map', '0:v', '-map', '1:a',
      '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-c:a', 'aac', '-b:a', '192k', '-t', f'{TOTAL:.2f}', '-movflags', '+faststart', master])
-share = f'{R}/video/building_height_share.mp4'
+share = f'{R}/video/{SLUG}_share.mp4'
 run(['ffmpeg', '-y', '-loglevel', 'error', '-i', master, '-vf', 'scale=1280:720', '-c:v', 'libx264', '-preset', 'medium', '-b:v', '520k', '-maxrate', '900k', '-bufsize', '1800k',
      '-c:a', 'aac', '-b:a', '96k', '-movflags', '+faststart', share])
 print('done', master, share, os.path.getsize(share) // 1048576, 'MB')

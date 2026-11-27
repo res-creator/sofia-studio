@@ -3,7 +3,7 @@
 # кодирует готовые части. Запуск: setsid nohup sh keep_renders.sh > log 2>&1 &
 L=/home/user/sofia-studio/ru_geo/lemo; P=/home/user/sofia-studio/ru_geo/building_height/video/parts
 while true; do
-  for d in $L/bh_brief_B $L/bh_brief_CD $L/bh_brief_EF $L/bh_brief_G; do
+  for d in $L/*/; do d=${d%/}
     [ -f $d/tools/render.sh ] || continue
     out=$(grep -o 'OUT=[^ ;]*' $d/tools/render.sh | head -1 | cut -d= -f2)
     [ -n "$out" ] && [ -s "$out" ] && continue
