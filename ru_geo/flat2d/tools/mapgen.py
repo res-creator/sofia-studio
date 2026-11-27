@@ -33,7 +33,7 @@ def draw_world(proj, hi, title, sub, out, grid=False, tissot=False):
     im = Image.new('RGB', (W, H), BG); d = ImageDraw.Draw(im)
     allr = [(n, r) for n, g in feats.items() for r in rings(g) if n != 'Antarctica']
     pts = [proj(lo, la) for n, r in allr for lo, la in r]; xs = [p[0] for p in pts]; ys = [p[1] for p in pts]
-    sc = min((W - 160) / (max(xs) - min(xs)), (H - 260) / (max(ys) - min(ys))); ox = W / 2 - sc * (max(xs) + min(xs)) / 2; oy = H / 2 + 20 + sc * (max(ys) + min(ys)) / 2
+    sc = min((W - 160) / (max(xs) - min(xs)), (H - 480) / (max(ys) - min(ys))); ox = W / 2 - sc * (max(xs) + min(xs)) / 2; oy = H / 2 - 60 + sc * (max(ys) + min(ys)) / 2
     T = lambda p: (ox + sc * p[0], oy - sc * p[1])
     for n, r in allr:
         col = HI1 if n in hi[0] else HI2 if n in hi[1] else LAND
@@ -42,25 +42,25 @@ def draw_world(proj, hi, title, sub, out, grid=False, tissot=False):
         for la in range(-60, 61, 20):
             for lo in range(-160, 161, 40):
                 cs = [T(proj(lo + 7 * math.sin(a) / max(0.2, math.cos(math.radians(la + 7 * math.cos(a) / 2))), la + 7 * math.cos(a))) for a in [i * math.pi / 18 for i in range(37)]]; d.polygon(cs, fill=(255, 90, 90))
-    d.text((W / 2, 70), title, font=font(60), fill=TXT, anchor='mm'); d.text((W / 2, H - 55), sub, font=font(34), fill=(190, 190, 195), anchor='mm'); im.save(out, quality=92)
+    d.text((W / 2, 70), title, font=font(60), fill=TXT, anchor='mm'); d.text((W / 2, H - 250), sub, font=font(34), fill=(190, 190, 195), anchor='mm'); im.save(out, quality=92)
 def versus(a, b, na, nb, aa, ab, out, mult=None):
     im = Image.new('RGB', (W, H), BG); d = ImageDraw.Draw(im); items = []
     for names, col, nm, area in ((a, HI1, na, aa), (b, HI2, nb, ab)):
         if not names: continue
         rs = shape(names); cx, cy = centroid(rs); f = laea(cx, cy); P = [[f(lo, la) for lo, la in r] for r in rs]; xs = [p[0] for r in P for p in r]; ys = [p[1] for r in P for p in r]
         items.append((P, col, nm, area, min(xs), max(xs), min(ys), max(ys)))
-    wsum = sum(i[5] - i[4] for i in items) + 500; hmax = max(i[7] - i[6] for i in items); sc = min((W - 200) / wsum, (H - 420) / hmax)
+    wsum = sum(i[5] - i[4] for i in items) + 500; hmax = max(i[7] - i[6] for i in items); sc = min((W - 200) / wsum, (H - 600) / hmax)
     x = (W - sum((i[5] - i[4]) * sc for i in items) - 160) / 2
     for P, col, nm, area, x0, x1, y0, y1 in items:
-        for r in P: d.polygon([(x + (px - x0) * sc, H / 2 - 50 + (y1 + y0) / 2 * sc - py * sc) for px, py in r], fill=col)
-        wcx = x + (x1 - x0) * sc / 2; d.text((wcx, H - 150), nm, font=font(48), fill=col, anchor='mm'); d.text((wcx, H - 95), area, font=font(34), fill=TXT, anchor='mm'); x += (x1 - x0) * sc + 160
+        for r in P: d.polygon([(x + (px - x0) * sc, H / 2 - 130 + (y1 + y0) / 2 * sc - py * sc) for px, py in r], fill=col)
+        wcx = x + (x1 - x0) * sc / 2; d.text((wcx, H - 290), nm, font=font(48), fill=col, anchor='mm'); d.text((wcx, H - 235), area, font=font(34), fill=TXT, anchor='mm'); x += (x1 - x0) * sc + 160
     if mult: d.text((W / 2, 70), mult, font=font(72), fill=TXT, anchor='mm')
     im.save(out, quality=92)
 
 def single(names, nm, area, out, col=HI1):
     versus(names, [], nm, '', area, '', out)
 def ortho(out, lon0=20, lat0=15):
-    im = Image.new('RGB', (W, H), BG); d = ImageDraw.Draw(im); r = 440; cx, cy = W / 2, H / 2 + 20
+    im = Image.new('RGB', (W, H), BG); d = ImageDraw.Draw(im); r = 380; cx, cy = W / 2, H / 2 - 60
     d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=(22, 28, 38))
     l0, p0 = math.radians(lon0), math.radians(lat0)
     def pr(lon, lat):
@@ -70,10 +70,10 @@ def ortho(out, lon0=20, lat0=15):
     for n, g in feats.items():
         if n == 'Antarctica': continue
         for ring in rings(g): d.polygon([pr(lo, la) for lo, la in ring], fill=HI1 if n == 'Greenland' else HI2 if n in AFR else LAND)
-    d.text((W / 2, 70), 'Глобус: честные площади', font=font(60), fill=TXT, anchor='mm'); d.text((W / 2, H - 55), 'Африка (синяя) и Гренландия (жёлтая) без искажений', font=font(34), fill=(190, 190, 195), anchor='mm'); im.save(out, quality=92)
+    d.text((W / 2, 70), 'Глобус: честные площади', font=font(60), fill=TXT, anchor='mm'); d.text((W / 2, H - 250), 'Африка (синяя) и Гренландия (жёлтая) без искажений', font=font(34), fill=(190, 190, 195), anchor='mm'); im.save(out, quality=92)
 def split(out):
-    a = Image.open(f'{J}/archive/img/mercator_world_map.jpg').resize((960, 540)); b = Image.open(f'{J}/archive/img/gall_peters_map.jpg').resize((960, 540)); im = Image.new('RGB', (W, H), BG); im.paste(a, (0, 270)); im.paste(b, (960, 270)); d = ImageDraw.Draw(im)
-    d.text((W / 2, 110), 'Одна планета, две карты', font=font(68), fill=TXT, anchor='mm'); d.text((480, 880), 'Меркатор: углы верны', font=font(40), fill=HI1, anchor='mm'); d.text((1440, 880), 'Галл-Петерс: площади верны', font=font(40), fill=HI2, anchor='mm'); im.save(out, quality=92)
+    a = Image.open(f'{J}/archive/img/mercator_world_map.jpg').resize((960, 540)); b = Image.open(f'{J}/archive/img/gall_peters_map.jpg').resize((960, 540)); im = Image.new('RGB', (W, H), BG); im.paste(a, (0, 230)); im.paste(b, (960, 230)); d = ImageDraw.Draw(im)
+    d.text((W / 2, 110), 'Одна планета, две карты', font=font(68), fill=TXT, anchor='mm'); d.text((480, 800), 'Меркатор: углы верны', font=font(40), fill=HI1, anchor='mm'); d.text((1440, 800), 'Галл-Петерс: площади верны', font=font(40), fill=HI2, anchor='mm'); im.save(out, quality=92)
 OUT = {}
 def save(key, fn, cap, build):
     p = f'{J}/archive/img/{fn}'; build(p); OUT[key] = dict(file=fn, author='собственная графика, данные: открытые границы стран (johan/world.geo.json)', license='свободно', cap=cap, page='https://github.com/johan/world.geo.json', title=cap)
