@@ -1,20 +1,4 @@
 {
- "nemo_map": {
-  "file": "nemo_map.jpg",
-  "author": "Nojhan",
-  "license": "CC BY-SA 3.0",
-  "cap": "карта: Точка Немо в Тихом океане",
-  "page": "https://commons.wikimedia.org/wiki/File:R%27lyeh_locations.png",
-  "title": "File:R'lyeh locations.png"
- },
- "iss_earth": {
-  "file": "iss_earth.jpg",
-  "author": "NASA Johnson Space Center",
-  "license": "общественное достояние",
-  "cap": "МКС над Землёй (фото NASA)",
-  "page": "https://commons.wikimedia.org/wiki/File:A_piece_of_unidentified_space_debris_is_pictured_from_the_International_Space_Station_(iss074e0540224).jpg",
-  "title": "File:A piece of unidentified space debris is pictured from the International Space Station (iss074e0540224).jpg"
- },
  "ocean_horizon": {
   "file": "ocean_horizon.jpg",
   "author": "NASA Johnson Space Center",
@@ -22,5 +6,101 @@
   "cap": "открытый океан (иллюстративное фото)",
   "page": "https://commons.wikimedia.org/wiki/File:A_Golden_Atmospheric_Glow_Crowns_Earth%27s_Horizon_(iss071e207178).jpg",
   "title": "File:A Golden Atmospheric Glow Crowns Earth's Horizon (iss071e207178).jpg"
+ },
+ "earth_globe_pacific": {
+  "file": "earth_globe_pacific.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Тихий океан из космоса",
+  "page": "https://images.nasa.gov/details/s49-71-042",
+  "title": "Collapsed Thunderstorm, Southwest Pacific Ocean"
+ },
+ "deep_ocean": {
+  "file": "deep_ocean.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "глубокий океан (иллюстративное фото)",
+  "page": "https://images.nasa.gov/details/sts062-85-031",
+  "title": "Earth observations from STS-62 flight"
+ },
+ "mir_reentry": {
+  "file": "mir_reentry.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "станция «Мир» (фото 1998 года)",
+  "page": "https://images.nasa.gov/details/sts063-708-095",
+  "title": "Mir space station as seen from STS-63 Discovery"
+ },
+ "arctic_icebreaker": {
+  "file": "arctic_icebreaker.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "дрейфующий лёд Арктики",
+  "page": "https://images.nasa.gov/details/201007040005HQ",
+  "title": "ICESCAPE Mission"
+ },
+ "antarctic_ice": {
+  "file": "antarctic_ice.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "лёд Антарктиды",
+  "page": "https://images.nasa.gov/details/PIA20894",
+  "title": "Growing Crack in Antarctica Larsen C Ice Shelf Spotted by NASA MISR"
+ },
+ "bouvet_map": {
+  "file": "bouvet_map.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "карта: остров Буве в южной Атлантике",
+  "page": "https://images.nasa.gov/details/iss017e016161",
+  "title": "Earth Observations taken by the Expedition 17 Crew"
+ },
+ "tristan_map": {
+  "file": "tristan_map.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "карта: Тристан-да-Кунья",
+  "page": "https://images.nasa.gov/details/PIA22506",
+  "title": "Tristan da Cunha Island"
+ },
+ "tristan_aerial": {
+  "file": "tristan_aerial.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "остров Тристан-да-Кунья",
+  "page": "https://images.nasa.gov/details/iss034e041528",
+  "title": "Earth Observations taken by Expedition 34 crewmember"
+ },
+ "tristan_ship": {
+  "file": "tristan_ship.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "корабль у Тристан-да-Куньи",
+  "page": "https://images.nasa.gov/details/iss019e014918",
+  "title": "Earth Observations by the Expedition 19 crew"
+ },
+ "nemo_map": {
+  "file": "nemo_map.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Точка Немо",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Точка Немо"
+ },
+ "tristan_loc": {
+  "file": "tristan_loc.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Тристан-да-Кунья",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Тристан-да-Кунья"
+ },
+ "bouvet_loc": {
+  "file": "bouvet_loc.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Остров Буве",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Остров Буве"
  }
 }

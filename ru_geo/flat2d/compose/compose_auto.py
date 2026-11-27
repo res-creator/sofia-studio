@@ -78,6 +78,7 @@ if os.path.exists(oc) and os.path.exists(cr_path):
     PIMG = {k: f"{J}/archive/img/{v['file']}" for k, v in CR.items()}
 STRICT = True
 NO_STOCK = os.path.exists(f'{J}/no_stock')
+REQ = re.compile(open(f'{J}/stock_require', encoding='utf8').read().strip(), re.I) if os.path.exists(f'{J}/stock_require') else None
 # --- подбор клипов
 used = set(); cards = []; tl = []
 def pick(q):
@@ -87,6 +88,7 @@ def pick(q):
     def score(k): tg = ' '.join(DB['v'][k].get('tags', []) + [DB['v'][k].get('title', '')]).lower(); return -sum(1 for w in qw if w in tg)
     for k in sorted(search(q), key=score):
         if STRICT and score(k) == 0: continue
+        if REQ and not REQ.search(' '.join(DB['v'][k].get('tags', []) + [DB['v'][k].get('title', '')])): continue
         v = DB['v'][k]
         if k in used or float(v.get('dur') or 0) < 4.5: continue
         used.add(k); p = f'{ST}/{k}.mp4'

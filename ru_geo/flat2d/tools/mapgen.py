@@ -24,8 +24,10 @@ def wt(lon, lat):
 def laea(lon0, lat0):
     l0, p0 = math.radians(lon0), math.radians(lat0)
     def f(lon, lat):
-        l, p = math.radians(lon), math.radians(lat); k = math.sqrt(2 / (1 + math.sin(p0) * math.sin(p) + math.cos(p0) * math.cos(p) * math.cos(l - l0)))
-        return 6371 * k * math.cos(p) * math.sin(l - l0), 6371 * k * (math.cos(p0) * math.sin(p) - math.sin(p0) * math.cos(p) * math.cos(l - l0))
+        l, p = math.radians(lon), math.radians(lat)
+        x = math.cos(p) * math.sin(l - l0); y = math.cos(p0) * math.sin(p) - math.sin(p0) * math.cos(p) * math.cos(l - l0)
+        c = math.acos(max(-1, min(1, math.sin(p0) * math.sin(p) + math.cos(p0) * math.cos(p) * math.cos(l - l0)))); c = min(c, math.pi / 2); n = math.hypot(x, y) or 1
+        rho = 2 * 6371 * math.sin(c / 2); return rho * x / n, rho * y / n
     return f
 def centroid(rs):
     pts = [pt for r in rs for pt in r]; return sum(p[0] for p in pts) / len(pts), sum(p[1] for p in pts) / len(pts)
@@ -74,8 +76,37 @@ def ortho(out, lon0=20, lat0=15):
 def split(out):
     a = Image.open(f'{J}/archive/img/mercator_world_map.jpg').resize((960, 540)); b = Image.open(f'{J}/archive/img/gall_peters_map.jpg').resize((960, 540)); im = Image.new('RGB', (W, H), BG); im.paste(a, (0, 230)); im.paste(b, (960, 230)); d = ImageDraw.Draw(im)
     d.text((W / 2, 110), 'Одна планета, две карты', font=font(68), fill=TXT, anchor='mm'); d.text((480, 800), 'Меркатор: углы верны', font=font(40), fill=HI1, anchor='mm'); d.text((1440, 800), 'Галл-Петерс: площади верны', font=font(40), fill=HI2, anchor='mm'); im.save(out, quality=92)
+
+def region(center, radius_km, markers, circle, title, sub, out):
+    im = Image.new('RGB', (W, H), BG); d = ImageDraw.Draw(im); f = laea(*center); sc = 400 / radius_km; cx, cy = W / 2, H / 2 - 60
+    T = lambda p: (cx + p[0] * sc, cy - p[1] * sc)
+    lay = Image.new('RGB', (W, H), (18, 26, 40)); ld = ImageDraw.Draw(lay); dd = d; d = ld
+    for n, g in feats.items():
+        for r in rings(g):
+            u = [r[0]]
+            for lo, la in r[1:]:
+                pv = u[-1][0]
+                while lo - pv > 180: lo -= 360
+                while lo - pv < -180: lo += 360
+                u.append((lo, la))
+            r = u
+            if all(math.sin(math.radians(center[1])) * math.sin(math.radians(la)) + math.cos(math.radians(center[1])) * math.cos(math.radians(la)) * math.cos(math.radians(lo - center[0])) < 0.17 for lo, la in r): continue
+            if n == 'Antarctica': r = r + [(r[-1][0], -90), (r[0][0], -90)]
+            d.polygon([T(f(lo, la)) for lo, la in r], fill=LAND)
+    mask = Image.new('L', (W, H), 0); ImageDraw.Draw(mask).ellipse((cx - 400, cy - 400, cx + 400, cy + 400), fill=255); im.paste(lay, (0, 0), mask); d = dd
+    if circle:
+        rho = 2 * 6371 * math.sin(circle / 2 / 6371) * sc; d.ellipse((cx - rho, cy - rho, cx + rho, cy + rho), outline=HI1, width=5)
+    for lo, la, lab, col in markers:
+        x, y = T(f(lo, la)); d.ellipse((x - 10, y - 10, x + 10, y + 10), fill=col); d.text((x + 18, y - 14), lab, font=font(34), fill=col)
+    d.ellipse((cx - 400, cy - 400, cx + 400, cy + 400), outline=(60, 64, 76), width=3)
+    d.text((W / 2, 70), title, font=font(60), fill=TXT, anchor='mm'); d.text((W / 2, H - 250), sub, font=font(34), fill=(190, 190, 195), anchor='mm'); im.save(out, quality=92)
 OUT = {}
+def alias(new, old, fn=None):
+    if old in OUT:
+        OUT[new] = dict(OUT[old])
+        if fn: OUT[new]['file'] = fn
 def save(key, fn, cap, build):
+    if (slug == 'remote_places') != (key in ('nemo_map', 'tristan_loc', 'bouvet_loc')): return
     p = f'{J}/archive/img/{fn}'; build(p); OUT[key] = dict(file=fn, author='собственная графика, данные: открытые границы стран (johan/world.geo.json)', license='свободно', cap=cap, page='https://github.com/johan/world.geo.json', title=cap)
 afr = AFR
 mk = lambda proj, t, s, tis=False: (lambda p: draw_world(proj, (['Greenland'], afr), t, s, p, tissot=tis))
@@ -85,11 +116,11 @@ save('gall_peters_map', 'gall_peters_map.jpg', 'Проекция Галла-Пе
 save('winkel_tripel_map', 'winkel_tripel_map.jpg', 'Проекция Винкеля: компромисс', mk(wt, 'Проекция Винкеля', 'Компромисс между формами и площадями'))
 v = lambda a, b, na, nb, aa, ab, m: (lambda p: versus(a, b, na, nb, aa, ab, p, m))
 save('africa_map', 'africa_vs_greenland.jpg', 'Африка и Гренландия в одном масштабе', v(afr, ['Greenland'], 'Африка', 'Гренландия', '30 млн км²', '2,2 млн км²', '×14'))
-OUT['greenland_map'] = dict(OUT['africa_map']); OUT['greenland_map']['file'] = 'africa_vs_greenland.jpg'
+alias('greenland_map', 'africa_map', 'africa_vs_greenland.jpg')
 save('congo_map', 'congo_vs_france.jpg', 'ДР Конго и Франция в одном масштабе', v(['Democratic Republic of the Congo'], ['France'], 'ДР Конго', 'Франция', '2,3 млн км²', '0,55 млн км²', 'В Конго помещаются 4 Франции'))
-OUT['france_map'] = dict(OUT['congo_map'])
+alias('france_map', 'congo_map')
 save('brazil_map', 'brazil_vs_australia.jpg', 'Бразилия и Австралия в одном масштабе', v(['Brazil'], ['Australia'], 'Бразилия', 'Австралия', '8,5 млн км²', '7,7 млн км²', 'Бразилия чуть больше Австралии'))
-OUT['australia_map'] = dict(OUT['brazil_map'])
+alias('australia_map', 'brazil_map')
 save('russia_map', 'russia_vs_africa.jpg', 'Россия и Африка в одном масштабе', v(['Russia'], afr, 'Россия', 'Африка', '17 млн км²', '30 млн км²', 'Африка почти вдвое больше России'))
 save('indonesia_map', 'indonesia_vs_usa.jpg', 'Индонезия и США в одном масштабе', v(['Indonesia'], ['United States of America'], 'Индонезия', 'США', '1,9 млн км² суши', '9,8 млн км²', 'Индонезия растянулась как США'))
 
@@ -100,6 +131,11 @@ save('usa_vs_china', 'usa_vs_china.jpg', 'США и Китай в одном м�
 save('canada_vs_africa', 'canada_vs_africa.jpg', 'Канада и Африка в одном масштабе', v(['Canada'], afr, 'Канада', 'Африка', '10 млн км²', '30 млн км²', 'Африка втрое больше Канады'))
 for k, names, nm, area in (('one_africa', afr, 'Африка', '30 млн км²'), ('one_greenland', ['Greenland'], 'Гренландия', '2,2 млн км²'), ('one_russia', ['Russia'], 'Россия', '17 млн км²'), ('one_brazil', ['Brazil'], 'Бразилия', '8,5 млн км²'), ('one_australia', ['Australia'], 'Австралия', '7,7 млн км²'), ('one_congo', ['Democratic Republic of the Congo'], 'ДР Конго', '2,3 млн км²'), ('one_france', ['France'], 'Франция', '0,55 млн км²'), ('one_indonesia', ['Indonesia'], 'Индонезия', '1,9 млн км² суши')):
     save(k, k + '.jpg', nm, (lambda n, a, b: (lambda p: single(n, a, b, p)))(names, nm, area))
+
+if slug == 'remote_places':
+    save('nemo_map', 'nemo_map.jpg', 'Точка Немо', lambda p: region((-123.39, -48.88), 4200, [(-123.39, -48.88, 'Точка Немо', HI1), (-124.78, -24.67, 'о. Дюси', HI2), (-109.45, -27.2, 'Мотю-Нуи', HI2), (-129.95, -74.37, 'о. Махер', HI2)], 2688, 'Точка Немо', 'До ближайшей суши около 2 688 км во все стороны', p))
+    save('tristan_loc', 'tristan_loc.jpg', 'Тристан-да-Кунья', lambda p: region((-12.28, -37.11), 4200, [(-12.28, -37.11, 'Тристан-да-Кунья', HI1), (-5.72, -15.95, 'Святая Елена', HI2), (18.42, -33.92, 'Кейптаун', HI2)], 2430, 'Тристан-да-Кунья', 'Ближайшие жители: остров Святой Елены, около 2 400 км', p))
+    save('bouvet_loc', 'bouvet_loc.jpg', 'Остров Буве', lambda p: region((3.37, -54.42), 4200, [(3.37, -54.42, 'о. Буве', HI1), (18.42, -33.92, 'Кейптаун', HI2)], 0, 'Остров Буве', 'Самый одинокий остров мира: до ближайшей суши около 1 700 км', p))
 cp = f'{J}/archive/credits.json'; cr = json.load(open(cp, encoding='utf8')) if os.path.exists(cp) else {}
 for k, vv in OUT.items(): cr[k] = vv
 json.dump(cr, open(cp, 'w'), ensure_ascii=False, indent=1); print('ok', len(OUT))
