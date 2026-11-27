@@ -1,0 +1,42 @@
+{
+ "earth_globe": {
+  "file": "earth_globe.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Земля из космоса",
+  "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001386",
+  "title": "Most Amazing High Definition Image of Earth - Blue Marble 2012"
+ },
+ "everest_summit": {
+  "file": "everest_summit.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Эверест (фото)",
+  "page": "https://images.nasa.gov/details/sts087-716-080",
+  "title": "Earth observations taken from shuttle orbiter Columbia during STS-87 mission"
+ },
+ "climbers_everest": {
+  "file": "climbers_everest.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "альпинисты на Эвересте (фото)",
+  "page": "https://images.nasa.gov/details/iss026e015208",
+  "title": "Earth Observations taken by Expedition 26 crewmember"
+ },
+ "antarctic_plateau": {
+  "file": "antarctic_plateau.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Антарктида (фото)",
+  "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001755",
+  "title": "Geikie Plateau Peak"
+ },
+ "death_valley": {
+  "file": "death_valley.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Долина Смерти (фото)",
+  "page": "https://images.nasa.gov/details/PIA26197",
+  "title": "Badwater, Death Valley"
+ }
+}
