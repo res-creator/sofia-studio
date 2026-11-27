@@ -2,123 +2,52 @@
 "segs": [
 {
 "t": 0.0,
-"d": 4.39,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "Зонд «Вояджер» (изображение NASA)"
-},
-{
-"t": 4.39,
-"d": 4.39,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.8,
-0.55
-],
-"cap": "Зонд «Вояджер» (изображение NASA)"
-},
-{
-"t": 8.78,
-"d": 4.39,
+"d": 5.487,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
 "cap": "Антенна дальней космической связи (Голдстоун)"
 },
 {
-"t": 13.17,
-"d": 4.39,
+"t": 5.487,
+"d": 5.487,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.5,
-0.25
-],
-"cap": "Антенна дальней космической связи (Голдстоун)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
+"cap": "Зонд «Вояджер» (изображение NASA)"
 },
 {
-"t": 17.56,
-"d": 4.39,
+"t": 10.975,
+"d": 5.487,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_launch.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.35,
-0.75
-],
 "cap": "Старт «Вояджера-1», 1977 год"
+},
+{
+"t": 16.462,
+"d": 5.487,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/blue_marble.jpg",
+"cap": "Земля из космоса (снимок NASA)"
 },
 {
 "t": 21.95,
 "d": 4.773,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/blue_marble.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
-"cap": "Земля из космоса (снимок NASA)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
+"cap": "Зонд «Вояджер» (изображение NASA)"
 },
 {
 "t": 26.723,
 "d": 4.773,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_golden_record.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.7,
-0.3
-],
-"cap": "Золотая пластинка «Вояджера» (NASA)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/q_universe.jpg",
+"cap": ""
 },
 {
 "t": 31.497,
 "d": 4.773,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.2,
-0.4
-],
-"cap": "Антенна дальней космической связи (Голдстоун)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/q_universe.jpg",
+"cap": ""
 },
 {
 "t": 36.27,
@@ -130,46 +59,22 @@
 "t": 39.87,
 "d": 4.4,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_launch.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
-"cap": "Старт «Вояджера-1», 1977 год"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/speed_star.jpg",
+"cap": ""
 },
 {
 "t": 44.27,
 "d": 4.4,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/proxima_hubble.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "Проксима Центавра (снимок Хаббла)"
+"cap": "Альфа Центавра A и B (снимок Хаббла)"
 },
 {
 "t": 48.67,
 "d": 4.4,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/pale_blue_dot.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.8,
-0.55
-],
-"cap": "«Бледно-голубая точка»: Земля глазами Вояджера-1, 1990 год"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/proxima_hubble.jpg",
+"cap": "Альфа Центавра A и B (снимок Хаббла)"
 },
 {
 "t": 53.07,
@@ -187,211 +92,92 @@
 "t": 59.27,
 "d": 4.833,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/sun_earth_size.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "Солнце и планеты в одном масштабе (схема)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/ruler_light.jpg",
+"cap": ""
 },
 {
 "t": 64.103,
 "d": 4.833,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/blue_marble.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.5,
-0.25
-],
 "cap": "Земля из космоса (снимок NASA)"
 },
 {
 "t": 68.937,
 "d": 4.833,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/neptune.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.35,
-0.75
-],
-"cap": "Нептун (снимок Вояджера-2)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/blue_marble.jpg",
+"cap": "Земля из космоса (снимок NASA)"
 },
 {
 "t": 73.77,
 "d": 5.103,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/neptune.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
 "cap": "Нептун (снимок Вояджера-2)"
 },
 {
 "t": 78.873,
 "d": 5.103,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/proxima_hubble.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.7,
-0.3
-],
-"cap": "Проксима Центавра (снимок Хаббла)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/ruler_light.jpg",
+"cap": ""
 },
 {
 "t": 83.977,
 "d": 5.103,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milky_way_art.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.2,
-0.4
-],
-"cap": "Млечный Путь (иллюстрация художника)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/ruler_light.jpg",
+"cap": ""
 },
 {
 "t": 89.08,
-"d": 4.128,
+"d": 5.503,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/pale_blue_dot.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
-"cap": "«Бледно-голубая точка»: Земля глазами Вояджера-1, 1990 год"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/pbd1990.jpg",
+"cap": "Бледно-голубая точка: Земля на снимке «Вояджера-1», 1990 год"
 },
 {
-"t": 93.207,
-"d": 4.128,
+"t": 94.583,
+"d": 5.503,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/andromeda.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.8,
-0.55
-],
-"cap": "Галактика Андромеды"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
+"cap": "Зонд «Вояджер» (изображение NASA)"
 },
 {
-"t": 97.335,
-"d": 4.128,
+"t": 100.087,
+"d": 5.503,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/blue_marble.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
-"cap": "Земля из космоса (снимок NASA)"
-},
-{
-"t": 101.463,
-"d": 4.128,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/hudf.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.5,
-0.25
-],
-"cap": "Ultra Deep Field, снимок Хаббла"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
+"cap": "Зонд «Вояджер» (изображение NASA)"
 },
 {
 "t": 105.59,
 "d": 5.128,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
 "cap": "Антенна дальней космической связи (Голдстоун)"
 },
 {
 "t": 110.718,
 "d": 5.128,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.35,
-0.75
-],
-"cap": "Антенна дальней космической связи (Голдстоун)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
+"cap": "Зонд «Вояджер» (изображение NASA)"
 },
 {
 "t": 115.845,
 "d": 5.128,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_launch.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
-"cap": "Старт «Вояджера-1», 1977 год"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
+"cap": "Зонд «Вояджер» (изображение NASA)"
 },
 {
 "t": 120.973,
 "d": 5.128,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_launch.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.7,
-0.3
-],
-"cap": "Старт «Вояджера-1», 1977 год"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
+"cap": "Антенна дальней космической связи (Голдстоун)"
 },
 {
 "t": 126.1,
@@ -409,31 +195,15 @@
 "t": 132.3,
 "d": 5.435,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/sun_earth_size.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
-"cap": "Солнце и планеты в одном масштабе (схема)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/model_field.jpg",
+"cap": ""
 },
 {
 "t": 137.735,
 "d": 5.435,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_launch.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.2,
-0.4
-],
-"cap": "Старт «Вояджера-1», 1977 год"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/model_field.jpg",
+"cap": ""
 },
 {
 "t": 143.17,
@@ -445,31 +215,15 @@
 "t": 146.77,
 "d": 5.475,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.8,
-0.55
-],
-"cap": "Антенна дальней космической связи (Голдстоун)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/model_ruler.jpg",
+"cap": ""
 },
 {
 "t": 152.245,
 "d": 5.475,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/pale_blue_dot.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.5,
-0.25
-],
-"cap": "«Бледно-голубая точка»: Земля глазами Вояджера-1, 1990 год"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/model_ruler.jpg",
+"cap": ""
 },
 {
 "t": 157.72,
@@ -481,151 +235,64 @@
 "t": 161.32,
 "d": 5.21,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/proxima_hubble.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "Проксима Центавра (снимок Хаббла)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/model_ruler.jpg",
+"cap": ""
 },
 {
 "t": 166.53,
 "d": 5.21,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/blue_marble.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
-"cap": "Земля из космоса (снимок NASA)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/proxima_hubble.jpg",
+"cap": "Альфа Центавра A и B (снимок Хаббла)"
 },
 {
 "t": 171.74,
 "d": 5.21,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.35,
-0.75
-],
-"cap": "Антенна дальней космической связи (Голдстоун)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/proxima_hubble.jpg",
+"cap": "Альфа Центавра A и B (снимок Хаббла)"
 },
 {
 "t": 176.95,
-"d": 4.115,
+"d": 5.487,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/sun_earth_size.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.7,
-0.3
-],
-"cap": "Солнце и планеты в одном масштабе (схема)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/star_map.jpg",
+"cap": ""
 },
 {
-"t": 181.065,
-"d": 4.115,
+"t": 182.437,
+"d": 5.487,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/neptune.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.2,
-0.4
-],
-"cap": "Нептун (снимок Вояджера-2)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/star_map.jpg",
+"cap": ""
 },
 {
-"t": 185.18,
-"d": 4.115,
+"t": 187.923,
+"d": 5.487,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/proxima_hubble.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.8,
-0.55
-],
-"cap": "Проксима Центавра (снимок Хаббла)"
-},
-{
-"t": 189.295,
-"d": 4.115,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milky_way_art.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.5,
-0.25
-],
-"cap": "Млечный Путь (иллюстрация художника)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/star_map.jpg",
+"cap": ""
 },
 {
 "t": 193.41,
 "d": 5.2,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/andromeda.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.35,
-0.75
-],
-"cap": "Галактика Андромеды"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/lightyear.jpg",
+"cap": ""
 },
 {
 "t": 198.61,
 "d": 5.2,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/hudf.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.7,
-0.3
-],
-"cap": "Ultra Deep Field, снимок Хаббла"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/proxima_hubble.jpg",
+"cap": "Альфа Центавра A и B (снимок Хаббла)"
 },
 {
 "t": 203.81,
 "d": 5.2,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.2,
-0.4
-],
-"cap": "Зонд «Вояджер» (изображение NASA)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/proxima_hubble.jpg",
+"cap": "Альфа Центавра A и B (снимок Хаббла)"
 },
 {
 "t": 209.01,
@@ -635,198 +302,87 @@
 },
 {
 "t": 211.61,
-"d": 4.027,
+"d": 5.37,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milky_way_art.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "Млечный Путь (иллюстрация художника)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milkyway_top.jpg",
+"cap": ""
 },
 {
-"t": 215.638,
-"d": 4.027,
+"t": 216.98,
+"d": 5.37,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.8,
-0.55
-],
-"cap": "Зонд «Вояджер» (изображение NASA)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milkyway_top.jpg",
+"cap": ""
 },
 {
-"t": 219.665,
-"d": 4.027,
+"t": 222.35,
+"d": 5.37,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_launch.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.5,
-0.25
-],
-"cap": "Старт «Вояджера-1», 1977 год"
-},
-{
-"t": 223.692,
-"d": 4.027,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_golden_record.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.35,
-0.75
-],
-"cap": "Золотая пластинка «Вояджера» (NASA)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milkyway_top.jpg",
+"cap": ""
 },
 {
 "t": 227.72,
 "d": 5.323,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milky_way_art.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
-"cap": "Млечный Путь (иллюстрация художника)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milkyway_top.jpg",
+"cap": ""
 },
 {
 "t": 233.043,
 "d": 5.323,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.7,
-0.3
-],
-"cap": "Антенна дальней космической связи (Голдстоун)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milkyway_top.jpg",
+"cap": ""
 },
 {
 "t": 238.367,
 "d": 5.323,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/pale_blue_dot.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.2,
-0.4
-],
-"cap": "«Бледно-голубая точка»: Земля глазами Вояджера-1, 1990 год"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milkyway_top.jpg",
+"cap": ""
 },
 {
 "t": 243.69,
 "d": 4.807,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/sun_earth_size.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.8,
-0.55
-],
-"cap": "Солнце и планеты в одном масштабе (схема)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/model_galaxy.jpg",
+"cap": ""
 },
 {
 "t": 248.497,
 "d": 4.807,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/neptune.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.5,
-0.25
-],
-"cap": "Нептун (снимок Вояджера-2)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/jupiter.jpg",
+"cap": "Юпитер"
 },
 {
 "t": 253.303,
 "d": 4.807,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/proxima_hubble.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.35,
-0.75
-],
-"cap": "Проксима Центавра (снимок Хаббла)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/jupiter.jpg",
+"cap": "Юпитер"
 },
 {
 "t": 258.11,
 "d": 4.32,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_launch.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "Старт «Вояджера-1», 1977 год"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milkyway_top.jpg",
+"cap": ""
 },
 {
 "t": 262.43,
 "d": 4.32,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milky_way_art.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
-"cap": "Млечный Путь (иллюстрация художника)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
+"cap": "Зонд «Вояджер» (изображение NASA)"
 },
 {
 "t": 266.75,
 "d": 4.32,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/proxima_hubble.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.7,
-0.3
-],
-"cap": "Проксима Центавра (снимок Хаббла)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
+"cap": "Зонд «Вояджер» (изображение NASA)"
 },
 {
 "t": 271.07,
@@ -845,30 +401,14 @@
 "d": 4.82,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/andromeda.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
 "cap": "Галактика Андромеды"
 },
 {
 "t": 282.09,
 "d": 4.82,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milky_way_art.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.2,
-0.4
-],
-"cap": "Млечный Путь (иллюстрация художника)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/andromeda.jpg",
+"cap": "Галактика Андромеды"
 },
 {
 "t": 286.91,
@@ -878,108 +418,38 @@
 },
 {
 "t": 290.51,
-"d": 3.877,
+"d": 5.815,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/andromeda.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
-"cap": "Галактика Андромеды"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/compare_44.jpg",
+"cap": ""
 },
 {
-"t": 294.387,
-"d": 3.877,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/hudf.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.8,
-0.55
-],
-"cap": "Ultra Deep Field, снимок Хаббла"
-},
-{
-"t": 298.263,
-"d": 3.877,
+"t": 296.325,
+"d": 5.815,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/andromeda.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.5,
-0.25
-],
 "cap": "Галактика Андромеды"
 },
 {
 "t": 302.14,
-"d": 4.09,
+"d": 5.453,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/andromeda.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "Галактика Андромеды"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/local_group.jpg",
+"cap": ""
 },
 {
-"t": 306.23,
-"d": 4.09,
+"t": 307.593,
+"d": 5.453,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.35,
-0.75
-],
-"cap": "Зонд «Вояджер» (изображение NASA)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/ladder3.jpg",
+"cap": ""
 },
 {
-"t": 310.32,
-"d": 4.09,
+"t": 313.047,
+"d": 5.453,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_launch.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.7,
-0.3
-],
-"cap": "Старт «Вояджера-1», 1977 год"
-},
-{
-"t": 314.41,
-"d": 4.09,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_golden_record.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.2,
-0.4
-],
-"cap": "Золотая пластинка «Вояджера» (NASA)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/ladder3.jpg",
+"cap": ""
 },
 {
 "t": 318.5,
@@ -992,120 +462,49 @@
 "d": 5.233,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/hudf.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
 "cap": "Ultra Deep Field, снимок Хаббла"
 },
 {
 "t": 327.333,
 "d": 5.233,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.8,
-0.55
-],
-"cap": "Антенна дальней космической связи (Голдстоун)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/hudf.jpg",
+"cap": "Ultra Deep Field, снимок Хаббла"
 },
 {
 "t": 332.567,
 "d": 5.233,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/pale_blue_dot.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.5,
-0.25
-],
-"cap": "«Бледно-голубая точка»: Земля глазами Вояджера-1, 1990 год"
-},
-{
-"t": 337.8,
-"d": 4.514,
-"type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/hudf.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
 "cap": "Ultra Deep Field, снимок Хаббла"
 },
 {
-"t": 342.314,
-"d": 4.514,
+"t": 337.8,
+"d": 5.642,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/blue_marble.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.35,
-0.75
-],
-"cap": "Земля из космоса (снимок NASA)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/hudf.jpg",
+"cap": "Ultra Deep Field, снимок Хаббла"
 },
 {
-"t": 346.828,
-"d": 4.514,
+"t": 343.442,
+"d": 5.642,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/sun_earth_size.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.7,
-0.3
-],
-"cap": "Солнце и планеты в одном масштабе (схема)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/timeline_age.jpg",
+"cap": ""
 },
 {
-"t": 351.342,
-"d": 4.514,
+"t": 349.085,
+"d": 5.642,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/neptune.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.2,
-0.4
-],
-"cap": "Нептун (снимок Вояджера-2)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/timeline_age.jpg",
+"cap": ""
 },
 {
-"t": 355.856,
-"d": 4.514,
+"t": 354.728,
+"d": 5.642,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/proxima_hubble.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.8,
-0.55
-],
-"cap": "Проксима Центавра (снимок Хаббла)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/hudf.jpg",
+"cap": "Ultra Deep Field, снимок Хаббла"
 },
 {
 "t": 360.37,
@@ -1117,46 +516,22 @@
 "t": 362.97,
 "d": 5.077,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/andromeda.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.5,
-0.25
-],
-"cap": "Галактика Андромеды"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/timeline_age.jpg",
+"cap": ""
 },
 {
 "t": 368.047,
 "d": 5.077,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/hudf.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.35,
-0.75
-],
-"cap": "Ultra Deep Field, снимок Хаббла"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/observable.jpg",
+"cap": ""
 },
 {
 "t": 373.123,
 "d": 5.077,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.7,
-0.3
-],
-"cap": "Зонд «Вояджер» (изображение NASA)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/observable.jpg",
+"cap": ""
 },
 {
 "t": 378.2,
@@ -1168,106 +543,43 @@
 "t": 381.8,
 "d": 5.333,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_launch.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.2,
-0.4
-],
-"cap": "Старт «Вояджера-1», 1977 год"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/observable.jpg",
+"cap": ""
 },
 {
 "t": 387.133,
 "d": 5.333,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_golden_record.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.8,
-0.55
-],
-"cap": "Золотая пластинка «Вояджера» (NASA)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/expand.jpg",
+"cap": ""
 },
 {
 "t": 392.467,
 "d": 5.333,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.5,
-0.25
-],
-"cap": "Антенна дальней космической связи (Голдстоун)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/expand.jpg",
+"cap": ""
 },
 {
 "t": 397.8,
-"d": 4.415,
+"d": 5.887,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/pale_blue_dot.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.35,
-0.75
-],
-"cap": "«Бледно-голубая точка»: Земля глазами Вояджера-1, 1990 год"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/cmb_crop.jpg",
+"cap": "Реликтовое излучение (карта Planck)"
 },
 {
-"t": 402.215,
-"d": 4.415,
+"t": 403.687,
+"d": 5.887,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/blue_marble.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.7,
-0.3
-],
-"cap": "Земля из космоса (снимок NASA)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/observable.jpg",
+"cap": ""
 },
 {
-"t": 406.63,
-"d": 4.415,
+"t": 409.573,
+"d": 5.887,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/sun_earth_size.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.2,
-0.4
-],
-"cap": "Солнце и планеты в одном масштабе (схема)"
-},
-{
-"t": 411.045,
-"d": 4.415,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/neptune.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.8,
-0.55
-],
-"cap": "Нептун (снимок Вояджера-2)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/observable.jpg",
+"cap": ""
 },
 {
 "t": 415.46,
@@ -1279,105 +591,49 @@
 "t": 419.06,
 "d": 5.21,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "Зонд «Вояджер» (изображение NASA)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/quadrillion.jpg",
+"cap": ""
 },
 {
 "t": 424.27,
 "d": 5.21,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/proxima_hubble.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.5,
-0.25
-],
-"cap": "Проксима Центавра (снимок Хаббла)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
+"cap": "Зонд «Вояджер» (изображение NASA)"
 },
 {
 "t": 429.48,
 "d": 5.21,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milky_way_art.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.35,
-0.75
-],
-"cap": "Млечный Путь (иллюстрация художника)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
+"cap": "Зонд «Вояджер» (изображение NASA)"
 },
 {
 "t": 434.69,
 "d": 4.61,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/hudf.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
 "cap": "Ultra Deep Field, снимок Хаббла"
 },
 {
 "t": 439.3,
 "d": 4.61,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milky_way_art.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.7,
-0.3
-],
-"cap": "Млечный Путь (иллюстрация художника)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/hudf.jpg",
+"cap": "Ultra Deep Field, снимок Хаббла"
 },
 {
 "t": 443.91,
 "d": 4.61,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/andromeda.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.2,
-0.4
-],
-"cap": "Галактика Андромеды"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/hudf.jpg",
+"cap": "Ultra Deep Field, снимок Хаббла"
 },
 {
 "t": 448.52,
 "d": 4.61,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/hudf.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.8,
-0.55
-],
 "cap": "Ultra Deep Field, снимок Хаббла"
 },
 {
@@ -1388,168 +644,73 @@
 },
 {
 "t": 455.73,
-"d": 4.415,
+"d": 5.887,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_launch.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.5,
-0.25
-],
-"cap": "Старт «Вояджера-1», 1977 год"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/geometry3.jpg",
+"cap": ""
 },
 {
-"t": 460.145,
-"d": 4.415,
+"t": 461.617,
+"d": 5.887,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_golden_record.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.35,
-0.75
-],
-"cap": "Золотая пластинка «Вояджера» (NASA)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/geometry3.jpg",
+"cap": ""
 },
 {
-"t": 464.56,
-"d": 4.415,
+"t": 467.503,
+"d": 5.887,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.7,
-0.3
-],
-"cap": "Антенна дальней космической связи (Голдстоун)"
-},
-{
-"t": 468.975,
-"d": 4.415,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/pale_blue_dot.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.2,
-0.4
-],
-"cap": "«Бледно-голубая точка»: Земля глазами Вояджера-1, 1990 год"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/geometry3.jpg",
+"cap": ""
 },
 {
 "t": 473.39,
 "d": 4.93,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/blue_marble.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "Земля из космоса (снимок NASA)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/horizon.jpg",
+"cap": ""
 },
 {
 "t": 478.32,
 "d": 4.93,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/pale_blue_dot.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.8,
-0.55
-],
-"cap": "«Бледно-голубая точка»: Земля глазами Вояджера-1, 1990 год"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/observable.jpg",
+"cap": ""
 },
 {
 "t": 483.25,
 "d": 4.93,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/sun_earth_size.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.5,
-0.25
-],
-"cap": "Солнце и планеты в одном масштабе (схема)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/observable.jpg",
+"cap": ""
 },
 {
 "t": 488.18,
 "d": 4.93,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/neptune.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.35,
-0.75
-],
-"cap": "Нептун (снимок Вояджера-2)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/horizon.jpg",
+"cap": ""
 },
 {
 "t": 493.11,
 "d": 4.277,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/proxima_hubble.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.7,
-0.3
-],
-"cap": "Проксима Центавра (снимок Хаббла)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/unknown_all.jpg",
+"cap": ""
 },
 {
 "t": 497.387,
 "d": 4.277,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/milky_way_art.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.2,
-0.4
-],
-"cap": "Млечный Путь (иллюстрация художника)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/unknown_all.jpg",
+"cap": ""
 },
 {
 "t": 501.663,
 "d": 4.277,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/andromeda.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.8,
-0.55
-],
-"cap": "Галактика Андромеды"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/unknown_all.jpg",
+"cap": ""
 },
 {
 "t": 505.94,
@@ -1561,60 +722,28 @@
 "t": 508.54,
 "d": 5.357,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
-"cap": "Зонд «Вояджер» (изображение NASA)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/model_ruler.jpg",
+"cap": ""
 },
 {
 "t": 513.897,
 "d": 5.357,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/pale_blue_dot.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "«Бледно-голубая точка»: Земля глазами Вояджера-1, 1990 год"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/ruler_all.jpg",
+"cap": ""
 },
 {
 "t": 519.253,
 "d": 5.357,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/hudf.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.5,
-0.25
-],
-"cap": "Ultra Deep Field, снимок Хаббла"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/ruler_all.jpg",
+"cap": ""
 },
 {
 "t": 524.61,
 "d": 4.18,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
 "cap": "Антенна дальней космической связи (Голдстоун)"
 },
 {
@@ -1622,165 +751,70 @@
 "d": 4.18,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
 "cap": "Зонд «Вояджер» (изображение NASA)"
 },
 {
 "t": 532.97,
 "d": 4.18,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.35,
-0.75
-],
-"cap": "Антенна дальней космической связи (Голдстоун)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/blue_marble.jpg",
+"cap": "Земля из космоса (снимок NASA)"
 },
 {
 "t": 537.15,
 "d": 5.293,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_launch.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.7,
-0.3
-],
-"cap": "Старт «Вояджера-1», 1977 год"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/ruler_all.jpg",
+"cap": ""
 },
 {
 "t": 542.443,
 "d": 5.293,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_golden_record.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.2,
-0.4
-],
-"cap": "Золотая пластинка «Вояджера» (NASA)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/ruler_all.jpg",
+"cap": ""
 },
 {
 "t": 547.737,
 "d": 5.293,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.8,
-0.55
-],
-"cap": "Антенна дальней космической связи (Голдстоун)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/ruler_all.jpg",
+"cap": ""
 },
 {
 "t": 553.03,
-"d": 4.192,
+"d": 5.59,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/pale_blue_dot.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
-"cap": "«Бледно-голубая точка»: Земля глазами Вояджера-1, 1990 год"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/observable.jpg",
+"cap": ""
 },
 {
-"t": 557.222,
-"d": 4.192,
+"t": 558.62,
+"d": 5.59,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
-"z": [
-1.05,
-1.16
-],
-"p": [
-0.5,
-0.25
-],
-"cap": "Антенна дальней космической связи (Голдстоун)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/pbd1990.jpg",
+"cap": "Бледно-голубая точка: Земля на снимке «Вояджера-1», 1990 год"
 },
 {
-"t": 561.415,
-"d": 4.192,
+"t": 564.21,
+"d": 5.59,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/blue_marble.jpg",
-"z": [
-1.0,
-1.14
-],
-"p": [
-0.35,
-0.75
-],
-"cap": "Земля из космоса (снимок NASA)"
-},
-{
-"t": 565.607,
-"d": 4.192,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/sun_earth_size.jpg",
-"z": [
-1.14,
-1.0
-],
-"p": [
-0.7,
-0.3
-],
-"cap": "Солнце и планеты в одном масштабе (схема)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/pbd1990.jpg",
+"cap": "Бледно-голубая точка: Земля на снимке «Вояджера-1», 1990 год"
 },
 {
 "t": 569.8,
 "d": 5.425,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_golden_record.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "Золотая пластинка «Вояджера» (NASA)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
+"cap": "Зонд «Вояджер» (изображение NASA)"
 },
 {
 "t": 575.225,
 "d": 5.425,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/dsn_antenna.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
-"cap": "Антенна дальней космической связи (Голдстоун)"
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
+"cap": "Зонд «Вояджер» (изображение NASA)"
 }
 ]
 }
