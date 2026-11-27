@@ -110,5 +110,549 @@
   "cap": "Нигерия",
   "page": "https://github.com/johan/world.geo.json",
   "title": "Нигерия"
+ },
+ "cn_area_rank": {
+  "file": "cn_area_rank.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Вторая по общей площади страна мира носит имя «деревня» (схема)",
+  "page": "https://www.cia.gov/the-world-factbook/field/area/country-comparison/",
+  "title": "Вторая по общей площади страна мира носит имя «деревня» (схема)"
+ },
+ "cn_riddles": {
+  "file": "cn_riddles.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Четыре загадки: дерево, креветка, лёд и король (схема)",
+  "page": "",
+  "title": "Четыре загадки: дерево, креветка, лёд и король (схема)"
+ },
+ "cn_newspaper_q": {
+  "file": "cn_newspaper_q.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Одно из названий стран впервые напечатали в газете (схема)",
+  "page": "",
+  "title": "Одно из названий стран впервые напечатали в газете (схема)"
+ },
+ "cn_map_lawrence": {
+  "file": "cn_map_lawrence.jpg",
+  "author": "собственная графика, данные границ: johan/world.geo.json",
+  "license": "свободно",
+  "cap": "Река Святого Лаврентия: путь Картье к деревне Стадакона, 1535 (схема)",
+  "page": "https://en.wikipedia.org/wiki/Name_of_Canada",
+  "title": "Река Святого Лаврентия: путь Картье к деревне Стадакона, 1535 (схема)"
+ },
+ "cn_donnacona_tl": {
+  "file": "cn_donnacona_tl.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Картье и семья вождя Донаконны",
+  "page": "",
+  "title": "Картье и семья вождя Донаконны"
+ },
+ "cn_chain_canada": {
+  "file": "cn_chain_canada.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Как «деревня» стала страной",
+  "page": "",
+  "title": "Как «деревня» стала страной"
+ },
+ "cn_myths_canada": {
+  "file": "cn_myths_canada.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Что говорят о Канаде зря",
+  "page": "",
+  "title": "Что говорят о Канаде зря"
+ },
+ "cn_map_brazil": {
+  "file": "cn_map_brazil.jpg",
+  "author": "собственная графика, данные границ: johan/world.geo.json",
+  "license": "свободно",
+  "cap": "Бразилия на карте (схема)",
+  "page": "",
+  "title": "Бразилия на карте (схема)"
+ },
+ "cn_names_brazil": {
+  "file": "cn_names_brazil.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Два имени одной земли",
+  "page": "",
+  "title": "Два имени одной земли"
+ },
+ "cn_chain_brazil": {
+  "file": "cn_chain_brazil.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Откуда слово «Бразилия»",
+  "page": "",
+  "title": "Откуда слово «Бразилия»"
+ },
+ "cn_flow_brazilwood": {
+  "file": "cn_flow_brazilwood.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Первый товар на вывоз",
+  "page": "",
+  "title": "Первый товар на вывоз"
+ },
+ "cn_map_maracaibo": {
+  "file": "cn_map_maracaibo.jpg",
+  "author": "собственная графика, данные границ: johan/world.geo.json",
+  "license": "свободно",
+  "cap": "Озеро Маракайбо на карте Венесуэлы (схема)",
+  "page": "",
+  "title": "Озеро Маракайбо на карте Венесуэлы (схема)"
+ },
+ "cn_versions_venez": {
+  "file": "cn_versions_venez.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Откуда имя «Венесуэла»",
+  "page": "",
+  "title": "Откуда имя «Венесуэла»"
+ },
+ "cn_maybe": {
+  "file": "cn_maybe.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Почему одна версия популярнее",
+  "page": "",
+  "title": "Почему одна версия популярнее"
+ },
+ "cn_next_two": {
+  "file": "cn_next_two.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Что увидели, то и записали",
+  "page": "",
+  "title": "Что увидели, то и записали"
+ },
+ "cn_map_cameroon": {
+  "file": "cn_map_cameroon.jpg",
+  "author": "собственная графика, данные границ: johan/world.geo.json",
+  "license": "свободно",
+  "cap": "Камерун и устье реки Вури (схема)",
+  "page": "",
+  "title": "Камерун и устье реки Вури (схема)"
+ },
+ "cn_chain_cameroon": {
+  "file": "cn_chain_cameroon.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Река креветок",
+  "page": "",
+  "title": "Река креветок"
+ },
+ "cn_ghost_shrimp": {
+  "file": "cn_ghost_shrimp.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Камерунская креветка-призрак: научное название (схема)",
+  "page": "https://en.wikipedia.org/wiki/Cameroon",
+  "title": "Камерунская креветка-призрак: научное название (схема)"
+ },
+ "cn_shrimp_order": {
+  "file": "cn_shrimp_order.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Сначала были креветки",
+  "page": "",
+  "title": "Сначала были креветки"
+ },
+ "cn_map_chad": {
+  "file": "cn_map_chad.jpg",
+  "author": "собственная графика, данные границ: johan/world.geo.json",
+  "license": "свободно",
+  "cap": "Чад и озеро Чад (схема)",
+  "page": "",
+  "title": "Чад и озеро Чад (схема)"
+ },
+ "cn_map_iceland": {
+  "file": "cn_map_iceland.jpg",
+  "author": "собственная графика, данные границ: johan/world.geo.json",
+  "license": "свободно",
+  "cap": "Исландия на карте (схема)",
+  "page": "",
+  "title": "Исландия на карте (схема)"
+ },
+ "cn_iceland_names": {
+  "file": "cn_iceland_names.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Исландия: три имени (схема)",
+  "page": "",
+  "title": "Исландия: три имени (схема)"
+ },
+ "cn_myth_iceland": {
+  "file": "cn_myth_iceland.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Имя, чтобы напугать?",
+  "page": "",
+  "title": "Имя, чтобы напугать?"
+ },
+ "cn_map_greenland": {
+  "file": "cn_map_greenland.jpg",
+  "author": "собственная графика, данные границ: johan/world.geo.json",
+  "license": "свободно",
+  "cap": "Гренландия, Исландия и Дания на карте (схема)",
+  "page": "",
+  "title": "Гренландия, Исландия и Дания на карте (схема)"
+ },
+ "cn_chain_greenland": {
+  "file": "cn_chain_greenland.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Самая старая реклама",
+  "page": "",
+  "title": "Самая старая реклама"
+ },
+ "cn_saga_tl": {
+  "file": "cn_saga_tl.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Сага записана спустя века",
+  "page": "",
+  "title": "Сага записана спустя века"
+ },
+ "cn_map_argentina": {
+  "file": "cn_map_argentina.jpg",
+  "author": "собственная графика, данные границ: johan/world.geo.json",
+  "license": "свободно",
+  "cap": "Аргентина на карте (схема)",
+  "page": "",
+  "title": "Аргентина на карте (схема)"
+ },
+ "cn_chain_argentina": {
+  "file": "cn_chain_argentina.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Имя из слуха",
+  "page": "",
+  "title": "Имя из слуха"
+ },
+ "cn_tl_argentina": {
+  "file": "cn_tl_argentina.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Имя раньше страны",
+  "page": "",
+  "title": "Имя раньше страны"
+ },
+ "cn_clue_nigeria": {
+  "file": "cn_clue_nigeria.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Подсказки к загадке о газетном имени (схема)",
+  "page": "",
+  "title": "Подсказки к загадке о газетном имени (схема)"
+ },
+ "cn_ortelius_south": {
+  "file": "cn_ortelius_south.jpg",
+  "author": "Абрахам Ортелий (общественное достояние); подписи: собственная графика",
+  "license": "свободно",
+  "cap": "Воображаемый южный материк на карте Ортелия, 1570 (фрагмент)",
+  "page": "https://commons.wikimedia.org/wiki/File:1570_Typus_Ortelius_cropped.jpg",
+  "title": "Воображаемый южный материк на карте Ортелия, 1570 (фрагмент)"
+ },
+ "cn_chain_australia": {
+  "file": "cn_chain_australia.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Имя для призрака",
+  "page": "",
+  "title": "Имя для призрака"
+ },
+ "cn_tl_australia": {
+  "file": "cn_tl_australia.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Как «южная» стала Австралией",
+  "page": "",
+  "title": "Как «южная» стала Австралией"
+ },
+ "cn_who_names": {
+  "file": "cn_who_names.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Кто давал имена на картах (схема)",
+  "page": "",
+  "title": "Кто давал имена на картах (схема)"
+ },
+ "cn_map_phil": {
+  "file": "cn_map_phil.jpg",
+  "author": "собственная графика, данные границ: johan/world.geo.json",
+  "license": "свободно",
+  "cap": "Острова Лейте и Самар на карте Филиппин (схема)",
+  "page": "",
+  "title": "Острова Лейте и Самар на карте Филиппин (схема)"
+ },
+ "cn_tl_phil": {
+  "file": "cn_tl_phil.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Как острова стали Филиппинами",
+  "page": "",
+  "title": "Как острова стали Филиппинами"
+ },
+ "cn_king_never": {
+  "file": "cn_king_never.jpg",
+  "author": "собственная графика, данные границ: johan/world.geo.json",
+  "license": "свободно",
+  "cap": "Испания и Филиппины: король туда не плавал (схема)",
+  "page": "",
+  "title": "Испания и Филиппины: король туда не плавал (схема)"
+ },
+ "cn_kanji": {
+  "file": "cn_kanji.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Иероглифы названия Японии: «основа солнца» (схема)",
+  "page": "",
+  "title": "Иероглифы названия Японии: «основа солнца» (схема)"
+ },
+ "cn_map_japan_china": {
+  "file": "cn_map_japan_china.jpg",
+  "author": "собственная графика, данные границ: johan/world.geo.json",
+  "license": "свободно",
+  "cap": "Япония лежит к востоку от Китая (схема)",
+  "page": "",
+  "title": "Япония лежит к востоку от Китая (схема)"
+ },
+ "cn_versions_japan": {
+  "file": "cn_versions_japan.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Кто начал называть страну «Нихон»?",
+  "page": "",
+  "title": "Кто начал называть страну «Нихон»?"
+ },
+ "cn_chain_japan": {
+  "file": "cn_chain_japan.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Как «Нихон» стал «Японией»",
+  "page": "",
+  "title": "Как «Нихон» стал «Японией»"
+ },
+ "cn_ortelius_japan": {
+  "file": "cn_ortelius_japan.jpg",
+  "author": "Абрахам Ортелий (общественное достояние); подпись: собственная графика",
+  "license": "свободно",
+  "cap": "Япония на карте Ортелия, 1570 (фрагмент)",
+  "page": "https://commons.wikimedia.org/wiki/File:1570_Typus_Ortelius_cropped.jpg",
+  "title": "Япония на карте Ортелия, 1570 (фрагмент)"
+ },
+ "cn_map_madag": {
+  "file": "cn_map_madag.jpg",
+  "author": "собственная графика, данные границ: johan/world.geo.json",
+  "license": "свободно",
+  "cap": "Мадагаскар и порт Могадишо на карте (схема)",
+  "page": "",
+  "title": "Мадагаскар и порт Могадишо на карте (схема)"
+ },
+ "cn_chain_madag": {
+  "file": "cn_chain_madag.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Версия 1: путаница с портом",
+  "page": "",
+  "title": "Версия 1: путаница с портом"
+ },
+ "cn_migration": {
+  "file": "cn_migration.jpg",
+  "author": "собственная графика, данные границ: johan/world.geo.json",
+  "license": "свободно",
+  "cap": "Путь предков малагасийцев из Юго-Восточной Азии (схема)",
+  "page": "",
+  "title": "Путь предков малагасийцев из Юго-Восточной Азии (схема)"
+ },
+ "cn_versions_madag": {
+  "file": "cn_versions_madag.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Откуда имя «Мадагаскар»?",
+  "page": "",
+  "title": "Откуда имя «Мадагаскар»?"
+ },
+ "cn_madagasikara": {
+  "file": "cn_madagasikara.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Мадагасикара: имя острова у жителей (схема)",
+  "page": "",
+  "title": "Мадагасикара: имя острова у жителей (схема)"
+ },
+ "cn_map_niger": {
+  "file": "cn_map_niger.jpg",
+  "author": "собственная графика, данные границ: johan/world.geo.json",
+  "license": "свободно",
+  "cap": "Река Нигер и Нигерия (схема)",
+  "page": "",
+  "title": "Река Нигер и Нигерия (схема)"
+ },
+ "cn_chain_nigeria": {
+  "file": "cn_chain_nigeria.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Река дала корень, журналистка собрала имя",
+  "page": "",
+  "title": "Река дала корень, журналистка собрала имя"
+ },
+ "cn_variants_nigeria": {
+  "file": "cn_variants_nigeria.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Варианты имени",
+  "page": "",
+  "title": "Варианты имени"
+ },
+ "cn_nigeria_fact": {
+  "file": "cn_nigeria_fact.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Что спорно, а что нет",
+  "page": "",
+  "title": "Что спорно, а что нет"
+ },
+ "cn_pop_africa": {
+  "file": "cn_pop_africa.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Нигерия: самая населённая страна Африки (схема)",
+  "page": "https://population.un.org/wpp/",
+  "title": "Нигерия: самая населённая страна Африки (схема)"
+ },
+ "cn_world_all": {
+  "file": "cn_world_all.jpg",
+  "author": "собственная графика, данные границ: johan/world.geo.json",
+  "license": "свободно",
+  "cap": "Все страны из ролика на одной карте (схема)",
+  "page": "",
+  "title": "Все страны из ролика на одной карте (схема)"
+ },
+ "cn_summary": {
+  "file": "cn_summary.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Итог: кто давал имена странам (схема)",
+  "page": "",
+  "title": "Итог: кто давал имена странам (схема)"
+ },
+ "cn_myths_all": {
+  "file": "cn_myths_all.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Красивые истории, которые мы обошли",
+  "page": "",
+  "title": "Красивые истории, которые мы обошли"
+ },
+ "cn_next_country": {
+  "file": "cn_next_country.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Призыв: напиши страну в комментариях (схема)",
+  "page": "",
+  "title": "Призыв: напиши страну в комментариях (схема)"
+ },
+ "ph_brazilwood": {
+  "file": "ph_brazilwood.jpg",
+  "author": "Carlo Brescia",
+  "license": "CC BY-SA 4.0",
+  "cap": "Стручок бразильского дерева (пау-бразил), ботанический сад Сан-Паулу",
+  "page": "https://commons.wikimedia.org/wiki/File:Paubrasilia_echinata_-_Jardim_Bot%C3%A2nico_de_S%C3%A3o_Paulo_-_DSC_0201.jpg",
+  "title": "File:Paubrasilia echinata - Jardim Botânico de São Paulo - DSC 0201.jpg"
+ },
+ "ph_stilts": {
+  "file": "ph_stilts.jpg",
+  "author": "Jogreher",
+  "license": "CC BY-SA 3.0",
+  "cap": "Дома на сваях в лагуне Синамаика, Венесуэла (рядом с озером Маракайбо), наши дни",
+  "page": "https://commons.wikimedia.org/wiki/File:Palafitos_en_la_Laguna_de_Sinamaica.jpg",
+  "title": "File:Palafitos en la Laguna de Sinamaica.jpg"
+ },
+ "ph_flinders_chart": {
+  "file": "ph_flinders_chart.jpg",
+  "author": "Matthew Flinders",
+  "license": "Public domain",
+  "cap": "Карта Флиндерса 1814 года: «Terra Australis или Australia»",
+  "page": "https://commons.wikimedia.org/wiki/File:Matthew_Flinders_-_General_chart_of_Terra_Australis_or_Australia.jpg",
+  "title": "File:Matthew Flinders - General chart of Terra Australis or Australia.jpg"
+ },
+ "ph_hvalsey": {
+  "file": "ph_hvalsey.jpg",
+  "author": "Number 57 at English Wikipedia",
+  "license": "CC0",
+  "cap": "Руины церкви в Хвальсее: постройка средневековых норвежцев в Гренландии",
+  "page": "https://commons.wikimedia.org/wiki/File:Hvalsey_Church.jpg",
+  "title": "File:Hvalsey Church.jpg"
+ },
+ "ph_wouri": {
+  "file": "ph_wouri.jpg",
+  "author": "Z. NGNOGUE",
+  "license": "CC BY-SA 3.0",
+  "cap": "Река Вури в Дуале (Камерун), наши дни",
+  "page": "https://commons.wikimedia.org/wiki/File:Pont_sur_le_Wouri_Douala.JPG",
+  "title": "File:Pont sur le Wouri Douala.JPG"
+ },
+ "ph_venice": {
+  "file": "ph_venice.jpg",
+  "author": "Saffron Blaze",
+  "license": "CC BY-SA 3.0",
+  "cap": "Венеция: Большой канал и мост Риальто",
+  "page": "https://commons.wikimedia.org/wiki/File:Rialto_Bridge_Grand_Canal.jpg",
+  "title": "File:Rialto Bridge Grand Canal.jpg"
+ },
+ "ph_lake_chad": {
+  "file": "ph_lake_chad.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Озеро Чад, снимок с шаттла, 1994",
+  "page": "https://images.nasa.gov/details/sts066-94-020",
+  "title": "sts066-94-020"
+ },
+ "ph_madagascar": {
+  "file": "ph_madagascar.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Мадагаскар, снимок с шаттла",
+  "page": "https://images.nasa.gov/details/s31-152-000hs",
+  "title": "s31-152-000hs"
+ },
+ "ph_niger": {
+  "file": "ph_niger.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Река Нигер и её приток Бенуэ у Локоджи (Нигерия), снимок с МКС, 2024",
+  "page": "https://images.nasa.gov/details/iss072e095268",
+  "title": "iss072e095268"
+ },
+ "ph_greenland_ice": {
+  "file": "ph_greenland_ice.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Ледники Гренландии с самолёта NASA, 2016",
+  "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000213",
+  "title": "GSFC_20171208_Archive_e000213"
+ },
+ "ph_iceland_snow": {
+  "file": "ph_iceland_snow.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Исландия под снегом и льдом, спутник NASA, февраль 2015",
+  "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000775",
+  "title": "GSFC_20171208_Archive_e000775"
+ },
+ "ph_lawrence": {
+  "file": "ph_lawrence.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Река Святого Лаврентия, снимок с шаттла, 1991",
+  "page": "https://images.nasa.gov/details/s39-83-059",
+  "title": "s39-83-059"
  }
 }

@@ -694,5 +694,29 @@
   "cap": "Пример школьного обеда по нормам USDA (фото Минсельхоза США)",
   "page": "https://commons.wikimedia.org/wiki/File:School_lunch_tray_MyPlate_20210810-FNS-UNC-0015.jpg",
   "title": "School lunch tray MyPlate 20210810-FNS-UNC-0015.jpg"
+ },
+ "ufp_rfk": {
+  "file": "ufp_rfk.jpg",
+  "author": "United States Department of Health and Human Services / Wikimedia Commons",
+  "license": "общественное достояние",
+  "cap": "Роберт Кеннеди-младший, министр здравоохранения США (официальный портрет, 2025)",
+  "page": "https://commons.wikimedia.org/wiki/File:Robert_F._Kennedy_Jr.,_official_portrait_(2025).jpg",
+  "title": "Robert F. Kennedy Jr., official portrait (2025).jpg"
+ },
+ "ufp_corn": {
+  "file": "ufp_corn.jpg",
+  "author": "Don McCulley / Wikimedia Commons",
+  "license": "CC0",
+  "cap": "Кукурузное поле в штате Айова осенью",
+  "page": "https://commons.wikimedia.org/wiki/File:Iowa_corn_field_IMG_1370.jpg",
+  "title": "Iowa corn field IMG 1370.jpg"
+ },
+ "ufp_nuggets": {
+  "file": "ufp_nuggets.jpg",
+  "author": "Jiafei Slay Queen / Wikimedia Commons",
+  "license": "CC0",
+  "cap": "Куриные наггетсы на тарелке",
+  "page": "https://commons.wikimedia.org/wiki/File:Chicken_nuggets_on_a_plate.jpg",
+  "title": "Chicken nuggets on a plate.jpg"
  }
 }
