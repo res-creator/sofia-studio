@@ -317,21 +317,21 @@ c.fit(58.9, 1.4, [4560, 1830, 6150, 2930], a=2, b=3, ax='l')                # th
 c.fit(63.3, 1.9, [1250, 2850, 2900, 3600], zmax=1.15, a=2, b=3)     # down to the piles
 c.to(65.3, 3.6, z=z_of(c) * 1.02)
 c.fit(69.0, 1.3, [1250, 2850, 2900, 3600], zmax=1.15, a=2, b=3)     # the rule
-c.fit(73.9, 1.4, [1250, 2150, 2950, 3600], a=2, b=3)                # tower up, roots down
+c.frame(73.9, 1.4, 1100, .51, bottom=3600, a=2, b=3)                # tower up, roots down
 c.fit(75.4, 1.8, [4560, 1830, 6150, 2930], a=2, b=3, ax='l')                # the rope: it does not grow
 c.to(77.3, 2.2, z=z_of(c) * 1.02)
 c.fit(79.5, 2.2, [80, 1350, 6100, 3600], a=1.8, b=3)                # chapter pull-back: the Jeddah wall
 c.frame(81.9, .7, 2775, .46)                           # (under the card) onto the 1 km line
-c.fit(82.85, 3.3, [6060, 1250, 7980, 2935], a=1.8, b=2.6, ax='l')           # ride the line to Wright
-c.fit(86.3, 2.6, [6060, 1250, 7700, 2330], a=2, b=3, ax='l')
-c.fit(89.3, 1.8, [6060, 950, 8200, 2930], a=2, b=3, ax='l')                 # the mile tower, nuclear lifts, never built
-c.fit(91.4, 2.3, [6060, 1900, 7700, 2930], a=2, b=3, ax='l')
+c.frame(82.85, 3.3, 6000, .46, a=1.8, b=2.6)           # ride the line to Wright
+c.frame(86.3, 2.6, 6000, .69, bottom=2330, a=2, b=3)
+c.frame(89.3, 1.8, 6000, .38, bottom=2930, a=2, b=3)                 # the mile tower, nuclear lifts, never built
+c.frame(91.4, 2.3, 6000, .73, bottom=2930, a=2, b=3)
 c.to(94.0, 4.0, z=z_of(c) * 1.025)
 c.fit(98.6, 2.0, [100, 950, 8600, 3620], a=1.8, b=3)                # the mile against Burj and Jeddah
 c.to(100.6, .6, z=z_of(c) * 1.005)
-c.fit(101.0, 1.7, [6800, 1760, 8640, 2935], a=2, b=3, ax='r')               # sway, tripod
+c.frame(101.0, 1.7, 6000, .71, a=2, b=3)               # sway, tripod
 c.to(102.7, 4.0, z=z_of(c) * 1.03)
-c.fit(107.4, 1.6, [6060, 1950, 7800, 2930], a=2, b=3, ax='l')               # nothing to test it with
+c.frame(107.4, 1.6, 6000, .76, bottom=2930, a=2, b=3)               # nothing to test it with
 c.to(109.0, 4.5, z=z_of(c) * 1.02)
 c.frame(114.1, 1.6, 7140, 1.215, bottom=2930, a=2, b=3)               # Timur: where is the ceiling?
 c.frame(118.4, 2.4, 2765, 1920 / (8725 - 2765), a=1.8, b=3)              # rise to the ceiling
