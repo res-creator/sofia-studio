@@ -509,7 +509,7 @@ print('zone offsets', {k: round(v) for k, v in OFF.items()}, 'board w', BW)
 for s_ in SHOTS: print('  shot %.2f  box %s  z %.3f' % (s_['t'], [round(v) for v in s_['box']], fit(s_['box'], s_['zmax'])[2]))
 
 scene = dict(dur=DUR, board=dict(w=BW, h=BH, seed=31, texScale=.4, ghosts=200, tray=False), hand=1.0, sheen=.07,
-             light=dict(x=-1800, y=-2400, r=26000, min=.8), cam=c.json(), mbMax=6, elements=E, cards=CARDS,
+             light=dict(x=-1800, y=-2400, r=36000, min=.8), cam=c.json(), mbMax=6, elements=E, cards=CARDS,
              ev=sorted(EV, key=lambda e: e['t']), subs=[])
 json.dump(scene, open(os.path.join(HERE, 'film.json'), 'w'), ensure_ascii=False, indent=1)
 json.dump(dict(dur=DUR, ev=scene['ev']), open(os.path.join(FILM, 'events.json'), 'w'), separators=(',', ':'))

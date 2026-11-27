@@ -21,7 +21,7 @@ OBJ = os.path.join(FILM, 'kit', 'objects')
 meta = lambda i: json.load(open(os.path.join(OBJ, i + '.json')))
 OFFSET = 350.23
 DUR = 131.49
-BW, BH = 8700, 3900
+BW, BH = 9400, 3900
 
 E, EV = [], []
 def el(**k): E.append(k); return k
@@ -252,7 +252,7 @@ write('середина XX века', 6110, 2235, 88.7, 1.0, 'graphite', 54)
 MX, MT = 7250, H(1609)
 mw = lambda y: 120 * ((y - MT) / (GY - MT)) ** .8
 my = [MT + (GY - MT) * i / 20 for i in range(21)]
-line([[5960, GY], [8450, GY]], 89.4, .5, lw=10)
+line([[5960, GY], [8750, GY]], 89.4, .5, lw=10)
 line([[MX - mw(y), y] for y in reversed(my)] + [[MX + mw(y), y] for y in my[1:]], 89.75, 1.6, lw=7, dash=[22, 14])
 write('башня в милю', 6600, 1040, 90.6, 1.0, 'graphite', 80)
 line([[MX, GY - 10], [MX, 1350]], 91.35, .7, 'grey', 4)
@@ -268,7 +268,7 @@ write('рисунок остался', 7120, 2610, 96.7, 1.0, 'graphite', 56, al
 line([[1300, KM15], [7500, KM15]], 98.85, 1.6, 'blue', 6, dash=[24, 18])
 write('1,5 км', 1270, 1135, 99.2, .6, 'blue', 120, align='right')
 ink('dim', 98.9, 1.4, 'blue', **{'from': [7440, GY], 'to': [7440, MT]}, lw=8, ea=1.6, eb=2.4)
-write('миля > 1,5 км', 7500, 1480, 99.6, 1.1, 'blue', 130)
+write('миля > 1,5 км', 7500, 1480, 99.6, 1.1, 'blue', 116)
 # sway: arcs either side of the top, then the tripod plan
 line(arc((MX, 2150), 300, 300, -110, -98, 8), 101.0, .3, 'blue', 6, arrow=True)
 line(arc((MX, 2150), 300, 300, -70, -82, 8), 101.3, .3, 'blue', 6, arrow=True)
@@ -288,13 +288,13 @@ arrow([8095, 2700], [8095, 2840], 114.9, .35, 'blue', 5)
 tag('Тимур', 7600, 2845, 115.3, size=44, rot=-2)
 write('где потолок?', 7520, 2725, 117.1, 1.0, 'graphite', 76)
 CEIL = 720
-line([[700, CEIL], [8450, CEIL]], 118.6, 2.2, 'red', 7, dash=[30, 20], ea=1.6, eb=2.2)
+line([[700, CEIL], [8700, CEIL]], 118.6, 2.2, 'red', 7, dash=[30, 20], ea=1.6, eb=2.2)
 write('ни лифт, ни сталь?', 5300, CEIL + 120, 121.4, 1.2, 'graphite', 96)
-el(type='stamp', text='ЕСТЬ', xy=[7990, CEIL + 210], size=120, rot=-6, t=123.5); ev(123.5, 'stamp', .1)
-RX = 8250
+el(type='stamp', text='ЕСТЬ', xy=[8010, CEIL + 225], size=150, rot=-6, t=123.5); ev(123.5, 'stamp', .1)
+RX = 8450
 line([[RX, GY - 8], [RX, 330]], 123.85, 1.8, 'graphite', 9, ea=1.4, eb=1.8)
-tag('трос', 8300, 1760, 125.0, size=64, rot=3)
-write('такого ещё не делали', 8200, 1210, 126.0, 1.7, 'graphite', 84, align='right')
+tag('трос', 8500, 1760, 125.0, size=64, rot=3)
+write('такого ещё не делали', 8400, 1210, 126.0, 1.7, 'graphite', 84, align='right')
 
 # ===================================================================== camera (one continuous camera; only the cards hide it)
 c = Cam(*fit([110, 1790, 1400, 3080]))
@@ -327,16 +327,16 @@ c.frame(86.3, 2.6, 6000, .69, bottom=2330, a=2, b=3)
 c.frame(89.3, 1.8, 6000, .38, bottom=2930, a=2, b=3)                 # the mile tower, nuclear lifts, never built
 c.frame(91.4, 2.3, 6000, .73, bottom=2930, a=2, b=3)
 c.to(94.0, 4.0, z=z_of(c) * 1.025)
-c.fit(98.6, 2.0, [100, 950, 8600, 3620], a=1.8, b=3)                # the mile against Burj and Jeddah
+c.fit(98.6, 2.0, [60, 950, 8900, 3620], a=1.8, b=3)                # the mile against Burj and Jeddah
 c.to(100.6, .6, z=z_of(c) * 1.005)
 c.frame(101.0, 1.7, 6000, .71, a=2, b=3)               # sway, tripod
 c.to(102.7, 4.0, z=z_of(c) * 1.03)
 c.frame(107.4, 1.6, 6000, .76, bottom=2930, a=2, b=3)               # nothing to test it with
 c.to(109.0, 4.5, z=z_of(c) * 1.02)
 c.frame(114.1, 1.6, 7140, 1.215, bottom=2930, a=2, b=3)               # Timur: where is the ceiling?
-c.frame(118.4, 2.4, 2765, 1920 / (8725 - 2765), a=1.8, b=3)              # rise to the ceiling
+c.frame(118.4, 2.4, 2765, 1920 / (8880 - 2765), a=1.8, b=3)              # rise to the ceiling
 c.to(120.8, 5.6, y=c.cur['y'] - 12)                # the rope, all the way up
-c.fit(126.6, 3.4, [60, 300, 8650, 3600], a=1.8, b=3.2)              # the whole wall
+c.fit(126.6, 3.4, [60, 300, 8950, 3620], a=1.8, b=3.2)              # the whole wall
 c.to(130.0, 1.49, z=z_of(c) * 1.006)
 
 scene = dict(dur=DUR, board=dict(w=BW, h=BH, seed=41, texScale=.4, ghosts=150, tray=False), hand=1.0, sheen=.07,

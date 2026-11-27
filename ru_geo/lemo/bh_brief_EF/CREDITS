@@ -1,17 +1,21 @@
-Высота зданий · board film (Engineering Briefing Board style) — credits
+Высота зданий · board film, chapters «ДЖИДДА: КИЛОМЕТР» + «МИЛЯ РАЙТА» (film 350.23–481.72 s) — credits
 
 Photographs (from ru_geo/building_height/archive/credits.json)
   burj.png          Burj Khalifa, Dubai — "Burj Khalifa Image.jpg", Meandmybrix, CC0
                     https://commons.wikimedia.org/wiki/File:Burj_Khalifa_Image.jpg
-                    cut out with a sky key inside a hand polygon (tools/cut/cut_burj.py); the EMAAR-lettered building at the base cut away
+                    cut out with a sky key inside a hand polygon (tools/cut/cut_burj.py)
   print_jeddah.png  Jeddah Tower under construction — "Jeddah Tower in its 88th floor.jpg", Omarnizar05, CC0
                     https://commons.wikimedia.org/wiki/File:Jeddah_Tower_in_its_88th_floor.jpg   (uncut crop on photo paper)
-  print_otis.png    Elisha Otis demonstrating the safety elevator, New York, 1854 (later illustration) — author unknown, public domain
-                    https://commons.wikimedia.org/wiki/File:Elisha_OTIS_1854_(cropped).jpg      (uncut crop on photo paper)
-  Every photo is shown at >= 1 source pixel per screen pixel (tools/rescheck.mjs: lowest 1.16, Burj at 10.25 s).
+  print_wright.png  Frank Lloyd Wright, 1954 — "Frank Lloyd Wright portrait.jpg", Al Ravenna, New York World-Telegram
+                    and the Sun (Library of Congress), public domain
+                    https://commons.wikimedia.org/wiki/File:Frank_Lloyd_Wright_portrait.jpg      (uncut crop on photo paper,
+                    kit/tools/make_print.py --crop 560,0,1340,1080 --w 780 --sat 1.0)
+  Every photo is shown at >= 1 source pixel per screen pixel (tools/rescheck.mjs: burj 1.59, jeddah 1.71, wright 2.39).
+
+Drawn in marker (no image used): Burj Khalifa, Taipei 101, Jeddah Tower outlines to one scale (1.2 board px per metre);
+Wright's mile-high tower as a scale silhouette only (no licensed image of his drawing exists in the archive, none shown).
 
 Fonts (SIL Open Font License 1.1, Google Fonts)
-  Pangolin (marker lettering), Fira Sans Condensed (tags), IBM Plex Mono (typewriter cards)
+  Pangolin (marker lettering), Fira Sans Condensed (tags, card, stamp), IBM Plex Mono (typewriter cards)
 
-Engine: Lemo-Opuscar styles/briefing-board/demo/kit (board.js, copied and adapted: Cyrillic fonts, rolling numbers,
-typewriter cards on black, 30 fps shutter). No generated images.
+Engine: copied from ru_geo/lemo/bh_brief (board.js etc.). No generated images.
