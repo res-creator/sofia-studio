@@ -21,7 +21,7 @@ A018 0.956 replace: nineteen oh two -> 1902
 A019 0.882 replace: seventy five -> 75 | replace: eighteenth nineteen eleven -> 18 1911
 A020 1.000 
 A021 0.909 replace: one hundred and thirty one -> 131
-A022 0.963 replace: nineteen ninety nine -> 1999
+A022 0.936 replace: nineteen ninety nine -> 1999 | replace: riverbed -> river bed
 A023 1.000 
 A024 0.896 replace: fifty eight percent -> 58 | replace: forty percent -> 40
 A025 1.000 
@@ -35,7 +35,7 @@ A031 0.953 replace: forty -> 40 | replace: twenty -> 20
 A031B 0.901 replace: twenty twenty two -> 2022 | replace: nineteen thirties -> 1930s
 A032 0.833 replace: twenty twenty three -> 2023 | replace: five hundred and ninety two thousand -> 592 000
 A033 1.000 
-A034 0.791 replace: twenty twenty six -> 2026 | replace: seven hundred and sixty thousand -> 760 000 | replace: twenty twenty seven -> 2027 | replace: twenty twenty eight -> 2028
+A034 0.872 replace: twenty twenty six -> 2026 | replace: twenty twenty seven -> 2027 | replace: twenty twenty eight -> 2028
 A035 0.897 replace: twenty twenty three -> 2023 | replace: four point eight -> 4 8
 A036 1.000 
 A036B 0.919 replace: nineteen nineties -> 1990s | replace: one hundred -> 100
@@ -47,7 +47,7 @@ A041 0.963 replace: seventy percent -> 70
 A041B 0.958 replace: used -> use | replace: a -> of
 A042 0.946 replace: twenty twenty four -> 2024
 A043 0.917 replace: hohokam -> ho ho com
-A044 0.939 replace: three thousand -> 3 000
+A044 1.000 
 A045 1.000 
-A046 0.861 replace: three hundred and thirty six -> 336 | replace: hohokam -> ho ho kemen
+A046 0.911 replace: two hundred -> 200 | replace: hohokam -> ho ho came
 A047 0.973 replace: three hundred -> 300

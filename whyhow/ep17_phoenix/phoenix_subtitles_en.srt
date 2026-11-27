@@ -8,7 +8,7 @@ July twenty twenty-three,
 Phoenix, Arizona.
 
 3
-00:00:05,280 --> 00:00:07,170
+00:00:05,320 --> 00:00:07,150
 It's a hundred and ten degrees outside.
 
 4
@@ -17,7 +17,7 @@ And it's been a hundred and ten or hotter
 every single day for a month.
 
 5
-00:00:11,540 --> 00:00:12,950
+00:00:11,560 --> 00:00:12,950
 Thirty-one days in a row!
 
 6
@@ -30,7 +30,7 @@ is filling a swimming pool.
 Sprinklers are ticking on a golf course.
 
 8
-00:00:20,666 --> 00:00:24,456
+00:00:20,686 --> 00:00:24,456
 There's a lake in the middle of the desert
 where people paddle around in kayaks.
 
@@ -44,11 +44,11 @@ turning on their taps,
 and water just comes out.
 
 11
-00:00:29,721 --> 00:00:30,551
+00:00:29,721 --> 00:00:30,571
 Here's the thing.
 
 12
-00:00:31,361 --> 00:00:33,551
+00:00:31,341 --> 00:00:33,551
 Phoenix gets about seven
 inches of rain a year.
 
@@ -67,7 +67,7 @@ Cactus country.
 So where does the water come from?
 
 16
-00:00:42,041 --> 00:00:46,251
+00:00:42,061 --> 00:00:46,251
 Your first guess might be: they pump it
 from deep underground. Nope.
 
@@ -100,7 +100,7 @@ So how does a city this big exist
 in a place this dry?
 
 23
-00:01:07,967 --> 00:01:11,277
+00:01:07,987 --> 00:01:11,277
 The answer is a story that starts more
 than a thousand years ago,
 
@@ -115,12 +115,12 @@ We'll meet the desert's first engineers, a
 president who came to open a giant dam,
 
 26
-00:01:19,600 --> 00:01:22,870
+00:01:19,560 --> 00:01:22,870
 a river that travels three hundred and
 thirty-six miles uphill,
 
 27
-00:01:23,100 --> 00:01:26,930
+00:01:23,140 --> 00:01:26,930
 and the new rules that just changed
 everything. Let's go!
 
@@ -135,7 +135,7 @@ Starting around fourteen
 hundred years ago,
 
 30
-00:01:39,524 --> 00:01:40,734
+00:01:39,524 --> 00:01:40,714
 they did something amazing.
 
 31
@@ -152,34 +152,34 @@ they built canals.
 Lots of canals.
 
 34
-00:01:47,824 --> 00:01:51,174
+00:01:47,804 --> 00:01:51,174
 Archaeologists estimate hundreds of
 miles of main canals,
 
 35
-00:01:51,364 --> 00:01:53,634
+00:01:51,424 --> 00:01:53,634
 maybe close to a thousand miles in total,
 
 36
-00:01:53,824 --> 00:01:55,254
+00:01:53,844 --> 00:01:55,254
 built over many centuries.
 
 37
-00:01:55,889 --> 00:01:59,299
+00:01:55,889 --> 00:01:59,109
 Some of those canals were wide enough
 to drive a car down today.
 
 38
-00:01:59,629 --> 00:02:01,559
+00:01:59,149 --> 00:02:01,579
 And they worked with nothing but gravity,
 
 39
-00:02:01,749 --> 00:02:06,899
+00:02:01,729 --> 00:02:06,899
 a tiny slope, mile after mile, carrying
 river water out to fields of corn,
 
 40
-00:02:07,209 --> 00:02:09,019
+00:02:07,209 --> 00:02:08,999
 beans, squash and cotton.
 
 41
@@ -216,11 +216,11 @@ nobody knows exactly why.
 Floods, droughts, conflict?
 
 48
-00:02:32,804 --> 00:02:33,734
+00:02:32,824 --> 00:02:33,734
 Probably a mix.
 
 49
-00:02:33,884 --> 00:02:36,994
+00:02:33,904 --> 00:02:36,994
 But their canals stayed, slowly
 filling with sand.
 
@@ -248,7 +248,7 @@ across the desert.
 He realizes what they are. Old canals!
 
 55
-00:02:53,780 --> 00:02:58,790
+00:02:53,800 --> 00:02:58,790
 So he forms a company, his crew clears the old
 routes and digs new ones beside them,
 
@@ -257,7 +257,7 @@ routes and digs new ones beside them,
 and soon there are farms again.
 
 57
-00:03:00,920 --> 00:03:02,650
+00:03:00,900 --> 00:03:02,650
 A little town grows up around them.
 
 58
@@ -269,7 +269,7 @@ A well-read friend of his, Darrell Duppa,
 suggests a name.
 
 60
-00:03:07,311 --> 00:03:10,181
+00:03:07,271 --> 00:03:10,181
 A new town, rising from the
 ruins of an old one,
 
@@ -292,7 +292,7 @@ follow the routes the Hohokam laid
 out centuries ago.
 
 65
-00:03:23,384 --> 00:03:25,754
+00:03:23,364 --> 00:03:25,754
 The city's plumbing is, in part, ancient.
 
 66
@@ -313,7 +313,7 @@ was completely unpredictable.
 Some years it barely trickled.
 
 70
-00:03:37,688 --> 00:03:41,178
+00:03:37,648 --> 00:03:41,198
 Other years, it flooded and ripped the
 canal headgates right out.
 
@@ -323,7 +323,7 @@ Farmers would go from drought to disaster
 in a single season. The fix?
 
 72
-00:03:46,594 --> 00:03:47,424
+00:03:46,574 --> 00:03:47,424
 Store the water.
 
 73
@@ -332,7 +332,7 @@ In nineteen oh two, Congress passed
 the Reclamation Act,
 
 74
-00:03:50,954 --> 00:03:53,524
+00:03:50,954 --> 00:03:53,504
 a law to build big dams for the dry West.
 
 75
@@ -340,12 +340,12 @@ a law to build big dams for the dry West.
 And local farmers jumped at it.
 
 76
-00:03:55,934 --> 00:04:00,104
+00:03:55,914 --> 00:04:00,084
 They put up their own land as collateral and
 formed what became the Salt River Project.
 
 77
-00:04:00,660 --> 00:04:03,750
+00:04:00,660 --> 00:04:03,730
 Up in the mountains, about
 seventy-five miles from town,
 
@@ -360,7 +360,7 @@ On March eighteenth, nineteen eleven, a
 special guest showed up to dedicate it:
 
 80
-00:04:12,160 --> 00:04:13,610
+00:04:12,140 --> 00:04:13,610
 Theodore Roosevelt himself.
 
 81
@@ -396,7 +396,7 @@ That's more canal than Venice, by a lot.
 And here's a fun side effect.
 
 88
-00:04:37,547 --> 00:04:41,747
+00:04:37,527 --> 00:04:41,747
 So much of the river now goes into canals that
 the Salt River through Phoenix is
 
@@ -405,17 +405,17 @@ the Salt River through Phoenix is
 usually a dry bed.
 
 90
-00:04:43,427 --> 00:04:46,517
+00:04:43,427 --> 00:04:46,327
 So when the city of Tempe wanted a
 lake, in nineteen ninety-nine,
 
 91
-00:04:46,967 --> 00:04:51,517
+00:04:46,367 --> 00:04:51,517
 they built dams across the dry riverbed and filled it
 with water from somewhere else entirely.
 
 92
-00:04:52,197 --> 00:04:55,847
+00:04:52,197 --> 00:04:55,867
 Which brings us to the most important
 "somewhere else" in Arizona.
 
@@ -467,7 +467,7 @@ In nineteen sixty-eight, near the
 very end of his career,
 
 103
-00:05:33,235 --> 00:05:36,025
+00:05:33,255 --> 00:05:36,025
 Congress finally approved the
 Central Arizona Project.
 
@@ -482,12 +482,12 @@ Twenty years later, it was done: a concrete river
 three hundred and thirty-six miles
 
 106
-00:05:44,285 --> 00:05:48,435
+00:05:44,285 --> 00:05:48,455
 long, from Lake Havasu, through
 Phoenix, all the way to Tucson.
 
 107
-00:05:48,905 --> 00:05:51,915
+00:05:48,925 --> 00:05:51,915
 That's longer than the drive from
 Los Angeles to Las Vegas.
 
@@ -533,7 +533,7 @@ mountains, and under washes,
 through giant siphons.
 
 117
-00:06:21,836 --> 00:06:23,986
+00:06:21,816 --> 00:06:23,986
 A whole river, hidden in plain sight.
 
 118
@@ -552,7 +552,7 @@ Basically, Phoenix doesn't
 just drink water.
 
 121
-00:06:34,817 --> 00:06:36,247
+00:06:34,817 --> 00:06:36,227
 It drinks electricity, too.
 
 122
@@ -560,7 +560,7 @@ It drinks electricity, too.
 So now Phoenix had two rivers.
 
 123
-00:06:39,024 --> 00:06:40,134
+00:06:39,024 --> 00:06:40,154
 Problem solved, right?
 
 124
@@ -568,7 +568,7 @@ Problem solved, right?
 Well, not quite.
 
 125
-00:06:44,486 --> 00:06:49,396
+00:06:44,486 --> 00:06:49,416
 The Colorado River feeds about forty million
 people across seven states and Mexico.
 
@@ -578,7 +578,7 @@ And for more than twenty years,
 it's been running low.
 
 127
-00:06:53,286 --> 00:06:56,076
+00:06:53,286 --> 00:06:56,056
 Lake Mead, the giant reservoir
 behind Hoover Dam,
 
@@ -603,7 +603,7 @@ That white ring around its cliffs shows
 where the water used to be.
 
 132
-00:07:11,481 --> 00:07:15,351
+00:07:11,481 --> 00:07:15,331
 In twenty twenty-three, the federal
 government declared a deeper shortage.
 
@@ -644,12 +644,12 @@ Its canal was the last one built, so
 its rights are junior.
 
 141
-00:07:42,254 --> 00:07:47,114
+00:07:42,234 --> 00:07:47,054
 In August twenty twenty-six, a new federal plan
 set Arizona's cut at seven hundred
 
 142
-00:07:47,154 --> 00:07:51,684
+00:07:47,094 --> 00:07:51,684
 and sixty thousand acre-feet a year for twenty
 twenty-seven and twenty twenty-eight.
 
@@ -668,7 +668,7 @@ Katie Hobbs, shared the results of a new
 groundwater study for the Phoenix area.
 
 146
-00:08:02,659 --> 00:08:08,109
+00:08:02,639 --> 00:08:08,109
 Over the next hundred years, demand would outrun supply
 by about four point eight million acre-feet.
 
@@ -678,7 +678,7 @@ So the state stopped approving new subdivisions that
 planned to rely on groundwater alone.
 
 148
-00:08:13,880 --> 00:08:17,270
+00:08:13,900 --> 00:08:17,270
 Not existing homes, not cities with
 their own surface water.
 
@@ -687,7 +687,7 @@ their own surface water.
 Just new ones banking on the aquifer.
 
 150
-00:08:20,366 --> 00:08:22,496
+00:08:20,366 --> 00:08:22,476
 And this is a rule Phoenix
 wrote for itself.
 
@@ -706,20 +706,20 @@ they can sell a single new home.
 That sounds scary.
 
 154
-00:08:32,611 --> 00:08:34,081
+00:08:32,631 --> 00:08:34,081
 But here's the thing about Phoenix.
 
 155
-00:08:34,411 --> 00:08:37,981
+00:08:34,331 --> 00:08:37,961
 It has been planning for exactly this
 moment for a long time.
 
 156
-00:08:38,251 --> 00:08:39,741
+00:08:38,291 --> 00:08:39,761
 And that's where it gets clever.
 
 157
-00:08:42,336 --> 00:08:46,386
+00:08:42,336 --> 00:08:46,406
 Trick number one: never waste a drop,
 not even the gross ones.
 
@@ -781,7 +781,7 @@ In Arizona, farms use about seventy
 percent of all the water.
 
 170
-00:09:31,116 --> 00:09:34,026
+00:09:31,096 --> 00:09:34,026
 An acre of crops can drink several
 feet of water a year.
 
@@ -791,11 +791,11 @@ The same acre covered in homes
 often uses a lot less.
 
 172
-00:09:38,033 --> 00:09:39,763
+00:09:38,033 --> 00:09:39,783
 And people at home changed too.
 
 173
-00:09:40,353 --> 00:09:43,143
+00:09:40,353 --> 00:09:43,163
 Green lawns gave way to gravel
 and cactus yards.
 
@@ -846,70 +846,70 @@ Electricity on top, water underneath.
 The Hohokam would probably approve.
 
 184
-00:10:17,155 --> 00:10:19,525
+00:10:17,155 --> 00:10:19,845
 So, how does Phoenix exist in the desert?
 
 185
-00:10:19,895 --> 00:10:21,365
+00:10:20,255 --> 00:10:21,785
 Not with one magic pipe.
 
 186
-00:10:21,715 --> 00:10:26,825
+00:10:22,115 --> 00:10:27,225
 It's ancient canals, a president's dam, a river
-pumped three thousand feet uphill,
+pumped uphill across the desert,
 
 187
-00:10:27,035 --> 00:10:29,005
+00:10:27,475 --> 00:10:29,505
 and a lot of very careful counting.
 
 188
-00:10:29,584 --> 00:10:32,574
+00:10:30,097 --> 00:10:33,087
 It's a city that has to plan a
 hundred years ahead,
 
 189
-00:10:32,724 --> 00:10:35,434
+00:10:33,237 --> 00:10:35,947
 because the desert never forgets
 to send the bill.
 
 190
-00:10:35,957 --> 00:10:37,887
+00:10:36,470 --> 00:10:38,420
 Remember that swimming pool
 from the beginning?
 
 191
-00:10:38,557 --> 00:10:42,187
-Some of the water in it may have traveled
-three hundred and thirty-six miles,
+00:10:39,110 --> 00:10:42,790
+Some of the water in it may have traveled almost
+two hundred miles from the Colorado
 
 192
-00:10:42,337 --> 00:10:47,087
-climbed over a couple of mountains, and flowed down
-a canal the Hohokam might recognize.
+00:10:42,830 --> 00:10:49,000
+River, climbed up and across the desert, and flowed
+down a canal the Hohokam might recognize.
 
 193
-00:10:47,828 --> 00:10:49,198
+00:10:49,635 --> 00:10:50,985
 Now I want to hear from you.
 
 194
-00:10:49,608 --> 00:10:52,678
+00:10:51,455 --> 00:10:54,485
 Would you live in a city that runs on a
 three-hundred-mile canal?
 
 195
-00:10:53,108 --> 00:10:54,738
+00:10:54,935 --> 00:10:56,545
 Or is that a little too exciting?
 
 196
-00:10:55,168 --> 00:10:56,138
+00:10:56,995 --> 00:10:57,965
 Tell me in the comments.
 
 197
-00:10:56,628 --> 00:10:59,418
+00:10:58,455 --> 00:11:01,225
 And if you want to see how other cities
 pull off the impossible,
 
 198
-00:10:59,828 --> 00:11:02,678
+00:11:01,635 --> 00:11:04,485
 subscribe, because we've got a lot
 more of them coming.

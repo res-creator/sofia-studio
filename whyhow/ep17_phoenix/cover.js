@@ -13,6 +13,6 @@ const make = async (base, out, lines, arr) => { const cv = K.createCanvas(W, H),
   for (const [s, y, size, c] of lines) line(ctx, s, 56, y, size, c); if (arr) arrow(ctx, ...arr); fs.writeFileSync(out, cv.toBuffer('image/jpeg', 93)); console.log(out); };
 const D = __dirname + '/';
 (async () => {
-  await make(D + 'cover_base_cap.jpg', D + 'phoenix_cover_A.jpg', [['PHOENIX', 220, 132, '#FFFFFF'], ['DRINKS FROM', 360, 124, Y], ['336 MILES', 530, 176, Y]], [560, 470, 700, 600, 860, 500]);
+  await make(D + 'cover_base_cap.jpg', D + 'phoenix_cover_A.jpg', [['PHOENIX', 220, 132, '#FFFFFF'], ['DRINKS A RIVER', 360, 118, Y], ['190 MILES AWAY', 520, 150, Y]], [690, 300, 790, 330, 830, 240]);
   await make(D + 'cover_base_canal.jpg', D + 'phoenix_cover_B.jpg', [['PHOENIX', 220, 132, '#FFFFFF'], ['THESE CANALS', 360, 124, Y], ['ARE ANCIENT', 530, 160, Y]], [600, 470, 760, 600, 900, 480]);
 })();
