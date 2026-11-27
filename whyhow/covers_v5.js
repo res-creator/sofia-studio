@@ -17,3 +17,12 @@ const make = async (base, out, lines, arr) => { const cv = K.createCanvas(W, H),
   await make('covers_v5_base/tokyo.jpg', 'ep16_tokyo/tokyo_cover_I.jpg', [['TOKYO', 220, 132, '#FFFFFF'], ['20 SECONDS', 360, 124, Y], ['EARLY', 530, 176, Y]], [470, 470, 560, 560, 640, 470]);
   await make('covers_v5_base/aleutians.jpg', 'ep11_aleutians/aleutians_cover_I.jpg', [['ALASKA', 220, 132, '#FFFFFF'], ['JAPAN LEFT', 360, 132, Y], ['THIS', 540, 190, Y]], [400, 470, 620, 620, 840, 470]);
 })();
+// Singapore v2 (CTR 1.3% on the first cover): before/after split, Hong Kong typography
+(async () => {
+  const cv = K.createCanvas(W, H), ctx = cv.getContext('2d'); ctx.drawImage(await loadImage('covers_v5_base/singapore_split.jpg'), 0, 0, W, H);
+  ctx.fillStyle = '#FFFFFF'; ctx.fillRect(W / 2 - 5, 0, 10, H);
+  line(ctx, '1964', 120, 690, 64, '#FFFFFF'); line(ctx, 'TODAY', 1060, 690, 64, Y);
+  line(ctx, 'SINGAPORE', 56, 150, 120, '#FFFFFF'); line(ctx, '+28% LAND', 56, 300, 150, Y); line(ctx, 'FROM THE SEA', 56, 450, 130, Y);
+  arrow(ctx, 860, 470, 900, 600, 960, 600);
+  fs.writeFileSync('ep14_singapore/singapore_cover_J.jpg', cv.toBuffer('image/jpeg', 93)); console.log('J');
+})();
