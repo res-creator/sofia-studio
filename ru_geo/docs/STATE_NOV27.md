@@ -23,5 +23,5 @@ Owner approved «Инженерная доска» (Lemo-Opuscar briefing-board)
 Trial: ru_geo/building_height/video/trial_styles_brief.mp4. Projects: ru_geo/lemo/ (bh_brief = 0–85.3 s, bh_brief_B/CD/EF/G = chapters,
 bh_map = Dubai→Jeddah map, bh_otis = Otis light table). Brief for chapter agents: ru_geo/lemo/BRIEF_BRIEFBOARD.md.
 Renders are resumable; keeper: `setsid nohup sh ru_geo/lemo/tools/keep_renders.sh >> scratchpad/keep.log 2>&1 &` (restart after every container restart;
-a part renders only when its folder has .render_ready). Full assembly: `python3 ru_geo/lemo/assemble_bh_full.py` (needs all parts in building_height/video/parts).
+a part renders only when its folder has .render_ready). Full assembly: `python3 ru_geo/lemo/assemble_full.py <slug>` (needs all parts in building_height/video/parts).
 Old compose pipeline (stock + flat diagrams) is retired for this channel. Next: same style for the other 8 videos.
