@@ -55,7 +55,7 @@
 "t": 15.679,
 "d": 3.136,
 "type": "clip",
-"src": "stock/px1844.mp4",
+"src": "stock/px22555.mp4",
 "ss": 0.3
 },
 {
@@ -84,7 +84,7 @@
 "t": 25.53,
 "d": 3.58,
 "type": "clip",
-"src": "stock/px22555.mp4",
+"src": "stock/px26967.mp4",
 "ss": 0.3
 },
 {
@@ -98,7 +98,7 @@
 "t": 32.69,
 "d": 3.58,
 "type": "clip",
-"src": "stock/px26967.mp4",
+"src": "stock/px26968.mp4",
 "ss": 0.3,
 "ov": "/home/user/sofia-studio/ru_geo/universe_size/card_ttl_1.png"
 },
@@ -397,7 +397,7 @@
 "t": 139.547,
 "d": 3.623,
 "type": "clip",
-"src": "stock/px27560.mp4",
+"src": "stock/px16166.mp4",
 "ss": 0.3
 },
 {
@@ -586,7 +586,7 @@
 "t": 218.054,
 "d": 3.222,
 "type": "clip",
-"src": "stock/px203923.mp4",
+"src": "stock/px137662.mp4",
 "ss": 0.3
 },
 {
@@ -827,7 +827,7 @@
 "t": 305.412,
 "d": 3.272,
 "type": "clip",
-"src": "stock/px182517.mp4",
+"src": "stock/px203923.mp4",
 "ss": 0.3
 },
 {
@@ -848,7 +848,7 @@
 "t": 315.228,
 "d": 3.272,
 "type": "clip",
-"src": "stock/px16453.mp4",
+"src": "stock/px182517.mp4",
 "ss": 0.3
 },
 {
@@ -876,7 +876,7 @@
 "t": 325.24,
 "d": 3.14,
 "type": "clip",
-"src": "stock/px137662.mp4",
+"src": "stock/px16453.mp4",
 "ss": 0.3
 },
 {
@@ -926,7 +926,7 @@
 "t": 344.249,
 "d": 3.224,
 "type": "clip",
-"src": "stock/px17072.mp4",
+"src": "stock/px31442.mp4",
 "ss": 0.3
 },
 {
@@ -947,7 +947,7 @@
 "t": 353.921,
 "d": 3.224,
 "type": "clip",
-"src": "stock/px31442.mp4",
+"src": "stock/px67139.mp4",
 "ss": 0.3
 },
 {
@@ -1015,7 +1015,7 @@
 "t": 385.0,
 "d": 3.2,
 "type": "clip",
-"src": "stock/px24623.mp4",
+"src": "stock/px30356.mp4",
 "ss": 0.3
 },
 {
@@ -1036,47 +1036,74 @@
 "t": 394.6,
 "d": 3.2,
 "type": "clip",
-"src": "stock/px13046.mp4",
+"src": "stock/px24623.mp4",
 "ss": 0.3
 },
 {
 "t": 397.8,
 "d": 2.943,
 "type": "clip",
-"src": "stock/px9.mp4",
+"src": "stock/px14278.mp4",
 "ss": 0.3
 },
 {
 "t": 400.743,
 "d": 2.943,
 "type": "clip",
-"src": "stock/px9141.mp4",
+"src": "stock/px9.mp4",
 "ss": 0.3
 },
 {
 "t": 403.687,
 "d": 2.943,
 "type": "clip",
-"src": "stock/px14278.mp4",
+"src": "stock/px9141.mp4",
 "ss": 0.3
 },
 {
 "t": 406.63,
 "d": 2.943,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
+"z": [
+1.18,
+1.0
+],
+"p": [
+0.75,
+0.55
+],
+"cap": "Зонд «Вояджер» (изображение NASA)"
 },
 {
 "t": 409.573,
 "d": 2.943,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_launch.jpg",
+"z": [
+1.08,
+1.2
+],
+"p": [
+0.5,
+0.3
+],
+"cap": "Старт «Вояджера-1», 1977 год"
 },
 {
 "t": 412.517,
 "d": 2.943,
-"type": "card",
-"src": "/home/user/sofia-studio/ru_geo/flat2d/compose/black.png"
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_golden_record.jpg",
+"z": [
+1.0,
+1.18
+],
+"p": [
+0.4,
+0.7
+],
+"cap": "Золотая пластинка «Вояджера» (NASA)"
 },
 {
 "t": 415.46,
@@ -1110,7 +1137,7 @@
 "t": 425.312,
 "d": 3.126,
 "type": "clip",
-"src": "stock/px221919.mp4",
+"src": "stock/px3159.mp4",
 "ss": 0.3
 },
 {
@@ -1187,42 +1214,42 @@
 "t": 455.73,
 "d": 2.943,
 "type": "clip",
-"src": "stock/px3159.mp4",
+"src": "stock/px275983.mp4",
 "ss": 0.3
 },
 {
 "t": 458.673,
 "d": 2.943,
 "type": "clip",
-"src": "stock/px275983.mp4",
+"src": "stock/px388064.mp4",
 "ss": 0.3
 },
 {
 "t": 461.617,
 "d": 2.943,
 "type": "clip",
-"src": "stock/px244839.mp4",
+"src": "stock/px110159.mp4",
 "ss": 0.3
 },
 {
 "t": 464.56,
 "d": 2.943,
 "type": "clip",
-"src": "stock/px388064.mp4",
+"src": "stock/px21528.mp4",
 "ss": 0.3
 },
 {
 "t": 467.503,
 "d": 2.943,
 "type": "clip",
-"src": "stock/px21528.mp4",
+"src": "stock/px21175.mp4",
 "ss": 0.3
 },
 {
 "t": 470.447,
 "d": 2.943,
 "type": "clip",
-"src": "stock/px110159.mp4",
+"src": "stock/px110151.mp4",
 "ss": 0.3
 },
 {
@@ -1258,7 +1285,7 @@
 "t": 483.25,
 "d": 3.287,
 "type": "clip",
-"src": "stock/px21175.mp4",
+"src": "stock/px223459.mp4",
 "ss": 0.3
 },
 {
@@ -1379,7 +1406,7 @@
 "t": 527.745,
 "d": 3.135,
 "type": "clip",
-"src": "stock/px27539.mp4",
+"src": "stock/px60027.mp4",
 "ss": 0.3
 },
 {
@@ -1401,7 +1428,7 @@
 "t": 534.015,
 "d": 3.135,
 "type": "clip",
-"src": "stock/px60027.mp4",
+"src": "stock/px60028.mp4",
 "ss": 0.3
 },
 {
@@ -1465,14 +1492,14 @@
 "t": 559.738,
 "d": 3.354,
 "type": "clip",
-"src": "stock/px24105.mp4",
+"src": "stock/px213814.mp4",
 "ss": 0.3
 },
 {
 "t": 563.092,
 "d": 3.354,
 "type": "clip",
-"src": "stock/px213814.mp4",
+"src": "stock/px1175.mp4",
 "ss": 0.3
 },
 {
