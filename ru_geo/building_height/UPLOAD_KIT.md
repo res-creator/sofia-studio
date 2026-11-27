@@ -13,7 +13,17 @@
 Что на самом деле ограничивает высоту зданий: не бетон и не деньги, а трос лифта, ветер и вес самих материалов. Разбираем Бурдж-Халифу, недостроенную Джидду и проект Фрэнка Ллойда Райта «Миля». Считаем пределы по открытым данным, оценки помечены.
 
 Вопрос вам: как высоко, по-вашему, мы построим в этом веке? Пишите в комментариях.
-Озвучка создана с помощью ИИ. Видеоряд: стоковые кадры Pixabay/Coverr (свободные лицензии), собственные диаграммы, музыка Mixkit.
+Озвучка создана с помощью ИИ. Видеоряд: рисованная доска и схемы (собственные), музыка Mixkit.
+Спутниковые снимки: Sentinel-2 cloudless 2016 – https://s2maps.eu, EOX IT Services GmbH (содержит изменённые данные Copernicus Sentinel 2016 и 2017 гг.), CC BY 4.0. Рельеф: AWS Terrain Tiles (Mapzen/Tilezen; SRTM, GMTED, ETOPO1, GEBCO).
+Фото (Wikimedia Commons):
+- Бурдж-Халифа, Дубай: Meandmybrix, CC0, https://commons.wikimedia.org/wiki/File:Burj_Khalifa_Image.jpg
+- Башня в Джидде на стройке (по подписи автора: 88-й этаж): Omarnizar05, CC0, https://commons.wikimedia.org/wiki/File:Jeddah_Tower_in_its_88th_floor.jpg
+- Башня Тайбэй 101 (508 м): Heeheemalu, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Taipei_101_from_Sun_Yat_Sen_Memorial_Hall.jpg
+- Шар-маятник 660 т в башне Тайбэй 101: Armand du Plessis, CC BY 3.0, https://commons.wikimedia.org/wiki/File:Taipei_101_Tuned_Mass_Damper_2010.jpg
+- Шар-маятник Тайбэй 101 вблизи: Johan Jönsson (Julle), CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Taipei_101_tuned_mass_damper_01.jpg
+- Фрэнк Ллойд Райт, 1954: Al Ravenna, New York World-Telegram and the Sun (Library of Congress), Public domain, https://commons.wikimedia.org/wiki/File:Frank_Lloyd_Wright_portrait.jpg
+- К. Э. Циолковский, около 1909 года: фотоателье С. А. Адамович, Public domain, https://commons.wikimedia.org/wiki/File:Konstantin_Tsiolkovsky_1908-1909.jpg
+- Отис показывает защёлку, Нью-Йорк, 1854 (позднейший рисунок): автор неизвестен, Public domain, https://commons.wikimedia.org/wiki/File:Elisha_OTIS_1854_(cropped).jpg
 
 ## Теги (в нижнем регистре)
 небоскрёб, бурдж халифа, джидда тауэр, лифт, предел высоты, архитектура, инженерия, строительство, мысленный эксперимент
