@@ -62,10 +62,10 @@ if len(paras) != len(voice): sys.exit(f'абзацев {len(paras)} != озву�
 # --- фото по абзацам из старой раскадровки
 photos_by_par = {}; caps = {}; PIMG = {}; fb = [0]
 oc = f'{J}/SCRIPT_oldcues.md'; cr_path = f'{J}/archive/credits.json'
-if os.path.exists(oc) and os.path.exists(cr_path):
+if os.path.exists(cr_path):
     CR = json.load(open(cr_path, encoding='utf8')); caps = {k: v.get('cap', '') for k, v in CR.items() if not v.get('author', '').startswith('собственная')}
     pi = -1
-    for l in open(oc, encoding='utf8').read().split('## ТАБЛИЦА ФАКТОВ')[0].splitlines():
+    for l in (open(oc, encoding='utf8').read().split('## ТАБЛИЦА ФАКТОВ')[0].splitlines() if os.path.exists(oc) else []):
         t = l.strip()
         if t.startswith('>>'):
             try: d = json.loads(t[2:].strip())
