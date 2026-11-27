@@ -1,0 +1,19 @@
+{
+ "id": "print_hudf",
+ "w": 1000,
+ "h": 961,
+ "anchors": {},
+ "print": true,
+ "prep": {
+  "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/hudf.jpg",
+  "id": "print_hudf",
+  "crop": "0,0,1280,1225",
+  "w": 1280,
+  "border": 0.045,
+  "sat": 0.9
+ },
+ "downscaled_to": [
+  1000,
+  961
+ ]
+}

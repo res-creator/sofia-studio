@@ -1,0 +1,15 @@
+{
+  "id": "print_cmb",
+  "w": 807,
+  "h": 444,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/lemo/us_brief_3/out/cmb_masked.png",
+    "id": "print_cmb",
+    "crop": "28,4,769,382",
+    "w": 741,
+    "border": 0.045,
+    "sat": 0.95
+  }
+}

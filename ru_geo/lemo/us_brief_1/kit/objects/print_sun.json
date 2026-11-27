@@ -1,0 +1,18 @@
+{
+ "id": "print_sun",
+ "w": 1330,
+ "h": 1433,
+ "anchors": {},
+ "print": true,
+ "prep": {
+  "src": "sun_img.jpg",
+  "crop": [
+   700,
+   150,
+   1920,
+   1473
+  ],
+  "border": 0.045,
+  "sat": 0.85
+ }
+}

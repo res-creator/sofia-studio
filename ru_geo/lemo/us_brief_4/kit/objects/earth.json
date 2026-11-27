@@ -1,0 +1,19 @@
+{
+ "id": "earth",
+ "size": [
+  640,
+  640
+ ],
+ "anchors": {},
+ "credit": {
+  "title": "NASA Blue Marble 2007 West",
+  "author": "NASA",
+  "licence": "public domain",
+  "source": "https://images.nasa.gov/details/GSFC_20171208_Archive_e002131"
+ },
+ "how": "circular mask fitted to the disc (brightness > 60), photo resolution",
+ "downscaled_to": [
+  640,
+  640
+ ]
+}

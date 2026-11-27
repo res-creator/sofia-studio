@@ -1,0 +1,15 @@
+{
+  "id": "print_newhorizons",
+  "w": 1200,
+  "h": 1109,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/lemo/us_brief_3/sources/newhorizons_05pd2243.jpg",
+    "id": "print_newhorizons",
+    "crop": "700,300,2270,1740",
+    "w": 1100,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

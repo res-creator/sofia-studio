@@ -1,0 +1,15 @@
+{
+  "id": "print_jupiter",
+  "w": 1090,
+  "h": 1404,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/jupiter.jpg",
+    "id": "print_jupiter",
+    "crop": "100,40,1500,1880",
+    "w": 1000,
+    "border": 0.045,
+    "sat": 0.9
+  }
+}

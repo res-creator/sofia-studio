@@ -1,0 +1,15 @@
+{
+  "id": "print_andromeda",
+  "w": 1374,
+  "h": 1374,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/andromeda.jpg",
+    "id": "print_andromeda",
+    "crop": "330,330,1590,1590",
+    "w": 1260,
+    "border": 0.045,
+    "sat": 0.9
+  }
+}

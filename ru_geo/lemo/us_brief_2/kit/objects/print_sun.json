@@ -1,0 +1,15 @@
+{
+  "id": "print_sun",
+  "w": 1396,
+  "h": 1119,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/sun_img.jpg",
+    "id": "print_sun",
+    "crop": "640,470,1920,1473",
+    "w": 1280,
+    "border": 0.045,
+    "sat": 0.9
+  }
+}

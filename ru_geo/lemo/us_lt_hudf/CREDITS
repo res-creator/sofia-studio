@@ -1,0 +1,11 @@
+Picture 1: Hubble Ultra Deep Field (the 2014 "Hubble Ultra Deep Field 2014" colour composite, UVUDF; exposures 2003–2012 with
+ACS and WFC3). Credit NASA/ESA. Public domain (NASA). https://images.nasa.gov/details/GSFC_20171208_Archive_e001061
+file https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001061/GSFC_20171208_Archive_e001061~orig.jpg (2300x2100),
+local copy ru_geo/universe_size/archive/src_dl/GSFC_20171208_Archive_e001061_orig.jpg, colour untouched.
+(The project's archive/img/hudf.jpg is NOT the Ultra Deep Field: its record is "Swimming in Sculptor" / "Hubble sees a legion
+of galaxies", a different field; it was not used. No ESA/esahubble CC BY file was used.)
+Picture 2: Webb's First Deep Field (SMACS 0723), NASA, ESA, CSA, STScI. Public domain (NASA).
+https://images.nasa.gov/details/webb_first_deep_field — local copy ru_geo/universe_size/archive/img/jwst2.jpg (1881x1920).
+The Moon-and-patch figure is drawn in code to the narration's ratio ("в десять раз уже полной Луны"); it is a schematic.
+Fonts (SIL OFL 1.1, fetched by tools/fonts.py from Google Fonts): IBM Plex Sans, IBM Plex Mono, Noto Serif.
+Engine: adapted from ru_geo/lemo/bh_otis and the Lemo-Opuscar styles/archive-lighttable/demo (film.js shader, loupe, camera tracks).

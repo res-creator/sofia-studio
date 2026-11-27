@@ -1,0 +1,15 @@
+{
+ "id": "earth",
+ "size": [
+  1767,
+  1766
+ ],
+ "anchors": {},
+ "credit": {
+  "title": "NASA Blue Marble 2007 West",
+  "author": "NASA",
+  "licence": "public domain",
+  "source": "https://images.nasa.gov/details/GSFC_20171208_Archive_e002131"
+ },
+ "how": "circle fitted to lit pixels (max channel > 14): c=(957,960) r=882"
+}

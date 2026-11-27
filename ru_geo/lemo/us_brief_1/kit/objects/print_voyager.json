@@ -1,0 +1,18 @@
+{
+ "id": "print_voyager",
+ "w": 1438,
+ "h": 1198,
+ "anchors": {},
+ "print": true,
+ "prep": {
+  "src": "voyager_craft.jpg",
+  "crop": [
+   180,
+   120,
+   1500,
+   1200
+  ],
+  "border": 0.045,
+  "sat": 0.9
+ }
+}

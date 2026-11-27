@@ -1,0 +1,15 @@
+{
+  "id": "print_voyager",
+  "w": 1570,
+  "h": 1210,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/voyager_craft.jpg",
+    "id": "print_voyager",
+    "crop": "200,250,1640,1330",
+    "w": 1440,
+    "border": 0.045,
+    "sat": 0.9
+  }
+}

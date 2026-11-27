@@ -1,0 +1,18 @@
+{
+ "id": "print_launch",
+ "w": 1438,
+ "h": 2018,
+ "anchors": {},
+ "print": true,
+ "prep": {
+  "src": "voyager_launch.jpg",
+  "crop": [
+   300,
+   0,
+   1620,
+   1900
+  ],
+  "border": 0.045,
+  "sat": 0.85
+ }
+}

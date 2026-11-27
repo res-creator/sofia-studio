@@ -1,0 +1,15 @@
+{
+ "id": "earth",
+ "size": [
+  1000,
+  1000
+ ],
+ "anchors": {},
+ "credit": {
+  "title": "NASA Blue Marble 2007 West",
+  "author": "NASA",
+  "licence": "public domain",
+  "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e002131"
+ },
+ "prep": "tools/cut/cut_earth.py: circle fitted to the lit disc"
+}

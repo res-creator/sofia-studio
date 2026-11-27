@@ -1,0 +1,15 @@
+{
+  "id": "print_proxima",
+  "w": 1200,
+  "h": 936,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/universe_size/archive/img/proxima_hubble.jpg",
+    "id": "print_proxima",
+    "crop": "90,0,1190,836",
+    "w": 1100,
+    "border": 0.045,
+    "sat": 0.9
+  }
+}

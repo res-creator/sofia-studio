@@ -1,0 +1,7 @@
+Picture: "Pale Blue Dot Revisited" (PIA23645, NASA/JPL-Caltech, 2020) — the 2020 reprocessing of the Voyager 1 narrow-angle
+frames of 14 February 1990 that made the original "Pale Blue Dot" (PIA00452). Public domain (NASA).
+https://images.nasa.gov/details/PIA23645 · file https://images-assets.nasa.gov/image/PIA23645/PIA23645~orig.jpg (5230x5175),
+local copy ru_geo/universe_size/archive/src_dl/PIA23645_orig.jpg; used at 3200 px, colour untouched.
+(The 1990 release PIA00452 on images.nasa.gov is only 453x614 px, so the 2020 version of the same frame is used.)
+Fonts (SIL OFL 1.1, fetched by tools/fonts.py from Google Fonts): IBM Plex Sans, IBM Plex Mono, Noto Serif.
+Engine: adapted from ru_geo/lemo/bh_otis and the Lemo-Opuscar styles/archive-lighttable/demo (film.js shader, loupe, camera tracks).

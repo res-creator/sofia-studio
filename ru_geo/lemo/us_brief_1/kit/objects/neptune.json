@@ -1,0 +1,15 @@
+{
+ "id": "neptune",
+ "size": [
+  593,
+  593
+ ],
+ "anchors": {},
+ "credit": {
+  "title": "Neptune (Voyager 2)",
+  "author": "NASA",
+  "licence": "public domain",
+  "source": "https://images.nasa.gov/details/8910708"
+ },
+ "how": "circle fitted to lit pixels (max channel > 45): c=(498,400) r=296"
+}

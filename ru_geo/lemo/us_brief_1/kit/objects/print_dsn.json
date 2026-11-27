@@ -1,0 +1,18 @@
+{
+ "id": "print_dsn",
+ "w": 1090,
+ "h": 1040,
+ "anchors": {},
+ "print": true,
+ "prep": {
+  "src": "dsn_antenna.jpg",
+  "crop": [
+   900,
+   150,
+   1900,
+   1100
+  ],
+  "border": 0.045,
+  "sat": 0.85
+ }
+}

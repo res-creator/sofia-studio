@@ -663,7 +663,7 @@ function renderCore(canvas, t) {
 function cardAt(t) {
   for (const cd of scene.cards || []) {
     if (t < cd.t0 - .1 || t > cd.t2 + .1) continue;
-    return { cd, a: clamp((t - cd.t0 + .1) / .1) * (1 - clamp((t - cd.t2) / .1)) };
+    return { cd, a: (cd.t0 < .2 ? 1 : clamp((t - cd.t0 + .1) / .1)) * (1 - clamp((t - cd.t2) / .1)) };   // a card at the very start is black from frame 0
   }
   return null;
 }
