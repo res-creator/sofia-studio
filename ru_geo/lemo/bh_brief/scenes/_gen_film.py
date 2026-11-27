@@ -14,7 +14,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); FILM = os.path.dirname(HERE)
 OBJ = os.path.join(FILM, 'kit', 'objects')
 meta = lambda i: json.load(open(os.path.join(OBJ, i + '.json')))
 DUR = 85.3
-BW, BH = 7680, 4320
+BW, BH = 8200, 4320
 
 E, EV = [], []
 def el(**k): E.append(k); return k
@@ -83,33 +83,33 @@ type_card('Почему канат рвётся под собственным в
 # ===================================================================== A. cold open 1.0–20.12 (left of the wall)
 GY, CX = 2000, 1500                    # ground line and axis of the drawn tower
 # the photograph: Burj Khalifa cut out (CC0), standing on the same ground line, left of the drawing
-BURJ_H = 1300; bm = meta('burj'); BURJ_W = BURJ_H * bm['size'][0] / bm['size'][1]
-BURJ = [430, GY - BURJ_H / 2]
+BURJ_H = 1100; bm = meta('burj'); BURJ_W = BURJ_H * bm['size'][0] / bm['size'][1]
+BURJ = [210, GY - BURJ_H / 2]
 el(type='print', id='burj', src='burj', xy=[BURJ[0], round(BURJ[1], 1)], h=BURJ_H, z=10, rot=-4.5,
    arrive=dict(t=1.0, kind='drop', d=.55, lift=260, spin=1.6, land=.6))
 ev(1.33, 'land', .2, size='big')
-magnet(455, 1180, 1.45, r=24); magnet(392, 1880, 1.58, r=24)
+magnet(232, 1330, 1.45, r=24); magnet(172, 1880, 1.58, r=24)
 # the drawn tower: one stepped profile, up one side and down the other
 prof = [(220, GY), (208, 1650), (170, 1650), (158, 1350), (120, 1350), (102, 1090), (62, 1090), (42, 860), (26, 860), (0, 700)]
 outline = [[CX - w, y] for w, y in prof] + [[CX + w, y] for w, y in reversed(prof[:-1])]
 line([[1160, GY], [1860, GY]], 1.05, .25, lw=10)
 line(outline, 1.25, 1.25, lw=9)
 # «не бетон и не люди»: two tags pinned between the photo and the drawing, struck in red
-tag('бетон', 700, 1420, 2.55, size=62, rot=-2, strike=dict(t=3.0, d=.2, color='red')); ev(3.0, 'strike', .2)
-tag('люди', 700, 1640, 3.2, size=62, rot=1.5, strike=dict(t=3.9, d=.2, color='red')); ev(3.9, 'strike', .2)
+tag('бетон', 640, 1420, 2.55, size=62, rot=-2, strike=dict(t=3.0, d=.2, color='red')); ev(3.0, 'strike', .2)
+tag('люди', 640, 1640, 3.2, size=62, rot=1.5, strike=dict(t=3.9, d=.2, color='red')); ev(3.9, 'strike', .2)
 # «Это верёвка, на которой висит лифт» 4.16–6.86: shaft (drafting grey), pulley, cabin, rope
 line([[1470, 905], [1470, 1985]], 4.2, .45, 'grey', 5); line([[1530, 905], [1530, 1985]], 4.3, .45, 'grey', 5)
 line(circle((1500, 915), 17, 24), 4.75, .2, lw=6)
 line([[1474, 1700], [1526, 1700], [1526, 1782], [1474, 1782], [1474, 1700]], 4.95, .25, lw=7)
 line([[1500, 932], [1500, 1700]], 5.25, .6, lw=7)
-write('верёвка!', 1680, 1215, 5.95, .6, 'red', 96)
+write('верёвка!', 1680, 1212, 5.95, .6, 'red', 84)
 arrow([1665, 1190], [1515, 1150], 6.5, .3, 'red', 7)
 # «И чем выше башня, тем она тяжелее» 6.86–9.64: the taller tower dashed, its height measured in blue, the rope thick
 tall = [[CX - 220, GY], [CX - 170, 1300], [CX - 100, 800], [CX - 40, 450], [CX, 300]]
 line(tall, 6.9, .9, 'blue', 7, dash=[26, 22]); line([[2 * CX - x, y] for x, y in tall], 7.0, .9, 'blue', 7, dash=[26, 22])
-ink('dim', 6.95, 1.0, 'blue', **{'from': [1880, GY], 'to': [1880, 300]}, lw=9, ea=1.6, eb=2.4)
+ink('dim', 6.95, 1.0, 'blue', **{'from': [1165, GY], 'to': [1165, 300]}, lw=9, ea=1.6, eb=2.4)
 line([[1500, 330], [1500, 1700]], 8.05, .4, lw=17)
-write('выше = тяжелее', 1960, 520, 8.5, 1.0, 'graphite', 96)
+write('выше = тяжелее', 1640, 560, 8.5, 1.0, 'graphite', 110)
 # «Тимур, выдуманный лифтёр, едет вверх уже третью минуту» 9.64–14.72
 line(circle((1500, 1716), 8, 16), 9.7, .12, lw=4)
 line([[1500, 1724], [1500, 1750], [1491, 1772]], 9.82, .15, lw=4); line([[1500, 1750], [1509, 1772]], 9.97, .08, lw=4)
@@ -120,6 +120,7 @@ line(circle((1790, 1650), 38, 40), 12.4, .45, lw=6)
 line([[1790, 1650], [1790, 1622]], 12.9, .1, lw=5); line([[1790, 1650], [1812, 1660]], 13.0, .1, lw=5)
 write('3 мин', 1845, 1672, 13.2, .5, 'blue', 54)
 # «однажды верёвка станет тяжелее всего остального. Что тогда?» 14.72–20.12: the balance
+S0 = len(E); SDX = -80       # the balance, laid out at its old x and shifted
 SX, SY = 2800, 1600
 line([[SX, 1150], [SX, SY]], 14.8, .3, lw=9); line([[SX - 130, SY], [SX + 130, SY]], 15.1, .2, lw=9)
 PL, PR = (2520, 1250), (3080, 1110)
@@ -134,7 +135,14 @@ write('верёвка', 2410, 1505, 17.4, .8, 'graphite', 64)
 write('всё остальное', 2930, 1370, 18.25, 1.05, 'graphite', 56)
 write('?', 3290, 1330, 19.45, .5, 'red', 250)
 
+def shift(e, dx):
+    for k in ('xy', 'from', 'to', 'c'):
+        if isinstance(e.get(k), list) and len(e[k]) == 2 and not isinstance(e[k][0], list): e[k] = [e[k][0] + dx, e[k][1]]
+    if 'points' in e: e['points'] = [[x + dx, y] for x, y in e['points']]
+    for st in e.get('strokes', []): st['points'] = [[x + dx, y] for x, y in st['points']]
 # ===================================================================== B. the plan 30.9–38.9 (behind the map until 30.9)
+for e in E[S0:]: shift(e, SDX)
+B0 = len(E); BDX = 280
 write('Что я покажу', 3750, 760, 30.95, 1.4, 'graphite', 100)
 magnet(3800, 935, 32.6, r=28)
 line([[3890, 860], [4040, 860]], 32.85, .3, lw=8); hatch(3890, 4040, 860, 33.15, .2, 4)
@@ -152,13 +160,15 @@ write('главный ответ', 4250, 1290, 37.25, 1.05, 'graphite', 74)
 write('в самом конце', 4250, 1375, 38.3, .6, 'blue', 54)
 
 # ===================================================================== C. check 1: the rope 39.43–51.5
+for e in E[B0:]: shift(e, BDX)
+C0 = len(E); CDX = 600            # zone C sits 300 px further right (laid out at its old x, shifted below)
 tag('ПРОВЕРКА 1', 5330, 640, 39.5, size=66, rot=-1.5)
 write('верёвка', 5900, 668, 40.1, .85, 'graphite', 96)
 OW = 440
 el(type='print', id='otis', src='print_otis', xy=[5560, 1085], w=OW, z=8, rot=-2, arrive=dict(t=40.4, kind='drop', d=.45, lift=220, spin=1.4, land=.6))
 ev(40.67, 'land', .2, size='mid')
 magnet(5385, 895, 40.8, r=20); magnet(5735, 885, 40.92, r=20)
-write('лифт на канате, 1854', 5345, 1365, 41.0, .9, 'graphite', 44)
+write('лифт, 1854', 5345, 1370, 41.0, .6, 'graphite', 58)
 SH0, SH1 = 790, 1520
 line([[5930, SH0], [5930, SH1]], 41.05, .4, 'grey', 6); line([[6010, SH0], [6010, SH1]], 41.15, .4, 'grey', 6)
 line([[5890, SH0], [6050, SH0]], 41.6, .25, lw=9); hatch(5890, 6050, SH0, 41.75, .15, 4)
@@ -180,6 +190,8 @@ for a_, b_, c_, d_ in [[-80, -20, -110, -150], [-40, -50, -50, -210], [0, -55, 1
     hand.append([[HX + a_, HY + b_], [HX + c_, HY + d_]])
 for i, p in enumerate(hand): line(p, 48.15 + i * .22, .2 if i else .3, lw=7)
 write('на пальцах', 6720, 1420, 49.4, 1.0, 'blue', 56)
+
+for e in E[C0:]: shift(e, CDX)
 
 # ===================================================================== E. the rope 54.13–85.3 (lower band of the wall)
 Y = 2500
@@ -210,30 +222,30 @@ ink('ring', 82.5, .9, 'red', c=[4804, Y + 178], r=[66, 58], lw=7)
 write('рвётся здесь', 4890, Y + 200, 83.3, 1.3, 'red', 60)
 
 # ===================================================================== camera (one continuous camera; only the cards hide it)
-c = Cam(*fit([130, 640, 2400, 2060]))
-c.fit(1.0, 3.2, [180, 660, 2300, 2040], b=3)                       # the photo lands, the outline draws, tags struck
-c.fit(4.15, 1.6, [1250, 880, 2100, 1800])                          # into the shaft: the rope
-c.fit(6.85, 1.3, [1150, 250, 2600, 2040], a=1.8, b=3)              # the tower grows, the line rides up
-c.fit(9.64, 1.7, [1220, 1590, 1990, 1800], zmax=2.1, a=2.2, b=3)   # down to the cabin and Timur
-c.to(11.4, 3.2, x=1600, z=2.25)
-c.fit(14.7, 1.6, [2360, 1080, 3420, 1640], a=2, b=2.8)             # to the balance
-c.to(16.4, 3.6, z=1.27, x=2900)
-c.fit(20.6, 9.4, [3680, 660, 4880, 1600])                          # (under the map) to the plan
+c = Cam(*fit([-40, 640, 2000, 2060]))
+c.fit(1.0, 3.2, [0, 660, 1960, 2040], b=3)                       # the photo lands, the outline draws, tags struck
+c.fit(4.15, 1.6, [1150, 860, 2250, 2015])                          # into the shaft: the rope
+c.fit(6.85, 1.3, [1000, 250, 2500, 2040], a=1.8, b=3)              # the tower grows, the line rides up
+c.fit(9.64, 1.7, [1200, 1585, 2000, 2012], a=2.2, b=3)   # down to the cabin and Timur
+c.to(11.4, 3.2, x=1610, z=z_of(c) * 1.04)
+c.fit(14.7, 1.6, [2360 + SDX, 1080, 3420 + SDX, 1640], a=2, b=2.8)             # to the balance
+c.to(16.4, 3.6, z=1.27, x=2900 + SDX)
+c.fit(20.6, 9.4, [3680 + BDX, 660, 4880 + BDX, 1600])                          # (under the map) to the plan
 c.to(31.0, 7.8, z=.82)
-c.fit(39.43, 1.5, [5250, 560, 6450, 1570])                         # check 1: tag, photo, shaft
-c.fit(43.7, 1.6, [5820, 780, 7180, 1560], a=2, b=3)                # the arithmetic
-c.fit(48.0, 1.5, [6330, 1060, 7180, 1500], zmax=1.3)               # on the fingers
-c.to(49.6, 2.4, z=1.36)
+c.fit(39.43, 1.5, [5250 + CDX, 560, 6450 + CDX, 1570])                         # check 1: tag, photo, shaft
+c.fit(43.7, 1.6, [5250 + CDX, 560, 7180 + CDX, 1560], a=2, b=3)                # the arithmetic
+c.fit(48.0, 1.5, [6620, 820, 7200 + CDX, 1560], zmax=1.3)               # on the fingers
+c.to(49.6, 2.4, z=z_of(c) * 1.03)
 c.fit(52.75, 1.2, [560, Y + 60, 1500, Y + 800])                    # (under the card) the rope chapter
 c.fit(55.8, 1.5, [560, Y + 60, 2320, Y + 780], a=2, b=3)
 c.fit(59.2, 1.3, [2500, Y + 160, 3320, Y + 740], zmax=1.3)
-c.fit(63.9, .9, [4400, Y + 40, 5200, Y + 420], zmax=1.5)           # the second ceiling
+c.fit(63.5, .95, [4400, Y + 40, 5200, Y + 420], zmax=1.5, a=2, b=2.2)           # the second ceiling
 c.fit(64.7, 1.7, [4400, Y + 40, 5320, Y + 830], a=1.5, b=2.5)      # ride down the rope as it hangs
 c.to(66.6, 3.0, z=z_of(c) * 1.02)
 c.fit(73.3, 1.0, [4080, Y + 40, 5160, Y + 840], a=2, b=2.5)
 c.to(75.0, 5.0, z=z_of(c) * 1.03)
-c.fit(80.2, 2.0, [4160, Y + 60, 5350, Y + 560], zmax=1.42, a=2, b=3)   # push to the top: it breaks here
-c.to(82.4, 2.9, z=z_of(c) * 1.03)
+c.fit(80.2, 2.0, [4140, Y + 50, 5260, Y + 822], a=2, b=3)        # settle on the whole rope, the top in the light: it breaks here
+c.to(82.3, 3.0, z=z_of(c) * 1.025, y=c.cur['y'] - 6)
 c.shake(81.75, amp=4, f=10, k=8)
 
 scene = dict(dur=DUR, board=dict(w=BW, h=BH, seed=27, texScale=.4, ghosts=120, tray=False), hand=1.0, sheen=.07,
