@@ -112,7 +112,7 @@ EC, ER = (1300, 5300), 2000                   # Earth: centre far below the boar
 CBX, CB0, GEO = 1300, 3300, 820               # the cable: x, foot, geostationary height on the board
 line(arc(EC, ER, ER, -112, -68, 40), 1.05, .8, lw=10)
 hatch(800, 1800, 3420, 1.5, .4, 7)
-write('Земля', 560, 3440, 1.6, .6, size=80)
+write('Земля', 720, 3462, 1.6, .6, size=80)
 tag('экватор', 1420, 3395, 2.0, size=46, rot=-1)
 line([[CBX, CB0], [CBX, GEO]], 1.6, 2.3, lw=9, ea=1.5, eb=2.4)                    # «трос от экватора …»
 ink('dim', 3.95, 1.8, 'blue', **{'from': [1560, GEO], 'to': [1560, CB0]}, lw=8, ea=1.6, eb=2.4)   # «… до высоты …»
@@ -130,19 +130,19 @@ CAB = el(type='magnet', id='cab', xy=[CBX, 3200], r=30, color='white', z=20, arr
 ev(9.51, 'clack', .1); ev(9.8, 'slide', 2.0)
 arrow([1380, 3050], [1380, 2450], 10.0, 1.0, 'blue', 6)
 # Tsiolkovsky (pinned print) and his «башня до неба» (dashed, the idea); Artsutanov: hang the cable from above
-TS = meta('print_tsiolkovsky'); TW = 460
-el(type='print', id='tsiol', src='print_tsiolkovsky', xy=[620, 2290], w=TW, z=8, rot=-1.5,
+TS = meta('print_tsiolkovsky'); TW = 600
+el(type='print', id='tsiol', src='print_tsiolkovsky', xy=[560, 2290], w=TW, z=8, rot=-1.5,
    arrive=dict(t=11.95, kind='drop', d=.45, lift=220, spin=1.3, land=.6))
 ev(12.22, 'land', .2, size='mid')
-magnet(500, 2030, 12.35, r=20); magnet(745, 2025, 12.47, r=20)
-write('К. Циолковский', 380, 2680, 12.6, .9, size=66)
-write('идея: конец XIX века', 380, 2780, 13.5, 1.0, size=58)
+magnet(400, 1945, 12.35, r=22); magnet(715, 1940, 12.47, r=22)
+write('К. Циолковский', 280, 2770, 12.6, .9, size=70)
+write('конец XIX века:', 280, 2870, 13.4, .8, size=64)
 def earth_y(x): return EC[1] - math.sqrt(ER ** 2 - (x - EC[0]) ** 2)
 line([[880, earth_y(880)], [1005, 1160], [1130, earth_y(1130)]], 14.0, 1.7, lw=7, dash=[26, 20], ea=1.6, eb=2)
-write('башня до неба', 330, 1260, 14.45, 1.0, size=92)
-arrow([1385, 905], [1385, 1180], 16.15, .45, 'graphite', 7)
-write('Ю. Арцутанов:', 1450, 1220, 16.55, .9, size=72)
-write('трос сверху', 1450, 1325, 18.1, .8, size=72)
+write('башня до неба', 280, 2985, 14.45, 1.0, size=84)
+arrow([1385, 905], [1385, 1430], 16.15, .6, 'graphite', 7)
+write('Ю. Арцутанов:', 1450, 1530, 16.65, .9, size=72)
+write('трос сверху', 1450, 1635, 18.1, .8, size=72)
 
 B0 = len(E)
 # ===================================================================== B. steel vs the elevator, one scale  (V31 20.18–35.46)
@@ -169,9 +169,8 @@ for j, yy in enumerate((2050, 2100, 2150)):                                   # 
     zz = [[x, yy + (12 if (i % 2) else -12)] for i, x in enumerate(range(TX0 + 40, TX1 - 10, 40))]
     line(zz, 37.7 + j * .2, .45, 'grey', 4)
 write('в лаборатории: очень прочные', 2760, 2340, 38.6, 1.5, size=84)
-line([[3420, 2530], [4780, 2530]], 41.0, 1.2, 'grey', 9, dash=[30, 22])        # the long thread nobody can grow
+line([[3420, 2530], [4600, 2530]], 41.0, 1.1, 'grey', 9, dash=[30, 22])        # the long thread nobody can grow
 write('длинная нить', 3440, 2470, 41.3, .8, size=64)
-write('?', 4830, 2575, 42.6, .3, size=140)
 for i, (a_, b_) in enumerate([(2780, 2890), (2950, 3030), (3090, 3220), (3280, 3350)]):
     line([[a_, 2530], [b_, 2530]], 44.8 + i * .15, .14, lw=15)
 write('только короткие кусочки', 2760, 2660, 45.0, 1.2, size=66)
@@ -186,15 +185,15 @@ A2 = len(E)
 line([[CBX, GEO], [CBX, 440]], 54.8, .7, lw=9)
 line(rect(CBX - 75, 330, CBX + 75, 440), 55.5, .45, lw=9)
 hatch(CBX - 75, CBX + 75, 440, 55.95, .3, 4)
-write('противовес', 1430, 420, 56.2, .9, size=72)
-DEB = [(2230, 1610), (2400, 1690), (2120, 1715)]
+write('противовес', 1200, 420, 56.2, .9, size=72, align='right')
+DEB = [(2230, 560), (2400, 640), (2120, 665)]
 for i, (dx_, dy_) in enumerate(DEB):
     line([[dx_ - 14, dy_ - 10], [dx_ + 12, dy_ - 14], [dx_ + 16, dy_ + 8], [dx_ - 8, dy_ + 14], [dx_ - 14, dy_ - 10]], 57.6 + i * .2, .2, lw=6)
     line([[dx_ + 40, dy_], [dx_ + 170, dy_]], 57.75 + i * .2, .25, 'grey', 4)
-write('космический мусор', 1700, 1840, 58.4, 1.0, size=66)
-arrow([2080, 1660], [1350, 1660], 59.8, .55, 'graphite', 7)
-line([[1268, 1640], [1284, 1672], [1300, 1645], [1316, 1676], [1332, 1650]], 60.45, .3, 'red', 6)
-write('это детали', 1700, 1935, 62.3, .7, size=60)
+write('космический мусор', 1470, 765, 58.4, 1.0, size=66)
+arrow([2080, 610], [1350, 610], 59.8, .55, 'graphite', 7)
+line([[1268, 590], [1284, 622], [1300, 595], [1316, 626], [1332, 600]], 60.45, .3, 'red', 6)
+write('это детали', 2120, 480, 62.3, .7, size=60)
 write('сначала: нить, которая выдержит саму себя', 2760, 3255, 64.6, 2.0, size=82)
 
 A3 = len(E)
@@ -296,31 +295,29 @@ c = Cam(*fit([550, 2500, 2450, 3470]))
 c.fit(1.6, 2.3, [550, 640, 2450, 1610], a=1.6, b=2.4)                 # ride up the cable as it is drawn
 c.fit(3.95, 1.9, [800, 1500, 2600, 2720], a=2, b=2.6)                 # down the dimension to the number
 c.fit(6.3, 1.3, [900, 650, 2650, 1460])                                # the orbit, the satellite
-c.fit(9.0, 1.0, [700, 2450, 2500, 3420])                               # the cabin at the foot
+c.fit(9.0, 1.0, [700, 2450, 2500, 3470])                               # the cabin at the foot
 c.fit(9.8, 2.1, [700, 1100, 2500, 2070], a=1.8, b=2.6)                 # … rides up with it
-c.fit(11.7, 1.1, [280, 1880, 1420, 2860])                              # Tsiolkovsky
-c.fit(13.85, 1.2, [250, 1900, 1750, 2900])
-c.fit(14.2, 1.3, [250, 1080, 1750, 2080], a=1.8, b=2.6)                # up the dashed tower
-c.fit(16.0, 1.3, [900, 660, 2600, 1460])                               # Artsutanov: from above
+c.fit(11.7, 1.1, [230, 1880, 1760, 3480])                              # Tsiolkovsky, the Earth below
+c.fit(13.85, 1.5, [230, 1100, 1760, 3480], a=1.8, b=2.6)               # up the dashed tower
+c.fit(16.0, 1.3, [1150, 820, 2600, 1700])                               # Artsutanov: from above
 c.fit(19.6, 1.6, [2650, 440, 3950, 1110])                              # B: steel
 c.fit(24.9, 2.4, [3550, 440, 4950, 1110], a=1.5, b=2.6)                # ride the long dimension
-c.fit(27.2, 1.6, [2650, 440, 4950, 1650])                              # judgement frame
+c.fit(26.9, 1.8, [2650, 440, 4950, 1650])                              # judgement frame
 c.fit(35.5, 1.5, [2650, 1800, 4300, 2420])                             # C: nanotubes
 c.fit(40.4, 1.4, [2650, 1800, 4950, 2720])
-c.fit(46.3, 1.4, [2650, 2380, 4600, 3110])
-c.fit(52.7, 1.8, [900, 270, 2650, 1110])                               # back to the cable top: counterweight
-c.fit(57.2, 1.3, [1150, 1150, 2650, 1990])                             # debris
+c.fit(46.3, 1.4, [2650, 2500, 4600, 3170])
+c.fit(52.7, 1.8, [700, 250, 2650, 1100])                               # back to the cable top: counterweight, debris
 c.fit(63.4, 1.6, [2650, 2740, 4600, 3320])                             # the thread that holds itself
-c.fit(68.5, 1.8, [5000, 300, 7050, 1250])                              # D: the three barriers
+c.fit(68.5, 1.8, [5000, 330, 7050, 1200])                              # D: the three barriers
 c.fit(77.0, 1.3, [5000, 960, 7050, 1700])
 c.fit(83.5, 1.6, [5000, 380, 7050, 2010], a=2, b=3)                    # the judgement frame: all three + the answer
 c.shake(87.4, amp=4, f=10, k=8)
-c.fit(91.3, 1.3, [5000, 1720, 7050, 2340])
+c.fit(91.3, 1.3, [5000, 1380, 7050, 2340])
 c.fit(96.2, 1.5, [5000, 2560, 7050, 3480])                             # E: the record
 c.fit(103.8, 1.3, [7050, 1330, 8450, 2040])                            # F: the tower's foot, the cabin starts
 c.fit(105.1, 1.8, [7050, 620, 8450, 1330], a=1.8, b=2.6)               # … and rides with it to the top
 c.fit(107.9, 1.6, [7050, 1980, 8450, 2730], a=2, b=3)                  # what he knows now
-c.fit(119.8, 1.4, [7050, 2780, 8450, 3470])                            # the question
+c.fit(119.8, 1.4, [7050, 2640, 8450, 3470])                            # the question
 c.fit(126.3, 3.5, [250, 180, 8450 + BX + FS, 3480], a=2, b=3.2, sx=40)                  # the whole wall, once
 c.to(129.9, 1.92, z=z_of(c) * 1.01)
 

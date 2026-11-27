@@ -97,6 +97,9 @@ class Cam:
         return t + d
     def fit(s, t, d, box, zmax=9, roll=None, a=2, b=2.6, ax='c'):
         x, y, z = fit(box, zmax, ax); return s.to(t, d, x, y, z, roll, a, b)
+    def frame(s, t, d, left, z, bottom=2935, a=2, b=2.6):
+        """frame with its left edge at board x = left and board y = bottom on the band's lower edge (screen y 800)"""
+        return s.to(t, d, left + 960 / z, bottom - (SAFE_Y1 - 540) / z, z, None, a, b)
     def shake(s, t, amp=5, f=9, k=7, dir=(0, 1)):
         s.shakes.append(dict(t=t, amp=amp, f=f, k=k, dir=list(dir)))
     def json(s): return dict(x=s.base['x'], y=s.base['y'], z=s.base['z'], roll=0, moves=s.moves, shakes=s.shakes)
@@ -172,8 +175,8 @@ line([[jl(KM1), KM1], [JX - 8, KM1 - 150], [JX, KM1 - 205]], 19.4, .4, lw=7, das
 line([[jr(KM1), KM1], [JX + 8, KM1 - 150], [JX, KM1 - 205]], 19.5, .4, lw=7, dash=[18, 14])
 write('?', 2530, 1460, 20.4, .3, 'graphite', 130)
 write('высоту не называют', 2390, 1805, 20.5, 1.3, 'graphite', 64, align='right')
-write('так высоко — ещё никто', 2630, 1545, 21.3, 1.6, 'graphite', 72)
-tag('Джидда', 2640, 2050, 16.9, size=48, rot=-1.5)
+write('так высоко — ещё никто', 2440, 1530, 21.3, 1.6, 'graphite', 72, align='right')
+tag('Джидда', 2010, 1385, 16.9, size=48, rot=-1.5)
 JW = 420
 el(type='print', id='jeddah', src='print_jeddah', xy=[4235, 2525], w=JW, z=8, rot=1.8, arrive=dict(t=23.8, kind='drop', d=.5, lift=220, spin=1.3, land=.6))
 ev(24.1, 'land', .2, size='mid')
@@ -231,9 +234,9 @@ ink('count', 64.4, 1.6, 'blue', text='≈ {0} свай', to=[270], xy=[2200, 309
 ink('dim', 66.4, .9, 'blue', **{'from': [2705, GY + 10], 'to': [2705, 3530]}, lw=6)
 write('самые длинные ≈ 110 м', 2200, 3215, 67.0, 1.6, 'blue', 62, align='right')
 write('выше башня → глубже корни', 2200, 3375, 69.25, 1.9, 'graphite', 68, align='right')
-magnet(1330, 3352, 71.6, r=22)
+magnet(1262, 3352, 71.6, r=22)
 arrow([JX, 2840], [JX, 2280], 74.2, .5, 'blue', 7)
-arrow([2810, 2960], [2810, 3510], 74.7, .5, 'blue', 7)
+arrow([2228, 2960], [2228, 3510], 74.7, .5, 'blue', 7)
 line([[5115, OBS + 20], [5135, OBS + 20], [5135, CAB[0] - 8], [5115, CAB[0] - 8]], 75.9, .8, 'blue', 5)
 write('а трос не растёт', 5150, 2510, 77.9, 1.1, 'red', 66)
 
@@ -284,7 +287,7 @@ stick(8000, GY - 4, 114.5, h=118)
 arrow([8095, 2700], [8095, 2840], 114.9, .35, 'blue', 5)
 tag('Тимур', 7600, 2845, 115.3, size=44, rot=-2)
 write('где потолок?', 7520, 2725, 117.1, 1.0, 'graphite', 76)
-CEIL = 690
+CEIL = 720
 line([[700, CEIL], [8450, CEIL]], 118.6, 2.2, 'red', 7, dash=[30, 20], ea=1.6, eb=2.2)
 write('ни лифт, ни сталь?', 5300, CEIL + 120, 121.4, 1.2, 'graphite', 96)
 el(type='stamp', text='ЕСТЬ', xy=[7990, CEIL + 210], size=120, rot=-6, t=123.5); ev(123.5, 'stamp', .1)
@@ -299,42 +302,40 @@ c.fit(1.0, 3.0, [90, 1790, 1600, 3090], b=3)                       # the photo l
 c.fit(4.4, 1.8, [120, 1700, 2000, 3080], a=2, b=3)                  # the drawn Burj, 828 m, Taipei
 c.to(6.4, 3.4, z=z_of(c) * 1.03)
 c.fit(10.7, 1.6, [90, 1640, 2250, 3090], a=2, b=2.8)               # the record holds; challengers
-c.fit(15.6, 1.8, [1300, 1350, 3350, 2950], a=2, b=3)                # Jeddah rises over 1 km
-c.fit(18.6, 1.6, [1280, 1380, 3480, 2935], a=2, b=3)
+c.fit(15.6, 2.4, [60, 1300, 3480, 2935], a=2, b=3, ax='l')          # Jeddah rises over 1 km
 c.to(20.2, 3.0, z=z_of(c) * 1.02)
-c.fit(23.4, 1.6, [2250, 1380, 4550, 2930], a=2, b=2.8)              # the photo of the building site
+c.fit(23.4, 1.6, [2300, 2000, 4550, 2935], a=2, b=2.8)              # the photo of the building site
 c.fit(25.8, 1.5, [2250, 2120, 4550, 2930], zmax=1.0, a=2, b=3)      # the stop at the 63rd floor
 c.to(27.4, 4.0, z=z_of(c) * 1.03)
 c.fit(32.1, 1.5, [2250, 2110, 4550, 2930], zmax=1.0, a=2, b=3)      # 2025, past the 100th floor
 c.fit(38.8, 1.4, [2260, 2100, 4560, 2930], zmax=1.0, a=2, b=3)      # the 2028 plan slides
 c.to(40.3, 5.6, z=z_of(c) * 1.02)
-c.fit(46.1, 1.9, [2400, 1950, 5400, 2930], a=1.8, b=3)              # ride the projection line to the lift panel
-c.fit(48.4, 1.6, [4560, 1990, 6100, 2930], a=2, b=3)
+c.fit(46.1, 1.9, [2560, 1950, 5400, 2930], a=1.8, b=3, ax='l')              # ride the projection line to the lift panel
+c.fit(48.4, 1.6, [4560, 1990, 6100, 2930], a=2, b=3, ax='l')
 c.to(50.1, 6.0, z=z_of(c) * 1.025)
-c.fit(58.9, 1.4, [4560, 1830, 6150, 2930], a=2, b=3)                # the source card
+c.fit(58.9, 1.4, [4560, 1830, 6150, 2930], a=2, b=3, ax='l')                # the source card
 c.fit(63.3, 1.9, [1250, 2850, 2900, 3600], zmax=1.15, a=2, b=3)     # down to the piles
 c.to(65.3, 3.6, z=z_of(c) * 1.02)
 c.fit(69.0, 1.3, [1250, 2850, 2900, 3600], zmax=1.15, a=2, b=3)     # the rule
 c.fit(73.9, 1.4, [1250, 2150, 2950, 3600], a=2, b=3)                # tower up, roots down
-c.fit(75.4, 1.8, [4560, 1830, 6150, 2930], a=2, b=3)                # the rope: it does not grow
+c.fit(75.4, 1.8, [4560, 1830, 6150, 2930], a=2, b=3, ax='l')                # the rope: it does not grow
 c.to(77.3, 2.2, z=z_of(c) * 1.02)
 c.fit(79.5, 2.2, [80, 1350, 6100, 3600], a=1.8, b=3)                # chapter pull-back: the Jeddah wall
-c.fit(81.9, .7, [2600, 1300, 4600, 2935])                           # (under the card) onto the 1 km line
-c.fit(82.85, 3.3, [6000, 1250, 7980, 2935], a=1.8, b=2.6, ax='l')           # ride the line to Wright
-c.fit(86.3, 2.6, [6000, 1250, 7700, 2330], a=2, b=3, ax='l')
-c.fit(89.3, 1.8, [6000, 950, 8200, 2930], a=2, b=3, ax='l')                 # the mile tower, nuclear lifts, never built
-c.fit(91.4, 2.3, [6000, 1900, 7700, 2930], a=2, b=3, ax='l')
+c.frame(81.9, .7, 2775, .46)                           # (under the card) onto the 1 km line
+c.fit(82.85, 3.3, [6060, 1250, 7980, 2935], a=1.8, b=2.6, ax='l')           # ride the line to Wright
+c.fit(86.3, 2.6, [6060, 1250, 7700, 2330], a=2, b=3, ax='l')
+c.fit(89.3, 1.8, [6060, 950, 8200, 2930], a=2, b=3, ax='l')                 # the mile tower, nuclear lifts, never built
+c.fit(91.4, 2.3, [6060, 1900, 7700, 2930], a=2, b=3, ax='l')
 c.to(94.0, 4.0, z=z_of(c) * 1.025)
 c.fit(98.6, 2.0, [100, 950, 8600, 3620], a=1.8, b=3)                # the mile against Burj and Jeddah
 c.to(100.6, .6, z=z_of(c) * 1.005)
 c.fit(101.0, 1.7, [6800, 1760, 8640, 2935], a=2, b=3, ax='r')               # sway, tripod
 c.to(102.7, 4.0, z=z_of(c) * 1.03)
-c.fit(107.4, 1.6, [6000, 1950, 7800, 2930], a=2, b=3, ax='l')               # nothing to test it with
+c.fit(107.4, 1.6, [6060, 1950, 7800, 2930], a=2, b=3, ax='l')               # nothing to test it with
 c.to(109.0, 4.5, z=z_of(c) * 1.02)
-c.fit(114.1, 1.6, [6900, 2000, 8620, 2930], a=2, b=3, ax='r')               # Timur: where is the ceiling?
-c.fit(118.4, 2.4, [5200, 585, 8640, 2935], a=1.8, b=3, ax='r')              # rise to the ceiling
-c.to(120.8, 2.6, z=z_of(c) * 1.02)
-c.to(123.4, 3.0, z=z_of(c) * 1.02)                # the rope, all the way up
+c.frame(114.1, 1.6, 7140, 1.215, bottom=2930, a=2, b=3)               # Timur: where is the ceiling?
+c.frame(118.4, 2.4, 2765, 1920 / (8725 - 2765), a=1.8, b=3)              # rise to the ceiling
+c.to(120.8, 5.6, y=c.cur['y'] - 12)                # the rope, all the way up
 c.fit(126.6, 3.4, [60, 300, 8650, 3600], a=1.8, b=3.2)              # the whole wall
 c.to(130.0, 1.49, z=z_of(c) * 1.006)
 

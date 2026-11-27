@@ -1,0 +1,3 @@
+still waiting for window.READY after 20 s. The page has to set window.READY = true once fonts and images are loaded.
+  no console errors so far: is the <script> closed, does it reach the line that sets window.READY?
+  debug: node core/render/still.mjs /home/user/sofia-studio/ru_geo/lemo/bh_brief_G 0, or open the page in a normal browser (the tools serve the library root on 127.0.0.1)
