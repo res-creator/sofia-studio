@@ -1,6 +1,6 @@
 # EP20 upload kit — How It's Run
 
-**File:** `keywest_water.mp4` (1920×1080, 30 fps, about 9:13, −14 LUFS). Not in git (GitHub large-file quota is full); delivered as a file. Delivered copy: `Key West Has No Rivers or Lakes. So How Do 25,000 People Drink.mp4`.
+**File:** `keywest_water.mp4` (1920×1080, 30 fps, 9:13, −14 LUFS). Not in git (GitHub large-file quota is full); delivered as a file. Delivered copy: `Key West Has No Rivers or Lakes. So How Do 25,000 People Drink.mp4` (218 MB, the render itself; no separate master kept).
 
 **Mid-roll ads:** over 8 minutes, so one mid-roll is allowed; put it on the chapter break at about 5:33.
 
