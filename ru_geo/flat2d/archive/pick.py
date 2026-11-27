@@ -2,7 +2,7 @@
 """python3 archive/pick.py <slug>: читает ru_geo/<slug>/photos.json ({key:{q:[...],cap,need}}), ищет на Wikimedia Commons свободные фото,
 скачивает лучшее (≥900 px) в ru_geo/<slug>/archive/img, пишет credits.json и лист для проверки review/photos_sheet.jpg. Ключи из "reuse" берутся из другой папки (см. поле _reuse)."""
 import html, io, json, os, re, sys, time, urllib.parse, urllib.request
-UA = {'User-Agent': 'Mozilla/5.0 (documentary research script; non-commercial research)'}
+UA = {'User-Agent': 'MyslenyEksperiment-docs/1.0 (educational documentary project; photo lookup)'}
 FREE = re.compile(r'public domain|pd[- ]|cc0|cc by(?!-nc)|cc-by(?!-nc)|no restrictions', re.I)
 R_ = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')); slug = sys.argv[1]; J = f'{R_}/{slug}'
 P = json.load(open(f'{J}/photos.json', encoding='utf8')); os.makedirs(f'{J}/archive/img', exist_ok=True); os.makedirs(f'{J}/review', exist_ok=True)
