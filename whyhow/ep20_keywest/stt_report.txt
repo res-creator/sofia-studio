@@ -1,0 +1,56 @@
+A001 1.000 
+A002 0.865 replace: twenty five thousand -> 25 000
+A003 1.000 
+A004 0.889 replace: a hundred and thirty -> 130
+A005 1.000 
+A006 1.000 
+A007 1.000 
+A008 1.000 
+A009 1.000 
+A010 1.000 
+A011 1.000 
+A011B 0.933 replace: twenty two thousand -> 22 000
+A012 0.833 replace: eighteen sixties -> 1860s | replace: fresh water -> freshwater | replace: seven thousand -> 7 000
+A013 0.917 replace: twenty -> 20
+A014 1.000 
+A015 1.000 
+A016 1.000 
+A017 1.000 
+A018 1.000 
+A019 0.943 replace: nineteen twelve -> 1912
+A020 0.933 replace: nineteen thirty five -> 1935
+A021 0.955 replace: trains -> train
+A022 1.000 
+A023 0.793 replace: two -> ii | replace: seventy five thousand -> 75 000 | replace: thirty five thousand -> 35 000
+A024 0.905 replace: a hundred and twenty eight -> 128 | replace: eighteen -> 18
+A025 0.952 replace: thirteen -> 13
+A026 0.720 replace: twenty second nineteen forty two -> 22 1942
+A027 1.000 
+A027B 0.808 replace: ten -> 10 | replace: fifteen -> 15 | replace: a hundred and twenty eight -> 128
+A028 0.944 replace: eighteen -> 18 | replace: fifties -> 50s
+A028B 0.885 replace: nineteen seventy six -> 1976 | replace: seven -> 7 | delete: dollars -> 
+A029 0.783 replace: nineteen eighty -> 1980 | replace: thirty six -> 36 | replace: nineteen eighty two -> 1982
+A030 1.000 
+A031 0.706 replace: a hundred and thirty -> 130 | replace: forty five -> 45 | replace: twenty -> 20 | replace: fifty five thousand -> 55 000
+A032 1.000 
+A032B 1.000 
+A033 1.000 
+A034 0.947 replace: nineteen sixty -> 1960
+A035 0.917 replace: nineteen sixty seven -> 1967
+A036 0.828 replace: twenty seventeen -> 2017 | replace: four -> 4
+A037 1.000 
+A038 1.000 
+A039 0.966 replace: zuelch -> zewelch
+A040 0.921 replace: twenty twenty five -> 2025 | replace: four -> 4
+A041 1.000 
+A042 1.000 
+A043 1.000 
+A044 1.000 
+A045 0.904 replace: clean up -> cleanup | replace: ninety four percent -> 94
+A046 0.896 replace: saltwater -> salt water | replace: twenty -> 20 | replace: thirty -> 30
+A047 0.912 replace: ten -> 10 | delete: dollars ->  | replace: forty two -> 42
+A047B 0.941 replace: twenty twenty four -> 2024
+A048 1.000 
+A049 0.900 replace: a hundred and thirty -> 130 | replace: forty five -> 45
+A050 0.938 replace: eighty -> 80
+A051 1.000 

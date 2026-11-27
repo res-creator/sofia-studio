@@ -30,7 +30,7 @@ const A = (k, label, o = {}) => V(k, label, { sfx: 'click', ...o });
 const Q = (cutW, top, l1, l2, chipT, source) => S('stats', { cutW, head: top, items: [], sfx: 'boom', over: [at(head(l1, null, l2 ? 470 : 520, 88, Yc), 0.05), ...(l2 ? [at(head(l2, null, 590, 88, Yc), 0.25)] : []), ...(chipT ? [{ ...chipC(chipT, null, l2 ? 740 : 700, 44), at: 0.6 }] : [])], source });
 const G = { fc: { lon: -80.48, lat: 25.45 }, kw: { lon: -81.78, lat: 24.555 }, largo: { lon: -80.44, lat: 25.09 }, isla: { lon: -80.63, lat: 24.92 }, mara: { lon: -81.09, lat: 24.71 }, stock: { lon: -81.74, lat: 24.57 }, miami: { lon: -80.19, lat: 25.77 }, havana: { lon: -82.37, lat: 23.11 } };
 const PIPE = [[-80.48, 25.45], [-80.43, 25.25], [-80.44, 25.09], [-80.63, 24.92], [-80.85, 24.80], [-81.09, 24.71], [-81.2, 24.68], [-81.35, 24.67], [-81.55, 24.62], [-81.78, 24.555]];
-const GL = (o = {}) => ({ relief: true, borders: true, lon: [[0, -81.2], [3, -81.1]], lat: [[0, 25.0], [3, 24.95]], R: [[0, 11000], [3, 12500]], ...o });
+const GL = (o = {}) => ({ relief: true, borders: true, lon: [[0, -81.2], [3, -81.1]], lat: [[0, 25.0], [3, 24.95]], R: [[0, 26000], [3, 30000]], ...o });
 function build(T) {
   const out = []; const add = (t, sh, trans) => out.push({ t, scene: sh.scene, p: sh.p, trans });
   function beats(pid, list, o = {}) {
