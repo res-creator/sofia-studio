@@ -1,0 +1,1766 @@
+{
+"segs": [
+{
+"t": 0.0,
+"d": 3.467,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/north_sea.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "море (иллюстративное фото)"
+},
+{
+"t": 3.467,
+"d": 3.467,
+"type": "clip",
+"src": "stock/px128741.mp4",
+"ss": 0.3
+},
+{
+"t": 6.933,
+"d": 3.467,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/flag_sea.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "флаг Силенда (изображение)"
+},
+{
+"t": 10.4,
+"d": 3.467,
+"type": "clip",
+"src": "stock/px11945.mp4",
+"ss": 0.3
+},
+{
+"t": 13.867,
+"d": 3.467,
+"type": "clip",
+"src": "stock/px140340.mp4",
+"ss": 0.3
+},
+{
+"t": 17.333,
+"d": 3.467,
+"type": "clip",
+"src": "stock/px275891.mp4",
+"ss": 0.3
+},
+{
+"t": 20.8,
+"d": 3.132,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/world_map.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "политическая карта мира (современная)"
+},
+{
+"t": 23.932,
+"d": 3.132,
+"type": "clip",
+"src": "stock/px33237.mp4",
+"ss": 0.3
+},
+{
+"t": 27.063,
+"d": 3.132,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/maunsell_forts.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "морские форты Маунселла времён войны (фото)"
+},
+{
+"t": 30.195,
+"d": 3.132,
+"type": "clip",
+"src": "stock/px30090.mp4",
+"ss": 0.3
+},
+{
+"t": 33.327,
+"d": 3.132,
+"type": "clip",
+"src": "stock/px33236.mp4",
+"ss": 0.3
+},
+{
+"t": 36.458,
+"d": 3.132,
+"type": "clip",
+"src": "stock/px1890.mp4",
+"ss": 0.3
+},
+{
+"t": 39.59,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/create_country/card_ch_41.png"
+},
+{
+"t": 42.19,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/create_country/card_big_2.png"
+},
+{
+"t": 45.79,
+"d": 3.488,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/montevideo_conf.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "страны Конвенции Монтевидео (схема) и архивные материалы конференции"
+},
+{
+"t": 49.278,
+"d": 3.488,
+"type": "clip",
+"src": "stock/px349087.mp4",
+"ss": 0.3
+},
+{
+"t": 52.765,
+"d": 3.488,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/world_map.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "политическая карта мира (современная)"
+},
+{
+"t": 56.252,
+"d": 3.488,
+"type": "clip",
+"src": "stock/px9772.mp4",
+"ss": 0.3
+},
+{
+"t": 59.74,
+"d": 3.124,
+"type": "clip",
+"src": "stock/px6174.mp4",
+"ss": 0.3
+},
+{
+"t": 62.864,
+"d": 3.124,
+"type": "clip",
+"src": "stock/px30091.mp4",
+"ss": 0.3
+},
+{
+"t": 65.989,
+"d": 3.124,
+"type": "clip",
+"src": "stock/px3627.mp4",
+"ss": 0.3
+},
+{
+"t": 69.113,
+"d": 3.124,
+"type": "clip",
+"src": "stock/px30092.mp4",
+"ss": 0.3
+},
+{
+"t": 72.237,
+"d": 3.124,
+"type": "clip",
+"src": "stock/px2024.mp4",
+"ss": 0.3
+},
+{
+"t": 75.361,
+"d": 3.124,
+"type": "clip",
+"src": "stock/px3630.mp4",
+"ss": 0.3
+},
+{
+"t": 78.486,
+"d": 3.124,
+"type": "clip",
+"src": "stock/px62926.mp4",
+"ss": 0.3
+},
+{
+"t": 81.61,
+"d": 3.235,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/montevideo_conf.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "страны Конвенции Монтевидео (схема) и архивные материалы конференции"
+},
+{
+"t": 84.845,
+"d": 3.235,
+"type": "clip",
+"src": "stock/px48119.mp4",
+"ss": 0.3
+},
+{
+"t": 88.08,
+"d": 3.235,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/maunsell_forts.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "морские форты Маунселла времён войны (фото)"
+},
+{
+"t": 91.315,
+"d": 3.235,
+"type": "clip",
+"src": "stock/px11258.mp4",
+"ss": 0.3
+},
+{
+"t": 94.55,
+"d": 3.235,
+"type": "clip",
+"src": "stock/px241200.mp4",
+"ss": 0.3
+},
+{
+"t": 97.785,
+"d": 3.235,
+"type": "clip",
+"src": "stock/px217404.mp4",
+"ss": 0.3
+},
+{
+"t": 101.02,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/create_country/card_ch_102.png"
+},
+{
+"t": 103.62,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/create_country/card_big_5.png"
+},
+{
+"t": 107.22,
+"d": 3.47,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/sealand_tower.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "Рафс-Тауэр, он же Силенд (фото XX-XXI века)"
+},
+{
+"t": 110.69,
+"d": 3.47,
+"type": "clip",
+"src": "stock/px378035.mp4",
+"ss": 0.3
+},
+{
+"t": 114.16,
+"d": 3.47,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/roy_bates.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Рой Бейтс на Силенде (архивное фото, 1978)"
+},
+{
+"t": 117.63,
+"d": 3.47,
+"type": "clip",
+"src": "stock/px25488.mp4",
+"ss": 0.3
+},
+{
+"t": 121.1,
+"d": 3.47,
+"type": "clip",
+"src": "stock/px130229.mp4",
+"ss": 0.3
+},
+{
+"t": 124.57,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/create_country/card_big_6.png"
+},
+{
+"t": 128.17,
+"d": 3.523,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/chelmsford_hall.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Шир-холл в Челмсфорде (современное фото; здесь шёл суд 1968 года)"
+},
+{
+"t": 131.692,
+"d": 3.523,
+"type": "clip",
+"src": "stock/px54904.mp4",
+"ss": 0.3
+},
+{
+"t": 135.215,
+"d": 3.523,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/north_sea.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "море (иллюстративное фото)"
+},
+{
+"t": 138.737,
+"d": 3.523,
+"type": "clip",
+"src": "stock/px15356.mp4",
+"ss": 0.3
+},
+{
+"t": 142.26,
+"d": 3.374,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/roy_bates.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Рой Бейтс на Силенде (архивное фото, 1978)"
+},
+{
+"t": 145.634,
+"d": 3.374,
+"type": "clip",
+"src": "stock/px211204.mp4",
+"ss": 0.3
+},
+{
+"t": 149.008,
+"d": 3.374,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/maunsell_forts.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "морские форты Маунселла времён войны (фото)"
+},
+{
+"t": 152.382,
+"d": 3.374,
+"type": "clip",
+"src": "stock/px293788.mp4",
+"ss": 0.3
+},
+{
+"t": 155.756,
+"d": 3.374,
+"type": "clip",
+"src": "stock/px63846.mp4",
+"ss": 0.3
+},
+{
+"t": 159.13,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/create_country/card_big_8.png"
+},
+{
+"t": 162.73,
+"d": 2.886,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/sealand_tower.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "Рафс-Тауэр, он же Силенд (фото XX-XXI века)"
+},
+{
+"t": 165.616,
+"d": 2.886,
+"type": "clip",
+"src": "stock/px42189.mp4",
+"ss": 0.3
+},
+{
+"t": 168.502,
+"d": 2.886,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/flag_sea.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "флаг Силенда (изображение)"
+},
+{
+"t": 171.388,
+"d": 2.886,
+"type": "clip",
+"src": "stock/px211096.mp4",
+"ss": 0.3
+},
+{
+"t": 174.274,
+"d": 2.886,
+"type": "clip",
+"src": "stock/px42190.mp4",
+"ss": 0.3
+},
+{
+"t": 177.16,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/create_country/card_ch_178.png"
+},
+{
+"t": 179.76,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/create_country/card_big_9.png"
+},
+{
+"t": 183.36,
+"d": 3.418,
+"type": "clip",
+"src": "stock/px172860.mp4",
+"ss": 0.3
+},
+{
+"t": 186.778,
+"d": 3.418,
+"type": "clip",
+"src": "stock/px174299.mp4",
+"ss": 0.3
+},
+{
+"t": 190.196,
+"d": 3.418,
+"type": "clip",
+"src": "stock/px119843.mp4",
+"ss": 0.3
+},
+{
+"t": 193.614,
+"d": 3.418,
+"type": "clip",
+"src": "stock/px227293.mp4",
+"ss": 0.3
+},
+{
+"t": 197.032,
+"d": 3.418,
+"type": "clip",
+"src": "stock/px176043.mp4",
+"ss": 0.3
+},
+{
+"t": 200.45,
+"d": 3.243,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/danube_river.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Дунай (иллюстративное фото)"
+},
+{
+"t": 203.693,
+"d": 3.243,
+"type": "clip",
+"src": "stock/px58846.mp4",
+"ss": 0.3
+},
+{
+"t": 206.937,
+"d": 3.243,
+"type": "clip",
+"src": "stock/px79302.mp4",
+"ss": 0.3
+},
+{
+"t": 210.18,
+"d": 3.243,
+"type": "clip",
+"src": "stock/px80700.mp4",
+"ss": 0.3
+},
+{
+"t": 213.423,
+"d": 3.243,
+"type": "clip",
+"src": "stock/px101975.mp4",
+"ss": 0.3
+},
+{
+"t": 216.667,
+"d": 3.243,
+"type": "clip",
+"src": "stock/px130918.mp4",
+"ss": 0.3
+},
+{
+"t": 219.91,
+"d": 3.056,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/danube_river.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "Дунай (иллюстративное фото)"
+},
+{
+"t": 222.966,
+"d": 3.056,
+"type": "clip",
+"src": "stock/px41315.mp4",
+"ss": 0.3
+},
+{
+"t": 226.022,
+"d": 3.056,
+"type": "clip",
+"src": "stock/px305998.mp4",
+"ss": 0.3
+},
+{
+"t": 229.078,
+"d": 3.056,
+"type": "clip",
+"src": "stock/px262308.mp4",
+"ss": 0.3
+},
+{
+"t": 232.134,
+"d": 3.056,
+"type": "clip",
+"src": "stock/px127690.mp4",
+"ss": 0.3
+},
+{
+"t": 235.19,
+"d": 3.358,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/hutt_river.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Хатт-Ривер, Западная Австралия (фото)"
+},
+{
+"t": 238.548,
+"d": 3.358,
+"type": "clip",
+"src": "stock/px102002.mp4",
+"ss": 0.3
+},
+{
+"t": 241.907,
+"d": 3.358,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/wheat_field.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "пшеничное поле (иллюстративное фото)"
+},
+{
+"t": 245.265,
+"d": 3.358,
+"type": "clip",
+"src": "stock/px42931.mp4",
+"ss": 0.3
+},
+{
+"t": 248.623,
+"d": 3.358,
+"type": "clip",
+"src": "stock/px4722.mp4",
+"ss": 0.3
+},
+{
+"t": 251.982,
+"d": 3.358,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/hutt_river.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.8,
+0.55
+],
+"cap": "Хатт-Ривер, Западная Австралия (фото)"
+},
+{
+"t": 255.34,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/create_country/card_big_13.png"
+},
+{
+"t": 258.94,
+"d": 2.948,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/hutt_river.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Хатт-Ривер, Западная Австралия (фото)"
+},
+{
+"t": 261.888,
+"d": 2.948,
+"type": "clip",
+"src": "stock/px13719.mp4",
+"ss": 0.3
+},
+{
+"t": 264.836,
+"d": 2.948,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/passport_stamp.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "штамп в паспорте (иллюстративное фото)"
+},
+{
+"t": 267.784,
+"d": 2.948,
+"type": "clip",
+"src": "stock/px15211.mp4",
+"ss": 0.3
+},
+{
+"t": 270.732,
+"d": 2.948,
+"type": "clip",
+"src": "stock/px29808.mp4",
+"ss": 0.3
+},
+{
+"t": 273.68,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/create_country/card_big_14.png"
+},
+{
+"t": 277.28,
+"d": 3.162,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/wheat_field.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "пшеничное поле (иллюстративное фото)"
+},
+{
+"t": 280.442,
+"d": 3.162,
+"type": "clip",
+"src": "stock/px162047.mp4",
+"ss": 0.3
+},
+{
+"t": 283.604,
+"d": 3.162,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/chelmsford_hall.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Шир-холл в Челмсфорде (современное фото; здесь шёл суд 1968 года)"
+},
+{
+"t": 286.766,
+"d": 3.162,
+"type": "clip",
+"src": "stock/px293084.mp4",
+"ss": 0.3
+},
+{
+"t": 289.928,
+"d": 3.162,
+"type": "clip",
+"src": "stock/px72883.mp4",
+"ss": 0.3
+},
+{
+"t": 293.09,
+"d": 3.06,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/hutt_river.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Хатт-Ривер, Западная Австралия (фото)"
+},
+{
+"t": 296.15,
+"d": 3.06,
+"type": "clip",
+"src": "stock/px15129.mp4",
+"ss": 0.3
+},
+{
+"t": 299.21,
+"d": 3.06,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/passport_stamp.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "штамп в паспорте (иллюстративное фото)"
+},
+{
+"t": 302.27,
+"d": 3.06,
+"type": "clip",
+"src": "stock/px134789.mp4",
+"ss": 0.3
+},
+{
+"t": 305.33,
+"d": 3.06,
+"type": "clip",
+"src": "stock/px381275.mp4",
+"ss": 0.3
+},
+{
+"t": 308.39,
+"d": 3.06,
+"type": "clip",
+"src": "stock/px181114.mp4",
+"ss": 0.3
+},
+{
+"t": 311.45,
+"d": 3.178,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/molossia.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Молоссия, Невада (фото)"
+},
+{
+"t": 314.628,
+"d": 3.178,
+"type": "clip",
+"src": "stock/px2543.mp4",
+"ss": 0.3
+},
+{
+"t": 317.807,
+"d": 3.178,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/world_map.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "политическая карта мира (современная)"
+},
+{
+"t": 320.985,
+"d": 3.178,
+"type": "clip",
+"src": "stock/px284561.mp4",
+"ss": 0.3
+},
+{
+"t": 324.163,
+"d": 3.178,
+"type": "clip",
+"src": "stock/px16166.mp4",
+"ss": 0.3
+},
+{
+"t": 327.342,
+"d": 3.178,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/world_map.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.5,
+0.25
+],
+"cap": "политическая карта мира (современная)"
+},
+{
+"t": 330.52,
+"d": 3.277,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/conch_republic.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "Республика Конч, Ки-Уэст (современное фото)"
+},
+{
+"t": 333.797,
+"d": 3.277,
+"type": "clip",
+"src": "stock/px203974.mp4",
+"ss": 0.3
+},
+{
+"t": 337.074,
+"d": 3.277,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/molossia.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Молоссия, Невада (фото)"
+},
+{
+"t": 340.351,
+"d": 3.277,
+"type": "clip",
+"src": "stock/px65560.mp4",
+"ss": 0.3
+},
+{
+"t": 343.629,
+"d": 3.277,
+"type": "clip",
+"src": "stock/px144820.mp4",
+"ss": 0.3
+},
+{
+"t": 346.906,
+"d": 3.277,
+"type": "clip",
+"src": "stock/px365704.mp4",
+"ss": 0.3
+},
+{
+"t": 350.183,
+"d": 3.277,
+"type": "clip",
+"src": "stock/px344380.mp4",
+"ss": 0.3
+},
+{
+"t": 353.46,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/create_country/card_ch_355.png"
+},
+{
+"t": 356.06,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/create_country/card_big_18.png"
+},
+{
+"t": 359.66,
+"d": 2.967,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/un_flags.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "флаги стран у здания ООН (иллюстративное фото)"
+},
+{
+"t": 362.627,
+"d": 2.967,
+"type": "clip",
+"src": "stock/px11187.mp4",
+"ss": 0.3
+},
+{
+"t": 365.595,
+"d": 2.967,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/un_hall.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "зал Генеральной Ассамблеи ООН (фото)"
+},
+{
+"t": 368.562,
+"d": 2.967,
+"type": "clip",
+"src": "stock/px5481.mp4",
+"ss": 0.3
+},
+{
+"t": 371.53,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/create_country/card_big_19.png"
+},
+{
+"t": 375.13,
+"d": 3.35,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/south_sudan_vote.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "референдум в Южном Судане, январь 2011 (фото)"
+},
+{
+"t": 378.48,
+"d": 3.35,
+"type": "clip",
+"src": "stock/px10442.mp4",
+"ss": 0.3
+},
+{
+"t": 381.83,
+"d": 3.35,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/south_sudan_flag.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "день независимости Южного Судана, 2011 (фото)"
+},
+{
+"t": 385.18,
+"d": 3.35,
+"type": "clip",
+"src": "stock/px12847.mp4",
+"ss": 0.3
+},
+{
+"t": 388.53,
+"d": 3.35,
+"type": "clip",
+"src": "stock/px30281.mp4",
+"ss": 0.3
+},
+{
+"t": 391.88,
+"d": 3.062,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/un_hall.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "зал Генеральной Ассамблеи ООН (фото)"
+},
+{
+"t": 394.942,
+"d": 3.062,
+"type": "clip",
+"src": "stock/px218193.mp4",
+"ss": 0.3
+},
+{
+"t": 398.004,
+"d": 3.062,
+"type": "clip",
+"src": "stock/px186520.mp4",
+"ss": 0.3
+},
+{
+"t": 401.066,
+"d": 3.062,
+"type": "clip",
+"src": "stock/px7262.mp4",
+"ss": 0.3
+},
+{
+"t": 404.128,
+"d": 3.062,
+"type": "clip",
+"src": "stock/px209447.mp4",
+"ss": 0.3
+},
+{
+"t": 407.19,
+"d": 3.297,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/south_sudan_flag.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "день независимости Южного Судана, 2011 (фото)"
+},
+{
+"t": 410.488,
+"d": 3.297,
+"type": "clip",
+"src": "stock/px2204.mp4",
+"ss": 0.3
+},
+{
+"t": 413.785,
+"d": 3.297,
+"type": "clip",
+"src": "stock/px30532.mp4",
+"ss": 0.3
+},
+{
+"t": 417.082,
+"d": 3.297,
+"type": "clip",
+"src": "stock/px56730.mp4",
+"ss": 0.3
+},
+{
+"t": 420.38,
+"d": 3.0,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/ballot_box.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "урна для голосования (иллюстративное фото)"
+},
+{
+"t": 423.38,
+"d": 3.0,
+"type": "clip",
+"src": "stock/px48991.mp4",
+"ss": 0.3
+},
+{
+"t": 426.38,
+"d": 3.0,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/un_flags.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "флаги стран у здания ООН (иллюстративное фото)"
+},
+{
+"t": 429.38,
+"d": 3.0,
+"type": "clip",
+"src": "stock/px63845.mp4",
+"ss": 0.3
+},
+{
+"t": 432.38,
+"d": 3.0,
+"type": "clip",
+"src": "stock/px290192.mp4",
+"ss": 0.3
+},
+{
+"t": 435.38,
+"d": 3.0,
+"type": "clip",
+"src": "stock/px370958.mp4",
+"ss": 0.3
+},
+{
+"t": 438.38,
+"d": 3.261,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/world_map.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "политическая карта мира (современная)"
+},
+{
+"t": 441.641,
+"d": 3.261,
+"type": "clip",
+"src": "stock/px235201.mp4",
+"ss": 0.3
+},
+{
+"t": 444.903,
+"d": 3.261,
+"type": "clip",
+"src": "stock/px166364.mp4",
+"ss": 0.3
+},
+{
+"t": 448.164,
+"d": 3.261,
+"type": "clip",
+"src": "stock/px358294.mp4",
+"ss": 0.3
+},
+{
+"t": 451.426,
+"d": 3.261,
+"type": "clip",
+"src": "stock/px141535.mp4",
+"ss": 0.3
+},
+{
+"t": 454.687,
+"d": 3.261,
+"type": "clip",
+"src": "stock/px114812.mp4",
+"ss": 0.3
+},
+{
+"t": 457.949,
+"d": 3.261,
+"type": "clip",
+"src": "stock/px20999.mp4",
+"ss": 0.3
+},
+{
+"t": 461.21,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/create_country/card_ch_462.png"
+},
+{
+"t": 463.81,
+"d": 3.24,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/maunsell_forts.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "морские форты Маунселла времён войны (фото)"
+},
+{
+"t": 467.05,
+"d": 3.24,
+"type": "clip",
+"src": "stock/px149521.mp4",
+"ss": 0.3
+},
+{
+"t": 470.29,
+"d": 3.24,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/flag_sea.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "флаг Силенда (изображение)"
+},
+{
+"t": 473.53,
+"d": 3.24,
+"type": "clip",
+"src": "stock/px2946.mp4",
+"ss": 0.3
+},
+{
+"t": 476.77,
+"d": 3.24,
+"type": "clip",
+"src": "stock/px324295.mp4",
+"ss": 0.3
+},
+{
+"t": 480.01,
+"d": 3.24,
+"type": "clip",
+"src": "stock/px114445.mp4",
+"ss": 0.3
+},
+{
+"t": 483.25,
+"d": 3.573,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/montevideo_conf.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "страны Конвенции Монтевидео (схема) и архивные материалы конференции"
+},
+{
+"t": 486.822,
+"d": 3.573,
+"type": "clip",
+"src": "stock/px214855.mp4",
+"ss": 0.3
+},
+{
+"t": 490.395,
+"d": 3.573,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/passport_stamp.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "штамп в паспорте (иллюстративное фото)"
+},
+{
+"t": 493.968,
+"d": 3.573,
+"type": "clip",
+"src": "stock/px318026.mp4",
+"ss": 0.3
+},
+{
+"t": 497.54,
+"d": 3.474,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/un_hall.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "зал Генеральной Ассамблеи ООН (фото)"
+},
+{
+"t": 501.014,
+"d": 3.474,
+"type": "clip",
+"src": "stock/px198901.mp4",
+"ss": 0.3
+},
+{
+"t": 504.488,
+"d": 3.474,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/un_flags.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "флаги стран у здания ООН (иллюстративное фото)"
+},
+{
+"t": 507.962,
+"d": 3.474,
+"type": "clip",
+"src": "stock/px31556.mp4",
+"ss": 0.3
+},
+{
+"t": 511.436,
+"d": 3.474,
+"type": "clip",
+"src": "stock/px198890.mp4",
+"ss": 0.3
+},
+{
+"t": 514.91,
+"d": 3.136,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/world_map.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "политическая карта мира (современная)"
+},
+{
+"t": 518.046,
+"d": 3.136,
+"type": "clip",
+"src": "stock/px134879.mp4",
+"ss": 0.3
+},
+{
+"t": 521.181,
+"d": 3.136,
+"type": "clip",
+"src": "stock/px201766.mp4",
+"ss": 0.3
+},
+{
+"t": 524.317,
+"d": 3.136,
+"type": "clip",
+"src": "stock/px1236.mp4",
+"ss": 0.3
+},
+{
+"t": 527.453,
+"d": 3.136,
+"type": "clip",
+"src": "stock/px171030.mp4",
+"ss": 0.3
+},
+{
+"t": 530.589,
+"d": 3.136,
+"type": "clip",
+"src": "stock/px14297.mp4",
+"ss": 0.3
+},
+{
+"t": 533.724,
+"d": 3.136,
+"type": "clip",
+"src": "stock/px1175.mp4",
+"ss": 0.3
+},
+{
+"t": 536.86,
+"d": 3.257,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/un_flags.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "флаги стран у здания ООН (иллюстративное фото)"
+},
+{
+"t": 540.117,
+"d": 3.257,
+"type": "clip",
+"src": "stock/px318027.mp4",
+"ss": 0.3
+},
+{
+"t": 543.373,
+"d": 3.257,
+"type": "clip",
+"src": "stock/px3614.mp4",
+"ss": 0.3
+},
+{
+"t": 546.63,
+"d": 3.257,
+"type": "clip",
+"src": "stock/px104270.mp4",
+"ss": 0.3
+},
+{
+"t": 549.887,
+"d": 3.257,
+"type": "clip",
+"src": "stock/px30088.mp4",
+"ss": 0.3
+},
+{
+"t": 553.143,
+"d": 3.257,
+"type": "clip",
+"src": "stock/px999.mp4",
+"ss": 0.3
+},
+{
+"t": 556.4,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/create_country/card_ch_558.png"
+},
+{
+"t": 559.0,
+"d": 3.004,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/north_sea.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "море (иллюстративное фото)"
+},
+{
+"t": 562.004,
+"d": 3.004,
+"type": "clip",
+"src": "stock/px187369.mp4",
+"ss": 0.3
+},
+{
+"t": 565.009,
+"d": 3.004,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/sealand_tower.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Рафс-Тауэр, он же Силенд (фото XX-XXI века)"
+},
+{
+"t": 568.013,
+"d": 3.004,
+"type": "clip",
+"src": "stock/px1003.mp4",
+"ss": 0.3
+},
+{
+"t": 571.017,
+"d": 3.004,
+"type": "clip",
+"src": "stock/px32031.mp4",
+"ss": 0.3
+},
+{
+"t": 574.021,
+"d": 3.004,
+"type": "clip",
+"src": "stock/px204565.mp4",
+"ss": 0.3
+},
+{
+"t": 577.026,
+"d": 3.004,
+"type": "clip",
+"src": "stock/px135658.mp4",
+"ss": 0.3
+},
+{
+"t": 580.03,
+"d": 2.981,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/south_sudan_flag.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "день независимости Южного Судана, 2011 (фото)"
+},
+{
+"t": 583.011,
+"d": 2.981,
+"type": "clip",
+"src": "stock/px168344.mp4",
+"ss": 0.3
+},
+{
+"t": 585.993,
+"d": 2.981,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/un_hall.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "зал Генеральной Ассамблеи ООН (фото)"
+},
+{
+"t": 588.974,
+"d": 2.981,
+"type": "clip",
+"src": "stock/px21849.mp4",
+"ss": 0.3
+},
+{
+"t": 591.956,
+"d": 2.981,
+"type": "clip",
+"src": "stock/px21845.mp4",
+"ss": 0.3
+},
+{
+"t": 594.937,
+"d": 2.981,
+"type": "clip",
+"src": "stock/px134413.mp4",
+"ss": 0.3
+},
+{
+"t": 597.919,
+"d": 2.981,
+"type": "clip",
+"src": "stock/px21847.mp4",
+"ss": 0.3
+},
+{
+"t": 600.9,
+"d": 3.105,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/flag_sea.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "флаг Силенда (изображение)"
+},
+{
+"t": 604.005,
+"d": 3.105,
+"type": "clip",
+"src": "stock/px358291.mp4",
+"ss": 0.3
+},
+{
+"t": 607.11,
+"d": 3.105,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/north_sea.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "море (иллюстративное фото)"
+},
+{
+"t": 610.215,
+"d": 3.105,
+"type": "clip",
+"src": "stock/px181376.mp4",
+"ss": 0.3
+}
+]
+}
