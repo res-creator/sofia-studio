@@ -6,7 +6,7 @@ import json, os, subprocess, sys, tempfile
 R = '/home/user/sofia-studio/ru_geo'; slug, tl_path, out = sys.argv[1:4]
 film = json.load(open(f'{R}/{slug}/film.json', encoding='utf8')); tl = json.load(open(tl_path, encoding='utf8'))['segs']
 t0 = float(sys.argv[4]) if len(sys.argv) > 4 else 0.0; t1 = float(sys.argv[5]) if len(sys.argv) > 5 else film['total']
-W, H, FPS, FADE = 1920, 1080, 30, 0.22
+W, H, FPS, FADE = 1920, 1080, 30, 0.08
 GRADE = 'eq=saturation=0.9:contrast=1.05:brightness=-0.02,vignette=PI/6'
 tmp = tempfile.mkdtemp(dir='/tmp/claude-0/-home-user-sofia-studio/24c15af6-1f18-59ef-a680-971b83cb24ee/scratchpad'); parts = []
 def run(cmd): subprocess.run(cmd, check=True, stderr=subprocess.DEVNULL)
