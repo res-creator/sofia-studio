@@ -1,6 +1,6 @@
 # EP19 upload kit — How It's Run
 
-**File:** `kiruna_town_moving.mp4` (1920×1080, 30 fps, about 9:10, −14 LUFS). Not in git (GitHub large-file storage is full); the compressed copy for sending is named exactly like the title.
+**File:** `kiruna_town_moving.mp4` (1920×1080, 30 fps, 9:10, −14.1 LUFS; master deleted after the compressed copy was made — re-render with rend.sh if needed). Not in git (GitHub large-file storage is full); the compressed copy for sending is named exactly like the title.
 
 **Mid-roll ads:** over 8 minutes, so mid-rolls are allowed. Put one on the chapter break at about 5:06.
 
