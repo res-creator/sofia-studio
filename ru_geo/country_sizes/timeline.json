@@ -1,0 +1,2380 @@
+{
+"segs": [
+{
+"t": 0.0,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/card_big_0.png"
+},
+{
+"t": 3.6,
+"d": 3.948,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_world_map.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 7.548,
+"d": 3.948,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_world_map.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
+},
+{
+"t": 11.496,
+"d": 3.948,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": ""
+},
+{
+"t": 15.444,
+"d": 3.948,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 19.392,
+"d": 3.948,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/old_sailing_ship.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.35,
+0.75
+],
+"cap": "Парусный корабль XVI века (гравюра)"
+},
+{
+"t": 23.34,
+"d": 3.656,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/old_sailing_ship.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Парусный корабль XVI века (гравюра)"
+},
+{
+"t": 26.996,
+"d": 3.656,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_portrait.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.7,
+0.3
+],
+"cap": "Герард Меркатор (портрет XVI века)"
+},
+{
+"t": 30.652,
+"d": 3.656,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/compass_old.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Старинный морской компас"
+},
+{
+"t": 34.308,
+"d": 3.656,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_1569_map.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.2,
+0.4
+],
+"cap": "Карта Меркатора, 1569 год"
+},
+{
+"t": 37.964,
+"d": 3.656,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/rhumb_line_diagram.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.8,
+0.55
+],
+"cap": "Локсодрома: линия постоянного курса"
+},
+{
+"t": 41.62,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/card_ch_43.png"
+},
+{
+"t": 44.22,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/card_big_2.png"
+},
+{
+"t": 47.82,
+"d": 3.967,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_portrait.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "Герард Меркатор (портрет XVI века)"
+},
+{
+"t": 51.788,
+"d": 3.967,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/web_mercator_map.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 55.755,
+"d": 3.967,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_1569_map.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Карта Меркатора, 1569 год"
+},
+{
+"t": 59.722,
+"d": 3.967,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/school_world_map.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
+},
+{
+"t": 63.69,
+"d": 3.715,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_portrait.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Герард Меркатор (портрет XVI века)"
+},
+{
+"t": 67.405,
+"d": 3.715,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/tissot_mercator.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
+},
+{
+"t": 71.12,
+"d": 3.715,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/school_world_map.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": ""
+},
+{
+"t": 74.835,
+"d": 3.715,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/gall_peters_map.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
+},
+{
+"t": 78.55,
+"d": 3.762,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/rhumb_line_diagram.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Локсодрома: линия постоянного курса"
+},
+{
+"t": 82.312,
+"d": 3.762,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/winkel_tripel_map.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
+},
+{
+"t": 86.074,
+"d": 3.762,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_1569_map.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Карта Меркатора, 1569 год"
+},
+{
+"t": 89.836,
+"d": 3.762,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 93.598,
+"d": 3.762,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
+},
+{
+"t": 97.36,
+"d": 3.542,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/compass_old.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "Старинный морской компас"
+},
+{
+"t": 100.902,
+"d": 3.542,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/congo_vs_france.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
+},
+{
+"t": 104.444,
+"d": 3.542,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_1569_map.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Карта Меркатора, 1569 год"
+},
+{
+"t": 107.986,
+"d": 3.542,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/congo_vs_france.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
+},
+{
+"t": 111.528,
+"d": 3.542,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/brazil_vs_australia.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
+},
+{
+"t": 115.07,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/card_big_6.png"
+},
+{
+"t": 118.67,
+"d": 3.408,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/tissot_mercator.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 122.078,
+"d": 3.408,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/brazil_vs_australia.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 125.486,
+"d": 3.408,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_world_map.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": ""
+},
+{
+"t": 128.894,
+"d": 3.408,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/russia_vs_africa.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
+},
+{
+"t": 132.302,
+"d": 3.408,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/indonesia_vs_usa.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
+},
+{
+"t": 135.71,
+"d": 3.643,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_world_map.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
+},
+{
+"t": 139.353,
+"d": 3.643,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/old_sailing_ship.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.8,
+0.55
+],
+"cap": "Парусный корабль XVI века (гравюра)"
+},
+{
+"t": 142.996,
+"d": 3.643,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/compass_old.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.5,
+0.25
+],
+"cap": "Старинный морской компас"
+},
+{
+"t": 146.639,
+"d": 3.643,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_portrait.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.35,
+0.75
+],
+"cap": "Герард Меркатор (портрет XVI века)"
+},
+{
+"t": 150.281,
+"d": 3.643,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_1569_map.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.7,
+0.3
+],
+"cap": "Карта Меркатора, 1569 год"
+},
+{
+"t": 153.924,
+"d": 3.643,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/rhumb_line_diagram.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.2,
+0.4
+],
+"cap": "Локсодрома: линия постоянного курса"
+},
+{
+"t": 157.567,
+"d": 3.643,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/web_mercator_map.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
+},
+{
+"t": 161.21,
+"d": 3.715,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/school_world_map.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": ""
+},
+{
+"t": 164.925,
+"d": 3.715,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/web_mercator_map.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 168.64,
+"d": 3.715,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_world_map.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": ""
+},
+{
+"t": 172.355,
+"d": 3.715,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/tissot_mercator.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
+},
+{
+"t": 176.07,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/card_ch_177.png"
+},
+{
+"t": 178.67,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/card_big_9.png"
+},
+{
+"t": 182.27,
+"d": 3.252,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 185.522,
+"d": 3.252,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/school_world_map.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
+},
+{
+"t": 188.774,
+"d": 3.252,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": ""
+},
+{
+"t": 192.026,
+"d": 3.252,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/tissot_mercator.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
+},
+{
+"t": 195.278,
+"d": 3.252,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/gall_peters_map.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
+},
+{
+"t": 198.53,
+"d": 3.958,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": ""
+},
+{
+"t": 202.488,
+"d": 3.958,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/winkel_tripel_map.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 206.445,
+"d": 3.958,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 210.403,
+"d": 3.958,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/congo_vs_france.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
+},
+{
+"t": 214.36,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/card_big_11.png"
+},
+{
+"t": 217.96,
+"d": 3.56,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/tissot_mercator.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": ""
+},
+{
+"t": 221.52,
+"d": 3.56,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/congo_vs_france.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
+},
+{
+"t": 225.08,
+"d": 3.56,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/brazil_vs_australia.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": ""
+},
+{
+"t": 228.64,
+"d": 3.56,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/congo_vs_france.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
+},
+{
+"t": 232.2,
+"d": 3.266,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/tissot_mercator.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 235.466,
+"d": 3.266,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/brazil_vs_australia.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
+},
+{
+"t": 238.732,
+"d": 3.266,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/school_world_map.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": ""
+},
+{
+"t": 241.998,
+"d": 3.266,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/russia_vs_africa.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 245.264,
+"d": 3.266,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/indonesia_vs_usa.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
+},
+{
+"t": 248.53,
+"d": 3.626,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/russia_vs_africa.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": ""
+},
+{
+"t": 252.156,
+"d": 3.626,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/russia_vs_africa.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
+},
+{
+"t": 255.782,
+"d": 3.626,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 259.408,
+"d": 3.626,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
+},
+{
+"t": 263.034,
+"d": 3.626,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_world_map.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
+},
+{
+"t": 266.66,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/card_ch_268.png"
+},
+{
+"t": 269.26,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/card_big_14.png"
+},
+{
+"t": 272.86,
+"d": 3.575,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/congo_vs_france.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": ""
+},
+{
+"t": 276.435,
+"d": 3.575,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/old_sailing_ship.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.5,
+0.25
+],
+"cap": "Парусный корабль XVI века (гравюра)"
+},
+{
+"t": 280.01,
+"d": 3.575,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/congo_vs_france.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": ""
+},
+{
+"t": 283.585,
+"d": 3.575,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/compass_old.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.35,
+0.75
+],
+"cap": "Старинный морской компас"
+},
+{
+"t": 287.16,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/card_big_15.png"
+},
+{
+"t": 290.76,
+"d": 4.007,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/brazil_vs_australia.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 294.767,
+"d": 4.007,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": ""
+},
+{
+"t": 298.773,
+"d": 4.007,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_portrait.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.7,
+0.3
+],
+"cap": "Герард Меркатор (портрет XVI века)"
+},
+{
+"t": 302.78,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/card_big_16.png"
+},
+{
+"t": 306.38,
+"d": 3.653,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/indonesia_vs_usa.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": ""
+},
+{
+"t": 310.033,
+"d": 3.653,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/rhumb_line_diagram.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.2,
+0.4
+],
+"cap": "Локсодрома: линия постоянного курса"
+},
+{
+"t": 313.685,
+"d": 3.653,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_world_map.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 317.337,
+"d": 3.653,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/web_mercator_map.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
+},
+{
+"t": 320.99,
+"d": 3.635,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": ""
+},
+{
+"t": 324.625,
+"d": 3.635,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/school_world_map.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 328.26,
+"d": 3.635,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/tissot_mercator.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
+},
+{
+"t": 331.895,
+"d": 3.635,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/gall_peters_map.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
+},
+{
+"t": 335.53,
+"d": 3.635,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/winkel_tripel_map.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
+},
+{
+"t": 339.165,
+"d": 3.635,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
+},
+{
+"t": 342.8,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/card_ch_344.png"
+},
+{
+"t": 345.4,
+"d": 3.716,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/brazil_vs_australia.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 349.116,
+"d": 3.716,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 352.832,
+"d": 3.716,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/congo_vs_france.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
+},
+{
+"t": 356.548,
+"d": 3.716,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/congo_vs_france.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
+},
+{
+"t": 360.264,
+"d": 3.716,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/brazil_vs_australia.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
+},
+{
+"t": 363.98,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/card_big_19.png"
+},
+{
+"t": 367.58,
+"d": 3.67,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": ""
+},
+{
+"t": 371.25,
+"d": 3.67,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/russia_vs_africa.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
+},
+{
+"t": 374.92,
+"d": 3.67,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/indonesia_vs_usa.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 378.59,
+"d": 3.67,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
+},
+{
+"t": 382.26,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/card_ch_383.png"
+},
+{
+"t": 384.86,
+"d": 3.638,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/school_world_map.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": ""
+},
+{
+"t": 388.498,
+"d": 3.638,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_world_map.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
+},
+{
+"t": 392.136,
+"d": 3.638,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/old_sailing_ship.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.2,
+0.4
+],
+"cap": "Парусный корабль XVI века (гравюра)"
+},
+{
+"t": 395.774,
+"d": 3.638,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/compass_old.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.8,
+0.55
+],
+"cap": "Старинный морской компас"
+},
+{
+"t": 399.412,
+"d": 3.638,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_portrait.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.5,
+0.25
+],
+"cap": "Герард Меркатор (портрет XVI века)"
+},
+{
+"t": 403.05,
+"d": 3.983,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/rhumb_line_diagram.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.35,
+0.75
+],
+"cap": "Локсодрома: линия постоянного курса"
+},
+{
+"t": 407.033,
+"d": 3.983,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/web_mercator_map.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
+},
+{
+"t": 411.015,
+"d": 3.983,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/school_world_map.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
+},
+{
+"t": 414.998,
+"d": 3.983,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/tissot_mercator.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
+},
+{
+"t": 418.98,
+"d": 3.69,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/web_mercator_map.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": ""
+},
+{
+"t": 422.67,
+"d": 3.69,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/gall_peters_map.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 426.36,
+"d": 3.69,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_world_map.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 430.05,
+"d": 3.69,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/winkel_tripel_map.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
+},
+{
+"t": 433.74,
+"d": 3.69,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
+},
+{
+"t": 437.43,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/card_ch_439.png"
+},
+{
+"t": 440.03,
+"d": 3.358,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_world_map.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": ""
+},
+{
+"t": 443.388,
+"d": 3.358,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
+},
+{
+"t": 446.746,
+"d": 3.358,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/congo_vs_france.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
+},
+{
+"t": 450.104,
+"d": 3.358,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/congo_vs_france.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 453.462,
+"d": 3.358,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/brazil_vs_australia.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
+},
+{
+"t": 456.82,
+"d": 3.475,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/gall_peters_map.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 460.295,
+"d": 3.475,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/brazil_vs_australia.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
+},
+{
+"t": 463.77,
+"d": 3.475,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": ""
+},
+{
+"t": 467.245,
+"d": 3.475,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/russia_vs_africa.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
+},
+{
+"t": 470.72,
+"d": 3.475,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/indonesia_vs_usa.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
+},
+{
+"t": 474.195,
+"d": 3.475,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/gall_peters_map.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 477.67,
+"d": 3.31,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/gall_peters_map.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": ""
+},
+{
+"t": 480.98,
+"d": 3.31,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_world_map.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
+},
+{
+"t": 484.29,
+"d": 3.31,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/old_sailing_ship.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.7,
+0.3
+],
+"cap": "Парусный корабль XVI века (гравюра)"
+},
+{
+"t": 487.6,
+"d": 3.31,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/compass_old.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.2,
+0.4
+],
+"cap": "Старинный морской компас"
+},
+{
+"t": 490.91,
+"d": 3.31,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_portrait.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.8,
+0.55
+],
+"cap": "Герард Меркатор (портрет XVI века)"
+},
+{
+"t": 494.22,
+"d": 3.31,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_1569_map.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.5,
+0.25
+],
+"cap": "Карта Меркатора, 1569 год"
+},
+{
+"t": 497.53,
+"d": 3.426,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/winkel_tripel_map.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": ""
+},
+{
+"t": 500.956,
+"d": 3.426,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/rhumb_line_diagram.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.35,
+0.75
+],
+"cap": "Локсодрома: линия постоянного курса"
+},
+{
+"t": 504.382,
+"d": 3.426,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/web_mercator_map.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
+},
+{
+"t": 507.808,
+"d": 3.426,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/school_world_map.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
+},
+{
+"t": 511.234,
+"d": 3.426,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/tissot_mercator.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
+},
+{
+"t": 514.66,
+"d": 3.69,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/winkel_tripel_map.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 518.35,
+"d": 3.69,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/gall_peters_map.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 522.04,
+"d": 3.69,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/web_mercator_map.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": ""
+},
+{
+"t": 525.73,
+"d": 3.69,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
+},
+{
+"t": 529.42,
+"d": 3.554,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_world_map.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": ""
+},
+{
+"t": 532.974,
+"d": 3.554,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
+},
+{
+"t": 536.528,
+"d": 3.554,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/congo_vs_france.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
+},
+{
+"t": 540.082,
+"d": 3.554,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/congo_vs_france.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
+},
+{
+"t": 543.636,
+"d": 3.554,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/brazil_vs_australia.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 547.19,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/card_ch_548.png"
+},
+{
+"t": 549.79,
+"d": 3.792,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_portrait.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "Герард Меркатор (портрет XVI века)"
+},
+{
+"t": 553.582,
+"d": 3.792,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/brazil_vs_australia.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
+},
+{
+"t": 557.374,
+"d": 3.792,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/old_sailing_ship.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Парусный корабль XVI века (гравюра)"
+},
+{
+"t": 561.166,
+"d": 3.792,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/russia_vs_africa.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
+},
+{
+"t": 564.958,
+"d": 3.792,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/indonesia_vs_usa.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
+},
+{
+"t": 568.75,
+"d": 3.324,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_1569_map.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Карта Меркатора, 1569 год"
+},
+{
+"t": 572.074,
+"d": 3.324,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_1569_map.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.8,
+0.55
+],
+"cap": "Карта Меркатора, 1569 год"
+},
+{
+"t": 575.398,
+"d": 3.324,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_world_map.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 578.722,
+"d": 3.324,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/old_sailing_ship.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.35,
+0.75
+],
+"cap": "Парусный корабль XVI века (гравюра)"
+},
+{
+"t": 582.046,
+"d": 3.324,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/compass_old.jpg",
+"z": [
+1.0,
+1.32
+],
+"p": [
+0.7,
+0.3
+],
+"cap": "Старинный морской компас"
+},
+{
+"t": 585.37,
+"d": 3.53,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": ""
+},
+{
+"t": 588.9,
+"d": 3.53,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/compass_old.jpg",
+"z": [
+1.32,
+1.0
+],
+"p": [
+0.2,
+0.4
+],
+"cap": "Старинный морской компас"
+},
+{
+"t": 592.43,
+"d": 3.53,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/africa_vs_greenland.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 595.96,
+"d": 3.53,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_portrait.jpg",
+"z": [
+1.1,
+1.4
+],
+"p": [
+0.8,
+0.55
+],
+"cap": "Герард Меркатор (портрет XVI века)"
+}
+]
+}

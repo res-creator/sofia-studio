@@ -63,7 +63,7 @@ if len(paras) != len(voice): sys.exit(f'абзацев {len(paras)} != озву�
 photos_by_par = {}; caps = {}; PIMG = {}; fb = [0]
 oc = f'{J}/SCRIPT_oldcues.md'; cr_path = f'{J}/archive/credits.json'
 if os.path.exists(oc) and os.path.exists(cr_path):
-    CR = json.load(open(cr_path, encoding='utf8')); caps = {k: v.get('cap', '') for k, v in CR.items()}
+    CR = json.load(open(cr_path, encoding='utf8')); caps = {k: v.get('cap', '') for k, v in CR.items() if not v.get('author', '').startswith('собственная')}
     pi = -1
     for l in open(oc, encoding='utf8').read().split('## ТАБЛИЦА ФАКТОВ')[0].splitlines():
         t = l.strip()
@@ -77,9 +77,11 @@ if os.path.exists(oc) and os.path.exists(cr_path):
         if re.sub(r'\s+', ' ', re.sub(r'\[[a-z ]+\]', '', t)).strip(): pi += 1
     PIMG = {k: f"{J}/archive/img/{v['file']}" for k, v in CR.items()}
 STRICT = True
+NO_STOCK = os.path.exists(f'{J}/no_stock')
 # --- подбор клипов
 used = set(); cards = []; tl = []
 def pick(q):
+    if NO_STOCK: return None, None
     STOP = {'time', 'laps', 'abst', 'slow', 'moti', 'movi', 'clos', 'view', 'shot', 'real', 'wide', 'live', 'aeri', 'dark', 'black', 'back', 'nigh'}
     qw = [w[:4] for w in re.findall(r'[a-z]+', q.lower()) if len(w) > 2 and w[:4] not in STOP]
     def score(k): tg = ' '.join(DB['v'][k].get('tags', []) + [DB['v'][k].get('title', '')]).lower(); return -sum(1 for w in qw if w in tg)
@@ -105,7 +107,7 @@ for idx, ((a, b), p) in enumerate(zip(bounds, paras)):
     cue = p['cue']; qs = (cue.get('b', []) or ['city street'])[:3]; big = cue.get('big'); t = a; dur_total = b - a
     if big and dur_total > 6:
         png = f'{J}/card_big_{idx}.png'; cardjobs.append(dict(type='bignum', big=big['n'], label=big.get('l', ''), bg='black', out=png)); add(t, 3.6, type='card', src=png); t += 3.6
-    n = max(1, round((b - t) / 3.2)); shot = (b - t) / n
+    n = max(1, round((b - t) / (4.6 if NO_STOCK else 3.2))); shot = (b - t) / n
     ttl = cue.get('ttl') or (p['text'] if (len(p['text']) <= 70 and p['text'].endswith('?') and t - last_ttl > 40) else None)
     ov = None
     if ttl and not big:
@@ -124,7 +126,7 @@ for idx, ((a, b), p) in enumerate(zip(bounds, paras)):
         if k: add(t + j * shot, shot, type='clip', src=f'stock/{k}.mp4', ss=0.3, **({'ov': ov} if (ov and j == (n - 1 if cue.get('ttl') else 0)) else {}))
         elif PIMG:
             pool = (phs or []) + [x for x in PIMG if x not in (phs or [])]; key = pool[(fb[0]) % len(pool)]; fb[0] += 1
-            zz = [[1.0, 1.18], [1.18, 1.0], [1.08, 1.2]][fb[0] % 3]; pp = [[0.25, 0.4], [0.75, 0.55], [0.5, 0.3], [0.4, 0.7]][fb[0] % 4]
+            zz = [[1.0, 1.14], [1.14, 1.0], [1.05, 1.16]][fb[0] % 3]; pp = [[0.2, 0.4], [0.8, 0.55], [0.5, 0.25], [0.35, 0.75], [0.7, 0.3]][fb[0] % 5]
             add(t + j * shot, shot, type='photo', src=PIMG[key], z=zz, p=pp, cap=caps.get(key, ''))
         else: add(t + j * shot, shot, type='card', src=f'{C}/black.png')
 # заставки глав

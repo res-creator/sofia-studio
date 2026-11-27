@@ -150,5 +150,109 @@
   "cap": "Индонезия и США в одном масштабе",
   "page": "https://github.com/johan/world.geo.json",
   "title": "Индонезия и США в одном масштабе"
+ },
+ "globe_earth": {
+  "file": "globe_earth.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Глобус",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Глобус"
+ },
+ "split_two_maps": {
+  "file": "split_two_maps.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Меркатор и Галл-Петерс рядом",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Меркатор и Галл-Петерс рядом"
+ },
+ "russia_mercator": {
+  "file": "russia_mercator.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Россия и Африка на карте Меркатора",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Россия и Африка на карте Меркатора"
+ },
+ "usa_vs_china": {
+  "file": "usa_vs_china.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "США и Китай в одном масштабе",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "США и Китай в одном масштабе"
+ },
+ "canada_vs_africa": {
+  "file": "canada_vs_africa.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Канада и Африка в одном масштабе",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Канада и Африка в одном масштабе"
+ },
+ "one_africa": {
+  "file": "one_africa.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Африка",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Африка"
+ },
+ "one_greenland": {
+  "file": "one_greenland.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Гренландия",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Гренландия"
+ },
+ "one_russia": {
+  "file": "one_russia.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Россия",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Россия"
+ },
+ "one_brazil": {
+  "file": "one_brazil.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Бразилия",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Бразилия"
+ },
+ "one_australia": {
+  "file": "one_australia.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Австралия",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Австралия"
+ },
+ "one_congo": {
+  "file": "one_congo.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "ДР Конго",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "ДР Конго"
+ },
+ "one_france": {
+  "file": "one_france.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Франция",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Франция"
+ },
+ "one_indonesia": {
+  "file": "one_indonesia.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Индонезия",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Индонезия"
  }
 }
