@@ -208,7 +208,7 @@ line([[2700, Y + 700], [2722, Y + 560], [2788, Y + 560], [2810, Y + 700], [2700,
 ink('count', 62.4, 1.5, 'blue', text='{0} кг', to=[100], xy=[2860, Y + 690], size=140)
 # the long rope: hung vertically, the lower metres pull on the upper ones
 RX = 4800; R0, R1 = Y + 120, Y + 800
-line([[4450, R0], [5150, R0]], 64.1, .25, lw=9); hatch(4450, 5150, R0, 64.3, .25, 8)
+line([[4450, R0], [5150, R0]], 64.3, .25, lw=9); hatch(4450, 5150, R0, 64.45, .2, 8)
 line([[RX, R0], [RX + 2, R0 + 210], [RX - 2, R0 + 440], [RX, R1]], 64.6, 1.6, lw=9, ea=1.4, eb=1.6)
 for i in range(5): arrow([4840, Y + 640 - i * 125], [4840, Y + 700 - i * 125], 66.45 + i * .37, .25, 'blue', 5)
 write('нижние метры', 4880, Y + 440, 66.6, 1.0, 'blue', 56)
@@ -239,7 +239,7 @@ c.to(49.6, 2.4, z=z_of(c) * 1.03)
 c.fit(52.75, 1.2, [560, Y + 60, 1500, Y + 800])                    # (under the card) the rope chapter
 c.fit(55.8, 1.5, [560, Y + 60, 2320, Y + 780], a=2, b=3)
 c.fit(59.2, 1.3, [2500, Y + 160, 3320, Y + 740], zmax=1.3)
-c.fit(63.5, .95, [4400, Y + 40, 5200, Y + 420], zmax=1.5, a=2, b=2.2)           # the second ceiling
+c.fit(63.92, .8, [4400, Y + 40, 5200, Y + 420], zmax=1.5, a=2, b=2.2)           # the second ceiling
 c.fit(64.7, 1.7, [4400, Y + 40, 5320, Y + 830], a=1.5, b=2.5)      # ride down the rope as it hangs
 c.to(66.6, 3.0, z=z_of(c) * 1.02)
 c.fit(73.3, 1.0, [4080, Y + 40, 5160, Y + 840], a=2, b=2.5)

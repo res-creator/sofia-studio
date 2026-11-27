@@ -6,7 +6,7 @@ FR=$HERE/out/frames; N=2559; OUT=/home/user/sofia-studio/ru_geo/building_height/
 mkdir -p "$FR" "$HERE/out"
 if [ "$1" = "encode" ]; then
   n=$(ls "$FR" | grep -c '^f_.*\.jpg$'); [ "$n" -ge "$N" ] || { echo "only $n/$N frames"; exit 1; }
-  ffmpeg -v error -y -framerate 30 -i "$FR/f_%05d.jpg" -frames:v $N -c:v libx264 -preset slow -crf 16 -pix_fmt yuv420p -r 30 -an -movflags +faststart "$OUT"
+  ffmpeg -v error -y -framerate 30 -i "$FR/f_%05d.jpg" -frames:v $N -c:v libx264 -preset medium -crf 17 -pix_fmt yuv420p -r 30 -an -movflags +faststart "$OUT"
   ffprobe -v error -show_entries format=duration:stream=nb_frames -of csv=p=0 "$OUT"; exit 0
 fi
 cd "$LIB"
