@@ -1,11 +1,14 @@
 """Сборка пробного отрывка «Высота зданий»: доска + карта + доска + архивный стол.
 Звук: голос и музыка из готового ролика + шумы (маркер, машинка, ластик, счётчик, карта, стол). Субтитры в плашке.
 python3 assemble_bh_trial.py"""
-import json, subprocess, os
+import json, subprocess, os, sys
+VAR = sys.argv[1] if len(sys.argv) > 1 else ''          # '', 'marker', 'brief'
+BFILE = f'board_{VAR}.mp4' if VAR else 'board.mp4'
+EVF = {'': 'bh_board', 'marker': 'bh_marker', 'brief': 'bh_brief'}[VAR]
 import numpy as np
 from scipy.signal import butter, sosfilt
 from scipy.io import wavfile
-R = '/home/user/sofia-studio/ru_geo/building_height'; P = f'{R}/video/parts'; S = '/tmp/claude-0/-home-user-sofia-studio/24c15af6-1f18-59ef-a680-971b83cb24ee/scratchpad/asm'
+R = '/home/user/sofia-studio/ru_geo/building_height'; P = f'{R}/video/parts'; S = '/tmp/claude-0/-home-user-sofia-studio/24c15af6-1f18-59ef-a680-971b83cb24ee/scratchpad/asm' + (VAR and '_' + VAR)
 os.makedirs(S, exist_ok=True)
 SHARE = f'{R}/video/building_height_share.mp4'
 M0, M1, BEND = 20.6, 30.9, 85.3                    # карта вместо доски на 20.6–30.9; доска до 85.3
@@ -21,8 +24,8 @@ def cut(src, a, b, name):
     o = f'{S}/{name}.mp4'
     run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', f'{a:.3f}', '-i', src, '-t', f'{b - a:.3f}', '-r', '30', '-vf', 'scale=1920:1080,setsar=1,format=yuv420p', '-an', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '16', o]); segs.append(o)
 if have_map:
-    cut(f'{P}/board.mp4', 0, M0, 'a'); cut(f'{P}/map.mp4', 0, M1 - M0, 'b'); cut(f'{P}/board.mp4', M1, BEND, 'c')
-else: cut(f'{P}/board.mp4', 0, BEND, 'a')
+    cut(f'{P}/{BFILE}', 0, M0, 'a'); cut(f'{P}/map.mp4', 0, M1 - M0, 'b'); cut(f'{P}/{BFILE}', M1, BEND, 'c')
+else: cut(f'{P}/{BFILE}', 0, BEND, 'a')
 if have_lt: cut(f'{P}/lighttable.mp4', 0, LT1 - LT0, 'd')
 total = BEND + (LT1 - LT0 if have_lt else 0)
 open(f'{S}/list.txt', 'w').write(''.join(f"file '{x}'\n" for x in segs))
@@ -56,13 +59,13 @@ def tick(t, g=.04):
 def thump(t, g=.18):
     n = int(.25 * SR); put(np.sin(2 * np.pi * 90 * np.arange(n) / SR) * np.exp(-np.linspace(0, 1, n) * 12), t, g)
 def inside(t): return not (have_map and M0 <= t < M1)
-ev = json.load(open('/home/user/sofia-studio/ru_geo/lemo/bh_board/events.json'))
+ev = json.load(open(f'/home/user/sofia-studio/ru_geo/lemo/{EVF}/events.json'))
 ev = ev['ev'] if isinstance(ev, dict) else ev
 for e in ev:
     t = e['t']
     if t >= BEND or not inside(t): continue
     ty = e.get('type')
-    if ty in ('stroke', 'write', 'dash'): marker(t, e.get('dur', .2), .05 if ty == 'write' else .065)
+    if ty in ('stroke', 'write', 'dash', 'draw', 'text', 'line', 'letter'): marker(t, e.get('dur', .2), .05 if ty == 'write' else .065)
     elif ty == 'tap': click(t, .05, 3000)
     elif ty == 'erase': whoosh(t, e.get('dur', .6), .1)
     elif ty == 'key': click(t, .22)
@@ -94,7 +97,7 @@ for s in f['segs']:
         elif have_lt and a >= LT0 - .01 and a < LT1: L.append(f'Dialogue: 0,{ts(a - LT0 + BEND)},{ts(min(b, LT1) - LT0 + BEND)},C,,0,0,0,,{tx}')
 open(f'{S}/subs.ass', 'w', encoding='utf-8').write('\n'.join(L) + '\n')
 
-dst = f'{R}/video/trial_styles.mp4'
+dst = f'{R}/video/trial_styles{"_" + VAR if VAR else ""}.mp4'
 run(['ffmpeg', '-y', '-loglevel', 'error', '-i', f'{S}/pic.mp4', '-i', f'{S}/base.wav', '-i', f'{S}/sfx.wav', '-filter_complex',
      f'[2:a]aformat=channel_layouts=stereo[s];[1:a][s]amix=inputs=2:normalize=0[a];[0:v]ass={S}/subs.ass[v]',
      '-map', '[v]', '-map', '[a]', '-c:v', 'libx264', '-preset', 'medium', '-crf', '21', '-c:a', 'aac', '-b:a', '160k', '-t', f'{total:.2f}', '-movflags', '+faststart', dst])
