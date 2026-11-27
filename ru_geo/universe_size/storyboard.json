@@ -1,34 +1,137 @@
-{"1":["dsn_antenna","voyager_craft","voyager_launch","blue_marble"],
-"2":["voyager_craft","q_universe"],
-"3":["speed_star","proxima_hubble"],
-"4":["ruler_light","blue_marble"],
-"5":["neptune","ruler_light"],
-"6":["pbd1990","voyager_craft"],
-"7":["dsn_antenna","voyager_craft"],
-"8":["model_field"],
-"9":["model_ruler"],
-"10":["model_ruler","proxima_hubble"],
-"11":["star_map"],
-"12":["lightyear","proxima_hubble"],
-"13":["milkyway_top"],
-"14":["milkyway_top"],
-"15":["model_galaxy","jupiter"],
-"16":["milkyway_top","voyager_craft"],
-"17":["andromeda"],
-"18":["compare_44","andromeda"],
-"19":["local_group","ladder3"],
-"20":["hudf"],
-"21":["hudf","timeline_age"],
-"22":["timeline_age","observable"],
-"23":["observable","expand"],
-"24":["cmb_crop","observable"],
-"25":["quadrillion","voyager_craft"],
-"26":["hudf"],
-"27":["geometry3"],
-"28":["horizon","observable"],
-"29":["unknown_all"],
-"30":["model_ruler","ruler_all"],
-"31":["dsn_antenna","voyager_craft","blue_marble"],
-"32":["ruler_all"],
-"33":["observable","pbd1990"],
-"34":["voyager_craft"]}
+{
+"1": [
+"voyager_craft",
+"dsn_antenna@0.42",
+"voyager_launch@0.73",
+"blue_marble@0.90"
+],
+"2": [
+"ruler_light",
+"voyager_craft@0.25",
+"q_universe@0.62"
+],
+"3": [
+"star_map",
+"speed_star@0.16"
+],
+"4": [
+"ruler_light",
+"sun_img@0.79"
+],
+"5": [
+"neptune",
+"ruler_light@0.34"
+],
+"6": [
+"voyager_craft",
+"pbd1990@0.56"
+],
+"7": [
+"ruler_light",
+"dsn_antenna@0.53"
+],
+"8": [
+"model_field"
+],
+"9": [
+"model_ruler"
+],
+"10": [
+"model_ruler",
+"blue_marble@0.44",
+"ruler_all@0.61"
+],
+"11": [
+"star_map"
+],
+"12": [
+"lightyear",
+"star_map@0.51"
+],
+"13": [
+"milkyway_top"
+],
+"14": [
+"milkyway_top",
+"model_galaxy@0.52"
+],
+"15": [
+"model_galaxy",
+"milkyway_top@0.72"
+],
+"16": [
+"milkyway_top",
+"jwst_deep@0.57"
+],
+"17": [
+"andromeda"
+],
+"18": [
+"compare_44",
+"timeline_age@0.73"
+],
+"19": [
+"local_group",
+"ladder3@0.53"
+],
+"20": [
+"hudf",
+"jwst_deep@0.66"
+],
+"21": [
+"hudf",
+"timeline_age@0.44",
+"jwst_deep@0.62"
+],
+"22": [
+"timeline_age",
+"observable@0.63"
+],
+"23": [
+"observable",
+"expand@0.36",
+"milkyway_top@0.80"
+],
+"24": [
+"cmb_crop",
+"observable@0.41"
+],
+"25": [
+"quadrillion"
+],
+"26": [
+"hudf",
+"jwst_deep@0.81"
+],
+"27": [
+"observable",
+"geometry3@0.45"
+],
+"28": [
+"horizon",
+"observable@0.37"
+],
+"29": [
+"unknown_all"
+],
+"30": [
+"model_ruler",
+"ruler_all@0.37"
+],
+"31": [
+"dsn_antenna",
+"voyager_craft@0.53"
+],
+"32": [
+"ruler_all"
+],
+"33": [
+"observable",
+"unknown_all@0.36",
+"pbd1990@0.77"
+],
+"34": [
+"voyager_craft",
+"dsn_antenna@0.84"
+]
+}

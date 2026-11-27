@@ -294,5 +294,29 @@
   "cap": "Реликтовое излучение (карта Planck)",
   "page": "",
   "title": "cmb"
+ },
+ "sun_img": {
+  "file": "sun_img.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Солнце (снимок Skylab)",
+  "page": "https://images.nasa.gov/details/9606705",
+  "title": "Skylab"
+ },
+ "jwst2": {
+  "file": "jwst2.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Скопление галактик, снимок «Уэбба»",
+  "page": "https://images.nasa.gov/details/webb_first_deep_field",
+  "title": "Webb_first_deep_field_SMACS_0723"
+ },
+ "jwst_deep": {
+  "file": "jwst2.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Первое глубокое поле «Уэбба»",
+  "page": "https://images.nasa.gov/details/webb_first_deep_field",
+  "title": "Webb_first_deep_field_SMACS_0723"
  }
 }

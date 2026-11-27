@@ -111,14 +111,26 @@ for idx, ((a, b), p) in enumerate(zip(bounds, paras)):
     if big and dur_total > 6:
         png = f'{J}/card_big_{idx}.png'; cardjobs.append(dict(type='bignum', big=big['n'], label=big.get('l', ''), bg='black', out=png)); add(t, 3.6, type='card', src=png); t += 3.6
     sbk = SB.get(str(idx + 1))
+    sbk = [k for k in (sbk or []) if k.partition('@')[0] in PIMG]
     if sbk:
-        import math as _m
-        sbk = [k for k in sbk if k in PIMG]
-    if sbk:
-        n = max(len(sbk), _m.ceil((b - t) / 6.0)); shot = (b - t) / n
-        for j in range(n):
-            key = sbk[j % len(sbk)] if j < len(sbk) else sbk[-1 - ((j - len(sbk)) % len(sbk))]
-            add(t + j * shot, shot, type='photo', src=PIMG[key], cap=caps.get(key, ''))
+        items = []
+        for k in sbk:
+            kk, _, fr = k.partition('@'); items.append((kk, float(fr) if fr else None))
+        win = b - t
+        if any(f is not None for _, f in items):
+            st = []
+            for i, (kk, f) in enumerate(items): st.append(f if f is not None else (0.0 if i == 0 else None))
+            for i in range(len(st)):
+                if st[i] is None: st[i] = (st[i - 1] + (1.0 - st[i - 1]) / 2) if i else 0.0
+            for i, (kk, _) in enumerate(items):
+                a0 = t + win * st[i]; a1 = t + win * (st[i + 1] if i + 1 < len(items) else 1.0)
+                if a1 - a0 > 0.2: add(a0, a1 - a0, type='photo', src=PIMG[kk], cap=caps.get(kk, ''))
+        else:
+            import math as _m
+            ks = [kk for kk, _ in items]; n = max(len(ks), _m.ceil(win / 6.0)); shot = win / n
+            for j in range(n):
+                key = ks[j % len(ks)] if j < len(ks) else ks[-1 - ((j - len(ks)) % len(ks))]
+                add(t + j * shot, shot, type='photo', src=PIMG[key], cap=caps.get(key, ''))
         continue
     n = max(1, round((b - t) / (4.6 if NO_STOCK else 3.2))); shot = (b - t) / n
     ttl = cue.get('ttl') or (p['text'] if (len(p['text']) <= 70 and p['text'].endswith('?') and t - last_ttl > 40) else None)
