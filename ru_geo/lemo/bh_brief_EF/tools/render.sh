@@ -9,7 +9,9 @@ mkdir -p "$FR" "$HERE/out"
 if [ "$1" = "encode" ]; then
   : > "$HERE/out/segs.txt"; k=0
   while [ $((k * CH)) -lt $N ]; do f=$HERE/out/seg_$(printf %02d $k).mp4; [ -f "$f" ] || { echo "missing $f"; exit 1; }; echo "file '$f'" >> "$HERE/out/segs.txt"; k=$((k + 1)); done
-  ffmpeg -v error -y -f concat -safe 0 -i "$HERE/out/segs.txt" -t $DUR -c:v libx264 -preset medium -crf 17 -pix_fmt yuv420p -r 30 -an -movflags +faststart "$OUT"
+  # no B-frames, so the last packet is the last frame; its duration is cut so the file lasts exactly DUR (131.49 s)
+  ffmpeg -v error -y -f concat -safe 0 -i "$HERE/out/segs.txt" -frames:v $N -c:v libx264 -preset medium -crf 17 -bf 0 -pix_fmt yuv420p -r 30 -an -video_track_timescale 3000 "$HERE/out/full.mp4" || exit 1
+  ffmpeg -v error -y -i "$HERE/out/full.mp4" -c copy -bsf:v "setts=duration='if(eq(N\,$((N - 1)))\,70\,DURATION)'" -movflags +faststart "$OUT" && rm -f "$HERE/out/full.mp4"
   ffprobe -v error -show_entries format=duration:stream=nb_frames -of csv=p=0 "$OUT"; exit 0
 fi
 if [ "$1" = "run" ]; then
