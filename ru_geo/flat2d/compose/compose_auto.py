@@ -79,6 +79,7 @@ if os.path.exists(cr_path):
 STRICT = True
 NO_STOCK = os.path.exists(f'{J}/no_stock')
 REQ = re.compile(open(f'{J}/stock_require', encoding='utf8').read().strip(), re.I) if os.path.exists(f'{J}/stock_require') else None
+ANIMK = {k for k, v in (CR.items() if os.path.exists(cr_path) else []) if v.get('author', '').startswith('собственная')} if not os.environ.get('NO_ANIM') else set()
 SB = json.load(open(f'{J}/storyboard.json', encoding='utf8')) if os.path.exists(f'{J}/storyboard.json') else {}
 # --- подбор клипов
 used = set(); cards = []; tl = []
@@ -124,13 +125,13 @@ for idx, ((a, b), p) in enumerate(zip(bounds, paras)):
                 if st[i] is None: st[i] = (st[i - 1] + (1.0 - st[i - 1]) / 2) if i else 0.0
             for i, (kk, _) in enumerate(items):
                 a0 = t + win * st[i]; a1 = t + win * (st[i + 1] if i + 1 < len(items) else 1.0)
-                if a1 - a0 > 0.2: add(a0, a1 - a0, type='photo', src=PIMG[kk], cap=caps.get(kk, ''))
+                if a1 - a0 > 0.2: add(a0, a1 - a0, type='photo', src=PIMG[kk], cap=caps.get(kk, ''), anim=(kk in ANIMK))
         else:
             import math as _m
             ks = [kk for kk, _ in items]; n = max(len(ks), _m.ceil(win / 6.0)); shot = win / n
             for j in range(n):
                 key = ks[j % len(ks)] if j < len(ks) else ks[-1 - ((j - len(ks)) % len(ks))]
-                add(t + j * shot, shot, type='photo', src=PIMG[key], cap=caps.get(key, ''))
+                add(t + j * shot, shot, type='photo', src=PIMG[key], cap=caps.get(key, ''), anim=(key in ANIMK))
         continue
     n = max(1, round((b - t) / (4.6 if NO_STOCK else 3.2))); shot = (b - t) / n
     ttl = cue.get('ttl') or (p['text'] if (len(p['text']) <= 70 and p['text'].endswith('?') and t - last_ttl > 40) else None)
