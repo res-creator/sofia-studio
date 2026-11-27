@@ -1,11 +1,11 @@
 {
  "mercator_world_map": {
   "file": "mercator_world_map.jpg",
-  "author": "Thomas Kitchin",
-  "license": "общественное достояние",
-  "cap": "Мир в проекции Меркатора",
-  "page": "https://commons.wikimedia.org/wiki/File:1794_Samuel_Dunn_Wall_Map_of_the_World_in_Hemispheres_-_Geographicus_-_World2-dunn-1794.jpg",
-  "title": "File:1794 Samuel Dunn Wall Map of the World in Hemispheres - Geographicus - World2-dunn-1794.jpg"
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Карта в проекции Меркатора (Гренландия и Африка)",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Карта в проекции Меркатора (Гренландия и Африка)"
  },
  "old_sailing_ship": {
   "file": "old_sailing_ship.jpg",
@@ -46,5 +46,109 @@
   "cap": "Локсодрома: линия постоянного курса",
   "page": "https://commons.wikimedia.org/wiki/File:Rhumb_line_vs_great-circle_arc.png",
   "title": "File:Rhumb line vs great-circle arc.png"
+ },
+ "web_mercator_map": {
+  "file": "web_mercator_map.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Карта в проекции Меркатора (Гренландия и Африка)",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Карта в проекции Меркатора (Гренландия и Африка)"
+ },
+ "school_world_map": {
+  "file": "school_world_map.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Карта в проекции Меркатора (Гренландия и Африка)",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Карта в проекции Меркатора (Гренландия и Африка)"
+ },
+ "tissot_mercator": {
+  "file": "tissot_mercator.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Одинаковые круги на карте Меркатора",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Одинаковые круги на карте Меркатора"
+ },
+ "gall_peters_map": {
+  "file": "gall_peters_map.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Проекция Галла-Петерса: площади честные",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Проекция Галла-Петерса: площади честные"
+ },
+ "winkel_tripel_map": {
+  "file": "winkel_tripel_map.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Проекция Винкеля: компромисс",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Проекция Винкеля: компромисс"
+ },
+ "africa_map": {
+  "file": "africa_vs_greenland.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Африка и Гренландия в одном масштабе",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Африка и Гренландия в одном масштабе"
+ },
+ "greenland_map": {
+  "file": "africa_vs_greenland.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Африка и Гренландия в одном масштабе",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Африка и Гренландия в одном масштабе"
+ },
+ "congo_map": {
+  "file": "congo_vs_france.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "ДР Конго и Франция в одном масштабе",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "ДР Конго и Франция в одном масштабе"
+ },
+ "france_map": {
+  "file": "congo_vs_france.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "ДР Конго и Франция в одном масштабе",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "ДР Конго и Франция в одном масштабе"
+ },
+ "brazil_map": {
+  "file": "brazil_vs_australia.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Бразилия и Австралия в одном масштабе",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Бразилия и Австралия в одном масштабе"
+ },
+ "australia_map": {
+  "file": "brazil_vs_australia.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Бразилия и Австралия в одном масштабе",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Бразилия и Австралия в одном масштабе"
+ },
+ "russia_map": {
+  "file": "russia_vs_africa.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Россия и Африка в одном масштабе",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Россия и Африка в одном масштабе"
+ },
+ "indonesia_map": {
+  "file": "indonesia_vs_usa.jpg",
+  "author": "собственная графика, данные: открытые границы стран (johan/world.geo.json)",
+  "license": "свободно",
+  "cap": "Индонезия и США в одном масштабе",
+  "page": "https://github.com/johan/world.geo.json",
+  "title": "Индонезия и США в одном масштабе"
  }
 }

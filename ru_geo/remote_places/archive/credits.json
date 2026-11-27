@@ -1,0 +1,26 @@
+{
+ "nemo_map": {
+  "file": "nemo_map.jpg",
+  "author": "Nojhan",
+  "license": "CC BY-SA 3.0",
+  "cap": "карта: Точка Немо в Тихом океане",
+  "page": "https://commons.wikimedia.org/wiki/File:R%27lyeh_locations.png",
+  "title": "File:R'lyeh locations.png"
+ },
+ "iss_earth": {
+  "file": "iss_earth.jpg",
+  "author": "NASA Johnson Space Center",
+  "license": "общественное достояние",
+  "cap": "МКС над Землёй (фото NASA)",
+  "page": "https://commons.wikimedia.org/wiki/File:A_piece_of_unidentified_space_debris_is_pictured_from_the_International_Space_Station_(iss074e0540224).jpg",
+  "title": "File:A piece of unidentified space debris is pictured from the International Space Station (iss074e0540224).jpg"
+ },
+ "ocean_horizon": {
+  "file": "ocean_horizon.jpg",
+  "author": "NASA Johnson Space Center",
+  "license": "общественное достояние",
+  "cap": "открытый океан (иллюстративное фото)",
+  "page": "https://commons.wikimedia.org/wiki/File:A_Golden_Atmospheric_Glow_Crowns_Earth%27s_Horizon_(iss071e207178).jpg",
+  "title": "File:A Golden Atmospheric Glow Crowns Earth's Horizon (iss071e207178).jpg"
+ }
+}
