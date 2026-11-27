@@ -83,14 +83,14 @@ class Cam:
         s.moves.append(m)
         if d > .6 and (abs(m.get('dx', 0)) * z_of(s) > 500 or abs(m.get('dy', 0)) * z_of(s) > 400 or abs(m.get('dl', 0)) > .5): ev(t, 'whoosh', d)
         return t + d
-    def fit(s, t, d, box, zmax=1.0, roll=None, a=2, b=2.6, sx=SAFE_X):
+    def fit(s, t, d, box, zmax=1.0, roll=None, a=2, b=2.6, sx=90):
         x, y, z = fit(box, zmax, sx); return s.to(t, d, x, y, z, roll, a, b)
     def shake(s, t, amp=5, f=9, k=7, dir=(0, 1)):
         s.shakes.append(dict(t=t, amp=amp, f=f, k=k, dir=list(dir)))
     def json(s): return dict(x=s.base['x'], y=s.base['y'], z=s.base['z'], roll=0, moves=s.moves, shakes=s.shakes)
 def z_of(c): return math.exp(c.cur['lz'])
 SAFE_Y0, SAFE_Y1, SAFE_X = 50, 800, 90      # the drawing band on screen: nothing below y = 830 (subtitles)
-def fit(box, zmax=1.0, sx=SAFE_X):
+def fit(box, zmax=1.0, sx=90):
     x0, y0, x1, y1 = box
     if x0 >= 2600: x0 += BX; x1 += BX
     if x0 >= 7000: x0 += FS; x1 += FS
@@ -321,7 +321,7 @@ c.fit(103.8, 1.3, [7050, 1330, 8450, 2040])                            # F: the 
 c.fit(105.1, 1.8, [7050, 620, 8450, 1330], a=1.8, b=2.6)               # … and rides with it to the top
 c.fit(107.9, 1.6, [7050, 1980, 8450, 2730], a=2, b=3)                  # what he knows now
 c.fit(119.8, 1.4, [7050, 2780, 8450, 3470])                            # the question
-c.fit(126.3, 3.5, [250, 180, 6990, 3480], a=2, b=3.2, sx=40)                  # the whole wall, once
+c.fit(126.3, 3.5, [250, 180, 8450 + BX + FS, 3480], a=2, b=3.2, sx=40)                  # the whole wall, once
 c.to(129.9, 1.92, z=z_of(c) * 1.01)
 
 scene = dict(dur=DUR, board=dict(w=BW, h=BH, seed=41, texScale=.4, ghosts=150, tray=False), hand=1.0, sheen=.07,
