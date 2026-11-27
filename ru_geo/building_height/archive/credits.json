@@ -1,0 +1,26 @@
+{
+ "heights_main": {
+  "file": "heights_main.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Высоты зданий",
+  "page": "",
+  "title": "Высоты зданий"
+ },
+ "heights_wright": {
+  "file": "heights_wright.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Миля Райта и Бурдж-Халифа",
+  "page": "",
+  "title": "Миля Райта и Бурдж-Халифа"
+ },
+ "heights_old": {
+  "file": "heights_old.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "Рекорды высоты",
+  "page": "",
+  "title": "Рекорды высоты"
+ }
+}
