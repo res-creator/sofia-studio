@@ -6,14 +6,15 @@ while true; do
   for d in $L/*/; do d=${d%/}
     [ -f $d/tools/render.sh ] || continue
     out=$(grep -o 'OUT=[^ ;]*' $d/tools/render.sh | head -1 | cut -d= -f2)
-    [ -n "$out" ] && [ -s "$out" ] && continue
+    [ -n "$out" ] && [ -s "$out" ] && ffprobe -v error "$out" > /dev/null 2>&1 && continue
     [ -f $d/.render_ready ] || continue                     # агент ещё не закончил сцену
-    if sh $d/tools/render.sh encode > /dev/null 2>&1; then
+    busy=0; pgrep -f "$d/" > /dev/null && busy=1                       # любой процесс этой папки (кадры, кодирование)
+    [ -f $d/out/worker.pid ] && kill -0 $(cat $d/out/worker.pid) 2>/dev/null && busy=1
+    [ $busy = 1 ] && continue
+    if sh $d/tools/render.sh encode > $d/out/encode.log 2>&1; then
       echo "$(date +%T) encoded $d"; rm -rf $d/out/frames $d/out/chk; continue
     fi
-    busy=0; pgrep -f "$d/" > /dev/null && busy=1                       # любой процесс этой папки (кадры, кодирование куска)
-    [ -f $d/out/worker.pid ] && kill -0 $(cat $d/out/worker.pid) 2>/dev/null && busy=1
-    [ $busy = 0 ] && { echo "$(date +%T) start $d"; (cd $d && sh tools/render.sh > /dev/null 2>&1); }
+    echo "$(date +%T) start $d"; (cd $d && sh tools/render.sh > /dev/null 2>&1)
   done
   sleep 60
 done

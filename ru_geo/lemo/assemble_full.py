@@ -7,7 +7,7 @@ import numpy as np
 from scipy.signal import butter, sosfilt
 from scipy.io import wavfile
 R = f'/home/user/sofia-studio/ru_geo/{SLUG}'; P = f'{R}/video/parts'; L = '/home/user/sofia-studio/ru_geo/lemo'
-S = f'/tmp/claude-0/-home-user-sofia-studio/24c15af6-1f18-59ef-a680-971b83cb24ee/scratchpad/asm_{SLUG}'; os.makedirs(S, exist_ok=True)
+S = f'/tmp/claude-0/-home-user-sofia-studio/24c15af6-1f18-59ef-a680-971b83cb24ee/scratchpad/asm_{SLUG}' + ('_x' if os.environ.get('END') else ''); os.makedirs(S, exist_ok=True)
 film = json.load(open(f'{R}/film.json')); TOTAL = float(film['total'])
 run = lambda a: subprocess.run(a, check=True)
 # (файл, начало файла в секундах фильма, кусок фильма a–b, папка событий); EXTRA: события карт и столов
@@ -33,6 +33,10 @@ CONF = {
   SKIP=[]),
 }
 C = CONF[SLUG]; SEG, EXTRA_EV = C['SEG'], C['EXTRA']
+END = float(os.environ.get('END', 0))                    # END=127.7: только кусок с начала (на согласование)
+if END:
+    TOTAL = END; SEG = [(f, o, a, min(b, END), e) for f, o, a, b, e in SEG if a < END]
+    EXTRA_EV = [x for x in EXTRA_EV if x[2] < END]
 
 # ---- картинка (REUSE=1: взять готовую pic.mp4)
 segs = []
@@ -117,7 +121,7 @@ open(f'{S}/subs.ass', 'w', encoding='utf-8').write('\n'.join(A) + '\n')
 master = f'{S}/{SLUG}_master.mp4'
 run(['ffmpeg', '-y', '-loglevel', 'error', '-i', f'{S}/pic.mp4', '-i', f'{S}/mix.wav', '-vf', f'ass={S}/subs.ass', '-map', '0:v', '-map', '1:a',
      '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-c:a', 'aac', '-b:a', '192k', '-t', f'{TOTAL:.2f}', '-movflags', '+faststart', master])
-share = f'{R}/video/{SLUG}_share.mp4'
+share = f'{R}/video/{SLUG}_' + ('excerpt' if END else 'share') + '.mp4'
 run(['ffmpeg', '-y', '-loglevel', 'error', '-i', master, '-vf', 'scale=1280:720', '-c:v', 'libx264', '-preset', 'medium', '-b:v', '520k', '-maxrate', '900k', '-bufsize', '1800k',
      '-c:a', 'aac', '-b:a', '96k', '-movflags', '+faststart', share])
 print('done', master, share, os.path.getsize(share) // 1048576, 'MB')
