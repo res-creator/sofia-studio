@@ -1,0 +1,6 @@
+raw/
+out/
+assets/*.bin
+assets/*albedo*
+assets/*.png
+assets/*.jpg

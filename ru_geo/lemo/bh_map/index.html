@@ -1,0 +1,295 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>3D Map Explainer · Башни</title>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+<style>
+@font-face{font-family:Fira;src:url(fonts/FiraSansCondensed-500-sub.woff2) format('woff2');font-weight:500}
+@font-face{font-family:Fira;src:url(fonts/FiraSansCondensed-600-sub.woff2) format('woff2');font-weight:600}
+html,body{margin:0;background:#05080c;overflow:hidden}
+canvas{position:absolute;left:0;top:0;width:1920px;height:1080px}
+</style></head>
+<body>
+<script type="module">
+// «Мысленный эксперимент» · skyscraper heights · map clip, 10.30 s (film 20.60–30.90; clip t = film t − 20.60)
+//   0.0–1.6  fall from high above onto the Arabian Peninsula, arriving over Dubai
+//   1.5–3.3  pin on Burj Khalifa, pillar 828 m grows («Бурдж-Халифа · 828 м»)
+//   3.4–5.8  flight west across Arabia to Jeddah
+//   5.7–10.3 pin on Jeddah Tower («Башня Джидды · строится»), pillar grows to 1 000 m («1 000 м ?»), push + hold
+// Built on the Lemo-Opuscar 3D Map Explainer demo engine (terrain, baked shadows, pillars, post). ?nosafe=1 shows the subtitle zone.
+import * as THREE from 'three';
+import { makePost } from './post.js';
+import { clamp, lerp, seg, ss, eo, eio, track } from '/core/lib.js';
+
+const Wd = 1920, Ht = 1080, Q = new URLSearchParams(location.search);
+const FULL = 10.3;
+const T0 = +(Q.get('t0') || 0), T1 = Q.has('t1') ? +Q.get('t1') : FULL;
+
+// ---------- data: one wide mesh (Red Sea → Gulf of Oman) + two detailed patches (Dubai, Jeddah) ----------
+const J = u => fetch(u).then(r => r.json()), B = u => fetch(u).then(r => r.arrayBuffer());
+const PN = ['dxb', 'jed'];
+const [meta, wmeta, wraw, ...pdata] = await Promise.all([J('assets/meta.json'), J('assets/wide_meta.json'), B('assets/wide_height.bin'),
+  ...PN.map(n => J(`assets/${n}_meta.json`)), ...PN.map(n => B(`assets/${n}_height.bin`))]);
+const wbuf = new Float32Array(wraw);
+const PM = PN.map((n, i) => ({ n, m: pdata[i], buf: new Float32Array(pdata[PN.length + i]) }));
+const EX = 3.2;                                      // land ×3.2 (as the demo, baked shadows assume it)
+const { km_px, width_km: WK, height_km: HK } = meta; // world reference (the demo's: km per pixel at its latitude)
+const [MX0, MY0] = meta.merc;
+const D2R = Math.PI / 180;
+function merc(lon, lat) { const n = 2 ** meta.z * 256; return [(lon + 180) / 360 * n, (1 - Math.asinh(Math.tan(lat * D2R)) / Math.PI) / 2 * n]; }
+function xz(lon, lat) { const [mx, my] = merc(lon, lat); return [(mx - MX0) * km_px - WK / 2, (my - MY0) * km_px - HK / 2]; }
+const [WX0, WZ0] = xz(wmeta.bbox[0], wmeta.bbox[3]), [WX1, WZ1] = xz(wmeta.bbox[2], wmeta.bbox[1]);
+for (const p of PM) { [p.X0, p.Z0] = xz(p.m.bbox[0], p.m.bbox[3]); [p.X1, p.Z1] = xz(p.m.bbox[2], p.m.bbox[1]); }
+function bil(buf, w, h, gx, gz) {
+  const x0 = Math.max(0, Math.min(w - 2, Math.floor(gx))), z0 = Math.max(0, Math.min(h - 2, Math.floor(gz)));
+  const fx = clamp(gx - x0), fz = clamp(gz - z0);
+  const a = buf[z0 * w + x0], b = buf[z0 * w + x0 + 1], c = buf[(z0 + 1) * w + x0], d = buf[(z0 + 1) * w + x0 + 1];
+  return (a * (1 - fx) + b * fx) * (1 - fz) + (c * (1 - fx) + d * fx) * fz;
+}
+function hAt(X, Z) {
+  for (const p of PM) if (X > p.X0 && X < p.X1 && Z > p.Z0 && Z < p.Z1)
+    return bil(p.buf, p.m.GW, p.m.GH, (X - p.X0) / (p.X1 - p.X0) * (p.m.GW - 1), (Z - p.Z0) / (p.Z1 - p.Z0) * (p.m.GH - 1));
+  return bil(wbuf, wmeta.GW, wmeta.GH, (X - WX0) / (WX1 - WX0) * (wmeta.GW - 1), (Z - WZ0) / (WZ1 - WZ0) * (wmeta.GH - 1));
+}
+const yOf = h => Math.max(h, 0) / 1000 * EX;
+function geo(lon, lat, lift = 0) { const [X, Z] = xz(lon, lat); return new THREE.Vector3(X, yOf(hAt(X, Z)) + lift, Z); }
+
+// ---------- renderer ----------
+const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true });
+const SS = +(Q.get('ss') || 2);                     // supersampling (2 as the demo; ?ss=1 for quick previews)
+renderer.setPixelRatio(SS); renderer.setSize(Wd, Ht);
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.25;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+const HAZE = new THREE.Color(0x5f6872);
+scene.background = HAZE.clone();
+scene.fog = new THREE.Fog(HAZE, 300, 900);
+
+const tl = new THREE.TextureLoader();
+const load = u => new Promise((r, e) => tl.load(u, r, undefined, e));
+const texNames = ['wide', ...PN].flatMap(n => [`assets/${n}_albedo.jpg`, `assets/${n}_water.png`, `assets/${n}_shadow.png`]);
+const TEX = await Promise.all(texNames.map(load));
+for (let i = 0; i < TEX.length; i += 3) { TEX[i].colorSpace = THREE.SRGBColorSpace; TEX[i].anisotropy = 16; TEX[i + 2].anisotropy = 8; }
+
+function roughFrom(tex) {
+  const c = document.createElement('canvas'); c.width = tex.image.width; c.height = tex.image.height;
+  const g = c.getContext('2d'); g.drawImage(tex.image, 0, 0); const id = g.getImageData(0, 0, c.width, c.height);
+  for (let i = 0; i < id.data.length; i += 4) { const w = id.data[i] / 255; id.data[i] = id.data[i + 1] = id.data[i + 2] = 245 * (1 - w) + 185 * w; }
+  g.putImageData(id, 0, 0); return new THREE.CanvasTexture(c);
+}
+const LIGHT_CHUNK = THREE.ShaderChunk.lights_fragment_begin.replaceAll('RE_Direct( directLight,', 'directLight.color *= mix( 1.0, texture2D( tShadow, vMapUv ).r, 0.88 );\n\t\tRE_Direct( directLight,');
+// the wide mesh discards itself under both detailed patches (clipA, clipB)
+function terrainMat(map, water, shadow, clipA, clipB, keep) {      // keep: a patch draws only inside this rect (hides its edge rows)
+  const m = new THREE.MeshStandardMaterial({ map, roughnessMap: roughFrom(water), roughness: 1, metalness: 0 });
+  const none = new THREE.Vector4(1, 1, -1, -1), all = new THREE.Vector4(-1e9, -1e9, 1e9, 1e9);
+  m.onBeforeCompile = sh => {
+    Object.assign(sh.uniforms, { tShadow: { value: shadow }, clipA: { value: clipA || none }, clipB: { value: clipB || none }, keepR: { value: keep || all } });
+    sh.vertexShader = 'varying vec3 vWp;\n' + sh.vertexShader.replace('#include <project_vertex>', '#include <project_vertex>\n vWp = (modelMatrix * vec4(transformed, 1.0)).xyz;');
+    sh.fragmentShader = 'uniform sampler2D tShadow; uniform vec4 clipA, clipB, keepR; varying vec3 vWp;\n' + sh.fragmentShader
+      .replace('void main() {', 'void main() {\n if (vWp.x > clipA.x && vWp.x < clipA.z && vWp.z > clipA.y && vWp.z < clipA.w) discard;\n if (vWp.x < keepR.x || vWp.x > keepR.z || vWp.z < keepR.y || vWp.z > keepR.w) discard;\n if (vWp.x > clipB.x && vWp.x < clipB.z && vWp.z > clipB.y && vWp.z < clipB.w) discard;')
+      .replace('#include <lights_fragment_begin>', LIGHT_CHUNK);
+  };
+  return m;
+}
+function terrainMesh(w, h, gw, gh, buf, mat, st = 1) {      // st: take every st-th grid point (the wide mesh, software GL)
+  const nx = Math.floor((gw - 1) / st) + 1, nz = Math.floor((gh - 1) / st) + 1;
+  const g = new THREE.PlaneGeometry(w * (nx - 1) * st / (gw - 1), h * (nz - 1) * st / (gh - 1), nx - 1, nz - 1); g.rotateX(-Math.PI / 2);
+  g.translate(-(w - w * (nx - 1) * st / (gw - 1)) / 2, 0, -(h - h * (nz - 1) * st / (gh - 1)) / 2);
+  const uv = g.attributes.uv;
+  for (let i = 0; i < uv.count; i++) { const ix = i % nx, iz = Math.floor(i / nx); uv.setXY(i, ix * st / (gw - 1), 1 - iz * st / (gh - 1)); }
+  const p = g.attributes.position; for (let i = 0; i < p.count; i++) { const ix = i % nx, iz = Math.floor(i / nx); p.setY(i, yOf(buf[iz * st * gw + ix * st])); }
+  g.computeVertexNormals(); return new THREE.Mesh(g, mat);
+}
+{
+  const inset = 2.6, clips = PM.map(p => new THREE.Vector4(p.X0 + inset, p.Z0 + inset, p.X1 - inset, p.Z1 - inset));
+  const wm = terrainMesh(WX1 - WX0, WZ1 - WZ0, wmeta.GW, wmeta.GH, wbuf, terrainMat(TEX[0], TEX[1], TEX[2], clips[0], clips[1]), 2);
+  wm.position.set((WX0 + WX1) / 2, -.03, (WZ0 + WZ1) / 2); scene.add(wm);
+  PM.forEach((p, i) => {
+    const pm = terrainMesh(p.X1 - p.X0, p.Z1 - p.Z0, p.m.GW, p.m.GH, p.buf, terrainMat(TEX[3 + 3 * i], TEX[4 + 3 * i], TEX[5 + 3 * i], null, null, new THREE.Vector4(p.X0 + 2, p.Z0 + 2, p.X1 - 2, p.Z1 - 2)));
+    pm.position.set((p.X0 + p.X1) / 2, 0, (p.Z0 + p.Z1) / 2); scene.add(pm);
+  });
+}
+const sun = new THREE.DirectionalLight(0xffe2b8, 3.1);
+sun.position.set(-150, 62, -70); sun.target.position.set(0, 0, 0);
+scene.add(sun, sun.target, new THREE.HemisphereLight(0x9fb6c8, 0x4a3420, 0.55));
+const camera = new THREE.PerspectiveCamera(28, Wd / Ht, 2, 900);
+
+// ---------- the two towers: public coordinates ----------
+const BK = { ll: [55.2744, 25.1972], m: 828 };       // Burj Khalifa, Dubai
+const JT = { ll: [39.0858, 21.7347], m: 1000 };      // Jeddah Tower, under construction (≈1 000 m planned)
+
+// ---------- data pillars: one slab = 100 m of height (as the demo: stacked slabs with a lit rim) ----------
+const SH = 5.5, PR = 3.0;                            // km per slab in the scene, pillar radius
+function pillar(P, n, cols) {
+  const grp = new THREE.Group(); grp.position.copy(P); scene.add(grp);
+  const slabG = new THREE.CylinderGeometry(PR, PR, SH * .87, 48, 1);
+  const ringG = new THREE.TorusGeometry(PR, PR * .026, 6, 64); ringG.rotateX(Math.PI / 2);
+  const slabs = [];
+  for (let k = 0; k < n; k++) {
+    const [col, emis] = cols(k);
+    const mat = new THREE.MeshStandardMaterial({ color: col, emissive: emis, emissiveIntensity: .85, roughness: .45, metalness: .1 });
+    const edgeM = new THREE.MeshBasicMaterial({ color: new THREE.Color(col).multiplyScalar(2.2), toneMapped: false });
+    const s = new THREE.Group(); s.add(new THREE.Mesh(slabG, mat)); const r = new THREE.Mesh(ringG, edgeM); r.position.y = SH * .435; s.add(r);
+    s.position.y = k * SH + SH / 2; grp.add(s); slabs.push(s);
+  }
+  return { grp, slabs, P };
+}
+function growPillar(p, n, k) {                       // show n slabs (fractional) grown by k ∈ [0,1]
+  const v = n * k;
+  p.slabs.forEach((s, i) => { const f = clamp(v - i); s.visible = f > 0; const part = i + 1 > n ? n - i : 1; s.scale.set(1, Math.max(.001, f * part), 1); s.position.y = i * SH + SH * f * part / 2; });
+}
+const AMBC = [0xffa63d, 0xff8a1e], AMBL = [0xffd08a, 0xffb050];   // amber; one step lighter for the uncertain top
+BK.P = geo(...BK.ll); JT.P = geo(...JT.ll);
+const PBK = pillar(BK.P, 9, () => AMBC);
+const PJT = pillar(JT.P, 10, k => k >= 9 ? AMBL : AMBC);
+const BK_N = BK.m / 100, JT_N = JT.m / 100;
+
+// ---------- camera: [log distance km, pitch°, yaw°, target lon, target lat, target height km] ----------
+const CAM = track([
+  [0.0, [Math.log(2450), 86, 0, 47.6, 25.3, 0]],
+  [0.5, [Math.log(1450), 80, 2, 50.6, 25.3, 0]],
+  [1.55, [Math.log(330), 52, 9, 55.05, 25.15, 14]],
+  [3.3, [Math.log(300), 47, 11, 55.12, 25.18, 20]],
+  [4.55, [Math.log(1350), 62, 3, 47.2, 23.4, 0]],
+  [5.75, [Math.log(340), 50, -5, 39.20, 21.68, 14]],
+  [7.6, [Math.log(310), 38, -7, 39.16, 21.70, 26]],
+  [10.3, [Math.log(262), 31, -10, 39.14, 21.71, 30]]]);
+function mapCam(t) {
+  const [ld, pd, yd, lo, la, ty] = CAM(clamp(t, 0, FULL)), [X, Z] = xz(lo, la), d = Math.exp(ld), p = pd * D2R, y = yd * D2R;
+  return { d, cam: new THREE.Vector3(X + Math.sin(y) * Math.cos(p) * d, ty + Math.sin(p) * d, Z + Math.cos(y) * Math.cos(p) * d), tgt: new THREE.Vector3(X, ty, Z) };
+}
+function setCamera(t) {
+  const { d, cam, tgt } = mapCam(t);
+  camera.position.copy(cam);
+  camera.near = Math.max(.2, d * .06); camera.far = d * 6 + 400; camera.lookAt(tgt); camera.updateProjectionMatrix(); camera.updateMatrixWorld();
+  scene.fog.near = d * 1.05; scene.fog.far = d * 3.4 + 60;
+  return d;
+}
+
+// ---------- post ----------
+const post = makePost(renderer, scene, camera, Wd, Ht, { ssaa: SS, ao: false });
+post.dof.maxCoc = 7; post.bloom.strength = .55; post.bloom.radius = .55; post.bloom.threshold = .95;
+const VU = post.vig.uniforms; VU.amt.value = .42; VU.warm.value = .25; VU.sat.value = .92; VU.contrast.value = .12;
+
+// ---------- overlay ----------
+const ov = document.createElement('canvas'); ov.width = Wd * 2; ov.height = Ht * 2; ov.style.width = Wd + 'px'; ov.style.height = Ht + 'px'; document.body.appendChild(ov);
+const g = ov.getContext('2d');
+await Promise.all(['500 20px Fira', '600 20px Fira'].map(f => document.fonts.load(f, 'АБВ абв 828')));
+const scr = v => { const p = v.clone().project(camera); return [(p.x + 1) / 2 * Wd, (1 - p.y) / 2 * Ht, p.z]; };
+const C = { land: '#2b2119', sea: '#bcdbe6', light: '#f6eee0', amber: '#ffc36b', amberSoft: 'rgba(255,214,150,.95)', num: '#ffd08a', dim: 'rgba(240,232,216,.72)' };
+const SAFE_Y = Ht - 250;                             // the bottom 250 px stay free (Russian subtitles are burned in later)
+let TX = [];
+function txt(s, x, y, o) {
+  g.save(); g.font = `${o.w || 500} ${o.size}px Fira`; g.letterSpacing = (o.sp || 0) + 'px';
+  g.textAlign = o.align || 'center'; g.textBaseline = o.base || 'middle'; g.globalAlpha = clamp(o.a ?? 1); g.fillStyle = o.col || C.light;
+  if (o.shadow) { g.shadowColor = 'rgba(8,10,14,.55)'; g.shadowBlur = 14; }
+  g.fillText(s, x, y); const w = g.measureText(s).width;
+  const x0 = o.align === 'left' ? x : o.align === 'right' ? x - w : x - w / 2;
+  if ((o.a ?? 1) > .5) TX.push({ id: o.id || s, text: s, x0, y0: y - o.size * .6, x1: x0 + w, y1: y + o.size * .6 });
+  g.restore(); return w;
+}
+const tw = (s, size, w = 500, sp = 0) => { g.save(); g.font = `${w} ${size}px Fira`; g.letterSpacing = sp + 'px'; const r = g.measureText(s).width; g.restore(); return r; };
+function line(pts, col, w = 1.4, a = 1, dash = null) { g.save(); g.globalAlpha = clamp(a); g.strokeStyle = col; g.lineWidth = w; if (dash) g.setLineDash(dash); g.beginPath(); pts.forEach(([x, y], i) => i ? g.lineTo(x, y) : g.moveTo(x, y)); g.stroke(); g.restore(); }
+function dot(x, y, r, col, a = 1) { g.save(); g.globalAlpha = clamp(a); g.fillStyle = col; g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); g.restore(); }
+// a label the frame would cut, or one that drifts into the subtitle zone, fades out instead
+const edgeFade = (x0, x1, y) => ss(seg(Math.min(x0 - 40, Wd - 40 - x1, y - 40, SAFE_Y - 20 - y), 0, 50));
+
+const STY = {
+  land: { size: 30, w: 600, sp: 9, col: C.land, a: .84 }, landS: { size: 22, w: 600, sp: 6, col: C.land, a: .8 },
+  sea: { size: 22, w: 500, sp: 7, col: C.sea, a: .92 }, city: { size: 19, w: 600, sp: 2, col: C.land, a: .88 } };
+// [lon, lat, text, style, from, to]
+const LABELS = [
+  [54.35, 25.85, 'ПЕРСИДСКИЙ ЗАЛИВ', 'sea', 1.3, 3.7],
+  [45.2, 23.9, 'САУДОВСКАЯ АРАВИЯ', 'land', 3.9, 5.3], [51.8, 27.4, 'ПЕРСИДСКИЙ ЗАЛИВ', 'sea', 3.9, 5.2], [38.6, 23.2, 'КРАСНОЕ МОРЕ', 'sea', 4.0, 5.3],
+  [38.55, 22.05, 'КРАСНОЕ МОРЕ', 'sea', 5.6, 10.6]];
+function mapLabels(t) {
+  for (const [lo, la, s, kind, a0, a1] of LABELS) {
+    let a = ss(seg(t, a0, a0 + .5)) * (1 - ss(seg(t, a1 - .45, a1))); if (a <= .01) continue;
+    const st = STY[kind], [x, y, z] = scr(geo(lo, la, .3)); if (z > 1) continue;
+    const w = tw(s, st.size, st.w, st.sp), x0 = x - w / 2, x1 = x0 + w;
+    a *= edgeFade(x0, x1, y); if (a <= .01) continue;
+    txt(s, x, y, { ...st, a: a * st.a, id: 'L' + s + a0 });
+  }
+}
+
+// a pin on the tower's site: ring pulses, a dot, a thin stem up to the label
+function pin(P, t0, a) {
+  const [x, y, z] = scr(P); if (z > 1 || a <= 0) return [x, y];
+  const r = seg(t, t0, t0 + 1.3);
+  for (const k of [0, .4]) { const q = clamp(r * 1.25 - k); if (q > 0 && q < 1) { g.save(); g.globalAlpha = a * (1 - q) * .9; g.strokeStyle = C.amber; g.lineWidth = 1.6; g.beginPath(); g.ellipse(x, y, 5 + 34 * eo(q), (5 + 34 * eo(q)) * .55, 0, 0, 7); g.stroke(); g.restore(); } }
+  dot(x, y, 5 * eo(seg(t, t0, t0 + .25)), C.amber, a);
+  return [x, y];
+}
+let t = 0;
+// label beside the pillar's top: a leader line, then the text
+function topLabel(P, n, lines, a, id, side = 1) {
+  const [x, y] = scr(P.clone().setY(P.y + n * SH + 1.2)); if (a <= 0) return;
+  const lx = x + side * 46, ly = Math.min(y - 18, SAFE_Y - 120);
+  a *= edgeFade(lx, lx + Math.max(...lines.map(L => tw(L.s, L.size, L.w || 600, L.sp ?? 1.5))), ly);
+  line([[x + side * 6, y], [lx - side * 8, ly + 8]], 'rgba(255,214,150,.9)', 1.3, a);
+  let yy = ly;
+  for (const L of lines) { txt(L.s, lx, yy + (L.dy || 0), { size: L.size, w: L.w || 600, sp: L.sp ?? 1.5, align: side > 0 ? 'left' : 'right', col: L.col || C.light, a: a * (L.a ?? 1), id: id + L.s, shadow: 1 }); yy += L.step || 0; }
+}
+
+function towers(t) {
+  // Dubai: pin 1.45, pillar 1.8 → 3.0, label 2.3
+  const aB = ss(seg(t, 1.4, 1.6)) * (1 - ss(seg(t, 3.7, 4.1)));
+  if (aB > 0) {
+    pin(BK.P, 1.45, aB);
+    const la = aB * ss(seg(t, 2.25, 2.7));
+    topLabel(BK.P, BK_N * eio(seg(t, 1.8, 3.0)), [{ s: 'Бурдж-Халифа · 828 м', size: 40 }, { s: 'Дубай', size: 22, w: 500, col: C.dim, dy: 40, sp: 2 }], la, 'bk');
+  }
+  // Jeddah: pin 5.7, label 6.0; pillar 6.2 → 8.0; «1 000 м ?» 7.7; the 828 m mark 8.4
+  const aJ = ss(seg(t, 5.65, 5.85));
+  if (aJ > 0) {
+    const [px, py] = pin(JT.P, 5.7, aJ);
+    const la = aJ * ss(seg(t, 5.95, 6.35));
+    // name at the base, set to the right of the pin
+    txt('Башня Джидды', px + 22, py - 2, { size: 30, w: 600, sp: 1.5, align: 'left', col: C.light, a: la * edgeFade(px, px + 260, py), id: 'jt-name', shadow: 1 });
+    txt('строится', px + 23, py + 30, { size: 22, w: 500, sp: 2, align: 'left', col: C.amberSoft, a: la * edgeFade(px, px + 260, py + 30), id: 'jt-sub', shadow: 1 });
+    // the number beside the top, once the pillar has grown
+    const ln = aJ * ss(seg(t, 7.7, 8.1));
+    if (ln > 0) {
+      const [x, y] = scr(JT.P.clone().setY(JT.P.y + JT_N * SH + 1.2));
+      const lx = x + 50, ly = y - 6;
+      line([[x + 6, y], [lx - 8, ly + 12]], 'rgba(255,214,150,.9)', 1.3, ln);
+      txt('1 000 м ?', lx, ly, { size: 76, w: 600, sp: 1, align: 'left', col: C.num, a: ln, id: 'jt-num', shadow: 1 });
+    }
+    // Burj Khalifa's height, marked on the same scale
+    const lm = aJ * ss(seg(t, 8.4, 8.9));
+    if (lm > 0) {
+      const h = JT.P.y + BK_N * SH, c = JT.P.clone().setY(h);
+      const [ax, ay] = scr(c.clone().add(new THREE.Vector3(-PR * 2.2, 0, 0))), [bx, by] = scr(c.clone().add(new THREE.Vector3(PR * 1.6, 0, 0)));
+      line([[ax, ay], [bx, by]], 'rgba(246,238,224,.95)', 1.6, lm, [7, 5]);
+      txt('828 м', ax - 12, ay, { size: 26, w: 600, sp: 1.5, align: 'right', col: C.light, a: lm, id: 'jt-828', shadow: 1 });
+      txt('Бурдж-Халифа', ax - 12, ay + 28, { size: 19, w: 500, sp: 1.5, align: 'right', col: C.dim, a: lm, id: 'jt-828b', shadow: 1 });
+    }
+  }
+}
+function note(t) {
+  const a = ss(seg(t, 2.0, 2.6)) * .9;
+  txt('рельеф ×3,2 · одно деление столбца = 100 м', Wd - 48, 52, { size: 21, w: 500, sp: 1.5, align: 'right', col: 'rgba(240,232,216,.8)', a, id: 'note', shadow: 1 });
+}
+
+// ---------- the frame at clip time ----------
+function frame(tt) {
+  t = tt; TX = [];
+  const dist = setCamera(t);
+  PBK.grp.visible = t >= 1.8; growPillar(PBK, BK_N, eio(seg(t, 1.8, 3.0)));
+  PJT.grp.visible = t >= 6.2; growPillar(PJT, JT_N, eio(seg(t, 6.2, 8.0)));
+  post.dof.focus = dist; post.dof.aper = dist * (t < 1.4 ? 3.5 : 6);
+  VU.fade.value = 1;
+  post.composer.render();
+  g.setTransform(2, 0, 0, 2, 0, 0); g.clearRect(0, 0, Wd, Ht);
+  mapLabels(t); towers(t); note(t);
+  if (Q.has('nosafe')) { g.save(); g.fillStyle = 'rgba(255,0,0,.18)'; g.fillRect(0, SAFE_Y, Wd, 250); g.restore(); }
+}
+
+window.DUR = T1 - T0;
+window.render = tt => frame(tt + T0);
+window.TEXTS = tt => { window.render(tt); return TX.map(o => ({ ...o })); };
+window.EV = [{ t: 0.0, k: 'whoosh' }, { t: 1.45, k: 'pin' }, { t: 1.8, k: 'rise' }, { t: 3.4, k: 'whoosh' }, { t: 5.7, k: 'pin' }, { t: 6.2, k: 'rise' }, { t: 7.7, k: 'pin' }]
+  .map(e => ({ ...e, t: e.t - T0 })).filter(e => e.t >= 0 && e.t <= T1 - T0);
+window.render(0);
+window.READY = true;
+</script>
+</body></html>

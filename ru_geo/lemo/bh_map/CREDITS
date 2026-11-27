@@ -1,0 +1,39 @@
+«Мысленный эксперимент» · высота небоскрёбов · клип карты (map.mp4, film 20.60–30.90 s)
+Style: Lemo-Opuscar «3D Map Explainer» (engine copied from styles/map-explainer/demo and adapted). Third-party data and sources:
+
+## Map data and imagery (downloaded by tools/fetch_wide.py and tools/fetch_patch.py into raw/, processed into assets/)
+- Imagery: Sentinel-2 cloudless 2016 - https://s2maps.eu by EOX IT Services GmbH (Contains modified Copernicus Sentinel data
+  2016 & 2017), CC BY 4.0. Layer s2cloudless_3857: zoom 9 for the whole region (Red Sea → Gulf of Oman, 35.5–60.0 E,
+  19.0–31.6 N), zoom 11 for two detail patches: Dubai (54.3–56.3 E, 24.2–25.9 N) and Jeddah (38.1–40.1 E, 20.9–22.6 N).
+  Only the 2016 release is used (later Sentinel-2 cloudless releases are CC BY-NC-SA). Imagery colour-graded (warmed, sea
+  shaded by depth) — "modified".
+- Elevation and bathymetry: AWS Terrain Tiles (Mapzen / Tilezen "terrarium" PNG), https://registry.opendata.aws/terrain-tiles/
+  zoom 8 (region) and zoom 10 (the two patches). Sources include SRTM (public domain), GMTED, ETOPO1 and GEBCO; attribution
+  as required by the terrain-tiles documentation. Land heights exaggerated ×3.2 (stated on screen: «рельеф ×3,2»).
+- Every download URL and date is logged in raw/manifest.jsonl (downloaded 2026-11-27).
+- Tower positions: public coordinates — Burj Khalifa 25.1972 N, 55.2744 E; Jeddah Tower 21.7347 N, 39.0858 E.
+  Pillars are data graphics, not models of the towers: one slab = 100 m (stated on screen).
+
+## Required attribution — put this line in the YouTube description (the clip itself carries no English text):
+  Satellite imagery: Sentinel-2 cloudless 2016 – https://s2maps.eu by EOX IT Services GmbH (Contains modified Copernicus
+  Sentinel data 2016 & 2017), CC BY 4.0. Elevation: AWS Terrain Tiles (Mapzen/Tilezen; SRTM, GMTED, ETOPO1, GEBCO).
+  Russian version: Спутниковые снимки: Sentinel-2 cloudless 2016 – https://s2maps.eu, EOX IT Services GmbH (содержит изменённые
+  данные Copernicus Sentinel 2016 и 2017 гг.), CC BY 4.0. Рельеф: AWS Terrain Tiles (Mapzen/Tilezen; SRTM, GMTED, ETOPO1, GEBCO).
+
+## Facts on screen
+- Burj Khalifa, Dubai: 828 m (CTBUH Skyscraper Center, height to architectural top).
+- Jeddah Tower, Jeddah: under construction; planned height ≈1 000 m (developer Jeddah Economic Company; final height not
+  officially fixed — hence «1 000 м ?» on screen).
+
+## Fonts (SIL Open Font License 1.1; licence text in fonts/OFL-firasans.txt; downloaded by tools/fonts.py)
+- Fira Sans Condensed 500 / 600 (Cyrillic): Mozilla Foundation, Telefonica, Carrois, bBox Type; via the Google Fonts CSS API,
+  subset to the Russian alphabet, digits and punctuation.
+
+## Code
+- three.js r170 (MIT) from the Lemo-Opuscar library; post.js is a copy of the library's core/three/post.js.
+- Engine: Lemo-Opuscar map-explainer demo (terrain meshes, baked low-sun shadows, data pillars, post); tools/bake.py,
+  fetch_wide.py, prep_wide.py from the demo; fetch_patch.py / prep_patch.py adapted from the demo's fetch.py / prep.py.
+
+## Images, models
+- No photographs other than the satellite mosaic above, no 3D models, no AI-generated images. Pillars, pins and type are
+  drawn in code. Silent clip: no audio.
