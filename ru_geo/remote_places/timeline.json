@@ -8,97 +8,59 @@
 },
 {
 "t": 3.6,
-"d": 3.504,
+"d": 5.256,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nemo_map.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_nemo_circle.jpg",
 "cap": ""
 },
 {
-"t": 7.104,
-"d": 3.504,
-"type": "clip",
-"src": "stock/px217115.mp4",
-"ss": 0.3
+"t": 8.856,
+"d": 4.38,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_iss_vs_land_a.jpg",
+"cap": ""
 },
 {
-"t": 10.608,
-"d": 3.504,
-"type": "clip",
-"src": "stock/px30088.mp4",
-"ss": 0.3
-},
-{
-"t": 14.112,
-"d": 3.504,
-"type": "clip",
-"src": "stock/px13771.mp4",
-"ss": 0.3
+"t": 13.236,
+"d": 4.38,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/iss_station.jpg",
+"cap": "Международная космическая станция, снимок с корабля «Союз» (2018)"
 },
 {
 "t": 17.616,
 "d": 3.504,
-"type": "clip",
-"src": "stock/px261489.mp4",
-"ss": 0.3
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/ocean_horizon.jpg",
+"cap": "ночной горизонт Земли с борта МКС над южной частью Тихого океана (2024)"
 },
 {
 "t": 21.12,
-"d": 3.42,
+"d": 2.736,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/ocean_horizon.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
-"cap": "открытый океан (иллюстративное фото)"
-},
-{
-"t": 24.54,
-"d": 3.42,
-"type": "clip",
-"src": "stock/px21528.mp4",
-"ss": 0.3
-},
-{
-"t": 27.96,
-"d": 3.42,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nemo_map.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_nemo_world.jpg",
 "cap": ""
 },
 {
-"t": 31.38,
-"d": 3.42,
-"type": "clip",
-"src": "stock/px154424.mp4",
-"ss": 0.3
+"t": 23.856,
+"d": 2.394,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_nemo_latin.jpg",
+"cap": ""
 },
 {
-"t": 34.8,
-"d": 3.42,
-"type": "clip",
-"src": "stock/px21175.mp4",
-"ss": 0.3
+"t": 26.25,
+"d": 6.327,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_q_where.jpg",
+"cap": ""
+},
+{
+"t": 32.577,
+"d": 5.643,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_q_far.jpg",
+"cap": ""
 },
 {
 "t": 38.22,
@@ -108,235 +70,94 @@
 },
 {
 "t": 40.82,
-"d": 3.019,
+"d": 8.663,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/earth_globe_pacific.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
-"cap": "Тихий океан из космоса"
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_from_what.jpg",
+"cap": ""
 },
 {
-"t": 43.839,
-"d": 3.019,
-"type": "clip",
-"src": "stock/px5101.mp4",
-"ss": 0.3
-},
-{
-"t": 46.857,
-"d": 3.019,
+"t": 49.483,
+"d": 5.282,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/ocean_horizon.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
-"cap": "открытый океан (иллюстративное фото)"
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_pole_def.jpg",
+"cap": ""
 },
 {
-"t": 49.876,
-"d": 3.019,
-"type": "clip",
-"src": "stock/px30089.mp4",
-"ss": 0.3
-},
-{
-"t": 52.894,
-"d": 3.019,
-"type": "clip",
-"src": "stock/px276416.mp4",
-"ss": 0.3
-},
-{
-"t": 55.913,
-"d": 3.019,
-"type": "clip",
-"src": "stock/px338904.mp4",
-"ss": 0.3
-},
-{
-"t": 58.931,
-"d": 3.019,
-"type": "clip",
-"src": "stock/px304344.mp4",
-"ss": 0.3
+"t": 54.766,
+"d": 7.184,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_pole_kinds.jpg",
+"cap": ""
 },
 {
 "t": 61.95,
-"d": 3.218,
+"d": 7.724,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nemo_map.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_lukatela.jpg",
 "cap": ""
 },
 {
-"t": 65.168,
-"d": 3.218,
-"type": "clip",
-"src": "stock/px201766.mp4",
-"ss": 0.3
-},
-{
-"t": 68.387,
-"d": 3.218,
+"t": 69.674,
+"d": 4.441,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/earth_globe_pacific.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
-"cap": "Тихий океан из космоса"
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_nemo_circle.jpg",
+"cap": ""
 },
 {
-"t": 71.605,
-"d": 3.218,
-"type": "clip",
-"src": "stock/px14297.mp4",
-"ss": 0.3
+"t": 74.115,
+"d": 3.283,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_nemo_map.jpg",
+"cap": ""
 },
 {
-"t": 74.823,
-"d": 3.218,
-"type": "clip",
-"src": "stock/px182970.mp4",
-"ss": 0.3
-},
-{
-"t": 78.042,
-"d": 3.218,
-"type": "clip",
-"src": "stock/px1890.mp4",
-"ss": 0.3
+"t": 77.398,
+"d": 3.862,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nemo_verne.jpg",
+"cap": "капитан Немо на палубе «Наутилуса», иллюстрация к роману Жюля Верна"
 },
 {
 "t": 81.26,
-"d": 3.143,
+"d": 5.847,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/earth_globe_pacific.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
-"cap": "Тихий океан из космоса"
-},
-{
-"t": 84.403,
-"d": 3.143,
-"type": "clip",
-"src": "stock/px1409.mp4",
-"ss": 0.3
-},
-{
-"t": 87.547,
-"d": 3.143,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/antarctic_ice.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "лёд Антарктиды"
-},
-{
-"t": 90.69,
-"d": 3.143,
-"type": "clip",
-"src": "stock/px161045.mp4",
-"ss": 0.3
-},
-{
-"t": 93.833,
-"d": 3.143,
-"type": "clip",
-"src": "stock/px21.mp4",
-"ss": 0.3
-},
-{
-"t": 96.977,
-"d": 3.143,
-"type": "clip",
-"src": "stock/px3581.mp4",
-"ss": 0.3
-},
-{
-"t": 100.12,
-"d": 3.286,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/ocean_horizon.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
-"cap": "открытый океан (иллюстративное фото)"
-},
-{
-"t": 103.406,
-"d": 3.286,
-"type": "clip",
-"src": "stock/px76038.mp4",
-"ss": 0.3
-},
-{
-"t": 106.692,
-"d": 3.286,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nemo_map.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_coast_shift.jpg",
 "cap": ""
 },
 {
-"t": 109.978,
-"d": 3.286,
-"type": "clip",
-"src": "stock/px9179.mp4",
-"ss": 0.3
+"t": 87.107,
+"d": 2.075,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/ice_shelf_edge.jpg",
+"cap": "край шельфового ледника у острова Аделейд, Антарктида: где здесь «берег»?"
 },
 {
-"t": 113.264,
-"d": 3.286,
-"type": "clip",
-"src": "stock/px76037.mp4",
-"ss": 0.3
+"t": 89.181,
+"d": 6.224,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_estimates.jpg",
+"cap": ""
+},
+{
+"t": 95.405,
+"d": 4.715,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_okolo.jpg",
+"cap": ""
+},
+{
+"t": 100.12,
+"d": 4.929,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_rulers.jpg",
+"cap": ""
+},
+{
+"t": 105.049,
+"d": 11.501,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_rulers_full.jpg",
+"cap": ""
 },
 {
 "t": 116.55,
@@ -346,54 +167,17 @@
 },
 {
 "t": 119.15,
-"d": 3.02,
+"d": 7.399,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nemo_map.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_nemo_coords.jpg",
 "cap": ""
 },
 {
-"t": 122.17,
-"d": 3.02,
-"type": "clip",
-"src": "stock/px2849.mp4",
-"ss": 0.3
-},
-{
-"t": 125.19,
-"d": 3.02,
+"t": 126.549,
+"d": 7.701,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/ocean_horizon.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
-"cap": "открытый океан (иллюстративное фото)"
-},
-{
-"t": 128.21,
-"d": 3.02,
-"type": "clip",
-"src": "stock/px74821.mp4",
-"ss": 0.3
-},
-{
-"t": 131.23,
-"d": 3.02,
-"type": "clip",
-"src": "stock/px237249.mp4",
-"ss": 0.3
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_ship_days.jpg",
+"cap": ""
 },
 {
 "t": 134.25,
@@ -403,31 +187,24 @@
 },
 {
 "t": 137.85,
-"d": 3.47,
-"type": "clip",
-"src": "stock/px85015.mp4",
-"ss": 0.3
+"d": 4.303,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_nemo_map.jpg",
+"cap": ""
 },
 {
-"t": 141.32,
-"d": 3.47,
-"type": "clip",
-"src": "stock/px223459.mp4",
-"ss": 0.3
+"t": 142.153,
+"d": 2.498,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/motu_nui.jpg",
+"cap": "островок Моту-Нуи у острова Пасхи"
 },
 {
-"t": 144.79,
-"d": 3.47,
-"type": "clip",
-"src": "stock/px374244.mp4",
-"ss": 0.3
-},
-{
-"t": 148.26,
-"d": 3.47,
-"type": "clip",
-"src": "stock/px284324.mp4",
-"ss": 0.3
+"t": 144.651,
+"d": 7.079,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_nemo_map.jpg",
+"cap": ""
 },
 {
 "t": 151.73,
@@ -437,132 +214,73 @@
 },
 {
 "t": 155.33,
-"d": 3.588,
+"d": 2.296,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nemo_map.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_iss_orbit.jpg",
 "cap": ""
 },
 {
-"t": 158.917,
-"d": 3.588,
-"type": "clip",
-"src": "stock/px308799.mp4",
-"ss": 0.3
+"t": 157.626,
+"d": 3.014,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/iss_sunrise.jpg",
+"cap": "восход над южной частью Тихого океана, снимок с МКС (2013)"
 },
 {
-"t": 162.505,
-"d": 3.588,
-"type": "clip",
-"src": "stock/px135988.mp4",
-"ss": 0.3
+"t": 160.639,
+"d": 6.601,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_iss_vs_land.jpg",
+"cap": ""
 },
 {
-"t": 166.093,
-"d": 3.588,
-"type": "clip",
-"src": "stock/tN7DBjiJ6U.mp4",
-"ss": 0.3
+"t": 167.24,
+"d": 2.44,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/ocean_horizon.jpg",
+"cap": "ночной горизонт Земли с борта МКС над южной частью Тихого океана (2024)"
 },
 {
 "t": 169.68,
-"d": 3.322,
+"d": 8.171,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/earth_globe_pacific.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "Тихий океан из космоса"
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_iss_years.jpg",
+"cap": ""
 },
 {
-"t": 173.002,
-"d": 3.322,
-"type": "clip",
-"src": "stock/px732.mp4",
-"ss": 0.3
+"t": 177.851,
+"d": 6.776,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/iss_station.jpg",
+"cap": "Международная космическая станция, снимок с корабля «Союз» (2018)"
 },
 {
-"t": 176.323,
-"d": 3.322,
-"type": "clip",
-"src": "stock/px86576.mp4",
-"ss": 0.3
-},
-{
-"t": 179.645,
-"d": 3.322,
-"type": "clip",
-"src": "stock/px103053.mp4",
-"ss": 0.3
-},
-{
-"t": 182.967,
-"d": 3.322,
-"type": "clip",
-"src": "stock/px733.mp4",
-"ss": 0.3
-},
-{
-"t": 186.288,
-"d": 3.322,
-"type": "clip",
-"src": "stock/px1175.mp4",
-"ss": 0.3
+"t": 184.627,
+"d": 4.983,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_ship_near.jpg",
+"cap": ""
 },
 {
 "t": 189.61,
-"d": 3.37,
+"d": 5.898,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/ocean_horizon.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
-"cap": "открытый океан (иллюстративное фото)"
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/earth_globe_pacific.jpg",
+"cap": "облака над Тихим океаном, снимок с шаттла (1992)"
 },
 {
-"t": 192.98,
-"d": 3.37,
-"type": "clip",
-"src": "stock/px111113.mp4",
-"ss": 0.3
+"t": 195.508,
+"d": 6.234,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_aerial.jpg",
+"cap": "Тристан-да-Кунья, снимок с МКС (2013)"
 },
 {
-"t": 196.35,
-"d": 3.37,
-"type": "clip",
-"src": "stock/px37898.mp4",
-"ss": 0.3
-},
-{
-"t": 199.72,
-"d": 3.37,
-"type": "clip",
-"src": "stock/px307692.mp4",
-"ss": 0.3
-},
-{
-"t": 203.09,
-"d": 3.37,
-"type": "clip",
-"src": "stock/px33013.mp4",
-"ss": 0.3
+"t": 201.742,
+"d": 4.718,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_cape_route.jpg",
+"cap": ""
 },
 {
 "t": 206.46,
@@ -572,89 +290,45 @@
 },
 {
 "t": 210.06,
-"d": 2.867,
+"d": 2.179,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/deep_ocean.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
-"cap": "глубокий океан (иллюстративное фото)"
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_life_chain.jpg",
+"cap": ""
 },
 {
-"t": 212.928,
-"d": 2.867,
-"type": "clip",
-"src": "stock/px216981.mp4",
-"ss": 0.3
+"t": 212.239,
+"d": 5.735,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_deorbit.jpg",
+"cap": ""
 },
 {
-"t": 215.795,
-"d": 2.867,
-"type": "clip",
-"src": "stock/px286278.mp4",
-"ss": 0.3
-},
-{
-"t": 218.662,
-"d": 2.867,
-"type": "clip",
-"src": "stock/px216987.mp4",
-"ss": 0.3
+"t": 217.974,
+"d": 3.556,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_260.jpg",
+"cap": ""
 },
 {
 "t": 221.53,
-"d": 3.097,
+"d": 7.804,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/mir_reentry.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "станция «Мир» (фото 1998 года)"
+"cap": "станция «Мир», снимок с шаттла «Дискавери» (1995)"
 },
 {
-"t": 224.627,
-"d": 3.097,
-"type": "clip",
-"src": "stock/px143019.mp4",
-"ss": 0.3
+"t": 229.334,
+"d": 5.76,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/iss_station.jpg",
+"cap": "Международная космическая станция, снимок с корабля «Союз» (2018)"
 },
 {
-"t": 227.723,
-"d": 3.097,
-"type": "clip",
-"src": "stock/px224512.mp4",
-"ss": 0.3
-},
-{
-"t": 230.82,
-"d": 3.097,
-"type": "clip",
-"src": "stock/px145736.mp4",
-"ss": 0.3
-},
-{
-"t": 233.917,
-"d": 3.097,
-"type": "clip",
-"src": "stock/px175331.mp4",
-"ss": 0.3
-},
-{
-"t": 237.013,
-"d": 3.097,
-"type": "clip",
-"src": "stock/px224511.mp4",
-"ss": 0.3
+"t": 235.093,
+"d": 5.017,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_deorbit.jpg",
+"cap": ""
 },
 {
 "t": 240.11,
@@ -664,67 +338,45 @@
 },
 {
 "t": 242.71,
-"d": 3.089,
+"d": 2.471,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_arctic.jpg",
+"cap": ""
+},
+{
+"t": 245.181,
+"d": 3.459,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/arctic_icebreaker.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
-"cap": "дрейфующий лёд Арктики"
+"cap": "исследователь на морском льду Арктики, экспедиция NASA (2010)"
 },
 {
-"t": 245.799,
-"d": 3.089,
-"type": "clip",
-"src": "stock/px65293.mp4",
-"ss": 0.3
+"t": 248.64,
+"d": 7.166,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_arctic.jpg",
+"cap": ""
 },
 {
-"t": 248.888,
-"d": 3.089,
-"type": "clip",
-"src": "stock/px173689.mp4",
-"ss": 0.3
+"t": 255.806,
+"d": 3.212,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_antarctic.jpg",
+"cap": ""
 },
 {
-"t": 251.976,
-"d": 3.089,
-"type": "clip",
-"src": "stock/px385077.mp4",
-"ss": 0.3
-},
-{
-"t": 255.065,
-"d": 3.089,
-"type": "clip",
-"src": "stock/px316.mp4",
-"ss": 0.3
-},
-{
-"t": 258.154,
-"d": 3.089,
-"type": "clip",
-"src": "stock/px94457.mp4",
-"ss": 0.3
+"t": 259.019,
+"d": 2.224,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/lenin_pole.jpg",
+"cap": "бывшая советская станция «Полюс недоступности» в Антарктиде: бюст Ленина над снегом (2007)"
 },
 {
 "t": 261.243,
-"d": 3.089,
-"type": "clip",
-"src": "stock/px236893.mp4",
-"ss": 0.3
-},
-{
-"t": 264.331,
-"d": 3.089,
-"type": "clip",
-"src": "stock/px3344.mp4",
-"ss": 0.3
+"d": 6.178,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_antarctic.jpg",
+"cap": ""
 },
 {
 "t": 267.42,
@@ -734,88 +386,45 @@
 },
 {
 "t": 271.02,
-"d": 3.462,
-"type": "clip",
-"src": "stock/px191181.mp4",
-"ss": 0.3
+"d": 7.894,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_eurasia.jpg",
+"cap": ""
 },
 {
-"t": 274.483,
-"d": 3.462,
-"type": "clip",
-"src": "stock/px174519.mp4",
-"ss": 0.3
-},
-{
-"t": 277.945,
-"d": 3.462,
-"type": "clip",
-"src": "stock/px169442.mp4",
-"ss": 0.3
-},
-{
-"t": 281.408,
-"d": 3.462,
-"type": "clip",
-"src": "stock/px176670.mp4",
-"ss": 0.3
+"t": 278.915,
+"d": 5.955,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_bouvet.jpg",
+"cap": ""
 },
 {
 "t": 284.87,
-"d": 3.409,
+"d": 1.909,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/bouvet_map.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "карта: остров Буве в южной Атлантике"
+"cap": "остров Буве, почти весь покрыт льдом; снимок с МКС (2008)"
 },
 {
-"t": 288.279,
-"d": 3.409,
-"type": "clip",
-"src": "stock/px27983.mp4",
-"ss": 0.3
+"t": 286.779,
+"d": 4.533,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_bouvet_90.jpg",
+"cap": ""
 },
 {
-"t": 291.687,
-"d": 3.409,
-"type": "clip",
-"src": "stock/px255499.mp4",
-"ss": 0.3
+"t": 291.312,
+"d": 10.737,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_bouvet_dates.jpg",
+"cap": ""
 },
 {
-"t": 295.096,
-"d": 3.409,
-"type": "clip",
-"src": "stock/px70541.mp4",
-"ss": 0.3
-},
-{
-"t": 298.504,
-"d": 3.409,
-"type": "clip",
-"src": "stock/px53906.mp4",
-"ss": 0.3
-},
-{
-"t": 301.913,
-"d": 3.409,
-"type": "clip",
-"src": "stock/px255498.mp4",
-"ss": 0.3
-},
-{
-"t": 305.321,
-"d": 3.409,
-"type": "clip",
-"src": "stock/px165253.mp4",
-"ss": 0.3
+"t": 302.049,
+"d": 6.681,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_flash.jpg",
+"cap": ""
 },
 {
 "t": 308.73,
@@ -825,89 +434,38 @@
 },
 {
 "t": 312.33,
-"d": 3.078,
+"d": 4.309,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/deep_ocean.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
-"cap": "глубокий океан (иллюстративное фото)"
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_depth.jpg",
+"cap": ""
 },
 {
-"t": 315.408,
-"d": 3.078,
-"type": "clip",
-"src": "stock/px232185.mp4",
-"ss": 0.3
+"t": 316.639,
+"d": 5.54,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/trieste_1960.jpg",
+"cap": "батискаф «Триест» над Марианской впадиной перед погружением на дно, 23 января 1960"
 },
 {
-"t": 318.486,
-"d": 3.078,
-"type": "clip",
-"src": "stock/px135658.mp4",
-"ss": 0.3
-},
-{
-"t": 321.564,
-"d": 3.078,
-"type": "clip",
-"src": "stock/px216582.mp4",
-"ss": 0.3
-},
-{
-"t": 324.642,
-"d": 3.078,
-"type": "clip",
-"src": "stock/px124705.mp4",
-"ss": 0.3
+"t": 322.18,
+"d": 5.54,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_depth.jpg",
+"cap": ""
 },
 {
 "t": 327.72,
-"d": 2.884,
+"d": 9.517,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/deep_ocean.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
-"cap": "глубокий океан (иллюстративное фото)"
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/hms_challenger.jpg",
+"cap": "британский корабль «Челленджер», гравюра 1872 года"
 },
 {
-"t": 330.604,
-"d": 2.884,
-"type": "clip",
-"src": "stock/px283533.mp4",
-"ss": 0.3
-},
-{
-"t": 333.488,
-"d": 2.884,
-"type": "clip",
-"src": "stock/px107255.mp4",
-"ss": 0.3
-},
-{
-"t": 336.372,
-"d": 2.884,
-"type": "clip",
-"src": "stock/px2382.mp4",
-"ss": 0.3
-},
-{
-"t": 339.256,
-"d": 2.884,
-"type": "clip",
-"src": "stock/px4006.mp4",
-"ss": 0.3
+"t": 337.237,
+"d": 4.903,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_up_down.jpg",
+"cap": ""
 },
 {
 "t": 342.14,
@@ -923,54 +481,24 @@
 },
 {
 "t": 348.34,
-"d": 2.952,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_map.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "карта: Тристан-да-Кунья"
-},
-{
-"t": 351.292,
-"d": 2.952,
-"type": "clip",
-"src": "stock/px262530.mp4",
-"ss": 0.3
-},
-{
-"t": 354.244,
-"d": 2.952,
+"d": 4.576,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_aerial.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
-"cap": "остров Тристан-да-Кунья"
+"cap": "Тристан-да-Кунья, снимок с МКС (2013)"
 },
 {
-"t": 357.196,
-"d": 2.952,
-"type": "clip",
-"src": "stock/px293788.mp4",
-"ss": 0.3
+"t": 352.916,
+"d": 3.247,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_ship.jpg",
+"cap": "остров Святой Елены, снимок с МКС (2009)"
 },
 {
-"t": 360.148,
-"d": 2.952,
-"type": "clip",
-"src": "stock/px3806.mp4",
-"ss": 0.3
+"t": 356.163,
+"d": 6.937,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_tristan_loc.jpg",
+"cap": ""
 },
 {
 "t": 363.1,
@@ -980,310 +508,129 @@
 },
 {
 "t": 366.7,
-"d": 2.974,
+"d": 6.097,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_ship.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
-"cap": "корабль у Тристан-да-Куньи"
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/eos_village.jpg",
+"cap": "Эдинбург Семи Морей, единственный посёлок Тристан-да-Куньи"
 },
 {
-"t": 369.674,
-"d": 2.974,
-"type": "clip",
-"src": "stock/px23544.mp4",
-"ss": 0.3
-},
-{
-"t": 372.648,
-"d": 2.974,
-"type": "clip",
-"src": "stock/px63463.mp4",
-"ss": 0.3
-},
-{
-"t": 375.622,
-"d": 2.974,
-"type": "clip",
-"src": "stock/px285351.mp4",
-"ss": 0.3
-},
-{
-"t": 378.596,
-"d": 2.974,
-"type": "clip",
-"src": "stock/px1103.mp4",
-"ss": 0.3
+"t": 372.797,
+"d": 8.773,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_cape_route.jpg",
+"cap": ""
 },
 {
 "t": 381.57,
-"d": 2.992,
+"d": 11.847,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_map.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
-"cap": "карта: Тристан-да-Кунья"
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_population.jpg",
+"cap": ""
 },
 {
-"t": 384.562,
-"d": 2.992,
-"type": "clip",
-"src": "stock/px133835.mp4",
-"ss": 0.3
-},
-{
-"t": 387.553,
-"d": 2.992,
-"type": "clip",
-"src": "stock/px191382.mp4",
-"ss": 0.3
-},
-{
-"t": 390.545,
-"d": 2.992,
-"type": "clip",
-"src": "stock/px327388.mp4",
-"ss": 0.3
-},
-{
-"t": 393.537,
-"d": 2.992,
-"type": "clip",
-"src": "stock/px292145.mp4",
-"ss": 0.3
-},
-{
-"t": 396.528,
-"d": 2.992,
-"type": "clip",
-"src": "stock/px243201.mp4",
-"ss": 0.3
+"t": 393.417,
+"d": 6.103,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_220_dots.jpg",
+"cap": ""
 },
 {
 "t": 399.52,
-"d": 3.076,
+"d": 7.875,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_aerial.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "остров Тристан-да-Кунья"
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_history_1810.jpg",
+"cap": ""
 },
 {
-"t": 402.596,
-"d": 3.076,
-"type": "clip",
-"src": "stock/px1917.mp4",
-"ss": 0.3
+"t": 407.395,
+"d": 8.121,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_history_1816.jpg",
+"cap": ""
 },
 {
-"t": 405.673,
-"d": 3.076,
-"type": "clip",
-"src": "stock/px30087.mp4",
-"ss": 0.3
-},
-{
-"t": 408.749,
-"d": 3.076,
-"type": "clip",
-"src": "stock/px311.mp4",
-"ss": 0.3
-},
-{
-"t": 411.825,
-"d": 3.076,
-"type": "clip",
-"src": "stock/px214582.mp4",
-"ss": 0.3
-},
-{
-"t": 414.901,
-"d": 3.076,
-"type": "clip",
-"src": "stock/px30090.mp4",
-"ss": 0.3
-},
-{
-"t": 417.977,
-"d": 3.076,
-"type": "clip",
-"src": "stock/px33014.mp4",
-"ss": 0.3
-},
-{
-"t": 421.054,
-"d": 3.076,
-"type": "clip",
-"src": "stock/px198488.mp4",
-"ss": 0.3
+"t": 415.517,
+"d": 8.613,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_history_1892.jpg",
+"cap": ""
 },
 {
 "t": 424.13,
-"d": 2.943,
+"d": 5.121,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_map.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
-"cap": "карта: Тристан-да-Кунья"
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_history_1867.jpg",
+"cap": ""
 },
 {
-"t": 427.073,
-"d": 2.943,
-"type": "clip",
-"src": "stock/px114433.mp4",
-"ss": 0.3
+"t": 429.251,
+"d": 5.651,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_rename_1867.jpg",
+"cap": ""
 },
 {
-"t": 430.017,
-"d": 2.943,
-"type": "clip",
-"src": "stock/px19368.mp4",
-"ss": 0.3
+"t": 434.903,
+"d": 4.062,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_island.jpg",
+"cap": ""
 },
 {
-"t": 432.96,
-"d": 2.943,
-"type": "clip",
-"src": "stock/px99808.mp4",
-"ss": 0.3
-},
-{
-"t": 435.903,
-"d": 2.943,
-"type": "clip",
-"src": "stock/px29722.mp4",
-"ss": 0.3
-},
-{
-"t": 438.847,
-"d": 2.943,
-"type": "clip",
-"src": "stock/px213026.mp4",
-"ss": 0.3
+"t": 438.964,
+"d": 2.826,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/eos_village.jpg",
+"cap": "Эдинбург Семи Морей, единственный посёлок Тристан-да-Куньи"
 },
 {
 "t": 441.79,
-"d": 3.227,
+"d": 6.195,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_aerial.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
-"cap": "остров Тристан-да-Кунья"
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_island_peak.jpg",
+"cap": ""
 },
 {
-"t": 445.017,
-"d": 3.227,
-"type": "clip",
-"src": "stock/px344380.mp4",
-"ss": 0.3
+"t": 447.985,
+"d": 2.517,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_map.jpg",
+"cap": "Тристан-да-Кунья: объёмная модель по снимку спутника (ложные цвета)"
 },
 {
-"t": 448.243,
-"d": 3.227,
-"type": "clip",
-"src": "stock/px307130.mp4",
-"ss": 0.3
+"t": 450.502,
+"d": 2.904,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_sea.jpg",
+"cap": "Тристан-да-Кунья с моря: остров-вулкан"
 },
 {
-"t": 451.47,
-"d": 3.227,
-"type": "clip",
-"src": "stock/px44278.mp4",
-"ss": 0.3
-},
-{
-"t": 454.697,
-"d": 3.227,
-"type": "clip",
-"src": "stock/px3956.mp4",
-"ss": 0.3
-},
-{
-"t": 457.923,
-"d": 3.227,
-"type": "clip",
-"src": "stock/px313443.mp4",
-"ss": 0.3
+"t": 453.406,
+"d": 7.744,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_volcano_1961.jpg",
+"cap": ""
 },
 {
 "t": 461.15,
-"d": 3.222,
+"d": 6.766,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_aerial.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "остров Тристан-да-Кунья"
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_surnames.jpg",
+"cap": ""
 },
 {
-"t": 464.372,
-"d": 3.222,
-"type": "clip",
-"src": "stock/px181376.mp4",
-"ss": 0.3
+"t": 467.916,
+"d": 4.253,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/potato_patches.jpg",
+"cap": "Картофельные поля на Тристан-да-Кунье"
 },
 {
-"t": 467.593,
-"d": 3.222,
-"type": "clip",
-"src": "stock/px275633.mp4",
-"ss": 0.3
-},
-{
-"t": 470.815,
-"d": 3.222,
-"type": "clip",
-"src": "stock/px11168.mp4",
-"ss": 0.3
-},
-{
-"t": 474.037,
-"d": 3.222,
-"type": "clip",
-"src": "stock/px182082.mp4",
-"ss": 0.3
-},
-{
-"t": 477.258,
-"d": 3.222,
-"type": "clip",
-"src": "stock/px348904.mp4",
-"ss": 0.3
+"t": 472.168,
+"d": 8.312,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/eos_village.jpg",
+"cap": "Эдинбург Семи Морей, единственный посёлок Тристан-да-Куньи"
 },
 {
 "t": 480.48,
@@ -1293,47 +640,17 @@
 },
 {
 "t": 484.08,
-"d": 3.527,
+"d": 9.454,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_map.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
-"cap": "карта: Тристан-да-Кунья"
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_neighbours.jpg",
+"cap": ""
 },
 {
-"t": 487.608,
-"d": 3.527,
-"type": "clip",
-"src": "stock/px103797.mp4",
-"ss": 0.3
-},
-{
-"t": 491.135,
-"d": 3.527,
+"t": 493.534,
+"d": 4.656,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_aerial.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "остров Тристан-да-Кунья"
-},
-{
-"t": 494.663,
-"d": 3.527,
-"type": "clip",
-"src": "stock/px16166.mp4",
-"ss": 0.3
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_from_nightingale.jpg",
+"cap": "Тристан-да-Кунья на горизонте, вид с острова Соловей"
 },
 {
 "t": 498.19,
@@ -1343,146 +660,59 @@
 },
 {
 "t": 501.79,
-"d": 3.083,
+"d": 7.215,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_ship.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
-"cap": "корабль у Тристан-да-Куньи"
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nightingale_island.jpg",
+"cap": "остров Соловей (Найтингейл) с моря"
 },
 {
-"t": 504.873,
-"d": 3.083,
-"type": "clip",
-"src": "stock/px369368.mp4",
-"ss": 0.3
-},
-{
-"t": 507.957,
-"d": 3.083,
-"type": "clip",
-"src": "stock/px275891.mp4",
-"ss": 0.3
-},
-{
-"t": 511.04,
-"d": 3.083,
-"type": "clip",
-"src": "stock/myEY7Ln2p4.mp4",
-"ss": 0.3
-},
-{
-"t": 514.123,
-"d": 3.083,
-"type": "clip",
-"src": "stock/px175352.mp4",
-"ss": 0.3
-},
-{
-"t": 517.207,
-"d": 3.083,
-"type": "clip",
-"src": "stock/px237663.mp4",
-"ss": 0.3
+"t": 509.005,
+"d": 11.285,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_evac.jpg",
+"cap": ""
 },
 {
 "t": 520.29,
-"d": 3.27,
-"type": "clip",
-"src": "stock/px215446.mp4",
-"ss": 0.3
+"d": 5.722,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_return.jpg",
+"cap": ""
 },
 {
-"t": 523.56,
-"d": 3.27,
-"type": "clip",
-"src": "stock/px167515.mp4",
-"ss": 0.3
+"t": 526.012,
+"d": 10.072,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_1962.jpg",
+"cap": ""
 },
 {
-"t": 526.83,
-"d": 3.27,
-"type": "clip",
-"src": "stock/px55903.mp4",
-"ss": 0.3
-},
-{
-"t": 530.1,
-"d": 3.27,
-"type": "clip",
-"src": "stock/px228866.mp4",
-"ss": 0.3
-},
-{
-"t": 533.37,
-"d": 3.27,
-"type": "clip",
-"src": "stock/px365704.mp4",
-"ss": 0.3
-},
-{
-"t": 536.64,
-"d": 3.27,
-"type": "clip",
-"src": "stock/px96817.mp4",
-"ss": 0.3
-},
-{
-"t": 539.91,
-"d": 3.27,
-"type": "clip",
-"src": "stock/px215449.mp4",
-"ss": 0.3
+"t": 536.084,
+"d": 7.096,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_return.jpg",
+"cap": ""
 },
 {
 "t": 543.18,
-"d": 3.03,
+"d": 1.576,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_aerial.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
-"cap": "остров Тристан-да-Кунья"
+"cap": "Тристан-да-Кунья, снимок с МКС (2013)"
 },
 {
-"t": 546.21,
-"d": 3.03,
-"type": "clip",
-"src": "stock/px84146.mp4",
-"ss": 0.3
-},
-{
-"t": 549.24,
-"d": 3.03,
+"t": 544.756,
+"d": 4.606,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_map.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
-"cap": "карта: Тристан-да-Кунья"
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/eos_village.jpg",
+"cap": "Эдинбург Семи Морей, единственный посёлок Тристан-да-Куньи"
 },
 {
-"t": 552.27,
-"d": 3.03,
-"type": "clip",
-"src": "stock/px206272.mp4",
-"ss": 0.3
+"t": 549.361,
+"d": 5.939,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_from_nightingale.jpg",
+"cap": "Тристан-да-Кунья на горизонте, вид с острова Соловей"
 },
 {
 "t": 555.3,
@@ -1492,169 +722,94 @@
 },
 {
 "t": 557.9,
-"d": 3.276,
-"type": "clip",
-"src": "stock/px54914.mp4",
-"ss": 0.3
+"d": 2.293,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_rulers_full.jpg",
+"cap": ""
 },
 {
-"t": 561.176,
-"d": 3.276,
-"type": "clip",
-"src": "stock/px2946.mp4",
-"ss": 0.3
+"t": 560.193,
+"d": 5.733,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_aerial.jpg",
+"cap": "Тристан-да-Кунья, снимок с МКС (2013)"
 },
 {
-"t": 564.452,
-"d": 3.276,
-"type": "clip",
-"src": "stock/px191354.mp4",
-"ss": 0.3
+"t": 565.926,
+"d": 4.586,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_nemo_map.jpg",
+"cap": ""
 },
 {
-"t": 567.728,
-"d": 3.276,
-"type": "clip",
-"src": "stock/px184069.mp4",
-"ss": 0.3
-},
-{
-"t": 571.004,
-"d": 3.276,
-"type": "clip",
-"src": "stock/px186115.mp4",
-"ss": 0.3
+"t": 570.513,
+"d": 3.767,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_answer.jpg",
+"cap": ""
 },
 {
 "t": 574.28,
-"d": 3.49,
+"d": 9.249,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nemo_map.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_firm.jpg",
 "cap": ""
 },
 {
-"t": 577.77,
-"d": 3.49,
-"type": "clip",
-"src": "stock/px30091.mp4",
-"ss": 0.3
-},
-{
-"t": 581.26,
-"d": 3.49,
+"t": 583.529,
+"d": 2.443,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_map.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
-"cap": "карта: Тристан-да-Кунья"
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_ship_near.jpg",
+"cap": ""
 },
 {
-"t": 584.75,
-"d": 3.49,
-"type": "clip",
-"src": "stock/px201528.mp4",
-"ss": 0.3
-},
-{
-"t": 588.24,
-"d": 3.49,
-"type": "clip",
-"src": "stock/px170245.mp4",
-"ss": 0.3
+"t": 585.971,
+"d": 5.759,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_coast_shift.jpg",
+"cap": ""
 },
 {
 "t": 591.73,
-"d": 3.496,
-"type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_aerial.jpg",
-"z": [
-1.12,
-1.0
-],
-"p": [
-0.6,
-0.45
-],
-"cap": "остров Тристан-да-Кунья"
-},
-{
-"t": 595.226,
-"d": 3.496,
-"type": "clip",
-"src": "stock/px2119.mp4",
-"ss": 0.3
-},
-{
-"t": 598.722,
-"d": 3.496,
-"type": "clip",
-"src": "stock/px233867.mp4",
-"ss": 0.3
-},
-{
-"t": 602.218,
-"d": 3.496,
-"type": "clip",
-"src": "stock/px179160.mp4",
-"ss": 0.3
-},
-{
-"t": 605.714,
-"d": 3.496,
-"type": "clip",
-"src": "stock/px11490.mp4",
-"ss": 0.3
-},
-{
-"t": 609.21,
-"d": 3.217,
+"d": 7.167,
 "type": "photo",
 "src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/ocean_horizon.jpg",
-"z": [
-1.05,
-1.15
-],
-"p": [
-0.5,
-0.5
-],
-"cap": "открытый океан (иллюстративное фото)"
+"cap": "ночной горизонт Земли с борта МКС над южной частью Тихого океана (2024)"
 },
 {
-"t": 612.427,
-"d": 3.217,
+"t": 598.897,
+"d": 2.272,
 "type": "photo",
-"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nemo_map.jpg",
-"z": [
-1.0,
-1.12
-],
-"p": [
-0.4,
-0.5
-],
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/eos_village.jpg",
+"cap": "Эдинбург Семи Морей, единственный посёлок Тристан-да-Куньи"
+},
+{
+"t": 601.169,
+"d": 3.671,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_cape_route.jpg",
 "cap": ""
 },
 {
-"t": 615.643,
-"d": 3.217,
-"type": "clip",
-"src": "stock/px306155.mp4",
-"ss": 0.3
+"t": 604.84,
+"d": 4.37,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_minutes_years.jpg",
+"cap": ""
+},
+{
+"t": 609.21,
+"d": 4.825,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_q_end.jpg",
+"cap": ""
+},
+{
+"t": 614.035,
+"d": 4.825,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/rp_q_end.jpg",
+"cap": ""
 }
 ]
 }

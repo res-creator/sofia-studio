@@ -9,13 +9,13 @@
 "cn_newspaper_q@0.48"
 ],
 "3": [
-"ph_cartier",
+"ph_lawrence",
 "cn_map_lawrence@0.2",
-"ph_lawrence@0.38",
 "cn_donnacona_tl@0.55"
 ],
 "4": [
 "cn_chain_canada",
+"ph_lawrence@0.25",
 "cn_myths_canada@0.45"
 ],
 "5": [
@@ -95,8 +95,7 @@
 ],
 "20": [
 "ph_flinders_chart",
-"ph_flinders@0.22",
-"cn_tl_australia@0.45",
+"cn_tl_australia@0.4",
 "cn_chain_australia@0.8"
 ],
 "21": [
@@ -106,8 +105,7 @@
 "22": [
 "cn_tl_phil",
 "cn_map_phil@0.3",
-"ph_philip@0.5",
-"cn_king_never@0.7"
+"cn_king_never@0.62"
 ],
 "23": [
 "cn_kanji",
@@ -115,7 +113,8 @@
 ],
 "24": [
 "cn_versions_japan",
-"cn_kanji@0.75"
+"cn_map_japan_china@0.5",
+"cn_kanji@0.8"
 ],
 "25": [
 "marco_polo",
@@ -138,9 +137,8 @@
 ],
 "29": [
 "cn_map_niger",
-"ph_niger@0.13",
-"cn_chain_nigeria@0.43",
-"ph_flora@0.75"
+"ph_niger@0.15",
+"cn_chain_nigeria@0.45"
 ],
 "30": [
 "cn_variants_nigeria",
@@ -149,11 +147,12 @@
 "31": [
 "cn_nigeria_fact",
 "cn_pop_africa@0.45",
-"ph_flora@0.8"
+"cn_chain_nigeria@0.8"
 ],
 "32": [
 "cn_world_all",
-"cn_summary@0.35"
+"cn_summary@0.33",
+"old_world_map@0.85"
 ],
 "33": [
 "cn_myths_all",
