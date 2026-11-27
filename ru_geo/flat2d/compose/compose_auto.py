@@ -79,6 +79,7 @@ if os.path.exists(cr_path):
 STRICT = True
 NO_STOCK = os.path.exists(f'{J}/no_stock')
 REQ = re.compile(open(f'{J}/stock_require', encoding='utf8').read().strip(), re.I) if os.path.exists(f'{J}/stock_require') else None
+SB = json.load(open(f'{J}/storyboard.json', encoding='utf8')) if os.path.exists(f'{J}/storyboard.json') else {}
 # --- подбор клипов
 used = set(); cards = []; tl = []
 def pick(q):
@@ -109,6 +110,16 @@ for idx, ((a, b), p) in enumerate(zip(bounds, paras)):
     cue = p['cue']; qs = (cue.get('b', []) or ['city street'])[:3]; big = cue.get('big'); t = a; dur_total = b - a
     if big and dur_total > 6:
         png = f'{J}/card_big_{idx}.png'; cardjobs.append(dict(type='bignum', big=big['n'], label=big.get('l', ''), bg='black', out=png)); add(t, 3.6, type='card', src=png); t += 3.6
+    sbk = SB.get(str(idx + 1))
+    if sbk:
+        import math as _m
+        sbk = [k for k in sbk if k in PIMG]
+    if sbk:
+        n = max(len(sbk), _m.ceil((b - t) / 6.0)); shot = (b - t) / n
+        for j in range(n):
+            key = sbk[j % len(sbk)] if j < len(sbk) else sbk[-1 - ((j - len(sbk)) % len(sbk))]
+            add(t + j * shot, shot, type='photo', src=PIMG[key], cap=caps.get(key, ''))
+        continue
     n = max(1, round((b - t) / (4.6 if NO_STOCK else 3.2))); shot = (b - t) / n
     ttl = cue.get('ttl') or (p['text'] if (len(p['text']) <= 70 and p['text'].endswith('?') and t - last_ttl > 40) else None)
     ov = None

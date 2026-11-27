@@ -94,5 +94,205 @@
   "cap": "Ultra Deep Field, снимок Хаббла",
   "page": "https://images.nasa.gov/details/hubble-sees-a-legion-of-galaxies_25608651281_o",
   "title": "Swimming in Sculptor"
+ },
+ "pbd1990": {
+  "file": "pbd1990.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Бледно-голубая точка: Земля на снимке «Вояджера-1», 1990 год",
+  "page": "https://images.nasa.gov/details/PIA23645",
+  "title": "Pale Blue Dot Revisited"
+ },
+ "cmb_map": {
+  "file": "cmb_map.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Карта реликтового излучения",
+  "page": "https://images.nasa.gov/details/PIA16877",
+  "title": "Peculiar Features in Patterns of Ancient Light"
+ },
+ "newhorizons": {
+  "file": "newhorizons.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Зонд «Новые горизонты»",
+  "page": "https://images.nasa.gov/details/PIA21589",
+  "title": "Nap Time for New Horizons: NASA Spacecraft Enters Hibernation"
+ },
+ "jupiter": {
+  "file": "jupiter.jpg",
+  "author": "NASA",
+  "license": "общественное достояние",
+  "cap": "Юпитер",
+  "page": "https://images.nasa.gov/details/PIA04866",
+  "title": "Cassini Jupiter Portrait"
+ },
+ "q_universe": {
+  "file": "q_universe.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "q_universe"
+ },
+ "ruler_light": {
+  "file": "ruler_light.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "ruler_light"
+ },
+ "speed_star": {
+  "file": "speed_star.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "speed_star"
+ },
+ "model_field": {
+  "file": "model_field.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "model_field"
+ },
+ "model_ruler": {
+  "file": "model_ruler.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "model_ruler"
+ },
+ "lightyear": {
+  "file": "lightyear.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "lightyear"
+ },
+ "star_map": {
+  "file": "star_map.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "star_map"
+ },
+ "milkyway_top": {
+  "file": "milkyway_top.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "milkyway_top"
+ },
+ "model_galaxy": {
+  "file": "model_galaxy.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "model_galaxy"
+ },
+ "local_group": {
+  "file": "local_group.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "local_group"
+ },
+ "ladder3": {
+  "file": "ladder3.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "ladder3"
+ },
+ "observable": {
+  "file": "observable.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "observable"
+ },
+ "timeline_age": {
+  "file": "timeline_age.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "timeline_age"
+ },
+ "compare_44": {
+  "file": "compare_44.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "compare_44"
+ },
+ "geometry3": {
+  "file": "geometry3.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "geometry3"
+ },
+ "horizon": {
+  "file": "horizon.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "horizon"
+ },
+ "ruler_all": {
+  "file": "ruler_all.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "ruler_all"
+ },
+ "unknown_all": {
+  "file": "unknown_all.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "unknown_all"
+ },
+ "expand": {
+  "file": "expand.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "expand"
+ },
+ "quadrillion": {
+  "file": "quadrillion.jpg",
+  "author": "собственная графика",
+  "license": "свободно",
+  "cap": "",
+  "page": "",
+  "title": "quadrillion"
+ },
+ "cmb_crop": {
+  "file": "cmb_crop.jpg",
+  "author": "NASA/ESA (Planck)",
+  "license": "общественное достояние",
+  "cap": "Реликтовое излучение (карта Planck)",
+  "page": "",
+  "title": "cmb"
  }
 }
