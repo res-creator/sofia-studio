@@ -1,19 +1,22 @@
 #!/usr/bin/env python3
-"""«Мысленный эксперимент» · Высота зданий · board film (85.3 s) in the Engineering Briefing Board style.
-The same beats and times as the Whiteboard version (ru_geo/lemo/bh_board/film.js), told on one filmed enamel wall:
-cut-out photographs, magnetic tags, magnets, a steel ruler, marker ink with fixed meanings
-(graphite = names, rules, facts · blue = measurement and numbers · red = the decision / the break).
-Times are film seconds (narration: ru_geo/building_height/film.json). 20.6–30.9 is covered by the map clip.
-Every frame keeps the bottom 250 px free of drawing (subtitles are burned in later): cameras are fitted to
-the screen band y 50…800.
+"""«Мысленный эксперимент» · Высота зданий · board film, PART B: film time 85.30–181.86 (the rest of chapter «ТРОС»).
+TIME MAPPING: everything below is authored in FILM seconds (narration: ru_geo/building_height/film.json);
+at the end every time is shifted by T0 = 85.30, so  local = film − 85.30  (local 0 … 96.56).
+The whole wall of the reference part (ru_geo/lemo/bh_brief, film 0–85.3) is kept verbatim with its camera, so at local 0
+the board, the ink (pre-drawn, local t < 0) and the camera are exactly the reference's last frame (camera on the long
+rope, «рвётся здесь»); scene.clock = T0 keeps the hand-held breath continuous across the cut.
+Film 149.04–164.20 is covered by the Archive Light Table clip (Otis 1854): only a slow camera move there.
+Ink meanings: graphite = names/rules/facts · blue = measurement and numbers · red = only the break / the decision.
+Every frame keeps the bottom 250 px free (subtitles): cameras are fitted to the screen band y 50…800.
     python3 scenes/_gen_film.py      → scenes/film.json
 """
+T0 = 85.30
 import json, math, os
 
 HERE = os.path.dirname(os.path.abspath(__file__)); FILM = os.path.dirname(HERE)
 OBJ = os.path.join(FILM, 'kit', 'objects')
 meta = lambda i: json.load(open(os.path.join(OBJ, i + '.json')))
-DUR = 85.3
+DUR = 96.56            # local length of this part (film 85.30 → 181.86)
 BW, BH = 8200, 4320
 
 E, EV = [], []
@@ -248,8 +251,166 @@ c.fit(80.2, 2.0, [4140, Y + 50, 5260, Y + 822], a=2, b=3)        # settle on the
 c.to(82.3, 3.0, z=z_of(c) * 1.025, y=c.cur['y'] - 6)
 c.shake(81.75, amp=4, f=10, k=8)
 
-scene = dict(dur=DUR, board=dict(w=BW, h=BH, seed=27, texScale=.4, ghosts=120, tray=False), hand=1.0, sheen=.07,
-             light=dict(x=-1800, y=-2400, r=19000, min=.8), cam=c.json(), mbMax=6, elements=E, cards=CARDS,
-             ev=sorted(EV, key=lambda e: e['t']), subs=[])
+# =====================================================================================================================
+# PART B (film 85.30–181.86). Free wall: right of the rope (x 5450–8100, y 2420–4250) and the bottom band
+# (x 100–5300, y 3420–4250). Reading path: F/G right of the rope → H → I → J leftwards along the bottom.
+# ===================================================================== F. 85.68–102.69 «на какой длине канат оборвётся»: 13–26 км
+AX0, KM = 5600, 80                     # 0 km at x 5600, 80 board px per km (one scale for both axes)
+kx = lambda km: AX0 + KM * km
+def km_axis(y, t, labels=True):
+    arrow([AX0, y], [kx(28.3), y], t, 1.0, 'blue', 5)
+    for i, k in enumerate(range(0, 30, 5)):
+        line([[kx(k), y + 5], [kx(k), y + 34]], t + .55 + .07 * i, .08, 'blue', 4)
+        if labels: write(str(k) + (' км' if k == 25 else ''), kx(k) - 12, y + 88, t + .6 + .07 * i, .22, 'blue', 42)
+def zig(x, y, t, d=.3):   # the break: a small red zigzag across the rope
+    return line([[x - 8, y - 45], [x + 9, y - 22], [x - 9, y], [x + 9, y + 22], [x - 7, y + 45]], t, d, 'red', 7)
+def wall(x, y0, y1, t):   # an anchor drawn as a wall with hatching on its left
+    line([[x, y0], [x, y1]], t, .25, lw=9)
+    strokes = [dict(points=[[x, y], [x - 40, y + 38]], t=round(t + .2 + .05 * i, 3), d=.08, lw=5) for i, y in enumerate(range(y0 + 8, y1 - 30, 32))]
+    ev(t + .2, 'hatch', .3); el(type='ink', kind='hatch', strokes=strokes, lw=5, color='grey', alpha=.7)
+
+YA, YR = 2840, 2780                    # upper axis, rope on it
+write('на какой длине канат оборвётся?', 5560, 2590, 85.9, 2.4, 'graphite', 66)
+wall(AX0, 2715, 2850, 88.35)
+km_axis(YA, 88.7)
+line([[AX0, YR], [kx(13), YR]], 90.3, 2.4, lw=10, ea=1.5, eb=1.8)              # the rope grows along the scale …
+zig(kx(13), YR, 92.75)                                                           # … and breaks at 13 km
+write('1 ГПа', kx(13), 2968, 92.95, .4, 'blue', 40, align='center')
+line([[kx(13) + 30, YR], [kx(26), YR]], 93.15, 1.35, lw=10, dash=[26, 22], ea=1.5, eb=1.8)   # stronger steel: up to 26
+zig(kx(26), YR, 94.55)
+write('2 ГПа', kx(26), 2968, 94.7, .4, 'blue', 40, align='center')
+ink('dim', 93.1, 1.4, 'blue', **{'from': [kx(13), 2712], 'to': [kx(26), 2712]}, lw=6, arrows=False)
+ink('count', 93.0, 2.0, 'blue', text='{0}–{1} км', to=[13, 26], xy=[kx(19.5), 2676], size=120, align='center')
+tag('расчёт автора', 6950, 3050, 95.8, size=48, rot=-1.5)
+write('не учтены: износ, кабина', 6900, 3195, 97.25, 2.6, 'graphite', 56)
+write('порядок, а не норма', 6900, 3300, 100.45, 1.5, 'graphite', 64)
+line([[6900, 3318], [7140, 3314]], 102.05, .3, 'blue', 6)                       # «порядок» underlined
+
+# ===================================================================== G. 103.24–117.34 запас ×10 → честная длина
+tag('запас прочности', 5640, 3060, 105.15, size=50, rot=1)
+ink('count', 106.3, 1.4, 'blue', text='×{0}', to=[10], xy=[5650, 3250], size=120)
+YB, YBR = 3560, 3500                   # lower axis, rope on it
+line([[kx(13), 2995], [kx(9), 3150], [kx(4.5), 3330], [kx(2.1), 3445]], 107.75, .9, 'blue', 7, arrow=True, ea=1.6, eb=2.2)
+km_axis(YB, 108.4)
+wall(AX0, YB - 125, YB + 10, 108.5)
+line([[AX0, YBR], [kx(1.3), YBR]], 109.5, .5, lw=10)
+zig(kx(1.3), YBR, 110.05, .25)
+line([[kx(1.3) + 22, YBR], [kx(2.6), YBR]], 110.35, .4, lw=10, dash=[16, 14])
+zig(kx(2.6), YBR, 110.8, .25)
+write('≈ 1,3–2,6 км', 5900, 3530, 110.7, 1.0, 'blue', 90)
+write('честная длина', 6480, 3530, 111.5, .9, 'graphite', 60)
+tag('тоже расчёт', 5640, 3770, 112.5, size=48, rot=-1)
+write('нормы строже', 6050, 3790, 113.6, .9, 'graphite', 64)
+write('зависят от конструкции каната', 6050, 3890, 114.65, 2.0, 'graphite', 56)
+CS = (7250, 3815)                      # a stranded rope in section: six strands round a core
+line(circle(CS, 86, 48), 115.7, .5, lw=6)
+line(circle(CS, 24, 20), 116.2, .12, lw=4)
+for i in range(6):
+    a = math.radians(-90 + 60 * i); line(circle((CS[0] + 52 * math.cos(a), CS[1] + 52 * math.sin(a)), 24, 20), 116.3 + .1 * i, .1, lw=4)
+
+# ===================================================================== H. 118.05–133.28 ≈ 500 м, then lifts in stages
+write('+ кабина', 3820, 3560, 118.1, .55, 'graphite', 60)
+write('+ качание', 3820, 3650, 118.75, .6, 'graphite', 60)
+write('+ износ', 3820, 3740, 119.45, .5, 'graphite', 60)
+GH = 4180                              # ground of the shaft drawing
+H0 = len(E)
+line([[4250, GH], [5150, GH]], 120.2, .3, lw=9)
+gst = [dict(points=[[x, GH + 48], [x + 40, GH + 6]], t=round(120.45 + .04 * i, 3), d=.08, lw=5) for i, x in enumerate(range(4270, 5110, 90))]
+ev(120.45, 'hatch', .4); el(type='ink', kind='hatch', strokes=gst, lw=5, color='grey', alpha=.7)
+line([[4420, GH], [4420, 3700]], 120.9, .5, 'grey', 5); line([[4500, GH], [4500, 3700]], 121.0, .5, 'grey', 5)
+line([[4432, 3742], [4488, 3742], [4488, 3818], [4432, 3818], [4432, 3742]], 121.6, .3, lw=6)
+line([[4460, 3706], [4460, 3742]], 121.95, .12, lw=5)
+tag('один стальной трос', 3840, 3862, 122.4, size=42, rot=-1)
+ink('dim', 124.95, .9, 'blue', **{'from': [4360, GH], 'to': [4360, 3822]}, lw=7)
+ink('count', 125.1, 1.3, 'blue', text='≈ {0} м', to=[500], xy=[4318, 4045], size=100, align='right')
+line([[4326, 3820], [4394, 3820]], 126.05, .2, 'red', 8)                          # the practical limit
+line([[4400, 3820], [5070, 3820]], 126.7, .4, lw=8)                              # the big hall, a floor up there
+line([[4920, 3820], [4920, 3460]], 127.3, .5, 'grey', 5); line([[5000, 3820], [5000, 3460]], 127.4, .5, 'grey', 5)
+line([[4932, 3742], [4988, 3742], [4988, 3818], [4932, 3818], [4932, 3742]], 128.0, .3, lw=6)
+write('большой холл', 4528, 3905, 128.85, .8, 'graphite', 46)
+arrow([4506, 3790], [4914, 3790], 129.95, .5, 'graphite', 6)                     # вышел …
+write('пересел', 4610, 3768, 131.0, .6, 'graphite', 46)                          # … пересел
+arrow([4960, 3728], [4960, 3510], 132.0, .5, 'blue', 6)
+for e in E[H0:]:
+    if e.get('text') != 'один стальной трос': shift(e, 60)
+
+# ===================================================================== I. 133.83–148.48 углеродное волокно: заявка
+I0 = len(E)
+tag('углеродное волокно', 1760, 3480, 133.9, size=54, rot=-1.5)
+write('сталь', 1760, 3640, 135.95, .5, 'graphite', 60)
+for i in range(5): magnet(2030 + 70 * i, 3622, 136.45 + .16 * i, r=26)
+write('углерод', 1760, 3740, 137.2, .5, 'graphite', 60)
+magnet(2030, 3722, 137.75, r=26)
+write('в 5 раз легче', 2120, 3742, 137.95, .8, 'blue', 60)
+write('до 1 км', 1760, 3890, 138.6, .7, 'blue', 80)
+write('без пересадки', 2085, 3890, 139.4, 1.0, 'graphite', 60)
+tag('заявка производителя', 1780, 4010, 140.9, size=44, rot=1)
+write('испытаний не нашёл', 1760, 4150, 143.15, 1.4, 'graphite', 56)
+el(type='stamp', text='ОБЕЩАНИЕ', xy=[2800, 4065], size=72, rot=-7, t=146.0, seed=17); ev(146.0, 'land', .2, size='mid')
+for e in E[I0:]: shift(e, 300)
+
+# ===================================================================== (149.04–164.20: the Otis light-table clip covers the board)
+# ===================================================================== J. 164.97–179.70 Бурдж-Халифа: 57 лифтов, полкилометра пустоты
+GJ = 4180
+line([[150, GJ], [1480, GJ]], 164.3, .35, lw=9)
+gjs = [dict(points=[[x, GJ + 48], [x + 40, GJ + 6]], t=round(164.55 + .03 * i, 3), d=.08, lw=5) for i, x in enumerate(range(170, 1440, 100))]
+ev(164.55, 'hatch', .4); el(type='ink', kind='hatch', strokes=gjs, lw=5, color='grey', alpha=.7)
+BH2 = 760; BW2 = BH2 * bm['size'][0] / bm['size'][1]          # 828 м (со шпилем) = 760 board px
+el(type='print', id='burj2', src='burj', xy=[360, round(GJ - BH2 / 2, 1)], h=BH2, z=10, rot=-1,
+   arrive=dict(t=164.97, kind='drop', d=.55, lift=240, spin=1.4, land=.6))
+ev(165.3, 'land', .2, size='big')
+magnet(413, 3880, 165.45, r=20); magnet(350, 4110, 165.58, r=20)
+tag('Бурдж-Халифа', 640, 3445, 165.1, size=46, rot=-1)
+ink('count', 166.0, 1.5, 'blue', text='{0} лифтов', to=[57], xy=[640, 3605], size=110)
+line([[940, 3655], [940, 3720]], 167.8, .2, lw=5)                                # a double-deck cabin
+line([[900, 3720], [980, 3720], [980, 3880], [900, 3880], [900, 3720]], 168.0, .45, lw=7)
+line([[900, 3800], [980, 3800]], 168.45, .15, lw=6)
+write('двухэтажная кабина', 1040, 3770, 168.7, 1.3, 'graphite', 46)
+arrow([860, 3880], [860, 3722], 170.3, .35, 'blue', 6)
+write('до 10 м/с', 1040, 3860, 170.6, .9, 'blue', 76)
+MY = 4180 - 500 * BH2 / 828                                    # 500 m up the tower (by the print's own scale)
+line([[452, MY - 18], [570, MY - 18]], 172.45, .25, lw=6)                         # Timur at the transfer floor
+line(circle((520, MY - 70), 9, 16), 172.7, .12, lw=4)
+line([[520, MY - 61], [520, MY - 38], [512, MY - 19]], 172.82, .15, lw=4); line([[520, MY - 38], [528, MY - 19]], 172.97, .08, lw=4)
+line([[509, MY - 52], [531, MY - 52]], 173.05, .08, lw=4)
+tag('Тимур', 605, MY - 52, 173.2, size=40, rot=-2, amp=8)
+ink('dim', 174.7, 1.0, 'blue', **{'from': [580, GJ], 'to': [580, MY]}, lw=7)
+write('больше 500 м', 615, 3990, 175.5, .9, 'blue', 64)
+write('пустоты', 615, 4075, 176.5, .6, 'graphite', 60)
+write('на чём стоит?', 1000, 4110, 177.6, 1.1, 'graphite', 66)
+ink('ring', 178.85, .8, 'red', c=[362, GJ + 4], r=[150, 52], lw=7)
+
+# ===================================================================== camera, part B (continues the reference camera)
+c.fit(85.5, 1.7, [5420, 2470, 6900, 3010], a=2, b=2.8)            # off the rope to the question
+c.fit(90.1, 2.7, [5450, 2470, 6950, 3010], a=1.8, b=2.4)          # ride the rope along the km scale
+c.fit(92.95, 1.6, [5450, 2470, 7950, 3010], a=2, b=2.8)           # the whole range 13–26
+c.fit(95.55, 1.5, [5450, 2470, 7950, 3350], a=2, b=2.8)           # the notes below
+c.to(97.2, 5.6, z=z_of(c) * 1.025)
+c.fit(103.05, 1.5, [5450, 2560, 7950, 3660], a=2, b=2.8)          # safety factor ×10
+c.fit(108.2, 1.5, [5450, 2930, 7950, 3720], a=2, b=2.8)           # down to the honest length
+c.fit(112.25, 1.5, [5450, 2900, 7950, 3990], a=2, b=2.8)          # «тоже расчёт»
+c.fit(117.45, 1.8, [3700, 3420, 5240, 4260], a=2, b=2.8)          # left along the bottom: ≈ 500 m, lifts in stages
+c.to(119.4, 13.5, z=z_of(c) * 1.03)
+c.fit(133.25, 1.7, [2010, 3400, 3360, 4250], a=2, b=2.8)          # carbon fibre
+c.to(135.0, 13.5, z=z_of(c) * 1.025)
+c.fit(149.4, 14.2, [60, 3380, 1520, 4300], a=2, b=2.2)            # (under the Otis clip) slowly left to the Burj corner
+c.to(165.0, 14.2, z=z_of(c) * 1.03, x=c.cur['x'] + 30)
+c.fit(179.75, 2.05, [0, 0, 8200, 4320], a=2, b=2.6)               # pull back: the wall as a whole (the chapter is its lower half)
+
+# ===================================================================== local time: shift every time by T0
+def shift_t(o):
+    if isinstance(o, dict):
+        for k, v in o.items():
+            if k in ('t', 'out') and isinstance(v, (int, float)): o[k] = round(v - T0, 3)
+            else: shift_t(v)
+    elif isinstance(o, list):
+        for v in o: shift_t(v)
+shift_t(E); cam = c.json(); shift_t(cam['moves']); shift_t(cam['shakes'])
+evs = []
+for e in sorted(EV, key=lambda e: e['t']):
+    if e['t'] >= T0 - 1e-6: evs.append(dict(e, t=round(e['t'] - T0, 3)))
+scene = dict(dur=DUR, clock=T0, board=dict(w=BW, h=BH, seed=27, texScale=.4, ghosts=120, tray=False), hand=1.0, sheen=.07,
+             light=dict(x=-1800, y=-2400, r=19000, min=.8), cam=cam, mbMax=6, elements=E, cards=[], ev=evs, subs=[])
 json.dump(scene, open(os.path.join(HERE, 'film.json'), 'w'), ensure_ascii=False, indent=1)
-print('film.json', DUR, 's ·', len(E), 'elements ·', len(EV), 'events ·', len(c.moves), 'camera moves')
+json.dump(dict(dur=DUR, ev=evs), open(os.path.join(FILM, 'events.json'), 'w'), ensure_ascii=False, indent=1)
+print('film.json', DUR, 's ·', len(E), 'elements ·', len(evs), 'events ·', len(c.moves), 'camera moves')

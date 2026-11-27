@@ -146,8 +146,8 @@ export function camAt(t) {
     const on = 1 - Math.exp(-tau / .012), v = (s.amp || 6) * on * Math.exp(-(s.k || 7) * tau) * Math.sin(2 * Math.PI * (s.f || 9) * tau);
     dx += v * (s.dir ? s.dir[0] : 0); dy += v * (s.dir ? s.dir[1] : 1); roll += v * (s.roll || 0);
   }
-  const hd = scene.hand ?? 1;
-  const sn = (f, p) => Math.sin(2 * Math.PI * f * t + p);
+  const hd = scene.hand ?? 1, tc = t + (scene.clock || 0);   // clock: film time of local 0 (keeps the breath continuous across part cuts)
+  const sn = (f, p) => Math.sin(2 * Math.PI * f * tc + p);
   dx += hd * (2.4 * sn(.21, 1.3) + 1.1 * sn(.43, 4.1) + .45 * sn(.83, 2.2));
   dy += hd * (1.8 * sn(.17, 5.2) + .9 * sn(.37, .4) + .35 * sn(.91, 3.3));
   roll += hd * (.07 * sn(.13, 2.6) + .03 * sn(.29, 1.1));

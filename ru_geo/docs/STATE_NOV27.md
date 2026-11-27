@@ -17,3 +17,11 @@ universe_size (хороший), country_sizes (хороший, свои карт
 - Обложки (нет ни одной), ссылки на видео в постах Пикабу (после загрузки на YouTube).
 - Хранилище: .git ~23 ГБ, диск часто заполняется; чистить `ru_geo/stock/px*.mp4` (старые) и tmp* в scratchpad. Если стоит `coverr_db.json` битый, удалить и пересоздастся.
 - Правило владелицы: кадры должны соответствовать озвученному тексту; быстрая смена кадров; субтитры мелкие; числа и заголовки крупно, но не часто; музыка тихо под голосом.
+
+## 27 Nov evening: NEW STYLE approved by owner
+Owner approved «Инженерная доска» (Lemo-Opuscar briefing-board) + 3D map (map-explainer) + Archive Light Table + typewriter chapter cards.
+Trial: ru_geo/building_height/video/trial_styles_brief.mp4. Projects: ru_geo/lemo/ (bh_brief = 0–85.3 s, bh_brief_B/CD/EF/G = chapters,
+bh_map = Dubai→Jeddah map, bh_otis = Otis light table). Brief for chapter agents: ru_geo/lemo/BRIEF_BRIEFBOARD.md.
+Renders are resumable; keeper: `setsid nohup sh ru_geo/lemo/tools/keep_renders.sh >> scratchpad/keep.log 2>&1 &` (restart after every container restart;
+a part renders only when its folder has .render_ready). Full assembly: `python3 ru_geo/lemo/assemble_bh_full.py` (needs all parts in building_height/video/parts).
+Old compose pipeline (stock + flat diagrams) is retired for this channel. Next: same style for the other 8 videos.

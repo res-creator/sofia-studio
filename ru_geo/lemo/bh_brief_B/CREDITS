@@ -1,4 +1,5 @@
-Высота зданий · board film (Engineering Briefing Board style) — credits
+Высота зданий · board film PART B (film 85.30–181.86, chapter «ТРОС» continued; Engineering Briefing Board style) — credits
+The wall of part A (ru_geo/lemo/bh_brief) is kept as is; part B adds the Burj Khalifa cut-out a second time (burj2, film 164.97).
 
 Photographs (from ru_geo/building_height/archive/credits.json)
   burj.png          Burj Khalifa, Dubai — "Burj Khalifa Image.jpg", Meandmybrix, CC0
@@ -8,7 +9,7 @@ Photographs (from ru_geo/building_height/archive/credits.json)
                     https://commons.wikimedia.org/wiki/File:Jeddah_Tower_in_its_88th_floor.jpg   (uncut crop on photo paper)
   print_otis.png    Elisha Otis demonstrating the safety elevator, New York, 1854 (later illustration) — author unknown, public domain
                     https://commons.wikimedia.org/wiki/File:Elisha_OTIS_1854_(cropped).jpg      (uncut crop on photo paper)
-  Every photo is shown at >= 1 source pixel per screen pixel (tools/rescheck.mjs: lowest 1.16, Burj at 10.25 s).
+  Every photo is shown at >= 1 source pixel per screen pixel (tools/rescheck.mjs, part B: lowest 1.23, burj2 at local 79.7 s).
 
 Fonts (SIL Open Font License 1.1, Google Fonts)
   Pangolin (marker lettering), Fira Sans Condensed (tags), IBM Plex Mono (typewriter cards)
