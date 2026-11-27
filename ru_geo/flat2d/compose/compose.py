@@ -21,12 +21,16 @@ for i, s in enumerate(tl):
             run(['ffmpeg', '-v', 'error', '-y', '-stream_loop', '-1', '-ss', str(s.get('ss', 0) + off), '-i', src, '-loop', '1', '-framerate', str(FPS), '-i', s['ov'], '-t', f'{d:.3f}', '-filter_complex', f'[0:v]{vf}[a];[1:v]format=rgba,fade=t=in:st=0.15:d=0.3:alpha=1[b];[a][b]overlay,{fade},format=yuv420p[o]', '-map', '[o]', '-an', '-c:v', 'libx264', '-crf', '20', '-preset', 'veryfast', o])
         else:
             run(['ffmpeg', '-v', 'error', '-y', '-stream_loop', '-1', '-ss', str(s.get('ss', 0) + off), '-i', src, '-t', f'{d:.3f}', '-vf', f'{vf},{fade},format=yuv420p', '-an', '-c:v', 'libx264', '-crf', '20', '-preset', 'veryfast', o])
-    else:  # photo / card: плавное линейное приближение
-        z0, z1 = s.get('z', [1.0, 1.08] if s['type'] == 'photo' else [1.0, 1.02]); px, py = s.get('p', [0.5, 0.5]); n = max(2, round(d * FPS))
-        zf = f"if(lt(on,1),{z0},{z0}+({z1}-{z0})*on/{n})"
-        pre = f'scale=3840:2160:force_original_aspect_ratio=increase,crop=3840:2160,' if s['type'] == 'photo' else 'scale=3840:2160,'
-        vf = f"{pre}zoompan=z='{zf}':x='(iw-iw/zoom)*{px}':y='(ih-ih/zoom)*{py}':d={n}:s={W}x{H}:fps={FPS},{(GRADE + ',') if s['type'] == 'photo' else ''}{fade},format=yuv420p"
-        run(['ffmpeg', '-v', 'error', '-y', '-loop', '1', '-framerate', str(FPS), '-i', src, '-t', f'{d:.3f}', '-vf', vf, '-an', '-c:v', 'libx264', '-crf', '20', '-preset', 'veryfast', o])
+    else:  # photo / card: целиком, без приближения и без обрезки (размытый фон по краям)
+        fg = f'scale={W}:{H}:force_original_aspect_ratio=decrease'
+        base = f'split[a][b];[a]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=40:6,eq=brightness=-0.12[bg];[b]{fg}[fgp];[bg][fgp]overlay=(W-w)/2:(H-h)/2'
+        gr = (GRADE + ',') if s['type'] == 'photo' else ''
+        if s.get('ov'):
+            fc = f'[0:v]{base}[x];[x]{gr}format=yuv420p[a2];[1:v]format=rgba,fade=t=in:st=0.15:d=0.3:alpha=1[b2];[a2][b2]overlay,{fade},format=yuv420p[o]'
+            run(['ffmpeg', '-v', 'error', '-y', '-loop', '1', '-framerate', str(FPS), '-i', src, '-loop', '1', '-framerate', str(FPS), '-i', s['ov'], '-t', f'{d:.3f}', '-filter_complex', fc, '-map', '[o]', '-an', '-c:v', 'libx264', '-crf', '20', '-preset', 'veryfast', o])
+        else:
+            fc = f'[0:v]{base}[x];[x]{gr}{fade},format=yuv420p[o]'
+            run(['ffmpeg', '-v', 'error', '-y', '-loop', '1', '-framerate', str(FPS), '-i', src, '-t', f'{d:.3f}', '-filter_complex', fc, '-map', '[o]', '-an', '-c:v', 'libx264', '-crf', '20', '-preset', 'veryfast', o])
     parts.append(o)
 open(f'{tmp}/list.txt', 'w').write(''.join(f"file '{p}'\n" for p in parts))
 run(['ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', f'{tmp}/list.txt', '-c', 'copy', f'{tmp}/v.mp4'])
