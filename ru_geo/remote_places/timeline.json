@@ -1,0 +1,1660 @@
+{
+"segs": [
+{
+"t": 0.0,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/card_big_0.png"
+},
+{
+"t": 3.6,
+"d": 3.504,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nemo_map.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 7.104,
+"d": 3.504,
+"type": "clip",
+"src": "stock/px217115.mp4",
+"ss": 0.3
+},
+{
+"t": 10.608,
+"d": 3.504,
+"type": "clip",
+"src": "stock/px30088.mp4",
+"ss": 0.3
+},
+{
+"t": 14.112,
+"d": 3.504,
+"type": "clip",
+"src": "stock/px13771.mp4",
+"ss": 0.3
+},
+{
+"t": 17.616,
+"d": 3.504,
+"type": "clip",
+"src": "stock/px261489.mp4",
+"ss": 0.3
+},
+{
+"t": 21.12,
+"d": 3.42,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/ocean_horizon.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "открытый океан (иллюстративное фото)"
+},
+{
+"t": 24.54,
+"d": 3.42,
+"type": "clip",
+"src": "stock/px21528.mp4",
+"ss": 0.3
+},
+{
+"t": 27.96,
+"d": 3.42,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nemo_map.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 31.38,
+"d": 3.42,
+"type": "clip",
+"src": "stock/px154424.mp4",
+"ss": 0.3
+},
+{
+"t": 34.8,
+"d": 3.42,
+"type": "clip",
+"src": "stock/px21175.mp4",
+"ss": 0.3
+},
+{
+"t": 38.22,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/card_ch_39.png"
+},
+{
+"t": 40.82,
+"d": 3.019,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/earth_globe_pacific.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "Тихий океан из космоса"
+},
+{
+"t": 43.839,
+"d": 3.019,
+"type": "clip",
+"src": "stock/px5101.mp4",
+"ss": 0.3
+},
+{
+"t": 46.857,
+"d": 3.019,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/ocean_horizon.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "открытый океан (иллюстративное фото)"
+},
+{
+"t": 49.876,
+"d": 3.019,
+"type": "clip",
+"src": "stock/px30089.mp4",
+"ss": 0.3
+},
+{
+"t": 52.894,
+"d": 3.019,
+"type": "clip",
+"src": "stock/px276416.mp4",
+"ss": 0.3
+},
+{
+"t": 55.913,
+"d": 3.019,
+"type": "clip",
+"src": "stock/px338904.mp4",
+"ss": 0.3
+},
+{
+"t": 58.931,
+"d": 3.019,
+"type": "clip",
+"src": "stock/px304344.mp4",
+"ss": 0.3
+},
+{
+"t": 61.95,
+"d": 3.218,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nemo_map.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 65.168,
+"d": 3.218,
+"type": "clip",
+"src": "stock/px201766.mp4",
+"ss": 0.3
+},
+{
+"t": 68.387,
+"d": 3.218,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/earth_globe_pacific.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "Тихий океан из космоса"
+},
+{
+"t": 71.605,
+"d": 3.218,
+"type": "clip",
+"src": "stock/px14297.mp4",
+"ss": 0.3
+},
+{
+"t": 74.823,
+"d": 3.218,
+"type": "clip",
+"src": "stock/px182970.mp4",
+"ss": 0.3
+},
+{
+"t": 78.042,
+"d": 3.218,
+"type": "clip",
+"src": "stock/px1890.mp4",
+"ss": 0.3
+},
+{
+"t": 81.26,
+"d": 3.143,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/earth_globe_pacific.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "Тихий океан из космоса"
+},
+{
+"t": 84.403,
+"d": 3.143,
+"type": "clip",
+"src": "stock/px1409.mp4",
+"ss": 0.3
+},
+{
+"t": 87.547,
+"d": 3.143,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/antarctic_ice.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "лёд Антарктиды"
+},
+{
+"t": 90.69,
+"d": 3.143,
+"type": "clip",
+"src": "stock/px161045.mp4",
+"ss": 0.3
+},
+{
+"t": 93.833,
+"d": 3.143,
+"type": "clip",
+"src": "stock/px21.mp4",
+"ss": 0.3
+},
+{
+"t": 96.977,
+"d": 3.143,
+"type": "clip",
+"src": "stock/px3581.mp4",
+"ss": 0.3
+},
+{
+"t": 100.12,
+"d": 3.286,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/ocean_horizon.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "открытый океан (иллюстративное фото)"
+},
+{
+"t": 103.406,
+"d": 3.286,
+"type": "clip",
+"src": "stock/px76038.mp4",
+"ss": 0.3
+},
+{
+"t": 106.692,
+"d": 3.286,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nemo_map.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": ""
+},
+{
+"t": 109.978,
+"d": 3.286,
+"type": "clip",
+"src": "stock/px9179.mp4",
+"ss": 0.3
+},
+{
+"t": 113.264,
+"d": 3.286,
+"type": "clip",
+"src": "stock/px76037.mp4",
+"ss": 0.3
+},
+{
+"t": 116.55,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/card_ch_118.png"
+},
+{
+"t": 119.15,
+"d": 3.02,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nemo_map.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 122.17,
+"d": 3.02,
+"type": "clip",
+"src": "stock/px2849.mp4",
+"ss": 0.3
+},
+{
+"t": 125.19,
+"d": 3.02,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/ocean_horizon.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "открытый океан (иллюстративное фото)"
+},
+{
+"t": 128.21,
+"d": 3.02,
+"type": "clip",
+"src": "stock/px74821.mp4",
+"ss": 0.3
+},
+{
+"t": 131.23,
+"d": 3.02,
+"type": "clip",
+"src": "stock/px237249.mp4",
+"ss": 0.3
+},
+{
+"t": 134.25,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/card_big_7.png"
+},
+{
+"t": 137.85,
+"d": 3.47,
+"type": "clip",
+"src": "stock/px85015.mp4",
+"ss": 0.3
+},
+{
+"t": 141.32,
+"d": 3.47,
+"type": "clip",
+"src": "stock/px223459.mp4",
+"ss": 0.3
+},
+{
+"t": 144.79,
+"d": 3.47,
+"type": "clip",
+"src": "stock/px374244.mp4",
+"ss": 0.3
+},
+{
+"t": 148.26,
+"d": 3.47,
+"type": "clip",
+"src": "stock/px284324.mp4",
+"ss": 0.3
+},
+{
+"t": 151.73,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/card_big_8.png"
+},
+{
+"t": 155.33,
+"d": 3.588,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nemo_map.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": ""
+},
+{
+"t": 158.917,
+"d": 3.588,
+"type": "clip",
+"src": "stock/px308799.mp4",
+"ss": 0.3
+},
+{
+"t": 162.505,
+"d": 3.588,
+"type": "clip",
+"src": "stock/px135988.mp4",
+"ss": 0.3
+},
+{
+"t": 166.093,
+"d": 3.588,
+"type": "clip",
+"src": "stock/tN7DBjiJ6U.mp4",
+"ss": 0.3
+},
+{
+"t": 169.68,
+"d": 3.322,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/earth_globe_pacific.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "Тихий океан из космоса"
+},
+{
+"t": 173.002,
+"d": 3.322,
+"type": "clip",
+"src": "stock/px732.mp4",
+"ss": 0.3
+},
+{
+"t": 176.323,
+"d": 3.322,
+"type": "clip",
+"src": "stock/px86576.mp4",
+"ss": 0.3
+},
+{
+"t": 179.645,
+"d": 3.322,
+"type": "clip",
+"src": "stock/px103053.mp4",
+"ss": 0.3
+},
+{
+"t": 182.967,
+"d": 3.322,
+"type": "clip",
+"src": "stock/px733.mp4",
+"ss": 0.3
+},
+{
+"t": 186.288,
+"d": 3.322,
+"type": "clip",
+"src": "stock/px1175.mp4",
+"ss": 0.3
+},
+{
+"t": 189.61,
+"d": 3.37,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/ocean_horizon.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "открытый океан (иллюстративное фото)"
+},
+{
+"t": 192.98,
+"d": 3.37,
+"type": "clip",
+"src": "stock/px111113.mp4",
+"ss": 0.3
+},
+{
+"t": 196.35,
+"d": 3.37,
+"type": "clip",
+"src": "stock/px37898.mp4",
+"ss": 0.3
+},
+{
+"t": 199.72,
+"d": 3.37,
+"type": "clip",
+"src": "stock/px307692.mp4",
+"ss": 0.3
+},
+{
+"t": 203.09,
+"d": 3.37,
+"type": "clip",
+"src": "stock/px33013.mp4",
+"ss": 0.3
+},
+{
+"t": 206.46,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/card_big_11.png"
+},
+{
+"t": 210.06,
+"d": 2.867,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/deep_ocean.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "глубокий океан (иллюстративное фото)"
+},
+{
+"t": 212.928,
+"d": 2.867,
+"type": "clip",
+"src": "stock/px216981.mp4",
+"ss": 0.3
+},
+{
+"t": 215.795,
+"d": 2.867,
+"type": "clip",
+"src": "stock/px286278.mp4",
+"ss": 0.3
+},
+{
+"t": 218.662,
+"d": 2.867,
+"type": "clip",
+"src": "stock/px216987.mp4",
+"ss": 0.3
+},
+{
+"t": 221.53,
+"d": 3.097,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/mir_reentry.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "станция «Мир» (фото 1998 года)"
+},
+{
+"t": 224.627,
+"d": 3.097,
+"type": "clip",
+"src": "stock/px143019.mp4",
+"ss": 0.3
+},
+{
+"t": 227.723,
+"d": 3.097,
+"type": "clip",
+"src": "stock/px224512.mp4",
+"ss": 0.3
+},
+{
+"t": 230.82,
+"d": 3.097,
+"type": "clip",
+"src": "stock/px145736.mp4",
+"ss": 0.3
+},
+{
+"t": 233.917,
+"d": 3.097,
+"type": "clip",
+"src": "stock/px175331.mp4",
+"ss": 0.3
+},
+{
+"t": 237.013,
+"d": 3.097,
+"type": "clip",
+"src": "stock/px224511.mp4",
+"ss": 0.3
+},
+{
+"t": 240.11,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/card_ch_241.png"
+},
+{
+"t": 242.71,
+"d": 3.089,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/arctic_icebreaker.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "дрейфующий лёд Арктики"
+},
+{
+"t": 245.799,
+"d": 3.089,
+"type": "clip",
+"src": "stock/px65293.mp4",
+"ss": 0.3
+},
+{
+"t": 248.888,
+"d": 3.089,
+"type": "clip",
+"src": "stock/px173689.mp4",
+"ss": 0.3
+},
+{
+"t": 251.976,
+"d": 3.089,
+"type": "clip",
+"src": "stock/px385077.mp4",
+"ss": 0.3
+},
+{
+"t": 255.065,
+"d": 3.089,
+"type": "clip",
+"src": "stock/px316.mp4",
+"ss": 0.3
+},
+{
+"t": 258.154,
+"d": 3.089,
+"type": "clip",
+"src": "stock/px94457.mp4",
+"ss": 0.3
+},
+{
+"t": 261.243,
+"d": 3.089,
+"type": "clip",
+"src": "stock/px236893.mp4",
+"ss": 0.3
+},
+{
+"t": 264.331,
+"d": 3.089,
+"type": "clip",
+"src": "stock/px3344.mp4",
+"ss": 0.3
+},
+{
+"t": 267.42,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/card_big_14.png"
+},
+{
+"t": 271.02,
+"d": 3.462,
+"type": "clip",
+"src": "stock/px191181.mp4",
+"ss": 0.3
+},
+{
+"t": 274.483,
+"d": 3.462,
+"type": "clip",
+"src": "stock/px174519.mp4",
+"ss": 0.3
+},
+{
+"t": 277.945,
+"d": 3.462,
+"type": "clip",
+"src": "stock/px169442.mp4",
+"ss": 0.3
+},
+{
+"t": 281.408,
+"d": 3.462,
+"type": "clip",
+"src": "stock/px176670.mp4",
+"ss": 0.3
+},
+{
+"t": 284.87,
+"d": 3.409,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/bouvet_map.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "карта: остров Буве в южной Атлантике"
+},
+{
+"t": 288.279,
+"d": 3.409,
+"type": "clip",
+"src": "stock/px27983.mp4",
+"ss": 0.3
+},
+{
+"t": 291.687,
+"d": 3.409,
+"type": "clip",
+"src": "stock/px255499.mp4",
+"ss": 0.3
+},
+{
+"t": 295.096,
+"d": 3.409,
+"type": "clip",
+"src": "stock/px70541.mp4",
+"ss": 0.3
+},
+{
+"t": 298.504,
+"d": 3.409,
+"type": "clip",
+"src": "stock/px53906.mp4",
+"ss": 0.3
+},
+{
+"t": 301.913,
+"d": 3.409,
+"type": "clip",
+"src": "stock/px255498.mp4",
+"ss": 0.3
+},
+{
+"t": 305.321,
+"d": 3.409,
+"type": "clip",
+"src": "stock/px165253.mp4",
+"ss": 0.3
+},
+{
+"t": 308.73,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/card_big_16.png"
+},
+{
+"t": 312.33,
+"d": 3.078,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/deep_ocean.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "глубокий океан (иллюстративное фото)"
+},
+{
+"t": 315.408,
+"d": 3.078,
+"type": "clip",
+"src": "stock/px232185.mp4",
+"ss": 0.3
+},
+{
+"t": 318.486,
+"d": 3.078,
+"type": "clip",
+"src": "stock/px135658.mp4",
+"ss": 0.3
+},
+{
+"t": 321.564,
+"d": 3.078,
+"type": "clip",
+"src": "stock/px216582.mp4",
+"ss": 0.3
+},
+{
+"t": 324.642,
+"d": 3.078,
+"type": "clip",
+"src": "stock/px124705.mp4",
+"ss": 0.3
+},
+{
+"t": 327.72,
+"d": 2.884,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/deep_ocean.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "глубокий океан (иллюстративное фото)"
+},
+{
+"t": 330.604,
+"d": 2.884,
+"type": "clip",
+"src": "stock/px283533.mp4",
+"ss": 0.3
+},
+{
+"t": 333.488,
+"d": 2.884,
+"type": "clip",
+"src": "stock/px107255.mp4",
+"ss": 0.3
+},
+{
+"t": 336.372,
+"d": 2.884,
+"type": "clip",
+"src": "stock/px2382.mp4",
+"ss": 0.3
+},
+{
+"t": 339.256,
+"d": 2.884,
+"type": "clip",
+"src": "stock/px4006.mp4",
+"ss": 0.3
+},
+{
+"t": 342.14,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/card_ch_343.png"
+},
+{
+"t": 344.74,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/card_big_18.png"
+},
+{
+"t": 348.34,
+"d": 2.952,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_map.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "карта: Тристан-да-Кунья"
+},
+{
+"t": 351.292,
+"d": 2.952,
+"type": "clip",
+"src": "stock/px262530.mp4",
+"ss": 0.3
+},
+{
+"t": 354.244,
+"d": 2.952,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_aerial.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "остров Тристан-да-Кунья"
+},
+{
+"t": 357.196,
+"d": 2.952,
+"type": "clip",
+"src": "stock/px293788.mp4",
+"ss": 0.3
+},
+{
+"t": 360.148,
+"d": 2.952,
+"type": "clip",
+"src": "stock/px3806.mp4",
+"ss": 0.3
+},
+{
+"t": 363.1,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/card_big_19.png"
+},
+{
+"t": 366.7,
+"d": 2.974,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_ship.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "корабль у Тристан-да-Куньи"
+},
+{
+"t": 369.674,
+"d": 2.974,
+"type": "clip",
+"src": "stock/px23544.mp4",
+"ss": 0.3
+},
+{
+"t": 372.648,
+"d": 2.974,
+"type": "clip",
+"src": "stock/px63463.mp4",
+"ss": 0.3
+},
+{
+"t": 375.622,
+"d": 2.974,
+"type": "clip",
+"src": "stock/px285351.mp4",
+"ss": 0.3
+},
+{
+"t": 378.596,
+"d": 2.974,
+"type": "clip",
+"src": "stock/px1103.mp4",
+"ss": 0.3
+},
+{
+"t": 381.57,
+"d": 2.992,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_map.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "карта: Тристан-да-Кунья"
+},
+{
+"t": 384.562,
+"d": 2.992,
+"type": "clip",
+"src": "stock/px133835.mp4",
+"ss": 0.3
+},
+{
+"t": 387.553,
+"d": 2.992,
+"type": "clip",
+"src": "stock/px191382.mp4",
+"ss": 0.3
+},
+{
+"t": 390.545,
+"d": 2.992,
+"type": "clip",
+"src": "stock/px327388.mp4",
+"ss": 0.3
+},
+{
+"t": 393.537,
+"d": 2.992,
+"type": "clip",
+"src": "stock/px292145.mp4",
+"ss": 0.3
+},
+{
+"t": 396.528,
+"d": 2.992,
+"type": "clip",
+"src": "stock/px243201.mp4",
+"ss": 0.3
+},
+{
+"t": 399.52,
+"d": 3.076,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_aerial.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "остров Тристан-да-Кунья"
+},
+{
+"t": 402.596,
+"d": 3.076,
+"type": "clip",
+"src": "stock/px1917.mp4",
+"ss": 0.3
+},
+{
+"t": 405.673,
+"d": 3.076,
+"type": "clip",
+"src": "stock/px30087.mp4",
+"ss": 0.3
+},
+{
+"t": 408.749,
+"d": 3.076,
+"type": "clip",
+"src": "stock/px311.mp4",
+"ss": 0.3
+},
+{
+"t": 411.825,
+"d": 3.076,
+"type": "clip",
+"src": "stock/px214582.mp4",
+"ss": 0.3
+},
+{
+"t": 414.901,
+"d": 3.076,
+"type": "clip",
+"src": "stock/px30090.mp4",
+"ss": 0.3
+},
+{
+"t": 417.977,
+"d": 3.076,
+"type": "clip",
+"src": "stock/px33014.mp4",
+"ss": 0.3
+},
+{
+"t": 421.054,
+"d": 3.076,
+"type": "clip",
+"src": "stock/px198488.mp4",
+"ss": 0.3
+},
+{
+"t": 424.13,
+"d": 2.943,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_map.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "карта: Тристан-да-Кунья"
+},
+{
+"t": 427.073,
+"d": 2.943,
+"type": "clip",
+"src": "stock/px114433.mp4",
+"ss": 0.3
+},
+{
+"t": 430.017,
+"d": 2.943,
+"type": "clip",
+"src": "stock/px19368.mp4",
+"ss": 0.3
+},
+{
+"t": 432.96,
+"d": 2.943,
+"type": "clip",
+"src": "stock/px99808.mp4",
+"ss": 0.3
+},
+{
+"t": 435.903,
+"d": 2.943,
+"type": "clip",
+"src": "stock/px29722.mp4",
+"ss": 0.3
+},
+{
+"t": 438.847,
+"d": 2.943,
+"type": "clip",
+"src": "stock/px213026.mp4",
+"ss": 0.3
+},
+{
+"t": 441.79,
+"d": 3.227,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_aerial.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "остров Тристан-да-Кунья"
+},
+{
+"t": 445.017,
+"d": 3.227,
+"type": "clip",
+"src": "stock/px344380.mp4",
+"ss": 0.3
+},
+{
+"t": 448.243,
+"d": 3.227,
+"type": "clip",
+"src": "stock/px307130.mp4",
+"ss": 0.3
+},
+{
+"t": 451.47,
+"d": 3.227,
+"type": "clip",
+"src": "stock/px44278.mp4",
+"ss": 0.3
+},
+{
+"t": 454.697,
+"d": 3.227,
+"type": "clip",
+"src": "stock/px3956.mp4",
+"ss": 0.3
+},
+{
+"t": 457.923,
+"d": 3.227,
+"type": "clip",
+"src": "stock/px313443.mp4",
+"ss": 0.3
+},
+{
+"t": 461.15,
+"d": 3.222,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_aerial.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "остров Тристан-да-Кунья"
+},
+{
+"t": 464.372,
+"d": 3.222,
+"type": "clip",
+"src": "stock/px181376.mp4",
+"ss": 0.3
+},
+{
+"t": 467.593,
+"d": 3.222,
+"type": "clip",
+"src": "stock/px275633.mp4",
+"ss": 0.3
+},
+{
+"t": 470.815,
+"d": 3.222,
+"type": "clip",
+"src": "stock/px11168.mp4",
+"ss": 0.3
+},
+{
+"t": 474.037,
+"d": 3.222,
+"type": "clip",
+"src": "stock/px182082.mp4",
+"ss": 0.3
+},
+{
+"t": 477.258,
+"d": 3.222,
+"type": "clip",
+"src": "stock/px348904.mp4",
+"ss": 0.3
+},
+{
+"t": 480.48,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/card_big_25.png"
+},
+{
+"t": 484.08,
+"d": 3.527,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_map.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "карта: Тристан-да-Кунья"
+},
+{
+"t": 487.608,
+"d": 3.527,
+"type": "clip",
+"src": "stock/px103797.mp4",
+"ss": 0.3
+},
+{
+"t": 491.135,
+"d": 3.527,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_aerial.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "остров Тристан-да-Кунья"
+},
+{
+"t": 494.663,
+"d": 3.527,
+"type": "clip",
+"src": "stock/px16166.mp4",
+"ss": 0.3
+},
+{
+"t": 498.19,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/card_big_26.png"
+},
+{
+"t": 501.79,
+"d": 3.083,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_ship.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "корабль у Тристан-да-Куньи"
+},
+{
+"t": 504.873,
+"d": 3.083,
+"type": "clip",
+"src": "stock/px369368.mp4",
+"ss": 0.3
+},
+{
+"t": 507.957,
+"d": 3.083,
+"type": "clip",
+"src": "stock/px275891.mp4",
+"ss": 0.3
+},
+{
+"t": 511.04,
+"d": 3.083,
+"type": "clip",
+"src": "stock/myEY7Ln2p4.mp4",
+"ss": 0.3
+},
+{
+"t": 514.123,
+"d": 3.083,
+"type": "clip",
+"src": "stock/px175352.mp4",
+"ss": 0.3
+},
+{
+"t": 517.207,
+"d": 3.083,
+"type": "clip",
+"src": "stock/px237663.mp4",
+"ss": 0.3
+},
+{
+"t": 520.29,
+"d": 3.27,
+"type": "clip",
+"src": "stock/px215446.mp4",
+"ss": 0.3
+},
+{
+"t": 523.56,
+"d": 3.27,
+"type": "clip",
+"src": "stock/px167515.mp4",
+"ss": 0.3
+},
+{
+"t": 526.83,
+"d": 3.27,
+"type": "clip",
+"src": "stock/px55903.mp4",
+"ss": 0.3
+},
+{
+"t": 530.1,
+"d": 3.27,
+"type": "clip",
+"src": "stock/px228866.mp4",
+"ss": 0.3
+},
+{
+"t": 533.37,
+"d": 3.27,
+"type": "clip",
+"src": "stock/px365704.mp4",
+"ss": 0.3
+},
+{
+"t": 536.64,
+"d": 3.27,
+"type": "clip",
+"src": "stock/px96817.mp4",
+"ss": 0.3
+},
+{
+"t": 539.91,
+"d": 3.27,
+"type": "clip",
+"src": "stock/px215449.mp4",
+"ss": 0.3
+},
+{
+"t": 543.18,
+"d": 3.03,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_aerial.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "остров Тристан-да-Кунья"
+},
+{
+"t": 546.21,
+"d": 3.03,
+"type": "clip",
+"src": "stock/px84146.mp4",
+"ss": 0.3
+},
+{
+"t": 549.24,
+"d": 3.03,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_map.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": "карта: Тристан-да-Кунья"
+},
+{
+"t": 552.27,
+"d": 3.03,
+"type": "clip",
+"src": "stock/px206272.mp4",
+"ss": 0.3
+},
+{
+"t": 555.3,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/card_ch_556.png"
+},
+{
+"t": 557.9,
+"d": 3.276,
+"type": "clip",
+"src": "stock/px54914.mp4",
+"ss": 0.3
+},
+{
+"t": 561.176,
+"d": 3.276,
+"type": "clip",
+"src": "stock/px2946.mp4",
+"ss": 0.3
+},
+{
+"t": 564.452,
+"d": 3.276,
+"type": "clip",
+"src": "stock/px191354.mp4",
+"ss": 0.3
+},
+{
+"t": 567.728,
+"d": 3.276,
+"type": "clip",
+"src": "stock/px184069.mp4",
+"ss": 0.3
+},
+{
+"t": 571.004,
+"d": 3.276,
+"type": "clip",
+"src": "stock/px186115.mp4",
+"ss": 0.3
+},
+{
+"t": 574.28,
+"d": 3.49,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nemo_map.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 577.77,
+"d": 3.49,
+"type": "clip",
+"src": "stock/px30091.mp4",
+"ss": 0.3
+},
+{
+"t": 581.26,
+"d": 3.49,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_map.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "карта: Тристан-да-Кунья"
+},
+{
+"t": 584.75,
+"d": 3.49,
+"type": "clip",
+"src": "stock/px201528.mp4",
+"ss": 0.3
+},
+{
+"t": 588.24,
+"d": 3.49,
+"type": "clip",
+"src": "stock/px170245.mp4",
+"ss": 0.3
+},
+{
+"t": 591.73,
+"d": 3.496,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_aerial.jpg",
+"z": [
+1.12,
+1.0
+],
+"p": [
+0.6,
+0.45
+],
+"cap": "остров Тристан-да-Кунья"
+},
+{
+"t": 595.226,
+"d": 3.496,
+"type": "clip",
+"src": "stock/px2119.mp4",
+"ss": 0.3
+},
+{
+"t": 598.722,
+"d": 3.496,
+"type": "clip",
+"src": "stock/px233867.mp4",
+"ss": 0.3
+},
+{
+"t": 602.218,
+"d": 3.496,
+"type": "clip",
+"src": "stock/px179160.mp4",
+"ss": 0.3
+},
+{
+"t": 605.714,
+"d": 3.496,
+"type": "clip",
+"src": "stock/px11490.mp4",
+"ss": 0.3
+},
+{
+"t": 609.21,
+"d": 3.217,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/ocean_horizon.jpg",
+"z": [
+1.05,
+1.15
+],
+"p": [
+0.5,
+0.5
+],
+"cap": "открытый океан (иллюстративное фото)"
+},
+{
+"t": 612.427,
+"d": 3.217,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nemo_map.jpg",
+"z": [
+1.0,
+1.12
+],
+"p": [
+0.4,
+0.5
+],
+"cap": ""
+},
+{
+"t": 615.643,
+"d": 3.217,
+"type": "clip",
+"src": "stock/px306155.mp4",
+"ss": 0.3
+}
+]
+}
