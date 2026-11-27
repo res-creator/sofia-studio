@@ -446,5 +446,21 @@
   "cap": "спасательные жилеты в гавани Кюлунгсборна, Германия (фото: Dietmar Rabich, CC BY-SA 4.0)",
   "page": "https://commons.wikimedia.org/wiki/File:K%C3%BChlungsborn,_Marina,_Rettungswesten_--_2024_--_5224.jpg",
   "title": "Kühlungsborn, Marina, Rettungswesten -- 2024 -- 5224"
+ },
+ "sea_cold": {
+  "file": "sea_cold.jpg",
+  "author": "Eric Koch / Anefo, Nationaal Archief (Wikimedia Commons)",
+  "license": "без ограничений (Flickr Commons)",
+  "cap": "лёд на пляже в Нидерландах, побережье Северного моря (архив Anefo)",
+  "page": "https://commons.wikimedia.org/wiki/File:IJs-plateau_aan_het_strand_-_Ice-table,_ebb-tide_at_a_Dutch_beach_-_Flickr_-_Nationaal_Archief.jpg",
+  "title": "IJs-plateau aan het strand"
+ },
+ "cold_plunge": {
+  "file": "cold_plunge.jpg",
+  "author": "U.S. Marine Corps, Lance Cpl. Kyle Jia (Wikimedia Commons)",
+  "license": "общественное достояние",
+  "cap": "тренировка погружения в холодную воду на учениях в Норвегии, 2022 (Корпус морской пехоты США)",
+  "page": "https://commons.wikimedia.org/wiki/File:Exercise_Cold_Response_2022_Marines_Conduct_Cold_Water_Immersion_Training_(7098426).jpg",
+  "title": "Exercise Cold Response 2022 Cold Water Immersion Training"
  }
 }

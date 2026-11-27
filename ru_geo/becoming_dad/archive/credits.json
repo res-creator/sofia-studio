@@ -558,5 +558,85 @@
   "cap": "",
   "page": "",
   "title": "кто дальше всех"
+ },
+ "ph_lw_portrait": {
+  "file": "ph_lw_portrait.jpg",
+  "author": "Ян Верколье (1680-е)",
+  "license": "Public domain",
+  "cap": "Антони ван Левенгук, портрет работы Яна Верколье",
+  "page": "https://commons.wikimedia.org/wiki/File:Jan_Verkolje_-_Antonie_van_Leeuwenhoek.jpg",
+  "title": "File:Jan Verkolje - Antonie van Leeuwenhoek.jpg"
+ },
+ "ph_lw_drawing": {
+  "file": "ph_lw_drawing.jpg",
+  "author": "рисовальщик Антони ван Левенгука / Wellcome Collection",
+  "license": "CC BY 4.0",
+  "cap": "рисунки из наблюдений Левенгука: сперматозоиды кролика и собаки под микроскопом",
+  "page": "https://commons.wikimedia.org/wiki/File:Leeuwenhoek,_Microscopic_observations_Wellcome_L0001349.jpg",
+  "title": "File:Leeuwenhoek, Microscopic observations Wellcome L0001349.jpg"
+ },
+ "ph_lw_replica": {
+  "file": "ph_lw_replica.jpg",
+  "author": "Jeroen Rouwkema",
+  "license": "CC BY-SA 3.0",
+  "cap": "копия микроскопа Левенгука: линза в металлической пластинке",
+  "page": "https://commons.wikimedia.org/wiki/File:Leeuwenhoek_Microscope.png",
+  "title": "File:Leeuwenhoek Microscope.png"
+ },
+ "ph_lw_utrecht": {
+  "file": "ph_lw_utrecht.jpg",
+  "author": "Wellcome Collection",
+  "license": "CC BY 4.0",
+  "cap": "микроскоп Левенгука из Утрехтского университета (факсимиле)",
+  "page": "https://commons.wikimedia.org/wiki/File:Facsimile_of_the_Leeuwenhoek_microscope_in_Utrecht_University_Wellcome_M0005632.jpg",
+  "title": "File:Facsimile of the Leeuwenhoek microscope in Utrecht University Wellcome M0005632.jpg"
+ },
+ "ph_lw_baker": {
+  "file": "ph_lw_baker.jpg",
+  "author": "Генри Бейкер, 1753",
+  "license": "Public domain",
+  "cap": "микроскоп Левенгука на рисунке Генри Бейкера, 1753",
+  "page": "https://commons.wikimedia.org/wiki/File:Leeuwenhoek_microscope_drawn_by_Baker,_1753.jpg",
+  "title": "File:Leeuwenhoek microscope drawn by Baker, 1753.jpg"
+ },
+ "ph_hartsoeker": {
+  "file": "ph_hartsoeker.jpg",
+  "author": "Николас Хартсукер, 1694",
+  "license": "Public domain",
+  "cap": "«человечек» в головке сперматозоида: рисунок Николаса Хартсукера, 1694",
+  "page": "https://commons.wikimedia.org/wiki/File:HomunculusLarge.png",
+  "title": "File:HomunculusLarge.png"
+ },
+ "ph_sperm_egg": {
+  "file": "ph_sperm_egg.jpg",
+  "author": "автор неизвестен",
+  "license": "Public domain",
+  "cap": "сперматозоид у оболочки яйцеклетки (микрофотография)",
+  "page": "https://commons.wikimedia.org/wiki/File:Sperm-egg.jpg",
+  "title": "File:Sperm-egg.jpg"
+ },
+ "ph_embryo8": {
+  "file": "ph_embryo8.jpg",
+  "author": "ekem, RWJMS IVF Program",
+  "license": "Public domain",
+  "cap": "зародыш человека на третий день: 8 клеток (микрофотография)",
+  "page": "https://commons.wikimedia.org/wiki/File:Embryo,_8_cells.jpg",
+  "title": "File:Embryo, 8 cells.jpg"
+ },
+ "ph_oocyte": {
+  "file": "ph_oocyte.jpg",
+  "author": "ZEISS Microscopy",
+  "license": "CC BY-SA 2.0",
+  "cap": "яйцеклетка человека в оболочке, лаборатория ЭКО (микрофотография)",
+  "page": "https://commons.wikimedia.org/wiki/File:Oocyte_with_Zona_pellucida_(27771482282).jpg",
+  "title": "File:Oocyte with Zona pellucida (27771482282).jpg"
+ },
+ "ph_irhoud": {
+  "file": "ph_irhoud.jpg",
+  "author": "Ryan Somma",
+  "license": "CC BY-SA 2.0",
+  "cap": "череп Джебель-Ирхуд 1 (Марокко), слепок в Смитсоновском музее",
+  "page": "https://commons.wikimedia.org/wiki/File:Jebel_Irhoud_1._Homo_Sapiens.jpg",
+  "title": "File:Jebel Irhoud 1. Homo Sapiens.jpg"
  }
 }

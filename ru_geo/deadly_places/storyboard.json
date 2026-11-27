@@ -8,8 +8,7 @@
 "protection@0.56"
 ],
 "3": [
-"everest_shuttle",
-"pressure_third@0.07",
+"pressure_third",
 "tuc_everest@0.31"
 ],
 "4": [
@@ -19,7 +18,7 @@
 "5": [
 "acclim",
 "death_zone@0.26",
-"everest_iss@0.48"
+"everest_climbers@0.48"
 ],
 "6": [
 "climbers_everest",
@@ -52,20 +51,25 @@
 "12": [
 "nyos_monoun",
 "nyos_platform@0.56",
-"nyos_vent@0.71"
+"nyos_vent@0.71",
+"sea_cold@0.82"
 ],
 "13": [
-"cold_shock"
+"sea_cold",
+"cold_plunge@0.23",
+"cold_shock@0.47"
 ],
 "14": [
 "cold_shock",
 "rule_1101@0.27"
 ],
 "15": [
-"rule_1101_hour"
+"rule_1101_hour",
+"sea_cold@0.69"
 ],
 "16": [
-"hypothermia"
+"hypothermia",
+"lifejacket@0.68"
 ],
 "17": [
 "mariana_map",
@@ -88,7 +92,7 @@
 "21": [
 "vostok_temps",
 "vostok_alt@0.17",
-"protection@0.65"
+"vostok_photo@0.65"
 ],
 "22": [
 "dv_map",
@@ -104,7 +108,7 @@
 "dv_terra@0.78"
 ],
 "25": [
-"mponeng_map",
+"mponeng_surface",
 "mine_depth@0.26"
 ],
 "26": [
@@ -125,6 +129,7 @@
 ],
 "30": [
 "insidious",
+"sea_cold@0.38",
 "protection@0.75"
 ],
 "31": [
@@ -133,8 +138,9 @@
 ],
 "32": [
 "nyos_pano",
-"everest_iss@0.16",
+"everest_climbers@0.16",
 "tuc_plane@0.30",
+"sea_cold@0.43",
 "seven_map@0.60"
 ]
 }
