@@ -1,0 +1,1436 @@
+{
+"segs": [
+{
+"t": 0.0,
+"d": 2.976,
+"type": "clip",
+"src": "stock/px18241.mp4",
+"ss": 0.3
+},
+{
+"t": 2.976,
+"d": 2.976,
+"type": "clip",
+"src": "stock/px67483.mp4",
+"ss": 0.3
+},
+{
+"t": 5.951,
+"d": 2.976,
+"type": "clip",
+"src": "stock/px231167.mp4",
+"ss": 0.3
+},
+{
+"t": 8.927,
+"d": 2.976,
+"type": "clip",
+"src": "stock/px203324.mp4",
+"ss": 0.3
+},
+{
+"t": 11.903,
+"d": 2.976,
+"type": "clip",
+"src": "stock/px3611.mp4",
+"ss": 0.3
+},
+{
+"t": 14.879,
+"d": 2.976,
+"type": "clip",
+"src": "stock/px11237.mp4",
+"ss": 0.3
+},
+{
+"t": 17.854,
+"d": 2.976,
+"type": "clip",
+"src": "stock/px9741.mp4",
+"ss": 0.3
+},
+{
+"t": 20.83,
+"d": 3.1,
+"type": "clip",
+"src": "stock/px339596.mp4",
+"ss": 0.3
+},
+{
+"t": 23.93,
+"d": 3.1,
+"type": "clip",
+"src": "stock/px206315.mp4",
+"ss": 0.3
+},
+{
+"t": 27.03,
+"d": 3.1,
+"type": "clip",
+"src": "stock/px23207.mp4",
+"ss": 0.3
+},
+{
+"t": 30.13,
+"d": 3.1,
+"type": "clip",
+"src": "stock/px31956.mp4",
+"ss": 0.3
+},
+{
+"t": 33.23,
+"d": 3.1,
+"type": "clip",
+"src": "stock/px35858.mp4",
+"ss": 0.3
+},
+{
+"t": 36.33,
+"d": 3.1,
+"type": "clip",
+"src": "stock/px272512.mp4",
+"ss": 0.3
+},
+{
+"t": 39.43,
+"d": 3.025,
+"type": "clip",
+"src": "stock/px3735.mp4",
+"ss": 0.3
+},
+{
+"t": 42.455,
+"d": 3.025,
+"type": "clip",
+"src": "stock/px14900.mp4",
+"ss": 0.3
+},
+{
+"t": 45.48,
+"d": 3.025,
+"type": "clip",
+"src": "stock/px265261.mp4",
+"ss": 0.3
+},
+{
+"t": 48.505,
+"d": 3.025,
+"type": "clip",
+"src": "stock/px187863.mp4",
+"ss": 0.3
+},
+{
+"t": 51.53,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/building_height/card_ch_53.png"
+},
+{
+"t": 54.13,
+"d": 3.056,
+"type": "clip",
+"src": "stock/px8558.mp4",
+"ss": 0.3
+},
+{
+"t": 57.186,
+"d": 3.056,
+"type": "clip",
+"src": "stock/px215189.mp4",
+"ss": 0.3
+},
+{
+"t": 60.242,
+"d": 3.056,
+"type": "clip",
+"src": "stock/px109413.mp4",
+"ss": 0.3
+},
+{
+"t": 63.298,
+"d": 3.056,
+"type": "clip",
+"src": "stock/px5774.mp4",
+"ss": 0.3
+},
+{
+"t": 66.354,
+"d": 3.056,
+"type": "clip",
+"src": "stock/px215188.mp4",
+"ss": 0.3
+},
+{
+"t": 69.41,
+"d": 3.254,
+"type": "clip",
+"src": "stock/px16178.mp4",
+"ss": 0.3
+},
+{
+"t": 72.664,
+"d": 3.254,
+"type": "clip",
+"src": "stock/px120408.mp4",
+"ss": 0.3
+},
+{
+"t": 75.918,
+"d": 3.254,
+"type": "clip",
+"src": "stock/px85824.mp4",
+"ss": 0.3
+},
+{
+"t": 79.172,
+"d": 3.254,
+"type": "clip",
+"src": "stock/px43630.mp4",
+"ss": 0.3
+},
+{
+"t": 82.426,
+"d": 3.254,
+"type": "clip",
+"src": "stock/px13443.mp4",
+"ss": 0.3
+},
+{
+"t": 85.68,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/building_height/card_big_5.png"
+},
+{
+"t": 89.28,
+"d": 3.49,
+"type": "clip",
+"src": "stock/px8118.mp4",
+"ss": 0.3
+},
+{
+"t": 92.77,
+"d": 3.49,
+"type": "clip",
+"src": "stock/px3965.mp4",
+"ss": 0.3
+},
+{
+"t": 96.26,
+"d": 3.49,
+"type": "clip",
+"src": "stock/px6962.mp4",
+"ss": 0.3
+},
+{
+"t": 99.75,
+"d": 3.49,
+"type": "clip",
+"src": "stock/px135849.mp4",
+"ss": 0.3
+},
+{
+"t": 103.24,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/building_height/card_big_6.png"
+},
+{
+"t": 106.84,
+"d": 2.803,
+"type": "clip",
+"src": "stock/px10810.mp4",
+"ss": 0.3
+},
+{
+"t": 109.642,
+"d": 2.803,
+"type": "clip",
+"src": "stock/px40054.mp4",
+"ss": 0.3
+},
+{
+"t": 112.445,
+"d": 2.803,
+"type": "clip",
+"src": "stock/px10447.mp4",
+"ss": 0.3
+},
+{
+"t": 115.248,
+"d": 2.803,
+"type": "clip",
+"src": "stock/px3623.mp4",
+"ss": 0.3
+},
+{
+"t": 118.05,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/building_height/card_big_7.png"
+},
+{
+"t": 121.65,
+"d": 3.045,
+"type": "clip",
+"src": "stock/px187862.mp4",
+"ss": 0.3
+},
+{
+"t": 124.695,
+"d": 3.045,
+"type": "clip",
+"src": "stock/px264485.mp4",
+"ss": 0.3
+},
+{
+"t": 127.74,
+"d": 3.045,
+"type": "clip",
+"src": "stock/px167083.mp4",
+"ss": 0.3
+},
+{
+"t": 130.785,
+"d": 3.045,
+"type": "clip",
+"src": "stock/px90987.mp4",
+"ss": 0.3
+},
+{
+"t": 133.83,
+"d": 3.042,
+"type": "clip",
+"src": "stock/px262189.mp4",
+"ss": 0.3
+},
+{
+"t": 136.872,
+"d": 3.042,
+"type": "clip",
+"src": "stock/px81241.mp4",
+"ss": 0.3
+},
+{
+"t": 139.914,
+"d": 3.042,
+"type": "clip",
+"src": "stock/px3790.mp4",
+"ss": 0.3
+},
+{
+"t": 142.956,
+"d": 3.042,
+"type": "clip",
+"src": "stock/px19542.mp4",
+"ss": 0.3
+},
+{
+"t": 145.998,
+"d": 3.042,
+"type": "clip",
+"src": "stock/px132848.mp4",
+"ss": 0.3
+},
+{
+"t": 149.04,
+"d": 3.186,
+"type": "clip",
+"src": "stock/px130878.mp4",
+"ss": 0.3
+},
+{
+"t": 152.226,
+"d": 3.186,
+"type": "clip",
+"src": "stock/px19540.mp4",
+"ss": 0.3
+},
+{
+"t": 155.412,
+"d": 3.186,
+"type": "clip",
+"src": "stock/px210941.mp4",
+"ss": 0.3
+},
+{
+"t": 158.598,
+"d": 3.186,
+"type": "clip",
+"src": "stock/px200657.mp4",
+"ss": 0.3
+},
+{
+"t": 161.784,
+"d": 3.186,
+"type": "clip",
+"src": "stock/px122440.mp4",
+"ss": 0.3
+},
+{
+"t": 164.97,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/building_height/card_big_10.png"
+},
+{
+"t": 168.57,
+"d": 2.923,
+"type": "clip",
+"src": "stock/px2334.mp4",
+"ss": 0.3
+},
+{
+"t": 171.493,
+"d": 2.923,
+"type": "clip",
+"src": "stock/px46950.mp4",
+"ss": 0.3
+},
+{
+"t": 174.415,
+"d": 2.923,
+"type": "clip",
+"src": "stock/px53570.mp4",
+"ss": 0.3
+},
+{
+"t": 177.338,
+"d": 2.923,
+"type": "clip",
+"src": "stock/px181114.mp4",
+"ss": 0.3
+},
+{
+"t": 180.26,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/building_height/card_ch_181.png"
+},
+{
+"t": 182.86,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/building_height/card_big_11.png"
+},
+{
+"t": 186.46,
+"d": 3.155,
+"type": "clip",
+"src": "stock/px52888.mp4",
+"ss": 0.3
+},
+{
+"t": 189.615,
+"d": 3.155,
+"type": "clip",
+"src": "stock/px41826.mp4",
+"ss": 0.3
+},
+{
+"t": 192.77,
+"d": 3.155,
+"type": "clip",
+"src": "stock/px10877.mp4",
+"ss": 0.3
+},
+{
+"t": 195.925,
+"d": 3.155,
+"type": "clip",
+"src": "stock/px52890.mp4",
+"ss": 0.3
+},
+{
+"t": 199.08,
+"d": 3.54,
+"type": "clip",
+"src": "stock/px142343.mp4",
+"ss": 0.3
+},
+{
+"t": 202.62,
+"d": 3.54,
+"type": "clip",
+"src": "stock/px272519.mp4",
+"ss": 0.3
+},
+{
+"t": 206.16,
+"d": 3.54,
+"type": "clip",
+"src": "stock/px264950.mp4",
+"ss": 0.3
+},
+{
+"t": 209.7,
+"d": 3.54,
+"type": "clip",
+"src": "stock/px219339.mp4",
+"ss": 0.3
+},
+{
+"t": 213.24,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/building_height/card_big_13.png"
+},
+{
+"t": 216.84,
+"d": 2.992,
+"type": "clip",
+"src": "stock/px41828.mp4",
+"ss": 0.3
+},
+{
+"t": 219.833,
+"d": 2.992,
+"type": "clip",
+"src": "stock/px40296.mp4",
+"ss": 0.3
+},
+{
+"t": 222.825,
+"d": 2.992,
+"type": "clip",
+"src": "stock/px241694.mp4",
+"ss": 0.3
+},
+{
+"t": 225.817,
+"d": 2.992,
+"type": "clip",
+"src": "stock/px41824.mp4",
+"ss": 0.3
+},
+{
+"t": 228.81,
+"d": 3.265,
+"type": "clip",
+"src": "stock/px199375.mp4",
+"ss": 0.3
+},
+{
+"t": 232.075,
+"d": 3.265,
+"type": "clip",
+"src": "stock/px3522.mp4",
+"ss": 0.3
+},
+{
+"t": 235.34,
+"d": 3.265,
+"type": "clip",
+"src": "stock/px111204.mp4",
+"ss": 0.3
+},
+{
+"t": 238.605,
+"d": 3.265,
+"type": "clip",
+"src": "stock/px42923.mp4",
+"ss": 0.3
+},
+{
+"t": 241.87,
+"d": 3.265,
+"type": "clip",
+"src": "stock/px165003.mp4",
+"ss": 0.3
+},
+{
+"t": 245.135,
+"d": 3.265,
+"type": "clip",
+"src": "stock/px336755.mp4",
+"ss": 0.3
+},
+{
+"t": 248.4,
+"d": 3.363,
+"type": "clip",
+"src": "stock/px123459.mp4",
+"ss": 0.3
+},
+{
+"t": 251.763,
+"d": 3.363,
+"type": "clip",
+"src": "stock/px168811.mp4",
+"ss": 0.3
+},
+{
+"t": 255.127,
+"d": 3.363,
+"type": "clip",
+"src": "stock/px6775.mp4",
+"ss": 0.3
+},
+{
+"t": 258.49,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/building_height/card_ch_260.png"
+},
+{
+"t": 261.09,
+"d": 2.968,
+"type": "clip",
+"src": "stock/px3415.mp4",
+"ss": 0.3
+},
+{
+"t": 264.058,
+"d": 2.968,
+"type": "clip",
+"src": "stock/px282086.mp4",
+"ss": 0.3
+},
+{
+"t": 267.027,
+"d": 2.968,
+"type": "clip",
+"src": "stock/px1844.mp4",
+"ss": 0.3
+},
+{
+"t": 269.995,
+"d": 2.968,
+"type": "clip",
+"src": "stock/px39262.mp4",
+"ss": 0.3
+},
+{
+"t": 272.963,
+"d": 2.968,
+"type": "clip",
+"src": "stock/px384550.mp4",
+"ss": 0.3
+},
+{
+"t": 275.932,
+"d": 2.968,
+"type": "clip",
+"src": "stock/px190332.mp4",
+"ss": 0.3
+},
+{
+"t": 278.9,
+"d": 3.466,
+"type": "clip",
+"src": "stock/px203923.mp4",
+"ss": 0.3
+},
+{
+"t": 282.366,
+"d": 3.466,
+"type": "clip",
+"src": "stock/px158384.mp4",
+"ss": 0.3
+},
+{
+"t": 285.832,
+"d": 3.466,
+"type": "clip",
+"src": "stock/px337459.mp4",
+"ss": 0.3
+},
+{
+"t": 289.298,
+"d": 3.466,
+"type": "clip",
+"src": "stock/px311442.mp4",
+"ss": 0.3
+},
+{
+"t": 292.764,
+"d": 3.466,
+"type": "clip",
+"src": "stock/px152740.mp4",
+"ss": 0.3
+},
+{
+"t": 296.23,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/building_height/card_big_18.png"
+},
+{
+"t": 299.83,
+"d": 2.887,
+"type": "clip",
+"src": "stock/px267742.mp4",
+"ss": 0.3
+},
+{
+"t": 302.718,
+"d": 2.887,
+"type": "clip",
+"src": "stock/px58766.mp4",
+"ss": 0.3
+},
+{
+"t": 305.605,
+"d": 2.887,
+"type": "clip",
+"src": "stock/px231405.mp4",
+"ss": 0.3
+},
+{
+"t": 308.493,
+"d": 2.887,
+"type": "clip",
+"src": "stock/px21980.mp4",
+"ss": 0.3
+},
+{
+"t": 311.38,
+"d": 3.37,
+"type": "clip",
+"src": "stock/px275633.mp4",
+"ss": 0.3
+},
+{
+"t": 314.75,
+"d": 3.37,
+"type": "clip",
+"src": "stock/px353078.mp4",
+"ss": 0.3
+},
+{
+"t": 318.12,
+"d": 3.37,
+"type": "clip",
+"src": "stock/px133077.mp4",
+"ss": 0.3
+},
+{
+"t": 321.49,
+"d": 3.37,
+"type": "clip",
+"src": "stock/px197439.mp4",
+"ss": 0.3
+},
+{
+"t": 324.86,
+"d": 3.267,
+"type": "clip",
+"src": "stock/px106340.mp4",
+"ss": 0.3
+},
+{
+"t": 328.127,
+"d": 3.267,
+"type": "clip",
+"src": "stock/px19314.mp4",
+"ss": 0.3
+},
+{
+"t": 331.393,
+"d": 3.267,
+"type": "clip",
+"src": "stock/px6776.mp4",
+"ss": 0.3
+},
+{
+"t": 334.66,
+"d": 3.492,
+"type": "clip",
+"src": "stock/px192597.mp4",
+"ss": 0.3
+},
+{
+"t": 338.153,
+"d": 3.492,
+"type": "clip",
+"src": "stock/px375907.mp4",
+"ss": 0.3
+},
+{
+"t": 341.645,
+"d": 3.492,
+"type": "clip",
+"src": "stock/px123149.mp4",
+"ss": 0.3
+},
+{
+"t": 345.137,
+"d": 3.492,
+"type": "clip",
+"src": "stock/px10851.mp4",
+"ss": 0.3
+},
+{
+"t": 348.63,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/building_height/card_ch_350.png"
+},
+{
+"t": 351.23,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/building_height/card_big_22.png"
+},
+{
+"t": 354.83,
+"d": 2.85,
+"type": "clip",
+"src": "stock/px343478.mp4",
+"ss": 0.3
+},
+{
+"t": 357.68,
+"d": 2.85,
+"type": "clip",
+"src": "stock/px203403.mp4",
+"ss": 0.3
+},
+{
+"t": 360.53,
+"d": 2.85,
+"type": "clip",
+"src": "stock/px176300.mp4",
+"ss": 0.3
+},
+{
+"t": 363.38,
+"d": 2.85,
+"type": "clip",
+"src": "stock/px122679.mp4",
+"ss": 0.3
+},
+{
+"t": 366.23,
+"d": 3.276,
+"type": "clip",
+"src": "stock/px248131.mp4",
+"ss": 0.3
+},
+{
+"t": 369.506,
+"d": 3.276,
+"type": "clip",
+"src": "stock/px110709.mp4",
+"ss": 0.3
+},
+{
+"t": 372.782,
+"d": 3.276,
+"type": "clip",
+"src": "stock/px219337.mp4",
+"ss": 0.3
+},
+{
+"t": 376.058,
+"d": 3.276,
+"type": "clip",
+"src": "stock/px248139.mp4",
+"ss": 0.3
+},
+{
+"t": 379.334,
+"d": 3.276,
+"type": "clip",
+"src": "stock/px336103.mp4",
+"ss": 0.3
+},
+{
+"t": 382.61,
+"d": 3.48,
+"type": "clip",
+"src": "stock/px3741.mp4",
+"ss": 0.3
+},
+{
+"t": 386.09,
+"d": 3.48,
+"type": "clip",
+"src": "stock/px42926.mp4",
+"ss": 0.3
+},
+{
+"t": 389.57,
+"d": 3.48,
+"type": "clip",
+"src": "stock/px248140.mp4",
+"ss": 0.3
+},
+{
+"t": 393.05,
+"d": 3.48,
+"type": "clip",
+"src": "stock/px3992.mp4",
+"ss": 0.3
+},
+{
+"t": 396.53,
+"d": 3.464,
+"type": "clip",
+"src": "stock/px20263.mp4",
+"ss": 0.3
+},
+{
+"t": 399.994,
+"d": 3.464,
+"type": "clip",
+"src": "stock/px187422.mp4",
+"ss": 0.3
+},
+{
+"t": 403.458,
+"d": 3.464,
+"type": "clip",
+"src": "stock/px1009.mp4",
+"ss": 0.3
+},
+{
+"t": 406.922,
+"d": 3.464,
+"type": "clip",
+"src": "stock/px90986.mp4",
+"ss": 0.3
+},
+{
+"t": 410.386,
+"d": 3.464,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/building_height/archive/img/heights_main.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
+},
+{
+"t": 413.85,
+"d": 3.302,
+"type": "clip",
+"src": "stock/px52886.mp4",
+"ss": 0.3
+},
+{
+"t": 417.152,
+"d": 3.302,
+"type": "clip",
+"src": "stock/px119944.mp4",
+"ss": 0.3
+},
+{
+"t": 420.454,
+"d": 3.302,
+"type": "clip",
+"src": "stock/px27151.mp4",
+"ss": 0.3
+},
+{
+"t": 423.756,
+"d": 3.302,
+"type": "clip",
+"src": "stock/px4973.mp4",
+"ss": 0.3
+},
+{
+"t": 427.058,
+"d": 3.302,
+"type": "clip",
+"src": "stock/px80356.mp4",
+"ss": 0.3
+},
+{
+"t": 430.36,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/building_height/card_ch_431.png"
+},
+{
+"t": 432.96,
+"d": 3.204,
+"type": "clip",
+"src": "stock/px27709.mp4",
+"ss": 0.3
+},
+{
+"t": 436.164,
+"d": 3.204,
+"type": "clip",
+"src": "stock/px264959.mp4",
+"ss": 0.3
+},
+{
+"t": 439.368,
+"d": 3.204,
+"type": "clip",
+"src": "stock/px202332.mp4",
+"ss": 0.3
+},
+{
+"t": 442.572,
+"d": 3.204,
+"type": "clip",
+"src": "stock/px42701.mp4",
+"ss": 0.3
+},
+{
+"t": 445.776,
+"d": 3.204,
+"type": "clip",
+"src": "stock/px206694.mp4",
+"ss": 0.3
+},
+{
+"t": 448.98,
+"d": 3.13,
+"type": "clip",
+"src": "stock/px219134.mp4",
+"ss": 0.3
+},
+{
+"t": 452.11,
+"d": 3.13,
+"type": "clip",
+"src": "stock/px199127.mp4",
+"ss": 0.3
+},
+{
+"t": 455.24,
+"d": 3.13,
+"type": "clip",
+"src": "stock/px169951.mp4",
+"ss": 0.3
+},
+{
+"t": 458.37,
+"d": 3.13,
+"type": "clip",
+"src": "stock/px368458.mp4",
+"ss": 0.3
+},
+{
+"t": 461.5,
+"d": 3.13,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/building_height/archive/img/heights_wright.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 464.63,
+"d": 3.098,
+"type": "clip",
+"src": "stock/px44509.mp4",
+"ss": 0.3
+},
+{
+"t": 467.728,
+"d": 3.098,
+"type": "clip",
+"src": "stock/px240478.mp4",
+"ss": 0.3
+},
+{
+"t": 470.826,
+"d": 3.098,
+"type": "clip",
+"src": "stock/px3786.mp4",
+"ss": 0.3
+},
+{
+"t": 473.924,
+"d": 3.098,
+"type": "clip",
+"src": "stock/px380117.mp4",
+"ss": 0.3
+},
+{
+"t": 477.022,
+"d": 3.098,
+"type": "clip",
+"src": "stock/px203322.mp4",
+"ss": 0.3
+},
+{
+"t": 480.12,
+"d": 2.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/building_height/card_ch_481.png"
+},
+{
+"t": 482.72,
+"d": 3.6,
+"type": "card",
+"src": "/home/user/sofia-studio/ru_geo/building_height/card_big_30.png"
+},
+{
+"t": 486.32,
+"d": 3.116,
+"type": "clip",
+"src": "stock/px14955.mp4",
+"ss": 0.3
+},
+{
+"t": 489.436,
+"d": 3.116,
+"type": "clip",
+"src": "stock/px10339.mp4",
+"ss": 0.3
+},
+{
+"t": 492.552,
+"d": 3.116,
+"type": "clip",
+"src": "stock/px31569.mp4",
+"ss": 0.3
+},
+{
+"t": 495.668,
+"d": 3.116,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/building_height/archive/img/heights_old.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
+},
+{
+"t": 498.784,
+"d": 3.116,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/building_height/archive/img/heights_main.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
+},
+{
+"t": 501.9,
+"d": 3.166,
+"type": "clip",
+"src": "stock/px14906.mp4",
+"ss": 0.3
+},
+{
+"t": 505.066,
+"d": 3.166,
+"type": "clip",
+"src": "stock/px197482.mp4",
+"ss": 0.3
+},
+{
+"t": 508.232,
+"d": 3.166,
+"type": "clip",
+"src": "stock/px64919.mp4",
+"ss": 0.3
+},
+{
+"t": 511.398,
+"d": 3.166,
+"type": "clip",
+"src": "stock/px34427.mp4",
+"ss": 0.3
+},
+{
+"t": 514.564,
+"d": 3.166,
+"type": "clip",
+"src": "stock/px2303.mp4",
+"ss": 0.3
+},
+{
+"t": 517.73,
+"d": 3.416,
+"type": "clip",
+"src": "stock/px230545.mp4",
+"ss": 0.3
+},
+{
+"t": 521.146,
+"d": 3.416,
+"type": "clip",
+"src": "stock/px230553.mp4",
+"ss": 0.3
+},
+{
+"t": 524.562,
+"d": 3.416,
+"type": "clip",
+"src": "stock/px230555.mp4",
+"ss": 0.3
+},
+{
+"t": 527.978,
+"d": 3.416,
+"type": "clip",
+"src": "stock/px230552.mp4",
+"ss": 0.3
+},
+{
+"t": 531.394,
+"d": 3.416,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/building_height/archive/img/heights_wright.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
+},
+{
+"t": 534.81,
+"d": 3.146,
+"type": "clip",
+"src": "stock/px42691.mp4",
+"ss": 0.3
+},
+{
+"t": 537.956,
+"d": 3.146,
+"type": "clip",
+"src": "stock/px134252.mp4",
+"ss": 0.3
+},
+{
+"t": 541.102,
+"d": 3.146,
+"type": "clip",
+"src": "stock/px148593.mp4",
+"ss": 0.3
+},
+{
+"t": 544.248,
+"d": 3.146,
+"type": "clip",
+"src": "stock/px49377.mp4",
+"ss": 0.3
+},
+{
+"t": 547.394,
+"d": 3.146,
+"type": "clip",
+"src": "stock/px144597.mp4",
+"ss": 0.3
+},
+{
+"t": 550.54,
+"d": 3.02,
+"type": "clip",
+"src": "stock/px204667.mp4",
+"ss": 0.3
+},
+{
+"t": 553.56,
+"d": 3.02,
+"type": "clip",
+"src": "stock/px47511.mp4",
+"ss": 0.3
+},
+{
+"t": 556.58,
+"d": 3.02,
+"type": "clip",
+"src": "stock/px167078.mp4",
+"ss": 0.3
+},
+{
+"t": 559.6,
+"d": 3.02,
+"type": "clip",
+"src": "stock/px178044.mp4",
+"ss": 0.3
+},
+{
+"t": 562.62,
+"d": 3.02,
+"type": "clip",
+"src": "stock/px4702.mp4",
+"ss": 0.3
+},
+{
+"t": 565.64,
+"d": 3.427,
+"type": "clip",
+"src": "stock/px21525.mp4",
+"ss": 0.3
+},
+{
+"t": 569.067,
+"d": 3.427,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/building_height/archive/img/heights_old.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
+},
+{
+"t": 572.493,
+"d": 3.427,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/building_height/archive/img/heights_main.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 575.92,
+"d": 3.427,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/building_height/archive/img/heights_wright.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.35,
+0.75
+],
+"cap": ""
+},
+{
+"t": 579.347,
+"d": 3.427,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/building_height/archive/img/heights_old.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.7,
+0.3
+],
+"cap": ""
+},
+{
+"t": 582.773,
+"d": 3.427,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/building_height/archive/img/heights_main.jpg",
+"z": [
+1.14,
+1.0
+],
+"p": [
+0.2,
+0.4
+],
+"cap": ""
+},
+{
+"t": 586.2,
+"d": 3.13,
+"type": "clip",
+"src": "stock/px89277.mp4",
+"ss": 0.3
+},
+{
+"t": 589.33,
+"d": 3.13,
+"type": "clip",
+"src": "stock/px130783.mp4",
+"ss": 0.3
+},
+{
+"t": 592.46,
+"d": 3.13,
+"type": "clip",
+"src": "stock/px3580.mp4",
+"ss": 0.3
+},
+{
+"t": 595.59,
+"d": 3.13,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/building_height/archive/img/heights_wright.jpg",
+"z": [
+1.05,
+1.16
+],
+"p": [
+0.8,
+0.55
+],
+"cap": ""
+},
+{
+"t": 598.72,
+"d": 3.13,
+"type": "photo",
+"src": "/home/user/sofia-studio/ru_geo/building_height/archive/img/heights_old.jpg",
+"z": [
+1.0,
+1.14
+],
+"p": [
+0.5,
+0.25
+],
+"cap": ""
+},
+{
+"t": 601.85,
+"d": 2.922,
+"type": "clip",
+"src": "stock/px261196.mp4",
+"ss": 0.3
+},
+{
+"t": 604.773,
+"d": 2.922,
+"type": "clip",
+"src": "stock/px261198.mp4",
+"ss": 0.3
+},
+{
+"t": 607.695,
+"d": 2.922,
+"type": "clip",
+"src": "stock/px261192.mp4",
+"ss": 0.3
+},
+{
+"t": 610.617,
+"d": 2.922,
+"type": "clip",
+"src": "stock/px256482.mp4",
+"ss": 0.3
+}
+]
+}
