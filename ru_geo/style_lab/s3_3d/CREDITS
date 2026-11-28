@@ -1,0 +1,30 @@
+Style lab · direction 3 «Stylized 3D» — "Clay Atlas"   (s3_3d.mp4, 14.0 s, 1920×1080, 30 fps, H.264 + AAC)
+All imagery is drawn in code (three.js); no photos, no AI images, no 3D models, no music.
+
+## Geodata
+- Natural Earth 1:50m admin-0 countries (public domain, naturalearthdata.com), via the npm package world-atlas@2.0.2
+  (countries-50m.json, ISC licence, Mike Bostock). Merged with topojson-client@3.1.0 (ISC): Africa = 51 African
+  countries incl. Madagascar; Greenland; the rest of the land (no Antarctica). Douglas–Peucker simplified in Mercator
+  units (tools/prep.mjs). Spherical areas of this data: Africa 29.98 M km², Greenland 2.155 M km², ratio 13.9.
+  On screen the reference figures from the brief: Africa 30,4 млн км², Greenland 2,17 млн км², ×14.
+
+## Projection maths
+- Map: Web/School Mercator, x = λ, y = ln tan(π/4 + φ/2), clipped −58°…84°.
+- Greenland's journey: its real coastline (lon/lat) is turned into unit vectors on the sphere and, every frame, rotated
+  rigidly (first south along its own meridian, then east) by the fraction s of the way to its landing spot
+  (centre 20.5° E, 1.5° N), then re-projected with the same Mercator formula. A rigid rotation of the sphere keeps
+  the true area, so the shrinking you see at every frame is exactly what Mercator does to Greenland at that latitude
+  (method of thetruesize.com). The dashed outline left behind is the original Mercator Greenland ("на карте").
+
+## Fonts
+- Manrope 500 / 800 (Mikhail Sharanda), SIL Open Font License 1.1, via the Google Fonts CSS API, subset to Cyrillic +
+  digits + punctuation (tools/fonts.py).
+
+## Code / libraries
+- three.js r170 (MIT), served from the Lemo-Opuscar library (/root/lemo-opuscar/node_modules/three);
+  post-processing core/three/post.js (MSAA, physical depth of field, vignette/grade) and core/lib.js easing from the
+  Lemo-Opuscar library; frame renderer core/render (playwright). tools/frames.mjs and tools/stills.mjs copied from
+  ../../lemo/dp_maps. index.html, tools/prep.mjs, tools/ocean.py, tools/sound.py, render.sh written for this clip.
+
+## Sound
+- Synthesised in numpy/scipy (tools/sound.py): warm bed, clay taps, mallet notes, air swishes, landing thud, chord.
