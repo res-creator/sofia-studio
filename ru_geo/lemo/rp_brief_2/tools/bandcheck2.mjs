@@ -3,7 +3,7 @@ import path from 'path';
 const LIB = process.env.LIB || '/root/lemo-opuscar';
 const { openDemo, closeServer } = await import(path.join(LIB, 'core/render/page.mjs'));
 const { browser, page } = await openDemo(process.argv[2], { gl: false });
-const COVER = [[3.92, 11.15], [44.2, 78.0]];
+const COVER = [[16.10, 32.81]];
 const r = await page.evaluate((COVER) => { const out = {};
   for (let t = 1; t <= window.DUR; t += 0.1) { if (window.SPEED(t) > 4) continue; if (COVER.some(([a, b]) => t > a && t < b)) continue;
     for (const b of window.TEXTS(t)) { if (b.x1 < 0 || b.x0 > 1920 || b.y1 < 0 || b.y0 > 1080) continue;

@@ -256,7 +256,7 @@ if (CLIP === 'nemo') {
   const LINES = [   // [place, line start, line end (pin), name, sub, sub time, name offset, dist-label side]
     { ll: DUCIE, a: 6.35, b: 7.05, name: 'Дюси', sub: null, nd: [0, -44, 'center'], side: -1 },
     { ll: MOTU, a: 7.9, b: 8.6, name: 'Моту-Нуи', sub: 'у острова Пасхи', st: 8.9, nd: [24, -4, 'left'], side: 1 },
-    { ll: MAHER, a: 11.3, b: 12.0, name: 'Махер', sub: 'у берега Антарктиды', st: 13.3, nd: [24, -62, 'left'], side: -1 }   // above the pin: the ice below is white];
+    { ll: MAHER, a: 11.3, b: 12.0, name: 'Махер', sub: 'у берега Антарктиды', st: 13.3, nd: [24, -62, 'left'], side: -1 }];   // Махер's labels sit above the pin: the ice below is white
   for (const L of LINES) L.m = glowLine(gcArc(NEMO, L.ll, 40), AMB, AMB2, 12, 2.6);
   const CIRC = glowLine(circlePts(NEMO, 2690), 0xd8c8a8, LIGHT, 10, 1.8, .25);
   EVN.push({ t: 0, k: 'whoosh' }, { t: T_PIN, k: 'pin' }, { t: T_C0, k: 'rise' }, ...LINES.map(L => ({ t: L.b, k: 'pin' })));
