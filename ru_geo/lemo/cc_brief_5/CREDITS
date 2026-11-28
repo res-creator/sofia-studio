@@ -1,16 +1,19 @@
-Как создать свою страну · board film PART 4 (film 355.06–462.81: chapter «КТО СТАЛ НАСТОЯЩЕЙ»; Engineering Briefing Board) — credits
+Как создать свою страну · board film PART 5 (film 462.81–611.82: chapters «ПОЧЕМУ ТАК ТРУДНО» and «ВЕРНЁМСЯ НА ПЛАТФОРМУ»;
+Engineering Briefing Board) — credits
 
-Photographs (ru_geo/create_country/archive/img, see archive/credits.json; uncut crops on photo paper, kit/tools/make_print.py)
-  print_unhall.png   un_hall.jpg — United Nations General Assembly 2024 — Mojnsen, CC BY-SA 4.0 (--crop 0,0,1920,1083 --w 1600)
-                     commons.wikimedia.org/wiki/File:United_Nations_General_Assembly_2024.jpg · on the board «зал Генеральной Ассамблеи ООН / фото: Mojnsen, CC BY-SA 4.0»
-  print_unflags.png  un_flags.jpg — Flags of the United Nations, 2005 — United Nations, public domain (--crop 0,420,1920,1720 --w 1600; title lettering cropped off)
-  print_ssvote.png   south_sudan_vote.jpg — Polling station in Juba, South Sudan independence referendum — Ranjit Bhaskar of Al Jazeera English, CC BY-SA 2.0
-                     · on the board «референдум в Южном Судане, январь 2011 / фото: Ranjit Bhaskar (Al Jazeera), CC BY-SA 2.0»
-  print_ssflag.png   south_sudan_flag.jpg — A South Sudanese man captures the celebration on film — USAID Africa Bureau, public domain (--crop 120,0,1920,1440 --w 1500)
-  print_ballot.png   timor_ballot.jpg — Bulletin Timor 1999 (UNAMET ballot) — UNAMET, CC BY-SA 4.0 (--crop 135,85,1035,740 --w 900 --sat 1)
-                     · on the board «бюллетень голосования в Восточном Тиморе / миссия ООН UNAMET, CC BY-SA 4.0»
-  print_box.png      ballot_box.jpg — ballot box, 2023 Polish election (illustrative) — WrS.tm.pl, public domain (--crop 0,0,1560,1440 --w 1300)
-  print_icj.png      icj_palace.jpg — International Court of Justice HQ 2006 (Peace Palace, The Hague) — ICJ, public domain (--w 1280)
-  Each CC print carries its author and licence on the printed card under it. roy_bates is not used.
-Maps: Sudan, South Sudan, East Timor, Eritrea, Ethiopia outlines from johan/world.geo.json (Natural Earth 1:110m, public domain), equirectangular.
+Photographs (ru_geo/create_country/archive/img, see archive/credits.json; uncut crops on photo paper, kit/tools/make_print.py;
+print files copied from the earlier chapter projects cc_brief_2 / cc_brief_3 / cc_brief_4)
+  print_unflags.png  un_flags.jpg — Flags of the United Nations, 2005 — United Nations, public domain
+                     · on the board «флаги стран — членов ООН / United Nations, общ. достояние»
+  print_liber.png    liber_iss.jpg — Satellite image of Gornja Siga in 2007 — NASA JSC, public domain
+                     · «пойма Дуная, снимок с МКС, 2007 / NASA, общ. достояние»
+  print_coin.png     hutt_river.jpg — Hutt River Province five dollars coin — Windshear, CC BY-SA 4.0
+                     commons.wikimedia.org/wiki/File:Hutt_River_Province_five_dollars_coin_1.jpg · «монета княжества Хатт-Ривер / фото: Windshear, CC BY-SA 4.0»
+  print_aerial.png   sealand_aerial.jpg — Sealand from a helicopter — Ryan Lackey, CC BY 2.0
+                     commons.wikimedia.org/wiki/File:Sealand-sky-2.jpg · «Силенд с вертолёта / фото: Ryan Lackey, CC BY 2.0»
+  print_box.png      ballot_box.jpg — ballot box, 2023 Polish election (illustrative) — WrS.tm.pl, public domain
+                     · «урна для голосования, иллюстр. / фото: WrS.tm.pl, общ. достояние»
+  roy_bates is NOT used (licence unclear). The Sealand 1978 events are marker text and sketches only.
+Map: world country outlines from johan/world.geo.json (Natural Earth 1:110m, public domain), equirectangular, Antarctica left out.
+Everything else (fort, boat, platform, checklists, icons) drawn in marker by scenes/_gen_film.py. No generated images.
 Fonts: Pangolin, Fira Sans Condensed, IBM Plex Mono — SIL Open Font License 1.1.

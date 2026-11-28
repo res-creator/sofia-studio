@@ -203,10 +203,10 @@ write('наёмники', 470, 760, L(467.4), .6, 'graphite', 64)
 write('их нанял «премьер»', 470, 860, L(469.0), 1.0, 'graphite', 56)
 write('сын Бейтса отбил платформу', 470, 1700, L(472.4), 1.3, 'graphite', 58)
 write('нападавшие — в плену', 470, 1800, L(474.8), 1.0, 'graphite', 58)
-write('Германия прислала дипломата', 1450, 760, L(476.3), 1.3, 'graphite', 56)
-person((2350, 1000), 2.0, L(476.6))
-write('Силенд: «признание»', 1450, 1700, L(479.2), 1.0, 'graphite', 58)
-write('другие страны: нет', 1450, 1800, L(481.4), .9, 'red', 58)
+write('Германия прислала дипломата', 1550, 760, L(476.3), 1.3, 'graphite', 50)
+person((2300, 1010), 2.0, L(476.6))
+write('Силенд: «признание»', 1650, 1700, L(479.2), 1.0, 'graphite', 58)
+write('другие страны: нет', 1650, 1800, L(481.4), .9, 'red', 58)
 
 # ===================================================================== ROW 1 · B the recognition caveat
 # --- p2 483.25–496.99: that is why the line about recognition needs a caveat; Montevideo speaks of the capacity to enter into relations,
@@ -253,7 +253,7 @@ el(type='card', id='treaty', xy=[9250, 1000], w=760, h=200, rot=1.5, z=9, arrive
 ev(L(503.65), 'land', .2, size='mid')
 arrow([9250, 890], [9050, 800], L(504.4), .35, 'graphite', 6)
 write('ближе ко вторым', 9700, 1150, L(504.6), .9, 'graphite', 50)
-ink('ring', L(506.2), .5, 'red', c=[7000, 690], r=[560, 150], lw=7)
+ink('ring', L(506.2), .5, 'red', c=[6980, 705], r=[540, 112], lw=7)
 write('но жизнь часто идёт по первым', CX1, 1010, L(506.3), 1.8, 'red', 56)
 # without recognition
 write('без признания:', CX1, 1240, L(508.3), .8, 'graphite', 62)
@@ -266,8 +266,8 @@ write('торговый договор', 7800, 1870, L(511.9), .8, 'graphite', 4
 cross((7800, 1600), L(512.6), r=60)
 mounted('unflags', 'print_unflags', 8950, 1490, L(512.9), 520, 1227 / 1744,
         ['флаги стран — членов ООН', 'United Nations, общ. достояние'], rot=-1.4, csize=22)
-write('не возьмут в ООН', 9620, 1400, L(513.4), .9, 'graphite', 46)
-cross((9800, 1500), L(514.0), r=50)
+write('не возьмут в ООН', 9620, 1400, L(513.0), .8, 'graphite', 46)
+cross((9800, 1500), L(513.6), r=50)
 
 # ===================================================================== ROW 2 · D the second difficulty: land
 # --- p4 514.91–536.30: the second difficulty, a boring one: almost all land on Earth is already someone's; Liberland tripped over someone
@@ -275,7 +275,7 @@ cross((9800, 1500), L(514.0), r=50)
 #     every time someone's land and someone's laws turned out stronger than the flag
 write('вторая трудность', 450, 2560, L(514.95), 1.0, 'graphite', 70)
 tag('скучная', 1500, 2530, L(516.4), size=56, rot=-2)
-write('почти вся суша на Земле уже чья-то', 450, 3790, L(517.3), 2.2, 'graphite', 62)
+write('почти вся суша на Земле уже чья-то', 450, 3740, L(517.3), 2.2, 'graphite', 62)
 G = json.load(open('/tmp/world.geo.json'))
 MX0, MY0, MK = 470, 2680, 6.4                                  # equirectangular, lon −170…190 → x, lat 84…−56 → y
 def wm(lon, lat): return [MX0 + ((lon + 170) % 360) * MK, MY0 + (84 - lat) * MK]
@@ -296,6 +296,7 @@ for f in G['features']:
         r = p[0]
         if max(q[0] for q in r) - min(q[0] for q in r) > 180: continue     # a ring across the date line (Fiji, Russia's tip)
         P = [wm(*q) for q in r]
+        if max(q[0] for q in P) - min(q[0] for q in P) > 1500: continue
         xs, ys = [q[0] for q in P], [q[1] for q in P]
         if max(max(xs) - min(xs), max(ys) - min(ys)) < 7: continue
         P = dp(P[:-1], 1.6) + [P[0]]
@@ -319,6 +320,7 @@ tag('Силенд', OX[2] - 180, 2520, L(524.4), size=50, rot=-1.2)
 mounted('aerial', 'print_aerial', OX[2], OY, L(524.5), OW, 740 / 960, ['Силенд с вертолёта', 'фото: Ryan Lackey, CC BY 2.0'], rot=-1.0, csize=20)
 write('внутри британских вод', OX[2], 3330, L(525.2), 1.2, 'graphite', 46, align='center')
 SD = (OX[2] - 120, 3500)
+line([[SD[0] - 270 + 14 * math.sin(i), SD[1] - 170 + 34 * i] for i in range(11)], L(527.0), .3, 'graphite', 6, quiet=True)
 line(circle(SD, 10, 10), L(527.2), .1, 'graphite', 9, fill='graphite', fillA=.9, quiet=True)
 line(arc((SD[0] - 260, SD[1]), 120, 80, -60, 60, 16), L(527.4), .4, 'blue', 6, dash=[12, 9])
 line(arc((SD[0] - 260, SD[1]), 330, 150, -45, 45, 20), L(528.3), .6, 'blue', 6, dash=[12, 9], quiet=True)
@@ -328,7 +330,7 @@ write('1987', SD[0] + 110, 3580, L(529.7), .7, 'blue', 66)
 # every time someone's land and laws were stronger than the flag
 write('каждый раз чья-то земля и чьи-то законы', 3300, 3730, L(531.95), 2.0, 'graphite', 56)
 write('оказывались сильнее флага', 3300, 3830, L(534.0), 1.5, 'red', 56)
-flag_icon(5600, 3830, L(535.2), 'grey')
+flag_icon(4330, 3840, L(535.2), 'grey')
 
 # ===================================================================== ROW 2 · E the sum-up: the four ticks for six cases
 # --- p5 536.86–555.85: let us add it up: Sealand, Liberland and Hutt River stopped at the fourth tick; South Sudan, Timor and Eritrea
@@ -361,7 +363,7 @@ for j in range(3, 6):
     for i in range(3): tick((COLS[j], TY[i]), L(548.0) + .2 * (j - 3) + .15 * (2 - i))
 write('начинали с неё', COLS[4], TY[3] + 125, L(545.0), .8, 'blue', 40, align='center')
 write('сначала договорённость с другими,', TX, 3510, L(545.6), 1.6, 'graphite', 50)
-write('потом всё остальное', 8600, 3510, L(547.5), 1.0, 'graphite', 50)
+write('потом всё остальное', 7800, 3510, L(547.5), 1.0, 'graphite', 50)
 tag('не в смелости', 6750, 3640, L(549.7), size=46, rot=-1.5, strike=dict(t=L(550.5), d=.3))
 tag('не в размере земли', 7600, 3640, L(551.0), size=46, rot=1.2, strike=dict(t=L(552.0), d=.3))
 write('а в том, кто согласен', 8700, 3660, L(552.2), 1.1, 'red', 56)
@@ -371,29 +373,29 @@ write('с тобой разговаривать', 8700, 3770, L(553.5), 1.2, 're
 # --- p6 559.00–579.48: now your platform; population: people who live here permanently, so call your friends; territory: the platform is
 #     there, although today it lies in British waters; government: you yourself; three ticks you set in one evening; the fourth depends on
 #     others, and it breaks almost all such countries
-FB = checklist(450, 4560, L(559.05), 'твоя платформа')
-PXF, SEAF = 3050, 5560
-waves(2650, 3500, SEAF, L(559.3), .6, step=70, amp=10, seed=31)
+FB = checklist(450, 4560, L(559.05), 'твоя платформа', gap=190)
+PXF, SEAF = 3100, 5560
+waves(2650, 3550, SEAF, L(559.3), .6, step=70, amp=10, seed=31)
 DECK = platform(PXF, SEAF, 1.1, L(559.4), lw=7)
 homeflag(PXF + 110, DECK, L(560.0), 260)
-write('нужны люди, которые', 1500, FB[0][1] + 22, L(561.95), 1.0, 'graphite', 44)
-write('живут здесь постоянно', 1500, FB[0][1] + 82, L(562.9), 1.2, 'graphite', 44)
-write('зови друзей', 2330, 4580, L(564.25), .8, 'blue', 50)
+NX = 1450
+write('нужны люди, которые живут здесь постоянно', NX, FB[0][1] + 22, L(561.95), 2.0, 'graphite', 42)
+write('зови друзей', 2650, 4830, L(564.25), .8, 'blue', 50)
+line(bez([2900, 4860], [2960, 4980], [PXF - 70, DECK - 110], 12), L(564.6), .3, 'blue', 5, arrow=True, quiet=True)
 for j, dx in enumerate((-120, -50, 20)): person((PXF + dx, DECK), 1.3, L(564.7) + .2 * j, quiet=j > 0)
 tick(FB[0], L(565.2))
-write('платформа есть,', 1500, FB[1][1] + 22, L(565.8), .8, 'graphite', 44)
+write('платформа есть,', NX, FB[1][1] + 22, L(565.8), .8, 'graphite', 42)
 tick(FB[1], L(566.6))
-write('хотя сегодня она лежит', 1500, FB[1][1] + 82, L(567.7), 1.1, 'grey', 44)
-write('в британских водах', 1500, FB[1][1] + 142, L(569.0), 1.0, 'grey', 44)
+write('хотя сегодня она лежит в британских водах', NX, FB[1][1] + 82, L(567.7), 2.2, 'grey', 38)
 line(arc((PXF, SEAF), 520, 130, 200, 340, 26), L(568.4), .8, 'blue', 5, dash=[12, 9], quiet=True)
-write('ты сам', 1500, FB[2][1] + 42, L(571.6), .5, 'graphite', 56)
+write('ты сам', NX, FB[2][1] + 30, L(571.6), .5, 'graphite', 56)
 tick(FB[2], L(572.0))
 ink('ring', L(571.9), .4, 'graphite', c=[PXF + 20, DECK - 80], r=[60, 90], lw=5)
-write('три галочки — за вечер', 450, 5570, L(572.6), 1.4, 'blue', 52)
+write('три галочки — за вечер', 450, 5640, L(572.6), 1.4, 'blue', 52)
 ink('ring', L(575.3), .5, 'graphite', c=[FB[3][0], FB[3][1]], r=62, lw=6)
-write('четвёртая зависит от других', 1450, 5570, L(575.4), 1.5, 'graphite', 52)
-write('и она ломает почти все такие страны', 450, 5690, L(577.1), 2.0, 'red', 52)
-oc = countries(2500, FB[3][1] + 60, L(575.6), r=34, d=150, n=3)
+write('четвёртая зависит от других,', 1450, 5640, L(575.4), 1.5, 'graphite', 52)
+write('и она ломает почти все такие страны', 450, 5760, L(577.1), 2.0, 'red', 52)
+oc = countries(2100, FB[3][1] + 40, L(575.6), r=34, d=150, n=3)
 for i, p in enumerate(oc):
     write('?', p[0], p[1] + 22, L(576.4) + .15 * i, .3, 'graphite', 50, align='center', quiet=True)
 
@@ -491,7 +493,7 @@ c.to(L(520.7), 15.5, z=z_of(c) * 1.02)
 c.fit(L(536.4), 1.4, [6550, 2400, 10600, 3880], b=2.8)                 # E the sum-up table
 c.to(L(537.8), 17.9, z=z_of(c) * 1.02)
 c.fit(L(555.9), 2.0, [250, 300, 10750, 3950], b=3)                     # chapter pull-back: rows 1–2
-c.fit(L(558.15), .6, [380, 4400, 3700, 5800], b=2.4)                   # (under the card) F your platform
+c.fit(L(558.15), .6, [380, 4400, 3700, 5830], b=2.4)                   # (under the card) F your platform
 c.to(L(558.8), 20.6, z=z_of(c) * 1.03)
 c.fit(L(579.55), 1.4, [4000, 4400, 7450, 5830], b=2.8)                 # G the answer
 c.to(L(580.95), 19.4, z=z_of(c) * 1.02)
