@@ -1,0 +1,19 @@
+Clip: ru_geo/create_country/video/parts/lt_sealand.mp4 — film «Как создать свою страну?», film 463.81–482.70 (18.89 s, 567 frames).
+Picture 1: «Sealand from a helicopter» (Sealand-sky-2.jpg), Ryan Lackey, 13 November 1999 — CC BY 2.0
+(https://creativecommons.org/licenses/by/2.0/). https://commons.wikimedia.org/wiki/File:Sealand-sky-2.jpg (original 1600x1200,
+via Flickr photo 487066477); local copy ru_geo/create_country/archive/img/sealand_aerial.jpg (1280x960), used at 1280 px.
+On screen: «фото: Ryan Lackey, 1999, CC BY 2.0».
+Picture 2: «Rough Tower» (geograph.org.uk 3366831), David P Howard, 25 August 1984 — CC BY-SA 2.0
+(https://creativecommons.org/licenses/by-sa/2.0/). https://commons.wikimedia.org/wiki/File:Rough_Tower_-_geograph.org.uk_-_3366831.jpg
+(original 2000x1500); local copy ru_geo/create_country/archive/img/sealand_tower.jpg (1920x1440), used at 1920 px.
+On screen: «фото: David P Howard, 1984, CC BY-SA 2.0». Both photos colour untouched, on a 40 px paper margin; no AI images.
+Resolution: every print stays at <= 0.98 screen px per source px, on the table and inside the loupe (tools/rescheck.mjs: min
+ratio aerial 1.02 in the lens / 1.71 on the table, tower 1.02 / 2.37 → ok).
+NOT used: roy_bates.jpg («Roy and Joan Bates on Sealand 1978», credited to the Financial Times). Commons tags it PD-Brazil-Photo
+only on the uploader's guess that it was first published in the Brazilian magazine Veja (13 Sep 1978); a Financial Times photo
+is most likely a British work still under copyright, so the licence is not clearly free. Its crop «Roy Bates on Sealand 1978
+(cropped).jpg» has the same problem. Roy Bates, his son, the mercenaries and the German diplomat appear only in text cards.
+Also not used: maunsell_forts.jpg (other forts, not Sealand).
+Fonts (SIL OFL 1.1, fetched by tools/fonts.py from Google Fonts): IBM Plex Sans, IBM Plex Mono, Noto Serif.
+Engine: adapted from ru_geo/lemo/dp_lt_trieste (from rp_lt_deep, cs_lt_merc, us_lt_hudf, bh_otis and the Lemo-Opuscar
+styles/archive-lighttable/demo). tools/rescheck.mjs from ru_geo/lemo/cc_brief_1.
