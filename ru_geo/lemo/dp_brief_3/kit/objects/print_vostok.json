@@ -1,0 +1,15 @@
+{
+  "id": "print_vostok",
+  "w": 1308,
+  "h": 1008,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/deadly_places/archive/img/vostok_photo.jpg",
+    "id": "print_vostok",
+    "crop": "0,40,1200,940",
+    "w": 1200,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

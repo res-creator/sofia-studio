@@ -1,0 +1,15 @@
+{
+  "id": "print_sea",
+  "w": 1308,
+  "h": 1143,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/deadly_places/archive/img/sea_cold.jpg",
+    "id": "print_sea",
+    "crop": "330,80,1920,1452",
+    "w": 1200,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

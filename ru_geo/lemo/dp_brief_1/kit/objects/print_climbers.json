@@ -1,0 +1,15 @@
+{
+  "id": "print_climbers",
+  "w": 1526,
+  "h": 1009,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/deadly_places/archive/img/everest_climbers.jpg",
+    "id": "print_climbers",
+    "crop": "0,0,1920,1211",
+    "w": 1400,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

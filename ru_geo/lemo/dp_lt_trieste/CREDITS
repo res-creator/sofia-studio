@@ -1,0 +1,8 @@
+Picture 1: «Bathyscaphe Trieste with USS Lewis (DE-535) over the Marianas Trench, 23 January 1960» — US Navy photo NH 96797.
+Public domain. https://commons.wikimedia.org/wiki/File:Bathyscaphe_Trieste_with_USS_Lewis_(DE-535)_over_the_Marianas_Trench,_23_January_1960_(NH_96797).jpg
+local copy ru_geo/remote_places/archive/img/trieste_1960.jpg (1920x1428), colour untouched, on a 40 px paper margin.
+Picture 2: HMS Challenger (1858), engraving from The Illustrated London News, 1872. Public domain.
+https://commons.wikimedia.org/wiki/File:HMS_Challenger_(1858).jpg — local copy ru_geo/remote_places/archive/img/hms_challenger.jpg (1920x1316).
+Both pushes stay at about 1.9 screen px per scan px.
+Fonts (SIL OFL 1.1, fetched by tools/fonts.py from Google Fonts): IBM Plex Sans, IBM Plex Mono, Noto Serif.
+Engine: adapted from ru_geo/lemo/cs_lt_merc (from us_lt_hudf, bh_otis and the Lemo-Opuscar styles/archive-lighttable/demo).

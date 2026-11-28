@@ -1,0 +1,15 @@
+{
+  "id": "print_dvterra",
+  "w": 1416,
+  "h": 1077,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/deadly_places/archive/img/dv_terra.jpg",
+    "id": "print_dvterra",
+    "crop": "0,80,1488,1180",
+    "w": 1300,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "t_mine",
+  "w": 654,
+  "h": 322,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/deadly_places/archive/img/mponeng_surface.jpg",
+    "id": "t_mine",
+    "crop": "0,200,1300,780",
+    "w": 600,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "print_everest",
+  "w": 1526,
+  "h": 1050,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/deadly_places/archive/img/everest_iss.jpg",
+    "id": "print_everest",
+    "crop": "0,0,1920,1267",
+    "w": 1400,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

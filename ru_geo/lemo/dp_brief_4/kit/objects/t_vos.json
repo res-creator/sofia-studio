@@ -1,0 +1,15 @@
+{
+  "id": "t_vos",
+  "w": 654,
+  "h": 474,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/deadly_places/archive/img/vostok_photo.jpg",
+    "id": "t_vos",
+    "crop": "300,150,1200,780",
+    "w": 600,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

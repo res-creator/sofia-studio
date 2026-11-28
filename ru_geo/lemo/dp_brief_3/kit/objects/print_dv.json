@@ -1,0 +1,15 @@
+{
+  "id": "print_dv",
+  "w": 1144,
+  "h": 1214,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/deadly_places/archive/img/death_valley.jpg",
+    "id": "print_dv",
+    "crop": "0,160,1050,1280",
+    "w": 1050,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

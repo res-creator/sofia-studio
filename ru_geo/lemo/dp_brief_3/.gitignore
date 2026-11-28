@@ -1,0 +1,5 @@
+out/
+frames/
+raw/
+*.mp4
+assets/*.bin
