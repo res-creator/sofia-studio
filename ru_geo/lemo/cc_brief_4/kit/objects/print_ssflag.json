@@ -1,0 +1,15 @@
+{
+  "id": "print_ssflag",
+  "w": 1636,
+  "h": 1336,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/south_sudan_flag.jpg",
+    "id": "print_ssflag",
+    "crop": "120,0,1920,1440",
+    "w": 1500,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

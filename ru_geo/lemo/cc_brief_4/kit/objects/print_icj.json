@@ -1,0 +1,15 @@
+{
+  "id": "print_icj",
+  "w": 1396,
+  "h": 1071,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/icj_palace.jpg",
+    "id": "print_icj",
+    "crop": "0,0,1280,955",
+    "w": 1280,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

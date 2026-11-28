@@ -1,0 +1,15 @@
+{
+  "id": "print_ssvote",
+  "w": 1744,
+  "h": 1215,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/south_sudan_vote.jpg",
+    "id": "print_ssvote",
+    "crop": "0,0,1920,1285",
+    "w": 1600,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

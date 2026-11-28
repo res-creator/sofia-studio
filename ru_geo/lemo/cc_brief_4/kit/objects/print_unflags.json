@@ -1,0 +1,15 @@
+{
+  "id": "print_unflags",
+  "w": 1744,
+  "h": 1227,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/un_flags.jpg",
+    "id": "print_unflags",
+    "crop": "0,420,1920,1720",
+    "w": 1600,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

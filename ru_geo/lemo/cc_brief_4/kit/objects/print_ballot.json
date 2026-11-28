@@ -1,0 +1,15 @@
+{
+  "id": "print_ballot",
+  "w": 980,
+  "h": 735,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/timor_ballot.jpg",
+    "id": "print_ballot",
+    "crop": "135,85,1035,740",
+    "w": 900,
+    "border": 0.045,
+    "sat": 1.0
+  }
+}
