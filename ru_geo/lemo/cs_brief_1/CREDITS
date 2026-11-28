@@ -1,17 +1,23 @@
-Размер Вселенной · board film PART 2 (film 127.70–272.67: chapters «МЯЧ И ГОРОШИНА» and «НАША ГАЛАКТИКА»; Engineering Briefing Board) — credits
+Размеры стран · board film PART 1 (film 0.00–115.10: cold open «ХОЛОДНЫЙ СТАРТ» and chapter «КАРТА 1569 ГОДА» up to
+the end of paragraph 5; Engineering Briefing Board) — credits
 
-Photographs (all NASA, public domain; from ru_geo/universe_size/archive/credits.json)
-  print_sun.png      the Sun, Skylab — images.nasa.gov/details/9606705                     (uncut crop on photo paper; also sun2)
-  earth.png          NASA Blue Marble 2007 West — images.nasa.gov/details/GSFC_20171208_Archive_e002131
-                     (cut-out: a circle fitted to the lit disc, tools/cut/cut_earth.py)
-  print_voyager.png  Voyager spacecraft (NASA/JPL) — commons.wikimedia.org/wiki/File:Voyager_spacecraft.jpg   (uncut crop)
-  print_proxima.png  Hubble's best image of Alpha Centauri A and B — images.nasa.gov/details/GSFC_20171208_Archive_e000214
-                     (uncut crop; on the board it carries the printed line «снимок Хаббла: Альфа Центавра A и B»,
-                     Proxima itself is drawn in marker: no NASA photo of Proxima was found)
-  print_jupiter.png  Cassini Jupiter portrait — images.nasa.gov/details/PIA04866          (uncut crop)
-  Every photo is shown at >= 1 source pixel per screen pixel (tools/rescheck.mjs: lowest 3.44, sun at local 3.8 s).
-  Planets, the beach ball, the pea, the Milky Way, the galaxies, Voyager on the lines: drawn in marker. No generated images.
+Prints (from ru_geo/country_sizes/archive/credits.json)
+  print_ship.png     ships on an engraving of 1596, Rijksmuseum (public domain) —
+                     commons.wikimedia.org/wiki/File:Vier_Javaanse_vaartuigen,_1596,_RP-P-OB-80.260.jpg
+                     (uncut crop of the large ship; the engraved letter «C» on its sail wiped: kit/tools/clean_lettering.py
+                     → sources/ship_clean.png). Stands for the fictional sailor Жуан's ship (tag «выдуманный моряк»).
+  print_compass.png  wind rose of a sea compass, engraving by Jan Janssonius, 1650 (public domain) —
+                     commons.wikimedia.org/wiki/File:1650_Jansson_Wind_Rose,_Anemographic_Chart,_or_Map_of_the_Winds_-_Geographicus_-_Anemographica-jannson-1650.jpg
+                     (uncut crop of the centre)
+  print_rhumb.png    «Rhumb line vs great-circle arc», Jacob Rus, CC BY-SA 4.0 —
+                     commons.wikimedia.org/wiki/File:Rhumb_line_vs_great-circle_arc.png
+                     (lower, Mercator panel, uncut; credited on the board: «схема: Jacob Rus, CC BY-SA 4.0»)
+  Every print is shown at >= 1 source pixel per screen pixel (tools/rescheck.mjs: lowest 2.02, ship at local 28.1 s).
+
+Country outlines: drawn in marker from open boundary data johan/world.geo.json (public domain), dissolved and simplified
+(scenes/geo.py). «карта Меркатора» = Web-Mercator; «истинный размер» = Lambert azimuthal equal-area, one scale for both
+shapes (Africa / Greenland area as drawn: 13.8, the narration's «в четырнадцать раз»). The great circle on the Atlantic
+chart is computed (slerp) and projected; the rhumb line is the straight Mercator segment between the same two points.
 
 Fonts (SIL Open Font License 1.1): Pangolin, Fira Sans Condensed, IBM Plex Mono.
-Engine: Lemo-Opuscar briefing-board kit (board.js, from ru_geo/lemo/bh_brief_B; added: thousands separator for rolling
-numbers, rolling numbers in the text check, an opaque opening card).
+Engine: Lemo-Opuscar briefing-board kit (board.js, copied from ru_geo/lemo/us_brief_2).

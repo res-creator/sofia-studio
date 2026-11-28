@@ -22,7 +22,7 @@ meta = lambda i: json.load(open(os.path.join(OBJ, i + '.json')))
 R0, R1 = 439.03, 599.49
 DUR = round(R1 - R0, 3)                       # 160.46
 L = lambda ft: round(ft - R0, 3)              # film time → local time
-BW, BH = 17000, 7300
+BW, BH = 17000, 7700
 
 E, EV = [], []
 def el(**k): E.append(k); return k
@@ -213,28 +213,28 @@ tag('National Geographic', 8560, TL + 90, L(499.9), size=56, rot=-1.5)
 write('перешла на проекцию Винкеля', 8420, TL + 330, L(502.0), 1.5, 'graphite', 72)
 tag('проекция Винкеля', 6380, 780, L(502.2), size=64, rot=-1.5)
 # the Winkel tripel outline: the two edge meridians
-edge = [[(-180, la) for la in range(-90, 91, 3)], [(180, la) for la in range(-90, 91, 3)]]
+edge = [[(-180, la) for la in range(-90, 91, 3)] + [(lo, 90) for lo in range(-180, 181, 10)] + [(180, la) for la in range(90, -91, -3)] + [(lo, -90) for lo in range(180, -181, -10)]]
 for i, P in enumerate(M3.lines(edge, eps=1, clip_box=False)): line(P, L(502.5) + .25 * i, .5, 'grey', 5)
 world_map(M3, L(502.8), 1.9)
 equator(M3, L(504.0))
-write('немец Освальд Винкель,', 7050, 840, L(504.2), 1.2, 'graphite', 72)
-write('1921', 7900, 840, L(505.4), .5, 'blue', 84)
+write('немец Освальд Винкель,', 7300, 840, L(504.2), 1.2, 'graphite', 72)
+write('1921', 8150, 840, L(505.4), .5, 'blue', 84)
 tick(1921, L(504.4)); tag('Освальд Винкель', 2840, TL + 90, L(504.6), size=56, rot=1)
-write('никому не отдаёт всё:', 8900, 1360, L(506.9), 1.3, 'graphite', 80)
+write('никому не отдаёт всё:', 8900, 1340, L(506.9), 1.3, 'graphite', 80)
 tissot(M3, L(508.2), 1.6)
-write('— площади', 8980, 1520, L(508.6), .7, 'blue', 80)
-write('— формы', 8980, 1660, L(510.4), .6, 'blue', 80)
-write('— расстояния', 8980, 1800, L(511.0), .7, 'blue', 80)
-write('понемногу', 8900, 1240, L(508.0), .6, 'graphite', 64)
-write('нигде не врёт', 8900, 2050, L(512.0), .9, 'graphite', 90)
-write('слишком сильно', 8900, 2165, L(512.9), .9, 'graphite', 90)
+write('понемногу искажает', 8900, 1480, L(508.0), 1.0, 'graphite', 80)
+write('— площади', 8980, 1620, L(509.0), .7, 'blue', 80)
+write('— формы', 8980, 1750, L(510.4), .6, 'blue', 80)
+write('— расстояния', 8980, 1880, L(511.0), .7, 'blue', 80)
+write('нигде не врёт', 8900, 2110, L(512.0), .9, 'graphite', 90)
+write('слишком сильно', 8900, 2225, L(512.9), .9, 'graphite', 90)
 
 # row 3 (y 5200…7050)
 # --- p5 514.66–528.70: no perfect map, nobody's fault; choosing a projection = choosing a question; three users, three answers
 write('Идеальной карты не существует', 450, 5470, L(514.8), 1.6, 'graphite', 110)
 write('и ничьей вины в этом нет', 450, 5600, L(516.9), 1.4, 'graphite', 80)
 write('выбор проекции = выбор вопроса,', 450, 5800, L(518.7), 1.8, 'graphite', 92)
-ink('ring', L(520.4), .5, 'red', c=[1930, 5770], r=[330, 80], lw=6)
+ink('ring', L(520.4), .5, 'red', c=[1690, 5770], r=[330, 82], lw=6)
 write('на который карта должна ответить', 450, 5920, L(520.9), 1.8, 'graphite', 72)
 printd('compass', 'print_compass', 760, 6380, L(523.0), w=380, rot=-2, size='mid')
 magnet(760, 6200, L(523.4), r=20)
@@ -275,22 +275,24 @@ write('есть сервисы, где страну', 8550, 5580, L(537.2), 1.3,
 write('можно перетащить', 8550, 5690, L(539.3), .9, 'graphite', 72)
 write('и она меняет размер', 8550, 5800, L(541.2), 1.2, 'graphite', 72)
 # Greenland moved like a magnet: the same shape rotated on the sphere (true size), then drawn by Mercator, step by step
-GSRC = (-41, 73); GDST = (-22, 1)
-steps = [(-41, 73), (-37, 58), (-33, 44), (-29, 30), (-25, 15), GDST]
+GSRC = (-41, 73); GDST = (-26, 5)
+steps = [(-41, 73), (-38, 58), (-35, 45), (-32, 32), (-29, 18), GDST]
 GL0 = M4.lines(GRL, eps=1.5)
 map_strokes(GL0, L(541.3), .5, 'graphite', 9)
 for i, s_ in enumerate(steps[1:]):
     P = M4.lines(geo.rotate_to(GRL, GSRC, s_), eps=1.5, clip_box=False)
     t_ = L(542.9) + .45 * i; last = i == len(steps) - 2
-    e_ = map_strokes(P, t_, .3, 'graphite', 9 if last else 6)
-    if not last: e_['erase'] = dict(t=round(t_ + .45, 3), d=.3)
+    e_ = map_strokes(P, t_, .3, 'blue' if last else 'graphite', 10 if last else 6)
+    if not last: e_['out'] = round(t_ + .45, 3); e_['outD'] = .3
 c0 = bbox(GL0); c1 = bbox(M4.lines(geo.rotate_to(GRL, GSRC, GDST), eps=1.5, clip_box=False))
 line([[(c0[0] + c0[2]) / 2 + 60, (c0[1] + c0[3]) / 2 + 60], [(c1[0] + c1[2]) / 2 + 30, c1[1] - 40]], L(542.95), 2.2, 'blue', 6, dash=[22, 16], arrow=True)
 ink('ring', L(545.5), .5, 'red', c=[(c1[0] + c1[2]) / 2, (c1[1] + c1[3]) / 2], r=[(c1[2] - c1[0]) / 2 + 70, (c1[3] - c1[1]) / 2 + 60], lw=6)
-write('съёжится', c1[2] + 110, (c1[1] + c1[3]) / 2 + 30, L(545.6), .6, 'graphite', 76)
+write('съёжится', c1[0] - 110, c1[1] + 20, L(545.6), .6, 'graphite', 76, align='right')
 GSHR = c1
 
-# ===================================================================== CHAPTER «ВОЗВРАЩАЕМСЯ К МЕРКАТОРУ» · x 10800…16700
+# ===================================================================== CHAPTER «ВОЗВРАЩАЕМСЯ К МЕРКАТОРУ» · x 10800…16700 (+DX2 at the end)
+CH2 = len(E); DX2 = 600
+sh2 = lambda b: [b[0] + DX2, b[1], b[2] + DX2, b[3]]
 # --- p7 549.79–568.21: Juan reached port along one course; Greenland stretched for the straight course; the man who thought of sailors
 M5 = geo.Map(geo.merc, 10950, 480, 1650, (-80, 20, -5, 82))
 frame_rect(M5, L(549.0), .01)                                    # (drawn before the card lifts: it is already on the wall)
@@ -338,15 +340,15 @@ write('и это нормально', 13420, 4380, L(583.5), 1.1, 'graphite', 84
 write('Карта не врёт:', 10950, 4870, L(585.4), 1.0, 'graphite', 130)
 write('она просто отвечает на другой вопрос', 10950, 5010, L(586.5), 1.8, 'graphite', 84)
 write('эта — про курсы, а не про площади', 10950, 5180, L(589.0), 2.0, 'graphite', 84)
-line(circle((11920, 5150), [175, 72], 30), L(590.4), .4, 'blue', 5)
+line(circle((11477, 5150), [130, 62], 30), L(590.4), .4, 'blue', 5)
 write('Какую страну вы считали', 10950, 5560, L(591.5), 1.4, 'graphite', 140)
 write('больше, чем она есть?', 10950, 5730, L(593.0), 1.2, 'graphite', 140)
-write('?', 15300, 5800, L(593.6), .3, 'red', 420, align='center')
+write('?', 12900, 5780, L(593.6), .3, 'red', 400, align='center')
 tag('напишите в комментариях', 11000, 5900, L(594.3), size=62, rot=-1.5)
-el(type='ruler', id='ruler', **{'from': [10950, 6400], 'to': [14300, 6400]}, w=52, z=12, inset=70, magnetR=22,
+el(type='ruler', id='ruler', **{'from': [10950, 6400], 'to': [13300, 6400]}, w=52, z=12, inset=70, magnetR=22,
    arrive=dict(t=L(596.4), kind='drop', d=.45, lift=180, spin=.5, land=.6))
 ev(L(596.7), 'ruler', .4)
-write('проверим по линейке', 14450, 6430, L(596.8), 1.0, 'blue', 84)
+write('проверим по линейке', 13450, 6430, L(596.8), 1.0, 'blue', 84)
 
 # ===================================================================== camera
 def fitm(m, pad=60, top=0): x0, y0, x1, y1 = m.box; return [x0 - pad, y0 - pad - top, x1 + pad, y1 + pad]
@@ -367,7 +369,7 @@ c.fit(L(484.1), 1.5, [420, TL - 720, 7900, TL + 540], b=2.8)            # more t
 c.fit(L(487.3), 1.3, [6500, TL - 300, 9000, TL + 960], b=2.8)           # cartographers objected; seven organisations
 c.to(L(489.0), 3.0, z=z_of(c) * 1.02)
 c.fit(L(492.0), 1.2, [6500, TL + 50, 8700, TL + 980], b=2.8)
-c.fit(L(497.4), 1.3, [7300, TL - 300, 10100, TL + 520], b=2.8)          # 1998
+c.fit(L(497.4), 1.3, [6550, TL - 300, 10150, TL + 1000], b=2.8)          # 1998
 c.fit(L(501.7), 1.6, [6100, 640, 8900, 2900], a=1.8, b=2.6)             # up to the Winkel map
 c.fit(L(506.6), 1.3, [6100, 640, 10350, 2900], b=2.8)                   # a little of everything
 c.to(L(508.0), 6.0, z=z_of(c) * 1.02)
@@ -376,20 +378,21 @@ c.fit(L(522.6), 1.3, [350, 5100, 3700, 7050], b=2.8)                    # naviga
 c.to(L(524.0), 5.0, z=z_of(c) * 1.02)
 c.fit(L(529.2), 1.4, [4350, 5020, 7000, 7000], b=2.8)                   # the globe
 c.fit(L(535.0), 1.4, [6950, 5020, 10300, 7120], b=2.8)                  # the flat map; Greenland dragged
-c.to(L(536.6), 9.5, z=z_of(c) * 1.02)
+c.to(L(536.6), 6.0, z=z_of(c) * 1.02)
+c.fit(L(545.2), 1.0, [GSHR[0] - 500, GSHR[1] - 450, GSHR[2] + 650, GSHR[3] + 250], b=2.8)   # Greenland shrinks
 c.fit(L(546.6), 2.1, [300, 300, 10350, 7150], b=3)                      # chapter pull-back
 # chapter 2 (the card hides the jump)
 rb = [min(A_[0], B_[0]) - 260, min(A_[1], B_[1]) - 380, max(A_[0], B_[0]) + 200, max(A_[1], B_[1]) + 260]
-c.fit(L(549.0), .6, rb)
+c.fit(L(549.0), .6, sh2(rb))
 c.to(L(549.8), 3.5, z=z_of(c) * 1.03)
-c.fit(L(553.4), 1.5, [10850, 420, 14000, 2900], b=2.8)                  # Greenland: not a mistake, stretched for the course
+c.fit(L(553.4), 1.5, sh2([10850, 420, 14000, 2900]), b=2.8)                  # Greenland: not a mistake, stretched for the course
 c.to(L(555.0), 6.0, z=z_of(c) * 1.02)
-c.fit(L(561.3), 1.4, [13450, 560, 16300, 2380], b=2.8)                  # who invented it
-c.fit(L(568.6), 1.5, [10850, 3250, 16400, 4450], b=2.8)                 # three questions
+c.fit(L(561.3), 1.4, sh2([13450, 560, 16300, 2380]), b=2.8)                  # who invented it
+c.fit(L(568.6), 1.5, sh2([10850, 3250, 16400, 4450]), b=2.8)                 # three questions
 c.to(L(570.2), 14.0, z=z_of(c) * 1.025)
-c.fit(L(585.2), 1.4, [10850, 4700, 15800, 5260], b=2.8)                 # the map does not lie
-c.fit(L(591.2), 1.4, [10850, 4700, 16000, 6500], b=2.8)                 # which country? the ruler
-c.fit(L(597.0), 2.9, [250, 250, 16750, 7150], b=3)                      # the whole wall
+c.fit(L(585.2), 1.4, sh2([10850, 4250, 14000, 5300]), b=2.8)                 # the map does not lie
+c.fit(L(591.2), 1.4, sh2([10850, 4250, 14400, 6550]), b=2.8)                 # which country? the ruler
+c.fit(L(597.0), 2.9, [250, 250, 16750 + DX2, 7150], b=3)                      # the whole wall
 c.to(L(599.9), 1, z=z_of(c) * 1.0)
 
 scene = dict(dur=DUR, clock=R0, board=dict(w=BW, h=BH, seed=53, texScale=.4, ghosts=240, tray=False), hand=1.0, sheen=.07,
@@ -404,7 +407,8 @@ def shift(e, dx):
     if 'points' in e: e['points'] = [[x + dx, y] for x, y in e['points']]
     for st in e.get('strokes', []): st['points'] = [[x + dx, y] for x, y in st['points']]
     for ex in e.get('ext', []): ex[0] += dx
+for e in E[CH2:]: shift(e, DX2)
 for e in E: shift(e, OX)
-scene['cam']['x'] += OX; scene['board']['w'] = BW + OX
+scene['cam']['x'] += OX; scene['board']['w'] = BW + OX + DX2
 json.dump(scene, open(os.path.join(HERE, 'film.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
 print('film.json', DUR, 's ·', len(E), 'elements ·', len(EV), 'events ·', len(c.moves), 'camera moves')

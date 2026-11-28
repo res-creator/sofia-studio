@@ -28,7 +28,7 @@ ANA = json.load(open(os.path.join(HERE, 'anneal_africa3_2.json')))['pieces']
 R0, R1 = 268.26, 439.03
 DUR = round(R1 - R0, 3)                       # 170.77
 L = lambda ft: round(ft - R0, 3)              # film time → local time
-BW, BH = 14600, 6700
+BW, BH = 14600, 7300
 
 E, EV = [], []
 def el(**k): E.append(k); return k
@@ -159,19 +159,20 @@ type_card('КАК СРАВНИВАТЬ ЧЕСТНО', 383.86)
 # ===================================================================== ROW 1 · «ОБРАЗЫ ВМЕСТО ЦИФР»
 # --- p14 269.26–286.45: numbers tire, images help. DR Congo (2nd in Africa) holds France a little over 4 times
 #     (France without overseas territories): four Frances laid in the heart of Africa, and some is left over
-K1 = .36
-write('цифры утомляют —', 380, 560, L(269.35), .9, 'graphite', 84)
-write('нужны образы', 1120, 560, L(270.3), .8, 'graphite', 84)
+K1 = .42
+write('цифры утомляют —', 380, 580, L(269.35), .9, 'graphite', 84)
+write('нужны образы', 1150, 580, L(270.3), .8, 'graphite', 84)
 tag('истинный размер', 2250, 560, L(270.9), size=54, rot=-1.5)
-CG = outline('congo', K1, (1250, 1210), L(271.25), 1.3, 'graphite', 9, fill='grey', fillA=.10)
-tag('ДР Конго', 1000, 1680, L(272.2), size=62, rot=1)
-write('2-я по площади страна Африки', 1250, 1830, L(273.0), 1.3, 'graphite', 56, align='center')
-FR0 = (2560, 1180)
+CG = outline('congo', K1, (1400, 1170), L(271.25), 1.3, 'graphite', 9, fill='grey', fillA=.10)
+tag('ДР Конго', 430, 850, L(272.2), size=62, rot=1)
+write('2-я по площади', 400, 1010, L(273.0), .8, 'graphite', 58)
+write('страна Африки', 400, 1090, L(273.8), .8, 'graphite', 58)
+FR0 = (2500, 1190)
 FR = outline('france', K1, FR0, L(273.75), .9, 'blue', 8, fill='blue', fillA=.12)
-tag('Франция', 2380, 1460, L(274.4), size=58, rot=-1.5)
-write('вмещает её', 2560, 820, L(275.0), .7, 'graphite', 62, align='center')
-count('чуть больше {0} раз', [4], 2560, 920, L(275.6), 1.1, size=84, align='center')
-write('без заморских территорий', 2560, 1610, L(277.15), 1.3, 'graphite', 52, align='center')
+tag('Франция', 2300, 1520, L(274.4), size=58, rot=-1.5)
+write('вмещает её', 2500, 790, L(275.0), .7, 'graphite', 62, align='center')
+count('чуть больше {0} раз', [4], 2500, 890, L(275.6), 1.1, size=84, align='center')
+write('без заморских территорий', 2500, 1660, L(277.15), 1.3, 'graphite', 58, align='center')
 placed = []
 for i, p in enumerate(ANC):                   # four copies lifted off France and laid into Congo
     tt = L(280.0) + i * .95
@@ -179,205 +180,208 @@ for i, p in enumerate(ANC):                   # four copies lifted off France an
     o = outline('france', K1, FR0, tt, .25, 'blue', 6, fill='blue', fillA=.16, quiet=True,
                 moves=[dict(t=tt + .3, d=.9, to=end, dr=p['rot'], a=1.8, b=2.6)])
     placed += transformed(o['rings'], o['origin'], end, p['rot'])
-    write(str(i + 1), end[0] + 0, end[1] + 20, tt + 1.25, .2, 'blue', 70, align='center')
-LO = leftover_point(CG['rings'], placed)
-write('и ещё останется', 380, 1000, L(284.6), .8, 'graphite', 56)
-write('немного', 380, 1080, L(285.4), .5, 'graphite', 56)
-line([[620, 1110], [LO[0] - 30, LO[1] - 10]], L(285.6), .4, 'graphite', 6, arrow=True)
-ink('ring', L(285.95), .4, 'red', c=LO, r=[52, 44], lw=6)
-scalebar(2280, 1980 - 180, K1, 1000, L(276.2))
+    write(str(i + 1), end[0] + 0, end[1] + 24, tt + 1.25, .2, 'blue', 76, align='center')
+LO = [float(v) for v in leftover_point(CG['rings'], placed)]
+write('и ещё останется', 400, 1330, L(284.6), .8, 'graphite', 58)
+write('немного', 400, 1410, L(285.4), .5, 'graphite', 58)
+line([[880, 1300], [LO[0] - 40, LO[1] + 20]], L(285.6), .4, 'graphite', 6, arrow=True)
+ink('ring', L(285.95), .4, 'red', c=LO, r=[56, 48], lw=6)
+scalebar(2830, 1360, K1, 1000, L(276.2))
 
 # --- p15 287.16–302.23: Brazil ≈ 8.5 million km², about 5 % more than the contiguous US (no Alaska, no Hawaii);
 #     US numbers from another reference, the conclusion holds
-K2 = .2
-BR = outline('brazil', K2, (4200, 1230), L(287.25), 1.6, 'graphite', 9, fill='grey', fillA=.10)
+K2 = .24
+BR = outline('brazil', K2, (4150, 1170), L(287.25), 1.6, 'graphite', 9, fill='grey', fillA=.10)
 tag('Бразилия', 3560, 560, L(287.4), size=62, rot=-1.5)
-count('≈ {0},5 млн км²', [8], 4280, 700, L(289.3), 1.8, size=84, align='left')
-US0 = (5500, 1060)
-US = outline('us48', K2, US0, L(292.25), 1.3, 'blue', 8, fill='blue', fillA=.12)
-tag('материковые США', 5050, 1440, L(293.0), size=56, rot=1)
-write('без Аляски и Гавайев', 5500, 1610, L(295.3), 1.2, 'graphite', 52, align='center')
-# a copy of the US slides onto Brazil (centred on it)
-USC0 = US['origin']; usb = GEO['us48']['bbox']; brb = GEO['brazil']['bbox']
-USC1 = [4200 - K2 * (usb[0] + usb[2]) / 2, 1230 - 120 - K2 * (usb[1] + usb[3]) / 2]
-outline('us48', K2, US0, L(294.3), .25, 'blue', 6, fill='blue', fillA=.10, quiet=True, moves=[dict(t=L(294.6), d=1.3, to=USC1, a=1.8, b=2.6)])
-write('≈ на 5 % больше', 4200, 1830, L(293.1), 1.2, 'blue', 70, align='center')
-tag('США: другой справочник', 5000, 1810, L(298.1), size=50, rot=-1)
-write('на вывод не влияет', 5000, 1980, L(300.1), 1.3, 'graphite', 56)
-tick(5560, 1955, L(301.6))
-scalebar(3560, 1700, K2, 1000, L(289.0))
+count('≈ {0},5 млн км²', [8], 4250, 590, L(289.3), 1.8, size=84, align='left')
+US0 = (5600, 1300)
+usb = GEO['us48']['bbox']
+USC1 = [4150 - K2 * (usb[0] + usb[2]) / 2, 1120 - K2 * (usb[1] + usb[3]) / 2]
+US = outline('us48', K2, US0, L(292.25), 1.0, 'blue', 8, fill='blue', fillA=.12, moves=[dict(t=L(293.5), d=1.3, to=USC1, a=1.8, b=2.6)])
+tag('материковые США', 5050, 760, L(292.6), size=56, rot=1, color='blue')
+write('≈ на 5 % больше', 5020, 1060, L(295.0), 1.1, 'blue', 74)
+write('без Аляски и Гавайев', 5020, 920, L(295.9), 1.1, 'graphite', 58)
+tag('США: другой справочник', 5050, 1310, L(298.1), size=52, rot=-1)
+write('на вывод не влияет', 5020, 1500, L(300.1), 1.3, 'graphite', 60)
+tick(5640, 1470, L(301.6))
+scalebar(3620, 1640, K2, 1000, L(289.0))
 
 # --- p16 302.78–320.29: Indonesia looks like crumbs on the map; but it is > 17 000 islands spread west → east over
 #     ≈ 5 000 km: like New York → Los Angeles and a bit more; the archipelago is wider than the eye suggests
-write('на карте:', 6500, 560, L(302.9), .5, 'graphite', 62)
-outline('indonesia', .05, (7120, 610), L(303.4), .8, 'grey', 4, quiet=True)
-write('россыпь крошек', 6500, 760, L(304.2), 1.0, 'graphite', 62)
+write('на карте:', 6900, 650, L(302.9), .5, 'graphite', 62)
+outline('indonesia', .05, (7110, 740), L(303.4), .8, 'grey', 4, quiet=True)
+write('россыпь крошек', 6900, 880, L(304.2), 1.0, 'graphite', 62)
 K3 = .2
-ID0 = (8300, 830)
+ID0 = (8350, 880)
 ID = outline('indonesia', K3, ID0, L(305.4), 1.8, 'graphite', 8, fill='grey', fillA=.12)
-tag('Индонезия', 7650, 1120, L(305.9), size=60, rot=1.5)
-count('более {0} островов', [17000], 8650, 1210, L(306.4), 1.8, size=74, sep=True, align='left')
 idb = ID['box']
-dim([idb[0], 470], [idb[2], 470], L(309.7), 1.6, ext=[[idb[0], 440, ID0[1] - 40], [idb[2], 440, ID0[1] + 30]])
-write('запад', idb[0] - 20, 560, L(309.75), .4, 'graphite', 48, align='right')
-write('восток', idb[2] + 20, 560, L(310.9), .4, 'graphite', 48)
-count('≈ {0} км', [5000], (idb[0] + idb[2]) / 2, 430, L(310.6), 1.4, size=84, sep=True, align='center')
-USI = outline('us48', K3, (8100, 1660), L(312.6), 1.2, 'blue', 7, fill='blue', fillA=.08)
+tag('Индонезия', idb[2] + 120, 830, L(305.9), size=60, rot=1.5)
+count('более {0} островов', [17000], idb[2] + 60, 1010, L(306.4), 1.8, size=70, sep=True, align='left')
+dim([idb[0], 620], [idb[2], 620], L(309.7), 1.6, ext=[[idb[0], 590, ID0[1] - 40], [idb[2], 590, ID0[1] + 30]])
+write('запад', idb[0] - 20, 650, L(309.75), .4, 'graphite', 52, align='right')
+write('восток', idb[2] + 20, 650, L(310.9), .4, 'graphite', 52)
+count('≈ {0} км', [5000], (idb[0] + idb[2]) / 2, 580, L(310.6), 1.4, size=84, sep=True, align='center')
+USI = outline('us48', K3, (8250, 1560), L(312.6), 1.2, 'blue', 7, fill='blue', fillA=.08)
 ny = [USI['origin'][0] + K3 * GEO['us48']['ny'][0], USI['origin'][1] + K3 * GEO['us48']['ny'][1]]
 la = [USI['origin'][0] + K3 * GEO['us48']['la'][0], USI['origin'][1] + K3 * GEO['us48']['la'][1]]
 line(circle(la, 12, 12), L(313.0), .1, lw=10); line(circle(ny, 12, 12), L(313.9), .1, lw=10)
-write('Лос-Анджелес', la[0] - 20, la[1] + 70, L(313.1), .6, 'graphite', 46, align='right')
-write('Нью-Йорк', ny[0] + 25, ny[1] + 70, L(314.0), .5, 'graphite', 46)
+write('Лос-Анджелес', la[0] - 30, la[1] + 15, L(313.1), .6, 'graphite', 50, align='right')
+write('Нью-Йорк', ny[0] + 20, ny[1] - 55, L(314.0), .5, 'graphite', 50, align='center')
 line([la, ny], L(314.3), .6, 'blue', 5, dash=[16, 12])
-# a copy of Indonesia slides down onto the US, west tips aligned with LA: it goes past New York
+# a copy of Indonesia slides down onto the US, west tip at LA, below the LA–NY line: it goes past New York
 idg = GEO['indonesia']['bbox']
-ID1 = [la[0] - 40 - K3 * idg[0], 1560 - K3 * (idg[1] + idg[3]) / 2]
+ID1 = [la[0] - K3 * idg[0], max(la[1], ny[1]) + 30 - K3 * idg[1]]
 outline('indonesia', K3, ID0, L(315.0), .3, 'graphite', 6, fill='grey', fillA=.14, quiet=True, moves=[dict(t=L(315.35), d=1.2, to=ID1, a=1.8, b=2.6)])
-write('и ещё немного', 9560, 1460, L(315.8), .8, 'blue', 56)
-write('шире,', 6500, 1650, L(316.8), .5, 'graphite', 64)
-write('чем подсказывает', 6500, 1750, L(317.4), .9, 'graphite', 64)
-write('глаз', 6500, 1850, L(318.4), .4, 'graphite', 64)
-ink('ring', L(318.9), .6, 'red', c=[(idb[0] + idb[2]) / 2, ID0[1]], r=[(idb[2] - idb[0]) / 2 + 90, 230], lw=7)
-scalebar(9200, 1980, K3, 1000, L(312.0))
+ide = ID1[0] + K3 * idg[2]
+write('и ещё', ide + 40, ID1[1] + K3 * idg[1] + 60, L(315.8), .4, 'blue', 58)
+write('немного', ide + 40, ID1[1] + K3 * idg[1] + 135, L(316.2), .5, 'blue', 58)
+write('шире,', 6900, 1350, L(316.8), .5, 'graphite', 64)
+write('чем подсказывает', 6900, 1450, L(317.4), .9, 'graphite', 64)
+write('глаз', 6900, 1550, L(318.4), .4, 'graphite', 64)
+ink('ring', L(318.9), .6, 'red', c=[(idb[0] + idb[2]) / 2, ID0[1]], r=[(idb[2] - idb[0]) / 2 + 80, 220], lw=7)
+scalebar(6950, 1750, K3, 1000, L(312.0))
 
 # --- p17 320.99–342.10: USA + China + India ≈ 22–23 million km² (UN table; disputed areas of China and India change the
 #     sum by 1–2 %); Africa ≈ 30, so the three giants together are smaller
-K4 = .15
-AF = outline('africa', K4, (11250, 1250), L(321.0), 1.6, 'graphite', 9, fill='grey', fillA=.08)
-tag('Африка', 10450, 560, L(321.2), size=62, rot=-1.5)
-SIDE = {'us48': (12950, 760), 'alaska': (13600, 700), 'china': (13150, 1260), 'india': (13700, 1700)}
-NAMES = {'us48': 'США', 'china': 'Китай', 'india': 'Индия'}
+K4 = .165
+AF = outline('africa', K4, (11000, 1260), L(321.0), 1.6, 'graphite', 9, fill='grey', fillA=.08)
+tag('Африка', 10150, 560, L(321.2), size=62, rot=-1.5)
+SIDE = {'us48': (13300, 760), 'alaska': (13700, 1150), 'china': (13100, 1300), 'india': (13600, 1750)}
+NAMES = {'us48': 'США', 'china': 'Китай', 'india': 'Индия', 'alaska': 'Аляска'}
 TS = {'us48': L(321.1), 'alaska': L(321.9), 'china': L(322.4), 'india': L(323.0)}
 LAND = {'china': L(324.6), 'us48': L(325.3), 'india': L(326.0), 'alaska': L(326.6)}
 for p in ANA:
     nm = p['piece']; st = TS[nm]
     o = outline(nm, K4, SIDE[nm], st, .7 if nm != 'alaska' else .45, 'blue', 7, fill='blue', fillA=.15,
                 moves=[dict(t=LAND[nm], d=1.1, to=piece_end(AF, K4, p), dr=p['rot'], a=1.8, b=2.6)])
-    if nm in NAMES:
-        bx = o['box']; ex = piece_end(AF, K4, p)
-        cxk = K4 * (GEO[nm]['bbox'][0] + GEO[nm]['bbox'][2]) / 2; cyk = K4 * (GEO[nm]['bbox'][1] + GEO[nm]['bbox'][3]) / 2
-        cs, sn = math.cos(math.radians(p['rot'])), math.sin(math.radians(p['rot']))
-        lx, ly = ex[0] + cxk * cs - cyk * sn, ex[1] + cxk * sn + cyk * cs
-        write(NAMES[nm], lx, ly + 18, LAND[nm] + 1.15, .4, 'blue', 54, align='center')
-count('≈ {0}–{1} млн км²', [22, 23], 12300, 700, L(324.5), 2.4, size=84)
-write('США + Китай + Индия', 12300, 820, L(322.4), 1.3, 'graphite', 60)
-tag('таблица ООН', 12350, 990, L(328.7), size=54, rot=1.5)
-write('спорные районы Китая и Индии:', 12300, 1230, L(330.1), 2.0, 'graphite', 52)
-count('на сумму {0}–{1} %', [1, 2], 12300, 1340, L(334.4), 1.4, size=64)
-count('Африка ≈ {0} млн км²', [30], 12300, 1560, L(337.25), 1.6, size=84)
-write('три гиганта вместе меньше', 12300, 1720, L(339.6), 1.7, 'red', 64)
-scalebar(10500, 2010, K4, 1000, L(321.8))
-
+    ex = piece_end(AF, K4, p)
+    cxk = K4 * (GEO[nm]['bbox'][0] + GEO[nm]['bbox'][2]) / 2; cyk = K4 * (GEO[nm]['bbox'][1] + GEO[nm]['bbox'][3]) / 2
+    cs, sn = math.cos(math.radians(p['rot'])), math.sin(math.radians(p['rot']))
+    lx, ly = ex[0] + cxk * cs - cyk * sn, ex[1] + cxk * sn + cyk * cs
+    write(NAMES[nm], lx, ly + 18, LAND[nm] + 1.15, .4, 'blue', 84 if nm != 'alaska' else 54, align='center')
+write('США + Китай + Индия', 11950, 640, L(322.4), 1.3, 'graphite', 72)
+count('≈ {0}–{1} млн км²', [22, 23], 11950, 780, L(324.5), 2.4, size=96)
+tag('таблица ООН', 12000, 950, L(328.7), size=62, rot=1.5)
+write('спорные районы Китая и Индии:', 11950, 1180, L(330.1), 2.0, 'graphite', 68)
+count('на сумму {0}–{1} %', [1, 2], 11950, 1300, L(334.4), 1.4, size=80)
+count('Африка ≈ {0} млн км²', [30], 11950, 1530, L(337.25), 1.6, size=96)
+write('три гиганта вместе меньше', 11950, 1690, L(339.6), 1.7, 'red', 80)
+scalebar(10000, 1980, K4, 1000, L(321.8))
 # ===================================================================== ROW 2 · «ЛУНА И АВСТРАЛИЯ»
 # --- p18 345.40–363.24: 'Australia is wider than the Moon': Moon diameter ≈ 3 500 km, Australia west → east ≈ 4 000 km;
 #     true, with a catch: a ball's diameter against a land's width; a nice joke, not a strict comparison
 K5 = .2
-write('«Австралия шире Луны»', 480, 2780, L(345.5), 1.8, 'graphite', 84)
-printd('moon', 'print_moon', 870, 3420, L(346.2), w=600, rot=-2, size='mid')
-magnet(650, 3135, L(346.65), r=20); magnet(1090, 3125, L(346.75), r=20)
-el(type='card', id='cred_moon', xy=[870, 3790], w=640, h=64, rot=-1, z=9,
+write('«Австралия шире Луны»', 480, 2780, L(345.5), 1.8, 'graphite', 96)
+tag('истинный размер', 2700, 2740, L(346.0), size=56, rot=1.5)
+printd('moon', 'print_moon', 850, 3400, L(346.2), w=560, rot=-2, size='mid')
+magnet(645, 3130, L(346.65), r=20); magnet(1055, 3120, L(346.75), r=20)
+el(type='card', id='cred_moon', xy=[850, 3775], w=620, h=60, rot=-1, z=9,
    arrive=dict(t=L(346.9), kind='drop', d=.35, lift=120, spin=.6, land=.6),
-   lines=[dict(text='Луна с «Аполлона-13», 1970 · NASA', font='mono', size=30, x=24, y=11, color='grey', pass_=True)])
-MC, MR = (2050, 3400), K5 * 3474.8 / 2
+   lines=[dict(text='Луна с «Аполлона-13», 1970 · NASA', font='mono', size=29, x=22, y=10, color='grey', pass_=True)])
+MC, MR = (1750, 3420), K5 * 3474.8 / 2
 line(circle(MC, MR, 64), L(347.9), 1.0, 'graphite', 8)
-tag('Луна', 1720, 2990, L(348.2), size=56, rot=-1.5)
+tag('Луна', 1480, 2960, L(348.2), size=58, rot=-1.5)
 dim([MC[0] - MR, MC[1]], [MC[0] + MR, MC[1]], L(348.9), .9)
-count('≈ {0} км', [3500], MC[0], MC[1] - 30, L(349.6), 1.5, size=68, sep=True, align='center')
-write('диаметр', MC[0], MC[1] + 80, L(350.0), .6, 'graphite', 50, align='center')
-AU = outline('australia', K5, (3150, 3420), L(351.5), 1.4, 'graphite', 8, fill='grey', fillA=.10)
-tag('Австралия', 2900, 3880, L(352.0), size=58, rot=1)
+count('≈ {0} км', [3500], MC[0], MC[1] - 30, L(349.6), 1.5, size=76, sep=True, align='center')
+write('диаметр', MC[0], MC[1] + 85, L(350.0), .6, 'graphite', 58, align='center')
+AU = outline('australia', K5, (2750, 3430), L(351.5), 1.4, 'graphite', 8, fill='grey', fillA=.10)
+tag('Австралия', 2560, 3900, L(352.0), size=58, rot=1)
 aub = AU['box']
-dim([aub[0], 2980], [aub[2], 2980], L(352.6), 1.1, ext=[[aub[0], 2950, 3300], [aub[2], 2950, 3300]])
-count('≈ {0} км', [4000], (aub[0] + aub[2]) / 2, 2950, L(353.5), 1.6, size=68, sep=True, align='center')
-write('запад → восток', (aub[0] + aub[2]) / 2, 3060, L(354.0), .9, 'graphite', 46, align='center')
-tag('истинный размер', 3500, 2780, L(352.9), size=50, rot=1.5)
-write('правда с подвохом:', 480, 4060, L(356.15), 1.0, 'red', 66)
-write('поперечник шара', 1500, 4060, L(357.7), 1.0, 'graphite', 66)
-write('≠', 2160, 4060, L(358.8), .3, 'red', 74)
-write('ширина суши', 2280, 4060, L(359.5), .9, 'graphite', 66)
-write('красивая шутка, но не строгое сравнение', 480, 4200, L(360.7), 2.0, 'graphite', 60)
+dim([aub[0], 3000], [aub[2], 3000], L(352.6), 1.1, ext=[[aub[0], 2970, 3300], [aub[2], 2970, 3300]])
+count('≈ {0} км', [4000], (aub[0] + aub[2]) / 2, 2965, L(353.5), 1.6, size=76, sep=True, align='center')
+write('запад', aub[0] - 20, 3020, L(353.9), .4, 'graphite', 50, align='right')
+write('восток', aub[2] + 20, 3020, L(354.4), .4, 'graphite', 50)
+scalebar(1450, 3900, K5, 1000, L(352.4))
+write('правда с подвохом:', 480, 4080, L(356.15), 1.0, 'red', 76)
+write('поперечник шара', 1250, 4080, L(357.7), 1.0, 'graphite', 76)
+write('≠', 1930, 4080, L(358.8), .3, 'red', 84)
+write('ширина суши', 2020, 4080, L(359.5), .9, 'graphite', 76)
+write('красивая шутка, но не строгое сравнение', 480, 4205, L(360.7), 2.0, 'graphite', 70)
 
 # --- p19 363.98–381.56: by area it is different: the Moon's surface is larger than Africa; we call it small;
 #     ≈ 38 million km², almost five times Australia; but Asia is bigger
-K6 = .075
-write('по площади — всё иначе', 4500, 2780, L(364.05), 1.2, 'graphite', 76)
-MD, MDR = (4980, 3400), K6 * 2 * 1737.4          # the whole lunar surface laid flat with no area distortion (equal-area: a disc of radius 2R)
+K6 = .1
+write('по площади — всё иначе', 4500, 2780, L(364.05), 1.2, 'graphite', 90)
+MD, MDR = (4900, 3460), K6 * 2 * 1737.4          # the whole lunar surface laid flat with no area distortion (equal-area: a disc of radius 2R)
 line(circle(MD, MDR, 72), L(365.35), 1.1, 'graphite', 8, fill='grey', fillA=.10)
-write('вся поверхность Луны', MD[0], MD[1] + MDR + 75, L(365.9), 1.1, 'graphite', 48, align='center')
-AF2 = outline('africa', K6, (5800, 3380), L(366.3), 1.2, 'blue', 7, fill='blue', fillA=.12)
-write('Африка', 5800, AF2['box'][3] + 75, L(367.2), .5, 'blue', 48, align='center')
-write('>', 5395, 3420, L(368.0), .3, 'red', 110, align='center')
-write('а мы называем её маленькой', 4500, 4200, L(368.5), 1.6, 'graphite', 56)
-count('≈ {0} млн км²', [38], MD[0], 2930, L(370.8), 2.4, size=70, align='center')
+write('вся поверхность Луны', MD[0], MD[1] + MDR + 90, L(365.9), 1.1, 'graphite', 58, align='center')
+AF2 = outline('africa', K6, (5880, 3440), L(366.3), 1.2, 'blue', 7, fill='blue', fillA=.12)
+write('Африка', 5880, AF2['box'][3] + 90, L(367.2), .5, 'blue', 58, align='center')
+write('>', 5380, 3480, L(368.0), .3, 'red', 120, align='center')
+write('а мы называем её маленькой', 4500, 4200, L(368.5), 1.6, 'graphite', 70)
+count('≈ {0} млн км²', [38], MD[0], MD[1] + 20, L(370.8), 2.4, size=76, align='center')
 AUW = GEO['australia']['bbox']; aw = K6 * (AUW[2] - AUW[0])
+write('почти в 5 раз больше Австралии', 6500, 2720, L(376.2), 1.8, 'graphite', 70)
 for i in range(5):
-    cx = 6500 + aw / 2 + i * (aw + 26)
-    outline('australia', K6, (cx, 3080), L(376.15) + i * .3, .35, 'graphite', 5, fill='grey', fillA=.10, quiet=(i > 0))
-    write(str(i + 1), cx, 3240, L(376.4) + i * .3, .2, 'graphite', 44, align='center')
-write('почти в 5 раз больше Австралии', 6500, 2800, L(376.2), 1.8, 'graphite', 56)
-# areas as squares (side = √area, the same scale K6): Moon 37.9, Asia 44.6 million km²
-sM, sA = K6 * math.sqrt(37.9e6), K6 * math.sqrt(44.58e6)
-QX, QY = 6620, 3900
-line(rect(QX, QY - sM, QX + sM, QY), L(378.85), .6, 'graphite', 6, fill='grey', fillA=.10)
-write('Луна', QX + sM / 2, QY - sM / 2 + 20, L(379.0), .3, 'graphite', 46, align='center')
-line(rect(QX, QY - sA, QX + sA, QY), L(379.5), .6, 'red', 6, dash=[18, 14])
-write('Азия больше', QX + sA + 40, QY - sA + 60, L(380.2), .9, 'red', 56)
-write('площадь как квадрат', QX, QY + 70, L(379.0), .9, 'grey', 40)
+    cx = 6520 + aw / 2 + i * (aw + 20)
+    o = outline('australia', K6, (cx, 2950), L(376.15) + i * .3, .35, 'graphite', 5, fill='grey', fillA=.10, quiet=(i > 0))
+    write(str(i + 1), cx - 10, 2985, L(376.4) + i * .3, .2, 'graphite', 50, align='center')
+# areas as squares on one baseline (side = √area, the same scale K6): Africa 30.1, Moon 37.9, Asia 44.6 million km²
+QY = 3880; QX = 6520; Q = []
+for nm, area, col, tt, dash in (('Африка', 30.07e6, 'blue', L(366.9), None), ('Луна', 37.9e6, 'graphite', L(367.5), None), ('Азия больше', 44.58e6, 'red', L(378.85), [18, 14])):
+    s_ = K6 * math.sqrt(area)
+    k = dict(dash=dash) if dash else dict(fill='blue' if col == 'blue' else 'grey', fillA=.10)
+    line(rect(QX, QY - s_, QX + s_, QY), tt, .6, col, 6, **k)
+    write(nm, QX + s_ / 2, QY + 75, tt + .4, .6, col, 58, align='center')
+    QX += s_ + 50
+write('площади как квадраты', 6520, 4200, L(368.0), 1.0, 'grey', 54)
+scalebar(7700, 4170, K6, 1000, L(368.6))
 
 # ===================================================================== ROW 3 · «КАК СРАВНИВАТЬ ЧЕСТНО»
 # --- p20 384.86–402.32: rule 1: compare square kilometres, not outlines by eye; rule 2: numbers from one source —
 #     some count land only, others land with lakes and rivers; so one country has different areas, and no error
-write('1', 480, 5000, L(384.95), .2, 'red', 110)
-write('сравнивайте км²,', 600, 4990, L(385.2), 1.3, 'graphite', 76)
-write('а не контуры на глаз', 600, 5100, L(387.9), 1.4, 'graphite', 76)
-eye((1700, 5270), L(388.6), 1.1); cross(1700, 5270, L(389.4), 70)
-line(rect(2050, 5180, 2290, 5420), L(388.9), .5, 'blue', 7)
-write('км²', 2170, 5330, L(389.4), .4, 'blue', 70, align='center')
-tick(2400, 5300, L(389.9), 1.2, 'graphite')
-write('2', 480, 5640, L(390.35), .2, 'red', 110)
-write('цифры из одного источника', 600, 5630, L(390.6), 1.6, 'graphite', 76)
-def land(cx, cy, s, t, lake_fill):   # a little island with a lake; lake hatched (counted) or empty
+write('1', 480, 4960, L(384.95), .2, 'red', 120)
+write('сравнивайте км²,', 620, 4950, L(385.2), 1.3, 'graphite', 88)
+write('а не контуры на глаз', 620, 5070, L(387.9), 1.4, 'graphite', 88)
+eye((900, 5320), L(388.6), 1.3); cross(900, 5320, L(389.4), 80)
+line(rect(1250, 5200, 1490, 5440), L(388.9), .5, 'blue', 7)
+write('км²', 1370, 5350, L(389.4), .4, 'blue', 76, align='center')
+tick(1630, 5330, L(389.9), 1.3, 'graphite')
+write('2', 480, 5650, L(390.35), .2, 'red', 120)
+write('цифры из одного источника', 620, 5640, L(390.6), 1.6, 'graphite', 88)
+def land(cx, cy, s, t, lake_fill):   # a little island with a lake; lake washed (counted) or empty
     pts = [[cx + s * math.cos(a) * (1 + .18 * math.sin(3 * a) + .1 * math.cos(5 * a)), cy + s * .72 * math.sin(a) * (1 + .12 * math.cos(4 * a))]
            for a in [2 * math.pi * i / 40 for i in range(41)]]
     line(pts, t, .6, 'graphite', 6, fill='grey', fillA=.14)
     lk = circle((cx + s * .2, cy - s * .05), [s * .3, s * .18], 24)
     line(lk, t + .6, .3, 'blue', 5, fill='blue' if lake_fill else None, fillA=.25)
 for i, (lbl, lf, tt) in enumerate((('только суша', False, L(392.6)), ('суша + озёра и реки', True, L(395.3)))):
-    cx = 900 + i * 1050
-    land(cx, 5900, 230, tt, lf)
-    write(lbl, cx, 6150, tt + .4, 1.0, 'graphite', 52, align='center')
-write('≠', 1425, 5930, L(397.0), .3, 'blue', 100, align='center')
-write('разные площади —', 600, 6320, L(397.7), 1.3, 'graphite', 64)
-write('и ошибки нет', 1250, 6320, L(400.4), .9, 'graphite', 64)
-tick(1760, 6290, L(401.4), 1.1)
+    cx = 880 + i * 1100
+    land(cx, 5910, 220, tt, lf)
+    write(lbl, cx, 6170, tt + .4, 1.0, 'graphite', 60, align='center')
+write('≠', 1430, 5940, L(397.0), .3, 'blue', 110, align='center')
+write('разные площади —', 480, 6330, L(397.7), 1.3, 'graphite', 76)
+write('и ошибки нет', 1200, 6330, L(400.4), .9, 'graphite', 76)
+tick(1760, 6300, L(401.4), 1.2)
 
 # --- p21 403.05–418.29: rule 3: disputed territories; some countries' figures include land whose status is disputed;
 #     no political judgement: we compare sizes, we do not draw borders; where a figure is disputed, the film says so
-write('3', 2900, 5000, L(403.1), .2, 'red', 110)
-write('спорные территории', 3020, 4990, L(403.35), 1.3, 'graphite', 76)
-GC = (3500, 5450)
+I21 = len(E)                                   # p21–p22 are laid out from x 2950 and moved 600 px right (see below)
+write('3', 2950, 4960, L(403.1), .2, 'red', 120)
+write('спорные территории', 3090, 4950, L(403.35), 1.3, 'graphite', 88)
+GC = (3400, 5400)
 gpts = [[GC[0] + 360 * math.cos(a) * (1 + .15 * math.sin(2 * a + 1) + .08 * math.cos(5 * a)), GC[1] + 250 * math.sin(a) * (1 + .1 * math.cos(3 * a))]
         for a in [2 * math.pi * i / 48 for i in range(49)]]
 line(gpts, L(405.5), .9, 'graphite', 7, fill='grey', fillA=.10)
-zone = [[3720, 5280], [3900, 5330], [3920, 5520], [3760, 5600], [3650, 5450], [3720, 5280]]
+zone = [[3620, 5230], [3800, 5280], [3820, 5470], [3660, 5550], [3550, 5400], [3620, 5230]]
 line(zone, L(406.6), .5, 'graphite', 5, dash=[14, 12])
 st = []
 for i in range(9):
-    x = 3670 + i * 28
-    st.append(dict(points=[[x, 5560], [x + 120, 5330]], t=round(L(407.2) + i * .06, 3), d=.08, lw=4))
+    x = 3570 + i * 28
+    st.append(dict(points=[[x, 5510], [x + 120, 5280]], t=round(L(407.2) + i * .06, 3), d=.08, lw=4))
 strokes_el(st, L(407.2), .6, 'grey', 4, .7)
-line([[3980, 5440], [4150, 5440]], L(407.9), .25, 'graphite', 5)
-write('в цифре страны', 4180, 5420, L(407.95), .8, 'graphite', 52)
-write('статус оспаривается', 4180, 5500, L(408.6), .9, 'graphite', 52)
-tag('политических оценок не даём', 2950, 5880, L(409.6), size=56, rot=-1)
-el(type='ruler', id='ruler', **{'from': [3000, 6080], 'to': [3900, 6080]}, w=40, z=12, inset=55, magnetR=18,
+line([[3880, 5390], [4040, 5390]], L(407.9), .25, 'graphite', 5)
+write('входит в цифры страны,', 4080, 5370, L(407.95), 1.0, 'graphite', 62)
+write('статус оспаривается', 4080, 5460, L(408.7), .9, 'graphite', 62)
+tag('политических оценок не даём', 3000, 5800, L(409.6), size=60, rot=-1)
+el(type='ruler', id='ruler', **{'from': [3000, 6020], 'to': [3900, 6020]}, w=40, z=12, inset=55, magnetR=18,
    arrive=dict(t=L(411.9), kind='drop', d=.4, lift=160, spin=.4, land=.6))
 ev(L(412.15), 'ruler', .4)
-write('сравниваем размеры', 3980, 6100, L(412.3), 1.2, 'graphite', 60)
-line([[3000, 6260], [3900, 6260]], L(414.1), .5, 'graphite', 7, dash=[22, 14])
-write('а не проводим границы', 3980, 6280, L(414.2), 1.3, 'graphite', 60)
-cross(3450, 6260, L(415.0), 40)
-tag('где цифра спорная — так и говорим', 2950, 6430, L(415.8), size=52, rot=1)
+write('сравниваем размеры', 3980, 6045, L(412.3), 1.2, 'graphite', 70)
+line([[3000, 6190], [3900, 6190]], L(414.1), .5, 'graphite', 7, dash=[22, 14])
+write('а не проводим границы', 3980, 6215, L(414.2), 1.3, 'graphite', 70)
+cross(3450, 6190, L(415.0), 40)
+tag('где цифра спорная — так и говорим', 3000, 6370, L(415.8), size=54, rot=1)
 
 # --- p22 418.98–436.73: the map in your phone is Mercator too, Web-Mercator; for streets it is ideal, angles are not
 #     distorted; zoom out to the whole planet and Greenland is huge again
@@ -387,21 +391,18 @@ line([[PX0 + 60, PY0], [PX1 - 60, PY0]] + arc((PX1 - 60, PY0 + 60), 60, 60, -90,
      L(419.05), 1.0, 'graphite', 9)
 line(rect(PX0 + 30, PY0 + 70, PX1 - 30, PY1 - 90), L(419.9), .5, 'graphite', 4)
 line(circle(((PX0 + PX1) / 2, PY1 - 45), 18, 14), L(420.4), .1, 'graphite', 5)
-write('карта в телефоне', 7050, 5000, L(419.4), 1.2, 'graphite', 64)
-write('= проекция Меркатора', 7050, 5100, L(421.8), 1.4, 'graphite', 64)
-tag('веб-Меркатор', 7100, 5260, L(426.0), size=60, rot=-1.5)
-# streets: a grid inside the screen, a right angle marked
+write('карта в телефоне —', 7050, 4990, L(419.4), 1.2, 'graphite', 76)
+write('тоже проекция Меркатора', 7050, 5100, L(421.8), 1.4, 'graphite', 76)
+tag('веб-Меркатор', 7100, 5260, L(426.0), size=62, rot=-1.5)
 SX0, SY0, SX1, SY1 = PX0 + 30, PY0 + 70, PX1 - 30, PY1 - 90
-ER = dict(t=round(L(432.0), 3), d=.5)
-grid = []
+ER = round(L(432.0), 3)   # the street grid fades when the map is zoomed out
 for i, gx in enumerate((6420, 6540, 6660, 6780)):
-    line([[gx, SY0 + 10], [gx, SY1 - 10]], L(427.6) + .1 * i, .15, 'grey', 5, erase=ER, quiet=(i > 0))
+    line([[gx, SY0 + 10], [gx, SY1 - 10]], L(427.6) + .1 * i, .15, 'grey', 5, out=ER, quiet=(i > 0))
 for i, gy in enumerate((5040, 5200, 5360, 5520, 5680, 5840)):
-    line([[SX0 + 10, gy], [SX1 - 10, gy]], L(428.0) + .08 * i, .12, 'grey', 5, erase=ER, quiet=True)
-line([[6540, 5310], [6585, 5310], [6585, 5360]], L(429.3), .3, 'red', 6, erase=ER)
-write('улицы', 7050, 5460, L(427.6), .6, 'graphite', 60)
-write('углы не искажаются', 7050, 5560, L(429.3), 1.4, 'graphite', 60)
-tick(7800, 5470, L(430.9), 1.0)
+    line([[SX0 + 10, gy], [SX1 - 10, gy]], L(428.0) + .08 * i, .12, 'grey', 5, out=ER, quiet=True)
+line([[6540, 5310], [6585, 5310], [6585, 5360]], L(429.3), .3, 'red', 6, out=ER)
+write('для улиц — идеально:', 7050, 5470, L(427.6), 1.0, 'graphite', 70)
+write('углы не искажаются', 7050, 5580, L(429.3), 1.4, 'graphite', 70)
 # zoom out: the whole planet on Web-Mercator: Greenland and Africa where the map puts them
 KM = .021
 mg, ma = GEO['merc_greenland'], GEO['merc_africa']
@@ -411,54 +412,74 @@ MO = [(SX0 + SX1) / 2 - KM * mcx, (SY0 + SY1) / 2 - KM * mcy]
 outline('merc_greenland', KM, None, L(432.3), .7, 'graphite', 5, fill='grey', fillA=.15, origin=MO)
 outline('merc_africa', KM, None, L(432.9), .8, 'blue', 5, fill='blue', fillA=.12, origin=MO, minlen=30)
 gb = [MO[0] + KM * v for v in (mg['bbox'][0], mg['bbox'][2])] + [MO[1] + KM * v for v in (mg['bbox'][1], mg['bbox'][3])]
-write('всю планету', 7050, 5760, L(432.1), .9, 'graphite', 60)
-write('Гренландия снова огромная', 7050, 5880, L(434.55), 1.7, 'red', 60)
+abx = [MO[0] + KM * v for v in (ma['bbox'][0], ma['bbox'][2])] + [MO[1] + KM * v for v in (ma['bbox'][1], ma['bbox'][3])]
+write('отдалим до всей планеты:', 7050, 5770, L(432.1), 1.2, 'graphite', 70)
+write('Гренландия снова огромная', 7050, 5880, L(434.55), 1.7, 'red', 70)
 ink('ring', L(434.6), .5, 'red', c=[(gb[0] + gb[1]) / 2, (gb[2] + gb[3]) / 2], r=[(gb[1] - gb[0]) / 2 + 30, (gb[3] - gb[2]) / 2 + 25], lw=6)
-write('Гренландия', (gb[0] + gb[1]) / 2, gb[2] - 20, L(435.0), .5, 'graphite', 34, align='center')
+write('Гренландия', (gb[0] + gb[1]) / 2, gb[2] - 25, L(433.0), .5, 'graphite', 44, align='center')
+write('Африка', (abx[0] + abx[1]) / 2 + 20, abx[3] + 45, L(433.6), .4, 'blue', 44, align='center')
+
+for e in E[I21:]:
+    for k in ('xy', 'c', 'pivot') + (('from', 'to') if e.get('kind') == 'dim' or e['type'] == 'ruler' else ()):
+        if isinstance(e.get(k), list) and len(e[k]) == 2 and not isinstance(e[k][0], list): e[k] = [e[k][0] + 600, e[k][1]]
+    if 'points' in e: e['points'] = [[x + 600, y] for x, y in e['points']]
+    for st_ in e.get('strokes', []): st_['points'] = [[x + 600, y] for x, y in st_['points']]
 
 # ===================================================================== camera (one continuous camera; the cards hide the jumps)
-c = Cam(*fit([300, 440, 3000, 1900]))
+c = Cam(*fit([330, 470, 3150, 1720]))
 c.to(L(268.6), .4, z=z_of(c))
 c.to(L(269.4), 4.0, z=z_of(c) * 1.03)
-c.fit(L(273.5), 1.2, [300, 440, 3150, 1900], b=3)                       # Congo + France
+c.fit(L(273.5), 1.2, [330, 470, 3150, 1720], b=3)                       # Congo + France
 c.to(L(274.8), 5.0, z=z_of(c) * 1.02)
-c.fit(L(279.8), 1.0, [300, 600, 3150, 1900], b=3)                       # four Frances laid in
+c.fit(L(279.8), 1.0, [330, 470, 3150, 1720], b=3)                       # four Frances laid in
 c.to(L(281.0), 5.0, z=z_of(c) * 1.03)
-c.fit(L(286.75), 1.4, [3450, 440, 6350, 2060], b=2.8)                   # Brazil
+c.fit(L(286.75), 1.4, [3500, 470, 6400, 1720], b=2.8)                   # Brazil
 c.to(L(288.3), 3.5, z=z_of(c) * 1.02)
-c.fit(L(291.9), 1.2, [3450, 440, 6350, 2060], b=3)                      # + the US
+c.fit(L(291.9), 1.2, [3500, 470, 6400, 1720], b=3)                      # + the US
 c.to(L(293.3), 8.5, z=z_of(c) * 1.03)
-c.fit(L(302.4), 1.4, [6400, 330, 10100, 2060], b=2.8)                   # Indonesia
+c.fit(L(302.4), 1.4, [6850, 470, 9900, 1800], b=2.8)                    # Indonesia
 c.to(L(304.0), 8.0, z=z_of(c) * 1.02)
-c.fit(L(312.2), 1.0, [6400, 330, 10100, 2060], b=3)
+c.fit(L(312.2), 1.0, [6850, 470, 9900, 1800], b=3)
 c.to(L(313.3), 7.0, z=z_of(c) * 1.02)
-c.fit(L(320.6), 1.4, [10150, 440, 14150, 2070], b=2.8)                  # Africa and the three giants
+c.fit(L(320.6), 1.4, [9950, 470, 13950, 2060], b=2.8)                   # Africa and the three giants
 c.to(L(322.2), 7.0, z=z_of(c) * 1.02)
-c.fit(L(329.4), 1.0, [10150, 440, 14150, 2070], b=3)
+c.fit(L(329.4), 1.0, [9950, 470, 13950, 2060], b=3)
 c.to(L(330.5), 9.5, z=z_of(c) * 1.02)
-c.fit(L(342.1), 2.0, [250, 300, 14250, 2100], b=3)                      # chapter pull-back: row 1
-c.fit(L(344.55), .6, [400, 2650, 2650, 4250])                           # (under the card) the Moon corner
+c.fit(L(342.1), 2.0, [250, 300, 14250, 6450], b=3)                      # chapter pull-back: row 1
+c.fit(L(344.55), .6, [420, 2620, 3600, 4250])                           # (under the card) the Moon corner
 c.to(L(345.5), 3.0, z=z_of(c) * 1.02)
-c.fit(L(348.6), 1.3, [400, 2650, 3900, 4250], b=2.8)                    # Moon diameter, Australia width
+c.fit(L(348.6), 1.3, [420, 2620, 3600, 4250], b=2.8)                    # Moon diameter, Australia width
 c.to(L(350.0), 5.5, z=z_of(c) * 1.02)
-c.fit(L(355.7), 1.2, [400, 2650, 3900, 4250], b=3)
+c.fit(L(355.7), 1.2, [420, 2620, 3600, 4250], b=3)
 c.to(L(357.0), 6.5, z=z_of(c) * 1.02)
-c.fit(L(363.6), 1.4, [4400, 2650, 6250, 4250], b=2.8)                   # by area: the Moon > Africa
-c.to(L(365.1), 10.0, z=z_of(c) * 1.02)
-c.fit(L(375.4), 1.4, [4400, 2650, 8400, 4250], b=2.8)                   # 5 × Australia, Asia bigger
-c.to(L(376.9), 4.5, z=z_of(c) * 1.02)
-c.fit(L(381.6), 2.0, [300, 2550, 8600, 4300], b=3)                      # chapter pull-back: row 2
-c.fit(L(384.0), .6, [400, 4800, 2700, 6450])                            # (under the card) rules 1–2
+c.fit(L(363.6), 1.4, [4450, 2620, 6500, 4250], b=2.8)                   # by area: the Moon > Africa
+c.to(L(365.1), 1.6, z=z_of(c) * 1.01)
+c.fit(L(366.7), 1.6, [4450, 2620, 8700, 4250], b=2.8)                   # + the squares
+c.to(L(368.4), 7.0, z=z_of(c) * 1.01)
+c.to(L(375.6), 5.8, z=z_of(c) * 1.02)                                   # 5 × Australia, Asia bigger
+c.fit(L(381.6), 2.0, [250, 300, 14250, 6450], b=3)                      # chapter pull-back: row 2
+c.fit(L(384.0), .6, [420, 4780, 2750, 6420])                            # (under the card) rules 1–2
 c.to(L(385.0), 5.0, z=z_of(c) * 1.02)
-c.fit(L(390.1), 1.2, [400, 4800, 2700, 6450], b=3)
+c.fit(L(390.1), 1.2, [420, 4780, 2750, 6420], b=3)
 c.to(L(391.4), 10.5, z=z_of(c) * 1.02)
-c.fit(L(402.6), 1.4, [2800, 4800, 5600, 6550], b=2.8)                   # rule 3
+c.fit(L(402.6), 1.4, [3500, 4780, 6200, 6440], b=2.8)                   # rule 3
 c.to(L(404.1), 13.5, z=z_of(c) * 1.03)
-c.fit(L(418.4), 1.4, [6150, 4750, 8500, 6150], b=2.8)                   # the phone
+c.fit(L(418.4), 1.4, [6750, 4780, 8850, 6160], b=2.8)                   # the phone
 c.to(L(419.9), 11.5, z=z_of(c) * 1.04)
-c.fit(L(431.7), 1.0, [6150, 4750, 8500, 6150], b=3)
+c.fit(L(431.7), 1.0, [6750, 4780, 8850, 6160], b=3)
 c.to(L(432.8), 3.8, z=z_of(c) * 1.02)
-c.fit(L(436.75), 2.0, [300, 4750, 8600, 6550], b=3)                     # chapter pull-back: row 3
+c.fit(L(436.75), 2.0, [250, 300, 14250, 6450], b=3)                     # chapter pull-back: row 3
+
+# the whole wall sits OX px further right (keeps the board's left frame out of the opening shots)
+OX = 600
+def shift(e, dx):
+    for k in ('xy', 'c', 'pivot') + (('from', 'to') if e.get('kind') == 'dim' or e['type'] == 'ruler' else ()):
+        if isinstance(e.get(k), list) and len(e[k]) == 2 and not isinstance(e[k][0], list): e[k] = [e[k][0] + dx, e[k][1]]
+    if 'points' in e: e['points'] = [[x + dx, y] for x, y in e['points']]
+    for st in e.get('strokes', []): st['points'] = [[x + dx, y] for x, y in st['points']]
+    for ex in e.get('ext', []): ex[0] += dx
+for e in E: shift(e, OX)
+c.base['x'] += OX; BW += OX
 
 scene = dict(dur=DUR, clock=R0, board=dict(w=BW, h=BH, seed=53, texScale=.4, ghosts=220, tray=False), hand=1.0, sheen=.07,
              light=dict(x=-1800, y=-2400, r=36000, min=.8), cam=c.json(), mbMax=6, elements=E, cards=CARDS,

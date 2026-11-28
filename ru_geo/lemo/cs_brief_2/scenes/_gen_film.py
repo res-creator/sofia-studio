@@ -178,7 +178,7 @@ for i in range(6):
     line(pts, L(148.2) + .2 * i, .22, 'graphite', 7)
 write('апельсиновая корка', OR[0], OR[1] - 350, L(148.3), 1.3, 'graphite', 66, align='center')
 for i in range(6):                                        # the gaps: where the peel tears
-    a = math.radians(-60 + 60 * i); line([[OR[0] + 90 * math.cos(a), OR[1] + 90 * math.sin(a)], [OR[0] + 210 * math.cos(a), OR[1] + 210 * math.sin(a)]], L(150.3) + .07 * i, .1, 'red', 5, dash=[14, 12])
+    a = math.radians(-60 + 60 * i); line([[OR[0] + 90 * math.cos(a), OR[1] + 90 * math.sin(a)], [OR[0] + 210 * math.cos(a), OR[1] + 210 * math.sin(a)]], L(150.3) + .07 * i, .1, 'grey', 5, dash=[14, 12])
 write('ровно не ляжет', OR[0], OR[1] + 410, L(150.3), 1.0, 'graphite', 72, align='center')
 MP = (P7 + 4450, 1080)
 printd('mercator', 'print_mercator', MP[0], MP[1], L(151.6), w=400, rot=1.5, size='mid')
@@ -195,7 +195,7 @@ write('обидно за Африку?', SUBX - 650, 1745, L(154.3), 1.3, 'graph
 
 # --- p8 161.21–175.53: for sailors an excellent map; for a geography teacher worse; ~5 centuries later checked against
 #     Greenland at every school lesson, though it was made for something else entirely
-P8 = 9500
+P8 = 10000
 SH = (P8 + 420, 1000)
 printd('ship', 'print_ship', SH[0], SH[1], L(161.3), w=760, rot=-1.5, size='big')
 magnet(SH[0] - 330, SH[1] - 270, L(161.75), r=20); magnet(SH[0] + 330, SH[1] - 280, L(161.85), r=20)
@@ -217,135 +217,134 @@ line([[P8 + 1060, 1880], [SH[0] + 120, 1660], [SH[0] + 60, SH[1] + 300]], L(174.
 # ===================================================================== ROW 2 · «АФРИКА ПРОТИВ ГРЕНЛАНДИИ»
 # --- p9 178.67–197.83: one UN table (land + inland water); Africa with islands ≈ 30 million km²; Greenland ~14× smaller;
 #     the map got nothing mixed up; then why? later
-S9 = .16
-AF = (1250, 3880)                                          # Africa, true size (Africa 7 900 km tall → 1 264 px)
-tag('таблица ООН', 420, 2720, L(178.8), size=66, rot=-1.5)
-write('суша + внутренние воды', 420, 2900, L(181.3), 1.5, 'graphite', 70)
-outline('africa', 'true', AF, S9, L(184.6), 2.0, 'graphite', 8, minpx=30)
-write('истинный размер', AF[0], AF[1] + 740, L(185.6), .9, 'grey', 54, align='center')
-write('Африка с островами', 2080, 3260, L(184.9), 1.3, 'graphite', 72)
-count('около {0} млн км²', [30], 2080, 3400, L(186.9), 1.6, size=104)
-GLT = (2330, 3960)
-outline('greenland', 'true', GLT, S9, L(189.7), .9, 'graphite', 8, minpx=20)
-write('Гренландия', GLT[0] + 160, GLT[1] - 20, L(190.2), .7, 'graphite', 72)
-count('в {0} раз меньше', [14], GLT[0] + 160, GLT[1] + 110, L(191.2), 1.6, size=96)
-write('карта ничего не напутала', 2080, 4380, L(193.5), 1.6, 'graphite', 66)
-write('тогда зачем так?', 2080, 4480, L(195.3), .9, 'graphite', 66)
-tag('об этом чуть позже', 2900, 4500, L(196.4), size=52, rot=1.5)
+S9 = .12
+AF = (900, 3420)                                           # Africa, true size (7 900 km tall → 948 px)
+tag('таблица ООН', 420, 2730, L(178.8), size=80, rot=-1.5)
+write('суша + внутренние воды', 1080, 2760, L(181.3), 1.5, 'graphite', 84)
+outline('africa', 'true', AF, S9, L(184.6), 2.0, 'graphite', 8, minpx=25)
+write('истинный размер', AF[0], 3990, L(185.6), .9, 'grey', 64, align='center')
+write('Африка с островами', 1550, 3080, L(184.9), 1.3, 'graphite', 90)
+count('около {0} млн км²', [30], 1550, 3230, L(186.9), 1.6, size=120)
+GLT = (1720, 3600)
+outline('greenland', 'true', GLT, S9, L(189.7), .9, 'graphite', 8, minpx=15)
+write('Гренландия', 1900, 3560, L(190.2), .7, 'graphite', 90)
+count('в {0} раз меньше', [14], 1900, 3700, L(191.2), 1.6, size=110)
+write('карта ничего не напутала', 1550, 3900, L(193.5), 1.6, 'graphite', 84)
+write('тогда зачем так?', 1550, 4020, L(195.3), .9, 'graphite', 84)
+tag('об этом чуть позже', 2330, 3995, L(196.4), size=60, rot=1.5)
 
 # --- p10 198.53–213.66: Greenland, ice and all, is smaller than Algeria alone, Africa's largest country;
 #     the eye is used to the picture, the ruler does not lie
 S10 = .34
-P10 = 4700
-GL10 = (P10 + 2050, 3620)
-outline('greenland', 'true', GL10, S10, L(198.6), 1.6, 'graphite', 8, minpx=30,
-        moves=slide(L(203.9), 1.6, -1150, 30))
-tag('Гренландия', GL10[0] - 250, 2700, L(199.4), size=62, rot=-1.5, moves=[dict(t=L(203.9), d=1.6, dx=-1150, dy=0, a=2, b=2.6)])
-write('со всем её льдом', GL10[0] + 330, 3300, L(201.2), 1.3, 'graphite', 62)
-AL = (P10 + 900, 3650)
+P10 = 4100
+GL10, AL = (P10 + 2000, 3450), (P10 + 800, 3480)
+MV10 = dict(t=L(203.9), d=1.6, dx=AL[0] - GL10[0], dy=AL[1] - GL10[1], a=2, b=2.6)
+outline('greenland', 'true', GL10, S10, L(198.6), 1.6, 'graphite', 8, minpx=30, moves=slide(MV10['t'], MV10['d'], MV10['dx'], MV10['dy']))
+tag('Гренландия', GL10[0] - 330, 2800, L(199.4), size=70, rot=-1.5, moves=[MV10])
+tag('со всем льдом', GL10[0] - 300, 2930, L(201.3), size=58, rot=1.2, moves=[MV10])
 outline('algeria', 'true', AL, S10, L(203.0), .9, 'blue', 8)
-write('Алжир', AL[0], AL[1] + 470, L(203.4), .5, 'blue', 76, align='center')
-write('самая большая страна Африки', AL[0], AL[1] + 570, L(205.2), 1.6, 'blue', 58, align='center')
-write('истинный размер', AL[0] - 420, 2800, L(202.4), .8, 'grey', 50)
-EYE = (P10 + 3450, 3000)
-eye(EYE, L(207.4), 1.1)
-write('глаз помнит', EYE[0] - 100, EYE[1] + 150, L(207.8), .9, 'graphite', 58)
+write('Алжир', AL[0], 4060, L(203.4), .5, 'blue', 90, align='center')
+write('самая большая страна Африки', AL[0], 4180, L(205.2), 1.6, 'blue', 76, align='center')
+write('истинный размер', AL[0] - 380, 3440, L(202.4), .8, 'grey', 64, align='right')
+EYE = (P10 + 3250, 2930)
+eye(EYE, L(207.4), 1.3)
+write('глаз привык к картинке', P10 + 2850, 3170, L(207.8), 1.4, 'graphite', 70)
 MS = .05                                                    # the Mercator picture the eye remembers (one scale for both)
-outline('greenland', 'merc', (EYE[0] + 120, 3700), MS, L(208.4), 1.0, 'grey', 5, minpx=20)
-outline('algeria', 'merc', (EYE[0] + 120, 4160), MS, L(209.2), .4, 'grey', 5)
-write('карта Меркатора', EYE[0] - 150, 4330, L(209.5), .8, 'grey', 46)
-BX, BY, BWD, BK = P10 + 4250, 4250, 150, 1 / 5200       # area bars: height ∝ area (true areas from the same data)
+outline('greenland', 'merc', (P10 + 3250, 3640), MS, L(208.4), 1.0, 'grey', 5, minpx=20)
+outline('algeria', 'merc', (P10 + 3250, 4040), MS, L(209.2), .4, 'grey', 5)
+write('карта Меркатора', P10 + 3250, 4220, L(209.5), .8, 'grey', 60, align='center')
+BX, BY, BWD, BK = P10 + 3900, 4100, 150, 1 / 5200       # area bars: height ∝ area (true areas from the same data)
 for i, (nm, lab) in enumerate((('algeria', 'Алжир'), ('greenland', 'Гренландия'))):
     h = OUTL[nm]['area_true'] * BK; x = BX + i * 260
     line([[x, BY], [x, BY - h], [x + BWD, BY - h], [x + BWD, BY]], L(210.1) + .4 * i, .4, 'blue' if i == 0 else 'graphite', 7)
-    write(lab, x + BWD / 2, BY + 70, L(210.3) + .4 * i, .4, 'blue' if i == 0 else 'graphite', 48, align='center')
+    write(lab, x + BWD / 2, BY + 80, L(210.3) + .4 * i, .4, 'blue' if i == 0 else 'graphite', 58, align='center')
 line([[BX - 40, BY], [BX + 450, BY]], L(210.0), .2, 'grey', 5)
-write('площадь', BX + 205, BY - OUTL['algeria']['area_true'] * BK - 140, L(210.6), .5, 'graphite', 56, align='center')
-el(type='ruler', id='ruler', **{'from': [BX - 70, BY - OUTL['algeria']['area_true'] * BK - 26], 'to': [BX + 480, BY - OUTL['algeria']['area_true'] * BK - 26]},
+TOPB = BY - OUTL['algeria']['area_true'] * BK
+write('площадь', BX + 205, TOPB - 110, L(210.6), .5, 'graphite', 70, align='center')
+write('линейка не обманывает', BX + 205, TOPB - 230, L(211.8), 1.4, 'graphite', 64, align='center')
+el(type='ruler', id='ruler', **{'from': [BX - 70, TOPB - 26], 'to': [BX + 480, TOPB - 26]},
    w=36, z=12, inset=40, magnetR=16, arrive=dict(t=L(211.75), kind='drop', d=.4, lift=160, spin=.4, land=.6))
 ev(L(212.0), 'ruler', .4)
 
 # --- p11 214.36–231.65: on the map Greenland is inflated ~10–12× (far north); Australia, nearer the equator, only 1.2×;
 #     the cold countries suffer most, the warm ones look more modest than they are
 S11 = .085
-P11 = 9500
-G11M, G11T = (P11 + 420, 3420), (P11 + 1080, 3780)
+P11 = 9600
+G11M, G11T = (P11 + 400, 3350), (P11 + 1050, 3660)
 outline('greenland', 'merc', G11M, S11, L(214.4), 1.6, 'grey', 6, minpx=20)
-write('карта Меркатора', G11M[0], G11M[1] + 500, L(215.0), .8, 'grey', 50, align='center')
-outline('greenland', 'true', G11T, S11, L(215.6), .8, 'graphite', 7, minpx=15)
-write('истинный размер', G11T[0] + 30, G11T[1] + 190, L(216.2), .8, 'graphite', 50, align='center')
-count('раздута в {0}–{1} раз', [10, 12], P11 + 920, 2760, L(216.8), 1.6, size=90)
-write('примерно', P11 + 920, 2880, L(217.6), .5, 'blue', 56)
-write('далеко на севере', P11 + 1300, 3320, L(219.2), 1.3, 'graphite', 62)
-arrow([P11 + 1450, 3230], [P11 + 1450, 3010], L(219.4), .4, 'graphite', 6)
-A11M, A11T = (P11 + 2500, 3480), (P11 + 3150, 3480)
+write('карта Меркатора', G11M[0], 3900, L(215.0), .8, 'grey', 66, align='center')
+outline('greenland', 'true', G11T, S11, L(215.6), .8, 'graphite', 7, minpx=12)
+write('истинный размер', G11T[0], 3900, L(216.2), .8, 'graphite', 66, align='center')
+write('раздута в 10–12 раз', P11 + 780, 2800, L(216.8), 1.6, 'blue', 100)
+write('примерно', P11 + 780, 2920, L(217.6), .5, 'blue', 66)
+write('далеко на севере', P11 + 780, 3270, L(219.2), 1.3, 'graphite', 70)
+arrow([P11 + 1450, 3250], [P11 + 1450, 3040], L(219.4), .4, 'graphite', 7)
+A11M, A11T = (P11 + 2500, 3550), (P11 + 3100, 3550)
 outline('australia', 'merc', A11M, S11, L(221.6), 1.0, 'grey', 6, minpx=20)
-write('карта Меркатора', A11M[0], A11M[1] + 260, L(222.2), .8, 'grey', 50, align='center')
+write('карта Меркатора', A11M[0], 3830, L(222.2), .8, 'grey', 66, align='center')
 outline('australia', 'true', A11T, S11, L(222.6), 1.0, 'graphite', 7, minpx=20)
-write('истинный размер', A11T[0], A11T[1] + 260, L(223.0), .8, 'graphite', 50, align='center')
-write('Австралия', P11 + 2250, 3000, L(221.8), .8, 'graphite', 72)
-write('ближе к экватору', P11 + 2250, 3100, L(222.4), 1.0, 'graphite', 58)
-write('всего в 1,2 раза', P11 + 2250, 2810, L(224.6), 1.4, 'blue', 80)
-write('холодным странам — обиднее всего', P11 + 300, 4180, L(226.5), 2.0, 'graphite', 66)
-write('тёплые кажутся скромнее, чем есть', P11 + 300, 4290, L(229.0), 2.0, 'graphite', 66)
+write('истинный размер', A11T[0], 3830, L(223.0), .8, 'graphite', 66, align='center')
+write('Австралия', P11 + 2250, 3070, L(221.8), .8, 'graphite', 90)
+write('ближе к экватору', P11 + 2250, 3190, L(222.4), 1.0, 'graphite', 70)
+write('всего в 1,2 раза', P11 + 2250, 2860, L(224.6), 1.4, 'blue', 96)
+write('холодным странам — обиднее всего', P11 + 300, 4130, L(226.5), 2.0, 'graphite', 84)
+write('тёплые кажутся скромнее, чем есть', P11 + 300, 4255, L(229.0), 2.0, 'graphite', 84)
 
 # ===================================================================== ROW 3 · area is length × width; Russia vs Africa
 # --- p12 232.20–247.98: the trap in the words: area = length × width; stretch ×2 each way → area ×4; small-looking
 #     distortion on screen → a huge difference in area
-tag('ловушка в самих словах', 420, 5230, L(232.3), size=64, rot=-1.5)
-write('площадь = длина × ширина', 420, 5440, L(234.15), 2.4, 'graphite', 80)
+tag('ловушка в самих словах', 420, 5230, L(232.3), size=70, rot=-1.5)
+write('площадь = длина × ширина', 420, 5440, L(234.15), 2.4, 'graphite', 90)
 Q = 260; QX, QY = 620, 6280                                 # bottom-left of the small square
 line([[QX, QY], [QX + Q, QY], [QX + Q, QY - Q], [QX, QY - Q], [QX, QY]], L(234.4), .6, 'graphite', 8)
-write('длина', QX + Q / 2, QY + 75, L(234.9), .5, 'grey', 50, align='center')
-write('ширина', QX - 25, QY - Q / 2 + 18, L(235.6), .6, 'grey', 50, align='right')
+write('длина', QX + Q / 2, QY + 75, L(234.9), .5, 'grey', 58, align='center')
+write('ширина', QX - 25, QY - Q / 2 + 18, L(235.6), .6, 'grey', 58, align='right')
 arrow([QX + Q + 50, QY - Q / 2], [QX + Q + 250, QY - Q / 2], L(237.1), .4, 'graphite', 7)
 BXQ = QX + Q + 320                                            # the big square: ×2 each way
 line([[BXQ, QY], [BXQ + 2 * Q, QY], [BXQ + 2 * Q, QY - 2 * Q], [BXQ, QY - 2 * Q], [BXQ, QY]], L(237.5), .8, 'graphite', 8)
 dim([BXQ, QY + 60], [BXQ + 2 * Q, QY + 60], L(238.0), .6)
-write('×2', BXQ + Q, QY + 150, L(238.3), .3, 'blue', 70, align='center')
+write('×2', BXQ + Q, QY + 150, L(238.3), .3, 'blue', 76, align='center')
 dim([BXQ - 60, QY], [BXQ - 60, QY - 2 * Q], L(238.6), .6)
-write('×2', BXQ - 90, QY - Q + 25, L(238.9), .3, 'blue', 70, align='right')
+write('×2', BXQ - 90, QY - Q + 25, L(238.9), .3, 'blue', 76, align='right')
 line([[BXQ + Q, QY], [BXQ + Q, QY - 2 * Q]], L(239.5), .3, 'grey', 5, dash=[16, 12])
 line([[BXQ, QY - Q], [BXQ + 2 * Q, QY - Q]], L(239.8), .3, 'grey', 5, dash=[16, 12])
 for i, (cx, cy) in enumerate(((0, 1), (1, 1), (0, 0), (1, 0))):
     write(str(i + 1), BXQ + cx * Q + Q / 2, QY - cy * Q - Q / 2 + 30, L(240.2) + .3 * i, .2, 'blue', 80, align='center')
-count('площадь ×{0}', [4], BXQ + 2 * Q + 80, QY - 2 * Q + 40, L(241.2), 1.0, size=96)
-write('небольшое с виду искажение', 2600, 5700, L(242.2), 2.0, 'graphite', 70)
-arrow([2800, 5760], [2800, 5930], L(244.3), .4, 'graphite', 7)
-write('огромная разница в площадях', 2600, 6040, L(244.7), 2.4, 'red', 70)
+count('площадь ×{0}', [4], BXQ + 2 * Q + 80, QY - 2 * Q + 40, L(241.2), 1.0, size=100)
+write('небольшое с виду искажение', 2500, 5800, L(242.2), 2.0, 'graphite', 80)
+arrow([2700, 5860], [2700, 6010], L(244.3), .4, 'graphite', 7)
+write('огромная разница в площадях', 2500, 6120, L(244.7), 2.4, 'red', 80)
 
 # --- p13 248.53–265.95: Russia looms on the map; 1.5–2× smaller than Africa: 17 million and a bit against 30;
 #     still the largest country on the planet (nobody disputes it); a whole continent is bigger than any country
-S13 = .11
+S13 = .1
 P13 = 5000
-RUM = (P13 + 1150, 5880)
-outline('russia', 'merc', RUM, S13, L(248.6), 1.9, 'grey', 6, minpx=40)
-write('Россия', RUM[0] - 200, RUM[1] + 790, L(249.0), .6, 'graphite', 70, align='center')
-write('карта Меркатора', RUM[0] + 300, RUM[1] + 790, L(249.4), .9, 'grey', 54)
-AF13 = (P13 + 3900, 6050)
-outline('africa', 'true', AF13, S13, L(250.8), 1.6, 'blue', 8, minpx=30)
-write('Африка', AF13[0] + 280, AF13[1] - 260, L(251.2), .6, 'blue', 70)
-RUT0 = (P13 + 5350, 5600)
-ru_true = outline('russia', 'true', RUT0, S13, L(251.6), 1.4, 'graphite', 7, minpx=30,
-                  moves=slide(L(253.4), 1.6, AF13[0] - RUT0[0] + 20, AF13[1] - RUT0[1] - 180))
-write('истинный размер', P13 + 3400, 5150, L(251.0), .9, 'grey', 54)
-write('в 1,5–2 раза меньше', P13 + 5000, 5300, L(251.8), 1.4, 'blue', 70)
-count('{0} млн с небольшим', [17], P13 + 5000, 5900, L(253.0), 1.5, size=84)
-write('против 30', P13 + 5000, 6010, L(255.2), .9, 'blue', 84)
-tag('самая большая страна планеты', P13 + 5000, 6250, L(256.8), size=56, rot=-1)
-write('это никто не оспаривает', P13 + 5000, 6450, L(259.5), 1.6, 'graphite', 60)
-write('но континент больше любой страны', P13 + 2700, 7000, L(262.3), 2.4, 'red', 72)
+RUM = (P13 + 1000, 5750)
+outline('russia', 'merc', RUM, S13, L(248.6), 1.9, 'grey', 6, minpx=35)
+write('Россия', P13 + 450, 6480, L(249.0), .6, 'graphite', 90, align='center')
+write('карта Меркатора', P13 + 850, 6480, L(249.4), .9, 'grey', 66)
+AF13 = (P13 + 2800, 5720)
+outline('africa', 'true', AF13, S13, L(250.8), 1.6, 'blue', 8, minpx=25)
+write('Африка', AF13[0], 6240, L(251.2), .6, 'blue', 84, align='center')
+RUT0 = (P13 + 3700, 5560)
+outline('russia', 'true', RUT0, S13, L(251.6), 1.4, 'graphite', 7, minpx=25, moves=slide(L(253.4), 1.6, AF13[0] - RUT0[0], 0))
+write('истинный размер', P13 + 2350, 5200, L(251.0), .9, 'grey', 66)
+write('в 1,5–2 раза меньше', P13 + 4250, 5350, L(251.8), 1.4, 'blue', 90)
+count('{0} млн с небольшим', [17], P13 + 4250, 5520, L(253.0), 1.5, size=100)
+write('против 30', P13 + 4250, 5650, L(255.2), .9, 'blue', 100)
+tag('самая большая страна планеты', P13 + 4250, 5860, L(256.8), size=66, rot=-1)
+write('это никто не оспаривает', P13 + 4250, 6050, L(259.5), 1.6, 'graphite', 72)
+write('но целый континент больше любой страны', P13 + 2350, 6430, L(262.3), 2.4, 'red', 84)
 
 # ===================================================================== camera (one continuous camera; the card hides the jump)
 c = Cam(*fit([360, 380, 2700, 1200]))
 c.to(L(115.3), 1.6, z=z_of(c) * 1.01)
 c.fit(L(116.8), 1.6, [300, 380, 3400, 2100], b=2.8)                    # the grid draws, the course is straight
 c.fit(L(121.8), 1.4, [300, 450, 3200, 2150], b=2.8)                   # at the equator nearly honest
-c.fit(L(124.0), 1.3, [300, 700, 3200, 1600], b=2.8)                    # at 60°: ×2, ×4
 c.fit(L(129.3), 1.4, [300, 380, 3400, 2100], b=2.8)                    # further north, only geometry
 c.to(L(131.0), 4.4, z=z_of(c) * 1.02)
 c.fit(L(135.5), 1.4, [P7 - 100, 380, P7 + 2300, 1800], b=2.8)          # without distortion? NO. 1827, Gauss
-c.fit(L(143.7), 1.4, [P7 - 100, 450, P7 + 2400, 1720], b=2.8)          # the sphere does not go flat
+c.fit(L(143.7), 1.4, [P7 - 100, 450, P7 + 2400, 1830], b=2.8)          # the sphere does not go flat
 c.fit(L(147.6), 1.3, [P7 + 900, 650, P7 + 3700, 1620], b=2.8)         # the orange peel
 c.fit(L(151.3), 1.2, [P7 + 2700, 640, P7 + 5200, 1620], b=2.8)         # Mercator, schoolchildren?
 c.fit(L(154.0), 1.4, [P7 + 900, 1400, P7 + 3900, 2150], b=2.8)        # subscribe: back to real size
@@ -354,20 +353,20 @@ c.fit(L(168.0), 1.4, [P8 - 100, 600, P8 + 2700, 2050], b=2.8)          # 5 centu
 c.to(L(170.0), 5.0, z=z_of(c) * 1.02)
 c.fit(L(175.6), 1.9, [250, 300, P8 + 2900, 2200], b=3)                 # pull-back: row 1 as a whole
 c.fit(L(177.75), .6, [300, 2560, 3300, 3400])                          # (under the card) row 2 corner
-c.fit(L(184.3), 1.5, [300, 2560, 3500, 4600], b=2.8)                   # Africa, 30 million, Greenland ×14 smaller
+c.fit(L(184.3), 1.5, [300, 2620, 3100, 4080], b=2.8)                   # Africa, 30 million, Greenland ×14 smaller
 c.to(L(186.0), 7.0, z=z_of(c) * 1.02)
-c.fit(L(198.4), 1.4, [P10 - 100, 2600, P10 + 2900, 4400], b=2.8)       # Greenland vs Algeria
-c.fit(L(207.2), 1.5, [P10 + 2900, 2700, P10 + 4800, 4400], b=2.8)      # the eye / the ruler
-c.fit(L(214.2), 1.5, [P11 - 100, 2650, P11 + 1900, 4400], b=2.8)       # Greenland ×10–12
-c.fit(L(221.3), 1.4, [P11 + 1900, 2650, P11 + 3700, 3900], b=2.8)      # Australia ×1.2
-c.fit(L(226.3), 1.4, [P11 - 100, 2650, P11 + 3700, 4400], b=2.8)       # cold / warm
-c.fit(L(232.0), 1.5, [300, 5100, 2400, 6450], b=2.8)                   # area = length × width
-c.fit(L(241.9), 1.4, [300, 5100, 4400, 6450], b=2.8)                   # small-looking → huge
-c.fit(L(248.4), 1.5, [P13 - 200, 5000, P13 + 3000, 6800], b=2.8)       # Russia on the Mercator map
-c.fit(L(250.6), 1.6, [P13 + 2900, 5000, P13 + 6900, 7100], b=2.8)      # true size: Russia onto Africa
-c.fit(L(261.9), 1.3, [P13 + 2500, 5000, P13 + 6900, 7100], b=2.8)      # a continent > any country
-c.fit(L(266.1), 2.0, [250, 2550, P13 + 7000, 7150], b=3)               # pull-back: the chapter as a whole
-
+c.fit(L(198.4), 1.4, [P10 - 250, 2700, P10 + 2600, 4250], b=2.8)             # Greenland vs Algeria
+c.fit(L(207.2), 1.5, [P10 + 2650, 2750, P10 + 4500, 4300], b=2.8)      # the eye / the ruler
+c.fit(L(214.2), 1.5, [P11 - 50, 2650, P11 + 1700, 3960], b=2.8)        # Greenland ×10–12
+c.fit(L(221.3), 1.4, [P11 - 100, 2650, P11 + 3600, 4300], b=2.8)       # Australia ×1.2; cold / warm
+c.to(L(222.8), 8.5, z=z_of(c) * 1.03)
+c.fit(L(232.0), 1.5, [300, 5100, 2900, 6450], b=2.8)                   # area = length × width
+c.fit(L(241.9), 1.4, [300, 5100, 4100, 6450], b=2.8)                   # small-looking → huge
+c.fit(L(248.4), 1.5, [P13 - 100, 5100, P13 + 2100, 6560], b=2.8)       # Russia on the Mercator map
+c.fit(L(250.6), 1.6, [P13 + 2300, 5100, P13 + 6100, 6500], b=2.8)      # true size: Russia onto Africa
+c.to(L(252.5), 9.0, z=z_of(c) * 1.02)
+c.fit(L(261.9), 1.3, [P13 - 100, 5100, P13 + 6100, 6560], b=2.8)       # a continent > any country
+c.fit(L(266.1), 2.0, [250, 300, 13300, 6900], b=3)               # pull-back: the chapter as a whole
 # the whole wall sits further right (keeps the board's left frame out of the opening shots)
 OX = 700
 def shift(e, dx):

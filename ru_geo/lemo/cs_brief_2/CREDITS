@@ -1,17 +1,20 @@
-Размер Вселенной · board film PART 2 (film 127.70–272.67: chapters «МЯЧ И ГОРОШИНА» and «НАША ГАЛАКТИКА»; Engineering Briefing Board) — credits
+Размеры стран · board film PART 2 (film 115.10–268.26: paragraphs 6–8 and chapter «АФРИКА ПРОТИВ ГРЕНЛАНДИИ»;
+Engineering Briefing Board) — credits
 
-Photographs (all NASA, public domain; from ru_geo/universe_size/archive/credits.json)
-  print_sun.png      the Sun, Skylab — images.nasa.gov/details/9606705                     (uncut crop on photo paper; also sun2)
-  earth.png          NASA Blue Marble 2007 West — images.nasa.gov/details/GSFC_20171208_Archive_e002131
-                     (cut-out: a circle fitted to the lit disc, tools/cut/cut_earth.py)
-  print_voyager.png  Voyager spacecraft (NASA/JPL) — commons.wikimedia.org/wiki/File:Voyager_spacecraft.jpg   (uncut crop)
-  print_proxima.png  Hubble's best image of Alpha Centauri A and B — images.nasa.gov/details/GSFC_20171208_Archive_e000214
-                     (uncut crop; on the board it carries the printed line «снимок Хаббла: Альфа Центавра A и B»,
-                     Proxima itself is drawn in marker: no NASA photo of Proxima was found)
-  print_jupiter.png  Cassini Jupiter portrait — images.nasa.gov/details/PIA04866          (uncut crop)
-  Every photo is shown at >= 1 source pixel per screen pixel (tools/rescheck.mjs: lowest 3.44, sun at local 3.8 s).
-  Planets, the beach ball, the pea, the Milky Way, the galaxies, Voyager on the lines: drawn in marker. No generated images.
+Prints (uncut crops on photo paper, kit/tools/make_print.py; from ru_geo/country_sizes/archive/credits.json)
+  print_gauss.png     Carl Friedrich Gauss, 1840, by Christian Albrecht Jensen — public domain
+                      commons.wikimedia.org/wiki/File:Carl_Friedrich_Gauss_1840_by_Jensen.jpg
+  print_ship.png      sailing vessels, engraving 1596 (Rijksmuseum) — public domain
+                      commons.wikimedia.org/wiki/File:Vier_Javaanse_vaartuigen,_1596,_RP-P-OB-80.260.jpg
+  print_mercator.png  Gerardus Mercator, engraving by Frans Hogenberg — public domain (crop inside the oval)
+                      commons.wikimedia.org/wiki/File:Gerardus_Mercator2.jpg
+Country outlines: open boundary data johan/world.geo.json (Natural Earth 110m, public domain), drawn in marker.
+  tools/geo/prep_outlines.py → scenes/outlines.json: «истинный размер» = Lambert azimuthal equal-area centred on each shape,
+  «карта Меркатора» = plain Mercator at the equator's scale; Douglas–Peucker simplified. Areas from these data:
+  Africa 30.0, Russia 16.9, Australia 7.7, Algeria 2.32, Greenland 2.19 million km²; Mercator inflation of the drawn outlines:
+  Greenland ×16.5, Russia ×4.9, Australia ×1.25 (the narration's figure for Greenland, «10–12», is written as said).
+Grid, Tissot circles, sphere, orange peel, squares, area bars: drawn in marker. No generated images.
 
 Fonts (SIL Open Font License 1.1): Pangolin, Fira Sans Condensed, IBM Plex Mono.
-Engine: Lemo-Opuscar briefing-board kit (board.js, from ru_geo/lemo/bh_brief_B; added: thousands separator for rolling
-numbers, rolling numbers in the text check, an opaque opening card).
+Engine: Lemo-Opuscar briefing-board kit (board.js, from ru_geo/lemo/us_brief_2; added here: ink `moves` — a marker outline
+slid across the board as a whole, for the true-size overlays).
