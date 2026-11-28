@@ -1,5 +1,0 @@
-africa3 score 0.1937 overlaps [np.float64(0.9), np.float64(1.7), np.float64(0.1), np.float64(0.0), np.float64(2.0), np.float64(0.0)]
-{'piece': 'china', 'rot': -5.0, 'dx': -757.0, 'dy': -1003.7, 'out_pct': np.float64(9.0), 'ovl_pct': 0.0}
-{'piece': 'us48', 'rot': -79.2, 'dx': 1579.3, 'dy': 1191.0, 'out_pct': np.float64(1.1), 'ovl_pct': 0.0}
-{'piece': 'india', 'rot': 58.1, 'dx': -1618.3, 'dy': -2571.7, 'out_pct': np.float64(3.1), 'ovl_pct': 12.7}
-{'piece': 'alaska', 'rot': -3.9, 'dx': 1810.6, 'dy': -1414.6, 'out_pct': np.float64(0.2), 'ovl_pct': 5.6}

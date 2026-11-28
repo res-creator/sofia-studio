@@ -159,9 +159,8 @@ equator(M2, L(449.0))
 tissot(M1, L(449.4), 1.4); tissot(M2, L(450.4), 1.4)
 write('обе сразу на плоскости —', 3350, 560, L(449.5), 1.3, 'graphite', 96)
 write('нельзя', 4620, 562, L(451.0), .6, 'red', 120)
-write('каждый картограф выбирает,', 2900, 3090, L(452.3), 1.4, 'graphite', 88, align='center')
-write('чем пожертвовать', 2900, 3200, L(454.0), 1.0, 'graphite', 88, align='center')
-arrow([2120, 3020], [1650, 2930], L(454.9), .3, 'graphite', 6); arrow([3680, 3020], [4150, 2930], L(455.1), .3, 'graphite', 6)
+write('каждый картограф выбирает,', 450, 3090, L(452.3), 1.4, 'graphite', 88)
+write('чем пожертвовать', 450, 3200, L(454.0), 1.0, 'graphite', 88)
 
 # row 2 (y 3300…4950): the timeline 1855 … 1998, broken where years are skipped
 TL = 3900
@@ -185,12 +184,12 @@ write('продвигал как “честную карту”', 4740, TL + 44
 AF2 = M2.lines(AFR, eps=2); ab = bbox(AF2)
 map_strokes(AF2, L(472.7), 1.4, 'blue', 9, order='y')
 dim([ab[0] - 70, ab[1]], [ab[0] - 70, ab[3]], L(475.0), .8, lw=6, ext=[])
-write('честная доля площади', 4750, 2820, L(473.4), 1.2, 'blue', 72)
-write('хотя выглядит вытянутой', 4750, 2930, L(475.4), 1.3, 'graphite', 72)
-arrow([4900, 2740], [(ab[0] + ab[2]) / 2 + 60, ab[3] - 120], L(473.2), .4, 'blue', 6)
+write('честная доля площади', 4300, 2820, L(473.4), 1.2, 'blue', 72)
+write('хотя выглядит вытянутой', 4300, 2930, L(475.4), 1.3, 'graphite', 72)
+arrow([4550, 2740], [(ab[0] + ab[2]) / 2 + 60, ab[3] - 120], L(473.2), .4, 'blue', 6)
 
 # --- p3 477.67–496.97: the name only in 1986, over 100 years after Gall; cartographers objected; seven organisations
-tag('неожиданная деталь', 6600, TL - 640, L(477.8), size=60, rot=-1.5)
+tag('неожиданная деталь', 4500, TL - 520, L(477.8), size=60, rot=-1.5)
 write('имя “Галла — Петерса”', 6720, TL + 140, L(479.6), 1.6, 'graphite', 80)
 tick(1986, L(482.0))
 dim([YX[1855], TL - 230], [YX[1986], TL - 230], L(484.6), 1.6, ext=[[YX[1855], TL - 270, TL - 150], [YX[1986], TL - 270, TL - 150]], ea=1.4, eb=1.8)
@@ -236,22 +235,22 @@ write('и ничьей вины в этом нет', 450, 5600, L(516.9), 1.4, '
 write('выбор проекции = выбор вопроса,', 450, 5800, L(518.7), 1.8, 'graphite', 92)
 ink('ring', L(520.4), .5, 'red', c=[1690, 5770], r=[330, 82], lw=6)
 write('на который карта должна ответить', 450, 5920, L(520.9), 1.8, 'graphite', 72)
-printd('compass', 'print_compass', 760, 6380, L(523.0), w=380, rot=-2, size='mid')
-magnet(760, 6200, L(523.4), r=20)
+printd('compass', 'print_compass', 700, 6380, L(523.0), w=380, rot=-2, size='mid')
+magnet(700, 6200, L(523.4), r=20)
 tag('штурман', 600, 6620, L(523.5), size=56, rot=-1.5)
 write('один ответ', 600, 6870, L(524.0), .7, 'blue', 70)
-printd('atlas', 'print_atlas', 1800, 6390, L(525.1), h=500, rot=1.5, size='mid')
-magnet(1800, 6160, L(525.5), r=20)
-tag('атлас', 1680, 6680, L(525.6), size=56, rot=1)
-write('другой', 1680, 6930, L(526.0), .5, 'blue', 70)
-PH = (2900, 6390)                                       # a phone with a road map, drawn in marker
+printd('atlas', 'print_atlas', 1600, 6390, L(525.1), h=500, rot=1.5, size='mid')
+magnet(1600, 6160, L(525.5), r=20)
+tag('атлас', 1480, 6680, L(525.6), size=56, rot=1)
+write('другой', 1480, 6930, L(526.0), .5, 'blue', 70)
+PH = (2450, 6390)                                       # a phone with a road map, drawn in marker
 line([[PH[0] - 140, PH[1] - 250], [PH[0] + 140, PH[1] - 250], [PH[0] + 140, PH[1] + 250], [PH[0] - 140, PH[1] + 250], [PH[0] - 140, PH[1] - 250]], L(526.4), .5, 'graphite', 8)
 line([[PH[0] - 30, PH[1] + 215], [PH[0] + 30, PH[1] + 215]], L(526.9), .1, 'graphite', 6)
 for i, R_ in enumerate([[[-110, 120], [-20, 40], [40, -60], [110, -150]], [[-110, -100], [0, -40], [110, -20]], [[-60, 190], [-40, 40], [-80, -200]]]):
     line([[PH[0] + x, PH[1] + y] for x, y in R_], L(527.0) + .15 * i, .25, 'grey', 6)
 line([[PH[0] - 20, PH[1] + 40], [PH[0] + 40, PH[1] - 60], [PH[0] + 110, PH[1] - 150]], L(527.6), .3, 'blue', 9)
-tag('приложение с дорогами', 2650, 6700, L(526.5), size=56, rot=-1)
-write('третий', 2650, 6950, L(527.9), .5, 'blue', 70)
+tag('приложение с дорогами', 2150, 6700, L(526.5), size=56, rot=-1)
+write('третий', 2200, 6950, L(527.9), .5, 'blue', 70)
 
 # --- p6 529.42–546.46: the globe; services where a country can be dragged: Greenland to the equator shrinks
 GLB = geo.Map(geo.ortho(-15, 30), 4500, 5280, 1600)
@@ -337,41 +336,41 @@ for i, y in enumerate(QY): write('иначе', 15170, y, L(582.0) + .35 * i, .4,
 write('и это нормально', 13420, 4380, L(583.5), 1.1, 'graphite', 84)
 
 # --- p9 585.37–597.78: the map does not lie, it answers another question; which country did you think bigger? comments, the ruler
-write('Карта не врёт:', 10950, 4870, L(585.4), 1.0, 'graphite', 130)
-write('она просто отвечает на другой вопрос', 10950, 5010, L(586.5), 1.8, 'graphite', 84)
-write('эта — про курсы, а не про площади', 10950, 5180, L(589.0), 2.0, 'graphite', 84)
-line(circle((11477, 5150), [130, 62], 30), L(590.4), .4, 'blue', 5)
-write('Какую страну вы считали', 10950, 5560, L(591.5), 1.4, 'graphite', 140)
-write('больше, чем она есть?', 10950, 5730, L(593.0), 1.2, 'graphite', 140)
-write('?', 12900, 5780, L(593.6), .3, 'red', 400, align='center')
-tag('напишите в комментариях', 11000, 5900, L(594.3), size=62, rot=-1.5)
-el(type='ruler', id='ruler', **{'from': [10950, 6400], 'to': [13300, 6400]}, w=52, z=12, inset=70, magnetR=22,
+write('Карта не врёт:', 10950, 5170, L(585.4), 1.0, 'graphite', 130)
+write('она просто отвечает на другой вопрос', 10950, 5310, L(586.5), 1.8, 'graphite', 84)
+write('эта — про курсы, а не про площади', 10950, 5480, L(589.0), 2.0, 'graphite', 84)
+line(circle((11477, 5450), [130, 62], 30), L(590.4), .4, 'blue', 5)
+write('Какую страну вы считали', 10950, 5860, L(591.5), 1.4, 'graphite', 140)
+write('больше, чем она есть?', 10950, 6030, L(593.0), 1.2, 'graphite', 140)
+write('?', 12900, 6080, L(593.6), .3, 'red', 400, align='center')
+tag('напишите в комментариях', 11000, 6200, L(594.3), size=62, rot=-1.5)
+el(type='ruler', id='ruler', **{'from': [10950, 6700], 'to': [13300, 6700]}, w=52, z=12, inset=70, magnetR=22,
    arrive=dict(t=L(596.4), kind='drop', d=.45, lift=180, spin=.5, land=.6))
 ev(L(596.7), 'ruler', .4)
-write('проверим по линейке', 13450, 6430, L(596.8), 1.0, 'blue', 84)
+write('проверим по линейке', 13450, 6730, L(596.8), 1.0, 'blue', 84)
 
 # ===================================================================== camera
 def fitm(m, pad=60, top=0): x0, y0, x1, y1 = m.box; return [x0 - pad, y0 - pad - top, x1 + pad, y1 + pad]
 c = Cam(*fit([350, 330, 3150, 1350]))
 c.to(L(440.1), 3.6, z=z_of(c) * 1.03)
-c.fit(L(443.9), 1.4, [350, 640, 3050, 2950], b=2.8)                     # sort 1: the Mercator map
-c.fit(L(447.4), 1.3, [3250, 640, 5950, 2950], b=2.8)                    # sort 2: the equal-area map
+c.fit(L(443.9), 1.4, [350, 420, 3050, 2950], b=2.8)                     # sort 1: the Mercator map
+c.fit(L(447.4), 1.3, [3250, 640, 6000, 2100], b=2.8)                    # sort 2: the equal-area map
 c.fit(L(449.2), 1.7, [350, 330, 5950, 3260], b=3)                       # both + «нельзя» + the choice
 c.to(L(451.0), 5.4, z=z_of(c) * 1.025)
-c.fit(L(456.6), 1.2, [3250, 640, 5950, 2950], b=2.8)                    # Gall–Peters
+c.fit(L(456.6), 1.2, [3250, 640, 6000, 2100], b=2.8)                    # Gall–Peters
 c.fit(L(458.2), 1.5, [420, TL - 420, 3300, TL + 520], a=1.8, b=2.6)     # 1855
 c.to(L(460.5), 4.5, z=z_of(c) * 1.02)
 c.fit(L(465.4), 1.8, [4500, TL - 420, 6300, TL + 520], a=1.8, b=2.6)    # ride the line to 1973
 c.to(L(467.4), 4.5, z=z_of(c) * 1.02)
-c.fit(L(472.3), 1.4, [3250, 900, 6550, 3000], b=2.8)                    # Africa on Gall–Peters
-c.fit(L(477.5), 1.3, [4400, TL - 720, 7900, TL + 540], b=2.8)           # 1986
+c.fit(L(472.3), 1.4, [3250, 1100, 6550, 3000], b=2.8)                    # Africa on Gall–Peters
+c.fit(L(477.5), 1.3, [4400, TL - 600, 7900, TL + 540], b=2.8)           # 1986
 c.fit(L(484.1), 1.5, [420, TL - 720, 7900, TL + 540], b=2.8)            # more than 100 years after Gall
 c.fit(L(487.3), 1.3, [6500, TL - 300, 9000, TL + 960], b=2.8)           # cartographers objected; seven organisations
 c.to(L(489.0), 3.0, z=z_of(c) * 1.02)
 c.fit(L(492.0), 1.2, [6500, TL + 50, 8700, TL + 980], b=2.8)
 c.fit(L(497.4), 1.3, [6550, TL - 300, 10150, TL + 1000], b=2.8)          # 1998
-c.fit(L(501.7), 1.6, [6100, 640, 8900, 2900], a=1.8, b=2.6)             # up to the Winkel map
-c.fit(L(506.6), 1.3, [6100, 640, 10350, 2900], b=2.8)                   # a little of everything
+c.fit(L(501.7), 1.6, [6100, 560, 10350, 2820], a=1.8, b=2.6)             # up to the Winkel map
+c.fit(L(506.6), 1.3, [6100, 560, 10350, 2820], b=2.8)                   # a little of everything
 c.to(L(508.0), 6.0, z=z_of(c) * 1.02)
 c.fit(L(514.4), 1.5, [350, 5100, 3700, 6000], b=2.8)                    # row 3: no perfect map
 c.fit(L(522.6), 1.3, [350, 5100, 3700, 7050], b=2.8)                    # navigator, atlas, app
@@ -390,8 +389,8 @@ c.to(L(555.0), 6.0, z=z_of(c) * 1.02)
 c.fit(L(561.3), 1.4, sh2([13450, 560, 16300, 2380]), b=2.8)                  # who invented it
 c.fit(L(568.6), 1.5, sh2([10850, 3250, 16400, 4450]), b=2.8)                 # three questions
 c.to(L(570.2), 14.0, z=z_of(c) * 1.025)
-c.fit(L(585.2), 1.4, sh2([10850, 4250, 14000, 5300]), b=2.8)                 # the map does not lie
-c.fit(L(591.2), 1.4, sh2([10850, 4250, 14400, 6550]), b=2.8)                 # which country? the ruler
+c.fit(L(585.2), 1.4, sh2([10850, 4420, 14000, 5600]), b=2.8)                 # the map does not lie
+c.fit(L(591.2), 1.4, sh2([10850, 4620, 14400, 6850]), b=2.8)                 # which country? the ruler
 c.fit(L(597.0), 2.9, [250, 250, 16750 + DX2, 7150], b=3)                      # the whole wall
 c.to(L(599.9), 1, z=z_of(c) * 1.0)
 

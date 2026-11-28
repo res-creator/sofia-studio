@@ -1,0 +1,22 @@
+Размеры стран · board film PART 3 (film 268.26–439.03: chapters «ОБРАЗЫ ВМЕСТО ЦИФР», «ЛУНА И АВСТРАЛИЯ»,
+«КАК СРАВНИВАТЬ ЧЕСТНО»; Engineering Briefing Board) — credits
+
+Photograph
+  print_moon.png   the Moon from Apollo 13, 1970 — NASA, public domain — images.nasa.gov/details/as13-60-8703
+                   (ru_geo/country_sizes/archive/img/moon_apollo13.jpg; uncut crop on photo paper, kit/tools/make_print.py
+                   --crop 470,0,1430,1000 --w 960; on the board with the printed line «Луна с «Аполлона-13», 1970 · NASA»)
+  Shown at >= 1 source pixel per screen pixel (tools/rescheck.mjs: lowest 3.80).
+
+Boundary data
+  Country outlines: johan/world.geo.json (Natural Earth 1:110m, public domain), /tmp/world.geo.json.
+  tools/geo.py: Lambert azimuthal equal-area projection centred on each shape («истинный размер», one scale per comparison,
+  1000 km scale bar shown), Douglas–Peucker simplification; Africa = union of its countries (shared borders cancelled);
+  the phone map: Web-Mercator («веб-Меркатор»). tools/pack.py + tools/anneal.py: where the copies of France sit in DR Congo
+  and the USA (contiguous + Alaska), China, India sit in Africa (moved and turned only; areas unchanged).
+  The Moon's whole surface is drawn as an equal-area disc (radius 2 × 1737.4 km); the area squares use side = √area
+  (Africa 30.07, Moon 37.9, Asia 44.58 million km²) at the same scale.
+  Everything else drawn in marker. No generated images.
+
+Fonts (SIL Open Font License 1.1): Pangolin, Fira Sans Condensed, IBM Plex Mono.
+Engine: Lemo-Opuscar briefing-board kit (board.js from ru_geo/lemo/us_brief_2; added: ink that travels and turns
+(`moves` + `pivot` on ink elements), a light fill inside closed outlines (`fill`, `fillA`)).
