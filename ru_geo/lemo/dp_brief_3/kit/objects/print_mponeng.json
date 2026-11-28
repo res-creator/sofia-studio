@@ -1,14 +1,14 @@
 {
   "id": "print_mponeng",
-  "w": 1744,
-  "h": 611,
+  "w": 1636,
+  "h": 511,
   "anchors": {},
   "print": true,
   "prep": {
     "src": "/home/user/sofia-studio/ru_geo/deadly_places/archive/img/mponeng_surface.jpg",
     "id": "print_mponeng",
-    "crop": "0,60,1920,620",
-    "w": 1600,
+    "crop": "0,200,1920,680",
+    "w": 1500,
     "border": 0.045,
     "sat": 0.85
   }

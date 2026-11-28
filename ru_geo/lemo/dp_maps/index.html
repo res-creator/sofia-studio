@@ -1,6 +1,6 @@
 <!doctype html>
 <html><head><meta charset="utf-8">
-<title>3D Map Explainer · Отдалённые места</title>
+<title>3D Map Explainer · Опасные места</title>
 <script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
 <style>
 @font-face{font-family:Fira;src:url(fonts/FiraSansCondensed-500-sub.woff2) format('woff2');font-weight:500}
@@ -10,25 +10,24 @@ canvas{position:absolute;left:0;top:0;width:1920px;height:1080px}
 </style></head>
 <body>
 <script type="module">
-// «Мысленный эксперимент» · «Отдалённые места» · two globe clips (?clip=nemo | ?clip=tristan). Clip t = film t − clip start.
-// nemo    (film 134.25–150.96, 16.71 s): fall from the South Pacific globe onto Point Nemo, the 2 690 km circle, then the three
-//         nearest lands at the words: Дюси (north), Моту-Нуи by Easter Island (north-east), Махер off Antarctica (south)
-// tristan (film 347.36–362.56, 15.20 s): fall onto Tristan da Cunha (Sentinel-2 + terrain patch, true scale), close look,
-//         pull back, line to Saint Helena, «≈ 2 400 км»
-// Engine: the globe of cs_globe (Lemo-Opuscar 3D Map Explainer: Sentinel-2 cloudless texture, atmosphere, glowing ribbons, post).
-// ?nosafe=1 shows the subtitle zone.
+// «Мысленный эксперимент» · «Опасные места» · two terrain clips (?clip=everest | ?clip=nyos). Clip t = film t − clip start.
+// everest (film 47.37–55.72, 8.35 s): fall onto the Himalaya, low orbit round Everest's real relief (true scale), «Эверест»,
+//          a height pillar from sea level to the summit «почти 9 км», then «давление ≈ 1/3»
+// nyos    (film 123.65–141.11, 17.46 s): fall onto Lake Nyos (Cameroon), «озеро Ньос», «Камерун», «21 августа 1986»;
+//          a pale cloud rises from the lake (6.9), then a low layer runs down the real valleys (tools/gas.py) from 13.5
+// Engine: the globe of ../rp_maps (Lemo-Opuscar 3D Map Explainer: Sentinel-2 cloudless, atmosphere, post) + two terrain patches
+// per place (wide z9 / detailed z13, AWS terrain, tools/fetch_patch.py). ?nosafe=1 shows the subtitle zone.
 import * as THREE from 'three';
 import { makePost } from './post.js';
 import { clamp, lerp, seg, ss, eo, eio, track, mulberry } from '/core/lib.js';
 
 const Wd = 1920, Ht = 1080, Q = new URLSearchParams(location.search);
-const CLIP = Q.get('clip') || 'nemo';
-const FULL = CLIP === 'nemo' ? 16.71 : 15.20;
+const CLIP = Q.get('clip') || 'everest';
+const EVR = CLIP === 'everest';
+const FULL = EVR ? 8.35 : 17.46;
 const D2R = Math.PI / 180, RE = 6371;
-
-// ---------- places ----------
-const NEMO = [-48.8767, -123.3933], DUCIE = [-24.6833, -124.7867], MOTU = [-27.2033, -109.4533], MAHER = [-72.9667, -126.3667];
-const TDC = [-37.1167, -12.2833], STH = [-15.95, -5.7167];
+const EV = [27.9881, 86.9250], NY = [6.438, 10.298];
+const EX = EVR ? 1 : 1.6;            // relief scale (Everest true scale; Nyos ×1.6 so the low valleys read — noted in CREDITS)
 
 // ---------- renderer ----------
 const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true });
@@ -43,7 +42,12 @@ worldTex.colorSpace = THREE.SRGBColorSpace; worldTex.anisotropy = 16;
 
 const gscene = new THREE.Scene(); gscene.background = new THREE.Color(0x04070b);
 const gdir = (lat, lon) => new THREE.Vector3(Math.cos(lat * D2R) * Math.sin(lon * D2R), Math.sin(lat * D2R), Math.cos(lat * D2R) * Math.cos(lon * D2R));
-const SUN = CLIP === 'nemo' ? gdir(-22, -150) : gdir(-18, -38);    // low from the north-west over each region
+// the sun in the local frame of the place: azimuth (from north, clockwise), elevation
+function sunAt(ll, az, el) {
+  const U = gdir(...ll), north = new THREE.Vector3(0, 1, 0).addScaledVector(U, -U.y).normalize(), east = new THREE.Vector3().crossVectors(north, U);
+  return U.clone().multiplyScalar(Math.sin(el * D2R)).add(north.multiplyScalar(Math.cos(az * D2R) * Math.cos(el * D2R))).add(east.multiplyScalar(Math.sin(az * D2R) * Math.cos(el * D2R))).normalize();
+}
+const SUN = EVR ? sunAt(EV, 218, 30) : sunAt(NY, 250, 32);     // afternoon sun from the south-west / west
 {
   const NU = 360, NV = 180, pos = [], uv = [], idx = [];
   for (let j = 0; j <= NV; j++) for (let i = 0; i <= NU; i++) {
@@ -58,136 +62,182 @@ const SUN = CLIP === 'nemo' ? gdir(-22, -150) : gdir(-18, -38);    // low from t
     vertexShader: `varying vec3 vN, vP; void main(){ vN = normalize(normal); vec4 w = modelMatrix * vec4(position, 1.); vP = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }`,
     fragmentShader: `varying vec3 vN, vP; uniform vec3 sunD; void main(){ vec3 v = normalize(cameraPosition - vP); float r = 1. - clamp(dot(vN, v), 0., 1.);
       float rim = pow(r, 3.2); float day = smoothstep(-.2, .45, dot(vN, sunD));
-      vec3 c = mix(vec3(.20, .36, .60), vec3(.98, .80, .58), day * .5); gl_FragColor = vec4(c * rim * (.08 + .55 * day) * .6, 1.); }` });   // rp_maps: thinner veil (the sun sits near the view here)
-  gscene.add(new THREE.Mesh(new THREE.SphereGeometry(RE * 1.012, 160, 80), am));
-  const gs = new THREE.DirectionalLight(0xffe6c4, 2.0); gs.position.copy(SUN.clone().multiplyScalar(5e4)); gscene.add(gs, new THREE.HemisphereLight(0x3a5878, 0x0a0a10, .6));
+      vec3 c = mix(vec3(.20, .36, .60), vec3(.98, .80, .58), day * .5); gl_FragColor = vec4(c * rim * (.08 + .55 * day) * .6, 1.); }` });
+  const atm = new THREE.Mesh(new THREE.SphereGeometry(RE * 1.012, 160, 80), am); atm.name = 'atm'; gscene.add(atm);
+  const gs = new THREE.DirectionalLight(0xffe6c4, EVR ? 2.3 : 2.6); gs.position.copy(SUN.clone().multiplyScalar(5e4)); gscene.add(gs, new THREE.HemisphereLight(0x3a5878, 0x0a0a10, .6));
   const R = mulberry(7), sp = [];
   for (let i = 0; i < 1600; i++) { const u = R() * 2 - 1, th = R() * Math.PI * 2, r = Math.sqrt(1 - u * u); sp.push(r * Math.cos(th) * 9e4, u * 9e4, r * Math.sin(th) * 9e4); }
   const sg = new THREE.BufferGeometry(); sg.setAttribute('position', new THREE.Float32BufferAttribute(sp, 3));
-  gscene.add(new THREE.Points(sg, new THREE.PointsMaterial({ color: 0x9aa6b4, size: 1.3, sizeAttenuation: false, transparent: true, opacity: .55 })));
+  gscene.add(new THREE.Points(sg, new THREE.PointsMaterial({ color: 0x9aa6b4, size: 1.3, sizeAttenuation: false, transparent: true, opacity: .55, fog: false })));
 }
 
-// ---------- Tristan da Cunha: Sentinel-2 + terrain patch (true scale, no exaggeration) ----------
-if (CLIP === 'tristan') {
-  const M = await fetch('assets/tdc_meta.json').then(r => r.json());
-  const H = new Float32Array(await fetch('assets/tdc_height.bin').then(r => r.arrayBuffer()));
-  const tex = await loadTex('assets/tdc_albedo.jpg'); tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 16;
+// ---------- terrain patches (Sentinel-2 + AWS terrain on the sphere) ----------
+// wide: z9 box whose edge melts into the globe; detail: z13 box inside it (its edge band carries the wide heights), the wide mesh
+// leaves out the triangles well inside the detail box
+const PATCH = {};
+async function patch(name, o = {}) {
+  const M = await fetch(`assets/${name}_meta.json`).then(r => r.json());
+  const H = new Float32Array(await fetch(`assets/${name}_height.bin`).then(r => r.arrayBuffer()));
+  const tex = await loadTex(`assets/${name}_albedo.jpg`); tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 16;
   const [W, S, E, N] = M.bbox, GW = M.GW, GH = M.GH, pos = new Float32Array(GW * GH * 3), uv = new Float32Array(GW * GH * 2), idx = [];
+  const lift = o.lift ?? .06;
   for (let j = 0; j < GH; j++) for (let i = 0; i < GW; i++) {
     const k = j * GW + i, lat = N - j / (GH - 1) * (N - S), lon = W + i / (GW - 1) * (E - W);
-    const h = Math.max(0, H[k]) / 1000, p = gdir(lat, lon).multiplyScalar(RE + .05 + h);
+    let h = Math.max(0, H[k]) / 1000 * EX;
+    if (o.sink) {   // under the detailed patch the wide mesh sinks (0 at its edge → 150 m 1.5 km in), so it never pokes through it
+      const b = o.sink, dIn = Math.min(lon - b[0], b[2] - lon, (lat - b[1]) * 1.0, b[3] - lat) * 111.2;
+      if (dIn > 0) h -= .15 * Math.min(1, dIn / 1.5);
+    }
+    const p = gdir(lat, lon).multiplyScalar(RE + lift + h);
     pos.set([p.x, p.y, p.z], k * 3); uv.set([i / (GW - 1), 1 - j / (GH - 1)], k * 2);
   }
-  for (let j = 0; j < GH - 1; j++) for (let i = 0; i < GW - 1; i++) { const a = j * GW + i, b = a + GW; idx.push(a, b, a + 1, b, b + 1, a + 1); }
+  const hole = o.hole;       // [W,S,E,N]
+  const inH = (j, i) => { if (!hole) return false; const lat = N - j / (GH - 1) * (N - S), lon = W + i / (GW - 1) * (E - W); return lon > hole[0] && lon < hole[2] && lat > hole[1] && lat < hole[3]; };
+  for (let j = 0; j < GH - 1; j++) for (let i = 0; i < GW - 1; i++) {
+    if (inH(j, i) && inH(j + 1, i + 1) && inH(j, i + 1) && inH(j + 1, i)) continue;
+    const a = j * GW + i, b = a + GW; idx.push(a, b, a + 1, b, b + 1, a + 1);
+  }
   const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(pos, 3)); g.setAttribute('uv', new THREE.BufferAttribute(uv, 2));
   g.setIndex(idx); g.computeVertexNormals();
-  gscene.add(new THREE.Mesh(g, new THREE.MeshStandardMaterial({ map: tex, roughness: .9, metalness: 0 })));
+  const mat = new THREE.MeshStandardMaterial({ map: tex, roughness: .92, metalness: 0 });
+  if (o.front) Object.assign(mat, { polygonOffset: true, polygonOffsetFactor: -2 * o.front, polygonOffsetUnits: -4 * o.front });
+  const mesh = new THREE.Mesh(g, mat); mesh.frustumCulled = false; gscene.add(mesh);
+  // height in km (scaled) at lat/lon, bilinear on the grid
+  const hAt = (lat, lon) => {
+    const x = clamp((lon - W) / (E - W)) * (GW - 1), y = clamp((N - lat) / (N - S)) * (GH - 1), i = Math.min(GW - 2, Math.floor(x)), j = Math.min(GH - 2, Math.floor(y)), fx = x - i, fy = y - j;
+    const v = (jj, ii) => Math.max(0, H[jj * GW + ii]);
+    return lift + (v(j, i) * (1 - fx) * (1 - fy) + v(j, i + 1) * fx * (1 - fy) + v(j + 1, i) * (1 - fx) * fy + v(j + 1, i + 1) * fx * fy) / 1000 * EX;
+  };
+  return PATCH[name] = { M, H, mesh, hAt, W, S, E, N, GW, GH, lift };
+}
+const inset = (b, d) => [b[0] + d, b[1] + d, b[2] - d, b[3] - d];
+const bbox = n => fetch(`assets/${n}_meta.json`).then(r => r.json()).then(m => m.bbox);
+// three nested patches: wide z9 → medium z11 → detailed z13; each outer one sinks under (and leaves a hole well inside) the next
+const [PW, PM, PD] = EVR ? ['evw', 'evm', 'evd'] : ['nyw', 'nym', 'nyd'];
+const bM = await bbox(PM), bD = await bbox(PD);
+await patch(PW, { hole: inset(bM, .08), sink: bM, lift: .04 });
+await patch(PM, { hole: inset(bD, .04), sink: bD, front: 1, lift: .05 });
+const DET = await patch(PD, { front: 2 });
+gscene.fog = new THREE.Fog(EVR ? 0x9db0c6 : 0x8fa4a8, 1e6, 2e6);
+gscene.getObjectByName('atm').material.fog = false;
+
+// summit of the mesh: the highest node within ~1 km of the coordinates
+let TOP = null;
+if (EVR) {
+  const { H, W, S, E, N, GW, GH } = DET; let best = -1;
+  for (let j = 0; j < GH; j++) for (let i = 0; i < GW; i++) {
+    const lat = N - j / (GH - 1) * (N - S), lon = W + i / (GW - 1) * (E - W);
+    if (Math.abs(lat - EV[0]) < .01 && Math.abs(lon - EV[1]) < .011 && H[j * GW + i] > best) { best = H[j * GW + i]; TOP = [lat, lon, best]; }
+  }
 }
 const gcam = new THREE.PerspectiveCamera(28, Wd / Ht, 1, 2e5);
 
-// ---------- glowing ribbons on the sphere (cs_globe's ribbon; geometry can be rebuilt in place) ----------
-const PIXK = 2 * Math.tan(THREE.MathUtils.degToRad(14)) / Ht;
-const RIB_V = `attribute float aSide; attribute vec3 aNorm; attribute float aAlong;
-  uniform float wW, pxW, pixK; varying float vSide, vAlong;
-  void main(){ vec4 wp = modelMatrix * vec4(position, 1.); float pw = length(cameraPosition - wp.xyz) * pixK;
-    float hw = max(wW * .5, pxW * .5 * pw); wp.xyz += normalize(mat3(modelMatrix) * aNorm) * aSide * hw; vSide = aSide; vAlong = aAlong;
-    gl_Position = projectionMatrix * viewMatrix * wp; }`;
-const RIB_F = `varying float vSide, vAlong; uniform vec3 col; uniform float k, inten, revA, revB, soft, head, headAmt, base, L, flowSp, flowLen, flowAmt, flowPh;
-  void main(){
-    float d = vSide; float g = exp(-d * d * k);
-    float vis = smoothstep(revA - soft, revA, vAlong) * (1. - smoothstep(revB, revB + soft, vAlong));
-    if (vis <= 0.) discard;
-    float a = base;
-    if (flowAmt > 0.) { float f = fract((vAlong - flowPh) / flowSp); a += flowAmt * smoothstep(1. - flowLen / flowSp, 1., f) * smoothstep(1., .985, f); }
-    a += headAmt * exp(-pow((vAlong - head) / (2.5 * max(1., soft / 2.)), 2.));
-    gl_FragColor = vec4(col * g * a * inten * vis, 1.); }`;
-function ribArrays(pts) {
-  const pos = [], side = [], nrm = [], al = []; let L = 0;
-  for (let i = 0; i < pts.length; i++) {
-    const a = pts[Math.max(0, i - 1)], b = pts[Math.min(pts.length - 1, i + 1)];
-    const t = new THREE.Vector3().subVectors(b, a), u = pts[i].clone().normalize();
-    const n = new THREE.Vector3().crossVectors(t, u).normalize();
-    if (i) L += pts[i].distanceTo(pts[i - 1]);
-    for (const s of [1, -1]) { pos.push(pts[i].x, pts[i].y, pts[i].z); side.push(s); nrm.push(n.x, n.y, n.z); al.push(L); }
+// ---------- Nyos: the gas (a rising cloud of soft puffs, then a low layer down the valleys) ----------
+let GAS = null;
+if (!EVR) {
+  const GM = await fetch('assets/nyd_gas.json').then(r => r.json());
+  const img = await new Promise((r, e) => { const im = new Image(); im.onload = () => r(im); im.onerror = e; im.src = 'assets/nyd_gas.png'; });
+  const cv = document.createElement('canvas'); cv.width = img.width; cv.height = img.height; const cx = cv.getContext('2d'); cx.drawImage(img, 0, 0);
+  const px = cx.getImageData(0, 0, img.width, img.height).data;
+  const gtex = new THREE.Texture(img); gtex.needsUpdate = true; gtex.colorSpace = THREE.NoColorSpace; gtex.minFilter = THREE.LinearFilter; gtex.generateMipmaps = false;
+  const { H, W, S, E, N, GW, GH, lift } = DET;
+  const LL = (j, i) => [N - j / (GH - 1) * (N - S), W + i / (GW - 1) * (E - W)];
+  // layer mesh over the reached box, 30 m (scaled) above the ground
+  const i0 = Math.max(0, GM.j0 - 3), i1 = Math.min(GW - 1, GM.j1 + 3), j0 = Math.max(0, GM.i0 - 3), j1 = Math.min(GH - 1, GM.i1 + 3);
+  const nw = i1 - i0 + 1, nh = j1 - j0 + 1, pos = new Float32Array(nw * nh * 3), uv = new Float32Array(nw * nh * 2), idx = [];
+  for (let j = 0; j < nh; j++) for (let i = 0; i < nw; i++) {
+    const J = j + j0, I = i + i0, k = j * nw + i, [la, lo] = LL(J, I);
+    const p = gdir(la, lo).multiplyScalar(RE + lift + Math.max(0, H[J * GW + I]) / 1000 * EX + .03);
+    pos.set([p.x, p.y, p.z], k * 3); uv.set([(I + .5) / GW, 1 - (J + .5) / GH], k * 2);
   }
-  return { pos, side, nrm, al, L };
-}
-function ribbon(pts, o) {
-  const A = ribArrays(pts), idx = [];
-  for (let i = 1; i < pts.length; i++) { const q = 2 * i; idx.push(q - 2, q - 1, q, q - 1, q + 1, q); }
-  const g = new THREE.BufferGeometry();
-  g.setAttribute('position', new THREE.Float32BufferAttribute(A.pos, 3)); g.setAttribute('aSide', new THREE.Float32BufferAttribute(A.side, 1));
-  g.setAttribute('aNorm', new THREE.Float32BufferAttribute(A.nrm, 3)); g.setAttribute('aAlong', new THREE.Float32BufferAttribute(A.al, 1)); g.setIndex(idx);
-  const U = { col: new THREE.Color(o.col ?? 0xffa63d), k: o.k ?? 3, inten: 0, wW: 0, pxW: o.pxW ?? 2, pixK: PIXK, revA: -1e9, revB: 1e9, soft: o.soft ?? 40,
-    head: -1e9, headAmt: 0, base: o.base ?? 1, L: A.L, flowSp: o.flowSp ?? 2000, flowLen: o.flowLen ?? 300, flowAmt: o.flowAmt ?? 0, flowPh: 0 };
-  const uniforms = {}; for (const k in U) uniforms[k] = { value: U[k] };
-  const m = new THREE.Mesh(g, new THREE.ShaderMaterial({ uniforms, vertexShader: RIB_V, fragmentShader: RIB_F, side: THREE.DoubleSide, transparent: true, depthWrite: false,
-    blending: THREE.AdditiveBlending, toneMapped: false }));
-  m.renderOrder = o.order ?? 2; m.frustumCulled = false; gscene.add(m);
-  m.L = A.L; m.u = uniforms; return m;
-}
-function reshape(m, pts) {
-  const A = ribArrays(pts), g = m.geometry;
-  g.attributes.position.array.set(A.pos); g.attributes.position.needsUpdate = true;
-  g.attributes.aNorm.array.set(A.nrm); g.attributes.aNorm.needsUpdate = true;
-  g.attributes.aAlong.array.set(A.al); g.attributes.aAlong.needsUpdate = true;
-  m.L = A.L; m.u.L.value = A.L;
-}
-const rv = (r, a) => { for (const k in a) r.u[k].value = a[k]; };
-const slerpV = (a, b, f) => { const ang = a.angleTo(b), s = Math.sin(ang) || 1; return ang < 1e-9 ? a.clone() : a.clone().multiplyScalar(Math.sin((1 - f) * ang) / s).add(b.clone().multiplyScalar(Math.sin(f * ang) / s)); };
-// great-circle arc A → B, every ≤ 20 km, raised a little in the middle (peak km)
-function gcArc(A, B, peak = 0) {
-  const a = gdir(...A), b = gdir(...B), m = Math.max(2, Math.ceil(a.angleTo(b) * RE / 20)), P = [];
-  for (let j = 0; j <= m; j++) { const f = j / m; P.push(slerpV(a, b, f).multiplyScalar(RE + 8 + peak * Math.sin(Math.PI * f))); }
-  return P;
-}
-// a small circle of radius r km about C (N points, starting due north, clockwise)
-function circlePts(C, r, Np = 540, lift = 8) {
-  const [la, lo] = C.map(v => v * D2R), rho = Math.max(r, 1) / RE, P = [];
-  for (let i = 0; i <= Np; i++) {
-    const th = i / Np * 2 * Math.PI, la2 = Math.asin(Math.sin(la) * Math.cos(rho) + Math.cos(la) * Math.sin(rho) * Math.cos(th));
-    const lo2 = lo + Math.atan2(Math.sin(th) * Math.sin(rho) * Math.cos(la), Math.cos(rho) - Math.sin(la) * Math.sin(la2));
-    P.push(gdir(la2 / D2R, lo2 / D2R).multiplyScalar(RE + lift));
+  for (let j = 0; j < nh - 1; j++) for (let i = 0; i < nw - 1; i++) { const a = j * nw + i, b = a + nw; idx.push(a, b, a + 1, b, b + 1, a + 1); }
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(pos, 3)); g.setAttribute('uv', new THREE.BufferAttribute(uv, 2)); g.setIndex(idx);
+  const U = { tG: { value: gtex }, front: { value: -1 }, op: { value: 0 }, lakeOp: { value: 0 }, time: { value: 0 }, col: { value: new THREE.Color(0xcfdade) } };
+  const lmat = new THREE.ShaderMaterial({ uniforms: U, transparent: true, depthWrite: false, toneMapped: true,
+    polygonOffset: true, polygonOffsetFactor: -4, polygonOffsetUnits: -8,
+    vertexShader: `varying vec2 vUv; varying vec3 vW; void main(){ vUv = uv; vec4 w = modelMatrix * vec4(position, 1.); vW = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }`,
+    fragmentShader: `uniform sampler2D tG; uniform float front, op, lakeOp, time; uniform vec3 col; varying vec2 vUv; varying vec3 vW;
+      float hs(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+      float vn(vec2 p){ vec2 i = floor(p), f = fract(p); f = f * f * (3. - 2. * f);
+        return mix(mix(hs(i), hs(i + vec2(1, 0)), f.x), mix(hs(i + vec2(0, 1)), hs(i + vec2(1, 1)), f.x), f.y); }
+      void main(){ vec4 s = texture2D(tG, vUv); float st = s.g; if (st < .01) discard;
+        float r = s.r, lake = s.b;
+        float a = st * smoothstep(front, front - .07, r);
+        a = max(a * op, lake * lakeOp);
+        vec2 q = vUv * vec2(260., 260.);
+        float n = .55 * vn(q + vec2(time * .9, -time * .6)) + .3 * vn(q * 2.3 - vec2(time * 1.4, time * .3)) + .15 * vn(q * 5.1);
+        a *= .3 + 1.0 * n;
+        if (a < .004) discard;
+        gl_FragColor = vec4(col, clamp(a, 0., 1.) * .3); }` });
+  const layer = new THREE.Mesh(g, lmat); layer.renderOrder = 5; layer.frustumCulled = false; gscene.add(layer);
+  // lake cells and flow paths (arrival descent: from a reached cell step to the neighbour that the gas reached earliest, back to the lake)
+  const R = (J, I) => px[(J * GW + I) * 4], G = (J, I) => px[(J * GW + I) * 4 + 1], B = (J, I) => px[(J * GW + I) * 4 + 2];
+  const lakeC = [];
+  for (let J = 0; J < GH; J++) for (let I = 0; I < GW; I++) if (B(J, I) > 128) lakeC.push([J, I]);
+  const rnd = mulberry(11);
+  const paths = GM.paths;      // tools/gas.py: from the lake outward, [row, col, arrival 0..1]
+  // puffs: a soft blob texture drawn in code
+  const pc = document.createElement('canvas'); pc.width = pc.height = 128; const pg = pc.getContext('2d');
+  const pr = mulberry(5);
+  for (let k = 0; k < 9; k++) { const x = 64 + (pr() - .5) * 46, y = 64 + (pr() - .5) * 46, r = 24 + pr() * 26, gr = pg.createRadialGradient(x, y, 0, x, y, r);
+    gr.addColorStop(0, 'rgba(255,255,255,.55)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); pg.fillStyle = gr; pg.fillRect(0, 0, 128, 128); }
+  const ptex = new THREE.CanvasTexture(pc); ptex.colorSpace = THREE.SRGBColorSpace;
+  const NP = 70, ppos = new Float32Array(NP * 3), pa = new Float32Array(NP), psz = new Float32Array(NP);
+  const pg2 = new THREE.BufferGeometry(); pg2.setAttribute('position', new THREE.BufferAttribute(ppos, 3)); pg2.setAttribute('aA', new THREE.BufferAttribute(pa, 1)); pg2.setAttribute('aS', new THREE.BufferAttribute(psz, 1));
+  const pmat = new THREE.ShaderMaterial({ uniforms: { tP: { value: ptex }, scale: { value: Ht / 2 }, col: { value: new THREE.Color(0xb9c6ca) } }, transparent: true, depthWrite: false,
+    vertexShader: `attribute float aA, aS; uniform float scale; varying float vA; void main(){ vA = aA; vec4 mv = modelViewMatrix * vec4(position, 1.);
+      gl_PointSize = aS * projectionMatrix[1][1] * scale / -mv.z; gl_Position = projectionMatrix * mv; }`,
+    fragmentShader: `uniform sampler2D tP; uniform vec3 col; varying float vA; void main(){ float a = texture2D(tP, gl_PointCoord).a * vA; if (a < .003) discard; gl_FragColor = vec4(col, a); }` });
+  const puffs = new THREE.Points(pg2, pmat); puffs.renderOrder = 6; puffs.frustumCulled = false; gscene.add(puffs);
+  const PF = [];
+  for (let n = 0; n < NP; n++) {
+    const c = lakeC[Math.floor(rnd() * lakeC.length)];
+    PF.push({ c, top: .04 + rnd() * .42, s: .45 + rnd() * .5, ph: rnd() * 6.28, dl: rnd() * .7, path: paths[n % paths.length], pf: .15 + rnd() * .85, dx: (rnd() - .5) * .7, dy: (rnd() - .5) * .7 });
   }
-  return P;
-}
-const AMB = 0xffa63d, AMB2 = 0xffc36b, LIGHT = 0xf3e6cf;
-function glowLine(pts, col, core, glowW = 12, coreW = 2.4, glowBase = .3) {
-  return { pts, glow: ribbon(pts, { pxW: glowW, k: 3, base: glowBase, col }), core: ribbon(pts, { pxW: coreW, k: 1.2, base: 1, col: core }) };
-}
-// draw a line from its start: k 0→1; inten; flowing light along it
-function drawLine(Lm, k, inten, t, flow = 0) {
-  for (const r of [Lm.glow, Lm.core]) rv(r, { revB: k * r.L, inten: inten * (k > 0 ? 1 : 0), head: k * r.L, soft: 60,
-    headAmt: r === Lm.core ? 1.8 * (1 - ss(seg(k, .85, 1))) : .6 * (1 - ss(seg(k, .85, 1))), flowAmt: flow, flowPh: t * 1800, flowSp: 2600, flowLen: 380 });
+  const gridPt = (J, I, up) => { const [la, lo] = LL(J, I); return gdir(la, lo).multiplyScalar(RE + lift + Math.max(0, H[J * GW + I]) / 1000 * EX + up); };
+  const LAKE_Z = lift + GM.lake_level / 1000 * EX;
+  GAS = { U, lakeLL: NY, update(t, T_UP, T_FLOW, front) {
+    U.time.value = t;
+    for (let n = 0; n < NP; n++) {
+      const f = PF[n], rise = eo(seg(t, T_UP + f.dl, T_UP + f.dl + 2.4)), sink = ss(seg(t, T_FLOW - .6, T_FLOW + .9));
+      const [J, I] = f.c; let p;
+      const wob = .03 * Math.sin(t * .8 + f.ph);
+      if (sink <= 0 || !f.path || f.path.length < 2) p = gridPt(J, I, 0).normalize().multiplyScalar(RE + LAKE_Z + .02 + f.top * rise + wob);
+      else {
+        // ride the flow: along the path to where the front is (each puff lags a little behind it)
+        const want = clamp(front * f.pf), P = f.path; let k = 0; while (k < P.length - 1 && P[k + 1][2] <= want) k++;
+        const [Jp, Ip] = P[k], q = gridPt(Jp, Ip, .05);
+        const a = gridPt(J, I, 0).normalize().multiplyScalar(RE + LAKE_Z + .02 + f.top + wob);
+        p = a.lerp(q, sink);
+      }
+      const sp = rise * (1 - sink) * (.4 + .6 * f.top / .46); ppos.set([p.x + f.dx * sp, p.y + f.dy * sp * .5, p.z + f.dy * sp], n * 3);
+      const aUp = ss(seg(t, T_UP + f.dl, T_UP + f.dl + .9)) * (1 - .35 * sink) * (1 - ss(seg(t, T_FLOW + 2.0, T_FLOW + 3.4)) * .5);
+      pa[n] = aUp * .04; psz[n] = f.s * (.55 + .45 * rise) * (1 + .5 * sink);
+    }
+    pg2.attributes.position.needsUpdate = true; pg2.attributes.aA.needsUpdate = true; pg2.attributes.aS.needsUpdate = true;
+  } };
 }
 
-// ---------- camera: [log distance km, tilt°, heading°, target lat, lon, view offset y px] ----------
+// ---------- camera: [log distance km, tilt°, heading°, target lat, lon, target altitude km, view offset y px] ----------
 let CAM;
-if (CLIP === 'nemo') CAM = track([
-  [0.0, [Math.log(44000), 0, 180, -40.0, -117.0, 0]],
-  [0.9, [Math.log(26000), 0, 180, -44.5, -120.5, 0]],
-  [2.25, [Math.log(5600), 6, 180, NEMO[0], NEMO[1], 0]],
-  [2.75, [Math.log(5450), 6, 180, NEMO[0], NEMO[1], 10]],
-  [5.0, [Math.log(17000), 3, 180, NEMO[0] - .5, NEMO[1], 85]],
-  [16.71, [Math.log(16300), 3, 180, NEMO[0] - .3, NEMO[1] + .6, 85]]]);
-else CAM = track([       // the target and view offset of the pull-back are set in setCam (Tristan stays at y ≈ 720 while the view widens)
-  [0.0, [Math.log(40000), 0, 180, -30.0, -18.0, 0]],
-  [0.8, [Math.log(20000), 0, 180, -34.0, -14.5, 0]],
-  [1.9, [Math.log(260), 22, 180, TDC[0] - .02, TDC[1], 0]],
-  [2.6, [Math.log(44), 44, 180, TDC[0] - .015, TDC[1], 0]],
-  [5.3, [Math.log(37), 47, 198, TDC[0] - .015, TDC[1] + .01, 0]],
-  [6.2, [Math.log(1500), 22, 190, TDC[0], TDC[1], 0]],
-  [7.4, [Math.log(9700), 0, 180, TDC[0] + .01, TDC[1] + .01, 0]],
-  [8.6, [Math.log(10400), 0, 180, TDC[0] + .01, TDC[1] + .01, 0]],
-  [15.2, [Math.log(10000), 0, 180, TDC[0] + .01, TDC[1] + .01, 0]]]);
-const MID = [-26.6, -8.9];
+if (EVR) CAM = track([
+  [0.0, [Math.log(30000), 0, 180, 22.0, 84.0, 0, 0]],
+  [0.75, [Math.log(9000), 0, 180, 26.5, 86.0, 0, 0]],
+  [1.55, [Math.log(420), 28, 185, EV[0] - .05, EV[1], 3, 0]],
+  [2.3, [Math.log(33), 63, 205, EV[0], EV[1], 4.6, 60]],
+  [8.35, [Math.log(28.5), 67, 258, EV[0], EV[1], 4.6, 60]]]);
+else CAM = track([
+  [0.0, [Math.log(30000), 0, 180, 2.0, 16.0, 0, 0]],
+  [0.8, [Math.log(9000), 0, 180, 5.0, 12.0, 0, 0]],
+  [1.8, [Math.log(260), 22, 182, NY[0] - .02, NY[1], .5, 0]],
+  [2.7, [Math.log(30), 46, 190, NY[0], NY[1], 1.6, 0]],
+  [6.6, [Math.log(15.5), 50, 198, NY[0] + .005, NY[1], 1.7, 0]],
+  [12.6, [Math.log(13.0), 54, 214, NY[0] + .005, NY[1], 1.7, 0]],
+  [14.6, [Math.log(34), 47, 200, NY[0] + .035, NY[1] - .005, 1.6, 0]],
+  [17.46, [Math.log(33), 48, 194, NY[0] + .04, NY[1] - .005, 1.6, 0]]]);
 function setCam(t) {
-  let [ld, tilt, head, tla, tlo, oy] = CAM(clamp(t, 0, FULL)), dist = Math.exp(ld);
-  let U = gdir(tla, tlo);
-  if (CLIP === 'tristan') {   // pull-back: the target slides toward the line's middle in step with the distance, so Tristan holds its place on screen
-    const w = ss(seg(t, 5.3, 6.6)); U = slerpV(gdir(tla, tlo), gdir(...MID), clamp(dist / 10400) * w); oy = 70 * w;
-  }
-  const T = U.clone().multiplyScalar(RE);
+  let [ld, tilt, head, tla, tlo, alt, oy] = CAM(clamp(t, 0, FULL)), dist = Math.exp(ld);
+  const U = gdir(tla, tlo), T = U.clone().multiplyScalar(RE + alt);
   const north = new THREE.Vector3(0, 1, 0).addScaledVector(U, -U.y).normalize(), east = new THREE.Vector3().crossVectors(north, U);
   const Hd = north.clone().multiplyScalar(Math.cos(head * D2R)).addScaledVector(east, Math.sin(head * D2R));
   const tr = tilt * D2R;
@@ -195,25 +245,29 @@ function setCam(t) {
   gcam.up.copy(Hd.clone().negate().multiplyScalar(Math.cos(tr)).addScaledVector(U, Math.sin(tr)).normalize());
   gcam.lookAt(T);
   if (Math.abs(oy) > .01) gcam.setViewOffset(Wd, Ht, 0, oy, Wd, Ht); else gcam.clearViewOffset();
-  gcam.near = Math.max(1, dist * .2); gcam.far = 2e5; gcam.updateProjectionMatrix(); gcam.updateMatrixWorld(); return dist;
+  gcam.near = Math.max(.5, dist * .15); gcam.far = 2e5; gcam.updateProjectionMatrix(); gcam.updateMatrixWorld();
+  // haze close to the ground only (the globe stays clear)
+  const fz = 1 - ss(seg(Math.log(dist), Math.log(90), Math.log(400)));
+  gscene.fog.near = lerp(1e6, dist * 1.4, fz); gscene.fog.far = lerp(2e6, dist * (EVR ? 6 : 5), fz);
+  return dist;
 }
 
 // ---------- post ----------
 const gpost = makePost(renderer, gscene, gcam, Wd, Ht, { ssaa: SS, ao: false });
-gpost.dof.maxCoc = 0; gpost.bloom.strength = .7; gpost.bloom.radius = .6; gpost.bloom.threshold = .9;
-const GU = gpost.vig.uniforms; GU.amt.value = .5; GU.warm.value = .2; GU.sat.value = .95; GU.contrast.value = .1;
+gpost.dof.maxCoc = 0; gpost.bloom.strength = .55; gpost.bloom.radius = .6; gpost.bloom.threshold = .95;
+const GU = gpost.vig.uniforms; GU.amt.value = .5; GU.warm.value = .15; GU.sat.value = .95; GU.contrast.value = .12;
 
 // ---------- overlay ----------
 const ov = document.createElement('canvas'); ov.width = Wd * 2; ov.height = Ht * 2; ov.style.width = Wd + 'px'; ov.style.height = Ht + 'px'; document.body.appendChild(ov);
 const g = ov.getContext('2d');
-await Promise.all(['500 20px Fira', '600 20px Fira'].map(f => document.fonts.load(f, 'АБВ абв ≈ 2 690 км')));
-const C = { light: '#f6eee0', amber: '#ffc36b', num: '#ffd08a', dim: 'rgba(240,232,216,.78)' };
+await Promise.all(['500 20px Fira', '600 20px Fira'].map(f => document.fonts.load(f, 'АБВ абв ≈ 1/3 9 км')));
+const C = { light: '#f6eee0', amber: '#ffc36b', num: '#ffd08a', dim: 'rgba(240,232,216,.82)' };
 const SAFE_Y = Ht - 250;                             // the bottom 250 px stay free of labels (Russian subtitles are burned in later)
 let TX = [];
 function txt(s, x, y, o) {
   g.save(); g.font = `${o.w || 500} ${o.size}px Fira`; g.letterSpacing = (o.sp || 0) + 'px';
   g.textAlign = o.align || 'center'; g.textBaseline = 'middle'; g.globalAlpha = clamp(o.a ?? 1); g.fillStyle = o.col || C.light;
-  g.shadowColor = 'rgba(2,4,8,.85)'; g.shadowBlur = 14;
+  g.shadowColor = 'rgba(2,4,8,.9)'; g.shadowBlur = 16;
   g.fillText(s, x, y); g.shadowBlur = 0; g.fillText(s, x, y); const w = g.measureText(s).width;
   const x0 = o.align === 'left' ? x : o.align === 'right' ? x - w : x - w / 2;
   if ((o.a ?? 1) > .5) TX.push({ text: s, x0, y0: y - o.size * .6, x1: x0 + w, y1: y + o.size * .6 });
@@ -221,101 +275,115 @@ function txt(s, x, y, o) {
 }
 function dot(x, y, r, col, a = 1, blur = 0) { g.save(); g.globalAlpha = clamp(a); g.fillStyle = col; if (blur) { g.shadowColor = col; g.shadowBlur = blur; } g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); g.restore(); }
 function ring(x, y, r, col, a, w = 2) { if (a <= 0) return; g.save(); g.globalAlpha = clamp(a); g.strokeStyle = col; g.lineWidth = w; g.beginPath(); g.arc(x, y, r, 0, 7); g.stroke(); g.restore(); }
+function line(x0, y0, x1, y1, col, a, w = 2, dash = null, glow = 0) { if (a <= 0) return; g.save(); g.globalAlpha = clamp(a); g.strokeStyle = col; g.lineWidth = w; g.lineCap = 'round';
+  if (dash) g.setLineDash(dash); if (glow) { g.shadowColor = col; g.shadowBlur = glow; } g.beginPath(); g.moveTo(x0, y0); g.lineTo(x1, y1); g.stroke(); g.restore(); }
 const scr = v => { const p = v.clone().project(gcam); return [(p.x + 1) / 2 * Wd, (1 - p.y) / 2 * Ht, p.z]; };
-const facing = v => v.clone().normalize().dot(gcam.position.clone().sub(v).normalize()) > 0.02;
-const at = (ll, lift = 8) => { const P = gdir(...ll).multiplyScalar(RE + lift); return facing(P) ? scr(P) : null; };
-// pin: a bright dot with a ring that pops when it appears (t0)
-function pin(ll, t, t0, a = 1, lift = 8) {
-  if (t < t0 || a <= 0) return; const p = at(ll, lift); if (!p) return;
+const facing = v => v.clone().normalize().dot(gcam.position.clone().sub(v).normalize()) > -0.2;
+const at = (ll, lift = 0) => { const P = gdir(...ll).multiplyScalar(RE + lift); return facing(P) ? scr(P) : null; };
+function pin(p, t, t0, a = 1) {
+  if (!p || t < t0 || a <= 0) return;
   const k = seg(t, t0, t0 + .7), pop = 1 + .6 * Math.exp(-Math.pow((t - t0 - .08) / .08, 2));
   ring(p[0], p[1], 8 + 46 * eo(k), C.amber, a * (1 - k) * .9, 2.5);
   dot(p[0], p[1], 11 * pop, 'rgba(255,170,80,.35)', a, 20);
   dot(p[0], p[1], 6.5 * pop, '#ffd9a0', a, 10);
   return p;
 }
-// a label next to a screen point
 function labelAt(p, s, a, o = {}) {
   if (!p || a <= 0) return;
   return txt(s, p[0] + (o.dx || 0), p[1] + (o.dy || 0), { size: o.size || 44, w: o.w || 600, sp: o.sp ?? 2, align: o.align || 'left', col: o.col || C.light, a });
 }
-// distance label beside the middle of a projected line (side: +1 / −1 = right / left of the direction A→B), offset px
-function distLabel(Lm, s, a, side, off, o = {}) {
-  if (a <= 0) return; const n = Lm.pts.length, m = Lm.pts[Math.floor(n * (o.f ?? .5))];
-  const pA = scr(Lm.pts[0]), pB = scr(Lm.pts[n - 1]), pm = scr(m);
-  let dx = pB[0] - pA[0], dy = pB[1] - pA[1]; const l = Math.hypot(dx, dy) || 1; dx /= l; dy /= l;
-  const nx = -dy * side, ny = dx * side;                    // screen y points down: (−dy, dx) is to the right of A→B
-  const align = nx > .4 ? 'left' : nx < -.4 ? 'right' : 'center';
-  txt(s, pm[0] + nx * off + (o.dx || 0), pm[1] + ny * off + (o.dy || 0), { size: o.size || 40, w: 600, sp: 1, align, col: C.num, a });
-}
-
-// ================= NEMO =================
 const EVN = [];
-let frameNemo, frameTdc;
-if (CLIP === 'nemo') {
-  const T_PIN = 1.0, T_C0 = 2.7, T_C1 = 4.7, T_CL = 3.6;
-  const LINES = [   // [place, line start, line end (pin), name, sub, sub time, name offset, dist-label side]
-    { ll: DUCIE, a: 6.35, b: 7.05, name: 'Дюси', sub: null, nd: [0, -44, 'center'], side: -1 },
-    { ll: MOTU, a: 7.9, b: 8.6, name: 'Моту-Нуи', sub: 'у острова Пасхи', st: 8.9, nd: [24, -4, 'left'], side: 1 },
-    { ll: MAHER, a: 11.3, b: 12.0, name: 'Махер', sub: 'у берега Антарктиды', st: 13.3, nd: [24, -62, 'left'], side: -1 }];   // Махер's labels sit above the pin: the ice below is white
-  for (const L of LINES) L.m = glowLine(gcArc(NEMO, L.ll, 40), AMB, AMB2, 12, 2.6);
-  const CIRC = glowLine(circlePts(NEMO, 2690), 0xd8c8a8, LIGHT, 10, 1.8, .25);
-  EVN.push({ t: 0, k: 'whoosh' }, { t: T_PIN, k: 'pin' }, { t: T_C0, k: 'rise' }, ...LINES.map(L => ({ t: L.b, k: 'pin' })));
-  frameNemo = t => {
-    setCam(t);
-    // the circle grows from the point to 2 690 km (2.7 → 4.7), then stays as a faint ring
-    const kc = eio(seg(t, T_C0, T_C1));
-    if (t >= T_C0) reshape(CIRC.glow, circlePts(NEMO, 2690 * kc)), reshape(CIRC.core, circlePts(NEMO, 2690 * kc));
-    const cI = t < T_C0 ? 0 : (1 - .45 * ss(seg(t, 5.6, 6.4))) * (1 + .35 * Math.exp(-Math.pow((t - 15.0) / .4, 2)));
-    for (const r of [CIRC.glow, CIRC.core]) rv(r, { inten: cI, revB: 1e9 });
-    LINES.forEach(L => { const k = eio(seg(t, L.a, L.b)); drawLine(L.m, k, 1.15, t, ss(seg(t, L.b, L.b + .6)) * (.6 + .5 * ss(seg(t, 14.7, 15.2)))); });
-    gpost.composer.render();
-    g.setTransform(2, 0, 0, 2, 0, 0); g.clearRect(0, 0, Wd, Ht); TX = [];
-    // the circle's radius while it grows
-    const aCL = ss(seg(t, T_CL, T_CL + .4)) * (1 - ss(seg(t, 5.7, 6.2)));
-    if (aCL > 0) { const P = circlePts(NEMO, 2690 * kc, 8)[6], p = facing(P) ? scr(P) : null; if (p) labelAt(p, '≈ 2 690 км', aCL, { dx: -22, dy: 0, align: 'right', size: 40, col: C.num, w: 600, sp: 1 }); }
-    LINES.forEach(L => {
-      const p = pin(L.ll, t, L.b);
-      if (p) {
-        labelAt(p, L.name, ss(seg(t, L.b, L.b + .3)), { dx: L.nd[0], dy: L.nd[1], align: L.nd[2], size: 44 });
-        if (L.sub) labelAt(p, L.sub, ss(seg(t, L.st, L.st + .35)), { dx: L.nd[0], dy: L.nd[1] + 38, align: L.nd[2], size: 30, w: 500, col: C.dim, sp: 1 });
-      }
-      distLabel(L.m, '≈ 2 690 км', ss(seg(t, L.b + .1, L.b + .5)), L.side, 26);
-    });
-    const p = pin(NEMO, t, T_PIN);
-    labelAt(p, 'Точка Немо', ss(seg(t, T_PIN + .2, T_PIN + .55)), { dx: -26, dy: 0, align: 'right', size: 50 });
-  };
-}
+let frameFn;
 
-// ================= TRISTAN =================
-if (CLIP === 'tristan') {
-  const T_LBL = .45, T_L0 = 6.15, T_L1 = 7.75, T_D = 9.3;
-  const LN = glowLine(gcArc(TDC, STH, 60), AMB, AMB2, 12, 2.6);
-  EVN.push({ t: 0, k: 'whoosh' }, { t: T_LBL, k: 'pin' }, { t: 5.3, k: 'whoosh' }, { t: T_L0, k: 'rise' }, { t: T_L1, k: 'pin' }, { t: T_D, k: 'pin' });
-  frameTdc = t => {
+// ================= EVEREST =================
+if (EVR) {
+  const T_PIN = 1.25, T_P0 = 2.35, T_P1 = 3.55, T_PL = 3.2, T_BAR = 5.45;
+  EVN.push({ t: 0, k: 'whoosh' }, { t: T_PIN, k: 'pin' }, { t: T_P0, k: 'rise' }, { t: T_PL, k: 'pin' }, { t: T_BAR, k: 'pin' });
+  const topH = TOP[2] / 1000 * EX + DET.lift;
+  frameFn = t => {
     const dist = setCam(t);
-    renderer.toneMappingExposure = 1.25 + .45 * (1 - ss(seg(Math.log(dist), Math.log(150), Math.log(1500))));
-    const k = eio(seg(t, T_L0, T_L1));
-    drawLine(LN, k, 1.15, t, ss(seg(t, T_L1, T_L1 + .6)) * .7);
+    renderer.toneMappingExposure = lerp(1.25, .9, 1 - ss(seg(Math.log(dist), Math.log(80), Math.log(800))));
     gpost.composer.render();
     g.setTransform(2, 0, 0, 2, 0, 0); g.clearRect(0, 0, Wd, Ht); TX = [];
-    // the pin shows while the island is small; in the close look the island itself is the mark
-    const far = ss(seg(Math.log(dist), Math.log(400), Math.log(1500)));
-    pin(TDC, t, T_LBL, far);
-    const aT = ss(seg(t, T_LBL, T_LBL + .35));
-    // one label: above the island in the close look, right of the pin once it is small (the anchor slides between the two)
-    const pC = at([TDC[0] + .05, TDC[1]], 2.2), pF = at(TDC);
-    if (pF && aT > 0) {
-      const a0 = pC ? [pC[0], pC[1] - 34] : [pF[0], pF[1] - 40], a1 = [pF[0] + 26, pF[1]], f = far;
-      const tw = (g.font = '600 50px Fira', g.letterSpacing = '2px', g.measureText('Тристан-да-Кунья').width);
-      labelAt([lerp(a0[0] - tw / 2, a1[0], f), lerp(a0[1], a1[1], f)], 'Тристан-да-Кунья', aT, { size: lerp(54, 48, f) });
+    const pT = at(TOP, topH), pB = at(TOP, 0);
+    // the height pillar: sea level (inside the mountain: dashed) → the summit, 1 km ticks
+    const kp = eio(seg(t, T_P0, T_P1)), aP = ss(seg(t, T_P0 - .1, T_P0 + .2));
+    if (pT && pB && aP > 0) {
+      const hk = topH * kp, X = (hkm) => scr(gdir(TOP[0], TOP[1]).multiplyScalar(RE + hkm));
+      const pTop = X(hk);
+      // outside the dashed core: a soft glow so the pillar reads over the snow
+      line(pB[0], pB[1], pTop[0], pTop[1], 'rgba(10,14,20,.55)', aP, 7);
+      line(pB[0], pB[1], pTop[0], pTop[1], C.amber, aP, 3, [10, 7], 8);
+      for (let k = 1; k <= 8; k++) if (k <= hk) { const q = X(k), w = k % 2 ? 8 : 13; line(q[0] - w, q[1], q[0] + w, q[1], C.amber, aP * .95, 2.2); }
+      line(pB[0] - 22, pB[1], pB[0] + 22, pB[1], C.amber, aP, 3);
+      labelAt(pB, 'уровень моря', aP * ss(seg(t, T_P0, T_P0 + .4)), { dx: 32, dy: 0, size: 28, w: 500, col: C.dim, sp: 1 });
+      if (kp > 0) dot(pTop[0], pTop[1], 5, '#ffe2b0', aP, 12);
     }
-    const pS = pin(STH, t, T_L1);
-    if (pS) labelAt(pS, 'Остров Святой Елены', ss(seg(t, T_L1, T_L1 + .35)), { dx: 26, dy: 0, size: 46 });
-    distLabel(LN, '≈ 2 400 км', ss(seg(t, T_D, T_D + .4)), 1, 28, { size: 46 });
+    const pk = pin(pT, t, T_PIN);
+    labelAt(pk, 'Эверест', ss(seg(t, T_PIN + .1, T_PIN + .45)), { dx: -30, dy: -6, align: 'right', size: 58 });
+    if (pT) labelAt(pT, 'почти 9 км', ss(seg(t, T_PL, T_PL + .4)), { dx: 30, dy: -6, size: 52, col: C.num, sp: 1 });
+    // давление ≈ 1/3: a card at the upper right with a three-part bar, one part lit
+    const aB = ss(seg(t, T_BAR, T_BAR + .45));
+    if (aB > 0) {
+      const x = 1290, y = 150, bw = 420, bh = 20, kf = eio(seg(t, T_BAR + .15, T_BAR + .9));
+      txt('давление ≈ 1/3', x, y, { size: 60, w: 600, sp: 1, align: 'left', col: C.num, a: aB });
+      txt('от привычного', x, y + 52, { size: 32, w: 500, sp: 1, align: 'left', col: C.dim, a: aB });
+      g.save(); g.globalAlpha = aB;
+      g.fillStyle = 'rgba(8,12,18,.45)'; g.fillRect(x, y + 92, bw, bh);
+      g.fillStyle = C.amber; g.shadowColor = C.amber; g.shadowBlur = 12; g.fillRect(x, y + 92, bw / 3 * kf, bh); g.shadowBlur = 0;
+      g.strokeStyle = 'rgba(246,238,224,.8)'; g.lineWidth = 2; g.strokeRect(x, y + 92, bw, bh);
+      for (const f of [1, 2]) { g.beginPath(); g.moveTo(x + bw * f / 3, y + 92); g.lineTo(x + bw * f / 3, y + 92 + bh); g.stroke(); }
+      g.restore();
+    }
   };
 }
 
-const frame = t => { (CLIP === 'nemo' ? frameNemo : frameTdc)(t);
+// ================= NYOS =================
+if (!EVR) {
+  const T_PIN = .95, T_CM = 1.75, T_DATE = 2.55, T_UP = 6.85, T_HEAVY = 13.4, T_FLOW = 14.0, T_F1 = 17.3;
+  EVN.push({ t: 0, k: 'whoosh' }, { t: T_PIN, k: 'pin' }, { t: T_DATE, k: 'pin' }, { t: T_UP, k: 'rise' }, { t: T_HEAVY, k: 'pin' }, { t: T_FLOW, k: 'whoosh' });
+  const lakeZ = DET.hAt(...NY);
+  frameFn = t => {
+    const dist = setCam(t);
+    renderer.toneMappingExposure = 1.55 + .15 * (1 - ss(seg(Math.log(dist), Math.log(60), Math.log(600))));
+    const front = lerp(-.05, 1.08, ss(seg(t, T_FLOW, T_F1)) * .15 + eio(seg(t, T_FLOW, T_F1)) * .85);
+    GAS.U.front.value = front; GAS.U.op.value = ss(seg(t, T_FLOW - .3, T_FLOW + .5));
+    GAS.U.lakeOp.value = ss(seg(t, T_UP + .3, T_UP + 1.8)) * .4;
+    GAS.update(t, T_UP, T_FLOW, front);
+    gpost.composer.render();
+    g.setTransform(2, 0, 0, 2, 0, 0); g.clearRect(0, 0, Wd, Ht); TX = [];
+    // pin while the place is small; the lake itself is the mark up close
+    const far = ss(seg(Math.log(dist), Math.log(25), Math.log(120)));
+    const pL = at(NY, lakeZ);
+    pin(pL, t, T_PIN, Math.max(far, .0) * (1 - ss(seg(t, T_UP - .4, T_UP))));
+    // name above the lake (fades while the cloud rises, comes back small during the flow)
+    const aN = ss(seg(t, T_PIN + .1, T_PIN + .45)) * (1 - ss(seg(t, T_UP + .2, T_UP + .8)));
+    if (pL) {
+      const y0 = pL[1] - lerp(86, 40, far);
+      labelAt([pL[0], y0], 'озеро Ньос', aN, { align: 'center', size: 58 });
+      labelAt([pL[0], y0 + 50], 'Камерун', aN * ss(seg(t, T_CM, T_CM + .4)), { align: 'center', size: 36, w: 500, col: C.dim, sp: 3 });
+      const aN2 = ss(seg(t, T_FLOW + .6, T_FLOW + 1.1));
+      labelAt([pL[0], pL[1] + 6], 'озеро Ньос', aN2, { align: 'center', size: 34, w: 600, sp: 1 });
+    }
+    // date (upper left)
+    const aD = ss(seg(t, T_DATE, T_DATE + .45));
+    if (aD > 0) {
+      txt('21 августа 1986', 110, 130, { size: 64, w: 600, sp: 1, align: 'left', col: C.num, a: aD });
+      line(112, 176, 112 + 340 * eo(seg(t, T_DATE + .1, T_DATE + .8)), 176, C.amber, aD * .9, 2.5);
+    }
+    // «углекислый газ тяжелее воздуха»: under the date, with a small arrow pointing down
+    const aH = ss(seg(t, T_HEAVY, T_HEAVY + .45));
+    if (aH > 0) {
+      txt('углекислый газ', 110, 246, { size: 46, w: 600, sp: 1, align: 'left', col: C.light, a: aH });
+      txt('тяжелее воздуха', 110, 296, { size: 46, w: 600, sp: 1, align: 'left', col: C.light, a: aH });
+      const ax = 500, ay = 240, k = eo(seg(t, T_HEAVY + .1, T_HEAVY + .7));
+      line(ax, ay, ax, ay + 62 * k, C.amber, aH, 3.5, null, 8);
+      line(ax - 13, ay + 62 * k - 14, ax, ay + 62 * k, C.amber, aH * k, 3.5); line(ax + 13, ay + 62 * k - 14, ax, ay + 62 * k, C.amber, aH * k, 3.5);
+    }
+  };
+}
+
+const frame = t => { frameFn(t);
   if (Q.has('nosafe')) { g.save(); g.fillStyle = 'rgba(255,0,0,.18)'; g.fillRect(0, SAFE_Y, Wd, 250); g.restore(); } };
 window.DUR = FULL;
 window.render = t => frame(t);

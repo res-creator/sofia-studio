@@ -1,0 +1,10 @@
+Опасные места · board film PART 1 (film 0.00–122.65: cold open «ХОЛОДНЫЙ СТАРТ» + chapter «ВЫСОТА»; Engineering Briefing Board) — credits
+
+Photographs (ru_geo/deadly_places/archive/img, see archive/credits.json; uncut crops on photo paper, kit/tools/make_print.py)
+  print_everest.png   everest_iss.jpg — Mt. Everest at dawn from the ISS — NASA, public domain
+                      images.nasa.gov/details/0202504  (--crop 0,0,1920,1267 --w 1400) · on the board «Эверест на рассвете, снимок с МКС · NASA»
+  print_climbers.png  everest_climbers.jpg — Hillary Step near Everest top — Debasish Biswas (Wikimedia Commons), CC BY-SA 4.0
+                      commons.wikimedia.org/wiki/File:Hillary_Step_near_Everest_top.jpg  (--crop 0,0,1920,1211 --w 1400)
+                      · on the board «альпинисты у ступени Хиллари · фото: Debasish Biswas, CC BY-SA 4.0»
+Everything else (stopwatches, plane, profiles, bars, figures, graph) is drawn in marker by scenes/_gen_film.py.
+Fonts: Pangolin, Fira Sans Condensed, IBM Plex Mono — SIL OFL 1.1.

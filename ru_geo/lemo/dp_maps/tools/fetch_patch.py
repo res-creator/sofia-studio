@@ -6,11 +6,12 @@ Both are reprojected to an equirectangular lat/lon grid over the box and graded 
 Land only (no sea replacement: both places are far inland).
 
 usage (library root): .venv/bin/python -I <clip>/tools/fetch_patch.py <clip> <name> W S E N Z albedo_km grid_km [mode]
-  mode "wide"        : the outer 12 % of the box fades into assets/world.jpg (colour) and to height 0, so the edge melts into the globe
+  mode "wide"        : the outer 25 % of the box fades into assets/world.jpg (colour) and to height 0, so the edge melts into the globe
   mode "in:<parent>" : the outer 10 % of the box fades into the parent patch (colour and height, bilinear on the parent grid),
                        so the detailed patch sits seamlessly inside the parent (the page cuts a hole in the parent)
 Writes raw/<name>_*.{jpg,png}, assets/<name>_albedo.jpg, assets/<name>_height.bin (float32 m, row 0 = north), assets/<name>_meta.json
 Every URL goes to raw/manifest.jsonl
+env SEAM=<lon>:<fade km>: brighten the darker scene east of a mosaic seam (see below; used east of Everest)
 """
 import sys, os, io, json, math, time, datetime, urllib.request
 from concurrent.futures import ThreadPoolExecutor
@@ -99,6 +100,19 @@ l = (a * [.2126, .7152, .0722]).sum(-1, keepdims=True)
 a = l + (a - l) * .85
 a = a * np.array([1.05, 1.0, .9])          # (no sea darkening: dark rainforest would be taken for water)
 
+# optional: soften a scene seam of the mosaic (env SEAM=<lon>:<fade km>). Row by row, the side east of the seam gets the gain
+# (linear light) that matches the median of a ~2 km strip on each side, smoothed along the seam, fading out eastward
+if os.environ.get('SEAM'):
+    slon, fkm = map(float, os.environ['SEAM'].split(':'))
+    C = int(round((slon - W) / (E - W) * IW)); sw = max(8, int(round(2.0 / PX)))
+    l = (a * [.2126, .7152, .0722]).sum(-1)
+    Lm = np.median(l[:, C - sw:C - 1], 1); Rm = np.median(l[:, C + 2:C + sw + 1], 1)
+    gl = np.clip(ndimage.gaussian_filter1d(np.log(np.maximum(Lm, 1e-4) / np.maximum(Rm, 1e-4)), max(4, 6 / PX)), 0, np.log(2.4))
+    x = np.arange(IW) - C
+    fx = np.where(x < 1, 0, np.clip(1 - (x - 1) * PX / fkm, 0, 1) ** .7)
+    a = np.clip(a * np.exp(gl[:, None] * fx[None, :])[..., None], 0, 1)
+    print('seam at column', C, 'max gain', float(np.exp(gl.max())))
+
 GH = int(round((N - S) * km_lat / GR)); GW = int(round((E - W) * km_lat * coslat / GR))
 glon = W + np.arange(GW) / (GW - 1) * (E - W); glat = N - np.arange(GH) / (GH - 1) * (N - S)
 hg = sample(h, tx, ty, ZT, glon, glat, order=3)
@@ -106,9 +120,9 @@ hg = sample(h, tx, ty, ZT, glon, glat, order=3)
 if MODE == 'wide':
     wimg = np.asarray(Image.open(os.path.join(OUT, 'world.jpg')).convert('RGB'), np.float64) / 255
     wa = latlon_sample(wimg ** 2.2, [-180, -90, 180, 90], lon, lat)
-    wt = edge_w(lon, lat, .12)[..., None]
+    wt = edge_w(lon, lat, .25)[..., None]
     a = a * wt + wa * (1 - wt)
-    hg = np.maximum(hg, 0) * edge_w(glon, glat, .12)
+    hg = np.maximum(hg, 0) * edge_w(glon, glat, .25)
 elif MODE.startswith('in:'):
     P = MODE[3:]; pm = json.load(open(os.path.join(OUT, f'{P}_meta.json')))
     pa = (np.asarray(Image.open(os.path.join(OUT, f'{P}_albedo.jpg')).convert('RGB'), np.float64) / 255) ** 2.2

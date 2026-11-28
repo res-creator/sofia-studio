@@ -12,19 +12,19 @@ export const HIT = {
   lightOn: 0.67,
   first: 0.3,                                  // card «первыми на дно спустились»
   drop1: 0.75, push1: 1.0, push1End: 1.75,     // loupe onto the two men in the sphere; push in
-  men: 1.6,                                    // «Пикар и Уолш» (the source caption does not say who is who)
+  men: 1.35,                                    // «Пикар и Уолш» (the source caption does not say who is who)
   rise1: 2.95, lift1: 3.3,
   drop2: 3.95, push2: 4.15, push2End: 4.85,    // glide to the surface photo; loupe onto the «TRIESTE» sign; push in
   sign: 4.75, signLbl: 4.9,                    // the sign lights · «батискаф «Триест»»
   y60: 5.0, y60Land: 6.2,                      // 1960 counts up, lands with «шестидесятом»
   rise2: 6.75, lift2: 7.15,
-  half: 7.0, jc: 9.15, solo: 9.75, jcOut: 11.5, // card «спустя полвека» · «Джеймс Кэмерон, 2012:» · «одиночный спуск»
+  half: 7.0, jc: 9.05, solo: 9.55, jcOut: 11.75, // card «спустя полвека» · «Джеймс Кэмерон, 2012:» · «одиночный спуск»
   both: 11.85, heavy: 13.3,                    // «оба раза людей берегла» · «тяжёлая стальная оболочка»
   drop3: 12.45, push3: 12.7, push3End: 13.5,   // back to the sphere photo; loupe onto the sphere wall; push in
   arc: 13.6, sph: 14.2,                        // the wall is traced · «стальная сфера»
   press: 15.45,                                // «держит давление вместо них»
   rise3: 16.3, lift3: 16.75,
-  tags: 16.95, back: 17.55,                    // pulled back to the whole table; index tags on both prints
+  back: 17.55,                                 // pulled back to the whole table; the last card stays
 };
 export const EVENTS = [
   { t: 0.17, k: 'light' }, { t: HIT.first, k: 'label' },
@@ -34,5 +34,4 @@ export const EVENTS = [
   { t: HIT.half, k: 'label' }, { t: HIT.jc, k: 'label' }, { t: HIT.solo, k: 'label' },
   { t: HIT.both, k: 'label' }, { t: HIT.drop3, k: 'loupe' }, { t: HIT.heavy, k: 'label' }, { t: HIT.arc, k: 'ring' },
   { t: HIT.sph, k: 'label' }, { t: HIT.press, k: 'label' }, { t: HIT.lift3, k: 'loupe' },
-  { t: HIT.tags, k: 'ring' }, { t: HIT.tags + 0.25, k: 'label' },
 ];

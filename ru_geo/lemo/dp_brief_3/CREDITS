@@ -1,0 +1,15 @@
+Опасные места · board film PART 3 (film 297.50–468.60: Challenger Deep + chapter «ХОЛОД И ЖАРА»; Engineering Briefing Board) — credits
+
+Photographs (ru_geo/deadly_places/archive/img, see archive/credits.json; uncut crops on photo paper, kit/tools/make_print.py)
+  print_vostok.png   vostok_photo.jpg — Vostok Station, new wintering complex, 2023–2024 — Arctic and Antarctic Research Institute, CC BY 4.0
+                     commons.wikimedia.org/wiki/File:Vostok_Station_2024.png  (--crop 0,40,1200,940 --w 1200)
+                     · on the board «станция «Восток», 2023–2024 · ААНИИ, CC BY 4.0»
+  print_dv.png       death_valley.jpg — Badwater, Death Valley, from a satellite, Oct 2023 — NASA, public domain
+                     images.nasa.gov/details/PIA26197  (--crop 0,160,1050,1280 --w 1050) · on the board «Бэдуотер со спутника, 2023 · NASA»
+  print_dvterra.png  dv_terra.jpg — Death Valley, perspective view from Terra data — NASA, public domain
+                     images.nasa.gov/details/PIA12091  (--crop 0,80,1488,1180 --w 1300) · on the board «Долина Смерти, данные спутника Terra · NASA»
+  print_mponeng.png  mponeng_surface.jpg — Mponeng gold mine, surface buildings — JMK (Wikimedia Commons), CC BY-SA 4.0
+                     commons.wikimedia.org/wiki/File:Mponeng-goudmyn,_Merafong_City-pm,_Wesrand-dm,_a.jpg  (--crop 0,200,1920,680 --w 1500)
+                     · on the board «шахта Мпоненг, ЮАР · фото: JMK, CC BY-SA 4.0»
+Map: Antarctica outline from johan/world.geo.json (Natural Earth 1:110m, public domain), south polar azimuthal projection.
+Fonts: Pangolin, Fira Sans Condensed, IBM Plex Mono — SIL Open Font License 1.1.

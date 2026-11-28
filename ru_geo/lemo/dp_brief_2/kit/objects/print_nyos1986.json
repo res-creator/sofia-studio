@@ -1,0 +1,15 @@
+{
+  "id": "print_nyos1986",
+  "w": 1308,
+  "h": 942,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/deadly_places/archive/img/nyos_1986.jpg",
+    "id": "print_nyos1986",
+    "crop": "0,0,1728,1201",
+    "w": 1200,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

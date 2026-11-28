@@ -1,0 +1,17 @@
+Опасные места · board film PART 4 (film 468.60–592.36: chapters «НЕДРА» and «КТО ОСТАНОВИЛ СЕКУНДОМЕР»; Engineering Briefing Board) — credits
+
+Photographs (ru_geo/deadly_places/archive/img, see archive/credits.json; uncut crops on photo paper, kit/tools/make_print.py)
+  print_mine.png  mponeng_surface.jpg — Mponeng mine, surface buildings — JMK, Wikimedia Commons, CC BY-SA 4.0 (--crop 0,150,1920,780 --w 1400)
+                  · on the board «шахта Мпоненг, ЮАР: надшахтные постройки / фото: JMK, Wikimedia Commons, CC BY-SA 4.0»
+  print_sea.png   sea_cold.jpg — ice on the North Sea beach, Netherlands — Eric Koch / Anefo, Nationaal Archief, Flickr Commons, no known restrictions
+                  (--crop 330,80,1920,1452 --w 1200) · on the board «лёд на берегу Северного моря, Нидерланды / архив Anefo, без ограничений»
+  scoreboard thumbnails (w 600 crops):
+  t_ev    everest_summit.jpg — NASA, public domain          t_nyos  nyos_1986.jpg — Jack Lockwood, USGS, public domain
+  t_sea   cold_plunge.jpg — U.S. Marine Corps, public domain t_tri   trieste_1960.jpg — U.S. Navy, public domain
+  t_vos   vostok_photo.jpg — AARI, CC BY 4.0 (crop without the station's lettering)
+  t_dv    death_valley.jpg — NASA, public domain            t_mine  mponeng_surface.jpg — JMK, CC BY-SA 4.0
+  (the thumbnails are not individually captioned on the board; the film's description / end credits must carry the CC BY and CC BY-SA credits:
+   «станция «Восток»: ААНИИ, CC BY 4.0», «шахта Мпоненг: JMK, CC BY-SA 4.0»)
+Everything else drawn in marker. No generated images.
+Fonts (SIL Open Font License 1.1): Pangolin, Fira Sans Condensed, IBM Plex Mono.
+Engine: Lemo-Opuscar briefing-board kit (board.js as in ru_geo/lemo/rp_brief_2).

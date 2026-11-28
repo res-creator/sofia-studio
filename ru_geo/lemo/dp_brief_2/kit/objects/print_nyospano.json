@@ -1,0 +1,15 @@
+{
+  "id": "print_nyospano",
+  "w": 1744,
+  "h": 718,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/deadly_places/archive/img/nyos_pano.jpg",
+    "id": "print_nyospano",
+    "crop": "0,0,1920,689",
+    "w": 1600,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

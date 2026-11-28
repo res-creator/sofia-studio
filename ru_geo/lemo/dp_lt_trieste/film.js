@@ -1,8 +1,9 @@
-// «Мысленный эксперимент» — «Отдалённые места»: the Challenger Deep on the light table — the bathyscaphe «Trieste» over the
-// Mariana Trench before the 1960 dive (US Navy photo NH 96797) and HMS Challenger (engraving, The Illustrated London News, 1872).
-// Adapted from ru_geo/lemo/cs_lt_merc (Archive Light Table, Lemo-Opuscar demo engine). World units = texture px of the Trieste
-// print (k = 1); the engraving lies at k = 0.95. One camera; three loupe landings: the «TRIESTE» sign on the tower (push in),
-// the sea below the hull (no push), the hull of the Challenger (push in); then a pull back to the whole table.
+// «Мысленный эксперимент» — «Опасные места»: the first descents on the light table — Don Walsh and Jacques Piccard in the steel
+// sphere of the «Trieste» (NOAA, 1960) and the bathyscaphe on the surface before the dive (US Navy photo NH 96797, 1960).
+// James Cameron (2012) has no licensed photo here: he appears only as a reading card, with no picture.
+// Adapted from ru_geo/lemo/rp_lt_deep (Archive Light Table, Lemo-Opuscar demo engine). World units = texture px of the Trieste
+// print (k = 1); the sphere photo lies at k = 0.78. One camera; three loupe landings, each with a push: the two men,
+// the «TRIESTE» sign, the wall of the sphere; then a pull back to the whole table.
 // Picture: a WebGL2 fragment shader; marks and labels on a 2D canvas above it. No text in the bottom 250 px.
 import { HIT, DUR } from './timeline.js';
 
@@ -38,39 +39,48 @@ const rot = (v, a) => { const c = Math.cos(a), s = Math.sin(a); return [c * v[0]
 
 // ---------------- the table ----------------
 const IT = {
-  tr: { c: [0, 0], r: -0.6, k: 1.0, size: [2000, 1508] },          // Trieste photo (1920×1428 scan + 40 px margin)
-  ch: { c: [2190, 60], r: 0.9, k: 0.95, size: [2000, 1396] },      // Challenger engraving (1920×1316 scan + 40 px margin)
+  tr: { c: [0, 0], r: -0.6, k: 1.0, size: [2000, 1508] },          // Trieste surface photo (1920×1428 scan + 40 px margin)
+  pw: { c: [-1720, 30], r: 0.8, k: 0.78, size: [1263, 2000] },     // Walsh and Piccard in the sphere (1183×1920 scan + 40 px margin)
 };
 const toW = (it, p) => { const o = rot([(p[0] - it.size[0] / 2) * it.k, (p[1] - it.size[1] / 2) * it.k], it.r * Math.PI / 180); return [it.c[0] + o[0], it.c[1] + o[1]]; };
 const T = p => toW(IT.tr, [p[0] + 40, p[1] + 40]);     // Trieste scan px (archive/img/trieste_1960.jpg) -> world
-const C = p => toW(IT.ch, [p[0] + 40, p[1] + 40]);     // Challenger scan px (archive/img/hms_challenger.jpg) -> world
+const P = p => toW(IT.pw, [p[0] + 40, p[1] + 40]);     // sphere photo scan px (archive/img/piccard_walsh.jpg) -> world
 const D2R = Math.PI / 180;
 
 // points on the scans (scan px, measured on the files)
 const SIGN = T([972, 692]);                  // the «TRIESTE» sign on the tower (x 952–992, y 685–700)
 const SIGN_UL = [[948, 707], [996, 707]];    // underline under it
-const SEA = T([560, 1030]);                  // open sea below the hull, foreground
-const HULL = C([1000, 1000]);                // the hull amidships, below the funnel
+const MEN = P([560, 1080]);                  // between the two men
+const FACE_A = [615, 900], FACE_B = [500, 1290];   // the man at the back (headset) · the man in front
+const SPH = P([720, 150]);                   // the top of the sphere wall
+// the edge of the dark sphere wall against the lit interior (scan px, measured column by column)
+const RIM = [[250, 141], [300, 118], [350, 98], [400, 82], [450, 69], [500, 60], [550, 51], [600, 45], [650, 42], [700, 41],
+  [750, 41], [800, 45], [850, 51], [900, 61], [950, 74], [1000, 91], [1050, 110], [1100, 133]];
 const MAG = 2.4;
 
 // ---------------- camera ----------------
 const add = (a, b) => [a[0] + b[0], a[1] + b[1]];
-const V_TR = [516, 20], V_CH = [IT.ch.c[0] + 516, 40], V_ALL = [1100, -110];
+const V_TR = [516, 20], V_PW = [IT.pw.c[0] + 420, 20], V_CAM = [-606, -322], V_ALL = [-450, -20];
 const CAM = [
   // t, centre, zoom, roll (deg)
-  [0.0, add(V_TR, [-12, 4]), 0.61, -0.6],
-  [HIT.push1, add(V_TR, [8, 2]), 0.615, -0.4],
-  [HIT.push1End, SIGN, 3.6, -0.3],
-  [HIT.rise1, SIGN, 3.6, -0.3],
-  [HIT.lift1 + 0.15, add(V_TR, [0, -10]), 0.62, -0.2],
-  [HIT.lift2, add(V_TR, [14, 6]), 0.625, 0.0],
-  [HIT.chAt, V_CH, 0.62, 0.4],
-  [HIT.push3, add(V_CH, [10, 4]), 0.622, 0.5],
-  [HIT.push3End, HULL, 3.6, 0.9],
-  [HIT.rise3, HULL, 3.6, 0.9],
-  [HIT.lift3 + 0.1, add(V_CH, [-260, -50]), 0.50, 0.4],
-  [HIT.back, V_ALL, 0.40, 0.0],
-  [DUR, add(V_ALL, [0, 4]), 0.402, 0.1],
+  [0.0, add(V_PW, [-12, 4]), 0.58, -0.4],
+  [HIT.push1, add(V_PW, [6, 2]), 0.585, -0.3],
+  [HIT.push1End, MEN, 3.6, -0.2],
+  [HIT.rise1, MEN, 3.6, -0.2],
+  [HIT.lift1 + 0.1, add(V_PW, [0, -6]), 0.585, -0.3],
+  [HIT.push2, add(V_TR, [8, 2]), 0.615, -0.4],
+  [HIT.push2End, SIGN, 3.6, -0.3],
+  [HIT.rise2, SIGN, 3.6, -0.3],
+  [HIT.lift2 + 0.15, add(V_TR, [0, -10]), 0.62, -0.2],
+  [8.2, V_CAM, 0.48, 0.0],
+  [11.4, add(V_CAM, [10, 4]), 0.484, 0.1],
+  [12.4, add(V_PW, [-4, 0]), 0.58, 0.3],
+  [HIT.push3, add(V_PW, [6, 2]), 0.585, 0.3],
+  [HIT.push3End, SPH, 3.6, 0.4],
+  [HIT.rise3, SPH, 3.6, 0.4],
+  [HIT.lift3 + 0.1, add(V_PW, [200, -20]), 0.56, 0.2],
+  [HIT.back, V_ALL, 0.45, 0.0],
+  [DUR, add(V_ALL, [0, 3]), 0.452, 0.05],
 ];
 const camC = track2(CAM.map(k => [k[0], k[1]]));
 const camLZ = track(CAM.map(k => [k[0], Math.log(k[2])]));
@@ -80,14 +90,15 @@ function w2s(w, cam) { const d = rot([(w[0] - cam.c[0]) * cam.z, (w[1] - cam.c[1
 
 // ---------------- the loupe ----------------
 const phys = t => camAt(t).z * MAG;
+const S1 = 1.3, S3 = 2.1;                    // ≈ 1.0 and 1.65 screen px per scan px on the sphere photo (k = 0.78)
 const EP = [
-  { d: HIT.drop1, l: HIT.lift1, p: SIGN, rw: 300,
-    push: { t0: HIT.push1, t1: HIT.push1End, r: HIT.rise1, S: 1.9, ic: add(SIGN, [189, -21]) },   // 1.9 screen px per scan px
+  { d: HIT.drop1, l: HIT.lift1, p: MEN, rw: 330,
+    push: { t0: HIT.push1, t1: HIT.push1End, r: HIT.rise1, S: S1, ic: add(MEN, [110 / S1, 70 / S1]) } },
+  { d: HIT.drop2, l: HIT.lift2, p: SIGN, rw: 300,
+    push: { t0: HIT.push2, t1: HIT.push2End, r: HIT.rise2, S: 1.9, ic: add(SIGN, [189, -21]) },   // 1.9 screen px per scan px
     band: { c: SIGN, hw: 27, hh: 11, rot: IT.tr.r * D2R, t0: HIT.sign, amt: 0.55 } },
-  { d: HIT.drop2, l: HIT.lift2, p: SEA, rw: 250 },
-  { d: HIT.drop3, l: HIT.lift3, p: HULL, rw: 320,
-    push: { t0: HIT.push3, t1: HIT.push3End, r: HIT.rise3, S: 2.0, ic: add(HULL, [70, -40]) },    // 2.0 × 0.95 ≈ 1.9 px per scan px
-    band: { c: C([1075, 1015]), hw: 480 * 0.95, hh: 80 * 0.95, rot: IT.ch.r * D2R, t0: HIT.hull, amt: 0.75 } },
+  { d: HIT.drop3, l: HIT.lift3, p: SPH, rw: 330,
+    push: { t0: HIT.push3, t1: HIT.push3End, r: HIT.rise3, S: S3, ic: add(P([720, 41]), [0, 250 / S3]) } },
 ];
 for (const e of EP) if (e.push) {
   const q = e.push;
@@ -125,8 +136,8 @@ const VS = `#version 300 es
 in vec2 p; void main(){ gl_Position = vec4(p, 0., 1.); }`;
 const FS = `#version 300 es
 precision highp float;
-uniform sampler2D tTr, tCh;
-uniform vec4 uTr, uCh;                          // centre.xy, rotation (rad), world per texel
+uniform sampler2D tTr, tPw;
+uniform vec4 uTr, uPw;                          // centre.xy, rotation (rad), world per texel
 uniform vec2 uCam; uniform float uZ, uRot, uT, uLight;
 uniform vec2 uLensC; uniform float uLensR, uLensOn, uLensA, uLift;
 uniform vec2 uIntC; uniform float uS, uK;
@@ -140,9 +151,9 @@ vec4 tg(sampler2D t, vec2 uv, float fpx){ vec2 sz = vec2(textureSize(t, 0)); vec
 vec2 itemUV(vec4 it, sampler2D t, vec2 w){ vec2 sz = vec2(textureSize(t, 0)); return (rot(w - it.xy, -it.z)/it.w + sz*0.5)/sz; }
 bool inside(vec2 uv){ return uv.x > 0. && uv.y > 0. && uv.x < 1. && uv.y < 1.; }
 vec3 lightTable(vec2 w){
-  vec2 lo = vec2(-2700., -1750.), hi = vec2(4900., 1950.);
+  vec2 lo = vec2(-2450., -1150.), hi = vec2(1350., 1150.);
   vec2 d = min(w - lo, hi - w); float e = min(d.x, d.y);
-  vec2 cd = (w - vec2(1100., 0.)) / vec2(5600., 3400.);
+  vec2 cd = (w - vec2(-550., 0.)) / vec2(4000., 2600.);
   float L = (1. - 0.14*dot(cd, cd)) + (vn(w*0.035) - 0.5)*0.010 + (vn(w*0.005) - 0.5)*0.012;
   vec3 lit = vec3(0.968, 0.976, 0.986)*L*uLight + vec3(0.035, 0.037, 0.04)*(1. - uLight);
   vec3 frame = vec3(0.33, 0.34, 0.35) + 0.05*vn(vec2(w.x*0.006, w.y*1.2)) - 0.14*smoothstep(0., 80., e + 80.);
@@ -169,7 +180,7 @@ void print1(inout vec3 col, vec3 L, vec4 it, sampler2D t, vec2 w, float fp){
 vec3 scene(vec2 w, float fp, float inl){
   vec3 L = lightTable(w), col = L;
   print1(col, L, uTr, tTr, w, fp);
-  print1(col, L, uCh, tCh, w, fp);
+  print1(col, L, uPw, tPw, w, fp);
   if (inl > .5 && uBandA.y > 0.){                      // the band lights up: brighter paper, darker ink; the rest dims
     vec2 q = abs(rot(w - uBand.xy, -uBandA.x)) - uBand.zw;
     float inb = smoothstep(6., -2., max(q.x, q.y));
@@ -323,71 +334,103 @@ function line(c, t, t0, id, s, x, y, font, col, live) {
 // a line drawn on (from a to b) with an eased progress k
 function stroke(c, a, b, k, lw = 2.4) { if (k <= 0) return; c.strokeStyle = ORANGE; c.lineWidth = lw; c.beginPath(); c.moveTo(a[0], a[1]); c.lineTo(lerp(a[0], b[0], k), lerp(a[1], b[1], k)); c.stroke(); }
 
+// two anchors (one per person), one caption plate: leaders from both anchors meet at the plate's left edge
+function label2(c, t, t0, tOut, id, anchors, px, py, lines) {
+  const k = seg(t, t0, t0 + 0.45), out = seg(t, tOut, tOut + 0.3); if (k <= 0 || out >= 1) return;
+  c.save(); c.globalAlpha = 1 - out;
+  const pr = 9 * eo(seg(t, t0, t0 + 0.25)), lk = eo(seg(t, t0 + 0.08, t0 + 0.4));
+  c.strokeStyle = ORANGE; c.lineWidth = 2;
+  for (const a of anchors) {
+    ring(c, a, pr, 1, 2); dot(c, a, 3.2);
+    const d = [px - a[0], py - a[1]], n = Math.hypot(d[0], d[1]), s = [a[0] + d[0] / n * pr, a[1] + d[1] / n * pr];
+    c.beginPath(); c.moveTo(s[0], s[1]); c.lineTo(lerp(s[0], px, lk), lerp(s[1], py, lk)); c.stroke();
+  }
+  const tk = eo(seg(t, t0 + 0.35, t0 + 0.8));
+  if (tk > 0) {
+    const pad = 18, gap = 8; let wmax = 0, hsum = 0; const sz = [];
+    for (const [f, , s] of lines) { c.font = f; wmax = Math.max(wmax, c.measureText(s).width); const p = parseFloat(f.split(' ')[1]); sz.push(p); hsum += p * 1.12; }
+    hsum += gap * (lines.length - 1);
+    const pw = wmax + pad * 2, ph = hsum + pad * 2 - 6, x0 = px + 4, y0 = py - ph / 2;
+    c.save(); c.beginPath(); c.rect(x0, y0 - 4, pw * tk, ph + 8); c.clip();
+    plate(c, x0, y0, pw, ph);
+    let y = y0 + pad - 4;
+    lines.forEach(([f, col, s], i) => { y += sz[i] * 0.98; text(c, tk >= 1 ? `${id}${i}` : null, s, x0 + pad, y, f, col); y += sz[i] * 0.14 + gap; });
+    c.restore();
+  }
+  c.restore();
+}
+// a polyline drawn on with an eased progress k (0..1 of its length)
+function polyline(c, pts, k, lw = 3) {
+  if (k <= 0) return;
+  const L = []; let tot = 0; for (let i = 1; i < pts.length; i++) { const l = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); L.push(l); tot += l; }
+  let rem = tot * k; c.strokeStyle = ORANGE; c.lineWidth = lw; c.lineJoin = 'round'; c.beginPath(); c.moveTo(...pts[0]);
+  for (let i = 1; i < pts.length && rem > 0; i++) {
+    const f = Math.min(1, rem / L[i - 1]); c.lineTo(lerp(pts[i - 1][0], pts[i][0], f), lerp(pts[i - 1][1], pts[i][1], f)); rem -= L[i - 1];
+  }
+  c.stroke();
+}
+
 function overlay(t, st) {
   const c = ov; TXT = [];
   c.setTransform(1, 0, 0, 1, 0, 0); c.clearRect(0, 0, W, H);
   const cam = st.cam;
-  const sT = p => w2s(T(p), cam), sC = p => w2s(C(p), cam);
+  const sT = p => w2s(T(p), cam), sP = p => w2s(P(p), cam);
 
-  // ---- 1. people have been down there: 1960 · 2012 · 2019 · and later — only a handful
+  // ---- 1. the first to the bottom: Piccard and Walsh — 1960
   const X = 1270;
-  card(c, t, HIT.people, HIT.lift2 + 0.1, X, 110, 590, grow(t, [[0, 84], [HIT.y60, 190], [HIT.y12, 288], [HIT.y19, 386], [HIT.few, 510]]), t < HIT.push1 + 0.25 ? sT([1560, 770]) : null, (c, x, y, live) => {
-    line(c, t, HIT.people + 0.2, 'p0', 'люди там бывали:', x + 28, y + 52, '400 30px PS', PAPER2, live);
+  card(c, t, HIT.first, 7.6, X, 110, 560, grow(t, [[0, 84], [HIT.y60, 196]]), null, (c, x, y, live) => {
+    line(c, t, HIT.first + 0.2, 'f0', 'первыми на дно спустились', x + 28, y + 52, '400 30px PS', PAPER2, live);
     const kk = seg(t, HIT.y60, HIT.y60Land);
     if (kk > 0) {
       const n = Math.round(lerp(1900, 1960, eo(kk)));
-      text(c, live && n === 1960 ? 'p1' : null, String(n), x + 24, y + 158, '500 96px PM', ORANGE);
+      text(c, live && n === 1960 ? 'f1' : null, String(n), x + 24, y + 164, '500 104px PM', ORANGE);
     }
-    line(c, t, HIT.y12, 'p2', '2012', x + 24, y + 256, '500 96px PM', ORANGE, live);
-    line(c, t, HIT.y19, 'p3', '2019', x + 24, y + 354, '500 96px PM', ORANGE, live);
-    line(c, t, HIT.later, 'p4', 'и позже', x + 300, y + 346, '500 36px PS', PAPER, live);
-    line(c, t, HIT.few, 'p5', 'но спускались', x + 28, y + 424, '400 30px PS', PAPER2, live);
-    line(c, t, HIT.few2, 'p6', 'считаные единицы', x + 26, y + 482, '500 46px PS', ORANGE, live);
   });
+  if (st.ep === EP[0]) {
+    label2(c, t, HIT.men, HIT.lift1 - 0.15, 'mn', [int2s(P(FACE_A), st), int2s(P(FACE_B), st)], 1180, 470,
+      [['600 50px SS', PAPER, 'Пикар и Уолш']]);
+  }
 
   // ---- 2. inside the lens on the tower: the «TRIESTE» sign
-  if (st.ep === EP[0] && t > HIT.sign - 0.1) {
-    const rOut = seg(t, HIT.rise1 - 0.1, HIT.rise1 + 0.25);
+  if (st.ep === EP[1] && t > HIT.sign - 0.1) {
+    const rOut = seg(t, HIT.rise2 - 0.1, HIT.rise2 + 0.25);
     c.save(); c.globalAlpha = 1 - rOut;
     stroke(c, int2s(T(SIGN_UL[0]), st), int2s(T(SIGN_UL[1]), st), eo(seg(t, HIT.sign, HIT.sign + 0.4)), 3);
     c.restore();
-    label(c, t, HIT.signLbl, HIT.rise1 - 0.1, 'tr', int2s(T([972, 662]), st), 150, -1, [['600 46px SS', PAPER, 'батискаф «Триест»']]);
+    label(c, t, HIT.signLbl, HIT.lift2 - 0.35, 'tr', int2s(T([972, 662]), st), 150, -1, [['600 46px SS', PAPER, 'батискаф «Триест»']]);
   }
 
-  // ---- 3. the name: after the British ship «Challenger»
-  const XB = 1230;
-  card(c, t, HIT.name, 21.5, XB, 100, 600, grow(t, [[0, 80], [HIT.name2, 150]]), t < HIT.push3 + 0.25 ? sC([1560, 640]) : null, (c, x, y, live) => {
-    line(c, t, HIT.name + 0.2, 'b0', 'название впадине дали', x + 28, y + 52, '400 30px PS', PAPER2, live);
-    line(c, t, HIT.name2, 'b1', 'по британскому кораблю', x + 28, y + 112, '500 40px PS', PAPER, live);
+  // ---- 3. half a century later: James Cameron, 2012 — a reading card only (no licensed photo of him)
+  {
+    c.font = '500 48px PS'; const wa = c.measureText('Джеймс Кэмерон, ').width; c.font = '500 48px PM'; const wb = c.measureText('2012:').width;
+    const cw = Math.max(560, wa + wb + 60), cx = 960 - cw / 2;
+    card(c, t, HIT.half, HIT.jcOut, cx, 70, cw, grow(t, [[0, 84], [HIT.jc, 152], [HIT.solo, 218]]), null, (c, x, y, live) => {
+      line(c, t, HIT.half + 0.2, 'j0', 'спустя полвека', x + 28, y + 52, '400 30px PS', PAPER2, live);
+      const k = eo(seg(t, HIT.jc, HIT.jc + 0.4));
+      if (k > 0) {
+        c.save(); c.beginPath(); c.rect(x + 26, y - 10, (wa + wb + 6) * k, 200); c.clip();
+        text(c, live && k >= 1 ? 'j1' : null, 'Джеймс Кэмерон, ', x + 28, y + 124, '500 48px PS', PAPER);
+        text(c, live && k >= 1 ? 'j2' : null, '2012:', x + 28 + wa, y + 124, '500 48px PM', ORANGE);
+        c.restore();
+      }
+      line(c, t, HIT.solo, 'j3', 'одиночный спуск', x + 28, y + 190, '500 44px PS', ORANGE, live);
+    });
+  }
+
+  // ---- 4. both times a heavy steel shell kept the people: the sphere wall
+  card(c, t, HIT.both, 99, 1150, 470, 700, grow(t, [[0, 84], [HIT.heavy, 150], [HIT.press, 216]]), null, (c, x, y, live) => {
+    line(c, t, HIT.both + 0.2, 'b0', 'оба раза людей берегла', x + 28, y + 52, '400 30px PS', PAPER2, live);
+    line(c, t, HIT.heavy, 'b1', 'тяжёлая стальная оболочка', x + 28, y + 116, '500 40px PS', PAPER, live);
+    line(c, t, HIT.press, 'b2', 'держит давление вместо них', x + 28, y + 184, '500 40px PS', ORANGE, live);
   });
-  if (st.ep === EP[2] && t > HIT.hull - 0.1) {
+  if (st.ep === EP[2] && t > HIT.arc - 0.1) {
     const rOut = seg(t, HIT.rise3 - 0.1, HIT.rise3 + 0.25);
     c.save(); c.globalAlpha = 1 - rOut;
-    stroke(c, int2s(C([600, 1092]), st), int2s(C([1530, 1080]), st), eo(seg(t, HIT.hull, HIT.hull + 0.6)), 3);
+    polyline(c, RIM.map(p => int2s(P([p[0], p[1] - 6]), st)), eo(seg(t, HIT.arc, HIT.arc + 0.7)), 3);
     c.restore();
-    label(c, t, HIT.ship, HIT.rise3 - 0.1, 'ch', int2s(C([985, 945]), st), 170, -1, [['600 46px SS', PAPER, 'корабль «Челленджер»']]);
+    label(c, t, HIT.sph, HIT.lift3 - 0.15, 'sp', int2s(P([400, 76]), st), -190, 1, [['600 50px SS', PAPER, 'стальная сфера']]);
   }
-  // ---- 4. its crew first measured the depth here — in 1875
-  card(c, t, HIT.crew, 21.5, XB, 290, 600, grow(t, [[0, 78], [HIT.crew2, 128], [HIT.y75, 280]]), null, (c, x, y, live) => {
-    line(c, t, HIT.crew + 0.2, 'c0', 'его экипаж впервые', x + 28, y + 52, '500 32px PS', PAPER, live);
-    line(c, t, HIT.crew2, 'c1', 'измерил здесь глубину', x + 28, y + 100, '500 32px PS', PAPER, live);
-    const kk = seg(t, HIT.y75, HIT.y75Land);
-    if (kk > 0) {
-      const n = Math.round(lerp(1800, 1875, eo(kk)));
-      text(c, live && n === 1875 ? 'c2' : null, String(n), x + 24, y + 232, '500 112px PM', ORANGE);
-      line(c, t, HIT.y75 + 0.3, 'c3', 'год', x + 330, y + 226, '500 40px PS', PAPER, live);
-    }
-  });
 
-  // ---- 5. the whole table: down and up equally empty, only differently
-  card(c, t, HIT.up, 99, 90, 56, 720, grow(t, [[0, 84], [HIT.up2, 160]]), null, (c, x, y, live) => {
-    line(c, t, HIT.up + 0.2, 'u0', 'вниз и вверх одинаково безлюдно,', x + 28, y + 54, '500 34px PS', PAPER, live);
-    line(c, t, HIT.up2, 'u1', 'только по-разному', x + 26, y + 124, '500 48px PS', ORANGE, live);
-  });
-  if (t > HIT.tags - 0.1) {
-    label(c, t, HIT.tags, 99, 'it', sT([972, 650]), 120, 1, [['500 28px PS', PAPER, 'батискаф «Триест»'], ['500 30px PM', ORANGE, '1960']]);
-    label(c, t, HIT.tags + 0.25, 99, 'ic', sC([1000, 860]), 150, 1, [['500 28px PS', PAPER, 'корабль «Челленджер»'], ['500 30px PM', ORANGE, '1875']]);
-  }
 }
 
 // ---------------- page contract ----------------
@@ -411,10 +454,11 @@ window.render = t => {
 window.TEXTS = t => { window.render(t); return TXT; };
 async function load() {
   for (const f of ['500 20px PM', '400 20px PS', '500 20px PS', '600 20px SS']) await document.fonts.load(f, 'Ая');
-  const ims = await Promise.all(['trieste', 'challenger'].map(n => img(`assets/tex/${n}.jpg`)));
-  [['tTr', 'uTr', IT.tr], ['tCh', 'uCh', IT.ch]].forEach(([tn, un, it], i) => {
+  const ims = await Promise.all(['trieste', 'pw'].map(n => img(`assets/tex/${n}.jpg`)));
+  [['tTr', 'uTr', IT.tr], ['tPw', 'uPw', IT.pw]].forEach(([tn, un, it], i) => {
     tex(i, ims[i]); gl.uniform1i(U(tn), i);
     gl.uniform4f(U(un), it.c[0], it.c[1], it.r * D2R, it.k);
   });
 }
 load().then(() => { window.render(0); window.READY = true; });
+

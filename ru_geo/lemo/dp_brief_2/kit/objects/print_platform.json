@@ -1,0 +1,15 @@
+{
+  "id": "print_platform",
+  "w": 980,
+  "h": 1052,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/deadly_places/archive/img/nyos_platform.jpg",
+    "id": "print_platform",
+    "crop": "0,0,1075,1161",
+    "w": 900,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

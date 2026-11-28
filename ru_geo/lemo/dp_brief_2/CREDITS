@@ -1,0 +1,24 @@
+Опасные места · board film PART 2 (film 122.65–297.50: chapters «НЕВИДИМЫЙ ГАЗ» and «ВОДА»; Engineering Briefing Board) — credits
+
+Photographs (ru_geo/deadly_places/archive/img, see archive/credits.json; uncut crops on photo paper, kit/tools/make_print.py)
+  print_nyos1986.png  nyos_1986.jpg — Lake Nyos soon after the 1986 release — Jack Lockwood, USGS, public domain
+                      commons.wikimedia.org/wiki/File:Lake_Nyos_1986_001.jpg · on the board «озеро Ньос вскоре после выброса, 1986 · USGS»
+  print_nyospano.png  nyos_pano.jpg — Lake Nyos 29 Aug 1986 — USGS, public domain
+                      commons.wikimedia.org/wiki/File:Tml15-16_Nc.jpg · «озеро Ньос через неделю после выброса, 1986 · USGS»
+  print_vent.png      nyos_vent.jpg — degassing vent, 2006 — Bill Evans, USGS, public domain (--crop 0,120,1728,1339)
+                      commons.wikimedia.org/wiki/File:Lake_nyos_co2_vent.jpg · «труба дегазации выбрасывает воду с газом, 2006 · USGS»
+  print_platform.png  nyos_platform.jpg — degassing raft — Bill Evans, USGS, public domain
+                      commons.wikimedia.org/wiki/File:Lake_Nyos_2001.jpg · «плот с трубой для дегазации · USGS»
+  print_sea.png       sea_cold.jpg — ice table on a Dutch North Sea beach — Eric Koch / Anefo, Nationaal Archief, Flickr Commons (no known restrictions)
+                      · «побережье Северного моря · архив, без ограничений»
+  print_plunge.png    cold_plunge.jpg — cold water immersion training, Norway 2022 — U.S. Marine Corps (Lance Cpl. Kyle Jia), public domain
+                      · «учения в Норвегии, 2022 · Корпус морской пехоты США»
+  print_jacket.png    lifejacket.jpg — life jackets, Kühlungsborn marina — Dietmar Rabich, CC BY-SA 4.0
+                      · «спасательные жилеты · фото: Dietmar Rabich, CC BY-SA 4.0»
+
+Boundary data
+  Cameroon and neighbours: johan/world.geo.json (Natural Earth 1:110m, public domain), /tmp/world.geo.json → scenes/geo_cm.json.
+  Lake Nyos at 6.438° N, 10.298° E. Everything else drawn in marker. No generated images.
+
+Fonts (SIL Open Font License 1.1): Pangolin, Fira Sans Condensed, IBM Plex Mono.
+Engine: Lemo-Opuscar briefing-board kit (board.js as in ru_geo/lemo/rp_brief_2).
