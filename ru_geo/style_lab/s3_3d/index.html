@@ -1,0 +1,293 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Clay Atlas · Гренландия и Африка</title>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+<style>
+@font-face{font-family:Man;src:url(fonts/Manrope-500-sub.woff2) format('woff2');font-weight:500}
+@font-face{font-family:Man;src:url(fonts/Manrope-800-sub.woff2) format('woff2');font-weight:800}
+html,body{margin:0;background:#141d22;overflow:hidden}
+canvas{position:absolute;left:0;top:0;width:1920px;height:1080px}
+</style></head>
+<body>
+<script type="module">
+// Style lab · direction 3 «Stylized 3D» («Clay Atlas»): the Mercator map as matte clay slabs on an engraved ocean board.
+// Greenland's slab lifts off, travels to the equator over Africa shrinking to its TRUE size (a rigid rotation of its real
+// coastline on the sphere, re-projected with Mercator every frame), and settles on Africa. 14 s, window.render(t).
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+import { makePost } from '/core/three/post.js';
+import { clamp, lerp, seg, ss, eio, eo, back, monotone, mulberry } from '/core/lib.js';
+
+const Wd = 1920, Ht = 1080, Q = new URLSearchParams(location.search), SS = +(Q.get('ss') || 2);
+const DUR = 14;
+const C = { bg: '#141d22', table: '#1d2a31', bone: '#ece4d3', terra: '#b8553b', ochre: '#d7a14e', ink: '#16232a' };
+const K = 36 / (2 * Math.PI), D2R = Math.PI / 180;
+const mercY = lat => Math.log(Math.tan(Math.PI / 4 + Math.max(-85, Math.min(85, lat)) * D2R / 2)) * K;
+const invMercY = y => (2 * Math.atan(Math.exp(y / K)) - Math.PI / 2) / D2R;
+const X0 = -18.6, X1 = 18.6, Y0 = -7.9, Y1 = 17.6;      // board extent in map units (same as tools/ocean.py)
+const HL = .34, BT = .04;                                  // land slab height, bevel
+
+// ---------- renderer / scene ----------
+const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true });
+renderer.setPixelRatio(SS); renderer.setSize(Wd, Ht);
+renderer.toneMapping = THREE.NeutralToneMapping; renderer.toneMappingExposure = 1.0;
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.VSMShadowMap;
+document.body.appendChild(renderer.domElement);
+const ov = document.createElement('canvas'); ov.width = Wd; ov.height = Ht; document.body.appendChild(ov);
+const g = ov.getContext('2d');
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(C.bg);
+scene.fog = new THREE.Fog(C.bg, 30, 90);
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), .04).texture;
+scene.environmentIntensity = .5;
+const camera = new THREE.PerspectiveCamera(30, Wd / Ht, .5, 200);
+
+const key = new THREE.DirectionalLight('#fff0da', 2.6);
+key.position.set(-14, 22, -6); key.target.position.set(0, 0, -4);
+key.castShadow = true; key.shadow.mapSize.set(4096, 4096);
+Object.assign(key.shadow.camera, { left: -24, right: 24, top: 18, bottom: -18, near: 1, far: 70 });
+key.shadow.radius = 7; key.shadow.blurSamples = 20; key.shadow.bias = -.0004;
+scene.add(key, key.target);
+const rim = new THREE.DirectionalLight('#b9d2f2', 1.3); rim.position.set(16, 6, -22); scene.add(rim);
+const fill = new THREE.HemisphereLight('#f4ead8', '#20323a', .35); scene.add(fill);
+
+// ---------- textures ----------
+const tl = new THREE.TextureLoader();
+const loadTex = u => new Promise((r, e) => tl.load(u, r, undefined, e));
+const [oceanCol, oceanBump, geo] = await Promise.all([loadTex('data/ocean_col.png'), loadTex('data/ocean_bump.png'), fetch('data/geo.json').then(r => r.json())]);
+oceanCol.colorSpace = THREE.SRGBColorSpace;
+for (const t of [oceanCol, oceanBump]) { t.anisotropy = 16; t.generateMipmaps = true; t.minFilter = THREE.LinearMipmapLinearFilter; }
+function grainTexture() {      // fine clay grain (bump), tiles per map unit
+  const N = 512, c = document.createElement('canvas'); c.width = c.height = N; const x = c.getContext('2d'), im = x.createImageData(N, N), R = mulberry(11);
+  const a = new Float32Array(N * N); for (let i = 0; i < a.length; i++) a[i] = R();
+  for (let p = 0; p < 2; p++) { const b = a.slice(); for (let y = 0; y < N; y++) for (let xx = 0; xx < N; xx++) { let s = 0; for (let k = -1; k <= 1; k++) s += b[((y + (p ? k : 0) + N) % N) * N + (xx + (p ? 0 : k) + N) % N]; a[y * N + xx] = s / 3; } }
+  for (let i = 0; i < a.length; i++) { const v = 128 + (a[i] - .5) * 160; im.data[i * 4] = im.data[i * 4 + 1] = im.data[i * 4 + 2] = v; im.data[i * 4 + 3] = 255; }
+  x.putImageData(im, 0, 0); const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(1.5, 1.5); t.anisotropy = 8; return t;
+}
+const grain = grainTexture();
+const clay = (hex, o = {}) => new THREE.MeshPhysicalMaterial({ color: hex, roughness: .86, metalness: 0, sheen: .5, sheenRoughness: .75,
+  sheenColor: new THREE.Color('#fff3df'), bumpMap: grain, bumpScale: .35, ...o });
+
+// ---------- board (ocean) ----------
+const BW = X1 - X0, BH = Y1 - Y0, BCX = (X0 + X1) / 2, BCZ = -(Y0 + Y1) / 2;
+const board = new THREE.Mesh(new RoundedBoxGeometry(BW + .7, 1.0, BH + .7, 4, .35), clay('#3a5a65', { bumpMap: null, sheen: .2 }));
+board.position.set(BCX, -.5, BCZ); board.receiveShadow = true; board.castShadow = true; scene.add(board);
+const sea = new THREE.Mesh(new THREE.PlaneGeometry(BW, BH), new THREE.MeshPhysicalMaterial({ map: oceanCol, bumpMap: oceanBump, bumpScale: 2.2,
+  roughness: .78, sheen: .25, sheenRoughness: .8, sheenColor: new THREE.Color('#d8ecf0') }));
+sea.rotation.x = -Math.PI / 2; sea.position.set(BCX, .001, BCZ); sea.receiveShadow = true; scene.add(sea);
+const table = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.MeshStandardMaterial({ color: C.table, roughness: .95 }));
+table.rotation.x = -Math.PI / 2; table.position.y = -1.0; table.receiveShadow = true; scene.add(table);
+
+// ---------- land slabs ----------
+const toXY = p => [p[0] * D2R * K, mercY(p[1])];
+function shapeOf(poly, proj = toXY) {
+  const ring = r => { const pts = r.slice(0, -1).map(p => new THREE.Vector2(...proj(p))); return pts; };
+  const s = new THREE.Shape(ring(poly[0]));
+  for (const h of poly.slice(1)) s.holes.push(new THREE.Path(ring(h)));
+  return s;
+}
+function slabGeo(polys, h = HL) {
+  const gs = polys.map(p => {
+    const gg = new THREE.ExtrudeGeometry(shapeOf(p), { depth: h - 2 * BT, bevelEnabled: true, bevelThickness: BT, bevelSize: .035, bevelOffset: -.035, bevelSegments: 2, curveSegments: 1 });
+    gg.translate(0, 0, BT); gg.rotateX(-Math.PI / 2); return gg;
+  });
+  const m = mergeGeometries(gs); gs.forEach(x => x.dispose()); return m;
+}
+const centroid = polys => { let ax = 0, ay = 0, aa = 0; for (const p of polys) { const P = p[0].map(toXY); for (let i = 0; i < P.length - 1; i++) { const c = P[i][0] * P[i + 1][1] - P[i + 1][0] * P[i][1]; aa += c; ax += (P[i][0] + P[i + 1][0]) * c; ay += (P[i][1] + P[i + 1][1]) * c; } } return [ax / (3 * aa), ay / (3 * aa)]; };
+const restMat = clay(C.bone);
+const slabs = [];        // {mesh, delay}
+const R0 = mulberry(5);
+for (const p of geo.rest) {
+  const m = new THREE.Mesh(slabGeo([p]), restMat); m.castShadow = m.receiveShadow = true; scene.add(m);
+  const [cx, cy] = centroid([p]);
+  slabs.push({ mesh: m, delay: .25 + (cx + 18) / 36 * 1.1 + (17 - cy) / 25 * .35 + R0() * .12 });
+}
+const afMat = clay(C.bone), grMat = clay(C.bone);
+const africa = new THREE.Mesh(slabGeo(geo.africa), afMat); africa.castShadow = africa.receiveShadow = true; scene.add(africa);
+const [afx, afy] = centroid(geo.africa);
+slabs.push({ mesh: africa, delay: .25 + (afx + 18) / 36 * 1.1 + (17 - afy) / 25 * .35 });
+
+// Greenland: real coastline as unit vectors on the sphere; each frame rotated (rigid) and re-projected with Mercator
+const grGeo = slabGeo(geo.greenland);
+const gpos = grGeo.attributes.position, NV = gpos.count;
+const gUnit = new Float32Array(NV * 3), gH = new Float32Array(NV);
+for (let i = 0; i < NV; i++) {
+  const lon = gpos.getX(i) / K / D2R, lat = invMercY(-gpos.getZ(i));
+  const cl = Math.cos(lat * D2R);
+  gUnit[i * 3] = cl * Math.cos(lon * D2R); gUnit[i * 3 + 1] = cl * Math.sin(lon * D2R); gUnit[i * 3 + 2] = Math.sin(lat * D2R); gH[i] = gpos.getY(i);
+}
+const greenland = new THREE.Mesh(grGeo, grMat); greenland.castShadow = greenland.receiveShadow = true; scene.add(greenland);
+const [grx, gry] = centroid(geo.greenland);
+const G0 = [grx / K / D2R, invMercY(gry)];                 // lon/lat of Greenland's Mercator centroid (≈ its middle)
+const G1 = [20.5, 1.5];                                     // where its middle lands: central Africa, on the equator
+slabs.push({ mesh: greenland, delay: .25 + (grx + 18) / 36 * 1.1 + (17 - gry) / 25 * .35, gr: true });
+const qA = new THREE.Quaternion(), qB = new THREE.Quaternion(), qT = new THREE.Quaternion(), v3 = new THREE.Vector3();
+const ZAX = new THREE.Vector3(0, 0, 1), MAX = new THREE.Vector3(-Math.sin(G0[0] * D2R), Math.cos(G0[0] * D2R), 0);   // MAX ⟂ Greenland's meridian plane
+// s ∈ [0,1]: slide south along its own meridian by s·Δlat, then east by s·Δlon. Both are rotations of the sphere → true area.
+function placeGreenland(s, lift, tilt) {
+  qA.setFromAxisAngle(MAX, -(G1[1] - G0[1]) * D2R * s);   // positive angle about MAX moves north; we go south
+  qB.setFromAxisAngle(ZAX, (G1[0] - G0[0]) * D2R * s);
+  qT.multiplyQuaternions(qB, qA);
+  const cLat = G0[1] + (G1[1] - G0[1]) * s, cLon = G0[0] + (G1[0] - G0[0]) * s;
+  const cx = cLon * D2R * K, cz = -mercY(cLat);
+  const arr = gpos.array;
+  for (let i = 0; i < NV; i++) {
+    v3.set(gUnit[i * 3], gUnit[i * 3 + 1], gUnit[i * 3 + 2]).applyQuaternion(qT);
+    const lon = Math.atan2(v3.y, v3.x), lat = Math.asin(clamp(v3.z, -1, 1));
+    arr[i * 3] = lon * K - cx; arr[i * 3 + 1] = gH[i]; arr[i * 3 + 2] = -mercY(lat / D2R) - cz;
+  }
+  gpos.needsUpdate = true; grGeo.computeVertexNormals(); grGeo.computeBoundingSphere();
+  greenland.position.set(cx, lift, cz);
+  greenland.rotation.set(tilt[0], 0, tilt[1]);
+  return [cx, cz];
+}
+// check the rotation sign once: the centroid must land at G1
+{ placeGreenland(1, 0, [0, 0]); }
+
+// footprint left behind: a darker inlay + a dashed bone outline (Greenland as the Mercator map draws it)
+const fpMat = new THREE.MeshStandardMaterial({ color: C.bone, roughness: .9, transparent: true, opacity: 0, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2 });
+const fp = new THREE.Mesh(new THREE.ShapeGeometry(shapeOf([geo.greenlandOutline])), fpMat);
+fp.rotation.x = -Math.PI / 2; fp.position.y = .004; fp.receiveShadow = true; scene.add(fp);
+function dashRibbon(polys, w, dash, gap) {
+  const P = [], I = [];
+  for (const poly of polys) {
+    const r = poly[0].map(toXY); if (r.length < 3) continue;
+    let acc = 0;
+    for (let i = 0; i < r.length - 1; i++) {
+      const [ax, ay] = r[i], [bx, by] = r[i + 1], L = Math.hypot(bx - ax, by - ay); if (L < 1e-6) continue;
+      const nx = -(by - ay) / L * w / 2, ny = (bx - ax) / L * w / 2;
+      let s = 0;
+      while (s < L) {
+        const ph = acc % (dash + gap), on = ph < dash, len = Math.max(1e-4, Math.min(L - s, on ? dash - ph : dash + gap - ph));
+        if (on) {
+          const t0 = s / L, t1 = (s + len) / L, x0 = ax + (bx - ax) * t0, y0 = ay + (by - ay) * t0, x1 = ax + (bx - ax) * t1, y1 = ay + (by - ay) * t1, b = P.length / 3;
+          P.push(x0 + nx, y0 + ny, 0, x0 - nx, y0 - ny, 0, x1 + nx, y1 + ny, 0, x1 - nx, y1 - ny, 0); I.push(b, b + 1, b + 2, b + 1, b + 3, b + 2);
+        }
+        s += len; acc += len;
+      }
+    }
+  }
+  const gg = new THREE.BufferGeometry(); gg.setAttribute('position', new THREE.Float32BufferAttribute(P, 3)); gg.setIndex(I);
+  gg.setAttribute('normal', new THREE.Float32BufferAttribute(P.map((_, i) => i % 3 === 2 ? 1 : 0), 3)); return gg;   // normals: GTAO reads them
+}
+const dashMat = new THREE.MeshBasicMaterial({ color: '#e9dfcb', transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide, fog: false });
+const dashes = new THREE.Mesh(dashRibbon([[geo.greenlandOutline]], .085, .3, .17), dashMat);
+dashes.rotation.x = -Math.PI / 2; dashes.position.y = .006; scene.add(dashes);
+
+// ---------- post ----------
+const post = makePost(renderer, scene, camera, Wd, Ht, { ssaa: SS, ao: true, aoRadius: .6, aoScale: 1.6, aoAmt: .7 });
+post.bloom.strength = 0; post.vig.uniforms.amt.value = .42; post.vig.uniforms.warm.value = .25; post.vig.uniforms.contrast.value = .12;
+
+// ---------- camera rig: target, distance, azimuth (0 = from the south, −90 = from the west), elevation, fov, roll ----------
+const AF = [2.0, -0.2];       // Africa (x, z)
+const rig = {
+  tx: monotone([[0, 3.0], [2.8, 0.0], [5.0, -1.0], [6.6, -1.2], [9.8, 1.4], [11.0, 1.3], [14, -0.2]]),
+  tz: monotone([[0, -1.5], [2.8, -4.5], [5.0, -6.0], [6.6, -6.4], [9.8, -1.6], [11.0, -2.0], [14, -4.6]]),
+  dist: monotone([[0, 24], [2.8, 42], [5.0, 31], [6.6, 30], [9.8, 21], [11.0, 22], [14, 31]]),
+  az: monotone([[0, 20], [2.8, 2], [5.0, -26], [6.6, -30], [9.8, -22], [11.0, -18], [14, -10]]),
+  el: monotone([[0, 12], [2.8, 52], [5.0, 57], [6.6, 55], [9.8, 50], [11.0, 49], [14, 45]]),
+  fov: monotone([[0, 34], [14, 30]]),
+  roll: monotone([[0, -3], [2.8, 0], [5.0, 1.2], [9.8, -1.2], [14, -1.8]]),
+};
+function setCamera(t) {
+  const tx = rig.tx(t), tz = rig.tz(t), d = rig.dist(t), az = rig.az(t) * D2R, el = rig.el(t) * D2R;
+  camera.position.set(tx + d * Math.cos(el) * Math.sin(az), d * Math.sin(el), tz + d * Math.cos(el) * Math.cos(az));
+  camera.fov = rig.fov(t); camera.updateProjectionMatrix();
+  camera.up.set(0, 1, 0); camera.lookAt(tx, 0, tz); camera.rotateZ(rig.roll(t) * D2R);
+  camera.updateMatrixWorld();
+  return d;
+}
+const proj = (x, y, z) => { v3.set(x, y, z).project(camera); return [(v3.x + 1) / 2 * Wd, (1 - v3.y) / 2 * Ht, v3.z]; };
+
+// ---------- overlay type: museum-style tags (ink plate, colour swatch, bone type) on a hairline pin ----------
+const TX = [];
+function rr(x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
+function tag(ax, ay, dx, dy, sw, title, sub, a, subA = 1) {
+  if (a <= 0) return;
+  const k = eo(a), x = ax + dx, y = ay + dy - (1 - k) * 12;
+  g.save(); g.globalAlpha = clamp(a);
+  // pin
+  g.strokeStyle = 'rgba(236,228,211,.9)'; g.lineWidth = 1.6; g.beginPath(); g.moveTo(ax, ay); g.lineTo(lerp(ax, x, k), lerp(ay, y, k)); g.stroke();
+  g.fillStyle = C.bone; g.beginPath(); g.arc(ax, ay, 4.5, 0, 7); g.fill();
+  g.strokeStyle = 'rgba(22,35,42,.6)'; g.lineWidth = 1.5; g.stroke();
+  // plate
+  g.font = '800 34px Man'; g.letterSpacing = '4px'; const tw = g.measureText(title).width;
+  g.font = '500 26px Man'; g.letterSpacing = '0.5px'; const sw2 = sub ? g.measureText(sub).width : 0;
+  const pw = Math.max(tw, sw2 * subA) + 76, ph = sub ? lerp(64, 104, ss(subA)) : 64, px = x - pw / 2, py = y - ph;
+  g.shadowColor = 'rgba(6,12,16,.35)'; g.shadowBlur = 18; g.shadowOffsetY = 6;
+  g.fillStyle = 'rgba(22,35,42,.9)'; rr(px, py, pw, ph, 10); g.fill(); g.shadowColor = 'transparent';
+  g.fillStyle = sw; rr(px + 20, py + 22, 20, 20, 4); g.fill();
+  g.fillStyle = C.bone; g.textBaseline = 'alphabetic'; g.textAlign = 'left';
+  g.font = '800 34px Man'; g.letterSpacing = '4px'; g.fillText(title, px + 52, py + 45);
+  TX.push({ text: title, x0: px, y0: py, x1: px + pw, y1: py + ph });
+  if (sub && subA > 0) { g.globalAlpha = clamp(a) * ss(subA) * .9; g.font = '500 26px Man'; g.letterSpacing = '0.5px'; g.fillText(sub, px + 52, py + 86); TX.push({ text: sub, x0: px + 52, y0: py + 62, x1: px + 52 + sw2, y1: py + 92 }); }
+  g.restore();
+}
+function note(x, y, text, a) {     // small italic-free note straight on the board
+  if (a <= 0) return;
+  g.save(); g.globalAlpha = clamp(a); g.textAlign = 'center'; g.font = '500 30px Man'; g.letterSpacing = '1px';
+  g.shadowColor = 'rgba(8,14,18,.6)'; g.shadowBlur = 10; g.fillStyle = C.bone; g.fillText(text, x, y + (1 - eo(a)) * 8);
+  const w = g.measureText(text).width; TX.push({ text, x0: x - w / 2, y0: y - 26, x1: x + w / 2, y1: y + 6 }); g.restore();
+}
+// ---------- timeline ----------
+function frame(t) {
+  TX.length = 0;
+  // slabs rise out of the ocean board in a west→east wave (overshoot, settle)
+  for (const s of slabs) {
+    const k = seg(t, s.delay, s.delay + 1.0), e = back(k, 1.4);
+    s.y = (e - 1) * (HL + .06);
+    if (!s.gr) s.mesh.position.y = s.y;
+  }
+  // colour: Greenland terracotta, Africa ochre
+  grMat.color.set(C.bone).lerp(new THREE.Color(C.terra), ss(seg(t, 3.9, 4.8)));
+  afMat.color.set(C.bone).lerp(new THREE.Color(C.ochre), ss(seg(t, 4.2, 5.1)));
+  // Greenland: lift (6.0), travel + true shrink (6.5–10.0), land on Africa (10.0–10.6)
+  const up = back(seg(t, 5.9, 6.9), 1.2), down = eio(seg(t, 9.3, 10.35));
+  const s = eio(seg(t, 6.45, 10.05));
+  const land = HL + .003, bounce = t > 10.35 ? Math.exp(-(t - 10.35) * 7) * Math.sin((t - 10.35) * 22) * .05 : 0;
+  const lift = slabs.at(-1).y + 2.4 * up * (1 - down) + land * down + bounce;
+  const tilt = [-.09 * Math.sin(Math.PI * seg(t, 5.9, 10.3)), .06 * Math.sin(Math.PI * seg(t, 6.2, 10.3))];
+  const [gcx, gcz] = placeGreenland(s, lift, tilt);
+  // footprint appears as it lifts
+  const fpa = ss(seg(t, 6.2, 7.2));
+  fpMat.opacity = .16 * fpa; dashMat.opacity = .85 * ss(seg(t, 6.6, 7.6));
+
+  const d = setCamera(t);
+  post.dof.focus = d; post.dof.aper = lerp(120, 420, ss(seg(t, 4.5, 9.5))); post.dof.maxCoc = 10;
+  key.shadow.radius = 7;
+  post.composer.render();
+
+  // ---------- overlay ----------
+  g.clearRect(0, 0, Wd, Ht);
+  // «Гренландия» rides with the slab
+  const ga = ss(seg(t, 4.2, 4.9));
+  const [gx, gy] = proj(gcx, lift + HL, gcz);
+  tag(gx, gy, 0, -lerp(120, 150, s), C.terra, 'ГРЕНЛАНДИЯ', '2,17 млн км²', ga, seg(t, 10.7, 11.3));
+  // «Африка»: pinned on the Sahara
+  const aa = ss(seg(t, 4.5, 5.2));
+  const am = ss(seg(t, 8.8, 10.0)), [ax, ay] = proj(lerp(8, -4, am) * D2R * K, HL, -mercY(lerp(20, 12, am)));
+  tag(ax, ay, -lerp(0, 250, am), -lerp(110, 20, am), C.ochre, 'АФРИКА', '30,4 млн км²', aa, seg(t, 11.0, 11.6));
+  // the footprint: how the Mercator map draws it
+  const [fx, fy] = proj(grx, 0, -gry);
+  note(fx, fy + 10, 'на карте', ss(seg(t, 7.4, 8.2)));
+  // ×14, anchored over the Indian Ocean
+  const xa = seg(t, 11.7, 12.5);
+  if (xa > 0) {
+    const [xx, xy] = proj(60 * D2R * K, 0, -mercY(-12));
+    g.save(); g.globalAlpha = ss(xa); g.textAlign = 'center'; g.font = '800 150px Man'; g.letterSpacing = '0px';
+    g.shadowColor = 'rgba(8,14,18,.5)'; g.shadowBlur = 22; g.shadowOffsetY = 5; g.fillStyle = C.bone;
+    const sc = lerp(.9, 1, eo(xa)); g.translate(xx, xy + 50); g.scale(sc, sc); g.fillText('×14', 0, 0); g.restore();
+    TX.push({ text: '×14', x0: xx - 140, y0: xy - 60, x1: xx + 140, y1: xy + 55 });
+  }
+}
+window.render = t => frame(t);
+window.TEXTS = t => { window.render(t); return TX.map(o => ({ ...o })); };
+await document.fonts.load('800 38px Man'); await document.fonts.load('500 27px Man');
+window.render(0);
+window.READY = true;
+</script>
+</body></html>

@@ -1,0 +1,483 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Unb;font-weight:700;src:url(lib/unbounded.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Unb;font-weight:700;src:url(lib/unbounded-lat.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215}
+@font-face{font-family:Gol;font-weight:600;src:url(lib/golos.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Gol;font-weight:600;src:url(lib/golos-lat.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+2212}
+html,body{margin:0;background:#13293a;overflow:hidden}
+canvas{display:block}
+</style>
+<script src="lib/d3-array.min.js"></script>
+<script src="lib/d3-geo.min.js"></script>
+<script src="lib/topojson-client.min.js"></script>
+<script src="lib/world.js"></script>
+<script src="lib/pack.js" onerror="0"></script>
+</head><body><canvas id="c" width="1920" height="1080"></canvas>
+<script>
+const W = 1920, H = 1080, cv = document.getElementById('c'), ctx = cv.getContext('2d');
+const PI = Math.PI, rad = d => d * PI / 180;
+// ---------- palette ----------
+const C = {
+  table: '#13293a', table2: '#0e1f2c', ink: '#132a3a',
+  ocean: '#2c6175', ocean2: '#255466', shelf: '#4d8f98', wave: '#8cc2c2',
+  land: '#e6d6b8', landDim: '#9fb0a6', landShade: '#b9a27e', landLight: '#fff4dd',
+  ice: '#eaf6f3', iceShade: '#8fc4cc', iceLine: '#ffffff',
+  afr1: '#efbb73', afr2: '#d9a95c', afr3: '#9faa5f', afr4: '#d79c57', afr5: '#df8752', afrShade: '#9b5a35',
+  cream: '#fff3e2', terra: '#e06a3f', cloud: '#fffaf1', cloudShade: '#e3d9cb'
+};
+// ---------- easing ----------
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const lerp = (a, b, t) => a + (b - a) * t;
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+const eio = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;          // cubic in-out
+const eio5 = t => t < .5 ? 16 * t ** 5 : 1 - Math.pow(-2 * t + 2, 5) / 2;
+const eout = t => 1 - Math.pow(1 - t, 3);
+const ein = t => t * t * t;
+const back = (t, s = 1.9) => { t = clamp(t); return 1 + (s + 1) * Math.pow(t - 1, 3) + s * Math.pow(t - 1, 2); };
+const spring = (t, f = 2.2, d = 5.5) => t <= 0 ? 0 : 1 - Math.exp(-d * t) * Math.cos(2 * PI * f * t); // 0 -> 1 with overshoot, t in seconds
+const wob = (t, f = 2.4, d = 6) => t <= 0 ? 0 : Math.exp(-d * t) * Math.sin(2 * PI * f * t);             // 0 -> kick -> 0
+
+// ---------- data ----------
+const AFR_IDS = new Set(['012','024','204','072','854','108','120','140','148','180','178','262','818','226','232','231','266','270','288','324','624','384','404','426','430','434','450','454','466','478','504','508','516','562','566','646','686','694','706','710','728','729','748','834','768','788','800','732','894','716','132','174','678','480','690']);
+const WG = WORLD.objects.countries.geometries;
+const isAfr = g => AFR_IDS.has(g.id) || g.properties.name === 'Somaliland' || g.properties.name === 'W. Sahara';
+const isGrl = g => g.id === '304';
+const AFRICA = topojson.merge(WORLD, WG.filter(isAfr));
+const GRL = topojson.merge(WORLD, WG.filter(isGrl));
+const REST = topojson.merge(WORLD, WG.filter(g => !isAfr(g) && !isGrl(g) && g.properties.name !== 'Antarctica'));
+const GC = d3.geoCentroid(GRL), AC = d3.geoCentroid(AFRICA);
+const A_GRL = d3.geoArea(GRL), A_AFR = d3.geoArea(AFRICA);
+console.log('centroids', GC, AC, 'ratio', (A_AFR / A_GRL).toFixed(2), 'grl km2', (A_GRL * 6371.0088 ** 2 / 1e6).toFixed(3), 'afr', (A_AFR * 6371.0088 ** 2 / 1e6).toFixed(2));
+
+// clusters of the rest of the world (they pop in as groups)
+const CL = [[-100, 45], [-60, -15], [10, 50], [90, 50], [105, 5], [135, -25], [-170, 60], [175, -40]];
+const clusters = CL.map(() => ({ type: 'MultiPolygon', coordinates: [] }));
+REST.coordinates.forEach(poly => {
+  const c = d3.geoCentroid({ type: 'Polygon', coordinates: poly });
+  let bi = 0, bd = 1e9; CL.forEach((k, i) => { const d = d3.geoDistance(c, k); if (d < bd) { bd = d; bi = i; } });
+  clusters[bi].coordinates.push(poly);
+});
+clusters.forEach(m => m.c = d3.geoCentroid(m));
+
+// ---------- geometry helpers ----------
+function mapCoords(g, f) {
+  const r = ring => ring.map(f);
+  if (g.type === 'Polygon') return { type: 'Polygon', coordinates: g.coordinates.map(r) };
+  if (g.type === 'MultiPolygon') return { type: 'MultiPolygon', coordinates: g.coordinates.map(p => p.map(r)) };
+  if (g.type === 'LineString') return { type: 'LineString', coordinates: r(g.coordinates) };
+  if (g.type === 'MultiLineString') return { type: 'MultiLineString', coordinates: g.coordinates.map(r) };
+}
+// move a shape over the sphere: its centroid goes to `to`, with an extra spin about the centroid (true size kept)
+function moveOnSphere(g, from, to, spin) {
+  const R1 = d3.geoRotation([-from[0], -from[1]]), Rs = d3.geoRotation([0, 0, spin]), R2 = d3.geoRotation([-to[0], -to[1]]);
+  return mapCoords(g, p => R2.invert(Rs(R1(p))));
+}
+// ice-sheet "elevation contours": the outline shrunk towards an inland dome (drawn in lon/lat, so they travel with the shape)
+const DOME = [-40.5, 73.5];
+const mainGrl = GRL.coordinates.reduce((a, b) => (d3.geoArea({ type: 'Polygon', coordinates: b }) > d3.geoArea({ type: 'Polygon', coordinates: a }) ? b : a))[0];
+const ICE_LINES = { type: 'MultiLineString', coordinates: [0.82, 0.62, 0.42, 0.22].map(k => {
+  const R1 = d3.geoRotation([-DOME[0], -DOME[1]]);
+  return mainGrl.filter((_, i) => i % 2 === 0).map(p => { const q = R1(p); return R1.invert([q[0] * k, q[1] * k]); });
+}) };
+// icebergs near Greenland coast (stay in the sea)
+const BERGS = [[-52, 66.5, .7], [-56, 70.5, .9], [-35, 64.8, .6], [-20, 71.5, .8], [-61, 75.2, .7], [-15, 79.5, .6], [-45, 59.2, .55]];
+
+// ---------- camera ----------
+const MY = lat => Math.log(Math.tan(PI / 4 + rad(lat) / 2));
+const SHEET = { x0: -PI, x1: PI, y0: MY(-60), y1: MY(84) };
+let cam = { x: 0, y: 0, s: 200 };
+const proj = d3.geoMercator();
+function setCam(c) { cam = c; proj.scale(c.s).translate([W / 2 - c.x * c.s, H / 2 + c.y * c.s]).clipExtent([[-400, -400], [W + 400, H + 400]]); }
+const toScr = (mx, my) => [W / 2 + (mx - cam.x) * cam.s, H / 2 - (my - cam.y) * cam.s];
+const geoScr = (lon, lat) => proj([lon, lat]);
+const pathStr = d3.geoPath(proj);
+const P2 = g => new Path2D(pathStr(g) || '');
+
+// ---------- textures ----------
+function noiseCanvas(n, scale, contrast) {
+  const c = document.createElement('canvas'); c.width = c.height = n; const x = c.getContext('2d');
+  const id = x.createImageData(n, n);
+  // value noise (tileable) at a few octaves
+  const rnd = (() => { let s = 1234567; return () => (s = (s * 16807) % 2147483647) / 2147483647; })();
+  const oct = [];
+  for (const f of scale) { const g = []; for (let i = 0; i < f * f; i++) g.push(rnd()); oct.push([f, g]); }
+  for (let y = 0; y < n; y++) for (let xx = 0; xx < n; xx++) {
+    let v = 0, wsum = 0;
+    oct.forEach(([f, g], k) => {
+      const u = xx / n * f, w = y / n * f, i0 = Math.floor(u), j0 = Math.floor(w), fu = u - i0, fw = w - j0;
+      const s = t => t * t * (3 - 2 * t), at = (i, j) => g[((j % f) * f + (i % f))];
+      const a = lerp(at(i0, j0), at(i0 + 1, j0), s(fu)), b = lerp(at(i0, j0 + 1), at(i0 + 1, j0 + 1), s(fu));
+      const amp = 1 / (k + 1); v += lerp(a, b, s(fw)) * amp; wsum += amp;
+    });
+    v = v / wsum; v = clamp(0.5 + (v - 0.5) * contrast);
+    const o = (y * n + xx) * 4; id.data[o] = id.data[o + 1] = id.data[o + 2] = v * 255; id.data[o + 3] = 255;
+  }
+  x.putImageData(id, 0, 0); return c;
+}
+function grainCanvas(n, seed) {
+  const c = document.createElement('canvas'); c.width = c.height = n; const x = c.getContext('2d');
+  const id = x.createImageData(n, n); let s = seed;
+  for (let i = 0; i < n * n; i++) { s = (s * 16807) % 2147483647; const v = 128 + ((s / 2147483647) - .5) * 90; id.data[i * 4] = id.data[i * 4 + 1] = id.data[i * 4 + 2] = v; id.data[i * 4 + 3] = 255; }
+  x.putImageData(id, 0, 0); return c;
+}
+const TEX = noiseCanvas(256, [8, 32, 128], 1.6);
+const TEXP = ctx.createPattern(TEX, 'repeat');
+const GRAIN = [1, 2, 3, 4].map(k => ctx.createPattern(grainCanvas(256, 999 * k + 7), 'repeat'));
+
+// ---------- drawing primitives ----------
+function innerShade(P, color, ox, oy, blur) {
+  ctx.save(); ctx.clip(P);
+  ctx.shadowColor = color; ctx.shadowBlur = blur; ctx.shadowOffsetX = ox + 6000; ctx.shadowOffsetY = oy;
+  ctx.translate(-6000, 0);
+  const R = new Path2D(); R.rect(-W, -H, W * 3, H * 3); R.addPath(P);
+  ctx.fillStyle = '#000'; ctx.fill(R, 'evenodd');
+  ctx.restore();
+}
+function texture(P, alpha, mode = 'multiply', sc = 1) {
+  ctx.save(); ctx.clip(P); ctx.globalAlpha = alpha; ctx.globalCompositeOperation = mode;
+  const m = new DOMMatrix().translateSelf(W / 2 - cam.x * cam.s, H / 2 + cam.y * cam.s).scaleSelf(sc * cam.s / 260);
+  TEXP.setTransform(m); ctx.fillStyle = TEXP; ctx.fillRect(0, 0, W, H); ctx.restore();
+}
+// a landmass: drop shadow (lift), shallow shelf, fill, soft inner light/shade, paper texture, ink edge
+function drawLand(P, fill, o) {
+  const z = cam.s / 250, lift = o.lift || 0;
+  if (o.shadow !== false) {
+    ctx.save(); ctx.translate((3 + lift * .55) * z, (5 + lift) * z);
+    ctx.filter = `blur(${(1.5 + lift * .35) * z}px)`; ctx.fillStyle = `rgba(8,26,38,${o.shadowA ?? (0.38 - Math.min(.16, lift * .004))})`;
+    ctx.fill(P); ctx.restore();
+  }
+  if (o.shelf) { ctx.save(); ctx.globalAlpha = o.shelf; ctx.strokeStyle = C.shelf; ctx.lineJoin = 'round'; ctx.lineWidth = 11 * z; ctx.stroke(P); ctx.restore(); }
+  ctx.fillStyle = fill; ctx.fill(P);
+  if (o.extra) o.extra(P);
+  innerShade(P, o.shade || 'rgba(110,80,40,.55)', -5 * z, -7 * z, 9 * z);
+  innerShade(P, o.light || 'rgba(255,250,235,.75)', 3 * z, 4 * z, 5 * z);
+  texture(P, o.tex ?? .16, 'multiply', 1);
+  ctx.save(); ctx.lineJoin = 'round'; ctx.strokeStyle = o.line || 'rgba(19,42,58,.55)'; ctx.lineWidth = (o.lw || 1.3) * Math.sqrt(z); ctx.stroke(P); ctx.restore();
+}
+function withScale(cx, cy, sx, sy, fn, rot = 0) { ctx.save(); ctx.translate(cx, cy); ctx.rotate(rot); ctx.scale(sx, sy); ctx.translate(-cx, -cy); fn(); ctx.restore(); }
+
+function rrect(x, y, w, h, r) { const p = new Path2D(); p.roundRect(x, y, w, h, r); return p; }
+
+// label pill (screen space)
+function pill(text, x, y, k, o = {}) {
+  if (k <= 0.001) return;
+  const fs = o.size || 34; ctx.save();
+  ctx.font = `${o.weight || 700} ${fs}px ${o.font || 'Unb'}`;
+  const tw = ctx.measureText(text).width, pw = tw + fs * (o.dot ? 1.9 : 1.1), ph = fs * 1.75;
+  ctx.translate(x, y); ctx.scale(k, k); ctx.rotate((o.rot || 0));
+  ctx.globalAlpha = clamp(k * 2);
+  ctx.fillStyle = 'rgba(8,26,38,.28)'; ctx.fill(rrect(-pw / 2 + 4, -ph / 2 + 6, pw, ph, ph / 2));
+  ctx.fillStyle = o.bg || C.cream; ctx.fill(rrect(-pw / 2, -ph / 2, pw, ph, ph / 2));
+  if (o.dot) { ctx.fillStyle = o.dot; ctx.beginPath(); ctx.arc(-pw / 2 + ph * .5, 0, fs * .26, 0, 2 * PI); ctx.fill(); }
+  ctx.fillStyle = o.fg || C.ink; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(text, (o.dot ? fs * .4 : 0), fs * .04);
+  ctx.restore();
+}
+
+// clouds: flat-vector puffs; layer parallax k (>1 = closer to the lens)
+const K1S = { x: -0.21, y: 1.135, s: 252 };
+const CLOUDS = [[300, 400, 1.4, 40, 5, 1], [1560, 300, 1.3, 34, 5, 2], [1690, 800, 1.6, 48, 6, 3], [380, 860, 1.5, 44, 5, 4]]
+  .map(([X, Y, k, r, n, seed]) => ({ x: K1S.x + (X - W / 2) / (K1S.s * k), y: K1S.y - (Y - H / 2) / (K1S.s * k), k, r, n, seed }));
+function cloudShape(c) {
+  let s = c.seed * 9973; const r = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  const puffs = []; const L = c.n;
+  for (let i = 0; i < L; i++) { const u = (i / (L - 1)) - .5; puffs.push([u * c.r * 3.2, -(1 - 4 * u * u) * c.r * .55 - r() * c.r * .25, c.r * (.55 + .45 * (1 - 4 * u * u)) * (0.85 + r() * .3)]); }
+  return puffs;
+}
+CLOUDS.forEach(c => c.puffs = cloudShape(c));
+function drawClouds(t, alpha) {
+  if (alpha <= 0) return;
+  for (const c of CLOUDS) {
+    const k = c.k, drift = (t - 3) * 0.006 * (k - 0.9);
+    const X = W / 2 + (c.x + drift - cam.x) * cam.s * k, Y = H / 2 - (c.y - cam.y) * cam.s * k;
+    const sc = (cam.s / 250) * k * (0.92 + 0.08 * Math.sin(t * .6 + c.seed));
+    const p = new Path2D();
+    c.puffs.forEach(([px, py, pr]) => { p.moveTo(X + (px + pr) * sc, Y + py * sc); p.arc(X + px * sc, Y + py * sc, pr * sc, 0, 2 * PI); });
+    const base = new Path2D(); base.roundRect(X - c.r * 2.0 * sc, Y - c.r * .25 * sc, c.r * 4.0 * sc, c.r * .62 * sc, c.r * .31 * sc); p.addPath(base);
+    const sh = (k - 1) * 90 * sc;
+    ctx.save(); ctx.globalAlpha = alpha * .22; ctx.translate(sh * .5, sh); ctx.filter = `blur(${6 * sc}px)`; ctx.fillStyle = '#06202c'; ctx.fill(p); ctx.restore();
+    ctx.save(); ctx.globalAlpha = alpha; ctx.fillStyle = C.cloudShade; ctx.fill(p);
+    ctx.clip(p); ctx.fillStyle = C.cloud; ctx.translate(-c.r * .08 * sc, -c.r * .16 * sc); ctx.fill(p); ctx.restore();
+  }
+}
+
+// ---------- packing: where 14 true-size Greenlands sit inside Africa ----------
+let COPIES = null;
+function pack(STEP = 2, SPINS = [0, 30, -30, 60, -60, 90], OV = 3.0, SEA = 4.5) {
+  const RES = 0.009, X0 = -0.34, Y1 = 0.68, NW = Math.ceil((0.94 - X0) / RES), NH = Math.ceil((Y1 + 0.64) / RES);
+  const oc = document.createElement('canvas'); oc.width = NW; oc.height = NH; const ox = oc.getContext('2d', { willReadFrequently: true });
+  const pr = d3.geoMercator().scale(1 / RES).translate([-X0 / RES, Y1 / RES]); const gp = d3.geoPath(pr, ox);
+  const raster = g => { ox.clearRect(0, 0, NW, NH); ox.beginPath(); gp(g); ox.fillStyle = '#fff'; ox.fill(); const d = ox.getImageData(0, 0, NW, NH).data; const idx = []; for (let i = 0; i < NW * NH; i++) if (d[i * 4 + 3] > 127) idx.push(i); return idx; };
+  const afr = new Uint8Array(NW * NH); raster(AFRICA).forEach(i => afr[i] = 1);
+  const cands = [];
+  for (let lat = -32; lat <= 34; lat += STEP) for (let lon = -14; lon <= 50; lon += STEP) {
+    if (!d3.geoContains(AFRICA, [lon, lat])) continue;
+    for (const sp of SPINS) {
+      const g = moveOnSphere(GRL, GC, [lon, lat], sp); cands.push({ lon, lat, sp, px: raster(g) });
+    }
+  }
+  const cov = new Uint8Array(NW * NH), picks = [];
+  for (let n = 0; n < 14; n++) {
+    let best = null, bs = -1e9;
+    for (const c of cands) {
+      let gain = 0, ov = 0, sea = 0;
+      for (const i of c.px) { if (!afr[i]) sea++; else if (cov[i]) ov++; else gain++; }
+      let s = gain - OV * ov - SEA * sea;
+      if (n === 0) s -= Math.hypot(c.lon - 21, c.lat - 3) * 40 + (c.sp !== 0 ? 400 : 0);   // the flying one lands in the middle, upright
+      if (s > bs) { bs = s; best = c; }
+    }
+    best.px.forEach(i => cov[i] = 1); picks.push({ lon: best.lon, lat: best.lat, sp: best.sp });
+  }
+  let a = 0, c = 0; for (let i = 0; i < NW * NH; i++) { if (afr[i]) { a++; if (cov[i]) c++; } }
+  console.log('pack coverage', (c / a * 100).toFixed(1) + '%', JSON.stringify(picks));
+  window.PACK_COV = c / a; return picks;
+}
+
+// ---------- timeline ----------
+const T = 14.0;
+const K0 = { x: 0, y: (SHEET.y0 + SHEET.y1) / 2 + 0.02, s: 176 };
+const K1 = { x: -0.21, y: 1.135, s: 252 };
+const K2 = { x: 0.30, y: 0.0, s: 575 };
+function camAt(t) {
+  const a = eio5(seg(t, 1.75, 3.9)), b = eio5(seg(t, 9.0, 11.6));
+  const drift = 1 + 0.035 * eout(seg(t, 0, 1.8)) ;
+  let c = { x: lerp(K0.x, K1.x, a), y: lerp(K0.y, K1.y, a), s: lerp(K0.s * drift * 0.97, K1.s, a) };
+  // tiny settle after the first push
+  c.s *= 1 + 0.012 * wob(t - 3.9, 1.1, 3.2);
+  c = { x: lerp(c.x, K2.x, b), y: lerp(c.y, K2.y, b), s: Math.exp(lerp(Math.log(c.s), Math.log(K2.s), b)) };
+  c.s *= 1 + 0.03 * seg(t, 11.6, T) ;       // slow last push
+  return c;
+}
+
+const FLY0 = 5.95, FLY1 = 8.75;   // greenland flight
+
+function renderFrame(t) {
+  setCam(camAt(t));
+  const z = cam.s / 250;
+  // table
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.fillStyle = C.table; ctx.fillRect(0, 0, W, H);
+  const vg = ctx.createRadialGradient(W / 2, H / 2, 200, W / 2, H / 2, 1250); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(4,14,22,.55)');
+  // ----- sheet (the school map) -----
+  const sheetK = back(seg(t, 0, 1.0), 1.4), sheetRot = rad(-3) * (1 - spring(t, .9, 4.2)) ;
+  const [sx0, sy0] = toScr(SHEET.x0, SHEET.y1), [sx1, sy1] = toScr(SHEET.x1, SHEET.y0);
+  const scx = (sx0 + sx1) / 2, scy = (sy0 + sy1) / 2;
+  ctx.save();
+  ctx.translate(scx, scy); ctx.rotate(sheetRot); ctx.scale(sheetK, sheetK); ctx.translate(-scx, -scy);
+  ctx.globalAlpha = clamp(t / 0.25);
+  const sheet = rrect(sx0, sy0, sx1 - sx0, sy1 - sy0, 14 * z);
+  ctx.save(); ctx.filter = `blur(${18 * z}px)`; ctx.fillStyle = 'rgba(3,12,20,.6)'; ctx.translate(10 * z, 22 * z); ctx.fill(sheet); ctx.restore();
+  ctx.save(); ctx.fillStyle = C.cream; ctx.fill(rrect(sx0 - 10 * z, sy0 - 10 * z, sx1 - sx0 + 20 * z, sy1 - sy0 + 20 * z, 20 * z)); ctx.restore();
+  ctx.save(); ctx.clip(sheet);
+  // ocean: soft vertical light + texture
+  const og = ctx.createLinearGradient(0, sy0, 0, sy1); og.addColorStop(0, '#2a5a6e'); og.addColorStop(.55, C.ocean); og.addColorStop(1, '#245366');
+  ctx.fillStyle = og; ctx.fillRect(sx0, sy0, sx1 - sx0, sy1 - sy0);
+  texture(sheet, .10, 'soft-light', 2.2);
+  // graticule + equator
+  ctx.save(); ctx.strokeStyle = 'rgba(200,235,230,.10)'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); pathStrCtx(d3.geoGraticule().step([30, 30]).extentMajor([[-180, -60], [180, 84.0001]])()); ctx.stroke();
+  const eqGlow = seg(t, 6.2, 7.0) * (1 - seg(t, 11.0, 12.0));
+  ctx.setLineDash([10 * z, 9 * z]); ctx.lineWidth = 2 * Math.sqrt(z); ctx.strokeStyle = `rgba(255,236,200,${.22 + .4 * eqGlow})`;
+  ctx.beginPath(); const [e0, ey] = toScr(-PI, 0), [e1] = toScr(PI, 0); ctx.moveTo(e0, ey); ctx.lineTo(e1, ey); ctx.stroke();
+  ctx.restore();
+  // little wave marks (they bob)
+  drawWaves(t, sx0, sy0, sx1, sy1);
+  // icebergs
+  drawBergs(t);
+
+  // ----- land -----
+  const focus = eio(seg(t, 2.2, 3.4));               // others step back
+  const popOf = (lon, base) => back(seg(t, base + (lon + 180) / 360 * 0.75, base + (lon + 180) / 360 * 0.75 + 0.55), 2.1);
+  clusters.forEach(m => {
+    const k = popOf(m.c[0], 0.35); if (k <= 0) return;
+    const [cx, cy] = geoScr(m.c[0], m.c[1]);
+    withScale(cx, cy, k, k, () => drawLand(P2(m), mix(C.land, C.landDim, focus * .85), { shelf: .35 * (1 - focus * .5), tex: .16, shade: `rgba(110,80,40,${.5 - .2 * focus})`, light: `rgba(255,250,235,${.7 - .4 * focus})`, line: `rgba(19,42,58,${.5 - .25 * focus})` }));
+  });
+  // Africa
+  const kA = popOf(AC[0], 0.35) ;
+  const land = seg(t, FLY1, FLY1 + 1.2);
+  const bumpA = 0.022 * wob(t - FLY1, 1.6, 4.2);
+  const [acx, acy] = geoScr(AC[0], AC[1]);
+  if (kA > 0) withScale(acx, acy, kA * (1 + bumpA * .6), kA * (1 - bumpA), () => drawAfrica(t));
+  // ghost of mercator greenland left behind
+  const kG = popOf(GC[0], 0.35);
+  if (t > FLY0) {
+    ctx.save(); ctx.globalAlpha = clamp((t - FLY0) / .4) * (1 - seg(t, 10.4, 11.2)) * .9; ctx.setLineDash([7 * z, 7 * z]); ctx.lineWidth = 2 * Math.sqrt(z);
+    ctx.strokeStyle = 'rgba(234,246,243,.75)'; ctx.stroke(P2(GRL)); ctx.globalAlpha *= .12; ctx.fillStyle = C.ice; ctx.fill(P2(GRL)); ctx.restore();
+  }
+  // brackets: "they look the same height"
+  drawBrackets(t);
+  // copies (behind the flying one)
+  drawCopies(t);
+  // greenland (on the map or flying)
+  drawGreenland(t, kG);
+  ctx.restore(); // sheet clip
+  ctx.restore(); // sheet transform
+  // clouds above the map
+  drawClouds(t, eout(seg(t, 2.2, 3.4)));
+  // labels
+  drawLabels(t);
+  // vignette + grain
+  ctx.fillStyle = vg; ctx.fillRect(0, 0, W, H);
+  ctx.save(); ctx.globalAlpha = .06; ctx.globalCompositeOperation = 'overlay';
+  const gp = GRAIN[Math.floor(t * 12) % 4]; ctx.fillStyle = gp; ctx.fillRect(0, 0, W, H); ctx.restore();
+}
+function pathStrCtx(g) { const p = new Path2D(pathStr(g) || ''); ctx.stroke(p); }
+function mix(a, b, t) {
+  const pa = [1, 3, 5].map(i => parseInt(a.substr(i, 2), 16)), pb = [1, 3, 5].map(i => parseInt(b.substr(i, 2), 16));
+  return `rgb(${pa.map((v, i) => Math.round(lerp(v, pb[i], t))).join(',')})`;
+}
+
+function drawWaves(t, x0, y0, x1, y1) {
+  ctx.save(); ctx.strokeStyle = C.wave; ctx.lineCap = 'round'; const z = cam.s / 250; ctx.lineWidth = 1.6 * Math.sqrt(z);
+  for (const [lon, lat, ph, LL] of WAVES) {
+    const [x, y] = geoScr(lon, lat); if (x < -50 || x > W + 50 || y < -50 || y > H + 50) continue;
+    const a = .16 + .10 * Math.sin(t * 1.3 + ph); const L = LL * Math.sqrt(z), bob = Math.sin(t * 1.1 + ph) * 2 * Math.sqrt(z);
+    ctx.globalAlpha = a; ctx.beginPath(); ctx.moveTo(x - L, y + bob); ctx.quadraticCurveTo(x - L / 2, y - L * .35 + bob, x, y + bob); ctx.quadraticCurveTo(x + L / 2, y + L * .35 + bob, x + L, y + bob); ctx.stroke();
+  }
+  ctx.restore();
+}
+let REST_HULL = null, WAVES = [], GRASS = [];
+function drawBergs(t) {
+  const z = cam.s / 250, k = back(seg(t, 1.2, 1.8), 2);
+  if (k <= 0) return;
+  BERGS.forEach(([lon, lat, s], i) => {
+    const [x, y] = geoScr(lon, lat); const bob = Math.sin(t * 1.7 + i) * 1.5 * z; const r = 6 * s * z * k;
+    const p = new Path2D(); p.moveTo(x - r, y + bob); p.lineTo(x - r * .4, y - r * .8 + bob); p.lineTo(x + r * .3, y - r * .55 + bob); p.lineTo(x + r, y + bob); p.closePath();
+    ctx.fillStyle = 'rgba(8,26,38,.3)'; ctx.save(); ctx.translate(1.5 * z, 2.5 * z); ctx.fill(p); ctx.restore();
+    ctx.fillStyle = C.ice; ctx.fill(p); ctx.fillStyle = 'rgba(143,196,204,.8)'; const q = new Path2D(); q.moveTo(x + r * .3, y - r * .55 + bob); q.lineTo(x + r, y + bob); q.lineTo(x, y + bob); q.closePath(); ctx.fill(q);
+  });
+}
+function africaFill() {
+  const yy = lat => geoScr(20, lat)[1];
+  const g = ctx.createLinearGradient(0, yy(38), 0, yy(-36));
+  const st = [[38, C.afr1], [22, C.afr1], [13, C.afr2], [6, C.afr3], [-4, C.afr3], [-12, C.afr4], [-22, C.afr5], [-36, C.afr5]];
+  st.forEach(([lat, col]) => g.addColorStop(clamp((yy(lat) - yy(38)) / (yy(-36) - yy(38))), col));
+  return g;
+}
+function drawAfrica(t) {
+  const P = P2(AFRICA), z = cam.s / 250;
+  const col = eio(seg(t, 2.3, 3.3));
+  drawLand(P, C.land, { shelf: .35, tex: .17, extra: P => {
+    if (col <= 0) return;
+    // colour arrives as a soft radial wipe from the centre of the continent
+    const [cx, cy] = geoScr(AC[0], AC[1]);
+    ctx.save(); ctx.clip(P); const rr = col * 900 * z;
+    const cp = new Path2D(); cp.arc(cx, cy, rr, 0, 2 * PI); ctx.clip(cp); ctx.fillStyle = africaFill(); ctx.fill(P);
+    // savanna dashes: tiny grass strokes in the sahel/savanna belt and dune arcs in the sahara
+    ctx.globalAlpha = .28 * col; ctx.strokeStyle = '#6d6a32'; ctx.lineWidth = 1.2 * Math.sqrt(z); ctx.lineCap = 'round';
+    for (const [lon, lat, sav] of GRASS) {
+      const [x, y] = geoScr(lon, lat); const L = 5 * Math.sqrt(z);
+      ctx.beginPath();
+      if (sav) { ctx.strokeStyle = '#5f6a2c'; ctx.moveTo(x, y); ctx.lineTo(x - L * .25, y - L); ctx.moveTo(x, y); ctx.lineTo(x + L * .3, y - L * .9); }
+      else { ctx.strokeStyle = '#b07a3a'; ctx.moveTo(x - L * 1.4, y); ctx.quadraticCurveTo(x, y - L * .9, x + L * 1.4, y); }
+      ctx.stroke();
+    }
+    ctx.restore();
+  }, shade: 'rgba(130,60,25,.5)' });
+}
+function drawGreenlandShape(g, lift, o = {}) {
+  const P = P2(g), z = cam.s / 250;
+  drawLand(P, o.fill || C.ice, { lift, line: o.copy ? 'rgba(38,98,118,.85)' : undefined, lw: o.copy ? 1.6 : undefined, shelf: lift > 0.5 ? 0 : .35 * (o.shelf ?? 1), tex: .08, shade: 'rgba(60,130,150,.55)', light: 'rgba(255,255,255,.9)', shadowA: o.shadowA, extra: P => {
+    ctx.save(); ctx.clip(P); ctx.strokeStyle = 'rgba(150,200,210,.55)'; ctx.lineWidth = 1.4 * Math.sqrt(z); ctx.setLineDash([]);
+    if (!o.copy) ctx.stroke(P2(o.lines || ICE_LINES)); ctx.restore();
+  } });
+}
+let FLY_TARGET;
+function drawGreenland(t, kG) {
+  if (kG <= 0) return;
+  const z = cam.s / 250;
+  if (t < FLY0 - 0.45) {   // sitting on the map, with a little anticipation breath before take-off
+    const [cx, cy] = geoScr(GC[0], GC[1]);
+    withScale(cx, cy, kG, kG, () => drawGreenlandShape(GRL, 0));
+    return;
+  }
+  const tgt = FLY_TARGET, e = eio(seg(t, FLY0, FLY1));
+  const pos = d3.geoInterpolate(GC, [tgt.lon, tgt.lat])(e);
+  const spin = tgt.sp * eio(seg(t, FLY0 + .3, FLY1 - .2));
+  const g = moveOnSphere(GRL, GC, pos, spin);
+  const lines = moveOnSphere(ICE_LINES, GC, pos, spin);
+  // anticipation squash -> stretch in flight -> squash on landing -> settle
+  const ant = seg(t, FLY0 - .45, FLY0);           // crouch
+  const lift = 26 * Math.sin(PI * seg(t, FLY0, FLY1)) ** 0.8;
+  let sy = 1 - .10 * Math.sin(PI * ant * .5) * (1 - seg(t, FLY0, FLY0 + .15));
+  const fl = Math.sin(PI * seg(t, FLY0, FLY1));
+  sy *= 1 + .08 * fl; let sx = 1 / Math.sqrt(sy) ;
+  const imp = t - FLY1; if (imp > 0) { const w = wob(imp, 2.1, 5.2); sy *= 1 - .16 * w; sx *= 1 + .12 * w; }
+  const [cx, cy] = geoScr(pos[0], pos[1]);
+  ctx.save(); ctx.translate(0, -lift * z);
+  // squash anchored at the bottom of the shape
+  const b = pathStr.bounds(g); const ay = b[1][1];
+  withScale(cx, ay, sx, sy, () => drawGreenlandShape(g, lift, { lines }));
+  ctx.restore();
+  // landing ring
+  if (imp > 0 && imp < .9) { ctx.save(); ctx.globalAlpha = (1 - imp / .9) * .7; ctx.strokeStyle = C.cream; ctx.lineWidth = 3 * Math.sqrt(z); ctx.beginPath(); ctx.ellipse(cx, cy, 40 * z + imp * 160 * z, (40 * z + imp * 160 * z) * .55, 0, 0, 2 * PI); ctx.stroke(); ctx.restore(); }
+}
+function drawCopies(t) {
+  for (let i = 1; i < COPIES.length; i++) {
+    const c = COPIES[i], t0 = 10.75 + (i - 1) * 0.11;
+    const k = back(seg(t, t0, t0 + .42), 2.4); if (k <= 0) continue;
+    const g = moveOnSphere(GRL, GC, [c.lon, c.lat], c.sp), lines = moveOnSphere(ICE_LINES, GC, [c.lon, c.lat], c.sp);
+    const [cx, cy] = geoScr(c.lon, c.lat);
+    ctx.save(); ctx.globalAlpha = .95; withScale(cx, cy, k, k, () => drawGreenlandShape(g, 0, { shelf: 0, shadowA: .25, lines: null, copy: true, fill: i % 2 ? '#d3eaeb' : '#f2faf8' })); ctx.restore();
+  }
+}
+function drawBrackets(t) {
+  const k = eio(seg(t, 4.0, 4.7)) * (1 - eio(seg(t, 5.25, 5.65)));
+  if (k <= 0) return;
+  const z = cam.s / 250;
+  const g0 = geoScr(-75, 59.8)[1], g1 = geoScr(-75, 83.6)[1], a0 = geoScr(-20, -34.8)[1], a1 = geoScr(-20, 37.3)[1];
+  const one = (x, y0, y1, d) => {
+    const m = (y0 + y1) / 2, h = (y1 - y0) / 2 * back(seg(t, 4.0 + d, 4.75 + d), 1.6) * (k < 1 && t > 5 ? k : 1);
+    if (h <= 0) return;
+    ctx.save(); ctx.strokeStyle = C.cream; ctx.lineWidth = 3.2 * Math.sqrt(z); ctx.lineCap = 'round'; ctx.globalAlpha = Math.min(1, k * 1.5);
+    ctx.beginPath(); ctx.moveTo(x, m - h); ctx.lineTo(x, m + h); ctx.moveTo(x - 9 * z, m - h); ctx.lineTo(x + 9 * z, m - h); ctx.moveTo(x - 9 * z, m + h); ctx.lineTo(x + 9 * z, m + h); ctx.stroke(); ctx.restore();
+  };
+  one(geoScr(-76, 70)[0], g1, g0, 0); one(geoScr(-22, 0)[0], a1, a0, .12);
+}
+function drawLabels(t) {
+  const z = cam.s / 250;
+  // Greenland label: sits on greenland, then rides along with the flight
+  const tgt = FLY_TARGET, e = eio(seg(t, FLY0, FLY1));
+  const pos = d3.geoInterpolate(GC, [tgt.lon, tgt.lat])(e);
+  const gb = pathStr.bounds(moveOnSphere(GRL, GC, pos, 0));
+  let gx = (gb[0][0] + gb[1][0]) / 2, gy = lerp((gb[0][1] + gb[1][1]) / 2, gb[0][1] - 34, eio(seg(t, FLY0 - .3, FLY0 + .4)));
+  const lift = 26 * Math.sin(PI * seg(t, FLY0, FLY1)) ** 0.8;
+  gy -= lift * z; gy = Math.max(gy, 64);
+  const kG = back(seg(t, 3.15, 3.6), 2.2) * (1 - eio(seg(t, 9.15, 9.5)));
+  pill('Гренландия', gx + 30 * (1 - eio(seg(t, FLY0 - .3, FLY0 + .4))), gy - 8, kG, { dot: C.iceShade, rot: rad(-2) * (1 - spring(t - 3.15, 1.2, 4)) });
+  const [ax, ay] = geoScr(-31, 9);
+  const kA = back(seg(t, 3.35, 3.8), 2.2) * (1 - eio(seg(t, 9.15, 9.5)));
+  pill('Африка', ax, ay, kA, { dot: C.afr5, rot: rad(2) * (1 - spring(t - 3.35, 1.2, 4)) });
+  // final layout: left = Africa, right = Greenland, centre-top = ×14
+  const kA2 = back(seg(t, 11.2, 11.65), 2), kG2 = back(seg(t, 11.4, 11.85), 2);
+  const lx = W / 2 - 600, rx = W / 2 + 600;
+  pill('Африка', lx, 430, kA2, { dot: C.afr5, size: 38 });
+  pill('30,4 млн км²', lx, 512, back(seg(t, 12.5, 12.95), 2), { font: 'Gol', weight: 600, size: 30, bg: 'rgba(255,243,226,.0)', fg: C.cream });
+  pill('Гренландия', rx, 430, kG2, { dot: C.iceShade, size: 38 });
+  pill('2,17 млн км²', rx, 512, back(seg(t, 12.65, 13.1), 2), { font: 'Gol', weight: 600, size: 30, bg: 'rgba(255,243,226,.0)', fg: C.cream });
+  // counter
+  const n = COPIES ? Math.min(14, 1 + Math.max(0, Math.floor((t - 10.75) / 0.11) + (t >= 10.75 ? 1 : 0))) : 1;
+  const kN = back(seg(t, 10.55, 10.95), 2.2);
+  if (kN > 0) {
+    const bump = 1 + .08 * wob(((t - 10.75) % 0.11 + 0.11) % 0.11, 4, 14) * (t < 12.3 ? 1 : 0) + .12 * wob(t - 12.25, 1.6, 4.5);
+    pill('×' + n, rx, 260, kN * bump, { size: 64, bg: C.terra, fg: C.cream });
+  }
+}
+// ---------- init ----------
+(async () => {
+  await document.fonts.load('700 40px Unb', 'Гренландия×14'); await document.fonts.load('600 30px Gol', 'млн км²30,4');
+  REST_HULL = { type: 'FeatureCollection', features: [AFRICA, GRL, REST].map(g => ({ type: 'Feature', geometry: g })) };
+  { let s = 4242; const r = () => (s = (s * 16807) % 2147483647) / 2147483647;
+    for (let i = 0; i < 420; i++) { const lon = -180 + r() * 360, lat = -58 + r() * 140, ph = r() * 6.28, L = 10 + r() * 8;
+      const near = [[0,0],[3,0],[-3,0],[0,3],[0,-3]].some(([a,b]) => d3.geoContains(REST_HULL, [lon + a, lat + b]));
+      if (!near) WAVES.push([lon, lat, ph, L]); } }
+  { let s = 77; const r = () => (s = (s * 16807) % 2147483647) / 2147483647;
+    for (let i = 0; i < 700; i++) { const lon = -17 + r() * 68, lat = -30 + r() * 66;
+      const sav = (lat < 14 && lat > 6) || (lat < -6 && lat > -20), sah = lat > 17 && lat < 32;
+      if ((sav || sah) && d3.geoContains(AFRICA, [lon, lat])) GRASS.push([lon, lat, sav]); } }
+  COPIES = window.PACKED || pack(); window.pack = pack; FLY_TARGET = COPIES[0];
+  window.renderFrame = renderFrame; window.READY = true;
+})();
+</script></body></html>

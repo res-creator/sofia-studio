@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><title>Гренландия и Африка — документальный стиль</title>
+<style>
+@font-face{font-family:Serif;src:url(fonts/serif-500.woff2);font-weight:500}
+@font-face{font-family:Serif;src:url(fonts/serif-600.woff2);font-weight:600}
+@font-face{font-family:Serif;src:url(fonts/serif-500i.woff2);font-weight:500;font-style:italic}
+@font-face{font-family:Mono;src:url(fonts/mono-400.woff2);font-weight:400}
+@font-face{font-family:Mono;src:url(fonts/mono-300.woff2);font-weight:300}
+html,body{margin:0;background:#0f1215;overflow:hidden}
+canvas{display:block}
+</style></head><body>
+<canvas id="gl" width="1920" height="1080"></canvas>
+<script>
+// «Мысленный эксперимент» style lab, direction 2: artistic documentary. Frame-exact: window.render(t) draws time t (s).
+const W = 1920, H = 1080, DUR = 14.0;
+const PI = Math.PI;
+// palette
+const INK = '#101418', PARCH = [233, 222, 197], OCHRE = [205, 152, 82], SLATE = [126, 150, 150];
+const rgba = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+// ---------- easing / time helpers
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lin = (t, a, b) => clamp((t - a) / (b - a));
+const sine = x => .5 - .5 * Math.cos(PI * x);
+const cubic = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const quint = x => x < .5 ? 16 * x ** 5 : 1 - Math.pow(-2 * x + 2, 5) / 2;
+const outC = x => 1 - Math.pow(1 - x, 3);
+const outQ = x => 1 - Math.pow(1 - x, 5);
+const smooth = (t, a, b) => sine(lin(t, a, b));
+const lerp = (a, b, k) => a + (b - a) * k;
+// ---------- geo
+const R2D = 180 / PI, D2R = PI / 180;
+const mercY = lat => Math.log(Math.tan(PI / 4 + clamp(lat, -85.05, 85.05) * D2R / 2));
+const vec = (lon, lat) => [Math.cos(lat * D2R) * Math.cos(lon * D2R), Math.cos(lat * D2R) * Math.sin(lon * D2R), Math.sin(lat * D2R)];
+function rodrigues(k, th) { // rotation matrix about unit axis k by th (row-major 3x3)
+  const [x, y, z] = k, c = Math.cos(th), s = Math.sin(th), C = 1 - c;
+  return [c + x * x * C, x * y * C - z * s, x * z * C + y * s, y * x * C + z * s, c + y * y * C, y * z * C - x * s, z * x * C - y * s, z * y * C + x * s, c + z * z * C];
+}
+const mul3 = (A, B) => { const R = []; for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) R.push(A[i * 3] * B[j] + A[i * 3 + 1] * B[3 + j] + A[i * 3 + 2] * B[6 + j]); return R; };
+const app3 = (M, v) => [M[0] * v[0] + M[1] * v[1] + M[2] * v[2], M[3] * v[0] + M[4] * v[1] + M[5] * v[2], M[6] * v[0] + M[7] * v[1] + M[8] * v[2]];
+// ---------- 4x4 (column-major for GL)
+function persp(fov, asp, n, f) { const t = 1 / Math.tan(fov / 2); return [t / asp, 0, 0, 0, 0, t, 0, 0, 0, 0, (f + n) / (n - f), -1, 0, 0, 2 * f * n / (n - f), 0]; }
+function m4(a, b) { const r = new Array(16).fill(0); for (let c = 0; c < 4; c++) for (let rI = 0; rI < 4; rI++) for (let k = 0; k < 4; k++) r[c * 4 + rI] += a[k * 4 + rI] * b[c * 4 + k]; return r; }
+const T4 = (x, y, z) => [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, y, z, 1];
+const RX = a => [1, 0, 0, 0, 0, Math.cos(a), Math.sin(a), 0, 0, -Math.sin(a), Math.cos(a), 0, 0, 0, 0, 1];
+const RZ = a => [Math.cos(a), Math.sin(a), 0, 0, -Math.sin(a), Math.cos(a), 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+const FOV = 30 * D2R;
+function camMats(c) {
+  const view = m4(T4(0, 0, -c.d), m4(RX(-c.pitch), m4(RZ(-c.yaw), T4(-c.x, -c.y, 0))));
+  const proj = persp(FOV, W / H, c.d * .05, c.d * 20);
+  return { view, proj, mvp: m4(proj, view), d: c.d };
+}
+function project(M, x, y, z = 0) {
+  const m = M.mvp, X = m[0] * x + m[4] * y + m[8] * z + m[12], Y = m[1] * x + m[5] * y + m[9] * z + m[13], Wc = m[3] * x + m[7] * y + m[11] * z + m[15];
+  return [(X / Wc * .5 + .5) * W, (.5 - Y / Wc * .5) * H, Wc];
+}
+// ---------- camera choreography: each move eases the state toward a key; moves overlap
+const KEYS = {
+  W0: { x: -.27, y: .93, d: 8.6, pitch: .22, yaw: .04 },
+  W1: { x: -.20, y: 1.08, d: 6.75, pitch: .06, yaw: 0 },
+  G: { x: -.56, y: 1.97, d: 4.25, pitch: .17, yaw: -.035 },
+  G2: { x: -.55, y: 1.93, d: 4.05, pitch: .18, yaw: -.045 },
+  AF: { x: .60, y: .04, d: 3.4, pitch: .10, yaw: .02 },
+  AF2: { x: .62, y: .05, d: 3.18, pitch: .14, yaw: .03 },
+};
+const P_KEYS = { P0: { x: .52, y: .62, d: 1.12, pitch: .30, yaw: .07 }, P1: { x: .40, y: .54, d: .9, pitch: .20, yaw: .03 } };
+function mix(s, k, e) { const o = {}; for (const n of ['x', 'y', 'pitch', 'yaw']) o[n] = lerp(s[n], k[n], e); o.d = Math.exp(lerp(Math.log(s.d), Math.log(k.d), e)); return o; }
+function mapCam(t) {
+  let s = KEYS.W0;
+  s = mix(s, KEYS.W1, smooth(t, 2.2, 6.4));
+  s = mix(s, KEYS.G, cubic(lin(t, 5.7, 8.0)));
+  s = mix(s, KEYS.G2, smooth(t, 7.6, 8.8));
+  // the journey: the camera rides with the island (a little behind it), its offset easing from the Greenland framing to the Africa one
+  const e = cubic(lin(t, 8.0, 11.6)), w = smooth(t, 7.9, 8.5) * (1 - smooth(t, 11.0, 11.9));
+  if (w > 0) {
+    const q = rotPt(glRot(travel(t - .22)), C0[0], C0[1]);
+    const g0 = [-.56 - (-41.81 * D2R), 1.97 - mercY(73.08)], a0 = [.60 - TGT[0] * D2R, .04 - mercY(TGT[1])];
+    const f = { x: q[0] + lerp(g0[0], a0[0], e), y: q[1] + lerp(g0[1], a0[1], e), d: Math.exp(lerp(Math.log(KEYS.G2.d), Math.log(KEYS.AF.d), e)) * Math.exp(.30 * Math.sin(PI * e) ** 2),
+                pitch: lerp(KEYS.G2.pitch, KEYS.AF.pitch, e), yaw: lerp(KEYS.G2.yaw, KEYS.AF.yaw, e) };
+    s = mix(s, f, w);
+  }
+  s = mix(s, KEYS.AF, smooth(t, 10.9, 11.9));
+  s = mix(s, KEYS.AF2, outC(lin(t, 11.2, 14.0)));
+  return s;
+}
+const plateCam = t => mix(P_KEYS.P0, P_KEYS.P1, sine(lin(t, 0, 3.6)));
+// ---------- the journey of Greenland (rotation on the sphere, then Mercator: the shrink is the true one)
+let GEO, C0, TGT = [22.0, 1.0];
+function glRot(a) {
+  const [lon0, lat0] = C0, dLat = (lat0 - TGT[1]) * D2R, dLon = (TGT[0] - lon0) * D2R;
+  // eased in map space (Mercator y of the centroid), so the move reads evenly on screen; the shape itself is rotated on the sphere
+  const yA = lerp(mercY(lat0), mercY(TGT[1]), cubic(clamp(a * 1.04))), latA = (2 * Math.atan(Math.exp(yA)) - PI / 2) * R2D;
+  const aLon = cubic(clamp(a * 1.1 - .1));
+  const k = [-Math.sin(lon0 * D2R), Math.cos(lon0 * D2R), 0];      // east unit vector on the equator at lon0: rotating about it moves points along the lon0 meridian
+  const Rm = rodrigues(k, (lat0 - latA) * D2R), Rz = rodrigues([0, 0, 1], dLon * aLon);
+  return mul3(Rz, Rm);
+}
+const travel = t => lin(t, 8.0, 11.2);
+const liftAt = t => outC(lin(t, 7.55, 8.2)) * (1 - quint(lin(t, 10.7, 11.55)));
+function rotPt(M, lon, lat) { const v = app3(M, vec(lon, lat)); return [Math.atan2(v[1], v[0]), mercY(Math.asin(clamp(v[2], -1, 1)) * R2D)]; }
+
+// ---------- GL
+const cv = document.getElementById('gl');
+const gl = cv.getContext('webgl2', { antialias: true, preserveDrawingBuffer: true, premultipliedAlpha: false });
+function sh(type, src) { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s) + src.slice(0, 200)); return s; }
+function prog(vs, fs) { const p = gl.createProgram(); gl.attachShader(p, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(p, sh(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(p); if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p)); const u = {}; const n = gl.getProgramParameter(p, gl.ACTIVE_UNIFORMS); for (let i = 0; i < n; i++) { const a = gl.getActiveUniform(p, i); u[a.name.replace('[0]', '')] = gl.getUniformLocation(p, a.name); } return { p, u }; }
+const GRADE = `
+vec3 toLin(vec3 c){return pow(c,vec3(2.2));}
+vec3 grade(vec3 s){            // Sentinel-2 mosaic -> restrained documentary palette (ink sea, warm sepia land, cream ice)
+  vec3 c = toLin(s);
+  float l = dot(c, vec3(.2126,.7152,.0722));
+  float water = smoothstep(.004,.03, c.b - c.r) * (1. - smoothstep(.10,.22,l));
+  vec3 inkA = vec3(.0045,.0068,.0090), inkB = vec3(.020,.032,.038);
+  vec3 sea = mix(inkA, inkB, smoothstep(.0,.05,l));
+  float tl = pow(clamp(l*1.15,0.,1.), .8);
+  vec3 sep = mix(vec3(.016,.013,.010), vec3(.30,.235,.15), smoothstep(0.,.35,tl));
+  sep = mix(sep, vec3(.47,.42,.33), smoothstep(.30,1.15,tl));
+  vec3 land = mix(sep, c/(1.+c*1.4)*vec3(1.0,.95,.84), .3);
+  return mix(land, sea, water);
+}`;
+const VS_PLANE = `#version 300 es
+in vec2 aP; uniform mat4 uMVP; uniform mat4 uView; uniform vec4 uRect; out vec2 vP; out float vDepth;
+void main(){ vec2 p = mix(uRect.xy, uRect.zw, aP); vP = p; vec4 v = uView*vec4(p,0.,1.); vDepth = -v.z; gl_Position = uMVP*vec4(p,0.,1.); }`;
+const FS_MAP = `#version 300 es
+precision highp float; in vec2 vP; in float vDepth; out vec4 o;
+uniform sampler2D uSat, uMask, uAfm; uniform vec4 uMR, uAR; uniform float uSpot, uHole, uFocus, uDof, uEdge, uLight; uniform vec2 uLightPos;
+${GRADE}
+void main(){
+  vec2 uv = vec2((vP.x + 3.14159265)/6.2831853, (3.14159265 - vP.y)/6.2831853);
+  vec2 ts = vec2(4096.); vec2 dx = dFdx(uv*ts), dy = dFdy(uv*ts);
+  float lod0 = .5*log2(max(dot(dx,dx), dot(dy,dy)));
+  vec2 sc = gl_FragCoord.xy/vec2(1920.,1080.) - .5; sc.x *= 1.777;
+  float lat = 2.*atan(exp(vP.y)) - 1.5707963; vec2 ll = vec2(vP.x, lat)*57.29578;
+  vec2 au = vec2((ll.x-uAR.x)/(uAR.y-uAR.x), (uAR.w-ll.y)/(uAR.w-uAR.z));
+  float am = (au.x>0. && au.x<1. && au.y>0. && au.y<1.) ? texture(uAfm, au).r : 0.;
+  float blur = uDof*abs(vDepth-uFocus)/uFocus*9. + uEdge*smoothstep(.35,1.0,length(sc)) + uSpot*(1.-am)*2.2;   // rack focus onto Africa at the end
+  vec3 c = grade(textureLod(uSat, uv, max(lod0,0.)+blur).rgb);
+  if (uv.y < 0. || uv.y > 1.) c = vec3(.006,.008,.010);
+  // the hole Greenland leaves behind
+  vec2 mu = vec2((ll.x-uMR.x)/(uMR.y-uMR.x), (uMR.w-ll.y)/(uMR.w-uMR.z));
+  float m = (mu.x>0. && mu.x<1. && mu.y>0. && mu.y<1.) ? textureLod(uMask, mu, 1.).r : 0.;
+  c = mix(c, c*.05 + vec3(.005,.006,.007), m*uHole);
+  float cl = dot(c, vec3(.2126,.7152,.0722));
+  c = mix(c, mix(vec3(cl)*vec3(.58,.62,.66)*.26, c*1.05, am), uSpot);
+  // a soft table lamp drifting over the sheet
+  float lg = exp(-dot(sc-uLightPos, sc-uLightPos)*1.6);
+  c *= mix(.66, 1.08, lg*uLight + (1.-uLight)*.6);
+  o = vec4(c, 1.);
+}`;
+const FS_PLATE = `#version 300 es
+precision highp float; in vec2 vP; in float vDepth; out vec4 o;
+uniform sampler2D uPlate; uniform vec2 uPS; uniform float uFocus, uDof, uEdge;
+vec3 toLin(vec3 c){return pow(c,vec3(2.2));}
+void main(){
+  vec2 uv = vec2(vP.x, 1. - vP.y/uPS.y);
+  vec2 dx = dFdx(uv*uPS.x*1920.), dy = dFdy(uv*uPS.x*1920.);
+  float lod0 = .5*log2(max(dot(dx,dx), dot(dy,dy)));
+  vec2 sc = gl_FragCoord.xy/vec2(1920.,1080.) - .5; sc.x *= 1.777;
+  float blur = uDof*abs(vDepth-uFocus)/uFocus*10. + uEdge*smoothstep(.3,1.0,length(sc));
+  vec3 c = toLin(textureLod(uPlate, uv, max(lod0,0.)+blur).rgb);
+  float l = dot(c, vec3(.2126,.7152,.0722));
+  // engraving on aged paper, printed in the film's sepia: ink lines dark, paper warm cream, a lamp from the upper left
+  vec3 t = mix(vec3(.010,.010,.011), vec3(.52,.44,.31), smoothstep(.02,.55,l));
+  t *= mix(.45, 1.1, exp(-dot(sc-vec2(.05,.35), sc-vec2(.05,.35))*1.1));
+  t *= mix(1., .32, smoothstep(.2,.9, (-sc.x*.55 - sc.y*1.1)));   // darker lower left, under the title
+  o = vec4(t, l);   // alpha carries the paper brightness for the double-exposure dissolve
+}`;
+const VS_GL = `#version 300 es
+in vec2 aLL; uniform mat4 uMVP; uniform mat3 uRot; uniform float uLift; uniform vec2 uOff; out vec2 vLL;
+void main(){
+  vLL = aLL; vec2 r = radians(aLL);
+  vec3 v = uRot*vec3(cos(r.y)*cos(r.x), cos(r.y)*sin(r.x), sin(r.y));
+  float lat = asin(clamp(v.z,-1.,1.)), lon = atan(v.y, v.x);
+  vec2 p = vec2(lon, log(tan(.78539816 + clamp(lat,-1.4844,1.4844)*.5))) + uOff;
+  gl_Position = uMVP*vec4(p, uLift, 1.);
+}`;
+const FS_GL = `#version 300 es
+precision highp float; in vec2 vLL; out vec4 o;
+uniform sampler2D uSat, uMask; uniform vec4 uMR; uniform float uAlpha, uShadow, uMaskLod;
+${GRADE}
+void main(){
+  vec2 mu = vec2((vLL.x-uMR.x)/(uMR.y-uMR.x), (uMR.w-vLL.y)/(uMR.w-uMR.z));
+  float m = textureLod(uMask, mu, uMaskLod).r;
+  if (uShadow > 0.) { o = vec4(vec3(0.), m*uShadow*uAlpha); return; }
+  float y = log(tan(.78539816 + radians(vLL.y)*.5));
+  vec2 uv = vec2((radians(vLL.x)+3.14159265)/6.2831853, (3.14159265 - y)/6.2831853);
+  vec3 c = grade(texture(uSat, uv).rgb);
+  c = c*vec3(1.10,1.02,.86) + vec3(.014,.009,.003);
+  o = vec4(c, m*uAlpha);
+}`;
+const VS_FS = `#version 300 es
+in vec2 aP; out vec2 vU; void main(){ vU = aP; gl_Position = vec4(aP*2.-1., 0., 1.); }`;
+const FS_POST = `#version 300 es
+precision highp float; in vec2 vU; out vec4 o;
+uniform sampler2D uScene, uPlateT, uOver, uPaper; uniform float uX, uFrame, uFade, uPlateOn;
+float hash(vec2 p){ p = fract(p*vec2(443.897,441.423)); p += dot(p, p.yx+19.19); return fract((p.x+p.y)*p.x); }
+float vn(vec2 p){ vec2 i = floor(p), f = fract(p); f = f*f*(3.-2.*f);
+  return mix(mix(hash(i), hash(i+vec2(1,0)), f.x), mix(hash(i+vec2(0,1)), hash(i+vec2(1,1)), f.x), f.y); }
+void main(){
+  vec3 map = texture(uScene, vU).rgb;
+  vec4 pl = texture(uPlateT, vU);
+  // double exposure: the paper burns away first, the engraved lines linger over the satellite map
+  float k = clamp((uX*1.9 - .45) + (pl.a - .25)*1.4, 0., 1.);
+  k = smoothstep(0., 1., k);
+  vec3 c = uPlateOn > .5 ? mix(pl.rgb, map, k) : map;
+  vec4 ov = texture(uOver, vec2(vU.x, 1.-vU.y));
+  c = mix(c, pow(ov.rgb/max(ov.a,1e-4), vec3(2.2)), ov.a);
+  // paper tooth over everything (multiply-like, gentle), vignette, film grain (luma-weighted), fade
+  float pa = texture(uPaper, vU*vec2(1.,1.) ).r;
+  c *= 1. + (pa - .5)*.22;
+  vec2 q = vU - .5; q.x *= 1.25;
+  c *= mix(1., .38, smoothstep(.18, .78, dot(q,q)*2.2));
+  c = pow(max(c, 0.), vec3(1./2.2));
+  vec2 px = vU*vec2(1920.,1080.); vec2 jo = vec2(hash(vec2(uFrame,1.))*512., hash(vec2(uFrame,2.))*512.);
+  float g = (vn(px/1.6 + jo) - .5)*1.4 + (vn(px/3.2 - jo) - .5)*.8;
+  float lum = dot(c, vec3(.299,.587,.114));
+  c += g * .040 * (1. - lum*.55);
+  // tiny warm lift in the blacks, soft highlight shoulder
+  c = c*.97 + vec3(.012,.010,.008);
+  c = c / (1. + max(c - .92, 0.)*1.5);
+  o = vec4(c*uFade, 1.);
+}`;
+const P = {};
+function tex(img, { mip = true, wrapS = gl.CLAMP_TO_EDGE } = {}) {
+  const t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t);
+  gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, false);
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+  if (mip) gl.generateMipmap(gl.TEXTURE_2D);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, mip ? gl.LINEAR_MIPMAP_LINEAR : gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, wrapS); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+  return t;
+}
+function fbo() {
+  const t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t);
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA16F, W, H, 0, gl.RGBA, gl.HALF_FLOAT, null);
+  for (const [k, v] of [[gl.TEXTURE_MIN_FILTER, gl.LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR], [gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE]]) gl.texParameteri(gl.TEXTURE_2D, k, v);
+  const rb = gl.createRenderbuffer(); gl.bindRenderbuffer(gl.RENDERBUFFER, rb); gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT24, W, H);
+  const f = gl.createFramebuffer(); gl.bindFramebuffer(gl.FRAMEBUFFER, f);
+  gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, t, 0);
+  gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, rb);
+  return { f, t };
+}
+const loadImg = s => new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error('img ' + s)); i.src = s; });
+let quad, glMesh, glCount, TX = {}, FB = {}, over, octx;
+async function init() {
+  gl.getExtension('EXT_color_buffer_float'); gl.getExtension('EXT_color_buffer_half_float');
+  const [sat, plate, paper, mask, afm, geo] = await Promise.all([loadImg('assets/sat.jpg'), loadImg('assets/plate.jpg'), loadImg('assets/paper.png'), loadImg('assets/gl_mask.png'), loadImg('assets/af_mask.png'), fetch('assets/geo.json').then(r => r.json())]);
+  GEO = geo; C0 = geo.gl_centroid;
+  await Promise.all(['500 40px Serif', '600 40px Serif', 'italic 500 40px Serif', '400 20px Mono', '300 20px Mono'].map(f => document.fonts.load(f, 'АБВ абв 0°')));
+  TX.sat = tex(sat, { wrapS: gl.REPEAT }); TX.plate = tex(plate); TX.paper = tex(paper, { mip: false, wrapS: gl.REPEAT }); TX.mask = tex(mask); TX.afm = tex(afm, { mip: false });
+  TX.plateSize = [plate.width, plate.height];
+  P.map = prog(VS_PLANE, FS_MAP); P.plate = prog(VS_PLANE, FS_PLATE); P.gl = prog(VS_GL, FS_GL); P.post = prog(VS_FS, FS_POST);
+  quad = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, quad); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0, 0, 1, 0, 0, 1, 1, 1]), gl.STATIC_DRAW);
+  // Greenland mesh on the lon/lat grid of the mask, 0.25° cells
+  const [L0, L1, P0, P1] = geo.mask, nx = 260, ny = 100, v = [], idx = [];
+  for (let j = 0; j <= ny; j++) for (let i = 0; i <= nx; i++) v.push(L0 + (L1 - L0) * i / nx, P0 + (P1 - P0) * j / ny);
+  for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) { const a = j * (nx + 1) + i; idx.push(a, a + 1, a + nx + 1, a + 1, a + nx + 2, a + nx + 1); }
+  glMesh = { vb: gl.createBuffer(), ib: gl.createBuffer() }; glCount = idx.length;
+  gl.bindBuffer(gl.ARRAY_BUFFER, glMesh.vb); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(v), gl.STATIC_DRAW);
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, glMesh.ib); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint32Array(idx), gl.STATIC_DRAW);
+  FB.scene = fbo(); FB.plate = fbo();
+  over = document.createElement('canvas'); over.width = W; over.height = H; octx = over.getContext('2d');
+  TX.over = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, TX.over);
+  for (const [k, vv] of [[gl.TEXTURE_MIN_FILTER, gl.LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR], [gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE]]) gl.texParameteri(gl.TEXTURE_2D, k, vv);
+  window.READY = true;
+}
+function bindQuad(p) { const l = gl.getAttribLocation(p.p, 'aP'); gl.bindBuffer(gl.ARRAY_BUFFER, quad); gl.enableVertexAttribArray(l); gl.vertexAttribPointer(l, 2, gl.FLOAT, false, 0, 0); }
+function useTex(p, name, t, unit) { gl.activeTexture(gl.TEXTURE0 + unit); gl.bindTexture(gl.TEXTURE_2D, t); gl.uniform1i(p.u[name], unit); }
+
+// ---------- overlay drawing helpers (2D canvas, linear sRGB strokes on top of the photographic layer)
+function polyline(ctx, pts, frac = 1, closed = false) {
+  if (frac <= 0 || pts.length < 2) return;
+  const P = closed ? pts.concat([pts[0]]) : pts;
+  let L = 0; const seg = [];
+  for (let i = 1; i < P.length; i++) { const d = Math.hypot(P[i][0] - P[i - 1][0], P[i][1] - P[i - 1][1]); seg.push(d); L += d; }
+  let rem = L * frac; ctx.beginPath(); ctx.moveTo(P[0][0], P[0][1]);
+  for (let i = 1; i < P.length && rem > 0; i++) {
+    if (seg[i - 1] <= rem) { ctx.lineTo(P[i][0], P[i][1]); rem -= seg[i - 1]; }
+    else { const k = rem / seg[i - 1]; ctx.lineTo(P[i - 1][0] + (P[i][0] - P[i - 1][0]) * k, P[i - 1][1] + (P[i][1] - P[i - 1][1]) * k); rem = 0; }
+  }
+  ctx.stroke();
+  return L;
+}
+function splitWrap(pts) { // break a projected ring where it jumps across the screen (antimeridian)
+  const out = [[]]; for (let i = 0; i < pts.length; i++) { if (i && Math.abs(pts[i][0] - pts[i - 1][0]) > W * .5) out.push([]); out[out.length - 1].push(pts[i]); } return out;
+}
+function text(ctx, s, x, y, { font, color, a = 1, track = 0, align = 'left' }) {
+  ctx.font = font; ctx.fillStyle = rgba(color, a); ctx.textBaseline = 'alphabetic';
+  if ('letterSpacing' in ctx) ctx.letterSpacing = track + 'px';
+  ctx.textAlign = align; ctx.fillText(s, x, y);
+  if ('letterSpacing' in ctx) ctx.letterSpacing = '0px';
+}
+const fmtLat = l => l === 0 ? '0°' : Math.abs(l) + '°';
+
+function drawOverlay(t, M, plateAmt) {
+  const c = octx; c.clearRect(0, 0, W, H); c.lineCap = 'round'; c.lineJoin = 'round';
+  const pr = (lon, lat, z = 0) => project(M, lon * D2R, mercY(lat), z);
+  // --- plate titling (the 1569 engraving)
+  if (plateAmt > 0) {
+    const a = smooth(t, .7, 1.5) * (1 - smooth(t, 2.4, 3.0));
+    c.strokeStyle = rgba(PARCH, .55 * a); c.lineWidth = 1;
+    const x0 = 128, y0 = 812;
+    c.beginPath(); c.moveTo(x0, y0 - 64); c.lineTo(x0 + 300 * outC(lin(t, .7, 1.8)), y0 - 64); c.stroke();
+    text(c, 'Карта мира Меркатора', x0, y0, { font: 'italic 500 50px Serif', color: PARCH, a: a * .95 });
+    text(c, '1569  ·  ДУЙСБУРГ  ·  ДЛЯ МОРЕПЛАВАТЕЛЕЙ', x0, y0 + 44, { font: '400 18px Mono', color: PARCH, a: a * .85, track: 2.4 });
+  }
+  if (t < 2.4) return;
+  // --- graticule: hairlines drawn from the equator outward, 10° steps
+  const ga = smooth(t, 2.6, 3.6) * (1 - .45 * smooth(t, 11.4, 12.6));
+  const lats = [-80, -70, -60, -50, -40, -30, -20, -10, 0, 10, 20, 30, 40, 50, 60, 70, 80];
+  c.lineWidth = 1;
+  for (const la of lats) {
+    const f = outQ(lin(t, 2.7 + Math.abs(la) / 80 * .9, 3.9 + Math.abs(la) / 80 * .9)); if (f <= 0) continue;
+    const pts = []; for (let lo = -300; lo <= 300; lo += 3) pts.push(pr(lo, la));
+    // draw outward from the centre of the frame in both directions
+    const mid = pts.reduce((b, p, i) => Math.abs(p[0] - W / 2) < Math.abs(pts[b][0] - W / 2) ? i : b, 0);
+    c.strokeStyle = la === 0 ? rgba(PARCH, .42 * ga) : rgba(SLATE, .30 * ga);
+    c.lineWidth = la === 0 ? 1.2 : .9;
+    polyline(c, pts.slice(mid), f); polyline(c, pts.slice(0, mid + 1).reverse(), f);
+  }
+  for (let lo = -300; lo <= 300; lo += 10) {
+    const f = outQ(lin(t, 2.9 + Math.min(1, Math.abs(lo + 10) / 180) * .7, 4.1 + Math.min(1, Math.abs(lo + 10) / 180) * .7)); if (f <= 0) continue;
+    const pts = []; for (let la = 0; la <= 84; la += 2) pts.push(pr(lo, la));
+    const pts2 = []; for (let la = 0; la >= -84; la -= 2) pts2.push(pr(lo, la));
+    c.strokeStyle = rgba(SLATE, .26 * ga); c.lineWidth = .9;
+    polyline(c, pts, f); polyline(c, pts2, f);
+  }
+  // latitude figures along the left edge, and the equator named
+  const la_a = ga * smooth(t, 3.4, 4.2);
+  for (const la of lats) {
+    const A = pr(-300, la), B = pr(300, la), X = 70;
+    if ((A[0] - X) * (B[0] - X) > 0) continue;
+    const y = A[1] + (B[1] - A[1]) * (X - A[0]) / (B[0] - A[0]);
+    if (y < 40 || y > H - 140) continue;
+    text(c, fmtLat(la), X, y - 7, { font: '400 14px Mono', color: la === 0 ? PARCH : SLATE, a: la_a * (la === 0 ? .9 : .75), track: 1 });
+    if (la === 0) text(c, 'ЭКВАТОР', X + 36, y - 7, { font: '400 14px Mono', color: PARCH, a: la_a * .8, track: 2.4 });
+  }
+  // --- coastlines: whisper-thin, so the map reads as a drawn chart over the photograph
+  const ca = .18 * smooth(t, 3.2, 4.4) * (1 - .5 * smooth(t, 11.2, 12.4));
+  if (ca > 0) {
+    c.strokeStyle = rgba(PARCH, ca); c.lineWidth = .8;
+    for (const off of [-360, 0, 360]) { const a0 = pr(-180 + off, 0)[0], a1 = pr(180 + off, 0)[0]; if (Math.max(a0, a1) < -50 || Math.min(a0, a1) > W + 50) continue; for (const r of GEO.coast) for (const s of splitWrap(r.map(p => pr(p[0] + off, p[1])))) polyline(c, s); }
+  }
+  // --- Africa outline + fill
+  const afDraw = cubic(lin(t, 4.3, 6.0));
+  const afHi = smooth(t, 10.8, 12.0);
+  if (afDraw > 0) {
+    if (afHi > 0) {
+      c.fillStyle = rgba(PARCH, .07 * afHi);
+      c.beginPath(); for (const r of GEO.africa_fill) { r.forEach((p, i) => { const q = pr(p[0], p[1]); i ? c.lineTo(q[0], q[1]) : c.moveTo(q[0], q[1]); }); c.closePath(); } c.fill('nonzero');
+    }
+    c.strokeStyle = rgba(PARCH, .78 + .2 * afHi); c.lineWidth = 1.5 + .4 * afHi;
+    for (const r of GEO.africa_stroke) polyline(c, r.map(p => pr(p[0], p[1])), afDraw);
+  }
+  // --- Greenland: original outline (becomes a dashed ghost), the lifted copy
+  const glDraw = cubic(lin(t, 4.0, 5.6));
+  const lift = liftAt(t), tr = travel(t), moved = t > 7.55;
+  if (glDraw > 0) {
+    c.strokeStyle = rgba(OCHRE, (moved ? .55 : .95)); c.lineWidth = moved ? 1.1 : 1.6;
+    if (moved) c.setLineDash([5, 6]);
+    for (const r of GEO.greenland) polyline(c, r.map(p => pr(p[0], p[1])), glDraw, true);
+    c.setLineDash([]);
+  }
+  const R = moved ? glRot(tr) : null;
+  if (moved) {
+    const z = lift * .045;
+    c.strokeStyle = rgba(OCHRE, 1); c.lineWidth = 1.7;
+    for (const r of GEO.greenland) { const pts = r.map(p => { const q = rotPt(R, p[0], p[1]); return project(M, q[0], q[1], z); }); polyline(c, pts, 1, true); }
+  }
+  // --- labels
+  const glc = moved ? (() => { const q = rotPt(R, C0[0], C0[1]); return project(M, q[0], q[1], lift * .045); })() : pr(C0[0], C0[1]);
+  const la1 = smooth(t, 5.0, 5.8) * (1 - smooth(t, 7.3, 7.7)) + smooth(t, 11.6, 12.3);
+  // Greenland label: right of the island before the move; in the right column after
+  if (t < 8) {
+    const a = smooth(t, 5.0, 5.8) * (1 - smooth(t, 6.3, 6.8));
+    const p = pr(-8, 77);
+    text(c, 'Гренландия', p[0] + 6, p[1], { font: '600 46px Serif', color: OCHRE, a });
+    text(c, 'НА КАРТЕ', p[0] + 8, p[1] + 32, { font: '400 16px Mono', color: OCHRE, a: a * .9, track: 2.4 });
+  }
+  if (t < 8.3) {
+    const a = smooth(t, 5.4, 6.2) * (1 - smooth(t, 7.0, 7.6));
+    const p = pr(53, 6);
+    text(c, 'Африка', p[0] + 10, p[1], { font: '600 46px Serif', color: PARCH, a });
+    text(c, 'НА КАРТЕ', p[0] + 12, p[1] + 32, { font: '400 16px Mono', color: PARCH, a: a * .9, track: 2.4 });
+  }
+  // stretch ladder beside Greenland: the same 5° of latitude get taller toward the pole
+  const lad = smooth(t, 6.75, 7.5) * (1 - smooth(t, 8.0, 8.6));
+  if (lad > 0) {
+    const lon = -4;
+    const ys = [50, 55, 60, 65, 70, 75, 80].map(l => [l, pr(lon, l)]);
+    c.strokeStyle = rgba(PARCH, .7 * lad); c.lineWidth = 1;
+    c.beginPath(); c.moveTo(ys[0][1][0], ys[0][1][1]); c.lineTo(ys[ys.length - 1][1][0], ys[ys.length - 1][1][1]); c.stroke();
+    ys.forEach(([l, p], i) => {
+      const f = outC(lin(t, 6.75 + i * .07, 7.2 + i * .07));
+      const w = l % 10 === 0 ? 16 : 9;
+      c.beginPath(); c.moveTo(p[0], p[1]); c.lineTo(p[0] + w * f, p[1]); c.stroke();
+      if (l % 10 === 0) text(c, l + '°', p[0] + 24, p[1] + 5, { font: '400 14px Mono', color: PARCH, a: lad * f * .85, track: 1 });
+    });
+    // the step between 50° and 60° vs 70° and 80° measured (tick brackets)
+    const s1 = ys[0][1], s2 = ys[2][1], s3 = ys[4][1], s4 = ys[6][1];
+    const h1 = Math.abs(s2[1] - s1[1]), h2 = Math.abs(s4[1] - s3[1]);
+    text(c, '×' + (h2 / h1).toFixed(1).replace('.', ','), s3[0] + 70, (s3[1] + s4[1]) / 2 + 6, { font: '400 16px Mono', color: OCHRE, a: lad * smooth(t, 7.0, 7.5), track: 1 });
+    c.strokeStyle = rgba(OCHRE, .8 * lad * smooth(t, 7.0, 7.5));
+    c.beginPath(); c.moveTo(s3[0] + 56, s3[1]); c.lineTo(s3[0] + 62, s3[1]); c.lineTo(s3[0] + 62, s4[1]); c.lineTo(s3[0] + 56, s4[1]); c.stroke();
+  }
+  // final: the comparison
+  const fa = smooth(t, 11.5, 12.3);
+  if (fa > 0) {
+    const colX = 1290;
+    // leader from the island to the column
+    const lp = [glc[0] + 0, glc[1]];
+    const ex = colX - 24, ey = 520;
+    const lf = cubic(lin(t, 11.5, 12.2));
+    c.strokeStyle = rgba(OCHRE, .85 * fa); c.lineWidth = 1;
+    c.beginPath(); c.arc(lp[0], lp[1], 3.2, 0, 2 * PI); c.fillStyle = rgba(OCHRE, fa); c.fill();
+    c.beginPath(); c.moveTo(lp[0], lp[1]); c.lineTo(lerp(lp[0], ex, lf), lerp(lp[1], ey, lf)); c.stroke();
+    text(c, 'Гренландия', colX, ey + 10, { font: '600 46px Serif', color: OCHRE, a: smooth(t, 11.9, 12.5) });
+    text(c, '2,17 МЛН КМ²', colX + 2, ey + 42, { font: '400 16px Mono', color: OCHRE, a: smooth(t, 12.1, 12.7) * .9, track: 2.4 });
+    const ay = 352, ap = pr(38, 9), alf = cubic(lin(t, 11.3, 12.0));
+    c.strokeStyle = rgba(PARCH, .8 * fa); c.fillStyle = rgba(PARCH, fa);
+    c.beginPath(); c.arc(ap[0], ap[1], 3.2, 0, 2 * PI); c.fill();
+    c.beginPath(); c.moveTo(ap[0], ap[1]); c.lineTo(lerp(ap[0], colX - 24, alf), lerp(ap[1], ay - 14, alf)); c.stroke();
+    text(c, 'Африка', colX, ay, { font: '600 46px Serif', color: PARCH, a: smooth(t, 11.7, 12.3) });
+    text(c, '30,4 МЛН КМ²', colX + 2, ay + 32, { font: '400 16px Mono', color: PARCH, a: smooth(t, 11.9, 12.5) * .9, track: 2.4 });
+    // the ratio: rule + big figure
+    const rf = outC(lin(t, 12.5, 13.2));
+    c.strokeStyle = rgba(PARCH, .5 * rf); c.beginPath(); c.moveTo(colX, 640); c.lineTo(colX + 380 * rf, 640); c.stroke();
+    text(c, '×14', colX - 6, 770, { font: '500 140px Serif', color: PARCH, a: smooth(t, 12.6, 13.3) });
+    text(c, 'В ДЕЙСТВИТЕЛЬНОСТИ', colX + 236, 712, { font: '400 16px Mono', color: PARCH, a: smooth(t, 12.9, 13.5) * .7, track: 2.4 });
+    text(c, 'АФРИКА БОЛЬШЕ', colX + 236, 738, { font: '400 16px Mono', color: PARCH, a: smooth(t, 12.9, 13.5) * .7, track: 2.4 });
+  }
+}
+
+// ---------- frame
+window.render = function (t) {
+  const showPlate = t < 3.6, xf = sine(lin(t, 2.05, 3.45));
+  const cm = mapCam(t), M = camMats(cm);
+  // map scene
+  gl.bindFramebuffer(gl.FRAMEBUFFER, FB.scene.f); gl.viewport(0, 0, W, H);
+  gl.clearColor(.006, .008, .010, 1); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT); gl.disable(gl.DEPTH_TEST);
+  let p = P.map; gl.useProgram(p.p); bindQuad(p);
+  gl.uniformMatrix4fv(p.u.uMVP, false, M.mvp); gl.uniformMatrix4fv(p.u.uView, false, M.view);
+  gl.uniform4f(p.u.uRect, -3 * PI, -PI, 3 * PI, PI); gl.uniform4f(p.u.uMR, ...GEO.mask);
+  gl.uniform1f(p.u.uHole, smooth(t, 7.6, 8.4)); gl.uniform1f(p.u.uSpot, smooth(t, 10.9, 12.2)); gl.uniform4f(p.u.uAR, ...GEO.af_mask); gl.uniform1f(p.u.uFocus, cm.d); gl.uniform1f(p.u.uDof, .55); gl.uniform1f(p.u.uEdge, 1.6);
+  gl.uniform1f(p.u.uLight, .85); gl.uniform2f(p.u.uLightPos, -.25 + .35 * sine(lin(t, 0, DUR)), .12 - .1 * sine(lin(t, 0, DUR)));
+  useTex(p, 'uSat', TX.sat, 0); useTex(p, 'uMask', TX.mask, 1); useTex(p, 'uAfm', TX.afm, 2);
+  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  // lifted Greenland: shadow then the cut-out
+  if (t > 7.55) {
+    const lift = liftAt(t), R = glRot(travel(t));
+    const Rgl = [R[0], R[3], R[6], R[1], R[4], R[7], R[2], R[5], R[8]];   // column-major
+    p = P.gl; gl.useProgram(p.p);
+    const la = gl.getAttribLocation(p.p, 'aLL'); gl.bindBuffer(gl.ARRAY_BUFFER, glMesh.vb); gl.enableVertexAttribArray(la); gl.vertexAttribPointer(la, 2, gl.FLOAT, false, 0, 0);
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, glMesh.ib);
+    gl.uniformMatrix4fv(p.u.uMVP, false, M.mvp); gl.uniformMatrix3fv(p.u.uRot, false, Rgl); gl.uniform4f(p.u.uMR, ...GEO.mask);
+    useTex(p, 'uSat', TX.sat, 0); useTex(p, 'uMask', TX.mask, 1);
+    gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    gl.uniform1f(p.u.uAlpha, 1); gl.uniform1f(p.u.uShadow, .55 * lift); gl.uniform1f(p.u.uMaskLod, 4.5); gl.uniform1f(p.u.uLift, 0);
+    gl.uniform2f(p.u.uOff, .018 * lift, -.03 * lift);
+    if (lift > .01) gl.drawElements(gl.TRIANGLES, glCount, gl.UNSIGNED_INT, 0);
+    gl.uniform1f(p.u.uShadow, 0); gl.uniform1f(p.u.uMaskLod, 0); gl.uniform1f(p.u.uLift, lift * .045); gl.uniform2f(p.u.uOff, 0, 0);
+    gl.drawElements(gl.TRIANGLES, glCount, gl.UNSIGNED_INT, 0);
+    gl.disable(gl.BLEND);
+  }
+  // plate
+  if (showPlate) {
+    const pc = plateCam(t), PM = camMats(pc), ps = [1, TX.plateSize[1] / TX.plateSize[0]];
+    gl.bindFramebuffer(gl.FRAMEBUFFER, FB.plate.f); gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+    p = P.plate; gl.useProgram(p.p); bindQuad(p);
+    gl.uniformMatrix4fv(p.u.uMVP, false, PM.mvp); gl.uniformMatrix4fv(p.u.uView, false, PM.view);
+    gl.uniform4f(p.u.uRect, 0, 0, 1, ps[1]); gl.uniform2f(p.u.uPS, 1, ps[1]);
+    gl.uniform1f(p.u.uFocus, pc.d); gl.uniform1f(p.u.uDof, .7); gl.uniform1f(p.u.uEdge, 1.4);
+    useTex(p, 'uPlate', TX.plate, 0);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  }
+  // overlay
+  drawOverlay(t, M, showPlate ? 1 : 0);
+  gl.bindTexture(gl.TEXTURE_2D, TX.over); gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, over); gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, false);
+  // post
+  gl.bindFramebuffer(gl.FRAMEBUFFER, null); gl.viewport(0, 0, W, H);
+  p = P.post; gl.useProgram(p.p); bindQuad(p);
+  useTex(p, 'uScene', FB.scene.t, 0); useTex(p, 'uPlateT', FB.plate.t, 1); useTex(p, 'uOver', TX.over, 2); useTex(p, 'uPaper', TX.paper, 3);
+  gl.uniform1f(p.u.uX, showPlate ? xf : 1); gl.uniform1f(p.u.uPlateOn, showPlate ? 1 : 0); gl.uniform1f(p.u.uFrame, Math.round(t * 30));
+  gl.uniform1f(p.u.uFade, smooth(t, 0, .8) * (1 - smooth(t, DUR - .3, DUR + .05)));
+  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+};
+window.DUR = DUR;
+init().catch(e => { console.error(e.stack || e); throw e; });
+</script></body></html>

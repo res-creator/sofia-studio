@@ -2,3 +2,8 @@ frames/
 out/frames/
 node_modules/
 raw/
+stills_dev/
+sound.wav
+render.pid
+render.log
+*.tmp.mp4

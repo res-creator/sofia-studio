@@ -1,0 +1,17 @@
+s4_riso — «Почему Гренландия кажется размером с Африку» (animated risograph / screen-print style test)
+
+Geography
+- Coastlines and country borders: Natural Earth 1:50m (public domain), via the npm package world-atlas@2
+  (countries-50m.json, ISC licence, Mike Bostock). Africa = dissolved African countries; Greenland = ISO 304.
+- Projection maths: d3-geo 3 (ISC licence) for Mercator and spherical areas; topojson-client 3 (ISC) for merging.
+- Greenland's move is a rigid rotation of the sphere (its centroid carried to each target, north kept up), then
+  re-projected in Mercator every frame, so the shrink is the true Mercator scale change. Area check on this data:
+  Africa 29.99 M km², Greenland 2.155 M km², ratio 13.9 (on-screen numbers use the standard 30.4 / 2.17 M km²).
+  The 14 "stamps" are Greenland transplanted to the centres of 14 equal-area k-means cells of Africa.
+
+Fonts (SIL Open Font License 1.1, licence files in fonts/)
+- Unbounded (Google Fonts / NARRATIVE), via @fontsource/unbounded
+- IBM Plex Mono (IBM), via @fontsource/ibm-plex-mono
+
+Everything else (riso print shader, layout, animation, sound design) is our own code in src/.
+Sound: synthesised in numpy (noise + sines), no samples, no music.

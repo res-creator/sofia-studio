@@ -1,0 +1,38 @@
+«Мысленный эксперимент» · style lab · direction 2 «Artistic documentary» — s2_documentary.mp4 (1920×1080, 30 fps, 14.0 s, H.264 + AAC)
+Scene: why Greenland looks as big as Africa on the Mercator map (Africa ≈ 30.4 M km², Greenland ≈ 2.17 M km², ≈ ×14).
+
+## Archival image (public domain)
+- assets/plate.jpg = ../../country_sizes/archive/img/mercator_1569_map.jpg: Gerard Mercator, «Nova et aucta orbis terrae descriptio
+  ad usum navigantium emendate accommodata», Duisburg 1569, sheet 1 of 14 (Bibliothèque nationale de France, btv1b7200344k), public
+  domain, via Wikimedia Commons:
+  https://commons.wikimedia.org/wiki/File:Nova_et_aucta_orbis_terrae_descriptio_ad_usum_navigantium_emendate_accomodata_-_illustriss..._principi..._Wilhelmo_Duci_juliae,_Clivorum_et_Monti_Opus_hoc..._eius_auspiciis_inchoatum..._-_Gerardus_Mercator..._-_btv1b7200344k_(01_of_14).jpg
+  Modified: toned to sepia, lit, blurred (depth of field) and dissolved into the satellite map in code.
+
+## Satellite imagery (CC BY 4.0 — attribution required)
+- assets/sat.jpg = ../../lemo/cs_globe/raw/world_s2_z4.jpg: Sentinel-2 cloudless 2016 – https://s2maps.eu by EOX IT Services GmbH
+  (Contains modified Copernicus Sentinel data 2016 & 2017), CC BY 4.0, layer s2cloudless_3857, zoom 4 (Web Mercator), tile URLs in
+  ../../lemo/cs_globe/raw/manifest.jsonl. Modified: colour-graded in the shader (ink sea, sepia land), blurred, masked.
+  Put this line in the video description:
+  Satellite imagery: Sentinel-2 cloudless 2016 – https://s2maps.eu by EOX IT Services GmbH (Contains modified Copernicus Sentinel
+  data 2016 & 2017), CC BY 4.0. Map of 1569: Gerard Mercator, public domain (BnF / Wikimedia Commons).
+
+## Geography (public domain)
+- Natural Earth 1:50m (countries, land) via world-atlas@2.0.2 (https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json,
+  land-50m.json; ISC licence for the packaging, Natural Earth data public domain). raw/ (not in git); tools/prep.py builds assets/geo.json,
+  gl_mask.png, af_mask.png.
+- Projection maths: Web Mercator y = ln tan(π/4 + φ/2). Greenland's cut-out is a lon/lat mesh rotated ON THE SPHERE (along its
+  meridian, then about the polar axis) and re-projected with Mercator every frame, so its shrink is the true Mercator scale change.
+  Checks (tools/prep.py): Greenland 2.155 M km², Africa (without small islands) 30.00 M km², ratio 13.9; on the Mercator map at their
+  real places Greenland covers 0.869 rad² and Africa 0.825 rad² (Greenland even looks a little larger).
+  On screen the usual round figures: 30,4 / 2,17 млн км², ×14.
+
+## Fonts (SIL Open Font License 1.1, via the Google Fonts CSS API, subset to Russian/digits/punctuation; tools/fonts.py)
+- Cormorant Garamond 500, 500 italic, 600 — Christian Thalmann (Catharsis Fonts).
+- IBM Plex Mono 300, 400 — IBM Corp.
+
+## Sound
+- sound.wav synthesised in tools/sound.py (numpy/scipy): pad, filtered noise whooshes, thud, bell. No samples, no music.
+
+## Code
+- index.html, tools/*.py, render.sh: our own. tools/frames.mjs copied from ../../lemo/dp_maps; rendering via the Lemo-Opuscar
+  core/render/page.mjs (frame-exact, headless Chromium, WebGL2). Paper texture procedural (tools/prep.py). No AI-generated images.
