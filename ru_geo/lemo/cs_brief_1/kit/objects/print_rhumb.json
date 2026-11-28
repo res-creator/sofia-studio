@@ -1,0 +1,15 @@
+{
+  "id": "print_rhumb",
+  "w": 2020,
+  "h": 1270,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/rhumb_line_diagram.jpg",
+    "id": "print_rhumb",
+    "crop": "0,1150,1854,2254",
+    "w": 1854,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

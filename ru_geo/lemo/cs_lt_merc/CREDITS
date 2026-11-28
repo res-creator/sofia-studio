@@ -1,0 +1,13 @@
+Picture 1: Gerard Mercator, engraved portrait published by Frans Hogenberg (plate dated «CIƆ IƆ LXXVI»). Public domain.
+https://commons.wikimedia.org/wiki/File:Gerardus_Mercator2.jpg — local copy ru_geo/country_sizes/archive/img/mercator_portrait.jpg (1920x2540).
+Picture 2: Gerard Mercator, «Nova et aucta orbis terrae descriptio ad usum navigantium emendate accommodata», Duisburg 1569,
+sheet 1 of 14 (Bibliothèque nationale de France, btv1b7200344k). Public domain.
+https://commons.wikimedia.org/wiki/File:Nova_et_aucta_orbis_terrae_descriptio_ad_usum_navigantium_emendate_accomodata_-_illustriss..._principi..._Wilhelmo_Duci_juliae,_Clivorum_et_Monti_Opus_hoc..._eius_auspiciis_inchoatum..._-_Gerardus_Mercator..._-_btv1b7200344k_(01_of_14).jpg
+local copy ru_geo/country_sizes/archive/img/mercator_1569_map.jpg (1920x2575), cropped to the sheet (scanner bed cut away), colour untouched.
+Picture 3: title page of Mercator's «Atlas sive cosmographicae meditationes de fabrica mundi et fabricati figura», Duisburg 1595.
+Public domain. https://commons.wikimedia.org/wiki/File:Mercator_Atlas_1595_page_5_main_frontispiece.jpg
+local copy ru_geo/country_sizes/archive/img/atlas_1595.jpg (1920x3223).
+Larger originals could not be fetched (Wikimedia answered 429 on 2026-11-28); the local 1920 px copies are used, the loupe and
+the pushes stay at or below ~1.9 screen px per scan px.
+Fonts (SIL OFL 1.1, fetched by tools/fonts.py from Google Fonts): IBM Plex Sans, IBM Plex Mono, Noto Serif.
+Engine: adapted from ru_geo/lemo/us_lt_hudf (and bh_otis) and the Lemo-Opuscar styles/archive-lighttable/demo.

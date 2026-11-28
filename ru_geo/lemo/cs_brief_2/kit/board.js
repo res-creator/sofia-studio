@@ -507,7 +507,11 @@ function drawInkCore(x, e, t) {
   }
   return tip;
 }
-function drawInk(x, e, t) {
+function drawInk(x, e, t) {   // ink with `moves` (a true-size outline slid across the board): the whole mark is translated
+  if (e.moves && !e._mv) {
+    let dx = 0, dy = 0; for (const m of e.moves) { if (t <= m.t) continue; const u = bease(seg(t, m.t, m.t + m.d), m.a ?? 2, m.b ?? 2); dx += (m.dx || 0) * u; dy += (m.dy || 0) * u; }
+    x.save(); x.translate(dx, dy); e._mv = 1; const tp = drawInk(x, e, t); e._mv = 0; x.restore(); return tp ? [tp[0] + dx, tp[1] + dy] : tp;
+  }
   const E = e.erase, a0 = x.globalAlpha;
   if (e.out != null && t > e.out) x.globalAlpha = a0 * (1 - seg(t, e.out, e.out + (e.outD || .4)));
   if (!E || t <= E.t) { const tp = drawInkCore(x, e, t); x.globalAlpha = a0; return tp; }

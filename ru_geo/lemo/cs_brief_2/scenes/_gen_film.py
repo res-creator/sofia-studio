@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
-"""«Мысленный эксперимент» · Размер Вселенной · board film, PART 2: chapters «МЯЧ И ГОРОШИНА» and «НАША ГАЛАКТИКА».
-FILM range 127.70–272.67 s (144.97 s). The renderer works in LOCAL time:  local = film − 127.70.
+"""«Мысленный эксперимент» · Размеры стран · board film, PART 2: the end of «цена карты Меркатора» (paragraphs 6–8)
+and the chapter «АФРИКА ПРОТИВ ГРЕНЛАНДИИ» (card at film 177.67).
+FILM range 115.10–268.26 s (153.16 s). The renderer works in LOCAL time:  local = film − 115.10.
 All times below are written as L(<film seconds>) so they can be checked against
-ru_geo/universe_size/film.json (segs → captions).
+ru_geo/country_sizes/film.json (segs → captions).
 Wall (board px):
-  row 1  (y  380…2000)  «МЯЧ И ГОРОШИНА» p7 ball & pea · p8 Voyager 19 km · p9 Proxima 29 000 km   (left → right)
-  row 2  (y 2420…4000)  p10 Gliese 445 (right) · p11 the light year (left)                          (right → left)
-  row 3  (y 4400…6300)  «НАША ГАЛАКТИКА» p12–13 the Milky Way disc · p14 the galaxy on the model · p15 2 billion years
+  row 1  (y  380…2150)  p6 the Mercator grid and Tissot circles · p7 Gauss, the orange peel · p8 sailors / teachers
+  row 2  (y 2550…4700)  «АФРИКА ПРОТИВ ГРЕНЛАНДИИ» p9 UN numbers · p10 Greenland < Algeria · p11 inflated ×10–12 / ×1,2
+  row 3  (y 5050…7250)  p12 area = length × width (×2 · ×2 = ×4) · p13 Russia vs Africa
+Country outlines come from scenes/outlines.json (tools/geo/prep_outlines.py, open boundary data johan/world.geo.json):
+«истинный размер» = Lambert equal-area centred on the shape; «карта Меркатора» = plain Mercator at the equator's scale.
+Within one comparison both shapes share one scale (board px per km).
 Ink: graphite = names, rules, facts · blue = measurement and numbers · red = only the decision / the one mark.
 Every frame keeps the bottom 250 px free (cameras are fitted to the screen band y 50…800).
     python3 scenes/_gen_film.py      → scenes/film.json and events.json
@@ -15,11 +19,11 @@ import json, math, os, random
 
 HERE = os.path.dirname(os.path.abspath(__file__)); FILM = os.path.dirname(HERE)
 OBJ = os.path.join(FILM, 'kit', 'objects')
-meta = lambda i: json.load(open(os.path.join(OBJ, i + '.json')))
-R0, R1 = 127.70, 272.67
-DUR = round(R1 - R0, 3)                       # 144.97
+OUTL = json.load(open(os.path.join(HERE, 'outlines.json')))
+R0, R1 = 115.10, 268.26
+DUR = round(R1 - R0, 3)                       # 153.16
 L = lambda ft: round(ft - R0, 3)              # film time → local time
-BW, BH = 13200, 7250
+BW, BH = 13400, 7500
 
 E, EV = [], []
 def el(**k): E.append(k); return k
@@ -51,73 +55,31 @@ def arc(c, rx, ry, a0, a1, n=24):
 def arrow(p0, p1, t, d, color='blue', lw=7, **k): return line([p0, p1], t, d, color, lw, arrow=True, **k)
 def strokes_el(strokes, t, d, color='graphite', lw=5, alpha=.85):
     ev(t, 'hatch', d); return el(type='ink', kind='hatch', strokes=strokes, lw=lw, color=color, alpha=alpha)
-def hatch(x0, x1, y, t, d, n=8, color='grey'):
-    st = []
-    for i in range(n):
-        x = x0 + 30 + (x1 - x0 - 60) * i / max(1, n - 1)
-        st.append(dict(points=[[x, y], [x + 40, y - 45]], t=round(t + d * i / n, 3), d=round(d / n * 1.2, 3), lw=5))
-    return strokes_el(st, t, d, color, 5, .7)
-
-# ---- drawn things ----------------------------------------------------------------------------------------------
-def beach_ball(c, r, t, d=1.1, lw=8):
-    """a beach ball: the outline, four seams pole to pole, a cap at the top; two panels hatched"""
-    cx, cy = c
-    line(circle(c, r, 48), t, d * .4, lw=lw)
-    k_ = [-.78, -.3, .3, .78]
-    for i, k in enumerate(k_):
-        pts = [[cx + r * k * math.sin(math.radians(a)), cy - r * math.cos(math.radians(a))] for a in range(0, 181, 10)]
-        line(pts, t + d * .4 + i * d * .1, d * .12, lw=max(4, lw - 3))
-    line(circle((cx, cy - r * .93), r * .16, 20), t + d * .85, d * .1, lw=max(4, lw - 3))
-    # hatch two panels (between seams −0.78…−0.3 and 0.3…0.78) with short grey strokes
-    st = []
-    for j, (ka, kb) in enumerate(((-.78, -.3), (.3, .78))):
-        for i in range(7):
-            a = 35 + i * 18; s_ = math.sin(math.radians(a)); y = cy - r * math.cos(math.radians(a))
-            xa, xb = cx + r * ka * s_ + 6, cx + r * kb * s_ - 6
-            st.append(dict(points=[[xa, y + 8], [xb, y - 8]], t=round(t + d * .9 + (j * 7 + i) * .025, 3), d=.06, lw=4))
-    strokes_el(st, t + d * .9, .4, 'grey', 4, .6)
-def pea(c, r, t):
-    line(circle(c, r, 24), t, .2, lw=6); line(circle(c, r * .55, 18), t + .2, .1, lw=6); line(circle(c, r * .2, 10), t + .3, .05, lw=6)
-def star(c, s, t, color='graphite', lw=6, d=.3):
-    x, y = c
-    st = [dict(points=[[x - s, y], [x + s, y]], t=round(t, 3), d=d / 3, lw=lw), dict(points=[[x, y - s], [x, y + s]], t=round(t + d / 3, 3), d=d / 3, lw=lw),
-          dict(points=[[x - s * .5, y - s * .5], [x + s * .5, y + s * .5]], t=round(t + 2 * d / 3, 3), d=d / 6, lw=lw - 2),
-          dict(points=[[x - s * .5, y + s * .5], [x + s * .5, y - s * .5]], t=round(t + 5 * d / 6, 3), d=d / 6, lw=lw - 2)]
-    return strokes_el(st, t, d, color, lw, .9)
-def sprinkle(box, n, t, d, seed, s=(9, 16), avoid=None, inside=None, color='graphite'):
-    """many small star crosses, each with its own time"""
-    rnd = random.Random(seed); st = []; k = 0
-    while k < n:
-        x = rnd.uniform(box[0], box[2]); y = rnd.uniform(box[1], box[3])
-        if inside and not inside(x, y): continue
-        if avoid and any(a[0] <= x <= a[2] and a[1] <= y <= a[3] for a in avoid): continue
-        q = rnd.uniform(*s); tt = round(t + d * k / n, 3)
-        st.append(dict(points=[[x - q, y], [x + q, y]], t=tt, d=.05, lw=4)); st.append(dict(points=[[x, y - q], [x, y + q]], t=round(tt + .05, 3), d=.05, lw=4))
-        k += 1
-    return strokes_el(st, t, d, color, 4, .75)
-def probe(c, t, s=1.0, lw=5):
-    """Voyager as a marker glyph: the dish (an arc), the bus, the boom"""
-    x, y = c
-    line(arc((x, y), 26 * s, 26 * s, 200, 340, 12), t, .15, lw=lw)
-    line([[x - 12 * s, y + 4 * s], [x + 12 * s, y + 4 * s], [x + 12 * s, y + 20 * s], [x - 12 * s, y + 20 * s], [x - 12 * s, y + 4 * s]], t + .15, .12, lw=lw)
-    line([[x + 12 * s, y + 14 * s], [x + 62 * s, y + 34 * s]], t + .27, .08, lw=max(3, lw - 2))
-def brk(x, y, t, h=46):
-    """drafting break mark across a line: two short slanted strokes (the line is not to scale)"""
-    strokes_el([dict(points=[[x - 18, y + h], [x + 4, y - h]], t=round(t, 3), d=.08, lw=6), dict(points=[[x + 10, y + h], [x + 32, y - h]], t=round(t + .1, 3), d=.08, lw=6)], t, .2, 'graphite', 6, .9)
-def spiral_arms(c, R, t, d, rx=1.0, ry=1.0, r0=.16, turns=.8, arms=2, rot=0, lw=8, color='graphite'):
-    """logarithmic spiral arms of a disc galaxy seen from above (ry < 1: tilted)"""
-    b = math.log(1 / r0) / (2 * math.pi * turns)
-    for k in range(arms):
-        pts = []
-        for i in range(41):
-            th = 2 * math.pi * turns * i / 40; r = R * r0 * math.exp(b * th); a = th + 2 * math.pi * k / arms + math.radians(rot)
-            pts.append([c[0] + r * math.cos(a) * rx, c[1] + r * math.sin(a) * ry])
-        line(pts, t + d * k / arms, d / arms, color, lw, ea=1.6, eb=2)
+def check(x, y, t, s=1.0, color='graphite'):
+    line([[x - 40 * s, y - 5 * s], [x - 10 * s, y + 30 * s], [x + 50 * s, y - 50 * s]], t, .25, color, 9)
 def eye(c, t, s=1.0):
     x, y = c
     line(arc((x, y + 40 * s), 80 * s, 70 * s, 215, 325, 14), t, .2, lw=7)
     line(arc((x, y - 40 * s), 80 * s, 70 * s, 35, 145, 14), t + .2, .2, lw=7)
     line(circle((x, y), 17 * s, 18), t + .4, .12, lw=6)
+
+# ---- country outlines from the boundary data -------------------------------------------------------------------
+def plen(r): return sum(math.hypot(r[i + 1][0] - r[i][0], r[i + 1][1] - r[i][1]) for i in range(len(r) - 1))
+def outline(name, proj, c, S, t, d, color='graphite', lw=7, moves=None, minpx=0, **k):
+    """country `name` ('true' = equal-area, 'merc' = Mercator) centred at board point c, S board px per km.
+    Rings are drawn one after another, each for a time ∝ its length (the big coast first)."""
+    rs = [[[c[0] + x * S, c[1] + y * S] for x, y in r] for r in OUTL[name][proj]]
+    rs = [r for r in rs if plen(r) >= minpx]
+    tot = sum(plen(r) for r in rs); tt = t; out = []
+    for r in rs:
+        dd = max(.06, d * plen(r) / tot)
+        kk = dict(k)
+        if moves: kk['moves'] = moves
+        out.append(line(r, tt, dd, color, lw, ea=1.3, eb=1.3, **kk)); tt += dd * .9
+    return out
+def size_of(name, proj, S): w, h = OUTL[name][proj + '_size']; return w * S, h * S
+def slide(t, d, dx, dy, a=2, b=2.6):
+    ev(t, 'slide', d); return [dict(t=round(t, 3), d=round(d, 3), dx=round(dx, 1), dy=round(dy, 1), a=a, b=b)]
 
 class Cam:
     """Absolute camera targets turned into the kit's additive eased moves."""
@@ -134,9 +96,6 @@ class Cam:
         return t + d
     def fit(s, t, d, box, zmax=9, roll=None, a=2, b=2.6):
         x, y, z = fit(box, zmax); return s.to(t, d, x, y, z, roll, a, b)
-    def push(s, t, d, k): return s.to(t, d, z=z_of(s) * k)
-    def shake(s, t, amp=5, f=9, k=7, dir=(0, 1)):
-        s.shakes.append(dict(t=t, amp=amp, f=f, k=k, dir=list(dir)))
     def json(s): return dict(x=s.base['x'], y=s.base['y'], z=s.base['z'], roll=0, moves=s.moves, shakes=s.shakes)
 def z_of(c): return math.exp(c.cur['lz'])
 SAFE_Y0, SAFE_Y1, SAFE_X = 50, 800, 90      # the drawing band on screen: nothing below y = 830 (subtitles)
@@ -153,256 +112,264 @@ def type_card(s, ft, hard=False):   # chapter title from film.json, typed t+0.05
     CARDS.append(dict(str=s, t0=round(t0, 3), t1=round(t1, 3), t2=round(t2, 3), **({'hard': True} if hard else {})))
     n = len(s.replace(' ', ''))
     for i in range(n): ev(t0 + (t1 - t0) * i / max(1, n - 1), 'key')
-type_card('МЯЧ И ГОРОШИНА', 127.70, hard=True)     # the part opens on black
-type_card('НАША ГАЛАКТИКА', 210.61)
+type_card('АФРИКА ПРОТИВ ГРЕНЛАНДИИ', 177.67)
 
-# ===================================================================== ROW 1 · «МЯЧ И ГОРОШИНА»
-# --- p7 128.70–142.62: shrink everything; the Sun = a beach ball, the Earth = a 9 mm pea ~100 m away, a football pitch
-BALL, BR = (1300, 1060), 175
-PEA = (3620, 1060)
-tag('МОДЕЛЬ', 330, 520, L(128.8), size=62, rot=-2)
-write('уменьшим всё', 330, 700, L(129.55), 1.0, 'graphite', 100)
-arrow([300, 790], [560, 790], L(130.6), .3, 'blue', 7); arrow([1140, 790], [880, 790], L(130.75), .3, 'blue', 7)
-printd('sun', 'print_sun', 640, 1090, L(131.45), w=500, rot=-2.5, size='big')
-magnet(430, 900, L(131.95), r=22); magnet(850, 892, L(132.05), r=22)
-tag('Солнце', 420, 1370, L(132.1), size=56, rot=1.5)
-write('=', 965, 1110, L(132.55), .25, 'graphite', 130)
-beach_ball(BALL, BR, L(132.75), 1.1)
-write('пляжный мяч', 1300, 1340, L(133.5), .8, 'graphite', 62, align='center')
-el(type='print', id='earth', src='earth', xy=[3620, 700], w=210, z=10, rot=0, arrive=dict(t=L(134.4), kind='drop', d=.45, lift=220, spin=1.0, land=.6))
-ev(L(134.67), 'land', .2, size='small')
-tag('Земля', 3800, 640, L(134.85), size=52, rot=-2)
-arrow([3620, 830], [3620, 1010], L(135.15), .25, 'graphite', 6)
-pea(PEA, 14, L(135.45))
-write('горошина', 3700, 1085, L(135.75), .7, 'graphite', 66)
-count('{0} мм', [9], 3700, 1215, L(136.4), 1.1, size=110)
-dim([BALL[0], 1480], [PEA[0], 1480], L(138.85), 1.0, ext=[[BALL[0], 1270, 1520], [PEA[0], 1110, 1520]])
-count('≈ {0} м', [100], 2460, 1640, L(139.3), 1.2, size=120, align='center')
-FX0, FX1, FY0, FY1 = 1530, 3440, 790, 1340              # the football pitch (drafting grey)
-line([[FX0, FY0], [FX1, FY0], [FX1, FY1], [FX0, FY1], [FX0, FY0]], L(140.15), .8, 'grey', 6)
-line([[2485, FY0], [2485, FY1]], L(140.95), .25, 'grey', 5)
-line(circle((2485, 1065), 110, 36), L(141.2), .35, 'grey', 5)
-line([[FX0, 930], [FX0 + 200, 930], [FX0 + 200, 1200], [FX0, 1200]], L(141.55), .3, 'grey', 5)
-line([[FX1, 930], [FX1 - 200, 930], [FX1 - 200, 1200], [FX1, 1200]], L(141.85), .3, 'grey', 5)
-write('футбольное поле', 2485, 755, L(141.4), 1.0, 'graphite', 58, align='center')
+# ===================================================================== ROW 1 · the price of the Mercator map
+# --- p6 115.07–135.16: stretched toward the poles; at 60° lengths ×2, areas ×4; the further north the more; only geometry
+write('у такой карты есть цена', 420, 560, L(115.15), 1.5, 'graphite', 96)
+EQ, U, GX0, NM, MW = 1990, 520, 470, 12, 136          # Mercator grid: equator y, px per radian, left x, meridians, 15° of longitude
+GX1 = GX0 + NM * MW
+my = lambda lat: EQ - U * math.log(math.tan(math.pi / 4 + math.radians(lat) / 2))   # true Mercator spacing
+YTOP = my(78)
+for i in range(NM + 1):                                   # meridians: straight and parallel
+    x = GX0 + i * MW; line([[x, EQ], [x, YTOP]], L(117.05) + .07 * i, .35, 'grey', 4)
+line([[GX0 + 40, EQ - 40], [GX0 + 3 * MW + 110, my(70)]], L(118.3), .9, 'blue', 8, arrow=True)       # a constant course = a straight line
+write('курс = прямая', GX0 + 3 * MW + 60, my(70) - 50, L(118.7), .9, 'blue', 64)
+for i, lat in enumerate((15, 30, 45, 60, 75)):            # parallels: further apart toward the pole
+    y = my(lat); line([[GX0, y], [GX1, y]], L(119.85) + .3 * i, .35, 'grey', 4)
+    write(f'{lat}°', GX0 - 20, y + 22, L(119.95) + .3 * i, .25, 'grey', 54, align='right')
+arrow([GX1 + 90, my(10)], [GX1 + 90, my(76)], L(120.3), 1.2, 'blue', 9)
+write('растягивают', GX1 + 140, my(52), L(120.6), .8, 'graphite', 70)
+write('к полюсам', GX1 + 140, my(52) + 85, L(121.2), .6, 'graphite', 70)
+line([[GX0 - 30, EQ], [GX1 + 30, EQ]], L(122.0), .5, 'graphite', 9)                  # the equator
+write('экватор', GX0 - 20, EQ + 22, L(122.2), .4, 'graphite', 54, align='right')
+TX = GX0 + 8 * MW + MW / 2                                  # Tissot circles: one column, radius ∝ 1/cos φ
+R_EQ = 34
+def tissot(lat, t, color='blue'):
+    r = R_EQ / math.cos(math.radians(lat)); line(circle((TX, my(lat)), r, 40), t, .45, color, 7); return r
+tissot(0, L(122.4))
+write('почти честно', TX + 70, EQ - 40, L(122.9), .9, 'graphite', 64)
+r60 = tissot(60, L(124.3))
+write('60°', TX - r60 - 40, my(60) + 20, L(124.5), .3, 'graphite', 64, align='right')
+write('длины ×2', TX + r60 + 30, my(60) - 10, L(126.0), .7, 'blue', 70)
+write('площади ×4', TX + r60 + 30, my(60) + 75, L(128.2), .8, 'blue', 70)
+tissot(30, L(129.6)); tissot(45, L(130.0)); tissot(75, L(130.5))
+write('чем севернее, тем сильнее', GX1 + 140, my(75) - 10, L(130.0), 1.6, 'graphite', 64)
+write('хитрости нет —', GX1 + 140, EQ - 200, L(132.4), 1.0, 'graphite', 76)
+write('только геометрия', GX1 + 140, EQ - 100, L(133.8), 1.1, 'graphite', 76)
 
-# --- p8 143.17–157.02: Voyager, 49 years: ≈ 19 km from the ball on this model; centre of a city → its edge
-printd('voyager', 'print_voyager', 5000, 800, L(143.2), w=520, rot=2, size='mid')
-magnet(4790, 625, L(143.65), r=20); magnet(5215, 640, L(143.75), r=20)
-tag('Вояджер', 4760, 1110, L(143.75), size=56, rot=-1.5)
-count('{0} лет полёта', [49], 4700, 1320, L(144.2), 1.6, size=84)
-Y19 = 1790
-dim([BALL[0], Y19], [7150, Y19], L(146.6), 3.0, ea=1.4, eb=1.8, ext=[[BALL[0], 1540, Y19 + 40]])
-brk(4150, Y19, L(148.1))
-probe((7130, Y19 - 150), L(149.25), 2.2, lw=7)
-count('≈ {0} км', [19], 6150, 1950, L(148.85), 1.4, size=130, align='center')
-CITY, CR = (6800, 1030), 290
-line(circle(CITY, CR, 48), L(150.45), .6, lw=7)
-for i, (p0, p1) in enumerate([((6560, 870), (7040, 1200)), ((6540, 1150), (7060, 900)), ((6800, 745), (6800, 1320)), ((6520, 1030), (7090, 1030))]):
-    line([p0, p1], L(151.05) + .1 * i, .1, 'grey', 4)
-line(circle(CITY, 14, 14), L(151.5), .1, lw=8)
-arrow([CITY[0] + 20, CITY[1] + 40], [CITY[0] + CR - 8, CITY[1] + 120], L(151.7), .5, 'blue', 7)
-write('центр', CITY[0] - 30, CITY[1] - 45, L(151.6), .45, 'graphite', 66, align='right')
-write('окраина', CITY[0] + CR + 20, CITY[1] + 160, L(152.3), .55, 'graphite', 66)
-write('как от центра большого города', 5480, 560, L(150.5), 1.4, 'graphite', 76)
-write('до окраины', 5480, 665, L(152.0), .6, 'graphite', 76)
-write('для человечества: рекорд', 5480, 1450, L(153.55), 1.5, 'graphite', 76)
-write('для космоса:', 5960, 1575, L(155.4), .8, 'graphite', 76, align='right')
-write('прогулка', 5990, 1575, L(156.0), .6, 'graphite', 76)
-ink('ring', L(156.55), .5, 'red', c=[6150, 1550], r=[200, 66], lw=7)
+# --- p7 135.71–160.66: a map without distortion? No. Gauss, 1827: a sphere cannot be flattened; the orange peel;
+#     Mercator hardly thought of schoolchildren; subscribe: we will return many to their real sizes
+P7 = 4000
+write('а без искажений?', P7, 560, L(135.75), 1.6, 'graphite', 96)
+el(type='stamp', text='НЕЛЬЗЯ', xy=[P7 + 1080, 535], size=92, rot=-6, t=L(138.85), color='red'); ev(L(138.85), 'stamp', .2)
+GA = (P7 + 330, 1300)
+write('1827 год', P7 + 40, 815, L(139.5), 1.4, 'blue', 96)
+printd('gauss', 'print_gauss', GA[0], GA[1], L(141.6), w=520, rot=-1.5, size='mid')
+magnet(GA[0] - 170, GA[1] - 300, L(142.05), r=20); magnet(GA[0] + 175, GA[1] - 305, L(142.15), r=20)
+tag('математик Гаусс', GA[0] - 230, GA[1] + 430, L(142.3), size=58, rot=1.2)
+SP = (P7 + 1250, 1170)                                    # the sphere …
+line(circle(SP, 190, 48), L(144.0), .5, lw=8)
+line(arc(SP, 70, 190, -90, 90, 16), L(144.5), .2, 'grey', 4); line(arc(SP, 70, 190, 90, 270, 16), L(144.65), .2, 'grey', 4)
+line(arc(SP, 190, 55, 0, 180, 16), L(144.8), .2, 'grey', 4)
+arrow([SP[0] + 220, SP[1]], [SP[0] + 420, SP[1]], L(145.0), .4, 'graphite', 8)
+PL = (SP[0] + 700, SP[1])                                 # … onto a plane: does not go
+line([[PL[0] - 220, PL[1] - 160], [PL[0] + 220, PL[1] - 160], [PL[0] + 220, PL[1] + 160], [PL[0] - 220, PL[1] + 160], [PL[0] - 220, PL[1] - 160]], L(145.4), .5, lw=7)
+write('?', PL[0], PL[1] + 45, L(145.9), .3, 'graphite', 140, align='center')
+write('шар не развернуть на плоскость', SP[0] - 230, 1530, L(144.2), 2.2, 'graphite', 70)
+write('ничего не исказив', SP[0] - 230, 1625, L(146.6), 1.1, 'graphite', 70)
+OR = (P7 + 3150, 1150)                                    # the orange peel laid flat: six petals, torn gaps between them
+line(circle((OR[0], OR[1]), 60, 20), L(147.95), .2, lw=6)
+for i in range(6):
+    a = math.radians(-90 + 60 * i); a1, a2 = a - math.radians(22), a + math.radians(22)
+    tip = (OR[0] + 300 * math.cos(a), OR[1] + 300 * math.sin(a))
+    pts = [[OR[0] + 60 * math.cos(a1), OR[1] + 60 * math.sin(a1)], [OR[0] + 200 * math.cos(a1 + .1), OR[1] + 200 * math.sin(a1 + .1)], list(tip),
+           [OR[0] + 200 * math.cos(a2 - .1), OR[1] + 200 * math.sin(a2 - .1)], [OR[0] + 60 * math.cos(a2), OR[1] + 60 * math.sin(a2)]]
+    line(pts, L(148.2) + .2 * i, .22, 'graphite', 7)
+write('апельсиновая корка', OR[0], OR[1] - 350, L(148.3), 1.3, 'graphite', 66, align='center')
+for i in range(6):                                        # the gaps: where the peel tears
+    a = math.radians(-60 + 60 * i); line([[OR[0] + 90 * math.cos(a), OR[1] + 90 * math.sin(a)], [OR[0] + 210 * math.cos(a), OR[1] + 210 * math.sin(a)]], L(150.3) + .07 * i, .1, 'red', 5, dash=[14, 12])
+write('ровно не ляжет', OR[0], OR[1] + 410, L(150.3), 1.0, 'graphite', 72, align='center')
+MP = (P7 + 4450, 1080)
+printd('mercator', 'print_mercator', MP[0], MP[1], L(151.6), w=400, rot=1.5, size='mid')
+magnet(MP[0], MP[1] - 290, L(152.0), r=20)
+tag('Меркатор', MP[0] - 150, MP[1] + 380, L(152.1), size=56, rot=-1.5)
+write('о школьниках?', MP[0] + 280, MP[1] - 100, L(152.6), .8, 'graphite', 70)
+write('вряд ли', MP[0] + 280, MP[1] + 0, L(153.4), .6, 'graphite', 70)
+AF_S = .055                                                # the small Africa (true size) for «вернём к настоящим размерам»
+SUBX = P7 + 2350
+tag('подпишитесь', SUBX - 650, 1900, L(156.6), size=66, rot=-2)
+outline('africa', 'true', (SUBX + 900, 1880), AF_S, L(157.2), 1.2, 'graphite', 6, minpx=40)
+write('вернём к настоящим размерам', SUBX - 650, 2085, L(158.3), 2.0, 'graphite', 66)
+write('обидно за Африку?', SUBX - 650, 1745, L(154.3), 1.3, 'graphite', 66)
 
-# --- p9 157.72–176.40: the neighbouring ball: Proxima Centauri ≈ 29 000 km on the model; farther than the far side of the Earth;
-#     the ruler, subscribe; it will grow billions of times longer
-B3, NB = (8800, 1250), (11700, 1250)
-write('где же соседний мяч?', 8450, 610, L(157.75), 1.1, 'graphite', 100)
-beach_ball(B3, 85, L(157.9), .8, lw=6)
-write('мяч', 8800, 1440, L(158.4), .3, 'graphite', 70, align='center')
-line(circle(NB, 85, 40), L(158.55), .35, 'blue', 6, dash=[18, 16])
-write('?', NB[0], NB[1] + 40, L(158.85), .2, 'blue', 110, align='center')
-printd('proxima', 'print_proxima', 11520, 700, L(159.15), w=520, rot=1.5)
-magnet(11300, 525, L(159.6), r=20); magnet(11740, 530, L(159.7), r=20)
-el(type='card', id='cred_proxima', xy=[11520, 965], w=760, h=70, rot=1.5, z=9,
-   arrive=dict(t=L(159.85), kind='drop', d=.35, lift=120, spin=.6, land=.6),
-   lines=[dict(text='снимок Хаббла: Альфа Центавра A и B', font='mono', size=34, x=22, y=47, color='grey', pass_=True)])
-tag('Проксима Центавра', 11150, 1450, L(160.1), size=62, rot=-1.5)
-YP = 1660
-dim([B3[0], YP], [NB[0], YP], L(161.35), 1.9, ext=[[B3[0], 1460, YP + 40], [NB[0], 1350, YP + 40]], ea=1.4, eb=1.8)
-brk(9950, YP, L(162.6))
-count('≈ {0} км', [29000], 10250, 1840, L(163.35), 1.6, size=120, align='center', sep=True)
-GL, GR_ = (9750, 1060), 170                      # the Earth drawn in marker: we, and the opposite point
-line(circle(GL, GR_, 44), L(165.85), .55, lw=7)
-line(arc(GL, GR_ * .38, GR_, -90, 90, 16), L(166.4), .2, 'grey', 4); line(arc(GL, GR_ * .38, GR_, 90, 270, 16), L(166.55), .2, 'grey', 4)
-pa = (GL[0] + GR_ * math.cos(math.radians(-135)), GL[1] + GR_ * math.sin(math.radians(-135)))
-pb = (GL[0] + GR_ * math.cos(math.radians(45)), GL[1] + GR_ * math.sin(math.radians(45)))
-line(circle(pa, 9, 12), L(166.75), .1, lw=9); write('мы', pa[0] - 25, pa[1] - 10, L(166.8), .2, 'graphite', 66, align='right')
-line(arc(GL, GR_ + 26, GR_ + 26, -135, 45, 30), L(166.95), .9, 'blue', 6, dash=[18, 14], arrow=True)
-line(circle(pb, 9, 12), L(167.9), .1, lw=9)
-write('противоположная', pb[0] + 45, pb[1] + 45, L(167.95), .7, 'graphite', 64)
-write('точка Земли', pb[0] + 45, pb[1] + 125, L(168.55), .5, 'graphite', 64)
-write('дальше, чем', 9420, 815, L(165.8), .6, 'blue', 80)
-el(type='ruler', id='ruler', **{'from': [B3[0] - 60, 1565], 'to': [NB[0] + 40, 1565]}, w=44, z=12, inset=60, magnetR=20,
-   arrive=dict(t=L(170.9), kind='drop', d=.4, lift=160, spin=.4, land=.6))
-ev(L(171.15), 'ruler', .4)
-tag('подпишитесь', 8480, 830, L(173.0), size=66, rot=-2)
-arrow([NB[0] + 60, YP], [12550, YP], L(173.95), 1.0, 'blue', 9)
-write('в миллиарды раз', 11780, 1830, L(174.4), .9, 'blue', 80)
-write('длиннее', 11780, 1930, L(175.35), .5, 'blue', 80)
+# --- p8 161.21–175.53: for sailors an excellent map; for a geography teacher worse; ~5 centuries later checked against
+#     Greenland at every school lesson, though it was made for something else entirely
+P8 = 9500
+SH = (P8 + 420, 1000)
+printd('ship', 'print_ship', SH[0], SH[1], L(161.3), w=760, rot=-1.5, size='big')
+magnet(SH[0] - 330, SH[1] - 270, L(161.75), r=20); magnet(SH[0] + 330, SH[1] - 280, L(161.85), r=20)
+tag('морякам', SH[0] - 360, 1430, L(161.9), size=62, rot=1.5)
+write('отличная карта', SH[0] - 360, 1590, L(162.4), .9, 'graphite', 70)
+check(SH[0] + 230, 1560, L(163.2), 1.2)
+tag('учителю географии', P8 + 1080, 700, L(163.5), size=62, rot=-1.5)
+write('хуже', P8 + 1130, 880, L(165.9), .5, 'red', 84)
+GLM_S = .055
+GLM = (P8 + 1700, 1330)                                    # Greenland as the Mercator map shows it
+outline('greenland', 'merc', GLM, GLM_S, L(168.2), 1.6, 'graphite', 6, minpx=30)
+write('Гренландия', GLM[0] + 230, GLM[1] - 60, L(169.0), .7, 'graphite', 60)
+write('карта Меркатора', GLM[0] + 230, GLM[1] + 20, L(169.5), .7, 'grey', 50)
+write('почти пять веков спустя', P8 + 1080, 1650, L(168.3), 1.4, 'graphite', 66)
+write('на каждом уроке', P8 + 1080, 1745, L(170.8), 1.0, 'graphite', 66)
+write('а делалась совсем для другого', P8 + 1080, 1900, L(172.9), 1.6, 'graphite', 66)
+line([[P8 + 1060, 1880], [SH[0] + 120, 1660], [SH[0] + 60, SH[1] + 300]], L(174.6), .7, 'graphite', 6, arrow=True, dash=[18, 14])
 
-# ===================================================================== ROW 2 · real distances (light years)
-# --- p10 176.95–192.86: not to Proxima, towards Gliese 445 (> 17 ly); in 40 000 years closer than 2 ly; no longer heard
-S = (7950, 3480)                         # we (the Sun and the Earth)
-line(circle(S, 22, 20), L(176.9), .2, lw=10)
-write('мы', S[0] - 40, S[1] + 32, L(177.0), .25, 'graphite', 96, align='right')
-PV = (8090, 3390); probe(PV, L(177.1), 2.0, lw=7)
-PX = (8950, 3790)
-star(PX, 28, L(177.4)); write('Проксима', PX[0] + 50, PX[1] + 32, L(177.5), .5, 'graphite', 90)
-line([[PV[0] + 60, PV[1] + 60], [PX[0] - 50, PX[1] - 30]], L(177.6), .6, 'graphite', 6, dash=[20, 16], arrow=True)
-xc = ((PV[0] + PX[0]) / 2, (PV[1] + PX[1]) / 2 + 20)
-line([[xc[0] - 45, xc[1] - 45], [xc[0] + 45, xc[1] + 45]], L(178.3), .15, 'red', 9); line([[xc[0] + 45, xc[1] - 45], [xc[0] - 45, xc[1] + 45]], L(178.5), .15, 'red', 9)
-TE, G = (11150, 2800), (11380, 2560)
-line([[PV[0] + 70, PV[1] - 20], TE], L(179.15), 1.8, 'graphite', 8, arrow=True, ea=1.5, eb=2)
-star(G, 34, L(181.0), 'graphite', 7)
-write('Глизе 445', G[0] - 60, G[1] - 30, L(181.3), .8, 'graphite', 100, align='right')
-count('больше {0} св. лет', [17], 9250, 3470, L(183.1), 1.5, size=110)
-count('через {0} лет', [40000], 9300, 2760, L(185.8), 1.6, size=110, sep=True)
-dim(TE, [G[0] - 22, G[1] + 24], L(188.0), .5, lw=6)
-write('< 2 св. лет', 11080, 3010, L(188.5), .9, 'blue', 90)
-for i, rr in enumerate((110, 175, 240)):
-    line(arc(S, rr, rr, -75, -15, 12), L(190.0) + .2 * i, .25, 'graphite', 6, erase=dict(t=round(L(191.7) + .12 * i, 3), d=.4))
-write('вероятно, давно не будет слышно', 7500, 3980, L(190.2), 1.7, 'graphite', 80)
+# ===================================================================== ROW 2 · «АФРИКА ПРОТИВ ГРЕНЛАНДИИ»
+# --- p9 178.67–197.83: one UN table (land + inland water); Africa with islands ≈ 30 million km²; Greenland ~14× smaller;
+#     the map got nothing mixed up; then why? later
+S9 = .16
+AF = (1250, 3880)                                          # Africa, true size (Africa 7 900 km tall → 1 264 px)
+tag('таблица ООН', 420, 2720, L(178.8), size=66, rot=-1.5)
+write('суша + внутренние воды', 420, 2900, L(181.3), 1.5, 'graphite', 70)
+outline('africa', 'true', AF, S9, L(184.6), 2.0, 'graphite', 8, minpx=30)
+write('истинный размер', AF[0], AF[1] + 740, L(185.6), .9, 'grey', 54, align='center')
+write('Африка с островами', 2080, 3260, L(184.9), 1.3, 'graphite', 72)
+count('около {0} млн км²', [30], 2080, 3400, L(186.9), 1.6, size=104)
+GLT = (2330, 3960)
+outline('greenland', 'true', GLT, S9, L(189.7), .9, 'graphite', 8, minpx=20)
+write('Гренландия', GLT[0] + 160, GLT[1] - 20, L(190.2), .7, 'graphite', 72)
+count('в {0} раз меньше', [14], GLT[0] + 160, GLT[1] + 110, L(191.2), 1.6, size=96)
+write('карта ничего не напутала', 2080, 4380, L(193.5), 1.6, 'graphite', 66)
+write('тогда зачем так?', 2080, 4480, L(195.3), .9, 'graphite', 66)
+tag('об этом чуть позже', 2900, 4500, L(196.4), size=52, rot=1.5)
 
-# --- p11 193.41–208.46: the light year ≈ 9.5 trillion km; light from Proxima takes a little over 4 years: we see it as it was
-tag('световой год', 760, 2590, L(193.5), size=80, rot=-1.5)
-SRC = (980, 3000)
-star(SRC, 40, L(195.0), 'graphite', 8)
-write('путь света за год', 1150, 2920, L(195.9), 1.2, 'graphite', 96)
-arrow([SRC[0] + 70, SRC[1]], [4200, SRC[1]], L(196.3), 1.2, 'blue', 10)
-dim([SRC[0], 3110], [4200, 3110], L(197.7), .8, lw=6, arrows=False)
-write('≈ 9,5 трлн км', 2590, 3310, L(198.1), 1.6, 'blue', 150, align='center')
-PX2 = (4600, 3700)
-star(PX2, 34, L(200.8), 'graphite', 7); write('Проксима', PX2[0] - 60, PX2[1] - 70, L(201.0), .6, 'graphite', 90)
-eye((1100, 3700), L(201.0), 1.0)
-line([[PX2[0] - 70, PX2[1]], [1230, 3700]], L(201.6), 1.4, 'blue', 7, dash=[24, 18], arrow=True)
-count('чуть больше {0} лет', [4], 1500, 3650, L(203.0), 1.5, size=104)
-write('видим её такой, какой она была', 3020, 3930, L(205.4), 1.6, 'graphite', 84, align='right')
-write('4 года назад', 3060, 3930, L(207.05), .8, 'red', 84)
+# --- p10 198.53–213.66: Greenland, ice and all, is smaller than Algeria alone, Africa's largest country;
+#     the eye is used to the picture, the ruler does not lie
+S10 = .34
+P10 = 4700
+GL10 = (P10 + 2050, 3620)
+outline('greenland', 'true', GL10, S10, L(198.6), 1.6, 'graphite', 8, minpx=30,
+        moves=slide(L(203.9), 1.6, -1150, 30))
+tag('Гренландия', GL10[0] - 250, 2700, L(199.4), size=62, rot=-1.5, moves=[dict(t=L(203.9), d=1.6, dx=-1150, dy=0, a=2, b=2.6)])
+write('со всем её льдом', GL10[0] + 330, 3300, L(201.2), 1.3, 'graphite', 62)
+AL = (P10 + 900, 3650)
+outline('algeria', 'true', AL, S10, L(203.0), .9, 'blue', 8)
+write('Алжир', AL[0], AL[1] + 470, L(203.4), .5, 'blue', 76, align='center')
+write('самая большая страна Африки', AL[0], AL[1] + 570, L(205.2), 1.6, 'blue', 58, align='center')
+write('истинный размер', AL[0] - 420, 2800, L(202.4), .8, 'grey', 50)
+EYE = (P10 + 3450, 3000)
+eye(EYE, L(207.4), 1.1)
+write('глаз помнит', EYE[0] - 100, EYE[1] + 150, L(207.8), .9, 'graphite', 58)
+MS = .05                                                    # the Mercator picture the eye remembers (one scale for both)
+outline('greenland', 'merc', (EYE[0] + 120, 3700), MS, L(208.4), 1.0, 'grey', 5, minpx=20)
+outline('algeria', 'merc', (EYE[0] + 120, 4160), MS, L(209.2), .4, 'grey', 5)
+write('карта Меркатора', EYE[0] - 150, 4330, L(209.5), .8, 'grey', 46)
+BX, BY, BWD, BK = P10 + 4250, 4250, 150, 1 / 5200       # area bars: height ∝ area (true areas from the same data)
+for i, (nm, lab) in enumerate((('algeria', 'Алжир'), ('greenland', 'Гренландия'))):
+    h = OUTL[nm]['area_true'] * BK; x = BX + i * 260
+    line([[x, BY], [x, BY - h], [x + BWD, BY - h], [x + BWD, BY]], L(210.1) + .4 * i, .4, 'blue' if i == 0 else 'graphite', 7)
+    write(lab, x + BWD / 2, BY + 70, L(210.3) + .4 * i, .4, 'blue' if i == 0 else 'graphite', 48, align='center')
+line([[BX - 40, BY], [BX + 450, BY]], L(210.0), .2, 'grey', 5)
+write('площадь', BX + 205, BY - OUTL['algeria']['area_true'] * BK - 140, L(210.6), .5, 'graphite', 56, align='center')
+el(type='ruler', id='ruler', **{'from': [BX - 70, BY - OUTL['algeria']['area_true'] * BK - 26], 'to': [BX + 480, BY - OUTL['algeria']['area_true'] * BK - 26]},
+   w=36, z=12, inset=40, magnetR=16, arrive=dict(t=L(211.75), kind='drop', d=.4, lift=160, spin=.4, land=.6))
+ev(L(212.0), 'ruler', .4)
 
-# ===================================================================== ROW 3 · «НАША ГАЛАКТИКА»
-# --- p12 211.61–227.18: neighbour stars belong to the Milky Way, a disc over 100 000 ly; Voyager inside, barely moved
-C, R = (1700, 5420), 720
-SUN = (2040, 5555)                                    # half-way out (|SUN − C| ≈ R/2)
-for i, (dx, dy) in enumerate([(0, 0), (70, -40), (-55, 60), (95, 55), (-80, -45), (20, 95), (-25, -90)]):
-    star((SUN[0] + dx, SUN[1] + dy), 16 if i else 20, L(211.75) + .18 * i, 'graphite', 5, .2)
-write('не в одиночку', 2620, 4990, L(212.2), 1.0, 'graphite', 84)
-line(circle(C, [150, 110], 36), L(214.35), .4, lw=8)
-spiral_arms(C, R, L(214.8), 1.9, r0=.2, turns=.85, arms=2, rot=20, lw=8)
-line(circle(C, R + 30, 64), L(216.6), .7, 'grey', 5, dash=[20, 18])
-tag('Млечный Путь', 2620, 4760, L(215.6), size=72, rot=-1.5)
-YD = 4590
-dim([C[0] - R - 30, YD], [C[0] + R + 30, YD], L(217.15), 1.1, ext=[[C[0] - R - 30, YD - 30, C[1]], [C[0] + R + 30, YD - 30, C[1]]])
-count('больше {0} св. лет', [100000], C[0], YD - 50, L(218.0), 2.0, size=96, align='center', sep=True)
-ink('ring', L(221.2), .6, 'graphite', c=list(SUN), r=[150, 140], lw=6)
-line([[SUN[0] + 150, SUN[1] - 40], [2600, 5250]], L(221.8), .3, 'graphite', 5)
-write('Вояджер летит внутри', 2620, 5260, L(222.0), 1.2, 'graphite', 80)
-write('и почти не сдвинулся с места', 2620, 5375, L(223.6), 1.8, 'graphite', 74)
+# --- p11 214.36–231.65: on the map Greenland is inflated ~10–12× (far north); Australia, nearer the equator, only 1.2×;
+#     the cold countries suffer most, the warm ones look more modest than they are
+S11 = .085
+P11 = 9500
+G11M, G11T = (P11 + 420, 3420), (P11 + 1080, 3780)
+outline('greenland', 'merc', G11M, S11, L(214.4), 1.6, 'grey', 6, minpx=20)
+write('карта Меркатора', G11M[0], G11M[1] + 500, L(215.0), .8, 'grey', 50, align='center')
+outline('greenland', 'true', G11T, S11, L(215.6), .8, 'graphite', 7, minpx=15)
+write('истинный размер', G11T[0] + 30, G11T[1] + 190, L(216.2), .8, 'graphite', 50, align='center')
+count('раздута в {0}–{1} раз', [10, 12], P11 + 920, 2760, L(216.8), 1.6, size=90)
+write('примерно', P11 + 920, 2880, L(217.6), .5, 'blue', 56)
+write('далеко на севере', P11 + 1300, 3320, L(219.2), 1.3, 'graphite', 62)
+arrow([P11 + 1450, 3230], [P11 + 1450, 3010], L(219.4), .4, 'graphite', 6)
+A11M, A11T = (P11 + 2500, 3480), (P11 + 3150, 3480)
+outline('australia', 'merc', A11M, S11, L(221.6), 1.0, 'grey', 6, minpx=20)
+write('карта Меркатора', A11M[0], A11M[1] + 260, L(222.2), .8, 'grey', 50, align='center')
+outline('australia', 'true', A11T, S11, L(222.6), 1.0, 'graphite', 7, minpx=20)
+write('истинный размер', A11T[0], A11T[1] + 260, L(223.0), .8, 'graphite', 50, align='center')
+write('Австралия', P11 + 2250, 3000, L(221.8), .8, 'graphite', 72)
+write('ближе к экватору', P11 + 2250, 3100, L(222.4), 1.0, 'graphite', 58)
+write('всего в 1,2 раза', P11 + 2250, 2810, L(224.6), 1.4, 'blue', 80)
+write('холодным странам — обиднее всего', P11 + 300, 4180, L(226.5), 2.0, 'graphite', 66)
+write('тёплые кажутся скромнее, чем есть', P11 + 300, 4290, L(229.0), 2.0, 'graphite', 66)
 
-# --- p13 227.72–242.97: the Sun half-way out, 26 000 ly from the centre; hundreds of billions of stars, estimated
-line(circle(C, 12, 14), L(227.8), .12, lw=12)
-write('центр', C[0] - 20, C[1] + 85, L(228.0), .4, 'graphite', 70, align='center')
-line(circle(SUN, 16, 14), L(228.3), .12, lw=10)
-write('Солнце', SUN[0], SUN[1] + 225, L(228.4), .5, 'graphite', 70, align='center')
-dim([C[0] + 20, C[1] + 8], [SUN[0] - 20, SUN[1] - 8], L(229.0), .7, lw=6)
-dim([SUN[0] + 20, SUN[1] + 8], [C[0] + (SUN[0] - C[0]) * 2.02, C[1] + (SUN[1] - C[1]) * 2.02], L(229.8), .6, 'grey', 5)
-write('полпути', 1790, 5395, L(230.5), .7, 'blue', 60, rot=21)
-line([[2440, 5640], [2600, 5600]], L(232.1), .2, 'blue', 5)
-count('{0} св. лет', [26000], 2620, 5650, L(232.2), 1.6, size=120, sep=True)
-write('от центра', 2620, 5760, L(234.1), .7, 'graphite', 74)
-sprinkle([C[0] - R, C[1] - R, C[0] + R, C[1] + R], 46, L(236.0), 2.2, 7, inside=lambda x, y: math.hypot(x - C[0], y - C[1]) < R - 20 and math.hypot(x - C[0], y - C[1]) > 140
-         and math.hypot(x - SUN[0], y - SUN[1]) > 120)
-write('сотни миллиардов звёзд', 2620, 5920, L(235.95), 1.5, 'blue', 90)
-tag('точного счёта нет', 2650, 6075, L(238.6), size=64, rot=-1)
-write('оценка по яркости и массе', 2620, 6260, L(240.1), 2.2, 'graphite', 74)
+# ===================================================================== ROW 3 · area is length × width; Russia vs Africa
+# --- p12 232.20–247.98: the trap in the words: area = length × width; stretch ×2 each way → area ×4; small-looking
+#     distortion on screen → a huge difference in area
+tag('ловушка в самих словах', 420, 5230, L(232.3), size=64, rot=-1.5)
+write('площадь = длина × ширина', 420, 5440, L(234.15), 2.4, 'graphite', 80)
+Q = 260; QX, QY = 620, 6280                                 # bottom-left of the small square
+line([[QX, QY], [QX + Q, QY], [QX + Q, QY - Q], [QX, QY - Q], [QX, QY]], L(234.4), .6, 'graphite', 8)
+write('длина', QX + Q / 2, QY + 75, L(234.9), .5, 'grey', 50, align='center')
+write('ширина', QX - 25, QY - Q / 2 + 18, L(235.6), .6, 'grey', 50, align='right')
+arrow([QX + Q + 50, QY - Q / 2], [QX + Q + 250, QY - Q / 2], L(237.1), .4, 'graphite', 7)
+BXQ = QX + Q + 320                                            # the big square: ×2 each way
+line([[BXQ, QY], [BXQ + 2 * Q, QY], [BXQ + 2 * Q, QY - 2 * Q], [BXQ, QY - 2 * Q], [BXQ, QY]], L(237.5), .8, 'graphite', 8)
+dim([BXQ, QY + 60], [BXQ + 2 * Q, QY + 60], L(238.0), .6)
+write('×2', BXQ + Q, QY + 150, L(238.3), .3, 'blue', 70, align='center')
+dim([BXQ - 60, QY], [BXQ - 60, QY - 2 * Q], L(238.6), .6)
+write('×2', BXQ - 90, QY - Q + 25, L(238.9), .3, 'blue', 70, align='right')
+line([[BXQ + Q, QY], [BXQ + Q, QY - 2 * Q]], L(239.5), .3, 'grey', 5, dash=[16, 12])
+line([[BXQ, QY - Q], [BXQ + 2 * Q, QY - Q]], L(239.8), .3, 'grey', 5, dash=[16, 12])
+for i, (cx, cy) in enumerate(((0, 1), (1, 1), (0, 0), (1, 0))):
+    write(str(i + 1), BXQ + cx * Q + Q / 2, QY - cy * Q - Q / 2 + 30, L(240.2) + .3 * i, .2, 'blue', 80, align='center')
+count('площадь ×{0}', [4], BXQ + 2 * Q + 80, QY - 2 * Q + 40, L(241.2), 1.0, size=96)
+write('небольшое с виду искажение', 2600, 5700, L(242.2), 2.0, 'graphite', 70)
+arrow([2800, 5760], [2800, 5930], L(244.3), .4, 'graphite', 7)
+write('огромная разница в площадях', 2600, 6040, L(244.7), 2.4, 'red', 70)
 
-# --- p14 243.69–257.56: back to the beach ball: the galaxy would span 700 million km, almost Sun → Jupiter; stars everywhere
-MB = (5000, 5060)
-tag('модель', 4800, 4640, L(243.7), size=68, rot=-2)
-beach_ball(MB, 110, L(243.9), .9, lw=7)
-write('пляжный мяч', MB[0], MB[1] + 200, L(244.6), .7, 'graphite', 68, align='center')
-GC, GRX, GRY = (6880, 5060), 1230, 360               # the galaxy on the model (tilted disc)
-line(circle(GC, [GRX, GRY], 64), L(245.4), 1.0, 'graphite', 6, dash=[24, 18])
-line(circle(GC, [170, 60], 30), L(246.2), .3, lw=7)
-spiral_arms(GC, GRX * .95, L(246.5), 1.2, ry=GRY / GRX, r0=.16, turns=.8, arms=2, rot=10, lw=6)
-YM = 5530
-dim([GC[0] - GRX, YM], [GC[0] + GRX, YM], L(247.9), 1.0, ext=[[GC[0] - GRX, GC[1] + 20, YM + 40], [GC[0] + GRX, GC[1] + 20, YM + 40]])
-count('≈ {0} млн км', [700], GC[0], 5690, L(248.2), 1.9, size=110, align='center')
-printd('sun2', 'print_sun', 5420, 6010, L(250.7), w=280, rot=-2, size='small')
-magnet(5420, 5900, L(251.1), r=18)
-printd('jupiter', 'print_jupiter', 8350, 6000, L(251.4), h=260, rot=2, size='small')
-magnet(8350, 5880, L(251.8), r=18)
-arrow([5600, 6020], [8230, 6020], L(251.55), 1.2, 'blue', 7)
-write('почти как от Солнца до Юпитера', 6900, 5975, L(251.7), 1.8, 'graphite', 76, align='center')
-sprinkle([GC[0] - GRX, GC[1] - GRY, GC[0] + GRX, GC[1] + GRY], 60, L(253.85), 2.0, 11,
-         inside=lambda x, y: ((x - GC[0]) / (GRX - 30)) ** 2 + ((y - GC[1]) / (GRY - 20)) ** 2 < 1 and ((x - GC[0]) / 210) ** 2 + ((y - GC[1]) / 90) ** 2 > 1)
-write('сотни миллиардов звёзд', GC[0], 4610, L(256.0), 1.4, 'blue', 84, align='center')
+# --- p13 248.53–265.95: Russia looms on the map; 1.5–2× smaller than Africa: 17 million and a bit against 30;
+#     still the largest country on the planet (nobody disputes it); a whole continent is bigger than any country
+S13 = .11
+P13 = 5000
+RUM = (P13 + 1150, 5880)
+outline('russia', 'merc', RUM, S13, L(248.6), 1.9, 'grey', 6, minpx=40)
+write('Россия', RUM[0] - 200, RUM[1] + 790, L(249.0), .6, 'graphite', 70, align='center')
+write('карта Меркатора', RUM[0] + 300, RUM[1] + 790, L(249.4), .9, 'grey', 54)
+AF13 = (P13 + 3900, 6050)
+outline('africa', 'true', AF13, S13, L(250.8), 1.6, 'blue', 8, minpx=30)
+write('Африка', AF13[0] + 280, AF13[1] - 260, L(251.2), .6, 'blue', 70)
+RUT0 = (P13 + 5350, 5600)
+ru_true = outline('russia', 'true', RUT0, S13, L(251.6), 1.4, 'graphite', 7, minpx=30,
+                  moves=slide(L(253.4), 1.6, AF13[0] - RUT0[0] + 20, AF13[1] - RUT0[1] - 180))
+write('истинный размер', P13 + 3400, 5150, L(251.0), .9, 'grey', 54)
+write('в 1,5–2 раза меньше', P13 + 5000, 5300, L(251.8), 1.4, 'blue', 70)
+count('{0} млн с небольшим', [17], P13 + 5000, 5900, L(253.0), 1.5, size=84)
+write('против 30', P13 + 5000, 6010, L(255.2), .9, 'blue', 84)
+tag('самая большая страна планеты', P13 + 5000, 6250, L(256.8), size=56, rot=-1)
+write('это никто не оспаривает', P13 + 5000, 6450, L(259.5), 1.6, 'graphite', 60)
+write('но континент больше любой страны', P13 + 2700, 7000, L(262.3), 2.4, 'red', 72)
 
-# --- p15 258.11–270.34: Voyager through the whole galaxy ≈ 2 billion years (our estimate); one of many galaxies; past its edge
-DC, DRX, DRY = (10450, 5130), 1050, 300
-line(circle(DC, [DRX, DRY], 64), L(258.15), .8, 'grey', 5, dash=[20, 16])
-line(circle(DC, [150, 55], 30), L(258.6), .25, lw=7)
-spiral_arms(DC, DRX * .95, L(258.8), .9, ry=DRY / DRX, r0=.16, turns=.8, arms=2, rot=-20, lw=6)
-probe((DC[0] - DRX - 150, DC[1] - 40), L(259.9), 1.2)
-tag('Вояджер', 9050, 5470, L(260.0), size=64, rot=-1.5)
-arrow([DC[0] - DRX - 60, DC[1]], [DC[0] + DRX + 40, DC[1]], L(260.3), 1.5, 'blue', 8, dash=[26, 18])
-count('почти {0} млрд лет', [2], DC[0] + 80, 5640, L(261.8), 1.3, size=120, align='center')
-tag('по нашему расчёту', 10000, 5840, L(263.6), size=64, rot=1.5)
-write('одна из множества галактик', 9000, 4590, L(265.0), 1.8, 'graphite', 84)
-for i, (gx, gy, gs) in enumerate([(12150, 4620, 110), (12500, 5520, 95), (12050, 6080, 120), (9300, 6130, 100), (11450, 6240, 85), (12450, 4980, 70)]):
-    line(circle((gx, gy), [gs * .35, gs * .22], 16), L(265.4) + .2 * i, .1, lw=5)
-    spiral_arms((gx, gy), gs, L(265.5) + .2 * i, .18, ry=.6, r0=.2, turns=.7, arms=2, rot=30 * i, lw=4)
-arrow([DC[0] + DRX + 120, DC[1] - 120], [12350, DC[1] - 250], L(268.4), .7, 'graphite', 8)
-write('за край', 11680, 5190, L(268.7), .8, 'graphite', 84)
+# ===================================================================== camera (one continuous camera; the card hides the jump)
+c = Cam(*fit([360, 380, 2700, 1200]))
+c.to(L(115.3), 1.6, z=z_of(c) * 1.01)
+c.fit(L(116.8), 1.6, [300, 380, 3400, 2100], b=2.8)                    # the grid draws, the course is straight
+c.fit(L(121.8), 1.4, [300, 450, 3200, 2150], b=2.8)                   # at the equator nearly honest
+c.fit(L(124.0), 1.3, [300, 700, 3200, 1600], b=2.8)                    # at 60°: ×2, ×4
+c.fit(L(129.3), 1.4, [300, 380, 3400, 2100], b=2.8)                    # further north, only geometry
+c.to(L(131.0), 4.4, z=z_of(c) * 1.02)
+c.fit(L(135.5), 1.4, [P7 - 100, 380, P7 + 2300, 1800], b=2.8)          # without distortion? NO. 1827, Gauss
+c.fit(L(143.7), 1.4, [P7 - 100, 450, P7 + 2400, 1720], b=2.8)          # the sphere does not go flat
+c.fit(L(147.6), 1.3, [P7 + 900, 650, P7 + 3700, 1620], b=2.8)         # the orange peel
+c.fit(L(151.3), 1.2, [P7 + 2700, 640, P7 + 5200, 1620], b=2.8)         # Mercator, schoolchildren?
+c.fit(L(154.0), 1.4, [P7 + 900, 1400, P7 + 3900, 2150], b=2.8)        # subscribe: back to real size
+c.fit(L(161.0), 1.4, [P8 - 100, 600, P8 + 2400, 1700], b=2.8)          # for sailors
+c.fit(L(168.0), 1.4, [P8 - 100, 600, P8 + 2700, 2050], b=2.8)          # 5 centuries later, Greenland, made for another job
+c.to(L(170.0), 5.0, z=z_of(c) * 1.02)
+c.fit(L(175.6), 1.9, [250, 300, P8 + 2900, 2200], b=3)                 # pull-back: row 1 as a whole
+c.fit(L(177.75), .6, [300, 2560, 3300, 3400])                          # (under the card) row 2 corner
+c.fit(L(184.3), 1.5, [300, 2560, 3500, 4600], b=2.8)                   # Africa, 30 million, Greenland ×14 smaller
+c.to(L(186.0), 7.0, z=z_of(c) * 1.02)
+c.fit(L(198.4), 1.4, [P10 - 100, 2600, P10 + 2900, 4400], b=2.8)       # Greenland vs Algeria
+c.fit(L(207.2), 1.5, [P10 + 2900, 2700, P10 + 4800, 4400], b=2.8)      # the eye / the ruler
+c.fit(L(214.2), 1.5, [P11 - 100, 2650, P11 + 1900, 4400], b=2.8)       # Greenland ×10–12
+c.fit(L(221.3), 1.4, [P11 + 1900, 2650, P11 + 3700, 3900], b=2.8)      # Australia ×1.2
+c.fit(L(226.3), 1.4, [P11 - 100, 2650, P11 + 3700, 4400], b=2.8)       # cold / warm
+c.fit(L(232.0), 1.5, [300, 5100, 2400, 6450], b=2.8)                   # area = length × width
+c.fit(L(241.9), 1.4, [300, 5100, 4400, 6450], b=2.8)                   # small-looking → huge
+c.fit(L(248.4), 1.5, [P13 - 200, 5000, P13 + 3000, 6800], b=2.8)       # Russia on the Mercator map
+c.fit(L(250.6), 1.6, [P13 + 2900, 5000, P13 + 6900, 7100], b=2.8)      # true size: Russia onto Africa
+c.fit(L(261.9), 1.3, [P13 + 2500, 5000, P13 + 6900, 7100], b=2.8)      # a continent > any country
+c.fit(L(266.1), 2.0, [250, 2550, P13 + 7000, 7150], b=3)               # pull-back: the chapter as a whole
 
-# ===================================================================== camera (one continuous camera; the cards hide the jumps)
-c = Cam(*fit([250, 420, 1700, 1460]))
-c.to(L(128.75), 2.6, z=z_of(c) * 1.02)
-c.fit(L(131.3), 1.3, [250, 420, 1600, 1460], b=3)                       # the Sun print, = , the beach ball
-c.fit(L(134.2), 1.3, [3150, 520, 4300, 1300], b=3)                       # the Earth = a pea, 9 mm
-c.fit(L(138.65), 1.6, [220, 460, 4300, 1700], b=3)                       # judgement frame: ball, pea, 100 m, the pitch
-c.to(L(140.3), 2.6, z=z_of(c) * 1.02)
-c.fit(L(143.05), 1.4, [3150, 480, 5800, 1450], b=2.8)                    # Voyager
-c.fit(L(146.2), 1.0, [300, 1000, 2700, 2010], a=2, b=2.2)               # down to the ball: the line starts there …
-c.fit(L(147.2), 2.6, [4650, 1000, 7400, 2020], a=1.6, b=2.4)             # … ride it to Voyager on the model
-c.fit(L(150.3), 1.4, [5450, 480, 7500, 2020], b=2.8)                     # the city, record / a stroll
-c.to(L(151.8), 5.0, z=z_of(c) * 1.025)
-c.fit(L(157.55), 1.5, [8350, 460, 12100, 1520], b=2.8)                   # where is the neighbouring ball? Proxima
-c.fit(L(161.2), 1.4, [8350, 460, 12100, 1960], b=2.8)                    # ≈ 29 000 km
-c.fit(L(165.6), 1.3, [8700, 520, 11750, 1960], b=2.8)                    # farther than the opposite point of the Earth
-c.fit(L(169.3), 1.5, [8350, 460, 12650, 1960], b=2.8)                    # the ruler, subscribe, billions of times longer
-c.to(L(171.2), 5.0, z=z_of(c) * 1.02)
-c.fit(L(176.6), 1.5, [7300, 2950, 9900, 4020], b=2.8)                    # row 2: not to Proxima
-c.fit(L(179.0), 2.0, [7300, 2420, 11800, 4020], a=1.8, b=2.6)            # towards Gliese 445
-c.to(L(181.2), 9.0, z=z_of(c) * 1.03)
-c.fit(L(190.3), 1.2, [7300, 2420, 11800, 4020], b=3)
-c.fit(L(193.25), 1.4, [600, 2470, 3300, 3360], b=2.8)                    # the light year
-c.fit(L(196.2), 1.6, [600, 2470, 4350, 3380], a=1.8, b=2.6)              # ride the light
-c.fit(L(200.7), 1.4, [600, 2470, 4900, 4020], b=2.8)                     # Proxima → us, 4 years
-c.to(L(202.2), 5.8, z=z_of(c) * 1.02)
-c.fit(L(208.45), 2.05, [200, 360, 12700, 4050], b=3)                     # chapter pull-back: rows 1–2
-c.fit(L(210.75), .6, [1300, 4850, 3000, 5900])                           # (under the card) the Milky Way corner
-c.fit(L(214.1), 1.6, [800, 4380, 2650, 6200], b=2.8)                     # the disc grows, > 100 000 ly
-c.fit(L(221.0), 1.4, [1750, 4920, 4400, 5560], b=2.8)                    # Voyager inside, barely moved
-c.fit(L(227.6), 1.4, [880, 4400, 4350, 6100], b=2.8)                     # the Sun half-way, 26 000 ly
-c.fit(L(235.7), 1.4, [880, 4400, 4350, 6300], b=2.8)                     # hundreds of billions, no exact count
-c.to(L(237.2), 5.5, z=z_of(c) * 1.02)
-c.fit(L(243.5), 1.4, [4550, 4500, 6400, 5450], b=2.8)                    # back to the beach ball
-c.fit(L(245.3), 1.6, [4550, 4450, 8250, 5800], a=1.8, b=2.6)             # the galaxy on the model, 700 million km
-c.fit(L(250.55), 1.4, [4550, 4450, 8600, 6150], b=2.8)                   # Sun → Jupiter
-c.to(L(252.0), 5.5, z=z_of(c) * 1.02)
-c.fit(L(257.9), 1.5, [8800, 4800, 11700, 5950], b=2.8)                   # 2 billion years
-c.fit(L(264.8), 1.5, [8850, 4430, 12650, 6300], b=2.8)                   # one of many galaxies, past its edge
-c.fit(L(270.45), 2.1, [200, 360, 12700, 6330], b=3)                      # the whole wall
-# the whole wall sits 400 px further right (keeps the board's left frame out of the opening shots)
-OX = 800
+# the whole wall sits further right (keeps the board's left frame out of the opening shots)
+OX = 700
 def shift(e, dx):
     for k in ('xy', 'from', 'to', 'c'):
         if isinstance(e.get(k), list) and len(e[k]) == 2 and not isinstance(e[k][0], list): e[k] = [e[k][0] + dx, e[k][1]]
@@ -411,9 +378,8 @@ def shift(e, dx):
     for ex in e.get('ext', []): ex[0] += dx
 for e in E: shift(e, OX)
 c.base['x'] += OX; BW += OX
-print('board', BW, BH)
 
-scene = dict(dur=DUR, clock=R0, board=dict(w=BW, h=BH, seed=41, texScale=.4, ghosts=220, tray=False), hand=1.0, sheen=.07,
+scene = dict(dur=DUR, clock=R0, board=dict(w=BW, h=BH, seed=53, texScale=.4, ghosts=220, tray=False), hand=1.0, sheen=.07,
              light=dict(x=-1800, y=-2400, r=36000, min=.8), cam=c.json(), mbMax=6, elements=E, cards=CARDS,
              ev=sorted(EV, key=lambda e: e['t']), subs=[])
 json.dump(scene, open(os.path.join(HERE, 'film.json'), 'w'), ensure_ascii=False, indent=1)

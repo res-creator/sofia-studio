@@ -1,0 +1,15 @@
+{
+  "id": "print_mercator",
+  "w": 1100,
+  "h": 1650,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/mercator_portrait.jpg",
+    "id": "print_mercator",
+    "crop": "490,340,1500,1900",
+    "w": 1010,
+    "border": 0.045,
+    "sat": 0.9
+  }
+}

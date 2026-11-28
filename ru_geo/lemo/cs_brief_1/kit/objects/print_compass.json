@@ -1,0 +1,15 @@
+{
+  "id": "print_compass",
+  "w": 850,
+  "h": 850,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/compass_old.jpg",
+    "id": "print_compass",
+    "crop": "560,370,1340,1150",
+    "w": 780,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

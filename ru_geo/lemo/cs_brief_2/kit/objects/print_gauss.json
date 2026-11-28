@@ -1,0 +1,15 @@
+{
+  "id": "print_gauss",
+  "w": 1138,
+  "h": 1504,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/gauss_portrait.jpg",
+    "id": "print_gauss",
+    "crop": "313,52,1357,1462",
+    "w": 1044,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

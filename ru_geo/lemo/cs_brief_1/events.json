@@ -1,0 +1,677 @@
+{
+ "dur": 115.1,
+ "ev": [
+  {
+   "t": 0.05,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 0.113,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 0.175,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 0.237,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 0.3,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 0.362,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 0.425,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 0.487,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 0.55,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 0.613,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 0.675,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 0.738,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 0.8,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 1.05,
+   "type": "stroke",
+   "dur": 0.95,
+   "color": "graphite"
+  },
+  {
+   "t": 1.6,
+   "type": "stroke",
+   "dur": 1.1,
+   "color": "graphite"
+  },
+  {
+   "t": 2.25,
+   "type": "tag",
+   "dur": 0.3
+  },
+  {
+   "t": 2.3,
+   "type": "stroke",
+   "dur": 0.5,
+   "color": "grey"
+  },
+  {
+   "t": 2.55,
+   "type": "tag",
+   "dur": 0.3
+  },
+  {
+   "t": 2.6,
+   "type": "hatch",
+   "dur": 0.3
+  },
+  {
+   "t": 2.95,
+   "type": "tag",
+   "dur": 0.3
+  },
+  {
+   "t": 11.35,
+   "type": "stroke",
+   "dur": 0.45,
+   "color": "graphite"
+  },
+  {
+   "t": 11.5,
+   "type": "whoosh",
+   "dur": 1.6
+  },
+  {
+   "t": 11.8,
+   "type": "stroke",
+   "dur": 0.5,
+   "color": "grey"
+  },
+  {
+   "t": 11.95,
+   "type": "write",
+   "dur": 0.9,
+   "color": "graphite"
+  },
+  {
+   "t": 12.26,
+   "type": "clack",
+   "dur": 0.1
+  },
+  {
+   "t": 12.35,
+   "type": "stroke",
+   "dur": 0.9,
+   "color": "graphite"
+  },
+  {
+   "t": 12.85,
+   "type": "write",
+   "dur": 1.0,
+   "color": "graphite"
+  },
+  {
+   "t": 13.1,
+   "type": "stroke",
+   "dur": 0.35,
+   "color": "graphite"
+  },
+  {
+   "t": 13.85,
+   "type": "write",
+   "dur": 1.0,
+   "color": "graphite"
+  },
+  {
+   "t": 14.85,
+   "type": "write",
+   "dur": 0.25,
+   "color": "red"
+  },
+  {
+   "t": 14.9,
+   "type": "whoosh",
+   "dur": 1.4
+  },
+  {
+   "t": 15.05,
+   "type": "tag",
+   "dur": 0.3
+  },
+  {
+   "t": 16.6,
+   "type": "write",
+   "dur": 1.1,
+   "color": "graphite"
+  },
+  {
+   "t": 18.95,
+   "type": "write",
+   "dur": 1.4,
+   "color": "graphite"
+  },
+  {
+   "t": 20.6,
+   "type": "write",
+   "dur": 1.3,
+   "color": "graphite"
+  },
+  {
+   "t": 20.9,
+   "type": "whoosh",
+   "dur": 1.2
+  },
+  {
+   "t": 21.85,
+   "type": "stroke",
+   "dur": 0.6,
+   "color": "red"
+  },
+  {
+   "t": 22.2,
+   "type": "stroke",
+   "dur": 0.4,
+   "color": "graphite"
+  },
+  {
+   "t": 22.75,
+   "type": "whoosh",
+   "dur": 1.3
+  },
+  {
+   "t": 23.6,
+   "type": "tag",
+   "dur": 0.3
+  },
+  {
+   "t": 23.7,
+   "type": "land",
+   "dur": 0.2,
+   "size": "big"
+  },
+  {
+   "t": 23.86,
+   "type": "clack",
+   "dur": 0.1
+  },
+  {
+   "t": 23.98,
+   "type": "clack",
+   "dur": 0.1
+  },
+  {
+   "t": 24.6,
+   "type": "tag",
+   "dur": 0.3
+  },
+  {
+   "t": 26.0,
+   "type": "write",
+   "dur": 1.6,
+   "color": "graphite"
+  },
+  {
+   "t": 26.9,
+   "type": "hatch",
+   "dur": 1.2
+  },
+  {
+   "t": 28.5,
+   "type": "land",
+   "dur": 0.2,
+   "size": "mid"
+  },
+  {
+   "t": 28.66,
+   "type": "clack",
+   "dur": 0.1
+  },
+  {
+   "t": 28.75,
+   "type": "tag",
+   "dur": 0.3
+  },
+  {
+   "t": 29.2,
+   "type": "whoosh",
+   "dur": 2.0
+  },
+  {
+   "t": 29.3,
+   "type": "stroke",
+   "dur": 0.8,
+   "color": "graphite"
+  },
+  {
+   "t": 30.0,
+   "type": "stroke",
+   "dur": 1.3,
+   "color": "blue"
+  },
+  {
+   "t": 31.35,
+   "type": "stroke",
+   "dur": 0.45,
+   "color": "blue"
+  },
+  {
+   "t": 31.4,
+   "type": "write",
+   "dur": 1.1,
+   "color": "blue"
+  },
+  {
+   "t": 32.85,
+   "type": "write",
+   "dur": 0.9,
+   "color": "graphite"
+  },
+  {
+   "t": 33.3,
+   "type": "stroke",
+   "dur": 0.2,
+   "color": "graphite"
+  },
+  {
+   "t": 33.5,
+   "type": "stroke",
+   "dur": 0.2,
+   "color": "graphite"
+  },
+  {
+   "t": 33.7,
+   "type": "stroke",
+   "dur": 0.15,
+   "color": "graphite"
+  },
+  {
+   "t": 33.9,
+   "type": "stroke",
+   "dur": 1.3,
+   "color": "graphite"
+  },
+  {
+   "t": 35.75,
+   "type": "write",
+   "dur": 0.5,
+   "color": "graphite"
+  },
+  {
+   "t": 36.0,
+   "type": "write",
+   "dur": 1.4,
+   "color": "graphite"
+  },
+  {
+   "t": 37.9,
+   "type": "tag",
+   "dur": 0.3
+  },
+  {
+   "t": 39.9,
+   "type": "write",
+   "dur": 1.0,
+   "color": "graphite"
+  },
+  {
+   "t": 41.1,
+   "type": "whoosh",
+   "dur": 1.9
+  },
+  {
+   "t": 43.27,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 43.333,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 43.395,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 43.458,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 43.52,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 43.583,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 43.645,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 43.708,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 43.77,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 43.833,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 43.895,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 43.958,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 44.02,
+   "type": "key",
+   "dur": 0
+  },
+  {
+   "t": 78.6,
+   "type": "write",
+   "dur": 2.0,
+   "color": "graphite"
+  },
+  {
+   "t": 80.85,
+   "type": "stroke",
+   "dur": 0.15,
+   "color": "graphite"
+  },
+  {
+   "t": 80.9,
+   "type": "stroke",
+   "dur": 1.5,
+   "color": "blue"
+  },
+  {
+   "t": 81.4,
+   "type": "write",
+   "dur": 0.6,
+   "color": "blue"
+  },
+  {
+   "t": 82.45,
+   "type": "stroke",
+   "dur": 0.15,
+   "color": "graphite"
+  },
+  {
+   "t": 83.4,
+   "type": "write",
+   "dur": 1.0,
+   "color": "graphite"
+  },
+  {
+   "t": 84.4,
+   "type": "land",
+   "dur": 0.2,
+   "size": "big"
+  },
+  {
+   "t": 84.56,
+   "type": "clack",
+   "dur": 0.1
+  },
+  {
+   "t": 84.68,
+   "type": "clack",
+   "dur": 0.1
+  },
+  {
+   "t": 85.25,
+   "type": "land",
+   "dur": 0.2,
+   "size": "small"
+  },
+  {
+   "t": 85.75,
+   "type": "write",
+   "dur": 1.6,
+   "color": "graphite"
+  },
+  {
+   "t": 85.8,
+   "type": "stroke",
+   "dur": 0.4,
+   "color": "blue"
+  },
+  {
+   "t": 86.25,
+   "type": "stroke",
+   "dur": 0.4,
+   "color": "blue"
+  },
+  {
+   "t": 86.7,
+   "type": "stroke",
+   "dur": 0.4,
+   "color": "blue"
+  },
+  {
+   "t": 89.9,
+   "type": "stroke",
+   "dur": 1.5,
+   "color": "graphite"
+  },
+  {
+   "t": 90.9,
+   "type": "write",
+   "dur": 1.4,
+   "color": "graphite"
+  },
+  {
+   "t": 92.2,
+   "type": "whoosh",
+   "dur": 1.3
+  },
+  {
+   "t": 92.45,
+   "type": "write",
+   "dur": 1.0,
+   "color": "graphite"
+  },
+  {
+   "t": 93.4,
+   "type": "hatch",
+   "dur": 1.0
+  },
+  {
+   "t": 93.9,
+   "type": "hatch",
+   "dur": 0.3
+  },
+  {
+   "t": 94.05,
+   "type": "hatch",
+   "dur": 0.3
+  },
+  {
+   "t": 94.2,
+   "type": "hatch",
+   "dur": 0.3
+  },
+  {
+   "t": 94.35,
+   "type": "hatch",
+   "dur": 0.3
+  },
+  {
+   "t": 94.95,
+   "type": "tag",
+   "dur": 0.3
+  },
+  {
+   "t": 95.6,
+   "type": "write",
+   "dur": 0.8,
+   "color": "graphite"
+  },
+  {
+   "t": 97.2,
+   "type": "whoosh",
+   "dur": 1.4
+  },
+  {
+   "t": 97.75,
+   "type": "land",
+   "dur": 0.2,
+   "size": "mid"
+  },
+  {
+   "t": 97.9,
+   "type": "tag",
+   "dur": 0.3
+  },
+  {
+   "t": 97.91,
+   "type": "clack",
+   "dur": 0.1
+  },
+  {
+   "t": 99.7,
+   "type": "ruler",
+   "dur": 0.4
+  },
+  {
+   "t": 101.1,
+   "type": "tag",
+   "dur": 0.3
+  },
+  {
+   "t": 102.0,
+   "type": "tag",
+   "dur": 0.3
+  },
+  {
+   "t": 102.8,
+   "type": "whoosh",
+   "dur": 1.0
+  },
+  {
+   "t": 102.95,
+   "type": "stroke",
+   "dur": 0.35,
+   "color": "blue"
+  },
+  {
+   "t": 103.25,
+   "type": "write",
+   "dur": 0.2,
+   "color": "blue"
+  },
+  {
+   "t": 103.45,
+   "type": "stroke",
+   "dur": 0.6,
+   "color": "blue"
+  },
+  {
+   "t": 104.2,
+   "type": "write",
+   "dur": 1.1,
+   "color": "blue"
+  },
+  {
+   "t": 105.7,
+   "type": "whoosh",
+   "dur": 1.3
+  },
+  {
+   "t": 105.95,
+   "type": "write",
+   "dur": 1.3,
+   "color": "graphite"
+  },
+  {
+   "t": 108.0,
+   "type": "whoosh",
+   "dur": 1.2
+  },
+  {
+   "t": 108.15,
+   "type": "stroke",
+   "dur": 0.25,
+   "color": "blue"
+  },
+  {
+   "t": 108.4,
+   "type": "write",
+   "dur": 0.9,
+   "color": "graphite"
+  },
+  {
+   "t": 109.35,
+   "type": "stroke",
+   "dur": 0.25,
+   "color": "blue"
+  },
+  {
+   "t": 109.6,
+   "type": "write",
+   "dur": 0.9,
+   "color": "graphite"
+  },
+  {
+   "t": 113.2,
+   "type": "stamp",
+   "dur": 0.2
+  },
+  {
+   "t": 113.6,
+   "type": "whoosh",
+   "dur": 1.3
+  }
+ ]
+}

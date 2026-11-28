@@ -1,0 +1,43 @@
+«Мысленный эксперимент» · «Размеры стран» · клип глобуса (globe.mp4, film 3.92–11.15 s, 7.23 s)
+Style: Lemo-Opuscar «3D Map Explainer» (the globe of styles/map-explainer/demo, copied and adapted; set up from ../bh_map). Third-party data and sources:
+
+## Imagery (downloaded by tools/fetch_world.py into raw/, processed into assets/world.jpg)
+- Imagery: Sentinel-2 cloudless 2016 - https://s2maps.eu by EOX IT Services GmbH (Contains modified Copernicus Sentinel data
+  2016 & 2017), CC BY 4.0. Layer s2cloudless_3857, zoom 4 (whole Earth, 16 × 16 tiles), reprojected to an equirectangular
+  globe texture. Only the 2016 release is used (later Sentinel-2 cloudless releases are CC BY-NC-SA). Imagery colour-graded
+  (land warmed, deep ocean darkened; the caps beyond 85° filled with the colour of the 82–83.5° band) — "modified".
+- Every download URL and date is logged in raw/manifest.jsonl (downloaded 2026-11-28).
+
+## Required attribution — put this line in the YouTube description (the clip itself carries no English text):
+  Satellite imagery: Sentinel-2 cloudless 2016 – https://s2maps.eu by EOX IT Services GmbH (Contains modified Copernicus
+  Sentinel data 2016 & 2017), CC BY 4.0.
+  Russian version: Спутниковые снимки: Sentinel-2 cloudless 2016 – https://s2maps.eu, EOX IT Services GmbH (содержит изменённые
+  данные Copernicus Sentinel 2016 и 2017 гг.), CC BY 4.0.
+
+## Outlines (tools/outlines.py → assets/outlines.json)
+- Country outlines: johan/world.geo.json, countries.geo.json (public domain),
+  https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json (copy in raw/countries.geo.json).
+  Greenland = the «Greenland» feature; Africa = union of the 51 African features (mainland + Madagascar).
+- The 14 copies of Greenland are its true-size outline: projected in a spherical Lambert azimuthal equal-area projection about
+  its own centre, only moved and turned inside Africa's equal-area plane (area unchanged), then projected back onto the globe.
+  Placement by simulated annealing (least overlap, least spill over the coast). With these generalised outlines:
+  Greenland 2.19 M km², Africa 30.04 M km² (ratio 13.7); the 14 copies cover 94 % of mainland Africa, overlap each other by
+  1.56 M km² (5 % of their area) and spill 1.33 M km² over the coast — a fair picture of «14 Гренландий уместились бы»,
+  not an exact tiling (an exact tiling of an irregular shape is impossible).
+- The travelling copy (1.25–3.0 s) is Greenland's outline moved by a rotation of the sphere: shape and size unchanged.
+
+## Facts on screen
+- Africa ≈ 30.4 M km², Greenland ≈ 2.17 M km² → ≈ 14 × (as in the narration). On screen only «Гренландия», «Африка», «×1…×14».
+
+## Fonts (SIL Open Font License 1.1; licence text in fonts/OFL-firasans.txt; tools/fonts.py)
+- Fira Sans Condensed 500 / 600 (Cyrillic): Mozilla Foundation, Telefonica, Carrois, bBox Type; via the Google Fonts CSS API,
+  subset to the Russian alphabet, digits and punctuation (× included).
+
+## Code
+- three.js r170 (MIT) from the Lemo-Opuscar library; post.js is a copy of the library's core/three/post.js.
+- Engine: the globe, atmosphere, stars, ribbons and post of the Lemo-Opuscar map-explainer demo; tools/fetch_world.py from the
+  demo (polar fill changed); tools/frames.mjs from bh_map; tools/outlines.py and tools/stills.mjs new.
+
+## Images, models
+- No photographs other than the satellite mosaic above, no 3D models, no AI-generated images. Outlines, fills and type are
+  drawn in code. Silent clip: no audio.

@@ -1,0 +1,15 @@
+{
+  "id": "print_ship",
+  "w": 1445,
+  "h": 1080,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/old_sailing_ship.jpg",
+    "id": "print_ship",
+    "crop": "70,170,1395,1130",
+    "w": 1325,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

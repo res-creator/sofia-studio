@@ -1,0 +1,45 @@
+{
+ "score": 0.44447028535555366,
+ "pieces": [
+  {
+   "piece": "france",
+   "rot": -72.9,
+   "dx": -30.7,
+   "dy": -595.5,
+   "out_pct": 7.8,
+   "ovl_pct": 0.0
+  },
+  {
+   "piece": "france",
+   "rot": 36.6,
+   "dx": 497.8,
+   "dy": 418.9,
+   "out_pct": 4.2,
+   "ovl_pct": 2.8
+  },
+  {
+   "piece": "france",
+   "rot": 31.5,
+   "dx": 634.2,
+   "dy": -487.8,
+   "out_pct": 9.0,
+   "ovl_pct": 5.4
+  },
+  {
+   "piece": "france",
+   "rot": -271.2,
+   "dx": -219.4,
+   "dy": 78.9,
+   "out_pct": 5.3,
+   "ovl_pct": 4.7
+  }
+ ],
+ "overlaps": [
+  0.0,
+  6.6,
+  5.1,
+  0.9,
+  1.4,
+  0.0
+ ]
+}

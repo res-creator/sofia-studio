@@ -1,0 +1,15 @@
+{
+  "id": "print_atlas",
+  "w": 2092,
+  "h": 3395,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/country_sizes/archive/img/atlas_1595.jpg",
+    "id": "print_atlas",
+    "crop": "0,0,1920,3223",
+    "w": 1920,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}
