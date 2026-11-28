@@ -1,0 +1,18 @@
+Отдалённые места · board film PART 1 (film 0.00–118.15: cold open «ХОЛОДНЫЙ СТАРТ», chapter «КАК МЕРЯТЬ ПУСТОТУ»;
+Engineering Briefing Board) — credits
+
+Photographs (ru_geo/remote_places/archive/img; cut by tools/cut/cut_rp1.py)
+  iss.png          International Space Station seen from Soyuz MS-08 (2018) — NASA / Roscosmos, public domain
+                   (iss_station.jpg; keyed off black space, cut-out)
+  print_verne.png  Captain Nemo on the deck of the Nautilus, illustration by Alphonse de Neuville for Jules Verne's novel —
+                   public domain (CC0) (nemo_verne.jpg; uncut crop on photo paper, the engraver's signature cropped off;
+                   printed line «А. де Невиль · илл. к роману Жюля Верна»)
+  print_shelf.png  edge of an ice shelf near Adelaide Island, Antarctica — NASA / Maria-Jose Vinas, public domain
+                   (ice_shelf_edge.jpg; uncut, on photo paper; printed line «край шельфового ледника, Антарктида · NASA»)
+  Shown at >= 1 source pixel per screen pixel (tools/rescheck.mjs: lowest 2.56).
+
+Boundary data
+  coastlines: johan/world.geo.json (Natural Earth 1:110m, public domain), azimuthal equidistant around Point Nemo
+  (48°52.6' S, 123°23.6' W), tools/geo_nemo.py → scenes/geo.json
+
+Fonts (SIL OFL 1.1): Pangolin, Fira Sans Condensed, IBM Plex Mono

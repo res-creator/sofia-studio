@@ -197,18 +197,18 @@ def orb(th): return [EX + RO * math.sin(th), EY + RE - RO * math.cos(th)]
 line([sea(s) for s in range(-1050, 1051, 50)], L(13.0), .8, 'blue', 7)
 waves(EX - 120, EY + 40, 4, L(13.3), 46, 8, d=.3)
 person(EX, EY, L(13.5), .9)
-write('вид сбоку', EX + 420, EY - 290, L(13.2), .6, 'grey', 56)
+write('вид сбоку', EX - 700, EY - 290, L(13.2), .6, 'grey', 56)
 ISS = printd('iss', 'iss', EX, round(EY - 400 * KE, 1), L(13.9), w=300, size='big', z=12)
 dim([EX + 190, EY + 4], [EX + 190, EY - 400 * KE], L(14.5), .5)
 count('≈ {0} км', [400], EX + 240, EY - 70, L(14.6), 1.3, size=80)
 tag('космическая станция', EX - 330, EY - 430, L(15.5), size=56, rot=-1.5)
 th1 = .105
-line([orb(-.16 + .32 * i / 40) for i in range(41)], L(16.4), 1.0, 'graphite', 5, dash=[16, 12], arrow=True)
+line([orb(-.05 + .21 * i / 30) for i in range(31)], L(16.4), .9, 'graphite', 5, dash=[16, 12], arrow=True)
 o1 = orb(th1)
 ISS['moves'] = [dict(t=L(17.8), d=2.6, dx=round(o1[0] - EX, 1), dy=round(o1[1] - (EY - 400 * KE), 1), dr=round(math.degrees(th1), 2), a=1.6, b=2.2)]
 ev(L(17.8), 'slide', 2.6)
-write('пролетают над головой', EX + 150, EY + 125, L(17.9), 1.2, 'graphite', 64)
-write('за считаные минуты', EX + 150, EY + 210, L(19.0), 1.1, 'graphite', 64)
+write('пролетают над головой', EX - 700, EY - 175, L(17.9), 1.2, 'graphite', 64)
+write('за считаные минуты', EX - 700, EY - 95, L(19.0), 1.1, 'graphite', 64)
 scalebar(EX + 430, EY - 390, KE, 200, L(14.0))
 
 # --- p1 21.12–36.87: this is Point Nemo in the south Pacific; «Немо» is Latin for «никто»; but the most remote place
@@ -397,16 +397,16 @@ c.fit(L(4.55), 2.3, [CX - 1650, CY - 820, CX + 1700, CY + 1500], b=3)  # the rin
 c.to(L(6.9), .6, z=z_of(c) * 1.01)
 c.fit(L(7.1), 1.5, [CX - 720, CY - 330, CX + 800, CY + 620], b=3)       # waiting; not a ship, not an island
 c.to(L(8.7), 4.0, z=z_of(c) * 1.03)
-c.fit(L(12.85), 1.1, [EX - 720, EY - 470, EX + 760, EY + 240], b=3)     # side view: the station 400 km up
+c.fit(L(12.85), 1.1, [EX - 720, EY - 470, EX + 760, EY + 120], b=3)     # side view: the station 400 km up
 c.to(L(14.0), 3.6, z=z_of(c) * 1.02)
-c.to(L(17.7), 2.8, x=c.cur['x'] + 140, z=z_of(c) * 1.0, a=1.6, b=2.4)  # follows the fly-over a little
-c.fit(L(20.75), 1.3, [CX - 1100, CY - 640, CX + 1700, CY + 1350], b=3)  # Point Nemo: the map
+c.to(L(17.7), 2.8, z=z_of(c) * 1.01, a=1.6, b=2.4)
+c.fit(L(20.75), 1.3, [CX - 1700, CY - 800, CX + 1700, CY + 1450], b=3)  # Point Nemo: the map
 c.to(L(22.1), 1.7, z=z_of(c) * 1.02)
 c.fit(L(23.85), 1.0, [3350, 560, 5500, 1460], b=3)                     # Nemo = nobody: the Verne print
 c.to(L(24.9), 1.2, z=z_of(c) * 1.02)
 c.fit(L(26.15), 1.3, [340, 680, 1360, 1300], b=3)                      # not here; at the end
 c.to(L(27.5), 5.9, z=z_of(c) * 1.03)
-c.fit(L(33.5), 1.0, [340, 700, 1360, 1500], b=3)                       # how to measure: the ruler
+c.fit(L(33.5), 1.0, [160, 700, 1180, 1500], b=3)                       # how to measure: the ruler
 c.to(L(34.5), 2.2, z=z_of(c) * 1.02)
 c.fit(L(36.8), 2.5, [300, 560, 4400, 3820], b=3)                       # chapter pull-back: the cold open
 c.fit(L(39.9), .6, [5400, 540, 7150, 1500])                            # (under the card) block A

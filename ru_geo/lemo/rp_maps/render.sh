@@ -17,7 +17,7 @@ for c in $CLIPS; do
     status) echo "$name $have / $n" ;;
     encode)
       if [ "$have" -ge "$n" ]; then
-        ffmpeg -v error -y -framerate 30 -i "$fr/f_%05d.jpg" -frames:v $n -c:v libx264 -preset slow -crf 16 -pix_fmt yuv420p -r 30 -an -movflags +faststart "$OUT/map_$name.mp4" &&
+        ffmpeg -v error -y -framerate 30 -i "$fr/f_%05d.jpg" -frames:v $n -c:v libx264 -preset slow -crf 16 -pix_fmt yuv420p -r 30 -an -movflags +faststart "$HERE/out/map_$name.tmp.mp4" && mv "$HERE/out/map_$name.tmp.mp4" "$OUT/map_$name.mp4" &&
         cp "$HERE/map_${name}_events.json" "$OUT/map_${name}_events.json" && echo "$name encoded $(ffprobe -v error -show_entries format=duration -of csv=p=0 "$OUT/map_$name.mp4")"
       else echo "$name not ready ($have / $n)"; fi ;;
     *)

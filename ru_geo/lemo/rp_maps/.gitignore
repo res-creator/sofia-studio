@@ -2,3 +2,4 @@ out/
 raw/
 frames/
 *.mp4
+assets/*.bin
