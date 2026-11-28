@@ -23,7 +23,7 @@ R0, R1 = 297.50, 468.60
 DUR = round(R1 - R0, 3)                       # 171.10
 L = lambda ft: round(ft - R0, 3)              # film time → local time
 COVER = [(L(335.43), L(353.56))]
-BW, BH = 12500, 9000
+BW, BH = 12500, 7800
 
 E, EV = [], []
 def el(**k): E.append(k); return k
@@ -368,7 +368,7 @@ for e in E: shift(e, OX, OY)
 c.base['x'] += OX; c.base['y'] += OY; BW += OX
 
 EV = [e for e in EV if e['type'] == 'key' or not any(a - .05 < e['t'] < b for a, b in COVER)]
-scene = dict(dur=DUR, clock=R0, board=dict(w=BW, h=BH, seed=73, texScale=.4, ghosts=220, tray=False), hand=1.0, sheen=.07,
+scene = dict(dur=DUR, clock=R0, board=dict(w=BW, h=BH, seed=73, texScale=.36, ghosts=200, tray=False), hand=1.0, sheen=.07,
              light=dict(x=-1800, y=-2400, r=40000, min=.8), cam=c.json(), mbMax=6, elements=E, cards=CARDS,
              ev=sorted(EV, key=lambda e: e['t']), subs=[])
 json.dump(scene, open(os.path.join(HERE, 'film.json'), 'w'), ensure_ascii=False, indent=1)

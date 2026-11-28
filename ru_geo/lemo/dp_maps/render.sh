@@ -3,8 +3,8 @@
 #   sh render.sh           start/resume the two detached workers (one per clip; frames already on disk are skipped)
 #   sh render.sh encode    encode every clip whose frames are all on disk (temp file, then move), copy its events JSON
 #   sh render.sh status    frames done per clip
-#   sh render.sh data      (re)build the terrain data: patches, the seam fix east of Everest, the gas field of Nyos
-# Data: assets/world.jpg (copied from ../rp_maps), assets/{evw,evd,nyw,nyd}_* (tools/fetch_patch.py), assets/nyd_gas.* (tools/gas.py)
+#   sh render.sh data      (re)build the terrain data: nested patches (wide z9, medium z11, detailed z13; seam fix east of Everest), the gas of Nyos
+# Data: assets/world.jpg (copied from ../rp_maps), assets/{evw,evm,evd,nyw,nym,nyd}_* (tools/fetch_patch.py), assets/nyd_gas.* (tools/gas.py)
 HERE=$(cd "$(dirname "$0")" && pwd)
 LIB=${LIB:-/root/lemo-opuscar}; export LIB
 OUT=/home/user/sofia-studio/ru_geo/deadly_places/video/parts
@@ -12,11 +12,12 @@ CLIPS="everest:251 nyos:524"
 mkdir -p "$OUT" "$HERE/out"
 if [ "$1" = "data" ] || [ ! -f "$HERE/assets/nyd_gas.png" ]; then
   (cd "$LIB" && PY=.venv/bin/python &&
-   $PY -I "$HERE/tools/fetch_patch.py" "$HERE" evw 84.9 26.3 89.0 29.7 9 0.3 1.0 wide &&
-   $PY -I "$HERE/tools/fix_seam.py" "$HERE" evw 748 &&
-   $PY -I "$HERE/tools/fetch_patch.py" "$HERE" evd 86.70 27.80 87.15 28.17 13 0.022 0.075 in:evw &&
+   SEAM=87.187:78 $PY -I "$HERE/tools/fetch_patch.py" "$HERE" evw 84.9 26.3 89.0 29.7 9 0.3 1.0 wide &&
+   SEAM=87.187:78 $PY -I "$HERE/tools/fetch_patch.py" "$HERE" evm 86.2 27.4 87.7 28.6 11 0.07 0.25 in:evw &&
+   $PY -I "$HERE/tools/fetch_patch.py" "$HERE" evd 86.70 27.80 87.15 28.17 13 0.022 0.075 in:evm &&
    $PY -I "$HERE/tools/fetch_patch.py" "$HERE" nyw 8.6 4.9 12.0 8.0 9 0.3 1.0 wide &&
-   $PY -I "$HERE/tools/fetch_patch.py" "$HERE" nyd 10.16 6.30 10.44 6.58 13 0.02 0.05 in:nyw &&
+   $PY -I "$HERE/tools/fetch_patch.py" "$HERE" nym 9.8 5.95 10.8 6.95 11 0.06 0.2 in:nyw &&
+   $PY -I "$HERE/tools/fetch_patch.py" "$HERE" nyd 10.16 6.30 10.44 6.58 13 0.02 0.05 in:nym &&
    $PY -I "$HERE/tools/gas.py" "$HERE")
   [ "$1" = "data" ] && exit 0
 fi

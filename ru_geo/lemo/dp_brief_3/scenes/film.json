@@ -3,10 +3,10 @@
  "clock": 297.5,
  "board": {
   "w": 13100,
-  "h": 9000,
+  "h": 7800,
   "seed": 73,
-  "texScale": 0.4,
-  "ghosts": 220,
+  "texScale": 0.36,
+  "ghosts": 200,
   "tray": false
  },
  "hand": 1.0,

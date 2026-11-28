@@ -8,12 +8,14 @@ Style: Lemo-Opuscar «3D Map Explainer» (the globe of ../rp_maps, from cs_globe
 - Sentinel-2 cloudless 2016 - https://s2maps.eu by EOX IT Services GmbH (Contains modified Copernicus Sentinel data
   2016 & 2017), CC BY 4.0. Layer s2cloudless_3857. Only the 2016 release is used (later releases are CC BY-NC-SA).
   - Globe: zoom 4, assets/world.jpg copied from ../rp_maps (URLs in raw/manifest_world.jsonl).
-  - Everest: wide patch zoom 9 (84.9–89.0 E, 26.3–29.7 N), detailed patch zoom 13 (86.70–87.15 E, 27.80–28.17 N).
-  - Nyos: wide patch zoom 9 (8.6–12.0 E, 4.9–8.0 N), detailed patch zoom 13 (10.16–10.44 E, 6.30–6.58 N).
+  - Everest: wide patch zoom 9 (84.9–89.0 E, 26.3–29.7 N), medium zoom 11 (86.2–87.7 E, 27.4–28.6 N),
+    detailed zoom 13 (86.70–87.15 E, 27.80–28.17 N).
+  - Nyos: wide patch zoom 9 (8.6–12.0 E, 4.9–8.0 N), medium zoom 11 (9.8–10.8 E, 5.95–6.95 N),
+    detailed zoom 13 (10.16–10.44 E, 6.30–6.58 N).
   - Modified: colour-graded like the globe (land warmed, a little less saturation); the outer quarter of each wide patch fades
-    into the globe texture, the outer tenth of each detailed patch into its wide patch; east of Everest (from 87.19 E) the mosaic
-    joins a darker scene: that side is brightened row by row to meet the other (tools/fix_seam.py).
-- Elevation: AWS Terrain Tiles (Mapzen / Tilezen "terrarium" PNG), zoom 9 and 13, https://registry.opendata.aws/terrain-tiles/
+    into the globe texture, the outer tenth of each medium / detailed patch into the patch around it; east of Everest (from 87.19 E) the mosaic
+    joins a darker scene: that side is brightened row by row to meet the other (SEAM in tools/fetch_patch.py).
+- Elevation: AWS Terrain Tiles (Mapzen / Tilezen "terrarium" PNG), zoom 9, 11 and 13, https://registry.opendata.aws/terrain-tiles/
   (sources include SRTM, GMTED, ETOPO1). Everest at true scale (no exaggeration). Nyos relief ×1.6 so the low valleys read
   (the gas layer follows the same scaled surface).
 - Every download URL and date is logged in raw/manifest.jsonl (downloaded 2026-11-28).
@@ -44,7 +46,7 @@ Style: Lemo-Opuscar «3D Map Explainer» (the globe of ../rp_maps, from cs_globe
 - three.js r170 (MIT) from the Lemo-Opuscar library; post.js is a copy of the library's core/three/post.js.
 - index.html adapted from ../rp_maps/index.html (globe, atmosphere, stars, pins, labels, post); tools/frames.mjs, stills.mjs,
   fonts.py, fetch_world.py from ../rp_maps; tools/fetch_patch.py adapted from ../rp_maps/tools/fetch_patch.py (zoom, resolution
-  and edge blending as arguments); tools/gas.py, tools/fix_seam.py, render.sh new.
+  edge blending and the seam fix as arguments); tools/gas.py, render.sh new.
 
 ## Images, models
 - No photographs other than the satellite imagery above, no 3D models, no AI-generated images. Pins, the pillar, the bar, the
