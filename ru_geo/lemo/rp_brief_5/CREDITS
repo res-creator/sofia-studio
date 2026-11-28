@@ -1,0 +1,29 @@
+Отдалённые места · board film PART 5 (film 461.10–618.86: the end of «ТРИСТАН-ДА-КУНЬЯ» and «ИТОГ»;
+Engineering Briefing Board) — credits
+
+Photographs (uncut crops on photo paper, kit/tools/make_print.py; sources in ru_geo/remote_places/archive/img, see archive/credits.json)
+  print_potato.png       Potato patches, Tristan da Cunha — Brian Gratwicke, CC BY 2.0
+                         commons.wikimedia.org/wiki/File:Potato_patches_-_Tristan_da_Cunha.jpg
+                         (on the board: «Картофельные поля · фото: Brian Gratwicke, CC BY 2.0»)
+  print_nightingale.png  Nightingale Island, 20 March 2012 — Brian Gratwicke, CC BY 2.0
+                         commons.wikimedia.org/wiki/File:Nightingale_Island,_British_overseas_territory-20March2012.jpg
+                         (on the board: «остров Соловей · фото: Brian Gratwicke, CC BY 2.0»)
+  print_trng.png         View of Tristan da Cunha from Nightingale island — Brian Gratwicke, CC BY 2.0
+                         commons.wikimedia.org/wiki/File:View_of_Tristan_da_Cunha_from_Nightingale_island.jpg
+                         (on the board: «Тристан с острова Соловей · фото: B. Gratwicke, CC BY 2.0»)
+  print_trsea.png        Tristan da Cunha, 20 March 2012 — Brian Gratwicke, CC BY 2.0
+                         commons.wikimedia.org/wiki/File:Tristan_da_Cunha,_British_overseas_territory-20March2012.jpg
+                         (on the board: «Тристан-да-Кунья с моря · фото: B. Gratwicke, CC BY 2.0»)
+  print_iss.png          The ISS from Soyuz, 2018 (iss056e201248) — NASA / Roscosmos, public domain
+                         images.nasa.gov/details/iss056e201248 (on the board: «МКС · фото: NASA, общественное достояние»)
+  print_horizon.png      Earth's horizon from the ISS over the South Pacific, 2024 (iss071e207178) — NASA, public domain
+                         (on the board: «горизонт с борта МКС · фото: NASA»)
+
+Boundary data
+  Great Britain: johan/world.geo.json (Natural Earth 1:110m, public domain), Lambert azimuthal equal-area, 500 km scale bar.
+  Tristan, Inaccessible, Nightingale and Gough: hand-drawn island shapes placed from their latitude/longitude at true
+  scale (10 km and 100 km scale bars); distances written as the narration says them (≈ 34 км, ≈ 350 км).
+  Everything else drawn in marker. No generated images.
+
+Fonts (SIL Open Font License 1.1): Pangolin, Fira Sans Condensed, IBM Plex Mono.
+Engine: Lemo-Opuscar briefing-board kit (board.js as in ru_geo/lemo/cs_brief_3).

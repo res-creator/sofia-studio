@@ -4,8 +4,8 @@
 #   sh tools/render.sh          start the worker (in the background, detached)
 #   sh tools/render.sh encode   join the chunks into the final mp4
 HERE=$(cd "$(dirname "$0")/.." && pwd); LIB=${LIB:-/root/lemo-opuscar}; export LIB
-FR=$HERE/out/frames; CH=$HERE/out/chunks; N=5123; C=500
-OUT=/home/user/sofia-studio/ru_geo/country_sizes/video/parts/board_3.mp4
+FR=$HERE/out/frames; CH=$HERE/out/chunks; N=4733; C=500
+OUT=/home/user/sofia-studio/ru_geo/remote_places/video/parts/board_5.mp4
 mkdir -p "$FR" "$CH" "$(dirname "$OUT")"
 if [ "$1" = "encode" ]; then
   : > "$CH/list.txt"; a=0

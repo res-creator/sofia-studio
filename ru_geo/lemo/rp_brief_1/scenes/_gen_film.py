@@ -28,7 +28,7 @@ GEO = json.load(open(os.path.join(HERE, 'geo.json')))
 R0, R1 = 0.0, 118.15
 DUR = round(R1 - R0, 3)                       # 118.15
 L = lambda ft: round(ft - R0, 3)              # film time → local time
-BW, BH = 11700, 4500
+BW, BH = 11900, 4500
 
 E, EV = [], []
 def el(**k): E.append(k); return k
@@ -214,7 +214,7 @@ scalebar(EX + 430, EY - 390, KE, 200, L(14.0))
 # --- p1 21.12–36.87: this is Point Nemo in the south Pacific; «Немо» is Latin for «никто»; but the most remote place
 #     where people live is not here (which one: at the end); first: how to measure «far»
 tag('Точка Немо', CX - 30, CY - 285, L(21.3), size=100, rot=-1.5)
-write('южная часть Тихого океана', CX - 90, CY - 470, L(22.1), 1.6, 'graphite', 76, align='center')
+write('юг Тихого океана', CX, CY - 470, L(22.1), 1.2, 'graphite', 80, align='center')
 write('Антарктида', CX + 60, CY + 1290, L(22.6), .8, 'graphite', 90, align='center')
 write('Южная Америка', CX + 1300, CY + 830, L(23.0), .9, 'graphite', 90, align='center')
 write('Новая Зеландия', CX - 1450, CY + 760, L(23.3), .9, 'graphite', 80, align='center')
@@ -226,12 +226,12 @@ credit('cred_verne', VX, VY + 385, L(24.7), 'А. де Невиль · илл. к
 write('«Немо» по-латыни —', 4070, 960, L(24.4), 1.0, 'graphite', 76)
 write('«никто»', 4170, 1120, L(25.4), .6, 'red', 110)
 write('самое далёкое место,', 360, 800, L(26.4), 1.3, 'graphite', 76)
-write('где люди живут, —', 360, 910, L(28.0), 1.2, 'graphite', 76)
-write('не здесь', 360, 1060, L(29.85), .7, 'red', 116)
-line([[890, 1030], [1200, 1180], [1450, 1600]], L(30.3), .5, 'graphite', 6, dash=[16, 12], arrow=True)
-tag('какое — скажу в конце', 380, 1240, L(31.0), size=56, rot=1.2)
-write('как измерить «далеко»?', 360, 1470, L(33.9), 1.6, 'graphite', 76)
-el(type='ruler', id='ruler0', **{'from': [380, 1640], 'to': [1300, 1640]}, w=44, z=12, inset=55, magnetR=18,
+write('где люди живут, —', 360, 900, L(28.0), 1.2, 'graphite', 76)
+write('не здесь', 360, 1030, L(29.85), .7, 'red', 116)
+line([[890, 1000], [1200, 1150], [1450, 1450]], L(30.3), .5, 'graphite', 6, dash=[16, 12], arrow=True)
+tag('какое — скажу в конце', 380, 1170, L(31.0), size=56, rot=1.2)
+write('как измерить «далеко»?', 360, 1340, L(33.9), 1.6, 'graphite', 76)
+el(type='ruler', id='ruler0', **{'from': [380, 1460], 'to': [1300, 1460]}, w=44, z=12, inset=55, magnetR=18,
    arrive=dict(t=L(35.4), kind='drop', d=.4, lift=160, spin=.4, land=.6))
 ev(L(35.65), 'ruler', .4)
 
@@ -282,7 +282,7 @@ for i, p in enumerate(((4960, IY + 10), pole_of([mini])[0], (6140, IY + 10))):
 #     expedition: only a program and coastline data; first seen in calculations, then named after Jules Verne's hero
 write('1992', 7760, 790, L(62.05), 1.0, 'blue', 150)
 tag('Хрвое Лукатела', 8240, 700, L(64.6), size=62, rot=1.2)
-write('инженер', 8260, 860, L(65.3), .6, 'graphite', 62)
+write('инженер', 8920, 725, L(65.3), .6, 'graphite', 62)
 MX0, MY0, MX1, MY1 = 7760, 960, 8560, 1450
 line(rect(MX0, MY0, MX1, MY1), L(66.5), .7, 'graphite', 8)
 line([[8100, MY1], [8080, MY1 + 70], [8240, MY1 + 70], [8220, MY1]], L(67.1), .25, 'graphite', 7, quiet=True)
@@ -402,34 +402,34 @@ c.to(L(14.0), 3.6, z=z_of(c) * 1.02)
 c.to(L(17.7), 2.8, x=c.cur['x'] + 140, z=z_of(c) * 1.0, a=1.6, b=2.4)  # follows the fly-over a little
 c.fit(L(20.75), 1.3, [CX - 1100, CY - 640, CX + 1700, CY + 1350], b=3)  # Point Nemo: the map
 c.to(L(22.1), 1.7, z=z_of(c) * 1.02)
-c.fit(L(23.85), 1.0, [3300, 560, 4850, 1460], b=3)                     # Nemo = nobody: the Verne print
+c.fit(L(23.85), 1.0, [3350, 560, 5500, 1460], b=3)                     # Nemo = nobody: the Verne print
 c.to(L(24.9), 1.2, z=z_of(c) * 1.02)
 c.fit(L(26.15), 1.3, [340, 680, 1360, 1300], b=3)                      # not here; at the end
 c.to(L(27.5), 5.9, z=z_of(c) * 1.03)
-c.fit(L(33.5), 1.0, [340, 960, 1360, 1700], b=3)                       # how to measure: the ruler
+c.fit(L(33.5), 1.0, [340, 700, 1360, 1500], b=3)                       # how to measure: the ruler
 c.to(L(34.5), 2.2, z=z_of(c) * 1.02)
 c.fit(L(36.8), 2.5, [300, 560, 4400, 3820], b=3)                       # chapter pull-back: the cold open
-c.fit(L(39.9), .6, [5200, 540, 6950, 1500])                            # (under the card) block A
+c.fit(L(39.9), .6, [5400, 540, 7150, 1500])                            # (under the card) block A
 c.to(L(40.8), 4.5, z=z_of(c) * 1.02)
-c.fit(L(45.35), 1.0, [5200, 540, 6950, 1500], b=3)
+c.fit(L(45.35), 1.0, [5400, 540, 7150, 1500], b=3)
 c.to(L(46.4), 2.8, z=z_of(c) * 1.02)
-c.fit(L(49.25), 1.2, [5200, 540, 7900, 1720], b=2.8)                   # the pole of inaccessibility
+c.fit(L(49.25), 1.2, [5400, 540, 8100, 1720], b=2.8)                   # the pole of inaccessibility
 c.to(L(50.5), 3.9, z=z_of(c) * 1.02)
-c.fit(L(54.5), 1.2, [5200, 900, 7950, 2120], b=2.8)                   # ocean, continent, ice; different winners
+c.fit(L(54.5), 1.2, [5400, 700, 8150, 2120], b=2.8)                   # ocean, continent, ice; different winners
 c.to(L(55.8), 5.6, z=z_of(c) * 1.02)
-c.fit(L(61.5), 1.3, [8180, 560, 9850, 1520], b=2.8)                    # block B: 1992, Lukatela, the computer
+c.fit(L(61.5), 1.3, [8380, 560, 10050, 1520], b=2.8)                    # block B: 1992, Lukatela, the computer
 c.to(L(62.9), 5.2, z=z_of(c) * 1.02)
-c.fit(L(68.15), 1.0, [8180, 600, 10750, 1560], b=3)                    # no ship, no expedition
+c.fit(L(68.15), 1.0, [8380, 600, 10950, 1560], b=3)                    # no ship, no expedition
 c.to(L(69.2), 1.1, z=z_of(c) * 1.01)
-c.fit(L(70.35), 1.2, [8180, 800, 10750, 2050], b=3)                    # program + coastline data; calculations; Verne
+c.fit(L(70.35), 1.2, [8380, 900, 10950, 2050], b=3)                    # program + coastline data; calculations; Verne
 c.to(L(71.6), 9.0, z=z_of(c) * 1.03)
-c.fit(L(80.75), 1.3, [5200, 2500, 7750, 3720], b=2.8)                  # block C: the coast drawn differently
+c.fit(L(80.75), 1.3, [5400, 2500, 7950, 3720], b=2.8)                  # block C: the coast drawn differently
 c.to(L(82.1), 6.6, z=z_of(c) * 1.02)
-c.fit(L(88.7), 1.4, [5200, 2500, 7900, 4020], b=3)                     # estimates differ; «около»
+c.fit(L(88.7), 1.4, [5400, 2500, 8100, 4020], b=3)                     # estimates differ; «около»
 c.to(L(90.1), 9.4, z=z_of(c) * 1.02)
-c.fit(L(99.6), 1.3, [8580, 2500, 11100, 4020], b=2.8)                  # block D: three rulers
+c.fit(L(99.6), 1.3, [8780, 2500, 11300, 4020], b=2.8)                  # block D: three rulers
 c.to(L(100.9), 15.0, z=z_of(c) * 1.03)
-c.fit(L(116.05), 2.05, [250, 420, 11350, 4140], b=3)                   # pull-back: the whole wall of this part
+c.fit(L(116.05), 2.05, [250, 420, 11550, 4140], b=3)                   # pull-back: the whole wall of this part
 
 def shift(e, dx, dy):
     for k in ('xy', 'c', 'pivot') + (('from', 'to') if e.get('kind') == 'dim' or e['type'] == 'ruler' else ()):
@@ -437,7 +437,7 @@ def shift(e, dx, dy):
     if 'points' in e: e['points'] = [[round(x + dx, 1), round(y + dy, 1)] for x, y in e['points']]
     for st in e.get('strokes', []): st['points'] = [[round(x + dx, 1), round(y + dy, 1)] for x, y in st['points']]
     for ex in e.get('ext', []): ex[0] += dx; ex[1] += dy; ex[2] += dy
-D2, DD = 500, 400
+D2, DD = 700, 400
 for e in E[I_CH2:]: shift(e, D2, 0)
 for e in E[I_D:]: shift(e, DD, 0)
 # the whole wall sits OX px right and OY px down (keeps the board's frame out of the close shots)
