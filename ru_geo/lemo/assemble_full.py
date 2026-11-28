@@ -52,6 +52,17 @@ CONF = {
   EXTRA=[('map_nemo_events.json', 134.25, 134.25, 150.96), ('lt_deep_events.json', 316.65, 316.65, 341.59),
          ('map_tristan_events.json', 347.36, 347.36, 362.56)],
   SKIP=[]),
+ 'deadly_places': dict(
+  SEG=[('board_1.mp4', 0, 0, 47.37, 'dp_brief_1'), ('map_everest.mp4', 47.37, 47.37, 55.72, None),
+       ('board_1.mp4', 0, 55.72, 122.65, 'dp_brief_1'),
+       ('board_2.mp4', 122.65, 122.65, 123.65, 'dp_brief_2'), ('map_nyos.mp4', 123.65, 123.65, 141.11, None),
+       ('board_2.mp4', 122.65, 141.11, 297.5, 'dp_brief_2'),
+       ('board_3.mp4', 297.5, 297.5, 335.43, 'dp_brief_3'), ('lt_trieste.mp4', 335.43, 335.43, 353.56, None),
+       ('board_3.mp4', 297.5, 353.56, 468.6, 'dp_brief_3'),
+       ('board_4.mp4', 468.6, 468.6, TOTAL, 'dp_brief_4')],
+  EXTRA=[('map_everest_events.json', 47.37, 47.37, 55.72), ('map_nyos_events.json', 123.65, 123.65, 141.11),
+         ('lt_trieste_events.json', 335.43, 335.43, 353.56)],
+  SKIP=[]),
 }
 C = CONF[SLUG]; SEG, EXTRA_EV = C['SEG'], C['EXTRA']
 END = float(os.environ.get('END', 0))                    # END=127.7: только кусок с начала (на согласование)
