@@ -441,7 +441,7 @@ HX = 9700; SEAH = 5420
 waves(7950, 10650, SEAH, L(600.5), .6, step=80, amp=11, seed=41)
 DECKH = platform(HX + 600, SEAH, 1.0, L(600.3), lw=7, quiet=True)
 homeflag(HX + 700, DECKH, L(600.6), 230)
-BMV = [dict(t=L(600.95), d=1.8, dx=900, a=2, b=2.8)]
+BMV = [dict(t=L(600.95), d=2.2, dx=1580, a=2, b=2.8)]
 boat(8300, SEAH, 1.3, L(600.9), quiet=False, moves=BMV, pivot=[8300, SEAH])
 person((8320, SEAH - 52), 1.3, L(601.9), moves=BMV, pivot=[8300, SEAH], arm=(8360, SEAH - 100))
 line(rect(8350, SEAH - 135, 8420, SEAH - 85), L(602.2), .2, 'blue', 5, fill='blue', fillA=.3, quiet=True, moves=BMV, pivot=[8300, SEAH])
