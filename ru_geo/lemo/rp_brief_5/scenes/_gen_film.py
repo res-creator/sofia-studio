@@ -368,10 +368,9 @@ write('по расчётам — дальше всех от суши', RES, RY['
 tick(RES + 2150, RY['land'] - 40, L(578.4), 2.6)
 write('самый удалённый обитаемый остров', RES, RY['home'] + 340, L(579.0), 3.0, 'graphite', 190)
 tick(RES + 3150, RY['home'] - 40, L(582.6), 2.6)
-QM['erase'] = dict(t=L(583.6), d=.4, ghost=0)
-write('ближайшие люди, точные км —', RES + 30, RY['people'] - 60, L(583.7), 2.4, 'graphite', 200)
-write('зависят от карты, от даты', RES, RY['people'] + 150, L(586.1), 2.0, 'blue', 200)
-write('и от того, кто и как считает', RES, RY['people'] + 360, L(588.2), 2.6, 'blue', 200)
+write('ближайшие люди, точные км —', RES + 260, RY['people'] - 60, L(583.7), 2.4, 'graphite', 190)
+write('зависят от карты, от даты', RES + 260, RY['people'] + 140, L(586.1), 2.0, 'blue', 190)
+write('и от того, кто и как считает', RES + 260, RY['people'] + 340, L(588.2), 2.6, 'blue', 190)
 
 # --- p8 591.73–608.66: back to the astronauts over the ocean: over Point Nemo in a few minutes, beyond the horizon;
 #     on Tristan people live for years, six days' sail to the nearest mainland; the ruler counts km, not who is near
