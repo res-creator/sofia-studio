@@ -38,6 +38,10 @@ if END:
     TOTAL = END; SEG = [(f, o, a, min(b, END), e) for f, o, a, b, e in SEG if a < END]
     EXTRA_EV = [x for x in EXTRA_EV if x[2] < END]
 
+# ---- проверка: каждая часть не короче нужного (короткий кусок рендера = застывший кадр)
+def dur(f): return float(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', f]))
+for f, off, a, b, _ in SEG:
+    if dur(f'{P}/{f}') + .05 < b - off: raise SystemExit(f'ЧАСТЬ КОРОЧЕ НУЖНОГО: {f} {dur(f"{P}/{f}"):.2f} < {b - off:.2f}')
 # ---- картинка (REUSE=1: взять готовую pic.mp4)
 segs = []
 if os.environ.get('REUSE') and os.path.exists(f'{S}/pic.mp4'): SEG_RUN = []
