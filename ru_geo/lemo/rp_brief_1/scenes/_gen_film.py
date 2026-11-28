@@ -28,7 +28,7 @@ GEO = json.load(open(os.path.join(HERE, 'geo.json')))
 R0, R1 = 0.0, 118.15
 DUR = round(R1 - R0, 3)                       # 118.15
 L = lambda ft: round(ft - R0, 3)              # film time → local time
-BW, BH = 10700, 4500
+BW, BH = 11700, 4500
 
 E, EV = [], []
 def el(**k): E.append(k); return k
@@ -214,7 +214,7 @@ scalebar(EX + 430, EY - 390, KE, 200, L(14.0))
 # --- p1 21.12–36.87: this is Point Nemo in the south Pacific; «Немо» is Latin for «никто»; but the most remote place
 #     where people live is not here (which one: at the end); first: how to measure «far»
 tag('Точка Немо', CX - 30, CY - 285, L(21.3), size=100, rot=-1.5)
-write('южная часть Тихого океана', CX, CY - 470, L(22.1), 1.6, 'graphite', 84, align='center')
+write('южная часть Тихого океана', CX - 90, CY - 470, L(22.1), 1.6, 'graphite', 76, align='center')
 write('Антарктида', CX + 60, CY + 1290, L(22.6), .8, 'graphite', 90, align='center')
 write('Южная Америка', CX + 1300, CY + 830, L(23.0), .9, 'graphite', 90, align='center')
 write('Новая Зеландия', CX - 1450, CY + 760, L(23.3), .9, 'graphite', 80, align='center')
@@ -222,9 +222,9 @@ scalebar(CX - 1350, CY + 1150, K, 1000, L(5.8), size=60)
 VX, VY = 3720, 1020
 printd('verne', 'print_verne', VX, VY, L(24.0), w=560, rot=1.8, size='mid')
 magnet(VX - 205, VY - 300, L(24.45), r=22); magnet(VX + 215, VY - 290, L(24.55), r=22)
-credit('cred_verne', VX, VY + 400, L(24.7), 'А. де Невиль · илл. к роману Жюля Верна', 840)
-write('«Немо» по-латыни —', 3280, 1590, L(24.4), 1.0, 'graphite', 76)
-write('«никто»', 3420, 1730, L(25.4), .6, 'red', 110)
+credit('cred_verne', VX, VY + 385, L(24.7), 'А. де Невиль · илл. к роману Жюля Верна', 840)
+write('«Немо» по-латыни —', 4070, 960, L(24.4), 1.0, 'graphite', 76)
+write('«никто»', 4170, 1120, L(25.4), .6, 'red', 110)
 write('самое далёкое место,', 360, 800, L(26.4), 1.3, 'graphite', 76)
 write('где люди живут, —', 360, 910, L(28.0), 1.2, 'graphite', 76)
 write('не здесь', 360, 1060, L(29.85), .7, 'red', 116)
@@ -236,6 +236,7 @@ el(type='ruler', id='ruler0', **{'from': [380, 1640], 'to': [1300, 1640]}, w=44,
 ev(L(35.65), 'ruler', .4)
 
 # ===================================================================== CHAPTER 2 · «КАК МЕРЯТЬ ПУСТОТУ»
+I_CH2 = len(E)          # chapter 2 is laid out from x 4700 and moved D2 px right (below); block D another DD px
 # --- p2 40.82–61.40 (block A): remoteness means nothing until you say from what: land, people, a port, a hospital?
 #     the «pole of inaccessibility» = the point farthest from the shore; oceans, continents and ice each have one;
 #     different definitions, different winners
@@ -330,8 +331,8 @@ dot(P1, L(84.3), 12, 'blue', quiet=False)
 write('1', P1[0] - 10, P1[1] - 30, L(84.5), .2, 'blue', 56, align='center')
 ISL = circle((P1[0] + 70, P1[1] - 40), [42, 28], 20)
 line(ISL, L(85.3), .4, 'graphite', 6, fill='grey', fillA=.3)
-write('мелкий островок?', 5000, 2860, L(85.7), 1.0, 'graphite', 58)
-line([[5520, 2880], [P1[0] + 45, P1[1] - 70]], L(86.0), .3, 'graphite', 4, dash=[12, 9])
+write('мелкий островок?', 5330, 3720, L(85.7), 1.0, 'graphite', 68)
+line([[5620, 3650], [P1[0] + 72, P1[1] - 10]], L(86.0), .3, 'graphite', 4, dash=[12, 9])
 P2, _ = pole_of([basin], [ISL])
 dot(P2, L(86.7), 12, 'blue')
 arrow(P1, P2, L(86.8), .3, 'blue', 4)
@@ -348,8 +349,8 @@ for j in range(14):
     xc = min(xs_in) if xs_in else xe - 60
     if xe - xc > 20: hst.append(dict(points=[[round(xc + 6, 1), round(y_ + 14, 1)], [round(xe - 6, 1), round(y_ - 14, 1)]], t=round(L(87.75) + j * .04, 3), d=.06, lw=3))
 strokes_el(hst, L(87.75), .6, 'grey', 4, .75)
-write('ледяной шельф?', 4780, 3700, L(88.0), .9, 'graphite', 58)
-line([[5130, 3650], [BCX - 450, BCY + 250]], L(88.3), .3, 'graphite', 4, dash=[12, 9])
+write('ледяной шельф?', 4780, 3720, L(88.0), .9, 'graphite', 68)
+line([[5000, 3650], [BCX - 450, BCY + 250]], L(88.3), .3, 'graphite', 4, dash=[12, 9])
 P3, _ = pole_of([basin], [ISL, shelf])
 dot(P3, L(88.85), 12, 'blue')
 arrow(P2, P3, L(88.9), .3, 'blue', 4)
@@ -358,15 +359,16 @@ printd('shelf', 'print_shelf', SX, SY, L(87.4), w=600, rot=-1.5, size='mid')
 magnet(SX - 230, SY - 210, L(87.8), r=20); magnet(SX + 240, SY - 200, L(87.9), r=20)
 credit('cred_shelf', SX, SY + 290, L(88.1), 'край шельфового ледника, Антарктида · NASA', 880)
 dim(P1, P3, L(90.2), .7, lw=6)
-write('ранние оценки расходились', 6250, 3540, L(89.4), 1.3, 'graphite', 62)
-write('на десятки и даже сотни км', 6250, 3640, L(92.0), 1.6, 'blue', 62)
-write('почти каждая цифра —', 4780, 3830, L(95.5), 1.1, 'graphite', 70)
-write('с пометкой «около»', 4780, 3940, L(97.4), 1.0, 'graphite', 70)
+write('ранние оценки расходились', 6250, 3560, L(89.4), 1.3, 'graphite', 66)
+write('на десятки и даже сотни км', 6250, 3665, L(92.0), 1.6, 'blue', 66)
+write('почти каждая цифра —', 4780, 3860, L(95.5), 1.1, 'graphite', 70)
+write('с пометкой «около»', 4780, 3970, L(97.4), 1.0, 'graphite', 70)
 el(type='stamp', text='ОКОЛО', xy=[6720, 3880], size=110, rot=-7, t=L(98.9))
 ev(L(98.9), 'stamp', .2)
 
 # --- p5 100.12–116.00 (block D): three rulers: to any land, to housing, to people; three different places, an honest
 #     result, not an error; one ruler leads to the ocean, another to an island, the third to space
+I_D = len(E)
 write('три линейки', 7760, 2650, L(100.2), 1.0, 'graphite', 96)
 RY = (2900, 3250, 3600)
 for i, (lbl, t_) in enumerate((('до любой суши', 102.5), ('до жилья', 103.7), ('до людей', 104.45))):
@@ -389,8 +391,8 @@ orbit_icon(9530, RY[2] + 10, L(114.6), .9)
 write('космос', 9780, RY[2] + 30, L(115.0), .5, 'graphite', 70)
 
 # ===================================================================== camera (one continuous camera; the cards hide the jumps)
-c = Cam(*fit([CX - 230, CY - 280, CX + 470, CY + 140]))                 # the person in the water at the point
-c.to(L(1.15), 3.4, x=CX + 470, z=z_of(c) * .82, a=1.6, b=2.4)           # ride the radius out
+c = Cam(*fit([CX - 230, CY - 300, CX + 790, CY + 140]))                 # the person in the water at the point
+c.to(L(1.15), 3.4, x=c.cur['x'] + 260, z=z_of(c) * .85, a=1.6, b=2.4)   # ride the radius out
 c.fit(L(4.55), 2.3, [CX - 1650, CY - 820, CX + 1700, CY + 1500], b=3)  # the ring, the coasts far away
 c.to(L(6.9), .6, z=z_of(c) * 1.01)
 c.fit(L(7.1), 1.5, [CX - 720, CY - 330, CX + 800, CY + 620], b=3)       # waiting; not a ship, not an island
@@ -398,45 +400,48 @@ c.to(L(8.7), 4.0, z=z_of(c) * 1.03)
 c.fit(L(12.85), 1.1, [EX - 720, EY - 470, EX + 760, EY + 240], b=3)     # side view: the station 400 km up
 c.to(L(14.0), 3.6, z=z_of(c) * 1.02)
 c.to(L(17.7), 2.8, x=c.cur['x'] + 140, z=z_of(c) * 1.0, a=1.6, b=2.4)  # follows the fly-over a little
-c.fit(L(20.75), 1.3, [CX - 1100, CY - 830, CX + 1700, CY + 1350], b=3)  # Point Nemo: the map
+c.fit(L(20.75), 1.3, [CX - 1100, CY - 640, CX + 1700, CY + 1350], b=3)  # Point Nemo: the map
 c.to(L(22.1), 1.7, z=z_of(c) * 1.02)
-c.fit(L(23.85), 1.0, [3190, 540, 4300, 1810], b=3)                     # Nemo = nobody: the Verne print
+c.fit(L(23.85), 1.0, [3300, 560, 4850, 1460], b=3)                     # Nemo = nobody: the Verne print
 c.to(L(24.9), 1.2, z=z_of(c) * 1.02)
 c.fit(L(26.15), 1.3, [340, 680, 1360, 1300], b=3)                      # not here; at the end
 c.to(L(27.5), 5.9, z=z_of(c) * 1.03)
-c.fit(L(33.5), 1.0, [340, 1100, 1360, 1700], b=3)                       # how to measure: the ruler
+c.fit(L(33.5), 1.0, [340, 960, 1360, 1700], b=3)                       # how to measure: the ruler
 c.to(L(34.5), 2.2, z=z_of(c) * 1.02)
 c.fit(L(36.8), 2.5, [300, 560, 4400, 3820], b=3)                       # chapter pull-back: the cold open
-c.fit(L(39.9), .6, [4700, 540, 6450, 1500])                            # (under the card) block A
+c.fit(L(39.9), .6, [5200, 540, 6950, 1500])                            # (under the card) block A
 c.to(L(40.8), 4.5, z=z_of(c) * 1.02)
-c.fit(L(45.35), 1.0, [4700, 540, 6450, 1500], b=3)
+c.fit(L(45.35), 1.0, [5200, 540, 6950, 1500], b=3)
 c.to(L(46.4), 2.8, z=z_of(c) * 1.02)
-c.fit(L(49.25), 1.2, [4700, 540, 7400, 1720], b=2.8)                   # the pole of inaccessibility
+c.fit(L(49.25), 1.2, [5200, 540, 7900, 1720], b=2.8)                   # the pole of inaccessibility
 c.to(L(50.5), 3.9, z=z_of(c) * 1.02)
-c.fit(L(54.5), 1.2, [4700, 1050, 7450, 2120], b=2.8)                   # ocean, continent, ice; different winners
+c.fit(L(54.5), 1.2, [5200, 900, 7950, 2120], b=2.8)                   # ocean, continent, ice; different winners
 c.to(L(55.8), 5.6, z=z_of(c) * 1.02)
-c.fit(L(61.5), 1.3, [7680, 560, 9350, 1520], b=2.8)                    # block B: 1992, Lukatela, the computer
+c.fit(L(61.5), 1.3, [8180, 560, 9850, 1520], b=2.8)                    # block B: 1992, Lukatela, the computer
 c.to(L(62.9), 5.2, z=z_of(c) * 1.02)
-c.fit(L(68.15), 1.0, [7680, 600, 10250, 1560], b=3)                    # no ship, no expedition
+c.fit(L(68.15), 1.0, [8180, 600, 10750, 1560], b=3)                    # no ship, no expedition
 c.to(L(69.2), 1.1, z=z_of(c) * 1.01)
-c.fit(L(70.35), 1.2, [7680, 940, 10250, 2050], b=3)                    # program + coastline data; calculations; Verne
+c.fit(L(70.35), 1.2, [8180, 800, 10750, 2050], b=3)                    # program + coastline data; calculations; Verne
 c.to(L(71.6), 9.0, z=z_of(c) * 1.03)
-c.fit(L(80.75), 1.3, [4700, 2500, 7250, 3720], b=2.8)                  # block C: the coast drawn differently
+c.fit(L(80.75), 1.3, [5200, 2500, 7750, 3720], b=2.8)                  # block C: the coast drawn differently
 c.to(L(82.1), 6.6, z=z_of(c) * 1.02)
-c.fit(L(88.7), 1.4, [4700, 2500, 7400, 4020], b=3)                     # estimates differ; «около»
+c.fit(L(88.7), 1.4, [5200, 2500, 7900, 4020], b=3)                     # estimates differ; «около»
 c.to(L(90.1), 9.4, z=z_of(c) * 1.02)
-c.fit(L(99.6), 1.3, [7680, 2500, 10200, 4020], b=2.8)                  # block D: three rulers
+c.fit(L(99.6), 1.3, [8580, 2500, 11100, 4020], b=2.8)                  # block D: three rulers
 c.to(L(100.9), 15.0, z=z_of(c) * 1.03)
-c.fit(L(116.05), 2.05, [4600, 420, 10400, 4140], b=3)                  # chapter pull-back: chapter 2
+c.fit(L(116.05), 2.05, [250, 420, 11350, 4140], b=3)                   # pull-back: the whole wall of this part
 
-# the whole wall sits OX px right and OY px down (keeps the board's frame out of the close shots)
-OX, OY = 300, 250
 def shift(e, dx, dy):
     for k in ('xy', 'c', 'pivot') + (('from', 'to') if e.get('kind') == 'dim' or e['type'] == 'ruler' else ()):
         if isinstance(e.get(k), list) and len(e[k]) == 2 and not isinstance(e[k][0], list): e[k] = [round(e[k][0] + dx, 1), round(e[k][1] + dy, 1)]
     if 'points' in e: e['points'] = [[round(x + dx, 1), round(y + dy, 1)] for x, y in e['points']]
     for st in e.get('strokes', []): st['points'] = [[round(x + dx, 1), round(y + dy, 1)] for x, y in st['points']]
     for ex in e.get('ext', []): ex[0] += dx; ex[1] += dy; ex[2] += dy
+D2, DD = 500, 400
+for e in E[I_CH2:]: shift(e, D2, 0)
+for e in E[I_D:]: shift(e, DD, 0)
+# the whole wall sits OX px right and OY px down (keeps the board's frame out of the close shots)
+OX, OY = 300, 250
 for e in E: shift(e, OX, OY)
 c.base['x'] += OX; c.base['y'] += OY; BW += OX; BH += OY
 

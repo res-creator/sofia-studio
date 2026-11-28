@@ -211,7 +211,7 @@ OFF = 34
 DA = [TC[0] + u[0] * 6.4 * K + nrm[0] * OFF, TC[1] + u[1] * 6.4 * K + nrm[1] * OFF]
 DB = [NGc[0] - u[0] * 1.6 * K + nrm[0] * OFF, NGc[1] - u[1] * 1.6 * K + nrm[1] * OFF]
 dim(DA, DB, L(483.3), .9)
-count('≈ {0} км', [34], (DA[0] + DB[0]) / 2 - 60, (DA[1] + DB[1]) / 2 + 20, L(484.3), 1.3, size=78, align='right')
+count('≈ {0} км', [34], (DA[0] + DB[0]) / 2 + 60, (DA[1] + DB[1]) / 2 + 30, L(484.3), 1.3, size=78, align='left')
 scalebar(4450, 1300, K, 10, L(483.9))
 # the wider map: Gough, true bearing, ≈ 350 km (as the narration says), 2.2 px per km
 K2 = 2.2; T2 = (5420, 620)
@@ -260,7 +260,7 @@ count('все {0} человека', [264], 6350, 1350, L(504.6), 1.6, size=96)
 NGP = (7880, 1350)                                              # boats → Nightingale
 line([[7560, IB + 40], [7700, 1270], [NGP[0] - 30, NGP[1] - 30]], L(506.3), .9, 'graphite', 5, dash=[16, 12], arrow=True)
 boat(7640, 1205, L(506.5), .8); boat(7730, 1275, L(506.8), .8)
-write('на лодках', 7420, 1290, L(506.4), .7, 'graphite', 62, align='right')
+write('на лодках', 7450, 1420, L(506.4), .7, 'graphite', 62)
 tag('остров Соловей', NGP[0], NGP[1], L(507.9), size=52, rot=-1)
 write('утром', 6350, 1570, L(509.0), .5, 'graphite', 76)
 ship(6800, 1600, L(509.4), .6, s=.9)
@@ -294,14 +294,14 @@ write('и мы их не знаем', 9700, 1110, L(524.85), 1.2, 'graphite', 76
 tag('известно другое', 9740, 1270, L(526.2), size=54, rot=-1)
 write('экспедиция, начало 1962:', 9700, 1430, L(526.9), 2.2, 'graphite', 76)
 write('посёлок в основном уцелел', 9700, 1540, L(531.1), 1.8, 'graphite', 76)
-tick(10330, 1515, L(533.0))
+tick(10740, 1515, L(533.0))
 write('разрушена лишь консервная фабрика', 9700, 1650, L(533.7), 2.2, 'graphite', 76)
-FX, FY = 11000, 1520                                             # the canning factory, crossed out (red: the break)
+FX, FY = 11150, 1520                                             # the canning factory, crossed out (red: the break)
 line(rect(FX, FY - 110, FX + 200, FY), L(535.3), .3, 'graphite', 6)
 line([[FX + 140, FY - 110], [FX + 140, FY - 200], [FX + 175, FY - 200], [FX + 175, FY - 110]], L(535.55), .2, 'graphite', 6)
 cross(FX + 100, FY - 60, L(535.9), 70)
 write('1963:', 9700, 1830, L(536.1), .9, 'graphite', 80)
-count('вернулись ≈ {0} человек', [200], 9900, 1830, L(538.6), 1.6, size=80)
+count('вернулись ≈ {0} человек', [200], 9960, 1830, L(538.6), 1.6, size=80)
 write('часть осталась в Англии', 9700, 1950, L(540.8), 1.5, 'graphite', 76)
 
 # --- p5 543.18–554.75: for us, the edge of the world; for many islanders the sea is ordinary life and the village home;
@@ -316,36 +316,36 @@ write('посёлок — дом', 12000, 1620, L(547.4), 1.1, 'graphite', 76)
 house(12560, 1630, L(548.5), .75)
 write('«отдалённость» —', 12000, 1790, L(549.4), 1.3, 'graphite', 76)
 write('с точки зрения того, кто смотрит', 12000, 1890, L(551.0), 2.4, 'red', 76)
-eye((13280, 1760), L(553.4), .9)
+eye((13400, 1760), L(553.4), .9)
 
 # ===================================================================== ROW 2 · «ИТОГ»
 # --- p6 557.90–573.73: which place is the farthest? where people live permanently: Tristan da Cunha; distance to any
 #     land: Point Nemo; everything else depends on the definition and the map
 write('Так какое место самое далёкое?', 500, 2880, L(557.95), 1.9, 'graphite', 230)
 RY = {'land': 3560, 'home': 4420, 'people': 5280}               # three steel rulers
-RX0, RX1, RES = 2350, 6700, 7150
+RX0, RX1, RES = 2750, 5900, 6350
 def ruler_row(key, label, t):
     ruler('r_' + key, [RX0, RY[key]], [RX1, RY[key]], t, w=210)
     tag(label, 600, RY[key], t + .45, size=230, rot=(-1, 1, -.6)[list(RY).index(key)], amp=5)
 ruler_row('home', 'до жилья', L(560.4))
 write('где люди живут постоянно', RX0 + 140, RY['home'] + 250, L(562.4), 1.8, 'graphite', 140)
 arrow([RX1 + 40, RY['home']], [RES - 50, RY['home']], L(564.3), .3, 'graphite', 12)
-write('Тристан-да-Кунья', RES, RY['home'] + 110, L(564.35), 1.5, 'graphite', 360)
+write('Тристан-да-Кунья', RES, RY['home'] + 100, L(564.35), 1.5, 'graphite', 300)
 ruler_row('land', 'до любой суши', L(566.0))
 arrow([RX1 + 40, RY['land']], [RES - 50, RY['land']], L(569.25), .3, 'graphite', 12)
-write('точка Немо', RES, RY['land'] + 110, L(569.3), 1.2, 'graphite', 360)
+write('точка Немо', RES, RY['land'] + 100, L(569.3), 1.2, 'graphite', 300)
 ruler_row('people', 'до людей', L(570.6))
 arrow([RX1 + 40, RY['people']], [RES - 50, RY['people']], L(571.6), .3, 'graphite', 12)
-QM = write('?', RES, RY['people'] + 110, L(571.95), .3, 'graphite', 360)
+QM = write('?', RES, RY['people'] + 100, L(571.95), .3, 'graphite', 300)
 write('всё остальное — от определения и от карты', 500, 3110, L(570.7), 2.9, 'graphite', 130)
 
 # --- p7 574.28–591.03: what is known firmly: calculations put Point Nemo farthest from land; Tristan remains the most
 #     remote inhabited island; but 'the nearest people' and exact kilometres depend on the map, the date, who counts and how
-stamp('ТВЁРДО', 8900, 2960, L(574.6), size=170, rot=-7)
+stamp('ТВЁРДО', 7700, 2960, L(574.6), size=170, rot=-7)
 write('по расчётам — дальше всех от суши', RES, RY['land'] + 290, L(575.8), 2.6, 'graphite', 130)
-tick(RES + 1250, RY['land'] - 40, L(578.4), 2.4)
+tick(RES + 1700, RY['land'] - 40, L(578.4), 2.4)
 write('самый удалённый обитаемый остров', RES, RY['home'] + 290, L(579.0), 3.0, 'graphite', 130)
-tick(RES + 1800, RY['home'] - 40, L(582.6), 2.4)
+tick(RES + 2600, RY['home'] - 40, L(582.6), 2.4)
 QM['erase'] = dict(t=L(583.6), d=.4)
 write('«ближайшие люди», точные км —', RES, RY['people'] - 40, L(583.7), 2.4, 'graphite', 150)
 write('зависят от карты, от даты', RES, RY['people'] + 130, L(586.1), 2.0, 'blue', 150)
@@ -365,18 +365,18 @@ write('за горизонт', 12150, 4230, L(597.9), .9, 'graphite', 110)
 write('на Тристане — годами', 10000, 4600, L(598.9), 1.8, 'blue', 130)
 count('до большой земли {0} суток пути', [6], 10000, 4770, L(601.3), 3.0, size=130)
 write('линейка считает километры,', 500, 5900, L(604.9), 1.9, 'graphite', 230)
-write('но не считает, кто рядом', 2900, 5900, L(606.85), 1.8, 'red', 230)
+write('но не считает, кто рядом', 3900, 5900, L(606.85), 1.8, 'red', 230)
 
 # --- p9 609.21–617.21: and you: is far — to land or to people? write in the comments
 write('А вы как считаете:', 10000, 5080, L(609.25), 1.1, 'graphite', 150)
 write('далеко — это до суши', 10000, 5260, L(610.4), 1.1, 'graphite', 150)
 write('или до людей?', 10000, 5440, L(611.5), .9, 'graphite', 150)
-ink('ring', L(610.9), .5, 'red', c=[1230, RY['land']], r=[880, 300], lw=10)
-ink('ring', L(611.8), .5, 'red', c=[1030, RY['people']], r=[650, 300], lw=10)
+ink('ring', L(610.9), .5, 'red', c=[1480, RY['land']], r=[1200, 300], lw=10)
+ink('ring', L(611.8), .5, 'red', c=[1130, RY['people']], r=[820, 300], lw=10)
 write('ответ — в комментариях', 10000, 5640, L(612.6), 1.5, 'graphite', 120)
 
 # ===================================================================== camera (one continuous camera; the card hides the jump)
-c = Cam(*fit([350, 400, 2750, 1300]))
+c = Cam(*fit([350, 420, 2100, 1250]))
 c.to(L(461.2), 6.0, z=z_of(c) * 1.03)                                      # surnames
 c.fit(L(469.3), 1.2, [350, 400, 2750, 1420], b=3)                          # + potato patches
 c.fit(L(471.9), 1.3, [350, 1280, 2750, 2150], b=2.8)                       # ship, garden, neighbours
@@ -396,7 +396,7 @@ c.fit(L(519.9), 1.4, [9600, 400, 11500, 1350], b=2.8)                      # mos
 c.to(L(521.4), 4.2, z=z_of(c) * 1.02)
 c.fit(L(526.0), 1.2, [9600, 400, 11500, 2050], b=3)                        # what is known
 c.to(L(527.3), 14.5, z=z_of(c) * 1.03)
-c.fit(L(542.6), 1.4, [11900, 380, 13450, 2050], b=2.8)                     # the point of view
+c.fit(L(542.6), 1.4, [11900, 380, 13550, 2050], b=2.8)                     # the point of view
 c.to(L(544.0), 9.3, z=z_of(c) * 1.03)
 c.fit(L(553.7), 2.4, [300, 300, 13450, 2200], b=3)                          # chapter pull-back: row 1
 # card «ИТОГ» 556.90–557.90
@@ -408,7 +408,7 @@ c.fit(L(570.2), 1.3, [400, 2580, 9800, 5650], b=3)                         # + '
 c.to(L(571.6), 2.6, z=z_of(c) * 1.01)
 c.fit(L(574.3), 1.2, [400, 2580, 10200, 5700], b=3)                        # known firmly
 c.to(L(575.6), 15.6, z=z_of(c) * 1.02)
-c.fit(L(591.5), 1.4, [9850, 2580, 13050, 4900], b=2.8)                     # the astronauts, Tristan years
+c.fit(L(591.5), 1.4, [9900, 2780, 13300, 4900], b=2.8)                     # the astronauts, Tristan years
 c.to(L(593.0), 11.4, z=z_of(c) * 1.03)
 c.fit(L(604.5), 1.2, [400, 4950, 6800, 6000], b=3)                         # the ruler counts km
 c.to(L(605.8), 3.0, z=z_of(c) * 1.02)
