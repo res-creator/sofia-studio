@@ -1,14 +1,14 @@
 {
   "id": "print_trng",
-  "w": 2092,
-  "h": 1452,
+  "w": 1200,
+  "h": 833,
   "anchors": {},
   "print": true,
   "prep": {
     "src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_from_nightingale.jpg",
     "id": "print_trng",
     "crop": "0,0,1920,1280",
-    "w": 1920,
+    "w": 1100,
     "border": 0.045,
     "sat": 0.85
   }

@@ -334,7 +334,7 @@ def z_of(c): return math.exp(c.cur['lz'])
 MAPBOX = [400, 600, 3780, 1980]
 c = Cam(*fit(MAPBOX))
 c.to(L(119.3), 6.0, z=z_of(c) * 1.03)
-c.fit(L(126.2), 1.2, [1000, 600, 3780, 1700], b=3)                     # the ship and the column
+c.to(L(126.2), 1.2, z=z_of(c) * 1.02)                   # the ship and the column
 c.to(L(127.5), 2.8, z=z_of(c) * 1.02)
 c.fit(L(130.5), 1.2, MAPBOX, b=3)                                       # arrows to every shore
 c.to(L(131.8), 3.5, z=z_of(c) * 1.02)
@@ -346,7 +346,7 @@ c.fit(L(160.3), 1.2, [3880, 1360, 6780, 2110], b=3)                    # the pas
 c.to(L(161.6), 7.6, z=z_of(c) * 1.03)
 c.fit(L(169.3), 1.4, [7080, 480, 9980, 1250], b=2.8)                   # 8 km/s, since November 2000
 c.to(L(170.8), 6.7, z=z_of(c) * 1.02)
-c.fit(L(177.6), 1.3, [7080, 1250, 9980, 1960], b=3)                    # «the nearest people», the estimate, the ship
+c.fit(L(177.6), 1.3, [7080, 480, 9980, 1960], b=3)                    # «the nearest people», the estimate, the ship
 c.to(L(179.0), 9.5, z=z_of(c) * 1.02)
 c.fit(L(189.1), 1.6, [380, 2650, 3400, 3900], b=2.8)                   # row 2: water, clouds, parcels
 c.to(L(190.8), 13.0, z=z_of(c) * 1.03)

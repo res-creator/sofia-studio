@@ -1,0 +1,44 @@
+«Мысленный эксперимент» · «Отдалённые места» · два клипа карты (silent, 1920×1080, 30 fps)
+  map_nemo.mp4     film 134.25–150.96 (16.71 s)  Точка Немо и три ближайшие земли
+  map_tristan.mp4  film 347.36–362.56 (15.20 s)  Тристан-да-Кунья → остров Святой Елены
+Style: Lemo-Opuscar «3D Map Explainer» (the globe of cs_globe, itself from styles/map-explainer/demo; terrain patch as in bh_map).
+Third-party data and sources:
+
+## Imagery
+- Sentinel-2 cloudless 2016 - https://s2maps.eu by EOX IT Services GmbH (Contains modified Copernicus Sentinel data
+  2016 & 2017), CC BY 4.0. Layer s2cloudless_3857.
+  - Globe: zoom 4 (whole Earth), assets/world.jpg copied from ../cs_globe (tools/fetch_world.py; URLs in raw/manifest_world.jsonl).
+  - Tristan da Cunha patch: zoom 11, 12.95–11.95 W, 37.6–36.75 S (Tristan, Inaccessible, Nightingale), tools/fetch_patch.py
+    → assets/tdc_albedo.jpg. Only the 2016 release is used (later Sentinel-2 cloudless releases are CC BY-NC-SA).
+  - Imagery colour-graded (land warmed, deep ocean darkened); in the patch the open sea farther than ~2.5–6 km from land is
+    replaced by the flat sea colour of the globe (the mosaic there is a patchwork of a cloudy scene and a flat fill) — "modified".
+- Elevation (Tristan patch only, true scale, no exaggeration): AWS Terrain Tiles (Mapzen / Tilezen "terrarium" PNG), zoom 11,
+  https://registry.opendata.aws/terrain-tiles/ (sources include SRTM, GMTED, ETOPO1, GEBCO).
+- Every download URL and date is logged in raw/manifest.jsonl (downloaded 2026-11-28).
+
+## Required attribution — put this line in the YouTube description (the clips carry no English text):
+  Satellite imagery: Sentinel-2 cloudless 2016 – https://s2maps.eu by EOX IT Services GmbH (Contains modified Copernicus
+  Sentinel data 2016 & 2017), CC BY 4.0. Elevation: AWS Terrain Tiles (Mapzen/Tilezen; SRTM, GMTED, ETOPO1, GEBCO).
+  Russian version: Спутниковые снимки: Sentinel-2 cloudless 2016 – https://s2maps.eu, EOX IT Services GmbH (содержит изменённые
+  данные Copernicus Sentinel 2016 и 2017 гг.), CC BY 4.0. Рельеф: AWS Terrain Tiles (Mapzen/Tilezen; SRTM, GMTED, ETOPO1, GEBCO).
+
+## Places (public coordinates) and facts on screen (only what the narration says)
+- Точка Немо 48°52.6′ S 123°23.6′ W; Ducie Island 24°41′ S 124°47′ W; Motu Nui 27°12′ S 109°27′ W (by Easter Island);
+  Maher Island 72°58′ S 126°22′ W (off Antarctica). Great-circle distances from the point (R = 6371 km): 2 693, 2 692, 2 683 km
+  → «≈ 2 690 км» each, as the narration says. The ring is the 2 690 km circle about the point.
+- Tristan da Cunha 37°07′ S 12°17′ W; Saint Helena 15°57′ S 5°43′ W; great circle 2 441 km → «≈ 2 400 км» as the narration says
+  («источники дают цифры чуть по-разному»).
+- Lines are great-circle arcs, slightly raised in the middle for the look.
+
+## Fonts (SIL Open Font License 1.1; licence text in fonts/OFL-firasans.txt; tools/fonts.py)
+- Fira Sans Condensed 500 / 600 (Cyrillic): Mozilla Foundation, Telefonica, Carrois, bBox Type; via the Google Fonts CSS API,
+  subset to the Russian alphabet, digits and punctuation (≈ included). Copied from ../cs_globe.
+
+## Code
+- three.js r170 (MIT) from the Lemo-Opuscar library; post.js is a copy of the library's core/three/post.js.
+- index.html adapted from ../cs_globe/index.html (globe, atmosphere, stars, ribbons, post); tools/frames.mjs, stills.mjs,
+  fonts.py, fetch_world.py from ../cs_globe; tools/fetch_patch.py adapted from ../bh_map/tools/fetch_patch.py; render.sh new.
+
+## Images, models
+- No photographs other than the satellite imagery above, no 3D models, no AI-generated images. Pins, lines, the ring and type
+  are drawn in code. Silent clips: no audio.

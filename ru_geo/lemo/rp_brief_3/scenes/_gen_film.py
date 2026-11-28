@@ -23,7 +23,7 @@ GEO = json.load(open(os.path.join(HERE, 'geo.json')))
 R0, R1 = 241.71, 343.74
 DUR = round(R1 - R0, 3)                       # 102.03
 L = lambda ft: round(ft - R0, 3)              # film time → local time
-BW, BH = 12000, 5300
+BW, BH = 13500, 5300
 
 E, EV = [], []
 def el(**k): E.append(k); return k
@@ -137,22 +137,22 @@ line(circle(CA, 2700 * KA, 90), L(242.8), 1.0, 'grey', 4, dash=[18, 16], quiet=T
 PA = mapdraw(MA, CA, KA, L(242.9), 2.2, 'graphite', 6)
 NEW, OLD, NP, NEAR = PA(MA['pts']['new']), PA(MA['pts']['old']), PA(MA['pts']['np']), PA(MA['near'])
 line([[NP[0] - 14, NP[1]], [NP[0] + 14, NP[1]]], L(244.6), .1, 'grey', 5, quiet=True); line([[NP[0], NP[1] - 14], [NP[0], NP[1] + 14]], L(244.7), .1, 'grey', 5, quiet=True)
-write('Северный полюс', NP[0] - 30, NP[1] + 14, L(244.8), .6, 'grey', 40, align='right')
+write('Северный полюс', NP[0], NP[1] - 30, L(244.8), .6, 'grey', 40, align='center')
 # drifting ice: hatched floes west and south of the pole, two drift arrows
 random.seed(7); st = []
 for i in range(90):
-    a = random.uniform(math.radians(95), math.radians(265)); r = random.uniform(90, 330)
+    a = random.uniform(math.radians(150), math.radians(215)); r = random.uniform(130, 340)
     x, y = NEW[0] + r * math.cos(a), NEW[1] + .85 * r * math.sin(a)
     if abs(y - NP[1]) < 40 and x > NP[0] - 380: continue
     st.append(dict(points=[[round(x, 1), round(y, 1)], [round(x + 26, 1), round(y - 18, 1)]], t=round(L(245.1) + i * .01, 3), d=.06))
 strokes_el(st, L(245.1), .9, 'grey', 4, .6)
 arrow([NEW[0] - 360, NEW[1] + 250], [NEW[0] - 220, NEW[1] + 190], L(245.6), .3, 'grey', 5)
-arrow([NEW[0] - 300, NEW[1] - 150], [NEW[0] - 160, NEW[1] - 210], L(245.8), .3, 'grey', 5)
+arrow([NEW[0] - 420, NEW[1] + 20], [NEW[0] - 280, NEW[1] - 40], L(245.8), .3, 'grey', 5)
 tag('дрейфующий лёд', 520, 2010, L(245.3), size=56, rot=-1.2)
 spot(NEW, L(244.95), 'graphite')
 dim(NEW, NEAR, L(246.4), 1.0)
-count('≈ {0} км', [1000], NEW[0] + 50, NEW[1] + 110, L(246.9), 1.4, size=70, sep=True, align='left')
-write('до суши', NEW[0] + 50, NEW[1] + 185, L(247.6), .7, 'graphite', 56)
+count('≈ {0} км', [1000], NEW[0], NEW[1] + 115, L(246.9), 1.4, size=70, sep=True, align='center')
+write('до суши', NEW[0], NEW[1] + 180, L(247.6), .7, 'graphite', 52, align='center')
 # inset ×10: the 2013 shift (≈195 km between the earlier point and the 2013 point)
 MID = [(NEW[0] + OLD[0]) / 2, (NEW[1] + OLD[1]) / 2]; KI = 10.0; IC = (2780, 1260); H = 430
 mb = [MID[0] - H / KI, MID[1] - H / KI, MID[0] + H / KI, MID[1] + H / KI]
@@ -246,6 +246,8 @@ write('объявила остров своим', 1780, 5150, L(292.3), 1.3, 'gr
 count('{0}', [1928], 1780, 5400, L(293.6), 1.4, size=140)
 write('год', 2150, 5400, L(294.5), .3, 'graphite', 56)
 
+for e in E[i0:]: shift2(e, 3000, -2150)
+i0 = len(E)
 tag('1979', 3080, 4930, L(296.1), size=64, rot=1.2)
 SC = (3330, 5150)    # the satellite: body, two panels
 line(rect(SC[0] - 40, SC[1] - 30, SC[0] + 40, SC[1] + 30), L(298.2), .3, 'graphite', 7, quiet=True)
@@ -265,7 +267,7 @@ write('природа официально', 3260, 6020, L(302.3), 1.0, 'graphit
 write('не установлена', 3260, 6100, L(303.3), .9, 'graphite', 58)
 write('часто считают испытанием', 3260, 6220, L(304.6), 1.4, 'graphite', 58)
 write('другие версии тоже звучали', 3260, 6330, L(306.3), 1.5, 'graphite', 58)
-for e in E[i0:]: shift2(e, 1700, -2150)
+for e in E[i0:]: shift2(e, 3650, -2150)
 
 # ===================================================================== ROW 2 · p16 308.73–316.65 (then the clip to 341.59)
 # vertically, the deepest point of the ocean, the Challenger Deep, ≈ 11 km down (Everest drawn at the same scale)
@@ -294,9 +296,9 @@ write('в том же масштабе', EX, BOT + 130, L(313.0), .8, 'grey', 40
 # under the archive clip (316.65–341.59): quiet notes, so the wall is whole at the pull-back
 write('1960 · 2012 · 2019 …', 5330, 5370, L(320.5), 1.5, 'graphite', 44)
 write('спускались считаные единицы', 5330, 5440, L(325.5), 1.5, 'graphite', 44)
-write('«Челленджер», 1875: первый замер', 4700, 6450, L(332.0), 1.5, 'grey', 40)
+write('«Челленджер», 1875: первый замер', 5330, 5510, L(332.0), 1.5, 'graphite', 44)
 write('вниз и вверх одинаково безлюдно', 4700, 4760, L(337.5), 1.6, 'graphite', 54)
-for e in E[i0:]: shift2(e, 1900, -2150)
+for e in E[i0:]: shift2(e, 5250, -2150)
 
 # ===================================================================== camera (one continuous camera; the card hides the jump)
 c = Cam(*fit([430, 470, 2300, 2080]))
@@ -308,20 +310,20 @@ c.fit(L(255.5), 1.4, [3800, 450, 6950, 2080], b=2.8)                     # Antar
 c.to(L(257.0), 4.0, z=z_of(c) * 1.02)
 c.fit(L(261.1), 1.2, [3800, 450, 6950, 2080], b=3)
 c.to(L(262.4), 4.6, z=z_of(c) * 1.02)
-c.fit(L(267.0), 1.6, [7250, 430, 10700, 2100], b=2.8)                    # Eurasia
+c.fit(L(267.0), 1.6, [7350, 430, 10700, 2100], b=2.8)                    # Eurasia
 c.to(L(268.7), 4.4, z=z_of(c) * 1.02)
 c.fit(L(273.2), 1.2, [8000, 430, 11000, 2100], b=3)                      # + two questions
 c.to(L(274.5), 4.0, z=z_of(c) * 1.02)
 c.fit(L(278.5), 1.6, [430, 2560, 2300, 4150], b=2.8)                     # Bouvet on the map
 c.to(L(280.2), 4.2, z=z_of(c) * 1.02)
-c.fit(L(284.5), 1.4, [2100, 2560, 4700, 4250], b=2.8)                    # Bouvet: print, glacier, Norway
+c.fit(L(284.5), 1.4, [3450, 2560, 5450, 4250], b=2.8)                    # Bouvet: print, glacier, Norway
 c.to(L(286.0), 9.6, z=z_of(c) * 1.02)
-c.fit(L(295.7), 1.4, [3400, 2560, 6200, 4250], b=2.8)                    # 1979, «?»
+c.fit(L(295.7), 1.4, [6700, 2560, 8700, 4250], b=2.8)                    # 1979, «?»
 c.to(L(297.2), 10.9, z=z_of(c) * 1.02)
-c.fit(L(308.3), 1.5, [6450, 2480, 8500, 4380], b=2.8)                    # the depth
+c.fit(L(308.3), 1.5, [9900, 2480, 11950, 4380], b=2.8)                    # the depth
 c.to(L(309.9), 6.5, z=z_of(c) * 1.03)
 c.to(L(316.9), 24.0, z=z_of(c) * 1.02)                                   # (under the archive clip)
-c.fit(L(341.2), 2.3, [250, 350, 11200, 4450], b=3)                       # chapter pull-back: the whole wall
+c.fit(L(341.2), 2.3, [250, 350, 12100, 4450], b=3)                       # chapter pull-back: the whole wall
 
 # the whole wall sits OX px further right (keeps the board's left frame out of the opening shots)
 OX = 1300

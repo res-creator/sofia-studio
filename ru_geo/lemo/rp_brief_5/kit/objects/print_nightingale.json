@@ -1,14 +1,14 @@
 {
   "id": "print_nightingale",
-  "w": 1636,
-  "h": 1136,
+  "w": 1200,
+  "h": 833,
   "anchors": {},
   "print": true,
   "prep": {
     "src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/nightingale_island.jpg",
     "id": "print_nightingale",
     "crop": "240,160,1740,1160",
-    "w": 1500,
+    "w": 1100,
     "border": 0.045,
     "sat": 0.85
   }

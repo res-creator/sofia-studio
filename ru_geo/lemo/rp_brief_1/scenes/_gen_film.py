@@ -53,8 +53,8 @@ def printd(id, src, x, y, t, w=None, h=None, rot=0, size='mid', z=8, **k):
     if h: e['h'] = h
     ev(t + .27, 'land', .2, size=size); return el(**e)
 def credit(id, x, y, t, text, w, rot=-1):
-    return el(type='card', id=id, xy=[x, y], w=w, h=58, rot=rot, z=9, arrive=dict(t=round(t, 3), kind='drop', d=.35, lift=120, spin=.6, land=.6),
-              lines=[dict(text=text, font='mono', size=27, x=20, y=38, color='grey')])
+    return el(type='card', id=id, xy=[x, y], w=w, h=70, rot=rot, z=9, arrive=dict(t=round(t, 3), kind='drop', d=.35, lift=120, spin=.6, land=.6),
+              lines=[dict(text=text, font='mono', size=33, x=20, y=46, color='grey')])
 def circle(c, r, n=40, a0=-90, turn=1.0):
     rx, ry = (r, r) if not isinstance(r, (list, tuple)) else r
     return [[c[0] + rx * math.cos(math.radians(a0 + 360 * turn * i / n)), c[1] + ry * math.sin(math.radians(a0 + 360 * turn * i / n))] for i in range(n + 1)]
@@ -197,10 +197,10 @@ def orb(th): return [EX + RO * math.sin(th), EY + RE - RO * math.cos(th)]
 line([sea(s) for s in range(-1050, 1051, 50)], L(13.0), .8, 'blue', 7)
 waves(EX - 120, EY + 40, 4, L(13.3), 46, 8, d=.3)
 person(EX, EY, L(13.5), .9)
-write('вид сбоку', EX - 640, EY + 120, L(13.2), .6, 'grey', 56)
+write('вид сбоку', EX + 420, EY - 290, L(13.2), .6, 'grey', 56)
 ISS = printd('iss', 'iss', EX, round(EY - 400 * KE, 1), L(13.9), w=300, size='big', z=12)
-dim([EX - 190, EY + 4], [EX - 190, EY - 400 * KE], L(14.5), .5)
-count('≈ {0} км', [400], EX - 240, EY - 95, L(14.6), 1.3, size=80, align='right')
+dim([EX + 190, EY + 4], [EX + 190, EY - 400 * KE], L(14.5), .5)
+count('≈ {0} км', [400], EX + 240, EY - 70, L(14.6), 1.3, size=80)
 tag('космическая станция', EX - 330, EY - 430, L(15.5), size=56, rot=-1.5)
 th1 = .105
 line([orb(-.16 + .32 * i / 40) for i in range(41)], L(16.4), 1.0, 'graphite', 5, dash=[16, 12], arrow=True)
@@ -222,16 +222,16 @@ scalebar(CX - 1350, CY + 1150, K, 1000, L(5.8), size=60)
 VX, VY = 3720, 1020
 printd('verne', 'print_verne', VX, VY, L(24.0), w=560, rot=1.8, size='mid')
 magnet(VX - 205, VY - 300, L(24.45), r=22); magnet(VX + 215, VY - 290, L(24.55), r=22)
-credit('cred_verne', VX, VY + 400, L(24.7), 'А. де Невиль · илл. к роману Жюля Верна', 700)
+credit('cred_verne', VX, VY + 400, L(24.7), 'А. де Невиль · илл. к роману Жюля Верна', 840)
 write('«Немо» по-латыни —', 3280, 1590, L(24.4), 1.0, 'graphite', 76)
 write('«никто»', 3420, 1730, L(25.4), .6, 'red', 110)
-write('самое далёкое место,', 760, 800, L(26.4), 1.3, 'graphite', 76)
-write('где люди живут, —', 760, 910, L(28.0), 1.2, 'graphite', 76)
-write('не здесь', 760, 1060, L(29.85), .7, 'red', 116)
-line([[1290, 1030], [1520, 1180], [1700, 1500]], L(30.3), .5, 'graphite', 6, dash=[16, 12], arrow=True)
-tag('какое — скажу в конце', 780, 1240, L(31.0), size=56, rot=1.2)
-write('как измерить «далеко»?', 760, 1470, L(33.9), 1.6, 'graphite', 76)
-el(type='ruler', id='ruler0', **{'from': [780, 1640], 'to': [1700, 1640]}, w=44, z=12, inset=55, magnetR=18,
+write('самое далёкое место,', 360, 800, L(26.4), 1.3, 'graphite', 76)
+write('где люди живут, —', 360, 910, L(28.0), 1.2, 'graphite', 76)
+write('не здесь', 360, 1060, L(29.85), .7, 'red', 116)
+line([[890, 1030], [1200, 1180], [1450, 1600]], L(30.3), .5, 'graphite', 6, dash=[16, 12], arrow=True)
+tag('какое — скажу в конце', 380, 1240, L(31.0), size=56, rot=1.2)
+write('как измерить «далеко»?', 360, 1470, L(33.9), 1.6, 'graphite', 76)
+el(type='ruler', id='ruler0', **{'from': [380, 1640], 'to': [1300, 1640]}, w=44, z=12, inset=55, magnetR=18,
    arrive=dict(t=L(35.4), kind='drop', d=.4, lift=160, spin=.4, land=.6))
 ev(L(35.65), 'ruler', .4)
 
@@ -244,8 +244,8 @@ write('ничего не значит,', 4800, 860, L(42.0), 1.0, 'graphite', 74
 write('пока не сказано, от чего считать', 4800, 970, L(43.3), 1.9, 'graphite', 74)
 DC = (5500, 1290)
 dot(DC, L(45.55), 13, quiet=False)
-for (lbl, tx, ty, ax, ay, t_) in (('от суши', 4830, 1180, 5175, 1195, 45.7), ('от людей', 5730, 1180, 5715, 1200, 46.6),
-                                 ('от порта', 4830, 1400, 5175, 1385, 47.4), ('от больницы', 5730, 1400, 5715, 1380, 48.3)):
+for (lbl, tx, ty, ax, ay, t_) in (('от суши', 4830, 1180, 5175, 1195, 45.7), ('от людей', 5730, 1180, 5680, 1205, 46.6),
+                                 ('от порта', 4830, 1400, 5175, 1385, 47.4), ('от больницы', 5730, 1400, 5680, 1378, 48.3)):
     arrow([DC[0] + (ax - DC[0]) * .18, DC[1] + (ay - DC[1]) * .18], [ax, ay], L(t_) - .1, .25, 'graphite', 6)
     tag(lbl, tx, ty, L(t_), size=54, rot=(-1.5 if tx < 5000 else 1.3))
 # the pole of a continent-like shape: the centre of the largest circle that fits inside
@@ -356,7 +356,7 @@ arrow(P2, P3, L(88.9), .3, 'blue', 4)
 SX, SY = 6830, 3000
 printd('shelf', 'print_shelf', SX, SY, L(87.4), w=600, rot=-1.5, size='mid')
 magnet(SX - 230, SY - 210, L(87.8), r=20); magnet(SX + 240, SY - 200, L(87.9), r=20)
-credit('cred_shelf', SX, SY + 290, L(88.1), 'край шельфового ледника, Антарктида · NASA', 660)
+credit('cred_shelf', SX, SY + 290, L(88.1), 'край шельфового ледника, Антарктида · NASA', 880)
 dim(P1, P3, L(90.2), .7, lw=6)
 write('ранние оценки расходились', 6250, 3540, L(89.4), 1.3, 'graphite', 62)
 write('на десятки и даже сотни км', 6250, 3640, L(92.0), 1.6, 'blue', 62)
@@ -402,14 +402,16 @@ c.fit(L(20.75), 1.3, [CX - 1100, CY - 830, CX + 1700, CY + 1350], b=3)  # Point 
 c.to(L(22.1), 1.7, z=z_of(c) * 1.02)
 c.fit(L(23.85), 1.0, [3190, 540, 4300, 1810], b=3)                     # Nemo = nobody: the Verne print
 c.to(L(24.9), 1.2, z=z_of(c) * 1.02)
-c.fit(L(26.15), 1.3, [680, 600, 1900, 1720], b=3)                      # not here; at the end; how to measure
-c.to(L(27.5), 9.2, z=z_of(c) * 1.04)
-c.fit(L(36.8), 2.5, [650, 560, 4400, 3820], b=3)                       # chapter pull-back: the cold open
+c.fit(L(26.15), 1.3, [340, 680, 1360, 1300], b=3)                      # not here; at the end
+c.to(L(27.5), 5.9, z=z_of(c) * 1.03)
+c.fit(L(33.5), 1.0, [340, 1100, 1360, 1700], b=3)                       # how to measure: the ruler
+c.to(L(34.5), 2.2, z=z_of(c) * 1.02)
+c.fit(L(36.8), 2.5, [300, 560, 4400, 3820], b=3)                       # chapter pull-back: the cold open
 c.fit(L(39.9), .6, [4700, 540, 6450, 1500])                            # (under the card) block A
 c.to(L(40.8), 4.5, z=z_of(c) * 1.02)
 c.fit(L(45.35), 1.0, [4700, 540, 6450, 1500], b=3)
 c.to(L(46.4), 2.8, z=z_of(c) * 1.02)
-c.fit(L(49.25), 1.2, [5900, 540, 7400, 1700], b=2.8)                   # the pole of inaccessibility
+c.fit(L(49.25), 1.2, [4700, 540, 7400, 1720], b=2.8)                   # the pole of inaccessibility
 c.to(L(50.5), 3.9, z=z_of(c) * 1.02)
 c.fit(L(54.5), 1.2, [4700, 1050, 7450, 2120], b=2.8)                   # ocean, continent, ice; different winners
 c.to(L(55.8), 5.6, z=z_of(c) * 1.02)

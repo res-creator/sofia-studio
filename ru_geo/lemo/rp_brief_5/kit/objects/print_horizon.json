@@ -1,14 +1,14 @@
 {
   "id": "print_horizon",
-  "w": 2092,
-  "h": 1452,
+  "w": 1416,
+  "h": 983,
   "anchors": {},
   "print": true,
   "prep": {
     "src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/ocean_horizon.jpg",
     "id": "print_horizon",
     "crop": "0,0,1920,1280",
-    "w": 1920,
+    "w": 1300,
     "border": 0.045,
     "sat": 0.85
   }

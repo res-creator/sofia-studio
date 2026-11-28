@@ -1,0 +1,24 @@
+Отдалённые места · board film PART 3 (film 241.71–343.74: chapter «ДРУГИЕ КРАЙНОСТИ»; Engineering Briefing Board) — credits
+
+Photographs (uncut crops on photo paper, kit/tools/make_print.py; each with its printed credit line on the board)
+  print_lenin.png   the former Soviet station «Pole of Inaccessibility», Antarctica: the Lenin bust above the snow (2007) —
+                    Cookson69 (Team N2i), CC BY-SA 3.0 —
+                    commons.wikimedia.org/wiki/File:Southern_Pole_of_Inaccessibility_Henry_Cookson_team_n2i.jpg
+                    (ru_geo/remote_places/archive/img/lenin_pole.jpg, --crop 330,300,1450,916 --w 1120 --sat .9;
+                    printed line «станция «Полюс недоступности», 2007 · Cookson69 (Team N2i), CC BY-SA 3.0»)
+  print_bouvet.png  Bouvet Island from the ISS, 2008 — NASA, public domain — images.nasa.gov/details/iss017e016161
+                    (archive/img/bouvet_map.jpg, --crop 420,200,1620,1000 --w 1200 --sat .9;
+                    printed line «остров Буве, снимок с МКС, 2008 · NASA»)
+
+Maps
+  Coastlines: johan/world.geo.json (Natural Earth 1:110m, public domain), /tmp/world.geo.json; tools/geo.py keeps only
+  the edges with land on one side (land borders cancel) and draws each map in an azimuthal equidistant projection
+  centred on its subject (distances from the centre true). Points: Arctic pole of inaccessibility 85°48′N 176°09′W
+  (2013) and the earlier 84°03′N 174°51′W (≈195 km apart, shown ×10 in the inset); the Soviet station 82°06′S 54°58′E;
+  the Eurasian pole 46°17′N 86°40′E; Bouvet 54°25′S 3°21′E. On screen only the narration's numbers (≈1 000, ≈200,
+  ≈2 600, ≈1 700 km; ≈90 %; 1928; 1979; 2013; 2021; ≈11 km).
+  Depth section: 11 km and Everest (8.85 km, drawn unlabelled at the same scale for size) at 118 px/km.
+  Everything else drawn in marker. No generated images.
+
+Fonts (SIL Open Font License 1.1): Pangolin, Fira Sans Condensed, IBM Plex Mono.
+Engine: Lemo-Opuscar briefing-board kit (board.js from ru_geo/lemo/cs_brief_3).
