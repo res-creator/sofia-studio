@@ -182,13 +182,13 @@ write('больше', 1080, 1390, L(364.5), .6, 'blue', 70)
 write('после войны страны', 1080, 1560, L(365.3), 1.3, 'graphite', 58)
 write('всё-таки появлялись', 1080, 1645, L(366.6), 1.3, 'graphite', 58)
 write('чем они отличались', 450, 1880, L(368.8), 1.0, 'graphite', 58)
-write('от твоей платформы?', 1230, 1880, L(369.6), 1.2, 'red', 58)
-platform(2130, 1560, L(368.9))
-write('?', 2130, 1360, L(370.3), .4, 'red', 110, align='center')
-mounted('unhall', 'print_unhall', 2720, 760, L(358.6), 760, 1046 / 1744,
+write('от твоей платформы?', 1175, 1880, L(369.6), 1.2, 'red', 58)
+platform(2090, 1560, L(368.9))
+write('?', 2090, 1360, L(370.3), .4, 'red', 110, align='center')
+mounted('unhall', 'print_unhall', 2610, 740, L(358.6), 660, 1046 / 1744,
         ['зал Генеральной Ассамблеи ООН', 'фото: Mojnsen, CC BY-SA 4.0'], rot=1.2)
-mounted('unflags', 'print_unflags', 2710, 1480, L(361.9), 720, 1227 / 1744,
-        ['флаги стран — членов ООН (плакат ООН)', 'United Nations, общественное достояние'], rot=-1.4)
+mounted('unflags', 'print_unflags', 2600, 1440, L(361.9), 640, 1227 / 1744,
+        ['флаги стран — членов ООН', 'United Nations, общ. достояние'], rot=-1.4)
 
 # ===================================================================== ROW 1 · B South Sudan
 # --- p2 371.53–391.18: January 2011, almost four million registered, almost all came to vote; about 99 % chose separation from Sudan;
@@ -251,7 +251,7 @@ write('референдум шёл под наблюдением ООН', 450, 2
 write('независимость', 450, 2900, L(410.9), .9, 'graphite', 72)
 write('1993', 1180, 2900, L(411.8), .8, 'blue', 100)
 write('везде до этого', 450, 3060, L(413.1), 1.1, 'graphite', 60)
-write('годами шла борьба', 1050, 3060, L(414.2), 1.3, 'graphite', 60)
+write('годами шла борьба', 1010, 3060, L(414.2), 1.3, 'graphite', 60)
 write('никто из них не начинал', 450, 3330, L(415.8), 1.6, 'graphite', 60)
 write('с флага на пустой платформе', 450, 3420, L(417.4), 2.0, 'graphite', 60)
 platform(1950, 3460, L(415.9), flag_t=L(418.1))
@@ -333,7 +333,7 @@ class Cam:
     def json(s): return dict(x=s.base['x'], y=s.base['y'], z=s.base['z'], roll=0, moves=s.moves, shakes=s.shakes)
 def z_of(c): return math.exp(c.cur['lz'])
 
-c = Cam(*fit([380, 440, 3120, 1960]))                                   # behind the card: area A (the UN)
+c = Cam(*fit([380, 440, 3000, 1960]))                                   # behind the card: area A (the UN)
 c.to(L(355.9), 15.0, z=z_of(c) * 1.04)
 c.fit(L(371.2), 1.4, [3250, 400, 6450, 1900], b=2.8)                    # South Sudan: 2011, 4 million, 99 %, 2005, July
 c.to(L(372.6), 18.8, z=z_of(c) * 1.03)
