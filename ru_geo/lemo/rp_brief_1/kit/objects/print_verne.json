@@ -1,0 +1,18 @@
+{
+ "id": "print_verne",
+ "w": 1443,
+ "h": 1740,
+ "anchors": {},
+ "print": true,
+ "prep": {
+  "src": "nemo_verne.jpg",
+  "crop": [
+   0,
+   230,
+   1323,
+   1850
+  ],
+  "border": 0.045,
+  "sat": 1
+ }
+}

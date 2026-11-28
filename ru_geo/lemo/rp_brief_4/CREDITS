@@ -1,0 +1,14 @@
+Отдалённые места · board film PART 4 (film 343.74–461.10: first part of chapter «ТРИСТАН-ДА-КУНЬЯ», paragraphs 18–23;
+Engineering Briefing Board) — credits
+
+Photographs (uncut crops on photo paper, kit/tools/make_print.py; sources in ru_geo/remote_places/archive/img, credits.json)
+  print_aerial.png   Tristan da Cunha from the ISS (Expedition 34, 2013) — NASA, public domain —
+                     images.nasa.gov/details/iss034e041528 (--crop 620,380,1360,1120 --w 740); card «Тристан-да-Кунья с МКС, 2013 · NASA»
+  print_village.png  Edinburgh of the Seven Seas — michael clarke stuff, CC BY-SA 2.0 —
+                     commons.wikimedia.org/wiki/File:Edinburgh_of_the_Seven_Seas_01.jpg (--crop 0,40,1920,900 --w 1920)
+  print_sea.png      Tristan da Cunha from the sea — Brian Gratwicke, CC BY 2.0 —
+                     commons.wikimedia.org/wiki/File:Tristan_da_Cunha,_British_overseas_territory-20March2012.jpg (--crop 160,560,1720,1120 --w 1560)
+  Shown at >= 1 source pixel per screen pixel (tools/rescheck.mjs: lowest 1.26).
+Everything else drawn in marker. No generated images.
+Fonts (SIL Open Font License 1.1): Pangolin, Fira Sans Condensed, IBM Plex Mono.
+Engine: Lemo-Opuscar briefing-board kit (kit/board.js from ru_geo/lemo/cs_brief_3).

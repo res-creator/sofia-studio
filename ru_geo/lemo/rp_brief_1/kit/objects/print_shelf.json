@@ -1,0 +1,18 @@
+{
+ "id": "print_shelf",
+ "w": 2092,
+ "h": 1612,
+ "anchors": {},
+ "print": true,
+ "prep": {
+  "src": "ice_shelf_edge.jpg",
+  "crop": [
+   0,
+   0,
+   1920,
+   1440
+  ],
+  "border": 0.045,
+  "sat": 0.9
+ }
+}

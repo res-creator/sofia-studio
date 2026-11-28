@@ -1,0 +1,15 @@
+{
+  "id": "print_bouvet",
+  "w": 1308,
+  "h": 908,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/bouvet_map.jpg",
+    "id": "print_bouvet",
+    "crop": "420,200,1620,1000",
+    "w": 1200,
+    "border": 0.045,
+    "sat": 0.9
+  }
+}

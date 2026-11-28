@@ -1,0 +1,15 @@
+{
+  "id": "print_sunrise",
+  "w": 1308,
+  "h": 546,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/iss_sunrise.jpg",
+    "id": "print_sunrise",
+    "crop": "0,430,1920,1130",
+    "w": 1200,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

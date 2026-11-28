@@ -1,0 +1,15 @@
+{
+  "id": "print_lenin",
+  "w": 1220,
+  "h": 716,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/lenin_pole.jpg",
+    "id": "print_lenin",
+    "crop": "330,300,1450,916",
+    "w": 1120,
+    "border": 0.045,
+    "sat": 0.9
+  }
+}

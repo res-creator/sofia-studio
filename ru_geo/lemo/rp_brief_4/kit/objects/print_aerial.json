@@ -1,0 +1,15 @@
+{
+  "id": "print_aerial",
+  "w": 806,
+  "h": 806,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/tristan_aerial.jpg",
+    "id": "print_aerial",
+    "crop": "620,380,1360,1120",
+    "w": 740,
+    "border": 0.045,
+    "sat": 0.9
+  }
+}

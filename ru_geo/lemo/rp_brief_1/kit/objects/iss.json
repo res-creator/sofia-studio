@@ -1,0 +1,15 @@
+{
+ "id": "iss",
+ "size": [
+  1529,
+  887
+ ],
+ "anchors": {},
+ "credit": {
+  "title": "International Space Station from Soyuz MS-08 (2018)",
+  "author": "NASA / Roscosmos",
+  "licence": "public domain",
+  "source": "ru_geo/remote_places/archive/img/iss_station.jpg"
+ },
+ "how": "keyed off black space: max channel > row background (25th percentile, smoothed) + 32, kept > +26, closed x3, holes < 2500 px filled, parts > 1500 px; crop 0,0,1920,1000"
+}

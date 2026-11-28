@@ -1,0 +1,15 @@
+{
+  "id": "print_iss",
+  "w": 1308,
+  "h": 915,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/iss_station.jpg",
+    "id": "print_iss",
+    "crop": "90,80,1830,1250",
+    "w": 1200,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

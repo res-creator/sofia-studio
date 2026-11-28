@@ -1,0 +1,15 @@
+{
+  "id": "print_ocean",
+  "w": 1200,
+  "h": 888,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/earth_globe_pacific.jpg",
+    "id": "print_ocean",
+    "crop": "0,1020,1250,1915",
+    "w": 1100,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

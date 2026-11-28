@@ -1,0 +1,15 @@
+{
+  "id": "print_village",
+  "w": 2092,
+  "h": 1032,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/remote_places/archive/img/eos_village.jpg",
+    "id": "print_village",
+    "crop": "0,40,1920,900",
+    "w": 1920,
+    "border": 0.045,
+    "sat": 0.9
+  }
+}
