@@ -1,0 +1,15 @@
+{
+  "id": "print_molossia",
+  "w": 1852,
+  "h": 1285,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/molossia.jpg",
+    "id": "print_molossia",
+    "crop": "0,0,1920,1280",
+    "w": 1700,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

@@ -1,0 +1,69 @@
+«Мысленный эксперимент» · «Как создать свою страну?» (create_country) · три клипа карты (silent, 1920×1080, 30 fps)
+  map_sealand.mp4    film 103.62–124.02 (20.40 s → 612 frames, 20.40 s)  Силенд: от берега Англии в Северное море
+  map_liberland.mp4  film 179.76–199.90 (20.14 s → 604 frames, 20.13 s)  Либерленд: пойма Дуная между Хорватией и Сербией
+  map_hutt.mp4       film 235.19–254.78 (19.59 s → 588 frames, 19.60 s)  Хатт-Ривер: от Австралии к ферме у Нортгемптона
+Style: Lemo-Opuscar «3D Map Explainer» (the globe and nested terrain patches of ../dp_maps, itself from ../rp_maps / cs_globe /
+styles/map-explainer/demo). Third-party data and sources:
+
+## Imagery
+- Sentinel-2 cloudless 2016 - https://s2maps.eu by EOX IT Services GmbH (Contains modified Copernicus Sentinel data
+  2016 & 2017), CC BY 4.0. Layer s2cloudless_3857. Only the 2016 release is used (later releases are CC BY-NC-SA).
+  - Globe: zoom 4, assets/world.jpg copied from ../dp_maps (URLs in raw/manifest_world.jsonl); a bright cloud streak over
+    Ireland is replaced by the local median colour (tools/fix_world.py) — "modified".
+  - Sealand: wide patch zoom 9 (1.2 W–3.4 E, 50.9–53.4 N), medium zoom 11 (0.7–2.1 E, 51.55–52.3 N),
+    detailed zoom 13 (1.22–1.62 E, 51.83–52.03 N).
+  - Liberland: wide zoom 9 (16.6–21.2 E, 44.4–47.0 N), medium zoom 11 (18.45–19.35 E, 45.45–46.05 N),
+    detailed zoom 13 (18.76–18.99 E, 45.69–45.84 N).
+  - Hutt River: wide zoom 9 (111.8–117.6 E, 31.0–25.6 S), medium zoom 11 (113.85–115.05 E, 28.55–27.6 S),
+    detailed zoom 13 (114.33–114.62 E, 28.17–27.98 S). The rest of Australia is the globe texture.
+  - Modified: colour-graded like the globe (land warmed, a little less saturation); the outer quarter of each wide patch fades
+    into the globe texture, the outer tenth of each medium / detailed patch into the patch around it. Sealand and Hutt River
+    (SEA=.75 in tools/fetch_patch.py): the open sea (big connected areas at or below 0 m in the AWS terrain) is pulled toward
+    the flat sea colour of the globe, and farther than ~4 km from land it is smoothed (σ 8 km), so the hard edge between the
+    turbid near-shore water and the flat fill of the mosaic in the North Sea becomes a soft gradient. Land is untouched.
+- Elevation: AWS Terrain Tiles (Mapzen / Tilezen "terrarium" PNG), zoom 9, 11 and 13, https://registry.opendata.aws/terrain-tiles/
+  (sources include SRTM, GMTED, ETOPO1, GEBCO). True scale, no exaggeration (all three places are low and flat).
+- Liberland outline: OpenStreetMap relation 19735507 «Siga» (boundary=disputed), fetched via the Nominatim API
+  (nominatim.openstreetmap.org/lookup?osm_ids=R19735507&polygon_geojson=1), assets/siga_osm.json. © OpenStreetMap contributors,
+  ODbL 1.0 (https://www.openstreetmap.org/copyright). Area of the ring on the sphere: 7.08 km² → «≈ 7 км²» as the narration says.
+- Every download URL and date is logged in raw/manifest.jsonl (downloaded 2026-11-28).
+
+## Required attribution — put this line in the YouTube description (the clips carry no English text):
+  Satellite imagery: Sentinel-2 cloudless 2016 – https://s2maps.eu by EOX IT Services GmbH (Contains modified Copernicus
+  Sentinel data 2016 & 2017), CC BY 4.0. Elevation: AWS Terrain Tiles (Mapzen/Tilezen; SRTM, GMTED, ETOPO1, GEBCO).
+  Liberland outline: © OpenStreetMap contributors, ODbL.
+  Russian version: Спутниковые снимки: Sentinel-2 cloudless 2016 – https://s2maps.eu, EOX IT Services GmbH (содержит изменённые
+  данные Copernicus Sentinel 2016 и 2017 гг.), CC BY 4.0. Рельеф: AWS Terrain Tiles (Mapzen/Tilezen; SRTM, GMTED, ETOPO1, GEBCO).
+  Контур Либерленда: © участники OpenStreetMap, ODbL.
+
+## Places (public coordinates) and facts on screen (only what the narration says)
+- Sealand / HM Fort Roughs (Roughs Tower): 51.8944° N 1.4825° E — OpenStreetMap node 5703209919 «Roughs Tower» and relation
+  6701391 «Sealand» (51.89439 N 1.48254 E); Wikipedia «Principality of Sealand» gives 51°53′40″ N 1°28′57″ E (the same point).
+  The pin is on this point (the platform itself is too small to see in 10 m imagery).
+  The dashed line runs to Landguard Point, Felixstowe (51.9355° N 1.3200° E, read off the z13 imagery: the nearest Suffolk shore
+  toward Harwich harbour); great circle 12.1 km. On screen «≈ 13 км», as the narration says («примерно в тринадцати километрах
+  от берега»; SCRIPT/RESEARCH: ≈ 7 nautical miles ≈ 13 km off the Suffolk coast, Wikipedia).
+  On screen: «сентябрь 1967», «Великобритания» (over the land, wide view only), «Рафс-Тауэр», «морской форт», «Северное море»,
+  «≈ 13 км», «княжество Силенд». Not in this clip: the Chelmsford court, the 3-mile limit (next paragraph).
+- Liberland (Gornja Siga): label/pin at the centre of the OSM «Siga» ring, 45.7677° N 18.8720° E (Wikipedia «Liberland»:
+  45°46′ N 18°52′30″ E). The ring lies on the west (left, Croatian-side) bank of the Danube. «Хорватия» is placed on the west
+  bank (45.80 N 18.818 E), «Сербия» on the east bank (45.778 N 18.958 E), «Дунай» on the river (45.818 N 18.857 E).
+  On screen: «2015», «Либерленд», «Дунай», «Хорватия», «Сербия», «≈ 7 км²»; the outline pulses once at «этот участок ничей».
+- Hutt River: 28.0744° S 114.4707° E (Wikipedia «Principality of Hutt River», 28°04′28″ S 114°28′15″ E), about 35 km
+  north-north-west of Northampton, Western Australia (Wikipedia: 28.3511 S 114.6281 E). No boundary is drawn (no public outline of
+  the farm was found); only the pin. On screen: «Австралия» (globe), «1970», «Хатт-Ривер», «≈ 75 км²» (narration «около
+  семидесяти пяти квадратных километров»), «Западная Австралия». The ~500 km from Perth is not said, so it is not shown.
+
+## Fonts (SIL Open Font License 1.1; licence text in fonts/OFL-firasans.txt; tools/fonts.py)
+- Fira Sans Condensed 500 / 600 (Cyrillic): Mozilla Foundation, Telefonica, Carrois, bBox Type; via the Google Fonts CSS API,
+  subset to the Russian alphabet, digits and punctuation (≈ and ² included). Re-fetched from ../dp_maps/tools/fonts.py with ² added.
+
+## Code
+- three.js r170 (MIT) from the Lemo-Opuscar library; post.js is a copy of the library's core/three/post.js.
+- index.html adapted from ../dp_maps/index.html (globe, atmosphere, stars, nested patches, camera, pins, labels, date card, post);
+  tools/frames.mjs, stills.mjs, fonts.py, fetch_world.py from ../dp_maps; tools/fetch_patch.py from ../dp_maps with the SEA
+  option added; tools/fix_world.py, render.sh new.
+
+## Images, models
+- No photographs other than the satellite imagery above, no 3D models, no AI-generated images. Pins, the distance line, the
+  outline and type are drawn in code. Silent clips: no audio.

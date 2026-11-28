@@ -1,0 +1,15 @@
+{
+  "id": "print_border",
+  "w": 1852,
+  "h": 1268,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/hutt_border.jpg",
+    "id": "print_border",
+    "crop": "0,180,1920,1440",
+    "w": 1700,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

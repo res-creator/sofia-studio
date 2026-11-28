@@ -1,0 +1,15 @@
+{
+  "id": "print_tower",
+  "w": 1482,
+  "h": 1162,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/sealand_tower.jpg",
+    "id": "print_tower",
+    "crop": "560,260,1920,1300",
+    "w": 1360,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

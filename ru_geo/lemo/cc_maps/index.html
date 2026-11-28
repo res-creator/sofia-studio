@@ -1,0 +1,346 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>3D Map Explainer · Как создать свою страну</title>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+<style>
+@font-face{font-family:Fira;src:url(fonts/FiraSansCondensed-500-sub.woff2) format('woff2');font-weight:500}
+@font-face{font-family:Fira;src:url(fonts/FiraSansCondensed-600-sub.woff2) format('woff2');font-weight:600}
+html,body{margin:0;background:#04070b;overflow:hidden}
+canvas{position:absolute;left:0;top:0;width:1920px;height:1080px}
+</style></head>
+<body>
+<script type="module">
+// «Мысленный эксперимент» · «Как создать свою страну?» · three map clips (?clip=sealand | liberland | hutt). Clip t = film t − clip start.
+// sealand   (film 103.62–124.02, 20.40 s): globe → south-east England → the North Sea off Felixstowe / Harwich; «сентябрь 1967»,
+//           pin «Рафс-Тауэр» / «морской форт», «Северное море», a line to the coast «≈ 13 км», then «княжество Силенд»
+// liberland (film 179.76–199.90, 20.14 s): globe → the Danube on the Croatia–Serbia border; «2015», pin «Либерленд», «Дунай»,
+//           «Хорватия», «Сербия», the Siga pocket outlined (OSM), «≈ 7 км²»
+// hutt      (film 235.19–254.78, 19.59 s): Australia on the globe → the farm near Northampton (WA); «Австралия», «1970»,
+//           pin «Хатт-Ривер», «≈ 75 км²», «Западная Австралия»
+// Engine: ../dp_maps (Lemo-Opuscar 3D Map Explainer: globe with Sentinel-2 cloudless 2016, atmosphere, nested terrain patches
+// wide z9 / medium z11 / detailed z13 with AWS terrain, post). ?nosafe=1 shows the subtitle zone.
+import * as THREE from 'three';
+import { makePost } from './post.js';
+import { clamp, lerp, seg, ss, eo, eio, track, mulberry } from '/core/lib.js';
+
+const Wd = 1920, Ht = 1080, Q = new URLSearchParams(location.search);
+const CLIP = Q.get('clip') || 'sealand';
+const FULL = { sealand: 20.40, liberland: 20.14, hutt: 19.59 }[CLIP];
+const D2R = Math.PI / 180, RE = 6371;
+const SL = [51.8944, 1.4825];            // Sealand / HM Fort Roughs (OSM node 5703209919; Wikipedia 51°53′40″ N 1°28′57″ E)
+const LG = [51.9355, 1.3200];            // Landguard Point, Felixstowe (the nearest Suffolk shore toward Harwich harbour)
+const LB = [45.7677, 18.8720];           // Liberland / Gornja Siga (OSM relation 19735507 «Siga», boundary=disputed)
+const HT = [-28.0744, 114.4707];         // Hutt River (Wikipedia: Principality of Hutt River 28°04′28″ S 114°28′15″ E)
+const EX = 1;                            // relief at true scale
+
+// ---------- renderer ----------
+const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true });
+const SS = +(Q.get('ss') || 1);
+renderer.setPixelRatio(SS); renderer.setSize(Wd, Ht);
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.25;
+document.body.appendChild(renderer.domElement);
+const tl = new THREE.TextureLoader();
+const loadTex = u => new Promise((r, e) => tl.load(u, r, undefined, e));
+const worldTex = await loadTex('assets/world.jpg');
+worldTex.colorSpace = THREE.SRGBColorSpace; worldTex.anisotropy = 16;
+
+const gscene = new THREE.Scene(); gscene.background = new THREE.Color(0x04070b);
+const gdir = (lat, lon) => new THREE.Vector3(Math.cos(lat * D2R) * Math.sin(lon * D2R), Math.sin(lat * D2R), Math.cos(lat * D2R) * Math.cos(lon * D2R));
+function sunAt(ll, az, el) {
+  const U = gdir(...ll), north = new THREE.Vector3(0, 1, 0).addScaledVector(U, -U.y).normalize(), east = new THREE.Vector3().crossVectors(north, U);
+  return U.clone().multiplyScalar(Math.sin(el * D2R)).add(north.multiplyScalar(Math.cos(az * D2R) * Math.cos(el * D2R))).add(east.multiplyScalar(Math.sin(az * D2R) * Math.cos(el * D2R))).normalize();
+}
+const SUN = CLIP === 'sealand' ? sunAt(SL, 215, 34) : CLIP === 'liberland' ? sunAt(LB, 220, 36) : sunAt(HT, 330, 40);   // afternoon sun (north in the south)
+{
+  const NU = 360, NV = 180, pos = [], uv = [], idx = [];
+  for (let j = 0; j <= NV; j++) for (let i = 0; i <= NU; i++) {
+    const lat = 90 - j * 180 / NV, lon = -180 + i * 360 / NU, p = gdir(lat, lon).multiplyScalar(RE);
+    pos.push(p.x, p.y, p.z); uv.push(i / NU, 1 - j / NV);
+  }
+  for (let j = 0; j < NV; j++) for (let i = 0; i < NU; i++) { const a = j * (NU + 1) + i, b = a + NU + 1; idx.push(a, b, a + 1, b, b + 1, a + 1); }
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2)); g.setIndex(idx); g.computeVertexNormals();
+  gscene.add(new THREE.Mesh(g, new THREE.MeshStandardMaterial({ map: worldTex, roughness: .85, metalness: 0 })));
+  const am = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.FrontSide, toneMapped: false,
+    uniforms: { sunD: { value: SUN } },
+    vertexShader: `varying vec3 vN, vP; void main(){ vN = normalize(normal); vec4 w = modelMatrix * vec4(position, 1.); vP = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }`,
+    fragmentShader: `varying vec3 vN, vP; uniform vec3 sunD; void main(){ vec3 v = normalize(cameraPosition - vP); float r = 1. - clamp(dot(vN, v), 0., 1.);
+      float rim = pow(r, 3.2); float day = smoothstep(-.2, .45, dot(vN, sunD));
+      vec3 c = mix(vec3(.20, .36, .60), vec3(.98, .80, .58), day * .5); gl_FragColor = vec4(c * rim * (.08 + .55 * day) * .6, 1.); }` });
+  const atm = new THREE.Mesh(new THREE.SphereGeometry(RE * 1.012, 160, 80), am); atm.name = 'atm'; gscene.add(atm);
+  const gs = new THREE.DirectionalLight(0xffe6c4, 2.5); gs.position.copy(SUN.clone().multiplyScalar(5e4)); gscene.add(gs, new THREE.HemisphereLight(0x3a5878, 0x0a0a10, .6));
+  const R = mulberry(7), sp = [];
+  for (let i = 0; i < 1600; i++) { const u = R() * 2 - 1, th = R() * Math.PI * 2, r = Math.sqrt(1 - u * u); sp.push(r * Math.cos(th) * 9e4, u * 9e4, r * Math.sin(th) * 9e4); }
+  const sg = new THREE.BufferGeometry(); sg.setAttribute('position', new THREE.Float32BufferAttribute(sp, 3));
+  gscene.add(new THREE.Points(sg, new THREE.PointsMaterial({ color: 0x9aa6b4, size: 1.3, sizeAttenuation: false, transparent: true, opacity: .55, fog: false })));
+}
+
+// ---------- terrain patches (Sentinel-2 + AWS terrain on the sphere), as ../dp_maps ----------
+const PATCH = {};
+async function patch(name, o = {}) {
+  const M = await fetch(`assets/${name}_meta.json`).then(r => r.json());
+  const H = new Float32Array(await fetch(`assets/${name}_height.bin`).then(r => r.arrayBuffer()));
+  const tex = await loadTex(`assets/${name}_albedo.jpg`); tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 16;
+  const [W, S, E, N] = M.bbox, GW = M.GW, GH = M.GH, pos = new Float32Array(GW * GH * 3), uv = new Float32Array(GW * GH * 2), idx = [];
+  const lift = o.lift ?? .06;
+  for (let j = 0; j < GH; j++) for (let i = 0; i < GW; i++) {
+    const k = j * GW + i, lat = N - j / (GH - 1) * (N - S), lon = W + i / (GW - 1) * (E - W);
+    let h = Math.max(0, H[k]) / 1000 * EX;
+    if (o.sink) {
+      const b = o.sink, dIn = Math.min(lon - b[0], b[2] - lon, (lat - b[1]) * 1.0, b[3] - lat) * 111.2;
+      if (dIn > 0) h -= .15 * Math.min(1, dIn / 1.5);
+    }
+    const p = gdir(lat, lon).multiplyScalar(RE + lift + h);
+    pos.set([p.x, p.y, p.z], k * 3); uv.set([i / (GW - 1), 1 - j / (GH - 1)], k * 2);
+  }
+  const hole = o.hole;
+  const inH = (j, i) => { if (!hole) return false; const lat = N - j / (GH - 1) * (N - S), lon = W + i / (GW - 1) * (E - W); return lon > hole[0] && lon < hole[2] && lat > hole[1] && lat < hole[3]; };
+  for (let j = 0; j < GH - 1; j++) for (let i = 0; i < GW - 1; i++) {
+    if (inH(j, i) && inH(j + 1, i + 1) && inH(j, i + 1) && inH(j + 1, i)) continue;
+    const a = j * GW + i, b = a + GW; idx.push(a, b, a + 1, b, b + 1, a + 1);
+  }
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(pos, 3)); g.setAttribute('uv', new THREE.BufferAttribute(uv, 2));
+  g.setIndex(idx); g.computeVertexNormals();
+  const mat = new THREE.MeshStandardMaterial({ map: tex, roughness: .92, metalness: 0 });
+  if (o.front) Object.assign(mat, { polygonOffset: true, polygonOffsetFactor: -2 * o.front, polygonOffsetUnits: -4 * o.front });
+  const mesh = new THREE.Mesh(g, mat); mesh.frustumCulled = false; gscene.add(mesh);
+  const hAt = (lat, lon) => {
+    const x = clamp((lon - W) / (E - W)) * (GW - 1), y = clamp((N - lat) / (N - S)) * (GH - 1), i = Math.min(GW - 2, Math.floor(x)), j = Math.min(GH - 2, Math.floor(y)), fx = x - i, fy = y - j;
+    const v = (jj, ii) => Math.max(0, H[jj * GW + ii]);
+    return lift + (v(j, i) * (1 - fx) * (1 - fy) + v(j, i + 1) * fx * (1 - fy) + v(j + 1, i) * (1 - fx) * fy + v(j + 1, i + 1) * fx * fy) / 1000 * EX;
+  };
+  return PATCH[name] = { M, H, mesh, hAt, W, S, E, N, GW, GH, lift };
+}
+const inset = (b, d) => [b[0] + d, b[1] + d, b[2] - d, b[3] - d];
+const bbox = n => fetch(`assets/${n}_meta.json`).then(r => r.json()).then(m => m.bbox);
+const PFX = { sealand: 'sl', liberland: 'lb', hutt: 'ht' }[CLIP];
+const [PW, PM, PD] = [PFX + 'w', PFX + 'm', PFX + 'd'];
+const bM = await bbox(PM), bD = await bbox(PD);
+const WIDE = await patch(PW, { hole: inset(bM, .08), sink: bM, lift: .04 });
+const MED = await patch(PM, { hole: inset(bD, .04), sink: bD, front: 1, lift: .05 });
+const DET = await patch(PD, { front: 2 });
+// ground height (km above the sphere) from the finest patch that covers the point
+const inB = (P, la, lo) => lo > P.W && lo < P.E && la > P.S && la < P.N;
+const gH = (la, lo) => inB(DET, la, lo) ? DET.hAt(la, lo) : inB(MED, la, lo) ? MED.hAt(la, lo) : inB(WIDE, la, lo) ? WIDE.hAt(la, lo) : 0;
+gscene.fog = new THREE.Fog(CLIP === 'hutt' ? 0xb8a690 : 0x95a8bc, 1e6, 2e6);
+gscene.getObjectByName('atm').material.fog = false;
+const gcam = new THREE.PerspectiveCamera(28, Wd / Ht, 1, 2e5);
+
+// ---------- camera: [log distance km, tilt°, heading°, target lat, lon, target altitude km, view offset y px] ----------
+const L = Math.log;
+const CAM = track({
+  sealand: [
+    [0.0, [L(30000), 0, 180, 44.0, -6.0, 0, 0]],
+    [1.6, [L(11000), 0, 180, 49.5, -1.0, 0, 0]],
+    [4.2, [L(950), 12, 180, 52.0, 0.9, 0, 0]],
+    [6.8, [L(760), 16, 182, 51.98, 1.05, 0, 0]],
+    [9.4, [L(170), 30, 190, 51.92, 1.42, 0, 0]],
+    [12.4, [L(75), 40, 200, 51.915, 1.42, 0, 0]],
+    [14.6, [L(46), 47, 210, 51.912, 1.405, 0, 0]],
+    [20.4, [L(38), 52, 228, 51.908, 1.415, 0, 0]]],
+  liberland: [
+    [0.0, [L(30000), 0, 180, 38.0, 12.0, 0, 0]],
+    [1.6, [L(10000), 0, 180, 43.5, 17.0, 0, 0]],
+    [3.8, [L(340), 18, 180, 45.72, 18.85, 0, 0]],
+    [5.6, [L(70), 32, 184, 45.765, 18.868, 0, 0]],
+    [7.6, [L(24), 44, 190, LB[0], LB[1], .08, 0]],
+    [12.0, [L(17.5), 49, 200, LB[0], LB[1], .08, 0]],
+    [20.14, [L(15.5), 52, 222, LB[0], LB[1] + .002, .08, 0]]],
+  hutt: [
+    [0.0, [L(30000), 0, 180, -26.0, 132.0, 0, 0]],
+    [3.6, [L(25000), 0, 180, -26.5, 128.0, 0, 0]],
+    [6.4, [L(6500), 0, 180, -27.5, 119.0, 0, 0]],
+    [9.4, [L(700), 14, 180, -28.0, 115.2, 0, 0]],
+    [12.0, [L(150), 28, 184, -28.08, 114.55, .1, 0]],
+    [15.0, [L(62), 40, 192, HT[0], HT[1], .15, 0]],
+    [17.2, [L(66), 42, 200, HT[0], HT[1] + .02, .15, 0]],
+    [19.59, [L(150), 36, 196, HT[0] + .05, HT[1] + .2, .1, 0]]],
+}[CLIP]);
+function setCam(t) {
+  let [ld, tilt, head, tla, tlo, alt, oy] = CAM(clamp(t, 0, FULL)), dist = Math.exp(ld);
+  const U = gdir(tla, tlo), T = U.clone().multiplyScalar(RE + alt);
+  const north = new THREE.Vector3(0, 1, 0).addScaledVector(U, -U.y).normalize(), east = new THREE.Vector3().crossVectors(north, U);
+  const Hd = north.clone().multiplyScalar(Math.cos(head * D2R)).addScaledVector(east, Math.sin(head * D2R));
+  const tr = tilt * D2R;
+  gcam.position.copy(T).addScaledVector(U, dist * Math.cos(tr)).addScaledVector(Hd, dist * Math.sin(tr));
+  gcam.up.copy(Hd.clone().negate().multiplyScalar(Math.cos(tr)).addScaledVector(U, Math.sin(tr)).normalize());
+  gcam.lookAt(T);
+  if (Math.abs(oy) > .01) gcam.setViewOffset(Wd, Ht, 0, oy, Wd, Ht); else gcam.clearViewOffset();
+  gcam.near = Math.max(.5, dist * .15); gcam.far = 2e5; gcam.updateProjectionMatrix(); gcam.updateMatrixWorld();
+  const fz = 1 - ss(seg(Math.log(dist), Math.log(90), Math.log(400)));
+  gscene.fog.near = lerp(1e6, dist * 1.4, fz); gscene.fog.far = lerp(2e6, dist * 6, fz);
+  return dist;
+}
+
+// ---------- post ----------
+const gpost = makePost(renderer, gscene, gcam, Wd, Ht, { ssaa: SS, ao: false });
+gpost.dof.maxCoc = 0; gpost.bloom.strength = .55; gpost.bloom.radius = .6; gpost.bloom.threshold = .95;
+const GU = gpost.vig.uniforms; GU.amt.value = .5; GU.warm.value = .15; GU.sat.value = .95; GU.contrast.value = .12;
+
+// ---------- overlay ----------
+const ov = document.createElement('canvas'); ov.width = Wd * 2; ov.height = Ht * 2; ov.style.width = Wd + 'px'; ov.style.height = Ht + 'px'; document.body.appendChild(ov);
+const g = ov.getContext('2d');
+await Promise.all(['500 20px Fira', '600 20px Fira'].map(f => document.fonts.load(f, 'АБВ абв ≈ 13 км²')));
+const C = { light: '#f6eee0', amber: '#ffc36b', num: '#ffd08a', dim: 'rgba(240,232,216,.82)' };
+const SAFE_Y = Ht - 250;                             // the bottom 250 px stay free of labels (Russian subtitles are burned in later)
+let TX = [];
+function txt(s, x, y, o) {
+  g.save(); g.font = `${o.w || 500} ${o.size}px Fira`; g.letterSpacing = (o.sp || 0) + 'px';
+  g.textAlign = o.align || 'center'; g.textBaseline = 'middle'; g.globalAlpha = clamp(o.a ?? 1); g.fillStyle = o.col || C.light;
+  g.shadowColor = 'rgba(2,4,8,.9)'; g.shadowBlur = 16;
+  g.fillText(s, x, y); g.shadowBlur = 0; g.fillText(s, x, y); const w = g.measureText(s).width;
+  const x0 = o.align === 'left' ? x : o.align === 'right' ? x - w : x - w / 2;
+  if ((o.a ?? 1) > .5) TX.push({ text: s, x0, y0: y - o.size * .6, x1: x0 + w, y1: y + o.size * .6 });
+  g.restore(); return w;
+}
+function dot(x, y, r, col, a = 1, blur = 0) { g.save(); g.globalAlpha = clamp(a); g.fillStyle = col; if (blur) { g.shadowColor = col; g.shadowBlur = blur; } g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); g.restore(); }
+function ring(x, y, r, col, a, w = 2) { if (a <= 0) return; g.save(); g.globalAlpha = clamp(a); g.strokeStyle = col; g.lineWidth = w; g.beginPath(); g.arc(x, y, r, 0, 7); g.stroke(); g.restore(); }
+function line(x0, y0, x1, y1, col, a, w = 2, dash = null, glow = 0) { if (a <= 0) return; g.save(); g.globalAlpha = clamp(a); g.strokeStyle = col; g.lineWidth = w; g.lineCap = 'round';
+  if (dash) g.setLineDash(dash); if (glow) { g.shadowColor = col; g.shadowBlur = glow; } g.beginPath(); g.moveTo(x0, y0); g.lineTo(x1, y1); g.stroke(); g.restore(); }
+const scr = v => { const p = v.clone().project(gcam); return [(p.x + 1) / 2 * Wd, (1 - p.y) / 2 * Ht, p.z]; };
+const facing = v => v.clone().normalize().dot(gcam.position.clone().sub(v).normalize()) > -0.2;
+const at = (ll, lift = 0) => { const P = gdir(...ll).multiplyScalar(RE + lift); return facing(P) ? scr(P) : null; };
+const atG = ll => at(ll, gH(...ll));                 // on the ground
+function pin(p, t, t0, a = 1) {
+  if (!p || t < t0 || a <= 0) return;
+  const k = seg(t, t0, t0 + .7), pop = 1 + .6 * Math.exp(-Math.pow((t - t0 - .08) / .08, 2));
+  ring(p[0], p[1], 8 + 46 * eo(k), C.amber, a * (1 - k) * .9, 2.5);
+  dot(p[0], p[1], 11 * pop, 'rgba(255,170,80,.35)', a, 20);
+  dot(p[0], p[1], 6.5 * pop, '#ffd9a0', a, 10);
+  return p;
+}
+function labelAt(p, s, a, o = {}) {
+  if (!p || a <= 0) return;
+  return txt(s, p[0] + (o.dx || 0), p[1] + (o.dy || 0), { size: o.size || 44, w: o.w || 600, sp: o.sp ?? 2, align: o.align || 'left', col: o.col || C.light, a });
+}
+// a date at the upper left with a drawn underline (as the Nyos clip)
+function dateCard(s, t, t0, w) {
+  const a = ss(seg(t, t0, t0 + .45)); if (a <= 0) return;
+  txt(s, 110, 130, { size: 64, w: 600, sp: 1, align: 'left', col: C.num, a });
+  line(112, 176, 112 + w * eo(seg(t, t0 + .1, t0 + .8)), 176, C.amber, a * .9, 2.5);
+}
+// great-circle points between two lat/lon (for short lines)
+function gcLL(A, B, n) {
+  const a = gdir(...A), b = gdir(...B), om = Math.acos(clamp(a.dot(b), -1, 1)), out = [];
+  for (let i = 0; i <= n; i++) { const f = i / n, s = Math.sin(om);
+    const v = a.clone().multiplyScalar(Math.sin((1 - f) * om) / s).add(b.clone().multiplyScalar(Math.sin(f * om) / s)).normalize();
+    out.push([Math.asin(v.y) / D2R, Math.atan2(v.x, v.z) / D2R]); }
+  return out;
+}
+// a projected path on the ground drawn up to fraction k (by length on screen), with a dark under-stroke and a glow
+function pathDraw(lls, k, a, o = {}) {
+  if (a <= 0 || k <= 0) return null;
+  const P = lls.map(ll => atG(ll)); if (P.some(p => !p)) return null;
+  const cum = [0]; for (let i = 1; i < P.length; i++) cum.push(cum[i - 1] + Math.hypot(P[i][0] - P[i - 1][0], P[i][1] - P[i - 1][1]));
+  const Lk = cum[cum.length - 1] * clamp(k);
+  const pts = [P[0]];
+  for (let i = 1; i < P.length; i++) {
+    if (cum[i] <= Lk) pts.push(P[i]);
+    else { const f = (Lk - cum[i - 1]) / Math.max(1e-6, cum[i] - cum[i - 1]); pts.push([lerp(P[i - 1][0], P[i][0], f), lerp(P[i - 1][1], P[i][1], f)]); break; }
+  }
+  const stroke = (col, w, glow, dash) => { g.save(); g.globalAlpha = clamp(a); g.strokeStyle = col; g.lineWidth = w; g.lineCap = 'round'; g.lineJoin = 'round';
+    if (dash) g.setLineDash(dash); if (glow) { g.shadowColor = col; g.shadowBlur = glow; }
+    g.beginPath(); pts.forEach((p, i) => i ? g.lineTo(p[0], p[1]) : g.moveTo(p[0], p[1])); g.stroke(); g.restore(); };
+  if (o.fill && k >= 1) { g.save(); g.globalAlpha = clamp(a * o.fill); g.fillStyle = C.amber; g.beginPath(); P.forEach((p, i) => i ? g.lineTo(p[0], p[1]) : g.moveTo(p[0], p[1])); g.closePath(); g.fill(); g.restore(); }
+  stroke('rgba(10,14,20,.55)', (o.w || 3) + 4, 0, o.dash);
+  stroke(C.amber, o.w || 3, o.glow ?? 10, o.dash);
+  return { P, end: pts[pts.length - 1] };
+}
+const EVN = [];
+let frameFn;
+
+// ================= SEALAND =================
+if (CLIP === 'sealand') {
+  const T_DATE = 4.6, T_GB = 3.6, T_PIN = 9.5, T_RT = 10.4, T_SEA = 11.9, T_L0 = 12.9, T_L1 = 14.0, T_D = 13.9, T_SL = 18.9;
+  EVN.push({ t: 0, k: 'whoosh' }, { t: T_DATE, k: 'pin' }, { t: T_PIN, k: 'pin' }, { t: T_L0, k: 'rise' }, { t: T_L1, k: 'pin' }, { t: T_SL, k: 'pin' });
+  const LINE = gcLL(LG, SL, 40);
+  frameFn = t => {
+    const dist = setCam(t);
+    renderer.toneMappingExposure = 1.6 + .15 * (1 - ss(seg(Math.log(dist), Math.log(60), Math.log(800))));
+    gpost.composer.render();
+    g.setTransform(2, 0, 0, 2, 0, 0); g.clearRect(0, 0, Wd, Ht); TX = [];
+    dateCard('сентябрь 1967', t, T_DATE, 380);
+    // «Великобритания» over the land while the view is wide
+    const aGB = ss(seg(t, T_GB, T_GB + .5)) * (1 - ss(seg(t, 8.0, 8.8)));
+    labelAt(at([52.35, -0.2], .2), 'Великобритания', aGB, { align: 'center', size: 46, w: 600, sp: 3, col: C.dim });
+    // the line from the coast to the fort, «≈ 13 км» beside its middle
+    const kL = eio(seg(t, T_L0, T_L1)), aL = ss(seg(t, T_L0 - .1, T_L0 + .2));
+    const r = pathDraw(LINE, kL, aL, { w: 3, dash: [12, 9], glow: 8 });
+    if (r && kL > 0) { dot(r.P[0][0], r.P[0][1], 5, '#ffe2b0', aL, 10); }
+    if (r) { const m = r.P[20], d0 = r.P[0], d1 = r.P[40]; let nx = d1[1] - d0[1], ny = -(d1[0] - d0[0]); const l = Math.hypot(nx, ny) || 1; nx /= l; ny /= l;
+      if (ny > 0) { nx = -nx; ny = -ny; }        // the label above the line
+      labelAt([m[0] + nx * 40, m[1] + ny * 40], '≈ 13 км', ss(seg(t, T_D, T_D + .4)), { align: 'center', size: 50, col: C.num, sp: 1 }); }
+    // «Северное море» on the open sea
+    labelAt(atG([51.935, 1.66]), 'Северное море', ss(seg(t, T_SEA, T_SEA + .5)), { align: 'center', size: 48, w: 600, sp: 3, col: C.dim });
+    // the fort: pin, «Рафс-Тауэр» / «морской форт», then «княжество Силенд» takes the top line
+    const pS = pin(atG(SL), t, T_PIN);
+    if (pS) {
+      const kS = ss(seg(t, T_SL, T_SL + .45));
+      labelAt(pS, 'Рафс-Тауэр', ss(seg(t, T_RT, T_RT + .4)) * (1 - kS), { dx: 30, dy: -8, size: 52 });
+      labelAt(pS, 'морской форт', ss(seg(t, T_RT + .2, T_RT + .6)) * (1 - kS), { dx: 31, dy: 40, size: 32, w: 500, col: C.dim, sp: 1 });
+      labelAt(pS, 'княжество', kS, { dx: 31, dy: -52, size: 34, w: 500, col: C.dim, sp: 2 });
+      labelAt(pS, 'Силенд', kS, { dx: 30, dy: -4, size: 66 });
+      labelAt(pS, 'Рафс-Тауэр', kS * .9, { dx: 31, dy: 46, size: 32, w: 500, col: C.dim, sp: 1 });
+    }
+  };
+}
+
+// ================= LIBERLAND =================
+if (CLIP === 'liberland') {
+  const SIGA = await fetch('assets/siga_osm.json').then(r => r.json());   // [lat, lon] ring, OSM relation 19735507
+  const T_DATE = .5, T_PIN = 4.3, T_DN = 6.2, T_HR = 7.5, T_SR = 8.3, T_O0 = 8.8, T_O1 = 10.0, T_KM = 9.7, T_PULSE = 16.0;
+  EVN.push({ t: 0, k: 'whoosh' }, { t: T_DATE, k: 'pin' }, { t: T_PIN, k: 'pin' }, { t: T_HR, k: 'pin' }, { t: T_SR, k: 'pin' }, { t: T_O0, k: 'rise' }, { t: T_KM, k: 'pin' });
+  frameFn = t => {
+    const dist = setCam(t);
+    renderer.toneMappingExposure = 1.65 + .15 * (1 - ss(seg(Math.log(dist), Math.log(60), Math.log(800))));
+    gpost.composer.render();
+    g.setTransform(2, 0, 0, 2, 0, 0); g.clearRect(0, 0, Wd, Ht); TX = [];
+    dateCard('2015', t, T_DATE, 150);
+    // the plot: outline drawn round, then a faint fill; a soft pulse when the narration calls it «ничей»
+    const kO = eio(seg(t, T_O0, T_O1)), aO = ss(seg(t, T_O0 - .1, T_O0 + .2));
+    const pul = Math.exp(-Math.pow((t - T_PULSE) / .35, 2));
+    pathDraw(SIGA, kO, aO, { w: 3 + 1.5 * pul, glow: 10 + 14 * pul, fill: (.16 + .14 * pul) * ss(seg(t, T_O1 - .1, T_O1 + .5)) });
+    // pin while the place is small; the outline is the mark up close
+    const far = ss(seg(Math.log(dist), Math.log(30), Math.log(90)));
+    const pL = atG(LB);
+    pin(pL, t, T_PIN, Math.max(far, 1 - ss(seg(t, T_O0, T_O1))));
+    if (pL) {
+      const y0 = pL[1] - lerp(lerp(150, 115, ss(seg(t, 8, 11))), 44, far);
+      labelAt([pL[0], y0], 'Либерленд', ss(seg(t, T_PIN + .1, T_PIN + .45)), { align: 'center', size: 58 });
+      labelAt([pL[0] - 8, pL[1] + 4], '≈ 7 км²', ss(seg(t, T_KM, T_KM + .4)), { align: 'center', size: 44, col: C.num, sp: 1 });   // inside the plot
+    }
+    labelAt(atG([45.818, 18.857]), 'Дунай', ss(seg(t, T_DN, T_DN + .45)), { align: 'center', size: 44, w: 600, sp: 4, col: '#cfe3ee' });
+    labelAt(atG([45.800, 18.818]), 'Хорватия', ss(seg(t, T_HR, T_HR + .45)), { align: 'center', size: 50, w: 600, sp: 4, col: C.dim });
+    labelAt(atG([45.778, 18.958]), 'Сербия', ss(seg(t, T_SR, T_SR + .45)), { align: 'center', size: 50, w: 600, sp: 4, col: C.dim });
+  };
+}
+
+// ================= HUTT RIVER =================
+if (CLIP === 'hutt') {
+  const T_AU = 3.0, T_DATE = 5.9, T_PIN = 11.2, T_HR = 13.9, T_KM = 15.7, T_WA = 17.6;
+  EVN.push({ t: 0, k: 'whoosh' }, { t: T_AU, k: 'pin' }, { t: T_DATE, k: 'pin' }, { t: T_PIN, k: 'pin' }, { t: T_HR, k: 'pin' }, { t: T_KM, k: 'pin' }, { t: T_WA, k: 'pin' });
+  frameFn = t => {
+    const dist = setCam(t);
+    renderer.toneMappingExposure = 1.05 + .2 * (1 - ss(seg(Math.log(dist), Math.log(60), Math.log(800))));
+    gpost.composer.render();
+    g.setTransform(2, 0, 0, 2, 0, 0); g.clearRect(0, 0, Wd, Ht); TX = [];
+    labelAt(at([-24.5, 134.0], 50), 'Австралия', ss(seg(t, T_AU, T_AU + .5)) * (1 - ss(seg(t, 6.0, 6.7))), { align: 'center', size: 56, w: 600, sp: 4 });
+    dateCard('1970', t, T_DATE, 150);
+    const pH = pin(atG(HT), t, T_PIN);
+    if (pH) {
+      labelAt(pH, 'Хатт-Ривер', ss(seg(t, T_HR, T_HR + .4)), { dx: 30, dy: -8, size: 58 });
+      labelAt(pH, '≈ 75 км²', ss(seg(t, T_KM, T_KM + .4)), { dx: 31, dy: 44, size: 42, col: C.num, sp: 1 });
+    }
+    txt('Западная Австралия', 110, 236, { size: 46, w: 600, sp: 1, align: 'left', col: C.light, a: ss(seg(t, T_WA, T_WA + .5)) });   // under the date, as in the Nyos clip
+  };
+}
+
+const frame = t => { frameFn(t);
+  if (Q.has('nosafe')) { g.save(); g.fillStyle = 'rgba(255,0,0,.18)'; g.fillRect(0, SAFE_Y, Wd, 250); g.restore(); } };
+window.DUR = FULL;
+window.render = t => frame(t);
+window.TEXTS = t => { window.render(t); return TX.map(o => ({ ...o })); };
+window.EV = EVN.map(e => ({ ...e, t: +e.t.toFixed(2) }));
+window.render(0);
+window.READY = true;
+</script>
+</body></html>

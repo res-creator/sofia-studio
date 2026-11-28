@@ -1,0 +1,7 @@
+Как создать свою страну · board film PART 1 (film 0.00–102.62: cold open «ХОЛОДНЫЙ СТАРТ» (no card; the assembler makes the title) + chapter «ЧЕТЫРЕ ГАЛОЧКИ»; Engineering Briefing Board) — credits
+
+No photographs are used in this part. Everything (platform, flag, boat, the four example sketches, the treaty card, the checklist,
+the fence) is drawn in marker by scenes/_gen_film.py.
+Coastline of the Americas: johan/world.geo.json (public domain open boundary data), Mercator, simplified.
+archive montevideo_conf (Fedaro, CC BY 3.0) deliberately not used: it shows a modern convention, not the 1933 conference.
+Fonts: Pangolin, Fira Sans Condensed, IBM Plex Mono — SIL OFL 1.1.

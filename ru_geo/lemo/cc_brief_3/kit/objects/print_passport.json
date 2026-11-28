@@ -1,0 +1,15 @@
+{
+  "id": "print_passport",
+  "w": 1744,
+  "h": 1344,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/hutt_passport.jpg",
+    "id": "print_passport",
+    "crop": "0,0,1920,1440",
+    "w": 1600,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

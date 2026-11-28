@@ -1,0 +1,15 @@
+{
+  "id": "print_conch",
+  "w": 1852,
+  "h": 1284,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/conch_republic.jpg",
+    "id": "print_conch",
+    "crop": "0,0,1920,1279",
+    "w": 1700,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

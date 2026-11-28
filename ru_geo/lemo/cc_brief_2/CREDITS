@@ -1,0 +1,18 @@
+Как создать свою страну · board film PART 2 (film 102.62–178.76: chapter «ПЛАТФОРМА В МОРЕ», Sealand; Engineering Briefing Board) — credits
+
+Photographs (ru_geo/create_country/archive/img, see archive/credits.json; uncut crops on photo paper, kit/tools/make_print.py)
+  print_tower.png   sealand_tower.jpg — Rough Tower — David P Howard, CC BY-SA 2.0 (--crop 560,260,1920,1300)
+                    commons.wikimedia.org/wiki/File:Rough_Tower_-_geograph.org.uk_-_3366831.jpg · on the board «Рафс-Тауэр (Силенд) · фото: David P Howard, CC BY-SA 2.0»
+  print_hall.png    chelmsford_hall.jpg — Chelmsford, The Shire Hall — Stuart Axe, CC BY-SA 4.0 (--crop 250,60,1920,1290, shop signs left out)
+                    commons.wikimedia.org/wiki/File:Chelmsford,_The_Shire_Hall.jpg · «Шир-холл в Челмсфорде, современное фото · фото: Stuart Axe, CC BY-SA 4.0»
+  print_aerial.png  sealand_aerial.jpg — Sealand from a helicopter — Ryan Lackey, CC BY 2.0 (--crop 300,120,1180,780)
+                    commons.wikimedia.org/wiki/File:Sealand-sky-2.jpg · «Силенд с вертолёта · фото: Ryan Lackey, CC BY 2.0»
+  print_bates.png   roy_bates.jpg — Roy and Joan Bates on Sealand, 1978 — Financial Times, public domain (--crop 60,60,900,800)
+                    commons.wikimedia.org/wiki/File:Roy_and_Joan_Bates_on_Sealand_1978.jpg · «Рой и Джоан Бейтс, 1978 · общественное достояние»
+
+Boundary data
+  Great Britain, Ireland, France, Belgium, Netherlands: johan/world.geo.json (Natural Earth 1:110m, public domain), /tmp/world.geo.json → scenes/geo_gb.json.
+  Sealand at 51.895° N, 1.480° E. Everything else drawn in marker. No generated images.
+
+Fonts (SIL Open Font License 1.1): Pangolin, Fira Sans Condensed, IBM Plex Mono.
+Engine: Lemo-Opuscar briefing-board kit (board.js as in ru_geo/lemo/dp_brief_2).

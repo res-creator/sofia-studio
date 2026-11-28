@@ -1,0 +1,15 @@
+{
+  "id": "print_danube",
+  "w": 1852,
+  "h": 1232,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/danube_river.jpg",
+    "id": "print_danube",
+    "crop": "0,120,1920,1340",
+    "w": 1700,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}
