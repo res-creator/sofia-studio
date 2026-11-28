@@ -229,9 +229,10 @@ for k in range(nchar):
 wavfile.write(f'{S}/title.wav', SR, (np.clip(tw, -1, 1) * 32767).astype(np.int16))
 
 master = f'{S}/{SLUG}_master.mp4'
-run(['ffmpeg', '-y', '-loglevel', 'error', '-i', f'{S}/title.mp4', '-i', f'{S}/title.wav', '-ss', f'{CUT0}', '-i', PIC, '-ss', f'{CUT0}', '-i', f'{S}/mix.wav',
+VSKIP = 0.25   # хвост старой карточки «ХОЛОДНЫЙ СТАРТ» в первых кадрах доски: картинку берём чуть позже, первый кадр держим
+run(['ffmpeg', '-y', '-loglevel', 'error', '-i', f'{S}/title.mp4', '-i', f'{S}/title.wav', '-ss', f'{CUT0 + VSKIP}', '-i', PIC, '-ss', f'{CUT0}', '-i', f'{S}/mix.wav',
      '-filter_complex', f'[1:a]aformat=sample_rates=48000:channel_layouts=stereo[ta];[3:a]aformat=sample_rates=48000:channel_layouts=stereo,atrim=0:{TOTAL - CUT0:.3f}[ba];'
-     f'[2:v]trim=0:{TOTAL - CUT0:.3f},setpts=PTS-STARTPTS[bv];[0:v][ta][bv][ba]concat=n=2:v=1:a=1[v][a]',
+     f'[2:v]trim=0:{TOTAL - CUT0 - VSKIP:.3f},setpts=PTS-STARTPTS,tpad=start_duration={VSKIP}:start_mode=clone[bv];[0:v][ta][bv][ba]concat=n=2:v=1:a=1[v][a]',
      '-map', '[v]', '-map', '[a]', '-c:v', 'libx264', '-preset', os.environ.get('PRESET', 'medium'), '-crf', '20', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', master])
 share = f'{R}/video/{SLUG}_' + ('excerpt' if END else 'share') + '.mp4'
 run(['ffmpeg', '-y', '-loglevel', 'error', '-i', master, '-vf', 'scale=1280:720', '-c:v', 'libx264', '-preset', 'medium', '-b:v', '520k', '-maxrate', '900k', '-bufsize', '1800k',
