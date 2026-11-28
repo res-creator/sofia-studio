@@ -140,23 +140,20 @@ run(['ffmpeg', '-y', '-loglevel', 'error', '-i', f'{R}/vo_clone/vo.mp3', '-i', f
      '[2:a]aformat=channel_layouts=stereo[s];[v][md][s]amix=inputs=3:duration=longest:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=7',
      '-t', f'{TOTAL:.2f}', '-ar', '48000', '-ac', '2', f'{S}/mix.wav'])
 
-# ---- субтитры в плашке (Inter 52, как в пробе)
-def ts(x): x = max(0, x); return f"{int(x // 3600)}:{int(x % 3600 // 60):02d}:{x % 60:05.2f}"
-A = ['[Script Info]', 'ScriptType: v4.00+', 'PlayResX: 1920', 'PlayResY: 1080', '', '[V4+ Styles]',
-     'Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding',
-     'Style: C,Inter,52,&H00FFFFFF,&H000000FF,&H48141414,&H48141414,1,0,0,0,100,100,0,0,3,14,0,2,120,120,60,1', '', '[Events]',
-     'Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text']
-SKIP = C['SKIP']                                       # фразы, которые печатает машинка
-for s in film['segs']:
-    for a, b, tx in s.get('captions') or []:
-        a, b = float(a), float(b)
-        if any(x <= a < y for x, y in SKIP): continue
-        A.append(f'Dialogue: 0,{ts(a)},{ts(b)},C,,0,0,0,,{tx}')
-open(f'{S}/subs.ass', 'w', encoding='utf-8').write('\n'.join(A) + '\n')
+# ---- без субтитров в кадре (владелица: их включают на YouTube); отдельный .srt для загрузки
+CUT0 = float(os.environ.get('CUT0', '1.0'))           # первая секунда (карточка «ХОЛОДНЫЙ СТАРТ») вырезается
+def st(x): x = max(0, x); return f"{int(x // 3600):02d}:{int(x % 3600 // 60):02d}:{int(x % 60):02d},{int(round((x % 1) * 1000)) % 1000:03d}"
+n = 0; srt = []
+for s_ in film['segs']:
+    for a_, b_, tx in s_.get('captions') or []:
+        a_, b_ = float(a_) - CUT0, float(b_) - CUT0
+        if b_ <= 0 or a_ >= TOTAL - CUT0: continue
+        n += 1; srt.append(f'{n}\n{st(a_)} --> {st(b_)}\n{tx}\n')
+if not END: open(f'{R}/video/{SLUG}_ru.srt', 'w', encoding='utf-8').write('\n'.join(srt))
 
 master = f'{S}/{SLUG}_master.mp4'
-run(['ffmpeg', '-y', '-loglevel', 'error', '-i', f'{S}/pic.mp4', '-i', f'{S}/mix.wav', '-vf', f'ass={S}/subs.ass', '-map', '0:v', '-map', '1:a',
-     '-c:v', 'libx264', '-preset', os.environ.get('PRESET', 'medium'), '-crf', '20', '-c:a', 'aac', '-b:a', '192k', '-t', f'{TOTAL:.2f}', '-movflags', '+faststart', master])
+run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', f'{CUT0}', '-i', f'{S}/pic.mp4', '-ss', f'{CUT0}', '-i', f'{S}/mix.wav', '-map', '0:v', '-map', '1:a',
+     '-c:v', 'libx264', '-preset', os.environ.get('PRESET', 'medium'), '-crf', '20', '-c:a', 'aac', '-b:a', '192k', '-t', f'{TOTAL - CUT0:.2f}', '-movflags', '+faststart', master])
 share = f'{R}/video/{SLUG}_' + ('excerpt' if END else 'share') + '.mp4'
 run(['ffmpeg', '-y', '-loglevel', 'error', '-i', master, '-vf', 'scale=1280:720', '-c:v', 'libx264', '-preset', 'medium', '-b:v', '520k', '-maxrate', '900k', '-bufsize', '1800k',
      '-c:a', 'aac', '-b:a', '96k', '-movflags', '+faststart', share])

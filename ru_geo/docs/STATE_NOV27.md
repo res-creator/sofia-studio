@@ -25,3 +25,9 @@ bh_map = Dubai→Jeddah map, bh_otis = Otis light table). Brief for chapter agen
 Renders are resumable; keeper: `setsid nohup sh ru_geo/lemo/tools/keep_renders.sh >> scratchpad/keep.log 2>&1 &` (restart after every container restart;
 a part renders only when its folder has .render_ready). Full assembly: `python3 ru_geo/lemo/assemble_full.py <slug>` (needs all parts in building_height/video/parts).
 Old compose pipeline (stock + flat diagrams) is retired for this channel. Next: same style for the other 8 videos.
+
+## 28 Nov: owner's changes
+- No burned-in subtitles (viewers turn them on at YouTube); each film gets ru_geo/<slug>/video/<slug>_ru.srt for upload.
+- The first second (typewriter «ХОЛОДНЫЙ СТАРТ») is cut: films start with the board and the voice. Both done in assemble_full.py (CUT0=1.0).
+- Sound effects quieter, marker = soft low rustle (SFX_GAIN 0.4).
+- Re-assembly of finished films: `setsid nohup sh ru_geo/lemo/tools/rebuild_chain.sh building_height universe_size country_sizes remote_places >> scratchpad/rebuild.log 2>&1 &` (resumable; relaunch after restarts).
