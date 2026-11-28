@@ -8,7 +8,7 @@ case "${1:-start}" in
   encode)
     [ "$have" -ge "$N" ] || { echo "not ready $have / $N"; exit 1; }
     python3 -I "$HERE/tools/sound.py" "$HERE/sound.wav" &&
-    ffmpeg -v error -y -framerate 30 -i "$FR/f_%05d.jpg" -i "$HERE/sound.wav" -frames:v $N -c:v libx264 -preset medium -crf 20 -tune grain -pix_fmt yuv420p -r 30 \
+    ffmpeg -v error -y -framerate 30 -i "$FR/f_%05d.jpg" -i "$HERE/sound.wav" -frames:v $N -c:v libx264 -preset medium -crf 21 -pix_fmt yuv420p -r 30 \
       -c:a aac -b:a 192k -shortest -movflags +faststart "$HERE/s2_documentary.tmp.mp4" && mv "$HERE/s2_documentary.tmp.mp4" "$HERE/s2_documentary.mp4" && echo encoded ;;
   *)
     pid=$(cat "$HERE/render.pid" 2>/dev/null)

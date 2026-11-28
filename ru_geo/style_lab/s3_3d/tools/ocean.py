@@ -53,6 +53,7 @@ deep = np.array([0x3d, 0x5f, 0x6a], np.float32); shelf = np.array([0x5a, 0x80, 0
 k = np.exp(-d / .45)[..., None]
 col = deep * (1 - k) + shelf * k
 col *= (1 - .10 * gx[..., None]) * (1 + .05 * ridge[..., None]) * (1 + grain[..., None] * .004)
-col[land] = shelf * 1.0
+col *= (1 - .38 * np.exp(-d / .05))[..., None]          # baked contact shadow at the foot of every slab (cheap AO)
+col[land] = shelf * .7
 Image.fromarray(np.clip(col, 0, 255).astype(np.uint8)).save(os.path.join(D, 'data/ocean_col.png'), optimize=True)
 print('ocean', W, H)

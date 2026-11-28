@@ -20,7 +20,7 @@ import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { makePost } from '/core/three/post.js';
 import { clamp, lerp, seg, ss, eio, eo, back, monotone, mulberry } from '/core/lib.js';
 
-const Wd = 1920, Ht = 1080, Q = new URLSearchParams(location.search), SS = +(Q.get('ss') || 2);
+const Wd = 1920, Ht = 1080, Q = new URLSearchParams(location.search), SS = +(Q.get('ss') || 1);
 const DUR = 14;
 const C = { bg: '#141d22', table: '#1d2a31', bone: '#ece4d3', terra: '#b8553b', ochre: '#d7a14e', ink: '#16232a' };
 const K = 36 / (2 * Math.PI), D2R = Math.PI / 180;
@@ -179,7 +179,7 @@ const dashes = new THREE.Mesh(dashRibbon([[geo.greenlandOutline]], .085, .3, .17
 dashes.rotation.x = -Math.PI / 2; dashes.position.y = .006; scene.add(dashes);
 
 // ---------- post ----------
-const post = makePost(renderer, scene, camera, Wd, Ht, { ssaa: SS, ao: true, aoRadius: .6, aoScale: 1.6, aoAmt: .7 });
+const post = makePost(renderer, scene, camera, Wd, Ht, { ssaa: SS, ao: Q.get('ao') === '1', aoRadius: .6, aoScale: 1.6, aoAmt: .7 });
 post.bloom.strength = 0; post.vig.uniforms.amt.value = .42; post.vig.uniforms.warm.value = .25; post.vig.uniforms.contrast.value = .12;
 
 // ---------- camera rig: target, distance, azimuth (0 = from the south, −90 = from the west), elevation, fov, roll ----------
