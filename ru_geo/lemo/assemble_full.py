@@ -40,6 +40,18 @@ CONF = {
        ('board_4.mp4', 439.03, 439.03, TOTAL, 'cs_brief_4')],
   EXTRA=[('globe_events.json', 3.92, 3.92, 11.15), ('lt_merc_events.json', 44.2, 44.2, 78.0)],
   SKIP=[]),
+ 'remote_places': dict(
+  SEG=[('board_1.mp4', 0, 0, 118.15, 'rp_brief_1'),
+       ('board_2.mp4', 118.15, 118.15, 134.25, 'rp_brief_2'), ('map_nemo.mp4', 134.25, 134.25, 150.96, None),
+       ('board_2.mp4', 118.15, 150.96, 241.71, 'rp_brief_2'),
+       ('board_3.mp4', 241.71, 241.71, 316.65, 'rp_brief_3'), ('lt_deep.mp4', 316.65, 316.65, 341.59, None),
+       ('board_3.mp4', 241.71, 341.59, 343.74, 'rp_brief_3'),
+       ('board_4.mp4', 343.74, 343.74, 347.36, 'rp_brief_4'), ('map_tristan.mp4', 347.36, 347.36, 362.56, None),
+       ('board_4.mp4', 343.74, 362.56, 461.1, 'rp_brief_4'),
+       ('board_5.mp4', 461.1, 461.1, TOTAL, 'rp_brief_5')],
+  EXTRA=[('map_nemo_events.json', 134.25, 134.25, 150.96), ('lt_deep_events.json', 316.65, 316.65, 341.59),
+         ('map_tristan_events.json', 347.36, 347.36, 362.56)],
+  SKIP=[]),
 }
 C = CONF[SLUG]; SEG, EXTRA_EV = C['SEG'], C['EXTRA']
 END = float(os.environ.get('END', 0))                    # END=127.7: только кусок с начала (на согласование)
