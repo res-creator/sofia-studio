@@ -235,6 +235,6 @@ run(['ffmpeg', '-y', '-loglevel', 'error', '-i', f'{S}/title.mp4', '-i', f'{S}/t
      f'[2:v]trim=0:{TOTAL - CUT0 - VSKIP:.3f},setpts=PTS-STARTPTS,tpad=start_duration={VSKIP}:start_mode=clone[bv];[0:v][ta][bv][ba]concat=n=2:v=1:a=1[v][a]',
      '-map', '[v]', '-map', '[a]', '-c:v', 'libx264', '-preset', os.environ.get('PRESET', 'medium'), '-crf', '20', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', master])
 share = f'{R}/video/{SLUG}_' + ('excerpt' if END else 'share') + '.mp4'
-run(['ffmpeg', '-y', '-loglevel', 'error', '-i', master, '-vf', 'scale=1280:720', '-c:v', 'libx264', '-preset', 'medium', '-b:v', '520k', '-maxrate', '900k', '-bufsize', '1800k',
+run(['ffmpeg', '-y', '-loglevel', 'error', '-i', master, '-vf', 'scale=1280:720', '-c:v', 'libx264', '-preset', os.environ.get('SHARE_PRESET', 'fast'), '-b:v', '520k', '-maxrate', '900k', '-bufsize', '1800k',
      '-c:a', 'aac', '-b:a', '96k', '-movflags', '+faststart', share])
 print('done', master, share, os.path.getsize(share) // 1048576, 'MB')
