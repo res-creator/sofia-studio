@@ -45,3 +45,7 @@ ru_geo/stock/
 *.mp3.part
 
 ru_geo/*/vo_clone/c/
+
+# B-roll stock clips (licensed, large): not committed
+ru_geo/*/archive/broll/*.mp4
+ru_geo/*/archive/broll/*.mov

@@ -87,6 +87,34 @@ if segs:
   open(f'{S}/list.txt', 'w').write(''.join(f"file '{x}'\n" for x in segs))
   run(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', f'{S}/list.txt', '-c', 'copy', f'{S}/pic.mp4'])
 
+# ---- вставки: настоящие видео и фото на весь экран поверх доски (ru_geo/<slug>/video/inserts.json)
+# формат: [{"a": фильм-сек, "b": фильм-сек, "file": путь от ru_geo/<slug>/, "kind": "video"|"photo", "ss": начало в файле}]
+INS = f'{R}/video/inserts.json'
+if os.path.exists(INS) and not os.environ.get('NO_INSERTS'):
+    ins = [x for x in json.load(open(INS)) if (not END or x['a'] < END)]
+    parts = []
+    for i, x in enumerate(ins):
+        d = x['b'] - x['a']; o = f'{S}/ins{i}.mp4'; src = f'{R}/{x["file"]}'
+        if x.get('kind') == 'photo':     # фото целиком, без обрезки, на размытом фоне; лёгкое движение не трогает края
+            vf = ('[0:v]scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,boxblur=30:3,eq=brightness=-0.08[bg];'
+                  '[0:v]scale=1920:1080:force_original_aspect_ratio=decrease[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2,format=yuv420p')
+            run(['ffmpeg', '-y', '-loglevel', 'error', '-loop', '1', '-i', src, '-t', f'{d:.3f}', '-r', '30', '-filter_complex', vf, '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '16', o])
+        else:                             # видео: заполнить кадр, без звука
+            run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', f'{x.get("ss", 0)}', '-i', src, '-t', f'{d:.3f}', '-an', '-r', '30',
+                 '-vf', 'scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,setsar=1,format=yuv420p,tpad=stop_mode=clone:stop_duration=2', '-t', f'{d:.3f}',
+                 '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '16', o])
+        parts.append((o, x['a'], x['b']))
+    if parts:
+        args = ['ffmpeg', '-y', '-loglevel', 'error', '-i', f'{S}/pic.mp4']
+        fc, last = '', '0:v'
+        for k, (o, a, b) in enumerate(parts):
+            args += ['-i', o]; fc += f'[{k + 1}:v]setpts=PTS-STARTPTS+{a:.3f}/TB[i{k}];[{last}][i{k}]overlay=enable=\'between(t,{a:.3f},{b - 0.01:.3f})\':eof_action=pass[o{k}];'; last = f'o{k}'
+        run(args + ['-filter_complex', fc.rstrip(';'), '-map', f'[{last}]', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '16', '-pix_fmt', 'yuv420p', f'{S}/pic_ins.mp4'])
+        os.replace(f'{S}/pic_ins.mp4', f'{S}/pic_final.mp4')
+else:
+    if os.path.exists(f'{S}/pic_final.mp4'): os.remove(f'{S}/pic_final.mp4')
+PIC = f'{S}/pic_final.mp4' if os.path.exists(f'{S}/pic_final.mp4') else f'{S}/pic.mp4'
+
 # ---- шумы из событий всех частей
 SR = 48000; out = np.zeros(int((TOTAL + 2) * SR)); rng = np.random.default_rng(7)
 def bp(x, lo, hi): return sosfilt(butter(2, [lo, hi], 'bandpass', fs=SR, output='sos'), x)
@@ -141,19 +169,70 @@ run(['ffmpeg', '-y', '-loglevel', 'error', '-i', f'{R}/vo_clone/vo.mp3', '-i', f
      '-t', f'{TOTAL:.2f}', '-ar', '48000', '-ac', '2', f'{S}/mix.wav'])
 
 # ---- без субтитров в кадре (владелица: их включают на YouTube); отдельный .srt для загрузки
-CUT0 = float(os.environ.get('CUT0', '1.0'))           # первая секунда (карточка «ХОЛОДНЫЙ СТАРТ») вырезается
+# ---- вместо карточки «ХОЛОДНЫЙ СТАРТ» (первая секунда) машинка печатает название ролика (TITLE_DUR секунд)
+CUT0 = float(os.environ.get('CUT0', '1.0'))
+TITLES = {'building_height': 'Как высоко можно построить?', 'universe_size': 'Размер Вселенной',
+          'country_sizes': 'Реальный размер стран', 'remote_places': 'Самое отдалённое место человечества',
+          'deadly_places': '7 мест, где человек не выживет без защиты'}
+def kit_title():
+    try:
+        h = open(f'{R}/UPLOAD_KIT.md', encoding='utf-8').readline()
+        return h.split(':', 1)[1].strip() if ':' in h else SLUG
+    except Exception: return SLUG
+TITLE = TITLES.get(SLUG) or kit_title(); TITLE_DUR = 3.0
+SHIFT = TITLE_DUR - CUT0                                  # время фильма → время ролика
 def st(x): x = max(0, x); return f"{int(x // 3600):02d}:{int(x % 3600 // 60):02d}:{int(x % 60):02d},{int(round((x % 1) * 1000)) % 1000:03d}"
 n = 0; srt = []
 for s_ in film['segs']:
     for a_, b_, tx in s_.get('captions') or []:
-        a_, b_ = float(a_) - CUT0, float(b_) - CUT0
-        if b_ <= 0 or a_ >= TOTAL - CUT0: continue
+        a_, b_ = float(a_) + SHIFT, float(b_) + SHIFT
+        if b_ <= TITLE_DUR or a_ >= TOTAL + SHIFT: continue
         n += 1; srt.append(f'{n}\n{st(a_)} --> {st(b_)}\n{tx}\n')
 if not END: open(f'{R}/video/{SLUG}_ru.srt', 'w', encoding='utf-8').write('\n'.join(srt))
 
+# титульная карточка: чёрный фон, моноширинный шрифт, буквы печатаются, оранжевый курсор (как карточки глав)
+from PIL import Image, ImageDraw, ImageFont
+fnt = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf', 76)
+words, lines, cur = TITLE.split(), [], ''
+dd = ImageDraw.Draw(Image.new('RGB', (10, 10)))
+for w in words:
+    tr = (cur + ' ' + w).strip()
+    if dd.textlength(tr, font=fnt) > 1500 and cur: lines.append(cur); cur = w
+    else: cur = tr
+lines.append(cur)
+nchar = sum(len(l.replace(' ', '')) for l in lines); T0, T1 = 0.25, min(1.9, 0.25 + nchar * 0.055)
+ff = subprocess.Popen(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', '1920x1080', '-r', '30', '-i', '-',
+                       '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '16', '-pix_fmt', 'yuv420p', f'{S}/title.mp4'], stdin=subprocess.PIPE)
+keys = []
+for fi in range(int(TITLE_DUR * 30)):
+    t = fi / 30; im = Image.new('RGB', (1920, 1080), (5, 5, 6)); d = ImageDraw.Draw(im)
+    shown = int(nchar * min(1, max(0, (t - T0) / (T1 - T0))) + (1 if t >= T1 else 0)); shown = min(shown, nchar)
+    lh = 104; y0 = 540 - lh * len(lines) / 2; cx = cy = None; left = shown
+    for i, ln in enumerate(lines):
+        x0 = 960 - dd.textlength(ln, font=fnt) / 2; txt = ''
+        for ch in ln:
+            if ch != ' ':
+                if left <= 0: break
+                left -= 1
+            txt += ch
+        d.text((x0, y0 + i * lh), txt, font=fnt, fill=(242, 240, 234))
+        if txt: cx, cy = x0 + dd.textlength(txt, font=fnt), y0 + i * lh
+    if cx is None: cx, cy = 960 - dd.textlength(lines[0], font=fnt) / 2, y0
+    if t < T1 or int(t * 2.4) % 2 == 0: d.rectangle([cx + 10, cy + 8, cx + 48, cy + 84], fill=(217, 119, 87))
+    ff.stdin.write(im.tobytes())
+ff.stdin.close(); ff.wait()
+tw = np.zeros(int(TITLE_DUR * SR))
+for k in range(nchar):
+    t = T0 + (T1 - T0) * k / max(1, nchar - 1); i = int(t * SR); nn = int(.045 * SR)
+    x = bp(rng.standard_normal(nn), 1500, 7000) * np.exp(-np.linspace(0, 1, nn) * 18)
+    tw[i:i + nn] += (x + .5 * np.sin(2 * np.pi * 170 * np.arange(nn) / SR) * np.exp(-np.linspace(0, 1, nn) * 25))[:len(tw) - i] * .2 * float(os.environ.get('SFX_GAIN', '0.4'))
+wavfile.write(f'{S}/title.wav', SR, (np.clip(tw, -1, 1) * 32767).astype(np.int16))
+
 master = f'{S}/{SLUG}_master.mp4'
-run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', f'{CUT0}', '-i', f'{S}/pic.mp4', '-ss', f'{CUT0}', '-i', f'{S}/mix.wav', '-map', '0:v', '-map', '1:a',
-     '-c:v', 'libx264', '-preset', os.environ.get('PRESET', 'medium'), '-crf', '20', '-c:a', 'aac', '-b:a', '192k', '-t', f'{TOTAL - CUT0:.2f}', '-movflags', '+faststart', master])
+run(['ffmpeg', '-y', '-loglevel', 'error', '-i', f'{S}/title.mp4', '-i', f'{S}/title.wav', '-ss', f'{CUT0}', '-i', PIC, '-ss', f'{CUT0}', '-i', f'{S}/mix.wav',
+     '-filter_complex', f'[1:a]aformat=sample_rates=48000:channel_layouts=stereo[ta];[3:a]aformat=sample_rates=48000:channel_layouts=stereo,atrim=0:{TOTAL - CUT0:.3f}[ba];'
+     f'[2:v]trim=0:{TOTAL - CUT0:.3f},setpts=PTS-STARTPTS[bv];[0:v][ta][bv][ba]concat=n=2:v=1:a=1[v][a]',
+     '-map', '[v]', '-map', '[a]', '-c:v', 'libx264', '-preset', os.environ.get('PRESET', 'medium'), '-crf', '20', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', master])
 share = f'{R}/video/{SLUG}_' + ('excerpt' if END else 'share') + '.mp4'
 run(['ffmpeg', '-y', '-loglevel', 'error', '-i', master, '-vf', 'scale=1280:720', '-c:v', 'libx264', '-preset', 'medium', '-b:v', '520k', '-maxrate', '900k', '-bufsize', '1800k',
      '-c:a', 'aac', '-b:a', '96k', '-movflags', '+faststart', share])
