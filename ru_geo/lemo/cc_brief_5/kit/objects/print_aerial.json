@@ -1,0 +1,15 @@
+{
+  "id": "print_aerial",
+  "w": 960,
+  "h": 740,
+  "anchors": {},
+  "print": true,
+  "prep": {
+    "src": "/home/user/sofia-studio/ru_geo/create_country/archive/img/sealand_aerial.jpg",
+    "id": "print_aerial",
+    "crop": "300,120,1180,780",
+    "w": 880,
+    "border": 0.045,
+    "sat": 0.85
+  }
+}

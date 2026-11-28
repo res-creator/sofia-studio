@@ -7,12 +7,10 @@ Photographs (ru_geo/create_country/archive/img, see archive/credits.json; uncut 
                     commons.wikimedia.org/wiki/File:Chelmsford,_The_Shire_Hall.jpg · «Шир-холл в Челмсфорде, современное фото · фото: Stuart Axe, CC BY-SA 4.0»
   print_aerial.png  sealand_aerial.jpg — Sealand from a helicopter — Ryan Lackey, CC BY 2.0 (--crop 300,120,1180,780)
                     commons.wikimedia.org/wiki/File:Sealand-sky-2.jpg · «Силенд с вертолёта · фото: Ryan Lackey, CC BY 2.0»
-  print_bates.png   roy_bates.jpg — Roy and Joan Bates on Sealand, 1978 — Financial Times, public domain (--crop 60,60,900,800)
-                    commons.wikimedia.org/wiki/File:Roy_and_Joan_Bates_on_Sealand_1978.jpg · «Рой и Джоан Бейтс, 1978 · общественное достояние»
 
 Boundary data
   Great Britain, Ireland, France, Belgium, Netherlands: johan/world.geo.json (Natural Earth 1:110m, public domain), /tmp/world.geo.json → scenes/geo_gb.json.
-  Sealand at 51.895° N, 1.480° E. Everything else drawn in marker. No generated images.
+  Sealand at 51.895° N, 1.480° E. Everything else drawn in marker (the Bates family is a stick-figure sketch; the roy_bates photo is NOT used, its licence is doubtful). No generated images.
 
 Fonts (SIL Open Font License 1.1): Pangolin, Fira Sans Condensed, IBM Plex Mono.
 Engine: Lemo-Opuscar briefing-board kit (board.js as in ru_geo/lemo/dp_brief_2).

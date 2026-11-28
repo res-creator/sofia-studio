@@ -267,7 +267,9 @@ printd('aerial', 'print_aerial', 7150, 2600, L(161.1), 760, rot=1.2, cred='Си�
 write('платформа есть', AX, ROWS[1], L(161.6), 1.0, 'blue', 62)
 tick((BX, ROWS[2] - 28), L(163.0))                               # правительство
 write('есть, семья Бейтсов', AX, ROWS[2], L(163.4), 1.6, 'blue', 62)
-printd('bates', 'print_bates', 6250, 2620, L(164.2), 560, rot=-1.5, cred='Рой и Джоан Бейтс, 1978 · общественное достояние')
+for i, (fx, fs) in enumerate(((6110, 3.0), (6290, 3.0), (6440, 2.1))):    # the Bates family as a marker sketch (no photo)
+    person((fx, 2790), fs, L(164.2) + .2 * i, 'graphite', 7, quiet=(i > 0))
+write('семья Бейтсов', 6270, 2900, L(164.8), 1.0, 'graphite', 50, align='center')
 write('по данным последних лет —', AX, ROWS[0] - 40, L(165.75), 1.5, 'grey', 46)
 count('{0} постоянный', [1], AX, ROWS[0] + 40, L(168.3), 1.0, size=66)
 tick((BX, ROWS[0] - 28), L(168.9))                               # население
