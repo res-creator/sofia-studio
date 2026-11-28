@@ -150,7 +150,7 @@ write('хранят углы и формы', 1000, 840, L(444.25), 1.3, 'graphit
 frame_rect(M1, L(445.6), .5)
 world_map(M1, L(445.9), 2.0)
 equator(M1, L(447.0))
-tag('карта Меркатора', 2250, 2830, L(446.6), size=58, rot=1.5)
+tag('карта Меркатора', 600, 2830, L(446.6), size=58, rot=1.5)
 write('хранят площади', 3900, 840, L(447.7), .9, 'graphite', 84)
 frame_rect(M2, L(447.9), .45)
 world_map(M2, L(448.1), 1.8)
@@ -286,7 +286,7 @@ for i, s_ in enumerate(steps[1:]):
 c0 = bbox(GL0); c1 = bbox(M4.lines(geo.rotate_to(GRL, GSRC, GDST), eps=1.5, clip_box=False))
 line([[(c0[0] + c0[2]) / 2 + 60, (c0[1] + c0[3]) / 2 + 60], [(c1[0] + c1[2]) / 2 + 30, c1[1] - 40]], L(542.95), 2.2, 'blue', 6, dash=[22, 16], arrow=True)
 ink('ring', L(545.5), .5, 'red', c=[(c1[0] + c1[2]) / 2, (c1[1] + c1[3]) / 2], r=[(c1[2] - c1[0]) / 2 + 70, (c1[3] - c1[1]) / 2 + 60], lw=6)
-write('съёжится', c1[0] - 110, c1[1] + 20, L(545.6), .6, 'graphite', 76, align='right')
+write('съёжится', c1[0] - 110, c1[1] - 90, L(545.6), .6, 'graphite', 76, align='right')
 GSHR = c1
 
 # ===================================================================== CHAPTER «ВОЗВРАЩАЕМСЯ К МЕРКАТОРУ» · x 10800…16700 (+DX2 at the end)
@@ -354,10 +354,10 @@ def fitm(m, pad=60, top=0): x0, y0, x1, y1 = m.box; return [x0 - pad, y0 - pad -
 c = Cam(*fit([350, 330, 3150, 1350]))
 c.to(L(440.1), 3.6, z=z_of(c) * 1.03)
 c.fit(L(443.9), 1.4, [350, 420, 3050, 2950], b=2.8)                     # sort 1: the Mercator map
-c.fit(L(447.4), 1.3, [3250, 640, 6000, 2100], b=2.8)                    # sort 2: the equal-area map
+c.fit(L(447.4), 1.3, [3250, 420, 6000, 2100], b=2.8)                    # sort 2: the equal-area map
 c.fit(L(449.2), 1.7, [350, 330, 5950, 3260], b=3)                       # both + «нельзя» + the choice
 c.to(L(451.0), 5.4, z=z_of(c) * 1.025)
-c.fit(L(456.6), 1.2, [3250, 640, 6000, 2100], b=2.8)                    # Gall–Peters
+c.fit(L(456.6), 1.2, [3250, 420, 6000, 2100], b=2.8)                    # Gall–Peters
 c.fit(L(458.2), 1.5, [420, TL - 420, 3300, TL + 520], a=1.8, b=2.6)     # 1855
 c.to(L(460.5), 4.5, z=z_of(c) * 1.02)
 c.fit(L(465.4), 1.8, [4500, TL - 420, 6300, TL + 520], a=1.8, b=2.6)    # ride the line to 1973
