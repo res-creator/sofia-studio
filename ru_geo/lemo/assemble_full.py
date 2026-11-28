@@ -63,6 +63,19 @@ CONF = {
   EXTRA=[('map_everest_events.json', 47.37, 47.37, 55.72), ('map_nyos_events.json', 123.65, 123.65, 141.11),
          ('lt_trieste_events.json', 335.43, 335.43, 353.56)],
   SKIP=[]),
+ 'create_country': dict(
+  SEG=[('board_1.mp4', 0, 0, 102.62, 'cc_brief_1'),
+       ('board_2.mp4', 102.62, 102.62, 103.62, 'cc_brief_2'), ('map_sealand.mp4', 103.62, 103.62, 124.02, None),
+       ('board_2.mp4', 102.62, 124.02, 178.76, 'cc_brief_2'),
+       ('board_3.mp4', 178.76, 178.76, 179.76, 'cc_brief_3'), ('map_liberland.mp4', 179.76, 179.76, 199.9, None),
+       ('board_3.mp4', 178.76, 199.9, 235.19, 'cc_brief_3'), ('map_hutt.mp4', 235.19, 235.19, 254.78, None),
+       ('board_3.mp4', 178.76, 254.78, 355.06, 'cc_brief_3'),
+       ('board_4.mp4', 355.06, 355.06, 462.81, 'cc_brief_4'),
+       ('board_5.mp4', 462.81, 462.81, 463.81, 'cc_brief_5'), ('lt_sealand.mp4', 463.81, 463.81, 482.7, None),
+       ('board_5.mp4', 462.81, 482.7, TOTAL, 'cc_brief_5')],
+  EXTRA=[('map_sealand_events.json', 103.62, 103.62, 124.02), ('map_liberland_events.json', 179.76, 179.76, 199.9),
+         ('map_hutt_events.json', 235.19, 235.19, 254.78), ('lt_sealand_events.json', 463.81, 463.81, 482.7)],
+  SKIP=[]),
 }
 C = CONF[SLUG]; SEG, EXTRA_EV = C['SEG'], C['EXTRA']
 END = float(os.environ.get('END', 0))                    # END=127.7: только кусок с начала (на согласование)
@@ -173,7 +186,8 @@ run(['ffmpeg', '-y', '-loglevel', 'error', '-i', f'{R}/vo_clone/vo.mp3', '-i', f
 CUT0 = float(os.environ.get('CUT0', '1.0'))
 TITLES = {'building_height': 'Как высоко можно построить?', 'universe_size': 'Размер Вселенной',
           'country_sizes': 'Реальный размер стран', 'remote_places': 'Самое отдалённое место человечества',
-          'deadly_places': '7 мест, где человек не выживет без защиты'}
+          'deadly_places': '7 мест, где человек не выживет без защиты',
+          'create_country': 'Как создать свою страну?'}
 def kit_title():
     try:
         h = open(f'{R}/UPLOAD_KIT.md', encoding='utf-8').readline()
