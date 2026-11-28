@@ -31,6 +31,15 @@ CONF = {
        ('board_4.mp4', 454.73, 454.73, TOTAL, 'us_brief_4')],
   EXTRA=[('lt_pbd_events.json', 89.1, 89.1, 105.6), ('lt_hudf_events.json', 318.5, 318.5, 359.8)],
   SKIP=[]),
+ 'country_sizes': dict(
+  SEG=[('board_1.mp4', 0, 0, 3.92, 'cs_brief_1'), ('globe.mp4', 3.92, 3.92, 11.15, None),
+       ('board_1.mp4', 0, 11.15, 44.2, 'cs_brief_1'), ('lt_merc.mp4', 44.2, 44.2, 78.0, None),
+       ('board_1.mp4', 0, 78.0, 115.1, 'cs_brief_1'),
+       ('board_2.mp4', 115.1, 115.1, 268.26, 'cs_brief_2'),
+       ('board_3.mp4', 268.26, 268.26, 439.03, 'cs_brief_3'),
+       ('board_4.mp4', 439.03, 439.03, TOTAL, 'cs_brief_4')],
+  EXTRA=[('globe_events.json', 3.92, 3.92, 11.15), ('lt_merc_events.json', 44.2, 44.2, 78.0)],
+  SKIP=[]),
 }
 C = CONF[SLUG]; SEG, EXTRA_EV = C['SEG'], C['EXTRA']
 END = float(os.environ.get('END', 0))                    # END=127.7: только кусок с начала (на согласование)
